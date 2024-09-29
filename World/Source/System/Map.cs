@@ -2047,6 +2047,65 @@ namespace Server
 			return surface;
 		}
 
+		/// <summary>
+		/// Gets the highest Z value for a point
+		/// </summary>
+		public int GetHighestPoint( int x, int y )
+		{
+			if ( this == Map.Internal )
+				return 0;
+
+			int surfaceZ = int.MinValue;
+
+			LandTile lt = Tiles.GetLandTile( x, y );
+
+			if ( !lt.Ignored )
+			{
+				int avgZ = GetAverageZ( x, y );
+				surfaceZ = avgZ;
+			}
+
+			StaticTile[] staticTiles = Tiles.GetStaticTiles( x, y, true );
+
+			for ( int i = 0; i < staticTiles.Length; i++ )
+			{
+				StaticTile tile = staticTiles[i];
+				ItemData id = TileData.ItemTable[tile.ID & TileData.MaxItemValue];
+
+				if ( id.Surface || ( id.Flags & TileFlag.Wet ) != 0 )
+				{
+					int tileZ = tile.Z + id.CalcHeight;
+					if (tileZ < surfaceZ) continue;
+
+					surfaceZ = tileZ;
+				}
+			}
+
+
+			Sector sector = GetSector( x, y );
+
+			for ( int i = 0; i < sector.Items.Count; i++ )
+			{
+				Item item = sector.Items[i];
+
+				if ( !(item is BaseMulti) && item.ItemID <= TileData.MaxItemValue && item.AtWorldPoint( x, y ) && !item.Movable )
+				{
+					ItemData id = item.ItemData;
+
+					if ( id.Surface || ( id.Flags & TileFlag.Wet ) != 0 )
+					{
+						int itemZ = item.Z + id.CalcHeight;
+						if (itemZ < surfaceZ) continue;
+						
+						surfaceZ = itemZ;
+					}
+				}
+			}
+
+
+			return surfaceZ;
+		}
+
 		public void Bound( int x, int y, out int newX, out int newY )
 		{
 			if ( x < 0 )
