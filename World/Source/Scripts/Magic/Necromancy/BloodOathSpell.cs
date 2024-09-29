@@ -125,7 +125,7 @@ namespace Server.Spells.Necromancy
 			private Mobile m_Target;
 			private DateTime m_End;
 
-			public ExpireTimer( Mobile caster, Mobile target, TimeSpan delay ) : base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
+			public ExpireTimer( Mobile caster, Mobile target, TimeSpan delay ) : base( delay )
 			{
 				m_Caster = caster;
 				m_Target = target;

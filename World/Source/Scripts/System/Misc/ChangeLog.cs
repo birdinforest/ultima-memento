@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
+			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
