@@ -244,9 +244,8 @@ namespace Server.Engines.Harvest
 
 							Region reg = Region.Find( from.Location, from.Map );
 
-							int amount = def.ConsumedPerHarvest;
+							int amount = Math.Min(bank.Current, def.ConsumedPerHarvest);
 							int dreadAmount = def.ConsumedPerIslesDreadHarvest;
-							bool inIslesDread = (map == Map.IslesDread);
 
 							if ( item is BlankScroll )
 							{
