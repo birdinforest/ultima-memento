@@ -181,6 +181,12 @@ namespace Server.Items
 				return false;
 			}
 
+			if ( MyServerSettings.RequirePowerscrollsInOrder() && skill.Cap < (Value - 5) )
+			{
+				from.SendMessage( "Your current cap has to be at {0} to use this scroll", Convert.ToString(Value - 5) );
+				return false;
+			}
+
 			if ( (
 				( Skill == SkillName.FistFighting ) || 
 				( Skill == SkillName.Bushido ) || 

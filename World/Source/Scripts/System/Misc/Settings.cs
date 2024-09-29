@@ -533,6 +533,11 @@ namespace Server
 
 			return skill * 0.1;
 		}
+		
+		public static bool RequirePowerscrollsInOrder()
+		{
+			return MySettings.S_RequirePreviousPowerscroll;
+		}
 
 		public static int FoodCheck()
 		{
