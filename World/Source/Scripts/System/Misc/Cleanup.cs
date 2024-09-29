@@ -154,13 +154,10 @@ namespace Server.Misc
 			return false;
 		}
 
-		public static void OnAfterDuped( Item oldItem, Item newItem )
+		public static void OnAfterDuped( BaseTrinket trinket, BaseClothing clothing )
 		{
-			if ( oldItem == null || newItem == null )
+			if ( trinket == null || clothing == null )
 				return;
-
-			BaseTrinket trinket = oldItem as BaseTrinket;
-			BaseClothing clothing = newItem as BaseClothing;
 
 			clothing.Attributes.RegenHits = trinket.Attributes.RegenHits;
 			clothing.Attributes.RegenStam = trinket.Attributes.RegenStam;
@@ -211,7 +208,7 @@ namespace Server.Misc
 			string name = newItem.Name;
 
 			if ( oldItem is BaseTrinket && newItem is BaseClothing )
-				OnAfterDuped( oldItem, newItem );
+				OnAfterDuped( (BaseTrinket)oldItem, (BaseClothing)newItem );
 			else if ( newItem is BaseWeapon && oldItem is BaseWeapon )
 				((BaseWeapon)oldItem).OnAfterDuped ( (BaseWeapon)newItem );
 			else if ( newItem is BaseArmor && oldItem is BaseArmor )
