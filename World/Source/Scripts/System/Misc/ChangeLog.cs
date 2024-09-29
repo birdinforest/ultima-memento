@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
 			builder.Append("- Item - Powerscrolls purchases can now use Checks in your Bank<br>");
 			builder.Append("- Item - Powerscrolls purchases can now use Gold in your Inventory<br>");
+			builder.Append("- Item - The luck bonus for Lucky horse shoe is now 100 per item<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
@@ -34,6 +35,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
+			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
