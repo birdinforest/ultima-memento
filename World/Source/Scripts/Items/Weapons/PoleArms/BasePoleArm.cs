@@ -8,7 +8,7 @@ using Server.ContextMenus;
 
 namespace Server.Items
 {
-	public abstract class BasePoleArm : BaseMeleeWeapon, IUsesRemaining
+	public abstract class BasePoleArm : BaseMeleeWeapon, IUsesRemaining, Abstractions.IHarvestTool
 	{
 		public override int DefHitSound{ get{ return 0x237; } }
 		public override int DefMissSound{ get{ return 0x238; } }
@@ -17,6 +17,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Polearm; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
+		public bool HasHarvestSystem { get { return HarvestSystem != null; } }
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 
 		public override string DefaultDescription

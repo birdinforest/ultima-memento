@@ -13,7 +13,7 @@ namespace Server.Items
 		bool Axe( Mobile from, BaseAxe axe );
 	}
 
-	public abstract class BaseAxe : BaseMeleeWeapon
+	public abstract class BaseAxe : BaseMeleeWeapon, Abstractions.IHarvestTool
 	{
 		public override int DefHitSound{ get{ return 0x232; } }
 		public override int DefMissSound{ get{ return 0x23A; } }
@@ -22,6 +22,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Axe; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
+		public bool HasHarvestSystem { get { return HarvestSystem != null; } }
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 
 		public override string DefaultDescription

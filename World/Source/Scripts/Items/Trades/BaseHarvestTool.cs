@@ -14,7 +14,7 @@ namespace Server.Items
 		bool ShowUsesRemaining{ get; set; }
 	}
 
-	public abstract class BaseHarvestTool : Item, IUsesRemaining, ICraftable
+	public abstract class BaseHarvestTool : Item, IUsesRemaining, ICraftable, Abstractions.IHarvestTool
 	{
 		public override string DefaultDescription{ get{ return "These tools are used for harvesting resources, that are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
 
@@ -90,9 +90,10 @@ namespace Server.Items
 
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 
+		public bool HasHarvestSystem { get { return HarvestSystem != null; } }
 		public abstract HarvestSystem HarvestSystem{ get; }
 
-		public BaseHarvestTool( int itemID ) : this( 50, itemID )
+        public BaseHarvestTool( int itemID ) : this( 50, itemID )
 		{
 		}
 
