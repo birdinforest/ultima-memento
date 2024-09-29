@@ -25,6 +25,9 @@ namespace Server.Misc
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
+			builder.Append("- Gather - Logs now weigh 1 stone, up from 0.5<br>");
+			builder.Append("- Gather - Logs can now be used while on a pack animal<br>");
+			builder.Append("- Gather - Sawing logs now acts as if it was individually<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
 			builder.Append("- Item - Powerscrolls purchases can now use Checks in your Bank<br>");
