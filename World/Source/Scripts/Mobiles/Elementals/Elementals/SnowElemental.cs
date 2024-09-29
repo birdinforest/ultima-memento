@@ -54,8 +54,8 @@ namespace Server.Mobiles
 			VirtualArmor = 50;
 
 			PackItem( new BlackPearl( 3 ) );
-			Item ore = new IronOre( 3 );
-			ore.ItemID = 0x19B8;
+			Item ore = new IronOre( 2 );
+			ore.ItemID = 0x19B9;
 			PackItem( ore );
 		}
 
