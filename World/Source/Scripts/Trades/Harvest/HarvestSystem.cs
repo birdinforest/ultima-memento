@@ -260,14 +260,6 @@ namespace Server.Engines.Harvest
 							else
 								item.Amount = amount;
 
-							bool FindSeaOre = false;
-								if ( !( item is IronOre ) && !( item is DullCopperOre ) && !( item is ShadowIronOre ) && !( item is CopperOre ) && !( item is BronzeOre ) && !( item is GoldOre ) && !( item is AgapiteOre ) && !( item is VeriteOre ) && !( item is ValoriteOre ) && Utility.RandomBool() )
-									FindSeaOre = true;
-
-							bool FindSeaGranite = false;
-								if ( !( item is Granite ) && !( item is DullCopperGranite ) && !( item is ShadowIronGranite ) && !( item is CopperGranite ) && !( item is BronzeGranite ) && !( item is GoldGranite ) && !( item is AgapiteGranite ) && !( item is VeriteGranite ) && !( item is ValoriteGranite ) && Utility.RandomBool() )
-									FindSeaGranite = true;
-
 							bool FindSeaLog = false;
 								if ( !( item is Log ) && Utility.RandomBool() )
 									FindSeaLog = true;
@@ -307,7 +299,7 @@ namespace Server.Engines.Harvest
 								item.Delete();
 								item = Loot.RandomScroll( Utility.Random(4)+1 );
 							}
-							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSeaOre && item is BaseOre )
+							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSpecialOre && item is BaseOre )
 							{
 								int nepturiteOre = item.Amount;
 								item.Delete();
@@ -321,7 +313,7 @@ namespace Server.Engines.Harvest
 								item = new DriftwoodLog( driftWood );
 								from.SendMessage( "You chop some driftwood logs.");
 							}
-							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSeaGranite && item is BaseGranite )
+							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSpecialGranite && item is BaseGranite )
 							{
 								int nepturiteGranite = item.Amount;
 								item.Delete();
