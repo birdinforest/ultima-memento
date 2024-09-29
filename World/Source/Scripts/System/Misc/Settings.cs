@@ -248,7 +248,7 @@ namespace Server
 			return price * 0.01;
 		}
 
-		public static int LowerReg()
+		public static int LowerReg() // Overall cap
 		{
 			if ( MySettings.S_LowerReg > 100 )
 				return 100;
@@ -258,7 +258,7 @@ namespace Server
 			return 0;
 		}
 
-		public static int LowerMana()
+		public static int LowerMana() // Overall cap
 		{
 			if ( MySettings.S_LowerMana > 100 )
 				return 100;
@@ -268,20 +268,14 @@ namespace Server
 			return 0;
 		}
 
-		public static int LowMana()
+		public static int LowMana() // Maxmimum enchantable value
 		{
-			if ( MyServerSettings.LowerMana() > 50 )
-				return MyServerSettings.LowerMana();
-
-			return MyServerSettings.LowerMana();
+			return Math.Min(MySettings.S_LowerManaEnchantment, LowerMana());
 		}
 
-		public static int LowReg()
+		public static int LowReg() // Maxmimum enchantable value
 		{
-			if ( MyServerSettings.LowerReg() > 50 )
-				return MyServerSettings.LowerReg();
-
-			return MyServerSettings.LowerReg();
+			return Math.Min(MySettings.S_LowerRegEnchantment, LowerReg());
 		}
 
 		public static int HousesPerAccount() // HOW MANY HOUSES CAN ONE ACCOUNT HAVE, WHERE -1 IS NO LIMIT
