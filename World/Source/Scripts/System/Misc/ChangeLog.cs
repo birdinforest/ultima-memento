@@ -41,6 +41,7 @@ namespace Server.Misc
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
+			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
