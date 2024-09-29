@@ -23,6 +23,8 @@ namespace Server.Misc
 			builder.Append("Changes<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
+			builder.Append("- Item - Powerscrolls purchases can now use Checks in your Bank<br>");
+			builder.Append("- Item - Powerscrolls purchases can now use Gold in your Inventory<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

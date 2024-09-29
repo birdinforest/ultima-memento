@@ -76,8 +76,14 @@ namespace Server
             }
             else if (info.ButtonID > 0)
             {
-                Container cont = from.FindBankNoCreate();
-                if (cont != null && cont.ConsumeTotal(typeof(Gold), m_Price))
+				var consumed = Banker.Withdraw(from, m_Price);
+				if (!consumed) // Fallback to backpack
+				{
+					var cont = from.Backpack;
+					consumed = cont != null && cont.ConsumeTotal(typeof(Gold), m_Price);
+				}
+
+                if (consumed)
                 {
                     string msg;
                     int value;
