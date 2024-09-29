@@ -262,8 +262,8 @@ namespace Server.Engines.Harvest
 		}
 
 		public override HarvestVein MutateVein( Mobile from, Item tool, HarvestDefinition def, HarvestBank bank, object toHarvest, HarvestVein vein )
-		{
-			if ( tool.Name == "gargoyle pickaxe" && tool.Resource == CraftResource.Dwarven && def == m_OreAndStone )
+		{			
+			if ( Pickaxe.IsGargoylePickaxe(tool) && def == m_OreAndStone )
 			{
 				int veinIndex = Array.IndexOf( def.Veins, vein );
 
@@ -293,7 +293,7 @@ namespace Server.Engines.Harvest
 
 		public override void OnHarvestFinished( Mobile from, Item tool, HarvestDefinition def, HarvestVein vein, HarvestBank bank, HarvestResource resource, object harvested )
 		{
-			if ( tool.Name == "gargoyle pickaxe" && tool.Resource == CraftResource.Dwarven && def == m_OreAndStone && 0.1 > Utility.RandomDouble() )
+			if ( Pickaxe.IsGargoylePickaxe(tool) && def == m_OreAndStone && 0.1 > Utility.RandomDouble() )
 			{
 				HarvestResource res = vein.PrimaryResource;
 

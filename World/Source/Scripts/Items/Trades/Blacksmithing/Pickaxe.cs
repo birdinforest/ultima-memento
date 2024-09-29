@@ -46,6 +46,20 @@ namespace Server.Items
 		{
 		}
 
+		public static Pickaxe CreateGargoylePickaxe()
+		{
+			return new Pickaxe
+			{
+				Name = "gargoyle pickaxe",
+				Resource = CraftResource.Dwarven,
+			};
+		}
+
+		public static bool IsGargoylePickaxe(Item item)
+		{
+			return item.Name == "gargoyle pickaxe" && item.Resource == CraftResource.Dwarven;
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );

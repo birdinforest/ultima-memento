@@ -42,10 +42,7 @@ namespace Server.Mobiles
 
 			if ( 0.025 > Utility.RandomDouble() )
 			{
-				Pickaxe axe = new Pickaxe();
-				axe.Resource = CraftResource.Dwarven;
-				axe.Name = "gargoyle pickaxe";
-				PackItem( axe );
+				PackItem( Pickaxe.CreateGargoylePickaxe() );
 			}
 		}
 

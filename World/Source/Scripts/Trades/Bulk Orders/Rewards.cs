@@ -221,10 +221,7 @@ namespace Server.Engines.BulkOrders
 
 		private static Item CreateGargoylesPickaxe( int type )
 		{
-			Pickaxe axe = new Pickaxe();
-			axe.Resource = CraftResource.Dwarven;
-			axe.Name = "gargoyle pickaxe";
-			return axe;
+			return Items.Pickaxe.CreateGargoylePickaxe();
 		}
 
 		private static Item CreateProspectorsTool( int type )
