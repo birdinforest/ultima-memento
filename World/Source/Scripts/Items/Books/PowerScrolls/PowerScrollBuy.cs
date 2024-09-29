@@ -37,9 +37,9 @@ namespace Server
 
 			if ( merchant is WonderousDealer ){ cat = "WONDEROUS"; m_Price = 10000; skill = "105"; }
 			else if ( merchant is ExaltedDealer ){ cat = "EXALTED"; m_Price = 20000; skill = "110"; }
-			else if ( merchant is MythicalDealer ){ cat = "MYTHICAL"; m_Price = 40000; skill = "115"; }
-			else if ( merchant is LegendaryDealer ){ cat = "LEGENDARY"; m_Price = 80000; skill = "120"; }
-			else if ( merchant is PowerDealer ){ cat = "POWER"; m_Price = 160000; skill = "125"; }
+			else if ( merchant is MythicalDealer ){ cat = "MYTHICAL"; m_Price = 60000; skill = "115"; }
+			else if ( merchant is LegendaryDealer ){ cat = "LEGENDARY"; m_Price = 200000; skill = "120"; }
+			else if ( merchant is PowerDealer ){ cat = "POWER"; m_Price = 500000; skill = "125"; }
 
 			AddImage(0, 0, 9592, Server.Misc.PlayerSettings.GetGumpHue( from ));
 			AddButton(962, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
