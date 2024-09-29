@@ -21,6 +21,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Changes<br>");
+			builder.Append("- Craft - Using non-basic resources can now yield multiple skill gains<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");

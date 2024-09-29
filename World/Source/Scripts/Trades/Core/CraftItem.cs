@@ -881,7 +881,31 @@ namespace Server.Engines.Craft
 				}
 
 				if ( gainSkills ) // This is a passive check. Success chance is entirely dependent on the main skill
-					from.CheckSkill( craftSkill.SkillToMake, minSkill, maxSkill );
+				{
+					Type resourceType = typeRes;
+					if ( resourceType == null )
+						resourceType = Resources.GetAt( 0 ).ItemType;
+
+					CraftResource thisResource = CraftResources.GetFromType( resourceType );
+					int checks = CraftResources.GetSkillCheckMultiplier( thisResource );
+					if (0 < checks)
+						from.CheckSkill( craftSkill.SkillToMake, minSkill, maxSkill );
+
+					if (1 < checks)
+					{
+						double before = from.Skills[craftSkill.SkillToMake].Base;
+
+						for (i = 1; i < checks; i++)
+							from.CheckSkill( craftSkill.SkillToMake, minSkill, maxSkill );
+						
+						// Notify if bonus attempts resulted in a skill gain
+						if ( before < from.Skills[craftSkill.SkillToMake].Base )
+						{
+							var resourceName = CraftResources.GetName( thisResource );
+							from.SendMessage( "Working with {0} has challenged your abilities.", resourceName );
+						}
+					}
+				}
 			}
 
 			double chance;

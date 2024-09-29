@@ -1162,5 +1162,250 @@ namespace Server.Items
 			else if ( resource == 	GemType.Diamond	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	1	,	0	,	0	,	5	,	0	,	2	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
 			else if ( resource == 	GemType.Pearl	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	2	,	2	,	2	,	0	,	0	,	2	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	5	,	1	,	1	,	10	,	10	,	0	,	0	,	0	,	1	 ); }
 		}
+
+        public static int GetSkillCheckMultiplier(CraftResource resource)
+        {
+            switch (resource)
+            {
+                case CraftResource.None:
+                    return 1;
+
+                case CraftResource.Iron:
+                    return 1;
+
+                case CraftResource.DullCopper:
+                case CraftResource.ShadowIron:
+                case CraftResource.Copper:
+                    return 2;
+
+                case CraftResource.Bronze:
+                case CraftResource.Gold:
+                case CraftResource.Agapite:
+                    return 3;
+
+                case CraftResource.Verite:
+                case CraftResource.Valorite:
+                case CraftResource.Nepturite:
+                case CraftResource.Obsidian:
+                case CraftResource.Steel:
+                case CraftResource.Brass:
+                case CraftResource.Mithril:
+                    return 4;
+
+                case CraftResource.Xormite:
+                case CraftResource.Dwarven:
+                    return 5;
+
+                case CraftResource.AmethystBlock:
+                case CraftResource.EmeraldBlock:
+                case CraftResource.GarnetBlock:
+                case CraftResource.IceBlock:
+                case CraftResource.JadeBlock:
+                case CraftResource.MarbleBlock:
+                case CraftResource.OnyxBlock:
+                case CraftResource.QuartzBlock:
+                case CraftResource.RubyBlock:
+                case CraftResource.SapphireBlock:
+                case CraftResource.SilverBlock:
+                case CraftResource.SpinelBlock:
+                case CraftResource.StarRubyBlock:
+                case CraftResource.TopazBlock:
+                case CraftResource.CaddelliteBlock:
+                    return 3; // Guess
+
+                case CraftResource.RegularLeather:
+                    return 1;
+
+                case CraftResource.HornedLeather:
+                case CraftResource.FrozenLeather:
+                case CraftResource.GoliathLeather:
+                    return 2;
+
+                case CraftResource.BarbedLeather:
+                case CraftResource.NecroticLeather:
+                case CraftResource.VolcanicLeather:
+                case CraftResource.SpinedLeather:
+                case CraftResource.DraconicLeather:
+                case CraftResource.HellishLeather:
+                    return 3;
+
+                case CraftResource.DinosaurLeather:
+                    return 4;
+
+                case CraftResource.AlienLeather:
+                    return 5;
+
+                // Sci-Fi - Begin
+                case CraftResource.Agrinium:
+                case CraftResource.Beskar:
+                case CraftResource.Carbonite:
+                case CraftResource.Cortosis:
+                case CraftResource.Durasteel:
+                case CraftResource.Durite:
+                case CraftResource.Farium:
+                case CraftResource.Laminasteel:
+                case CraftResource.Neuranium:
+                case CraftResource.Phrik:
+                case CraftResource.Promethium:
+                case CraftResource.Quadranium:
+                case CraftResource.Songsteel:
+                case CraftResource.Titanium:
+                case CraftResource.Trimantium:
+                case CraftResource.Xonolite:
+
+                case CraftResource.Adesote:
+                case CraftResource.Biomesh:
+                case CraftResource.Cerlin:
+                case CraftResource.Durafiber:
+                case CraftResource.Flexicris:
+                case CraftResource.Hypercloth:
+                case CraftResource.Nylar:
+                case CraftResource.Nylonite:
+                case CraftResource.Polyfiber:
+                case CraftResource.Syncloth:
+                case CraftResource.Thermoweave:
+
+                case CraftResource.GornScales:
+                case CraftResource.TrandoshanScales:
+                case CraftResource.SilurianScales:
+                case CraftResource.KraytScales:
+
+                case CraftResource.BorlTree:
+                case CraftResource.CosianTree:
+                case CraftResource.GreelTree:
+                case CraftResource.JaporTree:
+                case CraftResource.KyshyyykTree:
+                case CraftResource.LaroonTree:
+                case CraftResource.TeejTree:
+                case CraftResource.VeshokTree:
+
+                case CraftResource.XenoSkeletal:
+                case CraftResource.AndorianSkeletal:
+                case CraftResource.CardassianSkeletal:
+                case CraftResource.MartianSkeletal:
+                case CraftResource.RodianSkeletal:
+                case CraftResource.TuskenSkeletal:
+                case CraftResource.TwilekSkeletal:
+                case CraftResource.XindiSkeletal:
+                case CraftResource.ZabrakSkeletal:
+                    return 4;
+                // Sci-Fi - End
+
+                case CraftResource.DemonSkin:
+                case CraftResource.DragonSkin:
+                case CraftResource.NightmareSkin:
+                case CraftResource.SnakeSkin:
+                case CraftResource.TrollSkin:
+                case CraftResource.UnicornSkin:
+                case CraftResource.IcySkin:
+                case CraftResource.LavaSkin:
+                case CraftResource.Seaweed:
+                case CraftResource.DeadSkin:
+                    return 3; // Guess
+
+                case CraftResource.RedScales:
+                case CraftResource.YellowScales:
+                case CraftResource.BlackScales:
+                case CraftResource.GreenScales:
+                case CraftResource.WhiteScales:
+                case CraftResource.BlueScales:
+                case CraftResource.DinosaurScales:
+                    return 3; // Guess
+
+                case CraftResource.MetallicScales:
+                case CraftResource.BrazenScales:
+                case CraftResource.UmberScales:
+                case CraftResource.VioletScales:
+                case CraftResource.PlatinumScales:
+                case CraftResource.CadalyteScales:
+                    return 3; // Guess
+
+                case CraftResource.Fabric:
+                    return 1;
+
+                case CraftResource.FurryFabric:
+                case CraftResource.WoolyFabric:
+                case CraftResource.SilkFabric:
+					return 2; // Guess
+
+                case CraftResource.HauntedFabric:
+                case CraftResource.ArcticFabric:
+                case CraftResource.PyreFabric:
+					return 3; // Guess
+
+                case CraftResource.VenomousFabric:
+                case CraftResource.MysteriousFabric:
+                case CraftResource.VileFabric:
+					return 4; // Guess
+
+                case CraftResource.DivineFabric:
+                case CraftResource.FiendishFabric:
+                    return 5; // Guess
+
+                case CraftResource.RegularWood:
+                    return 1;
+
+                case CraftResource.AshTree:
+                case CraftResource.CherryTree:
+                case CraftResource.EbonyTree:
+                    return 2;
+
+                case CraftResource.GoldenOakTree:
+                case CraftResource.HickoryTree:
+                case CraftResource.MahoganyTree:
+                case CraftResource.DriftwoodTree: // 50% Drop Rate
+                case CraftResource.PetrifiedTree: // 100% Drop rate
+                    return 3;
+
+                case CraftResource.OakTree:
+                case CraftResource.PineTree:
+                case CraftResource.GhostTree:
+                case CraftResource.RosewoodTree:
+                case CraftResource.WalnutTree:
+                    return 4;
+
+                case CraftResource.ElvenTree:
+                    return 5;
+
+                case CraftResource.BrittleSkeletal:
+                case CraftResource.DrowSkeletal:
+                case CraftResource.OrcSkeletal:
+                case CraftResource.ReptileSkeletal:
+                case CraftResource.OgreSkeletal:
+                case CraftResource.TrollSkeletal:
+                case CraftResource.GargoyleSkeletal:
+                case CraftResource.MinotaurSkeletal:
+                case CraftResource.LycanSkeletal:
+                case CraftResource.SharkSkeletal:
+                case CraftResource.ColossalSkeletal:
+                case CraftResource.MysticalSkeletal:
+                case CraftResource.VampireSkeletal:
+                case CraftResource.LichSkeletal:
+                case CraftResource.SphinxSkeletal:
+                case CraftResource.DevilSkeletal:
+                case CraftResource.DracoSkeletal:
+                    return 3; // Guess
+
+                case CraftResource.SpectralSpec:
+                case CraftResource.DreadSpec:
+                case CraftResource.GhoulishSpec:
+                case CraftResource.WyrmSpec:
+                case CraftResource.HolySpec:
+                case CraftResource.BloodlessSpec:
+                case CraftResource.GildedSpec:
+                case CraftResource.DemilichSpec:
+                case CraftResource.WintrySpec:
+                case CraftResource.FireSpec:
+                case CraftResource.ColdSpec:
+                case CraftResource.PoisSpec:
+                case CraftResource.EngySpec:
+                case CraftResource.ExodusSpec:
+                case CraftResource.TurtleSpec:
+                    return 3; // Guess
+
+                default:
+					return 0;
+            }
+        }
 	}
 }
