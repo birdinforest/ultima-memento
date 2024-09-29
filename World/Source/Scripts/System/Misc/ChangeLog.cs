@@ -34,6 +34,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Gather - More tiles are now mineable<br>");
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append(SEPARATOR_LINE);
