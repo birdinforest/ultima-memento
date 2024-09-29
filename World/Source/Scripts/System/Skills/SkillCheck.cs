@@ -159,6 +159,28 @@ namespace Server.Misc
 			if ( from is BaseCreature && ((BaseCreature)from).Controlled )
 				gc *= 2;
 
+			if (from is PlayerMobile)
+			{	
+				if (skill.Base <= 50)
+					gc *= 1.5;
+				else if (skill.Base <= 70)
+					gc *= 1;
+				else if (skill.Base <= 85)
+					gc *= 0.75;
+				else if (skill.Base <= 95)
+					gc *= 0.5;
+				else if (skill.Base <= 105)
+					gc *= 0.46;
+				else if (skill.Base <= 110)
+					gc *= 0.42;
+				else if (skill.Base <= 115)
+					gc *= 0.38;
+				else if (skill.Base <= 120)
+					gc *= 0.38;
+				else if (skill.Base <= 125)
+					gc *= 0.38;
+			}
+			
 			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
 			{
 				// CAN ONLY GAIN SEAFARING SKILL ON A BOAT AFTER REACHING 50

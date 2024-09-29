@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
+			builder.Append("- Skill - Skills gains are accelerated to 70 but reduced at 85/95/105/110/115<br>");
 			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation, Make usable in client files
 
 			builder.Append("<br>");
