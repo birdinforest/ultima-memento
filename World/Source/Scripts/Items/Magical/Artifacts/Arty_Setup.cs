@@ -6,11 +6,12 @@ namespace Server.Misc
 {
 	public class Arty
 	{
-		public static void ArtySetup( Item item, int points, string extra )
+		public static void ArtySetup( Item item, int pointsThatAreIgnored, string extra )
 		{
-			points = points * 10;
-			points = 200 - points;
-			if ( points < 50 ){ points = 50; }
+			// points = points * 10;
+			// points = 200 - points;
+			// if ( points < 50 ){ points = 50; }
+			int points = 0;
 
 			if ( item is BaseGiftArmor )
 			{
