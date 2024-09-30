@@ -45,6 +45,7 @@ namespace Server.Gumps
 			this.Resizable=false;
 
             Mobile watchedPlayer = GetPlayer(currentIndex);
+            caller.Map = watchedPlayer.Map;
             caller.Location = watchedPlayer.Location;
 
 			AddPage(0);
