@@ -20,6 +20,7 @@ namespace Server.Items
 		public OilCloth() : base( 0x175D )
 		{
 			Name = "oil cloth";
+			Stackable = true;
 			Hue = 2001;
 		}
 

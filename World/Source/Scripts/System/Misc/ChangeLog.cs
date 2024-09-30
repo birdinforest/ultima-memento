@@ -45,6 +45,7 @@ namespace Server.Misc
 			builder.Append("- Item - The luck bonus for Lucky horse shoe is now 100 per item<br>");
 			builder.Append("- Item - Artifacts no longer have enchantment points<br>");
 			builder.Append("- Item - Dungeon Chests now allow for multiple Stealing attempts<br>");
+			builder.Append("- Item - Oil cloth are now stackable<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
