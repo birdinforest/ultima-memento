@@ -514,8 +514,8 @@ namespace Server.Engines.Harvest
 
 							toolWithUses.ShowUsesRemaining = true;
 
-							if ( toolWithUses.UsesRemaining > 0 )
-								--toolWithUses.UsesRemaining;
+							// Servers that give more resources should not consume as many charges
+							toolWithUses.UsesRemaining -= MyServerSettings.Resources() == 1 ? item.Amount : 1;
 
 							if ( toolWithUses.UsesRemaining < 1 )
 							{
