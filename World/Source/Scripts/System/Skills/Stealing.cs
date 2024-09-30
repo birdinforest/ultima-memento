@@ -115,6 +115,7 @@ namespace Server.SkillHandlers
 					}
 					else
 					{
+						bool delete;
 						if ( m_Thief.CheckSkill( SkillName.Stealing, 0, 125 ) )
 						{
 							m_Thief.SendMessage( "You dump out the entire contents while stealing the item." );
@@ -145,17 +146,33 @@ namespace Server.SkillHandlers
 							m_Thief.AddToBackpack( oBox );
 
 							LoggingFunctions.LogStandard( m_Thief, "has stolen a " + iBox.Name + "" );
+							delete = true;
 						}
 						else
 						{
-							m_Thief.SendMessage( "You were not quick enough to steal it." );
+							string message = "You were not quick enough to steal it.";
+							if ( delete = !dBox.OnStealFailed() )
+							{
+								switch(Utility.Random(0, 3))
+								{
+									case 0: message = "You make sure that container won't make a fool of you again."; break;
+									case 1: message = "In a fit of rage, you throw the container."; break;
+									case 2: message = "Well, they won't get your fingerprints off that."; break;
+									case 3: message = "You destroy the evidence of your failure."; break;
+								}
+							}
+							
+							m_Thief.SendMessage( message );
 							m_Thief.RevealingAction(); // REVEALING ONLY WHEN FAILED
 						}
 
-						Item spawnBox = new DungeonChestSpawner( dBox.ContainerLevel, (double)(Utility.RandomMinMax( 45, 105 )) );
-						spawnBox.MoveToWorld (new Point3D(dBox.X, dBox.Y, dBox.Z), dBox.Map);
-
-						toSteal.Delete();
+						// Replace it
+						if (delete)
+						{
+							Item spawnBox = new DungeonChestSpawner( dBox.ContainerLevel, (double)Utility.RandomMinMax( 45, 105 ) );
+							spawnBox.MoveToWorld (new Point3D(dBox.X, dBox.Y, dBox.Z), dBox.Map);
+							dBox.Delete();
+						}
 					}
 				}
 				else if ( toSteal is LandChest && LandChest.isBody ( toSteal.ItemID ) )

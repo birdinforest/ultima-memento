@@ -256,6 +256,14 @@ namespace Server.Items
 			base.Open( from );
 		}
 
+		public int m_Tries; // Reset after server restart
+		
+		/// <returns>True if you can attempt again</returns>
+		public bool OnStealFailed()
+		{
+			return ++m_Tries < 5;
+		}
+
 		public static void OpenCoffin( Mobile from, int item, int level )
 		{
 			if ( Utility.RandomMinMax( 1, 10 ) == 1 ) // 10% CHANCE FOR RAISING DEAD IN COFFINS
