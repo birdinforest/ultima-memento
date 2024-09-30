@@ -505,6 +505,8 @@ namespace Server.Gumps
 				List<Item> belongings = new List<Item>();
 				foreach( Item i in m.Backpack.Items )
 				{
+					if (i is Gold && page != 13) continue; // Leave gold alone, unless Alien
+
 					belongings.Add(i);
 				}
 				foreach ( Item stuff in belongings )
@@ -512,8 +514,6 @@ namespace Server.Gumps
 					stuff.Delete();
 				}
 				Server.Items.BaseRace.RemoveMyClothes( m );
-
-				m.AddToBackpack( new Gold( Utility.RandomMinMax(100,150) ) );
 
 				switch ( Utility.RandomMinMax( 1, 2 ) )
 				{
