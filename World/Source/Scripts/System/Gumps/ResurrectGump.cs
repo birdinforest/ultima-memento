@@ -172,7 +172,6 @@ namespace Server.Gumps
 							from.SendMessage( "" + m_Price.ToString() + " tithing has been offered to the gods." );
 							from.SendMessage( "" + (from.TithingPoints).ToString() + " tithing remains." );
 							Server.Misc.Death.Penalty( from, false );
-							Server.Misc.Death.Penalty( from, false );
 						}
 						else
 						{
