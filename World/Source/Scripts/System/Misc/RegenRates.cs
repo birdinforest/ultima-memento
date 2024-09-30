@@ -146,7 +146,7 @@ namespace Server.Misc
 					cappedPoints += MyServerSettings.PlayerLevelMod( 26, from ); // cappedPoints += 13;
 
 				if( Core.ML && from is PlayerMobile )
-					cappedPoints = Math.Min( cappedPoints, MyServerSettings.PlayerLevelMod( 36, from ) ); // 18
+					cappedPoints = Math.Min( cappedPoints, MyServerSettings.PlayerLevelMod( 9, from ) ); // 18
 
 				totalPoints += cappedPoints;
 
