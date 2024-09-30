@@ -32,6 +32,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Ore now only comes in the large size<br>");
 			builder.Append("- Gather - Ore can now be used while on a pack animal<br>");
 			builder.Append("- Gather - Smelting ore now acts as if it was done individually<br>");
+			builder.Append("- Gather - Crops within 1 tile are automatically harvested<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
 			builder.Append("- Item - Powerscrolls purchases can now use Checks in your Bank<br>");

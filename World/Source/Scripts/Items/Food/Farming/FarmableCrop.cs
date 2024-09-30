@@ -19,27 +19,35 @@ namespace Server.Items
 			Movable = false;
 		}
 
-		public override void OnDoubleClick( Mobile from )
+		public override bool HandlesOnMovement{ get { return true; } }
+
+		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			Map map = this.Map;
-			Point3D loc = this.Location;
+			const int range = 1;
+			if ( !CanHarvest( m, range ) ) return;
 
-			if ( Parent != null || Movable || IsLockedDown || IsSecure || map == null || map == Map.Internal )
-				return;
-
-			if ( !from.InRange( loc, 2 ) || !from.InLOS( this ) )
-				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
-			else if ( !m_Picked )
-				OnPicked( from, loc, map );
+			Timer.DelayCall( TimeSpan.FromSeconds( 0.5 ), new TimerStateCallback ( Harvest ), new object[]{ m, range }  );
 		}
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( m is PlayerMobile && m.Alive )
-			{
-				this.OnDoubleClick( m );
-			}
+			OnDoubleClick( m );
+
 			return true;
+		}
+
+		public override void OnDoubleClick( Mobile from )
+		{
+			const int range = 2;
+			if (!CanHarvest( from, range )) return;
+			
+			if ( !from.InRange( Location, 2 ) || !from.InLOS( this ) )
+			{
+				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
+				return;
+			}
+			
+			Harvest( new object[]{ from, range } );
 		}
 
 		public virtual void OnPicked( Mobile from, Point3D loc, Map map )
@@ -85,6 +93,25 @@ namespace Server.Items
 				this.Spawner = null;
 			}
 
+		}
+
+		private void Harvest( object state )
+		{
+			object[] states = (object[])state;
+			Mobile from = (Mobile)states[0];
+			int range = (int)states[1];
+			
+			if ( !CanHarvest( from, range ) ) return;
+
+			OnPicked( from, Location, Map );
+		}
+
+		private bool CanHarvest( Mobile m, int range )
+		{
+			if ( Parent != null || Movable || IsLockedDown || IsSecure || Map == null || Map == Map.Internal )
+				return false;
+
+			return m is PlayerMobile && m.Alive && !m_Picked && m.InRange( Location, range ) && m.InLOS( this );
 		}
 
 		public FarmableCrop( Serial serial ) : base( serial )
