@@ -60,6 +60,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Set Map when [scan players<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
+			builder.Append("- Misc - Stop deleting an item when it's stacked with itself<br>");
 			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append(SEPARATOR_LINE);
 

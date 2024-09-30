@@ -2170,18 +2170,15 @@ namespace Server
 
 		public virtual bool StackWith( Mobile from, Item dropped, bool playSound )
 		{
+			if ( dropped == this ) return true; // Safeguard. Only programmatically possible... like when Harvesting.
+
 			if ( dropped.Stackable && Stackable && dropped.GetType() == GetType() && dropped.ItemID == ItemID && dropped.Hue == Hue && dropped.Name == Name && (dropped.Amount + Amount) <= 60000 )
 			{
 				if ( m_LootType != dropped.m_LootType )
 					m_LootType = LootType.Regular;
 
-				int amt = Amount + dropped.Amount;
-				int pre = Amount;
-
-				Amount = amt;
-
-				if ( Amount == amt )
-					dropped.Delete();
+				Amount += dropped.Amount;
+				dropped.Delete();
 
 				if ( playSound && from != null )
 				{
