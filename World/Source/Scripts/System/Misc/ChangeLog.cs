@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("- Gather - More tiles are now mineable<br>");
 			builder.Append("- Gather - Added system message when digging up Dwarven ore/granite<br>");
 			builder.Append("- Gather - The 'Resources' server setting is now limited by the amount of resources in the harvest bank<br>");
+			builder.Append("- Gather - Drop harvested items to ground when backpack is full<br>");
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Misc - Set Map when [scan players<br>");

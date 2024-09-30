@@ -482,8 +482,15 @@ namespace Server.Engines.Harvest
 
 						bank.Consume( item.Amount, from );
 
-						Give( from, item );
-						SendSuccessTo( from, item, resource );
+						if ( Give( from, item, true ) )
+						{
+							SendSuccessTo( from, item, resource );
+						}
+						else
+						{
+							SendPackFullTo( from, item, def, resource );
+							item.Delete();
+						}
 
 						BonusHarvestResource bonus = def.GetBonusResource();
 
@@ -491,8 +498,14 @@ namespace Server.Engines.Harvest
 						{
 							Item bonusItem = Construct( bonus.Type, from );
 
-							Give( from, bonusItem );
-							bonus.SendSuccessTo( from );
+							if ( Give( from, bonusItem, true ) )
+							{
+								bonus.SendSuccessTo( from );
+							}
+							else
+							{
+								bonusItem.Delete();
+							}
 						}
 
 						if ( tool is IUsesRemaining )
@@ -550,12 +563,12 @@ namespace Server.Engines.Harvest
 			def.SendMessageTo( from, def.PackFullMessage );
 		}
 
-		public virtual bool Give( Mobile m, Item item )
+		public virtual bool Give( Mobile m, Item item, bool placeAtFeet )
 		{
-			BaseContainer.PutStuffInContainer( m, 3, item );
+			if (BaseContainer.PutStuffInContainer( m, 3, item )) return true;
 
-			if ( item.RootParentEntity == m )
-				return true;
+			if ( !placeAtFeet )
+				return false;
 
 			Map map = m.Map;
 
