@@ -46,9 +46,9 @@ namespace Server.Engines.Harvest
 			oreAndStone.BankWidth = 8;
 			oreAndStone.BankHeight = 8;
 
-			// Every bank holds from 10 to 34 ore
-			oreAndStone.MinTotal = 10;
-			oreAndStone.MaxTotal = 34;
+			// Every bank holds from 5 to 17 ore
+			oreAndStone.MinTotal = 5;
+			oreAndStone.MaxTotal = 17;
 
 			// A resource bank will respawn its content every 10 to 20 minutes
 			oreAndStone.MinRespawn = TimeSpan.FromMinutes( 10.0 );
