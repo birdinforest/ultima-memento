@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Targeting;
 using Server.Items;
+using Server.Gumps;
+using System.Linq;
 
 namespace Server.Engines.Craft
 {
@@ -49,7 +51,6 @@ namespace Server.Engines.Craft
 			{
 				try
 				{
-					bool canBreakDown = false;
 					bool extraCloth = false;
 
 					if ( Item.IsStandardResource( item.Resource ) && !Item.IsStandardResource( item.SubResource ) )
@@ -59,14 +60,9 @@ namespace Server.Engines.Craft
 							extraCloth = true;
 					}
 
-					if ( item.Catalog == Catalogs.Wax && m_CraftSystem is DefWaxingPot )
-						canBreakDown = true;
-
-					if ( CraftResources.GetType( resource ) == m_CraftSystem.BreakDownType )
-						canBreakDown = true;
-
-					if ( CraftResources.GetType( resource ) == m_CraftSystem.BreakDownTypeAlt && m_CraftSystem.BreakDownTypeAlt != CraftResourceType.None )
-						canBreakDown = true;
+					bool canBreakDown = (item.Catalog == Catalogs.Wax && m_CraftSystem is DefWaxingPot)
+						|| CraftResources.GetType( resource ) == m_CraftSystem.BreakDownType
+						|| CraftResources.GetType( resource ) == m_CraftSystem.BreakDownTypeAlt && m_CraftSystem.BreakDownTypeAlt != CraftResourceType.None;
 
 					if ( !canBreakDown )
 						return BreakDownResult.Invalid;
@@ -99,18 +95,15 @@ namespace Server.Engines.Craft
 						resc = (Item)Activator.CreateInstance( resourceType );
 					}
 
-					resc.Amount = BaseItemBreakDown( item );
-						if ( resc.Amount > 60 )
-							resc.Amount = 60;
+					resc.Amount = Math.Min(60, BaseItemBreakDown( item ));
 
 					if ( resc.Amount < 2 )
 					{
 						resc.Delete();
 						return BreakDownResult.BadAmnt;
 					}
+
 					resc.Amount = ( int )( resc.Amount / 2 );
-						if ( resc.Amount < 1 )
-							resc.Amount = 1;
 
 					if ( resc.Amount > 0 && item.Catalog == Catalogs.Stone )
 					{
@@ -210,6 +203,61 @@ namespace Server.Engines.Craft
 						}
 						
 						from.SendGump( new CraftGump( from, m_CraftSystem, m_Tool, num ) );
+					}
+					else if ( targeted is Container )
+					{
+						var container = (Container)targeted;
+						var confirmationGump = new ConfirmationGump(
+							from,
+							"Break down container contents",
+							"Are you absolutely sure you want to break down all " + container.TotalItems + " items in " + container.Name + "?",
+							() =>
+								{
+									if (!from.Alive) return;
+
+									var success = false;
+									var noSkill = false;
+									var invalid = false;
+									var badAmount = false;
+
+									foreach (var item in container.Items.ToList())
+									{
+										if (item is Container) continue;
+
+										// Bulk breakdown only supports items that can be crafted by the CraftSystem
+										CraftItem craftItem = m_CraftSystem.CraftItems.SearchFor( item.GetType() );
+										if ( craftItem == null || craftItem.Resources.Count == 0 )
+										{
+											invalid = true;
+											continue;
+										}
+
+										BreakDownResult result = BreakDown(from, item, item.Resource);
+										switch (result)
+										{
+											case BreakDownResult.Invalid: invalid = true; break;
+											case BreakDownResult.NoSkill: noSkill = true; break;
+											case BreakDownResult.BadAmnt: badAmount = true; break;
+											case BreakDownResult.Success: success = true; break;
+										}
+									}
+
+									if (invalid) from.SendLocalizedMessage(1044272); // You can't seem to break that item down.
+									if (noSkill) from.SendLocalizedMessage(1044149); // You have no idea how to break this item down.
+									if (badAmount) from.SendLocalizedMessage(1044144); // There is not enough here to break this down.
+									if (success) from.SendLocalizedMessage(1044148); // You break the item down into ordinary resources.
+
+									from.SendGump(new CraftGump(from, m_CraftSystem, m_Tool, null));
+								},
+							() =>
+								{
+									if (!from.Alive) return;
+
+									from.SendGump(new CraftGump(from, m_CraftSystem, m_Tool, null));
+								}
+						);
+
+						from.SendGump(confirmationGump);
 					}
 					else
 					{
@@ -783,7 +831,7 @@ namespace Server.Engines.Craft
 			else if ( item is WoodworkingTools ){ return 2; }
 			else if ( item is Yumi ){ return 10; }
 
-			return (int)(item.Weight);
+			return 0;
 		}
 	}
 }
