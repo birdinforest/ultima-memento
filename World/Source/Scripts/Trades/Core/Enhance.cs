@@ -41,6 +41,9 @@ namespace Server.Engines.Craft
 
 			if ( Item.IsStandardResource( resource ) )
 				return EnhanceResult.BadResource;
+
+			if ( !Item.IsStandardResource( item.Resource ) )
+				return EnhanceResult.AlreadyEnhanced;
 			
 			int num = craftSystem.CanCraft( from, tool, item.GetType() );
 			
