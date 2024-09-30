@@ -22,7 +22,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Using non-basic resources can now yield multiple skill gains<br>");
-			builder.Append("- Craft - Resist bonus for exceptional hats is now a function of Arms Lore skill level. Resist bonus is 7, down from 15.<br>");
+			builder.Append("- Craft - Resist bonus for exceptional hats now uses Arms Lore skill level and has been reduced to 7, down from 15.<br>");
 			builder.Append("- Craft - Items can only be enhanced if they are basic resources<br>");
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
