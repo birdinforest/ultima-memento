@@ -47,9 +47,7 @@ namespace Server.Regions
 
 		public override bool OnBeginSpellCast( Mobile m, ISpell s )
 		{
-			if ( Worlds.IsAllowedSpell( m, s ) )
-				return true;
-			else if ( m_House.IsOwner( m ) || m_House.IsCoOwner( m ) || m_House.IsFriend( m ) )
+			if ( m_House.IsOwner( m ) || m_House.IsCoOwner( m ) || m_House.IsFriend( m ) )
 				return true;
 			else
 			{

@@ -48,6 +48,7 @@ namespace Server.Misc
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
 			builder.Append("- Skill - Skills gains are accelerated to 70 but reduced at 85/95/105/110/115<br>");
 			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation, Make usable in client files
+			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 
 			builder.Append("<br>");
