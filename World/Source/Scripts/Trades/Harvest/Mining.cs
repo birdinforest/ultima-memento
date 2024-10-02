@@ -9,16 +9,11 @@ namespace Server.Engines.Harvest
 {
 	public class Mining : HarvestSystem
 	{
-		private static Mining m_System;
-
 		public static Mining System
 		{
 			get
 			{
-				if ( m_System == null )
-					m_System = new Mining();
-
-				return m_System;
+				return RichVeinMining.System;
 			}
 		}
 
@@ -34,7 +29,7 @@ namespace Server.Engines.Harvest
 			get{ return m_Sand; }
 		}
 
-		private Mining()
+		protected Mining()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;
@@ -93,13 +88,12 @@ namespace Server.Engines.Harvest
 					new HarvestResource( 90.0, 50.0, 130.0, "", typeof( AgapiteOre ),		typeof( AgapiteGranite ),		typeof( AgapiteElemental ) ),
 					new HarvestResource( 95.0, 55.0, 135.0, "", typeof( VeriteOre ),		typeof( VeriteGranite ),		typeof( VeriteElemental ) ),
 					new HarvestResource( 99.0, 59.0, 139.0, "", typeof( ValoriteOre ),		typeof( ValoriteGranite ),		typeof( ValoriteElemental ) ),
-					new HarvestResource( 100.1, 69.0, 140.0, "", typeof( DwarvenOre ),		typeof( DwarvenGranite ),		typeof( EarthElemental ) )
 				};
 
 			veins = new HarvestVein[]
 				{
 					new HarvestVein( 45.0, 0.0, res[0], null   ), // Iron
-					new HarvestVein( 15.0, 0.5, res[1], res[0] ), // Dull Copper
+					new HarvestVein( 16.0, 0.5, res[1], res[0] ), // Dull Copper
 					new HarvestVein( 11.0, 0.5, res[2], res[0] ), // Shadow Iron
 					new HarvestVein( 08.0, 0.5, res[3], res[0] ), // Copper
 					new HarvestVein( 06.0, 0.5, res[4], res[0] ), // Bronze
@@ -107,7 +101,6 @@ namespace Server.Engines.Harvest
 					new HarvestVein( 04.0, 0.5, res[6], res[0] ), // Agapite
 					new HarvestVein( 03.0, 0.5, res[7], res[0] ), // Verite
 					new HarvestVein( 02.0, 0.5, res[8], res[0] ), // Valorite
-					new HarvestVein( 01.0, 0.5, res[9], res[0] )  // Dwarven
 				};
 
 			oreAndStone.Resources = res;
@@ -262,7 +255,7 @@ namespace Server.Engines.Harvest
 		}
 
 		public override HarvestVein MutateVein( Mobile from, Item tool, HarvestDefinition def, HarvestBank bank, object toHarvest, HarvestVein vein )
-		{			
+		{
 			if ( Pickaxe.IsGargoylePickaxe(tool) && def == m_OreAndStone )
 			{
 				int veinIndex = Array.IndexOf( def.Veins, vein );

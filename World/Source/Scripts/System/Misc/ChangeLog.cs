@@ -29,6 +29,8 @@ namespace Server.Misc
 			builder.Append("- Craft - Bulk crafting no longer resets Stat Gain cooldown<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
+			builder.Append("- Gather - Add 'Glistening ore vein' to give Mining a more active playstyle<br>");
+			builder.Append("- Gather - Dwarven ore can now only be acquired via 'Glistening ore vein'<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
 			builder.Append("- Gather - Logs now weigh 1 stone, up from 0.5<br>");
 			builder.Append("- Gather - Logs can now be used while on a pack animal<br>");
