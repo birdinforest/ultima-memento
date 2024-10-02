@@ -736,9 +736,9 @@ namespace Server.Engines.Harvest
 							}
 							case 7:	// Boots
 							{
-								preLoot = new ThighBoots(); preLoot.Name = "boots";
 								switch ( Utility.Random( 4 ) )
 								{
+									default: preLoot = new ThighBoots(); preLoot.Name = "boots"; break;
 									case 1: preLoot = new Sandals(); preLoot.Name = "sandals"; break;
 									case 2: preLoot = new Shoes(); preLoot.Name = "shoes"; break;
 									case 3: preLoot = new Boots(); preLoot.Name = "boots"; break;
@@ -804,8 +804,6 @@ namespace Server.Engines.Harvest
 
 						// ------------------------------------------------------------------------
 
-						BaseCreature creature = new DeepSeaSerpent();
-						string Screature = "Shipwreck Serpent";
 
 						int monster = Utility.RandomMinMax( 16, 19 );
 
@@ -814,8 +812,11 @@ namespace Server.Engines.Harvest
 						else if ( sos.Level == 3 ){ monster = Utility.RandomMinMax( 10, 11 ); }
 						else if ( sos.Level == 4 ){ monster = Utility.RandomMinMax( 12, 15 ); }
 
+						BaseCreature creature;
+						string Screature;
 						switch ( monster )
 						{
+							default:
 							case 0: creature = new Jellyfish(); 		Screature = "Shipwreck Jellyfish";			break; // 1
 							case 1: creature = new WaterNaga(); 		Screature = "Shipwreck Naga";				break; // 1
 							case 2: creature = new GiantEel(); 			Screature = "Shipwreck Eel";				break; // 1
