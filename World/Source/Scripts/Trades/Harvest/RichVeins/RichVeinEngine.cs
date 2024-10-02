@@ -7,7 +7,6 @@ namespace Server.Engines.Harvest
 {
     public class RichVeinEngine
     {
-        public const int EXECUTE_INTERVAL_HOURS = 1;
         public const string UNKNOWN_REGION_NAME = "$None";
         private static readonly Dictionary<Serial, RichVeinSpawner> _spawnRegistry = new Dictionary<Serial, RichVeinSpawner>();
         private static readonly Dictionary<Map, Dictionary<string, RichVeinConfig>> _configByMapByRegion = new Dictionary<Map, Dictionary<string, RichVeinConfig>>();
@@ -157,18 +156,7 @@ namespace Server.Engines.Harvest
                         if (maxSpawnSlots < 1) continue; // Already at max capacity
 
                         // Make sure we have any locations left to check
-                        Dictionary<Point3D, RichVeinSpawner> spawnsByLocation;
-                        try
-                        {
-                            spawnsByLocation = existingSpawns.ToDictionary(x => x.Location);
-                        }
-                        catch (System.Exception)
-                        {
-                            Console.WriteLine("Duplicate spawn detected in {0} ({1})", map.Name, region);
-                            Console.WriteLine("{0}", string.Join(Environment.NewLine, existingSpawns.Select(x => string.Format("{0} at {1}", x.Serial, x.Location))));
-                            Console.ReadLine();
-                            return;
-                        }
+                        Dictionary<Point3D, RichVeinSpawner> spawnsByLocation = existingSpawns.ToDictionary(x => x.Location);
                         var unspawnedCandidates = config.Candidates.Where(c => !spawnsByLocation.ContainsKey(c)).ToList();
                         if (!unspawnedCandidates.Any()) continue;
 
