@@ -70,10 +70,6 @@ namespace Server.Items
 					CraftResourceInfo info = CraftResources.GetInfo( resource );
 
 					double difficulty = CraftResources.GetSkill( resource );
-
-					if ( difficulty < 50.0 )
-						difficulty = 50.0;
-
 					if ( difficulty > from.Skills.Tailoring.Value )
 						msg = "You are not skilled enough to cut that material.";
 					else

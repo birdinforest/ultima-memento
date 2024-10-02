@@ -84,10 +84,6 @@ namespace Server.Engines.Craft
 							return BreakDownResult.Invalid;
 
 						double difficulty = CraftResources.GetSkill( resource );
-
-						if ( difficulty < 50.0 )
-							difficulty = 50.0;
-
 						if ( difficulty > from.Skills[ m_CraftSystem.MainSkill ].Value )
 							return BreakDownResult.NoSkill;
 
