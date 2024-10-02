@@ -78,6 +78,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Aliens no longer start with gold<br>");
 			builder.Append("- Misc - Monster races now get the configured starting gold<br>");
 			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
+			builder.Append("- Spell - Mirror image now has the correct buff name<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
