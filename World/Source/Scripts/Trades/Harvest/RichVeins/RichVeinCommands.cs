@@ -50,6 +50,7 @@ namespace Server.Engines.Harvest
             CommandSystem.Register("OreVein-ExportMarkers", AccessLevel.Administrator, OnExportMarkers);
             CommandSystem.Register("OreVein-LoadData", AccessLevel.Administrator, OnLoadData);
             CommandSystem.Register("OreVein-Restart", AccessLevel.Administrator, OnRestart);
+            CommandSystem.Register("OreVein", AccessLevel.GameMaster, args => { args.Mobile.SendGump(new RichVeinGump(args.Mobile)); });
         }
 
         [Usage("OreVein-Build <MapId> | NULL")]
