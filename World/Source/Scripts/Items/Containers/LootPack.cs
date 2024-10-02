@@ -101,7 +101,10 @@ namespace Server
 					Item item = entry.Construct( from, luckChance, spawning );
 
 					if ( item != null )
+					{
 						LootPackChange.RemoveItem( item, from, level );
+						if (item.Deleted) continue;
+					}
 
 					if ( item != null )
 					{
