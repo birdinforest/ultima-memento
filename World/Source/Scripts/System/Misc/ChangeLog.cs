@@ -25,6 +25,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Resist bonus for exceptional hats now uses Arms Lore skill level and has been reduced to 7, down from 15.<br>");
 			builder.Append("- Craft - Items can only be enhanced if they are basic resources<br>");
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
+			builder.Append("- Craft - Bulk crafting no longer resets Stat Gain cooldown<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
