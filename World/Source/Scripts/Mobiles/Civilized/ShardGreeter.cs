@@ -505,7 +505,7 @@ namespace Server.Gumps
 				List<Item> belongings = new List<Item>();
 				foreach( Item i in m.Backpack.Items )
 				{
-					if (i is Gold && page != 13) continue; // Leave gold alone, unless Alien
+					if (i is Gold) continue;
 
 					belongings.Add(i);
 				}
