@@ -83,6 +83,8 @@ namespace Server.Misc
 			builder.Append("- Misc - Stop deleting an item when it's stacked with itself<br>");
 			builder.Append("- Misc - Monster races now get the configured starting gold<br>");
 			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
+			builder.Append("- Spell - Bard songs weren't blocked when no instrument was assigned<br>");
+			builder.Append("- Spell - Bard songs weren't blocked when below required skill level<br>");
 			builder.Append("- Spell - Mirror image now has the correct buff name<br>");
 			builder.Append(SEPARATOR_LINE);
 
