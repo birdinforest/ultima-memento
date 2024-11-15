@@ -222,20 +222,40 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile e )
 		{
-			bool CanFlip = true;
+			// On the ground
+			if (RootParentEntity == null)
+			{
+				BaseHouse house = BaseHouse.FindHouseAt(this);
 
-			BaseHouse house = BaseHouse.FindHouseAt(this);
-			if (house != null && (house.Public ? house.IsBanned(e) : !house.HasAccess(e))){ CanFlip = false; }
+				// In a house, with access
+				if (house != null && (house.Public ? !house.IsBanned(e) : house.HasAccess(e)))
+				{
+					if (Movable)
+						ItemID = ItemID == RelicFlipID1 ? RelicFlipID2 : RelicFlipID1;
+					else
+						e.SendMessage( "This cannot be rotated at this time." );
+				}
+				else if ( !IsChildOf( e.Backpack ) ) 
+					e.SendMessage( "This must be in your backpack to read." );
+				
+				return;
 
-			if ( !IsChildOf( e.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && e is PlayerMobile && ((PlayerMobile)e).DoubleClickID && NotIdentified ) 
-				e.SendMessage( "This must be in your backpack to identify." );
-			else if ( e is PlayerMobile && ((PlayerMobile)e).DoubleClickID && NotIdentified )
-				IDCommand( e );
-			else if ( CanFlip == true && house != null && this.Movable != false )
-				if ( this.ItemID == RelicFlipID1 ){ this.ItemID = RelicFlipID2; } else { this.ItemID = RelicFlipID1; }
-			else if ( !IsChildOf( e.Backpack ) ) 
-				e.SendMessage( "This must be in your backpack to read." );
-			else if ( e.Int >= SearchReal )
+			}
+		
+			// Try to ID it
+			if (NotIdentified)
+			{
+				if ( e is PlayerMobile && !((PlayerMobile)e).DoubleClickID ) return;
+
+				if ( !IsChildOf( e.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack ) 
+					e.SendMessage( "This must be in your backpack to identify." );
+				else
+					IDCommand( e );
+
+				return;
+			}
+
+			if ( e.Int >= SearchReal )
 			{
 				e.CloseGump( typeof( TabletGump ) );
 				e.SendGump( new TabletGump( e, this ) );

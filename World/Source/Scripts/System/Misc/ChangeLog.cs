@@ -76,6 +76,7 @@ namespace Server.Misc
 			builder.Append("- Item - Unidentified items with deleted contents are now properly deleted<br>");
 			builder.Append("- Item - Fix InvalidCastException when monsters rummage an ElementalSpellbook<br>");
 			builder.Append("- Item - Fix monsters stamping their name on an un-owned MysticSpellbook<br>");
+			builder.Append("- Item - Fix issue with Relic Tablets where they would rotate instead of open when in a Player's backpack in a house<br>");
 			builder.Append("- Misc - Set Map when [scan players<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
