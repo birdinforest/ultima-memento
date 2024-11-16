@@ -1145,9 +1145,6 @@ namespace Server
 				text += "Direct Damage: " + direct.ToString() + "%<BR>";
 
 
-			if ( (prop = var.DamageIncrease) != 0 )
-				text += "Damage Increase: " + prop.ToString() + "%<BR>";
-
 			if ( (prop = var.Attributes.DefendChance) != 0 )
 				text += "Defense Chance Increase: " + prop.ToString() + "%<BR>";
 
