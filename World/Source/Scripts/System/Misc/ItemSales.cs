@@ -608,7 +608,6 @@ namespace Server
 			}
 			else if ( item is BaseQuiver )
 			{
-				price +=		((BaseQuiver)item).DamageIncrease * 5;
 				price +=		((BaseQuiver)item).LowerAmmoCost * 5;
 				price +=		((BaseQuiver)item).WeightReduction * 2;
 
