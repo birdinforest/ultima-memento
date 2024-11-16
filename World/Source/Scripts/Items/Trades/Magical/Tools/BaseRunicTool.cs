@@ -929,9 +929,6 @@ namespace Server.Items
 
 			m_Props.SetAll( false );
 
-			int dmgIncrease = 0;
-				if ( LootPack.CheckLuck( m_LuckChance ) || max >= Utility.RandomMinMax( 1, 50 ) ){ dmgIncrease = 5 + Utility.RandomMinMax( min, max ); }
-				if ( dmgIncrease > 50 ){ dmgIncrease = 50; }
 			int lowAmmo = 0;
 				if ( LootPack.CheckLuck( m_LuckChance ) || max >= Utility.RandomMinMax( 1, 50 ) ){ lowAmmo = 5 + Utility.RandomMinMax( min, max ); }
 				if ( lowAmmo > 75 ){ lowAmmo = 75; }
@@ -939,7 +936,6 @@ namespace Server.Items
 				if ( LootPack.CheckLuck( m_LuckChance ) || max >= Utility.RandomMinMax( 1, 50 ) ){ weightReduce = weightReduce + Utility.RandomMinMax( min, max ); }
 				if ( weightReduce > 100 ){ weightReduce = 100; }
 
-			quiver.DamageIncrease = dmgIncrease;
 			quiver.LowerAmmoCost = lowAmmo;
 			quiver.WeightReduction = weightReduce;
 

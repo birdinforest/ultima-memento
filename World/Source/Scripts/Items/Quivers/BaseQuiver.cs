@@ -79,7 +79,7 @@ namespace Server.Items
 
 			m_Attributes = new AosAttributes( this );
 
-			DamageIncrease = 25;
+			DamageIncrease = 10;
 			ItemID = Utility.RandomList( 0x2B02, 0x2B03, 0x5770, 0x5770 );
 		}
 

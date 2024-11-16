@@ -10,7 +10,6 @@ namespace Server.Items
 		{
 			Name = "quiver";
 			WeightReduction = 50;
-			DamageIncrease = 10;
 		}
 
 		public ArcherQuiver( Serial serial ) : base( serial )

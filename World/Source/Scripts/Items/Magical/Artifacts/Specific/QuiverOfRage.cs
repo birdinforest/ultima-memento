@@ -17,7 +17,6 @@ namespace Server.Items
 			Name = "Quiver of Rage";
 			ItemID = 0x2B02;
 			WeightReduction = 100;
-			if ( DamageIncrease < 10 ){ DamageIncrease = 10; }
 			ArtifactLevel = 1;
 		}
 
