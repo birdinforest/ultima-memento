@@ -64,6 +64,7 @@ namespace Server.Items
 				case 11: Resource = CraftResource.Steel; break;
 				case 12: Resource = CraftResource.Brass; break;
 				case 13: Resource = CraftResource.Mithril; break;
+				default: Resource = CraftResource.Iron; break;
             }
 		}
 
@@ -85,69 +86,61 @@ namespace Server.Items
 
 		private class HorseTarget : Target
 		{
-			private HorseArmor m_Horse;
+			private HorseArmor m_HorseArmor;
 
 			public HorseTarget( HorseArmor armor ) : base( 8, false, TargetFlags.None )
 			{
-				m_Horse = armor;
+				m_HorseArmor = armor;
 			}
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-				if ( targeted is Mobile )
+				BaseMount horse = targeted as BaseMount;
+				if (horse != null && (horse is Horse || horse is ZebraRiding) && horse.ControlMaster == from)
 				{
-					Mobile iArmor = targeted as Mobile;
 
-					if ( iArmor is BaseCreature )
+
+					const int ARMORED_HORSE_ID = 587;
+					if (horse.Body != ARMORED_HORSE_ID && horse.ItemID != ARMORED_HORSE_ID)
 					{
-						BaseCreature xArmor = (BaseCreature)iArmor;
+						int mod = m_HorseArmor.ArmorMod;
 
-						if ( ( xArmor is Horse || xArmor is ZebraRiding ) && xArmor.ControlMaster == from && xArmor is BaseMount )
-						{
-							BaseMount mArmor = (BaseMount)xArmor;
+						horse.SetStr(horse.RawStr + mod);
+						horse.SetDex(horse.RawDex + mod);
+						horse.SetInt(horse.RawInt + mod);
 
-							mArmor.Body = 587;
-							mArmor.ItemID = 587;
+						horse.SetHits(horse.HitsMax + mod);
 
-							mArmor.Hue = CraftResources.GetClr(m_Horse.Resource);
-							mArmor.Resource = m_Horse.Resource;
-							int mod = m_Horse.ArmorMod;
+						horse.SetDamage(horse.DamageMin + mod, horse.DamageMax + mod);
 
-							xArmor.SetStr( xArmor.RawStr+mod );
-							xArmor.SetDex( xArmor.RawDex+mod );
-							xArmor.SetInt( xArmor.RawInt+mod );
+						horse.SetResistance(ResistanceType.Physical, horse.PhysicalResistance + mod);
 
-							xArmor.SetHits( xArmor.HitsMax+mod );
+						horse.SetSkill(SkillName.MagicResist, horse.Skills[SkillName.MagicResist].Base + mod);
+						horse.SetSkill(SkillName.Tactics, horse.Skills[SkillName.Tactics].Base + mod);
+						horse.SetSkill(SkillName.FistFighting, horse.Skills[SkillName.FistFighting].Base + mod);
 
-							xArmor.SetDamage( xArmor.DamageMin+mod, xArmor.DamageMax+mod );
-
-							xArmor.SetResistance( ResistanceType.Physical, xArmor.PhysicalResistance+mod );
-
-							xArmor.SetSkill( SkillName.MagicResist, xArmor.Skills[SkillName.MagicResist].Base+mod );
-							xArmor.SetSkill( SkillName.Tactics, xArmor.Skills[SkillName.Tactics].Base+mod );
-							xArmor.SetSkill( SkillName.FistFighting, xArmor.Skills[SkillName.FistFighting].Base+mod );
-
-							from.RevealingAction();
-							from.PlaySound( 0x0AA );
-
-							m_Horse.Consume();
-						}
-						else
-						{
-							from.SendMessage( "This armor is only for horses you own." );
-						}
+						horse.Body = ARMORED_HORSE_ID;
+						horse.ItemID = ARMORED_HORSE_ID;
 					}
-					else
-					{
-						from.SendMessage( "This armor is only for horses you own." );
-					}
+
+					from.RevealingAction();
+					from.PlaySound(0x0AA);
+
+					horse.Hue = CraftResources.GetClr(m_HorseArmor.Resource);
+					horse.Resource = m_HorseArmor.Resource;
+
+					m_HorseArmor.Consume();
+				}
+				else
+				{
+					from.SendMessage("This armor is only for horses you own.");
 				}
 			}
 		}
 
 		public static void DropArmor( BaseCreature bc )
 		{
-			if ( bc.Resource != CraftResource.None )
+			if ( bc != null && !bc.IsBonded && bc.Resource != CraftResource.None )
 			{
 				HorseArmor armor = new HorseArmor();
 				armor.Resource = bc.Resource;
