@@ -1,21 +1,12 @@
-using System;
-using Server;
-using Server.Misc;
 using System.Collections;
-using System.Collections.Generic;
-using Server.Items;
-using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
 using Server.Mobiles;
-using Server.Accounting;
-using Server.Regions;
 using Server.Gumps;
 using Server.Multis;
+using Server.Utilities;
 
 namespace Server.Items
 {
-	public class DDRelicTablet : Item, IRelic
+    public class DDRelicTablet : Item, IRelic
 	{
 		public override void ItemIdentified( bool id )
 		{
@@ -73,9 +64,9 @@ namespace Server.Items
 			else
 			{
 				SearchReal = Utility.RandomMinMax( 1, 100 );
-				int relic = Utility.RandomMinMax( 1, 308 );
-				SearchType = Server.Items.SearchBook.GetArtifactListForBook( relic, 2 );
-				SearchItem = Server.Items.SearchBook.GetArtifactListForBook( relic, 1 );
+				int relic = Utility.RandomMinMax( 1, ArtifactQuestList.MaxNumber );
+				SearchType = ArtifactQuestList.GetArtifact( relic, 2 );
+				SearchItem = ArtifactQuestList.GetArtifact( relic, 1 );
 				SearchDungeon = SearchLocation();
 			}
 

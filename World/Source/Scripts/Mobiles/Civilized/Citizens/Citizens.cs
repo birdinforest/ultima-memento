@@ -1007,6 +1007,16 @@ namespace Server.Mobiles
 				}
 			}
 		}
+		
+		public bool CanTellRumor()
+		{
+			return Fame == 0  && (this is HouseVisitor) == false;
+		}
+
+		public void MarkToldRumor()
+		{
+			Fame = 1;
+		}
 
 		///////////////////////////////////////////////////////////////////////////
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
@@ -1037,13 +1047,13 @@ namespace Server.Mobiles
 				{
 					string speak = "";
 
-					if ( m_Giver.Fame == 0 && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null && !(m_Giver is HouseVisitor) )
+					if ( citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
 					{
-						speak = MuseumBook.TellRumor( m_Mobile, m_Giver );
+						speak = MuseumBook.TellRumor( m_Mobile, citizen );
 					}
-					if ( speak == "" && m_Giver.Fame == 0 && m_Mobile.Backpack.FindItemByType( typeof ( QuestTome ) ) != null && !(m_Giver is HouseVisitor) )
+					if ( speak == "" && citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
 					{
-						speak = QuestTome.TellRumor( m_Mobile, m_Giver );
+						speak = QuestTome.TellRumor( m_Mobile, citizen );
 					}
 
 					if ( speak != "" )

@@ -186,12 +186,21 @@ namespace Server.Engines.MLQuests.Objectives
 
 					break;
 				}
+
 				case DataType.DeliverObjective:
 				{
 					bool completed = reader.ReadBool();
 
 					if ( objInstance is DeliverObjectiveInstance )
 						( (DeliverObjectiveInstance)objInstance ).HasCompleted = completed;
+
+					break;
+				}
+
+				default:
+				{
+					if ( objInstance is IDeserializable )
+						( (IDeserializable)objInstance ).Deserialize(reader);
 
 					break;
 				}

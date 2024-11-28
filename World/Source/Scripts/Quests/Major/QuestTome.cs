@@ -420,21 +420,20 @@ namespace Server.Items
 			}
 		}
 
-		public static string TellRumor( Mobile player, Mobile citizen )
+		public static string TellRumor( Mobile player, Citizens citizen )
 		{
 			string rumor = "";
 
-			if ( citizen.Fame == 0 && player.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
+			if ( citizen.CanTellRumor() )
 			{
-				QuestTome book = ( QuestTome )( player.Backpack.FindItemByType( typeof ( QuestTome ) ) );
-
-				if ( book.QuestTomeOwner == player )
+				QuestTome book = player.Backpack.FindItemByType( typeof ( QuestTome ) ) as QuestTome;
+				if ( book != null && book.QuestTomeOwner == player )
 				{
-					if ( Utility.RandomMinMax( 1, 10 ) > 1 ){ citizen.Fame = 1; }
+					if ( Utility.RandomMinMax( 1, 10 ) > 1 ){ citizen.MarkToldRumor(); }
 
-					if ( citizen.Fame == 0 && book.QuestTomeCitizen == "" && book.QuestTomeGoals < 4 )
+					if ( citizen.CanTellRumor() && book.QuestTomeCitizen == "" && book.QuestTomeGoals < 4 )
 					{
-						citizen.Fame = 1;
+						citizen.MarkToldRumor();
 						SetRumor( citizen, book );
 						rumor = GetRumor( book, true );
 					}

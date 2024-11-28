@@ -1,17 +1,11 @@
-using System;
 using System.Collections.Generic;
-using Server;
-using Server.Targeting;
 using Server.Items;
 using Server.Network;
-using Server.ContextMenus;
-using Server.Misc;
-using Server.Mobiles;
-using System.Collections;
-using Server.Gumps;
+using Server.Engines.MLQuests;
 
 namespace Server.Mobiles
 {
+    [QuesterName("Any Sage")]
 	public class Sage : BaseVendor
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
@@ -103,55 +97,8 @@ namespace Server.Mobiles
 				}
 				else if ( Coins == 10000 )
 				{
-					int nAllowedForAnotherQuest = SearchPage.ArtifactQuestTimeNew( from );
-					int nServerQuestTimeAllowed = MyServerSettings.GetTimeBetweenArtifactQuests();
-					int nWhenForAnotherQuest = nServerQuestTimeAllowed - nAllowedForAnotherQuest;
-
-					if ( nWhenForAnotherQuest > 0 )
-					{
-						TimeSpan t = TimeSpan.FromMinutes( nWhenForAnotherQuest );
-
-						string wait = string.Format("{0:D2} days {1:D2} hours and {2:D2} minutes", 
-										t.Days, 
-										t.Hours, 
-										t.Minutes);
-
-						sMessage = "I have no artifact encyclopedias at the moment. Check back in " + wait + ".";
-						from.AddToBackpack ( dropped );
-					}
-					else
-					{
-						sMessage = "Good luck in your quest.";
-
-						ArrayList targets = new ArrayList();
-						foreach ( Item item in World.Items.Values )
-						{
-							if ( item is SearchBook )
-							{
-								SearchBook searchbook = (SearchBook)item;
-								if ( searchbook.owner == from )
-								{
-									targets.Add( item );
-								}
-							}
-							else if ( item is SearchPage )
-							{
-								SearchPage searchpage = (SearchPage)item;
-								if ( searchpage.owner == from )
-								{
-									targets.Add( item );
-								}
-							}
-						}
-						for ( int i = 0; i < targets.Count; ++i )
-						{
-							Item item = ( Item )targets[ i ];
-							item.Delete();
-						}
-
-						from.AddToBackpack ( new SearchBook( from, Coins ) );
-						dropped.Delete();
-					}
+					from.AddToBackpack ( dropped );
+					MLQuestSystem.OnDoubleClick(this, (PlayerMobile) from, true);
 				}
 				else
 				{

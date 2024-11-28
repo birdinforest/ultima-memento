@@ -1541,7 +1541,7 @@ namespace Server.Engines.Help
 				}
 				else if ( item is SearchPage )
 				{
-					if ( ((SearchPage)item).owner == from )
+					if ( ((SearchPage)item).Owner == from )
 					{
 						quests = quests + "-You are on a quest to obtain the " + ((SearchPage)item).SearchItem + ".<br><br>";
 					}

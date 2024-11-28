@@ -510,12 +510,12 @@ namespace Server.Items
 
 					int LeadToAnotherSpot = 100 - page.LegendPercent;
 
-					if ( page.SearchDungeon == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && page.owner == from && ( page.DungeonMap == from.Map || page.DungeonMap == Server.Misc.Worlds.GetPCDefaultMap( from ) )  )
+					if ( page.SearchDungeon == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && page.Owner == from && ( page.DungeonMap == from.Map || page.DungeonMap == Server.Misc.Worlds.GetPCDefaultMap( from ) )  )
 					{
 						if ( LeadToAnotherSpot >= Utility.RandomMinMax( 1, 100 ) )
 						{
 							from.PlaySound(0x249);
-							SearchPage.PickSearchLocation( page, page.SearchDungeon, from );
+							SearchPage.UseRandomSearchLocation( page, page.SearchDungeon, (PlayerMobile) from );
 							from.SendMessage( "You didn't find it, but you did get another clue." );
 							from.SendMessage( "so you update your notes for the new place to search." );
 							EmptyBox = 0;
@@ -572,7 +572,6 @@ namespace Server.Items
 								from.PlaySound( 0x249 );
 							}
 							scroll.Delete();
-							SearchPage.ArtifactQuestTimeAllowed( from );
 							EmptyBox = 0;
 						}
 					}
