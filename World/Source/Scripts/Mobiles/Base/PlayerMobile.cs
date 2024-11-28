@@ -3137,12 +3137,6 @@ namespace Server.Mobiles
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string ArtifactQuestTime;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Artifact_QuestTime { get { return ArtifactQuestTime; } set { ArtifactQuestTime = value; InvalidateProperties(); } }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		public string StandardQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Standard_Quest { get { return StandardQuest; } set { StandardQuest = value; InvalidateProperties(); } }
@@ -3498,7 +3492,10 @@ namespace Server.Mobiles
 					CharacterWepAbNames = reader.ReadInt();
 					CharacterElement = reader.ReadInt();
 
-					ArtifactQuestTime = reader.ReadString();
+					if (version < 39) // Property was removed
+					{
+						var ArtifactQuestTime = reader.ReadString();
+					}
 					StandardQuest = reader.ReadString();
 					FishingQuest = reader.ReadString();
 					AssassinQuest = reader.ReadString();
@@ -3781,7 +3778,7 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 38 ); // version
+			writer.Write( (int) 39 ); // version
 
 			writer.Write( m_DoubleClickID );
 
@@ -3822,7 +3819,6 @@ namespace Server.Mobiles
 			writer.Write( CharacterWepAbNames );
 			writer.Write( CharacterElement );
 
-			writer.Write( ArtifactQuestTime );
 			writer.Write( StandardQuest );
 			writer.Write( FishingQuest );
 			writer.Write( AssassinQuest );

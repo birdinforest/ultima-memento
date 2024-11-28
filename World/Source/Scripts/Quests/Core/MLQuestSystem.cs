@@ -11,6 +11,7 @@ using Server.Commands.Generic;
 using Server.Items;
 using System.IO;
 using System.Reflection;
+using Server.Engines.MLQuests.Definitions;
 
 namespace Server.Engines.MLQuests
 {
@@ -619,6 +620,16 @@ namespace Server.Engines.MLQuests
 							break; // don't return, we may have to complete more deliveries
 						}
 					}
+					else if (objective is GetArtifactRumorObjectiveInstance)
+					{
+						var citizenObjective = objective as GetArtifactRumorObjectiveInstance;
+						citizenObjective.TryGetRumor(quester);
+
+						if (citizenObjective.IsCompleted())
+						{
+							citizenObjective.CheckComplete();
+                        }
+                    }
                 }
 			}
 

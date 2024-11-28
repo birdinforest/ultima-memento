@@ -7877,7 +7877,7 @@ namespace Server.Mobiles
 		{
 			base.AddNameProperties( list );
 
-			if ( CanGiveMLQuest )
+			if ( CanGiveMLQuest && (this is Citizens) == false ) // Citizens are an edge case who don't give quests
 				list.Add( 1072269 ); // Quest Giver
 
 			if ( DisplayWeight && Controlled )
