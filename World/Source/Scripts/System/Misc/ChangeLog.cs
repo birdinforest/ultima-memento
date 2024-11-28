@@ -53,7 +53,8 @@ namespace Server.Misc
 			builder.Append("- Item - Oil cloth are now stackable<br>");
 			builder.Append("- Item - Quiver Damage Modifier has been reduced to 10%<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
-			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
+			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
+			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
