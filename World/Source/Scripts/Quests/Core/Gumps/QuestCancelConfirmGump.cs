@@ -62,19 +62,27 @@ namespace Server.Engines.MLQuests.Gumps
 			 */
 			AddHtmlLocalized(25, 55, 300, 120, 1060836, 0xFFFFFF, false, false);
 
+			int y = 145;
 			MLQuest quest = instance.Quest;
-
-			if (quest.IsChainTriggered || quest.NextQuest != null)
+			if (quest.IsChainTriggered || quest.NextQuest != null || quest.MustQuitQuestChain)
 			{
-				AddRadio(25, 145, 0x25F8, 0x25FB, false, 2);
-				AddHtmlLocalized(60, 150, 280, 20, 1075023, 0xFFFFFF, false, false); // Yes, I want to quit this entire chain!
+				AddRadio(25, y, 0x25F8, 0x25FB, false, 2);
+				y += 5;
+				AddHtmlLocalized(60, y, 280, 20, 1075023, 0xFFFFFF, false, false); // Yes, I want to quit this entire chain!
 			}
 
-			AddRadio(25, 180, 0x25F8, 0x25FB, true, 1);
-			AddHtmlLocalized(60, 185, 280, 20, 1049005, 0xFFFFFF, false, false); // Yes, I really want to quit this quest!
+			if (!quest.MustQuitQuestChain)
+			{
+				y  += 30;
+				AddRadio(25, y, 0x25F8, 0x25FB, true, 1);
+				y  += 5;
+				AddHtmlLocalized(60, y, 280, 20, 1049005, 0xFFFFFF, false, false); // Yes, I really want to quit this quest!
+			}
 
-			AddRadio(25, 215, 0x25F8, 0x25FB, false, 0);
-			AddHtmlLocalized(60, 220, 280, 20, 1049006, 0xFFFFFF, false, false); // No, I don't want to quit.
+			y  += 30;
+			AddRadio(25, y, 0x25F8, 0x25FB, false, 0);
+			y  += 5;
+			AddHtmlLocalized(60, y, 280, 20, 1049006, 0xFFFFFF, false, false); // No, I don't want to quit.
 
 			AddButton(265, 220, 0xF7, 0xF8, 7, GumpButtonType.Reply, 0);
 		}

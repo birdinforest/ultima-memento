@@ -22,6 +22,8 @@ namespace Server.Engines.MLQuests
 
 		public bool Activated { get; protected set; }
 
+		public virtual bool MustQuitQuestChain { get { return false; } }
+
 		public List<BaseObjective> Objectives { get; protected set; }
 
 		public ObjectiveType ObjectiveType { get; protected set; }
