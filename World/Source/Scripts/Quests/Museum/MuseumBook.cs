@@ -296,23 +296,22 @@ namespace Server.Items
 			}
 		}
 
-		public static string TellRumor( Mobile player, Mobile citizen )
+		public static string TellRumor( Mobile player, Citizens citizen )
 		{
 			string rumor = "";
 
-			if ( citizen.Fame == 0 && player.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
+			if ( citizen.CanTellRumor() )
 			{
-				MuseumBook book = ( MuseumBook )( player.Backpack.FindItemByType( typeof ( MuseumBook ) ) );
-
-				if ( book.ArtOwner == player )
+				MuseumBook book = player.Backpack.FindItemByType( typeof ( MuseumBook ) ) as MuseumBook;
+				if ( book != null && book.ArtOwner == player )
 				{
 					int antique = GetNext( book );
 
-					if ( Utility.RandomMinMax( 1, 10 ) > 1 ){ citizen.Fame = 1; }
+					if ( Utility.RandomMinMax( 1, 10 ) > 1 ){ citizen.MarkToldRumor(); }
 
-					if ( citizen.Fame == 0 && book.RumorFrom == "" && antique < 100 )
+					if ( citizen.CanTellRumor() && book.RumorFrom == "" && antique < 100 )
 					{
-						citizen.Fame = 1;
+						citizen.MarkToldRumor();
 						SetRumor( citizen, book );
 						rumor = GetRumor( book, antique, true );
 					}
