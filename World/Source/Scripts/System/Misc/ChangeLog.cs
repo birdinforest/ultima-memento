@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("- Item - Dungeon Chests now allow for multiple Stealing attempts<br>");
 			builder.Append("- Item - Oil cloth are now stackable<br>");
 			builder.Append("- Item - Quiver Damage Modifier has been reduced to 10%<br>");
+			builder.Append("- Item - Books are deleted after memorizing them<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
 			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
