@@ -123,7 +123,7 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				base.OnDoubleClick( from );
 
-			if ( CrateGold >= 500000 )
+			if ( CrateGold >= 100000 )
 			{
                 from.SendMessage("There is too much gold in here. You need to transfer it out first.");
 			}
@@ -161,7 +161,7 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				return base.OnDragDrop( from, dropped );
 
-			if ( CrateGold >= 500000 )
+			if ( CrateGold >= 100000 )
 			{
                 from.SendMessage("There is too much gold in here. You need to transfer it out first.");
 				return false;
@@ -198,7 +198,7 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				return base.OnDragDropInto( from, item, p );
 
-			if ( CrateGold >= 500000 )
+			if ( CrateGold >= 100000 )
 			{
                 from.SendMessage("There is too much gold in here. You need to transfer it out first.");
 				return false;
@@ -278,8 +278,7 @@ namespace Server.Items
 		{
 			private MerchantCrate m_Crate;
 
-			//public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 2.0 ) )
-			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromMinutes( 1.0 ) )
+			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromDays( 1 ) )
 			{
 				m_Crate = crate;
 				Priority = TimerPriority.FiveSeconds;

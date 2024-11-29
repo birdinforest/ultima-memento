@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
 			builder.Append("- Craft - Cut/Break down no longer requires 50 skill<br>");
 			builder.Append("- Craft - Bulk crafting no longer resets Stat Gain cooldown<br>");
+			builder.Append("- Craft - Merchant crates (disabled) now have 24 hour timer and cap at 100k gold<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Glistening ore vein' to give Mining a more active playstyle<br>");
