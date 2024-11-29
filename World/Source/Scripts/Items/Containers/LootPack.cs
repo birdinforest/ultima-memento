@@ -612,7 +612,7 @@ namespace Server
 				}
 				else
 				{
-					props = Utility.RandomMinMax((int)(enchant / 100), (int)(enchant / 30)); // @ 500 -- 5-16 properties
+					props = Utility.RandomMinMax((int)(enchant / 100), (int)(enchant / 60)); // @ 500 -- 5-8 properties
 					if (props < 1) return item;
 
 					min = enchant / 10;
