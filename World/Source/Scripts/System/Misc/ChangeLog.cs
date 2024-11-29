@@ -89,6 +89,7 @@ namespace Server.Misc
 			builder.Append("- Item - Horse Armor only gives bonus once<br>");
 			builder.Append("- Item - Horse Armor can no longer be infinitely farmed<br>");
 			builder.Append("- Item - Repair and Durability potions now work on clothing<br>");
+			builder.Append("- Item - Stone face trap is now choppable<br>");
 			builder.Append("- Misc - Set Map when [scan players<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
