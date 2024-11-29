@@ -544,11 +544,11 @@ namespace Server
 						item.Delete();
 						item = Loot.RandomSciFiGun();
 					}
-					if ( Worlds.isSciFiRegion( from ) && Utility.Random(20) == 0 && item is BaseWeapon )
-					{
-						item.Delete();
-						item = Loot.RandomSciFiWeapon();
-					}
+					// if ( Worlds.isSciFiRegion( from ) && Utility.Random(20) == 0 && item is BaseWeapon )
+					// {
+					// 	item.Delete();
+					// 	item = Loot.RandomSciFiWeapon();
+					// }
 
 					int bonusProps = GetBonusProperties();
 					int min = m_MinIntensity;
