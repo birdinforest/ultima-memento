@@ -232,6 +232,8 @@ namespace Server
 				 || item is LevelThrowingGloves
 				 || item is ThrowingGloves
 				 || item is WizardWand
+				 || item is WizardStaff
+				 || item is WizardStick
 				 || item is PugilistGloves
 				 || item is PugilistGlove ){} else
 				price +=		((BaseWeapon)item).Attributes.SpellChanneling * 200;

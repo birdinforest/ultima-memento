@@ -54,6 +54,7 @@ namespace Server.Misc
 			builder.Append("- Item - Oil cloth are now stackable<br>");
 			builder.Append("- Item - Quiver Damage Modifier has been reduced to 10%<br>");
 			builder.Append("- Item - Books are deleted after memorizing them<br>");
+			builder.Append("- Item - Scepter/Stave now have Spell Channeling by default<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Misc - Reduce max properties from randomly generated items from 16 to 8<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
