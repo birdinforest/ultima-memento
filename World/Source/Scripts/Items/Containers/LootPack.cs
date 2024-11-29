@@ -12,28 +12,10 @@ namespace Server
 {
 	public class LootPack
 	{
-		public static int GetLuckChance( Mobile killer, Mobile victim )
-		{
-			int luck = killer.Luck;
-
-			if ( luck < 0 )
-				return 0;
-
-			if ( !Core.SE && luck > 1200 )
-				luck = 1200;
-
-			return (int)(Math.Pow( luck, 1 / 1.8 ) * 100);
-		}
-
 		public static int GetRegularLuckChance( Mobile from )
 		{
 			int luck = from.Luck;
-
-			if ( luck < 0 )
-				return 0;
-
-			if ( !Core.SE && luck > 1200 )
-				luck = 1200;
+			if ( luck < 0 ) return 0;
 
 			return (int)(Math.Pow( luck, 1 / 1.8 ) * 100);
 		}
@@ -55,7 +37,7 @@ namespace Server
 			if ( highest == null )
 				return 0;
 
-			return GetLuckChance( highest.m_Mobile, dead );
+			return GetRegularLuckChance( highest.m_Mobile );
 		}
 
 		public static bool CheckLuck( int chance )
@@ -613,33 +595,34 @@ namespace Server
 			return info.AttributeInfo;
 		}
 
-		public static Item Enchant( Mobile from, int enchant, Item item )
+		public static Item Enchant(Mobile from, int enchant, Item item)
 		{
-			if ( item != null )
+			if (item != null)
 			{
-				int props = Utility.RandomMinMax( (int)(enchant/100), (int)(enchant/30) );
-					if ( props < 1 )
-						return item;
-
-				int min = (int)(enchant/10);
-				int max = (int)(enchant/4);
-					if ( min < 1 ){ min = 1; }
-					if ( max <= min ){ max = min + 1; }
-
-				if ( enchant == 9999 )
+				int props;
+				int min;
+				int max;
+				if (enchant == 9999) // BaseRunicTool
 				{
-					props = Utility.RandomMinMax( GetResourceAttrs( item.Resource ).RunicMinAttributes, GetResourceAttrs( item.Resource ).RunicMaxAttributes );
-						if ( props < 1 )
-							return item;
+					props = Utility.RandomMinMax(GetResourceAttrs(item.Resource).RunicMinAttributes, GetResourceAttrs(item.Resource).RunicMaxAttributes);
+					if (props < 1) return item;
 
-					min = GetResourceAttrs( item.Resource ).RunicMinIntensity;
-					max = GetResourceAttrs( item.Resource ).RunicMaxIntensity;
-						if ( min < 1 ){ min = 1; }
-						if ( max <= min ){ max = min + 1; }
+					min = GetResourceAttrs(item.Resource).RunicMinIntensity;
+					max = GetResourceAttrs(item.Resource).RunicMaxIntensity;
+				}
+				else
+				{
+					props = Utility.RandomMinMax((int)(enchant / 100), (int)(enchant / 30)); // @ 500 -- 5-16 properties
+					if (props < 1) return item;
+
+					min = enchant / 10;
+					max = enchant / 4;
 				}
 
-				int luckChance = 0;
-					if ( from.Luck > 0 ){ luckChance = (int)(Math.Pow( from.Luck, 1 / 1.8 ) * 100); }
+				min = Math.Max(1, min);
+				max = Math.Min(min + 1, max);
+
+				int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
 
 				if ( item is BaseWeapon )
 					BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, false, luckChance, props, min, max );
