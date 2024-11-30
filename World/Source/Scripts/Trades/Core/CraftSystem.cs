@@ -27,6 +27,9 @@ namespace Server.Engines.Craft
 		private CraftGroupCol m_CraftGroups;
 		private CraftSubResCol m_CraftSubRes;
 
+		private List<int> m_Recipes;
+		private List<int> m_RareRecipes;
+
 		public int MinCraftEffect { get { return m_MinCraftEffect; } }
 		public int MaxCraftEffect { get { return m_MaxCraftEffect; } }
 		public double Delay { get { return m_Delay; } }
@@ -368,6 +371,8 @@ namespace Server.Engines.Craft
 			m_CraftItems = new CraftItemCol();
 			m_CraftGroups = new CraftGroupCol();
 			m_CraftSubRes = new CraftSubResCol();
+			m_Recipes = new List<int>();
+			m_RareRecipes = new List<int>();
 
 			InitCraftList();
 		}
@@ -390,7 +395,17 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
+		public int RandomRecipe()
+		{
+			return m_Recipes.Count != 0 ? m_Recipes[Utility.Random( m_Recipes.Count )] : -1;
+		}
+
+		public int RandomRareRecipe()
+        {
+            return m_RareRecipes.Count != 0 ? m_RareRecipes[Utility.Random(m_RareRecipes.Count)] : -1;
+        }
+
+        public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
 		{
 			return AddCraft( typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, "" );
 		}
@@ -494,6 +509,29 @@ namespace Server.Engines.Craft
 		{
 			CraftItem craftItem = m_CraftItems.GetAt(index);
 			craftItem.AddSkill(skillToMake, minSkill, maxSkill);
+		}
+
+		private void AddRecipeBase( int index, int id )
+		{
+			CraftItem craftItem = m_CraftItems.GetAt( index );
+			craftItem.AddRecipe( id, this );
+		}
+
+		public void AddRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
+			m_Recipes.Add( id );
+		}
+
+		public void AddRareRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
+			m_RareRecipes.Add( id );
+		}
+
+		public void AddQuestRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
 		}
 
 		public void ForceNonExceptional( int index )

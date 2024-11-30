@@ -58,6 +58,19 @@ namespace Server.Engines.Craft
 			set { m_RequiredExpansion = value; }
 		}
 
+		public Recipe Recipe { get; private set; }
+
+		public void AddRecipe( int id, CraftSystem system )
+		{
+			if( Recipe != null )
+			{
+				Console.WriteLine( "Warning: Attempted add of recipe #{0} to the crafting of {1} in CraftSystem {2}.", id, this.m_Type.Name, system );
+				return;
+			}
+
+			Recipe = new Recipe( id, system, this );
+		}
+
 		private static Dictionary<Type, int> _itemIds = new Dictionary<Type, int>();
 		
 		public static int ItemIDOf( Type type ) {
