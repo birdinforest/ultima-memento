@@ -18,6 +18,7 @@ namespace Server.Engines.Craft
         public int ItemID {get; set;}
         public int Hue { get; set; }
         public string NameString { get; set; }
+        public bool AutomaticallyMarkQuestItems { get; set;}
 
 		public CraftContext()
 		{

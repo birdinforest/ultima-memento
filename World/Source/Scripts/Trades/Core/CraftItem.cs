@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Commands;
 using Server.Misc;
 using Server.Engines.BulkOrders;
+using Server.Engines.MLQuests;
 
 namespace Server.Engines.Craft
 {
@@ -1115,7 +1116,7 @@ namespace Server.Engines.Craft
 				int num = 0;
 
 				Item item;
-
+				
 				if ( customCraft != null )
 					item = customCraft.CompleteCraft( out num );
 				else if ( typeof( MapItem ).IsAssignableFrom( ItemType ) && ( !Worlds.IsPlayerInTheLand( from.Map, from.Location, from.X, from.Y ) ) )
@@ -1249,6 +1250,9 @@ namespace Server.Engines.Craft
 					else if ( item is Cleaver ){ item.ItemID = 0xEC3; }
 
 					BaseContainer.PutStuffInContainer( from, 2, item );
+
+					if (context.AutomaticallyMarkQuestItems && tool != null && (tool is BaseRunicTool) == false && from is PlayerMobile)
+						MLQuestSystem.MarkQuestItem((PlayerMobile) from, item);
 
 					if( from.AccessLevel > AccessLevel.Player )
 						CommandLogging.WriteLine( from, "Crafting {0} with craft system {1}", CommandLogging.Format( item ), craftSystem.GetType().Name );

@@ -147,6 +147,21 @@ namespace Server.Engines.Craft
 				}
 				// ****************************************
 
+				// Mark Quest Items
+				if ( (tool is BaseRunicTool) == false )
+				{
+					if (!context.AutomaticallyMarkQuestItems)
+					{
+						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4020, 4022, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
+						AddHtml( 215, 405+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>MARK QUEST ITEMS</BASEFONT>", FontColor ), false, false );
+					}
+					else
+					{
+						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4023, 4025, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
+						AddHtml( 215, 405+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>MARK QUEST ITEMS</BASEFONT>", FontColor ), false, false );
+					}
+				}
+
 				if ( notice is int && (int)notice > 0 )
 					AddHtmlLocalized( LEFT_WINDOW_START, 295+moveUp, LEFT_WINDOW_WIDTH, 40, (int)notice, LabelColor, false, false );
 				else if ( notice is string )
@@ -690,6 +705,13 @@ namespace Server.Engines.Craft
 						{
 							if ( system.CanEnhance )
 								Enhance.BeginTarget( m_From, system, m_Tool );
+
+							break;
+						}
+						case 9: // Mark quest items
+						{
+							context.AutomaticallyMarkQuestItems = !context.AutomaticallyMarkQuestItems;
+							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
 
 							break;
 						}
