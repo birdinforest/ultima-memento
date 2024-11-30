@@ -1,48 +1,36 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server.Items;
 
 namespace Server.Engines.Craft
 {
 	public class CraftContext
 	{
 		private List<CraftItem> m_Items;
-		private int m_LastResourceIndex;
-		private int m_LastResourceIndex2;
-		private int m_LastGroupIndex;
-		private bool m_DoNotColor;
-		private CraftResource m_CraftingResource;
-		private string m_Description;
-		private Type m_ItemSelected;
-		private int m_ItemID;
-		private int m_Hue;
-		private string m_NameString;
 
-		public List<CraftItem> Items { get { return m_Items; } }
-		public int LastResourceIndex{ get{ return m_LastResourceIndex; } set{ m_LastResourceIndex = value; } }
-		public int LastResourceIndex2{ get{ return m_LastResourceIndex2; } set{ m_LastResourceIndex2 = value; } }
-		public int LastGroupIndex{ get{ return m_LastGroupIndex; } set{ m_LastGroupIndex = value; } }
-		public bool DoNotColor{ get{ return m_DoNotColor; } set{ m_DoNotColor = value; } }
-		public CraftResource CraftingResource{ get{ return m_CraftingResource; } set{ m_CraftingResource = value; } }
-		public string Description{ get{ return m_Description; } set{ m_Description = value; } }
-		public Type ItemSelected{ get{ return m_ItemSelected; } set{ m_ItemSelected = value; } }
-		public int ItemID{ get{ return m_ItemID; } set{ m_ItemID = value; } }
-		public int Hue{ get{ return m_Hue; } set{ m_Hue = value; } }
-		public string NameString{ get{ return m_NameString; } set{ m_NameString = value; } }
+        public List<CraftItem> Items { get { return m_Items; } }
+        public int LastResourceIndex { get; set; }
+        public int LastResourceIndex2 { get; set; }
+        public int LastGroupIndex { get; set; }
+        public bool DoNotColor { get; set; }
+        public CraftResource CraftingResource { get; set; }
+        public string Description { get; set; }
+        public Type ItemSelected { get; set; }
+        public int ItemID {get; set;}
+        public int Hue { get; set; }
+        public string NameString { get; set; }
 
 		public CraftContext()
 		{
 			m_Items = new List<CraftItem>();
-			m_LastResourceIndex = -1;
-			m_LastResourceIndex2 = -1;
-			m_LastGroupIndex = -1;
-			m_CraftingResource = CraftResource.None;
-			m_Description = null;
-			m_ItemSelected = null;
-			m_ItemID = 0;
-			m_Hue = 0;
-			m_NameString = null;
+			LastResourceIndex = -1;
+			LastResourceIndex2 = -1;
+			LastGroupIndex = -1;
+			CraftingResource = CraftResource.None;
+			Description = null;
+			ItemSelected = null;
+			ItemID = 0;
+			Hue = 0;
+			NameString = null;
 		}
 
 		public CraftItem LastMade
