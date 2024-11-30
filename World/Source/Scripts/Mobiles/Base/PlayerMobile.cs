@@ -3368,6 +3368,7 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 39:
 				case 38:
 				case 37:
 				{
