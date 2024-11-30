@@ -1590,14 +1590,6 @@
       <Point x="1962" y="910" z="1" />
     </Candidates>
   </Config>
-  <Config region="the Bridge of Tul'mok" minDistance="25" maxNodes="1">
-    <Candidates totalCandidates="4">
-      <Point x="793" y="1240" z="60" />
-      <Point x="794" y="1240" z="59" />
-      <Point x="795" y="1240" z="59" />
-      <Point x="796" y="1240" z="60" />
-    </Candidates>
-  </Config>
   <Config region="the Burning Mines" minDistance="25" maxNodes="16">
     <Candidates totalCandidates="302">
       <Point x="2130" y="1666" z="3" />
