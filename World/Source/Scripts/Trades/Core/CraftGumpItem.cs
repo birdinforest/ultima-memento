@@ -63,7 +63,8 @@ namespace Server.Engines.Craft
 				AddButton( 15, 387, 4014, 4016, 0, GumpButtonType.Reply, 0 );
 				AddHtmlLocalized( 50, 390, 150, 18, 1044150, LabelColor, false, false ); // BACK
 					
-				if ( CraftSystem.AllowManyCraft( m_Tool ) )
+				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
+				if ( !needsRecipe && CraftSystem.AllowManyCraft( m_Tool ) )
 				{
 					AddButton( 270, 387, 11316, 11316, 1, GumpButtonType.Reply, 0 );
 					AddButton( 300, 387, 11317, 11317, 1001, GumpButtonType.Reply, 0 );
@@ -110,7 +111,11 @@ namespace Server.Engines.Craft
 					AddImageTiled(INFO_PANEL_START + 10, y, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE); // Top border -- Margin
 					y += 10;
 
-					if ( CraftSystem.AllowManyCraft( m_Tool ) )
+					if ( needsRecipe )
+					{
+						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR={0}>You don't know this recipe</BASEFONT>", TextColor ), false, false );
+					}
+					else if ( CraftSystem.AllowManyCraft( m_Tool ) )
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR={0}>Craft Amount:</BASEFONT>", TextColor ), false, false );
 						AddTextField(x + 95, y, 125, 20, 1);
