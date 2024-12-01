@@ -31,12 +31,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Info\Scripts\Configurable.csproj" />
-    <ProjectReference Include="..\System\System.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
+    <ProjectReference Include="..\..\Source\System\System.csproj" />
   </ItemGroup>
 </Project>

@@ -541,7 +541,8 @@ namespace Server
 		{
 			List<string> list = new List<string>();
 
-			GetScripts( list, Path.Combine( Core.BaseDirectory, "Source/Scripts" ), filter );
+            GetScripts(list, Path.Combine(Core.BaseDirectory, "Info/Scripts"), filter);
+            GetScripts( list, Path.Combine( Core.BaseDirectory, "Source/Scripts" ), filter );
 
 			return list.ToArray();
 		}
