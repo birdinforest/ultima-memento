@@ -6,93 +6,72 @@ using Server.Engines.MLQuests.Gumps;
 
 namespace Server.Engines.MLQuests.Objectives
 {
-    public class CollectObjective : BaseObjective
+	public class CollectObjective : BaseObjective
 	{
-		private int m_DesiredAmount;
-		private Type m_AcceptedType;
-		private TextDefinition m_Name;
+		public int DesiredAmount { get; set; }
+		public Type AcceptedType { get; set; }
+		public TextDefinition Name { get; set; }
 
-		public int DesiredAmount
-		{
-			get { return m_DesiredAmount; }
-			set { m_DesiredAmount = value; }
-		}
-
-		public Type AcceptedType
-		{
-			get { return m_AcceptedType; }
-			set { m_AcceptedType = value; }
-		}
-
-		public TextDefinition Name
-		{
-			get { return m_Name; }
-			set { m_Name = value; }
-		}
-
-		public virtual bool ShowDetailed
-		{
-			get { return true; }
-		}
+		public virtual bool ShowDetailed { get { return true; } }
 
 		public CollectObjective()
-			: this( 0, null, null )
+			: this(0, null, null)
 		{
 		}
 
-		public CollectObjective( int amount, Type type, TextDefinition name )
+		public CollectObjective(int amount, Type type, TextDefinition name)
 		{
-			m_DesiredAmount = amount;
-			m_AcceptedType = type;
-			m_Name = name;
+			DesiredAmount = amount;
+			AcceptedType = type;
+			Name = name;
 
-			if ( MLQuestSystem.Debug && ShowDetailed && name.Number > 0 )
+			if (MLQuestSystem.Debug && ShowDetailed && name.Number > 0)
 			{
-				int itemid = LabelToItemID( name.Number );
+				int itemid = LabelToItemID(name.Number);
 
-				if ( itemid <= 0 || itemid > 0x4000 )
-					Console.WriteLine( "Warning: cliloc {0} is likely giving the wrong item ID", name.Number );
+				if (itemid <= 0 || itemid > 0x4000)
+					Console.WriteLine("Warning: cliloc {0} is likely giving the wrong item ID", name.Number);
 			}
 		}
 
-		public bool CheckType( Type type )
+		public bool CheckType(Type type)
 		{
-			return ( m_AcceptedType != null && m_AcceptedType.IsAssignableFrom( type ) );
+			return (AcceptedType != null && AcceptedType.IsAssignableFrom(type));
 		}
 
-		public virtual bool CheckItem( Item item )
+		public virtual bool CheckItem(Item item)
 		{
 			return true;
 		}
 
-		public static int LabelToItemID( int label )
+		public static int LabelToItemID(int label)
 		{
-			if ( label < 1078872 )
-				return ( label - 1020000 );
+			if (label < 1078872)
+				return (label - 1020000);
 			else
-				return ( label - 1078872 );
+				return (label - 1078872);
 		}
 
-		public override void WriteToGump( Gump g, ref int y )
+		public override void WriteToGump(Gump g, ref int y)
 		{
-			if ( ShowDetailed )
+			if (ShowDetailed)
 			{
-				g.AddLabel( 98, y, BaseQuestGump.COLOR_LABEL, string.Format("Obtain {0:n0} {1}", m_DesiredAmount, m_Name.String) );
+				g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Obtain {0:n0} {1}", DesiredAmount, Name.String));
 			}
 			else
 			{
-				if ( m_Name.Number > 0 )
-					g.AddHtmlLocalized( 98, y, 312, 32, m_Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false );
-				else if ( m_Name.String != null )
-					g.AddLabel( 98, y, BaseQuestGump.COLOR_LABEL, m_Name.String );
+				if (Name.Number > 0)
+					g.AddHtmlLocalized(98, y, 312, 32, Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false);
+				else if (Name.String != null)
+					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, Name.String);
 			}
 
 			y += 32;
 		}
 
-		public override BaseObjectiveInstance CreateInstance( MLQuestInstance instance )
+		public override BaseObjectiveInstance CreateInstance(MLQuestInstance instance)
 		{
-			return new CollectObjectiveInstance( this, instance );
+			return new CollectObjectiveInstance(this, instance);
 		}
 	}
 
@@ -105,8 +84,8 @@ namespace Server.Engines.MLQuests.Objectives
 		public override bool IsTimed { get { return true; } }
 		public override TimeSpan Duration { get { return m_Duration; } }
 
-		public TimedCollectObjective( TimeSpan duration, int amount, Type type, TextDefinition name )
-			: base( amount, type, name )
+		public TimedCollectObjective(TimeSpan duration, int amount, Type type, TextDefinition name)
+			: base(amount, type, name)
 		{
 			m_Duration = duration;
 		}
@@ -116,47 +95,41 @@ namespace Server.Engines.MLQuests.Objectives
 
 	public class CollectObjectiveInstance : BaseObjectiveInstance
 	{
-		private CollectObjective m_Objective;
+		public CollectObjective Objective { get; private set; }
 
-		public CollectObjective Objective
+		public CollectObjectiveInstance(CollectObjective objective, MLQuestInstance instance)
+			: base(instance, objective)
 		{
-			get { return m_Objective; }
-			set { m_Objective = value; }
-		}
-
-		public CollectObjectiveInstance( CollectObjective objective, MLQuestInstance instance )
-			: base( instance, objective )
-		{
-			m_Objective = objective;
+			Objective = objective;
 		}
 
 		private int GetCurrentTotal()
 		{
 			Container pack = Instance.Player.Backpack;
 
-			if ( pack == null )
+			if (pack == null)
 				return 0;
 
-			Item[] items = pack.FindItemsByType( m_Objective.AcceptedType, false ); // Note: subclasses are included
+			Item[] items = pack.FindItemsByType(Objective.AcceptedType, false); // Note: subclasses are included
 			int total = 0;
 
-			foreach ( Item item in items )
+			foreach (Item item in items)
 			{
-				if ( item.QuestItem && m_Objective.CheckItem( item ) )
+				if (item.QuestItem && Objective.CheckItem(item))
 					total += item.Amount;
 			}
 
 			return total;
 		}
 
-		public override bool AllowsQuestItem( Item item, Type type )
+		public override bool AllowsQuestItem(Item item, Type type)
 		{
-			return ( m_Objective.CheckType( type ) && m_Objective.CheckItem( item ) );
+			return Objective.CheckType(type) && Objective.CheckItem(item);
 		}
 
 		public override bool IsCompleted()
 		{
-			return ( GetCurrentTotal() >= m_Objective.DesiredAmount );
+			return GetCurrentTotal() >= Objective.DesiredAmount;
 		}
 
 		public override void OnQuestCancelled()
@@ -164,15 +137,15 @@ namespace Server.Engines.MLQuests.Objectives
 			PlayerMobile pm = Instance.Player;
 			Container pack = pm.Backpack;
 
-			if ( pack == null )
+			if (pack == null)
 				return;
 
-			Type checkType = m_Objective.AcceptedType;
-			Item[] items = pack.FindItemsByType( checkType, false );
+			Type checkType = Objective.AcceptedType;
+			Item[] items = pack.FindItemsByType(checkType, false);
 
-			foreach ( Item item in items )
+			foreach (Item item in items)
 			{
-				if ( item.QuestItem && !MLQuestSystem.CanMarkQuestItem( pm, item, checkType ) ) // does another quest still need this item? (OSI just unmarks everything)
+				if (item.QuestItem && !MLQuestSystem.CanMarkQuestItem(pm, item, checkType)) // does another quest still need this item? (OSI just unmarks everything)
 					item.QuestItem = false;
 			}
 		}
@@ -182,24 +155,24 @@ namespace Server.Engines.MLQuests.Objectives
 		{
 			Container pack = Instance.Player.Backpack;
 
-			if ( pack == null )
+			if (pack == null)
 				return;
 
 			// TODO: OSI also counts the item in the cursor?
 
-			Item[] items = pack.FindItemsByType( m_Objective.AcceptedType, false );
-			int left = m_Objective.DesiredAmount;
+			Item[] items = pack.FindItemsByType(Objective.AcceptedType, false);
+			int left = Objective.DesiredAmount;
 
-			foreach ( Item item in items )
+			foreach (Item item in items)
 			{
-				if ( item.QuestItem && m_Objective.CheckItem( item ) )
+				if (item.QuestItem && Objective.CheckItem(item))
 				{
-					if ( left == 0 )
+					if (left == 0)
 						return;
 
-					if ( item.Amount > left )
+					if (item.Amount > left)
 					{
-						item.Consume( left );
+						item.Consume(left);
 						left = 0;
 					}
 					else
@@ -223,20 +196,20 @@ namespace Server.Engines.MLQuests.Objectives
 			// No message
 		}
 
-		public override void WriteToGump( Gump g, ref int y )
+		public override void WriteToGump(Gump g, ref int y)
 		{
-			m_Objective.WriteToGump( g, ref y );
+			Objective.WriteToGump(g, ref y);
 			y -= 16;
 
-			if ( m_Objective.ShowDetailed )
+			if (Objective.ShowDetailed)
 			{
-				base.WriteToGump( g, ref y );
+				base.WriteToGump(g, ref y);
 
-				g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, "Total" );
-				g.AddLabel( 223, y, BaseQuestGump.COLOR_LABEL, GetCurrentTotal().ToString() );
+				g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, "Total");
+				g.AddLabel(223, y, BaseQuestGump.COLOR_LABEL, GetCurrentTotal().ToString());
 				y += 16;
 
-				g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor( Instance.QuesterType ) ) );
+				g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType)));
 				y += 16;
 			}
 		}
