@@ -395,6 +395,34 @@ namespace Server.Engines.Craft
 			}
 		}
 
+		public RecipeScroll GetRecipeScroll(Type type)
+		{
+			CraftItem craftItem = m_CraftItems.SearchFor(type);
+			if (craftItem == null)
+			{
+				Console.WriteLine("Failed to find Recipe ({0}) {1}", GetType(), type);
+
+				return null;
+			}
+
+			return new RecipeScroll(craftItem.Recipe.ID);
+		}
+
+		public Bag GetRecipeScrolls(params Type[] types)
+		{
+			var bag = new Bag();
+
+			foreach(var type in types)
+			{
+				var scroll = GetRecipeScroll(type);
+				if (scroll ==  null) continue;
+
+				bag.AddItem(scroll);
+			}
+
+			return bag;
+		}
+
 		public int RandomRecipe()
 		{
 			return m_Recipes.Count != 0 ? m_Recipes[Utility.Random( m_Recipes.Count )] : -1;
@@ -407,27 +435,41 @@ namespace Server.Engines.Craft
 
         public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
 		{
-			return AddCraft( typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, "" );
+			return AddCraft( false, typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, "" );
 		}
 
 		public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount, TextDefinition message )
 		{
-			return AddCraft( typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, message );
+			return AddCraft( false, typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, message );
+		}
+
+		public int AddCraftRecipe( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount, TextDefinition message )
+		{
+			return AddCraft( true, typeItem, group, name, MainSkill, minSkill, maxSkill, typeRes, nameRes, amount, message );
 		}
 
 		public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, SkillName skillToMake, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
 		{
-			return AddCraft( typeItem, group, name, skillToMake, minSkill, maxSkill, typeRes, nameRes, amount, "" );
+			return AddCraft( false, typeItem, group, name, skillToMake, minSkill, maxSkill, typeRes, nameRes, amount, "" );
 		}
 
-		public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, SkillName skillToMake, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount, TextDefinition message )
+		public int AddCraft( bool addRecipe, Type typeItem, TextDefinition group, TextDefinition name, SkillName skillToMake, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount, TextDefinition message )
 		{
 			CraftItem craftItem = new CraftItem( typeItem, group, name );
 			craftItem.AddRes( typeRes, nameRes, amount, message );
 			craftItem.AddSkill( skillToMake, minSkill, maxSkill );
 
 			DoGroup( group, craftItem );
-			return m_CraftItems.Add( craftItem );
+			var index = m_CraftItems.Add( craftItem );
+			if (addRecipe)
+			{
+				int recipeStartIndex;
+				if (!Recipe.RecipeIndexStartMap.TryGetValue(GetType(), out recipeStartIndex)) throw new Exception(string.Format("Failed to get recipe index for {0}", GetType()));
+
+				AddRecipe(index, recipeStartIndex + index );
+			}
+			
+			return index;
 		}
 
 		private void DoGroup( TextDefinition groupName, CraftItem craftItem )

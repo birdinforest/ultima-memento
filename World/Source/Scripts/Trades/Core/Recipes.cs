@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.Mobiles;
 using Server.Commands;
 
@@ -8,6 +7,32 @@ namespace Server.Engines.Craft
 {
 	public class Recipe
 	{
+		public static readonly Dictionary<Type, int> RecipeIndexStartMap = new Dictionary<Type, int>
+		{
+			{ typeof(DefAlchemy),			1000  },
+			{ typeof(DefApothecary),		2000  },
+			{ typeof(DefBlacksmithy),		3000  },
+			{ typeof(DefBonecrafting),		4000  },
+			{ typeof(DefBowFletching),		5000  },
+			{ typeof(DefCarpentry),			6000  },
+			{ typeof(DefCartography),		7000  },
+			{ typeof(DefCooking),			8000  },
+			{ typeof(DefDraconic),			9000  },
+			{ typeof(DefDruidism),			10000 },
+			{ typeof(DefGlassblowing),		11000 },
+			{ typeof(DefInscription),		12000 },
+			{ typeof(DefLapidary),			13000 },
+			{ typeof(DefLeatherworking),	14000 },
+			{ typeof(DefMasonry),			15000 },
+			{ typeof(DefShelves),			16000 },
+			{ typeof(DefStitching),			17000 },
+			{ typeof(DefTailoring),			18000 },
+			{ typeof(DefTinkering),			19000 },
+			{ typeof(DefWands),				20000 },
+			{ typeof(DefWaxingPot),			21000 },
+			{ typeof(DefWitchery),			22000 },
+		};
+
 		public static void Initialize()
 		{
 			CommandSystem.Register( "LearnAllRecipes", AccessLevel.GameMaster, new CommandEventHandler( LearnAllRecipes_OnCommand ) );
