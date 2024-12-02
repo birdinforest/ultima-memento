@@ -52,11 +52,14 @@ namespace Server.Engines.MLQuests.Objectives
 				return (label - 1078872);
 		}
 
-		public override void WriteToGump(Gump g, ref int y)
+		public void WriteToGump(Gump g, CollectObjectiveInstance instance, ref int y)
 		{
 			if (ShowDetailed)
 			{
-				g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Obtain {0:n0} {1}", DesiredAmount, Name.String));
+				if (instance == null)
+					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Obtain {0:n0} {1}", DesiredAmount, Name.String));
+				else
+					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Obtain {0:n0} of {1} {2}", instance.GetCurrentTotal(), DesiredAmount, Name.String));
 			}
 			else
 			{
@@ -66,7 +69,12 @@ namespace Server.Engines.MLQuests.Objectives
 					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, Name.String);
 			}
 
-			y += 32;
+			y += 16;
+		}
+
+		public override void WriteToGump(Gump g, ref int y)
+		{
+			WriteToGump(g, null, ref y);
 		}
 
 		public override BaseObjectiveInstance CreateInstance(MLQuestInstance instance)
@@ -93,17 +101,31 @@ namespace Server.Engines.MLQuests.Objectives
 
 	#endregion
 
-	public class CollectObjectiveInstance : BaseObjectiveInstance
+	public class CollectObjectiveInstance : CollectObjectiveInstance<CollectObjective>
 	{
-		public CollectObjective Objective { get; private set; }
-
 		public CollectObjectiveInstance(CollectObjective objective, MLQuestInstance instance)
+			: base(objective, instance)
+		{
+		}
+
+		public override void WriteToGump(Gump g, ref int y)
+		{
+			Objective.WriteToGump(g, this, ref y);
+		}
+	}
+
+	public class CollectObjectiveInstance<TObjective> : BaseObjectiveInstance
+		where TObjective : CollectObjective
+	{
+		public TObjective Objective { get; private set; }
+
+		public CollectObjectiveInstance(TObjective objective, MLQuestInstance instance)
 			: base(instance, objective)
 		{
 			Objective = objective;
 		}
 
-		private int GetCurrentTotal()
+		public int GetCurrentTotal()
 		{
 			Container pack = Instance.Player.Backpack;
 
@@ -194,24 +216,6 @@ namespace Server.Engines.MLQuests.Objectives
 			OnQuestCancelled();
 
 			// No message
-		}
-
-		public override void WriteToGump(Gump g, ref int y)
-		{
-			Objective.WriteToGump(g, ref y);
-			y -= 16;
-
-			if (Objective.ShowDetailed)
-			{
-				base.WriteToGump(g, ref y);
-
-				g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, "Total");
-				g.AddLabel(223, y, BaseQuestGump.COLOR_LABEL, GetCurrentTotal().ToString());
-				y += 16;
-
-				g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType)));
-				y += 16;
-			}
 		}
 	}
 }
