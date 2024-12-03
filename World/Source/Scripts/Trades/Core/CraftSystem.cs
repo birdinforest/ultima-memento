@@ -398,7 +398,7 @@ namespace Server.Engines.Craft
 		public RecipeScroll GetRecipeScroll(Type type)
 		{
 			CraftItem craftItem = m_CraftItems.SearchFor(type);
-			if (craftItem == null)
+			if (craftItem == null || craftItem.Recipe == null)
 			{
 				Console.WriteLine("Failed to find Recipe ({0}) {1}", GetType(), type);
 
