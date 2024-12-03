@@ -446,7 +446,7 @@ namespace Server
 				m_MinTimeOverride = -1;
 				m_MaxTimeOverride = -1;
 
-				using ( StreamReader ip = new StreamReader( monster_path ) )
+                using ( StreamReader ip = new StreamReader( monster_path ) )
 				{
 					string line;
 
@@ -456,7 +456,7 @@ namespace Server
 						string[] splitA = line.Split( ' ' );
 
 						if ( splitA.Length == 2  )
-						{
+                        {
 							if ( splitA[0].ToLower() == "overridemap" )
 								m_MapOverride = Utility.ToInt32( splitA[1] );
 							if ( splitA[0].ToLower() == "overrideid" )
@@ -474,6 +474,8 @@ namespace Server
 						{
 							//Comment Line
 							case "##":
+							case "#*":
+							case "#r":
 								break;
 							//Place By class
 							case "*":
