@@ -20,10 +20,7 @@ namespace Server.Engines.MLQuests.Objectives
 
 		public abstract void WriteToGump( Gump g, ref int y );
 
-		public virtual BaseObjectiveInstance CreateInstance( MLQuestInstance instance )
-		{
-			return null;
-		}
+		public abstract BaseObjectiveInstance CreateInstance( MLQuestInstance instance );
 	}
 
 	public abstract class BaseObjectiveInstance
