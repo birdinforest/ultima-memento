@@ -30,8 +30,16 @@ namespace Server.Engines.MLQuests.Objectives
 
     public class DummyObjectiveInstance : BaseObjectiveInstance
     {
+		public BaseObjective Objective { get; private set; }
+
         public DummyObjectiveInstance(MLQuestInstance instance, BaseObjective obj) : base(instance, obj)
         {
+            Objective = obj;
+        }
+
+		public override void WriteToGump(Gump g, ref int y)
+		{
+			Objective.WriteToGump(g, ref y);
         }
 
         public override bool IsCompleted()
