@@ -122,7 +122,6 @@ namespace Server.Engines.MLQuests.Gumps
 		public void AddObjectives( MLQuest quest )
 		{
 			AddHtmlLocalized( 98, 140, 312, 16, 1049073, COLOR_TITLE_LOCALIZED, false, false ); // Objective:
-            AddLabel(98, 156, COLOR_LABEL, ( quest.ObjectiveType == ObjectiveType.All ) ? "All of the following" : "Only one of the following");
 
 			int y = 172;
 
@@ -145,7 +144,6 @@ namespace Server.Engines.MLQuests.Gumps
 			MLQuest quest = instance.Quest;
 
 			AddHtmlLocalized( 98, 140, 312, 16, 1049073, COLOR_TITLE_LOCALIZED, false, false ); // Objective:
-            AddLabel(98, 156, COLOR_LABEL, ( quest.ObjectiveType == ObjectiveType.All ) ? "All of the following" : "Only one of the following");
 
 			int y = 172;
 
