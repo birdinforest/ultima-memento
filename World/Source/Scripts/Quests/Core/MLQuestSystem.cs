@@ -12,6 +12,7 @@ using Server.Items;
 using System.IO;
 using System.Reflection;
 using Server.Engines.MLQuests.Definitions;
+using System.Linq;
 
 namespace Server.Engines.MLQuests
 {
@@ -158,6 +159,8 @@ namespace Server.Engines.MLQuests
 			CommandSystem.Register("SaveQuest", AccessLevel.Administrator, new CommandEventHandler(SaveQuest_OnCommand));
 			CommandSystem.Register("SaveAllQuests", AccessLevel.Administrator, new CommandEventHandler(SaveAllQuests_OnCommand));
 			CommandSystem.Register("InvalidQuestItems", AccessLevel.Administrator, new CommandEventHandler(InvalidQuestItems_OnCommand));
+			CommandSystem.Register("MLQuestsGenerate", AccessLevel.Administrator, new CommandEventHandler(MLQuestsGenerate_OnCommand));
+			CommandSystem.Register("MLQuestsClearSpawners", AccessLevel.Administrator, new CommandEventHandler(MLQuestsClearSpawners_OnCommand));
 
 			TargetCommands.Register(new ViewQuestsCommand());
 			TargetCommands.Register(new ViewContextCommand());
@@ -358,6 +361,33 @@ namespace Server.Engines.MLQuests
 				m.SendMessage("No matching objects found.");
 			else
 				m.SendGump(new InterfaceGump(m, new string[] { "Object" }, found, 0, null));
+		}
+
+		[Usage("MLQuestsGenerate")]
+		[Description("Forces all MLQuests to execute the Generate logic.")]
+		public static void MLQuestsGenerate_OnCommand(CommandEventArgs e)
+		{
+			foreach (MLQuest quest in Quests.Values)
+			{
+				if (quest == null) continue;
+
+				quest.Generate();
+			}
+
+			e.Mobile.SendMessage("Executed Generate for '{0}' quests.", Quests.Count);
+		}
+
+		[Usage("MLQuestsClearSpawners")]
+		[Description("Delete all MLQS spawners.")]
+		public static void MLQuestsClearSpawners_OnCommand(CommandEventArgs e)
+		{
+			var spawners = World.Items.Values
+				.Where(x => x is Spawner)
+				.Cast<Spawner>()
+				.Where(x => x.Name != null && x.Name.StartsWith("MLQS-"))
+				.ToList();
+			spawners.ForEach(x => x.Delete());
+			e.Mobile.SendMessage("Deleted '{0}' quest spawners.", spawners.Count);
 		}
 
 		private static bool FindQuest(IQuestGiver quester, PlayerMobile pm, MLQuestContext context, out MLQuest quest, out MLQuestInstance entry)
