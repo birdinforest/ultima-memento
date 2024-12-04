@@ -242,6 +242,8 @@ namespace Server.Engines.MLQuests
 
 		public virtual void OnRefuse(IQuestGiver quester, PlayerMobile pm)
 		{
+			if (string.IsNullOrWhiteSpace(RefusalMessage)) return;
+
 			pm.SendGump(new QuestConversationGump(this, pm, RefusalMessage));
 		}
 
