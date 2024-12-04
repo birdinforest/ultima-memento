@@ -11,6 +11,7 @@ namespace Server.Engines.MLQuests.Objectives
 		public int DesiredAmount { get; set; }
 		public Type AcceptedType { get; set; }
 		public TextDefinition Name { get; set; }
+		public bool DoNotConsume { get; set; }
 
 		public virtual bool ShowDetailed { get { return true; } }
 
@@ -194,13 +195,17 @@ namespace Server.Engines.MLQuests.Objectives
 
 					if (item.Amount > left)
 					{
-						item.Consume(left);
 						left = 0;
+						if (Objective.DoNotConsume) continue;
+
+						item.Consume(left);
 					}
 					else
 					{
-						item.Delete();
 						left -= item.Amount;
+						if (Objective.DoNotConsume) continue;
+
+						item.Delete();
 					}
 				}
 			}
