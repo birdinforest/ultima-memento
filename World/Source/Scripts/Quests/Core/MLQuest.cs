@@ -230,13 +230,13 @@ namespace Server.Engines.MLQuests
 			pm.SendLocalizedMessage(1049019); // You have accepted the Quest.
 			pm.SendSound(0x2E7); // private sound
 
-			OnAccepted(instance);
+			OnAccepted(quester, instance);
 
 			foreach (BaseObjectiveInstance obj in instance.Objectives)
 				obj.OnQuestAccepted();
 		}
 
-		public virtual void OnAccepted(MLQuestInstance instance)
+		public virtual void OnAccepted(IQuestGiver quester, MLQuestInstance instance)
 		{
 		}
 

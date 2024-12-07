@@ -28,9 +28,9 @@ namespace Server.Engines.MLQuests.Objectives
 			if (ShowDetailed)
 			{
 				if (instance == null)
-					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Craft and mark {0:n0} {1}", DesiredAmount, Name.String));
+					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("- {0:n0} {1}", DesiredAmount, Name.String));
 				else
-					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("({0:n0} / {1}) Craft and mark {2}", instance.GetCurrentTotal(), DesiredAmount, Name.String));
+					g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("- {0:n0} / {1} {2}", instance.GetCurrentTotal(), DesiredAmount, Name.String));
 			}
 			else
 			{
