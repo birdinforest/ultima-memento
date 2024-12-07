@@ -58,6 +58,7 @@ namespace Server.Misc
 			builder.Append("- Item - Scepter/Stave now have Spell Channeling by default<br>");
 			builder.Append("- Item - Bank vaults are now sold by Bankers<br>");
 			builder.Append("- Item - Laser swords no longer drop<br>");
+			builder.Append("- Item - Skill bonuses from items no longer overcap<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Misc - Reduce max properties from randomly generated items from 16 to 8<br>");
 			builder.Append("- Misc - Fugitives are now considered 'Evil'<br>");
