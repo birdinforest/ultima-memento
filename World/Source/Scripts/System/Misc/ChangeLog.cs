@@ -63,6 +63,8 @@ namespace Server.Misc
 			builder.Append("- Misc - Reduce max properties from randomly generated items from 16 to 8<br>");
 			builder.Append("- Misc - Fugitives are now considered 'Evil'<br>");
 			builder.Append("- Misc - Increased gold values for Coffers<br>");
+			builder.Append("- Misc - Dramatically reduced amount of properties from drops<br>");
+			builder.Append("- Misc - Dramatically reduced attribute intensity from drops<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
 			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
