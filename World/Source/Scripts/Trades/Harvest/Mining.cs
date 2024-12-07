@@ -263,7 +263,7 @@ namespace Server.Engines.Harvest
 				if ( veinIndex >= 0 && veinIndex < (def.Veins.Length - 1) )
 					return def.Veins[veinIndex + 1];
 			}
-			else if ( from.HarvestOrdinary && def == m_OreAndStone )
+			else if ( (from.HarvestOrdinary || tool is TrainingShovel) && def == m_OreAndStone )
 			{
 				int veinIndex = Array.IndexOf( def.Veins, vein );
 				return def.Veins[0];
