@@ -234,50 +234,50 @@ namespace Server.Engines.Craft
 			*/
 
 			#region Chainmail
-			AddCraft( typeof( ChainCoif ), "Chain/Ringmail", 1025051, 14.5, 64.5, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( ChainLegs ), "Chain/Ringmail", 1025054, 36.7, 86.7, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( ChainChest ), "Chain/Ringmail", 1025055, 39.1, 89.1, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( ChainSkirt ), "Chain/Ringmail", "chainmail skirt", 36.7, 86.7, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( ChainCoif ), "Chain/Ringmail", 1025051, 14.5, 64.5, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( ChainLegs ), "Chain/Ringmail", 1025054, 36.7, 86.7, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( ChainChest ), "Chain/Ringmail", 1025055, 39.1, 89.1, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( ChainSkirt ), "Chain/Ringmail", "chainmail skirt", 36.7, 86.7, typeof( IronIngot ), 1044036, 18, 1044037 );
 			#endregion
 
 			#region Ringmail
-			AddCraft( typeof( RingmailGloves ), "Chain/Ringmail", 1025099, 12.0, 62.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( RingmailLegs ), "Chain/Ringmail", 1025104, 19.4, 69.4, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( RingmailArms ), "Chain/Ringmail", 1025103, 16.9, 66.9, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( RingmailChest ), "Chain/Ringmail", 1025100, 21.9, 71.9, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( RingmailSkirt ), "Chain/Ringmail", "ringmail skirt", 19.4, 69.4, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( RingmailGloves ), "Chain/Ringmail", 1025099, 12.0, 62.0, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( RingmailLegs ), "Chain/Ringmail", 1025104, 19.4, 69.4, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( RingmailArms ), "Chain/Ringmail", 1025103, 16.9, 66.9, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( RingmailChest ), "Chain/Ringmail", 1025100, 21.9, 71.9, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( RingmailSkirt ), "Chain/Ringmail", "ringmail skirt", 19.4, 69.4, typeof( IronIngot ), 1044036, 16, 1044037 );
 			#endregion
 
 			int index = -1;
 
 			#region Platemail
-			AddCraft( typeof( PlateArms ), "Platemail", 1025136, 66.3, 116.3, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( PlateGloves ), "Platemail", 1025140, 58.9, 108.9, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( PlateGorget ), "Platemail", 1025139, 56.4, 106.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( PlateLegs ), "Platemail", 1025137, 68.8, 118.8, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( PlateSkirt ), "Platemail", "platemail skirt", 68.8, 118.8, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( PlateChest ), "Platemail", 1046431, 75.0, 125.0, typeof( IronIngot ), 1044036, 25, 1044037 );
-			AddCraft( typeof( FemalePlateChest ), "Platemail", 1046430, 44.1, 94.1, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( PlateArms ), "Platemail", 1025136, 66.3, 116.3, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( PlateGloves ), "Platemail", 1025140, 58.9, 108.9, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( PlateGorget ), "Platemail", 1025139, 56.4, 106.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( PlateLegs ), "Platemail", 1025137, 68.8, 118.8, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( PlateSkirt ), "Platemail", "platemail skirt", 68.8, 118.8, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( PlateChest ), "Platemail", 1046431, 75.0, 125.0, typeof( IronIngot ), 1044036, 25, 1044037 );
+			AddCraftRecipe( typeof( FemalePlateChest ), "Platemail", 1046430, 44.1, 94.1, typeof( IronIngot ), 1044036, 20, 1044037 );
 
-			AddCraft( typeof( DragonBardingDeed ), "Platemail", 1053012, 72.5, 122.5, typeof( IronIngot ), 1044036, 750, 1044037 );
-			AddCraft( typeof( HorseArmor ), "Platemail", "horse barding", 72.5, 122.5, typeof( IronIngot ), 1044036, 650, 1044037 );
+			AddCraftRecipe( typeof( DragonBardingDeed ), "Platemail", 1053012, 72.5, 122.5, typeof( IronIngot ), 1044036, 750, 1044037 );
+			AddCraftRecipe( typeof( HorseArmor ), "Platemail", "horse barding", 72.5, 122.5, typeof( IronIngot ), 1044036, 650, 1044037 );
 
-			AddCraft( typeof( PlateMempo ), "Platemail", 1030180, 80.0, 130.0, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( PlateDo ), "Platemail", 1030184, 80.0, 130.0, typeof( IronIngot ), 1044036, 28, 1044037 );
-			AddCraft( typeof( PlateHiroSode ), "Platemail", 1030187, 80.0, 130.0, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( PlateSuneate ), "Platemail", 1030195, 65.0, 115.0, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( PlateHaidate ), "Platemail", 1030200, 65.0, 115.0, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( PlateMempo ), "Platemail", 1030180, 80.0, 130.0, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( PlateDo ), "Platemail", 1030184, 80.0, 130.0, typeof( IronIngot ), 1044036, 28, 1044037 );
+			AddCraftRecipe( typeof( PlateHiroSode ), "Platemail", 1030187, 80.0, 130.0, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( PlateSuneate ), "Platemail", 1030195, 65.0, 115.0, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( PlateHaidate ), "Platemail", 1030200, 65.0, 115.0, typeof( IronIngot ), 1044036, 20, 1044037 );
 
 			#endregion
 
 			#region Royal
-			AddCraft( typeof( RoyalBoots ), "Royal Armor", "royal boots", 88.9, 118.9, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( RoyalGloves ), "Royal Armor", "royal bracers", 88.9, 118.9, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( RoyalGorget ), "Royal Armor", "royal gorget", 86.4, 116.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( RoyalHelm ), "Royal Armor", "royal helm", 92.6, 122.6, typeof( IronIngot ), 1044036, 15, 1044037 );
-			AddCraft( typeof( RoyalsLegs ), "Royal Armor", "royal leggings", 96.8, 125.0, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( RoyalArms ), "Royal Armor", "royal mantle", 96.3, 125.0, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( RoyalChest ), "Royal Armor", "royal tunic", 98.0, 125.0, typeof( IronIngot ), 1044036, 25, 1044037 );
+			AddCraftRecipe( typeof( RoyalBoots ), "Royal Armor", "royal boots", 88.9, 118.9, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( RoyalGloves ), "Royal Armor", "royal bracers", 88.9, 118.9, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( RoyalGorget ), "Royal Armor", "royal gorget", 86.4, 116.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( RoyalHelm ), "Royal Armor", "royal helm", 92.6, 122.6, typeof( IronIngot ), 1044036, 15, 1044037 );
+			AddCraftRecipe( typeof( RoyalsLegs ), "Royal Armor", "royal leggings", 96.8, 125.0, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( RoyalArms ), "Royal Armor", "royal mantle", 96.3, 125.0, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( RoyalChest ), "Royal Armor", "royal tunic", 98.0, 125.0, typeof( IronIngot ), 1044036, 25, 1044037 );
 			#endregion
 
 			#region Helmets
