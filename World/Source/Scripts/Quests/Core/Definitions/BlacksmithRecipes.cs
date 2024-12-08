@@ -625,7 +625,6 @@ namespace Server.Engines.MLQuests.Definitions
         {
             Name = "blacksmith crate";
             Weight = 10.0;
-            Movable = false;
             ResourceMods.DefaultItemHue(this);
         }
 
