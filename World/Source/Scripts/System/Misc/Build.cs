@@ -16525,6 +16525,10 @@ namespace Server.Scripts.Commands
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Build Magic Mirrors..." ); }
 			Server.Items.MagicMirror.SetMirrors();
 
+			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Rebuild ML Quest Spawners..." ); }
+			Engines.MLQuests.MLQuestSystem.MLQuestsClearSpawners_OnCommand( e );
+			Engines.MLQuests.MLQuestSystem.MLQuestsGenerate_OnCommand( e );
+
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "World Has Been Rebuilt!" ); }
 			e.Mobile.SendMessage( "The world has been rebuilt." );
 		}
