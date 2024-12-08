@@ -23,9 +23,9 @@ namespace Server.Engines.MLQuests.Definitions
             builder.Append("<br><br>");
             builder.Append("If you're up for it, head to the mines and gather some Ore.");
             Description = builder.ToString();
-            RefusalMessage = "";
-            InProgressMessage = "";
-            CompletionMessage = "";
+            RefusalMessage = "RefusalMessage BlacksmithBasicsQuest";
+            InProgressMessage = "InProgressMessage BlacksmithBasicsQuest";
+            CompletionMessage = "CompletionMessage BlacksmithBasicsQuest";
 
             Objectives.Add(new DummyObjective("Collect the following:"));
             Objectives.Add(new CollectObjective(500, typeof(IronIngot), "Iron Ingots") { DoNotConsume = true });
