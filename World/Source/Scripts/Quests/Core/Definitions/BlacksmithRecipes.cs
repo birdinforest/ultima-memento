@@ -128,7 +128,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage ChainArmorQuest";
             CompletionMessage = "CompletionMessage ChainArmorQuest";
 
-            Objectives.Add(new DummyObjective("* Find a Tinkerer or Miner"));
+            Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(20, typeof(RingmailGloves), "Ringmail Gloves"));
             Objectives.Add(new CraftObjective(20, typeof(RingmailLegs), "Ringmail Legs"));
             Objectives.Add(new CraftObjective(20, typeof(RingmailArms), "Ringmail Arms"));
@@ -200,6 +200,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage PlateArmorQuest";
             CompletionMessage = "CompletionMessage PlateArmorQuest";
 
+            Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(20, typeof(ChainCoif), "Chain Coifs"));
             Objectives.Add(new CraftObjective(20, typeof(ChainLegs), "Chain Legs"));
             Objectives.Add(new CraftObjective(20, typeof(ChainChest), "Chain Chests"));
@@ -279,6 +280,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage AnimalArmorQuest";
             CompletionMessage = "CompletionMessage AnimalArmorQuest";
 
+            Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(20, typeof(PlateArms), "Plate Arms"));
             Objectives.Add(new CraftObjective(20, typeof(PlateGloves), "Plate Gloves"));
             Objectives.Add(new CraftObjective(20, typeof(PlateGorget), "Plate Gorgets"));
@@ -350,6 +352,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage RoyalArmorQuest";
             CompletionMessage = "CompletionMessage RoyalArmorQuest";
 
+            Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(10, typeof(HorseArmor), "Horse Barding"));
             Objectives.Add(new CraftObjective(10, typeof(DragonBardingDeed), "Dragon Barding"));
 
@@ -420,6 +423,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage TridentQuest";
             CompletionMessage = "CompletionMessage TridentQuest";
 
+            Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(20, typeof(RoyalBoots), "Royal Boots"));
             Objectives.Add(new CraftObjective(20, typeof(RoyalGloves), "Royal Gloves"));
             Objectives.Add(new CraftObjective(20, typeof(RoyalGorget), "Royal Gorgets"));
