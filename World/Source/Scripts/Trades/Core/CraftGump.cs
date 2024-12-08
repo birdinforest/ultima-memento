@@ -153,12 +153,12 @@ namespace Server.Engines.Craft
 					if (!context.AutomaticallyMarkQuestItems)
 					{
 						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4020, 4022, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
-						AddHtml( 215, 405+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>MARK QUEST ITEMS</BASEFONT>", FontColor ), false, false );
+						AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>DO NOT TOGGLE QUEST ITEMS</BASEFONT>", FontColor ), false, false );
 					}
 					else
 					{
 						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4023, 4025, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
-						AddHtml( 215, 405+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>MARK QUEST ITEMS</BASEFONT>", FontColor ), false, false );
+						AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>AUTO TOGGLE QUEST ITEMS</BASEFONT>", FontColor ), false, false );
 					}
 				}
 
