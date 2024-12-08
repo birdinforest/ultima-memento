@@ -60,16 +60,16 @@ namespace Server.Engines.Craft
 				else
 					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
 
-				AddButton( 15, 387, 4014, 4016, 0, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 50, 390, 150, 18, 1044150, LabelColor, false, false ); // BACK
+				AddButton( 15, 405, 4014, 4016, 0, GumpButtonType.Reply, 0 );
+				AddHtmlLocalized( 50, 408, 150, 18, 1044150, LabelColor, false, false ); // BACK
 					
 				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
 				if ( !needsRecipe && CraftSystem.AllowManyCraft( m_Tool ) )
 				{
-					AddButton( 270, 387, 11316, 11316, 1, GumpButtonType.Reply, 0 );
-					AddButton( 300, 387, 11317, 11317, 1001, GumpButtonType.Reply, 0 );
-					AddButton( 335, 387, 11318, 11318, 2001, GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 375, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+					AddButton( 270, 405, 11316, 11316, 1, GumpButtonType.Reply, 0 );
+					AddButton( 300, 405, 11317, 11317, 1001, GumpButtonType.Reply, 0 );
+					AddButton( 335, 405, 11318, 11318, 2001, GumpButtonType.Reply, 0 );
+					AddHtmlLocalized( 375, 408, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
 				}
 				// else
 				// {
