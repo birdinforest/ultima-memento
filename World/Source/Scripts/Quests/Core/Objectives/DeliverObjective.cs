@@ -61,7 +61,10 @@ namespace Server.Engines.MLQuests.Objectives
 			}
 
 			foreach (Item item in delivery)
+			{
+				item.QuestItem = true;
 				pack.DropItem(item); // Confirmed: on OSI items are added even if your pack is full
+			}
 		}
 
 		public override void WriteToGump(Gump g, ref int y)
