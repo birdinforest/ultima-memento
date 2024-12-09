@@ -71,28 +71,24 @@ namespace Server.Items
 			{
 				PlayerMobile pm = from as PlayerMobile;
 
-				if( !pm.HasRecipe( r ) )
-				{
-					bool allRequiredSkills = true;
-					double chance = r.CraftItem.GetSuccessChance( from, null, r.CraftSystem, false, ref allRequiredSkills );
+                if (pm.HasRecipe(r))
+                {
+                    pm.SendLocalizedMessage(1073427); // You already know this recipe.
+					return;
+                }
 
-					if ( allRequiredSkills && chance >= 0.0 )
-					{
-						pm.SendLocalizedMessage( 1073451, r.TextDefinition.ToString() ); // You have learned a new recipe: ~1_RECIPE~
-						pm.AcquireRecipe( r );
-						this.Delete();
-					}
-					else
-					{
-						pm.SendLocalizedMessage( 1044153 ); // You don't have the required skills to attempt this item.
-					}
-				}
-				else
+				bool allRequiredSkills = true;
+				double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills);
+				if (!allRequiredSkills || chance < 0.0)
 				{
-					pm.SendLocalizedMessage( 1073427 ); // You already know this recipe.
+					pm.SendLocalizedMessage(1044153); // You don't have the required skills to attempt this item.
+					return;
 				}
-				
-			}
+
+				pm.SendLocalizedMessage(1073451, r.TextDefinition.ToString()); // You have learned a new recipe: ~1_RECIPE~
+				pm.AcquireRecipe(r);
+				Delete();
+            }
 		}
 
 		public override void Serialize( GenericWriter writer )
