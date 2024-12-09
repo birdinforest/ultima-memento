@@ -79,12 +79,12 @@ namespace Server.Items
 
 				if ( MySettings.S_RecipesRequireMinSkill )
 				{
-				bool allRequiredSkills = true;
-				double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills);
-				if (!allRequiredSkills || chance <= 0.0)
-				{
-					pm.SendLocalizedMessage(1044153); // You don't have the required skills to attempt this item.
-					return;
+					bool allRequiredSkills = true;
+					double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills);
+					if (!allRequiredSkills || chance <= 0.0)
+					{
+						pm.SendLocalizedMessage(1044153); // You don't have the required skills to attempt this item.
+						return;
 					}
 				}
 
