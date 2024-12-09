@@ -389,6 +389,9 @@ namespace Server
 		public static bool S_AllowMacroResources = true;
 
 
+	// If true, players cannot learn a recipe if their skill level is not high enough to craft the item.
+
+		public static bool S_RecipesRequireMinSkill = false;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
