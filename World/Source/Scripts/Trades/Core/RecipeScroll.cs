@@ -79,7 +79,7 @@ namespace Server.Items
 
 				bool allRequiredSkills = true;
 				double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills);
-				if (!allRequiredSkills || chance < 0.0)
+				if (!allRequiredSkills || chance <= 0.0)
 				{
 					pm.SendLocalizedMessage(1044153); // You don't have the required skills to attempt this item.
 					return;
