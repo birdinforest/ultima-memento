@@ -396,6 +396,11 @@ namespace Server.Engines.Craft
 			}
 		}
 
+		public IEnumerable<int> GetRecipes()
+		{
+			return m_Recipes;
+		}
+
 		public RecipeScroll GetRecipeScroll(PlayerMobile player, Type type)
 		{
 			CraftItem craftItem = m_CraftItems.SearchFor(type);
@@ -419,6 +424,34 @@ namespace Server.Engines.Craft
 				if (scroll ==  null) continue;
 
 				bag.AddItem(scroll);
+			}
+
+			return bag;
+		}
+
+		public Bag GetRandomRecipeScrolls(PlayerMobile player, int count, Func<Recipe, bool> predicate)
+		{
+			var candidates = m_Recipes.Where(id =>
+			{
+				var recipe = Recipe.Recipes[id];
+				return predicate(recipe);
+			}).ToList();
+
+			return GetRandomRecipeScrolls(player, candidates, count);
+		}
+
+		public static Bag GetRandomRecipeScrolls(PlayerMobile player, List<int> candidates, int count)
+		{
+			var bag = new Bag();
+
+			for (int i = 0; i < count; i++)
+			{
+				var id = PickRandomRecipe(candidates);
+				if (id < 0) return bag;
+
+				var recipe = new RecipeScroll(id, player);
+				bag.AddItem(recipe);
+				candidates.Remove(id);
 			}
 
 			return bag;
