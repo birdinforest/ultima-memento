@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
@@ -395,7 +396,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public RecipeScroll GetRecipeScroll(Type type)
+		public RecipeScroll GetRecipeScroll(PlayerMobile player, Type type)
 		{
 			CraftItem craftItem = m_CraftItems.SearchFor(type);
 			if (craftItem == null || craftItem.Recipe == null)
@@ -405,16 +406,16 @@ namespace Server.Engines.Craft
 				return null;
 			}
 
-			return new RecipeScroll(craftItem.Recipe.ID);
+			return new RecipeScroll(craftItem.Recipe, player);
 		}
 
-		public Bag GetRecipeScrolls(params Type[] types)
+		public Bag GetRecipeScrolls(PlayerMobile player, params Type[] types)
 		{
 			var bag = new Bag();
 
 			foreach(var type in types)
 			{
-				var scroll = GetRecipeScroll(type);
+				var scroll = GetRecipeScroll(player, type);
 				if (scroll ==  null) continue;
 
 				bag.AddItem(scroll);
@@ -425,13 +426,18 @@ namespace Server.Engines.Craft
 
 		public int RandomRecipe()
 		{
-			return m_Recipes.Count != 0 ? m_Recipes[Utility.Random( m_Recipes.Count )] : -1;
+			return PickRandomRecipe(m_Recipes);
 		}
 
 		public int RandomRareRecipe()
         {
-            return m_RareRecipes.Count != 0 ? m_RareRecipes[Utility.Random(m_RareRecipes.Count)] : -1;
+			return PickRandomRecipe(m_RareRecipes);
         }
+
+		public static int PickRandomRecipe(List<int> recipes)
+		{
+			return recipes.Count != 0 ? recipes[Utility.Random( recipes.Count )] : -1;
+		}
 
         public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
 		{

@@ -66,6 +66,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(RingmailGloves),
                         typeof(RingmailLegs),
                         typeof(RingmailArms),
@@ -139,6 +140,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(ChainCoif),
                         typeof(ChainLegs),
                         typeof(ChainChest),
@@ -210,6 +212,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(PlateArms),
                         typeof(PlateGloves),
                         typeof(PlateGorget),
@@ -293,6 +296,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(HorseArmor),
                         typeof(DragonBardingDeed)
                     );
@@ -360,6 +364,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(RoyalBoots),
                         typeof(RoyalGloves),
                         typeof(RoyalGorget),
@@ -436,6 +441,7 @@ namespace Server.Engines.MLQuests.Definitions
                 player =>
                 {
                     return DefBlacksmithy.CraftSystem.GetRecipeScrolls(
+                        player,
                         typeof(Pitchfork)
                     );
                 })

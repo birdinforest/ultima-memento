@@ -56,16 +56,22 @@ namespace Server.Items
 				list.Add( 1049644, string.Format("Belongs to: {0}", Owner.Name) ); // ~1_stuff~
 		}
 
-		public RecipeScroll( Recipe r )
-			: this( r.ID )
+		public RecipeScroll( Recipe r, PlayerMobile player )
+			: this( r.ID, player )
 		{
 		}
 
 		[Constructable]
 		public RecipeScroll( int recipeID )
+			: this( recipeID, null )
+		{
+		}
+
+		public RecipeScroll( int recipeID, PlayerMobile player )
 			: base( 0x2831 )
 		{
 			m_RecipeID = recipeID;
+			Owner = player;
 		}
 
 		public RecipeScroll( Serial serial )
