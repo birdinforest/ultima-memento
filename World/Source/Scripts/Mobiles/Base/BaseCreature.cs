@@ -6516,7 +6516,7 @@ namespace Server.Mobiles
 			//if ( IsAnimatedDead )
 			//	Spells.Necromancy.AnimateDeadSpell.Unregister( m_SummonMaster, this );
 
-				MLQuestSystem.HandleDeletion( this );
+			MLQuestSystem.HandleDeletion( this );
 
 			base.OnAfterDelete();
 		}
@@ -8451,7 +8451,7 @@ namespace Server.Mobiles
 
 			if ( killer is PlayerMobile )
 			{
-					MLQuestSystem.HandleKill( (PlayerMobile) killer, this );
+				MLQuestSystem.HandleKill( (PlayerMobile) killer, this );
 				AssassinFunctions.CheckTarget( killer, this );
 				StandardQuestFunctions.CheckTarget( killer, this, null );
 				FishingQuestFunctions.CheckTarget( killer, this, null );

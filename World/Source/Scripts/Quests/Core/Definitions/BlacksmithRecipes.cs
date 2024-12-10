@@ -58,7 +58,6 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage RingArmorQuest";
             CompletionMessage = "CompletionMessage RingArmorQuest";
 
-            // TODO: Any other items?
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(20, typeof(WoodenKiteShield), "Kite Shield"));
 
