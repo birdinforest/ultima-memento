@@ -393,6 +393,10 @@ namespace Server
 
 		public static bool S_RecipesRequireMinSkill = false;
 
+	// If false, only the player (or any character on their account) who acquired them can use them.
+
+		public static bool S_RecipesForAnyone = false;
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 007 - MONSTERS & CREATURES /////////////////////////////////////////////////////////////////

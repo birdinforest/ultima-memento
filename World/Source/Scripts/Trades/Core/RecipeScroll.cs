@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Accounting;
 using Server.Engines.Craft;
 using Server.Mobiles;
 using Server.Network;
@@ -17,6 +18,19 @@ namespace Server.Items
 		{
 			get { return m_RecipeID; }
 			set { m_RecipeID = value; InvalidateProperties(); }
+		}
+
+		private Mobile m_Owner;
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Mobile Owner
+		{
+			get { return m_Owner; }
+			set
+			{
+				m_Owner = value;
+				InvalidateProperties();
+			}
 		}
 
 		public Recipe Recipe
@@ -37,7 +51,9 @@ namespace Server.Items
 			Recipe r = this.Recipe;
 
 			if( r != null )
-				list.Add( 1049644, r.TextDefinition.ToString() ); // [~1_stuff~]
+				list.Add( 1049644, r.TextDefinition.ToString() ); // ~1_stuff~
+			if( Owner != null && !MySettings.S_RecipesForAnyone)
+				list.Add( 1049644, string.Format("Belongs to: {0}", Owner.Name) ); // ~1_stuff~
 		}
 
 		public RecipeScroll( Recipe r )
@@ -71,6 +87,13 @@ namespace Server.Items
 			{
 				PlayerMobile pm = from as PlayerMobile;
 
+				var owner = GetAccountOrNull(m_Owner);
+				if (!MySettings.S_RecipesForAnyone && owner != null && owner != GetAccountOrNull(pm) )
+				{
+                    pm.SendLocalizedMessage(1112589); // This does not belong to you! Find your own!
+					return;
+				}
+
                 if (pm.HasRecipe(r))
                 {
                     pm.SendLocalizedMessage(1073427); // You already know this recipe.
@@ -94,13 +117,19 @@ namespace Server.Items
             }
 		}
 
+		private static IAccount GetAccountOrNull(Mobile mobile)
+		{
+			return mobile != null && mobile.Account != null ? mobile.Account : null;
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int)0 ); // version
+			writer.Write( (int)1 ); // version
 
 			writer.Write( (int)m_RecipeID );
+			writer.WriteMobile( m_Owner );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -109,14 +138,10 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch( version )
+			m_RecipeID = reader.ReadInt();
+			if (0 < version)
 			{
-				case 0:
-					{
-						m_RecipeID = reader.ReadInt();
-
-						break;
-					}
+				m_Owner = reader.ReadMobile();
 			}
 		}
 	}
