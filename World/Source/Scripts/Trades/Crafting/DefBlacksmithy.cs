@@ -1,9 +1,8 @@
 using System;
 using Server.Items;
-using Server.Network;
 using Server.Targeting;
-using Server.Engines.Craft;
 using Server.Mobiles;
+using System.Linq;
 
 namespace Server.Engines.Craft
 {
@@ -39,9 +38,9 @@ namespace Server.Engines.Craft
 			get { return CraftResourceType.Metal; }
 		}
 
-		private static CraftSystem m_CraftSystem;
+		private static DefBlacksmithy m_CraftSystem;
 
-		public static CraftSystem CraftSystem
+		public static DefBlacksmithy CraftSystem
 		{
 			get
 			{
@@ -187,7 +186,7 @@ namespace Server.Engines.Craft
 		public override void PlayCraftEffect( Mobile from )
 		{
 			from.Animate( 11, 5, 1, true, false, 0 );
-			CraftSystem.CraftSound( from, 0x541, m_Tools );
+			CraftSound( from, 0x541, m_Tools );
 		}
 
 		public override int PlayEndingEffect( Mobile from, bool failed, bool lostMaterial, bool toolBroken, int quality, CraftItem item )
@@ -323,75 +322,75 @@ namespace Server.Engines.Craft
 			#endregion
 
 			#region Bladed
-			AddCraft( typeof( AssassinSpike ), "Bladed", "assassin dagger", 10.0, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
-			AddCraft( typeof( ElvenSpellblade ), "Bladed", "assassin sword", 44.1, 94.1, typeof( IronIngot ), 1044036, 8, 1044037 );
-			AddCraft( typeof( VikingSword ), "Bladed", "barbarian sword", 24.3, 74.3, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( Broadsword ), "Bladed", 1023934, 35.4, 85.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( Claymore ), "Bladed", "claymore", 34.3, 84.3, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( CrescentBlade ), "Bladed", 1029921, 45.0, 95.0, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( Cutlass ), "Bladed", 1025185, 24.3, 74.3, typeof( IronIngot ), 1044036, 8, 1044037 );
-			AddCraft( typeof( Dagger ), "Bladed", 1023921, -0.4, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
-			AddCraft( typeof( RadiantScimitar ), "Bladed", "falchion", 35.4, 85.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( Katana ),"Bladed", 1025119, 44.1, 94.1, typeof( IronIngot ), 1044036, 8, 1044037 );
-			AddCraft( typeof( Kryss ), "Bladed", 1025121, 36.7, 86.7, typeof( IronIngot ), 1044036, 8, 1044037 );
-			AddCraft( typeof( LargeKnife ), "Bladed", "large knife", -0.4, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
-			AddCraft( typeof( Longsword ), "Bladed", 1023937, 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( ElvenMachete ), "Bladed", "machete", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( ShortSpear ), "Bladed", "rapier", 45.3, 95.3, typeof( IronIngot ), 1044036, 6, 1044037 );
-			AddCraft( typeof( RoyalSword ), "Bladed", "royal sword", 54.3, 84.3, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( ShortSword ), "Bladed", "short sword", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( BoneHarvester ), "Bladed", "sickle", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( Scimitar ), "Bladed", 1025046, 31.7, 81.7, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( RuneBlade ), "Bladed", "war blades", 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( WarCleaver ), "Bladed", "war cleaver", 10.0, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
-			AddCraft( typeof( Leafblade ), "Bladed", "war dagger", 20.0, 59.6, typeof( IronIngot ), 1044036, 5, 1044037 );
-			AddCraft( typeof( NoDachi ), "Bladed", 1030221, 75.0, 125.0, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( Wakizashi ), "Bladed", 1030223, 50.0, 100.0, typeof( IronIngot ), 1044036, 8, 1044037 );
-			AddCraft( typeof( Lajatang ), "Bladed", 1030226, 80.0, 130.0, typeof( IronIngot ), 1044036, 25, 1044037 );
-			AddCraft( typeof( Daisho ), "Bladed", 1030228, 60.0, 110.0, typeof( IronIngot ), 1044036, 15, 1044037 );
-			AddCraft( typeof( Tekagi ), "Bladed", 1030230, 55.0, 105.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( Shuriken ), "Bladed", 1030231, 45.0, 95.0, typeof( IronIngot ), 1044036, 5, 1044037 );
-			AddCraft( typeof( Kama ), "Bladed", 1030232, 40.0, 90.0, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( Sai ), "Bladed", 1030234, 50.0, 100.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( AssassinSpike ), "Bladed", "assassin dagger", 10.0, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
+			AddCraftRecipe( typeof( ElvenSpellblade ), "Bladed", "assassin sword", 44.1, 94.1, typeof( IronIngot ), 1044036, 8, 1044037 );
+			AddCraftRecipe( typeof( VikingSword ), "Bladed", "barbarian sword", 24.3, 74.3, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( Broadsword ), "Bladed", 1023934, 35.4, 85.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( Claymore ), "Bladed", "claymore", 34.3, 84.3, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( CrescentBlade ), "Bladed", 1029921, 45.0, 95.0, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( Cutlass ), "Bladed", 1025185, 24.3, 74.3, typeof( IronIngot ), 1044036, 8, 1044037 );
+			AddCraftRecipe( typeof( Dagger ), "Bladed", 1023921, -0.4, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
+			AddCraftRecipe( typeof( RadiantScimitar ), "Bladed", "falchion", 35.4, 85.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( Katana ),"Bladed", 1025119, 44.1, 94.1, typeof( IronIngot ), 1044036, 8, 1044037 );
+			AddCraftRecipe( typeof( Kryss ), "Bladed", 1025121, 36.7, 86.7, typeof( IronIngot ), 1044036, 8, 1044037 );
+			AddCraftRecipe( typeof( LargeKnife ), "Bladed", "large knife", -0.4, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
+			AddCraftRecipe( typeof( Longsword ), "Bladed", 1023937, 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( ElvenMachete ), "Bladed", "machete", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( ShortSpear ), "Bladed", "rapier", 45.3, 95.3, typeof( IronIngot ), 1044036, 6, 1044037 );
+			AddCraftRecipe( typeof( RoyalSword ), "Bladed", "royal sword", 54.3, 84.3, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( ShortSword ), "Bladed", "short sword", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( BoneHarvester ), "Bladed", "sickle", 33.0, 83.0, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( Scimitar ), "Bladed", 1025046, 31.7, 81.7, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( RuneBlade ), "Bladed", "war blades", 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( WarCleaver ), "Bladed", "war cleaver", 10.0, 49.6, typeof( IronIngot ), 1044036, 3, 1044037 );
+			AddCraftRecipe( typeof( Leafblade ), "Bladed", "war dagger", 20.0, 59.6, typeof( IronIngot ), 1044036, 5, 1044037 );
+			AddCraftRecipe( typeof( NoDachi ), "Bladed", 1030221, 75.0, 125.0, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( Wakizashi ), "Bladed", 1030223, 50.0, 100.0, typeof( IronIngot ), 1044036, 8, 1044037 );
+			AddCraftRecipe( typeof( Lajatang ), "Bladed", 1030226, 80.0, 130.0, typeof( IronIngot ), 1044036, 25, 1044037 );
+			AddCraftRecipe( typeof( Daisho ), "Bladed", 1030228, 60.0, 110.0, typeof( IronIngot ), 1044036, 15, 1044037 );
+			AddCraftRecipe( typeof( Tekagi ), "Bladed", 1030230, 55.0, 105.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( Shuriken ), "Bladed", 1030231, 45.0, 95.0, typeof( IronIngot ), 1044036, 5, 1044037 );
+			AddCraftRecipe( typeof( Kama ), "Bladed", 1030232, 40.0, 90.0, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( Sai ), "Bladed", 1030234, 50.0, 100.0, typeof( IronIngot ), 1044036, 12, 1044037 );
 			#endregion
 
 			#region Axes
-			AddCraft( typeof( Axe ), "Axes", 1023913, 34.2, 84.2, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( BattleAxe ), "Axes", 1023911, 30.5, 80.5, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( DoubleAxe ), "Axes", 1023915, 29.3, 79.3, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( ExecutionersAxe ), "Axes", "great axe", 34.2, 84.2, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( LargeBattleAxe ), "Axes", 1025115, 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( TwoHandedAxe ), "Axes", 1025187, 33.0, 83.0, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( WarAxe ), "Axes", 1025040, 39.1, 89.1, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( OrnateAxe ), "Axes", "barbarian axe", 24.3, 74.3, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( Axe ), "Axes", 1023913, 34.2, 84.2, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( BattleAxe ), "Axes", 1023911, 30.5, 80.5, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( DoubleAxe ), "Axes", 1023915, 29.3, 79.3, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( ExecutionersAxe ), "Axes", "great axe", 34.2, 84.2, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( LargeBattleAxe ), "Axes", 1025115, 28.0, 78.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( TwoHandedAxe ), "Axes", 1025187, 33.0, 83.0, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( WarAxe ), "Axes", 1025040, 39.1, 89.1, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( OrnateAxe ), "Axes", "barbarian axe", 24.3, 74.3, typeof( IronIngot ), 1044036, 16, 1044037 );
 			#endregion
 
 			#region Pole Arms
-			AddCraft( typeof( Bardiche ), "Polearms", 1023917, 31.7, 81.7, typeof( IronIngot ), 1044036, 18, 1044037 );
-			AddCraft( typeof( BladedStaff ), "Polearms", 1029917, 40.0, 90.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( DoubleBladedStaff ), "Polearms", 1029919, 45.0, 95.0, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( Halberd ), "Polearms", 1025183, 39.1, 89.1, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( Harpoon ), "Polearms", "harpoon", 30.0, 70.0, typeof( IronIngot ), 1015101, 12, 1044351 );
-			AddCraft( typeof( Lance ), "Polearms", 1029920, 48.0, 98.0, typeof( IronIngot ), 1044036, 20, 1044037 );
-			AddCraft( typeof( Pike ), "Polearms", 1029918, 47.0, 97.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( Pitchforks ), "Polearms", "pitchfork", 45.0, 95.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( Scythe ), "Polearms", 1029914, 39.0, 89.0, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( Spear ), "Polearms", 1023938, 49.0, 99.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( Pitchfork ), "Polearms", "trident", 45.0, 95.0, typeof( IronIngot ), 1044036, 12, 1044037 );
-			AddCraft( typeof( WarFork ), "Polearms", 1025125, 42.9, 92.9, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( Bardiche ), "Polearms", 1023917, 31.7, 81.7, typeof( IronIngot ), 1044036, 18, 1044037 );
+			AddCraftRecipe( typeof( BladedStaff ), "Polearms", 1029917, 40.0, 90.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( DoubleBladedStaff ), "Polearms", 1029919, 45.0, 95.0, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( Halberd ), "Polearms", 1025183, 39.1, 89.1, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( Harpoon ), "Polearms", "harpoon", 30.0, 70.0, typeof( IronIngot ), 1015101, 12, 1044351 );
+			AddCraftRecipe( typeof( Lance ), "Polearms", 1029920, 48.0, 98.0, typeof( IronIngot ), 1044036, 20, 1044037 );
+			AddCraftRecipe( typeof( Pike ), "Polearms", 1029918, 47.0, 97.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( Pitchforks ), "Polearms", "pitchfork", 45.0, 95.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( Scythe ), "Polearms", 1029914, 39.0, 89.0, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( Spear ), "Polearms", 1023938, 49.0, 99.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( Pitchfork ), "Polearms", "trident", 45.0, 95.0, typeof( IronIngot ), 1044036, 12, 1044037 );
+			AddCraftRecipe( typeof( WarFork ), "Polearms", 1025125, 42.9, 92.9, typeof( IronIngot ), 1044036, 12, 1044037 );
 			#endregion
 
 			#region Bashing
-			AddCraft( typeof( DiamondMace ), "Bashing", "battle mace", 28.0, 78.0, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( Hammers ), "Bashing", "hammer", 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
-			AddCraft( typeof( HammerPick ), "Bashing", 1025181, 34.2, 84.2, typeof( IronIngot ), 1044036, 16, 1044037 );
-			AddCraft( typeof( Mace ), "Bashing", 1023932, 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
-			AddCraft( typeof( Maul ), "Bashing", 1025179, 19.4, 69.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( Scepter ), "Bashing", 1029916, 21.4, 71.4, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddCraft( typeof( SpikedClub ), "Bashing", "spiked mace", 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
-			AddCraft( typeof( WarMace ), "Bashing", 1025127, 28.0, 78.0, typeof( IronIngot ), 1044036, 14, 1044037 );
-			AddCraft( typeof( WarHammer ), "Bashing", 1025177, 34.2, 84.2, typeof( IronIngot ), 1044036, 16, 1044037 );
-			index = AddCraft( typeof( Tessen ), "Bashing", 1030222, 85.0, 135.0, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( DiamondMace ), "Bashing", "battle mace", 28.0, 78.0, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( Hammers ), "Bashing", "hammer", 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
+			AddCraftRecipe( typeof( HammerPick ), "Bashing", 1025181, 34.2, 84.2, typeof( IronIngot ), 1044036, 16, 1044037 );
+			AddCraftRecipe( typeof( Mace ), "Bashing", 1023932, 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
+			AddCraftRecipe( typeof( Maul ), "Bashing", 1025179, 19.4, 69.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( Scepter ), "Bashing", 1029916, 21.4, 71.4, typeof( IronIngot ), 1044036, 10, 1044037 );
+			AddCraftRecipe( typeof( SpikedClub ), "Bashing", "spiked mace", 14.5, 64.5, typeof( IronIngot ), 1044036, 6, 1044037 );
+			AddCraftRecipe( typeof( WarMace ), "Bashing", 1025127, 28.0, 78.0, typeof( IronIngot ), 1044036, 14, 1044037 );
+			AddCraftRecipe( typeof( WarHammer ), "Bashing", 1025177, 34.2, 84.2, typeof( IronIngot ), 1044036, 16, 1044037 );
+			index = AddCraftRecipe( typeof( Tessen ), "Bashing", 1030222, 85.0, 135.0, typeof( IronIngot ), 1044036, 16, 1044037 );
 				AddSkill( index, SkillName.Tailoring, 50.0, 55.0 );
 				AddRes( index, typeof( Fabric ), 1044286, 10, 1044287 );
 
@@ -440,6 +439,22 @@ namespace Server.Engines.Craft
 			BreakDown = true;
 			Repair = true;
 			CanEnhance = true;
+		}
+
+		public bool NeedsWeaponRecipe(PlayerMobile player)
+		{
+			return GetRecipes().Any(id =>
+				{
+					var recipe = Recipe.Recipes[id];
+
+					return !player.HasRecipe(id) && IsWeaponRecipe(recipe);
+				}
+			);
+		}
+
+		public bool IsWeaponRecipe(Recipe recipe)
+		{
+			return typeof(BaseWeapon).IsAssignableFrom(recipe.CraftItem.ItemType);
 		}
 	}
 
