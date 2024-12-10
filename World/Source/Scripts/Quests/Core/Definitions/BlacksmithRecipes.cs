@@ -60,7 +60,7 @@ namespace Server.Engines.MLQuests.Definitions
 
             // TODO: Any other items?
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(20, typeof(Dagger), "Daggers"));
+            Objectives.Add(new CraftObjective(20, typeof(WoodenKiteShield), "Kite Shield"));
 
             Rewards.Add(new ConstructibleItemReward("Ringmail Armor Recipes",
                 player =>
@@ -130,11 +130,8 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = "CompletionMessage ChainArmorQuest";
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(20, typeof(RingmailGloves), "Ringmail Gloves"));
-            Objectives.Add(new CraftObjective(20, typeof(RingmailLegs), "Ringmail Legs"));
-            Objectives.Add(new CraftObjective(20, typeof(RingmailArms), "Ringmail Arms"));
-            Objectives.Add(new CraftObjective(20, typeof(RingmailChest), "Ringmail Chests"));
-            Objectives.Add(new CraftObjective(20, typeof(RingmailSkirt), "Ringmail Skirts"));
+            Objectives.Add(new CraftObjective(15, typeof(RingmailGloves), "Ringmail Gloves"));
+            Objectives.Add(new CraftObjective(15, typeof(RingmailLegs), "Ringmail Leggings"));
 
             Rewards.Add(new ConstructibleItemReward("Chain Armor Recipes",
                 player =>
@@ -203,10 +200,8 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = "CompletionMessage PlateArmorQuest";
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(20, typeof(ChainCoif), "Chain Coifs"));
-            Objectives.Add(new CraftObjective(20, typeof(ChainLegs), "Chain Legs"));
-            Objectives.Add(new CraftObjective(20, typeof(ChainChest), "Chain Chests"));
-            Objectives.Add(new CraftObjective(20, typeof(ChainSkirt), "Chain Skirts"));
+            Objectives.Add(new CraftObjective(15, typeof(ChainCoif), "Chainmail Coif"));
+            Objectives.Add(new CraftObjective(15, typeof(ChainChest), "Chainmail Tunic"));
 
             Rewards.Add(new ConstructibleItemReward("Plate Armor Recipes",
                 player =>
@@ -284,13 +279,8 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = "CompletionMessage AnimalArmorQuest";
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(20, typeof(PlateArms), "Plate Arms"));
-            Objectives.Add(new CraftObjective(20, typeof(PlateGloves), "Plate Gloves"));
-            Objectives.Add(new CraftObjective(20, typeof(PlateGorget), "Plate Gorgets"));
-            Objectives.Add(new CraftObjective(20, typeof(PlateLegs), "Plate Legs"));
-            Objectives.Add(new CraftObjective(20, typeof(PlateSkirt), "Plate Skirts"));
-            Objectives.Add(new CraftObjective(20, typeof(PlateChest), "Plate Chests"));
-            Objectives.Add(new CraftObjective(20, typeof(FemalePlateChest), "Female Plate Chests"));
+            Objectives.Add(new CraftObjective(10, typeof(PlateGorget), "Platemail Gorget"));
+            Objectives.Add(new CraftObjective(10, typeof(PlateChest), "Platemail"));
 
             Rewards.Add(new ConstructibleItemReward("Animal Armor Recipes",
                 player =>
@@ -357,8 +347,8 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = "CompletionMessage RoyalArmorQuest";
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(10, typeof(HorseArmor), "Horse Barding"));
-            Objectives.Add(new CraftObjective(10, typeof(DragonBardingDeed), "Dragon Barding"));
+            Objectives.Add(new CraftObjective(1, typeof(HorseArmor), "Horse Barding"));
+            // Objectives.Add(new CraftObjective(1, typeof(DragonBardingDeed), "Dragon Barding"));
 
             Rewards.Add(new ConstructibleItemReward("Royal Armor Recipes",
                 player =>
@@ -429,13 +419,8 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = "CompletionMessage TridentQuest";
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
-            Objectives.Add(new CraftObjective(20, typeof(RoyalBoots), "Royal Boots"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalGloves), "Royal Gloves"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalGorget), "Royal Gorgets"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalHelm), "Royal Helms"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalsLegs), "Royal Legs"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalArms), "Royal Arms"));
-            Objectives.Add(new CraftObjective(20, typeof(RoyalChest), "Royal Chests"));
+            Objectives.Add(new CraftObjective(1, typeof(RoyalBoots), "Royal Boots"));
+            Objectives.Add(new CraftObjective(1, typeof(RoyalArms), "Royal Mantle"));
 
             Rewards.Add(new ConstructibleItemReward("Trident Recipe",
                 player =>
