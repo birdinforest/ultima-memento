@@ -420,6 +420,8 @@ namespace Server.Misc
 				{
 					skill.BaseFixedPoint += toGain;
 
+					EventSink.InvokeSkillGain(new SkillGainArgs(from, skill, toGain));
+
 					if ( skill.SkillName == SkillName.Focus || skill.SkillName == SkillName.Meditation ){ if ( Utility.RandomMinMax( 1, 10 ) == 1 )
 						{ Server.Gumps.SkillListingGump.RefreshSkillList( from ); }}
 					else

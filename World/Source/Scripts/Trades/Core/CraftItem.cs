@@ -1148,6 +1148,8 @@ namespace Server.Engines.Craft
 							item.Amount = maxAmount;
 					}
 
+                    EventSink.InvokeCraftSuccess(new CraftSuccessArgs(from, item, tool is Item ? (Item)tool : null));
+
 					int made = item.Amount;
 					if ( item is Kindling || item is BarkFragment || item is Shaft )
 						made = made * 2;

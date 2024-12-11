@@ -494,9 +494,10 @@ namespace Server.Engines.Harvest
 
 						BonusHarvestResource bonus = def.GetBonusResource();
 
+						Item bonusItem = null;
 						if ( bonus != null && bonus.Type != null && skillValue >= bonus.ReqSkill )
 						{
-							Item bonusItem = Construct( bonus.Type, from );
+							bonusItem = Construct( bonus.Type, from );
 
 							if ( Give( from, bonusItem, true ) )
 							{
@@ -523,6 +524,8 @@ namespace Server.Engines.Harvest
 								def.SendMessageTo( from, def.ToolBrokeMessage );
 							}
 						}
+
+						EventSink.InvokeResourceHarvestSuccess(new ResourceHarvestSuccessArgs(from, tool, item, bonusItem, this));
 					}
 				}
 			}

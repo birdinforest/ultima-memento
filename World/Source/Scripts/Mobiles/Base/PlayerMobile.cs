@@ -4781,9 +4781,13 @@ namespace Server.Mobiles
 			}
 		}
 
-		#endregion
+        #endregion
 
-	}
+        public override void OnRegionChange(Region Old, Region New)
+        {
+			EventSink.InvokeOnEnterRegion(new OnEnterRegionArgs(this, Old, New));
+        }
+    }
 
 	public enum NoLongUsedCellType
 	{
