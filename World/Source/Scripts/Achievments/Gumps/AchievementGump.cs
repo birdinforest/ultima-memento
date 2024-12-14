@@ -114,8 +114,10 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 AddButton(282, 549, 4014, 4015, 0, GumpButtonType.Page, i / 5); // Prev
             }
 
+            var isComplete = acheiveData != null && acheiveData.IsComplete;
+            var title = isComplete || !ac.HideTitle ? ac.Title : "???";
             AddBackground(277, 68 + (index * 100), 727, 97, 3600);
-            AddLabel(350, 83 + (index * 100), 49, ac.Title);
+            AddLabel(350, 83 + (index * 100), 49, title);
             if (ac.ItemIcon > 0)
                 AddItem(294, 93 + (index * 100), ac.ItemIcon);
 
@@ -136,7 +138,9 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 AddLabel(459, 131 + (index * 100), COLOR_LABEL, progress + @" / " + ac.CompletionTotal);
             }
 
-            TextDefinition.AddHtmlText(this, 355, 102 + (index * 100), 613, 16, ac.Desc, false, false, COLOR_LOCALIZED, COLOR_HTML);
+            var description = isComplete || !ac.HideDesc ? ac.Desc : "???";
+            TextDefinition.AddHtmlText(this, 355, 102 + (index * 100), 613, 16, description, false, false, COLOR_LOCALIZED, COLOR_HTML);
+
             if (acheiveData != null && acheiveData.IsComplete)
                 AddLabel(911, 83 + (index * 100), 61, acheiveData.CompletedOn.ToShortDateString());
 

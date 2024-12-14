@@ -31,6 +31,14 @@ namespace Scripts.Mythik.Systems.Achievements
         public int CategoryID { get; set; }
         public string Title { get; set; }
         public string Desc { get; set; }
+        /// <summary>
+        /// Hide the Title until completed
+        /// </summary>
+        public bool HideTitle { get; set; }
+        /// <summary>
+        /// Hide the Desc until completed
+        /// </summary>
+        public bool HideDesc { get; set; }
         public int ItemIcon { get; set; }
         /// <summary>
         /// Number of Points rewarded for completion
