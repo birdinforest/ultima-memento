@@ -318,6 +318,11 @@ namespace Server
 			return Map.Sosaria;
 		}
 
+		public static Land GetLand( IEntity entity )
+		{
+			return GetLand(entity.Map, entity.Location, entity.Location.X, entity.Location.Y);
+		}
+
 		public static Land GetLand( Map map, Point3D location, int x, int y )
 		{
 			Region reg = Region.Find( location, map );
