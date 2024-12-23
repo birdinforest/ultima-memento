@@ -28,7 +28,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
         public static List<BaseAchievement> Achievements = new List<BaseAchievement>();
         public static List<AchievementCategory> Categories = new List<AchievementCategory>();
-        private static Dictionary<Serial, Dictionary<int, AchieveData>> m_featData = new Dictionary<Serial, Dictionary<int, AchieveData>>();
+        private static Dictionary<string, Dictionary<int, AchieveData>> m_featData = new Dictionary<string, Dictionary<int, AchieveData>>();
         private static Dictionary<Serial, int> m_pointsTotal = new Dictionary<Serial, int>();
 
         private static int GetPlayerPointsTotal(PlayerMobile m)
@@ -102,7 +102,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
                     for (int i = 0; i < count; ++i)
                     {
-                        var id = reader.ReadInt();
+                        var id = reader.ReadString();
                         var dict = new Dictionary<int, AchieveData>();
                         int iCount = reader.ReadInt();
                         if (iCount > 0)
@@ -152,19 +152,18 @@ namespace Scripts.Mythik.Systems.Achievements
 
         public static void OpenGump(Mobile from, Mobile target)
         {
-            if (from == null || target == null)
-                return;
-            if (target as PlayerMobile != null)
-            {
+            if (from == null || target == null) return;
 
-                var player = target as PlayerMobile;
-                if (!m_featData.ContainsKey(player.Serial))
-                    m_featData.Add(player.Serial, new Dictionary<int, AchieveData>());
-                var achieves = m_featData[player.Serial];
-                var total = GetPlayerPointsTotal(player);
+            var player = target as PlayerMobile;
+            if (player == null || player.Account == null) return;
 
-                from.SendGump(new AchievementGump(achieves, total));
-            }
+            var id = player.Account.Username;
+            if (!m_featData.ContainsKey(id)) m_featData.Add(id, new Dictionary<int, AchieveData>());
+
+            var achieves = m_featData[id];
+            var total = GetPlayerPointsTotal(player);
+
+            from.SendGump(new AchievementGump(achieves, total));
         }
 
         [Usage("feats"), Aliases("achievement", "achievements")]
@@ -176,9 +175,12 @@ namespace Scripts.Mythik.Systems.Achievements
 
         internal static void SetAchievementStatus(PlayerMobile player, BaseAchievement ach, int progress)
         {
-            if (!m_featData.ContainsKey(player.Serial))
-                m_featData.Add(player.Serial, new Dictionary<int, AchieveData>());
-            var achieves = m_featData[player.Serial];
+            if (player == null || player.Account == null) return;
+
+            var id = player.Account.Username;
+            if (!m_featData.ContainsKey(id)) m_featData.Add(id, new Dictionary<int, AchieveData>());
+
+            var achieves = m_featData[id];
 
             if (achieves.ContainsKey(ach.ID))
             {
