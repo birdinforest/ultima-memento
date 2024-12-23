@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using Server;
 using Server.Network;
 
 namespace Server.Items
@@ -17,23 +14,30 @@ namespace Server.Items
 
 		public override bool OnEquip( Mobile from )
 		{
-			if ( from.RaceID > 0 )
+			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, Region.Find( from.Location, from.Map ) ) )
 			{
-				if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, Region.Find( from.Location, from.Map ) ) )
-				{
-					from.Send(SpeedControl.Disable);
-					Weight = 5.0;
-				}
-				else
-				{
-					Weight = 3.0;
-					from.Send(SpeedControl.MountSpeed);
-				}
+				from.Send(SpeedControl.Disable);
+				Weight = 5.0;
 			}
+			else
+			{
+				Weight = 3.0;
+				from.Send(SpeedControl.MountSpeed);
+			}
+		
 			return base.OnEquip(from);
 		}
 
-		public override void OnRemoved( object parent )
+        public override bool CanEquip( Mobile from )
+        {
+            if ( !base.CanEquip(from) ) return false;
+			if ( from.RaceID > 0 ) return true;
+
+			from.SendMessage( "This won't fit Humans." );
+			return false;
+        }
+
+        public override void OnRemoved( object parent )
 		{
 			if ( parent is Mobile )
 			{
@@ -43,16 +47,24 @@ namespace Server.Items
 			base.OnRemoved(parent);
 		}
 
+        public override void AddNameProperty(ObjectPropertyList list)
+        {
+            base.AddNameProperty(list);
+			
+			list.Add("[Monster races only]");
+			list.Add("Increase movement speed");
+        }
+
 		public HikingBoots( Serial serial ) : base( serial )
 		{
 		}
-		
-		public override void Serialize( GenericWriter writer )
+
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 );
 		}
-		
+
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
