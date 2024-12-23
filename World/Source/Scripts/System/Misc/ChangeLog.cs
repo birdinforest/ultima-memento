@@ -67,6 +67,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Increased gold values for Coffers<br>");
 			builder.Append("- Misc - Dramatically reduced amount of properties from drops<br>");
 			builder.Append("- Misc - Dramatically reduced attribute intensity from drops<br>");
+			builder.Append("- Misc - Add smooth boat movement<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
 			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
