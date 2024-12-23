@@ -1622,7 +1622,13 @@ namespace Server.Mobiles
 
 		public override void MoveToWorld( Point3D loc, Map map )
 		{
+			var land = Lands.GetLand(this);
+
 			base.MoveToWorld( loc, map );
+
+			var newLand = Lands.GetLand(this);
+			if (land != newLand)
+				CustomEventSink.InvokeLandChanged(new LandChangedArgs(this, land, newLand));
 
 			RecheckTownProtection();
 		}
