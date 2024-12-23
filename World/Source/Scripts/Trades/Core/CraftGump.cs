@@ -374,7 +374,7 @@ namespace Server.Engines.Craft
 
 					if ( !needsRecipe )
 					{
-						AddButton( 411, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 411, 60+moveDown + (index * 20), 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
 						AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
 						AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
 					}
@@ -383,7 +383,7 @@ namespace Server.Engines.Craft
 				{
 					if ( !needsRecipe )
 					{
-						AddButton( 235, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
+						AddButton( 230, 60+moveDown + (index * 20), 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
 						AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 					}
 					else
