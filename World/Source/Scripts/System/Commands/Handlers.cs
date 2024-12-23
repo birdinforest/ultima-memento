@@ -118,13 +118,15 @@ namespace Server.Commands
 			Mobile from = e.Mobile;
 			Map map = from.Map;
 
-			from.SendMessage( "You are at {0} {1} {2} in {3}.", from.X, from.Y, from.Z, map );
+			from.SendMessage( "You are at {0} {1} {2}.", from.X, from.Y, from.Z );
+			from.SendMessage( "Your land is '{0}' on the map '{1}'.", Lands.GetLand( from ), map );
 
 			if ( map != null )
 			{
-				if ( Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) )
+				var region = Server.Misc.Worlds.GetRegionName( from.Map, from.Location );
+				if ( Server.Misc.Worlds.IsMainRegion( region ) )
 				{
-					from.SendMessage( "Your region is " + Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) );
+					from.SendMessage( "Your region is '{0}'.", region );
 				}
 				else
 				{
