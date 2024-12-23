@@ -2,13 +2,12 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public class HikingBoots : LeatherBoots
+	public class HikingBoots : BaseShoes
 	{
 		[Constructable]
-		public HikingBoots()
+		public HikingBoots() : base( 0x2FC4 )
 		{
 			Name = "hiking boots";
-			ItemID = 0x2FC4;
 			CoinPrice = 5;
 		}
 
