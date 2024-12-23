@@ -75,6 +75,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 ++i;
             }
 
+            const int ITEMS_PER_PAGE = 6;
             var achievements = selectedCategory != null
                 ? AchievementSystem.Achievements.Where(ac => ac.CategoryID == selectedCategoryId
                     && !ac.HiddenTillComplete
@@ -86,67 +87,73 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 : AchievementSystem.Achievements
                     .Where(ac => achieves.ContainsKey(ac.ID) && achieves[ac.ID].IsComplete)
                     .OrderByDescending(ac => achieves[ac.ID].CompletedOn)
-                    .Take(5);
+                    .Take(ITEMS_PER_PAGE);
 
             var achievementList = achievements.ToList();
-            for (int index = 0; index < achievementList.Count; index++)
+
+            var maxPages = (int)Math.Ceiling((double)achievementList.Count / ITEMS_PER_PAGE);
+            for (int page = 0; page < maxPages; page++)
             {
-                var ac = achievementList[index];
-                if (achieves.ContainsKey(ac.ID))
+                var pageNumber = page + 1;
+                AddPage(pageNumber);
+
+                // Add items
+                for (int index = 0; index < ITEMS_PER_PAGE; index++)
                 {
-                    AddAchieve(ac, index, achieves[ac.ID]);
+                    var itemIndex = (page * ITEMS_PER_PAGE) + index;
+                    if (achievementList.Count <= itemIndex) break;
+
+                    var achievement = achievementList[itemIndex];
+                    AchieveData data = null;
+                    achieves.TryGetValue(achievement.ID, out data);
+                    AddAchieve(achievement, itemIndex, ITEMS_PER_PAGE, data);
                 }
-                else
-                {
-                    AddAchieve(ac, index, null);
-                }
+
+                if (maxPages == 1) continue; // Don't show buttons if they do nothing
+
+                // Add page buttons
+                AddButton(282, 549, 4014, 4015, 0, GumpButtonType.Page, pageNumber == 1 ? maxPages : pageNumber - 1); // Previous
+                AddLabel(615, 551, COLOR_LABEL, "Page " + pageNumber);
+                AddButton(974, 549, 4005, 4006, 0, GumpButtonType.Page, pageNumber == maxPages ? 1 : pageNumber + 1); // Next
             }
         }
 
-        private void AddAchieve(BaseAchievement ac, int i, AchieveData acheiveData)
+        private void AddAchieve(BaseAchievement ac, int i, int itemsPerPage, AchieveData acheiveData)
         {
-            int index = i % 5;
-            if (index == 0)
-            {
-                AddButton(974, 549, 4005, 4006, 0, GumpButtonType.Page, (i / 5) + 1); // Next
-                AddPage((i / 5) + 1);
-                AddLabel(615, 551, COLOR_LABEL, "Page " + ((i / 5) + 1));
-                AddButton(282, 549, 4014, 4015, 0, GumpButtonType.Page, i / 5); // Prev
-            }
+            const int CARD_HEIGHT = 68;
+            const int CARD_GAP = 11;
+            const int HEIGHT_PER_CARD = CARD_HEIGHT + CARD_GAP;
+
+            int index = i % itemsPerPage; // Item index
 
             var isComplete = acheiveData != null && acheiveData.IsComplete;
             var title = isComplete || !ac.HideTitle ? ac.Title : "???";
-            AddBackground(277, 68 + (index * 100), 727, 97, 3600);
-            AddLabel(350, 83 + (index * 100), 49, title);
+            AddBackground(277, CARD_HEIGHT + (index * HEIGHT_PER_CARD), 727, 73, 3600);
+            AddLabel(350, 15 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 49, title);
             if (ac.ItemIcon > 0)
-                AddItem(294, 93 + (index * 100), ac.ItemIcon);
+                AddItem(294, 25 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), ac.ItemIcon);
 
-            if (1 < ac.CompletionTotal)
+            if (!isComplete && 1 < ac.CompletionTotal)
             {
-                AddImageTiled(353, 136 + (index * 100), 95, 9, 9750); // Gray progress
+                var progress = acheiveData != null ? acheiveData.Progress : 0;
+                AddImageTiled(890, 84 + (index * HEIGHT_PER_CARD), 95, 9, 9750); // Gray progress
 
-                var progress = 0;
                 if (acheiveData != null)
                 {
-                    progress = acheiveData.Progress;
                     var step = 95.0 / ac.CompletionTotal;
 
                     if (0 < progress)
-                        AddImageTiled(353, 136 + (index * 100), (int)(progress * step), 9, 9752); // Green progress
+                        AddImageTiled(890, 84 + (index * HEIGHT_PER_CARD), (int)(progress * step), 9, 9752); // Green progress
                 }
 
-                AddLabel(459, 131 + (index * 100), COLOR_LABEL, progress + @" / " + ac.CompletionTotal);
+                TextDefinition.AddHtmlText(this, 912, 23 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 75, 16, string.Format("<RIGHT>{0} / {1}</RIGHT>", progress, ac.CompletionTotal), false, false, COLOR_LOCALIZED, COLOR_HTML);
             }
 
             var description = isComplete || !ac.HideDesc ? ac.Desc : "???";
-            TextDefinition.AddHtmlText(this, 355, 102 + (index * 100), 613, 16, description, false, false, COLOR_LOCALIZED, COLOR_HTML);
+            TextDefinition.AddHtmlText(this, 355, 34 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 613, 16, description, false, false, COLOR_LOCALIZED, COLOR_HTML);
 
             if (acheiveData != null && acheiveData.IsComplete)
-                AddLabel(911, 83 + (index * 100), 61, acheiveData.CompletedOn.ToShortDateString());
-
-            var progressColor = acheiveData != null && acheiveData.IsComplete ? 61 : 32;
-            AddLabel(311, 131 + (index * 100), progressColor, ac.RewardPoints.ToString());
-
+                TextDefinition.AddHtmlText(this, 806, 12 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 185, 16, string.Format("<RIGHT>Completed {0}</RIGHT>", acheiveData.CompletedOn.ToShortDateString()), false, false, COLOR_LOCALIZED, 0x148506);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
