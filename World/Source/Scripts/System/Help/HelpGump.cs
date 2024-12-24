@@ -878,6 +878,7 @@ namespace Server.Engines.Help
 					case 10: // Quests
 					{
 						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
+						from.SendGump(new QuestLogGump((PlayerMobile)from));
 						break;
 					}
 					case 11: // Quick Bar
