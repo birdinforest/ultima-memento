@@ -1704,7 +1704,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			list.Add( new CallbackEntry( 6169, new ContextCallback( ToggleQuestItem ) ) ); // Toggle Quest Item
+			list.Add( new CallbackEntry( 6119, new ContextCallback( ViewQuestLog ) ) ); // View Quest Log
 		}
 
 		#region Insurance
@@ -1859,9 +1859,26 @@ namespace Server.Mobiles
 
 		#endregion
 
+		#region View Quest Log
+
+		public void ViewQuestLog()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			Server.Engines.MLQuests.Gumps.BaseQuestGump.CloseOtherGumps( this );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogDetailedGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestOfferGump ) );
+
+			SendGump(new Server.Engines.MLQuests.Gumps.QuestLogGump( this ));
+		}
+
+		#endregion
+
 		#region Toggle Quest Item
 
-		private void ToggleQuestItem()
+		public void ToggleQuestItem()
 		{
 			if ( !CheckAlive() )
 				return;
