@@ -516,6 +516,7 @@ namespace Server.Items
 				SkillName skill = m_Stone.Skill;
 				double skillValue = m_Stone.SkillValue;
 				Skill fromSkill = from.Skills[m_Stone.Skill];
+				bool isSecondarySkill = fromSkill.IsSecondarySkill();
 
 				/* If we have, say, 88.4 in our skill and the stone holds 100, we need
 				 * 11.6 free points. Also, if we're below our skillcap by, say, 8.2 points,
@@ -529,7 +530,7 @@ namespace Server.Items
 				{
 					cannotAbsorb = true;
 				}
-				else if ( requiredAmount > 0 )
+				else if ( requiredAmount > 0 && !isSecondarySkill) // Only check amounts for non-secondary skills
 				{
 					int available = 0;
 

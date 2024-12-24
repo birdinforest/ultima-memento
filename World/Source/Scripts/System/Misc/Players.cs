@@ -424,7 +424,7 @@ namespace Server.Misc
 				if ( karma < 0 ){ karma = m.Karma * -1; }
 				if ( karma > 15000){ karma = 15000; }
 
-			int skills = m.Skills.Total; // TODO: Verify with Secondary skills
+			int skills = m.Skills.Total;
 			int based = MyServerSettings.SkillBase();
 
 				if ( skills > based ){ skills = based; }
