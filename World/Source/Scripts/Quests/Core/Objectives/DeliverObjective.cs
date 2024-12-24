@@ -11,30 +11,20 @@ namespace Server.Engines.MLQuests.Objectives
 	{
 		public Type Delivery { get; private set; }
 		public int Amount { get; private set; }
-		public TextDefinition Name { get; private set; }
 		public Type Destination { get; private set; }
 		public bool SpawnsDelivery { get; private set; }
 
-		public DeliverObjective(Type delivery, int amount, TextDefinition name, Type destination)
-			: this(delivery, amount, name, destination, true)
+		public DeliverObjective(Type delivery, int amount, Type destination)
+			: this(delivery, amount, destination, true)
 		{
 		}
 
-		public DeliverObjective(Type delivery, int amount, TextDefinition name, Type destination, bool spawnsDelivery)
+		public DeliverObjective(Type delivery, int amount, Type destination, bool spawnsDelivery)
 		{
 			Delivery = delivery;
 			Amount = amount;
-			Name = name;
 			Destination = destination;
 			SpawnsDelivery = spawnsDelivery;
-
-			if (MLQuestSystem.Debug && name.Number > 0)
-			{
-				int itemid = CollectObjective.LabelToItemID(name.Number);
-
-				if (itemid <= 0 || itemid > 0x4000)
-					Console.WriteLine("Warning: cliloc {0} is likely giving the wrong item ID", name.Number);
-			}
 		}
 
 		public virtual void SpawnDelivery(Container pack)
@@ -69,26 +59,7 @@ namespace Server.Engines.MLQuests.Objectives
 
 		public override void WriteToGump(Gump g, ref int y)
 		{
-			string amount = Amount.ToString();
-
-			g.AddHtmlLocalized(98, y, 312, 16, 1072207, BaseQuestGump.COLOR_LOCALIZED, false, false); // Deliver
-			g.AddLabel(143, y, BaseQuestGump.COLOR_LOCALIZED, amount);
-
-			if (Name.Number > 0)
-			{
-				g.AddHtmlLocalized(143 + amount.Length * 15, y, 190, 18, Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false);
-				g.AddItem(350, y, CollectObjective.LabelToItemID(Name.Number));
-			}
-			else if (Name.String != null)
-			{
-				g.AddLabel(143 + amount.Length * 15, y, BaseQuestGump.COLOR_LOCALIZED, Name.String);
-			}
-
-			y += 32;
-
-			g.AddHtmlLocalized(103, y, 120, 16, 1072379, BaseQuestGump.COLOR_LOCALIZED, false, false); // Deliver to
-			g.AddLabel(223, y, BaseQuestGump.COLOR_LOCALIZED, QuesterNameAttribute.GetQuesterNameFor(Destination));
-
+			TextDefinition.AddHtmlText(g, 98, y, 366 - 5, 16, string.Format("Deliver to {0}", QuesterNameAttribute.GetQuesterNameFor(Destination)), false, false, BaseQuestGump.COLOR_LOCALIZED, BaseQuestGump.COLOR_HTML);
 			y += 16;
 		}
 
@@ -107,13 +78,13 @@ namespace Server.Engines.MLQuests.Objectives
 		public override bool IsTimed { get { return true; } }
 		public override TimeSpan Duration { get { return m_Duration; } }
 
-		public TimedDeliverObjective(TimeSpan duration, Type delivery, int amount, TextDefinition name, Type destination)
-			: this(duration, delivery, amount, name, destination, true)
+		public TimedDeliverObjective(TimeSpan duration, Type delivery, int amount, Type destination)
+			: this(duration, delivery, amount, destination, true)
 		{
 		}
 
-		public TimedDeliverObjective(TimeSpan duration, Type delivery, int amount, TextDefinition name, Type destination, bool spawnsDelivery)
-			: base(delivery, amount, name, destination, spawnsDelivery)
+		public TimedDeliverObjective(TimeSpan duration, Type delivery, int amount, Type destination, bool spawnsDelivery)
+			: base(delivery, amount, destination, spawnsDelivery)
 		{
 			m_Duration = duration;
 		}

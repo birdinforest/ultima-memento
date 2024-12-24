@@ -33,7 +33,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintRingArmorQuest";
             CompletionMessage = "CompletionMessage HintRingArmorQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(BritainGuildmasterSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(BritainGuildmasterSmithGuy)));
+            Objectives.Add(new DummyObjective("- Crate of Ingots"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -103,7 +104,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintChainArmorQuest";
             CompletionMessage = "CompletionMessage HintChainArmorQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(MontorSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MontorSmithGuy)));
+            Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -173,7 +175,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintPlateArmorQuest";
             CompletionMessage = "CompletionMessage HintPlateArmorQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(DevilGuardSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(DevilGuardSmithGuy)));
+            Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -251,7 +254,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintAnimalArmorQuest";
             CompletionMessage = "CompletionMessage HintAnimalArmorQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(YewSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(YewSmithGuy)));
+            Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -320,7 +324,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintRoyalArmorQuest";
             CompletionMessage = "CompletionMessage HintRoyalArmorQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(MoonSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MoonSmithGuy)));
+            Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -393,7 +398,8 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintTridentQuest";
             CompletionMessage = "CompletionMessage HintTridentQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, "A package", typeof(MoonSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MoonSmithGuy)));
+            Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
         }
@@ -448,6 +454,8 @@ namespace Server.Engines.MLQuests.Definitions
     #endregion
 
     #region Mobiles
+
+    [QuesterName("the Smith Guildmaster in Britain")]
     public class BritainGuildmasterSmithGuy : BlacksmithGuildmaster
     {
         [Constructable]
@@ -473,6 +481,8 @@ namespace Server.Engines.MLQuests.Definitions
             int version = reader.ReadInt();
         }
     }
+
+    [QuesterName("the Smith in Montor")]
     public class MontorSmithGuy : Blacksmith
     {
         [Constructable]
@@ -499,6 +509,7 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
+    [QuesterName("the Smith in Devil Guard")]
     public class DevilGuardSmithGuy : Blacksmith
     {
         [Constructable]
@@ -525,6 +536,7 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
+    [QuesterName("the Smith in Yew")]
     public class YewSmithGuy : Blacksmith
     {
         [Constructable]
@@ -551,6 +563,7 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
+    [QuesterName("the Smith in Moon")]
     public class MoonSmithGuy : Blacksmith
     {
         [Constructable]
@@ -577,6 +590,7 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
+    [QuesterName("the Smith in Grey")]
     public class GreySmithGuy : Blacksmith
     {
         [Constructable]
