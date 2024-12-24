@@ -8171,45 +8171,7 @@ namespace Server.Mobiles
 			///////////////////////////////////////////////////////////////////////////////////////
 
 			// GOLDEN FEATHERS FOR THE RANGERS OUTPOST ALTAR
-			if ( this is Harpy || this is StoneHarpy || this is SnowHarpy || this is Phoenix || this is HarpyElder || this is HarpyHen )
-			{
-				Mobile FeatherGetter = this.LastKiller;
-
-				if ( FeatherGetter is BaseCreature )
-					FeatherGetter = ((BaseCreature)FeatherGetter).GetMaster();
-
-				if ( FeatherGetter is PlayerMobile )
-				{
-					Item RangerBook = FeatherGetter.Backpack.FindItemByType( typeof( GoldenRangers ) );
-					if ( RangerBook != null && ( FeatherGetter.Skills[SkillName.Camping].Base >= 90 || FeatherGetter.Skills[SkillName.Tracking].Base >= 90 ) )
-					{
-						int FeatherChance = 5;
-						if ( this is Phoenix ){ FeatherChance = 25; }
-
-						if ( FeatherChance >= Utility.RandomMinMax( 1, 100 ) )
-						{
-							ArrayList targets = new ArrayList();
-							foreach ( Item item in World.Items.Values )
-							if ( item is GoldenFeathers )
-							{
-								GoldenFeathers goldfeather = (GoldenFeathers)item;
-								if ( goldfeather.owner == FeatherGetter )
-								{
-									targets.Add( item );
-								}
-							}
-							for ( int i = 0; i < targets.Count; ++i )
-							{
-								Item item = ( Item )targets[ i ];
-								item.Delete();
-							}
-							FeatherGetter.AddToBackpack( new GoldenFeathers( FeatherGetter ) );
-							FeatherGetter.SendSound( 0x3D );
-							FeatherGetter.PrivateOverheadMessage(MessageType.Regular, 1150, false, "The goddess has given you golden feathers.", FeatherGetter.NetState);
-						}
-					}
-				}
-			}
+			GoldenFeathers.Award(this, LastKiller);
 
 			int treasureLevel = TreasureMapLevel;
 

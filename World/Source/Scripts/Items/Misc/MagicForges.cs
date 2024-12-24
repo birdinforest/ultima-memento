@@ -791,7 +791,7 @@ namespace Server.Items
 							bool run = true;
 
 							GoldenFeathers goldfeather = (GoldenFeathers)feath;
-							if ( goldfeather.owner == m )
+							if ( goldfeather.Owner == m )
 							{
 								foreach ( Item enchant in m.GetItemsInRange( 10 ) )
 								{
