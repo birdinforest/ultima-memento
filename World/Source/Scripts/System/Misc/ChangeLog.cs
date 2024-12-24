@@ -30,6 +30,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Merchant crates (disabled) now have 24 hour timer and cap at 100k gold<br>");
 			builder.Append("- Craft - Large BODs can no longer generate the required Small BODs<br>");
 			builder.Append("- Craft - Leather Cloaks/Robes are no longer craftable<br>");
+			builder.Append("- Craft - Disable Bulk Order Deeds (needs fixing/balancing)<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Glistening ore vein' to give Mining a more active playstyle<br>");

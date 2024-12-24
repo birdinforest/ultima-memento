@@ -35,6 +35,8 @@ namespace Server.Mobiles
 
 	public abstract class BaseVendor : BaseCreature, IVendor
 	{
+		private const bool BULK_ORDERS_ENABLED = false; // Disabled until they are balanced
+
 		public DateTime m_NextAction;
 		public DateTime NextAction{ get{ return m_NextAction; } set{ m_NextAction = value; } }
 
@@ -197,7 +199,7 @@ namespace Server.Mobiles
 
 			public override void OnClick()
 			{
-				if ( m_Vendor.SupportsBulkOrders( m_From ) )
+				if ( BULK_ORDERS_ENABLED && m_Vendor.SupportsBulkOrders( m_From ) )
 				{
 					TimeSpan ts = m_Vendor.GetNextBulkOrder( m_From );
 
@@ -1427,7 +1429,7 @@ namespace Server.Mobiles
 						}
 					}
 
-					if ( !IsValidBulkOrder( dropped ) || !SupportsBulkOrders( from ) )
+					if ( !BULK_ORDERS_ENABLED || !IsValidBulkOrder( dropped ) || !SupportsBulkOrders( from ) )
 					{
 						SayTo( from, 1045130 ); // That order is for some other shopkeeper.
 						return false;
@@ -2042,7 +2044,7 @@ namespace Server.Mobiles
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
 
-				if ( SupportsBulkOrders( seller ) )
+				if ( BULK_ORDERS_ENABLED && SupportsBulkOrders( seller ) )
 				{
 					Item bulkOrder = CreateBulkOrder( seller, false );
 
@@ -2126,7 +2128,7 @@ namespace Server.Mobiles
 				else if ( !IsActiveBuyer )
 					buysThings = false;
 
-				if ( SupportsBulkOrders( from ) && CheckVendorAccess( from ) )
+				if ( BULK_ORDERS_ENABLED && SupportsBulkOrders( from ) && CheckVendorAccess( from ) )
 					list.Add( new BulkOrderInfoEntry( from, this ) );
 				
 				if ( IsActiveSeller && CheckVendorAccess( from ) )
