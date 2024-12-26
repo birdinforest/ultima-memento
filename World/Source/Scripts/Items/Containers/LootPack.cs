@@ -619,8 +619,8 @@ namespace Server
 					max = enchant / 4;
 				}
 
-				min = Math.Max(1, min);
-				max = Math.Min(min + 1, max);
+				min = Math.Max(0, min);
+				max = Math.Max(min + 1, max);
 
 				int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
 
