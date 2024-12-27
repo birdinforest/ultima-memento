@@ -604,11 +604,12 @@ namespace Server
 				int max;
 				if (enchant == 9999) // BaseRunicTool
 				{
-					props = Utility.RandomMinMax(GetResourceAttrs(item.Resource).RunicMinAttributes, GetResourceAttrs(item.Resource).RunicMaxAttributes);
+					var craftAttributeInfo = GetResourceAttrs(item.Resource);
+					props = Utility.RandomMinMax(craftAttributeInfo.RunicMinAttributes, craftAttributeInfo.RunicMaxAttributes);
 					if (props < 1) return item;
 
-					min = GetResourceAttrs(item.Resource).RunicMinIntensity;
-					max = GetResourceAttrs(item.Resource).RunicMaxIntensity;
+					min = craftAttributeInfo.RunicMinIntensity;
+					max = craftAttributeInfo.RunicMaxIntensity;
 				}
 				else
 				{
