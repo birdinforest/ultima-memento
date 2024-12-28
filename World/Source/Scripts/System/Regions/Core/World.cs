@@ -240,6 +240,19 @@ namespace Server.Misc
 			return world;
 		}
 
+		public static string GetMyMapDisplayName( Map map )
+		{
+			if ( map == Map.Sosaria ) return "Sosaria"; 
+			if ( map == Map.Lodor ) return "Lodor"; 
+			if ( map == Map.Underworld ) return "Underworld"; 
+			if ( map == Map.SerpentIsland ) return "Serpent Island"; 
+			if ( map == Map.IslesDread ) return "Isles of Dread"; 
+			if ( map == Map.SavagedEmpire ) return "Savaged Empire"; 
+			if ( map == Map.Atlantis ) return "Atlantis"; 
+
+			return "Unknown";
+		}
+
 		public static Map GetMyDefaultMap( Land land )
 		{
 			Map map = Map.Sosaria;
