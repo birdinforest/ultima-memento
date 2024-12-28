@@ -706,26 +706,22 @@ namespace Server
 			}
 		}
 
-		public static int Rarity( CraftResource resource )
+		public static int Rarity(CraftResource resource)
 		{
-			int check = Utility.Random( 512 );
-			int rarity = 1;
+			if (RarityIgnore(resource)) return Utility.RandomMinMax(1, 10);
 
-			if ( check > 255 ){			rarity = 1;		}
-			else if ( check < 256 ){	rarity = 2;		}
-			else if ( check < 128 ){	rarity = 3;		}
-			else if ( check < 64 ){		rarity = 4;		}
-			else if ( check < 32 ){		rarity = 5;		}
-			else if ( check < 16 ){		rarity = 6;		}
-			else if ( check < 8 ){		rarity = 7;		}
-			else if ( check < 4 ){		rarity = 8;		}
-			else if ( check < 2 ){		rarity = 9;		}
-			else {						rarity = 10;	}
+			int check = Utility.Random(1024);
+			if (check < 2) return 10;
+			if (check < 4) return 9;
+			if (check < 8) return 8;
+			if (check < 16) return 7;
+			if (check < 32) return 6;
+			if (check < 64) return 5;
+			if (check < 128) return 4;
+			if (check < 256) return 3;
+			if (check < 512) return 2;
 
-			if ( RarityIgnore( resource ) )
-				rarity = Utility.RandomMinMax( 1, 10 );
-
-			return rarity;
+			else return 1;
 		}
 
 		public static bool RarityIgnore( CraftResource resource )
