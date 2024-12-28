@@ -253,9 +253,12 @@ namespace Server.Engines.MLQuests.Definitions
                             }
                         }
 
+                        var map = Lands.MapName(Land);
+                        var name = Worlds.GetMyMapDisplayName(map);
+
                         return forCitizen
-                            ? string.Format("I *think* I saw it... or maybe I didn't... wait, no, I definitely saw it! It was, like, right there... or was it? I dunno, man. I think it was in the world of {0}", Lands.MapName(Land))
-                            : string.Format("You must search the world of {0}.", Lands.MapName(Land).Name);
+                            ? string.Format("I *think* I saw it... or maybe I didn't... wait, no, I definitely saw it! It was, like, right there... or was it? I dunno, man. I think it was in the world of {0}", name)
+                            : string.Format("You must search the world of {0}.", name);
                     }
 
                 case RumorType.Dungeon:
