@@ -165,8 +165,8 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( LeatherArms ), 1015293, 1025061, 53.9, 78.9, typeof( Leather ), 1044462, 4, 1044463 );
 			AddCraft( typeof( LeatherLegs ), 1015293, 1025067, 66.3, 91.3, typeof( Leather ), 1044462, 10, 1044463 );
 			AddCraft( typeof( LeatherChest ), 1015293, 1025068, 70.5, 95.5, typeof( Leather ), 1044462, 12, 1044463 );
-			AddCraft( typeof( LeatherCloak ), 1015293, "leather cloak", 66.3, 91.3, typeof( Leather ), 1044462, 10, 1044463 );
-			AddCraft( typeof( LeatherRobe ), 1015293, "leather robe", 76.3, 101.3, typeof( Leather ), 1044462, 18, 1044463 );
+			// AddCraft( typeof( LeatherCloak ), 1015293, "leather cloak", 66.3, 91.3, typeof( Leather ), 1044462, 10, 1044463 );
+			// AddCraft( typeof( LeatherRobe ), 1015293, "leather robe", 76.3, 101.3, typeof( Leather ), 1044462, 18, 1044463 );
 			AddCraft( typeof( LeatherShorts ), 1015293, 1027168, 62.2, 87.2, typeof( Leather ), 1044462, 8, 1044463 );
 			AddCraft( typeof( LeatherSkirt ), 1015293, 1027176, 58.0, 83.0, typeof( Leather ), 1044462, 6, 1044463 );
 			AddCraft( typeof( LeatherBustierArms ), 1015293, 1027178, 58.0, 83.0, typeof( Leather ), 1044462, 6, 1044463 );
