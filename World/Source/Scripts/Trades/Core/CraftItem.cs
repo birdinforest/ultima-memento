@@ -1138,7 +1138,14 @@ namespace Server.Engines.Craft
 						item.Hue = resHue;
 
 					if ( tool is BaseRunicTool )
-						item = LootPackEntry.Enchant( from, 9999, item );
+					{
+						var craftAttributeInfo = LootPackEntry.GetResourceAttrs(item.Resource);
+						int props = Utility.RandomMinMax(craftAttributeInfo.RunicMinAttributes, craftAttributeInfo.RunicMaxAttributes);
+						if (0 < props)
+						{
+							item = LootPackEntry.Enchant(from, item, props, craftAttributeInfo.RunicMinIntensity, craftAttributeInfo.RunicMaxIntensity, false);
+						}
+					}
 
 					if ( maxAmount > 0 )
 					{

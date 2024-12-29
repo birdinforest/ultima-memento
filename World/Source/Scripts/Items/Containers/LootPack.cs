@@ -595,55 +595,44 @@ namespace Server
 			return info.AttributeInfo;
 		}
 
-		public static Item Enchant(Mobile from, int enchant, Item item)
+		public static Item Enchant(Mobile from, Item item, int props, int min, int max, bool isRunicTool)
 		{
-			if (item != null)
-			{
-				int props;
-				int min;
-				int max;
-				if (enchant == 9999) // BaseRunicTool
-				{
-					var craftAttributeInfo = GetResourceAttrs(item.Resource);
-					props = Utility.RandomMinMax(craftAttributeInfo.RunicMinAttributes, craftAttributeInfo.RunicMaxAttributes);
-					if (props < 1) return item;
+			min = Math.Max(0, min);
+			max = Math.Max(min + 1, max);
 
-					min = craftAttributeInfo.RunicMinIntensity;
-					max = craftAttributeInfo.RunicMaxIntensity;
-				}
-				else
-				{
-					props = Utility.RandomMinMax((int)(enchant / 100), (int)(enchant / 60)); // @ 500 -- 5-8 properties
-					if (props < 1) return item;
+			int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
 
-					min = enchant / 10;
-					max = enchant / 4;
-				}
-
-				min = Math.Max(0, min);
-				max = Math.Max(min + 1, max);
-
-				int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
-
-				if ( item is BaseWeapon )
-					BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, false, luckChance, props, min, max );
-				else if ( item is BaseArmor )
-					BaseRunicTool.ApplyAttributesTo( (BaseArmor)item, false, luckChance, props, min, max );
-				else if ( item is BaseTrinket )
-					BaseRunicTool.ApplyAttributesTo( (BaseTrinket)item, false, luckChance, props, min, max );
-				else if ( item is BaseQuiver )
-					BaseRunicTool.ApplyAttributesTo( (BaseQuiver)item, false, luckChance, props, min, max );
-				else if ( item is BaseHat )
-					BaseRunicTool.ApplyAttributesTo( (BaseHat)item, false, luckChance, props, min, max );
-				else if ( item is BaseClothing )
-					BaseRunicTool.ApplyAttributesTo( (BaseClothing)item, false, luckChance, props, min, max );
-				else if ( item is BaseInstrument )
-					BaseRunicTool.ApplyAttributesTo( (BaseInstrument)item, false, luckChance, props, min, max );
-				else if ( item is Spellbook )
-					BaseRunicTool.ApplyAttributesTo( (Spellbook)item, false, luckChance, props, min, max );
-			}
+			if ( item is BaseWeapon )
+				BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseArmor )
+				BaseRunicTool.ApplyAttributesTo( (BaseArmor)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseTrinket )
+				BaseRunicTool.ApplyAttributesTo( (BaseTrinket)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseQuiver )
+				BaseRunicTool.ApplyAttributesTo( (BaseQuiver)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseHat )
+				BaseRunicTool.ApplyAttributesTo( (BaseHat)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseClothing )
+				BaseRunicTool.ApplyAttributesTo( (BaseClothing)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is BaseInstrument )
+				BaseRunicTool.ApplyAttributesTo( (BaseInstrument)item, isRunicTool, luckChance, props, min, max );
+			else if ( item is Spellbook )
+				BaseRunicTool.ApplyAttributesTo( (Spellbook)item, isRunicTool, luckChance, props, min, max );
 
 			return item;
+		}
+
+		public static Item Enchant(Mobile from, int enchant, Item item)
+		{
+			if (item == null) return null;
+				
+			int props = Utility.RandomMinMax(enchant / 100, enchant / 60); // @ 500 -- 5-8 properties
+			if (props < 1) return item;
+
+			int min = enchant / 10;
+			int max = enchant / 4;
+
+			return Enchant(from, item, props, min, max, false);
 		}
 
 		public LootPackEntry( bool atSpawnTime, LootPackItem[] items, double chance, string quantity ) : this( atSpawnTime, items, chance, new LootPackDice( quantity ), 0, 0, 0 )
