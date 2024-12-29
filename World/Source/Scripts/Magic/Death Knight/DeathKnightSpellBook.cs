@@ -1,7 +1,4 @@
-using System;
-using Server.Network;
 using Server.Gumps;
-using Server.Spells;
 
 namespace Server.Items
 {
@@ -10,10 +7,8 @@ namespace Server.Items
 	{
 		public override string DefaultDescription{ get{ return "This vile book can contain magic used by death knights. Fillings its pages can only be achieved by finding the resting places of long dead death knights."; } }
 
-		public Mobile owner;
-
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile Owner { get{ return owner; } set{ owner = value; } }
+		public Mobile Owner { get; set; }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.DeathKnight; } }
 		public override int BookOffset{ get{ return 750; } }
@@ -27,7 +22,7 @@ namespace Server.Items
 		[Constructable]
 		public DeathKnightSpellbook( ulong content, Mobile gifted ) : base( content, 0x6721 )
 		{
-			owner = gifted;
+			Owner = gifted;
 
 			string sEvil = "Evil";
 			switch ( Utility.RandomMinMax( 0, 7 ) ) 
@@ -49,11 +44,22 @@ namespace Server.Items
 			}
 		}
 
-		public override void OnDoubleClick( Mobile from )
+        public override bool CanEquip(Mobile from)
+        {
+			if (from != Owner)
+			{
+				from.SendLocalizedMessage( 1112589 ); // This does not belong to you! Find your own!
+				return false;
+			}
+
+            return base.CanEquip(from);
+        }
+
+        public override void OnDoubleClick( Mobile from )
 		{
 			Container pack = from.Backpack;
 
-			if ( owner != from )
+			if ( Owner != from )
 			{
 				from.SendMessage( "These pages appears as scribbles to you." );
 			}
@@ -69,7 +75,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "For " + owner.Name + "" ); }
+			if ( Owner != null ){ list.Add( 1070722, "For " + Owner.Name + "" ); }
         }
 
 		public DeathKnightSpellbook( Serial serial ) : base( serial )
@@ -80,14 +86,14 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 ); // version
-			writer.Write( (Mobile)owner);
+			writer.Write( (Mobile)Owner);
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			owner = reader.ReadMobile();
+			Owner = reader.ReadMobile();
 
 			if ( ItemID != 0x6721 && ItemID != 0x6722 )
 				ItemID = 0x6721;

@@ -686,7 +686,7 @@ namespace Server.Items
 						else if ( item is DeathKnightSpellbook )
 						{
 							DeathKnightSpellbook book = (DeathKnightSpellbook)item;
-							if ( book.owner == m )
+							if ( book.Owner == m )
 							{
 								targets.Add( item );
 							}

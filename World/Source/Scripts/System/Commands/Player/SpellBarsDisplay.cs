@@ -3212,7 +3212,7 @@ namespace Server.Gumps
 			if ( book is DeathKnightSpellbook )
 			{
 				DeathKnightSpellbook tome = (DeathKnightSpellbook)book;
-				if ( tome.owner != from )
+				if ( tome.Owner != from )
 				{
 					book = null;
 				}
@@ -3337,7 +3337,7 @@ namespace Server.Gumps
 			if ( book is DeathKnightSpellbook )
 			{
 				DeathKnightSpellbook tome = (DeathKnightSpellbook)book;
-				if ( tome.owner != from )
+				if ( tome.Owner != from )
 				{
 					book = null;
 				}
