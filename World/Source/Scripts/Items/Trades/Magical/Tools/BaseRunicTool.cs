@@ -557,7 +557,7 @@ namespace Server.Items
 					case 20: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistPoisonBonus,		1, 15 ); break;
 					case 21: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistEnergyBonus,		1, 15 ); break;
 					case 22: ApplyAttribute( secondary, min, max, AosWeaponAttribute.DurabilityBonus,		10, 100, 10 ); break;
-					case 23: weapon.Slayer = GetRandomSlayer(); break;
+					case 23: weapon.Slayer = SlayerDeed.GetRandomSlayer(); break;
 					case 24: GetElementalDamages( weapon ); break;
 					case 25: ApplySkillBonus( skills,	min, max, 0,										1, 15 ); break;
 				}
@@ -612,11 +612,6 @@ namespace Server.Items
 			weapon.AosElementDamages[attr] = random;
 
 			return (totalDamage - random);
-		}
-
-		public static SlayerName GetRandomSlayer()
-		{
-			return Server.Items.SlayerDeed.GetDeedSlayer( Utility.RandomMinMax( 1, 34 ) );
 		}
 
 		public void ApplyAttributesTo( BaseArmor armor )
@@ -1129,7 +1124,7 @@ namespace Server.Items
 					case 12: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
 					case 13: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
 					case 14: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 2 ); break;
-					case 15: spellbook.Slayer = GetRandomSlayer(); break;
+					case 15: spellbook.Slayer = SlayerDeed.GetRandomSlayer(); break;
 				}
 			}
 		}

@@ -264,5 +264,10 @@ namespace Server.Items
 
 			return slayer;
 		}
+
+		public static SlayerName GetRandomSlayer()
+		{
+			return GetDeedSlayer( Utility.RandomMinMax( 1, 34 ) );
+		}
 	}
 }

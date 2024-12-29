@@ -226,15 +226,12 @@ namespace Server.Items
 						if ( m_Artifact.PaganItem == 0x1BC3 ){ mace.Delete(); mace = new GiftMace(); mace.Slayer = SlayerName.Silver; }
 						else
 						{
-							SlayerName slayer1 = BaseRunicTool.GetRandomSlayer();
-								mace.Slayer = slayer1;
-							SlayerName slayer2 = BaseRunicTool.GetRandomSlayer();
-
-							while ( slayer1 == slayer2 )
+							mace.Slayer = SlayerDeed.GetRandomSlayer();
+							mace.Slayer2 = mace.Slayer;
+							while ( mace.Slayer == mace.Slayer2 )
 							{
-								slayer2 = BaseRunicTool.GetRandomSlayer();
+								mace.Slayer2 = SlayerDeed.GetRandomSlayer();
 							}
-							mace.Slayer2 = slayer2;
 						}
 						mace.Name = m_Artifact.PaganName;
 						mace.Hue = m_Artifact.PaganColor;

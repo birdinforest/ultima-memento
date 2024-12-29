@@ -806,13 +806,12 @@ namespace Server.Mobiles
 				{
 					Item arty = Loot.RandomInstrument();
 					ResourceMods.SetRandomResource( false, true, arty, CraftResource.None, false, this );
-					SlayerName slayer = BaseRunicTool.GetRandomSlayer();
 					BaseInstrument instr = (BaseInstrument)arty;
 
 					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ arty.Hue = Utility.RandomColor(0); }
 					instr.Quality = InstrumentQuality.Regular;
 					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ instr.Quality = InstrumentQuality.Exceptional; }
-					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ instr.Slayer = slayer; }
+					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ instr.Slayer = SlayerDeed.GetRandomSlayer(); }
 
 					BaseRunicTool.ApplyAttributesTo( (BaseInstrument)arty, false, luck, props, val, val );
 					arty.Movable = false;
