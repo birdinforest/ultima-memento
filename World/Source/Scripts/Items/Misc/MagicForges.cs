@@ -702,10 +702,7 @@ namespace Server.Items
 					{
 						m.AddToBackpack ( new SoulLantern( m ) );
 						DeathKnightSpellbook book = new DeathKnightSpellbook( (ulong)0, m );
-						int attributeCount = Utility.RandomMinMax(8,15);
-						int min = Utility.RandomMinMax(15,25);
-						int max = min + 40;
-						BaseRunicTool.ApplyAttributesTo( book, attributeCount, min, max );
+						BaseRunicTool.ApplyAttributes( this, 3, 5, 40, 70 );
 						m.AddToBackpack ( book );
 						m.SendMessage( "Kas has granted you your wish." );
 
