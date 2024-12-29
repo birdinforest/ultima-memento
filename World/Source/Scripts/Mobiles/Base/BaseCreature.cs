@@ -593,6 +593,23 @@ namespace Server.Mobiles
 		{
 		}
 
+		private class MLQuestEntry : ContextMenuEntry
+		{
+			private readonly BaseCreature m_Mobile;
+			private readonly PlayerMobile m_Player;
+
+			public MLQuestEntry( PlayerMobile player, BaseCreature creature ) : base( 1024, 6 )
+			{
+				m_Mobile = creature;
+				m_Player = player;
+			}
+
+			public override void OnClick()
+			{
+				MLQuestSystem.OnDoubleClick( m_Mobile, m_Player, false);
+			}
+		}
+
 		#endregion
 		
 		#region Bonding
@@ -6969,6 +6986,11 @@ namespace Server.Mobiles
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
 		{
 			base.GetContextMenuEntries( from, list );
+				
+			if ( (this is Citizens == false) && CanGiveMLQuest && from is PlayerMobile )
+			{
+				list.Add( new MLQuestEntry( (PlayerMobile)from, this ) );
+			}
 
 			if ( TalkGumpTitle != null && TalkGumpSubject != null && CheckChattingAccess( from ) )
 				list.Add( new TalkGumpEntry( from, this ) ); 
