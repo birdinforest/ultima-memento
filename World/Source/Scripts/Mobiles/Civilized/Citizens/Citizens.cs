@@ -16,6 +16,7 @@ using Server.Gumps;
 using Server.Accounting;
 using Server.Regions;
 using System.Globalization;
+using Server.Engines.MLQuests;
 
 namespace Server.Mobiles
 {
@@ -1039,40 +1040,43 @@ namespace Server.Mobiles
 			public override void OnClick()
 			{
 			    if( !( m_Mobile is PlayerMobile ) )
-				return;
+					return;
 
 				Citizens citizen = (Citizens)m_Giver;
 
 				PlayerMobile mobile = (PlayerMobile) m_Mobile;
+				string speak = "";
+
+				if ( citizen.CanGiveMLQuest ) 
 				{
-					string speak = "";
+					MLQuestSystem.OnDoubleClick( citizen, mobile, false );
+				}
 
-					if ( citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
-					{
-						speak = MuseumBook.TellRumor( m_Mobile, citizen );
-					}
-					if ( speak == "" && citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
-					{
-						speak = QuestTome.TellRumor( m_Mobile, citizen );
-					}
+				if ( citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
+				{
+					speak = MuseumBook.TellRumor( m_Mobile, citizen );
+				}
+				if ( speak == "" && citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
+				{
+					speak = QuestTome.TellRumor( m_Mobile, citizen );
+				}
 
-					if ( speak != "" )
-					{
-						m_Mobile.PlaySound( 0x5B6 );
-						m_Giver.Say( speak );
-					}
-					else if ( citizen.CitizenService == 0 )
-					{
-						speak = citizen.CitizenRumor;
-						if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", m_Mobile.Name); }
-						if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", m_Mobile.Region.Name); }
-						m_Giver.Say( speak );
-					}
-					else
-					{
-						mobile.CloseGump( typeof( CitizenGump ) );
-						mobile.SendGump(new CitizenGump( m_Giver, m_Mobile ));
-					}
+				if ( speak != "" )
+				{
+					m_Mobile.PlaySound( 0x5B6 );
+					m_Giver.Say( speak );
+				}
+				else if ( citizen.CitizenService == 0 )
+				{
+					speak = citizen.CitizenRumor;
+					if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", m_Mobile.Name); }
+					if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", m_Mobile.Region.Name); }
+					m_Giver.Say( speak );
+				}
+				else
+				{
+					mobile.CloseGump( typeof( CitizenGump ) );
+					mobile.SendGump(new CitizenGump( m_Giver, m_Mobile ));
 				}
             }
         }

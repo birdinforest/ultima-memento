@@ -7656,11 +7656,6 @@ namespace Server.Mobiles
 				Delete();
 			}
 
-			if ( CanGiveMLQuest && from is PlayerMobile )
-			{
-				if (MLQuestSystem.OnDoubleClick( this, (PlayerMobile)from, false) ) return;
-			}
-
 			base.OnDoubleClick( from );
 		}
 
