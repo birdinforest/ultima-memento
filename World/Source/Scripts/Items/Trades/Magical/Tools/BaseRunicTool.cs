@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Server.Misc;
 
 namespace Server.Items
 {
@@ -21,7 +20,7 @@ namespace Server.Items
 			InfoText2 = "Magically Crafts Items";
 		}
 
-		public void SetMaterial()
+		private void SetMaterial()
 		{
 			if ( this is RunicHammer || this is RunicTinker )
 				ResourceMods.SetRandomResource( false, true, this, CraftResource.Iron, true, null );
@@ -435,7 +434,7 @@ namespace Server.Items
 		private static BitArray m_Props = new BitArray( MaxProperties );
 		private static int[] m_Possible = new int[MaxProperties];
 
-		public static int GetUniqueRandom( int count )
+		private static int GetUniqueRandom( int count )
 		{
 			int avail = 0;
 
@@ -455,35 +454,64 @@ namespace Server.Items
 			return v;
 		}
 
-		public void ApplyAttributesTo( BaseWeapon weapon )
+		/// <summary>
+		/// Adds properties to an item. Does not use Luck.
+		/// </summary>
+		public static void ApplyAttributes( Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
 		{
-			CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
-
-			if ( resInfo == null )
-				return;
-
-			CraftAttributeInfo attrs = resInfo.AttributeInfo;
-
-			if ( attrs == null )
-				return;
-
-			int attributeCount = Utility.RandomMinMax( attrs.RunicMinAttributes, attrs.RunicMaxAttributes );
-			int min = attrs.RunicMinIntensity;
-			int max = attrs.RunicMaxIntensity;
-
-			ApplyAttributesTo( weapon, true, 0, attributeCount, min, max );
+			ApplyAttributes( 0, item, minAttributes, maxAttributes, minIntensity, maxIntensity );
 		}
 
-		public static void ApplyAttributesTo( BaseWeapon weapon, int attributeCount, int min, int max )
+		/// <summary>
+		/// Used when something kills a mob. Uses the Mobile's calculated Luck.
+		/// </summary>
+		public static void ApplyAttributes( Mobile from, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
 		{
-			ApplyAttributesTo( weapon, false, 0, attributeCount, min, max );
+			int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
+
+			ApplyAttributes( luckChance, item, minAttributes, maxAttributes, minIntensity, maxIntensity );
 		}
 
-		public static void ApplyAttributesTo( BaseWeapon weapon, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
+		public static void ApplyAttributes( int luckChance, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
+		{
+			minAttributes = Math.Max(0, minAttributes);
+			maxAttributes = Math.Max(minAttributes + 1, maxAttributes);
+			int attributeCount = Utility.RandomMinMax( minAttributes, maxAttributes);
+
+			ApplyAttributes( luckChance, item, attributeCount, minIntensity, maxIntensity );
+		}
+
+		public static void ApplyAttributes( int luckChance, Item item, int attributeCount, int minIntensity, int maxIntensity )
+		{
+			ApplyAttributesTo( item, false, luckChance, attributeCount, minIntensity, maxIntensity );
+		}
+
+		public static void ApplyAttributesTo( Item item, int attributeCount, int min, int max )
+		{
+			ApplyAttributesTo( item, false, 0, attributeCount, min, max );
+		}
+
+		public static void ApplyAttributesTo( Item item, bool isRunicTool, int luckChance, int attributeCount, int minIntensity, int maxIntensity )
 		{
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
+			minIntensity = Math.Max(0, minIntensity);
+			maxIntensity = Math.Max(minIntensity + 1, maxIntensity);
+
+			if ( item is BaseWeapon ) ApplyAttributesInternal( (BaseWeapon)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseArmor ) ApplyAttributesInternal( (BaseArmor)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseTrinket ) ApplyAttributesInternal( (BaseTrinket)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseQuiver ) ApplyAttributesToInternal( (BaseQuiver)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseHat ) ApplyAttributesToInternal( (BaseHat)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseClothing ) ApplyAttributesToInternal( (BaseClothing)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is BaseInstrument ) ApplyAttributesToInternal( (BaseInstrument)item, attributeCount, minIntensity, maxIntensity );
+			else if ( item is Spellbook ) ApplyAttributesToInternal( (Spellbook)item, attributeCount, minIntensity, maxIntensity );
+			else Console.WriteLine("Attempted to apply attributes to unsupported item type ({0}).", item.GetType());
+		}
+
+		private static void ApplyAttributesInternal( BaseWeapon weapon, int attributeCount, int min, int max )
+		{
 			AosAttributes primary = weapon.Attributes;
 			AosWeaponAttributes secondary = weapon.WeaponAttributes;
 			AosSkillBonuses skills = weapon.SkillBonuses;
@@ -564,12 +592,12 @@ namespace Server.Items
 			}
 		}
 
-		public static void GetElementalDamages( BaseWeapon weapon )
+		private static void GetElementalDamages( BaseWeapon weapon )
 		{
 			GetElementalDamages( weapon, true );
 		}
 
-		public static void GetElementalDamages( BaseWeapon weapon, bool randomizeOrder )
+		private static void GetElementalDamages( BaseWeapon weapon, bool randomizeOrder )
 		{
 			int fire, phys, cold, nrgy, pois, chaos, direct;
 
@@ -614,35 +642,8 @@ namespace Server.Items
 			return (totalDamage - random);
 		}
 
-		public void ApplyAttributesTo( BaseArmor armor )
+		private static void ApplyAttributesInternal( BaseArmor armor, int attributeCount, int min, int max )
 		{
-			CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
-
-			if ( resInfo == null )
-				return;
-
-			CraftAttributeInfo attrs = resInfo.AttributeInfo;
-
-			if ( attrs == null )
-				return;
-
-			int attributeCount = Utility.RandomMinMax( attrs.RunicMinAttributes, attrs.RunicMaxAttributes );
-			int min = attrs.RunicMinIntensity;
-			int max = attrs.RunicMaxIntensity;
-
-			ApplyAttributesTo( armor, true, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseArmor armor, int attributeCount, int min, int max )
-		{
-			ApplyAttributesTo( armor, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseArmor armor, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = armor.Attributes;
 			AosArmorAttributes secondary = armor.ArmorAttributes;
 			AosSkillBonuses skills = armor.SkillBonuses;
@@ -724,16 +725,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( BaseHat hat, int attributeCount, int min, int max )
+		private static void ApplyAttributesToInternal( BaseHat hat, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( hat, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseHat hat, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = hat.Attributes;
 			AosArmorAttributes secondary = hat.ClothingAttributes;
 			AosElementAttributes resists = hat.Resistances;
@@ -788,16 +781,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( BaseClothing cloth, int attributeCount, int min, int max )
+		private static void ApplyAttributesToInternal( BaseClothing cloth, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( cloth, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseClothing cloth, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = cloth.Attributes;
 			AosElementAttributes resists = cloth.Resistances;
 			AosSkillBonuses skills = cloth.SkillBonuses;
@@ -849,16 +834,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( BaseTrinket jewelry, int attributeCount, int min, int max )
+		private static void ApplyAttributesInternal( BaseTrinket jewelry, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( jewelry, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseTrinket jewelry, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = jewelry.Attributes;
 			AosElementAttributes resists = jewelry.Resistances;
 			AosSkillBonuses skills = jewelry.SkillBonuses;
@@ -910,16 +887,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( BaseQuiver quiver, int attributeCount, int min, int max )
+		private static void ApplyAttributesToInternal( BaseQuiver quiver, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( quiver, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseQuiver quiver, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = quiver.Attributes;
 
 			m_Props.SetAll( false );
@@ -969,16 +938,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( BaseInstrument lute, int attributeCount, int min, int max )
+		private static void ApplyAttributesToInternal( BaseInstrument lute, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( lute, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( BaseInstrument lute, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = lute.Attributes;
 			AosElementAttributes resists = lute.Resistances;
 			AosSkillBonuses skills = lute.SkillBonuses;
@@ -1030,16 +991,8 @@ namespace Server.Items
 			}
 		}
 
-		public static void ApplyAttributesTo( Spellbook spellbook, int attributeCount, int min, int max )
+		private static void ApplyAttributesToInternal( Spellbook spellbook, int attributeCount, int min, int max )
 		{
-			ApplyAttributesTo( spellbook, false, 0, attributeCount, min, max );
-		}
-
-		public static void ApplyAttributesTo( Spellbook spellbook, bool isRunicTool, int luckChance, int attributeCount, int min, int max )
-		{
-			m_IsRunicTool = isRunicTool;
-			m_LuckChance = luckChance;
-
 			AosAttributes primary = spellbook.Attributes;
 			AosSkillBonuses skills = spellbook.SkillBonuses;
 
