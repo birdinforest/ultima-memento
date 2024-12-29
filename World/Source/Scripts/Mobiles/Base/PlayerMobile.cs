@@ -4662,7 +4662,28 @@ namespace Server.Mobiles
 				m_BuffTable = null;
 		}
 
-		#endregion
+        public override void OnRawStatChange(StatType stat, int oldValue)
+        {
+            base.OnRawStatChange(stat, oldValue);
+
+			var remaining = SkillCheck.GetCooldownRemaining(this, stat);
+			if (remaining == TimeSpan.Zero) return;
+
+			switch(stat)
+            {
+                case StatType.Dex:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.DexGainCooldown, 1061147, 1060526, remaining, this, "", true));
+                        break;
+                case StatType.Int:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.IntGainCooldown, 1061148, 1060526, remaining, this, "", true));
+                        break;
+                case StatType.Str:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.StrGainCooldown, 1061146, 1060526, remaining, this, "", true));
+                        break;
+            }
+        }
+
+        #endregion
 
 		public void AutoStablePets()
 		{
