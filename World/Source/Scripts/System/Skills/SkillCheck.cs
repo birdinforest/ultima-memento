@@ -554,6 +554,22 @@ namespace Server.Misc
 			}
 		}
 
+		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
+		{
+			DateTime end;
+			switch( stat )
+			{
+				case StatType.Dex: end = player.LastDexGain + m_StatGainDelay; break;
+				case StatType.Int: end = player.LastIntGain + m_StatGainDelay; break;
+				case StatType.Str: end = player.LastStrGain + m_StatGainDelay; break;
+				default: return TimeSpan.Zero;
+			}
+			
+			TimeSpan remaining = end - DateTime.Now;
+			
+			return 0 < remaining.TotalSeconds ? remaining : TimeSpan.Zero;
+		}
+
 		public static void GainStat( Mobile from, Stat stat )
 		{
 			switch( stat )
