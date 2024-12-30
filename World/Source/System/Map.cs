@@ -31,6 +31,11 @@ namespace Server
 {
     public class Difficult
     {
+		public static int GetDifficultyBounded( IEntity entity )
+		{
+			return Math.Max(0, Server.Difficult.GetDifficulty( entity.Location, entity.Map ));
+		}
+
 		public static int GetDifficulty( Point3D loc, Map map ) // THESE ARE DUNGEON DIFFICULTY LEVELS FROM 0 (NEWBIE) TO 1 (NORMAL) UP TO 5 (EPIC)
 		{
 			Land land = Lands.GetLand( map, loc, loc.X, loc.Y );

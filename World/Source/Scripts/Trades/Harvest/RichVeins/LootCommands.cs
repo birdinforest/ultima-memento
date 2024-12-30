@@ -15,7 +15,7 @@ namespace Server.Commands
             CommandSystem.Register("Loot-AddUltraRich", AccessLevel.GameMaster, args => OnAdd(TreasureType.UltraRich, args));
         }
 
-        [Usage("Loot-AddXX <KillerLuck (int)> <CreatureLevel (int [1-125])> <Iterations (int | NULL)>")]
+        [Usage("Loot-AddXX <KillerLuck (int)> <BonusItemLevel (int [0-10])> <Iterations (int | NULL)>")]
         [Description("Generates loot for the provided configuration.")]
         private static void OnAdd(TreasureType type, CommandEventArgs e)
         {
@@ -28,7 +28,7 @@ namespace Server.Commands
             for (var i = 0; i < config.Count; i++)
             {
                 var lootPack = GetLootPack(type);
-                lootPack.Generate(e.Mobile, bag, config.Spawning, config.KillerLuck, LootPackChange.MonsterLevel(config.CreatureLevel));
+                lootPack.Generate(e.Mobile, bag, config.Spawning, config.KillerLuck, 0, config.BonusItemLevel);
             }
 
             // Unbox any unidentified objects
@@ -53,7 +53,7 @@ namespace Server.Commands
             }
 
             // Rename the bag for history sake
-            bag.Name = string.Format("({0}) Luck ({1}) // Creature Level ({2})", type, config.KillerLuck, config.CreatureLevel);
+            bag.Name = string.Format("({0}) Luck ({1}) // Bonus Item Level ({2})", type, config.KillerLuck, config.BonusItemLevel);
             e.Mobile.Backpack.AddItem(bag);
         }
 
@@ -61,7 +61,7 @@ namespace Server.Commands
         {
             if (arguments.Length < 2)
             {
-                mobile.SendMessage("Arguments for the command are <KillerLuck (int)> <CreatureLevel (int [1-125])> <Iterations (int | NULL)>");
+                mobile.SendMessage("Arguments for the command are <KillerLuck (int)> <BonusItemLevel (int [0-10])> <Iterations (int | NULL)>");
                 return null;
             }
 
@@ -72,10 +72,10 @@ namespace Server.Commands
                 return null;
             }
 
-            int creatureLevel;
-            if (!int.TryParse(arguments[1], out creatureLevel) || creatureLevel < 1 || 125 < creatureLevel)
+            int bonusItemLevel;
+            if (!int.TryParse(arguments[1], out bonusItemLevel) || bonusItemLevel < 0 || 10 < bonusItemLevel)
             {
-                mobile.SendMessage("Creature Level must be a number between 1 and 125.");
+                mobile.SendMessage("Bonus Item Level must be a number between 0 and 10.");
                 return null;
             }
 
@@ -90,7 +90,7 @@ namespace Server.Commands
             {
                 Spawning = false, // TODO: Idk
                 KillerLuck = killerLuck,
-                CreatureLevel = creatureLevel,
+                BonusItemLevel = bonusItemLevel,
                 Count = count
             };
         }
@@ -123,7 +123,7 @@ namespace Server.Commands
         {
             public bool Spawning { get; set; }
             public int KillerLuck { get; set; }
-            public int CreatureLevel { get; set; } // 1 - 125
+            public int BonusItemLevel { get; set; } // 0 - 10
             public int Count { get; set; }
         }
     }

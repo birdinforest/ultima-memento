@@ -7572,7 +7572,8 @@ namespace Server.Mobiles
 				AddItem( backpack );
 			}
 
-			pack.Generate( this, backpack, m_Spawning, m_KillersLuck, LootPackChange.MonsterLevel( IntelligentAction.GetCreatureLevel( this ) ) );
+			int dungeonLevelBonus = Server.Difficult.GetDifficultyBounded( this );
+			pack.Generate( this, backpack, m_Spawning, m_KillersLuck, LootPackChange.MonsterLevel( IntelligentAction.GetCreatureLevel( this ) ), dungeonLevelBonus );
 		}
 
 		public void PackGold( int amount )

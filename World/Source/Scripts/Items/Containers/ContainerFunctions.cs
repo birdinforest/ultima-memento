@@ -121,7 +121,7 @@ namespace Server.Misc
 
 		public static void AddTreasure( int level, LockableContainer box, Mobile from, LootPack pack )
 		{
-			pack.Generate( from, box, false, from.Luck, level );
+			pack.Generate( from, box, false, from.Luck, level, 0 ); // Chests don't get harder
 
 			if ( box is TreasureMapChest || box is GraveChest || box is ParagonChest || box is SunkenChest || box is BuriedChest || box is BuriedBody ){} else
 			{

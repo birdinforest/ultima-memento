@@ -52,7 +52,7 @@ namespace Server
 			m_Entries = entries;
 		}
 
-		public void Generate( Mobile from, Container cont, bool spawning, int luckChance, int level )
+		public void Generate( Mobile from, Container cont, bool spawning, int luckChance, int level, int dungeonLevelBonus )
 		{
 			if ( MySettings.S_LootChance > Utility.Random(100) )
 			{
@@ -80,7 +80,7 @@ namespace Server
 					if ( !shouldAdd )
 						continue;
 
-					Item item = entry.Construct( from, luckChance, spawning );
+					Item item = entry.Construct( from, luckChance, spawning, level, dungeonLevelBonus );
 
 					if ( item != null )
 					{
@@ -508,7 +508,7 @@ namespace Server
 			return false;
 		}
 
-		public Item Construct( Mobile from, int luckChance, bool spawning )
+		public Item Construct( Mobile from, int luckChance, bool spawning, int level, int dungeonLevelBonus )
 		{
 			if ( m_AtSpawnTime != spawning )
 				return null;
@@ -525,7 +525,7 @@ namespace Server
 				LootPackItem item = m_Items[i];
 
 				if ( rnd < item.Chance )
-					return Mutate( from, luckChance, item.Construct( playOrient( from ) ) );
+					return Mutate( from, luckChance, item.Construct( playOrient( from ) ), level, dungeonLevelBonus );
 
 				rnd -= item.Chance;
 			}
@@ -533,7 +533,7 @@ namespace Server
 			return null;
 		}
 
-		public Item Mutate( Mobile from, int luckChance, Item item )
+		public Item Mutate( Mobile from, int luckChance, Item item, int level, int dungeonLevelBonus )
 		{
 			if ( item != null && !( item.NotModAble || item.ArtifactLevel > 0 ) )
 			{
@@ -554,6 +554,34 @@ namespace Server
 					int min = m_MinIntensity;
 					int max = m_MaxIntensity;
 
+					// Heat goes up to 4. 5 is Epic, which isn't implemented at this time.
+					// Level goes up to 12.
+					//  4 + (12/2) = 10
+					int levelBonus = dungeonLevelBonus + (level / 2);
+					switch( levelBonus )
+					{
+						// No benefit
+						case 0: break;
+						case 1: break;
+
+						// Increase top
+						case 2: max += 5; break;
+						case 3: max += 15; break;
+
+						// Increase bottom and top 
+						case 4: min += 10; break;
+						case 5: min += 15; break;
+						case 6: min += 20; break;
+
+						// Bonus property
+						case 7: ++bonusProps; break;
+						case 8: ++bonusProps; break;
+
+						// Ensure a bare minimum is set
+						case 9: min = 70; break;
+						case 10: min = 70; max = 100; break;
+					}
+
 					if ( bonusProps < m_MaxProps && LootPack.CheckLuck( luckChance ) )
 						++bonusProps;
 
@@ -563,22 +591,7 @@ namespace Server
 					if ( props > m_MaxProps )
 						props = m_MaxProps;
 
-					if ( item is BaseWeapon )
-						BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseArmor )
-						BaseRunicTool.ApplyAttributesTo( (BaseArmor)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseTrinket )
-						BaseRunicTool.ApplyAttributesTo( (BaseTrinket)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseQuiver )
-						BaseRunicTool.ApplyAttributesTo( (BaseQuiver)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseHat )
-						BaseRunicTool.ApplyAttributesTo( (BaseHat)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseClothing )
-						BaseRunicTool.ApplyAttributesTo( (BaseClothing)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is Spellbook )
-						BaseRunicTool.ApplyAttributesTo( (Spellbook)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
-					else if ( item is BaseInstrument )
-						BaseRunicTool.ApplyAttributesTo( (BaseInstrument)item, false, luckChance, props, m_MinIntensity, m_MaxIntensity );
+					BaseRunicTool.ApplyAttributes( luckChance, item, props, min, max );
 				}
 			}
 
