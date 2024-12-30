@@ -501,42 +501,16 @@ namespace Server.Items
 							Effects.PlaySound(blast, m.Map, 0x307);
 							Effects.SendLocationEffect(blast, m.Map, 0x36B0, 9, 10, 0, 0);
 
-							int Change = 0;
-
 							foreach ( Item enchant in m.GetItemsInRange( 20 ) )
 							{
 								if ( enchant.ItemID != 5703 )
 								{
-									if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 && Change == 0 )
+									if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
 									{
-										int min = 50;
-										int max = 200;
+										if ( enchant is BaseWeapon || enchant is BaseArmor || enchant is BaseTrinket || enchant is BaseClothing )
+										{
+											BaseRunicTool.ApplyAttributes( enchant, 5, 7, 80, 100 );
 
-										int props = 5 + Utility.RandomMinMax( 0, 10 );
-
-										if ( enchant is BaseWeapon )
-										{
-											Change++;
-											BaseRunicTool.ApplyAttributesTo( (BaseWeapon)enchant, false, m.Luck, props, min, max );
-										}
-										else if ( enchant is BaseArmor )
-										{
-											Change++;
-											BaseRunicTool.ApplyAttributesTo( (BaseArmor)enchant, false, m.Luck, props, min, max );
-										}
-										else if ( enchant is BaseTrinket )
-										{
-											Change++;
-											BaseRunicTool.ApplyAttributesTo( (BaseTrinket)enchant, false, m.Luck, props, min, max );
-										}
-										else if ( enchant is BaseClothing )
-										{
-											Change++;
-											BaseRunicTool.ApplyAttributesTo( (BaseClothing)enchant, false, m.Luck, props, min, max );
-										}
-
-										if ( Change == 1 )
-										{
 											enchant.NotModAble = true;
 											ResourceMods.SetResource( enchant, CraftResource.ExodusSpec );
 
@@ -562,6 +536,7 @@ namespace Server.Items
 
 												newItem.Delete();
 											}
+											break;
 										}
 									}
 								}
