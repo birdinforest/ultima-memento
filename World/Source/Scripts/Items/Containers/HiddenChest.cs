@@ -138,6 +138,8 @@ namespace Server.Items
 					}
 
 					ContainerFunctions.FillTheContainer( level, mDoor, m );
+					item.Delete();
+
 					return true;
 				}
 			}
