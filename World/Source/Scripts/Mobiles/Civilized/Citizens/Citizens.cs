@@ -829,10 +829,11 @@ namespace Server.Mobiles
 					arty.Movable = false;
 					PackItem( arty );
 
-					CitizenCost = ItemInformation.GetBuysPrice( ItemInformation.ItemTableRef( arty ), false, arty, false, true );
+					CitizenCost = Utility.RandomMinMax(40000, 60000);
+					// CitizenCost = ItemInformation.GetBuysPrice( ItemInformation.ItemTableRef( arty ), false, arty, false, true );
 
-					if ( CitizenCost < 1 )
-						CitizenCost = Utility.RandomMinMax( 250, 750 )*10;
+					// if ( CitizenCost < 1 )
+					// 	CitizenCost = Utility.RandomMinMax( 250, 750 )*10;
 				}
 			}
 			else if ( CitizenType == 26 && CitizenService == 26 )
