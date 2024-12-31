@@ -225,7 +225,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_MantleofHydros"; item = "Mantle of the Lurker"; }
 			else if (artifact == arty++) { name = "Artifact_MantleofLithos"; item = "Mantle of the Mountain King"; }
 			else if (artifact == arty++) { name = "Artifact_MantleofStratos"; item = "Mantle of the Mystic Voice"; }
-			else if (artifact == arty++) { name = "Arty_StratosManual"; item = "Manual of the Mystic Voice"; }
+			else if (artifact == arty++) { name = "Artifact_StratosManual"; item = "Manual of the Mystic Voice"; }
 			else if (artifact == arty++) { name = "Artifact_DeathsMask"; item = "Mask of Death"; }
 			else if (artifact == arty++) { name = "Artifact_MauloftheBeast"; item = "Maul of the Beast"; }
 			else if (artifact == arty++) { name = "Artifact_MaulOfTheTitans"; item = "Maul of the Titans"; }

@@ -2,17 +2,17 @@
 
 namespace Server.Items
 {
-	public class Arty_HydrosLexicon : ElementalSpellbook
+	public class Artifact_LithosTome : ElementalSpellbook
 	{
 		[Constructable]
-		public Arty_HydrosLexicon() : base()
+		public Artifact_LithosTome() : base()
 		{
-			ItemID = 0x6715;
-			Name = "Lexicon of the Lurker";
+			ItemID = 0x6713;
+			Name = "Tome of the Mountain King";
 			Attributes.RegenMana = Utility.RandomMinMax( 1, 5 );
 			Attributes.CastSpeed = Utility.RandomMinMax( 1, 5 );
 			Attributes.SpellDamage = 10;
-            Slayer = SlayerName.FlameDousing;
+            Slayer = SlayerName.EarthShatter;
 			ArtifactLevel = 1;
 
 			switch( Utility.RandomMinMax( 0, 6 ) )
@@ -40,10 +40,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Hydros' Book of Spells");
+            list.Add( 1049644, "Lithos' Book of Spells");
         }
 
-		public Arty_HydrosLexicon( Serial serial ) : base( serial )
+		public Artifact_LithosTome( Serial serial ) : base( serial )
 		{
 		}
 

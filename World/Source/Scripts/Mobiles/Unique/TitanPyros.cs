@@ -224,7 +224,7 @@ namespace Server.Mobiles
 					{
 						case 1: Arty.Delete(); Arty = new Artifact_MantleofPyros(); break;
 						case 2: Arty.Delete(); Arty = new Artifact_RobeofPyros(); break;
-						case 3: Arty.Delete(); Arty = new Arty_PyrosGrimoire(); break;
+						case 3: Arty.Delete(); Arty = new Artifact_PyrosGrimoire(); break;
 					}
 					AddItem( Arty );
 				}

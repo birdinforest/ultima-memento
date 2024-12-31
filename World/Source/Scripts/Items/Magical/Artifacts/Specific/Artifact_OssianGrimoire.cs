@@ -2,10 +2,10 @@
 
 namespace Server.Items
 {
-	public class Arty_OssianGrimoire : NecromancerSpellbook
+	public class Artifact_OssianGrimoire : NecromancerSpellbook
 	{
 		[Constructable]
-		public Arty_OssianGrimoire() : base()
+		public Artifact_OssianGrimoire() : base()
 		{
 			Hue = 0xA99;
 			Name = "Ossian Grimoire";
@@ -25,7 +25,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, ( 10.0 + (Utility.RandomMinMax(0,2)*5) ) );
 		}
 
-		public Arty_OssianGrimoire( Serial serial ) : base( serial )
+		public Artifact_OssianGrimoire( Serial serial ) : base( serial )
 		{
 		}
 

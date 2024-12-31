@@ -2,17 +2,17 @@
 
 namespace Server.Items
 {
-	public class Arty_LithosTome : ElementalSpellbook
+	public class Artifact_StratosManual : ElementalSpellbook
 	{
 		[Constructable]
-		public Arty_LithosTome() : base()
+		public Artifact_StratosManual() : base()
 		{
-			ItemID = 0x6713;
-			Name = "Tome of the Mountain King";
+			ItemID = 0x6717;
+			Name = "Manual of the Mystic Voice";
 			Attributes.RegenMana = Utility.RandomMinMax( 1, 5 );
 			Attributes.CastSpeed = Utility.RandomMinMax( 1, 5 );
 			Attributes.SpellDamage = 10;
-            Slayer = SlayerName.EarthShatter;
+            Slayer = SlayerName.Vacuum;
 			ArtifactLevel = 1;
 
 			switch( Utility.RandomMinMax( 0, 6 ) )
@@ -40,10 +40,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Lithos' Book of Spells");
+            list.Add( 1049644, "Stratos' Book of Spells");
         }
 
-		public Arty_LithosTome( Serial serial ) : base( serial )
+		public Artifact_StratosManual( Serial serial ) : base( serial )
 		{
 		}
 

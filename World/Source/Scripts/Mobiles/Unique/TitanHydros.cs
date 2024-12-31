@@ -222,7 +222,7 @@ namespace Server.Mobiles
 					{
 						case 1: Arty.Delete(); Arty = new Artifact_MantleofHydros(); break;
 						case 2: Arty.Delete(); Arty = new Artifact_RobeofHydros(); break;
-						case 3: Arty.Delete(); Arty = new Arty_HydrosLexicon(); break;
+						case 3: Arty.Delete(); Arty = new Artifact_HydrosLexicon(); break;
 					}
 					AddItem( Arty );
 				}

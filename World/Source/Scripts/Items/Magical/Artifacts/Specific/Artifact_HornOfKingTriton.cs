@@ -1,42 +1,41 @@
 using System;
-using Server;
 
 namespace Server.Items
 {
-	public class GwennosHarp : BaseInstrument
+	public class Artifact_HornOfKingTriton : BaseInstrument
 	{
-		public override int Hue { get { return 0x9C4; } }
+		public override int Hue { get { return 0; } }
 		public override int InitMinUses{ get{ return 800; } }
 		public override int InitMaxUses{ get{ return 800; } }
-		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
+		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 
 		[Constructable]
-		public GwennosHarp() : base( 0x66F4, 0x45, 0x46 )
+		public Artifact_HornOfKingTriton() : base( 0x645A, 0x3CC, 0x3CD )
 		{
-			int attributeCount = Utility.RandomMinMax(4,7);
-			int min = Utility.RandomMinMax(5,10);
-			int max = min + 15;
+			Name = "Horn of King Triton";
+			Weight = 5.0;
+			int attributeCount = Utility.RandomMinMax(8,15);
+			int min = Utility.RandomMinMax(15,25);
+			int max = min + 40;
 			BaseRunicTool.ApplyAttributesTo( (BaseInstrument)this, attributeCount, min, max );
 			ArtifactLevel = 1;
 
-			Name = "Gwenno's Harp";
 			UsesRemaining = 800;
-			Slayer = SlayerName.Repond;
-			Slayer2 = SlayerName.ReptilianDeath;
+			Slayer = SlayerName.NeptunesBane;
 			SkillBonuses.SetValues( 0, SkillName.Discordance, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Musicianship, 10 );
 			SkillBonuses.SetValues( 2, SkillName.Peacemaking, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Provocation, 10 );
 		}
 
-		public GwennosHarp( Serial serial ) : base( serial )
+		public Artifact_HornOfKingTriton( Serial serial ) : base( serial )
 		{
 		}
 
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 0 );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -44,7 +43,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			ArtifactLevel = 1;
-			ItemID = 0x66F4;
 		}
 	}
 }

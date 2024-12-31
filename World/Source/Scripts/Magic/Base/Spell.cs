@@ -215,7 +215,7 @@ namespace Server.Spells
 			if ( MyServerSettings.SpellDamageIncreaseVsMonsters() > 0 && sdiBonus > MyServerSettings.SpellDamageIncreaseVsMonsters() )
 				sdiBonus = MyServerSettings.SpellDamageIncreaseVsMonsters();
 
-			// PvP spell damage increase cap of 15% from an item’s magic property
+			// PvP spell damage increase cap of 15% from an itemï¿½s magic property
 			if ( playerVsPlayer && MyServerSettings.SpellDamageIncreaseVsPlayers() > 0 && sdiBonus > MyServerSettings.SpellDamageIncreaseVsPlayers() )
 				sdiBonus = MyServerSettings.SpellDamageIncreaseVsPlayers();
 
@@ -648,10 +648,10 @@ namespace Server.Spells
 					else if ( relic3 is OrbOfTheAbyss ){ fizzle = false; }
 					else if ( relic4 is OrbOfTheAbyss ){ fizzle = false; }
 					else if ( relic5 is OrbOfTheAbyss ){ fizzle = false; }
-					else if ( relic1 is Arty_PyrosGrimoire ){ fizzle = false; }
-					else if ( relic1 is Arty_StratosManual ){ fizzle = false; }
-					else if ( relic1 is Arty_HydrosLexicon ){ fizzle = false; }
-					else if ( relic1 is Arty_LithosTome ){ fizzle = false; }
+					else if ( relic1 is Artifact_PyrosGrimoire ){ fizzle = false; }
+					else if ( relic1 is Artifact_StratosManual ){ fizzle = false; }
+					else if ( relic1 is Artifact_HydrosLexicon ){ fizzle = false; }
+					else if ( relic1 is Artifact_LithosTome ){ fizzle = false; }
 
 					if ( fizzle )
 					{

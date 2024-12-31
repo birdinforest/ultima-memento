@@ -3,7 +3,7 @@ using Server;
 
 namespace Server.Items
 {
-	public class IolosLute : BaseInstrument
+	public class Artifact_IolosLute : BaseInstrument
 	{
 		public override int Hue { get { return 0x9C4; } }
 		public override int InitMinUses{ get{ return 800; } }
@@ -11,7 +11,7 @@ namespace Server.Items
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
 
 		[Constructable]
-		public IolosLute() : base( 0x66F3, 0x4C, 0x4D )
+		public Artifact_IolosLute() : base( 0x66F3, 0x4C, 0x4D )
 		{
 			int attributeCount = Utility.RandomMinMax(8,15);
 			int min = Utility.RandomMinMax(15,25);
@@ -25,7 +25,7 @@ namespace Server.Items
 			ArtifactLevel = 1;
 		}
 
-		public IolosLute( Serial serial ) : base( serial )
+		public Artifact_IolosLute( Serial serial ) : base( serial )
 		{
 		}
 

@@ -3,10 +3,10 @@ using Server;
 
 namespace Server.Items
 {
-	public class QuiverOfFire : ElvenQuiver
+	public class Artifact_QuiverOfFire : ElvenQuiver
 	{
 		[Constructable]
-		public QuiverOfFire() : base()
+		public Artifact_QuiverOfFire() : base()
 		{
 			int attributeCount = Utility.RandomMinMax(5,10);
 			int min = Utility.RandomMinMax(10,20);
@@ -19,7 +19,7 @@ namespace Server.Items
 			ItemID = 0x2B02;
 		}
 
-		public QuiverOfFire( Serial serial ) : base( serial )
+		public Artifact_QuiverOfFire( Serial serial ) : base( serial )
 		{
 		}
 

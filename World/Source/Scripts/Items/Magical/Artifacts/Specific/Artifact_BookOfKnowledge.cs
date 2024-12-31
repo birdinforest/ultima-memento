@@ -6,10 +6,10 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class Arty_BookOfKnowledge : Spellbook
+	public class Artifact_BookOfKnowledge : Spellbook
 	{
 		[Constructable]
-		public Arty_BookOfKnowledge() : base()
+		public Artifact_BookOfKnowledge() : base()
 		{
 			Name = "Book Of Knowledge";
 			Hue = 0xAFF;
@@ -42,7 +42,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, ( 10.0 + (Utility.RandomMinMax(0,2)*5) ) );
 		}
 
-		public Arty_BookOfKnowledge( Serial serial ) : base( serial )
+		public Artifact_BookOfKnowledge( Serial serial ) : base( serial )
 		{
 		}
 

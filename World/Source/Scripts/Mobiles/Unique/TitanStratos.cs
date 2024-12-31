@@ -231,7 +231,7 @@ namespace Server.Mobiles
 					{
 						case 1: Arty.Delete(); Arty = new Artifact_RobeofStratos(); break;
 						case 2: Arty.Delete(); Arty = new Artifact_MantleofStratos(); break;
-						case 3: Arty.Delete(); Arty = new Arty_StratosManual(); break;
+						case 3: Arty.Delete(); Arty = new Artifact_StratosManual(); break;
 					}
 					AddItem( Arty );
 				}

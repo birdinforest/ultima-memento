@@ -2,17 +2,17 @@
 
 namespace Server.Items
 {
-	public class Arty_StratosManual : ElementalSpellbook
+	public class Artifact_PyrosGrimoire : ElementalSpellbook
 	{
 		[Constructable]
-		public Arty_StratosManual() : base()
+		public Artifact_PyrosGrimoire() : base()
 		{
-			ItemID = 0x6717;
-			Name = "Manual of the Mystic Voice";
+			ItemID = 0x6719;
+			Name = "Grimoire of the Daemon King";
 			Attributes.RegenMana = Utility.RandomMinMax( 1, 5 );
 			Attributes.CastSpeed = Utility.RandomMinMax( 1, 5 );
 			Attributes.SpellDamage = 10;
-            Slayer = SlayerName.Vacuum;
+            Slayer = SlayerName.SummerWind;
 			ArtifactLevel = 1;
 
 			switch( Utility.RandomMinMax( 0, 6 ) )
@@ -40,10 +40,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Stratos' Book of Spells");
+            list.Add( 1049644, "Pyros' Book of Spells");
         }
 
-		public Arty_StratosManual( Serial serial ) : base( serial )
+		public Artifact_PyrosGrimoire( Serial serial ) : base( serial )
 		{
 		}
 
@@ -51,13 +51,13 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.WriteEncodedInt( 0 ); //version
-			ArtifactLevel = 1;
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
+			ArtifactLevel = 1;
 		}
 	}
 }

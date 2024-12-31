@@ -3,34 +3,30 @@ using Server;
 
 namespace Server.Items
 {
-	public class QuiverOfElements : BaseQuiver
+	public class Artifact_QuiverOfBlight : ElvenQuiver
 	{
 		[Constructable]
-		public QuiverOfElements() : base()
+		public Artifact_QuiverOfBlight() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,8);
-			int min = Utility.RandomMinMax(6,16);
-			int max = min + 15;
+			int attributeCount = Utility.RandomMinMax(5,10);
+			int min = Utility.RandomMinMax(10,20);
+			int max = min + 20;
 			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
 
-			Name = "Quiver of the Elements";
-			Hue = 0xAFE;
+			Name = "Quiver of Blight";
+			Hue = 0xB79;
 			ItemID = 0x2B02;
-			WeightReduction = 100;
 			ArtifactLevel = 1;
 		}
 
-		public QuiverOfElements( Serial serial ) : base( serial )
+		public Artifact_QuiverOfBlight( Serial serial ) : base( serial )
 		{
 		}
 
 		public override void AlterBowDamage( ref int phys, ref int fire, ref int cold, ref int pois, ref int nrgy, ref int chaos, ref int direct )
 		{
-			chaos = phys = direct = 0;
-			fire = 25;
-			cold = 25;
-			nrgy = 25;
-			pois = 25;
+			phys = fire = nrgy = chaos = direct = 0;
+			cold = pois = 50;
 		}
 
 		public override void Serialize( GenericWriter writer )
