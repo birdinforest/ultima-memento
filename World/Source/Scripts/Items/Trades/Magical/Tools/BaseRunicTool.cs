@@ -457,38 +457,38 @@ namespace Server.Items
 		/// <summary>
 		/// Adds properties to an item. Does not use Luck.
 		/// </summary>
-		public static void ApplyAttributes( Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
+		public static void ApplyAttributes( Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity, bool isRunicTool = false )
 		{
-			ApplyAttributes( 0, item, minAttributes, maxAttributes, minIntensity, maxIntensity );
+			ApplyAttributes( 0, item, minAttributes, maxAttributes, minIntensity, maxIntensity, isRunicTool );
 		}
 
 		/// <summary>
 		/// Used when something kills a mob. Uses the Mobile's calculated Luck.
 		/// </summary>
-		public static void ApplyAttributes( Mobile from, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
+		public static void ApplyAttributes( Mobile from, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity, bool isRunicTool = false )
 		{
 			int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
 
-			ApplyAttributes( luckChance, item, minAttributes, maxAttributes, minIntensity, maxIntensity );
+			ApplyAttributes( luckChance, item, minAttributes, maxAttributes, minIntensity, maxIntensity, isRunicTool );
 		}
 
-		public static void ApplyAttributes( int luckChance, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity )
+		public static void ApplyAttributes( int luckChance, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity, bool isRunicTool = false )
 		{
 			minAttributes = Math.Max(0, minAttributes);
 			maxAttributes = Math.Max(minAttributes + 1, maxAttributes);
 			int attributeCount = Utility.RandomMinMax( minAttributes, maxAttributes);
 
-			ApplyAttributes( luckChance, item, attributeCount, minIntensity, maxIntensity );
+			ApplyAttributes( luckChance, item, attributeCount, minIntensity, maxIntensity, isRunicTool );
 		}
 
-		public static void ApplyAttributes( int luckChance, Item item, int attributeCount, int minIntensity, int maxIntensity )
+		public static void ApplyAttributes( int luckChance, Item item, int attributeCount, int minIntensity, int maxIntensity, bool isRunicTool = false )
 		{
-			ApplyAttributesTo( item, false, luckChance, attributeCount, minIntensity, maxIntensity );
+			ApplyAttributesTo( item, isRunicTool, luckChance, attributeCount, minIntensity, maxIntensity );
 		}
 
-		public static void ApplyAttributesTo( Item item, int attributeCount, int min, int max )
+		public static void ApplyAttributesTo( Item item, int attributeCount, int min, int max, bool isRunicTool = false ) 
 		{
-			ApplyAttributesTo( item, false, 0, attributeCount, min, max );
+			ApplyAttributesTo( item, isRunicTool, 0, attributeCount, min, max );
 		}
 
 		public static void ApplyAttributesTo( Item item, bool isRunicTool, int luckChance, int attributeCount, int minIntensity, int maxIntensity )
