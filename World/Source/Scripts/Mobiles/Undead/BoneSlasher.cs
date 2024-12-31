@@ -88,7 +88,7 @@ namespace Server.Mobiles
 							case 5: armor = new BoneSkirt();	break;
 						}
 						ResourceMods.SetRandomResource( false, true, armor, CraftResource.None, false, this );
-						BaseRunicTool.ApplyAttributesTo( armor, false, 1000, 5, 25, 100 );
+						LootPackEntry.MakeFixedDrop( this, c, armor );
 						c.DropItem( armor );
 					}
 				}

@@ -101,10 +101,7 @@ namespace Server.Mobiles
 
 					OrbOfTheAbyss orb = new OrbOfTheAbyss();
 					orb.owner = killer;
-					int min = 25;
-					int max = 100;
-					int props = 2 + Utility.RandomMinMax( 0, 10 );
-					BaseRunicTool.ApplyAttributesTo( (BaseTrinket)orb, false, killer.Luck, props, min, max );
+					LootPackEntry.MakeFixedDrop( this, c, orb );
 					killer.AddToBackpack( orb );
 					killer.SendMessage( "You have obtained Satan's Orb of the Abyss!" );
 					LoggingFunctions.LogGenericQuest( killer, "has obtained Satan's orb of the abyss" );

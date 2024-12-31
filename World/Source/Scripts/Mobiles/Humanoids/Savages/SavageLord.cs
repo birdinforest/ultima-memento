@@ -89,10 +89,8 @@ namespace Server.Mobiles
 						case 1: mask.Delete(); mask = new HornedTribalMask(); break;
 						case 2: mask.Delete(); mask = new TribalMask(); break;
 					}
-					int attributeCount = Utility.RandomMinMax(1,5);
-					int min = Utility.RandomMinMax(4,10);
-					int max = min + 10;
-					BaseRunicTool.ApplyAttributesTo( (BaseHat)mask, attributeCount, min, max );
+
+					LootPackEntry.MakeFixedDrop( this, c, mask );
 					mask.Name = "chieftain tribal mask";
 					c.DropItem( mask );
 				}

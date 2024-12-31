@@ -56,10 +56,6 @@ namespace Server.Misc
 
 					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 0, 100 ) > 95 )
 					{
-						int min = (int)(from.Fame/2000); if ( min < 1 ){ min = 1; }
-						int max = (int)(from.Fame/1000); if ( max < 2 ){ max = 2; }
-						int props = (int)(from.Fame/3000); if ( props < 1 ){ props = 1; }
-
 						int item = 0;
 						int color = 0;
 						string name = "trinket";
@@ -80,7 +76,7 @@ namespace Server.Misc
 						if ( item > 0 )
 						{
 							BaseTrinket trinket = new TrinketTalisman();
-							BaseRunicTool.ApplyAttributesTo( trinket, false, killer.Luck, props, min, max );
+							LootPackEntry.MakeFixedDrop( from, trinket );
 							trinket.Hue = color;
 							trinket.ItemID = item;
 							trinket.Name = name;
@@ -96,12 +92,8 @@ namespace Server.Misc
 						{
 							if ( from.Backpack.FindItemByType( typeof ( EvilSkull ) ) == null && from.Backpack.FindItemByType( typeof ( TrinketTalisman ) ) == null )
 							{
-								int min = (int)(from.Fame/2000); if ( min < 1 ){ min = 1; }
-								int max = (int)(from.Fame/1000); if ( max < 2 ){ max = 2; }
-								int props = (int)(from.Fame/3000); if ( props < 1 ){ props = 1; }
-
 								BaseHat cowl = new ReaperHood();
-								BaseRunicTool.ApplyAttributesTo( cowl, false, killer.Luck, props, min, max );
+								LootPackEntry.MakeFixedDrop( from, cowl );
 								cowl.Hue = Utility.RandomEvilHue();
 								cowl.Name = "mask of " + from.Name + " " + from.Title;
 								c.DropItem( cowl );
@@ -113,12 +105,8 @@ namespace Server.Misc
 
 					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomBool() && from is Syth )
 					{
-						int min = (int)(from.Fame/2000); if ( min < 1 ){ min = 1; }
-						int max = (int)(from.Fame/1000); if ( max < 2 ){ max = 2; }
-						int props = (int)(from.Fame/3000); if ( props < 1 ){ props = 1; }
-
 						BaseTrinket talisman = new TrinketTalisman();
-						BaseRunicTool.ApplyAttributesTo( talisman, false, killer.Luck, props, min, max );
+						LootPackEntry.MakeFixedDrop( from, talisman );
 						talisman.Hue = Utility.RandomColor(0);
 						talisman.Name = "Mysticron of " + from.Name + " " + from.Title;
 						talisman.ItemID = 0x4CDE;

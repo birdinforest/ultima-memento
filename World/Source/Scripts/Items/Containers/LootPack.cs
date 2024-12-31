@@ -554,11 +554,8 @@ namespace Server
 					int min = m_MinIntensity;
 					int max = m_MaxIntensity;
 
-					// Heat goes up to 4. 5 is Epic, which isn't implemented at this time.
-					// Level goes up to 12.
-					//  4 + (12/2) = 10
-					int levelBonus = dungeonLevelBonus + (level / 2);
-					switch( levelBonus )
+					int levelNormalized = NormalizeLevel(level, dungeonLevelBonus);
+					switch( levelNormalized )
 					{
 						// No benefit
 						case 0: break;
@@ -582,6 +579,9 @@ namespace Server
 						case 10: min = 70; max = 100; break;
 					}
 
+					if (0 < levelNormalized && from != null)
+						Console.WriteLine("({4}) Loot from {3} was boosted due to level '{0}'. ({1}/2 + {2})", levelNormalized, level, dungeonLevelBonus, from.Fame, from.Name, from.GetType());
+
 					if ( bonusProps < m_MaxProps && LootPack.CheckLuck( luckChance ) )
 						++bonusProps;
 
@@ -596,6 +596,14 @@ namespace Server
 			}
 
 			return item;
+		}
+
+		private static int NormalizeLevel( int level, int dungeonLevelBonus )
+		{
+			// Heat goes up to 4. 5 is Epic, which isn't implemented at this time.
+			// Level goes up to 12.
+			//  4 + (12/2) = 10
+			return dungeonLevelBonus + (level / 2);
 		}
 
 		public static CraftAttributeInfo GetResourceAttrs( CraftResource resource )
@@ -646,6 +654,39 @@ namespace Server
 			int max = enchant / 4;
 
 			return Enchant(from, item, props, min, max, false);
+		}
+
+		public static void MakeFixedDrop( Mobile creature, Item item )
+		{
+			MakeFixedDrop( creature, creature, item );
+		}
+
+		public static void MakeFixedDrop( Mobile creature, IEntity locationEntity, Item item )
+		{
+			int level = LootPackChange.MonsterLevel( IntelligentAction.GetCreatureLevel( creature ) );
+			int dungeonLevelBonus = Server.Difficult.GetDifficultyBounded( locationEntity );
+			int levelNormalized = NormalizeLevel(level, dungeonLevelBonus);
+
+			MakeFixedDrop( item, levelNormalized );
+		}
+
+		public static void MakeFixedDrop( Item item, int level )
+		{
+			level = Math.Max(1, Math.Min(10, level)); // 1 to 10
+
+			switch( level )
+			{
+				case 1:  BaseRunicTool.ApplyAttributes( item, 1, 1,  5,  40, true ); break;
+				case 2:  BaseRunicTool.ApplyAttributes( item, 1, 2,  5,  40, true ); break;
+				case 3:  BaseRunicTool.ApplyAttributes( item, 1, 3,  5,  40, true ); break;
+				case 4:  BaseRunicTool.ApplyAttributes( item, 2, 2, 20,  60, true ); break;
+				case 5:  BaseRunicTool.ApplyAttributes( item, 2, 3, 20,  60, true ); break;
+				case 6:  BaseRunicTool.ApplyAttributes( item, 2, 4, 40,  60, true ); break;
+				case 7:  BaseRunicTool.ApplyAttributes( item, 3, 3, 40,  80, true ); break;
+				case 8:  BaseRunicTool.ApplyAttributes( item, 3, 4, 40,  80, true ); break;
+				case 9:  BaseRunicTool.ApplyAttributes( item, 4, 4, 60, 100, true); break;
+				case 10: BaseRunicTool.ApplyAttributes( item, 5, 5, 80, 100, true); break;
+			}
 		}
 
 		public LootPackEntry( bool atSpawnTime, LootPackItem[] items, double chance, string quantity ) : this( atSpawnTime, items, chance, new LootPackDice( quantity ), 0, 0, 0 )
@@ -895,6 +936,7 @@ namespace Server
 	{
 		public static void RemoveItem( Item item, Mobile from, int level )
 		{
+			// Disallow items based on mob level
 			if ( !(Utility.RandomMinMax( 3, 12 ) > level) && ( CraftResources.GetType( item.Resource ) == CraftResourceType.Skin || CraftResources.GetType( item.Resource ) == CraftResourceType.Block || CraftResources.GetType( item.Resource ) == CraftResourceType.Scales ) )
 			{
 				if ( item.Parent is NotIdentified )

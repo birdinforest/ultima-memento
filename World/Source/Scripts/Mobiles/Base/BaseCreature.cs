@@ -2858,7 +2858,7 @@ namespace Server.Mobiles
 						if ( armor != null )
 						{
 							armor.Resource = CraftResource.LichSkeletal;
-							BaseRunicTool.ApplyAttributesTo( armor, false, 1000, Utility.RandomMinMax( 4, 8 ), 50, 125 );
+							LootPackEntry.MakeFixedDrop( this, armor );
 							this.PackItem( armor );
 						}
 					}
@@ -2936,7 +2936,7 @@ namespace Server.Mobiles
 						if ( armor != null )
 						{
 							armor.Resource = CraftResource.LichSkeletal;
-							BaseRunicTool.ApplyAttributesTo( armor, false, 1000, Utility.RandomMinMax( 4, 8 ), 50, 125 );
+							LootPackEntry.MakeFixedDrop( this, armor );
 							armor.InfoText5 = "Kazibal the Unearthed";
 							this.PackItem( armor );
 						}
@@ -3411,7 +3411,7 @@ namespace Server.Mobiles
 						if ( armor != null )
 						{
 							armor.Resource = CraftResource.DevilSkeletal;
-							BaseRunicTool.ApplyAttributesTo( armor, false, 1000, Utility.RandomMinMax( 4, 8 ), 50, 125 );
+							LootPackEntry.MakeFixedDrop( this, armor );
 							this.PackItem( armor );
 						}
 					}
