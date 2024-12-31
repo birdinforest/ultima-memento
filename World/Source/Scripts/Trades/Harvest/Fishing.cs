@@ -523,13 +523,6 @@ namespace Server.Engines.Harvest
 			return base.CheckResources( from, tool, def, map, loc, timed );
 		}
 
-		private static void GetRandomAOSStats( out int attributeCount, out int min, out int max, int level )
-		{
-			int rnd = Utility.Random( 15 );
-			attributeCount = Utility.RandomMinMax( 1, level );
-			min = level*3; max = level*7;
-		}
-
 		public override Item Construct( Type type, Mobile from )
 		{
 			if ( type == null || from == null )
@@ -668,10 +661,7 @@ namespace Server.Engines.Harvest
 									if ( Utility.RandomBool() ){ preLoot.Name = sAdj + "skullcap"; preLoot.ItemID = 5444; }
 									else { preLoot.Name = sAdj + "pirate hat"; preLoot.ItemID = 5915; }
 
-									int attributeCount;
-									int min, max;
-									GetRandomAOSStats( out attributeCount, out min, out max, mLevel );
-									BaseRunicTool.ApplyAttributesTo( (BaseClothing)preLoot, attributeCount, min, max );
+									LootPackEntry.MakeFixedDrop( preLoot, mLevel / 2 );
 								}
 								else
 								{

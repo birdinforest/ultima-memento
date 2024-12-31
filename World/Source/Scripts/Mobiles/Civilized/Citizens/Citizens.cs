@@ -779,19 +779,11 @@ namespace Server.Mobiles
 			}
 			else if ( CitizenService == 5 )
 			{
-				int val = Utility.RandomMinMax( 25, 100 );
-				int props = 5 + Utility.RandomMinMax( 0, 5 );
-				int luck = Utility.RandomMinMax( 0, 200 );
 				int chance = Utility.RandomMinMax( 1, 100 );
-
 				if ( chance < 80 )
 				{
 					Item arty = Loot.RandomMagicalItem();
-					if ( arty is BaseWeapon ){ BaseRunicTool.ApplyAttributesTo( (BaseWeapon)arty, false, luck, props, val, val ); }
-					else if ( arty is BaseHat ){ BaseRunicTool.ApplyAttributesTo( (BaseHat)arty, false, luck, props, val, val ); }
-					else if ( arty is BaseClothing ){ BaseRunicTool.ApplyAttributesTo( (BaseClothing)arty, false, luck, props, val, val ); }
-					else if ( arty is BaseArmor ){ BaseRunicTool.ApplyAttributesTo( (BaseArmor)arty, false, luck, props, val, val ); }
-					else if ( arty is BaseTrinket ){ BaseRunicTool.ApplyAttributesTo( (BaseTrinket)arty, false, luck, props, val, val ); }
+					LootPackEntry.MakeFixedDrop( arty, 6 );
 					ResourceMods.SetRandomResource( false, true, arty, CraftResource.None, false, this );
 					arty.Movable = false;
 					arty.Name = RandomThings.MagicItemName( arty, this, Region.Find( this.Location, this.Map ) );
@@ -813,7 +805,7 @@ namespace Server.Mobiles
 					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ instr.Quality = InstrumentQuality.Exceptional; }
 					if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ instr.Slayer = SlayerDeed.GetRandomSlayer(); }
 
-					BaseRunicTool.ApplyAttributesTo( (BaseInstrument)arty, false, luck, props, val, val );
+					LootPackEntry.MakeFixedDrop( arty, 6 );
 					arty.Movable = false;
 					arty.Name = RandomThings.MagicItemName( arty, this, Region.Find( this.Location, this.Map ) );
 					arty.Name = cultInfo.ToTitleCase(arty.Name);
