@@ -156,14 +156,7 @@ namespace Server.Mobiles
 
 		public static void SpecialItem( Item item, Mobile m )
 		{
-			int min = (int)(m.Fame/200);
-			int max = (int)(m.Fame/100);
-			int props = (int)(m.Fame/1500) + Utility.RandomMinMax( 0, (int)(m.Fame/2000) );
-
-			if ( item is BaseHat ){ BaseHat hat = (BaseHat)item; BaseRunicTool.ApplyAttributesTo( hat, false, 0, props, min, max ); }
-			else if ( item is BaseClothing ){ BaseClothing cloth = (BaseClothing)item; BaseRunicTool.ApplyAttributesTo( cloth, false, 0, props, min, max ); }
-			else if ( item is BaseArmor ){ BaseArmor armor = (BaseArmor)item; BaseRunicTool.ApplyAttributesTo( armor, false, 0, props, min, max ); }
-			else if ( item is BaseWeapon ){ BaseWeapon weapon = (BaseWeapon)item; BaseRunicTool.ApplyAttributesTo( weapon, false, 0, props, min, max ); }
+			LootPackEntry.MakeFixedDrop( item, 8 );
 		}
 
 		public override void OnDeath( Container c )
