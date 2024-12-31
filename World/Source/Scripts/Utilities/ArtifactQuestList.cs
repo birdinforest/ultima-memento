@@ -57,7 +57,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_BloodwoodSpirit"; item = "Bloodwood Spirit"; }
 			else if (artifact == arty++) { name = "Artifact_BoneCrusher"; item = "Bone Crusher"; }
 			else if (artifact == arty++) { name = "Artifact_Bonesmasher"; item = "Bonesmasher"; }
-			else if (artifact == arty++) { name = "Arty_BookOfKnowledge"; item = "Book Of Knowledge"; }
+			else if (artifact == arty++) { name = "Artifact_BookOfKnowledge"; item = "Book Of Knowledge"; }
 			else if (artifact == arty++) { name = "Artifact_Boomstick"; item = "Boomstick"; }
 			else if (artifact == arty++) { name = "Artifact_BootsofHermes"; item = "Boots of Hermes"; }
 			else if (artifact == arty++) { name = "Artifact_BootsofPyros"; item = "Boots of the Daemon King"; }
@@ -151,9 +151,9 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_GrimReapersMask"; item = "Grim Reaper's Mask"; }
 			else if (artifact == arty++) { name = "Artifact_GrimReapersRobe"; item = "Grim Reaper's Robe"; }
 			else if (artifact == arty++) { name = "Artifact_GrimReapersScythe"; item = "Grim Reaper's Scythe"; }
-			else if (artifact == arty++) { name = "Arty_PyrosGrimoire"; item = "Grimoire of the Daemon King"; }
+			else if (artifact == arty++) { name = "Artifact_PyrosGrimoire"; item = "Grimoire of the Daemon King"; }
 			else if (artifact == arty++) { name = "Artifact_TownGuardsHalberd"; item = "Guardsman Halberd"; }
-			else if (artifact == arty++) { name = "GwennosHarp"; item = "Gwenno's Harp"; }
+			else if (artifact == arty++) { name = "Artifact_GwennosHarp"; item = "Gwenno's Harp"; }
 			else if (artifact == arty++) { name = "Artifact_HammerofThor"; item = "Hammer of Thor"; }
 			else if (artifact == arty++) { name = "Artifact_HatOfTheMagi"; item = "Hat of the Magi"; }
 			else if (artifact == arty++) { name = "Artifact_HeartOfTheLion"; item = "Heart of the Lion"; }
@@ -172,7 +172,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_LunaLance"; item = "Holy Lance"; }
 			else if (artifact == arty++) { name = "Artifact_HolySword"; item = "Holy Sword"; }
 			else if (artifact == arty++) { name = "Artifact_HoodedShroudOfShadows"; item = "Hooded Shroud of Shadows"; }
-			else if (artifact == arty++) { name = "HornOfKingTriton"; item = "Horn of King Triton"; }
+			else if (artifact == arty++) { name = "Artifact_HornOfKingTriton"; item = "Horn of King Triton"; }
 			else if (artifact == arty++) { name = "Artifact_HuntersArms"; item = "Hunter's Arms"; }
 			else if (artifact == arty++) { name = "Artifact_HuntersGloves"; item = "Hunter's Gloves"; }
 			else if (artifact == arty++) { name = "Artifact_HuntersGorget"; item = "Hunter's Gorget"; }
@@ -186,7 +186,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_InquisitorsLeggings"; item = "Inquisitor's Leggings"; }
 			else if (artifact == arty++) { name = "Artifact_InquisitorsResolution"; item = "Inquisitor's Resolution"; }
 			else if (artifact == arty++) { name = "Artifact_InquisitorsTunic"; item = "Inquisitor's Tunic"; }
-			else if (artifact == arty++) { name = "IolosLute"; item = "Iolo's Lute"; }
+			else if (artifact == arty++) { name = "Artifact_IolosLute"; item = "Iolo's Lute"; }
 			else if (artifact == arty++) { name = "Artifact_IronwoodCrown"; item = "Ironwood Crown"; }
 			else if (artifact == arty++) { name = "Artifact_JackalsArms"; item = "Jackal's Arms"; }
 			else if (artifact == arty++) { name = "Artifact_JackalsCollar"; item = "Jackal's Collar"; }
@@ -211,7 +211,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_LegsOfTheFallenKing"; item = "Leggings of the Fallen King"; }
 			else if (artifact == arty++) { name = "Artifact_LegsOfTheHarrower"; item = "Leggings of the Harrower"; }
 			else if (artifact == arty++) { name = "Artifact_LegsOfNobility"; item = "Legs of Nobility"; }
-			else if (artifact == arty++) { name = "Arty_HydrosLexicon"; item = "Lexicon of the Lurker"; }
+			else if (artifact == arty++) { name = "Artifact_HydrosLexicon"; item = "Lexicon of the Lurker"; }
 			else if (artifact == arty++) { name = "Artifact_ConansLoinCloth"; item = "Loin Cloth of the Cimmerian"; }
 			else if (artifact == arty++) { name = "Artifact_LongShot"; item = "Long Shot"; }
 			else if (artifact == arty++) { name = "Artifact_LuckyEarrings"; item = "Lucky Earrings"; }
@@ -252,7 +252,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_OrcishVisage"; item = "Orcish Visage"; }
 			else if (artifact == arty++) { name = "Artifact_OrnamentOfTheMagician"; item = "Ornament of the Magician"; }
 			else if (artifact == arty++) { name = "Artifact_OrnateCrownOfTheHarrower"; item = "Ornate Crown of the Harrower"; }
-			else if (artifact == arty++) { name = "Arty_OssianGrimoire"; item = "Ossian Grimoire"; }
+			else if (artifact == arty++) { name = "Artifact_OssianGrimoire"; item = "Ossian Grimoire"; }
 			else if (artifact == arty++) { name = "Artifact_OverseerSunderedBlade"; item = "Overseer Sundered Blade"; }
 			else if (artifact == arty++) { name = "Artifact_Pacify"; item = "Pacify"; }
 			else if (artifact == arty++) { name = "Artifact_PadsOfTheCuSidhe"; item = "Pads of the Cu Sidhe"; }
@@ -263,13 +263,13 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_PolarBearBoots"; item = "Polar Bear Boots"; }
 			else if (artifact == arty++) { name = "Artifact_PolarBearCape"; item = "Polar Bear Cape"; }
 			else if (artifact == arty++) { name = "Artifact_Quell"; item = "Quell"; }
-			else if (artifact == arty++) { name = "QuiverOfBlight"; item = "Quiver of Blight"; }
-			else if (artifact == arty++) { name = "QuiverOfFire"; item = "Quiver of Fire"; }
-			else if (artifact == arty++) { name = "QuiverOfIce"; item = "Quiver of Ice"; }
-			else if (artifact == arty++) { name = "QuiverOfInfinity"; item = "Quiver of Infinity"; }
-			else if (artifact == arty++) { name = "QuiverOfLightning"; item = "Quiver of Lightning"; }
-			else if (artifact == arty++) { name = "QuiverOfRage"; item = "Quiver of Rage"; }
-			else if (artifact == arty++) { name = "QuiverOfElements"; item = "Quiver of the Elements"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfBlight"; item = "Quiver of Blight"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfFire"; item = "Quiver of Fire"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfIce"; item = "Quiver of Ice"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfInfinity"; item = "Quiver of Infinity"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfLightning"; item = "Quiver of Lightning"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfRage"; item = "Quiver of Rage"; }
+			else if (artifact == arty++) { name = "Artifact_QuiverOfElements"; item = "Quiver of the Elements"; }
 			else if (artifact == arty++) { name = "Artifact_RaedsGlory"; item = "Raed's Glory"; }
 			else if (artifact == arty++) { name = "Artifact_RamusNecromanticScalpel"; item = "Ramus' Necromantic Scalpel"; }
 			else if (artifact == arty++) { name = "Artifact_ResilientBracer"; item = "Resillient Bracer"; }
@@ -332,7 +332,7 @@ namespace Server.Utilities
 			else if (artifact == arty++) { name = "Artifact_TalonBite"; item = "Talon Bite"; }
 			else if (artifact == arty++) { name = "Artifact_TheTaskmaster"; item = "Taskmaster"; }
 			else if (artifact == arty++) { name = "Artifact_TitansHammer"; item = "Titan's Hammer"; }
-			else if (artifact == arty++) { name = "Arty_LithosTome"; item = "Tome of the Mountain King"; }
+			else if (artifact == arty++) { name = "Artifact_LithosTome"; item = "Tome of the Mountain King"; }
 			else if (artifact == arty++) { name = "Artifact_TorchOfTrapFinding"; item = "Torch of Trap Burning"; }
 			else if (artifact == arty++) { name = "Artifact_TotemArms"; item = "Totem Arms"; }
 			else if (artifact == arty++) { name = "Artifact_TotemGloves"; item = "Totem Gloves"; }
