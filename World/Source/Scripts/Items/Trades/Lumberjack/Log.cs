@@ -188,7 +188,7 @@ namespace Server.Items
 				if (0 < boards)
 				{
 					BaseWoodBoard wood = m_Log.GetLog();
-					wood.Amount = boards;
+					wood.Amount = boards * 5;
 					from.AddToBackpack(wood);
 				}
 
