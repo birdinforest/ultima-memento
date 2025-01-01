@@ -15,7 +15,7 @@ namespace Server.Items
 
 		public override double DefaultWeight
 		{
-			get { return 1; }
+			get { return 2; }
 		}
 
 		[Constructable]
