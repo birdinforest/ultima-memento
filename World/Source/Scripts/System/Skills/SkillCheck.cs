@@ -414,8 +414,8 @@ namespace Server.Misc
 				PlayerMobile pm = from as PlayerMobile;
 
 				if ( from is PlayerMobile )
-					if (pm != null && skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.Now)
-					toGain *= Utility.RandomMinMax(2, 5);
+					if (pm != null && ( MyServerSettings.AlwaysUnderAlacrity() || ( skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.Now ) ) )
+						toGain *= Utility.RandomMinMax(2, 5);
 					#endregion
 
 				// Secondary skills ignore the skill cap

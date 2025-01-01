@@ -72,6 +72,11 @@ namespace Server
 			return MySettings.S_NoMacroing;
 		}
 
+		public static bool AlwaysUnderAlacrity()
+		{
+			return true;
+		}
+
 		public static double StatGain()
 		{
 			// THIS IS NOT ADVISED, BUT YOU CAN INCREASE THE CHANCE OF A STAT GAIN TO OCCUR
