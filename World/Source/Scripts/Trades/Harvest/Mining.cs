@@ -66,7 +66,7 @@ namespace Server.Engines.Harvest
 			oreAndStone.EffectActions = new int[]{ 11 };
 			oreAndStone.EffectSounds = new int[]{ 0x125, 0x126 };
 			oreAndStone.EffectCounts = new int[]{ 1 };
-			oreAndStone.EffectDelay = TimeSpan.FromSeconds( 1.6 );
+			oreAndStone.EffectDelay = TimeSpan.FromSeconds( 1.8 );
 			oreAndStone.EffectSoundDelay = TimeSpan.FromSeconds( 0.9 );
 
 			oreAndStone.NoResourcesMessage = 503040; // There is no metal here to mine.
@@ -286,6 +286,8 @@ namespace Server.Engines.Harvest
 
 		public override void OnHarvestFinished( Mobile from, Item tool, HarvestDefinition def, HarvestVein vein, HarvestBank bank, HarvestResource resource, object harvested )
 		{
+			base.OnHarvestFinished(from, tool, def, vein, bank, resource, harvested);
+
 			if ( Pickaxe.IsGargoylePickaxe(tool) && def == m_OreAndStone && 0.1 > Utility.RandomDouble() )
 			{
 				HarvestResource res = vein.PrimaryResource;
@@ -335,6 +337,8 @@ namespace Server.Engines.Harvest
 							spawned.MoveToWorld( from.Location, from.Map );
 							spawned.Combatant = from;
 						}
+
+						return;
 					}
 					catch
 					{

@@ -538,6 +538,10 @@ namespace Server.Engines.Harvest
 
 		public virtual void OnHarvestFinished( Mobile from, Item tool, HarvestDefinition def, HarvestVein vein, HarvestBank bank, HarvestResource resource, object harvested )
 		{
+			if (!MySettings.S_AutoRepeatHarvesting) return;
+			if (tool.Deleted) return;
+
+			Timer.DelayCall(TimeSpan.FromMilliseconds(500), () => StartHarvesting(from, tool, harvested));
 		}
 
 		public virtual bool SpecialHarvest( Mobile from, Item tool, HarvestDefinition def, Map map, Point3D loc )

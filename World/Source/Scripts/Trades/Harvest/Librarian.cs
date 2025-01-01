@@ -199,12 +199,9 @@ namespace Server.Engines.Harvest
 
 		public override void OnHarvestFinished( Mobile from, Item tool, HarvestDefinition def, HarvestVein vein, HarvestBank bank, HarvestResource resource, object harvested)
 		{
-			Map map = from.Map;
-			Point3D loc = from.Location;
+			base.OnHarvestFinished( from, tool, def, vein, bank, resource, harvested );
 
-			HarvestResource res = vein.PrimaryResource;
-
-			if ( harvested is StaticTarget )
+			if ( from.Map != null && harvested is StaticTarget )
 			{
 				int itemID = ((StaticTarget)harvested).ItemID;
 
@@ -213,14 +210,10 @@ namespace Server.Engines.Harvest
 					if ( itemID == 0x3084 || itemID == 0x3085 ){ itemID = 0x2DEF; }
 					else if ( itemID == 0x3086 || itemID == 0x3087 ){ itemID = 0x2DF0; }
 
-					if  ( res == resource )
+					if ( vein.PrimaryResource == resource )
 					{
 						try
 						{
-							map = from.Map;
-
-							if ( map == null )
-								return;
 
 							int search = (int)(from.Skills[SkillName.Inscribe].Value);
 							if ( search > Utility.Random( 5000 ) )

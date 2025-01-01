@@ -366,6 +366,9 @@ namespace Server.Engines.Harvest
 				{
 				}
 			}
+
+			// At the end in case there was a combatant
+			base.OnHarvestFinished(from, tool, def, vein, bank, resource, harvested);
 		}
 
 		public static void Initialize()
