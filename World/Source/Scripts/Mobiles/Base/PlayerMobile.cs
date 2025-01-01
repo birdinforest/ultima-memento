@@ -4672,13 +4672,13 @@ namespace Server.Mobiles
 			switch(stat)
             {
                 case StatType.Dex:
-                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.DexGainCooldown, 1061147, 1060526, remaining, this, "", true));
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.DexGainCooldown, 1060527, 1060526, remaining, this, "", true));
                         break;
                 case StatType.Int:
-                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.IntGainCooldown, 1061148, 1060526, remaining, this, "", true));
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.IntGainCooldown, 1060528, 1060526, remaining, this, "", true));
                         break;
                 case StatType.Str:
-                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.StrGainCooldown, 1061146, 1060526, remaining, this, "", true));
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.StrGainCooldown, 1060529, 1060526, remaining, this, "", true));
                         break;
             }
         }
