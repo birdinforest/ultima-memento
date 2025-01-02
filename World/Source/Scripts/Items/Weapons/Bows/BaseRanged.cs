@@ -57,16 +57,18 @@ namespace Server.Items
 			{
 				bool canSwing = true;
 
-				if ( Core.AOS )
+				canSwing =  !attacker.Paralyzed && !attacker.Frozen ;
+
+				if ( canSwing )
 				{
-					canSwing = ( !attacker.Paralyzed && !attacker.Frozen );
+					Spell sp = attacker.Spell as Spell;
+					canSwing =  sp == null || !sp.IsCasting || !sp.BlocksMovement ;
+				}
 
-					if ( canSwing )
-					{
-						Spell sp = attacker.Spell as Spell;
-
-						canSwing = ( sp == null || !sp.IsCasting || !sp.BlocksMovement );
-					}
+				if ( canSwing )
+				{
+					PlayerMobile p = attacker as PlayerMobile;
+					canSwing = p == null || p.PeacedUntil <= DateTime.Now;
 				}
 
 				if ( canSwing && attacker.HarmfulCheck( defender ) )
