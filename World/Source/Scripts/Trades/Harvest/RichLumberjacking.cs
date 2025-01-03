@@ -127,7 +127,7 @@ namespace Server.Engines.Harvest
 			{
 				if (bank.IsEmpty && Utility.Random(100) < 25 && !m_VolatileDefinition.HasBank(from))
 				{
-                    const int MAX_DISTANCE = 5;
+                    const int MAX_DISTANCE = 8;
 					var location = (IPoint3D)harvested;
 					var candidates = new List<Point3D>();
 					for (var x = 0 - MAX_DISTANCE; x <= MAX_DISTANCE; x++)
