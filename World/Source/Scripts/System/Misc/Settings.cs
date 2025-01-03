@@ -74,7 +74,8 @@ namespace Server
 
 		public static bool AlwaysUnderAlacrity()
 		{
-			return true;
+			// GAIN AN ADDITIONAL +0.2 TO +0.5 EVERY TIME YOU GAIN
+			return false;
 		}
 
 		public static double StatGain()
