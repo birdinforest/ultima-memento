@@ -94,6 +94,7 @@ namespace Server.Misc
 			builder.Append("- Gather - The 'Resources' server setting is now limited by the amount of resources in the harvest bank<br>");
 			builder.Append("- Gather - Drop harvested items to ground when backpack is full<br>");
 			builder.Append("- Gather - Fix InvalidCastException when Fishing<br>");
+			builder.Append("- Gather - Fix issue where saplings were choppable<br>");
 			builder.Append("- Gump - Alien Players who use Tithe to pay for a res from another player are no longer double penalized<br>");
 			builder.Append("- Gump - Sending buttons that don't exist will now disconnect the Player<br>");
 			builder.Append("- Gump - Remove redundant quiver damage qualifier<br>");
