@@ -5,7 +5,7 @@ using Server.Network;
 namespace Server.Items
 {
 	[FlipableAttribute( 0xF43, 0xF44 )]
-	public class Hatchet : BaseAxe, IUsesRemaining
+	public class Hatchet : BaseAxe
 	{
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
@@ -31,8 +31,6 @@ namespace Server.Items
 		public Hatchet() : base( 0xF43 )
 		{
 			Weight = 4.0;
-			UsesRemaining = 50;
-			ShowUsesRemaining = true;
 		}
 
 		public Hatchet( Serial serial ) : base( serial )
@@ -49,12 +47,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-
-			if ( !ShowUsesRemaining )
-			{
-				UsesRemaining = 50;
-				ShowUsesRemaining = true;
-			}
 		}
 	}
 }
