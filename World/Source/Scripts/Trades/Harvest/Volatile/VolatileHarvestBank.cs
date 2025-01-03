@@ -33,13 +33,14 @@ namespace Server.Engines.Harvest
 
 			// Pulse continually
 			var i = 0;
+			const int TIME_TO_LIVE_SECONDS = 30;
 			m_Timer = Timer.DelayCall(TimeSpan.Zero, TimeSpan.FromSeconds(1), () =>
 			{
 				if (i == 0) Effects.PlaySound(Point, Map, 0x28E); // agility
 
 				// Animate
-				Effects.SendLocationEffect(Point, Map, 0x373A, 15); // Sparkle
-				if (++i < 15) return;
+				Effects.SendLocationEffect(Point, Map, 0x373A, 15, 10, 0); // Sparkle
+				if (++i < TIME_TO_LIVE_SECONDS) return;
 
 				Stop(false);
 				Effects.PlaySound(Point, Map, 0x1D6); // wisp5
