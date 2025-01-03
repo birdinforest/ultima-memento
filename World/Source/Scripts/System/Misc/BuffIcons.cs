@@ -225,12 +225,18 @@ namespace Server
 				BuffInfo.RemoveBuff( m, BuffIcon.MassSleep );
 				BuffInfo.RemoveBuff( m, BuffIcon.ParalyzeField );
 				BuffInfo.RemoveBuff( m, BuffIcon.GraspingRoots );
-				BuffInfo.RemoveBuff( m, BuffIcon.PeaceMaking );
 				BuffInfo.RemoveBuff( m, BuffIcon.Firefly );
 				BuffInfo.RemoveBuff( m, BuffIcon.Begging );
 				BuffInfo.RemoveBuff( m, BuffIcon.Confusion );
 				BuffInfo.RemoveBuff( m, BuffIcon.Charm );
 				BuffInfo.RemoveBuff( m, BuffIcon.Fear );
+
+				if (m is PlayerMobile)
+				{
+					var player = (PlayerMobile)m;
+					if (player.PeacedUntil < DateTime.Now)
+						BuffInfo.RemoveBuff( m, BuffIcon.PeaceMaking );
+				}
 			}
 		}
 		#endregion
