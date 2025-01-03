@@ -54,8 +54,8 @@ namespace Server.Engines.Harvest
 				MaxRange = 2,
 
 				// Ten logs per harvest action
-				ConsumedPerHarvest = 1,
-				ConsumedPerIslesDreadHarvest = 1,
+				ConsumedPerHarvest = int.MaxValue,
+				ConsumedPerIslesDreadHarvest = int.MaxValue,
 
 				// The chopping effect
 				EffectActions = new int[]{ 13 },
