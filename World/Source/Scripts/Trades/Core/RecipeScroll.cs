@@ -117,6 +117,8 @@ namespace Server.Items
 					}
 				}
 
+				pm.PlaySound( from.Female ? 778 : 1049 );
+				pm.Say( "*ah!*" );
 				pm.SendLocalizedMessage(1073451, r.TextDefinition.ToString()); // You have learned a new recipe: ~1_RECIPE~
 				pm.AcquireRecipe(r);
 				Delete();
