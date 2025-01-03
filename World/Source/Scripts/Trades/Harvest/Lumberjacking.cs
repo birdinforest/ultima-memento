@@ -13,16 +13,11 @@ namespace Server.Engines.Harvest
 {
 	public class Lumberjacking : HarvestSystem
 	{
-		private static Lumberjacking m_System;
-
 		public static Lumberjacking System
 		{
 			get
 			{
-				if ( m_System == null )
-					m_System = new Lumberjacking();
-
-				return m_System;
+				return RichLumberjacking.System;
 			}
 		}
 
@@ -33,7 +28,7 @@ namespace Server.Engines.Harvest
 			get{ return m_Definition; }
 		}
 
-		private Lumberjacking()
+		protected Lumberjacking()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;
@@ -41,9 +36,9 @@ namespace Server.Engines.Harvest
 			#region Lumberjacking
 			HarvestDefinition lumber = new HarvestDefinition();
 
-			// Resource banks are every 4x3 tiles
-			lumber.BankWidth = 4;
-			lumber.BankHeight = 3;
+			// Resource banks are every 1x1 tiles
+			lumber.BankWidth = 1;
+			lumber.BankHeight = 1;
 
 			// Every bank holds from 4 to 9 logs
 			lumber.MinTotal = 4;

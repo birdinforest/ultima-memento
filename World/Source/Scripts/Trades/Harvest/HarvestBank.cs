@@ -16,6 +16,8 @@ namespace Server.Engines.Harvest
 			get { return m_Definition; }
 		}
 
+		public bool IsEmpty { get { return m_Current < 1; } }
+
 		public int Current
 		{
 			get
@@ -62,7 +64,7 @@ namespace Server.Engines.Harvest
 			m_Vein = m_DefaultVein;
 		}
 
-		public void Consume( int amount, Mobile from )
+		public virtual void Consume( int amount, Mobile from )
 		{
 			CheckRespawn();
 
@@ -83,6 +85,11 @@ namespace Server.Engines.Harvest
 
 			if ( m_Current < 0 )
 				m_Current = 0;
+		}
+
+		public void Deplete( Mobile from )
+		{
+			Consume( m_Current, from );
 		}
 
 		public HarvestBank( HarvestDefinition def, HarvestVein defaultVein )

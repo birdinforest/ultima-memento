@@ -67,7 +67,7 @@ namespace Server.Engines.Harvest
 				from.SendMessage( (string)message );
 		}
 
-		public HarvestBank GetBank( Map map, int x, int y )
+		public virtual HarvestBank GetBank( Map map, int x, int y )
 		{
 			if ( map == null || map == Map.Internal )
 				return null;

@@ -33,6 +33,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Disable Bulk Order Deeds (needs fixing/balancing)<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
+			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
 			builder.Append("- Gather - Add 'Glistening ore vein' to give Mining a more active playstyle<br>");
 			builder.Append("- Gather - Dwarven ore can now only be acquired via 'Glistening ore vein'<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
