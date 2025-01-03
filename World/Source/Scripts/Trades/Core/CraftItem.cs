@@ -916,6 +916,8 @@ namespace Server.Engines.Craft
 						if ( before < from.Skills[craftSkill.SkillToMake].Base )
 						{
 							var resourceName = CraftResources.GetName( thisResource );
+							from.PlaySound( from.Female ? 778 : 1049 );
+							from.Say( "*ah!*" );
 							from.SendMessage( "Working with {0} has challenged your abilities.", resourceName );
 						}
 					}
