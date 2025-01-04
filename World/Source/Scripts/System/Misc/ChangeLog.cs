@@ -92,6 +92,7 @@ namespace Server.Misc
 			builder.Append("- Combat - Ranged attacks are now prevented while being pacified<br>");
 			builder.Append("- Combat - Peacemake debuff is only removed at the appropriate time<br>");
 			builder.Append("- Craft - Candelabras now cap at 95 skill rather than 195<br>");
+			builder.Append("- Craft - Tinker recipes use Boards instead of Logs<br>");
 			builder.Append("- Gather - More tiles are now mineable<br>");
 			builder.Append("- Gather - Added system message when digging up Dwarven ore/granite<br>");
 			builder.Append("- Gather - The 'Resources' server setting is now limited by the amount of resources in the harvest bank<br>");

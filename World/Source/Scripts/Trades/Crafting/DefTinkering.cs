@@ -162,13 +162,13 @@ namespace Server.Engines.Craft
 				AddRes( index, typeof( Torch ), 1011410, 1, 1053098 );
 
 			index = AddCraft( typeof( ShojiLantern ), 1044050, 1029404, 65.0, 115.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-				AddRes( index, typeof( Log ), 1015101, 5, 1044351 );
+				AddRes( index, typeof( Board ), 1015101, 5, 1044351 );
 
 			index = AddCraft( typeof( PaperLantern ), 1044050, 1029406, 65.0, 115.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-				AddRes( index, typeof( Log ), 1015101, 5, 1044351 );
+				AddRes( index, typeof( Board ), 1015101, 5, 1044351 );
 
 			index = AddCraft( typeof( RoundPaperLantern ), 1044050, 1029418, 65.0, 115.0, typeof( IronIngot ), 1044036, 10, 1044037 );
-				AddRes( index, typeof( Log ), 1015101, 5, 1044351 );
+				AddRes( index, typeof( Board ), 1015101, 5, 1044351 );
 
 			AddCraft( typeof( Scales ), 1044050, 1026225, 60.0, 110.0, typeof( IronIngot ), 1044036, 4, 1044037 );
 
@@ -311,8 +311,8 @@ namespace Server.Engines.Craft
 
 			#region Wooden Items
 
-			AddCraft( typeof( ClockFrame ), 1044042, 1024173, 0.0, 50.0, typeof( Log ), 1015101, 6, 1044351 );
-			AddCraft( typeof( Axle ), 1044042, 1024187, -25.0, 25.0, typeof( Log ), 1015101, 2, 1044351 );
+			AddCraft( typeof( ClockFrame ), 1044042, 1024173, 0.0, 50.0, typeof( Board ), 1015101, 6, 1044351 );
+			AddCraft( typeof( Axle ), 1044042, 1024187, -25.0, 25.0, typeof( Board ), 1015101, 2, 1044351 );
 
 			index = AddCraft( typeof( SawMillSouthAddonDeed ), 1044042, "saw mill (south)", 60.0, 120.0, typeof( Granite ), 1044514, 80, 1044513 );
 			AddSkill( index, SkillName.Lumberjacking, 75.0, 80.0 );
@@ -323,7 +323,7 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( IronIngot ), 1044036, 10, 1044037 );
 
 			index = AddCraft( typeof( Nunchaku ), 1044042, 1030158, 70.0, 120.0, typeof( IronIngot ), 1044036, 3, 1044037 );
-			AddRes( index, typeof( Log ), 1015101, 8, 1044351 );
+			AddRes( index, typeof( Board ), 1015101, 8, 1044351 );
 			SetNeededExpansion( index, Expansion.SE );
 
 			#endregion
