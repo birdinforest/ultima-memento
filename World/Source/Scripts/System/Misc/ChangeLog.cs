@@ -76,6 +76,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Dramatically reduced attribute intensity from drops<br>");
 			builder.Append("- Misc - Add smooth boat movement<br>");
 			builder.Append("- Misc - Add Buff icons to convey stat gain cooldown<br>");
+			builder.Append("- Misc - Vendor restock has been reduced to 30 min<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("        Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("        Forensics, Lumberjacking, Mining<br>");

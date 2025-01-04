@@ -333,7 +333,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				return TimeSpan.FromHours( 2 );
+				return TimeSpan.FromMinutes( 30 );
 			}
 		}
 
@@ -823,7 +823,9 @@ namespace Server.Mobiles
 				UpdateCoins();
 			}
 
-			if ( DateTime.Now - m_LastRestock > RestockDelay || ( from.Region.IsPartOf( typeof( PublicRegion ) ) && DateTime.Now - m_LastRestock > RestockDelayFull ) || ( this is BaseGuildmaster && DateTime.Now - m_LastRestock > RestockDelayFull ) )
+			if ( DateTime.Now - m_LastRestock > RestockDelay 
+				|| ( from.Region.IsPartOf( typeof( PublicRegion ) ) && DateTime.Now - m_LastRestock > RestockDelayFull )
+				|| ( this is BaseGuildmaster && DateTime.Now - m_LastRestock > RestockDelayFull ) )
 				Restock();
 
 			UpdateBuyInfo();
