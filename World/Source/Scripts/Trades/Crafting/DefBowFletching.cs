@@ -103,14 +103,6 @@ namespace Server.Engines.Craft
 			int index = -1;
 
 			// Materials
-			if ( !AllowManyCraft( m_Tools ) ){ AddCraft( typeof( Kindling ), 1044457, "kindling from a log", 0.0, 00.0, typeof( BaseLog ), 1044466, 1, 1044351 ); }
-
-			index = AddCraft( typeof( Kindling ), 1044457, "kindling from logs", 0.0, 00.0, typeof( BaseLog ), 1044466, 1, 1044351 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
-
-			index = AddCraft( typeof( Shaft ), 1044457, "shafts from logs", 0.0, 40.0, typeof( BaseLog ), 1044466, 1, 1044351 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
-
 			if ( !AllowManyCraft( m_Tools ) ){ AddCraft( typeof( Kindling ), 1044457, "kindling from a board", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 ); }
 
 			index = AddCraft( typeof( Kindling ), 1044457, "kindling from boards", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 );
