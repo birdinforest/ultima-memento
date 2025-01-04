@@ -38,7 +38,8 @@ namespace Server.Misc
 			builder.Append("- Gather - Add 'Glistening ore vein' to give Mining a more active playstyle<br>");
 			builder.Append("- Gather - Dwarven ore can now only be acquired via 'Glistening ore vein'<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
-			builder.Append("- Gather - Logs now weigh 1 stone, up from 0.5<br>");
+			builder.Append("- Gather - Each Log is now worth 5 Boards<br>");
+			builder.Append("- Gather - Logs now weigh 2 stone, up from 0.5<br>");
 			builder.Append("- Gather - Logs can now be used while on a pack animal<br>");
 			builder.Append("- Gather - Sawing logs now acts as if it was done individually<br>");
 			builder.Append("- Gather - Ore now weighs 2 stone, up from 0.5<br>");
