@@ -30,11 +30,12 @@ namespace Server.Engines.MLQuests.Definitions
             Objectives.Add(new DummyObjective("Collect the following:"));
             Objectives.Add(new CollectObjective(500, typeof(IronIngot), "Iron Ingots") { DoNotConsume = true });
             Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("* Click yourself to Toggle Quest Item"));
+            Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
             Objectives.Add(new DummyObjective(""));
             Objectives.Add(new DummyObjective("Tips:"));
             Objectives.Add(new DummyObjective("- Tinkers can craft Shovels"));
             Objectives.Add(new DummyObjective("- Tinkers and Miners sell Shovels"));
+            Objectives.Add(new DummyObjective("- Double-click an item to use it"));
             Objectives.Add(new DummyObjective("- Shovels are used on the mountainside or cave floor"));
             Objectives.Add(new DummyObjective("- Ore is used on a Forge to make Ingots"));
 
