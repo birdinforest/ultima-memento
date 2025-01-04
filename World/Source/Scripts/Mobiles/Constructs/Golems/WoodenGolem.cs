@@ -79,18 +79,6 @@ namespace Server.Mobiles
 				loot.Amount = 1;
 				c.DropItem(loot);
 			}
-			if ( 1 == Utility.RandomMinMax( 1, 3 ) )
-			{
-				ReaperOil loot = new ReaperOil();
-				loot.Amount = 1;
-				c.DropItem(loot);
-			}
-			if ( 1 == Utility.RandomMinMax( 1, 3 ) )
-			{
-				MysticalTreeSap loot = new MysticalTreeSap();
-				loot.Amount = 1;
-				c.DropItem(loot);
-			}
 		}
 
 		public override void GenerateLoot()

@@ -117,14 +117,6 @@ namespace Server.Mobiles
 				loot1.Amount = Utility.RandomMinMax( 1, 2 );
 				c.DropItem(loot1);
 			}
-
-			ReaperOil loot2 = new ReaperOil();
-			loot2.Amount = Utility.RandomMinMax( 2, 5 );
-			c.DropItem(loot2);
-
-			MysticalTreeSap loot3 = new MysticalTreeSap();
-			loot3.Amount = Utility.RandomMinMax( 2, 5 );
-			c.DropItem(loot3);
 		}
 
 		public override void GenerateLoot()

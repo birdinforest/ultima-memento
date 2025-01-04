@@ -145,18 +145,6 @@ namespace Server.Mobiles
 				loot.Amount = 1;
 				c.DropItem(loot);
 			}
-			if ( 1 == Utility.RandomMinMax( 1, 2 ) )
-			{
-				ReaperOil loot = new ReaperOil();
-				loot.Amount = 1;
-				c.DropItem(loot);
-			}
-			if ( 1 == Utility.RandomMinMax( 1, 2 ) )
-			{
-				MysticalTreeSap loot = new MysticalTreeSap();
-				loot.Amount = 1;
-				c.DropItem(loot);
-			}
 		}
 
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }

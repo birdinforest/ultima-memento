@@ -105,9 +105,6 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( Kindling ), 1044294, "kindling from boards", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 );
 			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
 
-			index = AddCraft( typeof( BarkFragment ),	1044294, "bark from boards",	40.0, 70.0, typeof( Board ), 1015101, 1, 1044465 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
-
 			AddCraft( typeof( TenFootPole ), 1044294, "ten foot pole", 43.6, 68.6, typeof( Board ), 1015101, 6, 1044351 );
 
 			AddCraft( typeof( BarrelStaves ),				1044294, 1027857,	00.0,  25.0,	typeof( Board ), 1015101,  5, 1044351 );
@@ -217,23 +214,17 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( Tetsubo ), 1044295, 1030225, 80.0, 140.3, typeof( Board ), 1015101, 10, 1044351 );
 			SetNeededExpansion( index, Expansion.SE );
 
-			index = AddCraft( typeof( WoodenPlateArms ), 1044295, "wooden arms", 66.3, 116.3, typeof( ReaperOil ), "Reaper Oil", 2, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 2, 1042081 );
+			index = AddCraft( typeof( WoodenPlateArms ), 1044295, "wooden arms", 66.3, 116.3, typeof( BarkFragment ), "Bark Fragment", 2, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 18, 1044351 );
-			index = AddCraft( typeof( WoodenPlateHelm ), 1044295, "wooden helm", 62.6, 112.6, typeof( ReaperOil ), "Reaper Oil", 1, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 1, 1042081 );
+			index = AddCraft( typeof( WoodenPlateHelm ), 1044295, "wooden helm", 62.6, 112.6, typeof( BarkFragment ), "Bark Fragment", 1, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 15, 1044351 );
-			index = AddCraft( typeof( WoodenPlateGloves ), 1044295, "wooden gauntlets", 58.9, 108.9, typeof( ReaperOil ), "Reaper Oil", 1, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 1, 1042081 );
+			index = AddCraft( typeof( WoodenPlateGloves ), 1044295, "wooden gauntlets", 58.9, 108.9, typeof( BarkFragment ), "Bark Fragment", 1, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 12, 1044351 );
-			index = AddCraft( typeof( WoodenPlateGorget ), 1044295, "wooden gorget", 56.4, 106.4, typeof( ReaperOil ), "Reaper Oil", 1, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 1, 1042081 );
+			index = AddCraft( typeof( WoodenPlateGorget ), 1044295, "wooden gorget", 56.4, 106.4, typeof( BarkFragment ), "Bark Fragment", 1, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 10, 1044351 );
-			index = AddCraft( typeof( WoodenPlateLegs ), 1044295, "wooden leggings", 68.8, 118.8, typeof( ReaperOil ), "Reaper Oil", 3, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 3, 1042081 );
+			index = AddCraft( typeof( WoodenPlateLegs ), 1044295, "wooden leggings", 68.8, 118.8, typeof( BarkFragment ), "Bark Fragment", 3, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 20, 1044351 );
-			index = AddCraft( typeof( WoodenPlateChest ), 1044295, "wooden tunic", 75.0, 125.0, typeof( ReaperOil ), "Reaper Oil", 3, 1042081 );
-			AddRes( index, typeof( MysticalTreeSap ), "Mystical Tree Sap", 3, 1042081 );
+			index = AddCraft( typeof( WoodenPlateChest ), 1044295, "wooden tunic", 75.0, 125.0, typeof( BarkFragment ), "Bark Fragment", 3, 1042081 );
 			AddRes( index, typeof( Board ), 1015101, 25, 1044351 );
 
 			// Instruments

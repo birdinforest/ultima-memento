@@ -194,7 +194,7 @@ namespace Server.Mobiles
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
-			if ( dropped is MysticalTreeSap )
+			if ( dropped is HomePlants_Mushroom )
 			{
 				int TreeSap = dropped.Amount;
 				string sMessage = "";
@@ -208,7 +208,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					sMessage = "Thank you for these. Mystical tree sap is something we often look for.";
+					sMessage = "Thank you for these. Mushrooms are something we often look for.";
 				}
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
