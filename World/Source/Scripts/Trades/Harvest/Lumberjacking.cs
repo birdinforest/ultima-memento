@@ -41,6 +41,7 @@ namespace Server.Engines.Harvest
 			lumber.BankHeight = 1;
 
 			// Every bank holds from 4 to 9 logs
+			// Warning: Fruit and Kindling harvesting use these values
 			lumber.MinTotal = 4;
 			lumber.MaxTotal = 9;
 

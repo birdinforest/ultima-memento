@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using System.Linq;
 using System.Collections.Generic;
+using Server.Items.Abstractions;
 
 namespace Server.Engines.Harvest
 {
@@ -111,6 +112,9 @@ namespace Server.Engines.Harvest
         public override bool GetHarvestDetails(Mobile from, Item tool, object toHarvest, out int tileID, out Map map, out Point3D loc)
         {
             if (!base.GetHarvestDetails(from, tool, toHarvest, out tileID, out map, out loc)) return false;
+
+			var harvestTool = tool as IHarvestTool;
+			if (harvestTool == null || harvestTool.HarvestSystem != RichLumberjacking.System) return true; // Don't overwrite behavior 
 
 			if (!m_VolatileDefinition.HasBank(from) || m_VolatileDefinition.GetBank(map, loc.X, loc.Y) == null) return true;
 

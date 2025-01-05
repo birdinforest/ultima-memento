@@ -89,14 +89,14 @@ namespace Server.Targets
 					if ( bank == null )
 						return;
 
-					if ( bank.Current < 5 )
+					if ( bank.Current < 1 )
 					{
 						from.SendMessage( "There is not enough here to harvest." );
 						//from.SendLocalizedMessage( 500493 ); // There's not enough wood here to harvest.
 					}
 					else
 					{
-						bank.Consume( 5, from );
+						bank.Consume( 1, from );
 
 						if ( tileID == 0x4D96 || tileID == 0x4D9A ) // apples
 						{
