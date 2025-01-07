@@ -51,7 +51,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Ore veins have been reduced and are now 5 to 17, down from 10 to 34<br>");
 			builder.Append("- Gather - Crops within 1 tile are automatically harvested<br>");
 			builder.Append("- Gather - Tool uses are reduced by the quantity of resources harvested<br>");
-			builder.Append("- Gather - One log now yields five boards<br>");
+			builder.Append("- Gather - One log now yields four boards<br>");
 			builder.Append("- Gather - Gains from digging Iron ore stop at 85, down from 100<br>");
 			builder.Append("- Gump - Redesigned crafting tool gump<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
