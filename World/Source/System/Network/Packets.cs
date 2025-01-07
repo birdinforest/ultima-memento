@@ -1979,7 +1979,7 @@ namespace Server.Network
 
 				m_Stream.Write( (ushort) (s.Info.SkillID + 1) );
 				m_Stream.Write( (ushort) uv );
-				m_Stream.Write( (ushort) s.BaseFixedPoint );
+				m_Stream.Write( (ushort)(!s.IsSecondarySkill() ? s.BaseFixedPoint : 0) );
 				m_Stream.Write( (byte) s.Lock );
 				m_Stream.Write( (ushort) s.CapFixedPoint );
 			}
@@ -2013,7 +2013,7 @@ namespace Server.Network
 			m_Stream.Write( (byte) 0xDF ); // type: delta, capped
 			m_Stream.Write( (ushort) skill.Info.SkillID );
 			m_Stream.Write( (ushort) uv );
-			m_Stream.Write( (ushort) skill.BaseFixedPoint );
+			m_Stream.Write( (ushort)(!skill.IsSecondarySkill() ? skill.BaseFixedPoint : 0) );
 			m_Stream.Write( (byte) skill.Lock );
 			m_Stream.Write( (ushort) skill.CapFixedPoint );
 
