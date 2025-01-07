@@ -111,6 +111,16 @@ namespace Server.Engines.Harvest
 
         public override bool GetHarvestDetails(Mobile from, Item tool, object toHarvest, out int tileID, out Map map, out Point3D loc)
         {
+			if (toHarvest is RichLumberjackingSparkle) // When double clicked or targeted directly
+			{
+				var sparkle = (Item)toHarvest;
+				map = sparkle.Map;
+				loc = sparkle.Location;
+				tileID = SECRET_TILE_ID;
+
+				return map != null && map != Map.Internal;
+			}
+
             if (!base.GetHarvestDetails(from, tool, toHarvest, out tileID, out map, out loc)) return false;
 
 			var harvestTool = tool as IHarvestTool;
@@ -151,7 +161,18 @@ namespace Server.Engines.Harvest
 					}
 
 					if (0 < candidates.Count)
-						m_VolatileDefinition.TryCreateBank(from, candidates[Utility.Random(candidates.Count)]);
+					{
+						m_VolatileDefinition.TryCreateBank(from, candidates[Utility.Random(candidates.Count)], point =>
+						{
+							var node = new RichLumberjackingSparkle();
+							var destination = new Point3D(point) { Z = from.Map.GetAverageZ(point.X, point.Y) + 1 };
+							node.MoveToWorld(destination, from.Map);
+							Effects.PlaySound(point, from.Map, 0x28E); // agility
+                			Effects.SendTargetEffect(node, 0x3039, 10, 12); // Swirl
+
+							return node;
+						});
+					}
 				}
             }
 		}

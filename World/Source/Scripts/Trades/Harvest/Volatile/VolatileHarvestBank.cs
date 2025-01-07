@@ -9,11 +9,13 @@ namespace Server.Engines.Harvest
 
 		private readonly VolatileHarvestDefinition m_Def;
 		private readonly Mobile m_Creator;
+		private readonly Action<bool> m_OnStop;
 		private Timer m_Timer;
 
-		public VolatileHarvestBank(Mobile creator, Map map, IPoint3D point, VolatileHarvestDefinition def, HarvestBank harvestBank) : base(def, harvestBank.DefaultVein)
+		public VolatileHarvestBank(Mobile creator, Map map, IPoint3D point, VolatileHarvestDefinition def, HarvestBank harvestBank, Action<bool> onStopped) : base(def, harvestBank.DefaultVein)
 		{
 			m_Creator = creator;
+			m_OnStop = onStopped;
 			Map = map;
 			m_Def = def;
 			Point = point;
@@ -31,20 +33,7 @@ namespace Server.Engines.Harvest
 		{
 			if (m_Timer != null) m_Timer.Stop();
 
-			// Pulse continually
-			var i = 0;
-			const int TIME_TO_LIVE_SECONDS = 30;
-			m_Timer = Timer.DelayCall(TimeSpan.Zero, TimeSpan.FromSeconds(1), () =>
-			{
-				if (i == 0) Effects.PlaySound(Point, Map, 0x28E); // agility
-
-				// Animate
-				Effects.SendLocationEffect(Point, Map, 0x373A, 15, 10, 0); // Sparkle
-				if (++i < TIME_TO_LIVE_SECONDS) return;
-
-				Stop(false);
-				Effects.PlaySound(Point, Map, 0x1D6); // wisp5
-			});
+			m_Timer = Timer.DelayCall(TimeSpan.FromSeconds(30), () => Stop(false));
 			m_Timer.Start();
 		}
 
@@ -53,6 +42,7 @@ namespace Server.Engines.Harvest
 			if (m_Timer == null) return;
 
 			m_Def.TryRemoveBank(m_Creator, wasConsumed);
+			m_OnStop(wasConsumed);
 			m_Timer.Stop();
 			m_Timer = null;
 		}

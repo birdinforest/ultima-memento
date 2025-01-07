@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Server.Engines.Harvest
@@ -29,7 +30,7 @@ namespace Server.Engines.Harvest
 			return m_BankByMobile.ContainsKey(creator);
 		}
 
-		public void TryCreateBank(Mobile creator, IPoint3D point)
+		public void TryCreateBank(Mobile creator, IPoint3D point, Func<IPoint3D, Item> nodeFactory)
 		{
 			// Only one bank per Player
 			if (HasBank(creator)) return;
@@ -43,7 +44,13 @@ namespace Server.Engines.Harvest
 			if (existing != null) return;
 
 			// Create bank
-			var bank = new VolatileHarvestBank(creator, map, point, this, base.GetBank(map, point.X, point.Y));
+			var item = nodeFactory(point);
+			var bank = new VolatileHarvestBank(creator, map, point, this, base.GetBank(map, point.X, point.Y), wasConsumed =>
+			{
+				if (!wasConsumed) Effects.PlaySound(point, map, 0x1D6); // wisp5
+
+				item.Delete();
+			});
 			banks.Add(bank);
 			m_BankByMobile[creator] = bank;
 
