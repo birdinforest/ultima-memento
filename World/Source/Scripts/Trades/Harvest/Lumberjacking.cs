@@ -110,8 +110,8 @@ namespace Server.Engines.Harvest
 			lumber.BonusResources = new BonusHarvestResource[]
 			{
 				new BonusHarvestResource( 0, 83.9, null, null ),	//Nothing
-				new BonusHarvestResource( 90, 10.0, "bark fragment", typeof( BarkFragment ) ),
-				new BonusHarvestResource( 100, 01.0, "mushrooms", typeof( HomePlants_Mushroom ) )
+				new BonusHarvestResource( 90, 10.0, "You harvest some Bark Fragments.", typeof( BarkFragment ) ),
+				new BonusHarvestResource( 100, 01.0, "You pick up some nearby Mushrooms.", typeof( HomePlants_Mushroom ) )
 			};
 
 			lumber.Resources = res;

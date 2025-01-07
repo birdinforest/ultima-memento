@@ -260,192 +260,144 @@ namespace Server.Engines.Harvest
 							else
 								item.Amount = amount;
 
-							bool FindSeaLog = false;
-								if ( !( item is Log ) && Utility.RandomBool() )
-									FindSeaLog = true;
+							if (item is BaseOre) // Mining
+							{
+								var canMutate = ( item is AgapiteOre || item is VeriteOre || item is ValoriteOre ) && Utility.RandomMinMax( 1, 2 ) == 1;
+								if ( canMutate )
+								{
+									if ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) )
+									{
+										int nepturiteOre = item.Amount;
+										item.Delete();
+										item = new NepturiteOre( nepturiteOre );
+									}
+									else if ( from.Land == Land.Underworld && from.Map == Map.SavagedEmpire )
+									{
+										int xormiteOre = item.Amount;
+										item.Delete();
+										item = new XormiteOre( xormiteOre );
+									}
+									else if ( from.Land == Land.Underworld )
+									{
+										int mithrilOre = item.Amount;
+										item.Delete();
+										item = new MithrilOre( mithrilOre );
+									}
+									else if ( from.Land == Land.Savaged )
+									{
+										int steelOre = item.Amount;
+										item.Delete();
+										item = new SteelOre( steelOre );
+									}
+									else if ( from.Land == Land.UmberVeil )
+									{
+										int brassOre = item.Amount;
+										item.Delete();
+										item = new BrassOre( brassOre );
+									}
+									else if ( from.Land == Land.Serpent )
+									{
+										int obsidianOre = item.Amount;
+										item.Delete();
+										item = new ObsidianOre( obsidianOre );
+									}
+								}
 
-							bool FindSpecialOre = false;
-								if ( ( item is AgapiteOre || item is VeriteOre || item is ValoriteOre ) && Utility.RandomMinMax( 1, 2 ) == 1 )
-									FindSpecialOre = true;
+								from.SendMessage( "You dig up some {0} ore.", CraftResources.GetName(item.Resource) );
+							}
+							else if (item is BaseGranite) // Mining
+							{
+								var canMutate = ( item is AgapiteGranite || item is VeriteGranite || item is ValoriteGranite ) && Utility.RandomMinMax( 1, 2 ) == 1;
+								if ( canMutate )
+								{
+									if ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) )
+									{
+										int nepturiteGranite = item.Amount;
+										item.Delete();
+										item = new NepturiteGranite( nepturiteGranite );
+									}
+									else if ( from.Land == Land.Underworld && from.Map == Map.SavagedEmpire )
+									{
+										int xormiteGranite = item.Amount;
+										item.Delete();
+										item = new XormiteGranite( xormiteGranite );
+									}
+									else if ( from.Land == Land.Underworld )
+									{
+										int mithrilGranite = item.Amount;
+										item.Delete();
+										item = new MithrilGranite( mithrilGranite );
+									}
+									else if ( from.Land == Land.Savaged )
+									{
+										int steelGranite = item.Amount;
+										item.Delete();
+										item = new SteelGranite( steelGranite );
+									}
+									else if ( from.Land == Land.UmberVeil )
+									{
+										int brassGranite = item.Amount;
+										item.Delete();
+										item = new BrassGranite( brassGranite );
+									}
+									else if ( from.Land == Land.Serpent )
+									{
+										int obsidianGranite = item.Amount;
+										item.Delete();
+										item = new ObsidianGranite( obsidianGranite );
+									}
+								}
 
-							bool FindSpecialGranite = false;
-								if ( ( item is AgapiteGranite || item is VeriteGranite || item is ValoriteGranite ) && Utility.RandomMinMax( 1, 2 ) == 1 )
-									FindSpecialGranite = true;
+								from.SendMessage( "You dig up some {0} granite.", CraftResources.GetName(item.Resource) );
+							}
+							else if (item is BaseLog ) // Lumberjacking
+							{
+								var canMutate = (item is Log) == false;
+								if (canMutate)
+								{
+									if ( Utility.RandomBool() && ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) ) )
+									{
+										int driftWood = item.Amount;
+										item.Delete();
+										item = new DriftwoodLog( driftWood );
+									}
+									else if ( (item is AshLog || item is CherryLog || item is GoldenOakLog || item is HickoryLog || item is MahoganyLog) && reg.IsPartOf( typeof( NecromancerRegion ) ) )
+									{
+										int blackLog = item.Amount;
+										item.Delete();
+										item = new EbonyLog( blackLog );
+									}
+									else if ( (item is WalnutLog || item is RosewoodLog || item is PineLog || item is OakLog) && reg.IsPartOf( typeof( NecromancerRegion ) ) )
+									{
+										int ghostLog = item.Amount;
+										item.Delete();
+										item = new GhostLog( ghostLog );
+									}
+									else if ( from.Land == Land.Underworld )
+									{
+										int toughLog = item.Amount;
+										item.Delete();
+										item = new PetrifiedLog( toughLog );
+									}
+								}
 
-							bool FindGhostLog = false;
-								if ( (item is WalnutLog) || (item is RosewoodLog) || (item is PineLog) || (item is OakLog) )
-									FindGhostLog = true;
-
-							bool FindBlackLog = false;
-								if ( (item is AshLog) || (item is CherryLog) || (item is GoldenOakLog) || (item is HickoryLog) || (item is MahoganyLog) )
-									FindBlackLog = true;
-
-							bool FindToughLog = false;
-								if ( !(item is Log) && item is BaseLog )
-									FindToughLog = true;
-
-							if ( item is LesserCurePotion )
+								from.SendMessage( "You chop some {0} logs.", CraftResources.GetName(item.Resource) );
+							}
+							else if ( item is LesserCurePotion ) // Graverobbing - Mutation
 							{
 								item.Delete();
 								item = Loot.RandomPotion( Utility.Random(4)+1, true );
 							}
-							else if ( item is Brimstone )
+							else if ( item is Brimstone ) // Graverobbing - Mutation
 							{
 								item.Delete();
 								item = Loot.RandomPossibleReagent();
 							}
-							else if ( item is HealScroll )
+							else if ( item is HealScroll ) // Librarian - Mutation
 							{
 								item.Delete();
 								item = Loot.RandomScroll( Utility.Random(4)+1 );
 							}
-							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSpecialOre && item is BaseOre )
-							{
-								int nepturiteOre = item.Amount;
-								item.Delete();
-								item = new NepturiteOre( nepturiteOre );
-								from.SendMessage( "You dig up some nepturite ore.");
-							}
-							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) ) && FindSeaLog && item is BaseLog )
-							{
-								int driftWood = item.Amount;
-								item.Delete();
-								item = new DriftwoodLog( driftWood );
-								from.SendMessage( "You chop some driftwood logs.");
-							}
-							else if ( ( Worlds.IsExploringSeaAreas( from ) || reg.IsPartOf( "Shipwreck Grotto" ) || reg.IsPartOf( "Barnacled Cavern" ) || Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ) && FindSpecialGranite && item is BaseGranite )
-							{
-								int nepturiteGranite = item.Amount;
-								item.Delete();
-								item = new NepturiteGranite( nepturiteGranite );
-								from.SendMessage( "You dig up nepturite granite.");
-							}
-							else if ( from.Land == Land.Underworld && FindSpecialOre && item is BaseOre && from.Map == Map.SavagedEmpire )
-							{
-								int xormiteOre = item.Amount;
-								item.Delete();
-								item = new XormiteOre( xormiteOre );
-								from.SendMessage( "You dig up some xormite ore.");
-							}
-							else if ( from.Land == Land.Underworld && FindSpecialOre && item is BaseOre )
-							{
-								int mithrilOre = item.Amount;
-								item.Delete();
-								item = new MithrilOre( mithrilOre );
-								from.SendMessage( "You dig up some mithril ore.");
-							}
-							else if ( from.Land == Land.Savaged && FindSpecialOre && item is BaseOre )
-							{
-								int steelOre = item.Amount;
-								item.Delete();
-								item = new SteelOre( steelOre );
-								from.SendMessage( "You dig up some steel ore.");
-							}
-							else if ( from.Land == Land.UmberVeil && FindSpecialOre && item is BaseOre )
-							{
-								int brassOre = item.Amount;
-								item.Delete();
-								item = new BrassOre( brassOre );
-								from.SendMessage( "You dig up some brass ore.");
-							}
-							else if ( from.Land == Land.Serpent && FindSpecialOre && item is BaseOre )
-							{
-								int obsidianOre = item.Amount;
-								item.Delete();
-								item = new ObsidianOre( obsidianOre );
-								from.SendMessage( "You dig up some obsidian ore.");
-							}
-							else if ( from.Land == Land.Underworld && FindSpecialGranite && item is BaseGranite && from.Map == Map.SavagedEmpire )
-							{
-								int xormiteGranite = item.Amount;
-								item.Delete();
-								item = new XormiteGranite( xormiteGranite );
-								from.SendMessage( "You dig up xormite granite.");
-							}
-							else if ( from.Land == Land.Underworld && FindSpecialGranite && item is BaseGranite )
-							{
-								int mithrilGranite = item.Amount;
-								item.Delete();
-								item = new MithrilGranite( mithrilGranite );
-								from.SendMessage( "You dig up mithril granite.");
-							}
-							else if ( from.Land == Land.Savaged && FindSpecialGranite && item is BaseGranite )
-							{
-								int steelGranite = item.Amount;
-								item.Delete();
-								item = new SteelGranite( steelGranite );
-								from.SendMessage( "You dig up steel granite.");
-							}
-							else if ( from.Land == Land.UmberVeil && FindSpecialGranite && item is BaseGranite )
-							{
-								int brassGranite = item.Amount;
-								item.Delete();
-								item = new BrassGranite( brassGranite );
-								from.SendMessage( "You dig up brass granite.");
-							}
-							else if ( from.Land == Land.Serpent && FindSpecialGranite && item is BaseGranite )
-							{
-								int obsidianGranite = item.Amount;
-								item.Delete();
-								item = new ObsidianGranite( obsidianGranite );
-								from.SendMessage( "You dig up obsidian granite.");
-							}
-							else if ( reg.IsPartOf( typeof( NecromancerRegion ) ) && FindBlackLog && item is BaseLog )
-							{
-								int blackLog = item.Amount;
-								item.Delete();
-								item = new EbonyLog( blackLog );
-								from.SendMessage( "You chop some ebony logs.");
-							}
-							else if ( reg.IsPartOf( typeof( NecromancerRegion ) ) && FindGhostLog && item is BaseLog )
-							{
-								int ghostLog = item.Amount;
-								item.Delete();
-								item = new GhostLog( ghostLog );
-								from.SendMessage( "You chop some ghost logs.");
-							}
-							else if ( from.Land == Land.Underworld && FindToughLog )
-							{
-								int toughLog = item.Amount;
-								item.Delete();
-								item = new PetrifiedLog( toughLog );
-								from.SendMessage( "You chop some petrified logs.");
-							}
-
-							else if ( item is IronOre ){ from.SendMessage( "You dig up some ore."); }
-							else if ( item is DullCopperOre ){ from.SendMessage( "You dig up some dull copper ore."); }
-							else if ( item is ShadowIronOre ){ from.SendMessage( "You dig up some shadow iron ore."); }
-							else if ( item is CopperOre ){ from.SendMessage( "You dig up some copper ore."); }
-							else if ( item is BronzeOre ){ from.SendMessage( "You dig up some bronze ore."); }
-							else if ( item is GoldOre ){ from.SendMessage( "You dig up some golden ore."); }
-							else if ( item is AgapiteOre ){ from.SendMessage( "You dig up some agapite ore."); }
-							else if ( item is VeriteOre ){ from.SendMessage( "You dig up some verite ore."); }
-							else if ( item is ValoriteOre ){ from.SendMessage( "You dig up some valorite ore."); }
-							else if ( item is DwarvenOre ){ from.SendMessage( "You dig up some dwarven ore."); }
-
-							else if ( item is Granite ){ from.SendMessage( "You dig up granite."); }
-							else if ( item is DullCopperGranite ){ from.SendMessage( "You dig up dull copper granite."); }
-							else if ( item is ShadowIronGranite ){ from.SendMessage( "You dig up shadow iron granite."); }
-							else if ( item is CopperGranite ){ from.SendMessage( "You dig up copper granite."); }
-							else if ( item is BronzeGranite ){ from.SendMessage( "You dig up bronze granite."); }
-							else if ( item is GoldGranite ){ from.SendMessage( "You dig up golden granite."); }
-							else if ( item is AgapiteGranite ){ from.SendMessage( "You dig up agapite granite."); }
-							else if ( item is VeriteGranite ){ from.SendMessage( "You dig up verite granite."); }
-							else if ( item is ValoriteGranite ){ from.SendMessage( "You dig up valorite granite."); }
-							else if ( item is DwarvenGranite ){ from.SendMessage( "You dig up dwarven granite."); }
-
-							else if ( item is Log ){ from.SendMessage( "You chop some logs."); }
-							else if ( item is AshLog ){ from.SendMessage( "You chop some ash logs."); }
-							else if ( item is CherryLog ){ from.SendMessage( "You chop some cherry logs."); }
-							else if ( item is EbonyLog ){ from.SendMessage( "You chop some ebony logs."); }
-							else if ( item is GoldenOakLog ){ from.SendMessage( "You chop some golden oak logs."); }
-							else if ( item is HickoryLog ){ from.SendMessage( "You chop some hickory logs."); }
-							else if ( item is MahoganyLog ){ from.SendMessage( "You chop some mahogany logs."); }
-							else if ( item is OakLog ){ from.SendMessage( "You chop some oak logs."); }
-							else if ( item is PineLog ){ from.SendMessage( "You chop some pine logs."); }
-							else if ( item is RosewoodLog ){ from.SendMessage( "You chop some rosewood logs."); }
-							else if ( item is WalnutLog ){ from.SendMessage( "You chop some walnut logs."); }
-							else if ( item is ElvenLog ){ from.SendMessage( "You chop some elven logs."); }
 
 							if ( tool is FishingPole && Server.Engines.Harvest.Fishing.IsNearHugeShipWreck( from ) && from.Skills[SkillName.Seafaring].Value >= Utility.RandomMinMax( 1, 250 ) )
 							{
