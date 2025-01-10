@@ -592,7 +592,6 @@ namespace Server.Items
 				if ( healer != patient && patient is PlayerMobile )
 					patient.SendLocalizedMessage( 1008078, false, healer.Name ); //  : Attempting to heal you.
 
-				healer.SendMessage ( "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( seconds ).Ticks).ToString("s.ff") ) + "" );
 				healer.SendLocalizedMessage( 500956 ); // You begin applying the bandages.
 				healer.LocalOverheadMessage( MessageType.Regular, 1150, 500956 );
 
