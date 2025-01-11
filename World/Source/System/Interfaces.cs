@@ -42,9 +42,6 @@ namespace Server
 	{
 		bool OnBuyItems( Mobile from, List<BuyItemResponse> list );
 		bool OnSellItems( Mobile from, List<SellItemResponse> list );
-
-		DateTime LastRestock{ get; set; }
-		TimeSpan RestockDelay{ get; }
 		void Restock();
 	}
 
