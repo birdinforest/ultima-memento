@@ -120,8 +120,7 @@ namespace Server.Mobiles
 
 		public virtual void UpdateBlackMarket()
 		{
-			if ( typeof( PlayerVendor ) == this.GetType() || typeof( PlayerBarkeeper ) == this.GetType() )
-				return;
+			if ( this is PlayerBarkeeper ) return;
 
 			Container bank = this.BankBox;
 			if ( IsBlackMarket && MyServerSettings.BlackMarket() )
@@ -140,8 +139,7 @@ namespace Server.Mobiles
 
 		public virtual void UpdateCoins()
 		{
-			if ( typeof( PlayerVendor ) == this.GetType() || typeof( PlayerBarkeeper ) == this.GetType() )
-				return;
+			if ( this is PlayerBarkeeper ) return;
 
 			Container pack = this.Backpack;
 
@@ -264,8 +262,7 @@ namespace Server.Mobiles
 
 		public void DefaultCoinPurse()
 		{
-			if ( typeof( PlayerVendor ) == this.GetType() || typeof( PlayerBarkeeper ) == this.GetType() )
-				return;
+			if ( this is PlayerBarkeeper ) return;
 
 			this.CoinPurse = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
 
@@ -985,7 +982,7 @@ namespace Server.Mobiles
 
 		public virtual void VendorSell( Mobile from )
 		{
-			if ( BeggingPose(from) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+			if ( BeggingPose(from) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 			{
 				from.Say( BeggingWords() );
 			}
@@ -1035,7 +1032,7 @@ namespace Server.Mobiles
 
 							if ( barter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
 
-							if ( BeggingPose(from) > 0 && GuildMember == 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+							if ( BeggingPose(from) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 							{
 								Titles.AwardKarma( from, -BeggingKarma( from ), true );
 								barter = (int)from.Skills[SkillName.Begging].Value;
@@ -1892,7 +1889,7 @@ namespace Server.Mobiles
 
 			int SoldBarter = (int)seller.Skills[SkillName.Mercantile].Value;
 			if ( SoldBarter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ SoldBarter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
-			if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+			if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 				SoldBarter = (int)seller.Skills[SkillName.Begging].Value;
 
 			foreach ( SellItemResponse resp in list )
@@ -1933,7 +1930,7 @@ namespace Server.Mobiles
 				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
 					continue;
 
-				if ( BeggingPose(seller) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+				if ( BeggingPose(seller) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 				{
 					Titles.AwardKarma( seller, -BeggingKarma( seller ), true );
 				}
@@ -1999,7 +1996,7 @@ namespace Server.Mobiles
 						int barter = (int)seller.Skills[SkillName.Mercantile].Value;
 						if ( barter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
 
-						if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+						if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 						{
 							seller.CheckSkill( SkillName.Begging, 0, 125 );
 							barter = (int)seller.Skills[SkillName.Begging].Value;
@@ -2223,7 +2220,7 @@ namespace Server.Mobiles
 
 			int cost = 20;
 
-			if ( BeggingPose(from) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+			if ( BeggingPose(from) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 			{
 				cost = cost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * cost ); if ( cost < 1 ){ cost = 1; }
 				SayTo(from, "Since you are begging, which item shall I recharge, for " + cost.ToString() + " gold per circle charge?");
@@ -2242,7 +2239,7 @@ namespace Server.Mobiles
 
 			int idCost = 200;
 
-			if ( BeggingPose(from) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+			if ( BeggingPose(from) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 			{
 				idCost = idCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * idCost ); if ( idCost < 1 ){ idCost = 1; }
 				SayTo(from, "Since you are begging, which item shall I examine, for " + idCost.ToString() + " gold?");
@@ -2263,7 +2260,7 @@ namespace Server.Mobiles
 			if ( this is Bard || this is BardGuildmaster )
 				pnt = "use";
 
-			if ( BeggingPose(from) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+			if ( BeggingPose(from) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 			{
 				cost = cost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * cost ); if ( cost < 1 ){ cost = 1; }
 				SayTo(from, "Since you are begging, do you still want to hire me to repair something...at least " + cost.ToString() + " gold per " + pnt + "?");
@@ -2365,7 +2362,7 @@ namespace Server.Mobiles
 						m_Vendor.CoinPurse += spent;
 						m_Vendor.InvalidateProperties();
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
-						if ( BeggingPose( from ) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) )
+						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
 							// DO ANY KARMA LOSS
 					}
@@ -2502,7 +2499,7 @@ namespace Server.Mobiles
 
 						Container packs = from.Backpack;
 
-						if ( BeggingPose(from) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+						if ( BeggingPose(from) > 0 && !(m_Vendor is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 							nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
 
 						int toConsume = nCost;
@@ -2521,7 +2518,7 @@ namespace Server.Mobiles
 							m_Vendor.CoinPurse += toConsume;
 							m_Vendor.InvalidateProperties();
 
-							if ( BeggingPose( from ) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) )
+							if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 								Titles.AwardKarma( from, -BeggingKarma( from ), true );
 								// DO ANY KARMA LOSS
 						}
@@ -2615,7 +2612,7 @@ namespace Server.Mobiles
 						m_Vendor.InvalidateProperties();
 
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
-						if ( BeggingPose( from ) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) )
+						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
 							// DO ANY KARMA LOSS
 					}
