@@ -266,8 +266,6 @@ namespace Server.Mobiles
 
 			if ( this is BaseGuildmaster )
 				this.CoinPurse = this.CoinPurse * 3;
-
-			this.InvalidateProperties();
 		}
 
 		public BaseVendor( Serial serial ): base( serial )
@@ -1183,7 +1181,6 @@ namespace Server.Mobiles
 					from.AddToBackpack ( wMap );
 
 					this.CoinPurse += 1000;
-					this.InvalidateProperties();
 					string sMessage = "Thank you. Here is your world map.";
 					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
 					dropped.Delete();
@@ -1818,8 +1815,6 @@ namespace Server.Mobiles
 					SayTo( buyer, true, "The total of thy purchase is {0} gold.  My thanks for the patronage.  Unfortunately, I could not sell you all the goods you requested.", totalCost );
 			}
 
-			this.InvalidateProperties();
-
 			return true;
 		}
 
@@ -2021,8 +2016,6 @@ namespace Server.Mobiles
 				}
 
 				this.CoinPurse -= GiveGold;
-
-				this.InvalidateProperties();
 
 				while ( GiveGold > 60000 )
 				{
@@ -2362,7 +2355,6 @@ namespace Server.Mobiles
 						}
 
 						m_Vendor.CoinPurse += spent;
-						m_Vendor.InvalidateProperties();
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
@@ -2518,7 +2510,6 @@ namespace Server.Mobiles
 							}
 
 							m_Vendor.CoinPurse += toConsume;
-							m_Vendor.InvalidateProperties();
 
 							if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 								Titles.AwardKarma( from, -BeggingKarma( from ), true );
@@ -2611,7 +2602,6 @@ namespace Server.Mobiles
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 
 						m_Vendor.CoinPurse += spent;
-						m_Vendor.InvalidateProperties();
 
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )

@@ -9997,7 +9997,7 @@ namespace Server
 
 		public int m_CoinPurse;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int CoinPurse { get{ return m_CoinPurse; } set{ m_CoinPurse = value; } }
+		public int CoinPurse { get{ return m_CoinPurse; } set{ m_CoinPurse = value; InvalidateProperties(); } }
 
 		public int m_DataStoreInt2;
 		[CommandProperty( AccessLevel.GameMaster )]
