@@ -47,7 +47,6 @@ namespace Server.Mobiles
 		private ArrayList m_ArmorBuyInfo = new ArrayList();
 		private ArrayList m_ArmorSellInfo = new ArrayList();
 
-		private DateTime m_LastRestock;
 
 		public override bool CanTeach { get { return true; } }
 
@@ -258,7 +257,6 @@ namespace Server.Mobiles
 			AddItem( pack );
 
 			LoadSBInfo( this );
-			m_LastRestock = DateTime.Now;
 			UpdateBlackMarket();
 			DefaultCoinPurse();
 			UpdateCoins();
@@ -317,17 +315,7 @@ namespace Server.Mobiles
 			return sSpeak;
 		}
 
-		public DateTime LastRestock
-		{
-			get
-			{
-				return m_LastRestock;
-			}
-			set
-			{
-				m_LastRestock = value;
-			}
-		}
+		public DateTime LastRestock { get; private set; }
 
 		public virtual TimeSpan RestockDelay
 		{
@@ -367,7 +355,7 @@ namespace Server.Mobiles
 
 		protected void LoadSBInfo( Mobile m )
 		{
-			m_LastRestock = DateTime.Now;
+			LastRestock = DateTime.Now;
 
 			for ( int i = 0; i < m_ArmorBuyInfo.Count; ++i )
 			{
@@ -732,7 +720,6 @@ namespace Server.Mobiles
 
 		public virtual void Restock()
 		{
-			m_LastRestock = DateTime.Now;
 			LoadSBInfo( this );
 		}
 
@@ -816,16 +803,16 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now - m_LastRestock > RestockDelay )
+			if ( DateTime.Now - LastRestock > RestockDelay )
 			{
 				UpdateBlackMarket();
 				DefaultCoinPurse();
 				UpdateCoins();
 			}
 
-			if ( DateTime.Now - m_LastRestock > RestockDelay 
-				|| ( from.Region.IsPartOf( typeof( PublicRegion ) ) && DateTime.Now - m_LastRestock > RestockDelayFull )
-				|| ( this is BaseGuildmaster && DateTime.Now - m_LastRestock > RestockDelayFull ) )
+			if ( DateTime.Now - LastRestock > RestockDelay 
+				|| ( from.Region.IsPartOf( typeof( PublicRegion ) ) && DateTime.Now - LastRestock > RestockDelayFull )
+				|| ( this is BaseGuildmaster && DateTime.Now - LastRestock > RestockDelayFull ) )
 				Restock();
 
 			UpdateBuyInfo();
@@ -2109,7 +2096,6 @@ namespace Server.Mobiles
 		{
 			BaseVendor v = (BaseVendor)state;
 			LoadSBInfo( (Mobile)v );
-			v.m_LastRestock = DateTime.Now;
 
 			if ( typeof( PlayerVendor ) == v.GetType() || typeof( PlayerBarkeeper ) == v.GetType() )
 				return;
