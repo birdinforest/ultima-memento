@@ -255,9 +255,7 @@ namespace Server.Mobiles
 			AddItem( pack );
 
 			LoadSBInfo();
-			UpdateBlackMarket();
-			DefaultCoinPurse();
-			UpdateCoins();
+			RefreshSelf();
 		}
 
 		public void DefaultCoinPurse()
@@ -312,9 +310,8 @@ namespace Server.Mobiles
 			return sSpeak;
 		}
 
-		public DateTime LastRestock { get; private set; }
-
-		public virtual TimeSpan RestockDelay
+		public DateTime LastRefreshSelf { get; private set; }
+		public virtual TimeSpan RefreshSelfDelay
 		{
 			get
 			{
@@ -322,11 +319,12 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual TimeSpan RestockDelayFull
+		public DateTime LastRestockWares { get; private set; }
+		public virtual TimeSpan RestockWaresDelay
 		{
 			get
 			{
-				return TimeSpan.FromMinutes( 15 );
+				return TimeSpan.FromMinutes( 30 );
 			}
 		}
 
@@ -352,7 +350,7 @@ namespace Server.Mobiles
 
 		protected void LoadSBInfo()
 		{
-			LastRestock = DateTime.Now;
+			LastRestockWares = DateTime.Now;
 
 			for ( int i = 0; i < m_ArmorBuyInfo.Count; ++i )
 			{
@@ -717,7 +715,17 @@ namespace Server.Mobiles
 
 		public virtual void Restock()
 		{
+			// Restock wares
 			LoadSBInfo();
+		}
+
+		public virtual void RefreshSelf()
+		{
+			LastRefreshSelf = DateTime.Now;
+
+			UpdateBlackMarket();
+			DefaultCoinPurse();
+			UpdateCoins();
 		}
 
 		public override bool OnBeforeDeath()
@@ -800,16 +808,12 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now - LastRestock > RestockDelay )
+			if ( DateTime.Now - LastRefreshSelf > RefreshSelfDelay )
 			{
-				UpdateBlackMarket();
-				DefaultCoinPurse();
-				UpdateCoins();
+				RefreshSelf();
 			}
 
-			if ( DateTime.Now - LastRestock > RestockDelay 
-				|| ( from.Region.IsPartOf( typeof( PublicRegion ) ) && DateTime.Now - LastRestock > RestockDelayFull )
-				|| ( this is BaseGuildmaster && DateTime.Now - LastRestock > RestockDelayFull ) )
+			if ( DateTime.Now - LastRestockWares > RestockWaresDelay )
 				Restock();
 
 			UpdateBuyInfo();
@@ -2092,9 +2096,7 @@ namespace Server.Mobiles
 				LoadSBInfo();
 				if (this is PlayerBarkeeper) return;
 
-				UpdateBlackMarket();
-				UpdateCoins();
-				DefaultCoinPurse();
+				RefreshSelf();
 			});
 		}
 
