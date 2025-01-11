@@ -258,14 +258,16 @@ namespace Server.Mobiles
 			RefreshSelf();
 		}
 
-		public void DefaultCoinPurse()
+		public void TrySetCoinPurse(Mobile from)
 		{
-			if ( this is PlayerBarkeeper ) return;
+			if ( !m_CoinsNeedReset || this is PlayerBarkeeper ) return;
 
-			this.CoinPurse = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
-
-			if ( this is BaseGuildmaster )
-				this.CoinPurse = this.CoinPurse * 3;
+			m_CoinsNeedReset = false;
+			int coins = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
+			this.CoinPurse = this is BaseGuildmaster ? coins * 3 : coins;
+			
+			if ( from != null )
+				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
 		}
 
 		public BaseVendor( Serial serial ): base( serial )
@@ -308,6 +310,7 @@ namespace Server.Mobiles
 			return sSpeak;
 		}
 
+		private bool m_CoinsNeedReset = true;
 		public DateTime LastRefreshSelf { get; private set; }
 		public virtual TimeSpan RefreshSelfDelay
 		{
@@ -721,8 +724,8 @@ namespace Server.Mobiles
 		{
 			LastRefreshSelf = DateTime.Now;
 
+			m_CoinsNeedReset = true;
 			UpdateBlackMarket();
-			DefaultCoinPurse();
 			UpdateCoins();
 		}
 
@@ -806,14 +809,10 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now - LastRefreshSelf > RefreshSelfDelay )
-			{
-				RefreshSelf();
-			}
-
 			if ( DateTime.Now - LastRestockWares > RestockWaresDelay )
 				Restock();
 
+			TrySetCoinPurse( from );
 			UpdateBuyInfo();
 
 			if ( this.RaceID == 0 && Utility.RandomBool() ){ this.PlaySound( this.Female ? 797 : 1069 ); }
@@ -982,7 +981,7 @@ namespace Server.Mobiles
 			from.Send( new EquipUpdate( pack ) );
 		}
 
-		public virtual void VendorSell( Mobile from )
+		public virtual void VendorSell( Mobile from ) // Send list of items that are for sale
 		{
 			if ( BeggingPose(from) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 			{
@@ -1001,6 +1000,8 @@ namespace Server.Mobiles
 				this.Say( "I have no business with you." );
 				return;
 			}
+
+			TrySetCoinPurse( from );
 
 			Container pack = from.Backpack;
 
@@ -2048,8 +2049,15 @@ namespace Server.Mobiles
 			if ( GetPlayerInfo.GetNPCGuild( this ) != null )
 				list.Add( 1072172, "{0}\t{1}", "51C273", GetPlayerInfo.GetNPCGuild( this ) );
 
-			if ( IsActiveBuyer && CoinPurse > 0 && !MySettings.S_RichMerchants )
-				list.Add( 1072173, "{0}\t{1}", "FBFF00", "" + CoinPurse + " Gold" );
+			if ( IsActiveBuyer && !MySettings.S_RichMerchants )
+			{
+				string coins = m_CoinsNeedReset
+					? "?"
+					: CoinPurse > 0 
+						? CoinPurse.ToString() 
+						: "No";
+				list.Add( 1072173, "{0}\t{1} Gold", "FBFF00", coins );
+			}
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -2101,7 +2109,7 @@ namespace Server.Mobiles
 			{
 				bool buysThings = true;
 
-				if ( CoinPurse < 1 && !MySettings.S_RichMerchants )
+				if ( CoinPurse < 1 && !m_CoinsNeedReset && !MySettings.S_RichMerchants )
 					buysThings = false;
 				else if ( !IsActiveBuyer )
 					buysThings = false;
