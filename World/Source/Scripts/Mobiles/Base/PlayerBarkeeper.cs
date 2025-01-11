@@ -217,7 +217,7 @@ namespace Server.Mobiles
 			House = house;
 			m_Rumors = new BarkeeperRumor[3];
 
-			LoadSBInfo( this );
+			LoadSBInfo();
 		}
 
 		public override bool HandlesOnSpeech(Mobile from)
@@ -413,7 +413,7 @@ namespace Server.Mobiles
 		{
 			this.Title = title;
 
-			LoadSBInfo( this );
+			LoadSBInfo();
 		}
 
 		public void CancelChangeTitle( Mobile from )

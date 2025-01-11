@@ -256,7 +256,7 @@ namespace Server.Mobiles
 			pack.Visible = false;
 			AddItem( pack );
 
-			LoadSBInfo( this );
+			LoadSBInfo();
 			UpdateBlackMarket();
 			DefaultCoinPurse();
 			UpdateCoins();
@@ -353,7 +353,7 @@ namespace Server.Mobiles
 
 		public abstract void InitSBInfo( Mobile m );
 
-		protected void LoadSBInfo( Mobile m )
+		protected void LoadSBInfo()
 		{
 			LastRestock = DateTime.Now;
 
@@ -367,7 +367,7 @@ namespace Server.Mobiles
 
 			SBInfos.Clear();
 
-			InitSBInfo( m );
+			InitSBInfo( this );
 
 			m_ArmorBuyInfo.Clear();
 			m_ArmorSellInfo.Clear();
@@ -695,7 +695,7 @@ namespace Server.Mobiles
 				Server.Misc.MorphingTime.CheckMorph( this );
 			}
 
-			LoadSBInfo( this );
+			LoadSBInfo();
 		}
 
 		public virtual int GetHairHue()
@@ -720,7 +720,7 @@ namespace Server.Mobiles
 
 		public virtual void Restock()
 		{
-			LoadSBInfo( this );
+			LoadSBInfo();
 		}
 
 		public override bool OnBeforeDeath()
@@ -2087,23 +2087,21 @@ namespace Server.Mobiles
 			if ( NameHue == 0x35 )
 				NameHue = -1;
 
-			Timer.DelayCall( TimeSpan.FromSeconds( 10.0 ), new TimerStateCallback( Market ), this );
+
+			Timer.DelayCall(TimeSpan.FromSeconds(10.0), () =>
+			{
+				if (Deleted) return;
+
+				LoadSBInfo();
+				if (this is PlayerBarkeeper) return;
+
+				UpdateBlackMarket();
+				UpdateCoins();
+				DefaultCoinPurse();
+			});
 		}
 
 		public static Mobile m_Merchant;
-
-		private void Market( object state )
-		{
-			BaseVendor v = (BaseVendor)state;
-			LoadSBInfo( (Mobile)v );
-
-			if ( typeof( PlayerVendor ) == v.GetType() || typeof( PlayerBarkeeper ) == v.GetType() )
-				return;
-
-			v.UpdateBlackMarket();
-			v.UpdateCoins();
-			v.DefaultCoinPurse();
-		}
 
 		public override void AddCustomContextEntries( Mobile from, List<ContextMenuEntry> list )
 		{
