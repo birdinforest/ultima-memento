@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Accounting;
 using Server.Multis;
 using Server.Mobiles;
+using System.Collections.Generic;
 
 namespace Server.Items
 {
@@ -246,6 +247,9 @@ namespace Server.Items
 
 		private class SelectSkillGump : Gump
 		{
+			public const int COLOR_HTML = 0xffffff; // RGB888
+        	public const int COLOR_LOCALIZED = 0xffff; // RGB565
+
 			private SoulStone m_Stone;
 
 			public SelectSkillGump( SoulStone stone, Mobile from ) : base( 50, 50 )
@@ -262,16 +266,15 @@ namespace Server.Items
 
 				AddAlphaRegion( 10, 10, 500, 420 );
 
-				AddHtmlLocalized( 10, 12, 500, 20, 1061087, 0x7FFF, false, false ); // Which skill do you wish to transfer to the Soulstone?
+				AddHtmlLocalized( 15, 12, 500, 20, 1061087, 0x7FFF, false, false ); // Which skill do you wish to transfer to the Soulstone?
 
-				AddButton( 10, 410, 0xFB1, 0xFB2, 0, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 45, 412, 450, 20, 1060051, 0x7FFF, false, false ); // CANCEL
+            	TextDefinition.AddHtmlText(this, 15, 410, 300, 16, "Note: Secondary skills can never be transferred", false, false, COLOR_LOCALIZED, COLOR_HTML);
 
 				for ( int i = 0, n = 0; i < from.Skills.Length; i++ )
 				{
 					Skill skill = from.Skills[i];
 
-					if ( skill.Base > 0.0 )
+					if ( skill.Base > 0.0 && !skill.IsSecondarySkill())
 					{
 						int p = n % 30;
 
@@ -317,8 +320,9 @@ namespace Server.Items
 					return;
 
 				Skill skill = from.Skills[iSkill];
-				if ( skill.Base <= 0.0 )
-					return;
+				if ( skill.Base <= 0.0 ) return;
+				if ( skill.IsSecondarySkill() ) return; // Unnecessary guard, but just in case...
+
 
 				if ( !m_Stone.CheckUse( from ) )
 					return;
