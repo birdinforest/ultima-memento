@@ -157,7 +157,7 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Generate();
 
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "MontorSmithGuy"), new Point3D(3155, 2600, 0), Map.Sosaria);
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, "MontorSmithGuy"), new Point3D(3155, 2600, 5), Map.Sosaria);
         }
     }
 
@@ -236,7 +236,7 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Generate();
 
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "DevilGuardSmithGuy"), new Point3D(1612, 1451, 0), Map.Sosaria);
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, "DevilGuardSmithGuy"), new Point3D(1612, 1451, 7), Map.Sosaria);
         }
     }
 
@@ -306,7 +306,7 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Generate();
 
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "YewSmithGuy"), new Point3D(2478, 890, 0), Map.Sosaria);
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, "YewSmithGuy"), new Point3D(2478, 890, 7), Map.Sosaria);
         }
     }
 
@@ -380,7 +380,7 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Generate();
 
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "MoonSmithGuy"), new Point3D(856, 712, 0), Map.Sosaria);
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, "MoonSmithGuy"), new Point3D(856, 712, 5), Map.Sosaria);
         }
     }
 
@@ -447,7 +447,7 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Generate();
 
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "GreySmithGuy"), new Point3D(917, 2097, 0), Map.Sosaria);
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, "GreySmithGuy"), new Point3D(917, 2097, 5), Map.Sosaria);
         }
     }
 
