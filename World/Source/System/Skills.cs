@@ -369,7 +369,7 @@ namespace Server
 			if ( skillLock < SkillLock.Up || skillLock > SkillLock.Locked )
 				return;
 
-			m_Lock = IsSecondarySkill() ? SkillLock.Up : skillLock; // Secondary Skills can never go down
+			m_Lock = skillLock;
 		}
 
 		public void Serialize( GenericWriter writer )
