@@ -275,13 +275,14 @@ namespace Server.Items
 
 				AddHtmlLocalized( 15, 12, 500, 20, 1061087, 0x7FFF, false, false ); // Which skill do you wish to transfer to the Soulstone?
 
-            	TextDefinition.AddHtmlText(this, 15, 410, 300, 16, "Note: Secondary skills can never be transferred", false, false, COLOR_LOCALIZED, COLOR_HTML);
+				AddButton( 15, 410, 0xFB1, 0xFB2, 0, GumpButtonType.Reply, 0 );
+				AddHtmlLocalized( 50, 412, 450, 20, 1060051, 0x7FFF, false, false ); // CANCEL
 
 				for ( int i = 0, n = 0; i < from.Skills.Length; i++ )
 				{
 					Skill skill = from.Skills[i];
 
-					if ( skill.Base > 0.0 && !skill.IsSecondarySkill())
+					if ( skill.Base > 0.0 )
 					{
 						int p = n % 30;
 
@@ -317,22 +318,16 @@ namespace Server.Items
 
 			public override void OnResponse( NetState sender, RelayInfo info )
 			{
-				if ( info.ButtonID == 0 || !m_Stone.IsEmpty )
-					return;
+				if ( info.ButtonID == 0 || !m_Stone.IsEmpty ) return;
 
 				Mobile from = sender.Mobile;
 
 				int iSkill = info.ButtonID - 1;
-				if ( iSkill < 0 || iSkill >= from.Skills.Length )
-					return;
+				if ( iSkill < 0 || iSkill >= from.Skills.Length ) return;
 
 				Skill skill = from.Skills[iSkill];
 				if ( skill.Base <= 0.0 ) return;
-				if ( skill.IsSecondarySkill() ) return; // Unnecessary guard, but just in case...
-
-
-				if ( !m_Stone.CheckUse( from ) )
-					return;
+				if ( !m_Stone.CheckUse( from ) ) return;
 
 				from.SendGump( new ConfirmSkillGump( m_Stone, skill ) );
 			}
