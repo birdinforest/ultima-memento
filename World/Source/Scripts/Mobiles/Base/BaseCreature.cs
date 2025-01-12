@@ -7013,7 +7013,7 @@ namespace Server.Mobiles
 					Skill skill = ourSkills[i];
 					Skill theirSkill = theirSkills[i];
 
-					if ( skill != null && theirSkill != null && skill.Base >= 60.0 && CheckTeach( skill.SkillName, from ) )
+					if ( skill != null && theirSkill != null && !skill.IsSecondarySkill() && skill.Base >= 60.0 && CheckTeach( skill.SkillName, from ) )
 					{
 						double toTeach = skill.Base / 3.0;
 
