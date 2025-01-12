@@ -6987,7 +6987,7 @@ namespace Server.Mobiles
 		{
 			base.GetContextMenuEntries( from, list );
 				
-			if ( (this is Citizens == false) && CanGiveMLQuest && from is PlayerMobile )
+			if ( (this is Citizens == false) && CanGiveMLQuest && from is PlayerMobile && CanSee( from ) && InLOS( from ) )
 			{
 				list.Add( new MLQuestEntry( (PlayerMobile)from, this ) );
 			}
