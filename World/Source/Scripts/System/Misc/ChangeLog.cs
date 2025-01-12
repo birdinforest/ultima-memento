@@ -69,6 +69,7 @@ namespace Server.Misc
 			builder.Append("- Item - Laser swords no longer drop<br>");
 			builder.Append("- Item - Skill bonuses from items no longer overcap<br>");
 			builder.Append("- Item - Hiking Boots no longer give resistances<br>");
+			builder.Append("- Item - Soulstones are now account bound upon first use<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Misc - Reduce max properties from randomly generated items from 16 to 8<br>");
 			builder.Append("- Misc - Fugitives are now considered 'Evil'<br>");

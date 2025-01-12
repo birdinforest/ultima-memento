@@ -61,7 +61,7 @@ namespace Server.Items
 		public string Account
 		{
 			get{ return m_Account; }
-			set{ m_Account = value; }
+			set{ m_Account = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -130,19 +130,26 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-
-			if ( !this.IsEmpty )
-			{
-				list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
-			}
 			
-			string name = this.LastUserName;
+			if (string.IsNullOrWhiteSpace(Account))
+			{
+				list.Add( 1070722, "[Binds to account when used]" );
+			}
+			else
+			{
+				list.Add( 1070722, "[Account Bound]" );
+				string name = this.LastUserName;
 
-			if ( name == null )
-				name = String.Format( "#{0}", 1074235 ); // Unknown
+				if ( name == null )
+					name = String.Format( "#{0}", 1074235 ); // Unknown
 
 				list.Add( 1041602, "{0}", name ); // Owner: ~1_val~
 
+				if ( !this.IsEmpty )
+				{
+					list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
+				}
+			}
 		}
 
 		private static bool CheckCombat( Mobile m, TimeSpan time )
@@ -432,6 +439,8 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1070712 ); // You have successfully transferred your skill points into the Soulstone.
 
 				m_Stone.LastUserName = from.Name;
+				if ( string.IsNullOrWhiteSpace(m_Stone.Account)) // Bind as soon as it is successfully used
+					m_Stone.Account = from.Account.Username;
 
 				Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0, 0, 0, 0, 0, 5060, 0 );
 				Effects.PlaySound( from.Location, from.Map, 0x243 );
