@@ -303,7 +303,7 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You dig up some {0} ore.", CraftResources.GetName(item.Resource) );
+								from.SendMessage( "You dig up {0} {1} ore.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
 							}
 							else if (item is BaseGranite) // Mining
 							{
@@ -348,7 +348,7 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You dig up some {0} granite.", CraftResources.GetName(item.Resource) );
+								from.SendMessage( "You dig up {0} {1} granite.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
 							}
 							else if (item is BaseLog ) // Lumberjacking
 							{
@@ -381,7 +381,7 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You chop some {0} logs.", CraftResources.GetName(item.Resource) );
+								from.SendMessage( "You chop {0} {1} logs.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
 							}
 							else if ( item is LesserCurePotion ) // Graverobbing - Mutation
 							{
