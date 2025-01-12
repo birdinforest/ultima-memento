@@ -398,7 +398,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "InProgressMessage HintTridentQuest";
             CompletionMessage = "CompletionMessage HintTridentQuest";
 
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MoonSmithGuy)));
+            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(GreySmithGuy)));
             Objectives.Add(new DummyObjective("- A package"));
 
             Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
