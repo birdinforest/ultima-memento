@@ -53,6 +53,11 @@ namespace Server.Items
 		}
 
 		[Constructable]
+		public BankCheck() : this ( 60000 )
+		{
+		}
+
+		[Constructable]
 		public BankCheck( int worth ) : base( 0x02DD )
 		{
 			ItemID = Utility.RandomList( 0x02DD, 0x201A );
