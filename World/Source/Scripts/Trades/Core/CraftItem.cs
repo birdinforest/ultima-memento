@@ -1148,6 +1148,17 @@ namespace Server.Engines.Craft
 							item = LootPackEntry.Enchant(from, item, props, craftAttributeInfo.RunicMinIntensity, craftAttributeInfo.RunicMaxIntensity, false);
 						}
 					}
+					
+					// Exceptional applies a runic
+					if (
+						(item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Exceptional)
+						|| (item is BaseWeapon && ((BaseWeapon)item).Quality == WeaponQuality.Exceptional)
+						|| (item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Exceptional)
+						|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional)
+					)
+					{
+						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 15);
+					}
 
 					if ( maxAmount > 0 )
 					{

@@ -34,6 +34,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Disable Bulk Order Deeds (needs fixing/balancing)<br>");
 			builder.Append("- Craft - Reaper oil and Mystical tree sap no longer drop<br>");
 			builder.Append("- Craft - Bark fragments now come from Lumberjacking instead of Carpentry<br>");
+			builder.Append("- Craft - Exceptionally crafted items are guaranteed a magical property<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
