@@ -372,82 +372,89 @@ namespace Server.Misc
 			{
 				case 6: // Mage
 				{
-					m.InitStats( 15, 20, 45 ); // 80
+					m.InitStats( 35, 10, 45 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Magery, 35 ),
-							new SkillNameValue( SkillName.Psychology, 35 ),
-							new SkillNameValue( SkillName.MagicResist, 30 )
+							new SkillNameValue( SkillName.Magery, 30 ),
+							new SkillNameValue( SkillName.Psychology, 30 ),
+							new SkillNameValue( SkillName.MagicResist, 30 ),
+							new SkillNameValue( SkillName.FistFighting, 30 )
 						};
 
 					break;
 				}
 				case 7:	// Archer
 				{
-					m.InitStats( 30, 35, 15 ); // 80
+					m.InitStats( 35, 40, 15 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Marksmanship, 35 ),
-							new SkillNameValue( SkillName.Tactics, 35 ),
-							new SkillNameValue( SkillName.Bowcraft, 30 )
+							new SkillNameValue( SkillName.Marksmanship, 30 ),
+							new SkillNameValue( SkillName.Tactics, 30 ),
+							new SkillNameValue( SkillName.Bowcraft, 30 ),
+							new SkillNameValue( SkillName.Lumberjacking, 30 )
 						};
 					break;
 				}
 				case 5:	// Warrior
 				{
-					m.InitStats( 50, 20, 10 ); // 80
+					m.InitStats( 50, 30, 10 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Swords, 35 ),
-							new SkillNameValue( SkillName.Tactics, 35 ),
-							new SkillNameValue( SkillName.Parry, 30 )
+							new SkillNameValue( SkillName.Swords, 30 ),
+							new SkillNameValue( SkillName.Tactics, 30 ),
+							new SkillNameValue( SkillName.Parry, 30 ),
+							new SkillNameValue( SkillName.Healing, 30 )
 						};
 					break;
 				}
 				case 4: // Knight
 				{
-					m.InitStats( 50, 20, 10 ); // 80
+					m.InitStats( 50, 25, 15 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Knightship, 35 ),
-							new SkillNameValue( SkillName.Tactics, 35 ),
-							new SkillNameValue( SkillName.Healing, 30 )
+							new SkillNameValue( SkillName.Knightship, 30 ),
+							new SkillNameValue( SkillName.Tactics, 30 ),
+							new SkillNameValue( SkillName.Healing, 30 ),
+							new SkillNameValue( SkillName.Swords, 30 )
 						};
 
 					break;
 				}
 				case 1: // Ninja
 				{
-					m.InitStats( 40, 30, 10 ); // 80
+					m.InitStats( 40, 30, 20 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Ninjitsu, 35 ),
-							new SkillNameValue( SkillName.Hiding, 35 ),
-							new SkillNameValue( SkillName.Stealth, 30 )
+							new SkillNameValue( SkillName.Ninjitsu, 30 ),
+							new SkillNameValue( SkillName.Hiding, 30 ),
+							new SkillNameValue( SkillName.Stealth, 30 ),
+							new SkillNameValue( SkillName.Fencing, 30 )
 						};
 
 					break;
 				}
 				case 2: // Bard
 				{
-					m.InitStats( 25, 30, 20 ); // 80
+					m.InitStats( 35, 30, 20 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Musicianship, 35 ),
-							new SkillNameValue( SkillName.Peacemaking, 35 ),
-							new SkillNameValue( SkillName.Discordance, 30 )
+							new SkillNameValue( SkillName.Musicianship, 30 ),
+							new SkillNameValue( SkillName.Peacemaking, 30 ),
+							new SkillNameValue( SkillName.Discordance, 30 ),
+							new SkillNameValue( SkillName.Provocation, 30 )
 						};
 
 					break;
 				}
 				case 3: // Druid
 				{
-					m.InitStats( 20, 20, 40 ); // 80
+					m.InitStats( 30, 20, 40 ); // 90
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Druidism, 35 ),
-							new SkillNameValue( SkillName.Taming, 35 ),
-							new SkillNameValue( SkillName.Veterinary, 30 )
+							new SkillNameValue( SkillName.Druidism, 30 ),
+							new SkillNameValue( SkillName.Taming, 30 ),
+							new SkillNameValue( SkillName.Veterinary, 30 ),
+							new SkillNameValue( SkillName.Healing, 30 )
 						};
 
 					break;
