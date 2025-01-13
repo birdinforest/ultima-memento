@@ -46,8 +46,7 @@ namespace Server.Regions
 				{
 					Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3709, 10, 30, 5052 );
 					Effects.PlaySound( m.Location, m.Map, 0x225 );
-					m.Damage( 10000, m );
-					LoggingFunctions.LogKillTile( m, "the intense heat of the Moon's core" );
+					m.Damage( 100, m );
 				}
 				else if ( this.Name == "the Core of the Moon" )
 				{
