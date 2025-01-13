@@ -214,9 +214,11 @@ namespace Server.SkillHandlers
 				}
 				else if ( item is HiddenChest )
 				{
-					int level = (int)(m.Skills[SkillName.Searching].Value / 10);
-						if (level < 1){level = 1;}
-						if (level > 10){level = 10;}
+					int level = (int)(m.Skills[SkillName.Searching].Value / 20); // Max of 6
+					level += Server.Difficult.GetDifficultyBounded( m ); // Max of 4
+
+					if (level < 1){level = 1;}
+					if (level > 10){level = 10;}
 
 					if ( HiddenChest.FoundBox( m, skillCheck, level, item ) )
 						foundAnyone = true;
