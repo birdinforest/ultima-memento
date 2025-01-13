@@ -1157,7 +1157,7 @@ namespace Server.Engines.Craft
 						|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional)
 					)
 					{
-						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 15);
+						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 20);
 					}
 
 					if ( maxAmount > 0 )
