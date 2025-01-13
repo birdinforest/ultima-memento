@@ -2438,17 +2438,20 @@ namespace Server.Mobiles
 					Citizens.MountCitizens ( this, false );
 
 					IMount bSteed = this.Mount;
-					BaseMount iSteed = (BaseMount)bSteed;
+					if ( bSteed != null )
+					{
+						BaseMount iSteed = (BaseMount)bSteed;
 
-					BaseMount steed = new EvilMount();
-					steed.Body = iSteed.Body;
-					steed.ItemID = iSteed.ItemID;
-					steed.Hue = iSteed.Hue;
-					iSteed.Delete();
+						BaseMount steed = new EvilMount();
+						steed.Body = iSteed.Body;
+						steed.ItemID = iSteed.ItemID;
+						steed.Hue = iSteed.Hue;
+						iSteed.Delete();
 
-					steed.Rider = this;
-					ActiveSpeed = 0.1;
-					PassiveSpeed = 0.2;
+						steed.Rider = this;
+						ActiveSpeed = 0.1;
+						PassiveSpeed = 0.2;
+					}
 				}
 			}
 
