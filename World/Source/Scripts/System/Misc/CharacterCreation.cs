@@ -404,26 +404,26 @@ namespace Server.Misc
 						};
 					break;
 				}
-				case 4: // Necromancer
+				case 4: // Knight
 				{
-					m.InitStats( 15, 20, 45 ); // 80
+					m.InitStats( 50, 20, 10 ); // 80
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Necromancy, 35 ),
-							new SkillNameValue( SkillName.Spiritualism, 35 ),
-							new SkillNameValue( SkillName.MagicResist, 30 )
+							new SkillNameValue( SkillName.Knightship, 35 ),
+							new SkillNameValue( SkillName.Tactics, 35 ),
+							new SkillNameValue( SkillName.Healing, 30 )
 						};
 
 					break;
 				}
-				case 1: // Thief
+				case 1: // Ninja
 				{
-					m.InitStats( 20, 40, 20 ); // 80
+					m.InitStats( 40, 30, 10 ); // 80
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Stealing, 35 ),
-							new SkillNameValue( SkillName.Snooping, 35 ),
-							new SkillNameValue( SkillName.Lockpicking, 30 )
+							new SkillNameValue( SkillName.Ninjitsu, 35 ),
+							new SkillNameValue( SkillName.Hiding, 35 ),
+							new SkillNameValue( SkillName.Stealth, 30 )
 						};
 
 					break;
@@ -465,7 +465,7 @@ namespace Server.Misc
 			{
 				SkillNameValue snv = skills[i];
 
-				if ( snv.Value > 0 && ( snv.Name != SkillName.Stealth || prof == 7 ) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism )
+				if ( snv.Value > 0 && ( snv.Name != SkillName.Stealth || prof == 1 ) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism )
 				{
 					Skill skill = m.Skills[snv.Name];
 
