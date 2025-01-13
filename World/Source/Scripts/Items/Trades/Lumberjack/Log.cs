@@ -188,11 +188,16 @@ namespace Server.Items
 				if (0 < boards)
 				{
 					BaseWoodBoard wood = m_Log.GetLog();
+
+					m_Log.Delete(); // Delete early to prevent going overweight
+
 					wood.Amount = boards * 4;
 					from.AddToBackpack(wood);
 				}
-
-				m_Log.Delete();
+				else
+				{
+					m_Log.Delete();
+				}
 			}
 		}
 	}

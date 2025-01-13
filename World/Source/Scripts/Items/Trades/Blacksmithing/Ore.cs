@@ -119,11 +119,16 @@ namespace Server.Items
 			if (0 < ingots)
 			{
 				Item ingot = GetIngot();
-				ingot.Amount = ingots * 2;
+
+				Delete(); // Delete early to prevent going overweight
+
+				ingot.Amount = ingots * 4;
 				from.AddToBackpack(ingot);
 			}
-
-			Delete();
+			else
+			{
+				Delete();
+			}
 
 			return true;
 		}
