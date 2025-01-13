@@ -158,7 +158,7 @@ namespace Server.Items
 			UmberScales	 	= CraftAttInfo( 	3	,	0	,	0	,	3	,	0	,	0	,	0	,	35	,	0	,	30	,	0	,	0	 );
 			VioletScales 	= CraftAttInfo( 	3	,	0	,	0	,	3	,	0	,	0	,	0	,	25	,	0	,	30	,	0	,	0	 );
 			PlatinumScales 	= CraftAttInfo( 	1	,	1	,	1	,	1	,	1	,	15	,	15	,	15	,	15	,	30	,	0	,	50	 );
-			CadalyteScales 	= CraftAttInfo( 	7	,	4	,	4	,	7	,	4	,	0	,	0	,	50	,	0	,	200	,	30	,	0	 );
+			CadalyteScales 	= CraftAttInfo( 	3	,	4	,	4	,	3	,	4	,	0	,	0	,	50	,	0	,	200	,	30	,	0	 );
 			GornScales	 	= CraftAttInfo( 	5	,	2	,	4	,	2	,	2	,	0	,	25	,	0	,	0	,	100	,	10	,	0	 );
 			TrandoshanScales= CraftAttInfo( 	5	,	4	,	2	,	2	,	2	,	25	,	0	,	0	,	0	,	100	,	10	,	0	 );
 			SilurianScales	= CraftAttInfo( 	5	,	2	,	2	,	4	,	2	,	0	,	0	,	25	,	0	,	100	,	10	,	0	 );
