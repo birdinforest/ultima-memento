@@ -27,12 +27,12 @@ namespace Server.Spells.Chivalry
 
 		public override bool CheckCast()
 		{
-			int mana = ScaleMana( RequiredMana );
+			int cost = ScaleMana( RequiredMana );
 
 			if ( !base.CheckCast() )
 				return false;
 
-			if ( Caster.Stam < (int)( 10 * MySettings.S_PlayerLevelMod ) )
+			if ( Caster.Stam < cost )
 			{
 				Caster.SendMessage( "You are too fatigued to do that now." );
 				return false;
@@ -47,9 +47,9 @@ namespace Server.Spells.Chivalry
 				Caster.SendLocalizedMessage( 1060173, RequiredTithing.ToString() ); // You must have at least ~1_TITHE_REQUIREMENT~ Tithing Points to use this ability,
 				return false;
 			}
-			else if ( Caster.Mana < mana )
+			else if ( Caster.Mana < cost )
 			{
-				Caster.SendLocalizedMessage( 1060174, mana.ToString() ); // You must have at least ~1_MANA_REQUIREMENT~ Mana to use this ability.
+				Caster.SendLocalizedMessage( 1060174, cost.ToString() ); // You must have at least ~1_MANA_REQUIREMENT~ Mana to use this ability.
 				return false;
 			}
 
@@ -63,9 +63,9 @@ namespace Server.Spells.Chivalry
 			if ( AosAttributes.GetValue( Caster, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				requiredTithing = 0;
 
-			int mana = GetMana();
+			int cost = ScaleMana( RequiredMana );
 
-			if ( Caster.Stam < (int)( 10 * MySettings.S_PlayerLevelMod ) )
+			if ( Caster.Stam < cost )
 			{
 				Caster.SendMessage( "You are too fatigued to do that now." );
 				return false;
@@ -80,9 +80,9 @@ namespace Server.Spells.Chivalry
 				Caster.SendLocalizedMessage( 1060173, RequiredTithing.ToString() ); // You must have at least ~1_TITHE_REQUIREMENT~ Tithing Points to use this ability,
 				return false;
 			}
-			else if ( Caster.Mana < mana )
+			else if ( Caster.Mana < cost )
 			{
-				Caster.SendLocalizedMessage( 1060174, mana.ToString() ); // You must have at least ~1_MANA_REQUIREMENT~ Mana to use this ability.
+				Caster.SendLocalizedMessage( 1060174, cost.ToString() ); // You must have at least ~1_MANA_REQUIREMENT~ Mana to use this ability.
 				return false;
 			}
 

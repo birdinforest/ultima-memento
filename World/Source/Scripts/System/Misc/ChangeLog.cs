@@ -94,6 +94,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation, Make usable in client files
 			builder.Append("- Skill - Hiding cooldown is increased to 4 seconds, up from 1s and 2s<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
+			builder.Append("- Spell - Paladin spells require 1 stamina per 1 mana cost<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 
 			builder.Append("<br>");
