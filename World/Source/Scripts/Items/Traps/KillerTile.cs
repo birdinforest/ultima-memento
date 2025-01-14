@@ -30,9 +30,17 @@ namespace Server.Items
 			}
 			else if ( m is PlayerMobile && m.Blessed == false && m.Alive && m.AccessLevel == AccessLevel.Player && Server.Misc.SeeIfGemInBag.GemInPocket( m ) == false && Server.Misc.SeeIfJewelInBag.JewelInPocket( m ) == false )
 			{
-				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
-				m.Damage( 10000, m );
-				LoggingFunctions.LogKillTile( m, this.Name );
+				if ( m.CheckSkill(SkillName.RemoveTrap, 90, 125) )
+				{
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "Watch out!");
+					m.Hits = 1;
+				}
+				else
+				{
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
+					m.Damage( 10000, m );
+					LoggingFunctions.LogKillTile( m, this.Name );
+				}
 			}
 			return true;
 		}
