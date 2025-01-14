@@ -151,7 +151,7 @@ namespace Server.SkillHandlers
 
 				foreach ( Item item in Caster.GetItemsInRange( 3 ) )
 				{
-					if( item is Corpse && !( (Corpse)item ).Channeled && !( (Corpse)item ).Animated && Caster.Karma < 0 )
+					if( item is Corpse && !( (Corpse)item ).Channeled && !( (Corpse)item ).Animated )
 					{
 						toChannel = (Corpse)item;
 						break;
@@ -202,17 +202,22 @@ namespace Server.SkillHandlers
 					}
 					else
 					{
+						if ( min > max )
+							min = max;
+
 						if ( toChannel != null )
 						{
 							toChannel.Channeled = true;
 							toChannel.Hue = 0x835;
+
+							Caster.Mana += (int)(0.25 * Utility.RandomMinMax( min, max ));
+						}
+						else
+						{
+							Caster.Mana -= mana;
 						}
 
-						Caster.Mana -= mana;
 						Caster.SendMessage( message );
-
-						if ( min > max )
-							min = max;
 
 						Caster.Hits += Utility.RandomMinMax( min, max );
 						Caster.Stam += Utility.RandomMinMax( min, max );
