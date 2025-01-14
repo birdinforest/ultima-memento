@@ -223,6 +223,13 @@ namespace Server.SkillHandlers
 					if ( HiddenChest.FoundBox( m, skillCheck, level, item ) )
 						foundAnyone = true;
 				}
+				else if ( item is KillerTile )
+				{
+					m.SendMessage( "It's a trap! Death awaits." );
+					Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5024 );
+					Effects.PlaySound( item.Location, item.Map, 0x1FA );
+					foundAnyone = true;
+				}
 			}
 			return foundAnyone;
 		}
