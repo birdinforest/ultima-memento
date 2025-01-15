@@ -57,9 +57,11 @@ namespace Server.Engines.MLQuests.Definitions
         public override void OnAccepted(IQuestGiver quester, MLQuestInstance instance)
         {
             base.OnAccepted(quester, instance);
-            MLQuestSystem.Tell(quester, instance.Player, "Take this shovel.");
-            instance.Player.AddToBackpack(new TrainingShovel());
-            instance.Player.SendMessage("You have received a Training Shovel.");
+
+            MLQuestSystem.Tell(quester, instance.Player, "Take this.");
+            var item = new TrainingShovel();
+            instance.Player.SendMessage("You have received a {0}.", item.Name);
+            instance.Player.AddToBackpack(item);
         }
     }
 }
@@ -81,12 +83,17 @@ namespace Server.Items
         {
         }
 
-        public override void AddNameProperties(ObjectPropertyList list)
+        public override void GetProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
 
             list.Add("Drag onto Paperdoll");
             list.Add("Only mines Iron Ore");
+        }
+
+        public override void AppendChildProperties(ObjectPropertyList list)
+        {
+            // Suppress behavior
         }
 
         public override void Serialize(GenericWriter writer)
