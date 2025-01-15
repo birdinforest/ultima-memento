@@ -19,13 +19,8 @@ namespace Server.Engines.MLQuests.Definitions
             var builder = new StringBuilder();
             builder.Append("The sound of the hammer striking metal rings out like a heartbeat in the air, steady and rhythmic. In the nearby forge, you see glowing coals crackle and hiss as they feed the flames.");
             builder.Append("<br><br>");
-            builder.Append("\"You there,\" the nearby Smith says, his voice gruff but warm, like a voice that has shouted over the roar of the forge for years. \"I don't take kindly to idle hands, but if you've got the fire in your belly and the grit in your bones, maybe it's time to teach you how to strike. You've got that look in your eyes - the one that says you want to learn, not just watch. Well, there's no better way than by swinging a hammer yourself.\"");
-            builder.Append("<br><br>");
-            builder.Append("If you're up for it, head to the mines and gather some Ore.");
+            builder.Append("\"You there,\" the nearby Smith says, his voice gruff but warm, like a voice that has shouted over the roar of the forge for years. \"I don't take kindly to idle hands, but if you've got the fire in your belly and the grit in your bones, maybe it's time to teach you how to strike. You've got that look in your eyes - the one that says you want to learn, not just watch. Well, there's no better way than by swinging a hammer yourself. If you're up for it, head to the mines and gather some Ore.\"");
             Description = builder.ToString();
-            RefusalMessage = "RefusalMessage BlacksmithBasicsQuest";
-            InProgressMessage = "InProgressMessage BlacksmithBasicsQuest";
-            CompletionMessage = "CompletionMessage BlacksmithBasicsQuest";
 
             Objectives.Add(new DummyObjective("Collect the following:"));
             Objectives.Add(new CollectObjective(500, typeof(IronIngot), "Iron Ingots") { DoNotConsume = true });
@@ -33,13 +28,35 @@ namespace Server.Engines.MLQuests.Definitions
             Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
             Objectives.Add(new DummyObjective(""));
             Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- Tinkers can craft Shovels"));
             Objectives.Add(new DummyObjective("- Tinkers and Miners sell Shovels"));
+            Objectives.Add(new DummyObjective("- Shovels can also be crafted with tinker tools"));
             Objectives.Add(new DummyObjective("- Double-click an item to use it"));
             Objectives.Add(new DummyObjective("- Shovels are used on the mountainside or cave floor"));
             Objectives.Add(new DummyObjective("- Ore is used on a Forge to make Ingots"));
 
+
+            builder.Clear();
+            builder.Append("Mark the ingots as a quest item when you are ready.<br><br>");
+            builder.Append("- Click yourself to view your Quest Log<br>");
+            builder.Append("- Click the reticle next to the quest<br>");
+            builder.Append("- Target the ingots<br>");
+            InProgressMessage = builder.ToString();
+
             Rewards.Add(new ItemReward("Smith Hammer", typeof(SmithHammer)));
+
+            builder.Clear();
+            builder.Append("\"Aye? Done already? Let me have a look.\" The Smith reaches for the ingots. His weathered hands are steady, fingertips tracing the surface with a practiced eye. He catches every burr - every imperfection - his sharp gaze measuring each one. You wince under the weight of his scrutiny, but there's no malice - only the sharp, critical precision of a seasoned craftsman.");
+            builder.Append("<br><br>");
+            builder.Append("The Smith raises his brow and shrugs. \"Not bad for a novice, but you've a ways to go yet.\"");
+            builder.Append("<br><br>");
+            builder.Append("His gaze shifts to your iron ingots, and he gives a slow, deliberate nod. \"Well, there's only one way to appreciate how raw material affects your work.\" He gestures to your iron ingots. \"Keep 'em.\"");
+            builder.Append("<br><br>");
+            builder.Append("As he turns back to his work, he can't help himself... with one final remark, the gruff smith adds:");
+            builder.Append("<br>");
+            builder.Append("\"Nothing is free in this world - remember that!\"");
+            builder.Append("<br><br>");
+            builder.Append("<br>* Click 'Continue' below to complete the quest");
+            CompletionMessage = builder.ToString();
         }
 
         public override IEnumerable<Type> GetQuestGivers()
