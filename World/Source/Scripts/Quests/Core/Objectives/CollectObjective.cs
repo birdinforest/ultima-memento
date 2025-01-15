@@ -195,10 +195,10 @@ namespace Server.Engines.MLQuests.Objectives
 
 					if (item.Amount > left)
 					{
-						left = 0;
-						if (Objective.DoNotConsume) continue;
+						if (!Objective.DoNotConsume) // Not not ... So do.
+							item.Consume(left);
 
-						item.Consume(left);
+						left = 0;
 					}
 					else
 					{
