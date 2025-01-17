@@ -1003,13 +1003,42 @@ namespace Server.Mobiles
 		
 		public bool CanTellRumor()
 		{
-			return Fame == 0  && (this is HouseVisitor) == false;
+			return Fame == 0 && (this is HouseVisitor) == false;
 		}
+
+		private DateTime m_LastRumorTime = DateTime.MinValue;
+		private const int TALK_TO_COOLDOWN_MINUTES = 15;
 
 		public void MarkToldRumor()
 		{
+            if (!CanTellRumor()) return;
+
 			Fame = 1;
+			m_LastRumorTime = DateTime.Now;
+			InvalidateProperties();
+			Timer.DelayCall(TimeSpan.FromMinutes(TALK_TO_COOLDOWN_MINUTES), () => ResetToldRumor());
 		}
+
+		public void ResetToldRumor()
+        {
+            if (Fame == 0) return;
+
+            var now = DateTime.Now;
+            if (now < m_LastRumorTime.AddMinutes(TALK_TO_COOLDOWN_MINUTES)) return;
+
+            Fame = 0;
+			InvalidateProperties();
+        }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+			if (!CanTellRumor() && (this is HouseVisitor) == false)
+			{
+				list.Add("Recently Questioned");
+			}
+        }
 
 		///////////////////////////////////////////////////////////////////////////
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
@@ -1070,6 +1099,9 @@ namespace Server.Mobiles
 					mobile.CloseGump( typeof( CitizenGump ) );
 					mobile.SendGump(new CitizenGump( m_Giver, m_Mobile ));
 				}
+
+				// They didn't tell a rumor, but we'll consume it anyways (to show the flag)
+				citizen.MarkToldRumor();
             }
         }
 		///////////////////////////////////////////////////////////////////////////
