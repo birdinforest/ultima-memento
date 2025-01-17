@@ -212,6 +212,8 @@ namespace Server.Engines.MLQuests
 
 		public void SendProgressGump()
 		{
+			if (string.IsNullOrWhiteSpace(Quest.InProgressMessage)) return;
+
 			Player.SendGump(new QuestConversationGump(Quest, Player, Quest.InProgressMessage));
 		}
 
