@@ -21,7 +21,7 @@ namespace Scripts.Mythik.Systems.Achievements
             if (e == null || e.NewRegion == null || e.From == null || e.NewRegion.Name == null) return;
 
             var player = e.From as PlayerMobile;
-            if (e.NewRegion.Name.Contains(m_Region) && player != null)
+            if (e.NewRegion.Name == m_Region && player != null)
             {
                 AchievementSystem.SetAchievementStatus(player, this, 1);
             }
