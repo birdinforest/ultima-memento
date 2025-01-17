@@ -260,14 +260,19 @@ namespace Server.Mobiles
 
 		public void TrySetCoinPurse(Mobile from)
 		{
-			if ( !m_CoinsNeedReset || this is PlayerBarkeeper ) return;
+			if ( this is PlayerBarkeeper ) return;
+			if (!m_CoinsNeedReset) return;
 
-			m_CoinsNeedReset = false;
 			int coins = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
-			this.CoinPurse = this is BaseGuildmaster ? coins * 3 : coins;
+			CoinPurse = this is BaseGuildmaster ? coins * 3 : coins;
 			
 			if ( from != null )
 				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
+
+			RefreshSelf();
+			m_CoinsNeedReset = false;
+			InvalidateProperties();
+			m_RefreshSelfTimer = Timer.DelayCall(RefreshSelfDelay, () => RefreshSelf());
 		}
 
 		public BaseVendor( Serial serial ): base( serial )
@@ -720,11 +725,20 @@ namespace Server.Mobiles
 			LoadSBInfo();
 		}
 
+		private Timer m_RefreshSelfTimer;
+
 		public virtual void RefreshSelf()
 		{
+			if (m_RefreshSelfTimer != null)
+			{
+				m_RefreshSelfTimer.Stop();
+				m_RefreshSelfTimer = null;
+			}
+
 			LastRefreshSelf = DateTime.Now;
 
 			m_CoinsNeedReset = true;
+			InvalidateProperties();
 			UpdateBlackMarket();
 			UpdateCoins();
 		}
