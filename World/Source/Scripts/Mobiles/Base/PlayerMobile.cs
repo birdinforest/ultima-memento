@@ -1909,9 +1909,9 @@ namespace Server.Mobiles
 			if ( item == null )
 				return;
 
-			if ( from.Backpack == null || item.Parent != from.Backpack )
+			if ( from.Backpack == null || item.RootParent != from )
 			{
-				SendLocalizedMessage( 1074769 ); // An item must be in your backpack (and not in a container within) to be toggled as a quest item.
+				SendLocalizedMessage( 1074769 ); // An item must be in your backpack to be toggled as a quest item.
 			}
 			else if ( item.QuestItem )
 			{
