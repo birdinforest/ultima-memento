@@ -45,7 +45,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(BritainGuildmasterSmithGuy); // Quest Recipient
+            yield break;
         }
     }
 
@@ -164,7 +164,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(MontorSmithGirl); // Quest Recipient
+            yield break;
         }
     }
 
@@ -280,7 +280,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(DevilGuardSmithGuy); // Quest Recipient
+            yield break;
         }
     }
 
@@ -394,7 +394,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(YewSmithGuy); // Quest Recipient
+            yield break;
         }
     }
 
@@ -479,7 +479,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(MoonSmithGuy); // Quest Recipient
+            yield break;
         }
     }
 
@@ -569,7 +569,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(GreySmithGuy); // Quest Recipient
+            yield break;
         }
     }
 
