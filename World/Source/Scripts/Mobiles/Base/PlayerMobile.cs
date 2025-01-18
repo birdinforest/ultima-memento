@@ -1896,7 +1896,7 @@ namespace Server.Mobiles
 			//CloseGump( typeof( UnknownGump804 ) );
 
 			BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleQuestItem_Callback ) );
-			SendLocalizedMessage( 1072352 ); // Target the item you wish to toggle Quest Item status on <ESC> to cancel
+			SendLocalizedMessage( 1072352 ); // Target an item or container you wish to toggle Quest Item status on <ESC> to cancel
 		}
 
 		private void ToggleQuestItem_Callback( Mobile from, object obj )
@@ -1918,13 +1918,32 @@ namespace Server.Mobiles
 				item.QuestItem = false;
 				SendLocalizedMessage( 1072354 ); // You remove Quest Item status from the item
 			}
-			else if ( MLQuestSystem.MarkQuestItem( this, item ) )
-			{
-				SendLocalizedMessage( 1072353 ); // You set the item to Quest Item status
-			}
 			else
 			{
-				SendLocalizedMessage( 1072355, "", 0x23 ); // That item does not match any of your quest criteria
+				if ( item is Container )
+				{
+					item.Items.ForEach(i => 
+					{
+						if (i is Container) return;
+						if (i.QuestItem) return;
+
+						if ( MLQuestSystem.MarkQuestItem( this, i ) )
+						{
+							SendLocalizedMessage( 1072353 ); // You set the item to Quest Item status
+						}
+					});
+				}
+				else
+				{
+					if ( MLQuestSystem.MarkQuestItem( this, item ) )
+					{
+						SendLocalizedMessage( 1072353 ); // You set the item to Quest Item status
+					}
+					else
+					{
+						SendLocalizedMessage( 1072355, "", 0x23 ); // That item does not match any of your quest criteria
+					}
+				}
 			}
 
 			ToggleQuestItemTarget();
