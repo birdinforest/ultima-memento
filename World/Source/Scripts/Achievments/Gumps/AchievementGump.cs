@@ -149,7 +149,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 TextDefinition.AddHtmlText(this, 912, 23 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 75, 16, string.Format("<RIGHT>{0} / {1}</RIGHT>", progress, ac.CompletionTotal), false, false, COLOR_LOCALIZED, COLOR_HTML);
             }
 
-            var description = isComplete || !ac.HideDesc ? ac.Desc : "???";
+            var description = isComplete || !ac.HideDesc ? ac.Desc : ac.HiddenDesc;
             TextDefinition.AddHtmlText(this, 355, 34 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 613, 16, description, false, false, COLOR_LOCALIZED, COLOR_HTML);
 
             if (acheiveData != null && acheiveData.IsComplete)

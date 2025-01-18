@@ -19,6 +19,7 @@ namespace Scripts.Mythik.Systems.Achievements
             HiddenTillComplete = hiddenTillComplete;
             ItemIcon = itemIcon;
             PreReq = prereq;
+            HiddenDesc = "???";
         }
 
         /// <summary>
@@ -31,6 +32,7 @@ namespace Scripts.Mythik.Systems.Achievements
         public int CategoryID { get; set; }
         public string Title { get; set; }
         public string Desc { get; set; }
+        public string HiddenDesc { get; set; }
         /// <summary>
         /// Hide the Title until completed
         /// </summary>
