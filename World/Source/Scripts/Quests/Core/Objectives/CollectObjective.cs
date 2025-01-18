@@ -133,7 +133,7 @@ namespace Server.Engines.MLQuests.Objectives
 			if (pack == null)
 				return 0;
 
-			Item[] items = pack.FindItemsByType(Objective.AcceptedType, false); // Note: subclasses are included
+			Item[] items = pack.FindItemsByType(Objective.AcceptedType, true); // Note: subclasses are included
 			int total = 0;
 
 			foreach (Item item in items)
@@ -164,7 +164,7 @@ namespace Server.Engines.MLQuests.Objectives
 				return;
 
 			Type checkType = Objective.AcceptedType;
-			Item[] items = pack.FindItemsByType(checkType, false);
+			Item[] items = pack.FindItemsByType(checkType, true);
 
 			foreach (Item item in items)
 			{
@@ -183,7 +183,7 @@ namespace Server.Engines.MLQuests.Objectives
 
 			// TODO: OSI also counts the item in the cursor?
 
-			Item[] items = pack.FindItemsByType(Objective.AcceptedType, false);
+			Item[] items = pack.FindItemsByType(Objective.AcceptedType, true);
 			int left = Objective.DesiredAmount;
 
 			foreach (Item item in items)
