@@ -165,8 +165,6 @@ namespace Server.Engines.MLQuests
 			TargetCommands.Register(new ViewQuestsCommand());
 			TargetCommands.Register(new ViewContextCommand());
 			TargetCommands.Register(new ResetQuestTimersCommand());
-
-			EventSink.QuestGumpRequest += new QuestGumpRequestHandler(EventSink_QuestGumpRequest);
 		}
 
 		[Usage("MLQuestsInfo")]
@@ -717,14 +715,6 @@ namespace Server.Engines.MLQuests
 						instance.OnQuesterDeleted();
 				}
 			}
-		}
-
-		public static void EventSink_QuestGumpRequest(QuestGumpRequestArgs args)
-		{
-			PlayerMobile pm = args.Mobile as PlayerMobile;
-			if (pm == null) return;
-
-			pm.SendGump(new QuestLogGump(pm));
 		}
 
 		private static List<MLQuest> m_EligiblePool = new List<MLQuest>();
