@@ -420,7 +420,7 @@ namespace Server.Engines.MLQuests.Definitions
 
             Objectives.Add(DummyObjective.CraftAndMarkQuestItems);
             Objectives.Add(new CraftObjective(10, typeof(PlateGorget), "Platemail Gorget"));
-            Objectives.Add(new CraftObjective(10, typeof(PlateChest), "Platemail"));
+            Objectives.Add(new CraftObjective(10, typeof(PlateChest), "Platemail (tunic)"));
 
             Rewards.Add(new ConstructibleItemReward("Animal Armor Recipes",
                 player =>
