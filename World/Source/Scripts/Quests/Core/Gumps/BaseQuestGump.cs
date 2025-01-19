@@ -66,8 +66,6 @@ namespace Server.Engines.MLQuests.Gumps
 			m_Title = null;
 			m_Buttons = new List<ButtonInfo>( 2 );
 
-			Closable = false;
-
 			AddPage( 0 );
 			
 			AddImage( 50, 20, 0x1452 );

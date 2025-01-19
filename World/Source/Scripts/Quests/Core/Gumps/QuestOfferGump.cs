@@ -15,6 +15,8 @@ namespace Server.Engines.MLQuests.Gumps
 			m_Quest = quest;
 			m_Quester = quester;
 
+			Closable = false;
+
 			CloseOtherGumps(pm);
 			pm.CloseGump(typeof(QuestOfferGump));
 
