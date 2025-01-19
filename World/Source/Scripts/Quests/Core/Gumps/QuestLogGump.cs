@@ -92,6 +92,7 @@ namespace Server.Engines.MLQuests.Gumps
 				case 2: // Toggle Quest Items
 					var player = (PlayerMobile)sender.Mobile;
 					player.ToggleQuestItem();
+					sender.Mobile.SendGump(new QuestLogGump(player, m_CloseGumps));
 					break;
 
 				default:
