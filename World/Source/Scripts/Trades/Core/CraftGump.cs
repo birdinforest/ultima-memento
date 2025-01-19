@@ -147,20 +147,9 @@ namespace Server.Engines.Craft
 				}
 				// ****************************************
 
-				// Mark Quest Items
-				if ( (tool is BaseRunicTool) == false )
-				{
-					if (!context.AutomaticallyMarkQuestItems)
-					{
-						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4020, 4022, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
-						AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>DO NOT TOGGLE QUEST ITEMS</BASEFONT>", FontColor ), false, false );
-					}
-					else
-					{
-						AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4023, 4025, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
-						AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>AUTO TOGGLE QUEST ITEMS</BASEFONT>", FontColor ), false, false );
-					}
-				}
+				// Set crafting container
+				AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4005, 4007, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
+				AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SET CRAFTING CONTAINER</BASEFONT>", FontColor ), false, false );
 
 				if ( notice is int && (int)notice > 0 )
 					AddHtmlLocalized( LEFT_WINDOW_START, 295+moveUp, LEFT_WINDOW_WIDTH, 40, (int)notice, LabelColor, false, false );
@@ -708,8 +697,9 @@ namespace Server.Engines.Craft
 
 							break;
 						}
-						case 9: // Mark quest items
+						case 9: // Set crafting container
 						{
+							BaseContainer.ContainerSetTarget( m_From, 2 );
 							context.AutomaticallyMarkQuestItems = !context.AutomaticallyMarkQuestItems;
 							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
 
