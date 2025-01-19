@@ -140,6 +140,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Removed `Bridge of Tul'mok` region<br>");
 			builder.Append("- Misc - Hidden chests are now deleted after they are revealed<br>");
 			builder.Append("- Misc - Fix null ref in BaseCreature.OnAfterSpawn()<br>");
+			builder.Append("- Misc - Mongbat tower at Devil Guard is now properly capped<br>");
 			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append("- Spell - Bard songs weren't blocked when no instrument was assigned<br>");
 			builder.Append("- Spell - Bard songs weren't blocked when below required skill level<br>");
