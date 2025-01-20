@@ -509,7 +509,7 @@ namespace Server.Spells
 
 		public virtual void SayMantra()
 		{
-			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && m_Caster.Player )
+			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 )
 				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
 		}
 
