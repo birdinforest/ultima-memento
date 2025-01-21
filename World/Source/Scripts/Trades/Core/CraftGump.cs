@@ -416,108 +416,79 @@ namespace Server.Engines.Craft
 			return 1 + type + (index * 7);
 		}
 
-		public void CraftItem( CraftItem item )
+		public void CraftItem( CraftItem item, int amount )
 		{
 			bool needsRecipe = item.Recipe != null && m_From is PlayerMobile && !((PlayerMobile)m_From).HasRecipe( item.Recipe );
 			if (needsRecipe) return;
 
 			int num = m_CraftSystem.CanCraft( m_From, m_Tool, item.ItemType );
-			bool CraftMany = CraftSystem.CraftingMany( m_From );
-
-			CraftSystem.CraftStarting( m_From );
 
 			CraftSystem.SetDescription( m_CraftSystem.GetContext( m_From ), m_Tool, item.ItemType, m_CraftSystem, item.NameString, m_From, item );
 
-			if ( CraftMany )
-				((PlayerMobile)m_From).CraftMessage();
-
-			CraftSystem.CraftStartTool( m_From );
-
-			while ( CraftSystem.CraftGetQueue( m_From ) > 0 )
+			if ( num > 0 )
 			{
-				CraftSystem.CraftReduceQueue( m_From, 1 );
+				m_From.CloseGump( typeof( CraftGump ) );
+				m_From.CloseGump( typeof( CraftGumpItem ) );
+				m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, num ) );
+			}
+			else
+			{
+				Type type = null;
 
-				if ( CraftMany )
+				CraftContext context = m_CraftSystem.GetContext( m_From );
+
+				if ( context != null )
 				{
-					m_From.EndAction( typeof( CraftSystem ) );
+					CraftSubResCol res = m_CraftSystem.CraftSubRes;
+					int resIndex = context.LastResourceIndex;
+
+					if ( resIndex >= 0 && resIndex < res.Count )
+						type = res.GetAt( resIndex ).ItemType;
 				}
 
-				if ( num > 0 )
-				{
-					m_From.CloseGump( typeof( CraftGump ) );
-					m_From.CloseGump( typeof( CraftGumpItem ) );
-					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, num ) );
-				}
+				if ( 1 < amount )
+					m_CraftSystem.BulkCreateItem( m_From, item.ItemType, type, m_Tool, item, amount );
 				else
-				{
-					Type type = null;
-
-					CraftContext context = m_CraftSystem.GetContext( m_From );
-
-					if ( context != null )
-					{
-						CraftSubResCol res = m_CraftSystem.CraftSubRes;
-						int resIndex = context.LastResourceIndex;
-
-						if ( resIndex >= 0 && resIndex < res.Count )
-							type = res.GetAt( resIndex ).ItemType;
-					}
-
 					m_CraftSystem.CreateItem( m_From, item.ItemType, type, m_Tool, item );
-				}
 			}
 		}
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
-			if ( CraftSystem.AllowManyCraft( m_Tool ) && !CraftSystem.CraftFinished( m_From, m_Tool ) )
-			{
-				m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, null ) );
-				return;
-			}
-
-			CraftSystem.CraftClear( m_From );
-
 			int buttonID = info.ButtonID;
 
 			if ( buttonID <= 0 )
 			{
 				m_From.CloseGump( typeof( CraftGump ) );
 				m_From.CloseGump( typeof( CraftGumpItem ) );
+				BulkCraft.StopTimer( m_From as PlayerMobile );
+
 				return; // Canceled
 			}
 
+			int toMake;
 			if ( buttonID > 3000 && CraftSystem.AllowManyCraft( m_Tool ) )
 			{
 				buttonID = buttonID - 3000;
-				int toMake;
 				TextRelay t = info.GetTextEntry(1);
 				if (t == null || !int.TryParse(t.Text, out toMake) || toMake < 1 || 100 < toMake)
 				{
 					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, "Please pick a number between 1 and 100." ) );
 					return;
 				}
-
-				CraftSystem.CraftSetQueue( m_From, toMake );
-				((PlayerMobile)m_From).CraftSound = -1;
-				((PlayerMobile)m_From).CraftSoundAfter = -1;
 			}
 			else if ( buttonID > 2000 && CraftSystem.AllowManyCraft( m_Tool ) )
 			{
 				buttonID = buttonID - 2000;
-				CraftSystem.CraftSetQueue( m_From, 100 );
-				((PlayerMobile)m_From).CraftSound = -1;
-				((PlayerMobile)m_From).CraftSoundAfter = -1;
+				toMake = 100;
 			}
 			else if ( buttonID > 1000 && CraftSystem.AllowManyCraft( m_Tool ) )
 			{
 				buttonID = buttonID - 1000;
-				CraftSystem.CraftSetQueue( m_From, 10 );
-				((PlayerMobile)m_From).CraftSound = -1;
-				((PlayerMobile)m_From).CraftSoundAfter = -1;
+				toMake = 10;
 			}
 			else
-				CraftSystem.CraftSetQueue( m_From, 1 );
+				toMake = 1;
 
 			buttonID = buttonID - 1;
 			int type = buttonID % 7;
@@ -554,7 +525,7 @@ namespace Server.Engines.Craft
 						CraftGroup group = groups.GetAt( groupIndex );
 
 						if ( index >= 0 && index < group.CraftItems.Count )
-							CraftItem( group.CraftItems.GetAt( index ) );
+							CraftItem( group.CraftItems.GetAt( index ), toMake );
 					}
 
 					break;
@@ -584,7 +555,7 @@ namespace Server.Engines.Craft
 					List<CraftItem> lastTen = context.Items;
 
 					if ( index >= 0 && index < lastTen.Count )
-						CraftItem( lastTen[index] );
+						CraftItem( lastTen[index], toMake );
 
 					break;
 				}
@@ -656,7 +627,7 @@ namespace Server.Engines.Craft
 							CraftItem item = context.LastMade;
 
 							if ( item != null )
-								CraftItem( item );
+								CraftItem( item, toMake );
 							else
 								m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, 1044165, m_Page ) ); // You haven't made anything yet.
 

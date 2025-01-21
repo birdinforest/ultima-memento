@@ -444,7 +444,7 @@ namespace Server.Engines.Craft
 				int message;
 
 				if ( m_TrapCraft.Acquire( targeted, out message ) )
-					m_TrapCraft.CraftItem.CompleteCraft( m_TrapCraft.Quality, m_TrapCraft.From, m_TrapCraft.CraftSystem, m_TrapCraft.TypeRes, m_TrapCraft.Tool, m_TrapCraft );
+					m_TrapCraft.CraftItem.CompleteCraft( m_TrapCraft.Quality, m_TrapCraft.From, m_TrapCraft.CraftSystem, m_TrapCraft.TypeRes, m_TrapCraft.Tool, m_TrapCraft, null );
 				else
 					Failure( message );
 			}

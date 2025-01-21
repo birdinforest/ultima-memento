@@ -101,75 +101,6 @@ namespace Server.Mobiles
 			return false;
 		}
 
-		public void CraftMessage()
-		{
-			Craft_Snd_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( CraftSound_Callback ), this );
-			Craft_Aft_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 3.0 ), new TimerStateCallback( CraftAfter_Callback ), this );
-			Craft_Msg_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( CraftMessage_Callback ), this );
-		}
-
-		private void CraftMessage_Callback( object state )
-		{
-			if ( Craft_Msg_Timer != null )
-			{
-				Craft_Msg_Timer.Stop();
-				Craft_Msg_Timer = null;
-			}
-
-			Mobile from = state as Mobile;
-			PlayerMobile pm = (PlayerMobile)from;
-
-			if ( pm.CraftSuccess > 1 )
-				pm.SendMessage( "You created " + pm.CraftSuccess + " items." );
-			else if ( pm.CraftSuccess == 1 )
-				pm.SendMessage( "You created 1 item." );
-
-			if ( pm.CraftExceptional > 1 )
-				pm.SendMessage( "You created " + pm.CraftExceptional + " exceptional items." );
-			else if ( pm.CraftExceptional == 1)
-				pm.SendMessage( "You created 1 exceptional item." );
-
-			pm.PlaySound( CraftSound );
-
-			CraftSystem.CraftClear( pm );
-		}
-
-		private void CraftSound_Callback( object state )
-		{
-			if ( Craft_Snd_Timer != null )
-			{
-				Craft_Snd_Timer.Stop();
-				Craft_Snd_Timer = null;
-			}
-
-			Mobile from = state as Mobile;
-			PlayerMobile pm = (PlayerMobile)from;
-
-			if ( pm.CraftSound > 0 && pm.CraftSound < 10000 )
-			{
-				pm.PlaySound( pm.CraftSound );
-				pm.CraftSound = 10000;
-			}
-		}
-
-		private void CraftAfter_Callback( object state )
-		{
-			if ( Craft_Aft_Timer != null )
-			{
-				Craft_Aft_Timer.Stop();
-				Craft_Aft_Timer = null;
-			}
-
-			Mobile from = state as Mobile;
-			PlayerMobile pm = (PlayerMobile)from;
-
-			if ( pm.CraftSoundAfter > 0 && pm.CraftSoundAfter < 10000 )
-			{
-				pm.PlaySound( pm.CraftSoundAfter );
-				pm.CraftSoundAfter = 10000;
-			}
-		}
-
 	  /* Begin Captcha Mod */////////////////////////////////////////
 		private DateTime _NextCaptchaTime;
 	 
@@ -3213,40 +3144,6 @@ namespace Server.Mobiles
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public int CraftQueue;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_Queue { get { return CraftQueue; } set { CraftQueue = value; InvalidateProperties(); } }
-
-		public int CraftSuccess;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_Success { get { return CraftSuccess; } set { CraftSuccess = value; InvalidateProperties(); } }
-
-		public int CraftExceptional;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_Exceptional { get { return CraftExceptional; } set { CraftExceptional = value; InvalidateProperties(); } }
-
-		public int CraftError;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_Error { get { return CraftError; } set { CraftError = value; InvalidateProperties(); } }
-
-		public DateTime CraftDone;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime Craft_Done { get { return CraftDone; } set { CraftDone = value; InvalidateProperties(); } }
-
-		public int CraftSound;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_Sound { get { return CraftSound; } set { CraftSound = value; InvalidateProperties(); } }
-
-		public int CraftSoundAfter;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Craft_SoundAfter { get { return CraftSoundAfter; } set { CraftSoundAfter = value; InvalidateProperties(); } }
-
-		public bool CraftToolReduced;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Craft_ToolReduced { get { return CraftToolReduced; } set { CraftToolReduced = value; InvalidateProperties(); } }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		public bool UsingAncientBook;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Using_ArchmageBook { get { return UsingAncientBook; } set { UsingAncientBook = value; InvalidateProperties(); } }
@@ -3410,6 +3307,7 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 41:
 				case 40:
 				{
 					int recipeCount = reader.ReadInt();
@@ -3439,13 +3337,16 @@ namespace Server.Mobiles
 				}
 				case 35:
 				{
-					CraftQueue = reader.ReadInt();
-					CraftSuccess = reader.ReadInt();
-					CraftExceptional = reader.ReadInt();
-					CraftError = reader.ReadInt();
-					CraftDone = reader.ReadDateTime();
-					CraftSound = reader.ReadInt();
-					CraftSoundAfter = reader.ReadInt();
+					if (version < 41)
+					{
+						var craftQueue = reader.ReadInt();
+						var craftSuccess = reader.ReadInt();
+						var craftExceptional = reader.ReadInt();
+						var craftError = reader.ReadInt();
+						var craftDone = reader.ReadDateTime();
+						var craftSound = reader.ReadInt();
+						var craftSoundAfter = reader.ReadInt();
+					}
 
 					goto case 34;
 				}
@@ -3836,7 +3737,7 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 40 ); // version
+			writer.Write( (int) 41 ); // version
 
 			if( m_AcquiredRecipes == null )
 			{
@@ -3855,14 +3756,6 @@ namespace Server.Mobiles
 			writer.Write( m_DoubleClickID );
 
 			writer.Write( m_InnTime );
-
-			writer.Write( CraftQueue );
-			writer.Write( CraftSuccess );
-			writer.Write( CraftExceptional );
-			writer.Write( CraftError );
-			writer.Write( CraftDone );
-			writer.Write( CraftSound );
-			writer.Write( CraftSoundAfter );
 
 			writer.Write( UsingAncientBook );
 			writer.Write( SpellBarsArch4 );

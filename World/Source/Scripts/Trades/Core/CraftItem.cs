@@ -583,21 +583,18 @@ namespace Server.Engines.Craft
 			if ( m_NeedHeat && !Find( from, m_HeatSources ) )
 			{
 				message = 1044487; // You must be near a fire source to cook.
-				CraftSystem.CraftError( from );
 				return false;
 			}
 
 			if ( m_NeedOven && !Find( from, m_Ovens ) )
 			{
 				message = 1044493; // You must be near an oven to bake that.
-				CraftSystem.CraftError( from );
 				return false;
 			}
 
 			if ( m_NeedMill && !Find( from, m_Mills ) )
 			{
 				message = 1044491; // You must be near a flour mill to do that.
-				CraftSystem.CraftError( from );
 				return false;
 			}
 
@@ -763,7 +760,6 @@ namespace Server.Engines.Craft
 				else
 					message = 502925; // You don't have the resources required to make that item.
 
-				CraftSystem.CraftError( from );
 				return false;
 			}
 		}
@@ -937,9 +933,9 @@ namespace Server.Engines.Craft
 			return chance;
 		}
 
-		public void Craft( Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool )
+		public bool Craft( Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, BulkCraftContext bulkCraftContext )
 		{
-			if ( from.BeginAction( typeof( CraftSystem ) ) || CraftSystem.CraftingMany( from ) )
+			if ( from.BeginAction( typeof( CraftSystem ) ) )
 			{
 				bool allRequiredSkills = true;
 				double chance = GetSuccessChance( from, typeRes, craftSystem, false, ref allRequiredSkills );
@@ -970,10 +966,12 @@ namespace Server.Engines.Craft
 								int iRandom = Utility.Random( iMax );
 								iRandom += iMin + 1;
 
-								if ( CraftSystem.CraftingMany( from ) )
-									RunCommand( from, craftSystem, this, typeRes, tool );
+								if ( bulkCraftContext != null )
+									RunCommand( from, craftSystem, this, typeRes, tool, bulkCraftContext );
 								else 
 									new InternalTimer( from, craftSystem, this, typeRes, tool, iRandom ).Start();
+								
+								return true;
 							}
 							else
 							{
@@ -1003,6 +1001,8 @@ namespace Server.Engines.Craft
 			{
 				from.SendLocalizedMessage( 500119 ); // You must wait to perform another action
 			}
+
+			return false;
 		}
 
 		private object RequiredExpansionMessage( Expansion expansion )	//Eventually convert to TextDefinition, but that requires that we convert all the gumps to ues it too.  Not that it wouldn't be a bad idea.
@@ -1018,8 +1018,11 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public void CompleteCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CustomCraft customCraft )
+		public void CompleteCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CustomCraft customCraft, BulkCraftContext bulkCraftContext )
 		{
+			if ( bulkCraftContext != null)
+				bulkCraftContext.Current++;
+				
 			CraftContext context = craftSystem.GetContext( from );
 
 			int badCraft = craftSystem.CanCraft( from, tool, m_Type );
@@ -1070,8 +1073,6 @@ namespace Server.Engines.Craft
 
 			if ( CheckSkills( from, typeRes, craftSystem, ref ignored, ref allRequiredSkills ) )
 			{
-				int que = CraftSystem.CraftGetQueue( from );
-
 				// Resource
 				int resHue = 0;
 				int maxAmount = 0;
@@ -1102,18 +1103,13 @@ namespace Server.Engines.Craft
 					return;
 				}
 
-				CraftSystem.CraftReduceTool( from, tool );
-
-				BaseTool iTool = tool;
+				tool.UsesRemaining--;
 
 				if ( tool.UsesRemaining < 1 )
 					toolBroken = true;
 
 				if ( toolBroken )
-				{
-					CraftSystem.CraftError( from );
 					tool.Delete();
-				}
 
 				int num = 0;
 
@@ -1173,11 +1169,6 @@ namespace Server.Engines.Craft
 					int made = item.Amount;
 					if ( item is Kindling || item is BarkFragment || item is Shaft )
 						made = made * 2;
-
-					if ( quality == 2 && IsMarkable( item.GetType() ) )
-						CraftSystem.CraftAddItem( from, true, made );
-					else
-						CraftSystem.CraftAddItem( from, false, made );
 
 					if ( item is Kindling || item is BarkFragment || item is Shaft )
 						item.Amount = item.Amount * 2;
@@ -1282,8 +1273,14 @@ namespace Server.Engines.Craft
 
 				if ( num == 0 )
 					num = craftSystem.PlayEndingEffect( from, false, true, toolBroken, endquality, this );
-
-				if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
+				
+				if ( bulkCraftContext != null )
+				{
+					bulkCraftContext.Success++;
+					if ( quality == 2 )
+						bulkCraftContext.Exceptional++;
+				}
+				else if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 					from.SendGump( new CraftGump( from, craftSystem, tool, num ) );
 				else if ( num > 0 )
 					from.SendLocalizedMessage( num );
@@ -1316,16 +1313,11 @@ namespace Server.Engines.Craft
 					return;
 				}
 
-				CraftSystem.CraftReduceTool( from, tool );
-
 				if ( tool.UsesRemaining < 1 )
 					toolBroken = true;
 
 				if ( toolBroken )
-				{
-					CraftSystem.CraftError( from );
 					tool.Delete();
-				}
 
 				// SkillCheck failed.
 				int num = craftSystem.PlayEndingEffect( from, true, true, toolBroken, endquality, this );
@@ -1334,10 +1326,13 @@ namespace Server.Engines.Craft
 					from.SendGump( new CraftGump( from, craftSystem, tool, num ) );
 				else if ( num > 0 )
 					from.SendLocalizedMessage( num );
+				
+				if ( bulkCraftContext != null )
+					bulkCraftContext.Fail++;
 			}
 		}
 
-		private void RunCommand( Mobile m_From, CraftSystem m_CraftSystem, CraftItem m_CraftItem, Type m_TypeRes, BaseTool m_Tool )
+		private void RunCommand( Mobile m_From, CraftSystem m_CraftSystem, CraftItem m_CraftItem, Type m_TypeRes, BaseTool m_Tool, BulkCraftContext bulkCraftContext )
 		{
 			m_From.DisruptiveAction();
 			m_CraftSystem.PlayCraftEffect( m_From );
@@ -1378,7 +1373,7 @@ namespace Server.Engines.Craft
 				return;
 			}
 
-			m_CraftItem.CompleteCraft( quality, m_From, m_CraftSystem, m_TypeRes, m_Tool, null );
+			m_CraftItem.CompleteCraft( quality, m_From, m_CraftSystem, m_TypeRes, m_Tool, null, bulkCraftContext );
 		}
 
 		private class InternalTimer : Timer
@@ -1451,7 +1446,7 @@ namespace Server.Engines.Craft
 						return;
 					}
 
-					m_CraftItem.CompleteCraft( quality, m_From, m_CraftSystem, m_TypeRes, m_Tool, null );
+					m_CraftItem.CompleteCraft( quality, m_From, m_CraftSystem, m_TypeRes, m_Tool, null, null);
 				}
 			}
 		}

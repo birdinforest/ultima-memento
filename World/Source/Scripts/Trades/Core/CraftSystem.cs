@@ -179,130 +179,11 @@ namespace Server.Engines.Craft
 			context.Hue = typeHue;
 		}
 
-		public static bool CraftingMany( Mobile m )
-		{
-			if ( m is PlayerMobile && ((PlayerMobile)m).CraftQueue > 1 )
-				return true;
-
-			return false;
-		}
-
-		public static void CraftStarting( Mobile m )
-		{
-			if ( m is PlayerMobile )
-				if ( CraftSystem.CraftGetQueue( m ) > 1 )
-					((PlayerMobile)m).CraftDone = DateTime.Now + TimeSpan.FromSeconds( 7.0 );
-		}
-
-		public static bool CraftFinished( Mobile m, BaseTool tool )
-		{
-			if ( !AllowManyCraft( tool ) )
-				return true;
-			if ( m is PlayerMobile && DateTime.Now >= ((PlayerMobile)m).CraftDone )
-				return true;
-			else
-				m.SendMessage( "You must wait a moment before doing something else." );
-
-			return false;
-		}
-
-		public static void CraftSetQueue( Mobile m, int val )
-		{
-			if ( m is PlayerMobile )
-				((PlayerMobile)m).CraftQueue = val;
-		}
-
-		public static int CraftGetQueue( Mobile m )
-		{
-			if ( m is PlayerMobile )
-				return ((PlayerMobile)m).CraftQueue;
-
-			return 0;
-		}
-
-		public static void CraftReduceQueue( Mobile m, int val )
-		{
-			if ( m is PlayerMobile )
-			{
-				if ( val == 1 )
-					((PlayerMobile)m).CraftQueue--;
-				else 
-					((PlayerMobile)m).CraftQueue = val;
-			}
-		}
-
-		public static void CraftReduceTool( Mobile m, BaseTool tool )
-		{
-			if ( m is PlayerMobile && !((PlayerMobile)m).CraftToolReduced )
-			{
-				tool.UsesRemaining--;
-				((PlayerMobile)m).CraftToolReduced = true;
-			}
-		}
-
-		public static void CraftStartTool( Mobile m )
-		{
-			if ( m is PlayerMobile )
-				((PlayerMobile)m).CraftToolReduced = false;
-		}
-
-		public static void CraftAddItem( Mobile m, bool exceptional, int qty )
-		{
-			if ( m is PlayerMobile && exceptional )
-				((PlayerMobile)m).CraftExceptional = ((PlayerMobile)m).CraftExceptional + qty;
-			else if ( m is PlayerMobile )
-				((PlayerMobile)m).CraftSuccess = ((PlayerMobile)m).CraftSuccess + qty;
-		}
-
-		public static void CraftError( Mobile m )
-		{
-			if ( m is PlayerMobile )
-			{
-				((PlayerMobile)m).CraftQueue = 0;
-				((PlayerMobile)m).CraftError = 1;
-			}
-		}
-
 		public static void CraftSound( Mobile m, int sound, BaseTool tool )
 		{
 			if ( m is PlayerMobile )
 			{
-				if ( !AllowManyCraft( tool ) )
-					m.PlaySound( sound );
-				else if ( ((PlayerMobile)m).CraftSound == -1 )
-					((PlayerMobile)m).CraftSound = sound;
-				else if ( ((PlayerMobile)m).CraftSound > 0 ){}
-					// DO NOTHING
-				else
-					m.PlaySound( sound );
-			}
-		}
-
-		public static void CraftSoundAfter( Mobile m, int sound, BaseTool tool )
-		{
-			if ( m is PlayerMobile )
-			{
-				if ( !AllowManyCraft( tool ) )
-					m.PlaySound( sound );
-				else if ( ((PlayerMobile)m).CraftSoundAfter == -1 )
-					((PlayerMobile)m).CraftSoundAfter = sound;
-				else if ( ((PlayerMobile)m).CraftSoundAfter > 0 ){}
-					// DO NOTHING
-				else
-					m.PlaySound( sound );
-			}
-		}
-
-		public static void CraftClear( Mobile m )
-		{
-			if ( m is PlayerMobile )
-			{
-				((PlayerMobile)m).CraftQueue = 0;
-				((PlayerMobile)m).CraftSuccess = 0;
-				((PlayerMobile)m).CraftExceptional = 0;
-				((PlayerMobile)m).CraftError = 0;
-				((PlayerMobile)m).CraftSound = 0;
-				((PlayerMobile)m).CraftSoundAfter = 0;
+				m.PlaySound( sound );
 			}
 		}
 
@@ -383,6 +264,20 @@ namespace Server.Engines.Craft
 			return true;
 		}
 
+		public void BulkCreateItem( Mobile from, Type type, Type typeRes, BaseTool tool, CraftItem realCraftItem, int amount )
+		{	
+			// Verify if the type is in the list of the craftable item
+			CraftItem craftItem = m_CraftItems.SearchFor( type );
+			if ( craftItem != null )
+			{
+				var player = from as PlayerMobile;
+				if ( player == null ) return;
+
+				var timer = new BulkCraftTimer( realCraftItem, player, this, tool, typeRes, amount );
+				BulkCraft.StartTimer(timer);
+			}
+		}
+
 		public void CreateItem( Mobile from, Type type, Type typeRes, BaseTool tool, CraftItem realCraftItem )
 		{	
 			// Verify if the type is in the list of the craftable item
@@ -391,7 +286,7 @@ namespace Server.Engines.Craft
 			{
 				// The item is in the list, try to create it
 				// Test code: items like sextant parts can be crafted either directly from ingots, or from different parts
-				realCraftItem.Craft( from, this, typeRes, tool );
+				realCraftItem.Craft( from, this, typeRes, tool, null );
 				//craftItem.Craft( from, this, typeRes, tool );
 			}
 		}

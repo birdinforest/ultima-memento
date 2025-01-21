@@ -82,7 +82,7 @@ namespace Server.Engines.Craft
 			}
 			else
 			{
-				CraftSystem.CraftSoundAfter( from, 0x240, m_Tools ); // Sound of a filling bottle
+				from.PlaySound( 0x240 ); // Sound of a filling bottle
 				return 1044127; // You pour the potion into a jar...
 			}
 		}
