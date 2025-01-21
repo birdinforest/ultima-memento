@@ -24,6 +24,7 @@ namespace Server.Engines.MLQuests.Definitions
 
             Objectives.Add(new DummyObjective("Collect the following:"));
             Objectives.Add(new CollectObjective(500, typeof(IronIngot), "Iron Ingots") { DoNotConsume = true });
+            Objectives.Add(new DummyObjective("- Return to the Blacksmith"));
             Objectives.Add(new DummyObjective(""));
             Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
             Objectives.Add(new DummyObjective(""));
@@ -40,6 +41,7 @@ namespace Server.Engines.MLQuests.Definitions
             builder.Append("- Click yourself to view your Quest Log<br>");
             builder.Append("- Click the reticle next to the quest<br>");
             builder.Append("- Target the ingots<br>");
+            builder.Append("- Return to the Blacksmith");
             InProgressMessage = builder.ToString();
 
             Rewards.Add(new ItemReward("Smith Hammer", typeof(SmithHammer)));
