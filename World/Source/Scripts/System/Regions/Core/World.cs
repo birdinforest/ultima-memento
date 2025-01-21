@@ -1078,100 +1078,197 @@ namespace Server.Misc
 
         public static string GetDungeonListing( int i, out string world, out string location, out Map placer, out int xc, out int yc )
         {
+			string dungeon = null;
+			switch( i )
+			{
+				case 1: dungeon = "Dardin's Pit"; break;
+				case 2: dungeon = "Dungeon Clues"; break;
+				case 3: dungeon = "Dungeon Doom"; break;
+				case 4: dungeon = "Dungeon Exodus"; break;
+				case 5: dungeon = "the Pirate Cave"; break;
+				case 6: dungeon = "the Ancient Pyramid"; break;
+				case 7: dungeon = "the Cave of Banished Mages"; break;
+				case 8: dungeon = "the Caverns of Poseidon"; break;
+				case 9: dungeon = "the Dungeon of Time Awaits"; break;
+				case 10: dungeon = "the Fires of Hell"; break;
+				case 11: dungeon = "the Forgotten Halls"; break;
+				case 12: dungeon = "the Mines of Morinia"; break;
+				case 13: dungeon = "the Perinian Depths"; break;
+				case 14: dungeon = "the Ratmen Lair"; break;
+				case 15: dungeon = "the Cave of the Zuluu"; break;
+				case 16: dungeon = "the City of the Dead"; break;
+				case 17: dungeon = "the Dragon's Maw"; break;
+				case 18: dungeon = "the Mausoleum"; break;
+				case 19: dungeon = "the Tower of Brass"; break;
+				case 20: dungeon = "Dungeon Covetous"; break;
+				case 21: dungeon = "Dungeon Deceit"; break;
+				case 22: dungeon = "Dungeon Despise"; break;
+				case 23: dungeon = "Dungeon Destard"; break;
+				case 24: dungeon = "Dungeon Hythloth"; break;
+				case 25: dungeon = "Dungeon Shame"; break;
+				case 26: dungeon = "Dungeon Wrong"; break;
+				case 27: dungeon = "Stonegate Castle"; break;
+				case 28: dungeon = "Terathan Keep"; break;
+				case 29: dungeon = "the Ancient Elven Mine"; break;
+				case 30: dungeon = "the Castle of Dracula"; break;
+				case 31: dungeon = "the City of Embers"; break;
+				case 32: dungeon = "the Crypts of Dracula"; break;
+				case 33: dungeon = "the Frozen Hells"; break;
+				case 34: dungeon = "the Halls of Undermountain"; break;
+				case 35: dungeon = "the Ice Fiend Lair"; break;
+				case 36: dungeon = "the Lodoria Catacombs"; break;
+				case 37: dungeon = "the Undersea Pass"; break;
+				case 38: dungeon = "the Volcanic Cave"; break;
+				case 39: dungeon = "Dungeon Ankh"; break;
+				case 40: dungeon = "Dungeon Bane"; break;
+				case 41: dungeon = "Dungeon Hate"; break;
+				case 42: dungeon = "Dungeon Scorn"; break;
+				case 43: dungeon = "Dungeon Torment"; break;
+				case 44: dungeon = "Dungeon Vile"; break;
+				case 45: dungeon = "Dungeon Wicked"; break;
+				case 46: dungeon = "Dungeon Wrath"; break;
+				case 47: dungeon = "the Ancient Prison"; break;
+				case 48: dungeon = "the Cave of Fire"; break;
+				case 49: dungeon = "the Cave of Souls"; break;
+				case 50: dungeon = "the Flooded Temple"; break;
+				case 51: dungeon = "the Gargoyle Crypts"; break;
+				case 52: dungeon = "the Serpent Sanctum"; break;
+				case 53: dungeon = "the Tomb of the Fallen Wizard"; break;
+				case 54: dungeon = "the Vault of the Black Knight"; break;
+				case 55: dungeon = "the Blood Temple"; break;
+				case 56: dungeon = "the Glacial Scar"; break;
+				case 57: dungeon = "the Ice Queen Fortress"; break;
+				case 58: dungeon = "the Sanctum of Saltmarsh"; break;
+				case 59: dungeon = "the Scurvy Reef"; break;
+				case 60: dungeon = "the Temple of Osirus"; break;
+				case 61: dungeon = "Dungeon of the Lich King"; break;
+				case 62: dungeon = "Dungeon of the Mad Archmage"; break;
+				case 63: dungeon = "Dungeon Rock"; break;
+				case 64: dungeon = "the Azure Castle"; break;
+				case 65: dungeon = "the Catacombs of Azerok"; break;
+				case 66: dungeon = "the Corrupt Pass"; break;
+				case 67: dungeon = "the Halls of Ogrimar"; break;
+				case 68: dungeon = "the Ratmen Mines"; break;
+				case 69: dungeon = "the Storm Giant Lair"; break;
+				case 70: dungeon = "the Tomb of Kazibal"; break;
+				case 71: dungeon = "the Tombs"; break;
+				case 72: dungeon = "the Undersea Castle"; break;
+				case 73: dungeon = "the Crypts of Kuldar"; break;
+				case 74: dungeon = "the Kuldara Sewers"; break;
+				case 75: dungeon = "the Valley of Dark Druids"; break;
+				case 76: dungeon = "Vordo's Castle"; break;
+				case 77: dungeon = "Vordo's Dungeon"; break;
+				case 78: dungeon = "Argentrock Castle"; break;
+				case 79: dungeon = "the Ancient Sky Ship"; break;
+				case 80: dungeon = "Morgaelin's Inferno"; break;
+				case 81: dungeon = "the Daemon's Crag"; break;
+				case 82: dungeon = "the Depths of Carthax Lake"; break;
+				case 83: dungeon = "the Hall of the Mountain King"; break;
+				case 84: dungeon = "the Stygian Abyss"; break;
+				case 85: dungeon = "the Zealan Tombs"; break;
+			}
+
+        	return GetDungeonListing( dungeon, out world, out location, out placer, out xc, out yc );
+        }
+
+        public static string GetDungeonListing( string dungeon, out string world, out string location, out Map placer, out int xc, out int yc )
+        {
 			// THIS RETURNS AN ALPHABETICAL LIST (BY WORLD) OF DUNGEONS & LOCATIONS
 
-			string dungeon = "";
 			world = "";
 			location = "";
 			placer = Map.Internal;
 			xc = 0;
 			yc = 0;
 
-			if ( i == 1 ){ dungeon = "Dardin's Pit"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 2 ){ dungeon = "Dungeon Clues"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 3 ){ dungeon = "Dungeon Doom"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 4 ){ dungeon = "Dungeon Exodus"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 5 ){ dungeon = "the Pirate Cave"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 6 ){ dungeon = "the Ancient Pyramid"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 7 ){ dungeon = "the Cave of Banished Mages"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 8 ){ dungeon = "the Caverns of Poseidon"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 9 ){ dungeon = "the Dungeon of Time Awaits"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 10 ){ dungeon = "the Fires of Hell"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 11 ){ dungeon = "the Forgotten Halls"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 12 ){ dungeon = "the Mines of Morinia"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 13 ){ dungeon = "the Perinian Depths"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 14 ){ dungeon = "the Ratmen Lair"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; }
-			else if ( i == 15 ){ dungeon = "the Cave of the Zuluu"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; }
-			else if ( i == 16 ){ dungeon = "the City of the Dead"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; }
-			else if ( i == 17 ){ dungeon = "the Dragon's Maw"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; }
-			else if ( i == 18 ){ dungeon = "the Mausoleum"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Umber Veil"; }
-			else if ( i == 19 ){ dungeon = "the Tower of Brass"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Umber Veil"; }
-			else if ( i == 20 ){ dungeon = "Dungeon Covetous"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 21 ){ dungeon = "Dungeon Deceit"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 22 ){ dungeon = "Dungeon Despise"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 23 ){ dungeon = "Dungeon Destard"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 24 ){ dungeon = "Dungeon Hythloth"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 25 ){ dungeon = "Dungeon Shame"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 26 ){ dungeon = "Dungeon Wrong"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 27 ){ dungeon = "Stonegate Castle"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 28 ){ dungeon = "Terathan Keep"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 29 ){ dungeon = "the Ancient Elven Mine"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 30 ){ dungeon = "the Castle of Dracula"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 31 ){ dungeon = "the City of Embers"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 32 ){ dungeon = "the Crypts of Dracula"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 33 ){ dungeon = "the Frozen Hells"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 34 ){ dungeon = "the Halls of Undermountain"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 35 ){ dungeon = "the Ice Fiend Lair"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 36 ){ dungeon = "the Lodoria Catacombs"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 37 ){ dungeon = "the Undersea Pass"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 38 ){ dungeon = "the Volcanic Cave"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; }
-			else if ( i == 39 ){ dungeon = "Dungeon Ankh"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 40 ){ dungeon = "Dungeon Bane"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 41 ){ dungeon = "Dungeon Hate"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 42 ){ dungeon = "Dungeon Scorn"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 43 ){ dungeon = "Dungeon Torment"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 44 ){ dungeon = "Dungeon Vile"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 45 ){ dungeon = "Dungeon Wicked"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 46 ){ dungeon = "Dungeon Wrath"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 47 ){ dungeon = "the Ancient Prison"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 48 ){ dungeon = "the Cave of Fire"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 49 ){ dungeon = "the Cave of Souls"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 50 ){ dungeon = "the Flooded Temple"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 51 ){ dungeon = "the Gargoyle Crypts"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 52 ){ dungeon = "the Serpent Sanctum"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 53 ){ dungeon = "the Tomb of the Fallen Wizard"; location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 54 ){ dungeon = "the Vault of the Black Knight"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Serpent Island"; }
-			else if ( i == 55 ){ dungeon = "the Blood Temple"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 56 ){ dungeon = "the Glacial Scar"; location = GetAreaEntrance( 0, dungeon, Map.Underworld, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 57 ){ dungeon = "the Ice Queen Fortress"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 58 ){ dungeon = "the Sanctum of Saltmarsh"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 59 ){ dungeon = "the Scurvy Reef"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 60 ){ dungeon = "the Temple of Osirus"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Isles of Dread"; }
-			else if ( i == 61 ){ dungeon = "Dungeon of the Lich King"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 62 ){ dungeon = "Dungeon of the Mad Archmage"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 63 ){ dungeon = "Dungeon Rock"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 64 ){ dungeon = "the Azure Castle"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 65 ){ dungeon = "the Catacombs of Azerok"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 66 ){ dungeon = "the Corrupt Pass"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 67 ){ dungeon = "the Halls of Ogrimar"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 68 ){ dungeon = "the Ratmen Mines"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 69 ){ dungeon = "the Storm Giant Lair"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 70 ){ dungeon = "the Tomb of Kazibal"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 71 ){ dungeon = "the Tombs"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 72 ){ dungeon = "the Undersea Castle"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; }
-			else if ( i == 73 ){ dungeon = "the Crypts of Kuldar"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; }
-			else if ( i == 74 ){ dungeon = "the Kuldara Sewers"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; }
-			else if ( i == 75 ){ dungeon = "the Valley of Dark Druids"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; }
-			else if ( i == 76 ){ dungeon = "Vordo's Castle"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; }
-			else if ( i == 77 ){ dungeon = "Vordo's Dungeon"; location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; }
-			else if ( i == 78 ){ dungeon = "Argentrock Castle"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 79 ){ dungeon = "the Ancient Sky Ship"; location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 80 ){ dungeon = "Morgaelin's Inferno"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 81 ){ dungeon = "the Daemon's Crag"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 82 ){ dungeon = "the Depths of Carthax Lake"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 83 ){ dungeon = "the Hall of the Mountain King"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 84 ){ dungeon = "the Stygian Abyss"; location = GetAreaEntrance( 0, dungeon, Map.Underworld, out placer, out xc, out yc ); world = "Underworld"; }
-			else if ( i == 85 ){ dungeon = "the Zealan Tombs"; location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; }
+			switch(dungeon)
+			{
+				case "Dardin's Pit": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "Dungeon Clues": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "Dungeon Doom": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "Dungeon Exodus": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Pirate Cave": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Ancient Pyramid": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Cave of Banished Mages": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Caverns of Poseidon": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Dungeon of Time Awaits": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Fires of Hell": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Forgotten Halls": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Mines of Morinia": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Perinian Depths": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Ratmen Lair": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Cave of the Zuluu": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
+				case "the City of the Dead": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
+				case "the Dragon's Maw": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
+				case "the Mausoleum": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Umber Veil"; break;
+				case "the Tower of Brass": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Umber Veil"; break;
+				case "Dungeon Covetous": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Deceit": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Despise": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Destard": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Hythloth": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Shame": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Wrong": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Stonegate Castle": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Terathan Keep": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Ancient Elven Mine": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Castle of Dracula": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the City of Embers": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Crypts of Dracula": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Frozen Hells": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Halls of Undermountain": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Ice Fiend Lair": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Lodoria Catacombs": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Undersea Pass": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Volcanic Cave": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "Dungeon Ankh": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Bane": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Hate": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Scorn": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Torment": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Vile": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Wicked": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "Dungeon Wrath": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Ancient Prison": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Cave of Fire": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Cave of Souls": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Flooded Temple": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Gargoyle Crypts": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Serpent Sanctum": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Tomb of the Fallen Wizard": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Vault of the Black Knight": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Serpent Island"; break;
+				case "the Blood Temple": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "the Glacial Scar": location = GetAreaEntrance( 0, dungeon, Map.Underworld, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "the Ice Queen Fortress": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "the Sanctum of Saltmarsh": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "the Scurvy Reef": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "the Temple of Osirus": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Isles of Dread"; break;
+				case "Dungeon of the Lich King": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "Dungeon of the Mad Archmage": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "Dungeon Rock": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Azure Castle": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Catacombs of Azerok": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Corrupt Pass": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Halls of Ogrimar": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Ratmen Mines": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Storm Giant Lair": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Tomb of Kazibal": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Tombs": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Undersea Castle": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Crypts of Kuldar": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;
+				case "the Kuldara Sewers": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;
+				case "the Valley of Dark Druids": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;
+				case "Vordo's Castle": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;
+				case "Vordo's Dungeon": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;
+				case "Argentrock Castle": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Ancient Sky Ship": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "Morgaelin's Inferno": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Daemon's Crag": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Depths of Carthax Lake": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Hall of the Mountain King": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Stygian Abyss": location = GetAreaEntrance( 0, dungeon, Map.Underworld, out placer, out xc, out yc ); world = "Underworld"; break;
+				case "the Zealan Tombs": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Underworld"; break;
+			}
 
             return dungeon;
         }
