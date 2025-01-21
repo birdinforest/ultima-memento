@@ -48,7 +48,7 @@ namespace Scripts.Mythik.Systems.Achievements
         public short RewardPoints { get; set; }
         public Type[] RewardItems { get; set; }
         public int CompletionTotal { get; set; }
-        public bool HiddenTillComplete { get; private set; }
+        public bool HiddenTillComplete { get; set; }
         public BaseAchievement PreReq { get; set; }
     }
 }
