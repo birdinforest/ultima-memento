@@ -16,7 +16,7 @@ namespace Server.Items
 		{
 			Stackable = true;
 			Amount = amount;
-			Weight = 1.0;
+			Weight = 0.1;
 		}
 
 		public Springs( Serial serial ) : base( serial )

@@ -16,7 +16,7 @@ namespace Server.Items
 		{
 			Stackable = true;
 			Amount = amount;
-			Weight = 1.0;
+			Weight = 0.2;
 		}
 
 		public AxleGears( Serial serial ) : base( serial )
