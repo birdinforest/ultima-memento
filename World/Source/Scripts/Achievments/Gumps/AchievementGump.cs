@@ -131,7 +131,11 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             AddBackground(277, CARD_HEIGHT + (index * HEIGHT_PER_CARD), 727, 73, 3600);
             AddLabel(350, 15 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 49, title);
             if (ac.ItemIcon > 0)
-                AddItem(294, 25 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), ac.ItemIcon);
+            {
+                Rectangle2D bounds = ItemBounds.Table[ac.ItemIcon];
+                int y = 35 + CARD_HEIGHT + (index * HEIGHT_PER_CARD);
+                AddItem(321 - bounds.Width / 2 - bounds.X , y - bounds.Height / 2 - bounds.Y, ac.ItemIcon);
+            }
 
             if (!isComplete && 1 < ac.CompletionTotal)
             {
