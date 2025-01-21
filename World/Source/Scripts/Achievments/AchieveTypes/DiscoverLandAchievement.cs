@@ -1,4 +1,5 @@
 using Server;
+using Server.Mobiles;
 using System;
 
 namespace Scripts.Mythik.Systems.Achievements
@@ -14,7 +15,22 @@ namespace Scripts.Mythik.Systems.Achievements
             Land = land;
             CompletionTotal = 1;
             CustomEventSink.LandChanged += EventSink_OnLandChanged;
+            EventSink.Login += EventSink_OnLogin; // Ensure Players always have their Land discovered
         }
+
+        private void EventSink_OnLogin(LoginEventArgs e)
+        {
+            if (e == null || e.Mobile == null) return;
+
+            var player = e.Mobile as PlayerMobile;
+            if (player == null) return;
+
+            if (player.Land == Land)
+            {
+                AchievementSystem.SetAchievementStatus(player, this, 1);
+            }
+        }
+
 
         private void EventSink_OnLandChanged(LandChangedArgs e)
         {
