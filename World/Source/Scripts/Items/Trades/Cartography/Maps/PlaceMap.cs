@@ -34,7 +34,7 @@ namespace Server.Items
 				if ( Utility.Random(5) > 0 )
 					Name = "Map to " + Worlds.GetAreaEntrance( Utility.RandomMinMax(1,85), null, Map.Internal, out WorldMap, out WorldX, out WorldY );
 				else
-					Name = "Map to " + Worlds.GetTown( Utility.RandomMinMax(1,28), null, Map.Internal, out WorldMap, out WorldX, out WorldY );
+					Name = "Map to " + Worlds.GetTown( Utility.RandomMinMax(1,28), null, out WorldMap, out WorldX, out WorldY );
 			}
 		}
 

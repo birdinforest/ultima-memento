@@ -1021,11 +1021,12 @@ namespace Server.Misc
             return my_location;
         }
 
-        public static string GetTown( int exact, string zone, Map map, out Map place, out int x, out int y )
+        public static string GetTown( int exact, string zone, out Map place, out int x, out int y )
         {
 			// THIS RETURNS THE COORDINATES AND MAP OF THE DUNGEON ENTRANCE
 
 			Point3D loc = new Point3D(0, 0, 0);
+			Map map = Map.Internal;
 
 			if ( exact == 1 || zone == "the City of Britain" ){ loc = new Point3D(2999, 1063, 0); map = Map.Sosaria; zone = "the City of Britain"; }
 			else if ( exact == 2 || zone == "the City of Kuldara" ){ loc = new Point3D(6773, 1739, 20); map = Map.Sosaria; zone = "the City of Kuldara"; }

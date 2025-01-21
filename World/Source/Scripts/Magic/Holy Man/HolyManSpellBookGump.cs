@@ -163,7 +163,7 @@ namespace Server.Gumps
 
 				if ( page == 2 )
 				{
-					grav1 = Worlds.GetTown( 0, "the Village of Springvale", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the Village of Springvale", out placer_1, out xc_1, out yc_1 );
 					name1 = "Banish";
 					pity1 = "120";
 					skil1 = "60";
@@ -172,7 +172,7 @@ namespace Server.Gumps
 					text1 = text1 + "Sends demons and the dead back to the realms of hell.";
 					icon1 = 0x965;
 
-					grav2 = Worlds.GetTown( 0, "the Village of Whisper", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the Village of Whisper", out placer_2, out xc_2, out yc_2 );
 					name2 = "Dampen Spirit";
 					pity2 = "140";
 					skil2 = "70";
@@ -183,7 +183,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 3 )
 				{
-					grav1 = Worlds.GetTown( 0, "the City of Kuldara", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the City of Kuldara", out placer_1, out xc_1, out yc_1 );
 					name1 = "Enchant";
 					pity1 = "180";
 					skil1 = "90";
@@ -192,7 +192,7 @@ namespace Server.Gumps
 					text1 = text1 + "Temporarily imbues a weapon with holy powers.";
 					icon1 = 0x967;
 
-					grav2 = Worlds.GetTown( 0, "the City of Elidor", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the City of Elidor", out placer_2, out xc_2, out yc_2 );
 					name2 = "Hammer of Faith";
 					pity2 = "100";
 					skil2 = "50";
@@ -203,7 +203,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 4 )
 				{
-					grav1 = Worlds.GetTown( 0, "the City of Britain", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the City of Britain", out placer_1, out xc_1, out yc_1 );
 					name1 = "Heavenly Light";
 					pity1 = "20";
 					skil1 = "10";
@@ -212,7 +212,7 @@ namespace Server.Gumps
 					text1 = text1 + "Destroys the darkness, allowing for one to see better.";
 					icon1 = 0x969;
 
-					grav2 = Worlds.GetTown( 0, "the Town of Moon", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the Town of Moon", out placer_2, out xc_2, out yc_2 );
 					name2 = "Nourish";
 					pity2 = "20";
 					skil2 = "10";
@@ -223,7 +223,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 5 )
 				{
-					grav1 = Worlds.GetTown( 0, "the Town of Renika", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the Town of Renika", out placer_1, out xc_1, out yc_1 );
 					name1 = "Purge";
 					pity1 = "80";
 					skil1 = "40";
@@ -232,7 +232,7 @@ namespace Server.Gumps
 					text1 = text1 + "Removes curses and other ailing effects.";
 					icon1 = 0x96B;
 
-					grav2 = Worlds.GetTown( 0, "Greensky Village", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "Greensky Village", out placer_2, out xc_2, out yc_2 );
 					name2 = "Rebirth";
 					pity2 = "400";
 					skil2 = "80";
@@ -243,7 +243,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 6 )
 				{
-					grav1 = Worlds.GetTown( 0, "the Village of Grey", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the Village of Grey", out placer_1, out xc_1, out yc_1 );
 					name1 = "Sacred Boon";
 					pity1 = "40";
 					skil1 = "20";
@@ -252,7 +252,7 @@ namespace Server.Gumps
 					text1 = text1 + "Surrounds one with a holy aura that heals wounds much quicker.";
 					icon1 = 0x96E;
 
-					grav2 = Worlds.GetTown( 0, "the City of Montor", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the City of Montor", out placer_2, out xc_2, out yc_2 );
 					name2 = "Sanctify";
 					pity2 = "60";
 					skil2 = "30";
@@ -263,7 +263,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 7 )
 				{
-					grav1 = Worlds.GetTown( 0, "the Village of Islegem", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the Village of Islegem", out placer_1, out xc_1, out yc_1 );
 					name1 = "Seance";
 					pity1 = "120";
 					skil1 = "60";
@@ -272,7 +272,7 @@ namespace Server.Gumps
 					text1 = text1 + "Allows the priest to enter the realm of the dead, avoiding any harm.";
 					icon1 = 0x96F;
 
-					grav2 = Worlds.GetTown( 0, "the City of Lodoria", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the City of Lodoria", out placer_2, out xc_2, out yc_2 );
 					name2 = "Smite";
 					pity2 = "80";
 					skil2 = "40";
@@ -283,7 +283,7 @@ namespace Server.Gumps
 				}
 				else if ( page == 8 )
 				{
-					grav1 = Worlds.GetTown( 0, "the Town of Devil Guard", Map.Internal, out placer_1, out xc_1, out yc_1 );
+					grav1 = Worlds.GetTown( 0, "the Town of Devil Guard", out placer_1, out xc_1, out yc_1 );
 					name1 = "Touch of Life";
 					pity1 = "40";
 					skil1 = "20";
@@ -292,7 +292,7 @@ namespace Server.Gumps
 					text1 = text1 + "Restores health and stamina to the weary.";
 					icon1 = 0x971;
 
-					grav2 = Worlds.GetTown( 0, "the Village of Fawn", Map.Internal, out placer_2, out xc_2, out yc_2 );
+					grav2 = Worlds.GetTown( 0, "the Village of Fawn", out placer_2, out xc_2, out yc_2 );
 					name2 = "Trial by Fire";
 					pity2 = "500";
 					skil2 = "30";

@@ -248,7 +248,7 @@ namespace Server.Gumps
 				{
 					AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#308EB3>Not Learned</BASEFONT></BODY>", (bool)false, (bool)false);
 
-					string locale = Worlds.GetTown( 0, Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ), Map.Internal, out placer, out xc, out yc );
+					string locale = Worlds.GetTown( 0, Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ), out placer, out xc, out yc );
 
 					string hidden = "You can find the Jedi Holocron of " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 1 ) + " at " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ) + " in the " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 7 ) + ".";
 					hidden = hidden + " It is safely in the grave of a Jedi Master known as " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 8 ) + ", and it can be revealed by speaking their true name of '" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 4 ) + "'.<br><br>";
