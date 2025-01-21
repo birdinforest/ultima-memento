@@ -264,73 +264,140 @@ namespace Server.Items
 		public static string GetSpecialItem( int relic, int part )
 		{
 			string Part1 = "";
-			string Part2 = "";
-
 			switch ( relic )
 			{
-				case 1: Part1 = "Stonegate Castle"; Part2 = "heart of ash"; break;
-				case 2: Part1 = "the Vault of the Black Knight"; Part2 = "mystical wax"; break;
-				case 3: Part1 = "the Crypts of Dracula"; Part2 = "vampire teeth"; break;
-				case 4: Part1 = "the Lodoria Catacombs"; Part2 = "face of the ancient king"; break;
-				case 5: Part1 = "Dungeon Deceit"; Part2 = "wand of Talosh"; break;
-				case 6: Part1 = "Dungeon Despise"; Part2 = "head of Urg"; break;
-				case 7: Part1 = "Dungeon Destard"; Part2 = "flame of Dramulox"; break;
-				case 8: Part1 = "the City of Embers"; Part2 = "crown of Vorgol"; break;
-				case 9: Part1 = "Dungeon Hythloth"; Part2 = "claw of Saramon"; break;
-				case 10: Part1 = "the Ice Fiend Lair"; Part2 = "horn of the frozen hells"; break;
-				case 11: Part1 = "Dungeon Shame"; Part2 = "elemental salt"; break;
-				case 12: Part1 = "Terathan Keep"; Part2 = "eye of plagues"; break;
-				case 13: Part1 = "the Halls of Undermountain"; Part2 = "hair of the earth"; break;
-				case 14: Part1 = "the Volcanic Cave"; Part2 = "skull of Turlox"; break;
-				case 15: Part1 = "the Mausoleum"; Part2 = "tattered robe of Mezlo"; break;
-				case 16: Part1 = "the Tower of Brass"; Part2 = "blood of the forest"; break;
-				case 17: Part1 = "Vordo's Dungeon"; Part2 = "cinders of life"; break;
-				case 18: Part1 = "the Dragon's Maw"; Part2 = "crystal scales"; break;
-				case 19: Part1 = "the Ancient Pyramid"; Part2 = "chest of suffering"; break;
-				case 20: Part1 = "Dungeon Exodus"; Part2 = "whip from below"; break;
-				case 21: Part1 = "the Caverns of Poseidon"; Part2 = "scale of the sea"; break;
-				case 22: Part1 = "Dungeon Clues"; Part2 = "braclet of war"; break;
-				case 23: Part1 = "Dardin's Pit"; Part2 = "stump of the ancients"; break;
-				case 24: Part1 = "Dungeon Doom"; Part2 = "dark blood"; break;
-				case 25: Part1 = "the Fires of Hell"; Part2 = "firescale tooth"; break;
-				case 26: Part1 = "the Mines of Morinia"; Part2 = "ichor of Xthizx"; break;
-				case 27: Part1 = "the Perinian Depths"; Part2 = "heart of a vampire queen"; break;
-				case 28: Part1 = "the Dungeon of Time Awaits"; Part2 = "hourglass of ages"; break;
-				case 29: Part1 = "the Ancient Prison"; Part2 = "shackles of Saramak"; break;
-				case 30: Part1 = "the Cave of Fire"; Part2 = "mouth of embers"; break;
-				case 31: Part1 = "the Cave of Souls"; Part2 = "cowl of shadegloom"; break;
-				case 32: Part1 = "Dungeon Ankh"; Part2 = "wedding dress of virtue"; break;
-				case 33: Part1 = "Dungeon Bane"; Part2 = "lilly pad of the bog"; break;
-				case 34: Part1 = "Dungeon Hate"; Part2 = "immortal bones"; break;
-				case 35: Part1 = "Dungeon Scorn"; Part2 = "staff of scorn"; break;
-				case 36: Part1 = "Dungeon Torment"; Part2 = "mind of allurement"; break;
-				case 37: Part1 = "Dungeon Vile"; Part2 = "mask of the ghost"; break;
-				case 38: Part1 = "Dungeon Wicked"; Part2 = "dead venom flies"; break;
-				case 39: Part1 = "Dungeon Wrath"; Part2 = "branch of the reaper"; break;
-				case 40: Part1 = "the Flooded Temple"; Part2 = "ink of the deep"; break;
-				case 41: Part1 = "the Gargoyle Crypts"; Part2 = "amulet of the stygian abyss"; break;
-				case 42: Part1 = "the Serpent Sanctum"; Part2 = "skin of the guardian"; break;
-				case 43: Part1 = "the Tomb of the Fallen Wizard"; Part2 = "orb of the fallen wizard"; break;
-				case 44: Part1 = "the Blood Temple"; Part2 = "bleeding crystal"; break;
-				case 45: Part1 = "the Dungeon of the Mad Archmage"; Part2 = "jade idol of Nesfatiti"; break;
-				case 46: Part1 = "the Tombs"; Part2 = "scroll of Abraxus"; break;
-				case 47: Part1 = "the Dungeon of the Lich King"; Part2 = "sphere of the dark circle"; break;
-				case 48: Part1 = "the Forgotten Halls"; Part2 = "urn of Ulmarek's ashes"; break;
-				case 49: Part1 = "the Ice Queen Fortress"; Part2 = "crystal of everfrost"; break;
-				case 50: Part1 = "Dungeon Rock"; Part2 = "stone of the night gargoyle"; break;
-				case 51: Part1 = "the Scurvy Reef"; Part2 = "pearl of Neptune"; break;
-				case 52: Part1 = "the Undersea Castle"; Part2 = "Black Beard's brandy"; break;
-				case 53: Part1 = "the Tomb of Kazibal"; Part2 = "lamp of the desert"; break;
-				case 54: Part1 = "the Azure Castle"; Part2 = "azure dust"; break;
-				case 55: Part1 = "the Catacombs of Azerok"; Part2 = "skull of Azerok"; break;
-				case 56: Part1 = "Dungeon Covetous"; Part2 = "egg of the harpy hen"; break;
-				case 57: Part1 = "the Glacial Scar"; Part2 = "bone of the frost giant"; break;
-				case 58: Part1 = "the Temple of Osirus"; Part2 = "mind of silver"; break;
-				case 59: Part1 = "the Sanctum of Saltmarsh"; Part2 = "scale of Scarthis"; break;
+				case 1: Part1 = "Stonegate Castle"; break;
+				case 2: Part1 = "the Vault of the Black Knight"; break;
+				case 3: Part1 = "the Crypts of Dracula"; break;
+				case 4: Part1 = "the Lodoria Catacombs"; break;
+				case 5: Part1 = "Dungeon Deceit"; break;
+				case 6: Part1 = "Dungeon Despise"; break;
+				case 7: Part1 = "Dungeon Destard"; break;
+				case 8: Part1 = "the City of Embers"; break;
+				case 9: Part1 = "Dungeon Hythloth"; break;
+				case 10: Part1 = "the Ice Fiend Lair"; break;
+				case 11: Part1 = "Dungeon Shame"; break;
+				case 12: Part1 = "Terathan Keep"; break;
+				case 13: Part1 = "the Halls of Undermountain"; break;
+				case 14: Part1 = "the Volcanic Cave"; break;
+				case 15: Part1 = "the Mausoleum"; break;
+				case 16: Part1 = "the Tower of Brass"; break;
+				case 17: Part1 = "Vordo's Dungeon"; break;
+				case 18: Part1 = "the Dragon's Maw"; break;
+				case 19: Part1 = "the Ancient Pyramid"; break;
+				case 20: Part1 = "Dungeon Exodus"; break;
+				case 21: Part1 = "the Caverns of Poseidon"; break;
+				case 22: Part1 = "Dungeon Clues"; break;
+				case 23: Part1 = "Dardin's Pit"; break;
+				case 24: Part1 = "Dungeon Doom"; break;
+				case 25: Part1 = "the Fires of Hell"; break;
+				case 26: Part1 = "the Mines of Morinia"; break;
+				case 27: Part1 = "the Perinian Depths"; break;
+				case 28: Part1 = "the Dungeon of Time Awaits"; break;
+				case 29: Part1 = "the Ancient Prison"; break;
+				case 30: Part1 = "the Cave of Fire"; break;
+				case 31: Part1 = "the Cave of Souls"; break;
+				case 32: Part1 = "Dungeon Ankh"; break;
+				case 33: Part1 = "Dungeon Bane"; break;
+				case 34: Part1 = "Dungeon Hate"; break;
+				case 35: Part1 = "Dungeon Scorn"; break;
+				case 36: Part1 = "Dungeon Torment"; break;
+				case 37: Part1 = "Dungeon Vile"; break;
+				case 38: Part1 = "Dungeon Wicked"; break;
+				case 39: Part1 = "Dungeon Wrath"; break;
+				case 40: Part1 = "the Flooded Temple"; break;
+				case 41: Part1 = "the Gargoyle Crypts"; break;
+				case 42: Part1 = "the Serpent Sanctum"; break;
+				case 43: Part1 = "the Tomb of the Fallen Wizard"; break;
+				case 44: Part1 = "the Blood Temple"; break;
+				case 45: Part1 = "the Dungeon of the Mad Archmage"; break;
+				case 46: Part1 = "the Tombs"; break;
+				case 47: Part1 = "the Dungeon of the Lich King"; break;
+				case 48: Part1 = "the Forgotten Halls"; break;
+				case 49: Part1 = "the Ice Queen Fortress"; break;
+				case 50: Part1 = "Dungeon Rock"; break;
+				case 51: Part1 = "the Scurvy Reef"; break;
+				case 52: Part1 = "the Undersea Castle"; break;
+				case 53: Part1 = "the Tomb of Kazibal"; break;
+				case 54: Part1 = "the Azure Castle"; break;
+				case 55: Part1 = "the Catacombs of Azerok"; break;
+				case 56: Part1 = "Dungeon Covetous"; break;
+				case 57: Part1 = "the Glacial Scar"; break;
+				case 58: Part1 = "the Temple of Osirus"; break;
+				case 59: Part1 = "the Sanctum of Saltmarsh"; break;
 			}
 
-			if ( part > 0 ){ return Part2; }
+			if ( part > 0 ){ return GetRelicItem( Part1 ); }
+
 			return Part1;
+		}
+
+		public static string GetRelicItem( string name )
+		{
+			switch ( name )
+			{
+				case "Stonegate Castle": return "heart of ash";
+				case "the Vault of the Black Knight": return "mystical wax";
+				case "the Crypts of Dracula": return "vampire teeth";
+				case "the Lodoria Catacombs": return "face of the ancient king";
+				case "Dungeon Deceit": return "wand of Talosh";
+				case "Dungeon Despise": return "head of Urg";
+				case "Dungeon Destard": return "flame of Dramulox";
+				case "the City of Embers": return "crown of Vorgol";
+				case "Dungeon Hythloth": return "claw of Saramon";
+				case "the Ice Fiend Lair": return "horn of the frozen hells";
+				case "Dungeon Shame": return "elemental salt";
+				case "Terathan Keep": return "eye of plagues";
+				case "the Halls of Undermountain": return "hair of the earth";
+				case "the Volcanic Cave": return "skull of Turlox";
+				case "the Mausoleum": return "tattered robe of Mezlo";
+				case "the Tower of Brass": return "blood of the forest";
+				case "Vordo's Dungeon": return "cinders of life";
+				case "the Dragon's Maw": return "crystal scales";
+				case "the Ancient Pyramid": return "chest of suffering";
+				case "Dungeon Exodus": return "whip from below";
+				case "the Caverns of Poseidon": return "scale of the sea";
+				case "Dungeon Clues": return "braclet of war";
+				case "Dardin's Pit": return "stump of the ancients";
+				case "Dungeon Doom": return "dark blood";
+				case "the Fires of Hell": return "firescale tooth";
+				case "the Mines of Morinia": return "ichor of Xthizx";
+				case "the Perinian Depths": return "heart of a vampire queen";
+				case "the Dungeon of Time Awaits": return "hourglass of ages";
+				case "the Ancient Prison": return "shackles of Saramak";
+				case "the Cave of Fire": return "mouth of embers";
+				case "the Cave of Souls": return "cowl of shadegloom";
+				case "Dungeon Ankh": return "wedding dress of virtue";
+				case "Dungeon Bane": return "lilly pad of the bog";
+				case "Dungeon Hate": return "immortal bones";
+				case "Dungeon Scorn": return "staff of scorn";
+				case "Dungeon Torment": return "mind of allurement";
+				case "Dungeon Vile": return "mask of the ghost";
+				case "Dungeon Wicked": return "dead venom flies";
+				case "Dungeon Wrath": return "branch of the reaper";
+				case "the Flooded Temple": return "ink of the deep";
+				case "the Gargoyle Crypts": return "amulet of the stygian abyss";
+				case "the Serpent Sanctum": return "skin of the guardian";
+				case "the Tomb of the Fallen Wizard": return "orb of the fallen wizard";
+				case "the Blood Temple": return "bleeding crystal";
+				case "the Dungeon of the Mad Archmage": return "jade idol of Nesfatiti";
+				case "the Tombs": return "scroll of Abraxus";
+				case "the Dungeon of the Lich King": return "sphere of the dark circle";
+				case "the Forgotten Halls": return "urn of Ulmarek's ashes";
+				case "the Ice Queen Fortress": return "crystal of everfrost";
+				case "Dungeon Rock": return "stone of the night gargoyle";
+				case "the Scurvy Reef": return "pearl of Neptune";
+				case "the Undersea Castle": return "Black Beard's brandy";
+				case "the Tomb of Kazibal": return "lamp of the desert";
+				case "the Azure Castle": return "azure dust";
+				case "the Catacombs of Azerok": return "skull of Azerok";
+				case "Dungeon Covetous": return "egg of the harpy hen";
+				case "the Glacial Scar": return "bone of the frost giant";
+				case "the Temple of Osirus": return "mind of silver";
+				case "the Sanctum of Saltmarsh": return "scale of Scarthis";
+			}
+
+			return "";
 		}
 
 		public override void OnDoubleClick( Mobile e )
