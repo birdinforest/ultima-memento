@@ -46,7 +46,7 @@ namespace Server.Items
 				AddImage(0, 0, 11415, Server.Misc.PlayerSettings.GetGumpHue( from ));
 
 				AddButton(1367, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 16, 14, 1330, 21, @"<BODY><BASEFONT Color=#DC7676>DUNGEON MASTERS GUIDE - This Book Contains a Listing of Almost All of the Dungeons in the " + MySettings.S_ServerName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 16, 14, 1330, 21, @"<BODY><BASEFONT Color=#DC7676>DUNGEON MASTERS GUIDE - This Book Contains a Listing of Almost All of the Dungeons in " + MySettings.S_ServerName + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				string world = null;
 				string location = null;
