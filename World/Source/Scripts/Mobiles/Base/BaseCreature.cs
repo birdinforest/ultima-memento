@@ -6428,7 +6428,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public bool DispelChecks( Mobile m )
+		public bool DispelChecks( Mobile m, bool fromSpell )
 		{
 			double DispelChance = 0.75; // 75% chance to dispel at gm magery
 
@@ -6436,19 +6436,19 @@ namespace Server.Mobiles
 
 			if ( !( magery > Utility.RandomDouble() ) )
 			{
-				if (magery > 0 && MyServerSettings.EnableDispelLogging())
+				if (magery > 0 && MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery)");
 				return false;
 			}
 			else if ( ( this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81 ) )
 			{
-				if (MyServerSettings.EnableDispelLogging())
+				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery/Necro)");
 				return false;
 			}
 			else if ( this.Mana < 40 )
 			{
-				if (MyServerSettings.EnableDispelLogging())
+				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Mana)");
 				return false;
 			}
@@ -6473,7 +6473,7 @@ namespace Server.Mobiles
 				if (increment)
 				{
 					dispelFailureChance += 50;
-					if (MyServerSettings.EnableDispelLogging())
+					if (MyServerSettings.EnableDispelLogging() && !fromSpell)
 						m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel chance increased (Slayer)");
 				}
 			}
@@ -6483,17 +6483,20 @@ namespace Server.Mobiles
 
 			if (dispelFailureChance >= Utility.RandomMinMax( 1, 100 ) )
 			{
-				if (MyServerSettings.EnableDispelLogging())
+				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Failed)");
 				return false;
 			}
+		
+			if (MyServerSettings.EnableDispelLogging() && !fromSpell)
+				m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel incoming???");
 
 			return true;
 		}
 
 		public virtual void Dispel( Mobile m )
 		{
-			if ( DispelChecks( m ) )
+			if ( DispelChecks( m, false ) )
 			{
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 5042 );
 				Effects.PlaySound( m, m.Map, 0x201 );

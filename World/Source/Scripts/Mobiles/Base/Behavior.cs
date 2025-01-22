@@ -9549,7 +9549,7 @@ namespace Server.Mobiles
 		{
 			if( !SmartAI )
 			{
-				if( m_Mobile.DispelChecks( toDispel ) )
+				if( m_Mobile.DispelChecks( toDispel, true ) )
 					return new DispelSpell( m_Mobile, null );
 
 				return ChooseSpell( toDispel );
