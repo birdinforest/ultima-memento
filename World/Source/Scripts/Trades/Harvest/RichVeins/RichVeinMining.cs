@@ -1,4 +1,4 @@
-using Server.Items;
+﻿using Server.Items;
 using Server.Mobiles;
 using System;
 
@@ -175,9 +175,9 @@ namespace Server.Engines.Harvest
 
         public override void OnHarvestFinished(Mobile from, Item tool, HarvestDefinition def, HarvestVein vein, HarvestBank bank, HarvestResource resource, object harvested)
         {
-            base.OnHarvestFinished(from, tool, def, vein, bank, resource, harvested);
+            base.OnHarvestFinished(from, tool, def, vein, bank, resource, harvested); //
 
-            if (Pickaxe.IsGargoylePickaxe(tool) && 0.1 > Utility.RandomDouble() && def == m_rareNodeDefinition)
+            if (Pickaxe.IsGargoylePickaxe(tool) && def == m_rareNodeDefinition && 0.1 > Utility.RandomDouble())
             {
                 HarvestResource res = vein.PrimaryResource;
                 if (res == resource && res.Types.Length >= 3)
