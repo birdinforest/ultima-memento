@@ -6481,7 +6481,8 @@ namespace Server.Mobiles
 			if ( dispelFailureChance > 99 )
 				dispelFailureChance = 99;
 
-			if (dispelFailureChance >= Utility.RandomMinMax( 1, 100 ) )
+			var successChance =  Utility.RandomMinMax( 1, 100 );
+			if (dispelFailureChance >= successChance )
 			{
 				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Failed)");
@@ -6489,7 +6490,7 @@ namespace Server.Mobiles
 			}
 		
 			if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-				m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel incoming???");
+				m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, string.Format("Dispel incoming ({0} > {1})", successChance, dispelFailureChance));
 
 			return true;
 		}
