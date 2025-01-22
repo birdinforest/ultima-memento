@@ -593,5 +593,10 @@ namespace Server
 
 			return gold;
 		}
+
+		public static bool EnableDispelLogging()
+		{
+			return true;
+		}
 	}
 }

@@ -6359,8 +6359,13 @@ namespace Server.Mobiles
 			if ( defender is BaseCreature )
 			{
 				BaseCreature bc = (BaseCreature)defender;
-				if ( bc.IsDispellable && ( Utility.RandomMinMax(0,50) + attacker.AutoDispelChance ) > bc.DispelDifficulty )
-					return true;
+				if ( bc.IsDispellable )
+				{
+					if ( ( Utility.RandomMinMax(0,50) + attacker.AutoDispelChance ) > bc.DispelDifficulty ) return true;
+
+					if (MyServerSettings.EnableDispelLogging())
+						defender.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (DispelDifficulty)");
+				}
 			}
 			return false;
 		}
@@ -6427,39 +6432,63 @@ namespace Server.Mobiles
 		{
 			double DispelChance = 0.75; // 75% chance to dispel at gm magery
 
-			bool willDispel = true;
-			int nope = MySettings.S_DispelFailure;
 			double magery = this.Skills[ SkillName.Magery ].Value * DispelChance * 0.01;
 
 			if ( !( magery > Utility.RandomDouble() ) )
-				willDispel = false;
-			else if ( this.Mana < 40 || ( this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81 ) )
-				willDispel = false;
-			else if ( MySettings.S_DispelFailure > 0 )
 			{
-				if ( nope < 10 )
-					nope = 10;
-				if ( nope > 90 )
-					nope = 90;
+				if (magery > 0 && MyServerSettings.EnableDispelLogging())
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery)");
+				return false;
+			}
+			else if ( ( this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81 ) )
+			{
+				if (MyServerSettings.EnableDispelLogging())
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery/Necro)");
+				return false;
+			}
+			else if ( this.Mana < 40 )
+			{
+				if (MyServerSettings.EnableDispelLogging())
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Mana)");
+				return false;
+			}
+
+			int dispelFailureChance = MySettings.S_DispelFailure;
+			if ( dispelFailureChance > 0 )
+			{
+				if ( dispelFailureChance < 10 ) dispelFailureChance = 10;
+				if ( dispelFailureChance > 90 ) dispelFailureChance = 90;
 			}
 
 			if ( m != null && m is BaseCreature )
 			{
 				BaseCreature bc = (BaseCreature)m;
 
+				bool increment = false;
 				if ( bc.Slayer != SlayerName.None && (SlayerGroup.GetEntryByName( bc.Slayer )).Slays( this ) && Utility.Random(100) > 0 )
-					nope += 50;
+					increment = true;
 				else if ( bc.Slayer2 != SlayerName.None && (SlayerGroup.GetEntryByName( bc.Slayer2 )).Slays( this ) && Utility.Random(100) > 0 )
-					nope += 50;
+					increment = true;
+				
+				if (increment)
+				{
+					dispelFailureChance += 50;
+					if (MyServerSettings.EnableDispelLogging())
+						m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel chance increased (Slayer)");
+				}
 			}
 
-			if ( nope > 99 )
-				nope = 99;
+			if ( dispelFailureChance > 99 )
+				dispelFailureChance = 99;
 
-			if ( nope >= Utility.RandomMinMax( 1, 100 ) )
-				willDispel = false;
+			if (dispelFailureChance >= Utility.RandomMinMax( 1, 100 ) )
+			{
+				if (MyServerSettings.EnableDispelLogging())
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Failed)");
+				return false;
+			}
 
-			return willDispel;
+			return true;
 		}
 
 		public virtual void Dispel( Mobile m )
