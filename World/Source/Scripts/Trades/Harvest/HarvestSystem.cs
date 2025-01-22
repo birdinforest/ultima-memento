@@ -492,6 +492,7 @@ namespace Server.Engines.Harvest
 		{
 			if (!MySettings.S_AutoRepeatHarvesting) return;
 			if (tool.Deleted) return;
+			if (from.FindItemOnLayer(tool.Layer) != tool) return; // Make sure it's still equipped
 
 			Timer.DelayCall(TimeSpan.FromMilliseconds(500), () => StartHarvesting(from, tool, harvested));
 		}
