@@ -110,6 +110,23 @@ namespace Server.Engines.Harvest
             Array.Sort(m_RareNodeItemIds);
         }
 
+        public override bool CheckHarvest(Mobile from, Item tool, HarvestDefinition def, object toHarvest)
+        {
+            if (!base.CheckHarvest(from, tool, def, toHarvest))
+                return false;
+
+            if (toHarvest is RichVeinMineable)
+            {
+                if (from.Skills[SkillName.Mining].Base < 65)
+                {
+                    from.SendMessage("That looks beyond your skill level.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public override bool GetHarvestDetails(Mobile from, Item tool, object toHarvest, out int tileID, out Map map, out Point3D loc)
         {
             if (toHarvest is RichVeinMineable)
