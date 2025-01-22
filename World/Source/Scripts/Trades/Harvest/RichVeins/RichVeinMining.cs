@@ -1,4 +1,4 @@
-﻿using Server.Items;
+using Server.Items;
 using Server.Mobiles;
 using System;
 
@@ -147,7 +147,7 @@ namespace Server.Engines.Harvest
                 if (veinIndex >= 0 && veinIndex < (def.Veins.Length - 1))
                     return def.Veins[veinIndex + 1];
             }
-            else if (from.HarvestOrdinary && def == m_rareNodeDefinition)
+            else if ((from.HarvestOrdinary || tool is TrainingShovel) && def == m_rareNodeDefinition)
             {
                 int veinIndex = Array.IndexOf(def.Veins, vein);
                 return def.Veins[0];
