@@ -8,6 +8,8 @@ namespace Server.Mobiles
 	[CorpseName( "an elemental corpse" )]
 	public class CopperElemental : BaseCreature
 	{
+		private int m_RocksAmount = 0;
+
 		public override double DispelDifficulty{ get{ return 120.5; } }
 		public override double DispelFocus{ get{ return 45.0; } }
 
@@ -25,7 +27,7 @@ namespace Server.Mobiles
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 29 ); }
 
 		[Constructable]
-		public CopperElemental() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
+		public CopperElemental( int rocksAmount ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "a copper elemental";
 			Body = Utility.RandomList( 14, 446, 974 );
@@ -63,6 +65,13 @@ namespace Server.Mobiles
 				Body = 821;
 				BeefUp( (BaseCreature)this, 2 );
 			}
+
+			m_RocksAmount = rocksAmount; 
+		}
+
+		[Constructable]
+		public CopperElemental() : this( Utility.RandomMinMax( 5, 10 ) )
+		{
 		}
 
 		public override void GenerateLoot()
@@ -74,7 +83,7 @@ namespace Server.Mobiles
 		public override bool BleedImmune{ get{ return true; } }
 		public override bool AutoDispel{ get{ return true; } }
 		public override int TreasureMapLevel{ get{ return 1; } }
-		public override int Rocks{ get{ return Utility.RandomMinMax( 5, 10 ); } }
+		public override int Rocks{ get{ return m_RocksAmount; } }
 		public override RockType RockType{ get{ return ResourceRocks(); } }
 
 		public override void CheckReflect( Mobile caster, ref bool reflect )
@@ -90,13 +99,26 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 );
+			writer.Write( (int) 1 );
+			
+			writer.Write(m_RocksAmount);
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+			switch( version )
+			{
+				case 1:
+					m_RocksAmount = reader.ReadInt();
+					goto case 0;
+
+				case 0:
+					if ( version == 0 )
+						m_RocksAmount = Utility.RandomMinMax( 5, 10 );
+					break;
+			}
 		}
 	}
 }
