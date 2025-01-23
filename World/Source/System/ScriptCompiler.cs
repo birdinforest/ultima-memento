@@ -214,8 +214,7 @@ namespace Server
 
 			DeleteFiles( "Data*.bin" );
 
-			StreamWriter writer = new StreamWriter( "Data/Data.ref" );
-
+			using( StreamWriter writer = new StreamWriter( "Data/Data.ref" ) )
 			using ( CSharpCodeProvider provider = new CSharpCodeProvider() )
 			{
 				string path = GetUnusedPath( "Data" );
