@@ -113,7 +113,7 @@ namespace Scripts.Mythik.Systems.Achievements
         private static void LoadData()
         {
             Persistence.Deserialize(
-                "Saves//Achievements.bin",
+                "Saves//Achievements//Achievements.bin",
                 reader =>
                 {
                     int count = reader.ReadInt();
@@ -148,7 +148,7 @@ namespace Scripts.Mythik.Systems.Achievements
         private static void EventSink_WorldSave(WorldSaveEventArgs e)
         {
             Persistence.Serialize(
-                "Saves//Achievements.bin",
+                "Saves//Achievements//Achievements.bin",
                 writer =>
                 {
                     writer.Write(m_pointsTotal.Count);
