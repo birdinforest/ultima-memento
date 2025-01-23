@@ -1089,8 +1089,8 @@ namespace Server.Items
 				case CraftResource.Dwarven:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 2,
-						Slayer = 4,
+						Slayer2 = SlayerName.OrcSlaying,
+						Slayer = SlayerName.OgreTrashing,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_DefendChance = 3,
@@ -1100,7 +1100,7 @@ namespace Server.Items
 				case CraftResource.Agrinium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 23,
+						Slayer2 = SlayerName.EarthShatter,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_DefendChance = 3,
@@ -1113,7 +1113,7 @@ namespace Server.Items
 				case CraftResource.Beskar:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 4,
+						Slayer2 = SlayerName.OgreTrashing,
 						Skill5 = 45,
 						Skill5Val = 1,
 						Skill4 = 43,
@@ -1128,7 +1128,7 @@ namespace Server.Items
 				case CraftResource.Carbonite:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 3,
+						Slayer2 = SlayerName.TrollSlaughter,
 						Skill5 = 2,
 						Skill5Val = 1,
 						Skill4 = 23,
@@ -1143,7 +1143,7 @@ namespace Server.Items
 				case CraftResource.Cortosis:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 27,
+						Slayer2 = SlayerName.WizardSlayer,
 						Skill5 = 1,
 						Skill5Val = 2,
 						AosAttribute_DefendChance = 3,
@@ -1155,7 +1155,7 @@ namespace Server.Items
 				case CraftResource.Durasteel:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 32,
+						Slayer2 = SlayerName.GolemDestruction,
 						Skill5 = 99,
 						Skill5Val = 1,
 						Skill4 = 48,
@@ -1173,7 +1173,7 @@ namespace Server.Items
 				case CraftResource.Durite:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 31,
+						Slayer2 = SlayerName.GiantKiller,
 						Skill5 = 6,
 						Skill5Val = 1,
 						Skill4 = 8,
@@ -1187,7 +1187,7 @@ namespace Server.Items
 				case CraftResource.Farium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 20,
+						Slayer2 = SlayerName.WaterDissipation,
 						Skill5 = 15,
 						Skill5Val = 1,
 						Skill4 = 42,
@@ -1201,7 +1201,7 @@ namespace Server.Items
 				case CraftResource.Laminasteel:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 33,
+						Slayer2 = SlayerName.WeedRuin,
 						Skill5 = 3,
 						Skill5Val = 1,
 						Skill4 = 4,
@@ -1214,7 +1214,7 @@ namespace Server.Items
 				case CraftResource.Neuranium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 6,
+						Slayer2 = SlayerName.DragonSlaying,
 						Skill5 = 31,
 						Skill5Val = 1,
 						Skill4 = 33,
@@ -1229,7 +1229,7 @@ namespace Server.Items
 				case CraftResource.Phrik:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 35,
+						Slayer2 = SlayerName.Fey,
 						Skill5 = 55,
 						Skill5Val = 1,
 						Skill4 = 21,
@@ -1248,7 +1248,7 @@ namespace Server.Items
 				case CraftResource.Promethium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 9,
+						Slayer2 = SlayerName.LizardmanSlaughter,
 						Skill5 = 40,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 1,
@@ -1259,7 +1259,7 @@ namespace Server.Items
 				case CraftResource.Quadranium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 28,
+						Slayer2 = SlayerName.AvianHunter,
 						Skill5 = 28,
 						Skill5Val = 1,
 						Skill4 = 27,
@@ -1272,7 +1272,7 @@ namespace Server.Items
 				case CraftResource.Songsteel:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 21,
+						Slayer2 = SlayerName.Vacuum,
 						Skill5 = 35,
 						Skill5Val = 1,
 						Skill4 = 39,
@@ -1287,7 +1287,7 @@ namespace Server.Items
 				case CraftResource.Titanium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 18,
+						Slayer2 = SlayerName.ArachnidDoom,
 						Skill5 = 99,
 						Skill5Val = 1,
 						Skill4 = 48,
@@ -1302,7 +1302,7 @@ namespace Server.Items
 				case CraftResource.Trimantium:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 34,
+						Slayer2 = SlayerName.NeptunesBane,
 						Skill5 = 19,
 						Skill5Val = 2,
 						AosAttribute_BonusHits = 3,
@@ -1312,7 +1312,7 @@ namespace Server.Items
 				case CraftResource.Xonolite:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 29,
+						Slayer2 = SlayerName.SlimyScourge,
 						Skill5 = 36,
 						Skill5Val = 1,
 						Skill4 = 44,
@@ -1476,7 +1476,7 @@ namespace Server.Items
 				case CraftResource.GhoulishSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 5,
+						Slayer2 = SlayerName.Repond,
 						Skill5 = 99,
 						Skill5Val = 15,
 						AosAttribute_RegenHits = 2,
@@ -1491,7 +1491,7 @@ namespace Server.Items
 				case CraftResource.WyrmSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 6,
+						Slayer2 = SlayerName.DragonSlaying,
 						Skill5 = 99,
 						Skill5Val = 15,
 						AosAttribute_DefendChance = 3,
@@ -1504,8 +1504,8 @@ namespace Server.Items
 				case CraftResource.HolySpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 1,
-						Slayer = 14,
+						Slayer2 = SlayerName.Silver,
+						Slayer = SlayerName.Exorcism,
 						Skill5 = 99,
 						Skill5Val = 20,
 						AosAttribute_RegenHits = 2,
@@ -1519,7 +1519,7 @@ namespace Server.Items
 				case CraftResource.BloodlessSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 5,
+						Slayer2 = SlayerName.Repond,
 						Skill5 = 36,
 						Skill5Val = 5,
 						Skill4 = 22,
@@ -1538,8 +1538,8 @@ namespace Server.Items
 				case CraftResource.GildedSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 28,
-						Slayer = 30,
+						Slayer2 = SlayerName.AvianHunter,
+						Slayer = SlayerName.AnimalHunter,
 						Skill5 = 99,
 						Skill5Val = 10,
 						Skill4 = 48,
@@ -1552,7 +1552,7 @@ namespace Server.Items
 				case CraftResource.DemilichSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 5,
+						Slayer2 = SlayerName.Repond,
 						Skill5 = 99,
 						Skill5Val = 10,
 						AosAttribute_RegenHits = 1,
@@ -1566,7 +1566,7 @@ namespace Server.Items
 				case CraftResource.WintrySpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 19,
+						Slayer2 = SlayerName.FlameDousing,
 						Skill5 = 99,
 						Skill5Val = 5,
 						AosAttribute_WeaponDamage = 8,
@@ -1580,8 +1580,8 @@ namespace Server.Items
 				case CraftResource.ExodusSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 32,
-						Slayer = 13,
+						Slayer2 = SlayerName.GolemDestruction,
+						Slayer = SlayerName.BalronDamnation,
 						Skill5 = 99,
 						Skill5Val = 15,
 						Skill4 = 32,
@@ -1609,7 +1609,7 @@ namespace Server.Items
 				case CraftResource.TurtleSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 34,
+						Slayer2 = SlayerName.NeptunesBane,
 						AosAttribute_DefendChance = 5,
 						AosAttribute_ReflectPhysical = 3,
 						AosWeaponAttribute_HitFireball = 20,
@@ -1633,7 +1633,7 @@ namespace Server.Items
 				case CraftResource.Adesote:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 35,
+						Slayer2 = SlayerName.Fey,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 17,
@@ -1648,7 +1648,7 @@ namespace Server.Items
 				case CraftResource.Biomesh:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 16,
+						Slayer2 = SlayerName.SpidersDeath,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 21,
@@ -1663,7 +1663,7 @@ namespace Server.Items
 				case CraftResource.Cerlin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 21,
+						Slayer2 = SlayerName.Vacuum,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 13,
@@ -1677,7 +1677,7 @@ namespace Server.Items
 				case CraftResource.Durafiber:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 2,
+						Slayer2 = SlayerName.OrcSlaying,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 23,
@@ -1692,7 +1692,7 @@ namespace Server.Items
 				case CraftResource.Flexicris:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 27,
+						Slayer2 = SlayerName.WizardSlayer,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 27,
@@ -1708,7 +1708,7 @@ namespace Server.Items
 				case CraftResource.Hypercloth:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 29,
+						Slayer2 = SlayerName.SlimyScourge,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 2,
@@ -1721,7 +1721,7 @@ namespace Server.Items
 				case CraftResource.Nylar:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 11,
+						Slayer2 = SlayerName.DaemonDismissal,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 50,
@@ -1734,7 +1734,7 @@ namespace Server.Items
 				case CraftResource.Nylonite:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 4,
+						Slayer2 = SlayerName.OgreTrashing,
 						Skill5 = 25,
 						Skill5Val = 2,
 						Skill4 = 46,
@@ -1748,7 +1748,7 @@ namespace Server.Items
 				case CraftResource.Polyfiber:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 3,
+						Slayer2 = SlayerName.TrollSlaughter,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 52,
@@ -1761,7 +1761,7 @@ namespace Server.Items
 				case CraftResource.Syncloth:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 23,
+						Slayer2 = SlayerName.EarthShatter,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 6,
@@ -1777,7 +1777,7 @@ namespace Server.Items
 				case CraftResource.Thermoweave:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 32,
+						Slayer2 = SlayerName.GolemDestruction,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 15,
@@ -1839,7 +1839,7 @@ namespace Server.Items
 				case CraftResource.BorlTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 23,
+						Slayer2 = SlayerName.EarthShatter,
 						Skill5 = 15,
 						Skill5Val = 2,
 						AosAttribute_RegenStam = 1,
@@ -1851,7 +1851,7 @@ namespace Server.Items
 				case CraftResource.CosianTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 33,
+						Slayer2 = SlayerName.WeedRuin,
 						Skill5 = 23,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 1,
@@ -1862,7 +1862,7 @@ namespace Server.Items
 				case CraftResource.GreelTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 12,
+						Slayer2 = SlayerName.GargoylesFoe,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_BonusHits = 3,
@@ -1874,7 +1874,7 @@ namespace Server.Items
 				case CraftResource.JaporTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 15,
+						Slayer2 = SlayerName.Ophidian,
 						Skill5 = 19,
 						Skill5Val = 2,
 						AosAttribute_BonusDex = 1,
@@ -1886,7 +1886,7 @@ namespace Server.Items
 				case CraftResource.KyshyyykTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 17,
+						Slayer2 = SlayerName.ScorpionsBane,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_BonusStr = 1,
@@ -1899,7 +1899,7 @@ namespace Server.Items
 				case CraftResource.LaroonTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 7,
+						Slayer2 = SlayerName.Terathan,
 						Skill5 = 44,
 						Skill5Val = 2,
 						AosAttribute_BonusMana = 3,
@@ -1916,7 +1916,7 @@ namespace Server.Items
 				case CraftResource.TeejTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 8,
+						Slayer2 = SlayerName.SnakesBane,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_BonusHits = 2,
@@ -1931,7 +1931,7 @@ namespace Server.Items
 				case CraftResource.VeshokTree:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 25,
+						Slayer2 = SlayerName.SummerWind,
 						Skill5 = 22,
 						Skill5Val = 2,
 						AosAttribute_BonusInt = 1,
@@ -1969,7 +1969,7 @@ namespace Server.Items
 				case CraftResource.ArcticFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 19,
+						Slayer2 = SlayerName.FlameDousing,
 						AosAttribute_RegenStam = 1,
 						AosAttribute_BonusStr = 1,
 						AosAttribute_EnhancePotions = 7,
@@ -1978,7 +1978,7 @@ namespace Server.Items
 				case CraftResource.PyreFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 20,
+						Slayer2 = SlayerName.WaterDissipation,
 						AosAttribute_RegenStam = 1,
 						AosAttribute_BonusStr = 1,
 						AosAttribute_EnhancePotions = 7,
@@ -1988,7 +1988,7 @@ namespace Server.Items
 				case CraftResource.VenomousFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 22,
+						Slayer2 = SlayerName.ElementalHealth,
 						Skill5 = 40,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 1,
@@ -2000,7 +2000,7 @@ namespace Server.Items
 				case CraftResource.MysteriousFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 27,
+						Slayer2 = SlayerName.WizardSlayer,
 						Skill5 = 33,
 						Skill5Val = 2,
 						Skill4 = 32,
@@ -2024,7 +2024,7 @@ namespace Server.Items
 				case CraftResource.VileFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 5,
+						Slayer2 = SlayerName.Repond,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 36,
@@ -2045,7 +2045,7 @@ namespace Server.Items
 				case CraftResource.DivineFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 1,
+						Slayer2 = SlayerName.Silver,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 13,
@@ -2070,7 +2070,7 @@ namespace Server.Items
 				case CraftResource.FiendishFabric:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 14,
+						Slayer2 = SlayerName.Exorcism,
 						Skill5 = 99,
 						Skill5Val = 4,
 						Skill4 = 32,
@@ -2093,7 +2093,7 @@ namespace Server.Items
 				case CraftResource.AmethystBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 32,
+						Slayer2 = SlayerName.GolemDestruction,
 						Skill5 = 38,
 						Skill5Val = 2,
 						Skill4 = 48,
@@ -2105,7 +2105,7 @@ namespace Server.Items
 				case CraftResource.EmeraldBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 33,
+						Slayer2 = SlayerName.WeedRuin,
 						Skill5 = 40,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 1,
@@ -2119,7 +2119,7 @@ namespace Server.Items
 				case CraftResource.GarnetBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 22,
+						Slayer2 = SlayerName.ElementalHealth,
 						AosAttribute_RegenMana = 2,
 						AosAttribute_BonusInt = 2,
 						AosAttribute_SpellDamage = 2,
@@ -2133,7 +2133,7 @@ namespace Server.Items
 				case CraftResource.IceBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 19,
+						Slayer2 = SlayerName.FlameDousing,
 						AosAttribute_RegenStam = 2,
 						AosAttribute_DefendChance = 5,
 						AosAttribute_AttackChance = 5,
@@ -2144,7 +2144,7 @@ namespace Server.Items
 				case CraftResource.JadeBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 22,
+						Slayer2 = SlayerName.ElementalHealth,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 9,
@@ -2158,8 +2158,8 @@ namespace Server.Items
 				case CraftResource.MarbleBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 23,
-						Slayer = 32,
+						Slayer2 = SlayerName.EarthShatter,
+						Slayer = SlayerName.GolemDestruction,
 						Skill5 = 99,
 						Skill5Val = 3,
 						AosAttribute_DefendChance = 7,
@@ -2170,8 +2170,8 @@ namespace Server.Items
 				case CraftResource.OnyxBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 31,
-						Slayer = 5,
+						Slayer2 = SlayerName.GiantKiller,
+						Slayer = SlayerName.Repond,
 						Skill5 = 36,
 						Skill5Val = 2,
 						AosAttribute_RegenStam = 2,
@@ -2193,7 +2193,7 @@ namespace Server.Items
 				case CraftResource.QuartzBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 20,
+						Slayer2 = SlayerName.WaterDissipation,
 						AosAttribute_DefendChance = 5,
 						AosAttribute_AttackChance = 8,
 						AosAttribute_BonusDex = 3,
@@ -2202,7 +2202,7 @@ namespace Server.Items
 				case CraftResource.RubyBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 24,
+						Slayer2 = SlayerName.BloodDrinking,
 						AosAttribute_DefendChance = 7,
 						AosAttribute_AttackChance = 7,
 						AosAttribute_BonusStr = 2,
@@ -2212,7 +2212,7 @@ namespace Server.Items
 				case CraftResource.SapphireBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 28,
+						Slayer2 = SlayerName.AvianHunter,
 						Skill5 = 17,
 						Skill5Val = 1,
 						Skill4 = 31,
@@ -2231,7 +2231,7 @@ namespace Server.Items
 				case CraftResource.SilverBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 1,
+						Slayer2 = SlayerName.Silver,
 						Skill5 = 13,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 2,
@@ -2244,7 +2244,7 @@ namespace Server.Items
 				case CraftResource.SpinelBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 35,
+						Slayer2 = SlayerName.Fey,
 						AosAttribute_RegenMana = 2,
 						AosAttribute_WeaponDamage = 8,
 						AosAttribute_LowerManaCost = 3,
@@ -2255,7 +2255,7 @@ namespace Server.Items
 				case CraftResource.StarRubyBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 12,
+						Slayer2 = SlayerName.GargoylesFoe,
 						Skill5 = 55,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 2,
@@ -2267,7 +2267,7 @@ namespace Server.Items
 				case CraftResource.TopazBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 10,
+						Slayer2 = SlayerName.ReptilianDeath,
 						AosAttribute_RegenHits = 2,
 						AosAttribute_RegenStam = 2,
 						AosAttribute_WeaponDamage = 7,
@@ -2277,7 +2277,7 @@ namespace Server.Items
 				case CraftResource.CaddelliteBlock:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 27,
+						Slayer2 = SlayerName.WizardSlayer,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 32,
@@ -2293,7 +2293,7 @@ namespace Server.Items
 				case CraftResource.DemonSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 11,
+						Slayer2 = SlayerName.DaemonDismissal,
 						Skill5 = 32,
 						Skill5Val = 2,
 						AosAttribute_RegenMana = 2,
@@ -2309,7 +2309,7 @@ namespace Server.Items
 				case CraftResource.DragonSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 6,
+						Slayer2 = SlayerName.DragonSlaying,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_RegenStam = 2,
@@ -2335,7 +2335,7 @@ namespace Server.Items
 				case CraftResource.SnakeSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 8,
+						Slayer2 = SlayerName.SnakesBane,
 						Skill5 = 40,
 						Skill5Val = 2,
 						AosAttribute_DefendChance = 6,
@@ -2347,7 +2347,7 @@ namespace Server.Items
 				case CraftResource.TrollSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 3,
+						Slayer2 = SlayerName.TrollSlaughter,
 						AosAttribute_RegenHits = 2,
 						AosAttribute_BonusStr = 1,
 						AosWeaponAttribute_SelfRepair = 3,
@@ -2374,7 +2374,7 @@ namespace Server.Items
 				case CraftResource.IcySkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 19,
+						Slayer2 = SlayerName.FlameDousing,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_RegenStam = 2,
@@ -2386,7 +2386,7 @@ namespace Server.Items
 				case CraftResource.LavaSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 20,
+						Slayer2 = SlayerName.WaterDissipation,
 						Skill5 = 99,
 						Skill5Val = 2,
 						AosAttribute_RegenStam = 2,
@@ -2398,7 +2398,7 @@ namespace Server.Items
 				case CraftResource.Seaweed:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 34,
+						Slayer2 = SlayerName.NeptunesBane,
 						Skill5 = 19,
 						Skill5Val = 2,
 						AosAttribute_RegenHits = 2,
@@ -2411,7 +2411,7 @@ namespace Server.Items
 				case CraftResource.DeadSkin:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 1,
+						Slayer2 = SlayerName.Silver,
 						Skill5 = 36,
 						Skill5Val = 2,
 						Skill4 = 22,
@@ -2446,21 +2446,21 @@ namespace Server.Items
 				case CraftResource.LycanSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 30,
+						Slayer2 = SlayerName.AnimalHunter,
 						Skill5 = 99,
 						Skill5Val = 2
 					}); break;
 				case CraftResource.SharkSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 34,
+						Slayer2 = SlayerName.NeptunesBane,
 						Skill5 = 99,
 						Skill5Val = 2
 					}); break;
 				case CraftResource.ColossalSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 31,
+						Slayer2 = SlayerName.GiantKiller,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 22,
@@ -2469,7 +2469,7 @@ namespace Server.Items
 				case CraftResource.MysticalSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 27,
+						Slayer2 = SlayerName.WizardSlayer,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 22,
@@ -2489,7 +2489,7 @@ namespace Server.Items
 				case CraftResource.VampireSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 5,
+						Slayer2 = SlayerName.Repond,
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 22,
@@ -2507,7 +2507,7 @@ namespace Server.Items
 				case CraftResource.LichSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 1,
+						Slayer2 = SlayerName.Silver,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2528,7 +2528,7 @@ namespace Server.Items
 				case CraftResource.SphinxSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 12,
+						Slayer2 = SlayerName.GargoylesFoe,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2545,7 +2545,7 @@ namespace Server.Items
 				case CraftResource.DevilSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 11,
+						Slayer2 = SlayerName.DaemonDismissal,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2563,7 +2563,7 @@ namespace Server.Items
 				case CraftResource.DracoSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 6,
+						Slayer2 = SlayerName.DragonSlaying,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2579,7 +2579,7 @@ namespace Server.Items
 				case CraftResource.XenoSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 2,
+						Slayer2 = SlayerName.OrcSlaying,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2595,7 +2595,7 @@ namespace Server.Items
 				case CraftResource.AndorianSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 3,
+						Slayer2 = SlayerName.TrollSlaughter,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2607,7 +2607,7 @@ namespace Server.Items
 				case CraftResource.CardassianSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 4,
+						Slayer2 = SlayerName.OgreTrashing,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2625,7 +2625,7 @@ namespace Server.Items
 				case CraftResource.MartianSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 7,
+						Slayer2 = SlayerName.Terathan,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2639,7 +2639,7 @@ namespace Server.Items
 				case CraftResource.RodianSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 8,
+						Slayer2 = SlayerName.SnakesBane,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2655,7 +2655,7 @@ namespace Server.Items
 				case CraftResource.TuskenSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 9,
+						Slayer2 = SlayerName.LizardmanSlaughter,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 22,
@@ -2668,7 +2668,7 @@ namespace Server.Items
 				case CraftResource.TwilekSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 16,
+						Slayer2 = SlayerName.SpidersDeath,
 						Skill5 = 35,
 						Skill5Val = 3,
 						Skill4 = 39,
@@ -2684,7 +2684,7 @@ namespace Server.Items
 				case CraftResource.XindiSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 17,
+						Slayer2 = SlayerName.ScorpionsBane,
 						Skill5 = 99,
 						Skill5Val = 4,
 						Skill4 = 48,
@@ -2698,7 +2698,7 @@ namespace Server.Items
 				case CraftResource.ZabrakSkeletal:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Slayer2 = 29,
+						Slayer2 = SlayerName.SlimyScourge,
 						Skill5 = 99,
 						Skill5Val = 3,
 						Skill4 = 48,

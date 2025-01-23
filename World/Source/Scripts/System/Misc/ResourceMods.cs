@@ -1,18 +1,14 @@
 using System;
-using Server;
-using System.Collections;
-using System.Collections.Generic;
 using Server.Misc;
 using Server.Items;
 using Server.Engines.Harvest;
-using Server.Engines.Craft;
 
 namespace Server
 {
 	public struct ResourceModInfo
 	{
-		public int Slayer2 { get; set; }
-		public int Slayer { get; set; }
+		public SlayerName Slayer2 { get; set; }
+		public SlayerName Slayer { get; set; }
 		public int Skill5 { get; set; }
 		public int Skill5Val { get; set; }
 		public int Skill4 { get; set; }
@@ -121,7 +117,7 @@ namespace Server
 			ModifyItem( item, resource, reduce, mods.Slayer2, mods.Slayer, mods.Skill5, mods.Skill5Val, mods.Skill4, mods.Skill4Val, mods.Skill3, mods.Skill3Val, mods.Skill2, mods.Skill2Val, mods.Skill1, mods.Skill1Val, mods.AosAttribute_RegenHits, mods.AosAttribute_RegenStam, mods.AosAttribute_RegenMana, mods.AosAttribute_DefendChance, mods.AosAttribute_AttackChance, mods.AosAttribute_BonusStr, mods.AosAttribute_BonusDex, mods.AosAttribute_BonusInt, mods.AosAttribute_BonusHits, mods.AosAttribute_BonusStam, mods.AosAttribute_BonusMana, mods.AosAttribute_WeaponDamage, mods.AosAttribute_WeaponSpeed, mods.AosAttribute_SpellDamage, mods.AosAttribute_CastRecovery, mods.AosAttribute_CastSpeed, mods.AosAttribute_LowerManaCost, mods.AosAttribute_LowerRegCost, mods.AosAttribute_ReflectPhysical, mods.AosAttribute_EnhancePotions, mods.AosAttribute_SpellChanneling, mods.AosAttribute_NightSight, mods.AosWeaponAttribute_SelfRepair, mods.AosWeaponAttribute_HitLeechHits, mods.AosWeaponAttribute_HitLeechStam, mods.AosWeaponAttribute_HitLeechMana, mods.AosWeaponAttribute_HitLowerAttack, mods.AosWeaponAttribute_HitLowerDefend, mods.AosWeaponAttribute_HitMagicArrow, mods.AosWeaponAttribute_HitHarm, mods.AosWeaponAttribute_HitFireball, mods.AosWeaponAttribute_HitLightning, mods.AosWeaponAttribute_HitDispel, mods.AosWeaponAttribute_HitColdArea, mods.AosWeaponAttribute_HitFireArea, mods.AosWeaponAttribute_HitPoisonArea, mods.AosWeaponAttribute_HitEnergyArea, mods.AosWeaponAttribute_HitPhysicalArea, mods.AosWeaponAttribute_UseBestSkill, mods.AosWeaponAttribute_MageWeapon, mods.AosArmorAttribute_SelfRepair, mods.AosArmorAttribute_MageArmor );
 		}
 		
-		public static void ModifyItem( Item item, CraftResource resource, bool reduce, int Slayer2, int Slayer, int Skill5, int Skill5Val, int Skill4, int Skill4Val, int Skill3, int Skill3Val, int Skill2, int Skill2Val, int Skill1, int Skill1Val, int AosAttribute_RegenHits, int AosAttribute_RegenStam, int AosAttribute_RegenMana, int AosAttribute_DefendChance, int AosAttribute_AttackChance, int AosAttribute_BonusStr, int AosAttribute_BonusDex, int AosAttribute_BonusInt, int AosAttribute_BonusHits, int AosAttribute_BonusStam, int AosAttribute_BonusMana, int AosAttribute_WeaponDamage, int AosAttribute_WeaponSpeed, int AosAttribute_SpellDamage, int AosAttribute_CastRecovery, int AosAttribute_CastSpeed, int AosAttribute_LowerManaCost, int AosAttribute_LowerRegCost, int AosAttribute_ReflectPhysical, int AosAttribute_EnhancePotions, int AosAttribute_SpellChanneling, int AosAttribute_NightSight, int AosWeaponAttribute_SelfRepair, int AosWeaponAttribute_HitLeechHits, int AosWeaponAttribute_HitLeechStam, int AosWeaponAttribute_HitLeechMana, int AosWeaponAttribute_HitLowerAttack, int AosWeaponAttribute_HitLowerDefend, int AosWeaponAttribute_HitMagicArrow, int AosWeaponAttribute_HitHarm, int AosWeaponAttribute_HitFireball, int AosWeaponAttribute_HitLightning, int AosWeaponAttribute_HitDispel, int AosWeaponAttribute_HitColdArea, int AosWeaponAttribute_HitFireArea, int AosWeaponAttribute_HitPoisonArea, int AosWeaponAttribute_HitEnergyArea, int AosWeaponAttribute_HitPhysicalArea, int AosWeaponAttribute_UseBestSkill, int AosWeaponAttribute_MageWeapon, int AosArmorAttribute_SelfRepair, int AosArmorAttribute_MageArmor )
+		public static void ModifyItem( Item item, CraftResource resource, bool reduce, SlayerName Slayer2, SlayerName Slayer, int Skill5, int Skill5Val, int Skill4, int Skill4Val, int Skill3, int Skill3Val, int Skill2, int Skill2Val, int Skill1, int Skill1Val, int AosAttribute_RegenHits, int AosAttribute_RegenStam, int AosAttribute_RegenMana, int AosAttribute_DefendChance, int AosAttribute_AttackChance, int AosAttribute_BonusStr, int AosAttribute_BonusDex, int AosAttribute_BonusInt, int AosAttribute_BonusHits, int AosAttribute_BonusStam, int AosAttribute_BonusMana, int AosAttribute_WeaponDamage, int AosAttribute_WeaponSpeed, int AosAttribute_SpellDamage, int AosAttribute_CastRecovery, int AosAttribute_CastSpeed, int AosAttribute_LowerManaCost, int AosAttribute_LowerRegCost, int AosAttribute_ReflectPhysical, int AosAttribute_EnhancePotions, int AosAttribute_SpellChanneling, int AosAttribute_NightSight, int AosWeaponAttribute_SelfRepair, int AosWeaponAttribute_HitLeechHits, int AosWeaponAttribute_HitLeechStam, int AosWeaponAttribute_HitLeechMana, int AosWeaponAttribute_HitLowerAttack, int AosWeaponAttribute_HitLowerDefend, int AosWeaponAttribute_HitMagicArrow, int AosWeaponAttribute_HitHarm, int AosWeaponAttribute_HitFireball, int AosWeaponAttribute_HitLightning, int AosWeaponAttribute_HitDispel, int AosWeaponAttribute_HitColdArea, int AosWeaponAttribute_HitFireArea, int AosWeaponAttribute_HitPoisonArea, int AosWeaponAttribute_HitEnergyArea, int AosWeaponAttribute_HitPhysicalArea, int AosWeaponAttribute_UseBestSkill, int AosWeaponAttribute_MageWeapon, int AosArmorAttribute_SelfRepair, int AosArmorAttribute_MageArmor )
 		{
 			if ( item is Runebook )
 			{
@@ -256,8 +252,8 @@ namespace Server
 				if ( item is IUsesRemaining )
 					if ( reduce ){ ((IUsesRemaining)item).UsesRemaining -= CraftResources.GetUses( resource ); } else { ((IUsesRemaining)item).UsesRemaining += CraftResources.GetUses( resource ); }
 
-				if ( reduce && Slayer2 > 0 ){ var.Slayer2 = SlayerName.None; } else if ( Slayer2 > 0 ){ var.Slayer2 = GetSlayer( Slayer2 ); }
-				if ( reduce && Slayer > 0 ){ var.Slayer = SlayerName.None; } else if ( Slayer > 0 ){ var.Slayer = GetSlayer( Slayer ); }
+				if ( reduce && Slayer2 > 0 ){ var.Slayer2 = SlayerName.None; } else if ( Slayer2 > 0 ){ var.Slayer2 = Slayer2; }
+				if ( reduce && Slayer > 0 ){ var.Slayer = SlayerName.None; } else if ( Slayer > 0 ){ var.Slayer = Slayer; }
 
 				if ( reduce && Skill5 > 0 ){ var.SkillBonuses.SetValues( 4, SkillName.Alchemy, 0 ); } else if ( Skill5 == 99 ){ var.SkillBonuses.SetValues( 4, var.Skill, Skill5Val ); } else if ( Skill5 > 0 && Skill5 < 99 ){ var.SkillBonuses.SetValues(4, GetSkill( Skill5 ), Skill5Val ); }
 				if ( reduce && Skill4 > 0 ){ var.SkillBonuses.SetValues( 3, SkillName.Alchemy, 0 ); } else if ( Skill4 == 99 ){ var.SkillBonuses.SetValues( 3, var.Skill, Skill4Val ); } else if ( Skill4 > 0 && Skill5 < 99 ){ var.SkillBonuses.SetValues(3, GetSkill( Skill4 ), Skill4Val ); }
@@ -422,8 +418,8 @@ namespace Server
 				else if ( item is BookOfChivalry ){ skills = Utility.RandomList( 13, 48, 38, 47 ); }
 				else if ( item is DeathKnightSpellbook ){ skills = Utility.RandomList( 13, 48, 38, 47 ); }
 
-				if ( reduce && Slayer2 > 0 && var.MageryBook() ){ var.Slayer2 = SlayerName.None; } else if ( Slayer2 > 0 && var.MageryBook() ){ var.Slayer2 = GetSlayer( Slayer2 ); }
-				if ( reduce && Slayer > 0 && var.MageryBook() ){ var.Slayer = SlayerName.None; } else if ( Slayer > 0 && var.MageryBook() ){ var.Slayer = GetSlayer( Slayer ); }
+				if ( reduce && Slayer2 > 0 && var.MageryBook() ){ var.Slayer2 = SlayerName.None; } else if ( Slayer2 > 0 && var.MageryBook() ){ var.Slayer2 = Slayer2; }
+				if ( reduce && Slayer > 0 && var.MageryBook() ){ var.Slayer = SlayerName.None; } else if ( Slayer > 0 && var.MageryBook() ){ var.Slayer = Slayer; }
 
 				if ( reduce && Skill5 > 0 ){ var.SkillBonuses.SetValues( 4, SkillName.Alchemy, 0 ); } else if ( Skill5 == 99 ){ var.SkillBonuses.SetValues( 4, GetSkill( skills ), Skill5Val ); } else if ( Skill5 > 0 ){ var.SkillBonuses.SetValues(4, GetSkill( Skill5 ), Skill5Val ); }
 				if ( reduce && Skill4 > 0 ){ var.SkillBonuses.SetValues( 3, SkillName.Alchemy, 0 ); } else if ( Skill4 == 99 ){ var.SkillBonuses.SetValues( 3, GetSkill( skills ), Skill4Val ); } else if ( Skill4 > 0 ){ var.SkillBonuses.SetValues(3, GetSkill( Skill4 ), Skill4Val ); }
