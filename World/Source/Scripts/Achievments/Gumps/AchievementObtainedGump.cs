@@ -5,7 +5,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
 {
     class AchievementObtainedGump : Gump
     {
-        public AchievementObtainedGump(BaseAchievement ach) : base(25, 25)
+        public AchievementObtainedGump(BaseAchievement ach) : base(300, 25)
         {
             Closable = true;
             Disposable = true;
