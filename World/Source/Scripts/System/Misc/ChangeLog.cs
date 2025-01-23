@@ -91,6 +91,8 @@ namespace Server.Misc
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("        Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("        Forensics, Lumberjacking, Mining<br>");
+			builder.Append("- Pets - Damage to pets is now 140%, down from 200%<br>");
+			builder.Append("- Pets - Crit chance to pets is now 5%, down from 20%<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
 			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");

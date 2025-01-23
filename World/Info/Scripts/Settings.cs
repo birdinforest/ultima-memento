@@ -660,11 +660,11 @@ namespace Server
 
 	// Increase this amount in decimal format to increase damage done to player controlled NPCs.
 
-		public static double S_DamageToPets = 2.0;
+		public static double S_DamageToPets = 1.4;
 
 	// Set a 0-100 percent chance enemies will get a critical double damage hit against player controlled NPCs.
 
-		public static int S_CriticalToPets = 20;
+		public static int S_CriticalToPets = 5;
 
 	// If true, some areas will not allow you to mount a creature for riding. This makes dungeons (for example)
 	// more challenging. Player mounts get stabled when they go in certain areas like dungeons or caves and
