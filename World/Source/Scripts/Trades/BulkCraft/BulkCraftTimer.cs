@@ -30,14 +30,17 @@ namespace Server.Engines.Craft
 				Player.EndAction(typeof(CraftSystem));
 
 			if (m_Context.Amount <= m_Context.Current || m_Tool.Deleted)
-				Cancel();
+				Cancel(true);
 		}
 
-		public void Cancel()
+		public void Cancel(bool useTool = false)
 		{
 			if (!Running) return;
 
 			Player.SendMessage("You crafted {0} of {1} items ({2} failed, {3} exceptional).", m_Context.Success, m_Context.Current, m_Context.Fail, m_Context.Exceptional);
+
+			if (useTool && !m_Tool.Deleted)
+				m_Tool.OnDoubleClick(Player);
 
 			Stop();
 		}
