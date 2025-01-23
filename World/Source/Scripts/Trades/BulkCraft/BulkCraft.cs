@@ -5,6 +5,12 @@ namespace Server.Engines.Craft
 {
 	public class BulkCraft
 	{
+		public static void Configure()
+		{
+			EventSink.Disconnected += args => StopTimer(args.Mobile as PlayerMobile);
+			EventSink.PlayerDeath += args => StopTimer(args.Mobile as PlayerMobile);
+		}
+
 		private static readonly Dictionary<Serial, BulkCraftTimer> m_Timers = new Dictionary<Serial, BulkCraftTimer>();
 
 		private static BulkCraftTimer GetTimer(PlayerMobile player)
