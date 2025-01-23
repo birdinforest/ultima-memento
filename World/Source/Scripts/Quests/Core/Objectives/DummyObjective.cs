@@ -7,7 +7,7 @@ namespace Server.Engines.MLQuests.Objectives
     {
         public static readonly DummyObjective AllOfTheFollowing = new DummyObjective("All of the following");
         public static readonly DummyObjective AnyOfTheFollowing = new DummyObjective("Only one of the following");
-        public static readonly DummyObjective CraftAndMarkQuestItems = new DummyObjective("Craft and mark the following Quest Items:");
+        public static readonly DummyObjective CraftAndMarkQuestItems = new DummyObjective("Craft and toggle the following as Quest Items:");
 
         public readonly TextDefinition Name;
 
