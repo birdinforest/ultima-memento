@@ -7,14 +7,14 @@ namespace Server.Gumps
         private readonly Action _onConfirmed;
         private readonly Action _onDeclined;
 
-        public ConfirmationGump(Mobile from, string message, Action onConfirmed = null, Action onDeclined = null)
-            : this(from, null, message, onConfirmed, onDeclined)
+        public ConfirmationGump(Mobile player, string message, Action onConfirmed = null, Action onDeclined = null)
+            : this(player, null, message, onConfirmed, onDeclined)
         {
         }
 
-        public ConfirmationGump(Mobile from, string title, string message, Action onConfirmed = null, Action onDeclined = null) : base(25, 25)
+        public ConfirmationGump(Mobile player, string title, string message, Action onConfirmed = null, Action onDeclined = null) : base(25, 25)
         {
-            from.CloseGump(typeof(ConfirmationGump));
+            player.CloseGump(typeof(ConfirmationGump));
 
             _onConfirmed = onConfirmed;
             _onDeclined = onDeclined;
