@@ -100,7 +100,7 @@ namespace Knives.Chat3
 
                 if (Owner.AccessLevel >= AccessLevel.Administrator || !GumpInfo.ForceMenu)
                 {
-                    AddImage(maxWidth, maxHeight, 0x28DC, GumpInfo.ForceMenu ? 0x26 : 0x387);
+                    // AddImage(maxWidth, maxHeight, 156, GumpInfo.ForceMenu ? 0x26 : 0x387);
                     AddButton(maxWidth + 10, maxHeight + 4, 0x93A, 0x93A, "Transparency", new GumpCallback(Trans));
                     AddButton(maxWidth + 10, maxHeight + 15, 0x938, 0x938, "Default", new GumpCallback(Default));
                     if (Owner.AccessLevel >= AccessLevel.Administrator)
