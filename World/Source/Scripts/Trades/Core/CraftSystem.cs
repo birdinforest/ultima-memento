@@ -287,6 +287,7 @@ namespace Server.Engines.Craft
 				// The item is in the list, try to create it
 				// Test code: items like sextant parts can be crafted either directly from ingots, or from different parts
 				realCraftItem.Craft( from, this, typeRes, tool, null );
+				BulkCraft.StopTimer(from as PlayerMobile);
 				//craftItem.Craft( from, this, typeRes, tool );
 			}
 		}
