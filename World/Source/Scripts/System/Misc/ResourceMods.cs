@@ -1824,6 +1824,7 @@ namespace Server
 		{
 			SkillName skill = SkillName.Alchemy;
 
+			// Warning: These numbers don't line up with the SkillName enum values
 			if ( var == 1 ){ skill = SkillName.Alchemy; }
 			else if ( var == 2 ){ skill = SkillName.Anatomy; }
 			else if ( var == 3 ){ skill = SkillName.Druidism; }
