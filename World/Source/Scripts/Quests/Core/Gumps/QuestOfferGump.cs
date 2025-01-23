@@ -56,7 +56,26 @@ namespace Server.Engines.MLQuests.Gumps
 					}
 				case 2: // Refuse
 					{
-						m_Quest.OnRefuse(m_Quester, pm);
+						if (!m_Quest.IsChainTriggered)
+						{
+
+							pm.SendMessage("You refuse the quest.");
+							m_Quest.OnRefuse(m_Quester, pm);
+						}
+						else
+						{
+							var confirmation = new ConfirmationGump(
+								pm,
+								"This quest was triggered by a chain. If you refuse it, you may need to repeat parts of the chain.<br><br>Are you sure you wish to refuse the quest?",
+								() =>
+									{
+										pm.SendMessage("You refuse the quest.");
+										m_Quest.OnRefuse(m_Quester, pm);
+									},
+								() => pm.SendGump(new QuestOfferGump(m_Quest, m_Quester, pm))
+							);
+							pm.SendGump(confirmation);
+						}
 						break;
 					}
 			}
