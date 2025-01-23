@@ -9,6 +9,66 @@ using Server.Engines.Craft;
 
 namespace Server
 {
+	public struct ResourceModInfo
+	{
+		public int Slayer2 { get; set; }
+		public int Slayer { get; set; }
+		public int Skill5 { get; set; }
+		public int Skill5Val { get; set; }
+		public int Skill4 { get; set; }
+		public int Skill4Val { get; set; }
+		public int Skill3 { get; set; }
+		public int Skill3Val { get; set; }
+		public int Skill2 { get; set; }
+		public int Skill2Val { get; set; }
+		public int Skill1 { get; set; }
+		public int Skill1Val { get; set; }
+		
+		public int AosAttribute_RegenHits { get; set; }
+		public int AosAttribute_RegenStam { get; set; }
+		public int AosAttribute_RegenMana { get; set; }
+		public int AosAttribute_DefendChance { get; set; }
+		public int AosAttribute_AttackChance { get; set; }
+		public int AosAttribute_BonusStr { get; set; }
+		public int AosAttribute_BonusDex { get; set; }
+		public int AosAttribute_BonusInt { get; set; }
+		public int AosAttribute_BonusHits { get; set; }
+		public int AosAttribute_BonusStam { get; set; }
+		public int AosAttribute_BonusMana { get; set; }
+		public int AosAttribute_WeaponDamage { get; set; }
+		public int AosAttribute_WeaponSpeed { get; set; }
+		public int AosAttribute_SpellDamage { get; set; }
+		public int AosAttribute_CastRecovery { get; set; }
+		public int AosAttribute_CastSpeed { get; set; }
+		public int AosAttribute_LowerManaCost { get; set; }
+		public int AosAttribute_LowerRegCost { get; set; }
+		public int AosAttribute_ReflectPhysical { get; set; }
+		public int AosAttribute_EnhancePotions { get; set; }
+		public int AosAttribute_SpellChanneling { get; set; }
+		public int AosAttribute_NightSight { get; set; }
+
+		public int AosWeaponAttribute_SelfRepair { get; set; }
+		public int AosWeaponAttribute_HitLeechHits { get; set; }
+		public int AosWeaponAttribute_HitLeechStam { get; set; }
+		public int AosWeaponAttribute_HitLeechMana { get; set; }
+		public int AosWeaponAttribute_HitLowerAttack { get; set; }
+		public int AosWeaponAttribute_HitLowerDefend { get; set; }
+		public int AosWeaponAttribute_HitMagicArrow { get; set; }
+		public int AosWeaponAttribute_HitHarm { get; set; }
+		public int AosWeaponAttribute_HitFireball { get; set; }
+		public int AosWeaponAttribute_HitLightning { get; set; }
+		public int AosWeaponAttribute_HitDispel { get; set; }
+		public int AosWeaponAttribute_HitColdArea { get; set; }
+		public int AosWeaponAttribute_HitFireArea { get; set; }
+		public int AosWeaponAttribute_HitPoisonArea { get; set; }
+		public int AosWeaponAttribute_HitEnergyArea { get; set; }
+		public int AosWeaponAttribute_HitPhysicalArea { get; set; }
+		public int AosWeaponAttribute_UseBestSkill { get; set; }
+		public int AosWeaponAttribute_MageWeapon { get; set; }
+		public int AosArmorAttribute_SelfRepair { get; set; }
+		public int AosArmorAttribute_MageArmor { get; set; }
+	}
+
     class ResourceMods
     {
 		public static CraftResource SearchResource( Item item )
@@ -56,6 +116,11 @@ namespace Server
 			return success;
 		}
 
+		public static void ModifyItem( Item item, CraftResource resource, bool reduce, ResourceModInfo mods )
+		{
+			ModifyItem( item, resource, reduce, mods.Slayer2, mods.Slayer, mods.Skill5, mods.Skill5Val, mods.Skill4, mods.Skill4Val, mods.Skill3, mods.Skill3Val, mods.Skill2, mods.Skill2Val, mods.Skill1, mods.Skill1Val, mods.AosAttribute_RegenHits, mods.AosAttribute_RegenStam, mods.AosAttribute_RegenMana, mods.AosAttribute_DefendChance, mods.AosAttribute_AttackChance, mods.AosAttribute_BonusStr, mods.AosAttribute_BonusDex, mods.AosAttribute_BonusInt, mods.AosAttribute_BonusHits, mods.AosAttribute_BonusStam, mods.AosAttribute_BonusMana, mods.AosAttribute_WeaponDamage, mods.AosAttribute_WeaponSpeed, mods.AosAttribute_SpellDamage, mods.AosAttribute_CastRecovery, mods.AosAttribute_CastSpeed, mods.AosAttribute_LowerManaCost, mods.AosAttribute_LowerRegCost, mods.AosAttribute_ReflectPhysical, mods.AosAttribute_EnhancePotions, mods.AosAttribute_SpellChanneling, mods.AosAttribute_NightSight, mods.AosWeaponAttribute_SelfRepair, mods.AosWeaponAttribute_HitLeechHits, mods.AosWeaponAttribute_HitLeechStam, mods.AosWeaponAttribute_HitLeechMana, mods.AosWeaponAttribute_HitLowerAttack, mods.AosWeaponAttribute_HitLowerDefend, mods.AosWeaponAttribute_HitMagicArrow, mods.AosWeaponAttribute_HitHarm, mods.AosWeaponAttribute_HitFireball, mods.AosWeaponAttribute_HitLightning, mods.AosWeaponAttribute_HitDispel, mods.AosWeaponAttribute_HitColdArea, mods.AosWeaponAttribute_HitFireArea, mods.AosWeaponAttribute_HitPoisonArea, mods.AosWeaponAttribute_HitEnergyArea, mods.AosWeaponAttribute_HitPhysicalArea, mods.AosWeaponAttribute_UseBestSkill, mods.AosWeaponAttribute_MageWeapon, mods.AosArmorAttribute_SelfRepair, mods.AosArmorAttribute_MageArmor );
+		}
+		
 		public static void ModifyItem( Item item, CraftResource resource, bool reduce, int Slayer2, int Slayer, int Skill5, int Skill5Val, int Skill4, int Skill4Val, int Skill3, int Skill3Val, int Skill2, int Skill2Val, int Skill1, int Skill1Val, int AosAttribute_RegenHits, int AosAttribute_RegenStam, int AosAttribute_RegenMana, int AosAttribute_DefendChance, int AosAttribute_AttackChance, int AosAttribute_BonusStr, int AosAttribute_BonusDex, int AosAttribute_BonusInt, int AosAttribute_BonusHits, int AosAttribute_BonusStam, int AosAttribute_BonusMana, int AosAttribute_WeaponDamage, int AosAttribute_WeaponSpeed, int AosAttribute_SpellDamage, int AosAttribute_CastRecovery, int AosAttribute_CastSpeed, int AosAttribute_LowerManaCost, int AosAttribute_LowerRegCost, int AosAttribute_ReflectPhysical, int AosAttribute_EnhancePotions, int AosAttribute_SpellChanneling, int AosAttribute_NightSight, int AosWeaponAttribute_SelfRepair, int AosWeaponAttribute_HitLeechHits, int AosWeaponAttribute_HitLeechStam, int AosWeaponAttribute_HitLeechMana, int AosWeaponAttribute_HitLowerAttack, int AosWeaponAttribute_HitLowerDefend, int AosWeaponAttribute_HitMagicArrow, int AosWeaponAttribute_HitHarm, int AosWeaponAttribute_HitFireball, int AosWeaponAttribute_HitLightning, int AosWeaponAttribute_HitDispel, int AosWeaponAttribute_HitColdArea, int AosWeaponAttribute_HitFireArea, int AosWeaponAttribute_HitPoisonArea, int AosWeaponAttribute_HitEnergyArea, int AosWeaponAttribute_HitPhysicalArea, int AosWeaponAttribute_UseBestSkill, int AosWeaponAttribute_MageWeapon, int AosArmorAttribute_SelfRepair, int AosArmorAttribute_MageArmor )
 		{
 			if ( item is Runebook )

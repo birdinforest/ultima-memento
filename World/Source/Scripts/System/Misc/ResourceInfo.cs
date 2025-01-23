@@ -1056,187 +1056,1842 @@ namespace Server.Items
 
 		public static void GetAosMods( CraftResource resource, Item item, bool reduce )
 		{
-			if ( resource == 	CraftResource.Iron	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DullCopper	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ShadowIron	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Copper	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Bronze	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Gold	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Agapite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Verite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Valorite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Nepturite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Obsidian	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Steel	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Brass	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Mithril	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Xormite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Dwarven	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	2	,	4	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Agrinium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	23	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Beskar	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	4	,	0	,	45	,	1	,	43	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	10	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Carbonite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	3	,	0	,	2	,	1	,	23	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Cortosis	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	27	,	0	,	1	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Durasteel	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	32	,	0	,	99	,	1	,	48	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	15	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Durite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	31	,	0	,	6	,	1	,	8	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	10	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Farium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	20	,	0	,	15	,	1	,	42	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Laminasteel	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	33	,	0	,	3	,	1	,	4	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Neuranium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	6	,	0	,	31	,	1	,	33	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	1	,	2	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Phrik	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	35	,	0	,	55	,	1	,	21	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	2	,	2	,	0	,	0	,	3	,	1	,	1	,	0	,	2	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Promethium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	9	,	0	,	40	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Quadranium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	28	,	0	,	28	,	1	,	27	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Songsteel	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	21	,	0	,	35	,	1	,	39	,	1	,	16	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Titanium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	18	,	0	,	99	,	1	,	48	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.Trimantium	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	34	,	0	,	19	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Xonolite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	29	,	0	,	36	,	1	,	44	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	2	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
+			switch(resource)
+			{
+				case CraftResource.Iron:
+				case CraftResource.DullCopper:
+				case CraftResource.ShadowIron:
+				case CraftResource.Copper:
+				case CraftResource.Bronze:
+				case CraftResource.Gold:
+				case CraftResource.Agapite:
+				case CraftResource.Verite:
+				case CraftResource.Valorite:
+				case CraftResource.Nepturite:
+				case CraftResource.Obsidian:
+				case CraftResource.Steel:
+				case CraftResource.Brass:
+				case CraftResource.Mithril:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo());
+					break;
+				case CraftResource.Xormite:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_RegenMana = 3,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_EnhancePotions = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitEnergyArea = 15,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Dwarven:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 2,
+						Slayer = 4,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Agrinium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 23,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_WeaponDamage = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitPhysicalArea = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Beskar:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 4,
+						Skill5 = 45,
+						Skill5Val = 1,
+						Skill4 = 43,
+						Skill4Val = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitLowerAttack = 10,
+						AosWeaponAttribute_HitLowerDefend = 10,
+						AosWeaponAttribute_HitHarm = 5,
+						AosWeaponAttribute_HitPhysicalArea = 10
+					}); break;
+				case CraftResource.Carbonite:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 3,
+						Skill5 = 2,
+						Skill5Val = 1,
+						Skill4 = 23,
+						Skill4Val = 1,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_DefendChance = 3,
+						AosWeaponAttribute_HitLeechHits = 15,
+						AosWeaponAttribute_HitLeechStam = 15,
+						AosWeaponAttribute_HitDispel = 20,
+						AosWeaponAttribute_HitPhysicalArea = 10
+					}); break;
+				case CraftResource.Cortosis:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 27,
+						Skill5 = 1,
+						Skill5Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_WeaponSpeed = 3,
+						AosAttribute_EnhancePotions = 2,
+						AosWeaponAttribute_HitEnergyArea = 10
+					}); break;
+				case CraftResource.Durasteel:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 32,
+						Skill5 = 99,
+						Skill5Val = 1,
+						Skill4 = 48,
+						Skill4Val = 1,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_WeaponDamage = 3,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitLowerAttack = 15,
+						AosWeaponAttribute_HitLowerDefend = 15,
+						AosWeaponAttribute_HitPhysicalArea = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Durite:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 31,
+						Skill5 = 6,
+						Skill5Val = 1,
+						Skill4 = 8,
+						Skill4Val = 1,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitLeechHits = 10,
+						AosWeaponAttribute_HitLeechStam = 10,
+						AosWeaponAttribute_HitPhysicalArea = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Farium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 20,
+						Skill5 = 15,
+						Skill5Val = 1,
+						Skill4 = 42,
+						Skill4Val = 1,
+						AosAttribute_BonusDex = 2,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitLowerAttack = 10,
+						AosWeaponAttribute_HitLowerDefend = 10,
+						AosWeaponAttribute_HitFireArea = 10
+					}); break;
+				case CraftResource.Laminasteel:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 33,
+						Skill5 = 3,
+						Skill5Val = 1,
+						Skill4 = 4,
+						Skill4Val = 1,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_RegenMana = 1,
+						AosWeaponAttribute_HitPoisonArea = 10
+					}); break;
+				case CraftResource.Neuranium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 6,
+						Skill5 = 31,
+						Skill5Val = 1,
+						Skill4 = 33,
+						Skill4Val = 1,
+						AosAttribute_SpellDamage = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 2,
+						AosAttribute_LowerRegCost = 3,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Phrik:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 35,
+						Skill5 = 55,
+						Skill5Val = 1,
+						Skill4 = 21,
+						Skill4Val = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_WeaponSpeed = 3,
+						AosAttribute_SpellDamage = 1,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_LowerManaCost = 2,
+						AosAttribute_LowerRegCost = 3,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Promethium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 9,
+						Skill5 = 40,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 2,
+						AosWeaponAttribute_HitPoisonArea = 10
+					}); break;
+				case CraftResource.Quadranium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 28,
+						Skill5 = 28,
+						Skill5Val = 1,
+						Skill4 = 27,
+						Skill4Val = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitEnergyArea = 10
+					}); break;
+				case CraftResource.Songsteel:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 21,
+						Skill5 = 35,
+						Skill5Val = 1,
+						Skill4 = 39,
+						Skill4Val = 1,
+						Skill3 = 16,
+						Skill3Val = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponSpeed = 3,
+						AosWeaponAttribute_HitEnergyArea = 10
+					}); break;
+				case CraftResource.Titanium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 18,
+						Skill5 = 99,
+						Skill5Val = 1,
+						Skill4 = 48,
+						Skill4Val = 1,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_WeaponDamage = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitPhysicalArea = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.Trimantium:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 34,
+						Skill5 = 19,
+						Skill5Val = 2,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_BonusStam = 3,
+						AosWeaponAttribute_HitColdArea = 10
+					}); break;
+				case CraftResource.Xonolite:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 29,
+						Skill5 = 36,
+						Skill5Val = 1,
+						Skill4 = 44,
+						Skill4Val = 1,
+						AosAttribute_SpellDamage = 1,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_LowerManaCost = 2,
+						AosAttribute_LowerRegCost = 3,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
 
-			else if ( resource == 	CraftResource.RedScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	1	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	3	,	2	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.YellowScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	35	,	1	,	16	,	1	,	39	,	2	,	41	,	2	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	5	,	5	,	5	,	5	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.BlackScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	25	,	2	,	46	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	3	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GreenScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	40	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.WhiteScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	23	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.BlueScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	19	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	15	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DinosaurScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	4	,	1	,	24	,	1	,	53	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.MetallicScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	8	,	1	,	34	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	2	,	2	,	2	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	10	,	10	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.BrazenScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	4	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	10	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.UmberScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	36	,	1	,	44	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	4	,	0	,	0	,	2	,	1	,	1	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	10	,	5	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.VioletScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	55	,	1	,	21	,	1	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	4	,	0	,	0	,	2	,	1	,	1	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.PlatinumScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	13	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	2	,	2	,	5	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.CadalyteScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	4	,	32	,	4	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	3	,	3	,	0	,	7	,	7	,	0	,	0	,	0	,	0	,	0	,	4	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	10	,	10	,	10	,	10	,	0	,	0	,	2	,	0	 ); }
-			else if ( resource == 	CraftResource.GornScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	3	,	48	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	3	,	0	,	0	,	6	,	5	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.TrandoshanScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	3	,	19	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	3	,	0	,	6	,	5	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.SilurianScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	3	,	17	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	3	,	5	,	0	,	2	,	2	,	2	,	0	,	0	,	3	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	1	,	1	,	1	 ); }
-			else if ( resource == 	CraftResource.KraytScales	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	25	,	3	,	46	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	3	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	1	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
+				case CraftResource.RedScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 1,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_EnhancePotions = 5,
+						AosWeaponAttribute_HitFireArea = 25
+					}); break;
+				case CraftResource.YellowScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 35,
+						Skill4Val = 1,
+						Skill3 = 16,
+						Skill3Val = 1,
+						Skill2 = 39,
+						Skill2Val = 2,
+						Skill1 = 41,
+						Skill1Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitColdArea = 5,
+						AosWeaponAttribute_HitFireArea = 5,
+						AosWeaponAttribute_HitPoisonArea = 5,
+						AosWeaponAttribute_HitEnergyArea = 5,
+						AosWeaponAttribute_HitPhysicalArea = 5
+					}); break;
+				case CraftResource.BlackScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 25,
+						Skill4Val = 2,
+						Skill3 = 46,
+						Skill3Val = 2,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitPhysicalArea = 25
+					}); break;
+				case CraftResource.GreenScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 40,
+						Skill4Val = 2,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitPoisonArea = 25
+					}); break;
+				case CraftResource.WhiteScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 23,
+						Skill4Val = 2,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitColdArea = 25
+					}); break;
+				case CraftResource.BlueScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 19,
+						Skill4Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitColdArea = 10,
+						AosWeaponAttribute_HitPoisonArea = 15
+					}); break;
+				case CraftResource.DinosaurScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 4,
+						Skill4Val = 1,
+						Skill3 = 24,
+						Skill3Val = 1,
+						Skill2 = 53,
+						Skill2Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitPhysicalArea = 25
+					}); break;
+				case CraftResource.MetallicScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 8,
+						Skill4Val = 1,
+						Skill3 = 34,
+						Skill3Val = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitFireArea = 5,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosWeaponAttribute_HitPhysicalArea = 10
+					}); break;
+				case CraftResource.BrazenScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 4,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitFireArea = 15,
+						AosWeaponAttribute_HitEnergyArea = 10
+					}); break;
+				case CraftResource.UmberScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 36,
+						Skill4Val = 1,
+						Skill3 = 44,
+						Skill3Val = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 4,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosWeaponAttribute_HitPhysicalArea = 5
+					}); break;
+				case CraftResource.VioletScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 55,
+						Skill4Val = 1,
+						Skill3 = 21,
+						Skill3Val = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 4,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitFireball = 25
+					}); break;
+				case CraftResource.PlatinumScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 13,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitLightning = 25
+					}); break;
+				case CraftResource.CadalyteScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 4,
+						Skill4 = 32,
+						Skill4Val = 4,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_WeaponSpeed = 7,
+						AosAttribute_ReflectPhysical = 4,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitColdArea = 10,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosWeaponAttribute_HitPoisonArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosWeaponAttribute_HitPhysicalArea = 10,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
+				case CraftResource.GornScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 48,
+						Skill4Val = 3,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 6,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitFireArea = 5,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.TrandoshanScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 19,
+						Skill4Val = 3,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 6,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitColdArea = 5,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.SilurianScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 17,
+						Skill4Val = 3,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 2,
+						AosAttribute_CastSpeed = 2,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitEnergyArea = 5,
+						AosWeaponAttribute_MageWeapon = 1,
+						AosArmorAttribute_SelfRepair = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.KraytScales:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 25,
+						Skill5Val = 3,
+						Skill4 = 46,
+						Skill4Val = 3,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitPoisonArea = 5,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
 
-			else if ( resource == 	CraftResource.SpectralSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	5	,	36	,	5	,	19	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	2	,	0	,	0	,	5	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	 ); }
-			else if ( resource == 	CraftResource.DreadSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	5	,	48	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	5	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GhoulishSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	5	,	0	,	99	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.WyrmSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	6	,	0	,	99	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	8	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	50	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.HolySpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	1	,	14	,	99	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	2	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	 ); }
-			else if ( resource == 	CraftResource.BloodlessSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	5	,	0	,	36	,	5	,	22	,	5	,	44	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	8	,	0	,	0	,	0	,	0	,	5	,	5	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.GildedSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	28	,	30	,	99	,	10	,	48	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DemilichSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	5	,	0	,	99	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.WintrySpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	19	,	0	,	99	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	8	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.FireSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ColdSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.PoisSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.EngySpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ExodusSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	32	,	13	,	99	,	15	,	32	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	1	,	5	,	5	,	2	,	1	,	1	,	4	,	3	,	0	,	9	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	20	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	3	,	1	 ); }
-			else if ( resource == 	CraftResource.TurtleSpec	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	34	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	50	,	0	,	0	,	0	,	0	,	0	,	5	,	0	 ); }
+				case CraftResource.SpectralSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 5,
+						Skill4 = 36,
+						Skill4Val = 5,
+						Skill3 = 19,
+						Skill3Val = 5,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_EnhancePotions = 2,
+						AosWeaponAttribute_SelfRepair = 5,
+						AosWeaponAttribute_HitLeechHits = 10,
+						AosWeaponAttribute_HitColdArea = 20,
+						AosArmorAttribute_SelfRepair = 5
+					}); break;
+				case CraftResource.DreadSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 5,
+						Skill4 = 48,
+						Skill4Val = 5,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1
+					}); break;
+				case CraftResource.GhoulishSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 5,
+						Skill5 = 99,
+						Skill5Val = 15,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 2,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLeechHits = 10,
+						AosWeaponAttribute_HitLeechStam = 10
+					}); break;
+				case CraftResource.WyrmSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 6,
+						Skill5 = 99,
+						Skill5Val = 15,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 7,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_WeaponSpeed = 5,
+						AosWeaponAttribute_HitLowerAttack = 50,
+						AosWeaponAttribute_HitLowerDefend = 50
+					}); break;
+				case CraftResource.HolySpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 1,
+						Slayer = 14,
+						Skill5 = 99,
+						Skill5Val = 20,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_AttackChance = 9,
+						AosAttribute_WeaponDamage = 9,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitLeechHits = 5,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
+				case CraftResource.BloodlessSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 5,
+						Skill5 = 36,
+						Skill5Val = 5,
+						Skill4 = 22,
+						Skill4Val = 5,
+						Skill3 = 44,
+						Skill3Val = 5,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_LowerManaCost = 5,
+						AosAttribute_LowerRegCost = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitPoisonArea = 50,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.GildedSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 28,
+						Slayer = 30,
+						Skill5 = 99,
+						Skill5Val = 10,
+						Skill4 = 48,
+						Skill4Val = 5,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_AttackChance = 9,
+						AosAttribute_WeaponDamage = 9,
+						AosAttribute_NightSight = 1
+					}); break;
+				case CraftResource.DemilichSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 5,
+						Skill5 = 99,
+						Skill5Val = 10,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_AttackChance = 9,
+						AosAttribute_SpellDamage = 2,
+						AosWeaponAttribute_HitLeechHits = 5,
+						AosWeaponAttribute_HitLowerDefend = 50,
+						AosWeaponAttribute_HitDispel = 20,
+						AosWeaponAttribute_HitPhysicalArea = 25
+					}); break;
+				case CraftResource.WintrySpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 19,
+						Skill5 = 99,
+						Skill5Val = 5,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_NightSight = 1
+					}); break;
+				case CraftResource.FireSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitFireArea = 50 }); break;
+				case CraftResource.ColdSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitColdArea = 50 }); break;
+				case CraftResource.PoisSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitPoisonArea = 50 }); break;
+				case CraftResource.EngySpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitEnergyArea = 50 }); break;
+				case CraftResource.ExodusSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 32,
+						Slayer = 13,
+						Skill5 = 99,
+						Skill5Val = 15,
+						Skill4 = 32,
+						Skill4Val = 10,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusHits = 4,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 9,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 3,
+						AosWeaponAttribute_HitLightning = 20,
+						AosWeaponAttribute_HitDispel = 20,
+						AosWeaponAttribute_HitEnergyArea = 25,
+						AosArmorAttribute_SelfRepair = 3,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.TurtleSpec:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 34,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitFireball = 20,
+						AosWeaponAttribute_HitFireArea = 50,
+						AosArmorAttribute_SelfRepair = 5
+					}); break;
 
-			else if ( resource == 	CraftResource.RegularLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.HornedLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.BarbedLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.NecroticLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.VolcanicLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.FrozenLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.SpinedLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GoliathLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DraconicLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.HellishLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DinosaurLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.AlienLeather	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Adesote	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	35	,	0	,	99	,	2	,	17	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Biomesh	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	16	,	0	,	99	,	2	,	21	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	7	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Cerlin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	21	,	0	,	99	,	2	,	13	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Durafiber	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	2	,	0	,	99	,	2	,	23	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	3	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Flexicris	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	27	,	0	,	99	,	2	,	27	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	3	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Hypercloth	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	29	,	0	,	99	,	2	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Nylar	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	11	,	0	,	99	,	2	,	50	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Nylonite	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	4	,	0	,	25	,	2	,	46	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Polyfiber	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	3	,	0	,	99	,	2	,	52	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Syncloth	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	23	,	0	,	99	,	2	,	6	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	3	,	1	,	1	,	0	,	0	,	0	,	5	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.Thermoweave	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	32	,	0	,	99	,	2	,	15	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
+				case CraftResource.RegularLeather:
+				case CraftResource.HornedLeather:
+				case CraftResource.BarbedLeather:
+				case CraftResource.NecroticLeather:
+				case CraftResource.VolcanicLeather:
+				case CraftResource.FrozenLeather:
+				case CraftResource.SpinedLeather:
+				case CraftResource.GoliathLeather:
+				case CraftResource.DraconicLeather:
+				case CraftResource.HellishLeather:
+				case CraftResource.DinosaurLeather:
+				case CraftResource.AlienLeather:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo()); break;
+				case CraftResource.Adesote:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 35,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 17,
+						Skill4Val = 2,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitEnergyArea = 5,
+						AosWeaponAttribute_HitPhysicalArea = 5,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Biomesh:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 16,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 21,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_EnhancePotions = 7,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Cerlin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 21,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 13,
+						Skill4Val = 2,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Durafiber:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 2,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 23,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Flexicris:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 27,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 27,
+						Skill4Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_CastRecovery = 5,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Hypercloth:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 29,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 2,
+						Skill4Val = 2,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Nylar:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 11,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 50,
+						Skill4Val = 2,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Nylonite:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 4,
+						Skill5 = 25,
+						Skill5Val = 2,
+						Skill4 = 46,
+						Skill4Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Polyfiber:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 3,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 52,
+						Skill4Val = 2,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Syncloth:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 23,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 6,
+						Skill4Val = 2,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_SpellDamage = 3,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_EnhancePotions = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.Thermoweave:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 32,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 15,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
 
-			else if ( resource == 	CraftResource.RegularWood	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.AshTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.CherryTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.EbonyTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GoldenOakTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.HickoryTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.MahoganyTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.OakTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.PineTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GhostTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.RosewoodTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.WalnutTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.PetrifiedTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DriftwoodTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	19	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ElvenTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	3	,	52	,	2	,	10	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	5	,	0	,	1	,	1	,	0	,	0	,	0	,	7	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	1	,	2	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	1	 ); }
-			else if ( resource == 	CraftResource.BorlTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	23	,	0	,	15	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.CosianTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	33	,	0	,	23	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GreelTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	12	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.JaporTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	15	,	0	,	19	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	6	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.KyshyyykTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	17	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	7	,	8	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.LaroonTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	7	,	0	,	44	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	8	,	11	,	2	,	1	,	1	,	3	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.TeejTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	8	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	9	,	12	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.VeshokTree	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	25	,	0	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	10	,	13	,	0	,	0	,	0	,	0	,	0	,	0	,	12	,	0	,	1	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	 ); }
+				case CraftResource.RegularWood:
+				case CraftResource.AshTree:
+				case CraftResource.CherryTree:
+				case CraftResource.EbonyTree:
+				case CraftResource.GoldenOakTree:
+				case CraftResource.HickoryTree:
+				case CraftResource.MahoganyTree:
+				case CraftResource.OakTree:
+				case CraftResource.PineTree:
+				case CraftResource.GhostTree:
+				case CraftResource.RosewoodTree:
+				case CraftResource.WalnutTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo()); break;
+				case CraftResource.PetrifiedTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_DefendChance = 3
+					}); break;
+				case CraftResource.DriftwoodTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 19,
+						Skill5Val = 2
+					}); break;
+				case CraftResource.ElvenTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 52,
+						Skill4Val = 2,
+						Skill3 = 10,
+						Skill3Val = 2,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_WeaponSpeed = 7,
+						AosAttribute_EnhancePotions = 7,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitLowerDefend = 20,
+						AosArmorAttribute_SelfRepair = 2,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.BorlTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 23,
+						Skill5 = 15,
+						Skill5Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_EnhancePotions = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitFireball = 20
+					}); break;
+				case CraftResource.CosianTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 33,
+						Skill5 = 23,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitPoisonArea = 20
+					}); break;
+				case CraftResource.GreelTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 12,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_EnhancePotions = 7,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitEnergyArea = 20
+					}); break;
+				case CraftResource.JaporTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 15,
+						Skill5 = 19,
+						Skill5Val = 2,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_WeaponDamage = 6,
+						AosAttribute_WeaponSpeed = 5,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitColdArea = 20
+					}); break;
+				case CraftResource.KyshyyykTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 17,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_WeaponSpeed = 8,
+						AosAttribute_EnhancePotions = 10,
+						AosWeaponAttribute_HitPhysicalArea = 20
+					}); break;
+				case CraftResource.LaroonTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 7,
+						Skill5 = 44,
+						Skill5Val = 2,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_WeaponSpeed = 11,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_LowerRegCost = 3,
+						AosWeaponAttribute_HitLightning = 20,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.TeejTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 8,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_WeaponDamage = 9,
+						AosAttribute_WeaponSpeed = 12,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitLeechHits = 10,
+						AosWeaponAttribute_HitLeechStam = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.VeshokTree:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 25,
+						Skill5 = 22,
+						Skill5Val = 2,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_WeaponDamage = 10,
+						AosAttribute_WeaponSpeed = 13,
+						AosAttribute_EnhancePotions = 12,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLeechStam = 10,
+						AosWeaponAttribute_HitLeechMana = 10,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
 
-			else if ( resource == 	CraftResource.Fabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.FurryFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.WoolyFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.SilkFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.HauntedFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	44	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.ArcticFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	19	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.PyreFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.VenomousFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	22	,	0	,	40	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.MysteriousFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	27	,	0	,	33	,	2	,	32	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	2	,	1	,	1	,	0	,	3	,	2	,	10	,	1	,	1	,	0	,	0	,	0	,	15	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.VileFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	5	,	0	,	99	,	3	,	36	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	0	,	8	,	2	,	0	,	0	,	0	,	3	,	0	,	7	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	1	,	0	,	0	,	15	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.DivineFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	1	,	0	,	99	,	3	,	13	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	1	,	5	,	5	,	1	,	1	,	1	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	12	,	1	,	1	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	1	 ); }
-			else if ( resource == 	CraftResource.FiendishFabric	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	14	,	0	,	99	,	4	,	32	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	0	,	5	,	2	,	0	,	2	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	12	,	1	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
+				case CraftResource.Fabric:
+				case CraftResource.FurryFabric:
+				case CraftResource.WoolyFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo()); break;
+				case CraftResource.SilkFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_BonusDex = 2,
+						AosAttribute_EnhancePotions = 2,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.HauntedFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 44,
+						Skill5Val = 2,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_EnhancePotions = 5,
+						AosAttribute_NightSight = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.ArcticFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 19,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_EnhancePotions = 7,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.PyreFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 20,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_EnhancePotions = 7,
+						AosWeaponAttribute_HitFireball = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.VenomousFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 22,
+						Skill5 = 40,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_EnhancePotions = 7,
+						AosWeaponAttribute_HitPoisonArea = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.MysteriousFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 27,
+						Skill5 = 33,
+						Skill5Val = 2,
+						Skill4 = 32,
+						Skill4Val = 2,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_EnhancePotions = 10,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLeechMana = 15,
+						AosWeaponAttribute_HitMagicArrow = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.VileFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 5,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 36,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_AttackChance = 8,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_WeaponSpeed = 7,
+						AosAttribute_EnhancePotions = 10,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLeechHits = 15,
+						AosWeaponAttribute_HitHarm = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.DivineFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 1,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 13,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_ReflectPhysical = 3,
+						AosAttribute_EnhancePotions = 12,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitLightning = 10,
+						AosArmorAttribute_SelfRepair = 2,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.FiendishFabric:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 14,
+						Skill5 = 99,
+						Skill5Val = 4,
+						Skill4 = 32,
+						Skill4Val = 2,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_EnhancePotions = 12,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLowerAttack = 15,
+						AosWeaponAttribute_HitFireball = 10,
+						AosWeaponAttribute_HitFireArea = 15,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
 
-			else if ( resource == 	CraftResource.AmethystBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	32	,	0	,	38	,	2	,	48	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	80	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.EmeraldBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	33	,	0	,	40	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	1	,	0	,	0	,	1	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GarnetBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	22	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	2	,	1	,	1	,	3	,	3	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.IceBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	19	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.JadeBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	22	,	0	,	99	,	3	,	9	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	5	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.MarbleBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	23	,	32	,	99	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	8	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.OnyxBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	31	,	5	,	36	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	5	,	0	,	0	,	1	,	0	,	0	,	2	,	7	,	0	,	2	,	1	,	1	,	3	,	3	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.QuartzBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	8	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.RubyBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	24	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	7	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.SapphireBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	28	,	0	,	17	,	1	,	31	,	1	,	32	,	3	,	33	,	3	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.SilverBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	1	,	0	,	13	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	7	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.SpinelBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	35	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	8	,	0	,	0	,	0	,	0	,	3	,	3	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.StarRubyBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	12	,	0	,	55	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	7	,	8	,	2	,	0	,	0	,	0	,	0	,	0	,	8	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.TopazBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	7	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	 ); }
-			else if ( resource == 	CraftResource.CaddelliteBlock	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	27	,	0	,	99	,	3	,	32	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	9	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	30	,	0	,	0	,	0	,	2	,	0	 ); }
+				case CraftResource.AmethystBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 32,
+						Skill5 = 38,
+						Skill5Val = 2,
+						Skill4 = 48,
+						Skill4Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitPhysicalArea = 80
+					}); break;
+				case CraftResource.EmeraldBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 33,
+						Skill5 = 40,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 1,
+						AosAttribute_RegenStam = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_ReflectPhysical = 3
+					}); break;
+				case CraftResource.GarnetBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 22,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.IceBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 19,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitColdArea = 25
+					}); break;
+				case CraftResource.JadeBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 22,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 9,
+						Skill4Val = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_NightSight = 1
+					}); break;
+				case CraftResource.MarbleBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 23,
+						Slayer = 32,
+						Skill5 = 99,
+						Skill5Val = 3,
+						AosAttribute_DefendChance = 7,
+						AosAttribute_BonusStr = 3,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_ReflectPhysical = 2
+					}); break;
+				case CraftResource.OnyxBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 31,
+						Slayer = 5,
+						Skill5 = 36,
+						Skill5Val = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_WeaponDamage = 7,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLeechMana = 5,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.QuartzBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 20,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_AttackChance = 8,
+						AosAttribute_BonusDex = 3,
+						AosAttribute_ReflectPhysical = 2
+					}); break;
+				case CraftResource.RubyBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 24,
+						AosAttribute_DefendChance = 7,
+						AosAttribute_AttackChance = 7,
+						AosAttribute_BonusStr = 2,
+						AosWeaponAttribute_HitFireball = 10,
+						AosWeaponAttribute_HitFireArea = 20
+					}); break;
+				case CraftResource.SapphireBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 28,
+						Skill5 = 17,
+						Skill5Val = 1,
+						Skill4 = 31,
+						Skill4Val = 1,
+						Skill3 = 32,
+						Skill3Val = 3,
+						Skill2 = 33,
+						Skill2Val = 3,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.SilverBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 1,
+						Skill5 = 13,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 7,
+						AosAttribute_AttackChance = 9,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1
+					}); break;
+				case CraftResource.SpinelBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 35,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_WeaponDamage = 8,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.StarRubyBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 12,
+						Skill5 = 55,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_DefendChance = 7,
+						AosAttribute_AttackChance = 8,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_WeaponDamage = 8
+					}); break;
+				case CraftResource.TopazBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 10,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_WeaponDamage = 7,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
+				case CraftResource.CaddelliteBlock:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 27,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 32,
+						Skill4Val = 3,
+						AosAttribute_WeaponDamage = 9,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitLeechMana = 5,
+						AosWeaponAttribute_HitLightning = 10,
+						AosWeaponAttribute_HitEnergyArea = 30,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
 
-			else if ( resource == 	CraftResource.DemonSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	11	,	0	,	32	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	1	,	3	,	3	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.DragonSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	6	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.NightmareSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	1	,	1	,	0	,	0	,	0	,	0	,	25	,	25	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.SnakeSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	8	,	0	,	40	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	6	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.TrollSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	 ); }
-			else if ( resource == 	CraftResource.UnicornSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	2	,	0	,	0	,	2	,	1	,	1	,	3	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	25	,	25	,	30	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.IcySkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	19	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.LavaSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	20	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.Seaweed	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	34	,	0	,	19	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	4	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	30	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.DeadSkin	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	1	,	0	,	36	,	2	,	22	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
+				case CraftResource.DemonSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 11,
+						Skill5 = 32,
+						Skill5Val = 2,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_SpellDamage = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.DragonSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 6,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitFireball = 20
+					}); break;
+				case CraftResource.NightmareSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_LowerManaCost = 2,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLowerAttack = 25,
+						AosWeaponAttribute_HitLowerDefend = 25,
+						AosWeaponAttribute_HitHarm = 20,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.SnakeSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 8,
+						Skill5 = 40,
+						Skill5Val = 2,
+						AosAttribute_DefendChance = 6,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_CastSpeed = 1,
+						AosWeaponAttribute_HitPoisonArea = 25,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.TrollSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 3,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_BonusStr = 1,
+						AosWeaponAttribute_SelfRepair = 3,
+						AosArmorAttribute_SelfRepair = 3
+					}); break;
+				case CraftResource.UnicornSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLowerAttack = 25,
+						AosWeaponAttribute_HitLowerDefend = 25,
+						AosWeaponAttribute_HitMagicArrow = 30,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.IcySkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 19,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitColdArea = 20
+					}); break;
+				case CraftResource.LavaSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 20,
+						Skill5 = 99,
+						Skill5Val = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitFireArea = 20
+					}); break;
+				case CraftResource.Seaweed:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 34,
+						Skill5 = 19,
+						Skill5Val = 2,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_LowerRegCost = 4,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLightning = 20,
+						AosWeaponAttribute_HitPoisonArea = 30,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.DeadSkin:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 1,
+						Skill5 = 36,
+						Skill5Val = 2,
+						Skill4 = 22,
+						Skill4Val = 5,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 2
+					}); break;
 
-			else if ( resource == 	CraftResource.BrittleSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.DrowSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.OrcSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ReptileSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.OgreSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.TrollSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.GargoyleSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.MinotaurSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	0	,	0	,	99	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.LycanSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	30	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.SharkSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	34	,	0	,	99	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ColossalSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	31	,	0	,	99	,	2	,	22	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.MysticalSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	27	,	0	,	99	,	2	,	22	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	2	,	1	,	1	,	0	,	3	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.VampireSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	5	,	0	,	99	,	2	,	22	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	2	,	0	,	0	,	1	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.LichSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	1	,	0	,	99	,	3	,	22	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	2	,	1	,	1	,	0	,	3	,	0	,	2	,	1	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.SphinxSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	12	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	3	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.DevilSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	11	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	2	,	0	,	2	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	0	,	0	,	1	,	1	 ); }
-			else if ( resource == 	CraftResource.DracoSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	6	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	1	,	0	,	0	,	3	,	0	,	0	,	5	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	25	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.XenoSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	2	,	0	,	99	,	3	,	22	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	2	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	15	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.AndorianSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	3	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.CardassianSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	4	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	1	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	10	,	0	,	0	,	0	,	1	,	0	 ); }
-			else if ( resource == 	CraftResource.MartianSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	7	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.RodianSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	8	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	CraftResource.TuskenSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	9	,	0	,	99	,	3	,	22	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	4	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	25	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.TwilekSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	16	,	0	,	35	,	3	,	39	,	3	,	16	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	20	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.XindiSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	17	,	0	,	99	,	4	,	48	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	10	,	10	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	CraftResource.ZabrakSkeletal	 ){ ResourceMods.ModifyItem( item, resource, reduce, 	29	,	0	,	99	,	3	,	48	,	3	,	38	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	3	,	0	,	1	,	0	,	0	,	2	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	2	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	10	,	0	,	10	,	0	,	0	,	0	,	2	,	0	 ); }
+				case CraftResource.BrittleSkeletal:
+				case CraftResource.DrowSkeletal:
+				case CraftResource.OrcSkeletal:
+				case CraftResource.ReptileSkeletal:
+				case CraftResource.OgreSkeletal:
+				case CraftResource.TrollSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo()); break;
+				case CraftResource.GargoyleSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 1
+					}); break;
+				case CraftResource.MinotaurSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Skill5 = 99,
+						Skill5Val = 1
+					}); break;
+				case CraftResource.LycanSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 30,
+						Skill5 = 99,
+						Skill5Val = 2
+					}); break;
+				case CraftResource.SharkSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 34,
+						Skill5 = 99,
+						Skill5Val = 2
+					}); break;
+				case CraftResource.ColossalSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 31,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 22,
+						Skill4Val = 1
+					}); break;
+				case CraftResource.MysticalSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 27,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 22,
+						Skill4Val = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitMagicArrow = 15,
+						AosWeaponAttribute_HitDispel = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.VampireSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 5,
+						Skill5 = 99,
+						Skill5Val = 2,
+						Skill4 = 22,
+						Skill4Val = 1,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitLeechHits = 10,
+						AosWeaponAttribute_HitHarm = 10,
+						AosWeaponAttribute_HitColdArea = 15
+					}); break;
+				case CraftResource.LichSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 1,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 1,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerRegCost = 3,
+						AosAttribute_EnhancePotions = 2,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLeechMana = 5,
+						AosWeaponAttribute_HitDispel = 5,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.SphinxSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 12,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_WeaponDamage = 3,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_ReflectPhysical = 3,
+						AosWeaponAttribute_HitLowerAttack = 5,
+						AosWeaponAttribute_HitLowerDefend = 5,
+						AosWeaponAttribute_HitLightning = 10,
+						AosWeaponAttribute_HitPhysicalArea = 20,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.DevilSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 11,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_LowerRegCost = 5,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitFireArea = 15,
+						AosArmorAttribute_SelfRepair = 1,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.DracoSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 6,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_AttackChance = 5,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_WeaponSpeed = 3,
+						AosWeaponAttribute_HitFireball = 25,
+						AosWeaponAttribute_HitFireArea = 25
+					}); break;
+				case CraftResource.XenoSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 2,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 3,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_WeaponDamage = 3,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitEnergyArea = 15,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.AndorianSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 3,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_EnhancePotions = 5,
+						AosWeaponAttribute_HitLowerAttack = 10,
+						AosWeaponAttribute_HitColdArea = 20
+					}); break;
+				case CraftResource.CardassianSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 4,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_BonusMana = 2,
+						AosAttribute_WeaponDamage = 2,
+						AosAttribute_SpellChanneling = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_SelfRepair = 1,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosArmorAttribute_SelfRepair = 1
+					}); break;
+				case CraftResource.MartianSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 7,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_RegenHits = 2,
+						AosAttribute_RegenStam = 2,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_NightSight = 1,
+						AosWeaponAttribute_HitPoisonArea = 20
+					}); break;
+				case CraftResource.RodianSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 8,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosAttribute_EnhancePotions = 2,
+						AosWeaponAttribute_HitPoisonArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosArmorAttribute_MageArmor = 1
+					}); break;
+				case CraftResource.TuskenSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 9,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 22,
+						Skill4Val = 2,
+						AosAttribute_BonusHits = 2,
+						AosAttribute_WeaponDamage = 4,
+						AosWeaponAttribute_HitFireArea = 20,
+						AosWeaponAttribute_HitPhysicalArea = 25
+					}); break;
+				case CraftResource.TwilekSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 16,
+						Skill5 = 35,
+						Skill5Val = 3,
+						Skill4 = 39,
+						Skill4Val = 3,
+						Skill3 = 16,
+						Skill3Val = 2,
+						AosAttribute_DefendChance = 3,
+						AosAttribute_BonusStr = 1,
+						AosAttribute_SpellChanneling = 1,
+						AosWeaponAttribute_HitLightning = 5,
+						AosWeaponAttribute_HitEnergyArea = 20
+					}); break;
+				case CraftResource.XindiSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 17,
+						Skill5 = 99,
+						Skill5Val = 4,
+						Skill4 = 48,
+						Skill4Val = 3,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_ReflectPhysical = 2,
+						AosWeaponAttribute_HitColdArea = 10,
+						AosWeaponAttribute_HitPoisonArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10
+					}); break;
+				case CraftResource.ZabrakSkeletal:
+					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						Slayer2 = 29,
+						Skill5 = 99,
+						Skill5Val = 3,
+						Skill4 = 48,
+						Skill4Val = 3,
+						Skill3 = 38,
+						Skill3Val = 2,
+						AosAttribute_AttackChance = 3,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 2,
+						AosAttribute_WeaponDamage = 3,
+						AosWeaponAttribute_SelfRepair = 2,
+						AosWeaponAttribute_HitLeechStam = 5,
+						AosWeaponAttribute_HitFireArea = 10,
+						AosWeaponAttribute_HitEnergyArea = 10,
+						AosArmorAttribute_SelfRepair = 2
+					}); break;
+			}
 		}
 
 		public static void GetGemMods( GemType resource, Item item, bool reduce )
