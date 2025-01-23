@@ -1817,44 +1817,7 @@ namespace Server
 
 		public static SlayerName GetSlayer( int var )
 		{
-			SlayerName slayer = SlayerName.None;
-			if ( var == 1 ){ slayer = SlayerName.Silver; }
-			else if ( var == 2 ){ slayer = SlayerName.OrcSlaying; }
-			else if ( var == 3 ){ slayer = SlayerName.TrollSlaughter; }
-			else if ( var == 4 ){ slayer = SlayerName.OgreTrashing; }
-			else if ( var == 5 ){ slayer = SlayerName.Repond; }
-			else if ( var == 6 ){ slayer = SlayerName.DragonSlaying; }
-			else if ( var == 7 ){ slayer = SlayerName.Terathan; }
-			else if ( var == 8 ){ slayer = SlayerName.SnakesBane; }
-			else if ( var == 9 ){ slayer = SlayerName.LizardmanSlaughter; }
-			else if ( var == 10 ){ slayer = SlayerName.ReptilianDeath; }
-			else if ( var == 11 ){ slayer = SlayerName.DaemonDismissal; }
-			else if ( var == 12 ){ slayer = SlayerName.GargoylesFoe; }
-			else if ( var == 13 ){ slayer = SlayerName.BalronDamnation; }
-			else if ( var == 14 ){ slayer = SlayerName.Exorcism; }
-			else if ( var == 15 ){ slayer = SlayerName.Ophidian; }
-			else if ( var == 16 ){ slayer = SlayerName.SpidersDeath; }
-			else if ( var == 17 ){ slayer = SlayerName.ScorpionsBane; }
-			else if ( var == 18 ){ slayer = SlayerName.ArachnidDoom; }
-			else if ( var == 19 ){ slayer = SlayerName.FlameDousing; }
-			else if ( var == 20 ){ slayer = SlayerName.WaterDissipation; }
-			else if ( var == 21 ){ slayer = SlayerName.Vacuum; }
-			else if ( var == 22 ){ slayer = SlayerName.ElementalHealth; }
-			else if ( var == 23 ){ slayer = SlayerName.EarthShatter; }
-			else if ( var == 24 ){ slayer = SlayerName.BloodDrinking; }
-			else if ( var == 25 ){ slayer = SlayerName.SummerWind; }
-			else if ( var == 26 ){ slayer = SlayerName.ElementalBan; }
-			else if ( var == 27 ){ slayer = SlayerName.WizardSlayer; }
-			else if ( var == 28 ){ slayer = SlayerName.AvianHunter; }
-			else if ( var == 29 ){ slayer = SlayerName.SlimyScourge; }
-			else if ( var == 30 ){ slayer = SlayerName.AnimalHunter; }
-			else if ( var == 31 ){ slayer = SlayerName.GiantKiller; }
-			else if ( var == 32 ){ slayer = SlayerName.GolemDestruction; }
-			else if ( var == 33 ){ slayer = SlayerName.WeedRuin; }
-			else if ( var == 34 ){ slayer = SlayerName.NeptunesBane; }
-			else if ( var == 35 ){ slayer = SlayerName.Fey; }
-
-			return slayer;
+			return Enum.IsDefined(typeof(SlayerName), var) ? ((SlayerName)var) :  SlayerName.None;
 		}
 
 		public static SkillName GetSkill( int var )
