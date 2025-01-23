@@ -111,11 +111,29 @@ namespace Server.Engines.MLQuests
 
 					Register(type, quest);
 
-					foreach (var questGiver in quest.GetQuestGivers())
+					if (quest.Objectives != null)
+						ValidateDummyObjectiveText(quest.Objectives);
+
+                    foreach (var questGiver in quest.GetQuestGivers())
 					{
 						RegisterQuestGiver(quest, questGiver);
 					}
 				}
+			}
+		}
+
+		private static void ValidateDummyObjectiveText(IEnumerable<BaseObjective> objectives)
+		{
+			foreach (var objective in objectives.Where(x => x is DummyObjective).Cast<DummyObjective>())
+			{
+				const int MAX_LENGTH = 60;
+				var text = objective.Name.String;
+				if (string.IsNullOrWhiteSpace(text) || text.Length <= MAX_LENGTH) continue;
+
+				Console.WriteLine("Warning: Objective text is too long.");
+				Console.WriteLine(text.Substring(0, MAX_LENGTH));
+				Console.WriteLine(text.Substring(MAX_LENGTH));
+				Console.WriteLine();
 			}
 		}
 
