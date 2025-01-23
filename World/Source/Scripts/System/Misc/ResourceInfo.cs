@@ -1328,42 +1328,14 @@ namespace Server.Items
 				case CraftResource.RedScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 1,
-						Skill4Val = 2,
-						AosAttribute_RegenHits = 1,
-						AosAttribute_BonusHits = 3,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_LowerRegCost = 3,
-						AosAttribute_ReflectPhysical = 2,
-						AosAttribute_EnhancePotions = 5,
-						AosWeaponAttribute_HitFireArea = 25
+						AosAttribute_RegenHits = 2,
 					}); break;
 				case CraftResource.YellowScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 35,
-						Skill4Val = 1,
-						Skill3 = 16,
-						Skill3Val = 1,
-						Skill2 = 39,
-						Skill2Val = 2,
-						Skill1 = 41,
-						Skill1Val = 2,
-						AosAttribute_RegenStam = 1,
-						AosAttribute_BonusMana = 3,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitColdArea = 5,
-						AosWeaponAttribute_HitFireArea = 5,
-						AosWeaponAttribute_HitPoisonArea = 5,
-						AosWeaponAttribute_HitEnergyArea = 5,
-						AosWeaponAttribute_HitPhysicalArea = 5
+						AosAttribute_AttackChance = 2,
 					}); break;
-				case CraftResource.BlackScales:
+				case CraftResource.BlackScales: // Hiding + Stealth + Tactics
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
 						Skill5 = 99,
@@ -1372,56 +1344,27 @@ namespace Server.Items
 						Skill4Val = 2,
 						Skill3 = 46,
 						Skill3Val = 2,
-						AosAttribute_BonusStr = 1,
-						AosAttribute_BonusStam = 3,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitPhysicalArea = 25
+						AosAttribute_NightSight = 1,
 					}); break;
 				case CraftResource.GreenScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 40,
-						Skill4Val = 2,
-						AosAttribute_BonusDex = 1,
-						AosAttribute_BonusStam = 3,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitPoisonArea = 25
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusDex = 3,
 					}); break;
 				case CraftResource.WhiteScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 23,
-						Skill4Val = 2,
-						AosAttribute_BonusInt = 1,
-						AosAttribute_BonusMana = 3,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitColdArea = 25
+						AosArmorAttribute_MageArmor = 1
 					}); break;
 				case CraftResource.BlueScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 19,
-						Skill4Val = 2,
-						AosAttribute_RegenStam = 1,
-						AosAttribute_BonusHits = 2,
-						AosAttribute_BonusStam = 2,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitColdArea = 10,
-						AosWeaponAttribute_HitPoisonArea = 15
+						AosAttribute_RegenMana = 2,
 					}); break;
 				case CraftResource.DinosaurScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
-					{
+					{ // Vet, Herding, Taming, Tactics
 						Skill5 = 99,
 						Skill5Val = 2,
 						Skill4 = 4,
@@ -1430,189 +1373,70 @@ namespace Server.Items
 						Skill3Val = 1,
 						Skill2 = 53,
 						Skill2Val = 2,
-						AosAttribute_RegenHits = 1,
-						AosAttribute_BonusHits = 3,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitPhysicalArea = 25
+						AosArmorAttribute_MageArmor = 1
 					}); break;
 				case CraftResource.MetallicScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 8,
-						Skill4Val = 1,
-						Skill3 = 34,
-						Skill3Val = 1,
-						AosAttribute_BonusStr = 1,
-						AosAttribute_BonusHits = 2,
-						AosAttribute_BonusStam = 2,
-						AosAttribute_BonusMana = 2,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitFireArea = 5,
-						AosWeaponAttribute_HitEnergyArea = 10,
-						AosWeaponAttribute_HitPhysicalArea = 10
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_BonusInt = 2,
 					}); break;
 				case CraftResource.BrazenScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						AosAttribute_BonusInt = 1,
-						AosAttribute_BonusMana = 4,
 						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitFireArea = 15,
-						AosWeaponAttribute_HitEnergyArea = 10
 					}); break;
 				case CraftResource.UmberScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 36,
-						Skill4Val = 1,
-						Skill3 = 44,
-						Skill3Val = 1,
-						AosAttribute_RegenMana = 1,
-						AosAttribute_BonusInt = 1,
-						AosAttribute_BonusMana = 4,
-						AosAttribute_SpellDamage = 2,
-						AosAttribute_CastRecovery = 1,
 						AosAttribute_CastSpeed = 1,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitFireArea = 10,
-						AosWeaponAttribute_HitEnergyArea = 10,
-						AosWeaponAttribute_HitPhysicalArea = 5
+						AosArmorAttribute_MageArmor = 1,
 					}); break;
 				case CraftResource.VioletScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 55,
-						Skill4Val = 1,
-						Skill3 = 21,
-						Skill3Val = 1,
-						AosAttribute_RegenStam = 1,
-						AosAttribute_BonusInt = 1,
-						AosAttribute_BonusMana = 4,
 						AosAttribute_SpellDamage = 2,
-						AosAttribute_CastRecovery = 1,
-						AosAttribute_CastSpeed = 1,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitFireball = 25
+						AosArmorAttribute_MageArmor = 1,
 					}); break;
 				case CraftResource.PlatinumScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 2,
-						Skill4 = 13,
-						Skill4Val = 2,
-						AosAttribute_RegenHits = 1,
-						AosAttribute_RegenStam = 1,
-						AosAttribute_BonusInt = 2,
-						AosAttribute_BonusHits = 2,
-						AosAttribute_BonusStam = 2,
-						AosAttribute_BonusMana = 2,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 2,
-						AosWeaponAttribute_HitLightning = 25
+						AosAttribute_CastRecovery = 1,
+						AosArmorAttribute_MageArmor = 1,
 					}); break;
 				case CraftResource.CadalyteScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 4,
-						Skill4 = 32,
-						Skill4Val = 4,
-						AosAttribute_BonusStr = 2,
-						AosAttribute_BonusDex = 2,
-						AosAttribute_BonusHits = 3,
-						AosAttribute_BonusStam = 3,
-						AosAttribute_WeaponDamage = 7,
-						AosAttribute_WeaponSpeed = 7,
-						AosAttribute_ReflectPhysical = 4,
-						AosWeaponAttribute_SelfRepair = 2,
-						AosWeaponAttribute_HitColdArea = 10,
-						AosWeaponAttribute_HitFireArea = 10,
-						AosWeaponAttribute_HitPoisonArea = 10,
-						AosWeaponAttribute_HitEnergyArea = 10,
-						AosWeaponAttribute_HitPhysicalArea = 10,
-						AosArmorAttribute_SelfRepair = 2
+						AosAttribute_WeaponDamage = 5,
+						AosAttribute_WeaponSpeed = 5,
 					}); break;
 				case CraftResource.GornScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 3,
-						Skill4 = 48,
-						Skill4Val = 3,
+						AosAttribute_WeaponDamage = 5,
 						AosAttribute_BonusStr = 2,
 						AosAttribute_BonusHits = 3,
-						AosAttribute_WeaponDamage = 6,
-						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 3,
-						AosWeaponAttribute_SelfRepair = 1,
-						AosWeaponAttribute_HitFireArea = 5,
-						AosArmorAttribute_SelfRepair = 1
 					}); break;
 				case CraftResource.TrandoshanScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 3,
-						Skill4 = 19,
-						Skill4Val = 3,
 						AosAttribute_BonusDex = 2,
-						AosAttribute_BonusStam = 3,
-						AosAttribute_WeaponDamage = 6,
 						AosAttribute_WeaponSpeed = 5,
-						AosAttribute_ReflectPhysical = 3,
-						AosWeaponAttribute_SelfRepair = 1,
-						AosWeaponAttribute_HitColdArea = 5,
-						AosArmorAttribute_SelfRepair = 1
 					}); break;
 				case CraftResource.SilurianScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 99,
-						Skill5Val = 3,
-						Skill4 = 17,
-						Skill4Val = 3,
-						AosAttribute_BonusInt = 2,
-						AosAttribute_BonusMana = 3,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_SpellDamage = 2,
-						AosAttribute_CastRecovery = 2,
-						AosAttribute_CastSpeed = 2,
-						AosAttribute_ReflectPhysical = 3,
-						AosAttribute_NightSight = 1,
-						AosWeaponAttribute_SelfRepair = 1,
-						AosWeaponAttribute_HitEnergyArea = 5,
-						AosWeaponAttribute_MageWeapon = 1,
-						AosArmorAttribute_SelfRepair = 1,
+						AosAttribute_LowerManaCost = 3,
+						AosAttribute_SpellDamage = 3,
 						AosArmorAttribute_MageArmor = 1
 					}); break;
 				case CraftResource.KraytScales:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
-						Skill5 = 25,
-						Skill5Val = 3,
-						Skill4 = 46,
-						Skill4Val = 3,
-						AosAttribute_BonusDex = 2,
-						AosAttribute_BonusStam = 3,
-						AosAttribute_WeaponDamage = 5,
-						AosAttribute_ReflectPhysical = 3,
-						AosAttribute_SpellChanneling = 1,
-						AosWeaponAttribute_SelfRepair = 1,
-						AosWeaponAttribute_HitPoisonArea = 5,
-						AosArmorAttribute_SelfRepair = 1
+						AosAttribute_WeaponDamage = 3,
+						AosAttribute_WeaponSpeed = 5,
+						AosArmorAttribute_MageArmor = 1
 					}); break;
 
 				case CraftResource.SpectralSpec:
