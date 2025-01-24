@@ -52,21 +52,27 @@ namespace Scripts.Mythik.Systems.Achievements
 
             #region Exploration - 1 to 999
             Categories.Add(new AchievementCategory(1, 0, "Exploration"));
-            var discoverSosaria       = Add(new DiscoverLandAchievement(1,  1, DISCOVER_LAND_GRAPHIC, false, null, "One Small Step", "Discover the World of Sosaria", 5, Land.Sosaria));
-            var discoverUmberVeil     = Add(new DiscoverLandAchievement(2,  1, DISCOVER_LAND_GRAPHIC, false, null, "Through The Veil", "Discover the land of Umber Veil", 5, Land.UmberVeil));
-            var discoverAmbrosia      = Add(new DiscoverLandAchievement(3,  1, DISCOVER_LAND_GRAPHIC, false, null, "The Lost Land", "Discover the land of Ambrosia", 5, Land.Ambrosia));
-            var discoverLodoria       = Add(new DiscoverLandAchievement(4,  1, DISCOVER_LAND_GRAPHIC, false, null, "One Does Not Simply...", "Discover the Elven World of Lodoria", 5, Land.Lodoria));
-            var discoverSerpentIsland = Add(new DiscoverLandAchievement(5,  1, DISCOVER_LAND_GRAPHIC, false, null, "Hisstory In The Making", "Discover the Serpent Island", 5, Land.Serpent));
-            var discoverDreadIsles    = Add(new DiscoverLandAchievement(6,  1, DISCOVER_LAND_GRAPHIC, false, null, "Dread The Unknown", "Discover the Isles of Dread", 5, Land.IslesDread));
-            var discoverSavagedEmpire = Add(new DiscoverLandAchievement(7,  1, DISCOVER_LAND_GRAPHIC, false, null, "This Party Is Savage", "Discover the Savaged Empire", 5, Land.Savaged));
-            var discoverBottleWorld   = Add(new DiscoverLandAchievement(8,  1, DISCOVER_LAND_GRAPHIC, false, null, "Message In A Bottle", "Discover the Bottle World of Kuldar", 5, Land.Kuldar));
-            var discoverUnderworld    = Add(new DiscoverLandAchievement(9,  1, DISCOVER_LAND_GRAPHIC, false, null, "Into The Darkness", "Discover the Underworld", 5, Land.Underworld));
-            var discoverLuna          = Add(new DiscoverLandAchievement(10, 1, DISCOVER_LAND_GRAPHIC, false, null, "Blastoff!", "Discover the City of Luna", 5, Land.Luna));
-            var discoverSkara         = Add(new DiscoverLandAchievement(11, 1, DISCOVER_LAND_GRAPHIC, false, null, "Help! I'm Trapped!", "Discover the Town of Skara Brae", 5, Land.SkaraBrae));
-            var discoverAtlantis      = Add(new DiscoverLandAchievement(12, 1, DISCOVER_LAND_GRAPHIC, true,  null, "The Lost City", "Discover the World of Atlantis", 5, Land.Atlantis)); // TODO: No way atm?
+            #region Exploration - Facets (1 - 19)
+
+            var discoverSosaria = AddLand(1, 1, "One Small Step", "Discover the World of Sosaria", Land.Sosaria);
+            var discoverUmberVeil = AddLand(2, 1, "Through The Veil", "Discover the land of Umber Veil", Land.UmberVeil);
+            var discoverAmbrosia = AddLand(3, 1, "The Lost Land", "Discover the land of Ambrosia", Land.Ambrosia);
+            var discoverLodoria = AddLand(4, 1, "One Does Not Simply...", "Discover the Elven World of Lodoria", Land.Lodoria);
+            var discoverSerpentIsland = AddLand(5, 1, "Hisstory In The Making", "Discover the Serpent Island", Land.Serpent);
+            var discoverDreadIsles = AddLand(6, 1, "Dread The Unknown", "Discover the Isles of Dread", Land.IslesDread);
+            var discoverSavagedEmpire = AddLand(7, 1, "This Party Is Savage", "Discover the Savaged Empire", Land.Savaged);
+            var discoverBottleWorld = AddLand(8, 1, "Message In A Bottle", "Discover the Bottle World of Kuldar", Land.Kuldar);
+            var discoverUnderworld = AddLand(9, 1, "Into The Darkness", "Discover the Underworld", Land.Underworld);
+            var discoverLuna = AddLand(10, 1, "Blastoff!", "Discover the City of Luna", Land.Luna);
+            var discoverSkara = AddLand(11, 1, "Help! I'm Trapped!", "Discover the Town of Skara Brae", Land.SkaraBrae);
+            var discoverAtlantis = AddLand(12, 1, "The Lost City", "Discover the World of Atlantis", Land.Atlantis);
+            discoverAtlantis.HiddenTillComplete = true;  // TODO: No way atm?
             // 13
             // 14
             // 15
+            // 16
+            
+            #endregion Exploration - Facets (1 - 19)
 
             Categories.Add(new AchievementCategory(2, 1, "Towns"));
             Categories.Add(new AchievementCategory(3, 1, "Dungeons"));
@@ -102,9 +108,12 @@ namespace Scripts.Mythik.Systems.Achievements
             LoadData();
         }
 
-        private static DiscoverLandAchievement Add(DiscoverLandAchievement achievement)
+        private static DiscoverLandAchievement AddLand(int achievementId, int categoryId, string title, string description, Land land)
         {
-            achievement.HideDesc = true;
+            var achievement = new DiscoverLandAchievement(achievementId, categoryId, 0, false, null, title, description, 5, land)
+            {
+                ItemIcon = 0x14EB, // Map
+            };
             Achievements.Add(achievement);
 
             return achievement;
