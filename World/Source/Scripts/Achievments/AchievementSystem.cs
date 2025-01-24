@@ -6,11 +6,14 @@ using Server.Items;
 using Server.Commands;
 using Server.Misc;
 using Scripts.Mythik.Systems.Achievements.Gumps;
+using System.Globalization;
 
 namespace Scripts.Mythik.Systems.Achievements
 {
     public class AchievementSystem
     {
+        private static readonly TextInfo m_TextInfo = new CultureInfo("en-US", false).TextInfo;
+
         public class AchievementCategory
         {
             public int ID { get; set; }
@@ -51,7 +54,9 @@ namespace Scripts.Mythik.Systems.Achievements
             const int DISCOVER_LAND_GRAPHIC = 0x14EB; // Map
 
             #region Exploration - 1 to 999
+
             Categories.Add(new AchievementCategory(1, 0, "Exploration"));
+
             #region Exploration - Facets (1 - 19)
 
             var discoverSosaria = AddLand(1, 1, "One Small Step", "Discover the World of Sosaria", Land.Sosaria);
@@ -71,10 +76,99 @@ namespace Scripts.Mythik.Systems.Achievements
             // 14
             // 15
             // 16
-            
+
             #endregion Exploration - Facets (1 - 19)
 
+            #region Exploration - Towns (20 - 119)
+
             Categories.Add(new AchievementCategory(2, 1, "Towns"));
+
+            // Ambrosia
+            // 20
+            // 21
+            // 22
+            // 23
+
+            // Isle of Dread
+            AddTown(24, 2, discoverDreadIsles, "the Cimmeran Hold");
+            AddTown(25, 2, discoverDreadIsles, "the Forgotten Lighthouse");
+            // 26
+            // 27
+            // 28
+            // 29
+
+            // Lodoria
+            AddTown(30, 2, discoverLodoria, "the Port of Dusk");
+            AddTown(31, 2, discoverLodoria, "the City of Elidor");
+            AddTown(32, 2, discoverLodoria, "the Town of Glacial Hills");
+            AddTown(33, 2, discoverLodoria, "Greensky Village");
+            AddTown(34, 2, discoverLodoria, "the Village of Islegem");
+            AddTown(35, 2, discoverLodoria, "Kraken Reef Docks");
+            AddTown(36, 2, discoverLodoria, "the City of Lodoria");
+            AddTown(37, 2, discoverLodoria, "the Village of Portshine");
+            AddTown(38, 2, discoverLodoria, "the Village of Ravendark");
+            AddTown(39, 2, discoverLodoria, "the Village of Springvale");
+            AddTown(40, 2, discoverLodoria, "the Port of Starguide");
+            AddTown(41, 2, discoverLodoria, "the Village of Whisper");
+            // 41
+            // 42
+            // 43
+            // 44
+
+            // Savaged Empire
+            AddTown(45, 2, discoverSavagedEmpire, "the Barako Mines");
+            AddTown(46, 2, discoverSavagedEmpire, "Savage Sea Docks");
+            AddTown(47, 2, discoverSavagedEmpire, "the Village of Barako");
+            AddTown(48, 2, discoverSavagedEmpire, "the Village of Kurak");
+            // 49
+            // 50
+            // 51
+            // 52
+
+            // Serpent Island
+            AddTown(53, 2, discoverSerpentIsland, "the City of Furnace");
+            AddTown(54, 2, discoverSerpentIsland, "Serpent Sail Docks");
+            // 55
+            // 56
+            // 57
+            // 58
+
+            // Sosaria
+            AddTown(59, 2, discoverSosaria, "Anchor Rock Docks");
+            AddTown(60, 2, discoverSosaria, "the City of Britain");
+            AddTown(61, 2, discoverSosaria, "the Lunar City of Dawn"); // TODO: Redundant?
+            AddTown(62, 2, discoverSosaria, "Death Gulch");
+            AddTown(63, 2, discoverSosaria, "the Town of Devil Guard");
+            AddTown(64, 2, discoverSosaria, "the Village of Fawn");
+            AddTown(65, 2, discoverSosaria, "Glacial Coast Village");
+            AddTown(66, 2, discoverSosaria, "the Village of Grey");
+            AddTown(67, 2, discoverSosaria, "Iceclad Fisherman's Village");
+            AddTown(68, 2, discoverSosaria, "the City of Montor");
+            AddTown(69, 2, discoverSosaria, "the Town of Moon");
+            AddTown(70, 2, discoverSosaria, "the Town of Mountain Crest");
+            AddTown(71, 2, discoverSosaria, "the Fort of Stonewall");
+            AddTown(72, 2, discoverSosaria, "the Undercity of Umbra");
+            // 73
+            // 74
+            // 75
+            // 76
+
+            // Umber Veil
+            AddTown(77, 2, discoverUmberVeil, "the Town of Renika");
+            // 78
+            // 79
+            // 80
+            // 81
+
+            // Underworld
+            AddTown(82, 2, discoverUnderworld, "the Fort of Tenebrae");
+            // 83
+            // 84
+            // 85
+            // 86
+
+            #endregion Exploration - Towns (20 - 119)
+
             Categories.Add(new AchievementCategory(3, 1, "Dungeons"));
             Categories.Add(new AchievementCategory(4, 1, "Points of Interest"));
             #endregion Exploration - 1 to 999
@@ -117,6 +211,75 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(achievement);
 
             return achievement;
+        }
+
+        private static DiscoveryAchievement AddTown(int achievementId, int categoryId, DiscoverLandAchievement prerequisite, string region)
+        {
+            var title = m_TextInfo.ToTitleCase(region);
+            var landName = GetLandName(prerequisite.Land);
+
+            // Get Sextant Location
+            string location;
+            switch (region)
+            {
+                // Manual overrides
+                case "the Village of Ravendark": location = "154° 27'S, 147° 14'W"; break;
+                case "the Barako Mines": location = "174° 57'S, 169° 6'W"; break;
+                case "the Lunar City of Dawn": location = "120° 11'N, 79° 52'E"; break;
+                case "the Fort of Stonewall": location = "90° 29'N, 51° 28'W"; break;
+                case "the Undercity of Umbra": location = "1° 15'N, 56° 57'E"; break;
+                case "Kraken Reef Docks": location = "107° 15'S, 157° 30'E"; break;
+                case "Savage Sea Docks": location = "118° 2'N, 154° 20'E"; break;
+                case "Serpent Sail Docks": location = "137° 10'S, 4° 37'W"; break;
+                case "Anchor Rock Docks": location = "16° 34'N, 154° 11'W"; break;
+
+                // Automatically resolvable
+                default:
+                    {
+                        Map place;
+                        int xc;
+                        int yc;
+                        location = Worlds.GetTown(0, region, out place, out xc, out yc);
+                        if (place == Map.Internal)
+                            Console.WriteLine("Failed to detect location for: {0}", region);
+
+                        break;
+                    }
+            }
+
+            var achievement = new DiscoveryAchievement(achievementId, categoryId, 0, false, prerequisite, title, null, 5, region)
+            {
+                ItemIcon = 0x22C9, // Mini house
+                HideDesc = true,
+                HiddenDesc = string.Format("{0} | Discover {1}", landName, region),
+                Desc = !string.IsNullOrWhiteSpace(location)
+                    ? string.Format("{0} | {1}", landName, location)
+                    : landName
+            };
+
+            Achievements.Add(achievement);
+
+            return achievement;
+        }
+
+        private static string GetLandName(Land land)
+        {
+            switch (land)
+            {
+                case Land.Ambrosia: return "Ambrosia";
+                case Land.Atlantis: return "Atlantis";
+                case Land.IslesDread: return "Isles of Dread";
+                case Land.Kuldar: return "Kuldar";
+                case Land.Lodoria: return "Lodoria";
+                case Land.Luna: return "Luna";
+                case Land.Savaged: return "Savaged";
+                case Land.Serpent: return "Serpent";
+                case Land.SkaraBrae: return "Skara Brae";
+                case Land.Sosaria: return "Sosaria";
+                case Land.UmberVeil: return "Umber Veil";
+                case Land.Underworld: return "Underworld";
+                default: throw new Exception("Unsupported land type: " + land.ToString());
+            }
         }
 
         private static void LoadData()
