@@ -296,7 +296,35 @@ namespace Scripts.Mythik.Systems.Achievements
             #endregion Hunting - 1000 to 1999
 
             #region Resource Gathering - 2000 to 2999
+
             Categories.Add(new AchievementCategory(2000, 0, "Resource Gathering"));
+
+            #region Resource Gathering - Lumberjacking (2000 - 2249)
+
+            Categories.Add(new AchievementCategory(2001, 0, "Lumberjacking"));
+
+            const int LOG_GRAPHIC = 0x1BE0; // Log
+            achieve = AddHarvest(2000, 2001, LOG_GRAPHIC, null, 1, item => item is BaseLog, "Chop Chop!", "Harvest your first Log");
+            achieve = AddHarvest(2001, 2001, LOG_GRAPHIC, achieve, 100, item => item is BaseLog, "Wooden You Know", "Harvest 100 Logs");
+            achieve = AddHarvest(2002, 2001, LOG_GRAPHIC, achieve, 1000, item => item is BaseLog, "Lumbering Along", "Harvest 1,000 Logs");
+            achieve = AddHarvest(2003, 2001, LOG_GRAPHIC, achieve, 10000, item => item is BaseLog, "Chop It Like It's Hot", "Harvest 10,000 Logs");
+            achieve = AddHarvest(2004, 2001, LOG_GRAPHIC, achieve, 100000, item => item is BaseLog, "Timber!", "Harvest 100,000 Logs");
+
+            #endregion Resource Gathering - Lumberjacking (2000 - 2249)
+
+            #region Resource Gathering - Mining (2250 - 2499)
+
+            Categories.Add(new AchievementCategory(2002, 0, "Mining"));
+
+            const int ORE_GRAPHIC = 0x19B9; // Ore
+            achieve = AddHarvest(2250, 2002, ORE_GRAPHIC, null, 1, item => item is BaseOre, "Finding The Vein", "Mine your first Ore");
+            achieve = AddHarvest(2251, 2002, ORE_GRAPHIC, achieve, 100, item => item is BaseOre, "Minor Miner", "Mine 100 Ore");
+            achieve = AddHarvest(2252, 2002, ORE_GRAPHIC, achieve, 1000, item => item is BaseOre, "Ya dig?", "Mine 1,000 Ore");
+            achieve = AddHarvest(2253, 2002, ORE_GRAPHIC, achieve, 10000, item => item is BaseOre, "What's Yours I Mine", "Mine 10,000 Ore");
+            achieve = AddHarvest(2254, 2002, ORE_GRAPHIC, achieve, 100000, item => item is BaseOre, "Mining My Own Business", "Mine 100,000 Ore");
+
+            #endregion Resource Gathering - Mining (2250 - 2499)
+
             #endregion Resource Gathering - 2000 to 2999
 
             #region Crafting - 3000 to 3999
@@ -417,6 +445,15 @@ namespace Scripts.Mythik.Systems.Achievements
                     ? location
                     : string.Format("{0} | {1}", location, relicQuestItem)
             };
+
+            Achievements.Add(achievement);
+
+            return achievement;
+        }
+
+        private static HarvestAchievement AddHarvest(int achievementId, int categoryId, int itemIcon, BaseAchievement prerequisite, int amount, Func<Item, bool> predicate, string title, string description)
+        {
+            var achievement = new HarvestAchievement(achievementId, categoryId, itemIcon, false, prerequisite, amount, title, description, 5, predicate);
 
             Achievements.Add(achievement);
 
