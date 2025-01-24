@@ -245,7 +245,6 @@ namespace Server.Engines.Harvest
 							Region reg = Region.Find( from.Location, from.Map );
 
 							int amount = Math.Min(bank.Current, def.ConsumedPerHarvest);
-							int dreadAmount = def.ConsumedPerIslesDreadHarvest;
 
 							if ( item is BlankScroll )
 							{
@@ -253,10 +252,8 @@ namespace Server.Engines.Harvest
 								from.SendMessage( "You find some blank scrolls.");
 							}
 
-							if ( from.Land == Land.IslesDread )
-								item.Amount = dreadAmount;
-							else if ( reg.IsPartOf( "the Mines of Morinia" ) && item is BaseOre && Utility.RandomMinMax( 1, 3 ) > 1 )
-								item.Amount = dreadAmount;
+							if ( from.Land == Land.IslesDread || ( reg.IsPartOf( "the Mines of Morinia" ) && item is BaseOre && Utility.RandomMinMax( 1, 3 ) > 1 ) )
+								item.Amount = Math.Min(bank.Current, def.ConsumedPerIslesDreadHarvest);
 							else
 								item.Amount = amount;
 
