@@ -346,6 +346,7 @@ namespace Scripts.Mythik.Systems.Achievements
                 case "the Lunar City of Dawn": location = "120° 11'N, 79° 52'E"; break;
                 case "the Fort of Stonewall": location = "90° 29'N, 51° 28'W"; break;
                 case "the Undercity of Umbra": location = "1° 15'N, 56° 57'E"; break;
+                case "the Forgotten Lighthouse": location = "51° 29'N, 2° 44'W"; break;
                 case "Kraken Reef Docks": location = "107° 15'S, 157° 30'E"; break;
                 case "Savage Sea Docks": location = "118° 2'N, 154° 20'E"; break;
                 case "Serpent Sail Docks": location = "137° 10'S, 4° 37'W"; break;
