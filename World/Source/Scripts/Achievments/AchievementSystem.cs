@@ -169,7 +169,125 @@ namespace Scripts.Mythik.Systems.Achievements
 
             #endregion Exploration - Towns (20 - 119)
 
+            #region Exploration - Dungeons (120 - 219)
+
             Categories.Add(new AchievementCategory(3, 1, "Dungeons"));
+
+            // Ambrosia
+            AddDungeon(120, 3, discoverAmbrosia, "the City of the Dead");
+            AddDungeon(121, 3, discoverAmbrosia, "the Dragon's Maw");
+            AddDungeon(122, 3, discoverAmbrosia, "the Cave of the Zuluu");
+            // ...
+            // 130
+
+            // Isle of Dread
+            AddDungeon(131, 3, discoverDreadIsles, "the Blood Temple");
+            AddDungeon(132, 3, discoverDreadIsles, "the Glacial Scar");
+            AddDungeon(133, 3, discoverDreadIsles, "the Ice Queen Fortress");
+            AddDungeon(134, 3, discoverDreadIsles, "the Sanctum of Saltmarsh");
+            AddDungeon(135, 3, discoverDreadIsles, "the Scurvy Reef");
+            AddDungeon(136, 3, discoverDreadIsles, "the Temple of Osirus");
+            // ...
+            // 145
+
+            // Lodoria
+            AddDungeon(146, 3, discoverLodoria, "the Lodoria Catacombs");
+            AddDungeon(147, 3, discoverLodoria, "the City of Embers");
+            AddDungeon(148, 3, discoverLodoria, "Dungeon Covetous");
+            AddDungeon(149, 3, discoverLodoria, "Dungeon Despise");
+            AddDungeon(150, 3, discoverLodoria, "Dungeon Deceit");
+            AddDungeon(151, 3, discoverLodoria, "Dungeon Destard");
+            AddDungeon(152, 3, discoverLodoria, "the Frozen Hells", false);
+            AddDungeon(153, 3, discoverLodoria, "Dungeon Hythloth");
+            AddDungeon(154, 3, discoverLodoria, "Dungeon Wrong", false);
+            AddDungeon(155, 3, discoverLodoria, "the Lizardman Cave", false);
+            AddDungeon(156, 3, discoverLodoria, "the Castle of Dracula", false);
+            AddDungeon(157, 3, discoverLodoria, "the Crypts of Dracula");
+            AddDungeon(158, 3, discoverLodoria, "Dungeon Shame");
+            AddDungeon(159, 3, discoverLodoria, "Stonegate Castle");
+            AddDungeon(160, 3, discoverLodoria, "Terathan Keep");
+            AddDungeon(161, 3, discoverLodoria, "the Halls of Undermountain");
+            AddDungeon(162, 3, discoverLodoria, "the Volcanic Cave");
+            // ...
+            // 175
+
+            // Savaged Empire
+            AddDungeon(176, 3, discoverSavagedEmpire, "the Cave of the Ancient Wyrm", false);
+            AddDungeon(177, 3, discoverSavagedEmpire, "the Dungeon of the Mad Archmage");
+            AddDungeon(178, 3, discoverSavagedEmpire, "the Corrupt Pass", false);
+            AddDungeon(179, 3, discoverSavagedEmpire, "the Catacombs of Azerok");
+            AddDungeon(180, 3, discoverSavagedEmpire, "the Dungeon of the Lich King");
+            AddDungeon(181, 3, discoverSavagedEmpire, "the Halls of Ogrimar", false);
+            AddDungeon(182, 3, discoverSavagedEmpire, "the Great Pyramid", false);
+            AddDungeon(183, 3, discoverSavagedEmpire, "the Ratmen Mines", false);
+            AddDungeon(184, 3, discoverSavagedEmpire, "Dungeon Rock");
+            AddDungeon(185, 3, discoverSavagedEmpire, "the Spider Cave", false);
+            AddDungeon(186, 3, discoverSavagedEmpire, "the Tomb of Kazibal");
+            AddDungeon(187, 3, discoverSavagedEmpire, "the Tombs");
+            AddDungeon(188, 3, discoverSavagedEmpire, "the Undersea Castle");
+            AddDungeon(189, 3, discoverSavagedEmpire, "the Storm Giant Lair", false);
+            // ...
+            // 200
+
+            // Serpent Island
+            AddDungeon(200, 3, discoverSerpentIsland, "the Ancient Prison");
+            AddDungeon(201, 3, discoverSerpentIsland, "the Vault of the Black Knight");
+            AddDungeon(202, 3, discoverSerpentIsland, "the Cave of Fire");
+            AddDungeon(203, 3, discoverSerpentIsland, "the Cave of Souls");
+            AddDungeon(204, 3, discoverSerpentIsland, "Dungeon Ankh");
+            AddDungeon(205, 3, discoverSerpentIsland, "Dungeon Bane");
+            AddDungeon(206, 3, discoverSerpentIsland, "Dungeon Hate");
+            AddDungeon(207, 3, discoverSerpentIsland, "Dungeon Scorn");
+            AddDungeon(208, 3, discoverSerpentIsland, "Dungeon Torment");
+            AddDungeon(209, 3, discoverSerpentIsland, "Dungeon Vile");
+            AddDungeon(210, 3, discoverSerpentIsland, "Dungeon Wicked");
+            AddDungeon(211, 3, discoverSerpentIsland, "Dungeon Wrath");
+            AddDungeon(212, 3, discoverSerpentIsland, "the Flooded Temple");
+            AddDungeon(213, 3, discoverSerpentIsland, "the Gargoyle Crypts");
+            AddDungeon(214, 3, discoverSerpentIsland, "the Serpent Sanctum");
+            AddDungeon(215, 3, discoverSerpentIsland, "the Tomb of the Fallen Wizard");
+            // ...
+            // 225
+
+            // Sosaria
+            AddDungeon(226, 3, discoverSosaria, "the Ancient Pyramid");
+            AddDungeon(227, 3, discoverSosaria, "the Ruins of the Black Blade", false);
+            AddDungeon(228, 3, discoverSosaria, "Dungeon Exodus");
+            AddDungeon(229, 3, discoverSosaria, "the Cave of Banished Mages", false);
+            AddDungeon(230, 3, discoverSosaria, "the Caverns of Poseidon");
+            AddDungeon(231, 3, discoverSosaria, "Dungeon Clues");
+            AddDungeon(232, 3, discoverSosaria, "Dardin's Pit");
+            AddDungeon(233, 3, discoverSosaria, "Dungeon Doom");
+            AddDungeon(234, 3, discoverSosaria, "the Fires of Hell");
+            AddDungeon(235, 3, discoverSosaria, "the Forgotten Halls");
+            AddDungeon(236, 3, discoverSosaria, "the Mines of Morinia");
+            AddDungeon(237, 3, discoverSosaria, "the Montor Sewers", false);
+            AddDungeon(238, 3, discoverSosaria, "the Perinian Depths");
+            AddDungeon(239, 3, discoverSosaria, "the Dungeon of Time Awaits");
+            // TODO: "Ice Island Dungeons"
+            // ...
+            // 250
+
+            // Umber Veil
+            AddDungeon(251, 3, discoverUmberVeil, "the Mausoleum");
+            AddDungeon(252, 3, discoverUmberVeil, "the Tower of Brass");
+            // ...
+            // 265
+
+            // Underworld
+            AddDungeon(266, 3, discoverUnderworld, "the Ancient Sky Ship", false);
+            AddDungeon(267, 3, discoverUnderworld, "Argentrock Castle", false);
+            AddDungeon(268, 3, discoverUnderworld, "the Depths of Carthax Lake", false);
+            AddDungeon(269, 3, discoverUnderworld, "the Daemon's Crag", false);
+            AddDungeon(270, 3, discoverUnderworld, "the Hall of the Mountain King", false);
+            AddDungeon(271, 3, discoverUnderworld, "Morgaelin's Inferno", false);
+            AddDungeon(272, 3, discoverUnderworld, "the Stygian Abyss", false);
+            AddDungeon(273, 3, discoverUnderworld, "the Zealan Tombs", false);
+            // ...
+
+            #endregion Exploration - Dungeons (120 - 219)
+
+
             Categories.Add(new AchievementCategory(4, 1, "Points of Interest"));
             #endregion Exploration - 1 to 999
 
@@ -262,6 +380,47 @@ namespace Scripts.Mythik.Systems.Achievements
             return achievement;
         }
 
+        private static DiscoveryAchievement AddDungeon(int achievementId, int categoryId, DiscoverLandAchievement prerequisite, string region, bool hasRelic = true)
+        {
+            var title = m_TextInfo.ToTitleCase(region);
+            var landName = GetLandName(prerequisite.Land);
+
+            var relicQuestItem = hasRelic ? SomeRandomNote.GetRelicItem(region) : null;
+            if (!string.IsNullOrWhiteSpace(relicQuestItem))
+                relicQuestItem = m_TextInfo.ToTitleCase(relicQuestItem);
+
+            string location;
+            switch (region)
+            {
+                default:
+                    {
+                        string world;
+                        Map placer;
+                        int xc;
+                        int yc;
+                        Worlds.GetDungeonListing(region, out world, out location, out placer, out xc, out yc);
+                        if (placer == Map.Internal)
+                            Console.WriteLine("Failed to detect location for: {0}", region);
+                        else
+                            location = string.Format("{0} | {1}", landName, location);
+                        break;
+                    }
+            }
+
+            var achievement = new DiscoveryAchievement(achievementId, categoryId, 0, false, prerequisite, title, null, 5, region)
+            {
+                ItemIcon = 0x1856, // Skull with candle
+                HideDesc = true,
+                HiddenDesc = landName,
+                Desc = string.IsNullOrWhiteSpace(relicQuestItem)
+                    ? location
+                    : string.Format("{0} | {1}", location, relicQuestItem)
+            };
+
+            Achievements.Add(achievement);
+
+            return achievement;
+        }
         private static string GetLandName(Land land)
         {
             switch (land)
