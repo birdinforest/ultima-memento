@@ -63,25 +63,55 @@ namespace Server.Spells.Chivalry
 
 				TimeSpan duration = TimeSpan.FromSeconds( seconds );
 
-				BuffInfo.RemoveBuff( Caster, BuffIcon.ConsecrateWeapon );
-				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.ConsecrateWeapon, 1063605, duration, Caster));
-
-				Timer t = (Timer)m_Table[weapon];
-
-				if ( t != null )
-					t.Stop();
-
-				weapon.Consecrated = true;
-
-				m_Table[weapon] = t = new ExpireTimer( weapon, duration );
-
-				t.Start();
+				Apply(Caster, weapon, duration, true);
 			}
 
 			FinishSequence();
 		}
 
-		private static Hashtable m_Table = new Hashtable();
+		public static void Apply(Mobile caster, BaseWeapon weapon, TimeSpan duration, bool addBuff)
+        {
+            StopTimer(weapon); // Remove if it exists
+            weapon.Consecrated = true;
+
+            ExpireTimer t = new ExpireTimer(weapon, duration);
+			if (addBuff)
+                BuffInfo.AddBuff(caster, new BuffInfo(BuffIcon.ConsecrateWeapon, 1063605, duration, caster));
+
+            m_Table[weapon] = t;
+            t.Start();
+        }
+
+        public static bool UnderEffect(BaseWeapon weapon)
+        {
+            return m_Table.Contains(weapon);
+        }
+
+        public static void RemoveEffect(BaseWeapon weapon)
+        {
+            if (StopTimer(weapon))
+            {
+                weapon.Consecrated = false;
+                Effects.PlaySound(weapon.GetWorldLocation(), weapon.Map, 0x1F8);
+            }
+        }
+
+        public static bool StopTimer(BaseWeapon weapon)
+        {
+			if (weapon == null || weapon.Deleted) return false;
+
+            Timer t = (Timer)m_Table[weapon];
+
+            if (t != null)
+            {
+                t.Stop();
+                m_Table.Remove(weapon);
+            }
+
+            return t != null;
+        }
+
+        private static Hashtable m_Table = new Hashtable();
 
 		private class ExpireTimer : Timer
 		{
@@ -95,10 +125,8 @@ namespace Server.Spells.Chivalry
 
 			protected override void OnTick()
 			{
-				m_Weapon.Consecrated = false;
-				Effects.PlaySound( m_Weapon.GetWorldLocation(), m_Weapon.Map, 0x1F8 );
-				m_Table.Remove( this );
-			}
+				RemoveEffect(m_Weapon);
+            }
 		}
 	}
 }
