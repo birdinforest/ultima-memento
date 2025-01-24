@@ -76,6 +76,13 @@ namespace Server.Misc
 			builder.Append("- Item - Skill bonuses from items no longer overcap<br>");
 			builder.Append("- Item - Hiking Boots no longer give resistances<br>");
 			builder.Append("- Item - Soulstones are now account bound upon first use<br>");
+			builder.Append("- Item - Sharpening stone rework<br>");
+			builder.Append("       - Centralized behvaiors for consistency<br>");
+			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");
+			builder.Append("       - Consecrated sharpening stones no longer bless and have a duration of 1 hour<br>");
+			builder.Append("       - Sharpening stone work on Bladed weapons<br>");
+			builder.Append("       - Added sharpening stone variant for Bow weapons<br>");
+			builder.Append("       - Added sharpening stone variant for Bludgeoning weapons<br>");
 			builder.Append("- Misc - Reduce packhorse max weight to 2400, down from 65000<br>");
 			builder.Append("- Misc - Reduce max properties from randomly generated items from 16 to 8<br>");
 			builder.Append("- Misc - Fugitives are now considered 'Evil'<br>");

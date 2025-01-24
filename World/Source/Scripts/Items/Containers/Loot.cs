@@ -676,22 +676,25 @@ namespace Server
 				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( DockingLantern ),
 				typeof( BoatBuild ),			typeof( TrapKit ),						typeof( MalletStake ), 
 				typeof( CandleLarge ),			typeof( Candelabra ),					typeof( CandelabraStand ),
+				typeof( HeavyWeightingStone ),	typeof( ConsecratedWeightingStone ),	typeof( MagicalWand ),
 				typeof( HairDyeBottle ),		typeof( GothicCandelabraA ),			typeof( GothicCandelabraB ),
+				typeof( RoughWeightingStone ),	typeof( DenseWeightingStone ),			typeof( ElementalWeightingStone ),
 				typeof( RareAnvil ),			typeof( MasterSkeletonsKey ),			typeof( InvulnerabilityPotion ),
 				typeof( ArmsBarrel ),			typeof( AlternateRealityMap ),			typeof( UnusualDyes ),
 				typeof( NecromancerBarrel ),	typeof( CarpetBuild ),					typeof( DwarvenForge ),
 				typeof( SmallHollowBook ),		typeof( LargeHollowBook ),				typeof( MagicSkeltonsKey ),
+				typeof( HeavyBowString ),		typeof( ConsecratedBowString ),			typeof( MagicalWand ),
 				typeof( SlaversNet ),			typeof( BrokenArmoireDeed ),			typeof( BrokenVanityDeed ),
+				typeof( RoughBowString ),		typeof( DenseBowString ),				typeof( ElementalBowString ),
 				typeof( BrokenBookcaseDeed ),	typeof( StandingBrokenChairDeed ),		typeof( BrokenCoveredChairDeed ),
 				typeof( MountingBase ),			typeof( StuffingBasket ),				typeof( BrokenFallenChairDeed ),
-				typeof( BrokenChestOfDrawersDeed ),
 				typeof( MagicPigment ),			typeof( RoseEastLargeAddonDeed ),		typeof( RoseEastSmallAddonDeed ),
 				typeof( TelescopeAddonDeed ),	typeof( RoseSouthLargeAddonDeed ),		typeof( ECrystalThroneDeed ),
 				typeof( ECrystalTableDeed ),	typeof( ECrystalSupplicantStatueDeed ),	typeof( RoseSouthSmallAddonDeed ),
 				typeof( ECrystalBullDeed ),		typeof( ECrystalBrazierDeed ),			typeof( ECrystalRunnerStatueDeed ),
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( GolemManual ),
-				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( RecallRune)
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( RecallRune),
+				typeof( SummonPrison ), 		typeof( BrokenChestOfDrawersDeed ),
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }
