@@ -137,6 +137,7 @@ namespace Server.Misc
 			builder.Append("- Item - Stone face trap is now choppable<br>");
 			builder.Append("- Item - Item generation now has greater variation in resource selection<br>");
 			builder.Append("- Item - Young player maps are now decodable<br>");
+			builder.Append("- Item - You can now steal with any type of pugilist gloves<br>");
 			builder.Append("- Misc - Set Map when [scan players<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");

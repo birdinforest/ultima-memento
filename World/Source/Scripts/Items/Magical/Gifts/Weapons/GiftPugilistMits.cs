@@ -5,7 +5,7 @@ using Server.Network;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x13C6, 0x13C6 )]
-	public class GiftPugilistGloves : BaseGiftBashing
+	public class GiftPugilistGloves : BaseGiftBashing, IPugilistGlove
 	{
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

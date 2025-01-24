@@ -1209,16 +1209,13 @@ namespace Server.Items
 
 			if ( this.Layer == Layer.Gloves )
 			{
-				if (	( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGloves ) || 
-						( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGlove )  || 
+				if (	( from.FindItemOnLayer( Layer.OneHanded ) is IPugilistGlove ) || 
 						( from.FindItemOnLayer( Layer.OneHanded ) is ThrowingGloves )  || 
-						( from.FindItemOnLayer( Layer.OneHanded ) is LevelPugilistGloves )  || 
 						( from.FindItemOnLayer( Layer.OneHanded ) is LevelThrowingGloves )  || 
-						( from.FindItemOnLayer( Layer.OneHanded ) is GiftPugilistGloves )  || 
 						( from.FindItemOnLayer( Layer.OneHanded ) is GiftThrowingGloves )  || 
 						( from.FindItemOnLayer( Layer.OneHanded ) is Artifact_GlovesOfThePugilist ) )
 					{ Item oneHand = from.FindItemOnLayer( Layer.OneHanded ); from.Backpack.DropItem( oneHand ); }
-				else if ( ( from.FindItemOnLayer( Layer.FirstValid ) is PugilistGloves ) || ( from.FindItemOnLayer( Layer.FirstValid ) is PugilistGlove ) || ( from.FindItemOnLayer( Layer.FirstValid ) is Artifact_GlovesOfThePugilist ) )
+				else if ( ( from.FindItemOnLayer( Layer.FirstValid ) is IPugilistGlove ) || ( from.FindItemOnLayer( Layer.FirstValid ) is IPugilistGlove ) || ( from.FindItemOnLayer( Layer.FirstValid ) is Artifact_GlovesOfThePugilist ) )
 					{ Item firstValid = from.FindItemOnLayer( Layer.FirstValid ); from.Backpack.DropItem( firstValid ); }
 			}
 

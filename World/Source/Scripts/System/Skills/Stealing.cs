@@ -480,8 +480,7 @@ namespace Server.SkillHandlers
 				if ( from.FindItemOnLayer( Layer.OneHanded ) is BaseWeapon )
 				{
 					if ( 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGloves ) 
+						!( from.FindItemOnLayer( Layer.OneHanded ) is IPugilistGlove ) 
 					)
 					{
 						return false;
@@ -493,8 +492,7 @@ namespace Server.SkillHandlers
 				if ( from.FindItemOnLayer( Layer.TwoHanded ) is BaseWeapon )
 				{
 					if ( 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGloves ) 
+						!( from.FindItemOnLayer( Layer.TwoHanded ) is IPugilistGlove ) 
 					)
 					{
 						return false;

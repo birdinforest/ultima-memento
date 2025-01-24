@@ -34,7 +34,7 @@ namespace Server.Spells.Mystic
 			{
 				Caster.SendMessage( "You must be wearing some type of pugilist gloves!" );
 			}
-			else if ( !( weapon is Artifact_GlovesOfThePugilist || weapon is GiftPugilistGloves || weapon is LevelPugilistGloves || weapon is PugilistGloves || weapon is PugilistGlove ) )
+			else if ( !( weapon is IPugilistGlove ) )
 			{
 				Caster.SendMessage( "You must be wearing some type of pugilist gloves!" );
 			}

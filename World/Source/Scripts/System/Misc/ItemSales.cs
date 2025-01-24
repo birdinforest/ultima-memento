@@ -226,16 +226,13 @@ namespace Server
 				price +=		(int)(((BaseWeapon)item).SkillBonuses.Skill_4_Value * 2);
 				price +=		(int)(((BaseWeapon)item).SkillBonuses.Skill_5_Value * 2);
 
-				if ( item is GiftPugilistGloves
+				if ( item is IPugilistGlove
 				 || item is GiftThrowingGloves
-				 || item is LevelPugilistGloves
 				 || item is LevelThrowingGloves
 				 || item is ThrowingGloves
 				 || item is WizardWand
 				 || item is WizardStaff
-				 || item is WizardStick
-				 || item is PugilistGloves
-				 || item is PugilistGlove ){} else
+				 || item is WizardStick ){} else
 				price +=		((BaseWeapon)item).Attributes.SpellChanneling * 200;
 
 				price +=		((BaseWeapon)item).Attributes.DefendChance * 10;

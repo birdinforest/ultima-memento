@@ -267,13 +267,10 @@ namespace Server.Items
 								item is ThrowingGloves || 
 								item is BagOfTricks || 
 								item is BaseBook || 
-								item is LevelPugilistGloves || 
 								item is LevelThrowingGloves || 
-								item is GiftPugilistGloves || 
 								item is GiftThrowingGloves || 
 								item is BaseWhip || 
-								item is PugilistGlove || 
-								item is PugilistGloves )
+								item is IPugilistGlove )
 					{
 						if ( !from.InRange( m_Tub.GetWorldLocation(), 1 ) || !from.InRange( item.GetWorldLocation(), 1 ) )
 						{

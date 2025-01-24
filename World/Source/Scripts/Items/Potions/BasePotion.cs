@@ -168,11 +168,8 @@ namespace Server.Items
 					return true;
 			}
 
-			if (	( handOne is PugilistGlove ) || 
-					( handOne is PugilistGloves ) || 
-					( handOne is LevelPugilistGloves ) || 
+			if (	( handOne is IPugilistGlove ) || 
 					( handOne is LevelThrowingGloves ) || 
-					( handOne is GiftPugilistGloves ) || 
 					( handOne is GiftThrowingGloves ) || 
 					( handOne is ThrowingGloves ) )
 			{

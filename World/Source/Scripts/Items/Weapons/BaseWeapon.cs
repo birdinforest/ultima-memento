@@ -54,14 +54,10 @@ namespace Server.Items
 					return base.isWeapon();
 				else if ( Layer == Layer.Gloves )
 					return 0x647D;
-				else if (	this is PugilistGloves || 
-							this is PugilistGlove || 
+				else if (	this is IPugilistGlove || 
 							this is ThrowingGloves || 
-							this is LevelPugilistGloves || 
 							this is LevelThrowingGloves || 
-							this is GiftPugilistGloves || 
-							this is GiftThrowingGloves || 
-							this is Artifact_GlovesOfThePugilist )
+							this is GiftThrowingGloves )
 					return 0x647D;
 
 				else if ( this is BaseWhip )

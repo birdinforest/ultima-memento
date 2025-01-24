@@ -85,7 +85,7 @@ namespace Server.Spells.Mystic
 			{
 				Item oneHand = from.FindItemOnLayer( Layer.OneHanded );
 
-				if ( oneHand is Artifact_GlovesOfThePugilist || oneHand is GiftPugilistGloves || oneHand is LevelPugilistGloves || oneHand is PugilistGloves || oneHand is PugilistGlove ){}
+				if ( oneHand is IPugilistGlove ){}
 				else if ( oneHand is BaseWeapon )
 					return false;
 			}
