@@ -684,14 +684,12 @@ namespace Server
 				typeof( SlaversNet ),			typeof( BrokenArmoireDeed ),			typeof( BrokenVanityDeed ),
 				typeof( BrokenBookcaseDeed ),	typeof( StandingBrokenChairDeed ),		typeof( BrokenCoveredChairDeed ),
 				typeof( MountingBase ),			typeof( StuffingBasket ),				typeof( BrokenFallenChairDeed ),
-				typeof( RunicTinker ),			typeof( RunicSewingKit ),				typeof( RunicSaw ),
-				typeof( RunicHammer ),			typeof( RunicFletching ),				typeof( BrokenChestOfDrawersDeed ),
+				typeof( BrokenChestOfDrawersDeed ),
 				typeof( MagicPigment ),			typeof( RoseEastLargeAddonDeed ),		typeof( RoseEastSmallAddonDeed ),
 				typeof( TelescopeAddonDeed ),	typeof( RoseSouthLargeAddonDeed ),		typeof( ECrystalThroneDeed ),
 				typeof( ECrystalTableDeed ),	typeof( ECrystalSupplicantStatueDeed ),	typeof( RoseSouthSmallAddonDeed ),
 				typeof( ECrystalBullDeed ),		typeof( ECrystalBrazierDeed ),			typeof( ECrystalRunnerStatueDeed ),
-				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
-				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
+				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
 				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( RecallRune)
 			};

@@ -72,6 +72,7 @@ namespace Server.Misc
 			builder.Append("- Item - Scepter/Stave now have Spell Channeling by default<br>");
 			builder.Append("- Item - Bank vaults are now sold by Bankers<br>");
 			builder.Append("- Item - Laser swords no longer drop<br>");
+			builder.Append("- Item - Runic tools no longer drop<br>");
 			builder.Append("- Item - Skill bonuses from items no longer overcap<br>");
 			builder.Append("- Item - Hiking Boots no longer give resistances<br>");
 			builder.Append("- Item - Soulstones are now account bound upon first use<br>");
