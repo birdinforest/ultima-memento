@@ -20,39 +20,39 @@ namespace Server.Engines.MLQuests.Definitions
     [go 917 2097
     */
 
-    public class HintRingArmorQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(RingArmorQuest); } }
-
-        public HintRingArmorQuest()
-        {
-            Activated = true;
-            Title = "Delivery: The Hammer and Anvil";
-            Description = "TODO: Deliver this to the Britain Smith";
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(BritainGuildmasterSmithGuy)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: Britain"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- Traveling the lands by foot is dangerous"));
-            Objectives.Add(new DummyObjective("- Use the public moongates to minimize some time and hazard"));
-            Objectives.Add(new DummyObjective("- Humans can ride horses"));
-            Objectives.Add(new DummyObjective("- Non-human races can purchase 'Hiking Boots' from the Cobbler"));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class RingArmorQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(RingArmorQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: The Hammer and Anvil";
+                Description = "TODO: Deliver this to the Britain Smith";
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(BritainGuildmasterSmithGuy)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: Britain"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- Traveling the lands by foot is dangerous"));
+                Objectives.Add(new DummyObjective("- Use the public moongates to minimize some time and hazard"));
+                Objectives.Add(new DummyObjective("- Humans can ride horses"));
+                Objectives.Add(new DummyObjective("- Non-human races can purchase 'Hiking Boots' from the Cobbler"));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-        public override Type NextQuest { get { return typeof(HintChainArmorQuest); } } // Optional delivery
+        public override Type NextQuest { get { return typeof(ChainArmorQuest.HintQuest); } } // Optional delivery
 
         public RingArmorQuest()
         {
@@ -120,58 +120,58 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
-    public class HintChainArmorQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(ChainArmorQuest); } }
-
-        public HintChainArmorQuest()
-        {
-            Activated = true;
-            Title = "Delivery: Metals of Montor";
-            var builder = new StringBuilder();
-            builder.Append("\"You again? Still looking to hone your craft, eh? No, no, we're too busy here.\" Intentional chatter fills the air - the shop is bustling. Apprentices move about addressing customer requests, mending armor, and sharpening weapons. You briefly step to the side as someone shoulders past.");
-            builder.Append("<br><br>");
-            builder.Append("\"Here, I've got an idea that should satisfy us both.\" Clang! A muffled jingle of metal smacking together jars you as the Smith plops a heavy crate down on the floor in front of you.");
-            builder.Append("<br><br>");
-            builder.Append("\"Take this package due south to the Montor blacksmith and I'm sure someone there will be delighted to teach you something more useful.\"");
-            builder.Append("<br><br>");
-            builder.Append("The Smith turns away, already forgetting you and talking to himself, \"...cheaper than whatever animals they decide to use as couriers these days at Beasts of Burden...those prices are highway robbery...whetstone wheel acting up again...\"");
-            Description = builder.ToString();
-
-            builder.Clear();
-            builder.Append("\"Ay', mate! I been expectin' d'ose!\" The Smith stops what she's doing to grab the crate right out of your hands.");
-            builder.Append("<br><br>");
-            builder.Append("She sets the crate down [clang!], flips through a few items [ting...ting...ting...], and rummages through to find a shield and katana. She eyes each of her prizes proudly and grins.");
-            builder.Append("<br><br>");
-            builder.Append("\"About time!\" Swoosh! Swoosh! You quickly step back, dodging wild swings, and eye her with bewilderment. The Smith giggles to herself. \"Ma always said I was safer swingin' hammers!\"");
-            builder.Append("<br><br>");
-            builder.Append("\"Ye have my d'anks!\"");
-            CompletionMessage = builder.ToString();
-
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MontorSmithGirl)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: Montor"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- Traveling the lands by foot is dangerous"));
-            Objectives.Add(new DummyObjective("- Use the public moongates to minimize some time and hazard"));
-            Objectives.Add(new DummyObjective("- Humans can ride horses"));
-            Objectives.Add(new DummyObjective("- Non-human races can purchase 'Hiking Boots' from the Cobbler"));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class ChainArmorQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(ChainArmorQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: Metals of Montor";
+                var builder = new StringBuilder();
+                builder.Append("\"You again? Still looking to hone your craft, eh? No, no, we're too busy here.\" Intentional chatter fills the air - the shop is bustling. Apprentices move about addressing customer requests, mending armor, and sharpening weapons. You briefly step to the side as someone shoulders past.");
+                builder.Append("<br><br>");
+                builder.Append("\"Here, I've got an idea that should satisfy us both.\" Clang! A muffled jingle of metal smacking together jars you as the Smith plops a heavy crate down on the floor in front of you.");
+                builder.Append("<br><br>");
+                builder.Append("\"Take this package due south to the Montor blacksmith and I'm sure someone there will be delighted to teach you something more useful.\"");
+                builder.Append("<br><br>");
+                builder.Append("The Smith turns away, already forgetting you and talking to himself, \"...cheaper than whatever animals they decide to use as couriers these days at Beasts of Burden...those prices are highway robbery...whetstone wheel acting up again...\"");
+                Description = builder.ToString();
+
+                builder.Clear();
+                builder.Append("\"Ay', mate! I been expectin' d'ose!\" The Smith stops what she's doing to grab the crate right out of your hands.");
+                builder.Append("<br><br>");
+                builder.Append("She sets the crate down [clang!], flips through a few items [ting...ting...ting...], and rummages through to find a shield and katana. She eyes each of her prizes proudly and grins.");
+                builder.Append("<br><br>");
+                builder.Append("\"About time!\" Swoosh! Swoosh! You quickly step back, dodging wild swings, and eye her with bewilderment. The Smith giggles to herself. \"Ma always said I was safer swingin' hammers!\"");
+                builder.Append("<br><br>");
+                builder.Append("\"Ye have my d'anks!\"");
+                CompletionMessage = builder.ToString();
+
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MontorSmithGirl)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: Montor"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- Traveling the lands by foot is dangerous"));
+                Objectives.Add(new DummyObjective("- Use the public moongates to minimize some time and hazard"));
+                Objectives.Add(new DummyObjective("- Humans can ride horses"));
+                Objectives.Add(new DummyObjective("- Non-human races can purchase 'Hiking Boots' from the Cobbler"));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-        public override Type NextQuest { get { return typeof(HintPlateArmorQuest); } }
+        public override Type NextQuest { get { return typeof(PlateArmorQuest.HintQuest); } }
 
         public ChainArmorQuest()
         {
@@ -237,57 +237,57 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
-    public class HintPlateArmorQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(PlateArmorQuest); } }
-
-        public HintPlateArmorQuest()
-        {
-            Activated = true;
-            Title = "Delivery: Forged Iron";
-
-            var builder = new StringBuilder();
-            builder.Append("\"Plate mail, hmmm?! If'n yer up fer rivalin' me, ye betta step it up. Yer good, but not dat good.\" The smith pokes you in the chest with a gnarly finger and raises an eyebrow at you. She turns away briefly and then spreads map out on the table.");
-            builder.Append("<br><br>");
-            builder.Append("\"Time fer findin' safety in da mountains - Devil Guard lies northwest o' here. Take me goods with ye.\" She stuffs a crate in your arms and smacks you on the butt.");
-            builder.Append("<br><br>");
-            builder.Append("\"Get yer tookus movin'!\"");
-            builder.Append("<br><br>");
-            Description = builder.ToString();
-
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(DevilGuardSmithGuy)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: Devil Guard"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- Alt+R can open a mini map"));
-            Objectives.Add(new DummyObjective("- Use the Top Menu Bar to access a 'World Map'"));
-            Objectives.Add(new DummyObjective("- Unlock the world map via right-click -> 'free view' -> left mouse dragging"));
-            Objectives.Add(new DummyObjective("- Use map markers to keep track of points of interest"));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-
-            builder.Clear();
-            builder.Append("\"STOP!\" A stern, but even voice commands you. The blacksmith looks up, staring at you with icy blue eyes, pausing his hammer strokes just long enough to visually scold you. Softly, but with a tone used to being followed, he asserts: \"Wipe your boots at the door.\" *clang clang clang*");
-            builder.Append("<br><br>");
-            builder.Append("\"Leave the crate beside the scrap iron barrel, and do not disturb a thing in my shop.\" The smith doesn't bother to look up from his work this time.");
-            builder.Append("<br><br>");
-            builder.Append("");
-            builder.Append("<br><br>");
-            CompletionMessage = builder.ToString();
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class PlateArmorQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(PlateArmorQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: Forged Iron";
+
+                var builder = new StringBuilder();
+                builder.Append("\"Plate mail, hmmm?! If'n yer up fer rivalin' me, ye betta step it up. Yer good, but not dat good.\" The smith pokes you in the chest with a gnarly finger and raises an eyebrow at you. She turns away briefly and then spreads map out on the table.");
+                builder.Append("<br><br>");
+                builder.Append("\"Time fer findin' safety in da mountains - Devil Guard lies northwest o' here. Take me goods with ye.\" She stuffs a crate in your arms and smacks you on the butt.");
+                builder.Append("<br><br>");
+                builder.Append("\"Get yer tookus movin'!\"");
+                builder.Append("<br><br>");
+                Description = builder.ToString();
+
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(DevilGuardSmithGuy)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: Devil Guard"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- Alt+R can open a mini map"));
+                Objectives.Add(new DummyObjective("- Use the Top Menu Bar to access a 'World Map'"));
+                Objectives.Add(new DummyObjective("- Unlock the world map via right-click -> 'free view' -> left mouse dragging"));
+                Objectives.Add(new DummyObjective("- Use map markers to keep track of points of interest"));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+
+                builder.Clear();
+                builder.Append("\"STOP!\" A stern, but even voice commands you. The blacksmith looks up, staring at you with icy blue eyes, pausing his hammer strokes just long enough to visually scold you. Softly, but with a tone used to being followed, he asserts: \"Wipe your boots at the door.\" *clang clang clang*");
+                builder.Append("<br><br>");
+                builder.Append("\"Leave the crate beside the scrap iron barrel, and do not disturb a thing in my shop.\" The smith doesn't bother to look up from his work this time.");
+                builder.Append("<br><br>");
+                builder.Append("");
+                builder.Append("<br><br>");
+                CompletionMessage = builder.ToString();
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-        public override Type NextQuest { get { return typeof(HintAnimalArmorQuest); } }
+        public override Type NextQuest { get { return typeof(AnimalArmorQuest.HintQuest); } }
 
         public PlateArmorQuest()
         {
@@ -358,50 +358,50 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
-    public class HintAnimalArmorQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(AnimalArmorQuest); } }
-
-        public HintAnimalArmorQuest()
-        {
-            Activated = true;
-            Title = "Delivery: The Iron Golem";
-
-            var builder = new StringBuilder();
-            builder.Append("\"Alas, I am not the correct mentor for the next step in your crafting journey.\" A surprising silence fills the air, an unfamiliar sound in this shop. The smith stares into the coals for a moment...and then looks up at you.");
-            builder.Append("<br><br>");
-            builder.Append("\"I suggest you travel northeast, to another town shielded by mountains. Seek out Yew. I am aware of a blacksmith who used to live there. He is...interesting. An excellent craftsman, but with less focus on metals and...humans. Heh.\" The blacksmith chuckles to himself before handing over a crate of blacksmith supplies.");
-            builder.Append("<br><br>");
-            builder.Append("\"Take this. An offering will improve your odds of success in building this relationship.\"");
-            builder.Append("<br><br>");
-            Description = builder.ToString();
-
-            builder.Clear();
-            builder.Append("");
-            builder.Append("<br><br>");
-            CompletionMessage = builder.ToString();
-
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(YewSmithGuy)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: Yew"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- "));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class AnimalArmorQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(AnimalArmorQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: The Iron Golem";
+
+                var builder = new StringBuilder();
+                builder.Append("\"Alas, I am not the correct mentor for the next step in your crafting journey.\" A surprising silence fills the air, an unfamiliar sound in this shop. The smith stares into the coals for a moment...and then looks up at you.");
+                builder.Append("<br><br>");
+                builder.Append("\"I suggest you travel northeast, to another town shielded by mountains. Seek out Yew. I am aware of a blacksmith who used to live there. He is...interesting. An excellent craftsman, but with less focus on metals and...humans. Heh.\" The blacksmith chuckles to himself before handing over a crate of blacksmith supplies.");
+                builder.Append("<br><br>");
+                builder.Append("\"Take this. An offering will improve your odds of success in building this relationship.\"");
+                builder.Append("<br><br>");
+                Description = builder.ToString();
+
+                builder.Clear();
+                builder.Append("");
+                builder.Append("<br><br>");
+                CompletionMessage = builder.ToString();
+
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(YewSmithGuy)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: Yew"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- "));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-        public override Type NextQuest { get { return typeof(HintRoyalArmorQuest); } }
+        public override Type NextQuest { get { return typeof(RoyalArmorQuest.HintQuest); } }
 
         public AnimalArmorQuest()
         {
@@ -447,46 +447,46 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
-    public class HintRoyalArmorQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(RoyalArmorQuest); } }
-
-        public HintRoyalArmorQuest()
-        {
-            Activated = true;
-            Title = "Delivery: Smelted Moon Rocks";
-
-            var builder = new StringBuilder();
-            builder.Append("");
-            builder.Append("<br><br>");
-            Description = builder.ToString();
-
-            builder.Clear();
-            builder.Append("");
-            builder.Append("<br><br>");
-            CompletionMessage = builder.ToString();
-
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MoonSmithGuy)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: The city of Moon"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- "));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class RoyalArmorQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(RoyalArmorQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: Smelted Moon Rocks";
+
+                var builder = new StringBuilder();
+                builder.Append("");
+                builder.Append("<br><br>");
+                Description = builder.ToString();
+
+                builder.Clear();
+                builder.Append("");
+                builder.Append("<br><br>");
+                CompletionMessage = builder.ToString();
+
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(MoonSmithGuy)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: The city of Moon"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- "));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-        public override Type NextQuest { get { return typeof(HintTridentQuest); } }
+        public override Type NextQuest { get { return typeof(TridentQuest.HintQuest); } }
 
         public RoyalArmorQuest()
         {
@@ -537,44 +537,44 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
 
-    public class HintTridentQuest : MLQuest
-    {
-        public override bool IsChainTriggered { get { return true; } }
-        public override Type NextQuest { get { return typeof(TridentQuest); } }
-
-        public HintTridentQuest()
-        {
-            Activated = true;
-            Title = "Delivery: The Titan's Helm";
-
-            var builder = new StringBuilder();
-            builder.Append("");
-            builder.Append("<br><br>");
-            Description = builder.ToString();
-
-            builder.Clear();
-            builder.Append("");
-            builder.Append("<br><br>");
-            CompletionMessage = builder.ToString();
-
-            Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(GreySmithGuy)));
-            Objectives.Add(new DummyObjective("- Blacksmith Crate"));
-            Objectives.Add(new DummyObjective("- Location: The city of Grey"));
-            Objectives.Add(new DummyObjective(""));
-            Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- "));
-
-            Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
-        }
-
-        public override IEnumerable<Type> GetQuestGivers()
-        {
-            yield break;
-        }
-    }
-
     public class TridentQuest : MLQuest
     {
+        public class HintQuest : MLQuest
+        {
+            public override bool IsChainTriggered { get { return true; } }
+            public override Type NextQuest { get { return typeof(TridentQuest); } }
+
+            public HintQuest()
+            {
+                Activated = true;
+                Title = "Delivery: The Titan's Helm";
+
+                var builder = new StringBuilder();
+                builder.Append("");
+                builder.Append("<br><br>");
+                Description = builder.ToString();
+
+                builder.Clear();
+                builder.Append("");
+                builder.Append("<br><br>");
+                CompletionMessage = builder.ToString();
+
+                Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(GreySmithGuy)));
+                Objectives.Add(new DummyObjective("- Blacksmith Crate"));
+                Objectives.Add(new DummyObjective("- Location: The city of Grey"));
+                Objectives.Add(new DummyObjective(""));
+                Objectives.Add(new DummyObjective("Tips:"));
+                Objectives.Add(new DummyObjective("- "));
+
+                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+            }
+
+            public override IEnumerable<Type> GetQuestGivers()
+            {
+                yield break;
+            }
+        }
+
         public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
 
         public TridentQuest()

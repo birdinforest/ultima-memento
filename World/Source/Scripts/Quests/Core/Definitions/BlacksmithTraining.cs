@@ -10,7 +10,7 @@ namespace Server.Engines.MLQuests.Definitions
 {
     public class BlacksmithBasicsQuest : MLQuest
     {
-        public override Type NextQuest { get { return typeof(HintRingArmorQuest); } } // Optional delivery
+        public override Type NextQuest { get { return typeof(RingArmorQuest.HintQuest); } } // Optional delivery
 
         public BlacksmithBasicsQuest()
         {
