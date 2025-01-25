@@ -145,7 +145,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( LeatherNinjaJacket ), 1015293, 1030206, 85.0, 110.0, typeof( DemonSkins ), 1063757, 13, 1042081 );
 			AddCraft( typeof( LeatherNinjaMitts ), 1015293, 1030205, 65.0, 90.0, typeof( DemonSkins ), 1063757, 12, 1042081 );
 			AddCraft( typeof( LeatherNinjaHood ), 1015293, 1030201, 90.0, 115.0, typeof( DemonSkins ), 1063757, 14, 1042081 );
-			AddCraft( typeof( ShinobiRobe ), 1015293, "leather shinobi robe", 76.3, 101.3, typeof( DemonSkins ), 1063757, 18, 1042081 );
+			// AddCraft( typeof( ShinobiRobe ), 1015293, "leather shinobi robe", 76.3, 101.3, typeof( DemonSkins ), 1063757, 18, 1042081 );
 			AddCraft( typeof( ShinobiCowl ), 1015293, "leather shinobi cowl", 6.2, 31.2, typeof( DemonSkins ), 1063757, 2, 1042081 );
 			AddCraft( typeof( ShinobiHood ), 1015293, "leather shinobi hood", 6.2, 31.2, typeof( DemonSkins ), 1063757, 2, 1042081 );
 			AddCraft( typeof( ShinobiMask ), 1015293, "leather shinobi mask", 6.2, 31.2, typeof( DemonSkins ), 1063757, 2, 1042081 );
