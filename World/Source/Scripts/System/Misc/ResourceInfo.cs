@@ -460,7 +460,7 @@ namespace Server.Items
 
 			private static CraftResourceInfo[] m_MetalInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0	,	0	,	0	,	0	,	0	,	0	,	1044022	,	1044036	,	1053109,	 "Iron",	CraftAttributeInfo.Blank,	CraftResource.Iron,typeof( IronIngot ),	typeof( IronOre ),	typeof( Granite ) ),	
+			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0		,	0	,	0	,	0	,	0	,	0	,	1044022	,	1044036	,	1053109,	 "Iron",	CraftAttributeInfo.Blank,	CraftResource.Iron,typeof( IronIngot ),	typeof( IronOre ),	typeof( Granite ) ),	
 			new CraftResourceInfo( 0x436, 	0x973,	1	,	1	,	1.25	,	65.0	,	10	,	2	,	3	,	1	,	0	,	1044023	,	1074916	,	1053108,	 "Dull Copper",	CraftAttributeInfo.DullCopper,	CraftResource.DullCopper,	typeof( DullCopperIngot ),	typeof( DullCopperOre ),	typeof( DullCopperGranite ) ),
 			new CraftResourceInfo( 0x445, 	0x966,	1	,	2	,	1.50	,	70.0	,	20	,	4	,	6	,	2	,	0	,	1044024	,	1074917	,	1053107,	 "Shadow Iron",	CraftAttributeInfo.ShadowIron,	CraftResource.ShadowIron,	typeof( ShadowIronIngot ),	typeof( ShadowIronOre ),	typeof( ShadowIronGranite ) ),
 			new CraftResourceInfo( 0x435, 	0x54E,	2	,	3	,	1.75	,	75.0	,	30	,	6	,	9	,	3	,	0	,	1044025	,	1074918	,	1053106,	 "Copper",	CraftAttributeInfo.Copper,	CraftResource.Copper,	typeof( CopperIngot ),	typeof( CopperOre ),	typeof( CopperGranite ) ),
@@ -533,7 +533,7 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_LeatherInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0x000, 	0x000,	0	,	0	,	1.00	,	0.0	,	0	,	0	,	0	,	0	,	0	,	1049150	,	1034455	,	1049353,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.RegularLeather,	typeof( Leather ),	typeof( Hides ) ),	
+			new CraftResourceInfo( 0x000, 	0x000,	0	,	0	,	1.00	,	0.0		,	0	,	0	,	0	,	0	,	0	,	1049150	,	1034455	,	1049353,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.RegularLeather,	typeof( Leather ),	typeof( Hides ) ),	
 			new CraftResourceInfo( 0x69C, 	0x69C,	1	,	1	,	1.25	,	55.0	,	10	,	2	,	3	,	1	,	0	,	1049152	,	1034457	,	1061117,	 "Lizard",	CraftAttributeInfo.Horned,	CraftResource.HornedLeather,	typeof( HornedLeather ),	typeof( HornedHides ) ),	
 			new CraftResourceInfo( 0x69E, 	0x69E,	1	,	2	,	1.50	,	60.0	,	20	,	4	,	6	,	2	,	0	,	1049153	,	1034458	,	1061116,	 "Serpent",	CraftAttributeInfo.Barbed,	CraftResource.BarbedLeather,	typeof( BarbedLeather ),	typeof( BarbedHides ) ),	
 			new CraftResourceInfo( 0x69D, 	0x69D,	2	,	3	,	1.75	,	65.0	,	30	,	6	,	9	,	3	,	0	,	1034403	,	1034459	,	1034413,	 "Necrotic",	CraftAttributeInfo.Necrotic,	CraftResource.NecroticLeather,	typeof( NecroticLeather ),	typeof( NecroticHides ) ),	
@@ -559,7 +559,7 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_WoodInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0	,	0	,	0	,	0	,	0	,	0	,	1072643	,	1015101	,	1011542,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.RegularWood,	typeof( Board ),	typeof( Log ) ),	
+			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0		,	0	,	0	,	0	,	0	,	0	,	1072643	,	1015101	,	1011542,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.RegularWood,	typeof( Board ),	typeof( Log ) ),	
 			new CraftResourceInfo( 0x509,	0x509,	1	,	1	,	1.20	,	65.0	,	10	,	2	,	3	,	1	,	0	,	1095379	,	1095389	,	1095399,	 "Ash",	CraftAttributeInfo.AshTree,	CraftResource.AshTree,	typeof( AshBoard ),	typeof( AshLog ) ),	
 			new CraftResourceInfo( 0x50A,	0x50A,	1	,	2	,	1.40	,	70.0	,	20	,	4	,	6	,	2	,	0	,	1095380	,	1095390	,	1095400,	 "Cherry",	CraftAttributeInfo.CherryTree,	CraftResource.CherryTree,	typeof( CherryBoard ),	typeof( CherryLog ) ),	
 			new CraftResourceInfo( 0x50B,	0x50B,	1	,	3	,	1.60	,	75.0	,	30	,	6	,	9	,	3	,	0	,	1095381	,	1095391	,	1095401,	 "Ebony",	CraftAttributeInfo.EbonyTree,	CraftResource.EbonyTree,	typeof( EbonyBoard ),	typeof( EbonyLog ) ),	
@@ -585,7 +585,7 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_FabricInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0	,	0	,	0	,	0	,	0	,	0	,	1064120	,	1064121	,	1064123,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.Fabric,	typeof( Fabric ) ),		
+			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0		,	0	,	0	,	0	,	0	,	0	,	1064120	,	1064121	,	1064123,	 "Normal",	CraftAttributeInfo.Blank,	CraftResource.Fabric,	typeof( Fabric ) ),		
 			new CraftResourceInfo( 0x8BC,	0x8BC,	1	,	1	,	1.20	,	45.0	,	10	,	2	,	3	,	1	,	0	,	1064124	,	1064125	,	1064127,	 "Furry",	CraftAttributeInfo.FurryFabric,	CraftResource.FurryFabric,	typeof( FurryFabric ) ),		
 			new CraftResourceInfo( 0x911,	0x911,	1	,	2	,	1.40	,	50.0	,	20	,	4	,	6	,	2	,	0	,	1064128	,	1064129	,	1064131,	 "Wooly",	CraftAttributeInfo.WoolyFabric,	CraftResource.WoolyFabric,	typeof( WoolyFabric ) ),		
 			new CraftResourceInfo( 0xAFE,	0xAFE,	1	,	3	,	1.60	,	60.0	,	30	,	6	,	9	,	3	,	0	,	1064132	,	1064133	,	1064135,	 "Silk",	CraftAttributeInfo.SilkFabric,	CraftResource.SilkFabric,	typeof( SilkFabric ) ),		
@@ -631,7 +631,7 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_SkeletalInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0	,	0	,	0	,	0	,	0	,	0	,	1063832	,	1063833	,	1063835,	 "Brittle",	CraftAttributeInfo.Blank,	CraftResource.BrittleSkeletal,	typeof( BrittleSkeletal ) ),		
+			new CraftResourceInfo( 0x000,	0x000,	0	,	0	,	1.00	,	0.0		,	0	,	0	,	0	,	0	,	0	,	1063832	,	1063833	,	1063835,	 "Brittle",	CraftAttributeInfo.Blank,	CraftResource.BrittleSkeletal,	typeof( BrittleSkeletal ) ),		
 			new CraftResourceInfo( 0x424,	0x424,	1	,	1	,	1.20	,	55.0	,	10	,	2	,	3	,	1	,	0	,	1063840	,	1063841	,	1063843,	 "Drow",	CraftAttributeInfo.DrowSkeletal,	CraftResource.DrowSkeletal,	typeof( DrowSkeletal ) ),		
 			new CraftResourceInfo( 0x44C,	0x44C,	1	,	2	,	1.20	,	60.0	,	20	,	4	,	6	,	2	,	0	,	1063844	,	1063845	,	1063847,	 "Orc",	CraftAttributeInfo.OrcSkeletal,	CraftResource.OrcSkeletal,	typeof( OrcSkeletal ) ),		
 			new CraftResourceInfo( 0x806,	0x806,	1	,	3	,	1.40	,	65.0	,	30	,	6	,	9	,	3	,	0	,	1063848	,	1063849	,	1063851,	 "Reptile",	CraftAttributeInfo.ReptileSkeletal,	CraftResource.ReptileSkeletal,	typeof( ReptileSkeletal ) ),		
