@@ -107,7 +107,7 @@ namespace Server.Misc
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
 			builder.Append("- Skill - Skills gains are accelerated to 70 but reduced at 85/95/105/110/115<br>");
-			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation, Make usable in client files
+			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation
 			builder.Append("- Skill - Hiding cooldown is increased to 4 seconds, up from 1s and 2s<br>");
 			builder.Append("- Skill - Spiritualism now restores Mana when a corpse is consumed<br>");
 			builder.Append("- Skill - Masters in Remove Trap have a chance to avoid death from killer tiles<br>");
