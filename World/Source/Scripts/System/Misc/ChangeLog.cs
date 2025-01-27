@@ -40,6 +40,8 @@ namespace Server.Misc
 			builder.Append("- Craft - Exceptionally crafted weapons now get +1% DI per 10 skill in Arms Lore<br>");
 			builder.Append("- Craft - Exceptionally crafted weapons now get +3% DI for 125 skill in Arms Lore (+15% total)<br>");
 			builder.Append("- Craft - Alien resources are no longer craftable<br>");
+			builder.Append("- Craft - All exceptional armor crafts get 3 bonus resistance points, down from 15<br>");
+			builder.Append("- Craft - Exceptional shields now receive bonus resistances from when exceptional<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
