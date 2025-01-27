@@ -475,7 +475,7 @@ namespace Server.Items
 		public static void ApplyAttributes( int luckChance, Item item, int minAttributes, int maxAttributes, int minIntensity, int maxIntensity, bool isRunicTool = false )
 		{
 			minAttributes = Math.Max(0, minAttributes);
-			maxAttributes = Math.Max(minAttributes + 1, maxAttributes);
+			if (maxAttributes < minAttributes) maxAttributes = minAttributes;
 			int attributeCount = Utility.RandomMinMax( minAttributes, maxAttributes);
 
 			ApplyAttributes( luckChance, item, attributeCount, minIntensity, maxIntensity, isRunicTool );
