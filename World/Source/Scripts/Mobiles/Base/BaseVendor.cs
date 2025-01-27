@@ -855,18 +855,30 @@ namespace Server.Mobiles
 				GenericBuyInfo gbi = (GenericBuyInfo)buyItem;
 				IEntity disp = gbi.GetDisplayEntity();
 
-				list.Add( new BuyItemState( buyItem.Name, cont.Serial, disp == null ? (Serial)0x7FC0FFEE : disp.Serial, buyItem.Price, buyItem.Amount, buyItem.ItemID, buyItem.Hue ) );
-				count++;
+				var price = buyItem.Price;
+				var name = buyItem.Name;
 
 				if ( opls == null ) {
 					opls = new List<ObjectPropertyList>();
 				}
 
 				if ( disp is Item ) {
-					opls.Add( ( ( Item ) disp ).PropertyList );
-				} else if ( disp is Mobile ) {
+					var item = (Item)disp;
+					if (MutatePurchase(item, from, false))
+					{
+						price = GetMutationCost(buyItem.Price, from);
+						name = string.Format("(Magical) {0}", item.Name);
+					}
+                    else
+                    {
+                        opls.Add(((Item)disp).PropertyList);
+                    }
+                } else if ( disp is Mobile ) {
 					opls.Add( ( ( Mobile ) disp ).PropertyList );
 				}
+
+				list.Add( new BuyItemState( name, cont.Serial, disp == null ? (Serial)0x7FC0FFEE : disp.Serial, price, buyItem.Amount, buyItem.ItemID, buyItem.Hue ) );
+				count++;
 			}
 
 			List<Item> playerItems = cont.Items;
@@ -1545,6 +1557,7 @@ namespace Server.Mobiles
 				else
 				{
 					item.Amount = 1;
+					MutatePurchase(item, buyer, true);
 
 					if ( cont == null || !cont.TryDropItem( buyer, item, false ) )
 						item.MoveToWorld( buyer.Location, buyer.Map );
@@ -1552,7 +1565,8 @@ namespace Server.Mobiles
 					for ( int i = 1; i < amount; i++ )
 					{
 						item = bii.GetEntity() as Item;
-
+						MutatePurchase(item, buyer, true);
+							
 						if ( item is Spear ){ item.ItemID = 0xF62; }
 						else if ( item is Club ){ item.ItemID = 0x13B4; }
 						else if ( item is Cleaver ){ item.ItemID = 0xEC3; }
@@ -1600,6 +1614,55 @@ namespace Server.Mobiles
 					}
 				}
 			}
+		}
+
+		private bool MutatePurchase(Item item, Mobile buyer, bool onlyCheck)
+		{
+			if ( ( 
+				item is BaseWeapon
+				|| item is BaseArmor
+				|| item is BaseTrinket
+				|| item is BaseQuiver
+				|| item is BaseHat
+				|| item is BaseClothing
+				|| item is BaseInstrument
+				|| item is Spellbook
+			) == false ) return false;
+
+			var tier = GetPlayerTier(buyer);
+			switch(tier)
+			{
+				case 1: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 2, 2, 5, 25); break; // 5k - After a few Normal dungeons
+				case 2: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 2, 2, 5, 30); break; // 10k - After a lot of Normal dungeons?
+				case 3: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 2, 3, 15, 40); break; // 15k - Starting Difficult dungeons
+				case 4: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 2, 3, 20, 50); break; // 20k - After a lot of Difficult
+				case 5: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 2, 4, 25, 50); break; // 25k - Begin Challenging
+				case 6: if (onlyCheck) BaseRunicTool.ApplyAttributes(item, 3, 5, 40, 70); break; // 30k - Lots of Challenging
+				// Hard
+				// Deadly
+				default: return false;
+			}
+
+			// Always basic resources.
+			// This gives Players the opportunity to enhance and flip items.
+			// Non-basic resource drops are 
+
+			return true;
+		}
+
+		public int GetMutationCost(int price, Mobile buyer)
+		{
+			return price * (1 + GetPlayerTier(buyer));
+		}
+
+		private int GetPlayerTier(Mobile player) // Max of 6
+		{
+			var karma = Math.Min(15000, Math.Abs(player.Karma));
+			var fame = Math.Min(15000, player.Fame);
+
+			var level = (fame + karma) / 5000;
+
+			return level;
 		}
 
         public virtual bool OnBuyItems( Mobile buyer, List<BuyItemResponse> list )
