@@ -86,7 +86,7 @@ namespace Server.Engines.Craft
 
 			EnhanceResult res = EnhanceResult.Success;
 
-			if ( Utility.Random(100) < playerSkill )
+			if ( playerSkill < Utility.Random(100) )
 			{
 				res = EnhanceResult.Failure;
 
