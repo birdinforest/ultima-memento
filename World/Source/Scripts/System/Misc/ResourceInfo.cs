@@ -147,19 +147,19 @@ namespace Server.Items
 			Trimantium	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	50	,	0	,	0	,	0	,	null,	80	,	25	,	0	 );
 			Xonolite	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	50	,	0	,	0	,	null,	80	,	25	,	0	 );
 																																				
-			RedScales	 	= CraftAttInfo( 	3	,	3	,	2	,	2	,	2	,	null,	0	,	25	,	0	,	0	,	null,	30	,	0	,	0	 );
-			YellowScales 	= CraftAttInfo( 	3	,	3	,	3	,	2	,	2	,	null,	10	,	10	,	10	,	10	,	null,	30	,	0	,	30	 );
-			BlackScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	2	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
+			RedScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	25	,	0	,	0	,	null,	30	,	0	,	0	 );
+			YellowScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	10	,	10	,	10	,	10	,	null,	30	,	0	,	30	 );
+			BlackScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
 			GreenScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	25	,	null,	30	,	0	,	0	 );
-			WhiteScales	 	= CraftAttInfo( 	4	,	3	,	3	,	3	,	3	,	null,	25	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
-			BlueScales	 	= CraftAttInfo( 	4	,	4	,	3	,	3	,	3	,	null,	15	,	0	,	0	,	15	,	null,	30	,	0	,	0	 );
-			DinosaurScales 	= CraftAttInfo( 	4	,	4	,	4	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
-			MetallicScales 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
-			BrazenScales 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	15	,	15	,	0	,	null,	30	,	0	,	0	 );
-			UmberScales	 	= CraftAttInfo( 	5	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	35	,	0	,	null,	30	,	0	,	0	 );
-			VioletScales 	= CraftAttInfo( 	5	,	5	,	4	,	4	,	4	,	null,	0	,	0	,	25	,	0	,	null,	30	,	0	,	0	 );
-			PlatinumScales 	= CraftAttInfo( 	5	,	5	,	5	,	4	,	4	,	null,	15	,	15	,	15	,	15	,	null,	30	,	0	,	50	 );
-			CadalyteScales 	= CraftAttInfo( 	5	,	5	,	5	,	5	,	4	,	null,	0	,	0	,	50	,	0	,	null,	200	,	30	,	0	 );
+			WhiteScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	25	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
+			BlueScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	15	,	0	,	0	,	15	,	null,	30	,	0	,	0	 );
+			DinosaurScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
+			MetallicScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	0	,	0	 );
+			BrazenScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	15	,	15	,	0	,	null,	30	,	0	,	0	 );
+			UmberScales	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	35	,	0	,	null,	30	,	0	,	0	 );
+			VioletScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	25	,	0	,	null,	30	,	0	,	0	 );
+			PlatinumScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	15	,	15	,	15	,	15	,	null,	30	,	0	,	50	 );
+			CadalyteScales 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	50	,	0	,	null,	200	,	30	,	0	 );
 			//
 			GornScales	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	25	,	0	,	0	,	null,	100	,	10	,	0	 );
 			TrandoshanScales= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	25	,	0	,	0	,	0	,	null,	100	,	10	,	0	 );
