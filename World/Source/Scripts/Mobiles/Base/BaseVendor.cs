@@ -1505,7 +1505,7 @@ namespace Server.Mobiles
 			return null;
 		}
 
-        private void ProcessSinglePurchase( BuyItemResponse buy, IBuyItemInfo bii, List<BuyItemResponse> validBuy, ref int controlSlots, ref bool fullPurchase, ref int totalCost )
+        private void ProcessSinglePurchase( int pricePerItem, BuyItemResponse buy, IBuyItemInfo bii, List<BuyItemResponse> validBuy, ref int controlSlots, ref bool fullPurchase, ref int totalCost )
 		{
 			int amount = buy.Amount;
 
@@ -1527,7 +1527,8 @@ namespace Server.Mobiles
 				return;
 			}
 
-			totalCost += bii.Price * amount;
+            totalCost += pricePerItem * amount;
+
 			validBuy.Add( buy );
 		}
 
@@ -1715,7 +1716,8 @@ namespace Server.Mobiles
 
 					if ( gbi != null )
 					{
-						ProcessSinglePurchase( buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
+						int price = MutatePurchase(item, buyer, false) ? GetMutationCost(gbi.Price, buyer) : gbi.Price;
+                        ProcessSinglePurchase( price, buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
 					}
 					else if ( item != this.BuyPack && item.IsChildOf( this.BuyPack ) )
 					{
@@ -1749,7 +1751,7 @@ namespace Server.Mobiles
 					GenericBuyInfo gbi = LookupDisplayObject( mob );
 
 					if ( gbi != null )
-						ProcessSinglePurchase( buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
+						ProcessSinglePurchase( gbi.Price, buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
 				}
 			}//foreach
 
