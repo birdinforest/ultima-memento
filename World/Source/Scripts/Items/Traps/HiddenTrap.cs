@@ -865,6 +865,9 @@ namespace Server.Items
 								if ( i.Catalog == Catalogs.Potion )
 								{
 									nBroken = 1;
+									if (i.Parent is NotIdentified)
+										((NotIdentified)i.Parent).Delete();
+									
 									i.Delete();
 								}
 							}
