@@ -6376,7 +6376,7 @@ namespace Server.Mobiles
 				attacker.PlaySound( attacker.RaceAttackSound );
 			
 			if ( CanDispel( this, attacker ) )
-				Dispel( attacker );
+				Dispel( attacker, true );
 
 			int stealing = Utility.RandomMinMax( 1, (int)(attacker.Skills[SkillName.Stealing].Value) ) + 10;
 			double snooping = attacker.Skills[SkillName.Snooping].Value;
@@ -6497,8 +6497,25 @@ namespace Server.Mobiles
 
 		public virtual void Dispel( Mobile m )
 		{
+			Dispel( m, false );
+		}
+
+		private DateTime m_NextDefensiveDispel = DateTime.MinValue;
+
+		public virtual void Dispel( Mobile m, bool defensiveDispel )
+		{
 			if ( DispelChecks( m, false ) )
 			{
+				if ( defensiveDispel )
+				{
+					DateTime now = DateTime.Now;
+					if ( now < m_NextDefensiveDispel ) return;
+
+					m_NextDefensiveDispel = now.AddSeconds( Utility.RandomMinMax( 3, 5 ) );
+                    if (MyServerSettings.EnableDispelLogging())
+                        m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Defensively Dispelled");
+                }
+
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 5042 );
 				Effects.PlaySound( m, m.Map, 0x201 );
 				m.Delete();
