@@ -1644,6 +1644,9 @@ namespace Server.Mobiles
 				default: return false;
 			}
 
+			if (doMutation && item is Spellbook)
+				((Spellbook)item).Content = 0; // Reset to no spells
+
 			// Always basic resources.
 			// This gives Players the opportunity to enhance and flip items.
 			// Non-basic resource drops are 
