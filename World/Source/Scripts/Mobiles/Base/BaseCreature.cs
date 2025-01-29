@@ -6429,8 +6429,15 @@ namespace Server.Mobiles
 		}
 
 		public bool DispelChecks( Mobile m, bool fromSpell )
-		{
-			double DispelChance = 0.75; // 75% chance to dispel at gm magery
+        {
+            if ((this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81))
+            {
+                if (MyServerSettings.EnableDispelLogging() && !fromSpell)
+                    m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Low skill)");
+                return false;
+            }
+
+            double DispelChance = 0.75; // 75% chance to dispel at gm magery
 
 			double magery = this.Skills[ SkillName.Magery ].Value * DispelChance * 0.01;
 
@@ -6438,12 +6445,6 @@ namespace Server.Mobiles
 			{
 				if (magery > 0 && MyServerSettings.EnableDispelLogging() && !fromSpell)
 					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery)");
-				return false;
-			}
-			else if ( ( this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81 ) )
-			{
-				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery/Necro)");
 				return false;
 			}
 			else if ( this.Mana < 40 )
