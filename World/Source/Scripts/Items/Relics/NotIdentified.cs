@@ -243,7 +243,14 @@ namespace Server.Items
 					item.MoveToWorld ( unk.Location, unk.Map );
 				else if ( unk.Parent is Container )
 				{
-					((Container)(unk.Parent)).DropItem( item );
+                    var parent = ((Container)(unk.Parent));
+                    if (item.Stackable && parent.TryDropItem(player, item, false)) // Try to stack
+                    {
+                        if (item.Deleted) continue; // Auto-stacked
+                    }
+                    else
+                        parent.AddItem(item); // If it bounced, force-add it back (it was there before being ID'd)
+
 					item.Location = unk.Location;
 				}
 				else
