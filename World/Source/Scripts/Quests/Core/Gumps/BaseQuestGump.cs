@@ -28,8 +28,8 @@ namespace Server.Engines.MLQuests.Gumps
 
 	public abstract class BaseQuestGump : Gump
 	{
-		public const int COLOR_HTML = 0xf7fbde; // RGB888
-		public const int COLOR_LABEL = 1918; // Hue from files
+		public const int COLOR_HTML = HtmlColors.OFFWHITE;
+		public const int COLOR_LABEL = LabelColors.OFFWHITE;
 		public const int COLOR_LOCALIZED = 0xf7db; // RGB565
 		public const int COLOR_TITLE_LOCALIZED = 0xffa0; // RGB565
 
