@@ -1629,6 +1629,7 @@ namespace Server.Mobiles
 				|| item is BaseInstrument
 				|| item is Spellbook
 			) == false ) return false;
+			if ( item is BaseTool ) return false;
 
 			var tier = GetPlayerTier(buyer);
 			switch(tier)
