@@ -363,7 +363,8 @@ namespace Server.Gumps
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 				m.SendSound( 0x65C );
 				m.SendMessage( book.Name + " has been added to your library." );
-				book.Delete();
+				if ((book is GoldenRangers) == false) // Needed for quest
+					book.Delete();
 			}
 
 		}
