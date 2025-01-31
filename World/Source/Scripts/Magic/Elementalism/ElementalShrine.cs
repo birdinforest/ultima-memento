@@ -147,12 +147,12 @@ namespace Server.Items
 					if ( m.HasGump( typeof( SetupBarsElement1 ) ) )
 					{
 						m.CloseGump( typeof( SetupBarsElement1 ) );
-						m.SendGump( new SetupBarsElement1( m, 0 ) );
+						m.SendGump( new SetupBarsElement1( (PlayerMobile)m, 0 ) );
 					}
 					if ( m.HasGump( typeof( SetupBarsElement2 ) ) )
 					{
 						m.CloseGump( typeof( SetupBarsElement2 ) );
-						m.SendGump( new SetupBarsElement2( m, 0 ) );
+						m.SendGump( new SetupBarsElement2( (PlayerMobile)m, 0 ) );
 					}
 					m.CloseGump( typeof( ElementalSpellbookGump ) );
 					m.CloseGump( typeof( ElementalSpellHelp ) );

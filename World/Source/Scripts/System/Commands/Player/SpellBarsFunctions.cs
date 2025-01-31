@@ -130,6 +130,39 @@ namespace Server.Misc
 			else if ( ToolBar == "SetupBarsMonk2" && ((PlayerMobile)m).SpellBarsMonk2 == null ){ ((PlayerMobile)m).SpellBarsMonk2 = "0#0#0#0#0#0#0#0#0#0#0#0#"; }
 		}
 
+		public static string GetToolBarSettings( Mobile m, string ToolBar )
+		{
+			PlayerMobile pm = m as PlayerMobile;
+			if (pm == null) return "";
+			
+			ToolBarUpdates.InitializeToolBar( m, ToolBar );
+
+			if ( ToolBar == "SetupBarsArch1" ){ return pm.SpellBarsArch1; }
+			else if ( ToolBar == "SetupBarsArch2" ){ return pm.SpellBarsArch2; }
+			else if ( ToolBar == "SetupBarsArch3" ){ return pm.SpellBarsArch3; }
+			else if ( ToolBar == "SetupBarsArch4" ){ return pm.SpellBarsArch4; }
+			else if ( ToolBar == "SetupBarsMage1" ){ return pm.SpellBarsMage1; }
+			else if ( ToolBar == "SetupBarsMage2" ){ return pm.SpellBarsMage2; }
+			else if ( ToolBar == "SetupBarsMage3" ){ return pm.SpellBarsMage3; }
+			else if ( ToolBar == "SetupBarsMage4" ){ return pm.SpellBarsMage4; }
+			else if ( ToolBar == "SetupBarsNecro1" ){ return pm.SpellBarsNecro1; }
+			else if ( ToolBar == "SetupBarsNecro2" ){ return pm.SpellBarsNecro2; }
+			else if ( ToolBar == "SetupBarsKnight1" ){ return pm.SpellBarsKnight1; }
+			else if ( ToolBar == "SetupBarsKnight2" ){ return pm.SpellBarsKnight2; }
+			else if ( ToolBar == "SetupBarsDeath1" ){ return pm.SpellBarsDeath1; }
+			else if ( ToolBar == "SetupBarsDeath2" ){ return pm.SpellBarsDeath2; }
+			else if ( ToolBar == "SetupBarsElly1" ){ return pm.SpellBarsElly1; }
+			else if ( ToolBar == "SetupBarsElly2" ){ return pm.SpellBarsElly2; }
+			else if ( ToolBar == "SetupBarsBard1" ){ return pm.SpellBarsBard1; }
+			else if ( ToolBar == "SetupBarsBard2" ){ return pm.SpellBarsBard2; }
+			else if ( ToolBar == "SetupBarsPriest1" ){ return pm.SpellBarsPriest1; }
+			else if ( ToolBar == "SetupBarsPriest2" ){ return pm.SpellBarsPriest2; }
+			else if ( ToolBar == "SetupBarsMonk1" ){ return pm.SpellBarsMonk1; }
+			else if ( ToolBar == "SetupBarsMonk2" ){ return pm.SpellBarsMonk2; }
+
+			return "";
+		}
+
 		public static int GetToolBarSetting( Mobile m, int nSetting, string ToolBar )
 		{
 			PlayerMobile pm = (PlayerMobile)m;
@@ -137,30 +170,7 @@ namespace Server.Misc
 
 			ToolBarUpdates.InitializeToolBar( m, ToolBar );
 
-			string ToolBarSetting = "";
-
-			if ( ToolBar == "SetupBarsArch1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsArch1; }
-			else if ( ToolBar == "SetupBarsArch2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsArch2; }
-			else if ( ToolBar == "SetupBarsArch3" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsArch3; }
-			else if ( ToolBar == "SetupBarsArch4" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsArch4; }
-			else if ( ToolBar == "SetupBarsMage1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMage1; }
-			else if ( ToolBar == "SetupBarsMage2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMage2; }
-			else if ( ToolBar == "SetupBarsMage3" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMage3; }
-			else if ( ToolBar == "SetupBarsMage4" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMage4; }
-			else if ( ToolBar == "SetupBarsNecro1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsNecro1; }
-			else if ( ToolBar == "SetupBarsNecro2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsNecro2; }
-			else if ( ToolBar == "SetupBarsKnight1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsKnight1; }
-			else if ( ToolBar == "SetupBarsKnight2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsKnight2; }
-			else if ( ToolBar == "SetupBarsDeath1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsDeath1; }
-			else if ( ToolBar == "SetupBarsDeath2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsDeath2; }
-			else if ( ToolBar == "SetupBarsElly1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsElly1; }
-			else if ( ToolBar == "SetupBarsElly2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsElly2; }
-			else if ( ToolBar == "SetupBarsBard1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsBard1; }
-			else if ( ToolBar == "SetupBarsBard2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsBard2; }
-			else if ( ToolBar == "SetupBarsPriest1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsPriest1; }
-			else if ( ToolBar == "SetupBarsPriest2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsPriest2; }
-			else if ( ToolBar == "SetupBarsMonk1" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMonk1; }
-			else if ( ToolBar == "SetupBarsMonk2" ){ ToolBarSetting = ((PlayerMobile)m).SpellBarsMonk2; }
+			string ToolBarSetting = GetToolBarSettings( pm, ToolBar );
 
 			string[] eachSetting = ToolBarSetting.Split('#');
 			int nLine = 1;

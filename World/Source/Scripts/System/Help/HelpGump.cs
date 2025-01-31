@@ -1229,85 +1229,85 @@ namespace Server.Engines.Help
 					case 66: // SPELL BARS BELOW ---------------------------------------
 					{
 						from.CloseGump( typeof( SetupBarsBard1 ) );
-						from.SendGump( new SetupBarsBard1( from, 1 ) );
+						from.SendGump( new SetupBarsBard1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 67:
 					{
 						from.CloseGump( typeof( SetupBarsBard2 ) );
-						from.SendGump( new SetupBarsBard2( from, 1 ) );
+						from.SendGump( new SetupBarsBard2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 68:
 					{
 						from.CloseGump( typeof( SetupBarsKnight1 ) );
-						from.SendGump( new SetupBarsKnight1( from, 1 ) );
+						from.SendGump( new SetupBarsKnight1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 69:
 					{
 						from.CloseGump( typeof( SetupBarsKnight2 ) );
-						from.SendGump( new SetupBarsKnight2( from, 1 ) );
+						from.SendGump( new SetupBarsKnight2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 70:
 					{
 						from.CloseGump( typeof( SetupBarsDeath1 ) );
-						from.SendGump( new SetupBarsDeath1( from, 1 ) );
+						from.SendGump( new SetupBarsDeath1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 71:
 					{
 						from.CloseGump( typeof( SetupBarsDeath2 ) );
-						from.SendGump( new SetupBarsDeath2( from, 1 ) );
+						from.SendGump( new SetupBarsDeath2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 72:
 					{
 						from.CloseGump( typeof( SetupBarsMage1 ) );
-						from.SendGump( new SetupBarsMage1( from, 1 ) );
+						from.SendGump( new SetupBarsMage1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 73:
 					{
 						from.CloseGump( typeof( SetupBarsMage2 ) );
-						from.SendGump( new SetupBarsMage2( from, 1 ) );
+						from.SendGump( new SetupBarsMage2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 74:
 					{
 						from.CloseGump( typeof( SetupBarsMage3 ) );
-						from.SendGump( new SetupBarsMage3( from, 1 ) );
+						from.SendGump( new SetupBarsMage3( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 75:
 					{
 						from.CloseGump( typeof( SetupBarsMage4 ) );
-						from.SendGump( new SetupBarsMage4( from, 1 ) );
+						from.SendGump( new SetupBarsMage4( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 76:
 					{
 						from.CloseGump( typeof( SetupBarsNecro1 ) );
-						from.SendGump( new SetupBarsNecro1( from, 1 ) );
+						from.SendGump( new SetupBarsNecro1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 77:
 					{
 						from.CloseGump( typeof( SetupBarsNecro2 ) );
-						from.SendGump( new SetupBarsNecro2( from, 1 ) );
+						from.SendGump( new SetupBarsNecro2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 78:
 					{
 						from.CloseGump( typeof( SetupBarsPriest1 ) );
-						from.SendGump( new SetupBarsPriest1( from, 1 ) );
+						from.SendGump( new SetupBarsPriest1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 79:
 					{
 						from.CloseGump( typeof( SetupBarsPriest2 ) );
-						from.SendGump( new SetupBarsPriest2( from, 1 ) );
+						from.SendGump( new SetupBarsPriest2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 80:
@@ -1318,49 +1318,49 @@ namespace Server.Engines.Help
 					case 1081:
 					{
 						from.CloseGump( typeof( SetupBarsArch1 ) );
-						from.SendGump( new SetupBarsArch1( from, 1 ) );
+						from.SendGump( new SetupBarsArch1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1082:
 					{
 						from.CloseGump( typeof( SetupBarsArch2 ) );
-						from.SendGump( new SetupBarsArch2( from, 1 ) );
+						from.SendGump( new SetupBarsArch2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1083:
 					{
 						from.CloseGump( typeof( SetupBarsArch3 ) );
-						from.SendGump( new SetupBarsArch3( from, 1 ) );
+						from.SendGump( new SetupBarsArch3( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1084:
 					{
 						from.CloseGump( typeof( SetupBarsArch4 ) );
-						from.SendGump( new SetupBarsArch4( from, 1 ) );
+						from.SendGump( new SetupBarsArch4( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 980:
 					{
 						from.CloseGump( typeof( SetupBarsMonk1 ) );
-						from.SendGump( new SetupBarsMonk1( from, 1 ) );
+						from.SendGump( new SetupBarsMonk1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 981:
 					{
 						from.CloseGump( typeof( SetupBarsMonk2 ) );
-						from.SendGump( new SetupBarsMonk2( from, 1 ) );
+						from.SendGump( new SetupBarsMonk2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 978:
 					{
 						from.CloseGump( typeof( SetupBarsElement1 ) );
-						from.SendGump( new SetupBarsElement1( from, 1 ) );
+						from.SendGump( new SetupBarsElement1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 979:
 					{
 						from.CloseGump( typeof( SetupBarsElement2 ) );
-						from.SendGump( new SetupBarsElement2( from, 1 ) );
+						from.SendGump( new SetupBarsElement2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 500:
@@ -2066,6 +2066,7 @@ namespace Server.Gumps
 				title = "Flip Deed";
 				info = "This option allows you to flip some deeds that can come in one of two direction facings. So if a deed states that furniture faces east, then you can set the deed on the floor of your house and flip it to face south instead. This can flip almost any deed-like items in this manner, but not all items are called 'deeds' or look like deeds. Some items behave as deeds and those can be flipped in the same manner. Tents or bear rugs, for example, have a facing and you can flip those with this command..";
 			}
+			//
 
 			AddPage(0);
 

@@ -122,6 +122,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
 			builder.Append("- Spell - Paladin spells require 1 stamina per 1 mana cost<br>");
 			builder.Append("- Spell - Creatures now vocalize Mantras when they cast spells<br>");
+			builder.Append("- Spell - Rewrite Spell Bar configuration gump<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 
 			builder.Append("<br>");

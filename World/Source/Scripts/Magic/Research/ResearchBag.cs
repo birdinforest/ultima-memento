@@ -1111,10 +1111,10 @@ namespace Server.Items
 				}
 				else if ( info.ButtonID > 1200 )
 				{
-					if ( info.ButtonID == 1201 ){ from.CloseGump( typeof( SetupBarsArch1 ) ); from.SendGump( new SetupBarsArch1( from, 2 ) ); }
-					else if ( info.ButtonID == 1202 ){ from.CloseGump( typeof( SetupBarsArch2 ) ); from.SendGump( new SetupBarsArch2( from, 2 ) ); }
-					else if ( info.ButtonID == 1203 ){ from.CloseGump( typeof( SetupBarsArch3 ) ); from.SendGump( new SetupBarsArch3( from, 2 ) ); }
-					else if ( info.ButtonID == 1204 ){ from.CloseGump( typeof( SetupBarsArch4 ) ); from.SendGump( new SetupBarsArch4( from, 2 ) ); }
+					if ( info.ButtonID == 1201 ){ from.CloseGump( typeof( SetupBarsArch1 ) ); from.SendGump( new SetupBarsArch1( (PlayerMobile)from, 2 ) ); }
+					else if ( info.ButtonID == 1202 ){ from.CloseGump( typeof( SetupBarsArch2 ) ); from.SendGump( new SetupBarsArch2( (PlayerMobile)from, 2 ) ); }
+					else if ( info.ButtonID == 1203 ){ from.CloseGump( typeof( SetupBarsArch3 ) ); from.SendGump( new SetupBarsArch3( (PlayerMobile)from, 2 ) ); }
+					else if ( info.ButtonID == 1204 ){ from.CloseGump( typeof( SetupBarsArch4 ) ); from.SendGump( new SetupBarsArch4( (PlayerMobile)from, 2 ) ); }
 
 					else if ( info.ButtonID == 1211 ){ InvokeCommand( "archtool1", from ); }
 					else if ( info.ButtonID == 1212 ){ InvokeCommand( "archtool2", from ); }
