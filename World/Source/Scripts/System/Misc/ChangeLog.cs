@@ -80,6 +80,7 @@ namespace Server.Misc
 			builder.Append("- Item - Skill bonuses from items no longer overcap<br>");
 			builder.Append("- Item - Hiking Boots no longer give resistances<br>");
 			builder.Append("- Item - Soulstones are now account bound upon first use<br>");
+			builder.Append("- Item - Magic wands attributes are notably weaker<br>");
 			builder.Append("- Item - Sharpening stone rework<br>");
 			builder.Append("       - Centralized behvaiors for consistency<br>");
 			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");
