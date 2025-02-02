@@ -44,7 +44,8 @@ namespace Server.Mobiles
 
 		public virtual bool m_CanUseBard
 		{
-			get { return (m_Mobile.Skills[SkillName.Musicianship].Base > 10.0); }
+			// Disabled due to custom bard implementation
+			get { return false && (m_Mobile.Skills[SkillName.Musicianship].Base > 10.0); }
 		}
 
 		public virtual bool m_CanUseBushido
