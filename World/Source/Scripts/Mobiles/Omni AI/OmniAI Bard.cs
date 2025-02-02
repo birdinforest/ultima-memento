@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -109,7 +108,7 @@ namespace Server.Mobiles
 					new ResistanceMod( ResistanceType.Energy, (int)(effect * 0.01) )
 				};
 		
-				TimedResistanceMod.AddMod( target, "Discordance", mods, duration );
+				// TimedResistanceMod.AddMod( target, "Discordance", mods, duration );
 				target.AddStatMod( new StatMod( StatType.Str, "DiscordanceStr", (int)(target.RawStr * effect), duration ) );
 				target.AddStatMod( new StatMod( StatType.Int, "DiscordanceInt", (int)(target.RawInt * effect), duration ) );
 				target.AddStatMod( new StatMod( StatType.Dex, "DiscordanceDex", (int)(target.RawDex * effect), duration ) );

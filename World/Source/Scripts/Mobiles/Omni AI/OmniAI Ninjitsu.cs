@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 

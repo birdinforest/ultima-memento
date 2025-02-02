@@ -24,7 +24,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -55,7 +54,7 @@ namespace Server.Mobiles
 
 		public virtual bool m_CanUseChivalry
 		{
-			get { return (m_Mobile.Skills[SkillName.Chivalry].Base > 10.0); }
+			get { return (m_Mobile.Skills[SkillName.Knightship].Base > 10.0); }
 		}
 
 		public virtual bool m_CanUseMagery
@@ -72,19 +71,7 @@ namespace Server.Mobiles
 		{
 			get { return (m_Mobile.Skills[SkillName.Ninjitsu].Base > 10.0); }
 		}
-
-		public virtual bool m_CanUseSpellweaving
-		{
-			get { return (m_Mobile.Skills[SkillName.Spellweaving].Base >= 10.0); }
-		}
-
 		
-		public virtual bool m_CanUseMystic
-		{
-			get { return (m_Mobile.Skills[SkillName.Mysticism].Base >= 10.0); }
-		}
-		
-
 		public virtual bool m_SwapWeapons
 		{
 			get { return m_CanUseBushido || m_CanUseNinjitsu; }
@@ -285,10 +272,6 @@ namespace Server.Mobiles
 					skill.Add( 4 );
 				if ( m_CanUseNinjitsu )
 					skill.Add( 5 );
-				if ( m_CanUseSpellweaving )
-					skill.Add( 6 );
-                if (m_CanUseMystic)
-                    skill.Add( 7 );
 
 				if ( skill.Count == 0 )
 					return true;
@@ -300,14 +283,12 @@ namespace Server.Mobiles
 
 				switch( whichone )
 				{
-					// case 0: BardPower(); break;
+					case 0: BardPower(); break;
 					case 1: BushidoPower(); break;
 					case 2: ChivalryPower(); break;
 					case 3: MageryPower(); break;
 					case 4: NecromancerPower(); break;
 					case 5: NinjitsuPower(); break;
-					case 6: SpellweavingPower(); break;
-                    case 7: MysticPower(); break;
 				}
 
 			}
@@ -551,40 +532,41 @@ namespace Server.Mobiles
 					}
 				}
 			}
-			else if ( targ is AnimateDeadSpell.InternalTarget )
-			{
-				Type type = null;
+			// TODO: Verify Animating will not destroy the items on the corpse
+			// else if ( targ is AnimateDeadSpell.InternalTarget )
+			// {
+			// 	Type type = null;
 
-				List<Item> itemtargets = new List<Item>();
+			// 	List<Item> itemtargets = new List<Item>();
 
-				foreach ( Item itemstofind in m_Mobile.GetItemsInRange( 5 ) )
-				{
-					if ( itemstofind is Corpse )
-					{
-						itemtargets.Add( itemstofind );
-					}
-				}
+			// 	foreach ( Item itemstofind in m_Mobile.GetItemsInRange( 5 ) )
+			// 	{
+			// 		if ( itemstofind is Corpse )
+			// 		{
+			// 			itemtargets.Add( itemstofind );
+			// 		}
+			// 	}
 
-				for ( int i = 0; i < itemtargets.Count; ++i )
-				{
-					Corpse items = (Corpse)itemtargets[i];
+			// 	for ( int i = 0; i < itemtargets.Count; ++i )
+			// 	{
+			// 		Corpse items = (Corpse)itemtargets[i];
 
-					if ( items.Owner != null )
-						type = items.Owner.GetType();
+			// 		if ( items.Owner != null )
+			// 			type = items.Owner.GetType();
 
-					if ( items.ItemID != 0x2006 || items.Channeled || type == typeof( PlayerMobile ) || type == null || (items.Owner != null && items.Owner.Fame < 100) || ((items.Owner != null) && (items.Owner is BaseCreature) && (((BaseCreature)items.Owner).Summoned || ((BaseCreature)items.Owner).IsBonded)) )
-						continue;
-					else
-					{
-						targ.Invoke( m_Mobile, items );
-						break;
-					}
-				}
+			// 		if ( items.ItemID != 0x2006 || items.Channeled || type == typeof( PlayerMobile ) || type == null || (items.Owner != null && items.Owner.Fame < 100) || ((items.Owner != null) && (items.Owner is BaseCreature) && (((BaseCreature)items.Owner).Summoned || ((BaseCreature)items.Owner).IsBonded)) )
+			// 			continue;
+			// 		else
+			// 		{
+			// 			targ.Invoke( m_Mobile, items );
+			// 			break;
+			// 		}
+			// 	}
 
-				if ( targ != null )
-					targ.Cancel( m_Mobile, TargetCancelType.Canceled );
+			// 	if ( targ != null )
+			// 		targ.Cancel( m_Mobile, TargetCancelType.Canceled );
 
-			}
+			// }
 			else if ( (targ.Flags & TargetFlags.Harmful) != 0 && toTarget != null )
 			{
 				if ( (targ.Range == -1 || m_Mobile.InRange( toTarget, targ.Range )) && m_Mobile.CanSee( toTarget ) && m_Mobile.InLOS( toTarget ) )

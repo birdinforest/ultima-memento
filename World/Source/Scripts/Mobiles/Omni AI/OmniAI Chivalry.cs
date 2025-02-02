@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -59,7 +58,7 @@ namespace Server.Mobiles
 
 			int whichone = Utility.RandomMinMax( 1, 4 );
 
-			if ( whichone == 4 && m_Mobile.Skills[SkillName.Chivalry].Value >= 55.0 && m_Mobile.Mana >= 10 )
+			if ( whichone == 4 && m_Mobile.Skills[SkillName.Knightship].Value >= 55.0 && m_Mobile.Mana >= 10 )
 			{
 				if ( m_Mobile.Debug )
 					m_Mobile.Say( 1154, "Casting Holy Light" );
@@ -73,7 +72,7 @@ namespace Server.Mobiles
 
 				return new DispelEvilSpell( m_Mobile, null );
 			}
-			else if ( whichone >= 2 && !(DivineFurySpell.UnderEffect( m_Mobile )) && m_Mobile.Skills[SkillName.Chivalry].Value >= 35.0 )
+			else if ( whichone >= 2 && !(DivineFurySpell.UnderEffect( m_Mobile )) && m_Mobile.Skills[SkillName.Knightship].Value >= 35.0 )
 			{
 				if ( m_Mobile.Debug )
 					m_Mobile.Say( 1154, "Casting Divine Fury" );
@@ -96,7 +95,7 @@ namespace Server.Mobiles
 			if ( m_Mobile.Debug )
 				m_Mobile.Say( 1154, "Checking to bless my weapon" );
 
-			if ( m_Mobile.Skills[SkillName.Chivalry].Value < 15.0 || m_Mobile.Mana <= 9 )
+			if ( m_Mobile.Skills[SkillName.Knightship].Value < 15.0 || m_Mobile.Mana <= 9 )
 				return false;
 
 			BaseWeapon weapon = m_Mobile.Weapon as BaseWeapon;
@@ -112,7 +111,7 @@ namespace Server.Mobiles
 			if ( m_Mobile.Debug )
 				m_Mobile.Say( 1154, "Checking to dispel evil" );
 
-			if ( m_Mobile.Skills[SkillName.Chivalry].Value < 35.0 || m_Mobile.Mana <= 9 )
+			if ( m_Mobile.Skills[SkillName.Knightship].Value < 35.0 || m_Mobile.Mana <= 9 )
 				return false;
 
 			bool cast = false;
@@ -139,7 +138,7 @@ namespace Server.Mobiles
 			if ( m_Mobile.Debug )
 				m_Mobile.Say( 1154, "Checking for remove curse" );
 
-			if ( m_Mobile.Skills[SkillName.Chivalry].Value < 5.0 || m_Mobile.Mana <= 19 )
+			if ( m_Mobile.Skills[SkillName.Knightship].Value < 5.0 || m_Mobile.Mana <= 19 )
 				return false;
 
 			StatMod mod;

@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -34,7 +33,7 @@ namespace Server.Mobiles
 
 		public virtual bool m_CanStun
 		{
-			get { return ( m_Mobile is BaseVendor || m_Mobile is BaseEscortable || m_Mobile is BaseChampion); }
+			get { return m_Mobile is BaseVendor; }
 		}
 
 		public bool TryToHeal()
@@ -66,7 +65,7 @@ namespace Server.Mobiles
 			}
 			else if ( m_CanUseNecromancy )
 			{
-				m_Mobile.UseSkill( SkillName.SpiritSpeak );
+				m_Mobile.UseSkill( SkillName.Spiritualism );
 				m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds( 10 );
 			}
 			else if ( m_CanUseChivalry )
@@ -76,21 +75,21 @@ namespace Server.Mobiles
 				else
 					spell = new CloseWoundsSpell( m_Mobile, null );
 			}
-            else if ( m_CanUseMystic )
-            {
-                if (m_Mobile.Poisoned)
-                    spell = new CleansingWindsSpell(m_Mobile, null);
+            // else if ( m_CanUseMystic )
+            // {
+            //     if (m_Mobile.Poisoned)
+            //         spell = new CleansingWindsSpell(m_Mobile, null);
 
-                spell = new CleansingWindsSpell(m_Mobile, null);
-                m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds(10);
+            //     spell = new CleansingWindsSpell(m_Mobile, null);
+            //     m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds(10);
 
-                //if (spell == null)
-                    //spell = new CleansingWindsSpell(m_Mobile, null);
-            }
+            //     //if (spell == null)
+            //         //spell = new CleansingWindsSpell(m_Mobile, null);
+            // }
 			else if ( m_Mobile.Skills[SkillName.Healing].Value > 10.0 )
 			{
 				int delay = (int)( 5.0 + (0.5 * ((120 - m_Mobile.Dex) / 10)) );
-				new BandageContext( m_Mobile, m_Mobile, TimeSpan.FromSeconds( delay ), false );
+				new BandageContext( m_Mobile, m_Mobile, TimeSpan.FromSeconds( delay ) );
 				m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds( delay+1 );
 				return true;
 			}
@@ -163,7 +162,7 @@ namespace Server.Mobiles
 				WeaponAbility.SetCurrentAbility( m_Mobile, weapon.PrimaryAbility );
 			else if ( m_Mobile.Skills[weapon.Skill].Value >= 60.0 )
 				WeaponAbility.SetCurrentAbility( m_Mobile, weapon.SecondaryAbility );
-			else if ( m_Mobile.Skills[SkillName.Wrestling].Value >= 60.0 && /*weapon == Fist &&*/ m_CanStun && !m_Mobile.StunReady )
+			else if ( m_Mobile.Skills[SkillName.FistFighting].Value >= 60.0 && /*weapon == Fist &&*/ m_CanStun && !m_Mobile.StunReady )
 				EventSink.InvokeStunRequest( new StunRequestEventArgs( m_Mobile ) );
 		}
 

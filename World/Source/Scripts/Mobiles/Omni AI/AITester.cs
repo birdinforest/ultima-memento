@@ -38,13 +38,13 @@ namespace Server.Mobiles
 
 			if ( i == 0 )
 			{
-				SetSkill( SkillName.EvalInt, 120.0 );
+				SetSkill( SkillName.Psychology, 120.0 );
 				SetSkill( SkillName.Magery, 120.0 );
 			}
 			else if ( i == 1 )
 			{
 				SetSkill( SkillName.Necromancy, 120.0 );
-				SetSkill( SkillName.SpiritSpeak, 120.0 );
+				SetSkill( SkillName.Spiritualism, 120.0 );
 			}
 			else if ( i == 2 )
 			{
@@ -57,10 +57,10 @@ namespace Server.Mobiles
 				SetSkill( SkillName.Hiding, 120.0 );
 				SetSkill( SkillName.Stealth, 120.0 );
 			}
-			else if ( i == 4 )
-			{
-				SetSkill( SkillName.Spellweaving, 120.0 );
-			}
+			// else if ( i == 4 )
+			// {
+			// 	SetSkill( SkillName.Spellweaving, 120.0 );
+			// }
 
 			SetSkill( SkillName.Anatomy, 100.0 );
 			SetSkill( SkillName.MagicResist, 120.0 );

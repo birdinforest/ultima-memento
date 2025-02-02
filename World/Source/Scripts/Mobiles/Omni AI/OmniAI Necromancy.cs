@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -34,7 +33,7 @@ namespace Server.Mobiles
 
 		public virtual bool m_CanShapeShift
 		{
-			get { return ( m_Mobile is BaseVendor || m_Mobile is BaseEscortable ); }
+			get { return m_Mobile is BaseVendor; }
 		}
 
 		public void NecromancerPower()

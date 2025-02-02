@@ -22,7 +22,6 @@ using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Spellweaving;
 using Server.Spells.Mystic;
 using Server.Targeting;
 
@@ -187,7 +186,7 @@ namespace Server.Mobiles
 
 			if ( foe.Skills[SkillName.Bushido].Value > 35.0 )
 				drain += 0.1;
-			if ( foe.Skills[SkillName.Chivalry].Value > 35.0 )
+			if ( foe.Skills[SkillName.Knightship].Value > 35.0 )
 				drain += 0.1;
 			if ( foe.Skills[SkillName.Magery].Value > 35.0 )
 				drain += 0.2;
