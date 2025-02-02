@@ -5775,6 +5775,23 @@ namespace Server.Mobiles
 			switch ( NewAI )
 			{
 				case AIType.AI_Melee:
+				case AIType.AI_Berserk:
+				case AIType.AI_Archer:
+				case AIType.AI_Mage:
+				case AIType.AI_Predator:
+					m_AI = new OmniAI(this);
+					return;
+
+				case AIType.AI_Animal:
+				case AIType.AI_Healer:
+				case AIType.AI_Vendor:
+				case AIType.AI_Thief:
+					break;
+			}
+
+			switch ( NewAI )
+			{
+				case AIType.AI_Melee:
 					m_AI = new MeleeAI(this);
 					break;
 				case AIType.AI_Animal:
