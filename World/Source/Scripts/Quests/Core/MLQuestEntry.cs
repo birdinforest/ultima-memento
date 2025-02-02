@@ -212,9 +212,9 @@ namespace Server.Engines.MLQuests
 
 		public void SendProgressGump()
 		{
-			if (string.IsNullOrWhiteSpace(Quest.InProgressMessage)) return;
+			string message = !string.IsNullOrWhiteSpace(Quest.InProgressMessage) ? (string)Quest.InProgressMessage : "* Click yourself to view your Quest Log";
 
-			Player.SendGump(new QuestConversationGump(Quest, Player, Quest.InProgressMessage));
+			Player.SendGump(new QuestConversationGump(Quest, Player, message));
 		}
 
 		public void SendRewardOffer()
