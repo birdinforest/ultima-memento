@@ -29,12 +29,12 @@ namespace Server.Engines.MLQuests.Definitions
             Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
             Objectives.Add(new DummyObjective(""));
             Objectives.Add(new DummyObjective("Tips:"));
-            Objectives.Add(new DummyObjective("- Tinkers and Miners sell Shovels"));
-            Objectives.Add(new DummyObjective("- Shovels can also be crafted with tinker tools"));
+            Objectives.Add(new DummyObjective("- Tinkers and Miners sell Shovels and Pickaxes"));
             Objectives.Add(new DummyObjective("- Double-click an item to use it"));
             Objectives.Add(new DummyObjective("- Shovels are used on the mountainside or cave floor"));
             Objectives.Add(new DummyObjective("- Ore is used on a Forge to make Ingots"));
-
+            Objectives.Add(new DummyObjective("- Pack animals at the animal trainer can carry much"));
+            Objectives.Add(new DummyObjective("heavier loads than you"));
 
             builder.Clear();
             builder.Append("Mark the ingots as a quest item when you are ready.<br><br>");
