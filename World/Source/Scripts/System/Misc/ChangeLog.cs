@@ -131,6 +131,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Combat - Ranged attacks are now prevented while being pacified<br>");
 			builder.Append("- Combat - Peacemake debuff is only removed at the appropriate time<br>");
+			builder.Append("- Combat - Mobs now bypass reagent check<br>");
 			builder.Append("- Craft - Candelabras now cap at 95 skill rather than 195<br>");
 			builder.Append("- Craft - Tinker recipes use Boards instead of Logs<br>");
 			builder.Append("- Craft - Fixed an issue where enhancing was succeeding instead of failing<br>");
