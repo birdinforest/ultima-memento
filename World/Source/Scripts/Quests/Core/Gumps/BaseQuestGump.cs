@@ -193,7 +193,7 @@ namespace Server.Engines.MLQuests.Gumps
 
 		public void AddConversation( TextDefinition text )
 		{
-			TextDefinition.AddHtmlText( this, 98, 110, 342, 210, text, false, true, COLOR_HTML, COLOR_HTML );
+			TextDefinition.AddHtmlText( this, 98, 110, 342, 280, text, false, true, COLOR_HTML, COLOR_HTML );
 		}
 
 		#endregion
