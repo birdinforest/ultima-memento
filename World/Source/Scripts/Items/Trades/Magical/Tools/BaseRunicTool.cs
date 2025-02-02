@@ -998,50 +998,6 @@ namespace Server.Items
 
 			m_Props.SetAll( false );
 
-			if ( LootPack.CheckLuck( m_LuckChance ) || max >= Utility.RandomMinMax( 1, 50 ) )
-			{
-				if ( spellbook is NecromancerSpellbook )
-					spellbook.Content = (ulong)( Utility.RandomMinMax( 0, (int)(ulong)0x1FFFF ) );
-				else if ( spellbook is ElementalSpellbook )
-				{
-					switch ( Utility.Random( 10 ) ) 
-					{
-						case 0: spellbook.Content = 0xF;		break;
-						case 1: spellbook.Content = 0xFF;		break;
-						case 2: spellbook.Content = 0xFFF;		break;
-						case 3: spellbook.Content = 0xFFFF;		break;
-						case 4: spellbook.Content = 0xFFFFF;	break;
-						case 5: spellbook.Content = 0xFFFFFF;	break;
-						case 6: spellbook.Content = 0xFFFFFFF;	break;
-						case 7: spellbook.Content = 0xFFFFFFFF;	break;
-					}
-				}
-				else if ( spellbook is SongBook )
-					spellbook.Content = (ulong)( Utility.RandomMinMax( 0, (int)(ulong)0xFFFF ) );
-				else if ( spellbook.MageryBook() )
-				{
-					switch ( Utility.Random( 20 ) ) 
-					{
-						case 0: spellbook.Content = 0xF;					break;
-						case 1: spellbook.Content = 0xFF;					break;
-						case 2: spellbook.Content = 0xFFF;					break;
-						case 3: spellbook.Content = 0xFFFF;					break;
-						case 4: spellbook.Content = 0xFFFFF;				break;
-						case 5: spellbook.Content = 0xFFFFFF;				break;
-						case 6: spellbook.Content = 0xFFFFFFF;				break;
-						case 7: spellbook.Content = 0xFFFFFFFF;				break;
-						case 8: spellbook.Content = 0xFFFFFFFFF;			break;
-						case 9: spellbook.Content = 0xFFFFFFFFFF;			break;
-						case 10: spellbook.Content = 0xFFFFFFFFFFF;			break;
-						case 11: spellbook.Content = 0xFFFFFFFFFFFF;		break;
-						case 12: spellbook.Content = 0xFFFFFFFFFFFFF;		break;
-						case 13: spellbook.Content = 0xFFFFFFFFFFFFFF;		break;
-						case 14: spellbook.Content = 0xFFFFFFFFFFFFFFF;		break;
-						case 15: spellbook.Content = 0xFFFFFFFFFFFFFFFF;	break;
-					}
-				}
-			}
-
 			for ( int i = 0; i < attributeCount; ++i )
 			{
 				int random = GetUniqueRandom( 16 );
