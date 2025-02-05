@@ -38,10 +38,9 @@ namespace Server.Mobiles
 
 		public bool TryToHeal()
 		{
-			if ( m_Mobile.Summoned )
-				return false;
-			else if ( DateTime.Now < m_NextHealTime )
-				return false;
+			if ( m_Mobile.Summoned ) return false;
+			else if ( m_Mobile.HitsMax - 10 < m_Mobile.Hits ) return false;
+			else if ( DateTime.Now < m_NextHealTime ) return false;
 
 			int diff = m_Mobile.HitsMax - m_Mobile.Hits;
 			diff = ( ( m_Mobile.HitsMax * (100 - diff ) ) / 100 );
