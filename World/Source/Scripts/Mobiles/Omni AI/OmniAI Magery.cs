@@ -42,7 +42,8 @@ namespace Server.Mobiles
 
 			if ( spell != null )
 			{
-				m_NextCastTime = DateTime.Now + spell.GetCastDelay() + spell.GetCastRecovery();
+				TimeSpan delay = spell.GetCastDelay() + spell.GetCastRecovery();
+                m_NextCastTime = DateTime.Now + delay + delay; // Double the delay
 				spell.Cast();
 			}
 
