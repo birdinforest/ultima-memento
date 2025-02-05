@@ -78,18 +78,29 @@ namespace Server.Mobiles
 			get { return m_CanUseBushido || m_CanUseNinjitsu; }
 		}
 
-		public virtual bool m_Melees
+		public virtual bool m_MoveErratically
 		{
 			get
 			{
-				if ( m_Mobile.Weapon is BaseRanged )
-					return false;
-				else if ( !m_CanUseMagery && !m_CanUseNecromancy )
-					return true;
-				if ( m_CanUseChivalry || m_CanUseBushido || m_CanUseNinjitsu )
-					return true;
-				else
-					return false;
+				return false;
+			}
+		}
+
+		public virtual bool m_RequireRanged
+		{
+			get
+			{
+				return m_Mobile.Weapon is BaseRanged;
+			}
+		}
+
+		public virtual bool m_PrefersRanged
+		{
+			get
+			{
+				if ((m_CanUseMagery || m_CanUseNecromancy) && m_Mobile.RawStr < m_Mobile.RawInt) return true;
+
+				return false;
 			}
 		}
 		#endregion
@@ -369,28 +380,36 @@ namespace Server.Mobiles
 				else
 					return true;
 			}
-			else if ( !m_Melees && m != null ) 
+			else if ( m != null && ( m_MoveErratically || m_RequireRanged || m_PrefersRanged ) )
 			{
-				if ( m_Mobile.InRange( m, 2 ) && CheckMove() )
+				bool forceMove = m_MoveErratically;
+				bool shouldRetreat = m_MoveErratically || m_Mobile.InRange( m, 2 );
+				if ( shouldRetreat && CheckMove() )
 				{
-					Direction d = Direction.North;
-
-					switch( m_Mobile.GetDirectionTo( m ) )
+					if ( Utility.RandomBool() ) // Only retreat a fraction of the time
 					{
-						case Direction.North: d = Direction.South; break;
-						case Direction.South: d = Direction.North; break;
-						case Direction.East: d = Direction.West; break;
-						case Direction.West: d = Direction.East; break;
-						case Direction.Up: d = Direction.Down; break;
-						case Direction.Down: d = Direction.Up; break;
-						case Direction.Right: d = Direction.Left; break;
-						case Direction.Left: d = Direction.Right; break;
-					}
+						Direction d = Direction.North;
 
-					return DoMove( d, run );
-					// base.DoActionFlee();
+						switch( m_Mobile.GetDirectionTo( m ) )
+						{
+							case Direction.North: d = Direction.South; break;
+							case Direction.South: d = Direction.North; break;
+							case Direction.East: d = Direction.West; break;
+							case Direction.West: d = Direction.East; break;
+							case Direction.Up: d = Direction.Down; break;
+							case Direction.Down: d = Direction.Up; break;
+							case Direction.Right: d = Direction.Left; break;
+							case Direction.Left: d = Direction.Right; break;
+						}
+
+						return DoMove( d, run );
+						// base.DoActionFlee();
+					}
+					else if ( !forceMove ) return true; // Stay put instead
 				}
-				else if ( m_Mobile.InRange( m, 4 ) )
+				
+				// Stay put as long as they're within range
+				if ( !forceMove && m_Mobile.InRange( m, 4 ) )
 					return true;
 			}
 
