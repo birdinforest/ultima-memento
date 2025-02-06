@@ -386,11 +386,15 @@ namespace Server.Mobiles
 				bool shouldRetreat = m_MoveErratically || m_Mobile.InRange( m, 2 );
 				if ( shouldRetreat && CheckMove() )
 				{
-					if ( Utility.RandomBool() ) // Only retreat a fraction of the time
+					if ( Utility.RandomDouble() < 0.25 ) // Only retreat a fraction of the time
 					{
 						Direction d = Direction.North;
 
-						switch( m_Mobile.GetDirectionTo( m ) )
+						// Run away from the master (to allow the master to corner this mob)
+						Mobile focusTarget = m is BaseCreature ? ((BaseCreature)m).GetMaster() : m;
+						if ( focusTarget == null) focusTarget = m;
+
+						switch( m_Mobile.GetDirectionTo( focusTarget ) )
 						{
 							case Direction.North: d = Direction.South; break;
 							case Direction.South: d = Direction.North; break;

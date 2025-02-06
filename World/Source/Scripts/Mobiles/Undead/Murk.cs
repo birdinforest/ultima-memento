@@ -53,10 +53,6 @@ namespace Server.Mobiles
 
 			VirtualArmor = 20;
 
-			PirateChest MyChest = new PirateChest(12,null);
-			MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
-			PackItem( MyChest );
-
 			AddItem( new StuddedChest() );
 			AddItem( new StuddedArms() );
 			AddItem( new StuddedLegs() );
@@ -111,6 +107,10 @@ namespace Server.Mobiles
 							c.DropItem( loot ); 
 						}
 					}
+
+					PirateChest MyChest = new PirateChest(6, null);
+					MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
+					PackItem( MyChest );
 				}
 			}
 		}
