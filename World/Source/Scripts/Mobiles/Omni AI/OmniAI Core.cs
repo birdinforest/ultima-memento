@@ -390,7 +390,11 @@ namespace Server.Mobiles
 					{
 						Direction d = Direction.North;
 
-						switch( m_Mobile.GetDirectionTo( m ) )
+						// Run away from the master (to allow the master to corner this mob)
+						Mobile focusTarget = m is BaseCreature ? ((BaseCreature)m).GetMaster() : m;
+						if ( focusTarget == null) focusTarget = m;
+
+						switch( m_Mobile.GetDirectionTo( focusTarget ) )
 						{
 							case Direction.North: d = Direction.South; break;
 							case Direction.South: d = Direction.North; break;
