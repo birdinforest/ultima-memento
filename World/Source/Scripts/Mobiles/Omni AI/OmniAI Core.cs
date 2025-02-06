@@ -386,7 +386,7 @@ namespace Server.Mobiles
 				bool shouldRetreat = m_MoveErratically || m_Mobile.InRange( m, 2 );
 				if ( shouldRetreat && CheckMove() )
 				{
-					if ( Utility.RandomBool() ) // Only retreat a fraction of the time
+					if ( Utility.RandomDouble() < 0.25 ) // Only retreat a fraction of the time
 					{
 						Direction d = Direction.North;
 
