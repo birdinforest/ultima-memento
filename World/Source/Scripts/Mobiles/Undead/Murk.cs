@@ -110,7 +110,7 @@ namespace Server.Mobiles
 
 					PirateChest MyChest = new PirateChest(6, null);
 					MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
-					PackItem( MyChest );
+					c.DropItem( MyChest );
 				}
 			}
 		}
