@@ -958,7 +958,7 @@ namespace Server.Gumps
             
             int LRC = AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > LRCCap ? LRCCap : AosAttributes.GetValue( from, AosAttribute.LowerRegCost );
             int LMC = AosAttributes.GetValue( from, AosAttribute.LowerManaCost ) > LMCCap ? LMCCap : AosAttributes.GetValue( from, AosAttribute.LowerManaCost );
-			double BandageSpeed = BandageContext.HealTimer( m, m );
+			int BandageSpeedMilliseconds = BandageContext.HealTimer( m, m );
             TimeSpan SwingSpeed = (from.Weapon as BaseWeapon).GetDelay(from) > TimeSpan.FromSeconds(SwingSpeedCap) ? TimeSpan.FromSeconds(SwingSpeedCap) : (from.Weapon as BaseWeapon).GetDelay(from);
             int HCI = AosAttributes.GetValue( from, AosAttribute.AttackChance ) > HCICap ? HCICap : AosAttributes.GetValue( from, AosAttribute.AttackChance );
             int DCI = AosAttributes.GetValue( from, AosAttribute.DefendChance ) > DCICap ? DCICap : AosAttributes.GetValue( from, AosAttribute.DefendChance );
@@ -1096,7 +1096,7 @@ namespace Server.Gumps
 			colF = colF + "" + String.Format(" {0}%", DCI ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff") ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}%", SSI ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( BandageSpeed ).Ticks).ToString("s.ff") ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( BandageSpeedMilliseconds ).Ticks).ToString("s.ff") ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}%", DamageIncrease ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}%", ReflectDamage ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}", FC ) + "<BR><BR>";

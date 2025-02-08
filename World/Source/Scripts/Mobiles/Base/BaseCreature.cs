@@ -4041,22 +4041,22 @@ namespace Server.Mobiles
 				this.Hidden = false;
 			}
 
-			int disruptThreshold;
+			// int disruptThreshold;
 			//NPCs can use bandages too!
-			if( !Core.AOS )
-				disruptThreshold = 0;
-			else if( from != null && from.Player )
-				disruptThreshold = 18;
-			else
-				disruptThreshold = 25;
+			// if( !Core.AOS )
+			// 	disruptThreshold = 0;
+			// else if( from != null && from.Player )
+			// 	disruptThreshold = 18;
+			// else
+			// 	disruptThreshold = 25;
 
-			if( amount > disruptThreshold )
-			{
-				BandageContext c = BandageContext.GetContext( this );
+			// if( amount > disruptThreshold )
+			// {
+			// 	BandageContext c = BandageContext.GetContext( this );
 
-				if( c != null )
-					c.Slip();
-			}
+			// 	if( c != null )
+			// 		c.Slip();
+			// }
 
 			if( Confidence.IsRegenerating( this ) )
 				Confidence.StopRegenerating( this );
