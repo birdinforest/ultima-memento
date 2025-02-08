@@ -29,6 +29,7 @@ namespace Server.Engines.MLQuests.Definitions
             InProgressMessage = "The Sage casually rub their thumb and fingers together, a small, almost teasing gesture, as if to silently signal that something is owed. Their eyes narrow slightly and a knowing smile tugs at the corner of their mouth.";
             CompletionNotice = CompletionNoticeShortReturn;
 
+            Objectives.Add(new DummyObjective("Bribe the Sage"));
             Objectives.Add(new CollectObjective(10000, typeof(Gold), "Gold coins"));
 
             Rewards.Add(new DummyReward("Information about a powerful artefact"));
@@ -65,7 +66,7 @@ namespace Server.Engines.MLQuests.Definitions
             Title = "An arduous journey (part 2)";
             Description = "The Sage paused for a moment, their expression shifting as if something faint had reached their ears, leaving them unsure whether it was real or just their imagination playing tricks. Y'know, you might want to speak to the townsfolk to confirm my thoughts...";
             RefusalMessage = "Very well, I understand your reluctance. Come back to me when you are ready.";
-            InProgressMessage = "Speak to the townsfolk to refine the rumor.";
+            InProgressMessage = "There is nothing I can do for you until you speak to the townsfolk and fully refine the rumor.";
             CompletionMessage = "So it is real?! I thought I might be imagining it, but now I'm sure I wasn't just making it up. Good luck on your journey!";
             CompletionNotice = CompletionNoticeShortReturn;
 
@@ -403,6 +404,7 @@ namespace Server.Items
             base.AddNameProperties(list);
             list.Add(1070722, SearchItem);
             list.Add(1049644, m_SearchDungeon);
+            list.Add(1049644, "Discard at any time to abandon quest");
         }
 
         public class SearchGump : Gump

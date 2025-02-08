@@ -102,7 +102,6 @@ namespace Server.Mobiles
 						if ( loot != null )
 						{
 							ResourceMods.SetResource( loot, CraftResource.SpectralSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
 							loot.InfoText1 = "Murk the Slayer of the Coast";
 							c.DropItem( loot ); 
 						}
@@ -110,7 +109,7 @@ namespace Server.Mobiles
 
 					PirateChest MyChest = new PirateChest(6, null);
 					MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
-					PackItem( MyChest );
+					c.DropItem( MyChest );
 				}
 			}
 		}
