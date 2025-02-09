@@ -566,7 +566,7 @@ namespace Server.Items
 				m_FinalHealAmount = CalculateHealAmount( context.m_Healer, context.m_Patient );
 
 				// Calculate amount to partially heal
-				int partialHealCount = Math.Max( 0, totalMilliseconds - 1000 ) - 1;
+				int partialHealCount = ( Math.Max( 0, totalMilliseconds - 1000 ) / 250 ) - 4;
 				if ( 0 < partialHealCount )
 				{
 					m_TickHealAmount = Math.Min(
