@@ -2280,13 +2280,13 @@ namespace Server.Mobiles
 			else if ( from != null && from.Player )
 				disruptThreshold = 18;
 			else
-				disruptThreshold = 50;
+				disruptThreshold = 25;
 
 			if ( amount > disruptThreshold )
 			{
 				BandageContext c = BandageContext.GetContext( this );
 
-				if ( c != null && Utility.RandomBool() )
+				if ( c != null )
 					c.Slip();
 			}
 
