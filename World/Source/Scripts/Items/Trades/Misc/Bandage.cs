@@ -582,15 +582,20 @@ namespace Server.Items
 			protected override void OnTick()
 			{
 				bool canCheck = m_CurrentTicks % 4 == 0; // Only check once every second
-				bool isComplete = m_MaxTicks <= ++m_CurrentTicks;
+				bool isComplete = m_MaxTicks <= m_CurrentTicks;
 				if ( isComplete )
 				{
 					m_Context.EndHeal( false, m_FinalHealAmount, true, ref m_AmountToHeal );
 				}
 				else if ( canCheck )
 				{
-					m_Context.EndHeal( true, m_TickHealAmount, true, ref m_AmountToHeal );
+					const int TICKS_PER_SECOND = 4;
+					int totalSeconds = 1 + ( m_CurrentTicks - m_CurrentTicks % TICKS_PER_SECOND ) / TICKS_PER_SECOND;
+					bool canGain = totalSeconds % 3 == 0; // Once per 3rd second
+					m_Context.EndHeal( true, m_TickHealAmount, canGain, ref m_AmountToHeal );
 				}
+
+				m_CurrentTicks++;
 			}
 		}
 
