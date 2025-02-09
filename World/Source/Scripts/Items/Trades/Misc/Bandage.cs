@@ -228,7 +228,7 @@ namespace Server.Items
 	{
 		private Mobile m_Healer;
 		private Mobile m_Patient;
-		public int Slips{ get; private set; }
+		private int m_Slips;
 		private Timer m_Timer;
 
 		public void Slip()
@@ -236,7 +236,7 @@ namespace Server.Items
 			m_Healer.SendLocalizedMessage( 500961 ); // Your fingers slip!
 			m_Healer.LocalOverheadMessage( MessageType.Regular, 1150, 500961 );
 
-			++Slips;
+			++m_Slips;
 		}
 
 		public BandageContext( Mobile healer, Mobile patient, TimeSpan delay )
@@ -304,6 +304,7 @@ namespace Server.Items
 			int healerNumber = -1, patientNumber = -1;
 			bool playSound = true;
 			bool checkSkills = false;
+			int slips = !partial ? m_Slips : 0;
 
 			SkillName primarySkill = GetPrimarySkill( m_Patient );
 			SkillName secondarySkill = GetSecondarySkill( m_Patient );
@@ -332,7 +333,7 @@ namespace Server.Items
 						tryHealing = false;
 						double healing = m_Healer.Skills[primarySkill].Value;
 						double anatomy = m_Healer.Skills[secondarySkill].Value;
-						double chance = ((healing - 68.0) / 50.0) - (Slips * 0.02);
+						double chance = ((healing - 68.0) / 50.0) - (slips * 0.02);
 
 						if ( (checkSkills = (healing >= 80.0 && anatomy >= 80.0)) && chance > Utility.RandomDouble() )
 						{
@@ -425,7 +426,7 @@ namespace Server.Items
 
 						double healing = m_Healer.Skills[primarySkill].Value;
 						double anatomy = m_Healer.Skills[secondarySkill].Value;
-						double chance = ((healing - 30.0) / 50.0) - (m_Patient.Poison.Level * 0.1) - (Slips * 0.02);
+						double chance = ((healing - 30.0) / 50.0) - (m_Patient.Poison.Level * 0.1) - (slips * 0.02);
 
 						if ( (checkSkills = (healing >= 60.0 && anatomy >= 60.0)) && chance > Utility.RandomDouble() )
 						{
@@ -477,18 +478,30 @@ namespace Server.Items
 
 					double healing = m_Healer.Skills[primarySkill].Value;
 					// double anatomy = m_Healer.Skills[secondarySkill].Value;
-					double chance = ((healing + 10.0) / 100.0) - (Slips * 0.02);
+					double chance = ((healing + 10.0) / 100.0) - (slips * 0.02);
 
 					if ( chance > Utility.RandomDouble() )
 					{
 						healerNumber = 500969; // You finish applying the bandages.
 
+						if (!partial)
+						{
+							toHeal -= (int)(toHeal * slips * 0.35);
+							if ( toHeal < 1 ) toHeal = 1;
+						}
+
 						rollingHealAmount += toHeal;
+
+						if (MyServerSettings.EnableHealingLogging())
+							m_Healer.SendMessage("Healing (Pass, now {0})", rollingHealAmount);
 					}
 					else
 					{
 						healerNumber = 500968; // You apply the bandages, but they barely help.
 						playSound = false;
+
+						if (MyServerSettings.EnableHealingLogging())
+							m_Healer.SendMessage("Healing (Fail)");
 					}
 
 					if ( partial )
@@ -498,19 +511,15 @@ namespace Server.Items
 					}
 					else
 					{
-						toHeal -= (int)(toHeal * Slips * 0.35);
-						if ( toHeal < 1 ) toHeal = 1;
-							
-						int totalAmount = toHeal + rollingHealAmount;
-						rollingHealAmount = 0; // Applying it now, zero out the counter
 
-						if ( totalAmount < 1 || m_Patient.Hits == m_Patient.HitsMax)
+						if ( rollingHealAmount < 1 || m_Patient.Hits == m_Patient.HitsMax)
 						{
-							totalAmount = 1;
+							rollingHealAmount = 1;
 							healerNumber = 500968; // You apply the bandages, but they barely help.
 						}
 
-						m_Patient.Heal( totalAmount, m_Healer, false );
+						m_Patient.Heal( rollingHealAmount, m_Healer, true );
+						rollingHealAmount = 0; // Zero out the counter
 					}
 				}
 			}
@@ -528,6 +537,8 @@ namespace Server.Items
 
 			if ( checkSkills && canGainSkill)
 			{
+				if (MyServerSettings.EnableHealingLogging())
+					m_Healer.SendMessage("Healing (Check skills)");
 				m_Healer.CheckSkill( secondarySkill, 0.0, 120.0 );
 				m_Healer.CheckSkill( primarySkill, 0.0, 120.0 );
 			}
@@ -560,15 +571,19 @@ namespace Server.Items
 			private int m_CurrentTicks;
 			private int m_MaxTicks;
 			private int m_AmountToHeal;
+			private const int MILLISECONDS_PER_TICK = 250;
+			private const int TICKS_PER_CHECK = 4;
+			private const int TICKS_PER_SECOND = 4;
 
-			public DeferredHealingTimer( BandageContext context, int totalMilliseconds ) : base( TimeSpan.FromMilliseconds( 1000 ), TimeSpan.FromMilliseconds( 250 ) )
+			public DeferredHealingTimer( BandageContext context, int totalMilliseconds ) : base( TimeSpan.FromMilliseconds( MILLISECONDS_PER_TICK ), TimeSpan.FromMilliseconds( MILLISECONDS_PER_TICK ) )
 			{
 				m_Context = context;
 				
 				m_FinalHealAmount = CalculateHealAmount( context.m_Healer, context.m_Patient );
 
 				// Calculate amount to partially heal
-				int partialHealCount = ( Math.Max( 0, totalMilliseconds - 1000 ) / 250 ) - 4;
+				m_MaxTicks = (int)( (double)totalMilliseconds / MILLISECONDS_PER_TICK );
+				int partialHealCount = (int)( m_MaxTicks / TICKS_PER_CHECK );
 				if ( 0 < partialHealCount )
 				{
 					m_TickHealAmount = Math.Min(
@@ -578,26 +593,26 @@ namespace Server.Items
 					m_FinalHealAmount -= m_TickHealAmount * partialHealCount; // Deduct what will be healed over time
 				}
 
-				m_MaxTicks = 1 + partialHealCount;
-			}
+				if (MyServerSettings.EnableHealingLogging())
+					context.m_Healer.SendMessage("# Ticks ({0}) // Tick value ({1}) // Burst value ({2})", 0 < partialHealCount ? partialHealCount : 0, m_TickHealAmount, m_FinalHealAmount);
+			}	
 
 			protected override void OnTick()
 			{
-				bool canCheck = m_CurrentTicks % 4 == 0; // Only check once every second
+				bool canCheck = ++m_CurrentTicks % TICKS_PER_SECOND == 0; // Only check once every second
 				bool isComplete = m_MaxTicks <= m_CurrentTicks;
 				if ( isComplete )
 				{
+					m_Context.m_Healer.SendMessage("Final (+{0}?) after {1}ms", m_FinalHealAmount, m_CurrentTicks * MILLISECONDS_PER_TICK);
 					m_Context.EndHeal( false, m_FinalHealAmount, true, ref m_AmountToHeal );
 				}
 				else if ( canCheck )
 				{
-					const int TICKS_PER_SECOND = 4;
-					int totalSeconds = 1 + ( m_CurrentTicks - m_CurrentTicks % TICKS_PER_SECOND ) / TICKS_PER_SECOND;
+					m_Context.m_Healer.SendMessage("Partial (+{0}?)", m_TickHealAmount);
+					int totalSeconds = ( m_CurrentTicks - m_CurrentTicks % TICKS_PER_SECOND ) / TICKS_PER_SECOND;
 					bool canGain = totalSeconds % 3 == 0; // Once per 3rd second
 					m_Context.EndHeal( true, m_TickHealAmount, canGain, ref m_AmountToHeal );
 				}
-
-				m_CurrentTicks++;
 			}
 		}
 

@@ -119,7 +119,6 @@ namespace Server.Misc
 			builder.Append("- Skill - Skills gains are accelerated to 70 but reduced at 85/95/105/110/115<br>");
 			builder.Append("- Skill - Healing is now an activatable skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation for Healing
 			builder.Append("- Skill - Healing now gathers a portion over time and has a big hit at the end<br>");
-			builder.Append("- Skill - Healing is now stopped when your fingers slip<br>");
 			builder.Append("- Skill - Hiding cooldown is increased to 4 seconds, up from 1s and 2s<br>");
 			builder.Append("- Skill - Spiritualism now restores Mana when a corpse is consumed<br>");
 			builder.Append("- Skill - Masters in Remove Trap have a chance to avoid death from killer tiles<br>");

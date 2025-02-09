@@ -598,5 +598,10 @@ namespace Server
 		{
 			return true;
 		}
+
+		public static bool EnableHealingLogging()
+		{
+			return false;
+		}
 	}
 }
