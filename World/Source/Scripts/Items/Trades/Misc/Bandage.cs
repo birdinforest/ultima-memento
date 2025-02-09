@@ -297,8 +297,7 @@ namespace Server.Items
 				return SkillName.Anatomy;
 		}
 
-		/// <returns>False if the session should be ended</returns>
-		public bool EndHeal( bool partial, int toHeal, bool canGainSkill )
+		public void EndHeal( bool partial, int toHeal, bool canGainSkill, ref int rollingHealAmount )
 		{
 			if ( !partial )
 				StopHeal();
@@ -306,7 +305,6 @@ namespace Server.Items
 			int healerNumber = -1, patientNumber = -1;
 			bool playSound = true;
 			bool checkSkills = false;
-			bool shouldStop = !partial; // Partial healing only stops based on certain conditions
 
 			SkillName primarySkill = GetPrimarySkill( m_Patient );
 			SkillName secondarySkill = GetSecondarySkill( m_Patient );
@@ -486,31 +484,31 @@ namespace Server.Items
 					{
 						healerNumber = 500969; // You finish applying the bandages.
 
-						if ( toHeal < 1 )
-						{
-							toHeal = 1;
-							healerNumber = 500968; // You apply the bandages, but they barely help.
-						}
-
-						m_Patient.Heal( toHeal, m_Healer, false );
-
-						// Fully healing the patient should stop the healing
-						if ( m_Patient.Hits == m_Patient.HitsMax )
-						{
-							shouldStop = true;
-							healerNumber = 500968; // You apply the bandages, but they barely help.
-						}
-						else if ( partial )
-						{
-							healerNumber = -1; // Clear the message
-							playSound = false;
-						}
+						rollingHealAmount += toHeal;
 					}
 					else
 					{
 						healerNumber = 500968; // You apply the bandages, but they barely help.
 						playSound = false;
-						shouldStop = true;
+					}
+
+					if ( partial )
+					{
+						healerNumber = -1; // Clear the message
+						playSound = false;
+					}
+					else
+					{
+						int totalAmount = toHeal + rollingHealAmount;
+						rollingHealAmount = 0; // Applying it now, zero out the counter
+
+						if ( totalAmount < 1 || m_Patient.Hits == m_Patient.HitsMax)
+						{
+							totalAmount = 1;
+							healerNumber = 500968; // You apply the bandages, but they barely help.
+						}
+
+						m_Patient.Heal( totalAmount, m_Healer, false );
 					}
 				}
 			}
@@ -531,8 +529,6 @@ namespace Server.Items
 				m_Healer.CheckSkill( secondarySkill, 0.0, 120.0 );
 				m_Healer.CheckSkill( primarySkill, 0.0, 120.0 );
 			}
-
-			return !shouldStop;
 		}
 
 		// This is still in use by Monsters
@@ -549,7 +545,8 @@ namespace Server.Items
 			protected override void OnTick()
 			{
 				int amount = CalculateHealAmount( m_Context.m_Healer, m_Context.m_Patient );
-				m_Context.EndHeal( false, amount, true );
+				int _ = 0;
+				m_Context.EndHeal( false, amount, true, ref _);
 			}
 		}
 
@@ -560,6 +557,7 @@ namespace Server.Items
 			private readonly int m_FinalHealAmount;
 			private int m_CurrentTicks;
 			private int m_MaxTicks;
+			private int m_AmountToHeal;
 
 			public DeferredHealingTimer( BandageContext context, int totalMilliseconds ) : base( TimeSpan.FromMilliseconds( 1000 ), TimeSpan.FromMilliseconds( 250 ) )
 			{
@@ -568,11 +566,11 @@ namespace Server.Items
 				m_FinalHealAmount = CalculateHealAmount( context.m_Healer, context.m_Patient );
 
 				// Calculate amount to partially heal
-				int partialHealCount = ( Math.Max(0, totalMilliseconds - 1000) / 250 ) - 1;
+				int partialHealCount = Math.Max( 0, totalMilliseconds - 1000 ) - 1;
 				if ( 0 < partialHealCount )
 				{
 					m_TickHealAmount = Math.Min(
-						(int)( 0.4 * m_FinalHealAmount ) / partialHealCount, // Baseline as % of the total healing, divided by the number of ticks
+						(int)( 0.33 * m_FinalHealAmount ) / partialHealCount, // Baseline as % of the total healing, divided by the number of ticks
 						(int)( 0.1 * m_FinalHealAmount ) // No more than 10% of the final heal amount
 					);
 					m_FinalHealAmount -= m_TickHealAmount * partialHealCount; // Deduct what will be healed over time
@@ -583,14 +581,16 @@ namespace Server.Items
 
 			protected override void OnTick()
 			{
-				bool canGainSkill = m_CurrentTicks % 4 == 0;
-				if ( ++m_CurrentTicks < m_MaxTicks) // Time remains, do a partial heal
+				bool canCheck = m_CurrentTicks % 4 == 0; // Only check once every second
+				bool isComplete = m_MaxTicks <= ++m_CurrentTicks;
+				if ( isComplete )
 				{
-					if ( !m_Context.EndHeal( true, m_TickHealAmount, canGainSkill) )
-						m_Context.StopHeal();
+					m_Context.EndHeal( false, m_FinalHealAmount, true, ref m_AmountToHeal );
 				}
-				else if ( !m_Context.EndHeal( false, m_FinalHealAmount, true) ) // Do a final heal
-					m_Context.StopHeal();
+				else if ( canCheck )
+				{
+					m_Context.EndHeal( true, m_TickHealAmount, true, ref m_AmountToHeal );
+				}
 			}
 		}
 
