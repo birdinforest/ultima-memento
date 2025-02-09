@@ -228,7 +228,7 @@ namespace Server.Items
 	{
 		private Mobile m_Healer;
 		private Mobile m_Patient;
-		public int Slips{ get; private set; }
+		private int m_Slips;
 		private Timer m_Timer;
 
 		public void Slip()
@@ -236,7 +236,7 @@ namespace Server.Items
 			m_Healer.SendLocalizedMessage( 500961 ); // Your fingers slip!
 			m_Healer.LocalOverheadMessage( MessageType.Regular, 1150, 500961 );
 
-			++Slips;
+			++m_Slips;
 		}
 
 		public BandageContext( Mobile healer, Mobile patient, TimeSpan delay )
@@ -304,6 +304,7 @@ namespace Server.Items
 			int healerNumber = -1, patientNumber = -1;
 			bool playSound = true;
 			bool checkSkills = false;
+			int slips = !partial ? m_Slips : 0;
 
 			SkillName primarySkill = GetPrimarySkill( m_Patient );
 			SkillName secondarySkill = GetSecondarySkill( m_Patient );
@@ -332,7 +333,7 @@ namespace Server.Items
 						tryHealing = false;
 						double healing = m_Healer.Skills[primarySkill].Value;
 						double anatomy = m_Healer.Skills[secondarySkill].Value;
-						double chance = ((healing - 68.0) / 50.0) - (Slips * 0.02);
+						double chance = ((healing - 68.0) / 50.0) - (slips * 0.02);
 
 						if ( (checkSkills = (healing >= 80.0 && anatomy >= 80.0)) && chance > Utility.RandomDouble() )
 						{
@@ -425,7 +426,7 @@ namespace Server.Items
 
 						double healing = m_Healer.Skills[primarySkill].Value;
 						double anatomy = m_Healer.Skills[secondarySkill].Value;
-						double chance = ((healing - 30.0) / 50.0) - (m_Patient.Poison.Level * 0.1) - (Slips * 0.02);
+						double chance = ((healing - 30.0) / 50.0) - (m_Patient.Poison.Level * 0.1) - (slips * 0.02);
 
 						if ( (checkSkills = (healing >= 60.0 && anatomy >= 60.0)) && chance > Utility.RandomDouble() )
 						{
@@ -477,7 +478,7 @@ namespace Server.Items
 
 					double healing = m_Healer.Skills[primarySkill].Value;
 					// double anatomy = m_Healer.Skills[secondarySkill].Value;
-					double chance = ((healing + 10.0) / 100.0) - (Slips * 0.02);
+					double chance = ((healing + 10.0) / 100.0) - (slips * 0.02);
 
 					if ( chance > Utility.RandomDouble() )
 					{
