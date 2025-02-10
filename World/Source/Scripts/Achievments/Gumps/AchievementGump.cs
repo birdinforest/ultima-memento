@@ -13,13 +13,18 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
         public const int COLOR_LABEL = 1918; // Hue from files
         public const int COLOR_LOCALIZED = 0xf7db; // RGB565
 
+        private const int PAGE_BUTTON_OFFSET = 1000;
+        private const int CATEGORY_BUTTON_OFFSET = 5000;
+
         private readonly int m_curTotal;
+        private int m_Category;
         private readonly Dictionary<int, AchieveData> m_curAchieves;
 
-        public AchievementGump(Dictionary<int, AchieveData> achieves, int total, int selectedCategoryId = -1) : base(25, 25)
+        public AchievementGump(Dictionary<int, AchieveData> achieves, int total, int pageNumber = 1, int selectedCategoryId = -1) : base(25, 25)
         {
             m_curAchieves = achieves;
             m_curTotal = total;
+            m_Category = selectedCategoryId;
             Closable = true;
             Disposable = true;
             Dragable = true;
@@ -89,32 +94,21 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                     .OrderByDescending(ac => achieves[ac.ID].CompletedOn)
                     .Take(ITEMS_PER_PAGE);
 
-            var achievementList = achievements.ToList();
-
-            var maxPages = (int)Math.Ceiling((double)achievementList.Count / ITEMS_PER_PAGE);
-            for (int page = 0; page < maxPages; page++)
+            var maxPages = (int)Math.Ceiling((double)achievements.Count() / ITEMS_PER_PAGE);
+            int itemIndex = 0;
+            foreach (var achievement in achievements.Skip((pageNumber - 1) * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE))
             {
-                var pageNumber = page + 1;
-                AddPage(pageNumber);
+                AchieveData data = null;
+                achieves.TryGetValue(achievement.ID, out data);
+                AddAchieve(achievement, itemIndex++, ITEMS_PER_PAGE, data);
+            }
 
-                // Add items
-                for (int index = 0; index < ITEMS_PER_PAGE; index++)
-                {
-                    var itemIndex = (page * ITEMS_PER_PAGE) + index;
-                    if (achievementList.Count <= itemIndex) break;
-
-                    var achievement = achievementList[itemIndex];
-                    AchieveData data = null;
-                    achieves.TryGetValue(achievement.ID, out data);
-                    AddAchieve(achievement, itemIndex, ITEMS_PER_PAGE, data);
-                }
-
-                if (maxPages == 1) continue; // Don't show buttons if they do nothing
-
-                // Add page buttons
-                AddButton(282, 549, 4014, 4015, 0, GumpButtonType.Page, pageNumber == 1 ? maxPages : pageNumber - 1); // Previous
+            // Add page buttons
+            if (maxPages != 1)
+            {
+                AddButton(282, 549, 4005, 4006, PAGE_BUTTON_OFFSET + (pageNumber == 1 ? maxPages : pageNumber - 1), GumpButtonType.Reply, 0); // Previous
                 AddLabel(615, 551, COLOR_LABEL, "Page " + pageNumber);
-                AddButton(974, 549, 4005, 4006, 0, GumpButtonType.Page, pageNumber == maxPages ? 1 : pageNumber + 1); // Next
+                AddButton(974, 549, 4005, 4006, PAGE_BUTTON_OFFSET + (pageNumber == maxPages ? 1 : pageNumber + 1), GumpButtonType.Reply, 0); // Next
             }
         }
 
@@ -134,7 +128,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             {
                 Rectangle2D bounds = ItemBounds.Table[ac.ItemIcon];
                 int y = 35 + CARD_HEIGHT + (index * HEIGHT_PER_CARD);
-                AddItem(321 - bounds.Width / 2 - bounds.X , y - bounds.Height / 2 - bounds.Y, ac.ItemIcon);
+                AddItem(321 - bounds.Width / 2 - bounds.X, y - bounds.Height / 2 - bounds.Y, ac.ItemIcon);
             }
 
             if (!isComplete && 1 < ac.CompletionTotal)
@@ -170,12 +164,21 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                     return;
 
                 case 1: // All Categories
-                    sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal));
+                    sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, 1));
                     break;
 
                 default:
-                    var btn = info.ButtonID - 5000;
-                    sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, btn));
+                    if (CATEGORY_BUTTON_OFFSET <= info.ButtonID)
+                    {
+                        var category = info.ButtonID - CATEGORY_BUTTON_OFFSET;
+                        sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, 1, category));
+                    }
+                    else if (PAGE_BUTTON_OFFSET <= info.ButtonID)
+                    {
+                        var pageNumber = info.ButtonID - PAGE_BUTTON_OFFSET;
+                        sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, pageNumber, m_Category));
+                    }
+
                     break;
             }
         }
