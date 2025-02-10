@@ -91,8 +91,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                 )
                 : AchievementSystem.Achievements
                     .Where(ac => achieves.ContainsKey(ac.ID) && achieves[ac.ID].IsComplete)
-                    .OrderByDescending(ac => achieves[ac.ID].CompletedOn)
-                    .Take(ITEMS_PER_PAGE);
+                    .OrderByDescending(ac => achieves[ac.ID].CompletedOn);
 
             var maxPages = (int)Math.Ceiling((double)achievements.Count() / ITEMS_PER_PAGE);
             int itemIndex = 0;
