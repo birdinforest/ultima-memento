@@ -301,7 +301,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
             #region Resource Gathering - Lumberjacking (2000 - 2249)
 
-            Categories.Add(new AchievementCategory(2001, 0, "Lumberjacking"));
+            Categories.Add(new AchievementCategory(2001, 2000, "Lumberjacking"));
 
             const int LOG_GRAPHIC = 0x1BE0; // Log
             achieve = AddHarvest(2000, 2001, LOG_GRAPHIC, null, 1, item => item is BaseLog, "Chop Chop!", "Harvest your first Log");
@@ -314,7 +314,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
             #region Resource Gathering - Mining (2250 - 2499)
 
-            Categories.Add(new AchievementCategory(2002, 0, "Mining"));
+            Categories.Add(new AchievementCategory(2002, 2000, "Mining"));
 
             const int ORE_GRAPHIC = 0x19B9; // Ore
             achieve = AddHarvest(2250, 2002, ORE_GRAPHIC, null, 1, item => item is BaseOre, "Finding The Vein", "Mine your first Ore");
