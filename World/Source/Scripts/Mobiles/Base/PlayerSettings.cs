@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 using Server.Spells.Seventh;
+using System.Linq;
 
 namespace Server.Misc
 {
@@ -335,6 +336,15 @@ namespace Server.Misc
 			if ( ((PlayerMobile)m).MessageQuest == null ){ ((PlayerMobile)m).MessageQuest = ""; }
 			if ( ((PlayerMobile)m).ThiefQuest == null ){ ((PlayerMobile)m).ThiefQuest = ""; }
 		}
+
+		public static Land GetRandomDiscoveredLand( PlayerMobile m, List<Land> options, Func<Land, bool> predicate )
+		{
+			if ( m != null ) return Land.None;
+
+			options.Where(land => ( predicate != null && predicate(land) ) || GetDiscovered(m, land)).ToList();
+
+            return Utility.Random(options);
+        }
 
 		public static bool GetDiscovered( Mobile m, string world ) // -------------------------------------------------------------------------------
 		{
