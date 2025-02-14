@@ -113,6 +113,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Crit chance to pets is now 5%, down from 20%<br>");
 			builder.Append("- Quest - Sage Artifact quest has been ported to ML Quest System<br>");
 			builder.Append("- Quest - Sage Artifact quest now involves townsfolk<br>");
+			builder.Append("- Quest - Updated most quests to be limited to discovered facets<br>");
 			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
