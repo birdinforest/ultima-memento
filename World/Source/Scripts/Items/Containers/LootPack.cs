@@ -646,8 +646,14 @@ namespace Server
 		public static Item Enchant(Mobile from, int enchant, Item item)
 		{
 			if (item == null) return null;
-				
-			int props = Utility.RandomMinMax(enchant / 100, enchant / 60); // @ 500 -- 5-8 properties
+			
+			/*
+			@ 500 -- 5-8 properties, 50-125% intensity
+			@ 400 -- 4-6 properties, 40-100% intensity
+			@ 300 -- 3-5 properties, 30-75% intensity
+			@ 200 -- 2-3 properties, 20-50% intensity
+			*/
+			int props = Utility.RandomMinMax(enchant / 100, enchant / 60);
 			if (props < 1) return item;
 
 			int min = enchant / 10;
