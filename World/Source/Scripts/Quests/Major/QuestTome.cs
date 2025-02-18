@@ -420,7 +420,7 @@ namespace Server.Items
 			}
 		}
 
-		public static string TellRumor( Mobile player, Citizens citizen )
+		public static string TellRumor( PlayerMobile player, Citizens citizen )
 		{
 			string rumor = "";
 
@@ -434,7 +434,7 @@ namespace Server.Items
 					if ( citizen.CanTellRumor() && book.QuestTomeCitizen == "" && book.QuestTomeGoals < 4 )
 					{
 						citizen.MarkToldRumor();
-						SetRumor( citizen, book );
+						SetRumor( citizen, player, book );
 						rumor = GetRumor( book, true );
 					}
 				}
@@ -478,7 +478,7 @@ namespace Server.Items
 			return "";
 		}
 
-		public static void SetRumor( Mobile m, QuestTome book )
+		public static void SetRumor( Mobile m, PlayerMobile player, QuestTome book )
 		{
 			book.QuestTomeType = Utility.RandomMinMax( 1, 2 );
 
@@ -498,7 +498,7 @@ namespace Server.Items
 				Land.Savaged,
 				Land.Kuldar,
 			};
-			Land searchLocation = PlayerSettings.GetRandomDiscoveredLand(m as PlayerMobile, options, null);
+			Land searchLocation = PlayerSettings.GetRandomDiscoveredLand(player, options, null);
 
 			string dungeon = "the Dungeon of Doom";
 

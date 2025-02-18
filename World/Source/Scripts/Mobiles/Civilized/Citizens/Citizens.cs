@@ -1049,28 +1049,24 @@ namespace Server.Mobiles
 
 		public class SpeechGumpEntry : ContextMenuEntry
 		{
-			private Mobile m_Mobile;
+			private PlayerMobile m_Mobile;
 			private Mobile m_Giver;
 			
 			public SpeechGumpEntry( Mobile from, Mobile giver ) : base( 6146, 3 )
 			{
-				m_Mobile = from;
+				m_Mobile = (PlayerMobile)from;
 				m_Giver = giver;
 			}
 
 			public override void OnClick()
 			{
-			    if( !( m_Mobile is PlayerMobile ) )
-					return;
-
 				Citizens citizen = (Citizens)m_Giver;
 
-				PlayerMobile mobile = (PlayerMobile) m_Mobile;
 				string speak = "";
 
 				if ( citizen.CanGiveMLQuest ) 
 				{
-					MLQuestSystem.OnDoubleClick( citizen, mobile, false );
+					MLQuestSystem.OnDoubleClick( citizen, m_Mobile, false );
 				}
 
 				if ( citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
@@ -1096,8 +1092,8 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					mobile.CloseGump( typeof( CitizenGump ) );
-					mobile.SendGump(new CitizenGump( m_Giver, m_Mobile ));
+					m_Mobile.CloseGump( typeof( CitizenGump ) );
+					m_Mobile.SendGump(new CitizenGump( m_Giver, m_Mobile ));
 				}
 
 				// They didn't tell a rumor, but we'll consume it anyways (to show the flag)
