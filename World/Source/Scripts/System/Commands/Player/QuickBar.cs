@@ -82,6 +82,7 @@ namespace Server.Gumps
 			int set38 = 0; 
 			int set39 = 0; 
 			int set40 = 0; 
+			int set41 = 0; 
 
             this.Closable=true;
 			this.Disposable=true;
@@ -164,6 +165,7 @@ namespace Server.Gumps
 					else if ( nEntry == 38 && key == "1" ){ set38 = 1; }
 					else if ( nEntry == 39 && key == "1" ){ set39 = 1; }
 					else if ( nEntry == 40 && key == "1" ){ set40 = 1; }
+					else if ( nEntry == 41 && key == "1" ){ set41 = 1; }
 
 					nEntry++;
 				}
@@ -192,7 +194,7 @@ namespace Server.Gumps
 
 			bool showICON = false;
 
-			while ( i < 40 )
+			while ( i < 41 )
 			{
 				i++;
 				showICON = false;
@@ -235,6 +237,7 @@ namespace Server.Gumps
 				else if ( i == 38 && set38 == 1 ){ showICON = true; }
 				else if ( i == 39 && set39 == 1 ){ showICON = true; }
 				else if ( i == 40 && set40 == 1 ){ showICON = true; }
+				else if ( i == 41 && set41 == 1 ){ showICON = true; }
 
 				if ( showICON )
 				{
@@ -257,9 +260,18 @@ namespace Server.Gumps
 							AddHtml( x+4, 35, 50, 20, @"<BODY><BASEFONT Color=#34ee39>" + s + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 
+					int itemImage = QuickConfig.GetItemImage(i, from);
+
 					if ( i >= 16 && i <= 21 )
 					{
 						AddImage( x, y, QuickConfig.rowNumber(i,from) );
+					}
+					else if (0 < itemImage)
+					{
+						const int BACKGROUND_IMAGE = 10351;
+						Rectangle2D bounds = ItemBounds.Table[itemImage];
+						AddButton(x, y, BACKGROUND_IMAGE, BACKGROUND_IMAGE, i, GumpButtonType.Reply, 0);
+						AddItem(x + bounds.Width / 2 - bounds.X, y + bounds.Height / 2 - bounds.Y, itemImage);
 					}
 					else
 					{
@@ -447,6 +459,7 @@ namespace Server.Gumps
 				}
 			}
 			else if ( info.ButtonID == 40 ){ if ( from.HasGump( typeof( SkillListingGump ) ) ){ from.CloseGump( typeof( SkillListingGump ) ); } else { InvokeCommand( "skilllist", from ); } }
+			else if ( info.ButtonID == 41 ){ if ( from.HasGump( typeof( CombatBar ) ) ){ from.CloseGump( typeof( CombatBar ) ); } else { InvokeCommand( "combatbar", from ); } }
 
 			if ( info.ButtonID == 666 )
 			{
@@ -500,6 +513,7 @@ namespace Server.Gumps
 			int btn38 = 3609;
 			int btn39 = 3609;
 			int btn40 = 3609;
+			int btn41 = 3609;
 
 			PlayerMobile pm = (PlayerMobile)from;
 
@@ -551,6 +565,7 @@ namespace Server.Gumps
 					else if ( nEntry == 38 && key == "1" ){ btn38 = 4017; }
 					else if ( nEntry == 39 && key == "1" ){ btn39 = 4017; }
 					else if ( nEntry == 40 && key == "1" ){ btn40 = 4017; }
+					else if ( nEntry == 41 && key == "1" ){ btn41 = 4017; }
 
 					nEntry++;
 				}
@@ -588,7 +603,7 @@ namespace Server.Gumps
 
 			int button = btn3;
 
-			while ( icons < 40 )
+			while ( icons < 41 )
 			{
 				icons++;
 
@@ -630,12 +645,25 @@ namespace Server.Gumps
 				else if ( icons == 38 ){ button = btn38; }
 				else if ( icons == 39 ){ button = btn39; }
 				else if ( icons == 40 ){ button = btn40; }
+				else if ( icons == 41 ){ button = btn41; }
 
 				count++;
 				if ( count == 16 || count == 29 ){ x = x+332; y = 158; }
 				y = y + p;
 
-				AddImage(x+36, y, rowNumber( icons, from ));
+				int itemImage = GetItemImage(icons, from);
+				if (0 < itemImage)
+				{
+					const int BACKGROUND_IMAGE = 10351;
+					Rectangle2D bounds = ItemBounds.Table[itemImage];
+					AddImage(x+36, y, BACKGROUND_IMAGE);
+					AddItem(x+36 + bounds.Width / 2 - bounds.X, y + bounds.Height / 2 - bounds.Y, itemImage);
+				}
+				else
+				{
+					AddImage(x+36, y, rowNumber( icons, from ));
+				}
+
 				AddButton(x, y+6, button, button, icons, GumpButtonType.Reply, 0);
 				AddHtml( x+74, y+5, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + rowText( icons ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
@@ -699,6 +727,7 @@ namespace Server.Gumps
 			else if ( set == 38 ){ row = "Syth Abilities"; }
 			else if ( set == 39 ){ row = "Witch Potions"; }
 			else if ( set == 40 ){ row = "Skill List"; }
+			else if ( set == 41 ){ row = "Combat Bar"; }
 
 			return row;
 		}
@@ -765,6 +794,14 @@ namespace Server.Gumps
 			else if ( set == 38 ){ row = 10346; }
 			else if ( set == 39 ){ row = 10348; }
 			else if ( set == 40 ){ row = 10350; }
+
+			return row;
+		}
+
+		public static int GetItemImage( int set, Mobile m )
+		{
+			int row = 0;
+			if ( set == 41 ){ row = 0x9B7; }
 
 			return row;
 		}

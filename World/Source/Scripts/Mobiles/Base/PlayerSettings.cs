@@ -598,7 +598,7 @@ namespace Server.Misc
 				val = pm.QuickBar;
 
 				if ( val == null || val == "" )
-					pm.QuickBar = val = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+					pm.QuickBar = val = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
 			}
 			return val;
 		}
@@ -634,7 +634,7 @@ namespace Server.Misc
 				PlayerMobile pm = (PlayerMobile)m;
 
 				string keys = ValQuickConfig( m );
-				int records = 40; // TOTAL ENTRIES
+				int records = 41; // TOTAL ENTRIES
 				string entry = "";
 				int nEntry = 1;
 
