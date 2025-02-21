@@ -105,7 +105,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             // Add page buttons
             if (maxPages != 1)
             {
-                AddButton(282, 549, 4005, 4006, PAGE_BUTTON_OFFSET + (pageNumber == 1 ? maxPages : pageNumber - 1), GumpButtonType.Reply, 0); // Previous
+                AddButton(282, 549, 4014, 4015, PAGE_BUTTON_OFFSET + (pageNumber == 1 ? maxPages : pageNumber - 1), GumpButtonType.Reply, 0); // Previous
                 AddLabel(615, 551, COLOR_LABEL, "Page " + pageNumber);
                 AddButton(974, 549, 4005, 4006, PAGE_BUTTON_OFFSET + (pageNumber == maxPages ? 1 : pageNumber + 1), GumpButtonType.Reply, 0); // Next
             }
