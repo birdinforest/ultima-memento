@@ -1721,6 +1721,7 @@ namespace Server.Engines.Help
 				+ "[e - Opens the emote mini window.<br><br>"
 				+ "[emote - Opens the emote window.<br><br>"
 				+ "[evil - Turns on/off the evil flavor the game provides (see end).<br><br>"
+				+ "[feats - Opens the Achievements window.<br><br>"
 				+ "[loot - Automatically take certain items from common dungeon chests or corpses and put them in your backpack. The unknown items are those that will need identification, but you may decide to take them anyway. The reagent options have a few categories. Magery and necromancer reagents are those used specifically by those characters, where witches brew reagents mainly fall into the necromancer category. Alchemic reagents are those that fall outside the category of magery and necromancer reagents, and only alchemists use them. Herbalist reagents are useful in druidic herbalism.<br><br>"
 				+ "[magicgate - Helps one find the nearest magical gate.<br><br>"
 				+ "[motd - Opens the message of the day.<br><br>"
