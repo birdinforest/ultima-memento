@@ -388,7 +388,8 @@ namespace Server.Engines.Craft
 
 			// Blank Scrolls
 			index = AddCraft( typeof( BlankScroll ), "Books & Scrolls", "Blank Scrolls", 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
+			index = AddCraft( typeof( BlankScroll ), "Books & Scrolls", "A batch of Blank Scrolls", 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
+			SetUseAllRes( index, true );
 
 			// Writing Book
 			index = AddCraft(typeof(WritingBook), "Books & Scrolls", "Book", 50.0, 126, typeof( Leather ), 1044462, 8, 1044463);
@@ -400,7 +401,7 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
 
-			AddCraft( typeof( Monocle ), "Books & Scrolls", "librarian set", 5.0, 55.0, typeof( Leather ), 1044462, 10, 1044463);
+			AddCraft( typeof( Monocle ), "Books & Scrolls", "Librarian Set", 5.0, 55.0, typeof( Leather ), 1044462, 10, 1044463);
 			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
 

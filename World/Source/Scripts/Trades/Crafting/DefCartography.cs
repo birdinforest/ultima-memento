@@ -91,7 +91,8 @@ namespace Server.Engines.Craft
 			// Blank Scrolls
 			int index;
 			index = AddCraft( typeof( BlankScroll ), 1044294, 1044377, 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
+			index = AddCraft( typeof( BlankScroll ), 1044294, "A batch of Blank Scrolls", 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
+			SetUseAllRes( index, true );
 
 			AddCraft( typeof( LocalMap ), 1044448, "small map", 10.0, 70.0, typeof( BlankScroll ), 1044377, 1, 1044378 );
 			AddCraft( typeof(  CityMap ), 1044448, "large map", 25.0, 85.0, typeof( BlankScroll ), 1044377, 1, 1044378 );

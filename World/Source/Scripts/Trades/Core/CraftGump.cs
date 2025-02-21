@@ -107,7 +107,7 @@ namespace Server.Engines.Craft
 					{
 						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>You don't know this recipe</BASEFONT>", FontColor ), false, false );
 					}
-					else if ( CraftSystem.AllowManyCraft( m_Tool ) )
+					else if ( CraftSystem.AllowManyCraft( m_Tool ) && context.LastMade != null && !context.LastMade.UseAllRes)
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>Craft Amount:</BASEFONT>", FontColor ), false, false );
 						AddTextField(x + 95, y, 125, 20, 1);

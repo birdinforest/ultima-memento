@@ -99,11 +99,9 @@ namespace Server.Engines.Craft
 		public override void InitCraftList()
 		{
 			int index = -1;
-
-			if ( !AllowManyCraft( m_Tools ) ){ AddCraft( typeof( Kindling ), 1044294, "kindling from a board", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 ); }
-
-			index = AddCraft( typeof( Kindling ), 1044294, "kindling from boards", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 );
-			if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
+			index = AddCraft( typeof( Kindling ), 1044457, "kindling", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 );
+			index = AddCraft( typeof( Kindling ), 1044457, "a batch of kindling", 0.0, 00.0, typeof( Board ), 1015101, 1, 1044351 );
+			SetUseAllRes( index, true );
 
 			AddCraft( typeof( TenFootPole ), 1044294, "ten foot pole", 43.6, 68.6, typeof( Board ), 1015101, 6, 1044351 );
 

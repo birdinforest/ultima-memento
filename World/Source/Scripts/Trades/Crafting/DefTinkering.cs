@@ -173,7 +173,8 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( Scales ), 1044050, 1026225, 60.0, 110.0, typeof( IronIngot ), 1044036, 4, 1044037 );
 
 			index = AddCraft( typeof( ThrowingWeapon ), 1044050, "throwing weapons", 0.0, 40.0, typeof( IronIngot ), 1044036, 1, 1044037 );
-				if ( !AllowManyCraft( m_Tools ) ){ SetUseAllRes( index, true ); }
+			index = AddCraft( typeof( ThrowingWeapon ), 1044050, "a batch of throwing weapons", 0.0, 40.0, typeof( IronIngot ), 1044036, 1, 1044037 );
+			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( Trumpet ), 1044050, "trumpet", 57.8, 82.8, typeof( IronIngot ), 1044036, 20, 1044037 );
 			AddSkill( index, SkillName.Musicianship, 45.0, 50.0 );
