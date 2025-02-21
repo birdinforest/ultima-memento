@@ -121,35 +121,39 @@ namespace Server.Engines.Craft
 				}
 
 				AddButton( LEFT_WINDOW_START, 402+moveUp, 4017, 4019, 0, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 45, 405+moveUp, 150, 18, 1011441, LabelColor, false, false ); // EXIT
+				AddHtmlLocalized( 41, 405+moveUp, 150, 18, 1011441, LabelColor, false, false ); // EXIT
 
 				// Break down option
 				if ( craftSystem.BreakDown )
 				{
 					AddButton( LEFT_WINDOW_START, 342+moveUp, 4005, 4007, GetButtonID( 6, 1 ), GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 45, 345+moveUp, 150, 18, 1044259, LabelColor, false, false ); // BREAK DOWN
+					AddHtmlLocalized( 46, 345+moveUp, 150, 18, 1044259, LabelColor, false, false ); // BREAK DOWN
 				}
 				// ****************************************
 
 				// Repair option
 				if ( craftSystem.Repair )
 				{
-					AddButton( LEFT_WINDOW_START + 165, 342+moveUp, 4005, 4007, GetButtonID( 6, 5 ), GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 215, 345+moveUp, 150, 18, 1044260, LabelColor, false, false ); // REPAIR ITEM
+					AddButton( LEFT_WINDOW_START + 138, 342+moveUp, 4005, 4007, GetButtonID( 6, 5 ), GumpButtonType.Reply, 0 );
+					AddHtmlLocalized( 184, 345+moveUp, 150, 18, 1044260, LabelColor, false, false ); // REPAIR ITEM
 				}
 				// ****************************************
 
 				// Enhance option
 				if ( craftSystem.CanEnhance )
 				{
-					AddButton( LEFT_WINDOW_START + 165, 371+moveUp, 4005, 4007, GetButtonID( 6, 8 ), GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 215, 373+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
+					AddButton( LEFT_WINDOW_START + 138, 371+moveUp, 4005, 4007, GetButtonID( 6, 8 ), GumpButtonType.Reply, 0 );
+					AddHtmlLocalized( 184, 373+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
 				}
-				// ****************************************
+
+				AddButton( LEFT_WINDOW_START + 282, 342+moveUp, 4005, 4007, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
+				AddHtml( LEFT_WINDOW_START + 318, 345+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SKILL CRAFT LIST</BASEFONT>", FontColor ), false, false );
 
 				// Set crafting container
-				AddButton( LEFT_WINDOW_START + 165, 402+moveUp, 4005, 4007, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
-				AddHtml( 215, 405+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SET CRAFTING CONTAINER</BASEFONT>", FontColor ), false, false );
+				AddButton( LEFT_WINDOW_START + 282, 371+moveUp, 4005, 4007, GetButtonID( 6, 10 ), GumpButtonType.Reply, 0 );
+				AddHtml( LEFT_WINDOW_START + 318, 373+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SET CRAFTING CONTAINER</BASEFONT>", FontColor ), false, false );
+
+				// ****************************************
 
 				if ( notice is int && (int)notice > 0 )
 					AddHtmlLocalized( LEFT_WINDOW_START, 295+moveUp, LEFT_WINDOW_WIDTH, 40, (int)notice, LabelColor, false, false );
@@ -192,9 +196,9 @@ namespace Server.Engines.Craft
 					AddButton( LEFT_WINDOW_START, 371+moveUp, 4005, 4007, GetButtonID( 6, 0 ), GumpButtonType.Reply, 0 );
 
 					if ( nameNumber > 0 )
-						AddHtmlLocalized( 45, 373+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
+						AddHtmlLocalized( 46, 373+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
 					else
-						AddLabel( 45, 373+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
+						AddLabel( 46, 373+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
 				}
 
 				CreateGroupList();
@@ -668,7 +672,14 @@ namespace Server.Engines.Craft
 
 							break;
 						}
-						case 9: // Set crafting container
+						case 9: // Open Skill Craft List
+						{
+							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
+							m_From.CloseGump( typeof( CraftItemSkillListGump ) );
+							m_From.SendGump( new CraftItemSkillListGump( m_From, m_CraftSystem, m_Tool ) );
+							break;
+						}
+						case 10: // Set crafting container
 						{
 							BaseContainer.ContainerSetTarget( m_From, 2 );
 							context.AutomaticallyMarkQuestItems = !context.AutomaticallyMarkQuestItems;

@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Alien resources are no longer craftable<br>");
 			builder.Append("- Craft - All exceptional armor crafts get 3 bonus resistance points, down from 15<br>");
 			builder.Append("- Craft - Exceptional shields now receive bonus resistances from when exceptional<br>");
+			builder.Append("- Craft - Add Skill List to assist with finding items to craft for gains<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
