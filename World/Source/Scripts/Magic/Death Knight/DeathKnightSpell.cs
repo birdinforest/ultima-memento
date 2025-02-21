@@ -54,7 +54,9 @@ namespace Server.Spells.DeathKnight
 			if ( !base.CheckCast() )
 				return false;
 
-			if ( Caster.Stam < (int)( 10 * MySettings.S_PlayerLevelMod ) )
+			int mana = GetMana();
+
+			if ( Caster.Stam < mana )
 			{
 				Caster.SendMessage( "You are too fatigued to do that now." );
 				return false;
@@ -74,9 +76,9 @@ namespace Server.Spells.DeathKnight
 				Caster.SendMessage( "You must have at least " + RequiredTithing + " Souls to cast this spell." );
 				return false;
 			}
-			else if ( Caster.Mana < GetMana() )
+			else if ( Caster.Mana < mana )
 			{
-				Caster.SendMessage( "You must have at least " + GetMana() + " Mana to cast this spell." );
+				Caster.SendMessage( "You must have at least " + mana + " Mana to cast this spell." );
 				return false;
 			}
 
@@ -88,7 +90,7 @@ namespace Server.Spells.DeathKnight
 			int requiredTithing = GetTithing( Caster, this );
 			int mana = GetMana();
 
-			if ( Caster.Stam < (int)( 10 * MySettings.S_PlayerLevelMod ) )
+			if ( Caster.Stam < mana )
 			{
 				Caster.SendMessage( "You are too fatigued to do that now." );
 				return false;
