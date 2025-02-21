@@ -1747,15 +1747,13 @@ namespace Server.Engines.Help
 				+ "<br><br>"
 
 				+ "Area Difficulty Levels: When you enter many dangerous areas, there will be a message to you that you entered a particular area. There may be a level of difficulty shown in parenthesis, that will give you an indication on the difficulty of the area. Below are the descriptions for each level.<br><br>"
-				+ " - Easy (Not much of a challenge)<br><br>"
-				+ " - Normal (An average level of<br>"
-				+ "        challenge)<br><br>"
-				+ " - Difficult (A tad more difficult)<br><br>"
-				+ " - Challenging (You will probably<br>"
-				+ "        run away alot)<br><br>"
-				+ " - Hard (You will probably die alot)<br><br>"
-				+ " - Deadly (I dare you)<br><br>"
-				+ " - Epic (For Titans of Ether)<br><br>"
+				+ " - Easy (Not much of a challenge)<br>"
+				+ " - Normal (An average level of challenge)<br>"
+				+ " - Difficult (A tad more difficult)<br>"
+				+ " - Challenging (You will probably run away alot)<br>"
+				+ " - Hard (You will probably die alot)<br>"
+				+ " - Deadly (I dare you)<br>"
+				// + " - Epic (For Titans of Ether)<br>"
 
 				+ "<br><br>"
 
