@@ -45,7 +45,7 @@ namespace Server.Engines.Craft
 		public virtual int GumpTitleNumber{ get{ return 0; } }
 		public virtual string GumpTitleString{ get{ return ""; } }
 		public virtual string CraftSystemTxt{ get{ return ""; } }
-		public virtual bool ShowGumpInfo{ get{ return false; } }
+		public virtual bool ShowGumpInfo{ get{ return true; } }
 		public virtual CraftResourceType BreakDownType{ get{ return CraftResourceType.Metal; } }
 		public virtual CraftResourceType BreakDownTypeAlt{ get{ return CraftResourceType.None; } }
 
