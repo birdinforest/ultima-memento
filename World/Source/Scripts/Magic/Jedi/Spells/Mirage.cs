@@ -61,7 +61,7 @@ namespace Server.Spells.Jedi
 			{
 				Caster.SendMessage( "You cannot create a mirage while you look like that." );
 			}
-			else if ( CheckSequence() && CheckFizzle() )
+			else if ( CheckSequence() )
 			{
 				new JediMirage( Caster ).MoveToWorld( Caster.Location, Caster.Map );
 				Caster.Hidden = true;

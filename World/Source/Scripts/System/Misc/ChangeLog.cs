@@ -188,6 +188,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Dispel/Banish now properly indicate when a target cannot be dispelled<br>");
 			builder.Append("- Spell - Death Knight spells no longer have a redundant failure check<br>");
 			builder.Append("- Spell - Syth spells no longer have a redundant failure check<br>");
+			builder.Append("- Spell - Jedi spells no longer have a redundant failure check<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
