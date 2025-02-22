@@ -104,6 +104,9 @@ namespace Server.Spells.HolyMan
 				return false;
 			}
 
+			if ( !base.CheckFizzle() )
+				return false;
+
 			return true;
 		}
 
