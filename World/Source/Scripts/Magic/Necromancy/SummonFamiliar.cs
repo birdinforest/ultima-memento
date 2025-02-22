@@ -113,14 +113,10 @@ namespace Server.Spells.Necromancy
 			AddBackground( 10, 10, 250, 178, 9270 );
 			AddAlphaRegion( 20, 20, 230, 158 );
 
-			AddImage( 220, 20, 10464 );
-			AddImage( 220, 72, 10464 );
-			AddImage( 220, 124, 10464 );
-
-			AddItem( 188, 16, 6883 );
-			AddItem( 198, 168, 6881 );
+			AddItem( 217, 16, 6883 );
+			AddItem( 228, 168, 6881 );
 			AddItem( 8, 15, 6882 );
-			AddItem( 2, 168, 6880 );
+			AddItem( 0, 168, 6880 );
 
 			AddHtmlLocalized( 30, 26, 200, 20, 1060147, EnabledColor16, false, false ); // Chose thy familiar...
 

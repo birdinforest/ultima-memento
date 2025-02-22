@@ -154,6 +154,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Alien Players who use Tithe to pay for a res from another player are no longer double penalized<br>");
 			builder.Append("- Gump - Sending buttons that don't exist will now disconnect the Player<br>");
 			builder.Append("- Gump - Remove redundant quiver damage qualifier<br>");
+			builder.Append("- Gump - Summon Familiar gump is now fixed<br>");
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - Unidentified items with deleted contents are now properly deleted<br>");
