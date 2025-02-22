@@ -341,7 +341,7 @@ namespace Server.Gumps
 				int page = info.ButtonID;
 				from.SendGump( new JediSpellbookGump( from, m_Book, page ) );
 			}
-			else if ( info.ButtonID >= 380 && HasSpell(from, info.ButtonID) )
+			else if ( info.ButtonID >= 380 )
 			{
 				m_Book.page = 1;
 				int spell = info.ButtonID - 100;

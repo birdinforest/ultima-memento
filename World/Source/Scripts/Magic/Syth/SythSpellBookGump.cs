@@ -343,7 +343,7 @@ namespace Server.Gumps
 				int page = info.ButtonID;
 				from.SendGump( new SythSpellbookGump( from, m_Book, page ) );
 			}
-			else if ( info.ButtonID >= 370 && HasSpell(from, info.ButtonID) )
+			else if ( info.ButtonID >= 370 )
 			{
 				m_Book.page = 1;
 				int spell = info.ButtonID - 100;
