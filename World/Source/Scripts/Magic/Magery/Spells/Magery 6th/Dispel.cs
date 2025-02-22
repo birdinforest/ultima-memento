@@ -40,14 +40,17 @@ namespace Server.Spells.Sixth
 
 			protected override void OnTarget( Mobile from, object o )
 			{
-				if ( o is Mobile && o is BaseCreature )
+				Mobile m = o as Mobile;
+				BaseCreature bc = m as BaseCreature;
+				if ( m != null )
 				{
-					Mobile m = (Mobile)o;
-					BaseCreature bc = m as BaseCreature;
-
 					if ( !from.CanSee( m ) )
 					{
 						from.SendLocalizedMessage( 500237 ); // Target can not be seen.
+					}
+					else if ( bc == null || !bc.IsDispellable )
+					{
+						from.SendLocalizedMessage( 1005049 ); // That cannot be dispelled.
 					}
 					else if ( bc.IsTempEnemy )
 					{
@@ -65,10 +68,6 @@ namespace Server.Spells.Sixth
 							m.FixedEffect( 0x3779, 10, 20, PlayerSettings.GetMySpellHue( true, from, 0 ), 0 );
 							from.SendLocalizedMessage( 1010084 ); // The creature resisted the attempt to dispel it!
 						}
-					}
-					else if ( bc == null || !bc.IsDispellable )
-					{
-						from.SendLocalizedMessage( 1005049 ); // That cannot be dispelled.
 					}
 					else if ( m_Owner.CheckHSequence( m ) )
 					{
