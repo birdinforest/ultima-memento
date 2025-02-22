@@ -435,7 +435,7 @@ namespace Server.Misc
 				}
 				case 2: // Bard
 				{
-					m.InitStats( 35, 30, 20 ); // 90
+					m.InitStats( 40, 30, 20 ); // 90
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Musicianship, 30 ),
