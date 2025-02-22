@@ -302,7 +302,7 @@ namespace Server.Engines.Craft
 				new Type[]{ typeof( BaseSkins ), typeof( BaseBlocks ) },
 				new Type[]{ typeof( BaseFabric ), typeof( BaseLeather ) },
 				new Type[]{ typeof( BaseHides ), typeof( BaseSkeletal ) },
-				new Type[]{ typeof( BlankScroll ) },
+				new Type[]{ typeof( BlankMap ), typeof( BlankScroll ) },
 				new Type[]{ typeof( CheeseWheel ), typeof( CheeseWedge ) },
 				new Type[]{ typeof( Pumpkin ), typeof( SmallPumpkin ) },
 				new Type[]{ typeof( WoodenBowlOfPeas ), typeof( PewterBowlOfPeas ) }
