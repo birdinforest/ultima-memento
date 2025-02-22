@@ -52,7 +52,7 @@ namespace Server.Spells.DeathKnight
 			{
 				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
 			}
-			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() && CheckFizzle() )
+			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
 				TimeSpan duration;
 

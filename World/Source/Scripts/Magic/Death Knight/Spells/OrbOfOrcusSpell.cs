@@ -55,20 +55,17 @@ namespace Server.Spells.DeathKnight
 			}
 			else if ( CheckSequence() )
 			{
-				if ( CheckFizzle() )
-				{
-					int value = (int)( GetKarmaPower( Caster ) / 4 );
+				int value = (int)( GetKarmaPower( Caster ) / 4 );
 
-					Caster.MagicDamageAbsorb = value;
+				Caster.MagicDamageAbsorb = value;
 
-					Caster.FixedParticles( 0x375A, 10, 15, 5037, EffectLayer.Waist );
-					Caster.PlaySound( 0x1E9 );
+				Caster.FixedParticles( 0x375A, 10, 15, 5037, EffectLayer.Waist );
+				Caster.PlaySound( 0x1E9 );
 
-					BuffInfo.RemoveBuff( Caster, BuffIcon.OrbOfOrcus );
-					BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.OrbOfOrcus, 1063551 ) );
+				BuffInfo.RemoveBuff( Caster, BuffIcon.OrbOfOrcus );
+				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.OrbOfOrcus, 1063551 ) );
 
-					DrainSoulsInLantern( Caster, RequiredTithing );
-				}
+				DrainSoulsInLantern( Caster, RequiredTithing );
 			}
 
 			FinishSequence();
