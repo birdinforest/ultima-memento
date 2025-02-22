@@ -17,6 +17,10 @@ namespace Server.Items
 		public int Banished_Evil { get { return BanishedEvil; } set { BanishedEvil = value; InvalidateProperties(); } }
 
 		[Constructable]
+		public HolySymbol() : this(null)
+		{
+		}
+
 		public HolySymbol( Mobile gifted )
 		{
 			Name = "holy symbol";

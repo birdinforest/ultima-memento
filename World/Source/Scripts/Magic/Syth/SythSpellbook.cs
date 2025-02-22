@@ -40,6 +40,10 @@ namespace Server.Items
 		public override int BookCount{ get{ return 11; } }
 
 		[Constructable]
+		public SythSpellbook() : this( 0, null )
+		{
+		}
+
 		public SythSpellbook( ulong content, Mobile gifted ) : base( content, 0x4CE0 )
 		{
 			owner = gifted;

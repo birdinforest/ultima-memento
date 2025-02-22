@@ -40,6 +40,10 @@ namespace Server.Items
 		public override int BookCount{ get{ return 11; } }
 
 		[Constructable]
+		public JediSpellbook() : this( 0, null )
+		{
+		}
+
 		public JediSpellbook( ulong content, Mobile gifted ) : base( content, 0x543D )
 		{
 			owner = gifted;
