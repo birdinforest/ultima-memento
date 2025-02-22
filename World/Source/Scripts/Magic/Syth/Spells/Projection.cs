@@ -61,7 +61,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendMessage( "You cannot create a projection while you look like that." );
 			}
-			else if ( CheckSequence() && CheckFizzle() )
+			else if ( CheckSequence() )
 			{
 				new SythProjection( Caster ).MoveToWorld( Caster.Location, Caster.Map );
 				Caster.Hidden = true;

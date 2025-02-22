@@ -186,7 +186,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Bard songs weren't blocked when below required skill level<br>");
 			builder.Append("- Spell - Mirror image now has the correct buff name<br>");
 			builder.Append("- Spell - Dispel/Banish now properly indicate when a target cannot be dispelled<br>");
-			builder.Append("- Spell - DeathKnight spells no longer have a redundant failure check<br>");
+			builder.Append("- Spell - Syth spells no longer have a redundant failure check<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

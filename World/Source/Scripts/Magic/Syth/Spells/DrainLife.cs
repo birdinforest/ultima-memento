@@ -59,7 +59,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendMessage( "This power cannot affect supernatural creatures, golems, constructs, or elementals." );
 			}
-			else if ( CheckHSequence( m ) && CheckFizzle() )
+			else if ( CheckHSequence( m ) )
 			{
 				Point3D blast1 = new Point3D( ( m.X ), ( m.Y ), m.Z );
 				Point3D blast2 = new Point3D( ( m.X-1 ), ( m.Y ), m.Z );

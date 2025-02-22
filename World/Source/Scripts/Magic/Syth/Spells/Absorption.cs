@@ -56,18 +56,15 @@ namespace Server.Spells.Syth
 			}
 			else if ( CheckSequence() )
 			{
-				if ( CheckFizzle() )
-				{
-					int min = 15;
-					int max = (int)( GetSythDamage( Caster ) / 4 );
-					Caster.MagicDamageAbsorb = Utility.RandomMinMax( min, max );
-					Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
-					Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x3789, 9, 32, 0xB00, 0, 5022, 0);
-					Caster.PlaySound( 0x64C );
-					BuffInfo.RemoveBuff( Caster, BuffIcon.Absorption );
-					BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Absorption, 1063510 ) );
-					DrainCrystals( Caster, RequiredTithing );
-				}
+				int min = 15;
+				int max = (int)( GetSythDamage( Caster ) / 4 );
+				Caster.MagicDamageAbsorb = Utility.RandomMinMax( min, max );
+				Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
+				Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x3789, 9, 32, 0xB00, 0, 5022, 0);
+				Caster.PlaySound( 0x64C );
+				BuffInfo.RemoveBuff( Caster, BuffIcon.Absorption );
+				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Absorption, 1063510 ) );
+				DrainCrystals( Caster, RequiredTithing );
 			}
 
 			FinishSequence();

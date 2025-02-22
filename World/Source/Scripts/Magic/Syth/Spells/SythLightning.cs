@@ -40,7 +40,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() && CheckFizzle() )
+			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
 				if ( p is Item )
 					p = ((Item)p).GetWorldLocation();

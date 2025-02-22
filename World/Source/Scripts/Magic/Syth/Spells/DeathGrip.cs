@@ -40,7 +40,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( CheckHSequence( m ) && CheckFizzle() )
+			else if ( CheckHSequence( m ) )
 			{
 				TimeSpan duration = TimeSpan.FromSeconds( GetSythDamage(Caster) / 5 );
 

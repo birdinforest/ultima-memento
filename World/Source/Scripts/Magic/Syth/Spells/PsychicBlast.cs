@@ -59,7 +59,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( Caster.CanBeHarmful( m ) && CheckSequence() && CheckFizzle() )
+			else if ( Caster.CanBeHarmful( m ) && CheckSequence() )
 			{
 				Mobile from = Caster, target = m;
 
