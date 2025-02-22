@@ -31,7 +31,7 @@ namespace Server.Spells.Syth
 
 		public override void OnCast()
 		{
-			if ( CheckFizzle() )
+			if ( CheckSequence() )
 			{
 				ArrayList targets = new ArrayList();
 				foreach ( Item item in World.Items.Values )
@@ -60,6 +60,8 @@ namespace Server.Spells.Syth
 				Server.Items.SoulOrb.OnSummoned( Caster, iOrb );
 				DrainCrystals( Caster, RequiredTithing );
 			}
+
+            FinishSequence();
 		}
 	}
 }

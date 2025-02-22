@@ -65,7 +65,7 @@ namespace Server.Spells.Syth
 			{
                 Caster.SendMessage( "You cannot use this power while wearing hiking boots!" );
 			}
-			else if ( CheckFizzle() )
+			else if ( CheckSequence() )
 			{
 				if ( !Caster.CanBeginAction( typeof( SythSpeed ) ) )
 				{
