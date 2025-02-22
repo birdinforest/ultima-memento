@@ -68,7 +68,7 @@ namespace Server.Spells.Jedi
                 else if (item is Corpse && !((Corpse)item).CheckLoot(this.Caster, null))
                 {
                 }
-                else if ( this.Caster.Region.OnDoubleClick(this.Caster, item) && CheckFizzle() )
+                else if ( this.Caster.Region.OnDoubleClick(this.Caster, item) )
                 {
                     Effects.SendLocationParticles(EffectItem.Create(item.Location, item.Map, EffectItem.DefaultDuration), 0x376A, 9, 32, 0xB41, 0, 5022, 0);
                     Effects.PlaySound(item.Location, item.Map, 0x1F5);
