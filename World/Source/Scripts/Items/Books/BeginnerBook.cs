@@ -17,6 +17,8 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			// Temporarily Disable
+			return;
 			if ( from.InRange( GetWorldLocation(), 1 ) )
 			{
 				from.CloseGump( typeof( BeginnerBookGump ) );

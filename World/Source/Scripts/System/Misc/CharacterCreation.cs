@@ -29,7 +29,7 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-			PackItem( new BeginnerBook() );
+			// PackItem( new BeginnerBook() );
 
 			//---------------------------------------------
 			if ( MyServerSettings.StartingGold() > 0 )
