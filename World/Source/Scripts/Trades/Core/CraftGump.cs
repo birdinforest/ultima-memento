@@ -475,9 +475,9 @@ namespace Server.Engines.Craft
 			{
 				buttonID = buttonID - 3000;
 				TextRelay t = info.GetTextEntry(1);
-				if (t == null || !int.TryParse(t.Text, out toMake) || toMake < 1 || 100 < toMake)
+				if (t == null || !int.TryParse(t.Text, out toMake) || toMake < 1 || 10000 < toMake)
 				{
-					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, "Please pick a number between 1 and 100." ) );
+					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, "Please pick a number between 1 and 10000." ) );
 					return;
 				}
 			}
