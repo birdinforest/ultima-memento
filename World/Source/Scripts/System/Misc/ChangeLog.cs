@@ -115,6 +115,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Identifying items will now stack automatically<br>");
 			builder.Append("- Misc - Ghosts now run at mounted speed<br>");
 			builder.Append("- Misc - Add [CombatBar to [QuickBar<br>");
+			builder.Append("- Misc - Characters now start items relevant to their skills<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("       - Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("       - Forensics, Lumberjacking, Mining<br>");

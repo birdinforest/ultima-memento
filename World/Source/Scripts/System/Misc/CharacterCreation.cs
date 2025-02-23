@@ -4,7 +4,8 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Accounting;
-using System.Collections.Generic; //Unique Naming System//
+using System.Collections.Generic;
+using System.Linq; //Unique Naming System//
 
 namespace Server.Misc
 {
@@ -33,14 +34,14 @@ namespace Server.Misc
 
 			//---------------------------------------------
 			if ( MyServerSettings.StartingGold() > 0 )
-				PackItem( new Gold( MyServerSettings.StartingGold() ) );
+				PackItem(pack, new Gold( MyServerSettings.StartingGold() ) );
 
-			PackItem( new Pitcher( BeverageType.Water ) );
+			PackItem(pack,  new Pitcher( BeverageType.Water ) );
 
 			switch ( Utility.RandomMinMax( 1, 2 ) )
 			{
-				case 1: PackItem( new Dagger() ); break;
-				case 2: PackItem( new LargeKnife() ); break;
+				case 1: PackItem(pack,  new Dagger() ); break;
+				case 2: PackItem(pack,  new LargeKnife() ); break;
 			}
 			//---------------------------------------------
 			Container bag = new Bag();
@@ -50,7 +51,7 @@ namespace Server.Misc
 				food--;
 				bag.DropItem( Loot.RandomFoods( true, true ) );
 			}
-			PackItem( bag );
+			PackItem(pack,  bag );
 			//---------------------------------------------
 			int light = 2;
 			while ( light > 0 )
@@ -58,9 +59,9 @@ namespace Server.Misc
 				light--;
 				switch ( Utility.RandomMinMax( 1, 3 ) )
 				{
-					case 1: PackItem( new Torch() ); break;
-					case 2: PackItem( new Lantern() ); break;
-					case 3: PackItem( new Candle() ); break;
+					case 1: PackItem(pack, new Torch() ); break;
+					case 2: PackItem(pack, new Lantern() ); break;
+					case 3: PackItem(pack, new Candle() ); break;
 				}
 			}
 			//---------------------------------------------
@@ -133,7 +134,8 @@ namespace Server.Misc
 			AddBackpack( newChar );
 
 			SetStats( newChar, state, args.Str, args.Dex, args.Int );
-			SetSkills( newChar, args.Skills, args.Profession );
+			SkillNameValue[] setSkills = SetSkills( newChar, args.Skills, args.Profession );
+            AddSkillBasedItems(newChar, setSkills);
 
 			newChar.Mana = args.Int * 2;
 			newChar.Hits = args.Str * 2;
@@ -321,7 +323,7 @@ namespace Server.Misc
 
 		private static Mobile m_Mobile;
 
-		private static void SetSkills( Mobile m, SkillNameValue[] skills, int prof )
+		private static SkillNameValue[] SetSkills( Mobile m, SkillNameValue[] skills, int prof )
 		{
 			switch ( prof )
 			{
@@ -417,7 +419,7 @@ namespace Server.Misc
 				default:
 				{
 					if ( !ValidSkills( skills ) )
-						return;
+						return new SkillNameValue[] { };
 
 					break;
 				}
@@ -437,29 +439,522 @@ namespace Server.Misc
 					}
 				}
 			}
+
+			return skills;
 		}
 
-		private static void EquipItem( Item item, bool mustEquip )
+		private static void PackItem(Container pack, int count, Func<Item> itemFactory, bool asUnidentified = false)
 		{
-			if ( m_Mobile != null && m_Mobile.EquipItem( item ) )
-				return;
+			for (var i = 0; i < count; i++)
+			{
+				PackItem(pack, itemFactory(), asUnidentified);
+			}
+		}
 
-			Container pack = m_Mobile.Backpack;
-
-			if ( !mustEquip && pack != null )
-				pack.DropItem( item );
+		private static void PackItem(Container pack, Item item, bool asUnidentified = false)
+		{
+			if (pack != null)
+			{
+				if (asUnidentified)
+					NotIdentified.AddAsUnidentified(item, pack, m_Mobile);
+				else
+					pack.DropItem(item);
+			}
 			else
 				item.Delete();
 		}
 
-		private static void PackItem( Item item )
+		private static readonly List<Layer> NonArmorLayers = new List<Layer>
 		{
-			Container pack = m_Mobile.Backpack;
+			Layer.Shoes,
+			Layer.Pants,
+			Layer.Shirt,
+			Layer.Helm,
+			Layer.Ring,
+			Layer.Trinket,
+			Layer.Neck,
+			Layer.Waist,
+			Layer.Bracelet,
+			Layer.MiddleTorso,
+			Layer.Earrings,
+			Layer.Cloak,
+			Layer.OuterTorso,
+			Layer.OuterLegs,
+		};
 
-			if ( pack != null )
-				pack.DropItem( item );
-			else
-				item.Delete();
+		private static Item GenerateSkillBonusItem(SkillName skill, int min, int max)
+		{
+			while (true)
+			{
+				var layer = Utility.Random(NonArmorLayers);
+				var item = GenerateSkillBonusItem(layer, skill, min, max);
+				if (item != null) return item;
+
+				Console.WriteLine("Failed to generate item for layer '{0}'", layer);
+			}
 		}
-	}
+
+		private static Item GenerateRandomItem(LootPackItem[] lootPack, bool isMagic)
+		{
+			var itemOptions = lootPack.ToList();
+
+			while (true)
+			{
+				var item = Utility.Random(itemOptions).Construct(false);
+				if (item != null)
+				{
+					if (isMagic)
+						BaseRunicTool.ApplyAttributes(item, 1, 1, 5, 25);
+
+					return item;
+				}
+
+				Console.WriteLine("Failed to generate loot item.");
+			}
+		}
+
+		private static Item GenerateSkillBonusItem(Layer layer, SkillName skill, int min, int max)
+		{
+			Item item = null;
+			switch (layer)
+			{
+				case Layer.Shoes:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new Sandals(); break;
+						case 2: item = new Shoes(); break;
+						case 3: item = new Boots(); break;
+						case 4: item = new ThighBoots(); break;
+					}
+					break;
+
+				case Layer.Pants:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new ShortPants(); break;
+						case 2: item = new LongPants(); break;
+						case 3: item = new PiratePants(); break;
+						case 4: item = new TattsukeHakama(); break;
+					}
+					break;
+
+				case Layer.Shirt:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new FancyShirt(); break;
+						case 2: item = new SquireShirt(); break;
+						case 3: item = new RoyalCoat(); break;
+						case 4: item = new RusticVest(); break;
+					}
+					break;
+
+				case Layer.Helm:
+					item = new JewelryCirclet();
+					break;
+
+				case Layer.Ring:
+					item = new JewelryRing();
+					break;
+
+				case Layer.Trinket:
+					item = new TrinketTalisman();
+					break;
+
+				case Layer.Neck:
+					item = new JewelryNecklace();
+					break;
+
+				case Layer.Waist:
+					switch (Utility.RandomMinMax(1, 3))
+					{
+						case 1: item = new HalfApron(); break;
+						case 2: item = new Obi(); break;
+						case 3: item = new Belt(); break;
+					}
+					break;
+
+				case Layer.Bracelet:
+					item = new JewelryBracelet();
+					break;
+
+				case Layer.MiddleTorso:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new BodySash(); break;
+						case 2: item = new Doublet(); break;
+						case 3: item = new JesterSuit(); break;
+						case 4: item = new Surcoat(); break;
+					}
+					break;
+
+				case Layer.Earrings:
+					item = new JewelryEarrings();
+					break;
+
+				case Layer.Cloak:
+					switch (Utility.RandomMinMax(1, 2))
+					{
+						case 1: item = new Cloak(); break;
+						case 2: item = new RoyalCape(); break;
+					}
+					break;
+
+				case Layer.OuterTorso:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new ChaosRobe(); break;
+						case 2: item = new GildedDress(); break;
+						case 3: item = new Kamishimo(); break;
+						case 4: item = new ScholarRobe(); break;
+					}
+					break;
+
+				case Layer.OuterLegs:
+					switch (Utility.RandomMinMax(1, 4))
+					{
+						case 1: item = new Skirt(); break;
+						case 2: item = new Kilt(); break;
+						case 3: item = new Hakama(); break;
+						case 4: item = new RoyalSkirt(); break;
+					}
+					break;
+
+				case Layer.TwoHanded:
+					switch (Utility.RandomMinMax(1, 3))
+					{
+						case 1: item = new TrinketCandle(); break;
+						case 2: item = new TrinketLantern(); break;
+						case 3: item = new TrinketTorch(); break;
+					}
+					break;
+			}
+
+			int amount = min == max ? min : Utility.RandomMinMax(min, max);
+
+			if (item is BaseWeapon) ((BaseWeapon)item).SkillBonuses.SetValues(0, skill, amount);
+			else if (item is BaseArmor) ((BaseArmor)item).SkillBonuses.SetValues(0, skill, amount);
+			else if (item is BaseTrinket) ((BaseTrinket)item).SkillBonuses.SetValues(0, skill, amount);
+			// else if ( item is BaseQuiver ) ((BaseQuiver)item).SkillBonuses.SetValues(0, skill, amount);
+			else if (item is BaseClothing) ((BaseClothing)item).SkillBonuses.SetValues(0, skill, amount);
+			else if (item is BaseInstrument) ((BaseInstrument)item).SkillBonuses.SetValues(0, skill, amount);
+			else if (item is Spellbook) ((Spellbook)item).SkillBonuses.SetValues(0, skill, amount);
+
+			return item;
+		}
+
+		private static void AddSkillBasedItems(Mobile m, SkillNameValue[] skills)
+		{
+			for (int i = 0; i < skills.Length; i++)
+			{
+				var skill = skills[i];
+				if (skill.Value == 0) continue;
+
+				Bag bag = new Bag { Name = m.Skills[skill.Name].Name };
+				m.Backpack.AddItem(bag);
+
+				switch (skill.Name)
+				{
+					case SkillName.Alchemy:
+						PackItem(bag, new MortarPestle());
+						PackItem(bag, new Bottle { Amount = 15 });
+						break;
+
+					case SkillName.Anatomy:
+						PackItem(bag, new Bandage { Amount = 50 });
+						break;
+
+					case SkillName.Druidism: // Animal Lore
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Mercantile:
+						PackItem(bag, new Gold { Amount = 100 });
+						break;
+
+					case SkillName.ArmsLore:
+						PackItem(bag, GenerateRandomItem(LootPack.MagicItemsMeager1, true), true);
+						break;
+
+					case SkillName.Parry:
+						PackItem(bag, new Buckler());
+						break;
+
+					case SkillName.Begging:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Blacksmith:
+						PackItem(bag, new SmithHammer());
+						PackItem(bag, new IronIngot { Amount = 50 });
+						break;
+
+					case SkillName.Bowcraft:
+						PackItem(bag, new FletcherTools());
+						PackItem(bag, new Board { Amount = 50 });
+						PackItem(bag, new Feather { Amount = 50 });
+						break;
+
+					case SkillName.Peacemaking:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Camping:
+						PackItem(bag, new SmallTent());
+						PackItem(bag, new Kindling { Amount = 10 });
+						break;
+
+					case SkillName.Carpentry:
+						PackItem(bag, new CarpenterTools());
+						PackItem(bag, new Board { Amount = 50 });
+						break;
+
+					case SkillName.Cartography:
+						PackItem(bag, new MapmakersPen());
+						PackItem(bag, new BlankScroll { Amount = 50 });
+						break;
+
+					case SkillName.Cooking:
+						PackItem(bag, new CulinarySet());
+						PackItem(bag, new RawBird { Amount = 3 });
+						break;
+
+					case SkillName.Searching:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Discordance:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Psychology:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Healing:
+						PackItem(bag, new Scissors());
+						PackItem(bag, new Bandage { Amount = 50 });
+						break;
+
+					case SkillName.Seafaring:
+						PackItem(bag, new FishingPole());
+						PackItem(bag, new Fish());
+						PackItem(bag, new RawFishSteak(3));
+						break;
+
+					case SkillName.Forensics:
+						PackItem(bag, new SkinningKnife());
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Herding:
+						PackItem(bag, new ShepherdsCrook());
+						PackItem(bag, new CagedSheep { Weight = 10 });
+						break;
+
+					case SkillName.Hiding:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Provocation:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Inscribe:
+						PackItem(bag, new Monocle());
+						PackItem(bag, new ScribesPen());
+						PackItem(bag, new BlankScroll { Amount = 50 });
+						break;
+
+					case SkillName.Lockpicking:
+						PackItem(bag, new Lockpick { Amount = 10 });
+						PackItem(bag, new PickBoxDifficult());
+						break;
+
+					case SkillName.Magery:
+						PackItem(bag, new Spellbook());
+						PackItem(bag, new HealScroll());
+						PackItem(bag, new MagicArrowScroll());
+
+						// One 2nd circle
+						switch (Utility.RandomMinMax(1, 8))
+						{
+							case 1: PackItem(bag, new AgilityScroll()); break;
+							case 2: PackItem(bag, new CunningScroll()); break;
+							case 3: PackItem(bag, new CureScroll()); break;
+							case 4: PackItem(bag, new HarmScroll()); break;
+							case 5: PackItem(bag, new MagicTrapScroll()); break;
+							case 6: PackItem(bag, new MagicUnTrapScroll()); break;
+							case 7: PackItem(bag, new ProtectionScroll()); break;
+							case 8: PackItem(bag, new StrengthScroll()); break;
+						}
+
+						var mageBag = new BagOfReagents();
+						mageBag.Open(m);
+						PackItem(bag, mageBag);
+						break;
+
+					case SkillName.MagicResist:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Tactics:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Snooping:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Musicianship:
+						PackItem(bag, 3, () => GenerateRandomItem(LootPack.Instruments, false));
+						break;
+
+					case SkillName.Poisoning:
+						PackItem(bag, new LesserPoisonPotion { Amount = 5 });
+						break;
+
+					case SkillName.Marksmanship:
+						PackItem(bag, new Bow());
+						PackItem(bag, new RepeatingCrossbow());
+						PackItem(bag, new Arrow { Amount = 50 });
+						PackItem(bag, new Bolt { Amount = 50 });
+						break;
+
+					case SkillName.Spiritualism:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Stealing:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						break;
+
+					case SkillName.Tailoring:
+						PackItem(bag, new Scissors());
+						PackItem(bag, new SewingKit());
+						PackItem(bag, new Fabric { Amount = 50 });
+						break;
+
+					case SkillName.Taming:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						switch (Utility.RandomMinMax(1, 4))
+						{
+							case 1: PackItem(bag, new CagedBlackBear { Weight = 10 }); break;
+							case 2: PackItem(bag, new CagedPanther { Weight = 10 }); break;
+							case 3: PackItem(bag, new CagedTimberWolf { Weight = 10 }); break;
+							case 4: PackItem(bag, new CagedAlligator { Weight = 10 }); break;
+						}
+						break;
+
+					case SkillName.Tasting:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						PackItem(bag, 3, () => GenerateRandomItem(LootPack.LowPotionItems, false), true);
+						break;
+
+					case SkillName.Tinkering:
+						PackItem(bag, new TinkerTools());
+						PackItem(bag, new IronIngot { Amount = 50 });
+						break;
+
+					case SkillName.Tracking:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Veterinary:
+						PackItem(bag, new Bandage { Amount = 50 });
+						break;
+
+					case SkillName.Swords:
+						// Random fast weapon
+						switch (Utility.RandomMinMax(1, 4))
+						{
+							case 1: PackItem(bag, new Bokuto()); break;
+							case 2: PackItem(bag, new Cleaver()); break;
+							case 3: PackItem(bag, new SkinningKnife()); break;
+							case 4: PackItem(bag, new Cutlass()); break;
+						}
+						break;
+
+					case SkillName.Bludgeoning:
+						// Random fast weapon
+						switch (Utility.RandomMinMax(1, 4))
+						{
+							case 1: PackItem(bag, new Tessen()); break;
+							case 2: PackItem(bag, new Club()); break;
+							case 3: PackItem(bag, new WildStaff()); break;
+							case 4: PackItem(bag, new Mace()); break;
+						}
+						break;
+
+					case SkillName.Fencing:
+						// Random fast weapon
+						switch (Utility.RandomMinMax(1, 4))
+						{
+							case 1: PackItem(bag, new Dagger()); break;
+							case 2: PackItem(bag, new Kryss()); break;
+							case 3: PackItem(bag, new AssassinSpike()); break;
+							case 4: PackItem(bag, new Sai()); break;
+						}
+						break;
+
+					case SkillName.FistFighting:
+						PackItem(bag, new PugilistGloves());
+						break;
+
+					case SkillName.Lumberjacking:
+						PackItem(bag, new Hatchet());
+						PackItem(bag, new Hatchet());
+						break;
+
+					case SkillName.Mining:
+						PackItem(bag, new Spade());
+						PackItem(bag, new Spade());
+						break;
+
+					case SkillName.Meditation:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.RemoveTrap:
+						PackItem(bag, new TenFootPole() { Weight = 20 });
+						break;
+
+					case SkillName.Necromancy:
+						PackItem(bag, new NecromancerSpellbook());
+						PackItem(bag, new PainSpikeScroll());
+						PackItem(bag, new CurseWeaponScroll());
+						var necroBag = new BagOfNecroReagents();
+						necroBag.Open(m);
+						PackItem(bag, necroBag);
+						break;
+
+					case SkillName.Focus:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Knightship:
+						PackItem(bag, new BookOfChivalry());
+						break;
+
+					case SkillName.Bushido:
+						PackItem(bag, new BookOfBushido());
+						break;
+
+					case SkillName.Ninjitsu:
+						PackItem(bag, new BookOfNinjitsu());
+						break;
+
+					case SkillName.Stealth:
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 10));
+						break;
+
+					case SkillName.Elementalism:
+					case SkillName.Mysticism:
+					case SkillName.Imbuing:
+					case SkillName.Throwing:
+						// Not pickable
+						break;
+				}
+			}
+		}
+    }
 }
