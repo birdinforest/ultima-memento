@@ -205,34 +205,40 @@ namespace Server.Items
 		}
 
 		public override void OnDoubleClick( Mobile from )
-		{
-			if ( !MySettings.S_AllowMacroResources )
+        {
+            if ( !MySettings.S_AllowMacroResources )
 			{ 
 				CaptchaGump.sendCaptcha(from, BaseTool.OnDoubleClickRedirected, this);
 			}
-			else if ( Parent == from )
-			{
-				CraftSystem system = this.CraftSystem;
-
-				int num = system.CanCraft( from, this, null );
-
-				if ( num > 0 && ( num != 1044267 || !Core.SE ) ) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
-				{
-					from.SendLocalizedMessage( num );
-				}
-				else
-				{
-					CraftContext context = system.GetContext( from );
-
-					from.SendGump( new CraftGump( from, system, this, null ) );
-
-					if ( this is TomeOfWands ){ from.SendSound( 0x55 ); }
-				}
-			}
 			else
 			{
-				from.SendLocalizedMessage( 502641 ); // You must equip this item to use it.
-			}
+                if (Parent != from && RootParentEntity == from)
+                    from.EquipItem(this);
+
+                if (Parent == from)
+                {
+                    CraftSystem system = this.CraftSystem;
+
+                    int num = system.CanCraft(from, this, null);
+
+                    if (num > 0 && (num != 1044267 || !Core.SE)) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
+                    {
+                        from.SendLocalizedMessage(num);
+                    }
+                    else
+                    {
+                        CraftContext context = system.GetContext(from);
+
+                        from.SendGump(new CraftGump(from, system, this, null));
+
+                        if (this is TomeOfWands) { from.SendSound(0x55); }
+                    }
+                }
+                else
+                {
+                    from.SendLocalizedMessage(502641); // You must equip this item to use it.
+                }
+            }
 		}
 
 		public static void OnDoubleClickRedirected(Mobile from, object o)
@@ -242,7 +248,10 @@ namespace Server.Items
 
 			BaseTool tool = (BaseTool)o;
 
-			if ( tool.Parent == from )
+            if (tool.Parent != from && tool.RootParentEntity == from)
+                from.EquipItem(tool);
+
+            if ( tool.Parent == from )
 			{
 				CraftSystem system = tool.CraftSystem;
 
