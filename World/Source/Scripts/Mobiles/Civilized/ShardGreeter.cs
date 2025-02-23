@@ -502,71 +502,46 @@ namespace Server.Gumps
 				else if ( start == "water" ){ 	loc = new Point3D(27, 4077, 0); }
 				else if ( start == "woods" ){ 	loc = new Point3D(357, 4057, 0); }
 
-				List<Item> belongings = new List<Item>();
-				foreach( Item i in m.Backpack.Items )
-				{
-					if (i is Gold) continue;
-
-					belongings.Add(i);
-				}
-				foreach ( Item stuff in belongings )
-				{
-					stuff.Delete();
-				}
-				Server.Items.BaseRace.RemoveMyClothes( m );
-
-				switch ( Utility.RandomMinMax( 1, 2 ) )
-				{
-					case 1: m.AddToBackpack( new Dagger() ); break;
-					case 2: m.AddToBackpack( new LargeKnife() ); break;
-				}
-
+				bool keepFood = true;
+				bool keepDrink = true;
 				if ( Server.Items.BaseRace.NoFoodOrDrink( m.RaceID ) )
 				{
 					// NO NEED TO CREATE FOOD OR DRINK
+					keepFood = false;
+					keepDrink = false;
 				}
 				else if ( Server.Items.BaseRace.NoFood( m.RaceID ) )
 				{
-					m.AddToBackpack( new Pitcher( BeverageType.Water ) );
+					keepFood = false;
 				}
 				else if ( Server.Items.BaseRace.BloodDrinker( m.RaceID ) )
 				{
+					keepFood = false;
+					keepDrink = false;
 					Item blood = new BloodyDrink();
 					blood.Amount = 10;
 					m.AddToBackpack( blood );
 				}
 				else if ( Server.Items.BaseRace.BrainEater( m.RaceID ) )
 				{
+					keepFood = false;
+					keepDrink = false;
 					Item blood = new FreshBrain();
 					blood.Amount = 10;
 					m.AddToBackpack( blood );
 				}
-				else
-				{
-					Container bag = new Bag();
-					int food = 10;
-					while ( food > 0 )
-					{
-						food--;
-						bag.DropItem( Loot.RandomFoods( true, true ) );
-					}
-					m.AddToBackpack( bag );
-					m.AddToBackpack( new Pitcher( BeverageType.Water ) );
-				}
 
-				if ( !Server.Items.BaseRace.NightEyes( m.RaceID ) )
+				List<Item> allItems = new List<Item>();
+				m.Backpack.RecurseItems( allItems );
+
+				foreach ( Item item in allItems )
 				{
-					int light = 2;
-					while ( light > 0 )
-					{
-						light--;
-						switch ( Utility.RandomMinMax( 1, 3 ) )
-						{
-							case 1: m.AddToBackpack( new Torch() ); break;
-							case 2: m.AddToBackpack( new Lantern() ); break;
-							case 3: m.AddToBackpack( new Candle() ); break;
-						}
-					}
+					if (item is Food && !keepFood) // Delete Food
+						item.Delete();
+					else if (item is BaseBeverage && !keepDrink) // Delete Drink
+						item.Delete();
+					else if (item is BaseEquipableLight && Server.Items.BaseRace.NightEyes( m.RaceID ) && (item is BaseTrinket == false)) // Delete default light sources
+						item.Delete();
 				}
 
 				if ( page == 1 )
