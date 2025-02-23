@@ -69,51 +69,6 @@ namespace Server.Misc
 			((PlayerMobile)m).GumpHue = 1;
 		}
 
-		private static void PlaceItemIn( Container parent, int x, int y, Item item )
-		{
-			parent.AddItem( item );
-			item.Location = new Point3D( x, y, 0 );
-		}
-
-		private static void AddShirt( Mobile m, int shirtHue )
-		{
-			int hue = Utility.ClipDyedHue( shirtHue & 0x3FFF );
-
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0: EquipItem( new Shirt( hue ), true ); break;
-				case 1: EquipItem( new FancyShirt( hue ), true ); break;
-				case 2: EquipItem( new Doublet( hue ), true ); break;
-			}
-		}
-
-		private static void AddPants( Mobile m, int pantsHue )
-		{
-			int hue = Utility.ClipDyedHue( pantsHue & 0x3FFF );
-
-			if ( m.Female )
-			{
-				switch ( Utility.Random( 2 ) )
-				{
-					case 0: EquipItem( new Skirt( hue ), true ); break;
-					case 1: EquipItem( new Kilt( hue ), true ); break;
-				}
-			}
-			else
-			{
-				switch ( Utility.Random( 2 ) )
-				{
-					case 0: EquipItem( new LongPants( hue ), true ); break;
-					case 1: EquipItem( new ShortPants( hue ), true ); break;
-				}
-			}
-		}
-
-		private static void AddShoes( Mobile m )
-		{
-			EquipItem( new Shoes( Utility.RandomYellowHue() ), true );
-		}
-
 		private static Mobile CreateMobile( Account a )
 		{
 			if ( a.Count >= a.Limit )
@@ -482,11 +437,6 @@ namespace Server.Misc
 					}
 				}
 			}
-		}
-
-		private static void EquipItem( Item item )
-		{
-			EquipItem( item, false );
 		}
 
 		private static void EquipItem( Item item, bool mustEquip )
