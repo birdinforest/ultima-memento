@@ -219,31 +219,31 @@ namespace Server.Engines.Craft
 
 			/* Begin Barbecue */
 			index = AddCraft( typeof( CookedBird ), 1044498, 1022487, 0.0, 100.0, typeof( RawBird ), 1044470, 1, 1044253 );
-			index = AddCraft( typeof( CookedBird ), 1044498, "a batch of cooked bird", 0.0, 100.0, typeof( RawBird ), 1044470, 1, 1044253 );
+			index = AddCraft( typeof( CookedBird ), 1044498, "a batch of cooked bird", 100.0, 100.0, typeof( RawBird ), 1044470, 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( ChickenLeg ), 1044498, "bird leg", 0.0, 100.0, typeof( RawChickenLeg ), "Raw Bird Legs", 1, 1044253 );
-			index = AddCraft( typeof( ChickenLeg ), 1044498, "a batch of bird leg", 0.0, 100.0, typeof( RawChickenLeg ), "Raw Bird Legs", 1, 1044253 );
+			index = AddCraft( typeof( ChickenLeg ), 1044498, "a batch of bird leg", 100.0, 100.0, typeof( RawChickenLeg ), "Raw Bird Legs", 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( FishSteak ), 1044498, 1022427, 0.0, 100.0, typeof( RawFishSteak ), 1044476, 1, 1044253 );
-			index = AddCraft( typeof( FishSteak ), 1044498, "a batch of fish steak", 0.0, 100.0, typeof( RawFishSteak ), 1044476, 1, 1044253 );
+			index = AddCraft( typeof( FishSteak ), 1044498, "a batch of fish steak", 100.0, 100.0, typeof( RawFishSteak ), 1044476, 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( FriedEggs ), 1044498, 1022486, 0.0, 100.0, typeof( Eggs ), 1044477, 1, 1044253 );
-			index = AddCraft( typeof( FriedEggs ), 1044498, "a batch of fried eggs", 0.0, 100.0, typeof( Eggs ), 1044477, 1, 1044253 );
+			index = AddCraft( typeof( FriedEggs ), 1044498, "a batch of fried eggs", 100.0, 100.0, typeof( Eggs ), 1044477, 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( Ham ), 1044498, 1022505, 0.0, 100.0, typeof( RawPig ), "Raw Pig", 1, 1044253 );
-			index = AddCraft( typeof( Ham ), 1044498, "a batch of ham", 0.0, 100.0, typeof( RawPig ), "Raw Pig", 1, 1044253 );
+			index = AddCraft( typeof( Ham ), 1044498, "a batch of ham", 100.0, 100.0, typeof( RawPig ), "Raw Pig", 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( LambLeg ), 1044498, 1025642, 0.0, 100.0, typeof( RawLambLeg ), 1044478, 1, 1044253 );
-			index = AddCraft( typeof( LambLeg ), 1044498, "a batch of lamb", 0.0, 100.0, typeof( RawLambLeg ), 1044478, 1, 1044253 );
+			index = AddCraft( typeof( LambLeg ), 1044498, "a batch of lamb", 100.0, 100.0, typeof( RawLambLeg ), 1044478, 1, 1044253 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( Ribs ), 1044498, 1022546, 0.0, 100.0, typeof( RawRibs ), 1044485, 1, 1044253 );
-			index = AddCraft( typeof( Ribs ), 1044498, "a batch of cooked ribs", 0.0, 100.0, typeof( RawRibs ), 1044485, 1, 1044253 );
+			index = AddCraft( typeof( Ribs ), 1044498, "a batch of cooked ribs", 100.0, 100.0, typeof( RawRibs ), 1044485, 1, 1044253 );
 			SetUseAllRes( index, true );
 			/* End Barbecue */
 

@@ -388,7 +388,7 @@ namespace Server.Engines.Craft
 
 			// Blank Scrolls
 			index = AddCraft( typeof( BlankScroll ), "Books & Scrolls", "Blank Scrolls", 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
-			index = AddCraft( typeof( BlankScroll ), "Books & Scrolls", "A batch of Blank Scrolls", 40.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
+			index = AddCraft( typeof( BlankScroll ), "Books & Scrolls", "A batch of Blank Scrolls", 70.0, 70.0, typeof( BarkFragment ), 1073477, 1, 1073478 );
 			SetUseAllRes( index, true );
 
 			// Writing Book

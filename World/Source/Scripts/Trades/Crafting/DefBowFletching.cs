@@ -109,24 +109,24 @@ namespace Server.Engines.Craft
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( Shaft ), 1044457, "shafts", 0.0, 40.0, typeof( Board ), 1015101, 1, 1044351 );
-			index = AddCraft( typeof( Shaft ), 1044457, "a batch of shafts", 0.0, 40.0, typeof( Board ), 1015101, 1, 1044351 );
+			index = AddCraft( typeof( Shaft ), 1044457, "a batch of shafts", 40.0, 40.0, typeof( Board ), 1015101, 1, 1044351 );
 			SetUseAllRes( index, true );
 
 			// Ammunition
 			index = AddCraft( typeof( Arrow ), 1044565, 1023903, 0.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
 			AddRes( index, typeof( Feather ), 1044562, 1, 1044563 );
-			index = AddCraft( typeof( Arrow ), 1044565, "a batch of arrows", 0.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
+			index = AddCraft( typeof( Arrow ), 1044565, "a batch of arrows", 40.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
 			AddRes( index, typeof( Feather ), 1044562, 1, 1044563 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( Bolt ), 1044565, 1027163, 0.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
 			AddRes( index, typeof( Feather ), 1044562, 1, 1044563 );
-			index = AddCraft( typeof( Bolt ), 1044565, "a batch of crossbow bolts", 0.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
+			index = AddCraft( typeof( Bolt ), 1044565, "a batch of crossbow bolts", 40.0, 40.0, typeof( Shaft ), 1044560, 1, 1044561 );
 			AddRes( index, typeof( Feather ), 1044562, 1, 1044563 );
 			SetUseAllRes( index, true );
 
 			index = AddCraft( typeof( FukiyaDarts ), 1044565, 1030246, 50.0, 90.0, typeof( Board ), 1015101, 1, 1044351 );
-			index = AddCraft( typeof( FukiyaDarts ), 1044565, "a batch of fukiya darts", 50.0, 90.0, typeof( Board ), 1015101, 1, 1044351 );
+			index = AddCraft( typeof( FukiyaDarts ), 1044565, "a batch of fukiya darts", 90.0, 90.0, typeof( Board ), 1015101, 1, 1044351 );
 			SetUseAllRes( index, true );
 
 			// Weapons
