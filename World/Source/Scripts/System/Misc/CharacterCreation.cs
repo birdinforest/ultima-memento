@@ -377,7 +377,7 @@ namespace Server.Misc
 						{
 							new SkillNameValue( SkillName.Magery, 30 ),
 							new SkillNameValue( SkillName.Psychology, 30 ),
-							new SkillNameValue( SkillName.MagicResist, 30 ),
+							new SkillNameValue( SkillName.Mercantile, 30 ),
 							new SkillNameValue( SkillName.FistFighting, 30 )
 						};
 
