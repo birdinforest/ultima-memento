@@ -409,7 +409,7 @@ namespace Server.Misc
 							new SkillNameValue( SkillName.Druidism, 30 ),
 							new SkillNameValue( SkillName.Taming, 30 ),
 							new SkillNameValue( SkillName.Veterinary, 30 ),
-							new SkillNameValue( SkillName.Healing, 30 )
+							new SkillNameValue( SkillName.Herding, 30 )
 						};
 
 					break;
