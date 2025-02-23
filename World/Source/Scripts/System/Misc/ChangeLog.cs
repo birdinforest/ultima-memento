@@ -48,6 +48,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Add Blank Map recipe to Cartography<br>");
 			builder.Append("- Craft - Cartography can now use Blank Map or Blank Scroll as a material<br>");
 			builder.Append("- Craft - Cartography skill requirements have been reworked<br>");
+			builder.Append("- Craft - Each Bark Fragment now creates 10x Blank scrolls<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
