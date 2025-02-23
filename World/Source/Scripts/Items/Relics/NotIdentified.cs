@@ -60,158 +60,163 @@ namespace Server.Items
 				RelicFunctions.IDItem( m, m, this, SkillName.Mercantile );
 		}
 
+		public static void AddAsUnidentified( Item item, Container cont, Mobile m )
+		{
+			ResourceMods.DefaultItemHue( item );
+			Container unk = new NotIdentified();
+			unk.ItemID = item.ItemID;
+			unk.Hue = item.Hue;
+			unk.Name = RandomThings.GetOddityAdjective() + " item";
+			unk.NotIdentified = true;
+			unk.NotIDAttempts = 0;
+			unk.NotIDSource = Identity.Merchant;
+			unk.NotIDSkill = IDSkill.Mercantile;
+			unk.CoinPrice = 100;
+			unk.Weight = item.Weight;
+
+			bool package = false;
+
+			CraftResourceType resType = CraftResources.GetType( item.Resource );
+
+			if ( item is BaseTrinket && item.Catalog == Catalogs.Trinket )
+			{
+				unk.NotIDSource = Identity.Artifact;
+				package = true;
+			}
+			else if ( item is BaseTrinket )
+			{
+				unk.NotIDSource = Identity.Jewelry;
+				package = true;
+			}
+			else if ( item.Catalog == Catalogs.Potion )
+			{
+				unk.NotIDSource = Identity.Potion;
+				unk.NotIDSkill = IDSkill.Tasting;
+				unk.ItemID = 0x2827;
+				unk.Hue = Utility.RandomColor(0);
+				unk.Name = RandomThings.GetOddityAdjective() + " bottle of liquid";
+				if ( Worlds.isSciFiRegion( m ) )
+				{
+					unk.ItemID = 0x27FF;
+					unk.Name = RandomThings.GetOddityAdjective() + " syringe of liquid";
+				}
+				if ( item.Amount > 1 )
+				{
+					unk.ColorText3 = "Amount: " + item.Amount + "";
+					unk.ColorHue3 = "87E15A";
+				}
+				package = true;
+			}
+			else if ( item.Catalog == Catalogs.Reagent )
+			{
+				unk.NotIDSource = Identity.Reagent;
+				unk.NotIDSkill = IDSkill.Tasting;
+				unk.ItemID = 0x282F;
+				unk.Hue = Utility.RandomColor(0);
+				unk.Name = RandomThings.GetOddityAdjective() + " jar of reagents";
+				if ( Worlds.isSciFiRegion( m ) )
+				{
+					unk.ItemID = 0x27FE;
+					unk.Name = RandomThings.GetOddityAdjective() + " bottle of reagents";
+				}
+				if ( item.Amount > 1 )
+				{
+					unk.ColorText3 = "Amount: " + item.Amount + "";
+					unk.ColorHue3 = "87E15A";
+				}
+				package = true;
+			}
+			else if ( item.Catalog == Catalogs.Scroll )
+			{
+				unk.NotIDSource = Identity.Scroll;
+				unk.ItemID = Utility.RandomList( 0x4CC4, 0x4CC5 );
+				unk.Hue = Utility.RandomColor(0);
+				unk.Name = RandomThings.GetOddityAdjective() + " scroll";
+				if ( item.Amount > 1 )
+				{
+					unk.ColorText3 = "Amount: " + item.Amount + "";
+					unk.ColorHue3 = "87E15A";
+				}
+				package = true;
+			}
+			else if ( item is BaseWizardStaff || item is MagicalWand || item is BaseStaff || item is WizardWand || item is BaseWizardStaff || item is BaseLevelStave || item is BaseGiftStave || item is GiftScepter || item is LevelScepter || item is Scepter )
+			{
+				unk.NotIDSource = Identity.Wand;
+				package = true;
+			}
+			else if ( item is BaseShoes )
+			{
+				unk.NotIDSource = Identity.Leather;
+				package = true;
+			}
+			else if ( item is BaseClothing || resType == CraftResourceType.Fabric )
+			{
+				unk.NotIDSource = Identity.Clothing;
+				package = true;
+			}
+			else if ( item is BaseQuiver )
+			{
+				unk.NotIDSource = Identity.Archer;
+				package = true;
+			}
+			else if ( item is BaseInstrument )
+			{
+				unk.NotIDSource = Identity.Music;
+				package = true;
+			}
+			else if ( item is Spellbook || item is Runebook )
+			{
+				unk.NotIDSource = Identity.Scroll;
+				package = true;
+			}
+			else if ( item is BaseArmor && ( resType == CraftResourceType.Metal || resType == CraftResourceType.Scales || resType == CraftResourceType.Skeletal || resType == CraftResourceType.Block ) )
+			{
+				unk.NotIDSource = Identity.Armor;
+				unk.NotIDSkill = IDSkill.ArmsLore;
+				package = true;
+			}
+			else if ( item is BaseWeapon && ( resType == CraftResourceType.Metal || resType == CraftResourceType.Scales || resType == CraftResourceType.Skeletal || resType == CraftResourceType.Block ) )
+			{
+				unk.NotIDSource = Identity.Weapon;
+				unk.NotIDSkill = IDSkill.ArmsLore;
+				package = true;
+			}
+			else if ( ( item is BaseWeapon || item is BaseArmor ) && ( resType == CraftResourceType.Leather || resType == CraftResourceType.Skin ) )
+			{
+				unk.NotIDSource = Identity.Leather;
+				unk.NotIDSkill = IDSkill.ArmsLore;
+				package = true;
+			}
+			else if ( item is BaseRanged && resType == CraftResourceType.Wood )
+			{
+				unk.NotIDSource = Identity.Archer;
+				unk.NotIDSkill = IDSkill.ArmsLore;
+				package = true;
+			}
+			else if ( ( item is BaseWeapon || item is BaseArmor ) && resType == CraftResourceType.Wood )
+			{
+				unk.NotIDSource = Identity.Wood;
+				unk.NotIDSkill = IDSkill.ArmsLore;
+				package = true;
+			}
+
+			if ( package )
+			{
+				unk.DropItem(item);
+				cont.DropItem(unk);
+			}
+			else
+			{
+				cont.DropItem(item);
+				unk.Delete();
+			}
+		}
+
 		public static void ConfigureItem( Item item, Container cont, Mobile m )
 		{
 			if ( MyServerSettings.GetUnidentifiedChance() >= Utility.RandomMinMax( 1, 100 ) )
 			{
-				ResourceMods.DefaultItemHue( item );
-				Container unk = new NotIdentified();
-				unk.ItemID = item.ItemID;
-				unk.Hue = item.Hue;
-				unk.Name = RandomThings.GetOddityAdjective() + " item";
-				unk.NotIdentified = true;
-				unk.NotIDAttempts = 0;
-				unk.NotIDSource = Identity.Merchant;
-				unk.NotIDSkill = IDSkill.Mercantile;
-				unk.CoinPrice = 100;
-				unk.Weight = item.Weight;
-
-				bool package = false;
-
-				CraftResourceType resType = CraftResources.GetType( item.Resource );
-
-				if ( item is BaseTrinket && item.Catalog == Catalogs.Trinket )
-				{
-					unk.NotIDSource = Identity.Artifact;
-					package = true;
-				}
-				else if ( item is BaseTrinket )
-				{
-					unk.NotIDSource = Identity.Jewelry;
-					package = true;
-				}
-				else if ( item.Catalog == Catalogs.Potion )
-				{
-					unk.NotIDSource = Identity.Potion;
-					unk.NotIDSkill = IDSkill.Tasting;
-					unk.ItemID = 0x2827;
-					unk.Hue = Utility.RandomColor(0);
-					unk.Name = RandomThings.GetOddityAdjective() + " bottle of liquid";
-					if ( Worlds.isSciFiRegion( m ) )
-					{
-						unk.ItemID = 0x27FF;
-						unk.Name = RandomThings.GetOddityAdjective() + " syringe of liquid";
-					}
-					if ( item.Amount > 1 )
-					{
-						unk.ColorText3 = "Amount: " + item.Amount + "";
-						unk.ColorHue3 = "87E15A";
-					}
-					package = true;
-				}
-				else if ( item.Catalog == Catalogs.Reagent )
-				{
-					unk.NotIDSource = Identity.Reagent;
-					unk.NotIDSkill = IDSkill.Tasting;
-					unk.ItemID = 0x282F;
-					unk.Hue = Utility.RandomColor(0);
-					unk.Name = RandomThings.GetOddityAdjective() + " jar of reagents";
-					if ( Worlds.isSciFiRegion( m ) )
-					{
-						unk.ItemID = 0x27FE;
-						unk.Name = RandomThings.GetOddityAdjective() + " bottle of reagents";
-					}
-					if ( item.Amount > 1 )
-					{
-						unk.ColorText3 = "Amount: " + item.Amount + "";
-						unk.ColorHue3 = "87E15A";
-					}
-					package = true;
-				}
-				else if ( item.Catalog == Catalogs.Scroll )
-				{
-					unk.NotIDSource = Identity.Scroll;
-					unk.ItemID = Utility.RandomList( 0x4CC4, 0x4CC5 );
-					unk.Hue = Utility.RandomColor(0);
-					unk.Name = RandomThings.GetOddityAdjective() + " scroll";
-					if ( item.Amount > 1 )
-					{
-						unk.ColorText3 = "Amount: " + item.Amount + "";
-						unk.ColorHue3 = "87E15A";
-					}
-					package = true;
-				}
-				else if ( item is BaseWizardStaff || item is MagicalWand || item is BaseStaff || item is WizardWand || item is BaseWizardStaff || item is BaseLevelStave || item is BaseGiftStave || item is GiftScepter || item is LevelScepter || item is Scepter )
-				{
-					unk.NotIDSource = Identity.Wand;
-					package = true;
-				}
-				else if ( item is BaseShoes )
-				{
-					unk.NotIDSource = Identity.Leather;
-					package = true;
-				}
-				else if ( item is BaseClothing || resType == CraftResourceType.Fabric )
-				{
-					unk.NotIDSource = Identity.Clothing;
-					package = true;
-				}
-				else if ( item is BaseQuiver )
-				{
-					unk.NotIDSource = Identity.Archer;
-					package = true;
-				}
-				else if ( item is BaseInstrument )
-				{
-					unk.NotIDSource = Identity.Music;
-					package = true;
-				}
-				else if ( item is Spellbook || item is Runebook )
-				{
-					unk.NotIDSource = Identity.Scroll;
-					package = true;
-				}
-				else if ( item is BaseArmor && ( resType == CraftResourceType.Metal || resType == CraftResourceType.Scales || resType == CraftResourceType.Skeletal || resType == CraftResourceType.Block ) )
-				{
-					unk.NotIDSource = Identity.Armor;
-					unk.NotIDSkill = IDSkill.ArmsLore;
-					package = true;
-				}
-				else if ( item is BaseWeapon && ( resType == CraftResourceType.Metal || resType == CraftResourceType.Scales || resType == CraftResourceType.Skeletal || resType == CraftResourceType.Block ) )
-				{
-					unk.NotIDSource = Identity.Weapon;
-					unk.NotIDSkill = IDSkill.ArmsLore;
-					package = true;
-				}
-				else if ( ( item is BaseWeapon || item is BaseArmor ) && ( resType == CraftResourceType.Leather || resType == CraftResourceType.Skin ) )
-				{
-					unk.NotIDSource = Identity.Leather;
-					unk.NotIDSkill = IDSkill.ArmsLore;
-					package = true;
-				}
-				else if ( item is BaseRanged && resType == CraftResourceType.Wood )
-				{
-					unk.NotIDSource = Identity.Archer;
-					unk.NotIDSkill = IDSkill.ArmsLore;
-					package = true;
-				}
-				else if ( ( item is BaseWeapon || item is BaseArmor ) && resType == CraftResourceType.Wood )
-				{
-					unk.NotIDSource = Identity.Wood;
-					unk.NotIDSkill = IDSkill.ArmsLore;
-					package = true;
-				}
-
-				if ( package )
-				{
-					unk.DropItem(item);
-					cont.DropItem(unk);
-				}
-				else
-				{
-					cont.DropItem(item);
-					unk.Delete();
-				}
+				AddAsUnidentified(item, cont, m );
 			}
 			else
 			{
