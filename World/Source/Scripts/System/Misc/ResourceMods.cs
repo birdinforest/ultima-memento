@@ -199,7 +199,7 @@ namespace Server
 				{
 					pole.Weight -= CraftResources.GetWeight( resource );
 					pole.Tap += CraftResources.GetBonus( resource );
-					pole.LimitsMax = pole.Limits = 20 + CraftResources.GetUses( resource );
+					pole.LimitsMax = pole.Limits = 20;
 				}
 			}
 			else if ( item is MagicRuneBag )

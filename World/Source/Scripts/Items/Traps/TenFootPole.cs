@@ -49,7 +49,7 @@ namespace Server.Items
 			Limits = 20;
 			LimitsName = "Uses";
 			LimitsDelete = true;
-			m_Tap = 50;
+			m_Tap = 40;
 			CoinPrice = 20;
 		}
 
