@@ -53,39 +53,18 @@ namespace Server.Items
 			CoinPrice = 20;
 		}
 
-		public static void Material( Item pole, int level )
-		{
-			TenFootPole stick = (TenFootPole)pole;
-			int pick = Utility.RandomMinMax(1,level) + 2;
-
-			if ( pick < 2 )
-				stick.Resource = CraftResource.RegularWood;
-			else if ( pick > 14 )
-				stick.Resource = CraftResource.ElvenTree;
-
-			switch( pick )
-			{
-				case 1: stick.Resource = CraftResource.AshTree;			break;
-				case 2: stick.Resource = CraftResource.CherryTree;		break;
-				case 3: stick.Resource = CraftResource.EbonyTree;		break;
-				case 4: stick.Resource = CraftResource.GoldenOakTree;	break;
-				case 5: stick.Resource = CraftResource.HickoryTree;		break;
-				case 6: stick.Resource = CraftResource.MahoganyTree;	break;
-				case 7: stick.Resource = CraftResource.DriftwoodTree;	break;
-				case 8: stick.Resource = CraftResource.OakTree;			break;
-				case 9: stick.Resource = CraftResource.PineTree;		break;
-				case 10: stick.Resource = CraftResource.GhostTree;		break;
-				case 11: stick.Resource = CraftResource.RosewoodTree;	break;
-				case 12: stick.Resource = CraftResource.WalnutTree;		break;
-				case 13: stick.Resource = CraftResource.PetrifiedTree;	break;
-				case 14: stick.Resource = CraftResource.ElvenTree;		break;
-			}
-		}
-
 		public TenFootPole( Serial serial ) : base( serial )
 		{ 
-		} 
-		
+		}
+
+        public override void AppendChildProperties(ObjectPropertyList list)
+        {
+            base.AppendChildProperties(list);
+
+			list.Add("" + m_Tap + "% Avoiding Traps");
+			list.Add("For Wall, Floor & Container Traps");
+        }
+
 		public override void Serialize( GenericWriter writer ) 
 		{ 
 			base.Serialize( writer ); 

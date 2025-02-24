@@ -201,8 +201,6 @@ namespace Server
 					pole.Tap += CraftResources.GetBonus( resource );
 					pole.LimitsMax = pole.Limits = 20 + CraftResources.GetUses( resource );
 				}
-				pole.InfoText1 = "" + pole.Tap + "% Avoiding Traps";
-				pole.InfoText2 = "For Wall, Floor & Container Traps";
 			}
 			else if ( item is MagicRuneBag )
 			{
