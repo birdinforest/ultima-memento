@@ -142,6 +142,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Rewrite Spell Bar configuration gump<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 			builder.Append("- Stats - Holy Man now executes skill checks when casting spells<br>");
+			builder.Append("- Stats - Magic Resistance skill now provides more resistance at lower skill<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
