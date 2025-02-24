@@ -88,13 +88,12 @@ namespace Server.Engines.Harvest
 				new HarvestResource(  90.0, 65.0, 125.0, "", typeof( PineLog ) ),
 				new HarvestResource(  95.0, 75.0, 130.0, "", typeof( RosewoodLog ) ),
 				new HarvestResource(  100.0, 85.0, 135.0, "", typeof( WalnutLog ) ),
-				new HarvestResource(  100.1, 95.0, 140.0, "", typeof( ElvenLog ) )
 			};
 
 			veins = new HarvestVein[]
 			{
 				new HarvestVein( 30.0, 0.0, res[0], null ),	// Ordinary Logs
-				new HarvestVein( 15.0, 0.5, res[1], res[0] ), // Ash
+				new HarvestVein( 16.0, 0.5, res[1], res[0] ), // Ash
 				new HarvestVein( 10.0, 0.5, res[2], res[0] ), // Cherry
 				new HarvestVein( 09.0, 0.5, res[3], res[0] ), // Ebony
 				new HarvestVein( 08.0, 0.5, res[4], res[0] ), // Golden Oak
@@ -104,7 +103,6 @@ namespace Server.Engines.Harvest
 				new HarvestVein( 04.0, 0.5, res[8], res[0] ), // Pine
 				new HarvestVein( 03.0, 0.5, res[9], res[0] ), // Rosewood
 				new HarvestVein( 02.0, 0.5, res[10], res[0] ), // Walnut
-				new HarvestVein( 01.0, 0.5, res[11], res[0] ) // Elven
 			};
 
 			lumber.BonusResources = new BonusHarvestResource[]
