@@ -92,6 +92,7 @@ namespace Server.Misc
 			builder.Append("- Item - Magic spellbooks no longer get random spells<br>");
 			builder.Append("- Item - Pearl jewelry now has a minimum requirements to drop<br>");
 			builder.Append("- Item - Dramatically reduce the sale price of Skins<br>");
+			builder.Append("- Item - Ten foot poles have been rebalanced<br>");
 			builder.Append("- Item - Sharpening stone rework<br>");
 			builder.Append("       - Centralized behvaiors for consistency<br>");
 			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");
