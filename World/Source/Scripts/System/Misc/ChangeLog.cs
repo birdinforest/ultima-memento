@@ -164,6 +164,8 @@ namespace Server.Misc
 			builder.Append("- Gump - Remove redundant quiver damage qualifier<br>");
 			builder.Append("- Gump - Summon Familiar gump is now fixed<br>");
 			builder.Append("- Gump - Jedi/Syth spells can be cast from main spellbook page again<br>");
+			builder.Append("- Gump - Fugitives can now join the Assassin guild<br>");
+			builder.Append("- Gump - Fugitives can now join the Black Magic guild<br>");
 			builder.Append("- Item - Added missing Powerscrolls (Begging, Camping, Forensics, Mercantile, Tasting)<br>");
 			builder.Append("- Item - Lucky horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - Unidentified items with deleted contents are now properly deleted<br>");
