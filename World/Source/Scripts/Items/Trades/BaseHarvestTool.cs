@@ -183,6 +183,9 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			if (Parent != from && RootParentEntity == from)
+				from.EquipItem(this);
+
 			if ( Parent == from )
 				HarvestSystem.BeginHarvesting( from, this );
 			else

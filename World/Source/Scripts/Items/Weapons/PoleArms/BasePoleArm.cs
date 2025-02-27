@@ -66,6 +66,9 @@ namespace Server.Items
 			if ( HarvestSystem == null )
 				return;
 
+			if (Parent != from && RootParentEntity == from)
+				from.EquipItem(this);
+
 			if ( Parent == from )
 				HarvestSystem.BeginHarvesting( from, this );
 			else
