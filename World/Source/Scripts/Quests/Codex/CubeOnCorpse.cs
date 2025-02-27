@@ -135,7 +135,7 @@ namespace Server.Items
 
 		public static string PickDungeon()
 		{
-			string dungeon = "the Dungeon of Doom";
+			string dungeon = "Dungeon Doom";
 
 			int aCount = 0;
 			ArrayList targets = new ArrayList();

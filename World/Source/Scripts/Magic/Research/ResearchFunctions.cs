@@ -250,7 +250,7 @@ namespace Server.Misc
 		public static void FindLocation( Mobile m, int level, string category, ResearchBag bag ) ////////////////////////////////////////////////////
 		{
 			TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
-			string dungeon = "the Dungeon of Doom";
+			string dungeon = "Dungeon Doom";
 			Land searchLocation = PickWorld( level );
 
 			string oldDungeon = "z";

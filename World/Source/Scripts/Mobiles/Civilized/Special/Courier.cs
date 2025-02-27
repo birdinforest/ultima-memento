@@ -352,7 +352,7 @@ namespace Server.Mobiles
 			string QuestStory = Server.Misc.QuestCharacters.EpicQuestStory( QuestItem, alignment );
 
 			string thisWorld = "the Land of Sosaria";
-			string thisPlace = "the Dungeon of Doom";
+			string thisPlace = "Dungeon Doom";
 			Map realMap = Map.Sosaria;
 			Map thisMap = Map.Sosaria;
 

@@ -494,7 +494,7 @@ namespace Server.Items
         {
             // Default
             string thisWorld = "the Land of Sosaria";
-            string thisPlace = "the Dungeon of Doom";
+            string thisPlace = "Dungeon Doom";
             Map realMap = Map.Sosaria;
             Map thisMap = Map.Sosaria;
 

@@ -500,7 +500,7 @@ namespace Server.Items
 			};
 			Land searchLocation = PlayerSettings.GetRandomDiscoveredLand(player, options, null);
 
-			string dungeon = "the Dungeon of Doom";
+			string dungeon = "Dungeon Doom";
 
 			int aCount = 0;
 

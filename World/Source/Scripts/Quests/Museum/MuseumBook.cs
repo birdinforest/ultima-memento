@@ -376,7 +376,7 @@ namespace Server.Items
 			};
 			Land searchLocation = Utility.Random(options); // Intentionally anywhere
 
-			string dungeon = "the Dungeon of Doom";
+			string dungeon = "Dungeon Doom";
 
 			int aCount = 0;
 
