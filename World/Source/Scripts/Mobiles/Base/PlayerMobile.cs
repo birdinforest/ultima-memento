@@ -824,11 +824,9 @@ namespace Server.Mobiles
 
 		public override int GetMinResistance( ResistanceType type )
 		{
-			int magicResist = (int)(Skills[SkillName.MagicResist].Value);
-			int min = int.MinValue;
-
             /*
-				39 = 0
+				25 = 0
+				30 = 5
 				40 = 12
 				50 = 18
 				60 = 23
@@ -840,8 +838,8 @@ namespace Server.Mobiles
 				120 = 44
 				125 = 45
 			 */
-            if (magicResist >= 40)
-				min = (int)(26.413 * Math.Log(magicResist) - 84.623);
+			int magicResist = (int)Skills[SkillName.MagicResist].Value;
+			int min = Math.Max(0, (int)(26.413 * Math.Log(magicResist) - 84.623));
 			if (magicResist >= 100)
 				min += 3; // GM bonnus
 
