@@ -4,7 +4,7 @@ using Server.Network;
 
 namespace Server.Engines.Craft
 {
-    public class BulkCraftGump : Gump
+	public class BulkCraftGump : Gump
 	{
 		private readonly PlayerMobile m_Player;
 
@@ -17,13 +17,15 @@ namespace Server.Engines.Craft
 			m_Player = player;
 			m_Context = context;
 
-			AddBackground(0, 0, 160, 170, 2620); // Slate background gold trim
+			AddBackground(0, 0, 180, 170, 2620); // Slate background gold trim
 
 			int x = 10;
 			int y = 10;
 
 			if (context.Paused)
 				TextDefinition.AddHtmlText(this, x, y - 4, 200, 16, "Session is paused...", false, false, HtmlColors.RED, HtmlColors.RED);
+			else if (isComplete)
+				TextDefinition.AddHtmlText(this, x, y - 4, 200, 16, "Crafting session complete...", false, false, HtmlColors.RED, HtmlColors.RED);
 			else
 				TextDefinition.AddHtmlText(this, x, y - 4, 200, 16, string.Format("Crafting '{0}' items...", context.Amount), false, false, LabelColors.OFFWHITE, HtmlColors.OFFWHITE);
 			y += 20;
@@ -63,7 +65,7 @@ namespace Server.Engines.Craft
 		private void AddLabelWithValue(int x, int y, string label, int value)
 		{
 			TextDefinition.AddHtmlText(this, x, y - 4, 100, 16, label, false, false, LabelColors.OFFWHITE, HtmlColors.OFFWHITE);
-			TextDefinition.AddHtmlText(this, x + 100, y - 4, 45, 16, string.Format("<RIGHT>{0}</RIGHT>", value), false, false, LabelColors.OFFWHITE, HtmlColors.OFFWHITE);
+			TextDefinition.AddHtmlText(this, x + 100, y - 4, 65, 16, string.Format("<RIGHT>{0}</RIGHT>", value), false, false, LabelColors.OFFWHITE, HtmlColors.OFFWHITE);
 		}
 
 		private void AddButtonWithLabel(int x, int y, string text, int buttonID)

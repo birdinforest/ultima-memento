@@ -28,13 +28,13 @@ namespace Server.Engines.Craft
 			m_Timers[newTimer.Player.Serial] = newTimer;
 		}
 
-		public static void Pause(PlayerMobile player)
+		public static void Cancel(PlayerMobile player)
 		{
 			if (player == null) return;
 
 			var timer = GetTimer(player);
 			if (timer != null)
-				timer.Pause();
+				timer.Cancel();
 		}
 
 		public static void StopTimer(PlayerMobile player)

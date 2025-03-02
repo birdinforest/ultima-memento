@@ -33,26 +33,29 @@ namespace Server.Engines.Craft
 			if (isComplete) // Session has completed
 				Stop();
 
-			if (!m_Context.Paused && !m_Context.Suppressed)
-			{
-				Player.CloseGump(typeof(BulkCraftGump));
-				Player.SendGump(new BulkCraftGump(Player, m_Context, isComplete));
-			}
+			if (!m_Context.Paused && !m_Context.Suppressed && !m_Context.Cancelled)
+				RefreshGump(isComplete);
 		}
 
 		public void Pause()
 		{
 			m_Context.Paused = true;
+			RefreshGump(false);
 		}
 
 		public void Cancel()
 		{
 			Stop();
 			m_Context.Cancelled = true;
-			if (m_Context.Suppressed) return;
 
+			if (!m_Context.Suppressed)
+				RefreshGump(true);
+		}
+
+		private void RefreshGump(bool isComplete)
+		{
 			Player.CloseGump(typeof(BulkCraftGump));
-			Player.SendGump(new BulkCraftGump(Player, m_Context, true));
+			Player.SendGump(new BulkCraftGump(Player, m_Context, isComplete));
 		}
 	}
 }

@@ -1109,7 +1109,7 @@ namespace Server.Engines.Craft
 				{
 					toolBroken = true;
 					tool.Delete();
-					BulkCraft.Pause((PlayerMobile)from);
+					BulkCraft.Cancel((PlayerMobile)from);
 				}
 
 				int num = 0;
@@ -1316,7 +1316,7 @@ namespace Server.Engines.Craft
 				{
 					toolBroken = true;
 					tool.Delete();
-					BulkCraft.Pause((PlayerMobile)from);
+					BulkCraft.Cancel((PlayerMobile)from);
 				}
 
 				// SkillCheck failed.
