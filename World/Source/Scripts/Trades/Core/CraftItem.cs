@@ -1106,10 +1106,11 @@ namespace Server.Engines.Craft
 				tool.UsesRemaining--;
 
 				if ( tool.UsesRemaining < 1 )
+				{
 					toolBroken = true;
-
-				if ( toolBroken )
 					tool.Delete();
+					BulkCraft.Pause((PlayerMobile)from);
+				}
 
 				int num = 0;
 
@@ -1312,10 +1313,11 @@ namespace Server.Engines.Craft
 				}
 
 				if ( tool.UsesRemaining < 1 )
+				{
 					toolBroken = true;
-
-				if ( toolBroken )
 					tool.Delete();
+					BulkCraft.Pause((PlayerMobile)from);
+				}
 
 				// SkillCheck failed.
 				int num = craftSystem.PlayEndingEffect( from, true, true, toolBroken, endquality, this );

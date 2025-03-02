@@ -465,7 +465,6 @@ namespace Server.Engines.Craft
 			{
 				m_From.CloseGump( typeof( CraftGump ) );
 				m_From.CloseGump( typeof( CraftGumpItem ) );
-				BulkCraft.StopTimer( m_From as PlayerMobile );
 
 				return; // Canceled
 			}

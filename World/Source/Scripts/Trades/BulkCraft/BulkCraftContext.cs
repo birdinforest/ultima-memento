@@ -7,5 +7,8 @@ namespace Server.Engines.Craft
         public int Fail { get; set; }
         public int Current { get; set; }
         public int Amount { get; set; }
+        public bool Cancelled { get; set; }
+        public bool Suppressed { get; set; }
+        public bool Paused { get; set; }
     }
 }

@@ -26,23 +26,33 @@ namespace Server.Engines.Craft
 
 		protected override void OnTick()
 		{
-			if (m_CraftItem.Craft(Player, m_CraftSystem, m_TypeRes, m_Tool, m_Context))
+			if (!m_Context.Paused && m_CraftItem.Craft(Player, m_CraftSystem, m_TypeRes, m_Tool, m_Context))
 				Player.EndAction(typeof(CraftSystem));
 
-			if (m_Context.Amount <= m_Context.Current || m_Tool.Deleted)
-				Cancel(true);
+			bool isComplete = m_Context.Amount <= m_Context.Current;
+			if (isComplete) // Session has completed
+				Stop();
+
+			if (!m_Context.Paused && !m_Context.Suppressed)
+			{
+				Player.CloseGump(typeof(BulkCraftGump));
+				Player.SendGump(new BulkCraftGump(Player, m_Context, isComplete));
+			}
 		}
 
-		public void Cancel(bool useTool = false)
+		public void Pause()
 		{
-			if (!Running) return;
+			m_Context.Paused = true;
+		}
 
-			Player.SendMessage("You crafted {0} of {1} items ({2} failed, {3} exceptional).", m_Context.Success, m_Context.Current, m_Context.Fail, m_Context.Exceptional);
-
-			if (useTool && !m_Tool.Deleted)
-				m_Tool.OnDoubleClick(Player);
-
+		public void Cancel()
+		{
 			Stop();
+			m_Context.Cancelled = true;
+			if (m_Context.Suppressed) return;
+
+			Player.CloseGump(typeof(BulkCraftGump));
+			Player.SendGump(new BulkCraftGump(Player, m_Context, true));
 		}
 	}
 }
