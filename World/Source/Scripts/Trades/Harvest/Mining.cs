@@ -111,15 +111,15 @@ namespace Server.Engines.Harvest
 				oreAndStone.BonusResources = new BonusHarvestResource[]
 				{
 					new BonusHarvestResource( 0, 99.4, null, null ),	//Nothing
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Amber ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Amethyst ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Citrine ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Diamond ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Emerald ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Ruby ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Sapphire ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( StarSapphire ) ),
-					new BonusHarvestResource( 90, .1, 1074542, typeof( Tourmaline ) )
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Amber.", typeof( Amber ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Amethyst.", typeof( Amethyst ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Citrine.", typeof( Citrine ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Diamond.", typeof( Diamond ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Emerald.", typeof( Emerald ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Ruby.", typeof( Ruby ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Sapphire.", typeof( Sapphire ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Star Sapphire.", typeof( StarSapphire ) ),
+					new BonusHarvestResource( 90, .1, "You harvest a piece of Tourmaline.", typeof( Tourmaline ) )
 				};
 			}
 

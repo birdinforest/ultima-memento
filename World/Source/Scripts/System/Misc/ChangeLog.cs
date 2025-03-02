@@ -70,6 +70,7 @@ namespace Server.Misc
 			builder.Append("- Gather - One log now yields four boards<br>");
 			builder.Append("- Gather - Gains from digging Iron ore stop at 85, down from 100<br>");
 			builder.Append("- Gather - Elven wood can now only be acquired via 'Rich Tree'<br>");
+			builder.Append("- Gather - Gemstones are now announced when harvested<br>");
 			builder.Append("- Gump - Redesigned crafting tool gump<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
