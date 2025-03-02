@@ -191,7 +191,7 @@ namespace Server.Items
 
 					m_Log.Delete(); // Delete early to prevent going overweight
 
-					wood.Amount = boards * 4;
+					wood.Amount = boards * 2;
 					from.AddToBackpack(wood);
 				}
 				else
