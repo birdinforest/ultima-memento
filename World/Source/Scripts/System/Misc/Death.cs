@@ -355,7 +355,7 @@ namespace Server.Gumps
 {
 	public class ResurrectNowGump : Gump
 	{
-		public ResurrectNowGump( Mobile from ): base( 50, 50 )
+		public ResurrectNowGump( Mobile from ): base( 250, 50 )
 		{
             int HealCost = GetPlayerInfo.GetResurrectCost( from );
 			int BankGold = Banker.GetBalance( from );
