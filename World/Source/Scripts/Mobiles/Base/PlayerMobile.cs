@@ -3048,273 +3048,211 @@ namespace Server.Mobiles
 			get{ return m_BOBFilter; }
 		}
 
-		public int CharacterMOTD;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_MOTD { get { return CharacterMOTD; } set { CharacterMOTD = value; InvalidateProperties(); } }
+		public int CharacterMOTD { get; set; }
 
-		public int CharacterSkill;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Skill { get { return CharacterSkill; } set { CharacterSkill = value; InvalidateProperties(); } }
+		public int CharacterSkill { get; set; }
 
-		public string CharacterKeys;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_Keys { get { return CharacterKeys; } set { CharacterKeys = value; InvalidateProperties(); } }
+		public string CharacterKeys { get; set; }
 
-		public string CharacterDiscovered;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_Discovered { get { return CharacterDiscovered; } set { CharacterDiscovered = value; InvalidateProperties(); } }
+		public string CharacterDiscovered { get; set; }
 
-		public int CharacterSheath;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Sheath { get { return CharacterSheath; } set { CharacterSheath = value; InvalidateProperties(); } }
+		public int CharacterSheath { get; set; }
 
-		public int CharacterGuilds;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Guilds { get { return CharacterGuilds; } set { CharacterGuilds = value; InvalidateProperties(); } }
+		public int CharacterGuilds { get; set; }
 
-		public string CharacterBoatDoor;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_BoatDoor { get { return CharacterBoatDoor; } set { CharacterBoatDoor = value; InvalidateProperties(); } }
+		public string CharacterBoatDoor { get; set; }
 
-		public string CharacterPublicDoor;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_PublicDoor { get { return CharacterPublicDoor; } set { CharacterPublicDoor = value; InvalidateProperties(); } }
+		public string CharacterPublicDoor { get; set; }
 
-		public int CharacterBegging;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Begging { get { return CharacterBegging; } set { CharacterBegging = value; InvalidateProperties(); } }
+		public int CharacterBegging { get; set; }
 
-		public int CharacterWepAbNames;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_WepAbNames { get { return CharacterWepAbNames; } set { CharacterWepAbNames = value; InvalidateProperties(); } }
+		public int CharacterWepAbNames { get; set; }
 
-		public int GumpHue;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Gump_Hue { get { return GumpHue; } set { GumpHue = value; InvalidateProperties(); } }
+		public int GumpHue { get; set; }
 
-		public int WeaponBarOpen;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Weapon_yBarOpen { get { return WeaponBarOpen; } set { WeaponBarOpen = value; InvalidateProperties(); } }
+		public int WeaponBarOpen { get; set; }
 
-		public string CharMusical;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Char_Musical { get{ return CharMusical; } set{ CharMusical = value; } }
+		public string CharMusical { get; set; }
 
-		public string CharacterLoot;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_Loot { get{ return CharacterLoot; } set{ CharacterLoot = value; } }
+		public string CharacterLoot { get; set; }
 
-		public string CharacterWanted;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Character_Wanted { get{ return CharacterWanted; } set{ CharacterWanted = value; } }
+		public string CharacterWanted { get; set; }
 
-		public int CharacterOriental;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Oriental { get { return CharacterOriental; } set { CharacterOriental = value; InvalidateProperties(); } }
+		public int CharacterOriental { get; set; }
 
-		public int CharacterEvil;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Evil { get { return CharacterEvil; } set { CharacterEvil = value; InvalidateProperties(); } }
+		public int CharacterEvil { get; set; }
 
-		public int CharacterElement;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Element { get { return CharacterElement; } set { CharacterElement = value; InvalidateProperties(); } }
+		public int CharacterElement { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string MessageQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Message_Quest { get { return MessageQuest; } set { MessageQuest = value; InvalidateProperties(); } }
+		public string MessageQuest { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string StandardQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Standard_Quest { get { return StandardQuest; } set { StandardQuest = value; InvalidateProperties(); } }
+		public string StandardQuest { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string FishingQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Fishing_Quest { get { return FishingQuest; } set { FishingQuest = value; InvalidateProperties(); } }
+		public string FishingQuest { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string AssassinQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Assassin_Quest { get { return AssassinQuest; } set { AssassinQuest = value; InvalidateProperties(); } }
+		public string AssassinQuest { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string BardsTaleQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string BardsTale_Quest { get { return BardsTaleQuest; } set { BardsTaleQuest = value; InvalidateProperties(); } }
+		public string BardsTaleQuest { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string EpicQuestName;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string EpicQuest_Name { get{ return EpicQuestName; } set{ EpicQuestName = value; } }
+		public string EpicQuestName { get; set; }
 
-		public int EpicQuestNumber;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int EpicQuest_Number { get { return EpicQuestNumber; } set { EpicQuestNumber = value; InvalidateProperties(); } }
+		public int EpicQuestNumber { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public bool UsingAncientBook;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Using_ArchmageBook { get { return UsingAncientBook; } set { UsingAncientBook = value; InvalidateProperties(); } }
+		public bool UsingAncientBook { get; set; }
 
-		public string SpellBarsMage1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Mage1 { get { return SpellBarsMage1; } set { SpellBarsMage1 = value; InvalidateProperties(); } }
+		public string SpellBarsMage1 { get; set; }
 
-		public string SpellBarsMage2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Mage2 { get { return SpellBarsMage2; } set { SpellBarsMage2 = value; InvalidateProperties(); } }
+		public string SpellBarsMage2 { get; set; }
 
-		public string SpellBarsMage3;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Mage3 { get { return SpellBarsMage3; } set { SpellBarsMage3 = value; InvalidateProperties(); } }
+		public string SpellBarsMage3 { get; set; }
 
-		public string SpellBarsMage4;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Mage4 { get { return SpellBarsMage4; } set { SpellBarsMage4 = value; InvalidateProperties(); } }
+		public string SpellBarsMage4 { get; set; }
 
-		public string SpellBarsNecro1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Necro1 { get { return SpellBarsNecro1; } set { SpellBarsNecro1 = value; InvalidateProperties(); } }
+		public string SpellBarsNecro1 { get; set; }
 
-		public string SpellBarsNecro2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Necro2 { get { return SpellBarsNecro2; } set { SpellBarsNecro2 = value; InvalidateProperties(); } }
+		public string SpellBarsNecro2 { get; set; }
 
-		public string SpellBarsKnight1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Knight1 { get { return SpellBarsKnight1; } set { SpellBarsKnight1 = value; InvalidateProperties(); } }
+		public string SpellBarsKnight1 { get; set; }
 
-		public string SpellBarsKnight2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Knight2 { get { return SpellBarsKnight2; } set { SpellBarsKnight2 = value; InvalidateProperties(); } }
+		public string SpellBarsKnight2 { get; set; }
 
-		public string SpellBarsDeath1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Death1 { get { return SpellBarsDeath1; } set { SpellBarsDeath1 = value; InvalidateProperties(); } }
+		public string SpellBarsDeath1 { get; set; }
 
-		public string SpellBarsDeath2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Death2 { get { return SpellBarsDeath2; } set { SpellBarsDeath2 = value; InvalidateProperties(); } }
+		public string SpellBarsDeath2 { get; set; }
 
-		public string SpellBarsBard1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Bard1 { get { return SpellBarsBard1; } set { SpellBarsBard1 = value; InvalidateProperties(); } }
+		public string SpellBarsBard1 { get; set; }
 
-		public string SpellBarsBard2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Bard2 { get { return SpellBarsBard2; } set { SpellBarsBard2 = value; InvalidateProperties(); } }
+		public string SpellBarsBard2 { get; set; }
 
-		public string SpellBarsPriest1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Priest1 { get { return SpellBarsPriest1; } set { SpellBarsPriest1 = value; InvalidateProperties(); } }
+		public string SpellBarsPriest1 { get; set; }
 
-		public string SpellBarsPriest2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Priest2 { get { return SpellBarsPriest2; } set { SpellBarsPriest2 = value; InvalidateProperties(); } }
+		public string SpellBarsPriest2 { get; set; }
 
-		public string SpellBarsMonk1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Monk1 { get{ return SpellBarsMonk1; } set{ SpellBarsMonk1 = value; } }
+		public string SpellBarsMonk1 { get; set; }
 
-		public string SpellBarsMonk2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Monk2 { get{ return SpellBarsMonk2; } set{ SpellBarsMonk2 = value; } }
+		public string SpellBarsMonk2 { get; set; }
 
-		public string SpellBarsArch1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Arch1 { get { return SpellBarsArch1; } set { SpellBarsArch1 = value; InvalidateProperties(); } }
+		public string SpellBarsArch1 { get; set; }
 
-		public string SpellBarsArch2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Arch2 { get { return SpellBarsArch2; } set { SpellBarsArch2 = value; InvalidateProperties(); } }
+		public string SpellBarsArch2 { get; set; }
 
-		public string SpellBarsArch3;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Arch3 { get { return SpellBarsArch3; } set { SpellBarsArch3 = value; InvalidateProperties(); } }
+		public string SpellBarsArch3 { get; set; }
 
-		public string SpellBarsArch4;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Arch4 { get { return SpellBarsArch4; } set { SpellBarsArch4 = value; InvalidateProperties(); } }
+		public string SpellBarsArch4 { get; set; }
 
-		public string SpellBarsElly1;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Elly1 { get { return SpellBarsElly1; } set { SpellBarsElly1 = value; InvalidateProperties(); } }
+		public string SpellBarsElly1 { get; set; }
 
-		public string SpellBarsElly2;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBars_Elly2 { get { return SpellBarsElly2; } set { SpellBarsElly2 = value; InvalidateProperties(); } }
+		public string SpellBarsElly2 { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string ThiefQuest;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Thief_Quest { get{ return ThiefQuest; } set{ ThiefQuest = value; } }
+		public string ThiefQuest { get; set; }
 
-		public string KilledSpecialMonsters;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Killed_SpecialMonsters { get{ return KilledSpecialMonsters; } set{ KilledSpecialMonsters = value; } }
+		public string KilledSpecialMonsters { get; set; }
 
-		public string MusicPlaylist;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Music_Playlist { get{ return MusicPlaylist; } set{ MusicPlaylist = value; } }
+		public string MusicPlaylist { get; set; }
 
-		public int CharacterBarbaric;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Character_Conan { get { return CharacterBarbaric; } set { CharacterBarbaric = value; InvalidateProperties(); } }
+		public int CharacterBarbaric { get; set; }
 
-		public int SkillDisplay;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Skill_Display { get { return SkillDisplay; } set { SkillDisplay = value; InvalidateProperties(); } }
+		public int SkillDisplay { get; set; }
 
-		public int MagerySpellHue;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Magery_SpellHue { get { return MagerySpellHue; } set { MagerySpellHue = value; InvalidateProperties(); } }
+		public int MagerySpellHue { get; set; }
 
-		public int ClassicPoisoning;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Classic_Poisoning { get { return ClassicPoisoning; } set { ClassicPoisoning = value; InvalidateProperties(); } }
+		public int ClassicPoisoning { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string QuickBar;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Quick_Bar { get { return QuickBar; } set { QuickBar = value; InvalidateProperties(); } }
+		public string QuickBar { get; set; }
 
-		public string RegBar;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Reg_Bar { get { return RegBar; } set { RegBar = value; InvalidateProperties(); } }
+		public string RegBar { get; set; }
 
-		public string MyLibrary;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string My_Library { get { return MyLibrary; } set { MyLibrary = value; InvalidateProperties(); } }
+		public string MyLibrary { get; set; }
 
-		public string MyChat;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string My_Chat { get { return MyChat; } set { MyChat = value; InvalidateProperties(); } }
+		public string MyChat { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public int SkillStart;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Skill_Start { get { return SkillStart; } set { SkillStart = value; InvalidateProperties(); } }
+		public int SkillStart { get; set; }
 
-		public int SkillBoost;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Skill_Boost { get { return SkillBoost; } set { SkillBoost = value; InvalidateProperties(); } }
+		public int SkillBoost { get; set; }
 
-		public int SkillEther;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Skill_Ether { get { return SkillEther; } set { SkillEther = value; InvalidateProperties(); } }
+		public int SkillEther { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
