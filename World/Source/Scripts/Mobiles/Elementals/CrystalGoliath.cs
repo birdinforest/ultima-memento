@@ -88,7 +88,7 @@ namespace Server.Mobiles
 		{
 			if ( 0.5 >= Utility.RandomDouble() )
 			{
-				Item arms = CraftResources.ArmorItem( to );
+				Item arms = CraftResources.GetRandomItemWithDurability( to );
 
 				if ( arms != null && arms is IWearableDurability )
 				{

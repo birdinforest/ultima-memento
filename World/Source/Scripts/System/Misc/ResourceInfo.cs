@@ -785,61 +785,69 @@ namespace Server.Items
 			return Density.None;
 		}
 
-		public static Item ArmorItem( Mobile defender )
+		public static Item GetRandomItemWithDurability( Mobile defender )
 		{
-			int subset = 0;
-			int cycle = 0;
-			double positionChance = Utility.RandomDouble();
-			Item armorItem = null;
+			int subset;
+			int attempt = 0;
 
-			while ( cycle < 5 )
+			Item item = null;
+			while ( attempt < 5 )
 			{
-				cycle++;
-				positionChance = Utility.RandomDouble();
+				attempt++;
+				double positionChance = Utility.RandomDouble();
 
-				if( positionChance < 0.07 && defender.FindItemOnLayer( Layer.Neck ) != null && (defender.FindItemOnLayer( Layer.Neck )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Neck );
-				else if( positionChance < 0.14 && defender.FindItemOnLayer( Layer.Gloves ) != null && (defender.FindItemOnLayer( Layer.Gloves )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Gloves );
-				else if( positionChance < 0.21 && defender.FindItemOnLayer( Layer.Arms ) != null && (defender.FindItemOnLayer( Layer.Arms )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Arms );
-				else if( positionChance < 0.35 && defender.FindItemOnLayer( Layer.Helm ) != null && (defender.FindItemOnLayer( Layer.Helm )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Helm );
-				else if( positionChance < 0.49 )
+				if( positionChance < 0.07 ) item = GetItemWithDurability( defender, Layer.Neck );
+				if ( item != null)  break;
+
+				if( positionChance < 0.14 ) item = GetItemWithDurability( defender, Layer.Gloves );
+				if ( item != null ) break;
+
+				if( positionChance < 0.21 ) item = GetItemWithDurability( defender, Layer.Arms );
+				if ( item != null ) break;
+
+				if( positionChance < 0.35 ) item = GetItemWithDurability( defender, Layer.Helm );
+				if ( item != null ) break;
+
+				if( positionChance < 0.49 )
 				{
 					subset = Utility.Random( 4 );
-
-					if ( defender.FindItemOnLayer( Layer.Pants ) != null && (defender.FindItemOnLayer( Layer.Pants )).Density != Density.None && subset == 0 )
-						armorItem = defender.FindItemOnLayer( Layer.Pants );
-					else if ( defender.FindItemOnLayer( Layer.Waist ) != null && (defender.FindItemOnLayer( Layer.Waist )).Density != Density.None && subset == 1 )
-						armorItem = defender.FindItemOnLayer( Layer.Waist );
-					else if ( defender.FindItemOnLayer( Layer.OuterLegs ) != null && (defender.FindItemOnLayer( Layer.OuterLegs )).Density != Density.None && subset == 2 )
-						armorItem = defender.FindItemOnLayer( Layer.OuterLegs );
-					else if ( defender.FindItemOnLayer( Layer.InnerLegs ) != null && (defender.FindItemOnLayer( Layer.InnerLegs )).Density != Density.None && subset == 3 )
-						armorItem = defender.FindItemOnLayer( Layer.InnerLegs );
-				}
-				else if( positionChance < 0.56 && defender.FindItemOnLayer( Layer.Shoes ) != null && (defender.FindItemOnLayer( Layer.Shoes )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Shoes );
-				else if( positionChance < 0.63 && defender.FindItemOnLayer( Layer.Cloak ) != null && (defender.FindItemOnLayer( Layer.Cloak )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.Cloak );
-				else if( positionChance < 0.70 && defender.FindItemOnLayer( Layer.OuterTorso ) != null && (defender.FindItemOnLayer( Layer.OuterTorso )).Density != Density.None )
-					armorItem = defender.FindItemOnLayer( Layer.OuterTorso );
-				else
-				{
-					subset = Utility.Random( 3 );
-
-					if ( defender.FindItemOnLayer( Layer.InnerTorso ) != null && (defender.FindItemOnLayer( Layer.InnerTorso )).Density != Density.None && subset == 0 )
-						armorItem = defender.FindItemOnLayer( Layer.InnerTorso );
-					else if ( defender.FindItemOnLayer( Layer.MiddleTorso ) != null && (defender.FindItemOnLayer( Layer.MiddleTorso )).Density != Density.None && subset == 1 )
-						armorItem = defender.FindItemOnLayer( Layer.MiddleTorso );
-					else if ( defender.FindItemOnLayer( Layer.Shirt ) != null && (defender.FindItemOnLayer( Layer.Shirt )).Density != Density.None && subset == 2 )
-						armorItem = defender.FindItemOnLayer( Layer.Shirt );
+					if( subset == 0 ) item = GetItemWithDurability( defender, Layer.Pants );
+					else if( subset == 1 ) item = GetItemWithDurability( defender, Layer.Waist );
+					else if( subset == 2 ) item = GetItemWithDurability( defender, Layer.OuterLegs );
+					else if( subset == 3 ) item = GetItemWithDurability( defender, Layer.InnerLegs );
+					if ( item != null ) break;
 				}
 
-				if ( armorItem != null )
-					cycle = 20;
+				if( positionChance < 0.56 ) item = GetItemWithDurability( defender, Layer.Shoes );
+				if ( item != null ) break;
+
+				if( positionChance < 0.63 ) item = GetItemWithDurability( defender, Layer.Cloak );
+				if ( item != null ) break;
+
+				if( positionChance < 0.70 ) item = GetItemWithDurability( defender, Layer.OuterTorso );
+				if ( item != null ) break;
+
+				if( positionChance < 0.14 ) item = GetItemWithDurability( defender, Layer.Gloves );
+				if ( item != null ) break;
+
+				subset = Utility.Random( 3 );
+				if( subset == 0 ) item = GetItemWithDurability( defender, Layer.InnerTorso );
+				else if( subset == 1 ) item = GetItemWithDurability( defender, Layer.MiddleTorso );
+				else if( subset == 2 ) item = GetItemWithDurability( defender, Layer.Shirt );
+				if ( item != null ) break;
 			}
-			return armorItem;
+
+			return item;
+		}
+
+		private static Item GetItemWithDurability( Mobile mobile, Layer layer )
+		{
+			if (mobile == null) return null;
+
+			Item item = mobile.FindItemOnLayer( layer );
+			if (item == null || item.Density == Density.None) return null;
+
+			return item;
 		}
 
 		public static string GetTradeItemName( CraftResource resource, bool sub, bool sub2 )

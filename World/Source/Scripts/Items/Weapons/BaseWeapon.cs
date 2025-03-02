@@ -1289,7 +1289,7 @@ namespace Server.Items
 
 			if ( !blocked )
 			{
-				Item arms = CraftResources.ArmorItem( defender );
+				Item arms = CraftResources.GetRandomItemWithDurability( defender );
 
 				if ( arms != null && arms is IWearableDurability )
 				{
