@@ -98,6 +98,7 @@ namespace Server.Items
 					else if ( bone.ItemID == 0x1B12 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x1B13 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x1B14 ){ boneCount = 1; }
+					else if ( bone.ItemID == 0x1B15 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x1B16 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x1B19 ){ boneCount = 2; }
 					else if ( bone.ItemID == 0x2C99 ){ boneCount = 1; }

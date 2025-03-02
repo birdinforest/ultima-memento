@@ -181,6 +181,7 @@ namespace Server.Misc
 			builder.Append("- Item - Young player maps are now decodable<br>");
 			builder.Append("- Item - You can now steal with any type of pugilist gloves<br>");
 			builder.Append("- Item - Ten foot pole now conveys initial % avoidance<br>");
+			builder.Append("- Item - Add missing bone from polishing brush<br>");
 			builder.Append("- Misc - Set Map when [scan players<br>");
 			builder.Append("- Misc - Fix typo in RangeCheck()<br>");
 			builder.Append("- Misc - Buffs/Debuffs now end on the Server before the Client timer elapses<br>");
