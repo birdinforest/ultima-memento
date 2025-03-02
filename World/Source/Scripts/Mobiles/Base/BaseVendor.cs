@@ -1993,14 +1993,16 @@ namespace Server.Mobiles
 				SayTo( seller, true, "You may only sell {0} items at a time!", MaxSell );
 				return false;
 			}
-			else if ( !MySettings.S_RichMerchants && SoldPrice > this.CoinPurse && !MySettings.S_UseRemainingGold )
+
+			if ( Sold == 0 )
+			{
+				return true;
+			}
+			
+			if ( !MySettings.S_RichMerchants && SoldPrice > this.CoinPurse && !MySettings.S_UseRemainingGold && !pm.IgnoreVendorGoldSafeguard)
 			{
 				SayTo( seller, true, "Sorry, but I only have {0} gold to barter with.", this.CoinPurse );
 				return false;
-			}
-			else if ( Sold == 0 )
-			{
-				return true;
 			}
 
 			seller.PlaySound( 0x32 );

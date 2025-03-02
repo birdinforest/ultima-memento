@@ -3256,6 +3256,11 @@ namespace Server.Mobiles
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IgnoreVendorGoldSafeguard { get; set; }
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
@@ -3263,6 +3268,9 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 42:
+					IgnoreVendorGoldSafeguard = reader.ReadBool();
+					goto case 41;
 				case 41:
 				case 40:
 				{
@@ -3693,7 +3701,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 41 ); // version
+			writer.Write( (int) 42 ); // version
+
+			writer.Write(IgnoreVendorGoldSafeguard);
 
 			if( m_AcquiredRecipes == null )
 			{
