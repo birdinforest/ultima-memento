@@ -399,11 +399,19 @@ namespace Server.Items
 			if ( damageTaken < 0 ) 
 				damageTaken = 0;
 
-			int ruin = 75 + ( (int)Density * 5 ); // chance to lower durability
-				if ( ruin > 99 )
-					ruin = 99;
-
-			if ( Utility.Random( 100 ) > ruin && Density != Density.None ) // chance to lower durability
+			if ( Density == Density.None ) return damageTaken;
+	
+			/*
+				100% - Weak
+				50% - Regular
+				33% - Great
+				20% - Greater
+				14% - Superior
+				9% - Ultimate
+			*/
+			double baseValue = Math.Pow(1.5, (int)Density);
+			double testValue = 1f / (int)baseValue;
+			if ( Utility.RandomDouble() < testValue )
 			{
 				if ( this is ILevelable )
 				{

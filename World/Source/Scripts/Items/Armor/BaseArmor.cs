@@ -1255,9 +1255,19 @@ namespace Server.Items
 			if ( Absorbed < 2 )
 				Absorbed = 2;
 
-			int ruin = 60 + ( (int)Density * 5 ); // chance to lower durability
-
-			if ( Utility.Random( 100 ) > ruin && Density != Density.None ) // chance to lower durability
+			if ( Density == Density.None ) return damageTaken;
+	
+			/*
+				100% - Weak
+				50% - Regular
+				33% - Great
+				20% - Greater
+				14% - Superior
+				9% - Ultimate
+			*/
+			double baseValue = Math.Pow(1.5, (int)Density);
+			double testValue = 1f / (int)baseValue;
+			if ( Utility.RandomDouble() < testValue )
 			{
 				if ( this is ILevelable )
 				{

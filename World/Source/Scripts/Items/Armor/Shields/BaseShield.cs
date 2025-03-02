@@ -58,9 +58,19 @@ namespace Server.Items
 			else
 				wear = Utility.Random( 2 );
 
-			int ruin = 60 + ( (int)Density * 5 ); // chance to lower durability
-
-			if ( Utility.Random( 100 ) > ruin && wear > 0 && Density != Density.None ) // chance to lower durability
+			if ( Density == Density.None ) return 0;
+	
+			/*
+				100% - Weak
+				50% - Regular
+				33% - Great
+				20% - Greater
+				14% - Superior
+				9% - Ultimate
+			*/
+			double baseValue = Math.Pow(1.5, (int)Density);
+			double testValue = 1f / (int)baseValue;
+			if ( Utility.RandomDouble() < testValue )
 			{
 				if( ArmorAttributes.SelfRepair > Utility.Random( 10 ) )
 					HitPoints += Utility.RandomMinMax( 1, (int)Density );
