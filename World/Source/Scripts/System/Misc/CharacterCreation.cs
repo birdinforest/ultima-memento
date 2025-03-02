@@ -660,7 +660,8 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Anatomy:
-						PackItem(bag, new Bandage { Amount = 50 });
+						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
+						PackItem(bag, new Bandage { Amount = 200 });
 						break;
 
 					case SkillName.Druidism: // Animal Lore
@@ -732,7 +733,7 @@ namespace Server.Misc
 
 					case SkillName.Healing:
 						PackItem(bag, new Scissors());
-						PackItem(bag, new Bandage { Amount = 50 });
+						PackItem(bag, new Bandage { Amount = 200 });
 						break;
 
 					case SkillName.Seafaring:
@@ -860,7 +861,7 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Veterinary:
-						PackItem(bag, new Bandage { Amount = 50 });
+						PackItem(bag, new Bandage { Amount = 200 });
 						break;
 
 					case SkillName.Swords:
