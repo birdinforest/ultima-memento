@@ -17,7 +17,7 @@ namespace Server.Engines.Craft
 			m_Player = player;
 			m_Context = context;
 
-			AddBackground(0, 0, 160, 160, 2620); // Slate background gold trim
+			AddBackground(0, 0, 160, 170, 2620); // Slate background gold trim
 
 			int x = 10;
 			int y = 10;
@@ -55,7 +55,7 @@ namespace Server.Engines.Craft
 				else
 					AddButtonWithLabel(x, y, "Pause", 3);
 
-				y += 20;
+				y += 28;
 				AddButtonWithLabel(x, y, "Stop", 4);
 			}
 		}
