@@ -263,8 +263,7 @@ namespace Server.Mobiles
 			if ( this is PlayerBarkeeper ) return;
 			if (!m_CoinsNeedReset) return;
 
-			int coins = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
-			CoinPurse = this is BaseGuildmaster ? coins * 3 : coins;
+			CoinPurse = Utility.RandomMinMax( MySettings.S_MinMerchant, MySettings.S_MaxMerchant );
 			
 			if ( from != null )
 				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
