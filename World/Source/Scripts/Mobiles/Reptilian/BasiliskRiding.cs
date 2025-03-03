@@ -93,10 +93,7 @@ namespace Server.Mobiles
 
 					m.PlaySound(0x204);
 					m.FixedEffect(0x376A, 6, 1);
-
-					int duration = Utility.RandomMinMax(4, 8);
-					m.Paralyze(TimeSpan.FromSeconds(duration));
-
+					m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
 					m.SendMessage( "You are petrified!" );
 				}
 			}

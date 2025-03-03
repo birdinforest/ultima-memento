@@ -76,11 +76,8 @@ namespace Server.Mobiles
 
 				m.PlaySound(0x16B);
 				m.FixedEffect(0x376A, 6, 1);
-
-				int duration = Utility.RandomMinMax(4, 8);
-				m.Paralyze(TimeSpan.FromSeconds(duration));
-
-				m.SendMessage( "You are petrified from the GorgonRiding breath!" );
+				m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
+				m.SendMessage( "You are petrified from the Gorgon breath!" );
 			}
 		}
 

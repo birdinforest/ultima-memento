@@ -89,10 +89,7 @@ namespace Server.Mobiles
 					DoHarmful( m );
 
 					m.PlaySound(0x16B);
-
-					int duration = Utility.RandomMinMax(4, 8);
-					m.Paralyze(TimeSpan.FromSeconds(duration));
-
+					m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
 					m.SendMessage( "You are petrified with fear from the mighty roar!" );
 				}
 			}

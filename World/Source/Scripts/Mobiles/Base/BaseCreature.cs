@@ -1073,9 +1073,7 @@ namespace Server.Mobiles
 			{
 				Effects.SendLocationEffect( blast1, target.Map, 0x10D3, 30, 10, 0, 0 );
 				target.PlaySound( 0x62D );
-				double webbed = ((double)(this.Fame/200));
-					if ( webbed > 15.0 ){ webbed = 15.0; }
-				target.Paralyze( TimeSpan.FromSeconds( webbed ) );
+				target.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(Fame/400, Fame/200))));
 			}
 			else if ( form == 7 ) // GIANT STONES AND LOGS ------------------------------------------------------------------------------------------
 			{
@@ -1359,9 +1357,7 @@ namespace Server.Mobiles
 				Effects.PlaySound( target.Location, target.Map, 0x64F );
 				BreathDistance = 3;
 
-				double weed = ((double)(this.Fame/200));
-					if ( weed > 15.0 ){ weed = 15.0; }
-				target.Paralyze( TimeSpan.FromSeconds( weed ) );
+				target.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(Fame/400, Fame/200))));
 			}
 			else if ( form == 35 ) // SMALL WEED BREATH ---------------------------------------------------------------------------------------------
 			{
@@ -1369,9 +1365,7 @@ namespace Server.Mobiles
 				Effects.PlaySound( target.Location, target.Map, 0x64F );
 				BreathDistance = 2;
 
-				double weed = ((double)(this.Fame/200));
-					if ( weed > 15.0 ){ weed = 15.0; }
-				target.Paralyze( TimeSpan.FromSeconds( weed ) );
+				target.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(Fame/400, Fame/200))));
 			}
 			else if ( form == 36 ) // ACID SPLASH ---------------------------------------------------------------------------------------------------
 			{
@@ -1388,7 +1382,7 @@ namespace Server.Mobiles
 				Point3D wrapped = new Point3D( ( target.X ), ( target.Y ), (target.Z+2) );
 				Effects.SendLocationEffect( wrapped, target.Map, 0x23AF, 30, 10, 0, 0 );
 				target.PlaySound( 0x5D2 );
-				target.Paralyze( TimeSpan.FromSeconds( 5.0 ) );
+				target.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 6))));
 			}
 			else if ( form == 38 ) // SMALL STEAM BREATH --------------------------------------------------------------------------------------------
 			{

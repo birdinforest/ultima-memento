@@ -3613,8 +3613,7 @@ namespace Server.Misc
 		{
 			if ( ( 100 - m.PhysicalResistance ) < Utility.RandomMinMax( 1, 100 ) && Utility.RandomMinMax( 1, 5 ) == 1 )
 			{
-				int duration = Utility.RandomMinMax(4, 12);
-				m.Paralyze(TimeSpan.FromSeconds(duration));
+				m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 12))));
 				m.Warmode = false;
 				m.LocalOverheadMessage( MessageType.Emote, 0x916, true, "You are hit with a stunning punch!" );
 			}

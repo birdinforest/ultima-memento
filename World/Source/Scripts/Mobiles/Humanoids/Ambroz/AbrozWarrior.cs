@@ -95,8 +95,7 @@ namespace Server.Mobiles
 
 				defender.FixedEffect( 0x37B9, 10, 5 );
 				defender.SendLocalizedMessage( 1070840 ); // You are frozen as the creature laughs maniacally.
-
-				defender.Paralyze( TimeSpan.FromSeconds( 4.0 ) );
+				defender.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, 4)));
  			}
 		}
 		
