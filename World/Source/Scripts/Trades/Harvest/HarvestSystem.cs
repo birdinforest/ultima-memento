@@ -467,6 +467,10 @@ namespace Server.Engines.Harvest
 				}
 			}
 
+			// Failure - Consume a charge
+			if ( type == null )
+				bank.Consume( 1, from );
+
 			if ( tool is IUsesRemaining )
 			{
 				IUsesRemaining toolWithUses = (IUsesRemaining)tool;
