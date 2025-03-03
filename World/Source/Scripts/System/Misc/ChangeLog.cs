@@ -75,6 +75,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Harvest failures now consume Uses Remaining<br>");
 			builder.Append("- Gather - Harvest failures now consume node capacity<br>");
 			builder.Append("- Gump - Redesigned crafting tool gump<br>");
+			builder.Append("- Gump - Add required skill to Animal Form gump<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");
 			builder.Append("- Item - Powerscrolls purchases can now use Checks in your Bank<br>");
