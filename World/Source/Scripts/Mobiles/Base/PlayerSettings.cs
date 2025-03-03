@@ -341,7 +341,9 @@ namespace Server.Misc
 		{
 			if ( m == null ) return Land.None;
 
-			options.Where(land => ( predicate != null && predicate(land) ) || GetDiscovered(m, land)).ToList();
+			options = options
+				.Where(land => ( predicate != null && predicate(land) ) || GetDiscovered(m, land))
+				.ToList();
 
             return Utility.Random(options);
         }
