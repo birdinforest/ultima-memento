@@ -144,7 +144,12 @@ namespace Server.Engines.MLQuests
 
 		public MLQuestInstance CreateInstance(IQuestGiver quester, PlayerMobile pm)
 		{
-			return new MLQuestInstance(this, quester, pm);
+			return CreateInstance(quester, quester == null ? null : quester.GetType(), pm);
+		}
+
+		public MLQuestInstance CreateInstance(IQuestGiver quester, Type questerType, PlayerMobile pm)
+		{
+			return new MLQuestInstance(this, quester, questerType, pm);
 		}
 
 		public bool CanOffer(IQuestGiver quester, PlayerMobile pm, bool message)

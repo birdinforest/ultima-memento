@@ -22,12 +22,12 @@ namespace Server.Engines.MLQuests
 		private MLQuestInstanceFlags m_Flags;
 		private Timer m_Timer;
 
-		public MLQuestInstance(MLQuest quest, IQuestGiver quester, PlayerMobile player)
+		public MLQuestInstance(MLQuest quest, IQuestGiver quester, Type questerType, PlayerMobile player)
 		{
 			Quest = quest;
 
 			Quester = quester;
-			QuesterType = (quester == null) ? null : quester.GetType();
+			QuesterType = questerType;
 			Player = player;
 
 			Accepted = DateTime.UtcNow;
@@ -81,10 +81,12 @@ namespace Server.Engines.MLQuests
 			{
 				m_Quester = value;
 				QuesterType = (value == null) ? null : value.GetType();
+				DestinationName = QuesterType != null ? QuesterNameAttribute.GetQuesterNameFor(QuesterType) : null;
 			}
 		}
 
 		public Type QuesterType { get; private set; }
+		public string DestinationName { get; set; }
 
 		public PlayerMobile Player { get; private set; }
 
@@ -460,7 +462,9 @@ namespace Server.Engines.MLQuests
 
 			MLQuestSystem.WriteQuestRef(writer, Quest);
 
-			if (Quester == null || Quester.Deleted)
+            writer.Write(QuesterType != null ? QuesterType.Name : null);
+
+            if (Quester == null || Quester.Deleted)
 				writer.Write(Serial.MinusOne);
 			else
 				writer.Write(Quester.Serial);
@@ -476,23 +480,32 @@ namespace Server.Engines.MLQuests
 		{
 			MLQuest quest = MLQuestSystem.ReadQuestRef(reader);
 
-			// TODO: Serialize quester TYPE too, the quest giver reference then becomes optional (only for escorts)
+			Type questerType = null;
+			if (2 < version)
+			{
+				string type = reader.ReadString();
+				if (type != null)
+				    questerType = ScriptCompiler.FindTypeByName(type);
+			}
+
 			IQuestGiver quester = World.FindEntity(reader.ReadInt()) as IQuestGiver;
 
 			bool claimReward = reader.ReadBool();
 			int objectives = reader.ReadInt();
 
-			MLQuestInstance instance;
-
-			if (quest != null && quester != null && pm != null)
+			MLQuestInstance instance = null;
+			if (quest != null && pm != null)
 			{
-				instance = quest.CreateInstance(quester, pm);
+				if (questerType != null)
+					instance = quest.CreateInstance(quester, questerType, pm);
+				else if (quester != null)
+					instance = quest.CreateInstance(quester, pm);
+			}
+		
+			if (instance != null)
 				instance.ClaimReward = claimReward;
-			}
-			else
-			{
-				instance = null;
-			}
+
+			// TODO: Escort will care about Quester
 
 			for (int i = 0; i < objectives; ++i)
 				BaseObjectiveInstance.Deserialize(reader, version, (instance != null && i < instance.Objectives.Length) ? instance.Objectives[i] : null);
