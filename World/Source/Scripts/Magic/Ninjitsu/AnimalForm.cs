@@ -37,8 +37,6 @@ namespace Server.Spells.Ninjitsu
 		public override int RequiredMana { get { return 0; } }
 		public override int CastRecoveryBase { get { return (Core.ML ? 10 : base.CastRecoveryBase); } }
 
-		public override bool BlockedByAnimalForm { get { return false; } }
-
 		public AnimalForm(Mobile caster, Item scroll)
 			: base(caster, scroll, m_Info)
 		{

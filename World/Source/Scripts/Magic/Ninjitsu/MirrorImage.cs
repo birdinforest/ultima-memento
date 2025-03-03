@@ -54,8 +54,6 @@ namespace Server.Spells.Ninjitsu
 		public override double RequiredSkill{ get{ return 40.0; } }
 		public override int RequiredMana{ get{ return 10; } }
 
-		public override bool BlockedByAnimalForm{ get{ return false; } }
-
 		public MirrorImage( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

@@ -19,6 +19,7 @@ namespace Server.Spells.Ninjitsu
 		public override bool ClearHandsOnCast{ get{ return false; } }
 		public override bool ShowHandMovement{ get{ return false; } }
 
+		public override bool BlockedByAnimalForm{ get{ return false; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
 		public override int CastRecoveryBase{ get{ return 7; } }
