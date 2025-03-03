@@ -1,10 +1,5 @@
-using System;
-using Server;
-using System.Collections.Generic;
 using Server.Commands;
 using Server.Mobiles;
-using Server.Misc;
-using Server.Gumps;
 
 namespace Server.Items
 {
@@ -19,9 +14,10 @@ namespace Server.Items
 		[Description( "Opens Quest Gump." )]
         private static void MyQuests_OnCommand( CommandEventArgs e )
         {
-			Mobile from = e.Mobile;
-			from.CloseGump( typeof( QuestsGump ) );
-			from.SendGump( new QuestsGump( from ) );
+			PlayerMobile from = e.Mobile as PlayerMobile;
+            if (from == null) return;
+
+            from.ViewQuestLog();
         }
     }
 }
