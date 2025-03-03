@@ -198,7 +198,7 @@ namespace Server.Engines.Harvest
 			double skillMax = resource.MaxSkill;
 
 			Type type = null;
-
+			int usesToConsume = 1;
 			bool testSkill = false;
 
 			testSkill = from.CheckSkill( def.Skill, skillMin, skillMax );
@@ -458,24 +458,26 @@ namespace Server.Engines.Harvest
 							}
 						}
 
-						if ( tool is IUsesRemaining )
-						{
-							IUsesRemaining toolWithUses = (IUsesRemaining)tool;
-
-							toolWithUses.ShowUsesRemaining = true;
-
-							// Servers that give more resources should not consume as many charges
-							toolWithUses.UsesRemaining -= MyServerSettings.Resources() == 1 ? item.Amount : 1;
-
-							if ( toolWithUses.UsesRemaining < 1 )
-							{
-								tool.Delete();
-								def.SendMessageTo( from, def.ToolBrokeMessage );
-							}
-						}
+						// Servers that give more resources should not consume as many charges
+						if ( MyServerSettings.Resources() == 1 ) 
+							usesToConsume = item.Amount;
 
 						EventSink.InvokeResourceHarvestSuccess(new ResourceHarvestSuccessArgs(from, tool, item, bonusItem, this));
 					}
+				}
+			}
+
+			if ( tool is IUsesRemaining )
+			{
+				IUsesRemaining toolWithUses = (IUsesRemaining)tool;
+
+				toolWithUses.ShowUsesRemaining = true;
+				toolWithUses.UsesRemaining -= usesToConsume;
+
+				if ( toolWithUses.UsesRemaining < 1 )
+				{
+					tool.Delete();
+					def.SendMessageTo( from, def.ToolBrokeMessage );
 				}
 			}
 
