@@ -126,6 +126,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Add [CombatBar to [QuickBar<br>");
 			builder.Append("- Misc - Characters now start items relevant to their skills<br>");
 			builder.Append("- Misc - Increase 'Vendor Buy' listening distance to 2<br>");
+			builder.Append("- Misc - Ninja/Bushido moves may be while in Animal Form<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("       - Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("       - Forensics, Lumberjacking, Mining<br>");

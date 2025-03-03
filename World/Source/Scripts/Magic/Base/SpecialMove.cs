@@ -153,12 +153,6 @@ namespace Server.Spells
 				return false;
 			}
 
-			if ( Ninjitsu.AnimalForm.UnderTransformation( from ) )
-			{
-				from.SendLocalizedMessage( 1063024 ); // You cannot perform this special move right now.
-				return false;
-			}
-
 			return CheckSkills( from ) && CheckMana( from, false );
 		}
 
