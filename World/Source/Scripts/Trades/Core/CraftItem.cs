@@ -976,25 +976,29 @@ namespace Server.Engines.Craft
 							else
 							{
 								from.EndAction( typeof( CraftSystem ) );
-								from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
+								if ( bulkCraftContext == null)
+									from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
 							}
 						}
 						else
 						{
 							from.EndAction( typeof( CraftSystem ) );
-							from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
+							if ( bulkCraftContext == null)
+								from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
 						}
 					}
 					else
 					{
 						from.EndAction( typeof( CraftSystem ) );
-						from.SendGump( new CraftGump( from, craftSystem, tool, badCraft ) );
+						if ( bulkCraftContext == null)
+							from.SendGump( new CraftGump( from, craftSystem, tool, badCraft ) );
 					}
 				}
 				else
 				{
 					from.EndAction( typeof( CraftSystem ) );
-					from.SendGump( new CraftGump( from, craftSystem, tool, 1044153 ) ); // You don't have the required skills to attempt this item.
+					if ( bulkCraftContext == null)
+						from.SendGump( new CraftGump( from, craftSystem, tool, 1044153 ) ); // You don't have the required skills to attempt this item.
 				}
 			}
 			else
@@ -1029,6 +1033,8 @@ namespace Server.Engines.Craft
 
 			if ( badCraft > 0 )
 			{
+				if ( bulkCraftContext != null) return;
+
 				if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 					from.SendGump( new CraftGump( from, craftSystem, tool, badCraft ) );
 				else
@@ -1043,6 +1049,8 @@ namespace Server.Engines.Craft
 			// Not enough resource to craft it
 			if ( !ConsumeRes( from, typeRes, craftSystem, ref checkResHue, ref checkMaxAmount, ConsumeType.None, ref checkMessage ) )
 			{
+				if ( bulkCraftContext != null) return;
+
 				if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 					from.SendGump( new CraftGump( from, craftSystem, tool, checkMessage ) );
 				else if ( checkMessage is int && (int)checkMessage > 0 )
@@ -1054,6 +1062,8 @@ namespace Server.Engines.Craft
 			}
 			else if ( !ConsumeAttributes( from, ref checkMessage, false ) )
 			{
+				if ( bulkCraftContext != null) return;
+
 				if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 					from.SendGump( new CraftGump( from, craftSystem, tool, checkMessage ) );
 				else if ( checkMessage is int && (int)checkMessage > 0 )
@@ -1082,6 +1092,8 @@ namespace Server.Engines.Craft
 				// Not enough resource to craft it
 				if ( !ConsumeRes( from, typeRes, craftSystem, ref resHue, ref maxAmount, ConsumeType.All, ref message ) )
 				{
+					if ( bulkCraftContext != null) return;
+
 					if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 						from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
 					else if ( message is int && (int)message > 0 )
@@ -1093,6 +1105,8 @@ namespace Server.Engines.Craft
 				}
 				else if ( !ConsumeAttributes( from, ref message, true ) )
 				{
+					if ( bulkCraftContext != null) return;
+
 					if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 						from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
 					else if ( message is int && (int)message > 0 )
@@ -1302,6 +1316,8 @@ namespace Server.Engines.Craft
 				// Not enough resource to craft it
 				if ( !ConsumeRes( from, typeRes, craftSystem, ref resHue, ref maxAmount, consumeType, ref message, true ) )
 				{
+					if ( bulkCraftContext != null) return;
+
 					if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 						from.SendGump( new CraftGump( from, craftSystem, tool, message ) );
 					else if ( message is int && (int)message > 0 )
@@ -1322,13 +1338,16 @@ namespace Server.Engines.Craft
 				// SkillCheck failed.
 				int num = craftSystem.PlayEndingEffect( from, true, true, toolBroken, endquality, this );
 
+				if ( bulkCraftContext != null)
+				{
+					bulkCraftContext.Fail++;
+					return;
+				}
+			
 				if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )
 					from.SendGump( new CraftGump( from, craftSystem, tool, num ) );
 				else if ( num > 0 )
 					from.SendLocalizedMessage( num );
-				
-				if ( bulkCraftContext != null )
-					bulkCraftContext.Fail++;
 			}
 		}
 
@@ -1342,6 +1361,8 @@ namespace Server.Engines.Craft
 
 			if ( badCraft > 0 )
 			{
+				if ( bulkCraftContext != null ) return;
+
 				if ( m_Tool != null && !m_Tool.Deleted && m_Tool.UsesRemaining > 0 )
 					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, badCraft ) );
 				else
