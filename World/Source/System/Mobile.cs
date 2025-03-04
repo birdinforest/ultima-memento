@@ -10707,6 +10707,40 @@ namespace Server
 			return false;
 		}
 
+		public virtual bool EquipOrReplace( Item item )
+		{
+			if( item == null || item.Deleted || item.Layer == Layer.Invalid || Backpack == null )
+				return false;
+
+			Item existingItem = FindItemOnLayer(item.Layer);
+			if (existingItem != null) Backpack.AddItem(existingItem);
+
+			TryClearHands( item );
+
+            return EquipItem( item );
+		}
+
+		public void TryClearHands( Item item )
+		{
+			Item existingItem;
+            if (item.Layer == Layer.OneHanded)
+			{
+                existingItem = FindItemOnLayer(Layer.TwoHanded);
+                if (existingItem != null && existingItem.NeedsBothHands) Backpack.AddItem(existingItem);
+            }
+            else if (item.Layer == Layer.TwoHanded)
+            {
+                existingItem = FindItemOnLayer(Layer.TwoHanded);
+                if (existingItem != null) Backpack.AddItem(existingItem);
+
+                if (item.NeedsBothHands)
+                {
+                    existingItem = FindItemOnLayer(Layer.OneHanded);
+                    if (existingItem != null) Backpack.AddItem(existingItem);
+                }
+            }
+		}
+
 		internal int m_TypeRef;
 
 		public Mobile( Serial serial )

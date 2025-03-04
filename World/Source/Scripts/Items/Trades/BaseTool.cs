@@ -213,7 +213,7 @@ namespace Server.Items
 			else
 			{
                 if (Parent != from && RootParentEntity == from)
-                    from.EquipItem(this);
+                    from.EquipOrReplace(this);
 
                 if (Parent == from)
                 {

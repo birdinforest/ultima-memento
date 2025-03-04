@@ -99,7 +99,7 @@ namespace Server.Items
 				return;
 
 			if (Parent != from && RootParentEntity == from)
-				from.EquipItem(this);
+				from.EquipOrReplace(this);
 				
 			if ( Parent == from )
 				HarvestSystem.BeginHarvesting( from, this );

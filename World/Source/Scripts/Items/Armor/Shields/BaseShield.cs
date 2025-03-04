@@ -103,5 +103,11 @@ namespace Server.Items
 
 			return 0;
 		}
-	}
+
+        public override void OnDoubleClick(Mobile from)
+        {
+			if (Parent != from && RootParentEntity == from)
+				from.EquipOrReplace(this);
+        }
+    }
 }

@@ -42,6 +42,14 @@ namespace Server.Items
 			}
 		}
 
+        public override void OnDoubleClick(Mobile from)
+        {
+			if (Parent != from && RootParentEntity == from)
+				from.TryClearHands( this );
+			
+			base.OnDoubleClick( from );
+        }
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
