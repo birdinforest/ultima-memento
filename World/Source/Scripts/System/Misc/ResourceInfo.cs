@@ -114,8 +114,8 @@ namespace Server.Items
 		{
 			Blank = new CraftAttributeInfo();
 			
-			DullCopper 		= CraftAttInfo( 	3	,	3	,	2	,	2	,	2	,	null,	0	,	0	,	0	,	0	,	null,	75	,	35	,	0	 );
-			ShadowIron	 	= CraftAttInfo( 	3	,	3	,	3	,	2	,	2	,	null,	0	,	0	,	0	,	0	,	null,	75	,	0	,	0	 );
+			DullCopper 		= CraftAttInfo( 	2	,	1	,	1	,	1	,	1	,	null,	0	,	0	,	0	,	0	,	null,	75	,	35	,	0	 ); // 6
+			ShadowIron	 	= CraftAttInfo( 	3	,	3	,	3	,	2	,	2	,	null,	0	,	0	,	0	,	0	,	null,	75	,	0	,	0	 ); // 13
 			Copper	 	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	2	,	null,	0	,	0	,	20	,	10	,	null,	25	,	0	,	0	 );
 			Bronze	 	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	0	,	40	,	0	,	0	,	null,	30	,	0	,	0	 );
 			Golden	 	 	= CraftAttInfo( 	4	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	30	,	40	,	40	 );
@@ -206,8 +206,8 @@ namespace Server.Items
 			Syncloth	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	80	,	40	,	0	 );
 			Thermoweave	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	20	,	20	,	0	,	null,	80	,	50	,	0	 );
 																																				
-			AshTree	 		= CraftAttInfo( 	3	,	3	,	3	,	2	,	2	,	null,	5	,	5	,	5	,	5	,	null,	10	,	0	,	0	 );
-			CherryTree	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	2	,	null,	0	,	0	,	20	,	10	,	null,	25	,	0	,	0	 );
+			AshTree	 		= CraftAttInfo( 	2	,	2	,	2	,	1	,	1	,	null,	5	,	5	,	5	,	5	,	null,	10	,	20	,	0	 ); // 8
+			CherryTree	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	2	,	null,	0	,	0	,	20	,	10	,	null,	25	,	0	,	0	 ); // 14
 			EbonyTree	 	= CraftAttInfo( 	3	,	3	,	3	,	3	,	3	,	null,	20	,	0	,	0	,	0	,	null,	40	,	0	,	0	 );
 			GoldenOakTree	= CraftAttInfo( 	4	,	3	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	20	,	40	,	40	 );
 			HickoryTree	 	= CraftAttInfo( 	4	,	4	,	3	,	3	,	3	,	null,	0	,	0	,	0	,	0	,	null,	50	,	30	,	0	 );
