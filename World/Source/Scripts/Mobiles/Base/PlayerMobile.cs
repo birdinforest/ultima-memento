@@ -905,6 +905,11 @@ namespace Server.Mobiles
 			{
 				from.Send(SpeedControl.MountSpeed);
 			}
+			else
+			{
+				// Adjust item graphics/visibility on paperdoll
+				from.ProcessClothing();
+			}
 		}
 
 		private bool m_NoDeltaRecursion;
