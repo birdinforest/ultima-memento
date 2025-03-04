@@ -205,6 +205,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Mongbat tower at Devil Guard is now properly capped<br>");
 			builder.Append("- Misc - Dispose of orphaned Data.ref stream writer<br>");
 			builder.Append("- Misc - Potion breaking trap now deletes unidentified potion containers<br>");
+			builder.Append("- Misc - Monster race paperdoll graphics are restored after restart<br>");
 			builder.Append("- Quest - Fix bug where the quest default of 'the Dungeon of Doom' could never be satisfied<br>");
 			builder.Append("- Spell - BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append("- Spell - Bard songs weren't blocked when no instrument was assigned<br>");
