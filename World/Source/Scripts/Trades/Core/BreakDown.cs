@@ -206,7 +206,7 @@ namespace Server.Engines.Craft
 						var confirmationGump = new ConfirmationGump(
 							from,
 							"Break down container contents",
-							"Are you absolutely sure you want to break down all " + container.TotalItems + " items in the container" + container.Name + "?",
+							"Are you absolutely sure you want to break down all '" + container.TotalItems + "' items in the container '" + container.Name + "' ?",
 							() =>
 								{
 									if (!from.Alive) return;
