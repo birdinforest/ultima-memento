@@ -10713,11 +10713,18 @@ namespace Server
 				return false;
 
 			Item existingItem = FindItemOnLayer(item.Layer);
-			if (existingItem != null) Backpack.AddItem(existingItem);
+			if (existingItem != null) UnequipAndUnmod(existingItem);
 
 			TryClearHands( item );
 
             return EquipItem( item );
+		}
+
+		protected void UnequipAndUnmod( Item item )
+		{
+			Backpack.AddItem(item);
+
+			if (Item.isModded(item)) Item.undoMod(item);
 		}
 
 		public void TryClearHands( Item item )
@@ -10726,17 +10733,17 @@ namespace Server
             if (item.Layer == Layer.OneHanded)
 			{
                 existingItem = FindItemOnLayer(Layer.TwoHanded);
-                if (existingItem != null && existingItem.NeedsBothHands) Backpack.AddItem(existingItem);
+                if (existingItem != null && existingItem.NeedsBothHands) UnequipAndUnmod(existingItem);
             }
             else if (item.Layer == Layer.TwoHanded)
             {
                 existingItem = FindItemOnLayer(Layer.TwoHanded);
-                if (existingItem != null) Backpack.AddItem(existingItem);
+                if (existingItem != null) UnequipAndUnmod(existingItem);
 
                 if (item.NeedsBothHands)
                 {
                     existingItem = FindItemOnLayer(Layer.OneHanded);
-                    if (existingItem != null) Backpack.AddItem(existingItem);
+                    if (existingItem != null) UnequipAndUnmod(existingItem);
                 }
             }
 		}
