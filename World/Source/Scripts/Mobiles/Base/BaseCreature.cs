@@ -6523,6 +6523,7 @@ namespace Server.Mobiles
 					DateTime now = DateTime.Now;
 					if ( now < m_NextDefensiveDispel ) return;
 
+					Mana -= (int)Math.Max(0.1 * ManaMax, 40);
 					m_NextDefensiveDispel = now.AddSeconds( Utility.RandomMinMax( 3, 5 ) );
                     if (MyServerSettings.EnableDispelLogging())
                         m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Defensively Dispelled");

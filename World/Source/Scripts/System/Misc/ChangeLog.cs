@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Combat - Mob Peacemaking duration is now a function of mob skill<br>");
 			builder.Append("- Combat - Add short cooldown to defensive dispelling<br>");
 			builder.Append("- Combat - Most mobs now use OmniAI<br>");
+			builder.Append("- Combat - Defensive dispel (when mobs are hit) now costs whichever is greater, 40 mana or 10% of max mana<br>");
 			builder.Append("- Commands - Add [VendorGold setting to disallow the Vendor's Sell limit safeguard<br>");
 			builder.Append("- Craft - Bulk crafting has been completely redone<br>");
 			builder.Append("- Craft - Using non-basic resources can now yield multiple skill gains<br>");
