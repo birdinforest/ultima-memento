@@ -265,7 +265,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( ScribesPen ), 1044046, 1044168, 25.0, 75.0, typeof( IronIngot ), 1044036, 1, 1044037 );
 			AddCraft( typeof( SewingKit ), 1044046, 1023997, 10.0, 70.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 			AddCraft( typeof( Spade ), 1044046, 1023898, 40.0, 90.0, typeof( IronIngot ), 1044036, 4, 1044037 );
-			AddCraft( typeof( SkinningKnife ), 1044046, "skinning knife", 15.0, 55.0, typeof( IronIngot ), 1044036, 2, 1044037 );
+			AddCraft( typeof( SkinningKnifeTool ), 1044046, "skinning knife", 15.0, 55.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 			AddCraft( typeof( SmithHammer ), 1044046, 1025091, 40.0, 90.0, typeof( IronIngot ), 1044036, 4, 1044037 );
 			AddCraft( typeof( LeatherworkingTools ), 1044046, "tanning tools", 10.0, 70.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 			AddCraft( typeof( TinkerTools ), 1044046, 1044164, 10.0, 60.0, typeof( IronIngot ), 1044036, 2, 1044037 );

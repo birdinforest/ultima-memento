@@ -11,6 +11,8 @@ namespace Server.Items
 {
 	public class ManualOfItems : Item
 	{
+		public const int NUMBER_OF_ARTIFACTS = 290;
+
 		[Constructable]
 		public ManualOfItems() : base( 0x1C0E )
 		{
@@ -84,10 +86,7 @@ namespace Server.Items
 				m_Book = relicBox;
 				ManualOfItems pedia = (ManualOfItems)relicBox;
 
-				int NumberOfArtifacts = 291;	// SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
-												// DO THIS NUMBER+1 IN THE OnResponse SECTION BELOW
-
-				decimal PageCount = NumberOfArtifacts / 16;
+				decimal PageCount = NUMBER_OF_ARTIFACTS / 16;
 				int TotalBookPages = ( 100000 ) + ( (int)Math.Ceiling( PageCount ) );
 
 				this.Closable=true;
@@ -519,7 +518,6 @@ namespace Server.Items
 			if ( artifact == arty) { name = typeof(GiftScythe).Name; item="Scythe"; } arty++;
 			if ( artifact == arty) { name = typeof(GiftShepherdsCrook).Name; item="Shepherds Crook"; } arty++;
 			if ( artifact == arty) { name = typeof(GiftShortSword).Name; item="Short Sword"; } arty++;
-			if ( artifact == arty) { name = typeof(GiftSkinningKnife).Name; item="Skinning Knife"; } arty++;
 			if ( artifact == arty) { name = typeof(GiftBoneHarvester).Name; item="Sickle"; } arty++;
 			if ( artifact == arty) { name = typeof(GiftSpear).Name; item="Spear"; } arty++;
 			if ( artifact == arty) { name = typeof(GiftSpikedClub).Name; item="Spiked Club"; } arty++;

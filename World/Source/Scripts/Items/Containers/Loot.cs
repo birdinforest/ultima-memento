@@ -32,7 +32,7 @@ namespace Server
 			{
 				typeof( AssassinSpike ),	typeof( DoubleBladedStaff ),	typeof( Longsword ),		typeof( ShortSpear ),
 				typeof( Axe ),				typeof( ElvenMachete ),			typeof( Mace ),				typeof( ShortSword ),
-				typeof( Bardiche ),			typeof( ElvenSpellblade ),		typeof( Maul ),				typeof( SkinningKnife ),
+				typeof( Bardiche ),			typeof( ElvenSpellblade ),		typeof( Maul ),
 				typeof( BattleAxe ),		typeof( ExecutionersAxe ),		typeof( OrnateAxe ),		typeof( Spear ),
 				typeof( BlackStaff ),		typeof( GnarledStaff ),			typeof( Pike ),				typeof( SpikedClub ),
 				typeof( BladedStaff ),		typeof( Halberd ),				typeof( Pitchfork ),		typeof( TwoHandedAxe ),
@@ -775,7 +775,7 @@ namespace Server
 				typeof( GraveSpade ),			typeof( DruidCauldron ),		typeof( WitchCauldron ),
 				typeof( Hatchet ),				typeof( InteriorDecorator ),	typeof( HousePlacementTool ), 
 				typeof( PolishBoneBrush ),		typeof( WoodworkingTools ),		typeof( Monocle ),
-				typeof( WaxingPot )
+				typeof( WaxingPot ),			typeof( SkinningKnifeTool ),
 			};
 		public static Type[] ToolTypes{ get{ return m_ToolTypes; } }
 

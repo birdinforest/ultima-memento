@@ -1121,6 +1121,15 @@ namespace Server.Items
 				if ( !CheckLoot( from, null ) )
 					return;
 
+				// Automatically carve corpse
+				Mobile dead = m_Owner;
+				if ( dead != null && !GetFlag( CorpseFlag.Carved ) )
+				{
+					Item skinningKnife = from.Trinket as SkinningKnifeTool;
+					if ( skinningKnife != null )
+						((ICarvable)this).Carve( from, skinningKnife );
+				}
+
 				base.OnDoubleClick( from );
 				from.SendSound( 0x48, from.Location );
 				Server.Misc.PlayerSettings.LootContainer( from, this );
@@ -1209,14 +1218,15 @@ namespace Server.Items
 				return;
 			}
 
+			bool consumeUse = false;
 			Mobile dead = m_Owner;
-
 			if ( GetFlag( CorpseFlag.Carved ) || dead == null )
 			{
 				from.SendLocalizedMessage( 500485 ); // You see nothing useful to carve from the corpse.
 			}
 			else if ( ((Body)Amount).IsHuman )
 			{
+				consumeUse = true;
 				new Blood( 0x122D ).MoveToWorld( Location, Map );
 
 				Corpse bodyBag = (Corpse)this;
@@ -1266,11 +1276,26 @@ namespace Server.Items
 			}
 			else if ( dead is BaseCreature )
 			{
+				consumeUse = true;
 				((BaseCreature)dead).OnCarve( from, this, item );
 			}
 			else
 			{
 				from.SendLocalizedMessage( 500485 ); // You see nothing useful to carve from the corpse.
+			}
+
+			if (consumeUse && item is IUsesRemaining)
+			{
+				IUsesRemaining itemWithUses = (IUsesRemaining)item;
+
+				itemWithUses.ShowUsesRemaining = true;
+				itemWithUses.UsesRemaining--;
+
+				if ( itemWithUses.UsesRemaining < 1 )
+				{
+					item.Delete();
+					from.SendLocalizedMessage(1044038); // You have worn out your tool!
+				}
 			}
 		}
 	}

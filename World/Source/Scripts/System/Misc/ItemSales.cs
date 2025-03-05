@@ -3580,7 +3580,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	IcySkins	),	250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	LavaSkins	),	250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	Seaweeds	),	250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	SkinningKnife	),	15	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Butcher	),
+			new ItemSalesInfo( typeof(	SkinningKnifeTool	),	15	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Butcher	),
 			new ItemSalesInfo( typeof(	Skirt	),	12	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SkullCap	),	7	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SkullDemon	),	600	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Evil	),

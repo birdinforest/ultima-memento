@@ -57,7 +57,7 @@ namespace Server.Mobiles
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( ScalingTools )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( SewingKit )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( Spade )	 );
-					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( SkinningKnife )	 );
+					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( SkinningKnifeTool )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( SmithHammer )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( LeatherworkingTools )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Tinker,		ItemSalesInfo.World.None,	typeof( TinkerTools )	 );

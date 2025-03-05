@@ -163,7 +163,7 @@ namespace Server
 						((BaseHarvestTool)item).SkillBonuses.SetValues(4, SkillName.Seafaring, skill);
 					else if ( tool.HarvestSystem == Librarian.System )
 						((BaseHarvestTool)item).SkillBonuses.SetValues(4, SkillName.Inscribe, skill);
-					else if ( tool.HarvestSystem == GraveRobbing.System )
+					else if ( tool.HarvestSystem == GraveRobbing.System || tool is SkinningKnifeTool )
 						((BaseHarvestTool)item).SkillBonuses.SetValues(4, SkillName.Forensics, skill);
 					else if ( tool.HarvestSystem == Mining.System )
 						((BaseHarvestTool)item).SkillBonuses.SetValues(4, SkillName.Mining, skill);

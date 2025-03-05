@@ -646,7 +646,7 @@ namespace Server.Engines.Craft
 			else if ( item is ShortSpear ){ return 6; }
 			else if ( item is ShortSword ){ return 10; }
 			else if ( item is Shuriken ){ return 5; }
-			else if ( item is SkinningKnife ){ return 2; }
+			else if ( item is SkinningKnifeTool ){ return 2; }
 			else if ( item is Skirt ){ return 10; }
 			else if ( item is SkullCap ){ return 2; }
 			else if ( item is SkullMug ){ return 2; }

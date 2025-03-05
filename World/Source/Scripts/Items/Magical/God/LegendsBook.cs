@@ -11,6 +11,8 @@ namespace Server.Items
 {
 	public class LegendsBook : Item
 	{
+		public const int NUMBER_OF_ARTIFACTS = 290;
+
 		[Constructable]
 		public LegendsBook() : base( 0x22C5 )
 		{
@@ -38,10 +40,7 @@ namespace Server.Items
 				m_Book = wikipedia;
 				LegendsBook pedia = (LegendsBook)wikipedia;
 
-				int NumberOfArtifacts = 291;	// SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
-												// DO THIS NUMBER+1 IN THE OnResponse SECTION BELOW
-
-				decimal PageCount = NumberOfArtifacts / 16;
+				decimal PageCount = NUMBER_OF_ARTIFACTS / 16;
 				int TotalBookPages = ( 100000 ) + ( (int)Math.Ceiling( PageCount ) );
 
 				this.Closable=true;
@@ -393,7 +392,6 @@ namespace Server.Items
 			if ( artifact == arty) { name = typeof(LevelScythe).Name; item="Scythe"; } arty++;
 			if ( artifact == arty) { name = typeof(LevelShepherdsCrook).Name; item="Shepherds Crook"; } arty++;
 			if ( artifact == arty) { name = typeof(LevelShortSword).Name; item="Short Sword"; } arty++;
-			if ( artifact == arty) { name = typeof(LevelSkinningKnife).Name; item="Skinning Knife"; } arty++;
 			if ( artifact == arty) { name = typeof(LevelBoneHarvester).Name; item="Sickle"; } arty++;
 			if ( artifact == arty) { name = typeof(LevelSpear).Name; item="Spear"; } arty++;
 			if ( artifact == arty) { name = typeof(LevelSpikedClub).Name; item="Spiked Club"; } arty++;

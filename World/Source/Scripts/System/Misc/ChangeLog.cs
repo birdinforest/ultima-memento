@@ -75,6 +75,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Gemstones are now announced when harvested<br>");
 			builder.Append("- Gather - Harvest failures now consume Uses Remaining<br>");
 			builder.Append("- Gather - Harvest failures now consume node capacity<br>");
+			builder.Append("- Gather - Skinning knives have been refactored and are no longer weapons<br>");
 			builder.Append("- Gump - Redesigned crafting tool gump<br>");
 			builder.Append("- Gump - Add required skill to Animal Form gump<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");

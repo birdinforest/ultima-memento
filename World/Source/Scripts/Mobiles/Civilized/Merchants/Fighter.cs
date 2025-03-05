@@ -147,7 +147,7 @@ namespace Server.Mobiles
 				case 0: m.AddItem( new ButcherKnife() ); break;
 				case 1: m.AddItem( new Cleaver() ); break;
 				case 2: m.AddItem( new Dagger() ); break;
-				case 3: m.AddItem( new SkinningKnife() ); break;
+				case 3: m.AddItem( new Dagger() ); break; // Was SkinningKnife
 
 				case 4: m.AddItem( new Broadsword() ); break;
 				case 5: m.AddItem( new Cutlass() ); break;

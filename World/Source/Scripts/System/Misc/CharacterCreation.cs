@@ -743,7 +743,7 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Forensics:
-						PackItem(bag, new SkinningKnife());
+						PackItem(bag, new SkinningKnifeTool());
 						PackItem(bag, GenerateSkillBonusItem(skill.Name, 5, 5));
 						break;
 
@@ -866,12 +866,11 @@ namespace Server.Misc
 
 					case SkillName.Swords:
 						// Random fast weapon
-						switch (Utility.RandomMinMax(1, 4))
+						switch (Utility.RandomMinMax(1, 3))
 						{
 							case 1: PackItem(bag, new Bokuto()); break;
 							case 2: PackItem(bag, new Cleaver()); break;
-							case 3: PackItem(bag, new SkinningKnife()); break;
-							case 4: PackItem(bag, new Cutlass()); break;
+							case 3: PackItem(bag, new Cutlass()); break;
 						}
 						break;
 

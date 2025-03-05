@@ -124,7 +124,7 @@ namespace Server.Items
 				case 68: item = new Scimitar(); break;
 				case 69: item = new Scythe(); break;
 				case 70: item = new ShortSpear(); break;
-				case 71: item = new SkinningKnife(); break;
+				case 71: item = new Dagger(); break; // Was SkinningKnife
 				case 72: item = new Spear(); break;
 				case 73: item = new ThinLongsword(); break;
 				case 74: item = new TwoHandedAxe(); break;
