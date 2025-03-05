@@ -1127,7 +1127,7 @@ namespace Server.Items
 				{
 					Item skinningKnife = from.Trinket as SkinningKnifeTool;
 					if ( skinningKnife != null )
-						((ICarvable)this).Carve( from, skinningKnife );
+						Carve( from, skinningKnife );
 				}
 
 				base.OnDoubleClick( from );
