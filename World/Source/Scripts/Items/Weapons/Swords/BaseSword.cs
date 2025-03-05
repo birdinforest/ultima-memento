@@ -35,9 +35,13 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendLocalizedMessage( 1010018 ); // What do you want to use this item on?
-
-			from.Target = new BladedItemTarget( this );
+			base.OnDoubleClick( from );
+				
+			if ( Parent == from )
+			{
+				from.SendLocalizedMessage( 1010018 ); // What do you want to use this item on?
+				from.Target = new BladedItemTarget( this );
+			}
 		}
 	}
 }

@@ -98,8 +98,7 @@ namespace Server.Items
 			if ( HarvestSystem == null || Deleted )
 				return;
 
-			if (Parent != from && RootParentEntity == from)
-				from.EquipOrReplace(this);
+			base.OnDoubleClick( from );
 				
 			if ( Parent == from )
 				HarvestSystem.BeginHarvesting( from, this );

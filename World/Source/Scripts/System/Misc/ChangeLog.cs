@@ -51,7 +51,6 @@ namespace Server.Misc
 			builder.Append("- Craft - Cartography can now use Blank Map or Blank Scroll as a material<br>");
 			builder.Append("- Craft - Cartography skill requirements have been reworked<br>");
 			builder.Append("- Craft - Each Bark Fragment now creates 10x Blank scrolls<br>");
-			builder.Append("- Craft - Double-clicking a tool will try to equip it<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");
@@ -101,6 +100,7 @@ namespace Server.Misc
 			builder.Append("- Item - Dramatically reduce the sale price of Skins<br>");
 			builder.Append("- Item - Ten foot poles have been rebalanced<br>");
 			builder.Append("- Item - Equation for damaging items has been changed<br>");
+			builder.Append("- Item - Double-clicking a one or two-handed item will equip it<br>");
 			builder.Append("- Item - Sharpening stone rework<br>");
 			builder.Append("       - Centralized behvaiors for consistency<br>");
 			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");

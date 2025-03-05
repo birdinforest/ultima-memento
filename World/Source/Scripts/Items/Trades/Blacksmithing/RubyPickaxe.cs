@@ -91,8 +91,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
 		{
-			if (Parent != from && RootParentEntity == from)
-				from.EquipOrReplace(this);
+			base.OnDoubleClick( from );
 
 			if ( Parent == from )
 			{

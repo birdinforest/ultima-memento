@@ -46,6 +46,12 @@ namespace Server.Items
 			Server.Items.SpellItems.CastEnchantment( from, this );
 		}
 
+		public override void OnDoubleClick( Mobile from )
+		{
+			if (Parent != from && RootParentEntity == from)
+				from.EquipOrReplace(this);
+		}
+
 		public override int isWeapon()
 		{
 			if ( !isModded( this ) )
