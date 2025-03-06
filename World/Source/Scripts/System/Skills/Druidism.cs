@@ -328,7 +328,15 @@ namespace Server.SkillHandlers
 			AddButton(667, 12, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
 			string colA = "INFORMATION<BR> <BR>";
-			colA = colA + "  Level<BR>";
+			colA = colA + "  Power Level<BR>";
+			if ( c.Tamable )
+			{
+				if ( c.ControlMaster == null )
+					colA = colA + "  Max Pet Level<BR>";
+				else
+					colA = colA + "  Pet Level<BR>";
+			}
+
 			colA = colA + "  Hits<BR>";
 			colA = colA + "  Stamina<BR>";
 			colA = colA + "  Mana<BR>";
@@ -423,6 +431,14 @@ namespace Server.SkillHandlers
 			}
 
 			string colB = " <BR> <BR>" + IntelligentAction.GetCreatureLevel( c ) + "<BR>";
+			if ( c.Tamable )
+			{
+				if ( c.ControlMaster == null )
+					colB = colB + "" + c.MaxLevel + "<BR>";
+				else
+					colB = colB + "" + c.Level + " / " + c.MaxLevel + "<BR>";
+			}
+
 			colB = colB + "" + FormatNumber( c.Hits ) + " / " + FormatNumber( c.HitsMax ) + "<BR>";
 			colB = colB + "" + FormatNumber( c.Stam ) + " / " + FormatNumber( c.StamMax ) + "<BR>";
 			colB = colB + "" + FormatNumber( c.Mana ) + " / " + FormatNumber( c.ManaMax ) + "<BR>";

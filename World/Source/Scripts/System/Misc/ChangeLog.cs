@@ -130,6 +130,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Increase 'Vendor Buy' listening distance to 2<br>");
 			builder.Append("- Misc - Ninja/Bushido moves may be used while in Animal Form<br>");
 			builder.Append("- Misc - Weapon Abilities may be used while in Animal Form<br>");
+			builder.Append("- Misc - Add Jako Pet Leveling<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("       - Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("       - Forensics, Lumberjacking, Mining<br>");
