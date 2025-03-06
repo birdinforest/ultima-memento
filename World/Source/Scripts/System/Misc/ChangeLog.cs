@@ -149,6 +149,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Spiritualism now restores Mana when a corpse is consumed<br>");
 			builder.Append("- Skill - Masters in Remove Trap have a chance to avoid death from killer tiles<br>");
 			builder.Append("- Skill - Searching can detect killer tiles<br>");
+			builder.Append("- Skill - Magic Resistance skill now provides more resistance at lower skill<br>");
 			builder.Append("- Skill - Arms Lore no longer provides an OnHit damage bonus<br>");
 			builder.Append("- Skill - Arms Lore now helps prevent durability damage<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
@@ -157,7 +158,6 @@ namespace Server.Misc
 			builder.Append("- Spell - Rewrite Spell Bar configuration gump<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 			builder.Append("- Stats - Holy Man now executes skill checks when casting spells<br>");
-			builder.Append("- Stats - Magic Resistance skill now provides more resistance at lower skill<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
