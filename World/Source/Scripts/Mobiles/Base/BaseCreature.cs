@@ -9938,14 +9938,25 @@ namespace Server.Mobiles
                 if (tellOwner && ControlMaster != null)
                     ControlMaster.SendMessage("Your pet has decreased in level!");
                 m_level = newLevel;
-
             }
             else if (newLevel > RealLevel)
             {
                 for (uint x = m_level + 1; x <= newLevel && x <= MaxLevel; x++)
                 {
                     IncreaseTraits(TraitsGiven(x), false);
+
+					if (ControlMaster != null)
+					{
+						for(uint i = x; i > 0; i--)
+						{
+							if (MinTameSkill < 1) break;
+
+							ControlMaster.CheckTargetSkill( SkillName.Taming, this, MinTameSkill - 25.0, MinTameSkill + 25.0 );
+							MinTameSkill--;
+						}
+					}
                 }
+
                 m_level = RealLevel = newLevel;
             }
 
