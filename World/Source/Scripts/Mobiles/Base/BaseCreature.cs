@@ -9881,7 +9881,7 @@ namespace Server.Mobiles
 			if (Controlled && ControlMaster != null && ControlMaster is PlayerMobile) // Herding bonus experience
 				experience += (uint)(experience * ControlMaster.Skills[SkillName.Herding].Value / 500); // max of 25%
 			if (1 < rights.Count)
-				experience = (uint)(experience / rights.Count);
+				experience /= 2;
 
             foreach (DamageEntry entry in rights)
             {
