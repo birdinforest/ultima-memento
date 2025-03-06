@@ -8,10 +8,7 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_Pestilence() : base()
         {
-			int attributeCount = Utility.RandomMinMax(5,8);
-			int min = Utility.RandomMinMax(6,16);
-			int max = min + 15;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
+			BaseRunicTool.ApplyAttributes( this, 4, 4, 40, 100 );
 
 			Name = "Pestilence";
 			Hue = 1151;

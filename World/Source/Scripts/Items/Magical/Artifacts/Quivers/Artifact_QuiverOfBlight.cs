@@ -8,10 +8,7 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_QuiverOfBlight() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,10);
-			int min = Utility.RandomMinMax(10,20);
-			int max = min + 20;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
+			BaseRunicTool.ApplyAttributes( this, 4, 4, 40, 100 );
 
 			Name = "Quiver of Blight";
 			Hue = 0xB79;

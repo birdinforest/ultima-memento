@@ -102,6 +102,7 @@ namespace Server.Misc
 			builder.Append("- Item - Equation for damaging items has been changed<br>");
 			builder.Append("- Item - Double-clicking a one or two-handed item will equip it<br>");
 			builder.Append("- Item - Remove Damage Modifier from Quivers<br>");
+			builder.Append("- Item - Redo properties for Artifact Quivers<br>");
 			builder.Append("- Item - Sharpening stone rework<br>");
 			builder.Append("       - Centralized behvaiors for consistency<br>");
 			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");
