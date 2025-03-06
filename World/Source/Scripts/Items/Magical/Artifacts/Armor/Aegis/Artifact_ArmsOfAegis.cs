@@ -8,7 +8,7 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 12; } }
+		public override int BasePhysicalResistance{ get{ return 16; } }
 
 		[Constructable]
 		public Artifact_ArmsOfAegis()
