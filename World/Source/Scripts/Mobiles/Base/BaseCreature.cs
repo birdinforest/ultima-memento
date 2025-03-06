@@ -9747,7 +9747,7 @@ namespace Server.Mobiles
         public uint MaxLevel { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public virtual uint AbsMaxLevel { get { return 50; } }
+        public virtual uint AbsMaxLevel { get { return 20; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public uint Experience { get; set; }
