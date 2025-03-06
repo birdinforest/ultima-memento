@@ -38,10 +38,6 @@ namespace Server.Items
 
 			int version = reader.ReadEncodedInt();
 
-			if( version < 1 && DamageIncrease == 0 )
-			{
-				DamageIncrease = 10;
-			}
 			ArtifactLevel = 1;
 		}
 	}

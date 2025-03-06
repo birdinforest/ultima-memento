@@ -113,8 +113,8 @@ namespace Server
 				{
 					totalDamage += damage * direct / 100;
 
-					if ( quiver != null )
-						totalDamage += totalDamage * quiver.DamageIncrease / 100;
+					// if ( quiver != null )
+					// 	totalDamage += totalDamage * quiver.DamageIncrease / 100;
 				}
 
 				if( totalDamage < 1 )
@@ -122,8 +122,8 @@ namespace Server
 			}
 			else if( Core.ML && m is PlayerMobile && from is PlayerMobile )
 			{
-				if ( quiver != null )
-					damage += damage * quiver.DamageIncrease / 100;
+				// if ( quiver != null )
+				// 	damage += damage * quiver.DamageIncrease / 100;
 
 				if ( !deathStrike )
 					totalDamage = Math.Min( damage, 35 );	// Direct Damage cap of 35
@@ -134,8 +134,8 @@ namespace Server
 			{
 				totalDamage = damage;
 
-				if ( Core.ML && quiver != null )
-					totalDamage += totalDamage * quiver.DamageIncrease / 100;
+				// if ( Core.ML && quiver != null )
+				// 	totalDamage += totalDamage * quiver.DamageIncrease / 100;
 			}
 
 			#region Dragon Barding

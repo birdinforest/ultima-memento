@@ -79,7 +79,7 @@ namespace Server.Items
 
 			m_Attributes = new AosAttributes( this );
 
-			DamageIncrease = 10;
+			// DamageIncrease = 10;
 			ItemID = Utility.RandomList( 0x2B02, 0x2B03, 0x5770, 0x5770 );
 		}
 
@@ -260,8 +260,8 @@ namespace Server.Items
 
 			int prop;
 
-			if ( (prop = (m_Attributes.WeaponDamage+m_DamageIncrease)) != 0 )
-				list.Add( 1074762, prop.ToString() ); // Damage modifier: ~1_PERCENT~%
+			// if ( (prop = (m_Attributes.WeaponDamage+m_DamageIncrease)) != 0 )
+			// 	list.Add( 1074762, prop.ToString() ); // Damage modifier: ~1_PERCENT~%
 			
 			int phys, fire, cold, pois, nrgy, chaos, direct;
 			phys = fire = cold = pois = nrgy = chaos = direct = 0;
