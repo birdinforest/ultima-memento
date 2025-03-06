@@ -43,5 +43,19 @@ namespace Server.SkillHandlers
 				}
 			}
 		}
+
+		public static bool AvoidDurabilityHit( Mobile parent )
+		{
+			if ( parent == null ) return false;
+
+			double armsLore = parent != null ? parent.Skills[SkillName.ArmsLore].Value : 0;
+			if ( armsLore < 5 ) return false;
+			if ( !Utility.RandomBool() ) return false;
+			if ( armsLore < Utility.Random(100) ) return false;
+
+			parent.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You quickly turn, preventing damage to your equipment." );
+
+			return true;
+		}
 	}
 }

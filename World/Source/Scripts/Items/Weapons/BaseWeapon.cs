@@ -2369,7 +2369,6 @@ namespace Server.Items
 			double	anatomyBonus = GetBonus( attacker.Skills[SkillName.Anatomy].Value,			0.500, 100.0,  5.00 );
 			double	tacticsBonus = GetBonus( attacker.Skills[SkillName.Tactics].Value,			0.625, 100.0,  6.25 );
 			double	lumberBonus = GetBonus( attacker.Skills[SkillName.Lumberjacking].Value,		0.200, 100.0, 10.00 );
-			double	armsLoreBonus = GetBonus( attacker.Skills[SkillName.ArmsLore].Value,		0.625, 100.0,  6.25 );
 			double	miningBonus = GetBonus( attacker.Skills[SkillName.Mining].Value,			0.200, 100.0, 10.00 );
 			double	fishingBonus = GetBonus( attacker.Skills[SkillName.Seafaring].Value,		0.200, 100.0, 10.00 );
 			double	ninjaBonus = GetBonus( attacker.Skills[SkillName.Ninjitsu].Value,			0.625, 100.0,  6.25 );
@@ -2434,7 +2433,7 @@ namespace Server.Items
 				damageBonus = 100;
 			#endregion
 
-			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + armsLoreBonus + lumberBonus + miningBonus + fishingBonus + ellyBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
+			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + lumberBonus + miningBonus + fishingBonus + ellyBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
 
 			return damage + (int)(damage * totalBonus);
 		}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Engines.Craft;
 using Server.Network;
+using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -415,9 +416,9 @@ namespace Server.Items
 			{
 				if ( this is ILevelable )
 				{
-					LevelItemManager.RepairItems( ((Mobile)Parent) );
+					LevelItemManager.RepairItems( Parent as Mobile );
 				}
-				else
+				else if ( !ArmsLore.AvoidDurabilityHit( Parent as Mobile ) )
 				{
 					int wear;
 

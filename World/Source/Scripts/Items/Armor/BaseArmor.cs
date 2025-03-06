@@ -16,6 +16,7 @@ using Server.Spells.Eighth;
 using AMA = Server.Items.ArmorMeditationAllowance;
 using AMT = Server.Items.ArmorMaterialType;
 using ABT = Server.Items.ArmorBodyType;
+using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -1271,9 +1272,9 @@ namespace Server.Items
 			{
 				if ( this is ILevelable )
 				{
-					LevelItemManager.RepairItems( ((Mobile)Parent) );
+					LevelItemManager.RepairItems( Parent as Mobile );
 				}
-				else
+				else if ( !ArmsLore.AvoidDurabilityHit( Parent as Mobile ) )
 				{
 					int wear;
 

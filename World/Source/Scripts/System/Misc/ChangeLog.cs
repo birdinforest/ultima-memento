@@ -149,6 +149,8 @@ namespace Server.Misc
 			builder.Append("- Skill - Spiritualism now restores Mana when a corpse is consumed<br>");
 			builder.Append("- Skill - Masters in Remove Trap have a chance to avoid death from killer tiles<br>");
 			builder.Append("- Skill - Searching can detect killer tiles<br>");
+			builder.Append("- Skill - Arms Lore no longer provides an OnHit damage bonus<br>");
+			builder.Append("- Skill - Arms Lore now helps prevent durability damage<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
 			builder.Append("- Spell - Paladin spells require 1 stamina per 1 mana cost<br>");
 			builder.Append("- Spell - Creatures now vocalize Mantras when they cast spells<br>");
