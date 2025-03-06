@@ -9965,6 +9965,26 @@ namespace Server.Mobiles
 					}
                 }
 
+				if ( newLevel == 3 ) // Auto-Bond
+				{
+					if (!IsBonded && ControlMaster != null)
+					{
+						IsBonded = true;
+						BondingBegin = DateTime.MinValue;
+						ControlMaster.SendLocalizedMessage( 1049666 ); // Your pet has bonded with you!
+					}
+				}
+				else if ( newLevel == AbsMaxLevel ) // Reduce control slots, down to 2
+				{
+					const int MIN_CONTROL_SLOTS = 2;
+					if ( MIN_CONTROL_SLOTS <= ControlSlots - 1)
+					{
+						ControlSlots -= 1;
+						if (ControlMaster != null)
+							ControlMaster.SendMessage( "Your pet trusts you implicitly. It will be easier to control now." );
+					}
+				}
+
                 m_level = RealLevel = newLevel;
             }
 
