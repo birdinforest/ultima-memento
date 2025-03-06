@@ -7,6 +7,23 @@ namespace Server.Gumps
         private readonly Action _onConfirmed;
         private readonly Action _onDeclined;
 
+        /// <summary>
+        /// Immediately executes `onConfirmed` if `shouldSend` is `true`.
+        /// Otherwise, sends a confirmation gump.
+        /// </summary>
+        public static void PromptIfFalse(Mobile from, bool shouldSend, Action onConfirmed, Func<Action, ConfirmationGump> gumpFactory)
+        {
+            if (shouldSend)
+            {
+                ConfirmationGump gump = gumpFactory(onConfirmed);
+                from.SendGump(gump);
+            }
+            else
+            {
+                onConfirmed();
+            }
+        }
+
         public ConfirmationGump(Mobile player, string message, Action onConfirmed = null, Action onDeclined = null)
             : this(player, null, message, onConfirmed, onDeclined)
         {
