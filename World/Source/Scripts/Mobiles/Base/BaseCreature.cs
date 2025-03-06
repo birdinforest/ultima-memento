@@ -4960,6 +4960,7 @@ namespace Server.Mobiles
 
             #region Jako Taming Added
             Female = Utility.RandomBool();
+			RealLevel = m_level;
 			MaxLevel = (uint)Utility.RandomMinMax(9, 15);
 			NextMate = DateTime.Now;
             #endregion
