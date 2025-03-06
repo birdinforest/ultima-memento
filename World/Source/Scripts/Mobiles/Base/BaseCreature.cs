@@ -9719,7 +9719,7 @@ namespace Server.Mobiles
         #region Jako Taming
         private uint m_level = 1;
         protected virtual TimeSpan NextMateDelay(uint atLevel) { return (atLevel == AbsMaxLevel ? TimeSpan.FromDays(14) : TimeSpan.FromDays(7)); }
-        public virtual uint ExpNeeded(uint atLevel) { return (uint)(5 * Math.Pow(atLevel, 3) + 10000); }
+        public virtual uint ExpNeeded(uint atLevel) { return (uint)(155.34 * Math.Pow(atLevel, 1.634)); }
         public virtual uint TraitsGiven(uint atLevel) { return (atLevel < 0 && atLevel % 10 == 0) ? (uint)5 : (uint)2; }
         public string SexString { get { return (Female ? "Female" : "Male"); } }
         public JakoAttributes m_jakoAttributes = new JakoAttributes();
@@ -9768,7 +9768,7 @@ namespace Server.Mobiles
         public virtual double ExpDecayPerc { get { return .20; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public virtual uint ExpGiven { get { return (uint)(Fame / 50); } }
+        public virtual uint ExpGiven { get { return (uint)(20 + (Fame / 75)); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public virtual uint ExpToNextLevel { get { return ExpNeeded(m_level); } }
