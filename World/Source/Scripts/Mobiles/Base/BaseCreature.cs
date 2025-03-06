@@ -9872,17 +9872,24 @@ namespace Server.Mobiles
         /// <param name="m">The creature to calcaulte the EXP From (typically dead).</param>
         private void CalculateExpDist(Mobile m)
         {
-            if (!(m is BaseCreature) || ((BaseCreature)m).ExpGiven == 0 || !((BaseCreature)m).JakoIsEnabled || ((BaseCreature)m).Summoned)
-                return;
+			BaseCreature creature = m as BaseCreature;
+			if (creature == null || creature.ExpGiven == 0 || !creature.JakoIsEnabled || creature.Summoned) return;
 
             List<DamageEntry> rights = m.DamageEntries;
+
+			uint experience = creature.ExpGiven;
+			if (Controlled && ControlMaster != null && ControlMaster is PlayerMobile) // Herding bonus experience
+				experience += (uint)(experience * ControlMaster.Skills[SkillName.Herding].Value / 500); // max of 25%
+			if (1 < rights.Count)
+				experience = (uint)(experience / rights.Count);
+
             foreach (DamageEntry entry in rights)
             {
                 if (entry.Damager is BaseCreature)
                 {
                     BaseCreature bc = (BaseCreature)entry.Damager;
                     if (bc.Controlled == true && bc.ControlMaster != null)
-                        bc.GainExp(m, (uint)(((BaseCreature)m).ExpGiven / rights.Count), true);
+                        bc.GainExp(m, experience, true);
                 }
             }
 
