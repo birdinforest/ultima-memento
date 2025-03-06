@@ -5738,7 +5738,7 @@ namespace Server.Mobiles
 			return false;
 		}
 
-		public virtual bool CanAngerOnTame{ get{ return false; } }
+		public virtual bool CanAngerOnTame{ get{ return 10000 <= Fame; } }
 
 		#region OnAction[...]
 
