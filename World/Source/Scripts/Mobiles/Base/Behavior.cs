@@ -24,6 +24,7 @@ using System.Collections;
 using System.IO;
 using System.Text;
 using System;
+using Server.Gumps;
 
 namespace Server
 {
@@ -7945,6 +7946,7 @@ namespace Server.Mobiles
 						m_Creature.BondingBegin = DateTime.MinValue;
 						m_Creature.OwnerAbandonTime = DateTime.MinValue;
 						m_Creature.IsBonded = false;
+						m_Creature.Level = 1; // Reset level after trading!
 
 						m_Creature.PlaySound( m_Creature.GetIdleSound() );
 
@@ -8045,8 +8047,16 @@ namespace Server.Mobiles
 						}
 						else
 						{
-							Container c = fromState.AddTrade( toState );
-							c.DropItem( new TransferItem( m_Mobile ) );
+							ConfirmationGump.PromptIfFalse(
+								from,
+								1 < m_Mobile.Level,
+								() =>
+									{
+										Container c = fromState.AddTrade( toState );
+										c.DropItem( new TransferItem( m_Mobile ) );
+									},
+								onConfirmed => new ConfirmationGump(from, "Transferring this pet will reduce the level to 1. Are you sure you want to transfer the pet?", onConfirmed)
+							);
 						}
 					}
 				}
