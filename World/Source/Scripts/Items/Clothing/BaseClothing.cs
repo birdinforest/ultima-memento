@@ -36,16 +36,7 @@ namespace Server.Items
 		private AosElementAttributes m_AosResistances;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public override Density Density
-		{
-			get
-			{
-				if ( ( PhysicalResistance + FireResistance + ColdResistance + PoisonResistance + EnergyResistance ) > 0 )
-					return CraftResources.GetDensity( this );
-
-				return Density.None;
-			}
-		}
+		public override Density Density { get { return CraftResources.GetDensity( this ); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxHitPoints
@@ -400,7 +391,7 @@ namespace Server.Items
 			if ( damageTaken < 0 ) 
 				damageTaken = 0;
 
-			if ( Density == Density.None ) return damageTaken;
+			if ( Density == Density.None ) return damageTaken; //
 	
 			/*
 				100% - Weak
