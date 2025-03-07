@@ -10,6 +10,7 @@ using Server.Spells.Bushido;
 using Server.Spells.Ninjitsu;
 using Server.Engines.Craft;
 using System.Collections.Generic;
+using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -1675,27 +1676,42 @@ namespace Server.Items
 				if ( m_AosWeaponAttributes.SelfRepair > Utility.Random( 10 ) )
 					HitPoints += Utility.RandomMinMax( 1, (int)Density );
 
+				bool damaged = false;
 				if ( this is ILevelable )
 				{
 					LevelItemManager.RepairItems( attacker );
 				}
 				else if ( m_Hits > 0 )
 				{
-					--HitPoints;
-
 					if ( MaxRange <= 1 && acidic )
-					attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+					{
+						damaged = true;
+						attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+					}
+					else if ( !ArmsLore.AvoidDurabilityHit(Parent as Mobile) )
+					{
+						damaged = true;
+					}
 				}
 				else if ( m_MaxHits > 1 )
 				{
-					--MaxHitPoints;
-
 					if ( MaxRange <= 1 && acidic )
-					attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+					{
+						damaged = true;
+						attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+					}
+					else if ( !ArmsLore.AvoidDurabilityHit(Parent as Mobile) )
+					{
+						damaged = true;
+					}
 
-					if ( Parent is Mobile )
+					if ( damaged && Parent is Mobile )
 						((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
 				}
+
+				if ( damaged )
+					--HitPoints;
+
 
 				if ( MaxHitPoints < 1 )
 					Delete();
