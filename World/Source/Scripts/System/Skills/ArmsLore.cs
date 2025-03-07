@@ -53,7 +53,7 @@ namespace Server.SkillHandlers
 			if ( !Utility.RandomBool() ) return false;
 			if ( armsLore < Utility.Random(100) ) return false;
 
-			parent.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You quickly turn, preventing damage to your equipment." );
+			parent.SendMessage(0x3B2, "You notice your equipment is especially durable.");
 
 			return true;
 		}
