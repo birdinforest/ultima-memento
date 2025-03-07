@@ -121,7 +121,7 @@ namespace Server.Engines.Craft
 				}
 
 				AddButton( LEFT_WINDOW_START, 402+moveUp, 4017, 4019, 0, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 41, 405+moveUp, 150, 18, 1011441, LabelColor, false, false ); // EXIT
+				AddHtmlLocalized( 46, 405+moveUp, 150, 18, 1011441, LabelColor, false, false ); // EXIT
 
 				// Break down option
 				if ( craftSystem.BreakDown )
@@ -193,12 +193,12 @@ namespace Server.Engines.Craft
 							resourceCount += items[i].Amount;
 					}
 
-					AddButton( LEFT_WINDOW_START, 371+moveUp, 4005, 4007, GetButtonID( 6, 0 ), GumpButtonType.Reply, 0 );
+					AddButton( LEFT_WINDOW_START + 138, 402+moveUp, 4005, 4007, GetButtonID( 6, 0 ), GumpButtonType.Reply, 0 );
 
 					if ( nameNumber > 0 )
-						AddHtmlLocalized( 46, 373+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
+						AddHtmlLocalized( 184, 405+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
 					else
-						AddLabel( 46, 373+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
+						AddLabel( 184, 405+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
 				}
 
 				CreateGroupList();
