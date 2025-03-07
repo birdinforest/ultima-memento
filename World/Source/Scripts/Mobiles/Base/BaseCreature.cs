@@ -1947,12 +1947,12 @@ namespace Server.Mobiles
 
 		public virtual bool CheckControlChance( Mobile m )
 		{
+			PlayerMobile master = Controlled && ControlMaster != null && ControlMaster is PlayerMobile ? (PlayerMobile)ControlMaster : null;
 			if ( GetControlChance( m ) > Utility.RandomDouble() )
 			{
-				if (Utility.RandomDouble() > 0.85 && Controlled && ControlMaster != null && ControlMaster is PlayerMobile)
+				if (Utility.RandomDouble() > 0.85 && master != null)
 				{
-					PlayerMobile pm = (PlayerMobile)ControlMaster;
-					pm.CheckSkill( SkillName.Herding, MinTameSkill - 25, MinTameSkill + 25 );
+					master.CheckSkill( SkillName.Herding, MinTameSkill - 25, MinTameSkill + 25 );
 				}
 
 				return true;
@@ -1964,6 +1964,8 @@ namespace Server.Mobiles
 				Animate( 10, 5, 1, true, false, 0 );
 			else if ( Body.IsMonster )
 				Animate( 18, 5, 1, true, false, 0 );
+
+			if (master != null && master.CheckSkill( SkillName.Herding, MinTameSkill - 25, MinTameSkill + 25 )) return false;
 
 			Loyalty -= 3;
 			return false;
