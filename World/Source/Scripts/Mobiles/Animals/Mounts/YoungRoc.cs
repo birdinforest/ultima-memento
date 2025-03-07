@@ -13,8 +13,6 @@ namespace Server.Mobiles
 			return WeaponAbility.Dismount;
 		}
 
-		public override bool StatLossAfterTame { get { return true; } }
-
 		private static int GetHue()
 		{
 			int rand = Utility.Random( 527 );

@@ -349,7 +349,7 @@ namespace Server.SkillHandlers
 									ScaleSkills( m_Creature, 0.90 ); // 90% of original skills
 
 								if ( m_Creature.StatLossAfterTame )
-									ScaleStats( m_Creature, 0.50 );
+									ScaleStats( m_Creature, 0.75 );
 							}
 
 							if ( alreadyOwned )
@@ -369,6 +369,7 @@ namespace Server.SkillHandlers
 							m_Creature.Home = new Point3D(0, 0, 0);
 							m_Creature.FightMode = FightMode.Aggressor;
 							m_Creature.IsBonded = false;
+							m_Creature.Level = 1;
 						}
 						else
 						{

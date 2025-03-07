@@ -9,7 +9,6 @@ namespace Server.Mobiles
 	public class FireBeetle : BaseMount
 	{
 		public override bool SubdueBeforeTame{ get{ return true; } } // Must be beaten into submission
-		public override bool StatLossAfterTame{ get{ return true; } }
 		public virtual double BoostedSpeed{ get{ return 0.1; } }
 		public override bool ReduceSpeedWithDamage{ get{ return false; } }
 
