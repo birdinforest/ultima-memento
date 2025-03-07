@@ -139,7 +139,7 @@ namespace Server.Engines.Harvest
 
 			if (harvested is IPoint3D)
 			{
-				if (bank.IsEmpty && Utility.Random(100) < 25 && !m_VolatileDefinition.HasBank(from))
+				if (55 <= from.Skills[SkillName.Lumberjacking].Base && bank.IsEmpty && Utility.Random(100) < 25 && !m_VolatileDefinition.HasBank(from))
 				{
                     const int MAX_DISTANCE = 8;
 					var location = (IPoint3D)harvested;
