@@ -1,15 +1,9 @@
 using System;
-using Server;
 using System.Collections;
-using System.Collections.Generic;
-using Server.Misc;
 using Server.Items;
-using Server.Network;
 using Server.Commands;
-using Server.Commands.Generic;
 using Server.Mobiles;
-using Server.Accounting;
-using Server.Regions;
+using System.Linq;
 
 namespace Server.Misc
 {
@@ -118,23 +112,14 @@ namespace Server.Misc
 			}
 
 			Map map = from.Map;
+			if ( map == null ) return;
 
-			if ( map == null )
-				return;
-
-			ArrayList targets = new ArrayList();
-			foreach ( Item body in World.Items.Values )
-			if ( body is Corpse )
-			{
-				Corpse cadaver = (Corpse)body;
-				if ( cadaver.Owner == from && Server.Misc.Worlds.ItemOnBoat( body ) )
-					targets.Add( cadaver );
-			}
-			for ( int i = 0; i < targets.Count; ++i )
-			{
-				Item cadavers = ( Item )targets[ i ];
-				cadavers.Delete();
-			}
+			World.Items.Values
+				.Where(item => item is Corpse)
+				.Cast<Corpse>()
+				.Where(corpse => corpse.Owner == from && corpse.TotalItems == 0)
+				.ToList()
+				.ForEach(item => item.Delete());
 
 			from.SendMessage("Your corpses have been deleted.");
 		}
