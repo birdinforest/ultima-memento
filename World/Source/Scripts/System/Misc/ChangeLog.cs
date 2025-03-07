@@ -162,7 +162,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Arms Lore now helps prevent durability damage<br>");
 			builder.Append("- Skill - Taming can now gain every time a pet levels up<br>");
 			builder.Append("- Skill - Creatures with >= 10k Fame will anger on tame by default<br>");
-			builder.Append("- Skill - Herding now increases pet experience gained<br>");
+			builder.Append("- Skill - Herding now increases pet experience gained<br>"); // TODO: Update documentation
 			builder.Append("- Skill - Herding can now be gained by issuing commands<br>");
 			builder.Append("- Skill - Herding can prevent Loyalty loss when pets are disobedient<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
