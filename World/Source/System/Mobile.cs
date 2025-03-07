@@ -10713,37 +10713,46 @@ namespace Server
 				return false;
 
 			Item existingItem = FindItemOnLayer(item.Layer);
-			if (existingItem != null) UnequipAndUnmod(existingItem);
+			if (existingItem != null) UnequipAndUnmod(existingItem, item);
 
-			TryClearHands( item );
+			TryClearHands( item, item );
 
             return EquipItem( item );
 		}
 
-		protected void UnequipAndUnmod( Item item )
+		protected void UnequipAndUnmod( Item item, Item destinationItem = null )
 		{
-			Backpack.AddItem(item);
+			if ( destinationItem != null && destinationItem.Parent != null && destinationItem.Parent is Container )
+			{
+				((Container)destinationItem.Parent).AddItem(item);
+				item.Location = destinationItem.Location;
+			}
+			else
+			{
+				Backpack.AddItem(item);
+			}
+				
 
 			if (Item.isModded(item)) Item.undoMod(item);
 		}
 
-		public void TryClearHands( Item item )
+		public void TryClearHands( Item item, Item destinationItem = null )
 		{
 			Item existingItem;
             if (item.Layer == Layer.OneHanded)
 			{
                 existingItem = FindItemOnLayer(Layer.TwoHanded);
-                if (existingItem != null && existingItem.NeedsBothHands) UnequipAndUnmod(existingItem);
+                if (existingItem != null && existingItem.NeedsBothHands) UnequipAndUnmod(existingItem, destinationItem);
             }
             else if (item.Layer == Layer.TwoHanded)
             {
                 existingItem = FindItemOnLayer(Layer.TwoHanded);
-                if (existingItem != null) UnequipAndUnmod(existingItem);
+                if (existingItem != null) UnequipAndUnmod(existingItem, destinationItem);
 
                 if (item.NeedsBothHands)
                 {
                     existingItem = FindItemOnLayer(Layer.OneHanded);
-                    if (existingItem != null) UnequipAndUnmod(existingItem);
+                    if (existingItem != null) UnequipAndUnmod(existingItem, destinationItem);
                 }
             }
 		}
