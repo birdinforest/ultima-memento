@@ -4,8 +4,8 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-        [CorpseName( "a dead body" )]
-        public class corpse : BaseCreature
+    [CorpseName("a dead body")]
+    public class SummonCorpse : BaseCreature
         {
                 private bool m_Stunning;
 
@@ -17,12 +17,12 @@ namespace Server.Mobiles
                 public override FoodType FavoriteFood { get { return FoodType.None; } }
 
                 [Constructable]
-                public corpse() : this( false, 1.0 )
+                public SummonCorpse() : this( false, 1.0 )
                 {
                 }
 
                 [Constructable]
-                public corpse( bool summoned, double scalar ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.4, 0.8 )
+                public SummonCorpse( bool summoned, double scalar ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.4, 0.8 )
                 {
                         Name = "a summoned corpse";
                         Body = 154;
@@ -190,7 +190,7 @@ namespace Server.Mobiles
                 public override bool BardImmune{ get{ return !Core.AOS || Controlled; } }
                 public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 
-                public corpse( Serial serial ) : base( serial )
+                public SummonCorpse( Serial serial ) : base( serial )
                 {
                 }
 

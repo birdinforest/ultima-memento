@@ -124,7 +124,7 @@ namespace Server.Items
                                 }
                                 default:
                                 {
-                                        corpse z = new corpse( true, scalar );
+                                        SummonCorpse z = new SummonCorpse( true, scalar );
 
                                         if ( z.SetControlMaster( from ) )
                                         {
