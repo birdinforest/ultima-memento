@@ -1949,7 +1949,12 @@ namespace Server.Mobiles
 		{
 			if ( GetControlChance( m ) > Utility.RandomDouble() )
 			{
-				Loyalty += 1;
+				if (Utility.RandomDouble() > 0.85 && Controlled && ControlMaster != null && ControlMaster is PlayerMobile)
+				{
+					PlayerMobile pm = (PlayerMobile)ControlMaster;
+					pm.CheckSkill( SkillName.Herding, MinTameSkill - 25, MinTameSkill + 25 );
+				}
+
 				return true;
 			}
 

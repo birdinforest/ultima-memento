@@ -159,6 +159,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Taming can now gain every time a pet levels up<br>");
 			builder.Append("- Skill - Creatures with >= 10k Fame will anger on tame by default<br>");
 			builder.Append("- Skill - Herding now increases pet experience gained<br>");
+			builder.Append("- Skill - Herding can now be gained by issuing commands<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");
 			builder.Append("- Spell - Paladin spells require 1 stamina per 1 mana cost<br>");
 			builder.Append("- Spell - Creatures now vocalize Mantras when they cast spells<br>");
