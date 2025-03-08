@@ -330,7 +330,7 @@ namespace Server.Engines.Harvest
 					{
 						if ( from.CheckSkill( SkillName.Forensics, 0, 125 ) )
 						{
-							Item chest = new GraveChest(6, from);
+							Item chest;
 							switch ( Utility.Random( 10+digger ))
 							{
 								case 0: chest = new GraveChest(1, from); break;
@@ -353,12 +353,11 @@ namespace Server.Engines.Harvest
 								case 17: chest = new GraveChest(4, from); break;
 								case 18: chest = new GraveChest(5, from); break;
 								case 19: chest = new GraveChest(5, from); break;
+								default: chest = new GraveChest(6, from); break;
 							}
-							if ( chest != null )
-							{
-								chest.MoveToWorld( loc, map );
-								from.SendMessage( "you dig up a graveyard chest." );
-							}
+
+							chest.MoveToWorld( loc, map );
+							from.SendMessage( "you dig up a graveyard chest." );
 						}
 					}
 				}
