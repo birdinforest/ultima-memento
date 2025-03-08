@@ -28,28 +28,32 @@ namespace Custom.Jerbal.Jako
         [CommandProperty(AccessLevel.GameMaster)]
         public abstract uint PointsTaken { get; }
 
-        public virtual uint MaxBonus(BaseCreature bc)
+        public bool CanAfford(BaseCreature bc)
         {
-            if (GetStat(bc) >= Cap)
-                return (GetStat(bc));
-            if ((int)((GetStat(bc) - IncreasedBy) * CapScale) > Cap)
-                return Cap;
-            return (uint)((GetStat(bc) - IncreasedBy) * CapScale);
+            return PointsTaken <= bc.Traits;
         }
 
-        public virtual string DoOnClick(BaseCreature bc)
+        public virtual uint MaxBonus(BaseCreature bc)
         {
-            if (MaxBonus(bc) <= (GetStat(bc) + AttributesGiven))
-                return "That would place this creature's stat above maximum.";
-            if ((int)bc.Traits < PointsTaken)
-                return "You do not have enough traits to do that.";
+            uint currentValue = GetStat(bc);
+            if (currentValue >= Cap) return currentValue;
+            if ((int)((currentValue - IncreasedBy) * CapScale) > Cap) return Cap;
 
-            if (IncBonus(bc, AttributesGiven))
-                return "Attribute adjusted.";
+            return (uint)((currentValue - IncreasedBy) * CapScale);
+        }
+
+        public bool CanAddBonus(BaseCreature bc)
+        {
+            return GetStat(bc) + AttributesGiven < MaxBonus(bc);
+        }
+
+        public virtual string ApplyBonus(BaseCreature bc)
+        {
+            if (!CanAddBonus(bc)) return "That would place this creature's stat above maximum.";
+            if (!CanAfford(bc)) return "You do not have enough traits to do that.";
+            if (IncBonus(bc, AttributesGiven)) return "Attribute adjusted.";
 
             return "Error in IncBonus."; //Hopefully no one ever sees this, if they do, we know where it is.
-
-
         }
 
         public virtual bool IncBonus(BaseCreature bc, uint byThis)
@@ -61,8 +65,8 @@ namespace Custom.Jerbal.Jako
 
         public virtual bool SetBonus(BaseCreature bc, uint toThis)
         {
-            if (toThis > MaxBonus(bc))
-                return false;
+            if (toThis > MaxBonus(bc)) return false;
+
             uint oldTraits = TraitsGiven;
             TraitsGiven += ((toThis - GetStat(bc)) / AttributesGiven) * PointsTaken;
             bc.Traits -= TraitsGiven - oldTraits;
@@ -72,7 +76,6 @@ namespace Custom.Jerbal.Jako
 
         public virtual void Serialize(GenericWriter writer)
         {
-
             writer.Write(1);//Version
             writer.Write(TraitsGiven);
         }
