@@ -3,7 +3,7 @@
     class JakoStaminaPointsAttribute : JakoBaseAttribute
     {
         public override double CapScale { get { return 1.5; } }
-        public override uint AttributesGiven { get { return 5; } }
+        public override uint AttributesGiven { get { return 15; } }
         public override uint Cap { get { return 750; } }
         public override uint PointsTaken { get { return 1; } }
 

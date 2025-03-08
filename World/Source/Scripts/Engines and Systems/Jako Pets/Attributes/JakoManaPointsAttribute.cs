@@ -3,7 +3,7 @@
     class JakoManaPointsAttribute : JakoBaseAttribute
     {
         public override double CapScale { get { return 1.25; } }
-        public override uint AttributesGiven { get { return 2; } }
+        public override uint AttributesGiven { get { return 10; } }
         public override uint Cap { get { return 550; } }
         public override uint PointsTaken { get { return 1; } }
 
