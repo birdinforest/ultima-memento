@@ -3830,6 +3830,7 @@ namespace Server.Mobiles
 			set
 			{
 				m_Loyalty = Math.Min( Math.Max( value, 0 ), MaxLoyalty );
+				InvalidateProperties();
 			}
 		}
 
