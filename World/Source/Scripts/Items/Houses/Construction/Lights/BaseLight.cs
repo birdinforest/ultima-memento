@@ -27,7 +27,7 @@ namespace Server.Items
 		public virtual int UnlitSound{ get { return 0x3be; } }
 		public virtual int BurntOutSound{ get { return 0x4b8; } }
 
-		public static readonly bool Burnout = true;
+		public static readonly bool Burnout = false;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Burning
