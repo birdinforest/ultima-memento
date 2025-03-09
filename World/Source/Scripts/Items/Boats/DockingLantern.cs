@@ -128,38 +128,37 @@ namespace Server.Misc
 			}
 			else
 			{
-				bool KeepSearching = true;
-				foreach ( Item lantern in m.GetItemsInRange( DockRange ) )
+				var eable = m.GetItemsInRange( DockRange );
+				foreach ( Item lantern in eable )
 				{
-					if ( KeepSearching )
+					if ( lantern is DockingLantern )
 					{
-						if ( lantern is DockingLantern && KeepSearching )
-						{
-							IsNearDock = true;
-							DockingLantern light = (DockingLantern)lantern;
-							BaseHouse house = BaseHouse.FindHouseAt(lantern);
-							if ( lantern.Movable != false ){ IsNearDock = false; }
-							if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
-							if (house != null && !house.HasSecureAccess(m, light.m_Level)){ IsNearDock = false; }
-							if ( IsNearDock ){ KeepSearching = false; }
-						}
-						else if ( lantern is LawnItem && KeepSearching && ( lantern.ItemID == 942 || lantern.ItemID == 20403 || lantern.ItemID == 20404 ) )
-						{
-							LawnItem pier = (LawnItem)lantern;
-							IsNearDock = true;
-							BaseHouse house = pier.House;
-							if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
-							if ( IsNearDock ){ KeepSearching = false; }
-						}
-						else if ( lantern is LawnPiece && KeepSearching && lantern.ItemID == 0x1AD0 && ((LawnPiece)lantern).ParentLawnItem != null && ((LawnItem)(((LawnPiece)lantern).ParentLawnItem)).House != null )
-						{
-							IsNearDock = true;
-							BaseHouse house = ((LawnItem)(((LawnPiece)lantern).ParentLawnItem)).House;
-							if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
-							if ( IsNearDock ){ KeepSearching = false; }
-						}
+						IsNearDock = true;
+						DockingLantern light = (DockingLantern)lantern;
+						BaseHouse house = BaseHouse.FindHouseAt(lantern);
+						if ( lantern.Movable != false ){ IsNearDock = false; }
+						if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
+						if (house != null && !house.HasSecureAccess(m, light.m_Level)){ IsNearDock = false; }
+						if ( IsNearDock ) break;
+					}
+					else if ( lantern is LawnItem && ( lantern.ItemID == 942 || lantern.ItemID == 20403 || lantern.ItemID == 20404 ) )
+					{
+						LawnItem pier = (LawnItem)lantern;
+						IsNearDock = true;
+						BaseHouse house = pier.House;
+						if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
+						if ( IsNearDock ) break;
+					}
+					else if ( lantern is LawnPiece && lantern.ItemID == 0x1AD0 && ((LawnPiece)lantern).ParentLawnItem != null && ((LawnItem)(((LawnPiece)lantern).ParentLawnItem)).House != null )
+					{
+						IsNearDock = true;
+						BaseHouse house = ((LawnItem)(((LawnPiece)lantern).ParentLawnItem)).House;
+						if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m))){ IsNearDock = false; }
+						if ( IsNearDock ) break;
 					}
 				}
+
+				eable.Free();
 			}
 
 			return IsNearDock;
