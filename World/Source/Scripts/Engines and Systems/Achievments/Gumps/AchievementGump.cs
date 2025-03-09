@@ -143,7 +143,7 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                         AddImageTiled(890, 84 + (index * HEIGHT_PER_CARD), (int)(progress * step), 9, 9752); // Green progress
                 }
 
-                TextDefinition.AddHtmlText(this, 912, 23 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 75, 16, string.Format("<RIGHT>{0} / {1}</RIGHT>", progress, ac.CompletionTotal), false, false, COLOR_LOCALIZED, COLOR_HTML);
+                TextDefinition.AddHtmlText(this, 806, 23 + CARD_HEIGHT + (index * HEIGHT_PER_CARD), 185, 16, string.Format("<RIGHT>{0} / {1}</RIGHT>", progress, ac.CompletionTotal), false, false, COLOR_LOCALIZED, COLOR_HTML);
             }
 
             var description = isComplete || !ac.HideDesc ? ac.Desc : ac.HiddenDesc;
