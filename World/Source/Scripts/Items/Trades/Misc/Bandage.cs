@@ -609,12 +609,14 @@ namespace Server.Items
 				bool isComplete = m_MaxTicks <= m_CurrentTicks;
 				if ( isComplete )
 				{
-					m_Context.m_Healer.SendMessage("Final (+{0}?) after {1}ms", m_FinalHealAmount, m_CurrentTicks * MILLISECONDS_PER_TICK);
+					if (MyServerSettings.EnableHealingLogging())
+						m_Context.m_Healer.SendMessage("Final (+{0}?) after {1}ms", m_FinalHealAmount, m_CurrentTicks * MILLISECONDS_PER_TICK);
 					m_Context.EndHeal( false, m_FinalHealAmount, true, ref m_AmountToHeal );
 				}
 				else if ( canCheck )
 				{
-					m_Context.m_Healer.SendMessage("Partial (+{0}?)", m_TickHealAmount);
+					if (MyServerSettings.EnableHealingLogging())
+						m_Context.m_Healer.SendMessage("Partial (+{0}?)", m_TickHealAmount);
 					int totalSeconds = ( m_CurrentTicks - m_CurrentTicks % TICKS_PER_SECOND ) / TICKS_PER_SECOND;
 					bool canGain = totalSeconds % 3 == 0; // Once per 3rd second
 					m_Context.EndHeal( true, m_TickHealAmount, canGain, ref m_AmountToHeal );
