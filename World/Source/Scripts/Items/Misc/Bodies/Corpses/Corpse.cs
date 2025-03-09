@@ -1121,7 +1121,10 @@ namespace Server.Items
 				if ( !CheckLoot( from, null ) )
 					return;
 
+				base.OnDoubleClick( from );
+
 				// Automatically carve corpse
+				// Must be after OnDoubleClick otherwise Client option to Auto-Open corpses doesn't work
 				Mobile dead = m_Owner;
 				if ( dead != null && !GetFlag( CorpseFlag.Carved ) )
 				{
@@ -1130,7 +1133,6 @@ namespace Server.Items
 						Carve( from, skinningKnife, true );
 				}
 
-				base.OnDoubleClick( from );
 				from.SendSound( 0x48, from.Location );
 				Server.Misc.PlayerSettings.LootContainer( from, this );
 			}
