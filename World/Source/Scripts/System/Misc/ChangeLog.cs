@@ -226,6 +226,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Potion breaking trap now deletes unidentified potion containers<br>");
 			builder.Append("- Misc - Monster race paperdoll graphics are restored after restart<br>");
 			builder.Append("- Misc - Fix potential null ref during icon removal<br>");
+			builder.Append("- Misc - Coffers now require you to be within 3 tiles to snoop it<br>");
 			builder.Append("- Mobs - Winter Wolf now has Skills set<br>");
 			builder.Append("- Pets - Loyalty now refreshes when it changes<br>");
 			builder.Append("- Quest - Fix bug where the quest default of 'the Dungeon of Doom' could never be satisfied<br>");

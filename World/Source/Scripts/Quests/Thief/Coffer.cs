@@ -159,6 +159,8 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			if ( !from.InRange( GetWorldLocation(), 3 ) ) return;
+
 			if ( Server.Items.Coffer.GetSnooper( this, from ) )
 			{
 				if ( CofferGold > 0 )
