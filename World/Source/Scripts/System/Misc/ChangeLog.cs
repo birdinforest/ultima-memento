@@ -28,7 +28,6 @@ namespace Server.Misc
 			builder.Append("- Commands - Add [VendorGold setting to disallow the Vendor's Sell limit safeguard<br>");
 			builder.Append("- Craft - Bulk crafting has been completely redone<br>");
 			builder.Append("- Craft - Using non-basic resources can now yield multiple skill gains<br>");
-			builder.Append("- Craft - Resist bonus for exceptional hats now uses Arms Lore skill level and has been reduced to 7, down from 15<br>");
 			builder.Append("- Craft - Items can only be enhanced if they are basic resources<br>");
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
 			builder.Append("- Craft - Cut/Break down no longer requires 50 skill<br>");
@@ -39,13 +38,14 @@ namespace Server.Misc
 			builder.Append("- Craft - Disable Bulk Order Deeds (needs fixing/balancing)<br>");
 			builder.Append("- Craft - Reaper oil and Mystical tree sap no longer drop<br>");
 			builder.Append("- Craft - Bark fragments now come from Lumberjacking instead of Carpentry<br>");
-			builder.Append("- Craft - Exceptionally crafted items are guaranteed a magical property<br>");
+			builder.Append("- Craft - Exceptionally crafted items are guaranteed a minor magical property<br>");
 			builder.Append("- Craft - Exceptionally crafted weapons now have 20% Damage Increase (DI), down from 35%<br>");
 			builder.Append("- Craft - Exceptionally crafted weapons now get +1% DI per 10 skill in Arms Lore<br>");
 			builder.Append("- Craft - Exceptionally crafted weapons now get +3% DI for 125 skill in Arms Lore (+15% total)<br>");
-			builder.Append("- Craft - Alien resources are no longer craftable<br>");
-			builder.Append("- Craft - All exceptional armor crafts get 3 bonus resistance points, down from 15<br>");
-			builder.Append("- Craft - Exceptional shields now receive bonus resistances from when exceptional<br>");
+			builder.Append("- Craft - Exceptionally crafted shields now get resist bonuses<br>");
+			builder.Append("- Craft - Exceptionally crafted armor now get 3 bonus resistance points, down from 15<br>");
+			builder.Append("- Craft - Exceptionally crafted hats now require Arms Lore for bonus resistance points<br>");
+			builder.Append("- Craft - Alien resources (from AoA) are no longer craftable<br>");
 			builder.Append("- Craft - Add Skill List to assist with finding items to craft for gains<br>");
 			builder.Append("- Craft - Add Blank Map recipe to Cartography<br>");
 			builder.Append("- Craft - Cartography can now use Blank Map or Blank Scroll as a material<br>");
@@ -228,6 +228,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Monster race paperdoll graphics are restored after restart<br>");
 			builder.Append("- Misc - Fix potential null ref during icon removal<br>");
 			builder.Append("- Misc - Coffers now require you to be within 3 tiles to snoop it<br>");
+			builder.Append("- Misc - Lands are now immediately discovered when you load into them<br>");
 			builder.Append("- Mobs - Winter Wolf now has Skills set<br>");
 			builder.Append("- Pets - Loyalty now refreshes when it changes<br>");
 			builder.Append("- Quest - Fix bug where the quest default of 'the Dungeon of Doom' could never be satisfied<br>");

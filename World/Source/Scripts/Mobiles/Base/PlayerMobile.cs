@@ -1580,7 +1580,10 @@ namespace Server.Mobiles
 
 			var newLand = Lands.GetLand(this);
 			if (land != newLand)
+			{
 				CustomEventSink.InvokeLandChanged(new LandChangedArgs(this, land, newLand));
+				Worlds.EnteredTheLand(this);
+			}
 
 			RecheckTownProtection();
 		}
