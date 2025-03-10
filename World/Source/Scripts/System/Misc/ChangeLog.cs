@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Cartography skill requirements have been reworked<br>");
 			builder.Append("- Craft - Each Bark Fragment now creates 10x Blank scrolls<br>");
 			builder.Append("- Craft - Dwarven/Elven/Alien now require 125 skill<br>");
+			builder.Append("- Craft - Non-basic resources no longer give crafting skill bonus<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - Add 'Rich Trees' to give Lumberjacking a more active playstyle<br>");

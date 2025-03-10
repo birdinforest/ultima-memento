@@ -139,12 +139,12 @@ namespace Server
 				int skill = (int)( CraftResources.GetUses( resource ) / 10 );
 				if ( reduce )
 				{
-					((BaseTool)item).SkillBonuses.SetValues(4, SkillName.Alchemy, 0);
+					// ((BaseTool)item).SkillBonuses.SetValues(4, SkillName.Alchemy, 0);
 					((BaseTool)item).UsesRemaining -= CraftResources.GetUses( resource );
 				}
 				else
 				{
-					((BaseTool)item).SkillBonuses.SetValues(4, tool.CraftSystem.MainSkill, skill);
+					// ((BaseTool)item).SkillBonuses.SetValues(4, tool.CraftSystem.MainSkill, skill);
 					((BaseTool)item).UsesRemaining += CraftResources.GetUses( resource );
 				}
 			}
