@@ -1,7 +1,4 @@
-using System;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -18,30 +15,15 @@ namespace Server.Items
 			Server.Misc.Arty.ArtySetup( this, 15, "Sprinting " );
 		}
 
-		public override bool OnEquip( Mobile from )
+		public override void OnAdded( object from )
 		{
-			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, Region.Find( from.Location, from.Map ) ) )
-			{
-				from.Send(SpeedControl.Disable);
-				Weight = 5.0;
-				from.SendMessage( "These shoes seem to have their magic diminished here." );
-			}
-			else
-			{
-				Weight = 3.0;
-				from.Send(SpeedControl.MountSpeed);
-			}
-
-			return base.OnEquip(from);
+			FastPlayer.OnItemAdded(from as PlayerMobile, this);
+			base.OnAdded(from);
 		}
 
-		public override void OnRemoved( object parent )
+        public override void OnRemoved( object parent )
 		{
-			if ( parent is Mobile )
-			{
-				Mobile from = (Mobile)parent;
-				from.Send(SpeedControl.Disable);
-			}
+			FastPlayer.OnItemRemoved(parent as PlayerMobile, this);
 			base.OnRemoved(parent);
 		}
 

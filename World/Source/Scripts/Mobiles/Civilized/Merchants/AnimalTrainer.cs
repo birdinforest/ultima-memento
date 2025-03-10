@@ -338,21 +338,7 @@ namespace Server.Mobiles
 				if ( from.Mounted )
 					return true;
 
-				Item shoes = from.FindItemOnLayer( Layer.Shoes );
-				if ( ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals || ( shoes is HikingBoots && from.RaceID > 0 ) ) && shoes.Weight < 5.0 )
-					return true;
-
-				if ( Spells.Syth.SythSpeed.UnderEffect( (PlayerMobile)from ) )
-					return true;
-
-				if ( Spells.Jedi.Celerity.UnderEffect( (PlayerMobile)from ) )
-					return true;
-
-				if ( Spells.Mystic.WindRunner.UnderEffect( (PlayerMobile)from ) )
-					return true;
-
-				if ( Spells.Shinobi.CheetahPaws.UnderEffect( (PlayerMobile)from ) )
-					return true;
+				return FastPlayer.IsActive(from);
 			}
 			return false;
 		}

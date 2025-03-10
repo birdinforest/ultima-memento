@@ -909,6 +909,7 @@ namespace Server.Mobiles
 			{
 				// Adjust item graphics/visibility on paperdoll
 				from.ProcessClothing();
+				FastPlayer.Refresh(from as PlayerMobile);
 			}
 		}
 
@@ -2154,65 +2155,22 @@ namespace Server.Mobiles
 					Server.Mobiles.AnimalTrainer.DismountPlayer( this );
 				}
 
-				if ( !speedAble )
+				if ( !speedAble)
 				{
-					if ( !Server.Mobiles.AnimalTrainer.AllowMagicSpeed( this, Region.Find( this.Location, this.Map ) ) )
-					{
-						Item shoes = this.FindItemOnLayer( Layer.Shoes );
-						if ( ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals || ( shoes is HikingBoots && RaceID > 0 ) ) && shoes.Weight < 5.0 )
-						{
-							this.Send(SpeedControl.Disable);
-							shoes.Weight = 5.0;
-							if ( !(shoes is HikingBoots) ){ this.SendMessage( "These shoes seem to have their magic diminished here." ); }
-						}
-
-						Server.Spells.Mystic.WindRunner.RemoveEffect( this );
-						Server.Spells.Syth.SythSpeed.RemoveEffect( this );
-						Server.Spells.Jedi.Celerity.RemoveEffect( this );
-						Server.Spells.Shinobi.CheetahPaws.RemoveEffect( this );
-					}
+					if (!Server.Mobiles.AnimalTrainer.AllowMagicSpeed( this, Region.Find( Location, Map ) ))
+						FastPlayer.Refresh(this);
 					Server.Misc.HenchmanFunctions.DismountHenchman( this );
 				}
 			}
 			else if ( speedAble && !mountAble && !Mounted && Alive )
 			{
-				Item shoes = this.FindItemOnLayer( Layer.Shoes );
-				if ( shoes is Artifact_BootsofHermes && shoes.Weight > 3.0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
-				else if ( shoes is Artifact_SprintersSandals && shoes.Weight > 3.0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
-				else if ( shoes is HikingBoots && shoes.Weight > 3.0 && RaceID > 0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
+				FastPlayer.Refresh(this);
 			}
 			else if ( mountAble && !Mounted && Alive )
 			{
 				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
 
-				Item shoes = this.FindItemOnLayer( Layer.Shoes );
-				if ( shoes is Artifact_BootsofHermes && shoes.Weight > 3.0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
-				else if ( shoes is Artifact_SprintersSandals && shoes.Weight > 3.0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
-				else if ( shoes is HikingBoots && shoes.Weight > 3.0 && RaceID > 0 )
-				{
-					shoes.Weight = 3.0;
-					this.Send(SpeedControl.MountSpeed);
-				}
+				FastPlayer.Refresh(this);
 
 				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
 			}
@@ -4083,29 +4041,7 @@ namespace Server.Mobiles
 					return true;
 				}
 
-				if ( pm.FindItemOnLayer( Layer.Shoes ) != null )
-				{
-					Item shoes = pm.FindItemOnLayer( Layer.Shoes );
-					if ( shoes is Artifact_BootsofHermes ){ return true; }
-					else if ( shoes is Artifact_SprintersSandals ){ return true; }
-					else if ( shoes is HikingBoots && pm.RaceID > 0 ){ return true; }
-				}
-				if ( Spells.Mystic.WindRunner.UnderEffect( pm ) )
-				{
-					return true;
-				}
-				if ( Spells.Syth.SythSpeed.UnderEffect( pm ) )
-				{
-					return true;
-				}
-				if ( Spells.Jedi.Celerity.UnderEffect( pm ) )
-				{
-					return true;
-				}
-				if ( Spells.Shinobi.CheetahPaws.UnderEffect( pm ) )
-				{
-					return true;
-				}
+				if (FastPlayer.IsActive(pm)) return true;
 			}
 
 			if ( pm == null || !pm.UsesFastwalkPrevention )

@@ -60,34 +60,6 @@ namespace Server
 			LoggingFunctions.LogAccess( m, "login" );
 
 			if ( m.Region.GetLogoutDelay( m ) == TimeSpan.Zero && !m.Poisoned ){ m.Hits = 1000; m.Stam = 1000; m.Mana = 1000; } // FULLY REST UP ON LOGIN
-
-			if ( m.FindItemOnLayer( Layer.Shoes ) != null )
-			{
-				Item shoes = m.FindItemOnLayer( Layer.Shoes );
-				if ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals || ( shoes is HikingBoots && m.RaceID > 0 ) )
-				{
-					if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( m, Region.Find( m.Location, m.Map ) ) )
-					{
-						m.Send(SpeedControl.Disable);
-						shoes.Weight = 5.0;
-						if ( !(shoes is HikingBoots) ){ m.SendMessage( "These shoes seem to have their magic diminished here." ); }
-					}
-					else
-					{
-						m.Send(SpeedControl.MountSpeed);
-						shoes.Weight = 3.0;
-					}
-				}
-			}
-
-			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( m, Region.Find( m.Location, m.Map ) ) && !Server.Mobiles.AnimalTrainer.AllowMagicSpeed( m, Region.Find( m.Location, m.Map ) ) )
-			{
-				m.Send(SpeedControl.Disable);
-				Server.Spells.Mystic.WindRunner.RemoveEffect( m );
-				Server.Spells.Syth.SythSpeed.RemoveEffect( m );
-				Server.Spells.Jedi.Celerity.RemoveEffect( m );
-				Server.Spells.Shinobi.CheetahPaws.RemoveEffect( m );
-			}
         }
 
         private static void World_Leave(DisconnectedEventArgs args)

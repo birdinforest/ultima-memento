@@ -12,19 +12,6 @@ namespace Server.Spells.Ninjitsu
 {
 	public class AnimalForm : NinjaSpell
 	{
-		public static void Initialize()
-		{
-			EventSink.Login += new LoginEventHandler(OnLogin);
-		}
-
-		public static void OnLogin(LoginEventArgs e)
-		{
-			AnimalFormContext context = AnimalForm.GetContext(e.Mobile);
-
-			if (context != null && context.SpeedBoost)
-				e.Mobile.Send(SpeedControl.MountSpeed);
-		}
-
 		private static SpellInfo m_Info = new SpellInfo(
 			"Animal Form", null,
 			-1,
@@ -190,9 +177,6 @@ namespace Server.Spells.Ninjitsu
 
 			m.HueMod = entry.HueMod;
 
-			if (entry.SpeedBoost)
-				m.Send(SpeedControl.MountSpeed);
-
 			SkillMod mod = null;
 
 			if (entry.StealthBonus)
@@ -216,6 +200,9 @@ namespace Server.Spells.Ninjitsu
 
 			AddContext(m, new AnimalFormContext(timer, mod, entry.SpeedBoost, entry.Type, stealingMod));
 			m.CheckStatTimers();
+
+			FastPlayer.Refresh(m as PlayerMobile);
+
 			return MorphResult.Success;
 		}
 

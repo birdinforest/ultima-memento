@@ -26,24 +26,36 @@ namespace Server.Spells.Mystic
 		{
 		}
 
-		public static Hashtable TableWindRunning = new Hashtable();
+        private readonly static Hashtable m_Timers = new Hashtable();
 
-		public static bool HasEffect( Mobile m )
-		{
-			return ( TableWindRunning[m] != null );
-		}
+        public static bool StopTimer(Mobile m)
+        {
+            Timer t = (Timer)m_Timers[m];
+
+            if (t != null)
+            {
+                t.Stop();
+                m_Timers.Remove(m);
+            }
+
+            return (t != null);
+        }
 
 		public static bool UnderEffect( Mobile m )
 		{
-			return TableWindRunning.Contains( m );
+			return m_Timers.Contains( m );
 		}
 
 		public static void RemoveEffect( Mobile m )
 		{
-			m.Send(SpeedControl.Disable);
-			TableWindRunning.Remove( m );
-			m.EndAction( typeof( WindRunner ) );
-			BuffInfo.RemoveBuff( m, BuffIcon.WindRunner );
+			if (StopTimer( m ))
+			{
+				BuffInfo.RemoveBuff( m, BuffIcon.WindRunner );
+				m.EndAction( typeof( WindRunner ) );
+				m.PlaySound( 0x64C ); // Cleansing winds
+				m.SendMessage("You feel the wind around you dissipate");
+				FastPlayer.Refresh(m as PlayerMobile);
+			}
 		}
 
 		public override void OnCast()
@@ -54,55 +66,30 @@ namespace Server.Spells.Mystic
             {
                 Caster.SendMessage( "You cannot use this ability while on a mount!" );
             }
-			else if ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals )
-			{
-                Caster.SendMessage( "You cannot use this ability while wearing those magical shoes!" );
-			}
-			else if ( shoes is HikingBoots && Caster.RaceID > 0 )
-			{
-                Caster.SendMessage( "You cannot use this ability while wearing hiking boots!" );
-			}
 			else
 			{
 				if ( !Caster.CanBeginAction( typeof( WindRunner ) ) )
 				{
-					WindRunner.RemoveEffect( Caster );
+					StopTimer( Caster );
 				}
 
+				Caster.BeginAction( typeof( WindRunner ) );
+
 				int TotalTime = (int)( Caster.Skills[SkillName.FistFighting].Value * 5 );
-				TableWindRunning[Caster] = SpeedControl.MountSpeed;
-				Caster.Send(SpeedControl.MountSpeed);
-				new InternalTimer( Caster, TimeSpan.FromSeconds( TotalTime ) ).Start();
+				if ( TotalTime < 600 ){ TotalTime = 600; }
+
+				m_Timers[Caster] = Timer.DelayCall(TimeSpan.FromSeconds( TotalTime ), () => RemoveEffect(Caster));
+				FastPlayer.Refresh(Caster as PlayerMobile);
+
 				BuffInfo.RemoveBuff( Caster, BuffIcon.WindRunner );
 				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.WindRunner, 1063516, TimeSpan.FromSeconds( TotalTime ), Caster ) );
-				Caster.BeginAction( typeof( WindRunner ) );
 				Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
 				Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x5590, 9, 32, 0, 0, 5022, 0);
-				Caster.PlaySound( 0x64F );
+				Caster.PlaySound( 0x64F ); // Hail storm
+
 			}
 
             FinishSequence();
-		}
-
-		private class InternalTimer : Timer
-		{
-			private Mobile m_m;
-			private DateTime m_Expire;
-
-			public InternalTimer( Mobile Caster, TimeSpan duration ) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 0.1 ) )
-			{
-				m_m = Caster;
-				m_Expire = DateTime.Now + duration;
-			}
-
-			protected override void OnTick()
-			{
-				if ( DateTime.Now >= m_Expire )
-				{
-					WindRunner.RemoveEffect( m_m );
-					Stop();
-				}
-			}
 		}
 	}
 }

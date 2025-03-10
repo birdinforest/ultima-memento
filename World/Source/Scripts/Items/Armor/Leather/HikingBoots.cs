@@ -1,4 +1,4 @@
-using Server.Network;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -11,20 +11,10 @@ namespace Server.Items
 			CoinPrice = 5;
 		}
 
-		public override bool OnEquip( Mobile from )
+		public override void OnAdded( object from )
 		{
-			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, Region.Find( from.Location, from.Map ) ) )
-			{
-				from.Send(SpeedControl.Disable);
-				Weight = 5.0;
-			}
-			else
-			{
-				Weight = 3.0;
-				from.Send(SpeedControl.MountSpeed);
-			}
-		
-			return base.OnEquip(from);
+			FastPlayer.OnItemAdded(from as PlayerMobile, this);
+			base.OnAdded(from);
 		}
 
         public override bool CanEquip( Mobile from )
@@ -38,11 +28,7 @@ namespace Server.Items
 
         public override void OnRemoved( object parent )
 		{
-			if ( parent is Mobile )
-			{
-				Mobile from = (Mobile)parent;
-				if ( from.RaceID > 0 ){ from.Send(SpeedControl.Disable); }
-			}
+			FastPlayer.OnItemRemoved(parent as PlayerMobile, this);
 			base.OnRemoved(parent);
 		}
 
