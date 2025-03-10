@@ -233,8 +233,15 @@ namespace Server.Engines.Harvest
 					if ( map == null )
 						return;
 
+					int forensicsScalar = (int)from.Skills[SkillName.Forensics].Value;
+
+					int monsterSpawn;
+					if ( forensicsScalar < 80 ) monsterSpawn = Utility.RandomMinMax( 0, 17 );
+					else if ( forensicsScalar < 100 ) monsterSpawn = Utility.RandomMinMax( 6, 18 );
+					else monsterSpawn = Utility.RandomMinMax( 6, 19 );
+
 					BaseCreature spawned;
-					switch ( Utility.Random( 20 ))
+					switch ( monsterSpawn )
 					{
 						default:
 						case 0: spawned = new Zombie(); break;
@@ -247,16 +254,16 @@ namespace Server.Engines.Harvest
 						case 7: spawned = new BoneMagi(); break;
 						case 8: spawned = new Ghostly(); break;
 						case 9: spawned = new Lich(); break;
-						case 10: spawned = new LichLord(); break;
+						case 10: spawned = new Vampire(); break;
 						case 11: spawned = new Mummy(); break;
-						case 12: spawned = new RottingCorpse(); break;
+						case 12: spawned = new Bodak(); break;
 						case 13: spawned = new Shade(); break;
 						case 14: spawned = new SkeletalKnight(); break;
 						case 15: spawned = new SkeletalWizard(); break;
 						case 16: spawned = new SkeletalMage(); break;
 						case 17: spawned = new Phantom(); break;
-						case 18: spawned = new Vampire(); break;
-						case 19: spawned = new Bodak(); break;
+						case 18: spawned = new LichLord(); break;
+						case 19: spawned = new RottingCorpse(); break;
 					}
 
 					int nSpiritualism = (int)(from.Skills[SkillName.Spiritualism].Value / 10);
@@ -325,7 +332,7 @@ namespace Server.Engines.Harvest
 						spawned.Combatant = from;
 					}
 
-					int digger = (int)(from.Skills[SkillName.Forensics].Value / 10);
+					int digger = forensicsScalar / 10;
 					if ( (2+digger) > Utility.Random( 100 ) ) // chance to dig up a box
 					{
 						if ( from.CheckSkill( SkillName.Forensics, 0, 125 ) )
