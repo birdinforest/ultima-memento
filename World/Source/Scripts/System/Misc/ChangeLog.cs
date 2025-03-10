@@ -194,6 +194,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Fix issue where saplings were choppable<br>");
 			builder.Append("- Gather - Fix elementals spawning with gargoyle pickaxes<br>");
 			builder.Append("- Gather - Graverobbing no longer creates orphaned chests<br>");
+			builder.Append("- Gather - Graverobbing no longer creates orphaned zombies<br>");
 			builder.Append("- Gump - Alien Players who use Tithe to pay for a res from another player are no longer double penalized<br>");
 			builder.Append("- Gump - Sending buttons that don't exist will now disconnect the Player<br>");
 			builder.Append("- Gump - Remove redundant quiver damage qualifier<br>");

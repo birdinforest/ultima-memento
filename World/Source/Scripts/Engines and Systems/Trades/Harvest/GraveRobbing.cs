@@ -233,10 +233,10 @@ namespace Server.Engines.Harvest
 					if ( map == null )
 						return;
 
-					BaseCreature spawned = new Zombie();
-
+					BaseCreature spawned;
 					switch ( Utility.Random( 20 ))
 					{
+						default:
 						case 0: spawned = new Zombie(); break;
 						case 1: spawned = new Skeleton(); break;
 						case 2: spawned = new Ghoul(); break;
