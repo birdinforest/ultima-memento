@@ -2951,6 +2951,8 @@ namespace Server.Items
                     return 5;
 
                 case CraftResource.BrittleSkeletal:
+                    return 1;
+
                 case CraftResource.DrowSkeletal:
                 case CraftResource.OrcSkeletal:
                 case CraftResource.ReptileSkeletal:
