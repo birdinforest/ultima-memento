@@ -101,8 +101,7 @@ namespace Server.Spells.Second
 						from.FixedParticles( 0x376A, 9, 32, 5008, PlayerSettings.GetMySpellHue( true, from, 0 ), 0, EffectLayer.Waist );
 						from.SendMessage( "You summon a magical orb into your pack." );
 						Item iWand = new TrapWand(from);
-						int nPower = (int)(from.Skills[SkillName.Magery].Value / 2 ) + 25;
-						if (nPower > 100){nPower = 100;}
+						int nPower = (int)(from.Skills[SkillName.Magery].Value / 3 ) + 25; // Caps at 66%
 						TrapWand xWand = (TrapWand)iWand;
 						xWand.WandPower = nPower;
 						from.AddToBackpack( xWand );
