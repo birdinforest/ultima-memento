@@ -250,6 +250,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Jedi spells no longer have a redundant failure check<br>");
 			builder.Append("- Spell - Fast-move spells now clean up removal timers<br>");
 			builder.Append("- Spell - Fast-move spells and items now work consistently<br>");
+			builder.Append("- Spell - Resurrect spells now work on pets<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

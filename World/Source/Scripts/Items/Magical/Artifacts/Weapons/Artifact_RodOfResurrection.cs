@@ -43,7 +43,7 @@ namespace Server.Items
             {
                 from.SendLocalizedMessage( 501040 ); // The resurrecter must be alive.
             }
-            else if (m.Alive)
+            else if (m.Alive && !m.IsDeadBondedPet)
             {
                 from.SendLocalizedMessage( 501041 ); // Target is not dead.
             }
