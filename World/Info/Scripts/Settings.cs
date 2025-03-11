@@ -400,6 +400,9 @@ namespace Server
 	// If true, targeting a node to harvest will repeat.
 		public static bool S_AutoRepeatHarvesting = true;
 
+	// If true, enables Legacy Inscription crafting.
+		public static bool S_UseLegacyInscription = false;
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 007 - MONSTERS & CREATURES /////////////////////////////////////////////////////////////////
