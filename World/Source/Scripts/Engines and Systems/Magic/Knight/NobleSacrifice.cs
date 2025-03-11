@@ -66,15 +66,22 @@ namespace Server.Spells.Chivalry
 				{
 					Mobile m = targets[i];
 
-					if ( !m.Alive )
+					if ( !m.Alive || m.IsDeadBondedPet)
 					{
 						if( resChance > Utility.RandomDouble() )
 						{
 							m.FixedParticles( 0x375A, 1, 15, 5005, 5, 3, EffectLayer.Head );
-							m.CloseGump( typeof( ResurrectGump ) );
-							m.SendGump( new ResurrectGump( m, Caster ) );
+							if (m is PlayerMobile)
+							{
+								m.CloseGump( typeof( ResurrectGump ) );
+								m.SendGump( new ResurrectGump( m, Caster ) );
 
-							Server.Items.HenchmanItem.ResurrectHenchman( m );
+								Server.Items.HenchmanItem.ResurrectHenchman( m );
+							}
+							else if (m is BaseCreature)
+							{
+								((BaseCreature)m).ResurrectPet();
+							}
 
 							sacrifice = true;
 						}

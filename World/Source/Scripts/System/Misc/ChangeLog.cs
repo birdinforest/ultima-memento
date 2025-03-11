@@ -178,6 +178,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Paladin spells require 1 stamina per 1 mana cost<br>");
 			builder.Append("- Spell - Creatures now vocalize Mantras when they cast spells<br>");
 			builder.Append("- Spell - Rewrite Spell Bar configuration gump<br>");
+			builder.Append("- Spell - Noble Sacrifice now works on pets<br>");
 			builder.Append("- Stats - Mana Regen cap reduced to 18, down from 36<br>");
 			builder.Append("- Stats - Holy Man now executes skill checks when casting spells<br>");
 
