@@ -110,6 +110,7 @@ namespace Server.Misc
 			builder.Append("- Item - Boost physical resist of Aegis set<br>");
 			builder.Append("- Item - All clothing now have durability<br>");
 			builder.Append("- Item - Stop deleting trail maps for undiscovered worlds<br>");
+			builder.Append("- Item - Default bandage range has been increased to 3, up from 2<br>");
 			builder.Append("- Item - Sharpening stone rework<br>");
 			builder.Append("       - Centralized behvaiors for consistency<br>");
 			builder.Append("       - Elemental sharpening stones no longer add Damage Increase %<br>");
