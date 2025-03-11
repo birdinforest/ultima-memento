@@ -1952,7 +1952,7 @@ namespace Server.Mobiles
 			{
 				if (Utility.RandomDouble() > 0.85 && master != null)
 				{
-					master.CheckSkill( SkillName.Herding, MinTameSkill - 25, MinTameSkill + 25 );
+					master.CheckSkill( SkillName.Herding, 0, MinTameSkill + 25 );
 				}
 
 				return true;
