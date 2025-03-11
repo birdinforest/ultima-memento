@@ -35,8 +35,8 @@ namespace Server
 	// button will simply say Website. When players select the button, it should open their browser to that site.
 	// EXAMPLE: https://google.com
 
-		public static string S_WebsiteLink = "";
-		public static string S_WebsiteName = "";
+		public static string S_WebsiteLink = "https://discord.gg/mu7aAbRyJf";
+		public static string S_WebsiteName = "Memento Community Discord";
 
 	// The game saves itself after this many minutes in decimal format between 10 and 240 minutes.
 
