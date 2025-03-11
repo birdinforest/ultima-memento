@@ -535,7 +535,7 @@ namespace Server
 
 	// If true, then players can buy merchant crates to lock down in their house to sell the items they craft.
 
-		public static bool S_MerchantCrates = false;
+		public static bool S_MerchantCrates = true;
 
 	// Increasing this number will increase the prices of items sold from vendors, by this percentage.
 	// So a setting of 50 will increase prices by 50%.
