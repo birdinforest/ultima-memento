@@ -38,7 +38,7 @@ namespace Server.Gumps
 			AddHtml( 10, 11, 349, 20, @"<BODY><BASEFONT Color=" + color + ">RESURRECTION</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(368, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 11, 41, 385, 141, @"<BODY><BASEFONT Color=" + color + ">Wilt thou sanctify the resurrection of " + pet.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 11, 41, 385, 141, @"<BODY><BASEFONT Color=" + color + ">Wilt thou sanctify the resurrection of " + pet.Name + "?</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(10, 225, 4023, 4023, 1, GumpButtonType.Reply, 0);
 			AddButton(367, 225, 4020, 4020, 2, GumpButtonType.Reply, 0);
