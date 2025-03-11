@@ -9826,6 +9826,7 @@ namespace Server.Mobiles
         /// <param name="tellOwner">SendMessage to Owner about the changes.</param>
         public virtual void GainExp(Mobile killed, uint exp, bool tellOwner)
         {
+			if (Summoned) return;
             if (killed is PlayerMobile || !this.JakoIsEnabled || (killed is BaseCreature && (((BaseCreature)killed).Controlled && ((BaseCreature)killed).ControlMaster != null) || !((BaseCreature)killed).JakoIsEnabled) || Level == MaxLevel)
                 return;
             if (tellOwner && ControlMaster != null)
