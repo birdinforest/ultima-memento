@@ -31,7 +31,7 @@ namespace Server.Items
 			else if ( m is PlayerMobile && m.Blessed == false && m.Alive && m.AccessLevel == AccessLevel.Player && Server.Misc.SeeIfGemInBag.GemInPocket( m ) == false && Server.Misc.SeeIfJewelInBag.JewelInPocket( m ) == false )
 			{
 				double chance = 90 <= m.Skills[SkillName.RemoveTrap].Value
-					? 0.25 + (125 - m.Skills[SkillName.RemoveTrap].Value) * 0.02 // Base chance with up to +75%, for 95% chance
+					? 0.25 + ((m.Skills[SkillName.RemoveTrap].Value - 90) / 100) // Flat 25% + 1% per skill pint
 					: 0;
 				if ( 0 < chance && m.CheckSkill(SkillName.RemoveTrap, chance ) )
 				{
