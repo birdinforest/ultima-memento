@@ -1,3 +1,19 @@
 [*]August 4th, 2024
 Dungeon Master
+
 Welcome, adventurers, to Ultima: Memento! Embark on epic quests, forge alliances, and conquer mythical realms in our immersive fantasy world. May your journeys be filled with valor, magic, and countless tales of triumph. Ready your swords and spells, adventure awaits!
+<br>
+NEW PLAYERS:
+- Death is punishing at an early start. You must have gold to resurrect without penalty as early as 200 total (real) skill points. 
+- You can, and will, lose items. Don't get attached.
+- Start in Britain: minimap markers have been provided to give you better guidance. Add your own custom markers as you adventure!
+- Seek multiple methods to generate gold: gather ingots, wood, or farm animals for their leather, meat, feathers, etc. and sell to vendors. Note that vendor gold purses are limited and restock over time - consider visiting other vendors or towns to continue selling your wares.
+- Join a guild - this gives you a ring with +skills, and those specific skills gain at a quicker rate!
+  - Be sure to speak to your Guild Masters and check their wares.
+- Hiking boots can help you traverse the world swiftly.
+- Make friends in game or via Discord, they can help!
+<br>
+Players familiar with Ruins & Riches and it's variants: 
+- This server is a more challenging variant with Quality of Life updates.
+- Do not rely solely on your recollection - while many aspects will be the same, we've made every effort to better streamline progression (e.g. item drops, crafting, etc.).
+- All hail Djeryv, Mangar, and Xork! Credit where credit is due. This server exists because of them and their impressive groundwork. This is our little Memento.
