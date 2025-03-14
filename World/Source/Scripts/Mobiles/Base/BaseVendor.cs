@@ -1619,6 +1619,8 @@ namespace Server.Mobiles
 
 		private bool MutatePurchase(Item item, Mobile buyer, bool doMutation)
 		{
+			if ( this is Sage ) return false;
+
 			if ( ( 
 				item is BaseWeapon
 				|| item is BaseArmor
