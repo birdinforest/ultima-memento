@@ -31,7 +31,10 @@ namespace Server.Engines.GlobalShoppe
                     return;
                 }
 
-                var context = ShoppeEngine.Instance.GetOrCreateContext(from);
+                var mobile = o as Mobile;
+                if (mobile == null) return;
+
+                var context = ShoppeEngine.Instance.GetOrCreateContext(mobile);
                 from.SendGump(new PropertiesGump(from, context));
             }
         }
