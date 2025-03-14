@@ -17,6 +17,7 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
+        public override bool Decays { get { return false; } }
         public abstract NpcGuild Guild { get; }
 
         protected abstract SkillName PrimarySkill { get; }
