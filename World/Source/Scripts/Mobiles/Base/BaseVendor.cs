@@ -2001,7 +2001,7 @@ namespace Server.Mobiles
 				return true;
 			}
 			
-			if ( !MySettings.S_RichMerchants && SoldPrice > this.CoinPurse && !MySettings.S_UseRemainingGold && !pm.IgnoreVendorGoldSafeguard)
+			if ( !MySettings.S_RichMerchants && !MySettings.S_UseRemainingGold && !pm.IgnoreVendorGoldSafeguard && SoldPrice > CoinPurse )
 			{
 				SayTo( seller, true, "Sorry, but I only have {0} gold to barter with.", this.CoinPurse );
 				return false;
@@ -2094,7 +2094,7 @@ namespace Server.Mobiles
 
 			if ( GiveGold > 0 )
 			{
-				if ( !MySettings.S_RichMerchants && GiveGold > this.CoinPurse && MySettings.S_UseRemainingGold )
+				if ( !MySettings.S_RichMerchants && GiveGold > CoinPurse )
 				{
 					GiveGold = this.CoinPurse;
 					SayTo( seller, true, "I give you my remaining {0} gold.", this.CoinPurse );
