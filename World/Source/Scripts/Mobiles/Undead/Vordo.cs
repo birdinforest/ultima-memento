@@ -133,7 +133,7 @@ namespace Server.Mobiles
 						killer.SendMessage("An item has appeared in your backpack!");
 					}
 
-					if ( Utility.RandomBool() )
+					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
 					{
 						Item loot = null;
 

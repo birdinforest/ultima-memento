@@ -648,16 +648,17 @@ namespace Server
 			if (item == null) return null;
 			
 			/*
-			@ 500 -- 5-8 properties, 50-125% intensity
-			@ 400 -- 4-6 properties, 40-100% intensity
-			@ 300 -- 3-5 properties, 30-75% intensity
-			@ 200 -- 2-3 properties, 20-50% intensity
+			@ 500 -- 5-6 properties, 80-100% intensity
+			@ 400 -- 4-6 properties, 64-100% intensity
+			@ 300 -- 3-5 properties, 48-75% intensity
+			@ 200 -- 2-3 properties, 32-50% intensity
+			@ 100 -- 1-1 properties, 25-25% intensity
 			*/
-			int props = Utility.RandomMinMax(enchant / 100, enchant / 60);
+			int props = Utility.RandomMinMax(enchant / 100, Math.Max(6, enchant / 60));
 			if (props < 1) return item;
 
-			int min = enchant / 10;
-			int max = enchant / 4;
+			int min = (int)Math.Max(25, enchant / 6.25);
+			int max = Math.Max(25, Math.Min(100, enchant / 4));
 
 			return Enchant(from, item, props, min, max, false);
 		}

@@ -560,6 +560,13 @@ namespace Server.Misc
 			return false;
 		}
 
+		public static bool VeryLuckyKiller( int luck )
+		{
+			if (!Utility.RandomBool()) return false; // 50%
+
+			return LuckyKiller(luck); // 50% * 50% = 25%
+		}
+
 		public static bool LuckyKiller( int luck )
 		{
 			if ( luck <= 0 )

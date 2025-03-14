@@ -85,7 +85,7 @@ namespace Server.Mobiles
 						c.DropItem( new DracolichSkull() );
 					}
 
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
 					{
 						Item loot = null;
 

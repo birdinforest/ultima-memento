@@ -92,7 +92,7 @@ namespace Server.Mobiles
 
 				if ( killer is PlayerMobile )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
 					{
 						Item loot = null;
 
