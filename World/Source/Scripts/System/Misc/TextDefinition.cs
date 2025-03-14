@@ -98,6 +98,11 @@ namespace Server
 			return m.m_String;
 		}
 
+		public static void AddHtmlText( Server.Gumps.Gump g, int x, int y, int width, int height, string text, int stringColor )
+		{
+			AddHtmlText(g, x, y, width, height, text, false, false, 0, stringColor);
+		}
+
 		public static void AddHtmlText( Server.Gumps.Gump g, int x, int y, int width, int height, TextDefinition text, bool back, bool scroll, int numberColor, int stringColor )
 		{
 			if( text != null && text.Number > 0 )

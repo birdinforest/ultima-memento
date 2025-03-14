@@ -10,6 +10,7 @@ using Server.Engines.BulkOrders;
 using Server.Regions;
 using Server.Multis;
 using Server.Targeting;
+using Server.Engines.GlobalShoppe;
 
 namespace Server.Mobiles
 {
@@ -2723,9 +2724,9 @@ namespace Server.ContextMenus
 
 		public override void OnClick()
 		{
-			if ( !m_From.HasGump( typeof( Server.Items.ExplainShopped ) ) )
+			if ( !m_From.HasGump( typeof( ExplainShoppeGump ) ) )
 			{
-				m_From.SendGump( new Server.Items.ExplainShopped( m_From, m_Vendor ) );
+				m_From.SendGump( new ExplainShoppeGump( m_From ) );
 			}
 		}
 	}

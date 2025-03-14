@@ -5468,7 +5468,23 @@ namespace Server.Commands
 							item.Visible = true;
 						}
 					}
-				}
+                }
+				else if ( m_Params[i].StartsWith( "Movable" ) )
+				{
+					int indexOf = m_Params[i].IndexOf( '=' );
+
+					if ( indexOf >= 0 )
+					{
+						if ( m_Params[i].Substring( ++indexOf ) == "false" )
+						{
+							item.Movable = false;
+						}
+						else
+						{
+							item.Movable = true;
+						}
+					}
+                }
 				else if ( m_Params[i].StartsWith( "Amount" ) )
 				{
 					int indexOf = m_Params[i].IndexOf( '=' );

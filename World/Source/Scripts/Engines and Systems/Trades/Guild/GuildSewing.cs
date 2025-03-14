@@ -10,6 +10,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Targeting;
+using Server.Engines.GlobalShoppe;
 
 namespace Server.Items
 {
@@ -35,24 +36,33 @@ namespace Server.Items
         {
 			if ( from is PlayerMobile )
 			{
-				int canDo = 0;
-
-				foreach ( Mobile m in this.GetMobilesInRange( 20 ) )
+				bool canDo = false;
+				var eable = GetMobilesInRange( 20 );
+				foreach ( var m in eable )
 				{
 					if ( m is TailorGuildmaster )
-						++canDo;
-				}
-				foreach ( Item i in this.GetItemsInRange( 20 ) )
-				{
-					if ( i is TailorShoppe && !i.Movable )
 					{
-						TailorShoppe b = (TailorShoppe)i;
-
-						if ( b.ShoppeOwner == from )
-							++canDo;
+						canDo = true;
+						break;
 					}
 				}
-				if ( from.Map == Map.SavagedEmpire && from.X > 1054 && from.X < 1126 && from.Y > 1907 && from.Y < 1983 ){ ++canDo; }
+				eable.Free();
+
+				if (!canDo)
+				{
+					eable = GetItemsInRange( 20 );
+					foreach ( var m in eable )
+					{
+						if ( m is TailorShoppe )
+						{
+							canDo = true;
+							break;
+						}
+					}
+					eable.Free();
+				}
+
+				if ( !canDo && from.Map == Map.SavagedEmpire && from.X > 1054 && from.X < 1126 && from.Y > 1907 && from.Y < 1983 ){ canDo = true; }
 
 				PlayerMobile pc = (PlayerMobile)from;
 				if ( pc.NpcGuild != NpcGuild.TailorsGuild )
@@ -63,7 +73,7 @@ namespace Server.Items
 				{
 					from.SendMessage( "Only a master tailor can use this!" );
 				}
-				else if ( canDo == 0 )
+				else if ( !canDo )
 				{
 					from.SendMessage( "You need to be near a tailor guildmaster, or a tailor shoppe you own, to use this!" );
 				}

@@ -638,7 +638,7 @@ namespace Server
 	// and basement doors will appear in some trade shops. These lead to the same basement public area and
 	// is usually used for multiplayer game environments.
 
-		public static bool S_Basements = false;
+		public static bool S_Basements = true;
 
 	// If true, then anything you set in you home will never decay. This makes the housing system's storage
 	// capacity useless as any home can hold any amount of items, and it may convince players to never

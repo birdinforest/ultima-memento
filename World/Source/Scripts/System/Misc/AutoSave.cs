@@ -162,6 +162,7 @@ namespace Server.Misc
 				CreateDirectory( rootBackup, "Data/" );
 				CreateDirectory( rootBackup, "ChatBeta8/" );
 				CreateDirectory( rootBackup, "Achievements/" );
+				CreateDirectory( rootBackup, "Craft/" );
 
 				// Copy files
 				CopyFile( rootOrigin, rootBackup, "Accounts/Accounts.xml" );
@@ -196,6 +197,8 @@ namespace Server.Misc
 				CopyFile( rootOrigin, rootBackup, "ChatBeta8/Pms.bin" );
 
 				CopyFile( rootOrigin, rootBackup, "Achievements/Achievements.bin" );
+
+				CopyFile( rootOrigin, rootBackup, "Craft/Shoppes.bin" );
 
 			}
 
