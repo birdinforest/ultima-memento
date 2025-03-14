@@ -123,7 +123,7 @@ namespace Server.Engines.GlobalShoppe
                 {
                     foreach (var trade in context.Trades)
                     {
-                        if (trade.CanRefreshCustomers || trade.NextCustomerRefresh < now) continue;
+                        if (trade.CanRefreshCustomers || now < trade.NextCustomerRefresh) continue;
 
                         trade.CanRefreshCustomers = true;
                     }
