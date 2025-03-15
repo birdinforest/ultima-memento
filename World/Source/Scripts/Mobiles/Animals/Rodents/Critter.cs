@@ -34,6 +34,10 @@ namespace Server.Mobiles
 			Karma = 0;
 
 			VirtualArmor = 1;
+
+			Tamable = true;
+			ControlSlots = 1;
+			MinTameSkill = -18.9;
 		}
 
         public override void OnAfterSpawn()
@@ -74,10 +78,7 @@ namespace Server.Mobiles
 
 			if ( Body == 382 || Body == 816 )
 				Hue = Utility.RandomList( 0x7D1, 0x7D2, 0x7D3, 0x7D4, 0x7D5, 0x7D6, 0x7D7, 0x7D8, 0x7D9, 0x7DA, 0x7DB, 0x7DC );
-		}
 
-		public override bool OnBeforeDeath()
-		{
 			if ( Body == 382 )
 				PackItem( new RawRibs() );
 			else if ( Body == 383 )
@@ -94,8 +95,6 @@ namespace Server.Mobiles
 			}
 			else if ( Body == 829 )
 				PackItem( new SilverWidow() );
-
-			return base.OnBeforeDeath();
 		}
 
 		public Critter(Serial serial) : base(serial)
