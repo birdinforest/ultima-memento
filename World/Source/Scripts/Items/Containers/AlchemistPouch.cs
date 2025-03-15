@@ -328,6 +328,8 @@ namespace Server.Items
 
 		public class ChemistBar : Gump
 		{
+			private const int MAX_POTION_NUMBER = 32;
+
 			private AlchemistPouch m_Pouch;
 			public ChemistBar( Mobile from, AlchemistPouch bag, bool vertical ): base( 50, 50 )
 			{
@@ -338,10 +340,7 @@ namespace Server.Items
 				AddPage(0);
 				m_Pouch = bag;
 				int btn = 0;
-				int img = 9508;
-				int val = 0;
 				int cyc = 0;
-				int abs = 0;
 				bool overHalf = OverHalf( bag );
 
 				if ( vertical )
@@ -349,118 +348,140 @@ namespace Server.Items
 					if ( overHalf ){ AddImage(10, -18, 10903); } else { AddImage(0, 0, 10902); }
 
 					int mod = 34;
+					int xValue = 0;
+					int yValue = 0;
 
-					btn++; img++; if ( bag.v_01_Agility ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_02_GreaterAgility ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_03_Conflagration ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_04_GreaterConflagration ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_05_ConfusionBlast ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_06_GreaterConfusionBlast ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_07_LesserCure ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_08_Cure ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_09_GreaterCure ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_10_LesserExplosion ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_11_Explosion ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_12_GreaterExplosion ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_13_Frostbite ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_14_GreaterFrostbite ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_15_LesserHeal ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_16_Heal ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_17_GreaterHeal ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_18_LesserInvisibility ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_19_Invisibility ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_20_GreaterInvisibility ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_21_Invulnerability ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_22_LesserMana ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_23_Mana ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_24_GreaterMana ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_25_NightSight ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_26_Refresh ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_27_TotalRefresh ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_28_LesserRejuvenate ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_29_Rejuvenate ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_30_GreaterRejuvenate ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_31_Strength ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-					btn++; img++; if ( bag.v_32_GreaterStrength ){ cyc++; val=val+mod; AddButton(abs, val, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 33; val = 0; }
-				}
+					for(var i = 1; i <= MAX_POTION_NUMBER; i++)
+                    {
+                        if (!IsVisible(i, bag)) continue;
+
+                        int gumpId = 9508 + i;
+                        yValue += mod;
+                        AddButton(xValue, yValue, gumpId, gumpId, i, GumpButtonType.Reply, 0);
+
+                        // New column - Reset
+                        if (++cyc > 15 && xValue == 0)
+                        {
+                            xValue = 33;
+                            yValue = 0;
+                        }
+                    }
+                }
 				else
 				{
 					if ( overHalf ){ AddImage(-18, 10, 10903); } else { AddImage(0, 0, 10902); }
 
 					int mod = 33;
+					int xValue = 0;
+					int yValue = 0;
+					for(var i = 1; i <= MAX_POTION_NUMBER; i++)
+                    {
+                        if (!IsVisible(i, bag)) continue;
 
-					btn++; img++; if ( bag.v_01_Agility ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_02_GreaterAgility ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_03_Conflagration ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_04_GreaterConflagration ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_05_ConfusionBlast ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_06_GreaterConfusionBlast ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_07_LesserCure ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_08_Cure ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_09_GreaterCure ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_10_LesserExplosion ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_11_Explosion ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_12_GreaterExplosion ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_13_Frostbite ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_14_GreaterFrostbite ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_15_LesserHeal ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_16_Heal ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_17_GreaterHeal ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_18_LesserInvisibility ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_19_Invisibility ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_20_GreaterInvisibility ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_21_Invulnerability ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_22_LesserMana ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_23_Mana ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_24_GreaterMana ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_25_NightSight ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_26_Refresh ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_27_TotalRefresh ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_28_LesserRejuvenate ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_29_Rejuvenate ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_30_GreaterRejuvenate ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_31_Strength ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-					btn++; img++; if ( bag.v_32_GreaterStrength ){ cyc++; val=val+mod; AddButton(val, abs, img, img, btn, GumpButtonType.Reply, 0); } if ( cyc > 15 && abs == 0 ){ abs = 34; val = 0; }
-				}
+                        int gumpId = 9508 + i;
+                        xValue += mod;
+                        AddButton(xValue, yValue, gumpId, gumpId, btn, GumpButtonType.Reply, 0);
+
+                        // New Row - Reset
+                        if (++cyc > 15 && yValue == 0)
+                        {
+                            yValue = 34;
+                            xValue = 0;
+                        }
+                    }
+                }
 
 				if ( bag.Titles )
 				{
 					cyc = 0;
-					int hue = nameColor(0);
-
-					if ( bag.v_01_Agility ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Ag"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_02_GreaterAgility ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"AgG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_03_Conflagration ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Cf"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_04_GreaterConflagration ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"CfG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_05_ConfusionBlast ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Cb"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_06_GreaterConfusionBlast ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"CbG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_07_LesserCure ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"CuL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_08_Cure ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Cu"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_09_GreaterCure ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"CuG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_10_LesserExplosion ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"ExL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_11_Explosion ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Ex"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_12_GreaterExplosion ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"ExG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_13_Frostbite ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Fb"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_14_GreaterFrostbite ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"FbG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_15_LesserHeal ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"HeL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_16_Heal ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"He"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_17_GreaterHeal ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"HeG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_18_LesserInvisibility ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"InL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_19_Invisibility ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"InG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_20_GreaterInvisibility ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"In"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_21_Invulnerability ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"<->"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_22_LesserMana ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"MnL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_23_Mana ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Mn"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_24_GreaterMana ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"MnG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_25_NightSight ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"NiS"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_26_Refresh ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Rf"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_27_TotalRefresh ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"RfT"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_28_LesserRejuvenate ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"RjL"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_29_Rejuvenate ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"Rj"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_30_GreaterRejuvenate ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"RjG"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_31_Strength ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"St"); cyc++; hue = nameColor(hue); }
-					if ( bag.v_32_GreaterStrength ){ AddLabel(cordVal(cyc,overHalf,vertical,0), cordVal(cyc,overHalf,vertical,1), hue, @"StG"); cyc++; hue = nameColor(hue); }
+					bool hueFlipFlop = false;
+					for(var i = 1; i <= MAX_POTION_NUMBER; i++)
+					{
+						if (IsVisible(i, bag))
+						{
+							int hue = hueFlipFlop ? 2929 : 2770;
+							AddLabel(cordVal(cyc, overHalf, vertical, 0), cordVal(cyc, overHalf, vertical, 1), hue, GetLabel(i));
+							cyc++;
+							hueFlipFlop = !hueFlipFlop;
+						}
+					}
 				}
+			}
+
+			private bool IsVisible(int potionNumber, AlchemistPouch bag)
+			{
+				if (potionNumber == 01) return bag.v_01_Agility;
+				if (potionNumber == 02) return bag.v_02_GreaterAgility;
+				if (potionNumber == 03) return bag.v_03_Conflagration;
+				if (potionNumber == 04) return bag.v_04_GreaterConflagration;
+				if (potionNumber == 05) return bag.v_05_ConfusionBlast;
+				if (potionNumber == 06) return bag.v_06_GreaterConfusionBlast;
+				if (potionNumber == 07) return bag.v_07_LesserCure;
+				if (potionNumber == 08) return bag.v_08_Cure;
+				if (potionNumber == 09) return bag.v_09_GreaterCure;
+				if (potionNumber == 10) return bag.v_10_LesserExplosion;
+				if (potionNumber == 11) return bag.v_11_Explosion;
+				if (potionNumber == 12) return bag.v_12_GreaterExplosion;
+				if (potionNumber == 13) return bag.v_13_Frostbite;
+				if (potionNumber == 14) return bag.v_14_GreaterFrostbite;
+				if (potionNumber == 15) return bag.v_15_LesserHeal;
+				if (potionNumber == 16) return bag.v_16_Heal;
+				if (potionNumber == 17) return bag.v_17_GreaterHeal;
+				if (potionNumber == 18) return bag.v_18_LesserInvisibility;
+				if (potionNumber == 19) return bag.v_19_Invisibility;
+				if (potionNumber == 20) return bag.v_20_GreaterInvisibility;
+				if (potionNumber == 21) return bag.v_21_Invulnerability;
+				if (potionNumber == 22) return bag.v_22_LesserMana;
+				if (potionNumber == 23) return bag.v_23_Mana;
+				if (potionNumber == 24) return bag.v_24_GreaterMana;
+				if (potionNumber == 25) return bag.v_25_NightSight;
+				if (potionNumber == 26) return bag.v_26_Refresh;
+				if (potionNumber == 27) return bag.v_27_TotalRefresh;
+				if (potionNumber == 28) return bag.v_28_LesserRejuvenate;
+				if (potionNumber == 29) return bag.v_29_Rejuvenate;
+				if (potionNumber == 30) return bag.v_30_GreaterRejuvenate;
+				if (potionNumber == 31) return bag.v_31_Strength;
+				if (potionNumber == 32) return bag.v_32_GreaterStrength;
+
+				return false;
+			}
+
+			private string GetLabel(int potionNumber)
+			{
+				if (potionNumber == 01) return @"Ag";
+				if (potionNumber == 02) return @"AgG";
+				if (potionNumber == 03) return @"Cf";
+				if (potionNumber == 04) return @"CfG";
+				if (potionNumber == 05) return @"Cb";
+				if (potionNumber == 06) return @"CbG";
+				if (potionNumber == 07) return @"CuL";
+				if (potionNumber == 08) return @"Cu";
+				if (potionNumber == 09) return @"CuG";
+				if (potionNumber == 10) return @"ExL";
+				if (potionNumber == 11) return @"Ex";
+				if (potionNumber == 12) return @"ExG";
+				if (potionNumber == 13) return @"Fb";
+				if (potionNumber == 14) return @"FbG";
+				if (potionNumber == 15) return @"HeL";
+				if (potionNumber == 16) return @"He";
+				if (potionNumber == 17) return @"HeG";
+				if (potionNumber == 18) return @"InL";
+				if (potionNumber == 19) return @"In";
+				if (potionNumber == 20) return @"InG";
+				if (potionNumber == 21) return @"<->";
+				if (potionNumber == 22) return @"MnL";
+				if (potionNumber == 23) return @"Mn";
+				if (potionNumber == 24) return @"MnG";
+				if (potionNumber == 25) return @"NiS";
+				if (potionNumber == 26) return @"Rf";
+				if (potionNumber == 27) return @"RfT";
+				if (potionNumber == 28) return @"RjL";
+				if (potionNumber == 29) return @"Rj";
+				if (potionNumber == 30) return @"RjG";
+				if (potionNumber == 31) return @"St";
+				if (potionNumber == 32) return @"StG";
+
+ 				return "";
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 
@@ -473,14 +494,6 @@ namespace Server.Items
 					bool vertical = false; if ( m_Pouch.Bar ){ vertical = true; }
 					from.SendGump( new ChemistBar( from, m_Pouch, vertical ) );
 				}
-			}
-
-			public static int nameColor( int hue )
-			{
-				if ( hue == 2929 )
-					return 2770;
-
-				return 2929;
 			}
 
 			public static int cordVal( int cyc, bool overHalf, bool vertical, int prt )
