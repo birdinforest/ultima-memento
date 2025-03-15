@@ -240,6 +240,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix potential null ref during icon removal<br>");
 			builder.Append("- Misc - Coffers now require you to be within 3 tiles to snoop it<br>");
 			builder.Append("- Misc - Lands are now immediately discovered when you load into them<br>");
+			builder.Append("- Misc - Elemental Steed are no longer turned into a horse after [buildworld<br>");
 			builder.Append("- Mobs - Winter Wolf now has Skills set<br>");
 			builder.Append("- Pets - Loyalty now refreshes when it changes<br>");
 			builder.Append("- Quest - Fix bug where the quest default of 'the Dungeon of Doom' could never be satisfied<br>");

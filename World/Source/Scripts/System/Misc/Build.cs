@@ -52,6 +52,8 @@ namespace Server.Misc
 			{
 				Mobile mnt = ( Mobile )mounts[ i ];
 				BaseMount mounter = (BaseMount)mnt;
+				if (mounter.Controlled && mounter.ControlMaster is PlayerMobile) continue;
+
 				Type mobType = mnt.GetType();
 				Mobile mob = (Mobile)Activator.CreateInstance( mobType );
 				BaseMount mounted = (BaseMount)mob;
