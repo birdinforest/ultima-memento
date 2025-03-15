@@ -145,6 +145,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Disable Lighting burnout<br>");
 			builder.Append("- Misc - Graverobbing spawns are now a function of Forensics skill level<br>");
 			builder.Append("- Misc - Orb of trap finding now caps at 66%<br>");
+			builder.Append("- Misc - Changed drops for Treasure Chests<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("       - Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
 			builder.Append("       - Forensics, Lumberjacking, Mining<br>");

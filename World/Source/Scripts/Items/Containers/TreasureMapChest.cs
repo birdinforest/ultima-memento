@@ -43,11 +43,11 @@ namespace Server.Items
 		{
 		}
 
-		public TreasureMapChest( Mobile owner, int level, bool temporary ) : base( 0xE40 )
+		public TreasureMapChest( Mobile owner, int originalLevel, bool temporary ) : base( 0xE40 )
 		{
 			Catalog = Catalogs.TreasureChest;
 
-			level = level + 4;
+			int level = originalLevel + 4;
 				if ( level > 10 ){ level = 10; }
 
 			m_Owner = owner;
@@ -73,20 +73,18 @@ namespace Server.Items
 			int xTraCash = Utility.RandomMinMax( (level*700), (level*1000) );
 			LootPackChange.AddGoldToContainer( xTraCash, this, owner, level );
 
-			string sChest = "Grand Treasure Chest";
+			string sChest;
 
-			int lvl = level;
-				if ( lvl > 5 )
-					lvl = 5;
-
-			switch( level )
+			switch( Math.Min(5, originalLevel) )
 			{
+				default:
 				case 0: sChest = "Meager Treasure Chest";		break;
 				case 1: sChest = "Simple Treasure Chest";		break;
 				case 2: sChest = "Good Treasure Chest";			break;
 				case 3: sChest = "Great Treasure Chest";		break;
 				case 4: sChest = "Excellent Treasure Chest";	break;
 				case 5: sChest = "Superb Treasure Chest";		break;
+				case 6: sChest = "Grand Treasure Chest";		break;
 			}
 
 			Name = "Treasure Chest";
@@ -96,34 +94,26 @@ namespace Server.Items
 			ColorHue2 = "FFB400";
 
             // = SCROLL OF TRANCENDENCE
-            if ( level >= 4 && Utility.RandomDouble() > 0.9 )
+            if ( level >= 4 && Utility.RandomDouble() > 0.6 )
                 DropItem(ScrollofTranscendence.CreateRandom(level, level * 5));
             
 			// = ARTIFACTS
-			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck );
-			if ( Utility.Random( 100 ) < ( ( level * 17 ) + artychance ) )
+			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck ) + (originalLevel * 10);
+			if ( Utility.Random( 100 ) < artychance )
 			{
 				Item arty = Loot.RandomArty();
 				DropItem( arty );
 			}
 
-            // = SCROLL OF ALACRITY or POWERSCROLL
-            if (level > 1)
-            {
-                if (Utility.RandomDouble() < (0.02 + (level / 200)))
-                {
-                    SkillName WhatS = SpecialScroll.ScrollSkill( 0 );
-                    DropItem(PowerScroll.CreateRandomNoCraft(5, 5));
-                }
-                else if (Utility.RandomDouble() < 0.075)
-                {
-                    SkillName WhatS = SpecialScroll.ScrollSkill( 0 );
-                    DropItem(new ScrollofAlacrity(WhatS));
-                }
-            }
+            // = SCROLL OF ALACRITY
+			if (Utility.RandomDouble() < 0.075)
+			{
+				SkillName WhatS = SpecialScroll.ScrollSkill( 0 );
+				DropItem(new ScrollofAlacrity(WhatS));
+			}
 
 			int giveRelics = level;
-			Item relic = Loot.RandomRelic( owner );
+			Item relic;
 			while ( giveRelics > 0 )
 			{
 				relic = Loot.RandomRelic( owner );
