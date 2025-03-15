@@ -20,7 +20,10 @@ namespace Server.Items
 				BaseCreature monster = new SerpentOfOrder();
 				monster.MoveToWorld(this.Location, this.Map);
 				monster.PlaySound(0x217);
+
+				from.SendMessage("The Serpent of Order comes forth to challenge you!");
 				snake.Delete();
+				from.AddToBackpack(new BlackrockSerpentOrderDecoration());
 			}
 			else
 			{
@@ -63,7 +66,10 @@ namespace Server.Items
 				BaseCreature monster = new SerpentOfChaos();
 				monster.MoveToWorld(this.Location, this.Map);
 				monster.PlaySound(0x217);
+
+				from.SendMessage("The Serpent of Chaos comes forth to challenge you!");
 				snake.Delete();
+				from.AddToBackpack(new BlackrockSerpentOrderDecoration());
 			}
 			else
 			{
@@ -72,6 +78,60 @@ namespace Server.Items
 		}
 
 		public SerpentSpawnerChaos(Serial serial) : base(serial)
+		{
+		}
+
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+			writer.Write((int)0);
+		}
+
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			int version = reader.ReadInt();
+		}
+	}
+
+	public class BlackrockSerpentOrderDecoration : Item
+	{
+		[Constructable]
+		public BlackrockSerpentOrderDecoration() : base(0x25C0)
+		{
+			Name = "Inert Blackrock Serpent";
+			Weight = 1.0;
+			Hue = 0x96C;
+		}
+
+		public BlackrockSerpentOrderDecoration(Serial serial) : base(serial)
+		{
+		}
+
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+			writer.Write((int)0);
+		}
+
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			int version = reader.ReadInt();
+		}
+	}
+
+	public class BlackrockSerpentChaosDecoration : Item
+	{
+		[Constructable]
+		public BlackrockSerpentChaosDecoration() : base(0x25C0)
+		{
+			Name = "Inert Blackrock Serpent";
+			Weight = 1.0;
+			Hue = 0x96C;
+		}
+
+		public BlackrockSerpentChaosDecoration(Serial serial) : base(serial)
 		{
 		}
 
