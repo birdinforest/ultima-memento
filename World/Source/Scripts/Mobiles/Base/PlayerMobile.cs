@@ -4647,9 +4647,6 @@ namespace Server.Mobiles
 
 		public virtual bool HasRecipe( int recipeID )
 		{
-			// Temporarily disable recipe system
-			return true;
-
 			if( m_AcquiredRecipes != null && m_AcquiredRecipes.ContainsKey( recipeID ) ) return m_AcquiredRecipes[recipeID];
 
 			return false;
