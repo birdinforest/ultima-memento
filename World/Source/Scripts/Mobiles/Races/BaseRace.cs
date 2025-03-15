@@ -1261,7 +1261,7 @@ namespace Server.Items
 				if ( race.Attributes.WeaponDamage > 0 ){ txt = txt + "<BR>Damage Increase: " + race.Attributes.WeaponDamage + "%"; }
 				if ( race.Attributes.DefendChance > 0 ){ txt = txt + "<BR>Defend Chance Increase: " + race.Attributes.DefendChance + "%"; }
 				if ( race.Attributes.BonusDex > 0 ){ txt = txt + "<BR>Dexterity Bonus: " + race.Attributes.BonusDex + ""; }
-				if ( race.Attributes.EnhancePotions > 0 ){ txt = txt + "<BR>Enchance Potions: " + race.Attributes.EnhancePotions + "%"; }
+				if ( race.Attributes.EnhancePotions > 0 ){ txt = txt + "<BR>Enhance Potions: " + race.Attributes.EnhancePotions + "%"; }
 				if ( race.Attributes.CastSpeed > 0 ){ txt = txt + "<BR>Faster Casting: " + race.Attributes.CastSpeed + ""; }
 				if ( race.Attributes.CastRecovery > 0 ){ txt = txt + "<BR>Faster Cast Recovery: " + race.Attributes.CastRecovery + ""; }
 				if ( race.Attributes.AttackChance > 0 ){ txt = txt + "<BR>Hit Chance Increase: " + race.Attributes.AttackChance + "%"; }
