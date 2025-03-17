@@ -233,6 +233,9 @@ namespace Server.Items
 			if ( CheckLocked( from ) )
 				return;
 
+			if ( PassiveSearching( this, from ) )
+				return;
+
 			if ( /* from.AccessLevel == AccessLevel.Player && */ ContainerTouched != 1 && !from.Blessed )
 			{
 				OpenCoffin( from, this.ItemID, ContainerLevel );

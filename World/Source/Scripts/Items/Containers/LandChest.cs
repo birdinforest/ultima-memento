@@ -49,6 +49,9 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
+			if ( PassiveSearching( this, from ) )
+				return;
+
 			if ( this.Weight > 20 )
 			{
 				int FillMeUpLevel = Utility.RandomList( 5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1 );

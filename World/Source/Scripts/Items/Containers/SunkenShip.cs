@@ -28,6 +28,9 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
+			if ( PassiveSearching( this, from ) )
+				return;
+
 			if ( this.Weight > 50 )
 			{
 				int FillMeUpLevel = (int)(this.Weight - 51);
