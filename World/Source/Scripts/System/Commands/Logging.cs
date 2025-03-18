@@ -136,7 +136,11 @@ namespace Server.Commands
 
 		public static void EventSink_Command( CommandEventArgs e )
 		{
-			WriteLine( e.Mobile, "{0} {1} used command '{2} {3}'", e.Mobile.AccessLevel, Format( e.Mobile ), e.Command, e.ArgString );
+			string args = e.ArgString;
+			if (e.Command != null && e.Command.Contains("password"))
+				args = "***REDACTED***";
+
+			WriteLine( e.Mobile, "{0} {1} used command '{2} {3}'", e.Mobile.AccessLevel, Format( e.Mobile ), e.Command, args);
 		}
 
 		public static void LogChangeProperty( Mobile from, object o, string name, string value )
