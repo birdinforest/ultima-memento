@@ -32,39 +32,6 @@ namespace Server.Items
 
 		public class GuildBoardGump : Gump
 		{
-			private void GetSortedGuildmasters()
-			{
-				var sortedList = new List<NpcGuild>
-				{
-
-				};
-				/*
-				<br><br>
-				- Alchemists Guild<br>
-				- Archers Guild<br>
-				- Assassins Guild<br>
-				- Bard Guild<br>
-				- Blacksmith Guild<br>
-				- Carpenters Guild<br>
-				- Cartographers Guild<br>
-				- Culinary Guild<br>
-				- Druids Guild<br>
-				- Elemental Guild<br>
-				- Healer Guild<br>
-				- Librarians Guild<br>
-				- Mage Guild<br>
-				- Mariners Guild<br>
-				- Merchant Guild<br>
-				- Miner Guild<br>
-				- Necromancers Guild<br>
-				- Ranger Guild<br>
-				- Tailor Guild<br>
-				- Thief Guild<br>
-				- Tinker Guild<br>
-				- Warrior Guild<br><br>
-				*/
-			}
-
 			private class InternalSort : IComparer<BaseGuildmaster>
 			{
 				private readonly static List<NpcGuild> m_SortedGuilds = new List<NpcGuild>
