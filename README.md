@@ -43,6 +43,9 @@
   ## Shoppes
   - Shoppes are no longer hidden away in your house
   - Shoppes are now bound to your Account rather than your Player
+  - Refactored gump to make it more legible
+
+  ![Shoppes picture](./World/Documentation/Showcase/shoppe.png)
   
   ## Skill Craft List
   - Accessible via the Crafting gump
