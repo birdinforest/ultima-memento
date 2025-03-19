@@ -6793,7 +6793,8 @@ namespace Server.Mobiles
 			KnowsMoreThanMe,
 			KnowsWhatIKnow,
 			SkillNotRaisable,
-			NotEnoughFreePoints
+			NotEnoughFreePoints,
+			NoSecondarySkills
 		}
 
 		public virtual TeachResult CheckTeachSkills( SkillName skill, Mobile m, int maxPointsToLearn, ref int pointsToLearn, bool doTeach )
@@ -6806,6 +6807,9 @@ namespace Server.Mobiles
 
 			if ( ourSkill == null || theirSkill == null )
 				return TeachResult.Failure;
+				
+			if (theirSkill.IsSecondarySkill())
+				return TeachResult.NoSecondarySkills;
 
 			int baseToSet = ourSkill.BaseFixedPoint / 3;
 
@@ -6912,6 +6916,11 @@ namespace Server.Mobiles
 
 			switch ( res )
 			{
+				case TeachResult.NoSecondarySkills:
+				{
+					Say("That skill cannot be taught. You must learn it yourself!");
+					break;
+				}
 				case TeachResult.KnowsMoreThanMe:
 				{
 					Say( 501508 ); // I cannot teach thee, for thou knowest more than I!
@@ -7126,14 +7135,14 @@ namespace Server.Mobiles
 					Skill skill = ourSkills[i];
 					Skill theirSkill = theirSkills[i];
 
-					if ( skill != null && theirSkill != null && !skill.IsSecondarySkill() && skill.Base >= 60.0 && CheckTeach( skill.SkillName, from ) )
+					if ( skill != null && theirSkill != null && skill.Base >= 60.0 && CheckTeach( skill.SkillName, from ) )
 					{
 						double toTeach = skill.Base / 3.0;
 
 						if ( toTeach > 42.0 )
 							toTeach = 42.0;
 
-						list.Add( new TeachEntry( (SkillName)i, this, from, ( toTeach > theirSkill.Base ) ) );
+						list.Add( new TeachEntry( (SkillName)i, this, from, (!skill.IsSecondarySkill() && toTeach > theirSkill.Base )) );
 					}
 				}
 			}
