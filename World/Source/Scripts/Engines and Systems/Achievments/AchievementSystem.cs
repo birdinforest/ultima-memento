@@ -493,6 +493,8 @@ namespace Scripts.Mythik.Systems.Achievements
                 "Saves//Achievements//Achievements.bin",
                 reader =>
                 {
+                    int version = reader.ReadInt();
+
                     int count = reader.ReadInt();
 
                     for (int i = 0; i < count; ++i)
@@ -528,6 +530,8 @@ namespace Scripts.Mythik.Systems.Achievements
                 "Saves//Achievements//Achievements.bin",
                 writer =>
                 {
+                    writer.Write(0); // version
+
                     writer.Write(m_pointsTotal.Count);
                     foreach (var kv in m_pointsTotal)
                     {
