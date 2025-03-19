@@ -83,7 +83,10 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             const int ITEMS_PER_PAGE = 6;
             var achievements = selectedCategory != null
                 ? AchievementSystem.Achievements.Where(ac => ac.CategoryID == selectedCategoryId
-                    && !ac.HiddenTillComplete
+                    && (
+                        !ac.HiddenTillComplete
+                        || (achieves.ContainsKey(ac.ID) && achieves[ac.ID].IsComplete)
+                    )
                     && (
                         ac.PreReq == null // No Pre-req
                         || (achieves.ContainsKey(ac.PreReq.ID) && achieves[ac.PreReq.ID].IsComplete) // Pre-req is complete
