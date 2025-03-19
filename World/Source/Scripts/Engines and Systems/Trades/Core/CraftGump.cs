@@ -143,7 +143,7 @@ namespace Server.Engines.Craft
 				if ( craftSystem.CanEnhance )
 				{
 					AddButton( LEFT_WINDOW_START + 138, 371+moveUp, 4005, 4007, GetButtonID( 6, 8 ), GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 184, 373+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
+					AddHtmlLocalized( 184, 374+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
 				}
 
 				AddButton( LEFT_WINDOW_START + 282, 342+moveUp, 4005, 4007, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
@@ -151,7 +151,7 @@ namespace Server.Engines.Craft
 
 				// Set crafting container
 				AddButton( LEFT_WINDOW_START + 282, 371+moveUp, 4005, 4007, GetButtonID( 6, 10 ), GumpButtonType.Reply, 0 );
-				AddHtml( LEFT_WINDOW_START + 318, 373+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SET CRAFTING CONTAINER</BASEFONT>", FontColor ), false, false );
+				AddHtml( LEFT_WINDOW_START + 318, 374+moveUp, 200, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SET CRAFTING CONTAINER</BASEFONT>", FontColor ), false, false );
 
 				// ****************************************
 
