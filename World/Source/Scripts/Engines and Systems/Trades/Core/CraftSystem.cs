@@ -314,6 +314,10 @@ namespace Server.Engines.Craft
 		{
 			var bag = new Bag();
 
+			// This is dirty, but I'm in a rush
+			if (this is DefBlacksmithy)
+				bag.Hue = Utility.RandomMetalHue();
+
 			foreach(var type in types)
 			{
 				var scroll = GetRecipeScroll(player, type);
