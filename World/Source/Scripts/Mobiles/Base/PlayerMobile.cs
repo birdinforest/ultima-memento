@@ -2928,7 +2928,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( SkillStart == 40000 ){ return 0; }
+				if ( SkillStart == 40000 ){ return 0; } // Aliens never have Luck
 				return AosAttributes.GetValue( this, AosAttribute.Luck );
 			}
 		}
