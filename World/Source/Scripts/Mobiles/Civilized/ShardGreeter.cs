@@ -84,7 +84,7 @@ namespace Server.Mobiles
 
 				PlayerMobile mobile = (PlayerMobile) m_Mobile;
 
-				if ( ( m_Mobile.X == 3567 && m_Mobile.Y == 3404 ) || m_Mobile.RaceID > 0 )
+				if ( m_Mobile.X == 3567 && m_Mobile.Y == 3404 )
 				{
 					m_Giver.PlaySound( 778 );
 					mobile.CloseGump( typeof( GypsyTarotGump ) );
