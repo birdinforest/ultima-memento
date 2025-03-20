@@ -147,6 +147,14 @@ namespace Server.Engines.Craft
 
 		private void AddSpell(Type type, params Reg[] regs)
 		{
+			AddSpell(-1, type, regs);
+		}
+
+		private void AddSpell(int recipeNumber, Type type, params Reg[] regs)
+		{
+			if (MySettings.S_UseLegacyInscription)
+				recipeNumber = -1;
+
 			double minSkill, maxSkill;
 
 			string title = "Magery Circles 1 & 2";
@@ -164,7 +172,7 @@ namespace Server.Engines.Craft
 				case 7: minSkill = 75.0; maxSkill = 125.0; title = "Magery Circles 7 & 8"; break;
 			}
 
-			int index = AddCraft(type, title, 1044381 + m_Index++, minSkill, maxSkill, m_RegTypes[(int)regs[0]], 1044353 + (int)regs[0], 1, 1044361 + (int)regs[0]);
+			int index = AddCraftRecipe(recipeNumber, type, title, 1044381 + m_Index++, minSkill, maxSkill, m_RegTypes[(int)regs[0]], 1044353 + (int)regs[0], 1, 1044361 + (int)regs[0]);
 
 			for (int i = 1; i < regs.Length; ++i)
 				AddRes(index, m_RegTypes[(int)regs[i]], 1044353 + (int)regs[i], 1, 1044361 + (int)regs[i]);
@@ -176,9 +184,17 @@ namespace Server.Engines.Craft
 
 		private void AddNecroSpell(int spell, int mana, double minSkill, Type type, params Type[] regs)
 		{
+			AddNecroSpell(-1, spell, mana, minSkill, type, regs);
+		}
+
+		private void AddNecroSpell(int recipeNumber, int spell, int mana, double minSkill, Type type, params Type[] regs)
+		{
+			if (MySettings.S_UseLegacyInscription)
+				recipeNumber = -1;
+
 			int id = CraftItem.ItemIDOf(regs[0]);
 
-			int index = AddCraft(type, "Necromancy Spells", 1060509 + spell, minSkill, minSkill + 1.0, regs[0], id < 0x4000 ? 1020000 + id : 1078872 + id, 1, 501627);
+			int index = AddCraftRecipe(recipeNumber, type, "Necromancy Spells", 1060509 + spell, minSkill, minSkill + 1.0, regs[0], id < 0x4000 ? 1020000 + id : 1078872 + id, 1, 501627);
 
 			for (int i = 1; i < regs.Length; ++i)
 			{
@@ -195,6 +211,14 @@ namespace Server.Engines.Craft
 
 		private void AddElementalSpell( Type type )
 		{
+			AddElementalSpell( -1, type );
+		}
+
+		private void AddElementalSpell( int recipeNumber, Type type )
+		{
+			if (MySettings.S_UseLegacyInscription)
+				recipeNumber = -1;
+
 			double minSkill, maxSkill;
 
 			int blood = 2+m_Circle;
@@ -212,7 +236,7 @@ namespace Server.Engines.Craft
 				case 7: minSkill = 75.0; maxSkill = 125.0; break;
 			}
 
-			int index = AddCraft(type, "Elemental Spells", ElementalSpell.CommonInfo( (300 + m_Elly++), 1 ), minSkill, maxSkill, typeof(BlankScroll), 1044377, 1, 1044378);
+			int index = AddCraftRecipe(recipeNumber, type, "Elemental Spells", ElementalSpell.CommonInfo( (300 + m_Elly++), 1 ), minSkill, maxSkill, typeof(BlankScroll), 1044377, 1, 1044378);
 
 			AddRes(index, typeof(DaemonBlood), 1023965, blood, 1042081);
 
@@ -247,28 +271,28 @@ namespace Server.Engines.Craft
 			AddElementalSpell( typeof( Elemental_Void_Scroll ) );
 			m_Circle = 4;
 			m_Mana = 19;
-			AddElementalSpell( typeof( Elemental_Blast_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Echo_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Fiend_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Hold_Scroll ) );
+			AddElementalSpell( 1, typeof( Elemental_Blast_Scroll ) );
+			AddElementalSpell( 2, typeof( Elemental_Echo_Scroll ) );
+			AddElementalSpell( 3, typeof( Elemental_Fiend_Scroll ) );
+			AddElementalSpell( 4, typeof( Elemental_Hold_Scroll ) );
 			m_Circle = 5;
 			m_Mana = 24;
-			AddElementalSpell( typeof( Elemental_Barrage_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Rune_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Storm_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Summon_Scroll ) );
+			AddElementalSpell( 5, typeof( Elemental_Barrage_Scroll ) );
+			AddElementalSpell( 6, typeof( Elemental_Rune_Scroll ) );
+			AddElementalSpell( 7, typeof( Elemental_Storm_Scroll ) );
+			AddElementalSpell( 8, typeof( Elemental_Summon_Scroll ) );
 			m_Circle = 6;
 			m_Mana = 40;
-			AddElementalSpell( typeof( Elemental_Devastation_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Fall_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Gate_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Havoc_Scroll ) );
+			AddElementalSpell( 9, typeof( Elemental_Devastation_Scroll ) );
+			AddElementalSpell( 10, typeof( Elemental_Fall_Scroll ) );
+			AddElementalSpell( 11, typeof( Elemental_Gate_Scroll ) );
+			AddElementalSpell( 12, typeof( Elemental_Havoc_Scroll ) );
 			m_Circle = 7;
 			m_Mana = 50;
-			AddElementalSpell( typeof( Elemental_Apocalypse_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Lord_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Soul_Scroll ) );
-			AddElementalSpell( typeof( Elemental_Spirit_Scroll ) );
+			AddElementalSpell( 13, typeof( Elemental_Apocalypse_Scroll ) );
+			AddElementalSpell( 14, typeof( Elemental_Lord_Scroll ) );
+			AddElementalSpell( 15, typeof( Elemental_Soul_Scroll ) );
+			AddElementalSpell( 16, typeof( Elemental_Spirit_Scroll ) );
 
 			m_Circle = 0;
 			m_Mana = 4;
@@ -321,50 +345,50 @@ namespace Server.Engines.Craft
 			m_Circle = 4;
 			m_Mana = 14;
 
-			AddSpell(typeof(BladeSpiritsScroll), Reg.BlackPearl, Reg.Nightshade, Reg.MandrakeRoot);
-			AddSpell(typeof(DispelFieldScroll), Reg.BlackPearl, Reg.Garlic, Reg.SpidersSilk, Reg.SulfurousAsh);
-			AddSpell(typeof(IncognitoScroll), Reg.Bloodmoss, Reg.Garlic, Reg.Nightshade);
-			AddSpell(typeof(MagicReflectScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SpidersSilk);
-			AddSpell(typeof(MindBlastScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.Nightshade, Reg.SulfurousAsh);
-			AddSpell(typeof(ParalyzeScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SpidersSilk);
-			AddSpell(typeof(PoisonFieldScroll), Reg.BlackPearl, Reg.Nightshade, Reg.SpidersSilk);
-			AddSpell(typeof(SummonCreatureScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 51, typeof(BladeSpiritsScroll), Reg.BlackPearl, Reg.Nightshade, Reg.MandrakeRoot);
+			AddSpell( 52, typeof(DispelFieldScroll), Reg.BlackPearl, Reg.Garlic, Reg.SpidersSilk, Reg.SulfurousAsh);
+			AddSpell( 53, typeof(IncognitoScroll), Reg.Bloodmoss, Reg.Garlic, Reg.Nightshade);
+			AddSpell( 54, typeof(MagicReflectScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 55, typeof(MindBlastScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.Nightshade, Reg.SulfurousAsh);
+			AddSpell( 56, typeof(ParalyzeScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 57, typeof(PoisonFieldScroll), Reg.BlackPearl, Reg.Nightshade, Reg.SpidersSilk);
+			AddSpell( 58, typeof(SummonCreatureScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
 			m_Circle = 5;
 			m_Mana = 20;
 
-			AddSpell(typeof(DispelScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SulfurousAsh);
-			AddSpell(typeof(EnergyBoltScroll), Reg.BlackPearl, Reg.Nightshade);
-			AddSpell(typeof(ExplosionScroll), Reg.Bloodmoss, Reg.MandrakeRoot);
-			AddSpell(typeof(InvisibilityScroll), Reg.Bloodmoss, Reg.Nightshade);
-			AddSpell(typeof(MarkScroll), Reg.Bloodmoss, Reg.BlackPearl, Reg.MandrakeRoot);
-			AddSpell(typeof(MassCurseScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.Nightshade, Reg.SulfurousAsh);
-			AddSpell(typeof(ParalyzeFieldScroll), Reg.BlackPearl, Reg.Ginseng, Reg.SpidersSilk);
-			AddSpell(typeof(RevealScroll), Reg.Bloodmoss, Reg.SulfurousAsh);
+			AddSpell( 59, typeof(DispelScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SulfurousAsh);
+			AddSpell( 60, typeof(EnergyBoltScroll), Reg.BlackPearl, Reg.Nightshade);
+			AddSpell( 61, typeof(ExplosionScroll), Reg.Bloodmoss, Reg.MandrakeRoot);
+			AddSpell( 62, typeof(InvisibilityScroll), Reg.Bloodmoss, Reg.Nightshade);
+			AddSpell( 63, typeof(MarkScroll), Reg.Bloodmoss, Reg.BlackPearl, Reg.MandrakeRoot);
+			AddSpell( 64, typeof(MassCurseScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.Nightshade, Reg.SulfurousAsh);
+			AddSpell( 65, typeof(ParalyzeFieldScroll), Reg.BlackPearl, Reg.Ginseng, Reg.SpidersSilk);
+			AddSpell( 66, typeof(RevealScroll), Reg.Bloodmoss, Reg.SulfurousAsh);
 
 			m_Circle = 6;
 			m_Mana = 40;
 
-			AddSpell(typeof(ChainLightningScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SulfurousAsh);
-			AddSpell(typeof(EnergyFieldScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
-			AddSpell(typeof(FlamestrikeScroll), Reg.SpidersSilk, Reg.SulfurousAsh);
-			AddSpell(typeof(GateTravelScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.SulfurousAsh);
-			AddSpell(typeof(ManaVampireScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
-			AddSpell(typeof(MassDispelScroll), Reg.BlackPearl, Reg.Garlic, Reg.MandrakeRoot, Reg.SulfurousAsh);
-			AddSpell(typeof(MeteorSwarmScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SulfurousAsh, Reg.SpidersSilk);
-			AddSpell(typeof(PolymorphScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 67, typeof(ChainLightningScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SulfurousAsh);
+			AddSpell( 68, typeof(EnergyFieldScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
+			AddSpell( 69, typeof(FlamestrikeScroll), Reg.SpidersSilk, Reg.SulfurousAsh);
+			AddSpell( 70, typeof(GateTravelScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.SulfurousAsh);
+			AddSpell( 71, typeof(ManaVampireScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 72, typeof(MassDispelScroll), Reg.BlackPearl, Reg.Garlic, Reg.MandrakeRoot, Reg.SulfurousAsh);
+			AddSpell( 73, typeof(MeteorSwarmScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SulfurousAsh, Reg.SpidersSilk);
+			AddSpell( 74, typeof(PolymorphScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
 			m_Circle = 7;
 			m_Mana = 50;
 
-			AddSpell(typeof(EarthquakeScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Ginseng, Reg.SulfurousAsh);
-			AddSpell(typeof(EnergyVortexScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Nightshade);
-			AddSpell(typeof(ResurrectionScroll), Reg.Bloodmoss, Reg.Garlic, Reg.Ginseng);
-			AddSpell(typeof(SummonAirElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
-			AddSpell(typeof(SummonDaemonScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
-			AddSpell(typeof(SummonEarthElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
-			AddSpell(typeof(SummonFireElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
-			AddSpell(typeof(SummonWaterElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 75, typeof(EarthquakeScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Ginseng, Reg.SulfurousAsh);
+			AddSpell( 76, typeof(EnergyVortexScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Nightshade);
+			AddSpell( 77, typeof(ResurrectionScroll), Reg.Bloodmoss, Reg.Garlic, Reg.Ginseng);
+			AddSpell( 78, typeof(SummonAirElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 79, typeof(SummonDaemonScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
+			AddSpell( 80, typeof(SummonEarthElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
+			AddSpell( 81, typeof(SummonFireElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
+			AddSpell( 82, typeof(SummonWaterElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
 			AddNecroSpell(0, 23, 39.6, typeof(AnimateDeadScroll), Reagent.GraveDust, Reagent.DaemonBlood);
 			AddNecroSpell(1, 13, 19.6, typeof(BloodOathScroll), Reagent.DaemonBlood);
@@ -375,14 +399,14 @@ namespace Server.Engines.Craft
 			AddNecroSpell(6, 23, 69.6, typeof(LichFormScroll), Reagent.GraveDust, Reagent.DaemonBlood, Reagent.NoxCrystal);
 			AddNecroSpell(7, 17, 29.6, typeof(MindRotScroll), Reagent.BatWing, Reagent.DaemonBlood, Reagent.PigIron);
 			AddNecroSpell(8, 5, 19.6, typeof(PainSpikeScroll), Reagent.GraveDust, Reagent.PigIron);
-			AddNecroSpell(9, 17, 49.6, typeof(PoisonStrikeScroll), Reagent.NoxCrystal);
-			AddNecroSpell(10, 29, 64.6, typeof(StrangleScroll), Reagent.DaemonBlood, Reagent.NoxCrystal);
-			AddNecroSpell(11, 17, 29.6, typeof(SummonFamiliarScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.DaemonBlood);
-			AddNecroSpell(12, 23, 98.6, typeof(VampiricEmbraceScroll), Reagent.BatWing, Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(13, 41, 79.6, typeof(VengefulSpiritScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.PigIron);
-			AddNecroSpell(14, 23, 59.6, typeof(WitherScroll), Reagent.GraveDust, Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(15, 17, 79.6, typeof(WraithFormScroll), Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(16, 40, 79.6, typeof(ExorcismScroll), Reagent.NoxCrystal, Reagent.GraveDust);
+			AddNecroSpell( 83, 9, 17, 49.6, typeof(PoisonStrikeScroll), Reagent.NoxCrystal);
+			AddNecroSpell( 84, 10, 29, 64.6, typeof(StrangleScroll), Reagent.DaemonBlood, Reagent.NoxCrystal);
+			AddNecroSpell( 85, 11, 17, 29.6, typeof(SummonFamiliarScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.DaemonBlood);
+			AddNecroSpell( 86, 12, 23, 98.6, typeof(VampiricEmbraceScroll), Reagent.BatWing, Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell( 87, 13, 41, 79.6, typeof(VengefulSpiritScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.PigIron);
+			AddNecroSpell( 88, 14, 23, 59.6, typeof(WitherScroll), Reagent.GraveDust, Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell( 89, 15, 17, 79.6, typeof(WraithFormScroll), Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell( 90, 16, 40, 79.6, typeof(ExorcismScroll), Reagent.NoxCrystal, Reagent.GraveDust);
 
 			int index;
 
