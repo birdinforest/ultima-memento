@@ -68,6 +68,8 @@ namespace Server.Items
 
 		public static void UsePranks( Mobile m, int pranks )
 		{
+			if (pranks < 1) return;
+
 			ArrayList tricks = new ArrayList();
 			foreach( Item item in m.Backpack.FindItemsByType( typeof( BagOfTricks ), true ) )
 			{
