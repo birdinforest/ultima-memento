@@ -59,8 +59,13 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendLocalizedMessage( 502464 ); // Target the animal you wish to herd.
-			from.Target = new HerdingTarget();
+			base.OnDoubleClick(from);
+			
+			if ( Parent == from )
+			{
+				from.SendLocalizedMessage( 502464 ); // Target the animal you wish to herd.
+				from.Target = new HerdingTarget();
+			}
 		}
 
 		private class HerdingTarget : Target
