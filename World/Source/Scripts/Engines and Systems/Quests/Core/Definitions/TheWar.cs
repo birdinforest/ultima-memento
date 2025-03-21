@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Server.Engines.Craft;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
@@ -16,14 +17,33 @@ namespace Server.Engines.MLQuests.Definitions
         {
             Activated = true;
             HasRestartDelay = true; // This quest is meant to be repeated
-            Title = "I Want You!";
-            Description = "Description SupportingTheWarQuest";
-            RefusalMessage = "RefusalMessage SupportingTheWarQuest";
-            InProgressMessage = "InProgressMessage SupportingTheWarQuest";
-            CompletionMessage = "CompletionMessage SupportingTheWarQuest";
+            Title = "Protecting our soldiers";
+            var builder = new StringBuilder();
+            builder.Append("Hear me now! Our once-thriving towns stand at the brink of ruin, and the time has come for each of us to do our part. The Great War has cast a shadow over our peaceful lands, and the forces of darkness grow bolder with each passing day. Trade routes have been shattered, crops are burning, and our homes are at risk.");
+            builder.Append("<br><br>");
+            builder.Append("But there is still hope, and that hope lies in our hands. We need brave souls, yes, but we also need the skilled hands of craftsmen, like you, to support our warriors on the front lines. The soldiers of Sosaria need your help.");
+            builder.Append("<br><br>");
+            builder.Append("Our soldiers must be producted from the deadly forces they face. By signing up today, you can forge the very armor that will keep our brave defenders safe and give them the strength they need to turn the tide of this war. Your craft, your skill, can make the difference between victory and defeat. The time to act is now -- stand with us, and together, we shall reclaim our land!");
+            Description = builder.ToString();
 
             Objectives.Add(new DummyObjective("Collect the following:"));
             Objectives.Add(new CollectObjective(5, typeof(RingmailChest), "Ringmail Tunic"));
+            Objectives.Add(new DummyObjective(""));
+            Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
+
+            builder.Clear();
+            builder.Append("Mark the shields as a quest item when you are ready.<br><br>");
+            builder.Append("- Click yourself to view your Quest Log<br>");
+            builder.Append("- Click the reticle next to the quest<br>");
+            builder.Append("- Target a container or the tunics directly<br>");
+            builder.Append("- Return to the Recruiter");
+            InProgressMessage = builder.ToString();
+
+            builder.Clear();
+            builder.Append("By the Virtues, your generosity will not be forgotten! Your contribution to this cause is beyond measure, and the warriors on the front lines will wear the Ringmail Tunics you've crafted with pride, knowing they were forged by the hands of true heroes like you. You've shown what it means to stand for Sosaria.");
+            builder.Append("<br><br>");
+            builder.Append("Your work will protect the innocent and help bring us one step closer to victory. The courage you've shown in this dark time speaks volumes, and I am proud to count you among our allies. Rest assured, your sacrifice will be honored, and your name will echo alongside those of the brave who have fought to keep our world safe. Thank you, friend. Together, we will restore the peace we once knew.");
+            CompletionMessage = builder.ToString();
 
             Rewards.Add(new ConstructibleItemReward("3 New Weapon Recipes",
                 player =>
