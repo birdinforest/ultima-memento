@@ -72,7 +72,7 @@ namespace Server.Items
 		public int RunicMinIntensity{ get{ return m_RunicMinIntensity; } set{ m_RunicMinIntensity = value; } }
 		public int RunicMaxIntensity{ get{ return m_RunicMaxIntensity; } set{ m_RunicMaxIntensity = value; } }
 
-		public static CraftAttributeInfo CraftAttInfo( int armorphy, int armorcld, int armorfir, int armorpsn, int armoregy, object spacer, int weapcold, int weapfire, int weapengy, int weappois, object spacer2, int durable, int lowreq, int luck )
+		public static CraftAttributeInfo CraftAttInfo( int armorphy, int armorfir, int armorcld, int armorpsn, int armoregy, object spacer, int weapcold, int weapfire, int weapengy, int weappois, object spacer2, int durable, int lowreq, int luck )
 		{
 			CraftAttributeInfo var = new CraftAttributeInfo();
 
