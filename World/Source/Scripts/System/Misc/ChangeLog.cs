@@ -82,6 +82,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Redesigned crafting tool gump<br>");
 			builder.Append("- Gump - Redesigned Druidism gump<br>");
 			builder.Append("- Gump - Add required skill to Animal Form gump<br>");
+			builder.Append("- Gump - Spell toolbar config pages now have close/open buttons<br>");
 			builder.Append("- Guilds - Local Guilds bulletin is now sorted by guild<br>");
 			builder.Append("- Item - Increased the cost of all 115/120/125 Powerscrolls<br>");
 			builder.Append("- Item - Powerscrolls now have to be used in order<br>");

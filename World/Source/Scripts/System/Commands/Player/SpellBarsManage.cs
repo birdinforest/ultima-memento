@@ -1,51 +1,34 @@
 using System;
-using Server;
-using System.Collections;
 using Server.Network;
 using Server.Mobiles;
-using Server.Items;
 using Server.Misc;
 using Server.Commands;
-using Server.Commands.Generic;
-using Server.Spells;
-using Server.Spells.First;
-using Server.Spells.Second;
-using Server.Spells.Third;
-using Server.Spells.Fourth;
-using Server.Spells.Fifth;
-using Server.Spells.Sixth;
-using Server.Spells.Seventh;
-using Server.Spells.Eighth;
-using Server.Spells.Necromancy;
-using Server.Spells.Chivalry;
-using Server.Spells.DeathKnight;
-using Server.Spells.Song;
-using Server.Spells.HolyMan;
-using Server.Spells.Mystic;
 using Server.Spells.Elementalism;
-using Server.Spells.Research;
-using Server.Prompts;
-using Server.Gumps;
 
 namespace Server.Gumps
 {
 	public abstract class SetupSpellBarGump : Gump
 	{
+		public readonly PlayerMobile Player;
+
 		protected readonly int Origin;
-		protected readonly PlayerMobile Player;
 		protected readonly bool IsNumberOneBar;
 		protected readonly string Title;
 		protected readonly string StorageKey;
+		protected readonly string OpenCommand;
+		protected readonly string CloseCommand;
 
 		public abstract bool ConfigureGump();
 
-		protected SetupSpellBarGump(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(12, 50)
+		protected SetupSpellBarGump(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand) : base(12, 50)
 		{
 			Player = from;
 			Origin = origin;
 			IsNumberOneBar = isNumberOneBar;
 			Title = title;
 			StorageKey = storageKey;
+			OpenCommand = openCommand;
+			CloseCommand = closeCommand;
 
 			Closable = true;
 			Disposable = true;
@@ -73,6 +56,12 @@ namespace Server.Gumps
 
 			AddButton(225, 82, showSpellNamesWhenVerticalGraphic, showSpellNamesWhenVerticalGraphic, 90, GumpButtonType.Reply, 0);
 			AddLabel(265, 85, LabelColors.OFFWHITE, "Show Spell Names When Vertical");
+
+			AddButton(500, 52, 4005, 4007, 92, GumpButtonType.Reply, 0);
+			AddLabel(540, 55, LabelColors.OFFWHITE, "Open Toolbar");
+
+			AddButton(500, 82, 4020, 4020, 93, GumpButtonType.Reply, 0);
+			AddLabel(540, 85, LabelColors.OFFWHITE, "Close Toolbar");
 		}
 
 		protected void AddSpell(bool isChecked, int buttonId, int spellGraphicId, string spellName, ref int i, ref int x, ref int y)
@@ -104,6 +93,11 @@ namespace Server.Gumps
 		{
 			AddButton(50, 569, 4014, 4015, buttonId, GumpButtonType.Reply, 0); // Previous Page
 		}
+
+		protected void InvokeCommand(string c, Mobile from)
+		{
+			CommandSystem.Handle(from, String.Format("{0}{1}", CommandSystem.Prefix, c));
+		}
 	}
 }
 
@@ -120,7 +114,7 @@ namespace Server.Gumps
 	public class SetupBarsArch1 : SetupBarsArch
 	{
 		public SetupBarsArch1(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - I", "SetupBarsArch1")
+			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - I", "SetupBarsArch1", "archtool1", "archclose1")
 		{
 		}
 
@@ -156,7 +150,7 @@ namespace Server.Gumps
 	public class SetupBarsArch2 : SetupBarsArch
 	{
 		public SetupBarsArch2(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - II", "SetupBarsArch2")
+			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - II", "SetupBarsArch2", "archtool2", "archclose2")
 		{
 		}
 
@@ -192,7 +186,7 @@ namespace Server.Gumps
 	public class SetupBarsArch3 : SetupBarsArch
 	{
 		public SetupBarsArch3(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - III", "SetupBarsArch3")
+			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - III", "SetupBarsArch3", "archtool3", "archclose3")
 		{
 		}
 
@@ -228,7 +222,7 @@ namespace Server.Gumps
 	public class SetupBarsArch4 : SetupBarsArch
 	{
 		public SetupBarsArch4(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - IIII", "SetupBarsArch4")
+			: base(from, origin, pageNumber, true, "SPELL BAR - ANCIENT - IV", "SetupBarsArch4", "archtool4", "archclose4")
 		{
 		}
 
@@ -265,7 +259,8 @@ namespace Server.Gumps
 	{
 		protected readonly int PageNumber;
 
-		protected SetupBarsArch(PlayerMobile from, int origin, int pageNumber, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsArch(PlayerMobile from, int origin, int pageNumber, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 			PageNumber = pageNumber;
 		}
@@ -340,6 +335,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 
 				if (100 < info.ButtonID)
 				{
@@ -368,7 +365,7 @@ namespace Server.Gumps
 	public class SetupBarsMage1 : SetupBarsMage
 	{
 		public SetupBarsMage1(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - I", "SetupBarsMage1")
+			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - I", "SetupBarsMage1", "magetool1", "mageclose1")
 		{
 		}
 
@@ -404,7 +401,7 @@ namespace Server.Gumps
 	public class SetupBarsMage2 : SetupBarsMage
 	{
 		public SetupBarsMage2(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - II", "SetupBarsMage2")
+			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - II", "SetupBarsMage2", "magetool2", "mageclose2")
 		{
 		}
 
@@ -440,7 +437,7 @@ namespace Server.Gumps
 	public class SetupBarsMage3 : SetupBarsMage
 	{
 		public SetupBarsMage3(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - III", "SetupBarsMage3")
+			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - III", "SetupBarsMage3", "magetool3", "mageclose3")
 		{
 		}
 
@@ -476,7 +473,7 @@ namespace Server.Gumps
 	public class SetupBarsMage4 : SetupBarsMage
 	{
 		public SetupBarsMage4(PlayerMobile from, int origin, int pageNumber = 1)
-			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - IIII", "SetupBarsMage4")
+			: base(from, origin, pageNumber, true, "SPELL BAR - MAGERY - IV", "SetupBarsMage4", "magetool4", "mageclose4")
 		{
 		}
 
@@ -513,7 +510,8 @@ namespace Server.Gumps
 	{
 		protected readonly int PageNumber;
 
-		protected SetupBarsMage(PlayerMobile from, int origin, int pageNumber, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsMage(PlayerMobile from, int origin, int pageNumber, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 			PageNumber = pageNumber;
 		}
@@ -651,6 +649,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 
 				if (100 < info.ButtonID)
 				{
@@ -671,7 +671,7 @@ namespace Server.Gumps
 	public class SetupBarsElement1 : SetupBarsElementalism
 	{
 		public SetupBarsElement1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - ELEMENTALIST - I", "SetupBarsElly1")
+			: base(from, origin, true, "SPELL BAR - ELEMENTALIST - I", "SetupBarsElly1", "elementtool1", "elementclose1")
 		{
 		}
 
@@ -707,7 +707,7 @@ namespace Server.Gumps
 	public class SetupBarsElement2 : SetupBarsElementalism
 	{
 		public SetupBarsElement2(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - ELEMENTALIST - II", "SetupBarsElly2")
+			: base(from, origin, true, "SPELL BAR - ELEMENTALIST - II", "SetupBarsElly2", "elementtool2", "elementclose2")
 		{
 		}
 
@@ -742,7 +742,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsElementalism : SetupSpellBarGump
 	{
-		protected SetupBarsElementalism(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsElementalism(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -801,6 +802,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -823,7 +826,7 @@ namespace Server.Gumps
 	public class SetupBarsNecro1 : SetupBarsNecro
 	{
 		public SetupBarsNecro1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - NECROMANCER - I", "SetupBarsNecro1")
+			: base(from, origin, true, "SPELL BAR - NECROMANCER - I", "SetupBarsNecro1", "necrotool1", "necroclose1")
 		{
 		}
 
@@ -859,7 +862,7 @@ namespace Server.Gumps
 	public class SetupBarsNecro2 : SetupBarsNecro
 	{
 		public SetupBarsNecro2(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - NECROMANCER - II", "SetupBarsNecro2")
+			: base(from, origin, true, "SPELL BAR - NECROMANCER - II", "SetupBarsNecro2", "necrotool2", "necroclose2")
 		{
 		}
 
@@ -894,7 +897,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsNecro : SetupSpellBarGump
 	{
-		protected SetupBarsNecro(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsNecro(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -964,6 +968,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -986,7 +992,7 @@ namespace Server.Gumps
 	public class SetupBarsKnight1 : SetupBarsKnight
 	{
 		public SetupBarsKnight1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - KNIGHT - I", "SetupBarsKnight1")
+			: base(from, origin, true, "SPELL BAR - KNIGHT - I", "SetupBarsKnight1", "knighttool1", "knightclose1")
 		{
 		}
 
@@ -1022,7 +1028,7 @@ namespace Server.Gumps
 	public class SetupBarsKnight2 : SetupBarsKnight
 	{
 		public SetupBarsKnight2(PlayerMobile from, int origin)
-			: base(from, origin, false, "SPELL BAR - KNIGHT - II", "SetupBarsKnight2")
+			: base(from, origin, false, "SPELL BAR - KNIGHT - II", "SetupBarsKnight2", "knighttool2", "knightclose2")
 		{
 		}
 
@@ -1057,7 +1063,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsKnight : SetupSpellBarGump
 	{
-		protected SetupBarsKnight(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsKnight(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -1120,6 +1127,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -1143,7 +1152,7 @@ namespace Server.Gumps
 	public class SetupBarsBard1 : SetupBarsBard
 	{
 		public SetupBarsBard1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - BARD - I", "SetupBarsBard1")
+			: base(from, origin, true, "SPELL BAR - BARD - I", "SetupBarsBard1", "bardtool1", "bardclose1")
 		{
 		}
 
@@ -1179,7 +1188,7 @@ namespace Server.Gumps
 	public class SetupBarsBard2 : SetupBarsBard
 	{
 		public SetupBarsBard2(PlayerMobile from, int origin)
-			: base(from, origin, false, "SPELL BAR - BARD - II", "SetupBarsBard2")
+			: base(from, origin, false, "SPELL BAR - BARD - II", "SetupBarsBard2", "bardtool2", "bardclose2")
 		{
 		}
 
@@ -1214,7 +1223,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsBard : SetupSpellBarGump
 	{
-		protected SetupBarsBard(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsBard(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -1285,6 +1295,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -1307,7 +1319,7 @@ namespace Server.Gumps
 	public class SetupBarsDeath1 : SetupBarsDeath
 	{
 		public SetupBarsDeath1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - KNIGHT - I", "SetupBarsDeath1")
+			: base(from, origin, true, "SPELL BAR - KNIGHT - I", "SetupBarsDeath1", "deathtool1", "deathclose1")
 		{
 		}
 
@@ -1343,7 +1355,7 @@ namespace Server.Gumps
 	public class SetupBarsDeath2 : SetupBarsDeath
 	{
 		public SetupBarsDeath2(PlayerMobile from, int origin)
-			: base(from, origin, false, "SPELL BAR - KNIGHT - II", "SetupBarsDeath2")
+			: base(from, origin, false, "SPELL BAR - KNIGHT - II", "SetupBarsDeath2", "deathtool2", "deathclose2")
 		{
 		}
 
@@ -1378,7 +1390,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsDeath : SetupSpellBarGump
 	{
-		protected SetupBarsDeath(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsDeath(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -1460,6 +1473,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -1482,7 +1497,7 @@ namespace Server.Gumps
 	public class SetupBarsPriest1 : SetupBarsPriest
 	{
 		public SetupBarsPriest1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - PRIEST - I", "SetupBarsPriest1")
+			: base(from, origin, true, "SPELL BAR - PRIEST - I", "SetupBarsPriest1", "holytool1", "holyclose1")
 		{
 		}
 
@@ -1518,7 +1533,7 @@ namespace Server.Gumps
 	public class SetupBarsPriest2 : SetupBarsPriest
 	{
 		public SetupBarsPriest2(PlayerMobile from, int origin)
-			: base(from, origin, false, "SPELL BAR - PRIEST - II", "SetupBarsPriest2")
+			: base(from, origin, false, "SPELL BAR - PRIEST - II", "SetupBarsPriest2", "holytool2", "holyclose2")
 		{
 		}
 
@@ -1553,7 +1568,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsPriest : SetupSpellBarGump
 	{
-		protected SetupBarsPriest(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsPriest(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -1635,6 +1651,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
@@ -1657,7 +1675,7 @@ namespace Server.Gumps
 	public class SetupBarsMonk1 : SetupBarsMonk
 	{
 		public SetupBarsMonk1(PlayerMobile from, int origin)
-			: base(from, origin, true, "SPELL BAR - MONK - I", "SetupBarsMonk1")
+			: base(from, origin, true, "SPELL BAR - MONK - I", "SetupBarsMonk1", "monktool1", "monkclose1")
 		{
 		}
 
@@ -1693,7 +1711,7 @@ namespace Server.Gumps
 	public class SetupBarsMonk2 : SetupBarsMonk
 	{
 		public SetupBarsMonk2(PlayerMobile from, int origin)
-			: base(from, origin, false, "SPELL BAR - MONK - II", "SetupBarsMonk2")
+			: base(from, origin, false, "SPELL BAR - MONK - II", "SetupBarsMonk2", "monktool2", "monkclose2")
 		{
 		}
 
@@ -1728,7 +1746,8 @@ namespace Server.Gumps
 
 	public abstract class SetupBarsMonk : SetupSpellBarGump
 	{
-		protected SetupBarsMonk(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey) : base(from, origin, isNumberOneBar, title, storageKey)
+		protected SetupBarsMonk(PlayerMobile from, int origin, bool isNumberOneBar, string title, string storageKey, string openCommand, string closeCommand)
+			: base(from, origin, isNumberOneBar, title, storageKey, openCommand, closeCommand)
 		{
 		}
 
@@ -1802,6 +1821,8 @@ namespace Server.Gumps
 				if (info.ButtonID < 90) { ToolBarUpdates.UpdateToolBar(from, info.ButtonID, StorageKey, totalOptions); }
 				else if (info.ButtonID == 90) { ToolBarUpdates.UpdateToolBar(from, totalOptions - 1, StorageKey, totalOptions); }
 				else if (info.ButtonID == 91) { ToolBarUpdates.UpdateToolBar(from, totalOptions, StorageKey, totalOptions); }
+				else if (info.ButtonID == 92) { InvokeCommand(OpenCommand, from); }
+				else if (info.ButtonID == 93) { InvokeCommand(CloseCommand, from); }
 			}
 
 			if (info.ButtonID < 1 && Origin > 0) { from.SendGump(new Server.Engines.Help.HelpGump(from, 7)); from.SendSound(0x4A); }
