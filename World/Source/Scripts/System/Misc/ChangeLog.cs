@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Hegran (DD MMM YYYY)";
+			return "Version: 1.0.0";
 		}
 
 		public static string Versions()
