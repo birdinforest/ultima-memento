@@ -62,9 +62,19 @@ namespace Server.Engines.Help
 		public static void Initialize()
 		{
 			EventSink.HelpRequest += new HelpRequestEventHandler( EventSink_HelpRequest );
+            CommandSystem.Register("toolbars", AccessLevel.Player, e => OpenHelpGumpPageCommand(e, 7));
 		}
 
-		private static void EventSink_HelpRequest( HelpRequestEventArgs e )
+        private static void OpenHelpGumpPageCommand(CommandEventArgs e, int pageNumber)
+        {
+			var player = e.Mobile as PlayerMobile;
+			if (player == null) return;
+
+			player.CloseGump(typeof(HelpGump));
+			player.SendGump(new HelpGump(player, pageNumber));
+        }
+
+        private static void EventSink_HelpRequest( HelpRequestEventArgs e )
 		{
 			foreach ( Gump g in e.Mobile.NetState.Gumps )
 			{
@@ -733,6 +743,15 @@ namespace Server.Engines.Help
             CommandSystem.Handle(from, String.Format("{0}{1}", CommandSystem.Prefix, c));
         }
 
+		private void TryConfigureSpellBar(SetupSpellBarGump gump)
+		{
+			if (gump.ConfigureGump())
+			{
+				gump.Player.CloseGump(gump.GetType());
+				gump.Player.SendGump(gump);
+			}
+		}
+
 		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			int pressed = info.ButtonID;
@@ -1228,86 +1247,72 @@ namespace Server.Engines.Help
 					}
 					case 66: // SPELL BARS BELOW ---------------------------------------
 					{
-						from.CloseGump( typeof( SetupBarsBard1 ) );
-						from.SendGump( new SetupBarsBard1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsBard1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 67:
 					{
-						from.CloseGump( typeof( SetupBarsBard2 ) );
-						from.SendGump( new SetupBarsBard2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsBard2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 68:
 					{
-						from.CloseGump( typeof( SetupBarsKnight1 ) );
-						from.SendGump( new SetupBarsKnight1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsKnight1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 69:
 					{
-						from.CloseGump( typeof( SetupBarsKnight2 ) );
-						from.SendGump( new SetupBarsKnight2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsKnight2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 70:
 					{
-						from.CloseGump( typeof( SetupBarsDeath1 ) );
-						from.SendGump( new SetupBarsDeath1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsDeath1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 71:
 					{
-						from.CloseGump( typeof( SetupBarsDeath2 ) );
-						from.SendGump( new SetupBarsDeath2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsDeath2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 72:
 					{
-						from.CloseGump( typeof( SetupBarsMage1 ) );
-						from.SendGump( new SetupBarsMage1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMage1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 73:
 					{
-						from.CloseGump( typeof( SetupBarsMage2 ) );
-						from.SendGump( new SetupBarsMage2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMage2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 74:
 					{
-						from.CloseGump( typeof( SetupBarsMage3 ) );
-						from.SendGump( new SetupBarsMage3( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMage3( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 75:
 					{
-						from.CloseGump( typeof( SetupBarsMage4 ) );
-						from.SendGump( new SetupBarsMage4( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMage4( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 76:
 					{
-						from.CloseGump( typeof( SetupBarsNecro1 ) );
-						from.SendGump( new SetupBarsNecro1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsNecro1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 77:
 					{
-						from.CloseGump( typeof( SetupBarsNecro2 ) );
-						from.SendGump( new SetupBarsNecro2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsNecro2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 78:
 					{
-						from.CloseGump( typeof( SetupBarsPriest1 ) );
-						from.SendGump( new SetupBarsPriest1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsPriest1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 79:
 					{
-						from.CloseGump( typeof( SetupBarsPriest2 ) );
-						from.SendGump( new SetupBarsPriest2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsPriest2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 80:
@@ -1317,50 +1322,42 @@ namespace Server.Engines.Help
 					}
 					case 1081:
 					{
-						from.CloseGump( typeof( SetupBarsArch1 ) );
-						from.SendGump( new SetupBarsArch1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsArch1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1082:
 					{
-						from.CloseGump( typeof( SetupBarsArch2 ) );
-						from.SendGump( new SetupBarsArch2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsArch2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1083:
 					{
-						from.CloseGump( typeof( SetupBarsArch3 ) );
-						from.SendGump( new SetupBarsArch3( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsArch3( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 1084:
 					{
-						from.CloseGump( typeof( SetupBarsArch4 ) );
-						from.SendGump( new SetupBarsArch4( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsArch4( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 980:
 					{
-						from.CloseGump( typeof( SetupBarsMonk1 ) );
-						from.SendGump( new SetupBarsMonk1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMonk1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 981:
 					{
-						from.CloseGump( typeof( SetupBarsMonk2 ) );
-						from.SendGump( new SetupBarsMonk2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsMonk2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 978:
 					{
-						from.CloseGump( typeof( SetupBarsElement1 ) );
-						from.SendGump( new SetupBarsElement1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsElement1( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 979:
 					{
-						from.CloseGump( typeof( SetupBarsElement2 ) );
-						from.SendGump( new SetupBarsElement2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( new SetupBarsElement2( (PlayerMobile)from, 1 ) );
 						break;
 					}
 					case 500:
