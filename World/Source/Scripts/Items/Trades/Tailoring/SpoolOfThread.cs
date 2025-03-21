@@ -53,14 +53,14 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( IsChildOf( from.Backpack ) )
+			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendLocalizedMessage( 500366 ); // Select a loom to use that on.
 				from.Target = new PickLoomTarget( this );
 			}
 			else
 			{
-				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
+				from.SendLocalizedMessage( 502138 ); // That is too far away for you to use
 			}
 		}
 
