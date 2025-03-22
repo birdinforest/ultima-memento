@@ -32,6 +32,8 @@ namespace Server.Engines.Craft
 			bool isComplete = m_Context.Amount <= m_Context.Current;
 			if (isComplete) // Session has completed
 				Stop();
+			else if (m_Tool == null || m_Tool.Parent != Player)
+				Cancel();
 
 			if (!m_Context.Paused && !m_Context.Suppressed && !m_Context.Cancelled)
 				RefreshGump(isComplete);
