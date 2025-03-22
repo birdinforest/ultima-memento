@@ -41,8 +41,8 @@ namespace Server.Engines.Harvest
 			HarvestDefinition grave = new HarvestDefinition();
 			grave.BankWidth = 1;
 			grave.BankHeight = 1;
-			grave.MinTotal = 1;
-			grave.MaxTotal = 3;
+			grave.MinTotal = 3;
+			grave.MaxTotal = 5;
 			grave.MinRespawn = TimeSpan.FromMinutes( 50.0 );
 			grave.MaxRespawn = TimeSpan.FromMinutes( 70.0 );
 			grave.Skill = SkillName.Forensics;

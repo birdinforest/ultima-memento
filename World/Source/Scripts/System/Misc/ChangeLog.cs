@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Gather - Increase graverobbing node size to 3-5, up from 1-3<br>");
 			builder.Append("- Gump - Update spiritualism details<br>");
 			builder.Append("- Item - Notify players that lumberjacking is required to use a sawmill<br>");
 			builder.Append("- Mobs - Thieves and Spiders no longer have a chance to delete when hiding<br>");
