@@ -8299,7 +8299,7 @@ namespace Server.Mobiles
 			SlayerEntry vampRepond = SlayerGroup.GetEntryByName( SlayerName.Repond );
 			SlayerEntry vampGiant = SlayerGroup.GetEntryByName( SlayerName.GiantKiller );
 
-			if ( vampAnimal.Slays(this) || vampAvian.Slays(this) || vampRepond.Slays(this) || vampGiant.Slays(this) )
+			if ( vampAnimal.Slays(this) || vampAvian.Slays(this) || vampRepond.Slays(this) || vampGiant.Slays(this) || this is BaseVendor )
 			{
 				Mobile vampire = this.LastKiller;
 
