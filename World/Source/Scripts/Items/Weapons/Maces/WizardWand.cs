@@ -63,7 +63,7 @@ namespace Server.Items
 					case 14: Name = make + " of the Mages";			break;
 				}
 
-				Attributes.LowerManaCost = Utility.RandomMinMax( 1, MyServerSettings.LowerMana() );
+				Attributes.LowerManaCost = Utility.RandomMinMax( 1, MyServerSettings.LowMana() );
 				Attributes.LowerRegCost = Utility.RandomMinMax( 1, MyServerSettings.LowReg() );
 				Attributes.RegenMana = 4;
 			}
@@ -84,13 +84,19 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+			if (version == 0)
+			{
+				var lmcCap = MyServerSettings.LowMana();
+				if (lmcCap < Attributes.LowerManaCost)
+					Attributes.LowerManaCost = Utility.RandomMinMax( 1, lmcCap );
+			}
 		}
 	}
 }
