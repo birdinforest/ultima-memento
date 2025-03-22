@@ -596,7 +596,7 @@ namespace Server
 
 		public static bool EnableDispelLogging()
 		{
-			return true;
+			return false;
 		}
 
 		public static bool EnableHealingLogging()
