@@ -19,6 +19,9 @@ namespace Server.Misc
 			builder.Append(Version());
 			builder.Append("<br>");
 
+			builder.Append("Changes<br>");
+			builder.Append("- Mobs - Thieves and Spiders no longer have a chance to delete when hiding<br>");
+
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");

@@ -3694,43 +3694,7 @@ namespace Server.Misc
 
 		public static void HideStealMove( Mobile from, Mobile m )
 		{
-			int IHide = 0;
-
-			if ( m != null && m.Hits > 0 )
-			{
-				int hits = m.HitsMax / 5;
-				if ( m.Skills[SkillName.Hiding].Value >= Utility.RandomMinMax( 1, 120 ) && m.Hits <= hits && Utility.RandomMinMax( 1, 5 ) == 1 )
-				{
-					Map map = m.Map;
-					bool validLocation = false;
-					Point3D loc = m.Location;
-
-					for ( int j = 0; !validLocation && j < 20; ++j )
-					{
-						int x = m.X + Utility.Random( 6 ) + 6;
-							if ( Utility.RandomBool() ){ x = m.X - Utility.Random( 6 ) - 6; }
-
-						int y = m.Y + Utility.Random( 6 ) + 6;
-							if ( Utility.RandomBool() ){ y = m.Y - Utility.Random( 6 ) - 6; }
-
-						int z = map.GetAverageZ( x, y );
-
-						if ( validLocation = map.CanFit( x, y, m.Z, 16, false, false ) )
-							loc = new Point3D( x, y, m.Z );
-						else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
-							loc = new Point3D( x, y, z );
-					}
-					
-					Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 5042 );
-					Effects.PlaySound( m, m.Map, 0x201 );
-					m.Combatant = null;
-					m.Warmode = false;
-					m.CantWalk = true;
-					m.Location = loc;
-					m.Hidden = true;
-					IHide = 1;
-				}
-			}
+			HideFromOthers( m, 5 );
 
 			if ( m != null && from != null && m.Hits > 0 && from is PlayerMobile && m.InRange( from, 2 ) && m.Map == from.Map )
 			{
@@ -3756,23 +3720,16 @@ namespace Server.Misc
 					}
 				}
 			}
-
-			if ( IHide > 0 && Utility.RandomMinMax( 1, 5 ) == 5 && m.Skills[SkillName.Stealth].Value >= Utility.RandomMinMax( 1, 125 ) )
-			{
-				m.Delete();
-			}
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static void HideFromOthers( Mobile m )
+		public static void HideFromOthers( Mobile m, int maxChance = 4 )
 		{
-			int IHide = 0;
-
 			if ( m != null && m.Hits > 0 )
 			{
 				int hits = m.HitsMax / 5;
-				if ( m.Skills[SkillName.Hiding].Value >= Utility.RandomMinMax( 1, 120 ) && m.Hits <= hits && Utility.RandomMinMax( 1, 4 ) == 1 )
+				if ( m.Skills[SkillName.Hiding].Value >= Utility.RandomMinMax( 1, 120 ) && m.Hits <= hits && Utility.RandomMinMax( 1, maxChance ) == 1 )
 				{
 					Map map = m.Map;
 					bool validLocation = false;
@@ -3801,13 +3758,7 @@ namespace Server.Misc
 					m.CantWalk = true;
 					m.Location = loc;
 					m.Hidden = true;
-					IHide = 1;
 				}
-			}
-
-			if ( IHide > 0 && Utility.RandomMinMax( 1, 5 ) == 5 && m.Skills[SkillName.Stealth].Value >= Utility.RandomMinMax( 1, 125 ) )
-			{
-				m.Delete();
 			}
 		}
 
