@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.0.0";
+			return "Version: 1.0.1";
 		}
 
 		public static string Versions()
@@ -18,6 +18,13 @@ namespace Server.Misc
 
 			builder.Append(Version());
 			builder.Append("<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			builder.Append("<br>");
 			builder.Append("Changes<br>");

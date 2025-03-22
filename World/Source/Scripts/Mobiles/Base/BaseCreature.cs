@@ -5680,18 +5680,18 @@ namespace Server.Mobiles
 
 						if ( Core.SE )
 						{
-							if ( m_Loyalty < MaxLoyalty )
+							if ( Loyalty < MaxLoyalty )
 							{
-								m_Loyalty = MaxLoyalty;
+								Loyalty = MaxLoyalty;
 							}
 						}
 						else
 						{
 							for ( int i = 0; i < amount; ++i )
 							{
-								if ( m_Loyalty < MaxLoyalty  && 0.5 >= Utility.RandomDouble() )
+								if ( Loyalty < MaxLoyalty  && 0.5 >= Utility.RandomDouble() )
 								{
-									m_Loyalty += 10;
+									Loyalty += 10;
 								}
 							}
 						}
