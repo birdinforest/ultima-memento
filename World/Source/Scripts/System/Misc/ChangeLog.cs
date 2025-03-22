@@ -28,6 +28,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Item - WizardWand now respects the proper LMC limit<br>");
+			builder.Append("- Misc - FastPlayer now works on Login<br>");
 			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");
 			builder.Append(SEPARATOR_LINE);
 

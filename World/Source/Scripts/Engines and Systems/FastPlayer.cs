@@ -39,7 +39,7 @@ namespace Server
             Refresh((PlayerMobile)mobile);
         }
 
-        public static void Refresh(PlayerMobile player)
+        public static void Refresh(PlayerMobile player, bool force = false)
         {
             if (player == null) return;
 
@@ -50,16 +50,17 @@ namespace Server
             var activeType = GetActiveItem(player) ?? GetActiveSpell(player);
 
             if (activeType != null && MySettings.S_NoMountsInCertainRegions && AnimalTrainer.IsNoMountRegion(player, region))
-                activeType = null;
+                if (!Server.Mobiles.AnimalTrainer.AllowMagicSpeed(player, region))
+                    activeType = null;
 
             Type oldType;
             m_Table.TryGetValue(player.Serial, out oldType);
-            if (activeType == oldType) return; // Nothing changed
+            if (!force && activeType == oldType) return; // Nothing changed
 
             if (activeType != null)
             {
                 player.Send(SpeedControl.MountSpeed);
-                m_Table.Add(player.Serial, activeType);
+                m_Table[player.Serial] = activeType;
             }
             else
             {
