@@ -154,7 +154,7 @@ namespace Server.Items
 				double maxSkill = difficulty + 25.0;
 				if (difficulty > 50.0 && difficulty > from.Skills[SkillName.Lumberjacking].Value || from.Skills[SkillName.Lumberjacking].Value < minSkill)
 				{
-					from.SendMessage("You have no idea how to best cut this type of wood!");
+					from.SendMessage("You have no idea how to best cut this type of wood! (You need to raise your lumberjacking)");
 					return;
 				}
 				
