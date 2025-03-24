@@ -526,9 +526,6 @@ namespace Server.Items
 			if ( Layer == Layer.Pants )
 				return ( m.FindItemOnLayer( Layer.InnerLegs ) != null );
 
-			if ( Layer == Layer.Shirt )
-				return ( m.FindItemOnLayer( Layer.InnerTorso ) != null );
-
 			return false;
 		}
 
