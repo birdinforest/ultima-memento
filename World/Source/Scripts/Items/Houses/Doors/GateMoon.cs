@@ -48,7 +48,9 @@ namespace Server.Items
 									pet.Hidden = true;
 							}
 						}
-						m.Hidden = true;
+						
+						if ( m.Alive )
+							m.Hidden = true;
 					} ) );
 
 					m.PlaySound( 0x20E );
@@ -326,7 +328,9 @@ namespace Server.Items
 						pet.Hidden = true;
 				}
 			}
-			m.Hidden = true;
+						
+			if ( m.Alive )
+				m.Hidden = true;
 		}
 
 		public GateMoon(Serial serial) : base(serial)

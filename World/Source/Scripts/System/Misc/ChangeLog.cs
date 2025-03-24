@@ -30,6 +30,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Removing the tool from your hand will stop the session<br>");
 			builder.Append("- Item - WizardWand now respects the proper LMC limit<br>");
 			builder.Append("- Misc - FastPlayer now works on Login<br>");
+			builder.Append("- Misc - Maybe fixed unreproducible fast ghost issue when changing facets<br>");
 			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");
 			builder.Append(SEPARATOR_LINE);
 
