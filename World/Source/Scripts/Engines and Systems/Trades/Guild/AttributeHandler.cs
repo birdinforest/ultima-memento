@@ -57,7 +57,7 @@ namespace Server.Items
             Definitions.Add(new AttributeHandler(EnhanceType.AosWeaponAttribute, "LowerStatReq", "Lower Requirements", 				100, 1, 2,
                 !armor, weapon, !jewelry, !spellbook, !shield, !clothing));
             Definitions.Add(new AttributeHandler(EnhanceType.AosArmorAttribute, "SelfRepair", "Self Repair", 						5, 1, 100,
-                armor, !weapon, !jewelry, !spellbook, shield, !clothing));
+                armor, !weapon, !jewelry, !spellbook, shield, clothing));
             Definitions.Add(new AttributeHandler(EnhanceType.AosArmorAttribute, "MageArmor", "Mage Armor",							1, 1, 200,
                 armor, !weapon, !jewelry, !spellbook, !shield, !clothing));
             Definitions.Add(new AttributeHandler(EnhanceType.AosAttribute, "RegenHits", "Hit Point Regeneration", 					5, 1, 5,
@@ -350,6 +350,15 @@ namespace Server.Items
                                 val = MaxValue;
 
                             ((BaseArmor)itemToEnhance).ArmorAttributes.SetValue((int)attr, val);
+                        }
+                        else if (itemToEnhance is BaseClothing)
+                        {
+                            val = ((BaseClothing)itemToEnhance).ClothingAttributes.GetValue((int)attr) + value;
+
+                            if (val > MaxValue)
+                                val = MaxValue;
+
+                            ((BaseClothing)itemToEnhance).ClothingAttributes.SetValue((int)attr, val);
                         }
 
                         return val;

@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Enhance - Self repair can now be added to clothing<br>");
 			builder.Append("- Gump - Update spiritualism details<br>");
 			builder.Append("- Item - Notify players that lumberjacking is required to use a sawmill<br>");
 			builder.Append("- Item - Resists on shirts + chest armor now stack<br>");
