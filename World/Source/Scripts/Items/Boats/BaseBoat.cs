@@ -675,9 +675,8 @@ namespace Server.Multis
 				if ( m_Hold != null )
 					m_Hold.Location = new Point3D( X + (m_Hold.X - old.X), Y + (m_Hold.Y - old.Y), Z + (m_Hold.Z - old.Z ) );
 
-				// No idea why this actually breaks things
-				// if ( m_BoatDoor != null )
-				// 	m_BoatDoor.Location = new Point3D( X + (m_BoatDoor.X - old.X), Y + (m_BoatDoor.Y - old.Y), Z + (m_BoatDoor.Z - old.Z ) );
+				if ( m_BoatDoor != null )
+					m_BoatDoor.Location = new Point3D( X + (m_BoatDoor.X - old.X), Y + (m_BoatDoor.Y - old.Y), Z + (m_BoatDoor.Z - old.Z ) );
 
 				if ( m_PPlank != null )
 					m_PPlank.Location = new Point3D( X + (m_PPlank.X - old.X), Y + (m_PPlank.Y - old.Y), Z + (m_PPlank.Z - old.Z ) );
@@ -2014,7 +2013,6 @@ namespace Server.Multis
 				SafeAdd( m_Hold, toMove );
 				SafeAdd( m_PPlank, toMove );
 				SafeAdd( m_SPlank, toMove );
-				SafeAdd( m_BoatDoor, toMove );
 
 				// Packet must be sent before actual locations are changed
 				foreach ( NetState ns in Map.GetClientsInRange( Location, GetMaxUpdateRange() ) )
