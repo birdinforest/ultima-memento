@@ -177,7 +177,7 @@ namespace Server.Items
 			if ( !base.OnDragDrop( from, dropped ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The items will be picked up in a couple days" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( dropped, dropped.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -210,7 +210,7 @@ namespace Server.Items
 			if ( !base.OnDragDropInto( from, item, p ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The items will be picked up in a couple days" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( item, item.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -276,7 +276,7 @@ namespace Server.Items
 		{
 			private MerchantCrate m_Crate;
 
-			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromDays( 1 ) )
+			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 4 ) )
 			{
 				m_Crate = crate;
 				Priority = TimerPriority.FiveSeconds;
