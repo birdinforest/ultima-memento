@@ -39,6 +39,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Fix incorrect mobs dropping Xeno bones<br>");
 			builder.Append("- Craft - All barbecue cooking requires heat again<br>");
 			builder.Append("- Item - WizardWand now respects the proper LMC limit<br>");
+			builder.Append("- Misc - Lockpicking starter chest is now movable<br>");
 			builder.Append("- Misc - Fast-move spells and items now work on Login<br>");
 			builder.Append("- Misc - Maybe fixed unreproducible fast ghost issue when changing facets<br>");
 			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");

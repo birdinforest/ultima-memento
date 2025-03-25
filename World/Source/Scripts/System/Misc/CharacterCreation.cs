@@ -768,7 +768,7 @@ namespace Server.Misc
 
 					case SkillName.Lockpicking:
 						PackItem(bag, new Lockpick { Amount = 10 });
-						PackItem(bag, new PickBoxDifficult());
+						PackItem(bag, new PickBoxDifficult() { Movable = true } );
 						break;
 
 					case SkillName.Magery:
