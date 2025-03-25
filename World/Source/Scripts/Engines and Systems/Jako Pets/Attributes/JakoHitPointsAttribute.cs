@@ -14,7 +14,12 @@
 
         protected override void SetStat(Server.Mobiles.BaseCreature bc, uint toThis)
         {
+            var delta = (int)(toThis - bc.HitsMaxSeed);
+
             bc.HitsMaxSeed = (int)toThis;
+            
+            if (0 < delta)
+                bc.Heal(delta);
         }
 
         public override string ToString()

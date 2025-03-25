@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fast-move spells and items now work on Login<br>");
 			builder.Append("- Misc - Maybe fixed unreproducible fast ghost issue when changing facets<br>");
 			builder.Append("- Pets - Feeding pets now refreshes Loyalty property<br>");
+			builder.Append("- Pets - Adding Hitpoints trait now heals the petbr>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
