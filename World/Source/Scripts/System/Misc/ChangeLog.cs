@@ -20,6 +20,8 @@ namespace Server.Misc
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Craft - Merchant crates have been reduced to a 4 hour timer<br>");
+			builder.Append("- Craft - Merchant crates no longer have a gold limit<br>");
 			builder.Append("- Enhance - Self repair can now be added to clothing<br>");
 			builder.Append("- Gump - Update spiritualism details<br>");
 			builder.Append("- Item - Merchant crates no longer accept raw resources<br>");
@@ -32,6 +34,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Boat - Fix issue where hatch would player block movement<br>");
+			builder.Append("- Craft - Merchant crates no longer accept raw resources<br>");
 			builder.Append("- Craft - Removing the tool from your hand will stop the session<br>");
 			builder.Append("- Craft - Fix incorrect mobs dropping Xeno bones<br>");
 			builder.Append("- Craft - All barbecue cooking requires heat again<br>");
