@@ -33,6 +33,7 @@ namespace Server.Misc
 			builder.Append("- Boat - Fix issue where hatch would player block movement<br>");
 			builder.Append("- Craft - Removing the tool from your hand will stop the session<br>");
 			builder.Append("- Craft - Fix incorrect mobs dropping Xeno bones<br>");
+			builder.Append("- Craft - All barbecue cooking requires heat again<br>");
 			builder.Append("- Item - WizardWand now respects the proper LMC limit<br>");
 			builder.Append("- Misc - Fast-move spells and items now work on Login<br>");
 			builder.Append("- Misc - Maybe fixed unreproducible fast ghost issue when changing facets<br>");
