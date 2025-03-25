@@ -1369,7 +1369,7 @@ namespace Server.Multis
 			if ( paper is MapItem )
 				map = (MapItem)paper;
 
-			if ( paper is BlankScroll )
+			if ( paper is BlankScroll || paper is BlankMap )
 			{
 				if ( TillerMan != null )
 					TillerMan.Say( BaseBoat.translateText( this, 502575 ) ); // Ar, that is not a map, tis but a blank piece of paper!
