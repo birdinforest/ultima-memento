@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Update spiritualism details<br>");
 			builder.Append("- Item - Notify players that lumberjacking is required to use a sawmill<br>");
 			builder.Append("- Item - Resists on shirts + chest armor now stack<br>");
+			builder.Append("- Item - Use Best Weapon Skill (UBWS) now checks against Fistfighting<br>");
 			builder.Append("- Mobs - Thieves and Spiders no longer have a chance to delete when hiding<br>");
 			builder.Append("- Races - An additional source of food has been added<br>");
 

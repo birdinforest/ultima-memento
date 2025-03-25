@@ -115,7 +115,7 @@ namespace Server.Items
 				return true;
 
 			/* <UBWS> */
-			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Swords].Value >= reqSkill || from.Skills[SkillName.Bludgeoning].Value >= reqSkill || from.Skills[SkillName.Fencing].Value >= reqSkill) )
+			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Swords].Value >= reqSkill || from.Skills[SkillName.Bludgeoning].Value >= reqSkill || from.Skills[SkillName.Fencing].Value >= reqSkill || from.Skills[SkillName.FistFighting].Value >= reqSkill) )
 				return true;
 			/* </UBWS> */
 
@@ -129,6 +129,26 @@ namespace Server.Items
 			}
 
 			return false;
+		}
+
+		protected double GetWeaponSkill(Mobile attacker, BaseWeapon weapon)
+		{
+			Skill skill = attacker.Skills[weapon.Skill];
+			double reqSkill = GetRequiredSkill(attacker);
+			double skilltouse = 0.0;
+			if (skill != null) skilltouse = skill.Value;
+			if (weapon.WeaponAttributes.UseBestSkill > 0)
+			{
+				double skilltouse2 = 0.0;
+				if ( attacker.Skills[SkillName.Swords].Value >= reqSkill ) skilltouse2 = attacker.Skills[SkillName.Swords].Value;
+				if ( attacker.Skills[SkillName.Bludgeoning].Value >= reqSkill && attacker.Skills[SkillName.Bludgeoning].Value > skilltouse2 ) skilltouse2 = attacker.Skills[SkillName.Bludgeoning].Value;
+				if ( attacker.Skills[SkillName.Fencing].Value >= reqSkill && attacker.Skills[SkillName.Fencing].Value > skilltouse2 ) skilltouse2 = attacker.Skills[SkillName.Fencing].Value;
+				if ( attacker.Skills[SkillName.FistFighting].Value >= reqSkill && attacker.Skills[SkillName.FistFighting].Value > skilltouse2 ) skilltouse2 = attacker.Skills[SkillName.FistFighting].Value;
+				if ( attacker.Skills[SkillName.Lumberjacking].Value >= reqSkill && attacker.Skills[SkillName.Lumberjacking].Value > skilltouse2 ) skilltouse2 = attacker.Skills[SkillName.Lumberjacking].Value;
+				if (skilltouse2 > skilltouse) skilltouse = skilltouse2;
+			}
+
+			return skilltouse;
 		}
 
 		public virtual bool CheckSkills( Mobile from )

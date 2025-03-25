@@ -856,6 +856,7 @@ namespace Server.Items
 				double swrd = m.Skills[SkillName.Swords].Value;
 				double fenc = m.Skills[SkillName.Fencing].Value;
 				double mcng = m.Skills[SkillName.Bludgeoning].Value;
+				double fist = m.Skills[SkillName.FistFighting].Value;
 				double val;
 
 				sk = SkillName.Swords;
@@ -863,6 +864,7 @@ namespace Server.Items
 
 				if ( fenc > val ){ sk = SkillName.Fencing; val = fenc; }
 				if ( mcng > val ){ sk = SkillName.Bludgeoning; val = mcng; }
+				if ( fist > val ){ sk = SkillName.FistFighting; val = fist; }
 			}
 			else if ( m_AosWeaponAttributes.MageWeapon != 0 )
 			{
