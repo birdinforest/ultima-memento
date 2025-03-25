@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("Changes<br>");
 			builder.Append("- Enhance - Self repair can now be added to clothing<br>");
 			builder.Append("- Gump - Update spiritualism details<br>");
+			builder.Append("- Item - Merchant crates no longer accept raw resources<br>");
 			builder.Append("- Item - Notify players that lumberjacking is required to use a sawmill<br>");
 			builder.Append("- Item - Resists on shirts + chest armor now stack<br>");
 			builder.Append("- Item - Use Best Weapon Skill (UBWS) now checks against Fistfighting<br>");
@@ -57,7 +58,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
 			builder.Append("- Craft - Cut/Break down no longer requires 50 skill<br>");
 			builder.Append("- Craft - Bulk crafting no longer resets Stat Gain cooldown<br>");
-			builder.Append("- Craft - Merchant crates (disabled) now have 24 hour timer and cap at 100k gold<br>");
+			builder.Append("- Craft - Merchant crates now have 24 hour timer<br>");
 			builder.Append("- Craft - Large BODs can no longer generate the required Small BODs<br>");
 			builder.Append("- Craft - Leather Cloaks/Robes are no longer craftable<br>");
 			builder.Append("- Craft - Disable Bulk Order Deeds (needs fixing/balancing)<br>");

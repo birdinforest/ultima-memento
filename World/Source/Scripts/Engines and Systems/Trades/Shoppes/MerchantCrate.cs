@@ -123,11 +123,7 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				base.OnDoubleClick( from );
 
-			if ( CrateGold >= 100000 )
-			{
-                from.SendMessage("There is too much gold in here. You need to transfer it out first.");
-			}
-            else if ( this.Movable )
+			if ( this.Movable )
 			{
                 from.SendMessage("This must be locked down in a house to use!");
 			}
@@ -161,12 +157,7 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				return base.OnDragDrop( from, dropped );
 
-			if ( CrateGold >= 100000 )
-			{
-                from.SendMessage("There is too much gold in here. You need to transfer it out first.");
-				return false;
-			}
-            else if (this.Movable)
+			if (this.Movable)
 			{
                 from.SendMessage("This must be locked down in a house to use!");
 				return false;
@@ -174,6 +165,12 @@ namespace Server.Items
 			else if ( from.Kills > 0 )
 			{
                 from.SendMessage("This is useless since no one deals with murderers!");
+				return false;
+			}
+
+			if (dropped.Catalog == Catalogs.Crafting)
+			{
+                from.SendMessage("Merchants only purchase crafted item.");
 				return false;
 			}
 
@@ -198,14 +195,15 @@ namespace Server.Items
 			if ( !MySettings.S_MerchantCrates )
 				return base.OnDragDropInto( from, item, p );
 
-			if ( CrateGold >= 100000 )
-			{
-                from.SendMessage("There is too much gold in here. You need to transfer it out first.");
-				return false;
-			}
-            else if (this.Movable)
+			if (this.Movable)
 			{
                 from.SendMessage("This must be locked down in a house to use!");
+				return false;
+			}
+
+			if (item.Catalog == Catalogs.Crafting)
+			{
+                from.SendMessage("Merchants only purchase crafted item.");
 				return false;
 			}
 
