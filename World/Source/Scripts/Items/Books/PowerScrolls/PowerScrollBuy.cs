@@ -45,6 +45,18 @@ namespace Server
 
             m_sortedSkillNames = Enum.GetValues(typeof(SkillName))
                 .Cast<SkillName>()
+                .Where(name =>
+                {
+                    switch (name)
+                    {
+                        case SkillName.Mysticism:
+                        case SkillName.Imbuing:
+                        case SkillName.Throwing:
+                            return false;
+                    }
+
+                    return true;
+                })
                 .OrderBy(name => name.ToString())
                 .ToList();
 
