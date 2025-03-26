@@ -72,7 +72,7 @@ namespace Server
                     y += 30;
 
                     var skillName = m_sortedSkillNames[index + offset];
-                    AddButton(x, y + 77, 4011, 4011, index + BUTTON_SKILL_OFFSET, GumpButtonType.Reply, 0);
+                    AddButton(x, y + 77, 4011, 4011, index + offset + BUTTON_SKILL_OFFSET, GumpButtonType.Reply, 0);
                     AddHtml(x + 50, y + 80, 252, 20, @"<BODY><BASEFONT Color=" + color + ">" + skillName + "</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
             }
@@ -88,12 +88,12 @@ namespace Server
             }
             else if (info.ButtonID > 0)
             {
-				var consumed = Banker.Withdraw(from, m_Price);
-				if (!consumed) // Fallback to backpack
-				{
-					var cont = from.Backpack;
-					consumed = cont != null && cont.ConsumeTotal(typeof(Gold), m_Price);
-				}
+                var consumed = Banker.Withdraw(from, m_Price);
+                if (!consumed) // Fallback to backpack
+                {
+                    var cont = from.Backpack;
+                    consumed = cont != null && cont.ConsumeTotal(typeof(Gold), m_Price);
+                }
 
                 if (consumed)
                 {
