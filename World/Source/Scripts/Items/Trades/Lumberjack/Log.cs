@@ -133,7 +133,7 @@ namespace Server.Items
 				double difficulty;
 				switch (m_Log.Resource)
 				{
-					default: difficulty = 40.0; break;
+					default: difficulty = 20.0; break;
 					case CraftResource.AshTree: difficulty = 55.0; break;
 					case CraftResource.CherryTree: difficulty = 60.0; break;
 					case CraftResource.EbonyTree: difficulty = 65.0; break;

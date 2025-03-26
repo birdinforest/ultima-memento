@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Merchant crates no longer have a gold limit<br>");
 			builder.Append("- Enhance - Self repair can now be added to clothing<br>");
 			builder.Append("- Gump - Update spiritualism details<br>");
+			builder.Append("- Gather - Cutting basic logs difficult reduced to 20, down from 40<br>");
 			builder.Append("- Item - Merchant crates no longer accept raw resources<br>");
 			builder.Append("- Item - Notify players that lumberjacking is required to use a sawmill<br>");
 			builder.Append("- Item - Resists on shirts + chest armor now stack<br>");
