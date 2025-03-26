@@ -836,11 +836,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( Parent != from )
-			{
-				from.SendLocalizedMessage( 502641 ); // You must equip this item to use it.
-			}
-			else if( DateTime.Now >= from.NextActionTime )
+			if( DateTime.Now >= from.NextActionTime )
 			{
 				from.NextActionTime = DateTime.Now + TimeSpan.FromSeconds( 0.5 );
 
