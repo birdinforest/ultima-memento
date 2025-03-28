@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.0.1";
+			return "Version: 1.0.2";
 		}
 
 		public static string Versions()
@@ -17,6 +17,17 @@ namespace Server.Misc
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			builder.Append(Version());
+			builder.Append("<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
@@ -199,7 +210,7 @@ namespace Server.Misc
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
 			builder.Append("- Settings - Implement max Paralyze duration setting<br>");
 			builder.Append("- Skill - Skills gains are accelerated to 70 but reduced at 85/95/105/110/115<br>");
-			builder.Append("- Skill - Healing is now an activatable skill that can remove poison/bleed or heal you<br>"); // TODO: Update documentation for Healing
+			builder.Append("- Skill - Healing is now an activatable skill that can remove poison/bleed or heal you<br>");
 			builder.Append("- Skill - Healing now gathers a portion over time and has a big hit at the end<br>");
 			builder.Append("- Skill - Hiding cooldown is increased to 4 seconds, up from 1s and 2s<br>");
 			builder.Append("- Skill - Spiritualism now restores Mana when a corpse is consumed<br>");
@@ -210,7 +221,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Arms Lore now helps prevent durability damage<br>");
 			builder.Append("- Skill - Taming can now gain every time a pet levels up<br>");
 			builder.Append("- Skill - Creatures with >= 10k Fame will anger on tame by default<br>");
-			builder.Append("- Skill - Herding now increases pet experience gained<br>"); // TODO: Update documentation
+			builder.Append("- Skill - Herding now increases pet experience gained<br>");
 			builder.Append("- Skill - Herding can now be gained by issuing commands<br>");
 			builder.Append("- Skill - Herding can prevent Loyalty loss when pets are disobedient<br>");
 			builder.Append("- Spell - Players must be friend or higher to use any spell in a house<br>");

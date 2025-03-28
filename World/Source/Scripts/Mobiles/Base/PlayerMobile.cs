@@ -2511,6 +2511,10 @@ namespace Server.Mobiles
 			Mobile mob = this.LastKiller;
 			if ( mob != null ){ LoggingFunctions.LogDeaths( this, mob ); }
 
+			DeathRobe robe = FindItemOnLayer( Layer.OuterTorso ) as DeathRobe;
+			if ( robe != null )
+				robe.Delete();
+
 			return base.OnBeforeDeath();
 		}
 
