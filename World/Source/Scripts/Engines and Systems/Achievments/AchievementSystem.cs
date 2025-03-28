@@ -287,8 +287,12 @@ namespace Scripts.Mythik.Systems.Achievements
 
             #endregion Exploration - Dungeons (120 - 219)
 
+            #region Exploration - Points of Interest (220 - 419)
 
             Categories.Add(new AchievementCategory(4, 1, "Points of Interest"));
+
+            #endregion Exploration - Points of Interest
+
             #endregion Exploration - 1 to 999
 
             #region Hunting - 1000 to 1999
