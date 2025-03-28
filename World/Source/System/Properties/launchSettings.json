@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "System": {
+      "commandName": "Project",
+      "commandLineArgs": "-debug"
+    }
+  }
+}
