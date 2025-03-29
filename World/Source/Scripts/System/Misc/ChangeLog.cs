@@ -24,6 +24,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");
 			builder.Append(SEPARATOR_LINE);
 

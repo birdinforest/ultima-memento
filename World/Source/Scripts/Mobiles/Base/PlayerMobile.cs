@@ -2453,6 +2453,8 @@ namespace Server.Mobiles
 									c is Dyes 
 							)
 							{
+								if (c.Parent is NotIdentified)
+									((NotIdentified)c.Parent).Delete();
 								c.Delete();
 							}
 						}

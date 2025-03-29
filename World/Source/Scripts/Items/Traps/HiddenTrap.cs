@@ -534,6 +534,8 @@ namespace Server.Items
 								if ( i.Catalog == Catalogs.Reagent )
 								{
 									nAmount = nAmount + i.Amount;
+									if (i.Parent is NotIdentified)
+										((NotIdentified)i.Parent).Delete();
 									i.Delete();
 								}
 							}
@@ -909,6 +911,8 @@ namespace Server.Items
 							{
 								if ( i is BaseTrinket && i.Catalog == Catalogs.Jewelry )
 								{
+									if (i.Parent is NotIdentified)
+										((NotIdentified)i.Parent).Delete();
 									i.Delete();
 									puddle++;
 								}
