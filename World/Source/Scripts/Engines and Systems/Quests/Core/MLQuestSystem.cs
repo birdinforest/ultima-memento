@@ -475,9 +475,15 @@ namespace Server.Engines.MLQuests
 				return false;
 			}
 
-			if (entry != null)
-			{
-				TurnToFace(quester, pm);
+            if (entry != null)
+            {
+				// Check if Quester was Deleted (ex: [buildworld + restart)
+                // This seems like the safest point to set this
+                // If we got here, there's a really high chance that it was because the Quester could give the quest.
+                if (entry.Quester == null)
+                    entry.Quester = quester;
+
+                TurnToFace(quester, pm);
 				if (entry.Failed) return true; // Note: OSI sends no gump at all for failed quests, they have to be cancelled in the quest overview
 
 				if (entry.ClaimReward)
