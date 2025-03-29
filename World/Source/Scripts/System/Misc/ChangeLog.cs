@@ -19,6 +19,9 @@ namespace Server.Misc
 			builder.Append(Version());
 			builder.Append("<br>");
 
+			builder.Append("Breaking Changes<br>");
+			builder.Append("- Commands - [Cacheclear command has been added<br>");
+
 			builder.Append("Changes<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 
