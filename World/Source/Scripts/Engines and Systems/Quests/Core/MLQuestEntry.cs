@@ -24,11 +24,12 @@ namespace Server.Engines.MLQuests
 
 		public MLQuestInstance(MLQuest quest, IQuestGiver quester, Type questerType, PlayerMobile player)
 		{
-			Quest = quest;
-
-			Quester = quester;
-			QuesterType = questerType;
 			Player = player;
+			Quest = quest;
+			Quester = quester;
+
+			if (questerType != null)
+				QuesterType = questerType;
 
 			Accepted = DateTime.UtcNow;
 			m_Flags = MLQuestInstanceFlags.None;
@@ -40,7 +41,7 @@ namespace Server.Engines.MLQuests
 
 			for (int i = 0; i < quest.Objectives.Count; ++i)
 			{
-                Objectives[i] = obj = quest.Objectives[i].CreateInstance(this);
+				Objectives[i] = obj = quest.Objectives[i].CreateInstance(this);
 
 				if (obj.IsTimed)
 					timed = true;
@@ -462,9 +463,10 @@ namespace Server.Engines.MLQuests
 
 			MLQuestSystem.WriteQuestRef(writer, Quest);
 
-            writer.Write(QuesterType != null ? QuesterType.Name : null);
+			writer.Write(QuesterType != null ? QuesterType.Name : null);
 
-            if (Quester == null || Quester.Deleted)
+			// TODO: Quester being NULL means we're gonna null ref someone downstream.
+			if (Quester == null || Quester.Deleted)
 				writer.Write(Serial.MinusOne);
 			else
 				writer.Write(Quester.Serial);
@@ -485,7 +487,7 @@ namespace Server.Engines.MLQuests
 			{
 				string type = reader.ReadString();
 				if (type != null)
-				    questerType = ScriptCompiler.FindTypeByName(type);
+					questerType = ScriptCompiler.FindTypeByName(type);
 			}
 
 			IQuestGiver quester = World.FindEntity(reader.ReadInt()) as IQuestGiver;
@@ -501,7 +503,7 @@ namespace Server.Engines.MLQuests
 				else if (quester != null)
 					instance = quest.CreateInstance(quester, pm);
 			}
-		
+
 			if (instance != null)
 				instance.ClaimReward = claimReward;
 
