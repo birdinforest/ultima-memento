@@ -586,6 +586,14 @@ namespace Server.Network
 	{
 		private static ChangeUpdateRange[] m_Cache = new ChangeUpdateRange[0x100];
 
+		public static void Reset()
+		{
+            for (int i = 0; i < m_Cache.Length; i++)
+			{
+				m_Cache[i] = null;
+            }
+        }
+
 		public static ChangeUpdateRange Instantiate( int range )
 		{
 			byte idx = (byte)range;
@@ -856,7 +864,15 @@ namespace Server.Network
 	{
 		private static GlobalLightLevel[] m_Cache = new GlobalLightLevel[0x100];
 
-		public static GlobalLightLevel Instantiate( int level )
+        public static void Reset()
+        {
+            for (int i = 0; i < m_Cache.Length; i++)
+            {
+                m_Cache[i] = null;
+            }
+        }
+
+        public static GlobalLightLevel Instantiate( int level )
 		{
 			byte lvl = (byte)level;
 			GlobalLightLevel p = m_Cache[lvl];
@@ -2639,7 +2655,15 @@ namespace Server.Network
 				new SeasonChange[2]
 			};
 
-		public static SeasonChange Instantiate( int season )
+        public static void Reset()
+        {
+            for (int i = 0; i < m_Cache.Length; i++)
+            {
+                m_Cache[i] = null;
+            }
+        }
+
+        public static SeasonChange Instantiate( int season )
 		{
 			return Instantiate( season, true );
 		}
@@ -3482,7 +3506,15 @@ namespace Server.Network
 	{
 		private static PingAck[] m_Cache = new PingAck[0x100];
 
-		public static PingAck Instantiate( byte ping )
+        public static void Reset()
+        {
+            for (int i = 0; i < m_Cache.Length; i++)
+            {
+                m_Cache[i] = null;
+            }
+        }
+
+        public static PingAck Instantiate( byte ping )
 		{
 			PingAck p = m_Cache[ping];
 
@@ -3527,7 +3559,15 @@ namespace Server.Network
 				new MovementAck[256]
 			};
 
-		public static MovementAck Instantiate( int seq, Mobile m )
+        public static void Reset()
+        {
+            for (int i = 0; i < m_Cache.Length; i++)
+            {
+                m_Cache[i] = null;
+            }
+        }
+
+        public static MovementAck Instantiate( int seq, Mobile m )
 		{
 			int noto = Notoriety.Compute( m, m );
 
