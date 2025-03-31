@@ -1126,7 +1126,7 @@ namespace Server.Items
 				// Automatically carve corpse
 				// Must be after OnDoubleClick otherwise Client option to Auto-Open corpses doesn't work
 				Mobile dead = m_Owner;
-				if ( dead != null && !GetFlag( CorpseFlag.Carved ) )
+				if ( dead != null && !GetFlag( CorpseFlag.Carved ) && !IsCriminalAction( from ) )
 				{
 					Item skinningKnife = from.Trinket as SkinningKnifeTool;
 					if ( skinningKnife != null )
