@@ -2659,7 +2659,7 @@ namespace Server.Network
         {
             for (int i = 0; i < m_Cache.Length; i++)
             {
-                m_Cache[i] = null;
+                m_Cache[i] = new SeasonChange[2];
             }
         }
 
@@ -3563,7 +3563,7 @@ namespace Server.Network
         {
             for (int i = 0; i < m_Cache.Length; i++)
             {
-                m_Cache[i] = null;
+                m_Cache[i] = new MovementAck[256];
             }
         }
 
