@@ -24,6 +24,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
+			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- Spell - Curse now reduces max Resistance for Players by 10<br>");
 
 			builder.Append("<br>");

@@ -65,15 +65,18 @@ namespace Server.Mobiles
 				return spell;
 			}
 
-			// always check for curse, per OSI
-			spell = CheckCurse();
-
-			if ( spell != null )
+			// 25% chance to cast Curse
+			if ( Utility.RandomDouble() > 0.75 )
 			{
-				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1156, "Cursing my opponent" );
+				spell = CheckCurse();
 
-				return spell;
+				if ( spell != null )
+				{
+					if ( m_Mobile.Debug )
+						m_Mobile.Say( 1156, "Cursing my opponent" );
+
+					return spell;
+				}
 			}
 
 			// 25% chance to cast poison if needed
