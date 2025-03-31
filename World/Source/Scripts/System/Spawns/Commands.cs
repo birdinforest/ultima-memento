@@ -301,10 +301,10 @@ namespace Server.Gumps
 					TextRelay oY1 = info.GetTextEntry( 1 );
 					TextRelay oX2 = info.GetTextEntry( 2 );
 					TextRelay oY2 = info.GetTextEntry( 3 );
-					string sX1 = oX1.Text;
-					string sY1 = oY1.Text;
-					string sX2 = oX2.Text;
-					string sY2 = oY2.Text;
+					string sX1 = oX1 != null ? oX1.Text : "";
+					string sY1 = oY1 != null ? oY1.Text : "";
+					string sX2 = oX2 != null ? oX2.Text : "";
+					string sY2 = oY2 != null ? oY2.Text : "";
 					if( sX1 != "" && sY1 != "" && sX2 != "" && sY2 != "" )
 					{
 						try
@@ -387,10 +387,10 @@ namespace Server.Gumps
 					TextRelay oY1 = info.GetTextEntry( 1 );
 					TextRelay oX2 = info.GetTextEntry( 2 );
 					TextRelay oY2 = info.GetTextEntry( 3 );
-					string sX1 = oX1.Text;
-					string sY1 = oY1.Text;
-					string sX2 = oX2.Text;
-					string sY2 = oY2.Text;
+					string sX1 = oX1 != null ? oX1.Text : "";
+					string sY1 = oY1 != null ? oY1.Text : "";
+					string sX2 = oX2 != null ? oX2.Text : "";
+					string sY2 = oY2 != null ? oY2.Text : "";
 					if( sX1 != "" && sY1 != "" && sX2 != "" && sY2 != "" )
 					{
 						try

@@ -33,6 +33,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Gump - Fix null ref when TextEntry was null<br>");
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
