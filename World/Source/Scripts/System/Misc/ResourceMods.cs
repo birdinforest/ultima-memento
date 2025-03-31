@@ -895,7 +895,7 @@ namespace Server
 			if ( CraftResources.GetType( resource ) == CraftResourceType.Metal )
 			{
 				min = min+0;
-				max = RarityTest( resource, rarity, min, 10 );
+				max = RarityTest( resource, rarity, min, 9 );
 				choice = Utility.RandomMinMax( min, max );
 				if ( from != null && rare > 6 && special && Worlds.IsWaterSea( from ) ){ choice = 12; }
 				else if ( from != null && rare > 6 && special && from.Land == Land.Serpent ){ choice = 11; }
@@ -924,18 +924,18 @@ namespace Server
 			else if ( CraftResources.GetType( resource ) == CraftResourceType.Scales )
 			{
 				min = 39;
-				max = 51;
+				max = 50;
 				choice = Utility.RandomMinMax( min, max );
 					if ( choice == 45 && Utility.RandomBool() )
 						choice = Utility.RandomMinMax( min, 44 );
 					else if ( choice == 45 )
-						choice = Utility.RandomMinMax( 46, 51 );
+						choice = Utility.RandomMinMax( 46, 50 );
 				if ( from != null && special && from.Land == Land.Savaged ){ choice = 45; }
 			}
 			else if ( CraftResources.GetType( resource ) == CraftResourceType.Wood )
 			{
 				min = min+51;
-				max = RarityTest( resource, rarity, min, 63 );
+				max = RarityTest( resource, rarity, min, 62 );
 				choice = Utility.RandomMinMax( min, max );
 				if ( from != null && rare > 7 && special && Worlds.IsWaterSea( from ) ){ choice = 66; }
 				else if ( from != null && rare > 7 && special && from.Land == Land.Underworld ){ choice = 65; }
@@ -972,7 +972,7 @@ namespace Server
 				case 7: SetResource( item, CraftResource.Agapite ); break;
 				case 8: SetResource( item, CraftResource.Verite ); break;
 				case 9: SetResource( item, CraftResource.Valorite ); break;
-				case 10: SetResource( item, CraftResource.Dwarven ); break;
+				// case 10: SetResource( item, CraftResource.Dwarven ); break;
 				case 11: SetResource( item, CraftResource.Obsidian ); break;
 				case 12: SetResource( item, CraftResource.Nepturite ); break;
 				case 13: SetResource( item, CraftResource.Steel ); break;
@@ -1016,7 +1016,7 @@ namespace Server
 				case 48: SetResource( item, CraftResource.UmberScales ); break;
 				case 49: SetResource( item, CraftResource.VioletScales ); break;
 				case 50: SetResource( item, CraftResource.PlatinumScales ); break;
-				case 51: SetResource( item, CraftResource.CadalyteScales ); break;
+				// case 51: SetResource( item, CraftResource.CadalyteScales ); break;
 
 				case 52: SetResource( item, CraftResource.RegularWood ); break;
 				case 53: SetResource( item, CraftResource.AshTree ); break;
@@ -1029,7 +1029,7 @@ namespace Server
 				case 60: SetResource( item, CraftResource.PineTree ); break;
 				case 61: SetResource( item, CraftResource.RosewoodTree ); break;
 				case 62: SetResource( item, CraftResource.WalnutTree ); break;
-				case 63: SetResource( item, CraftResource.ElvenTree ); break;
+				// case 63: SetResource( item, CraftResource.ElvenTree ); break;
 				case 64: SetResource( item, CraftResource.GhostTree ); break;
 				case 65: SetResource( item, CraftResource.PetrifiedTree ); break;
 				case 66: SetResource( item, CraftResource.DriftwoodTree ); break;
