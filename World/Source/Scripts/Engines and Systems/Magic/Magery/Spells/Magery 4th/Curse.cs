@@ -62,8 +62,11 @@ namespace Server.Spells.Fourth
 
 				Timer t = (Timer)m_UnderEffect[m];
 
-				if ( Caster.Player && m.Player /*&& Caster != m */ && t == null )	//On OSI you CAN curse yourself and get this effect.
+				if ( m.Player )
 				{
+					if (t != null && t.Running)
+						t.Stop();
+					
 					TimeSpan duration = SpellHelper.GetDuration( Caster, m );
 					m_UnderEffect[m] = t = Timer.DelayCall( duration, new TimerStateCallback( RemoveEffect ), m );
 					m.UpdateResistances();
