@@ -6471,6 +6471,7 @@ namespace Server
 		{
 			if ( RaceID > 0 )
 			{
+				Race.Body(this);
 				BodyMod = RaceID;
 				HueMod = 0;
 			}

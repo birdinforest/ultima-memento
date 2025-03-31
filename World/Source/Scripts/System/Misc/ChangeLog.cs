@@ -21,6 +21,7 @@ namespace Server.Misc
 
 			builder.Append("Breaking Changes<br>");
 			builder.Append("- Commands - [Cacheclear command has been added<br>");
+			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
