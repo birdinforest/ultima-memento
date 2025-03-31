@@ -4659,7 +4659,8 @@ namespace Server.Mobiles
 						case RockType.Brass:     	corpse.AddCarvedItem( new BrassIngot( rocks ), from ); break;
 						case RockType.Mithril:     	corpse.AddCarvedItem( new MithrilOre( rocks ), from ); break;
 						case RockType.Xormite:     	corpse.AddCarvedItem( new XormiteOre( rocks ), from ); break;
-						case RockType.Dwarven:     	corpse.AddCarvedItem( new DwarvenOre( rocks ), from ); break;
+						// case RockType.Dwarven:     	corpse.AddCarvedItem( new DwarvenOre( rocks ), from ); break;
+						case RockType.Dwarven: 		Console.WriteLine("[Unexpected case] Dwarven ore from carving attempted."); break;
 						case RockType.Amethyst:     corpse.AddCarvedItem( new AmethystStone( rocks ), from ); break;
 						case RockType.Emerald:     	corpse.AddCarvedItem( new EmeraldStone( rocks ), from ); break;
 						case RockType.Garnet:     	corpse.AddCarvedItem( new GarnetStone( rocks ), from ); break;
@@ -4682,7 +4683,7 @@ namespace Server.Mobiles
 							{
 								rkcy--;
 
-								switch ( Utility.RandomMinMax( 1, 16 ) )
+								switch ( Utility.RandomMinMax( 1, 15 ) )
 								{
 									case 1: corpse.AddCarvedItem( new IronOre( 1 ), from ); break;
 									case 2: corpse.AddCarvedItem( new DullCopperOre( 1 ), from ); break;
@@ -4699,7 +4700,7 @@ namespace Server.Mobiles
 									case 13: corpse.AddCarvedItem( new BrassIngot( 1 ), from ); break;
 									case 14: corpse.AddCarvedItem( new MithrilOre( 1 ), from ); break;
 									case 15: corpse.AddCarvedItem( new XormiteOre( 1 ), from ); break;
-									case 16: corpse.AddCarvedItem( new DwarvenOre( 1 ), from ); break;
+									// case 16: corpse.AddCarvedItem( new DwarvenOre( 1 ), from ); break;
 								}
 							}
 							break;
@@ -4760,7 +4761,8 @@ namespace Server.Mobiles
 						case MetalType.Brass:     	corpse.AddCarvedItem( new BrassIngot( metal ), from ); break;
 						case MetalType.Mithril:     corpse.AddCarvedItem( new MithrilIngot( metal ), from ); break;
 						case MetalType.Xormite:     corpse.AddCarvedItem( new XormiteIngot( metal ), from ); break;
-						case MetalType.Dwarven:     corpse.AddCarvedItem( new DwarvenIngot( metal ), from ); break;
+						// case MetalType.Dwarven:     corpse.AddCarvedItem( new DwarvenIngot( metal ), from ); break;
+						case MetalType.Dwarven: 	Console.WriteLine("[Unexpected case] Dwarven Ingots drop attempted."); break;
 						case MetalType.SciFi:
 						{
 							switch ( Utility.RandomMinMax( 1, 16 ) )
