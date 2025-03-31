@@ -149,13 +149,16 @@ namespace Server.Mobiles
 			if ( foe == null )
 				return null;
 
-			StatMod mod = foe.GetStatMod( "[Magic] Int Offset" );
-
-			if ( mod != null && mod.Offset < 0 )
+			if ( CurseSpell.UnderEffect( foe ) )
 				return null;
 
 			if ( m_Mobile.Skills[SkillName.Magery].Value >= 40.0 )
 				return new CurseSpell( m_Mobile, null );
+
+			StatMod mod = foe.GetStatMod( "[Magic] Int Offset" );
+
+			if ( mod != null && mod.Offset < 0 )
+				return null;
 
 			int whichone = 1;
 			Spell spell = null;
