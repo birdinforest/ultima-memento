@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("Changes<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
 			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
+			builder.Append("- Item - Legendary Artifact max level is now 50, down from 100<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
 			builder.Append("- Item - Reduce points on most relic rewards<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
@@ -38,6 +39,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Gump - Fix null ref when TextEntry was null<br>");
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
+			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");

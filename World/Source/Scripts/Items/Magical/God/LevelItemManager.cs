@@ -165,6 +165,12 @@ namespace Server.Items
 						lvlBc.MaxHitPoints = 100;
 						lvlBc.HitPoints = lvlBc.MaxHitPoints;
 					}
+					else if ( item is BaseTrinket && item is ILevelable ) // SO ITEMS NEVER WEAR OUT
+					{
+						BaseTrinket lvlBc = (BaseTrinket)item;
+						lvlBc.MaxHitPoints = 100;
+						lvlBc.HitPoints = lvlBc.MaxHitPoints;
+					}
 				}
 			}
 		}
