@@ -445,7 +445,7 @@ namespace Server.Gumps
                 case 2:
                 {
                     TextRelay tr_captcha = info.GetTextEntry(3);
-                    if(tr_captcha.Text.Length != 3 )
+                    if(tr_captcha == null || tr_captcha.Text.Length != 3 )
                     {
                         from.SendMessage("You failed to prove that you're not A.F.K.");
                         return;
