@@ -24,6 +24,8 @@ namespace Server.Misc
 			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
+			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
 			builder.Append("- Item - Reduce points on most relic rewards<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");

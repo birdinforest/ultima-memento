@@ -411,11 +411,11 @@ namespace Server.Items
 		public virtual int BasePoisonResistance{ get{ return 0; } }
 		public virtual int BaseEnergyResistance{ get{ return 0; } }
 
-		public override int PhysicalResistance{ get{ return BasePhysicalResistance + GetProtOffset() + GetResourceAttrs().ArmorPhysicalResist + m_PhysicalBonus; } }
-		public override int FireResistance{ get{ return BaseFireResistance + GetProtOffset() + GetResourceAttrs().ArmorFireResist + m_FireBonus; } }
-		public override int ColdResistance{ get{ return BaseColdResistance + GetProtOffset() + GetResourceAttrs().ArmorColdResist + m_ColdBonus; } }
-		public override int PoisonResistance{ get{ return BasePoisonResistance + GetProtOffset() + GetResourceAttrs().ArmorPoisonResist + m_PoisonBonus; } }
-		public override int EnergyResistance{ get{ return BaseEnergyResistance + GetProtOffset() + GetResourceAttrs().ArmorEnergyResist + m_EnergyBonus; } }
+		public override int PhysicalResistance{ get{ return BasePhysicalResistance + GetProtOffset() + GetLevelableArtiResistBonus() + GetResourceAttrs().ArmorPhysicalResist + m_PhysicalBonus; } }
+		public override int FireResistance{ get{ return BaseFireResistance + GetProtOffset() + GetLevelableArtiResistBonus() + GetResourceAttrs().ArmorFireResist + m_FireBonus; } }
+		public override int ColdResistance{ get{ return BaseColdResistance + GetProtOffset() + GetLevelableArtiResistBonus() + GetResourceAttrs().ArmorColdResist + m_ColdBonus; } }
+		public override int PoisonResistance{ get{ return BasePoisonResistance + GetProtOffset() + GetLevelableArtiResistBonus() + GetResourceAttrs().ArmorPoisonResist + m_PoisonBonus; } }
+		public override int EnergyResistance{ get{ return BaseEnergyResistance + GetProtOffset() + GetLevelableArtiResistBonus() + GetResourceAttrs().ArmorEnergyResist + m_EnergyBonus; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
 		public virtual int InitMaxHits{ get{ return 0; } }
@@ -470,6 +470,12 @@ namespace Server.Items
 				return CraftAttributeInfo.Blank;
 
 			return info.AttributeInfo;
+		}
+
+		private int GetLevelableArtiResistBonus()
+		{
+			// Legendary Artifacts get a flat resist bonus
+			return this is ILevelable ? 2 : 0;
 		}
 
 		public int GetProtOffset()

@@ -153,11 +153,11 @@ namespace Server.Items
 		public virtual int BasePoisonResistance{ get{ return 0; } }
 		public virtual int BaseEnergyResistance{ get{ return 0; } }
 
-		public override int PhysicalResistance{ get{ return BasePhysicalResistance + (int)(GetResourceAttrs().ArmorPhysicalResist/3) + m_AosResistances.Physical; } }
-		public override int FireResistance{ get{ return BaseFireResistance + (int)(GetResourceAttrs().ArmorFireResist/2) + m_AosResistances.Fire; } }
-		public override int ColdResistance{ get{ return BaseColdResistance + (int)(GetResourceAttrs().ArmorColdResist/2) + m_AosResistances.Cold; } }
-		public override int PoisonResistance{ get{ return BasePoisonResistance + (int)(GetResourceAttrs().ArmorPoisonResist/2) + m_AosResistances.Poison; } }
-		public override int EnergyResistance{ get{ return BaseEnergyResistance + (int)(GetResourceAttrs().ArmorEnergyResist/2) + m_AosResistances.Energy; } }
+		public override int PhysicalResistance{ get{ return BasePhysicalResistance + GetLevelableArtiResistBonus() + (int)(GetResourceAttrs().ArmorPhysicalResist/3) + m_AosResistances.Physical; } }
+		public override int FireResistance{ get{ return BaseFireResistance + GetLevelableArtiResistBonus() + (int)(GetResourceAttrs().ArmorFireResist/2) + m_AosResistances.Fire; } }
+		public override int ColdResistance{ get{ return BaseColdResistance + GetLevelableArtiResistBonus() + (int)(GetResourceAttrs().ArmorColdResist/2) + m_AosResistances.Cold; } }
+		public override int PoisonResistance{ get{ return BasePoisonResistance + GetLevelableArtiResistBonus() + (int)(GetResourceAttrs().ArmorPoisonResist/2) + m_AosResistances.Poison; } }
+		public override int EnergyResistance{ get{ return BaseEnergyResistance + GetLevelableArtiResistBonus() + (int)(GetResourceAttrs().ArmorEnergyResist/2) + m_AosResistances.Energy; } }
 
 		public virtual int BaseGemTypeNumber{ get{ return 0; } }
 
@@ -172,6 +172,12 @@ namespace Server.Items
 				return CraftAttributeInfo.Blank;
 
 			return info.AttributeInfo;
+		}
+
+		private int GetLevelableArtiResistBonus()
+		{
+			// Legendary Artifacts get a flat resist bonus
+			return this is ILevelable ? 2 : 0;
 		}
 
 		public int GemItemID()

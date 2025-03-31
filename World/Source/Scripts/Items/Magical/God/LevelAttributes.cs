@@ -87,21 +87,21 @@ namespace Server.Items
         //Armor specific
         public static ResistanceTypeInfo[] m_ResistanceTypes = new ResistanceTypeInfo[]
 		{
-            new ResistanceTypeInfo( ResistanceType.Physical, "Physical Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ResistanceTypeInfo( ResistanceType.Fire, "Fire Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ResistanceTypeInfo( ResistanceType.Cold, "Cold Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ResistanceTypeInfo( ResistanceType.Poison, "Poison Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ResistanceTypeInfo( ResistanceType.Energy, "Energy Resistance", AttributeCategory.Resists, 2, 20 )
+            new ResistanceTypeInfo( ResistanceType.Physical, "Physical Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ResistanceTypeInfo( ResistanceType.Fire, "Fire Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ResistanceTypeInfo( ResistanceType.Cold, "Cold Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ResistanceTypeInfo( ResistanceType.Poison, "Poison Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ResistanceTypeInfo( ResistanceType.Energy, "Energy Resistance", AttributeCategory.Resists, 5, 20 )
         };
 
         //Jewel & Clothing Specific Resists
         public static ElementAttributeInfo[] m_ElementAttributes = new ElementAttributeInfo[]
 		{
-            new ElementAttributeInfo( AosElementAttribute.Physical, "Physical Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ElementAttributeInfo( AosElementAttribute.Fire, "Fire Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ElementAttributeInfo( AosElementAttribute.Cold, "Cold Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ElementAttributeInfo( AosElementAttribute.Poison, "Poison Resistance", AttributeCategory.Resists, 2, 20 ),
-            new ElementAttributeInfo( AosElementAttribute.Energy, "Energy Resistance", AttributeCategory.Resists, 2, 20 )
+            new ElementAttributeInfo( AosElementAttribute.Physical, "Physical Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ElementAttributeInfo( AosElementAttribute.Fire, "Fire Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ElementAttributeInfo( AosElementAttribute.Cold, "Cold Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ElementAttributeInfo( AosElementAttribute.Poison, "Poison Resistance", AttributeCategory.Resists, 5, 20 ),
+            new ElementAttributeInfo( AosElementAttribute.Energy, "Energy Resistance", AttributeCategory.Resists, 5, 20 )
         };
 	}
 

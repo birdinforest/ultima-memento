@@ -154,17 +154,23 @@ namespace Server.Items
 			return (int)(proc/3);
 		}
 
+		private int GetLevelableArtiResistBonus()
+		{
+			// Legendary Artifacts get a flat resist bonus
+			return this is ILevelable ? 2 : 0;
+		}
+
 		public virtual int BasePhysicalResistance{ get{ return 0; } }
 		public virtual int BaseFireResistance{ get{ return 0; } }
 		public virtual int BaseColdResistance{ get{ return 0; } }
 		public virtual int BasePoisonResistance{ get{ return 0; } }
 		public virtual int BaseEnergyResistance{ get{ return 0; } }
 
-		public override int PhysicalResistance{ get{ return BasePhysicalResistance + fabricBonus( GetResourceAttrs().ArmorPhysicalResist ) + m_AosResistances.Physical; } }
-		public override int FireResistance{ get{ return BaseFireResistance + fabricBonus( GetResourceAttrs().ArmorFireResist ) + m_AosResistances.Fire; } }
-		public override int ColdResistance{ get{ return BaseColdResistance + fabricBonus( GetResourceAttrs().ArmorColdResist ) + m_AosResistances.Cold; } }
-		public override int PoisonResistance{ get{ return BasePoisonResistance + fabricBonus( GetResourceAttrs().ArmorPoisonResist ) + m_AosResistances.Poison; } }
-		public override int EnergyResistance{ get{ return BaseEnergyResistance + fabricBonus( GetResourceAttrs().ArmorEnergyResist ) + m_AosResistances.Energy; } }
+		public override int PhysicalResistance{ get{ return BasePhysicalResistance + GetLevelableArtiResistBonus() + fabricBonus( GetResourceAttrs().ArmorPhysicalResist ) + m_AosResistances.Physical; } }
+		public override int FireResistance{ get{ return BaseFireResistance + GetLevelableArtiResistBonus() + fabricBonus( GetResourceAttrs().ArmorFireResist ) + m_AosResistances.Fire; } }
+		public override int ColdResistance{ get{ return BaseColdResistance + GetLevelableArtiResistBonus() + fabricBonus( GetResourceAttrs().ArmorColdResist ) + m_AosResistances.Cold; } }
+		public override int PoisonResistance{ get{ return BasePoisonResistance + GetLevelableArtiResistBonus() + fabricBonus( GetResourceAttrs().ArmorPoisonResist ) + m_AosResistances.Poison; } }
+		public override int EnergyResistance{ get{ return BaseEnergyResistance + GetLevelableArtiResistBonus() + fabricBonus( GetResourceAttrs().ArmorEnergyResist ) + m_AosResistances.Energy; } }
 
 		public virtual int ArtifactRarity{ get{ return 0; } }
 
