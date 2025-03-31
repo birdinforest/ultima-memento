@@ -349,7 +349,7 @@ namespace Server.Items
 												book.m_Extra = "of the Serpent";
 												book.m_FromWho = "From the Great Earth Serpent";
 												book.m_HowGiven = "Gifted to";
-												book.m_Points = 300;
+												book.m_Points = 250;
 												book.m_Hue = 0xB96;
 												pmi.Mobile.AddToBackpack( book );
 
@@ -385,7 +385,7 @@ namespace Server.Items
 										book.m_Extra = "of the Serpent";
 										book.m_FromWho = "From the Great Earth Serpent";
 										book.m_HowGiven = "Gifted to";
-										book.m_Points = 300;
+										book.m_Points = 250;
 										book.m_Hue = 0xB96;
 										m.AddToBackpack( book );
 
@@ -574,7 +574,7 @@ namespace Server.Items
 											book.m_Extra = "of Exodus";
 											book.m_FromWho = "From the Destruction of the Dark Core";
 											book.m_HowGiven = "Acquired by";
-											book.m_Points = 300;
+											book.m_Points = 250;
 											book.m_Hue = 0x835;
 											pmi.Mobile.AddToBackpack( book );
 
@@ -609,7 +609,7 @@ namespace Server.Items
 									book.m_Extra = "of Exodus";
 									book.m_FromWho = "From the Destruction of the Dark Core";
 									book.m_HowGiven = "Acquired by";
-									book.m_Points = 300;
+									book.m_Points = 250;
 									book.m_Hue = 0x835;
 									m.AddToBackpack( book );
 									m.SendMessage("An item has appeared in your backpack!");

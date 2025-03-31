@@ -221,7 +221,7 @@ namespace Server.Mobiles
 							book.m_Extra = "of the Vampire";
 							book.m_FromWho = "from Dracula";
 							book.m_HowGiven = "Acquired by";
-							book.m_Points = 300;
+							book.m_Points = 250;
 							book.m_Hue = 0x497;
 							killer.AddToBackpack( book );
 							killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You found a book and put it in your pack.", killer.NetState);

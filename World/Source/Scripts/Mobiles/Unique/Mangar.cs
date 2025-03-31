@@ -357,7 +357,7 @@ namespace Server.Items
 							lexicon.m_Extra = "of Mangar the Dark";
 							lexicon.m_FromWho = "Taken from Mangar";
 							lexicon.m_HowGiven = "Acquired by";
-							lexicon.m_Points = 250;
+							lexicon.m_Points = 200;
 							lexicon.m_Hue = 0x497;
 							MyChest.DropItem( lexicon );
 					}

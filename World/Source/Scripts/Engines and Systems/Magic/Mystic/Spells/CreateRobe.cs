@@ -45,7 +45,7 @@ namespace Server.Spells.Mystic
 				robe.m_Owner = Caster;
 				robe.m_Gifter = "Mystical Monk's Robe";
 				robe.m_How = "Belongs to";
-				robe.m_Points = (int)(Caster.Skills[SkillName.FistFighting].Value * 2);
+				robe.m_Points = Math.Max(0, (int)(Caster.Skills[SkillName.FistFighting].Value * 2) - 50);
 				Caster.AddToBackpack( robe );
 
 				Caster.FixedParticles( 0x376A, 1, 62, 9923, 3, 3, EffectLayer.Waist );

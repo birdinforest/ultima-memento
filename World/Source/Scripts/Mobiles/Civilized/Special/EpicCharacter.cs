@@ -59,7 +59,7 @@ namespace Server.Mobiles
 			Body = 400;
 			MyItemText = "";
 			MyItemHue = 0;
-			MyItemPower = 200;
+			MyItemPower = 150;
 			MyAlignment = "neutral";
 			AI = AIType.AI_Citizen;
 			FightMode = FightMode.None;
@@ -859,7 +859,6 @@ namespace Server.Mobiles
 				this.Direction = Direction.East;
 				this.MyItemText = "of Pagan";
 				this.MyItemHue = 1461;
-				this.MyItemPower = 250;
 				this.MyWorld = this.Map;
 				this.MyX = 877;
 				this.MyY = 2654;
@@ -951,7 +950,6 @@ namespace Server.Mobiles
 				this.Direction = Direction.South;
 				this.MyItemText = "of the Undertaker";
 				this.MyItemHue = 0x837;
-				this.MyItemPower = 250;
 				this.MyWorld = this.Map;
 				this.MyX = 1528;
 				this.MyY = 3599;

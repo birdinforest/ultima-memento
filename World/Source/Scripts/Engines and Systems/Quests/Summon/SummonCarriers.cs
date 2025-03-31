@@ -899,7 +899,7 @@ namespace Server.Misc
 										book.m_Extra = "of " + myName;
 										book.m_FromWho = "From " + m.Name;
 										book.m_HowGiven = "Won by";
-										book.m_Points = 300;
+										book.m_Points = 250;
 										book.m_Hue = myHue;
 										MyChest.AddItem( book );
 								}
@@ -932,7 +932,7 @@ namespace Server.Misc
 								book.m_Extra = "of " + myName;
 								book.m_FromWho = "From " + m.Name;
 								book.m_HowGiven = "Won by";
-								book.m_Points = 300;
+								book.m_Points = 250;
 								book.m_Hue = myHue;
 								MyChest.AddItem( book );
 						}
