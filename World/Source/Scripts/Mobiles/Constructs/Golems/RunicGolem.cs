@@ -69,7 +69,7 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 		public override bool IsScaredOfScaryThings{ get{ return false; } }
 		public override bool IsScaryToPets{ get{ return true; } }
-		public override int Rocks{ get{ return Utility.RandomMinMax( 9, 12 ); } }
+		public override int Rocks{ get{ return Utility.RandomMinMax( 4, 8 ); } }
 		public override RockType RockType{ get{ return RockType.Crystals; } }
 
 		public override void OnGaveMeleeAttack( Mobile defender )

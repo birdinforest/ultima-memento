@@ -51,7 +51,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 4 );
 		}
 
-		public override int Rocks{ get{ return Utility.RandomMinMax( 10, 20 ); } }
+		public override int Rocks{ get{ return Utility.RandomMinMax( 5, 10 ); } }
 		public override RockType RockType{ get{ return RockType.Crystals; } }
 
 		public override bool AutoDispel{ get{ return true; } }

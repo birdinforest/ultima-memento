@@ -162,7 +162,7 @@ namespace Server.Mobiles
 		public override SkinType SkinType{ get{ return SkinType.Dragon; } }
 		public override int Skeletal{ get{ return Utility.Random(5); } }
 		public override SkeletalType SkeletalType{ get{ return SkeletalType.Draco; } }
-		public override int Rocks{ get{ return Utility.RandomMinMax( 10, 20 ); } }
+		public override int Rocks{ get{ return Utility.RandomMinMax( 10, 15 ); } }
 		public override RockType RockType{ get{ return RockType.Crystals; } }
 
 		public CrystalDragon( Serial serial ) : base( serial )
