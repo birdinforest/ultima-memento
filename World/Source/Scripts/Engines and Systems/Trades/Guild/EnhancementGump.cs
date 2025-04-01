@@ -46,10 +46,10 @@ namespace Server.Gumps
 
                     if (currentValue > 0 || MoreAttributesAllowed)
                     {
-                        if (row > 11)
+                        if (row > 12)
                         {
                             row = 0;
-                            column = 1;
+                            column++;
                         }
 
                         AddLabel(15 + (304 * column), 65 + (25 * row), 0x481, handler.Description);
