@@ -10083,9 +10083,10 @@ namespace Server.Mobiles
 
 						if ( c.Map != Map.Internal )
 						{
-							c.Loyalty -= (BaseCreature.MaxLoyalty / 10);
+							int DECAY_AMOUNT = c.IsBonded && !c.CanAngerOnTame ? BaseCreature.MaxLoyalty / 5 : BaseCreature.MaxLoyalty / 10;
+							c.Loyalty -= DECAY_AMOUNT;
 
-							if( c.Loyalty < (BaseCreature.MaxLoyalty / 10) )
+							if( c.Loyalty <= 4 * DECAY_AMOUNT )
 							{
 								c.Say( 1043270, c.Name ); // * ~1_NAME~ looks around desperately *
 								c.PlaySound( c.GetIdleSound() );
@@ -10112,7 +10113,7 @@ namespace Server.Mobiles
 
 			foreach ( BaseCreature c in toRelease )
 			{
-				c.Say( 1043255, c.Name ); // ~1_NAME~ appears to have decided that is better off without a master!
+                c.Say( 1043255, c.Name ); // ~1_NAME~ appears to have decided that is better off without a master!
 				c.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy
 				c.IsBonded = false;
 				c.BondingBegin = DateTime.MinValue;
@@ -10127,7 +10128,7 @@ namespace Server.Mobiles
 			foreach ( BaseCreature c in toRemove )
 			{
 				c.Delete();
-			}
+            }
 		}
 	}
 }
