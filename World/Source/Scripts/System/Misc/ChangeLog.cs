@@ -25,7 +25,6 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
-			builder.Append("- Gump - Craft Skill List now confirms you have all skills<br>");
 			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
 			builder.Append("- Item - Legendary Artifact max level is now 50, down from 100<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
@@ -38,6 +37,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Gump - Craft Skill List now confirms you have all skills<br>");
 			builder.Append("- Gump - Fix null ref when TextEntry was null<br>");
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
 			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
