@@ -92,24 +92,14 @@ namespace Server.Spells.Seventh
 				{
 					Effects.PlaySound( p, Caster.Map, 0x160 );
 
-					if ( Core.AOS && targets.Count > 2 )
+					if (targets.Count > 1)
 						damage = (damage * 2) / targets.Count;
-					else if ( !Core.AOS )
-						damage /= targets.Count;
 						
-					double toDeal;
 					for ( int i = 0; i < targets.Count; ++i )
 					{
 						Mobile m = targets[i];
 
-						toDeal  = damage;
-
-						if ( !Core.AOS && CheckResisted( m ) )
-						{
-							damage *= 0.5;
-
-							m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
-						}
+						double toDeal = damage;
 						toDeal *= GetDamageScalar( m );
 						Caster.DoHarmful( m );
 						SpellHelper.Damage( this, m, toDeal, 0, 100, 0, 0, 0 );
