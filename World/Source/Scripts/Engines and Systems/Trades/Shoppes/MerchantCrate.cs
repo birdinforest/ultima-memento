@@ -35,6 +35,8 @@ namespace Server.Items
 
 		public override bool IsDecoContainer{ get{ return false; } }
 
+		private bool m_CanAcceptItems;
+
 		public int CrateGold;
 
 		[CommandProperty(AccessLevel.Owner)]
@@ -55,7 +57,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
             writer.Write( CrateGold );
 		}
 
@@ -64,8 +66,12 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			CrateGold = reader.ReadInt();
-			QuickTimer thisTimer = new QuickTimer( this ); 
-			thisTimer.Start();
+
+			if (version == 0)
+			{
+				QuickTimer thisTimer = new QuickTimer( this ); 
+				thisTimer.Start();
+			}
 		}
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
@@ -168,6 +174,12 @@ namespace Server.Items
 				return false;
 			}
 
+			if (!m_CanAcceptItems)
+			{
+                from.SendMessage("Merchant crates are currently disabled.");
+				return false;
+			}
+
 			if (dropped.Catalog == Catalogs.Crafting)
 			{
                 from.SendMessage("Merchants only purchase crafted item.");
@@ -198,6 +210,12 @@ namespace Server.Items
 			if (this.Movable)
 			{
                 from.SendMessage("This must be locked down in a house to use!");
+				return false;
+			}
+
+			if (!m_CanAcceptItems)
+			{
+                from.SendMessage("Merchant crates are currently disabled.");
 				return false;
 			}
 
