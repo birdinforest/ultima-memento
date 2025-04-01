@@ -95,18 +95,22 @@ namespace Server.Engines.Craft
 				{
 					var craftItem = group.CraftItems.GetAt(j);
 
+					bool hasSkills = true;
 					for (int k = 0; k < craftItem.Skills.Count; k++)
 					{
 						CraftSkill skill = craftItem.Skills.GetAt(k);
-						if (skill.SkillToMake == craftSystem.MainSkill)
+						if (
+							from.Skills[skill.SkillToMake].Value < skill.MinSkill // Filter items you can't succeed on
+							|| skill.MaxSkill <= from.Skills[skill.SkillToMake].Value // Filter items you can longer gain from
+						)
 						{
-							if (from.Skills[skill.SkillToMake].Value < skill.MinSkill) break; // Filter items you can't succeed on
-							if (skill.MaxSkill <= from.Skills[skill.SkillToMake].Value) break; // Filter items you can longer gain from
-
-							craftItems.Add(craftItem);
+							hasSkills = false;
 							break;
 						}
 					}
+
+					if (hasSkills)
+						craftItems.Add(craftItem);
 				}
 			}
 
