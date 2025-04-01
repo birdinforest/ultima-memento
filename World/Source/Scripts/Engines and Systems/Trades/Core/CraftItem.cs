@@ -1022,6 +1022,16 @@ namespace Server.Engines.Craft
 			}
 		}
 
+		private bool IsExceptional(Item item)
+		{
+			if (item == null) return false;
+
+			return (item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Exceptional)
+				|| (item is BaseWeapon && ((BaseWeapon)item).Quality == WeaponQuality.Exceptional)
+				|| (item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Exceptional)
+				|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional);
+		}
+
 		public void CompleteCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CustomCraft customCraft, BulkCraftContext bulkCraftContext )
 		{
 			if ( bulkCraftContext != null)
@@ -1161,12 +1171,7 @@ namespace Server.Engines.Craft
 					}
 					
 					// Exceptional applies a runic
-					if (
-						(item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Exceptional)
-						|| (item is BaseWeapon && ((BaseWeapon)item).Quality == WeaponQuality.Exceptional)
-						|| (item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Exceptional)
-						|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional)
-					)
+					if (IsExceptional(item))
 					{
 						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 20);
 					}
@@ -1290,7 +1295,7 @@ namespace Server.Engines.Craft
 				if ( bulkCraftContext != null )
 				{
 					bulkCraftContext.Success++;
-					if ( quality == 2 )
+					if ( IsExceptional(item) )
 						bulkCraftContext.Exceptional++;
 				}
 				else if ( tool != null && !tool.Deleted && tool.UsesRemaining > 0 )

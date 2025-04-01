@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Gump - Craft Skill List now confirms you have all skills<br>");
+			builder.Append("- Gump - Crafting Session now accurately reports Exceptional<br>");
 			builder.Append("- Gump - Fix null ref when TextEntry was null<br>");
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
 			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
