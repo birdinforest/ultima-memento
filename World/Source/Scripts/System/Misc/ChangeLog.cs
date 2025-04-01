@@ -46,6 +46,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");
+			builder.Append("- Spell - Chain Lightning no longer does doubles damage to one target<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

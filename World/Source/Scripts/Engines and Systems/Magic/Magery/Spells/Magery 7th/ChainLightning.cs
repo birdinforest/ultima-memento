@@ -90,7 +90,8 @@ namespace Server.Spells.Seventh
 
 				if ( targets.Count > 0 )
 				{
-					damage = (damage * 2) / targets.Count;
+					if (targets.Count > 1)
+						damage = (damage * 2) / targets.Count;
 
 					for ( int i = 0; i < targets.Count; ++i )
 					{
@@ -100,12 +101,6 @@ namespace Server.Spells.Seventh
 
 						double toDeal = damage;
 
-						if ( !Core.AOS && CheckResisted( m ) )
-						{
-							toDeal *= 0.5;
-
-							m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
-						}
 						if( !(house is Regions.HouseRegion) )
 						{
 							Caster.DoHarmful( m );
