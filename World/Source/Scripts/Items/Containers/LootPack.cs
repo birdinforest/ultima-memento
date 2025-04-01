@@ -654,7 +654,7 @@ namespace Server
 			@ 200 -- 2-3 properties, 32-50% intensity
 			@ 100 -- 1-1 properties, 25-25% intensity
 			*/
-			int props = Utility.RandomMinMax(enchant / 100, Math.Max(6, enchant / 60));
+			int props = Utility.RandomMinMax(enchant / 100, Math.Min(6, enchant / 60));
 			if (props < 1) return item;
 
 			int min = (int)Math.Max(25, enchant / 6.25);

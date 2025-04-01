@@ -32,7 +32,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
-			builder.Append("- Pets - Bonded pets lose less loyalty per tick<br>");
+			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
 			builder.Append("- Pets - Pets with low loyalty warn sooner<br>");
 			builder.Append("- Quest - Add Recruiters to additional locations<br>");
 			builder.Append("- Spell - Curse now reduces max Resistance for Players by 10<br>");
@@ -46,6 +46,7 @@ namespace Server.Misc
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
 			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
 			builder.Append("- Misc - Fix empty unidentified items<br>");
+			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");
 			builder.Append("- Spell - Chain Lightning no longer does doubles damage to one target<br>");
