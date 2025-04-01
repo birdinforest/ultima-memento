@@ -10083,7 +10083,7 @@ namespace Server.Mobiles
 
 						if ( c.Map != Map.Internal )
 						{
-							int DECAY_AMOUNT = c.IsBonded && !c.CanAngerOnTame ? BaseCreature.MaxLoyalty / 5 : BaseCreature.MaxLoyalty / 10;
+							int DECAY_AMOUNT = c.IsBonded && !c.CanAngerOnTame ? BaseCreature.MaxLoyalty / 20 : BaseCreature.MaxLoyalty / 10;
 							c.Loyalty -= DECAY_AMOUNT;
 
 							if( c.Loyalty <= 4 * DECAY_AMOUNT )
