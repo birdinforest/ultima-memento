@@ -454,7 +454,7 @@ namespace Server.Engines.Craft
 
 		public bool IsWeaponRecipe(Recipe recipe)
 		{
-			return typeof(BaseWeapon).IsAssignableFrom(recipe.CraftItem.ItemType);
+			return typeof(BaseWeapon).IsAssignableFrom(recipe.CraftItem.ItemType) || recipe.CraftItem.ItemType == typeof(Shuriken);
 		}
 	}
 

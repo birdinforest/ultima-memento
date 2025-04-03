@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
 			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
 			builder.Append("- Item - Legendary Artifact max level is now 50, down from 100<br>");
