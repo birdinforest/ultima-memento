@@ -689,9 +689,6 @@ namespace Server.Misc
 			if ( land == Land.Kuldar )
 				return false;
 
-			if ( land == Land.Ambrosia )
-				return false;
-
 			if ( reg.IsPartOf( "the Village of Ravendark" ) )
 				return false;
 

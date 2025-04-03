@@ -39,6 +39,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Pets with low loyalty warn sooner<br>");
 			builder.Append("- Quest - Add Recruiters to additional locations<br>");
 			builder.Append("- Spell - Curse now reduces max Resistance for Players by 10<br>");
+			builder.Append("- Spell - You may now fast travel out of the lost land<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
