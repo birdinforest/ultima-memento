@@ -317,7 +317,7 @@ namespace Server.Items
 
 			BaseCreature petPatient = m_Patient as BaseCreature;
 
-			if ( !m_Healer.Alive )
+			if ( !m_Healer.Alive || (m_Healer is BaseCreature && ((BaseCreature)m_Healer).IsDeadPet) )
 			{
 				healerNumber = 500962; // You were unable to finish your work before you died.
 				patientNumber = -1;
