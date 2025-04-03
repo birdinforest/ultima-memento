@@ -272,9 +272,12 @@ namespace Server.Misc
 
 		public static int GetGumpHue( Mobile m ) // -------------------------------------------------------------------------------------------------
 		{
-			PlayerSettings.MarkQuestInfo( m );
+			if (m is PlayerMobile)
+			{
+				PlayerSettings.MarkQuestInfo( m );
 
-			if ( ((PlayerMobile)m).GumpHue > 0 ){ return 0; }
+				if ( ((PlayerMobile)m).GumpHue > 0 ){ return 0; }
+			}
 
 			return 2999;
 		}
@@ -330,6 +333,8 @@ namespace Server.Misc
 
 		public static void MarkQuestInfo( Mobile m ) // ---------------------------------------------------------------------------------------------
 		{
+			if (m is PlayerMobile == false) return;
+			
 			if ( ((PlayerMobile)m).StandardQuest == null ){ ((PlayerMobile)m).StandardQuest = ""; }
 			if ( ((PlayerMobile)m).FishingQuest == null ){ ((PlayerMobile)m).FishingQuest = ""; }
 			if ( ((PlayerMobile)m).AssassinQuest == null ){ ((PlayerMobile)m).AssassinQuest = ""; }
