@@ -1,4 +1,5 @@
 using Server.ContextMenus;
+using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
@@ -18,8 +19,10 @@ namespace Server.Engines.GlobalShoppe
         }
 
         public override bool Decays { get { return false; } }
+
         public abstract NpcGuild Guild { get; }
 
+        protected virtual bool CanCreateOrders { get { return false; } }
         protected abstract SkillName PrimarySkill { get; }
         protected abstract ShoppeType ShoppeType { get; }
 
@@ -42,9 +45,33 @@ namespace Server.Engines.GlobalShoppe
                 OnJobSuccess(from, context, customer);
         }
 
+        public void AddOrderItem(int index, Mobile from, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            if (order.IsComplete) return;
+
+            from.CloseGump(typeof(OrderGump));
+            from.SendGump(new OrderGump(from, order));
+        }
+
         public bool CanAcceptCustomer(TradeSkillContext context, CustomerContext customer)
         {
             return HasEnoughTools(context, customer) && HasEnoughResources(context, customer) && HasGoldCapacity(context, customer);
+        }
+
+        public void CompleteOrder(int index, Mobile from, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            if (!order.IsComplete) return;
+
+            context.Gold += order.GoldReward;
+            context.Points += order.PointReward;
+            context.Reputation += order.ReputationReward;
+            context.Orders.Remove(order);
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
@@ -104,6 +131,12 @@ namespace Server.Engines.GlobalShoppe
 
         public override void OnDoubleClick(Mobile from)
         {
+            if (!ShoppeEngine.Instance.IsEnabled)
+            {
+                from.LocalOverheadMessage(Network.MessageType.Regular, 0x3B2, false, "Shoppe system is currently disabled.");
+                return;
+            }
+
             if (!from.InRange(GetWorldLocation(), 2))
             {
                 from.LocalOverheadMessage(Network.MessageType.Regular, 0x3B2, 1019045); // I can't reach that.
@@ -120,6 +153,18 @@ namespace Server.Engines.GlobalShoppe
 
                 context.CanRefreshCustomers = false;
                 context.NextCustomerRefresh = DateTime.UtcNow.Add(ShoppeConstants.CUSTOMER_REFRESH_DELAY);
+            }
+
+            if (CanCreateOrders && context.CanRefreshOrders)
+            {
+                var count = ShoppeConstants.MAX_ORDERS - context.Orders.Count;
+                foreach (var order in CreateOrders(from, context, count))
+                {
+                    context.Orders.Add(order);
+                }
+
+                context.CanRefreshOrders = false;
+                context.NextOrderRefresh = DateTime.UtcNow.Add(ShoppeConstants.ORDER_REFRESH_DELAY);
             }
 
             from.CloseGump(typeof(ShoppeGump));
@@ -162,6 +207,16 @@ namespace Server.Engines.GlobalShoppe
             context.Reputation = Math.Max(0, context.Reputation - customer.ReputationReward);
 
             context.Customers.Remove(customer);
+        }
+
+        public void RejectOrder(int index, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            context.Reputation = Math.Max(0, context.Reputation - order.ReputationReward);
+
+            context.Orders.Remove(order);
         }
 
         protected bool AddResource(Mobile from, Item item, int valuePerItem = 1)
@@ -251,7 +306,7 @@ namespace Server.Engines.GlobalShoppe
                 Description = task,
                 Difficulty = Math.Min(120, Math.Max(30, Utility.RandomMinMax((gold / 125) + 35, (gold / 125) + 35 + Utility.RandomMinMax(0, 5)))),
                 GoldReward = gold,
-                Person = string.Format("{0} {1}", Utility.RandomBool() ? NameList.RandomName("female") : NameList.RandomName("male"), TavernPatrons.GetTitle()),
+                Person = CreatePersonName(),
                 ReputationReward = Math.Min(50, Math.Max(5, Utility.RandomMinMax(gold / 20, (gold / 20) + Utility.RandomMinMax(0, 3)))),
                 ResourceCost = Math.Min(1000, Math.Max(5, Utility.RandomMinMax(gold / 20, (gold / 20) + Utility.RandomMinMax(0, 5)))),
                 ToolCost = Math.Min(10, Math.Max(1, Utility.RandomMinMax(gold / 100, (gold / 100) + Utility.RandomMinMax(0, 2)))),
@@ -260,7 +315,45 @@ namespace Server.Engines.GlobalShoppe
             return customer;
         }
 
+        protected virtual IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int amount)
+        {
+            return null;
+        }
+
+        protected string CreatePersonName()
+        {
+            return string.Format("{0} {1}", Utility.RandomBool() ? NameList.RandomName("female") : NameList.RandomName("male"), TavernPatrons.GetTitle());
+        }
+
         protected abstract string CreateTask(TradeSkillContext context);
+
+        protected IEnumerable<CraftItem> GetCraftItems(Mobile from, CraftSystem craftSystem)
+        {
+            for (int i = 0; i < craftSystem.CraftGroups.Count; i++)
+            {
+                var group = craftSystem.CraftGroups.GetAt(i);
+
+                for (int j = 0; j < group.CraftItems.Count; j++)
+                {
+                    var craftItem = group.CraftItems.GetAt(j);
+
+                    bool hasSkills = true;
+                    for (int k = 0; k < craftItem.Skills.Count; k++)
+                    {
+                        CraftSkill skill = craftItem.Skills.GetAt(k);
+                        if (
+                            from.Skills[skill.SkillToMake].Value < skill.MinSkill // Filter items you can't succeed on
+                        )
+                        {
+                            hasSkills = false;
+                            break;
+                        }
+                    }
+
+                    if (hasSkills) yield return craftItem;
+                }
+            }
+        }
 
         protected abstract ShoppeGump GetGump(PlayerMobile from);
 

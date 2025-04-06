@@ -1,8 +1,7 @@
 using Server.Gumps;
+using Server.Items;
 using Server.Mobiles;
 using Server.Network;
-using System;
-using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
@@ -14,7 +13,13 @@ namespace Server.Engines.GlobalShoppe
             Help = 1,
             AcceptBase = 50,
             RejectBase = 100,
+            DoOrderBase = 150,
+            CompleteOrderBase = 200,
+            RejectOrderBase = 250,
         }
+
+        private const int CARD_HEIGHT = 68;
+        private const int CARD_WIDTH = 864;
 
         private readonly TradeSkillContext m_Context;
         private readonly PlayerMobile m_From;
@@ -132,88 +137,52 @@ namespace Server.Engines.GlobalShoppe
 
                 // ------------------------------------------------------------------------------------
 
-                const int CARD_HEIGHT = 68;
-                const int CARD_WIDTH = 864;
                 int y = 130;
 
                 var requirements = shoppe.GetRequirementsMessage(from, context);
                 if (!string.IsNullOrWhiteSpace(requirements))
                 {
-                    AddBackground(20, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
-
-                    TextDefinition.AddHtmlText(this, 21, y + 27, CARD_WIDTH, 20, string.Format("<CENTER>{0}</CENTER>", requirements), HtmlColors.MUSTARD);
+                    AddTextCard(y, requirements);
                     return;
                 }
 
                 TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Customers</RIGHT>", context.Customers.Count, ShoppeConstants.MAX_CUSTOMERS), HtmlColors.MUSTARD);
                 y += 20;
 
-                if (!context.Customers.Any())
+                const int CUSTOMERS_PER_PAGE = 3;
+                for (int index = 0; index < CUSTOMERS_PER_PAGE; index++)
                 {
-                    AddBackground(20, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
-
-                    TextDefinition.AddHtmlText(this, 21, y + 27, CARD_WIDTH, 20, "<CENTER>Awaiting Next Customer</CENTER>", HtmlColors.MUSTARD);
-                    return;
-                }
-
-                const int CUSTOMERS_PER_PAGE = 7;
-                for (int index = 0; index < Math.Min(CUSTOMERS_PER_PAGE, context.Customers.Count); index++)
-                {
-                    CustomerContext customer = context.Customers[index];
-
-                    AddBackground(20, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
-                    y += 10; // Top padding
-
-                    // Flavor Text
-                    TextDefinition.AddHtmlText(this, 36, y, 319, 20, customer.Person, HtmlColors.MUSTARD);
-                    TextDefinition.AddHtmlText(this, 36, y + 20, 360, 40, customer.Description, false, false, HtmlColors.BROWN, HtmlColors.BROWN);
-
-                    // Accept/Decline
-                    const int x_card_action = 780;
-                    if (shoppe.CanAcceptCustomer(context, customer))
+                    if (index < context.Customers.Count)
                     {
-                        AddButton(x_card_action, y - 1, 4023, 4023, (int)Actions.AcceptBase + index, GumpButtonType.Reply, 0); // WILL FIX IT
-                        TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, "Accept", HtmlColors.MUSTARD);
+                        CustomerContext customer = context.Customers[index];
+                        AddCustomerCard(from, shoppe, context, customer, index, ref y);
                     }
                     else
                     {
-                        var reason =
-                            !shoppe.HasEnoughTools(context, customer)
-                            ? "Tools"
-                            : !shoppe.HasEnoughResources(context, customer)
-                                ? "Resources"
-                                : !shoppe.HasGoldCapacity(context, customer)
-                                    ? "Gold"
-                                    : "Unknown";
-                        TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, reason, HtmlColors.RED);
+                        AddTextCard(y, "Awaiting Next Customer");
+                        y += CARD_HEIGHT;
+                        y += 12;
                     }
+                }
 
-                    AddButton(x_card_action, y + 30, 4020, 4020, (int)Actions.RejectBase + index, GumpButtonType.Reply, 0); // WILL NOT FIX IT
-                    TextDefinition.AddHtmlText(this, x_card_action + 35, y + 30 + 3, 60, 20, "Decline", HtmlColors.MUSTARD);
+                y += 10;
+                TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Orders</RIGHT>", context.Orders.Count, ShoppeConstants.MAX_ORDERS), HtmlColors.MUSTARD);
+                y += 20;
 
-                    // Job Details
-                    y += 18;
-                    int x_card_icon = 400;
-                    AddItem(x_card_icon, y - 6, 10283);
-                    TextDefinition.AddHtmlText(this, x_card_icon + 24, y, 30, 20, customer.ReputationReward.ToString(), HtmlColors.MUSTARD);
-                    x_card_icon += 50;
-
-                    AddItem(x_card_icon, y - 4, 3823);
-                    TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, customer.GoldReward.ToString(), HtmlColors.MUSTARD);
-                    x_card_icon += 90;
-
-                    AddItem(x_card_icon, y - 2, 10174);
-                    TextDefinition.AddHtmlText(this, x_card_icon + 30, y, 30, 20, customer.ToolCost.ToString(), HtmlColors.MUSTARD);
-                    x_card_icon += 50;
-
-                    AddItem(x_card_icon, y - 6, 3710);
-                    TextDefinition.AddHtmlText(this, x_card_icon + 47, y, 30, 20, customer.ResourceCost.ToString(), HtmlColors.MUSTARD);
-                    x_card_icon += 82;
-
-                    AddItem(x_card_icon, y - 3, 4030);
-                    TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, string.Format("{0}%", shoppe.GetSuccessChance(from, customer.Difficulty)), HtmlColors.MUSTARD);
-
-                    y += 52;
+                const int ORDERS_PER_PAGE = 3;
+                for (int index = 0; index < ORDERS_PER_PAGE; index++)
+                {
+                    if (index < context.Orders.Count)
+                    {
+                        OrderContext order = context.Orders[index];
+                        AddOrderCard(order, index, ref y);
+                    }
+                    else
+                    {
+                        AddTextCard(y, "Awaiting Next Order");
+                        y += CARD_HEIGHT;
+                        y += 12;
+                    }
                 }
             }
         }
@@ -223,7 +192,23 @@ namespace Server.Engines.GlobalShoppe
             var buttonID = info.ButtonID;
             if (buttonID == 0) return;
 
-            if ((int)Actions.RejectBase <= buttonID) // Reject is higher
+            if ((int)Actions.RejectOrderBase <= buttonID) // Reject Order is higher
+            {
+                var index = buttonID - (int)Actions.RejectOrderBase;
+                m_Shoppe.RejectOrder(index, m_Context);
+            }
+            else if ((int)Actions.CompleteOrderBase <= buttonID) // Complete is higher
+            {
+                var index = buttonID - (int)Actions.CompleteOrderBase;
+                m_Shoppe.CompleteOrder(index, sender.Mobile, m_Context);
+            }
+            else if ((int)Actions.DoOrderBase <= buttonID) // Do Order is higher
+            {
+                var index = buttonID - (int)Actions.DoOrderBase;
+                m_Shoppe.AddOrderItem(index, sender.Mobile, m_Context);
+                return;
+            }
+            else if ((int)Actions.RejectBase <= buttonID) // Reject is higher
             {
                 var index = buttonID - (int)Actions.RejectBase;
                 m_Shoppe.RejectCustomer(index, m_Context);
@@ -243,6 +228,132 @@ namespace Server.Engines.GlobalShoppe
                 m_ResourceName,
                 buttonID == (int)Actions.Help
             ));
+        }
+
+        private void AddCard(int y)
+        {
+            AddBackground(20, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
+        }
+
+        private void AddCustomerCard(
+            PlayerMobile from,
+            ShoppeBase shoppe,
+            TradeSkillContext context,
+            CustomerContext customer,
+            int index,
+            ref int y
+            )
+        {
+            AddCard(y);
+            y += 10; // Top padding
+
+            // Flavor Text
+            TextDefinition.AddHtmlText(this, 36, y, 319, 20, customer.Person, HtmlColors.MUSTARD);
+            TextDefinition.AddHtmlText(this, 36, y + 20, 360, 40, customer.Description, false, false, HtmlColors.BROWN, HtmlColors.BROWN);
+
+            // Accept/Decline
+            const int x_card_action = 780;
+            if (shoppe.CanAcceptCustomer(context, customer))
+            {
+                AddButton(x_card_action, y - 1, 4023, 4023, (int)Actions.AcceptBase + index, GumpButtonType.Reply, 0); // WILL FIX IT
+                TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, "Accept", HtmlColors.MUSTARD);
+            }
+            else
+            {
+                var reason =
+                    !shoppe.HasEnoughTools(context, customer)
+                    ? "Tools"
+                    : !shoppe.HasEnoughResources(context, customer)
+                        ? "Resources"
+                        : !shoppe.HasGoldCapacity(context, customer)
+                            ? "Gold"
+                            : "Unknown";
+                TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, reason, HtmlColors.RED);
+            }
+
+            AddButton(x_card_action, y + 30, 4020, 4020, (int)Actions.RejectBase + index, GumpButtonType.Reply, 0); // WILL NOT FIX IT
+            TextDefinition.AddHtmlText(this, x_card_action + 35, y + 30 + 3, 60, 20, "Decline", HtmlColors.MUSTARD);
+
+            // Job Details
+            y += 18;
+            int x_card_icon = 400;
+            AddItem(x_card_icon, y - 6, 10283);
+            TextDefinition.AddHtmlText(this, x_card_icon + 24, y, 30, 20, customer.ReputationReward.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 50;
+
+            AddItem(x_card_icon, y - 4, 3823);
+            TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, customer.GoldReward.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 90;
+
+            AddItem(x_card_icon, y - 2, 10174);
+            TextDefinition.AddHtmlText(this, x_card_icon + 30, y, 30, 20, customer.ToolCost.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 50;
+
+            AddItem(x_card_icon, y - 6, 3710);
+            TextDefinition.AddHtmlText(this, x_card_icon + 47, y, 30, 20, customer.ResourceCost.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 82;
+
+            AddItem(x_card_icon, y - 3, 4030);
+            TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, string.Format("{0}%", shoppe.GetSuccessChance(from, customer.Difficulty)), HtmlColors.MUSTARD);
+
+            y += 52;
+        }
+
+        private void AddOrderCard(
+            OrderContext order,
+            int index,
+            ref int y
+            )
+        {
+            AddCard(y);
+            y += 10; // Top padding
+
+            // Flavor Text
+            TextDefinition.AddHtmlText(this, 36, y, 319, 20, order.Person, HtmlColors.MUSTARD);
+            var description = string.Format("Craft {0}", order.MaxAmount);
+            if (order.RequireExceptional) description += " exceptional";
+            if (order.Resource != CraftResource.None) description = string.Format("{0} {1}", description, CraftResources.GetResourceName(order.Resource));
+            description = string.Format("{0} {1}", description, order.ItemName);
+
+            TextDefinition.AddHtmlText(this, 36, y + 20, 360, 40, description, false, false, HtmlColors.BROWN, HtmlColors.BROWN);
+
+            // Accept/Decline
+            const int x_card_action = 780;
+            if (order.IsComplete)
+            {
+                AddButton(x_card_action, y - 1, 4023, 4023, (int)Actions.CompleteOrderBase + index, GumpButtonType.Reply, 0); // ALREADY COMPLETED
+                TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, "Complete", HtmlColors.MUSTARD);
+            }
+            else
+            {
+                AddButton(x_card_action, y - 1, 4023, 4023, (int)Actions.DoOrderBase + index, GumpButtonType.Reply, 0); // WILL FIX IT
+                TextDefinition.AddHtmlText(this, x_card_action + 35, y - 1 + 3, 60, 20, "Add Items", HtmlColors.MUSTARD);
+
+                AddButton(x_card_action, y + 30, 4020, 4020, (int)Actions.RejectOrderBase + index, GumpButtonType.Reply, 0); // WILL NOT FIX IT
+                TextDefinition.AddHtmlText(this, x_card_action + 35, y + 30 + 3, 60, 20, "Decline", HtmlColors.MUSTARD);
+            }
+
+            // Job Details
+            y += 18;
+            int x_card_icon = 400;
+            AddItem(x_card_icon, y - 6, 10283);
+            TextDefinition.AddHtmlText(this, x_card_icon + 24, y, 30, 20, order.ReputationReward.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 50;
+
+            AddItem(x_card_icon, y - 4, 3823);
+            TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, order.GoldReward.ToString(), HtmlColors.MUSTARD);
+            x_card_icon += 90;
+
+            AddItem(x_card_icon, y - 3, 0x0EEC, 0x44C); // 1072
+            TextDefinition.AddHtmlText(this, x_card_icon + 45, y, 50, 20, order.PointReward.ToString(), HtmlColors.MUSTARD);
+
+            y += 52;
+        }
+
+        private void AddTextCard(int y, string centeredText)
+        {
+            AddCard(y);
+            TextDefinition.AddHtmlText(this, 21, y + 27, CARD_WIDTH, 20, string.Format("<CENTER>{0}</CENTER>", centeredText), HtmlColors.MUSTARD);
         }
     }
 }

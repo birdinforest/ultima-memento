@@ -1,6 +1,11 @@
+using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
@@ -19,6 +24,7 @@ namespace Server.Engines.GlobalShoppe
 
         public override NpcGuild Guild { get { return NpcGuild.ArchersGuild; } }
 
+        protected override bool CanCreateOrders { get { return true; } }
         protected override SkillName PrimarySkill { get { return SkillName.Bowcraft; } }
         protected override ShoppeType ShoppeType { get { return ShoppeType.Bowyer; } }
 
@@ -30,6 +36,69 @@ namespace Server.Engines.GlobalShoppe
                 return AddResource(from, dropped);
 
             return base.OnDragDrop(from, dropped);
+        }
+
+        protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+        {
+            if (count < 1) yield break;
+
+            var craftSystem = DefBowFletching.CraftSystem;
+
+            // Build resource list
+            var resources = new List<CraftResource>();
+            foreach (var o in craftSystem.CraftSubRes)
+            {
+                var res = o as CraftSubRes;
+                if (res == null || from.Skills[craftSystem.MainSkill].Value < res.RequiredSkill) continue;
+                if (res.ItemType == typeof(Board)) continue; // Always an option
+
+                CraftResource resource;
+                if (res.ItemType == typeof(AshBoard)) resource = CraftResource.AshTree;
+                else if (res.ItemType == typeof(CherryBoard)) resource = CraftResource.CherryTree;
+                else if (res.ItemType == typeof(EbonyBoard)) resource = CraftResource.EbonyTree;
+                else if (res.ItemType == typeof(GoldenOakBoard)) resource = CraftResource.GoldenOakTree;
+                else if (res.ItemType == typeof(HickoryBoard)) resource = CraftResource.HickoryTree;
+                else if (res.ItemType == typeof(MahoganyBoard)) resource = CraftResource.MahoganyTree;
+                else if (res.ItemType == typeof(OakBoard)) resource = CraftResource.OakTree;
+                else if (res.ItemType == typeof(PineBoard)) resource = CraftResource.PineTree;
+                else if (res.ItemType == typeof(GhostBoard)) resource = CraftResource.GhostTree;
+                else if (res.ItemType == typeof(RosewoodBoard)) resource = CraftResource.RosewoodTree;
+                else if (res.ItemType == typeof(WalnutBoard)) resource = CraftResource.WalnutTree;
+                else if (res.ItemType == typeof(PetrifiedBoard)) resource = CraftResource.PetrifiedTree;
+                else if (res.ItemType == typeof(DriftwoodBoard)) resource = CraftResource.DriftwoodTree;
+                else if (res.ItemType == typeof(ElvenBoard)) resource = CraftResource.ElvenTree;
+                else continue;
+
+                resources.Add(resource);
+            }
+
+            // Build item list
+            var items = GetCraftItems(from, craftSystem)
+                .Where(i => TypeUtilities.IsExceptionalEquipmentType(i.ItemType))
+                .ToList();
+
+            // Add quantity bonus for every 5 points over 100
+            var amountBonus = (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
+
+            for (int i = 0; i < count; i++)
+            {
+                var item = Utility.Random(items);
+                if (item == null) yield break;
+
+                var resource = 0 < resources.Count && Utility.RandomDouble() < 0.5 ? Utility.Random(resources) : CraftResource.None;
+                var amount = amountBonus + Utility.RandomMinMax(3, 10);
+                if (resource == CraftResource.None) amount += 10; // Pump value by increasing count
+
+                var order = new OrderContext(item.ItemType)
+                {
+                    RequireExceptional = Utility.RandomDouble() < 0.25,
+                    MaxAmount = amount,
+                    CurrentAmount = 0,
+                    Resource = resource,
+                };
+
+                yield return order;
+            }
         }
 
         protected override string CreateTask(TradeSkillContext context)
@@ -126,6 +195,25 @@ namespace Server.Engines.GlobalShoppe
         protected override ShoppeGump GetGump(PlayerMobile from)
         {
             var context = GetOrCreateContext(from);
+
+            // Ensure Orders are configured
+            context.Orders.ForEach(order =>
+            {
+                if (order.IsInitialized) return;
+
+                var rewards = BowcraftRewardCalculator.Instance;
+
+                var item = ShoppeItemCache.GetOrCreate(order.Type);
+                order.GraphicId = item.ItemID;
+                order.ItemName = item.Name;
+                order.Person = CreatePersonName();
+
+                order.GoldReward = rewards.ComputeGold(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
+                order.PointReward = rewards.ComputePoints(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
+                order.ReputationReward = rewards.ComputeReputation(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type, context.Reputation);
+
+                order.IsInitialized = true;
+            });
 
             return new ShoppeGump(
                 from,

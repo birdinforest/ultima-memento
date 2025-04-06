@@ -22,6 +22,8 @@ namespace Server.Engines.GlobalShoppe
             }
         }
 
+        public bool IsEnabled { get; private set; }
+
         public static void Configure()
         {
             EventSink.WorldLoad += OnWorldLoad;
@@ -67,6 +69,7 @@ namespace Server.Engines.GlobalShoppe
                     }
 
                     Console.WriteLine("Loaded Global Shoppe data for '{0}' accounts", Instance.m_Context.Count);
+                    Instance.IsEnabled = true;
                 }
             );
         }
@@ -81,14 +84,7 @@ namespace Server.Engines.GlobalShoppe
             //     Instance.m_Context.Remove(username);
             // }
 
-            var interval = ShoppeConstants.CUSTOMER_REFRESH_INTERVAL;
-            if (ShoppeConstants.CUSTOMER_REFRESH_DELAY < interval)
-            {
-                interval = TimeSpan.FromSeconds(ShoppeConstants.CUSTOMER_REFRESH_DELAY.TotalSeconds / 2);
-                Console.WriteLine("CUSTOMER_REFRESH_DELAY must be larger the CUSTOMER_REFRESH_INTERVAL. Guessing at interval.");
-            }
-
-            Instance.m_RefreshTimer = new InternalTimer(interval);
+            Instance.m_RefreshTimer = new InternalTimer();
             Instance.m_RefreshTimer.Start();
         }
 
@@ -112,20 +108,24 @@ namespace Server.Engines.GlobalShoppe
 
         private class InternalTimer : Timer
         {
-            public InternalTimer(TimeSpan interval) : base(TimeSpan.Zero, interval)
+            public InternalTimer() : base(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(5))
             {
             }
 
             protected override void OnTick()
             {
+                if (!Instance.IsEnabled) return;
+
                 var now = DateTime.UtcNow;
                 foreach (var context in Instance.m_Context.Values)
                 {
                     foreach (var trade in context.Trades)
                     {
-                        if (trade.CanRefreshCustomers || now < trade.NextCustomerRefresh) continue;
+                        if (!trade.CanRefreshCustomers && now >= trade.NextCustomerRefresh)
+                            trade.CanRefreshCustomers = true;
 
-                        trade.CanRefreshCustomers = true;
+                        if (!trade.CanRefreshOrders && now >= trade.NextOrderRefresh)
+                            trade.CanRefreshOrders = true;
                     }
                 }
             }

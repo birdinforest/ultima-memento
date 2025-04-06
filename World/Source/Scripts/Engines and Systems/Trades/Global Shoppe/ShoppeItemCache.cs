@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+
+namespace Server.Engines.GlobalShoppe
+{
+    public class ShoppeItemCache
+    {
+        private static Dictionary<Type, ItemSnapshot> _cache;
+
+        public static ItemSnapshot GetOrCreate(string typeName)
+        {
+            Type itemType = ScriptCompiler.FindTypeByName(typeName);
+            if (itemType == null) { return null; }
+
+            return GetOrCreate(itemType);
+        }
+
+        public static ItemSnapshot GetOrCreate(Type type)
+        {
+            if (_cache == null) _cache = new Dictionary<Type, ItemSnapshot>();
+
+            Item item = null;
+            try
+            {
+                if (_cache.ContainsKey(type)) return _cache[type];
+
+                item = (Item)Activator.CreateInstance(type);
+                if (item == null) return null;
+
+                // Set default name and lowercase it
+                if (string.IsNullOrWhiteSpace(item.Name)) { item.SyncName(); }
+
+                return _cache[type] = new ItemSnapshot
+                {
+                    Name = item.Name.ToLower(),
+                    ItemID = item.ItemID,
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Failed to create Item for Shoppe Item Cache. {0}", e.Message);
+                return null;
+            }
+            finally
+            {
+                if (item != null)
+                {
+                    item.Delete();
+                }
+            }
+        }
+    }
+}

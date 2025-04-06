@@ -10,12 +10,16 @@ namespace Server.Engines.GlobalShoppe
         {
             CanRefreshCustomers = true;
             Customers = new List<CustomerContext>();
+            CanRefreshOrders = true;
+            Orders = new List<OrderContext>();
         }
 
         public TradeSkillContext(GenericReader reader)
         {
             CanRefreshCustomers = true;
             Customers = new List<CustomerContext>();
+            CanRefreshOrders = true;
+            Orders = new List<OrderContext>();
 
             int version = reader.ReadInt();
 
@@ -24,6 +28,8 @@ namespace Server.Engines.GlobalShoppe
             Resources = reader.ReadInt();
             Reputation = reader.ReadInt();
             Gold = reader.ReadInt();
+            if (1 < version)
+                Points = reader.ReadInt();
 
             var count = reader.ReadInt();
             for (int i = 0; i < count; ++i)
@@ -31,10 +37,25 @@ namespace Server.Engines.GlobalShoppe
                 var customer = new CustomerContext(reader);
                 Customers.Add(customer);
             }
+
+            if (0 < version)
+            {
+                var orderCount = reader.ReadInt();
+                for (int i = 0; i < orderCount; ++i)
+                {
+                    var order = new OrderContext(reader);
+                    if (!order.IsValid) continue;
+
+                    Orders.Add(order);
+                }
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool CanRefreshCustomers { get; set; } // Not Serialized
+        public bool CanRefreshCustomers { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool CanRefreshOrders { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public List<CustomerContext> Customers { get; set; }
@@ -46,7 +67,16 @@ namespace Server.Engines.GlobalShoppe
         public int Gold { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime NextCustomerRefresh { get; set; } // Not Serialized
+        public DateTime NextCustomerRefresh { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public DateTime NextOrderRefresh { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public List<OrderContext> Orders { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int Points { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Reputation { get; set; }
@@ -59,13 +89,14 @@ namespace Server.Engines.GlobalShoppe
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write((int)0); // version
+            writer.Write((int)2); // version
 
             writer.Write(FeePaid);
             writer.Write(Tools);
             writer.Write(Resources);
             writer.Write(Reputation);
             writer.Write(Gold);
+            writer.Write(Points);
 
             if (CanRefreshCustomers || !ShoppeConstants.SAVE_CUSTOMERS_TO_DISK)
             {
@@ -79,6 +110,13 @@ namespace Server.Engines.GlobalShoppe
                     var customer = Customers[i];
                     customer.Serialize(writer);
                 }
+            }
+
+            writer.Write(Orders.Count);
+            for (int i = 0; i < Orders.Count; ++i)
+            {
+                var order = Orders[i];
+                order.Serialize(writer);
             }
         }
 
