@@ -6,7 +6,6 @@ using Server.Network;
 using Server.ContextMenus;
 using Server.Mobiles;
 using Server.Misc;
-using Server.Engines.BulkOrders;
 using Server.Regions;
 using Server.Multis;
 using Server.Engines.Plants;
@@ -2463,7 +2462,6 @@ namespace Server
 			new ItemSalesInfo( typeof(	EmptyPewterBowl	),	2	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
 			new ItemSalesInfo( typeof(	EmptyVialsWRack	),	120	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Alchemy	),
 			new ItemSalesInfo( typeof(	EnchantedSeaweed	),	240	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fisherman	),
-			new ItemSalesInfo( typeof(	BulkOrderBook	),	50	,	0	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Scribe	),
 			new ItemSalesInfo( typeof(	PlantBowl	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Herbalist	),
 			new ItemSalesInfo( typeof(	EnormousBag	),	20	,	1	,	95	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	EverlastingBottle	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.None	),

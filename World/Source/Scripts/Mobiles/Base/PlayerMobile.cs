@@ -145,7 +145,6 @@ namespace Server.Mobiles
 
 		private NpcGuild m_NpcGuild;
 		private DateTime m_NpcGuildJoinTime;
-		private DateTime m_NextBODTurnInTime;
 		private TimeSpan m_NpcGuildGameTime;
 		private DateTime m_Camp;
 		private DateTime m_Bedroll;
@@ -288,13 +287,6 @@ namespace Server.Mobiles
 		{
 			get{ return m_NpcGuildJoinTime; }
 			set{ m_NpcGuildJoinTime = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime NextBODTurnInTime
-		{
-			get{ return m_NextBODTurnInTime; }
-			set{ m_NextBODTurnInTime = value; }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -2662,8 +2654,6 @@ namespace Server.Mobiles
 		private DateTime m_SessionStart;
 		private DateTime m_LastEscortTime;
 		private DateTime m_LastPetBallTime;
-		private DateTime m_NextSmithBulkOrder;
-		private DateTime m_NextTailorBulkOrder;
 		private DateTime m_SavagePaintExpiration;
 		private SkillName m_Learning = (SkillName)(-1);
 
@@ -2692,44 +2682,6 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan NextSmithBulkOrder
-		{
-			get
-			{
-				TimeSpan ts = m_NextSmithBulkOrder - DateTime.Now;
-
-				if ( ts < TimeSpan.Zero )
-					ts = TimeSpan.Zero;
-
-				return ts;
-			}
-			set
-			{
-				try{ m_NextSmithBulkOrder = DateTime.Now + value; }
-				catch{}
-			}
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan NextTailorBulkOrder
-		{
-			get
-			{
-				TimeSpan ts = m_NextTailorBulkOrder - DateTime.Now;
-
-				if ( ts < TimeSpan.Zero )
-					ts = TimeSpan.Zero;
-
-				return ts;
-			}
-			set
-			{
-				try{ m_NextTailorBulkOrder = DateTime.Now + value; }
-				catch{}
-			}
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime LastEscortTime
 		{
 			get{ return m_LastEscortTime; }
@@ -2751,8 +2703,6 @@ namespace Server.Mobiles
 			m_PermaFlags = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
 			m_RecentlyReported = new List<Mobile>();
-
-			m_BOBFilter = new Engines.BulkOrders.BOBFilter();
 
 			m_GameTime = TimeSpan.Zero;
 			m_ShortTermElapse = TimeSpan.FromHours( 8.0 );
@@ -3014,13 +2964,6 @@ namespace Server.Mobiles
 			EndAction( typeof( Deception ) );
 		}
 
-		private Engines.BulkOrders.BOBFilter m_BOBFilter;
-
-		public Engines.BulkOrders.BOBFilter BOBFilter
-		{
-			get{ return m_BOBFilter; }
-		}
-
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CharacterMOTD { get; set; }
 
@@ -3241,6 +3184,7 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 43:
 				case 42:
 					IgnoreVendorGoldSafeguard = reader.ReadBool();
 					goto case 41;
@@ -3529,7 +3473,17 @@ namespace Server.Mobiles
 				case 13: // just removed m_PayedInsurance list
 				case 12:
 				{
-					m_BOBFilter = new Engines.BulkOrders.BOBFilter( reader );
+					if (version < 43)
+					{
+						var BOBFilter_Version = reader.ReadEncodedInt();
+						if (BOBFilter_Version == 1)
+						{
+							var BOBFilter_Type = reader.ReadEncodedInt();
+							var BOBFilter_Quality = reader.ReadEncodedInt();
+							var BOBFilter_Material = reader.ReadEncodedInt();
+							var BOBFilter_Quantity = reader.ReadEncodedInt();
+						}
+					}
 					goto case 11;
 				}
 				case 11:
@@ -3567,12 +3521,18 @@ namespace Server.Mobiles
 				}
 				case 6:
 				{
-					NextTailorBulkOrder = reader.ReadTimeSpan();
+					if (version < 43)
+					{
+						var NextTailorBulkOrder = reader.ReadTimeSpan();
+					}
 					goto case 5;
 				}
 				case 5:
 				{
-					NextSmithBulkOrder = reader.ReadTimeSpan();
+					if (version < 43)
+					{
+						var NextSmithBulkOrder = reader.ReadTimeSpan();
+					}
 					goto case 4;
 				}
 				case 4:
@@ -3611,9 +3571,6 @@ namespace Server.Mobiles
 
 			if ( m_PermaFlags == null )
 				m_PermaFlags = new List<Mobile>();
-
-			if ( m_BOBFilter == null )
-				m_BOBFilter = new Engines.BulkOrders.BOBFilter();
 
 			if( m_GuildRank == null )
 				m_GuildRank = Guilds.RankDefinition.Member;	//Default to member if going from older verstion to new version (only time it should be null)
@@ -3674,7 +3631,7 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 42 ); // version
+			writer.Write( (int) 43 ); // version
 
 			writer.Write(IgnoreVendorGoldSafeguard);
 
@@ -3781,8 +3738,6 @@ namespace Server.Mobiles
 
 			writer.WriteEncodedInt( (int) m_Fugitive );
 
-			m_BOBFilter.Serialize( writer );
-
 			bool useMods = ( m_HairModID != -1 || m_BeardModID != -1 );
 
 			writer.Write( useMods );
@@ -3802,10 +3757,6 @@ namespace Server.Mobiles
 			writer.Write( (TimeSpan) m_NpcGuildGameTime );
 
 			writer.Write( m_PermaFlags, true );
-
-			writer.Write( NextTailorBulkOrder );
-
-			writer.Write( NextSmithBulkOrder );
 
 			writer.Write( (int) m_Flags );
 

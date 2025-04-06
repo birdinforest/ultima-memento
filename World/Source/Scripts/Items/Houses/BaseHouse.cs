@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Items;
 using Server.Mobiles;
 using Server.Multis.Deeds;
@@ -11,9 +10,7 @@ using Server.Targeting;
 using Server.Accounting;
 using Server.ContextMenus;
 using Server.Gumps;
-using Server.Misc;
 using Server.Guilds;
-using Server.Engines.BulkOrders;
 
 namespace Server.Multis
 {
@@ -1689,7 +1686,7 @@ namespace Server.Multis
 				bool valid = m_House != null && Sextant.Format( m_House.Location, m_House.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth );
 
 				if ( valid )
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}ï¿½ {1}'{2}, {3}ï¿½ {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				else
 					location = "unknown";
 

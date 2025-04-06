@@ -6,7 +6,6 @@ using Server.Network;
 using Server.ContextMenus;
 using Server.Mobiles;
 using Server.Misc;
-using Server.Engines.BulkOrders;
 using Server.Regions;
 using Server.Multis;
 using Server.Targeting;
@@ -36,8 +35,6 @@ namespace Server.Mobiles
 
 	public abstract class BaseVendor : BaseCreature, IVendor
 	{
-		private const bool BULK_ORDERS_ENABLED = false; // Disabled until they are balanced
-
 		public DateTime m_NextAction;
 		public DateTime NextAction{ get{ return m_NextAction; } set{ m_NextAction = value; } }
 
@@ -76,30 +73,6 @@ namespace Server.Mobiles
 		public override bool Uncalmable{ get{ return false; } }
 
 		public override bool ShowFameTitle { get { return false; } }
-
-		public virtual bool IsValidBulkOrder( Item item )
-		{
-			return false;
-		}
-
-		public virtual Item CreateBulkOrder( Mobile from, bool fromContextMenu )
-		{
-			return null;
-		}
-
-		public virtual bool SupportsBulkOrders( Mobile from )
-		{
-			return false;
-		}
-
-		public virtual TimeSpan GetNextBulkOrder( Mobile from )
-		{
-			return TimeSpan.Zero;
-		}
-
-		public virtual void OnSuccessfulBulkOrderReceive( Mobile from )
-		{
-		}
 
 		public virtual int GetPriceScalar()
 		{
@@ -180,55 +153,6 @@ namespace Server.Mobiles
 
 				if ( Utility.RandomBool() )
 					this.PackItem( Loot.RandomItem( this, -10 ) );
-			}
-		}
-
-		private class BulkOrderInfoEntry : ContextMenuEntry
-		{
-			private Mobile m_From;
-			private BaseVendor m_Vendor;
-
-			public BulkOrderInfoEntry( Mobile from, BaseVendor vendor ): base( 6152 )
-			{
-				m_From = from;
-				m_Vendor = vendor;
-				Enabled = vendor.CheckVendorAccess( from );
-			}
-
-			public override void OnClick()
-			{
-				if ( BULK_ORDERS_ENABLED && m_Vendor.SupportsBulkOrders( m_From ) )
-				{
-					TimeSpan ts = m_Vendor.GetNextBulkOrder( m_From );
-
-					int totalSeconds = (int)ts.TotalSeconds;
-					int totalHours = ( totalSeconds + 3599 ) / 3600;
-					int totalMinutes = ( totalSeconds + 59 ) / 60;
-
-					if ( ( ( Core.SE ) ? totalMinutes == 0 : totalHours == 0 ) )
-					{
-						m_From.SendLocalizedMessage( 1049038 ); // You can get an order now.
-
-						if ( Core.AOS )
-						{
-							Item bulkOrder = m_Vendor.CreateBulkOrder( m_From, true );
-
-							if ( bulkOrder is LargeBOD )
-								m_From.SendGump( new LargeBODAcceptGump( m_From, (LargeBOD)bulkOrder ) );
-							else if ( bulkOrder is SmallBOD )
-								m_From.SendGump( new SmallBODAcceptGump( m_From, (SmallBOD)bulkOrder ) );
-						}
-					}
-					else
-					{
-						int oldSpeechHue = m_Vendor.SpeechHue;
-						m_Vendor.SpeechHue = Utility.RandomTalkHue();
-
-						m_Vendor.SayTo( m_From, 1072058, totalMinutes.ToString() ); // An offer may be available in about ~1_minutes~ minutes.
-
-						m_Vendor.SpeechHue = oldSpeechHue;
-					}
-				}
 			}
 		}
 
@@ -1471,61 +1395,6 @@ namespace Server.Mobiles
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 				/* TODO: Thou art giving me? and fame/karma for gold gifts */
-
-				if ( dropped is SmallBOD || dropped is LargeBOD )
-				{
-					if( Core.ML )
-					{
-						if( ((PlayerMobile)from).NextBODTurnInTime > DateTime.Now )
-						{
-							SayTo( from, 1079976 );	//
-							return false;
-						}
-					}
-
-					if ( !BULK_ORDERS_ENABLED || !IsValidBulkOrder( dropped ) || !SupportsBulkOrders( from ) )
-					{
-						SayTo( from, 1045130 ); // That order is for some other shopkeeper.
-						return false;
-					}
-					else if ( ( dropped is SmallBOD && !( (SmallBOD)dropped ).Complete ) || ( dropped is LargeBOD && !( (LargeBOD)dropped ).Complete ) )
-					{
-						SayTo( from, 1045131 ); // You have not completed the order yet.
-						return false;
-					}
-
-					Item reward;
-					int gold, fame;
-
-					if ( dropped is SmallBOD )
-						( (SmallBOD)dropped ).GetRewards( out reward, out gold, out fame );
-					else
-						( (LargeBOD)dropped ).GetRewards( out reward, out gold, out fame );
-
-					from.SendSound( 0x3D );
-
-					SayTo( from, 1045132 ); // Thank you so much!  Here is a reward for your effort.
-
-					if ( reward != null )
-						from.AddToBackpack( reward );
-
-					if ( gold > 1000 )
-						from.AddToBackpack( new BankCheck( gold ) );
-					else if ( gold > 0 )
-						from.AddToBackpack( new Gold( gold ) );
-
-					Titles.AwardFame( from, fame, true );
-
-					OnSuccessfulBulkOrderReceive( from );
-
-					if( Core.ML )
-					{
-						((PlayerMobile)from).NextBODTurnInTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
-					}
-
-					dropped.Delete();
-					return true;
-				}
 			}
 
 			return base.OnDragDrop( from, dropped );
@@ -2151,16 +2020,6 @@ namespace Server.Mobiles
 				seller.AddToBackpack( new Gold( GiveGold ) );
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
-
-				if ( BULK_ORDERS_ENABLED && SupportsBulkOrders( seller ) )
-				{
-					Item bulkOrder = CreateBulkOrder( seller, false );
-
-					if ( bulkOrder is LargeBOD )
-						seller.SendGump( new LargeBODAcceptGump( seller, (LargeBOD)bulkOrder ) );
-					else if ( bulkOrder is SmallBOD )
-						seller.SendGump( new SmallBODAcceptGump( seller, (SmallBOD)bulkOrder ) );
-				}
 			}
 
 			return true;
@@ -2239,9 +2098,6 @@ namespace Server.Mobiles
 					buysThings = false;
 				else if ( !IsActiveBuyer )
 					buysThings = false;
-
-				if ( BULK_ORDERS_ENABLED && SupportsBulkOrders( from ) && CheckVendorAccess( from ) )
-					list.Add( new BulkOrderInfoEntry( from, this ) );
 				
 				if ( IsActiveSeller && CheckVendorAccess( from ) )
 					list.Add( new VendorBuyEntry( from, this ) );
