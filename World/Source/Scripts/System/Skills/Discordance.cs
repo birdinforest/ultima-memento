@@ -154,14 +154,15 @@ namespace Server.SkillHandlers
 			protected override void OnTarget( Mobile from, object target )
 			{
 				from.RevealingAction();
-				from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 1.0 );
 
 				if ( m_Instrument.Parent != from && !m_Instrument.IsChildOf( from.Backpack ) )
 				{
+					from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 1.0 );
 					from.SendLocalizedMessage( 1062488 ); // The instrument you are trying to play is no longer in your backpack!
 				}
 				else if ( target is Mobile )
 				{
+					from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3.0 );
 					Mobile targ = (Mobile)target;
 
 					if ( targ == from || (targ is BaseCreature && !from.CanBeHarmful( targ, false ) && ((BaseCreature)targ).ControlMaster != from) )
@@ -234,6 +235,7 @@ namespace Server.SkillHandlers
 								BuffInfo.RemoveBuff( targ, BuffIcon.Discordance );
 								string args = String.Format("{0}\t{1}\t{2}\t{3}\t{4}", effect, (int)(targ.RawStr * scalar), (int)(targ.RawInt * scalar), (int)(targ.RawDex * scalar), scalar);
 								BuffInfo.AddBuff( targ, new BuffInfo( BuffIcon.Discordance, 1063662, args.ToString() ));
+								from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 12.0 );
 							}
 							else
 							{
@@ -248,8 +250,6 @@ namespace Server.SkillHandlers
 							m_Instrument.PlayInstrumentBadly( from );
 							m_Instrument.ConsumeUse( from );
 						}
-
-						from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 12.0 );
 					}
 					else
 					{
