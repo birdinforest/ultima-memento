@@ -127,7 +127,10 @@ namespace Server.Items
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !MySettings.S_MerchantCrates )
+			{
 				base.OnDoubleClick( from );
+				return;
+			}
 
 			if ( this.Movable )
 			{
