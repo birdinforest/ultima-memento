@@ -848,8 +848,9 @@ namespace Server.Items
 
 							int magic = 0;
 								if ( m.Skills[SkillName.Necromancy].Base > m.Skills[SkillName.Magery].Base ){ magic = 1; }
-								if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Magery].Base ){ magic = 2; }
-								if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Necromancy].Base ){ magic = 2; }
+								else if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Magery].Base ){ magic = 2; }
+								else if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Necromancy].Base ){ magic = 2; }
+								else if ( m.Skills[SkillName.Magery].Base > 0 ){ magic = 3; }
 
 							StaffFiveParts staff = new StaffFiveParts( m, magic );
 							staff.MoveToWorld (new Point3D(5693, 1913, 2), Map.Sosaria);

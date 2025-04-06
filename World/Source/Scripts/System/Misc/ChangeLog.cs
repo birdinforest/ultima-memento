@@ -49,6 +49,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Fix overlapping properties on clothing enhancement<br>");
 			builder.Append("- Item - Auto-skinning no longer performs criminal acts<br>");
 			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
+			builder.Append("- Item - Staff of Five parts would not spawn for Mages<br>");
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
