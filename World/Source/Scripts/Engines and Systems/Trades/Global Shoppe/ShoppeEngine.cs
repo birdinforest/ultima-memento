@@ -22,7 +22,7 @@ namespace Server.Engines.GlobalShoppe
             }
         }
 
-        public bool IsEnabled { get; private set; }
+        public bool IsEnabled { get; set; }
 
         public static void Configure()
         {
