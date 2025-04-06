@@ -9,7 +9,7 @@ namespace Server.Engines.GlobalShoppe
     {
         public static void Initialize()
         {
-            CommandSystem.Register("shoppecontext", AccessLevel.GameMaster, new CommandEventHandler(args =>
+            CommandSystem.Register("Shoppe-GetContext", AccessLevel.GameMaster, new CommandEventHandler(args =>
             {
                 if (args.Mobile == null) return;
 
