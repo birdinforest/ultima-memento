@@ -25,6 +25,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
+			builder.Append("- Craft - Add Orders to Shoppes<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
 			builder.Append("- Gather - Double-clicking glistening veins indicate when out of range<br>");
 			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
