@@ -66,27 +66,30 @@ namespace Server.Engines.Harvest
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.InRange(this.GetWorldLocation(), 2) && from.Map == Map)
+            if (!from.InRange(GetWorldLocation(), 2))
             {
-                Item harvestTool = null;
+                from.LocalOverheadMessage(Network.MessageType.Regular, 0x3B2, 1019045); // I can't reach that.
+                return;
+            }
 
-                var tool = from.FindItemOnLayer(Layer.OneHanded) as IHarvestTool;
-                if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Pickaxe
+            Item harvestTool = null;
 
-                if (harvestTool == null)
-                {
-                    tool = from.FindItemOnLayer(Layer.TwoHanded) as IHarvestTool;
-                    if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Shovel
-                }
+            var tool = from.FindItemOnLayer(Layer.OneHanded) as IHarvestTool;
+            if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Pickaxe
 
-                if (harvestTool != null)
-                {
-                    tool.HarvestSystem.StartHarvesting(from, (Item)tool, this);
-                }
-                else
-                {
-                    from.SendMessage("This looks like you can mine it with a pickaxe or shovel.");
-                }
+            if (harvestTool == null)
+            {
+                tool = from.FindItemOnLayer(Layer.TwoHanded) as IHarvestTool;
+                if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Shovel
+            }
+
+            if (harvestTool != null)
+            {
+                tool.HarvestSystem.StartHarvesting(from, (Item)tool, this);
+            }
+            else
+            {
+                from.SendMessage("This looks like you can mine it with a pickaxe or shovel.");
             }
         }
 

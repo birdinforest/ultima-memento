@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
+			builder.Append("- Gather - Double-clicking glistening veins indicate when out of range<br>");
 			builder.Append("- Item - Legendary Artifact (not weps) now come with 2 resist all<br>");
 			builder.Append("- Item - Legendary Artifact max level is now 50, down from 100<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
