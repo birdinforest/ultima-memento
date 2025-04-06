@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Items;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Misc;
-using Server.Engines.BulkOrders;
 using Server.Engines.MLQuests;
 
 namespace Server.Engines.Craft
@@ -318,7 +315,7 @@ namespace Server.Engines.Craft
 				typeof( KnifeLeft ), typeof( KnifeRight ),
 				typeof( Plate ), typeof( BaseHarvestTool ),
 				typeof( Goblet ), typeof( PewterMug ), typeof( SkullMug ),
-				typeof( KeyRing ), typeof( BulkOrderBook ),
+				typeof( KeyRing ),
 				typeof( Candelabra ), typeof( Scales ),
 				typeof( Key ), typeof( Globe ), typeof( BaseBook ),
 				typeof( Spyglass ), typeof( Lantern ),
@@ -1202,7 +1199,7 @@ namespace Server.Engines.Craft
 						item.Delete();
 						item = new MagicalWand( SpellItems.GetWand( nameString ) );
 					}
-					else if ( item is BaseContainer || item is BaseBook || item is BaseLight || item is Spyglass || item is BulkOrderBook || item is Runebook || item is Spellbook || item is TenFootPole || item is DragonPedStatue || item is HorseArmor || item is PotionKeg || item is TrapKit )
+					else if ( item is BaseContainer || item is BaseBook || item is BaseLight || item is Spyglass || item is Runebook || item is Spellbook || item is TenFootPole || item is DragonPedStatue || item is HorseArmor || item is PotionKeg || item is TrapKit )
 					{
 						Type resourceType = typeRes;
 						if ( resourceType == null )

@@ -420,11 +420,6 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
 
-			// Bulk Order Book
-			index = AddCraft(typeof(Engines.BulkOrders.BulkOrderBook), "Books & Scrolls", "Bulk Order Book", 65.0, 115.0, typeof( Leather ), 1044462, 10, 1044463);
-			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
-			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
-
 			AddCraft( typeof( Monocle ), "Books & Scrolls", "Librarian Set", 5.0, 55.0, typeof( Leather ), 1044462, 10, 1044463);
 			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
