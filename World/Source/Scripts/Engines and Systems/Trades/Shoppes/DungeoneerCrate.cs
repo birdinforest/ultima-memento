@@ -14,7 +14,28 @@ namespace Server.Items
         private static readonly InternalSellInfo SELL_INFO = new InternalSellInfo();
 
         private int m_CrateGold;
+        private int m_PercentReduction;
         private Timer m_Timer;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool IsEnabled { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool AllowGems { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool AllowStackable { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int PercentReduction
+        {
+            get { return m_PercentReduction; }
+            set
+            {
+                m_PercentReduction = Math.Max(0, Math.Min(100, value));
+                InvalidateProperties();
+            }
+        }
 
         [Constructable]
         public DungeoneerCrate() : base(0xE3D)
@@ -54,7 +75,7 @@ namespace Server.Items
 
         public void Empty()
         {
-            if (!Movable)
+            if (!Movable && IsEnabled)
             {
                 List<Item> items = Items;
 
@@ -67,7 +88,7 @@ namespace Server.Items
                         if (i >= items.Count)
                             continue;
 
-                        m_CrateGold = m_CrateGold + GetItemValue(items[i], items[i].Amount);
+                        m_CrateGold = m_CrateGold + GetItemValue(items[i], items[i].Amount, PercentReduction);
                         items[i].Delete();
                     }
                 }
@@ -132,16 +153,26 @@ namespace Server.Items
             DisplayTo(from);
         }
 
-        private static int GetItemValue(Item item, int amount)
+        private static int GetItemValue(Item item, int amount, int reductionAmount)
         {
             if (item.Built)
                 return 0;
 
-            return SELL_INFO.GetSellPriceFor(item, 0) * amount;
+            var price = SELL_INFO.GetSellPriceFor(item, 0) * amount;
+            if (0 < reductionAmount)
+                price = (int)(price - ((double)reductionAmount * price / 100));
+
+            return price;
         }
 
         private bool CanAddItem(Mobile from, Item dropped)
         {
+            if (!IsEnabled)
+            {
+                from.SendMessage("This crate is currently disabled.");
+                return false;
+            }
+
             if (Movable)
             {
                 from.SendMessage("This must be locked down in a house to use!");
@@ -150,8 +181,19 @@ namespace Server.Items
 
             if (dropped.Stackable)
             {
-                from.SendMessage("The merchants refuse stackable items.");
-                return false;
+                if (dropped.Catalog == Catalogs.Gem)
+                {
+                    if (!AllowGems)
+                    {
+                        from.SendMessage("The merchants refuse gems.");
+                        return false;
+                    }
+                }
+                else if (!AllowStackable)
+                {
+                    from.SendMessage("The merchants refuse stackable items.");
+                    return false;
+                }
             }
 
             if (dropped.Built || dropped.BuiltBy != null)
@@ -176,7 +218,7 @@ namespace Server.Items
                     if (i >= items.Count)
                         continue;
 
-                    gold = gold + GetItemValue(items[i], items[i].Amount);
+                    gold = gold + GetItemValue(items[i], items[i].Amount, PercentReduction);
                 }
             }
 
@@ -185,8 +227,10 @@ namespace Server.Items
 
         private void OnAddItem(Mobile from, Item item)
         {
+            if (!IsEnabled) return;
+
             from.SendMessage("The items will be picked up in a couple days");
-            PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue(item, item.Amount).ToString() + " gold");
+            PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue(item, item.Amount, PercentReduction).ToString() + " gold");
 
             if (m_Timer != null)
                 m_Timer.Stop();
@@ -201,9 +245,16 @@ namespace Server.Items
             base.Deserialize(reader);
             int version = reader.ReadInt();
             m_CrateGold = reader.ReadInt();
+            IsEnabled = reader.ReadBool();
+            PercentReduction = reader.ReadInt();
+            AllowStackable = reader.ReadBool();
+            AllowGems = reader.ReadBool();
 
-            QuickTimer thisTimer = new QuickTimer(this);
-            thisTimer.Start();
+            if (IsEnabled)
+            {
+                QuickTimer thisTimer = new QuickTimer(this);
+                thisTimer.Start();
+            }
         }
 
         public override void Serialize(GenericWriter writer)
@@ -212,6 +263,10 @@ namespace Server.Items
             writer.Write((int)0); // version
 
             writer.Write(m_CrateGold);
+            writer.Write(IsEnabled);
+            writer.Write(PercentReduction);
+            writer.Write(AllowStackable);
+            writer.Write(AllowGems);
         }
 
         public class CashOutEntry : ContextMenuEntry
