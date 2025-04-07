@@ -172,7 +172,7 @@ namespace Server.Items
 			WyrmSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	10	,	10	,	10	,	10	,	null,	200	,	0	,	50	 );
 			HolySpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	35	,	10	,	35	,	10	,	null,	100	,	0	,	0	 );
 			BloodlessSpec	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	70	,	20	,	0	 );
-			GildedSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	0	,	0	,	100	 );
+			GildedSpec	 	= CraftAttInfo( 	2	,	2	,	2	,	2	,	2	,	null,	0	,	0	,	0	,	0	,	null,	0	,	0	,	100	 );
 			DemilichSpec	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	30	,	null,	200	,	0	,	0	 );
 			WintrySpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	50	,	0	,	0	,	0	,	null,	70	,	0	,	0	 );
 			FireSpec	 	= CraftAttInfo( 	0	,	17	,	0	,	0	,	0	,	null,	0	,	100	,	0	,	0	,	null,	25	,	10	,	0	 );
