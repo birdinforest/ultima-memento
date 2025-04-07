@@ -2418,7 +2418,6 @@ namespace Server.Mobiles
 						if ( c.LootType != LootType.Blessed )
 						{
 							if (
-									c.Catalog == Catalogs.Jewelry || 
 									c.Catalog == Catalogs.Reagent || 
 									c.Catalog == Catalogs.Potion || 
 									c.Catalog == Catalogs.Body || 
