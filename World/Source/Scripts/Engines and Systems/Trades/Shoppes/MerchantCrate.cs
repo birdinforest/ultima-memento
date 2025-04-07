@@ -29,8 +29,6 @@ namespace Server.Items
 
 		public override bool IsDecoContainer{ get{ return false; } }
 
-		private bool m_CanAcceptItems;
-
 		public int CrateGold;
 
 		[CommandProperty(AccessLevel.Owner)]
@@ -51,7 +49,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
             writer.Write( CrateGold );
 		}
 
@@ -61,10 +59,9 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			CrateGold = reader.ReadInt();
 
-			if (version == 0)
+			if (version < 2)
 			{
-				QuickTimer thisTimer = new QuickTimer( this ); 
-				thisTimer.Start();
+				AddItem(new DungeoneerCrate());
 			}
 		}
 
@@ -151,180 +148,7 @@ namespace Server.Items
 			if ( MySettings.S_MerchantCrates )
 			{
 				list.Add( 1049644, "Contains: " + CrateGold.ToString() + " Gold");
-				list.Add( 1070722, "For Sale: " + Sale().ToString() + " Gold");
 			}
         }
-
-		public override bool OnDragDrop( Mobile from, Item dropped )
-		{
-			if ( !MySettings.S_MerchantCrates )
-				return base.OnDragDrop( from, dropped );
-
-			if (this.Movable)
-			{
-                from.SendMessage("This must be locked down in a house to use!");
-				return false;
-			}
-			else if ( from.Kills > 0 )
-			{
-                from.SendMessage("This is useless since no one deals with murderers!");
-				return false;
-			}
-
-			if (!m_CanAcceptItems)
-			{
-                from.SendMessage("Merchant crates are currently disabled.");
-				return false;
-			}
-
-			if (dropped.Catalog == Catalogs.Crafting)
-			{
-                from.SendMessage("Merchants only purchase crafted item.");
-				return false;
-			}
-
-			if ( !base.OnDragDrop( from, dropped ) )
-				return false;
-
-			from.SendMessage( "The items will be picked up in a couple days" );
-			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( dropped, dropped.Amount ).ToString() + " gold");
-
-			if ( m_Timer != null )
-				m_Timer.Stop();
-			else
-				m_Timer = new EmptyTimer( this );
-
-			m_Timer.Start();
-
-			return true;
-		}
-
-		public override bool OnDragDropInto( Mobile from, Item item, Point3D p )
-		{
-			if ( !MySettings.S_MerchantCrates )
-				return base.OnDragDropInto( from, item, p );
-
-			if (this.Movable)
-			{
-                from.SendMessage("This must be locked down in a house to use!");
-				return false;
-			}
-
-			if (!m_CanAcceptItems)
-			{
-                from.SendMessage("Merchant crates are currently disabled.");
-				return false;
-			}
-
-			if (item.Catalog == Catalogs.Crafting)
-			{
-                from.SendMessage("Merchants only purchase crafted item.");
-				return false;
-			}
-
-			if ( !base.OnDragDropInto( from, item, p ) )
-				return false;
-
-			from.SendMessage( "The items will be picked up in a couple days" );
-			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( item, item.Amount ).ToString() + " gold");
-
-			if ( m_Timer != null )
-				m_Timer.Stop();
-			else
-				m_Timer = new EmptyTimer( this );
-
-			m_Timer.Start();
-
-			return true;
-		}
-
-		public void Empty()
-		{
-            if ( !this.Movable && MySettings.S_MerchantCrates )
-			{
-				List<Item> items = this.Items;
-
-				if ( items.Count > 0 )
-				{
-					PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "The items have been picked up");
-
-					for ( int i = items.Count - 1; i >= 0; --i )
-					{
-						if ( i >= items.Count )
-							continue;
-
-						CrateGold = CrateGold + GetItemValue( items[i], items[i].Amount );
-						items[i].Delete();
-					}
-				}
-			}
-
-			if ( m_Timer != null )
-				m_Timer.Stop();
-
-			m_Timer = null;
-		}
-
-		public int Sale()
-		{
-			int gold = 0;
-
-			List<Item> items = this.Items;
-
-			if ( items.Count > 0 )
-			{
-				for ( int i = items.Count - 1; i >= 0; --i )
-				{
-					if ( i >= items.Count )
-						continue;
-
-					gold = gold + GetItemValue( items[i], items[i].Amount );
-				}
-			}
-
-			return gold;
-		}
-
-		private Timer m_Timer;
-
-		private class EmptyTimer : Timer
-		{
-			private MerchantCrate m_Crate;
-
-			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 4 ) )
-			{
-				m_Crate = crate;
-				Priority = TimerPriority.FiveSeconds;
-			}
-
-			protected override void OnTick()
-			{
-				m_Crate.Empty();
-			}
-		}
-
-		private class QuickTimer : Timer
-		{
-			private MerchantCrate m_Crate;
-
-			public QuickTimer( MerchantCrate crate ) : base( TimeSpan.FromSeconds( 60.0 ) )
-			{
-				m_Crate = crate;
-				Priority = TimerPriority.FiveSeconds;
-			}
-
-			protected override void OnTick()
-			{
-				m_Crate.Empty();
-			}
-		}
-
-		public static int GetItemValue( Item item, int amount )
-		{
-			if ( !item.Built )
-				return 0;
-
-			return ItemInformation.GetBuysPrice( ItemInformation.GetInfo( item.GetType() ), false, item, false, false ) * amount;
-		}
 	}
 }

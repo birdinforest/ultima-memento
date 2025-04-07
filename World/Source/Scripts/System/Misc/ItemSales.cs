@@ -904,7 +904,7 @@ namespace Server
 
 		}
 
-		public static void GetBuysList( Mobile m, GenericSellInfo LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType )
+		public static void GetBuysList( Mobile m, GenericSellInfo LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType, bool force = false )
 		{
 			ItemSalesInfo[] list = ItemSalesInfo.m_SellingInfo;
 
@@ -930,7 +930,7 @@ namespace Server
 					set = false;
 					chemist = Chemist( val, v_Market, v_Category );
 
-					if ( ( ( specificType != null && itemType == specificType ) || ( iRarity(val) == 200 && v_Market == iMarket(val) ) ) || ( iBuys(val) && v_Market == iMarket(val) && v_Category == iCategory(val) ) )
+					if ( force || ( ( specificType != null && itemType == specificType ) || ( iRarity(val) == 200 && v_Market == iMarket(val) ) ) || ( iBuys(val) && v_Market == iMarket(val) && v_Category == iCategory(val) ) )
 					{
 						set = true;
 					}
@@ -955,7 +955,7 @@ namespace Server
 
 					if ( set )
 					{
-						price = GetBuysPrice( val, v_Guild, null, true, false );
+						price = GetBuysPrice( val, v_Guild, null, !force, false );
 
 						if ( LIST.IsInList( list[val].ItemsType ) )
 							price = 0;
@@ -3025,7 +3025,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	MediumStoneTableSouthDeed	),	760	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
 			new ItemSalesInfo( typeof(	MedusaStatue	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
 			new ItemSalesInfo( typeof(	MegalodonTooth	),	4000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Fisherman	),
-			new ItemSalesInfo( typeof(	MerchantCrate	),	500	,	1	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
+			new ItemSalesInfo( typeof(	DungeoneerCrate	),	500	,	1	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	MetalKiteShield	),	123	,	15	,	0	,	false	,	false	,	World.None	,	Category.Shield	,	Material.Metal	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	MetalSafe	),	5000	,	5	,	50	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Banker	),
 			new ItemSalesInfo( typeof(	MetalShield	),	121	,	15	,	0	,	false	,	false	,	World.None	,	Category.Shield	,	Material.Metal	,	Market.Smith	),

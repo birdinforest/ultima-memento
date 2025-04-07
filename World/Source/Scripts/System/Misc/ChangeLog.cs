@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Item - Legendary Artifact max level is now 50, down from 100<br>");
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
 			builder.Append("- Item - Reduce points on most relic rewards<br>");
+			builder.Append("- Item - Merchant Crates have been replaced by Dungeoneer Crates<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");
