@@ -172,7 +172,7 @@ namespace Server.Items
 			WyrmSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	10	,	10	,	10	,	10	,	null,	200	,	0	,	50	 );
 			HolySpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	35	,	10	,	35	,	10	,	null,	100	,	0	,	0	 );
 			BloodlessSpec	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	70	,	20	,	0	 );
-			GildedSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	120	,	0	,	200	 );
+			GildedSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	0	,	0	,	100	 );
 			DemilichSpec	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	30	,	null,	200	,	0	,	0	 );
 			WintrySpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	50	,	0	,	0	,	0	,	null,	70	,	0	,	0	 );
 			FireSpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	0	,	null,	0	,	100	,	0	,	0	,	null,	25	,	10	,	0	 );
@@ -752,7 +752,12 @@ namespace Server.Items
 			var resourceType = GetType( item.Resource );
 
 			if ( resourceType == CraftResourceType.Special )
+			{
+				if ( item.Resource == CraftResource.GildedSpec )
+					return Density.Superior;
+					
 				return Density.Ultimate;
+			}
 
 			if ( resourceType == CraftResourceType.Fabric || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Cloth ) )
 				return Density.Weak;
@@ -1556,14 +1561,8 @@ namespace Server.Items
 					{
 						Slayer2 = SlayerName.AvianHunter,
 						Slayer = SlayerName.AnimalHunter,
-						Skill5 = 99,
-						Skill5Val = 10,
-						Skill4 = 48,
-						Skill4Val = 5,
-						// AosAttribute_DefendChance = 3,
-						// AosAttribute_AttackChance = 9,
-						// AosAttribute_WeaponDamage = 9,
-						// AosAttribute_NightSight = 1
+						Skill5 = 52, // Tracking
+						Skill5Val = 5,
 					}); break;
 				case CraftResource.DemilichSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo

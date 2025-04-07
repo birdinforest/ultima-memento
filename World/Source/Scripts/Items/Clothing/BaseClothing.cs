@@ -765,7 +765,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+			writer.Write( (int) 3 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -883,6 +883,12 @@ namespace Server.Items
 				m_AosSkillBonuses.AddTo( parent );
 				AddStatBonuses( parent );
 				parent.CheckStatTimers();
+			}
+			
+			if (version < 3 && Resource == CraftResource.GildedSpec)
+			{
+				m_AosSkillBonuses.SetValues(3, SkillName.Alchemy, 0);
+				m_AosSkillBonuses.SetValues(4, SkillName.Tracking, 5);
 			}
 		}
 		#endregion

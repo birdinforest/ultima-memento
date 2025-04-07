@@ -2590,7 +2590,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 11 ); // version
+			writer.Write( (int) 12 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2763,6 +2763,7 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 12:
 				case 11:
 				case 10:
 				case 9:
@@ -3083,6 +3084,12 @@ namespace Server.Items
 
 			if ( Layer == Layer.TwoHanded )
 				NeedsBothHands = true;
+			
+			if (version < 12 && Resource == CraftResource.GildedSpec)
+			{
+				m_AosSkillBonuses.SetValues(3, SkillName.Alchemy, 0);
+				m_AosSkillBonuses.SetValues(4, SkillName.Tracking, 5);
+			}
 		}
 		#endregion
 

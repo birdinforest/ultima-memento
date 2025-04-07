@@ -737,7 +737,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 9 ); // version
+			writer.Write( (int) 10 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -849,6 +849,7 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 10:
 				case 9:
 				case 8:
 				case 7:
@@ -1098,6 +1099,12 @@ namespace Server.Items
 
 			if ( ItemID == 0x1411 ){ ItemID = 0x46AA; GraphicID = 0x46AA; }
 			if ( ItemID == 0x141A ){ ItemID = 0x46AB; GraphicID = 0x46AB; }
+
+			if (version < 10 && Resource == CraftResource.GildedSpec)
+			{
+				m_AosSkillBonuses.SetValues(3, SkillName.Alchemy, 0);
+				m_AosSkillBonuses.SetValues(4, SkillName.Tracking, 5);
+			}
 		}
 
 		public BaseArmor( int itemID ) :  base( itemID )
