@@ -749,38 +749,41 @@ namespace Server.Items
 
 		public static Density GetDensity( Item item )
 		{
-			if ( GetType( item.Resource ) == CraftResourceType.Fabric || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Cloth ) )
+			var resourceType = GetType( item.Resource );
+
+			if ( resourceType == CraftResourceType.Special )
+				return Density.Ultimate;
+
+			if ( resourceType == CraftResourceType.Fabric || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Cloth ) )
 				return Density.Weak;
-			else if ( GetType( item.Resource ) == CraftResourceType.Leather || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Leather ) || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Studded ) )
+			else if ( resourceType == CraftResourceType.Leather || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Leather ) || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Studded ) )
 				return Density.Regular;
-			else if ( GetType( item.Resource ) == CraftResourceType.Skin )
+			else if ( resourceType == CraftResourceType.Skin )
 				return Density.Regular;
-			else if ( GetType( item.Resource ) == CraftResourceType.Wood )
+			else if ( resourceType == CraftResourceType.Wood )
 				return Density.Great;
-			else if ( GetType( item.Resource ) == CraftResourceType.Skeletal || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Bone ) )
+			else if ( resourceType == CraftResourceType.Skeletal || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Bone ) )
 				return Density.Great;
-			else if ( GetType( item.Resource ) == CraftResourceType.Scales || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Scaled ) )
+			else if ( resourceType == CraftResourceType.Scales || ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Scaled ) )
 				return Density.Greater;
 			else if ( item is BaseArmor && ((BaseArmor)item).MaterialType == ArmorMaterialType.Plate )
 			{
-				if ( GetType( item.Resource ) == CraftResourceType.Metal )
+				if ( resourceType == CraftResourceType.Metal )
 					return Density.Superior;
-				else if ( GetType( item.Resource ) == CraftResourceType.Block )
+				else if ( resourceType == CraftResourceType.Block )
 					return Density.Ultimate;
 			}
 			else if ( item is BaseArmor && ( ((BaseArmor)item).MaterialType == ArmorMaterialType.Chainmail || ((BaseArmor)item).MaterialType == ArmorMaterialType.Ringmail ) )
 			{
-				if ( GetType( item.Resource ) == CraftResourceType.Metal )
+				if ( resourceType == CraftResourceType.Metal )
 					return Density.Greater;
-				else if ( GetType( item.Resource ) == CraftResourceType.Block )
+				else if ( resourceType == CraftResourceType.Block )
 					return Density.Superior;
 			}
-			else if ( GetType( item.Resource ) == CraftResourceType.Metal )
+			else if ( resourceType == CraftResourceType.Metal )
 				return Density.Greater;
-			else if ( GetType( item.Resource ) == CraftResourceType.Block )
+			else if ( resourceType == CraftResourceType.Block )
 				return Density.Superior;
-			else if ( GetType( item.Resource ) == CraftResourceType.Special )
-				return Density.Ultimate;
 
 			return Density.None;
 		}
