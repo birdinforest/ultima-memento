@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Augment - Resources no longer give weapons resists<br>");
 			builder.Append("- Augment - Gilding benefits have been reduced<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Craft - Add Orders to Shoppes<br>");
