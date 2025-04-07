@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Augment - Gilding benefits have been reduced<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Craft - Add Orders to Shoppes<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");
@@ -35,7 +36,6 @@ namespace Server.Misc
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");
-			builder.Append("- Misc - Gilding benefits have been reduced<br>");
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- NPC - Increased gold cap for vendors in most lands<br>");
 			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
