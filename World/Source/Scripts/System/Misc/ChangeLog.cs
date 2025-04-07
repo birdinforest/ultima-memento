@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("Changes<br>");
 			builder.Append("- Augment - Resources no longer give weapons resists<br>");
 			builder.Append("- Augment - Gilding benefits have been reduced<br>");
+			builder.Append("- Augment - Elemental forging has been improved<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Craft - Add Orders to Shoppes<br>");
 			builder.Append("- Enchant - Resist attribute cost is now 5, up from 2<br>");

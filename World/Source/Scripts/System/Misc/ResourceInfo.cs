@@ -175,10 +175,10 @@ namespace Server.Items
 			GildedSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	0	,	0	,	100	 );
 			DemilichSpec	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	30	,	null,	200	,	0	,	0	 );
 			WintrySpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	50	,	0	,	0	,	0	,	null,	70	,	0	,	0	 );
-			FireSpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	0	,	null,	0	,	100	,	0	,	0	,	null,	25	,	10	,	0	 );
-			ColdSpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	0	,	null,	100	,	0	,	0	,	0	,	null,	25	,	10	,	0	 );
-			PoisSpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	0	,	null,	0	,	0	,	0	,	100	,	null,	25	,	10	,	0	 );
-			EngySpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	0	,	null,	0	,	0	,	100	,	0	,	null,	25	,	10	,	0	 );
+			FireSpec	 	= CraftAttInfo( 	0	,	17	,	0	,	0	,	0	,	null,	0	,	100	,	0	,	0	,	null,	25	,	10	,	0	 );
+			ColdSpec	 	= CraftAttInfo( 	0	,	0	,	17	,	0	,	0	,	null,	100	,	0	,	0	,	0	,	null,	25	,	10	,	0	 );
+			PoisSpec	 	= CraftAttInfo( 	0	,	0	,	0	,	17	,	0	,	null,	0	,	0	,	0	,	100	,	null,	25	,	10	,	0	 );
+			EngySpec	 	= CraftAttInfo( 	0	,	0	,	0	,	0	,	17	,	null,	0	,	0	,	100	,	0	,	null,	25	,	10	,	0	 );
 			ExodusSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	0	,	0	,	0	 );
 			TurtleSpec	 	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	0	,	0	,	0	,	null,	120	,	30	,	0	 );
 																																				
@@ -529,10 +529,10 @@ namespace Server.Items
 			new CraftResourceInfo( 2815,	2815,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064094	,	1064108	,	1063817,	 "Gilded",	CraftAttributeInfo.GildedSpec,	CraftResource.GildedSpec,	typeof( GildedSpec ) ),		
 			new CraftResourceInfo( 2858,	2858,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064095	,	1064109	,	1063818,	 "Demilich",	CraftAttributeInfo.DemilichSpec,	CraftResource.DemilichSpec,	typeof( DemilichSpec ) ),		
 			new CraftResourceInfo( 2867,	2867,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064096	,	1064110	,	1063819,	 "Wintry",	CraftAttributeInfo.WintrySpec,	CraftResource.WintrySpec,	typeof( WintrySpec ) ),		
-			new CraftResourceInfo( 0xB54,	0xB54,	2	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064097	,	1064111	,	1064077,	 "Fire",	CraftAttributeInfo.FireSpec,	CraftResource.FireSpec,	typeof( FireSpec ) ),		
-			new CraftResourceInfo( 0xB57,	0xB57,	2	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064098	,	1064112	,	1064079,	 "Cold",	CraftAttributeInfo.ColdSpec,	CraftResource.ColdSpec,	typeof( ColdSpec ) ),		
-			new CraftResourceInfo( 0xB51,	0xB51,	2	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064099	,	1064113	,	1064081,	 "Venom",	CraftAttributeInfo.PoisSpec,	CraftResource.PoisSpec,	typeof( PoisSpec ) ),		
-			new CraftResourceInfo( 0xAFE,	0xAFE,	2	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064100	,	1064114	,	1064083,	 "Energy",	CraftAttributeInfo.EngySpec,	CraftResource.EngySpec,	typeof( EngySpec ) ),		
+			new CraftResourceInfo( 0xB54,	0xB54,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064097	,	1064111	,	1064077,	 "Fire",	CraftAttributeInfo.FireSpec,	CraftResource.FireSpec,	typeof( FireSpec ) ),		
+			new CraftResourceInfo( 0xB57,	0xB57,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064098	,	1064112	,	1064079,	 "Cold",	CraftAttributeInfo.ColdSpec,	CraftResource.ColdSpec,	typeof( ColdSpec ) ),		
+			new CraftResourceInfo( 0xB51,	0xB51,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064099	,	1064113	,	1064081,	 "Venom",	CraftAttributeInfo.PoisSpec,	CraftResource.PoisSpec,	typeof( PoisSpec ) ),		
+			new CraftResourceInfo( 0xAFE,	0xAFE,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064100	,	1064114	,	1064083,	 "Energy",	CraftAttributeInfo.EngySpec,	CraftResource.EngySpec,	typeof( EngySpec ) ),		
 			new CraftResourceInfo( 1072,	1072,	4	,	16	,	4.20	,	120.0	,	150	,	27	,	41	,	14	,	1	,	1064101	,	1064115	,	1018194,	 "Exodus",	CraftAttributeInfo.ExodusSpec,	CraftResource.ExodusSpec,	typeof( ExodusSpec ) ),		
 			new CraftResourceInfo( 0x9ED,	0x9ED,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	0	,	1064116	,	1064117	,	1064119,	 "Turtle Shell",	CraftAttributeInfo.TurtleSpec,	CraftResource.TurtleSpec,	typeof( TurtleSpec ) )		
 			};																														
@@ -1588,10 +1588,23 @@ namespace Server.Items
 						// AosAttribute_ReflectPhysical = 3,
 						// AosAttribute_NightSight = 1
 					}); break;
-				case CraftResource.FireSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitFireArea = 50 }); break;
-				case CraftResource.ColdSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitColdArea = 50 }); break;
-				case CraftResource.PoisSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitPoisonArea = 50 }); break;
-				case CraftResource.EngySpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo { AosWeaponAttribute_HitEnergyArea = 50 }); break;
+				case CraftResource.FireSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_BonusStr = 2
+					}); break;
+				case CraftResource.ColdSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_BonusInt = 2
+					}); break;
+				case CraftResource.PoisSpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_BonusHits = 2,
+						AosAttribute_BonusStam = 2
+					}); break;
+				case CraftResource.EngySpec: ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
+					{
+						AosAttribute_BonusDex = 2
+					}); break;
 				case CraftResource.ExodusSpec:
 					ResourceMods.ModifyItem(item, resource, reduce, new ResourceModInfo
 					{
