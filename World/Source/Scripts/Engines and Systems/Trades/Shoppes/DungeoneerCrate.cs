@@ -14,7 +14,7 @@ namespace Server.Items
         private static readonly InternalSellInfo SELL_INFO = new InternalSellInfo();
 
         private int m_CrateGold;
-        private int m_PercentReduction;
+        private int m_PercentReduction = 50;
         private Timer m_Timer;
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -25,17 +25,6 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowStackable { get; set; }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int PercentReduction
-        {
-            get { return m_PercentReduction; }
-            set
-            {
-                m_PercentReduction = Math.Max(0, Math.Min(100, value));
-                InvalidateProperties();
-            }
-        }
 
         [Constructable]
         public DungeoneerCrate() : base(0xE3D)
@@ -88,7 +77,7 @@ namespace Server.Items
                         if (i >= items.Count)
                             continue;
 
-                        m_CrateGold = m_CrateGold + GetItemValue(items[i], items[i].Amount, PercentReduction);
+                        m_CrateGold = m_CrateGold + GetItemValue(items[i], items[i].Amount, m_PercentReduction);
                         items[i].Delete();
                     }
                 }
@@ -218,7 +207,7 @@ namespace Server.Items
                     if (i >= items.Count)
                         continue;
 
-                    gold = gold + GetItemValue(items[i], items[i].Amount, PercentReduction);
+                    gold = gold + GetItemValue(items[i], items[i].Amount, m_PercentReduction);
                 }
             }
 
@@ -230,7 +219,7 @@ namespace Server.Items
             if (!IsEnabled) return;
 
             from.SendMessage("The items will be picked up in a couple days");
-            PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue(item, item.Amount, PercentReduction).ToString() + " gold");
+            PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue(item, item.Amount, m_PercentReduction).ToString() + " gold");
 
             if (m_Timer != null)
                 m_Timer.Stop();
@@ -246,7 +235,11 @@ namespace Server.Items
             int version = reader.ReadInt();
             m_CrateGold = reader.ReadInt();
             IsEnabled = reader.ReadBool();
-            PercentReduction = reader.ReadInt();
+            if (version == 0)
+            {
+                var m_PercentReduction = reader.ReadInt();
+            }
+
             AllowStackable = reader.ReadBool();
             AllowGems = reader.ReadBool();
 
@@ -260,11 +253,10 @@ namespace Server.Items
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
 
             writer.Write(m_CrateGold);
             writer.Write(IsEnabled);
-            writer.Write(PercentReduction);
             writer.Write(AllowStackable);
             writer.Write(AllowGems);
         }
@@ -289,16 +281,16 @@ namespace Server.Items
                 {
                     if (m_Crate.m_CrateGold > 0)
                     {
-                        double barter = (int)(m_Mobile.Skills[SkillName.Mercantile].Value / 2);
+                        // double barter = (int)(m_Mobile.Skills[SkillName.Mercantile].Value / 2);
 
-                        if (mobile.NpcGuild == NpcGuild.MerchantsGuild)
-                            barter = barter + 25.0; // FOR GUILD MEMBERS
+                        // if (mobile.NpcGuild == NpcGuild.MerchantsGuild)
+                        //     barter = barter + 25.0; // FOR GUILD MEMBERS
 
-                        barter = barter / 100;
+                        // barter = barter / 100;
 
-                        int bonus = (int)(m_Crate.m_CrateGold * barter);
+                        // int bonus = (int)(m_Crate.m_CrateGold * barter);
 
-                        int cash = m_Crate.m_CrateGold + bonus;
+                        int cash = m_Crate.m_CrateGold;
 
                         m_Mobile.AddToBackpack(new BankCheck(cash));
                         m_Mobile.SendMessage("You now have a check for " + cash.ToString() + " gold.");
