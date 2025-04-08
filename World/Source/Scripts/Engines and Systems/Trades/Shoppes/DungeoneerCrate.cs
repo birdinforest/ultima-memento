@@ -18,9 +18,6 @@ namespace Server.Items
         private Timer m_Timer;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool IsEnabled { get; set; }
-
-        [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowGems { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -64,7 +61,7 @@ namespace Server.Items
 
         public void Empty()
         {
-            if (!Movable && IsEnabled)
+            if (!Movable)
             {
                 List<Item> items = Items;
 
@@ -156,12 +153,6 @@ namespace Server.Items
 
         private bool CanAddItem(Mobile from, Item dropped)
         {
-            if (!IsEnabled)
-            {
-                from.SendMessage("This crate is currently disabled.");
-                return false;
-            }
-
             if (Movable)
             {
                 from.SendMessage("This must be locked down in a house to use!");
@@ -216,8 +207,6 @@ namespace Server.Items
 
         private void OnAddItem(Mobile from, Item item)
         {
-            if (!IsEnabled) return;
-
             from.SendMessage("The items will be picked up in a couple days");
             PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue(item, item.Amount, m_PercentReduction).ToString() + " gold");
 
@@ -234,20 +223,17 @@ namespace Server.Items
             base.Deserialize(reader);
             int version = reader.ReadInt();
             m_CrateGold = reader.ReadInt();
-            IsEnabled = reader.ReadBool();
             if (version == 0)
             {
+                var IsEnabled = reader.ReadBool();
                 var m_PercentReduction = reader.ReadInt();
             }
 
             AllowStackable = reader.ReadBool();
             AllowGems = reader.ReadBool();
 
-            if (IsEnabled)
-            {
-                QuickTimer thisTimer = new QuickTimer(this);
-                thisTimer.Start();
-            }
+            QuickTimer thisTimer = new QuickTimer(this);
+            thisTimer.Start();
         }
 
         public override void Serialize(GenericWriter writer)
@@ -256,7 +242,6 @@ namespace Server.Items
             writer.Write((int)1); // version
 
             writer.Write(m_CrateGold);
-            writer.Write(IsEnabled);
             writer.Write(AllowStackable);
             writer.Write(AllowGems);
         }
