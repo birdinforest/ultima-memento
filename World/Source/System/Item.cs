@@ -614,6 +614,8 @@ namespace Server
 		private ObjectPropertyList m_PropertyList;
 		#endregion
 
+		public bool NameWasSynced { get; private set; }
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Land Land { get { return Server.Lands.GetLand( Map, Location, X, Y ); } }
 
@@ -3446,13 +3448,22 @@ namespace Server
 				return;
 
 			if ( ( Name == "" || Name == null ) && LabelNumber == MainLabelNumber() )
+			{
 				Name = TileData.ItemTable[ItemID].Name;
+				NameWasSynced = true;
+			}
 
 			if ( Name == "" || Name == null )
+			{
 				Name = CliLocTable.Lookup( LabelNumber );
+				NameWasSynced = true;
+			}
 
 			if ( Name == "" || Name == null )
+			{
 				Name = Utility.AddSpaces( (this.GetType()).Name );
+				NameWasSynced = true;
+			}
 		}
 
 		private void FixHolding_Sandbox()
@@ -5951,6 +5962,7 @@ namespace Server
 					if ( info.m_Name == null )
 						VerifyCompactInfo();
 
+					NameWasSynced = false;
 					InvalidateProperties();
 				}
 			}
