@@ -27,8 +27,12 @@ namespace Server.Engines.GlobalShoppe
                 item = (Item)Activator.CreateInstance(type);
                 if (item == null) return null;
 
-                // Set default name and lowercase it
-                if (string.IsNullOrWhiteSpace(item.Name)) { item.SyncName(); }
+                // Automagic sync prioritizes Item Name over Cliloc Name
+                if (item.NameWasSynced)
+                {
+                    var clilocName = CliLocTable.Lookup(item.LabelNumber);
+                    if (!string.IsNullOrWhiteSpace(clilocName)) item.Name = clilocName;
+                }
 
                 return _cache[type] = new ItemSnapshot
                 {
