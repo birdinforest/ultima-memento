@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("- Item - Remove more Dwarven/Elven/Cadalyte item drops<br>");
 			builder.Append("- Item - Reduce points on most relic rewards<br>");
 			builder.Append("- Item - Merchant Crates have been replaced by Dungeoneer Crates<br>");
+			builder.Append("- Item - Runebooks no longer have a cooldown<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");

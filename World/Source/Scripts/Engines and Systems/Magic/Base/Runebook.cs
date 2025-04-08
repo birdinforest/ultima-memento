@@ -44,8 +44,6 @@ namespace Server.Items
 			ResourceMods.DefaultItemHue( item );
 		}
 
-		public static readonly TimeSpan UseDelay = TimeSpan.FromSeconds( 7.0 );
-
 		private List<RunebookEntry> m_Entries;
 		private string m_Description;
 		private int m_CurCharges, m_MaxCharges;
@@ -55,13 +53,6 @@ namespace Server.Items
 		private DateTime m_NextUse;
 		
 		private List<Mobile> m_Openers = new List<Mobile>();
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime NextUse
-		{
-			get{ return m_NextUse; }
-			set{ m_NextUse = value; }
-		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SecureLevel Level
@@ -335,12 +326,6 @@ namespace Server.Items
 					return;
 				}
 
-				if ( DateTime.Now < NextUse )
-				{
-					from.SendLocalizedMessage( 502406 ); // This book needs time to recharge.
-					return;
-				}
-
 				from.CloseGump( typeof( RunebookGump ) );
 				from.SendGump( new RunebookGump( from, this ) );
 				
@@ -351,7 +336,6 @@ namespace Server.Items
 
 		public virtual void OnTravel()
 		{
-			NextUse = DateTime.Now + UseDelay;
 		}
 
 		public override void OnAfterDuped( Item newItem )
