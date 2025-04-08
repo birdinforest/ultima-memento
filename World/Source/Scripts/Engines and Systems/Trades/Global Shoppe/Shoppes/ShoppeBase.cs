@@ -260,7 +260,7 @@ namespace Server.Engines.GlobalShoppe
         {
             var context = GetOrCreateContext(from);
             if (context == null) return false;
-            if (ShoppeConstants.MAX_TOOLS < context.Tools)
+            if (ShoppeConstants.MAX_TOOLS <= context.Tools)
             {
                 from.SendMessage("Your shoppe is already full of tools.");
                 return false;
