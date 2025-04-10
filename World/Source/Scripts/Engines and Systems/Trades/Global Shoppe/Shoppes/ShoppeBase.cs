@@ -72,6 +72,8 @@ namespace Server.Engines.GlobalShoppe
             context.Points += order.PointReward;
             context.Reputation += order.ReputationReward;
             context.Orders.Remove(order);
+            
+            from.PlaySound( 0x32 ); // Dropgem1
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
