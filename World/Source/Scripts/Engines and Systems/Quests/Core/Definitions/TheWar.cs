@@ -23,7 +23,7 @@ namespace Server.Engines.MLQuests.Definitions
             builder.Append("<br><br>");
             builder.Append("But there is still hope, and that hope lies in our hands. We need brave souls, yes, but we also need the skilled hands of craftsmen, like you, to support our warriors on the front lines. The soldiers of Sosaria need your help.");
             builder.Append("<br><br>");
-            builder.Append("Our soldiers must be producted from the deadly forces they face. By signing up today, you can forge the very armor that will keep our brave defenders safe and give them the strength they need to turn the tide of this war. Your craft, your skill, can make the difference between victory and defeat. The time to act is now -- stand with us, and together, we shall reclaim our land!");
+            builder.Append("Our soldiers must be protected from the deadly forces they face. By signing up today, you can forge the very armor that will keep our brave defenders safe and give them the strength they need to turn the tide of this war. Your craft, your skill, can make the difference between victory and defeat. The time to act is now -- stand with us, and together, we shall reclaim our land!");
             Description = builder.ToString();
 
             Objectives.Add(new DummyObjective("Collect the following:"));
