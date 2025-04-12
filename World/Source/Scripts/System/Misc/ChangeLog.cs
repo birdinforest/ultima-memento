@@ -67,6 +67,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Pets - Fix an issue where mobs didn't stop healing when dead<br>");
+			builder.Append("- Pets - Fix an issue where some pack animal types could be stabled with items<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");
 			builder.Append("- Spell - Chain Lightning no longer does doubles damage to one target<br>");
 			builder.Append(SEPARATOR_LINE);
