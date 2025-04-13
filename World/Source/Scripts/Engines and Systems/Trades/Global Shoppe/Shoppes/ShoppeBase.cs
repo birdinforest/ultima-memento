@@ -146,7 +146,7 @@ namespace Server.Engines.GlobalShoppe
             }
 
             var context = GetOrCreateContext(from);
-            if (context.CanRefreshCustomers)
+            if (context.FeePaid && context.CanRefreshCustomers)
             {
                 while (context.Customers.Count < ShoppeConstants.MAX_CUSTOMERS)
                 {
@@ -157,7 +157,7 @@ namespace Server.Engines.GlobalShoppe
                 context.NextCustomerRefresh = DateTime.UtcNow.Add(ShoppeConstants.CUSTOMER_REFRESH_DELAY);
             }
 
-            if (CanCreateOrders && context.CanRefreshOrders)
+            if (context.FeePaid && CanCreateOrders && context.CanRefreshOrders)
             {
                 var count = ShoppeConstants.MAX_ORDERS - context.Orders.Count;
                 foreach (var order in CreateOrders(from, context, count))
