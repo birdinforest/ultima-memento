@@ -165,13 +165,13 @@ namespace Server.Spells.Shinobi
 					Caster.Say( "*ah ha!*" );
 					foundAnyone = true;
 				}
-			}
 
-			if ( !foundAnyone )
-			{
-				Caster.PlaySound( Caster.Female ? 0x31B : 0x42B );
-				Caster.Say( "*groans*" );
-				Caster.SendMessage( "Your don't notice anything." );
+				if ( !foundAnyone )
+				{
+					Caster.PlaySound( Caster.Female ? 0x31B : 0x42B );
+					Caster.Say( "*groans*" );
+					Caster.SendMessage( "Your don't notice anything." );
+				}
 			}
 
 			FinishSequence();

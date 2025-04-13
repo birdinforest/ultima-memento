@@ -164,13 +164,14 @@ namespace Server.Spells.Jedi
 					m.PlaySound( 0x1FD );
 					foundAnyone = true;
 				}
+				
+				if ( !foundAnyone )
+				{
+					Caster.PlaySound( 0x1D6 );
+					Caster.SendMessage( "Your don't notice anything." );
+				}
 			}
 
-			if ( !foundAnyone )
-			{
-				Caster.PlaySound( 0x1D6 );
-				Caster.SendMessage( "Your don't notice anything." );
-			}
 			DrainCrystals( Caster, RequiredTithing );
 
 			FinishSequence();
