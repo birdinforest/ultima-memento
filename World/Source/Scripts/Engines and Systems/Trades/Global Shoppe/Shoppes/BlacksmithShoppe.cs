@@ -44,6 +44,12 @@ namespace Server.Engines.GlobalShoppe
 
             var craftSystem = DefBlacksmithy.CraftSystem;
 
+            // Build item list
+            var items = GetCraftItems(from, craftSystem)
+                .Where(i => TypeUtilities.IsExceptionalEquipmentType(i.ItemType))
+                .ToList();
+            if (items.Count < 1) yield break;
+
             // Build resource list
             var resources = new List<CraftResource>();
             foreach (var o in craftSystem.CraftSubRes)
@@ -72,11 +78,6 @@ namespace Server.Engines.GlobalShoppe
 
                 resources.Add(resource);
             }
-
-            // Build item list
-            var items = GetCraftItems(from, craftSystem)
-                .Where(i => TypeUtilities.IsExceptionalEquipmentType(i.ItemType))
-                .ToList();
 
             // Add quantity bonus for every 5 points over 100
             var amountBonus = (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
