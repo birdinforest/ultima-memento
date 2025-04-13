@@ -114,7 +114,7 @@ namespace Server.Misc
 			{
 				IsNearDock = true;
 			}
-			else if ( m.Skills[SkillName.Seafaring].Base >= 100 ) // GM FISHERMAN CAN DOCK AND LAUNCH ANYWHERE
+			else if ( m.Skills[SkillName.Seafaring].Value >= 100 ) // GM FISHERMAN CAN DOCK AND LAUNCH ANYWHERE
 			{
 				IsNearDock = true;
 			}
