@@ -125,6 +125,8 @@ namespace Server.Engines.MLQuests.Definitions
 
     public class GetArtifactRumorObjectiveInstance : BaseObjectiveInstance, IDeserializable
     {
+        private const int CITIZEN_PITY_AMOUNT = 50;
+
         private enum RumorType
         {
             Land = 0,
@@ -135,6 +137,8 @@ namespace Server.Engines.MLQuests.Definitions
         public Land Land { get; set; }
         public string Dungeon { get; set; }
         public int RelicNumber { get; set; }
+        public int RumorAttempts { get; set; }
+
         protected bool HasLand { get { return Land != Land.None; } }
         protected bool HasDungeon { get { return !string.IsNullOrWhiteSpace(Dungeon); } }
         protected bool HasRelicNumber { get { return 0 < RelicNumber; } }
@@ -215,7 +219,7 @@ namespace Server.Engines.MLQuests.Definitions
             if (IsCompleted()) return true;
 
             citizen.MarkToldRumor(); // Always flag the Citizen as talked to
-            if (1 < Utility.RandomMinMax(1, 10)) return false; // Small chance the Citizen can help
+            if (++RumorAttempts < CITIZEN_PITY_AMOUNT && 1 < Utility.RandomMinMax(1, 10)) return false; // Small chance the Citizen can help
 
             var hintType = !HasLand ? RumorType.Land
                 : !HasDungeon ? RumorType.Dungeon
@@ -319,10 +323,11 @@ namespace Server.Engines.MLQuests.Definitions
         {
             base.Serialize(writer);
 
-            writer.Write(1); // Version
+            writer.Write(2); // Version
             writer.Write((int)Land);
             writer.Write(Dungeon);
             writer.Write(RelicNumber);
+            writer.Write(RumorAttempts);
         }
 
         public void Deserialize(GenericReader reader)
@@ -333,6 +338,8 @@ namespace Server.Engines.MLQuests.Definitions
             Land = (Land)reader.ReadInt();
             Dungeon = reader.ReadString();
             RelicNumber = reader.ReadInt();
+            if (1 < version)
+                RumorAttempts = reader.ReadInt();
         }
     }
     #endregion
