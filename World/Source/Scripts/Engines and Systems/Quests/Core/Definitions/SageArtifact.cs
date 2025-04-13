@@ -114,7 +114,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override void WriteToGump(Gump g, ref int y)
         {
-            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, "Speak to the townsfolk and verify the Sage's rumor");
+            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, "Speak to townsfolk until you verify the Sage's rumor");
         }
 
         public override BaseObjectiveInstance CreateInstance(MLQuestInstance instance)
@@ -182,23 +182,17 @@ namespace Server.Engines.MLQuests.Definitions
             {
                 base.WriteToGump(g, ref y);
 
+                y += 16;
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasLand ? GetOrAddHint(RumorType.Land) : "You must narrow down the location.");
+
                 if (HasLand)
                 {
                     y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, GetOrAddHint(RumorType.Land));
+                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasDungeon ? GetOrAddHint(RumorType.Dungeon) : "You must narrow down the location.");
                 }
 
-                if (HasDungeon)
-                {
-                    y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, GetOrAddHint(RumorType.Dungeon));
-                }
-
-                if (HasRelicNumber)
-                {
-                    y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, GetOrAddHint(RumorType.Item));
-                }
+                y += 16;
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasRelicNumber ? GetOrAddHint(RumorType.Item) : "You wonder which artefact everyone is talking about.");
 
                 if (IsCompleted())
                 {

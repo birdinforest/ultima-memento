@@ -48,6 +48,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
 			builder.Append("- Pets - Pets with low loyalty warn sooner<br>");
 			builder.Append("- Quest - Add Recruiters to additional locations<br>");
+			builder.Append("- Quest - Clarified Sage artifact quest objectives<br>");
 			builder.Append("- Skill - Magic Resist is now 4x more likely to gain<br>");
 			builder.Append("- Skill - Discord failure cooldown is 3s, down from 12s<br>");
 			builder.Append("- Skill - Pseudo-grandmaster Seafarers no longer need docks for boats<br>");
