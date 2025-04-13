@@ -43,15 +43,13 @@ namespace Server
         {
             if (player == null) return;
 
-            var region = Region.Find(player.Location, player.Map);
-            if (MySettings.S_NoMountsInHouses && region is HouseRegion) return;
-            if (MySettings.S_NoMountBuilding && Server.Misc.Worlds.InBuilding(player)) return;
-
             var activeType = GetActiveItem(player) ?? GetActiveSpell(player);
-
-            if (activeType != null && MySettings.S_NoMountsInCertainRegions && AnimalTrainer.IsNoMountRegion(player, region))
-                if (!Server.Mobiles.AnimalTrainer.AllowMagicSpeed(player, region))
+            if (activeType != null && MySettings.S_NoMountsInCertainRegions)
+            {
+                var region = Region.Find(player.Location, player.Map);
+                if (AnimalTrainer.IsNoMountRegion(player, region) && !Server.Mobiles.AnimalTrainer.AllowMagicSpeed(player, region))
                     activeType = null;
+            }
 
             Type oldType;
             m_Table.TryGetValue(player.Serial, out oldType);
