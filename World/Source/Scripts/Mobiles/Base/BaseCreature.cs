@@ -9838,8 +9838,17 @@ namespace Server.Mobiles
         public virtual void GainExp(Mobile killed, uint exp, bool tellOwner)
         {
 			if (Summoned) return;
-            if (killed is PlayerMobile || !this.JakoIsEnabled || (killed is BaseCreature && (((BaseCreature)killed).Controlled && ((BaseCreature)killed).ControlMaster != null) || !((BaseCreature)killed).JakoIsEnabled) || Level == MaxLevel)
-                return;
+            if (killed is PlayerMobile || !JakoIsEnabled  || Level == MaxLevel) return;
+			if (killed is BaseCreature)
+			{
+				BaseCreature creature = (BaseCreature)killed;
+				if 
+				(
+					!creature.JakoIsEnabled // Mob intentionally excluded
+					|| creature.Controlled && creature.ControlMaster != null // No pets
+				) return;
+			}
+
             if (tellOwner && ControlMaster != null)
                 ControlMaster.SendMessage("Your pet {0} has gained {1} experience!", Name, exp);
             if ((Experience + exp) < ExpToNextLevel)
