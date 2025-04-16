@@ -10016,6 +10016,11 @@ namespace Server.Mobiles
 
                 m_level = RealLevel = newLevel;
             }
+			else
+			{
+				// Pet is re-leveling up
+                m_level = newLevel;
+            }
 
             //Effects.SendLocationParticles(EffectItem.Create(Location, Map, EffectItem.DefaultDuration), 0x20F6, 10, 5, 5023);
             if (tellOwner && ControlMaster != null)
