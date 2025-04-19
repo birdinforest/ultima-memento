@@ -45,7 +45,9 @@ namespace Custom.Jerbal.Jako
 
         public bool CanAddBonus(BaseCreature bc)
         {
-            return GetStat(bc) + AttributesGiven < MaxBonus(bc);
+            uint currentValue = GetStat(bc) + AttributesGiven;
+
+            return currentValue < MaxBonus(bc);
         }
 
         public virtual string ApplyBonus(BaseCreature bc)
@@ -57,22 +59,22 @@ namespace Custom.Jerbal.Jako
             return "Error in IncBonus."; //Hopefully no one ever sees this, if they do, we know where it is.
         }
 
-        public virtual bool IncBonus(BaseCreature bc, uint byThis)
+        public virtual bool IncBonus(BaseCreature bc, uint amount)
         {
-            return SetBonus(bc, GetStat(bc) + byThis);
+            return SetBonus(bc, GetStat(bc) + amount);
         }
 
         new public abstract string ToString();
 
-        public virtual bool SetBonus(BaseCreature bc, uint toThis)
+        public virtual bool SetBonus(BaseCreature bc, uint value)
         {
-            if (toThis > MaxBonus(bc)) return false;
+            if (value > MaxBonus(bc)) return false;
 
             uint oldTraits = TraitsGiven;
-            uint delta = toThis - GetStat(bc);
+            uint delta = value - GetStat(bc);
             TraitsGiven += (delta / AttributesGiven) * PointsTaken;
             bc.Traits -= TraitsGiven - oldTraits;
-            SetStat(bc, toThis);
+            SetStat(bc, value);
             return true;
         }
 
