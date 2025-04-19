@@ -64,7 +64,6 @@ namespace Server.Items
 
 			if ( box != null && IsChildOf( box ) )
 			{
-				Delete();
 				int nRate = 10;
 
 				int nCoins = this.Amount;
@@ -80,7 +79,10 @@ namespace Server.Items
 					from.AddToBackpack ( new Gold( nGold ) );
 				}
 
-				if ( nChange > 0 ){ from.AddToBackpack ( new DDCopper( nChange ) ); }
+				if (nChange < 1)
+					Delete();
+				else if (nCoins != nChange)
+					Amount = nChange;
 			}
 			else
 			{
@@ -158,7 +160,6 @@ namespace Server.Items
 
 			if ( box != null && IsChildOf( box ) )
 			{
-				Delete();
 				int nRate = 5;
 
 				int nCoins = this.Amount;
@@ -174,7 +175,10 @@ namespace Server.Items
 					from.AddToBackpack ( new Gold( nGold ) );
 				}
 
-				if ( nChange > 0 ){ from.AddToBackpack ( new DDSilver( nChange ) ); }
+				if (nChange < 1)
+					Delete();
+				else if (nCoins != nChange)
+					Amount = nChange;
 			}
 			else
 			{

@@ -43,6 +43,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");
 			builder.Append("- Misc - Being jailed no longer deletes jewelry<br>");
+			builder.Append("- Misc - Spare Copper/Silver no longer drop into your backpack during coin conversion<br>");
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- NPC - Increased gold cap for vendors in most lands<br>");
 			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
