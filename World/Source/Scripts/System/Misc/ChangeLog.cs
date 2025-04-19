@@ -47,6 +47,7 @@ namespace Server.Misc
 			builder.Append("- NPC - Increased gold cap for vendors in most lands<br>");
 			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
 			builder.Append("- Pets - Pets with low loyalty warn sooner<br>");
+			builder.Append("- Pets - Hitpoints/Mana traits now cap at +50%, up from +25%<br>");
 			builder.Append("- Quest - Add Recruiters to additional locations<br>");
 			builder.Append("- Quest - Clarified Sage artifact quest objectives<br>");
 			builder.Append("- Quest - Added pity system for Sage artifact quest objectives<br>");
