@@ -688,7 +688,7 @@ namespace Server.Items
 			if ( (prop = ComputeStatReq( StatType.Str )) > 0 )
 				list.Add( 1061170, prop.ToString() ); // strength requirement ~1_val~
 
-			if ( m_HitPoints >= 0 && m_MaxHitPoints > 0 && Density != Density.None )
+			if ( Density != Density.None ) // hidden when None
 				list.Add( 1060639, "{0}\t{1}", m_HitPoints, m_MaxHitPoints ); // durability ~1_val~ / ~2_val~
 		}
 
