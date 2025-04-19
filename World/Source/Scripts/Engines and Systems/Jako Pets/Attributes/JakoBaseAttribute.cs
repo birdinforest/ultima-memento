@@ -13,7 +13,7 @@ namespace Custom.Jerbal.Jako
         public virtual uint IncreasedBy { get { return TraitsGiven * AttributesGiven / PointsTaken; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public abstract uint Cap { get; }
+        public abstract uint Cap { get; } // The absolute cap
 
         [CommandProperty(AccessLevel.GameMaster)]
         public abstract double CapScale { get; }
@@ -36,10 +36,11 @@ namespace Custom.Jerbal.Jako
         public virtual uint MaxBonus(BaseCreature bc)
         {
             uint currentValue = GetStat(bc);
-            if (currentValue >= Cap) return currentValue;
-            if ((int)((currentValue - IncreasedBy) * CapScale) > Cap) return Cap;
+            if (currentValue >= Cap) return currentValue; // Already exceeds cap
 
-            return (uint)((currentValue - IncreasedBy) * CapScale);
+            double proposedValue = (currentValue - IncreasedBy) * CapScale;
+            
+            return (uint) Math.Min(Cap, proposedValue);
         }
 
         public bool CanAddBonus(BaseCreature bc)
