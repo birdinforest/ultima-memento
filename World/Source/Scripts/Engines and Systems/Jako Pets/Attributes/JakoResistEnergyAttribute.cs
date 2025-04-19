@@ -9,12 +9,12 @@
 
         public override uint GetStat(Server.Mobiles.BaseCreature bc)
         {
-            return (uint)bc.EnergyResistance;
+            return (uint)bc.BaseEnergyResistance;
         }
 
-        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint toThis)
+        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint value)
         {
-            bc.SetResistance(Server.ResistanceType.Energy, (int)toThis);
+            bc.SetResistance(Server.ResistanceType.Energy, (int)value);
         }
 
         public override string ToString()

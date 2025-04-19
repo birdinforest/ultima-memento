@@ -9,12 +9,12 @@
 
         public override uint GetStat(Server.Mobiles.BaseCreature bc)
         {
-            return (uint)bc.StamMax;
+            return (uint)bc.StamMaxSeed;
         }
 
-        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint toThis)
+        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint value)
         {
-            bc.StamMaxSeed = (int)toThis;
+            bc.StamMaxSeed = (int)value;
         }
 
         public override string ToString()

@@ -9,14 +9,14 @@
 
         public override uint GetStat(Server.Mobiles.BaseCreature bc)
         {
-            return (uint)bc.HitsMax;
+            return (uint)bc.HitsMaxSeed;
         }
 
-        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint toThis)
+        protected override void SetStat(Server.Mobiles.BaseCreature bc, uint value)
         {
-            var delta = (int)(toThis - bc.HitsMaxSeed);
+            var delta = (int)(value - bc.HitsMaxSeed);
 
-            bc.HitsMaxSeed = (int)toThis;
+            bc.HitsMaxSeed = (int)value;
             
             if (0 < delta)
                 bc.Heal(delta);
