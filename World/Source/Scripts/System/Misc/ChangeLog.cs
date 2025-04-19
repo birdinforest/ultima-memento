@@ -81,6 +81,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Fix an issue where pets who lost levels could not level up again<br>");
 			builder.Append("- Pets - Fix an issue where applying traits used boosted values<br>");
 			builder.Append("- Quest - Fix null ref crash after [buildworld and restart<br>");
+			builder.Append("- Quest - Prematurely turning in a quest tome now returns it<br>");
 			builder.Append("- Spell - Chain Lightning no longer does doubles damage to one target<br>");
 			builder.Append("- Spell - Fix bad message for Reveal spells that fail to cast<br>");
 			builder.Append(SEPARATOR_LINE);

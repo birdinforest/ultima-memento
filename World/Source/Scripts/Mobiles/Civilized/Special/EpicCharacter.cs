@@ -1532,8 +1532,9 @@ namespace Server.Mobiles
 				string FullName = this.Name + " " + this.Title;
 				if ( book.QuestTomeOwner == from && ( book.QuestTomeNPCGood == this.Name + " " + this.Title || book.QuestTomeNPCEvil == this.Name + " " + this.Title ) )
 				{
+					bool handled = book.QuestTomeGoals > 3;
 					string sMessage = "";
-					if ( book.QuestTomeGoals > 3 )
+					if ( handled )
 					{
 						string success = "has found " + book.GoalItem4 + " for " + FullName;
 						LoggingFunctions.LogGenericQuest( from, success );
@@ -1575,7 +1576,7 @@ namespace Server.Mobiles
 					}
 
 					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
-					return true;
+					return handled;
 				}
 			}
 
