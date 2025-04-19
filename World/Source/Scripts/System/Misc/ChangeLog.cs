@@ -72,6 +72,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move spells and items when logging in to a slow area<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
+			builder.Append("- Mobs - Xormite elementals now drop the proper resource<br>");
 			builder.Append("- Pets - Fix an issue where mobs didn't stop healing when dead<br>");
 			builder.Append("- Pets - Fix an issue where some pack animal types could be stabled with items<br>");
 			builder.Append("- Pets - Fix an issue where pets who lost levels could not level up again<br>");
