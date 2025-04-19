@@ -2025,6 +2025,14 @@ namespace Server.Mobiles
 			return true;
 		}
 
+		public override void SendPropertiesTo( Mobile from )
+		{
+			if ( PlayerSettings.GetSuppressVendorTooltip(from) )
+				return;
+
+			from.Send( PropertyList );
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );

@@ -351,6 +351,9 @@ namespace Server.Mobiles
 			set { m_ExecutesLightningStrike = value; }
 		}
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool SuppressVendorTooltip { get; set; }
+
 		#endregion
 
 		#region PlayerFlags
@@ -3183,6 +3186,10 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 44:
+					SuppressVendorTooltip = reader.ReadBool();
+				goto case 43;
+
 				case 43:
 				case 42:
 					IgnoreVendorGoldSafeguard = reader.ReadBool();
@@ -3630,8 +3637,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 43 ); // version
+			writer.Write( (int) 44 ); // version
 
+			writer.Write(SuppressVendorTooltip);
 			writer.Write(IgnoreVendorGoldSafeguard);
 
 			if( m_AcquiredRecipes == null )

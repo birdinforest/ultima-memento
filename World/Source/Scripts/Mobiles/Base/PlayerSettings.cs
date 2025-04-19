@@ -1513,5 +1513,20 @@ namespace Server.Misc
 			Server.Gumps.QuickBar.RefreshQuickBar( m );
 			Server.Gumps.WealthBar.RefreshWealthBar( m );
 		}
+
+		public static bool GetSuppressVendorTooltip( Mobile m ) // ---------------------------------------------------------------------------------------------
+		{
+			if ( m is PlayerMobile ) return ((PlayerMobile)m).SuppressVendorTooltip;
+
+			return false;
+		}
+
+		public static void SetSuppressVendorTooltip( Mobile m, bool suppress ) // ---------------------------------------------------------------------------------------------
+		{
+			if ( m is PlayerMobile )
+			{
+				((PlayerMobile)m).SuppressVendorTooltip = suppress;
+			}
+		}
 	}
 }

@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Augment - Resources no longer give weapons resists<br>");
 			builder.Append("- Augment - Gilding benefits have been reduced<br>");
 			builder.Append("- Augment - Elemental forging has been improved<br>");
+			builder.Append("- Commands - Added experimental [SuppressTooltips for MobileUO<br>");
 			builder.Append("- Craft - Add Shuriken to recipe list<br>");
 			builder.Append("- Craft - Add Orders to Shoppes<br>");
 			builder.Append("- Craft - Non-basic resource skill requirements have increased<br>");
