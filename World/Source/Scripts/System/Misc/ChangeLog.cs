@@ -73,6 +73,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move spells and items when logging in to a slow area<br>");
+			builder.Append("- Misc - Ethereal Daemon Mount now has a body<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Mobs - Xormite elementals now drop the proper resource<br>");
 			builder.Append("- Pets - Fix an issue where mobs didn't stop healing when dead<br>");
