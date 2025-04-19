@@ -70,7 +70,7 @@ namespace Server.Engines.GlobalShoppe
 
             context.Gold += order.GoldReward;
             context.Points += order.PointReward;
-            context.Reputation += order.ReputationReward;
+            context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
             context.Orders.Remove(order);
             
             from.PlaySound( 0x32 ); // Dropgem1
