@@ -69,7 +69,8 @@ namespace Custom.Jerbal.Jako
             if (toThis > MaxBonus(bc)) return false;
 
             uint oldTraits = TraitsGiven;
-            TraitsGiven += ((toThis - GetStat(bc)) / AttributesGiven) * PointsTaken;
+            uint delta = toThis - GetStat(bc);
+            TraitsGiven += (delta / AttributesGiven) * PointsTaken;
             bc.Traits -= TraitsGiven - oldTraits;
             SetStat(bc, toThis);
             return true;
