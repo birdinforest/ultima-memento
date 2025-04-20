@@ -996,7 +996,7 @@ namespace Server.Misc
 			else if ( ( exact == 81 || zone == "the Daemon's Crag" ) && map == Map.Lodor ){ loc = new Point3D(1481, 835, 0); map = Map.Underworld; zone = "the Daemon's Crag"; }
 			else if ( ( exact == 82 || zone == "the Stygian Abyss" ) && map == Map.Underworld ){ loc = new Point3D(824, 907, 0); zone = "the Stygian Abyss"; }
 			else if ( ( exact == 83 || zone == "the Hall of the Mountain King" ) && map == Map.Lodor ){ loc = new Point3D(130, 102, 0); map = Map.Underworld; zone = "the Hall of the Mountain King"; }
-			else if ( ( exact == 84 || zone == "the Depths of Carthax Lake" ) && map == Map.Lodor ){ loc = new Point3D(926, 874, 0); map = Map.Underworld; zone = "the Depths of Carthax Lake"; }
+			else if ( ( exact == 84 || zone == "the Depths of Carthax Lake" ) && map == Map.Lodor ){ loc = new Point3D(118, 1582, 0); map = Map.Underworld; zone = "the Depths of Carthax Lake"; }
 			else if ( ( exact == 85 || zone == "the Ancient Sky Ship" ) && map == Map.SavagedEmpire ){ loc = new Point3D(66, 561, 0); map = Map.Underworld; zone = "the Ancient Sky Ship"; }
 
 			place = map;
