@@ -86,6 +86,8 @@ namespace Server.Mobiles
 					m_Mobile.Say( 1156, "Casting Poison" );
 
 				spell = new PoisonSpell( m_Mobile, null );
+
+				return spell;
 			}
 
 			// scaling chance to drain mana based on how much of a caster the opponent is
