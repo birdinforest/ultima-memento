@@ -89,22 +89,22 @@ namespace Server.Mobiles
 		public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
-			BlowUp( this, this );
+			BlowUp( this );
 		}
 
 		public override void OnGotMeleeAttack( Mobile attacker )
 		{
 			base.OnGotMeleeAttack( attacker );
-			BlowUp( this, this );
+			BlowUp( this );
 		}
 
 		public override bool OnBeforeDeath()
 		{
-			BlowUp( this, this );
+			BlowUp( this );
 			return base.OnBeforeDeath();
 		}
 
-		public static void BlowUp( Mobile from, BaseCreature bc )
+		public static void BlowUp( BaseCreature from )
 		{
 			List<Mobile> targets = new List<Mobile>();
 
@@ -114,7 +114,7 @@ namespace Server.Mobiles
 			{
 				foreach ( Mobile m in from.GetMobilesInRange( from.RawDex ) )
 				{
-					if ( from.InLOS( m ) && m.Alive && from.CanBeHarmful( m ) && !m.Blessed && from != m && bc.ControlMaster != m && bc.SummonMaster != m )
+					if ( from.InLOS( m ) && m.Alive && from.CanBeHarmful( m ) && !m.Blessed && from != m && from.ControlMaster != m && from.SummonMaster != m )
 						targets.Add( m );
 				}
 				for ( int i = 0; i < targets.Count; ++i )
