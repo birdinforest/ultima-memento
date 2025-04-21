@@ -596,18 +596,20 @@ namespace Server.Mobiles
 				if ( (targ.Range == -1 || m_Mobile.InRange( toTarget, targ.Range )) && m_Mobile.CanSee( toTarget ) && m_Mobile.InLOS( toTarget ) )
 				{
 					targ.Invoke( m_Mobile, toTarget );
+					return true;
 				}
 			}
 			else if ( (targ.Flags & TargetFlags.Beneficial) != 0 )
 			{
 				targ.Invoke( m_Mobile, m_Mobile );
+				return true;
 			}
 			else
 			{
 				targ.Cancel( m_Mobile, TargetCancelType.Canceled );
 			}
 
-			return true;
+			return false;
 		}
 
 		#region Targeting
