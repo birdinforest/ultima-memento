@@ -199,6 +199,8 @@ namespace Server.Mobiles
 				drain += 0.2;
 			if ( foe.Skills[SkillName.Necromancy].Value > 35.0 )
 				drain += 0.2;
+			if ( foe.Skills[SkillName.Elementalism].Value > 35.0 )
+				drain += 0.2;
 			if ( foe.Skills[SkillName.Ninjitsu].Value > 35.0 )
 				drain += 0.1;
 
