@@ -51,6 +51,8 @@ namespace Server.Misc
 			builder.Append("- Misc - Being jailed only deletes money<br>");
 			builder.Append("- Misc - Spare Copper/Silver no longer drop into your backpack during coin conversion<br>");
 			builder.Append("- Misc - SOSes no longer have a chance for a 2nd artifact<br>");
+			builder.Append("- Misc - Dramatically reduced Scroll of Transcendence values from treasure maps<br>");
+			builder.Append("- Misc - Treasure Maps now have a chance to drop multiple Scroll of Transcendence<br>");
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- Mobs - Increased chance of mana drain when Players have Elementalism<br>");
 			builder.Append("- Mobs - Casters can now move with a spell target up<br>");

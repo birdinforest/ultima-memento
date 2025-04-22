@@ -94,8 +94,14 @@ namespace Server.Items
 			ColorHue2 = "FFB400";
 
             // = SCROLL OF TRANCENDENCE
-            if ( level >= 4 && Utility.RandomDouble() > 0.6 )
-                DropItem(ScrollofTranscendence.CreateRandom(level, level * 5));
+            if ( level >= 4 )
+			{
+				for (int i = 0; i < originalLevel; i++)
+				{
+					if ( Utility.RandomDouble() > 0.75 )
+                		DropItem(ScrollofTranscendence.CreateRandom(1, level));
+				}
+			}
             
 			// = ARTIFACTS
 			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck ) + (originalLevel * 10);
