@@ -48,6 +48,7 @@ namespace Server.Misc
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- Mobs - Increased chance of mana drain when Players have Elementalism<br>");
 			builder.Append("- Mobs - Casters can now move with a spell target up<br>");
+			builder.Append("- Mobs - Casters can now teleport<br>");
 			builder.Append("- NPC - Increased gold cap for vendors in most lands<br>");
 			builder.Append("- Pets - Docile pets who are bonded now lose less loyalty per tick<br>");
 			builder.Append("- Pets - Pets with low loyalty warn sooner<br>");

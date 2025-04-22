@@ -210,14 +210,8 @@ namespace Server.Mobiles
 			{
 				m_Mobile.Direction = m_Mobile.GetDirectionTo( combatant );
 			}
-			else if ( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
+			else if ( OnFailedMove() )
 			{
-				if ( m_Mobile.Debug )
-					m_Mobile.DebugSay( "My move is blocked, so I am going to attack {0}", m_Mobile.FocusMob.Name );
-
-				m_Mobile.Combatant = m_Mobile.FocusMob;
-				Action = ActionType.Combat;
-
 				return true;
 			}
 			else if ( m_Mobile.GetDistanceToSqrt( combatant ) > m_Mobile.RangePerception + 1 )
@@ -327,6 +321,37 @@ namespace Server.Mobiles
 			}
 
 			return true;
+		}
+
+		public bool OnFailedMove()
+		{			
+			if( m_CanUseMagery && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) )
+			{
+				if( m_Mobile.Target != null )
+					m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
+
+				new TeleportSpell( m_Mobile, null ).Cast();
+
+				m_Mobile.DebugSay( "I am stuck, I'm going to try teleporting away" );
+
+				return true;
+			}
+			else if( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
+			{
+				if( m_Mobile.Debug )
+					m_Mobile.DebugSay( "My move is blocked, so I am going to attack {0}", m_Mobile.FocusMob.Name );
+
+				m_Mobile.Combatant = m_Mobile.FocusMob;
+				Action = ActionType.Combat;
+
+				return true;
+			}
+			else
+			{
+				m_Mobile.DebugSay( "I am stuck" );
+			}
+
+			return false;
 		}
 
 		public override bool DoActionFlee()
