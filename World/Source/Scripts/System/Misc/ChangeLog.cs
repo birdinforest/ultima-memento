@@ -43,6 +43,7 @@ namespace Server.Misc
 			builder.Append("- Item - Runebooks no longer have a cooldown<br>");
 			builder.Append("- Item - Soul Orb now persists between server restarts<br>");
 			builder.Append("- Item - Soul Orb can be deleted when used<br>");
+			builder.Append("- Misc - Containers now have a default max weight of 550, up from 400<br>");
 			builder.Append("- Misc - Death robes no longer automatically stack up in your backpack<br>");
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");
