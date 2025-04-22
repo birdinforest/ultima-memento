@@ -33,6 +33,12 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Swords, 60.0, 82.5 );
 			SetSkill( SkillName.Tactics, 60.0, 82.5 );
 
+			SetResistance( ResistanceType.Physical, 35, 40 );
+			SetResistance( ResistanceType.Fire, 15, 25 );
+			SetResistance( ResistanceType.Cold, 40, 50 );
+			SetResistance( ResistanceType.Poison, 15, 25 );
+			SetResistance( ResistanceType.Energy, 15, 25 );
+
 			Fame = 1100;
 			Karma = -1100;
 			VirtualArmor = 20;
