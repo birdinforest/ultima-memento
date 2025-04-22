@@ -861,6 +861,7 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Veterinary:
+						PackItem(bag, new Scissors());
 						PackItem(bag, new Bandage { Amount = 200 });
 						break;
 
