@@ -60,6 +60,9 @@ namespace Server.Misc
 			builder.Append("- Quest - Clarified Sage artifact quest objectives<br>");
 			builder.Append("- Quest - Added pity system for Sage artifact quest objectives<br>");
 			builder.Append("- Skill - Magic Resist is now 4x more likely to gain<br>");
+			builder.Append("- Skill - Remove Trap is now 4x more likely to gain<br>");
+			builder.Append("- Skill - Searching is now 4x more likely to gain<br>");
+			builder.Append("- Skill - Stealthing is now 2x more likely to gain<br>");
 			builder.Append("- Skill - Discord failure cooldown is 3s, down from 12s<br>");
 			builder.Append("- Skill - Pseudo-grandmaster Seafarers no longer need docks for boats<br>");
 			builder.Append("- Shoppe - Now properly rejects Tools when full<br>");
