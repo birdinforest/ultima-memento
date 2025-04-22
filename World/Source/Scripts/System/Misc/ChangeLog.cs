@@ -73,6 +73,7 @@ namespace Server.Misc
 			builder.Append("- Item - Legendary Artifact trinkets didn't repair<br>");
 			builder.Append("- Item - Staff of Five parts would not spawn for Mages<br>");
 			builder.Append("- Item - Armor/Clothing now show durability at all times<br>");
+			builder.Append("- Item - Transmutation Potion is only usable on equippable gear<br>");
 			builder.Append("- Misc - Fix empty unidentified items<br>");
 			builder.Append("- Misc - Treasure hoards now properly limit item attributes to 6<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move spells and items when logging in to a slow area<br>");
