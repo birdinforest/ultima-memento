@@ -55,14 +55,17 @@ namespace Server
             m_Table.TryGetValue(player.Serial, out oldType);
             if (!force && activeType == oldType) return; // Nothing changed
 
+            // Add arbitrary delay to see if it reduces "freezes" after zoning
+            var delay = TimeSpan.FromMilliseconds(1000);
+
             if (activeType != null)
             {
-                player.Send(SpeedControl.MountSpeed);
+                Timer.DelayCall(delay, () => player.Send(SpeedControl.MountSpeed));
                 m_Table[player.Serial] = activeType;
             }
             else
             {
-                player.Send(SpeedControl.Disable);
+                Timer.DelayCall(delay, () => player.Send(SpeedControl.Disable));
                 m_Table.Remove(player.Serial);
 
                 if (oldType == null) return;
