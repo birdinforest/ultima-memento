@@ -47,6 +47,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Reduced gem block resources from carving<br>");
 			builder.Append("- Misc - Merchant crates have been disabled<br>");
 			builder.Append("- Misc - Being jailed no longer deletes jewelry<br>");
+			builder.Append("- Misc - Being jailed only deletes money<br>");
 			builder.Append("- Misc - Spare Copper/Silver no longer drop into your backpack during coin conversion<br>");
 			builder.Append("- Mobs - Mobs are now less likely to curse<br>");
 			builder.Append("- Mobs - Increased chance of mana drain when Players have Elementalism<br>");

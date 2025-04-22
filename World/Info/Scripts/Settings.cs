@@ -733,6 +733,11 @@ namespace Server
 
 		public static bool S_GuardsSprint = true;
 
+	// If true, when Players are jailed, only raw currency are deleted. Otherwise, it deletes all
+	// stackable items and a bunch of other weird stuff.
+
+		public static bool S_JailOnlyDeletesMoney = true;
+
 	// If true, then adventurers that gather in towns may have a humanoid, pet, or summoned companion
 	// with them. These gatherings are when 2-4 adventurers stand in a circle and face each other,
 	// usually holding weapons and sometimes riding mounts. This setting adds a bit of fantasy world
