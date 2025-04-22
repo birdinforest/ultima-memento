@@ -46,6 +46,8 @@ namespace Server.Mobiles
 		public override bool AlwaysAttackable{ get{ return true; } }
 		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 
+		private bool m_Triggered;
+
 		public static void MakePrankster( Mobile from, Point3D p, string name, int body, int hue, int move )
 		{
 			Map map = from.Map;
@@ -104,14 +106,16 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		public static void BlowUp( BaseCreature from )
+		private static void BlowUp( SummonedPrank from )
 		{
-			List<Mobile> targets = new List<Mobile>();
-
 			Map map = from.Map;
-
 			if ( map != null && from != null )
 			{
+				if ( from.m_Triggered ) return;
+
+				from.m_Triggered = true;
+
+				List<Mobile> targets = new List<Mobile>();
 				foreach ( Mobile m in from.GetMobilesInRange( from.RawDex ) )
 				{
 					if ( from.InLOS( m ) && m.Alive && from.CanBeHarmful( m ) && !m.Blessed && from != m && from.ControlMaster != m && from.SummonMaster != m )
