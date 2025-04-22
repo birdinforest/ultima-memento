@@ -525,6 +525,12 @@ namespace Server
 		public static int S_MinMerchant = 1000;
 		public static int S_MaxMerchant = 2000;
 
+	// If true, merchant gold will be scaled based on the facet they are on. This setting will entice players to sell to vendors beyond
+	// the default facet (Sosaria).
+	// WARNING: This will cause vendors to exceed the `S_MaxMerchant` setting
+
+		public static bool S_ScaleMerchantCoins = true;
+		
 	// This setting is the percentage to decrease the prices of items that player characters sell to vendors. Zero disables this.
 
 		public static int S_SellGoldCutRate = 25;

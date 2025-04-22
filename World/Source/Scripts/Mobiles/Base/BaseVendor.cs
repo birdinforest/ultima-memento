@@ -190,42 +190,45 @@ namespace Server.Mobiles
 
 			int minGold = MySettings.S_MinMerchant;
 			int maxGold = MySettings.S_MaxMerchant;
-			
-			double multiplier;
-			var land = Lands.GetLand(from);
-			switch (land)
+
+			if (MySettings.S_ScaleMerchantCoins)
 			{
-				default:
-				case Land.Atlantis: // Not implemented
-				case Land.Luna: // Off Sosaria - Mages only
-				case Land.SkaraBrae: // Not a big need for Gold here
-				case Land.Sosaria:
-				case Land.None:
-					multiplier = 1;
-					break;
+				double multiplier;
+				var land = Lands.GetLand(from);
+				switch (land)
+				{
+					default:
+					case Land.Atlantis: // Not implemented
+					case Land.Luna: // Off Sosaria - Mages only
+					case Land.SkaraBrae: // Not a big need for Gold here
+					case Land.Sosaria:
+					case Land.None:
+						multiplier = 1;
+						break;
 
-				case Land.UmberVeil: // Off of Sosaria
-				case Land.IslesDread: // Off of Sosaria (Ancient Pyramid)
-				case Land.Ambrosia: // A single Necromancer + Wandering Healers
-				case Land.Lodoria: // Usually from Poseidon
-				case Land.Serpent: // After Umber
-				case Land.Savaged: // Lots of Vendors
-					multiplier = 1.5;
-					break;
+					case Land.UmberVeil: // Off of Sosaria
+					case Land.IslesDread: // Off of Sosaria (Ancient Pyramid)
+					case Land.Ambrosia: // A single Necromancer + Wandering Healers
+					case Land.Lodoria: // Usually from Poseidon
+					case Land.Serpent: // After Umber
+					case Land.Savaged: // Lots of Vendors
+						multiplier = 1.5;
+						break;
 
-				case Land.Kuldar: // Give a small reason to go back
-					multiplier = 1.75;
-					break;
+					case Land.Kuldar: // Give a small reason to go back
+						multiplier = 1.75;
+						break;
 
-				case Land.Underworld: // A small encampent
-					multiplier = 2.0;
-					break;
-			}
+					case Land.Underworld: // A small encampent
+						multiplier = 2.0;
+						break;
+				}
 
-			if (1 < multiplier)
-			{
-				minGold = (int)(minGold * multiplier);
-				maxGold = (int)(maxGold * multiplier);
+				if (1 < multiplier)
+				{
+					minGold = (int)(minGold * multiplier);
+					maxGold = (int)(maxGold * multiplier);
+				}
 			}
 
 			CoinPurse = Utility.RandomMinMax( minGold, maxGold );
