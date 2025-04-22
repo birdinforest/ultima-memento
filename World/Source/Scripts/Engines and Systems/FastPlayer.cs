@@ -1,7 +1,7 @@
+using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
-using Server.Regions;
 using Server.Spells.Jedi;
 using Server.Spells.Mystic;
 using Server.Spells.Ninjitsu;
@@ -15,7 +15,45 @@ namespace Server
     public class FastPlayer
     {
         private static readonly Dictionary<Serial, Type> m_Table = new Dictionary<Serial, Type>();
+        private static TimeSpan ArbitraryDelay = TimeSpan.FromMilliseconds(1000); // Add arbitrary delay to see if it reduces "freezes" after zoning
 
+        public static void Initialize()
+        {
+            CommandSystem.Register("FastPlayer-Delay", AccessLevel.Administrator, new CommandEventHandler(OnConfigureFastPlayerDelay));
+        }
+
+        [Usage("FastPlayer-Delay [DelayMilliseconds]")]
+        [Description("Configures the arbitrary delay before sending the ControlSpeed packet to the Client.")]
+        private static void OnConfigureFastPlayerDelay(CommandEventArgs e)
+        {
+            var player = e.Mobile as PlayerMobile;
+            if (player == null) return;
+            
+            if (e.Arguments.Length != 1)
+            {
+                player.SendMessage("Arguments for the command are [FastPlayer-Delay <Milliseconds (int)>");
+                return;
+            }
+
+            int millisecondsDelay;
+            if (!int.TryParse(e.Arguments[0], out millisecondsDelay))
+            {
+                player.SendMessage("Milliseconds delay must be a valid number.");
+                return;
+            }
+
+            if (0 < millisecondsDelay)
+            {
+                ArbitraryDelay = TimeSpan.FromMilliseconds(millisecondsDelay);
+                player.SendMessage(68, "Fast player delay has been set to '{0}' milliseconds.", millisecondsDelay);
+            }
+            else
+            {
+                ArbitraryDelay = TimeSpan.Zero;
+                player.SendMessage(68, "Fast player delay has been disabled.");
+            }
+        }
+        
         public static bool IsActive(Mobile mobile)
         {
             if (mobile == null) return false;
@@ -55,17 +93,24 @@ namespace Server
             m_Table.TryGetValue(player.Serial, out oldType);
             if (!force && activeType == oldType) return; // Nothing changed
 
-            // Add arbitrary delay to see if it reduces "freezes" after zoning
-            var delay = TimeSpan.FromMilliseconds(1000);
+            var shouldDelay = ArbitraryDelay != TimeSpan.Zero;
 
             if (activeType != null)
             {
-                Timer.DelayCall(delay, () => player.Send(SpeedControl.MountSpeed));
+                if (shouldDelay)
+                    Timer.DelayCall(ArbitraryDelay, () => player.Send(SpeedControl.MountSpeed));
+                else
+                    player.Send(SpeedControl.MountSpeed);
+
                 m_Table[player.Serial] = activeType;
             }
             else
             {
-                Timer.DelayCall(delay, () => player.Send(SpeedControl.Disable));
+                if (shouldDelay)
+                    Timer.DelayCall(ArbitraryDelay, () => player.Send(SpeedControl.Disable));
+                else
+                    player.Send(SpeedControl.Disable);
+
                 m_Table.Remove(player.Serial);
 
                 if (oldType == null) return;
