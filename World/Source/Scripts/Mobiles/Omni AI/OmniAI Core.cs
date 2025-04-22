@@ -524,7 +524,7 @@ namespace Server.Mobiles
 
 				Map map = m_Mobile.Map;
 
-				if ( map == null )
+				if ( map == null || toTarget == null || toTarget.Deleted )
 				{
 					targ.Cancel( m_Mobile, TargetCancelType.Canceled );
 					return true;
