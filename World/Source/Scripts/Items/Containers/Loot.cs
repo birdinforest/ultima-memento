@@ -132,7 +132,7 @@ namespace Server
 				typeof( LeatherGorget ),		typeof( PlateGorget ),				typeof( WoodenPlateGorget ),			
 				typeof( LeatherLegs ),			typeof( PlateHelm ),				typeof( WoodenPlateHelm ),			
 				typeof( LeatherRobe ),			typeof( PlateLegs ),				typeof( WoodenPlateLegs ),
-				typeof( BoneSkirt ),			typeof( HideChest ), 				typeof( HikingBoots ),
+				typeof( BoneSkirt ),			typeof( HideChest ),
 				typeof( SavageArms ), 			typeof( SavageChest ), 				typeof( SavageGloves ),
 				typeof( SavageHelm ), 			typeof( SavageLegs ),				typeof( StuddedHideChest ),
 				typeof( DragonChest ),			typeof( DragonGloves ),				typeof( DragonLegs ),
@@ -189,17 +189,17 @@ namespace Server
 				typeof( RoyalSkirt ),			typeof( FormalCoat ),			typeof( Sandals ),			typeof( Cloak ),			typeof( GildedDress ),
 				typeof( RoyalLoinCloth ),		typeof( WizardShirt ),			typeof( Shoes ),			typeof( Cloak ),			typeof( GildedLightRobe ),
 				typeof( ElvenBoots ),			typeof( BeggarVest ),			typeof( ThighBoots ),		typeof( Cloak ),			typeof( GildedRobe ),
-				typeof( JesterShoes ),			typeof( RoyalVest ),			typeof( BarbarianBoots ),	typeof( Cloak ),			typeof( JesterGarb ),
+				typeof( JesterShoes ),			typeof( RoyalVest ),			typeof( BarbarianBoots ),	typeof( HikingBoots ),			typeof( JesterGarb ),
 				typeof( FullApron ),			typeof( JesterSuit ),			typeof( Boots ),			typeof( Cloak ),			typeof( JokerRobe ),
 				typeof( BodySash ),				typeof( Doublet ),				typeof( Sandals ),			typeof( Cloak ),			typeof( MagistrateRobe ),
 				typeof( LoinCloth ),			typeof( FancyShirt ),			typeof( Shoes ),			typeof( Cloak ),			typeof( NecromancerRobe ),
 				typeof( HalfApron ),			typeof( RusticVest ),			typeof( ThighBoots ),		typeof( Cloak ),			typeof( OrnateRobe ),
-				typeof( Kilt ),					typeof( Tunic ),				typeof( BarbarianBoots ),	typeof( Cloak ),			typeof( PirateCoat ),
+				typeof( Kilt ),					typeof( Tunic ),				typeof( BarbarianBoots ),	typeof( HikingBoots ),			typeof( PirateCoat ),
 				typeof( Belt ),					typeof( Shirt ),				typeof( Boots ),			typeof( Cloak ),			typeof( PlainDress ),
 				typeof( Skirt ),				typeof( Surcoat ),				typeof( Sandals ),			typeof( Cloak ),			typeof( PriestRobe ),
 				typeof( LongPants ),			typeof( RoyalCoat ),			typeof( Shoes ),			typeof( Cloak ),			typeof( ProphetRobe ),
 				typeof( ShortPants ),			typeof( RoyalShirt ),			typeof( ThighBoots ),		typeof( Cloak ),			typeof( Robe ),
-				typeof( PiratePants ),			typeof( FormalShirt ),			typeof( BarbarianBoots ),	typeof( Cloak ),			typeof( RoyalRobe ),
+				typeof( PiratePants ),			typeof( FormalShirt ),			typeof( BarbarianBoots ),	typeof( HikingBoots ),			typeof( RoyalRobe ),
 				typeof( SailorPants ),			typeof( RusticShirt ),			typeof( Boots ),			typeof( RoyalCape ),		typeof( SageRobe ),
 				typeof( RoyalLongSkirt ),		typeof( SquireShirt ),			typeof( Sandals ),			typeof( RoyalCape ),		typeof( ScholarRobe ),
 				typeof( RoyalSkirt ),			typeof( FormalCoat ),			typeof( Shoes ),			typeof( RoyalCape ),		typeof( SorcererRobe ),
@@ -1031,10 +1031,20 @@ namespace Server
 
 		public static BaseClothing RandomClothing( bool playOrient )
 		{
-			if ( playOrient )
-				return Construct( m_OrientClothingTypes, m_ClothingTypes ) as BaseClothing;
+			BaseClothing item = null;
 
-			return Construct( m_ClothingTypes ) as BaseClothing;
+			if ( playOrient )
+				item = Construct( m_OrientClothingTypes, m_ClothingTypes ) as BaseClothing;
+			else
+				item = Construct( m_ClothingTypes ) as BaseClothing;
+
+			if ( !MyServerSettings.MonstersAllowed() && item is HikingBoots )
+			{
+				item.Delete();
+				item = new ThighBoots();
+			}
+
+			return item;
 		}
 
 		public static BaseHat RandomHats()
@@ -1098,20 +1108,9 @@ namespace Server
 
 		public static BaseArmor RandomArmor( bool playOrient )
 		{
-			BaseArmor item = null;
-
-			if ( playOrient )
-				item = Construct( m_OrientArmorTypes, m_ArmorTypes ) as BaseArmor;
-			else
-				item = Construct( m_ArmorTypes ) as BaseArmor;
-
-			if ( !MyServerSettings.MonstersAllowed() && item is HikingBoots )
-			{
-				item.Delete();
-				item = new LeatherBoots();
-			}
-
-			return item;
+			return playOrient
+				? Construct(m_OrientArmorTypes, m_ArmorTypes) as BaseArmor
+				: Construct(m_ArmorTypes) as BaseArmor;
 		}
 
 		public static Spellbook RandomSpellbook()
