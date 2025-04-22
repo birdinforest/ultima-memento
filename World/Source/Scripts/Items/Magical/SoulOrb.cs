@@ -6,13 +6,14 @@ using Server.Prompts;
 using Server.Network;
 using System.Collections;
 using System.Collections.Generic;
+using Server.Gumps;
 
 namespace Server.Items
 {
     public class SoulOrb : Item
     {
-		private static Dictionary<Mobile, SoulOrb> m_ResList;
-		
+		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 30 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }
+
         public Mobile m_Owner;
 
         [CommandProperty( AccessLevel.GameMaster )]
@@ -42,45 +43,46 @@ namespace Server.Items
             Weight = 1.0;
 		}
 
+		public override void OnDoubleClick( Mobile from )
+		{
+            var confirmation = new ConfirmationGump(
+                from,
+                "Are you sure you wish to delete this?",
+                () => Delete()
+            );
+            from.SendGump(confirmation);
+		}
+
         public SoulOrb(Serial serial) : base(serial){}
 
 		public static void OnSummoned( Mobile from, SoulOrb orb )
 		{
-			if( m_ResList != null )
-				m_ResList.Remove( from );
-
-			if( m_ResList == null )
-				m_ResList = new Dictionary<Mobile, SoulOrb>();
-
-			if(from != null && orb != null && !m_ResList.ContainsValue(orb))
+			if ( orb.RootParent == from )
 			{
-				m_ResList.Add(from, orb);
+				BuffInfo.RemoveBuff( from, BuffIcon.Resurrection );
+				BuffInfo.AddBuff( from, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );
 			}
-
-			BuffInfo.RemoveBuff( from, BuffIcon.Resurrection );
-			BuffInfo.AddBuff( from, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );
+			else
+			{
+				from.PrivateOverheadMessage(MessageType.Regular, 38, false, "Your pack is full so it did not work!", from.NetState);
+				from.SendMessage( "Your pack is full so it did not work!" );
+				orb.Delete();
+			}
 		}
 		
 		private static void EventSink_Death(PlayerDeathEventArgs e)
         {
             PlayerMobile owner = e.Mobile as PlayerMobile;
 
-            if (owner != null && !owner.Deleted)
+			Item item = owner.Backpack.FindItemByType( typeof ( SoulOrb ) );
+			SoulOrb orb = (SoulOrb)item;
+
+			if ( orb != null && owner != null && !owner.Deleted )
             {
                 if (owner.Alive)
                     return;
-				
-				if(m_ResList != null && m_ResList.ContainsKey(owner))
-				{
-					SoulOrb arp = m_ResList[owner];
-					if(arp == null || arp.Deleted)
-					{
-						m_ResList.Remove(owner);
-						return;
-					}
-					arp.m_Timer = Timer.DelayCall(m_Delay, new TimerStateCallback(Resurrect_OnTick), new object[] { owner, arp });
-					m_ResList.Remove(owner);
-				}
+
+				orb.m_Timer = Timer.DelayCall(m_Delay, new TimerStateCallback(Resurrect_OnTick), new object[] { owner, orb });
             }
         }
 
@@ -89,7 +91,7 @@ namespace Server.Items
             object[] states = (object[])state;
             PlayerMobile owner = (PlayerMobile)states[0];
 			SoulOrb arp = (SoulOrb)states[1];
-            if (owner != null && !owner.Deleted && arp != null && !arp.Deleted)
+            if ( owner != null && !owner.Deleted && arp != null && !arp.Deleted )
             {
                 if (owner.Alive)
                     return;
@@ -117,14 +119,23 @@ namespace Server.Items
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write( (int) 0 ); // version          
+            writer.Write( (int) 1 ); // version  
+			writer.Write( (Mobile)m_Owner );        
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
-			this.Delete(); // none when the world starts 
+
+			if ( version > 0 )
+				m_Owner = reader.ReadMobile();
+            else
+            {
+                // none when the world starts 
+                Timer.DelayCall(TimeSpan.FromSeconds(30), () => Delete());
+			    
+            }
         }
     }
 }
