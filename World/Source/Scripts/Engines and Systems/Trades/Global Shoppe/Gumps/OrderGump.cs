@@ -10,10 +10,10 @@ namespace Server.Engines.GlobalShoppe
 {
     public class OrderGump : Gump
     {
-        private readonly OrderContext m_Deed;
+        private readonly IOrderContext m_Deed;
         private readonly Mobile m_From;
 
-        public OrderGump(Mobile from, OrderContext deed) : base(25, 25)
+        public OrderGump(Mobile from, IOrderContext deed) : base(25, 25)
         {
             m_From = from;
             m_Deed = deed;
@@ -58,7 +58,7 @@ namespace Server.Engines.GlobalShoppe
             AddHtmlLocalized(160, 229, 120, 20, 1011441, 0x7FFF, false, false); // EXIT
         }
 
-        public static void BeginCombine(Mobile from, OrderContext order)
+        public static void BeginCombine(Mobile from, IOrderContext order)
         {
             if (!order.IsComplete)
                 from.Target = new InternalTarget(order);
@@ -78,9 +78,9 @@ namespace Server.Engines.GlobalShoppe
 
         public class InternalTarget : Target
         {
-            private readonly OrderContext m_Deed;
+            private readonly IOrderContext m_Deed;
 
-            public InternalTarget(OrderContext order) : base(18, false, TargetFlags.None)
+            public InternalTarget(IOrderContext order) : base(18, false, TargetFlags.None)
             {
                 m_Deed = order;
             }

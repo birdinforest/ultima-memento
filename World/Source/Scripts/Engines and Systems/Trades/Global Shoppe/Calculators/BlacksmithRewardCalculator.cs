@@ -4,7 +4,7 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public sealed class BlacksmithRewardCalculator : BaseCraftRewardCalculator
+    public sealed class BlacksmithRewardCalculator : BaseCraftRewardCalculator<OrderContext>
     {
         public static readonly BlacksmithRewardCalculator Instance = new BlacksmithRewardCalculator();
 
@@ -82,7 +82,7 @@ namespace Server.Engines.GlobalShoppe
                     else if (resource < CraftResource.Dwarven)
                     {
                         // Custom metals (that aren't handled above)
-                        materialMultiplier = ((1 + 0.05 * (resourceTier - (int)CraftResource.Valorite)) * Math.Pow((int)CraftResource.Valorite, 2)); // Every level above Valorite is worth +0.05
+                        materialMultiplier = (1 + 0.05 * (resourceTier - (int)CraftResource.Valorite)) * Math.Pow((int)CraftResource.Valorite, 2); // Every level above Valorite is worth +0.05
                     }
                     break;
             }

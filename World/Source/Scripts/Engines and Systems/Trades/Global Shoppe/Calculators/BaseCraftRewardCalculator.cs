@@ -4,9 +4,22 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public abstract class BaseCraftRewardCalculator : BaseRewardCalculator
+    public abstract class BaseCraftRewardCalculator<TOrderContext> : BaseRewardCalculator
+        where TOrderContext : class, IOrderContext
     {
-        public override int ComputeGold(int quantity, bool exceptional, CraftResource resource, Type type)
+        public void SetRewards(TradeSkillContext context, TOrderContext order)
+        {
+            order.GoldReward = ComputeGold(context, order);
+            order.PointReward = ComputePoints(context, order);
+            order.ReputationReward = ComputeReputation(context, order);
+        }
+
+        protected int ComputeGold(TradeSkillContext context, TOrderContext order)
+        {
+            return ComputeGold(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
+        }
+
+        protected int ComputeGold(int quantity, bool exceptional, CraftResource resource, Type type)
         {
             var pricePerCraftedItem = ComputePricePerCraftedItem(resource, type);
             if (pricePerCraftedItem < 1) return 0;
@@ -25,20 +38,15 @@ namespace Server.Engines.GlobalShoppe
             return (int)(price / 3);
         }
 
-        public override int ComputePoints(int quantity, bool exceptional, CraftResource resource, Type type)
+        protected int ComputePoints(TradeSkillContext context, TOrderContext order)
+        {
+            return ComputePoints(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
+        }
+
+        protected int ComputePoints(int quantity, bool exceptional, CraftResource resource, Type type)
         {
             // Reduce by arbitrary amount
             return ComputeRewardFromResourceValue(quantity, exceptional, resource, type) / 5;
-        }
-
-        public override int ComputeReputation(int quantity, bool exceptional, CraftResource resource, Type type, int currentReputation)
-        {
-            // Reduce by arbitrary amount
-            var reward = ComputeRewardFromResourceValue(quantity, exceptional, resource, type) / 100;
-
-            reward = (int)Math.Max(10, reward - 0.5 * (currentReputation / ShoppeConstants.MAX_REPUTATION));
-
-            return reward;
         }
 
         protected int ComputePricePerCraftedItem(CraftResource resource, Type type)
@@ -59,6 +67,21 @@ namespace Server.Engines.GlobalShoppe
             var pricePerCraftedItem = resourceSellPrice * resourcePerCraft;
 
             return pricePerCraftedItem;
+        }
+
+        protected int ComputeReputation(TradeSkillContext context, TOrderContext order)
+        {
+            return ComputeReputation(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type, context.Reputation);
+        }
+
+        protected int ComputeReputation(int quantity, bool exceptional, CraftResource resource, Type type, int currentReputation)
+        {
+            // Reduce by arbitrary amount
+            var reward = ComputeRewardFromResourceValue(quantity, exceptional, resource, type) / 100;
+
+            reward = (int)Math.Max(10, reward - 0.5 * (currentReputation / ShoppeConstants.MAX_REPUTATION));
+
+            return reward;
         }
 
         protected int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)

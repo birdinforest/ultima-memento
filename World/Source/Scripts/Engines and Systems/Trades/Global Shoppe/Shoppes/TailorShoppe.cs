@@ -202,20 +202,24 @@ namespace Server.Engines.GlobalShoppe
             var context = GetOrCreateContext(from);
 
             // Ensure Orders are configured
-            context.Orders.ForEach(order =>
+            context.Orders.ForEach(untypedOrder =>
             {
+                var order = untypedOrder as OrderContext;
+                if (order == null)
+                {
+                    Console.WriteLine("Failed to set Tailor rewards for order ({0})", order.GetType().Name);
+                    return;
+                }
+
                 if (order.IsInitialized) return;
 
                 var rewards = TailorRewardCalculator.Instance;
+                rewards.SetRewards(context, order);
 
                 var item = ShoppeItemCache.GetOrCreate(order.Type);
                 order.GraphicId = item.ItemID;
                 order.ItemName = item.Name;
                 order.Person = CreatePersonName();
-
-                order.GoldReward = rewards.ComputeGold(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
-                order.PointReward = rewards.ComputePoints(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
-                order.ReputationReward = rewards.ComputeReputation(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type, context.Reputation);
 
                 order.IsInitialized = true;
             });

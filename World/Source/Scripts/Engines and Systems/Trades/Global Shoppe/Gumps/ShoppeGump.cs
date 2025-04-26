@@ -174,7 +174,7 @@ namespace Server.Engines.GlobalShoppe
                 {
                     if (index < context.Orders.Count)
                     {
-                        OrderContext order = context.Orders[index];
+                        IOrderContext order = context.Orders[index];
                         AddOrderCard(order, index, ref y);
                     }
                     else
@@ -300,7 +300,7 @@ namespace Server.Engines.GlobalShoppe
         }
 
         private void AddOrderCard(
-            OrderContext order,
+            IOrderContext order,
             int index,
             ref int y
             )

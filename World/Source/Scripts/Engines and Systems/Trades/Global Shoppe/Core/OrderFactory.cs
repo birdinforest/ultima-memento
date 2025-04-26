@@ -1,0 +1,28 @@
+namespace Server.Engines.GlobalShoppe
+{
+    public class OrderFactory
+    {
+        public static IOrderContext Create(ShoppeType shoppeType, GenericReader reader)
+        {
+            switch (shoppeType)
+            {
+                case ShoppeType.Blacksmith:
+                case ShoppeType.Bowyer:
+                case ShoppeType.Carpentry:
+                case ShoppeType.Tailor:
+                    return new OrderContext(reader);
+
+                case ShoppeType.Alchemist:
+                case ShoppeType.Baker:
+                case ShoppeType.Cartography:
+                case ShoppeType.Herbalist:
+                case ShoppeType.Librarian:
+                case ShoppeType.Mortician:
+                case ShoppeType.Tinker:
+                    break;
+            }
+
+            return null;
+        }
+    }
+}
