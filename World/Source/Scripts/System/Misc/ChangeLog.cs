@@ -91,6 +91,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix an issue with Fast-move spells and items when logging in to a slow area<br>");
 			builder.Append("- Misc - Ethereal Daemon Mount now has a body<br>");
 			builder.Append("- Misc - Fix incorrect entrance hint to Carthax Lake<br>");
+			builder.Append("- Misc - Fix an issue when attempting to re-purchase an item from a Citizen<br>");
 			builder.Append("- Mobs - Fix an issue where mobs cast curse too much<br>");
 			builder.Append("- Mobs - Fix an issue where mobs unintentionally prioritized mana drain over poison<br>");
 			builder.Append("- Mobs - Xormite elementals now drop the proper resource<br>");

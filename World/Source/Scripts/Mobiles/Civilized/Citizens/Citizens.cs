@@ -17,6 +17,7 @@ using Server.Accounting;
 using Server.Regions;
 using System.Globalization;
 using Server.Engines.MLQuests;
+using System.Linq;
 
 namespace Server.Mobiles
 {
@@ -1745,20 +1746,19 @@ namespace Server.Mobiles
 			}
 			else if ( dropped is Gold )
 			{
-				if ( CitizenCost > 0 && CitizenCost == dropped.Amount )
+				if ( CitizenService > 0 && CitizenCost > 0 && CitizenCost == dropped.Amount )
 				{
-					dropped.Delete();
-					sound = 0x2E6;
-					say = "That is a fair trade.";
-					Item give = null;
-					List<Item> belongings = new List<Item>();
-					foreach( Item i in this.Backpack.Items )
+					Item give = Backpack.Items.FirstOrDefault();
+					if (give != null)
 					{
-						give = i;
+						dropped.Delete();
+						sound = 0x2E6;
+						say = "That is a fair trade.";
+						give.Movable = true;
+						give.InvalidateProperties();
+						from.AddToBackpack( give );
 					}
-					give.Movable = true;
-					give.InvalidateProperties();
-					from.AddToBackpack( give );
+
 					CitizenService = 0;
 				}
 			}
