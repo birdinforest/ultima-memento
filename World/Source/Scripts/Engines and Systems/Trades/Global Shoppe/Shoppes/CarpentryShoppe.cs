@@ -10,7 +10,7 @@ using System.Linq;
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CFB, 0x3CFC)]
-    public class CarpentryShoppe : ShoppeBase
+    public class CarpentryShoppe : CustomerOrderShoppe<OrderContext>
     {
         [Constructable]
         public CarpentryShoppe() : base(0x3CFB)
@@ -24,7 +24,6 @@ namespace Server.Engines.GlobalShoppe
 
         public override NpcGuild Guild { get { return NpcGuild.CarpentersGuild; } }
 
-        protected override bool CanCreateOrders { get { return true; } }
         protected override SkillName PrimarySkill { get { return SkillName.Carpentry; } }
         protected override ShoppeType ShoppeType { get { return ShoppeType.Carpentry; } }
 

@@ -4,7 +4,7 @@ using Server.Mobiles;
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CF1, 0x3CF2)]
-    public class BakerShoppe : ShoppeBase
+    public class BakerShoppe : CustomerShoppe
     {
         [Constructable]
         public BakerShoppe() : base(0x3CF1)

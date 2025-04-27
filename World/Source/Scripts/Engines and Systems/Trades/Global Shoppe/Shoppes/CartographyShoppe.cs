@@ -5,7 +5,7 @@ using Server.Mobiles;
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CFD, 0x3CFE)]
-    public class CartographyShoppe : ShoppeBase
+    public class CartographyShoppe : CustomerShoppe
     {
         [Constructable]
         public CartographyShoppe() : base(0x3CFD)

@@ -100,6 +100,9 @@ namespace Server.Engines.GlobalShoppe
             }
             else
             {
+                bool supportsCustomers = m_Shoppe is ICustomerShoppe;
+                bool supportsOrders = m_Shoppe is IOrderShoppe;
+
                 TextDefinition.AddHtmlText(this, 11, 11, 532, 20, title, HtmlColors.BROWN);
 
                 AddButton(843, 9, 3610, 3610, (int)Actions.Help, GumpButtonType.Reply, 0); // Help
@@ -131,9 +134,12 @@ namespace Server.Engines.GlobalShoppe
                 TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Resources), HtmlColors.MUSTARD);
                 x_header += 120;
 
-                AddItem(x_header + 27, y_header_icon, 10922); // Promotional Token
-                TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Guild Bonus"), HtmlColors.BROWN);
-                TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", shoppe.GetReputationBonus(from)), HtmlColors.MUSTARD);
+                if (supportsCustomers)
+                {
+                    AddItem(x_header + 27, y_header_icon, 10922); // Promotional Token
+                    TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Guild Bonus"), HtmlColors.BROWN);
+                    TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", ((ICustomerShoppe)m_Shoppe).GetReputationBonus(from)), HtmlColors.MUSTARD);
+                }
 
                 // ------------------------------------------------------------------------------------
 
@@ -149,39 +155,45 @@ namespace Server.Engines.GlobalShoppe
                 TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Customers</RIGHT>", context.Customers.Count, ShoppeConstants.MAX_CUSTOMERS), HtmlColors.MUSTARD);
                 y += 20;
 
-                const int CUSTOMERS_PER_PAGE = 3;
-                for (int index = 0; index < CUSTOMERS_PER_PAGE; index++)
+                if (supportsCustomers)
                 {
-                    if (index < context.Customers.Count)
+                    int CUSTOMERS_PER_PAGE = supportsOrders ? 3 : 7;
+                    for (int index = 0; index < CUSTOMERS_PER_PAGE; index++)
                     {
-                        CustomerContext customer = context.Customers[index];
-                        AddCustomerCard(from, shoppe, context, customer, index, ref y);
-                    }
-                    else
-                    {
-                        AddTextCard(y, "Awaiting Next Customer");
-                        y += CARD_HEIGHT;
-                        y += 12;
+                        if (index < context.Customers.Count)
+                        {
+                            CustomerContext customer = context.Customers[index];
+                            AddCustomerCard(from, (ICustomerShoppe)m_Shoppe, context, customer, index, ref y);
+                        }
+                        else
+                        {
+                            AddTextCard(y, "Awaiting Next Customer");
+                            y += CARD_HEIGHT;
+                            y += 12;
+                        }
                     }
                 }
 
-                y += 10;
-                TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Orders</RIGHT>", context.Orders.Count, ShoppeConstants.MAX_ORDERS), HtmlColors.MUSTARD);
-                y += 20;
-
-                const int ORDERS_PER_PAGE = 3;
-                for (int index = 0; index < ORDERS_PER_PAGE; index++)
+                if (supportsOrders)
                 {
-                    if (index < context.Orders.Count)
+                    y += 10;
+                    TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Orders</RIGHT>", context.Orders.Count, ShoppeConstants.MAX_ORDERS), HtmlColors.MUSTARD);
+                    y += 20;
+
+                    const int ORDERS_PER_PAGE = 3;
+                    for (int index = 0; index < ORDERS_PER_PAGE; index++)
                     {
-                        IOrderContext order = context.Orders[index];
-                        AddOrderCard(order, index, ref y);
-                    }
-                    else
-                    {
-                        AddTextCard(y, "Awaiting Next Order");
-                        y += CARD_HEIGHT;
-                        y += 12;
+                        if (index < context.Orders.Count)
+                        {
+                            IOrderContext order = context.Orders[index];
+                            AddOrderCard(order, index, ref y);
+                        }
+                        else
+                        {
+                            AddTextCard(y, "Awaiting Next Order");
+                            y += CARD_HEIGHT;
+                            y += 12;
+                        }
                     }
                 }
             }
@@ -195,28 +207,28 @@ namespace Server.Engines.GlobalShoppe
             if ((int)Actions.RejectOrderBase <= buttonID) // Reject Order is higher
             {
                 var index = buttonID - (int)Actions.RejectOrderBase;
-                m_Shoppe.RejectOrder(index, m_Context);
+                ((IOrderShoppe)m_Shoppe).RejectOrder(index, m_Context);
             }
             else if ((int)Actions.CompleteOrderBase <= buttonID) // Complete is higher
             {
                 var index = buttonID - (int)Actions.CompleteOrderBase;
-                m_Shoppe.CompleteOrder(index, sender.Mobile, m_Context);
+                ((IOrderShoppe)m_Shoppe).CompleteOrder(index, sender.Mobile, m_Context);
             }
             else if ((int)Actions.DoOrderBase <= buttonID) // Do Order is higher
             {
                 var index = buttonID - (int)Actions.DoOrderBase;
-                m_Shoppe.AddOrderItem(index, sender.Mobile, m_Context);
+                ((IOrderShoppe)m_Shoppe).AddOrderItem(index, sender.Mobile, m_Context);
                 return;
             }
             else if ((int)Actions.RejectBase <= buttonID) // Reject is higher
             {
                 var index = buttonID - (int)Actions.RejectBase;
-                m_Shoppe.RejectCustomer(index, m_Context);
+                ((CustomerShoppe)m_Shoppe).RejectCustomer(index, m_Context);
             }
             else if ((int)Actions.AcceptBase <= buttonID) // Accept is higher
             {
                 var index = buttonID - (int)Actions.AcceptBase;
-                m_Shoppe.AcceptCustomer(index, sender.Mobile, m_Context);
+                ((CustomerShoppe)m_Shoppe).AcceptCustomer(index, sender.Mobile, m_Context);
             }
 
             sender.Mobile.SendGump(new ShoppeGump(
@@ -237,7 +249,7 @@ namespace Server.Engines.GlobalShoppe
 
         private void AddCustomerCard(
             PlayerMobile from,
-            ShoppeBase shoppe,
+            ICustomerShoppe shoppe,
             TradeSkillContext context,
             CustomerContext customer,
             int index,
