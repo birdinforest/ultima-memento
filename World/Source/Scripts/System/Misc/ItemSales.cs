@@ -50,6 +50,27 @@ namespace Server
 				return -1;
 		}
 
+		public static int GetValue( GemType gemType )
+		{
+			switch ( gemType )
+			{
+				case GemType.Amber: return 50;
+				case GemType.Citrine: return 60;
+				case GemType.Ruby: return 70;
+				case GemType.Tourmaline: return 80;
+				case GemType.Amethyst: return 90;
+				case GemType.Emerald: return 100;
+				case GemType.Sapphire: return 110;
+				case GemType.StarSapphire: return 120;
+				case GemType.Diamond: return 150;
+				case GemType.Pearl: return 500;
+
+				case GemType.None:
+				default:
+					return 0;
+			}
+		}
+
 		public static int AddUpBenefits( Item item, int price, bool checkCrafted, bool resale )
 		{
 			if ( item.CoinPrice > 0 )
@@ -101,26 +122,7 @@ namespace Server
 
 			if ( item is BaseTrinket && ((BaseTrinket)item).GemType != GemType.None )
 			{
-				if ( ((BaseTrinket)item).GemType == GemType.Amber )
-					price += 50;
-				else if ( ((BaseTrinket)item).GemType == GemType.Citrine )
-					price += 60;
-				else if ( ((BaseTrinket)item).GemType == GemType.Ruby )
-					price += 70;
-				else if ( ((BaseTrinket)item).GemType == GemType.Tourmaline )
-					price += 80;
-				else if ( ((BaseTrinket)item).GemType == GemType.Amethyst )
-					price += 90;
-				else if ( ((BaseTrinket)item).GemType == GemType.Emerald )
-					price += 100;
-				else if ( ((BaseTrinket)item).GemType == GemType.Sapphire )
-					price += 110;
-				else if ( ((BaseTrinket)item).GemType == GemType.StarSapphire )
-					price += 120;
-				else if ( ((BaseTrinket)item).GemType == GemType.Diamond )
-					price += 150;
-				else if ( ((BaseTrinket)item).GemType == GemType.Pearl )
-					price += 500;
+				price += GetValue(((BaseTrinket)item).GemType);
 			}
 
 			if ( item is BaseArmor )

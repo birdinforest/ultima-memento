@@ -538,33 +538,40 @@ namespace Server.Items
 			if ( context != null && context.DoNotColor )
 				Hue = 0;
 
-			if ( 1 < craftItem.Resources.Count )
-			{
-				resourceType = craftItem.Resources.GetAt( 1 ).ItemType;
-
-				if ( resourceType == typeof( StarSapphire ) )
-					GemType = GemType.StarSapphire;
-				else if ( resourceType == typeof( Emerald ) )
-					GemType = GemType.Emerald;
-				else if ( resourceType == typeof( Sapphire ) )
-					GemType = GemType.Sapphire;
-				else if ( resourceType == typeof( Ruby ) )
-					GemType = GemType.Ruby;
-				else if ( resourceType == typeof( Citrine ) )
-					GemType = GemType.Citrine;
-				else if ( resourceType == typeof( Amethyst ) )
-					GemType = GemType.Amethyst;
-				else if ( resourceType == typeof( Tourmaline ) )
-					GemType = GemType.Tourmaline;
-				else if ( resourceType == typeof( Amber ) )
-					GemType = GemType.Amber;
-				else if ( resourceType == typeof( Diamond ) )
-					GemType = GemType.Diamond;
-				else if ( resourceType == typeof( Oyster ) )
-					GemType = GemType.Pearl;
-			}
+            GemType = GetGemType(craftItem);
 
 			return 1;
+		}
+
+		public static GemType GetGemType( CraftItem craftItem )
+		{
+			if ( 1 < craftItem.Resources.Count )
+			{
+				Type resourceType = craftItem.Resources.GetAt( 1 ).ItemType;
+			
+				if ( resourceType == typeof( StarSapphire ) )
+					return GemType.StarSapphire;
+				if ( resourceType == typeof( Emerald ) )
+					return GemType.Emerald;
+				if ( resourceType == typeof( Sapphire ) )
+					return GemType.Sapphire;
+				if ( resourceType == typeof( Ruby ) )
+					return GemType.Ruby;
+				if ( resourceType == typeof( Citrine ) )
+					return GemType.Citrine;
+				if ( resourceType == typeof( Amethyst ) )
+					return GemType.Amethyst;
+				if ( resourceType == typeof( Tourmaline ) )
+					return GemType.Tourmaline;
+				if ( resourceType == typeof( Amber ) )
+					return GemType.Amber;
+				if ( resourceType == typeof( Diamond ) )
+					return GemType.Diamond;
+				if ( resourceType == typeof( Oyster ) )
+					return GemType.Pearl;
+			}
+
+			return GemType.None;
 		}
 
 		#endregion
