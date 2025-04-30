@@ -65,6 +65,32 @@ namespace Server
 		public int AosArmorAttribute_MageArmor { get; set; }
 	}
 
+	public struct GemModInfo
+	{
+		public int AosAttribute_RegenHits { get; set; }
+		public int AosAttribute_RegenStam { get; set; }
+		public int AosAttribute_RegenMana { get; set; }
+		public int AosAttribute_DefendChance { get; set; }
+		public int AosAttribute_AttackChance { get; set; }
+		public int AosAttribute_BonusStr { get; set; }
+		public int AosAttribute_BonusDex { get; set; }
+		public int AosAttribute_BonusInt { get; set; }
+		public int AosAttribute_BonusHits { get; set; }
+		public int AosAttribute_BonusStam { get; set; }
+		public int AosAttribute_BonusMana { get; set; }
+		public int AosAttribute_WeaponDamage { get; set; }
+		public int AosAttribute_WeaponSpeed { get; set; }
+		public int AosAttribute_SpellDamage { get; set; }
+		public int AosAttribute_CastRecovery { get; set; }
+		public int AosAttribute_CastSpeed { get; set; }
+		public int AosAttribute_LowerManaCost { get; set; }
+		public int AosAttribute_LowerRegCost { get; set; }
+		public int AosAttribute_ReflectPhysical { get; set; }
+		public int AosAttribute_EnhancePotions { get; set; }
+		public int AosAttribute_SpellChanneling { get; set; }
+		public int AosAttribute_NightSight { get; set; }
+	}
+
     class ResourceMods
     {
 		public static CraftResource SearchResource( Item item )
@@ -538,6 +564,11 @@ namespace Server
 				if ( reduce ){ var.Attributes.SpellChanneling -= AosAttribute_SpellChanneling; } else { var.Attributes.SpellChanneling += AosAttribute_SpellChanneling; }
 				if ( reduce ){ var.Attributes.NightSight -= AosAttribute_NightSight; } else { var.Attributes.NightSight += AosAttribute_NightSight; }
 			}
+		}
+
+		public static void ModifyJewelry( Item item, GemType resource, bool reduce, GemModInfo mods )
+		{
+			ModifyJewelry( item, resource, reduce, mods.AosAttribute_RegenHits, mods.AosAttribute_RegenStam, mods.AosAttribute_RegenMana, mods.AosAttribute_DefendChance, mods.AosAttribute_AttackChance, mods.AosAttribute_BonusStr, mods.AosAttribute_BonusDex, mods.AosAttribute_BonusInt, mods.AosAttribute_BonusHits, mods.AosAttribute_BonusStam, mods.AosAttribute_BonusMana, mods.AosAttribute_WeaponDamage, mods.AosAttribute_WeaponSpeed, mods.AosAttribute_SpellDamage, mods.AosAttribute_CastRecovery, mods.AosAttribute_CastSpeed, mods.AosAttribute_LowerManaCost, mods.AosAttribute_LowerRegCost, mods.AosAttribute_ReflectPhysical, mods.AosAttribute_EnhancePotions, mods.AosAttribute_SpellChanneling, mods.AosAttribute_NightSight );
 		}
 
 		public static void ModifyJewelry( Item item, GemType resource, bool reduce, int AosAttribute_RegenHits, int AosAttribute_RegenStam, int AosAttribute_RegenMana, int AosAttribute_DefendChance, int AosAttribute_AttackChance, int AosAttribute_BonusStr, int AosAttribute_BonusDex, int AosAttribute_BonusInt, int AosAttribute_BonusHits, int AosAttribute_BonusStam, int AosAttribute_BonusMana, int AosAttribute_WeaponDamage, int AosAttribute_WeaponSpeed, int AosAttribute_SpellDamage, int AosAttribute_CastRecovery, int AosAttribute_CastSpeed, int AosAttribute_LowerManaCost, int AosAttribute_LowerRegCost, int AosAttribute_ReflectPhysical, int AosAttribute_EnhancePotions, int AosAttribute_SpellChanneling, int AosAttribute_NightSight )
