@@ -217,7 +217,7 @@ namespace Server.Engines.GlobalShoppe
             else if ((int)Actions.DoOrderBase <= buttonID) // Do Order is higher
             {
                 var index = buttonID - (int)Actions.DoOrderBase;
-                ((IOrderShoppe)m_Shoppe).AddOrderItem(index, sender.Mobile, m_Context);
+                ((IOrderShoppe)m_Shoppe).OpenOrderGump(index, sender.Mobile, m_Context);
                 return;
             }
             else if ((int)Actions.RejectBase <= buttonID) // Reject is higher

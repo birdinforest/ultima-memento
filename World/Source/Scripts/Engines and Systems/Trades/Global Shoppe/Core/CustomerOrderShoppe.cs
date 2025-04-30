@@ -14,17 +14,6 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
-        public void AddOrderItem(int index, Mobile from, TradeSkillContext context)
-        {
-            if (context.Orders.Count <= index) return;
-
-            var order = context.Orders[index];
-            if (order.IsComplete) return;
-
-            from.CloseGump(typeof(OrderGump));
-            from.SendGump(new OrderGump(from, order));
-        }
-
         public void CompleteOrder(int index, Mobile from, TradeSkillContext context)
         {
             if (context.Orders.Count <= index) return;
@@ -46,6 +35,17 @@ namespace Server.Engines.GlobalShoppe
             if (typed == null) return "invalid_order";
 
             return GetDescription(typed);
+        }
+
+        public void OpenOrderGump(int index, Mobile from, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            if (order.IsComplete) return;
+
+            from.CloseGump(typeof(OrderGump));
+            from.SendGump(new OrderGump(from, order));
         }
 
         public void RejectOrder(int index, TradeSkillContext context)
