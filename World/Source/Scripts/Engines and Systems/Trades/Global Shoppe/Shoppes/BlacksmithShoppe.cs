@@ -10,7 +10,7 @@ using System.Linq;
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CF7, 0x3CF8)]
-    public class BlacksmithShoppe : CustomerOrderShoppe<OrderContext>
+    public class BlacksmithShoppe : BasicCustomerOrderShoppe
     {
         [Constructable]
         public BlacksmithShoppe() : base(0x3CF7)

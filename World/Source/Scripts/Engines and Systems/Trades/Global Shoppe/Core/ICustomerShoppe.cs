@@ -8,7 +8,7 @@ namespace Server.Engines.GlobalShoppe
 
         int GetReputationBonus(PlayerMobile from);
 
-        int GetSuccessChance(PlayerMobile from, int difficulty);
+        int GetSuccessChance(Mobile from, int difficulty);
 
         bool HasEnoughResources(TradeSkillContext context, CustomerContext customer);
 

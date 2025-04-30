@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Server.Engines.GlobalShoppe
 {
     public abstract class CustomerOrderShoppe<TOrderContext> : CustomerShoppe, IOrderShoppe
-        where TOrderContext : IOrderContext
+        where TOrderContext : class, IOrderContext
     {
         protected CustomerOrderShoppe(Serial serial) : base(serial)
         {
@@ -40,6 +40,14 @@ namespace Server.Engines.GlobalShoppe
             from.PlaySound(0x32); // Dropgem1
         }
 
+        public string GetDescription(IOrderContext order)
+        {
+            var typed = order as TOrderContext;
+            if (typed == null) return "invalid_order";
+
+            return GetDescription(typed);
+        }
+
         public void RejectOrder(int index, TradeSkillContext context)
         {
             if (context.Orders.Count <= index) return;
@@ -51,6 +59,8 @@ namespace Server.Engines.GlobalShoppe
         }
 
         protected abstract IEnumerable<TOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int amount);
+
+        protected abstract string GetDescription(TOrderContext order);
 
         protected override void OpenGump(Mobile from, TradeSkillContext context)
         {

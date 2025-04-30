@@ -186,7 +186,7 @@ namespace Server.Engines.GlobalShoppe
                         if (index < context.Orders.Count)
                         {
                             IOrderContext order = context.Orders[index];
-                            AddOrderCard(order, index, ref y);
+                            AddOrderCard((IOrderShoppe)m_Shoppe, order, index, ref y);
                         }
                         else
                         {
@@ -312,6 +312,7 @@ namespace Server.Engines.GlobalShoppe
         }
 
         private void AddOrderCard(
+            IOrderShoppe shoppe,
             IOrderContext order,
             int index,
             ref int y
@@ -322,12 +323,7 @@ namespace Server.Engines.GlobalShoppe
 
             // Flavor Text
             TextDefinition.AddHtmlText(this, 36, y, 319, 20, order.Person, HtmlColors.MUSTARD);
-            var description = string.Format("Craft {0}", order.MaxAmount);
-            if (order.RequireExceptional) description += " exceptional";
-            if (order.Resource != CraftResource.None) description = string.Format("{0} {1}", description, CraftResources.GetResourceName(order.Resource));
-            description = string.Format("{0} {1}", description, order.ItemName);
-
-            TextDefinition.AddHtmlText(this, 36, y + 20, 360, 40, description, false, false, HtmlColors.BROWN, HtmlColors.BROWN);
+            TextDefinition.AddHtmlText(this, 36, y + 20, 360, 40, shoppe.GetDescription(order), false, false, HtmlColors.BROWN, HtmlColors.BROWN);
 
             // Accept/Decline
             const int x_card_action = 780;

@@ -4,7 +4,7 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public abstract class CustomerShoppe : ShoppeBase
+    public abstract class CustomerShoppe : ShoppeBase, ICustomerShoppe
     {
         protected CustomerShoppe(Serial serial) : base(serial)
         {
