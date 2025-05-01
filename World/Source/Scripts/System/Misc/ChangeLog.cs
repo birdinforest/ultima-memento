@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.0.2";
+			return "Version: 1.1.0";
 		}
 
 		public static string Versions()
@@ -17,6 +17,16 @@ namespace Server.Misc
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			builder.Append(Version());
+			builder.Append("<br>");
+
+			builder.Append("Changes<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 			builder.Append("<br>");
 
 			builder.Append("Breaking Changes<br>");
