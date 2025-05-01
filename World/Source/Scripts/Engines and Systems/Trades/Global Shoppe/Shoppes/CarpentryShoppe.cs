@@ -221,7 +221,7 @@ namespace Server.Engines.GlobalShoppe
                 var order = untypedOrder as EquipmentOrderContext;
                 if (order == null)
                 {
-                    Console.WriteLine("Failed to set Carpentry rewards for order ({0})", order.GetType().Name);
+                    Console.WriteLine("Failed to set Carpentry rewards for order ({0})", untypedOrder.GetType().Name);
                     return;
                 }
 
