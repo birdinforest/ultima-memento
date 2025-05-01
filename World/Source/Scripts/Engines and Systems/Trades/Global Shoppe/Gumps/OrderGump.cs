@@ -72,8 +72,9 @@ namespace Server.Engines.GlobalShoppe
         {
             var requireExceptional = deed is IExceptionalItem && ((IExceptionalItem)deed).RequireExceptional;
             var requireResource = deed is IResourceItem && ((IResourceItem)deed).Resource != CraftResource.None;
+            var requireGemType = deed is IGemTypeItem && ((IGemTypeItem)deed).GemType != GemType.None;
 
-            if (requireExceptional || requireResource)
+            if (requireExceptional || requireResource || requireGemType)
                 AddHtmlLocalized(75, 130, 200, 20, 1045140, 0x7FFF, false, false); // Special requirements to meet:
 
             int i = 0;
@@ -88,6 +89,12 @@ namespace Server.Engines.GlobalShoppe
             {
                 ++i;
                 AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + CraftResources.GetResourceName(((IResourceItem)deed).Resource), false, false);
+            }
+
+            if (requireGemType)
+            {
+                ++i;
+                AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + ((IGemTypeItem)deed).GemType, false, false); // TODO: Better name
             }
         }
 
@@ -129,6 +136,17 @@ namespace Server.Engines.GlobalShoppe
                     if (resource >= CraftResource.AshTree && resource <= CraftResource.ElvenTree && item.Resource != resource)
                     {
                         from.SendMessage("The item is not made from the requested wood type.");
+                        return false;
+                    }
+                }
+
+                if (order is IGemTypeItem)
+                {
+                    var gemType = ((IGemTypeItem)order).GemType;
+                    if ((item is BaseTrinket) == false || ((BaseTrinket)item).GemType != gemType)
+                    {
+                        from.SendMessage("The item does not have the requested gem type.");
+
                         return false;
                     }
                 }

@@ -1,11 +1,16 @@
+using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3D03, 0x3D04)]
-    public class TinkerShoppe : CustomerShoppe
+    public class TinkerShoppe : CustomerOrderShoppe<TinkerOrderContext>
     {
         [Constructable]
         public TinkerShoppe() : base(0x3D03)
@@ -17,10 +22,14 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
-        public override NpcGuild Guild { get { return NpcGuild.TinkersGuild; } }
+        public override NpcGuild Guild
+        { get { return NpcGuild.TinkersGuild; } }
 
-        protected override SkillName PrimarySkill { get { return SkillName.Tinkering; } }
-        protected override ShoppeType ShoppeType { get { return ShoppeType.Tinker; } }
+        protected override SkillName PrimarySkill
+        { get { return SkillName.Tinkering; } }
+
+        protected override ShoppeType ShoppeType
+        { get { return ShoppeType.Tinker; } }
 
         public override bool OnDragDrop(Mobile from, Item dropped)
         {
@@ -30,6 +39,81 @@ namespace Server.Engines.GlobalShoppe
                 return AddResource(from, dropped);
 
             return base.OnDragDrop(from, dropped);
+        }
+
+        protected override IEnumerable<TinkerOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+        {
+            if (count < 1) yield break;
+
+            var craftSystem = DefTinkering.CraftSystem;
+
+            // Build item list
+            var items = GetCraftItems(from, craftSystem)
+                .Where(i => TypeUtilities.IsAnyTypeOrDerived(
+                    i.ItemType,
+                    typeof(JewelryBracelet),
+                    typeof(JewelryCirclet),
+                    typeof(JewelryEarrings),
+                    typeof(JewelryNecklace),
+                    typeof(JewelryRing)
+                ))
+                .ToList();
+            if (items.Count < 1) yield break;
+
+            // Build resource list
+            var resources = new List<CraftResource>();
+            foreach (var o in craftSystem.CraftSubRes)
+            {
+                var res = o as CraftSubRes;
+                if (res == null || from.Skills[craftSystem.MainSkill].Value < res.RequiredSkill) continue;
+                if (res.ItemType == typeof(IronIngot)) continue; // Always an option
+
+                CraftResource resource;
+                if (res.ItemType == typeof(DullCopperIngot)) resource = CraftResource.DullCopper;
+                else if (res.ItemType == typeof(ShadowIronIngot)) resource = CraftResource.ShadowIron;
+                else if (res.ItemType == typeof(CopperIngot)) resource = CraftResource.Copper;
+                else if (res.ItemType == typeof(BronzeIngot)) resource = CraftResource.Bronze;
+                else if (res.ItemType == typeof(GoldIngot)) resource = CraftResource.Gold;
+                else if (res.ItemType == typeof(AgapiteIngot)) resource = CraftResource.Agapite;
+                else if (res.ItemType == typeof(VeriteIngot)) resource = CraftResource.Verite;
+                else if (res.ItemType == typeof(ValoriteIngot)) resource = CraftResource.Valorite;
+                else if (res.ItemType == typeof(NepturiteIngot)) resource = CraftResource.Nepturite;
+                else if (res.ItemType == typeof(ObsidianIngot)) resource = CraftResource.Obsidian;
+                else if (res.ItemType == typeof(SteelIngot)) resource = CraftResource.Steel;
+                else if (res.ItemType == typeof(BrassIngot)) resource = CraftResource.Brass;
+                else if (res.ItemType == typeof(MithrilIngot)) resource = CraftResource.Mithril;
+                else if (res.ItemType == typeof(XormiteIngot)) resource = CraftResource.Xormite;
+                else if (res.ItemType == typeof(DwarvenIngot)) resource = CraftResource.Dwarven;
+                else continue;
+
+                resources.Add(resource);
+            }
+
+            // Add quantity bonus for every 5 points over 100
+            var amountBonus = (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
+
+            for (int i = 0; i < count; i++)
+            {
+                var item = Utility.Random(items);
+                if (item == null) yield break;
+
+                var resource = 0 < resources.Count ? Utility.Random(resources) : CraftResource.None;
+                var gemType = BaseTrinket.GetGemType(item);
+                var amount = gemType == GemType.Pearl
+                    ? Utility.RandomMinMax(1, 3) // Pearls are very rare
+                    : amountBonus + Utility.RandomMinMax(3, 10);
+                if (resource == CraftResource.None && gemType == GemType.None) amount += 10; // Pump value by increasing count
+
+                var order = new TinkerOrderContext(item.ItemType)
+                {
+                    GemType = gemType,
+                    MaxAmount = amount,
+                    CurrentAmount = 0,
+                    Resource = resource,
+                };
+
+                yield return order;
+            }
         }
 
         protected override string CreateTask(TradeSkillContext context)
@@ -123,9 +207,69 @@ namespace Server.Engines.GlobalShoppe
             return task;
         }
 
+        protected override string GetDescription(TinkerOrderContext order)
+        {
+            var description = string.Format("Craft {0}", order.MaxAmount);
+            if (order.RequireExceptional) description += " exceptional";
+            if (order.Resource != CraftResource.None) description = string.Format("{0} {1}", description, CraftResources.GetResourceName(order.Resource));
+
+            string gemName = null;
+            switch (order.GemType)
+            {
+                case GemType.StarSapphire:
+                    gemName = "star sapphire";
+                    break;
+
+                case GemType.Emerald:
+                case GemType.Sapphire:
+                case GemType.Ruby:
+                case GemType.Citrine:
+                case GemType.Amethyst:
+                case GemType.Tourmaline:
+                case GemType.Amber:
+                case GemType.Diamond:
+                case GemType.Pearl:
+                    gemName = order.GemType.ToString().ToLower();
+                    break;
+
+                case GemType.None:
+                default:
+                    break;
+            }
+
+            if (gemName != null) description = string.Format("{0} {1}", description, gemName);
+
+            description = string.Format("{0} {1}", description, order.ItemName);
+
+            return description;
+        }
+
         protected override ShoppeGump GetGump(PlayerMobile from)
         {
             var context = GetOrCreateContext(from);
+
+            // Ensure Orders are configured
+            context.Orders.ForEach(untypedOrder =>
+            {
+                var order = untypedOrder as TinkerOrderContext;
+                if (order == null)
+                {
+                    Console.WriteLine("Failed to set Tinker rewards for order ({0})", order.GetType().Name);
+                    return;
+                }
+
+                if (order.IsInitialized) return;
+
+                var rewards = TinkerRewardCalculator.Instance;
+                rewards.SetRewards(context, order);
+
+                var item = ShoppeItemCache.GetOrCreate(order.Type);
+                order.GraphicId = item.ItemID;
+                order.ItemName = item.Name;
+                order.Person = CreatePersonName();
+
+                order.IsInitialized = true;
+            });
 
             return new ShoppeGump(
                 from,

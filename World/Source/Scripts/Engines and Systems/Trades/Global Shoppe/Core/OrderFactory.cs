@@ -12,13 +12,15 @@ namespace Server.Engines.GlobalShoppe
                 case ShoppeType.Tailor:
                     return new OrderContext(reader);
 
+                case ShoppeType.Tinker:
+                    return new TinkerOrderContext(reader);
+
                 case ShoppeType.Alchemist:
                 case ShoppeType.Baker:
                 case ShoppeType.Cartography:
                 case ShoppeType.Herbalist:
                 case ShoppeType.Librarian:
                 case ShoppeType.Mortician:
-                case ShoppeType.Tinker:
                     break;
             }
 
