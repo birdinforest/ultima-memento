@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Shoppe - Targeting a container now adds all possible items to the Order<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
