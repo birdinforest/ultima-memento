@@ -37,7 +37,7 @@ namespace Server.Engines.GlobalShoppe
             return base.OnDragDrop(from, dropped);
         }
 
-        protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+        protected override IEnumerable<EquipmentOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
         {
             if (count < 1) yield break;
 
@@ -86,7 +86,7 @@ namespace Server.Engines.GlobalShoppe
                 var amount = amountBonus + Utility.RandomMinMax(3, 10);
                 if (resource == CraftResource.None) amount += 10; // Pump value by increasing count
 
-                var order = new OrderContext(item.ItemType)
+                var order = new EquipmentOrderContext(item.ItemType)
                 {
                     RequireExceptional = Utility.RandomDouble() < 0.25,
                     MaxAmount = amount,
@@ -203,7 +203,7 @@ namespace Server.Engines.GlobalShoppe
             // Ensure Orders are configured
             context.Orders.ForEach(untypedOrder =>
             {
-                var order = untypedOrder as OrderContext;
+                var order = untypedOrder as EquipmentOrderContext;
                 if (order == null)
                 {
                     Console.WriteLine("Failed to set Tailor rewards for order ({0})", order.GetType().Name);

@@ -10,7 +10,7 @@ namespace Server.Engines.GlobalShoppe
                 case ShoppeType.Bowyer:
                 case ShoppeType.Carpentry:
                 case ShoppeType.Tailor:
-                    return new OrderContext(reader);
+                    return new EquipmentOrderContext(reader);
 
                 case ShoppeType.Tinker:
                     return new TinkerOrderContext(reader);

@@ -4,7 +4,7 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public sealed class CarpenterRewardCalculator : BaseCraftRewardCalculator<OrderContext>
+    public sealed class CarpenterRewardCalculator : BaseCraftRewardCalculator<EquipmentOrderContext>
     {
         public static readonly CarpenterRewardCalculator Instance = new CarpenterRewardCalculator();
 

@@ -4,7 +4,7 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public sealed class TailorRewardCalculator : BaseCraftRewardCalculator<OrderContext>
+    public sealed class TailorRewardCalculator : BaseCraftRewardCalculator<EquipmentOrderContext>
     {
         public static readonly TailorRewardCalculator Instance = new TailorRewardCalculator();
 

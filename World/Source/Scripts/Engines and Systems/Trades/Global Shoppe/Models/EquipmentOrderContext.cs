@@ -3,14 +3,14 @@ using System;
 namespace Server.Engines.GlobalShoppe
 {
     [PropertyObject]
-    public class OrderContext : IOrderContext, IResourceItem, IExceptionalItem
+    public class EquipmentOrderContext : IOrderContext, IResourceItem, IExceptionalItem
     {
-        public OrderContext(Type type)
+        public EquipmentOrderContext(Type type)
         {
             Type = type;
         }
 
-        public OrderContext(GenericReader reader)
+        public EquipmentOrderContext(GenericReader reader)
         {
             int version = reader.ReadInt();
 

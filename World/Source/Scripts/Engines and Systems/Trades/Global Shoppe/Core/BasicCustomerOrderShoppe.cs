@@ -2,7 +2,7 @@ using Server.Items;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public abstract class BasicCustomerOrderShoppe : CustomerOrderShoppe<OrderContext>
+    public abstract class BasicCustomerOrderShoppe : CustomerOrderShoppe<EquipmentOrderContext>
     {
         protected BasicCustomerOrderShoppe(Serial serial) : base(serial)
         {
@@ -12,7 +12,7 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
-        protected override string GetDescription(OrderContext order)
+        protected override string GetDescription(EquipmentOrderContext order)
         {
             var description = string.Format("Craft {0}", order.MaxAmount);
             if (order.RequireExceptional) description += " exceptional";
