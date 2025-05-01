@@ -15,8 +15,6 @@ namespace Server.Engines.GlobalShoppe
         string Person { get; }
         int PointReward { get; set; }
         int ReputationReward { get; set; }
-        bool RequireExceptional { get; }
-        CraftResource Resource { get; }
         Type Type { get; }
 
         void Serialize(GenericWriter writer);

@@ -5,7 +5,7 @@ using System;
 namespace Server.Engines.GlobalShoppe
 {
     public abstract class BaseCraftRewardCalculator<TOrderContext> : BaseRewardCalculator
-        where TOrderContext : class, IOrderContext
+        where TOrderContext : class, IOrderContext, IResourceItem, IExceptionalItem
     {
         public void SetRewards(TradeSkillContext context, TOrderContext order)
         {

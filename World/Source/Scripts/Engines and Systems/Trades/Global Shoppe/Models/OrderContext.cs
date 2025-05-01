@@ -3,7 +3,7 @@ using System;
 namespace Server.Engines.GlobalShoppe
 {
     [PropertyObject]
-    public class OrderContext : IOrderContext
+    public class OrderContext : IOrderContext, IResourceItem, IExceptionalItem
     {
         public OrderContext(Type type)
         {
