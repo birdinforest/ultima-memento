@@ -158,8 +158,31 @@ namespace Server.Engines.GlobalShoppe
             {
                 if (!CanAddItem(from, order, targetItem)) return;
 
-                targetItem.Delete();
-                m_Deed.CurrentAmount++;
+                if (targetItem.Stackable)
+                {
+                    if (0 < targetItem.Amount)
+                    {
+                        var remaining = Math.Max(0, m_Deed.MaxAmount - m_Deed.CurrentAmount);
+                        if (targetItem.Amount < remaining)
+                        {
+                            m_Deed.CurrentAmount += targetItem.Amount;
+                            targetItem.Delete();
+                        }
+                        else
+                        {
+                            m_Deed.CurrentAmount += remaining;
+                            targetItem.Amount -= remaining;
+                        }
+                    }
+
+                    if (targetItem.Amount < 1)
+                        targetItem.Delete();
+                }
+                else
+                {
+                    m_Deed.CurrentAmount++;
+                    targetItem.Delete();
+                }
 
                 from.SendLocalizedMessage(1045170); // The item has been combined with the deed.
 
