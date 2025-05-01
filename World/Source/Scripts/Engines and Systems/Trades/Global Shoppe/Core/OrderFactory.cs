@@ -16,6 +16,8 @@ namespace Server.Engines.GlobalShoppe
                     return new TinkerOrderContext(reader);
 
                 case ShoppeType.Alchemist:
+                    return new OrderContext(reader);
+
                 case ShoppeType.Baker:
                 case ShoppeType.Cartography:
                 case ShoppeType.Herbalist:
