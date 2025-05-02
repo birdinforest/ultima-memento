@@ -91,84 +91,84 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			index = AddCraft( typeof( LureStonePotion ), "Brews", "stone in a jar", 10.0, 30.0, typeof( MoonCrystal ), "Moon Crystal", 1, 1044129 );
+			index = AddCraft( typeof( LureStonePotion ), "Brews", "stone in a jar", 10.0, 30.0, typeof( MoonCrystal ), "Moon Crystal", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 5.0, 15.0 );
-			AddRes( index, typeof ( SilverWidow ), "Silver Widow", 1, 1044129 );
+			AddRes( index, typeof ( SilverWidow ), "Silver Widow", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( NaturesPassagePotion ), "Brews", "nature passage mixture", 15.0, 35.0, typeof( SeaSalt ), "Sea Salt", 1, 1044129 );
+			index = AddCraft( typeof( NaturesPassagePotion ), "Brews", "nature passage mixture", 15.0, 35.0, typeof( SeaSalt ), "Sea Salt", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 10.0, 20.0 );
-			AddRes( index, typeof ( FairyEgg ), "Fairy Egg", 1, 1044129 );
+			AddRes( index, typeof ( FairyEgg ), "Fairy Egg", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( ShieldOfEarthPotion ), "Brews", "shield of earth liquid", 20.0, 40.0, typeof( Ginseng ), "Ginseng", 1, 1044129 );
+			index = AddCraft( typeof( ShieldOfEarthPotion ), "Brews", "shield of earth liquid", 20.0, 40.0, typeof( Ginseng ), "Ginseng", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 15.0, 25.0 );
-			AddRes( index, typeof ( BlackPearl ), "Black Pearl", 1, 1044129 );
+			AddRes( index, typeof ( BlackPearl ), "Black Pearl", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( WoodlandProtectionPotion ), "Brews", "woodland protection oil", 25.0, 45.0, typeof( Garlic ), "Garlic", 1, 1044129 );
+			index = AddCraft( typeof( WoodlandProtectionPotion ), "Brews", "woodland protection oil", 25.0, 45.0, typeof( Garlic ), "Garlic", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 20.0, 30.0 );
-			AddRes( index, typeof ( SwampBerries ), "Swamp Berries", 1, 1044129 );
+			AddRes( index, typeof ( SwampBerries ), "Swamp Berries", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( StoneCirclePotion ), "Brews", "stone rising concoction", 30.0, 50.0, typeof( BeetleShell ), "Beetle Shell", 1, 1044129 );
+			index = AddCraft( typeof( StoneCirclePotion ), "Brews", "stone rising concoction", 30.0, 50.0, typeof( BeetleShell ), "Beetle Shell", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 25.0, 35.0 );
-			AddRes( index, typeof ( SeaSalt ), "Sea Salt", 1, 1044129 );
+			AddRes( index, typeof ( SeaSalt ), "Sea Salt", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( GraspingRootsPotion ), "Brews", "grasping roots mixture", 35.0, 55.0, typeof( MandrakeRoot ), "Mandrake Root", 1, 1044129 );
+			index = AddCraft( typeof( GraspingRootsPotion ), "Brews", "grasping roots mixture", 35.0, 55.0, typeof( MandrakeRoot ), "Mandrake Root", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 30.0, 40.0 );
-			AddRes( index, typeof ( Ginseng ), "Ginseng", 1, 1044129 );
+			AddRes( index, typeof ( Ginseng ), "Ginseng", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( DruidicRunePotion ), "Brews", "druidic marking oil", 40.0, 60.0, typeof( BlackPearl ), "Black Pearl", 1, 1044129 );
+			index = AddCraft( typeof( DruidicRunePotion ), "Brews", "druidic marking oil", 40.0, 60.0, typeof( BlackPearl ), "Black Pearl", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 35.0, 45.0 );
-			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 1, 1044129 );
+			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( HerbalHealingPotion ), "Brews", "herbal healing elixir", 45.0, 65.0, typeof( RedLotus ), "Red Lotus", 1, 1044129 );
+			index = AddCraft( typeof( HerbalHealingPotion ), "Brews", "herbal healing elixir", 45.0, 65.0, typeof( RedLotus ), "Red Lotus", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 40.0, 50.0 );
-			AddRes( index, typeof ( Garlic ), "Garlic", 1, 1044129 );
+			AddRes( index, typeof ( Garlic ), "Garlic", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( BlendWithForestPotion ), "Brews", "forest blending oil", 50.0, 70.0, typeof( SilverWidow ), "Silver Widow", 1, 1044129 );
+			index = AddCraft( typeof( BlendWithForestPotion ), "Brews", "forest blending oil", 50.0, 70.0, typeof( SilverWidow ), "Silver Widow", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 45.0, 55.0 );
-			AddRes( index, typeof ( Nightshade ), "Nightshade", 1, 1044129 );
+			AddRes( index, typeof ( Nightshade ), "Nightshade", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( FireflyPotion ), "Brews", "jar of fireflies", 55.0, 75.0, typeof( SpidersSilk ), "Spider Silk", 1, 1044129 );
+			index = AddCraft( typeof( FireflyPotion ), "Brews", "jar of fireflies", 55.0, 75.0, typeof( SpidersSilk ), "Spider Silk", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 50.0, 60.0 );
-			AddRes( index, typeof ( ButterflyWings ), "Butterfly Wings", 1, 1044129 );
+			AddRes( index, typeof ( ButterflyWings ), "Butterfly Wings", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( MushroomGatewayPotion ), "Brews", "mushroom gateway growth", 60.0, 80.0, typeof( Bloodmoss ), "Bloodmoss", 1, 1044129 );
+			index = AddCraft( typeof( MushroomGatewayPotion ), "Brews", "mushroom gateway growth", 60.0, 80.0, typeof( Bloodmoss ), "Bloodmoss", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 55.0, 65.0 );
-			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 1, 1044129 );
+			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( SwarmOfInsectsPotion ), "Brews", "jar of insects", 65.0, 85.0, typeof( ButterflyWings ), "Butterfly Wings", 1, 1044129 );
+			index = AddCraft( typeof( SwarmOfInsectsPotion ), "Brews", "jar of insects", 65.0, 85.0, typeof( ButterflyWings ), "Butterfly Wings", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 60.0, 70.0 );
-			AddRes( index, typeof ( BeetleShell ), "Beetle Shell", 1, 1044129 );
+			AddRes( index, typeof ( BeetleShell ), "Beetle Shell", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( ProtectiveFairyPotion ), "Brews", "fairy in a jar", 70.0, 90.0, typeof( FairyEgg ), "Fairy Egg", 1, 1044129 );
+			index = AddCraft( typeof( ProtectiveFairyPotion ), "Brews", "fairy in a jar", 70.0, 90.0, typeof( FairyEgg ), "Fairy Egg", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 65.0, 75.0 );
-			AddRes( index, typeof ( MoonCrystal ), "Moon Crystal", 1, 1044129 );
+			AddRes( index, typeof ( MoonCrystal ), "Moon Crystal", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( TreefellowPotion ), "Brews", "treant fertilizer", 75.0, 95.0, typeof( SwampBerries ), "Swamp Berries", 1, 1044129 );
+			index = AddCraft( typeof( TreefellowPotion ), "Brews", "treant fertilizer", 75.0, 95.0, typeof( SwampBerries ), "Swamp Berries", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 70.0, 80.0 );
-			AddRes( index, typeof ( MandrakeRoot ), "Mandrake Root", 1, 1044129 );
+			AddRes( index, typeof ( MandrakeRoot ), "Mandrake Root", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( VolcanicEruptionPotion ), "Brews", "volcanic fluid", 80.0, 110.0, typeof( Brimstone ), "Brimstone", 1, 1044129 );
+			index = AddCraft( typeof( VolcanicEruptionPotion ), "Brews", "volcanic fluid", 80.0, 110.0, typeof( Brimstone ), "Brimstone", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 75.0, 85.0 );
-			AddRes( index, typeof ( SulfurousAsh ), "Sulfurous Ash", 1, 1044129 );
+			AddRes( index, typeof ( SulfurousAsh ), "Sulfurous Ash", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( RestorativeSoilPotion ), "Brews", "jar of magical mud", 85.0, 120.0, typeof( Nightshade ), "Nightshade", 1, 1044129 );
+			index = AddCraft( typeof( RestorativeSoilPotion ), "Brews", "jar of magical mud", 85.0, 120.0, typeof( Nightshade ), "Nightshade", 2, 1044129 );
 			AddSkill( index, SkillName.Veterinary, 80.0, 90.0 );
-			AddRes( index, typeof ( RedLotus ), "Red Lotus", 1, 1044129 );
+			AddRes( index, typeof ( RedLotus ), "Red Lotus", 2, 1044129 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 		}
 	}
