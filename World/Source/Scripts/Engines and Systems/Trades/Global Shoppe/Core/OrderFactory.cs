@@ -17,12 +17,12 @@ namespace Server.Engines.GlobalShoppe
 
                 case ShoppeType.Alchemist:
                 case ShoppeType.Baker:
-                    return new OrderContext(reader);
-
-                case ShoppeType.Cartography:
                 case ShoppeType.Herbalist:
                 case ShoppeType.Librarian:
                 case ShoppeType.Mortician:
+                    return new OrderContext(reader);
+
+                case ShoppeType.Cartography:
                     break;
             }
 
