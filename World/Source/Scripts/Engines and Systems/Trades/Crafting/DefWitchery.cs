@@ -91,85 +91,85 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			index = AddCraft( typeof( UndeadEyesScroll ), "Brews", "eyes of the dead mixture", 10.0, 30.0, typeof( MummyWrap ), "Mummy Wrap", 1, 1044129 );
-			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 1, 1044129 );
+			index = AddCraft( typeof( UndeadEyesScroll ), "Brews", "eyes of the dead mixture", 10.0, 30.0, typeof( MummyWrap ), "Mummy Wrap", 2, 1044129 );
+			AddRes( index, typeof ( EyeOfToad ), "Eye of Toad", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 5.0, 15.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( NecroUnlockScroll ), "Brews", "tomb raiding concoction", 15.0, 40.0, typeof( Maggot ), "Maggot", 1, 1044129 );
-			AddRes( index, typeof ( BeetleShell ), "Beetle Shell", 1, 1044129 );
+			index = AddCraft( typeof( NecroUnlockScroll ), "Brews", "tomb raiding concoction", 15.0, 40.0, typeof( Maggot ), "Maggot", 2, 1044129 );
+			AddRes( index, typeof ( BeetleShell ), "Beetle Shell", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 10.0, 20.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( NecroPoisonScroll ), "Brews", "disease draught", 20.0, 45.0, typeof( VioletFungus ), "Violet Fungus", 1, 1044129 );
-			AddRes( index, typeof ( NoxCrystal ), "Nox Crystal", 1, 1044129 );
+			index = AddCraft( typeof( NecroPoisonScroll ), "Brews", "disease draught", 20.0, 45.0, typeof( VioletFungus ), "Violet Fungus", 2, 1044129 );
+			AddRes( index, typeof ( NoxCrystal ), "Nox Crystal", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 15.0, 25.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( PhantasmScroll ), "Brews", "phantasm elixir", 25.0, 50.0, typeof( DriedToad ), "Dried Toad", 1, 1044129 );
-			AddRes( index, typeof ( GargoyleEar ), "Gargoyle Ear", 1, 1044129 );
+			index = AddCraft( typeof( PhantasmScroll ), "Brews", "phantasm elixir", 25.0, 50.0, typeof( DriedToad ), "Dried Toad", 2, 1044129 );
+			AddRes( index, typeof ( GargoyleEar ), "Gargoyle Ear", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 20.0, 30.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( RetchedAirScroll ), "Brews", "retched air elixir", 30.0, 55.0, typeof( BlackSand ), "Black Sand", 1, 1044129 );
-			AddRes( index, typeof ( GraveDust ), "Grave Dust", 1, 1044129 );
+			index = AddCraft( typeof( RetchedAirScroll ), "Brews", "retched air elixir", 30.0, 55.0, typeof( BlackSand ), "Black Sand", 2, 1044129 );
+			AddRes( index, typeof ( GraveDust ), "Grave Dust", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 25.0, 35.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( ManaLeechScroll ), "Brews", "lich leech mixture", 35.0, 60.0, typeof( DriedToad ), "Dried Toad", 1, 1044129 );
-			AddRes( index, typeof ( RedLotus ), "Red Lotus", 1, 1044129 );
+			index = AddCraft( typeof( ManaLeechScroll ), "Brews", "lich leech mixture", 35.0, 60.0, typeof( DriedToad ), "Dried Toad", 2, 1044129 );
+			AddRes( index, typeof ( RedLotus ), "Red Lotus", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 30.0, 40.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( WallOfSpikesScroll ), "Brews", "wall of spikes draught", 40.0, 65.0, typeof( BitterRoot ), "Bitter Root", 1, 1044129 );
-			AddRes( index, typeof ( PigIron ), "Pig Iron", 1, 1044129 );
+			index = AddCraft( typeof( WallOfSpikesScroll ), "Brews", "wall of spikes draught", 40.0, 65.0, typeof( BitterRoot ), "Bitter Root", 2, 1044129 );
+			AddRes( index, typeof ( PigIron ), "Pig Iron", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 35.0, 45.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( NecroCurePoisonScroll ), "Brews", "disease curing concoction", 45.0, 70.0, typeof( Wolfsbane ), "Wolfsbane", 1, 1044129 );
-			AddRes( index, typeof ( SwampBerries ), "Swamp Berries", 1, 1044129 );
+			index = AddCraft( typeof( NecroCurePoisonScroll ), "Brews", "disease curing concoction", 45.0, 70.0, typeof( Wolfsbane ), "Wolfsbane", 2, 1044129 );
+			AddRes( index, typeof ( SwampBerries ), "Swamp Berries", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 40.0, 50.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( BloodPactScroll ), "Brews", "blood pact elixir", 50.0, 75.0, typeof( BloodRose ), "Blood Rose", 1, 1044129 );
-			AddRes( index, typeof ( DaemonBlood ), "Daemon Blood", 1, 1044129 );
+			index = AddCraft( typeof( BloodPactScroll ), "Brews", "blood pact elixir", 50.0, 75.0, typeof( BloodRose ), "Blood Rose", 2, 1044129 );
+			AddRes( index, typeof ( DaemonBlood ), "Daemon Blood", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 45.0, 55.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( SpectreShadowScroll ), "Brews", "spectre shadow elixir", 55.0, 80.0, typeof( VioletFungus ), "Violet Fungus", 1, 1044129 );
-			AddRes( index, typeof ( SilverWidow ), "Silver Widow", 1, 1044129 );
+			index = AddCraft( typeof( SpectreShadowScroll ), "Brews", "spectre shadow elixir", 55.0, 80.0, typeof( VioletFungus ), "Violet Fungus", 2, 1044129 );
+			AddRes( index, typeof ( SilverWidow ), "Silver Widow", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 50.0, 60.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( GhostPhaseScroll ), "Brews", "ghost phase concoction", 60.0, 85.0, typeof( BitterRoot ), "Bitter Root", 1, 1044129 );
-			AddRes( index, typeof ( MoonCrystal ), "Moon Crystal", 1, 1044129 );
+			index = AddCraft( typeof( GhostPhaseScroll ), "Brews", "ghost phase concoction", 60.0, 85.0, typeof( BitterRoot ), "Bitter Root", 2, 1044129 );
+			AddRes( index, typeof ( MoonCrystal ), "Moon Crystal", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 55.0, 65.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( HellsGateScroll ), "Brews", "demonic fire ooze", 65.0, 90.0, typeof( Maggot ), "Maggot", 1, 1044129 );
-			AddRes( index, typeof ( BlackPearl ), "Black Pearl", 1, 1044129 );
+			index = AddCraft( typeof( HellsGateScroll ), "Brews", "demonic fire ooze", 65.0, 90.0, typeof( Maggot ), "Maggot", 2, 1044129 );
+			AddRes( index, typeof ( BlackPearl ), "Black Pearl", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 60.0, 70.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( GhostlyImagesScroll ), "Brews", "ghostly images draught", 70.0, 95.0, typeof( MummyWrap ), "Mummy Wrap", 1, 1044129 );
-			AddRes( index, typeof ( Bloodmoss ), "Bloodmoss", 1, 1044129 );
+			index = AddCraft( typeof( GhostlyImagesScroll ), "Brews", "ghostly images draught", 70.0, 95.0, typeof( MummyWrap ), "Mummy Wrap", 2, 1044129 );
+			AddRes( index, typeof ( Bloodmoss ), "Bloodmoss", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 65.0, 75.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( HellsBrandScroll ), "Brews", "hellish branding ooze", 75.0, 100.0, typeof( WerewolfClaw ), "Werewolf Claw", 1, 1044129 );
-			AddRes( index, typeof ( Brimstone ), "Brimstone", 1, 1044129 );
+			index = AddCraft( typeof( HellsBrandScroll ), "Brews", "hellish branding ooze", 75.0, 100.0, typeof( WerewolfClaw ), "Werewolf Claw", 2, 1044129 );
+			AddRes( index, typeof ( Brimstone ), "Brimstone", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 70.0, 80.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( GraveyardGatewayScroll ), "Brews", "black gate draught", 80.0, 105.0, typeof( BlackSand ), "Black Sand", 1, 1044129 );
-			AddRes( index, typeof( Wolfsbane ), "Wolfsbane", 1, 1044129 );
-			AddRes( index, typeof ( PixieSkull ), "Pixie Skull", 1, 1044129 );
+			index = AddCraft( typeof( GraveyardGatewayScroll ), "Brews", "black gate draught", 80.0, 105.0, typeof( BlackSand ), "Black Sand", 2, 1044129 );
+			AddRes( index, typeof( Wolfsbane ), "Wolfsbane", 2, 1044129 );
+			AddRes( index, typeof ( PixieSkull ), "Pixie Skull", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 75.0, 85.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 
-			index = AddCraft( typeof( VampireGiftScroll ), "Brews", "vampire blood draught", 85.0, 120.0, typeof( WerewolfClaw ), "Werewolf Claw", 1, 1044129 );
-			AddRes( index, typeof ( BatWing ), "Bat Wing", 1, 1044129 );
-			AddRes( index, typeof( BloodRose ), "Blood Rose", 1, 1044129 );
+			index = AddCraft( typeof( VampireGiftScroll ), "Brews", "vampire blood draught", 85.0, 120.0, typeof( WerewolfClaw ), "Werewolf Claw", 2, 1044129 );
+			AddRes( index, typeof ( BatWing ), "Bat Wing", 2, 1044129 );
+			AddRes( index, typeof( BloodRose ), "Blood Rose", 2, 1044129 );
 			AddSkill( index, SkillName.Necromancy, 80.0, 90.0 );
 			AddRes( index, typeof ( Jar ), 1044128, 1, 1044130 );
 		}
