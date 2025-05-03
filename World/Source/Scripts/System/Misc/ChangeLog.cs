@@ -23,6 +23,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Druidic Herbalism now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Craft - Witch Brewing now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Shoppe - Targeting a container now adds all possible items to the Order<br>");
+			builder.Append("- Shoppe - All Shoppes (except Cartography) now have Orders<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
