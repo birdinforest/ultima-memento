@@ -232,9 +232,6 @@ namespace Server.Mobiles
 			}
 
 			CoinPurse = Utility.RandomMinMax( minGold, maxGold );
-			
-			if ( from != null )
-				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
 
 			RefreshSelf();
 			m_CoinsNeedReset = false;
@@ -995,6 +992,8 @@ namespace Server.Mobiles
 			}
 
 			TrySetCoinPurse( from );
+			if ( from != null )
+				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
 
 			Container pack = from.Backpack;
 
