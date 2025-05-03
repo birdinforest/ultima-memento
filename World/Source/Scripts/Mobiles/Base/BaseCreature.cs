@@ -4988,7 +4988,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 23 ); // version
+			writer.Write( (int) 24 ); // version
 
 			writer.Write( (int) m_Slayer );
 			writer.Write( (int) m_Slayer2 );
@@ -5422,6 +5422,27 @@ namespace Server.Mobiles
 			{
 				BodyMod = RaceID;
 				HueMod = RaceSection;
+			}
+
+			if (version == 23 && Tamable)
+			{
+				if (m_HitsMax == -1)
+				{
+					m_HitsMax = RawStr;
+					Hits = HitsMax;
+				}
+
+				if (m_StamMax == -1)
+				{
+					m_StamMax = RawDex;
+					Stam = StamMax;
+				}
+
+				if (m_ManaMax == -1)
+				{
+					m_ManaMax = RawInt;
+					Mana = ManaMax;
+				}
 			}
 		}
 
@@ -7482,37 +7503,52 @@ namespace Server.Mobiles
 		public void SetStr( int val )
 		{
 			RawStr = val;
-			Hits = HitsMax;
+
+			// Set as default. May be overridden by SetHits()
+			if (m_HitsMax == -1)
+			{
+				m_HitsMax = val; 
+				Hits = HitsMax;
+			}
 		}
 
 		public void SetStr( int min, int max )
 		{
-			RawStr = Utility.RandomMinMax( min, max );
-			Hits = HitsMax;
+			SetStr(Utility.RandomMinMax( min, max ));
 		}
 
 		public void SetDex( int val )
 		{
 			RawDex = val;
-			Stam = StamMax;
+
+			// Set as default. May be overridden by SetStam()
+			if (m_StamMax == -1)
+			{
+				m_StamMax = val; 
+				Stam = StamMax;
+			}
 		}
 
 		public void SetDex( int min, int max )
 		{
-			RawDex = Utility.RandomMinMax( min, max );
-			Stam = StamMax;
+			SetDex(Utility.RandomMinMax( min, max ));
 		}
 
 		public void SetInt( int val )
 		{
 			RawInt = val;
-			Mana = ManaMax;
+
+			// Set as default. May be overridden by SetMana()
+			if (m_ManaMax == -1)
+			{
+				m_ManaMax = val; 
+				Mana = ManaMax;
+			}
 		}
 
 		public void SetInt( int min, int max )
 		{
-			RawInt = Utility.RandomMinMax( min, max );
-			Mana = ManaMax;
+			SetInt(Utility.RandomMinMax( min, max ));
 		}
 
 		public void SetDamageType( ResistanceType type, int min, int max )
