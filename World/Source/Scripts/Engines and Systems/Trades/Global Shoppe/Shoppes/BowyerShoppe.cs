@@ -10,7 +10,7 @@ using System.Linq;
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CE9, 0x3CEA)]
-    public class BowyerShoppe : ShoppeBase
+    public class BowyerShoppe : BasicCustomerOrderShoppe
     {
         [Constructable]
         public BowyerShoppe() : base(0x3CE9)
@@ -24,7 +24,6 @@ namespace Server.Engines.GlobalShoppe
 
         public override NpcGuild Guild { get { return NpcGuild.ArchersGuild; } }
 
-        protected override bool CanCreateOrders { get { return true; } }
         protected override SkillName PrimarySkill { get { return SkillName.Bowcraft; } }
         protected override ShoppeType ShoppeType { get { return ShoppeType.Bowyer; } }
 
@@ -38,7 +37,7 @@ namespace Server.Engines.GlobalShoppe
             return base.OnDragDrop(from, dropped);
         }
 
-        protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+        protected override IEnumerable<EquipmentOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
         {
             if (count < 1) yield break;
 
@@ -90,7 +89,7 @@ namespace Server.Engines.GlobalShoppe
                 var amount = amountBonus + Utility.RandomMinMax(3, 10);
                 if (resource == CraftResource.None) amount += 10; // Pump value by increasing count
 
-                var order = new OrderContext(item.ItemType)
+                var order = new EquipmentOrderContext(item.ItemType)
                 {
                     RequireExceptional = Utility.RandomDouble() < 0.25,
                     MaxAmount = amount,
@@ -198,20 +197,24 @@ namespace Server.Engines.GlobalShoppe
             var context = GetOrCreateContext(from);
 
             // Ensure Orders are configured
-            context.Orders.ForEach(order =>
+            context.Orders.ForEach(untypedOrder =>
             {
+                var order = untypedOrder as EquipmentOrderContext;
+                if (order == null)
+                {
+                    Console.WriteLine("Failed to set Bowyer rewards for order ({0})", untypedOrder.GetType().Name);
+                    return;
+                }
+
                 if (order.IsInitialized) return;
 
                 var rewards = BowcraftRewardCalculator.Instance;
+                rewards.SetRewards(context, order);
 
                 var item = ShoppeItemCache.GetOrCreate(order.Type);
                 order.GraphicId = item.ItemID;
                 order.ItemName = item.Name;
                 order.Person = CreatePersonName();
-
-                order.GoldReward = rewards.ComputeGold(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
-                order.PointReward = rewards.ComputePoints(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
-                order.ReputationReward = rewards.ComputeReputation(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type, context.Reputation);
 
                 order.IsInitialized = true;
             });

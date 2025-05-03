@@ -5,15 +5,16 @@ using Server.Targeting;
 using Server.Utilities;
 using System;
 using System.Globalization;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
     public class OrderGump : Gump
     {
-        private readonly OrderContext m_Deed;
+        private readonly IOrderContext m_Deed;
         private readonly Mobile m_From;
 
-        public OrderGump(Mobile from, OrderContext deed) : base(25, 25)
+        public OrderGump(Mobile from, IOrderContext deed) : base(25, 25)
         {
             m_From = from;
             m_Deed = deed;
@@ -38,15 +39,7 @@ namespace Server.Engines.GlobalShoppe
 
             // TODO: Add background
             AddItem(410, 72, deed.GraphicId);
-
-            if (deed.RequireExceptional || deed.Resource != CraftResource.None)
-                AddHtmlLocalized(75, 130, 200, 20, 1045140, 0x7FFF, false, false); // Special requirements to meet:
-
-            if (deed.RequireExceptional)
-                AddHtmlLocalized(75, 154, 300, 20, 1045141, 0x7FFF, false, false); // All items must be exceptional.
-
-            if (deed.Resource != CraftResource.None)
-                AddHtml(75, deed.RequireExceptional ? 178 : 154, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + CraftResources.GetResourceName(deed.Resource), false, false);
+            AddSpecialRequirements(deed);
 
             if (!deed.IsComplete)
             {
@@ -58,7 +51,7 @@ namespace Server.Engines.GlobalShoppe
             AddHtmlLocalized(160, 229, 120, 20, 1011441, 0x7FFF, false, false); // EXIT
         }
 
-        public static void BeginCombine(Mobile from, OrderContext order)
+        public static void BeginCombine(Mobile from, IOrderContext order)
         {
             if (!order.IsComplete)
                 from.Target = new InternalTarget(order);
@@ -76,11 +69,41 @@ namespace Server.Engines.GlobalShoppe
             }
         }
 
+        private void AddSpecialRequirements(IOrderContext deed)
+        {
+            var requireExceptional = deed is IExceptionalItem && ((IExceptionalItem)deed).RequireExceptional;
+            var requireResource = deed is IResourceItem && ((IResourceItem)deed).Resource != CraftResource.None;
+            var requireGemType = deed is IGemTypeItem && ((IGemTypeItem)deed).GemType != GemType.None;
+
+            if (requireExceptional || requireResource || requireGemType)
+                AddHtmlLocalized(75, 130, 200, 20, 1045140, 0x7FFF, false, false); // Special requirements to meet:
+
+            int i = 0;
+            const int baseY = 130;
+            if (requireExceptional)
+            {
+                ++i;
+                AddHtmlLocalized(75, baseY + i * 24, 300, 20, 1045141, 0x7FFF, false, false); // All items must be exceptional.
+            }
+
+            if (requireResource)
+            {
+                ++i;
+                AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + CraftResources.GetResourceName(((IResourceItem)deed).Resource), false, false);
+            }
+
+            if (requireGemType)
+            {
+                ++i;
+                AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + ((IGemTypeItem)deed).GemType, false, false); // TODO: Better name
+            }
+        }
+
         public class InternalTarget : Target
         {
-            private readonly OrderContext m_Deed;
+            private readonly IOrderContext m_Deed;
 
-            public InternalTarget(OrderContext order) : base(18, false, TargetFlags.None)
+            public InternalTarget(IOrderContext order) : base(18, false, TargetFlags.None)
             {
                 m_Deed = order;
             }
@@ -89,8 +112,6 @@ namespace Server.Engines.GlobalShoppe
             {
                 if (o is Item && ((Item)o).IsChildOf(from.Backpack))
                 {
-                    Type objectType = o.GetType();
-
                     if (m_Deed.IsComplete)
                     {
                         from.SendLocalizedMessage(1045166); // The maximum amount of requested items have already been combined to this deed.
@@ -99,57 +120,134 @@ namespace Server.Engines.GlobalShoppe
                     {
                         // Not valid
                     }
-                    else if (objectType != m_Deed.Type && !objectType.IsSubclassOf(m_Deed.Type))
-                    {
-                        from.SendLocalizedMessage(1045169); // The item is not in the request.
-                    }
                     else
                     {
-                        var targetItem = (Item)o;
-                        var resource = m_Deed.Resource;
-                        if (resource >= CraftResource.DullCopper && resource <= CraftResource.Dwarven && targetItem.Resource != resource)
-                        {
-                            from.SendLocalizedMessage(1045168); // The item is not made from the requested ore.
-                        }
-                        else if (resource >= CraftResource.HornedLeather && resource <= CraftResource.AlienLeather && targetItem.Resource != resource)
-                        {
-                            from.SendLocalizedMessage(1049352); // The item is not made from the requested leather type.
-                        }
-                        else if (resource >= CraftResource.AshTree && resource <= CraftResource.ElvenTree && targetItem.Resource != resource)
-                        {
-                            from.SendMessage("The item is not made from the requested wood type.");
-                        }
-                        else
-                        {
-                            if (m_Deed.RequireExceptional && !ItemUtilities.IsExceptional(targetItem))
-                            {
-                                from.SendLocalizedMessage(1045167); // The item must be exceptional.
-                            }
-                            else
-                            {
-                                targetItem.Delete();
-                                m_Deed.CurrentAmount++;
-
-                                from.SendLocalizedMessage(1045170); // The item has been combined with the deed.
-
-                                from.CloseGump(typeof(OrderGump));
-                                from.SendGump(new OrderGump(from, m_Deed));
-
-                                if (m_Deed.IsComplete)
-                                {
-                                    from.PlaySound(0x5B6); // public sound
-                                    TextDefinition.SendMessageTo(from, "Return to the shoppe to claim your reward.", 0x23);
-                                }
-                                else
-                                    BeginCombine(from, m_Deed);
-                            }
-                        }
+                        EndCombine(from, m_Deed, (Item)o);
                     }
                 }
                 else
                 {
                     from.SendLocalizedMessage(1045158); // You must have the item in your backpack to target it.
                 }
+            }
+
+            private void AddItem(Mobile from, IOrderContext order, Item targetItem)
+            {
+                if (targetItem.Stackable)
+                {
+                    if (0 < targetItem.Amount)
+                    {
+                        var remaining = Math.Max(0, order.MaxAmount - order.CurrentAmount);
+                        if (targetItem.Amount < remaining)
+                        {
+                            order.CurrentAmount += targetItem.Amount;
+                            targetItem.Delete();
+                        }
+                        else
+                        {
+                            order.CurrentAmount += remaining;
+                            targetItem.Amount -= remaining;
+                        }
+                    }
+
+                    if (targetItem.Amount < 1)
+                        targetItem.Delete();
+                }
+                else
+                {
+                    order.CurrentAmount++;
+                    targetItem.Delete();
+                }
+
+                from.SendLocalizedMessage(1045170); // The item has been combined with the deed.
+            }
+
+            private bool CanAddItem(Mobile from, IOrderContext order, Item item)
+            {
+                if (order.IsComplete) return false;
+
+                var itemType = item.GetType();
+                if (itemType != order.Type && !itemType.IsSubclassOf(order.Type))
+                {
+                    from.SendLocalizedMessage(1045169); // The item is not in the request.
+                    return false;
+                }
+
+                if (order is IExceptionalItem)
+                {
+                    if (((IExceptionalItem)order).RequireExceptional && !ItemUtilities.IsExceptional(item))
+                    {
+                        from.SendLocalizedMessage(1045167); // The item must be exceptional.
+                        return false;
+                    }
+                }
+
+                if (order is IResourceItem)
+                {
+                    var resource = ((IResourceItem)order).Resource;
+                    if (resource >= CraftResource.DullCopper && resource <= CraftResource.Dwarven && item.Resource != resource)
+                    {
+                        from.SendLocalizedMessage(1045168); // The item is not made from the requested ore.
+                        return false;
+                    }
+
+                    if (resource >= CraftResource.HornedLeather && resource <= CraftResource.AlienLeather && item.Resource != resource)
+                    {
+                        from.SendLocalizedMessage(1049352); // The item is not made from the requested leather type.
+                        return false;
+                    }
+
+                    if (resource >= CraftResource.AshTree && resource <= CraftResource.ElvenTree && item.Resource != resource)
+                    {
+                        from.SendMessage("The item is not made from the requested wood type.");
+                        return false;
+                    }
+                }
+
+                if (order is IGemTypeItem)
+                {
+                    var gemType = ((IGemTypeItem)order).GemType;
+                    if ((item is BaseTrinket) == false || ((BaseTrinket)item).GemType != gemType)
+                    {
+                        from.SendMessage("The item does not have the requested gem type.");
+
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            private void EndCombine(Mobile from, IOrderContext order, Item targetItem)
+            {
+                if (targetItem is BaseContainer)
+                {
+                    foreach (var item in ((BaseContainer)targetItem).Items.ToList())
+                    {
+                        if (CanAddItem(from, order, item))
+                        {
+                            AddItem(from, order, item);
+                        }
+                    };
+                }
+                else
+                {
+                    if (CanAddItem(from, order, targetItem))
+                    {
+                        AddItem(from, order, targetItem);
+                    }
+                }
+
+                from.CloseGump(typeof(OrderGump));
+                from.SendGump(new OrderGump(from, order));
+
+                if (order.IsComplete)
+                {
+                    from.PlaySound(0x5B6); // public sound
+                    TextDefinition.SendMessageTo(from, "Return to the shoppe to claim your reward.", 0x23);
+                }
+                else
+                    BeginCombine(from, order);
             }
         }
     }

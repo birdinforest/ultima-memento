@@ -3,20 +3,22 @@ using System;
 namespace Server.Engines.GlobalShoppe
 {
     [PropertyObject]
-    public class OrderContext : IOrderContext
+    public class EquipmentOrderContext : IOrderContext, IResourceItem, IExceptionalItem
     {
-        public OrderContext(Type type)
+        public EquipmentOrderContext(Type type)
         {
             Type = type;
         }
 
-        public OrderContext(GenericReader reader)
+        public EquipmentOrderContext(GenericReader reader)
         {
             int version = reader.ReadInt();
 
             var typeName = reader.ReadString();
             if (!string.IsNullOrWhiteSpace(typeName)) Type = ScriptCompiler.FindTypeByName(typeName);
 
+            RequireExceptional = reader.ReadBool();
+            Resource = (CraftResource)reader.ReadInt();
             MaxAmount = reader.ReadInt();
             CurrentAmount = reader.ReadInt();
         }
@@ -57,6 +59,12 @@ namespace Server.Engines.GlobalShoppe
         public int ReputationReward { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
+        public bool RequireExceptional { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public CraftResource Resource { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
         public Type Type { get; private set; }
 
         public void Serialize(GenericWriter writer)
@@ -65,6 +73,8 @@ namespace Server.Engines.GlobalShoppe
 
             var typeName = IsValid ? Type.Name : null;
             writer.Write(typeName);
+            writer.Write(RequireExceptional);
+            writer.Write((int)Resource);
             writer.Write(MaxAmount);
             writer.Write(CurrentAmount);
         }

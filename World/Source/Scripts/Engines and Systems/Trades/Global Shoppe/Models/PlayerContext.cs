@@ -24,7 +24,7 @@ namespace Server.Engines.GlobalShoppe
             {
                 bool hasData = reader.ReadBool();
                 if (hasData)
-                    m_Trades[i] = new TradeSkillContext(reader);
+                    m_Trades[i] = new TradeSkillContext((ShoppeType)i, reader);
             }
         }
 

@@ -4,9 +4,14 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public sealed class BowcraftRewardCalculator : BaseCraftRewardCalculator
+    public sealed class BowcraftRewardCalculator : BaseCraftRewardCalculator<EquipmentOrderContext>
     {
         public static readonly BowcraftRewardCalculator Instance = new BowcraftRewardCalculator();
+
+        protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
+        {
+            return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
+        }
 
         protected override CraftItem FindCraftItem(Type type)
         {
@@ -77,7 +82,7 @@ namespace Server.Engines.GlobalShoppe
                         else if (resource < CraftResource.ElvenTree)
                         {
                             // Custom metals (that aren't handled above)
-                            materialMultiplier = ((1 + 0.05 * (resourceTier - (int)CraftResource.Valorite)) * Math.Pow((int)CraftResource.Valorite, 2)); // Every level above Valorite is worth +0.05
+                            materialMultiplier = (1 + 0.05 * (resourceTier - (int)CraftResource.Valorite)) * Math.Pow((int)CraftResource.Valorite, 2); // Every level above Valorite is worth +0.05
                         }
                         break;
                 }

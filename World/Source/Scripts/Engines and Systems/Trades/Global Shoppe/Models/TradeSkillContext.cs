@@ -11,15 +11,15 @@ namespace Server.Engines.GlobalShoppe
             CanRefreshCustomers = true;
             Customers = new List<CustomerContext>();
             CanRefreshOrders = true;
-            Orders = new List<OrderContext>();
+            Orders = new List<IOrderContext>();
         }
 
-        public TradeSkillContext(GenericReader reader)
+        public TradeSkillContext(ShoppeType shoppeType, GenericReader reader)
         {
             CanRefreshCustomers = true;
             Customers = new List<CustomerContext>();
             CanRefreshOrders = true;
-            Orders = new List<OrderContext>();
+            Orders = new List<IOrderContext>();
 
             int version = reader.ReadInt();
 
@@ -43,7 +43,7 @@ namespace Server.Engines.GlobalShoppe
                 var orderCount = reader.ReadInt();
                 for (int i = 0; i < orderCount; ++i)
                 {
-                    var order = new OrderContext(reader);
+                    var order = OrderFactory.Create(shoppeType, reader);
                     if (!order.IsValid) continue;
 
                     Orders.Add(order);
@@ -73,7 +73,7 @@ namespace Server.Engines.GlobalShoppe
         public DateTime NextOrderRefresh { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public List<OrderContext> Orders { get; set; }
+        public List<IOrderContext> Orders { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Points { get; set; }

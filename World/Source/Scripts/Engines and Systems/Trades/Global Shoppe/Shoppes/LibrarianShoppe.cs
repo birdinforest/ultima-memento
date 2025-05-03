@@ -1,11 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Utilities;
 
 namespace Server.Engines.GlobalShoppe
 {
     [Flipable(0x3CEB, 0x3CEC)]
-    public class LibrarianShoppe : ShoppeBase
+    public class LibrarianShoppe : CustomerOrderShoppe<OrderContext>
     {
         [Constructable]
         public LibrarianShoppe() : base(0x3CEB)
@@ -30,6 +35,43 @@ namespace Server.Engines.GlobalShoppe
                 return AddResource(from, dropped);
 
             return base.OnDragDrop(from, dropped);
+        }
+
+        protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+        {
+            if ((from is PlayerMobile) == false) yield break;
+            if (count < 1) yield break;
+
+            var craftSystem = DefInscription.CraftSystem;
+
+            // Build item list
+            var player = (PlayerMobile)from;
+            var items = GetCraftItems(from, craftSystem)
+                .Where(i =>
+                    TypeUtilities.IsTypeOrDerived<SpellScroll>(i.ItemType)
+                    && (i.Recipe == null || player.HasRecipe(i.Recipe))
+                )
+                .ToList();
+            if (items.Count < 1) yield break;
+
+            // Add 5x quantity bonus for every 5 points over 100
+            var amountBonus = 5 * (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
+
+            for (int i = 0; i < count; i++)
+            {
+                var item = Utility.Random(items);
+                if (item == null) yield break;
+
+                var amount = amountBonus + Utility.RandomMinMax(15, 40);
+
+                var order = new OrderContext(item.ItemType)
+                {
+                    MaxAmount = amount,
+                    CurrentAmount = 0,
+                };
+
+                yield return order;
+            }
         }
 
         protected override string CreateTask(TradeSkillContext context)
@@ -175,9 +217,41 @@ namespace Server.Engines.GlobalShoppe
             return task;
         }
 
+        protected override string GetDescription(OrderContext order)
+        {
+            var description = string.Format("Craft {0}", order.MaxAmount);
+
+            description = string.Format("{0} {1}", description, order.ItemName);
+
+            return description;
+        }
+
         protected override ShoppeGump GetGump(PlayerMobile from)
         {
             var context = GetOrCreateContext(from);
+
+            // Ensure Orders are configured
+            context.Orders.ForEach(untypedOrder =>
+            {
+                var order = untypedOrder as OrderContext;
+                if (order == null)
+                {
+                    Console.WriteLine("Failed to set Librarian rewards for order ({0})", untypedOrder.GetType().Name);
+                    return;
+                }
+
+                if (order.IsInitialized) return;
+
+                var rewards = LibrarianRewardCalculator.Instance;
+                rewards.SetRewards(context, order);
+
+                var item = ShoppeItemCache.GetOrCreate(order.Type);
+                order.GraphicId = item.ItemID;
+                order.ItemName = item.Name;
+                order.Person = CreatePersonName();
+
+                order.IsInitialized = true;
+            });
 
             return new ShoppeGump(
                 from,

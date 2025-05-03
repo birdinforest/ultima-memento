@@ -76,14 +76,6 @@ namespace Server.Engines.GlobalShoppe
 
         private static void OnWorldLoad()
         {
-            // Clean up any deleted Accounts
-            // foreach (var username in Instance.m_Context.Keys.ToList())
-            // {
-            //     if (Accounts.GetAccount(username) == null) continue;
-
-            //     Instance.m_Context.Remove(username);
-            // }
-
             Instance.m_RefreshTimer = new InternalTimer();
             Instance.m_RefreshTimer.Start();
         }

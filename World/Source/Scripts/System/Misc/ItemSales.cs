@@ -50,6 +50,27 @@ namespace Server
 				return -1;
 		}
 
+		public static int GetValue( GemType gemType )
+		{
+			switch ( gemType )
+			{
+				case GemType.Amber: return 50;
+				case GemType.Citrine: return 60;
+				case GemType.Ruby: return 70;
+				case GemType.Tourmaline: return 80;
+				case GemType.Amethyst: return 90;
+				case GemType.Emerald: return 100;
+				case GemType.Sapphire: return 110;
+				case GemType.StarSapphire: return 120;
+				case GemType.Diamond: return 150;
+				case GemType.Pearl: return 500;
+
+				case GemType.None:
+				default:
+					return 0;
+			}
+		}
+
 		public static int AddUpBenefits( Item item, int price, bool checkCrafted, bool resale )
 		{
 			if ( item.CoinPrice > 0 )
@@ -101,26 +122,7 @@ namespace Server
 
 			if ( item is BaseTrinket && ((BaseTrinket)item).GemType != GemType.None )
 			{
-				if ( ((BaseTrinket)item).GemType == GemType.Amber )
-					price += 50;
-				else if ( ((BaseTrinket)item).GemType == GemType.Citrine )
-					price += 60;
-				else if ( ((BaseTrinket)item).GemType == GemType.Ruby )
-					price += 70;
-				else if ( ((BaseTrinket)item).GemType == GemType.Tourmaline )
-					price += 80;
-				else if ( ((BaseTrinket)item).GemType == GemType.Amethyst )
-					price += 90;
-				else if ( ((BaseTrinket)item).GemType == GemType.Emerald )
-					price += 100;
-				else if ( ((BaseTrinket)item).GemType == GemType.Sapphire )
-					price += 110;
-				else if ( ((BaseTrinket)item).GemType == GemType.StarSapphire )
-					price += 120;
-				else if ( ((BaseTrinket)item).GemType == GemType.Diamond )
-					price += 150;
-				else if ( ((BaseTrinket)item).GemType == GemType.Pearl )
-					price += 500;
+				price += GetValue(((BaseTrinket)item).GemType);
 			}
 
 			if ( item is BaseArmor )
@@ -1968,7 +1970,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BlacksmithCrate	),	400	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	BlackWellDeed	),	500	,	1	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Home	),
 			new ItemSalesInfo( typeof(	BladedStaff	),	40	,	31	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Metal	,	Market.Smith	),
-			new ItemSalesInfo( typeof(	BlankScroll	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Scribe	),
+			new ItemSalesInfo( typeof(	BlankScroll	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Reagent	,	Material.None	,	Market.Scribe	),
 			new ItemSalesInfo( typeof(	AmethystBlocks	),	240	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	EmeraldBlocks	),	240	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	GarnetBlocks	),	240	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Smith	),
@@ -1992,6 +1994,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BlueFancyRugDeed	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	BluePlainRugDeed	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	BlueSnowflake	),	100	,	3	,	0	,	false	,	false	,	World.None	,	Category.Christmas	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	BarkFragment	),	10	,	0	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Carpenter	),
 			new ItemSalesInfo( typeof(	Board	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Carpenter	),
 			new ItemSalesInfo( typeof(	AshBoard	),	6	,	15	,	50	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Carpenter	),
 			new ItemSalesInfo( typeof(	CherryBoard	),	6	,	15	,	55	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Carpenter	),
@@ -2063,6 +2066,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Bonnet	),	8	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	WritingBook	),	15	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Scribe	),
 			new ItemSalesInfo( typeof(	DDRelicBook	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Scribe	),
+			new ItemSalesInfo( typeof(	BlankMap	),	6	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Cartographer	),
 			new ItemSalesInfo( typeof(	BookDruidBrewing	),	50	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Druid	),
 			new ItemSalesInfo( typeof(	BookOfBushido	),	140	,	5	,	0	,	false	,	false	,	World.Orient	,	Category.Book	,	Material.None	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	BookOfChivalry	),	140	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Paladin	),
@@ -2071,7 +2075,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BookOfPoisons	),	50	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Assassin	),
 			new ItemSalesInfo( typeof(	BookWitchBrewing	),	50	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Witch	),
 			new ItemSalesInfo( typeof(	Boots	),	10	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Shoes	),
-			new ItemSalesInfo( typeof(	Bottle	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Res_AH	),
+			new ItemSalesInfo( typeof(	Bottle	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.Reagent	,	Material.None	,	Market.Res_AH	),
 			new ItemSalesInfo( typeof(	BottleOfAcid	),	600	,	15	,	80	,	false	,	false	,	World.None	,	Category.Potion	,	Material.None	,	Market.Alchemy	),
 			new ItemSalesInfo( typeof(	BottleOil	),	10	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
 			new ItemSalesInfo( typeof(	Bow	),	40	,	15	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Wood	,	Market.Bow	),
@@ -2760,7 +2764,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BankChest	),	500000	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Banker	),
 			new ItemSalesInfo( typeof(	IvoryTusk	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	JadeStatueMaker	),	50000	,	1	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
-			new ItemSalesInfo( typeof(	Jar	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Res_DW	),
+			new ItemSalesInfo( typeof(	Jar	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.Reagent	,	Material.None	,	Market.Reg_AHDW	),
 			new ItemSalesInfo( typeof(	JarHoney	),	600	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	JarsOfWaxInstrument	),	160	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	JarsOfWaxLeather	),	160	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
@@ -3470,6 +3474,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Xen	),	100	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	Ylem	),	100	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	Zu	),	100	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
+			new ItemSalesInfo( typeof(	WheatSheaf	),	3	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Farmer	),
 			new ItemSalesInfo( typeof(	MagicRuneBag	),	400	,	0	,	0	,	false	,	false	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	RusticShirt	),	21	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	RusticVest	),	12	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
@@ -3481,6 +3486,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	SailorPants	),	7	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Sailor	),
 			new ItemSalesInfo( typeof(	SamuraiTabi	),	16	,	0	,	0	,	false	,	false	,	World.Orient	,	Category.None	,	Material.Cloth	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	Sandals	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Shoes	),
+			new ItemSalesInfo( typeof(	Sand	),	3	,	30	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Glass	),
 			new ItemSalesInfo( typeof(	SandMiningBook	),	10637	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Glass	),
 			new ItemSalesInfo( typeof(	Sausage	),	18	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Cook	),
 			new ItemSalesInfo( typeof(	SausagePizza	),	30	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Cook	),

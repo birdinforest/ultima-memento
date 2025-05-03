@@ -2748,17 +2748,113 @@ namespace Server.Items
 
 		public static void GetGemMods( GemType resource, Item item, bool reduce )
 		{
-			if ( resource == 	GemType.None	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Amber	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Citrine	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Ruby	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	GemType.Tourmaline	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Amethyst	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	2	,	1	,	0	,	3	,	0	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Emerald	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.Sapphire	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	3	,	0	,	0	,	0	,	0	,	0	,	4	,	4	,	0	,	0	,	0	,	0	 ); }
-			else if ( resource == 	GemType.StarSapphire	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	0	,	0	,	1	,	0	,	0	,	0	,	0	,	1	,	0	,	0	,	0	,	0	,	0	,	5	,	1	,	1	,	0	,	0	,	0	,	5	,	0	,	1	 ); }
-			else if ( resource == 	GemType.Diamond	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	1	,	0	,	0	,	5	,	0	,	2	,	0	,	0	,	5	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	1	 ); }
-			else if ( resource == 	GemType.Pearl	 ){ ResourceMods.ModifyJewelry( item, resource, reduce, 	2	,	2	,	2	,	0	,	0	,	2	,	2	,	2	,	0	,	0	,	0	,	0	,	0	,	5	,	1	,	1	,	10	,	10	,	0	,	0	,	0	,	1	 ); }
+			switch(resource)
+			{
+				case GemType.Amber:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenStam = 1, 
+						AosAttribute_BonusDex = 1, 
+						AosAttribute_EnhancePotions = 5,
+					}); break;
+
+				case GemType.Citrine:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_WeaponSpeed = 5,
+					}); break;
+
+				case GemType.Ruby:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_BonusStr = 1,
+						AosAttribute_BonusHits = 3,
+						AosAttribute_WeaponDamage = 2,
+						AosAttribute_NightSight = 1,
+					}); break;
+
+				case GemType.Tourmaline:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenStam = 1,
+						AosAttribute_BonusDex = 1,
+						AosAttribute_BonusStam = 3,
+						AosAttribute_WeaponDamage = 2,
+						AosAttribute_WeaponSpeed = 2,
+					}); break;
+
+				case GemType.Amethyst:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_SpellDamage = 2,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_LowerManaCost = 3,
+					}); break;
+
+				case GemType.Emerald:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_BonusStr = 1,
+						AosAttribute_LowerRegCost = 5,
+						AosAttribute_ReflectPhysical = 5,
+					}); break;
+
+				case GemType.Sapphire:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_BonusMana = 3,
+						AosAttribute_LowerManaCost = 4,
+						AosAttribute_LowerRegCost = 4,
+					}); break;
+
+				case GemType.StarSapphire:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenMana = 1,
+						AosAttribute_BonusInt = 1,
+						AosAttribute_SpellDamage = 5,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_EnhancePotions = 5,
+						AosAttribute_NightSight = 1,
+					}); break;
+
+				case GemType.Diamond:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_DefendChance = 5,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusHits = 5,
+						AosAttribute_NightSight = 1,
+					}); break;
+
+				case GemType.Pearl:
+					ResourceMods.ModifyJewelry(item, resource, reduce, new GemModInfo
+					{
+						AosAttribute_RegenStam = 2,
+						AosAttribute_RegenMana = 2,
+						AosAttribute_BonusStr = 2,
+						AosAttribute_BonusDex = 2,
+						AosAttribute_BonusInt = 2,
+						AosAttribute_SpellDamage = 5,
+						AosAttribute_CastRecovery = 1,
+						AosAttribute_CastSpeed = 1,
+						AosAttribute_LowerManaCost = 10,
+						AosAttribute_LowerRegCost = 10,
+						AosAttribute_NightSight = 1,
+					}); break;
+				
+				case GemType.None:
+				default:
+					break;
+			}
 		}
 
         public static int GetSkillCheckMultiplier(CraftResource resource)

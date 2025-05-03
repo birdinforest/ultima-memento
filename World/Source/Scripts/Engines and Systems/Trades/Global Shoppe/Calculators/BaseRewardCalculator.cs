@@ -6,12 +6,6 @@ namespace Server.Engines.GlobalShoppe
 {
     public abstract class BaseRewardCalculator
     {
-        public abstract int ComputeGold(int quantity, bool exceptional, CraftResource resource, Type type);
-
-        public abstract int ComputePoints(int quantity, bool exceptional, CraftResource resource, Type type);
-
-        public abstract int ComputeReputation(int quantity, bool exceptional, CraftResource resource, Type type, int currentReputation);
-
         protected int GetResourcePerCraft(CraftItem craftItem, Type baseResourceType)
         {
             int resourcePerCraft = 0;
@@ -30,7 +24,7 @@ namespace Server.Engines.GlobalShoppe
             return resourcePerCraft;
         }
 
-        protected int GetSellPrice(Type resourceType)
+        protected virtual int GetSellPrice(Type resourceType)
         {
             var sellInfo = ItemSalesInfo.m_SellingInfo.FirstOrDefault(info => info.ItemsType == resourceType);
             if (sellInfo == null)

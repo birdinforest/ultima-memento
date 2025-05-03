@@ -4,27 +4,54 @@ using System;
 
 namespace Server.Engines.GlobalShoppe
 {
-    public sealed class BlacksmithRewardCalculator : BaseCraftRewardCalculator<EquipmentOrderContext>
+    public sealed class TinkerRewardCalculator : BaseCraftRewardCalculator<TinkerOrderContext>
     {
-        public static readonly BlacksmithRewardCalculator Instance = new BlacksmithRewardCalculator();
+        public static readonly TinkerRewardCalculator Instance = new TinkerRewardCalculator();
 
-        protected override int ComputeGold(TradeSkillContext context, EquipmentOrderContext order)
+        protected override int ComputeGold(TradeSkillContext context, TinkerOrderContext order)
         {
-            var gold = base.ComputeGold(context, order);
-            if (gold < 1) return gold;
-            if (order.Resource == CraftResource.Iron) return gold;
+            var pricePerCraftedItem = ComputePricePerCraftedItem(order.Resource, order.Type);
+            if (pricePerCraftedItem < 1) return 0;
 
-            // Further reduce value for non-basic resource multiplier
+            var gemTypePrice = GetGemTypeSellPrice(order.GemType);
+            if (0 < gemTypePrice) pricePerCraftedItem += gemTypePrice;
 
-            return gold / 3;
+            double price = order.MaxAmount * pricePerCraftedItem;
+
+            // Exceptional bonus
+            if (order.RequireExceptional)
+                price *= 1.25;
+
+            var resourceMultiplier = CraftResources.GetGold(order.Resource);
+            if (0 < resourceMultiplier)
+                price = (int)(price * resourceMultiplier);
+
+            // Reduce by arbitrary amount
+            return (int)(price / 3);
+        }
+
+        protected override int ComputePoints(TradeSkillContext context, TinkerOrderContext order)
+        {
+            // Reduce by arbitrary amount
+            return ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) / 3;
+        }
+
+        protected override int ComputeReputation(TradeSkillContext context, TinkerOrderContext order)
+        {
+            // Reduce by arbitrary amount
+            var reward = ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) / 50;
+
+            reward = (int)Math.Max(10, reward - 0.5 * ((double)context.Reputation / ShoppeConstants.MAX_REPUTATION));
+
+            return reward;
         }
 
         protected override CraftItem FindCraftItem(Type type)
         {
-            var craftItem = DefBlacksmithy.CraftSystem.CraftItems.SearchFor(type);
+            var craftItem = DefTinkering.CraftSystem.CraftItems.SearchFor(type);
             if (craftItem != null) return craftItem;
 
-            Console.WriteLine("Failed to find blacksmith craft item for '{0}'", type);
+            Console.WriteLine("Failed to find tinkering craft item for '{0}'", type);
 
             return null;
         }
@@ -99,6 +126,34 @@ namespace Server.Engines.GlobalShoppe
             }
 
             return materialMultiplier;
+        }
+
+        private int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, GemType gemType, Type type)
+        {
+            var pricePerCraftedItem = ComputePricePerCraftedItem(resource, type);
+            if (pricePerCraftedItem < 1) return 0;
+
+            var gemTypePrice = GetGemTypeSellPrice(gemType);
+            if (gemType == GemType.Pearl) gemTypePrice *= 2; // Double the value for Pearls
+            if (0 < gemTypePrice) pricePerCraftedItem += gemTypePrice;
+
+            double points = quantity * pricePerCraftedItem;
+
+            // Exceptional bonus
+            if (exceptional)
+                points *= 1.25;
+
+            // Flat material bonus
+            var materialMultiplier = GetResourceMultiplier(resource);
+            if (0 < materialMultiplier)
+                points += (int)(quantity * materialMultiplier + materialMultiplier); // Major bonus per item + Flat material bonus
+
+            return (int)points;
+        }
+
+        private int GetGemTypeSellPrice(GemType gemType)
+        {
+            return ItemInformation.GetValue(gemType);
         }
     }
 }
