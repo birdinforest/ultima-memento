@@ -1,4 +1,5 @@
 ﻿using Server.Engines.Craft;
+using Server.Items;
 using System;
 
 namespace Server.Engines.GlobalShoppe
@@ -10,19 +11,19 @@ namespace Server.Engines.GlobalShoppe
         protected override int ComputeGold(TradeSkillContext context, OrderContext order)
         {
             // Reduce by arbitrary amount
-            return ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 2;
+            return ComputeRewardFromResourceValue(order.Type, order.MaxAmount);
         }
 
         protected override int ComputePoints(TradeSkillContext context, OrderContext order)
         {
             // Reduce by arbitrary amount
-            return ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 3;
+            return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 1.5);
         }
 
         protected override int ComputeReputation(TradeSkillContext context, OrderContext order)
         {
             // Reduce by arbitrary amount
-            var reward = ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 50;
+            var reward = ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 25;
 
             reward = (int)Math.Max(10, reward - 0.5 * ((double)context.Reputation / ShoppeConstants.MAX_REPUTATION));
 
@@ -37,6 +38,13 @@ namespace Server.Engines.GlobalShoppe
             Console.WriteLine("Failed to find Cooking craft item for '{0}'", type);
 
             return null;
+        }
+
+        protected override int GetSellPrice(Type resourceType)
+        {
+            if (resourceType == typeof(BaseBeverage)) return 0;
+
+            return base.GetSellPrice(resourceType);
         }
     }
 }

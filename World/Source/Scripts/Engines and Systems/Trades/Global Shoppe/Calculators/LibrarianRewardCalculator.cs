@@ -16,7 +16,7 @@ namespace Server.Engines.GlobalShoppe
         protected override int ComputePoints(TradeSkillContext context, OrderContext order)
         {
             // Reduce by arbitrary amount
-            return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 1.5);
+            return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 2);
         }
 
         protected override int ComputeReputation(TradeSkillContext context, OrderContext order)

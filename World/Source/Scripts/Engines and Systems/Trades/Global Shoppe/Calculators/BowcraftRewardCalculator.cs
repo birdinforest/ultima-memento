@@ -8,6 +8,11 @@ namespace Server.Engines.GlobalShoppe
     {
         public static readonly BowcraftRewardCalculator Instance = new BowcraftRewardCalculator();
 
+        protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
+        {
+            return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
+        }
+
         protected override CraftItem FindCraftItem(Type type)
         {
             var craftItem = DefBowFletching.CraftSystem.CraftItems.SearchFor(type);

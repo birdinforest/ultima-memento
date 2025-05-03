@@ -8,6 +8,17 @@ namespace Server.Engines.GlobalShoppe
     {
         public static readonly BlacksmithRewardCalculator Instance = new BlacksmithRewardCalculator();
 
+        protected override int ComputeGold(TradeSkillContext context, EquipmentOrderContext order)
+        {
+            var gold = base.ComputeGold(context, order);
+            if (gold < 1) return gold;
+            if (order.Resource == CraftResource.Iron) return gold;
+
+            // Further reduce value for non-basic resource multiplier
+
+            return gold / 3;
+        }
+
         protected override CraftItem FindCraftItem(Type type)
         {
             var craftItem = DefBlacksmithy.CraftSystem.CraftItems.SearchFor(type);

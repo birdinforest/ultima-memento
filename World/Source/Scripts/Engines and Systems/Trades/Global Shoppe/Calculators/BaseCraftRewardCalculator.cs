@@ -69,7 +69,7 @@ namespace Server.Engines.GlobalShoppe
             return reward;
         }
 
-        protected int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
+        protected virtual int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
         {
             var pricePerCraftedItem = ComputePricePerCraftedItem(resource, type);
             if (pricePerCraftedItem < 1) return 0;

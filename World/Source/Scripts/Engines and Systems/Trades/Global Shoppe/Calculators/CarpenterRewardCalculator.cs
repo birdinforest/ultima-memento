@@ -8,6 +8,11 @@ namespace Server.Engines.GlobalShoppe
     {
         public static readonly CarpenterRewardCalculator Instance = new CarpenterRewardCalculator();
 
+        protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
+        {
+            return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
+        }
+
         protected override CraftItem FindCraftItem(Type type)
         {
             var craftItem = DefCarpentry.CraftSystem.CraftItems.SearchFor(type);

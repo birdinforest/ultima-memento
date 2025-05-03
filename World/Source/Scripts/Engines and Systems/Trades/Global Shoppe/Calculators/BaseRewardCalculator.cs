@@ -24,7 +24,7 @@ namespace Server.Engines.GlobalShoppe
             return resourcePerCraft;
         }
 
-        protected int GetSellPrice(Type resourceType)
+        protected virtual int GetSellPrice(Type resourceType)
         {
             var sellInfo = ItemSalesInfo.m_SellingInfo.FirstOrDefault(info => info.ItemsType == resourceType);
             if (sellInfo == null)

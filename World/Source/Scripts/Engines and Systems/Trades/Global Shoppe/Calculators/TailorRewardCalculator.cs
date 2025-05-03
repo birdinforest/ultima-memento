@@ -8,6 +8,22 @@ namespace Server.Engines.GlobalShoppe
     {
         public static readonly TailorRewardCalculator Instance = new TailorRewardCalculator();
 
+        protected override int ComputeGold(TradeSkillContext context, EquipmentOrderContext order)
+        {
+            var gold = base.ComputeGold(context, order);
+            if (gold < 1) return gold;
+            if (order.Resource == CraftResource.RegularLeather) return gold;
+
+            // Increase value of non-basic resource
+
+            return 2 * gold;
+        }
+
+        protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
+        {
+            return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
+        }
+
         protected override CraftItem FindCraftItem(Type type)
         {
             var craftItem = DefLeatherworking.CraftSystem.CraftItems.SearchFor(type);
