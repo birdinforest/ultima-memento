@@ -92,19 +92,18 @@ namespace Server.Gumps
 				string[] configures = keys.Split('#');
 				int entry = 1;
 
-				foreach (string key in configures)
-				{
-					if ( key == "1" )
-					{
-						if ( rows == 24 || rows == 48 || rows == 72 ){ x = x+i; y = 52; }
+                foreach (string key in configures)
+                {
+					if ( rows == 24 || rows == 48 || rows == 72 ){ x = x+i; y = 52; }
 
-						AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
-						AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + bookInfo( entry, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-						y=y+d;
-						rows++;
-					}
-					entry++;
-				}
+                    bool discovered = key == "1";
+                    if ( discovered ) AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
+                    string title = discovered ? bookInfo( entry, 1 ) : "---------------";
+                    AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                    y=y+d;
+                    rows++;
+                    entry++;
+                }
 			}
 		}
 
