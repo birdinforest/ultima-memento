@@ -538,7 +538,7 @@ namespace Server.Items
 			if ( context != null && context.DoNotColor )
 				Hue = 0;
 
-            GemType = GetGemType(craftItem);
+			GemType = GetGemType(craftItem);
 
 			return 1;
 		}
