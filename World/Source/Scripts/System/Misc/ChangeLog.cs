@@ -29,6 +29,7 @@ namespace Server.Misc
 			builder.Append("- Item - Rebalancing to Royal Guard Sash");
 			builder.Append("- Item - Nerfs to Shroud of Shadows, Jade Scimitar");
 			builder.Append("- Item - Buffs to Earrings of Health, Grim Reaper's lantern, Wildfire bow");
+			builder.Append("- Item - Elixirs can now only exceed your skill cap by 5");
 			builder.Append("- Misc - BarkFragment, BlankMap, WheatSheaf, and Sand can now be sold<br>");
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");

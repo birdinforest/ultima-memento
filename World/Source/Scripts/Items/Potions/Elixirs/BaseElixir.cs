@@ -52,7 +52,9 @@ namespace Server.Items
 			int buff_skill2 = (int)(m.Skills[SkillName.Tasting].Value / 5); // +20 MAX
 			int TotalBuff = ( buff_default + buff_bonus + buff_skill1 + buff_skill2 );
 
-			int MySkill = 125 - (int)m.Skills[skill].Base;
+			var actualSkill = m.Skills[skill];
+			var cap = Math.Min(actualSkill.Cap + 5, 125); // Never exceed 5 over the player's current cap
+			int MySkill = (int)(cap - actualSkill.Base);
 				if ( MySkill < 1 ){ MySkill = 1; }
 				if ( MySkill > TotalBuff ){ MySkill = TotalBuff; }
 
