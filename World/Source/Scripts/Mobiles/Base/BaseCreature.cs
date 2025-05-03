@@ -8053,7 +8053,14 @@ namespace Server.Mobiles
 
                 #region Jako Taming
                 if (!Summoned && JakoIsEnabled)
-                    list.Add("Level {0} {1}", RealLevel, SexString);
+				{
+					if (Level == RealLevel)
+						list.Add("Level {0}", RealLevel, SexString);
+					else
+						list.Add("Level {0} (was {1})", Level, RealLevel, SexString);
+
+					list.Add(SexString);
+				}
                 #endregion
 
                 list.Add(1060662, String.Format("Loyalty Rating\t{0}%", Loyalty.ToString())); // ADD THIS
