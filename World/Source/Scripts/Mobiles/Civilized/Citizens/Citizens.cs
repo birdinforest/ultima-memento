@@ -1065,10 +1065,7 @@ namespace Server.Mobiles
 
 				string speak = "";
 
-				if ( citizen.CanGiveMLQuest ) 
-				{
-					MLQuestSystem.OnDoubleClick( citizen, m_Mobile, false );
-				}
+				MLQuestSystem.OnDoubleClick(citizen, m_Mobile, false);
 
 				if ( citizen.CanTellRumor() && m_Mobile.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null )
 				{
