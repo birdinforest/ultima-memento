@@ -201,6 +201,10 @@ namespace Server.Engines.MLQuests.Definitions
                 if (IsCompleted())
                 {
                     y += 16;
+                    y += 16;
+                    g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("You heard {0} rumors, no wonder you're exhausted!", RumorAttempts));
+                    
+                    y += 16;
                     g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType)));
                 }
             }
@@ -342,7 +346,6 @@ namespace Server.Engines.MLQuests.Definitions
         }
     }
     #endregion
-
 }
 
 #region Items
