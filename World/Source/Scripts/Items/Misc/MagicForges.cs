@@ -405,7 +405,8 @@ namespace Server.Items
 				}
 				else if ( m.Region.IsPartOf( "Dungeon Rock" ) ) // EXODUS - FORGE OF VIRTUE
 				{
-					if ( m.Backpack.FindItemByType( typeof ( DarkCoreExodus ) ) != null )
+					Item core = m.Backpack.FindItemByType( typeof ( DarkCoreExodus ) );
+					if ( core != null )
 					{
 						bool canProcess = true;
 						bool scrollBar = false;
@@ -466,20 +467,7 @@ namespace Server.Items
 						}
 						else
 						{
-							Item core = m.Backpack.FindItemByType( typeof ( DarkCoreExodus ) );
-
-							ArrayList targets = new ArrayList();
-							foreach ( Item item in World.Items.Values )
-							if ( item is DarkCoreExodus )
-							{
-								targets.Add( item );
-							}
-							for ( int i = 0; i < targets.Count; ++i )
-							{
-								Item item = ( Item )targets[ i ];
-								item.Delete();
-							}
-
+							core.Delete();
 							Point3D fire = new Point3D( 710, 2209, -17 );
 							Effects.SendLocationEffect( fire, m.Map, 0x3709, 30, 10 );
 							m.PlaySound( 0x208 );

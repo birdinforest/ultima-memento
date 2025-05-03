@@ -34,6 +34,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Misc - Sacrificing the Dark Core of Exodus now only deletes your own core<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append("- Quest - Fix an issue where only a small subset of Citizens could satisfy the Sage Artifact rumor objective<br>");
