@@ -1012,7 +1012,7 @@ namespace Server.Mobiles
 
 		public void MarkToldRumor()
 		{
-            if (!CanTellRumor()) return;
+			if (!CanTellRumor()) return;
 
 			Fame = 1;
 			m_LastRumorTime = DateTime.Now;
@@ -1021,25 +1021,25 @@ namespace Server.Mobiles
 		}
 
 		public void ResetToldRumor()
-        {
-            if (Fame == 0) return;
+		{
+			if (Fame == 0) return;
 
-            var now = DateTime.Now;
-            if (now < m_LastRumorTime.AddMinutes(TALK_TO_COOLDOWN_MINUTES)) return;
+			var now = DateTime.Now;
+			if (now < m_LastRumorTime.AddMinutes(TALK_TO_COOLDOWN_MINUTES)) return;
 
-            Fame = 0;
+			Fame = 0;
 			InvalidateProperties();
-        }
+		}
 
-        public override void GetProperties(ObjectPropertyList list)
-        {
-            base.GetProperties(list);
+		public override void GetProperties(ObjectPropertyList list)
+		{
+			base.GetProperties(list);
 
 			if (!CanTellRumor() && (this is HouseVisitor) == false)
 			{
 				list.Add("Recently Questioned");
 			}
-        }
+		}
 
 		///////////////////////////////////////////////////////////////////////////
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
@@ -1099,8 +1099,8 @@ namespace Server.Mobiles
 
 				// They didn't tell a rumor, but we'll consume it anyways (to show the flag)
 				citizen.MarkToldRumor();
-            }
-        }
+			}
+		}
 		///////////////////////////////////////////////////////////////////////////
 
 		public override bool OnBeforeDeath()
@@ -1766,13 +1766,13 @@ namespace Server.Mobiles
 			{
 				if ( CitizenType == 1 && dropped.Enchanted != MagicSpell.None && dropped.EnchantUsesMax > 0 )
 				{
-                    if ( dropped.EnchantUses < dropped.EnchantUsesMax && dropped.EnchantUsesMax > 0 )
-                    {
+					if ( dropped.EnchantUses < dropped.EnchantUsesMax && dropped.EnchantUsesMax > 0 )
+					{
 						dropped.EnchantUses = dropped.EnchantUsesMax;
-                        say = "Your item is charged.";
-                        sound = 0x5C1;
-                    }
-                    else { say = "That has too many charges already."; }
+						say = "Your item is charged.";
+						sound = 0x5C1;
+					}
+					else { say = "That has too many charges already."; }
 				}
 			}
 			else if ( CitizenService == 1 )
