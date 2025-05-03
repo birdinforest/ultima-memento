@@ -1,6 +1,3 @@
-using System;
-using Server;
-
 namespace Server.Items
 {
 	public class Artifact_EarringsOfHealth : GiftGoldEarrings
@@ -10,7 +7,7 @@ namespace Server.Items
 		{
 			Name = "Earrings of Health";
 			Hue = 0x21;
-			Attributes.BonusHits = 3;
+			Attributes.BonusHits = 25;
 			Attributes.RegenHits = 5;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 4, "" );

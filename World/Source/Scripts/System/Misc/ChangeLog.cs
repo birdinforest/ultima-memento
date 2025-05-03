@@ -24,6 +24,11 @@ namespace Server.Misc
 			builder.Append("- Craft - Jars can now be bought from Alchemist and Herbalist<br>");
 			builder.Append("- Craft - Druidic Herbalism now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Craft - Witch Brewing now takes 4 total reagents, up from 2<br>");
+			builder.Append("- Item - Retroactive nerfs to Indecency and Gargoyle Shield");
+			builder.Append("- Item - Retroactive buffs to Polar bear cape, Polar bear boots, Grim Reaper's Robe, Robe of Teleport");
+			builder.Append("- Item - Rebalancing to Royal Guard Sash");
+			builder.Append("- Item - Nerfs to Shroud of Shadows, Jade Scimitar");
+			builder.Append("- Item - Buffs to Earrings of Health, Grim Reaper's lantern, Wildfire bow");
 			builder.Append("- Misc - BarkFragment, BlankMap, WheatSheaf, and Sand can now be sold<br>");
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");

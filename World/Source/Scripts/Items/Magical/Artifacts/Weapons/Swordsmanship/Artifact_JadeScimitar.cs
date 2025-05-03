@@ -1,8 +1,3 @@
-using System;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
-
 namespace Server.Items
 {
 	public class Artifact_JadeScimitar : GiftScimitar
@@ -22,9 +17,7 @@ namespace Server.Items
 			WeaponAttributes.HitPhysicalArea = 50;
 			WeaponAttributes.HitPoisonArea = 20;
 			WeaponAttributes.UseBestSkill = 1;
-			Attributes.AttackChance = 15;
 			Attributes.WeaponDamage = 50;
-			Attributes.WeaponSpeed = 30;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 15, "" );
 		}

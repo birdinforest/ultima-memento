@@ -1,15 +1,15 @@
-using System;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
 using Server.Spells.Third;
-using Server.Spells;
-using Server.Misc;
 
 namespace Server.Items
 {
 	public class Artifact_RobeOfTeleportation : GiftRobe
 	{
+		public override int BasePhysicalResistance { get{ return 3; } }
+		public override int BaseFireResistance { get{ return 4; } }
+		public override int BaseColdResistance { get{ return 4; } }
+		public override int BasePoisonResistance { get{ return 4; } }
+		public override int BaseEnergyResistance { get{ return 4; } }
+
 		[Constructable]
 		public Artifact_RobeOfTeleportation()
 		{

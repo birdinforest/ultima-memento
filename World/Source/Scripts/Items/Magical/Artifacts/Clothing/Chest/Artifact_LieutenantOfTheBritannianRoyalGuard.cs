@@ -13,7 +13,7 @@ namespace Server.Items
 
 			Attributes.BonusInt = 5;
 			Attributes.RegenMana = 2;
-			Attributes.LowerRegCost = 10;
+			Attributes.LowerManaCost = 10;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 3, "" );
 		}

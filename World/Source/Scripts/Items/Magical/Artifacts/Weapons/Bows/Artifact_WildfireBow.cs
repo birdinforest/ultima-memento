@@ -1,6 +1,3 @@
-using System;
-using Server;
-
 namespace Server.Items
 {
 	public class Artifact_WildfireBow : GiftElvenCompositeLongbow
@@ -18,6 +15,8 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
 			WeaponAttributes.ResistFireBonus = 25;
 			
+			WeaponAttributes.HitFireArea = 50;
+			Attributes.WeaponSpeed = 10;
 			Velocity = 15;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );

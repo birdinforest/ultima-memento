@@ -1,6 +1,3 @@
-using System;
-using Server;
-
 namespace Server.Items
 {
     public class Artifact_MarbleShield : GiftHeaterShield
@@ -21,11 +18,9 @@ namespace Server.Items
             Hue = 2961;
             StrRequirement = 105;
             Attributes.BonusDex = 10;
-            Attributes.RegenHits = 10;
-            Attributes.AttackChance = 20;
-            Attributes.DefendChance = 20;
-            Attributes.Luck = 300;
-            ArmorAttributes.SelfRepair = 8;
+            Attributes.RegenHits = 3;
+            Attributes.AttackChance = 10;
+            Attributes.DefendChance = 10;
             Attributes.CastSpeed = 1;
             Attributes.CastRecovery = 1;
             Attributes.SpellChanneling = 1;
@@ -40,7 +35,7 @@ namespace Server.Items
         public override void Serialize( GenericWriter writer )
         {
             base.Serialize( writer );
-            writer.Write( (int) 0 );
+            writer.Write( (int) 1 );
         }
 
         public override void Deserialize(GenericReader reader)
@@ -48,6 +43,14 @@ namespace Server.Items
             base.Deserialize( reader );
 			ArtifactLevel = 2;
             int version = reader.ReadInt();
+            if (version < 1)
+            {
+                Attributes.RegenHits = 3;
+                Attributes.AttackChance = 10;
+                Attributes.DefendChance = 10;
+                Attributes.Luck = 0;
+                ArmorAttributes.SelfRepair = 0;
+            }
         }
     }
 }

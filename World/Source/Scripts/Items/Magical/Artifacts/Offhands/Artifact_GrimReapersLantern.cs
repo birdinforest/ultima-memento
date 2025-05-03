@@ -1,8 +1,3 @@
-using System;
-using Server;
-using Server.Misc;
-using Server.Mobiles;
-
 namespace Server.Items
 {
 	public class Artifact_GrimReapersLantern : GiftLantern
@@ -12,11 +7,11 @@ namespace Server.Items
 		{
 			Name = "Grim Reaper's Lantern";
 			Hue = 0x47E;
-			Attributes.CastRecovery = 1;
+			Attributes.CastRecovery = 2;
 			Attributes.CastSpeed = 1;
 			Attributes.SpellDamage = 10;
-			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10 );
-			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10 );
+			SkillBonuses.SetValues( 0, SkillName.Necromancy, 15 );
+			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 15 );
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}
