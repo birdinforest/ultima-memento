@@ -31,6 +31,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
+			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -13,8 +13,8 @@ namespace Server.Engines.MLQuests.Utilities
             quest.Objectives.Add(new DummyObjective("to find a nearby moongate"));
             quest.Objectives.Add(new DummyObjective("- Humans can increase their movement speed by purchasing"));
             quest.Objectives.Add(new DummyObjective("a horse or llama from an Animal Trainer"));
-            quest.Objectives.Add(new DummyObjective("- Humans can increase their movement speed by purchasing"));
-            quest.Objectives.Add(new DummyObjective("'Hiking Boots' from a Cobbler"));
+            quest.Objectives.Add(new DummyObjective("- Monster races can increase their movement speed by"));
+            quest.Objectives.Add(new DummyObjective("purchasing 'Hiking Boots' from a Cobbler"));
         }
 
         public static void AddNoviceTravelTips(MLQuest quest)
