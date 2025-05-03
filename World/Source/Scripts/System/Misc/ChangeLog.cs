@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Jars can now be bought from Alchemist and Herbalist<br>");
 			builder.Append("- Craft - Druidic Herbalism now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Craft - Witch Brewing now takes 4 total reagents, up from 2<br>");
+			builder.Append("- Craft - Crafting any scroll can now be used to reach 125 Inscription<br>");
 			builder.Append("- Item - Retroactive nerfs to Indecency and Gargoyle Shield");
 			builder.Append("- Item - Retroactive buffs to Polar bear cape, Polar bear boots, Grim Reaper's Robe, Robe of Teleport");
 			builder.Append("- Item - Rebalancing to Royal Guard Sash");

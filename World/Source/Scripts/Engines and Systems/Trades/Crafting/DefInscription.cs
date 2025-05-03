@@ -152,9 +152,6 @@ namespace Server.Engines.Craft
 
 		private void AddSpell(int recipeNumber, Type type, params Reg[] regs)
 		{
-			if (MySettings.S_UseLegacyInscription)
-				recipeNumber = -1;
-
 			double minSkill, maxSkill;
 
 			string title = "Magery Circles 1 & 2";
@@ -170,6 +167,17 @@ namespace Server.Engines.Craft
 				case 5: minSkill = 46.4; maxSkill = 96.4; title = "Magery Circles 5 & 6"; break;
 				case 6: minSkill = 60.7; maxSkill = 110.7; title = "Magery Circles 7 & 8"; break;
 				case 7: minSkill = 75.0; maxSkill = 125.0; title = "Magery Circles 7 & 8"; break;
+			}
+
+			if (MySettings.S_UseLegacyInscription)
+			{
+				// Remove Recipe
+				recipeNumber = -1;
+			}
+			else
+			{
+				// Crafting any scroll should gain
+				maxSkill = 125;
 			}
 
 			int index = AddCraftRecipe(recipeNumber, type, title, 1044381 + m_Index++, minSkill, maxSkill, m_RegTypes[(int)regs[0]], 1044353 + (int)regs[0], 1, 1044361 + (int)regs[0]);
@@ -189,12 +197,22 @@ namespace Server.Engines.Craft
 
 		private void AddNecroSpell(int recipeNumber, int spell, int mana, double minSkill, Type type, params Type[] regs)
 		{
-			if (MySettings.S_UseLegacyInscription)
-				recipeNumber = -1;
+			double maxSkill = minSkill + 1;
 
 			int id = CraftItem.ItemIDOf(regs[0]);
 
-			int index = AddCraftRecipe(recipeNumber, type, "Necromancy Spells", 1060509 + spell, minSkill, minSkill + 1.0, regs[0], id < 0x4000 ? 1020000 + id : 1078872 + id, 1, 501627);
+			if (MySettings.S_UseLegacyInscription)
+			{
+				// Remove Recipe
+				recipeNumber = -1;
+			}
+			else
+			{
+				// Crafting any scroll should gain
+				maxSkill = 125;
+			}
+
+			int index = AddCraftRecipe(recipeNumber, type, "Necromancy Spells", 1060509 + spell, minSkill, maxSkill, regs[0], id < 0x4000 ? 1020000 + id : 1078872 + id, 1, 501627);
 
 			for (int i = 1; i < regs.Length; ++i)
 			{
@@ -216,9 +234,6 @@ namespace Server.Engines.Craft
 
 		private void AddElementalSpell( int recipeNumber, Type type )
 		{
-			if (MySettings.S_UseLegacyInscription)
-				recipeNumber = -1;
-
 			double minSkill, maxSkill;
 
 			int blood = 2+m_Circle;
@@ -234,6 +249,17 @@ namespace Server.Engines.Craft
 				case 5: minSkill = 46.4; maxSkill = 96.4; break;
 				case 6: minSkill = 60.7; maxSkill = 110.7; break;
 				case 7: minSkill = 75.0; maxSkill = 125.0; break;
+			}
+
+			if (MySettings.S_UseLegacyInscription)
+			{
+				// Remove Recipe
+				recipeNumber = -1;
+			}
+			else
+			{
+				// Crafting any scroll should gain
+				maxSkill = 125;
 			}
 
 			int index = AddCraftRecipe(recipeNumber, type, "Elemental Spells", ElementalSpell.CommonInfo( (300 + m_Elly++), 1 ), minSkill, maxSkill, typeof(BlankScroll), 1044377, 1, 1044378);
