@@ -21,7 +21,15 @@ namespace Server.Utilities
         {
             if (type == null) return false;
 
-            return typeof(T).IsAssignableFrom(type);
+			return IsTypeOrDerived(type, typeof(T));
+        }
+
+        public static bool IsTypeOrDerived(Type type, Type targetType)
+        {
+            if (type == null) return false;
+			if (targetType == null) return false;
+
+            return targetType.IsAssignableFrom(type);
         }
 
         public static bool IsExceptionalEquipmentType(Type type)
