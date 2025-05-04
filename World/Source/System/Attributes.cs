@@ -221,4 +221,9 @@ namespace Server
 			m_WriteLevel = writeLevel;
 		}
 	}
+	
+	[AttributeUsage( AttributeTargets.Class )]
+	public class SkipSerializeReqAttribute : Attribute
+	{
+	}
 }

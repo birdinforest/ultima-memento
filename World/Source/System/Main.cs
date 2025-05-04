@@ -627,29 +627,32 @@ namespace Server
 							warningSb.AppendLine("       - No zero paramater constructor");
 						}
 					}*/
-
-					if (t.GetConstructor(m_SerialTypeArray) == null)
+					
+					if (!t.IsDefined( typeof( SkipSerializeReqAttribute ), false ))
 					{
-						if (warningSb == null)
-							warningSb = new StringBuilder();
+						if (t.GetConstructor(m_SerialTypeArray) == null)
+						{
+							if (warningSb == null)
+								warningSb = new StringBuilder();
 
-						warningSb.AppendLine("       - No serialization constructor");
-					}
+							warningSb.AppendLine("       - No serialization constructor");
+						}
 
-					if (t.GetMethod("Serialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly) == null)
-					{
-						if (warningSb == null)
-							warningSb = new StringBuilder();
+						if (t.GetMethod("Serialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly) == null)
+						{
+							if (warningSb == null)
+								warningSb = new StringBuilder();
 
-						warningSb.AppendLine("       - No Serialize() method");
-					}
+							warningSb.AppendLine("       - No Serialize() method");
+						}
 
-					if (t.GetMethod("Deserialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly) == null)
-					{
-						if (warningSb == null)
-							warningSb = new StringBuilder();
+						if (t.GetMethod("Deserialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly) == null)
+						{
+							if (warningSb == null)
+								warningSb = new StringBuilder();
 
-						warningSb.AppendLine("       - No Deserialize() method");
+							warningSb.AppendLine("       - No Deserialize() method");
+						}
 					}
 
 					if (warningSb != null && warningSb.Length > 0)
