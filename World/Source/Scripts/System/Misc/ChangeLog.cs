@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");
 			builder.Append("- Misc - Library now has placeholder text<br>");
+			builder.Append("- Mobs - Creatures will no longer begin combat with self-buffing<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- Pets - Tooltip now shows 'real' level, which matters when pets de-level<br>");
 			builder.Append("- Quest - Display rumor count after last rumor is verified<br>");

@@ -55,7 +55,7 @@ namespace Server.Mobiles
 			Spell spell = null;
 
 			// always check for bless, per OSI
-			spell = CheckBless();
+			// spell = CheckBless();
 
 			if ( spell != null )
 			{
