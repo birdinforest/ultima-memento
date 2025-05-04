@@ -82,7 +82,7 @@ namespace Server.Items
 				scalar = 1.0;
 
 			// Lower Mana Cost = 40%
-			int lmc = Math.Min( AosAttributes.GetValue( from, AosAttribute.LowerManaCost ), 40 );
+			int lmc = Math.Min( AosAttributes.GetValue( from, AosAttribute.LowerManaCost ), MyServerSettings.LowerMana() );
 
 			scalar -= (double)lmc / 100;
 			mana = (int)(mana * scalar);
