@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Server.Engines.GlobalShoppe
 {
+	[SkipSerializeReq]
     public abstract class CustomerOrderShoppe<TOrderContext> : CustomerShoppe, IOrderShoppe
         where TOrderContext : class, IOrderContext
     {
