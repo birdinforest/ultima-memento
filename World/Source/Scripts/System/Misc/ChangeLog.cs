@@ -21,6 +21,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Combat - Add teleport cooldown for OmniAI<br>");
+			builder.Append("- Combat - Creatures will no longer begin combat with self-buffing<br>");
 			builder.Append("- Craft - BlankScroll, Bottle, and Jar are no longer considered Resources (they're cheaper to buy)<br>");
 			builder.Append("- Craft - Jars can now be bought from Alchemist and Herbalist<br>");
 			builder.Append("- Craft - Druidic Herbalism now takes 4 total reagents, up from 2<br>");
@@ -35,7 +36,6 @@ namespace Server.Misc
 			builder.Append("- Misc - BarkFragment, BlankMap, WheatSheaf, and Sand can now be sold<br>");
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - Library now has placeholder text<br>");
-			builder.Append("- Mobs - Creatures will no longer begin combat with self-buffing<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- Pets - Tooltip now shows 'real' level, which matters when pets de-level<br>");
 			builder.Append("- Quest - Display rumor count after last Sage Artifact rumor is verified<br>");
