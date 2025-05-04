@@ -46,6 +46,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Misc - Sacrificing the Dark Core of Exodus now only deletes your own core<br>");
+			builder.Append("- Misc - Fix an issue with Fast-move delay causing ghost speed to be slowed down<br>");
 			builder.Append("- Pets - Fix issue where applying Traits could lower stats<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");

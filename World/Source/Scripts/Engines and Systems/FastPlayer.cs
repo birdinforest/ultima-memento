@@ -108,7 +108,12 @@ namespace Server
 			else
 			{
 				if (shouldDelay)
-					Timer.DelayCall(ArbitraryDelay, () => player.Send(SpeedControl.Disable));
+					Timer.DelayCall(ArbitraryDelay, () =>
+					{
+						if (!player.Alive) return;
+
+						player.Send(SpeedControl.Disable);
+					});
 				else
 					player.Send(SpeedControl.Disable);
 
