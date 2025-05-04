@@ -6467,16 +6467,6 @@ namespace Server
 			}
 		}
 
-		public void SetRace()
-		{
-			if ( RaceID > 0 )
-			{
-				Race.Body(this);
-				BodyMod = RaceID;
-				HueMod = 0;
-			}
-		}
-
 		public void ProcessClothing()
 		{
 			ShowItem( FindItemOnLayer( Layer.Helm ) );

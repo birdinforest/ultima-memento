@@ -53,6 +53,7 @@ namespace Server.Misc
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append("- Quest - Fix an issue where only a small subset of Citizens could satisfy the Sage Artifact rumor objective<br>");
+			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +62,7 @@ namespace Server.Misc
 
 			builder.Append("Breaking Changes<br>");
 			builder.Append("- Commands - [Cacheclear command has been added<br>");
-			builder.Append("- Race - Logging in as dead non-humans now leaves your body id alone<br>");
+			builder.Append("- Race - (did not actually work) Logging in as dead non-humans now leaves your body id alone<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Augment - Resources no longer give weapons resists<br>");

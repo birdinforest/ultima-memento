@@ -35,7 +35,7 @@ namespace Server
 
 			if ( m.Hue >= 33770 ){ m.Hue = m.Hue - 32768; }
 
-			m.SetRace();
+			m.RaceBody();
 
 			if ( ((PlayerMobile)m).GumpHue > 0 && m.RecordSkinColor == 0 )
 			{
