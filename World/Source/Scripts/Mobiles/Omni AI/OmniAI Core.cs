@@ -31,6 +31,9 @@ namespace Server.Mobiles
 {
 	public partial class OmniAI : BaseAI
 	{
+		private static TimeSpan TELEPORT_DELAY = TimeSpan.FromSeconds( 4 );
+
+		private DateTime m_NextTeleportTime;
 		private DateTime m_NextCastTime;
 		private DateTime m_NextHealTime;
 		private DateTime m_NextFieldCheck;
@@ -325,7 +328,7 @@ namespace Server.Mobiles
 
 		public bool OnFailedMove()
 		{			
-			if( m_CanUseMagery && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) )
+			if( m_CanUseMagery && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) && DateTime.Now > m_NextTeleportTime )
 			{
 				if( m_Mobile.Target != null )
 					m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
@@ -336,7 +339,8 @@ namespace Server.Mobiles
 
 				return true;
 			}
-			else if( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
+
+			if( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
 			{
 				if( m_Mobile.Debug )
 					m_Mobile.DebugSay( "My move is blocked, so I am going to attack {0}", m_Mobile.FocusMob.Name );
@@ -559,6 +563,8 @@ namespace Server.Mobiles
 					if ( (targ.Range == -1 || m_Mobile.InRange( p, targ.Range )) && m_Mobile.InLOS( lt ) && map.CanSpawnMobile( px + x, py + y, lt.Z ) && !SpellHelper.CheckMulti( p, map ) )
 					{
 						targ.Invoke( m_Mobile, lt );
+						m_NextTeleportTime = DateTime.Now + TELEPORT_DELAY;
+
 						return true;
 					}
 				}
@@ -577,6 +583,8 @@ namespace Server.Mobiles
 					if ( m_Mobile.InLOS( lt ) && map.CanSpawnMobile( lt.X, lt.Y, lt.Z ) && !SpellHelper.CheckMulti( randomPoint, map ) )
 					{
 						targ.Invoke( m_Mobile, new LandTarget( randomPoint, map ) );
+						m_NextTeleportTime = DateTime.Now + TELEPORT_DELAY;
+
 						return true;
 					}
 				}
