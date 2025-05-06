@@ -36,9 +36,9 @@ namespace Server.Misc
 			builder.Append("- Misc - BarkFragment, BlankMap, WheatSheaf, and Sand can now be sold<br>");
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - Library now has placeholder text<br>");
-			builder.Append("- Misc - Max properties from vendor-bought magical items is now 4, down from 5<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- NPC - Vendor bought equipment is now limited to 1g resale value<br>");
+			builder.Append("- NPC - Max properties from vendor-bought magical items is now 4, down from 5<br>");
 			builder.Append("- Pets - Tooltip now shows 'real' level, which matters when pets de-level<br>");
 			builder.Append("- Quest - Display rumor count after last Sage Artifact rumor is verified<br>");
 			builder.Append("- Shoppe - Targeting a container now adds all possible items to the Order<br>");
