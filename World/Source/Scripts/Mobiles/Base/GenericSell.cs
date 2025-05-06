@@ -21,6 +21,8 @@ namespace Server.Mobiles
 
 		public int GetSellPriceFor( Item item, int barter )
 		{
+			if ( item.Purchased ) return 1; // Previously purchased items should be worth nothing
+
 			int price = 0;
 			m_Table.TryGetValue( item.GetType(), out price );
 

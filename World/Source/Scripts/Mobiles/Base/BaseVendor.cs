@@ -1470,6 +1470,7 @@ namespace Server.Mobiles
 				{
 					item.Amount = 1;
 					MutatePurchase(item, buyer, true);
+					item.Purchased = true;
 
 					if ( cont == null || !cont.TryDropItem( buyer, item, false ) )
 						item.MoveToWorld( buyer.Location, buyer.Map );
@@ -1478,6 +1479,7 @@ namespace Server.Mobiles
 					{
 						item = bii.GetEntity() as Item;
 						MutatePurchase(item, buyer, true);
+						item.Purchased = true;
 							
 						if ( item is Spear ){ item.ItemID = 0xF62; }
 						else if ( item is Club ){ item.ItemID = 0x13B4; }

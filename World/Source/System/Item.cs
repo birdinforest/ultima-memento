@@ -995,6 +995,10 @@ namespace Server
 		[CommandProperty(AccessLevel.Owner)]
 		public bool Built { get { return m_Built; } set { m_Built = value; InvalidateProperties(); } }
 
+		private bool m_Purchased;
+		[CommandProperty(AccessLevel.Owner)]
+		public bool Purchased { get { return m_Purchased; } set { m_Purchased = value; InvalidateProperties(); } }
+
 		public string EquipLayerName( Layer layer )
 		{
 			if ( layer == Layer.OneHanded )
@@ -2619,8 +2623,9 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( 13 ); // version
+			writer.Write( 14 ); // version
 
+			writer.Write( Purchased );
 			writer.Write( EnchantMod );
 			writer.Write( ColorHue1 );
 			writer.Write( ColorText1 );
@@ -2988,6 +2993,11 @@ namespace Server
 
 			switch ( version )
 			{
+				case 14:
+					{
+						m_Purchased = reader.ReadBool();
+						goto case 13;
+					}
 				case 13:
 					{
 						m_EnchantMod = reader.ReadInt();
