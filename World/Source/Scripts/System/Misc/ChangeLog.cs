@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("- Misc - BarkFragment, BlankMap, WheatSheaf, and Sand can now be sold<br>");
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - Library now has placeholder text<br>");
+			builder.Append("- Misc - Thief pedestals now provide more variety by default<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- NPC - Vendor bought equipment is now limited to 1g resale value<br>");
 			builder.Append("- NPC - Max properties from vendor-bought magical items is now 4, down from 5<br>");

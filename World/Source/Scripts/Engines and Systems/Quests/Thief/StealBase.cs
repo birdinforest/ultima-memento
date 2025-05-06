@@ -1,16 +1,7 @@
 using System;
-using Server;
-using System.Collections.Generic;
-using System.Collections;
-using Server.Items;
-using Server.Multis;
-using Server.Mobiles;
 using Server.Network;
-using System.Reflection;
-using System.Text;
-using Server.Regions;
 using Server.Misc;
-using Server.Gumps;
+using System.Linq;
 
 namespace Server.Items
 {
@@ -423,98 +414,95 @@ namespace Server.Items
             BoxCarving = reader.ReadString();
 		}
 
+		private void GenerateGoodLoot( Container box, Mobile from, bool good )
+		{
+			int goodLootRandom = good ? Utility.RandomMinMax(1, 10) : 10;
+			switch( goodLootRandom )
+			{
+				case 1:
+				{
+					box.DropItem( Loot.RandomArty() );
+					break;
+				}
+
+				case 2:
+				case 3:
+				case 4:
+				{
+					box.DropItem( Loot.RandomSArty( Server.LootPackEntry.playOrient( from ), from ) );
+					break;
+				}
+
+				case 5:
+				case 6:
+				{
+					Item item =  Utility.RandomMinMax(1, 4) == 1
+						? Loot.RandomInstrument()
+						: Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
+					box.DropItem( LootPackEntry.Enchant( from, 500, item ) );
+					break;
+				}
+
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+				{
+
+					int goldFromLuck = Math.Max(from.Luck, 4000);
+					int randomGold = good
+						? Utility.RandomMinMax( 4000, 16000 )
+						: Utility.RandomMinMax( 400, 1600 );
+
+					randomGold = (int)(randomGold * (MyServerSettings.GetGoldCutRate() * .01));
+
+					box.DropItem( new Gold(  goldFromLuck + randomGold  ) );
+					LootPackChange.MakeCoins( box, from );
+					break;
+				}
+			}
+		}
+
 		public void FillMeUp( Container box, Mobile from, bool good )
 		{
-			Item i = null;
-			if ( good && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-			{
-				i = Loot.RandomArty();
-				box.DropItem(i);
-			}
+			GenerateGoodLoot( box, from, good );
 
-			if ( good && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-			{
-				i = Loot.RandomSArty( Server.LootPackEntry.playOrient( from ), from );
-				box.DropItem(i);
-			}
+			int calculatedLuck = 20 + (from.Luck / 2);
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-			{
-				Item relic = Loot.RandomRelic( from );
-				box.DropItem( relic );
-			}
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
+				box.DropItem( Loot.RandomRelic( from ) );
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
 				box.DropItem( Loot.RandomRare( Utility.RandomMinMax(6,12), from ) );
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
 				box.DropItem( Loot.RandomBooks( Utility.RandomMinMax(6,12) ) );
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
 				box.DropItem( Loot.RandomScroll( Utility.Random(12)+1 ) );
-
-			int minG = 4000;
-			int maxG = 16000;
-
-			if ( !good )
-			{
-				minG = 400;
-				maxG = 1600;
-			}
-
-			int givG = Utility.RandomMinMax( minG, maxG );
-
-			givG = (int)(givG * (MyServerSettings.GetGoldCutRate() * .01));
-
-			int luck = from.Luck;
-				if ( luck > 4000 )
-					luck = 4000;
-
-			i = new Gold( ( luck + givG ) );
-			box.DropItem(i);
-			LootPackChange.MakeCoins( box, from );
-
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
+			
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
 			{
 				Item item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
-				item = LootPackEntry.Enchant( from, 500, item );
+				item = LootPackEntry.Enchant( from, 300, item );
 				box.DropItem(item);
 			}
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
 			{
-				Item lute = Loot.RandomInstrument();
-				lute = LootPackEntry.Enchant( from, 500, lute );
-				box.DropItem(lute);
+				int gems = Utility.RandomMinMax( 4, 12 );
+				for ( int i = 0; i < gems; i++ )
+					box.DropItem( Loot.RandomGem() );
 			}
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				i = Loot.RandomGem();
-				box.DropItem(i);
-			}
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
+				box.DropItem( Loot.RandomPotion( Utility.RandomMinMax(6,12), true ) );
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				i = Loot.RandomPotion( Utility.RandomMinMax(6,12), true );
-				box.DropItem(i);
-			}
+			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
+				box.DropItem( new MagicalWand(0) );
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				Item wand = new MagicalWand(0);
-				box.DropItem( wand );
-			}
-
-			List<Item> iY = new List<Item>();
-			foreach( Item iZ in box.Items )
-			{
-				iY.Add(iZ);
-			}
-			foreach ( Item iX in iY )
-			{
-				Server.Items.NotIdentified.ConfigureItem( iX, box, from );
-			}
+			foreach ( Item item in box.Items.ToList() )
+				Server.Items.NotIdentified.ConfigureItem( item, box, from );
 		}
 	}
 }
