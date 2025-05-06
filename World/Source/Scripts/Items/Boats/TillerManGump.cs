@@ -30,22 +30,38 @@ namespace Server.Gumps
 			AddImage(0, 0, image);
 
 			AddButton(11, 106, 10006, 10006, 11, GumpButtonType.Reply, 0);	// TURN LEFT
+			AddTooltip("Turn Left");
+
 			AddButton(147, 106, 10006, 10006, 12, GumpButtonType.Reply, 0);	// TURN RIGHT
+			AddTooltip("Turn Right");
 			AddButton(79, 165, 10006, 10006, 13, GumpButtonType.Reply, 0);	// COME ABOUT
+			AddTooltip("Come About");
 
 			AddButton(108, 57, color, color, 1, GumpButtonType.Reply, 0);	// N
+			AddTooltip("North");
 			AddButton(124, 91, color, color, 2, GumpButtonType.Reply, 0);	// NE
+			AddTooltip("North East");
 			AddButton(111, 123, color, color, 3, GumpButtonType.Reply, 0);	// E
+			AddTooltip("East");
 			AddButton(79, 138, color, color, 4, GumpButtonType.Reply, 0);	// SE
+			AddTooltip("South East");
 			AddButton(46, 124, color, color, 5, GumpButtonType.Reply, 0);	// S
+			AddTooltip("South");
 			AddButton(32, 91, color, color, 6, GumpButtonType.Reply, 0);	// SW
+			AddTooltip("South West");
 			AddButton(44, 60, color, color, 7, GumpButtonType.Reply, 0);	// W
+			AddTooltip("West");
 			AddButton(78, 45, color, color, 8, GumpButtonType.Reply, 0);	// NW
+			AddTooltip("North West");
 
 			AddButton(78, 16, 10006, 10006, 10, GumpButtonType.Reply, 0);	// ANCHOR
+			AddTooltip("Anchor");
 			AddButton(75, 89, 11410, 11410, 100, GumpButtonType.Reply, 0);	// STOP
+			AddTooltip("Stop");
 			AddButton(38, 159, 2103, 2103, 9, GumpButtonType.Reply, 0);		// ONE STEP
+			AddTooltip("Toggle Speed");
 			AddButton(120, 158, 2103, 2103, 99, GumpButtonType.Reply, 0);	// RENAME SHIP
+			AddTooltip("Rename Ship");
         }
 
 		public override void OnResponse( NetState sender, RelayInfo info )
