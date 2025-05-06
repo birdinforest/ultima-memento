@@ -1552,7 +1552,7 @@ namespace Server.Mobiles
 				case 3: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 3, 15, 40); break; // 15k - Starting Difficult dungeons
 				case 4: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 3, 20, 50); break; // 20k - After a lot of Difficult
 				case 5: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 4, 25, 50); break; // 25k - Begin Challenging
-				case 6: if (doMutation) BaseRunicTool.ApplyAttributes(item, 3, 5, 40, 70); break; // 30k - Lots of Challenging
+				case 6: if (doMutation) BaseRunicTool.ApplyAttributes(item, 3, 4, 40, 70); break; // 30k - Lots of Challenging
 				// Hard
 				// Deadly
 				default: return false;
