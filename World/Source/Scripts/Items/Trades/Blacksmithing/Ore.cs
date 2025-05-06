@@ -12,6 +12,7 @@ namespace Server.Items
 		public override string DefaultDescription{ get{ return "These rocks can be smelted at a forge, which will create metal ingots. The ingots can then be used for crafting."; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+		public virtual int IngotsPerOre { get{ return 4; } }
 
 		public override double DefaultWeight
 		{
@@ -122,7 +123,7 @@ namespace Server.Items
 
 				Delete(); // Delete early to prevent going overweight
 
-				ingot.Amount = ingots * 4;
+				ingot.Amount = ingots * IngotsPerOre;
 				from.AddToBackpack(ingot);
 			}
 			else
@@ -559,6 +560,8 @@ namespace Server.Items
 
 	public class DwarvenOre : BaseOre
 	{
+		public override int IngotsPerOre { get{ return 2; } }
+
 		[Constructable]
 		public DwarvenOre() : this( 1 )
 		{
