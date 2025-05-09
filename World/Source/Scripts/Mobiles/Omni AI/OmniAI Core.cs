@@ -32,7 +32,9 @@ namespace Server.Mobiles
 	public partial class OmniAI : BaseAI
 	{
 		private static TimeSpan TELEPORT_DELAY = TimeSpan.FromSeconds( 4 );
+		public static int MAX_TELEPORT_ATTEMPTS = 3;
 
+		private int m_TeleportAttempts;
 		private DateTime m_NextTeleportTime;
 		private DateTime m_NextCastTime;
 		private DateTime m_NextHealTime;
@@ -486,6 +488,12 @@ namespace Server.Mobiles
 			 2,  0,  2,  1,  2,  2 
 		};
 
+		private void MarkTeleport()
+		{
+			m_TeleportAttempts = 0;
+			m_NextTeleportTime = DateTime.Now.Add(TELEPORT_DELAY);
+		}
+
 		private bool ProcessTarget()
 		{
 			Target targ = m_Mobile.Target;
@@ -525,12 +533,14 @@ namespace Server.Mobiles
 			{
 				if ( targ is Shadowjump.InternalTarget && !m_Mobile.Hidden )
 					return false;
-
+				
 				Map map = m_Mobile.Map;
 
-				if ( map == null || toTarget == null || toTarget.Deleted )
+				if ( MAX_TELEPORT_ATTEMPTS < ++m_TeleportAttempts || map == null || toTarget == null || toTarget.Deleted )
 				{
 					targ.Cancel( m_Mobile, TargetCancelType.Canceled );
+					MarkTeleport();
+
 					return true;
 				}
 
@@ -563,7 +573,7 @@ namespace Server.Mobiles
 					if ( (targ.Range == -1 || m_Mobile.InRange( p, targ.Range )) && m_Mobile.InLOS( lt ) && map.CanSpawnMobile( px + x, py + y, lt.Z ) && !SpellHelper.CheckMulti( p, map ) )
 					{
 						targ.Invoke( m_Mobile, lt );
-						m_NextTeleportTime = DateTime.Now + TELEPORT_DELAY;
+						MarkTeleport();
 
 						return true;
 					}
@@ -583,7 +593,7 @@ namespace Server.Mobiles
 					if ( m_Mobile.InLOS( lt ) && map.CanSpawnMobile( lt.X, lt.Y, lt.Z ) && !SpellHelper.CheckMulti( randomPoint, map ) )
 					{
 						targ.Invoke( m_Mobile, new LandTarget( randomPoint, map ) );
-						m_NextTeleportTime = DateTime.Now + TELEPORT_DELAY;
+						MarkTeleport();
 
 						return true;
 					}
