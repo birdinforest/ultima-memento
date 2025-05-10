@@ -60,7 +60,7 @@ namespace Server.Engines.Harvest
 
 			// One ore per harvest action
 			oreAndStone.ConsumedPerHarvest = 1 * MyServerSettings.Resources();
-			oreAndStone.ConsumedPerIslesDreadHarvest = oreAndStone.ConsumedPerHarvest + (int)(oreAndStone.ConsumedPerHarvest/2) + 3;
+			oreAndStone.ConsumedPerIslesDreadHarvest = oreAndStone.ConsumedPerHarvest + (int)Math.Ceiling(oreAndStone.ConsumedPerHarvest / 2d) + 2;
 
 			// The digging effect
 			oreAndStone.EffectActions = new int[]{ 11 };

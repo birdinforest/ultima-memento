@@ -60,7 +60,7 @@ namespace Server.Engines.Harvest
 
 			// Ten logs per harvest action
 			lumber.ConsumedPerHarvest = 1 * MyServerSettings.Resources();
-			lumber.ConsumedPerIslesDreadHarvest = lumber.ConsumedPerHarvest + (int)(lumber.ConsumedPerHarvest/2);
+			lumber.ConsumedPerIslesDreadHarvest = lumber.ConsumedPerHarvest + (int)Math.Ceiling(lumber.ConsumedPerHarvest / 2d);
 
 			// The chopping effect
 			lumber.EffectActions = new int[]{ 13 };
