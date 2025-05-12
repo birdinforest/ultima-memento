@@ -56,6 +56,8 @@ namespace Server.Misc
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");
 			builder.Append("- Pets - Fix issue where applying Traits could lower stats<br>");
 			builder.Append("- Misc - Weapon Abilities now respect ServerSettings cap for Lower Mana Cost (no change for Live)<br>");
+			builder.Append("- Misc - Autoloot no longer works on Player corpses<br>");
+			builder.Append("- Misc - Autoloot no longer works on corpses where looting would be a criminal action<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append("- Quest - Fix an issue where only a small subset of Citizens could satisfy the Sage Artifact rumor objective<br>");
