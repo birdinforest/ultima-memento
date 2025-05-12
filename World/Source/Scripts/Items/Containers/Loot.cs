@@ -1296,13 +1296,13 @@ namespace Server
 
 			Item item = Construct( m_RareItemTypes );
 
-			int filler = (int)(level/2)+1; if (filler < 1){ filler = 1; }
-			int fillup = filler + 2;
-			int rich = level * 7;
-			int iRich = rich + 7;
-
 			if ( ( item is SmallHollowBook || item is LargeHollowBook ) && Utility.RandomBool() )
 			{
+				int filler = (int)(level/2)+1; if (filler < 1){ filler = 1; }
+				int fillup = filler + 2;
+				int rich = level * 7;
+				int iRich = rich + 7;
+				
 				Container iBook = (Container)item;
 				int booking = 0;
 
