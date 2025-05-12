@@ -30,6 +30,16 @@ namespace Server
 			var player = e.Mobile as PlayerMobile;
 			if (player == null) return;
 
+			if (e.Arguments.Length == 0)
+			{
+				if (ArbitraryDelay == TimeSpan.Zero)
+					player.SendMessage("The fast player delay is currently disabled.");
+				else
+					player.SendMessage("The fast player delay is currently '{0}' milliseconds.", ArbitraryDelay.TotalMilliseconds);
+
+				return;
+			}
+
 			if (e.Arguments.Length != 1)
 			{
 				player.SendMessage("Arguments for the command are [FastPlayer-Delay <Milliseconds (int)>");
