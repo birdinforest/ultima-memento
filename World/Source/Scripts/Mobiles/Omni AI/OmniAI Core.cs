@@ -329,8 +329,9 @@ namespace Server.Mobiles
 		}
 
 		public bool OnFailedMove()
-		{			
-			if( m_CanUseMagery && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) && DateTime.Now > m_NextTeleportTime )
+		{
+			var canOnlySwim = m_Mobile.CanSwim && m_Mobile.CantWalk;
+			if( m_CanUseMagery && !canOnlySwim && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) && DateTime.Now > m_NextTeleportTime )
 			{
 				if( m_Mobile.Target != null )
 					m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
