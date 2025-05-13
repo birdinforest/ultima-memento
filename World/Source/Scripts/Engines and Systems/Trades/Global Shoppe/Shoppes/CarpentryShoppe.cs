@@ -243,7 +243,7 @@ namespace Server.Engines.GlobalShoppe
                 this,
                 context,
                 "CARPENTRY WORK SHOPPE",
-                "Carpentry Tools",
+                "Carpenter Tools",
                 "Boards"
             );
         }

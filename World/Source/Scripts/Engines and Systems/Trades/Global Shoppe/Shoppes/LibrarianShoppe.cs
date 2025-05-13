@@ -258,7 +258,7 @@ namespace Server.Engines.GlobalShoppe
                 this,
                 context,
                 "LIBRARIAN WORK SHOPPE",
-                "Scribe Pens",
+                "Scribe Quills",
                 "Blank Scrolls"
             );
         }

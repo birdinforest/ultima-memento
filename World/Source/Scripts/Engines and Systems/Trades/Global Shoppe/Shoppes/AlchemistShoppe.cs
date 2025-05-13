@@ -134,7 +134,7 @@ namespace Server.Engines.GlobalShoppe
                 this,
                 context,
                 "ALCHEMIST WORK SHOPPE",
-                "Mortars and Pestles",
+                "Alchemy Sets",
                 "Reagents"
             );
         }

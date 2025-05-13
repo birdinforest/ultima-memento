@@ -70,7 +70,7 @@ namespace Server.Engines.GlobalShoppe
                 this,
                 context,
                 "CARTOGRAPHY WORK SHOPPE",
-                "Mapmaker Pens",
+                "Cartography Quills",
                 "Blank Scrolls"
             );
         }

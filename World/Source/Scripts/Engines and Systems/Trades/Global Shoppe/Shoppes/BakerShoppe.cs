@@ -164,7 +164,7 @@ namespace Server.Engines.GlobalShoppe
                 this,
                 context,
                 "BAKER WORK SHOPPE",
-                "Pans or Rolling Pins",
+                "Culinary Sets",
                 "Dough"
             );
         }
