@@ -47,6 +47,7 @@ namespace Server.Misc
 			builder.Append("- Quest - Display rumor count after last Sage Artifact rumor is verified<br>");
 			builder.Append("- Shoppe - Targeting a container now adds all possible items to the Order<br>");
 			builder.Append("- Shoppe - All Shoppes (except Cartography) now have Orders<br>");
+			builder.Append("- Shoppe - Baker shoppe Orders can no longer require wasabi clumps<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
