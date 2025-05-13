@@ -1029,9 +1029,6 @@ namespace Server.Items
 			if( DualWield.Registry.Contains( m ) )
 				bonus += ((DualWield.DualWieldTimer)DualWield.Registry[m]).BonusSwingSpeed;
 
-			if( Feint.Registry.Contains( m ) )
-				bonus -= ((Feint.FeintTimer)Feint.Registry[m]).SwingSpeedReduction;
-
 			TransformContext context = TransformationSpellHelper.GetContext( m );
 
 			int discordanceEffect = 0;

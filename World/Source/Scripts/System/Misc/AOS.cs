@@ -175,6 +175,9 @@ namespace Server
 				}
 			}
 
+            if (Feint.Registry.ContainsKey(m) && Feint.Registry[m].Enemy == from)
+                totalDamage -= (int)(totalDamage * ((double)Feint.Registry[m].DamageReduction / 100));
+
 			m.Damage( totalDamage, from );
 			return totalDamage;
 		}

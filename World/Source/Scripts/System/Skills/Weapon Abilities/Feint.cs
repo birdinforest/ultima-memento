@@ -1,7 +1,5 @@
-
 using System;
-using System.Collections;
-using Server.Items;
+using System.Collections.Generic;
 
 namespace Server.Items
 {
@@ -10,8 +8,8 @@ namespace Server.Items
 	/// </summary>
 	public class Feint : WeaponAbility
 	{
-		private static Hashtable m_Registry = new Hashtable();
-		public static Hashtable Registry { get { return m_Registry; } }
+		private static Dictionary<Mobile, FeintTimer> m_Registry = new Dictionary<Mobile, FeintTimer>();
+		public static Dictionary<Mobile, FeintTimer> Registry { get { return m_Registry; } }
 
 		public Feint()
 		{
@@ -19,21 +17,17 @@ namespace Server.Items
 
 		public override int BaseMana { get { return 25; } }
 
-		public override bool CheckSkills(Mobile from)
-		{
-			return base.CheckSkills(from);
-		}
-
 		public override void OnHit(Mobile attacker, Mobile defender, int damage)
 		{
 			if (!Validate(attacker) || !CheckMana(attacker, true))
 				return;
 
-			if (Registry.Contains(defender))
+			if (Registry.ContainsKey(attacker))
 			{
-				FeintTimer existingtimer = (FeintTimer)Registry[defender];
-				existingtimer.Stop();
-				Registry.Remove(defender);
+				if (m_Registry[attacker] != null)
+					m_Registry[attacker].Stop();
+
+				Registry.Remove(attacker);
 			}
 
 			ClearCurrentAbility(attacker);
@@ -43,30 +37,40 @@ namespace Server.Items
 
 			attacker.FixedParticles(0x3728, 1, 13, 0x7F3, 0x962, 0, EffectLayer.Waist);
 
-			Timer t = new FeintTimer(defender, (int)(20.0 + 3.0 * (Math.Max(attacker.Skills[SkillName.Tactics].Value, attacker.Skills[SkillName.Anatomy].Value) - 50.0) / 7.0));    //20-50 % decrease
+			// 100 (41%) // 120 (50%) // 125 (52%)
+			double skill = Math.Max(attacker.Skills[SkillName.Ninjitsu].Value, attacker.Skills[SkillName.Bushido].Value);
+			int bonus = (int)(20.0 + 3.0 * (skill - 50.0) / 7.0);
+
+			FeintTimer t = new FeintTimer(attacker, defender, bonus);
 
 			t.Start();
-			Registry.Add(defender, t);
+			m_Registry[attacker] = t;
+
+			// TODO: Add icon and cliloc
+			// string args = String.Format("{0}\t{1}", defender.Name, bonus);
+			// BuffInfo.AddBuff(attacker, new BuffInfo(BuffIcon.Feint, 1151308, 1151307, TimeSpan.FromSeconds(6), attacker, args));
 		}
 
 		public class FeintTimer : Timer
 		{
-			private Mobile m_Defender;
-			private int m_SwingSpeedReduction;
+			public readonly Mobile Owner;
+			public readonly Mobile Enemy;
+			public readonly int DamageReduction;
 
-			public int SwingSpeedReduction { get { return m_SwingSpeedReduction; } }
-
-			public FeintTimer(Mobile defender, int swingSpeedReduction)
-				: base(TimeSpan.FromSeconds(6.0))
+			public FeintTimer(Mobile owner, Mobile enemy, int damageReduction)
+				: base(TimeSpan.FromSeconds(6.0)) // OSI is 6s
 			{
-				m_Defender = defender;
-				m_SwingSpeedReduction = swingSpeedReduction;
+				Owner = owner;
+				Enemy = enemy;
+				DamageReduction = damageReduction;
 				Priority = TimerPriority.FiftyMS;
 			}
 
 			protected override void OnTick()
 			{
-				Registry.Remove(m_Defender);
+				Registry.Remove(Owner);
+				if (Enemy.Alive)
+					Owner.SendMessage("Your opponent recovers their senses.");
 			}
 		}
 	}
