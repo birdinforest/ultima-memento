@@ -117,6 +117,8 @@ namespace Server.Misc
 					case 12: AddTreasure( level, box, from, LootPack.TreasureMegaRich );	break;
 				}
 			}
+			
+			NotIdentified.DoAutoDelete( box, from );
 		}
 
 		public static void AddTreasure( int level, LockableContainer box, Mobile from, LootPack pack )

@@ -1,13 +1,8 @@
-using System;
-using Server;
-using Server.Network;
-using System.Text;
-using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
 using System.Collections.Generic;
-using System.Collections;
-using Server.Targeting;
+using System.Linq;
+using System;
 
 namespace Server.Items
 {
@@ -264,6 +259,81 @@ namespace Server.Items
 			unk.Delete();
 
 			return name;
+		}
+
+		public static void DoAutoDelete( Container container, Mobile mobile )
+		{
+			DoAutoDelete( container, mobile.Skills[SkillName.ArmsLore].Value, mobile.Skills[SkillName.Mercantile].Value, mobile.Skills[SkillName.Tasting].Value );
+		}
+
+		public static void DoAutoDelete( Container container, IEnumerable<Mobile> mobiles )
+		{
+			if ( mobiles == null || !mobiles.Any() ) return;
+
+			double mercantileSkill = 0;
+			double armsLoreSkill = 0;
+			double tastingSkill = 0;
+
+			foreach( var originalMobile in mobiles )
+			{
+				var mobile = originalMobile;
+				if (mobile is BaseCreature)
+					mobile = ((BaseCreature)mobile).ControlMaster;
+
+				if (mobile is PlayerMobile)
+				{
+					// Pick the highest skill
+					armsLoreSkill = Math.Max(armsLoreSkill, mobile.Skills[SkillName.ArmsLore].Value);
+					mercantileSkill = Math.Max(mercantileSkill, mobile.Skills[SkillName.Mercantile].Value);
+					tastingSkill = Math.Max(tastingSkill, mobile.Skills[SkillName.Tasting].Value);
+				}
+			}
+
+			DoAutoDelete( container, armsLoreSkill, mercantileSkill, tastingSkill );
+		}
+
+		protected static void DoAutoDelete( Container container, double armsLoreSkill, double mercantileSkill, double tastingSkill )
+		{
+			if ( 100 <= MySettings.S_UnidentifiedItem_FreeLootPercentage ) return;
+
+			var deleteChance = 100 - Math.Min(100, MySettings.S_UnidentifiedItem_FreeLootPercentage);
+			var toDelete = container.Items
+				.Where(item => item is NotIdentified)
+				.Cast<NotIdentified>()
+				.Where(item =>
+				{
+					// Never delete artifacts
+					if (item.Items.Any(contained => 0 < contained.ArtifactLevel)) return false;
+
+					double skillValue;
+					switch (item.NotIDSkill)
+					{
+						case IDSkill.ArmsLore:
+							skillValue = armsLoreSkill;
+							break;
+
+						case IDSkill.Tasting:
+							skillValue = tastingSkill;
+							break;
+
+						case IDSkill.Mercantile:
+						default:
+							skillValue = mercantileSkill;
+							break;
+					}
+
+					if (skillValue == 0) return false;
+					if (100 <= skillValue) return true;
+
+					return skillValue < Utility.RandomMinMax(0, deleteChance);
+				});
+
+			if (toDelete.Any())
+			{
+				toDelete
+					.ToList()
+					.ForEach(item => item.Delete());
+			}
 		}
 
 		public static string CannotIDVirConItem( NotIdentified unk, Mobile player )

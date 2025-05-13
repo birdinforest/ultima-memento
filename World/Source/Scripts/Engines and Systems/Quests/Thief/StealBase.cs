@@ -503,6 +503,8 @@ namespace Server.Items
 
 			foreach ( Item item in box.Items.ToList() )
 				Server.Items.NotIdentified.ConfigureItem( item, box, from );
+				
+			Server.Items.NotIdentified.DoAutoDelete( box, from );
 		}
 	}
 }

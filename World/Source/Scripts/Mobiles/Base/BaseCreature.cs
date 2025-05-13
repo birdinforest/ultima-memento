@@ -19,6 +19,7 @@ using Server;
 using System.IO;
 using Server.Engines.MLQuests;
 using Custom.Jerbal.Jako;
+using System.Linq;
 
 namespace Server.Mobiles
 {
@@ -8393,6 +8394,12 @@ namespace Server.Mobiles
 			{
 				m_HasGeneratedLoot = true;
 				GenerateLoot( false );
+				if ( Backpack != null )
+				{
+					var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
+					var mobiles = lootingRights.Select(store => store.m_Mobile);
+					NotIdentified.DoAutoDelete( Backpack, mobiles );
+				}
 			}
 
 			if ( IsAnimatedDead )
