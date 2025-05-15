@@ -950,13 +950,9 @@ namespace Server
 		{
 			Item item = null;
 
-			int var = Utility.RandomMinMax( 1, 5 );
-			if ( Worlds.isSciFiRegion( m ) )
-				var = Utility.RandomMinMax( 0, 1 );
-
 			if ( level == -10 ) // VENDOR BAGS
 			{
-				switch ( Utility.Random( 6 ) ) 
+				switch ( Utility.RandomMinMax( 0, 6 ) ) 
 				{
 					case 0: item = RandomFoods( false, true ); break;
 					case 1: item = RandomPossibleReagent(); break;
@@ -964,6 +960,7 @@ namespace Server
 					case 3: item = RandomJunk(); break;
 					case 4: item = RandomTools(); break;
 					case 5: item = RandomCrafts(); break;
+					case 6: item = RandomRelic( m ); break;
 				}
 
 				if ( item.Stackable )
@@ -977,6 +974,7 @@ namespace Server
 			}
 			else
 			{
+				int var = Worlds.isSciFiRegion( m ) ? Utility.RandomMinMax( 0, 1 ): Utility.RandomMinMax( 1, 6 );
 				switch ( var ) 
 				{
 					case 0: item = RandomSciFi(); break;
@@ -985,6 +983,7 @@ namespace Server
 					case 3: item = RandomProvisions(); break;
 					case 4: if ( Utility.RandomBool() ){ item = RandomJunk(); } else { item = RandomCoins( m ); } break;
 					case 5: if ( Utility.RandomBool() ){ item = RandomTools(); } else { item = RandomCrafts(); } break;
+					case 6: item = RandomRelic( m ); break;
 				}
 			}
 
