@@ -59,6 +59,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix an issue with Fast-move delay causing monster ghost speed to be slowed down<br>");
 			builder.Append("- Misc - Thief artifact decorations could be purchased for 0g from Sage<br>");
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");
+			builder.Append("- Misc - Gold drops now vary per loot pack<br>");
 			builder.Append("- Pets - Fix issue where applying Traits could lower stats<br>");
 			builder.Append("- Misc - Weapon Abilities now respect ServerSettings cap for Lower Mana Cost (no change for Live)<br>");
 			builder.Append("- Misc - Autoloot no longer works on Player corpses<br>");

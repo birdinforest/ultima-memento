@@ -81,15 +81,19 @@ namespace Server
 						continue;
 
 					Item item = entry.Construct( from, luckChance, spawning, level, dungeonLevelBonus );
-
 					if ( item != null )
 					{
 						LootPackChange.RemoveItem( item, from, level );
 						if (item.Deleted) continue;
-					}
 
-					if ( item != null )
-					{
+						if (item is Gold)
+						{
+							var amount = (int)(item.Amount * (MyServerSettings.GetGoldCutRate() * .01));
+							item.Amount = Math.Max(1, amount);
+							cont.TryDropItem(from, item, false);
+							continue;
+                        }
+
 						item = LootPackChange.ChangeItem( item, from, level );
 						NotIdentified.ConfigureItem( item, cont, from );
 						ReagentJar.ConfigureItem( item, cont, from );
@@ -225,7 +229,7 @@ namespace Server
 		#region Monster definitions
 		public static readonly LootPack MonsterPoor = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,					   100.00, "2d10+20" ),
+				new LootPackEntry( false, Gold,					   100.00, "2d10+20" ),
 				new LootPackEntry( false, MagicItemsPoor,		  	 1.00, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Instruments,			  	 0.04, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Spellbooks,				 0.04, 1, 1, 0, 25 ),
@@ -236,7 +240,7 @@ namespace Server
 
 		public static readonly LootPack MonsterMeager = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,						100.00, "4d10+40" ),
+				new LootPackEntry( false, Gold,						100.00, "4d10+40" ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	 20.40, 1, 2, 0, 30 ),
 				new LootPackEntry( false, MagicItemsMeager2,	 	 10.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, Instruments,				  0.20, 1, 2, 0, 30 ),
@@ -247,7 +251,7 @@ namespace Server
 
 		public static readonly LootPack MonsterAverage = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,					   100.00, "8d10+100" ),
+				new LootPackEntry( false, Gold,					   100.00, "8d10+100" ),
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MagicItemsAverage2, 		19.50, 1, 3, 0, 40 ),
@@ -259,7 +263,7 @@ namespace Server
 
 		public static readonly LootPack MonsterRich = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,					   100.00, "15d10+225" ),
+				new LootPackEntry( false, Gold,					   100.00, "15d10+225" ),
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
 				new LootPackEntry( false, MagicItemsRich2,	 		61.70, 2, 4, 20, 40 ),
@@ -272,7 +276,7 @@ namespace Server
 
 		public static readonly LootPack MonsterFilthyRich = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,						   100.00, "3d100+400" ),
+				new LootPackEntry( false, Gold,						   100.00, "3d100+400" ),
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 25,  50 ),
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 25,  50 ),
 				new LootPackEntry( false, MagicItemsFilthyRich2,		77.60, 3, 4, 25,  50 ),
@@ -286,7 +290,7 @@ namespace Server
 
 		public static readonly LootPack MonsterUltraRich = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,						100.00, "6d100+600" ),
+				new LootPackEntry( false, Gold,						100.00, "6d100+600" ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
@@ -303,7 +307,7 @@ namespace Server
 
 		public static readonly LootPack MonsterMegaRich = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,						100.00, "10d100+800" ),
+				new LootPackEntry( false, Gold,						100.00, "10d100+800" ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
@@ -594,6 +598,9 @@ namespace Server
 					BaseRunicTool.ApplyAttributes( luckChance, item, props, min, max );
 				}
 			}
+
+			if ( item != null && item.Stackable )
+				item.Amount = m_Quantity.Roll();
 
 			return item;
 		}
