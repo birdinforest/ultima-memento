@@ -41,6 +41,8 @@ namespace Server.Misc
 			builder.Append("- Misc - Library now has placeholder text<br>");
 			builder.Append("- Misc - Thief pedestals now provide more variety by default<br>");
 			builder.Append("- Misc - ID skills now perform like Magic Find<br>");
+			builder.Append("- Misc - Skins, Blocks, and Alien resources now sell for notably less<br>");
+			builder.Append("- Misc - Leather, Ingot, and Board prices have been rebalanced<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- NPC - Vendor bought equipment is now limited to 1g resale value<br>");
