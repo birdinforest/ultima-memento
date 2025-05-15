@@ -53,7 +53,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Rich, 2 );
 			AddLoot( LootPack.FilthyRich, 1 );
-			AddLoot( LootPack.Gems, 3 );
+			AddLoot( LootPack.Gems, 2 );
 		}
 
 		public override bool CanRummageCorpses{ get{ return true; } }

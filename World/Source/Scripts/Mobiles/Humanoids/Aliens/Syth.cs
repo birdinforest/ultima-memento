@@ -211,7 +211,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.FilthyRich, 2 );
 			AddLoot( LootPack.Rich );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 1 );
 		}
 
 		public override bool ClickTitle{ get{ return false; } }

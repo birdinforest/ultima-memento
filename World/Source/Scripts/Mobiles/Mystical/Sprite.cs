@@ -63,7 +63,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.LowScrolls );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 1 );
 		}
 
 		public override void OnGotMeleeAttack( Mobile attacker )

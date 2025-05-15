@@ -45,10 +45,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
-			AddLoot( LootPack.Gems, 2 );
-			AddLoot( LootPack.Gems, 2 );
-			AddLoot( LootPack.Gems, 2 );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 4 );
 		}
 
 		public override bool BleedImmune{ get{ return true; } }

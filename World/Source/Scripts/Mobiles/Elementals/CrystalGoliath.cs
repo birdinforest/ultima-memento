@@ -48,7 +48,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich, 2 );
-			AddLoot( LootPack.Gems, 4 );
+			AddLoot( LootPack.Gems, 2 );
 		}
 
 		public override int Rocks{ get{ return Utility.RandomMinMax( 5, 10 ); } }

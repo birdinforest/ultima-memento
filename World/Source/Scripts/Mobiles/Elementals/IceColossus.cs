@@ -65,7 +65,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich, 3 );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 1 );
 		}
 
 		public override int GetAttackSound(){ return 0x626; }	// A

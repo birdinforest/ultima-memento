@@ -66,7 +66,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich, 2 );
-			AddLoot( LootPack.Gems, 3 );
+			AddLoot( LootPack.Gems, 2 );
 		}
 
 		public override void CheckReflect( Mobile caster, ref bool reflect )

@@ -77,7 +77,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 1 );
 		}
 
 		public override bool AutoDispel{ get{ return true; } }

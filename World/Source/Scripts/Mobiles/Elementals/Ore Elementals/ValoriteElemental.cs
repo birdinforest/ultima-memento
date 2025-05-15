@@ -80,7 +80,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
-			AddLoot( LootPack.Gems, 4 );
+			AddLoot( LootPack.Gems, 2 );
 		}
 
 		public override bool AutoDispel{ get{ return true; } }

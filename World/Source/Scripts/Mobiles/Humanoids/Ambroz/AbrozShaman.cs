@@ -74,7 +74,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.FilthyRich );
 			AddLoot( LootPack.Rich );
-			AddLoot( LootPack.Gems, 4);
+			AddLoot( LootPack.Gems, 2);
 		}
 
 		public override bool OnBeforeDeath()

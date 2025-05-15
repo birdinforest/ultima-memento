@@ -60,7 +60,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.FilthyRich, 1 );
 			AddLoot( LootPack.Rich, 1 );
-			AddLoot( LootPack.Gems, 4 );
+			AddLoot( LootPack.Gems, 2 );
 		}
 
 		public override bool AutoDispel{ get{ return true; } }

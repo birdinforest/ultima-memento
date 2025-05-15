@@ -52,7 +52,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Average );
-			AddLoot( LootPack.Gems, 2 );
+			AddLoot( LootPack.Gems, 1 );
 			AddLoot( LootPack.MedScrolls, 1 );
 		}
 
