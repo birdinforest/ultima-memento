@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Admin - Add '[Freeze-SetId' command to set the Freezable Item ID<br>");
 			builder.Append("- Combat - Add teleport cooldown for OmniAI<br>");
 			builder.Append("- Combat - Mobs that can only swim can no longer teleport<br>");
 			builder.Append("- Combat - Creatures will no longer begin combat with self-buffing<br>");

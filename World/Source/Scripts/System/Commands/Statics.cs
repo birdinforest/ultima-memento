@@ -12,8 +12,11 @@ namespace Server
 {
 	public class Statics
 	{
+		private static int m_ExportID = 0x0; // SET THIS TO A SPECIFIC ITEM ID YOU WANT FROZEN
+		
 		public static void Initialize()
 		{
+			CommandSystem.Register( "Freeze-SetId", AccessLevel.Administrator, new CommandEventHandler( FreezeSetId_OnCommand ) );
 			CommandSystem.Register( "Freeze", AccessLevel.Administrator, new CommandEventHandler( Freeze_OnCommand ) );
 			CommandSystem.Register( "FreezeMap", AccessLevel.Administrator, new CommandEventHandler( FreezeMap_OnCommand ) );
 			CommandSystem.Register( "FreezeWorld", AccessLevel.Administrator, new CommandEventHandler( FreezeWorld_OnCommand ) );
@@ -21,6 +24,35 @@ namespace Server
 			CommandSystem.Register( "Unfreeze", AccessLevel.Administrator, new CommandEventHandler( Unfreeze_OnCommand ) );
 			CommandSystem.Register( "UnfreezeMap", AccessLevel.Administrator, new CommandEventHandler( UnfreezeMap_OnCommand ) );
 			CommandSystem.Register( "UnfreezeWorld", AccessLevel.Administrator, new CommandEventHandler( UnfreezeWorld_OnCommand ) );
+		}
+
+		[Usage( "Freeze-SetId" )]
+		[Description( "Sets a specific item ID to Freeze." )]
+		public static void FreezeSetId_OnCommand( CommandEventArgs e )
+        {
+            if ( e.Arguments.Length != 1 )
+            {
+                e.Mobile.SendMessage("You must specify an item ID to Freeze or 0 to clear the current item ID.");
+                return;
+            }
+
+            string itemIdArg = e.Arguments[0];
+            int itemId;
+            if (!int.TryParse(itemIdArg, out itemId))
+            {
+                e.Mobile.SendMessage("Item ID must be a valid number.");
+                return;
+            }
+
+			m_ExportID = itemId;
+			if ( itemId == 0 )
+			{
+				e.Mobile.SendMessage("The Freezable Item ID has been cleared.");
+			}
+			else
+			{
+				e.Mobile.SendMessage("The Freezable Item ID has been set to '{0}'.", itemId);
+			}
 		}
 
 		private static Point3D NullP3D = new Point3D( int.MinValue, int.MinValue, int.MinValue );
@@ -82,7 +114,12 @@ namespace Server
 		public static void Freeze( Mobile from, Map targetMap, Point3D start3d, Point3D end3d )
 		{
 			Hashtable mapTable = new Hashtable();
-			int id = Server.Scripts.Commands .Builder.ExportID();
+			
+			var id = m_ExportID;
+			if ( id != 0 )
+			{
+				from.SendMessage("The '[Freeze-SetId {0}' command has been used. Only items with this ID will be frozen.", id);
+			}
 
 			if ( start3d == NullP3D && end3d == NullP3D )
 			{
@@ -101,7 +138,7 @@ namespace Server
 						if ( item.Parent != null )
 							continue;
 
-						if ( id > 0 || item is Static || item is BaseFloor || item is BaseWall || item is AddonComponent )
+						if ( id > 0 || item is Static || item is BaseFloor || item is BaseWall || item is AddonComponent ) //
 						{
 							Map itemMap = item.Map;
 

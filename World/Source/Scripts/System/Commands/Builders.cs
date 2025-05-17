@@ -246,12 +246,6 @@ namespace Server.Scripts.Commands
 			return false;
 		}
 
-		public static int ExportID()
-		{
-			return 0x35D2; // SET THIS TO A SPECIFIC ITEM ID YOU WANT FROZEN
-			//return 0;
-		}
-
 		private class InternalItem : Item
 		{
 			public InternalItem( Point3D loc, Map map ) : base( 0x35D2 )
