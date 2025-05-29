@@ -54,6 +54,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Combat - Feint weapon ability now properly reduces damage<br>");
 			builder.Append("- Gather - Lumberjacking in the dreaded place has increased yields<br>");
+			builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 			builder.Append("- Misc - Sacrificing the Dark Core of Exodus now only deletes your own core<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move delay causing monster ghost speed to be slowed down<br>");
 			builder.Append("- Misc - Thief artifact decorations could be purchased for 0g from Sage<br>");
