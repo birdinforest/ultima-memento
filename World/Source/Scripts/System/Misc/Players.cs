@@ -544,43 +544,37 @@ namespace Server.Misc
 			return sDateString;
 		}
 
-		public static bool LuckyPlayer( int luck )
+		public static bool CheckLuck( int luck, int freeChanceBonus = 0, int percentOfLuckToUse = 100 )
 		{
 			if ( luck <= 0 )
 				return false;
 
-			if ( luck > 2000 )
-				luck = 2000;
+			const int MAX_LUCK = 2000;
+			const double LUCK_TO_PERCENT_CONVERSION = 100 / MAX_LUCK;
 
-			int clover = (int)(luck * 0.04); // RETURNS A MAX OF 80%
+			luck = Math.Min( MAX_LUCK, luck ); // Cap luck
+			if ( percentOfLuckToUse < 100 ) luck = luck * percentOfLuckToUse / 100; // Reduce luck
 
-			if ( clover >= Utility.RandomMinMax( 1, 100 ) )
-				return true;
+			int playerChance = freeChanceBonus + (int)( luck * LUCK_TO_PERCENT_CONVERSION );
 
-			return false;
+			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
 		}
 
-		public static bool VeryLuckyKiller( int luck )
+		public static bool LuckyPlayer( int luck, int freePercentBonus = 0 )
 		{
-			if (!Utility.RandomBool()) return false; // 50%
-
-			return LuckyKiller(luck); // 50% * 50% = 25%
+			return CheckLuck( luck, freePercentBonus, 80 );
 		}
 
-		public static bool LuckyKiller( int luck )
+		public static bool VeryLuckyKiller( int luck, int freePercentBonus = 0 )
 		{
-			if ( luck <= 0 )
-				return false;
+			if (!Utility.RandomBool()) return false;
 
-			if ( luck > 2000 )
-				luck = 2000;
+			return LuckyKiller(luck, freePercentBonus);
+		}
 
-			int clover = (int)(luck * 0.02) + 10; // RETURNS A MAX OF 50%
-
-			if ( clover >= Utility.RandomMinMax( 1, 100 ) )
-				return true;
-
-			return false;
+		public static bool LuckyKiller( int luck, int freePercentBonus = 0 )
+		{
+			return CheckLuck( luck, freePercentBonus, 50 );
 		}
 
 		public static bool EvilPlayer( Mobile m )
