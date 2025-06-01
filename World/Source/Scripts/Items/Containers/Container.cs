@@ -459,6 +459,7 @@ namespace Server.Items
 		{
 			Layer = Layer.Backpack;
 			Weight = 13.0;
+			MaxItems = 50;
 		}
 
 		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
@@ -486,7 +487,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -497,6 +498,8 @@ namespace Server.Items
 
 			if ( version == 0 )
 				Weight = 13.0;
+			if ( version == 1 )
+				MaxItems = 50;
 		}
 	}
 
