@@ -102,29 +102,38 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.Stam = 20;
-			from.Thirst = 20;
-			this.Consume();
-			from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
-
-			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).DoubleClickID && NotIdentified ) 
-				from.SendMessage( "This must be in your backpack to identify." );
-			else if ( from is PlayerMobile && ((PlayerMobile)from).DoubleClickID && NotIdentified )
-				IDCommand( from );
-			else if ( Weight > 75 )
+			if ( NotIdentified )
 			{
-				from.AddToBackpack( new Barrel() );
-				from.SendMessage( "You down the entire keg and are no longer thirsty." );
-			}
-			else if ( Weight > 25 )
-			{
-				from.AddToBackpack( new PotionKeg() );
-				from.SendMessage( "You down the entire keg and are no longer thirsty." );
+				if ( from is PlayerMobile && ((PlayerMobile)from).DoubleClickID )
+				{
+					if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack ) 
+					from.SendMessage( "This must be in your backpack to identify." );
+					else 
+						IDCommand( from );
+				}
 			}
 			else
 			{
-				from.AddToBackpack( new Bottle() );
-				from.SendMessage( "You drink the entire bottle and are no longer thirsty." );
+				from.Stam = 20;
+				from.Thirst = 20;
+				this.Consume();
+				from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
+
+				if ( Weight > 75 )
+				{
+					from.AddToBackpack( new Barrel() );
+					from.SendMessage( "You down the entire keg and are no longer thirsty." );
+				}
+				else if ( Weight > 25 )
+				{
+					from.AddToBackpack( new PotionKeg() );
+					from.SendMessage( "You down the entire keg and are no longer thirsty." );
+				}
+				else
+				{
+					from.AddToBackpack( new Bottle() );
+					from.SendMessage( "You drink the entire bottle and are no longer thirsty." );
+				}
 			}
 		}
 
