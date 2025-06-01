@@ -139,8 +139,6 @@ namespace Server.Items
 			}
 
 			ContainerFunctions.FillTheContainer( level, this, finder );
-			if ( GetPlayerInfo.LuckyPlayer( finder.Luck ) ){ ContainerFunctions.FillTheContainer( level, this, finder ); }
-
 			ContainerFunctions.LockTheContainer( level, this, 1 );
 
 			if ( nOwner == 1 ){ sOwner = "chest"; }

@@ -78,7 +78,12 @@ namespace Server.Items
 					Effects.SendLocationParticles( EffectItem.Create( mDoor.Location, mDoor.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5024 );
 					Effects.PlaySound( mDoor.Location, mDoor.Map, 0x1FA );
 
-					if ( Utility.RandomMinMax( 1, 3 ) > 1 )
+					if ( GetPlayerInfo.CheckLuck( m.Luck, 10, 20 ) )
+					{
+						HiddenBox mBox = new HiddenBox( level, where, m );
+						mDoor.DropItem( mBox );
+					}
+					else
 					{
 						Item coins = new Gold( ( money * level ) );
 
@@ -98,43 +103,7 @@ namespace Server.Items
 						if ( coins.Amount > 65000 )
 							coins.Amount = 65000;
 
-						bool validLocation = false;
-						Point3D loc = item.Location;
-
-						for ( int j = 0; !validLocation && j < 10; ++j )
-						{
-							int x = item.X + Utility.Random( 3 ) - 1;
-							int y = item.Y + Utility.Random( 3 ) - 1;
-							int z = map.GetAverageZ( x, y );
-
-							if ( validLocation = map.CanFit( x, y, item.Z, 16, false, false ) )
-								loc = new Point3D( x, y, item.Z );
-							else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
-								loc = new Point3D( x, y, z );
-						}
-
 						mDoor.DropItem( coins );
-					}
-					else
-					{
-						HiddenBox mBox = new HiddenBox( level, where, m );
-
-						bool validLocation = false;
-						Point3D loc = item.Location;
-
-						for ( int j = 0; !validLocation && j < 10; ++j )
-						{
-							int x = item.X + Utility.Random( 3 ) - 1;
-							int y = item.Y + Utility.Random( 3 ) - 1;
-							int z = map.GetAverageZ( x, y );
-
-							if ( validLocation = map.CanFit( x, y, item.Z, 16, false, false ) )
-								loc = new Point3D( x, y, item.Z );
-							else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
-								loc = new Point3D( x, y, z );
-						}
-
-						mDoor.DropItem( mBox );
 					}
 
 					ContainerFunctions.FillTheContainer( level, mDoor, m );
