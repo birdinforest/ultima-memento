@@ -974,7 +974,7 @@ namespace Server
 			}
 			else
 			{
-				int var = Worlds.isSciFiRegion( m ) ? Utility.RandomMinMax( 0, 1 ): Utility.RandomMinMax( 1, 6 );
+				int var = Worlds.isSciFiRegion( m ) ? Utility.RandomMinMax( 0, 1 ): Utility.RandomMinMax( 1, 7 );
 				switch ( var ) 
 				{
 					case 0: item = RandomSciFi(); break;
@@ -983,7 +983,8 @@ namespace Server
 					case 3: item = RandomProvisions(); break;
 					case 4: if ( Utility.RandomBool() ){ item = RandomJunk(); } else { item = RandomCoins( m ); } break;
 					case 5: if ( Utility.RandomBool() ){ item = RandomTools(); } else { item = RandomCrafts(); } break;
-					case 6: item = RandomRelic( m ); break;
+					case 6:
+					case 7: item = RandomRelic( m ); break;
 				}
 			}
 
