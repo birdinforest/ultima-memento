@@ -2273,7 +2273,7 @@ namespace Server.Mobiles
 				Hidden = true;
 			}
 
-			if ( this.CoinPurse == 1234567890 )
+			if ( this is Citizens && ((Citizens)this).ShouldRemoveSomeStuff )
 				TavernPatrons.RemoveSomeStuff( this );
 
 			int Heat = Server.Difficult.GetDifficulty( this.Location, this.Map );
@@ -7330,7 +7330,7 @@ namespace Server.Mobiles
 
 			base.OnLocationChange( oldLocation );
 
-			if ( this.CoinPurse == 1234567890 )
+			if ( this is Citizens && ((Citizens)this).ShouldRemoveSomeStuff )
 				TavernPatrons.RemoveSomeStuff( this );
 		}
 

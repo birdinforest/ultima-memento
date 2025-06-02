@@ -135,7 +135,7 @@ namespace Server.Items
 			RemovePatrons( table );
 			Point3D location = new Point3D(0,0,0);
 			Direction direction = Direction.East;
-			Mobile patron = null;
+			Citizens patron = null;
 
 			if ( table.PatronNorth > 0 && !table.Movable )
 			{

@@ -13,9 +13,9 @@ namespace Server.Misc
 {
     class TavernPatrons
     {
-		public static void RemoveSomeGear( Mobile m, bool helm )
+		public static void RemoveSomeGear( Citizens m, bool helm )
 		{
-			m.CoinPurse = 1234567890;
+			m.ShouldRemoveSomeStuff = true;
 			if ( helm )
 				m.DataStoreInt2 = 1;
 

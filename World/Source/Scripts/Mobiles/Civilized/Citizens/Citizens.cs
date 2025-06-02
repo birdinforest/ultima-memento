@@ -50,6 +50,8 @@ namespace Server.Mobiles
 
 		public DateTime m_NextTalk;
 		public DateTime NextTalk{ get{ return m_NextTalk; } set{ m_NextTalk = value; } }
+		
+		public bool ShouldRemoveSomeStuff{ get; set; }
 
 		[Constructable]
 		public Citizens() : base( AIType.AI_Citizen, FightMode.None, 10, 1, 0.2, 0.4 )
@@ -1626,12 +1628,13 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 			writer.Write( CitizenService );
 			writer.Write( CitizenType );
 			writer.Write( CitizenCost );
 			writer.Write( CitizenPhrase );
 			writer.Write( CitizenRumor );
+			writer.Write( ShouldRemoveSomeStuff );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -1643,6 +1646,8 @@ namespace Server.Mobiles
 			CitizenCost = reader.ReadInt();
 			CitizenPhrase = reader.ReadString();
 			CitizenRumor = reader.ReadString();
+			if ( 0 < version )
+				ShouldRemoveSomeStuff = reader.ReadBool();
 		}
 
 		public override void OnAfterSpawn()
