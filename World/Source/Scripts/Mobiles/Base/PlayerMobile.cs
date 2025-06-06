@@ -2164,9 +2164,8 @@ namespace Server.Mobiles
 			}
 			else if ( mountAble && !Mounted && Alive )
 			{
-				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
-
 				FastPlayer.Refresh(this);
+				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
 
 				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
 			}
