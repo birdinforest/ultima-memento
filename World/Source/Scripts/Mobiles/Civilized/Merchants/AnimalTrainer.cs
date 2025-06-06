@@ -428,6 +428,7 @@ namespace Server.Mobiles
 						{
 							((EtherealMount)item).Rider = from;
 							((EtherealMount)item).Owner = from;
+							break;
 						}
 					}
 				}
