@@ -59,6 +59,7 @@ namespace Server.Misc
 			builder.Append("- Shoppe - All Shoppes (except Cartography) now have Orders<br>");
 			builder.Append("- Shoppe - Baker shoppe Orders can no longer require wasabi clumps<br>");
 			builder.Append("- Shoppe - Use correct tool names<br>");
+			builder.Append("- Skill - Discordance skill has been reworked<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
