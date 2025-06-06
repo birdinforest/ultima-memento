@@ -103,6 +103,8 @@ namespace Server
 			Type oldType;
 			m_Table.TryGetValue(player.Serial, out oldType);
 			if (!force && activeType == oldType) return; // Nothing changed
+			
+			player.ClearFastwalkStack();
 
 			var shouldDelay = ArbitraryDelay != TimeSpan.Zero;
 
