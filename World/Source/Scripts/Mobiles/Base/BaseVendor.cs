@@ -45,6 +45,8 @@ namespace Server.Mobiles
 		private ArrayList m_ArmorBuyInfo = new ArrayList();
 		private ArrayList m_ArmorSellInfo = new ArrayList();
 
+		private Dictionary<string, int> m_CoinsPerAccount;
+
 
 		public override bool CanTeach { get { return true; } }
 
@@ -183,18 +185,32 @@ namespace Server.Mobiles
 			RefreshSelf();
 		}
 
-		public void TrySetCoinPurse(Mobile from)
+		private static int GetOrCreateCoinPurse( BaseVendor vendor, Mobile from )
 		{
-			if ( this is PlayerBarkeeper ) return;
-			if (!m_CoinsNeedReset) return;
+			if ( vendor is PlayerBarkeeper ) return 0;
+			
+			// Reset ASAP
+			if ( vendor.m_CoinsNeedReset )
+				vendor.m_CoinsPerAccount = null;
 
+			// Initialize and get value
+			int? existing = vendor.TryGetCoinPurse( from );
+			if ( existing == null ) return 0; // Unexpected case
+
+			// Bail if coins have already been generated
+			if ( !vendor.m_CoinsNeedReset )
+			{
+				if ( 0 < existing.Value || !vendor.HasCoinsForPurchase(from) ) return existing.Value;
+			}
+
+			// Generate a new value
 			int minGold = MySettings.S_MinMerchant;
 			int maxGold = MySettings.S_MaxMerchant;
 
-			if (MySettings.S_ScaleMerchantCoins)
+			if ( MySettings.S_ScaleMerchantCoins )
 			{
 				double multiplier;
-				var land = Lands.GetLand(from);
+				var land = Lands.GetLand( vendor );
 				switch (land)
 				{
 					default:
@@ -226,17 +242,73 @@ namespace Server.Mobiles
 
 				if (1 < multiplier)
 				{
-					minGold = (int)(minGold * multiplier);
-					maxGold = (int)(maxGold * multiplier);
+					minGold = (int)( minGold * multiplier );
+					maxGold = (int)( maxGold * multiplier );
 				}
 			}
 
-			CoinPurse = Utility.RandomMinMax( minGold, maxGold );
+			int newCoins = Utility.RandomMinMax( minGold, maxGold );
+			if ( !vendor.SetCoinPurse( from, newCoins ) ) return 0; // Unexpected case
 
-			RefreshSelf();
-			m_CoinsNeedReset = false;
-			InvalidateProperties();
-			m_RefreshSelfTimer = Timer.DelayCall(RefreshSelfDelay, () => RefreshSelf());
+			if ( vendor.m_CoinsNeedReset )
+			{
+				vendor.RefreshSelf();
+				vendor.m_CoinsNeedReset = false;
+				vendor.InvalidateProperties();
+				vendor.m_RefreshSelfTimer = Timer.DelayCall(vendor.RefreshSelfDelay, () => vendor.RefreshSelf());
+			}
+
+			return newCoins;
+		}
+
+		private static string GetAccountId( Mobile buyer )
+		{
+			var player = buyer as PlayerMobile;
+			if (player == null || player.Account == null) return null;
+
+			return player.Account.Username;
+		}
+
+		private bool HasCoinsForPurchase( Mobile buyer )
+		{
+            var id = GetAccountId( buyer );
+            if ( id == null ) return false;
+			if ( !m_CoinsPerAccount.ContainsKey( id ) ) return true; // Can be generated
+
+			return 0 < m_CoinsPerAccount[id]; // Has enough currently
+		}
+
+		private int? TryGetCoinPurse( Mobile buyer )
+		{
+            var id = GetAccountId( buyer );
+            if ( id == null ) return null;
+
+			// Lazily initialize the dictionary
+			if ( m_CoinsPerAccount == null )
+				m_CoinsPerAccount = new Dictionary<string, int>();
+
+			int value;
+
+			return m_CoinsPerAccount.TryGetValue( id, out value ) ? value : 0;
+		}
+
+		public bool AddToCoinPurse( Mobile buyer, int amount )
+		{
+			var coins = TryGetCoinPurse( buyer );
+			if ( coins == null ) return false;
+
+			return SetCoinPurse( buyer, Math.Max( 0, coins.Value + amount ) );
+		}
+
+		private bool SetCoinPurse( Mobile buyer, int amount )
+		{
+            var id = GetAccountId( buyer );
+            if ( id == null ) return false;
+			if ( m_CoinsPerAccount == null ) return false;
+
+			m_CoinsPerAccount[id] = amount;
+
+			return true;
 		}
 
 		public BaseVendor( Serial serial ): base( serial )
@@ -790,7 +862,9 @@ namespace Server.Mobiles
 			if ( DateTime.Now - LastRestockWares > RestockWaresDelay )
 				Restock();
 
-			TrySetCoinPurse( from );
+			var coins = GetOrCreateCoinPurse( this, from ); // Lazy generate
+			if ( coins < 1 ) return; // Safe guard
+
 			UpdateBuyInfo();
 
 			if ( this.RaceID == 0 && Utility.RandomBool() ){ this.PlaySound( this.Female ? 797 : 1069 ); }
@@ -991,9 +1065,17 @@ namespace Server.Mobiles
 				return;
 			}
 
-			TrySetCoinPurse( from );
+			int coins = GetOrCreateCoinPurse( this, from ); // Lazy generate
+			if ( coins < 1 )
+			{
+				if ( from != null )
+					SayTo( from, "I have no gold to barter with." );
+
+				return;
+			}
+
 			if ( from != null )
-				SayTo( from, true, "I have {0} gold to barter with.", CoinPurse );
+				SayTo( from, true, "I have {0} gold to barter with.", coins );
 
 			Container pack = from.Backpack;
 
@@ -1173,7 +1255,7 @@ namespace Server.Mobiles
 
 					from.AddToBackpack ( wMap );
 
-					this.CoinPurse += 1000;
+					AddToCoinPurse( from, dropped.Amount );
 					string sMessage = "Thank you. Here is your world map.";
 					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
 					dropped.Delete();
@@ -1790,9 +1872,10 @@ namespace Server.Mobiles
 				}
 			}//foreach
 
+			AddToCoinPurse( buyer, totalCost );
+
 			if ( fullPurchase )
 			{
-				this.CoinPurse += totalCost;
 				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
 					SayTo( buyer, true, "I would not presume to charge thee anything.  Here are the goods you requested." );
 				else if ( fromBank )
@@ -1802,7 +1885,6 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				this.CoinPurse += totalCost;
 				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
 					SayTo( buyer, true, "I would not presume to charge thee anything.  Unfortunately, I could not sell you all the goods you requested." );
 				else if ( fromBank )
@@ -1914,9 +1996,12 @@ namespace Server.Mobiles
 				return true;
 			}
 			
-			if ( !MySettings.S_RichMerchants && !MySettings.S_UseRemainingGold && !pm.IgnoreVendorGoldSafeguard && SoldPrice > CoinPurse )
+			var coins = TryGetCoinPurse( seller );
+			if ( coins == null ) return false; // Guard
+
+			if ( !MySettings.S_RichMerchants && !MySettings.S_UseRemainingGold && !pm.IgnoreVendorGoldSafeguard && SoldPrice > coins )
 			{
-				SayTo( seller, true, "Sorry, but I only have {0} gold to barter with.", this.CoinPurse );
+				SayTo( seller, true, "Sorry, but I only have {0} gold to barter with.", coins );
 				return false;
 			}
 
@@ -2007,13 +2092,14 @@ namespace Server.Mobiles
 
 			if ( GiveGold > 0 )
 			{
-				if ( !MySettings.S_RichMerchants && GiveGold > CoinPurse )
+				if ( !MySettings.S_RichMerchants && GiveGold > coins )
 				{
-					GiveGold = this.CoinPurse;
-					SayTo( seller, true, "I give you my remaining {0} gold.", this.CoinPurse );
+					GiveGold = coins.Value;
+					SayTo( seller, true, "I give you my remaining {0} gold.", coins );
 				}
 
-				this.CoinPurse -= GiveGold;
+				// Deduct the gold
+				AddToCoinPurse( seller, 0 - GiveGold );
 
 				while ( GiveGold > 60000 )
 				{
@@ -2046,12 +2132,8 @@ namespace Server.Mobiles
 
 			if ( IsActiveBuyer && !MySettings.S_RichMerchants )
 			{
-				string coins = m_CoinsNeedReset
-					? "?"
-					: CoinPurse > 0 
-						? CoinPurse.ToString() 
-						: "No";
-				list.Add( 1072173, "{0}\t{1} Gold", "FBFF00", coins );
+				if ( !m_CoinsNeedReset )
+					list.Add( 1072173, "{0}\t{1}", "FBFF00", "Traded Recently" );
 			}
 		}
 
@@ -2106,7 +2188,7 @@ namespace Server.Mobiles
 			{
 				bool buysThings = true;
 
-				if ( CoinPurse < 1 && !m_CoinsNeedReset && !MySettings.S_RichMerchants )
+                if ( !m_CoinsNeedReset && !MySettings.S_RichMerchants && !HasCoinsForPurchase( from ))
 					buysThings = false;
 				else if ( !IsActiveBuyer )
 					buysThings = false;
@@ -2356,7 +2438,7 @@ namespace Server.Mobiles
 							((BaseInstrument)rep).UsesRemaining += repaired;
 						}
 
-						m_Vendor.CoinPurse += spent;
+						m_Vendor.AddToCoinPurse( from, spent );
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
@@ -2511,7 +2593,7 @@ namespace Server.Mobiles
 								m_Vendor.SayTo(from, "That is worth about " + examine.CoinPrice + " gold." );
 							}
 
-							m_Vendor.CoinPurse += toConsume;
+							m_Vendor.AddToCoinPurse( from, toConsume );
 
 							if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 								Titles.AwardKarma( from, -BeggingKarma( from ), true );
@@ -2603,7 +2685,7 @@ namespace Server.Mobiles
 						rep.EnchantUses += repaired;
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 
-						m_Vendor.CoinPurse += spent;
+						m_Vendor.AddToCoinPurse( from, spent );
 
 						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )

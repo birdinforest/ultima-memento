@@ -13,13 +13,13 @@ namespace Server
 {
     public class BlackMarketGump : Gump
     {
-        private Mobile m_Merchant;
+        private BaseVendor m_Merchant;
         private Mobile m_From;
 		private Item m_Item;
 		private int m_Page;
 		private int m_ID;
 
-        public BlackMarketGump( Mobile merchant, Mobile from, Item item, int page, int id ): base( 50, 50 )
+        public BlackMarketGump( BaseVendor merchant, Mobile from, Item item, int page, int id ): base( 50, 50 )
         {
 			string color = "#EEEEEE";
 			string gold = "#E8EB30";
@@ -197,7 +197,7 @@ namespace Server
 					{
 						m_From.PlaySound( 0x32 );
 						packs.DropItem( m_Item );
-						m_Merchant.CoinPurse += price;
+						m_Merchant.AddToCoinPurse( m_From, price );
 						m_Item = null;
 						m_ID = 0;
 

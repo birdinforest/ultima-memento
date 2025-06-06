@@ -5467,7 +5467,7 @@ namespace Server.Mobiles
 				if ( Teach( m_Teaching, from, dropped.Amount, true ) )
 				{
 					if ( this is BaseVendor )
-						this.CoinPurse += dropped.Amount;
+						((BaseVendor)this).AddToCoinPurse( from, dropped.Amount );
 
 					this.InvalidateProperties();
 
@@ -5495,7 +5495,7 @@ namespace Server.Mobiles
 				this.SpeechHue = oldSpeechHue;
 
 				if ( this is BaseVendor )
-					this.CoinPurse += dropped.Amount;
+					((BaseVendor)this).AddToCoinPurse( from, dropped.Amount );
 
 				this.InvalidateProperties();
 

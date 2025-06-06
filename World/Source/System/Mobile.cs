@@ -5494,6 +5494,7 @@ namespace Server
 
 			switch( version )
 			{
+				case 37:
 				case 36:
 					{
 						HarvestOrdinary = reader.ReadBool();
@@ -5538,7 +5539,8 @@ namespace Server
 						RaceDeathSound = reader.ReadInt();
 						RaceAttackSound = reader.ReadInt();
 						RaceHurtSound = reader.ReadInt();
-						CoinPurse = reader.ReadInt();
+						if ( version < 37 )
+							reader.ReadInt(); // Removed - CoinPurse
 						DataStoreInt2 = reader.ReadInt();
 						DataStoreInt3 = reader.ReadInt();
 						DataStoreInt4 = reader.ReadInt();
@@ -5977,7 +5979,7 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( (int)36 ); // version
+			writer.Write( (int)37 ); // version
 
 			writer.Write( HarvestOrdinary );
 			writer.Write( ContainerLoot );
@@ -6005,7 +6007,6 @@ namespace Server
 			writer.Write( RaceDeathSound );
 			writer.Write( RaceAttackSound );
 			writer.Write( RaceHurtSound );
-			writer.Write( CoinPurse );
 			writer.Write( DataStoreInt2 );
 			writer.Write( DataStoreInt3 );
 			writer.Write( DataStoreInt4 );
@@ -10016,10 +10017,6 @@ namespace Server
 		public bool m_NoAutoAttack;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool NoAutoAttack { get{ return m_NoAutoAttack; } set{ m_NoAutoAttack = value; } }
-
-		public int m_CoinPurse;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int CoinPurse { get{ return m_CoinPurse; } set{ m_CoinPurse = value; InvalidateProperties(); } }
 
 		public int m_DataStoreInt2;
 		[CommandProperty( AccessLevel.GameMaster )]

@@ -495,12 +495,12 @@ namespace Server.Items
 			}
 			else if ( dropped is Gold )
 			{
-				Mobile mage = null;
+				BaseVendor mage = null;
 
 				foreach ( Mobile m in from.GetMobilesInRange( 10 ) )
 				{
-					if ( BaseVendor.MagicRecharge( m ) )
-						mage = m;
+					if ( BaseVendor.MagicRecharge( m ) && m is BaseVendor)
+						mage = (BaseVendor)m;
 				}
 
 				if ( mage == null )
@@ -532,7 +532,7 @@ namespace Server.Items
 
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 
-						mage.CoinPurse += rpt;
+						mage.AddToCoinPurse( from, rpt );
 						mage.InvalidateProperties();
 						mage.SayTo( from, "I recharged the rune bag for " + rpt + " gold." );
 
