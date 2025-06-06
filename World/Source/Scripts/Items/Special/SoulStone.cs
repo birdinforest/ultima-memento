@@ -131,24 +131,16 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 			
-			if (string.IsNullOrWhiteSpace(Account))
-			{
-				list.Add( 1070722, "[Binds to account when used]" );
-			}
-			else
-			{
+			if ( !string.IsNullOrWhiteSpace(Account) )
 				list.Add( 1070722, "[Account Bound]" );
-				string name = this.LastUserName;
+			else if ( IsEmpty )
+				list.Add( 1070722, "[Binds to account when used]" );
 
-				if ( name == null )
-					name = String.Format( "#{0}", 1074235 ); // Unknown
-
+			if ( !IsEmpty )
+			{
+				string name = !string.IsNullOrWhiteSpace(LastUserName) ? LastUserName : string.Format( "#{0}", 1074235 ); // Unknown
 				list.Add( 1041602, "{0}", name ); // Owner: ~1_val~
-
-				if ( !this.IsEmpty )
-				{
-					list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
-				}
+				list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
 			}
 		}
 
