@@ -10125,10 +10125,11 @@ namespace Server.Mobiles
 				{
 					BaseCreature c = (BaseCreature)m;
 
+					Mobile owner = c.ControlMaster;
+					if ( owner != null && owner.Map == Map.Internal ) continue;
+
 					if ( c.IsDeadPet )
 					{
-						Mobile owner = c.ControlMaster;
-
 						if ( owner == null || owner.Deleted || owner.Map != c.Map || !owner.InRange( c, 12 ) || !c.CanSee( owner ) || !c.InLOS( owner ) )
 						{
 							if ( c.OwnerAbandonTime == DateTime.MinValue )
