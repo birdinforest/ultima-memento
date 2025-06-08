@@ -165,13 +165,12 @@ namespace Server.SkillHandlers
 					return;
 				}
 
-				if ( (target is Mobile) == false )
+				Mobile targ = target as Mobile;
+				if ( targ == null || from.Player && targ.Player )
 				{
 					from.SendLocalizedMessage( 1049535 ); // A song of discord would have no effect on that.
 					return;
 				}
-
-				Mobile targ = (Mobile)target;
 
 				if ( targ == from || (targ is BaseCreature && !from.CanBeHarmful( targ, false ) && ((BaseCreature)targ).ControlMaster != from) )
 				{
@@ -249,14 +248,10 @@ namespace Server.SkillHandlers
 					mods.Add( new ResistanceMod( ResistanceType.Poison, effect ) );
 					mods.Add( new ResistanceMod( ResistanceType.Energy, effect ) );
 
-					// Disallow Players reducing Skills
-					// if ( !from.Player || !targ.Player )
+					for ( int i = 0; i < targ.Skills.Length; ++i )
 					{
-						for ( int i = 0; i < targ.Skills.Length; ++i )
-						{
-							if ( targ.Skills[i].Value > 0 )
-								mods.Add( new DefaultSkillMod( (SkillName)i, true, targ.Skills[i].Value * scalar ) );
-						}
+						if ( targ.Skills[i].Value > 0 )
+							mods.Add( new DefaultSkillMod( (SkillName)i, true, targ.Skills[i].Value * scalar ) );
 					}
 
 					info = new DiscordanceInfo( from, targ, Math.Abs( effect ), mods, scalar );
