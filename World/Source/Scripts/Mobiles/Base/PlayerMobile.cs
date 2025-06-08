@@ -863,7 +863,17 @@ namespace Server.Mobiles
 
 		private static void OnLogin( LoginEventArgs e )
 		{
-			Mobile from = e.Mobile;
+			PlayerMobile from = e.Mobile as PlayerMobile;
+			if ( from == null ) return;
+
+			// Move ID skills off the Player
+			if ( from.m_NeedRemoveIDSkills )
+			{
+				from.m_NeedRemoveIDSkills = false;
+				from.MoveSkillToFragment( SkillName.Mercantile, 10 );
+				from.MoveSkillToFragment( SkillName.Tasting, 10 );
+				from.MoveSkillToFragment( SkillName.ArmsLore, 10 );
+			}
 
 			if ( AccountHandler.LockdownLevel > AccessLevel.Player )
 			{
@@ -2979,6 +2989,23 @@ namespace Server.Mobiles
 			EndAction( typeof( Deception ) );
 		}
 
+		private void MoveSkillToFragment( SkillName skill, int threshold )
+		{
+			if ( Skills[skill].Base < threshold ) return;
+
+			var username = Account != null ? Account.Username : null;
+			var fragment = new SoulstoneFragment(1, username)
+			{
+				LootType = LootType.Blessed,
+				LastUserName = Name,
+				Skill = skill,
+				SkillValue = Skills[skill].Base
+			};
+			Skills[skill].Base = 0;
+
+			AddToBackpack( fragment );
+		}
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CharacterMOTD { get; set; }
 
@@ -3190,6 +3217,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IgnoreVendorGoldSafeguard { get; set; }
 
+		private bool m_NeedRemoveIDSkills = false;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public override void Deserialize( GenericReader reader )
@@ -3199,9 +3228,13 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 45:
+					m_NeedRemoveIDSkills = reader.ReadBool();
+					goto case 44;
 				case 44:
+					if ( version == 44 ) m_NeedRemoveIDSkills = true;
 					SuppressVendorTooltip = reader.ReadBool();
-				goto case 43;
+					goto case 43;
 
 				case 43:
 				case 42:
@@ -3650,8 +3683,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 44 ); // version
+			writer.Write( (int) 45 ); // version
 
+			writer.Write(m_NeedRemoveIDSkills);
 			writer.Write(SuppressVendorTooltip);
 			writer.Write(IgnoreVendorGoldSafeguard);
 
