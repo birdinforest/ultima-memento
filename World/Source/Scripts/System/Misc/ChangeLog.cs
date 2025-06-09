@@ -61,6 +61,7 @@ namespace Server.Misc
 			builder.Append("- Shoppe - Use correct tool names<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");
 			builder.Append("- Skill - Discordance skill can no longer be used by Players against Players<br>");
+			builder.Append("- Skill - Mercantile is now 2x more likely to gain<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

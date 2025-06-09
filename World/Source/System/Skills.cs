@@ -806,7 +806,7 @@ namespace Server
 				new SkillInfo(  0, "Alchemy",			0.0,	5.0,	5.0,	"Alchemist",	null,	0.0,	0.5,	0.5,	1.0 ),
 				new SkillInfo(  1, "Anatomy",			0.0,	0.0,	0.0,	"Biologist",	null,	0.15,	0.15,	0.7,	1.0 ),
 				new SkillInfo(  2, "Druidism",			0.0,	0.0,	0.0,	"Druid",	null,	0.0,	0.0,	1.0,	1.0 ),
-				new SkillInfo(  3, "Mercantile",		0.0,	0.0,	0.0,	"Merchant",	null,	0.0,	0.0,	1.0,	1.0 ),
+				new SkillInfo(  3, "Mercantile",		0.0,	0.0,	0.0,	"Merchant",	null,	0.0,	0.0,	1.0,	2.0 ),
 				new SkillInfo(  4, "Arms Lore",			0.0,	0.0,	0.0,	"Man-at-arms",	null,	0.75,	0.15,	0.1,	1.0 ),
 				new SkillInfo(  5, "Parrying",			7.5,	2.5,	0.0,	"Duelist",	null,	0.75,	0.25,	0.0,	1.0 ),
 				new SkillInfo(  6, "Begging",			0.0,	0.0,	0.0,	"Beggar",	null,	0.0,	0.0,	0.0,	1.0 ),
