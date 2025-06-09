@@ -4,11 +4,16 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class GodSmithing : BaseTool
+	public class GodSmithing : BaseTool, IRunicTool
 	{
 		public override CraftSystem CraftSystem{ get{ return DefLapidary.CraftSystem; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.None; } }
+
+		public int RunicMinAttributes { get { return 1; } }
+		public int RunicMaxAttributes { get { return 1; } }
+		public int RunicMinIntensity { get { return 70; } }
+		public int RunicMaxIntensity { get { return 70; } }
 
 		[Constructable]
 		public GodSmithing() : base( 0x267E )

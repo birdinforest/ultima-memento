@@ -1,12 +1,16 @@
 using System;
-using Server;
 using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class GodSewing : BaseTool
+	public class GodSewing : BaseTool, IRunicTool
 	{
 		public override CraftSystem CraftSystem{ get{ return DefStitching.CraftSystem; } }
+
+		public int RunicMinAttributes { get { return 1; } }
+		public int RunicMaxAttributes { get { return 1; } }
+		public int RunicMinIntensity { get { return 70; } }
+		public int RunicMaxIntensity { get { return 70; } }
 
 		[Constructable]
 		public GodSewing() : base( 0x6600 )

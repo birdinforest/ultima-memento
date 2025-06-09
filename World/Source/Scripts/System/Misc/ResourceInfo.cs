@@ -67,11 +67,6 @@ namespace Server.Items
 		public int ArmorGoldIncrease{ get{ return m_ArmorGoldIncrease; } set{ m_ArmorGoldIncrease = value; } }
 		public int ArmorLowerRequirements{ get{ return m_ArmorLowerRequirements; } set{ m_ArmorLowerRequirements = value; } }
 
-		public int RunicMinAttributes{ get{ return m_RunicMinAttributes; } set{ m_RunicMinAttributes = value; } }
-		public int RunicMaxAttributes{ get{ return m_RunicMaxAttributes; } set{ m_RunicMaxAttributes = value; } }
-		public int RunicMinIntensity{ get{ return m_RunicMinIntensity; } set{ m_RunicMinIntensity = value; } }
-		public int RunicMaxIntensity{ get{ return m_RunicMaxIntensity; } set{ m_RunicMaxIntensity = value; } }
-
 		public static CraftAttributeInfo CraftAttInfo( int armorphy, int armorfir, int armorcld, int armorpsn, int armoregy, object spacer, int weapcold, int weapfire, int weapengy, int weappois, object spacer2, int durable, int lowreq, int luck )
 		{
 			CraftAttributeInfo var = new CraftAttributeInfo();
@@ -295,101 +290,7 @@ namespace Server.Items
 			TwilekSkeletal	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	15	,	15	,	15	,	0	,	null,	80	,	35	,	0	 );
 			XindiSkeletal	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	10	,	10	,	10	,	10	,	null,	80	,	30	,	0	 );
 			ZabrakSkeletal	= CraftAttInfo( 	4	,	4	,	4	,	4	,	4	,	null,	0	,	30	,	30	,	0	,	null,	80	,	40	,	0	 );
-			
-            // Runics
-            // SetRunicAttributes(minProps, maxProps, minIntensity, maxIntensity, ...resources... );
-            SetRunicAttributes(1, 2, 40, 100, DullCopper);
-			SetRunicAttributes(2, 2, 45, 100, ShadowIron);
-			SetRunicAttributes(2, 3, 50, 100, Copper);
-			SetRunicAttributes(3, 3, 55, 100, Bronze);
-			SetRunicAttributes(3, 4, 60, 100, Golden);
-			SetRunicAttributes(4, 4, 65, 100, Agapite);
-			SetRunicAttributes(4, 5, 70, 100, Verite);
-			SetRunicAttributes(5, 5, 85, 100, Valorite, Nepturite, Obsidian);
-			SetRunicAttributes(6, 7, 85, 100, Steel);
-			SetRunicAttributes(8, 9, 85, 100, Brass);
-			SetRunicAttributes(10, 11, 85, 100, Mithril, Xormite);
-			SetRunicAttributes(20, 22, 170, 200, Dwarven);
-			SetRunicAttributes(15, 16, 170, 200, Agrinium, Beskar, Carbonite, Cortosis, Durasteel, Durite, Farium, Laminasteel, Neuranium, Phrik, Promethium, Quadranium, Songsteel, Titanium, Trimantium, Xonolite);
-
-			SetRunicAttributes(6, 11, 75, 100, RedScales, YellowScales, BlackScales, GreenScales, WhiteScales, BlueScales, DinosaurScales, MetallicScales, BrazenScales, UmberScales, VioletScales, PlatinumScales);
-			SetRunicAttributes(20, 22, 170, 200, CadalyteScales);
-			SetRunicAttributes(12, 20, 125, 175, GornScales, TrandoshanScales, SilurianScales, KraytScales);
-
-			SetRunicAttributes(10, 11, 85, 100, SpectralSpec, DreadSpec, GhoulishSpec, WyrmSpec, HolySpec, BloodlessSpec, GildedSpec, DemilichSpec, WintrySpec);
-			SetRunicAttributes(3, 3, 55, 100, FireSpec, ColdSpec, PoisSpec, EngySpec);
-			SetRunicAttributes(20, 22, 170, 200, ExodusSpec);
-			SetRunicAttributes(10, 11, 85, 100, TurtleSpec);
-
-			SetRunicAttributes(3, 4, 45, 100, Horned);
-			SetRunicAttributes(4, 5, 50, 100, Barbed);
-			SetRunicAttributes(5, 6, 50, 100, Necrotic);
-			SetRunicAttributes(6, 7, 50, 100, Volcanic, Frozen);
-			SetRunicAttributes(5, 7, 50, 100, Spined);
-			SetRunicAttributes(7, 8, 50, 100, Goliath);
-			SetRunicAttributes(8, 9, 50, 100, Draconic);
-			SetRunicAttributes(10, 11, 50, 100, Hellish);
-			SetRunicAttributes(11, 12, 50, 100, Dinosaur);
-			SetRunicAttributes(15, 18, 85, 200, Alien);
-			SetRunicAttributes(14, 17, 75, 180, Adesote, Biomesh, Cerlin, Durafiber, Flexicris, Hypercloth, Nylar, Nylonite, Polyfiber, Syncloth, Thermoweave);
-
-			SetRunicAttributes(1, 2, 40, 100, AshTree);
-			SetRunicAttributes(2, 2, 45, 100, CherryTree);
-			SetRunicAttributes(2, 3, 50, 100, EbonyTree);
-			SetRunicAttributes(3, 3, 55, 100, GoldenOakTree);
-			SetRunicAttributes(3, 4, 60, 100, HickoryTree);
-			SetRunicAttributes(4, 4, 65, 100, MahoganyTree);
-			SetRunicAttributes(4, 5, 70, 100, OakTree);
-			SetRunicAttributes(5, 5, 85, 100, PineTree);
-			SetRunicAttributes(5, 5, 85, 100, PineTree, GhostTree);
-			SetRunicAttributes(5, 5, 85, 100, PineTree, GhostTree, RosewoodTree);
-			SetRunicAttributes(6, 7, 85, 100, WalnutTree);
-			SetRunicAttributes(8, 9, 85, 100, PetrifiedTree);
-			SetRunicAttributes(10, 11, 85, 100, DriftwoodTree);
-			SetRunicAttributes(20, 22, 170, 200, ElvenTree);
-			SetRunicAttributes(15, 16, 125, 150, BorlTree, CosianTree, GreelTree, JaporTree, KyshyyykTree, LaroonTree, TeejTree, VeshokTree);
-
-			SetRunicAttributes(1, 3, 40, 80, FurryFabric, WoolyFabric);
-			SetRunicAttributes(2, 4, 45, 85, SilkFabric);
-			SetRunicAttributes(3, 5, 50, 90, HauntedFabric);
-			SetRunicAttributes(4, 6, 55, 95, ArcticFabric, PyreFabric);
-			SetRunicAttributes(5, 7, 60, 100, VenomousFabric);
-			SetRunicAttributes(6, 8, 65, 105, MysteriousFabric);
-			SetRunicAttributes(7, 9, 70, 110, VileFabric, DivineFabric);
-			SetRunicAttributes(8, 10, 80, 120, FiendishFabric);
-
-			SetRunicAttributes(10, 11, 85, 100, AmethystBlock, EmeraldBlock, GarnetBlock, IceBlock, JadeBlock, MarbleBlock, OnyxBlock, QuartzBlock, RubyBlock, SapphireBlock, SilverBlock, SpinelBlock, StarRubyBlock, TopazBlock);
-			SetRunicAttributes(20, 22, 170, 200, CaddelliteBlock);
-
-			SetRunicAttributes(10, 11, 50, 100, DemonSkin, DragonSkin, NightmareSkin, SnakeSkin, TrollSkin, UnicornSkin, IcySkin, Seaweed, LavaSkin, DeadSkin);
-
-			SetRunicAttributes(1, 2, 40, 100, DrowSkeletal);
-			SetRunicAttributes(2, 2, 45, 100, OrcSkeletal);
-			SetRunicAttributes(2, 3, 50, 100, ReptileSkeletal);
-			SetRunicAttributes(3, 3, 55, 100, OgreSkeletal);
-			SetRunicAttributes(3, 4, 60, 100, TrollSkeletal);
-			SetRunicAttributes(4, 4, 65, 100, GargoyleSkeletal);
-			SetRunicAttributes(4, 5, 70, 100, MinotaurSkeletal);
-			SetRunicAttributes(5, 5, 85, 100, LycanSkeletal, SharkSkeletal, ColossalSkeletal);
-			SetRunicAttributes(6, 7, 85, 100, MysticalSkeletal);
-			SetRunicAttributes(8, 9, 85, 100, VampireSkeletal, LichSkeletal);
-			SetRunicAttributes(10, 11, 85, 100, SphinxSkeletal, DevilSkeletal);
-			SetRunicAttributes(20, 22, 170, 200, DracoSkeletal);
-			SetRunicAttributes(14, 16, 120, 150, XenoSkeletal, AndorianSkeletal, CardassianSkeletal, MartianSkeletal, RodianSkeletal, TuskenSkeletal, TwilekSkeletal, XindiSkeletal, ZabrakSkeletal);
 		}
-
-		private static void SetRunicAttributes(int runicMinAttributes, int runicMaxAttributes, int runicMinIntensity, int runicMaxIntensity, params CraftAttributeInfo[] attributes)
-        {
-			foreach (var attribute in attributes)
-			{
-				if (attribute == null) continue; // To help align things above
-
-				attribute.RunicMinAttributes = runicMinAttributes;
-				attribute.RunicMaxAttributes = runicMaxAttributes;
-				attribute.RunicMinIntensity = runicMinIntensity;
-				attribute.RunicMaxIntensity = runicMaxIntensity;
-            }
-        }
 	}
 
 	public class CraftResourceInfo

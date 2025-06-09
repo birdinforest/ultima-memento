@@ -1157,18 +1157,12 @@ namespace Server.Engines.Craft
 					else if ( item.Hue == 0 )
 						item.Hue = resHue;
 
-					if ( tool is BaseRunicTool )
+					if ( tool is IRunicTool )
 					{
-						var craftAttributeInfo = LootPackEntry.GetResourceAttrs(item.Resource);
-						int props = Utility.RandomMinMax(craftAttributeInfo.RunicMinAttributes, craftAttributeInfo.RunicMaxAttributes);
-						if (0 < props)
-						{
-							item = LootPackEntry.Enchant(from, item, props, craftAttributeInfo.RunicMinIntensity, craftAttributeInfo.RunicMaxIntensity, false);
-						}
+						var runic = (IRunicTool)tool;
+						BaseRunicTool.ApplyAttributes(from, item, runic.RunicMinAttributes, runic.RunicMaxAttributes, runic.RunicMinIntensity, runic.RunicMaxIntensity);
 					}
-					
-					// Exceptional applies a runic
-					if (IsExceptional(item))
+					else if (tool is IRunicWhenExceptional && IsExceptional(item)) // Exceptional applies a runic
 					{
 						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 20);
 					}

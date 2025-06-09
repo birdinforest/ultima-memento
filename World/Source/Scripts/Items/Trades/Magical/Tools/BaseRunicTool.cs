@@ -3,6 +3,18 @@ using System.Collections;
 
 namespace Server.Items
 {
+	public interface IRunicTool
+	{
+		int RunicMinAttributes { get; }
+		int RunicMaxAttributes { get; }
+		int RunicMinIntensity { get; }
+		int RunicMaxIntensity { get; }
+	}
+
+	public interface IRunicWhenExceptional
+	{
+	}
+
 	public abstract class BaseRunicTool : BaseTool
 	{
 		public override void ResourceChanged( CraftResource resource )
