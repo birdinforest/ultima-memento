@@ -1,4 +1,3 @@
-using System;
 using Server.Engines.Craft;
 
 namespace Server.Items
@@ -7,10 +6,10 @@ namespace Server.Items
 	{
 		public override CraftSystem CraftSystem{ get{ return DefStitching.CraftSystem; } }
 
-		public int RunicMinAttributes { get { return 1; } }
-		public int RunicMaxAttributes { get { return 1; } }
-		public int RunicMinIntensity { get { return 70; } }
-		public int RunicMaxIntensity { get { return 70; } }
+		public int RunicMinAttributes { get { return 2; } }
+		public int RunicMaxAttributes { get { return 2; } }
+		public int RunicMinIntensity { get { return 50; } }
+		public int RunicMaxIntensity { get { return 50; } }
 
 		[Constructable]
 		public GodSewing() : base( 0x6600 )
