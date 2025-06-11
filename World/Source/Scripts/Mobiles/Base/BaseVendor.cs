@@ -862,8 +862,7 @@ namespace Server.Mobiles
 			if ( DateTime.Now - LastRestockWares > RestockWaresDelay )
 				Restock();
 
-			var coins = GetOrCreateCoinPurse( this, from ); // Lazy generate
-			if ( coins < 1 ) return; // Safe guard
+			var _ = GetOrCreateCoinPurse( this, from ); // Lazy generate
 
 			UpdateBuyInfo();
 
