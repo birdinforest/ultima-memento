@@ -10,6 +10,7 @@ using Server.Regions;
 using Server.Multis;
 using Server.Targeting;
 using Server.Engines.GlobalShoppe;
+using Server.Utilities;
 
 namespace Server.Mobiles
 {
@@ -1799,6 +1800,7 @@ namespace Server.Mobiles
 			if ( cont == null )
 				cont = buyer.BankBox;
 
+			int totalItems = 0;
 			foreach ( BuyItemResponse buy in validBuy )
 			{
 				Serial ser = buy.Serial;
@@ -1813,6 +1815,8 @@ namespace Server.Mobiles
 
 					if ( item == null )
 						continue;
+					
+					totalItems += amount;
 
 					GenericBuyInfo gbi = LookupDisplayObject( item );
 
@@ -1864,6 +1868,8 @@ namespace Server.Mobiles
 					if ( mob == null )
 						continue;
 
+					totalItems += amount;
+
 					GenericBuyInfo gbi = LookupDisplayObject( mob );
 
 					if ( gbi != null )
@@ -1872,6 +1878,10 @@ namespace Server.Mobiles
 			}//foreach
 
 			AddToCoinPurse( buyer, totalCost );
+
+			// Chance to learn mercantile
+			int skillChecks = totalCost / 500; // One check per 500 gold
+			SkillUtilities.DoSkillChecks(buyer, SkillName.Mercantile, skillChecks, totalItems);
 
 			if ( fullPurchase )
 			{
@@ -1963,9 +1973,13 @@ namespace Server.Mobiles
 			int GuildMember = 0;
 			Container cont;
 
+			bool isInGuild = NpcGuild != NpcGuild.None && NpcGuild == pm.NpcGuild;
+			bool isBegging = BeggingPose(seller) > 0 && !(this is PlayerBarkeeper);
+
 			int SoldBarter = (int)seller.Skills[SkillName.Mercantile].Value;
-			if ( SoldBarter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ SoldBarter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
-			if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
+			if ( SoldBarter < 100 && isInGuild ){ SoldBarter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
+
+			if ( isBegging && GuildMember == 0 ) // LET US SEE IF THEY ARE BEGGING
 				SoldBarter = (int)seller.Skills[SkillName.Begging].Value;
 
 			foreach ( SellItemResponse resp in list )
@@ -2011,7 +2025,7 @@ namespace Server.Mobiles
 				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
 					continue;
 
-				if ( BeggingPose(seller) > 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
+				if ( isBegging ) // LET US SEE IF THEY ARE BEGGING
 				{
 					Titles.AwardKarma( seller, -BeggingKarma( seller ), true );
 				}
@@ -2075,9 +2089,9 @@ namespace Server.Mobiles
 						}
 
 						int barter = (int)seller.Skills[SkillName.Mercantile].Value;
-						if ( barter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
+						if ( barter < 100 && isInGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
 
-						if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
+						if ( isBegging && GuildMember == 0 ) // LET US SEE IF THEY ARE BEGGING
 						{
 							seller.CheckSkill( SkillName.Begging, 0, 125 );
 							barter = (int)seller.Skills[SkillName.Begging].Value;
@@ -2099,6 +2113,14 @@ namespace Server.Mobiles
 
 				// Deduct the gold
 				AddToCoinPurse( seller, 0 - GiveGold );
+
+				// Chance to learn mercantile
+				if ( !isBegging && !isInGuild )
+				{
+					// 500 / 1000 / 2000 / 3000 / etc
+					int skillChecks = GiveGold < 500 ? 0 : 1 + ( GiveGold / 1000 );
+					SkillUtilities.DoSkillChecks(seller, SkillName.Mercantile, skillChecks, Sold);
+				}
 
 				while ( GiveGold > 60000 )
 				{
