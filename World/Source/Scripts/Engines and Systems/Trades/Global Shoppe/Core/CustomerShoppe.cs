@@ -1,5 +1,6 @@
 using Server.Items;
 using Server.Mobiles;
+using Server.Utilities;
 using System;
 
 namespace Server.Engines.GlobalShoppe
@@ -199,6 +200,7 @@ namespace Server.Engines.GlobalShoppe
             from.SendSound(0x2E6); // dropmny3
             context.Gold = Math.Min(ShoppeConstants.MAX_GOLD, context.Gold + customer.GoldReward);
             context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + customer.ReputationReward);
+			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 1);
 
             ProgressSkill(from);
             ProgressSkill(from); // Yep, twice
