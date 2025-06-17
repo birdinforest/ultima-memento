@@ -448,7 +448,6 @@ namespace Server.Items
 				case 9:
 				case 10:
 				{
-
 					int goldFromLuck = Math.Max(from.Luck, 4000);
 					int randomGold = good
 						? Utility.RandomMinMax( 4000, 16000 )
@@ -465,8 +464,6 @@ namespace Server.Items
 
 		public void FillMeUp( Container box, Mobile from, bool good )
 		{
-			GenerateGoodLoot( box, from, good );
-
 			int calculatedLuck = 20 + (from.Luck / 2);
 
 			if ( GetPlayerInfo.LuckyPlayer( calculatedLuck ) )
@@ -505,6 +502,9 @@ namespace Server.Items
 				Server.Items.NotIdentified.ConfigureItem( item, box, from );
 				
 			Server.Items.NotIdentified.DoAutoDelete( box, from );
+
+			// Never unidentified. Never auto-deleted.
+			GenerateGoodLoot( box, from, good );
 		}
 	}
 }
