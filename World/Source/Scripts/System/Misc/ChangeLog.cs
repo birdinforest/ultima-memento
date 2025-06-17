@@ -30,6 +30,8 @@ namespace Server.Misc
 			builder.Append("- Craft - Witch Brewing now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Craft - Crafting any scroll can now be used to reach 125 Inscription<br>");
 			builder.Append("- Craft - Dwarven ore now yields 2 ingots per ore, down from 4<br>");
+			builder.Append("- Craft - Lapidary tools now apply magical attributes to crafted items<br>");
+			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Gump - Tillerman gump now has tooltips<br>");
 			builder.Append("- Item - Retroactive nerfs to Indecency and Gargoyle Shield<br>");
 			builder.Append("- Item - Retroactive buffs to Polar bear cape, Polar bear boots, Grim Reaper's Robe, Robe of Teleport<br>");
