@@ -26,7 +26,7 @@ namespace Server.Engines.GlobalShoppe
             context.Gold += order.GoldReward;
             context.Points += order.PointReward;
             context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
-			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 2);
+			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
             context.Orders.Remove(order);
 
             from.PlaySound(0x32); // Dropgem1
