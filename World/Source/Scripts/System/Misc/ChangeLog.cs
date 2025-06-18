@@ -6,21 +6,44 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.1.0";
+			return "Version: 1.2.0";
 		}
 
 		public static string Versions()
         {
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
-
-			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-			builder.Append(Version());
-			builder.Append("<br>");
+			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Admin - Add '[Freeze-SetId' command to set the Freezable Item ID<br>");
+			builder.Append("- Craft - Lapidary tools now apply magical attributes to crafted items<br>");
+			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
+			builder.Append("- Misc - ID skills now perform like Magic Find<br>");
+			builder.Append("- Misc - Skins, Blocks, and Alien resources now sell for notably less<br>");
+			builder.Append("- Misc - Leather, Ingot, and Board prices have been rebalanced<br>");
+			builder.Append("- Misc - Relic decorative items now drop much more frequently<br>");
+			builder.Append("- Misc - Reduced amount of items per pack animal to 50, down from 125<br>");
+			builder.Append("- Misc - Trap doors have been rebalanced<br>");
+			builder.Append("- Mobs - Mobs drop less gems<br>");
+			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
+			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
+			builder.Append("- Skill - Discordance skill has been reworked<br>");
+			builder.Append("- Skill - Discordance skill can no longer be used by Players against Players<br>");
+			builder.Append("- Skill - Mercantile can now be gained from npc transactions<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Misc - Gold drops now vary per loot pack<br>");
+			builder.Append("- Misc - Fix an issue with chugging unidentified drinks<br>");
+			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 1.1.0<br>");
+
+			builder.Append("Changes<br>");
 			builder.Append("- Combat - Add teleport cooldown for OmniAI<br>");
 			builder.Append("- Combat - Mobs that can only swim can no longer teleport<br>");
 			builder.Append("- Combat - Creatures will no longer begin combat with self-buffing<br>");
@@ -30,8 +53,6 @@ namespace Server.Misc
 			builder.Append("- Craft - Witch Brewing now takes 4 total reagents, up from 2<br>");
 			builder.Append("- Craft - Crafting any scroll can now be used to reach 125 Inscription<br>");
 			builder.Append("- Craft - Dwarven ore now yields 2 ingots per ore, down from 4<br>");
-			builder.Append("- Craft - Lapidary tools now apply magical attributes to crafted items<br>");
-			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Gump - Tillerman gump now has tooltips<br>");
 			builder.Append("- Item - Retroactive nerfs to Indecency and Gargoyle Shield<br>");
 			builder.Append("- Item - Retroactive buffs to Polar bear cape, Polar bear boots, Grim Reaper's Robe, Robe of Teleport<br>");
@@ -43,43 +64,30 @@ namespace Server.Misc
 			builder.Append("- Misc - Add a 'clear the deck' phrase to remove corpses from boat<br>");
 			builder.Append("- Misc - Library now has placeholder text<br>");
 			builder.Append("- Misc - Thief pedestals now provide more variety by default<br>");
-			builder.Append("- Misc - ID skills now perform like Magic Find<br>");
-			builder.Append("- Misc - Skins, Blocks, and Alien resources now sell for notably less<br>");
-			builder.Append("- Misc - Leather, Ingot, and Board prices have been rebalanced<br>");
-			builder.Append("- Misc - Relic decorative items now drop much more frequently<br>");
-			builder.Append("- Misc - Reduced amount of items per pack animal to 50, down from 125<br>");
-			builder.Append("- Misc - Trap doors have been rebalanced<br>");
-			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Always announce gold when buy/sell<br>");
 			builder.Append("- NPC - Vendor bought equipment is now limited to 1g resale value<br>");
 			builder.Append("- NPC - Max properties from vendor-bought magical items is now 4, down from 5<br>");
-			builder.Append("- NPC - Vendor gold is now Account-based rather than Npc-based<br>");
 			builder.Append("- Pets - Tooltip now shows 'real' level, which matters when pets de-level<br>");
-			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Quest - Display rumor count after last Sage Artifact rumor is verified<br>");
 			builder.Append("- Shoppe - Targeting a container now adds all possible items to the Order<br>");
 			builder.Append("- Shoppe - All Shoppes (except Cartography) now have Orders<br>");
 			builder.Append("- Shoppe - Baker shoppe Orders can no longer require wasabi clumps<br>");
 			builder.Append("- Shoppe - Use correct tool names<br>");
-			builder.Append("- Skill - Discordance skill has been reworked<br>");
-			builder.Append("- Skill - Discordance skill can no longer be used by Players against Players<br>");
-			builder.Append("- Skill - Mercantile can now be gained from npc transactions<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Combat - Feint weapon ability now properly reduces damage<br>");
 			builder.Append("- Gather - Lumberjacking in the dreaded place has increased yields<br>");
+			builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 			builder.Append("- Misc - Sacrificing the Dark Core of Exodus now only deletes your own core<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move delay causing monster ghost speed to be slowed down<br>");
 			builder.Append("- Misc - Thief artifact decorations could be purchased for 0g from Sage<br>");
 			builder.Append("- Misc - The Merchant Advertiser now works for Sosaria and Underworld<br>");
-			builder.Append("- Misc - Gold drops now vary per loot pack<br>");
-			builder.Append("- Misc - Fix an issue with chugging unidentified drinks<br>");
 			builder.Append("- Pets - Fix issue where applying Traits could lower stats<br>");
 			builder.Append("- Misc - Weapon Abilities now respect ServerSettings cap for Lower Mana Cost (no change for Live)<br>");
 			builder.Append("- Misc - Autoloot no longer works on Player corpses<br>");
 			builder.Append("- Misc - Autoloot no longer works on corpses where looting would be a criminal action<br>");
-			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
+			builder.Append("- Misc - Fix message when carving wood corpses<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append("- Quest - Fix an issue where only a small subset of Citizens could satisfy the Sage Artifact rumor objective<br>");
@@ -88,7 +96,7 @@ namespace Server.Misc
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			builder.Append("<br>");
+			builder.Append("Version: 1.0.2<br>");
 
 			builder.Append("Breaking Changes<br>");
 			builder.Append("- Commands - [Cacheclear command has been added<br>");
@@ -180,7 +188,7 @@ namespace Server.Misc
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			builder.Append("<br>");
+			builder.Append("Version: 1.0.1<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Merchant crates have been reduced to a 4 hour timer<br>");
@@ -215,7 +223,8 @@ namespace Server.Misc
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			builder.Append("<br>");
+			builder.Append("Version: 1.0.0<br>");
+
 			builder.Append("Changes<br>");
 			builder.Append("- Combat - Mob Peacemaking duration is now a function of mob skill<br>");
 			builder.Append("- Combat - Add short cooldown to defensive dispelling<br>");
