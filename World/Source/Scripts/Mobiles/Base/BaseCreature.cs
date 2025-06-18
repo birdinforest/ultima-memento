@@ -4584,7 +4584,7 @@ namespace Server.Mobiles
 						case WoodType.Elven:     	corpse.AddCarvedItem( new ElvenLog( wood ), from ); break;
 					}
 
-					from.SendMessage( "You cut away some leather and they are on the corpse." );
+					from.SendMessage( "You carve away some wood and they are on the corpse." );
 				}
 
 				if ( granite != 0 )

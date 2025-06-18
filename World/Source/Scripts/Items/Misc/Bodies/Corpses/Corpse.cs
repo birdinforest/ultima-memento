@@ -1135,7 +1135,7 @@ namespace Server.Items
 
 				from.SendSound( 0x48, from.Location );
 
-				if ( !dead.Player && !IsCriminalAction( from ) )
+				if ( dead != null && !dead.Player && !IsCriminalAction( from ) )
 					Server.Misc.PlayerSettings.LootContainer( from, this );
 			}
 			else

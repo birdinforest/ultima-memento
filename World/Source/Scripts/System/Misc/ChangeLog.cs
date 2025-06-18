@@ -54,6 +54,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Combat - Feint weapon ability now properly reduces damage<br>");
 			builder.Append("- Gather - Lumberjacking in the dreaded place has increased yields<br>");
+			builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 			builder.Append("- Misc - Sacrificing the Dark Core of Exodus now only deletes your own core<br>");
 			builder.Append("- Misc - Fix an issue with Fast-move delay causing monster ghost speed to be slowed down<br>");
 			builder.Append("- Misc - Thief artifact decorations could be purchased for 0g from Sage<br>");
@@ -62,6 +63,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Weapon Abilities now respect ServerSettings cap for Lower Mana Cost (no change for Live)<br>");
 			builder.Append("- Misc - Autoloot no longer works on Player corpses<br>");
 			builder.Append("- Misc - Autoloot no longer works on corpses where looting would be a criminal action<br>");
+			builder.Append("- Misc - Fix message when carving wood corpses<br>");
 			builder.Append("- Quest - Sage Artifact now references Land instead of Map<br>");
 			builder.Append("- Quest - Fix hiking boots typo in beginner hints<br>");
 			builder.Append("- Quest - Fix an issue where only a small subset of Citizens could satisfy the Sage Artifact rumor objective<br>");
