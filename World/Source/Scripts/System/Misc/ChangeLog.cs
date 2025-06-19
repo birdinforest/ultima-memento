@@ -25,6 +25,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Relic decorative items now drop much more frequently<br>");
 			builder.Append("- Misc - Reduced amount of items per pack animal to 50, down from 125<br>");
 			builder.Append("- Misc - Trap doors have been rebalanced<br>");
+			builder.Append("- Misc - [c is now sent as a Global Chat message<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");

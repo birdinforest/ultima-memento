@@ -395,19 +395,49 @@ namespace Knives.Chat3
                 IrcConnection.Connection.SendUserMessage(m, "(" + c_Name + ") " + msg);
         }
 
+		public sealed class ChatMessagePacket : Server.Network.Packet
+		{
+			public ChatMessagePacket(Mobile who, int number, string param1, string param2)
+				: base(0xB2)
+			{
+				if (param1 == null)
+					param1 = String.Empty;
+
+				if (param2 == null)
+					param2 = String.Empty;
+
+				EnsureCapacity(13 + ((param1.Length + param2.Length) * 2));
+
+				m_Stream.Write((ushort)(number - 20));
+
+				if (who != null)
+					m_Stream.WriteAsciiFixed(who.Language, 4);
+				else
+					m_Stream.Write((int)0);
+
+				m_Stream.WriteBigUniNull(param1);
+				m_Stream.WriteBigUniNull(param2);
+			}
+		}
+
         protected virtual void Broadcast(Mobile m, string msg)
         {
             foreach (Data data in Data.Datas.Values)
             {
-                if (c_Mobiles.Contains(data.Mobile) && !data.Ignores.Contains(m))
-                {
-                    if (c_Style == ChatStyle.Regional && data.Mobile.Region != m.Region)
-                        continue;
+				if (data.Mobile != null)
+				{
+					data.Mobile.Send(new ChatMessagePacket(m, 57, "1" + m.Name, msg)); //The 0 is a color code that's non functional but required
+				}
 
-                    data.Mobile.SendMessage(m.AccessLevel == AccessLevel.Player ? ColorFor(data.Mobile) : Data.GetData(m).StaffC, String.Format("<{0}{1}> {2}: {3}", NameFor(m), (c_Style == ChatStyle.Regional && m.Region != null ? "-" + Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) : ""), m.RawName, msg));
-                }
-                else if (data.Mobile.AccessLevel >= m.AccessLevel && ((data.GlobalC && !data.GIgnores.Contains(m)) || data.GListens.Contains(m)))
-                    data.Mobile.SendMessage(data.GlobalCC, String.Format("(Global) <{0}{1}> {2}: {3}", c_Name, (c_Style == ChatStyle.Regional && m.Region != null ? "-" + Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) : ""), m.RawName, msg ));
+                // if (c_Mobiles.Contains(data.Mobile) && !data.Ignores.Contains(m))
+                // {
+                //     if (c_Style == ChatStyle.Regional && data.Mobile.Region != m.Region)
+                //         continue;
+
+                //     data.Mobile.SendMessage(m.AccessLevel == AccessLevel.Player ? ColorFor(data.Mobile) : Data.GetData(m).StaffC, String.Format("<{0}{1}> {2}: {3}", NameFor(m), (c_Style == ChatStyle.Regional && m.Region != null ? "-" + Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) : ""), m.RawName, msg));
+                // }
+                // else if (data.Mobile.AccessLevel >= m.AccessLevel && ((data.GlobalC && !data.GIgnores.Contains(m)) || data.GListens.Contains(m)))
+                //     data.Mobile.SendMessage(data.GlobalCC, String.Format("(Global) <{0}{1}> {2}: {3}", c_Name, (c_Style == ChatStyle.Regional && m.Region != null ? "-" + Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) : ""), m.RawName, msg ));
             }
         }
 
