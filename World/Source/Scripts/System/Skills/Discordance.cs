@@ -190,7 +190,8 @@ namespace Server.SkillHandlers
 
 				if ( from.Skills[SkillName.Discordance].Value < minSkill )
 				{
-                    from.SendMessage("You are not skilled enough to disrupt the target.");
+                    // from.SendMessage("You are not skilled enough to disrupt the target.");
+					from.SendMessage("You need at least '{0}' Discordance skill to disrupt the target.", minSkill);
 					return;
 				}
 
