@@ -341,7 +341,8 @@ namespace Server
 		{
 			Mobile m = state as Mobile;
 			m.CloseGump( typeof( ResurrectNowGump ) );
-			Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
+
+			Item orb = SoulOrb.FindActive( m );
 			if ( orb == null )
 			{
 				BuffInfo.RemoveBuff( m, BuffIcon.Resurrection );

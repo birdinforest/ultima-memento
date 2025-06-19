@@ -166,8 +166,7 @@ namespace Server
 			{
 				if (m.Backpack != null)
 				{
-					Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
-						if ( orb == null )
+						if ( SoulOrb.FindActive(m)  == null )
 							BuffInfo.RemoveBuff( m, BuffIcon.Resurrection );
 						else
 							BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );

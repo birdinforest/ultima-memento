@@ -121,17 +121,23 @@ namespace Server.Items
 			}
 		}
 
+		public static SoulOrb FindActive( Mobile from )
+		{
+			if ( from.Backpack == null ) return null;
+
+			var orb = from.Backpack.FindItemByType( typeof ( SoulOrb ) ) as SoulOrb;
+			if ( orb == null || orb.Deleted ) return null;
+
+			return orb.Owner == from ? orb : null;
+		}
+
 		private static void EventSink_Death(PlayerDeathEventArgs e)
         {
-            PlayerMobile owner = e.Mobile as PlayerMobile;
-
-			Item item = owner.Backpack.FindItemByType( typeof ( SoulOrb ) );
-			SoulOrb orb = (SoulOrb)item;
-
-			if ( orb != null && owner != null && !owner.Deleted )
+            var owner = e.Mobile;
+			SoulOrb orb = FindActive(owner);
+			if ( orb != null && !owner.Deleted )
             {
-                if (owner.Alive)
-                    return;
+                if (owner.Alive) return;
 
 				orb.m_Timer = Timer.DelayCall(m_Delay, new TimerStateCallback(Resurrect_OnTick), new object[] { owner, orb });
             }
