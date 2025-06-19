@@ -36,32 +36,12 @@ namespace Server.Spells.Herbalist
             }
             else if ( m == Caster && CheckBSequence( m, true ) )
             {
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
+				if ( SoulOrb.Create( m, SoulOrbType.RestorativeSoil ) != null )
 				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == m )
-					{
-						targets.Add( item );
-					}
+					m.PlaySound( 0x5C9 );
+					m.FixedEffect( 0x54F4, 10, 16, 0, 0 );
+					m.SendMessage( "You pour the mystical mud in your pack to protect your soul." );
 				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
-
-                m.PlaySound( 0x5C9 );
-                m.FixedEffect( 0x54F4, 10, 16, 0, 0 );
-				m.SendMessage( "You pour the mystical mud in your pack to protect your soul." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = m;
-				iOrb.Name = "mystical mud";
-				iOrb.ItemID = 0x913;
-				iOrb.Hue = 0;
-				m.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( m, iOrb );
             }
             else if ( m == Caster )
             {

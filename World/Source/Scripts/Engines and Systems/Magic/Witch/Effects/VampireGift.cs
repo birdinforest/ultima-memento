@@ -33,33 +33,13 @@ namespace Server.Spells.Undead
             }
             else if ( m == Caster && CheckBSequence( m, true ) )
             {
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
+				if ( SoulOrb.Create( m, SoulOrbType.BloodOfVampire ) != null )
 				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == m )
-					{
-						targets.Add( item );
-					}
+					m.PlaySound( 0x175 );
+					m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
+					m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
+					m.SendMessage( "You dump the vampire blood in your pack to protect your soul." );
 				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
-
-				m.PlaySound( 0x175 );
-				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
-				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
-				m.SendMessage( "You dump the vampire blood in your pack to protect your soul." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = m;
-				iOrb.Name = "blood of a vampire";
-				iOrb.ItemID = 0x122B;
-				iOrb.Hue = 0;
-				m.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( m, iOrb );
             }
             else if ( m == Caster )
             {

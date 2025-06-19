@@ -33,31 +33,14 @@ namespace Server.Spells.Syth
 		{
 			if ( CheckSequence() )
 			{
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
+				var m = Caster;
+				if ( SoulOrb.Create( m, SoulOrbType.CloningCrystalSyth ) != null )
 				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == Caster )
-					{
-						targets.Add( item );
-					}
-				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
+					m.PlaySound( 0x243 );
+					Effects.SendLocationEffect(m.Location, m.Map, 0x373A, 15, 0x81F, 0);
+					m.SendMessage( "You create a cloning crystal with your genetic pattern." );
 				}
 
-				Caster.PlaySound( 0x243 );
-				Effects.SendLocationEffect(Caster.Location, Caster.Map, 0x373A, 15, 0x81F, 0);
-				Caster.SendMessage( "You create a cloning crystal with your genetic pattern." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = Caster;
-				iOrb.Name = "cloning crystal";
-				iOrb.ItemID = 0x705;
-				Caster.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( Caster, iOrb );
 				DrainCrystals( Caster, RequiredTithing );
 			}
 

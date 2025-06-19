@@ -39,29 +39,12 @@ namespace Server.Spells.Eighth
             }
             else if ( m == Caster && CheckBSequence( m, true ) )
             {
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
+				if ( SoulOrb.Create( m, SoulOrbType.Default ) != null)
 				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == m )
-					{
-						targets.Add( item );
-					}
+					m.PlaySound( 0x214 );
+					m.FixedEffect( 0x376A, 10, 16, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0 );
+					m.SendMessage( "You summon a magical orb to protect your soul." );
 				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
-
-                m.PlaySound( 0x214 );
-                m.FixedEffect( 0x376A, 10, 16, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0 );
-				m.SendMessage( "You summon a magical orb to protect your soul." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = m;
-				m.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( m, iOrb );
             }
             else if ( m == Caster )
             {

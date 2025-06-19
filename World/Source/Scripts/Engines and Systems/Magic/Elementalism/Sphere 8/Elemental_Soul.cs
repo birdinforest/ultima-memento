@@ -66,31 +66,14 @@ namespace Server.Spells.Elementalism
             }
             else if ( m == Caster && CheckBSequence( m, true ) )
             {
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
-				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == m )
-					{
-						targets.Add( item );
-					}
+				var item = SoulOrb.Create( m, SoulOrbType.RestorativeSoil );
+				if ( item != null )
+				{					
+					item.Hue = color;
+					m.PlaySound( 0x214 );
+					m.FixedEffect( 0x3039, 10, 16, hue, 0 );
+					m.SendMessage( "You summon a magical orb of " + orb + " to protect your soul." );
 				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
-
-                m.PlaySound( 0x214 );
-                m.FixedEffect( 0x3039, 10, 16, hue, 0 );
-				m.SendMessage( "You summon a magical orb of " + orb + " to protect your soul." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = m;
-				iOrb.Hue = color;
-				iOrb.Name = "magical orb of " + orb + "";
-				m.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( m, iOrb );
             }
             else if ( m == Caster )
             {
