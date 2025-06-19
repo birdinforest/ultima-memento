@@ -178,13 +178,23 @@ namespace Server.SkillHandlers
 					return;
 				}
 
-				from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3.0 ); // Flat cooldown
-
 				double diff = m_Instrument.GetDifficultyFor( targ ) - 10.0;
+
 				double music = from.Skills[SkillName.Musicianship].Value;
 
 				if ( music > 100.0 )
 					diff -= (music - 100.0) * 0.5;
+
+				double minSkill = diff - 25;
+				double maxSkill = diff + 25;
+
+				if ( from.Skills[SkillName.Discordance].Value < minSkill )
+				{
+                    from.SendMessage("You are not skilled enough to disrupt the target.");
+					return;
+				}
+
+				from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3.0 ); // Flat cooldown
 
 				if ( !BaseInstrument.CheckMusicianship( from ) )
 				{
@@ -195,7 +205,7 @@ namespace Server.SkillHandlers
 				}
 
 				// Do skill check early, for gains
-				var discordSuccess = from.CheckTargetSkill( SkillName.Discordance, target, diff-25.0, diff+25.0 );
+				var discordSuccess = from.CheckTargetSkill( SkillName.Discordance, target, minSkill, maxSkill );
 
 				if ( targ.Player && Utility.RandomMinMax( 0, 125 ) <= targ.Skills[SkillName.MagicResist].Value)
 				{
