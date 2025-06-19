@@ -27,7 +27,7 @@ namespace Server.Engines.GlobalShoppe
                 price = (int)(price * resourceMultiplier);
 
             // Reduce by arbitrary amount
-            return (int)(price / 3);
+            return (int)(price / 2);
         }
 
         protected override int ComputePoints(TradeSkillContext context, TinkerOrderContext order)
