@@ -16,7 +16,7 @@ namespace Server.Engines.GlobalShoppe
 
             // Further reduce value for non-basic resource multiplier
 
-            return gold / 3;
+            return gold / 2;
         }
 
         protected override CraftItem FindCraftItem(Type type)
