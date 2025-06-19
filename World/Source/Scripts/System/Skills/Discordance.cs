@@ -208,7 +208,7 @@ namespace Server.SkillHandlers
 				// Do skill check early, for gains
 				var discordSuccess = from.CheckTargetSkill( SkillName.Discordance, target, minSkill, maxSkill );
 
-				if ( targ.Player && Utility.RandomMinMax( 0, 125 ) <= targ.Skills[SkillName.MagicResist].Value)
+				if ( targ.Player && Utility.RandomMinMax( 0, 125 ) <= targ.Skills[SkillName.MagicResist].Value )
 				{
 					from.SendLocalizedMessage( 1049540 ); // You attempt to disrupt your target, but fail.
 					targ.SendMessage( "You magically resist the affects of the song." );
