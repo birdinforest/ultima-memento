@@ -1,5 +1,4 @@
 using System;
-using Server.Mobiles;
 using Server.Network;
 using Server.Gumps;
 using Server.Utilities;
@@ -29,7 +28,7 @@ namespace Server.Items
         }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public SoulOrbType OrbType { get; set; }
+		public SoulOrbType OrbType { get; private set; }
 
         private Timer m_Timer;
         private static TimeSpan m_Delay = TimeSpan.FromSeconds( 30.0 ); /*TimeSpan.Zero*/
@@ -39,8 +38,17 @@ namespace Server.Items
 	
         public static void Initialize()
         {
-            EventSink.PlayerDeath += new PlayerDeathEventHandler(EventSink_Death);
+            EventSink.PlayerDeath += new PlayerDeathEventHandler(e => StartTimer(e.Mobile));
+			EventSink.Login += new LoginEventHandler(e => StartTimer(e.Mobile));
         }
+
+        private static void StartTimer(Mobile m)
+        {
+			SoulOrb orb = FindActive(m);
+			if ( orb == null ) return;
+
+			orb.StartTimer();
+		}
 
         [Constructable]
         public SoulOrb() : base( 0x2C84 ) 
@@ -131,53 +139,6 @@ namespace Server.Items
 			return orb.Owner == from ? orb : null;
 		}
 
-		private static void EventSink_Death(PlayerDeathEventArgs e)
-        {
-            var owner = e.Mobile;
-			SoulOrb orb = FindActive(owner);
-			if ( orb != null && !owner.Deleted )
-            {
-                if (owner.Alive) return;
-
-				orb.m_Timer = Timer.DelayCall(m_Delay, new TimerStateCallback(Resurrect_OnTick), new object[] { owner, orb });
-            }
-        }
-
-        private static void Resurrect_OnTick(object state)
-        {
-            object[] states = (object[])state;
-            PlayerMobile owner = (PlayerMobile)states[0];
-			SoulOrb arp = (SoulOrb)states[1];
-            if ( owner != null && !owner.Deleted && arp != null && !arp.Deleted )
-            {
-                if (owner.Alive) return;
-
-				switch ( arp.OrbType )
-				{
-					case SoulOrbType.BloodOfVampire:
-						owner.SendMessage("The blood pours out of the bottle, restoring your life.");
-						break;
-
-					case SoulOrbType.CloningCrystalJedi:
-					case SoulOrbType.CloningCrystalSyth:
-						owner.SendMessage("The crystal forms a clone of your body, restoring your life.");
-						break;
-
-					case SoulOrbType.RestorativeSoil:
-					case SoulOrbType.Default:
-					default:
-						owner.SendMessage("The orb glows, releasing your soul.");
-						break;
-				}
-
-                owner.Resurrect();
-                owner.FixedEffect( 0x376A, 10, 16, Server.Misc.PlayerSettings.GetMySpellHue( true, owner, 0 ), 0 );
-                Server.Misc.Death.Penalty( owner, false );
-				BuffInfo.RemoveBuff( owner, BuffIcon.Resurrection );
-                arp.Delete();
-            }
-        }
-
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
@@ -199,7 +160,33 @@ namespace Server.Items
 					list.Add( 1049644, "Contains the Soul of " + m_Owner.Name );
 					break;
 			}
-        } 
+        }
+
+        public void StartTimer()
+        {
+			if ( Owner.Alive || Owner.Deleted ) return;
+
+			if ( m_Timer != null )
+			{
+				m_Timer.Stop();
+				m_Timer = null;
+			}
+
+			m_Timer = Timer.DelayCall(m_Delay, () =>
+				{
+					if ( Owner != null && !Owner.Deleted && !Deleted )
+					{
+						if ( Owner.Alive ) return;
+						if ( Owner.NetState == null ) return;
+
+						var gump = new AutoResurrectGump(this);
+						Owner.SendSound( 0x0F8 );
+						Owner.CloseGump( typeof( AutoResurrectGump ) );
+						Owner.SendGump( gump );
+					}
+				}
+			);
+        }
 
         public override void Serialize(GenericWriter writer)
         {
@@ -240,4 +227,76 @@ namespace Server.Items
             }
         }
     }
+
+	public class AutoResurrectGump : Gump
+	{
+		private readonly SoulOrb m_Orb;
+
+		public AutoResurrectGump( SoulOrb orb ): base( 50, 50 )
+		{
+			m_Orb = orb;
+
+            Closable=true;
+			Disposable=true;
+			Dragable=true;
+
+			const string color = "#b7cbda";
+
+			AddPage(0);
+
+			int img = 9586;
+			if ( orb.Owner.Karma < 0 ){ img = 9587; }
+
+			AddImage(0, 0, img, Server.Misc.PlayerSettings.GetGumpHue( orb.Owner ));
+			AddHtml( 10, 11, 349, 20, @"<BODY><BASEFONT Color=" + color + ">RESURRECTION</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddButton(368, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
+
+			AddHtml( 11, 41, 385, 141, @"<BODY><BASEFONT Color=" + color + ">The spirits offer their aid.<br><br>Do you accept?</BASEFONT></BODY>", (bool)false, (bool)false);
+
+			AddButton(10, 225, 4023, 4023, 1, GumpButtonType.Reply, 0);
+			AddButton(367, 225, 4020, 4020, 0, GumpButtonType.Reply, 0);
+		}
+
+		public override void OnResponse( NetState state, RelayInfo info )
+		{
+			Mobile from = state.Mobile;
+
+			if ( info.ButtonID == 1 )
+			{
+				if( from.Map == null || !from.Map.CanFit( from.Location, 16, false, false ) )
+				{
+					from.SendLocalizedMessage( 502391 ); // Thou can not be resurrected there!
+					return;
+				}
+
+				switch ( m_Orb.OrbType )
+				{
+					case SoulOrbType.BloodOfVampire:
+						from.SendMessage("The blood pours out of the bottle, restoring your life.");
+						break;
+
+					case SoulOrbType.CloningCrystalJedi:
+					case SoulOrbType.CloningCrystalSyth:
+						from.SendMessage("The crystal forms a clone of your body, restoring your life.");
+						break;
+
+					case SoulOrbType.RestorativeSoil:
+					case SoulOrbType.Default:
+					default:
+						from.SendMessage("The orb glows, releasing your soul.");
+						break;
+				}
+
+				from.Resurrect();
+				from.FixedEffect( 0x376A, 10, 16, Server.Misc.PlayerSettings.GetMySpellHue( true, from, 0 ), 0 );
+				Server.Misc.Death.Penalty( from, false );
+				BuffInfo.RemoveBuff( from, BuffIcon.Resurrection );
+				m_Orb.Delete();
+			}
+			else
+			{
+				m_Orb.StartTimer();
+			}
+		}
+	}
 }

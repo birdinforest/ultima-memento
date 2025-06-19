@@ -20,6 +20,8 @@ namespace Server.Misc
 			builder.Append("- Craft - Lapidary tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Item - Potion of Rebirth is now converted to a soul orb upon use<br>");
+			builder.Append("- Item - Soul Orb now has a confirmation prompt<br>");
+			builder.Append("- Item - Soul Orb timer repeats and restarts when logging in<br>");
 			builder.Append("- Misc - ID skills now perform like Magic Find<br>");
 			builder.Append("- Misc - Skins, Blocks, and Alien resources now sell for notably less<br>");
 			builder.Append("- Misc - Leather, Ingot, and Board prices have been rebalanced<br>");
