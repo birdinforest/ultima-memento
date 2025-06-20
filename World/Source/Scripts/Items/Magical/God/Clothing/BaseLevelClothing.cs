@@ -1,11 +1,6 @@
 using System;
-using Server.Items;
-using Server.Network;
-using Server.Mobiles;
 using Server.ContextMenus;
-using System.Collections;
 using System.Collections.Generic;
-using Server.Gumps;
 
 namespace Server.Items
 {
@@ -45,7 +40,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1);
+            writer.Write((int)2);
 
             // Version 1
             writer.Write(m_MaxLevel);
@@ -65,6 +60,7 @@ namespace Server.Items
 
             switch (version)
             {
+				case 2:
                 case 1:
                     {
                         m_MaxLevel = reader.ReadInt();
@@ -81,6 +77,19 @@ namespace Server.Items
                         break;
                     }
             }
+
+			if (version == 1)
+			{
+				Timer.DelayCall(TimeSpan.Zero, () =>
+				{
+					LevelItemManager.ExtractExperienceToken(this);
+					Points = 0;
+					var oldLuck = Attributes.Luck;
+					ResetAllAttributes();
+					Attributes.Luck = oldLuck; // Restore in case they used lucky horse shoes
+				});
+			}
+
 			ArtifactLevel = 3;
         }
 
@@ -91,9 +100,9 @@ namespace Server.Items
             /* Display level in the properties context menu.
              * Will display experience as well, if DisplayExpProp.
              * is set to true in LevelItemManager.cs */
-            list.Add(1060658, "Level\t{0}", m_Level);
-            if (1==1)
-                list.Add(1060659, "Experience\t{0}", m_Experience);
+            list.Add(1060658, "Level\t{0}", Level);
+			if (LevelItems.DisplayExpProp)
+				list.Add(1060659, "Experience\t{0}", Experience);
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
@@ -115,23 +124,15 @@ namespace Server.Items
         {
             get
             {
-                return m_MaxLevel;
+				return m_MaxLevel < 1
+					? 1 // Min
+					: m_MaxLevel > LevelItems.MaxLevelsCap
+						? LevelItems.MaxLevelsCap // Max
+						: m_MaxLevel; // Actual
             }
             set
             {
-                // This keeps gms from setting the level to an outrageous value
-                if (value > LevelItems.MaxLevelsCap)
-                    value = LevelItems.MaxLevelsCap;
-
-                // This keeps gms from setting the level to 0 or a negative value
-                if (value < 1)
-                    value = 1;
-
-                // Sets new level.
-                if (m_MaxLevel != value)
-                {
-                    m_MaxLevel = value;
-                }
+				m_MaxLevel = value;
             }
         }
 
@@ -162,23 +163,15 @@ namespace Server.Items
         {
             get
             {
-                return m_Level;
+				return m_Level < 1
+					? 1 // Min
+					: m_Level > MaxLevel
+						? MaxLevel // Max
+						: m_Level; // Actual
             }
             set
             {
-                // This keeps gms from setting the level to an outrageous value
-                if (value > LevelItems.MaxLevelsCap)
-                    value = LevelItems.MaxLevelsCap;
-
-                // This keeps gms from setting the level to 0 or a negative value
-                if (value < 1)
-                    value = 1;
-
-                // Sets new level.
-                if (m_Level != value)
-                {
-                    m_Level = value;
-                }
+				m_Level = value;
             }
         }
 

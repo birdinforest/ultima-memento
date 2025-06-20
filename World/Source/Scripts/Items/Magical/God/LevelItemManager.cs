@@ -220,15 +220,9 @@ namespace Server.Items
 
         public static void OnLevel(ILevelable item, int oldLevel, int newLevel, Mobile from = null)
         {
-            /* This is where we control all our props
-             * and their maximum value. */
-            int index;
-            string itemdesc;
-
-            index = newLevel % 10;
-            if (index == 0)
+            if (newLevel == LevelItems.MaxLevelsCap)
             {
-                item.Points += LevelItems.PointsPerLevel*2;
+                item.Points += LevelItems.PointsPerLevel * 2;
             }
             else
             {
@@ -241,6 +235,7 @@ namespace Server.Items
 			from.FixedParticles( 0x376A, 1, 31, 9961, 1160, 0, EffectLayer.Waist );
 			from.FixedParticles( 0x37C4, 1, 31, 9502, 43, 2, EffectLayer.Waist );
 
+            string itemdesc;
 			if ( item is BaseWeapon )
 				itemdesc = "weapon";
 			else if ( item is BaseArmor )
@@ -272,5 +267,34 @@ namespace Server.Items
 
 			from.SendMessage( "Your "+itemdesc+" has gained a level. It is now level {0}.", newLevel );
         }
+
+		public static void ExtractExperienceToken<T>(T item) where T : Item, ILevelable
+		{
+			if (item.Experience < 1) return;
+
+			var token = new ItemExperienceToken();
+			token.Experience = item.Experience;
+			item.Experience = 0;
+
+			if ( item.Parent != null )
+			{
+				var parent = item.Parent;
+				if (parent is Container)
+				{
+					((Container)parent).DropItem(token);
+				}
+				else if (parent is Mobile)
+				{
+					var backpack = ((Mobile)parent).Backpack;
+					if (backpack != null)
+						backpack.DropItem(token);
+				}
+			}
+			else
+			{
+				token.Map = item.Map;
+				token.Location = item.Location;
+			}
+		}
 	}
 }
