@@ -492,6 +492,14 @@ namespace Server.Items
 			clothing.m_AosClothingAttributes = new AosArmorAttributes( newItem, m_AosClothingAttributes );
 		}
 
+		protected void ResetAllAttributes()
+		{
+			m_AosAttributes = new AosAttributes(this);
+			m_AosResistances = new AosElementAttributes(this);
+			m_AosSkillBonuses = new AosSkillBonuses(this);
+			m_AosClothingAttributes = new AosArmorAttributes(this);
+		}
+
 		public BaseClothing( Serial serial ) : base( serial )
 		{
 		}

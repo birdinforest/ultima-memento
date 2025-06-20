@@ -581,6 +581,14 @@ namespace Server.Items
 			weap.m_AosWeaponAttributes = new AosWeaponAttributes( newItem, m_AosWeaponAttributes );
 		}
 
+		protected void ResetAllAttributes()
+		{
+			m_AosAttributes = new AosAttributes(this);
+			m_AosWeaponAttributes = new AosWeaponAttributes(this);
+			m_AosSkillBonuses = new AosSkillBonuses(this);
+			m_AosElementDamages = new AosElementAttributes(this);
+		}
+
 		public virtual void UnscaleDurability()
 		{
 			int scale = 100 + GetDurabilityBonus();

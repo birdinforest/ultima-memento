@@ -99,6 +99,18 @@ namespace Server.Items
 			armor.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 		}
 
+		protected void ResetAllAttributes()
+		{
+			m_AosAttributes = new AosAttributes(this);
+			m_AosArmorAttributes = new AosArmorAttributes(this);
+			m_AosSkillBonuses = new AosSkillBonuses(this);
+			PhysicalBonus = 0;
+			FireBonus = 0;
+			ColdBonus = 0;
+			PoisonBonus = 0;
+			EnergyBonus = 0;
+		}
+
 		public override void OnLocationChange( Point3D oldLocation )
 		{
 			ResourceMods.DefaultItemHue( this );

@@ -208,6 +208,13 @@ namespace Server.Items
 			jewel.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 		}
 
+		protected void ResetAllAttributes()
+		{
+			m_AosAttributes = new AosAttributes(this);
+			m_AosResistances = new AosElementAttributes(this);
+			m_AosSkillBonuses = new AosSkillBonuses(this);
+		}
+
 		public virtual int ArtifactRarity{ get{ return 0; } }
 
 		public BaseTrinket( int itemID ) : this( itemID, Layer.Trinket )
