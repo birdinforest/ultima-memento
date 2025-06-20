@@ -197,19 +197,28 @@ namespace Server.Items
 
 			if ( LevelItems.EnableExpCap && exp > expcap )
 				exp = expcap;
+			GrantExperience( item, exp, killer );
+		}
+
+		public static void GrantExperience( ILevelable item, int exp, Mobile owner = null )
+		{
+			if ( (item.Level >= LevelItems.MaxLevelsCap) || (item.Level >= item.MaxLevel) )
+				return;
+
+			int oldLevel = item.Level;
 
 			item.Experience += exp;
 
 			InvalidateLevel( item );
 
 			if ( item.Level != oldLevel )
-				OnLevel( item, oldLevel, item.Level, killer );
+				OnLevel( item, oldLevel, item.Level, owner );
 
 			if ( item is Item )
 				((Item)item).InvalidateProperties();
 		}
 
-        public static void OnLevel(ILevelable item, int oldLevel, int newLevel, Mobile from)
+        public static void OnLevel(ILevelable item, int oldLevel, int newLevel, Mobile from = null)
         {
             /* This is where we control all our props
              * and their maximum value. */
@@ -225,6 +234,8 @@ namespace Server.Items
             {
                 item.Points += LevelItems.PointsPerLevel;
             }
+
+			if (from == null) return;
 
 			from.PlaySound( 0x20F );
 			from.FixedParticles( 0x376A, 1, 31, 9961, 1160, 0, EffectLayer.Waist );
