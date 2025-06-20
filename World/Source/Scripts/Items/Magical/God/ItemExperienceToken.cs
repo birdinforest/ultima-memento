@@ -81,9 +81,18 @@ namespace Server.Items
 				if (item is ItemExperienceToken)
 				{
 					var token = (ItemExperienceToken)item;
-					m_Token.Experience += token.Experience;
-					token.Delete();
-					from.SendMessage("You have merged the two tokens.");
+
+					if (token == m_Token)
+					{
+						from.SendMessage("You cannot merge a token with itself.");
+					}
+					else
+					{
+						m_Token.Experience += token.Experience;
+						token.Delete();
+						from.SendMessage("You have merged the two tokens.");
+					}
+
 					return;
 				}
 
