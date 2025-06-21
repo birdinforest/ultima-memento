@@ -38,7 +38,10 @@ namespace Server.Misc
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");
-			builder.Append("- Skill - Discordance skill can no longer be used by Players against Players<br>");
+			builder.Append("        - No longer usable by Players against Players<br>");
+			builder.Append("        - Reduces Resists and Skills (stat reduction was removed)<br>");
+			builder.Append("        - Utilizes a rolling duration, so it can be spammed on the same target<br>");
+			builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
 			builder.Append("- Skill - Mercantile can now be gained from npc transactions<br>");
 
 			builder.Append("<br>");
