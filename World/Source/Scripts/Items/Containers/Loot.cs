@@ -964,7 +964,7 @@ namespace Server
 				}
 
 				if ( item.Stackable )
-					item.Amount = Utility.RandomMinMax( 1, 10 );
+					item.Amount = item.DefaultCatalog == Catalogs.Gem ? Utility.RandomMinMax( 2, 4 ) : Utility.RandomMinMax( 1, 10 );
 
 				if ( item == null || item.Weight > 10 || item.TotalWeight > 10 )
 				{
