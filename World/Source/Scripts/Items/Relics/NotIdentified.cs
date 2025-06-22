@@ -294,9 +294,20 @@ namespace Server.Items
 
 		protected static void DoAutoDelete( Container container, double armsLoreSkill, double mercantileSkill, double tastingSkill )
 		{
-			if ( 100 <= MySettings.S_UnidentifiedItem_FreeLootPercentage ) return;
+			if ( MySettings.S_UnidentifiedItem_GuaranteedItemChecks.Length < 1 ) return;
 
-			var deleteChance = 100 - Math.Min(100, MySettings.S_UnidentifiedItem_FreeLootPercentage);
+			// Determine how many items we should not delete
+			int guaranteedArmsLoreItems = 0;
+			int guaranteedMercantileItems = 0;
+			int guaranteedTastingItems = 0;
+			foreach( var breakpoint in MySettings.S_UnidentifiedItem_GuaranteedItemChecks )
+			{
+				if ( breakpoint <= armsLoreSkill ) guaranteedArmsLoreItems++;
+				if ( breakpoint <= mercantileSkill ) guaranteedMercantileItems++;
+				if ( breakpoint <= tastingSkill ) guaranteedTastingItems++;
+			}
+
+			const int SKILL_TO_GUARANTEE_ALL_DROPS = 125;
 			var toDelete = container.Items
 				.Where(item => item is NotIdentified)
 				.Cast<NotIdentified>()
@@ -310,22 +321,40 @@ namespace Server.Items
 					{
 						case IDSkill.ArmsLore:
 							skillValue = armsLoreSkill;
+
+							if (0 < guaranteedArmsLoreItems)
+							{
+								guaranteedArmsLoreItems--;
+								return false;
+							}
 							break;
 
 						case IDSkill.Tasting:
 							skillValue = tastingSkill;
+
+							if (0 < guaranteedTastingItems)
+							{
+								guaranteedTastingItems--;
+								return false;
+							}
 							break;
 
 						case IDSkill.Mercantile:
 						default:
 							skillValue = mercantileSkill;
+
+							if (0 < guaranteedMercantileItems)
+							{
+								guaranteedMercantileItems--;
+								return false;
+							}
 							break;
 					}
 
-					if (skillValue == 0) return false;
-					if (100 <= skillValue) return true;
+					if (SKILL_TO_GUARANTEE_ALL_DROPS <= skillValue) return false;
 
-					return skillValue < Utility.RandomMinMax(0, deleteChance);
+					// Roll against player skill
+					return skillValue < Utility.RandomMinMax(0, SKILL_TO_GUARANTEE_ALL_DROPS);
 				});
 
 			if (toDelete.Any())

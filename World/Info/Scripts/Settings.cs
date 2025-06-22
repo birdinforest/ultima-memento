@@ -270,12 +270,18 @@ namespace Server
 	// When Unidentified items are generated, they execute a saving throw against the relevant ID skill
 	// ID skills are: Arms Lore, Mercantile, and Tasting
 	// 
-	// If this value is Low, then less Unidentified items will drop. This experience will make the
-	// ID skills function as a form of "Magic Find". Players who incorporate ID skills into their Template
-	// will be more likely to find Unidentified items.
-	// If this value is high, players will naturally encounter more loot, even if they do not have ID skills.
-	// Remarks: This setting executes after `S_GetUnidentifiedChance`
-		public static int S_UnidentifiedItem_FreeLootPercentage = 25;
+	// Remarks:
+	// - This setting executes after `S_GetUnidentifiedChance`
+	// - If there are no entries, then this saving throw is not executed
+	// - The default entries of 20/40/60 will give a Player with 60 skill will have a 100% chance to get 3/3 items
+		public static int[] S_UnidentifiedItem_GuaranteedItemChecks = new[] 
+		{
+			// Each entry guarantees an item for that skill level
+			// Order does not matter
+			20,
+			40,
+			60
+		};
 
 	// This setting determines the loot filled on corpses and chests. The higher the number, the more
 	// often treasure will appear. The default and maximum is 100. Some enemies will generate a bit of
