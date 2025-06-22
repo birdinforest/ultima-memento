@@ -278,8 +278,8 @@ namespace Server
 		{
 			// Each entry guarantees an item for that skill level
 			// Order does not matter
-			20,
-			40,
+			0, // Always guarantee at least one item
+			30,
 			60
 		};
 
