@@ -27,7 +27,6 @@ namespace Server.Misc
 			builder.Append("       - Points are 5 per level, resulting in a maximum of 200 points<br>");
 			builder.Append("       - Experience from each LA has been extracted into a token and the LA has been reset<br>");
 			builder.Append("         (Luck and Damage Increase values were left in place)<br>");
-			builder.Append("- Misc - Unidentified item drop rate has been dramatically reduced<br>");
 			builder.Append("- Misc - ID skills rework<br>");
 			builder.Append("       - Unidentified item drop chance is now affected by their relevant skill level<br>");
 			builder.Append("         The highest skill from all damaging players will be used<br>");
