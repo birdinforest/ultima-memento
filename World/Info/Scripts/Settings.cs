@@ -273,7 +273,7 @@ namespace Server
 	// Remarks:
 	// - This setting executes after `S_GetUnidentifiedChance`
 	// - If there are no entries, then this saving throw is not executed
-	// - The default entries of 20/40/60 will give a Player with 60 skill will have a 100% chance to get 3/3 items
+	// - The default entries of 0/30/60 will give a Player with 60 skill will have a 100% chance to get 3/3 items
 		public static int[] S_UnidentifiedItem_GuaranteedItemChecks = new[] 
 		{
 			// Each entry guarantees an item for that skill level
