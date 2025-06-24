@@ -44,8 +44,9 @@
   - Shoppes are no longer hidden away in your house
   - Shoppes are now bound to your Account rather than your Player
   - Refactored gump to make it more legible
+  - Added Orders, which are similar to small Bulk Order Deeds
 
-  ![Shoppes picture](./World/Documentation/Showcase/shoppe.png)
+  ![Shoppes picture](./World/Documentation/Showcase/shoppe-orders.png)
   
   ## Skill Craft List
   - Accessible via the Crafting gump
