@@ -55,6 +55,7 @@ namespace Server.Misc
 			builder.Append("- Misc - [c is now sent as a Global Chat message<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
+			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");
 			builder.Append("        - No longer usable by Players against Players<br>");
