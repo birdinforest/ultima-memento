@@ -28,7 +28,7 @@ namespace Server.Misc
 			builder.Append("       - Experience from each LA has been extracted into a token and the LA has been reset<br>");
 			builder.Append("         (Luck and Damage Increase values were left in place)<br>");
 			builder.Append("- Misc - ID skills rework<br>");
-			builder.Append("       - Unidentified item drop chance is now affected by their relevant skill level<br>");
+			builder.Append("       - Unidentified item drop chance is now tied to the level of the skill used to ID it<br>");
 			builder.Append("         The highest skill from all damaging players will be used<br>");
 			builder.Append("       - Added breakpoints to bypass RNG at 0/30/60 skill<br>");
 			builder.Append("       - Scenario - 2 items drop<br>");
@@ -44,11 +44,14 @@ namespace Server.Misc
 			builder.Append("           The other items will have a 60/125 chance to drop<br>");
 			builder.Append("         At 70 skill, 3 items will be guaranteed<br>");
 			builder.Append("           The other items will have a 80/125 chance to drop<br>");
-			builder.Append("- Misc - Skins, Blocks, and Alien resources now sell for notably less<br>");
-			builder.Append("- Misc - Leather, Ingot, and Board prices have been rebalanced<br>");
+			builder.Append("- Misc - Vendor purchase price changes<br>");
+			builder.Append("       - Skins, Blocks, and non-craftable Alien resources now sell for notably less<br>");
+			builder.Append("       - Leather, Ingot, and Board prices have been rebalanced<br>");
 			builder.Append("- Misc - Relic decorative items now drop much more frequently<br>");
 			builder.Append("- Misc - Reduced amount of items per pack animal to 50, down from 125<br>");
 			builder.Append("- Misc - Trap doors have been rebalanced<br>");
+			builder.Append("       - Reduced chance of extra container dropping<br>");
+			builder.Append("       - Extra container can no longer be double filled<br>");
 			builder.Append("- Misc - [c is now sent as a Global Chat message<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
@@ -58,7 +61,7 @@ namespace Server.Misc
 			builder.Append("        - Reduces Resists and Skills (stat reduction was removed)<br>");
 			builder.Append("        - Utilizes a rolling duration, so it can be spammed on the same target<br>");
 			builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
-			builder.Append("- Skill - Mercantile can now be gained from npc transactions<br>");
+			builder.Append("- Skill - Mercantile can now be gained from npc transactions (Buy/Sell/Shoppes)<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
