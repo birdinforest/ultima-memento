@@ -76,6 +76,7 @@ namespace Server.Items
 
 			if (version == 1)
 			{
+				m_MaxLevel = LevelItems.MaxLevelsCap;
 				Timer.DelayCall(TimeSpan.Zero, () =>
 				{
 					LevelItemManager.ExtractExperienceToken(this);
