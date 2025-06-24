@@ -94,7 +94,7 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 4 ) )
 			{
 				from.CloseGump( typeof( Sextants.MapGump ) );
-				from.SendGump( new Sextants.MapGump( from, Lands.MapName( WorldMap ), from.X, from.Y, this ) );
+				from.SendGump( new Sextants.MapGump( from, Lands.GetMap( WorldMap ), from.X, from.Y, this ) );
 				from.PlaySound( 0x249 );
 			}
 			else

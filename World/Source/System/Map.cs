@@ -293,32 +293,25 @@ namespace Server
 			return Land.None;
 		}
 
-		public static Map MapName( Land land )
+		public static Map GetMap( Land land )
 		{
-			if ( land == Land.Ambrosia )
-				return Map.Sosaria;
-			else if ( land == Land.Atlantis )
-				return Map.Atlantis;
-			else if ( land == Land.IslesDread )
-				return Map.IslesDread;
-			else if ( land == Land.Kuldar )
-				return Map.Sosaria;
-			else if ( land == Land.Lodoria )
-				return Map.Lodor;
-			else if ( land == Land.Luna )
-				return Map.Sosaria;
-			else if ( land == Land.Savaged )
-				return Map.SavagedEmpire;
-			else if ( land == Land.Serpent )
-				return Map.SerpentIsland;
-			else if ( land == Land.SkaraBrae )
-				return Map.Lodor;
-			else if ( land == Land.Sosaria )
-				return Map.Sosaria;
-			else if ( land == Land.UmberVeil )
-				return Map.Sosaria;
-			else if ( land == Land.Underworld )
-				return Map.Underworld;
+			switch (land)
+			{
+				case Land.Kuldar:
+				case Land.Ambrosia:
+				case Land.Luna:
+				case Land.Sosaria:
+				case Land.UmberVeil:
+					return Map.Sosaria;
+
+				case Land.Atlantis: return Map.Atlantis;
+				case Land.IslesDread: return Map.IslesDread;
+				case Land.Lodoria: return Map.Lodor;
+				case Land.Savaged: return Map.SavagedEmpire;
+				case Land.Serpent: return Map.SerpentIsland;
+				case Land.SkaraBrae: return Map.Lodor;
+				case Land.Underworld: return Map.Underworld;
+			}
 
 			return Map.Sosaria;
 		}
