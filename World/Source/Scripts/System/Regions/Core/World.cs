@@ -539,7 +539,8 @@ namespace Server.Misc
 			if ( land == Land.Underworld )
 				return false;
 
-			if ( land == Land.Ambrosia )
+			// The one true Ambrosia. All others (ex: dungeon home) are fake
+			if ( land == Land.Ambrosia && map == Map.Sosaria )
 				return false;
 
 			if ( land == Land.SkaraBrae )

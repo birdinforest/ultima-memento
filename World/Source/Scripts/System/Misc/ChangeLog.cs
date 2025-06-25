@@ -70,6 +70,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Gold drops now vary per loot pack<br>");
 			builder.Append("- Misc - Fix an issue with chugging unidentified drinks<br>");
 			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
+			builder.Append("- Misc - Players may now mark/recall from the Ambrosia dungeon home<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
