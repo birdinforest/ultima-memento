@@ -8216,17 +8216,19 @@ namespace Server.Mobiles
 			{
 				BeefUpLoot( this, Heat );
 			}
-
-			if ( slayer is PlayerMobile )
+			
+			// TODO: This code could probably be simplified
+			if ( slayer is PlayerMobile || ( slayer is BaseCreature && ((BaseCreature)slayer).ControlMaster != null && ((BaseCreature)slayer).ControlMaster is PlayerMobile ) )
 			{
-				///////////////////////////////////////////////////////////////////////////////////////
-
 				Server.Misc.IntelligentAction.SaySomethingOnDeath( this, this.LastKiller );
 
 				Server.Misc.HoardPile.MakeHoard( this ); // SEE IF A HOARD DROPS NEARBY
 
 				Server.Misc.SummonQuests.WellTheyDied( this, this );
+			}
 
+			if ( slayer is PlayerMobile )
+			{
 				///////////////////////////////////////////////////////////////////////////////////////
 
 				if ( SeaEnemy() )

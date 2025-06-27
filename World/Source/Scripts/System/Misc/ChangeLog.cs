@@ -74,6 +74,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix an issue with chugging unidentified drinks<br>");
 			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
 			builder.Append("- Misc - Players may now mark/recall from the Ambrosia dungeon home<br>");
+			builder.Append("- Pets - Fix issue that would prevent treasure hoard spawning and quest completion<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
