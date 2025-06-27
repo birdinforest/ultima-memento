@@ -133,21 +133,6 @@ namespace Server.Items
             }
         }
 
-        public override void OnDoubleClick(Mobile from)
-        {
-            if (from.InRange(this.GetWorldLocation(), 10))
-            {
-                if ( House.IsCoOwner( from ) || House.IsOwner( from ) || from.AccessLevel >= AccessLevel.GameMaster )
-                {
-                    Refund( from );
-                }
-            }
-            else
-            {
-                from.SendMessage("The item is too far away");
-            }
-        }
-
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

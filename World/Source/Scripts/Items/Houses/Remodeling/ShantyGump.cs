@@ -71,8 +71,13 @@ namespace Server.Gumps
 				AddImage(0+locMod-2, -2, 9589, Server.Misc.PlayerSettings.GetGumpHue( owner ));
 				AddHtml( 62+locMod, 13, 300, 20, @"<BODY><BASEFONT Color=" + color + ">REMODELING TOOLS - Remove</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(595+locMod, 14, 4017, 4017, 999997, GumpButtonType.Reply, 0);
-				AddHtml( 18+locMod, 84, 605, 75, @"<BODY><BASEFONT Color=" + color + ">If you want to remove all remodeling decorations, then press the button below. The gold will be refunded to your bank box. If you want to cancel this request, press the button on the upper right.</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(18+locMod, 160, 4023, 4023, 999994, GumpButtonType.Reply, 0);
+				AddHtml( 18+locMod, 84, 605, 75, @"<BODY><BASEFONT Color=" + color + ">If you want to remove all remodeling decorations, then press the Remove All button below. The gold will be refunded to your bank box. If you want to cancel this request, press the button on the upper right.</BASEFONT></BODY>", (bool)false, (bool)false);
+				
+				AddHtml( 54+locMod, 162, 300, 20, @"<BODY><BASEFONT Color=" + color + ">Remove Target</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddButton(18+locMod, 160, 4023, 4023, 999993, GumpButtonType.Reply, 0);
+
+				TextDefinition.AddHtmlText(this, 54+locMod, 202, 300, 20, "Remove All", HtmlColors.RED);
+				AddButton(18+locMod, 200, 4023, 4023, 999994, GumpButtonType.Reply, 0);
 			}
 			else
 			{
@@ -190,6 +195,17 @@ namespace Server.Gumps
 			else if (info.ButtonID == 999996)
 			{
 				from.SendGump(new ShantyGump(from, m_ShantyTools, "", 999995, m_SelectedID, m_ItemPrice, m_ItemTitle));
+			}
+			else if (info.ButtonID == 999993)
+			{
+				BaseHouse house = BaseHouse.FindHouseAt( from );
+				if ( house == null || !house.IsOwner(from) )
+					from.SendLocalizedMessage( 502092 ); // You must be in your house to do this.
+				else
+				{
+					from.SendMessage("Please target the item to remove.");
+					from.Target = new ShantyRemoveTarget( house );
+				}
 			}
 			else if (info.ButtonID == 999994)
 			{
