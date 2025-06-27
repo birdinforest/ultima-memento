@@ -8271,6 +8271,71 @@ namespace Server.Mobiles
 
 			///////////////////////////////////////////////////////////////////////////////////////
 
+			SlayerEntry vampAnimal = SlayerGroup.GetEntryByName( SlayerName.AnimalHunter );
+			SlayerEntry vampAvian = SlayerGroup.GetEntryByName( SlayerName.AvianHunter );
+			SlayerEntry vampRepond = SlayerGroup.GetEntryByName( SlayerName.Repond );
+			SlayerEntry vampGiant = SlayerGroup.GetEntryByName( SlayerName.GiantKiller );
+
+			if ( vampAnimal.Slays(this) || vampAvian.Slays(this) || vampRepond.Slays(this) || vampGiant.Slays(this) || this is BaseVendor )
+			{
+				Mobile vampire = this.LastKiller;
+
+				if ( vampire is BaseCreature )
+					vampire = ((BaseCreature)vampire).GetMaster();
+
+				if ( vampire is PlayerMobile && Server.Items.BaseRace.BloodDrinker( vampire.RaceID ) && Utility.RandomBool() )
+				{
+					PackItem( new BloodyDrink() );
+				}
+				else if ( vampire is PlayerMobile && Server.Items.BaseRace.BrainEater( vampire.RaceID ) && Utility.RandomBool() )
+				{
+					PackItem( new FreshBrain() );
+				}
+			}
+
+			///////////////////////////////////////////////////////////////////////////////////////
+
+			// GOLDEN FEATHERS FOR THE RANGERS OUTPOST ALTAR
+			GoldenFeathers.Award(this, LastKiller);
+
+			int treasureLevel = TreasureMapLevel;
+
+			if ( treasureLevel == 1 && this.Map == Map.Sosaria )
+			{
+				Mobile killer = this.LastKiller;
+
+				if ( killer is BaseCreature )
+					killer = ((BaseCreature)killer).GetMaster();
+
+				if ( killer is PlayerMobile && ((PlayerMobile)killer).Young )
+					treasureLevel = 0;
+			}
+
+			if ( !Summoned && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
+			{
+				if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
+					PackItem( new ParagonChest( this.Name, this.Title, treasureLevel, this ) );
+				else if ( TreasureMap.LootChance >= Utility.RandomDouble() )
+				{
+					PackItem( new TreasureMap( treasureLevel, this.Map, this.Location, this.X, this.Y ) );
+				}
+			}
+
+			// Actually generate loot
+			if ( !Summoned && !NoKillAwards && !m_HasGeneratedLoot )
+			{
+				m_HasGeneratedLoot = true;
+				GenerateLoot( false );
+				if ( Backpack != null )
+				{
+					var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
+					var mobiles = lootingRights.Select(store => store.m_Mobile);
+					NotIdentified.DoAutoDelete( Backpack, mobiles );
+				}
+			}
+
+			///////////////////////////////////////////////////////////////////////////////////////
+
 			SlayerEntry spreaddeath = SlayerGroup.GetEntryByName( SlayerName.Repond );
 
 			Mobile deathknight = this.LastKiller;										// DEATH KNIGHT HOLDING SOUL LANTERNS
@@ -8335,70 +8400,6 @@ namespace Server.Mobiles
 							holyman.PlaySound( 0x1EA );
 						}
 					}
-				}
-			}
-
-			///////////////////////////////////////////////////////////////////////////////////////
-
-			SlayerEntry vampAnimal = SlayerGroup.GetEntryByName( SlayerName.AnimalHunter );
-			SlayerEntry vampAvian = SlayerGroup.GetEntryByName( SlayerName.AvianHunter );
-			SlayerEntry vampRepond = SlayerGroup.GetEntryByName( SlayerName.Repond );
-			SlayerEntry vampGiant = SlayerGroup.GetEntryByName( SlayerName.GiantKiller );
-
-			if ( vampAnimal.Slays(this) || vampAvian.Slays(this) || vampRepond.Slays(this) || vampGiant.Slays(this) || this is BaseVendor )
-			{
-				Mobile vampire = this.LastKiller;
-
-				if ( vampire is BaseCreature )
-					vampire = ((BaseCreature)vampire).GetMaster();
-
-				if ( vampire is PlayerMobile && Server.Items.BaseRace.BloodDrinker( vampire.RaceID ) && Utility.RandomBool() )
-				{
-					PackItem( new BloodyDrink() );
-				}
-				else if ( vampire is PlayerMobile && Server.Items.BaseRace.BrainEater( vampire.RaceID ) && Utility.RandomBool() )
-				{
-					PackItem( new FreshBrain() );
-				}
-			}
-
-			///////////////////////////////////////////////////////////////////////////////////////
-
-			// GOLDEN FEATHERS FOR THE RANGERS OUTPOST ALTAR
-			GoldenFeathers.Award(this, LastKiller);
-
-			int treasureLevel = TreasureMapLevel;
-
-			if ( treasureLevel == 1 && this.Map == Map.Sosaria )
-			{
-				Mobile killer = this.LastKiller;
-
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile && ((PlayerMobile)killer).Young )
-					treasureLevel = 0;
-			}
-
-			if ( !Summoned && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
-			{
-				if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
-					PackItem( new ParagonChest( this.Name, this.Title, treasureLevel, this ) );
-				else if ( TreasureMap.LootChance >= Utility.RandomDouble() )
-				{
-					PackItem( new TreasureMap( treasureLevel, this.Map, this.Location, this.X, this.Y ) );
-				}
-			}
-
-			if ( !Summoned && !NoKillAwards && !m_HasGeneratedLoot )
-			{
-				m_HasGeneratedLoot = true;
-				GenerateLoot( false );
-				if ( Backpack != null )
-				{
-					var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
-					var mobiles = lootingRights.Select(store => store.m_Mobile);
-					NotIdentified.DoAutoDelete( Backpack, mobiles );
 				}
 			}
 
