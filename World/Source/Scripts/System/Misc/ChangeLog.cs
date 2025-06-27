@@ -17,6 +17,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Admin - Add '[Freeze-SetId' command to set the Freezable Item ID<br>");
+			builder.Append("- Combat - Updated OmniAI ranged preference logic<br>");
 			builder.Append("- Craft - Lapidary tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Item - Potion of Rebirth is now converted to a soul orb upon use<br>");

@@ -103,7 +103,12 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ((m_CanUseMagery || m_CanUseNecromancy) && m_Mobile.RawStr < m_Mobile.RawInt) return true;
+				if (m_CanUseMagery || m_CanUseNecromancy)
+				{
+					var delta = m_Mobile.RawInt - m_Mobile.RawStr;
+					if (100 <= delta) return true; // Int is much higher
+					if (0 < delta && (m_Mobile.Weapon == null || m_Mobile.Weapon is Fists)) return true; // Int higher and no equipped weapon
+				}
 
 				return false;
 			}
