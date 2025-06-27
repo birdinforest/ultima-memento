@@ -4,7 +4,7 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class WoodworkingTools : BaseTool
+	public class WoodworkingTools : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefShelves.CraftSystem; } }
 

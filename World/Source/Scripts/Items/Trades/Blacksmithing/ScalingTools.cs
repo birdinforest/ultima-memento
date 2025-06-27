@@ -4,7 +4,7 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class ScalingTools : BaseTool
+	public class ScalingTools : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefDraconic.CraftSystem; } }
 

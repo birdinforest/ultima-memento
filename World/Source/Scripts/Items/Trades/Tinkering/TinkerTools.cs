@@ -4,7 +4,7 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class TinkerTools : BaseTool
+	public class TinkerTools : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefTinkering.CraftSystem; } }
 

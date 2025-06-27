@@ -5,7 +5,7 @@ using Server.Engines.Craft;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x0FB4, 0x0FB5 )]
-	public class SmithHammer : BaseTool
+	public class SmithHammer : BaseTool, IRunicWhenExceptional
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.None; } }
 

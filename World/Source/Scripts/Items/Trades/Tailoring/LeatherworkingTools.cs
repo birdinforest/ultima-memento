@@ -5,7 +5,7 @@ using Server.Misc;
 
 namespace Server.Items
 {
-	public class LeatherworkingTools : BaseTool
+	public class LeatherworkingTools : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefLeatherworking.CraftSystem; } }
 

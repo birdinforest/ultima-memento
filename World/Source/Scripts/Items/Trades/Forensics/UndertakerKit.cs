@@ -5,7 +5,7 @@ using Server.Misc;
 
 namespace Server.Items
 {
-	public class UndertakerKit : BaseTool
+	public class UndertakerKit : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefBonecrafting.CraftSystem; } }
 

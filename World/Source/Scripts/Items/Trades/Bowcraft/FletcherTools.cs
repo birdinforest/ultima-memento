@@ -4,7 +4,7 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-	public class FletcherTools : BaseTool
+	public class FletcherTools : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
 

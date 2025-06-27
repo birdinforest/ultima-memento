@@ -5,7 +5,7 @@ using Server.Misc;
 
 namespace Server.Items
 {
-	public class SewingKit : BaseTool
+	public class SewingKit : BaseTool, IRunicWhenExceptional
 	{
 		public override CraftSystem CraftSystem{ get{ return DefTailoring.CraftSystem; } }
 
