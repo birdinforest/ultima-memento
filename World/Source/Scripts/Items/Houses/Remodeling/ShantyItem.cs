@@ -296,7 +296,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (ParentShantyItem != null)
+            if (ParentShantyItem != null && ParentShantyItem != this)
             {
                 ParentShantyItem.OnDoubleClick(from);
             }
