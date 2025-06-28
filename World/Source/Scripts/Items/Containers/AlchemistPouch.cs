@@ -346,9 +346,8 @@ namespace Server.Items
 				if ( vertical )
 				{
 					if ( overHalf ){ AddImage(10, -18, 10903); } else { AddImage(0, 0, 10902); }
-// 5547
-// 10351 - small
-					int mod = 34 + 46;
+
+					int mod = 34;
 					int xValue = 0;
 					int yValue = 0;
 
@@ -358,14 +357,12 @@ namespace Server.Items
 
                         int gumpId = 9508 + i;
                         yValue += mod;
-                        AddButton(xValue, yValue, 1417, 1417, i, GumpButtonType.Reply, 0);
-						// AddImage(xValue + 24, yValue, gumpId);
-						AddItem(xValue + 24, yValue + 10, 0x2406, 0xAD8);
+                        AddButton(xValue, yValue, gumpId, gumpId, i, GumpButtonType.Reply, 0);
 
                         // New column - Reset
                         if (++cyc > 15 && xValue == 0)
                         {
-                            xValue = mod + 1;
+                            xValue = 33;
                             yValue = 0;
                         }
                     }
@@ -374,7 +371,7 @@ namespace Server.Items
 				{
 					if ( overHalf ){ AddImage(-18, 10, 10903); } else { AddImage(0, 0, 10902); }
 
-					int mod = 33 + 46;
+					int mod = 33;
 					int xValue = 0;
 					int yValue = 0;
 					for(var i = 1; i <= MAX_POTION_NUMBER; i++)
@@ -383,13 +380,12 @@ namespace Server.Items
 
                         int gumpId = 9508 + i;
                         xValue += mod;
-                        AddButton(xValue, yValue, 1417, 1417, i, GumpButtonType.Reply, 0);
-						AddItem(xValue + 24, yValue + 10, 0x2406, 0xAD8);
+                        AddButton(xValue, yValue, gumpId, gumpId, btn, GumpButtonType.Reply, 0);
 
                         // New Row - Reset
                         if (++cyc > 15 && yValue == 0)
                         {
-                            yValue = mod + 1;
+                            yValue = 34;
                             xValue = 0;
                         }
                     }
@@ -502,49 +498,40 @@ namespace Server.Items
 
 			public static int cordVal( int cyc, bool overHalf, bool vertical, int prt )
 			{
-				int x;
-				int y;
+				int x = 0;
+				int y = 0;
 				cyc++;
 				int num = cyc;
 				if ( num > 16 ){ num = num-16; }
 
 				if ( vertical && overHalf )
 				{
-					y = 8 + (num * (34 + 46) + 48);
-					if (cyc < 17) // First column
-					{
-						x = -28 + 46 + 8;
-					}
-					else
-					{
-						x = 36 + 33 + 46 - 9;
-					}
+					x = -28;
+					y = 8;
+					if ( cyc < 17 ){ x = -28; y = y + (num*34); }
+					else if ( cyc == 17 ){ x = 36+33; y = 8+34; }
+					else { x = 36+33; y = y + (num*34); }
 				}
-				else if (vertical)
+				else if ( vertical )
 				{
-					x = 36 + 46;
-					y = 8 + (num * (34 + 46));
+					x = 36;
+					y = 8 + (num*34);
 				}
-				else if (!vertical && overHalf)
+				else if ( !vertical && overHalf )
 				{
-					x = 15 + (num * (33 + 46));
-
-					if (cyc < 17) // First Row
-					{
-						y = -21 + 46;
-					}
-					else
-					{
-						y = 35 + 34 + 46;
-					}
+					x = 5;
+					y = -21;
+					if ( cyc < 17 ){ x = x + (num*33); y = -21; }
+					else if ( cyc == 17 ){ x = x + (num*33); y = 35+34; }
+					else { x = x + (num*33); y = 35+34; }
 				}
 				else
 				{
-					x = 5 + (num * (33 + 46));
-					y = 35 + 46;
+					x = 5 + (num*33);
+					y = 35;
 				}
 
-				if (prt == 1)
+				if ( prt == 1 )
 					return y;
 
 				return x;
