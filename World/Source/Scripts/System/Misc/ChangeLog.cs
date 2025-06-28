@@ -57,6 +57,7 @@ namespace Server.Misc
 			builder.Append("       - Reduced chance of extra container dropping<br>");
 			builder.Append("       - Extra container can no longer be double filled<br>");
 			builder.Append("- Misc - [c is now sent as a Global Chat message<br>");
+			builder.Append("- Misc - Gold is now worth twice as much when gathering Piety and Souls<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");

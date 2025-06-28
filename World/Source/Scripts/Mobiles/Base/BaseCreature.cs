@@ -8353,7 +8353,7 @@ namespace Server.Mobiles
 					if ( lantern is SoulLantern )
 					{
 						SoulLantern souls = (SoulLantern)lantern;
-						souls.TrappedSouls = souls.TrappedSouls + this.TotalGold;
+						souls.TrappedSouls = souls.TrappedSouls + (this.TotalGold * 2);
 						if ( souls.TrappedSouls > 100000 ){ souls.TrappedSouls = 100000; }
 						souls.InvalidateProperties();
 
@@ -8388,7 +8388,7 @@ namespace Server.Mobiles
 					if ( symbol is HolySymbol )
 					{
 						HolySymbol banish = (HolySymbol)symbol;
-						banish.BanishedEvil = banish.BanishedEvil + this.TotalGold;
+						banish.BanishedEvil = banish.BanishedEvil + (this.TotalGold * 2);
 						if ( banish.BanishedEvil > 100000 ){ banish.BanishedEvil = 100000; }
 						banish.InvalidateProperties();
 
