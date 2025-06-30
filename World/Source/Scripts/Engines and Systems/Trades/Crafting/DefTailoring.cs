@@ -250,6 +250,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( BodySash ), 1015283, 1025441, 4.1, 29.1, typeof( Fabric ), 1044286, 4, 1044287 );
 			AddCraft( typeof( Belt ), 1015283, "belt", 20.7, 45.7, typeof( Fabric ), 1044286, 6, 1044287 );
 			AddCraft( typeof( LoinCloth ), 1015283, "loin cloth", 20.7, 45.7, typeof( Fabric ), 1044286, 6, 1044287 );
+			AddCraft( typeof( RoyalLoinCloth ), 1015283, "royal loin cloth", 20.7, 45.7, typeof( Fabric ), 1044286, 6, 1044287 );
 			AddCraft( typeof( HalfApron ), 1015283, 1025435, 20.7, 45.7, typeof( Fabric ), 1044286, 6, 1044287 );
 			AddCraft( typeof( FullApron ), 1015283, 1025437, 29.0, 54.0, typeof( Fabric ), 1044286, 10, 1044287 );
 			AddCraft( typeof( Obi ), 1015283, 1030219, 20.0, 45.0, typeof( Fabric ), 1044286, 6, 1044287 );
