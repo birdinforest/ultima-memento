@@ -97,7 +97,7 @@ namespace Server.Spells.HolyMan
 				string args = String.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", modify, modify, modify, modify, modify, modify);
 
 				BuffInfo.RemoveBuff( Caster, BuffIcon.Sanctify );
-				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Sanctify, 1063536, 1063537, TimeSpan.FromMinutes( (int)span ), Caster, args.ToString(), true));
+				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Sanctify, 1063536, 1063537, TimeSpan.FromSeconds( (int)span ), Caster, args.ToString(), true));
 
 				Caster.BeginAction( typeof( SanctifySpell ) );
 				Caster.PlaySound( 0x5C9 );
