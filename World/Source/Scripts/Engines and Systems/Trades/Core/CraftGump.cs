@@ -220,28 +220,34 @@ namespace Server.Engines.Craft
 
 		public void CreateResList( bool opt, Mobile from )
 		{
+			const int RESOURCE_ITEMS_PER_PAGE = 8;
 			CraftSubResCol res = m_CraftSystem.CraftSubRes;
 
 			for ( int i = 0; i < res.Count; ++i )
 			{
-				int index = i % 10;
+				int index = i % RESOURCE_ITEMS_PER_PAGE;
 
 				CraftSubRes subResource = res.GetAt( i );
 
 				if ( index == 0 )
 				{
+					// Prev page
 					if ( i > 0 )
-						AddButton( 485, 260+moveDown, 4005, 4007, 0, GumpButtonType.Page, (i / 10) + 1 );
+						AddButton( 485, 260+moveDown, 4005, 4007, 0, GumpButtonType.Page, (i / RESOURCE_ITEMS_PER_PAGE) + 1 );
 
-					AddPage( (i / 10) + 1 );
+					AddPage( (i / RESOURCE_ITEMS_PER_PAGE) + 1 );
 
+					// Next page
 					if ( i > 0 )
-						AddButton( 455, 260+moveDown, 4014, 4015, 0, GumpButtonType.Page, i / 10 );
+						AddButton( 455, 260+moveDown, 4014, 4015, 0, GumpButtonType.Page, i / RESOURCE_ITEMS_PER_PAGE );
 
+					// Use Material Color vs Do Not Color
 					CraftContext context = m_CraftSystem.GetContext( m_From );
-
 					AddButton( 220, 260+moveDown, 4005, 4007, GetButtonID( 6, 4 ), GumpButtonType.Reply, 0 );
 					AddHtmlLocalized( 255, 263+moveDown, 200, 18, (context == null || !context.DoNotColor) ? 1061591 : 1061590, LabelColor, false, false );
+
+					TextDefinition.AddHtmlText(this, 255, 60, 100, 20, "Resource", HtmlColors.WHITE);
+					TextDefinition.AddHtmlText(this, 255 + 172 + 56, 60, 35, 20, "<RIGHT>Skill</RIGHT>", HtmlColors.WHITE);
 				}
 
 				int resourceCount = 0;
@@ -254,12 +260,17 @@ namespace Server.Engines.Craft
 						resourceCount += items[j].Amount;
 				}
 
-				AddButton( 220, 60+moveDown + (index * 20), 4005, 4007, GetButtonID( 5, i ), GumpButtonType.Reply, 0 );
+				if ( m_From.Skills[m_CraftSystem.MainSkill].Value < subResource.RequiredSkill )
+					AddImage( 220 + 9, 80+5+moveDown + (index * 20), 2092 ); // Lock
+				else
+					AddButton( 220, 80+moveDown + (index * 20), 4005, 4007, GetButtonID( 5, i ), GumpButtonType.Reply, 0 );
 
 				if ( subResource.NameNumber > 0 )
-					AddHtmlLocalized( 255, 62+moveDown + (index * 20), 250, 18, subResource.NameNumber, resourceCount.ToString(), LabelColor, false, false );
+					AddHtmlLocalized( 255, 82+moveDown + (index * 20), 250, 18, subResource.NameNumber, resourceCount.ToString(), LabelColor, false, false );
 				else
-					AddLabel( 255, 62+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", subResource.NameString, resourceCount ) );
+					AddLabel( 255, 82+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", subResource.NameString, resourceCount ) );
+
+				TextDefinition.AddHtmlText(this, 255 + 172 + 56, 82+moveDown + ( index * 20 ), 35, 20, string.Format("<RIGHT>{0:F1}</RIGHT>", subResource.RequiredSkill), HtmlColors.WHITE);
 			}
 		}
 
