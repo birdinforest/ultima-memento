@@ -295,10 +295,10 @@ namespace Server.Items
 					{
 						int cBonus = xWax.UsesRemaining;
 
-						if ( cBonus > 200 ){ from.SendMessage( "That instrument is already in good condition." ); }
+						if ( cBonus > 300 ){ from.SendMessage( "That instrument is already in good condition." ); }
 						else
 						{
-							xWax.UsesRemaining = ( cBonus + 20 );
+							xWax.UsesRemaining = ( cBonus + 50 );
 							from.RevealingAction();
 							from.PlaySound( 0x242 );
 							from.AddToBackpack( new Bottle() );

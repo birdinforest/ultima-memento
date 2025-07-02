@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("- Item - Soul Orb timer repeats and restarts when logging in<br>");
 			builder.Append("- Item - Lawn tools and Remodeling tools now have a Remove Target button on the Remove All page<br>");
 			builder.Append("- Item - Lawn tools and Remodeling tools no longer remove when double-clicked<br>");
+			builder.Append("- Item - Jars of wax are now more effective on instruments<br>");
 			builder.Append("- Item - Legendary Artefacts (LA) rework<br>");
 			builder.Append("       - Max level is now 40<br>");
 			builder.Append("       - Points are 5 per level, resulting in a maximum of 200 points<br>");
