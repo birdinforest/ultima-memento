@@ -15,7 +15,7 @@ namespace Server
 	public class FastPlayer
 	{
 		public static TimeSpan ArbitraryDelay = TimeSpan.FromMilliseconds(1000); // Add arbitrary delay to see if it reduces "freezes" after zoning
-		public static bool Experimental = false;
+		public static bool Experimental = true;
 
 		private static readonly Dictionary<Serial, Type> m_Table = new Dictionary<Serial, Type>();
 
