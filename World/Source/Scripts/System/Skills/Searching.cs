@@ -89,13 +89,17 @@ namespace Server.SkillHandlers
 
 					IPooledEnumerable TitemsInRange = src.Map.GetItemsInRange( p, range );
 
+					bool checkSkill = true;
+					int checksRemaining = Math.Max(1, (int)(srcSkill / 10.0));
 					foreach ( Item item in TitemsInRange )
 					{
-						if ( Server.SkillHandlers.Searching.DetectSomething( item, src, true ) )
+						if ( Server.SkillHandlers.Searching.DetectSomething( item, src, checkSkill ) )
 						{
 							ItemsToDelete.Add( item );
 							foundAnyone = true;
 						}
+
+						checkSkill = --checksRemaining > 0;
 					}
 
 					TitemsInRange.Free();

@@ -71,6 +71,7 @@ namespace Server.Misc
 			builder.Append("        - Utilizes a rolling duration, so it can be spammed on the same target<br>");
 			builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
 			builder.Append("- Skill - Mercantile can now be gained from npc transactions (Buy/Sell/Shoppes)<br>");
+			builder.Append("- Skill - Searching is now limited to 1 bonus skill check per points<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
