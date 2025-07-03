@@ -15,6 +15,7 @@ namespace Server
 	public class FastPlayer
 	{
 		public static TimeSpan ArbitraryDelay = TimeSpan.FromMilliseconds(1000); // Add arbitrary delay to see if it reduces "freezes" after zoning
+		public static bool Experimental = false;
 
 		private static readonly Dictionary<Serial, Type> m_Table = new Dictionary<Serial, Type>();
 
@@ -106,7 +107,7 @@ namespace Server
 			
 			player.ClearFastwalkStack();
 
-			var shouldDelay = ArbitraryDelay != TimeSpan.Zero;
+			var shouldDelay = !Experimental && ArbitraryDelay != TimeSpan.Zero;
 
 			if (activeType != null)
 			{

@@ -2164,17 +2164,20 @@ namespace Server.Mobiles
 
 				if ( !speedAble)
 				{
-					FastPlayer.Refresh(this);
+					if ( !FastPlayer.Experimental )
+						FastPlayer.Refresh(this);
 					Server.Misc.HenchmanFunctions.DismountHenchman( this );
 				}
 			}
 			else if ( speedAble && !mountAble && !Mounted && Alive )
 			{
-				FastPlayer.Refresh(this);
+				if ( !FastPlayer.Experimental )
+					FastPlayer.Refresh(this);
 			}
 			else if ( mountAble && !Mounted && Alive )
 			{
-				FastPlayer.Refresh(this);
+				if ( !FastPlayer.Experimental )
+					FastPlayer.Refresh(this);
 				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
 
 				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
@@ -4696,6 +4699,9 @@ namespace Server.Mobiles
         public override void OnRegionChange(Region Old, Region New)
         {
 			EventSink.InvokeOnEnterRegion(new OnEnterRegionArgs(this, Old, New));
+	
+			if ( FastPlayer.Experimental )
+				FastPlayer.Refresh(this, true);
         }
     }
 
