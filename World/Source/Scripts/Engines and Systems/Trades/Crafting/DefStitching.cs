@@ -173,13 +173,13 @@ namespace Server.Engines.Craft
 			#endregion
 
 			#region Misc
-			AddCraft( typeof( PugilistMits ), 1015283, "pugilist gloves", 32.9, 57.9, typeof( Leather ), 1044462, 8, 1044463 );
-			AddCraft( typeof( ThrowingGloves ), 1015283, "throwing gloves", 32.9, 57.9, typeof( Leather ), 1044462, 8, 1044463 );
-			AddCraft( typeof( Whips ), 1015283, "whip", 14.5, 64.5, typeof( Leather ), 1044462, 6, 1044463 );
-			AddCraft( typeof( BearCap ), 1015283, "bearskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
-			AddCraft( typeof( DeerCap ), 1015283, "deerskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
-			AddCraft( typeof( StagCap ), 1015283, "stagskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
-			AddCraft( typeof( WolfCap ), 1015283, "wolfskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
+			AddCraft( typeof( PugilistMits ), 1015283, "pugilist gloves", 32.9, 57.9, typeof( DemonSkins ), 1044462, 8, 1044463 );
+			AddCraft( typeof( ThrowingGloves ), 1015283, "throwing gloves", 32.9, 57.9, typeof( DemonSkins ), 1044462, 8, 1044463 );
+			AddCraft( typeof( Whips ), 1015283, "whip", 14.5, 64.5, typeof( DemonSkins ), 1044462, 6, 1044463 );
+			AddCraft( typeof( BearCap ), 1015283, "bearskin cap", 26.2, 51.2, typeof( DemonSkins ), 1044462, 4, 1044463 );
+			AddCraft( typeof( DeerCap ), 1015283, "deerskin cap", 26.2, 51.2, typeof( DemonSkins ), 1044462, 4, 1044463 );
+			AddCraft( typeof( StagCap ), 1015283, "stagskin cap", 26.2, 51.2, typeof( DemonSkins ), 1044462, 4, 1044463 );
+			AddCraft( typeof( WolfCap ), 1015283, "wolfskin cap", 26.2, 51.2, typeof( DemonSkins ), 1044462, 4, 1044463 );
 			#endregion
 
 			// Set the overridable material

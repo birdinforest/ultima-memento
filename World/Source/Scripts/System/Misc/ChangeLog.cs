@@ -75,6 +75,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Craft - Stitching tools now work for Miscellaneous category<br>");
 			builder.Append("- Misc - Gold drops now vary per loot pack<br>");
 			builder.Append("- Misc - Fix an issue with chugging unidentified drinks<br>");
 			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
