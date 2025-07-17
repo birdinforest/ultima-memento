@@ -158,11 +158,13 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			if ( !NotModAble )
-			{
-				NotModAble = true;
-				OnDoubleClick( from );
-			}
+			OnDoubleClick( from );
+
+			return false;
+		}
+
+		public override bool VerifyMove( Mobile from )
+		{
 			return true;
 		}
 
