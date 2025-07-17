@@ -766,6 +766,18 @@ namespace Server.Items
 				if ( intBonus != 0 )
 					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
 			}
+			
+			// Remove gloves is a glove-based weapon is equipped
+			if ( 
+				this is IPugilistGlove
+				|| this is ThrowingGloves
+				|| this is LevelThrowingGloves
+				|| this is GiftThrowingGloves
+			)
+			{
+				var gloves = from.FindItemOnLayer( Layer.Gloves );
+				if ( gloves != null ) from.Backpack.AddItem( gloves );
+			}
 
 			from.NextCombatTime = DateTime.Now + GetDelay( from );
 
