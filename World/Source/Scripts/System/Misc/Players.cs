@@ -701,66 +701,13 @@ namespace Server.Misc
 		{
 			if ( m != null && m is PlayerMobile )
 			{
-				if ( ((PlayerMobile)m).CharacterOriental == 1 )
-					return true;
+				return ((PlayerMobile)m).CharacterOriental == 1;
 			}
 			else if ( m != null && m is BaseCreature )
 			{
-				Mobile killer = m.LastKiller;
-				if (killer is BaseCreature)
-				{
-					BaseCreature bc_killer = (BaseCreature)killer;
-					if(bc_killer.Summoned)
-					{
-						if(bc_killer.SummonMaster != null)
-							killer = bc_killer.SummonMaster;
-					}
-					else if(bc_killer.Controlled)
-					{
-						if(bc_killer.ControlMaster != null)
-							killer=bc_killer.ControlMaster;
-					}
-					else if(bc_killer.BardProvoked)
-					{
-						if(bc_killer.BardMaster != null)
-							killer=bc_killer.BardMaster;
-					}
-				}
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( m );
 
-				if ( killer != null && killer is PlayerMobile )
-				{
-					if ( ((PlayerMobile)killer).CharacterOriental == 1 )
-						return true;
-				}
-				else
-				{
-					Mobile hitter = m.FindMostRecentDamager(true);
-					if (hitter is BaseCreature)
-					{
-						BaseCreature bc_killer = (BaseCreature)hitter;
-						if(bc_killer.Summoned)
-						{
-							if(bc_killer.SummonMaster != null)
-								hitter = bc_killer.SummonMaster;
-						}
-						else if(bc_killer.Controlled)
-						{
-							if(bc_killer.ControlMaster != null)
-								hitter=bc_killer.ControlMaster;
-						}
-						else if(bc_killer.BardProvoked)
-						{
-							if(bc_killer.BardMaster != null)
-								hitter=bc_killer.BardMaster;
-						}
-					}
-
-					if ( hitter != null && hitter is PlayerMobile )
-					{
-						if ( ((PlayerMobile)hitter).CharacterOriental == 1 )
-							return true;
-					}
-				}
+				return killer != null && killer.CharacterOriental == 1;
 			}
 
 			return false;
