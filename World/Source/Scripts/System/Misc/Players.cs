@@ -560,11 +560,19 @@ namespace Server.Misc
 			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
 		}
 
+		/// <summary>
+		/// Returns true up to 80% of the time
+		/// </summary>
+		/// <param name="luck">Only 80% of the provided Luck is used.</param>
 		public static bool LuckyPlayer( int luck, int freePercentBonus = 0 )
 		{
 			return CheckLuck( luck, freePercentBonus, 80 );
 		}
 
+		/// <summary>
+		/// Returns true up to 25% of the time
+		/// </summary>
+		/// <param name="luck">Only 50% of the provided Luck is used.</param>
 		public static bool VeryLuckyKiller( int luck, int freePercentBonus = 0 )
 		{
 			if (!Utility.RandomBool()) return false;
@@ -572,6 +580,10 @@ namespace Server.Misc
 			return LuckyKiller(luck, freePercentBonus);
 		}
 
+		/// <summary>
+		/// Returns true up to 50% of the time
+		/// </summary>
+		/// <param name="luck">Only 50% of the provided Luck is used.</param>
 		public static bool LuckyKiller( int luck, int freePercentBonus = 0 )
 		{
 			return CheckLuck( luck, freePercentBonus, 50 );
