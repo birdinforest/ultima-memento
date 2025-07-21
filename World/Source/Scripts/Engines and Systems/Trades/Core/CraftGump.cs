@@ -143,10 +143,12 @@ namespace Server.Engines.Craft
 				if ( craftSystem.CanEnhance )
 				{
 					AddButton( LEFT_WINDOW_START + 138, 371+moveUp, 4005, 4007, GetButtonID( 6, 8 ), GumpButtonType.Reply, 0 );
+					AddTooltip("Enhance an item with the selected resource");
 					AddHtmlLocalized( 184, 374+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
 				}
 
 				AddButton( LEFT_WINDOW_START + 282, 342+moveUp, 4005, 4007, GetButtonID( 6, 9 ), GumpButtonType.Reply, 0 );
+				AddTooltip("A list of items you can craft to gain skill");
 				AddHtml( LEFT_WINDOW_START + 318, 345+moveUp, 150, 18, string.Format("<BASEFONT COLOR=#{0:X6}>SKILL CRAFT LIST</BASEFONT>", FontColor ), false, false );
 
 				// Set crafting container

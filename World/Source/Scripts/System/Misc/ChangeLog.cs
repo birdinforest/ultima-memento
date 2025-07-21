@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Stitching tools now apply magical attributes to crafted items<br>");
 			builder.Append("- Craft - Royal loin cloth are now craftable<br>");
 			builder.Append("- Craft - Skill requirements are now indicated on the Resource selection page<br>");
+			builder.Append("- Gump - Add tooltips to the crafting gump<br>");
 			builder.Append("- Item - Potion of Rebirth is now converted to a soul orb upon use<br>");
 			builder.Append("- Item - Soul Orb now has a confirmation prompt<br>");
 			builder.Append("- Item - Soul Orb timer repeats and restarts when logging in<br>");
