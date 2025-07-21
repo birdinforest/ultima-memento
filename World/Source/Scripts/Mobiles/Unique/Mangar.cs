@@ -308,7 +308,7 @@ namespace Server.Items
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You have pulled Mangar's Vault toward you.", from.NetState);
 					from.SendMessage("A gate is open nearby. You better hurry or you will remain trapped here.");
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You notice a magical gate is open nearby. You better hurry or you will remain trapped here.", "Final Escape!" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, "You notice a magical gate is open nearby. You better hurry or you will remain trapped here.<br><br>You have 30 minutes. Don't forget to loot the Vault or take it with you!", "Final Escape!" ) );
 
 					LootChest MyChest = new LootChest( 6 );
 					MyChest.Name = "Mangar's Vault";
