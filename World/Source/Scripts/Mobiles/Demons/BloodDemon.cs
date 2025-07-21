@@ -86,32 +86,27 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null && this.Body == 320 )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( Body == 320 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						string blade = this.Title;
-							if ( blade.Contains("of ") ){ blade = this.Title; }
-							else if ( blade.Contains("the ") ){ blade = "of " + this.Title; }
+					string blade = this.Title;
+						if ( blade.Contains("of ") ){ blade = this.Title; }
+						else if ( blade.Contains("the ") ){ blade = "of " + this.Title; }
 
-						BaseWeapon sword = new Longsword();
-						sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						sword.MinDamage = sword.MinDamage + 7;
-						sword.MaxDamage = sword.MaxDamage + 12;
-            			sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						sword.AosElementDamages.Poison = 25;
-						sword.Name = "sword " + blade;
-						sword.Slayer = SlayerName.Repond;
-						if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitLeechHits = 25; }
-						sword.Hue = 0xB9E;
-						c.DropItem( sword );
-					}
+					BaseWeapon sword = new Longsword();
+					sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+					sword.MinDamage = sword.MinDamage + 7;
+					sword.MaxDamage = sword.MaxDamage + 12;
+					sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+					sword.AosElementDamages.Poison = 25;
+					sword.Name = "sword " + blade;
+					sword.Slayer = SlayerName.Repond;
+					if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitLeechHits = 25; }
+					sword.Hue = 0xB9E;
+					c.DropItem( sword );
 				}
 			}
 		}

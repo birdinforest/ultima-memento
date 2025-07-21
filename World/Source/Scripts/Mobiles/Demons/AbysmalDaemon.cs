@@ -76,33 +76,24 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			int staff = 0;
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon harv = new BladedStaff();
-						harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						harv.MinDamage = harv.MinDamage + 10;
-						harv.MaxDamage = harv.MaxDamage + 20;
-            			harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						harv.AosElementDamages.Energy=50;
-						harv.Name = "staff of the abyss";
-						harv.Hue = 0x490;
-						c.DropItem( harv );
-						staff = 0;
-					}
-				}
+				BaseWeapon harv = new BladedStaff();
+				harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				harv.MinDamage = harv.MinDamage + 10;
+				harv.MaxDamage = harv.MaxDamage + 20;
+				harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				harv.AosElementDamages.Energy=50;
+				harv.Name = "staff of the abyss";
+				harv.Hue = 0x490;
+				c.DropItem( harv );
 			}
-
-			if ( staff == 0 ){ c.DropItem( new BladedStaff() ); }
+			else
+			{
+				c.DropItem( new BladedStaff() );
+			}
 		}
 
 		public AbysmalDaemon( Serial serial ) : base( serial )

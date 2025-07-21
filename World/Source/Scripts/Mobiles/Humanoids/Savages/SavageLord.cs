@@ -60,40 +60,35 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			if ( killer is BaseCreature )
-				killer = ((BaseCreature)killer).GetMaster();
-
-			if ( killer is PlayerMobile )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
 			{
-				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-				{
-					LootChest MyBag = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-					MyBag.Locked = false;
-					MyBag.TrapType = TrapType.None;
-					MyBag.TrapLevel = 0;
-					MyBag.ItemID = Utility.RandomMinMax( 0x5776, 0x5777 );
-					ResourceMods.SetRandomResource( false, false, MyBag, CraftResource.RegularLeather, false, null );
-					MyBag.Hue = CraftResources.GetHue(MyBag.Resource);
-					MyBag.Name = "chieftain pouch";
-					MyBag.DropSound = 72;
-					MyBag.GumpID = 61;
-					c.DropItem( MyBag );
-				}
-				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-				{
-					Item mask = new SavageMask();
-					switch( Utility.RandomMinMax( 0, 2 ) )
-					{
-						case 1: mask.Delete(); mask = new HornedTribalMask(); break;
-						case 2: mask.Delete(); mask = new TribalMask(); break;
-					}
+				LootChest MyBag = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyBag.Locked = false;
+				MyBag.TrapType = TrapType.None;
+				MyBag.TrapLevel = 0;
+				MyBag.ItemID = Utility.RandomMinMax( 0x5776, 0x5777 );
+				ResourceMods.SetRandomResource( false, false, MyBag, CraftResource.RegularLeather, false, null );
+				MyBag.Hue = CraftResources.GetHue(MyBag.Resource);
+				MyBag.Name = "chieftain pouch";
+				MyBag.DropSound = 72;
+				MyBag.GumpID = 61;
+				c.DropItem( MyBag );
+			}
 
-					LootPackEntry.MakeFixedDrop( this, c, mask );
-					mask.Name = "chieftain tribal mask";
-					c.DropItem( mask );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
+			{
+				Item mask = new SavageMask();
+				switch( Utility.RandomMinMax( 0, 2 ) )
+				{
+					case 1: mask.Delete(); mask = new HornedTribalMask(); break;
+					case 2: mask.Delete(); mask = new TribalMask(); break;
 				}
+
+				LootPackEntry.MakeFixedDrop( this, c, mask );
+				mask.Name = "chieftain tribal mask";
+				c.DropItem( mask );
 			}
 		}
 

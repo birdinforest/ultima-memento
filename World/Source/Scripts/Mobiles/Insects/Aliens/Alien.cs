@@ -72,19 +72,11 @@ namespace Server.Mobiles
 				c.DropItem( acid );
 			}
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null && !Controlled )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( Utility.RandomMinMax( 1, 100 ) == 1 )
-					{
-						c.DropItem( new AlienEgg() );
-					}
-				}
+			if ( killer != null && !Controlled && Utility.RandomMinMax( 1, 100 ) == 1 )
+			{
+				c.DropItem( new AlienEgg() );
 			}
 		}
 

@@ -143,25 +143,19 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			if ( killer is BaseCreature )
-				killer = ((BaseCreature)killer).GetMaster();
-
-			if ( killer is PlayerMobile )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
 			{
-				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-				{
-					LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-					Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
-					c.DropItem( MyChest );
-				}
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
+				c.DropItem( MyChest );
+			}
 
-				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 300 ) == 1 )
-				{
-					DemonPrison shard = new DemonPrison();
-					c.DropItem( shard );
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 300 ) == 1 )
+			{
+				DemonPrison shard = new DemonPrison();
+				c.DropItem( shard );
 			}
 		}
 
@@ -169,7 +163,7 @@ namespace Server.Mobiles
 		{
 			this.Body = 50;
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 

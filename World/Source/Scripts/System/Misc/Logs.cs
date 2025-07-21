@@ -751,38 +751,28 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static string LogSlayingLord( Mobile m, string creature )
+		public static void LogSlayingLord( PlayerMobile m, string creature )
 		{
-			if ( m != null )
+			if ( m == null ) return;
+
+			string sDateString = GetPlayerInfo.GetTodaysDate();
+			string sTitle = "the " + GetPlayerInfo.GetSkillTitle( m );
+			if ( m.Title != null ){ sTitle = m.Title; }
+
+			string verb = "has destroyed";
+			switch( Utility.Random( 4 ) )
 			{
-				if ( m is BaseCreature )
-					m = ((BaseCreature)m).GetMaster();
-
-				if ( m is PlayerMobile )
-				{
-					string sDateString = GetPlayerInfo.GetTodaysDate();
-					string sTitle = "the " + GetPlayerInfo.GetSkillTitle( m );
-					if ( m.Title != null ){ sTitle = m.Title; }
-
-					string verb = "has destroyed";
-					switch( Utility.Random( 4 ) )
-					{
-						case 0: verb = "has defeated";		break;
-						case 1: verb = "has slain";		break;
-						case 2: verb = "has destroyed";	break;
-						case 3: verb = "has vanquished";	break;
-					}
-
-					PlayerMobile pm = (PlayerMobile)m;
-					if (pm.PublicInfo == true)
-					{
-						string sEvent = m.Name + " " + sTitle + " " + verb + " " + creature + "#" + sDateString;
-						LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
-					}
-				}
+				case 0: verb = "has defeated";		break;
+				case 1: verb = "has slain";		break;
+				case 2: verb = "has destroyed";	break;
+				case 3: verb = "has vanquished";	break;
 			}
 
-			return null;
+			if ( m.PublicInfo )
+			{
+				string sEvent = m.Name + " " + sTitle + " " + verb + " " + creature + "#" + sDateString;
+				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+			}
 		}
 		// --------------------------------------------------------------------------------------------
 		public static string LogCreatedArtifact( Mobile m, string sArty )

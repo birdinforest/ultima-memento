@@ -64,49 +64,42 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon fork = new Pitchfork();
-						fork.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						fork.MinDamage = fork.MinDamage + 7;
-						fork.MaxDamage = fork.MaxDamage + 12;
-            			fork.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						fork.AosElementDamages.Fire = 50;
-						fork.Name = "Satan's Pitchfork";
-						fork.Slayer = SlayerName.Repond;
-						if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ fork.WeaponAttributes.HitFireball = 50; }
-						fork.Hue = 0x489;
-						c.DropItem( fork );
-					}
-
-					ArrayList targets = new ArrayList();
-					foreach ( Item item in World.Items.Values )
-					if ( item is OrbOfTheAbyss )
-					{
-						targets.Add( item );
-					}
-					for ( int i = 0; i < targets.Count; ++i )
-					{
-						OrbOfTheAbyss item = ( OrbOfTheAbyss )targets[ i ];
-						if ( killer == item.owner ){ item.Delete(); } // PLAYERS ARE ONLY ALLOWED ONE ORB
-					}
-
-					OrbOfTheAbyss orb = new OrbOfTheAbyss();
-					orb.owner = killer;
-					LootPackEntry.MakeFixedDrop( this, c, orb );
-					killer.AddToBackpack( orb );
-					killer.SendMessage( "You have obtained Satan's Orb of the Abyss!" );
-					LoggingFunctions.LogGenericQuest( killer, "has obtained Satan's orb of the abyss" );
-				}
+				BaseWeapon fork = new Pitchfork();
+				fork.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				fork.MinDamage = fork.MinDamage + 7;
+				fork.MaxDamage = fork.MaxDamage + 12;
+				fork.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				fork.AosElementDamages.Fire = 50;
+				fork.Name = "Satan's Pitchfork";
+				fork.Slayer = SlayerName.Repond;
+				if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ fork.WeaponAttributes.HitFireball = 50; }
+				fork.Hue = 0x489;
+				c.DropItem( fork );
 			}
+
+			ArrayList targets = new ArrayList();
+			foreach ( Item item in World.Items.Values )
+			if ( item is OrbOfTheAbyss )
+			{
+				targets.Add( item );
+			}
+			for ( int i = 0; i < targets.Count; ++i )
+			{
+				OrbOfTheAbyss item = ( OrbOfTheAbyss )targets[ i ];
+				if ( killer == item.owner ){ item.Delete(); } // PLAYERS ARE ONLY ALLOWED ONE ORB
+			}
+
+			OrbOfTheAbyss orb = new OrbOfTheAbyss();
+			orb.owner = killer;
+			LootPackEntry.MakeFixedDrop( this, c, orb );
+			killer.AddToBackpack( orb );
+			killer.SendMessage( "You have obtained Satan's Orb of the Abyss!" );
+			LoggingFunctions.LogGenericQuest( killer, "has obtained Satan's orb of the abyss" );
 		}
 
 		public override bool CanRummageCorpses{ get{ return true; } }

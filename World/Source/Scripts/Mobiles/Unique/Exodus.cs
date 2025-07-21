@@ -171,34 +171,28 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
 				int chance = 0;
 
-				if ( killer is PlayerMobile )
+				Server.Items.QuestSouvenir.GiveReward( killer, "Exodus", 0, 0x65B9 );
+
+				if ( Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) ){ chance = 9; }
+
+				if ( chance < Utility.RandomMinMax(1,10) )
 				{
-					Server.Items.QuestSouvenir.GiveReward( killer, "Exodus", 0, 0x65B9 );
-
-					if ( Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) ){ chance = 9; }
-
-					if ( chance < Utility.RandomMinMax(1,10) )
+					if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) )
 					{
-						if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) )
-						{
-							Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Exodus", true );
-							Item reward = new SummonReward();
-							reward.Hue = 0x835;
-							reward.ItemID = 0x2105;
-							reward.Name = "Statue of Exodus";
-							c.DropItem( reward );
-						}
-						c.DropItem( new DarkCoreExodus() );
-						Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, this.Name );
+						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Exodus", true );
+						Item reward = new SummonReward();
+						reward.Hue = 0x835;
+						reward.ItemID = 0x2105;
+						reward.Name = "Statue of Exodus";
+						c.DropItem( reward );
 					}
+					c.DropItem( new DarkCoreExodus() );
+					Server.Misc.LoggingFunctions.LogSlayingLord( killer, this.Name );
 				}
 			}
 		}

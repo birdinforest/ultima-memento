@@ -61,22 +61,14 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
-						MyChest.Hue = 0;
-						c.DropItem( MyChest );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
+				MyChest.Hue = 0;
+				c.DropItem( MyChest );
 			}
 		}
 

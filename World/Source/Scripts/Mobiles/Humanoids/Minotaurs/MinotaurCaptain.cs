@@ -52,24 +52,16 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon hammer = new WarHammer();
-						hammer.MinDamage = hammer.MinDamage + 4;
-						hammer.MaxDamage = hammer.MaxDamage + 8;
-            			hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						hammer.Name = "minotaur war hammer";
-						c.DropItem( hammer );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon hammer = new WarHammer();
+				hammer.MinDamage = hammer.MinDamage + 4;
+				hammer.MaxDamage = hammer.MaxDamage + 8;
+				hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				hammer.Name = "minotaur war hammer";
+				c.DropItem( hammer );
 			}
 		}
 

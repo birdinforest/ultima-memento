@@ -56,47 +56,45 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && !PlayerSettings.GetKeys( killer, "DragonRiding" ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && !PlayerSettings.GetKeys( killer, "DragonRiding" ) )
-					{
-						c.DropItem( new DragonRidingScroll() );
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "DragonKing" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "DragonKing", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x6DF;
-							book.Name = "Chest of Dragon King Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 0;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 20.0;
-							book.m_Value_2 = 0.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 6;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = killer;
-							book.m_Extra = "of the Dragon King";
-							book.m_FromWho = "Taken from the King of Dragons";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 150;
-							book.m_Hue = 0x6DF;
-							c.DropItem( book );
-					}
-					Server.Mobiles.Dragons.DropSpecial( this, killer, this.Name + " " + this.Title, c, 10, 0x6DD );
+					c.DropItem( new DragonRidingScroll() );
 				}
+
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "DragonKing" ) )
+				{
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "DragonKing", true );
+					ManualOfItems book = new ManualOfItems();
+						book.Hue = 0x6DF;
+						book.Name = "Chest of Dragon King Relics";
+						book.m_Charges = 1;
+						book.m_Skill_1 = 99;
+						book.m_Skill_2 = 0;
+						book.m_Skill_3 = 0;
+						book.m_Skill_4 = 0;
+						book.m_Skill_5 = 0;
+						book.m_Value_1 = 20.0;
+						book.m_Value_2 = 0.0;
+						book.m_Value_3 = 0.0;
+						book.m_Value_4 = 0.0;
+						book.m_Value_5 = 0.0;
+						book.m_Slayer_1 = 6;
+						book.m_Slayer_2 = 0;
+						book.m_Owner = killer;
+						book.m_Extra = "of the Dragon King";
+						book.m_FromWho = "Taken from the King of Dragons";
+						book.m_HowGiven = "Acquired by";
+						book.m_Points = 150;
+						book.m_Hue = 0x6DF;
+						c.DropItem( book );
+				}
+
+				Server.Mobiles.Dragons.DropSpecial( this, this.Name + " " + this.Title, c, 10, 0x6DD );
 			}
 		}
 

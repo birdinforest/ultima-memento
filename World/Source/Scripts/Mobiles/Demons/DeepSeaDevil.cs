@@ -88,26 +88,18 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						JewelryBracelet bands = new JewelryBracelet();
-							bands.Name = "manacle of the sea devil";
-							bands.Hue = 0x497;
-							bands.Resistances.Physical = 15;
-							bands.Attributes.BonusStr = 10;
-							bands.Attributes.BonusHits = 25;
-							bands.Attributes.ReflectPhysical = 25;
-							c.DropItem( bands );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				JewelryBracelet bands = new JewelryBracelet();
+					bands.Name = "manacle of the sea devil";
+					bands.Hue = 0x497;
+					bands.Resistances.Physical = 15;
+					bands.Attributes.BonusStr = 10;
+					bands.Attributes.BonusHits = 25;
+					bands.Attributes.ReflectPhysical = 25;
+					c.DropItem( bands );
 			}
 		}
 

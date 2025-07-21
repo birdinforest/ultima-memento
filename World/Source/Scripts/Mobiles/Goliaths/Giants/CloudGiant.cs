@@ -67,22 +67,14 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.Name = "cloud giant chest";
-						MyChest.Hue = 0xBB4;
-						c.DropItem( MyChest );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.Name = "cloud giant chest";
+				MyChest.Hue = 0xBB4;
+				c.DropItem( MyChest );
 			}
 		}
 

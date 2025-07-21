@@ -258,54 +258,46 @@ namespace Server.Mobiles
 
 			Region reg = Region.Find( this.Location, this.Map );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			Server.Mobiles.Dragons.DropSpecial( this, this.Name + " " + this.Title, c, 25, 0 );
+
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) && reg.IsPartOf( "the Vault of the Black Knight" ) && rDwell == "fire" && !this.Controlled )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				BaseArmor skin = null;
+				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
-					Server.Mobiles.Dragons.DropSpecial( this, killer, this.Name + " " + this.Title, c, 25, 0 );
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomBool() && reg.IsPartOf( "the Vault of the Black Knight" ) && rDwell == "fire" && !this.Controlled )
-					{
-						BaseArmor skin = null;
-						switch ( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-							case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-							case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-							case 3: skin = new LeatherArms(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-							case 4: skin = new LeatherChest(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-							case 5: skin = new LeatherCap(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
-						}
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomBool() && reg.IsPartOf( "the Glacial Scar" ) && !this.Controlled )
-					{
-						BaseArmor skin = null;
-						switch ( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-							case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-							case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-							case 3: skin = new LeatherArms(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-							case 4: skin = new LeatherChest(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-							case 5: skin = new LeatherCap(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
-						}
-					}
-
-					if ( Utility.RandomMinMax( 1, 100 ) == 1 && !this.Controlled )
-					{
-						DragonEgg egg = new DragonEgg();
-						egg.DragonType = this.YellHue;
-						egg.DragonBody = 59;
-						egg.Hue = this.Hue;
-						egg.Name = "egg of " + this.Title;
-						egg.NeedGold = 100000;
-						c.DropItem( egg );
-					}
+					case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
+					case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
+					case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
+					case 3: skin = new LeatherArms(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
+					case 4: skin = new LeatherChest(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
+					case 5: skin = new LeatherCap(); skin.Resource = CraftResource.LavaSkin; c.DropItem( skin ); break;
 				}
+			}
+			if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) && reg.IsPartOf( "the Glacial Scar" ) && !this.Controlled )
+			{
+				BaseArmor skin = null;
+				switch ( Utility.RandomMinMax( 0, 5 ) )
+				{
+					case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+					case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+					case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+					case 3: skin = new LeatherArms(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+					case 4: skin = new LeatherChest(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+					case 5: skin = new LeatherCap(); skin.Resource = CraftResource.IcySkin; c.DropItem( skin ); break;
+				}
+			}
+
+			if ( Utility.RandomMinMax( 1, 100 ) == 1 && !this.Controlled )
+			{
+				DragonEgg egg = new DragonEgg();
+				egg.DragonType = this.YellHue;
+				egg.DragonBody = 59;
+				egg.Hue = this.Hue;
+				egg.Name = "egg of " + this.Title;
+				egg.NeedGold = 100000;
+				c.DropItem( egg );
 			}
 		}
 

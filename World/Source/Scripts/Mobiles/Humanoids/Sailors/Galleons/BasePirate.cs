@@ -767,7 +767,7 @@ namespace Server.Mobiles
 			{
 				Server.Multis.BaseBoat.SinkShip( ship, this );
 				Point3D wreck = new Point3D((this.X+3), (this.Y+3), 0);
-				SunkenShip ShipWreck = Server.Multis.BaseBoat.CreateSunkenShip( this, this.LastKiller );
+				SunkenShip ShipWreck = Server.Multis.BaseBoat.CreateSunkenShip( this );
 				ShipWreck.MoveToWorld( wreck, Map );
 			}
 			else 

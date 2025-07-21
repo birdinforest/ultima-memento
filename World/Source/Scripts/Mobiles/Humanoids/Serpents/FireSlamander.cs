@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -56,23 +57,18 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					BaseWeapon fork = new Pitchfork();
-					fork.MinDamage = fork.MinDamage + 4;
-					fork.MaxDamage = fork.MaxDamage + 8;
-					fork.Attributes.BonusHits = 50;
-					fork.AosElementDamages.Fire=100;
-					fork.Hue = 0x4EC;
-					fork.Name = "fire salamander trident";
-					c.DropItem( fork );
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon fork = new Pitchfork();
+				fork.MinDamage = fork.MinDamage + 4;
+				fork.MaxDamage = fork.MaxDamage + 8;
+				fork.Attributes.BonusHits = 50;
+				fork.AosElementDamages.Fire=100;
+				fork.Hue = 0x4EC;
+				fork.Name = "fire salamander trident";
+				c.DropItem( fork );
 			}
 		}
 

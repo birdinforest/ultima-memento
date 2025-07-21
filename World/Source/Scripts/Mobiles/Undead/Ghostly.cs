@@ -74,35 +74,27 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( Server.Misc.GetPlayerInfo.LuckyKiller( killerLuck ) )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int Magic = 0;
+				int Speed = 0;
+				if ( this.Hue == 0x5B5 ){ Magic = 5; Speed = 0; }
+				else if ( this.Hue == 0x5B6 ){ Magic = 10; Speed = 1; }
+				else if ( this.Hue == 0xB93 ){ Magic = 15; Speed = 1; }
+				else if ( this.Hue == 0x8A5 ){ Magic = 20; Speed = 2; }
+				else if ( this.Hue == 1175 ){ Magic = 25; Speed = 2; }
 
-				if ( killer is PlayerMobile )
-				{
-					if ( Server.Misc.GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						int Magic = 0;
-						int Speed = 0;
-						if ( this.Hue == 0x5B5 ){ Magic = 5; Speed = 0; }
-						else if ( this.Hue == 0x5B6 ){ Magic = 10; Speed = 1; }
-						else if ( this.Hue == 0xB93 ){ Magic = 15; Speed = 1; }
-						else if ( this.Hue == 0x8A5 ){ Magic = 20; Speed = 2; }
-						else if ( this.Hue == 1175 ){ Magic = 25; Speed = 2; }
-
-						Robe robe = new Robe();
-							robe.Name = "shroud of " + this.Title;
-							robe.Hue = this.Hue;
-							robe.Attributes.CastRecovery = Speed;
-							robe.Attributes.CastSpeed = Speed;
-							robe.Attributes.LowerManaCost = 5 + Magic;
-							robe.Attributes.LowerRegCost = 5 + Magic;
-							robe.Attributes.SpellDamage = 5 + Magic;
-							c.DropItem( robe );
-					}
-				}
+				Robe robe = new Robe();
+					robe.Name = "shroud of " + this.Title;
+					robe.Hue = this.Hue;
+					robe.Attributes.CastRecovery = Speed;
+					robe.Attributes.CastSpeed = Speed;
+					robe.Attributes.LowerManaCost = 5 + Magic;
+					robe.Attributes.LowerRegCost = 5 + Magic;
+					robe.Attributes.SpellDamage = 5 + Magic;
+					c.DropItem( robe );
 			}
 		}
 

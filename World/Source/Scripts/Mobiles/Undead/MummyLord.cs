@@ -95,35 +95,26 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				if ( Utility.RandomMinMax( 1, 2 ) == 1 )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						if ( Utility.RandomMinMax( 1, 2 ) == 1 )
-						{
-							CanopicJar jar = new CanopicJar();
-							c.DropItem( jar );
-						}
-						else
-						{
-							EmptyCanopicJar jars = new EmptyCanopicJar();
-							c.DropItem( jars );
-						}
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
-						c.DropItem( MyChest );
-					}
+					CanopicJar jar = new CanopicJar();
+					c.DropItem( jar );
 				}
+				else
+				{
+					EmptyCanopicJar jars = new EmptyCanopicJar();
+					c.DropItem( jars );
+				}
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
+				c.DropItem( MyChest );
 			}
 		}
 

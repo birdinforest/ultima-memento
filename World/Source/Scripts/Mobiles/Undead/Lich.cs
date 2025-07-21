@@ -61,34 +61,29 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null && this.Title == "the pharaoh" )
+			if ( Title == "the pharaoh" )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
+					if ( Utility.RandomMinMax( 1, 10 ) == 1 )
 					{
-						if ( Utility.RandomMinMax( 1, 10 ) == 1 )
-						{
-							CanopicJar jar = new CanopicJar();
-							c.DropItem( jar );
-						}
-						else
-						{
-							EmptyCanopicJar jars = new EmptyCanopicJar();
-							c.DropItem( jars );
-						}
+						CanopicJar jar = new CanopicJar();
+						c.DropItem( jar );
 					}
+					else
+					{
+						EmptyCanopicJar jars = new EmptyCanopicJar();
+						c.DropItem( jars );
+					}
+				}
 
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 0 );
-						c.DropItem( MyChest );
-					}
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+				{
+					LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+					Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 0 );
+					c.DropItem( MyChest );
 				}
 			}
 		}
@@ -114,7 +109,7 @@ namespace Server.Mobiles
 		public override bool OnBeforeDeath()
 		{
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 

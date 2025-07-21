@@ -74,18 +74,12 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				if ( Utility.RandomMinMax( 1, 20 ) == 1 && killer.Skills[SkillName.Necromancy].Base >= 50 )
 				{
-					if ( Utility.RandomMinMax( 1, 20 ) == 1 && killer.Skills[SkillName.Necromancy].Base >= 50 )
-					{
-						c.DropItem( new DracolichSkull() );
-					}
+					c.DropItem( new DracolichSkull() );
 				}
 			}
 		}

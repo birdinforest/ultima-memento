@@ -77,7 +77,7 @@ namespace Server.Mobiles
 		public override bool OnBeforeDeath()
 		{
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 

@@ -72,43 +72,40 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( Utility.RandomMinMax( 1, 20 ) == 1 && killer.Skills[SkillName.Necromancy].Base >= 50 )
 				{
-					if ( Utility.RandomMinMax( 1, 20 ) == 1 && killer.Skills[SkillName.Necromancy].Base >= 50 )
+					c.DropItem( new DracolichSkull() );
+				}
+
+				if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) )
+				{
+					Item loot = null;
+
+					switch( Utility.RandomMinMax( 0, 8 ) )
 					{
-						c.DropItem( new DracolichSkull() );
+						case 0: loot = new BoneChest(); break;
+						case 1: loot = new BoneArms(); break;
+						case 2: loot = new BoneLegs(); break;
+						case 3: loot = new BoneSkirt(); break;
+						case 4: loot = new BoneGloves(); break;
+						case 5: loot = new OrcHelm(); break;
+						case 6: loot = Loot.RandomWeapon( false ); break;
+						case 7: loot = new WoodenShield(); break;
+						case 8: loot = Loot.RandomJewelry(); break;
 					}
 
-					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
+					if ( loot != null )
 					{
-						Item loot = null;
-
-						switch( Utility.RandomMinMax( 0, 8 ) )
-						{
-							case 0: loot = new BoneChest(); break;
-							case 1: loot = new BoneArms(); break;
-							case 2: loot = new BoneLegs(); break;
-							case 3: loot = new BoneSkirt(); break;
-							case 4: loot = new BoneGloves(); break;
-							case 5: loot = new OrcHelm(); break;
-							case 6: loot = Loot.RandomWeapon( false ); break;
-							case 7: loot = new WoodenShield(); break;
-							case 8: loot = Loot.RandomJewelry(); break;
-						}
-
-						if ( loot != null )
-						{
-							ResourceMods.SetResource( loot, CraftResource.DemilichSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-							loot.InfoText1 = "" + Name + " " + Title + "";
-							c.DropItem( loot ); 
-						}
+						ResourceMods.SetResource( loot, CraftResource.DemilichSpec );
+						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+						loot.InfoText1 = "" + Name + " " + Title + "";
+						c.DropItem( loot ); 
 					}
 				}
 			}

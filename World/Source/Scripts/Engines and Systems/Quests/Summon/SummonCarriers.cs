@@ -793,23 +793,7 @@ namespace Server.Misc
 		{
 			if ( m.EmoteHue == 505 )
 			{
-				Mobile killer = m.LastKiller;
-				if ( killer != null )
-				{
-					if ( killer is BaseCreature )
-						killer = ((BaseCreature)killer).GetMaster();
-
-					if ( !(killer is PlayerMobile) )
-					{
-						killer = m.FindMostRecentDamager(true);
-
-						if ( killer != null )
-						{
-							if ( killer is BaseCreature )
-								killer = ((BaseCreature)killer).GetMaster();
-						}
-					}
-				}
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( m );
 
 				Map map = m.Map;
 
@@ -833,7 +817,6 @@ namespace Server.Misc
 					int myHue = m.Hue;
 
 					Item reward = new SummonReward();
-					List<Item> belongings = new List<Item>();
 					foreach( Item i in m.Backpack.Items )
 					{
 						if ( i is SummonPrison )
@@ -874,7 +857,7 @@ namespace Server.Misc
 							{
 								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(m.Location, 20) )
 								{
-									LoggingFunctions.LogSlayingLord( pmi.Mobile, m.Name + " from the Magical Prison" );
+									LoggingFunctions.LogSlayingLord( (PlayerMobile)pmi.Mobile, m.Name + " from the Magical Prison" );
 									Titles.AwardFame( pmi.Mobile, 300, true );
 									if ( ((PlayerMobile)(pmi.Mobile)).KarmaLocked == true ){ Titles.AwardKarma( pmi.Mobile, -300, true ); }
 									else { Titles.AwardKarma( pmi.Mobile, 300, true ); }

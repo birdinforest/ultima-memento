@@ -82,7 +82,7 @@ namespace Server.Mobiles
 		{
 			if ( Server.Misc.IntelligentAction.HealThySelf( this ) ){ return false; }
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 

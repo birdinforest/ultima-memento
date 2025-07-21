@@ -262,9 +262,10 @@ namespace Server.Mobiles
 			}
 		}
 
-		public static void DropSpecial( BaseCreature me, Mobile killer, string name, Container c, int chance, int color )
+		public static void DropSpecial( BaseCreature me, string name, Container c, int chance, int color )
 		{
-			if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, chance ) == 1 && !me.Controlled )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( me );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, chance ) == 1 && !me.Controlled )
 			{
 				if ( Utility.RandomBool() )
 				{
@@ -289,26 +290,19 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null && rBody != 61 )
+			if ( rBody != 61 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				Server.Mobiles.Dragons.DropSpecial( this, "", c, 25, 0 );
 
-				if ( killer is PlayerMobile )
+				if ( Utility.RandomMinMax( 1, 200 ) == 1 && !this.Controlled )
 				{
-					Server.Mobiles.Dragons.DropSpecial( this, killer, "", c, 25, 0 );
-
-					if ( Utility.RandomMinMax( 1, 200 ) == 1 && !this.Controlled )
-					{
-						DragonEgg egg = new DragonEgg();
-						egg.DragonType = this.YellHue;
-						egg.DragonBody = 61;
-						egg.Hue = this.Hue;
-						egg.Name = "egg of " + this.Name;
-						egg.NeedGold = 50000;
-						c.DropItem( egg );
-					}
+					DragonEgg egg = new DragonEgg();
+					egg.DragonType = this.YellHue;
+					egg.DragonBody = 61;
+					egg.Hue = this.Hue;
+					egg.Name = "egg of " + this.Name;
+					egg.NeedGold = 50000;
+					c.DropItem( egg );
 				}
 			}
 		}

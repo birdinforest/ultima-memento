@@ -46,23 +46,11 @@ namespace Server.Misc
 {
     class HoardPile
     {
-		public static void MakeHoard( Mobile from )
+		public static void MakeHoard( BaseCreature from )
 		{
-			bool Lucky = false;
+			int killerLuck = MobileUtilities.GetLuckFromKiller( from );
 
-			Mobile killer = from.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					Lucky = GetPlayerInfo.LuckyKiller( killer.Luck );
-				}
-			}
-
-			if ( from.Title != null && from.Title != "" && from.Fame >= 15000 && ( Utility.RandomMinMax( 1, 5 ) == 1 || Lucky ) )
+			if ( from.Title != null && from.Title != "" && from.Fame >= 15000 && ( Utility.RandomMinMax( 1, 5 ) == 1 || GetPlayerInfo.LuckyKiller( killerLuck ) ) )
 			{
 				ArrayList targets = new ArrayList();
 				bool morePowerfulCreature = false;

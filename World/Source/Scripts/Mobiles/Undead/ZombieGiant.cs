@@ -68,53 +68,44 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				BaseArmor skin = null;
+				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseArmor skin = null;
-						switch ( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 3: skin = new LeatherArms(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 4: skin = new LeatherChest(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 5: skin = new LeatherCap(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-						}
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon harv = new BoneHarvester();
-						harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						harv.MinDamage = harv.MinDamage + 5;
-						harv.MaxDamage = harv.MaxDamage + 10;
-            			harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						harv.AosElementDamages.Poison=50;
-						harv.Name = "dead giant's hand scythe";
-						harv.Hue = 0xB98;
-						c.DropItem( harv );
-					}
-					else if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon axe = new Axe();
-						axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						axe.MinDamage = axe.MinDamage + 5;
-						axe.MaxDamage = axe.MaxDamage + 10;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.AosElementDamages.Poison=50;
-						axe.Name = "dead giant's hand axe";
-						axe.Hue = 0xB98;
-						c.DropItem( axe );
-					}
+					case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 3: skin = new LeatherArms(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 4: skin = new LeatherChest(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 5: skin = new LeatherCap(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
 				}
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon harv = new BoneHarvester();
+				harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				harv.MinDamage = harv.MinDamage + 5;
+				harv.MaxDamage = harv.MaxDamage + 10;
+				harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				harv.AosElementDamages.Poison=50;
+				harv.Name = "dead giant's hand scythe";
+				harv.Hue = 0xB98;
+				c.DropItem( harv );
+			}
+			else if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon axe = new Axe();
+				axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				axe.MinDamage = axe.MinDamage + 5;
+				axe.MaxDamage = axe.MaxDamage + 10;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.AosElementDamages.Poison=50;
+				axe.Name = "dead giant's hand axe";
+				axe.Hue = 0xB98;
+				c.DropItem( axe );
 			}
 		}
 

@@ -63,17 +63,7 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					Server.Mobiles.Dragons.DropSpecial( this, killer, this.Name + " " + this.Title, c, 10, 0xA9C );
-				}
-			}
+			Server.Mobiles.Dragons.DropSpecial( this, this.Name + " " + this.Title, c, 10, 0xA9C );
 		}
 
 		public override void GenerateLoot()

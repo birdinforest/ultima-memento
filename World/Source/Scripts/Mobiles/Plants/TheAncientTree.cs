@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Engines.Plants;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -112,10 +113,15 @@ namespace Server.Mobiles
 
 			if ( Resource != CraftResource.None )
 			{
-				TransmutationPotion loot1 = new TransmutationPotion();
-				loot1.Resource = Resource;
-				loot1.Amount = Utility.RandomMinMax( 1, 2 );
-				c.DropItem(loot1);
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+				if ( GetPlayerInfo.CheckLuck( killerLuck, 10, 10 ) )
+				{
+					TransmutationPotion loot1 = new TransmutationPotion();
+					loot1.Resource = Resource;
+					loot1.Amount = 1;
+					c.DropItem(loot1);
+				}
 			}
 		}
 

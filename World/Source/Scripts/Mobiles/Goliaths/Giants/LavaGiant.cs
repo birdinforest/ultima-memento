@@ -71,24 +71,14 @@ namespace Server.Mobiles
 
 		public override void OnDeath( Container c )
 		{
-			Region reg = Region.Find( this.Location, this.Map );
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.Name = "molten chest";
-						MyChest.Hue = 0x496;
-						c.DropItem( MyChest );
-					}
-				}
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.Name = "molten chest";
+				MyChest.Hue = 0x496;
+				c.DropItem( MyChest );
 			}
 
 			base.OnDeath( c );

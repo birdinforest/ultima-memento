@@ -56,27 +56,18 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( Server.Misc.GetPlayerInfo.LuckyKiller( killerLuck ) )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( Server.Misc.GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						Robe robe = new Robe();
-						robe.Name = "evil robe of " + this.Name + " " + this.Title;
-						robe.Hue = 0xB5E;
-						robe.Attributes.CastRecovery = 2;
-						robe.Attributes.CastSpeed = 2;
-						robe.Attributes.LowerManaCost = 25;
-						robe.Attributes.LowerRegCost = 25;
-						robe.Attributes.SpellDamage = 25;
-						c.DropItem( robe );
-					}
-				}
+				Robe robe = new Robe();
+				robe.Name = "evil robe of " + this.Name + " " + this.Title;
+				robe.Hue = 0xB5E;
+				robe.Attributes.CastRecovery = 2;
+				robe.Attributes.CastSpeed = 2;
+				robe.Attributes.LowerManaCost = 25;
+				robe.Attributes.LowerRegCost = 25;
+				robe.Attributes.SpellDamage = 25;
+				c.DropItem( robe );
 			}
 		}
 

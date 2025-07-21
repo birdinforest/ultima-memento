@@ -105,36 +105,28 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 && Body == 320 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				BaseWeapon sword = new Longsword();
+				sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				sword.MinDamage = sword.MinDamage + 4;
+				sword.MaxDamage = sword.MaxDamage + 9;
+				sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				sword.AosElementDamages.Fire = 50;
+				sword.Name = "sword of " + this.Title;
+				if ( Utility.RandomMinMax( 0, 100 ) > 75 ){ sword.Slayer = SlayerName.Repond; }
+				if ( Utility.RandomMinMax( 0, 100 ) > 75 ){ sword.WeaponAttributes.HitFireball = 10; }
+				sword.Hue = this.Hue;
+				c.DropItem( sword );
+			}
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 && this.Body == 320 )
-					{
-						BaseWeapon sword = new Longsword();
-						sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						sword.MinDamage = sword.MinDamage + 4;
-						sword.MaxDamage = sword.MaxDamage + 9;
-            			sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						sword.AosElementDamages.Fire = 50;
-						sword.Name = "sword of " + this.Title;
-						if ( Utility.RandomMinMax( 0, 100 ) > 75 ){ sword.Slayer = SlayerName.Repond; }
-						if ( Utility.RandomMinMax( 0, 100 ) > 75 ){ sword.WeaponAttributes.HitFireball = 10; }
-						sword.Hue = this.Hue;
-						c.DropItem( sword );
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
-						c.DropItem( MyChest );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
+				c.DropItem( MyChest );
 			}
 		}
 

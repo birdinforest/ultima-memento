@@ -85,7 +85,9 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, this.Name );
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
+			Server.Misc.LoggingFunctions.LogSlayingLord( killer, this.Name );
 			return base.OnBeforeDeath();
 		}
 
@@ -93,69 +95,67 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
+					StatueJormungandr trophy = new StatueJormungandr();
+
+					string waters = Server.Misc.Worlds.GetRegionName( killer.Map, killer.Location );
+
+					if ( waters == "the Bottle World of Kuldar" ){ 		waters = "the Kuldar Sea"; }
+					else if ( waters == "the Land of Ambrosia" ){ 		waters = "the Ambrosia Lakes"; }
+					else if ( waters == "the Island of Umber Veil" ){ 	waters = "the Umber Sea"; }
+					else if ( waters == "the Land of Lodoria" ){ 		waters = "the Lodoria Ocean"; }
+					else if ( waters == "the Underworld" ){ 			waters = "Carthax Lake"; }
+					else if ( waters == "the Serpent Island" ){ 		waters = "the Serpent Seas"; }
+					else if ( waters == "the Isles of Dread" ){ 		waters = "the Dreadful Sea"; }
+					else if ( waters == "the Savaged Empire" ){ 		waters = "the Savage Seas"; }
+					else if ( waters == "the Land of Sosaria" ){ 		waters = "the Sosaria Ocean"; }
+
+					trophy.AnimalWhere = "From " + waters;
+					string trophyKiller = killer.Name + " the " + Server.Misc.GetPlayerInfo.GetSkillTitle( killer );
+					trophy.AnimalKiller = "Killed by " + trophyKiller;
+					c.DropItem( trophy );
+
+					object obj = c;
+					if ( obj is Corpse )
 					{
-						StatueJormungandr trophy = new StatueJormungandr();
-
-						string waters = Server.Misc.Worlds.GetRegionName( killer.Map, killer.Location );
-
-						if ( waters == "the Bottle World of Kuldar" ){ 		waters = "the Kuldar Sea"; }
-						else if ( waters == "the Land of Ambrosia" ){ 		waters = "the Ambrosia Lakes"; }
-						else if ( waters == "the Island of Umber Veil" ){ 	waters = "the Umber Sea"; }
-						else if ( waters == "the Land of Lodoria" ){ 		waters = "the Lodoria Ocean"; }
-						else if ( waters == "the Underworld" ){ 			waters = "Carthax Lake"; }
-						else if ( waters == "the Serpent Island" ){ 		waters = "the Serpent Seas"; }
-						else if ( waters == "the Isles of Dread" ){ 		waters = "the Dreadful Sea"; }
-						else if ( waters == "the Savaged Empire" ){ 		waters = "the Savage Seas"; }
-						else if ( waters == "the Land of Sosaria" ){ 		waters = "the Sosaria Ocean"; }
-
-						trophy.AnimalWhere = "From " + waters;
-						string trophyKiller = killer.Name + " the " + Server.Misc.GetPlayerInfo.GetSkillTitle( killer );
-						trophy.AnimalKiller = "Killed by " + trophyKiller;
-						c.DropItem( trophy );
-
-						object obj = c;
-						if ( obj is Corpse )
-						{
-							Corpse corpse = (Corpse)obj;
-							corpse.VisitedByTaxidermist = true;
-						}
+						Corpse corpse = (Corpse)obj;
+						corpse.VisitedByTaxidermist = true;
 					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Jormungandr" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Jormungandr", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0xB3D;
-							book.Name = "Chest of Midgard Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 0;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 20.0;
-							book.m_Value_2 = 0.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 34;
-							book.m_Slayer_2 = 8;
-							book.m_Owner = null;
-							book.m_Extra = "of Midgard";
-							book.m_FromWho = "Taken from Jormungandr the Serpent of Midgard";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 200;
-							book.m_Hue = 0xB3D;
-							c.DropItem( book );
-					}
+				}
+
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Jormungandr" ) )
+				{
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Jormungandr", true );
+					ManualOfItems book = new ManualOfItems();
+						book.Hue = 0xB3D;
+						book.Name = "Chest of Midgard Relics";
+						book.m_Charges = 1;
+						book.m_Skill_1 = 99;
+						book.m_Skill_2 = 0;
+						book.m_Skill_3 = 0;
+						book.m_Skill_4 = 0;
+						book.m_Skill_5 = 0;
+						book.m_Value_1 = 20.0;
+						book.m_Value_2 = 0.0;
+						book.m_Value_3 = 0.0;
+						book.m_Value_4 = 0.0;
+						book.m_Value_5 = 0.0;
+						book.m_Slayer_1 = 34;
+						book.m_Slayer_2 = 8;
+						book.m_Owner = null;
+						book.m_Extra = "of Midgard";
+						book.m_FromWho = "Taken from Jormungandr the Serpent of Midgard";
+						book.m_HowGiven = "Acquired by";
+						book.m_Points = 200;
+						book.m_Hue = 0xB3D;
+						c.DropItem( book );
 				}
 			}
 

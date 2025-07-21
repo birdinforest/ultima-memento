@@ -82,27 +82,19 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
+			{
+				if ( Utility.RandomMinMax( 1, 5 ) == 1 )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						if ( Utility.RandomMinMax( 1, 5 ) == 1 )
-						{
-							CanopicJar jar = new CanopicJar();
-							c.DropItem( jar );
-						}
-						else
-						{
-							EmptyCanopicJar jars = new EmptyCanopicJar();
-							c.DropItem( jars );
-						}
-					}
+					CanopicJar jar = new CanopicJar();
+					c.DropItem( jar );
+				}
+				else
+				{
+					EmptyCanopicJar jars = new EmptyCanopicJar();
+					c.DropItem( jars );
 				}
 			}
 		}

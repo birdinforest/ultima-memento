@@ -132,7 +132,7 @@ namespace Server.Mobiles
 		{
 			Server.Multis.BaseBoat.SinkShip( boat, this );
 			Point3D wreck = new Point3D((this.X+3), (this.Y+3), 0);
-			SunkenShip ShipWreck = Server.Multis.BaseBoat.CreateSunkenShip( this, this.LastKiller );
+			SunkenShip ShipWreck = Server.Multis.BaseBoat.CreateSunkenShip( this );
 			ShipWreck.DropItem( new HarpoonRope( Utility.RandomMinMax( 10, 30 ) ) );
 
 			return base.OnBeforeDeath();   

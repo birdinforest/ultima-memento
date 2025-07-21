@@ -8641,7 +8641,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			Server.Misc.DropRelic.DropSpecialItem( this, killer, c ); // SOME DROP RARE ITEMS
+			Server.Misc.DropRelic.DropSpecialItem( this, c ); // SOME DROP RARE ITEMS
 
 			if ( IsBonded )
 			{

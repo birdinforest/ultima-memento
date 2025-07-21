@@ -59,41 +59,38 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "OrkDemigod" ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "OrkDemigod" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "OrkDemigod", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x7D4;
-							book.Name = "Chest of Orcish Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 0;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 20.0;
-							book.m_Value_2 = 0.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 2;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = null;
-							book.m_Extra = "of the Orcs";
-							book.m_FromWho = "Taken from the Orc Demigod";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 150;
-							book.m_Hue = 0x7D4;
-							c.DropItem( book );
-					}
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "OrkDemigod", true );
+					ManualOfItems book = new ManualOfItems();
+						book.Hue = 0x7D4;
+						book.Name = "Chest of Orcish Relics";
+						book.m_Charges = 1;
+						book.m_Skill_1 = 99;
+						book.m_Skill_2 = 0;
+						book.m_Skill_3 = 0;
+						book.m_Skill_4 = 0;
+						book.m_Skill_5 = 0;
+						book.m_Value_1 = 20.0;
+						book.m_Value_2 = 0.0;
+						book.m_Value_3 = 0.0;
+						book.m_Value_4 = 0.0;
+						book.m_Value_5 = 0.0;
+						book.m_Slayer_1 = 2;
+						book.m_Slayer_2 = 0;
+						book.m_Owner = null;
+						book.m_Extra = "of the Orcs";
+						book.m_FromWho = "Taken from the Orc Demigod";
+						book.m_HowGiven = "Acquired by";
+						book.m_Points = 150;
+						book.m_Hue = 0x7D4;
+						c.DropItem( book );
 				}
 			}
 		}

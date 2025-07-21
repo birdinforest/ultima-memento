@@ -60,19 +60,9 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( Hue == 2900 ){ Server.Mobiles.Dragons.DropSpecial( this, killer, "", c, 25, 2900 ); }
-					else if ( Hue == 0xB42 ){ Server.Mobiles.Dragons.DropSpecial( this, killer, "", c, 25, 0xB42 ); }
-					else { Server.Mobiles.Dragons.DropSpecial( this, killer, "", c, 25, 0xB79 ); }
-				}
-			}
+			if ( Hue == 2900 ){ Server.Mobiles.Dragons.DropSpecial( this, "", c, 25, 2900 ); }
+			else if ( Hue == 0xB42 ){ Server.Mobiles.Dragons.DropSpecial( this, "", c, 25, 0xB42 ); }
+			else { Server.Mobiles.Dragons.DropSpecial( this, "", c, 25, 0xB79 ); }
 		}
 
 		public override void GenerateLoot()

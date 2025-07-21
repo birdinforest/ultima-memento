@@ -96,7 +96,7 @@ namespace Server.Mobiles
 			this.Body = 13;
 
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 
@@ -107,55 +107,50 @@ namespace Server.Mobiles
    			ingut.Amount = Utility.RandomMinMax( 1, 2 );
    			c.DropItem(ingut);
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				Party p = Engines.PartySystem.Party.Get( killer );
+				if ( p != null )
 				{
-					Party p = Engines.PartySystem.Party.Get( killer );
-					if ( p != null )
+					foreach ( PartyMemberInfo pmi in p.Members )
 					{
-						foreach ( PartyMemberInfo pmi in p.Members )
+						if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(c.Location, 20) && pmi.Mobile.Map == c.Map )
 						{
-							if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(c.Location, 20) && pmi.Mobile.Map == c.Map )
-							{
-								pmi.Mobile.AddToBackpack( new VordoScroll() );
-								pmi.Mobile.SendMessage("An item has appeared in your backpack!");
-							}
+							pmi.Mobile.AddToBackpack( new VordoScroll() );
+							pmi.Mobile.SendMessage("An item has appeared in your backpack!");
 						}
 					}
-					else
+				}
+				else
+				{
+					killer.AddToBackpack( new VordoScroll() );
+					killer.SendMessage("An item has appeared in your backpack!");
+				}
+
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+				if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) )
+				{
+					Item loot = null;
+
+					switch( Utility.RandomMinMax( 0, 7 ) )
 					{
-						killer.AddToBackpack( new VordoScroll() );
-						killer.SendMessage("An item has appeared in your backpack!");
+						case 0: loot = new TrinketTalisman(); break;
+						case 1: loot = new Robe(); break;
+						case 2: loot = new WizardsHat(); break;
+						case 3: loot = new Cloak(); break;
+						case 4: loot = new Boots(); break;
+						case 5: loot = new Belt(); break;
+						case 6: loot = new Dagger(); break;
+						case 7: loot = Loot.RandomJewelry(); break;
 					}
 
-					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
+					if ( loot != null )
 					{
-						Item loot = null;
-
-						switch( Utility.RandomMinMax( 0, 7 ) )
-						{
-							case 0: loot = new TrinketTalisman(); break;
-							case 1: loot = new Robe(); break;
-							case 2: loot = new WizardsHat(); break;
-							case 3: loot = new Cloak(); break;
-							case 4: loot = new Boots(); break;
-							case 5: loot = new Belt(); break;
-							case 6: loot = new Dagger(); break;
-							case 7: loot = Loot.RandomJewelry(); break;
-						}
-
-						if ( loot != null )
-						{
-							ResourceMods.SetResource( loot, CraftResource.BloodlessSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-							loot.InfoText1 = "Vordo of the Darkest Magic";
-							c.DropItem( loot ); 
-						}
+						ResourceMods.SetResource( loot, CraftResource.BloodlessSpec );
+						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+						loot.InfoText1 = "Vordo of the Darkest Magic";
+						c.DropItem( loot ); 
 					}
 				}
 			}

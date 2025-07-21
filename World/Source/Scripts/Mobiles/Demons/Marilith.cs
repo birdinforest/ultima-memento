@@ -61,29 +61,21 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon sword = new Scimitar();
-						sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						sword.MinDamage = sword.MinDamage + 7;
-						sword.MaxDamage = sword.MaxDamage + 12;
-            			sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						sword.AosElementDamages.Fire = 50;
-						sword.Name = "scimitar of " + this.Title;
-						sword.Slayer = SlayerName.Repond;
-						if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitFireball = 25; }
-						sword.Hue = 0x54B;
-						c.DropItem( sword );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon sword = new Scimitar();
+				sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				sword.MinDamage = sword.MinDamage + 7;
+				sword.MaxDamage = sword.MaxDamage + 12;
+				sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				sword.AosElementDamages.Fire = 50;
+				sword.Name = "scimitar of " + this.Title;
+				sword.Slayer = SlayerName.Repond;
+				if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitFireball = 25; }
+				sword.Hue = 0x54B;
+				c.DropItem( sword );
 			}
 		}
 

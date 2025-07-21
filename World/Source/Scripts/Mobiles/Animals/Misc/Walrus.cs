@@ -107,19 +107,10 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null && Utility.RandomMinMax( 0, 100 ) > 60 )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 0, 100 ) > 60 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						c.DropItem( new IvoryTusk() );
-					}
-				}
+				c.DropItem( new IvoryTusk() );
 			}
 		}
 

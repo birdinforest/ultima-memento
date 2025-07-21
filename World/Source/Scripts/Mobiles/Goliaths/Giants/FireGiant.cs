@@ -69,52 +69,44 @@ namespace Server.Mobiles
 
 		public override void OnDeath( Container c )
 		{
-			Region reg = Region.Find( this.Location, this.Map );
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
+				MyChest.GumpID = 0x3D;
+				MyChest.TrapType = TrapType.None;
+				MyChest.Locked = false;
+				MyChest.Name = "fire giant sack";
+				MyChest.Hue = 0x489;
+				c.DropItem( MyChest );
+			}
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
-						MyChest.GumpID = 0x3D;
-						MyChest.TrapType = TrapType.None;
-						MyChest.Locked = false;
-						MyChest.Name = "fire giant sack";
-						MyChest.Hue = 0x489;
-						c.DropItem( MyChest );
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 10 ) == 1 )
-					{
-						c.DropItem( new FireGiantForge() );
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && Body == 996 )
-					{
-						BaseWeapon hammer = new WarHammer();
-						hammer.Name = "fire giant hammer";
-						hammer.ItemID = 0x267C;
-						hammer.Hue = 0xB73;
-						hammer.SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 10 );
-						hammer.SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
-						hammer.WeaponAttributes.ResistFireBonus = 15;
-						hammer.Attributes.WeaponDamage = 50;
-						hammer.Attributes.AttackChance = 10;
-           				hammer.Slayer = SlayerName.WaterDissipation;
-						hammer.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						hammer.MinDamage = hammer.MinDamage + 6;
-						hammer.MaxDamage = hammer.MaxDamage + 10;
-            			hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						hammer.AosElementDamages.Fire = 50;
-						hammer.AosElementDamages.Physical = 50;
-						c.DropItem( hammer );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 10 ) == 1 )
+			{
+				c.DropItem( new FireGiantForge() );
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && Body == 996 )
+			{
+				BaseWeapon hammer = new WarHammer();
+				hammer.Name = "fire giant hammer";
+				hammer.ItemID = 0x267C;
+				hammer.Hue = 0xB73;
+				hammer.SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 10 );
+				hammer.SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
+				hammer.WeaponAttributes.ResistFireBonus = 15;
+				hammer.Attributes.WeaponDamage = 50;
+				hammer.Attributes.AttackChance = 10;
+				hammer.Slayer = SlayerName.WaterDissipation;
+				hammer.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				hammer.MinDamage = hammer.MinDamage + 6;
+				hammer.MaxDamage = hammer.MaxDamage + 10;
+				hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				hammer.AosElementDamages.Fire = 50;
+				hammer.AosElementDamages.Physical = 50;
+				c.DropItem( hammer );
 			}
 
 			base.OnDeath( c );

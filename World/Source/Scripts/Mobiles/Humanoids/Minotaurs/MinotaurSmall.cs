@@ -73,33 +73,25 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && this.Body == 78 && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon axe = new Axe();
-						axe.MinDamage = axe.MinDamage + 4;
-						axe.MaxDamage = axe.MaxDamage + 8;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.Name = "minotaur axe";
-						c.DropItem( axe );
-					}
-					else if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && this.Body == 650 && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon axe = new DoubleAxe();
-						axe.MinDamage = axe.MinDamage + 5;
-						axe.MaxDamage = axe.MaxDamage + 9;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.Name = "minotaur battle axe";
-						c.DropItem( axe );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && this.Body == 78 && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon axe = new Axe();
+				axe.MinDamage = axe.MinDamage + 4;
+				axe.MaxDamage = axe.MaxDamage + 8;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.Name = "minotaur axe";
+				c.DropItem( axe );
+			}
+			else if ( GetPlayerInfo.LuckyKiller( killerLuck ) && this.Body == 650 && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon axe = new DoubleAxe();
+				axe.MinDamage = axe.MinDamage + 5;
+				axe.MaxDamage = axe.MaxDamage + 9;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.Name = "minotaur battle axe";
+				c.DropItem( axe );
 			}
 		}
 

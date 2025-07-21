@@ -505,19 +505,14 @@ namespace Server.Multis
 			m_Instances.Remove( this );
 		}
 
-		public static SunkenShip CreateSunkenShip( Mobile from, Mobile killer )
+		public static SunkenShip CreateSunkenShip( BaseCreature from )
 		{
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( from );
 			int level = ((int)(Server.Misc.IntelligentAction.GetCreatureLevel( from )/25)+1);
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					int mod = (int)( killer.Skills[SkillName.Seafaring].Value / 25 );
-					if ( mod > 0 ){ level = level + mod; }
-				}
+				int mod = (int)( killer.Skills[SkillName.Seafaring].Value / 25 );
+				if ( mod > 0 ){ level = level + mod; }
 			}
 
 			SunkenShip ShipWreck = new SunkenShip( level );
@@ -567,21 +562,19 @@ namespace Server.Multis
 				goods.CoinPrice = goods.CoinPrice + (int)(from.RawStatTotal/3);
 				ShipWreck.DropItem(goods);
 			}
-			if ( killer is PlayerMobile )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( from );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-				{
-					LootChest MyChest = new LootChest( level );
-					MyChest.Name = "Chest Plundered from " + from.Name + " " + from.Title;
-						if ( from.Karma > 0 ){ MyChest.Name = "Chest Seized from " + from.Name + " " + from.Title; }
-					ShipWreck.DropItem( MyChest );
-				}
-				else if ( from is BasePirate && GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomBool() && killer.Karma > 0 && from.Karma < 0 )
-				{
-					PirateBounty bounty = new PirateBounty();
-					bounty.BountyWho = from.Name + " "  + from.Title;
-					ShipWreck.DropItem( bounty );
-				}
+				LootChest MyChest = new LootChest( level );
+				MyChest.Name = "Chest Plundered from " + from.Name + " " + from.Title;
+					if ( from.Karma > 0 ){ MyChest.Name = "Chest Seized from " + from.Name + " " + from.Title; }
+				ShipWreck.DropItem( MyChest );
+			}
+			else if ( from is BasePirate && GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomBool() && killer.Karma > 0 && from.Karma < 0 )
+			{
+				PirateBounty bounty = new PirateBounty();
+				bounty.BountyWho = from.Name + " "  + from.Title;
+				ShipWreck.DropItem( bounty );
 			}
 
 			ShipWreck.MoveToWorld( splash, from.Map );

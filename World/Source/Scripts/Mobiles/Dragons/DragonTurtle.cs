@@ -69,28 +69,20 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				BaseArmor armor = null;
 
-				if ( killer is PlayerMobile )
+				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseArmor armor = null;
-
-						switch ( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: armor = new PlateArms();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-							case 1: armor = new PlateChest();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-							case 2: armor = new PlateGloves();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-							case 3: armor = new PlateGorget();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-							case 4: armor = new PlateLegs();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-							case 5: armor = new DreadHelm();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
-						}
-					}
+					case 0: armor = new PlateArms();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
+					case 1: armor = new PlateChest();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
+					case 2: armor = new PlateGloves();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
+					case 3: armor = new PlateGorget();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
+					case 4: armor = new PlateLegs();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
+					case 5: armor = new DreadHelm();	armor.Resource = CraftResource.TurtleSpec;		c.DropItem( armor );	break;
 				}
 			}
 		}

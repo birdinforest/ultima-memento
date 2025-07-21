@@ -108,42 +108,35 @@ namespace Server.Mobiles
 			MyChest.Hue = 0x966;
 			MyChest.MoveToWorld( Location, Map );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BlackGateDemon" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BlackGateDemon", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x497;
-							book.Name = "Chest of Demonic Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 32;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 10.0;
-							book.m_Value_2 = 10.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 14;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = null;
-							book.m_Extra = "of the Black Gate";
-							book.m_FromWho = "Found within the Black Gate";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 150;
-							book.m_Hue = 0x497;
-							MyChest.AddItem( book );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BlackGateDemon" ) )
+			{
+				Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BlackGateDemon", true );
+				ManualOfItems book = new ManualOfItems();
+					book.Hue = 0x497;
+					book.Name = "Chest of Demonic Relics";
+					book.m_Charges = 1;
+					book.m_Skill_1 = 99;
+					book.m_Skill_2 = 32;
+					book.m_Skill_3 = 0;
+					book.m_Skill_4 = 0;
+					book.m_Skill_5 = 0;
+					book.m_Value_1 = 10.0;
+					book.m_Value_2 = 10.0;
+					book.m_Value_3 = 0.0;
+					book.m_Value_4 = 0.0;
+					book.m_Value_5 = 0.0;
+					book.m_Slayer_1 = 14;
+					book.m_Slayer_2 = 0;
+					book.m_Owner = null;
+					book.m_Extra = "of the Black Gate";
+					book.m_FromWho = "Found within the Black Gate";
+					book.m_HowGiven = "Acquired by";
+					book.m_Points = 150;
+					book.m_Hue = 0x497;
+					MyChest.AddItem( book );
 			}
 
 			m_MoonTimer = new InternalTimer (this);

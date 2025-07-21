@@ -155,7 +155,7 @@ namespace Server.Mobiles
 			if ( m_TrueForm )
 			{
 				Server.Misc.IntelligentAction.BeforeMyDeath( this );
-				Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+				Server.Misc.IntelligentAction.DropItem( this );
 
 				this.Body = 13;
 				this.BaseSoundID = 655;
@@ -190,50 +190,47 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Dracula" ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Dracula" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Dracula", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x497;
-							book.Name = "Chest of Dracula's Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 0;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 15.0;
-							book.m_Value_2 = 0.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 24;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = killer;
-							book.m_Extra = "of the Vampire";
-							book.m_FromWho = "from Dracula";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 250;
-							book.m_Hue = 0x497;
-							killer.AddToBackpack( book );
-							killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You found a book and put it in your pack.", killer.NetState);
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 0 );
-						c.DropItem( MyChest );
-					}
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Dracula", true );
+					ManualOfItems book = new ManualOfItems();
+						book.Hue = 0x497;
+						book.Name = "Chest of Dracula's Relics";
+						book.m_Charges = 1;
+						book.m_Skill_1 = 99;
+						book.m_Skill_2 = 0;
+						book.m_Skill_3 = 0;
+						book.m_Skill_4 = 0;
+						book.m_Skill_5 = 0;
+						book.m_Value_1 = 15.0;
+						book.m_Value_2 = 0.0;
+						book.m_Value_3 = 0.0;
+						book.m_Value_4 = 0.0;
+						book.m_Value_5 = 0.0;
+						book.m_Slayer_1 = 24;
+						book.m_Slayer_2 = 0;
+						book.m_Owner = killer;
+						book.m_Extra = "of the Vampire";
+						book.m_FromWho = "from Dracula";
+						book.m_HowGiven = "Acquired by";
+						book.m_Points = 250;
+						book.m_Hue = 0x497;
+						killer.AddToBackpack( book );
+						killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You found a book and put it in your pack.", killer.NetState);
 				}
+
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+				{
+					LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+					Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 0 );
+					c.DropItem( MyChest );
+				}				
 			}
 		}
 

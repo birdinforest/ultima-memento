@@ -79,28 +79,20 @@ namespace Server.Mobiles
 		public override void OnDeath( Container c )
 		{
 			base.OnDeath( c );
+	
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				if ( Utility.RandomMinMax( 1, 10 ) == 1 )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						if ( Utility.RandomMinMax( 1, 10 ) == 1 )
-						{
-							CanopicJar jar = new CanopicJar();
-							c.DropItem( jar );
-						}
-						else
-						{
-							EmptyCanopicJar jars = new EmptyCanopicJar();
-							c.DropItem( jars );
-						}
-					}
+					CanopicJar jar = new CanopicJar();
+					c.DropItem( jar );
+				}
+				else
+				{
+					EmptyCanopicJar jars = new EmptyCanopicJar();
+					c.DropItem( jars );
 				}
 			}
 		}

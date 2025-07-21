@@ -47,33 +47,25 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && this.Body == 53 && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon axe = new LargeBattleAxe();
-						axe.MinDamage = axe.MinDamage + 4;
-						axe.MaxDamage = axe.MaxDamage + 8;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.Name = "trollish battle axe";
-						c.DropItem( axe );
-					}
-					else if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && this.Body == 439 && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon mace = new WarMace();
-						mace.MinDamage = mace.MinDamage + 4;
-						mace.MaxDamage = mace.MaxDamage + 8;
-            			mace.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						mace.Name = "trollish war mace";
-						c.DropItem( mace );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && this.Body == 53 && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon axe = new LargeBattleAxe();
+				axe.MinDamage = axe.MinDamage + 4;
+				axe.MaxDamage = axe.MaxDamage + 8;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.Name = "trollish battle axe";
+				c.DropItem( axe );
+			}
+			else if ( GetPlayerInfo.LuckyKiller( killerLuck ) && this.Body == 439 && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon mace = new WarMace();
+				mace.MinDamage = mace.MinDamage + 4;
+				mace.MaxDamage = mace.MaxDamage + 8;
+				mace.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				mace.Name = "trollish war mace";
+				c.DropItem( mace );
 			}
 		}
 

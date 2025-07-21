@@ -76,46 +76,39 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
-						MyChest.GumpID = 0x3D;
-						MyChest.TrapType = TrapType.None;
-						MyChest.Locked = false;
-						MyChest.Name = "frost giant sack";
-						MyChest.Hue = 0x9C2;
-						c.DropItem( MyChest );
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && Body == 325 )
-					{
-						BaseWeapon axe = new TwoHandedAxe();
-						axe.Name = "frost giant axe";
-						axe.ItemID = 0x265E;
-						axe.Hue = 0xB78;
-						axe.SkillBonuses.SetValues( 0, SkillName.Swords, 10 );
-						axe.SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
-						axe.WeaponAttributes.ResistColdBonus = 15;
-						axe.Attributes.WeaponDamage = 50;
-						axe.Attributes.AttackChance = 10;
-           				axe.Slayer = SlayerName.FlameDousing;
-						axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						axe.MinDamage = axe.MinDamage + 6;
-						axe.MaxDamage = axe.MaxDamage + 10;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.AosElementDamages.Cold = 50;
-						axe.AosElementDamages.Physical = 50;
-						c.DropItem( axe );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
+				MyChest.GumpID = 0x3D;
+				MyChest.TrapType = TrapType.None;
+				MyChest.Locked = false;
+				MyChest.Name = "frost giant sack";
+				MyChest.Hue = 0x9C2;
+				c.DropItem( MyChest );
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && Body == 325 )
+			{
+				BaseWeapon axe = new TwoHandedAxe();
+				axe.Name = "frost giant axe";
+				axe.ItemID = 0x265E;
+				axe.Hue = 0xB78;
+				axe.SkillBonuses.SetValues( 0, SkillName.Swords, 10 );
+				axe.SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
+				axe.WeaponAttributes.ResistColdBonus = 15;
+				axe.Attributes.WeaponDamage = 50;
+				axe.Attributes.AttackChance = 10;
+				axe.Slayer = SlayerName.FlameDousing;
+				axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				axe.MinDamage = axe.MinDamage + 6;
+				axe.MaxDamage = axe.MaxDamage + 10;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.AosElementDamages.Cold = 50;
+				axe.AosElementDamages.Physical = 50;
+				c.DropItem( axe );
 			}
 		}
 

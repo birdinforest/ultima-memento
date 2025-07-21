@@ -59,39 +59,32 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.Name = "bone carved chest";
+				MyChest.ItemID = Utility.RandomList( 0x2DF1, 0x2DF1 );
+				MyChest.Hue = 0;
+				c.DropItem( MyChest );
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseArmor armor = null;
+				switch( Utility.RandomMinMax( 0, 5 ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.Name = "bone carved chest";
-						MyChest.ItemID = Utility.RandomList( 0x2DF1, 0x2DF1 );
-						MyChest.Hue = 0;
-						c.DropItem( MyChest );
-					}
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseArmor armor = null;
-						switch( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: armor = new BoneLegs();		break;
-							case 1: armor = new BoneGloves();	break;
-							case 2: armor = new BoneArms();		break;
-							case 3: armor = new BoneChest();	break;
-							case 4: armor = new BoneHelm();		break;
-							case 5: armor = new BoneSkirt();	break;
-						}
-						ResourceMods.SetRandomResource( false, true, armor, CraftResource.None, false, this );
-						LootPackEntry.MakeFixedDrop( this, c, armor );
-						c.DropItem( armor );
-					}
+					case 0: armor = new BoneLegs();		break;
+					case 1: armor = new BoneGloves();	break;
+					case 2: armor = new BoneArms();		break;
+					case 3: armor = new BoneChest();	break;
+					case 4: armor = new BoneHelm();		break;
+					case 5: armor = new BoneSkirt();	break;
 				}
+				ResourceMods.SetRandomResource( false, true, armor, CraftResource.None, false, this );
+				LootPackEntry.MakeFixedDrop( this, c, armor );
+				c.DropItem( armor );
 			}
 		}
 

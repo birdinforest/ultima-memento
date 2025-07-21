@@ -81,36 +81,27 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				BaseArmor skin = null;
+				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseArmor skin = null;
-						switch ( Utility.RandomMinMax( 0, 5 ) )
-						{
-							case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 3: skin = new LeatherArms(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 4: skin = new LeatherChest(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-							case 5: skin = new LeatherCap(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
-						}
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.Name = "titan lich chest";
-						MyChest.Hue = this.Hue;
-						c.DropItem( MyChest );
-					}
+					case 0: skin = new LeatherLegs(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 1: skin = new LeatherGloves(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 2: skin = new LeatherGorget(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 3: skin = new LeatherArms(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 4: skin = new LeatherChest(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
+					case 5: skin = new LeatherCap(); skin.Resource = CraftResource.DeadSkin; c.DropItem( skin ); break;
 				}
+			}
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.Name = "titan lich chest";
+				MyChest.Hue = this.Hue;
+				c.DropItem( MyChest );
 			}
 		}
 

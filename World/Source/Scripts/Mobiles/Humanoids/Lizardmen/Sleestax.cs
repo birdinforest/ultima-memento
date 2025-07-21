@@ -97,30 +97,22 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						int mod = 0; if ( this.Name == "Scarthis" ){ mod = Utility.RandomMinMax( 5, 10 ); }
-						BaseWeapon axe = new Pitchfork();
-						axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						axe.MinDamage = axe.MinDamage + 5 + mod;
-						axe.MaxDamage = axe.MaxDamage + 10 + mod;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.AosElementDamages.Poison = 25;
-						axe.Hue = 0x491;
-						axe.Name = "sleestax trident";
-							if ( this.Title == "the silisk" ){ axe.Name = "silisk trident"; }
-							if ( this.Name == "Scarthis" ){ axe.Name = "Trident of Scarthis"; }
-						c.DropItem( axe );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				int mod = 0; if ( this.Name == "Scarthis" ){ mod = Utility.RandomMinMax( 5, 10 ); }
+				BaseWeapon axe = new Pitchfork();
+				axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				axe.MinDamage = axe.MinDamage + 5 + mod;
+				axe.MaxDamage = axe.MaxDamage + 10 + mod;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.AosElementDamages.Poison = 25;
+				axe.Hue = 0x491;
+				axe.Name = "sleestax trident";
+					if ( this.Title == "the silisk" ){ axe.Name = "silisk trident"; }
+					if ( this.Name == "Scarthis" ){ axe.Name = "Trident of Scarthis"; }
+				c.DropItem( axe );
 			}
 		}
 

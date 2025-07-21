@@ -120,7 +120,8 @@ namespace Server.Mobiles
 			else if ( CanKillIt == 0 )
 			{
 				string Iam = "the Titan of Earth";
-				Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, Iam );
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+				Server.Misc.LoggingFunctions.LogSlayingLord( killer, Iam );
 				if ( winner is PlayerMobile )
 				{
 					LoggingFunctions.LogGenericQuest( winner, "has obtained the power of the earth titan" );

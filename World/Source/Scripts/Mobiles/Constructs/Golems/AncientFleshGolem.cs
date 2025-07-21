@@ -105,37 +105,29 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon harv = new BoneHarvester();
-						harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						harv.MinDamage = harv.MinDamage + 5;
-						harv.MaxDamage = harv.MaxDamage + 10;
-            			harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						harv.Name = "Frankenstein's hand scythe";
-						harv.Hue = 0x9C4;
-						c.DropItem( harv );
-					}
-					else if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon axe = new Axe();
-						axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						axe.MinDamage = axe.MinDamage + 5;
-						axe.MaxDamage = axe.MaxDamage + 10;
-            			axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						axe.Name = "Frankenstein's hand axe";
-						axe.Hue = 0x9C4;
-						c.DropItem( axe );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon harv = new BoneHarvester();
+				harv.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				harv.MinDamage = harv.MinDamage + 5;
+				harv.MaxDamage = harv.MaxDamage + 10;
+				harv.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				harv.Name = "Frankenstein's hand scythe";
+				harv.Hue = 0x9C4;
+				c.DropItem( harv );
+			}
+			else if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon axe = new Axe();
+				axe.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				axe.MinDamage = axe.MinDamage + 5;
+				axe.MaxDamage = axe.MaxDamage + 10;
+				axe.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				axe.Name = "Frankenstein's hand axe";
+				axe.Hue = 0x9C4;
+				c.DropItem( axe );
 			}
 		}
 

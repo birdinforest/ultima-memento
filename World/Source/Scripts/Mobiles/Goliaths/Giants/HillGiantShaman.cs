@@ -80,26 +80,18 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
-						MyChest.GumpID = 0x3D;
-						MyChest.TrapType = TrapType.None;
-						MyChest.Locked = false;
-						MyChest.Name = "hill giant sack";
-						MyChest.Hue = 0x96D;
-						c.DropItem( MyChest );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
+				MyChest.GumpID = 0x3D;
+				MyChest.TrapType = TrapType.None;
+				MyChest.Locked = false;
+				MyChest.Name = "hill giant sack";
+				MyChest.Hue = 0x96D;
+				c.DropItem( MyChest );
 			}
 		}
 

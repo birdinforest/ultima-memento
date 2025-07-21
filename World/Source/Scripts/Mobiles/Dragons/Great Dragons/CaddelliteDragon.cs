@@ -83,17 +83,7 @@ namespace Server.Mobiles
 			base.OnDeath( c );
    			c.DropItem( new StaffPartCaddellite() );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					Server.Mobiles.Dragons.DropSpecial( this, killer, this.Name + " " + this.Title, c, 10, 0 );
-				}
-			}
+			Server.Mobiles.Dragons.DropSpecial( this, this.Name + " " + this.Title, c, 10, 0 );
 		}
 
 		public override bool AutoDispel{ get{ return !Controlled; } }

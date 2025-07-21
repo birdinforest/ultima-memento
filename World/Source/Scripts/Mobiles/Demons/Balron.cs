@@ -111,36 +111,28 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 && Body == 191 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				BaseWeapon sword = new Longsword();
+				sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				sword.MinDamage = sword.MinDamage + 7;
+				sword.MaxDamage = sword.MaxDamage + 12;
+				sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				sword.AosElementDamages.Fire = 50;
+				sword.Name = "sword of " + this.Title;
+				sword.Slayer = SlayerName.Repond;
+				if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitFireball = 25; }
+				sword.Hue = this.Hue;
+				c.DropItem( sword );
+			}
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 && Body == 191 )
-					{
-						BaseWeapon sword = new Longsword();
-						sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						sword.MinDamage = sword.MinDamage + 7;
-						sword.MaxDamage = sword.MaxDamage + 12;
-            			sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						sword.AosElementDamages.Fire = 50;
-						sword.Name = "sword of " + this.Title;
-						sword.Slayer = SlayerName.Repond;
-						if ( Utility.RandomMinMax( 0, 100 ) > 50 ){ sword.WeaponAttributes.HitFireball = 25; }
-						sword.Hue = this.Hue;
-						c.DropItem( sword );
-					}
-
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
-						c.DropItem( MyChest );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+			{
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );
+				c.DropItem( MyChest );
 			}
 		}
 

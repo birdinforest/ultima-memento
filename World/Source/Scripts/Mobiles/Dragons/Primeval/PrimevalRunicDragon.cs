@@ -70,17 +70,7 @@ namespace Server.Mobiles
 
 			c.DropItem( Loot.RandomRuneMagic() );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					Server.Mobiles.Dragons.DropSpecial( this, killer, this.Name + " " + this.Title, c, 10, 0x9CB );
-				}
-			}
+			Server.Mobiles.Dragons.DropSpecial( this, this.Name + " " + this.Title, c, 10, 0x9CB );
 		}
 
 		public override void GenerateLoot()

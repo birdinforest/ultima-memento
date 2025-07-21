@@ -134,7 +134,8 @@ namespace Server.Mobiles
 			else if ( CanKillIt == 0 )
 			{
 				string Iam = "the Titan of Fire";
-				Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, Iam );
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+				Server.Misc.LoggingFunctions.LogSlayingLord( killer, Iam );
 				if ( winner is PlayerMobile )
 				{
 					LoggingFunctions.LogGenericQuest( winner, "has obtained the power of the fire titan" );

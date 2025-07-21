@@ -6,7 +6,7 @@ public class MobileUtilities
 	/// <summary>
 	/// Returns the Luck from the Player that killed or last damaged the provided Mobile
 	/// </summary>
-	public static int GetLuckFromKiller(Mobile m)
+	public static int GetLuckFromKiller(BaseCreature m)
 	{
 		var lastKiller = m.LastKiller;
 		var player = TryGetMasterPlayer(lastKiller);

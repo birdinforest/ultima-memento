@@ -56,54 +56,50 @@ namespace Server.Mobiles
    			ingut.Amount = Utility.RandomMinMax( 1, 3 );
    			c.DropItem(ingut);
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "LichKing" ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "LichKing" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "LichKing", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x845;
-							book.Name = "Chest of Lich King Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 0;
-							book.m_Skill_3 = 0;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 20.0;
-							book.m_Value_2 = 0.0;
-							book.m_Value_3 = 0.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 6;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = null;
-							book.m_Extra = "of the Lich King";
-							book.m_FromWho = "Taken from the King of the Dead";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 150;
-							book.m_Hue = 0x845;
-							c.DropItem( book );
-					}
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "LichKing", true );
+					ManualOfItems book = new ManualOfItems();
+						book.Hue = 0x845;
+						book.Name = "Chest of Lich King Relics";
+						book.m_Charges = 1;
+						book.m_Skill_1 = 99;
+						book.m_Skill_2 = 0;
+						book.m_Skill_3 = 0;
+						book.m_Skill_4 = 0;
+						book.m_Skill_5 = 0;
+						book.m_Value_1 = 20.0;
+						book.m_Value_2 = 0.0;
+						book.m_Value_3 = 0.0;
+						book.m_Value_4 = 0.0;
+						book.m_Value_5 = 0.0;
+						book.m_Slayer_1 = 6;
+						book.m_Slayer_2 = 0;
+						book.m_Owner = null;
+						book.m_Extra = "of the Lich King";
+						book.m_FromWho = "Taken from the King of the Dead";
+						book.m_HowGiven = "Acquired by";
+						book.m_Points = 150;
+						book.m_Hue = 0x845;
+						c.DropItem( book );
+				}
 
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
-						c.DropItem( MyChest );
-					}
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
+				{
+					LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+					Server.Misc.ContainerFunctions.MakeTomb( MyChest, this, 1 );
+					c.DropItem( MyChest );
+				}
 
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 50 ) == 1 )
-					{
-						DemonPrison shard = new DemonPrison();
-						c.DropItem( shard );
-					}
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 50 ) == 1 )
+				{
+					DemonPrison shard = new DemonPrison();
+					c.DropItem( shard );
 				}
 			}
 		}
@@ -135,7 +131,7 @@ namespace Server.Mobiles
 		public override bool OnBeforeDeath()
 		{
 			Server.Misc.IntelligentAction.BeforeMyDeath( this );
-			Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+			Server.Misc.IntelligentAction.DropItem( this );
 			return base.OnBeforeDeath();
 		}
 

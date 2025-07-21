@@ -3915,8 +3915,12 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static void DropItem( Mobile from, Mobile killer )
+		public static void DropItem( BaseCreature from )
 		{
+			if ( MobileUtilities.TryGetKillingPlayer( from ) == null ) return;
+
+			int killerLuck = MobileUtilities.GetLuckFromKiller( from );
+
 			if (	from is BoneMagi || from is SkeletalMage || from is SkeletalWizard || from is Lich || from is Vordo || from is Nazghoul || from is LichLord || from is DemiLich || 
 					from is AncientLich || from is Surtaz || from is LichKing || from is UndeadDruid )
 			{
@@ -3931,236 +3935,212 @@ namespace Server.Misc
 
 			if ( from is Lich || from is Nazghoul || from is LichLord || from is AncientLich || from is Surtaz || from is LichKing || from is DemiLich || from is UndeadDruid )
 			{
-				if ( killer != null )
+				string gear = "an old";
+				int Magic = 1;
+				int Mgear = 3;
+				int MagicHue = Utility.RandomNeutralHue();
+				int MgearHue = Utility.RandomNeutralHue();
+
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 				{
-					string gear = "an old";
-					int Magic = 1;
-					int Mgear = 3;
-					int MagicHue = Utility.RandomNeutralHue();
-					int MgearHue = Utility.RandomNeutralHue();
-
-					if ( killer is BaseCreature )
-						killer = ((BaseCreature)killer).GetMaster();
-
-					if ( killer is PlayerMobile )
+					if ( from is Lich )
 					{
-						if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-						{
-							if ( from is Lich )
-							{
-								gear = "a lich";
-								Magic = 1;
-								Mgear = 3;
-							}
-							else if ( from is LichLord )
-							{
-								gear = "a lich lord";
-								Magic = 3;
-								Mgear = 5;
-							}
-							else if ( from is Nazghoul )
-							{
-								gear = "a nazghoul";
-								Magic = 3;
-								Mgear = 5;
-							}
-							else if ( from is AncientLich )
-							{
-								gear = "an ancient";
-								Magic = 5;
-								Mgear = 7;
-							}
-							else if ( from is Surtaz )
-							{
-								gear = "Surtaz's";
-								Magic = 7;
-								Mgear = 9;
-							}
-							else if ( from is LichKing )
-							{
-								gear = "a dreaded";
-								Magic = 7;
-								Mgear = 9;
-								MagicHue = 1150;
-							}
-							else if ( from is DemiLich )
-							{
-								gear = "a demilich";
-								MagicHue = from.Hunger;
-								MgearHue = from.Thirst;
-								Magic = 3;
-								Mgear = 5;
+						gear = "a lich";
+						Magic = 1;
+						Mgear = 3;
+					}
+					else if ( from is LichLord )
+					{
+						gear = "a lich lord";
+						Magic = 3;
+						Mgear = 5;
+					}
+					else if ( from is Nazghoul )
+					{
+						gear = "a nazghoul";
+						Magic = 3;
+						Mgear = 5;
+					}
+					else if ( from is AncientLich )
+					{
+						gear = "an ancient";
+						Magic = 5;
+						Mgear = 7;
+					}
+					else if ( from is Surtaz )
+					{
+						gear = "Surtaz's";
+						Magic = 7;
+						Mgear = 9;
+					}
+					else if ( from is LichKing )
+					{
+						gear = "a dreaded";
+						Magic = 7;
+						Mgear = 9;
+						MagicHue = 1150;
+					}
+					else if ( from is DemiLich )
+					{
+						gear = "a demilich";
+						MagicHue = from.Hunger;
+						MgearHue = from.Thirst;
+						Magic = 3;
+						Mgear = 5;
 
-								if ( from.Title == "the crypt thing" ){		gear = "a crypt";	Magic = 5; }
-								else if ( from.Title == "the dark lich" ){	gear = "a dark";	Magic = 7; }
-							}
-							else if ( from is UndeadDruid )
-							{
-								gear = "a dark druid";
-								Magic = 3;
-								Mgear = 5;
-								MagicHue = 0x497;
-								MgearHue = 0x497;
-							}
+						if ( from.Title == "the crypt thing" ){		gear = "a crypt";	Magic = 5; }
+						else if ( from.Title == "the dark lich" ){	gear = "a dark";	Magic = 7; }
+					}
+					else if ( from is UndeadDruid )
+					{
+						gear = "a dark druid";
+						Magic = 3;
+						Mgear = 5;
+						MagicHue = 0x497;
+						MgearHue = 0x497;
+					}
 
-							switch( Utility.RandomMinMax( 0, 1 ) )
-							{
-								case 0: 
-									NecromancerRobe robe = new NecromancerRobe(); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.VileFabric; }
-										robe.Name = gear + " robe";
-										robe.Hue = MagicHue;
-										robe.Attributes.CastRecovery = Magic;
-										robe.Attributes.CastSpeed = Magic;
-										robe.Attributes.LowerManaCost = 4 + Magic;
-										robe.Attributes.LowerRegCost = 4 + Magic;
-										robe.Attributes.SpellDamage = 2 + Magic;
-										from.AddItem( robe );
-									break;
-								case 1: 
-									QuarterStaff staff = new QuarterStaff(); if ( Utility.RandomBool() ){ staff.Resource = CraftResource.GhostTree; }
-										staff.Name = gear + " staff";
-										staff.ItemID = Utility.RandomList( 0xDF0, 0x13F8, 0xE89, 0x2D25 );
-										staff.Hue = MgearHue;
-										staff.WeaponAttributes.HitHarm = 5 * Mgear;
-										staff.MaxHitPoints = 100;
-										staff.HitPoints = 100;
-										staff.MinDamage = staff.MinDamage + Mgear;
-										staff.MaxDamage = staff.MaxDamage + Mgear;
-										staff.SkillBonuses.SetValues( 0, SkillName.Bludgeoning, (2*Mgear) );
-										((BaseCreature)from).PackItem( staff );
-									break;
-							}
-						}
+					switch( Utility.RandomMinMax( 0, 1 ) )
+					{
+						case 0: 
+							NecromancerRobe robe = new NecromancerRobe(); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.VileFabric; }
+								robe.Name = gear + " robe";
+								robe.Hue = MagicHue;
+								robe.Attributes.CastRecovery = Magic;
+								robe.Attributes.CastSpeed = Magic;
+								robe.Attributes.LowerManaCost = 4 + Magic;
+								robe.Attributes.LowerRegCost = 4 + Magic;
+								robe.Attributes.SpellDamage = 2 + Magic;
+								from.AddItem( robe );
+							break;
+						case 1: 
+							QuarterStaff staff = new QuarterStaff(); if ( Utility.RandomBool() ){ staff.Resource = CraftResource.GhostTree; }
+								staff.Name = gear + " staff";
+								staff.ItemID = Utility.RandomList( 0xDF0, 0x13F8, 0xE89, 0x2D25 );
+								staff.Hue = MgearHue;
+								staff.WeaponAttributes.HitHarm = 5 * Mgear;
+								staff.MaxHitPoints = 100;
+								staff.HitPoints = 100;
+								staff.MinDamage = staff.MinDamage + Mgear;
+								staff.MaxDamage = staff.MaxDamage + Mgear;
+								staff.SkillBonuses.SetValues( 0, SkillName.Bludgeoning, (2*Mgear) );
+								((BaseCreature)from).PackItem( staff );
+							break;
 					}
 				}
 			}
 			else if ( from is VampireLord || from is Vampire || from is VampirePrince || from is Dracula )
 			{
-				if ( killer != null )
+				string gear = "a vampire";
+				int Magic = 1;
+				int Mgear = 3;
+				int MagicHue = 0x497;
+				int MgearHue = 0x485;
+
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 				{
-					string gear = "a vampire";
-					int Magic = 1;
-					int Mgear = 3;
-					int MagicHue = 0x497;
-					int MgearHue = 0x485;
-
-					if ( killer is BaseCreature )
-						killer = ((BaseCreature)killer).GetMaster();
-
-					if ( killer is PlayerMobile )
+					if ( from is Vampire )
 					{
-						if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-						{
-							if ( from is Vampire )
-							{
-								gear = "a vampire";
-								Magic = 1;
-								Mgear = 3;
-							}
-							else if ( from is VampireLord )
-							{
-								gear = "a vampire lord";
-								Magic = 3;
-								Mgear = 5;
-							}
-							else if ( from is VampirePrince )
-							{
-								gear = "a vampire prince";
-								Magic = 5;
-								Mgear = 7;
-							}
-							else if ( from is Dracula )
-							{
-								gear = "Dracula's";
-								Magic = 7;
-								Mgear = 9;
-							}
+						gear = "a vampire";
+						Magic = 1;
+						Mgear = 3;
+					}
+					else if ( from is VampireLord )
+					{
+						gear = "a vampire lord";
+						Magic = 3;
+						Mgear = 5;
+					}
+					else if ( from is VampirePrince )
+					{
+						gear = "a vampire prince";
+						Magic = 5;
+						Mgear = 7;
+					}
+					else if ( from is Dracula )
+					{
+						gear = "Dracula's";
+						Magic = 7;
+						Mgear = 9;
+					}
 
-							switch( Utility.RandomMinMax( 0, 1 ) )
-							{
-								case 0: 
-									VampireRobe robe = new VampireRobe(); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.VileFabric; }
-										robe.Name = gear + " robe";
-										robe.Hue = MagicHue;
-										robe.Resistances.Cold = 3 + Mgear;
-										robe.Attributes.DefendChance = 3 + Mgear;
-										robe.Attributes.BonusStr = 1 + Mgear;
-										robe.Attributes.NightSight = 1;
-										robe.Attributes.RegenHits = 1 + Mgear;
-										from.AddItem( robe );
-									break;
-								case 1: 
-									Cloak cloak = new Cloak(); if ( Utility.RandomBool() ){ cloak.Resource = CraftResource.VileFabric; }
-										cloak.Name = gear + " cloak";
-										cloak.Hue = MgearHue;
-										cloak.Resistances.Cold = 3 + Magic;
-										cloak.Attributes.DefendChance = 3 + Magic;
-										cloak.Attributes.BonusStr = 1 + Magic;
-										cloak.Attributes.NightSight = 1;
-										cloak.Attributes.RegenHits = 1 + Magic;
-										from.AddItem( cloak );
-									break;
-							}
-						}
+					switch( Utility.RandomMinMax( 0, 1 ) )
+					{
+						case 0: 
+							VampireRobe robe = new VampireRobe(); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.VileFabric; }
+								robe.Name = gear + " robe";
+								robe.Hue = MagicHue;
+								robe.Resistances.Cold = 3 + Mgear;
+								robe.Attributes.DefendChance = 3 + Mgear;
+								robe.Attributes.BonusStr = 1 + Mgear;
+								robe.Attributes.NightSight = 1;
+								robe.Attributes.RegenHits = 1 + Mgear;
+								from.AddItem( robe );
+							break;
+						case 1: 
+							Cloak cloak = new Cloak(); if ( Utility.RandomBool() ){ cloak.Resource = CraftResource.VileFabric; }
+								cloak.Name = gear + " cloak";
+								cloak.Hue = MgearHue;
+								cloak.Resistances.Cold = 3 + Magic;
+								cloak.Attributes.DefendChance = 3 + Magic;
+								cloak.Attributes.BonusStr = 1 + Magic;
+								cloak.Attributes.NightSight = 1;
+								cloak.Attributes.RegenHits = 1 + Magic;
+								from.AddItem( cloak );
+							break;
 					}
 				}
 			}
 			else if ( from.EmoteHue == 11 && from.Title == "the mad archmage" )
 			{
-				if ( killer != null )
+				switch( Utility.RandomMinMax( 0, 1 ) )
 				{
-					switch( Utility.RandomMinMax( 0, 1 ) )
-					{
-						case 0: 
-							Robe robe = new Robe( ); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.MysteriousFabric; }
-								robe.Hue = 0xA2A;
-								robe.Name = "robe of the mad archmage";
-								robe.Attributes.SpellDamage = 35;
-								robe.Attributes.CastRecovery = 1;
-								robe.Attributes.CastSpeed = 1;
-								robe.Attributes.LowerManaCost = 30;
-								robe.Attributes.LowerRegCost = 30;
-								from.AddItem( robe );
-							break;
-						case 1: 
-							WizardsHat hat = new WizardsHat( ); if ( Utility.RandomBool() ){ hat.Resource = CraftResource.MysteriousFabric; }
-								hat.Hue = 0xA2A;
-								hat.Name = "hat of the mad archmage";
-								hat.Attributes.SpellDamage = 25;
-								hat.Attributes.CastRecovery = 1;
-								hat.Attributes.CastSpeed = 1;
-								hat.Attributes.LowerManaCost = 20;
-								hat.Attributes.LowerRegCost = 20;
-								from.AddItem( hat );
-							break;
-					}
+					case 0: 
+						Robe robe = new Robe( ); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.MysteriousFabric; }
+							robe.Hue = 0xA2A;
+							robe.Name = "robe of the mad archmage";
+							robe.Attributes.SpellDamage = 35;
+							robe.Attributes.CastRecovery = 1;
+							robe.Attributes.CastSpeed = 1;
+							robe.Attributes.LowerManaCost = 30;
+							robe.Attributes.LowerRegCost = 30;
+							from.AddItem( robe );
+						break;
+					case 1: 
+						WizardsHat hat = new WizardsHat( ); if ( Utility.RandomBool() ){ hat.Resource = CraftResource.MysteriousFabric; }
+							hat.Hue = 0xA2A;
+							hat.Name = "hat of the mad archmage";
+							hat.Attributes.SpellDamage = 25;
+							hat.Attributes.CastRecovery = 1;
+							hat.Attributes.CastSpeed = 1;
+							hat.Attributes.LowerManaCost = 20;
+							hat.Attributes.LowerRegCost = 20;
+							from.AddItem( hat );
+						break;
 				}
 			}
 			else if ( from.EmoteHue == 16 )
 			{
-				if ( killer != null )
+				switch( Utility.RandomMinMax( 0, 1 ) )
 				{
-					switch( Utility.RandomMinMax( 0, 1 ) )
-					{
-						case 0: 
-							Robe robe = new Robe( ); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.ArcticFabric; }
-								robe.Hue = 0x482;
-								robe.Name = "ice queen robe";
-								robe.Attributes.RegenMana = 5;
-								robe.Attributes.ReflectPhysical = 20;
-								robe.Attributes.SpellDamage = 35;
-								from.AddItem( robe );
-							break;
-						case 1: 
-							WizardsHat hat = new WizardsHat( ); if ( Utility.RandomBool() ){ hat.Resource = CraftResource.ArcticFabric; }
-								hat.Hue = 0x482;
-								hat.Name = "ice queen hat";
-								hat.Attributes.RegenMana = 3;
-								hat.Attributes.ReflectPhysical = 10;
-								hat.Attributes.SpellDamage = 15;
-								from.AddItem( hat );
-							break;
-					}
+					case 0: 
+						Robe robe = new Robe( ); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.ArcticFabric; }
+							robe.Hue = 0x482;
+							robe.Name = "ice queen robe";
+							robe.Attributes.RegenMana = 5;
+							robe.Attributes.ReflectPhysical = 20;
+							robe.Attributes.SpellDamage = 35;
+							from.AddItem( robe );
+						break;
+					case 1: 
+						WizardsHat hat = new WizardsHat( ); if ( Utility.RandomBool() ){ hat.Resource = CraftResource.ArcticFabric; }
+							hat.Hue = 0x482;
+							hat.Name = "ice queen hat";
+							hat.Attributes.RegenMana = 3;
+							hat.Attributes.ReflectPhysical = 10;
+							hat.Attributes.SpellDamage = 15;
+							from.AddItem( hat );
+						break;
 				}
 			}
 		}

@@ -105,26 +105,18 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && this.Body == 75 && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						BaseWeapon hammer = new WarHammer();
-						hammer.Name = "cyclopean hammer";
-						hammer.ItemID = 0x267C;
-						hammer.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-						hammer.MinDamage = hammer.MinDamage + 6;
-						hammer.MaxDamage = hammer.MaxDamage + 10;
-            			hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-						c.DropItem( hammer );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && this.Body == 75 && Utility.RandomMinMax( 1, 4 ) == 1 )
+			{
+				BaseWeapon hammer = new WarHammer();
+				hammer.Name = "cyclopean hammer";
+				hammer.ItemID = 0x267C;
+				hammer.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+				hammer.MinDamage = hammer.MinDamage + 6;
+				hammer.MaxDamage = hammer.MaxDamage + 10;
+				hammer.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+				c.DropItem( hammer );
 			}
 		}
 

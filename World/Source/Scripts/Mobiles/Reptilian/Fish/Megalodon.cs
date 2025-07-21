@@ -71,19 +71,11 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) )
-					{
-						c.DropItem( new MegalodonTooth() );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) )
+			{
+				c.DropItem( new MegalodonTooth() );
 			}
 		}
 

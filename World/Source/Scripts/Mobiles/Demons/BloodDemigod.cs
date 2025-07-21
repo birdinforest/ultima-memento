@@ -64,42 +64,35 @@ namespace Server.Mobiles
    			ingut.Amount = Utility.RandomMinMax( 1, 3 );
    			c.DropItem(ingut);
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BloodDemigod" ) )
-					{
-						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BloodDemigod", true );
-						ManualOfItems book = new ManualOfItems();
-							book.Hue = 0x870;
-							book.Name = "Chest of Bloody Relics";
-							book.m_Charges = 1;
-							book.m_Skill_1 = 99;
-							book.m_Skill_2 = 2;
-							book.m_Skill_3 = 23;
-							book.m_Skill_4 = 0;
-							book.m_Skill_5 = 0;
-							book.m_Value_1 = 10.0;
-							book.m_Value_2 = 10.0;
-							book.m_Value_3 = 10.0;
-							book.m_Value_4 = 0.0;
-							book.m_Value_5 = 0.0;
-							book.m_Slayer_1 = 24;
-							book.m_Slayer_2 = 0;
-							book.m_Owner = null;
-							book.m_Extra = "of Blood";
-							book.m_FromWho = "Taken from the Demigoddess of Blood";
-							book.m_HowGiven = "Acquired by";
-							book.m_Points = 150;
-							book.m_Hue = 0x870;
-							c.DropItem( book );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BloodDemigod" ) )
+			{
+				Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BloodDemigod", true );
+				ManualOfItems book = new ManualOfItems();
+					book.Hue = 0x870;
+					book.Name = "Chest of Bloody Relics";
+					book.m_Charges = 1;
+					book.m_Skill_1 = 99;
+					book.m_Skill_2 = 2;
+					book.m_Skill_3 = 23;
+					book.m_Skill_4 = 0;
+					book.m_Skill_5 = 0;
+					book.m_Value_1 = 10.0;
+					book.m_Value_2 = 10.0;
+					book.m_Value_3 = 10.0;
+					book.m_Value_4 = 0.0;
+					book.m_Value_5 = 0.0;
+					book.m_Slayer_1 = 24;
+					book.m_Slayer_2 = 0;
+					book.m_Owner = null;
+					book.m_Extra = "of Blood";
+					book.m_FromWho = "Taken from the Demigoddess of Blood";
+					book.m_HowGiven = "Acquired by";
+					book.m_Points = 150;
+					book.m_Hue = 0x870;
+					c.DropItem( book );
 			}
 		}
 

@@ -86,28 +86,19 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-			if ( killer != null )
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
-						MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
-						ResourceMods.SetRandomResource( false, false, MyChest, CraftResource.RegularLeather, false, null );
-						MyChest.GumpID = 0x3D;
-						MyChest.TrapType = TrapType.None;
-						MyChest.Locked = false;
-						MyChest.Name = "stone giant sack";
-						MyChest.Hue = 0x9C4;
-						c.DropItem( MyChest );
-					}
-				}
+				LootChest MyChest = new LootChest( Server.Misc.IntelligentAction.FameBasedLevel( this ) );
+				MyChest.ItemID = Utility.RandomList( 0x1248, 0x1264, 0x55DD, 0x577E );
+				ResourceMods.SetRandomResource( false, false, MyChest, CraftResource.RegularLeather, false, null );
+				MyChest.GumpID = 0x3D;
+				MyChest.TrapType = TrapType.None;
+				MyChest.Locked = false;
+				MyChest.Name = "stone giant sack";
+				MyChest.Hue = 0x9C4;
+				c.DropItem( MyChest );
 			}
 		}
 

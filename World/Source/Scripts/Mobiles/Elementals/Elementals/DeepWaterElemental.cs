@@ -104,19 +104,11 @@ namespace Server.Mobiles
 
 		public override void OnDeath( Container c )
 		{
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
-			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 10 ) == 1 )
-					{
-						c.DropItem( new HugeWaterTub() );
-					}
-				}
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 10 ) == 1 )
+			{
+				c.DropItem( new HugeWaterTub() );
 			}
 
 			base.OnDeath( c );

@@ -130,7 +130,8 @@ namespace Server.Mobiles
 				this.Hue = 0x497;
 
 				string Iam = this.Name + " the Shadowlord";
-				Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, Iam );
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+				Server.Misc.LoggingFunctions.LogSlayingLord( killer, Iam );
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{

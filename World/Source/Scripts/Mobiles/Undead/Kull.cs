@@ -84,39 +84,36 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( killer is PlayerMobile )
+				if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) )
 				{
-					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
+					Item loot = null;
+
+					switch( Utility.RandomMinMax( 0, 9 ) )
 					{
-						Item loot = null;
+						case 0: loot = new PlateChest(); break;
+						case 1: loot = new PlateArms(); break;
+						case 2: loot = new PlateLegs(); break;
+						case 3: loot = new PlateGorget(); break;
+						case 4: loot = new PlateGloves(); break;
+						case 5: loot = new OrcHelm(); break;
+						case 6: loot = new Longsword(); break;
+						case 7: loot = new OrderShield(); break;
+						case 8: loot = new Boots(); break;
+						case 9: loot = Loot.RandomJewelry(); break;
+					}
 
-						switch( Utility.RandomMinMax( 0, 9 ) )
-						{
-							case 0: loot = new PlateChest(); break;
-							case 1: loot = new PlateArms(); break;
-							case 2: loot = new PlateLegs(); break;
-							case 3: loot = new PlateGorget(); break;
-							case 4: loot = new PlateGloves(); break;
-							case 5: loot = new OrcHelm(); break;
-							case 6: loot = new Longsword(); break;
-							case 7: loot = new OrderShield(); break;
-							case 8: loot = new Boots(); break;
-							case 9: loot = Loot.RandomJewelry(); break;
-						}
-
-						if ( loot != null )
-						{
-							ResourceMods.SetResource( loot, CraftResource.WyrmSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-							loot.InfoText1 = "Kull the Wyrm Guard";
-							c.DropItem( loot ); 
-						}
+					if ( loot != null )
+					{
+						ResourceMods.SetResource( loot, CraftResource.WyrmSpec );
+						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+						loot.InfoText1 = "Kull the Wyrm Guard";
+						c.DropItem( loot ); 
 					}
 				}
 			}

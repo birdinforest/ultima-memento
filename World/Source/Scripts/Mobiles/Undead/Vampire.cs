@@ -154,7 +154,7 @@ namespace Server.Mobiles
 			if ( m_TrueForm || Utility.RandomBool() )
 			{
 				Server.Misc.IntelligentAction.BeforeMyDeath( this );
-				Server.Misc.IntelligentAction.DropItem( this, this.LastKiller );
+				Server.Misc.IntelligentAction.DropItem( this );
 
 				this.Body = 13;
 				this.BaseSoundID = 655;

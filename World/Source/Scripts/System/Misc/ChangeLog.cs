@@ -61,7 +61,10 @@ namespace Server.Misc
 			builder.Append("       - Extra container can no longer be double filled<br>");
 			builder.Append("- Misc - [c is now sent as a Global Chat message<br>");
 			builder.Append("- Misc - Gold is now worth twice as much when gathering Piety and Souls<br>");
+			builder.Append("- Misc - Rare drops from non-player kills now only use half of a player's luck<br>");
 			builder.Append("- Mobs - Mobs drop less gems<br>");
+			builder.Append("- Mobs - Fire salamander special drop is no longer guaranteed<br>");
+			builder.Append("- Mobs - Ancient tree special drop is no longer guaranteed<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
@@ -81,6 +84,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Unidentified drinks no longer get chugged when double-clicked<br>");
 			builder.Append("- Misc - Players may now mark/recall from the Ambrosia dungeon home<br>");
 			builder.Append("- Misc - Double-click to equip throw/pugilist gloves now properly removes glove armor<br>");
+			builder.Append("- Misc - Enemies killed by Provoked mobs now qualify for rare drops<br>");
 			builder.Append("- Quest - Fix issue where Taz gridloot wouldn't trigger on quest item you had to double-click<br>");
 			builder.Append("- Pets - Fix issue that would prevent treasure hoard spawning and quest completion<br>");
 			builder.Append("- Spell - Sanctify now conveys the proper buff duration<br>");

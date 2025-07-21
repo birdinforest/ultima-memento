@@ -154,7 +154,8 @@ namespace Server.Mobiles
 				this.Hue = 0x845;
 
 				string Iam = "the Bane of Insanity";
-				Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, Iam );
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+				Server.Misc.LoggingFunctions.LogSlayingLord( killer, Iam );
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{

@@ -66,45 +66,40 @@ namespace Server.Mobiles
 			Item skull = new SkullOfBaronAlmric();
 			c.DropItem( skull );
 
-			Mobile killer = this.LastKiller;
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+				if ( GetPlayerInfo.VeryLuckyKiller( killerLuck ) )
 				{
-					if ( GetPlayerInfo.VeryLuckyKiller( killer.Luck ) )
+					Item item = null;
+
+					switch( Utility.RandomMinMax( 0, 6 ) )
 					{
-						Item item = null;
+						case 0:
+							BaseWeapon sword = new Longsword();
+							sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
+							sword.MinDamage = sword.MinDamage + 7;
+							sword.MaxDamage = sword.MaxDamage + 12;
+							sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+							sword.Slayer = SlayerName.DragonSlaying;
+							sword.Name = "sword of Baron Almric";
+							sword.Hue = 0x9C4;
+							c.DropItem( sword );	
+							break;
+						case 1: item = new DragonLegs();		item.InfoText2 = "Slain by Baron Almric";	break;
+						case 2: item = new DragonGloves();		item.InfoText2 = "Slain by Baron Almric";	break;
+						case 3: item = new DragonArms();		item.InfoText2 = "Slain by Baron Almric";	break;
+						case 4: item = new DragonChest();		item.InfoText2 = "Slain by Baron Almric";	break;
+						case 5: item = new DragonHelm();		item.InfoText2 = "Slain by Baron Almric";	break;
+						case 6: item = new ScalemailShield();	item.InfoText2 = "Slain by Baron Almric";	break;
+					}
 
-						switch( Utility.RandomMinMax( 0, 6 ) )
-						{
-							case 0:
-								BaseWeapon sword = new Longsword();
-								sword.AccuracyLevel = WeaponAccuracyLevel.Supremely;
-								sword.MinDamage = sword.MinDamage + 7;
-								sword.MaxDamage = sword.MaxDamage + 12;
-								sword.DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-								sword.Slayer = SlayerName.DragonSlaying;
-								sword.Name = "sword of Baron Almric";
-								sword.Hue = 0x9C4;
-								c.DropItem( sword );	
-								break;
-							case 1: item = new DragonLegs();		item.InfoText2 = "Slain by Baron Almric";	break;
-							case 2: item = new DragonGloves();		item.InfoText2 = "Slain by Baron Almric";	break;
-							case 3: item = new DragonArms();		item.InfoText2 = "Slain by Baron Almric";	break;
-							case 4: item = new DragonChest();		item.InfoText2 = "Slain by Baron Almric";	break;
-							case 5: item = new DragonHelm();		item.InfoText2 = "Slain by Baron Almric";	break;
-							case 6: item = new ScalemailShield();	item.InfoText2 = "Slain by Baron Almric";	break;
-						}
-
-						if ( item != null && item is BaseArmor )
-						{
-							BaseArmor armor = (BaseArmor)item;
-							item = Server.LootPackEntry.Enchant( killer, 500, item );
-							c.DropItem( item ); 
-						}
+					if ( item != null && item is BaseArmor )
+					{
+						BaseArmor armor = (BaseArmor)item;
+						item = Server.LootPackEntry.Enchant( killer, 500, item );
+						c.DropItem( item ); 
 					}
 				}
 			}

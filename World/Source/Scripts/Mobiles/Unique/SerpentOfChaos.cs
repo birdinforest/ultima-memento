@@ -110,7 +110,8 @@ namespace Server.Mobiles
 				MySpawner.MoveToWorld( loc, Map );
 
 				string Iam = "the Serpent of Chaos";
-				Server.Misc.LoggingFunctions.LogSlayingLord( this.LastKiller, Iam );
+				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+				Server.Misc.LoggingFunctions.LogSlayingLord( killer, Iam );
 
 				if ( winner is PlayerMobile )
 				{

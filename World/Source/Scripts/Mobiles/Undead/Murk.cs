@@ -73,45 +73,36 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			Mobile killer = this.LastKiller;
-			if ( killer != null )
+			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
+				Item loot = null;
 
-				if ( killer is PlayerMobile )
+				switch( Utility.RandomMinMax( 0, 9 ) )
 				{
-					if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
-					{
-						Item loot = null;
+					case 0: loot = new StuddedChest(); break;
+					case 1: loot = new StuddedArms(); break;
+					case 2: loot = new StuddedLegs(); break;
+					case 3: loot = new StuddedGorget(); break;
+					case 4: loot = new StuddedGloves(); break;
+					case 5: loot = new PirateHat(); break;
+					case 6: loot = new Scimitar(); break;
+					case 7: loot = new Buckler(); break;
+					case 8: loot = new Boots(); break;
+					case 9: loot = Loot.RandomJewelry(); break;
+				}
 
-						switch( Utility.RandomMinMax( 0, 9 ) )
-						{
-							case 0: loot = new StuddedChest(); break;
-							case 1: loot = new StuddedArms(); break;
-							case 2: loot = new StuddedLegs(); break;
-							case 3: loot = new StuddedGorget(); break;
-							case 4: loot = new StuddedGloves(); break;
-							case 5: loot = new PirateHat(); break;
-							case 6: loot = new Scimitar(); break;
-							case 7: loot = new Buckler(); break;
-							case 8: loot = new Boots(); break;
-							case 9: loot = Loot.RandomJewelry(); break;
-						}
-
-						if ( loot != null )
-						{
-							ResourceMods.SetResource( loot, CraftResource.SpectralSpec );
-							loot.InfoText1 = "Murk the Slayer of the Coast";
-							c.DropItem( loot ); 
-						}
-					}
-
-					PirateChest MyChest = new PirateChest(6, null);
-					MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
-					c.DropItem( MyChest );
+				if ( loot != null )
+				{
+					ResourceMods.SetResource( loot, CraftResource.SpectralSpec );
+					loot.InfoText1 = "Murk the Slayer of the Coast";
+					c.DropItem( loot ); 
 				}
 			}
+
+			PirateChest MyChest = new PirateChest(6, null);
+			MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
+			c.DropItem( MyChest );
 		}
 
 		public override void GenerateLoot()
