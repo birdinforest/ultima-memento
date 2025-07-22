@@ -45,7 +45,7 @@ namespace Server.Misc
 			builder.Append("         At 30+ skill, both items will be guaranteed<br>");
 			builder.Append("       - Scenario - 5 items drop<br>");
 			builder.Append("         At 20 skill, 1 item will be guaranteed<br>");
-			builder.Append("           The remaining 4items will have a 20/125 chance to drop<br>");
+			builder.Append("           The remaining 4 items will have a 20/125 chance to drop<br>");
 			builder.Append("         At 30 skill, 2 items will be guaranteed<br>");
 			builder.Append("           The remaining 3 items will have a 30/125 chance to drop<br>");
 			builder.Append("         At 60 skill, 3 items will be guaranteed<br>");
@@ -68,6 +68,7 @@ namespace Server.Misc
 			builder.Append("- Mobs - Ancient tree special drop is no longer guaranteed<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");
+			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Quest - Update final messaging for Skara<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");
