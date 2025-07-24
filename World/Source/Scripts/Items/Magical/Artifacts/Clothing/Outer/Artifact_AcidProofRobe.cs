@@ -29,7 +29,7 @@ namespace Server.Items
 			long ticksNow = TimeNow.Ticks;
 			int minsThen = (int)TimeSpan.FromTicks(ticksThen).TotalMinutes;
 			int minsNow = (int)TimeSpan.FromTicks(ticksNow).TotalMinutes;
-			int CanFillBottle = 120 - ( minsNow - minsThen );
+			int CanFillBottle = 10 - ( minsNow - minsThen );
 
 			if ( Parent != from )
 			{
