@@ -69,6 +69,7 @@ namespace Server.Misc
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");
 			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
+			builder.Append("- NPC - Mercantile/guild bonus now increases the amount of Gold that vendors have available for purchase<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Quest - Update final messaging for Skara<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");

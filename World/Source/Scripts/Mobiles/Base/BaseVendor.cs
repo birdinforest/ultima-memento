@@ -186,7 +186,7 @@ namespace Server.Mobiles
 			RefreshSelf();
 		}
 
-		private static int GetOrCreateCoinPurse( BaseVendor vendor, Mobile from )
+		private static int GetOrCreateCoinPurse( BaseVendor vendor, Mobile from, bool sendMessage = false)
 		{
 			if ( vendor is PlayerBarkeeper ) return 0;
 			
@@ -249,6 +249,41 @@ namespace Server.Mobiles
 			}
 
 			int newCoins = Utility.RandomMinMax( minGold, maxGold );
+
+			if ( from is PlayerMobile )
+			{
+				const int MAX_BONUS_PERCENT = 100;
+				const int HALF_BONUS_PERCENT = MAX_BONUS_PERCENT / 2;
+
+				string message = null;
+				int bonusGoldPercent;
+				PlayerMobile player = (PlayerMobile)from;
+				if ( player.NpcGuild == vendor.NpcGuild )
+				{
+					bonusGoldPercent = MAX_BONUS_PERCENT;
+					message = "Thanks to your guild membership, the merchant offers more coin.";
+				}
+				else if ( player.NpcGuild == NpcGuild.MerchantsGuild )
+				{
+					bonusGoldPercent = HALF_BONUS_PERCENT;
+					message = "The merchant offers all of his coins.";
+				}
+				else
+				{
+					bonusGoldPercent = Math.Min( HALF_BONUS_PERCENT, (int)from.Skills[SkillName.Mercantile].Value / 2 );
+					if ( 0 < bonusGoldPercent )
+						message = bonusGoldPercent == HALF_BONUS_PERCENT 
+							? "The merchant offers all of his coins."
+							: "You convince the merchant to offer a few more coins.";
+				}
+
+				newCoins += newCoins * bonusGoldPercent / 100;
+
+				// Chance to explain the bonus is in effect
+				if ( sendMessage && !string.IsNullOrWhiteSpace(message) && Utility.RandomMinMax(1, 5) == 1 )
+					from.SendMessage(message);
+			}
+
 			if ( !vendor.SetCoinPurse( from, newCoins ) ) return 0; // Unexpected case
 
 			if ( vendor.m_CoinsNeedReset )
@@ -1065,7 +1100,7 @@ namespace Server.Mobiles
 				return;
 			}
 
-			int coins = GetOrCreateCoinPurse( this, from ); // Lazy generate
+			int coins = GetOrCreateCoinPurse( this, from, true ); // Lazy generate
 			if ( coins < 1 )
 			{
 				if ( from != null )
