@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.2.0";
+			return "Version: 1.3.0";
 		}
 
 		public static string Versions()
@@ -14,6 +14,20 @@ namespace Server.Misc
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
+			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
+			builder.Append("- NPC - Mercantile/guild bonus now increases the amount of Gold that vendors have available for purchase<br>");
+			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 1.2.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Admin - Add '[Freeze-SetId' command to set the Freezable Item ID<br>");
@@ -29,7 +43,6 @@ namespace Server.Misc
 			builder.Append("- Item - Lawn tools and Remodeling tools now have a Remove Target button on the Remove All page<br>");
 			builder.Append("- Item - Lawn tools and Remodeling tools no longer remove when double-clicked<br>");
 			builder.Append("- Item - Jars of wax are now more effective on instruments<br>");
-			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - Legendary Artefacts (LA) rework<br>");
 			builder.Append("       - Max level is now 40<br>");
 			builder.Append("       - Points are 5 per level, resulting in a maximum of 200 points<br>");
@@ -69,8 +82,6 @@ namespace Server.Misc
 			builder.Append("- Mobs - Ancient tree special drop is no longer guaranteed<br>");
 			builder.Append("- NPC - Vendor gold is generated per-account instead of for the entire world<br>");
 			builder.Append("- NPC - Necromancer guildmaster now sells witch reagents<br>");
-			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
-			builder.Append("- NPC - Mercantile/guild bonus now increases the amount of Gold that vendors have available for purchase<br>");
 			builder.Append("- Pets - Pets in the world no longer lose loyalty when the Player is offline<br>");
 			builder.Append("- Quest - Update final messaging for Skara<br>");
 			builder.Append("- Skill - Discordance skill has been reworked<br>");
@@ -80,7 +91,6 @@ namespace Server.Misc
 			builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
 			builder.Append("- Skill - Mercantile can now be gained from npc transactions (Buy/Sell/Shoppes)<br>");
 			builder.Append("- Skill - Searching is now limited to 1 bonus skill check per points<br>");
-			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
