@@ -80,6 +80,7 @@ namespace Server.Misc
 			builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
 			builder.Append("- Skill - Mercantile can now be gained from npc transactions (Buy/Sell/Shoppes)<br>");
 			builder.Append("- Skill - Searching is now limited to 1 bonus skill check per points<br>");
+			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

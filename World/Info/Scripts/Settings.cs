@@ -301,7 +301,7 @@ namespace Server
 	// The percent of gold you get from creatures, treasure, cargo, museum searches, shoppes, and some quests
 	// between 5 (low) to 100 (high).
 
-		public static int S_GetGoldCutRate = 25;
+		public static int S_GetGoldCutRate = 35;
 
 	// The gold reward from bulletin board quests is modified below between 0 and 250 percent. It also modifies
 	// the thief note quests you get from whispering to the guildmaster, and the decorative items they steal.
