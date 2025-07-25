@@ -81,7 +81,8 @@ namespace Server.Spells.Research
 				{
 					Effects.PlaySound( p, Caster.Map, 0x65A );
 
-					damage = (damage * 2) / targets.Count;
+					if ( targets.Count > 1 )
+						damage /= 2;
 						
 					double toDeal;
 					for ( int i = 0; i < targets.Count; ++i )

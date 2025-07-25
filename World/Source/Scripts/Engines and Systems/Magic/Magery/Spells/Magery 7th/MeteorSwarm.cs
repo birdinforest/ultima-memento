@@ -93,7 +93,7 @@ namespace Server.Spells.Seventh
 					Effects.PlaySound( p, Caster.Map, 0x160 );
 
 					if (targets.Count > 1)
-						damage = (damage * 2) / targets.Count;
+						damage /= 2;
 						
 					for ( int i = 0; i < targets.Count; ++i )
 					{

@@ -78,8 +78,8 @@ namespace Server.Spells.Research
 
 				if ( targets.Count > 0 )
 				{
-					if ( targets.Count > 2 )
-						damage = (damage * 2) / targets.Count;
+					if ( targets.Count > 1 )
+						damage /= 2;
 						
 					double toDeal;
 					for ( int i = 0; i < targets.Count; ++i )

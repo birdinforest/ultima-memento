@@ -82,7 +82,7 @@ namespace Server.Spells.Elementalism
 				if ( targets.Count > 0 )
 				{
 					if (targets.Count > 1)
-						damage = (damage * 2) / targets.Count;
+						damage /= 2;
 
 					for ( int i = 0; i < targets.Count; ++i )
 					{
