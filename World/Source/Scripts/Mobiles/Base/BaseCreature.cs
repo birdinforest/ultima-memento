@@ -2135,7 +2135,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public static void BeefUp( BaseCreature bc, int up )
+		public static void BeefUp( BaseCreature bc, int up, bool clampRating = true )
 		{
 			if ( up >= 0 )
 			{
@@ -2153,10 +2153,13 @@ namespace Server.Mobiles
 					rating = (double)MySettings.S_Deadly;
 
 				// WE DON'T WANT THE VERY POWERFUL CREATURES TO BE IMPOSSIBLE SO WE CAP THEM BASED ON FAME
-				if ( bc.Fame >= 20000 ){ rating = (double)MySettings.S_Normal; }
-				else if ( bc.Fame >= 18000 && up > 1 ){ rating = (double)MySettings.S_Difficult; }
-				else if ( bc.Fame >= 15000 && up > 2 ){ rating = (double)MySettings.S_Challenging; }
-				else if ( bc.Fame >= 10000 && up > 3 ){ rating = (double)MySettings.S_Hard; }
+				if ( clampRating )
+				{
+					if ( bc.Fame >= 20000 ){ rating = (double)MySettings.S_Normal; }
+					else if ( bc.Fame >= 18000 && up > 1 ){ rating = (double)MySettings.S_Difficult; }
+					else if ( bc.Fame >= 15000 && up > 2 ){ rating = (double)MySettings.S_Challenging; }
+					else if ( bc.Fame >= 10000 && up > 3 ){ rating = (double)MySettings.S_Hard; }
+				}
 
 				// Buffs
 				double TameBuff   = rating / 200.0;

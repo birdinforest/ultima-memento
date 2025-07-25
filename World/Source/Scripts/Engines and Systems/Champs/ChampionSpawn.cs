@@ -496,6 +496,20 @@ namespace Server.Engines.CannedEvil
 			if (!m_Active || Deleted || m_Champion != null)
 				return;
 
+			// If there are less mobs per level, they should be harder to kill
+			// AOE lacking builds can focus on these
+			int beefUpAmount;
+			if ( SpawnSzMod <= 3 )
+				beefUpAmount = 4;
+			else if ( SpawnSzMod <= 6 )
+				beefUpAmount = 3;
+			else if ( SpawnSzMod <= 9 )
+				beefUpAmount = 2;
+			else if ( SpawnSzMod <= 12 )
+				beefUpAmount = 1;
+			else
+				beefUpAmount = 0;
+
 			while (m_Creatures.Count < ((SpawnSzMod * (200 / 12))) - (GetSubLevel() * (SpawnSzMod * (40 / 12))))
 			{
 				Mobile m = Spawn();
@@ -516,6 +530,7 @@ namespace Server.Engines.CannedEvil
 				if (m is BaseCreature)
 				{
 					BaseCreature bc = m as BaseCreature;
+					BaseCreature.BeefUp(bc, beefUpAmount - 1, false);
 					bc.Tamable = false;
 					bc.Summoned = true;
 
