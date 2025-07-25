@@ -8856,8 +8856,8 @@ namespace Server.Mobiles
 			if ( this.Mounted )
 			{
 				Mobiles.IMount mt = this.Mount;
-				Mobile animal = (Mobile)mt;
-				animal.Delete();
+				if (mt is Mobile)
+					((Mobile)mt).Delete();
 			}
 
 			base.OnDelete();
