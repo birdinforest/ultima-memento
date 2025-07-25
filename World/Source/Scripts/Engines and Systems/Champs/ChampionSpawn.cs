@@ -65,7 +65,7 @@ namespace Server.Engines.CannedEvil
 		}
 
 		[Constructable]
-		public ChampionSpawn() : base(0xBD2)
+		public ChampionSpawn(bool setInitialSpawnArea = true) : base(0xBD2)
 		{
 			Movable = false;
 			Visible = false;
@@ -82,7 +82,9 @@ namespace Server.Engines.CannedEvil
 
 			m_DamageEntries = new Dictionary<Mobile, int>();
 
-			Timer.DelayCall(TimeSpan.Zero, new TimerCallback(SetInitialSpawnArea));
+			// Apparently this should only execute after Location changes
+			if (setInitialSpawnArea)
+				Timer.DelayCall(TimeSpan.Zero, new TimerCallback(SetInitialSpawnArea));
 		}
 
 		public void SetInitialSpawnArea()

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 using System;
+using Server.Engines.CannedEvil;
 
 namespace Server.Misc
 {
@@ -4604,6 +4605,7 @@ namespace Server.Commands
 		private static Type typeofWarningItem = typeof( WarningItem );
 		private static Type typeofHintItem = typeof( HintItem );
 		private static Type typeofSerpentPillar = typeof( SerpentPillar );
+		private static Type typeofChampionSpawn = typeof( ChampionSpawn );
 
 		public Item Construct()
 		{
@@ -4851,6 +4853,45 @@ namespace Server.Commands
 					}
 
 					item = (Item)Activator.CreateInstance( m_Type, new object[]{ facing } );
+				}
+				else if ( m_Type == typeofChampionSpawn )
+                {
+                    var spawn = new ChampionSpawn(false);
+					var rect = spawn.SpawnArea;
+					item = spawn;
+
+                    for ( int i = 0; i < m_Params.Length; ++i )
+					{
+						bool isSpawnStart = m_Params[i].StartsWith( "SpawnArea.Start" );
+						bool isSpawnEnd = m_Params[i].StartsWith( "SpawnArea.End" );
+						if ( isSpawnStart || isSpawnEnd )
+						{
+							int indexOf = m_Params[i].IndexOf( '=' );
+
+							if ( indexOf >= 0 )
+							{
+								var splitValue = m_Params[i].Substring( ++indexOf );
+								Point2D point = Point2D.Parse(splitValue);
+                                if (isSpawnStart)
+                                    rect.Start = point;
+                                else
+									rect.End = point;
+                            }
+                        }
+						else if ( m_Params[i].StartsWith( "SpawnSzMod" ) )
+						{
+							int indexOf = m_Params[i].IndexOf( '=' );
+
+							if ( indexOf >= 0 )
+							{
+								spawn.SpawnSzMod = Utility.ToInt32( m_Params[i].Substring( ++indexOf ) );
+                            }
+						}
+					}
+					
+					// Have to execute the call after the object is moved
+                    Timer.DelayCall(TimeSpan.Zero, () => spawn.SpawnArea = rect);
+
 				}
 				else
 				{
