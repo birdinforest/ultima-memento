@@ -91,7 +91,8 @@ namespace Server.Spells.DeathKnight
 
 				if ( targets.Count > 0 )
 				{
-					damage = (damage * 2) / targets.Count;
+					if (targets.Count > 1)
+						damage = (damage * 2) / targets.Count;
 
 					for ( int i = 0; i < targets.Count; ++i )
 					{
