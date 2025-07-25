@@ -1,4 +1,5 @@
 using Server.Engines.CannedEvil;
+using Server.Network;
 using Server.Targeting;
 
 namespace Server.Items
@@ -94,7 +95,7 @@ namespace Server.Items
 						idol.Spawn.Type = m_Skull.Type;
 						from.Direction = from.GetDirectionTo( idol );
 						from.Animate( 32, 5, 1, true, false, 0 ); // Bow
-						from.SendMessage("You smash the skull on the champion idol in defiance.");
+						from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You smash the skull on the idol.", from.NetState);
 
 						m_Skull.Delete();
 					}
