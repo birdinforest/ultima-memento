@@ -9,16 +9,18 @@ namespace Server.Engines.CannedEvil
 {
 	public class ChampionSpawn : Item
 	{
+		private const int MAX_SPAWN_SIZE_MOD = 12;
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SpawnSzMod
 		{
 			get
 			{
-				return (m_SPawnSzMod < 1 || m_SPawnSzMod > 12) ? 12 : m_SPawnSzMod;
+				return (m_SPawnSzMod < 1 || m_SPawnSzMod > MAX_SPAWN_SIZE_MOD) ? MAX_SPAWN_SIZE_MOD : m_SPawnSzMod;
 			}
 			set
 			{
-				m_SPawnSzMod = (value < 1 || value > 12) ? 12 : value;
+				m_SPawnSzMod = (value < 1 || value > MAX_SPAWN_SIZE_MOD) ? MAX_SPAWN_SIZE_MOD : value;
 			}
 		}
 		private int m_SPawnSzMod;
@@ -505,12 +507,12 @@ namespace Server.Engines.CannedEvil
 				beefUpAmount = 3;
 			else if ( SpawnSzMod <= 9 )
 				beefUpAmount = 2;
-			else if ( SpawnSzMod <= 12 )
+			else if ( SpawnSzMod <= MAX_SPAWN_SIZE_MOD )
 				beefUpAmount = 1;
 			else
 				beefUpAmount = 0;
 
-			while (m_Creatures.Count < ((SpawnSzMod * (200 / 12))) - (GetSubLevel() * (SpawnSzMod * (40 / 12))))
+			while (m_Creatures.Count < (SpawnSzMod * (200 / MAX_SPAWN_SIZE_MOD)) - (GetSubLevel() * SpawnSzMod * (40 / MAX_SPAWN_SIZE_MOD)))
 			{
 				Mobile m = Spawn();
 
