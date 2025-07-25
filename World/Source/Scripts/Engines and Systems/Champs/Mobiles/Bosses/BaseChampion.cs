@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Server.Engines.CannedEvil;
 using Server.Items;
 
 namespace Server.Mobiles
@@ -89,7 +91,7 @@ namespace Server.Mobiles
 			return PowerScroll.CreateRandomNoCraft(level, level);
 		}
 
-		public void GivePowerScrolls()
+		public void GivePowerScrolls(int numberToDrop)
 		{
 			List<Mobile> toGive = new List<Mobile>();
 			List<DamageStore> rights = GetLootingRights(this.DamageEntries, this.HitsMax);
@@ -114,7 +116,7 @@ namespace Server.Mobiles
 				toGive[rand] = hold;
 			}
 
-			for (int i = 0; i < 6; ++i)
+			for (int i = 0; i < numberToDrop; ++i)
 			{
 				Mobile m = toGive[i % toGive.Count];
 
@@ -146,7 +148,18 @@ namespace Server.Mobiles
 		{
 			if (!NoKillAwards)
 			{
-				GivePowerScrolls();
+				var owningSpawn = World.Items.Values
+					.Where(x => x is ChampionSpawn)
+					.Cast<ChampionSpawn>()
+					.FirstOrDefault(spawn => spawn.Champion == this);
+				if (owningSpawn == null)
+					Console.WriteLine("No owning spawn found for {0} ({1})", Name, Serial);
+
+				var powerScrollAmount = owningSpawn != null
+					? owningSpawn.SpawnSzMod / 2
+					: 0; // No idea how this happened
+				powerScrollAmount = Math.Max(1, powerScrollAmount);
+				GivePowerScrolls(powerScrollAmount);
 
 				if (NoGoodies)
 					return base.OnBeforeDeath();
