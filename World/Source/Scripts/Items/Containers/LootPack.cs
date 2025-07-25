@@ -628,7 +628,7 @@ namespace Server
 			min = Math.Max(0, min);
 			max = Math.Max(min + 1, max);
 
-			int luckChance = from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
+			int luckChance = from != null &&from.Luck > 0 ? LootPack.GetRegularLuckChance(from) : 0;
 
 			if ( item is BaseWeapon )
 				BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, isRunicTool, luckChance, props, min, max );
