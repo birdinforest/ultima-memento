@@ -1,11 +1,28 @@
+using System;
 using Server.Engines.CannedEvil;
 using Server.Network;
 using Server.Targeting;
+using Server.Utilities;
 
 namespace Server.Items
 {
 	public class ChampionSkull : Item
 	{
+		public const int MAX_DAYS_AGE = 7;
+
+		private DateTime m_Created;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public DateTime Created
+		{
+			get { return m_Created; }
+			set
+			{
+				m_Created = value;
+				InvalidateProperties();
+			}
+		}
+
 		private ChampionSpawnType m_Type;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -40,10 +57,26 @@ namespace Server.Items
 			Name = "A skull of summoning";
 			Type = type;
 			LootType = LootType.Cursed;
+			m_Created = DateTime.UtcNow;
 		}
 
 		public ChampionSkull(Serial serial) : base(serial)
 		{
+		}
+
+		public static void Initialize()
+		{
+			EventSink.WorldSave += (args) =>
+			{
+				var expirationTimestamp = DateTime.UtcNow.AddDays(0 - MAX_DAYS_AGE);
+				foreach (var skull in WorldUtilities.ForEachItem<ChampionSkull>(item => !item.Deleted))
+				{
+					if (skull.m_Created < expirationTimestamp)
+						skull.Delete();
+					else
+						skull.InvalidateProperties();
+				}
+			};
 		}
 
 		private static ChampionSpawnType GetRandomType()
@@ -93,8 +126,8 @@ namespace Server.Items
 					{
 						idol.Spawn.Active = true;
 						idol.Spawn.Type = m_Skull.Type;
-						from.Direction = from.GetDirectionTo( idol );
-						from.Animate( 32, 5, 1, true, false, 0 ); // Bow
+						from.Direction = from.GetDirectionTo(idol);
+						from.Animate(32, 5, 1, true, false, 0); // Bow
 						from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You smash the skull on the idol.", from.NetState);
 
 						m_Skull.Delete();
@@ -111,7 +144,23 @@ namespace Server.Items
 		{
 			base.GetProperties(list);
 
+			TimeSpan timeRemaining = m_Created.AddDays(MAX_DAYS_AGE) - DateTime.UtcNow;
+			if (timeRemaining.TotalMinutes < 0)
+			{
+				list.Add("It is a plain skull.");
+				return;
+			}
+
 			list.Add("[Use on a Champion Idol]");
+
+			if (timeRemaining.TotalDays < 1)
+				list.Add("Energy: Waning"); // < 1 day
+			else if (timeRemaining.TotalDays < 3)
+				list.Add("Energy: Diminished"); // 1-3 day
+			else if (timeRemaining.TotalDays < 7)
+				list.Add("Energy: Fading"); // 3-7 days
+			else
+				list.Add("Energy: Potent"); // 7+ days
 
 			string type = null;
 			switch (m_Type)
@@ -148,8 +197,9 @@ namespace Server.Items
 		{
 			base.Serialize(writer);
 
-			writer.Write((int)0); // version
+			writer.Write((int)1); // version
 
+			writer.Write(m_Created);
 			writer.Write((int)m_Type);
 		}
 
@@ -161,9 +211,16 @@ namespace Server.Items
 
 			switch (version)
 			{
+				case 1:
+					{
+						m_Created = reader.ReadDateTime();
+						goto case 0;
+					}
 				case 0:
 					{
 						m_Type = (ChampionSpawnType)reader.ReadInt();
+						if (version == 0)
+							m_Created = DateTime.UtcNow;
 
 						break;
 					}
