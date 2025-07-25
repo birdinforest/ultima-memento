@@ -186,21 +186,17 @@ namespace Server.Mobiles
 
 		public override void OnDeath(Container c)
 		{
-			List<DamageStore> rights = BaseCreature.GetLootingRights(this.DamageEntries, this.HitsMax);
-			List<Mobile> toGive = new List<Mobile>();
+			LootChest MyChest = new LootChest(10);
+			Server.Misc.ContainerFunctions.MakeDemonBox(MyChest, this);
+			c.DropItem(MyChest);
 
-			for (int i = rights.Count - 1; i >= 0; --i)
-			{
-				DamageStore ds = rights[i];
-
-				if (ds.m_HasRight)
-					toGive.Add(ds.m_Mobile);
-			}
-
-			// if ( toGive.Count > 0 )
-			// 	toGive[Utility.Random( toGive.Count )].AddToBackpack( new ChampionSkull( SkullType ) );
-			// else
-			// 	c.DropItem( new ChampionSkull( SkullType ) );
+			var killer = MobileUtilities.TryGetMasterPlayer(this);
+			var item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(killer));
+			item = LootPackEntry.Enchant(killer, 500, item);
+			string owner = Name;
+			if ( !string.IsNullOrWhiteSpace(Title) ){ owner = Name + " " + Title; }
+			item.InfoText1 = string.Format("[Belonged to: {0}]", owner);
+			c.DropItem(item);
 
 			base.OnDeath(c);
 		}
