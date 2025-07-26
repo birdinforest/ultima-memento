@@ -1,11 +1,14 @@
 using System;
 using Server;
 using Server.Mobiles;
+using System.Globalization;
 
 namespace Server.Items
 {
 	public class SlayerGroup
 	{
+		private static readonly TextInfo m_CultureInfo = new CultureInfo("en-US", false).TextInfo;
+
 		private static SlayerEntry[] m_TotalEntries;
 		private static SlayerGroup[] m_Groups;
 
@@ -27,6 +30,14 @@ namespace Server.Items
 				return m_TotalEntries[v];
 
 			return null;
+		}
+
+		public static string GetName(SlayerName name)
+		{
+			SlayerEntry entry = GetEntryByName( name );
+			if( entry != null ) return m_CultureInfo.ToTitleCase(CliLocTable.Lookup( entry.Title ));
+
+			return "Unknown Slayer";
 		}
 
 		public static SlayerName GetLootSlayerType( Type type )
@@ -75,7 +86,7 @@ namespace Server.Items
 
 			humanoid.Opposition = new SlayerGroup[]{ };
 			humanoid.FoundOn = new Type[]{ };
-			humanoid.Super = new SlayerEntry( SlayerName.Repond, 
+			humanoid.Super = new SlayerEntry( SlayerName.Repond, // "humanoid assassination"
 				typeof( PirateCaptain ), 
 				typeof( PirateCrew ), 
 				typeof( PirateCrewBow ), 
@@ -204,7 +215,7 @@ namespace Server.Items
 				typeof( Troll ) );
 			humanoid.Entries = new SlayerEntry[]
 				{
-					new SlayerEntry( SlayerName.OgreTrashing, 
+					new SlayerEntry( SlayerName.OgreTrashing, // "ogre extinction"
 						typeof( Ogre ), 
 						typeof( TundraOgre ), 
 						typeof( OgreLord ), 
@@ -214,7 +225,7 @@ namespace Server.Items
 						typeof( PirateDragonogre ), 
 						typeof( OgreMagi ), 
 						typeof( ArcticOgreLord ) ),
-					new SlayerEntry( SlayerName.OrcSlaying, 
+					new SlayerEntry( SlayerName.OrcSlaying, // "orcish demise"
 						typeof( Urk ), 
 						typeof( UrkShaman ),
 						typeof( Urc ), 
@@ -232,7 +243,7 @@ namespace Server.Items
 						typeof( Orx ), 
 						typeof( OrxWarrior ), 
 						typeof( OrcishMage ) ),
-					new SlayerEntry( SlayerName.TrollSlaughter, 
+					new SlayerEntry( SlayerName.TrollSlaughter, // "troll killer"
 						typeof( Troll ), 
 						typeof( PirateTroll ), 
 						typeof( SwampTroll ), 
@@ -245,7 +256,7 @@ namespace Server.Items
 
 			undead.Opposition = new SlayerGroup[]{ };
 			undead.FoundOn = new Type[]{ };
-			undead.Super = new SlayerEntry( SlayerName.Silver, 
+			undead.Super = new SlayerEntry( SlayerName.Silver, // "supernatural vanquishing"
 				typeof( AncientLich ), 
 				typeof( LichKing ), 
 				typeof( BaronAlmric ), 
@@ -358,7 +369,7 @@ namespace Server.Items
 
 			fey.Opposition = new SlayerGroup[]{ };
 			fey.FoundOn = new Type[]{ };
-			fey.Super = new SlayerEntry( SlayerName.Fey, 
+			fey.Super = new SlayerEntry( SlayerName.Fey, // "fey slayer"
 				typeof( Centaur ), 
 				typeof( EtherealWarrior ), 
 				typeof( Kirin ), 
@@ -390,12 +401,14 @@ namespace Server.Items
 				typeof( MLDryad ), 
 				typeof( xDryad ), 
 				typeof( Xatyr ), 
-				typeof( Satyr ) );
+				typeof( Satyr ),
+				typeof( ShadowWisp )
+				 );
 			fey.Entries = new SlayerEntry[0];
 
 			wizard.Opposition = new SlayerGroup[]{ };
 			wizard.FoundOn = new Type[]{ };
-			wizard.Super = new SlayerEntry( SlayerName.WizardSlayer, 
+			wizard.Super = new SlayerEntry( SlayerName.WizardSlayer, // "wizard slayer"
 				typeof( ElfMage ), 
 				typeof( ElfBoatSailorMage ), 
 				typeof( PirateCrewMage ), 
@@ -455,7 +468,7 @@ namespace Server.Items
 
 			avian.Opposition = new SlayerGroup[]{ };
 			avian.FoundOn = new Type[]{ };
-			avian.Super = new SlayerEntry( SlayerName.AvianHunter, 
+			avian.Super = new SlayerEntry( SlayerName.AvianHunter, // "avian hunter"
 				typeof( Bird ), 
 				typeof( Chicken ), 
 				typeof( Turkey ), 
@@ -482,7 +495,7 @@ namespace Server.Items
 
 			slimy.Opposition = new SlayerGroup[]{ };
 			slimy.FoundOn = new Type[]{ };
-			slimy.Super = new SlayerEntry( SlayerName.SlimyScourge, 
+			slimy.Super = new SlayerEntry( SlayerName.SlimyScourge, // "slimy scourge"
 				typeof( BlackPudding ), 
 				typeof( BloodWorm ), 
 				typeof( SlimeDevil ), 
@@ -507,7 +520,7 @@ namespace Server.Items
 
 			animal.Opposition = new SlayerGroup[]{ };
 			animal.FoundOn = new Type[]{ };
-			animal.Super = new SlayerEntry( SlayerName.AnimalHunter, 
+			animal.Super = new SlayerEntry( SlayerName.AnimalHunter, // "animal hunter"
 				typeof( MysticalFox ), 
 				typeof( BlackBear ), 
 				typeof( SabreclawCub ), 
@@ -604,6 +617,7 @@ namespace Server.Items
 				typeof( Llama ), 
 				typeof( Giraffe ), 
 				typeof( Mongbat ), 
+				typeof ( GreaterMongbat ),
 				typeof( MountainGoat ), 
 				typeof( PackHorse ), 
 				typeof( ZebraRiding ), 
@@ -643,7 +657,7 @@ namespace Server.Items
 
 			giant.Opposition = new SlayerGroup[]{ };
 			giant.FoundOn = new Type[]{ };
-			giant.Super = new SlayerEntry( SlayerName.GiantKiller, 
+			giant.Super = new SlayerEntry( SlayerName.GiantKiller, // "giant killer"
 				typeof( ArcticOgreLord ),
 				typeof( AbysmalOgre ),  
 				typeof( Cyclops ),
@@ -699,7 +713,7 @@ namespace Server.Items
 
 			golem.Opposition = new SlayerGroup[]{ };
 			golem.FoundOn = new Type[]{ };
-			golem.Super = new SlayerEntry( SlayerName.GolemDestruction, 
+			golem.Super = new SlayerEntry( SlayerName.GolemDestruction, // "golem destruction"
 				typeof( BoneGolem ), 
 				typeof( Exodus ), 
 				typeof( FleshGolem ), 
@@ -741,7 +755,7 @@ namespace Server.Items
 
 			weed.Opposition = new SlayerGroup[]{ };
 			weed.FoundOn = new Type[]{ };
-			weed.Super = new SlayerEntry( SlayerName.WeedRuin, 
+			weed.Super = new SlayerEntry( SlayerName.WeedRuin, // "weed ruin"
 				typeof( Bogling ), 
 				typeof( KelpElemental ), 
 				typeof( WeedElemental ), 
@@ -772,7 +786,7 @@ namespace Server.Items
 
 			neptune.Opposition = new SlayerGroup[]{ };
 			neptune.FoundOn = new Type[]{ };
-			neptune.Super = new SlayerEntry( SlayerName.NeptunesBane, 
+			neptune.Super = new SlayerEntry( SlayerName.NeptunesBane, // "neptune's bane"
 				typeof( AquaticGhoul ), 
 				typeof( SeaWeeder ), 
 				typeof( Sleestax ), 
@@ -846,7 +860,7 @@ namespace Server.Items
 
 			elemental.Opposition = new SlayerGroup[]{ };
 			elemental.FoundOn = new Type[]{ };
-			elemental.Super = new SlayerEntry( SlayerName.ElementalBan, 
+			elemental.Super = new SlayerEntry( SlayerName.ElementalBan, // "elemental ban"
 				typeof( ToxicElemental ), 
 				typeof( AcidPuddle ), 
 				typeof( AgapiteElemental ), 
@@ -944,7 +958,7 @@ namespace Server.Items
 				typeof( SummonedWaterElemental ) );
 			elemental.Entries = new SlayerEntry[]
 				{
-					new SlayerEntry( SlayerName.BloodDrinking, 
+					new SlayerEntry( SlayerName.BloodDrinking, // "blood bane"
 						typeof( GiantLeech ), 
 						typeof( MarshWurm ), 
 						typeof( GiantLamprey ), 
@@ -961,7 +975,7 @@ namespace Server.Items
 						typeof( Dracula ), 
 						typeof( BloodElemental ),
 						typeof( BloodSpawn ) ), 
-					new SlayerEntry( SlayerName.EarthShatter, 
+					new SlayerEntry( SlayerName.EarthShatter, // "stone smashing"
 						typeof( AgapiteElemental ), 
 						typeof( ObsidianElemental ), 
 						typeof( BronzeElemental ), 
@@ -996,7 +1010,7 @@ namespace Server.Items
 						typeof( ShadowIronElemental ), 
 						typeof( ValoriteElemental ), 
 						typeof( VeriteElemental ) ),
-					new SlayerEntry( SlayerName.ElementalHealth, 
+					new SlayerEntry( SlayerName.ElementalHealth, // "poison cleansing"
 						typeof( IronCobra ), 
 						typeof( IronBeetle ), 
 						typeof( MechanicalScorpion ), 
@@ -1015,7 +1029,7 @@ namespace Server.Items
 						typeof( CaveFisher ), 
 						typeof( PoisonElemental ),
 						typeof( SewageElemental ) ),
-					new SlayerEntry( SlayerName.FlameDousing, 
+					new SlayerEntry( SlayerName.FlameDousing, // "flame extinguishing"
 						typeof( Vulcrum ), 
 						typeof( FireElemental ), 
 						typeof( ElementalCalledFire ),
@@ -1053,7 +1067,7 @@ namespace Server.Items
 						typeof( FireBat ), 
 						typeof( SummonedFireElementalGreater ), 
 						typeof( SummonedFireElemental ) ),
-					new SlayerEntry( SlayerName.SummerWind, 
+					new SlayerEntry( SlayerName.SummerWind, // "arctic destruction"
 						typeof( SnowElemental ), 
 						typeof( IceElemental ),
 						typeof( SnowHarpy ),
@@ -1073,7 +1087,7 @@ namespace Server.Items
 						typeof( IceSerpent ),
 						typeof( IceSnake ),
 						typeof( IcebergElemental ) ),
-					new SlayerEntry( SlayerName.Vacuum, 
+					new SlayerEntry( SlayerName.Vacuum, // "windy wrath"
 						typeof( SandVortex ), 
 						typeof( DustElemental ), 
 						typeof( PoisonCloud ), 
@@ -1085,7 +1099,7 @@ namespace Server.Items
 						typeof( Typhoon ), 
 						typeof( SummonedAirElementalGreater ), 
 						typeof( SummonedAirElemental ) ),
-					new SlayerEntry( SlayerName.WaterDissipation, 
+					new SlayerEntry( SlayerName.WaterDissipation, // "watery grave"
 						typeof( WaterSpawn ), 
 						typeof( WaterElemental ), 
 						typeof( ElementalSpiritWater ), 
@@ -1107,7 +1121,7 @@ namespace Server.Items
 
 			abyss.Opposition = new SlayerGroup[]{ };
 			abyss.FoundOn = new Type[]{ };
-			abyss.Super = new SlayerEntry( SlayerName.Exorcism, 
+			abyss.Super = new SlayerEntry( SlayerName.Exorcism, // "abysmal banishment"
 				typeof( Tarjan ), 
 				typeof( BloodDemigod ), 
 				typeof( DemonOfTheSea ), 
@@ -1177,7 +1191,7 @@ namespace Server.Items
 
 			abyss.Entries = new SlayerEntry[]
 				{
-					new SlayerEntry( SlayerName.GargoylesFoe, 
+					new SlayerEntry( SlayerName.GargoylesFoe, // "gargoyle bane"
 						typeof( FireGargoyle ), 
 						typeof( Gargoyle ), 
 						typeof( PirateGargoyle ), 
@@ -1201,7 +1215,7 @@ namespace Server.Items
 						typeof( GargoyleSapphire ), 
 						typeof( GargoyleWarrior ), 
 						typeof( StoneGargoyle ) ),
-					new SlayerEntry( SlayerName.BalronDamnation, 
+					new SlayerEntry( SlayerName.BalronDamnation, // "devilish death"
 						typeof( Tarjan ), 
 						typeof( BloodDemigod ), 
 						typeof( Xurtzar ), 
@@ -1218,7 +1232,7 @@ namespace Server.Items
 						typeof( PirateDevil ), 
 						typeof( BloodDemon ), 
 						typeof( IceDevil ) ),
-					new SlayerEntry( SlayerName.DaemonDismissal, 
+					new SlayerEntry( SlayerName.DaemonDismissal, // "demonic dismissal"
 						typeof( DemonOfTheSea ), 
 						typeof( ElementalLordWater ), 
 						typeof( FireDemon ), 
@@ -1243,7 +1257,7 @@ namespace Server.Items
 
 			arachnid.Opposition = new SlayerGroup[]{ };
 			arachnid.FoundOn = new Type[]{ };
-			arachnid.Super = new SlayerEntry( SlayerName.ArachnidDoom, 
+			arachnid.Super = new SlayerEntry( SlayerName.ArachnidDoom, // "arachnid doom"
 				typeof( DreadSpider ), 
 				typeof( ShadowRecluse ), 
 				typeof( ZombieSpider ), 
@@ -1269,10 +1283,10 @@ namespace Server.Items
 				typeof( TerathanWarrior ) );
 			arachnid.Entries = new SlayerEntry[]
 				{
-					new SlayerEntry( SlayerName.ScorpionsBane, 
+					new SlayerEntry( SlayerName.ScorpionsBane, // "scorpion slayer"
 						typeof( Scorpion ), 
 						typeof( DeadlyScorpion ) ), 
-					new SlayerEntry( SlayerName.SpidersDeath, 
+					new SlayerEntry( SlayerName.SpidersDeath, // "spider eradication"
 						typeof( DreadSpider ), 
 						typeof( ShadowRecluse ), 
 						typeof( ZombieSpider ), 
@@ -1290,7 +1304,7 @@ namespace Server.Items
 						typeof( WaterStrider ), 
 						typeof( SandSpider ), 
 						typeof( GiantSpider ) ), 
-					new SlayerEntry( SlayerName.Terathan, 
+					new SlayerEntry( SlayerName.Terathan, // "terathan extermination"
 						typeof( TerathanAvenger ), 
 						typeof( TerathanDrone ), 
 						typeof( TerathanMatriarch ), 
@@ -1301,7 +1315,7 @@ namespace Server.Items
 
 			reptilian.Opposition = new SlayerGroup[]{ };
 			reptilian.FoundOn = new Type[]{ };
-			reptilian.Super = new SlayerEntry( SlayerName.ReptilianDeath, 
+			reptilian.Super = new SlayerEntry( SlayerName.ReptilianDeath, // "reptile slayer"
 				typeof( Drakkul ), 
 				typeof( DrakkulMage ), 
 				typeof( DrakkulChief ), 
@@ -1457,10 +1471,11 @@ namespace Server.Items
 				typeof( AncientWyvern ), 
 				typeof( SeaDrake ), 
 				typeof( Wyvra ), 
-				typeof( Serpentaur ) );
+				typeof( Serpentaur ),
+				typeof( SerpentineDragon ) );
 			reptilian.Entries = new SlayerEntry[]
 				{
-					new SlayerEntry( SlayerName.DragonSlaying, 
+					new SlayerEntry( SlayerName.DragonSlaying, // "dragon slayer"
 						typeof( Drakkul ), 
 						typeof( DrakkulMage ), 
 						typeof( DrakkulChief ), 
@@ -1520,7 +1535,7 @@ namespace Server.Items
 						typeof( YoungRoc ), 
 						typeof( ShadowWyrm ), 
 						typeof( SkeletalDragon ), 
-				typeof( SkeletonDragon ), 
+						typeof( SkeletonDragon ), 
 						typeof( Dracolich ), 
 						typeof( SwampDragon ), 
 						typeof( Wyrms ), 
@@ -1528,8 +1543,9 @@ namespace Server.Items
 						typeof( SeaDrake ), 
 						typeof( Wyvra ), 
 						typeof( Wyverns ),
-						typeof( AncientWyvern ) ),
-					new SlayerEntry( SlayerName.LizardmanSlaughter, 
+						typeof( AncientWyvern ),
+						typeof( SerpentineDragon ) ),
+					new SlayerEntry( SlayerName.LizardmanSlaughter, // "lizardman death"
 						typeof( Drakkul ), 
 						typeof( DrakkulMage ), 
 						typeof( DrakkulChief ), 
@@ -1549,7 +1565,7 @@ namespace Server.Items
 						typeof( ReptalarChieftain ), 
 						typeof( Reptaur ), 
 						typeof( Lizardman ) ),
-					new SlayerEntry( SlayerName.Ophidian, 
+					new SlayerEntry( SlayerName.Ophidian, // "ophidian slayer"
 						typeof( OphidianArchmage ), 
 						typeof( OphidianKnight ), 
 						typeof( OphidianMage ), 
@@ -1569,7 +1585,7 @@ namespace Server.Items
 						typeof( SerpynSorceress ), 
 						typeof( Serpentaur ), 
 						typeof( Medusa ) ), 
-					new SlayerEntry( SlayerName.SnakesBane, 
+					new SlayerEntry( SlayerName.SnakesBane, // "serpent eradication"
 						typeof( JungleViper ), 
 						typeof( DeepSeaSerpent ), 
 						typeof( Jormungandr ), 
