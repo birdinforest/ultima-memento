@@ -7857,7 +7857,7 @@ namespace Server.Mobiles
 
 			PlayerMobile p = target as PlayerMobile;
 
-			if ( p != null && p.PeacedUntil < DateTime.Now && !p.Hidden && CanBeHarmful( p ) && Utility.RandomBool() )
+			if ( p != null && !p.Hidden && CanBeHarmful( p ) && Utility.RandomBool() && p.PeacedUntil.AddSeconds( 30 ) < DateTime.Now )
 			{
 				PlaySound( SpeechHue );
 				p.FixedParticles( 0x376A, 1, 32, 0x15BD, EffectLayer.Waist );
