@@ -1,7 +1,6 @@
 using System;
 using Server.Engines.CannedEvil;
-using Server.Network;
-using Server.Targeting;
+using Server.Gumps;
 using Server.Utilities;
 
 namespace Server.Items
@@ -11,6 +10,25 @@ namespace Server.Items
 		public const int MAX_DAYS_AGE = 7;
 
 		private DateTime m_Created;
+		private ChampionSpawnType m_Type;
+
+		[Constructable]
+		public ChampionSkull() : this(GetRandomType())
+		{
+		}
+
+		[Constructable]
+		public ChampionSkull(ChampionSpawnType type) : base(0x1AE1)
+		{
+			Name = "A skull of summoning";
+			Type = type;
+			LootType = LootType.Cursed;
+			m_Created = DateTime.UtcNow;
+		}
+
+		public ChampionSkull(Serial serial) : base(serial)
+		{
+		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public DateTime Created
@@ -22,8 +40,6 @@ namespace Server.Items
 				InvalidateProperties();
 			}
 		}
-
-		private ChampionSpawnType m_Type;
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public ChampionSpawnType Type
@@ -46,24 +62,6 @@ namespace Server.Items
 			}
 		}
 
-		[Constructable]
-		public ChampionSkull() : this(GetRandomType())
-		{
-		}
-
-		[Constructable]
-		public ChampionSkull(ChampionSpawnType type) : base(0x1AE1)
-		{
-			Name = "A skull of summoning";
-			Type = type;
-			LootType = LootType.Cursed;
-			m_Created = DateTime.UtcNow;
-		}
-
-		public ChampionSkull(Serial serial) : base(serial)
-		{
-		}
-
 		public static void Initialize()
 		{
 			EventSink.WorldSave += (args) =>
@@ -79,64 +77,27 @@ namespace Server.Items
 			};
 		}
 
-		private static ChampionSpawnType GetRandomType()
+		public override void Deserialize(GenericReader reader)
 		{
-			if (Utility.Random(10) == 1) return ChampionSpawnType.ForestLord;
+			base.Deserialize(reader);
 
-			switch (Utility.Random(5))
+			int version = reader.ReadInt();
+
+			switch (version)
 			{
-				default:
-				case 0: return ChampionSpawnType.ColdBlood;
-				case 1: return ChampionSpawnType.Arachnid;
-				case 2: return ChampionSpawnType.VerminHorde;
-				case 3: return ChampionSpawnType.UnholyTerror;
-				case 4: return ChampionSpawnType.Abyss;
-			}
-		}
-
-		public override void OnDoubleClick(Mobile from)
-		{
-			from.SendMessage("Target the champion idol you would like to challenge.");
-			from.Target = new InternalTarget(this);
-		}
-
-		private class InternalTarget : Target
-		{
-			private readonly ChampionSkull m_Skull;
-
-			public InternalTarget(ChampionSkull skull) : base(3, false, TargetFlags.None)
-			{
-				m_Skull = skull;
-			}
-
-			protected override void OnTarget(Mobile from, object o)
-			{
-				if (o is IdolOfTheChampion)
-				{
-					IdolOfTheChampion idol = (IdolOfTheChampion)o;
-					if (idol.Spawn == null || m_Skull.Deleted)
+				case 1:
 					{
-						from.SendMessage("This champion idol is not ready yet."); // Unsupported case
+						m_Created = reader.ReadDateTime();
+						goto case 0;
 					}
-					else if (idol.Spawn.Active)
+				case 0:
 					{
-						from.SendMessage("A Champion has already been challenged.");
-					}
-					else
-					{
-						idol.Spawn.Active = true;
-						idol.Spawn.Type = m_Skull.Type;
-						from.Direction = from.GetDirectionTo(idol);
-						from.Animate(32, 5, 1, true, false, 0); // Bow
-						from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You smash the skull on the idol.", from.NetState);
+						m_Type = (ChampionSpawnType)reader.ReadInt();
+						if (version == 0)
+							m_Created = DateTime.UtcNow;
 
-						m_Skull.Delete();
+						break;
 					}
-				}
-				else
-				{
-					from.SendMessage("You must target a champion idol.");
-				}
 			}
 		}
 
@@ -162,35 +123,12 @@ namespace Server.Items
 			else
 				list.Add("Energy: Potent"); // 7+ days
 
-			string type = null;
-			switch (m_Type)
-			{
-				case ChampionSpawnType.ColdBlood: type = "Cold Blood"; break;
-				case ChampionSpawnType.ForestLord: type = "Forest Lord"; break;
-				case ChampionSpawnType.Arachnid: type = "Arachnid"; break;
-				case ChampionSpawnType.VerminHorde: type = "Vermin Horde"; break;
-				case ChampionSpawnType.UnholyTerror: type = "Unholy Terror"; break;
-				case ChampionSpawnType.Abyss: type = "Abyss"; break;
-			}
-			list.Add("Type: " + type);
+			list.Add("Type: " + ChampionSpawnInfo.GetName(m_Type));
+		}
 
-			string[] slayers = null;
-			switch (m_Type)
-			{
-				case ChampionSpawnType.ColdBlood: slayers = new string[] { }; break;
-				case ChampionSpawnType.ForestLord: slayers = new string[] { }; break;
-				case ChampionSpawnType.Arachnid: slayers = new string[] { }; break;
-				case ChampionSpawnType.VerminHorde: slayers = new string[] { }; break;
-				case ChampionSpawnType.UnholyTerror: slayers = new string[] { }; break;
-				case ChampionSpawnType.Abyss: slayers = new string[] { }; break;
-			}
-
-			if (slayers != null && 0 < slayers.Length)
-			{
-				list.Add("Recommended Slayers:");
-				foreach (string slayer in slayers)
-					list.Add(slayer);
-			}
+		public override void OnDoubleClick(Mobile from)
+		{
+			from.SendGump(new ChampionSkullGump(from, this));
 		}
 
 		public override void Serialize(GenericWriter writer)
@@ -203,27 +141,18 @@ namespace Server.Items
 			writer.Write((int)m_Type);
 		}
 
-		public override void Deserialize(GenericReader reader)
+		private static ChampionSpawnType GetRandomType()
 		{
-			base.Deserialize(reader);
+			if (Utility.Random(10) == 1) return ChampionSpawnType.ForestLord;
 
-			int version = reader.ReadInt();
-
-			switch (version)
+			switch (Utility.Random(5))
 			{
-				case 1:
-					{
-						m_Created = reader.ReadDateTime();
-						goto case 0;
-					}
-				case 0:
-					{
-						m_Type = (ChampionSpawnType)reader.ReadInt();
-						if (version == 0)
-							m_Created = DateTime.UtcNow;
-
-						break;
-					}
+				default:
+				case 0: return ChampionSpawnType.ColdBlood;
+				case 1: return ChampionSpawnType.Arachnid;
+				case 2: return ChampionSpawnType.VerminHorde;
+				case 3: return ChampionSpawnType.UnholyTerror;
+				case 4: return ChampionSpawnType.Abyss;
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace Server.Engines.CannedEvil
 {
 	public class ChampionSpawn : Item
 	{
-		private const int MAX_SPAWN_SIZE_MOD = 12;
+		public const int MAX_SPAWN_SIZE_MOD = 12;
 		private const int MIN_KILLS_PER_LEVEL = 20;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -24,7 +24,11 @@ namespace Server.Engines.CannedEvil
 				m_SPawnSzMod = (value < 1 || value > MAX_SPAWN_SIZE_MOD) ? MAX_SPAWN_SIZE_MOD : value;
 			}
 		}
+
 		private int m_SPawnSzMod;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public Difficulty SpawnDifficulty { get; set; }
 
 		private bool m_Active;
 		private bool m_RandomizeType;
@@ -36,21 +40,14 @@ namespace Server.Engines.CannedEvil
 		private ChampionAltar m_Altar;
 		private int m_Kills;
 		private Mobile m_Champion;
-
-		//private int m_SpawnRange;
 		private Rectangle2D m_SpawnArea;
 		private ChampionSpawnRegion m_Region;
-
 		private TimeSpan m_ExpireDelay;
 		private DateTime m_ExpireTime;
-
 		private Timer m_Timer;
-
 		private IdolOfTheChampion m_Idol;
-
 		private bool m_HasBeenAdvanced;
 		private bool m_ConfinedRoaming;
-
 		private Dictionary<Mobile, int> m_DamageEntries;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -337,12 +334,14 @@ namespace Server.Engines.CannedEvil
 		}
 
 		#region Scroll of Transcendence
+
 		private ScrollofTranscendence CreateRandomSoT()
 		{
 			int level = Utility.RandomMinMax(1, 5);
 			return ScrollofTranscendence.CreateRandom(level, level);
 		}
-		#endregion
+
+		#endregion Scroll of Transcendence
 
 		public static void GiveScrollTo(Mobile killer, SpecialScroll scroll)
 		{
@@ -377,7 +376,13 @@ namespace Server.Engines.CannedEvil
 					RegisterDamageTo(m_Champion);
 
 					if (m_Champion is BaseChampion)
+					{
 						AwardArtifact(((BaseChampion)m_Champion).GetArtifact());
+
+						// Random equipment artifact
+						Item item = Loot.RandomArty();
+						if (item != null) AwardArtifact(item);
+					}
 
 					m_DamageEntries.Clear();
 
@@ -418,13 +423,15 @@ namespace Server.Engines.CannedEvil
 						if (killer is PlayerMobile)
 						{
 							#region Scroll of Transcendence
+
 							if (Utility.RandomDouble() < 0.001)
 							{
 								killer.SendLocalizedMessage(1094936); // You have received a Scroll of Transcendence!
 								ScrollofTranscendence SoTT = CreateRandomSoT();
 								killer.AddToBackpack(SoTT);
 							}
-							#endregion
+
+							#endregion Scroll of Transcendence
 						}
 					}
 				}
@@ -499,20 +506,6 @@ namespace Server.Engines.CannedEvil
 			if (!m_Active || Deleted || m_Champion != null)
 				return;
 
-			// If there are less mobs per level, they should be harder to kill
-			// AOE lacking builds can focus on these
-			int beefUpAmount;
-			if ( SpawnSzMod <= 3 )
-				beefUpAmount = 4;
-			else if ( SpawnSzMod <= 6 )
-				beefUpAmount = 3;
-			else if ( SpawnSzMod <= 9 )
-				beefUpAmount = 2;
-			else if ( SpawnSzMod <= MAX_SPAWN_SIZE_MOD )
-				beefUpAmount = 1;
-			else
-				beefUpAmount = 0;
-
 			while (m_Creatures.Count < (SpawnSzMod * (200 / MAX_SPAWN_SIZE_MOD)) - (GetSubLevel() * SpawnSzMod * (40 / MAX_SPAWN_SIZE_MOD)))
 			{
 				Mobile m = Spawn();
@@ -533,7 +526,7 @@ namespace Server.Engines.CannedEvil
 				if (m is BaseCreature)
 				{
 					BaseCreature bc = m as BaseCreature;
-					BaseCreature.BeefUp(bc, beefUpAmount - 1, false);
+					BaseCreature.BeefUp(bc, Difficulty, false);
 					bc.Tamable = false;
 					bc.Summoned = true;
 
@@ -939,8 +932,9 @@ namespace Server.Engines.CannedEvil
 		{
 			base.Serialize(writer);
 
-			writer.Write((int)6); // version
+			writer.Write((int)7); // version
 
+			writer.Write((int)SpawnDifficulty);
 			writer.Write((int)m_SPawnSzMod);
 			writer.Write(m_DamageEntries.Count);
 			foreach (KeyValuePair<Mobile, int> kvp in m_DamageEntries)
@@ -981,6 +975,11 @@ namespace Server.Engines.CannedEvil
 
 			switch (version)
 			{
+				case 7:
+					{
+						SpawnDifficulty = (Difficulty)reader.ReadInt();
+						goto case 6;
+					}
 				case 6:
 					{
 						m_SPawnSzMod = reader.ReadInt();
@@ -1074,7 +1073,8 @@ namespace Server.Engines.CannedEvil
 
 	public class ChampionSpawnRegion : BaseRegion
 	{
-		public override bool YoungProtected { get { return false; } }
+		public override bool YoungProtected
+		{ get { return false; } }
 
 		private ChampionSpawn m_Spawn;
 
@@ -1120,13 +1120,13 @@ namespace Server.Engines.CannedEvil
 	{
 		private ChampionSpawn m_Spawn;
 
-		public ChampionSpawn Spawn { get { return m_Spawn; } }
+		public ChampionSpawn Spawn
+		{ get { return m_Spawn; } }
 
 		public override string DefaultName
 		{
 			get { return "Idol of the Champion"; }
 		}
-
 
 		public IdolOfTheChampion(ChampionSpawn spawn) : base(0x1F18)
 		{
