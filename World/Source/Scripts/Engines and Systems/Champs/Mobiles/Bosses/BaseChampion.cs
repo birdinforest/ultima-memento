@@ -194,7 +194,7 @@ namespace Server.Mobiles
 			var item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(killer));
 			item = LootPackEntry.Enchant(killer, 500, item);
 			string owner = Name;
-			if ( !string.IsNullOrWhiteSpace(Title) ){ owner = Name + " " + Title; }
+			if (!string.IsNullOrWhiteSpace(Title)) { owner = Name + " " + Title; }
 			item.InfoText1 = string.Format("[Belonged to: {0}]", owner);
 			c.DropItem(item);
 
