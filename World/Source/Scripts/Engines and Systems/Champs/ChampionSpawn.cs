@@ -528,7 +528,7 @@ namespace Server.Engines.CannedEvil
 					BaseCreature bc = m as BaseCreature;
 					BaseCreature.BeefUp(bc, Difficulty, false);
 					bc.Tamable = false;
-					bc.Summoned = true;
+					bc.IsEphemeral = true;
 
 					if (!m_ConfinedRoaming)
 					{
@@ -1098,7 +1098,7 @@ namespace Server.Engines.CannedEvil
 			if (m is BaseCreature)
 			{
 				var bc = (BaseCreature)m;
-				if (bc.Summoned && bc is BaseChampion == false && MobileUtilities.TryGetMasterPlayer(m) == null)
+				if (bc.IsEphemeral && bc is BaseChampion == false && MobileUtilities.TryGetMasterPlayer(m) == null)
 				{
 					// Delete spawned mobs instead of creating corpses
 					bc.Delete();

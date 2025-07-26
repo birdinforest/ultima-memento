@@ -5004,8 +5004,9 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 24 ); // version
+			writer.Write( (int) 25 ); // version
 
+			writer.Write( IsEphemeral );
 			writer.Write( (int) m_Slayer );
 			writer.Write( (int) m_Slayer2 );
 
@@ -5162,6 +5163,12 @@ namespace Server.Mobiles
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+			if ( version >= 25 )
+			{
+				IsEphemeral = reader.ReadBool();
+				if (IsEphemeral) Timer.DelayCall(TimeSpan.Zero, () => Delete());
+			}
 
 			if ( version >= 22 )
 			{
@@ -6350,7 +6357,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				return m_bTamable && !m_Paragon;
+				return m_bTamable && !m_Paragon && !IsEphemeral;
 			}
 			set
 			{
@@ -6378,6 +6385,9 @@ namespace Server.Mobiles
 				InvalidateProperties();
 			}
 		}
+
+		[CommandProperty( AccessLevel.Administrator )]
+		public bool IsEphemeral { get; set; }
 
 		[CommandProperty( AccessLevel.Administrator )]
 		public int ControlSlots
