@@ -10,6 +10,7 @@ namespace Server.Engines.CannedEvil
 	public class ChampionSpawn : Item
 	{
 		private const int MAX_SPAWN_SIZE_MOD = 12;
+		private const int MIN_KILLS_PER_LEVEL = 20;
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SpawnSzMod
@@ -256,7 +257,7 @@ namespace Server.Engines.CannedEvil
 		{
 			get
 			{
-				return (SpawnSzMod * (250 / 12)) - (Level * SpawnSzMod);
+				return Math.Max(MIN_KILLS_PER_LEVEL, (SpawnSzMod * (250 / MAX_SPAWN_SIZE_MOD)) - (Level * SpawnSzMod));
 			}
 		}
 
