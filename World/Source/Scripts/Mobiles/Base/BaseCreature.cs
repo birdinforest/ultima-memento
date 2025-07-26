@@ -2137,28 +2137,40 @@ namespace Server.Mobiles
 
 		public static void BeefUp( BaseCreature bc, int up, bool clampRating = true )
 		{
-			if ( up >= 0 )
+			if (!Enum.IsDefined(typeof(Difficulty), up))
 			{
-				double rating = 0.0;
+				Console.WriteLine("Failed to increase Dificulty because '{0}' is not a valid value.", up);
+			}
 
-				if ( up == 0 )
-					rating = (double)MySettings.S_Normal;
-				else if ( up == 1 )
-					rating = (double)MySettings.S_Difficult;
-				else if ( up == 2 )
-					rating = (double)MySettings.S_Challenging;
-				else if ( up == 3 )
-					rating = (double)MySettings.S_Hard;
-				else if ( up > 3 )
-					rating = (double)MySettings.S_Deadly;
+			if (up < (int)Difficulty.Easy) up = (int)Difficulty.Easy;
+			else if ((int)Difficulty.Deadly < up) up = (int)Difficulty.Deadly;
+
+			BeefUp(bc, (Difficulty)up, clampRating);
+		}
+
+		public static void BeefUp( BaseCreature bc, Difficulty difficulty, bool clampRating = true )
+		{
+			if ( difficulty < Difficulty.Easy || difficulty > Difficulty.Deadly )
+			{
+				double rating;
+				switch( difficulty )
+				{
+					case Difficulty.Easy: rating = 0; break;
+					case Difficulty.Normal: rating = MySettings.S_Normal; break;
+					case Difficulty.Difficult: rating = MySettings.S_Difficult; break;
+					case Difficulty.Challenging: rating = MySettings.S_Challenging; break;
+					case Difficulty.Hard: rating = MySettings.S_Hard; break;
+					default:
+					case Difficulty.Deadly: rating = MySettings.S_Deadly; break;
+				}
 
 				// WE DON'T WANT THE VERY POWERFUL CREATURES TO BE IMPOSSIBLE SO WE CAP THEM BASED ON FAME
 				if ( clampRating )
 				{
-					if ( bc.Fame >= 20000 ){ rating = (double)MySettings.S_Normal; }
-					else if ( bc.Fame >= 18000 && up > 1 ){ rating = (double)MySettings.S_Difficult; }
-					else if ( bc.Fame >= 15000 && up > 2 ){ rating = (double)MySettings.S_Challenging; }
-					else if ( bc.Fame >= 10000 && up > 3 ){ rating = (double)MySettings.S_Hard; }
+					if ( bc.Fame >= 20000 ){ rating = MySettings.S_Normal; }
+					else if ( bc.Fame >= 18000 && Difficulty.Difficult < difficulty ){ rating = MySettings.S_Difficult; }
+					else if ( bc.Fame >= 15000 && Difficulty.Challenging < difficulty ){ rating = MySettings.S_Challenging; }
+					else if ( bc.Fame >= 10000 && Difficulty.Hard < difficulty  ){ rating = MySettings.S_Hard; }
 				}
 
 				// Buffs
