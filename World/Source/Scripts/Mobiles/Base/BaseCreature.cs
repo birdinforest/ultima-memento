@@ -9516,7 +9516,7 @@ namespace Server.Mobiles
 					Hidden = false;
 				}
 			}
-			else if ( WhisperHue == 666 && !IsTempEnemy ) // ENTER A DEMON GATE
+			else if ( WhisperHue == 666 && !IsTempEnemy && !IsEphemeral ) // ENTER A DEMON GATE
 			{
 				if ( !CantWalk && Combatant == null && !Hidden )
 				{
