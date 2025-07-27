@@ -123,7 +123,7 @@ namespace Server.ContextMenus
 		/// </param>
 		public ContextMenuEntry( int number, int range )
 		{
-			m_Number = number; // Add 30,000 (Context menu Cliloc start) to find this value
+			m_Number = number; // Add 300,000 (Context menu Cliloc start) to find this value
 			m_Range = range;
 			m_Enabled = true;
 			m_Color = 0xFFFF;
