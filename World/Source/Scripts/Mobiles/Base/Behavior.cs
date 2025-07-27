@@ -8755,7 +8755,9 @@ namespace Server.Mobiles
 							}
 							else if ( MySettings.S_Purple && m is BaseCreature && ((BaseCreature)m).ControlMaster == null )
 							{
-								bValid = m.Karma < -2499;
+								// Suppress this behavior for champ spawn mobs
+								bool isChampSpawnCombat = ((BaseCreature)m).IsEphemeral && m_Mobile.IsEphemeral && m.Region.IsPartOf( typeof( Server.Engines.CannedEvil.ChampionSpawnRegion ) );
+								bValid = m.Karma < -2499 && !isChampSpawnCombat;
 							}
 						}
 						else if ( ( acqType == FightMode.CharmMonster || acqType == FightMode.CharmAnimal ) && !bValid )
