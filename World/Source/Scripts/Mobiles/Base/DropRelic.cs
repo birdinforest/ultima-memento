@@ -17,6 +17,20 @@ namespace Server.Misc
 
 			Region reg = Region.Find( from.Location, from.Map );
 
+			if ( !reg.IsPartOf(typeof( Server.Engines.CannedEvil.ChampionSpawnRegion )) )
+			{
+				const int MIN_FAME_FOR_CHAMP_SKULL = 15000;
+				if ( MIN_FAME_FOR_CHAMP_SKULL <= from.Fame )
+				{
+					const int BASE_CHANCE = 10;
+
+					// Theoretical cap is probably 24k Fame, so up to +4% chance
+					var bonusChance = (from.Fame - MIN_FAME_FOR_CHAMP_SKULL) / 2000;
+
+					if ( Utility.RandomMinMax( 0, 100 ) < BASE_CHANCE + bonusChance ) c.DropItem( new ChampionSkull() );
+				}
+			}
+
 			if ( Server.Misc.Worlds.IsOnSpaceship( from.Location, from.Map ) )
 			{
 				int fameCycle = (int)( from.Fame / 2400 );
