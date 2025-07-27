@@ -260,7 +260,7 @@ namespace Server.Engines.CannedEvil
 
 		public bool IsChampionSpawn(Mobile m)
 		{
-			return m_Creatures.Contains(m);
+			return m is BaseCreature && ((BaseCreature)m).IsEphemeral && m_Creatures.Contains(m);
 		}
 
 		public void SetWhiteSkullCount(int val)
@@ -1097,11 +1097,10 @@ namespace Server.Engines.CannedEvil
 		{
 			if (m is BaseCreature)
 			{
-				var bc = (BaseCreature)m;
-				if (bc.IsEphemeral && bc is BaseChampion == false && MobileUtilities.TryGetMasterPlayer(m) == null)
+				if (m_Spawn.IsChampionSpawn(m) && m is BaseChampion == false && MobileUtilities.TryGetMasterPlayer(m) == null)
 				{
 					// Delete spawned mobs instead of creating corpses
-					bc.Delete();
+					m.Delete();
 					return false;
 				}
 			}
