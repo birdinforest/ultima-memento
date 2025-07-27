@@ -2150,7 +2150,7 @@ namespace Server.Mobiles
 
 		public static void BeefUp( BaseCreature bc, Difficulty difficulty, bool clampRating = true )
 		{
-			if ( difficulty < Difficulty.Easy || difficulty > Difficulty.Deadly )
+			if ( Difficulty.Easy <= difficulty && difficulty <= Difficulty.Deadly )
 			{
 				double rating;
 				switch( difficulty )

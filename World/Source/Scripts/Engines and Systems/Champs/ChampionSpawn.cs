@@ -526,7 +526,7 @@ namespace Server.Engines.CannedEvil
 				if (m is BaseCreature)
 				{
 					BaseCreature bc = m as BaseCreature;
-					BaseCreature.BeefUp(bc, Difficulty, false);
+					BaseCreature.BeefUp(bc, SpawnDifficulty, false);
 					bc.Tamable = false;
 					bc.IsEphemeral = true;
 
