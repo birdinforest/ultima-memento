@@ -619,7 +619,7 @@ namespace Server.Mobiles
 
 		public virtual bool IsNecromancer { get { return ( Skills[ SkillName.Necromancy ].Value > 50 ); } }
 
-		public virtual bool IsBondable{ get{ return ( BondingEnabled && !Summoned ); } }
+		public virtual bool IsBondable{ get{ return ( BondingEnabled && !Summoned && !IsEphemeral ); } }
 		public virtual TimeSpan BondingDelay{ get{ return TimeSpan.FromDays( MyServerSettings.BondDays() ); } }
 		public virtual TimeSpan BondingAbandonDelay{ get{ return TimeSpan.FromDays( 1.0 ); } }
 
@@ -707,7 +707,7 @@ namespace Server.Mobiles
 
 		public void BeginDeleteTimer()
 		{
-			if ( !Summoned && !Deleted && !IsStabled )
+			if ( !Summoned && !IsEphemeral && !Deleted && !IsStabled )
 			{
 				StopDeleteTimer();
 				m_DeleteTimer = new DeleteTimer( this, TimeSpan.FromDays( 3.0 ) );
@@ -2052,7 +2052,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( !Summoned )
+				if ( !Summoned && !IsEphemeral )
 					return false;
 
 				if ( m_ControlMaster != null && SummonFamiliarSpell.Table.Contains( m_ControlMaster ) )
@@ -4087,7 +4087,7 @@ namespace Server.Mobiles
 			if ( speechType != null && !willKill )
 				speechType.OnDamage( this, amount );
 
-			if ( !Summoned && willKill )
+			if ( !Summoned && !IsEphemeral && willKill )
 			{
 				Mobile leveler = from;
 
@@ -7248,7 +7248,7 @@ namespace Server.Mobiles
 		{
 			base.DoHarmful( target, indirect );
 
-			if ( target == this || target == m_ControlMaster || target == m_SummonMaster || (!Controlled && !Summoned) )
+			if ( target == this || target == m_ControlMaster || target == m_SummonMaster || (!Controlled && !Summoned && !IsEphemeral) )
 				return;
 
 			List<AggressorInfo> list = this.Aggressors;
@@ -8114,7 +8114,7 @@ namespace Server.Mobiles
 					list.Add( 502006 ); // (tame)
 
                 #region Jako Taming
-                if (!Summoned && JakoIsEnabled)
+                if (!Summoned && !IsEphemeral && JakoIsEnabled)
 				{
 					if (Level == RealLevel)
 						list.Add("Level {0}", RealLevel, SexString);
@@ -8338,7 +8338,7 @@ namespace Server.Mobiles
 					treasureLevel = 0;
 			}
 
-			if ( !Summoned && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
+			if ( !Summoned && !IsEphemeral && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
 			{
 				if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
 					PackItem( new ParagonChest( this.Name, this.Title, treasureLevel, this ) );
@@ -8349,7 +8349,7 @@ namespace Server.Mobiles
 			}
 
 			// Actually generate loot
-			if ( !Summoned && !NoKillAwards && !m_HasGeneratedLoot )
+			if ( !Summoned && !IsEphemeral && !NoKillAwards && !m_HasGeneratedLoot )
 			{
 				m_HasGeneratedLoot = true;
 				GenerateLoot( false );
@@ -8443,7 +8443,7 @@ namespace Server.Mobiles
                 DecayExperience(LastKiller);
             if (ControlMaster != null && JakoIsEnabled)
                 DeathNotification();
-            else if (!Summoned && JakoIsEnabled)
+            else if (!Summoned && !IsEphemeral && JakoIsEnabled)
                 CalculateExpDist(this);
             #endregion
 
@@ -8728,7 +8728,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if ( !Summoned && !m_NoKillAwards )
+				if ( !Summoned && !IsEphemeral && !m_NoKillAwards )
 				{
 					int totalFame = Fame / 100;
 					int totalKarma = -Karma / 100;
@@ -9386,7 +9386,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if ( EnableRummaging && CanRummageCorpses && !Summoned && !Controlled && DateTime.Now >= m_NextRummageTime )
+			if ( EnableRummaging && CanRummageCorpses && !Summoned && !IsEphemeral && !Controlled && DateTime.Now >= m_NextRummageTime )
 			{
 				double min, max;
 

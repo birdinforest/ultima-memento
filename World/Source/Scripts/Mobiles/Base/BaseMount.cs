@@ -198,7 +198,7 @@ namespace Server.Mobiles
 					else
 						Server.Mobiles.BaseMount.Ride( this, from );
 				}
-				else if ( !Controlled && !Summoned )
+				else if ( !Controlled && !Summoned && !IsEphemeral )
 				{
 					// That mount does not look broken! You would have to tame it to ride it.
 					PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501263, from.NetState );
