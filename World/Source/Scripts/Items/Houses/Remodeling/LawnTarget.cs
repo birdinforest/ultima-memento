@@ -59,13 +59,6 @@ namespace Server.Misc
 				else { loc.Z = checkTop; }
 			}
 
-			if ( Region.Find( loc, from.Map ) is HouseRegion )
-            {
-				m_From.SendMessage("You cannot place that in your home!");
-				GumpUp();
-				return;
-            }
-
             if (ValidatePlacement(loc))
                 EndPlace(loc);
             else
@@ -91,11 +84,6 @@ namespace Server.Misc
             if ( m_House == null || !m_House.IsOwner(m_From) )
             {
                 m_From.SendMessage("You must be standing in your house to place this!");
-                return false;
-            }
-            else if ( map == Map.Underworld && m_From.X > 1625 && m_From.Y > 0 )
-            {
-                m_From.SendMessage("Dungeons do not have a lawn!");
                 return false;
             }
             else if ( loc.Y > m_From.Location.Y + Remodeling.Front || loc.Y < m_From.Location.Y - Remodeling.Back )
