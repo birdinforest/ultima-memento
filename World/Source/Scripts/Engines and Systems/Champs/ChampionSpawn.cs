@@ -39,7 +39,7 @@ namespace Server.Engines.CannedEvil
 		private ChampionPlatform m_Platform;
 		private ChampionAltar m_Altar;
 		private int m_Kills;
-		private Mobile m_Champion;
+		private BaseChampion m_Champion;
 		private Rectangle2D m_SpawnArea;
 		private ChampionSpawnRegion m_Region;
 		private TimeSpan m_ExpireDelay;
@@ -214,7 +214,7 @@ namespace Server.Engines.CannedEvil
 			}
 			set
 			{
-				m_Champion = value;
+				m_Champion = value as BaseChampion;
 			}
 		}
 
@@ -378,10 +378,6 @@ namespace Server.Engines.CannedEvil
 					if (m_Champion is BaseChampion)
 					{
 						AwardArtifact(((BaseChampion)m_Champion).GetArtifact());
-
-						// Random equipment artifact
-						Item item = Loot.RandomArty();
-						if (item != null) AwardArtifact(item);
 					}
 
 					m_DamageEntries.Clear();
@@ -493,7 +489,11 @@ namespace Server.Engines.CannedEvil
 
 			try
 			{
-				m_Champion = Activator.CreateInstance(ChampionSpawnInfo.GetInfo(m_Type).Champion) as Mobile;
+				m_Champion = Activator.CreateInstance(ChampionSpawnInfo.GetInfo(m_Type).Champion) as BaseChampion;
+				m_Champion.BossItemRewardChance = ChampionRewards.GetBossItemDropChance(SpawnSzMod, SpawnDifficulty);
+				m_Champion.ArtifactRewardChance = ChampionRewards.GetArtifactDropChance(SpawnSzMod, SpawnDifficulty);
+				m_Champion.TreasureChestRewardChance = ChampionRewards.GetTreasureChestDropChance(SpawnSzMod, SpawnDifficulty);
+				m_Champion.PowerscrollRewardAmount = ChampionRewards.GetPowerscrollDropCount(SpawnSzMod, SpawnDifficulty);
 			}
 			catch { }
 
@@ -1050,7 +1050,7 @@ namespace Server.Engines.CannedEvil
 						m_Altar = reader.ReadItem<ChampionAltar>();
 						m_ExpireDelay = reader.ReadTimeSpan();
 						m_ExpireTime = reader.ReadDeltaTime();
-						m_Champion = reader.ReadMobile();
+						m_Champion = reader.ReadMobile<BaseChampion>();
 
 						if (version < 4)
 						{

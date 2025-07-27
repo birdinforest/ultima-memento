@@ -18,8 +18,12 @@ namespace Server.Gumps
 		private readonly Difficulty _monsterDifficulty;
 		private readonly int _spawnSize;
 
-		public ChampionSkullGump(Mobile from, ChampionSkull championSkull, int spawnSize = 0, Difficulty monsterDifficulty = Difficulty.Easy) : base(50, 50)
+		public ChampionSkullGump(Mobile from, ChampionSkull championSkull, int spawnSize = 1, Difficulty monsterDifficulty = Difficulty.Easy) : base(50, 50)
 		{
+			_championSkull = championSkull;
+			_spawnSize = spawnSize;
+			_monsterDifficulty = monsterDifficulty;
+
 			from.CloseGump(typeof(ChampionSkullGump));
 
 			AddImage(0, 0, 9582, Server.Misc.PlayerSettings.GetGumpHue(from));
@@ -41,9 +45,9 @@ namespace Server.Gumps
 			}
 
 			AddRewards(x, y);
-			y += 90;
+			y += 102;
 
-			AddSlider(x, y, "Spawn Size", ActionButtonType.SpawnSizeBase, ChampionSpawn.MAX_SPAWN_SIZE_MOD, spawnSize);
+			AddSlider(x, y, "Spawn Size", ActionButtonType.SpawnSizeBase, ChampionSpawn.MAX_SPAWN_SIZE_MOD, spawnSize - 1);
 			y += 75;
 
 			AddSlider(x, y, "Monster Difficulty", ActionButtonType.MonsterDifficultyBase, (int)Difficulty.Deadly + 1, (int)monsterDifficulty);
@@ -54,10 +58,6 @@ namespace Server.Gumps
 			y = 350;
 			AddButton(x, y, 4005, 4007, (int)ActionButtonType.Fight, GumpButtonType.Reply, 0); // Next button
 			TextDefinition.AddHtmlText(this, x + 33, y + 3, 50, 20, "FIGHT!", HtmlColors.COOL_BLUE);
-
-			_championSkull = championSkull;
-			_spawnSize = spawnSize;
-			_monsterDifficulty = monsterDifficulty;
 		}
 
 		public override void OnResponse(NetState state, RelayInfo info)
@@ -70,7 +70,7 @@ namespace Server.Gumps
 			if (info.ButtonID == (int)ActionButtonType.Fight)
 			{
 				from.SendMessage("Target the champion idol you would like to challenge.");
-				from.Target = new ChampionIdolTarget(_championSkull, _spawnSize + 1, _monsterDifficulty); // +1 -- This gump uses a 0-based index for Spawn Size
+				from.Target = new ChampionIdolTarget(_championSkull, _spawnSize, _monsterDifficulty);
 			}
 			else if ((int)ActionButtonType.MonsterDifficultyBase <= info.ButtonID)
 			{
@@ -78,7 +78,7 @@ namespace Server.Gumps
 			}
 			else if ((int)ActionButtonType.SpawnSizeBase <= info.ButtonID)
 			{
-				from.SendGump(new ChampionSkullGump(state.Mobile, _championSkull, info.ButtonID - (int)ActionButtonType.SpawnSizeBase, _monsterDifficulty));
+				from.SendGump(new ChampionSkullGump(state.Mobile, _championSkull, info.ButtonID - (int)ActionButtonType.SpawnSizeBase + 1, _monsterDifficulty)); // +1 -- This gump uses a 0-based index for Spawn Size
 			}
 		}
 
@@ -93,28 +93,44 @@ namespace Server.Gumps
 
 			// Gold
 			AddImage(x, y, 10329); // Black box with gold
-			AddTooltip("Unknown riches");
+			AddTooltip("Gold");
 
 			// Powerscrolls (Count, Percentage)
 			x += 50;
 			AddImage(x, y, 10351); // Black box
-			AddTooltip("Powerscrolls");
+			TextDefinition.AddHtmlText(this, x, y + 35, 32, 20, string.Format("<CENTER>{0}</CENTER>", ChampionRewards.GetPowerscrollDropCount(_spawnSize, _monsterDifficulty)), HtmlColors.COOL_BLUE);
 			AddItem(x - 10, y + 1, 0x14F0, 0x481); // White Scroll
-
-			// Artifact
-			x += 50;
-			AddImage(x, y, 10339); // Black box with goblet
-			AddTooltip("An artifact");
-
-			// Treasure Chest
-			x += 50;
-			AddImage(x, y, 10349); // Black box with question mark
-			AddTooltip("A treasure chest");
+			AddTooltip("Powerscrolls");
 
 			// Boss tier item
 			x += 50;
-			AddImage(x, y, 10349); // Black box with question mark
-			AddTooltip("A powerful item");
+			var bossItemChance = ChampionRewards.GetBossItemDropChance(_spawnSize, _monsterDifficulty);
+			if (0 < bossItemChance)
+			{
+				AddImage(x, y, 10349); // Black box with question mark
+				AddTooltip("A powerful item");
+				TextDefinition.AddHtmlText(this, x, y + 35, 32, 20, string.Format("<CENTER>{0}%</CENTER>", bossItemChance), HtmlColors.COOL_BLUE);
+			}
+
+			// Treasure Chest
+			var treasureChestChance = ChampionRewards.GetTreasureChestDropChance(_spawnSize, _monsterDifficulty);
+			if (0 < treasureChestChance)
+			{
+				x += 50;
+				AddImage(x, y, 10349); // Black box with question mark
+				AddTooltip("Treasure Chest");
+				TextDefinition.AddHtmlText(this, x, y + 35, 32, 20, string.Format("<CENTER>{0}%</CENTER>", treasureChestChance), HtmlColors.COOL_BLUE);
+			}
+
+			// Artifact
+			var artifactChance = ChampionRewards.GetArtifactDropChance(_spawnSize, _monsterDifficulty);
+			if (0 < artifactChance)
+			{
+				x += 50;
+				AddImage(x, y, 10339); // Black box with goblet
+				AddTooltip("Artifact");
+				TextDefinition.AddHtmlText(this, x, y + 35, 32, 20, string.Format("<CENTER>{0}%</CENTER>", artifactChance), HtmlColors.COOL_BLUE);
+			}
 		}
 
 		private void AddSlider(int x, int y, string label, ActionButtonType baseValue, int ticks, int selectedValue)

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Server.Engines.CannedEvil;
 using Server.Items;
 
 namespace Server.Mobiles
@@ -11,12 +9,26 @@ namespace Server.Mobiles
 		public override bool CanMoveOverObstacles { get { return true; } }
 		public override bool CanDestroyObstacles { get { return true; } }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int PowerscrollRewardAmount { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int TreasureChestRewardChance { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int BossItemRewardChance { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int ArtifactRewardChance { get; set; }
+
 		public BaseChampion(AIType aiType) : this(aiType, FightMode.Closest)
 		{
 		}
 
 		public BaseChampion(AIType aiType, FightMode mode) : base(aiType, mode, 18, 1, 0.1, 0.2)
 		{
+			PowerscrollRewardAmount = 1;
+			BossItemRewardChance = 100;
 		}
 
 		public BaseChampion(Serial serial) : base(serial)
@@ -32,7 +44,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize(writer);
 
-			writer.Write((int)0); // version
+			writer.Write((int)1); // version
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -40,6 +52,14 @@ namespace Server.Mobiles
 			base.Deserialize(reader);
 
 			int version = reader.ReadInt();
+
+			if (version >= 1)
+			{
+				PowerscrollRewardAmount = reader.ReadInt();
+				TreasureChestRewardChance = reader.ReadInt();
+				BossItemRewardChance = reader.ReadInt();
+				ArtifactRewardChance = reader.ReadInt();
+			}
 		}
 
 		public Item GetArtifact()
@@ -148,18 +168,7 @@ namespace Server.Mobiles
 		{
 			if (!NoKillAwards)
 			{
-				var owningSpawn = World.Items.Values
-					.Where(x => x is ChampionSpawn)
-					.Cast<ChampionSpawn>()
-					.FirstOrDefault(spawn => spawn.Champion == this);
-				if (owningSpawn == null)
-					Console.WriteLine("No owning spawn found for {0} ({1})", Name, Serial);
-
-				var powerScrollAmount = owningSpawn != null
-					? owningSpawn.SpawnSzMod / 2
-					: 0; // No idea how this happened
-				powerScrollAmount = Math.Max(1, powerScrollAmount);
-				GivePowerScrolls(powerScrollAmount);
+				GivePowerScrolls(PowerscrollRewardAmount);
 
 				if (NoGoodies)
 					return base.OnBeforeDeath();
@@ -186,17 +195,32 @@ namespace Server.Mobiles
 
 		public override void OnDeath(Container c)
 		{
-			LootChest MyChest = new LootChest(10);
-			Server.Misc.ContainerFunctions.MakeDemonBox(MyChest, this);
-			c.DropItem(MyChest);
+			if (!NoKillAwards)
+			{
+				if (TreasureChestRewardChance > 0 && Utility.RandomDouble() < TreasureChestRewardChance / 100.0)
+				{
+					LootChest MyChest = new LootChest(10);
+					Server.Misc.ContainerFunctions.MakeDemonBox(MyChest, this);
+					c.DropItem(MyChest);
+				}
 
-			var killer = MobileUtilities.TryGetMasterPlayer(this);
-			var item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(killer));
-			item = LootPackEntry.Enchant(killer, 500, item);
-			string owner = Name;
-			if (!string.IsNullOrWhiteSpace(Title)) { owner = Name + " " + Title; }
-			item.InfoText1 = string.Format("[Belonged to: {0}]", owner);
-			c.DropItem(item);
+				if (BossItemRewardChance > 0 && Utility.RandomDouble() < BossItemRewardChance / 100.0)
+				{
+					var killer = MobileUtilities.TryGetMasterPlayer(this);
+					var item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(killer));
+					item = LootPackEntry.Enchant(killer, 500, item);
+					string owner = Name;
+					if (!string.IsNullOrWhiteSpace(Title)) { owner = Name + " " + Title; }
+					item.InfoText1 = string.Format("[Belonged to: {0}]", owner);
+					c.DropItem(item);
+				}
+
+				if (ArtifactRewardChance > 0 && Utility.RandomDouble() < ArtifactRewardChance / 100.0)
+				{
+					Item item = Loot.RandomArty();
+					c.DropItem(item);
+				}
+			}
 
 			base.OnDeath(c);
 		}
