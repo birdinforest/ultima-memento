@@ -183,7 +183,7 @@ namespace Server.Engines.CannedEvil
 			{
 				return m_Type;
 			}
-			set
+			private set
 			{
 				m_Type = value;
 				InvalidateProperties();
