@@ -253,7 +253,7 @@ namespace Server.Mobiles
 				if (!canFit)
 					return;
 
-				int amount = (int)(Utility.RandomMinMax(500, 1000) * (MyServerSettings.GetGoldCutRate() * .01));
+				int amount = (int)(Utility.RandomMinMax(300, 800) * (MyServerSettings.GetGoldCutRate() * .01));
 				Gold g = new Gold(amount);
 
 				g.MoveToWorld(new Point3D(m_X, m_Y, z), m_Map);
