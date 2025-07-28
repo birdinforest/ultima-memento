@@ -312,6 +312,8 @@ namespace Server.Engines.CannedEvil
 			if (m_Timer != null)
 				m_Timer.Stop();
 
+			m_DamageEntries.Clear();
+
 			m_Timer = new SliceTimer(this);
 			m_Timer.Start();
 
@@ -352,6 +354,10 @@ namespace Server.Engines.CannedEvil
 			m_Active = false;
 			m_HasBeenAdvanced = false;
 			Owner = null;
+			m_Kills = 0;
+			Level = 0;
+			InvalidateProperties();
+			SetWhiteSkullCount(0);
 
 			if (m_Timer != null)
 				m_Timer.Stop();
@@ -411,8 +417,6 @@ namespace Server.Engines.CannedEvil
 					{
 						AwardArtifact(((BaseChampion)m_Champion).GetArtifact());
 					}
-
-					m_DamageEntries.Clear();
 
 					if (m_Platform != null)
 						m_Platform.Hue = 0x497;
