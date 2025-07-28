@@ -19,7 +19,7 @@ namespace Server.Engines.CannedEvil
 			{
 				return (m_SPawnSzMod < 1 || m_SPawnSzMod > MAX_SPAWN_SIZE_MOD) ? MAX_SPAWN_SIZE_MOD : m_SPawnSzMod;
 			}
-			set
+			private set
 			{
 				m_SPawnSzMod = (value < 1 || value > MAX_SPAWN_SIZE_MOD) ? MAX_SPAWN_SIZE_MOD : value;
 			}
@@ -28,7 +28,7 @@ namespace Server.Engines.CannedEvil
 		private int m_SPawnSzMod;
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public Difficulty SpawnDifficulty { get; set; }
+		public Difficulty SpawnDifficulty { get; private set; }
 
 		private bool m_Active;
 		private bool m_RandomizeType;
@@ -49,6 +49,9 @@ namespace Server.Engines.CannedEvil
 		private bool m_HasBeenAdvanced;
 		private bool m_ConfinedRoaming;
 		private Dictionary<Mobile, int> m_DamageEntries;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public Mobile Owner { get; private set; } // May be NULL
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ConfinedRoaming
@@ -287,13 +290,24 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		public void Start()
+		public void Start(Mobile owner, ChampionSpawnType spawnType, int spawnSize, Difficulty monsterDifficulty)
 		{
-			if (m_Active || Deleted)
-				return;
+			if (!CanStart(owner)) return;
+
+			Type = spawnType;
+			SpawnSzMod = spawnSize;
+			SpawnDifficulty = monsterDifficulty;
+
+			Start(owner);
+		}
+
+		public void Start(Mobile owner = null)
+		{
+			if (!CanStart()) return;
 
 			m_Active = true;
 			m_HasBeenAdvanced = false;
+			Owner = owner;
 
 			if (m_Timer != null)
 				m_Timer.Stop();
@@ -313,6 +327,23 @@ namespace Server.Engines.CannedEvil
 				m_Platform.Hue = 0x452;
 		}
 
+		public bool CanStart(Mobile owner)
+		{
+			return CanStart() && owner != null;
+		}
+
+		public bool CanStart()
+		{
+			return !Active && !Deleted;
+		}
+
+		public bool CanStop(Mobile from)
+		{
+			if (!Active || Deleted) return false;
+
+			return Owner == null || Owner == from;
+		}
+
 		public void Stop()
 		{
 			if (!m_Active || Deleted)
@@ -320,6 +351,7 @@ namespace Server.Engines.CannedEvil
 
 			m_Active = false;
 			m_HasBeenAdvanced = false;
+			Owner = null;
 
 			if (m_Timer != null)
 				m_Timer.Stop();
@@ -932,8 +964,9 @@ namespace Server.Engines.CannedEvil
 		{
 			base.Serialize(writer);
 
-			writer.Write((int)7); // version
+			writer.Write((int)8); // version
 
+			writer.Write(Owner);
 			writer.Write((int)SpawnDifficulty);
 			writer.Write((int)m_SPawnSzMod);
 			writer.Write(m_DamageEntries.Count);
@@ -975,6 +1008,11 @@ namespace Server.Engines.CannedEvil
 
 			switch (version)
 			{
+				case 8:
+					{
+						Owner = reader.ReadMobile();
+						goto case 7;
+					}
 				case 7:
 					{
 						SpawnDifficulty = (Difficulty)reader.ReadInt();
@@ -1061,7 +1099,7 @@ namespace Server.Engines.CannedEvil
 						if (m_Platform == null || m_Altar == null || m_Idol == null)
 							Delete();
 						else if (active)
-							Start();
+							Start(Owner);
 
 						break;
 					}

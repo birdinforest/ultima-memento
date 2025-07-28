@@ -36,11 +36,7 @@ namespace Server.Gumps
 			from.Animate(32, 5, 1, true, false, 0); // Bow
 			from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You smash the skull on the idol.", from.NetState);
 
-			var spawn = idol.Spawn;
-			spawn.Type = spawnType;
-			spawn.SpawnSzMod = spawnSize;
-			spawn.SpawnDifficulty = monsterDifficulty;
-			spawn.Active = true;
+			idol.Spawn.Start(from, spawnType, spawnSize, monsterDifficulty);
 
 			return true;
 		}
