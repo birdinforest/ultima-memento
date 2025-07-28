@@ -19,7 +19,7 @@ namespace Server.Misc
 
 			if ( !reg.IsPartOf(typeof( Server.Engines.CannedEvil.ChampionSpawnRegion )) )
 			{
-				const int MIN_FAME_FOR_CHAMP_SKULL = 15000;
+				const int MIN_FAME_FOR_CHAMP_SKULL = 20000;
 				if ( MIN_FAME_FOR_CHAMP_SKULL <= from.Fame )
 				{
 					const int BASE_CHANCE = 10;
