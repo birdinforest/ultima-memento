@@ -4878,15 +4878,6 @@ namespace Server.Commands
 									rect.End = point;
                             }
                         }
-						else if ( m_Params[i].StartsWith( "SpawnSzMod" ) )
-						{
-							int indexOf = m_Params[i].IndexOf( '=' );
-
-							if ( indexOf >= 0 )
-							{
-								spawn.SpawnSzMod = Utility.ToInt32( m_Params[i].Substring( ++indexOf ) );
-                            }
-						}
 					}
 					
 					// Have to execute the call after the object is moved
