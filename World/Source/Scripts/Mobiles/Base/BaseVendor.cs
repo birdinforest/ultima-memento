@@ -252,7 +252,7 @@ namespace Server.Mobiles
 
 			if ( from is PlayerMobile )
 			{
-				const int MAX_BONUS_PERCENT = 100;
+				const int MAX_BONUS_PERCENT = 50;
 				const int HALF_BONUS_PERCENT = MAX_BONUS_PERCENT / 2;
 
 				string message = null;
