@@ -50,6 +50,8 @@ namespace Server.Engines.CannedEvil
 		private bool m_ConfinedRoaming;
 		private Dictionary<Mobile, int> m_DamageEntries;
 
+		public Dictionary<Mobile, int> DamageEntries { get { return m_DamageEntries; } }
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile Owner { get; private set; } // May be NULL
 
@@ -428,6 +430,14 @@ namespace Server.Engines.CannedEvil
 
 					m_Champion = null;
 					Stop();
+
+					// Broadcast the final gump to all players who have done damage.
+					foreach (Mobile m in DamageEntries.Keys)
+					{
+						if (m.NetState == null) continue;
+
+						SendGump(m);
+					}
 				}
 			}
 			else
@@ -683,6 +693,11 @@ namespace Server.Engines.CannedEvil
 			m_ExpireTime = DateTime.UtcNow + m_ExpireDelay;
 		}
 
+		public TimeSpan GetExpirationTimeRemaining()
+		{
+			return m_ExpireTime - DateTime.UtcNow;
+		}
+
 		public Point3D GetRedSkullLocation(int index)
 		{
 			int x, y;
@@ -837,6 +852,15 @@ namespace Server.Engines.CannedEvil
 			if (m_Idol != null)
 				m_Idol.Delete();
 
+			Cleanup();
+
+			Stop();
+
+			UpdateRegion();
+		}
+
+		public void Cleanup()
+		{
 			if (m_RedSkulls != null)
 			{
 				for (int i = 0; i < m_RedSkulls.Count; ++i)
@@ -868,10 +892,6 @@ namespace Server.Engines.CannedEvil
 
 			if (m_Champion != null && !m_Champion.Player)
 				m_Champion.Delete();
-
-			Stop();
-
-			UpdateRegion();
 		}
 
 		public ChampionSpawn(Serial serial) : base(serial)
@@ -1111,6 +1131,12 @@ namespace Server.Engines.CannedEvil
 
 			Timer.DelayCall(TimeSpan.Zero, new TimerCallback(UpdateRegion));
 		}
+
+		public void SendGump(Mobile from)
+		{
+			from.CloseGump(typeof(ChampionSpawnInfoGump));
+			from.SendGump(new ChampionSpawnInfoGump(from, this));
+		}
 	}
 
 	public class ChampionSpawnRegion : BaseRegion
@@ -1185,6 +1211,11 @@ namespace Server.Engines.CannedEvil
 
 		public IdolOfTheChampion(Serial serial) : base(serial)
 		{
+		}
+
+		public override void OnDoubleClick(Mobile from)
+		{
+			m_Spawn.SendGump(from);
 		}
 
 		public override void Serialize(GenericWriter writer)
