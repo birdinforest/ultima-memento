@@ -30,6 +30,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
 			builder.Append("- Misc - More Fast-player changes<br>");
+			builder.Append("- Misc - Remove bad images from manage Player Vendor gump<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
