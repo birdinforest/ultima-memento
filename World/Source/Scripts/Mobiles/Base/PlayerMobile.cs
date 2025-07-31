@@ -914,7 +914,8 @@ namespace Server.Mobiles
 			{
 				// Adjust item graphics/visibility on paperdoll
 				from.ProcessClothing();
-				FastPlayer.Refresh(from as PlayerMobile, true);
+				// Arbitrary delay hoping the client has received all it's data
+				Timer.DelayCall(FastPlayer.ArbitraryDelay, () => FastPlayer.Refresh(from, true));
 			}
 		}
 
@@ -2164,20 +2165,14 @@ namespace Server.Mobiles
 
 				if ( !speedAble)
 				{
-					if ( !FastPlayer.Experimental )
-						FastPlayer.Refresh(this);
 					Server.Misc.HenchmanFunctions.DismountHenchman( this );
 				}
 			}
 			else if ( speedAble && !mountAble && !Mounted && Alive )
 			{
-				if ( !FastPlayer.Experimental )
-					FastPlayer.Refresh(this);
 			}
 			else if ( mountAble && !Mounted && Alive )
 			{
-				if ( !FastPlayer.Experimental )
-					FastPlayer.Refresh(this);
 				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
 
 				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
@@ -2288,10 +2283,10 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
+			Send(SpeedControl.Disable);
 			bool wasAlive = this.Alive;
 
 			base.Resurrect();
-			Send(SpeedControl.Disable);
 
 			this.Hunger = 20;
 			this.Thirst = 20;
@@ -4697,9 +4692,6 @@ namespace Server.Mobiles
         public override void OnRegionChange(Region Old, Region New)
         {
 			EventSink.InvokeOnEnterRegion(new OnEnterRegionArgs(this, Old, New));
-	
-			if ( FastPlayer.Experimental )
-				FastPlayer.Refresh(this, true);
         }
     }
 
