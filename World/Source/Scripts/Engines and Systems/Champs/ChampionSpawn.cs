@@ -540,11 +540,11 @@ namespace Server.Engines.CannedEvil
 				m_Champion.ArtifactRewardChance = ChampionRewards.GetArtifactDropChance(SpawnSzMod, SpawnDifficulty);
 				m_Champion.TreasureChestRewardChance = ChampionRewards.GetTreasureChestDropChance(SpawnSzMod, SpawnDifficulty);
 				m_Champion.PowerscrollRewardAmount = ChampionRewards.GetPowerscrollDropCount(SpawnSzMod, SpawnDifficulty);
+				m_Champion.MoveToWorld(new Point3D(X, Y, Z - 15), Map);
+				m_Champion.OnAfterSpawn();
+				BaseCreature.BeefUp(m_Champion, SpawnDifficulty, false);
 			}
 			catch { }
-
-			if (m_Champion != null)
-				m_Champion.MoveToWorld(new Point3D(X, Y, Z - 15), Map);
 		}
 
 		public void Respawn()
