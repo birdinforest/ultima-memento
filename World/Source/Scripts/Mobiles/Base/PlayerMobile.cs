@@ -4029,15 +4029,13 @@ namespace Server.Mobiles
 			if ( checkTurning && (dir & Direction.Mask) != (this.Direction & Direction.Mask) )
 				return Mobile.RunMount;	// We are NOT actually moving (just a direction change)
 
-			TransformContext context = TransformationSpellHelper.GetContext( this );
-
 			bool running = ( (dir & Direction.Running) != 0 );
 
 			bool onHorse = ( this.Mount != null );
 
 			AnimalFormContext animalContext = AnimalForm.GetContext( this );
 
-			if( onHorse || (animalContext != null && animalContext.SpeedBoost) )
+			if( onHorse || (animalContext != null && animalContext.SpeedBoost) || FastPlayer.IsActive(this) || !Alive )
 				return ( running ? Mobile.RunMount : Mobile.WalkMount );
 
 			return ( running ? Mobile.RunFoot : Mobile.WalkFoot );
