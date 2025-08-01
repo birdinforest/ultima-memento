@@ -122,7 +122,12 @@ namespace Server.Items
 				else if ( targeted is ILockable )
 				{
 					ILockable o = (ILockable)targeted;
-					LockableContainer cont2 = (LockableContainer)o;
+					LockableContainer cont2 = o as LockableContainer;
+					if (cont2 == null)
+					{
+						from.SendMessage("That is not a container.");
+						return;
+					}
 
 					if ( Multis.BaseHouse.CheckSecured( cont2 ) ) 
 						from.SendLocalizedMessage( 503098 ); // You cannot cast this on a secure item.

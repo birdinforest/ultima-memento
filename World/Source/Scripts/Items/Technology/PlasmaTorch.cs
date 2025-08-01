@@ -89,8 +89,13 @@ namespace Server.Items
 				else if ( targeted is ILockable )
 				{
 					ILockable o = (ILockable)targeted;
-					LockableContainer cont2 = (LockableContainer)o;
-					TrapableContainer cont3 = (TrapableContainer)o;
+					LockableContainer cont2 = o as LockableContainer;
+					TrapableContainer cont3 = o as TrapableContainer;
+					if (cont2 == null || cont3 == null)
+					{
+						from.SendMessage("That is not a container.");
+						return;
+					}
 
 					if ( ( o.Locked ) || ( cont3.TrapType != TrapType.None ) )
 					{
