@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - High fame mobs can now drop Champion Skulls<br>");
 			builder.Append("- Item - Lawn tools can now be used indoors<br>");
+			builder.Append("- Item - Mushrooms are now stackable<br>");
 			builder.Append("- Misc - Champion spawns are now added to the world<br>");
 			builder.Append("- Misc - Jewelry trap has been reworked to be less aggressive<br>");
 			builder.Append("- Misc - Quest pedestal generation is now more resilient<br>");

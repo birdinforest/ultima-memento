@@ -1,5 +1,5 @@
-using System;
-using Server;
+using Server.Multis;
+using Server.Network;
 
 namespace Server.Items
 {
@@ -264,43 +264,64 @@ namespace Server.Items
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public class HomePlants_Mushroom : Item
 	{
-		public int HomePlantID;
-		public string HomePlantName;
-		
-		[CommandProperty(AccessLevel.Owner)]
-		public int HomePlant_ID { get { return HomePlantID; } set { HomePlantID = value; InvalidateProperties(); } }
-
-		[CommandProperty(AccessLevel.Owner)]
-		public string HomePlant_Name { get { return HomePlantName; } set { HomePlantName = value; InvalidateProperties(); } }
-
 		[Constructable]
-		public HomePlants_Mushroom() : base( 0xD0D )
+		public HomePlants_Mushroom() : base( 0x0B4D )
 		{
 			Weight = 2.0;
 			Movable = true;
-			Name = "mushroom";
+			Name = "a magic mushroom";
+			Stackable = true;
 		}
 
-		public override void OnLocationChange( Point3D oldLocation )
+		public override void OnDoubleClick(Mobile from)
 		{
-			if ( HomePlantID > 0 )
+			Point3D loc = GetWorldLocation();	
+			if ( !from.InLOS( loc ) || !from.InRange( loc, 3 ) )
 			{
-				ItemID = HomePlantID;
-				Name = HomePlantName;
-			}
-			else
-			{
-				HomePlantName = "mushroom"; HomePlantID = Utility.RandomList( 0xD0C, 0xD0D, 0xD0E, 0xD0F, 0xD10, 0xD11, 0xD12, 0xD13, 0xD14, 0xD15, 0xD16, 0xD17, 0xD18, 0xD19 );
-				switch ( Utility.RandomMinMax( 0, 5 ) )
-				{
-					case 1: HomePlantName = "large mushroom"; HomePlantID = Utility.RandomList( 0x222E, 0x222F, 0x2230, 0x2231 ); break;
-				}
-
-				ItemID = HomePlantID;
-				Name = HomePlantName;
+				from.LocalOverheadMessage( MessageType.Regular, 0x3E9, 1019045 ); // I can't reach that.
+				return;
 			}
 
-			base.OnLocationChange( oldLocation );
+			if (Amount != 1)
+			{
+				from.SendMessage("Try using these mushrooms individually.");
+				return;
+			}
+
+			if (!IsLockedDown)
+			{
+				from.SendMessage("This must be locked down to be used.");
+				return;
+			}
+
+			if ( !CheckAccess( from ) )
+			{
+				from.SendMessage("You can't seem to pick up the mushroom.");
+				return;
+			}
+			
+			int newItemId;
+			switch ( Utility.RandomMinMax( 0, 5 ) )
+			{
+				case 1: newItemId = Utility.RandomList( 0x222E, 0x222F, 0x2230, 0x2231 ); break;
+				default: newItemId = Utility.RandomList( 0xD0C, 0xD0D, 0xD0E, 0xD0F, 0xD10, 0xD11, 0xD12, 0xD13, 0xD14, 0xD15, 0xD16, 0xD17, 0xD18, 0xD19 ); break;
+			}
+
+			ItemID = newItemId;
+			from.SendMessage("The mushroom transforms when you touch it.");
+		}
+
+		private bool CheckAccess( Mobile m )
+		{
+			if ( !IsLockedDown ) return false;
+			if ( m.AccessLevel >= AccessLevel.GameMaster ) return true;
+
+			BaseHouse house = BaseHouse.FindHouseAt( this );
+
+			if ( house != null && house.IsAosRules && (house.Public ? house.IsBanned( m ) : !house.HasAccess( m )) )
+				return false;
+
+			return true;
 		}
 
 		public HomePlants_Mushroom(Serial serial) : base(serial)
@@ -310,17 +331,18 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-            writer.Write( (int) 0 ); // version
-            writer.Write( HomePlantID );
-            writer.Write( HomePlantName );
+            writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
             int version = reader.ReadInt();
-            HomePlantID = reader.ReadInt();
-            HomePlantName = reader.ReadString();
+			if (version == 0)
+			{
+				var HomePlantID = reader.ReadInt();
+				var HomePlantName = reader.ReadString();
+			}
 		}
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
