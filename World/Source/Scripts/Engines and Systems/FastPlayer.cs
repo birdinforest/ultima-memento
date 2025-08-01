@@ -1,4 +1,3 @@
-using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
@@ -14,55 +13,15 @@ namespace Server
 {
 	public class FastPlayer
 	{
-		public static TimeSpan ArbitraryDelay = TimeSpan.FromMilliseconds(1000); // Add arbitrary delay to see if it reduces "freezes" after zoning
+		private static Type GhostType = typeof(PlayerMobile);
+		private static Type IndeterminateType = typeof(object);
 
 		private static readonly Dictionary<Serial, Type> m_Table = new Dictionary<Serial, Type>();
 
 		public static void Initialize()
 		{
-			CommandSystem.Register("FastPlayer-Delay", AccessLevel.Administrator, new CommandEventHandler(OnConfigureFastPlayerDelay));
-		}
-
-		[Usage("FastPlayer-Delay [DelayMilliseconds]")]
-		[Description("Configures the arbitrary delay before sending the ControlSpeed packet to the Client.")]
-		private static void OnConfigureFastPlayerDelay(CommandEventArgs e)
-		{
-			var player = e.Mobile as PlayerMobile;
-			if (player == null) return;
-
-			if (e.Arguments.Length == 0)
-			{
-				if (ArbitraryDelay == TimeSpan.Zero)
-					player.SendMessage("The fast player delay is currently disabled.");
-				else
-					player.SendMessage("The fast player delay is currently '{0}' milliseconds.", ArbitraryDelay.TotalMilliseconds);
-
-				return;
-			}
-
-			if (e.Arguments.Length != 1)
-			{
-				player.SendMessage("Arguments for the command are [FastPlayer-Delay <Milliseconds (int)>");
-				return;
-			}
-
-			int millisecondsDelay;
-			if (!int.TryParse(e.Arguments[0], out millisecondsDelay))
-			{
-				player.SendMessage("Milliseconds delay must be a valid number.");
-				return;
-			}
-
-			if (0 < millisecondsDelay)
-			{
-				ArbitraryDelay = TimeSpan.FromMilliseconds(millisecondsDelay);
-				player.SendMessage(68, "Fast player delay has been set to '{0}' milliseconds.", millisecondsDelay);
-			}
-			else
-			{
-				ArbitraryDelay = TimeSpan.Zero;
-				player.SendMessage(68, "Fast player delay has been disabled.");
-			}
+			EventSink.OnEnterRegion += (args) => Reset(args.From as PlayerMobile);
+			EventSink.Login += (args) => Reset(args.Mobile as PlayerMobile);
 		}
 
 		public static bool IsActive(Mobile mobile)
@@ -100,10 +59,14 @@ namespace Server
 					activeType = null;
 			}
 
+			// Ignore validation if the player is dead
+			if (!player.Alive) activeType = GhostType;
+
 			Type oldType;
 			m_Table.TryGetValue(player.Serial, out oldType);
 			if (!force && activeType == oldType) return; // Nothing changed
-			
+			if (activeType == IndeterminateType) return; // Don't send any data. State is currently unknown.
+
 			player.ClearFastwalkStack();
 
 			if (activeType != null)
@@ -123,6 +86,13 @@ namespace Server
 				if (oldType != typeof(HikingBoots) && typeof(Item).IsAssignableFrom(oldType))
 					player.SendMessage("These shoes seem to have their magic diminished here.");
 			}
+		}
+
+		public static void Reset(PlayerMobile player)
+		{
+			if (player == null) return;
+
+			m_Table[player.Serial] = IndeterminateType;
 		}
 
 		private static Type GetActiveItem(PlayerMobile player)

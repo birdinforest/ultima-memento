@@ -906,16 +906,10 @@ namespace Server.Mobiles
 			if( from is PlayerMobile )
 				((PlayerMobile)from).ClaimAutoStabledPets();
 
-			if (!from.Alive)
-			{
-				from.Send(SpeedControl.MountSpeed);
-			}
-			else
+			if (from.Alive)
 			{
 				// Adjust item graphics/visibility on paperdoll
 				from.ProcessClothing();
-				// Arbitrary delay hoping the client has received all it's data
-				Timer.DelayCall(FastPlayer.ArbitraryDelay, () => FastPlayer.Refresh(from, true));
 			}
 		}
 
@@ -2178,6 +2172,8 @@ namespace Server.Mobiles
 				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
 			}
 
+			FastPlayer.Refresh(this);
+
 			CheckLightLevels( false );
 
 			DesignContext context = m_DesignContext;
@@ -2283,7 +2279,6 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
-			Send(SpeedControl.Disable);
 			bool wasAlive = this.Alive;
 
 			base.Resurrect();
@@ -2665,7 +2660,6 @@ namespace Server.Mobiles
 			}
 
 			BaseRace.SyncRace( this, false );
-			Send(SpeedControl.MountSpeed);
 		}
 
 		private List<Mobile> m_PermaFlags;
