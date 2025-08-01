@@ -187,8 +187,10 @@ namespace Server.Mobiles
 		{
 			if (target == null || target.Deleted) //sanity
 				return;
-			if (0.6 >= Utility.RandomDouble()) // 60% chance to polymorph attacker into a ratman
-				Polymorph(target);
+			
+			// Temporarily Disabled due to chance of never being removed
+			// if (0.6 >= Utility.RandomDouble()) // 60% chance to polymorph attacker into a ratman
+			// 	Polymorph(target);
 
 			if (0.2 >= Utility.RandomDouble()) // 20% chance to more ratmen
 				SpawnRatmen(target);
