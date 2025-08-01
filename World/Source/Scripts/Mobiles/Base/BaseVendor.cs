@@ -11,6 +11,7 @@ using Server.Multis;
 using Server.Targeting;
 using Server.Engines.GlobalShoppe;
 using Server.Utilities;
+using System.Linq;
 
 namespace Server.Mobiles
 {
@@ -1457,6 +1458,35 @@ namespace Server.Mobiles
 							from.AddToBackpack ( item );
 						}
 					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The curse has been lifted from the books.", from.NetState);
+					dropped.Delete();
+					return true;
+				}
+				else if ( dropped is JewelryBox && ( this is Jeweler ) )
+				{
+					Container pack = (Container)dropped;
+						List<Item> items = new List<Item>();
+						foreach (Item item in pack.Items)
+						{
+							items.Add(item);
+						}
+						foreach (Item item in items)
+						{
+							from.AddToBackpack ( item );
+						}
+					
+					Item junk = ((JewelryBox)dropped).TryGetJunk();
+					if (junk != null)
+						from.AddToBackpack ( junk );
+					
+					string message = "";
+					if (items.Any())
+						message = "I've untangled your jewelry.";
+					if (junk != null)
+						message += " Some of it was unrecoverable.";
+
+					if (!string.IsNullOrWhiteSpace(message))
+						this.PrivateOverheadMessage(MessageType.Regular, 1153, false, message, from.NetState);
+
 					dropped.Delete();
 					return true;
 				}

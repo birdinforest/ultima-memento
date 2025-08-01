@@ -891,53 +891,53 @@ namespace Server.Items
 							sTrapType = textLog;
 						}
 					}
-					else if ( nTrapType == 23 && SavingThrow( m, "Magic", true, this ) == false ) // MELT JEWELS TRAP
+					else if ( nTrapType == 23 && SavingThrow( m, "Magic", true, this ) == false ) // JEWELERY TRAP
 					{
-						int puddle = 0;
-
-						if ( m != null && m.Backpack != null )
+						// Tangle equipped jewelry
+						bool tangled = false;
+						JewelryBox box = new JewelryBox();
+						var items = JewelryBox.FindCandidates( m );
+						if ( 0 < items.Count )
 						{
-							List<Item> list = new List<Item>();
-							Item jw;
-
-							if ( m.FindItemOnLayer( Layer.Bracelet ) != null ) { jw = m.FindItemOnLayer( Layer.Bracelet ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
-							if ( m.FindItemOnLayer( Layer.Ring ) != null ) { jw = m.FindItemOnLayer( Layer.Ring ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
-							if ( m.FindItemOnLayer( Layer.Helm ) != null ) { jw = m.FindItemOnLayer( Layer.Helm ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
-							if ( m.FindItemOnLayer( Layer.Neck ) != null ) { jw = m.FindItemOnLayer( Layer.Neck ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
-							if ( m.FindItemOnLayer( Layer.Earrings ) != null ) { jw = m.FindItemOnLayer( Layer.Earrings ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
-
-							(m.Backpack).RecurseItems( list );
-							foreach ( Item i in list )
+							foreach ( Item item in items )
 							{
-								if ( i is BaseTrinket && i.Catalog == Catalogs.Jewelry )
-								{
-									if (i.Parent is NotIdentified)
-										((NotIdentified)i.Parent).Delete();
-									i.Delete();
-									puddle++;
-								}
+								box.DropItem(item);
+							}
+							m.AddToBackpack( box );
+
+							tangled = true;
+						}
+
+						// Ruin jewelry in backpack
+						int ruined = 0;
+						items.Clear();
+						(m.Backpack).RecurseItems( items );
+						foreach ( Item i in items )
+						{
+							if (i is JewelryBox || i.Parent is JewelryBox) continue;
+
+							if ( i is BaseTrinket && i.Catalog == Catalogs.Jewelry )
+							{
+								if (i.Parent is NotIdentified)
+									((NotIdentified)i.Parent).Delete();
+								i.Delete();
+								ruined++;
 							}
 						}
 
-						if ( puddle > 0 )
-						{
-							textSay = "A trap triggered, melting all of your jewelry!";
-							textLog = "a jewelry melting trap";
-				
-							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
-							{
-								textSay = "You stepped over an exposed power relay, melting all of your jewelry!";
-								textLog = "an exposed power relay";
-							}
+						if ( 0 < ruined )
+							box.AddJunk( ruined );
 
+						if ( tangled || 0 < ruined )
+						{
+							textSay = "A trap triggered, your jewelry begins to weave together!";
+							textLog = "a jewelry melting trap";
 							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-							RustyJunk broke = new RustyJunk();
-							broke.ItemID = 0x122A;
-							broke.Name = "melted jewelry";
-							broke.Hue = 0x9C4;
-							broke.Weight = puddle;
-							m.AddToBackpack ( broke );
 							sTrapType = textLog;
+						}
+						else
+						{
+							box.Delete();
 						}
 					}
 					else if ( nTrapType == 24 && SavingThrow( m, "Agility", true, this ) == false ) // PIT TRAP
