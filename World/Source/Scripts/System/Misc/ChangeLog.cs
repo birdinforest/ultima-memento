@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Gump - Completely redesigned Runebook gump<br>");
 			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - High fame mobs can now drop Champion Skulls<br>");
 			builder.Append("- Item - Lawn tools can now be used indoors<br>");

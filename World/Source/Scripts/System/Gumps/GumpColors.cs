@@ -5,11 +5,18 @@ namespace Server.Gumps
         public const int BROWN = 0xb7765d;
         public const int COOL_BLUE = 0x79bfdc;
         public const int COOL_GREEN = 0x83b587;
+        public const int GRAY = 0xdddddd;
+        public const int GRAY_BLUE = 0x7083aa;
         public const int KHAKI = 0xdcb179;
+        public const int LIGHT_GOLD = 0xd6c382;
         public const int LIGHT_PINK = 0xe59de2;
+        public const int MINT_GREEN = 0x81db9f;
         public const int MUSTARD = 0xcfcc82;
         public const int NAVY_BLUE = 0x284f9f;
         public const int OFFWHITE = 0xf7fbde;
+        public const int ORANGE = 0xeabd6f;
+        public const int PALE_RED = 0xed6060;
+        public const int PINK = 0xf7a6fa;
         public const int RED = 0xff0000;
         public const int WHITE = 0xffffff;
     }

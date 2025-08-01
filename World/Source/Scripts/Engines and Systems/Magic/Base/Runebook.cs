@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Gumps;
 using Server.Network;
 using Server.Mobiles;
@@ -14,6 +12,10 @@ namespace Server.Items
 {
 	public class Runebook : Item, ISecurable, ICraftable
 	{
+		public const int MAX_RECALL_RUNES = 16;
+
+		public RunebookGump.SpellType SpellType { get; set; }
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )
@@ -49,9 +51,6 @@ namespace Server.Items
 		private int m_CurCharges, m_MaxCharges;
 		private int m_DefaultIndex;
 		private SecureLevel m_Level;
-		
-		private DateTime m_NextUse;
-		
 		private List<Mobile> m_Openers = new List<Mobile>();
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -124,6 +123,7 @@ namespace Server.Items
 			m_MaxCharges = maxCharges;
 			m_DefaultIndex = -1;
 			m_Level = SecureLevel.CoOwners;
+			SpellType = RunebookGump.SpellType.None;
 		}
 
 		[Constructable]
@@ -176,8 +176,9 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 );
+			writer.Write( (int) 4 );
 
+			writer.Write( (int) SpellType );
 			writer.Write( (int) m_Level );
 
 			writer.Write( m_Entries.Count );
@@ -198,6 +199,11 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 4:
+					{
+						SpellType = (RunebookGump.SpellType)reader.ReadInt();
+						goto case 3;
+					}
 				case 3:
 				case 2:
 				{
@@ -231,8 +237,11 @@ namespace Server.Items
 			ItemID = 0x0F3D;
 		}
 
-		public void DropRune( Mobile from, RunebookEntry e, int index )
+		public void DropRune( Mobile from, RunebookEntry e )
 		{
+			var index = FindIndex( e );
+			if ( index < 0 ) return;
+
 			if ( m_DefaultIndex > index )
 				m_DefaultIndex -= 1;
 			else if ( m_DefaultIndex == index )
@@ -251,6 +260,43 @@ namespace Server.Items
 			from.AddToBackpack( rune );
 
 			from.SendLocalizedMessage( 502421 ); // You have removed the rune.
+		}
+
+		public bool CanMove( RunebookEntry entry, bool down )
+		{
+			var index = FindIndex( entry );
+			if (index < 0) return false;
+
+			if ( down ) return index + 1 < m_Entries.Count;
+
+			return 0 <= index - 1;
+		}
+
+		public int MoveRune(RunebookEntry entry, bool down)
+		{
+			var index = FindIndex(entry);
+			var newIndex = down ? index + 1 : index - 1;
+
+			var existingEntry = TryGetRune( newIndex );
+			if ( existingEntry == null ) return index;
+
+			if ( m_DefaultIndex == index )
+				m_DefaultIndex = newIndex;
+
+			m_Entries[index] = existingEntry;
+			m_Entries[newIndex] = entry;
+
+			return newIndex;
+		}
+
+		public int FindIndex( RunebookEntry entry )
+		{
+			return m_Entries.FindIndex(e => e == entry);
+		}
+
+		public RunebookEntry TryGetRune( int index )
+		{
+			return m_Entries.Count > index ? m_Entries[index] : null;
 		}
 
 		public bool IsOpen( Mobile toCheck )
@@ -327,7 +373,7 @@ namespace Server.Items
 				}
 
 				from.CloseGump( typeof( RunebookGump ) );
-				from.SendGump( new RunebookGump( from, this ) );
+				from.SendGump( new RunebookGump( from, this, RunebookGump.PageType.Index ) );
 				
 				m_Openers.Add( from );
 				from.SendSound( 0x55 );
@@ -486,6 +532,7 @@ namespace Server.Items
 		public string Description
 		{
 			get{ return m_Description; }
+			set{ m_Description = value; }
 		}
 
 		public BaseHouse House
