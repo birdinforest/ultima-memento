@@ -373,7 +373,7 @@ namespace Server.Items
 				}
 
 				from.CloseGump( typeof( RunebookGump ) );
-				from.SendGump( new RunebookGump( from, this, RunebookGump.PageType.Index ) );
+				from.SendGump( new RunebookGump( from, this, RunebookGump.PageType.Index, 0 ) );
 				
 				m_Openers.Add( from );
 				from.SendSound( 0x55 );
