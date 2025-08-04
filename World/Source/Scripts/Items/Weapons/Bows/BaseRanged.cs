@@ -11,6 +11,14 @@ namespace Server.Items
 		public abstract int EffectID{ get; }
 		public abstract Type AmmoType{ get; }
 		public abstract Item Ammo{ get; }
+		
+		private bool CanReplenishableAmmo
+		{
+			get
+			{
+				return AmmoType == typeof(Arrow) || AmmoType == typeof(Bolt);
+			}
+		}
 
 		public override int DefHitSound{ get{ return 0x234; } }
 		public override int DefMissSound{ get{ return 0x238; } }
@@ -101,10 +109,10 @@ namespace Server.Items
 
 		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
 		{
-			if ( !( Ammo is Krystal ) && !( Ammo is HarpoonRope ) && !( Ammo is MageEye ) && !( Ammo is ThrowingWeapon ) && attacker.Player && !defender.Player && (defender.Body.IsAnimal || defender.Body.IsMonster) && 0.4 >= Utility.RandomDouble() )
+			if ( CanReplenishableAmmo && attacker.Player && !defender.Player && (defender.Body.IsAnimal || defender.Body.IsMonster) && 0.4 >= Utility.RandomDouble() )
 				defender.AddToBackpack( Ammo );
 
-			if ( defender is BaseCreature && Ammo is ThrowingWeapon && attacker.Player )
+			if ( defender is BaseCreature && attacker.Player && AmmoType == typeof(ThrowingWeapon) )
 			{
 				BaseCreature bc = (BaseCreature)defender;
 
@@ -151,7 +159,7 @@ namespace Server.Items
 		{
 			if ( attacker.Player && 0.4 >= Utility.RandomDouble() )
 			{
-				if ( !( Ammo is ThrowingWeapon ) && !( Ammo is MageEye ) && !( Ammo is HarpoonRope ) && !( Ammo is Krystal ) )
+				if ( CanReplenishableAmmo )
 				{
 					PlayerMobile p = attacker as PlayerMobile;
 
