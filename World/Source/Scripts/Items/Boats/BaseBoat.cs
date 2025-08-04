@@ -1211,32 +1211,36 @@ namespace Server.Multis
 			if ( boat == null )
 				return;
 
-			foreach ( Mobile stow in World.Mobiles.Values )
-			if ( stow is PlayerMobile && stow.Region.Name == "the Ship's Lower Deck" )
+			// Magic carpets don't have a Lower Deck
+			if ( !BaseBoat.isCarpet( this ) )
 			{
-				string sCabinDoor = ((PlayerMobile)from).CharacterBoatDoor;
-
-				string sWorld = "";
-				string sSerial = "";
-				string sCode = "";
-
-				if ( sCabinDoor != null )
+				foreach ( Mobile stow in World.Mobiles.Values )
+				if ( stow is PlayerMobile && stow.Region.Name == "the Ship's Lower Deck" )
 				{
-					string[] doors = sCabinDoor.Split('#');
-					int nEntry = 1;
-					foreach (string doorz in doors)
+					string sCabinDoor = ((PlayerMobile)from).CharacterBoatDoor;
+
+					string sWorld = "";
+					string sSerial = "";
+					string sCode = "";
+
+					if ( sCabinDoor != null )
 					{
-						if ( nEntry == 1 ){ sSerial = doorz; }
-						else if ( nEntry == 2 ){ sCode = doorz; }
-						else if ( nEntry == 3 ){ sWorld = doorz; }
+						string[] doors = sCabinDoor.Split('#');
+						int nEntry = 1;
+						foreach (string doorz in doors)
+						{
+							if ( nEntry == 1 ){ sSerial = doorz; }
+							else if ( nEntry == 2 ){ sCode = doorz; }
+							else if ( nEntry == 3 ){ sWorld = doorz; }
 
-						nEntry++;
+							nEntry++;
+						}
 					}
-				}
 
-				if ( this.m_BoatDoor.Serial.ToString() == sSerial && this.m_BoatDoor.BoatCode == sCode )
-				{
-					DeckDoor.CabinDoor( stow, from.Location, from.Map );
+					if ( m_BoatDoor.Serial.ToString() == sSerial && m_BoatDoor.BoatCode == sCode )
+					{
+						DeckDoor.CabinDoor( stow, from.Location, from.Map );
+					}
 				}
 			}
 
