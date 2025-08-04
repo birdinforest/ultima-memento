@@ -1268,11 +1268,10 @@ namespace Server.Items
 			}
 		}
 
+		/// <returns>`True` if the trap his been triggered</returns>
 		public static bool CheckTrapAvoidance( Mobile m, Item Trap )
 		{
-			string textSay = "";
-
-			bool nSprung = true;
+			string textSay;
 
 			if ( m.Skills.RemoveTrap.Value >= 5 )
 			{
@@ -1293,13 +1292,14 @@ namespace Server.Items
 						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 						m.PlaySound( 0x241 );
 					}
+
+					return false;
 				}
-				nSprung = false;
 			}
 
 			if ( m is PlayerMobile )
 			{
-				if ( m.Backpack != null && nSprung )
+				if ( m.Backpack != null )
 				{
 					Item magicwand = m.Backpack.FindItemByType( typeof ( TrapWand ) );
 
@@ -1322,12 +1322,15 @@ namespace Server.Items
 								}
 								m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 							}
+
 							m.PlaySound( 0x1F0 );
-							nSprung = false;
+
+							return false;
 						}
 					}
 				}
-				if ( GetPlayerInfo.LuckyPlayer(m.Luck) && nSprung )
+
+				if ( GetPlayerInfo.LuckyPlayer(m.Luck) )
 				{
 					if ( Trap is MushroomTrap )
 					{
@@ -1343,9 +1346,11 @@ namespace Server.Items
 						else { m.PlaySound( 0x241 ); }
 						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 					}
-					nSprung = false;
+
+					return false;
 				}
-				if ( m.Backpack != null && nSprung )
+
+				if ( m.Backpack != null )
 				{
 					Item tenfootpole = m.Backpack.FindItemByType( typeof ( TenFootPole ) );
 
@@ -1389,13 +1394,14 @@ namespace Server.Items
 								}
 								poles.InvalidateProperties();
 							}
-							nSprung = false;
+
+							return false;
 						}
 					}
 				}
 			}
 
-			return nSprung;
+			return true;
 		}
 
 		public static Item GetMyItem( Mobile m )
