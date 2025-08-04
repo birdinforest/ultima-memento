@@ -1,7 +1,6 @@
 using System;
 using Server.Engines.CannedEvil;
 using Server.Gumps;
-using Server.Utilities;
 
 namespace Server.Items
 {
@@ -62,19 +61,14 @@ namespace Server.Items
 			}
 		}
 
-		public static void Initialize()
+		public override bool OnDecay()
 		{
-			EventSink.WorldSave += (args) =>
-			{
-				var expirationTimestamp = DateTime.UtcNow.AddDays(0 - MAX_DAYS_AGE);
-				foreach (var skull in WorldUtilities.ForEachItem<ChampionSkull>(item => !item.Deleted))
-				{
-					if (skull.m_Created < expirationTimestamp)
-						skull.Delete();
-					else
-						skull.InvalidateProperties();
-				}
-			};
+			var expirationTimestamp = DateTime.UtcNow.AddDays(0 - MAX_DAYS_AGE);
+			if (m_Created < expirationTimestamp) return true;
+
+			InvalidateProperties();
+
+			return false;
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -115,11 +109,13 @@ namespace Server.Items
 			list.Add("[Use on a Champion Idol]");
 
 			if (timeRemaining.TotalDays < 1)
-				list.Add("Energy: Waning"); // < 1 day
+				list.Add("Energy: Faint"); // < 1 day
 			else if (timeRemaining.TotalDays < 3)
-				list.Add("Energy: Diminished"); // 1-3 day
+				list.Add("Energy: Waning"); // 1-3 days
+			else if (timeRemaining.TotalDays < 5)
+				list.Add("Energy: Diminished"); // 3-5 days
 			else if (timeRemaining.TotalDays < 7)
-				list.Add("Energy: Fading"); // 3-7 days
+				list.Add("Energy: Fading"); // 5-7 days
 			else
 				list.Add("Energy: Potent"); // 7+ days
 
