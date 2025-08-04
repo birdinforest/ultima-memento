@@ -39,6 +39,7 @@ namespace Server.Misc
 			builder.Append("- Misc - More Fast-player changes<br>");
 			builder.Append("- Misc - Remove bad images from manage Player Vendor gump<br>");
 			builder.Append("- Misc - Traps are now being checked for players with >= 5.0 Remove Trap<br>");
+			builder.Append("- Misc - Fix crash when a sailor died without a player killer<br>");
 			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
 			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
