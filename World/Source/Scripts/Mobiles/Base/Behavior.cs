@@ -2708,7 +2708,7 @@ namespace Server.Misc
 				m.AddItem( new Boots( Utility.RandomNeutralHue() ) );
 				if ( Utility.RandomBool() ){ m.AddItem( new Cloak( Utility.RandomNeutralHue() ) ); }
 
-				Item cloth1 = new FancyShirt();
+				Item cloth1;
 					switch ( Utility.RandomMinMax( 0, 6 ) )
 					{
 						case 0: cloth1 = new RoyalCoat(); break;
@@ -2717,29 +2717,32 @@ namespace Server.Misc
 						case 3: cloth1 = new SquireShirt(); break;
 						case 4: cloth1 = new FormalCoat(); break;
 						case 5: cloth1 = new WizardShirt(); break;
+						default: cloth1 = new FancyShirt(); break;
 					}
 					cloth1.Hue = clothHue;
 					m.AddItem( cloth1 );
 
 				if ( ( m.Body == 0x191 || m.Body == 606 ) && Utility.RandomBool() )
 				{
-					Item cloth2 = new Skirt();
+					Item cloth2;
 						switch ( Utility.RandomMinMax( 0, 2 ) )
 						{
 							case 0: cloth2 = new RoyalSkirt(); break;
 							case 1: cloth2 = new RoyalLongSkirt(); break;
+							default: cloth2 = new Skirt(); break;
 						}
 						cloth2.Hue = pantsHue;
 						m.AddItem( cloth2 );
 				}
 				else
 				{
-					Item cloth2 = new ShortPants();
+					Item cloth2;
 						switch ( Utility.RandomMinMax( 0, 3 ) )
 						{
 							case 0: cloth2 = new LongPants(); break;
 							case 1: cloth2 = new SailorPants(); break;
 							case 2: cloth2 = new PiratePants(); break;
+							default: cloth2 = new ShortPants(); break;
 						}
 						cloth2.Hue = pantsHue;
 						m.AddItem( cloth2 );
