@@ -575,6 +575,7 @@ namespace Server.Engines.CannedEvil
 					BaseCreature.BeefUp(bc, SpawnDifficulty, false);
 					bc.Tamable = false;
 					bc.IsEphemeral = true;
+					if (bc.FightMode == FightMode.Aggressor) bc.FightMode = FightMode.Closest;
 
 					if (!m_ConfinedRoaming)
 					{
