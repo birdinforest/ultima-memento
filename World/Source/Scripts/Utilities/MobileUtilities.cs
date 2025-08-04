@@ -63,7 +63,7 @@ public class MobileUtilities
 		if (player != null) return player;
 		
 		// Check for provocation
-		if (player == null && m is BaseCreature)
+		if (m is BaseCreature)
 		{
 			BaseCreature bc = (BaseCreature)m;
 			if (bc.BardProvoked)
