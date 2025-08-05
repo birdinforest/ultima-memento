@@ -373,7 +373,7 @@ namespace Scripts.Mythik.Systems.Achievements
         private static DiscoveryAchievement AddTown(int achievementId, int categoryId, DiscoverLandAchievement prerequisite, string region)
         {
             var title = m_TextInfo.ToTitleCase(region);
-            var landName = GetLandName(prerequisite.Land);
+            var landName = Lands.LandNameShort(prerequisite.Land);
 
             // Get Sextant Location
             string location;
@@ -423,7 +423,7 @@ namespace Scripts.Mythik.Systems.Achievements
         private static DiscoveryAchievement AddDungeon(int achievementId, int categoryId, DiscoverLandAchievement prerequisite, string region, bool hasRelic = true)
         {
             var title = m_TextInfo.ToTitleCase(region);
-            var landName = GetLandName(prerequisite.Land);
+            var landName = Lands.LandNameShort(prerequisite.Land);
 
             var relicQuestItem = hasRelic ? SomeRandomNote.GetRelicItem(region) : null;
             if (!string.IsNullOrWhiteSpace(relicQuestItem))
@@ -469,26 +469,6 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(achievement);
 
             return achievement;
-        }
-
-        private static string GetLandName(Land land)
-        {
-            switch (land)
-            {
-                case Land.Ambrosia: return "Ambrosia";
-                case Land.Atlantis: return "Atlantis";
-                case Land.IslesDread: return "Isles of Dread";
-                case Land.Kuldar: return "Kuldar";
-                case Land.Lodoria: return "Lodoria";
-                case Land.Luna: return "Luna";
-                case Land.Savaged: return "Savaged";
-                case Land.Serpent: return "Serpent";
-                case Land.SkaraBrae: return "Skara Brae";
-                case Land.Sosaria: return "Sosaria";
-                case Land.UmberVeil: return "Umber Veil";
-                case Land.Underworld: return "Underworld";
-                default: throw new Exception("Unsupported land type: " + land.ToString());
-            }
         }
 
         private static void LoadData()

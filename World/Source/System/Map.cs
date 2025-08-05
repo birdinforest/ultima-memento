@@ -233,6 +233,26 @@ namespace Server
 
     public class Lands
     {
+        public static string LandNameShort(Land land)
+        {
+            switch (land)
+            {
+                case Land.Ambrosia: return "Ambrosia";
+                case Land.Atlantis: return "Atlantis";
+                case Land.IslesDread: return "Isles of Dread";
+                case Land.Kuldar: return "Kuldar";
+                case Land.Lodoria: return "Lodoria";
+                case Land.Luna: return "Luna";
+                case Land.Savaged: return "Savaged Empire";
+                case Land.Serpent: return "Serpent Island";
+                case Land.SkaraBrae: return "Skara Brae";
+                case Land.Sosaria: return "Sosaria";
+                case Land.UmberVeil: return "Umber Veil";
+                case Land.Underworld: return "Underworld";
+                default: throw new Exception("Unsupported land type: " + land.ToString());
+            }
+        }
+
 		public static string LandName( Land land )
 		{
 			if ( land == Land.Ambrosia )
