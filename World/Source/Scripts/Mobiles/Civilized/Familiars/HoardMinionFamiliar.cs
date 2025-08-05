@@ -1,3 +1,5 @@
+using Server.Items;
+
 namespace Server.Mobiles
 {
 	[CorpseName( "a hoard minion corpse" )]
@@ -8,6 +10,16 @@ namespace Server.Mobiles
 			Name = "a hoard minion";
 			Blessed = true;
 			ControlSlots = 1;
+			SetStr( 65000 );
+			Container pack = Backpack;
+
+			if ( pack != null )
+				pack.Delete();
+
+			pack = new StrongBackpack();
+			pack.Movable = false;
+
+			AddItem( pack );
 		}
 
 		public HoardMinionFamiliar( Serial serial ) : base( serial )
