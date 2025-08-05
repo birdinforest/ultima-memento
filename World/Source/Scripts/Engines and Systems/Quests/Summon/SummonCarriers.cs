@@ -812,6 +812,7 @@ namespace Server.Misc
 
 					SummonChest MyChest = new SummonChest( killer );
 					MyChest.Prisoner = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase((m.Name).ToLower());
+					MyChest.AddItem(new HoardMinionFamiliarItem());
 
 					string myName = GetFirstName( m.Name );
 					int myHue = m.Hue;

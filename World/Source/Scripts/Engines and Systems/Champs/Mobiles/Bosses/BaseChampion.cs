@@ -197,6 +197,8 @@ namespace Server.Mobiles
 		{
 			if (!NoKillAwards)
 			{
+				c.DropItem(new HoardMinionFamiliarItem());
+
 				if (TreasureChestRewardChance > 0 && Utility.RandomDouble() < TreasureChestRewardChance / 100.0)
 				{
 					LootChest MyChest = new LootChest(10);
