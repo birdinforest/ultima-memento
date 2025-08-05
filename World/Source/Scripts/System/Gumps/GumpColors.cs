@@ -16,6 +16,8 @@ namespace Server.Gumps
         public const int OFFWHITE = 0xf7fbde;
         public const int ORANGE = 0xeabd6f;
         public const int PALE_RED = 0xed6060;
+		public const int PALE_PURPLE = 0xb7a1be;
+		public const int PALER_RED = 0xdc7676;
         public const int PINK = 0xf7a6fa;
         public const int RED = 0xff0000;
         public const int WHITE = 0xffffff;
