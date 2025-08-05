@@ -161,6 +161,7 @@ namespace Server.Mobiles
 
 					rat.Team = Team;
 					rat.IsTempEnemy = true;
+					rat.Summoned = true;
 
 					bool validLocation = false;
 					Point3D loc = Location;
