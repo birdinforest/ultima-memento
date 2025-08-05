@@ -42,6 +42,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Traps are now being checked for players with >= 5.0 Remove Trap<br>");
 			builder.Append("- Misc - Fix crash when a sailor died without a player killer<br>");
 			builder.Append("- Misc - Fix crash when a magic carpet is drydocked when someone else is in the Lower Deck zone<br>");
+			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
 			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");

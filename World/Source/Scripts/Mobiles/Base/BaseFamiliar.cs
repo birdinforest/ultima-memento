@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Items;
 using Server.ContextMenus;
 
 namespace Server.Mobiles
 {
-	public abstract class BaseFamiliar : BaseCreature
+	public abstract class BaseFamiliar : BaseCreature, IValidate
 	{
 		public BaseFamiliar() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -136,6 +133,11 @@ namespace Server.Mobiles
 
 			int version = reader.ReadInt();
 
+			ValidationQueue<BaseFamiliar>.Add( this );
+		}
+
+		public void Validate()
+		{
 			DropPackContents();
 			Delete();
 		}
