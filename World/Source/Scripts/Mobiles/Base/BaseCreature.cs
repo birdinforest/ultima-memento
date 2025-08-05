@@ -1908,6 +1908,7 @@ namespace Server.Mobiles
 			else if ( m is NecroGreeter ){ return true; }
 			else if ( m is Priest ){ return true; }
 			else if ( m is BaseNPC ){ return true; }
+			else if ( m is HoardMinionFamiliar ){ return true; }
 
 			return false;
 		}
