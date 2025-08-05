@@ -63,7 +63,7 @@ namespace Server.Mobiles
 			if ( DateTime.Now < m_NextPickup )
 				return;
 
-			m_NextPickup = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 5, 10 ) );
+			m_NextPickup = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 1, 3) );
 
 			Container pack = this.Backpack;
 
@@ -72,13 +72,11 @@ namespace Server.Mobiles
 
 			ArrayList list = new ArrayList();
 
-			foreach ( Item item in this.GetItemsInRange( 2 ) )
+			foreach ( Item item in this.GetItemsInRange( 3 ) )
 			{
 				if ( item.Movable && item.Stackable )
 					list.Add( item );
 			}
-
-			int pickedUp = 0;
 
 			for ( int i = 0; i < list.Count; ++i )
 			{
@@ -98,9 +96,6 @@ namespace Server.Mobiles
 					continue;
 
 				Drop( this, Point3D.Zero );
-
-				if ( ++pickedUp == 3 )
-					break;
 			}
 		}
 
