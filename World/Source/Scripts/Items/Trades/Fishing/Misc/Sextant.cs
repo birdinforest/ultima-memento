@@ -32,6 +32,10 @@ namespace Server.Items
 
 		public class MapGump : Gump
 		{
+			public MapGump( Mobile from, Map map, IPoint2D point ) : this( from, map, point.X, point.Y, null )
+			{
+			}
+
 			public MapGump( Mobile from, Map map, int x, int y, Item parchment ): base( 100, 100 )
 			{
 				if ( HasSextant( from ) || parchment is MapWorld || parchment is PlaceMap )
@@ -315,7 +319,7 @@ namespace Server.Items
 			if ( from.Land == Land.Underworld && !(this is MagicSextant) ){ from.SendMessage( "You will need a magical sextant to see the stars through the cavern ceiling!" ); } 
 			else if ( Sextant.Format( from.Location, from.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth ) )
 			{
-				string location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+				string location = String.Format( "{0}ï¿½ {1}'{2}, {3}ï¿½ {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				from.LocalOverheadMessage( MessageType.Regular, from.SpeechHue, false, location );
 			}
 			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "Ravendark Woods" ) { from.SendMessage( "You can't use a sextant as the sun and stars are blocked by the evil darkness here!" ); }
