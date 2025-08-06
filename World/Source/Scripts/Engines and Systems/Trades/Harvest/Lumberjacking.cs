@@ -40,10 +40,10 @@ namespace Server.Engines.Harvest
 			lumber.BankWidth = 1;
 			lumber.BankHeight = 1;
 
-			// Every bank holds from 4 to 9 logs
+			// Every bank holds from 4 to 6 logs
 			// Warning: Fruit and Kindling harvesting use these values
 			lumber.MinTotal = 4;
-			lumber.MaxTotal = 9;
+			lumber.MaxTotal = 6;
 
 			// A resource bank will respawn its content every 20 to 30 minutes
 			lumber.MinRespawn = TimeSpan.FromMinutes( 20.0 );

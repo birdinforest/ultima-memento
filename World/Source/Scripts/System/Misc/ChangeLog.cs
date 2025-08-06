@@ -19,6 +19,7 @@ namespace Server.Misc
 			builder.Append("- Champs - Rikktor is now much harder<br>");
 			builder.Append("- Champs - Barracoon's mobs can no longer rummage<br>");
 			builder.Append("- Champs - All minions should now be aggressive<br>");
+			builder.Append("- Gather - Reduce logs per tree from 4-9 to 4-6<br>");
 			builder.Append("- Gump - Completely redesigned Runebook gump<br>");
 			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - High fame mobs can now drop Champion Skulls<br>");
