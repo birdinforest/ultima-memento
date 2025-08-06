@@ -1,4 +1,4 @@
-using System.Linq;
+using Server.Items;
 using Server.Items.Abstractions;
 
 namespace Server.Engines.Harvest
@@ -6,40 +6,54 @@ namespace Server.Engines.Harvest
     /// <summary>
     /// This should only be programatically created
     /// </summary>
-    public class RichLumberjackingSparkle : Item
+    public class RichLumberjackingSparkle : Item, IValidate
     {
+		private Item m_LightSource;
+
         public RichLumberjackingSparkle() : base(0x373A)
         {
             Name = "A rich tree";
-            Light = LightType.Circle300;
+			m_LightSource = new LighterSource();
         }
 
         public RichLumberjackingSparkle(Serial serial) : base(serial)
         {
         }
 
-        public static void Configure()
-        {
-            EventSink.WorldLoad += OnWorldLoad;
-        }
+		public override void OnDelete()
+		{
+			base.OnDelete();
 
-        private static void OnWorldLoad()
-        {
-            // Should never exist after a Restart
-            World.Items.Values
-                .Where(x => x is RichLumberjackingSparkle)
-                .ToList()
-                .ForEach(x => x.Delete());
-        }
+			if (m_LightSource != null && !m_LightSource.Deleted)
+				m_LightSource.Delete();
+		}
 
-        public override void Deserialize(GenericReader reader)
+		public override void OnAfterSpawn()
+		{
+			base.OnAfterSpawn();
+
+			if (m_LightSource != null && !m_LightSource.Deleted)
+				m_LightSource.MoveToWorld(Location, Map);
+		}
+
+		public override void OnLocationChange(Point3D oldLocation)
+		{
+			base.OnLocationChange(oldLocation);
+
+			if (m_LightSource != null && !m_LightSource.Deleted)
+				m_LightSource.MoveToWorld(Location, Map);
+		}
+
+		public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
 
-            // Automatically deleted
-            Visible = false;
+			if (0 < version)
+				m_LightSource = reader.ReadItem();
+			
+			ValidationQueue.Add(this);
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -66,7 +80,13 @@ namespace Server.Engines.Harvest
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
+			writer.Write(m_LightSource);
         }
-    }
+
+		public void Validate()
+		{
+			Delete();
+		}
+	}
 }
