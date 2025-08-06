@@ -20,6 +20,11 @@ namespace Server
 
 			StartValidation = null;
 		}
+
+		public static void Add<T>(T obj) where T : IValidate
+		{
+			ValidationQueue<T>.Add(obj);
+		}
 	}
 
 	public static class ValidationQueue<T> where T : IValidate
