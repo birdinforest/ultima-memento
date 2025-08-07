@@ -28,17 +28,9 @@ namespace Server.Engines.Harvest
 				m_LightSource.Delete();
 		}
 
-		public override void OnAfterSpawn()
+		public override void OnMapChange()
 		{
-			base.OnAfterSpawn();
-
-			if (m_LightSource != null && !m_LightSource.Deleted)
-				m_LightSource.MoveToWorld(Location, Map);
-		}
-
-		public override void OnLocationChange(Point3D oldLocation)
-		{
-			base.OnLocationChange(oldLocation);
+			base.OnMapChange();
 
 			if (m_LightSource != null && !m_LightSource.Deleted)
 				m_LightSource.MoveToWorld(Location, Map);
