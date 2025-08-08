@@ -519,12 +519,12 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_SkinInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 0xB1E,	0xB1E,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063750	,	1063757	,	1063758,	 "Demon",	CraftAttributeInfo.DemonSkin,	CraftResource.DemonSkin,	typeof( DemonSkins ) ),		
-			new CraftResourceInfo( 0x960,	0x960,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063751	,	1063760	,	1063761,	 "Dragon",	CraftAttributeInfo.DragonSkin,	CraftResource.DragonSkin,	typeof( DragonSkins ) ),		
-			new CraftResourceInfo( 0xB80,	0xB80,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063752	,	1063763	,	1063764,	 "Nightmare",	CraftAttributeInfo.NightmareSkin,	CraftResource.NightmareSkin,	typeof( NightmareSkins ) ),		
-			new CraftResourceInfo( 0xB79,	0xB79,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063753	,	1063766	,	1063767,	 "Snake",	CraftAttributeInfo.SnakeSkin,	CraftResource.SnakeSkin,	typeof( SnakeSkins ) ),		
-			new CraftResourceInfo( 0xB4C,	0xB4C,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063754	,	1063769	,	1063770,	 "Troll",	CraftAttributeInfo.TrollSkin,	CraftResource.TrollSkin,	typeof( TrollSkins ) ),		
-			new CraftResourceInfo( 0xBB4,	0xBB4,	2	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063755	,	1063772	,	1063773,	 "Unicorn",	CraftAttributeInfo.UnicornSkin,	CraftResource.UnicornSkin,	typeof( UnicornSkins ) ),		
+			new CraftResourceInfo( 0xB1E,	0xB1E,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063750	,	1063757	,	1063758,	 "Demon",	CraftAttributeInfo.DemonSkin,	CraftResource.DemonSkin,	typeof( DemonSkins ) ),		
+			new CraftResourceInfo( 0x960,	0x960,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063751	,	1063760	,	1063761,	 "Dragon",	CraftAttributeInfo.DragonSkin,	CraftResource.DragonSkin,	typeof( DragonSkins ) ),		
+			new CraftResourceInfo( 0xB80,	0xB80,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063752	,	1063763	,	1063764,	 "Nightmare",	CraftAttributeInfo.NightmareSkin,	CraftResource.NightmareSkin,	typeof( NightmareSkins ) ),		
+			new CraftResourceInfo( 0xB79,	0xB79,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063753	,	1063766	,	1063767,	 "Snake",	CraftAttributeInfo.SnakeSkin,	CraftResource.SnakeSkin,	typeof( SnakeSkins ) ),		
+			new CraftResourceInfo( 0xB4C,	0xB4C,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063754	,	1063769	,	1063770,	 "Troll",	CraftAttributeInfo.TrollSkin,	CraftResource.TrollSkin,	typeof( TrollSkins ) ),		
+			new CraftResourceInfo( 0xBB4,	0xBB4,	3	,	8	,	3.20	,	65.0	,	100	,	20	,	30	,	10	,	1	,	1063755	,	1063772	,	1063773,	 "Unicorn",	CraftAttributeInfo.UnicornSkin,	CraftResource.UnicornSkin,	typeof( UnicornSkins ) ),		
 			new CraftResourceInfo( 0xB7A,	0xB7A,	3	,	10	,	3.40	,	75.0	,	100	,	24	,	40	,	12	,	1	,	1064084	,	1063775	,	1063776,	 "Icy",	CraftAttributeInfo.IcySkin,	CraftResource.IcySkin,	typeof( IcySkins ) ),		
 			new CraftResourceInfo( 0xB17,	0xB17,	3	,	10	,	3.40	,	75.0	,	100	,	24	,	40	,	12	,	1	,	1064085	,	1063778	,	1063779,	 "Lava",	CraftAttributeInfo.LavaSkin,	CraftResource.LavaSkin,	typeof( LavaSkins ) ),		
 			new CraftResourceInfo( 0x98D,	0x98D,	3	,	10	,	3.40	,	75.0	,	100	,	24	,	40	,	12	,	1	,	1064086	,	1063781	,	1063782,	 "Seaweed",	CraftAttributeInfo.Seaweed,	CraftResource.Seaweed,	typeof( Seaweeds ) ),		
