@@ -1,9 +1,12 @@
+using System;
 using Server.Mobiles;
 
 namespace Server.Items
 {
 	public class HoardMinionFamiliarItem : Item
 	{
+		private const int SUMMON_DURATION_MINUTES = 10;
+
 		[Constructable]
 		public HoardMinionFamiliarItem() : base( 0x2611 )
 		{
@@ -57,6 +60,7 @@ namespace Server.Items
 				friend.SummonMaster = from;
 				friend.Blessed = true;
 				friend.MoveToWorld( loc, map );
+				Timer.DelayCall( TimeSpan.FromMinutes( SUMMON_DURATION_MINUTES ), () => friend.Delete() );
 
 				friend.FixedParticles( 0x374A, 1, 15, 5054, 23, 7, EffectLayer.Head );
 				friend.PlaySound( 0x1F9 );
@@ -70,7 +74,7 @@ namespace Server.Items
 		{
 			base.GetProperties(list);
 
-			list.Add("Use to summon a hoard minion for 10 minutes");
+			list.Add(string.Format("Summons a hoard minion for {0} minutes", SUMMON_DURATION_MINUTES));
 		}
 
 		public override void Serialize( GenericWriter writer )
