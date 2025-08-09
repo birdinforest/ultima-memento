@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using Server;
 using Server.Items;
 using Server.Mobiles;
 using System.Collections.Generic;
-using Server.Network;
 using Server.Misc;
-using Server.Regions;
+using Server.Utilities;
 
 namespace Server
 {
@@ -1223,7 +1220,12 @@ namespace Server
 								amount = amount - (nSilver * nSp);
 							}
 						}
-						if (amount > 0){ if ( amount < 10 ){ amount = Utility.RandomMinMax( 10, 15 ); } pack.DropItem( new DDCopper( amount ) ); }
+						if (amount > 0)
+						{
+							if ( amount < 10 ){ amount = Utility.RandomMinMax( 10, 15 ); }
+							foreach (var item in ItemUtilities.AddStacks(amount, () => new DDCopper()))
+								pack.DropItem( item );
+						}
 					}
 				}
 			}
