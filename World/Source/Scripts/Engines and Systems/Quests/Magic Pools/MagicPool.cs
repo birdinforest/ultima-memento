@@ -1,13 +1,7 @@
 using System;
-using Server;
-using Server.Items;
-using Server.Network;
-using Server.Spells;
-using Server.Mobiles;
-using System.Collections.Generic;
 using Server.Misc;
-using System.Collections;
-using Server.ContextMenus;
+using Server.Mobiles;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -324,35 +318,23 @@ namespace Server.Items
 				{
 					from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 					Container cont = from.Backpack;
-					int nDull = 0;
 
 					int m_gAmount = from.Backpack.GetAmount( typeof( Gold ) );
 					int m_cAmount = from.Backpack.GetAmount( typeof( DDCopper ) );
 					int m_sAmount = from.Backpack.GetAmount( typeof( DDSilver ) );
 					int m_xAmount = from.Backpack.GetAmount( typeof( DDXormite ) );
 
-					if ( cont.ConsumeTotal( typeof( Gold ), m_gAmount ) )
+					int totalAmount = m_gAmount + m_cAmount + m_sAmount + m_xAmount;
+					if ( 0 < totalAmount )
 					{
-						from.AddToBackpack( new LeadCoin( m_gAmount ) );
-						nDull = 1;
-					}
-					if ( cont.ConsumeTotal( typeof( DDCopper ), m_cAmount ) )
-					{
-						from.AddToBackpack( new LeadCoin( m_cAmount ) );
-						nDull = 1;
-					}
-					if ( cont.ConsumeTotal( typeof( DDSilver ), m_sAmount ) )
-					{
-						from.AddToBackpack( new LeadCoin( m_sAmount ) );
-						nDull = 1;
-					}
-					if ( cont.ConsumeTotal( typeof( DDXormite ), m_xAmount ) )
-					{
-						from.AddToBackpack( new LeadCoin( m_xAmount ) );
-						nDull = 1;
-					}
-					if ( nDull > 0 )
-					{
+						cont.ConsumeTotal( typeof( Gold ), m_gAmount );
+						cont.ConsumeTotal( typeof( DDCopper ), m_cAmount );
+						cont.ConsumeTotal( typeof( DDSilver ), m_sAmount );
+						cont.ConsumeTotal( typeof( DDXormite ), m_xAmount );
+
+						foreach (var item in ItemUtilities.AddStacks(totalAmount, () => new LeadCoin()))
+							from.AddToBackpack( item );
+
 						from.SendMessage( "After drinking from the pool, you notice all of your coins has turned to lead!" );
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
 
@@ -434,29 +416,21 @@ namespace Server.Items
 				{
 					from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 					Container cont = from.Backpack;
-					int nShine = 0;
 
+					int m_gAmount = from.Backpack.GetAmount( typeof( Gold ) );
 					int m_cAmount = from.Backpack.GetAmount( typeof( DDCopper ) );
 					int m_sAmount = from.Backpack.GetAmount( typeof( DDSilver ) );
-					int m_dAmount = from.Backpack.GetAmount( typeof( LeadCoin ) );
 
-					if ( cont.ConsumeTotal( typeof( DDCopper ), m_cAmount ) )
+					int totalAmount = m_gAmount + m_cAmount + m_sAmount;
+					if ( 0 < totalAmount )
 					{
-						from.AddToBackpack( new Gold( m_cAmount ) );
-						nShine = 1;
-					}
-					if ( cont.ConsumeTotal( typeof( DDSilver ), m_sAmount ) )
-					{
-						from.AddToBackpack( new Gold( m_sAmount ) );
-						nShine = 1;
-					}
-					if ( cont.ConsumeTotal( typeof( LeadCoin ), m_dAmount ) )
-					{
-						from.AddToBackpack( new Gold( m_dAmount ) );
-						nShine = 1;
-					}
-					if ( nShine > 0 )
-					{
+						cont.ConsumeTotal( typeof( Gold ), m_gAmount );
+						cont.ConsumeTotal( typeof( DDCopper ), m_cAmount );
+						cont.ConsumeTotal( typeof( DDSilver ), m_sAmount );
+
+						foreach (var item in ItemUtilities.AddStacks(totalAmount, () => new Gold()))
+							from.AddToBackpack( item );
+
 						from.SendMessage( "After drinking from the pool, you notice your meager coins turn to gold!" );
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
 
