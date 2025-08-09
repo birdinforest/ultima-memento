@@ -776,7 +776,7 @@ namespace Server.Items
 					case 18: ApplyAttribute( primary,	min, max, AosAttribute.CastSpeed,				1, 1 ); break;
 					case 19: ApplyAttribute( primary,	min, max, AosAttribute.CastRecovery,			1, 3 ); break;
 					case 20: ApplyAttribute( primary,	min, max, AosAttribute.SpellDamage,				1, 12 ); break;
-					case 21: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 2 ); break;
+					case 21: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 5 ); break;
 					case 22: ApplyAttribute( secondary,	min, max, AosArmorAttribute.SelfRepair,			1, 5 ); break;
 					case 23: ApplyAttribute( secondary,	min, max, AosArmorAttribute.DurabilityBonus,	10, 100, 10 ); break;
 					case 24: ApplyAttribute( resists,	min, max, AosElementAttribute.Physical,			1, 15 ); break;
@@ -836,7 +836,7 @@ namespace Server.Items
 					case 23: ApplyAttribute( primary,	min, max, AosAttribute.CastSpeed,				1, 1 ); break;
 					case 24: ApplyAttribute( primary,	min, max, AosAttribute.CastRecovery,			1, 3 ); break;
 					case 25: ApplyAttribute( primary,	min, max, AosAttribute.SpellDamage,				1, 12 ); break;
-					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 2 ); break;
+					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 5 ); break;
 					case 27: ApplyAttribute( resists,	min, max, AosElementAttribute.Physical,			1, 15 ); break;
 					case 28: ApplyAttribute( resists,	min, max, AosElementAttribute.Fire,				1, 15 ); break;
 					case 29: ApplyAttribute( resists,	min, max, AosElementAttribute.Cold,				1, 15 ); break;
@@ -889,7 +889,7 @@ namespace Server.Items
 					case 23: ApplyAttribute( primary,	min, max, AosAttribute.RegenHits,				1, 5 ); break;
 					case 24: ApplyAttribute( primary,	min, max, AosAttribute.RegenStam,				1, 5 ); break;
 					case 25: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 5 ); break;
-					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 2 ); break;
+					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 5 ); break;
 					case 27: ApplySkillBonus( skills,	min, max, 0,									1, 15 ); break;
 					case 28: ApplySkillBonus( skills,	min, max, 1,									1, 15 ); break;
 					case 29: ApplySkillBonus( skills,	min, max, 2,									1, 15 ); break;
@@ -945,7 +945,7 @@ namespace Server.Items
 					case 18: ApplyAttribute( primary,	min, max, AosAttribute.RegenHits,				1, 5 ); break;
 					case 19: ApplyAttribute( primary,	min, max, AosAttribute.RegenStam,				1, 5 ); break;
 					case 20: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 5 ); break;
-					case 21: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 2 ); break;
+					case 21: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 5 ); break;
 				}
 			}
 		}
@@ -993,7 +993,7 @@ namespace Server.Items
 					case 23: ApplyAttribute( primary,	min, max, AosAttribute.RegenHits,				1, 5 ); break;
 					case 24: ApplyAttribute( primary,	min, max, AosAttribute.RegenStam,				1, 5 ); break;
 					case 25: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 5 ); break;
-					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 2 ); break;
+					case 26: ApplyAttribute( primary,	min, max, AosAttribute.WeaponSpeed,				1, 5 ); break;
 					case 27: ApplySkillBonus( skills,	min, max, 0,									1, 15 ); break;
 					case 28: ApplySkillBonus( skills,	min, max, 1,									1, 15 ); break;
 					case 29: ApplySkillBonus( skills,	min, max, 2,									1, 15 ); break;

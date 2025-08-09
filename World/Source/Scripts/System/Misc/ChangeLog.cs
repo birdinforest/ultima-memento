@@ -33,6 +33,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Jewelry trap has been reworked to be less aggressive<br>");
 			builder.Append("- Misc - Quest pedestal generation is now more resilient<br>");
 			builder.Append("- Misc - Horde Minions now loot items much faster<br>");
+			builder.Append("- Misc - Swing Speed Increase on non-weapons increased up to 1-5, up from 1-2<br>");
 			builder.Append("- Mobs - Players are now immune to peacemaking for 30s after it ends<br>");
 			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
 			builder.Append("- NPC - Mercantile/guild bonus now increases the amount of Gold that vendors have available for purchase<br>");
