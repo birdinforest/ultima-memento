@@ -28,7 +28,7 @@ namespace Server.SkillHandlers
 				src.Target = new InternalTarget();
 			}
 
-			return TimeSpan.FromSeconds( 6.0 );
+			return TimeSpan.FromSeconds( 1.0 );
 		}
 
 		private class InternalTarget : Target
@@ -40,6 +40,8 @@ namespace Server.SkillHandlers
 			protected override void OnTarget( Mobile src, object targ )
 			{
 				bool foundAnyone = false;
+
+				src.NextSkillTime = DateTime.Now.AddSeconds( 6 );
 
 				Point3D p;
 				if ( targ is Mobile )
