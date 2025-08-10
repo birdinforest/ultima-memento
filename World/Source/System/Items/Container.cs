@@ -1524,6 +1524,16 @@ namespace Server.Items
 			if ( !CheckHold( from, dropped, sendFullMessage, true ) )
 				return false;
 
+			if ( TryStackItem( dropped, from ) )
+				return true;
+
+			DropItem( dropped );
+
+			return true;
+		}
+
+		public virtual bool TryStackItem( Item dropped, Mobile from = null )
+		{
 			List<Item> list = this.Items;
 
 			for ( int i = 0; i < list.Count; ++i )
@@ -1534,9 +1544,7 @@ namespace Server.Items
 					return true;
 			}
 
-			DropItem( dropped );
-
-			return true;
+			return false;
 		}
 
 		public virtual void Destroy()
