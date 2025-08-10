@@ -901,9 +901,9 @@ namespace Server.Misc
 
 			Point3D loc = new Point3D(0, 0, 0);
 
-			if ( exact >= 1 && exact <= 24 ){ map = Map.Sosaria; }
-			else if ( exact >= 25 && exact <= 44 ){ map = Map.Lodor; }
-			else if ( exact >= 45 && exact <= 56 ){ map = Map.SavagedEmpire; }
+			if ( exact >= 1 && exact <= 24 || exact == 90 || exact == 91 ){ map = Map.Sosaria; }
+			else if ( exact >= 25 && exact <= 44 || exact == 86 ){ map = Map.Lodor; }
+			else if ( exact >= 45 && exact <= 56 || exact == 87 || exact == 88 || exact == 89 ){ map = Map.SavagedEmpire; }
 			else if ( exact >= 57 && exact <= 71 ){ map = Map.SerpentIsland; }
 			else if ( exact == 72 || exact == 73 || exact == 74 || exact == 85 ){ map = Map.SavagedEmpire; }
 			else if ( exact == 75 || exact == 82 ){ map = Map.Underworld; }
@@ -955,8 +955,8 @@ namespace Server.Misc
 			else if ( ( exact == 43 || zone == "Stonegate Castle" ) && map == Map.Lodor ){ loc = new Point3D(1355, 404, 0); zone = "Stonegate Castle"; }
 			else if ( ( exact == 44 || zone == "the Ancient Elven Mine" ) && map == Map.Lodor ){ loc = new Point3D(1179, 1931, 0); zone = "the Ancient Elven Mine"; }
 
-			else if ( ( exact == 45 || zone == "Dungeon of the Mad Archmage" ) && map == Map.SavagedEmpire ){ loc = new Point3D(464, 851, -60); zone = "Dungeon of the Mad Archmage"; }
-			else if ( ( exact == 46 || zone == "Dungeon of the Lich King" ) && map == Map.SavagedEmpire ){ loc = new Point3D(922, 1772, 26); zone = "Dungeon of the Lich King"; }
+			else if ( ( exact == 45 || zone == "the Dungeon of the Mad Archmage" ) && map == Map.SavagedEmpire ){ loc = new Point3D(464, 851, -60); zone = "the Dungeon of the Mad Archmage"; }
+			else if ( ( exact == 46 || zone == "the Dungeon of the Lich King" ) && map == Map.SavagedEmpire ){ loc = new Point3D(922, 1772, 26); zone = "the Dungeon of the Lich King"; }
 			else if ( ( exact == 47 || zone == "the Halls of Ogrimar" ) && map == Map.SavagedEmpire ){ loc = new Point3D(1107, 1380, 17); zone = "the Halls of Ogrimar"; }
 			else if ( ( exact == 48 || zone == "the Ratmen Mines" ) && map == Map.SavagedEmpire ){ loc = new Point3D(157, 1369, 32); zone = "the Ratmen Mines"; }
 			else if ( ( exact == 49 || zone == "Dungeon Rock" ) && map == Map.SavagedEmpire ){ loc = new Point3D(1092, 1038, 0); zone = "Dungeon Rock"; }
@@ -999,6 +999,13 @@ namespace Server.Misc
 			else if ( ( exact == 83 || zone == "the Hall of the Mountain King" ) && map == Map.Lodor ){ loc = new Point3D(130, 102, 0); map = Map.Underworld; zone = "the Hall of the Mountain King"; }
 			else if ( ( exact == 84 || zone == "the Depths of Carthax Lake" ) && map == Map.Lodor ){ loc = new Point3D(118, 1582, 0); map = Map.Underworld; zone = "the Depths of Carthax Lake"; }
 			else if ( ( exact == 85 || zone == "the Ancient Sky Ship" ) && map == Map.SavagedEmpire ){ loc = new Point3D(66, 561, 0); map = Map.Underworld; zone = "the Ancient Sky Ship"; }
+
+			else if ( ( exact == 86 || zone == "the Lizardman Cave" ) && map == Map.Lodor ){ loc = new Point3D(960, 2667, 0); map = Map.Lodor; zone = "the Lizardman Cave"; }
+			else if ( ( exact == 87 || zone == "the Cave of the Ancient Wyrm" ) && map == Map.SavagedEmpire ){ loc = new Point3D(774, 611, 0); map = Map.SavagedEmpire; zone = "the Cave of the Ancient Wyrm"; }
+			else if ( ( exact == 88 || zone == "the Great Pyramid" ) && map == Map.SavagedEmpire ){ loc = new Point3D(1131, 1550, 0); map = Map.SavagedEmpire; zone = "the Great Pyramid"; }
+			else if ( ( exact == 89 || zone == "the Spider Cave" ) && map == Map.SavagedEmpire ){ loc = new Point3D(1129, 1551, 0); map = Map.SavagedEmpire; zone = "the Spider Cave"; }
+			else if ( ( exact == 90 || zone == "the Ruins of the Black Blade" ) && map == Map.Sosaria ){ loc = new Point3D(4504, 1892, 0); map = Map.Sosaria; zone = "the Ruins of the Black Blade"; }
+			else if ( ( exact == 91 || zone == "the Montor Sewers" ) && map == Map.Sosaria ){ loc = new Point3D(3058, 2565, 0); map = Map.Sosaria; zone = "the Montor Sewers"; }
 
 			place = map;
 			x = loc.X;
