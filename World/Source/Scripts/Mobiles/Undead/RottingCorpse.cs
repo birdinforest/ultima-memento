@@ -38,11 +38,11 @@ namespace Server.Mobiles
 			SetDex( 75 );
 			SetInt( 151, 200 );
 
-			SetHits( 1200 );
+			SetHits( 400, 600 );
 			SetStam( 150 );
 			SetMana( 0 );
 
-			SetDamage( 8, 10 );
+			SetDamage( 18, 24 );
 
 			SetDamageType( ResistanceType.Physical, 0 );
 			SetDamageType( ResistanceType.Cold, 50 );
