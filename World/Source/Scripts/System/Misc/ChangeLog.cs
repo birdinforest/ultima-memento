@@ -16,10 +16,10 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
-			builder.Append("- Craft - All 'Skin' resources now have the same damage bonus<br>");
 			builder.Append("- Champs - Rikktor is now much harder<br>");
 			builder.Append("- Champs - Barracoon's mobs can no longer rummage<br>");
 			builder.Append("- Champs - All minions should now be aggressive<br>");
+			builder.Append("- Craft - All 'Skin' resources now have the same damage bonus<br>");
 			builder.Append("- Gather - Reduce logs per tree from 4-9 to 4-6<br>");
 			builder.Append("- Gather - Lumberjacking sparkles now have a light source<br>");
 			builder.Append("- Gump - Completely redesigned Runebook gump<br>");
