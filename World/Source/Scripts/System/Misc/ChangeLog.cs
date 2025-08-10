@@ -57,6 +57,7 @@ namespace Server.Misc
 			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
+			builder.Append("- Spell - Add message when Enchant spell fizzles due to having an orb<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

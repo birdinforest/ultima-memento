@@ -42,6 +42,7 @@ namespace Server.Spells.HolyMan
 				if ( Caster.Backpack.FindItemByType( typeof ( EnchantSpellStone ) ) != null )
 				{
 					DoFizzle();
+					Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
 				}
 				else if (!Caster.CanSee(weapon))
 				{
