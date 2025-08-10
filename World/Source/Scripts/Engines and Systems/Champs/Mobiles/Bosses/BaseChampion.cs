@@ -99,13 +99,13 @@ namespace Server.Mobiles
 
 			if (0.05 >= random) // 5%
 				level = 25;
-			else if (0.2 >= random) // 15%
+			else if (0.15 >= random) // 10%
 				level = 20;
-			else if (0.45 >= random) // 25%
+			else if (0.35 >= random) // 20%
 				level = 15;
-			else if (0.80 >= random) // 35%
+			else if (0.65 >= random) // 30%
 				level = 10;
-			else // 20%
+			else // 35%
 				level = 5;
 
 			return PowerScroll.CreateRandomNoCraft(level, level);
