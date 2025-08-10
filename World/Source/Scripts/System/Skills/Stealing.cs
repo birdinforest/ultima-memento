@@ -398,6 +398,8 @@ namespace Server.SkillHandlers
 			{
 				//from.RevealingAction(); // NO REVEALING ON THIS SERVER
 
+				from.NextSkillTime = DateTime.Now.AddSeconds( 1 );
+
 				Item stolen = null;
 				object root = null;
 				bool caught = false;
@@ -517,7 +519,7 @@ namespace Server.SkillHandlers
 				m.SendLocalizedMessage( 502698 ); // Which item do you want to steal?
 			}
 
-			return TimeSpan.FromSeconds( 5.0 );
+			return TimeSpan.FromSeconds( 1.0 );
 		}
 	}
 
