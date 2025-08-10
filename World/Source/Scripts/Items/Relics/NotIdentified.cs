@@ -202,8 +202,9 @@ namespace Server.Items
 			}
 			else
 			{
-				cont.DropItem(item);
-				unk.Delete();
+                if (!cont.TryStackItem(item, null))
+                    cont.DropItem(item);
+                unk.Delete();
 			}
 		}
 
@@ -214,8 +215,9 @@ namespace Server.Items
 				AddAsUnidentified(item, cont, m );
 			}
 			else
-			{
-				cont.DropItem(item);
+            {
+                if ( !cont.TryStackItem( item, null ) )
+                    cont.DropItem( item );
 			}
 		}
 

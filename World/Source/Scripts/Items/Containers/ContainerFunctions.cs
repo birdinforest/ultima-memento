@@ -137,8 +137,9 @@ namespace Server.Misc
 					{
 						Item regular = Loot.RandomItem( from, level );
 						regular = LootPackChange.ChangeItem( regular, from, level );
-						box.DropItem( regular );
-						LootPackChange.RemoveItem( regular, from, level );
+						if ( !LootPackChange.RemoveItem( regular, from, level ) )
+							if ( !box.TryStackItem( regular, null ) )
+								box.DropItem( regular );
 					}
 				}
 			}
@@ -146,8 +147,9 @@ namespace Server.Misc
 			{
 				Item treasure = Loot.RandomTreasure( from, level );
 				treasure = LootPackChange.ChangeItem( treasure, from, level );
-				box.DropItem( treasure );
-				LootPackChange.RemoveItem( treasure, from, level );
+				if ( !LootPackChange.RemoveItem( treasure, from, level ) )
+					if ( !box.TryStackItem( treasure, null ) )
+						box.DropItem( treasure );
 			}
 		}
 
