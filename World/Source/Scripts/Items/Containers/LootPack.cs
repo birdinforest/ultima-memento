@@ -945,7 +945,8 @@ namespace Server
 
 	public class LootPackChange
 	{
-		public static void RemoveItem( Item item, Mobile from, int level )
+		/// <returns>True if the item is deleted</returns>
+		public static bool RemoveItem( Item item, Mobile from, int level )
 		{
 			// Disallow items based on mob level
 			if ( !(Utility.RandomMinMax( 3, 12 ) > level) )
@@ -971,8 +972,11 @@ namespace Server
 						((NotIdentified)(item.Parent)).Delete();
 
 					item.Delete();
+					return true;
 				}
 			}
+
+			return false;
 		}
 
 		public static Item ChangeItem( Item item, Mobile from, int level )
