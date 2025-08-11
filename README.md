@@ -15,6 +15,19 @@
 </details>
 
 <details>
+  <summary>Challenging Content</summary>
+
+  ## Champion Spawns
+  - Initiated by a random hard-mob item drop
+  - Challenge yourself and your comrades by increasing difficulty
+    - Rewards are based on your chosen configuration
+    - Adjust spawn size (impacts spawns running around & required kills per level)
+    - Adjust monster difficulty (impacts health/skills/damage)
+
+  ![Champion Spawn Configuration](./World/Documentation/Showcase/dynamic-champ-spawns.png)
+</details>
+
+<details>
   <summary>Citizens changes</summary>
 
   ## Citizens have been updated to track if they've recently been spoken to
@@ -123,6 +136,24 @@
   - Modular design allows for the community to share their own quests
 
   ![Quest system demo](./World/Documentation/Showcase/quest.gif)
+  
+</details>
+
+<details>
+  <summary>Runebook changes</summary>
+
+  ## Streamlined flow
+	Left Page:
+	- First button is for "selecting the rune" (updates Right page)
+	- Second button is for using the "default spell" on that rune (Players will use this 95% of the time)
+
+	Right Page:
+	- Spell list is now automatically filtered
+	- Spell list shows a different color text for the "default spell" you have configured on the Book
+	- Can now rename the rune from within the book
+	- Can now up/down the rune (instead of having to re-insert them in a specific order)
+
+  ![Runebook demo](./World/Documentation/Showcase/updated-runebook.gif)
   
 </details>
 
