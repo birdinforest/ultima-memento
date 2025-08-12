@@ -66,6 +66,7 @@ namespace Server.Engines.MLQuests.Gumps
 						{
 							var confirmation = new ConfirmationGump(
 								pm,
+								"Refuse Quest",
 								"This quest was triggered by a chain. If you refuse it, you may need to repeat parts of the chain.<br><br>Are you sure you wish to refuse the quest?",
 								() =>
 									{

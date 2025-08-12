@@ -7989,7 +7989,7 @@ namespace Server.Mobiles
 										Container c = fromState.AddTrade( toState );
 										c.DropItem( new TransferItem( m_Mobile ) );
 									},
-								onConfirmed => new ConfirmationGump(from, "Transferring this pet will reduce the level to 1. Are you sure you want to transfer the pet?", onConfirmed)
+								onConfirmed => new ConfirmationGump(from, "Confirm Transfer", "Transferring this pet will reduce the level to 1. Are you sure you want to transfer the pet?", onConfirmed)
 							);
 						}
 					}

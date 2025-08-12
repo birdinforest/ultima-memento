@@ -63,6 +63,7 @@ namespace Server.Items
 		{
             var confirmation = new ConfirmationGump(
                 from,
+				"Delete " + Name,
                 "Are you sure you wish to delete this?",
                 () => Delete()
             );
