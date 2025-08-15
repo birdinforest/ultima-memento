@@ -74,28 +74,28 @@ namespace Server.Items
 		{
 			if ( spellID < 64 )
 				scroll.InfoText1 = "Magery Spell";
-			else if ( spellID >= 100 && spellID < 116 )
+			else if ( spellID >= 100 && spellID <= 116 )
 				scroll.InfoText1 = "Necromancer Spell";
-			else if ( spellID >= 131 && spellID < 146 )
+			else if ( spellID >= 131 && spellID <= 146 )
 				scroll.InfoText1 = "Witches Brew";
-			else if ( spellID >= 147 && spellID < 162 )
+			else if ( spellID >= 147 && spellID <= 162 )
 				scroll.InfoText1 = "Druidic Herbs";
-			else if ( spellID >= 300 && spellID < 331 )
+			else if ( spellID >= 300 && spellID <= 331 )
 			{
 				scroll.InfoText1 = "Elementalist Spell";
 				scroll.InfoText2 = ElementalSpell.CommonInfo( spellID, 6 ) + " Sphere";
 			}
-			else if ( spellID >= 750 && spellID < 763 )
+			else if ( spellID >= 750 && spellID <= 763 )
 				scroll.InfoText1 = "Death Knight Magic";
-			else if ( spellID >= 770 && spellID < 783 )
+			else if ( spellID >= 770 && spellID <= 783 )
 				scroll.InfoText1 = "Holy Magic";
-			else if ( spellID >= 351 && spellID < 366 )
+			else if ( spellID >= 351 && spellID <= 366 )
 				scroll.InfoText1 = "Bard Song";
-			else if ( spellID >= 280 && spellID < 289 )
+			else if ( spellID >= 280 && spellID <= 289 )
 				scroll.InfoText1 = "Jedi Master Holocron";
-			else if ( spellID >= 270 && spellID < 279 )
+			else if ( spellID >= 270 && spellID <= 279 )
 				scroll.InfoText1 = "Syth Lord Mysticron";
-			else if ( spellID >= 250 && spellID < 259 )
+			else if ( spellID >= 250 && spellID <= 259 )
 				scroll.InfoText1 = "Mystic Ability";
 		}
 
