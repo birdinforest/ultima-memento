@@ -158,7 +158,7 @@ namespace Server.Items
         public virtual double ContainerWeight { get { return 3.0; } }
         public virtual LootType ContainerLootType { get { return LootType.Regular; } }
         public virtual int ContainerHue { get { return Utility.RandomMetalHue(); } }
-        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(5.0); } }
+        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(1); } }
         public virtual string AccessDelayMessage { get { return "You cannot use that item yet"; } }
         public virtual string AddAccessMessage { get { return ""; } }
         public virtual string RemoveAccessMessage { get { return ""; } }
