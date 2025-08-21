@@ -417,16 +417,16 @@ namespace Server.Items
 					from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 					Container cont = from.Backpack;
 
-					int m_gAmount = from.Backpack.GetAmount( typeof( Gold ) );
 					int m_cAmount = from.Backpack.GetAmount( typeof( DDCopper ) );
 					int m_sAmount = from.Backpack.GetAmount( typeof( DDSilver ) );
+					int m_dAmount = from.Backpack.GetAmount( typeof( LeadCoin ) );
 
-					int totalAmount = m_gAmount + m_cAmount + m_sAmount;
+					int totalAmount = m_cAmount + m_sAmount + m_dAmount;
 					if ( 0 < totalAmount )
 					{
-						cont.ConsumeTotal( typeof( Gold ), m_gAmount );
 						cont.ConsumeTotal( typeof( DDCopper ), m_cAmount );
 						cont.ConsumeTotal( typeof( DDSilver ), m_sAmount );
+						cont.ConsumeTotal( typeof( LeadCoin ), m_dAmount );
 
 						foreach (var item in ItemUtilities.AddStacks(totalAmount, () => new Gold()))
 							from.AddToBackpack( item );
