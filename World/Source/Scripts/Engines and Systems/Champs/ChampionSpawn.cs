@@ -4,6 +4,8 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Regions;
 using System.Collections.Generic;
+using Server.Utilities;
+using System.Linq;
 
 namespace Server.Engines.CannedEvil
 {
@@ -90,6 +92,17 @@ namespace Server.Engines.CannedEvil
 			// Apparently this should only execute after Location changes
 			if (setInitialSpawnArea)
 				Timer.DelayCall(TimeSpan.Zero, new TimerCallback(SetInitialSpawnArea));
+		}
+
+		public static ChampionSpawn FindOwner(BaseCreature sourceMobile)
+		{
+			return WorldUtilities.ForEachItem<ChampionSpawn>(spawn => spawn.Active)
+				.FirstOrDefault(spawn =>
+				{
+					if (sourceMobile is BaseChampion) return spawn.Champion == sourceMobile;
+
+					return spawn.m_Creatures.Contains(sourceMobile);
+				});
 		}
 
 		public void SetInitialSpawnArea()
