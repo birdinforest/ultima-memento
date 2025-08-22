@@ -80,9 +80,10 @@ namespace Server.Items
 		{
 			Container pack = from.Backpack;
 
-			if ( owner == null )
+			if ( Owner == null && from is PlayerMobile )
 			{
-				owner = from;
+				Owner = from;
+				from.SendMessage( "You use your ki to bind the book to you." );
 			}
 
 			if ( from != owner )
@@ -102,16 +103,6 @@ namespace Server.Items
 				from.SendGump( new MysticSpellbookGump( from, this, 1 ) );
 			}
 			else from.SendLocalizedMessage(500207); // The spellbook must be in your backpack (and not in a container within) to open.
-		}
-
-		public override bool OnDragLift( Mobile from )
-		{
-			if ( owner == null && from is PlayerMobile)
-			{
-				owner = from;
-			}
-
-			return true;
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -800,7 +791,7 @@ namespace Server.Items
 
 		public Mobile owner;
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile Owner { get{ return owner; } set{ owner = value; } }
+		public Mobile Owner { get{ return owner; } set{ owner = value; InvalidateProperties(); } }
 
 		public string PackShrine;
 		[CommandProperty(AccessLevel.Owner)]

@@ -34,6 +34,7 @@ namespace Server.Misc
 			builder.Append("- Item - Added new item to help with goldsplosions<br>");
 			builder.Append("- Item - Update champion skull decay strategy and labels<br>");
 			builder.Append("- Item - 'Bag of holding' cooldown is now 1 minute, down from 5 minutes<br>");
+			builder.Append("- Item - Mystic spellbooks now bind when opened instead of when lifted<br>");
 			builder.Append("- Misc - Champion spawns are now added to the world<br>");
 			builder.Append("- Misc - Jewelry trap has been reworked to be less aggressive<br>");
 			builder.Append("- Misc - Quest pedestal generation is now more resilient<br>");
