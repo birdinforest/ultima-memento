@@ -545,6 +545,7 @@ namespace Server.Engines.CannedEvil
 			try
 			{
 				m_Champion = Activator.CreateInstance(ChampionSpawnInfo.GetInfo(m_Type).Champion) as BaseChampion;
+				m_Champion.GoldPercent = ChampionRewards.GetGoldPercent(SpawnSzMod, SpawnDifficulty);
 				m_Champion.BossItemRewardChance = ChampionRewards.GetBossItemDropChance(SpawnSzMod, SpawnDifficulty);
 				m_Champion.ArtifactRewardChance = ChampionRewards.GetArtifactDropChance(SpawnSzMod, SpawnDifficulty);
 				m_Champion.TreasureChestRewardChance = ChampionRewards.GetTreasureChestDropChance(SpawnSzMod, SpawnDifficulty);

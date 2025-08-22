@@ -8,7 +8,21 @@ namespace Server.Engines.CannedEvil
 		{
 			return 100;
 		}
-		
+
+		public static int GetGoldPercent(int spawnSize, Difficulty difficulty)
+		{
+			const int FLAT_BONUS = 25;
+
+			// 10% per Difficulty -- up to 60%
+			var difficultyBonus = 10 * (int)difficulty;
+
+			// 5% per Size -- up to 60%
+			var sizeBonus = 5 * spawnSize;
+
+			// Size starts at 1, so flat + 5% = 30% base
+			return Math.Min(100, FLAT_BONUS + difficultyBonus + sizeBonus);
+		}
+
 		public static int GetArtifactDropChance(int spawnSize, Difficulty difficulty)
 		{
 			// 10% per Difficulty -- up to 60%

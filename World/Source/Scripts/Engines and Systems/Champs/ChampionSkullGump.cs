@@ -94,6 +94,8 @@ namespace Server.Gumps
 			// Gold
 			AddImage(x, y, 10329); // Black box with gold
 			AddTooltip("Gold");
+			var goldPercentage = ChampionRewards.GetGoldPercent(_spawnSize, _monsterDifficulty);
+			TextDefinition.AddHtmlText(this, x, y + 35, 32, 20, string.Format("<CENTER>{0}%</CENTER>", goldPercentage), HtmlColors.COOL_BLUE);
 
 			// Powerscrolls (Count, Percentage)
 			x += 50;
