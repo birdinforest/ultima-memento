@@ -73,6 +73,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
 			builder.Append("- Spell - Add message when Enchant spell fizzles due to having an orb<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
+			builder.Append("- Spell - Restoration now properly restores mana and stamina<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

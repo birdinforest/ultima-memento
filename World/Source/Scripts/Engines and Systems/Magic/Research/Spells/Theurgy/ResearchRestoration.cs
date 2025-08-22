@@ -60,8 +60,8 @@ namespace Server.Spells.Research
 					if ( toHeal < 12 ){ toHeal = 12; }
 
 				SpellHelper.Heal( toHeal, m, Caster );
-				m.Mana = toHeal;
-				m.Stam = toHeal;
+				m.Mana += toHeal;
+				m.Stam += toHeal;
 
 				m.FixedParticles( 0x3039, 9, 32, 5030, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.Waist );
 				m.PlaySound( 0x655 );
