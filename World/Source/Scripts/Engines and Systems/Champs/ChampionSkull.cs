@@ -12,6 +12,7 @@ namespace Server.Items
 
 		private DateTime m_Created;
 		private ChampionSpawnType m_Type;
+		private static Timer m_CleanupTimer; // Keep track to make sure it's not GC'd
 
 		[Constructable]
 		public ChampionSkull() : this(GetRandomType())
@@ -65,8 +66,9 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			EventSink.WorldSave += (args) =>
+			m_CleanupTimer = Timer.DelayCall(TimeSpan.Zero, TimeSpan.FromHours(1), () =>
 			{
+				Console.WriteLine("[Champion System]: Cleaning up expired skulls");
 				var expirationTimestamp = DateTime.UtcNow.AddDays(0 - MAX_DAYS_AGE);
 				foreach (var skull in WorldUtilities.ForEachItem<ChampionSkull>(item => !item.Deleted))
 				{
@@ -75,7 +77,7 @@ namespace Server.Items
 					else
 						skull.InvalidateProperties();
 				}
-			};
+			});
 		}
 
 		public override void Deserialize(GenericReader reader)
