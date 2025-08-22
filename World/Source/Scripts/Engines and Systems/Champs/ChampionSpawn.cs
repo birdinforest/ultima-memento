@@ -6,6 +6,7 @@ using Server.Regions;
 using System.Collections.Generic;
 using Server.Utilities;
 using System.Linq;
+using Server.Network;
 
 namespace Server.Engines.CannedEvil
 {
@@ -516,6 +517,13 @@ namespace Server.Engines.CannedEvil
 				++Level;
 				InvalidateProperties();
 				SetWhiteSkullCount(0);
+				switch (Level)
+				{
+					case 4: AnnounceRegionMessage("The air grows heavy with an unnatural stillness..."); break; // 25%
+					case 8: AnnounceRegionMessage("Thick clouds gather in the sky..."); break; // 50%
+					case 12: AnnounceRegionMessage("The boundaries between worlds grow thin..."); break; // 75%
+					case 15: AnnounceRegionMessage("The very ground trembles beneath your feet..."); break; // n - 1
+				}
 
 				if (m_Altar != null)
 				{
@@ -526,6 +534,17 @@ namespace Server.Engines.CannedEvil
 			else
 			{
 				SpawnChampion();
+				if (m_Champion != null)
+					AnnounceRegionMessage("Reality fractures as " + m_Champion.Name + " awakens!");
+			}
+		}
+
+		private void AnnounceRegionMessage(string message)
+		{
+			foreach (Mobile m in m_Region.GetMobiles())
+			{
+				if (m is PlayerMobile && m.NetState != null)
+					m.LocalOverheadMessage(MessageType.Regular, LabelColors.PALE_RED, true, message);
 			}
 		}
 
