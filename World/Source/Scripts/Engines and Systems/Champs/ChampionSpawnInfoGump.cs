@@ -54,7 +54,7 @@ namespace Server.Items
 			if (!spawn.Active)
 			{
 				AddLabel(gTab[1], top, gFontHue, "Status");
-				AddLabel(gTab[2], top, gFontHue, "Inactive");
+				AddLabel(gTab[2], top, LabelColors.DARK_RED, "Inactive");
 				top += gRowHeight;
 			}
 			else
@@ -84,37 +84,40 @@ namespace Server.Items
 				TimeSpan remaining = spawn.GetExpirationTimeRemaining();
 				if (0 < remaining.TotalSeconds) AddLabel(gTab[2], top, gFontHue, remaining.ToString(@"hh\:mm\:ss"));
 				top += gRowHeight;
+            }
 
-				AddImageTiled(gBoarder + 4, top, gWidth - 47, 2, 9101); // Bottom border
-				top += gRowHeight / 3;
+            AddImageTiled(gBoarder + 4, top, gWidth - 47, 2, 9101); // Bottom border
+            top += gRowHeight / 3;
 
-				AddLabel(gTab[1], top, gFontHue, "Player");
-				AddLabel(gTab[2], top, gFontHue, "Damage");
-				top += gRowHeight;
+            AddLabel(gTab[1], top, gFontHue, "Player");
+            AddLabel(gTab[2], top, gFontHue, "Damage");
+            top += gRowHeight;
 
-				var damagers = spawn.DamageEntries.Keys
-					.Select(mob => new Damager(mob, spawn.DamageEntries[mob]))
-					.OrderByDescending(x => x.Damage);
+            var damagers = spawn.DamageEntries.Keys
+                .Select(mob => new Damager(mob, spawn.DamageEntries[mob]))
+                .OrderByDescending(x => x.Damage);
 
-				foreach (Damager damager in damagers)
-				{
-					AddLabelCropped(gTab[1], top, 100, gRowHeight, gFontHue, damager.Mobile.RawName);
-					AddLabelCropped(gTab[2], top, 80, gRowHeight, gFontHue, damager.Damage.ToString());
-					top += gRowHeight;
-				}
+            foreach (Damager damager in damagers)
+            {
+                AddLabelCropped(gTab[1], top, 100, gRowHeight, gFontHue, damager.Mobile.RawName);
+                AddLabelCropped(gTab[2], top, 80, gRowHeight, gFontHue, damager.Damage.ToString());
+                top += gRowHeight;
+            }
 
-				var lastRowY = top + 23;
+            var lastRowY = top + 23;
 
-				if (spawn.CanStop(from))
-				{
-					AddButton(gTab[1], lastRowY, 0xFA5, 0xFA7, 100, GumpButtonType.Reply, 0);
-					AddLabel(gTab[1] + 30, lastRowY + 4, gFontHue, "Abort");
-				}
+            if (spawn.CanStop(from))
+            {
+                AddButton(gTab[1], lastRowY, 0xFA5, 0xFA7, 100, GumpButtonType.Reply, 0);
+                AddLabel(gTab[1] + 30, lastRowY + 4, gFontHue, "Abort");
+            }
 
+			if (spawn.Active)
+			{
 				AddButton(gTab[2], lastRowY, 0xFA5, 0xFA7, 1, GumpButtonType.Reply, 0);
 				AddLabel(gTab[2] + 30, lastRowY + 4, gFontHue, "Refresh");
 			}
-		}
+        }
 
 		public override void OnResponse(Network.NetState sender, RelayInfo info)
 		{
