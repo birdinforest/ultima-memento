@@ -10,6 +10,9 @@ namespace Server.Mobiles
 		public override bool CanDestroyObstacles { get { return true; } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public int GoldPercent { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int PowerscrollRewardAmount { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -27,8 +30,11 @@ namespace Server.Mobiles
 
 		public BaseChampion(AIType aiType, FightMode mode) : base(aiType, mode, 18, 1, 0.1, 0.2)
 		{
+			GoldPercent = 100;
 			PowerscrollRewardAmount = 1;
+			TreasureChestRewardChance = 0;
 			BossItemRewardChance = 100;
+			ArtifactRewardChance = 0;
 		}
 
 		public BaseChampion(Serial serial) : base(serial)
@@ -44,7 +50,13 @@ namespace Server.Mobiles
 		{
 			base.Serialize(writer);
 
-			writer.Write((int)1); // version
+			writer.Write((int)2); // version
+
+			writer.Write(GoldPercent);
+			writer.Write(PowerscrollRewardAmount);
+			writer.Write(TreasureChestRewardChance);
+			writer.Write(BossItemRewardChance);
+			writer.Write(ArtifactRewardChance);
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -53,12 +65,23 @@ namespace Server.Mobiles
 
 			int version = reader.ReadInt();
 
-			if (version >= 1)
+			switch (version)
 			{
-				PowerscrollRewardAmount = reader.ReadInt();
-				TreasureChestRewardChance = reader.ReadInt();
-				BossItemRewardChance = reader.ReadInt();
-				ArtifactRewardChance = reader.ReadInt();
+				case 2:
+				case 1:
+					{
+						GoldPercent = reader.ReadInt();
+						PowerscrollRewardAmount = reader.ReadInt();
+						TreasureChestRewardChance = reader.ReadInt();
+						BossItemRewardChance = reader.ReadInt();
+						ArtifactRewardChance = reader.ReadInt();
+						goto case 0;
+					}
+
+				case 0:
+					{
+						break;
+					}
 			}
 		}
 
@@ -184,7 +207,7 @@ namespace Server.Mobiles
 							double dist = Math.Sqrt(x * x + y * y);
 
 							if (dist <= 12)
-								new GoodiesTimer(map, X + x, Y + y).Start();
+								new GoodiesTimer(GoldPercent, map, X + x, Y + y).Start();
 						}
 					}
 				}
@@ -231,12 +254,14 @@ namespace Server.Mobiles
 		{
 			private Map m_Map;
 			private int m_X, m_Y;
+			private double m_GoldPercent;
 
-			public GoodiesTimer(Map map, int x, int y) : base(TimeSpan.FromSeconds(Utility.RandomDouble() * 10.0))
+			public GoodiesTimer(int goldPercent, Map map, int x, int y) : base(TimeSpan.FromSeconds(Utility.RandomDouble() * 10.0))
 			{
 				m_Map = map;
 				m_X = x;
 				m_Y = y;
+				m_GoldPercent = goldPercent * 0.01;
 			}
 
 			protected override void OnTick()
@@ -255,7 +280,7 @@ namespace Server.Mobiles
 				if (!canFit)
 					return;
 
-				int amount = (int)(Utility.RandomMinMax(300, 800) * (MyServerSettings.GetGoldCutRate() * .01));
+				int amount = (int)(Utility.RandomMinMax(300, 800) * (MyServerSettings.GetGoldCutRate() * .01) * m_GoldPercent);
 				Gold g = new Gold(amount);
 
 				g.MoveToWorld(new Point3D(m_X, m_Y, z), m_Map);
