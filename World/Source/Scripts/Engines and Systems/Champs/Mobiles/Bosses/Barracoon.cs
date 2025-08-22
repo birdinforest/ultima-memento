@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using Server.Spells.Seventh;
 using Server.Spells.Fifth;
+using Server.Engines.CannedEvil;
 
 namespace Server.Mobiles
 {
@@ -165,6 +166,9 @@ namespace Server.Mobiles
 					rat.Team = Team;
 					rat.IsTempEnemy = true;
 					rat.Summoned = true;
+					var spawn = ChampionSpawn.FindOwner(rat);
+					if (spawn != null)
+						BaseCreature.BeefUp(rat, spawn.Difficulty, false);
 
 					bool validLocation = false;
 					Point3D loc = Location;

@@ -53,6 +53,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Achievements - Added entrance info for several missing dungeons<br>");
 			builder.Append("- Achievements - Fix entrance info for Mad Archmage and Lich King Dungeons<br>");
+			builder.Append("- Champs - Barracoon's rats now scale with spawn difficulty<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
 			builder.Append("- Misc - More Fast-player changes<br>");
 			builder.Append("- Misc - Remove bad images from manage Player Vendor gump<br>");
