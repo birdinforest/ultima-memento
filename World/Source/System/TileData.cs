@@ -373,9 +373,16 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "tiledata.mul was not found" );
-				Console.WriteLine( "Make sure the system is properly configured" );
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine( "[FILE ERROR] 'tiledata.mul' was not found!");
+				Console.WriteLine( "- You must download the latest Memento Release." );
+				Console.WriteLine( "- If you just want to play Memento, just delete this repository." );
+				Console.WriteLine( "- If your intention is to modify the Memento source code, you should" );
+				Console.WriteLine( "copy the 'World/Data/Files' folder from the latest Release to this repository." );
+				Console.WriteLine();
 				Console.WriteLine( "After pressing return an exception will be thrown and the server will terminate" );
+				Console.WriteLine();
 
 				throw new Exception( String.Format( "TileData: {0} not found", filePath ) );
 			}
