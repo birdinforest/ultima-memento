@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Champs - All minions should now be aggressive<br>");
 			builder.Append("- Champs - Gold reward is now influenced by size and difficulty<br>");
 			builder.Append("- Champs - Players now receive progress messages<br>");
+			builder.Append("- Champs - Monsters are now cleaned up when the Champion dies<br>");
 			builder.Append("- Craft - All 'Skin' resources now have the same damage bonus<br>");
 			builder.Append("- Gather - Reduce logs per tree from 4-9 to 4-6<br>");
 			builder.Append("- Gather - Lumberjacking sparkles now have a light source<br>");

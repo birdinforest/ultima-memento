@@ -440,6 +440,7 @@ namespace Server.Engines.CannedEvil
 
 					m_Champion = null;
 					Stop();
+					Cleanup();
 
 					// Broadcast the final gump to all players who have done damage.
 					foreach (Mobile m in DamageEntries.Keys)
