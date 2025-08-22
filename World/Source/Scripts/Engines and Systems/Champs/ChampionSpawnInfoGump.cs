@@ -130,8 +130,20 @@ namespace Server.Items
 				case 100:
 					if (m_Spawn.CanStop(sender.Mobile))
 					{
-						m_Spawn.Stop();
-						m_Spawn.Cleanup();
+						var confirmation = new ConfirmationGump(
+							sender.Mobile,
+							"Abort Champion Spawn?",
+							"Are you sure you wish to abort this champion spawn? All progress will be lost.",
+							() =>
+							{
+								if (m_Spawn.CanStop(sender.Mobile))
+								{
+									m_Spawn.Stop();
+									m_Spawn.Cleanup();
+								}
+							}
+						);
+						sender.Mobile.SendGump(confirmation);
 					}
 					break;
 			}
