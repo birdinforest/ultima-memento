@@ -61,6 +61,10 @@ namespace Server.Misc
 			builder.Append("- Achievements - Fix entrance info for Mad Archmage and Lich King Dungeons<br>");
 			builder.Append("- Champs - Barracoon's rats now scale with spawn difficulty<br>");
 			builder.Append("- Champs - Final scoreboard is no longer blank<br>");
+			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
+			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
+			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
+			builder.Append("- Item - All spell scrolls now properly indicate their type<br>");
 			builder.Append("- Misc - More Fast-player changes<br>");
 			builder.Append("- Misc - Remove bad images from manage Player Vendor gump<br>");
 			builder.Append("- Misc - Traps are now being checked for players with >= 5.0 Remove Trap<br>");
@@ -69,10 +73,6 @@ namespace Server.Misc
 			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Misc - Time Lord is now always invulnerable<br>");
 			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
-			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
-			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
-			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
-			builder.Append("- Item - All spell scrolls now properly indicate their type<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
 			builder.Append("- Spell - Add message when Enchant spell fizzles due to having an orb<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
