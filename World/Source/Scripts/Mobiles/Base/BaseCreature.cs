@@ -8446,7 +8446,7 @@ namespace Server.Mobiles
             if (ControlMaster != null && JakoIsEnabled)
                 DeathNotification();
             else if (!Summoned && !IsEphemeral && JakoIsEnabled)
-                CalculateExpDist(this);
+                CalculateExpDist();
             #endregion
 
 			return base.OnBeforeDeath();
@@ -9980,26 +9980,25 @@ namespace Server.Mobiles
         /// <summary>
         /// Calculate the distrubution of attackers and ExpGiven, and increase the Pet's Exp.</summary>
         /// <param name="m">The creature to calcaulte the EXP From (typically dead).</param>
-        private void CalculateExpDist(Mobile m)
+        private void CalculateExpDist()
         {
-			BaseCreature creature = m as BaseCreature;
-			if (creature == null || creature.ExpGiven == 0 || !creature.JakoIsEnabled || creature.Summoned) return;
+			if (ExpGiven == 0 || !JakoIsEnabled || Summoned) return;
 
-            List<DamageEntry> rights = m.DamageEntries;
-
-			uint experience = creature.ExpGiven;
-			if (Controlled && ControlMaster != null && ControlMaster is PlayerMobile) // Herding bonus experience
-				experience += (uint)(experience * ControlMaster.Skills[SkillName.Herding].Value / 500); // max of 25%
-			if (1 < rights.Count)
-				experience /= 2;
-
-            foreach (DamageEntry entry in rights)
+            foreach (DamageEntry entry in DamageEntries)
             {
                 if (entry.Damager is BaseCreature)
                 {
-                    BaseCreature bc = (BaseCreature)entry.Damager;
-                    if (bc.Controlled == true && bc.ControlMaster != null)
-                        bc.GainExp(m, experience, true);
+                    BaseCreature damager = (BaseCreature)entry.Damager;
+                    if (damager.Controlled == true && damager.ControlMaster != null)
+					{
+						uint experience = ExpGiven;
+						if (damager.ControlMaster is PlayerMobile) // Herding bonus experience
+							experience += (uint)(experience * damager.ControlMaster.Skills[SkillName.Herding].Value / 500); // max of 25%
+						if (1 < DamageEntries.Count)
+							experience /= 2;
+
+						damager.GainExp(this, experience, true);
+					}
                 }
             }
 

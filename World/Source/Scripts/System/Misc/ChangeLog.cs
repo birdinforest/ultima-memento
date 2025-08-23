@@ -68,6 +68,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix crash when a magic carpet is drydocked when someone else is in the Lower Deck zone<br>");
 			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Misc - Time Lord is now always invulnerable<br>");
+			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
 			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
 			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
