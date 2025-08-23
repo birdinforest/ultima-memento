@@ -22,8 +22,6 @@ namespace Server.Items
 				monster.PlaySound(0x217);
 
 				from.SendMessage("The Serpent of Order comes forth to challenge you!");
-				snake.Delete();
-				from.AddToBackpack(new BlackrockSerpentOrderDecoration());
 			}
 			else
 			{
@@ -68,8 +66,6 @@ namespace Server.Items
 				monster.PlaySound(0x217);
 
 				from.SendMessage("The Serpent of Chaos comes forth to challenge you!");
-				snake.Delete();
-				from.AddToBackpack(new BlackrockSerpentOrderDecoration());
 			}
 			else
 			{

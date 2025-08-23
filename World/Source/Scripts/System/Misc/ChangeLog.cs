@@ -73,6 +73,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Misc - Time Lord is now always invulnerable<br>");
 			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
+			builder.Append("- Quest - Serpent of Balance quest should be completable again<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
 			builder.Append("- Spell - Add message when Enchant spell fizzles due to having an orb<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
