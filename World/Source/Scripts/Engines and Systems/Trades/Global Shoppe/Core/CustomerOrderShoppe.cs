@@ -16,12 +16,10 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
-        public void CompleteOrder(int index, Mobile from, TradeSkillContext context, RewardType selectedReward)
+        public void CompleteOrder(IOrderContext order, Mobile from, TradeSkillContext context, RewardType selectedReward)
         {
-            if (context.Orders.Count <= index) return;
-
-            var order = context.Orders[index];
             if (!order.IsComplete) return;
+			if (!context.Orders.Contains(order)) return;
 
             switch (selectedReward)
             {
@@ -50,7 +48,7 @@ namespace Server.Engines.GlobalShoppe
             if (!order.IsComplete) return;
 
             from.CloseGump(typeof(RewardSelectionGump));
-            from.SendGump(new RewardSelectionGump(from, this, context, order, index));
+            from.SendGump(new RewardSelectionGump(from, this, context, order));
         }
 
         public string GetDescription(IOrderContext order)

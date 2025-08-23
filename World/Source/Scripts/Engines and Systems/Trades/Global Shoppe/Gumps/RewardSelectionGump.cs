@@ -25,7 +25,6 @@ namespace Server.Engines.GlobalShoppe
 		private readonly ShoppeBase m_Shoppe;
 		private readonly TradeSkillContext m_Context;
 		private readonly IOrderContext m_Order;
-		private readonly int m_OrderIndex;
 		private readonly RewardType m_SelectedReward;
 
 		public RewardSelectionGump(
@@ -33,7 +32,6 @@ namespace Server.Engines.GlobalShoppe
 			ShoppeBase shoppe,
 			TradeSkillContext context,
 			IOrderContext order,
-			int orderIndex,
 			RewardType selectedReward = RewardType.None
 			) : base(100, 100)
 		{
@@ -41,7 +39,6 @@ namespace Server.Engines.GlobalShoppe
 			m_Shoppe = shoppe;
 			m_Context = context;
 			m_Order = order;
-			m_OrderIndex = orderIndex;
 			m_SelectedReward = selectedReward;
 
 			AddPage(0);
@@ -169,7 +166,6 @@ namespace Server.Engines.GlobalShoppe
 						m_Shoppe,
 						m_Context,
 						m_Order,
-						m_OrderIndex,
 						newSelection
 					));
 					break;
@@ -177,7 +173,7 @@ namespace Server.Engines.GlobalShoppe
 				case Actions.Claim:
 					if (m_SelectedReward != RewardType.None)
 					{
-						((IOrderShoppe)m_Shoppe).CompleteOrder(m_OrderIndex, m_From, m_Context, m_SelectedReward);
+						((IOrderShoppe)m_Shoppe).CompleteOrder(m_Order, m_From, m_Context, m_SelectedReward);
 						m_Shoppe.OpenGump(m_From, false);
 					}
 					break;
