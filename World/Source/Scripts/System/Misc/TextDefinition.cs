@@ -112,13 +112,19 @@ namespace Server
 					g.AddHtmlLocalized( x, y, width, height, text.Number, back, scroll );
 			else if( text != null && text.String != null )
 				if( stringColor >= 0 )
-					g.AddHtml( x, y, width, height, String.Format( "<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", stringColor, text.String ), back, scroll );
+					g.AddHtml( x, y, width, height, GetColorizedText(text.String, stringColor), back, scroll );
 				else			
 					g.AddHtml( x, y, width, height, text.String, back, scroll );
 		}
+
 		public static void AddHtmlText( Server.Gumps.Gump g, int x, int y, int width, int height, TextDefinition text, bool back, bool scroll )
 		{
 			AddHtmlText( g, x, y, width, height, text, back, scroll, -1, -1 );
+		}
+
+		public static string GetColorizedText(string text, int color)
+		{
+			return string.Format("<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", color, text);
 		}
 
 		public static void SendMessageTo( Mobile m, TextDefinition def )
