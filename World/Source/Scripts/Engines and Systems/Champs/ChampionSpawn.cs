@@ -522,8 +522,8 @@ namespace Server.Engines.CannedEvil
 				{
 					case 4: AnnounceRegionMessage("The air grows heavy with an unnatural stillness..."); break; // 25%
 					case 8: AnnounceRegionMessage("Thick clouds gather in the sky..."); break; // 50%
-					case 12: AnnounceRegionMessage("The boundaries between worlds grow thin..."); break; // 75%
-					case 15: AnnounceRegionMessage("The very ground trembles beneath your feet..."); break; // n - 1
+					case 12: AnnounceRegionMessage("The very ground trembles beneath your feet..."); break; // 75%
+					case 15: AnnounceRegionMessage("The boundaries between worlds grow thin..."); break; // n - 1
 				}
 
 				if (m_Altar != null)
