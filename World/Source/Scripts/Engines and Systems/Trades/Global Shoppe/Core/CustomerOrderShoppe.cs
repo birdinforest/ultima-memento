@@ -16,20 +16,41 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
-        public void CompleteOrder(int index, Mobile from, TradeSkillContext context)
+        public void CompleteOrder(int index, Mobile from, TradeSkillContext context, RewardType selectedReward)
         {
             if (context.Orders.Count <= index) return;
 
             var order = context.Orders[index];
             if (!order.IsComplete) return;
 
-            context.Gold += order.GoldReward;
-            context.Points += order.PointReward;
-            context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
+            switch (selectedReward)
+            {
+                case RewardType.Gold:
+                    context.Gold += order.GoldReward;
+                    break;
+                case RewardType.Points:
+                    context.Points += order.PointReward;
+                    break;
+                case RewardType.Reputation:
+                    context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
+                    break;
+            }
+
 			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
             context.Orders.Remove(order);
 
             from.PlaySound(0x32); // Dropgem1
+        }
+
+        public void OpenRewardSelectionGump(int index, Mobile from, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            if (!order.IsComplete) return;
+
+            from.CloseGump(typeof(RewardSelectionGump));
+            from.SendGump(new RewardSelectionGump(from, this, context, order, index));
         }
 
         public string GetDescription(IOrderContext order)
