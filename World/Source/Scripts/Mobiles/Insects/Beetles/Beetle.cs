@@ -50,7 +50,7 @@ namespace Server.Mobiles
 			Karma = -4000;
 
 			Tamable = true;
-			ControlSlots = 3;
+			ControlSlots = 2;
 			MinTameSkill = 29.1;
 
 			Container pack = Backpack;

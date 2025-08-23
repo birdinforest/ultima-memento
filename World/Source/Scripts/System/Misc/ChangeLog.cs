@@ -51,6 +51,7 @@ namespace Server.Misc
 			builder.Append("- NPC - Mercantile/guild bonus now increases the amount of Gold that vendors have available for purchase<br>");
 			builder.Append("- Pets - Ancient Drakes now take 3 control slots, up from 2<br>");
 			builder.Append("- Pets - Crag Cats and Sabretooth Tigers now take 2 control slots, up from 1<br>");
+			builder.Append("- Pets - Beetles now take 2 control slots, down from 3<br>");
 			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 			builder.Append("- Skill - Stealing cooldown is now 1s, down from 5s<br>");
 			builder.Append("- Spell - AOE damage spells are now reduced to a minimum of 50% damage when hitting more than one target<br>");
