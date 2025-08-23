@@ -1909,6 +1909,7 @@ namespace Server.Mobiles
 			else if ( m is Priest ){ return true; }
 			else if ( m is BaseNPC ){ return true; }
 			else if ( m is HoardMinionFamiliar ){ return true; }
+			else if ( m is TimeLord ){ return true; }
 
 			return false;
 		}
