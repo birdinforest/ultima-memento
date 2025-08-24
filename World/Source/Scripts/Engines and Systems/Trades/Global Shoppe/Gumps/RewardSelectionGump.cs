@@ -56,35 +56,34 @@ namespace Server.Engines.GlobalShoppe
 			TextDefinition.AddHtmlText(this, 20, 20, 360, 25, "<CENTER>Order Completed</CENTER>", HtmlColors.MUSTARD);
 
 			TextDefinition.AddHtmlText(this, 20, 50, 360, 40,
-				string.Format("<CENTER>You have successfully completed the {0} for {1}.</CENTER>",
-				((IOrderShoppe)m_Shoppe).GetDescription(order).Replace("Craft ", ""), order.Person), HtmlColors.BROWN);
+				string.Format("{0} thanks you for the {1}. {2}",
+					order.Person,
+					((IOrderShoppe)m_Shoppe).GetDescription(order).Replace("Craft ", ""),
+					m_SelectedReward == RewardType.None ? TextDefinition.GetColorizedText("Choose your fee.", HtmlColors.OFFWHITE) : ""
+				), HtmlColors.BROWN);
 
 			int y = 120;
 			int BOX_WIDTH = 100;
 			int TOTAL_WIDTH = BOX_WIDTH * 3;
 			int START_X = (400 - TOTAL_WIDTH) / 2;
 
-			AddRewardOption(Actions.SelectReputation, RewardType.Reputation, START_X + (BOX_WIDTH * 2) + (BOX_WIDTH / 2), y, REPUTATION_ITEM_ID, m_Order.ReputationReward.ToString(), "Reputation");
-			AddRewardOption(Actions.SelectGold, RewardType.Gold, START_X + (BOX_WIDTH / 2), y, GOLD_ITEM_ID, m_Order.GoldReward.ToString(), "Gold");
-			AddRewardOption(Actions.SelectPoints, RewardType.Points, START_X + BOX_WIDTH + (BOX_WIDTH / 2), y, POINTS_ITEM_ID, m_Order.PointReward.ToString(), "Points");
+			int BOX_X = START_X + (BOX_WIDTH / 2);
+			AddRewardOption(Actions.SelectReputation, RewardType.Reputation, BOX_X, y, REPUTATION_ITEM_ID, m_Order.ReputationReward.ToString(), "Reputation");
+			BOX_X += BOX_WIDTH;
+
+			AddRewardOption(Actions.SelectGold, RewardType.Gold, BOX_X, y, GOLD_ITEM_ID, m_Order.GoldReward.ToString(), "Gold");
+			BOX_X += BOX_WIDTH;
+
+			AddRewardOption(Actions.SelectPoints, RewardType.Points, BOX_X, y, POINTS_ITEM_ID, m_Order.PointReward.ToString(), "Points");
 
 			int BUTTON_Y = 250;
 			int CLAIM_BUTTON_X = 200;
-			int CANCEL_BUTTON_X = 200 - 127;
 
 			if (m_SelectedReward != RewardType.None)
 			{
 				AddButton(CLAIM_BUTTON_X, BUTTON_Y, 4023, 4023, (int)Actions.Claim, GumpButtonType.Reply, 0);
 				TextDefinition.AddHtmlText(this, CLAIM_BUTTON_X + 35, BUTTON_Y + 3, 100, 20, "Claim Your Fee", HtmlColors.MUSTARD);
 			}
-			else
-			{
-				AddImage(CLAIM_BUTTON_X, BUTTON_Y, 4020);
-				TextDefinition.AddHtmlText(this, CLAIM_BUTTON_X + 35, BUTTON_Y + 3, 100, 20, "Claim Your Fee", HtmlColors.GRAY);
-			}
-
-			AddButton(CANCEL_BUTTON_X, BUTTON_Y, 4020, 4020, (int)Actions.Close, GumpButtonType.Reply, 0);
-			TextDefinition.AddHtmlText(this, CANCEL_BUTTON_X + 35, BUTTON_Y + 3, 60, 20, "Cancel", HtmlColors.MUSTARD);
 		}
 
 		private void AddRewardOption(Actions action, RewardType rewardType, int x, int y, int itemId, string amount, string label)
@@ -145,6 +144,8 @@ namespace Server.Engines.GlobalShoppe
 				AddButton(x - 15, ICON_Y + 85, UNCHECKED_BOX, CHECKED_BOX, (int)action, GumpButtonType.Reply, 0);
 			}
 
+			if (m_SelectedReward != RewardType.None && m_SelectedReward != rewardType)
+				AddAlphaRegion(BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT);
 		}
 
 		public override void OnResponse(NetState sender, RelayInfo info)
@@ -166,7 +167,7 @@ namespace Server.Engines.GlobalShoppe
 						m_Shoppe,
 						m_Context,
 						m_Order,
-						newSelection
+						newSelection == m_SelectedReward ? RewardType.None : newSelection
 					));
 					break;
 
