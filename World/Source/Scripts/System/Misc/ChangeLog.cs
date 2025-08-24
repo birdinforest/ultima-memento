@@ -54,6 +54,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Beetles now take 2 control slots, down from 3<br>");
 			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 			builder.Append("- Shoppe - Add tooltips to Order rewards to show the per-item value<br>");
+			builder.Append("- Shoppe - Remove Order reputation penalty for declining<br>");
 			builder.Append("- Skill - Stealing cooldown is now 1s, down from 5s<br>");
 			builder.Append("- Spell - AOE damage spells are now reduced to a minimum of 50% damage when hitting more than one target<br>");
 
