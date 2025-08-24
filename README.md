@@ -18,13 +18,16 @@
   <summary>Challenging Content</summary>
 
   ## Champion Spawns
-  - Initiated by a random hard-mob item drop
-  - Challenge yourself and your comrades by increasing difficulty
-    - Rewards are based on your chosen configuration
-    - Adjust spawn size (impacts spawns running around & required kills per level)
-    - Adjust monster difficulty (impacts health/skills/damage)
+  - Champion Altars (spawn locations) have been added to the world in a thematic location
+  - Spawns must be activated by using an uncommon `Champion Skull`
+    - `Champion Skulls` decay and will be deleted one week after they drop
+  - Spawn configuration is customizable
+    - Rewards increase as you increase `Spawn Amount` and `Monster Difficulty`
+    - All kinds of players can enjoy this content (Casual players, group play, or challenging solo play)
+    - AOE focused templates should focus on increasing `Spawn Amount` (impacts amount of mobs & required kills per level)
+    - Single-target focused templates should focus on increasing `Monster Difficulty` (impacts health/skills/damage)
 
-  ![Champion Spawn Configuration](./World/Documentation/Showcase/dynamic-champ-spawns.png)
+  ![Champion Spawn Configuration](./World/Documentation/Showcase/champion-spawn.gif)
 </details>
 
 <details>
