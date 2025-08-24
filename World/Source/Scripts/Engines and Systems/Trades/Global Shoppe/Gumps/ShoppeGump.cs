@@ -347,14 +347,17 @@ namespace Server.Engines.GlobalShoppe
             int x_card_icon = 400;
             AddItem(x_card_icon, y - 6, 10283);
             TextDefinition.AddHtmlText(this, x_card_icon + 24, y, 30, 20, order.ReputationReward.ToString(), HtmlColors.MUSTARD);
+			AddTooltip(string.Format(" {0:0.##} per item", (double)order.ReputationReward / order.MaxAmount));
             x_card_icon += 50;
 
             AddItem(x_card_icon, y - 4, 3823);
             TextDefinition.AddHtmlText(this, x_card_icon + 40, y, 50, 20, order.GoldReward.ToString(), HtmlColors.MUSTARD);
+			AddTooltip(string.Format(" {0:0.##} per item", (double)order.GoldReward / order.MaxAmount));
             x_card_icon += 90;
 
             AddItem(x_card_icon, y - 3, 0x0EEC, 0x44C); // 1072
             TextDefinition.AddHtmlText(this, x_card_icon + 45, y, 50, 20, order.PointReward.ToString(), HtmlColors.MUSTARD);
+			AddTooltip(string.Format(" {0:0.##} per item", (double)order.PointReward / order.MaxAmount));
 
             y += 52;
         }
