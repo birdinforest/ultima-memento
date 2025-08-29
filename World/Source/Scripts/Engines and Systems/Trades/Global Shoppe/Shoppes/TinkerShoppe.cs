@@ -22,14 +22,13 @@ namespace Server.Engines.GlobalShoppe
 		{
 		}
 
-		public override NpcGuild Guild
-		{ get { return NpcGuild.TinkersGuild; } }
+		public override CraftSystem CraftSystem { get { return DefTinkering.CraftSystem; } }
 
-		protected override SkillName PrimarySkill
-		{ get { return SkillName.Tinkering; } }
+		public override NpcGuild Guild { get { return NpcGuild.TinkersGuild; } }
 
-		protected override ShoppeType ShoppeType
-		{ get { return ShoppeType.Tinker; } }
+		protected override SkillName PrimarySkill { get { return SkillName.Tinkering; } }
+
+		protected override ShoppeType ShoppeType { get { return ShoppeType.Tinker; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{
@@ -41,11 +40,34 @@ namespace Server.Engines.GlobalShoppe
 			return base.OnDragDrop(from, dropped);
 		}
 
-		protected override IEnumerable<TinkerOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+		public override void PrepareOrders(TradeSkillContext context)
+		{
+			context.Orders.ForEach(untypedOrder =>
+			{
+				var order = untypedOrder as TinkerOrderContext;
+				if (order == null)
+				{
+					Console.WriteLine("Failed to set Tinker rewards for order ({0})", untypedOrder.GetType().Name);
+					return;
+				}
+
+				if (order.IsInitialized) return;
+
+				var rewards = TinkerRewardCalculator.Instance;
+				rewards.SetRewards(context, order);
+
+				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				order.GraphicId = item.ItemID;
+				order.ItemName = item.Name;
+				order.Person = CreatePersonName();
+
+				order.IsInitialized = true;
+			});
+		}
+
+		protected override IEnumerable<TinkerOrderContext> CreateOrders(CraftSystem craftSystem, Mobile from, TradeSkillContext context, int count)
 		{
 			if (count < 1) yield break;
-
-			var craftSystem = DefTinkering.CraftSystem;
 
 			// Build item list
 			var items = GetCraftItems(from, craftSystem)
@@ -247,29 +269,7 @@ namespace Server.Engines.GlobalShoppe
 		protected override ShoppeGump GetGump(PlayerMobile from)
 		{
 			var context = GetOrCreateContext(from);
-
-			// Ensure Orders are configured
-			context.Orders.ForEach(untypedOrder =>
-			{
-				var order = untypedOrder as TinkerOrderContext;
-				if (order == null)
-				{
-					Console.WriteLine("Failed to set Tinker rewards for order ({0})", untypedOrder.GetType().Name);
-					return;
-				}
-
-				if (order.IsInitialized) return;
-
-				var rewards = TinkerRewardCalculator.Instance;
-				rewards.SetRewards(context, order);
-
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
-				order.GraphicId = item.ItemID;
-				order.ItemName = item.Name;
-				order.Person = CreatePersonName();
-
-				order.IsInitialized = true;
-			});
+			PrepareOrders(context);
 
 			return new ShoppeGump(
 				from,

@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Server.Engines.Craft;
 using Server.Items;
 using Server.Mobiles;
 using Server.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
@@ -21,9 +21,12 @@ namespace Server.Engines.GlobalShoppe
 		{
 		}
 
+		public override CraftSystem CraftSystem { get { return DefAlchemy.CraftSystem; } }
+
 		public override NpcGuild Guild { get { return NpcGuild.AlchemistsGuild; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Alchemy; } }
+
 		protected override ShoppeType ShoppeType { get { return ShoppeType.Alchemist; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
@@ -34,6 +37,61 @@ namespace Server.Engines.GlobalShoppe
 				return AddResource(from, dropped);
 
 			return base.OnDragDrop(from, dropped);
+		}
+
+		public override void PrepareOrders(TradeSkillContext context)
+		{
+			context.Orders.ForEach(untypedOrder =>
+			{
+				var order = untypedOrder as OrderContext;
+				if (order == null)
+				{
+					Console.WriteLine("Failed to set Alchemy rewards for order ({0})", untypedOrder.GetType().Name);
+					return;
+				}
+
+				if (order.IsInitialized) return;
+
+				var rewards = AlchemyRewardCalculator.Instance;
+				rewards.SetRewards(context, order);
+
+				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				order.GraphicId = item.ItemID;
+				order.ItemName = item.Name;
+				order.Person = CreatePersonName();
+
+				order.IsInitialized = true;
+			});
+		}
+
+		protected override IEnumerable<OrderContext> CreateOrders(CraftSystem craftSystem, Mobile from, TradeSkillContext context, int count)
+		{
+			if (count < 1) yield break;
+
+			// Build item list
+			var items = GetCraftItems(from, craftSystem)
+				.Where(i => TypeUtilities.IsTypeOrDerived<BaseElixir>(i.ItemType))
+				.ToList();
+			if (items.Count < 1) yield break;
+
+			// Add 2x quantity bonus for every 5 points over 100
+			var amountBonus = 2 * (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
+
+			for (int i = 0; i < count; i++)
+			{
+				var item = Utility.Random(items);
+				if (item == null) yield break;
+
+				var amount = amountBonus + Utility.RandomMinMax(6, 20);
+
+				var order = new OrderContext(item.ItemType)
+				{
+					MaxAmount = amount,
+					CurrentAmount = 0,
+				};
+
+				yield return order;
+			}
 		}
 
 		protected override string CreateTask(TradeSkillContext context)
@@ -102,32 +160,19 @@ namespace Server.Engines.GlobalShoppe
 			return task;
 		}
 
+		protected override string GetDescription(OrderContext order)
+		{
+			var description = string.Format("Craft {0}", order.MaxAmount);
+
+			description = string.Format("{0} {1}", description, order.ItemName);
+
+			return description;
+		}
+
 		protected override ShoppeGump GetGump(PlayerMobile from)
 		{
 			var context = GetOrCreateContext(from);
-
-			// Ensure Orders are configured
-			context.Orders.ForEach(untypedOrder =>
-			{
-				var order = untypedOrder as OrderContext;
-				if (order == null)
-				{
-					Console.WriteLine("Failed to set Alchemy rewards for order ({0})", untypedOrder.GetType().Name);
-					return;
-				}
-
-				if (order.IsInitialized) return;
-
-				var rewards = AlchemyRewardCalculator.Instance;
-				rewards.SetRewards(context, order);
-
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
-				order.GraphicId = item.ItemID;
-				order.ItemName = item.Name;
-				order.Person = CreatePersonName();
-
-				order.IsInitialized = true;
-			});
+			PrepareOrders(context);
 
 			return new ShoppeGump(
 				from,
@@ -165,47 +210,6 @@ namespace Server.Engines.GlobalShoppe
 			base.Serialize(writer);
 
 			writer.Write(0); // version
-		}
-
-		protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
-		{
-			if (count < 1) yield break;
-
-			var craftSystem = DefAlchemy.CraftSystem;
-
-			// Build item list
-			var items = GetCraftItems(from, craftSystem)
-				.Where(i => TypeUtilities.IsTypeOrDerived<BaseElixir>(i.ItemType))
-				.ToList();
-			if (items.Count < 1) yield break;
-
-			// Add 2x quantity bonus for every 5 points over 100
-			var amountBonus = 2 * (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
-
-			for (int i = 0; i < count; i++)
-			{
-				var item = Utility.Random(items);
-				if (item == null) yield break;
-
-				var amount = amountBonus + Utility.RandomMinMax(6, 20);
-
-				var order = new OrderContext(item.ItemType)
-				{
-					MaxAmount = amount,
-					CurrentAmount = 0,
-				};
-
-				yield return order;
-			}
-		}
-
-		protected override string GetDescription(OrderContext order)
-		{
-			var description = string.Format("Craft {0}", order.MaxAmount);
-
-			description = string.Format("{0} {1}", description, order.ItemName);
-
-			return description;
 		}
 	}
 }

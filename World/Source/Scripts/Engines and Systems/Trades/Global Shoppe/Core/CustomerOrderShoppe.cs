@@ -1,11 +1,13 @@
+using Server.Engines.Craft;
+using Server.Utilities;
 using System;
 using System.Collections.Generic;
-using Server.Utilities;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
-	[SkipSerializeReq]
-    public abstract class CustomerOrderShoppe<TOrderContext> : CustomerShoppe, IOrderShoppe
+    [SkipSerializeReq]
+    public abstract class CustomerOrderShoppe<TOrderContext> : CustomerShoppe, IOrderShoppe, IDiagnosticOrderShoppe
         where TOrderContext : class, IOrderContext
     {
         protected CustomerOrderShoppe(Serial serial) : base(serial)
@@ -16,10 +18,12 @@ namespace Server.Engines.GlobalShoppe
         {
         }
 
+        public abstract CraftSystem CraftSystem { get; }
+
         public void CompleteOrder(IOrderContext order, Mobile from, TradeSkillContext context, RewardType selectedReward)
         {
             if (!order.IsComplete) return;
-			if (!context.Orders.Contains(order)) return;
+            if (!context.Orders.Contains(order)) return;
 
             switch (selectedReward)
             {
@@ -34,21 +38,15 @@ namespace Server.Engines.GlobalShoppe
                     break;
             }
 
-			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
+            SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
             context.Orders.Remove(order);
 
             from.PlaySound(0x32); // Dropgem1
         }
 
-        public void OpenRewardSelectionGump(int index, Mobile from, TradeSkillContext context)
+        public IOrderContext CreateOrder(CraftSystem craftSystem, Mobile from, TradeSkillContext context)
         {
-            if (context.Orders.Count <= index) return;
-
-            var order = context.Orders[index];
-            if (!order.IsComplete) return;
-
-            from.CloseGump(typeof(RewardSelectionGump));
-            from.SendGump(new RewardSelectionGump(from, this, context, order));
+            return CreateOrders(craftSystem, from, context, 1).FirstOrDefault();
         }
 
         public string GetDescription(IOrderContext order)
@@ -70,6 +68,19 @@ namespace Server.Engines.GlobalShoppe
             from.SendGump(new OrderGump(from, order));
         }
 
+        public void OpenRewardSelectionGump(int index, Mobile from, TradeSkillContext context)
+        {
+            if (context.Orders.Count <= index) return;
+
+            var order = context.Orders[index];
+            if (!order.IsComplete) return;
+
+            from.CloseGump(typeof(RewardSelectionGump));
+            from.SendGump(new RewardSelectionGump(from, this, context, order));
+        }
+
+        public abstract void PrepareOrders(TradeSkillContext context);
+
         public void RejectOrder(int index, TradeSkillContext context)
         {
             if (context.Orders.Count <= index) return;
@@ -78,7 +89,7 @@ namespace Server.Engines.GlobalShoppe
             context.Orders.Remove(order);
         }
 
-        protected abstract IEnumerable<TOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int amount);
+        protected abstract IEnumerable<TOrderContext> CreateOrders(CraftSystem craftSystem, Mobile from, TradeSkillContext context, int amount);
 
         protected abstract string GetDescription(TOrderContext order);
 
@@ -87,7 +98,7 @@ namespace Server.Engines.GlobalShoppe
             if (context.FeePaid && context.CanRefreshOrders)
             {
                 var count = ShoppeConstants.MAX_ORDERS - context.Orders.Count;
-                foreach (var order in CreateOrders(from, context, count))
+                foreach (var order in CreateOrders(CraftSystem, from, context, count))
                 {
                     context.Orders.Add(order);
                 }

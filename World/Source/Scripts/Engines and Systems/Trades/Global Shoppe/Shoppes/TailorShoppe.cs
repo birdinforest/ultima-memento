@@ -22,9 +22,12 @@ namespace Server.Engines.GlobalShoppe
 		{
 		}
 
+		public override CraftSystem CraftSystem { get { return DefLeatherworking.CraftSystem; } }
+
 		public override NpcGuild Guild { get { return NpcGuild.TailorsGuild; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Tailoring; } }
+
 		protected override ShoppeType ShoppeType { get { return ShoppeType.Tailor; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
@@ -37,11 +40,34 @@ namespace Server.Engines.GlobalShoppe
 			return base.OnDragDrop(from, dropped);
 		}
 
-		protected override IEnumerable<EquipmentOrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+		public override void PrepareOrders(TradeSkillContext context)
+		{
+			context.Orders.ForEach(untypedOrder =>
+			{
+				var order = untypedOrder as EquipmentOrderContext;
+				if (order == null)
+				{
+					Console.WriteLine("Failed to set Tailor rewards for order ({0})", untypedOrder.GetType().Name);
+					return;
+				}
+
+				if (order.IsInitialized) return;
+
+				var rewards = TailorRewardCalculator.Instance;
+				rewards.SetRewards(context, order);
+
+				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				order.GraphicId = item.ItemID;
+				order.ItemName = item.Name;
+				order.Person = CreatePersonName();
+
+				order.IsInitialized = true;
+			});
+		}
+
+		protected override IEnumerable<EquipmentOrderContext> CreateOrders(CraftSystem craftSystem, Mobile from, TradeSkillContext context, int count)
 		{
 			if (count < 1) yield break;
-
-			var craftSystem = DefLeatherworking.CraftSystem;
 
 			// Build item list
 			var items = GetCraftItems(from, craftSystem)
@@ -199,29 +225,7 @@ namespace Server.Engines.GlobalShoppe
 		protected override ShoppeGump GetGump(PlayerMobile from)
 		{
 			var context = GetOrCreateContext(from);
-
-			// Ensure Orders are configured
-			context.Orders.ForEach(untypedOrder =>
-			{
-				var order = untypedOrder as EquipmentOrderContext;
-				if (order == null)
-				{
-					Console.WriteLine("Failed to set Tailor rewards for order ({0})", untypedOrder.GetType().Name);
-					return;
-				}
-
-				if (order.IsInitialized) return;
-
-				var rewards = TailorRewardCalculator.Instance;
-				rewards.SetRewards(context, order);
-
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
-				order.GraphicId = item.ItemID;
-				order.ItemName = item.Name;
-				order.Person = CreatePersonName();
-
-				order.IsInitialized = true;
-			});
+			PrepareOrders(context);
 
 			return new ShoppeGump(
 				from,

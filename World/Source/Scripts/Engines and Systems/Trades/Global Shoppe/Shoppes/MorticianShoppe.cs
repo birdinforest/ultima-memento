@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Engines.GlobalShoppe
 {
@@ -21,9 +21,12 @@ namespace Server.Engines.GlobalShoppe
 		{
 		}
 
+		public override CraftSystem CraftSystem { get { return DefWitchery.CraftSystem; } }
+
 		public override NpcGuild Guild { get { return NpcGuild.NecromancersGuild; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Necromancy; } }
+
 		protected override ShoppeType ShoppeType { get { return ShoppeType.Mortician; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
@@ -36,11 +39,34 @@ namespace Server.Engines.GlobalShoppe
 			return base.OnDragDrop(from, dropped);
 		}
 
-		protected override IEnumerable<OrderContext> CreateOrders(Mobile from, TradeSkillContext context, int count)
+		public override void PrepareOrders(TradeSkillContext context)
+		{
+			context.Orders.ForEach(untypedOrder =>
+			{
+				var order = untypedOrder as OrderContext;
+				if (order == null)
+				{
+					Console.WriteLine("Failed to set Mortician rewards for order ({0})", untypedOrder.GetType().Name);
+					return;
+				}
+
+				if (order.IsInitialized) return;
+
+				var rewards = MorticianRewardCalculator.Instance;
+				rewards.SetRewards(context, order);
+
+				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				order.GraphicId = item.ItemID;
+				order.ItemName = item.Name;
+				order.Person = CreatePersonName();
+
+				order.IsInitialized = true;
+			});
+		}
+
+		protected override IEnumerable<OrderContext> CreateOrders(CraftSystem craftSystem, Mobile from, TradeSkillContext context, int count)
 		{
 			if (count < 1) yield break;
-
-			var craftSystem = DefWitchery.CraftSystem;
 
 			// Build item list
 			var items = GetCraftItems(from, craftSystem)
@@ -173,29 +199,7 @@ namespace Server.Engines.GlobalShoppe
 		protected override ShoppeGump GetGump(PlayerMobile from)
 		{
 			var context = GetOrCreateContext(from);
-
-			// Ensure Orders are configured
-			context.Orders.ForEach(untypedOrder =>
-			{
-				var order = untypedOrder as OrderContext;
-				if (order == null)
-				{
-					Console.WriteLine("Failed to set Mortician rewards for order ({0})", untypedOrder.GetType().Name);
-					return;
-				}
-
-				if (order.IsInitialized) return;
-
-				var rewards = MorticianRewardCalculator.Instance;
-				rewards.SetRewards(context, order);
-
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
-				order.GraphicId = item.ItemID;
-				order.ItemName = item.Name;
-				order.Person = CreatePersonName();
-
-				order.IsInitialized = true;
-			});
+			PrepareOrders(context);
 
 			return new ShoppeGump(
 				from,
