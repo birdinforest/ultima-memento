@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Gumps;
 using Server.Targeting;
+using Server.Utilities;
 
 namespace Server.Engines.GlobalShoppe
 {
@@ -18,6 +22,8 @@ namespace Server.Engines.GlobalShoppe
             CommandSystem.Register("Shoppe-Disable", AccessLevel.GameMaster, new CommandEventHandler(OnShoppesDisable));
             CommandSystem.Register("Shoppe-Enable", AccessLevel.GameMaster, new CommandEventHandler(OnShoppesEnable));
             CommandSystem.Register("Shoppe-Status", AccessLevel.GameMaster, new CommandEventHandler(OnShoppesStatus));
+            CommandSystem.Register("Shoppe-Order-Export", AccessLevel.GameMaster, new CommandEventHandler(OnShoppesOrderExport));
+            CommandSystem.Register("Shoppe-Order-Export-All", AccessLevel.GameMaster, new CommandEventHandler(OnShoppesOrderExportAll));
         }
 
         [Usage("Shoppe-Disable")]
@@ -34,6 +40,28 @@ namespace Server.Engines.GlobalShoppe
         {
             ShoppeEngine.Instance.IsEnabled = true;
             e.Mobile.SendMessage("Shoppes have been enabled.");
+        }
+
+        [Usage("Shoppe-Order-Export")]
+        [Description("Writes a unique list of Orders for the targeted Shoppe to the Console")]
+        public static void OnShoppesOrderExport(CommandEventArgs e)
+        {
+            ShoppeCraftSystem.Instance.Export(e.Mobile);
+        }
+
+        [Usage("Shoppe-Order-Export-All")]
+        [Description("Writes a unique list of Orders for all Shoppes to the Console")]
+        public static void OnShoppesOrderExportAll(CommandEventArgs e)
+        {
+            var types = new HashSet<Type>();
+            foreach (var shoppe in WorldUtilities.ForEachItem<Item>(item => item is IDiagnosticOrderShoppe).Cast<IDiagnosticOrderShoppe>())
+            {
+                if (types.Contains(shoppe.GetType())) continue;
+
+                Console.WriteLine("Exporting Orders for {0}", shoppe.GetType().Name);
+                ShoppeCraftSystem.Instance.ExportOrders(e.Mobile, shoppe);
+                types.Add(shoppe.GetType());
+            }
         }
 
         [Usage("Shoppe-Status")]
