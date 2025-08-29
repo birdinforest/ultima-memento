@@ -174,7 +174,7 @@ namespace Server.Engines.Harvest
 
 			res = new HarvestResource[]
 				{
-					new HarvestResource( 100.0, 70.0, 400.0, 1044631, typeof( Sand ) )
+					new HarvestResource( 100.0, 70.0, 125.0, 1044631, typeof( Sand ) )
 				};
 
 			veins = new HarvestVein[]

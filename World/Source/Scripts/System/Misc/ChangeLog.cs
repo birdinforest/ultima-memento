@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Craft - All 'Skin' resources now have the same damage bonus<br>");
 			builder.Append("- Gather - Reduce logs per tree from 4-9 to 4-6<br>");
 			builder.Append("- Gather - Lumberjacking sparkles now have a light source<br>");
+			builder.Append("- Gather - Reduced skill required to successfully Sand<br>");
 			builder.Append("- Gump - Completely redesigned Runebook gump<br>");
 			builder.Append("- Gump - Update look of Confirmation gump<br>");
 			builder.Append("- Gump - Bulk craft gump can now be closed with right click<br>");
