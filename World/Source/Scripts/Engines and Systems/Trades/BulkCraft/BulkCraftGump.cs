@@ -12,8 +12,6 @@ namespace Server.Engines.Craft
 
 		public BulkCraftGump(PlayerMobile player, BulkCraftContext context, bool isComplete = false) : base(25, 25)
 		{
-			Closable = false;
-
 			m_Player = player;
 			m_Context = context;
 

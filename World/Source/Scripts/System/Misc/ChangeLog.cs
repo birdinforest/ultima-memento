@@ -29,6 +29,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Lumberjacking sparkles now have a light source<br>");
 			builder.Append("- Gump - Completely redesigned Runebook gump<br>");
 			builder.Append("- Gump - Update look of Confirmation gump<br>");
+			builder.Append("- Gump - Bulk craft gump can now be closed with right click<br>");
 			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - High fame mobs can now drop Champion Skulls<br>");
 			builder.Append("- Item - Lawn tools can now be used indoors<br>");
