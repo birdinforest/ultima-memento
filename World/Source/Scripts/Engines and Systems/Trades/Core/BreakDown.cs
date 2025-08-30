@@ -205,8 +205,11 @@ namespace Server.Engines.Craft
 						var container = (Container)targeted;
 						var confirmationGump = new ConfirmationGump(
 							from,
-							"Break down container contents",
-							"Are you absolutely sure you want to break down all '" + container.TotalItems + "' items in the container '" + container.Name + "' ?",
+							TextDefinition.GetColorizedText("Break down", HtmlColors.RED) + " container contents",
+							string.Format("Are you absolutely sure you want to break down all '{0}' items in the container '{1}' ?", 
+								TextDefinition.GetColorizedText(container.TotalItems.ToString(), HtmlColors.RED),
+								TextDefinition.GetColorizedText(container.Name.ToString(), HtmlColors.RED)
+							),
 							() =>
 								{
 									if (!from.Alive) return;
