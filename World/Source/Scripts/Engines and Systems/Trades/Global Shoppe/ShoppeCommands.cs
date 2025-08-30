@@ -60,6 +60,8 @@ namespace Server.Engines.GlobalShoppe
 
                 Console.WriteLine("Exporting Orders for {0}", shoppe.GetType().Name);
                 ShoppeCraftSystem.Instance.ExportOrders(e.Mobile, shoppe);
+				Console.WriteLine();
+				Console.WriteLine();
                 types.Add(shoppe.GetType());
             }
         }
