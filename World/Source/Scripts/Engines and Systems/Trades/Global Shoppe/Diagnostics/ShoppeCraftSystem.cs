@@ -98,6 +98,7 @@ namespace Server.Engines.GlobalShoppe
 					var o = (EquipmentOrderContext)order;
 					o.Resource = CraftResource.None;
 					o.MaxAmount = AMOUNT_TO_MAKE;
+					o.RequireExceptional = false;
 				}
 				else if (order is TinkerOrderContext)
 				{
