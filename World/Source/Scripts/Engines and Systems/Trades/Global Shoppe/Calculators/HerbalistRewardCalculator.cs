@@ -9,24 +9,17 @@ namespace Server.Engines.GlobalShoppe
 
 		protected override int ComputeGold(TradeSkillContext context, OrderContext order)
 		{
-			// Reduce by arbitrary amount
-			return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) * 0.75);
+			return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) * ShoppeOrderConstants.GoldRatios.Herbalist);
 		}
 
 		protected override int ComputePoints(TradeSkillContext context, OrderContext order)
 		{
-			// Reduce by arbitrary amount
-			return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 2);
+			return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) * ShoppeOrderConstants.PointRatios.Herbalist);
 		}
 
 		protected override int ComputeReputation(TradeSkillContext context, OrderContext order)
 		{
-			// Reduce by arbitrary amount
-			var reward = ComputeRewardFromResourceValue(order.Type, order.MaxAmount) / 50;
-
-			reward = (int)Math.Max(10, reward - 0.5 * ((double)context.Reputation / ShoppeConstants.MAX_REPUTATION));
-
-			return reward;
+			return (int)(ComputeRewardFromResourceValue(order.Type, order.MaxAmount) * ShoppeOrderConstants.ReputationRatios.Herbalist);
 		}
 
 		protected override CraftItem FindCraftItem(Type type)

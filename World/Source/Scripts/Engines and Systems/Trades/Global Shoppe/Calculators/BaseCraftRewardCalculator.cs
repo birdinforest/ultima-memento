@@ -11,7 +11,7 @@ namespace Server.Engines.GlobalShoppe
 		{
 			order.GoldReward = ComputeGold(context, order);
 			order.PointReward = ComputePoints(context, order);
-			order.ReputationReward = ComputeReputation(context, order);
+			order.ReputationReward = ScaleReputation(context, ComputeReputation(context, order));
 		}
 
 		protected virtual int ComputeGold(TradeSkillContext context, TOrderContext order)
@@ -29,14 +29,12 @@ namespace Server.Engines.GlobalShoppe
 			if (0 < resourceMultiplier)
 				price = (int)(price * resourceMultiplier);
 
-			// Reduce by arbitrary amount
-			return (int)(price / 3);
+			return (int)price;
 		}
 
 		protected virtual int ComputePoints(TradeSkillContext context, TOrderContext order)
 		{
-			// Reduce by arbitrary amount
-			return ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type) / 5;
+			return ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
 		}
 
 		protected int ComputePricePerCraftedItem(CraftResource resource, Type type)
@@ -62,9 +60,7 @@ namespace Server.Engines.GlobalShoppe
 		protected virtual int ComputeReputation(TradeSkillContext context, TOrderContext order)
 		{
 			// Reduce by arbitrary amount
-			var reward = ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type) / 100;
-
-			reward = (int)Math.Max(10, reward - 0.5 * ((double)context.Reputation / ShoppeConstants.MAX_REPUTATION));
+			var reward = ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.Type);
 
 			return reward;
 		}

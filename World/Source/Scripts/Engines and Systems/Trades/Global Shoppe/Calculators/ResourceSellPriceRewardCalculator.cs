@@ -9,7 +9,7 @@ namespace Server.Engines.GlobalShoppe
 		{
 			order.GoldReward = ComputeGold(context, order);
 			order.PointReward = ComputePoints(context, order);
-			order.ReputationReward = ComputeReputation(context, order);
+			order.ReputationReward = ScaleReputation(context, ComputeReputation(context, order));
 		}
 
 		protected abstract int ComputeGold(TradeSkillContext context, OrderContext order);

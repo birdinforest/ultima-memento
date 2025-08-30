@@ -14,11 +14,18 @@ namespace Server.Engines.GlobalShoppe
 			if (gold < 1) return gold;
 			if (order.Resource == CraftResource.RegularLeather) return gold;
 
-			// Increase value of non-basic resource
-
-			return 2 * gold;
+			return (int)(gold * ShoppeOrderConstants.GoldRatios.Tailor);
 		}
 
+		protected override int ComputePoints(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputePoints(context, order) * ShoppeOrderConstants.PointRatios.Tailor);
+		}
+
+		protected override int ComputeReputation(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputeReputation(context, order) * ShoppeOrderConstants.ReputationRatios.Tailor);
+		}
 		protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
 		{
 			return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);

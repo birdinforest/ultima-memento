@@ -26,24 +26,17 @@ namespace Server.Engines.GlobalShoppe
 			if (0 < resourceMultiplier)
 				price = (int)(price * resourceMultiplier);
 
-			// Reduce by arbitrary amount
-			return (int)(price / 2);
+			return (int)(price * ShoppeOrderConstants.GoldRatios.Tinker);
 		}
 
 		protected override int ComputePoints(TradeSkillContext context, TinkerOrderContext order)
 		{
-			// Reduce by arbitrary amount
-			return ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) / 3;
+			return (int)(ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) * ShoppeOrderConstants.PointRatios.Tinker);
 		}
 
 		protected override int ComputeReputation(TradeSkillContext context, TinkerOrderContext order)
 		{
-			// Reduce by arbitrary amount
-			var reward = ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) / 50;
-
-			reward = (int)Math.Max(10, reward - 0.5 * ((double)context.Reputation / ShoppeConstants.MAX_REPUTATION));
-
-			return reward;
+			return (int)(ComputeRewardFromResourceValue(order.MaxAmount, order.RequireExceptional, order.Resource, order.GemType, order.Type) * ShoppeOrderConstants.ReputationRatios.Tinker);
 		}
 
 		protected override CraftItem FindCraftItem(Type type)

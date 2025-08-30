@@ -13,6 +13,21 @@ namespace Server.Engines.GlobalShoppe
 			return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
 		}
 
+		protected override int ComputeGold(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputeGold(context, order) * ShoppeOrderConstants.GoldRatios.Carpentry);
+		}
+
+		protected override int ComputePoints(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputePoints(context, order) * ShoppeOrderConstants.PointRatios.Carpentry);
+		}
+
+		protected override int ComputeReputation(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputeReputation(context, order) * ShoppeOrderConstants.ReputationRatios.Carpentry);
+		}
+
 		protected override CraftItem FindCraftItem(Type type)
 		{
 			var craftItem = DefCarpentry.CraftSystem.CraftItems.SearchFor(type);

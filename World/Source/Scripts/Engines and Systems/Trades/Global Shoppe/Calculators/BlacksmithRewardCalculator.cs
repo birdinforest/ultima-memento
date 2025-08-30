@@ -14,9 +14,17 @@ namespace Server.Engines.GlobalShoppe
 			if (gold < 1) return gold;
 			if (order.Resource == CraftResource.Iron) return gold;
 
-			// Further reduce value for non-basic resource multiplier
+			return (int)(gold * ShoppeOrderConstants.GoldRatios.Blacksmith);
+		}
 
-			return gold / 2;
+		protected override int ComputePoints(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputePoints(context, order) * ShoppeOrderConstants.PointRatios.Blacksmith);
+		}
+
+		protected override int ComputeReputation(TradeSkillContext context, EquipmentOrderContext order)
+		{
+			return (int)(base.ComputeReputation(context, order) * ShoppeOrderConstants.ReputationRatios.Blacksmith);
 		}
 
 		protected override CraftItem FindCraftItem(Type type)
