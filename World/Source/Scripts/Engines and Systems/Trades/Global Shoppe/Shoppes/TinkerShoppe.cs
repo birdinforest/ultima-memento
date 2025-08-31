@@ -119,11 +119,13 @@ namespace Server.Engines.GlobalShoppe
 				var item = Utility.Random(items);
 				if (item == null) yield break;
 
-				var resource = 0 < resources.Count ? Utility.Random(resources) : CraftResource.None;
 				var gemType = BaseTrinket.GetGemType(item);
+				if (gemType == GemType.Pearl && Utility.RandomBool()) gemType = GemType.None; // Reduce likelihood of Pearls
+
 				var amount = gemType == GemType.Pearl
-					? Utility.RandomMinMax(1, 3) // Pearls are very rare
-					: amountBonus + Utility.RandomMinMax(3, 10);
+					? 1 // Pearls are very rare
+					: amountBonus + Utility.RandomMinMax(13, 20);
+				var resource = 0 < resources.Count ? Utility.Random(resources) : CraftResource.None;
 				if (resource == CraftResource.None && gemType == GemType.None) amount += 10; // Pump value by increasing count
 
 				var order = new TinkerOrderContext(item.ItemType)

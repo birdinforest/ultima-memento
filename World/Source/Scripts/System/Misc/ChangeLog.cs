@@ -58,6 +58,9 @@ namespace Server.Misc
 			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 			builder.Append("- Shoppe - Add tooltips to Order rewards to show the per-item value<br>");
 			builder.Append("- Shoppe - Remove Order reputation penalty for declining<br>");
+			builder.Append("- Shoppe - Reduce pearl jewelry tinker order to 1, down from 3<br>");
+			builder.Append("- Shoppe - Reduce likelihood of pearl jewelry tinker order by 50%<br>");
+			builder.Append("- Shoppe - Increase tinker order sizes to 13-20, up from 3-10<br>");
 			builder.Append("- Skill - Stealing cooldown is now 1s, down from 5s<br>");
 			builder.Append("- Spell - AOE damage spells are now reduced to a minimum of 50% damage when hitting more than one target<br>");
 
