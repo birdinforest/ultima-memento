@@ -377,6 +377,10 @@ namespace Server.Engines.Craft
 				if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons)
 				{
 					AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+					if (0 < craftItem.NameNumber)
+						AddTooltip(craftItem.NameNumber);
+					else
+						AddTooltip(craftItem.NameString);
 
 					if ( !needsRecipe )
 					{
@@ -397,6 +401,11 @@ namespace Server.Engines.Craft
 						AddImage( 239, 65+moveDown + (index * 20), 2092 );
 						AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 					}
+
+					if (0 < craftItem.NameNumber)
+						AddTooltip(craftItem.NameNumber);
+					else
+						AddTooltip(craftItem.NameString);
 				}
 
 				if ( craftItem.NameNumber > 0 )

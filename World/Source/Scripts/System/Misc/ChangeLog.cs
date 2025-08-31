@@ -32,6 +32,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Update look of Confirmation gump<br>");
 			builder.Append("- Gump - Update look of Breakdown gump<br>");
 			builder.Append("- Gump - Bulk craft gump can now be closed with right click<br>");
+			builder.Append("- Gump - Add tooltips to the item info button on the crafting gump<br>");
 			builder.Append("- Item - Acidic robe cooldown reduced to 10 minutes (will be reworked in a future update)<br>");
 			builder.Append("- Item - High fame mobs can now drop Champion Skulls<br>");
 			builder.Append("- Item - Lawn tools can now be used indoors<br>");
