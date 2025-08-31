@@ -112,7 +112,7 @@ namespace Server.Engines.GlobalShoppe
 				if (item == null) yield break;
 
 				var resource = 0 < resources.Count && Utility.RandomDouble() < 0.5 ? Utility.Random(resources) : CraftResource.None;
-				var amount = amountBonus + Utility.RandomMinMax(3, 10);
+				var amount = amountBonus + Utility.RandomMinMax(7, 15);
 				if (resource == CraftResource.None) amount += 10; // Pump value by increasing count
 
 				var order = new EquipmentOrderContext(item.ItemType)
