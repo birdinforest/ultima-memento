@@ -114,6 +114,9 @@ namespace Server.Engines.GlobalShoppe
 			// Add quantity bonus for every 5 points over 100
 			var amountBonus = (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
 
+			// Stop with Basic Resources once GM
+			var disallowBasic = 0 < resources.Count && 100 <= from.Skills[craftSystem.MainSkill].Value;
+
 			for (int i = 0; i < count; i++)
 			{
 				var item = Utility.Random(items);
@@ -125,7 +128,7 @@ namespace Server.Engines.GlobalShoppe
 				var amount = gemType == GemType.Pearl
 					? 1 // Pearls are very rare
 					: amountBonus + Utility.RandomMinMax(13, 20);
-				var resource = 0 < resources.Count ? Utility.Random(resources) : CraftResource.None;
+				var resource = disallowBasic || (0 < resources.Count && Utility.RandomDouble() < 0.5) ? Utility.Random(resources) : CraftResource.None;
 				if (resource == CraftResource.None && gemType == GemType.None) amount += 10; // Pump value by increasing count
 
 				var order = new TinkerOrderContext(item.ItemType)

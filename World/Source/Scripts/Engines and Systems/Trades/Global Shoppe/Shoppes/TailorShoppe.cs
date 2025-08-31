@@ -103,12 +103,15 @@ namespace Server.Engines.GlobalShoppe
 			// Add quantity bonus for every 5 points over 100
 			var amountBonus = (int)(Math.Max(0, from.Skills[craftSystem.MainSkill].Value - 100) / 5);
 
+			// Stop with Basic Resources once GM
+			var disallowBasic = 0 < resources.Count && 100 <= from.Skills[craftSystem.MainSkill].Value;
+
 			for (int i = 0; i < count; i++)
 			{
 				var item = Utility.Random(items);
 				if (item == null) yield break;
 
-				var resource = 0 < resources.Count && Utility.RandomDouble() < 0.5 ? Utility.Random(resources) : CraftResource.None;
+				var resource = disallowBasic || (0 < resources.Count && Utility.RandomDouble() < 0.5) ? Utility.Random(resources) : CraftResource.None;
 				var amount = amountBonus + Utility.RandomMinMax(8, 15);
 				if (resource == CraftResource.None) amount += 10; // Pump value by increasing count
 
