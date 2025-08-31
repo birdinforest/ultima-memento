@@ -88,6 +88,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix crash when a magic carpet is drydocked when someone else is in the Lower Deck zone<br>");
 			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Misc - Time Lord is now always invulnerable<br>");
+			builder.Append("- Misc - Fix crash when house no longer has an account owning it<br>");
 			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
 			builder.Append("- Quest - Serpent of Balance quest should be completable again<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
