@@ -89,19 +89,23 @@ namespace Server.Engines.GlobalShoppe
 		private void AddRewardOption(Actions action, RewardType rewardType, int x, int y, int itemId, string amount, string label)
 		{
 			bool IS_SELECTED = m_SelectedReward == rewardType;
+			bool IS_REPUTATION_ACTION = action == Actions.SelectReputation;
 
 			int BOX_WIDTH = 80;
 			int BOX_HEIGHT = 100;
 			int BOX_X = x - (BOX_WIDTH / 2);
 			int BOX_Y = y - 15;
 
-			for (int TILE_Y = 0; TILE_Y < 4; TILE_Y++)
+			if (!IS_REPUTATION_ACTION)
 			{
-				for (int TILE_X = 0; TILE_X < 3; TILE_X++)
+				for (int TILE_Y = 0; TILE_Y < 4; TILE_Y++)
 				{
-					int TILE_POS_X = BOX_X + 2 + (TILE_X * 23);
-					int TILE_POS_Y = BOX_Y + 2 + (TILE_Y * 22);
-					AddButton(TILE_POS_X, TILE_POS_Y, 0x9C, 0x9C, (int)action, GumpButtonType.Reply, 0);
+					for (int TILE_X = 0; TILE_X < 3; TILE_X++)
+					{
+						int TILE_POS_X = BOX_X + 2 + (TILE_X * 23);
+						int TILE_POS_Y = BOX_Y + 2 + (TILE_Y * 22);
+						AddButton(TILE_POS_X, TILE_POS_Y, 0x9C, 0x9C, (int)action, GumpButtonType.Reply, 0);
+					}
 				}
 			}
 
@@ -133,19 +137,20 @@ namespace Server.Engines.GlobalShoppe
 				string.Format("<CENTER>{0}</CENTER>", label),
 				IS_SELECTED ? HtmlColors.WHITE : HtmlColors.BROWN);
 
-
-			//Checkbox must be reversed if IS_SELECTED
-			if (IS_SELECTED)
+			if (!IS_REPUTATION_ACTION)
 			{
-				AddButton(x - 15, ICON_Y + 85, CHECKED_BOX, UNCHECKED_BOX, (int)action, GumpButtonType.Reply, 0);
+				//Checkbox must be reversed if IS_SELECTED
+				if (IS_SELECTED)
+				{
+					AddButton(x - 15, ICON_Y + 85, CHECKED_BOX, UNCHECKED_BOX, (int)action, GumpButtonType.Reply, 0);
+				}
+				else
+				{
+					AddButton(x - 15, ICON_Y + 85, UNCHECKED_BOX, CHECKED_BOX, (int)action, GumpButtonType.Reply, 0);
+				}
+				if (m_SelectedReward != RewardType.None && m_SelectedReward != rewardType)
+					AddAlphaRegion(BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT);
 			}
-			else
-			{
-				AddButton(x - 15, ICON_Y + 85, UNCHECKED_BOX, CHECKED_BOX, (int)action, GumpButtonType.Reply, 0);
-			}
-
-			if (m_SelectedReward != RewardType.None && m_SelectedReward != rewardType)
-				AddAlphaRegion(BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT);
 		}
 
 		public override void OnResponse(NetState sender, RelayInfo info)

@@ -34,9 +34,11 @@ namespace Server.Engines.GlobalShoppe
 					context.Points += order.PointReward;
 					break;
 				case RewardType.Reputation:
-					context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
 					break;
 			}
+
+			// Always give reputation			
+			context.Reputation = Math.Min(ShoppeConstants.MAX_REPUTATION, context.Reputation + order.ReputationReward);
 
 			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
 			context.Orders.Remove(order);
