@@ -57,7 +57,6 @@ namespace Server.Misc
 			builder.Append("- Pets - Beetles now take 2 control slots, down from 3<br>");
 			builder.Append("- Settings - Gold cut rate increased to 35%, up from 25%<br>");
 			builder.Append("- Shoppe - Add tooltips to Order rewards to show the per-item value<br>");
-			builder.Append("- Shoppe - Remove Order reputation penalty for declining<br>");
 			builder.Append("- Shoppe - Reduce pearl jewelry tinker order to 1, down from 3<br>");
 			builder.Append("- Shoppe - Reduce likelihood of pearl jewelry tinker order by 50%<br>");
 			builder.Append("- Shoppe - Increase bowyer order sizes to 8-15, up from 3-10<br>");

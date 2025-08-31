@@ -86,6 +86,7 @@ namespace Server.Engines.GlobalShoppe
 			if (context.Orders.Count <= index) return;
 
 			var order = context.Orders[index];
+            context.Reputation = Math.Max(0, context.Reputation - order.ReputationReward);
 			context.Orders.Remove(order);
 		}
 
