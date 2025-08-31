@@ -43,7 +43,7 @@ namespace Server.Misc
 			string where = "";	
 			string say = QuestCharacters.RandomWords() + " killed them, I just know it.";	
 
-			int rare = Utility.RandomMinMax( 1, 11 );	
+			int rare = Utility.RandomMinMax( 1, 12 );	
 
 			if ( rare == 1 )
 			{
@@ -52,25 +52,6 @@ namespace Server.Misc
 				if ( mob is Exodus )
 				{
 					where = Server.Misc.Worlds.GetRegionName( mob.Map, mob.Location );	
-				}
-			}
-			else if ( rare == 2 )
-			{
-				what = "Jormungandr";	
-				foreach ( Mobile mob in World.Mobiles.Values )
-				if ( mob is Jormungandr )
-				{
-					where = Server.Misc.Worlds.GetRegionName( mob.Map, mob.Location );	
-
-					if ( where == "the Bottle World of Kuldar" ){ 		where = "the waters of the Kuldar Sea"; }
-					else if ( where == "the Land of Ambrosia" ){ 		where = "the waters of the Ambrosia Lakes"; }
-					else if ( where == "the Island of Umber Veil" ){ 	where = "the waters of the Umber Sea"; }
-					else if ( where == "the Land of Lodoria" ){ 		where = "the waters of the Lodoria Ocean"; }
-					else if ( where == "the Underworld" ){ 				where = "the waters of Carthax Lake"; }
-					else if ( where == "the Serpent Island" ){ 			where = "the waters of the Serpent Seas"; }
-					else if ( where == "the Isles of Dread" ){ 			where = "the waters of the Dreadful Sea"; }
-					else if ( where == "the Savaged Empire" ){ 			where = "the waters of the Savage Seas"; }
-					else if ( where == "the Land of Sosaria" ){ 		where = "the waters of the Sosaria Ocean"; }
 				}
 			}
 			else
@@ -99,12 +80,33 @@ namespace Server.Misc
 					}
 					else if ( target is RunesBase )
 					{
-						what = "the Chest of Virtue"; 								where = Server.Misc.Worlds.GetRegionName( target.Map, target.Location );	
+						if ( rare == 12 ){ what = "the Chest of Virtue"; 								where = Server.Misc.Worlds.GetRegionName( target.Map, target.Location ); }
 					}
 				}
 			}
 
-			if ( rare != 2 && where != "" && Utility.RandomBool() ) // CITIZENS LIE HALF THE TIME
+			if ( string.IsNullOrWhiteSpace( where ) ) // Fallback option when the selected item does not exist
+			{
+				// Jormungandr's Relic is not guaranteed to drop
+				
+				what = "Jormungandr";	
+				foreach ( Mobile mob in World.Mobiles.Values )
+				if ( mob is Jormungandr )
+				{
+					where = Server.Misc.Worlds.GetRegionName( mob.Map, mob.Location );	
+
+					if ( where == "the Bottle World of Kuldar" ){ 		where = "the waters of the Kuldar Sea"; }
+					else if ( where == "the Land of Ambrosia" ){ 		where = "the waters of the Ambrosia Lakes"; }
+					else if ( where == "the Island of Umber Veil" ){ 	where = "the waters of the Umber Sea"; }
+					else if ( where == "the Land of Lodoria" ){ 		where = "the waters of the Lodoria Ocean"; }
+					else if ( where == "the Underworld" ){ 				where = "the waters of Carthax Lake"; }
+					else if ( where == "the Serpent Island" ){ 			where = "the waters of the Serpent Seas"; }
+					else if ( where == "the Isles of Dread" ){ 			where = "the waters of the Dreadful Sea"; }
+					else if ( where == "the Savaged Empire" ){ 			where = "the waters of the Savage Seas"; }
+					else if ( where == "the Land of Sosaria" ){ 		where = "the waters of the Sosaria Ocean"; }
+				}
+			}
+			else if ( Utility.RandomBool() ) // CITIZENS LIE HALF THE TIME (not sure why Jorg was previously immune to this)
 			{
 				if ( Utility.RandomBool() ){ where = RandomThings.MadeUpDungeon(); }
 				else { where = QuestCharacters.SomePlace( null ); }

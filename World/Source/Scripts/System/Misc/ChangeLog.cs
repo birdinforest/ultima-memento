@@ -49,6 +49,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Magic Pools can now create multiple stacks of coins when they are over 60k<br>");
 			builder.Append("- Misc - Pedestals now create multiple stacks of coins when they are over 60k<br>");
 			builder.Append("- Misc - Most items are now autostacked in treasure chests<br>");
+			builder.Append("- Misc - Rare rumors have been slightly revised<br>");
 			builder.Append("- Mobs - Players are now immune to peacemaking for 30s after it ends<br>");
 			builder.Append("- Mobs - Reduced health and increased damage of Rotting Corpses<br>");
 			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
@@ -89,6 +90,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Familiars now drop their backpack contents on server restart<br>");
 			builder.Append("- Misc - Time Lord is now always invulnerable<br>");
 			builder.Append("- Misc - Fix crash when house no longer has an account owning it<br>");
+			builder.Append("- Misc - The book of truth can now be rumored about<br>");
 			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
 			builder.Append("- Quest - Serpent of Balance quest should be completable again<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
