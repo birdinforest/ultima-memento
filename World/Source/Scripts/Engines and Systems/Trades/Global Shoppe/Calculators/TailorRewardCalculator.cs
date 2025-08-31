@@ -26,10 +26,6 @@ namespace Server.Engines.GlobalShoppe
 		{
 			return (int)(base.ComputeReputation(context, order) * ShoppeOrderConstants.ReputationRatios.Tailor);
 		}
-		protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
-		{
-			return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
-		}
 
 		protected override CraftItem FindCraftItem(Type type)
 		{

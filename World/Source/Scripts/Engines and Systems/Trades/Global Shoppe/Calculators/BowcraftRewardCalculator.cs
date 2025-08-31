@@ -8,11 +8,6 @@ namespace Server.Engines.GlobalShoppe
 	{
 		public static readonly BowcraftRewardCalculator Instance = new BowcraftRewardCalculator();
 
-		protected override int ComputeRewardFromResourceValue(int quantity, bool exceptional, CraftResource resource, Type type)
-		{
-			return 2 * base.ComputeRewardFromResourceValue(quantity, exceptional, resource, type);
-		}
-
 		protected override int ComputeGold(TradeSkillContext context, EquipmentOrderContext order)
 		{
 			return (int)(base.ComputeGold(context, order) * ShoppeOrderConstants.GoldRatios.Bowyer);

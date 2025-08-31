@@ -66,6 +66,7 @@ namespace Server.Misc
 			builder.Append("- Shoppe - Increase tinker order sizes to 13-20, up from 3-10<br>");
 			builder.Append("- Shoppe - Equipment based orders are never basic resource after reaching 100.0 skill<br>");
 			builder.Append("         - Blacksmith, Bowyer, Carpentry, Tailor, and Tinker<br>");
+			builder.Append("- Shoppe - All Order rewards (Reputation, Gold, and Points) have been rebalanced<br>");
 			builder.Append("- Skill - Stealing cooldown is now 1s, down from 5s<br>");
 			builder.Append("- Spell - AOE damage spells are now reduced to a minimum of 50% damage when hitting more than one target<br>");
 
