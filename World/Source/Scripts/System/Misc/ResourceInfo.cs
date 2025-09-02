@@ -2736,12 +2736,7 @@ namespace Server.Items
 					{
 						AosAttribute_RegenStam = 2,
 						AosAttribute_RegenMana = 2,
-						AosAttribute_BonusStr = 2,
-						AosAttribute_BonusDex = 2,
-						AosAttribute_BonusInt = 2,
 						AosAttribute_SpellDamage = 5,
-						AosAttribute_CastRecovery = 1,
-						AosAttribute_CastSpeed = 1,
 						AosAttribute_LowerManaCost = 10,
 						AosAttribute_LowerRegCost = 10,
 						AosAttribute_NightSight = 1,
