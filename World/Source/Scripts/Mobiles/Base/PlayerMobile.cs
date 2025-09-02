@@ -1346,13 +1346,16 @@ namespace Server.Mobiles
 				strBase = this.Str;	//this.Str already includes GetStatOffset/str
 				strOffs = AosAttributes.GetValue( this, AosAttribute.BonusHits );
 
-				if ( Core.ML && strOffs > 25 && AccessLevel <= AccessLevel.Player )
-					strOffs = 25;
+				// Allow BonusHits to compensate for missing Str, but don't exceed it's cap
+				var value = Math.Min(
+					MyServerSettings.PlayerLevelMod( STAT_CAP, this ) + 25,
+					MyServerSettings.PlayerLevelMod( strBase, this )  + strOffs
+				);
 
 				if ( AnimalForm.UnderTransformation( this, typeof( MysticalFox ) ) || AnimalForm.UnderTransformation( this, typeof( GreyWolf ) ) )
-					strOffs += 20;
+					value += 20;
 
-				return ( MyServerSettings.PlayerLevelMod( strBase, this ) ) + strOffs;
+				return value;
 			}
 		}
 
@@ -1371,13 +1374,15 @@ namespace Server.Mobiles
 
 		#region Stat Getters/Setters
 
+		private const int STAT_CAP = 150; // Max stat cap
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int Str
 		{
 			get
 			{
 				if( Core.ML && this.AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Str, 150 );
+					return Math.Min( base.Str, STAT_CAP );
 
 				return base.Str;
 			}
@@ -1393,7 +1398,7 @@ namespace Server.Mobiles
 			get
 			{
 				if( Core.ML && this.AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Int, 150 );
+					return Math.Min( base.Int, STAT_CAP );
 
 				return base.Int;
 			}
@@ -1409,7 +1414,7 @@ namespace Server.Mobiles
 			get
 			{
 				if( Core.ML && this.AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Dex, 150 );
+					return Math.Min( base.Dex, STAT_CAP );
 
 				return base.Dex;
 			}
