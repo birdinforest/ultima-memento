@@ -17,6 +17,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
+			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Misc - Hit Point Increase attribute is now uncapped, up from 25<br>");
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 
