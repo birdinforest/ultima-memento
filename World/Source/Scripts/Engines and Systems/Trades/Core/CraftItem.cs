@@ -347,7 +347,8 @@ namespace Server.Engines.Craft
 					typeof( BaseHarvestTool ),
 					typeof( FukiyaDarts ), typeof( Shuriken ),
 					typeof( Spellbook ), typeof( Runebook ),
-					typeof( BaseQuiver )
+					typeof( BaseQuiver ),
+					typeof( BaseTrinket )
 				};
 		#endregion
 
@@ -1026,6 +1027,7 @@ namespace Server.Engines.Craft
 			return (item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Exceptional)
 				|| (item is BaseWeapon && ((BaseWeapon)item).Quality == WeaponQuality.Exceptional)
 				|| (item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Exceptional)
+				|| (item is BaseTrinket && ((BaseTrinket)item).Quality == TrinketQuality.Exceptional)
 				|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional);
 		}
 

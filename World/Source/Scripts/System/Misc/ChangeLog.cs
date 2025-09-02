@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.3.0";
+			return "Version: 1.3.1";
 		}
 
 		public static string Versions()
@@ -14,6 +14,13 @@ namespace Server.Misc
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 1.3.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Champs - Rikktor is now much harder<br>");

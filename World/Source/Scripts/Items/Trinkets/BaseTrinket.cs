@@ -1,6 +1,5 @@
 using System;
 using Server.Engines.Craft;
-using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -19,6 +18,13 @@ namespace Server.Items
 		Pearl
 	}
 
+	public enum TrinketQuality
+	{
+		Low,
+		Regular,
+		Exceptional
+	}
+
 	public abstract class BaseTrinket : Item, ICraftable
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Jewelry; } }
@@ -26,8 +32,10 @@ namespace Server.Items
 
 		private int m_MaxHitPoints;
 		private int m_HitPoints;
+		private TrinketQuality m_Quality;
 
 		private AosAttributes m_AosAttributes;
+		private AosArmorAttributes m_AosArmorAttributes;
 		private AosElementAttributes m_AosResistances;
 		private AosSkillBonuses m_AosSkillBonuses;
 
@@ -39,6 +47,13 @@ namespace Server.Items
 		public override void CastEnchantment( Mobile from )
 		{
 			Server.Items.SpellItems.CastEnchantment( from, this );
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TrinketQuality Quality
+		{
+			get{ return m_Quality; }
+			set{ UnscaleDurability(); m_Quality = value; ScaleDurability(); InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -206,6 +221,7 @@ namespace Server.Items
 			jewel.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
 			jewel.m_AosResistances = new AosElementAttributes( newItem, m_AosResistances );
 			jewel.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
+			jewel.m_AosArmorAttributes = new AosArmorAttributes( newItem, m_AosArmorAttributes );
 		}
 
 		protected void ResetAllAttributes()
@@ -213,6 +229,7 @@ namespace Server.Items
 			m_AosAttributes = new AosAttributes(this);
 			m_AosResistances = new AosElementAttributes(this);
 			m_AosSkillBonuses = new AosSkillBonuses(this);
+			m_AosArmorAttributes = new AosArmorAttributes(this);
 		}
 
 		public virtual int ArtifactRarity{ get{ return 0; } }
@@ -226,6 +243,7 @@ namespace Server.Items
 			m_AosAttributes = new AosAttributes( this );
 			m_AosResistances = new AosElementAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
+			m_AosArmorAttributes = new AosArmorAttributes( this );
 			m_GemType = GemType.None;
 
 			Layer = layer;
@@ -314,12 +332,22 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
-			if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
-				list.Add( 1053099, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // ~1_oretype~ ~2_armortype~
-			else if ( Name == null )
-				list.Add( LabelNumber );
+			if ( m_Quality == TrinketQuality.Exceptional )
+			{
+				if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
+					list.Add( 1053100, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // exceptional ~1_oretype~ ~2_armortype~
+				else
+					list.Add( 1050040, GetNameString() ); // exceptional ~1_ITEMNAME~
+			}
 			else
-				list.Add( Name );
+			{
+				if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
+					list.Add( 1053099, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // ~1_oretype~ ~2_armortype~
+				else if ( Name == null )
+					list.Add( LabelNumber );
+				else
+					list.Add( Name );
+			}
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -422,12 +450,34 @@ namespace Server.Items
 				list.Add( 1060639, "{0}\t{1}", m_HitPoints, m_MaxHitPoints ); // durability ~1_val~ / ~2_val~
 		}
 
+		public void UnscaleDurability()
+		{
+			int scale = 100 + m_AosArmorAttributes.DurabilityBonus;
+
+			m_HitPoints = ( ( m_HitPoints * 100 ) + ( scale - 1 ) ) / scale;
+			m_MaxHitPoints = ( ( m_MaxHitPoints * 100 ) + ( scale - 1 ) ) / scale;
+
+			InvalidateProperties();
+		}
+
+		public void ScaleDurability()
+		{
+			int scale = 100 + m_AosArmorAttributes.DurabilityBonus;
+
+			m_HitPoints = ( ( m_HitPoints * scale ) + 99 ) / 100;
+			m_MaxHitPoints = ( ( m_MaxHitPoints * scale ) + 99 ) / 100;
+
+			InvalidateProperties();
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 4 ); // version
+			writer.Write( (int)5 ); // version
 
+			m_AosArmorAttributes.Serialize( writer );
+			writer.WriteEncodedInt( (int) m_Quality );
 			writer.WriteEncodedInt( (int) m_MaxHitPoints );
 			writer.WriteEncodedInt( (int) m_HitPoints );
 
@@ -446,8 +496,19 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 5:
 				case 4:
 				{
+					if (version < 5)
+					{
+						 m_AosArmorAttributes = new AosArmorAttributes( this );
+						 Quality = TrinketQuality.Regular;
+					}
+					else
+					{
+						 m_AosArmorAttributes = new AosArmorAttributes( this, reader );
+						 Quality = (TrinketQuality)reader.ReadEncodedInt();
+					}
 					goto case 3;
 				}
 				case 3:
@@ -533,6 +594,8 @@ namespace Server.Items
 
 		public int OnCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
+			Quality = (TrinketQuality)quality;
+
 			Type resourceType = typeRes;
 
 			if ( resourceType == null )
@@ -544,6 +607,9 @@ namespace Server.Items
 
 			if ( context != null && context.DoNotColor )
 				Hue = 0;
+
+			if ( tool is BaseRunicTool )
+				Resource = ((BaseRunicTool)tool).Resource;
 
 			GemType = GetGemType(craftItem);
 
