@@ -24,6 +24,10 @@ namespace Server.Misc
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 			builder.Append("- Pets - The subdue mechanic is now only required at the start of taming<br>");
 
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Misc - Prevent access to moat in Caverns of Poseidon<br>");
+
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			builder.Append("Version: 1.3.0<br>");
