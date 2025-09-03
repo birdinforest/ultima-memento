@@ -115,7 +115,7 @@ namespace Server.Engines.Harvest
             return region.Name ?? Misc.Worlds.GetRegionName(map, point) ?? RichVeinEngine.UNKNOWN_REGION_NAME;
         }
 
-        private static bool HasEmptyNeighbor(Map map, int x, int y)
+        public static IEnumerable<Point2D> GetEmptyNeighbors(Map map, int x, int y)
         {
             for (var left = -1; left <= 1; left++)
             {
@@ -130,11 +130,14 @@ namespace Server.Engines.Harvest
                     if (testX < 0 || testY < 0 || testX >= map.Width || testY >= map.Height) continue;
 
                     var adjacentTile = map.Tiles.GetLandTile(testX, testY);
-                    if (!IsImpassable(adjacentTile, map, testX, testY)) return true;
+                    if (!IsImpassable(adjacentTile, map, testX, testY)) yield return new Point2D(testX, testY);
                 }
             }
+        }
 
-            return false;
+        private static bool HasEmptyNeighbor(Map map, int x, int y)
+        {
+            return GetEmptyNeighbors(map, x, y).Any();
         }
 
         private static bool IsImpassable(LandTile landTile, Map map, int x, int y)
