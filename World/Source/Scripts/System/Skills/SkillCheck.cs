@@ -7,6 +7,7 @@ namespace Server.Misc
 {
 	public class SkillCheck
 	{
+		public static bool DisableSkillGains = false;
 		private static readonly bool AntiMacroCode = MyServerSettings.NoMacroing();		// Change this to false to disable anti-macro code
 		public static TimeSpan AntiMacroExpire = TimeSpan.FromMinutes( 5.0 ); 			// How long do we remember targets/locations?
 		public const int Allowance = 3;													// How many times may we use the same location/target for gain
@@ -181,17 +182,9 @@ namespace Server.Misc
 					gc *= 0.38;
 			}
 			
-			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
+			if ( from.Alive && !DisableSkillGains && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
 			{
-				// CAN ONLY GAIN SEAFARING SKILL ON A BOAT AFTER REACHING 50
-				if ( !Worlds.IsOnBoat( from ) && skill.SkillName == SkillName.Seafaring && from.Skills[SkillName.Seafaring].Base >= 50 )
-				{
-					from.SendMessage("You would get better at seafaring if you fished from a boat.");
-				}
-				else
-				{
-					Gain( from, skill );
-				}
+				Gain( from, skill );
 			}
 
 			return success;

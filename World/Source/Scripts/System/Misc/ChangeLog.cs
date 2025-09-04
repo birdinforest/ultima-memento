@@ -23,6 +23,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Hit Point Increase attribute is now uncapped, up from 25<br>");
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 			builder.Append("- Pets - The subdue mechanic is now only required at the start of taming<br>");
+			builder.Append("- Skill - Alternative Seafaring tasks can now provide gains up to 125 skill, up from 50<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

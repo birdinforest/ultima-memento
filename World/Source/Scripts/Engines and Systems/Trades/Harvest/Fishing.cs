@@ -106,6 +106,19 @@ namespace Server.Engines.Harvest
 			#endregion
 		}
 
+		public override void FinishHarvesting(Mobile from, Item tool, HarvestDefinition def, object toHarvest, object locked)
+		{
+			// Fishing is limited to 50 skill on land
+			if ( from.Skills[SkillName.Seafaring].Base >= 50 && !Worlds.IsOnBoat( from ) )
+			{
+				from.SendMessage("You would get better at seafaring if you fished from a boat.");
+				SkillCheck.DisableSkillGains = true;
+			}
+
+			base.FinishHarvesting(from, tool, def, toHarvest, locked);
+			SkillCheck.DisableSkillGains = false;
+		}
+
 		public override void OnConcurrentHarvest( Mobile from, Item tool, HarvestDefinition def, object toHarvest )
 		{
 			from.SendLocalizedMessage( 500972 ); // You are already fishing.
