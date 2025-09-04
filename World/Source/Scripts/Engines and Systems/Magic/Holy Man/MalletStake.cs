@@ -1,16 +1,8 @@
-using System;
-using Server; 
-using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Misc;
-using Server.Network;
-using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Commands;
-using System.Globalization;
-using Server.Regions;
 using Server.Targeting;
 
 namespace Server.Items
@@ -33,8 +25,8 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Double Click For Information");
-            list.Add( 1049644, "Single Click To Use");
+			list.Add( 1070722, "Single Click For Information");
+            list.Add( 1049644, "Double Click To Use");
         }
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
@@ -54,7 +46,7 @@ namespace Server.Items
 			private Mobile m_Mobile;
 			private MalletStake m_Stake;
 			
-			public StakeGump( Mobile from, MalletStake stake ) : base( 6132, 3 )
+			public StakeGump( Mobile from, MalletStake stake ) : base( 6096, 3 ) // Examine
 			{
 				m_Mobile = from;
 				m_Stake = stake;
@@ -62,27 +54,23 @@ namespace Server.Items
 
 			public override void OnClick()
 			{
-			    if( !( m_Mobile is PlayerMobile ) )
-				return;
+			    if( false == ( m_Mobile is PlayerMobile ) ) return;
 
-				if ( m_Stake.VampiresSlain >= 10000 )
-				{
-					m_Mobile.SendMessage("This has killed enough vampires.");
-					return;
-				}
-				
-				PlayerMobile mobile = (PlayerMobile) m_Mobile;
-				{
-					m_Mobile.SendMessage("What vampire do you want to stake?");
-					m_Mobile.Target = new CorpseTarget( m_Stake );
-				}
+				m_Mobile.SendMessage("Current Value: " + m_Stake.VampiresSlain + " Gold!");
+				m_Mobile.SendGump(new SpeechGump( m_Mobile, "The Vampire Scourge", SpeechFunctions.SpeechText( m_Mobile, m_Mobile, "Stake" ) ));
             }
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage("Vampire Reward: " + VampiresSlain + " Gold!");
-			from.SendGump(new SpeechGump( from, "The Vampire Scourge", SpeechFunctions.SpeechText( from, from, "Stake" ) ));
+			if ( VampiresSlain >= 10000 )
+			{
+				from.SendMessage("This has killed enough vampires.");
+				return;
+			}
+			
+			from.SendMessage("What vampire do you want to stake?");
+			from.Target = new CorpseTarget( this );
 		}
 
 		private class CorpseTarget : Target
@@ -123,9 +111,10 @@ namespace Server.Items
 
 						if ( score > 0 )
 						{
-							m_Stake.VampiresSlain = m_Stake.VampiresSlain + score;
-								if ( m_Stake.VampiresSlain > 10000 ){ m_Stake.VampiresSlain = 10000; }
-							from.SendMessage("Vampire Reward: " + m_Stake.VampiresSlain + " Gold!");
+							const int MAX_VAMPIRES_SLAIN = 10000;
+							score = m_Stake.VampiresSlain + score > MAX_VAMPIRES_SLAIN ? MAX_VAMPIRES_SLAIN - m_Stake.VampiresSlain : score;
+							m_Stake.VampiresSlain += score;
+							from.SendMessage("Vampire Reward: " + score + " Gold!");
 							c.VisitedByTaxidermist = true;
 							from.PlaySound( 0x13E );
 							m_Stake.InvalidateProperties();
