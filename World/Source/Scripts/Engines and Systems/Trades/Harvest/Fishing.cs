@@ -84,7 +84,7 @@ namespace Server.Engines.Harvest
 
 			res = new HarvestResource[]
 				{
-					new HarvestResource( 00.0, 00.0, 100.0, 1043297, typeof( Fish ) )
+					new HarvestResource( 00.0, 00.0, 125.0, 1043297, typeof( Fish ) )
 				};
 
 			veins = new HarvestVein[]
