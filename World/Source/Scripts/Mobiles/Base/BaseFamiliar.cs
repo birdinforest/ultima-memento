@@ -61,7 +61,7 @@ namespace Server.Mobiles
 					ControlOrder = OrderType.Follow;
 				}
 			}
-			else if ( ControlTarget != toAttack || ControlOrder != OrderType.Attack )
+			else if ( !Blessed && ( ControlTarget != toAttack || ControlOrder != OrderType.Attack ) )
 			{
 				ControlTarget = toAttack;
 				ControlOrder = OrderType.Attack;
