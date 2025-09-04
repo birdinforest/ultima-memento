@@ -17,6 +17,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
+			builder.Append("- Craft - Bulk crafting now dictates Successes rather than Attempts<br>");
 			builder.Append("- Gather - Removed several unreachable 'Glistening Ore Vein'<br>");
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Item - Pearl gemstone bonus no longer provides +1 FC, +1 FCR, and +2 all stats<br>");

@@ -29,7 +29,7 @@ namespace Server.Engines.Craft
 			if (!m_Context.Paused && m_CraftItem.Craft(Player, m_CraftSystem, m_TypeRes, m_Tool, m_Context))
 				Player.EndAction(typeof(CraftSystem));
 
-			bool isComplete = m_Context.Amount <= m_Context.Current;
+			bool isComplete = m_Context.Amount <= m_Context.Success;
 			if (isComplete) // Session has completed
 				Stop();
 			else if (m_Tool == null || m_Tool.Parent != Player)

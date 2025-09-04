@@ -1,3 +1,4 @@
+using System;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Network;
@@ -29,8 +30,9 @@ namespace Server.Engines.Craft
 			y += 20;
 
 			// Add progress bar
-			AddImageTiled(x, y, 95, 9, 9750); // Gray progress
-			var step = 95.0 / context.Amount;
+			const int PROGRESS_WIDTH = 96;
+			AddImageTiled(x, y, PROGRESS_WIDTH, 9, 9750); // Gray progress
+			var step = (double)PROGRESS_WIDTH / Math.Max(context.Amount, context.Fail + context.Success);
 			AddProgressBar(x, y, context.Fail + context.Success, step, true);
 			AddProgressBar(x, y, context.Fail, step, false);
 			y += 20;
