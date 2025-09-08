@@ -75,10 +75,6 @@ namespace Server.Mobiles
 
 	public class PlayerMobile : Mobile
 	{
-		private Timer Craft_Msg_Timer;
-		private Timer Craft_Snd_Timer;
-		private Timer Craft_Aft_Timer;
-
 		public bool WarnedSkaraBrae;
 		public bool WarnedBottleCity;
 
