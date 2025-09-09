@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Bulk crafting now dictates Successes rather than Attempts<br>");
 			builder.Append("- Gather - Removed several unreachable 'Glistening Ore Vein'<br>");
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
+			builder.Append("- Gump - Risky refactor to Help gump plumbing<br>");
 			builder.Append("- Item - Pearl gemstone bonus no longer provides +1 FC, +1 FCR, and +2 all stats<br>");
 			builder.Append("- Item - Mallet Stake single and double click actions have been swapped<br>");
 			builder.Append("- Misc - Self-res delay reduced to 10 seconds, down from 30 seconds<br>");
