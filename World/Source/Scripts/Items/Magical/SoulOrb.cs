@@ -16,7 +16,7 @@ namespace Server.Items
 
     public class SoulOrb : Item
     {
-		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 30 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }
+		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 10 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }
 
         private Mobile m_Owner;
 
@@ -31,7 +31,7 @@ namespace Server.Items
 		public SoulOrbType OrbType { get; private set; }
 
         private Timer m_Timer;
-        private static TimeSpan m_Delay = TimeSpan.FromSeconds( 30.0 ); /*TimeSpan.Zero*/
+        private static TimeSpan m_Delay = TimeSpan.FromSeconds( 10.0 );
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan Delay { get { return m_Delay; } set { m_Delay = value; } }
