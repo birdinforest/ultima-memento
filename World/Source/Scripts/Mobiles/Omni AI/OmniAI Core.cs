@@ -31,6 +31,8 @@ namespace Server.Mobiles
 {
 	public partial class OmniAI : BaseAI
 	{
+		public bool IsEmpowered = false;
+
 		private static TimeSpan TELEPORT_DELAY = TimeSpan.FromSeconds( 4 );
 		public static int MAX_TELEPORT_ATTEMPTS = 3;
 
