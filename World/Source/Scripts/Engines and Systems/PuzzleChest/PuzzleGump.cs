@@ -15,7 +15,7 @@ namespace Server.Engines.PuzzleChest
 		private enum ActionButtonType
 		{
 			Submit = 1,
-			ClearSelected = 2,
+			ResetGuess = 2,
 
 			Cylinder_None,
 			Cylinder_LightBlue,
@@ -107,9 +107,12 @@ namespace Server.Engines.PuzzleChest
 			var RIGHT_BUTTON_X = GUMP_WIDTH - 85;
 			y = GUMP_HEIGHT - 33;
 
-			// Clear selected button
-			AddButton(HALF_SECTION_INDENT, y, 0xFB1, 0xFB1, (int)ActionButtonType.ClearSelected, GumpButtonType.Reply, 0); // X
-			TextDefinition.AddHtmlText(this, HALF_SECTION_INDENT + 33, y + 3, 100, 20, "Clear selected", HtmlColors.WHITE);
+			if (lastGuess != null)
+			{
+				// Reset button
+				AddButton(HALF_SECTION_INDENT, y, 0xFB1, 0xFB1, (int)ActionButtonType.ResetGuess, GumpButtonType.Reply, 0); // X
+				TextDefinition.AddHtmlText(this, HALF_SECTION_INDENT + 33, y + 3, 100, 20, "Reset", HtmlColors.WHITE);
+			}
 
 			// Submit button
 			AddButton(RIGHT_BUTTON_X, y, 0xFA5, 0xFA7, (int)ActionButtonType.Submit, GumpButtonType.Reply, 0); // Right arrow
@@ -135,17 +138,28 @@ namespace Server.Engines.PuzzleChest
 			{
 				case ActionButtonType.Submit:
 					{
-						m_Chest.SubmitSolution(m_From, m_Solution);
-
-						if (!m_Chest.IsSolved && m_From.Alive)
+						// In case they just submitted this solution
+						int cylinders, colors;
+						if (!m_Solution.Matches(m_Chest.GetLastGuess(m_From), out cylinders, out colors))
 						{
-							m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, GetDefaultSelectedPedestalState()));
+							m_Chest.SubmitSolution(m_From, m_Solution);
+							if (m_Chest.IsSolved || !m_From.Alive) return;
 						}
+
+						m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, GetDefaultSelectedPedestalState()));
 						break;
 					}
 
-				case ActionButtonType.ClearSelected:
+				case ActionButtonType.ResetGuess:
 					{
+						var lastGuess = m_Chest.GetLastGuess(m_From);
+						if (lastGuess == null) return;
+
+						for (var i = 0; i < lastGuess.Cylinders.Length; i++)
+						{
+							m_Solution.Cylinders[i] = lastGuess.Cylinders[i];
+						}
+
 						m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, GetDefaultSelectedPedestalState()));
 						break;
 					}
@@ -182,7 +196,7 @@ namespace Server.Engines.PuzzleChest
 							m_Solution.Cylinders[i] = cylinder;
 						}
 
-						m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, m_SelectedPedestalState));
+						m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, GetDefaultSelectedPedestalState()));
 					}
 					break;
 

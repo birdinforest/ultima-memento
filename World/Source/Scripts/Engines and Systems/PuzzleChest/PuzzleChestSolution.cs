@@ -98,6 +98,7 @@ namespace Server.Engines.PuzzleChest
 		{
 			cylinders = 0;
 			colors = 0;
+			if (solution == null) return false;
 
 			var matchesSrc = new bool[solution.Cylinders.Length];
 			var matchesDst = new bool[solution.Cylinders.Length];
