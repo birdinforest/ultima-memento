@@ -229,25 +229,22 @@ namespace Server.Items
 
 		public override void OnComponentUsed( AddonComponent ac, Mobile from )
 		{
-			if ( from.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null && !from.Blessed && from.InRange( GetWorldLocation(), 2 ) )
-			{
-				MuseumBook.FoundItem( from, 2 );
-			}
-
-			if ( from.Backpack.FindItemByType( typeof ( QuestTome ) ) != null && !from.Blessed && from.InRange( GetWorldLocation(), 2 ) )
-			{
-				QuestTome.FoundItem( from, 2, null );
-			}
-
 			if ( from.Blessed )
 			{
 				from.SendMessage( "You cannot open that while in this state." );
+				return;
 			}
-			else if ( !from.InRange( GetWorldLocation(), 2 ) )
+
+			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
 				from.SendMessage( "You will have to get closer to try and steal the item." );
+				return;
 			}
-			else if ( m_Tries > 5 )
+			
+			MuseumBook.FoundItem( from, 2 );
+			QuestTome.FoundItem( from, 2, null );
+
+			if ( m_Tries > 5 )
 			{
 				Item Pedul = new StealBaseEmpty();
 				Pedul.ItemID = PedType;
@@ -299,97 +296,93 @@ namespace Server.Items
 			else if ( from.CheckSkill( SkillName.Stealing, 0, 125 ) )
 			{
 				m_Tries++;
-				bool TakeBox = true;
-
-				if ( from.Backpack.FindItemByType( typeof ( ThiefNote ) ) != null )
+				var envelope = from.Backpack.FindItemByType( typeof ( ThiefNote ) ) as ThiefNote;
+				if ( envelope != null && envelope.NoteOwner == from )
 				{
-					Item mail = from.Backpack.FindItemByType( typeof ( ThiefNote ) );
-					ThiefNote envelope = (ThiefNote)mail;
 
-					if ( envelope.NoteOwner == from )
+					if ( envelope.NoteItemArea == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && envelope.NoteItemGot == 0 )
 					{
-						if ( envelope.NoteItemArea == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && envelope.NoteItemGot == 0 )
-						{
-							envelope.NoteItemGot = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + envelope.NoteItem + ".");
-							from.SendSound( 0x3D );
-							from.CloseGump( typeof( Server.Items.ThiefNote.NoteGump ) );
-							envelope.InvalidateProperties();
-							TakeBox = false;
-						}
+						envelope.NoteItemGot = 1;
+						from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + envelope.NoteItem + ".");
+						from.SendSound( 0x3D );
+						from.CloseGump( typeof( Server.Items.ThiefNote.NoteGump ) );
+						envelope.InvalidateProperties();
+						return;
 					}
 				}
 
-				if ( TakeBox )
-				{
-					bool good = false;
-
-					if ( from.StolenBoxTime > 32 )
-						from.StolenBoxTime = 0;
-
-					if ( from.StolenBoxTime < DateTime.Now.Day )
-					{
-						good = true;
-						from.StolenBoxTime = DateTime.Now.Day + 2;
-					}
-
-					if ( !MySettings.S_PedStealThrottle )
-						good = true;
-
-					if ( BoxType == 1 )
-					{
-						Item Bags = new StealMetalBox();
-						StealMetalBox bag = (StealMetalBox)Bags;
-						bag.BoxColor = BoxColor;
-						bag.Hue = BoxColor;
-						bag.Name = BoxOrigin;
-						bag.BoxName = BoxOrigin;
-						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
-						from.AddToBackpack( bag );
-						if ( !good )
-							bag.Weight = 10.0;
-					}
-					else if ( BoxType == 2 )
-					{
-						Item Bags = new StealBox();
-						StealBox bag = (StealBox)Bags;
-						bag.BoxColor = BoxColor;
-						bag.Hue = BoxColor;
-						bag.Name = BoxOrigin;
-						bag.BoxName = BoxOrigin;
-						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
-						from.AddToBackpack( bag );
-					}
-					else
-					{
-						Item Bags = new StealBag();
-						StealBag bag = (StealBag)Bags;
-						bag.BagColor = BoxColor;
-						bag.Hue = BoxColor;
-						bag.Name = BoxOrigin;
-						bag.BagName = BoxOrigin;
-						bag.BagMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
-						from.AddToBackpack( bag );
-
-					}
-					Item Pedul = new StealBaseEmpty();
-					Pedul.ItemID = PedType;
-					Pedul.MoveToWorld (new Point3D(this.X, this.Y, this.Z), this.Map);
-					from.SendMessage( "Your nimble fingers manage to steal the item." );
-					LoggingFunctions.LogStandard( from, "has stolen an item from a pedestal." );
-
-					this.Delete();
-				}
+				Take(from);
+				from.SendMessage( "Your nimble fingers manage to steal the item." );
+				LoggingFunctions.LogStandard( from, "has stolen an item from a pedestal." );
 			}
 			else
 			{
 				m_Tries++;
 				from.SendMessage( "You fail to steal the item." );
 			}
+		}
 
+		public void Take(Mobile from)
+		{
+			bool good = false;
+
+			if ( from.StolenBoxTime > 32 )
+				from.StolenBoxTime = 0;
+
+			if ( from.StolenBoxTime < DateTime.Now.Day )
+			{
+				good = true;
+				from.StolenBoxTime = DateTime.Now.Day + 2;
+			}
+
+			if ( !MySettings.S_PedStealThrottle )
+				good = true;
+
+			if ( BoxType == 1 )
+			{
+				Item Bags = new StealMetalBox();
+				StealMetalBox bag = (StealMetalBox)Bags;
+				bag.BoxColor = BoxColor;
+				bag.Hue = BoxColor;
+				bag.Name = BoxOrigin;
+				bag.BoxName = BoxOrigin;
+				bag.BoxMarkings = BoxCarving;
+				FillMeUp( bag, from, good );
+				from.AddToBackpack( bag );
+				if ( !good )
+					bag.Weight = 10.0;
+			}
+			else if ( BoxType == 2 )
+			{
+				Item Bags = new StealBox();
+				StealBox bag = (StealBox)Bags;
+				bag.BoxColor = BoxColor;
+				bag.Hue = BoxColor;
+				bag.Name = BoxOrigin;
+				bag.BoxName = BoxOrigin;
+				bag.BoxMarkings = BoxCarving;
+				FillMeUp( bag, from, good );
+				from.AddToBackpack( bag );
+			}
+			else
+			{
+				Item Bags = new StealBag();
+				StealBag bag = (StealBag)Bags;
+				bag.BagColor = BoxColor;
+				bag.Hue = BoxColor;
+				bag.Name = BoxOrigin;
+				bag.BagName = BoxOrigin;
+				bag.BagMarkings = BoxCarving;
+				FillMeUp( bag, from, good );
+				from.AddToBackpack( bag );
+
+			}
+
+			Item Pedul = new StealBaseEmpty();
+			Pedul.ItemID = PedType;
+			Pedul.MoveToWorld (new Point3D(X, Y, Z), Map);
+
+			Delete();
 		}
 
 		public override void Serialize( GenericWriter writer )

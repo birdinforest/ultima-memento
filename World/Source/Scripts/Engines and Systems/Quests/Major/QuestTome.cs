@@ -560,8 +560,8 @@ namespace Server.Items
 
 		public static bool FoundItem( Mobile player, int type, MajorItemOnCorpse chest )
 		{
-			Item item = player.Backpack.FindItemByType( typeof ( QuestTome ) );
-			QuestTome book = (QuestTome)item;
+			QuestTome book = player.Backpack.FindItemByType( typeof ( QuestTome ) ) as QuestTome;
+			if (book == null) return false;
 
 			if ( type == book.QuestTomeType && book.QuestTomeDungeon == Server.Misc.Worlds.GetRegionName( player.Map, player.Location ) && book.QuestTomeOwner == player && book.QuestTomeGoals < 3 )
 			{

@@ -181,8 +181,8 @@ namespace Server.Items
 
 		public static bool FoundItem( Mobile player, int type )
 		{
-			Item item = player.Backpack.FindItemByType( typeof ( MuseumBook ) );
-			MuseumBook book = (MuseumBook)item;
+			MuseumBook book = player.Backpack.FindItemByType( typeof ( MuseumBook ) ) as MuseumBook;
+			if (book == null) return false;
 
 			if ( type == book.RumorGoal && book.RumorDungeon == Server.Misc.Worlds.GetRegionName( player.Map, player.Location ) && book.ArtOwner == player && GetNext( book ) < 100 )
 			{
