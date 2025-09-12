@@ -24,6 +24,13 @@ namespace Server.Temptation
 			set { SetFlag(TemptationFlags.Deathwish, value); }
 		}
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool IsBerserk
+		{
+			get { return GetFlag(TemptationFlags.I_can_take_it); }
+			set { SetFlag(TemptationFlags.I_can_take_it, value); }
+		}
+
 		public void Serialize(GenericWriter writer)
 		{
 			writer.Write(0); // version

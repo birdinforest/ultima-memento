@@ -138,6 +138,18 @@ namespace Server
 				// 	totalDamage += totalDamage * quiver.DamageIncrease / 100;
 			}
 
+			if (m is PlayerMobile) // Defender
+			{
+				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(m);
+				if (context.IsBerserk) totalDamage += (int)(0.2 * totalDamage);
+			}
+
+			if (from is PlayerMobile) // Attacker
+			{
+				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(from);
+				if (context.IsBerserk) totalDamage += (int)(0.1 * totalDamage);
+			}
+
 			#region Dragon Barding
 			if( (from == null || !from.Player) && m.Player && m.Mount is SwampDragon )
 			{
