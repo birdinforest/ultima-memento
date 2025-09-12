@@ -90,12 +90,15 @@ namespace Server.Temptation
 
 			switch ((ActionButtonType)info.ButtonID)
 			{
+				case ActionButtonType.Deathwish:
+					m_Context.HasPermanentDeath = !m_Context.HasPermanentDeath;
+					break;
+
 				case ActionButtonType.I_can_take_it:
 				case ActionButtonType.Strongest_Avenger:
 				case ActionButtonType.Famine:
 				case ActionButtonType.Puzzle_master:
 				case ActionButtonType.This_is_just_a_tribute:
-				case ActionButtonType.Deathwish:
 				case ActionButtonType.Close:
 				default:
 					return;

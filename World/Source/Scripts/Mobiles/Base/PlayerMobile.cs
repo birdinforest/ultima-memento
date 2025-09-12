@@ -2280,6 +2280,13 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(this);
+			if (context.HasPermanentDeath)
+			{
+				SendMessage("We warned you it was dangerous. You cannot be resurrected.");
+				return;
+			}
+
 			bool wasAlive = this.Alive;
 
 			base.Resurrect();

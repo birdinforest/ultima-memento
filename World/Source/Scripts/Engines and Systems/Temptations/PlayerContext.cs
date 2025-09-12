@@ -17,6 +17,13 @@ namespace Server.Temptation
 
 		public TemptationFlags Flags { get; set; }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool HasPermanentDeath
+		{
+			get { return GetFlag(TemptationFlags.Deathwish); }
+			set { SetFlag(TemptationFlags.Deathwish, value); }
+		}
+
 		public void Serialize(GenericWriter writer)
 		{
 			writer.Write(0); // version
