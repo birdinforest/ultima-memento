@@ -1,16 +1,10 @@
-using System;
-using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
-using Server;
 using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Commands;
-using System.Net;
-using System.Diagnostics;
 using Server.Accounting;
 
 namespace Server.Mobiles
@@ -163,50 +157,30 @@ namespace Server.Gumps
 	{
 		public bool visitLodor( Mobile from )
 		{
-			bool visited = false;
-
 			Account a = from.Account as Account;
-
-			if ( a == null )
-				return false;
-
-			int index = 0;
+			if ( a == null ) return false;
 
 			for ( int i = 0; i < a.Length; ++i )
 			{
 				Mobile m = a[i];
-
-				if ( m != null )
-				{
-					if ( PlayerSettings.GetDiscovered( m, Land.Lodoria ) ){ visited = true; }
-				}
-				++index;
+				if ( m != null && PlayerSettings.GetDiscovered( m, Land.Lodoria ) ) return true;
 			}
-			return visited;
+
+			return false;
 		}
 
 		public bool visitSavage( Mobile from )
 		{
-			bool visited = false;
-
 			Account a = from.Account as Account;
-
-			if ( a == null )
-				return false;
-
-			int index = 0;
+			if ( a == null ) return false;
 
 			for ( int i = 0; i < a.Length; ++i )
 			{
 				Mobile m = a[i];
-
-				if ( m != null )
-				{
-					if ( PlayerSettings.GetDiscovered( m, Land.Savaged ) ){ visited = true; }
-				}
-				++index;
+				if ( m != null && PlayerSettings.GetDiscovered( m, Land.Savaged ) ) return true;
 			}
-			return visited;
+
+			return false;
 		}
 
 		public int pageShow( Mobile from, int page, bool forward )
@@ -318,76 +292,74 @@ namespace Server.Gumps
 
 		public int cardGraphic( int page, int creature )
 		{
-			int val = 0;
-
 			if ( creature > 0 )
 			{
 				switch ( page )
 				{
-					case 1: val = 1340; break;
-					case 2: val = 1341; break;
-					case 3: val = 1342; break;
-					case 4: val = 1343; break;
+					case 1: return 1340;
+					case 2: return 1341;
+					case 3: return 1342;
+					case 4: return 1343;
 				}
 			}
 			else 
 			{
 				switch ( page )
 				{
-					case 1: val = 1106; break;
-					case 2: val = 1105; break;
-					case 3: val = 1110; break;
-					case 4: val = 1122; break;
-					case 5: val = 1116; break;
-					case 6: val = 1108; break;
-					case 7: val = 1104; break;
-					case 8: val = 1120; break;
-					case 9: val = 1109; break;
-					case 10: val = 1111; break;
-					case 11: val = 1112; break;
-					case 12: val = 1119; break;
-					case 13: val = 1118; break;
+					case 1: return 1106;
+					case 2: return 1105;
+					case 3: return 1110;
+					case 4: return 1122;
+					case 5: return 1116;
+					case 6: return 1108;
+					case 7: return 1104;
+					case 8: return 1120;
+					case 9: return 1109;
+					case 10: return 1111;
+					case 11: return 1112;
+					case 12: return 1119;
+					case 13: return 1118;
 				}
 			}
-			return val;
+
+			return 0;
 		}
 
 		public bool scrollBar( int page, int creature )
 		{
-			bool scroll = false;
-
 			if ( creature > 0 )
 			{
+				if ( Server.Items.BaseRace.GetUndead( creature ) ) return true;
+
 				switch ( page )
 				{
-					case 1: scroll = false; break;
-					case 2: scroll = true; break;
-					case 3: scroll = false; break;
-					case 4: scroll = true; break;
+					case 1: return false;
+					case 2: return true;
+					case 3: return false;
+					case 4: return true;
 				}
-				if ( Server.Items.BaseRace.GetUndead( creature ) )
-					scroll = true;
 			}
 			else 
 			{
 				switch ( page )
 				{
-					case 1: scroll = false; break;
-					case 2: scroll = false; break;
-					case 3: scroll = false; break;
-					case 4: scroll = false; break;
-					case 5: scroll = false; break;
-					case 6: scroll = false; break;
-					case 7: scroll = false; break;
-					case 8: scroll = false; break;
-					case 9: scroll = true; break;
-					case 10: scroll = true; break;
-					case 11: scroll = true; break;
-					case 12: scroll = true; break;
-					case 13: scroll = true; break;
+					case 1: return false;
+					case 2: return false;
+					case 3: return false;
+					case 4: return false;
+					case 5: return false;
+					case 6: return false;
+					case 7: return false;
+					case 8: return false;
+					case 9: return true;
+					case 10: return true;
+					case 11: return true;
+					case 12: return true;
+					case 13: return true;
 				}
 			}
-			return scroll;
+
+			return false;
 		}
 
 		public string cardText( int page, int section, int creature )
