@@ -1,18 +1,6 @@
 using System;
 using System.Xml;
-using Server;
 using Server.Mobiles;
-using Server.Gumps;
-using Server.Spells;
-using Server.Spells.Seventh;
-using Server.Spells.Fourth;
-using Server.Spells.Sixth;
-using Server.Spells.Chivalry;
-using System.Text;
-using System.IO;
-using Server.Network;
-using Server.Misc;
-using Server.Items;
 
 namespace Server.Regions
 {
@@ -58,10 +46,6 @@ namespace Server.Regions
 			{
 				m.SendMessage( "You wake up in a Britain jail cell." );
 				m.SendMessage( "Perhaps there is a secret way out." );
-			}
-			if ( m is PlayerMobile && m.AccessLevel < AccessLevel.GameMaster )
-			{
-				Server.Misc.PlayerSettings.SetWanted( m );
 			}
 
 			Server.Misc.RegionMusic.MusicRegion( m, this );

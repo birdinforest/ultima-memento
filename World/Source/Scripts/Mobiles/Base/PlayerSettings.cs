@@ -225,14 +225,19 @@ namespace Server.Misc
 			}
 
 			m.Profile = ((PlayerMobile)m).CharacterWanted;
-			SetBardsTaleQuest( m, "BardsTaleWin", true );
-			MyServerSettings.SkillBegin( "fugitive", (PlayerMobile)m );
-			m.Kills = 1;
-			((PlayerMobile)m).Fugitive = 1;
+			SetWantedState( (PlayerMobile)m );
 
 			GuardNote note = new GuardNote();
 			note.ScrollText = ((PlayerMobile)m).CharacterWanted;
 			m.AddToBackpack( note );
+		}
+
+		public static void SetWantedState( PlayerMobile m ) // -------------------------------------------------------------------------------------------------
+		{
+			SetBardsTaleQuest( m, "BardsTaleWin", true );
+			MyServerSettings.SkillBegin( "fugitive", m );
+			m.Kills = 1;
+			m.Fugitive = 1;
 		}
 
 		public static string GetWantedStory( Mobile m ) // -------------------------------------------------------------------------------------------------

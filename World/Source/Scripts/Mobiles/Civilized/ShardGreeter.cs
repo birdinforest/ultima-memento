@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Accounting;
+using System;
 
 namespace Server.Mobiles
 {
@@ -155,6 +156,47 @@ namespace Server.Gumps
 
 	public class GypsyTarotGump : Gump
 	{
+		private enum ActionButtonType
+		{
+			ShowFirstTarotCard = -1,
+			Close = 0,
+			Home = 99,
+			EnterLandBase = 100,
+		}
+
+		private enum CreaturePage
+		{
+			FIRST_OPTION = The_Day,
+
+			The_Day = 1,
+			The_Night = 2, // Fugitive
+			The_Light = 3,
+			The_Dark = 4, // Fugitive
+
+			LAST_OPTION = The_Dark,
+		}
+
+		private enum HumanPage
+		{
+			FIRST_OPTION = The_Emperor,
+
+			The_Emperor = 1,
+			The_Devil = 2,
+			The_Hermit = 3,
+			The_Tower = 4,
+			The_Magician = 5,
+			The_Fool = 6,
+			Death = 7,
+			The_Sun = 8,
+			The_Hanged_Man = 9, // Fugitive
+			The_Hierophant = 10,
+			The_High_Priestess = 11,
+			Strength = 12, // Savage
+			The_Star = 13, // Warning: Alien must ALWAYS be the last option
+
+			LAST_OPTION = The_Star,
+		}
+
 		public bool visitLodor( Mobile from )
 		{
 			Account a = from.Account as Account;
@@ -183,6 +225,9 @@ namespace Server.Gumps
 			return false;
 		}
 
+		/// <summary>
+		/// Skips illegal pages and cycles back to the Gypsy page
+		/// </summary>
 		public int pageShow( Mobile from, int page, bool forward )
 		{
 			if ( from.RaceID > 0 )
@@ -191,46 +236,63 @@ namespace Server.Gumps
 				{
 					page++;
 
-					if ( Server.Items.BaseRace.IsGood( from ) && page == 2 ){ page++; }
-					if ( !visitLodor( from ) && page == 3 ){ page++; }
-					if ( ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) && page == 4 ){ page++; }
-					if ( page > 4 ){ page = 20; }
+					switch ( (CreaturePage)page )
+					{
+						case CreaturePage.The_Night: if ( Server.Items.BaseRace.IsGood( from ) ) { page++; } break;
+						case CreaturePage.The_Light: if ( !visitLodor( from ) ) { page++; } break;
+						case CreaturePage.The_Dark: if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page++; } break;
+					}
 
+					if ( page > (int)CreaturePage.LAST_OPTION ){ page = (int)CreaturePage.FIRST_OPTION; }
 				}
 				else
 				{
 					page--;
 
-					if ( ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) && page == 4 ){ page--; }
-					if ( !visitLodor( from ) && page == 3 ){ page--; }
-					if ( Server.Items.BaseRace.IsGood( from ) && page == 2 ){ page--; }
-					if ( page < 1 ){ page = 20; }
+					switch ( (CreaturePage)page )
+					{
+						case CreaturePage.The_Night: if ( Server.Items.BaseRace.IsGood( from ) ) { page--; } break;
+						case CreaturePage.The_Light: if ( !visitLodor( from ) ) { page--; } break;
+						case CreaturePage.The_Dark: if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page--; } break;
+					}
+
+					if ( page < (int)CreaturePage.FIRST_OPTION ){ page = (int)CreaturePage.LAST_OPTION; }
 				}
 			}
 			else
 			{
+				var disallowAlien = !MySettings.S_AllowAlienChoice && from.RaceID == 0;
+
 				if ( forward )
 				{
 					page++;
 
-					if ( !visitLodor( from ) && page == 10 ){ page++; }
-					if ( !visitLodor( from ) && page == 11 ){ page++; }
-					if ( !visitSavage( from ) && page == 12 ){ page++; }
-					if ( !MySettings.S_AllowAlienChoice && page == 13 && from.RaceID == 0 ){ page++; }
-					if ( page > 13 ){ page = 20; }
+					switch ( (HumanPage)page )
+					{
+						case HumanPage.The_Hierophant: if ( !visitLodor( from ) ) { page++; } break;
+						case HumanPage.The_High_Priestess: if ( !visitLodor( from ) ) { page++; } break;
+						case HumanPage.Strength: if ( !visitSavage( from ) ) { page++; } break;
+						case HumanPage.The_Star: if ( disallowAlien ) { page++; } break;
+					}
 
+					if ( page > (int)HumanPage.LAST_OPTION ){ page = (int)HumanPage.FIRST_OPTION; }
 				}
 				else
 				{
 					page--;
 
-					if ( !MySettings.S_AllowAlienChoice && page == 13 && from.RaceID == 0 ){ page--; }
-					if ( !visitSavage( from ) && page == 12 ){ page--; }
-					if ( !visitLodor( from ) && page == 11 ){ page--; }
-					if ( !visitLodor( from ) && page == 10 ){ page--; }
-					if ( page < 1 ){ page = 20; }
+					switch ( (HumanPage)page )
+					{
+						case HumanPage.The_Hierophant: if ( !visitLodor( from ) ) { page--; } break;
+						case HumanPage.The_High_Priestess: if ( !visitLodor( from ) ) { page--; } break;
+						case HumanPage.Strength: if ( !visitSavage( from ) ) { page--; } break;
+						case HumanPage.The_Star: if ( disallowAlien ) { page--; } break;
+					}
+
+					if ( page < (int)HumanPage.FIRST_OPTION ){ page = disallowAlien ? (int)HumanPage.LAST_OPTION - 1 : (int)HumanPage.LAST_OPTION; }
 				}
 			}
+
 			return page;
 		}
 
@@ -275,7 +337,7 @@ namespace Server.Gumps
 
 				AddItem(566, 12, 4777);
 				AddItem(580, 26, 4779);
-				AddButton(599, 11, 4023, 4023, page+100, GumpButtonType.Reply, 0);
+				AddButton(599, 11, 4023, 4023, (int)ActionButtonType.EnterLandBase + page, GumpButtonType.Reply, 0);
 			}
 			else
 			{
@@ -285,7 +347,7 @@ namespace Server.Gumps
 				AddImage(271, 13, header, 2813);
 
 				AddHtml( 278, 73, 604, 320, @"<BODY><BASEFONT Color=#DEC6DE>" + GypsySpeech( from ) + "</BASEFONT></BODY>", (bool)false, (bool)true);
-				AddButton(819, 14, 4011, 4011, 99, GumpButtonType.Reply, 0);
+				AddButton(819, 14, 4011, 4011, (int)ActionButtonType.ShowFirstTarotCard, GumpButtonType.Reply, 0);
 				AddItem(851, 11, 4773);
 			}
 		}
@@ -294,31 +356,31 @@ namespace Server.Gumps
 		{
 			if ( creature > 0 )
 			{
-				switch ( page )
+				switch ( (CreaturePage)page )
 				{
-					case 1: return 1340;
-					case 2: return 1341;
-					case 3: return 1342;
-					case 4: return 1343;
+					case CreaturePage.The_Day: return 1340;
+					case CreaturePage.The_Night: return 1341;
+					case CreaturePage.The_Light: return 1342;
+					case CreaturePage.The_Dark: return 1343;
 				}
 			}
 			else 
 			{
-				switch ( page )
+				switch ( (HumanPage)page )
 				{
-					case 1: return 1106;
-					case 2: return 1105;
-					case 3: return 1110;
-					case 4: return 1122;
-					case 5: return 1116;
-					case 6: return 1108;
-					case 7: return 1104;
-					case 8: return 1120;
-					case 9: return 1109;
-					case 10: return 1111;
-					case 11: return 1112;
-					case 12: return 1119;
-					case 13: return 1118;
+					case HumanPage.The_Emperor: return 1106;
+					case HumanPage.The_Devil: return 1105;
+					case HumanPage.The_Hermit: return 1110;
+					case HumanPage.The_Tower: return 1122;
+					case HumanPage.The_Magician: return 1116;
+					case HumanPage.The_Fool: return 1108;
+					case HumanPage.Death: return 1104;
+					case HumanPage.The_Sun: return 1120;
+					case HumanPage.The_Hanged_Man: return 1109;
+					case HumanPage.The_Hierophant: return 1111;
+					case HumanPage.The_High_Priestess: return 1112;
+					case HumanPage.Strength: return 1119;
+					case HumanPage.The_Star: return 1118;
 				}
 			}
 
@@ -331,31 +393,31 @@ namespace Server.Gumps
 			{
 				if ( Server.Items.BaseRace.GetUndead( creature ) ) return true;
 
-				switch ( page )
+				switch ( (CreaturePage)page )
 				{
-					case 1: return false;
-					case 2: return true;
-					case 3: return false;
-					case 4: return true;
+					case CreaturePage.The_Day: return false;
+					case CreaturePage.The_Night: return true;
+					case CreaturePage.The_Light: return false;
+					case CreaturePage.The_Dark: return true;
 				}
 			}
 			else 
 			{
-				switch ( page )
+				switch ( (HumanPage)page )
 				{
-					case 1: return false;
-					case 2: return false;
-					case 3: return false;
-					case 4: return false;
-					case 5: return false;
-					case 6: return false;
-					case 7: return false;
-					case 8: return false;
-					case 9: return true;
-					case 10: return true;
-					case 11: return true;
-					case 12: return true;
-					case 13: return true;
+					case HumanPage.The_Emperor: return false;
+					case HumanPage.The_Devil: return false;
+					case HumanPage.The_Hermit: return false;
+					case HumanPage.The_Tower: return false;
+					case HumanPage.The_Magician: return false;
+					case HumanPage.The_Fool: return false;
+					case HumanPage.Death: return false;
+					case HumanPage.The_Sun: return false;
+					case HumanPage.The_Hanged_Man: return true;
+					case HumanPage.The_Hierophant: return true;
+					case HumanPage.The_High_Priestess: return true;
+					case HumanPage.Strength: return true;
+					case HumanPage.The_Star: return true;
 				}
 			}
 
@@ -405,46 +467,46 @@ namespace Server.Gumps
 
 				if ( Server.Items.BaseRace.BloodDrinker( creature ) ){ undead = undead + " Having a soul, however, means you can safely walk the land during the daylight."; }
 
-				switch ( page )
+				switch ( (CreaturePage)page )
 				{
-					case 1: card = "THE DAY"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Sosaria." + undead + " This world has suffered three ages of darkness, where a stranger came from a far off land to bring light to each of these events. After Mondain, Minax, and Exodus were thwarted in their evil plans, Sosaria has reached a level of peace and prosperity. Although most want to lead humble lives as simple villagers, there are some that seek to explore the old dungeons, tombs, ruins, and crypts of the world. This path will lead you toward joining the ways of civilized man, but doing so will surely have your kindred banish you from their presence. It matters little to you, as you prefer to seek fame and fortune in this world rid of the most powerful evils it has ever seen."; break;
+					case CreaturePage.The_Day: card = "THE DAY"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Sosaria." + undead + " This world has suffered three ages of darkness, where a stranger came from a far off land to bring light to each of these events. After Mondain, Minax, and Exodus were thwarted in their evil plans, Sosaria has reached a level of peace and prosperity. Although most want to lead humble lives as simple villagers, there are some that seek to explore the old dungeons, tombs, ruins, and crypts of the world. This path will lead you toward joining the ways of civilized man, but doing so will surely have your kindred banish you from their presence. It matters little to you, as you prefer to seek fame and fortune in this world rid of the most powerful evils it has ever seen."; break;
 
-					case 2: card = "THE NIGHT"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Sosaria." + undead + " This fate in Sosaria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey."; break;
+					case CreaturePage.The_Night: card = "THE NIGHT"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Sosaria." + undead + " This fate in Sosaria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey."; break;
 
-					case 3: card = "THE LIGHT"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Lodoria." + undead + " This world was once ruled by dwarves, but now their cities lie in ruins and the elves have risen toward being the major civilized race of the land. Driving the drow back to their deep underdark lairs, many seeks to explore this world. Although most want to lead humble lives as simple villagers, there are some that seek to explore the old dungeons, tombs, ruins, and crypts of the world. This path will lead you toward joining the ways of civilization within the land of elves. Where you may seek glory and riches beyond your wildest dreams."; break;
+					case CreaturePage.The_Light: card = "THE LIGHT"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Lodoria." + undead + " This world was once ruled by dwarves, but now their cities lie in ruins and the elves have risen toward being the major civilized race of the land. Driving the drow back to their deep underdark lairs, many seeks to explore this world. Although most want to lead humble lives as simple villagers, there are some that seek to explore the old dungeons, tombs, ruins, and crypts of the world. This path will lead you toward joining the ways of civilization within the land of elves. Where you may seek glory and riches beyond your wildest dreams."; break;
 
-					case 4: card = "THE DARK"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Lodoria." + undead + " This fate in Lodoria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey."; break;
+					case CreaturePage.The_Dark: card = "THE DARK"; text = fate + " " + Server.Items.BaseRace.StartSentence( town ) + " of Lodoria." + undead + " This fate in Lodoria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey."; break;
 				}
 			}
 			else
 			{
-				switch ( page )
+				switch ( (HumanPage)page )
 				{
-					case 1: card = "THE EMPEROR"; town = "The City of Britain"; text = fate + " in the capital city of Sosaria and the home of Lord British. Lord British's magnificent castle is situated at the northern part of the city, overlooking Britanny Bay. This tall building is the greatest architectural structure of the new age. Loyal subjects pay homage to His Majesty, and renew fealty whenever they are in the vicinity of his castle. Rumors in taverns speak of a dark secret below the castle, so dark that not even the citizens can see it. There are farms all around, as well as cemeteries for the citizens and another for the British Royal Family. Some have been seen going into the British tomb, late at night."; break;
+					case HumanPage.The_Emperor: card = "THE EMPEROR"; town = "The City of Britain"; text = fate + " in the capital city of Sosaria and the home of Lord British. Lord British's magnificent castle is situated at the northern part of the city, overlooking Britanny Bay. This tall building is the greatest architectural structure of the new age. Loyal subjects pay homage to His Majesty, and renew fealty whenever they are in the vicinity of his castle. Rumors in taverns speak of a dark secret below the castle, so dark that not even the citizens can see it. There are farms all around, as well as cemeteries for the citizens and another for the British Royal Family. Some have been seen going into the British tomb, late at night."; break;
 
-					case 2: card = "THE DEVIL"; town = "The Town of Devil Guard"; text = fate + " in a town totally enclosed by the Great Mountains during the Third Age of Darkness, and was only reachable by the magical gate. After the destruction of Exodus, a cavernous tunnel had torn through the mountain, providing an alternate route. Ancient legends tell of a castle that fell from the sky, crashing into the mountains and creating the valley in which Devil Guard was eventually built. Tales are told that the town was created and settled by those from the sky castle, and they named it because they were protecting others from the daemons long ago."; break;
+					case HumanPage.The_Devil: card = "THE DEVIL"; town = "The Town of Devil Guard"; text = fate + " in a town totally enclosed by the Great Mountains during the Third Age of Darkness, and was only reachable by the magical gate. After the destruction of Exodus, a cavernous tunnel had torn through the mountain, providing an alternate route. Ancient legends tell of a castle that fell from the sky, crashing into the mountains and creating the valley in which Devil Guard was eventually built. Tales are told that the town was created and settled by those from the sky castle, and they named it because they were protecting others from the daemons long ago."; break;
 
-					case 3: card = "THE HERMIT"; town = "The Village of Grey"; text = fate + " in this village where the inhabitants, during the Third Age of Darkness, gave several clues to the Stranger that defeated Exodus. It was even rumored that they sold ships that could fly to the stars, but none who remain know how to create such things. Legends say the Stranger flew to the sky and altered time and reality, causing a castle to fall backwards in time and crash into the land of ancient Sosaria. Now the village is often the home of those that enjoy solitude. There are no mountains to mine, but some have dug beneath the forest floor to obtain ore. The cemetery is rumored to have a secret that necromancers whisper in hush tones."; break;
+					case HumanPage.The_Hermit: card = "THE HERMIT"; town = "The Village of Grey"; text = fate + " in this village where the inhabitants, during the Third Age of Darkness, gave several clues to the Stranger that defeated Exodus. It was even rumored that they sold ships that could fly to the stars, but none who remain know how to create such things. Legends say the Stranger flew to the sky and altered time and reality, causing a castle to fall backwards in time and crash into the land of ancient Sosaria. Now the village is often the home of those that enjoy solitude. There are no mountains to mine, but some have dug beneath the forest floor to obtain ore. The cemetery is rumored to have a secret that necromancers whisper in hush tones."; break;
 
-					case 4: card = "THE TOWER"; town = "The City of Montor"; text = fate + " in a vast city, where courage is especially upheld, having all the shops needed for everyone. The inhabitants of the Montors knew a lot about the mystical Four Cards that the Stranger needed to defeat Exodus, as well as tales of the lost shrines of Ambrosia. Montor is the most visited city, and also the largest in Sosaria due the trade from ships. There is a small mine to the east, as well as a tower to the northeast. This tower is said to be home of a vile lich with a magic mirror that traverses dimensions, but those rumors are often told with a tankard of ale."; break;
+					case HumanPage.The_Tower: card = "THE TOWER"; town = "The City of Montor"; text = fate + " in a vast city, where courage is especially upheld, having all the shops needed for everyone. The inhabitants of the Montors knew a lot about the mystical Four Cards that the Stranger needed to defeat Exodus, as well as tales of the lost shrines of Ambrosia. Montor is the most visited city, and also the largest in Sosaria due the trade from ships. There is a small mine to the east, as well as a tower to the northeast. This tower is said to be home of a vile lich with a magic mirror that traverses dimensions, but those rumors are often told with a tankard of ale."; break;
 
-					case 5: card = "THE MAGICIAN"; town = "The Town of Moon"; text = fate + " in the town where, during the Third Age of Darkness, was a city full of mages. They were, however, the corrupt and dishonest sort. Erstam also lived in the city, conducting his experiments for immortality. When Lord British chased the corrupt mages out of town after the destruction of Exodus, Erstam and the others decided to go to the Serpent Island, where no one could control them. Now a tranquil place, many come here to farm and sail the coastline for fish markets. It is a popular town as it isn't too large, but manages to provide many markets to visit. Adventurers often ride in from the nearby desert, bragging of wealth obtained from the Ancient Pyramid."; break;
+					case HumanPage.The_Magician: card = "THE MAGICIAN"; town = "The Town of Moon"; text = fate + " in the town where, during the Third Age of Darkness, was a city full of mages. They were, however, the corrupt and dishonest sort. Erstam also lived in the city, conducting his experiments for immortality. When Lord British chased the corrupt mages out of town after the destruction of Exodus, Erstam and the others decided to go to the Serpent Island, where no one could control them."; break;
 
-					case 6: card = "THE FOOL"; town = "The Town of Mountain Crest"; text = fate + " on some small islands in Sosaria, that has a harsh wintery landscape that others believe is foolish to inhabit. Along with this town, there are also settlements to the west and east. There are various caverns and dungeons within the mountains, and an unusual tower built by a wizard long ago. This place is one of the more difficult areas to live, but a snowy region may be your fate if you choose it."; break;
+					case HumanPage.The_Fool: card = "THE FOOL"; town = "The Town of Mountain Crest"; text = fate + " on some small islands in Sosaria, that has a harsh wintery landscape that others believe is foolish to inhabit. Along with this town, there are also settlements to the west and east. There are various caverns and dungeons within the mountains, and an unusual tower built by a wizard long ago. This place is one of the more difficult areas to live, but a snowy region may be your fate if you choose it."; break;
 
-					case 7: card = "DEATH"; town = "The Undercity of Umbra"; text = fate + " in a place many people do not know of, as it was built as a haven for those that practice the necrotic arts. Deep within the mountains, just southeast of Britain, the dark halls and caverns have a spooky feel but the necromancers do provide themselves with a shoppes to provided much needed items. The cavern outside the city is one of the highest ever seen. Some say high enough to even build a castle away from the light of the sun. A death knight's tomb was also built nearby, and the Fires of Hell is but a hike away."; break;
+					case HumanPage.Death: card = "DEATH"; town = "The Undercity of Umbra"; text = fate + " in a place many people do not know of, as it was built as a haven for those that practice the necrotic arts. Deep within the mountains, just southeast of Britain, the dark halls and caverns have a spooky feel but the necromancers do provide themselves with a shoppes to provided much needed items. The cavern outside the city is one of the highest ever seen. Some say high enough to even build a castle away from the light of the sun. A death knight's tomb was also built nearby, and the Fires of Hell is but a hike away."; break;
 
-					case 8: card = "THE SUN"; town = "The Village of Yew"; text = fate + " in a valley of thick forest, just west of Britain and east of Moon, where the sun grows the largest trees in Sosaria. Yew is one of the land's major trading of wood. During the Third Age of Darkness, the Stranger visited Yew and learned the secrets of the Great Earth Serpent. This allowed the Stranger to free the serpent that was blocking their ship from reaching the Castle of Exodus on the Isle of Fire. Some say that freeing the serpent has caused an imbalance in the cosmos, but that could be drunken wizards telling tales. You can mine in a nearby cave, but miners discovered something on the southern side of the mountain range that they dare not enter."; break;
+					case HumanPage.The_Sun: card = "THE SUN"; town = "The Village of Yew"; text = fate + " in a valley of thick forest, just west of Britain and east of Moon, where the sun grows the largest trees in Sosaria. Yew is one of the land's major trading of wood. During the Third Age of Darkness, the Stranger visited Yew and learned the secrets of the Great Earth Serpent. This allowed the Stranger to free the serpent that was blocking their ship from reaching the Castle of Exodus on the Isle of Fire. Some say that freeing the serpent has caused an imbalance in the cosmos, but that could be drunken wizards telling tales. You can mine in a nearby cave, but miners discovered something on the southern side of the mountain range that they dare not enter."; break;
 
-					case 9: card = "THE HANGED MAN"; town = "The Britain Dungeons"; text = "You may choose a fate in this world that has a more challenging life, where you are a fugitive from justice. If you choose this path, you will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. This is due to you relying on yourself to survive. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are wanted for murder. You may have actually committed the act, or you could have simply been framed. The murder was against a very powerful figure, so the many lands will never forgive the deed. Whether truth or falsehood, that is up to you to tell. Do with your life what you will. You can live a life of criminal pursuits, or you can destroy the evil that lurks in the darkest places of the land. If you wish to choose such a life, you will be on your own, and you must first escape from your prison cell. From there you are best to head for Stonewall to the northwest, but you may go where you like. Everything you need can be found throughout the world."; break;
+					case HumanPage.The_Hanged_Man: card = "THE HANGED MAN"; town = "The Britain Dungeons"; text = "You may choose a fate in this world that has a more challenging life, where you are a fugitive from justice. If you choose this path, you will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "fugitive" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. This is due to you relying on yourself to survive. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are wanted for murder. You may have actually committed the act, or you could have simply been framed. The murder was against a very powerful figure, so the many lands will never forgive the deed. Whether truth or falsehood, that is up to you to tell. Do with your life what you will. You can live a life of criminal pursuits, or you can destroy the evil that lurks in the darkest places of the land. If you wish to choose such a life, you will be on your own, and you must first escape from your prison cell. From there you are best to head for Stonewall to the northwest, but you may go where you like. Everything you need can be found throughout the world."; break;
 
-					case 10: card = "THE HIEROPHANT"; town = "The City of Lodoria"; text = lodor + " The city is the capital of Lodor, and it has every merchant you may need. The Castle of Knowledge lies on the high mountain on the western side, where scholars learn the ways of the world. It has a mine to the north and a cemetery in the south valley. The continent is large and adventurers tell tales of dungeons like Shame, Despise, and a cavern of lizardmen. Another small settlement lies to the northwest. Do you choose this fate?"; break;
+					case HumanPage.The_Hierophant: card = "THE HIEROPHANT"; town = "The City of Lodoria"; text = lodor + " The city is the capital of Lodor, and it has every merchant you may need. The Castle of Knowledge lies on the high mountain on the western side, where scholars learn the ways of the world. It has a mine to the north and a cemetery in the south valley. The continent is large and adventurers tell tales of dungeons like Shame, Despise, and a cavern of lizardmen. Another small settlement lies to the northwest. Do you choose this fate?"; break;
 
-					case 11: card = "THE HIGH PRIESTESS"; town = "The City of Elidor"; text = lodor + " The city is located on the second largest continent, diverse with both a forest covered south and a wintery north. The High Priestess of Elidor built the famous Hall of Illusions, where many of her subject practice prismatic magic. There are other settlements such as Springvale to the east and Glacial Hills to the north. Drunken adventurers often speak of riches from Wrong, Deceit, and the Frozen Hells. Do you wish to draw this card?"; break;
+					case HumanPage.The_High_Priestess: card = "THE HIGH PRIESTESS"; town = "The City of Elidor"; text = lodor + " The city is located on the second largest continent, diverse with both a forest covered south and a wintery north. The High Priestess of Elidor built the famous Hall of Illusions, where many of her subject practice prismatic magic. There are other settlements such as Springvale to the east and Glacial Hills to the north. Drunken adventurers often speak of riches from Wrong, Deceit, and the Frozen Hells. Do you wish to draw this card?"; break;
 
-					case 12: card = "STRNGTH"; town = "The Savaged Empire"; text = "You may choose a barbaric way of life to begin your journey, and it is not for the weak but those bestowed with strength. If you choose this path, you will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "savage" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. This is due to you relying on yourself to survive in an untamed land. Your adventure will begin as a barbarian in the Savaged Empire, which is one of the most difficult lands in the realms. It is filled with many dangerous animals and colossal dinosaurs. There are no safe places to hunt for food, which also means practicing your combat skills is equally dangerous. You will, however, begin with some leather armor that will help you surive the dangers away from the settlements. You will also begin with a talisman that will aid you in camping and cooking, so you can live off of the land better. Additional gold, food, and bandages will be provided as well as a steel dagger and a durable camping tent. Any dungeons you dare enter will be more deadly than those in Sosaria, so take some great consideration before deciding this path. Your journey will then begin in the Village of Kurak, where the outskirts have many things to hunt but also many dangers you may need to flee from. There is a cave to the north where you can mine for precious ores as well."; break;
+					case HumanPage.Strength: card = "STRENGTH"; town = "The Savaged Empire"; text = "You may choose a barbaric way of life to begin your journey, and it is not for the weak but those bestowed with strength. If you choose this path, you will be able to become grandmaster in " + MyServerSettings.SkillGypsy( "savage" ) + " different skills instead of the " + MyServerSettings.SkillGypsy( "default" ) + " normally accomplished. This is due to you relying on yourself to survive in an untamed land. Your adventure will begin as a barbarian in the Savaged Empire, which is one of the most difficult lands in the realms. It is filled with many dangerous animals and colossal dinosaurs. There are no safe places to hunt for food, which also means practicing your combat skills is equally dangerous. You will, however, begin with some leather armor that will help you surive the dangers away from the settlements. You will also begin with a talisman that will aid you in camping and cooking, so you can live off of the land better. Additional gold, food, and bandages will be provided as well as a steel dagger and a durable camping tent. Any dungeons you dare enter will be more deadly than those in Sosaria, so take some great consideration before deciding this path. Your journey will then begin in the Village of Kurak, where the outskirts have many things to hunt but also many dangers you may need to flee from. There is a cave to the north where you can mine for precious ores as well."; break;
 
-					case 13: card = "THE STAR"; town = "The Shuttle Crash Site"; text = "All the doctor knew of you as a patient is entered into your medical record. You were near death, but placing you in the stasis chamber seemed to have performed the healing process. Your scans showed an incredible head trauma, so you will awake from your coma with no memories of what or who you were (you begin with no skills). With the space station plummeting to Sosaria, due to the Stranger draining the fuel reserves, the doctor decided to place your stasis chamber onto their last medical shuttle craft. They set it on auto-pilot and hoped for the best. It landed safely on Sosaria where you could continue your life on this primitive world. You may have an advantage as you are from a more advanced race of beings, so you have the ability to remember and learn more things (can grandmaster " + MyServerSettings.SkillGypsy( "alien" ) + " different skills).<br><br>Because of your advanced knowledge of logic and science, however, some things learned about Sosaria is that they have elements you cannot fully understand. Magical resurrection, and the concept of deities, are things you cannot comprehend (costs 3 times as much gold to resurrect at a shrine or healer). The system shock from any such resurrection would surely take its toll (paying full tribute still causes a 10% loss in fame and karma, and a 5% loss in skills and attributes) which could prove to be devastating (paying no tribute at all would cause a 20% loss in fame and karma, and a 10% loss in skills and attributes).<br><br>Although you will be able to learn some of the skills that are classified as magic or divine, you will surely justify it with science. Because of your lack of superstition, unlike the inhabitants of this world, you don’t believe in the concept of luck (you will never benefit from luck). You do not have any of Sosaria's currency to barter with (you begin with no gold), and because you feel you are more advanced, you will probably not get along with the guildmasters of the crude trades they practice (guild membership costs 4 times as much as normal).<br><br>If you choose this fate, then you will appear at your crashed shuttle craft where your adventure begins. You can use the nearby computer terminal to change your skin and hair tones if you want an appearance that is slightly different than human, due to your alien heritage.<br><br>When you awake, you will have no memory of who you were. You will find yourself near the shuttle that crashed on top of the mountain. The computer system instructed you on how to setup a power source from the remaining fuel, and it appeared that an alien creature latched onto the shuttle and died in the crash. You have been using this as a source of food and have survived a few days from it. Now your supplies are running out, your canteen is empty, and all you have is a knife. You will have to venture out if you plan to survive."; break;
+					case HumanPage.The_Star: card = "THE STAR"; town = "The Shuttle Crash Site"; text = "All the doctor knew of you as a patient is entered into your medical record. You were near death, but placing you in the stasis chamber seemed to have performed the healing process. Your scans showed an incredible head trauma, so you will awake from your coma with no memories of what or who you were (you begin with no skills). With the space station plummeting to Sosaria, due to the Stranger draining the fuel reserves, the doctor decided to place your stasis chamber onto their last medical shuttle craft. They set it on auto-pilot and hoped for the best. It landed safely on Sosaria where you could continue your life on this primitive world. You may have an advantage as you are from a more advanced race of beings, so you have the ability to remember and learn more things (can grandmaster " + MyServerSettings.SkillGypsy( "alien" ) + " different skills).<br><br>Because of your advanced knowledge of logic and science, however, some things learned about Sosaria is that they have elements you cannot fully understand. Magical resurrection, and the concept of deities, are things you cannot comprehend (costs 3 times as much gold to resurrect at a shrine or healer). The system shock from any such resurrection would surely take its toll (paying full tribute still causes a 10% loss in fame and karma, and a 5% loss in skills and attributes) which could prove to be devastating (paying no tribute at all would cause a 20% loss in fame and karma, and a 10% loss in skills and attributes).<br><br>Although you will be able to learn some of the skills that are classified as magic or divine, you will surely justify it with science. Because of your lack of superstition, unlike the inhabitants of this world, you don’t believe in the concept of luck (you will never benefit from luck). You do not have any of Sosaria's currency to barter with (you begin with no gold), and because you feel you are more advanced, you will probably not get along with the guildmasters of the crude trades they practice (guild membership costs 4 times as much as normal).<br><br>If you choose this fate, then you will appear at your crashed shuttle craft where your adventure begins. You can use the nearby computer terminal to change your skin and hair tones if you want an appearance that is slightly different than human, due to your alien heritage.<br><br>When you awake, you will have no memory of who you were. You will find yourself near the shuttle that crashed on top of the mountain. The computer system instructed you on how to setup a power source from the remaining fuel, and it appeared that an alien creature latched onto the shuttle and died in the crash. You have been using this as a source of food and have survived a few days from it. Now your supplies are running out, your canteen is empty, and all you have is a knife. You will have to venture out if you plan to survive."; break;
 				}
 			}
 
@@ -516,31 +578,25 @@ namespace Server.Gumps
 						item.Delete();
 				}
 
-				if ( page == 1 )
+				if ( page == (int)CreaturePage.The_Day )
 				{
 					PlayerSettings.SetDiscovered( m, "the Land of Sosaria", true );
 				}
-				else if ( page == 2 )
+				else if ( page == (int)CreaturePage.The_Night )
 				{
 					PlayerSettings.SetDiscovered( m, "the Land of Sosaria", true );
-					PlayerSettings.SetBardsTaleQuest( m, "BardsTaleWin", true );
-					MyServerSettings.SkillBegin( "fugitive", (PlayerMobile)m );
-					m.Kills = 1;
-					((PlayerMobile)m).Fugitive = 1;
+					PlayerSettings.SetWantedState( (PlayerMobile) m );
 				}
-				else if ( page == 3 )
+				else if ( page == (int)CreaturePage.The_Light )
 				{
 					PlayerSettings.SetDiscovered( m, "the Land of Lodoria", true );
 					world = "the Land of Lodoria";
 				}
-				else if ( page == 4 )
+				else if ( page == (int)CreaturePage.The_Dark )
 				{
 					PlayerSettings.SetDiscovered( m, "the Land of Lodoria", true );
-					PlayerSettings.SetBardsTaleQuest( m, "BardsTaleWin", true );
-					MyServerSettings.SkillBegin( "fugitive", (PlayerMobile)m );
-					m.Kills = 1;
-					((PlayerMobile)m).Fugitive = 1;
 					world = "the Land of Lodoria";
+					PlayerSettings.SetWantedState( (PlayerMobile) m );
 				}
 				m.Profile = Server.Items.BaseRace.BeginStory( m, world );
 
@@ -552,27 +608,46 @@ namespace Server.Gumps
 			}
 			else
 			{
-				switch ( page )
+				switch ( (HumanPage)page )
 				{
-					case 1: loc = new Point3D(2999, 1030, 0); map = Map.Sosaria; break;
-					case 2: loc = new Point3D(1617, 1502, 2); map = Map.Sosaria; break;
-					case 3: loc = new Point3D(851, 2062, 1); map = Map.Sosaria; break;
-					case 4: loc = new Point3D(3220, 2606, 1); map = Map.Sosaria; break;
-					case 5: loc = new Point3D(806, 710, 5); map = Map.Sosaria; break;
-					case 6: loc = new Point3D(4546, 1267, 2); map = Map.Sosaria; break;
-					case 7: MorphingTime.ColorOnlyClothes( m, 0, 1 );
-							loc = new Point3D(2666, 3325, 0); map = Map.Sosaria; break;
-					case 8: loc = new Point3D(2460, 893, 7); map = Map.Sosaria; break;
-					case 9: loc = new Point3D(4104, 3232, 0); map = Map.Sosaria; break;
-					case 10: loc = new Point3D(2111, 2187, 0); map = Map.Lodor; break;
-					case 11: loc = new Point3D(2930, 1327, 0); map = Map.Lodor; break;
-					case 12: loc = new Point3D(251, 1949, -28); map = Map.SavagedEmpire; break;
-					case 13: loc = new Point3D(4109, 3775, 2); map = Map.Sosaria; break;
+					case HumanPage.The_Emperor: loc = new Point3D(2999, 1030, 0); map = Map.Sosaria; break;
+					case HumanPage.The_Devil: loc = new Point3D(1617, 1502, 2); map = Map.Sosaria; break;
+					case HumanPage.The_Hermit: loc = new Point3D(851, 2062, 1); map = Map.Sosaria; break;
+					case HumanPage.The_Tower: loc = new Point3D(3220, 2606, 1); map = Map.Sosaria; break;
+					case HumanPage.The_Magician: loc = new Point3D(806, 710, 5); map = Map.Sosaria; break;
+					case HumanPage.The_Fool: loc = new Point3D(4546, 1267, 2); map = Map.Sosaria; break;
+					case HumanPage.Death:
+					{
+						loc = new Point3D(2666, 3325, 0); map = Map.Sosaria;
+						MorphingTime.ColorOnlyClothes( m, 0, 1 );
+						break;
+					}
+					case HumanPage.The_Sun: loc = new Point3D(2460, 893, 7); map = Map.Sosaria; break;
+					case HumanPage.The_Hanged_Man:
+					{
+						loc = new Point3D(4104, 3232, 0); map = Map.Sosaria;
+						PlayerSettings.SetWanted( m );
+						break;
+					}
+					case HumanPage.The_Hierophant: loc = new Point3D(2111, 2187, 0); map = Map.Lodor; break;
+					case HumanPage.The_High_Priestess: loc = new Point3D(2930, 1327, 0); map = Map.Lodor; break;
+					case HumanPage.Strength:
+					{
+						loc = new Point3D(251, 1949, -28); map = Map.SavagedEmpire;
+						PlayerSettings.SetSavage( m );
+						break;
+					}
+					case HumanPage.The_Star:
+					{
+						loc = new Point3D(4109, 3775, 2); map = Map.Sosaria; 
+						PlayerSettings.SetSpaceMan( m );
+						break;
+					}
 				}
 
-				if ( page == 10 || page == 11 )
+				if ( page == (int)HumanPage.The_Hierophant || page == (int)HumanPage.The_High_Priestess )
 					PlayerSettings.SetDiscovered( m, "the Land of Lodoria", true );
-				else if ( page == 12 )
+				else if ( page == (int)HumanPage.Strength )
 					PlayerSettings.SetDiscovered( m, "the Savaged Empire", true );
 				else
 					PlayerSettings.SetDiscovered( m, "the Land of Sosaria", true );
@@ -591,8 +666,9 @@ namespace Server.Gumps
 			from.CloseGump( typeof( GypsyTarotGump ) );
 			from.CloseGump( typeof( WelcomeGump ) );
 			from.CloseGump( typeof( RacePotions.RacePotionsGump ) );
+			if ( info.ButtonID == (int)ActionButtonType.Close ) return;
 
-			if ( info.ButtonID == 99 )
+			if ( info.ButtonID == (int)ActionButtonType.ShowFirstTarotCard )
 			{
 				from.SendGump( new GypsyTarotGump( from, 1 ) );
 				from.SendSound( 0x5BB );
@@ -602,10 +678,9 @@ namespace Server.Gumps
 				int go = info.ButtonID - 100;
 				EnterLand( go, from );
 			}
-			else if ( info.ButtonID > 0 )
+			else
 			{
-				int page = info.ButtonID;
-					if ( page == 20 ){ page = 0; }
+				int page = Math.Max( 0, info.ButtonID );
 				from.SendGump( new GypsyTarotGump( from, page ) );
 				from.SendSound( 0x5B9 );
 			}
