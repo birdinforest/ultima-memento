@@ -1466,40 +1466,6 @@ namespace Server.Mobiles
 			return true;
 		}
 
-		public static void SkillVerification( Mobile m )
-		{
-			if ( m is PlayerMobile )
-			{
-				int record = ((PlayerMobile)m).SkillStart + ((PlayerMobile)m).SkillBoost + ((PlayerMobile)m).SkillEther;
-
-				if ( m.Skills.Cap != record )
-				{
-					MyServerSettings.SkillBegin( "default", (PlayerMobile)m );
-					((PlayerMobile)m).Fugitive = 0;
-					for( int i = 0; i < m.Skills.Length; i++ )
-					{
-						Skill skill = (Skill)m.Skills[i];
-						skill.Base = 0;
-					}
-				}
-
-				if ( ((PlayerMobile)m).SkillEther != 5000 && m.StatCap != 250 )
-				{
-					m.StatCap = 250;
-					m.RawStr = 20;
-					m.RawInt = 20;
-					m.RawDex = 20;
-				}
-				else if ( ((PlayerMobile)m).SkillEther == 5000 && m.StatCap != 300 )
-				{
-					m.StatCap = 300;
-					m.RawStr = 20;
-					m.RawInt = 20;
-					m.RawDex = 20;
-				}
-			}
-		}
-
 		public override bool CheckMovement( Direction d, out int newZ )
 		{
 			DesignContext context = m_DesignContext;
@@ -3212,6 +3178,11 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SkillEther { get; set; }
 
+		public void RefreshSkillCap()
+		{
+			Skills.Cap = SkillStart + SkillBoost + SkillEther;
+		}
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3296,57 +3267,10 @@ namespace Server.Mobiles
 					SkillBoost = reader.ReadInt();
 					SkillEther = reader.ReadInt();
 
-					if ( SkillStart < 1 )
-					{
-						SkillBoost = MyServerSettings.SkillBoost();
-
-						if ( Skills.Cap == 11000 )
-						{
-							SkillStart = 11000;
-						}
-						else if ( Skills.Cap == 16000 )
-						{
-							SkillStart = 11000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 10000 )
-						{
-							SkillStart = 10000;
-						}
-						else if ( Skills.Cap == 15000 )
-						{
-							SkillStart = 10000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 13000 )
-						{
-							SkillStart = 13000;
-						}
-						else if ( Skills.Cap == 18000 )
-						{
-							SkillStart = 13000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 40000 )
-						{
-							SkillStart = 40000;
-						}
-						else if ( Skills.Cap == 45000 )
-						{
-							SkillStart = 40000;
-							SkillEther = 5000;
-						}
-						else
-						{
-							SkillStart = 10000;
-							SkillEther = 0;
-						}
-					}
-
 					if ( SkillBoost < MyServerSettings.SkillBoost() )
 						SkillBoost = MyServerSettings.SkillBoost();
 
-					Skills.Cap = SkillStart + SkillBoost+ SkillEther;
+					RefreshSkillCap();
 
 					goto case 32;
 				}

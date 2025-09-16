@@ -182,8 +182,6 @@ namespace Server.Regions
 				{
 					if ( m.Kills < 1 ){ m.Kills = 1; }
 				}
-
-				PlayerMobile.SkillVerification( m );
 			}
 		}
 
