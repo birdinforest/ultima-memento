@@ -1,9 +1,8 @@
 using System;
-using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
-using System.Collections;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -21,57 +20,35 @@ namespace Server.Items
 		{
 		}
 
-		public override bool OnMoveOver( Mobile m )
+		public override bool OnMoveOver( Mobile mobile )
 		{
-			if ( m is PlayerMobile )
-			{
-				if ( m.Backpack.FindItemByType( typeof ( ObeliskTip ) ) != null )
-				{
-					Item triangle = m.Backpack.FindItemByType( typeof ( ObeliskTip ) );
+			if ( false == ( mobile is PlayerMobile ) ) return true;
 
-					if ( triangle is ObeliskTip )
-					{
-						ObeliskTip tip = (ObeliskTip)triangle;
-						int quest = tip.WonAir + tip.WonFire + tip.WonEarth + tip.WonWater;
+			var tip = mobile.Backpack.FindItemByType( typeof( ObeliskTip ) ) as ObeliskTip;
+			if ( tip == null ) return true;
+			if ( tip.ObeliskOwner != mobile ) return true;
+			if ( tip.WonAir + tip.WonFire + tip.WonEarth + tip.WonWater < 4 ) return true;
 
-						if ( tip.ObeliskOwner == m && quest > 3 )
-						{
-							triangle.Delete();
+			WorldUtilities.DeleteAllItems<ObeliskTip>( item => item.ObeliskOwner == mobile );
 
-							ArrayList targets = new ArrayList();
-							foreach ( Item item in World.Items.Values )
-							if ( item is ObeliskTip )
-							{
-								if ( ((ObeliskTip)item).ObeliskOwner == m )
-									targets.Add( item );
-							}
-							for ( int i = 0; i < targets.Count; ++i )
-							{
-								Item item = ( Item )targets[ i ];
-								item.Delete();
-							}
+			var m = (PlayerMobile)mobile;
+			TitanRiches(m);
 
-							TitanRiches( m );
+			m.SkillEther = 5000;
+			m.RefreshSkillCap();
+			m.StatCap = 300;
 
-							m.Skills.Cap = m.Skills.Cap+5000;
-							((PlayerMobile)m).SkillEther = 5000;
-							m.StatCap = 300;
+			Server.Items.QuestSouvenir.GiveReward( m, "Obelisk Tip", 0, 0x185F );
+			Server.Items.QuestSouvenir.GiveReward( m, "Breath of Air", 0, 0x1860 );
+			Server.Items.QuestSouvenir.GiveReward( m, "Tongue of Flame", 0, 0x1861 );
+			Server.Items.QuestSouvenir.GiveReward( m, "Heart of Earth", 0, 0x1862 );
+			Server.Items.QuestSouvenir.GiveReward( m, "Tear of the Seas", 0, 0x1863 );
 
-							Server.Items.QuestSouvenir.GiveReward( m, "Obelisk Tip", 0, 0x185F );
-							Server.Items.QuestSouvenir.GiveReward( m, "Breath of Air", 0, 0x1860 );
-							Server.Items.QuestSouvenir.GiveReward( m, "Tongue of Flame", 0, 0x1861 );
-							Server.Items.QuestSouvenir.GiveReward( m, "Heart of Earth", 0, 0x1862 );
-							Server.Items.QuestSouvenir.GiveReward( m, "Tear of the Seas", 0, 0x1863 );
-
-							m.AddToBackpack( new ObsidianGate() );
-							m.SendMessage( "Some items have appeared in your pack." );
-							m.SendMessage( "You can change your title for this achievement." );
-							m.LocalOverheadMessage(MessageType.Emote, 1150, true, "You are now a Titan of Ether!");
-							LoggingFunctions.LogGeneric( m, "has become a Titan of Ether." );
-						}
-					}
-				}
-			}
+			m.AddToBackpack( new ObsidianGate() );
+			m.SendMessage( "Some items have appeared in your pack." );
+			m.SendMessage( "You can change your title for this achievement." );
+			m.LocalOverheadMessage( MessageType.Emote, 1150, true, "You are now a Titan of Ether!" );
+			LoggingFunctions.LogGeneric( m, "has become a Titan of Ether." );
 
 			return true;
 		}
