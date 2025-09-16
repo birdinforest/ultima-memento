@@ -99,6 +99,9 @@ namespace Server.Temptation
 					break;
 
 				case ActionButtonType.Strongest_Avenger:
+					m_Context.IncreaseMobDifficulty = !m_Context.IncreaseMobDifficulty;
+					break;
+
 				case ActionButtonType.Famine:
 				case ActionButtonType.Puzzle_master:
 				case ActionButtonType.This_is_just_a_tribute:

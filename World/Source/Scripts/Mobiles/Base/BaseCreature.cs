@@ -5845,6 +5845,47 @@ namespace Server.Mobiles
 
 		protected virtual BaseAI ForcedAI { get { return null; } }
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsEmpowered
+		{
+			get { return m_AI is OmniAI && ((OmniAI)m_AI).IsEmpowered; }
+			set
+			{
+				if (false == (m_AI is OmniAI)) return;
+
+				((OmniAI)m_AI).IsEmpowered = value;
+			}
+		}
+
+		public override void OnCombatantChange()
+		{
+			base.OnCombatantChange();
+
+			TryEmpower(Combatant);
+		}
+
+		public void ResetEmpower()
+		{
+			if (false == (m_AI is OmniAI)) return;
+
+			IsEmpowered = false;
+		}
+
+		public void TryEmpower(Mobile combatant)
+		{
+			if (MobileUtilities.TryGetMasterPlayer(this) != null) return; // Player creatures don't increase difficulty
+			if (false == (m_AI is OmniAI)) return;
+			if (IsEmpowered) return;
+
+			var master = MobileUtilities.TryGetMasterPlayer(combatant);
+			if (master == null) return;
+
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(master);
+			if (!context.IncreaseMobDifficulty) return;
+
+			IsEmpowered = true;
+		}
+
 		public  void ChangeAIType( AIType NewAI )
 		{
 			if ( m_AI != null )
@@ -8950,6 +8991,7 @@ namespace Server.Mobiles
 
 				CurrentWayPoint = null;//so tamed animals don't try to go back
 
+				ResetEmpower();
 				ControlMaster = m;
 				Controlled = true;
 				ControlTarget = null;

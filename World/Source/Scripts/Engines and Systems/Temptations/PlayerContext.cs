@@ -25,6 +25,13 @@ namespace Server.Temptation
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool IncreaseMobDifficulty
+		{
+			get { return GetFlag(TemptationFlags.Strongest_Avenger); }
+			set { SetFlag(TemptationFlags.Strongest_Avenger, value); }
+		}
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool IsBerserk
 		{
 			get { return GetFlag(TemptationFlags.I_can_take_it); }
