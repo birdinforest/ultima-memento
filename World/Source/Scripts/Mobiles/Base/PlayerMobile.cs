@@ -3214,6 +3214,13 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IgnoreVendorGoldSafeguard { get; set; }
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Temptation.PlayerContext Temptations
+		{
+			get { return Temptation.TemptationEngine.Instance.GetContextOrDefault(this); }
+			set { }
+		}
+
 		private bool m_NeedRemoveIDSkills = false;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

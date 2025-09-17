@@ -1,5 +1,8 @@
+using System;
+
 namespace Server.Temptation
 {
+	[PropertyObject]
 	public class PlayerContext
 	{
 		public static readonly PlayerContext Default = new PlayerContext();
@@ -22,6 +25,7 @@ namespace Server.Temptation
 			set { SetFlag(TemptationFlags.Puzzle_master, value); }
 		}
 
+		[CommandProperty(AccessLevel.GameMaster)]
 		public TemptationFlags Flags { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -82,6 +86,11 @@ namespace Server.Temptation
 				Flags |= flag;
 			else
 				Flags &= ~flag;
+		}
+
+		public override string ToString()
+		{
+			return "...";
 		}
 	}
 }
