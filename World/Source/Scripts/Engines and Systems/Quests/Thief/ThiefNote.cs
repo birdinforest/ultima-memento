@@ -321,7 +321,7 @@ namespace Server.Items
 
 				if ( !( PlayerSettings.GetDiscovered( m, "the Land of Sosaria" ) ) && searchLocation == Land.Sosaria )
 				{
-					if ( ((PlayerMobile)m).SkillStart == 11000 ){ searchLocation = Land.Savaged; }
+					if ( ((PlayerMobile)m).CharacterType == CharacterType.Savage ){ searchLocation = Land.Savaged; }
 					else { searchLocation = Land.Lodoria; }
 				}
 

@@ -48,7 +48,7 @@ namespace Server.Misc
 		public static void SetSavage( Mobile m ) // -------------------------------------------------------------------------------------------------
 		{
 			PlayerSettings.SetDiscovered( m, "the Savaged Empire", true );
-			MyServerSettings.SkillBegin( "savage", (PlayerMobile)m );
+			((PlayerMobile)m).SetCharacterType( CharacterType.Savage );
 			Server.Misc.MorphingTime.RemoveMyClothes( m );
 
 			if ( m.Female )
@@ -136,7 +136,7 @@ namespace Server.Misc
 			Point3D loc = new Point3D( 7000, 4000, 0 );
 			m.MoveToWorld( loc, Map.Lodor );
 
-			MyServerSettings.SkillBegin( "alien", (PlayerMobile)m );
+			((PlayerMobile)m).SetCharacterType( CharacterType.Alien );
 			Server.Misc.MorphingTime.RemoveMyClothes( m );
 
 			List<Item> contents = new List<Item>();
@@ -235,7 +235,7 @@ namespace Server.Misc
 		public static void SetWantedState( PlayerMobile m ) // -------------------------------------------------------------------------------------------------
 		{
 			SetBardsTaleQuest( m, "BardsTaleWin", true );
-			MyServerSettings.SkillBegin( "fugitive", m );
+			m.SetCharacterType( CharacterType.Fugitive );
 			m.Kills = 1;
 			m.Fugitive = 1;
 		}

@@ -1,24 +1,14 @@
 using System;
-using Server;
-using System.Collections;
 using Server.Misc;
-using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
 using Server.Mobiles;
-using Server.Accounting;
-using Server.Regions;
-using Server.Targeting;
-using System.Collections.Generic;
-using Server.Items;
-using Server.Spells.Fifth;
-using System.IO;
-using System.Xml;
 
 namespace Server
 {
     class MyServerSettings
     {
+		public const int DEFAULT_SKILL_COUNT = 10;
+		public const int MAX_BONUS_SKILL_COUNT = 10;
+
 		public static void UpdateWarning()
 		{
 			if ( Utility.DateUpdated() != 20240922 )
@@ -461,64 +451,26 @@ namespace Server
 			return safari;
 		}
 
-		public static int SkillBoost()
+		public static int SkillBoostCount()
 		{
-			int skill = 0;
-
-			if ( MySettings.S_SkillBoost > 10 )
-				MySettings.S_SkillBoost = 10;
-
-			if ( MySettings.S_SkillBoost < 1 )
-				MySettings.S_SkillBoost = 0;
-
-			skill = MySettings.S_SkillBoost * 1000;
-
-			return skill;
+			return Math.Max( 0, Math.Min( MAX_BONUS_SKILL_COUNT, MySettings.S_SkillBoost ) );
 		}
 
-		public static string SkillGypsy( string area )
+		public static int StartTypeBonusSkillCount( CharacterType type )
 		{
-			int skills = 10;
-
-			if ( area == "savage" )
-				skills = 11;
-			else if ( area == "alien" )
-				skills = 40;
-			else if ( area == "fugitive" )
-				skills = 13;
-			else
-				skills = 10;
-
-			if ( MySettings.S_SkillBoost > 10 )
-				MySettings.S_SkillBoost = 10;
-
-			if ( MySettings.S_SkillBoost < 1 )
-				MySettings.S_SkillBoost = 0;
-
-			skills = skills + MySettings.S_SkillBoost;
-
-			return skills.ToString();
-		}
-
-		public static void SkillBegin( string area, PlayerMobile pm )
-		{
-			pm.SkillBoost = SkillBoost();
-
-			if ( area == "savage" )
-				pm.SkillStart = 11000;
-			else if ( area == "alien" )
-				pm.SkillStart = 40000;
-			else if ( area == "fugitive" )
-				pm.SkillStart = 13000;
-			else
-				pm.SkillStart = 10000;
-
-			pm.Skills.Cap = pm.SkillStart + pm.SkillBoost + pm.SkillEther;
+			switch (type)
+			{
+				case CharacterType.Fugitive: return 3;
+				case CharacterType.Savage: return 1;
+				case CharacterType.Alien: return 30;
+				case CharacterType.Default: return 0;
+				default: return 0;
+			}
 		}
 
 		public static int SkillBase()
 		{
-			return ( 10000 + SkillBoost() );
+			return 1000 * ( DEFAULT_SKILL_COUNT + SkillBoostCount() );
 		}
 
 		public static double SkillGain()

@@ -80,10 +80,7 @@ namespace Server.Misc
 
 		public static bool isFromSpace( Mobile m )
 		{
-			if ( ((PlayerMobile)m).SkillStart == 40000 )
-				return true;
-
-			return false;
+			return m is PlayerMobile && ((PlayerMobile)m).CharacterType == CharacterType.Alien;
 		}
 
 		public static bool isSyth ( Mobile m, bool checkSword )

@@ -45,6 +45,14 @@ namespace Server.Mobiles
 		HasStatReward			= 0x00002000
 	}
 
+	public enum CharacterType
+	{
+		Default,
+		Fugitive,
+		Savage,
+		Alien,
+	}
+
 	public enum NpcGuild
 	{
 		None,
@@ -150,7 +158,7 @@ namespace Server.Mobiles
 		private bool m_SneakDamage;
 		private PlayerFlag m_Flags;
 		private int m_StepsTaken;
-		private int m_Fugitive;
+		private bool m_InnocentFugitive;
 		private bool m_IsStealthing; // IsStealthing should be moved to Server.Mobiles
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
 		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
@@ -234,11 +242,14 @@ namespace Server.Mobiles
 			set { m_AllianceMessageHue = value; }
 		}
 
+		/// <summary>
+		/// 1 = Fugitive + not redeemed
+		/// </summary>
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Fugitive
 		{
-			get{ return m_Fugitive; }
-			set{ m_Fugitive = value; }
+			get{ return CharacterType != CharacterType.Fugitive || m_InnocentFugitive ? 0 : 1; }
+			set{ m_InnocentFugitive = value == 0; }
 		}
 
 		public int StepsTaken
@@ -2876,7 +2887,8 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( SkillStart == 40000 ){ return 0; } // Aliens never have Luck
+				if ( CharacterType == CharacterType.Alien ) { return 0; } // Aliens never have Luck
+
 				return AosAttributes.GetValue( this, AosAttribute.Luck );
 			}
 		}
@@ -3170,17 +3182,25 @@ namespace Server.Mobiles
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int SkillStart { get; set; }
+		public bool IsTitanOfEther { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int SkillBoost { get; set; }
+		public CharacterType CharacterType { get; private set; }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int SkillEther { get; set; }
+		public void SetCharacterType( CharacterType type )
+		{
+			CharacterType = type;
+			RefreshSkillCap();
+		}
 
 		public void RefreshSkillCap()
 		{
-			Skills.Cap = SkillStart + SkillBoost + SkillEther;
+			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
+			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
+			var titanAmount = IsTitanOfEther ? 5000 : 0;
+			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
+
+			Skills.Cap = baseAmount + boostAmount + titanAmount + typeAmount;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3199,6 +3219,11 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 46:
+					IsTitanOfEther = reader.ReadBool();
+					CharacterType = (CharacterType)reader.ReadInt();
+					m_InnocentFugitive = reader.ReadBool();
+					goto case 45;
 				case 45:
 					m_NeedRemoveIDSkills = reader.ReadBool();
 					goto case 44;
@@ -3263,14 +3288,19 @@ namespace Server.Mobiles
 				}
 				case 33:
 				{
-					SkillStart = reader.ReadInt();
-					SkillBoost = reader.ReadInt();
-					SkillEther = reader.ReadInt();
+					if ( version < 46 )
+					{
+						var skillStart = reader.ReadInt();
+						var skillBoost = reader.ReadInt();
+						var skillEther = reader.ReadInt();
 
-					if ( SkillBoost < MyServerSettings.SkillBoost() )
-						SkillBoost = MyServerSettings.SkillBoost();
+						if (skillStart == 40000) CharacterType = CharacterType.Alien;
+						else if (skillStart == 13000) CharacterType = CharacterType.Fugitive;
+						else if (skillStart == 11000) CharacterType = CharacterType.Savage;
+						else CharacterType = CharacterType.Default;
 
-					RefreshSkillCap();
+						if (skillEther > 0) IsTitanOfEther = true;
+					}
 
 					goto case 32;
 				}
@@ -3433,7 +3463,7 @@ namespace Server.Mobiles
 				{
 					if ( version < 36 ){ int NotUsed8 = reader.ReadEncodedInt(); }
 					if ( version < 36 ){ int NotUsed9 = reader.ReadEncodedInt(); }
-					m_Fugitive = reader.ReadEncodedInt();
+					if ( version < 46 ) { Fugitive = reader.ReadEncodedInt(); }
 					goto case 15;
 				}
 				case 15:
@@ -3578,6 +3608,9 @@ namespace Server.Mobiles
 			else if ( version < 38 )
 				CharacterGuilds = 0;
 
+			// Force to latest configured value and resync skill cap
+			RefreshSkillCap();
+
 			Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( ResetThings ), this );
 		}
 
@@ -3607,7 +3640,11 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 45 ); // version
+			writer.Write( (int) 46 ); // version
+
+			writer.Write( IsTitanOfEther );
+			writer.Write( (int)CharacterType );
+			writer.Write( m_InnocentFugitive );
 
 			writer.Write(m_NeedRemoveIDSkills);
 			writer.Write(SuppressVendorTooltip);
@@ -3633,10 +3670,6 @@ namespace Server.Mobiles
 
 			writer.Write( UsingAncientBook );
 			writer.Write( SpellBarsArch4 );
-
-			writer.Write( SkillStart );
-			writer.Write( SkillBoost );
-			writer.Write( SkillEther );
 
 			writer.Write( m_Camp );
 			writer.Write( m_Bedroll );
@@ -3713,8 +3746,6 @@ namespace Server.Mobiles
 
 			writer.WriteEncodedInt( m_GuildRank.Rank );
 			writer.Write( m_LastOnline );
-
-			writer.WriteEncodedInt( (int) m_Fugitive );
 
 			bool useMods = ( m_HairModID != -1 || m_BeardModID != -1 );
 

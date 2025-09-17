@@ -34,7 +34,7 @@ namespace Server.Items
 			var m = (PlayerMobile)mobile;
 			TitanRiches(m);
 
-			m.SkillEther = 5000;
+			m.IsTitanOfEther = true;
 			m.RefreshSkillCap();
 			m.StatCap = 300;
 
