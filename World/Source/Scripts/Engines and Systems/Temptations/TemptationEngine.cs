@@ -41,7 +41,7 @@ namespace Server.Temptation
 		public PlayerContext GetContextOrDefault(Mobile mobile)
 		{
 			PlayerContext context;
-			return mobile != null && m_Context.TryGetValue(mobile.Serial, out context) ? context : PlayerContext.Default;
+			return mobile != null && mobile is PlayerMobile && m_Context.TryGetValue(mobile.Serial, out context) ? context : PlayerContext.Default;
 		}
 
 		public PlayerContext GetOrCreateContext(Mobile mobile)
