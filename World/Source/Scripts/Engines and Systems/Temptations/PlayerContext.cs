@@ -71,6 +71,13 @@ namespace Server.Temptation
 
 		private void SetFlag(TemptationFlags flag, bool value)
 		{
+			// Never allow Default to be updated
+			if (this == Default)
+			{
+				Console.WriteLine("[Temptation] Attempted to update Default PlayerContext");
+				return;
+			}
+
 			if (value)
 				Flags |= flag;
 			else
