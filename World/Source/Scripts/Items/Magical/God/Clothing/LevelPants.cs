@@ -16,6 +16,23 @@ namespace Server.Items
 		{
 		}
 
+		public override bool OnEquip(Mobile from)
+		{
+			if (!base.OnEquip(from)) return false;
+
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(from);
+			Layer = context.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
+			
+			return true;
+		}
+
+		public override void OnRemoved(object parent)
+		{
+			base.OnRemoved(parent);
+
+			Layer = Layer.Pants;
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
