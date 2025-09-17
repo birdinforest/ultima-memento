@@ -3197,10 +3197,16 @@ namespace Server.Mobiles
 		{
 			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
-			var titanAmount = IsTitanOfEther ? 5000 : 0;
 			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
 
-			Skills.Cap = baseAmount + boostAmount + titanAmount + typeAmount;
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(this);
+			var titanAmount = IsTitanOfEther
+				? context.LimitTitanBonus
+					? 2000
+					: 5000
+				: 0;
+
+			Skills.Cap = baseAmount + boostAmount + typeAmount + titanAmount;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -2,11 +2,15 @@ using System;
 using Server.Network;
 using Server.Misc;
 using System.Linq;
+using Server.Engines.PuzzleChest;
+using Server.Mobiles;
 
 namespace Server.Items
 {
 	public class StealBase : BaseAddon
 	{
+		private PuzzleChest m_PuzzleChest;
+
 		public int BoxType;
 		public int BoxColor;
 		public int PedType;
@@ -229,6 +233,9 @@ namespace Server.Items
 
 		public override void OnComponentUsed( AddonComponent ac, Mobile from )
 		{
+			var player = from as PlayerMobile;
+			if ( player == null ) return;
+
 			if ( from.Blessed )
 			{
 				from.SendMessage( "You cannot open that while in this state." );
@@ -244,7 +251,17 @@ namespace Server.Items
 			MuseumBook.FoundItem( from, 2 );
 			QuestTome.FoundItem( from, 2, null );
 
-			if ( m_Tries > 5 )
+			var envelope = from.Backpack.FindItemByType( typeof ( ThiefNote ) ) as ThiefNote;
+
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault( from );
+			if ( context.CanUsePuzzleboxes && envelope == null )
+			{
+				if ( m_PuzzleChest == null )
+					m_PuzzleChest = new PuzzleChest(this);
+
+				m_PuzzleChest.ShowGump(from);
+			}
+			else if ( m_Tries > 5 )
 			{
 				Item Pedul = new StealBaseEmpty();
 				Pedul.ItemID = PedType;
@@ -296,7 +313,7 @@ namespace Server.Items
 			else if ( from.CheckSkill( SkillName.Stealing, 0, 125 ) )
 			{
 				m_Tries++;
-				var envelope = from.Backpack.FindItemByType( typeof ( ThiefNote ) ) as ThiefNote;
+
 				if ( envelope != null && envelope.NoteOwner == from )
 				{
 

@@ -15,6 +15,13 @@ namespace Server.Temptation
 			Flags = (TemptationFlags)reader.ReadInt();
 		}
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool CanUsePuzzleboxes
+		{
+			get { return GetFlag(TemptationFlags.Puzzle_master); }
+			set { SetFlag(TemptationFlags.Puzzle_master, value); }
+		}
+
 		public TemptationFlags Flags { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -41,6 +48,14 @@ namespace Server.Temptation
 			get { return GetFlag(TemptationFlags.I_can_take_it); }
 			set { SetFlag(TemptationFlags.I_can_take_it, value); }
 		}
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ReduceRacialMagicalAttributes
+		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool LimitTitanBonus
+		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
 
 		public void Serialize(GenericWriter writer)
 		{
