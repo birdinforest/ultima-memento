@@ -51,7 +51,7 @@ namespace Server.Mobiles
 			if ( CheckForRemoveCurse() == true && Utility.RandomDouble() > 0.25 )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1154, "Casting Remove Curse" );
+					m_Mobile.SayHued( 1154, "Casting Remove Curse" );
 
 				return new RemoveCurseSpell( m_Mobile, null );
 			}
@@ -61,28 +61,28 @@ namespace Server.Mobiles
 			if ( whichone == 4 && m_Mobile.Skills[SkillName.Knightship].Value >= 55.0 && m_Mobile.Mana >= 10 )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1154, "Casting Holy Light" );
+					m_Mobile.SayHued( 1154, "Casting Holy Light" );
 
 				return new HolyLightSpell( m_Mobile, null );
 			}
 			else if ( whichone >= 3 && CheckForDispelEvil() )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1154, "Casting Dispel Evil" );
+					m_Mobile.SayHued( 1154, "Casting Dispel Evil" );
 
 				return new DispelEvilSpell( m_Mobile, null );
 			}
 			else if ( whichone >= 2 && !(DivineFurySpell.UnderEffect( m_Mobile )) && m_Mobile.Skills[SkillName.Knightship].Value >= 35.0 )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1154, "Casting Divine Fury" );
+					m_Mobile.SayHued( 1154, "Casting Divine Fury" );
 
 				return new DivineFurySpell( m_Mobile, null );
 			}
 			else if ( CheckForConsecrateWeapon() )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1154, "Casting Consecrate Weapon" );
+					m_Mobile.SayHued( 1154, "Casting Consecrate Weapon" );
 
 				return new ConsecrateWeaponSpell( m_Mobile, null );
 			}
@@ -93,7 +93,7 @@ namespace Server.Mobiles
 		public bool CheckForConsecrateWeapon()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1154, "Checking to bless my weapon" );
+				m_Mobile.SayHued( 1154, "Checking to bless my weapon" );
 
 			if ( m_Mobile.Skills[SkillName.Knightship].Value < 15.0 || m_Mobile.Mana <= 9 )
 				return false;
@@ -109,7 +109,7 @@ namespace Server.Mobiles
 		public bool CheckForDispelEvil()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1154, "Checking to dispel evil" );
+				m_Mobile.SayHued( 1154, "Checking to dispel evil" );
 
 			if ( m_Mobile.Skills[SkillName.Knightship].Value < 35.0 || m_Mobile.Mana <= 9 )
 				return false;
@@ -136,7 +136,7 @@ namespace Server.Mobiles
 		public bool CheckForRemoveCurse()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1154, "Checking for remove curse" );
+				m_Mobile.SayHued( 1154, "Checking for remove curse" );
 
 			if ( m_Mobile.Skills[SkillName.Knightship].Value < 5.0 || m_Mobile.Mana <= 19 )
 				return false;

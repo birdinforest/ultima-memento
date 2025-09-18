@@ -42,7 +42,7 @@ namespace Server.Mobiles
 			Spell spell = null;
 
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 2117, "Using a samurai stance" );
+				m_Mobile.SayHued( 2117, "Using a samurai stance" );
 
 			BaseWeapon weapon = m_Mobile.Weapon as BaseWeapon;
 
@@ -65,7 +65,7 @@ namespace Server.Mobiles
 		public void UseBushidoMove()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 2117, "Using a samurai or special move strike" );
+				m_Mobile.SayHued( 2117, "Using a samurai or special move strike" );
 
 			Mobile comb = m_Mobile.Combatant;
 

@@ -62,7 +62,7 @@ namespace Server.Mobiles
 			if ( spell != null )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1156, "Blessing my self" );
+					m_Mobile.SayHued( 1156, "Blessing my self" );
 
 				return spell;
 			}
@@ -75,7 +75,7 @@ namespace Server.Mobiles
 				if ( spell != null )
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1156, "Cursing my opponent" );
+						m_Mobile.SayHued( 1156, "Cursing my opponent" );
 
 					return spell;
 				}
@@ -85,7 +85,7 @@ namespace Server.Mobiles
 			if ( m_Mobile.Combatant != null && !m_Mobile.Combatant.Poisoned && Utility.RandomDouble() > 0.75 )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1156, "Casting Poison" );
+					m_Mobile.SayHued( 1156, "Casting Poison" );
 
 				spell = new PoisonSpell( m_Mobile, null );
 
@@ -103,7 +103,7 @@ namespace Server.Mobiles
 				if ( spell != null )
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1156, "Draining mana" );
+						m_Mobile.SayHued( 1156, "Draining mana" );
 
 					return spell;
 				}
@@ -117,7 +117,7 @@ namespace Server.Mobiles
 				if ( spell != null )
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1156, "Summoning help" );
+						m_Mobile.SayHued( 1156, "Summoning help" );
 					return spell;
 				}
 			}
@@ -257,7 +257,7 @@ namespace Server.Mobiles
 		public Spell GetRandomMageryDamageSpell()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1156, "Random damage spell" );
+				m_Mobile.SayHued( 1156, "Random damage spell" );
 
 			int whichone = (int)(m_Mobile.Skills[SkillName.Magery].Value / 14.2) - 1;
 

@@ -62,14 +62,14 @@ namespace Server.Mobiles
 					if ( whichone == 2 && m_Mobile.Skills[SkillName.Necromancy].Value > 50.0 )
 					{
 						if ( m_Mobile.Debug )
-							m_Mobile.Say( 1109, "Undead: Casting Animate Dead" );
+							m_Mobile.SayHued( 1109, "Undead: Casting Animate Dead" );
 
 						spell = new AnimateDeadSpell( m_Mobile, null );
 					}
 					else if ( m_Mobile.Followers == 0 || m_Mobile.Followers == 3 )
 					{
 						if ( m_Mobile.Debug )
-							m_Mobile.Say( 1109, "Undead: Summoning Familiar " );
+							m_Mobile.SayHued( 1109, "Undead: Summoning Familiar " );
 
 						CreateNecromancerFamiliar();
 					}
@@ -82,7 +82,7 @@ namespace Server.Mobiles
 				case 3: // Curse them
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1109, "Cursing Them" );
+						m_Mobile.SayHued( 1109, "Cursing Them" );
 
 					spell = GetNecromancerCurseSpell();
 					break;
@@ -91,7 +91,7 @@ namespace Server.Mobiles
 				case 5:	// Reverse combat
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1109, "Casting Blood Oath" );
+						m_Mobile.SayHued( 1109, "Casting Blood Oath" );
 
 					if ( m_Mobile.Skills[SkillName.Necromancy].Value > 30.0 )
 						spell = new BloodOathSpell( m_Mobile, null );
@@ -103,7 +103,7 @@ namespace Server.Mobiles
 					if ( m_CanShapeShift )
 					{
 						if ( m_Mobile.Debug )
-							m_Mobile.Say( 1109, "Shapechange " );
+							m_Mobile.SayHued( 1109, "Shapechange " );
 
 						spell = GetNecromancerShapeshiftSpell();
 					}
@@ -116,7 +116,7 @@ namespace Server.Mobiles
 				default: // Damage them
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1109, "Random damage spell" );
+						m_Mobile.SayHued( 1109, "Random damage spell" );
 
 					spell = GetNecromancerDamageSpell();
 					break;

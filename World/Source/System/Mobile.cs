@@ -7179,6 +7179,11 @@ namespace Server
 			Say( number, "" );
 		}
 
+		public void SayHued( int hue, string text )
+		{
+			PublicOverheadMessage( MessageType.Regular, hue, false, text );
+		}
+
 		public void Say( int number, string args )
 		{
 			PublicOverheadMessage( MessageType.Regular, m_SpeechHue, number, args );

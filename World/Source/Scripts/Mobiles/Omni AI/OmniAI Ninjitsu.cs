@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			else if (0.2 > Utility.RandomDouble() )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 995, "Casting Mirror Image" );
+					m_Mobile.SayHued( 995, "Casting Mirror Image" );
 
 				spell = new MirrorImage( m_Mobile, null );
 			}
@@ -61,7 +61,7 @@ namespace Server.Mobiles
 			if ( DateTime.Now > m_NextShurikenThrow && m_Mobile.Combatant != null && m_Mobile.InRange( m_Mobile.Combatant, 12 ) )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 995, "Throwing a shuriken" );
+					m_Mobile.SayHued( 995, "Throwing a shuriken" );
 
 				m_Mobile.Direction = m_Mobile.GetDirectionTo( m_Mobile.Combatant );
 
@@ -80,7 +80,7 @@ namespace Server.Mobiles
 		public void GetHiddenNinjaMove()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 995, "Using a hidden ninja strike" );
+				m_Mobile.SayHued( 995, "Using a hidden ninja strike" );
 
 			int whichone = Utility.RandomMinMax( 1, 3 );
 
@@ -95,7 +95,7 @@ namespace Server.Mobiles
 		public void GetNinjaMove()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 995, "Using a ninja strike" );
+				m_Mobile.SayHued( 995, "Using a ninja strike" );
 
 			int whichone = Utility.RandomMinMax( 1, 3 );
 

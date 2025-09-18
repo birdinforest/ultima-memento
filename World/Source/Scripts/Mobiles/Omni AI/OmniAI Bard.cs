@@ -32,7 +32,7 @@ namespace Server.Mobiles
 		public void BardPower()
 		{
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1162, "" );
+				m_Mobile.SayHued( 1162, "" );
 
 			CheckInstrument();
 
@@ -56,7 +56,7 @@ namespace Server.Mobiles
 				return true;
 
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1162, "I need an instrument, fixing my problem." );
+				m_Mobile.SayHued( 1162, "I need an instrument, fixing my problem." );
 
 			if ( m_Mobile.Backpack == null )
 				return false;
@@ -90,7 +90,7 @@ namespace Server.Mobiles
 				return;
 
 			if ( m_Mobile.Debug )
-				m_Mobile.Say( 1162, "Discording" );
+				m_Mobile.SayHued( 1162, "Discording" );
 
 			// Discord's target flag is harmful so the AI already targets it's combatant.
 			// However players are immune to Discord hence the following.
@@ -160,7 +160,7 @@ namespace Server.Mobiles
 				if ( target != null && bc.CanBeHarmful( target ) )
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1162, "Provocation: Pet to Master" );
+						m_Mobile.SayHued( 1162, "Provocation: Pet to Master" );
 
 					bc.Provoke( m_Mobile, target, true );
 					return true;
@@ -193,7 +193,7 @@ namespace Server.Mobiles
 				if ( list[i].CanBeHarmful( target ) )
 				{
 					if ( m_Mobile.Debug )
-						m_Mobile.Say( 1162, "Provocation: " + list[i].Name + " to " + target.Name );
+						m_Mobile.SayHued( 1162, "Provocation: " + list[i].Name + " to " + target.Name );
 
 					list[i].Provoke( m_Mobile, target, true );
 					return true;
@@ -211,7 +211,7 @@ namespace Server.Mobiles
 			if ( m_Mobile.Combatant is PlayerMobile )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1162, "Peacemaking: Player" );
+					m_Mobile.SayHued( 1162, "Peacemaking: Player" );
 
 				PlayerMobile pm = m_Mobile.Combatant as PlayerMobile;
 
@@ -224,7 +224,7 @@ namespace Server.Mobiles
 			else if ( m_Mobile.Target != null )
 			{
 				if ( m_Mobile.Debug )
-					m_Mobile.Say( 1162, "Peacemaking" );
+					m_Mobile.SayHued( 1162, "Peacemaking" );
 
 				m_Mobile.Target.Invoke( m_Mobile, m_Mobile.Combatant );
 			}
