@@ -1369,13 +1369,13 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int StamMax
 		{
-			get{ return ( MyServerSettings.PlayerLevelMod( base.StamMax, this ) ) + AosAttributes.GetValue( this, AosAttribute.BonusStam ); }
+			get{ return Math.Max( 10, MyServerSettings.PlayerLevelMod( base.StamMax, this ) + AosAttributes.GetValue( this, AosAttribute.BonusStam ) ); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int ManaMax
 		{
-			get{ return ( MyServerSettings.PlayerLevelMod( base.ManaMax, this ) ) + AosAttributes.GetValue( this, AosAttribute.BonusMana ); }
+			get{ return Math.Max( 10, MyServerSettings.PlayerLevelMod( base.ManaMax, this ) + AosAttributes.GetValue( this, AosAttribute.BonusMana ) ); }
 		}
 		#endregion
 
