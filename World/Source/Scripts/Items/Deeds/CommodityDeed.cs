@@ -93,7 +93,13 @@ namespace Server.Items
 				return;
 			}
 
-			if (!box.TryDropItem(from, m_Commodity, false))
+			var parent = Parent as Container;
+			if (parent != null && m_Commodity.Stackable && parent.TryDropItem(from, m_Commodity, false))
+			{
+				if (!m_Commodity.Deleted) // Didn't auto-stack
+					m_Commodity.Location = Location;
+			}
+			else if (!box.TryDropItem(from, m_Commodity, false))
 			{
 				from.SendLocalizedMessage(1080017); // That container cannot hold more items.
 				return;
@@ -113,6 +119,10 @@ namespace Server.Items
 				string commodityName = m_Commodity.Name ?? m_Commodity.GetType().Name;
 				list.Add(1060658, "Amount\t{0}", m_Commodity.Amount);
 				list.Add(1060659, "Type\t{0}", commodityName);
+			}
+			else
+			{
+				list.Add("Usable on refined resources");
 			}
 		}
 
