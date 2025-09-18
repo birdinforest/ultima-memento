@@ -1,5 +1,4 @@
 using Server.Gumps;
-using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 
@@ -83,7 +82,8 @@ namespace Server.Engines.GlobalShoppe
 				y += 35;
 
 				AddItem(102, y, 10922); // Promotional Token
-				TextDefinition.AddHtmlText(this, 153, y, 717, 20, "Shows your reputation bonus, if you are a member of the associated guild.", HtmlColors.BROWN);
+				AddItem(102, y, 0x0EEC, 0x44C); // Gold pile
+				TextDefinition.AddHtmlText(this, 153, y, 717, 20, "Shows your shoppe's earned points.", HtmlColors.BROWN);
 				y += 35;
 
 				AddItem(102, y, 4030); // Open Book
@@ -109,36 +109,45 @@ namespace Server.Engines.GlobalShoppe
 
 				// ------------------------------------------------------------------------------------
 
-				int x_header = 162;
+				const int INSET = 10;
+				int x_header = INSET;
 				int y_header_icon = 50;
 				int y_header_number = y_header_icon + 31;
 				int y_header_word = y_header_number + 22;
 
+				const int ITEM_PADDING = 100;
+
 				AddItem(x_header + 39, y_header_icon, 10283); // Goblet
 				TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Reputation"), HtmlColors.BROWN);
 				TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Reputation), HtmlColors.MUSTARD);
-				x_header += 120;
+				x_header += ITEM_PADDING;
 
 				AddItem(x_header + 27, y_header_icon, 3823); // Gold
 				TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Gold"), HtmlColors.BROWN);
 				TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Gold), HtmlColors.MUSTARD);
-				x_header += 120;
+				x_header += ITEM_PADDING;
 
-				AddItem(x_header + 38, y_header_icon, 10174); // Sack
-				TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", toolName), HtmlColors.BROWN);
-				TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Tools), HtmlColors.MUSTARD);
-				x_header += 120;
-
-				AddItem(x_header + 23, y_header_icon - 4, 3710); // Crate
-				TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", resourceName), HtmlColors.BROWN);
-				TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Resources), HtmlColors.MUSTARD);
-				x_header += 120;
+				if (supportsOrders)
+				{
+					AddItem(x_header + 23, y_header_icon - 3, 0x0EEC, 0x44C); // Gold pile
+					TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Points"), HtmlColors.BROWN);
+					TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Points), HtmlColors.MUSTARD);
+					x_header += ITEM_PADDING;
+				}
 
 				if (supportsCustomers)
 				{
-					AddItem(x_header + 27, y_header_icon, 10922); // Promotional Token
-					TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", "Guild Bonus"), HtmlColors.BROWN);
-					TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", ((ICustomerShoppe)m_Shoppe).GetReputationBonus(from)), HtmlColors.MUSTARD);
+					const int GUMP_WIDTH = 904;
+					x_header = GUMP_WIDTH - INSET - 2 * ITEM_PADDING;
+
+					AddItem(x_header + 38, y_header_icon, 10174); // Sack
+					TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", toolName), HtmlColors.BROWN);
+					TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Tools), HtmlColors.MUSTARD);
+					x_header += ITEM_PADDING;
+
+					AddItem(x_header + 23, y_header_icon - 4, 3710); // Crate
+					TextDefinition.AddHtmlText(this, x_header, y_header_word, 100, 20, string.Format("<CENTER>{0}</CENTER>", resourceName), HtmlColors.BROWN);
+					TextDefinition.AddHtmlText(this, x_header, y_header_number, 100, 20, string.Format("<CENTER>{0}</CENTER>", context.Resources), HtmlColors.MUSTARD);
 				}
 
 				// ------------------------------------------------------------------------------------
