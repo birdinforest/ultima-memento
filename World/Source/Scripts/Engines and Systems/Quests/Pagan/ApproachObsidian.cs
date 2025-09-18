@@ -34,6 +34,7 @@ namespace Server.Items
 			var m = (PlayerMobile)mobile;
 			TitanRiches(m);
 
+			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(m);
 			m.IsTitanOfEther = true;
 			m.RefreshSkillCap();
 			m.StatCap = 300;
@@ -45,6 +46,7 @@ namespace Server.Items
 			Server.Items.QuestSouvenir.GiveReward( m, "Tear of the Seas", 0, 0x1863 );
 
 			m.AddToBackpack( new ObsidianGate() );
+			if (context.LimitTitanBonus) m.AddToBackpack( new SoulStone() );
 			m.SendMessage( "Some items have appeared in your pack." );
 			m.SendMessage( "You can change your title for this achievement." );
 			m.LocalOverheadMessage( MessageType.Emote, 1150, true, "You are now a Titan of Ether!" );
