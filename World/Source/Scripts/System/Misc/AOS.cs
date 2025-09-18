@@ -258,7 +258,7 @@ namespace Server
 
 			List<Item> items = m.Items;
 			int value = 0;
-			int raceValue = 0;
+			int raceValue = int.MinValue;
 
 			for( int i = 0; i < items.Count; ++i )
 			{
