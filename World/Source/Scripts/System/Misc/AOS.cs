@@ -299,7 +299,7 @@ namespace Server
 					AosAttributes attrs = ((BaseRace)obj).Attributes;
 
 					if( attrs != null )
-						raceValue += attrs[attribute];
+						raceValue = raceValue == int.MinValue ? attrs[attribute] : raceValue + attrs[attribute];
 				}
 				else if( obj is BaseInstrument )
 				{
@@ -343,9 +343,12 @@ namespace Server
 				}
 			}
 
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault( m );
-			if ( context.ReduceRacialMagicalAttributes ) value = Math.Max( value, raceValue ); // Does not effect Stats, Skills, or Resists
-			else value += raceValue;
+			if (int.MinValue < raceValue)
+			{
+				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault( m );
+				if ( context.ReduceRacialMagicalAttributes ) value = Math.Max( value, raceValue ); // Does not effect Stats, Skills, or Resists
+				else value += raceValue;
+			}
 				
 			if ( attribute == AosAttribute.LowerRegCost && value > MyServerSettings.LowerReg() )
 				value = MyServerSettings.LowerReg();
