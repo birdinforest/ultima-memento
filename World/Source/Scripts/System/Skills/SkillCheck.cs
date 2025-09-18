@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Temptation;
 
 namespace Server.Misc
 {
@@ -180,6 +181,10 @@ namespace Server.Misc
 					gc *= 0.38;
 				else if (skill.Base <= 125)
 					gc *= 0.38;
+				
+				var context = TemptationEngine.Instance.GetContextOrDefault(from);
+				if (context.AcceleratedSkillGain)
+					gc *= 1.25;
 			}
 			
 			if ( from.Alive && !DisableSkillGains && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
@@ -549,12 +554,15 @@ namespace Server.Misc
 
 		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
 		{
+			var context = TemptationEngine.Instance.GetContextOrDefault(player);
+			var gainDelay = context.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
+
 			DateTime end;
 			switch( stat )
 			{
-				case StatType.Dex: end = player.LastDexGain + m_StatGainDelay; break;
-				case StatType.Int: end = player.LastIntGain + m_StatGainDelay; break;
-				case StatType.Str: end = player.LastStrGain + m_StatGainDelay; break;
+				case StatType.Dex: end = player.LastDexGain + gainDelay; break;
+				case StatType.Int: end = player.LastIntGain + gainDelay; break;
+				case StatType.Str: end = player.LastStrGain + gainDelay; break;
 				default: return TimeSpan.Zero;
 			}
 			

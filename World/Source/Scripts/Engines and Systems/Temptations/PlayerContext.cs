@@ -24,11 +24,19 @@ namespace Server.Temptation
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool AcceleratedSkillGain
+		{ get { return GetFlag(TemptationFlags.Deathwish); } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool CanUsePuzzleboxes
 		{
 			get { return GetFlag(TemptationFlags.Puzzle_master); }
 			set { SetFlag(TemptationFlags.Puzzle_master, value); }
 		}
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool CanWearTightPants
+		{ get { return GetFlag(TemptationFlags.Strongest_Avenger); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TemptationFlags Flags { get; set; }
@@ -48,10 +56,6 @@ namespace Server.Temptation
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool CanWearTightPants
-		{ get { return GetFlag(TemptationFlags.Strongest_Avenger); } }
-
-		[CommandProperty(AccessLevel.GameMaster)]
 		public bool IsBerserk
 		{
 			get { return GetFlag(TemptationFlags.I_can_take_it); }
@@ -59,18 +63,27 @@ namespace Server.Temptation
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool LimitTitanBonus
+		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ReduceRacialMagicalAttributes
 		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool LimitTitanBonus
-		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
+		public bool ReduceStatGainDelay
+		{ get { return GetFlag(TemptationFlags.Deathwish); } }
 
 		public void Serialize(GenericWriter writer)
 		{
 			writer.Write(0); // version
 
 			writer.Write((int)Flags);
+		}
+
+		public override string ToString()
+		{
+			return "...";
 		}
 
 		private bool GetFlag(TemptationFlags flag)
@@ -91,11 +104,6 @@ namespace Server.Temptation
 				Flags |= flag;
 			else
 				Flags &= ~flag;
-		}
-
-		public override string ToString()
-		{
-			return "...";
 		}
 	}
 }

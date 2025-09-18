@@ -179,7 +179,8 @@ namespace Server.Temptation
 
 				case ActionButtonType.This_is_just_a_tribute: return "- Tribute quests rewards are changed";
 				case ActionButtonType.Deathwish:
-					return "- An old sword"
+					return "+ You gain stats and skills faster"
+					+ "<br>- An old sword"
 					+ "<br>x You may never be resurrected";
 
 				default: return string.Empty;
