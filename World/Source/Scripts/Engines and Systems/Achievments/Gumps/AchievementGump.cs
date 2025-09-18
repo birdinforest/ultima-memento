@@ -109,6 +109,9 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                     .Where(ac => achieves.ContainsKey(ac.ID) && achieves[ac.ID].IsComplete)
                     .OrderByDescending(ac => achieves[ac.ID].CompletedOn);
 
+            if (m_isOtherView)
+                achievements = achievements.Where(ac => achieves.ContainsKey(ac.ID) && achieves[ac.ID].IsComplete);
+
             var maxPages = (int)Math.Ceiling((double)achievements.Count() / ITEMS_PER_PAGE);
             int itemIndex = 0;
             foreach (var achievement in achievements.Skip((pageNumber - 1) * ITEMS_PER_PAGE).Take(ITEMS_PER_PAGE))
@@ -137,8 +140,8 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             int index = i % itemsPerPage; // Item index
 
             var isComplete = acheiveData != null && acheiveData.IsComplete;
-            
-            string title;
+
+            var title = isComplete || !ac.HideTitle ? ac.Title : "???";
             string description;
             if (m_isOtherView)
             {
@@ -146,27 +149,11 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                                           m_viewerAchieves.ContainsKey(ac.ID) && 
                                           m_viewerAchieves[ac.ID].IsComplete;
                 
-                if (isComplete)
-                {
-                    title = viewerHasAchievement ? ac.Title : "???";
-                }
-                else
-                {
-                    title = viewerHasAchievement ? (ac.HideTitle ? "???" : ac.Title) : "???";
-                }
-                
-                if (viewerHasAchievement && isComplete)
-                {
-                    description = ac.Desc;
-                }
-                else
-                {
-                    description = "";
-                }
+                description = viewerHasAchievement && isComplete ? ac.Desc : "";
+
             }
             else
             {
-                title = isComplete || !ac.HideTitle ? ac.Title : "???";
                 description = isComplete || !ac.HideDesc ? ac.Desc : ac.HiddenDesc;
             }
             
