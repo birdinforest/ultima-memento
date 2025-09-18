@@ -19,14 +19,14 @@ namespace Server.Items
 
 		public override string DefaultName
 		{
-			get 
-			{ 
+			get
+			{
 				if (m_Commodity != null)
 				{
 					string commodityName = m_Commodity.Name ?? m_Commodity.GetType().Name;
 					return "a commodity deed for " + commodityName.ToLower();
 				}
-				return "a commodity deed"; 
+				return "a commodity deed";
 			}
 		}
 
@@ -61,20 +61,21 @@ namespace Server.Items
 		public override void OnDoubleClick(Mobile from)
 		{
 			BankBox box = from.FindBankNoCreate();
-			
+
 			if (m_Commodity != null)
 			{
-				if ( box != null && IsChildOf( box ) )
+				if (box != null && IsChildOf(box))
 				{
 					RedeemCommodity(from, box);
 				}
 				else
 				{
-                    from.SendLocalizedMessage(1047026); // That must be in your bank box to use it.
-                }
-			} else if ( box == null || !IsChildOf( box ) ) 
+					from.SendLocalizedMessage(1047026); // That must be in your bank box to use it.
+				}
+			}
+			else if (box == null || !IsChildOf(box))
 			{
-					from.SendLocalizedMessage( 1047026 ); // That must be in your bank box to use it.
+				from.SendLocalizedMessage(1047026); // That must be in your bank box to use it.
 			}
 			else
 			{
@@ -95,13 +96,13 @@ namespace Server.Items
 			if (!box.TryDropItem(from, m_Commodity, false))
 			{
 				from.SendLocalizedMessage(1080017); // That container cannot hold more items.
-                return;
+				return;
 			}
 
 			m_Commodity = null;
 			from.SendLocalizedMessage(1047031); //The commodity has been redeemed.
 			Delete();
-        }
+		}
 
 		public override void GetProperties(ObjectPropertyList list)
 		{
@@ -170,6 +171,6 @@ namespace Server.Items
 			m_Deed.SetCommodity(item);
 
 			from.SendLocalizedMessage(1047030); //The commodity has been filled.
-        }
+		}
 	}
 }
