@@ -80,7 +80,7 @@ namespace Server.Items
 			else
 			{
 				from.SendMessage("Target the commodity you wish to deed.");
-				from.Target = new CommodityTarget(this);
+				from.Target = new InternalTarget(this);
 			}
 		}
 
@@ -131,46 +131,46 @@ namespace Server.Items
 
 			m_Commodity = reader.ReadItem();
 		}
-	}
 
-	public class CommodityTarget : Target
-	{
-		private CommodityDeed m_Deed;
-
-		public CommodityTarget(CommodityDeed deed) : base(12, false, TargetFlags.None)
+		private class InternalTarget : Target
 		{
-			m_Deed = deed;
-		}
+			private CommodityDeed m_Deed;
 
-		protected override void OnTarget(Mobile from, object targeted)
-		{
-			if (m_Deed == null || m_Deed.Deleted)
-				return;
-
-			Item item = targeted as Item;
-			if (item == null)
+			public InternalTarget(CommodityDeed deed) : base(12, false, TargetFlags.None)
 			{
-				from.SendLocalizedMessage(1047027); // That is not a commodity the bankers will fill a commodity deed with.
-				return;
+				m_Deed = deed;
 			}
 
-			ICommodity commodityItem = item as ICommodity;
-			if (commodityItem == null || !commodityItem.IsCommodity)
+			protected override void OnTarget(Mobile from, object targeted)
 			{
-				from.SendLocalizedMessage(1047027); // That is not a commodity the bankers will fill a commodity deed with.
-				return;
+				if (m_Deed == null || m_Deed.Deleted)
+					return;
+
+				Item item = targeted as Item;
+				if (item == null)
+				{
+					from.SendLocalizedMessage(1047027); // That is not a commodity the bankers will fill a commodity deed with.
+					return;
+				}
+
+				ICommodity commodityItem = item as ICommodity;
+				if (commodityItem == null || !commodityItem.IsCommodity)
+				{
+					from.SendLocalizedMessage(1047027); // That is not a commodity the bankers will fill a commodity deed with.
+					return;
+				}
+
+				BankBox box = from.FindBankNoCreate();
+				if (!item.IsChildOf(box))
+				{
+					from.SendLocalizedMessage(1047026); // That must be in your bank box to use it.
+					return;
+				}
+
+				m_Deed.SetCommodity(item);
+
+				from.SendLocalizedMessage(1047030); //The commodity has been filled.
 			}
-
-			BankBox box = from.FindBankNoCreate();
-			if (!item.IsChildOf(box))
-			{
-				from.SendLocalizedMessage(1047026); // That must be in your bank box to use it.
-				return;
-			}
-
-			m_Deed.SetCommodity(item);
-
-			from.SendLocalizedMessage(1047030); //The commodity has been filled.
 		}
 	}
 }
