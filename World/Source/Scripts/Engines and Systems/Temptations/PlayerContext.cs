@@ -11,6 +11,11 @@ namespace Server.Temptation
 		{
 		}
 
+		public PlayerContext(PlayerContext context)
+		{
+			Flags = context.Flags;
+		}
+
 		public PlayerContext(GenericReader reader)
 		{
 			int version = reader.ReadInt();

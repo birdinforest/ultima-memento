@@ -7,6 +7,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Accounting;
 using System;
+using Server.Temptation;
 
 namespace Server.Mobiles
 {
@@ -660,6 +661,7 @@ namespace Server.Gumps
 					PlayerSettings.SetDiscovered( m, "the Land of Sosaria", true );
 			}
 
+			TemptationEngine.Instance.ApplyContext( (PlayerMobile)m, TemptationEngine.Instance.GetContextOrDefault( (PlayerMobile)m ) );
 			m.MoveToWorld( loc, map );
 			Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 			m.SendSound( 0x65C );

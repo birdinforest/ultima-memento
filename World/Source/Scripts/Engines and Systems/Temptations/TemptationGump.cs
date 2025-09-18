@@ -1,6 +1,7 @@
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Network;
+using System;
 
 namespace Server.Temptation
 {
@@ -24,7 +25,6 @@ namespace Server.Temptation
 		private const int LABEL_PADDING_BOTTOM = 20;
 		private const int SECTION_INDENT = 20;
 
-		private readonly PlayerContext m_Context;
 		private readonly PlayerMobile m_Requester;
 		private readonly PlayerMobile m_Target;
 
@@ -33,7 +33,6 @@ namespace Server.Temptation
 			from.CloseGump(typeof(TemptationGump));
 			requester.CloseGump(typeof(TemptationGump));
 
-			m_Context = context;
 			m_Target = from;
 			m_Requester = requester;
 
@@ -74,13 +73,12 @@ namespace Server.Temptation
 				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, string.Format("{0} was not tempted.", m_Target.Name), HtmlColors.RED);
 			else
 			{
-				AddOptions(x, ref y, canEdit);
+				AddOptions(x, ref y, canEdit, context);
 			}
 		}
 
-		public static void Open(PlayerMobile target, PlayerMobile requester)
+		public static void Open(PlayerMobile target, PlayerMobile requester, PlayerContext context)
 		{
-			var context = TemptationEngine.Instance.GetContextOrDefault(target);
 			requester.SendGump(new TemptationGump(target, context, requester));
 		}
 
@@ -88,36 +86,47 @@ namespace Server.Temptation
 		{
 			if (info.ButtonID == 0) return;
 
+			// Make sure we create a context if necessary
+			var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
+
 			switch ((ActionButtonType)info.ButtonID)
 			{
 				case ActionButtonType.I_can_take_it:
-					m_Context.IsBerserk = !m_Context.IsBerserk;
+					context.IsBerserk = !context.IsBerserk;
 					break;
 
 				case ActionButtonType.Deathwish:
-					m_Context.HasPermanentDeath = !m_Context.HasPermanentDeath;
+					context.HasPermanentDeath = !context.HasPermanentDeath;
 					break;
 
 				case ActionButtonType.Strongest_Avenger:
-					m_Context.IncreaseMobDifficulty = !m_Context.IncreaseMobDifficulty;
+					context.IncreaseMobDifficulty = !context.IncreaseMobDifficulty;
+					break;
+
+				case ActionButtonType.Puzzle_master:
+					context.CanUsePuzzleboxes = !context.CanUsePuzzleboxes;
 					break;
 
 				case ActionButtonType.Famine:
-				case ActionButtonType.Puzzle_master:
 				case ActionButtonType.This_is_just_a_tribute:
+					Console.WriteLine("[Temptation] Selected a flag that is not yet implemented: {0}", (ActionButtonType)info.ButtonID);
+					return;
+
 				case ActionButtonType.Close:
 				default:
 					return;
 			}
 
-			Open(m_Target, m_Requester);
+			TemptationEngine.Instance.ApplyContext(m_Target, context);
+
+			Open(m_Target, m_Requester, context);
 		}
 
-		private void AddOption(int x, ref int y, ActionButtonType actionButtonType, bool canEdit)
+		private void AddOption(int x, ref int y, ActionButtonType actionButtonType, bool canEdit, PlayerContext context)
 		{
 			const int X_BUTTON = 0xFB1;
 			const int BLANK_BUTTON = 0xE19;
-			var isSelected = GetIsSelected(actionButtonType);
+			var isSelected = GetIsSelected(actionButtonType, context);
 			if (!canEdit && !isSelected) return;
 
 			var button = isSelected ? X_BUTTON : BLANK_BUTTON;
@@ -137,40 +146,56 @@ namespace Server.Temptation
 			y += height + 10;
 		}
 
-		private void AddOptions(int x, ref int y, bool canEdit)
+		private void AddOptions(int x, ref int y, bool canEdit, PlayerContext context)
 		{
-			AddOption(x, ref y, ActionButtonType.Puzzle_master, canEdit);
-			AddOption(x, ref y, ActionButtonType.Famine, canEdit);
-			AddOption(x, ref y, ActionButtonType.I_can_take_it, canEdit);
-			AddOption(x, ref y, ActionButtonType.Strongest_Avenger, canEdit);
-			AddOption(x, ref y, ActionButtonType.This_is_just_a_tribute, canEdit);
-			AddOption(x, ref y, ActionButtonType.Deathwish, canEdit);
+			AddOption(x, ref y, ActionButtonType.Puzzle_master, canEdit, context);
+			// AddOption(x, ref y, ActionButtonType.Famine, canEdit, context); // Incomplete
+			AddOption(x, ref y, ActionButtonType.I_can_take_it, canEdit, context);
+			AddOption(x, ref y, ActionButtonType.Strongest_Avenger, canEdit, context);
+			// AddOption(x, ref y, ActionButtonType.This_is_just_a_tribute, canEdit, context); // Incomplete
+			AddOption(x, ref y, ActionButtonType.Deathwish, canEdit, context);
 		}
 
 		private string GetDescription(ActionButtonType actionButtonType)
 		{
 			switch (actionButtonType)
 			{
-				case ActionButtonType.I_can_take_it: return "+ You do 10% increased damage<br>x You take 20% increased damage";
-				case ActionButtonType.Strongest_Avenger: return "+ You learn how to wear pants<br>x Enemies cast spells faster";
-				case ActionButtonType.Famine: return "+ Your stat and skill gain rate is impacted by your Hunger<br>x Hunger and thirst decay twice as fast";
-				case ActionButtonType.Puzzle_master: return "+ You learn how to solve puzzle boxes<br>x Racial and the Titan of Ether quest bonuses are less effective";
+				case ActionButtonType.I_can_take_it:
+					return "+ You do 10% increased damage"
+					+ "<br>x You take 20% increased damage";
+
+				case ActionButtonType.Strongest_Avenger:
+					return "+ You learn how to wear pants"
+					+ "<br>x Enemies cast spells faster";
+
+				case ActionButtonType.Famine:
+					return "+ Your stat and skill gain rate is impacted by your Hunger"
+					+ "<br>x Hunger and thirst decay twice as fast";
+
+				case ActionButtonType.Puzzle_master:
+					return "+ You learn how to solve puzzle boxes"
+					+ "<br>x Reduced skill cap bonuses for Fugitives (+200) and Titan of Ether quest (+200)"
+					+ "<br>x Magical attributes from monster racial bonuses now act as Minimums. Resist/Stat bonuses still stack.";
+
 				case ActionButtonType.This_is_just_a_tribute: return "- Tribute quests rewards are changed";
-				case ActionButtonType.Deathwish: return "- A skinning knife<br>x You may never be resurrected";
+				case ActionButtonType.Deathwish:
+					return "- An old sword"
+					+ "<br>x You may never be resurrected";
+
 				default: return string.Empty;
 			}
 		}
 
-		private bool GetIsSelected(ActionButtonType actionButtonType)
+		private bool GetIsSelected(ActionButtonType actionButtonType, PlayerContext context)
 		{
 			switch (actionButtonType)
 			{
-				case ActionButtonType.I_can_take_it: return m_Context.Flags.HasFlag(TemptationFlags.I_can_take_it);
-				case ActionButtonType.Strongest_Avenger: return m_Context.Flags.HasFlag(TemptationFlags.Strongest_Avenger);
-				case ActionButtonType.Famine: return m_Context.Flags.HasFlag(TemptationFlags.Famine);
-				case ActionButtonType.Puzzle_master: return m_Context.Flags.HasFlag(TemptationFlags.Puzzle_master);
-				case ActionButtonType.This_is_just_a_tribute: return m_Context.Flags.HasFlag(TemptationFlags.This_is_just_a_tribute);
-				case ActionButtonType.Deathwish: return m_Context.Flags.HasFlag(TemptationFlags.Deathwish);
+				case ActionButtonType.I_can_take_it: return context.Flags.HasFlag(TemptationFlags.I_can_take_it);
+				case ActionButtonType.Strongest_Avenger: return context.Flags.HasFlag(TemptationFlags.Strongest_Avenger);
+				case ActionButtonType.Famine: return context.Flags.HasFlag(TemptationFlags.Famine);
+				case ActionButtonType.Puzzle_master: return context.Flags.HasFlag(TemptationFlags.Puzzle_master);
+				case ActionButtonType.This_is_just_a_tribute: return context.Flags.HasFlag(TemptationFlags.This_is_just_a_tribute);
+				case ActionButtonType.Deathwish: return context.Flags.HasFlag(TemptationFlags.Deathwish);
 				default: return false;
 			}
 		}

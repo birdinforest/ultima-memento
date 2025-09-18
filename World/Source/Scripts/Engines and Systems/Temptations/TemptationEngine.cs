@@ -1,4 +1,7 @@
 using Server.Commands.Generic;
+using Server.Items;
+using Server.Mobiles;
+using Server.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +39,32 @@ namespace Server.Temptation
 			{
 				TargetCommands.Register(new TemptationsCommand());
 			}
+		}
+
+		public void ApplyContext(PlayerMobile player, PlayerContext context)
+		{
+			Item pants = player.FindItemOnLayer(Layer.InnerLegs);
+			if (!context.CanWearTightPants && pants != null)
+			{
+				player.RemoveItem(pants);
+			}
+
+			BaseRace playerRace = player.FindItemOnLayer(Layer.Special) as BaseRace;
+			if (playerRace != null)
+			{
+				playerRace.Delete();
+				BaseRace.SyncRace(player, true);
+			}
+
+			WorldUtilities.DeleteAllItems<OldSwordTalisman>(item => item.Owner == player);
+			if (context.Flags.HasFlag(TemptationFlags.Deathwish))
+			{
+				var knife = new OldSwordTalisman { Owner = player };
+				player.AddToBackpack(knife);
+			}
+
+			// Skill cap could have changed (Titan or some other bonus could be reduced)
+			player.RefreshSkillCap();
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
