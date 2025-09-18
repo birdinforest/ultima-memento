@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Combat - OmniAI now uses Harm more intelligently<br>");
 			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
 			builder.Append("- Craft - Bulk crafting now dictates Successes rather than Attempts<br>");
 			builder.Append("- Gather - Removed several unreachable 'Glistening Ore Vein'<br>");

@@ -288,8 +288,14 @@ namespace Server.Mobiles
 				}
 				case 4: return new MindBlastSpell( m_Mobile, null );
 				case 3: return new LightningSpell( m_Mobile, null );
-				case 2: return new FireballSpell( m_Mobile, null );
-				case 1: return new HarmSpell( m_Mobile, null );
+				case 2:
+				case 1:
+					if ( whichone == 1 && m_Mobile.Combatant != null && m_Mobile.Combatant.InRange(m_Mobile, 2) )
+					{
+						return new HarmSpell( m_Mobile, null );
+					}
+
+					return new FireballSpell( m_Mobile, null );
 				default: return new MagicArrowSpell( m_Mobile, null );
 			}
 
