@@ -23,6 +23,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Gump - Risky refactor to Help gump plumbing<br>");
 			builder.Append("- Gump - Risky refactor to Starter Gypsy gump plumbing<br>");
+			builder.Append("- Gump - Make Points visible on Shoppes<br>");
 			builder.Append("- Item - Pearl gemstone bonus no longer provides +1 FC, +1 FCR, and +2 all stats<br>");
 			builder.Append("- Item - Mallet Stake single and double click actions have been swapped<br>");
 			builder.Append("- Misc - Risky refactor to Player skill caps<br>");
