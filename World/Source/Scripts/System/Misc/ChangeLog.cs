@@ -37,6 +37,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Misc - Prevent access to moat in Caverns of Poseidon<br>");
 			builder.Append("- Misc - Add exit teleporter to Tower of Brass level<br>");
+			builder.Append("- Misc - Luck now properly increases rare item drop rates<br>");
 			builder.Append("- Pets - Hoard Minion no longer freezes when the Player has a combatant<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

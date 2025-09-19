@@ -547,7 +547,7 @@ namespace Server.Misc
 				return false;
 
 			const int MAX_LUCK = 2000;
-			const double LUCK_TO_PERCENT_CONVERSION = 100 / MAX_LUCK;
+			const double LUCK_TO_PERCENT_CONVERSION = 100f / MAX_LUCK;
 
 			luck = Math.Min( MAX_LUCK, luck ); // Cap luck
 			if ( percentOfLuckToUse < 100 ) luck = luck * percentOfLuckToUse / 100; // Reduce luck
