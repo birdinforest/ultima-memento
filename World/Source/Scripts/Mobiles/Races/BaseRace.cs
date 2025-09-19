@@ -110,7 +110,7 @@ namespace Server.Items
 					else if ( entry == 33 ){ costume.Attributes.EnhancePotions = Int32.Parse(stats)*5; }
 					else if ( entry == 34 ){ costume.Attributes.LowerManaCost = Int32.Parse(stats)*5; }
 					else if ( entry == 35 ){ costume.Attributes.LowerRegCost = Int32.Parse(stats)*5; }
-					else if ( entry == 36 ){ costume.Attributes.Luck = Int32.Parse(stats) * 300; }
+					else if ( entry == 36 ){ costume.Attributes.Luck = Int32.Parse(stats) * 50; }
 					else if ( entry == 37 ){ costume.Attributes.ReflectPhysical = Int32.Parse(stats)*5; }
 					else if ( entry == 38 ){ costume.Attributes.SpellDamage = Int32.Parse(stats)*5; }
 					else if ( entry == 39 ){ costume.Attributes.WeaponDamage = Int32.Parse(stats)*5; }
