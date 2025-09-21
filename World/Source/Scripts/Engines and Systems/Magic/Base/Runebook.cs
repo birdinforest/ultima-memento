@@ -501,7 +501,9 @@ namespace Server.Items
 
 		public int OnCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
-			MaxCharges = 12 + quality + (int)(from.Skills[SkillName.Inscribe].Value / 30);
+			var skillValue = from.Skills[SkillName.Inscribe].Value;
+			MaxCharges = 12 + (int)( quality * skillValue / 20 );
+			if ( 125 <= skillValue ) MaxCharges += 6;
 
 			if ( MaxCharges < 12 )
 				MaxCharges = 12;
