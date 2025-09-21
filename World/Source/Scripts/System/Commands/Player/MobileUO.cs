@@ -1,4 +1,3 @@
-using Server.Misc;
 using Server.Mobiles;
 
 namespace Server.Commands
@@ -17,7 +16,7 @@ namespace Server.Commands
             var player = e.Mobile as PlayerMobile;
             if (player == null) return;
 
-            PlayerSettings.SetSuppressVendorTooltip(player, !player.SuppressVendorTooltip);
+			player.SuppressVendorTooltip = !player.SuppressVendorTooltip;
 
             var message = player.SuppressVendorTooltip
                 ? "Vendor tooltips disabled. Vendor tooltips will no longer be sent to the Client."

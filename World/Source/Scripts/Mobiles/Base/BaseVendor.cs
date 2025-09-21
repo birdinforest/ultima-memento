@@ -2203,7 +2203,7 @@ namespace Server.Mobiles
 
 		public override void SendPropertiesTo( Mobile from )
 		{
-			if ( PlayerSettings.GetSuppressVendorTooltip(from) )
+			if ( from is PlayerMobile && ((PlayerMobile)from).SuppressVendorTooltip )
 				return;
 
 			from.Send( PropertyList );

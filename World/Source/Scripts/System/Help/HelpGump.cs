@@ -224,6 +224,10 @@ namespace Server.Engines.Help
 			Setting_SetCraftingContainer = 5001,
 			Setting_SetHarvestingContainer = 5002,
 			Setting_DoubleClickToIDItems = 5003,
+			Setting_RemoveVendorGoldSafeguard,
+			Setting_RemoveVendorGoldSafeguard_Info,
+			Setting_SuppressVendorTooltips,
+			Setting_SuppressVendorTooltips_Info,
 		}
 
 		public static void Initialize()
@@ -709,6 +713,12 @@ namespace Server.Engines.Help
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
 				AddSetting(xs, g, from, "Ordinary Resources", PageActionType.Setting_OrdinaryResources, PageActionType.Setting_OrdinaryResources_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
+				AddSetting(xs, g, from, "Remove Vendor Gold Safeguard", PageActionType.Setting_RemoveVendorGoldSafeguard, PageActionType.Setting_RemoveVendorGoldSafeguard_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
+				AddSetting(xs, g, from, "Suppress Vendor Tooltips", PageActionType.Setting_SuppressVendorTooltips, PageActionType.Setting_SuppressVendorTooltips_Info);
 				// Last setting, don't add a row
 
 				// Section - Play Styles
@@ -894,10 +904,14 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_UseAncientSpellbook: return ResearchSettings.BookCaster( from );
 				case PageActionType.Setting_DoubleClickToIDItems: return from.DoubleClickID;
 				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
+				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.IgnoreVendorGoldSafeguard;
+				case PageActionType.Setting_SuppressVendorTooltips: return from.SuppressVendorTooltip;
+
 				case PageActionType.Setting_Playstyle_Normal: return from.CharacterEvil == 0 && from.CharacterOriental == 0 && from.CharacterBarbaric == 0;
 				case PageActionType.Setting_Playstyle_Evil: return from.CharacterEvil == 1;
 				case PageActionType.Setting_Playstyle_Oriental: return from.CharacterOriental == 1;
 				case PageActionType.Setting_Playstyle_Barbaric: return from.CharacterBarbaric == 1 || from.CharacterBarbaric == 2;
+
 				case PageActionType.Setting_MagerySpellColor_White: return from.MagerySpellHue == 0x47E;
 				case PageActionType.Setting_MagerySpellColor_Black: return from.MagerySpellHue == 0x94E;
 				case PageActionType.Setting_MagerySpellColor_Blue: return from.MagerySpellHue == 0x48D;
@@ -915,10 +929,11 @@ namespace Server.Engines.Help
 
 		public override void OnResponse( NetState state, RelayInfo info )
 		{
+			PlayerMobile from = state.Mobile as PlayerMobile;
+			if ( from == null ) return;
+
 			int pressed = info.ButtonID;
 			PageActionType actionType = (PageActionType)info.ButtonID;
-
-			Mobile from = state.Mobile;
 
 			from.SendSound( 0x4A ); 
 
@@ -1400,6 +1415,18 @@ namespace Server.Engines.Help
 					case PageActionType.Setting_DoubleClickToIDItems:
 					{
 						((PlayerMobile)from).DoubleClickID = !((PlayerMobile)from).DoubleClickID;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_RemoveVendorGoldSafeguard:
+					{
+						((PlayerMobile)from).IgnoreVendorGoldSafeguard = !((PlayerMobile)from).IgnoreVendorGoldSafeguard;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_SuppressVendorTooltips:
+					{
+						((PlayerMobile)from).SuppressVendorTooltip = !((PlayerMobile)from).SuppressVendorTooltip;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
@@ -2268,6 +2295,20 @@ namespace Server.Engines.Help
 				{
 					title = "Skill Lists";
 					info = "Skill lists are an alternative to the normal skill lists you can get from clicking the appropriate button on the paper doll. Although you still need to use that for skill management (up, down, lock), skill lists have a more condensed appearance for when you play the game. In order for skills to appear in this alternate list, they have to either be set to 'up', or they can be set to 'locked'. The 'locked' skills will only display in this list if you change your settings here to reflect that. The list does not refresh in real time, but it will often refresh itself to show your skill status in both real and enhanced values. Any skill that appears in orange indicates a skill that you have locked. You can open this list with the '[skilllist' command, or the appropriate button on the main screen.";
+					break;
+				}
+
+				case PageActionType.Setting_RemoveVendorGoldSafeguard_Info:
+				{
+					title = "Remove Vendor Gold Safeguard";
+					info = "Command: [VendorGold<br><br>When enabled, vendors will no longer stop sales if they cannot afford it. Instead, vendors will take all the items and give you their remaining gold.";
+					break;
+				}
+				
+				case PageActionType.Setting_SuppressVendorTooltips_Info:
+				{
+					title = "Suppress Vendor Tooltips";
+					info = "Command: [SuppressTooltips<br><br>When enabled, vendor tooltips will not be sent to the client. This can be helpful for players who use a touch screen. Warning: Players usually have to re-log to re-query synchronize with this after changing it.";
 					break;
 				}
 
