@@ -356,6 +356,8 @@ namespace Scripts.Mythik.Systems.Achievements
             #endregion Feats of Strength - 5000 to 5999
 
             CommandSystem.Register("feats", AccessLevel.Player, new CommandEventHandler(OpenGumpCommand));
+            CommandSystem.Register("achievement", AccessLevel.Player, new CommandEventHandler(OpenGumpCommand));
+            CommandSystem.Register("achievements", AccessLevel.Player, new CommandEventHandler(OpenGumpCommand));
             EventSink.WorldSave += EventSink_WorldSave;
             LoadData();
         }
@@ -578,7 +580,7 @@ namespace Scripts.Mythik.Systems.Achievements
             from.SendGump(new AchievementGump(targetAchieves, total, 1, -1, fromAchieves, target.Name));
         }
 
-        [Usage("feats"), Aliases("achievement", "achievements")]
+        [Usage("achievements"), Aliases("achievement", "feats")]
         [Description("Opens the Achievements gump for yourself or a targeted player")]
         private static void OpenGumpCommand(CommandEventArgs e)
         {

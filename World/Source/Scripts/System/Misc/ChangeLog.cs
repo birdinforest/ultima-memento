@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Gump - Risky refactor to Help gump plumbing<br>");
 			builder.Append("- Gump - Adjusted Toolbars page on Help gump to narrow to relevant toolbars<br>");
+			builder.Append("- Gump - Add [Achievements button to Help gump<br>");
 			builder.Append("- Gump - Risky refactor to Starter Gypsy gump plumbing<br>");
 			builder.Append("- Gump - Make Points visible on Shoppes<br>");
 			builder.Append("- Gump - Add Settings for [VendorGold and [SuppressTooltips to Help gump<br>");

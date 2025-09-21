@@ -15,6 +15,7 @@ using Server.Misc;
 using Server.Items;
 using System.Globalization;
 using Server.Engines.MLQuests.Gumps;
+using Scripts.Mythik.Systems.Achievements;
 
 namespace Server.Engines.Help
 {
@@ -228,6 +229,7 @@ namespace Server.Engines.Help
 			Setting_RemoveVendorGoldSafeguard_Info,
 			Setting_SuppressVendorTooltips,
 			Setting_SuppressVendorTooltips_Info,
+			Do_Achievements,
 		}
 
 		public static void Initialize()
@@ -317,6 +319,11 @@ namespace Server.Engines.Help
 			AddAction(nav_x, r, from, "Main", PageActionType.Navigate_Main, NAVIGATION_ITEM_WIDTH);
 			r += e;
 			if ( page == (int)PageActionType.Navigate_Main ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + HelpText + "</BASEFONT></BODY>", (bool)false, (bool)true); }
+
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			AddAction(nav_x, r, from, "Achievements", PageActionType.Do_Achievements, NAVIGATION_ITEM_WIDTH);
+			r += e;
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -821,6 +828,7 @@ namespace Server.Engines.Help
 			switch ( actionType )
 			{
 				case PageActionType.Navigate_Main:
+				case PageActionType.Do_Achievements:
 				case PageActionType.Show_Chat:
 				case PageActionType.Show_Conversations:
 				case PageActionType.Do_CorpseClear:
@@ -978,6 +986,12 @@ namespace Server.Engines.Help
 						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
 						break;
 					}
+					case PageActionType.Do_Achievements:
+					{
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						AchievementSystem.OpenGump( from, from );
+						break;
+					}
 					case PageActionType.Do_Toggle_AFK:
 					{
 						InvokeCommand( "afk", from );
@@ -1103,6 +1117,7 @@ namespace Server.Engines.Help
 						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
 						break;
 					}
+
 					case PageActionType.Setting_OrdinaryResources:
 					{
 						if ( from.HarvestOrdinary )
