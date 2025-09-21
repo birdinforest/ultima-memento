@@ -1200,9 +1200,6 @@ namespace Server.Items
 			if ( base.CheckPropertyConfliction( m ) )
 				return true;
 
-			if ( Layer == Layer.Pants )
-				return ( m.FindItemOnLayer( Layer.InnerLegs ) != null );
-
 			return false;
 		}
 

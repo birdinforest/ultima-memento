@@ -38,6 +38,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Item - Pants and Leg Armor can now both give resistances<br>");
 			builder.Append("- Misc - Prevent access to moat in Caverns of Poseidon<br>");
 			builder.Append("- Misc - Add exit teleporter to Tower of Brass level<br>");
 			builder.Append("- Misc - Luck now properly increases rare item drop rates<br>");
