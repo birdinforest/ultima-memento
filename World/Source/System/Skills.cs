@@ -825,7 +825,7 @@ namespace Server
 				new SkillInfo( 19, "Forensics",			0.0,	0.0,	0.0,	"Undertaker",	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( 20, "Herding",			16.25,	6.25,	2.5,	"Shepherd",	null,	1.625,	0.625,	0.25,	1.0 ),
 				new SkillInfo( 21, "Hiding",			0.0,	0.0,	0.0,	"Skulker",	null,	0.0,	0.8,	0.2,	1.3 ),
-				new SkillInfo( 22, "Provocation",		0.0,	4.5,	0.5,	"Rouser",		null,	0.0,	0.45,	0.05,	1.0 ),
+				new SkillInfo( 22, "Provocation",		0.0,	4.5,	0.5,	"Rouser",		null,	0.0,	0.45,	0.05,	1.5 ),
 				new SkillInfo( 23, "Inscription",		0.0,	2.0,	8.0,	"Scribe",	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( 24, "Lockpicking",		0.0,	25.0,	0.0,	"Lockpicker",	null,	0.0,	2.0,	0.0,	1.0 ),
 				new SkillInfo( 25, "Magery",			0.0,	0.0,	15.0,	"Wizard",		null,	0.0,	0.0,	1.5,	1.0 ),
