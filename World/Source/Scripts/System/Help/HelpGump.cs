@@ -928,13 +928,9 @@ namespace Server.Engines.Help
 
 			from.CloseGump( typeof(Server.Engines.Help.HelpGump) );
 
-			if ( pressed > (int)PageActionType.MARKER_SETTING_START && pressed < (int)PageActionType.MARKER_SETTING_END )
-			{
-				// SMALL INFO HELP WINDOWS
-				from.CloseGump( typeof( InfoHelpGump ) );
-				from.SendGump( new InfoHelpGump( from, info.ButtonID, (int)PageActionType.Show_Settings ) );
-			}
-			else if ( info.ButtonID >= (int)PageActionType.MARKER_TOOLBAR_START && info.ButtonID <= (int)PageActionType.MARKER_TOOLBAR_END ) // MAGIC BARS OPEN AND CLOSE
+			if ( ShowHelpInfoWindow( from, actionType ) ) return;
+			
+			if ( info.ButtonID >= (int)PageActionType.MARKER_TOOLBAR_START && info.ButtonID <= (int)PageActionType.MARKER_TOOLBAR_END ) // MAGIC BARS OPEN AND CLOSE
 			{
 				from.SendGump( new Server.Engines.Help.HelpGump( from, 7 ) );
 
@@ -2045,217 +2041,247 @@ namespace Server.Engines.Help
 
 			return HelpText;
 		}
-	}
-}
 
-namespace Server.Gumps
-{
-    public class InfoHelpGump : Gump
-    {
-		public int m_Origin;
-
-        public InfoHelpGump( Mobile from, int page, int origin ) : base( 50, 50 )
-        {
-			m_Origin = origin;
-
-            this.Closable=true;
-			this.Disposable=true;
-			this.Dragable=true;
-			this.Resizable=false;
-
-			string title = "";
-			string info = "";
+		private bool ShowHelpInfoWindow( Mobile from, PageActionType page )
+		{
 			bool scrollbar = true;
+			string title;
+			string info;
+			PageActionType returnPage = PageActionType.Show_Settings;
 
-			if ( page == 82 )
+			switch ( page )
 			{
-				scrollbar = false;
-				title = "Music Tone";
-				info = "This option will simply toggle your music preference to play a different set of music in the dungeons. When turned on, it will play music you normally hear when traveling the land, instead of the music commonly played in dungeons.";
-			}
-			else if ( page == 83 )
-			{
-				title = "Music Playlist";
-				info = "This gives you a complete list of the in-game music. You can select the music you like and those choices will randomly play as you go from region to region. To listen to a song for review, select the blue gem icon. Note that the client has a delay time when you can start another song so selecting the blue gem may not respond if you started a song too soon before that. Wait for a few seconds and try clicking the blue gem again to see if that song starts to play. Playlists are disabled by default, so if you want your playlist to function, make sure to enable it.";
-			}
-			else if ( page == 84 )
-			{
-				scrollbar = false;
-				title = "Private Play";
-				info = "This option turns on or off the detailed messages of your journey for the town crier and local citizen chatter. This keeps your activities private so others will not see where you are traveling the world.";
-			}
-			else if ( page == 85 )
-			{
-				title = "Loot Options";
-				info = "This lets you select from a list of categories, where they will automatically take those types of items from common dungeon chests or corpses and put them in your backpack. If you select coins, you will take wealth in the form of currency or gold nuggets. If you take gems and jewels, this will consist of gems, gemstones, jewelry, jewels, and crystals. The unknown items are those that will need identification, but you may decide to take them anyway. The reagent options have a few categories. Magery and necromancer reagents are those used specifically by those characters, where witches brew reagents fall into the necromancer category. Alchemic reagents are those that fall outside the category of magery and necromancer reagents, and only alchemists use them. Herbalist reagents are useful druidic herbalism.";
-			}
-			else if ( page == 86 )
-			{
-				title = "Classic Poisoning";
-				info = "There are two methods that assassins use to handle poisoned weapons. One is the simple method of soaking the blade and having it poison whenever it strikes their opponent. With this method, known as classic poisoning, there is little control on the dosage given but it is easier to maneuver. When this option is turned off, it has the newer and more tactical method, where only certain weapons can be poisoned and the assassin can control when the poison is administered with the hit. Although the tactical method requires more thought, it does have the potential to allow an assassin to poison certain arrows, for example. The choice of methods can be switched at any time, but only one method can be in use at a given time.";
-			}
-			else if ( page == 87 )
-			{
-				title = "Skill Title";
-				info = "When you don't set your skill title here, the game will take your highest skill and make that into your character's title. Choosing a skill here will force your title to that profession. So if you always want to be known as a wizard, then select the 'Magery' option (for example). You can let the game manage this at any time by setting it back to 'Auto Title'. Be warned when choosing a skill, if you have zero skill points in it, you will be titled 'the Village Idiot'. If you get at least 0.1, you will at least be 'Aspiring'.";
-			}
-			else if ( page == 88 )
-			{
-				scrollbar = false;
-				title = "Message Color";
-				info = "By default, most of the messages appearing on the lower left of the screen are gray in color. Enabling this option will change those messages to have a random color whenenver a new message appears. This feature can help some more easily see such messages and the varying colors can also help distinguish individual messages that may be scrolling by.";
-			}
-			else if ( page == 89 )
-			{
-				scrollbar = false;
-				title = "Auto Attack";
-				info = "By default, when you are attacked you will automatically attack back. If you want to instead decide when or if you want to attack back, you can turn this option off. This can be helpful if you do not want to kill innocents by accident, or you are trying to tame an angry creature.";
-			}
-			else if ( page == 92 )
-			{
-				title = "Play Style - Normal";
-				info = "This is the default play style for the " + MySettings.S_ServerName + ". It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game.";
-			}
-			else if ( page == 93 )
-			{
-				title = "Play Style - Evil";
-				info = "There is an evil element to the game that some want to participate in. With classes such as Necromancers, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between regular and evil flavors. When in the evil mode, some of the treasure you will find will often have a name that fits in the evil style. When you stay within negative karma, skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on karma. Some of the relics you will find may also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>"
-				+ "[evil - Turns on/off the evil flavor the game provides.";
-			}
-			else if ( page == 94 )
-			{
-				title = "Play Style - Oriental";
-				info = "There is an oriental element to the game that most do not want to participate in. With classes such as Ninja and Samurai, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between fantasy and oriental. When in the oriental mode, much of the treasure you will find will be of Chinese or Japanese historical origins. These types of items will most times be named to match the style. Items that once belonged to someone, will often have a name that fits in the oriental style. Some of the skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on this play style. Some of the relics and artwork you will find will also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.";
-			}
-			else if ( page == 95 )
-			{
-				m_Origin = 7;
-				title = "Magic Toolbars";
-				info = "These toolbars can be configured for all areas of magical-style spells in the game. Each school of magic has two separate toolbars you can customize, except for magery which has four available. The large number of spells for magery benefit from the extra two toolbars. These toolbars allow you to select spells that you like to cast often, and set whether the bar will appear vertical or horizontal. If you choose to have the toolbar appear vertical, you have the additional option of showing the spell names next to the icons. These toolbars can be moved around and you need only single click the appropriate icon to cast the spell. If you have spells selected for a toolbar, but lack the spell in your spellbook, the icon will not appear when you open the toolbar. These toolbars cannot be closed by normal means, to avoid the chance you close them by accident when in combat. You can either use the command button available in the 'Help' section, or the appropriate typed keyboard command.";
-			}
-			else if ( page == 96 )
-			{
-				scrollbar = false;
-				title = "Magery Spell Color";
-				info = "You can change the color for all of your magery spell effects here. There are a limited amount of choices given here. Once set, your spells will be that color for every effect. If you want to set it back to normal, then select the 'Default' option. You can also use the '[spellhue' command followed by a number of any color you want to set it to.";
-			}
-			else if ( page == 97 )
-			{
-				scrollbar = false;
-				title = "Custom Title";
-				info = "This allows you to enter a custom title for your character, instead of relying on the game to assign you one based on your best skill or the skill you choose to have represent you. To clear out a custom title you may have set with this option, enter the word of 'clear' to remove it.";
-			}
-			else if ( page == 99 )
-			{
-				scrollbar = false;
-				title = "Weapon Ability Names";
-				info = "When you get good enough with tactics and a weapon type, you will get special abilities that they can perform. These usually appear as simple icons you can select to do the action, but this option will turn on or off the special weapon ability names next to the appropriate icons.";
-			}
-			else if ( page == 100 )
-			{
-				scrollbar = false;
-				title = "Auto Sheath";
-				info = "This option turns on or off the feature to sheathe your weapon when not in battle. When you put your character back into war mode, they will draw the weapon.";
-			}
-			else if ( page == 101 )
-			{
-				scrollbar = false;
-				title = "Gump Images";
-				info = "Many window gumps have a faded image in the background. Turning this off will have those windows only be black in color, with no background image.";
-			}
-			else if ( page == 102 )
-			{
-				scrollbar = false;
-				title = "Weapon Ability Bar";
-				info = "This option turns on or off the auto-opening of the weapon ability icon bar, meaning you will have to do it manually if you turn it off.";
-			}
-			else if ( page == 103 )
-			{
-				scrollbar = false;
-				title = "Creature Magic";
-				info = "Some creatures have a natural ability for magic. This setting lets you change which school of magic you want to focus on: magery, necromancy, or elementalism. This allows magery or necromancy creatures to move their focus into elementalism, or to switch between magery and necromancy.";
-			}
-			else if ( page == 104 )
-			{
-				scrollbar = false;
-				title = "Creature Type";
-				info = "Some creature species has more than one option for appearance. This setting lets you change to another of that species if another appearance is available. You can also turn yourself into a human if you choose. If you become human, you will remain that way forever.";
-			}
-			else if ( page == 105 )
-			{
-				scrollbar = false;
-				title = "Creature Sounds";
-				info = "Since you are a creature, you sometimes make sounds when attacking or getting hurt from attacks. You can turn these sounds on or off here.";
-			}
-			else if ( page == 106 )
-			{
-				scrollbar = false;
-				title = "Ancient Spellbook";
-				info = "If you begin researching the 64 ancient spells that were long forgotten, enabling this setting means you will be casting such magic from a book instead of using your research bag. If you have this enabled, you will need reagents to cast spells and the spells being cast must be in your book. Disabling this checks your research bag to see if you have the spell prepared ahead of time.";
-			}
-			else if ( page == 107 )
-			{
-				scrollbar = false;
-				title = "Set Crafting Container";
-				info = "This allows you to set a container, where items will go when you are creating them through crafting. The container must be in your main pack in order to collect the items, and not within another container.";
-			}
-			else if ( page == 108 )
-			{
-				scrollbar = false;
-				title = "Set Harvesting Container";
-				info = "This allows you to set a container, where items will go when you are harvesting for items. These are items you get from activities like mining, lumberjacking, and fishing. The container must be in your main pack in order to collect the items, and not within another container.";
-			}
-			else if ( page == 109 )
-			{
-				scrollbar = false;
-				title = "Set Loot Container";
-				info = "This allows you to set a container, where items will go that you configured in the Loot Options setting. The container must be in your main pack in order to collect the items, and not within another container.";
-			}
-			else if ( page == 110 )
-			{
-				scrollbar = false;
-				title = "Ordinary Resources";
-				info = "Turning this setting on will have your character only harvest or gather ordinary resources like wood, leather, granite, iron and bones. This means you will not be collecting higher resourced items when skinning, mining, or lumberjacking.";
-			}
-			else if ( page == 111 )
-			{
-				scrollbar = false;
-				title = "Double Click to ID Items";
-				info = "Enabling this will allow your character to try and identify items by double clicking them.<BR><BR>NOTE: if you are using any third party software, that tries to open all of your containers, then that third party software will try to identify these items without your consent.";
-			}
-			else if ( page == 198 )
-			{
-				title = "Play Style - Barbaric";
-				info = "The default game does not lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This particular play style can help in this regard. Choosing to play in this style will have a satchel appear in your main pack. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place into it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, necklaces, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but may not appear on your character. Also note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. This play style has their own set of skill titles for many skills as well. If you are playing a female character, pressing the button further will convert any 'Barbarian' titles to 'Amazon'. You can open your satchel to learn more about this play style. This option can be turned off and on at any time. You can only have one type of play style active at any one time.";
-			}
-			else if ( page == 199 )
-			{
-				title = "Skill Lists";
-				info = "Skill lists are an alternative to the normal skill lists you can get from clicking the appropriate button on the paper doll. Although you still need to use that for skill management (up, down, lock), skill lists have a more condensed appearance for when you play the game. In order for skills to appear in this alternate list, they have to either be set to 'up', or they can be set to 'locked'. The 'locked' skills will only display in this list if you change your settings here to reflect that. The list does not refresh in real time, but it will often refresh itself to show your skill status in both real and enhanced values. Any skill that appears in orange indicates a skill that you have locked. You can open this list with the '[skilllist' command, or the appropriate button on the main screen.";
-			}
-			else if ( page == 1000 )
-			{
-				title = "Flip Deed";
-				info = "This option allows you to flip some deeds that can come in one of two direction facings. So if a deed states that furniture faces east, then you can set the deed on the floor of your house and flip it to face south instead. This can flip almost any deed-like items in this manner, but not all items are called 'deeds' or look like deeds. Some items behave as deeds and those can be flipped in the same manner. Tents or bear rugs, for example, have a facing and you can flip those with this command..";
-			}
-			//
+				case PageActionType.Setting_MusicTone_Info:
+				{
+					scrollbar = false;
+					title = "Music Tone";
+					info = "This option will simply toggle your music preference to play a different set of music in the dungeons. When turned on, it will play music you normally hear when traveling the land, instead of the music commonly played in dungeons.";
+					break;
+				}
 
-			AddPage(0);
+				case PageActionType.Setting_MusicPlaylist_Info:
+				{
+					title = "Music Playlist";
+					info = "This gives you a complete list of the in-game music. You can select the music you like and those choices will randomly play as you go from region to region. To listen to a song for review, select the blue gem icon. Note that the client has a delay time when you can start another song so selecting the blue gem may not respond if you started a song too soon before that. Wait for a few seconds and try clicking the blue gem again to see if that song starts to play. Playlists are disabled by default, so if you want your playlist to function, make sure to enable it.";
+					break;
+				}
 
-			string color = "#ddbc4b";
+				case PageActionType.Setting_PrivatePlay_Info:
+				{
+					scrollbar = false;
+					title = "Private Play";
+					info = "This option turns on or off the detailed messages of your journey for the town crier and local citizen chatter. This keeps your activities private so others will not see where you are traveling the world.";
+					break;
+				}
 
-			AddImage(0, 0, 9577, Server.Misc.PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 239, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 12, 43, 278, 212, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)scrollbar);
-			AddButton(268, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
-        }
+				case PageActionType.Setting_LootOptions_Info:
+				{
+					title = "Loot Options";
+					info = "This lets you select from a list of categories, where they will automatically take those types of items from common dungeon chests or corpses and put them in your backpack. If you select coins, you will take wealth in the form of currency or gold nuggets. If you take gems and jewels, this will consist of gems, gemstones, jewelry, jewels, and crystals. The unknown items are those that will need identification, but you may decide to take them anyway. The reagent options have a few categories. Magery and necromancer reagents are those used specifically by those characters, where witches brew reagents fall into the necromancer category. Alchemic reagents are those that fall outside the category of magery and necromancer reagents, and only alchemists use them. Herbalist reagents are useful druidic herbalism.";
+					break;
+				}
 
-        public override void OnResponse(NetState sender, RelayInfo info)
-        {
-            Mobile from = sender.Mobile;
-			from.SendSound( 0x4A );
-			from.CloseGump( typeof( Server.Engines.Help.HelpGump ) );
-			if ( m_Origin != 999 ){ from.SendGump( new Server.Engines.Help.HelpGump( from, m_Origin ) ); }
-        }
-    }
+				case PageActionType.Setting_ClassicPoisoning_Info:
+				{
+					title = "Classic Poisoning";
+					info = "There are two methods that assassins use to handle poisoned weapons. One is the simple method of soaking the blade and having it poison whenever it strikes their opponent. With this method, known as classic poisoning, there is little control on the dosage given but it is easier to maneuver. When this option is turned off, it has the newer and more tactical method, where only certain weapons can be poisoned and the assassin can control when the poison is administered with the hit. Although the tactical method requires more thought, it does have the potential to allow an assassin to poison certain arrows, for example. The choice of methods can be switched at any time, but only one method can be in use at a given time.";
+					break;
+				}
+
+				case PageActionType.Setting_SkillTitle_Info:
+				{
+					title = "Skill Title";
+					info = "When you don't set your skill title here, the game will take your highest skill and make that into your character's title. Choosing a skill here will force your title to that profession. So if you always want to be known as a wizard, then select the 'Magery' option (for example). You can let the game manage this at any time by setting it back to 'Auto Title'. Be warned when choosing a skill, if you have zero skill points in it, you will be titled 'the Village Idiot'. If you get at least 0.1, you will at least be 'Aspiring'.";
+					break;
+				}
+
+				case PageActionType.Setting_MessageColors_Info:
+				{
+					scrollbar = false;
+					title = "Message Color";
+					info = "By default, most of the messages appearing on the lower left of the screen are gray in color. Enabling this option will change those messages to have a random color whenenver a new message appears. This feature can help some more easily see such messages and the varying colors can also help distinguish individual messages that may be scrolling by.";
+					break;
+				}
+
+				case PageActionType.Setting_AttoAttack_Info:
+				{
+					scrollbar = false;
+					title = "Auto Attack";
+					info = "By default, when you are attacked you will automatically attack back. If you want to instead decide when or if you want to attack back, you can turn this option off. This can be helpful if you do not want to kill innocents by accident, or you are trying to tame an angry creature.";
+					break;
+				}
+
+				case PageActionType.Setting_Playstyle_Normal_Info:
+				{
+					title = "Play Style - Normal";
+					info = "This is the default play style for the " + MySettings.S_ServerName + ". It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game.";
+					break;
+				}
+
+				case PageActionType.Setting_Playstyle_Evil_Info:
+				{
+					title = "Play Style - Evil";
+					info = "There is an evil element to the game that some want to participate in. With classes such as Necromancers, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between regular and evil flavors. When in the evil mode, some of the treasure you will find will often have a name that fits in the evil style. When you stay within negative karma, skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on karma. Some of the relics you will find may also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>"
+						+ "[evil - Turns on/off the evil flavor the game provides.";
+					break;
+				}
+
+				case PageActionType.Setting_Playstyle_Oriental_Info:
+				{
+					title = "Play Style - Oriental";
+					info = "There is an oriental element to the game that most do not want to participate in. With classes such as Ninja and Samurai, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between fantasy and oriental. When in the oriental mode, much of the treasure you will find will be of Chinese or Japanese historical origins. These types of items will most times be named to match the style. Items that once belonged to someone, will often have a name that fits in the oriental style. Some of the skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on this play style. Some of the relics and artwork you will find will also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.";
+					break;
+				}
+
+				case PageActionType.ShowHelp_MagicToolbars:
+				{
+					returnPage = PageActionType.Navigate_MagicToolbars;
+					title = "Magic Toolbars";
+					info = "These toolbars can be configured for all areas of magical-style spells in the game. Each school of magic has two separate toolbars you can customize, except for magery which has four available. The large number of spells for magery benefit from the extra two toolbars. These toolbars allow you to select spells that you like to cast often, and set whether the bar will appear vertical or horizontal. If you choose to have the toolbar appear vertical, you have the additional option of showing the spell names next to the icons. These toolbars can be moved around and you need only single click the appropriate icon to cast the spell. If you have spells selected for a toolbar, but lack the spell in your spellbook, the icon will not appear when you open the toolbar. These toolbars cannot be closed by normal means, to avoid the chance you close them by accident when in combat. You can either use the command button available in the 'Help' section, or the appropriate typed keyboard command.";
+					break;
+				}
+
+				case PageActionType.Setting_MagerySpellColor_Info:
+				{
+					scrollbar = false;
+					title = "Magery Spell Color";
+					info = "You can change the color for all of your magery spell effects here. There are a limited amount of choices given here. Once set, your spells will be that color for every effect. If you want to set it back to normal, then select the 'Default' option. You can also use the '[spellhue' command followed by a number of any color you want to set it to.";
+					break;
+				}
+
+				case PageActionType.Setting_CustomTitle_Info:
+				{
+					scrollbar = false;
+					title = "Custom Title";
+					info = "This allows you to enter a custom title for your character, instead of relying on the game to assign you one based on your best skill or the skill you choose to have represent you. To clear out a custom title you may have set with this option, enter the word of 'clear' to remove it.";
+					break;
+				}
+
+				case PageActionType.Setting_WeaponAbilityNames_Info:
+				{
+					scrollbar = false;
+					title = "Weapon Ability Names";
+					info = "When you get good enough with tactics and a weapon type, you will get special abilities that they can perform. These usually appear as simple icons you can select to do the action, but this option will turn on or off the special weapon ability names next to the appropriate icons.";
+					break;
+				}
+
+				case PageActionType.Setting_AutoSheath_Info:
+				{
+					scrollbar = false;
+					title = "Auto Sheath";
+					info = "This option turns on or off the feature to sheathe your weapon when not in battle. When you put your character back into war mode, they will draw the weapon.";
+					break;
+				}
+
+				case PageActionType.Setting_GumpImages_Info:
+				{
+					scrollbar = false;
+					title = "Gump Images";
+					info = "Many window gumps have a faded image in the background. Turning this off will have those windows only be black in color, with no background image.";
+					break;
+				}
+
+				case PageActionType.Setting_WeaponAbilityBar_Info:
+				{
+					scrollbar = false;
+					title = "Weapon Ability Bar";
+					info = "This option turns on or off the auto-opening of the weapon ability icon bar, meaning you will have to do it manually if you turn it off.";
+					break;
+				}
+
+				case PageActionType.Setting_CreatureMagicFocus_Info:
+				{
+					scrollbar = false;
+					title = "Creature Magic";
+					info = "Some creatures have a natural ability for magic. This setting lets you change which school of magic you want to focus on: magery, necromancy, or elementalism. This allows magery or necromancy creatures to move their focus into elementalism, or to switch between magery and necromancy.";
+					break;
+				}
+
+				case PageActionType.Setting_CreatureType_Info:
+				{
+					scrollbar = false;
+					title = "Creature Type";
+					info = "Some creature species has more than one option for appearance. This setting lets you change to another of that species if another appearance is available. You can also turn yourself into a human if you choose. If you become human, you will remain that way forever.";
+					break;
+				}
+
+				case PageActionType.Setting_CreatureSounds_Info:
+				{
+					scrollbar = false;
+					title = "Creature Sounds";
+					info = "Since you are a creature, you sometimes make sounds when attacking or getting hurt from attacks. You can turn these sounds on or off here.";
+					break;
+				}
+
+				case PageActionType.Setting_UseAncientSpellbook_Info:
+				{
+					scrollbar = false;
+					title = "Ancient Spellbook";
+					info = "If you begin researching the 64 ancient spells that were long forgotten, enabling this setting means you will be casting such magic from a book instead of using your research bag. If you have this enabled, you will need reagents to cast spells and the spells being cast must be in your book. Disabling this checks your research bag to see if you have the spell prepared ahead of time.";
+					break;
+				}
+
+				case PageActionType.Setting_SetCraftingContainer_Info:
+				{
+					scrollbar = false;
+					title = "Set Crafting Container";
+					info = "This allows you to set a container, where items will go when you are creating them through crafting. The container must be in your main pack in order to collect the items, and not within another container.";
+					break;
+				}
+
+				case PageActionType.Setting_SetHarvestingContainer_Info:
+				{
+					scrollbar = false;
+					title = "Set Harvesting Container";
+					info = "This allows you to set a container, where items will go when you are harvesting for items. These are items you get from activities like mining, lumberjacking, and fishing. The container must be in your main pack in order to collect the items, and not within another container.";
+					break;
+				}
+
+				case PageActionType.Setting_SetLootContainer_Info:
+				{
+					scrollbar = false;
+					title = "Set Loot Container";
+					info = "This allows you to set a container, where items will go that you configured in the Loot Options setting. The container must be in your main pack in order to collect the items, and not within another container.";
+					break;
+				}
+
+				case PageActionType.Setting_OrdinaryResources_Info:
+				{
+					scrollbar = false;
+					title = "Ordinary Resources";
+					info = "Turning this setting on will have your character only harvest or gather ordinary resources like wood, leather, granite, iron and bones. This means you will not be collecting higher resourced items when skinning, mining, or lumberjacking.";
+					break;
+				}
+
+				case PageActionType.Setting_DoubleClickToIDItems_Info:
+				{
+					scrollbar = false;
+					title = "Double Click to ID Items";
+					info = "Enabling this will allow your character to try and identify items by double clicking them.<BR><BR>NOTE: if you are using any third party software, that tries to open all of your containers, then that third party software will try to identify these items without your consent.";
+					break;
+				}
+
+				case PageActionType.Setting_Playstyle_Barbaric_Info:
+				{
+					title = "Play Style - Barbaric";
+					info = "The default game does not lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This particular play style can help in this regard. Choosing to play in this style will have a satchel appear in your main pack. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place into it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, necklaces, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but may not appear on your character. Also note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. This play style has their own set of skill titles for many skills as well. If you are playing a female character, pressing the button further will convert any 'Barbarian' titles to 'Amazon'. You can open your satchel to learn more about this play style. This option can be turned off and on at any time. You can only have one type of play style active at any one time.";
+					break;
+				}
+
+				case PageActionType.Setting_SkillList_Info:
+				{
+					title = "Skill Lists";
+					info = "Skill lists are an alternative to the normal skill lists you can get from clicking the appropriate button on the paper doll. Although you still need to use that for skill management (up, down, lock), skill lists have a more condensed appearance for when you play the game. In order for skills to appear in this alternate list, they have to either be set to 'up', or they can be set to 'locked'. The 'locked' skills will only display in this list if you change your settings here to reflect that. The list does not refresh in real time, but it will often refresh itself to show your skill status in both real and enhanced values. Any skill that appears in orange indicates a skill that you have locked. You can open this list with the '[skilllist' command, or the appropriate button on the main screen.";
+					break;
+				}
+
+				default:
+					return false;
+			}
+			
+			from.SendGump( new InfoHelpGump( from, title, info, scrollbar, () => from.SendGump( new HelpGump( from, (int)returnPage ) ) ) );
+
+			return true;
+		}
+	}
 }

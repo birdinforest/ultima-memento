@@ -182,7 +182,7 @@ namespace Server.Items
 				if ( info.ButtonID == 99 )
 				{
 					from.SendGump( new InternalGump( m_Decorator ) );
-					from.SendGump( new InfoHelpGump( from, 1000, 999 ) );
+					from.SendGump( new InfoHelpGump( from, "Flip Deed", "This option allows you to flip some deeds that can come in one of two direction facings. So if a deed states that furniture faces east, then you can set the deed on the floor of your house and flip it to face south instead. This can flip almost any deed-like items in this manner, but not all items are called 'deeds' or look like deeds. Some items behave as deeds and those can be flipped in the same manner. Tents or bear rugs, for example, have a facing and you can flip those with this command.." ) );
 				}
 				else
 				{
