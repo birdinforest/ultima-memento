@@ -59,6 +59,8 @@ namespace Server.Engines.Help
 
 	public class HelpGump : Gump
 	{
+		private const string TEXT_COLOR = "#ddbc4b"; // Yellowy
+
 		private enum PageActionType
 		{
 			Close = 0,
@@ -123,7 +125,7 @@ namespace Server.Engines.Help
 			Setting_ClassicPoisoning_Info = 86,
 			Setting_SkillTitle_Info = 87,
 			Setting_MessageColors_Info = 88,
-			Setting_AttoAttack_Info = 89,
+			Setting_AutoAttack_Info = 89,
 			Setting_Playstyle_Normal_Info = 92,
 			Setting_Playstyle_Evil_Info = 93,
 			Setting_Playstyle_Oriental_Info = 94,
@@ -277,10 +279,13 @@ namespace Server.Engines.Help
 			return false;
 		}
 
-		public HelpGump( Mobile from, int page ) : base( 50, 50 )
+		public HelpGump( Mobile mobile, int page ) : base( 50, 50 )
 		{
+			if ( false == ( mobile is PlayerMobile ) ) return;
+
+			var from = (PlayerMobile)mobile;
 			string HelpText = MyHelp();
-			string color = "#ddbc4b";
+			string color = TEXT_COLOR;
 			int button = 4005;
 
 			from.SendSound( 0x4A ); 
@@ -599,34 +604,30 @@ namespace Server.Engines.Help
 			r=r+e;
 			if ( page == 12 )
 			{
-				int g = 70;
+				const int SECTION_START_X = 225;
+				const int SETTING_START_X = SECTION_START_X + 20;
+				const int SETTING_SECTION_WIDTH = 725;
+
+				int g = 40;
 				int j = 30;
-				int setB = 3609;
 				int xm = 245;
 				int xo = 700;
 				int xr = 0;
-				int xs = 245;
+				int xs = SECTION_START_X;
 
-				if ( !from.NoAutoAttack ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_AutoAttack, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_AttoAttack_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Auto Attack</BASEFONT></BODY>", (bool)false, (bool)false);
+				// Section - Settings
+				AddHtml( SECTION_START_X, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Settings</BASEFONT></BODY>", (bool)false, (bool)false);
+				g += j;
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				xs = SETTING_START_X;
+				AddSetting(xs, g, from, "Auto Attack", PageActionType.Setting_AutoAttack, PageActionType.Setting_AutoAttack_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( ((PlayerMobile)from).CharacterSheath == 1 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_AutoSheath, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_AutoSheath_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Auto Sheath</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Auto Sheath", PageActionType.Setting_AutoSheath, PageActionType.Setting_AutoSheath_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				if ( ((PlayerMobile)from).ClassicPoisoning == 1 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_ClassicPoisoning, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_ClassicPoisoning_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Classic Poisoning</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Classic Poisoning", PageActionType.Setting_ClassicPoisoning, PageActionType.Setting_ClassicPoisoning_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
 				if ( from.RaceID > 0 && (from.Region).Name == "the Tavern" && Server.Items.BaseRace.GetMonsterMage( from.RaceID ) )
 				{
@@ -634,20 +635,14 @@ namespace Server.Engines.Help
 					if ( from.RaceMagicSchool == 1 ){ magic = "Magery"; }
 					else if ( from.RaceMagicSchool == 2 ){ magic = "Necromancy"; }
 					else if ( from.RaceMagicSchool == 3 ){ magic = "Elementalism"; }
-					AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_CreatureMagicFocus, GumpButtonType.Reply, 0);
-					AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_CreatureMagicFocus_Info, GumpButtonType.Reply, 0);
-					AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Creature Magic (" + magic + ")</BASEFONT></BODY>", (bool)false, (bool)false);
-					if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+					AddSetting(xs, g, from, "Creature Magic (" + magic + ")", PageActionType.Setting_CreatureMagicFocus, PageActionType.Setting_CreatureMagicFocus_Info);
+					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 				}
 
 				if ( from.RaceID > 0 )
 				{
-					if ( from.RaceMakeSounds ){ setB = 4018; } else { setB = 3609; }
-					AddButton(xs, g, setB, setB, (int)PageActionType.Setting_CreatureSounds, GumpButtonType.Reply, 0);
-					AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_CreatureSounds_Info, GumpButtonType.Reply, 0);
-					AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Creature Sounds</BASEFONT></BODY>", (bool)false, (bool)false);
-
-					if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+					AddSetting(xs, g, from, "Creature Sounds", PageActionType.Setting_CreatureSounds, PageActionType.Setting_CreatureSounds_Info);
+					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 				}
 
 				if ( from.RaceID > 0 
@@ -656,200 +651,122 @@ namespace Server.Engines.Help
 					( from.Map == Map.Sosaria && from.X >= 6982 && from.Y >= 694 && from.X <= 6999 && from.Y <= 713 )
 				))
 				{
-					AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_CreatureType, GumpButtonType.Reply, 0);
-					AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_CreatureType_Info, GumpButtonType.Reply, 0);
-					AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Creature Type</BASEFONT></BODY>", (bool)false, (bool)false);
-
-					if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+					AddSetting(xs, g, from, "Creature Type", PageActionType.Setting_CreatureType, PageActionType.Setting_CreatureType_Info);
+					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 				}
 
 				if ( MySettings.S_AllowCustomTitles )
 				{
-					AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_CustomTitle, GumpButtonType.Reply, 0);
-					AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_CustomTitle_Info, GumpButtonType.Reply, 0);
-					AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Custom Title</BASEFONT></BODY>", (bool)false, (bool)false);
-
-					if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+					AddSetting(xs, g, from, "Custom Title", PageActionType.Setting_CustomTitle, PageActionType.Setting_CustomTitle_Info);
+					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 				}
 
-				if ( ((PlayerMobile)from).GumpHue > 0 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_GumpImages, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_GumpImages_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Gump Images</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Gump Images", PageActionType.Setting_GumpImages, PageActionType.Setting_GumpImages_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Loot Options", PageActionType.Setting_LootOptions, PageActionType.Setting_LootOptions_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_LootOptions, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_LootOptions_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Loot Options</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Message Colors", PageActionType.Setting_MessageColors, PageActionType.Setting_MessageColors_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Music Playlist", PageActionType.Setting_MusicPlaylist, PageActionType.Setting_MusicPlaylist_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( from.RainbowMsg ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_MessageColors, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_MessageColors_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Message Colors</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Music Tone", PageActionType.Setting_MusicTone, PageActionType.Setting_MusicTone_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Private Play", PageActionType.Setting_PrivatePlay, PageActionType.Setting_PrivatePlay_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_MusicPlaylist, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_MusicPlaylist_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Music Playlist</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				if ( ((PlayerMobile)from).CharMusical == "Forest" ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_MusicTone, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_MusicTone_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Music Tone</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				if ( ((PlayerMobile)from).PublicInfo == false ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_PrivatePlay, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_PrivatePlay_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Private Play</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_SkillTitle, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_SkillTitle_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Skill Title</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Skill Title", PageActionType.Setting_SkillTitle, PageActionType.Setting_SkillTitle_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
 				string skillLocks = "Skill List (Show Up)"; 
-				if ( ((PlayerMobile)from).SkillDisplay == 1 ){ setB = 4018; skillLocks = "Skill List (Show Up and Locked)"; } else { setB = 4017; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_SkillList, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_SkillList_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">" + skillLocks + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				if ( from.SkillDisplay == 1 ){ skillLocks = "Skill List (Show Up and Locked)"; }
+				AddSetting(xs, g, from, skillLocks, PageActionType.Setting_SkillList, PageActionType.Setting_SkillList_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Weapon Ability Bar", PageActionType.Setting_WeaponAbilityBar, PageActionType.Setting_WeaponAbilityBar_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( ((PlayerMobile)from).WeaponBarOpen > 0 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_WeaponAbilityBar, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_WeaponAbilityBar_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Weapon Ability Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Set Crafting Container", PageActionType.Setting_SetCraftingContainer, PageActionType.Setting_SetCraftingContainer_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Weapon Ability Names", PageActionType.Setting_WeaponAbilityNames, PageActionType.Setting_WeaponAbilityNames_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_SetCraftingContainer, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_SetCraftingContainer_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Set Crafting Container</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Set Harvesting Container", PageActionType.Setting_SetHarvestingContainer, PageActionType.Setting_SetHarvestingContainer_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Use Ancient Spellbook", PageActionType.Setting_UseAncientSpellbook, PageActionType.Setting_UseAncientSpellbook_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( ((PlayerMobile)from).CharacterWepAbNames == 1 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_WeaponAbilityNames, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_WeaponAbilityNames_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Weapon Ability Names</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Set Loot Container", PageActionType.Setting_SetLootContainer, PageActionType.Setting_SetLootContainer_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Double Click to ID Items", PageActionType.Setting_DoubleClickToIDItems, PageActionType.Setting_DoubleClickToIDItems_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_SetHarvestingContainer, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_SetHarvestingContainer_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Set Harvesting Container</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Ordinary Resources", PageActionType.Setting_OrdinaryResources, PageActionType.Setting_OrdinaryResources_Info);
+				// Last setting, don't add a row
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				// Section - Play Styles
+				const int PLAYSTYLE_OPTIONS_PER_ROW = 4;
+				const int PLAYSTYLE_OPTION_WIDTH = 125;
+				const int PLAYSTYLE_OPTION_WIDTH_TOTAL = PLAYSTYLE_OPTION_WIDTH * PLAYSTYLE_OPTIONS_PER_ROW;
+				const int PLAYSTYLE_PADDING_LEFT = (int)( (double)( SETTING_SECTION_WIDTH - PLAYSTYLE_OPTION_WIDTH_TOTAL ) / PLAYSTYLE_OPTIONS_PER_ROW );
 
-				if ( ResearchSettings.BookCaster( from ) ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_UseAncientSpellbook, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_UseAncientSpellbook_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Use Ancient Spellbook</BASEFONT></BODY>", (bool)false, (bool)false);
+				g += (int)(1.5 * j);
+				xs = SECTION_START_X;
+				AddHtml( xs, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Play Styles</BASEFONT></BODY>", (bool)false, (bool)false);
+				g += j;
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				xs = SETTING_START_X;
+				AddSetting(xs, g, from, "Normal", PageActionType.Setting_Playstyle_Normal, PageActionType.Setting_Playstyle_Normal_Info);
+				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
 
-				AddButton(xs, g, 4005, 4005, (int)PageActionType.Setting_SetLootContainer, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_SetLootContainer_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Set Loot Container</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddSetting(xs, g, from, "Evil", PageActionType.Setting_Playstyle_Evil, PageActionType.Setting_Playstyle_Evil_Info);
+				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				AddSetting(xs, g, from, "Oriental", PageActionType.Setting_Playstyle_Oriental, PageActionType.Setting_Playstyle_Oriental_Info);
+				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
 
-				if ( ((PlayerMobile)from).DoubleClickID ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_DoubleClickToIDItems, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_DoubleClickToIDItems_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Double Click to ID Items</BASEFONT></BODY>", (bool)false, (bool)false);
+				string barbaricStyle = !from.Female ? "Barbaric" : "Barbaric (Amazon)";
+				AddSetting(xs, g, from, barbaricStyle, PageActionType.Setting_Playstyle_Barbaric, PageActionType.Setting_Playstyle_Barbaric_Info);
 
-				if ( xr == 1 ){ g=g+j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+				// Section - Magery Spell Color
+				const int MAGERY_SPELL_COLOR_OPTIONS_PER_ROW = 4;
+				const int MAGERY_SPELL_COLOR_OPTION_WIDTH = 90;
+				const int MAGERY_SPELL_COLOR_OPTION_WIDTH_TOTAL = MAGERY_SPELL_COLOR_OPTION_WIDTH * MAGERY_SPELL_COLOR_OPTIONS_PER_ROW;
+				const int MAGERY_SPELL_COLOR_PADDING_LEFT = (int)( (double)( SETTING_SECTION_WIDTH - MAGERY_SPELL_COLOR_OPTION_WIDTH_TOTAL ) / MAGERY_SPELL_COLOR_OPTIONS_PER_ROW );
 
-				if ( from.HarvestOrdinary ){ setB = 4018; } else { setB = 3609; }
-				AddButton(xs, g, setB, setB, (int)PageActionType.Setting_OrdinaryResources, GumpButtonType.Reply, 0);
-				AddButton(xs+40, g, 4011, 4011, (int)PageActionType.Setting_OrdinaryResources_Info, GumpButtonType.Reply, 0);
-				AddHtml( xs+80, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Ordinary Resources</BASEFONT></BODY>", (bool)false, (bool)false);
+				g += (int)(1.5 * j);
+				xs = SECTION_START_X;
+				AddHtml( xs, g + 3, 110, 20, @"<BODY><BASEFONT Color=" + color + ">Magery Spell Color</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddButton(xs + 124, g, 4011, 4011, (int)PageActionType.Setting_MagerySpellColor_Info, GumpButtonType.Reply, 0);
 
-				g=g+j;
-				g=g+j;
+				g += j;
+				xs = SETTING_START_X;
+				AddSettingNoInfo(xs, g, from, "Default", PageActionType.Setting_MagerySpellColor_Default, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "Black", PageActionType.Setting_MagerySpellColor_Black, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "Blue", PageActionType.Setting_MagerySpellColor_Blue, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "Green", PageActionType.Setting_MagerySpellColor_Green, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
 
-				AddHtml( 325, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Play Styles</BASEFONT></BODY>", (bool)false, (bool)false);
-				g=g+j;
-
-				if ( ((PlayerMobile)from).CharacterEvil == 0 && ((PlayerMobile)from).CharacterOriental == 0 && ((PlayerMobile)from).CharacterBarbaric == 0 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(325, g, setB, setB, (int)PageActionType.Setting_Playstyle_Normal, GumpButtonType.Reply, 0);
-				AddButton(370, g, 4011, 4011, (int)PageActionType.Setting_Playstyle_Normal_Info, GumpButtonType.Reply, 0);
-				AddHtml( 410, g, 65, 20, @"<BODY><BASEFONT Color=" + color + ">Normal</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( ((PlayerMobile)from).CharacterEvil == 1 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(535, g, setB, setB, (int)PageActionType.Setting_Playstyle_Evil, GumpButtonType.Reply, 0);
-				AddButton(575, g, 4011, 4011, (int)PageActionType.Setting_Playstyle_Evil_Info, GumpButtonType.Reply, 0);
-				AddHtml( 620, g, 65, 20, @"<BODY><BASEFONT Color=" + color + ">Evil</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( ((PlayerMobile)from).CharacterOriental == 1 ){ setB = 4018; } else { setB = 3609; }
-				AddButton(745, g, setB, setB, (int)PageActionType.Setting_Playstyle_Oriental, GumpButtonType.Reply, 0);
-				AddButton(785, g, 4011, 4011, (int)PageActionType.Setting_Playstyle_Oriental_Info, GumpButtonType.Reply, 0);
-				AddHtml( 830, g, 65, 20, @"<BODY><BASEFONT Color=" + color + ">Oriental</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				g=g+j;
-
-				string amazon = "";
-				if ( ((PlayerMobile)from).CharacterBarbaric == 1 ){ setB = 4018; } 
-				else if ( ((PlayerMobile)from).CharacterBarbaric == 2 ){ setB = 4003; amazon = " with Amazon Fighting Titles"; } 
-				else { setB = 3609; }
-				AddButton(325, g, setB, setB, (int)PageActionType.Setting_Playstyle_Barbaric, GumpButtonType.Reply, 0);
-				AddButton(370, g, 4011, 4011, (int)PageActionType.Setting_Playstyle_Barbaric_Info, GumpButtonType.Reply, 0);
-				AddHtml( 410, g, 300, 20, @"<BODY><BASEFONT Color=" + color + ">Barbaric" + amazon + "</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				g=g+j;
-				g=g+j;
-
-				AddButton(285, g, 4011, 4011, (int)PageActionType.Setting_MagerySpellColor_Info, GumpButtonType.Reply, 0);
-				AddHtml( 325, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Magery Spell Color</BASEFONT></BODY>", (bool)false, (bool)false);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x47E ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 565, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">White</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(523, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_White, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x94E ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 685, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Black</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(643, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Black, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x48D ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 805, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Blue</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(764, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Blue, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x48E ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 925, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Red</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(883, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Red, GumpButtonType.Reply, 0);
-
-				g=g+j;
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x48F ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 565, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Green</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(523, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Green, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x490 ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 685, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Purple</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(643, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Purple, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0x491 ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 805, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Yellow</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(764, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Yellow, GumpButtonType.Reply, 0);
-
-				if ( ((PlayerMobile)from).MagerySpellHue == 0 ){ setB = 4018; } else { setB = 3609; }
-				AddHtml( 925, g, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Default</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(883, g, setB, setB, (int)PageActionType.Setting_MagerySpellColor_Default, GumpButtonType.Reply, 0);
-
-				g=g+j;
-				g=g+j;
+				g += j;
+				xs = SETTING_START_X;
+				AddSettingNoInfo(xs, g, from, "Purple", PageActionType.Setting_MagerySpellColor_Purple, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "Red", PageActionType.Setting_MagerySpellColor_Red, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "White", PageActionType.Setting_MagerySpellColor_White, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingNoInfo(xs, g, from, "Yellow", PageActionType.Setting_MagerySpellColor_Yellow, MAGERY_SPELL_COLOR_OPTION_WIDTH);
+				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
 			}
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -915,6 +832,85 @@ namespace Server.Engines.Help
 				gump.Player.CloseGump(gump.GetType());
 				gump.Player.SendGump(gump);
 			}
+		}
+
+		private void AddSetting(int x, int y, PlayerMobile from, string name, PageActionType actionType, PageActionType infoType)
+		{
+			const int RIGHT_ARROW = 4005;
+			const int CHECKED_BOX = 4018;
+			const int UNCHECKED_BOX = 3609;
+			int isSelected = IsActionSetting(actionType) 
+				? RIGHT_ARROW
+				: GetValue(from, actionType)
+					? CHECKED_BOX
+					: UNCHECKED_BOX;
+			AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
+			AddButton(x+40, y, 4011, 4011, (int)infoType, GumpButtonType.Reply, 0);
+			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+		}
+
+		private void AddSettingNoInfo(int x, int y, PlayerMobile from, string name, PageActionType actionType, int width = 100)
+		{
+			const int CHECKED_BOX = 4018;
+			const int UNCHECKED_BOX = 3609;
+			int isSelected = GetValue(from, actionType) ? CHECKED_BOX : UNCHECKED_BOX;
+			AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
+			AddHtml( x+40, y + 3, width, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+		}
+
+		private bool IsActionSetting( PageActionType actionType )
+		{
+			switch ( actionType )
+			{
+				// Special behaviors
+				case PageActionType.Setting_CreatureMagicFocus: 
+				case PageActionType.Setting_CreatureType: 
+				case PageActionType.Setting_CustomTitle: 
+				case PageActionType.Setting_LootOptions: 
+				case PageActionType.Setting_MusicPlaylist: 
+				case PageActionType.Setting_SkillTitle: 
+				case PageActionType.Setting_SetCraftingContainer: 
+				case PageActionType.Setting_SetHarvestingContainer: 
+				case PageActionType.Setting_SetLootContainer: return true;
+			}
+
+			return false;
+		}
+
+		private bool GetValue( PlayerMobile from, PageActionType actionType )
+		{
+			switch (actionType)
+			{
+				case PageActionType.Setting_AutoAttack: return !from.NoAutoAttack;
+				case PageActionType.Setting_AutoSheath: return from.CharacterSheath == 1;
+				case PageActionType.Setting_ClassicPoisoning: return from.ClassicPoisoning == 1;
+				case PageActionType.Setting_CreatureSounds: return from.RaceMakeSounds;
+				case PageActionType.Setting_GumpImages: return from.GumpHue > 0;
+				case PageActionType.Setting_MessageColors: return from.RainbowMsg;
+				case PageActionType.Setting_MusicTone: return from.CharMusical == "Forest";
+				case PageActionType.Setting_PrivatePlay: return !from.PublicInfo;
+				case PageActionType.Setting_WeaponAbilityBar: return from.WeaponBarOpen > 0;
+				case PageActionType.Setting_WeaponAbilityNames: return from.CharacterWepAbNames == 1;
+				case PageActionType.Setting_UseAncientSpellbook: return ResearchSettings.BookCaster( from );
+				case PageActionType.Setting_DoubleClickToIDItems: return from.DoubleClickID;
+				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
+				case PageActionType.Setting_Playstyle_Normal: return from.CharacterEvil == 0 && from.CharacterOriental == 0 && from.CharacterBarbaric == 0;
+				case PageActionType.Setting_Playstyle_Evil: return from.CharacterEvil == 1;
+				case PageActionType.Setting_Playstyle_Oriental: return from.CharacterOriental == 1;
+				case PageActionType.Setting_Playstyle_Barbaric: return from.CharacterBarbaric == 1 || from.CharacterBarbaric == 2;
+				case PageActionType.Setting_MagerySpellColor_White: return from.MagerySpellHue == 0x47E;
+				case PageActionType.Setting_MagerySpellColor_Black: return from.MagerySpellHue == 0x94E;
+				case PageActionType.Setting_MagerySpellColor_Blue: return from.MagerySpellHue == 0x48D;
+				case PageActionType.Setting_MagerySpellColor_Red: return from.MagerySpellHue == 0x48E;
+				case PageActionType.Setting_MagerySpellColor_Green: return from.MagerySpellHue == 0x48F;
+				case PageActionType.Setting_MagerySpellColor_Purple: return from.MagerySpellHue == 0x490;
+				case PageActionType.Setting_MagerySpellColor_Yellow: return from.MagerySpellHue == 0x491;
+				case PageActionType.Setting_MagerySpellColor_Default: return from.MagerySpellHue == 0;
+
+				case PageActionType.Setting_SkillList: return true;
+			}
+
+			return false;
 		}
 
 		public override void OnResponse( NetState state, RelayInfo info )
@@ -2103,7 +2099,7 @@ namespace Server.Engines.Help
 					break;
 				}
 
-				case PageActionType.Setting_AttoAttack_Info:
+				case PageActionType.Setting_AutoAttack_Info:
 				{
 					scrollbar = false;
 					title = "Auto Attack";
