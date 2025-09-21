@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("- Races - Flat Luck bonus has been reduced from +600 to +100. Max is now 600, down from 1100<br>");
 			builder.Append("- Skill - Alternative Seafaring tasks can now provide gains up to 125 skill, up from 50<br>");
 			builder.Append("- Skill - Provocation is now 1.5x more likely to gain<br>");
+			builder.Append("- Skill - Provocation failure cooldown is now 3s, down from 5s<br>");
 			builder.Append("- Skill - Minimum Provocation skill required for attempts is slightly lower<br>");
 
 			builder.Append("<br>");
