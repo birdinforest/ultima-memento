@@ -505,9 +505,6 @@ namespace Server.Items
 			MaxCharges = 12 + (int)( quality * skillValue / 20 );
 			if ( 125 <= skillValue ) MaxCharges += 6;
 
-			if ( MaxCharges < 12 )
-				MaxCharges = 12;
-
 			return quality;
 		}
 
