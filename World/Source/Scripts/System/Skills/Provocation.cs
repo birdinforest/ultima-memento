@@ -127,7 +127,7 @@ namespace Server.SkillHandlers
 						{
 							if ( !BaseInstrument.CheckMusicianship( from ) )
 							{
-								from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+								from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3 );
 								from.SendLocalizedMessage( 500612 ); // You play poorly, and there is no effect.
 								m_Instrument.PlayInstrumentBadly( from );
 								m_Instrument.ConsumeUse( from );
@@ -139,7 +139,7 @@ namespace Server.SkillHandlers
 
 								if ( !from.CheckTargetSkill( SkillName.Provocation, creature, minSkill, maxSkill ) )
 								{
-									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3 );
 									from.SendLocalizedMessage( 501599 ); // Your music fails to incite enough anger.
 									m_Instrument.PlayInstrumentBadly( from );
 									m_Instrument.ConsumeUse( from );
