@@ -114,13 +114,14 @@ namespace Server.SkillHandlers
 					}
 					else if ( m_Creature != creature )
 					{
-						from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
-
-						double diff = ((m_Instrument.GetDifficultyFor( m_Creature ) + m_Instrument.GetDifficultyFor( creature )) * 0.5) - 5.0;
+						double diff = ((m_Instrument.GetDifficultyFor( m_Creature ) + m_Instrument.GetDifficultyFor( creature )) * 0.5) - 10.0;
 						double music = from.Skills[SkillName.Musicianship].Value;
 
 						if ( music > 100.0 )
 							diff -= (music - 100.0) * 0.5;
+
+						double minSkill = diff - 25;
+						double maxSkill = diff + 25;
 
 						if ( from.CanBeHarmful( m_Creature, true ) && from.CanBeHarmful( creature, true ) )
 						{
@@ -136,7 +137,7 @@ namespace Server.SkillHandlers
 								//from.DoHarmful( m_Creature );
 								//from.DoHarmful( creature );
 
-								if ( !from.CheckTargetSkill( SkillName.Provocation, creature, diff-25.0, diff+25.0 ) )
+								if ( !from.CheckTargetSkill( SkillName.Provocation, creature, minSkill, maxSkill ) )
 								{
 									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
 									from.SendLocalizedMessage( 501599 ); // Your music fails to incite enough anger.
@@ -145,6 +146,7 @@ namespace Server.SkillHandlers
 								}
 								else
 								{
+									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
 									from.SendLocalizedMessage( 501602 ); // Your music succeeds, as you start a fight.
 									m_Instrument.PlayInstrumentWell( from );
 									m_Instrument.ConsumeUse( from );

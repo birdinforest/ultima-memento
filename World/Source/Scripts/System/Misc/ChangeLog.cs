@@ -34,6 +34,7 @@ namespace Server.Misc
 			builder.Append("- Races - Flat Luck bonus has been reduced from +600 to +100. Max is now 600, down from 1100<br>");
 			builder.Append("- Skill - Alternative Seafaring tasks can now provide gains up to 125 skill, up from 50<br>");
 			builder.Append("- Skill - Provocation is now 1.5x more likely to gain<br>");
+			builder.Append("- Skill - Minimum Provocation skill required for attempts is slightly lower<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
@@ -41,6 +42,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Add exit teleporter to Tower of Brass level<br>");
 			builder.Append("- Misc - Luck now properly increases rare item drop rates<br>");
 			builder.Append("- Pets - Hoard Minion no longer freezes when the Player has a combatant<br>");
+			builder.Append("- Skill - Provocation no longer sets cooldown when failing to select a 2nd target<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
