@@ -42,6 +42,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Commands - Fix Achievement command and aliases -- [feats / [achievement / [achievements<br>");
 			builder.Append("- Item - Pants and Leg Armor can now both give resistances<br>");
 			builder.Append("- Misc - Prevent access to moat in Caverns of Poseidon<br>");
 			builder.Append("- Misc - Add exit teleporter to Tower of Brass level<br>");
