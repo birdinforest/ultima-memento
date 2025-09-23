@@ -37,6 +37,7 @@ namespace Server.Misc
 			builder.Append("- Item - Mallet Stake single and double click actions have been swapped<br>");
 			builder.Append("- Misc - Risky refactor to Player skill caps<br>");
 			builder.Append("- Misc - Self-res delay reduced to 10 seconds, down from 30 seconds<br>");
+			builder.Append("- Misc - The tillerman now babbles some dull stories<br>");
 			builder.Append("- Misc - Hit Point Increase attribute is now uncapped, up from 25<br>");
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 			builder.Append("- Pets - The subdue mechanic is now only required at the start of taming<br>");

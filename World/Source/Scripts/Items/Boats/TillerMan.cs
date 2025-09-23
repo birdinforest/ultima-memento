@@ -1,5 +1,4 @@
 using System;
-using Server;
 using Server.Multis;
 using Server.Network;
 using Server.Gumps;
@@ -10,16 +9,20 @@ namespace Server.Items
 	public class TillerMan : Item
 	{
 		private BaseBoat m_Boat;
+        private bool Babbles;
+        private DateTime m_NextBabble;
 
 		public TillerMan( BaseBoat boat ) : base( 0x3E4E )
 		{
 			m_Boat = boat;
 			Movable = false;
+			Babbles = true;
 
 			if ( BaseBoat.isCarpet( m_Boat ) )
 			{
 				ItemID = 0x5439;
 				Name = "magic lamp";
+				Babbles = false;
 			}
 		}
 
@@ -147,6 +150,32 @@ namespace Server.Items
 			return false;
 		}
 
+        public void Babble()
+        {
+            if (Babbles)
+            {
+                PublicOverheadMessage(MessageType.Regular, 0x3B2, 1114137, RandomBabbleArgs());
+                // Ar! Did I ever tell thee about the time I was in ~1_CITY~ and I met ~2_GENDER~ ~3_STORY~ Anyway, 'tis a dull story.
+
+                m_NextBabble = DateTime.UtcNow + TimeSpan.FromMinutes(Utility.RandomMinMax(3, 10));
+            }
+        }
+
+        private string RandomBabbleArgs()
+        {
+            return string.Format("{0}\t{1} who\t#{2}", QuestCharacters.SomePlace( "tillerman" ), //Utility.Random(1114138, 13).ToString(),
+                                                     QuestCharacters.RandomWords(), //Utility.Random(1114151, 2).ToString(),
+                                                     Utility.RandomMinMax(1114153, 1114221).ToString());
+        }
+
+        public override void OnLocationChange(Point3D oldLocation)
+        {
+            if (Babbles && m_NextBabble < DateTime.UtcNow && 0.1 > Utility.RandomDouble())
+            {
+                Babble();
+            }
+        }
+
 		public override void OnAfterDelete()
 		{
 			if ( m_Boat != null )
@@ -176,6 +205,8 @@ namespace Server.Items
 
 					if ( m_Boat == null )
 						Delete();
+					else
+						Babbles = !BaseBoat.isCarpet( m_Boat );
 
 					break;
 				}
