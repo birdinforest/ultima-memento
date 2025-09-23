@@ -18,7 +18,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Swords, 5 );
 			Attributes.DefendChance = 30;
 			PhysicalBonus = 20;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 6, "Conan's Lost Helm " );
 		}
 
@@ -35,7 +35,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

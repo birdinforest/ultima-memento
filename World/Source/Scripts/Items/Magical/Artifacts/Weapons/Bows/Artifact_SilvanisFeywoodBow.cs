@@ -17,7 +17,7 @@ namespace Server.Items
 			Attributes.AttackChance = 12;
 			Attributes.WeaponSpeed = 30;
 			Attributes.WeaponDamage = 35;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 
@@ -41,7 +41,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadEncodedInt();
 		}

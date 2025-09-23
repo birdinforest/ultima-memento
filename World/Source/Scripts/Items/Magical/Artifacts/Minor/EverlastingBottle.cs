@@ -18,7 +18,7 @@ namespace Server.Items
 		{
 			Hue = 0x849;
 			Name = "Everlasting Bottle";
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -44,7 +44,6 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			ItemID = 0x2827;
 			Hue = 0x849;
-			ArtifactLevel = 2;
 		}
 	}
 }

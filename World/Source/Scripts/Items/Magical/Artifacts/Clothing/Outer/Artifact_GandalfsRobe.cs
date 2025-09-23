@@ -19,7 +19,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 12, "" );
 		}
 
@@ -36,7 +36,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

@@ -13,7 +13,7 @@ namespace Server.Items
 			Name = "Quiver of Ice";
 			Hue = 0x998;
 			ItemID = 0x2B02;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfIce( Serial serial ) : base( serial )
@@ -38,7 +38,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

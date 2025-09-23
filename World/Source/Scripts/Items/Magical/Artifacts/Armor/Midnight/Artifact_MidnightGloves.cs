@@ -18,7 +18,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 5.0 );
 			Attributes.SpellDamage = 10;
 			ArmorAttributes.MageArmor = 1;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 4, "" );
 		}
 
@@ -36,7 +36,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 

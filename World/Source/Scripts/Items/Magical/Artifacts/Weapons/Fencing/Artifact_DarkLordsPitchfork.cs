@@ -18,7 +18,7 @@ namespace Server.Items
             WeaponAttributes.HitFireball = 50;
             WeaponAttributes.ResistFireBonus = 5;
             Attributes.SpellChanneling = 1;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}
 
@@ -44,7 +44,6 @@ namespace Server.Items
         public override void Deserialize( GenericReader reader )
         {
             base.Deserialize( reader );
-			ArtifactLevel = 2;
             int version = reader.ReadInt();
         }
     }

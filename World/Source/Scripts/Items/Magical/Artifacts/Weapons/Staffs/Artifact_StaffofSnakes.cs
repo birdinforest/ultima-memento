@@ -24,7 +24,7 @@ namespace Server.Items
 			Attributes.SpellChanneling = 1;
 			Slayer = SlayerName.SnakesBane;
 			WeaponAttributes.HitPoisonArea = 50;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 12, "(Summons Snakes) " );
 		}
 
@@ -70,7 +70,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 			TimeUsed = reader.ReadDateTime();
 		}

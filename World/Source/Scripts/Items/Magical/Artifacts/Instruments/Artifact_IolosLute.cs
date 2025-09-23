@@ -22,7 +22,7 @@ namespace Server.Items
 			UsesRemaining = 800;
 			Slayer = SlayerName.Silver;
 			Slayer2 = SlayerName.Exorcism;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_IolosLute( Serial serial ) : base( serial )
@@ -39,7 +39,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 1;
 			ItemID = 0x66F3;
 		}
 	}

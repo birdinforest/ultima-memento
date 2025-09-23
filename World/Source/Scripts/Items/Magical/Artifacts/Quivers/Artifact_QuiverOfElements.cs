@@ -14,7 +14,7 @@ namespace Server.Items
 			Hue = 0xAFE;
 			ItemID = 0x2B02;
 			WeightReduction = 100;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfElements( Serial serial ) : base( serial )
@@ -40,7 +40,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

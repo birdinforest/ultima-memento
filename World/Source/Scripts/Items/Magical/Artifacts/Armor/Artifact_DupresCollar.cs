@@ -22,7 +22,7 @@ namespace Server.Items
 			Attributes.BonusStr = 5;
 			Attributes.RegenHits = 2;
 			Attributes.DefendChance = 20;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}
 
@@ -40,7 +40,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 

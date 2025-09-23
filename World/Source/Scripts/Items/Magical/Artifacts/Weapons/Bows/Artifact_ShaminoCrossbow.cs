@@ -8,14 +8,14 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_ShaMontorrossbow()
 		{
-			Name = "Shamino’s Crossbow";
+			Name = "Shaminoï¿½s Crossbow";
 			Hue = 0x504;
 			ItemID = 0x26C3;
 			Attributes.AttackChance = 15;
 			Attributes.WeaponDamage = 40;
 			WeaponAttributes.SelfRepair = 10;
 			WeaponAttributes.LowerStatReq = 100;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 
@@ -33,7 +33,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadEncodedInt();
 		}

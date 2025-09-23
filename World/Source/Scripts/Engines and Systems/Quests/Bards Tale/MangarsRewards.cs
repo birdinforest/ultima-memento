@@ -19,7 +19,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public MangarRobe( Serial serial ) : base( serial )
@@ -36,7 +36,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 2;
 		}
 	}
 
@@ -56,7 +55,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public MangarNecroRobe( Serial serial ) : base( serial )
@@ -73,7 +72,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 2;
 		}
 	}
 
@@ -93,7 +91,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public MangarElementalistRobe( Serial serial ) : base( serial )
@@ -110,7 +108,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 2;
 		}
 	}
 
@@ -128,7 +125,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 3, SkillName.Peacemaking, 10 );
 			Attributes.RegenMana = 10;
 			Attributes.BonusDex = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public BardicFeatheredCap( Serial serial ) : base( serial )
@@ -145,7 +142,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 2;
 		}
 	}
 }

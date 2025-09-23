@@ -35,7 +35,7 @@ namespace Server.Items
 			Hue = 0xA3E;
 			Charges = 200;
 			Weight = 5.0;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -103,7 +103,6 @@ namespace Server.Items
 					break;
 				}
 			}
-			ArtifactLevel = 2;
 	    }
     }
 }

@@ -20,7 +20,7 @@ namespace Server.Items
 			Name = "whip";
 			Resource = CraftResource.RegularLeather;
 			ResourceMods.DefaultItemHue( this );
-			ArtifactLevel = 3;
+			ArtifactLevel = ArtifactLevel.LegendaryArtefact;
         }
 
 		public override bool DisplayLootType{ get{ return false; } }
@@ -85,8 +85,6 @@ namespace Server.Items
 					Attributes.Luck = oldLuck; // Restore in case they used lucky horse shoes
 				});
 			}
-
-			ArtifactLevel = 3;
         }
 
         public override void GetProperties(ObjectPropertyList list)

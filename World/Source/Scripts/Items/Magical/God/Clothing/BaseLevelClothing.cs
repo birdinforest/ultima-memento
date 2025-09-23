@@ -26,7 +26,7 @@ namespace Server.Items
             /* Invalidate the level and refresh the item props
              * Extremely important to call this method */
             LevelItemManager.InvalidateLevel(this);
-			ArtifactLevel = 3;
+			ArtifactLevel = ArtifactLevel.LegendaryArtefact;
         }
 
 		public override bool DisplayLootType{ get{ return false; } }
@@ -90,8 +90,6 @@ namespace Server.Items
 					Attributes.Luck = oldLuck; // Restore in case they used lucky horse shoes
 				});
 			}
-
-			ArtifactLevel = 3;
         }
 
         public override void GetProperties(ObjectPropertyList list)

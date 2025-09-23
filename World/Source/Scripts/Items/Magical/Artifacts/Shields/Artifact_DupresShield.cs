@@ -17,14 +17,14 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_DupresShield()
 		{
-			Name = "Dupre’s Shield";
+			Name = "Dupreï¿½s Shield";
 			Weight = 6.0;
 			Attributes.BonusHits = 5;
 			Attributes.RegenHits = 5;
 			SkillBonuses.SetValues( 0, SkillName.Swords, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Parry, 10 );
 			SkillBonuses.SetValues( 2, SkillName.Tactics, 10 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
@@ -41,7 +41,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadEncodedInt();
 		}
 	}

@@ -19,7 +19,7 @@ namespace Server.Items
 			Resistances.Energy = 10;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 12, "" );
 		}
 
@@ -36,7 +36,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

@@ -58,12 +58,21 @@ namespace Server
 			if ( item.ColorText5 != null )
 				text += formatString( item.ColorText5, item.ColorHue5 );
 
-			if ( item.ArtifactLevel == 3 )
-				text += "<BASEFONT COLOR=#C6D11C>Legendary Artefact</BASEFONT><BR>";
-			else if ( item.ArtifactLevel == 2 )
-				text += "<BASEFONT COLOR=#C6D11C>Artefact</BASEFONT><BR>";
-			else if ( item.ArtifactLevel == 1 )
-				text += "<BASEFONT COLOR=#C6D11C>Artifact</BASEFONT><BR>";
+			switch (item.ArtifactLevel)
+			{
+				case ArtifactLevel.DecorativeArtefact:
+					text += "<BASEFONT COLOR=#C6D11C>Decorative Artefact</BASEFONT><BR>";
+					break;
+				case ArtifactLevel.LegendaryArtefact:
+					text += "<BASEFONT COLOR=#C6D11C>Legendary Artefact</BASEFONT><BR>";
+					break;
+				case ArtifactLevel.StandardArtefact:
+					text += "<BASEFONT COLOR=#C6D11C>Artefact</BASEFONT><BR>";
+					break;
+				case ArtifactLevel.Artifact:
+					text += "<BASEFONT COLOR=#C6D11C>Artifact</BASEFONT><BR>";
+					break;
+			}
 
 			if ( item.Enchanted != MagicSpell.None )
 			{

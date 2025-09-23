@@ -15,7 +15,7 @@ namespace Server.Items
 			WeightReduction = 80;
 			LowerAmmoCost = 20;
 			Attributes.DefendChance = 5;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfInfinity( Serial serial ) : base( serial )
@@ -35,7 +35,6 @@ namespace Server.Items
 
 			int version = reader.ReadEncodedInt();
 
-			ArtifactLevel = 1;
 		}
 	}
 }

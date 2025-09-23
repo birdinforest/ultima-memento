@@ -11,7 +11,7 @@ namespace Server.Items
 			Name = "Lucky Necklace";
 			Hue = 0xAFF;
 			base.Attributes.Luck = 300;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 3, "" );
 		}
 
@@ -28,7 +28,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			reader.ReadInt();
 		}
 	}

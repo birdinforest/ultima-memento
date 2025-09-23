@@ -15,7 +15,7 @@ namespace Server.Items
 			Resistances.Cold = 18;
 			Resistances.Poison = 18;
 			Resistances.Energy = 18;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
@@ -32,7 +32,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

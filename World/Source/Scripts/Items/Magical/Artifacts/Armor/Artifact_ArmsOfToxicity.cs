@@ -26,7 +26,7 @@ namespace Server.Items
 			Attributes.AttackChance = 5;
 			Attributes.DefendChance = 10;
 			Attributes.ReflectPhysical = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 7, "" );
 		}
 		public Artifact_ArmsOfToxicity( Serial serial ) : base( serial )
@@ -42,7 +42,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

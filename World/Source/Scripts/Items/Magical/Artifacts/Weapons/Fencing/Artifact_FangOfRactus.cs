@@ -25,7 +25,7 @@ namespace Server.Items
 
 			WeaponAttributes.HitPoisonArea = 20;
 			WeaponAttributes.ResistPoisonBonus = 15;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 9, "" );
 		}
 
@@ -43,7 +43,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 		}

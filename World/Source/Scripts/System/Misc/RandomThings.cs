@@ -2556,7 +2556,7 @@ namespace Server.Misc
 
 		public static bool SkipMagicName( Item item )
 		{
-			if ( item.ArtifactLevel > 0 )
+			if ( item.ArtifactLevel > (int)ArtifactLevel.None )
 				return true;
 
 			if ( item.NotModAble && !(item is BaseTrinket) )

@@ -13,7 +13,7 @@ namespace Server.Items
 			Name = "Quiver of Lightning";
 			Hue = 0x8D9;
 			ItemID = 0x2B02;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfLightning( Serial serial ) : base( serial )
@@ -38,7 +38,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

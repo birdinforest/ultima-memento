@@ -28,7 +28,7 @@ namespace Server.Items
             WeaponAttributes.HitLeechStam = 10;
 			WeaponAttributes.SelfRepair = 1;
 			Hue = 1899;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 15, "" );
 		}
 
@@ -46,7 +46,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 		}

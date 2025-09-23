@@ -14,7 +14,7 @@ namespace Server.Items
 			Name = "Quiver of Rage";
 			ItemID = 0x2B02;
 			WeightReduction = 100;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfRage( Serial serial ) : base( serial )
@@ -39,7 +39,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

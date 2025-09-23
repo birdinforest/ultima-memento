@@ -18,7 +18,7 @@ namespace Server.Items
 		{
 			Hue = 0;
 			Name = "Everlasting Loaf";
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -49,7 +49,6 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			ItemID = 0x136F;
 			Hue = 0;
-			ArtifactLevel = 2;
 		}
 	}
 }

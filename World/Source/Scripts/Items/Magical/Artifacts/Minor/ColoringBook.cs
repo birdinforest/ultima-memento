@@ -30,7 +30,7 @@ namespace Server.Items
 			Name = "Book of Prismatic Magic";
 			MagicPage = 0;
 			MagicColor = "";
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -246,7 +246,6 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			MagicColor = reader.ReadString();
 			MagicPage = reader.ReadInt();
-			ArtifactLevel = 2;
 		}
 
 		public static string GetColorListForBook( int colorz )

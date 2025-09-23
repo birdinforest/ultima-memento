@@ -16,7 +16,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, Utility.RandomMinMax(10,25) );
 			SkillBonuses.SetValues( 3, SkillName.Lockpicking, Utility.RandomMinMax(10,25) );
 			SkillBonuses.SetValues( 4, SkillName.Snooping, Utility.RandomMinMax(10,25) );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}
 
@@ -33,7 +33,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

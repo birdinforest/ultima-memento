@@ -9,6 +9,7 @@ namespace Server.Items
 		public PhillipsWoodenSteed() : base( MonsterStatuetteType.PhillipsWoodenSteed )
 		{
 			LootType = LootType.Regular;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
@@ -21,7 +22,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 );
+			writer.Write( (int) 1 );
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -29,6 +30,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+			if (version < 1)
+				ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 	}
 }

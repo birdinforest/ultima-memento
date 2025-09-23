@@ -18,7 +18,7 @@ namespace Server.Items
 			Attributes.SpellDamage = 20;
 			Attributes.CastRecovery = 2;
 			Attributes.LowerManaCost = 20;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 9, "" );
 		}
 
@@ -36,7 +36,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 		}

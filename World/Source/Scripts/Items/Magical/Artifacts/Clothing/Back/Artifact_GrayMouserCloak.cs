@@ -14,7 +14,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Stealing, 25 );
 			SkillBonuses.SetValues( 1, SkillName.Snooping, 25 );
 			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, 80 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 9, "Gray Mouser's Cloak " );
 		}
 
@@ -31,7 +31,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

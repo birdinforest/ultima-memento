@@ -340,7 +340,7 @@ namespace Server
 
 		public static bool AlterArtifact( Item item )
 		{
-			if ( item.ArtifactLevel > 0 && !MySettings.S_ChangeArtyLook )
+			if ( item.ArtifactLevel > (int)ArtifactLevel.None && !MySettings.S_ChangeArtyLook )
 				return false;
 
 			return true;

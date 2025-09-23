@@ -20,7 +20,7 @@ namespace Server.Items
 			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.AttackChance = 10;
             Slayer = SlayerName.Exorcism;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 6, "Conan's Lost Sword " );
 		}
 
@@ -37,7 +37,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

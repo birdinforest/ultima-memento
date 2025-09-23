@@ -11,6 +11,7 @@ namespace Server.Items
 		public ShipModelOfTheHMSCape() : base( 0x14F3 )
 		{
 			Hue = 0x37B;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public ShipModelOfTheHMSCape( Serial serial ) : base( serial )
@@ -21,7 +22,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 );
+			writer.Write( (int) 1 );
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -29,6 +30,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+			if (version < 1)
+				ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 	}
 }

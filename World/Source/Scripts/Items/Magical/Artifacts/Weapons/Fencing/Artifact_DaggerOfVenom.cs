@@ -18,7 +18,7 @@ namespace Server.Items
 			ItemID = 0x2677;
 			AosElementDamages.Physical = 50;
 			AosElementDamages.Poison = 50;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 10, "Dripping With Venom " );
 		}
 
@@ -49,7 +49,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

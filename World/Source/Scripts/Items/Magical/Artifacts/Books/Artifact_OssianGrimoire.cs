@@ -11,7 +11,7 @@ namespace Server.Items
 			Name = "Ossian Grimoire";
 			Attributes.RegenMana = 1;
 			Attributes.CastSpeed = 1;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			this.Content = (ulong)( (int)(ulong)0x1FFFF );
 			int attributeCount = Utility.RandomMinMax(8,15);
@@ -39,7 +39,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

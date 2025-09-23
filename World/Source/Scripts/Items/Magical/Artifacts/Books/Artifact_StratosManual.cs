@@ -13,7 +13,7 @@ namespace Server.Items
 			Attributes.CastSpeed = Utility.RandomMinMax( 1, 5 );
 			Attributes.SpellDamage = 10;
             Slayer = SlayerName.Vacuum;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			switch( Utility.RandomMinMax( 0, 6 ) )
 			{
@@ -51,7 +51,6 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.WriteEncodedInt( 0 ); //version
-			ArtifactLevel = 1;
 		}
 
 		public override void Deserialize( GenericReader reader )

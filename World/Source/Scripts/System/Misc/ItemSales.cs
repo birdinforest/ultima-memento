@@ -681,7 +681,7 @@ namespace Server
 			if ( item != null )
 				price = AddUpBenefits( item, price, false, resale );
 
-			if ( info.iPrice >= 5000 && item != null && item.ArtifactLevel > 0 && resale )
+			if ( info.iPrice >= 5000 && item != null && item.ArtifactLevel > (int)ArtifactLevel.None && resale )
 				price = (int)(price * 3);
 			else if ( resale && item != null && item is BaseClothing )
 				price = (int)(price * 15);

@@ -20,7 +20,7 @@ namespace Server.Items
 			Attributes.WeaponDamage = 30;
 			WeaponAttributes.HitLeechMana = 20;
 			WeaponAttributes.UseBestSkill = 1;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 		public Artifact_BladeDance( Serial serial ) : base( serial )
@@ -37,7 +37,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadEncodedInt();
 		}
 	}

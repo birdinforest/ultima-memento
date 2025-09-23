@@ -71,7 +71,7 @@ namespace Server.Items
 				if ( magic == 1 ){ SkillBonuses.SetValues(2, SkillName.Necromancy, 25); }
 				else if ( magic == 2 ){ SkillBonuses.SetValues(2, SkillName.Elementalism, 25); }
 				else { SkillBonuses.SetValues(2, SkillName.Magery, 25); }
-				ArtifactLevel = 2;
+				ArtifactLevel = ArtifactLevel.StandardArtefact;
 			}
 
 			if ( from == null )
@@ -131,7 +131,6 @@ namespace Server.Items
 			StaffMagic = reader.ReadInt();
 			EngravedText = StaffName;
 			LootType = LootType.Blessed;
-			ArtifactLevel = 2;
 		}
 	}
 	///////////////////////////////////////////////////////////////////////////

@@ -18,7 +18,7 @@ namespace Server.Items
 			int min = Utility.RandomMinMax(15,25);
 			int max = min + 40;
 			BaseRunicTool.ApplyAttributesTo( (BaseInstrument)this, attributeCount, min, max );
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			UsesRemaining = 800;
 			Slayer = SlayerName.NeptunesBane;
@@ -42,7 +42,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

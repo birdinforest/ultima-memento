@@ -23,7 +23,7 @@ namespace Server.Items
 			Attributes.RegenMana = 2;
 			Attributes.ReflectPhysical = 14;
 			Attributes.LowerManaCost = 8;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 6, "" );
 		}
 
@@ -41,7 +41,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 		}

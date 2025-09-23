@@ -20,7 +20,7 @@ namespace Server.Items
 			Hue = 0xB54;
 			Attributes.NightSight = 1;
 			FireBonus = 50;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 10, "(Casts Fireballs) " );
 		}
 
@@ -50,7 +50,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

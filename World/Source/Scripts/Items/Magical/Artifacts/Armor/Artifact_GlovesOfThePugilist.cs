@@ -22,7 +22,7 @@ namespace Server.Items
 			WeaponAttributes.ResistEnergyBonus = 3;
 			WeaponAttributes.ResistFireBonus = 4;
 			WeaponAttributes.ResistPoisonBonus = 3;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 6, "" );
 		}
 
@@ -39,7 +39,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

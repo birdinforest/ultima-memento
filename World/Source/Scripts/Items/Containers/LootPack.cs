@@ -536,7 +536,7 @@ namespace Server
 
 		public Item Mutate( Mobile from, int luckChance, Item item, int level, int dungeonLevelBonus )
 		{
-			if ( item != null && !( item.NotModAble || item.ArtifactLevel > 0 ) )
+			if ( item != null && !( item.NotModAble || item.ArtifactLevel > (int)ArtifactLevel.None ) )
 			{
 				if ( item is BaseWeapon || item is BaseArmor || item is BaseTrinket || item is BaseInstrument || item is BaseQuiver || item is BaseClothing || item is Spellbook )
 				{

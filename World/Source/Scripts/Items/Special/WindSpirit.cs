@@ -10,7 +10,7 @@ namespace Server.Items
 		public WindSpirit() : base( 0x1F1F )
 		{
 			Name = "wind spirit";
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public WindSpirit( Serial serial ) : base( serial )
@@ -21,7 +21,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -29,7 +29,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-			ArtifactLevel = 2;
+			if (version < 1)
+				ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 	}
 }

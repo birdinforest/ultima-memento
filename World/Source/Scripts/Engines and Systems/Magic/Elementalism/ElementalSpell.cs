@@ -564,7 +564,7 @@ namespace Server.Spells.Elementalism
 
 		public static void BookCover( Item item, int element )
 		{
-			if ( item.ArtifactLevel == 0 )
+			if ( item.ArtifactLevel == ArtifactLevel.None )
 			{
 				if ( element == 0 ){ item.ItemID = 0x6717; }		// AIR
 				else if ( element == 1 ){ item.ItemID = 0x6713; }	// EARTH
@@ -626,7 +626,7 @@ namespace Server.Spells.Elementalism
 			ArrayList targets = new ArrayList();
 			foreach ( Item item in World.Items.Values )
 			{
-				if ( item is ElementalSpellbook && item.ArtifactLevel == 0 )
+				if ( item is ElementalSpellbook && item.ArtifactLevel == ArtifactLevel.None )
 				{
 					if ( ((ElementalSpellbook)item).EllyOwner == m )
 					{

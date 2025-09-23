@@ -22,7 +22,7 @@ namespace Server.Items
 			WeaponAttributes.ResistFireBonus = 15;
 			MinDamage = 15;
 			MaxDamage = 20;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 9, "Glass Sword " );
 		}
 
@@ -39,7 +39,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

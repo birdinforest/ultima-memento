@@ -13,7 +13,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
 			Attributes.Luck = 20;
 			Attributes.BonusDex = 10;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 4, "" );
 		}
 
@@ -30,7 +30,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

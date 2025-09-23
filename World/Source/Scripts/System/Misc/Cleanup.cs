@@ -238,7 +238,7 @@ namespace Server.Misc
 			{
 				// Do nothing to wands
 			}
-			else if ( newItem.ArtifactLevel == 2 )
+			else if ( newItem.ArtifactLevel == ArtifactLevel.StandardArtefact )
 			{
 				// Do nothing to artifacts
 			}

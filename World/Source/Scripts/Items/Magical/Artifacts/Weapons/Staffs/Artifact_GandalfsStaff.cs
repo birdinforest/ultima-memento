@@ -29,7 +29,7 @@ namespace Server.Items
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
 			Attributes.SpellChanneling = 1;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 15, "(Calls Dragons) " );
 		}
 
@@ -75,7 +75,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 			TimeUsed = reader.ReadDateTime();
 		}

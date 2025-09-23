@@ -21,7 +21,7 @@ namespace Server.Items
 			Attributes.AttackChance = 10;
             Slayer = SlayerName.Silver;
             Slayer2 = SlayerName.Exorcism;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 9, "Simon Belmonts's Whip " );
 		}
 
@@ -38,7 +38,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

@@ -19,7 +19,7 @@ namespace Server.Items
 			Attributes.WeaponDamage = -50;
 
 			WeaponAttributes.SelfRepair = 4;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 
@@ -37,7 +37,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadEncodedInt();
 		}

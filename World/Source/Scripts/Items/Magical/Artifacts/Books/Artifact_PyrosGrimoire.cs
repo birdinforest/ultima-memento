@@ -13,7 +13,7 @@ namespace Server.Items
 			Attributes.CastSpeed = Utility.RandomMinMax( 1, 5 );
 			Attributes.SpellDamage = 10;
             Slayer = SlayerName.SummerWind;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			switch( Utility.RandomMinMax( 0, 6 ) )
 			{
@@ -57,7 +57,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

@@ -424,7 +424,7 @@ namespace Server.Items
 						{
 							if ( enchant.ItemID != 5703 )
 							{
-								if ( ( enchant.NotModAble || enchant.ArtifactLevel > 0 ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
+								if ( ( enchant.NotModAble || enchant.ArtifactLevel > (int)ArtifactLevel.None ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
 								{
 									canProcess = false;
 									TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
@@ -438,7 +438,7 @@ namespace Server.Items
 									if ( nonCount > 0 )
 										nonProcess = false;
 								}
-								if ( !enchant.NotModAble && enchant.ArtifactLevel == 0 && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
+								if ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
 								{
 									legitCount++;
 									if ( legitCount > 1 )
@@ -493,7 +493,7 @@ namespace Server.Items
 							{
 								if ( enchant.ItemID != 5703 )
 								{
-									if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
+									if ( ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None ) && enchant.X>=704 && enchant.Y>=2208 && enchant.X<=705 && enchant.Y<=2209 )
 									{
 										if ( enchant is BaseWeapon || enchant is BaseArmor || enchant is BaseTrinket || enchant is BaseClothing )
 										{
@@ -755,7 +755,7 @@ namespace Server.Items
 							{
 								foreach ( Item enchant in m.GetItemsInRange( 10 ) )
 								{
-									if ( !enchant.NotModAble && run && enchant.ArtifactLevel == 0 && ( enchant is BaseArmor || enchant is BaseWeapon || enchant is BaseClothing ) && enchant.X>=5203 && enchant.Y>=1301 && enchant.X<=5205 && enchant.Y<=1305 && enchant.Resource != CraftResource.None )
+									if ( !enchant.NotModAble && run && enchant.ArtifactLevel == ArtifactLevel.None && ( enchant is BaseArmor || enchant is BaseWeapon || enchant is BaseClothing ) && enchant.X>=5203 && enchant.Y>=1301 && enchant.X<=5205 && enchant.Y<=1305 && enchant.Resource != CraftResource.None )
 									{
 										ResourceMods.SetResource( enchant, CraftResource.GildedSpec );
 										Item mod = (Item)enchant;
@@ -851,7 +851,7 @@ namespace Server.Items
 				{
 					foreach ( Item enchant in m.GetItemsInRange( 20 ) )
 					{
-						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=1064 && enchant.Y>=1167 && enchant.X<=1067 && enchant.Y<=1169 )
+						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None ) && enchant.X>=1064 && enchant.Y>=1167 && enchant.X<=1067 && enchant.Y<=1169 )
 						{
 							if ( enchant is BaseWeapon )
 							{
@@ -889,7 +889,7 @@ namespace Server.Items
 				{
 					foreach ( Item enchant in m.GetItemsInRange( 20 ) )
 					{
-						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=3979 && enchant.Y>=736 && enchant.X<=3982 && enchant.Y<=738 )
+						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None ) && enchant.X>=3979 && enchant.Y>=736 && enchant.X<=3982 && enchant.Y<=738 )
 						{
 							if ( enchant is BaseWeapon )
 							{
@@ -927,7 +927,7 @@ namespace Server.Items
 				{
 					foreach ( Item enchant in m.GetItemsInRange( 20 ) )
 					{
-						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=5331 && enchant.Y>=3203 && enchant.X<=5334 && enchant.Y<=3207 )
+						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None ) && enchant.X>=5331 && enchant.Y>=3203 && enchant.X<=5334 && enchant.Y<=3207 )
 						{
 							if ( enchant is BaseWeapon )
 							{
@@ -965,7 +965,7 @@ namespace Server.Items
 				{
 					foreach ( Item enchant in m.GetItemsInRange( 20 ) )
 					{
-						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == 0 ) && enchant.X>=725 && enchant.Y>=1151 && enchant.X<=730 && enchant.Y<=1156 )
+						if ( ( !enchant.NotModAble && enchant.ArtifactLevel == ArtifactLevel.None ) && enchant.X>=725 && enchant.Y>=1151 && enchant.X<=730 && enchant.Y<=1156 )
 						{
 							if ( enchant is BaseWeapon )
 							{

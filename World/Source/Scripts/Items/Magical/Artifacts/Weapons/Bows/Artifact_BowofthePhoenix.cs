@@ -19,7 +19,7 @@ namespace Server.Items
 			DamageLevel = WeaponDamageLevel.Vanq;
 			AosElementDamages.Fire = 100; 
 			WeaponAttributes.HitFireball = 100;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
@@ -36,7 +36,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

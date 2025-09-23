@@ -21,7 +21,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Druidism, 25 );
 			SkillBonuses.SetValues( 1, SkillName.Taming, 25 );
 			SkillBonuses.SetValues( 2, SkillName.Veterinary, 25 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 11, "" );
 		}
 
@@ -38,7 +38,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

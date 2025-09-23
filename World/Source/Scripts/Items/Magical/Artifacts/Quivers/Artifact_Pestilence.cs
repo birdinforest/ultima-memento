@@ -17,7 +17,7 @@ namespace Server.Items
 			LowerAmmoCost = 5;
 			ItemID = 0x2B02;
 			WeightReduction = 100;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_Pestilence( Serial serial ) : base( serial )
@@ -36,7 +36,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

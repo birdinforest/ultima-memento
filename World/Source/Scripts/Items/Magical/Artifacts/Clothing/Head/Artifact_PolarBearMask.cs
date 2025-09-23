@@ -16,7 +16,7 @@ namespace Server.Items
 			ClothingAttributes.SelfRepair = 3;
 			Attributes.RegenHits = 2;
 			Attributes.NightSight = 1;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 3, "" );
 		}
 
@@ -34,7 +34,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 

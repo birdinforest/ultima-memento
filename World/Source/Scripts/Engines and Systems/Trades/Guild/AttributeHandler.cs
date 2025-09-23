@@ -188,7 +188,7 @@ namespace Server.Items
 
 			if ( itemToTest.Resource == CraftResource.None )
 				allowed = false;
-			else if ( itemToTest.ArtifactLevel > 0 )
+			else if ( itemToTest.ArtifactLevel > (int)ArtifactLevel.None )
 				allowed = false;
 			else if ( itemToTest.NotModAble )
 				allowed = false;

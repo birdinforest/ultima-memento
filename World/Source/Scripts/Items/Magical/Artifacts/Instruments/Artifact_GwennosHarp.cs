@@ -17,7 +17,7 @@ namespace Server.Items
 			int min = Utility.RandomMinMax(5,10);
 			int max = min + 15;
 			BaseRunicTool.ApplyAttributesTo( (BaseInstrument)this, attributeCount, min, max );
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			Name = "Gwenno's Harp";
 			UsesRemaining = 800;
@@ -43,7 +43,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 1;
 			ItemID = 0x66F4;
 		}
 	}

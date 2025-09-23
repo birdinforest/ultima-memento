@@ -95,7 +95,7 @@ namespace Server.Misc
 
 		public static void setArtifact( Item item )
 		{
-			if ( item.ArtifactLevel > 0 )
+			if ( item.ArtifactLevel > (int)ArtifactLevel.None )
 			{
 				Type itemType = item.GetType();
 				Item arty = null;

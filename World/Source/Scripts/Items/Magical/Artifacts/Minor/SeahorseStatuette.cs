@@ -11,6 +11,7 @@ namespace Server.Items
 			LootType = LootType.Regular;
 
 			Hue = Utility.RandomList( 0, 0x482, 0x489, 0x495, 0x4F2 );
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public SeahorseStatuette( Serial serial ) : base( serial )
@@ -21,7 +22,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 );
+			writer.Write( (int) 1 );
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -29,6 +30,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+			if (version < 1)
+				ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 	}
 }

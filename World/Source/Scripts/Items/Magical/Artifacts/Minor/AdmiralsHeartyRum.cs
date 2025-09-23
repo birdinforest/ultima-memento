@@ -11,6 +11,7 @@ namespace Server.Items
 		public AdmiralsHeartyRum() : base( BeverageType.Ale )
 		{
 			Hue = 0x66C;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public AdmiralsHeartyRum( Serial serial ) : base( serial )
@@ -20,13 +21,17 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 );
+
+			writer.Write( (int) 1 );
 		}
 		
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
+
 			int version = reader.ReadInt();
+			if (version < 1)
+				ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 	}
 }

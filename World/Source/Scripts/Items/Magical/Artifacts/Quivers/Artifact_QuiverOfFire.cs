@@ -9,7 +9,7 @@ namespace Server.Items
 		public Artifact_QuiverOfFire() : base()
 		{
 			BaseRunicTool.ApplyAttributes( this, 4, 4, 40, 100 );
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			Name = "Quiver of Fire";
 			Hue = 0xB17;
@@ -36,7 +36,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

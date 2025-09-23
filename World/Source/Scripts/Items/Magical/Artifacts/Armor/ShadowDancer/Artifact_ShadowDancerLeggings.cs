@@ -20,7 +20,7 @@ namespace Server.Items
 			Hue = 0x455;
 			SkillBonuses.SetValues( 0, SkillName.Stealth, 20.0 );
 			SkillBonuses.SetValues( 1, SkillName.Stealing, 20.0 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 12, "" );
 		}
 
@@ -38,7 +38,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 
 			int version = reader.ReadInt();
 		}

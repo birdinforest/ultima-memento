@@ -30,7 +30,7 @@ namespace Server.Items
 			Weight = 1.0; 
 			Charges = 50;
 			Name = "Gem of Seeing";
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -175,7 +175,6 @@ namespace Server.Items
 					break;
 				}
 			}
-			ArtifactLevel = 2;
 		}
 	}
 }

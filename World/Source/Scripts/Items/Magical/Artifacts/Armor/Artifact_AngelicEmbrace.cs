@@ -31,7 +31,7 @@ namespace Server.Items
             ArmorAttributes.MageArmor = 1;
             ArmorAttributes.SelfRepair = 3;
             Attributes.LowerManaCost = 5;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 12, "" );
 		}
 
@@ -48,7 +48,6 @@ namespace Server.Items
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize( reader );
-			ArtifactLevel = 2;
             int version = reader.ReadInt();
         }
     }

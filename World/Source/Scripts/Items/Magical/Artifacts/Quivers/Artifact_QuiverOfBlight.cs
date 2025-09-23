@@ -13,7 +13,7 @@ namespace Server.Items
 			Name = "Quiver of Blight";
 			Hue = 0xB79;
 			ItemID = 0x2B02;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public Artifact_QuiverOfBlight( Serial serial ) : base( serial )
@@ -36,7 +36,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
-			ArtifactLevel = 1;
 		}
 	}
 }

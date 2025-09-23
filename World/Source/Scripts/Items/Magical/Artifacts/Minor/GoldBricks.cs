@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public GoldBricks() : base( 0x1BEB )
 		{
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 		}
 
 		public GoldBricks( Serial serial ) : base( serial )

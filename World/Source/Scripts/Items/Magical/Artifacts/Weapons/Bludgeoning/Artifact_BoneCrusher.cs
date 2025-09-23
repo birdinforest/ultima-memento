@@ -17,7 +17,7 @@ namespace Server.Items
 			WeaponAttributes.HitLowerDefend = 50;
 			Attributes.BonusStr = 10;
 			Attributes.WeaponDamage = 75;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 7, "" );
 		}
 		public Artifact_BoneCrusher( Serial serial ) : base( serial )
@@ -33,7 +33,6 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

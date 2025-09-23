@@ -19,7 +19,7 @@ namespace Server.Items
             WeaponAttributes.HitLightning = 50;
             Attributes.BonusHits = 30;
             Slayer = SlayerName.DragonSlaying;
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 
@@ -45,7 +45,6 @@ namespace Server.Items
         public override void Deserialize( GenericReader reader )
         {
             base.Deserialize( reader );
-			ArtifactLevel = 2;
             int version = reader.ReadInt();
         }
     }

@@ -13,7 +13,7 @@ namespace Server.Items
 			Name = "Loin Cloth of the Cimmerian";
 			Attributes.BonusStr = 10;
 			SkillBonuses.SetValues( 0, SkillName.Swords, 10 );
-			ArtifactLevel = 2;
+			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 5, "Conan's Loin Cloth " );
 		}
 
@@ -30,7 +30,6 @@ namespace Server.Items
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			ArtifactLevel = 2;
 			int version = reader.ReadInt();
 		}
 	}

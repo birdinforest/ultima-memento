@@ -13,7 +13,7 @@ namespace Server.Items
 		{
 			Name = "Book Of Knowledge";
 			Hue = 0xAFF;
-			ArtifactLevel = 1;
+			ArtifactLevel = ArtifactLevel.Artifact;
 
 			switch ( Utility.Random( 6 ) ) 
 			{
@@ -56,7 +56,6 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			ArtifactLevel = 1;
 		}
 		
 	}
