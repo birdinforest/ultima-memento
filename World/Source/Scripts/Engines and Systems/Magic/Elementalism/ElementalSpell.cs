@@ -1,11 +1,8 @@
 using System;
-using Server;
-using Server.Spells;
-using Server.Network;
 using Server.Items;
 using Server.Mobiles;
-using System.Collections;
-using System.Collections.Generic;
+using Server.Utilities;
+using System.Linq;
 
 namespace Server.Spells.Elementalism
 {
@@ -623,22 +620,10 @@ namespace Server.Spells.Elementalism
 
 		public static void ChangeBooks( Mobile m, int element )
 		{
-			ArrayList targets = new ArrayList();
-			foreach ( Item item in World.Items.Values )
-			{
-				if ( item is ElementalSpellbook && item.ArtifactLevel == ArtifactLevel.None )
-				{
-					if ( ((ElementalSpellbook)item).EllyOwner == m )
-					{
-						targets.Add( item );
-					}
-				}
-			}
-			for ( int i = 0; i < targets.Count; ++i )
-			{
-				Item item = ( Item )targets[ i ];
-				BookCover( item, element );
-			}
+			WorldUtilities
+				.ForEachItem<ElementalSpellbook>( item => item.ArtifactLevel == ArtifactLevel.None && item.EllyOwner == m )
+				.ToList()
+				.ForEach( item => BookCover( item, element ) );
 		}
 	}
 }
