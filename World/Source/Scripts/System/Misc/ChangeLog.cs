@@ -16,6 +16,11 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Commands - Add [Organize command to recursively sort items into separate bags<br>");
+			builder.Append("- Commands - Add [OrderBy-XX commands to move items into a gridlike pattern<br>");
+			builder.Append("           - XX is one of the following: Graphic, Hue, Name, Size, Slayer, Weight<br>");
+			builder.Append("           - Optional arguments can be provided to control the spacing between items<br>");
+			builder.Append("             Example: [OrderBy-Name 20 20<br>");
 			builder.Append("- Combat - OmniAI now uses Harm more intelligently<br>");
 			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
 			builder.Append("- Craft - Bulk crafting now dictates Successes rather than Attempts<br>");

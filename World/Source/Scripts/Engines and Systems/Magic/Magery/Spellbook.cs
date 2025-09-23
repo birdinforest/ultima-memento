@@ -1057,6 +1057,8 @@ namespace Server.Items
 			set { m_Slayer2 = value; InvalidateProperties(); }
 		}
 
+		public SlayerName FirstSlayer { get { return Slayer != SlayerName.None ? Slayer : Slayer2; } }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
