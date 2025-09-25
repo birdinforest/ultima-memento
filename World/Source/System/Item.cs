@@ -1536,6 +1536,8 @@ namespace Server
 					break;
 				case ArtifactLevel.StandardArtefact:
 					list.Add( 1070754 );
+					if (ResourceCanChange())
+						list.Add( "<BASEFONT COLOR=#C6D11C>May be transmuted</BASEFONT>" );
 					break;
 				case ArtifactLevel.Artifact:
 					list.Add( 1070753 );
@@ -1850,8 +1852,28 @@ namespace Server
 
 		public bool ResourceCanChange()
 		{
-			if ( ArtifactLevel != ArtifactLevel.None || NotModAble )
-				return false;
+			if ( NotModAble ) return false;
+
+			if ( ArtifactLevel != ArtifactLevel.None )
+			{
+				// Only Standard artefacts can be changed
+				if ( ArtifactLevel != ArtifactLevel.StandardArtefact ) return false;
+
+				switch ( Resource )
+				{
+					// Can only be changed if it's currently a basic resource
+					case CraftResource.None:
+					case CraftResource.Iron:
+					case CraftResource.Fabric:
+					case CraftResource.RegularLeather:
+					case CraftResource.RegularWood:
+					case CraftResource.BrittleSkeletal:
+						return true;
+
+					default:
+						return false;
+				}
+			}
 
 			return true;
 		}

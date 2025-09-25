@@ -95,7 +95,7 @@ namespace Server.Items
 					{
 						from.SendMessage("The item to transmutate must be in your pack!");
 					}
-					else if ( item.NotModAble || item.ArtifactLevel > (int)ArtifactLevel.None || ( item.Layer < Layer.FirstValid || Layer.LastUserValid < item.Layer) )
+					else if ( item.Layer < Layer.FirstValid || Layer.LastUserValid < item.Layer )
 					{
 						from.SendMessage( "This potion will not work on that!" );
 					}
