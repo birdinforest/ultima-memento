@@ -25,6 +25,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Jewelry can now be exceptionally crafted<br>");
 			builder.Append("- Craft - Bulk crafting now dictates Successes rather than Attempts<br>");
 			builder.Append("- Craft - Crafted Runebooks now have much more charge capacity<br>");
+			builder.Append("- Craft - Harpoon rope can now be crafted in a batch<br>");
 			builder.Append("- Gather - Removed several unreachable 'Glistening Ore Vein'<br>");
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Gump - Risky refactor to Help gump plumbing<br>");

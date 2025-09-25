@@ -255,6 +255,8 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( FullApron ), 1015283, 1025437, 29.0, 54.0, typeof( Fabric ), 1044286, 10, 1044287 );
 			AddCraft( typeof( Obi ), 1015283, 1030219, 20.0, 45.0, typeof( Fabric ), 1044286, 6, 1044287 );
 			AddCraft( typeof( HarpoonRope ), 1015283, "harpoon rope", 0.0, 40.0, typeof( Fabric ), 1044286, 1, 1044287 );
+			index = AddCraft( typeof( HarpoonRope ), 1015283, "a batch of harpoon rope", 40.0, 40.0, typeof( Fabric ), 1044286, 1, 1044287 );
+			SetUseAllRes( index, true );
 			AddCraft( typeof( LeatherNinjaBelt ), 1015283, "ninja belt", 50.0, 75.0, typeof( Fabric ), 1044286, 5, 1044287 );
 			AddCraft( typeof( OilCloth ), 1015283, 1041498, 74.6, 99.6, typeof( Fabric ), 1044286, 1, 1044287 );
 			AddCraft( typeof( GozaMatEastDeed ), 1015283, 1030404, 55.0, 80.0, typeof( Fabric ), 1044286, 25, 1044287 );
