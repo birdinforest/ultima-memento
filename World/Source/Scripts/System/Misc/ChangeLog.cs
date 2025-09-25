@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Commands - Add [ReleaseSummons command to release all summons that are controlled by the player<br>");
 			builder.Append("- Commands - Add [Organize command to recursively sort items into separate bags<br>");
 			builder.Append("- Commands - Add [OrderBy-XX commands to move items into a gridlike pattern<br>");
 			builder.Append("           - XX is one of the following: Graphic, Hue, Name, Size, Slayer, Weight<br>");
