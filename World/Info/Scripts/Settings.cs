@@ -119,7 +119,7 @@ namespace Server
 	// appearance and color no matter what is done to them. Setting this to true will allow a player to use items like the Magic
 	// Scissors or Magic Hammer to change the appearance of the items, but they will always retain their name. This is false by default.
 
-		public static bool S_ChangeArtyLook = false;
+		public static bool S_ChangeArtyLook = true;
 
 	// The below setting is the number of minutes that a player character corpse will turn into bones, which can be used in
 	// conjunction with the setting below. These two settings, when added together, are the total number of minutes that a
