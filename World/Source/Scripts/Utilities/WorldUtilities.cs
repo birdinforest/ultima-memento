@@ -29,5 +29,17 @@ namespace Server.Utilities
 				yield return (T)item;
 			}
 		}
+
+		public static IEnumerable<T> ForEachMobile<T>(Func<T, bool> predicate) where T : Mobile
+		{
+			var mobiles = World.Mobiles.Values
+				.Where(mobile => mobile is T && predicate((T)mobile));
+			if (!mobiles.Any()) yield break;
+
+			foreach (var item in mobiles.ToList())
+			{
+				yield return (T)item;
+			}
+		}
 	}
 }
