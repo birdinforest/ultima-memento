@@ -1208,16 +1208,8 @@ namespace Server.Misc
 							else if ( i is Amber ){ belongings.Add(i); foundGems = 1; }
 							else if ( i is Crystals ){ belongings.Add(i); foundGems = 1; }
 							else if ( i is Diamond ){ belongings.Add(i); foundGems = 1; }
-							else if ( i is DDRelicGem ){ belongings.Add(i); foundGems = 1; }
 							else if ( i is DDGemstones ){ belongings.Add(i); foundGems = 1; }
 							else if ( i is DDJewels ){ belongings.Add(i); foundJewels = 1; }
-
-							if ( i is DDRelicJewels ){ belongings.Add(i); foundJewels = 1; }
-							else if ( i is JewelryRing ){ belongings.Add(i); foundJewels = 1; }
-							else if ( i is JewelryNecklace ){ belongings.Add(i); foundJewels = 1; }
-							else if ( i is JewelryEarrings ){ belongings.Add(i); foundJewels = 1; }
-							else if ( i is JewelryBracelet ){ belongings.Add(i); foundJewels = 1; }
-							else if ( i is JewelryCirclet ){ belongings.Add(i); foundJewels = 1; }
 						}
 					}
 					else if ( nEntry == 3 && found == "1" )
