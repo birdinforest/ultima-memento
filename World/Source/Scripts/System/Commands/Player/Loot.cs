@@ -129,7 +129,7 @@ namespace Server.Gumps
 
 			AddHtml( 52, g, 139, 20, @"<BODY><BASEFONT Color=" + color + ">Coins & Nuggets</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(14, g, b1, b1, 99, GumpButtonType.Reply, 0); g=g+26;
-			AddHtml( 52, g, 139, 20, @"<BODY><BASEFONT Color=" + color + ">Gems & Jewels</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 52, g, 139, 20, @"<BODY><BASEFONT Color=" + color + ">Gems</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(14, g, b2, b2, 1, GumpButtonType.Reply, 0); g=g+26;
 			AddHtml( 52, g, 139, 20, @"<BODY><BASEFONT Color=" + color + ">Arrows & Bolts</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(14, g, b3, b3, 2, GumpButtonType.Reply, 0); g=g+26;
