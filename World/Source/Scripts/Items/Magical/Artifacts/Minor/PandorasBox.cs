@@ -35,7 +35,7 @@ namespace Server.Items
 			Hue = 0xA3E;
 			Charges = 200;
 			Weight = 5.0;
-			ArtifactLevel = ArtifactLevel.StandardArtefact;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -84,7 +84,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 			writer.Write( (int) m_PandoraEffect );
 			writer.Write( (int) m_Charges );
 		}
@@ -95,8 +95,12 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			switch ( version )
 			{
+				case 1:
 				case 0:
 				{
+					if ( version < 1 )
+						ArtifactLevel = ArtifactLevel.Artifact;
+
 					m_PandoraEffect = (PandoraEffect)reader.ReadInt();
 					m_Charges = (int)reader.ReadInt();
 

@@ -18,7 +18,7 @@ namespace Server.Items
 		{
 			Hue = 0x849;
 			Name = "Everlasting Bottle";
-			ArtifactLevel = ArtifactLevel.StandardArtefact;
+			ArtifactLevel = ArtifactLevel.Artifact;
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -35,13 +35,17 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+
+			if ( version < 1 )
+				ArtifactLevel = ArtifactLevel.Artifact;
+
 			ItemID = 0x2827;
 			Hue = 0x849;
 		}

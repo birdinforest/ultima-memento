@@ -12,7 +12,7 @@ namespace Server.Items
 			Attributes.SpellDamage = 10;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 15 );
 			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 15 );
-			ArtifactLevel = ArtifactLevel.StandardArtefact;
+			ArtifactLevel = ArtifactLevel.Artifact;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}
 
@@ -23,13 +23,16 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+
+			if ( version < 1 )
+				ArtifactLevel = ArtifactLevel.Artifact;
 		}
 	}
 }
