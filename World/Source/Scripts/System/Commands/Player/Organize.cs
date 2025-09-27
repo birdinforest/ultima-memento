@@ -211,13 +211,29 @@ namespace Server.Commands
 			if (target is OrganizerContainer) return;
 			if (!ItemUtilities.HasItemOwnershipRights(from, target, true)) return;
 
+			if (!from.InRange(target.GetWorldLocation(), 3))
+			{
+				from.SendMessage("You will have to get closer to the container!");
+				return;
+			}
+
+			if (target is ILockable && ((ILockable)target).Locked
+				|| target is LockableContainer && ((LockableContainer)target).CheckLocked(from))
+			{
+				from.SendMessage("That container is locked.");
+				return;
+			}
+
 			var existingOrganizerContainers = new List<OrganizerContainer>();
 			var destinations = new Dictionary<string, OrganizerContainer>();
 
 			foreach (var item in target.FindItemsByType(typeof(Item)))
 			{
 				if (item is OrganizerContainer)
+				{
 					existingOrganizerContainers.Add((OrganizerContainer)item);
+					if (!destinations.ContainsKey(item.Name)) destinations.Add(item.Name, (OrganizerContainer)item);
+				}
 
 				if (item is Container && false == (item is NotIdentified || item is BaseQuiver)) continue;
 				if (!item.Movable) continue;
@@ -244,15 +260,18 @@ namespace Server.Commands
 				}
 			}
 
-			if (destinations.Values.Count < 1) return;
-
-			// Sort alphabetically by container name
-			var sortedItems = destinations.Values.OrderBy(container => container.Name);
-			ItemUtilities.SortItems(target, sortedItems, horizontalSpace, verticalSpace);
-
-			// Remove previous organizers
-			foreach (var container in existingOrganizerContainers)
+			if (destinations.Values.Any(x => 0 < x.Items.Count))
 			{
+				// Sort alphabetically by container name
+				var sortedItems = destinations.Values.OrderBy(container => container.Name);
+				ItemUtilities.SortItems(target, sortedItems, horizontalSpace, verticalSpace);
+			}
+
+			// Remove empty containers
+			foreach (var container in existingOrganizerContainers.Concat(destinations.Values))
+			{
+				if (0 < container.Items.Count) continue;
+
 				container.Delete();
 			}
 		}
