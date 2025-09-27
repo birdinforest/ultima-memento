@@ -193,3 +193,68 @@ namespace Server.Gumps
 		}
     }
 }
+
+namespace Server.Commands
+{
+	public class Loot
+	{
+		public class AutoLootCommand : BaseCommand
+		{
+			public AutoLootCommand()
+			{
+				AccessLevel = AccessLevel.Player;
+				Supports = CommandSupport.AllItems;
+				Commands = new string[] { "AutoLoot" };
+				ObjectTypes = ObjectTypes.Items;
+				Usage = "AutoLoot";
+				Description = "Execute automatic looting on-demand";
+			}
+
+			public static void Initialize()
+			{
+				TargetCommands.Register(new AutoLootCommand());
+			}
+
+			public override void Execute(CommandEventArgs e, object obj)
+			{
+				if (obj is Container)
+				{
+					var container = (Container)obj;
+					var from = e.Mobile;
+
+					if ( !from.InRange( container.GetWorldLocation(), 3 ) )
+					{
+						from.SendMessage( "You will have to get closer to the container!" );
+						return;
+					}
+
+					if ( container is ILockable && ((ILockable)container).Locked
+						|| container is LockableContainer && ((LockableContainer)container).CheckLocked( from ) ) 
+					{
+						from.SendMessage( "That container is locked." );
+						return;
+					}
+
+					if (container.RootParentEntity != null && container.RootParentEntity is Item && ((Item)container.RootParentEntity).Movable)
+					{
+						from.SendMessage( "That item is not lootable." );
+						return;
+					}
+
+					// Technically OK since you have access, but let's just be safe.
+					if (container.IsLockedDown || container.IsSecure)
+					{
+						from.SendMessage( "That container is secure." );
+						return;
+					}
+
+					Server.Misc.PlayerSettings.LootContainer( from, container );
+				}
+				else
+				{
+					e.Mobile.SendMessage("That is not a container.");
+				}
+			}
+		}
+	}
+}
