@@ -3224,6 +3224,14 @@ namespace Server.Mobiles
 			set { }
 		}
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsJester
+		{
+			get { return GetPlayerInfo.isJester(this); }
+			set { }
+		}
+
+
 		private bool m_NeedRemoveIDSkills = false;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
