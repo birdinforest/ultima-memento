@@ -64,7 +64,7 @@ namespace Server.Items
 						}
 						else
 						{
-							food.Eat( from, true );
+							food.Eat( from, false );
 							from.SendMessage( "You bit off a bit too much!" );
 						}
 					}
