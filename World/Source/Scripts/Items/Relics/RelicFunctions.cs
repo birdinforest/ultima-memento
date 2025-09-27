@@ -93,22 +93,6 @@ namespace Server
 
 			if (attempts == 0) return;
 
-			if ( examine is Food && examine.NotIDSkill == IDSkill.Tasting && vendor == null )
-			{
-				Food food = (Food)examine;
-
-				if ( from.CheckTargetSkill( skill, food, 0, 125 ) )
-				{
-					if ( food.Poison != null )
-						food.SendLocalizedMessageTo( from, 1038284 ); // It appears to have poison smeared on it.
-					else
-						food.SendLocalizedMessageTo( from, 1010600 ); // You detect nothing unusual about this substance.
-				}
-				else
-					food.SendLocalizedMessageTo( from, 502823 ); // You cannot discern anything about this substance.
-				return;
-			}
-
 			if ( examine.CoinPrice > 0 && examine.NotIdentified ) // Viable candidate
 			{
 				if ( vendor != null && examine is NotIdentified ) // Vendor IDing equipment
