@@ -73,7 +73,7 @@ namespace Server
 			const int MAX_ID_ATTEMPTS = 5; // TODO: Move this
 
 			int attempts = 0;
-			if ( vendor == null )
+			if ( vendor != null )
 				attempts = 1;
 			else if ( m is PlayerMobile )
 			{
