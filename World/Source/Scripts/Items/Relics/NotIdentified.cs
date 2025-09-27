@@ -369,16 +369,12 @@ namespace Server.Items
 
 		public static string CannotIDVirConItem( NotIdentified unk, Mobile player )
 		{
-			string txt = null;
-
+			if ( unk.NotIDAttempts + 1 > Item.MAX_ID_ATTEMPTS )
+				 return "Only a vendor can identify this item now as too many attempts were made.";
+			
 			unk.NotIDAttempts++;
 
-			if ( unk.NotIDAttempts > 5 )
-				txt = "Only a vendor can identify this item now as too many attempts were made.";
-			else
-				txt = "You cannot seem to identify this item.";
-
-			return txt;
+			return  "You cannot seem to identify this item.";
 		}
 
 		public NotIdentified( Serial serial ) : base( serial )

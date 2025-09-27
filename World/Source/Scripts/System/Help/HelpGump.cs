@@ -230,6 +230,8 @@ namespace Server.Engines.Help
 			Setting_SuppressVendorTooltips,
 			Setting_SuppressVendorTooltips_Info,
 			Do_Achievements,
+			Setting_SingleAttemptID,
+			Setting_SingleAttemptID_Info,
 		}
 
 		public static void Initialize()
@@ -630,6 +632,9 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Double Click to ID Items", PageActionType.Setting_DoubleClickToIDItems, PageActionType.Setting_DoubleClickToIDItems_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
+				AddSetting(xs, g, from, "Single ID Attempt", PageActionType.Setting_SingleAttemptID, PageActionType.Setting_SingleAttemptID_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
 				AddSetting(xs, g, from, "Ordinary Resources", PageActionType.Setting_OrdinaryResources, PageActionType.Setting_OrdinaryResources_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
@@ -884,6 +889,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
 				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.IgnoreVendorGoldSafeguard;
 				case PageActionType.Setting_SuppressVendorTooltips: return from.SuppressVendorTooltip;
+				case PageActionType.Setting_SingleAttemptID: return from.SingleAttemptID;
 
 				case PageActionType.Setting_Playstyle_Normal: return from.CharacterEvil == 0 && from.CharacterOriental == 0 && from.CharacterBarbaric == 0;
 				case PageActionType.Setting_Playstyle_Evil: return from.CharacterEvil == 1;
@@ -1412,6 +1418,12 @@ namespace Server.Engines.Help
 					case PageActionType.Setting_SuppressVendorTooltips:
 					{
 						((PlayerMobile)from).SuppressVendorTooltip = !((PlayerMobile)from).SuppressVendorTooltip;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_SingleAttemptID:
+					{
+						((PlayerMobile)from).SingleAttemptID = !((PlayerMobile)from).SingleAttemptID;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
@@ -2294,6 +2306,13 @@ namespace Server.Engines.Help
 				{
 					title = "Suppress Vendor Tooltips";
 					info = "Command: [SuppressTooltips<br><br>When enabled, vendor tooltips will not be sent to the client. This can be helpful for players who use a touch screen. Warning: Players usually have to re-log to re-query synchronize with this after changing it.";
+					break;
+				}
+
+				case PageActionType.Setting_SingleAttemptID_Info:
+				{
+					title = "Single Attempt ID";
+					info = "When enabled, a single attempt to identify an item will use all available attempts.";
 					break;
 				}
 

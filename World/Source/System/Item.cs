@@ -736,6 +736,8 @@ namespace Server
 			}
 		}
 
+		public const int MAX_ID_ATTEMPTS = 6;
+
 		public int m_NotIDAttempts;
 		[CommandProperty(AccessLevel.Owner)]
 		public int NotIDAttempts { get { return m_NotIDAttempts; } set { m_NotIDAttempts = value; InvalidateProperties(); } }
@@ -1516,7 +1518,7 @@ namespace Server
 				if ( NotIDSource != Identity.None )
 					list.Add( 1029759 + (int)NotIDSource );
 
-				if ( NotIDSkill != IDSkill.None && NotIDAttempts < 6 )
+				if ( NotIDSkill != IDSkill.None && NotIDAttempts < MAX_ID_ATTEMPTS )
 					list.Add( 1029724 + (int)NotIDSkill );
 			}
 
@@ -1769,7 +1771,7 @@ namespace Server
 			if ( m_InfoData != null )
 				list.Add( new InfoDataEntry( from, this ) );
 
-			if ( m_CoinPrice > 0 && NotIdentified && NotIDAttempts < 6 )
+			if ( m_CoinPrice > 0 && NotIdentified && NotIDAttempts < MAX_ID_ATTEMPTS )
 				list.Add( new IDEntry( from, this, NotIDSkill ) );
 		}
 
