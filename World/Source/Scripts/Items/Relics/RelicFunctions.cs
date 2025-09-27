@@ -33,7 +33,7 @@ namespace Server
 			else if ( examine.NotIDSkill == IDSkill.Tasting )
 				skill = SkillName.Tasting;
 
-			if ( !examine.NotIdentified )
+			if ( !examine.NotIdentified ) // Decorative item
 			{
 				if ( !(examine is IRelic) && vendor == null && skills != SkillName.Mercantile && from.Skills[SkillName.Mercantile].Value > Utility.Random( 100 ) )
 				{
@@ -69,19 +69,31 @@ namespace Server
 				from.SendMessage( "That is not the correct skill to identify that." );
 				return;
 			}
-			else if ( vendor == null && examine.NotIDAttempts > 5 )
+			
+			const int MAX_ID_ATTEMPTS = 5; // TODO: Move this
+
+			int attempts = 0;
+			if ( vendor == null )
+				attempts = 1;
+			else if ( m is PlayerMobile )
 			{
-				from.SendMessage( "Only a vendor can identify this item now as too many attempts were made." );
-				return;
+				if ( examine.NotIDAttempts > MAX_ID_ATTEMPTS )
+					from.SendMessage( "Only a vendor can identify this item now as too many attempts were made." );
+				else if ( !examine.Movable )
+					from.SendMessage( "That cannot move so you cannot identify it." );
+				else if ( !from.InRange( examine.GetWorldLocation(), 3 ) )
+					from.SendMessage( "You will need to get closer to identify that." );
+				else if ( !(examine.IsChildOf( from.Backpack )) && MySettings.S_IdentifyItemsOnlyInPack && vendor == null ) 
+					from.SendMessage( "This must be in your backpack to identify." );
+				else
+				{
+					attempts = 1;
+				}
 			}
 
-			if ( !examine.Movable && vendor == null )
-				from.SendMessage( "That cannot move so you cannot identify it." );
-			else if ( !from.InRange( examine.GetWorldLocation(), 3 ) && vendor == null )
-				from.SendMessage( "You will need to get closer to identify that." );
-			else if ( !(examine.IsChildOf( from.Backpack )) && MySettings.S_IdentifyItemsOnlyInPack && vendor == null ) 
-				from.SendMessage( "This must be in your backpack to identify." );
-			else if ( examine is Food && examine.NotIDSkill == IDSkill.Tasting && vendor == null )
+			if (attempts == 0) return;
+
+			if ( examine is Food && examine.NotIDSkill == IDSkill.Tasting && vendor == null )
 			{
 				Food food = (Food)examine;
 
@@ -94,22 +106,24 @@ namespace Server
 				}
 				else
 					food.SendLocalizedMessageTo( from, 502823 ); // You cannot discern anything about this substance.
+				return;
 			}
-			else if ( examine.CoinPrice > 0 && examine.NotIdentified )
+
+			if ( examine.CoinPrice > 0 && examine.NotIdentified ) // Viable candidate
 			{
-				if ( vendor != null && examine is NotIdentified )
+				if ( vendor != null && examine is NotIdentified ) // Vendor IDing equipment
 				{
 					string var = NotIdentified.IDVirConItem( (NotIdentified)examine, from );
 					vendor.SayTo( from, "That appears to be the " + var + "." );
 				}
-				else if ( from.CheckTargetSkill( skill, examine, -5, 125 ) )
+				else if ( from.CheckTargetSkill( skill, examine, -5, 125 ) ) // Successful player attempt
 				{
 					if ( examine is NotIdentified )
 					{
 						string var = NotIdentified.IDVirConItem( (NotIdentified)examine, from );
 						from.SendMessage( "You identify the " + var + "." );
 					}
-					else
+					else // Relic
 					{
 						examine.NotIdentified = false;
 
@@ -121,14 +135,14 @@ namespace Server
 						from.SendMessage( "That is probably worth about " + examine.CoinPrice + " gold." );
 					}
 				}
-				else if ( vendor == null )
+				else if ( vendor == null ) // Failed player attempt
 				{
 					if ( examine is NotIdentified )
 					{
 						string var = NotIdentified.CannotIDVirConItem( (NotIdentified)examine, from );
 						from.SendMessage( var );
 					}
-					else
+					else // Relic
 					{
 						examine.CoinPrice = Utility.RandomMinMax( 5, 25 );
 						examine.NotIdentified = false;
