@@ -231,8 +231,11 @@ namespace Server.Commands
 			{
 				if (item is OrganizerContainer)
 				{
-					existingOrganizerContainers.Add((OrganizerContainer)item);
-					if (!destinations.ContainsKey(item.Name)) destinations.Add(item.Name, (OrganizerContainer)item);
+					var organizer = (OrganizerContainer)item;
+					organizer.AcceptItems = true;
+
+					existingOrganizerContainers.Add(organizer);
+					if (!destinations.ContainsKey(item.Name)) destinations.Add(item.Name, organizer);
 				}
 
 				if (item is Container && false == (item is NotIdentified || item is BaseQuiver)) continue;
@@ -255,7 +258,8 @@ namespace Server.Commands
 						};
 					}
 
-					container.AddItem(item);
+					if (!container.TryDropItem(from, item, true))
+						container.AddItem(item);
 					break;
 				}
 			}
@@ -267,11 +271,12 @@ namespace Server.Commands
 				ItemUtilities.SortItems(target, sortedItems, horizontalSpace, verticalSpace);
 			}
 
-			// Remove empty containers
 			foreach (var container in existingOrganizerContainers.Concat(destinations.Values))
 			{
+				container.AcceptItems = false;
 				if (0 < container.Items.Count) continue;
 
+				// Remove empty containers
 				container.Delete();
 			}
 		}
@@ -297,18 +302,21 @@ namespace Server.Commands
 				Weight = 0;
 				MaxItems = 0;
 				InfoText1 = "[Organizer]";
+				AcceptItems = true;
 			}
 
 			public OrganizerContainer(Serial serial) : base(serial)
 			{
 			}
 
+			public bool AcceptItems { get; set; }
+
 			public override int MaxWeight
 			{ get { return 0; } }
 
 			public override bool CheckHold(Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight)
 			{
-				return false;
+				return AcceptItems;
 			}
 
 			public override bool CheckLift(Mobile from, Item item, ref LRReason reject)
