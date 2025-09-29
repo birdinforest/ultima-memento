@@ -48,37 +48,24 @@ namespace Server.Items
 
 		public static string CutUp( Mobile from, Item item, CraftResource resource, bool extraCloth )
 		{
-			string msg = "You fail to cut up the material.";
-
-			try
+			switch( CraftResources.GetType( resource ) )
 			{
-				bool correctMaterial = false;
-
-				if ( CraftResources.GetType( resource ) == CraftResourceType.Leather )
-					correctMaterial = true;
-
-				if ( CraftResources.GetType( resource ) == CraftResourceType.Skin )
-					correctMaterial = true;
-
-				if ( CraftResources.GetType( resource ) == CraftResourceType.Fabric )
-					correctMaterial = true;
-
-				if ( !correctMaterial )
-					msg = "Scissors can not be used on that to produce anything.";
-				else
+				case CraftResourceType.Leather:
+				case CraftResourceType.Skin:
+				case CraftResourceType.Fabric:
 				{
-					CraftResourceInfo info = CraftResources.GetInfo( resource );
-
-					double difficulty = CraftResources.GetSkill( resource );
-					if ( difficulty > from.Skills.Tailoring.Value )
-						msg = "You are not skilled enough to cut that material.";
-					else
+					try
 					{
+						CraftResourceInfo info = CraftResources.GetInfo( resource );
+
+						double difficulty = CraftResources.GetSkill( resource );
+						if ( difficulty > from.Skills.Tailoring.Value ) return "You are not skilled enough to cut that material.";
+
 						Type resourceType = info.ResourceTypes[0];
 						Item resc = (Item)Activator.CreateInstance( resourceType );
 
-						resc.Amount = (int)(item.Weight);
-							if ( resc.Amount < 1 ){ resc.Amount = 1; }
+						resc.Amount = (int)item.Weight;
+						if ( resc.Amount < 1 ){ resc.Amount = 1; }
 
 						if ( extraCloth )
 							resc.Amount = resc.Amount * 10;
@@ -86,15 +73,17 @@ namespace Server.Items
 						item.Delete();
 						BaseContainer.PutStuffInContainer( from, 2, resc );
 						from.PlaySound( 0x248 );
-						msg = "You cut up the item into standard resources.";
+						return "You cut up the item into standard resources.";
+					}
+					catch
+					{
+						return "You fail to cut up the material.";
 					}
 				}
+				
+				default:
+					return "Scissors can not be used on that to produce anything.";
 			}
-			catch
-			{
-			}
-
-			return msg;
 		}
 
 		private class InternalTarget : Target
