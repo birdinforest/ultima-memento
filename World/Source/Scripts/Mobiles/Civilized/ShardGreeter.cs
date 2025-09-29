@@ -672,8 +672,16 @@ namespace Server.Gumps
 			}
 			else if ( info.ButtonID >= 100 )
 			{
-				int go = info.ButtonID - 100;
-				EnterLand( go, from );
+				int page = info.ButtonID - 100;
+
+				bool isValid = pageShow(from, page - 1, true) == page; // Double-check that we can see the page when navigating forward
+				if (!isValid)
+				{
+					from.SendMessage("Invalid character selection detected.");
+					return;
+				}
+
+				EnterLand( page, from );
 			}
 			else
 			{
