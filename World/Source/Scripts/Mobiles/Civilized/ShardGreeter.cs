@@ -237,27 +237,21 @@ namespace Server.Gumps
 				{
 					page++;
 
-					switch ( (CreaturePage)page )
-					{
-						case CreaturePage.The_Night: if ( Server.Items.BaseRace.IsGood( from ) ) { page++; } break;
-						case CreaturePage.The_Light: if ( !visitLodor( from ) ) { page++; } break;
-						case CreaturePage.The_Dark: if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page++; } break;
-					}
+					if (page == (int)CreaturePage.The_Night) if ( Server.Items.BaseRace.IsGood( from ) ) { page++; }
+					if (page == (int)CreaturePage.The_Light) if ( !visitLodor( from ) ) { page++; }
+					if (page == (int)CreaturePage.The_Dark) if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page++; }
 
-					if ( page > (int)CreaturePage.LAST_OPTION ){ page = (int)CreaturePage.FIRST_OPTION; }
+					if ( page > (int)CreaturePage.LAST_OPTION ){ page = pageShow(from, (int)CreaturePage.FIRST_OPTION - 1, forward); }
 				}
 				else
 				{
 					page--;
 
-					switch ( (CreaturePage)page )
-					{
-						case CreaturePage.The_Night: if ( Server.Items.BaseRace.IsGood( from ) ) { page--; } break;
-						case CreaturePage.The_Light: if ( !visitLodor( from ) ) { page--; } break;
-						case CreaturePage.The_Dark: if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page--; } break;
-					}
+					if (page == (int)CreaturePage.The_Dark) if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page--; }
+					if (page == (int)CreaturePage.The_Light) if ( !visitLodor( from ) ) { page--; }
+					if (page == (int)CreaturePage.The_Night) if ( Server.Items.BaseRace.IsGood( from ) ) { page--; }
 
-					if ( page < (int)CreaturePage.FIRST_OPTION ){ page = (int)CreaturePage.LAST_OPTION; }
+					if ( page < (int)CreaturePage.FIRST_OPTION ){ page = pageShow(from, (int)CreaturePage.LAST_OPTION + 1, forward); }
 				}
 			}
 			else
@@ -268,29 +262,23 @@ namespace Server.Gumps
 				{
 					page++;
 
-					switch ( (HumanPage)page )
-					{
-						case HumanPage.The_Hierophant: if ( !visitLodor( from ) ) { page++; } break;
-						case HumanPage.The_High_Priestess: if ( !visitLodor( from ) ) { page++; } break;
-						case HumanPage.Strength: if ( !visitSavage( from ) ) { page++; } break;
-						case HumanPage.The_Star: if ( disallowAlien ) { page++; } break;
-					}
+					if (page == (int)HumanPage.The_Hierophant) if ( !visitLodor( from ) ) { page++; }
+					if (page == (int)HumanPage.The_High_Priestess) if ( !visitLodor( from ) ) { page++; }
+					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page++; }
+					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page++; }
 
-					if ( page > (int)HumanPage.LAST_OPTION ){ page = (int)HumanPage.FIRST_OPTION; }
+					if ( page > (int)HumanPage.LAST_OPTION ){ page = pageShow(from, (int)HumanPage.FIRST_OPTION - 1, forward); }
 				}
 				else
 				{
 					page--;
 
-					switch ( (HumanPage)page )
-					{
-						case HumanPage.The_Hierophant: if ( !visitLodor( from ) ) { page--; } break;
-						case HumanPage.The_High_Priestess: if ( !visitLodor( from ) ) { page--; } break;
-						case HumanPage.Strength: if ( !visitSavage( from ) ) { page--; } break;
-						case HumanPage.The_Star: if ( disallowAlien ) { page--; } break;
-					}
+					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page--; }
+					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page--; }
+					if (page == (int)HumanPage.The_High_Priestess) if ( !visitLodor( from ) ) { page--; }
+					if (page == (int)HumanPage.The_Hierophant) if ( !visitLodor( from ) ) { page--; }
 
-					if ( page < (int)HumanPage.FIRST_OPTION ){ page = disallowAlien ? (int)HumanPage.LAST_OPTION - 1 : (int)HumanPage.LAST_OPTION; }
+					if ( page < (int)HumanPage.FIRST_OPTION ){ page = pageShow(from, (int)HumanPage.LAST_OPTION + 1, forward); }
 				}
 			}
 
