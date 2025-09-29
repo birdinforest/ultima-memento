@@ -2890,7 +2890,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( CharacterType == CharacterType.Alien ) { return 0; } // Aliens never have Luck
+				if ( CharacterType == CharacterType.Alien && MySettings.S_AllowAlienChoice ) { return 0; } // Aliens never have Luck
 
 				return AosAttributes.GetValue( this, AosAttribute.Luck );
 			}

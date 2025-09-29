@@ -462,7 +462,7 @@ namespace Server
 			{
 				case CharacterType.Fugitive: return 3;
 				case CharacterType.Savage: return 1;
-				case CharacterType.Alien: return 30;
+				case CharacterType.Alien: return MySettings.S_AllowAlienChoice ? 30 : 0;
 				case CharacterType.Default: return 0;
 				default: return 0;
 			}

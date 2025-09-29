@@ -81,7 +81,7 @@ namespace Server.Misc
 
 		public static bool isFromSpace( Mobile m )
 		{
-			return m is PlayerMobile && ((PlayerMobile)m).CharacterType == CharacterType.Alien;
+			return MySettings.S_AllowAlienChoice && m is PlayerMobile && ((PlayerMobile)m).CharacterType == CharacterType.Alien;
 		}
 
 		public static bool isSyth ( Mobile m, bool checkSword )
