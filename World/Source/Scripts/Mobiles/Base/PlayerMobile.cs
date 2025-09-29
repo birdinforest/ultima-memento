@@ -364,6 +364,9 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool SingleAttemptID { get; set; }
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool ColorlessFabricBreakdown { get; set; }
+
 		#endregion
 
 		#region PlayerFlags
@@ -2714,6 +2717,7 @@ namespace Server.Mobiles
 			m_LongTermElapse = TimeSpan.FromHours( 40.0 );
 
 			m_GuildRank = Guilds.RankDefinition.Lowest;
+			ColorlessFabricBreakdown = true;
 		}
 
 		public override bool MutateSpeech( List<Mobile> hears, ref string text, ref object context )
@@ -3243,7 +3247,12 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 48:
+					ColorlessFabricBreakdown = reader.ReadBool();
+					goto case 47;
 				case 47:
+					if (version == 47) ColorlessFabricBreakdown = true;
+
 					SingleAttemptID = reader.ReadBool();
 					goto case 46;
 				case 46:
@@ -3667,8 +3676,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 47 ); // version
+			writer.Write( (int) 48 ); // version
 
+			writer.Write( ColorlessFabricBreakdown );
 			writer.Write( SingleAttemptID );
 
 			writer.Write( IsTitanOfEther );

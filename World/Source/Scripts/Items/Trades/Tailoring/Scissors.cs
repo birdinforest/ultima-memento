@@ -69,6 +69,9 @@ namespace Server.Items
 
 						if ( extraCloth )
 							resc.Amount = resc.Amount * 10;
+						
+						if (from is PlayerMobile && false == ((PlayerMobile)from).ColorlessFabricBreakdown)
+							resc.Hue = item.Hue;
 
 						item.Delete();
 						BaseContainer.PutStuffInContainer( from, 2, resc );

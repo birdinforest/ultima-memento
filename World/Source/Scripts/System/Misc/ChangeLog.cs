@@ -55,6 +55,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Minimum Provocation skill required for attempts is slightly lower<br>");
 			builder.Append("- Setting - Change Arty Look (hue/graphic) is now enabled by default<br>");
 			builder.Append("- Setting - Added 'Single Attempt ID' player setting<br>");
+			builder.Append("- Setting - Added 'Colorless Fabric Breakdown' player setting<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

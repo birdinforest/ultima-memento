@@ -4,6 +4,7 @@ using Server.Targeting;
 using Server.Items;
 using Server.Gumps;
 using System.Linq;
+using Server.Mobiles;
 
 namespace Server.Engines.Craft
 {
@@ -98,6 +99,9 @@ namespace Server.Engines.Craft
 						resc.Delete();
 						return BreakDownResult.BadAmnt;
 					}
+
+					if ( from is PlayerMobile && false == ( (PlayerMobile)from ).ColorlessFabricBreakdown && CraftResources.GetType( resc.Resource ) == CraftResourceType.Fabric )
+						resc.Hue = item.Hue;
 
 					resc.Amount = ( int )( resc.Amount / 2 );
 

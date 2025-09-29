@@ -232,6 +232,8 @@ namespace Server.Engines.Help
 			Do_Achievements,
 			Setting_SingleAttemptID,
 			Setting_SingleAttemptID_Info,
+			Setting_ColorlessFabricBreakdown,
+			Setting_ColorlessFabricBreakdown_Info,
 		}
 
 		public static void Initialize()
@@ -635,6 +637,9 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Single ID Attempt", PageActionType.Setting_SingleAttemptID, PageActionType.Setting_SingleAttemptID_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
+				AddSetting(xs, g, from, "Colorless Fabric Breakdown", PageActionType.Setting_ColorlessFabricBreakdown, PageActionType.Setting_ColorlessFabricBreakdown_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
 				AddSetting(xs, g, from, "Ordinary Resources", PageActionType.Setting_OrdinaryResources, PageActionType.Setting_OrdinaryResources_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
@@ -890,6 +895,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.IgnoreVendorGoldSafeguard;
 				case PageActionType.Setting_SuppressVendorTooltips: return from.SuppressVendorTooltip;
 				case PageActionType.Setting_SingleAttemptID: return from.SingleAttemptID;
+				case PageActionType.Setting_ColorlessFabricBreakdown: return from.ColorlessFabricBreakdown;
 
 				case PageActionType.Setting_Playstyle_Normal: return from.CharacterEvil == 0 && from.CharacterOriental == 0 && from.CharacterBarbaric == 0;
 				case PageActionType.Setting_Playstyle_Evil: return from.CharacterEvil == 1;
@@ -1424,6 +1430,12 @@ namespace Server.Engines.Help
 					case PageActionType.Setting_SingleAttemptID:
 					{
 						((PlayerMobile)from).SingleAttemptID = !((PlayerMobile)from).SingleAttemptID;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_ColorlessFabricBreakdown:
+					{
+						((PlayerMobile)from).ColorlessFabricBreakdown = !((PlayerMobile)from).ColorlessFabricBreakdown;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
@@ -2313,6 +2325,13 @@ namespace Server.Engines.Help
 				{
 					title = "Single Attempt ID";
 					info = "When enabled, a single attempt to identify an item will use all available attempts.";
+					break;
+				}
+
+				case PageActionType.Setting_ColorlessFabricBreakdown_Info:
+				{
+					title = "Colorless Fabric Breakdown";
+					info = "When enabled, the fabric color will be stripped when it is broken down.";
 					break;
 				}
 
