@@ -1,22 +1,24 @@
 using Server.Accounting;
-using Server.Commands.Generic;
-using Server.Commands;
-using Server.Guilds;
-using Server.Gumps;
-using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
-using Server.Regions;
-using Server;
-using System.Collections.Generic;
-using System.Collections;
 using System.IO;
 using System.Text;
 using System;
 
 namespace Server.Misc
 {
+	public enum LogEventType
+	{
+		Battles,
+		Adventures,
+		Journies,
+		Quests,
+		Deaths,
+		Murderers,
+		Server
+	}
+
     class LoggingFunctions
     {
 		public static bool LoggingEvents()
@@ -88,7 +90,7 @@ namespace Server.Misc
 			}
 		}
 
-		public static string LogEvent( string sEvent, string sLog )
+		public static string LogEvent( string sEvent, LogEventType sLog )
 		{
 			if ( LoggingFunctions.LoggingEvents() == true )
 			{
@@ -97,14 +99,17 @@ namespace Server.Misc
 
 				string sPath = "Saves/Data/adventures.txt";
 
-				if ( sLog == "Logging Adventures" ){ sPath = "Saves/Data/adventures.txt"; }
-				else if ( sLog == "Logging Quests" ){ sPath = "Saves/Data/quests.txt"; }
-				else if ( sLog == "Logging Battles" ){ sPath = "Saves/Data/battles.txt"; }
-				else if ( sLog == "Logging Deaths" ){ sPath = "Saves/Data/deaths.txt"; }
-				else if ( sLog == "Logging Murderers" ){ sPath = "Saves/Data/murderers.txt"; }
-				else if ( sLog == "Logging Journies" ){ sPath = "Saves/Data/journies.txt"; }
-				else if ( sLog == "Logging Server" ){ sPath = "Saves/Data/server.txt"; }
-				
+				switch (sLog)
+				{
+					case LogEventType.Adventures: sPath = "Saves/Data/adventures.txt"; break;
+					case LogEventType.Quests: sPath = "Saves/Data/quests.txt"; break;
+					case LogEventType.Battles: sPath = "Saves/Data/battles.txt"; break;
+					case LogEventType.Deaths: sPath = "Saves/Data/deaths.txt"; break;
+					case LogEventType.Murderers: sPath = "Saves/Data/murderers.txt"; break;
+					case LogEventType.Journies: sPath = "Saves/Data/journies.txt"; break;
+					case LogEventType.Server: sPath = "Saves/Data/server.txt"; break;
+				}
+
 				CreateFile( sPath );
 
 				/// PREPEND THE FILE WITH THE EVENT ///
@@ -121,23 +126,26 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static string LogRead( string sLog, Mobile m )
+		public static string LogRead( LogEventType sLog, Mobile m )
 		{
 			if ( !Directory.Exists( "Saves/Data" ) )
 				Directory.CreateDirectory( "Saves/Data" );
 
 			string sPath = "Saves/Data/adventures.txt";
 
-			if ( sLog == "Logging Adventures" ){ sPath = "Saves/Data/adventures.txt"; }
-			else if ( sLog == "Logging Quests" ){ sPath = "Saves/Data/quests.txt"; }
-			else if ( sLog == "Logging Battles" ){ sPath = "Saves/Data/battles.txt"; }
-			else if ( sLog == "Logging Deaths" ){ sPath = "Saves/Data/deaths.txt"; }
-			else if ( sLog == "Logging Murderers" ){ sPath = "Saves/Data/murderers.txt"; }
-			else if ( sLog == "Logging Journies" ){ sPath = "Saves/Data/journies.txt"; }
+			switch (sLog)
+			{
+				case LogEventType.Adventures: sPath = "Saves/Data/adventures.txt"; break;
+				case LogEventType.Quests: sPath = "Saves/Data/quests.txt"; break;
+				case LogEventType.Battles: sPath = "Saves/Data/battles.txt"; break;
+				case LogEventType.Deaths: sPath = "Saves/Data/deaths.txt"; break;
+				case LogEventType.Murderers: sPath = "Saves/Data/murderers.txt"; break;
+				case LogEventType.Journies: sPath = "Saves/Data/journies.txt"; break;
+			}
 
 			string sBreak = "";
 
-			if ( sLog == "Logging Murderers"){ sBreak = "<br>"; }
+			if ( sLog == LogEventType.Murderers){ sBreak = "<br>"; }
 			string sLogEntries = "";
 
 			CreateFile( sPath );
@@ -176,13 +184,16 @@ namespace Server.Misc
 
 			if ( nBlank == 1 )
 			{
-				if ( sLog == "Logging Murderers" ){ sLogEntries = sLogEntries + "I am happy to say " + m.Name + ", that no one is wanted for murder."; }
-				else if ( sLog == "Logging Battles" ){ sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of bravery to tell."; }
-				else if ( sLog == "Logging Adventures" ){ sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new gossip to tell."; }
-				else if ( sLog == "Logging Quests" ){ sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of deeds to tell."; }
-				else if ( sLog == "Logging Deaths" ){ sLogEntries = sLogEntries + "I am happy to say " + m.Name + ", that all of Sosaria's citizens are alive and well."; }
-				else if ( sLog == "Logging Journies" ){ sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of exploration to tell."; }
-				else { sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have nothing new to tell of such things."; }
+				switch (sLog)
+				{
+					case LogEventType.Murderers: sLogEntries = sLogEntries + "I am happy to say " + m.Name + ", that no one is wanted for murder."; break;
+					case LogEventType.Battles: sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of bravery to tell."; break;
+					case LogEventType.Adventures: sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new gossip to tell."; break;
+					case LogEventType.Quests: sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of deeds to tell."; break;
+					case LogEventType.Deaths: sLogEntries = sLogEntries + "I am happy to say " + m.Name + ", that all of Sosaria's citizens are alive and well."; break;
+					case LogEventType.Journies: sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have no new tales of exploration to tell."; break;
+					default: sLogEntries = sLogEntries + "Sorry, " + m.Name + ". I have nothing new to tell of such things."; break;
+				}
 			}
 
 			if ( sLogEntries.Contains(" .") ){ sLogEntries = sLogEntries.Replace(" .", "."); }
@@ -267,25 +278,25 @@ namespace Server.Misc
 			if ( !Directory.Exists( "Saves/Data" ) )
 				Directory.CreateDirectory( "Saves/Data" );
 
-			string sLog = "Logging Adventures";
+			LogEventType sLog = LogEventType.Adventures;
 			switch ( Utility.Random( 6 ))
 			{
-				case 0: sLog = "Logging Deaths"; break;
-				case 1: sLog = "Logging Quests"; break;
-				case 2: sLog = "Logging Battles"; break;
-				case 3: sLog = "Logging Journies"; break;
-				case 4: sLog = "Logging Murderers"; break;
-				case 5: sLog = "Logging Adventures"; break;
+				case 0: sLog = LogEventType.Deaths; break;
+				case 1: sLog = LogEventType.Quests; break;
+				case 2: sLog = LogEventType.Battles; break;
+				case 3: sLog = LogEventType.Journies; break;
+				case 4: sLog = LogEventType.Murderers; break;
+				case 5: sLog = LogEventType.Adventures; break;
 			};
 
 			string sPath = "Saves/Data/adventures.txt";
 
-			if ( sLog == "Logging Adventures" ){ sPath = "Saves/Data/adventures.txt"; }
-			else if ( sLog == "Logging Quests" ){ sPath = "Saves/Data/quests.txt"; }
-			else if ( sLog == "Logging Battles" ){ sPath = "Saves/Data/battles.txt"; }
-			else if ( sLog == "Logging Deaths" ){ sPath = "Saves/Data/deaths.txt"; }
-			else if ( sLog == "Logging Murderers" ){ sPath = "Saves/Data/murderers.txt"; }
-			else if ( sLog == "Logging Journies" ){ sPath = "Saves/Data/journies.txt"; }
+			if ( sLog == LogEventType.Adventures ){ sPath = "Saves/Data/adventures.txt"; }
+			else if ( sLog == LogEventType.Quests ){ sPath = "Saves/Data/quests.txt"; }
+			else if ( sLog == LogEventType.Battles ){ sPath = "Saves/Data/battles.txt"; }
+			else if ( sLog == LogEventType.Deaths ){ sPath = "Saves/Data/deaths.txt"; }
+			else if ( sLog == LogEventType.Murderers ){ sPath = "Saves/Data/murderers.txt"; }
+			else if ( sLog == LogEventType.Journies ){ sPath = "Saves/Data/journies.txt"; }
 
 			CreateFile( sPath );
 
@@ -300,7 +311,7 @@ namespace Server.Misc
 				};
 
 			string myShout = "";
-			if ( sLog == "Logging Murderers" ){ myShout = Server.Mobiles.TownHerald.randomShout( null ); }
+			if ( sLog == LogEventType.Murderers ){ myShout = Server.Mobiles.TownHerald.randomShout( null ); }
 			else { myShout = Server.Mobiles.TownHerald.randomShout( null ); }
 
 			try
@@ -372,21 +383,21 @@ namespace Server.Misc
 			if ( !Directory.Exists( "Saves/Data" ) )
 				Directory.CreateDirectory( "Saves/Data" );
 
-			string sLog = "Logging Murderers";
+			LogEventType sLog = LogEventType.Murderers;
 			switch ( Utility.Random( 6 ))
 			{
-				case 0: sLog = "Logging Deaths"; break;
-				case 1: sLog = "Logging Battles"; break;
-				case 2: sLog = "Logging Journies"; break;
-				case 3: sLog = "Logging Battles"; break;
-				case 4: sLog = "Logging Journies"; break;
+				case 0: sLog = LogEventType.Deaths; break;
+				case 1: sLog = LogEventType.Battles; break;
+				case 2: sLog = LogEventType.Journies; break;
+				case 3: sLog = LogEventType.Battles; break;
+				case 4: sLog = LogEventType.Journies; break;
 			};
 
 			string sPath = "Saves/Data/murderers.txt";
 
-			if ( sLog == "Logging Battles" ){ sPath = "Saves/Data/battles.txt"; }
-			else if ( sLog == "Logging Deaths" ){ sPath = "Saves/Data/deaths.txt"; }
-			else if ( sLog == "Logging Journies" ){ sPath = "Saves/Data/journies.txt"; }
+			if ( sLog == LogEventType.Battles ){ sPath = "Saves/Data/battles.txt"; }
+			else if ( sLog == LogEventType.Deaths ){ sPath = "Saves/Data/deaths.txt"; }
+			else if ( sLog == LogEventType.Journies ){ sPath = "Saves/Data/journies.txt"; }
 
 			CreateFile( sPath );
 
@@ -552,8 +563,8 @@ namespace Server.Misc
 				{
 					string sEvent;
 
-					if ( sDirection == "enter" ){ sEvent = m.Name + " " + sTitle + " entered " + sRegion + "#" + sDateString; LoggingFunctions.LogEvent( sEvent, "Logging Journies" ); }
-					// else { sEvent = m.Name + " " + sTitle + " left " + sRegion + "#" + sDateString; LoggingFunctions.LogEvent( sEvent, "Logging Journies" ); }
+					if ( sDirection == "enter" ){ sEvent = m.Name + " " + sTitle + " entered " + sRegion + "#" + sDateString; LoggingFunctions.LogEvent( sEvent, LogEventType.Journies ); }
+					// else { sEvent = m.Name + " " + sTitle + " left " + sRegion + "#" + sDateString; LoggingFunctions.LogEvent( sEvent, LogEventType.Journies ); }
 				}
 			}
 			return null;
@@ -590,7 +601,7 @@ namespace Server.Misc
 					string Killed = sKiller;
 						if ( mob.Title != "" && mob.Title != null ){ Killed = Killed + " " + mob.Title; }
 					string sEvent = m.Name + " " + sTitle + " had slain " + Killed + "#" + sDateString;
-					LoggingFunctions.LogEvent( sEvent, "Logging Battles" );
+					LoggingFunctions.LogEvent( sEvent, LogEventType.Battles );
 				}
 				else
 				{
@@ -605,7 +616,7 @@ namespace Server.Misc
 						case 5: privateEnemy = "a rival"; break;
 					}
 					string sEvent = m.Name + " " + sTitle + " had slain " + privateEnemy + "#" + sDateString;
-					LoggingFunctions.LogEvent( sEvent, "Logging Battles" );
+					LoggingFunctions.LogEvent( sEvent, LogEventType.Battles );
 				}
 			}
 			return null;
@@ -635,7 +646,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sTrip + " " + sTrap + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Adventures" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Adventures );
 			}
 
 			return null;
@@ -653,7 +664,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sTrap + ", teleporting them far away#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Adventures" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Adventures );
 			}
 
 			return null;
@@ -671,7 +682,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " was sent to the " + sJail + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Journies" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Journies );
 			}
 
 			return null;
@@ -689,7 +700,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " made a fatal mistake from " + sTrap + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Journies" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Journies );
 			}
 
 			return null;
@@ -743,7 +754,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sBox + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Adventures" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Adventures );
 			}
 
 			return null;
@@ -771,7 +782,7 @@ namespace Server.Misc
 			if ( m.PublicInfo )
 			{
 				string sEvent = m.Name + " " + sTitle + " " + verb + " " + creature + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -783,7 +794,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "The gods have created a legendary artefact called " + sArty + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -802,7 +813,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sText + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -816,7 +827,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "A Syth constructed a weapon called " + sArty + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -830,7 +841,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "A Jedi constructed a weapon called " + sArty + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -846,7 +857,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sText + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -871,7 +882,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sBox + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -896,7 +907,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sBox + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -930,7 +941,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sBone + " of " + sBox + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -964,7 +975,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sChest + " chest of " + sBox + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -989,7 +1000,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + chest + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -1025,7 +1036,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + " " + sChest + " from " + sShip + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -1080,7 +1091,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sLoot + sWho + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -1098,7 +1109,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sText + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Quests" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests );
 			}
 
 			return null;
@@ -1116,7 +1127,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = m.Name + " " + sTitle + " " + sText + "#" + sDateString;
-				LoggingFunctions.LogEvent( sEvent, "Logging Adventures" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Adventures );
 			}
 
 			return null;
@@ -1146,7 +1157,7 @@ namespace Server.Misc
 					World.Broadcast(0x35, true, "{0} {1} has left the realm", m.Name, sTitle);
 				}
 
-				LoggingFunctions.LogEvent( sEvent, "Logging Adventures" );
+				LoggingFunctions.LogEvent( sEvent, LogEventType.Adventures );
             }
 
 			return null;
@@ -1232,7 +1243,7 @@ namespace Server.Misc
 							sEvent = m.Name + " " + sTitle + " had been killed#" + sDateString;
 						}
 					}
-					LoggingFunctions.LogEvent( sEvent, "Logging Deaths" );
+					LoggingFunctions.LogEvent( sEvent, LogEventType.Deaths );
 				}
 			}
 			return null;
@@ -1250,22 +1261,26 @@ namespace Server.Misc
 			if ( m.Kills > 1){ sEvent = m.Name + " " + sTitle + " is wanted for the murder of " + m.Kills + " people."; }
 			else if ( m.Kills > 0){ sEvent = m.Name + " " + sTitle + " is wanted for murder."; }
 
-			LoggingFunctions.LogEvent( sEvent, "Logging Murderers" );
+			LoggingFunctions.LogEvent( sEvent, LogEventType.Murderers );
 
 			return null;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static string LogClear( string sLog )
+		public static string LogClear( LogEventType sLog )
 		{
 			string sPath = "Saves/Data/adventures.txt";
- 
-			if ( sLog == "Logging Adventures" ){ sPath = "Saves/Data/adventures.txt"; }
-			else if ( sLog == "Logging Battles" ){ sPath = "Saves/Data/battles.txt"; }
-			else if ( sLog == "Logging Deaths" ){ sPath = "Saves/Data/deaths.txt"; }
-			else if ( sLog == "Logging Murderers" ){ sPath = "Saves/Data/murderers.txt"; }
-			else if ( sLog == "Logging Journies" ){ sPath = "Saves/Data/journies.txt"; }
+
+			switch (sLog)
+			{
+				case LogEventType.Adventures: sPath = "Saves/Data/adventures.txt"; break;
+				case LogEventType.Battles: sPath = "Saves/Data/battles.txt"; break;
+				case LogEventType.Deaths: sPath = "Saves/Data/deaths.txt"; break;
+				case LogEventType.Murderers: sPath = "Saves/Data/murderers.txt"; break;
+				case LogEventType.Journies: sPath = "Saves/Data/journies.txt"; break;
+				default: return null;
+			}
 
 			DeleteFile( sPath );
 
@@ -1329,7 +1344,7 @@ namespace Server.Misc
 
 			if ( LoggingFunctions.LoggingEvents() == true )
 			{
-				LoggingFunctions.LogClear( "Logging Murderers" );
+				LoggingFunctions.LogClear( LogEventType.Murderers );
 
 				// GET ALL OF THE MURDERERS ///////////////////////////////
 				foreach ( Account a in Accounts.GetAccounts() )
@@ -1392,27 +1407,27 @@ namespace Server.Gumps
 
 			if ( page == 2 )
 			{
-				sEvents = "Deeds In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Quests", from ); scroll = true; btn1 = 4011;
+				sEvents = "Deeds In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Quests, from ); scroll = true; btn1 = 4011;
 			}
 			else if ( page == 3 )
 			{
-				sEvents = "Exploration In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Journies", from ); scroll = true; btn2 = 4011;
+				sEvents = "Exploration In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Journies, from ); scroll = true; btn2 = 4011;
 			}
 			else if ( page == 4 )
 			{
-				sEvents = "Victories In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Battles", from ); scroll = true; btn3 = 4011;
+				sEvents = "Victories In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Battles, from ); scroll = true; btn3 = 4011;
 			}
 			else if ( page == 5 )
 			{
-				sEvents = "Recent Deaths In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Deaths", from ); scroll = true; btn4 = 4011;
+				sEvents = "Recent Deaths In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Deaths, from ); scroll = true; btn4 = 4011;
 			}
 			else if ( page == 6 )
 			{
-				sEvents = "Murderers In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Murderers", from ); scroll = true; btn5 = 4011;
+				sEvents = "Murderers In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Murderers, from ); scroll = true; btn5 = 4011;
 			}
 			else if ( page == 7 )
 			{
-				sEvents = "Gossip In The Realm<br><br>" + LoggingFunctions.LogRead( "Logging Adventures", from ); scroll = true; btn6 = 4011;
+				sEvents = "Gossip In The Realm<br><br>" + LoggingFunctions.LogRead( LogEventType.Adventures, from ); scroll = true; btn6 = 4011;
 			}
 
 			AddButton(12, 48, btn1, btn1, 1, GumpButtonType.Reply, 0);
