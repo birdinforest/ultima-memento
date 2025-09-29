@@ -108,6 +108,7 @@ namespace Server.Items
 				{
 					case 0:
 						item = Loot.RandomArty();
+						CustomEventSink.InvokeLootPull(new LootPullEventArgs(from, item));
 						break;
 					case 1:
 					case 2:

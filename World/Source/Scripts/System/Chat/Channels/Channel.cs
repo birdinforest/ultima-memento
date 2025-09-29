@@ -422,9 +422,11 @@ namespace Knives.Chat3
 
         protected virtual void Broadcast(Mobile m, string msg)
         {
+			CustomEventSink.InvokeChatMessage(new ChatMessageEventArgs(m, msg));
+
             foreach (Data data in Data.Datas.Values)
             {
-				if (data.Mobile != null)
+				if (data.Mobile != null && data.Mobile.NetState != null)
 				{
 					data.Mobile.Send(new ChatMessagePacket(m, 57, "1" + m.Name, msg)); //The 0 is a color code that's non functional but required
 				}
