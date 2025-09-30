@@ -1,3 +1,4 @@
+using Server.Misc;
 using Server.Mobiles;
 
 namespace Server
@@ -5,6 +6,7 @@ namespace Server
 	public delegate void LandChangedEventHandler(LandChangedArgs e);
 	public delegate void ChatMessageEventHandler(ChatMessageEventArgs e);
 	public delegate void LootPullEventHandler(LootPullEventArgs e);
+	public delegate void EventLoggedHandler(EventLoggedArgs e);
 
 	public class LandChangedArgs
 	{
@@ -44,11 +46,28 @@ namespace Server
 		}
 	}
 
+	public class EventLoggedArgs
+	{
+		public readonly PlayerMobile Mobile;
+		public readonly LogEventType EventType;
+		public readonly string Event;
+		public readonly bool IsAnonymous;
+
+		public EventLoggedArgs(PlayerMobile from, LogEventType eventType, string @event, bool isAnonymous)
+		{
+			Mobile = from;
+			EventType = eventType;
+			Event = @event;
+			IsAnonymous = isAnonymous;
+		}
+	}
+
 	public class CustomEventSink
 	{
 		public static event LandChangedEventHandler LandChanged;
 		public static event ChatMessageEventHandler ChatMessage;
 		public static event LootPullEventHandler LootPull;
+		public static event EventLoggedHandler EventLogged;
 
 		public static void InvokeLandChanged(LandChangedArgs e)
 		{
@@ -66,6 +85,12 @@ namespace Server
 		{
 			if (LootPull != null)
 				LootPull(e);
+		}
+
+		public static void InvokeEventLogged(EventLoggedArgs e)
+		{
+			if (EventLogged != null)
+				EventLogged(e);
 		}
 	}
 }

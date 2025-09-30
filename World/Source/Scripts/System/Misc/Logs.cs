@@ -90,11 +90,21 @@ namespace Server.Misc
 			}
 		}
 
-		public static void LogEvent( PlayerMobile mobile, string sEvent, LogEventType sLog, bool includeDate )
+		public static void EmitAndLogEvent( PlayerMobile mobile, string sEvent, LogEventType sLog, bool includeDate, bool prependNameAndTitle = true )
 		{
-			string sTitle = mobile.Title != null ? mobile.Title : "the " + GetPlayerInfo.GetSkillTitle( mobile );
+			CustomEventSink.InvokeEventLogged(new EventLoggedArgs(mobile, sLog, sEvent, !prependNameAndTitle));
+			LogEvent( mobile, sEvent, sLog, includeDate, prependNameAndTitle );
+		}
 
-			LogEvent( mobile.Name + sTitle + sEvent, sLog, includeDate );
+		public static void LogEvent( PlayerMobile mobile, string sEvent, LogEventType sLog, bool includeDate, bool prependNameAndTitle = true )
+		{
+			if ( prependNameAndTitle )
+			{
+				string sTitle = mobile.Title != null ? mobile.Title : "the " + GetPlayerInfo.GetSkillTitle( mobile );
+				sEvent = mobile.Name + sTitle + sEvent;
+			}
+
+			LogEvent( sEvent, sLog, includeDate );
 		}
 
 		public static void LogEvent( string sEvent, LogEventType sLog, bool includeDate )
@@ -650,7 +660,7 @@ namespace Server.Misc
 					case 6: sTrip = "had ran into";	break;
 				}
 				string sEvent = sTrip + " " + sTrap;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
 		}
 
@@ -662,7 +672,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = sTrap + ", teleporting them far away";
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
 		}
 
@@ -674,7 +684,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = " was sent to the " + sJail;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Journies, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Journies, true );
 			}
 		}
 
@@ -686,7 +696,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = " made a fatal mistake from " + sTrap;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Journies, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Journies, true );
 			}
 		}
 
@@ -755,7 +765,7 @@ namespace Server.Misc
 					case 3: verb = "has vanquished";	break;
 				}
 				string sEvent = verb + " " + creature;
-				LoggingFunctions.LogEvent( m, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( m, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -765,7 +775,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "The gods have created a legendary artefact called " + sArty;
-				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true, false );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -778,7 +788,7 @@ namespace Server.Misc
 					if ( side == "evil" ){ sText = "has corrupted the Runes of Virtue."; }
 
 				string sEvent = sText;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -788,7 +798,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "A Syth constructed a weapon called " + sArty;
-				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true, false );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -798,7 +808,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = "A Jedi constructed a weapon called " + sArty;
-				LoggingFunctions.LogEvent( sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true, false );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -808,7 +818,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = sText;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -827,7 +837,7 @@ namespace Server.Misc
 				}
 
 				string sEvent = sLoot + " " + sBox;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -846,7 +856,7 @@ namespace Server.Misc
 				}
 
 				string sEvent = sLoot + " " + sBox;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -874,7 +884,7 @@ namespace Server.Misc
 				}
 
 				string sEvent = sLoot + " " + sBone + " of " + sBox;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -902,7 +912,7 @@ namespace Server.Misc
 				}
 
 				string sEvent = sLoot + " " + sChest + " chest of " + sBox;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 		// --------------------------------------------------------------------------------------------
@@ -1000,7 +1010,7 @@ namespace Server.Misc
 				sLoot = sLoot + " " + t.Name + " " + t.Title;
 
 				string sEvent = sLoot + sWho;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 
@@ -1012,7 +1022,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = sText;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Quests, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}
 
@@ -1024,7 +1034,7 @@ namespace Server.Misc
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = sText;
-				LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
+				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
 		}
 		
