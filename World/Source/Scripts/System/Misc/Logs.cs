@@ -1028,13 +1028,16 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static void LogStandard( Mobile m, string sText )
+		public static void LogStandard( Mobile m, string sText, bool emitEvent = true )
 		{
 			PlayerMobile pm = (PlayerMobile)m;
 			if (pm.PublicInfo == true)
 			{
 				string sEvent = sText;
-				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
+				if ( emitEvent )
+					LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
+				else
+					LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
 		}
 		

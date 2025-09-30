@@ -2285,13 +2285,13 @@ namespace Server.Mobiles
 
 			switch( Utility.Random( 7 ) )
 			{
-				case 0: LoggingFunctions.LogStandard( this, "has returned from the realm of the dead" );		break;
-				case 1: LoggingFunctions.LogStandard( this, "was brought back to the world of the living" );	break;
-				case 2: LoggingFunctions.LogStandard( this, "has been restored to life" );					break;
-				case 3: LoggingFunctions.LogStandard( this, "has been brought back from the grave" );		break;
-				case 4: LoggingFunctions.LogStandard( this, "has been resurrected to this world" );			break;
-				case 5: LoggingFunctions.LogStandard( this, "has returned to life after death" );			break;
-				case 6: LoggingFunctions.LogStandard( this, "was resurrected for another chance at life" );	break;
+				case 0: LoggingFunctions.LogStandard( this, "has returned from the realm of the dead", false );		break;
+				case 1: LoggingFunctions.LogStandard( this, "was brought back to the world of the living", false );	break;
+				case 2: LoggingFunctions.LogStandard( this, "has been restored to life", false );					break;
+				case 3: LoggingFunctions.LogStandard( this, "has been brought back from the grave", false );		break;
+				case 4: LoggingFunctions.LogStandard( this, "has been resurrected to this world", false );			break;
+				case 5: LoggingFunctions.LogStandard( this, "has returned to life after death", false );			break;
+				case 6: LoggingFunctions.LogStandard( this, "was resurrected for another chance at life", false );	break;
 			}
 
 			if ( this.QuestArrow != null ){ this.QuestArrow.Stop(); }
