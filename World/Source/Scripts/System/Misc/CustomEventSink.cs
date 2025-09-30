@@ -99,10 +99,11 @@ namespace Server
 				LootPull(e);
 		}
 
-		public static void InvokeEventLogged(EventLoggedArgs e)
+		public static void InvokeEventLogged(PlayerMobile from, LogEventType eventType, string @event, bool isAnonymous)
 		{
-			if (EventLogged != null)
-				EventLogged(e);
+			if (EventLogged == null) return;
+
+			EventLogged(new EventLoggedArgs(from, eventType, @event, isAnonymous));
 		}
 
 		public static void InvokeBeginJourney(BeginJourneyArgs e)

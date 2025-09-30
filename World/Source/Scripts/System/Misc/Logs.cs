@@ -92,7 +92,7 @@ namespace Server.Misc
 
 		public static void EmitAndLogEvent( PlayerMobile mobile, string sEvent, LogEventType sLog, bool includeDate, bool prependNameAndTitle = true )
 		{
-			CustomEventSink.InvokeEventLogged(new EventLoggedArgs(mobile, sLog, sEvent, !prependNameAndTitle));
+			CustomEventSink.InvokeEventLogged( mobile, sLog, sEvent, !prependNameAndTitle );
 			LogEvent( mobile, sEvent, sLog, includeDate, prependNameAndTitle );
 		}
 
