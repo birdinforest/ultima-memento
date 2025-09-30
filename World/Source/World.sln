@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System", "System\System.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configurable", "..\Info\Scripts\Configurable.csproj", "{BE7CB59E-E062-4FE8-BED4-CE87E989797A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsOnly", "..\Info\Scripts\SettingsOnly.csproj", "{E63B77A7-2ED5-4A53-91F4-1F99079028E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,17 +18,15 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FDBB3003-62A7-4756-B629-A2813F6CB0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDBB3003-62A7-4756-B629-A2813F6CB0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDBB3003-62A7-4756-B629-A2813F6CB0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDBB3003-62A7-4756-B629-A2813F6CB0B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{04485DC6-4D21-4D16-B991-7BC1EEE6F7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04485DC6-4D21-4D16-B991-7BC1EEE6F7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04485DC6-4D21-4D16-B991-7BC1EEE6F7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04485DC6-4D21-4D16-B991-7BC1EEE6F7E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE7CB59E-E062-4FE8-BED4-CE87E989797A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE7CB59E-E062-4FE8-BED4-CE87E989797A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7CB59E-E062-4FE8-BED4-CE87E989797A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE7CB59E-E062-4FE8-BED4-CE87E989797A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63B77A7-2ED5-4A53-91F4-1F99079028E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63B77A7-2ED5-4A53-91F4-1F99079028E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

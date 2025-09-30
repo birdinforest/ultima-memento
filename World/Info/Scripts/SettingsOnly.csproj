@@ -31,12 +31,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Info\Scripts\SettingsOnly.csproj" />
-    <ProjectReference Include="..\System\System.csproj" />
+    <ProjectReference Include="..\..\Source\System\System.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
+    <Compile Remove="*.cs"></Compile>
+    <Compile Include="Settings.cs" />
   </ItemGroup>
 </Project>

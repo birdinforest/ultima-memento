@@ -31,6 +31,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\System\System.csproj" />
+    <Compile Remove="Settings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Scripts\Scripts.csproj" />
   </ItemGroup>
 </Project>
