@@ -22,32 +22,26 @@ namespace Server
 
 	public class ChatMessageEventArgs
 	{
-		private readonly Mobile m_From;
-		private readonly string m_Message;
+		public readonly Mobile Mobile;
+		public readonly string Message;
 
 		public ChatMessageEventArgs(Mobile from, string msg)
 		{
-			m_From = from;
-			m_Message = msg;
+			Mobile = from;
+			Message = msg;
 		}
-
-		public Mobile Mobile { get { return m_From; } }
-		public string Message { get { return m_Message; } }
 	}
 
 	public class LootPullEventArgs
 	{
-		private readonly Mobile m_From;
-		private readonly Item m_Item;
+		public readonly Mobile Mobile;
+		public readonly Item Item;
 
 		public LootPullEventArgs(Mobile from, Item item)
 		{
-			m_From = from;
-			m_Item = item;
+			Mobile = from;
+			Item = item;
 		}
-
-		public Mobile Mobile { get { return m_From; } }
-		public Item Item { get { return m_Item; } }
 	}
 
 	public class CustomEventSink
