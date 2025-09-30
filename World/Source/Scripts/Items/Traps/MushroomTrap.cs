@@ -108,7 +108,7 @@ namespace Server.Items
 
 			Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerCallback( OnMushroomReset ) );
 
-			LoggingFunctions.LogTraps( from, "a strange mushroom" );
+			LoggingFunctions.LogTraps( from, "a strange mushroom", false );
 		}
 
 		public virtual void OnMushroomReset()

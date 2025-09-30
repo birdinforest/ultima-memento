@@ -643,7 +643,7 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static void LogTraps( Mobile m, string sTrap )
+		public static void LogTraps( Mobile m, string sTrap, bool emitEvent = true )
 		{
 			PlayerMobile pm = (PlayerMobile)m;
 			if (pm.PublicInfo == true)
@@ -660,7 +660,10 @@ namespace Server.Misc
 					case 6: sTrip = "had ran into";	break;
 				}
 				string sEvent = sTrip + " " + sTrap;
-				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
+				if ( emitEvent )
+					LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Adventures, true );
+				else
+					LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
 		}
 

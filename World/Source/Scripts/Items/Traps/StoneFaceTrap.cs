@@ -110,7 +110,7 @@ namespace Server.Items
 			Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerCallback( FinishBreath ) );
 			Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerCallback( TriggerDamage ) );
 
-			LoggingFunctions.LogTraps( from, "a trapped stone face" );
+			LoggingFunctions.LogTraps( from, "a trapped stone face", false );
 		}
 
 		public virtual void FinishBreath()
