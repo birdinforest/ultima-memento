@@ -7,6 +7,7 @@ namespace Server
 	public delegate void ChatMessageEventHandler(ChatMessageEventArgs e);
 	public delegate void LootPullEventHandler(LootPullEventArgs e);
 	public delegate void EventLoggedHandler(EventLoggedArgs e);
+	public delegate void BeginJourneyHandler(BeginJourneyArgs e);
 
 	public class LandChangedArgs
 	{
@@ -46,6 +47,16 @@ namespace Server
 		}
 	}
 
+	public class BeginJourneyArgs
+	{
+		public readonly PlayerMobile Mobile;
+
+		public BeginJourneyArgs(PlayerMobile from)
+		{
+			Mobile = from;
+		}
+	}
+
 	public class EventLoggedArgs
 	{
 		public readonly PlayerMobile Mobile;
@@ -68,6 +79,7 @@ namespace Server
 		public static event ChatMessageEventHandler ChatMessage;
 		public static event LootPullEventHandler LootPull;
 		public static event EventLoggedHandler EventLogged;
+		public static event BeginJourneyHandler BeginJourney;
 
 		public static void InvokeLandChanged(LandChangedArgs e)
 		{
@@ -91,6 +103,12 @@ namespace Server
 		{
 			if (EventLogged != null)
 				EventLogged(e);
+		}
+
+		public static void InvokeBeginJourney(BeginJourneyArgs e)
+		{
+			if (BeginJourney != null)
+				BeginJourney(e);
 		}
 	}
 }

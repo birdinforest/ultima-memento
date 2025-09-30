@@ -649,7 +649,10 @@ namespace Server.Gumps
 					PlayerSettings.SetDiscovered( m, "the Land of Sosaria", true );
 			}
 
-			TemptationEngine.Instance.ApplyContext( (PlayerMobile)m, TemptationEngine.Instance.GetContextOrDefault( (PlayerMobile)m ) );
+			var player = (PlayerMobile)m;
+			TemptationEngine.Instance.ApplyContext( player, player.Temptations );
+			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
+
 			m.MoveToWorld( loc, map );
 			Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 			m.SendSound( 0x65C );
