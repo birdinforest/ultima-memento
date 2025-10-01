@@ -278,36 +278,7 @@ namespace Server.Items
 				}
 				else
 				{
-					int nReaction = Utility.RandomMinMax( 1, 3 );
-
-					if ( nReaction == 1 )
-					{
-						from.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
-						from.PlaySound( 0x205 );
-						int nPoison = Utility.RandomMinMax( 0, 10 );
-							if ( nPoison > 9 ) { from.ApplyPoison( from, Poison.Deadly ); }
-							else if ( nPoison > 7 ) { from.ApplyPoison( from, Poison.Greater ); }
-							else if ( nPoison > 4 ) { from.ApplyPoison( from, Poison.Regular ); }
-							else { from.ApplyPoison( from, Poison.Lesser ); }
-						from.SendMessage( "You accidentally trigger a poison trap!" );
-						LoggingFunctions.LogTraps( from, "a pedestal poison trap" );
-					}
-					else if ( nReaction == 2 )
-					{
-						from.FixedParticles( 0x3709, 10, 30, 5052, EffectLayer.LeftFoot );
-						from.PlaySound( 0x208 );
-						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), from, from, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
-						from.SendMessage( "You accidentally trigger a flame trap!" );
-						LoggingFunctions.LogTraps( from, "a pedestal fire trap" );
-					}
-					else if ( nReaction == 3 )
-					{
-						from.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
-						from.PlaySound( 0x307 );
-						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), from, from, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
-						from.SendMessage( "You accidentally trigger an explosion trap!" );
-						LoggingFunctions.LogTraps( from, "a pedestal explosion trap" );
-					}
+					DoDamage( from );
 				}
 			}
 			else if ( from.CheckSkill( SkillName.Stealing, 0, 125 ) )
@@ -336,6 +307,73 @@ namespace Server.Items
 			{
 				m_Tries++;
 				from.SendMessage( "You fail to steal the item." );
+			}
+		}
+
+		public static void DoDamage(Mobile to)
+		{
+			switch (Utility.Random(5))
+			{
+				case 0:
+					{
+						// from.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
+						to.PlaySound(0x231); // vapor03
+						Effects.SendLocationEffect(to, to.Map, 0x113A, 20, 10);
+						to.LocalOverheadMessage(MessageType.Regular, 0x44, 1010523); // A toxic vapor envelops thee.
+
+						int nPoison = Utility.RandomMinMax( 0, 10 );
+							if ( nPoison > 9 ) { to.ApplyPoison( to, Poison.Deadly ); }
+							else if ( nPoison > 7 ) { to.ApplyPoison( to, Poison.Greater ); }
+							else if ( nPoison > 4 ) { to.ApplyPoison( to, Poison.Regular ); }
+							else { to.ApplyPoison( to, Poison.Lesser ); }
+
+						to.SendMessage( "You accidentally trigger a poison trap!" );
+						LoggingFunctions.LogTraps( to, "a pedestal poison trap" );
+						break;
+					}
+				case 1:
+					{
+						to.PlaySound( 0x307 ); // exp03
+						to.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
+						to.LocalOverheadMessage(MessageType.Regular, 0xEE, 1010524); // Searing heat scorches thy skin.
+
+						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), to, to, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
+						to.SendMessage( "You accidentally trigger an explosion trap!" );
+						LoggingFunctions.LogTraps( to, "a pedestal explosion trap", false );
+						break;
+					}
+				case 2:
+					{
+						to.PlaySound(0x223);
+						to.LocalOverheadMessage(MessageType.Regular, 0x62, 1010525); // Pain lances through thee from a sharp metal blade.
+
+						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 100, 0, 0, 0, 0);
+						to.SendMessage( "You accidentally trigger a blade trap!" );
+						LoggingFunctions.LogTraps( to, "a pedestal blade trap" );
+						break;
+					}
+				case 3:
+					{
+						to.FixedParticles( 0x3709, 10, 30, 5052, EffectLayer.LeftFoot );
+						to.PlaySound( 0x208 ); // flamstrk
+						to.LocalOverheadMessage(MessageType.Regular, 0xEE, 1010524); // Searing heat scorches thy skin.
+
+						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), to, to, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
+						to.SendMessage( "You accidentally trigger a flame trap!" );
+						LoggingFunctions.LogTraps( to, "a pedestal fire trap" );
+						break;
+					}
+				default:
+					{
+						to.BoltEffect(0);
+						to.LocalOverheadMessage(MessageType.Regular, 0xDA, 1010526); // Lightning arcs through thy body.
+
+						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 0, 0, 0, 0, 100);
+						to.SendMessage( "You accidentally trigger an electrical trap!" );
+						LoggingFunctions.LogTraps( to, "a pedestal electrical trap" );
+
+						break;
+					}
 			}
 		}
 

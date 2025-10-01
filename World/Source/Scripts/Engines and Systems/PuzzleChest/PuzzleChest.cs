@@ -87,51 +87,6 @@ namespace Server.Engines.PuzzleChest
 				m_Guesses.Remove(m);
 		}
 
-		public void DoDamage(Mobile to)
-		{
-			switch (Utility.Random(4))
-			{
-				case 0:
-					{
-						Effects.SendLocationEffect(to, to.Map, 0x113A, 20, 10);
-						to.PlaySound(0x231);
-						to.LocalOverheadMessage(MessageType.Regular, 0x44, 1010523); // A toxic vapor envelops thee.
-
-						to.ApplyPoison(to, Poison.Regular);
-
-						break;
-					}
-				case 1:
-					{
-						Effects.SendLocationEffect(to, to.Map, 0x3709, 30);
-						to.PlaySound(0x54);
-						to.LocalOverheadMessage(MessageType.Regular, 0xEE, 1010524); // Searing heat scorches thy skin.
-
-						AOS.Damage(to, to, Utility.RandomMinMax(10, 40), 0, 100, 0, 0, 0);
-
-						break;
-					}
-				case 2:
-					{
-						to.PlaySound(0x223);
-						to.LocalOverheadMessage(MessageType.Regular, 0x62, 1010525); // Pain lances through thee from a sharp metal blade.
-
-						AOS.Damage(to, to, Utility.RandomMinMax(10, 40), 100, 0, 0, 0, 0);
-
-						break;
-					}
-				default:
-					{
-						to.BoltEffect(0);
-						to.LocalOverheadMessage(MessageType.Regular, 0xDA, 1010526); // Lightning arcs through thy body.
-
-						AOS.Damage(to, to, Utility.RandomMinMax(10, 40), 0, 0, 0, 0, 100);
-
-						break;
-					}
-			}
-		}
-
 		public PuzzleChestSolutionAndTime GetLastGuess(Mobile m)
 		{
 			PuzzleChestSolutionAndTime pcst;
@@ -202,122 +157,12 @@ namespace Server.Engines.PuzzleChest
 			else
 			{
 				m_Guesses[m] = new PuzzleChestSolutionAndTime(DateTime.UtcNow, solution);
-				DoDamage(m);
+
+				if (m.CheckSkill(SkillName.RemoveTrap, 0, 125))
+					m.SendMessage("You pull back just in time to avoid a trap!");
+				else
+					StealBase.DoDamage(m);
 			}
-		}
-
-		protected void GenerateTreasure()
-		{
-			// DropItem(new Gold(600, 900));
-
-			// List<Item> gems = new List<Item>();
-			// for (int i = 0; i < 9; i++)
-			// {
-			// 	Item gem = Loot.RandomGem();
-			// 	Type gemType = gem.GetType();
-
-			// 	foreach (Item listGem in gems)
-			// 	{
-			// 		if (listGem.GetType() == gemType)
-			// 		{
-			// 			listGem.Amount++;
-			// 			gem.Delete();
-			// 			break;
-			// 		}
-			// 	}
-
-			// 	if (!gem.Deleted)
-			// 		gems.Add(gem);
-			// }
-
-			// foreach (Item gem in gems)
-			// 	DropItem(gem);
-
-			// if (0.2 > Utility.RandomDouble())
-			// 	DropItem(new BagOfReagents(50));
-
-			// for (int i = 0; i < 2; i++)
-			// {
-			// 	Item item;
-
-			// 	if (Core.AOS)
-			// 		item = Loot.RandomArmorOrShieldOrWeaponOrJewelry();
-			// 	else
-			// 		item = Loot.RandomArmorOrShieldOrWeapon();
-
-			// 	if (item is BaseWeapon)
-			// 	{
-			// 		BaseWeapon weapon = (BaseWeapon)item;
-
-			// 		if (Core.AOS)
-			// 		{
-			// 			int attributeCount;
-			// 			int min, max;
-
-			// 			GetRandomAOSStats(out attributeCount, out min, out max);
-
-			// 			BaseRunicTool.ApplyAttributesTo(weapon, attributeCount, min, max);
-			// 		}
-			// 		else
-			// 		{
-			// 			weapon.DamageLevel = (WeaponDamageLevel)Utility.Random(6);
-			// 			weapon.AccuracyLevel = (WeaponAccuracyLevel)Utility.Random(6);
-			// 			weapon.DurabilityLevel = (WeaponDurabilityLevel)Utility.Random(6);
-			// 		}
-
-			// 		DropItem(item);
-			// 	}
-			// 	else if (item is BaseArmor)
-			// 	{
-			// 		BaseArmor armor = (BaseArmor)item;
-
-			// 		if (Core.AOS)
-			// 		{
-			// 			int attributeCount;
-			// 			int min, max;
-
-			// 			GetRandomAOSStats(out attributeCount, out min, out max);
-
-			// 			BaseRunicTool.ApplyAttributesTo(armor, attributeCount, min, max);
-			// 		}
-			// 		else
-			// 		{
-			// 			armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random(6);
-			// 			armor.Durability = (ArmorDurabilityLevel)Utility.Random(6);
-			// 		}
-
-			// 		DropItem(item);
-			// 	}
-			// 	else if (item is BaseHat)
-			// 	{
-			// 		BaseHat hat = (BaseHat)item;
-
-			// 		if (Core.AOS)
-			// 		{
-			// 			int attributeCount;
-			// 			int min, max;
-
-			// 			GetRandomAOSStats(out attributeCount, out min, out max);
-
-			// 			BaseRunicTool.ApplyAttributesTo(hat, attributeCount, min, max);
-			// 		}
-
-			// 		DropItem(item);
-			// 	}
-			// 	else if (item is BaseJewel)
-			// 	{
-			// 		int attributeCount;
-			// 		int min, max;
-
-			// 		GetRandomAOSStats(out attributeCount, out min, out max);
-
-			// 		BaseRunicTool.ApplyAttributesTo((BaseJewel)item, attributeCount, min, max);
-
-			// 		DropItem(item);
-			// 	}
-			// }
-
-			Solution = new PuzzleChestSolution();
 		}
 
 		private void InitHints()

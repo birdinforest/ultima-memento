@@ -41,6 +41,8 @@ namespace Server.Misc
 			builder.Append("- Item - Pearl gemstone bonus no longer provides +1 FC, +1 FCR, and +2 all stats<br>");
 			builder.Append("- Item - Mallet Stake single and double click actions have been swapped<br>");
 			builder.Append("- Item - The resource of an Artefact may now transmuted up to one time<br>");
+			builder.Append("- Misc - Double damage from Puzzle chest failures<br>");
+			builder.Append("- Misc - Add Remove Trap checks against Puzzle chest failures<br>");
 			builder.Append("- Misc - Risky refactor to Player skill caps<br>");
 			builder.Append("- Misc - Self-res delay reduced to 10 seconds, down from 30 seconds<br>");
 			builder.Append("- Misc - The tillerman now babbles some dull stories<br>");
