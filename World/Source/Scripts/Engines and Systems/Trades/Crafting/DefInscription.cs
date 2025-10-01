@@ -446,9 +446,8 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
 
-			AddCraft( typeof( Monocle ), "Books & Scrolls", "Librarian Set", 5.0, 55.0, typeof( Leather ), 1044462, 10, 1044463);
-			AddRes( index, typeof( BlankScroll ), 1044377, 10, 1044378 );
-			AddRes( index, typeof( Beeswax ), 1025154, 5, 1044253 );
+			index = AddCraft( typeof( Monocle ), "Books & Scrolls", "Librarian Set", 5.0, 55.0, typeof( Leather ), 1044462, 3, 1044463);
+			AddRes( index, typeof( BlankScroll ), 1044377, 2, 1044378 );
 
 			// Runebook
 			index = AddCraft( typeof( Runebook ), "Books & Scrolls", "Runebook", 45.0, 95.0, typeof( Leather ), 1044462, 8, 1044463);
