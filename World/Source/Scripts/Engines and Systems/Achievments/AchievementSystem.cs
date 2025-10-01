@@ -613,6 +613,7 @@ namespace Scripts.Mythik.Systems.Achievements
                 player.SendAsciiMessage("You have earned the achievement: {0}.", ach.Title);
                 player.PlaySound(0x215); // Summon creature
                 player.SendGump(new AchievementObtainedGump(ach), false);
+				CustomEventSink.InvokeAchievementObtained(player, ach);
                 achieves[ach.ID].CompletedOn = DateTime.UtcNow;
 
                 AddPoints(player, ach.RewardPoints);

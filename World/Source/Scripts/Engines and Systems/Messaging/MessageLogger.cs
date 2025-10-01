@@ -1,3 +1,4 @@
+using Scripts.Mythik.Systems.Achievements;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Temptation;
@@ -45,7 +46,36 @@ namespace Server.Engines.Messaging
 				CustomEventSink.LootPull += new LootPullEventHandler(Instance.OnLootPull);
 				CustomEventSink.EventLogged += new EventLoggedHandler(Instance.OnEventLogged);
 				CustomEventSink.BeginJourney += new BeginJourneyHandler(Instance.OnBeginJourney);
+				CustomEventSink.AchievementObtained += new AchievementObtainedHandler(Instance.OnAchievementObtained);
 			}
+		}
+
+		private void OnAchievementObtained(AchievementObtainedArgs e)
+		{
+			var type = e.Achievement.GetType();
+			if (type == typeof(DiscoverLandAchievement) || type == typeof(DiscoveryAchievement)) // land, town, or dungeon
+			{
+				EventService.QueueMessage(string.Format("*{0}* has discovered *{1}*", e.Mobile.Name, e.Achievement.Title));
+				return;
+			}
+
+			if (type == typeof(HarvestAchievement))
+			{
+				EventService.QueueMessage(string.Format("*{0}* has worked hard to unlock *{1}*", e.Mobile.Name, e.Achievement.Title));
+				return;
+			}
+
+			if (type == typeof(HunterAchievement))
+			{
+				var achievement = (HunterAchievement)e.Achievement;
+				if (achievement.EnemyType == typeof(Exodus) || achievement.EnemyType == typeof(Jormungandr))
+				{
+					EventService.QueueMessage(string.Format("*{0}* has completed the feat of strength *{1}*", e.Mobile.Name, achievement.Title));
+					return;
+				}
+			}
+
+			EventService.QueueMessage(string.Format("*{0}* has earned the achievement: *{1}*", e.Mobile.Name, e.Achievement.Title));
 		}
 
 		private void OnBeginJourney(BeginJourneyArgs e)

@@ -1,3 +1,4 @@
+using Scripts.Mythik.Systems.Achievements;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -8,6 +9,7 @@ namespace Server
 	public delegate void LootPullEventHandler(LootPullEventArgs e);
 	public delegate void EventLoggedHandler(EventLoggedArgs e);
 	public delegate void BeginJourneyHandler(BeginJourneyArgs e);
+	public delegate void AchievementObtainedHandler(AchievementObtainedArgs e);
 
 	public class LandChangedArgs
 	{
@@ -73,6 +75,18 @@ namespace Server
 		}
 	}
 
+	public class AchievementObtainedArgs
+	{
+		public readonly PlayerMobile Mobile;
+		public readonly BaseAchievement Achievement;
+
+		public AchievementObtainedArgs(PlayerMobile mobile, BaseAchievement achievement)
+		{
+			Mobile = mobile;
+			Achievement = achievement;
+		}
+	}
+
 	public class CustomEventSink
 	{
 		public static event LandChangedEventHandler LandChanged;
@@ -80,6 +94,7 @@ namespace Server
 		public static event LootPullEventHandler LootPull;
 		public static event EventLoggedHandler EventLogged;
 		public static event BeginJourneyHandler BeginJourney;
+		public static event AchievementObtainedHandler AchievementObtained;
 
 		public static void InvokeLandChanged(LandChangedArgs e)
 		{
@@ -110,6 +125,12 @@ namespace Server
 		{
 			if (BeginJourney != null)
 				BeginJourney(e);
+		}
+
+		public static void InvokeAchievementObtained(PlayerMobile mobile, BaseAchievement achievement)
+		{
+			if (AchievementObtained != null)
+				AchievementObtained(new AchievementObtainedArgs(mobile, achievement));
 		}
 	}
 }
