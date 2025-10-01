@@ -69,6 +69,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Add exit teleporter to Tower of Brass level<br>");
 			builder.Append("- Misc - Luck now properly increases rare item drop rates<br>");
 			builder.Append("- Misc - Remove redundant message when tasting poisoned food<br>");
+			builder.Append("- Misc - Swap price of Lesser and Greater mana potions<br>");
 			builder.Append("- Pets - Hoard Minion no longer freezes when the Player has a combatant<br>");
 			builder.Append("- Race - Alien character type behaviors now honor the S_AllowAlienChoice setting<br>");
 			builder.Append("- Skill - Provocation no longer sets cooldown when failing to select a 2nd target<br>");
