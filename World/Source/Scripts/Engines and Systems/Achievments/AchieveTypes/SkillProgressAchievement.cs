@@ -2,7 +2,7 @@
 using Server.Mobiles;
 using System;
 
-namespace Scripts.Mythik.Systems.Achievements.AchieveTypes
+namespace Scripts.Mythik.Systems.Achievements
 {
     /// <summary>
     /// Achievement to handle hitting X in skill Y
