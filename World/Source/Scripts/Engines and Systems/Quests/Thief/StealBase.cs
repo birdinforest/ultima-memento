@@ -253,8 +253,7 @@ namespace Server.Items
 
 			var envelope = from.Backpack.FindItemByType( typeof ( ThiefNote ) ) as ThiefNote;
 
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault( from );
-			if ( context.CanUsePuzzleboxes && envelope == null )
+			if ( player.Temptations.CanUsePuzzleboxes && envelope == null )
 			{
 				if ( m_PuzzleChest == null )
 					m_PuzzleChest = new PuzzleChest(this);

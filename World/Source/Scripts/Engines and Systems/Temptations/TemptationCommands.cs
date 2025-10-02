@@ -28,8 +28,7 @@ namespace Server.Temptation
 
 			CommandLogging.WriteLine(from, "{0} {1} viewing Temptations of {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(pm));
 
-			var context = TemptationEngine.Instance.GetContextOrDefault(pm);
-			TemptationGump.Open(pm, from, context);
+			TemptationGump.Open(pm, from, from.Temptations);
 		}
 	}
 }

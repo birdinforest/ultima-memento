@@ -2263,8 +2263,7 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(this);
-			if (context.HasPermanentDeath)
+			if (Temptations.HasPermanentDeath)
 			{
 				SendMessage("We warned you it was dangerous. You cannot be resurrected.");
 				return;
@@ -3206,9 +3205,8 @@ namespace Server.Mobiles
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
 			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
 
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(this);
 			var titanAmount = IsTitanOfEther
-				? context.LimitTitanBonus
+				? Temptations.LimitTitanBonus
 					? 2000
 					: 5000
 				: 0;

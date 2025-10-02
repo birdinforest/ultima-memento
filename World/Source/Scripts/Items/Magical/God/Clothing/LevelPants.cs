@@ -1,4 +1,4 @@
-using System;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -19,9 +19,9 @@ namespace Server.Items
 		public override bool OnEquip(Mobile from)
 		{
 			if (!base.OnEquip(from)) return false;
+			if (false == from is PlayerMobile) return true;
 
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(from);
-			Layer = context.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
+			Layer = ((PlayerMobile)from).Temptations.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
 			
 			return true;
 		}

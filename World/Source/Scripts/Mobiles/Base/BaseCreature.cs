@@ -5880,8 +5880,7 @@ namespace Server.Mobiles
 			var master = MobileUtilities.TryGetMasterPlayer(combatant);
 			if (master == null) return;
 
-			var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(master);
-			if (!context.IncreaseMobDifficulty) return;
+			if (!master.Temptations.IncreaseMobDifficulty) return;
 
 			IsEmpowered = true;
 		}

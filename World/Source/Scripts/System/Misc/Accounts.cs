@@ -460,8 +460,7 @@ namespace Server.Misc
 					return;
 				}
 				
-				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(m);
-				var permanentlyDead = context.HasPermanentDeath && !m.Alive;
+				var permanentlyDead = ((PlayerMobile)m).Temptations.HasPermanentDeath && !m.Alive;
 
 				if ( !permanentlyDead )
 				{

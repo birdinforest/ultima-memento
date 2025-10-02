@@ -182,8 +182,7 @@ namespace Server.Misc
 				else if (skill.Base <= 125)
 					gc *= 0.38;
 				
-				var context = TemptationEngine.Instance.GetContextOrDefault(from);
-				if (context.AcceleratedSkillGain)
+				if (((PlayerMobile)from).Temptations.AcceleratedSkillGain)
 					gc *= 1.25;
 			}
 			
@@ -554,8 +553,7 @@ namespace Server.Misc
 
 		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
 		{
-			var context = TemptationEngine.Instance.GetContextOrDefault(player);
-			var gainDelay = context.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
+			var gainDelay = player.Temptations.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
 
 			DateTime end;
 			switch( stat )

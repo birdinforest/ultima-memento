@@ -140,14 +140,12 @@ namespace Server
 
 			if (m is PlayerMobile) // Defender
 			{
-				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(m);
-				if (context.IsBerserk) totalDamage += (int)(0.2 * totalDamage);
+				if (((PlayerMobile)m).Temptations.IsBerserk) totalDamage += (int)(0.2 * totalDamage);
 			}
 
 			if (from is PlayerMobile) // Attacker
 			{
-				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault(from);
-				if (context.IsBerserk) totalDamage += (int)(0.1 * totalDamage);
+				if (((PlayerMobile)from).Temptations.IsBerserk) totalDamage += (int)(0.1 * totalDamage);
 			}
 
 			#region Dragon Barding
@@ -343,10 +341,9 @@ namespace Server
 				}
 			}
 
-			if (int.MinValue < raceValue)
+			if (int.MinValue < raceValue && m is PlayerMobile)
 			{
-				var context = Temptation.TemptationEngine.Instance.GetContextOrDefault( m );
-				if ( context.ReduceRacialMagicalAttributes ) value = Math.Max( value, raceValue ); // Does not effect Stats, Skills, or Resists
+				if ( ((PlayerMobile)m).Temptations.ReduceRacialMagicalAttributes ) value = Math.Max( value, raceValue ); // Does not effect Stats, Skills, or Resists
 				else value += raceValue;
 			}
 				
