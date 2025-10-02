@@ -328,7 +328,7 @@ namespace Server.Items
 							else { to.ApplyPoison( to, Poison.Lesser ); }
 
 						to.SendMessage( "You accidentally trigger a poison trap!" );
-						LoggingFunctions.LogTraps( to, "a pedestal poison trap" );
+						LoggingFunctions.LogTraps( to, "a pedestal poison trap", false );
 						break;
 					}
 				case 1:
@@ -349,7 +349,7 @@ namespace Server.Items
 
 						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 100, 0, 0, 0, 0);
 						to.SendMessage( "You accidentally trigger a blade trap!" );
-						LoggingFunctions.LogTraps( to, "a pedestal blade trap" );
+						LoggingFunctions.LogTraps( to, "a pedestal blade trap", false );
 						break;
 					}
 				case 3:
@@ -360,7 +360,7 @@ namespace Server.Items
 
 						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), to, to, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
 						to.SendMessage( "You accidentally trigger a flame trap!" );
-						LoggingFunctions.LogTraps( to, "a pedestal fire trap" );
+						LoggingFunctions.LogTraps( to, "a pedestal fire trap", false );
 						break;
 					}
 				default:
@@ -370,7 +370,7 @@ namespace Server.Items
 
 						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 0, 0, 0, 0, 100);
 						to.SendMessage( "You accidentally trigger an electrical trap!" );
-						LoggingFunctions.LogTraps( to, "a pedestal electrical trap" );
+						LoggingFunctions.LogTraps( to, "a pedestal electrical trap", false );
 
 						break;
 					}
