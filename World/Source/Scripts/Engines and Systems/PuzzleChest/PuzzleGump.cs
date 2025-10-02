@@ -1,6 +1,7 @@
 using Server.Gumps;
 using Server.Network;
 using System;
+using System.Linq;
 
 namespace Server.Engines.PuzzleChest
 {
@@ -138,12 +139,16 @@ namespace Server.Engines.PuzzleChest
 			{
 				case ActionButtonType.Submit:
 					{
-						// In case they just submitted this solution
-						int cylinders, colors;
-						if (!m_Solution.Matches(m_Chest.GetLastGuess(m_From), out cylinders, out colors))
+						// Make sure a gem is selected...
+						if (m_Solution.Cylinders.Any(x => x != PuzzleChestCylinder.None))
 						{
-							m_Chest.SubmitSolution(m_From, m_Solution);
-							if (m_Chest.IsSolved || !m_From.Alive) return;
+							// In case they just submitted this solution
+							int cylinders, colors;
+							if (!m_Solution.Matches(m_Chest.GetLastGuess(m_From), out cylinders, out colors))
+							{
+								m_Chest.SubmitSolution(m_From, m_Solution);
+								if (m_Chest.IsSolved || !m_From.Alive) return;
+							}
 						}
 
 						m_From.SendGump(new PuzzleGump(m_From, m_Chest, m_Solution, GetDefaultSelectedPedestalState()));

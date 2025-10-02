@@ -70,6 +70,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Luck now properly increases rare item drop rates<br>");
 			builder.Append("- Misc - Remove redundant message when tasting poisoned food<br>");
 			builder.Append("- Misc - Swap price of Lesser and Greater mana potions<br>");
+			builder.Append("- Misc - Puzzle chests no longer do damage when no gem is submitted<br>");
 			builder.Append("- Pets - Hoard Minion no longer freezes when the Player has a combatant<br>");
 			builder.Append("- Pets - Dead pets no longer abandon their owners who log out for 24hours<br>");
 			builder.Append("- Race - Alien character type behaviors now honor the S_AllowAlienChoice setting<br>");
