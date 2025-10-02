@@ -10195,6 +10195,7 @@ namespace Server.Mobiles
 				if ( m is BaseCreature )
 				{
 					BaseCreature c = (BaseCreature)m;
+					if ( c.Map == Map.Internal ) continue;
 
 					Mobile owner = c.ControlMaster;
 					if ( owner != null && owner.Map == Map.Internal ) continue;
