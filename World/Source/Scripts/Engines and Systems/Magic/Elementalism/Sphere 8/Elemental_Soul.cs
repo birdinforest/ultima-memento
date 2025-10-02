@@ -66,7 +66,7 @@ namespace Server.Spells.Elementalism
             }
             else if ( m == Caster && CheckBSequence( m, true ) )
             {
-				var item = SoulOrb.Create( m, SoulOrbType.RestorativeSoil );
+				var item = SoulOrb.Create( m, SoulOrbType.Default );
 				if ( item != null )
 				{					
 					item.Hue = color;
