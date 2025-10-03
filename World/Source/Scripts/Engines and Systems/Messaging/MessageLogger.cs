@@ -53,7 +53,7 @@ namespace Server.Engines.Messaging
 		private void OnAchievementObtained(AchievementObtainedArgs e)
 		{
 			var type = e.Achievement.GetType();
-			if (type == typeof(DiscoverLandAchievement) || type == typeof(DiscoveryAchievement)) // land, town, or dungeon
+			if (type == typeof(DiscoveryAchievement)) // town or dungeon
 			{
 				EventService.QueueMessage(string.Format("*{0}* has discovered *{1}*", e.Mobile.Name, e.Achievement.Title));
 				return;
@@ -75,7 +75,7 @@ namespace Server.Engines.Messaging
 				}
 			}
 
-			EventService.QueueMessage(string.Format("*{0}* has earned the achievement: *{1}*", e.Mobile.Name, e.Achievement.Title));
+			EventService.QueueMessage(string.Format("*{0}* has earned the achievement *{1}*", e.Mobile.Name, e.Achievement.Title));
 		}
 
 		private void OnBeginJourney(BeginJourneyArgs e)
