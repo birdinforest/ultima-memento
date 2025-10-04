@@ -233,11 +233,11 @@ namespace Server.SkillHandlers
 							Titles.AwardFame( m_Thief, coffer.CofferGold, true );
 							Titles.AwardKarma( m_Thief, -coffer.CofferGold, true );
 
+							LoggingFunctions.LogStandard( m_Thief, "has stolen " + coffer.CofferGold + " gold from a " + coffer.CofferType + " in " + Server.Misc.Worlds.GetRegionName( m_Thief.Map, m_Thief.Location ) + "" );
+
 							coffer.CofferRobbed = 1;
 							coffer.CofferRobber = m_Thief.Name + " the " + Server.Misc.GetPlayerInfo.GetSkillTitle( m_Thief );
 							coffer.CofferGold = 0;
-
-							LoggingFunctions.LogStandard( m_Thief, "has stolen " + coffer.CofferGold + " gold from a " + coffer.CofferType + " in " + Server.Misc.Worlds.GetRegionName( m_Thief.Map, m_Thief.Location ) + "" );
 						}
 						else
 						{
