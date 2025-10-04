@@ -91,6 +91,7 @@ namespace Server.Gumps
 					m_Vendor.HoldGold += m_VI.Price;
 
 					from.SendLocalizedMessage( 503201 ); // You take the item.
+					CustomEventSink.InvokePlayerVendorSale(from, m_VI.Item, m_Vendor.Name);
 				}
 			}
 			else

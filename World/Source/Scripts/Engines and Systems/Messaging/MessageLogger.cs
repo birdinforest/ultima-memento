@@ -47,7 +47,13 @@ namespace Server.Engines.Messaging
 				CustomEventSink.EventLogged += new EventLoggedHandler(Instance.OnEventLogged);
 				CustomEventSink.BeginJourney += new BeginJourneyHandler(Instance.OnBeginJourney);
 				CustomEventSink.AchievementObtained += new AchievementObtainedHandler(Instance.OnAchievementObtained);
+				CustomEventSink.PlayerVendorSale += new PlayerVendorSaleEventHandler(Instance.OnPlayerVendorSale);
 			}
+		}
+
+		private void OnPlayerVendorSale(PlayerVendorSaleEventArgs e)
+		{
+			EventService.QueueMessage(string.Format("*{0}* has purchased *{1}* from *{2}*", e.Mobile.Name, e.Item.Name, e.VendorName));
 		}
 
 		private void OnAchievementObtained(AchievementObtainedArgs e)

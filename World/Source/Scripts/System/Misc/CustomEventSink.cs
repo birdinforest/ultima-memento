@@ -10,6 +10,7 @@ namespace Server
 	public delegate void EventLoggedHandler(EventLoggedArgs e);
 	public delegate void BeginJourneyHandler(BeginJourneyArgs e);
 	public delegate void AchievementObtainedHandler(AchievementObtainedArgs e);
+	public delegate void PlayerVendorSaleEventHandler(PlayerVendorSaleEventArgs e);
 
 	public class LandChangedArgs
 	{
@@ -87,6 +88,20 @@ namespace Server
 		}
 	}
 
+	public class PlayerVendorSaleEventArgs
+	{
+		public readonly Mobile Mobile;
+		public readonly Item Item;
+		public readonly string VendorName;
+
+		public PlayerVendorSaleEventArgs(Mobile mobile, Item item, string vendorName)
+		{
+			Mobile = mobile;
+			Item = item;
+			VendorName = vendorName;
+		}
+	}
+
 	public class CustomEventSink
 	{
 		public static event LandChangedEventHandler LandChanged;
@@ -95,6 +110,7 @@ namespace Server
 		public static event EventLoggedHandler EventLogged;
 		public static event BeginJourneyHandler BeginJourney;
 		public static event AchievementObtainedHandler AchievementObtained;
+		public static event PlayerVendorSaleEventHandler PlayerVendorSale;
 
 		public static void InvokeLandChanged(LandChangedArgs e)
 		{
@@ -131,6 +147,12 @@ namespace Server
 		{
 			if (AchievementObtained != null)
 				AchievementObtained(new AchievementObtainedArgs(mobile, achievement));
+		}
+
+		public static void InvokePlayerVendorSale(Mobile mobile, Item item, string vendorName)
+		{
+			if (PlayerVendorSale != null)
+				PlayerVendorSale(new PlayerVendorSaleEventArgs(mobile, item, vendorName));
 		}
 	}
 }
