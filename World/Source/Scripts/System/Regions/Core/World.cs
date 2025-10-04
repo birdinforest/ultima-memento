@@ -611,10 +611,10 @@ namespace Server.Misc
 					int nEntry = 1;
 					foreach (string exits in sPublicDoors)
 					{
-						if ( nEntry == 1 ){ mX = Convert.ToInt32(exits); }
-						else if ( nEntry == 2 ){ mY = Convert.ToInt32(exits); }
-						else if ( nEntry == 3 ){ mZ = Convert.ToInt32(exits); }
-						else if ( nEntry == 4 ){ try { mWorld = Map.Parse( exits ); } catch{} if ( mWorld == null ){ mWorld = Map.Sosaria; } }
+						if ( nEntry == 1 ){ mX = Convert.ToInt32(exits); } // 6578
+						else if ( nEntry == 2 ){ mY = Convert.ToInt32(exits); } // 2033
+						else if ( nEntry == 3 ){ mZ = Convert.ToInt32(exits); } // 45
+						else if ( nEntry == 4 ){ try { mWorld = Map.Parse( exits ); } catch{} if ( mWorld == null ){ mWorld = Map.Sosaria; } } // Lodor
 						nEntry++;
 					}
 
@@ -1349,11 +1349,11 @@ namespace Server.Misc
                 }
                 else if (land == Land.SkaraBrae)
                 {
-					tl = Map.Sosaria;
-                    tx = Utility.RandomMinMax( 5856+swrapx, 6164-swrapx );
-                    ty = Utility.RandomMinMax( 2740+swrapy, 3018-swrapy );
+					tl = Map.Lodor;
+                    tx = Utility.RandomMinMax( 6925, 6929 );
+                    ty = Utility.RandomMinMax( 133, 309 );
                     tz = tl.GetAverageZ(tx, ty);
-					if ( scape == "land" ){ failover = new Point3D(5902, 2793, 0); } else { failover = new Point3D(112, 1816, -5); }
+					failover = new Point3D(6925, 218, 0);
                 }
                 else if (land == Land.Lodoria)
                 {
