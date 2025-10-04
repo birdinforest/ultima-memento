@@ -9845,6 +9845,17 @@ namespace Server.Mobiles
 
 			base.OnSectorActivate();
 		}
+		
+		public override void OnPoisoned( Mobile from, Poison poison, Poison oldPoison )
+		{
+			base.OnPoisoned( from, poison, oldPoison );
+
+			if ( Controlled ) return;
+			if ( false == from is PlayerMobile ) return;
+
+			var maxSkill = (1 + poison.Level) * 25; // 0 to 125
+			from.CheckSkillExplicit( SkillName.Poisoning, 0, maxSkill );
+		}
 
 		private bool m_RemoveIfUntamed;
 

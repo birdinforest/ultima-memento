@@ -48,6 +48,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Self-res delay reduced to 10 seconds, down from 30 seconds<br>");
 			builder.Append("- Misc - The tillerman now babbles some dull stories<br>");
 			builder.Append("- Misc - Monster races can now be a Jester<br>");
+			builder.Append("- Misc - Poison damage ticks vs untamed mobs can now grant poisoning skill<br>");
 			builder.Append("- Misc - Hit Point Increase attribute is now uncapped, up from 25<br>");
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 			builder.Append("- Pets - The subdue mechanic is now only required at the start of taming<br>");
