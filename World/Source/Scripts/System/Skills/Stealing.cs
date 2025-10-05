@@ -1,16 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Items;
 using Server.Network;
-using Server.Spells.Seventh;
-using Server.Spells.Fifth;
-using Server.Spells.Necromancy;
-using Server.Spells;
-using Server.Spells.Ninjitsu;
 using Server.Misc;
 
 namespace Server.SkillHandlers
@@ -274,6 +268,12 @@ namespace Server.SkillHandlers
 				else if ( m_Thief.Backpack == null || !m_Thief.Backpack.CheckHold( m_Thief, toSteal, false, true ) )
 				{
 					m_Thief.SendLocalizedMessage( 1048147 ); // Your backpack can't hold anything else.
+				}
+				else if ( toSteal is AddonComponent && ( (AddonComponent) toSteal ).Addon is StealBase)
+				{
+					var comp = (AddonComponent) toSteal;
+					var stealbase = (StealBase)comp.Addon;
+					stealbase.OnComponentUsed( comp, m_Thief );
 				}
 				else if ( si == null && ( toSteal.Parent == null || !toSteal.Movable ) )
 				{

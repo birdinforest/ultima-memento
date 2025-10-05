@@ -58,6 +58,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Provocation is now 1.5x more likely to gain<br>");
 			builder.Append("- Skill - Provocation failure cooldown is now 3s, down from 5s<br>");
 			builder.Append("- Skill - Minimum Provocation skill required for attempts is slightly lower<br>");
+			builder.Append("- Skill - Stealing can now be used directly on pedestals (alternate to double clicking)<br>");
 			builder.Append("- Skill - Poison damage ticks vs untamed mobs can now grant poisoning skill<br>");
 			builder.Append("- Skill - Drinking poison potions can now grant poisoning skill<br>");
 			builder.Append("- Skill - Poisoning skill level required to throw poison potions has been reduced<br>");
