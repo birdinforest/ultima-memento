@@ -55,7 +55,7 @@ namespace Server
 
 	// This setting is the number of days a character must exist before a player can delete them.
 
-		public static double S_DeleteDays = 7.0;
+		public static double S_DeleteDays = 3.0;
 
 	// If true, players can just type in a name and password and it will create an account for them.
 
