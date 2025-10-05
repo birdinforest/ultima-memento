@@ -12014,15 +12014,20 @@ namespace Server
 			PrivateOverheadMessage( MessageType.Label, hue, m_AsciiClickMessage, val, from.NetState );
 		}
 
+		public bool CheckSkillExplicit( SkillName skill, double minSkill, double maxSkill )
+		{
+			if( m_SkillCheckLocationHandler == null )
+				return false;
+			else
+				return m_SkillCheckLocationHandler( this, skill, minSkill, maxSkill );
+		}
+
 		public bool CheckSkill( SkillName skill, double minSkill, double maxSkill )
 		{
 			if ( maxSkill >= 100.0 )
 				maxSkill = 126.0;
 
-			if( m_SkillCheckLocationHandler == null )
-				return false;
-			else
-				return m_SkillCheckLocationHandler( this, skill, minSkill, maxSkill );
+			return CheckSkillExplicit( skill, minSkill, maxSkill );
 		}
 
 		public bool CheckSkill( SkillName skill, double chance )
