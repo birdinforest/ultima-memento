@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Achievements - Permadeath characters now have their own [feats history<br>");
 			builder.Append("- Commands - Add [ReleaseSummons command to release all summons that are controlled by the player<br>");
 			builder.Append("- Commands - Add [Organize command to recursively sort items into separate bags<br>");
 			builder.Append("- Commands - Add [AutoLoot command to execute automatic looting on-demand<br>");
