@@ -63,6 +63,7 @@ namespace Server.Misc
 			builder.Append("- Setting - Change Arty Look (hue/graphic) is now enabled by default<br>");
 			builder.Append("- Setting - Added 'Single Attempt ID' player setting<br>");
 			builder.Append("- Setting - Added 'Colorless Fabric Breakdown' player setting<br>");
+			builder.Append("- Temptations - Add 'Help' button to Temptations gump<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

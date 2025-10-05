@@ -9,6 +9,7 @@ namespace Server.Temptation
 	{
 		private enum ActionButtonType
 		{
+			Help = -1,
 			Close = 0,
 			I_can_take_it,
 			Strongest_Avenger,
@@ -44,6 +45,8 @@ namespace Server.Temptation
 			AddImage(BORDER_WIDTH, BORDER_WIDTH, 7055, Server.Misc.PlayerSettings.GetGumpHue(from));
 			AddAlphaRegion(BORDER_WIDTH, BORDER_WIDTH, GUMP_WIDTH, GUMP_HEIGHT);
 
+			AddButton(GUMP_WIDTH - 65, 10, 3610, 3610, (int)ActionButtonType.Help, GumpButtonType.Reply, 0);
+
 			const int SECTION_LABEL_WIDTH = GUMP_WIDTH - HALF_SECTION_INDENT;
 			var y = HALF_SECTION_INDENT;
 
@@ -60,14 +63,19 @@ namespace Server.Temptation
 
 				x += 5;
 				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, title, HtmlColors.RED);
+				y += 30;
+				x += HALF_SECTION_INDENT;
 			}
 			else
 			{
 				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, title, HtmlColors.RED);
+				y += 30;
+				x += HALF_SECTION_INDENT;
+
+				TextDefinition.AddHtmlText(this, x, y, GUMP_WIDTH - x - 10, 60, "Once you've been tempted, you may never go back. Choose wisely.", HtmlColors.RED);
+				y += 30;
 			}
 
-			x += HALF_SECTION_INDENT;
-			y += 30;
 
 			if (!canEdit && context.Flags == TemptationFlags.None)
 				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, string.Format("{0} was not tempted.", m_Target.Name), HtmlColors.RED);
@@ -91,6 +99,16 @@ namespace Server.Temptation
 
 			switch ((ActionButtonType)info.ButtonID)
 			{
+				case ActionButtonType.Help:
+					var from = sender.Mobile;
+					from.SendGump(new InfoHelpGump(
+						from, "Temptations",
+						"Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.", true,
+						() => Open(m_Target, m_Requester, context)
+						)
+					);
+					return;
+
 				case ActionButtonType.I_can_take_it:
 					context.IsBerserk = !context.IsBerserk;
 					break;
