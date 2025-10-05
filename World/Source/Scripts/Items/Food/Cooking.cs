@@ -27,7 +27,7 @@ namespace Server.Items
 		public Dough() : base( 0x103d )
 		{
 			Stackable = Core.ML;
-			Weight = 1.0;
+			Weight = 0.25;
 		}
 
 		public Dough( Serial serial ) : base( serial )
@@ -38,7 +38,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -46,6 +46,9 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+			if ( version < 1 )
+				Weight = 0.25;
 		}
 
 #if false
