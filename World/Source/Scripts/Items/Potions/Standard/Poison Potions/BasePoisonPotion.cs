@@ -41,20 +41,23 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public void DoPoison( Mobile from )
-		{
-			from.ApplyPoison( from, Poison );
-		}
-
 		public override void Drink( Mobile from )
 		{
-			int skillLevel = 50;
-			if ( this is PoisonPotion ){ skillLevel = 60; }
-			else if ( this is GreaterPoisonPotion ){ skillLevel = 70; }
-			else if ( this is DeadlyPoisonPotion ){ skillLevel = 80; }
-			else if ( this is LethalPoisonPotion ){ skillLevel = 90; }
+			if ( from.Blessed )
+			{
+				from.SendMessage( "You cannot do that while in this state." );
+				return;
+			}
 
-			if ( from.Skills[SkillName.Poisoning].Value >= skillLevel )
+			var skillLevel = Poison.Level * 25; // 0 to 100
+
+			var minSkill = skillLevel - 25;
+			var maxSkill = skillLevel + 25;
+
+			if ( maxSkill <= from.Skills[SkillName.Poisoning].Value && Utility.RandomMinMax(1, 4) == 1 )
+				from.SendMessage( "This poison is trivial to handle." );
+
+			if ( from.CheckSkillExplicit( SkillName.Poisoning, minSkill, maxSkill ) )
 			{
 				if ( !IsChildOf( from.Backpack ) )
 				{
@@ -84,7 +87,8 @@ namespace Server.Items
 			}
 			else
 			{
-				DoPoison( from );
+				from.LocalOverheadMessage( MessageType.Regular, 0x21, false, "You fumble the poison!" );
+				from.ApplyPoison( from, Poison );
 				BasePotion.PlayDrinkEffect( from );
 				this.Consume();
 			}
