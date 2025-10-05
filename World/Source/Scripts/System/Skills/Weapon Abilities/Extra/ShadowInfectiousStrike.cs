@@ -46,7 +46,12 @@ namespace Server.Items
 			if (canpoison)
 			{
 				if ( !CheckMana( attacker, true ) ) return;
-				--weapon.PoisonCharges;
+
+				if ( Utility.Random( 150 ) < attacker.Skills[SkillName.Poisoning].Value )
+					attacker.SendMessage( "Your strike was perfect." );
+				else
+					--weapon.PoisonCharges;
+
 				int maxLevel = attacker.Skills[SkillName.Poisoning].Fixed / 200;
 				if ( maxLevel < 0 ) maxLevel = 0;
 				if ( p.Level > maxLevel ) p = Poison.GetPoison( maxLevel );
