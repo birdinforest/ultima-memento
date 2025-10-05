@@ -49,9 +49,6 @@ namespace Server.Misc
 			builder.Append("- Misc - Self-res delay reduced to 10 seconds, down from 30 seconds<br>");
 			builder.Append("- Misc - The tillerman now babbles some dull stories<br>");
 			builder.Append("- Misc - Monster races can now be a Jester<br>");
-			builder.Append("- Misc - Poison damage ticks vs untamed mobs can now grant poisoning skill<br>");
-			builder.Append("- Misc - Drinking poison potions can now grant poisoning skill<br>");
-			builder.Append("- Misc - Poisoning skill level required to throw poison potions has been reduced<br>");
 			builder.Append("- Misc - Hit Point Increase attribute is now uncapped, up from 25<br>");
 			builder.Append("       - Note: Max Health from stats + equipment is still 325<br>");
 			builder.Append("- Pets - The subdue mechanic is now only required at the start of taming<br>");
@@ -60,6 +57,9 @@ namespace Server.Misc
 			builder.Append("- Skill - Provocation is now 1.5x more likely to gain<br>");
 			builder.Append("- Skill - Provocation failure cooldown is now 3s, down from 5s<br>");
 			builder.Append("- Skill - Minimum Provocation skill required for attempts is slightly lower<br>");
+			builder.Append("- Skill - Poison damage ticks vs untamed mobs can now grant poisoning skill<br>");
+			builder.Append("- Skill - Drinking poison potions can now grant poisoning skill<br>");
+			builder.Append("- Skill - Poisoning skill level required to throw poison potions has been reduced<br>");
 			builder.Append("- Skill - Poisoning skill now reduces the chance of consuming poison charges for weapon abilities<br>");
 			builder.Append("- Setting - Change Arty Look (hue/graphic) is now enabled by default<br>");
 			builder.Append("- Setting - Added 'Single Attempt ID' player setting<br>");
