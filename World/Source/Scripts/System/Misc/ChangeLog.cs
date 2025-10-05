@@ -65,6 +65,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Achievements - Fix issue where points were being saved per character instead of per account<br>");
 			builder.Append("- Commands - Fix Achievement command and aliases -- [feats / [achievement / [achievements<br>");
 			builder.Append("- Item - Pants and Leg Armor can now both give resistances<br>");
 			builder.Append("- Item - Bag of holding message now shows seconds when < 1 minute remains<br>");
