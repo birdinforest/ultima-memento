@@ -513,6 +513,11 @@ namespace Server.Gumps
 
 		public void EnterLand( int page, Mobile m )
 		{
+			m.CloseGump( typeof( GypsyTarotGump ) );
+			m.CloseGump( typeof( WelcomeGump ) );
+			m.CloseGump( typeof( RacePotions.RacePotionsGump ) );
+			m.CloseGump( typeof( TemptationGump ) );
+
 			Point3D loc = new Point3D(2999, 1030, 0);
 			Map map = Map.Sosaria;
 
@@ -661,7 +666,8 @@ namespace Server.Gumps
 
 		public override void OnResponse( NetState state, RelayInfo info )
 		{
-			Mobile from = state.Mobile;
+			PlayerMobile from = state.Mobile as PlayerMobile;
+			if (from == null) return;
 
 			from.CloseGump( typeof( GypsyTarotGump ) );
 			from.CloseGump( typeof( WelcomeGump ) );
@@ -684,7 +690,7 @@ namespace Server.Gumps
 					return;
 				}
 
-				EnterLand( page, from );
+				from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
 			}
 			else
 			{

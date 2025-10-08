@@ -9,6 +9,8 @@ namespace Server.Temptation
 	{
 		private enum ActionButtonType
 		{
+			Decline = -3,
+			Accept = -2,
 			Help = -1,
 			Close = 0,
 			I_can_take_it,
@@ -28,14 +30,24 @@ namespace Server.Temptation
 
 		private readonly PlayerMobile m_Requester;
 		private readonly PlayerMobile m_Target;
+		private readonly PlayerContext m_Context;
+		private readonly Action m_OnAccept;
+		private readonly Action m_OnDecline;
 
-		public TemptationGump(PlayerMobile from, PlayerContext context, PlayerMobile requester) : base(25, 25)
+		public TemptationGump(PlayerMobile from, PlayerContext context, PlayerMobile requester) : this(from, context, requester, null, null)
+		{
+		}
+
+		public TemptationGump(PlayerMobile from, PlayerContext context, PlayerMobile requester, Action onAccept, Action onDecline) : base(25, 25)
 		{
 			from.CloseGump(typeof(TemptationGump));
 			requester.CloseGump(typeof(TemptationGump));
 
 			m_Target = from;
 			m_Requester = requester;
+			m_Context = context;
+			m_OnAccept = onAccept;
+			m_OnDecline = onDecline;
 
 			// Add the image multiple times to decrease the transparency
 			AddImage(BORDER_WIDTH, BORDER_WIDTH, 7055, 2999);
@@ -45,7 +57,7 @@ namespace Server.Temptation
 			AddImage(BORDER_WIDTH, BORDER_WIDTH, 7055, Server.Misc.PlayerSettings.GetGumpHue(from));
 			AddAlphaRegion(BORDER_WIDTH, BORDER_WIDTH, GUMP_WIDTH, GUMP_HEIGHT);
 
-			AddButton(GUMP_WIDTH - 65, 10, 3610, 3610, (int)ActionButtonType.Help, GumpButtonType.Reply, 0);
+			AddButton(GUMP_WIDTH - 69, 10, 3610, 3610, (int)ActionButtonType.Help, GumpButtonType.Reply, 0);
 
 			const int SECTION_LABEL_WIDTH = GUMP_WIDTH - HALF_SECTION_INDENT;
 			var y = HALF_SECTION_INDENT;
@@ -83,11 +95,25 @@ namespace Server.Temptation
 			{
 				AddOptions(x, ref y, canEdit, context);
 			}
-		}
 
-		public static void Open(PlayerMobile target, PlayerMobile requester, PlayerContext context)
+			if (canEdit)
 		{
-			requester.SendGump(new TemptationGump(target, context, requester));
+				const int CANCEL_BUTTON = 0xFB4;
+				const int OK_BUTTON = 0xFB7;
+
+				y = GUMP_HEIGHT - 34;
+
+				x = GUMP_WIDTH - 330;
+				AddButton(x, y, CANCEL_BUTTON, CANCEL_BUTTON, (int)ActionButtonType.Decline, GumpButtonType.Reply, 0);
+				TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, "No thank you", HtmlColors.RED);
+
+				if (m_Context.Flags != TemptationFlags.None)
+				{
+					x = GUMP_WIDTH - 163;
+					AddButton(x, y, OK_BUTTON, OK_BUTTON, (int)ActionButtonType.Accept, GumpButtonType.Reply, 0);
+					TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, "I've been Tempted!", HtmlColors.RED);
+				}
+			}
 		}
 
 		public override void OnResponse(NetState sender, RelayInfo info)
@@ -95,34 +121,54 @@ namespace Server.Temptation
 			if (info.ButtonID == 0) return;
 
 			// Make sure we create a context if necessary
-			var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
-
 			switch ((ActionButtonType)info.ButtonID)
 			{
+				case ActionButtonType.Decline:
+					{
+			var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
+						context.Flags = TemptationFlags.None;
+						TemptationEngine.Instance.ApplyContext(m_Target, context);
+						if (m_OnDecline != null)
+							m_OnDecline();
+						return;
+					}
+
+				case ActionButtonType.Accept:
+			{
+						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
+						context.Flags = m_Context.Flags;
+						TemptationEngine.Instance.ApplyContext(m_Target, context);
+						if (m_OnAccept != null)
+							m_OnAccept();
+						return;
+					}
+
 				case ActionButtonType.Help:
+					{
 					var from = sender.Mobile;
 					from.SendGump(new InfoHelpGump(
 						from, "Temptations",
-						"Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.", true,
-						() => Open(m_Target, m_Requester, context)
+							"Command: [Temptations<br><br>Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.", true,
+							() => m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline))
 						)
 					);
 					return;
+					}
 
 				case ActionButtonType.I_can_take_it:
-					context.IsBerserk = !context.IsBerserk;
+					m_Context.IsBerserk = !m_Context.IsBerserk;
 					break;
 
 				case ActionButtonType.Deathwish:
-					context.HasPermanentDeath = !context.HasPermanentDeath;
+					m_Context.HasPermanentDeath = !m_Context.HasPermanentDeath;
 					break;
 
 				case ActionButtonType.Strongest_Avenger:
-					context.IncreaseMobDifficulty = !context.IncreaseMobDifficulty;
+					m_Context.IncreaseMobDifficulty = !m_Context.IncreaseMobDifficulty;
 					break;
 
 				case ActionButtonType.Puzzle_master:
-					context.CanUsePuzzleboxes = !context.CanUsePuzzleboxes;
+					m_Context.CanUsePuzzleboxes = !m_Context.CanUsePuzzleboxes;
 					break;
 
 				case ActionButtonType.Famine:
@@ -135,9 +181,7 @@ namespace Server.Temptation
 					return;
 			}
 
-			TemptationEngine.Instance.ApplyContext(m_Target, context);
-
-			Open(m_Target, m_Requester, context);
+			m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline));
 		}
 
 		private void AddOption(int x, ref int y, ActionButtonType actionButtonType, bool canEdit, PlayerContext context)
