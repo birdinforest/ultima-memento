@@ -1,14 +1,6 @@
-using System;
-using Server;
-using System.Collections;
-using System.Collections.Generic;
-using Server.Items;
 using Server.Misc;
-using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
 using Server.Mobiles;
-using Server.Accounting;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -39,22 +31,10 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			if ( from is PlayerMobile )
+			if ( from is PlayerMobile && owner == null )
 			{
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SummonItems && item.Name == this.Name && item != this )
-				{
-					if ( ((SummonItems)item).owner == from )
-						targets.Add( item );
-				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
-
-				if ( this.owner == null ){ LoggingFunctions.LogGenericQuest( from, "has obtained the " + this.Name ); }
+				WorldUtilities.DeleteAllItems<SummonItems>(item => item.owner == from && item != this && item.Name == Name);
+				LoggingFunctions.LogGenericQuest( from, "has obtained the " + this.Name );
 				this.owner = from;
 			}
 
