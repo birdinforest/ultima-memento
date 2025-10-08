@@ -164,7 +164,7 @@ namespace Server.Items
 				{
 					if (maxSkill < from.Skills[SkillName.Lumberjacking].Value) break; // Short-circuit if they exceed the max skill
 
-					if (!from.CheckTargetSkill(SkillName.Lumberjacking, targeted, minSkill, maxSkill))
+					if (!from.CheckTargetSkillExplicit(SkillName.Lumberjacking, targeted, minSkill, maxSkill))
 						lost++;
 
 					remaining--;

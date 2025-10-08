@@ -99,7 +99,7 @@ namespace Server.Items
 			{
 				if (maxSkill < from.Skills[SkillName.Mining].Value) break; // Short-circuit if they exceed the max skill
 
-				if (!from.CheckTargetSkill(SkillName.Mining, targeted, minSkill, maxSkill))
+				if (!from.CheckTargetSkillExplicit(SkillName.Mining, targeted, minSkill, maxSkill))
 					lost++;
 
 				remaining--;
