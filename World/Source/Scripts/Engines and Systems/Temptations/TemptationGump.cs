@@ -97,7 +97,7 @@ namespace Server.Temptation
 			}
 
 			if (canEdit)
-		{
+			{
 				const int CANCEL_BUTTON = 0xFB4;
 				const int OK_BUTTON = 0xFB7;
 
@@ -125,7 +125,7 @@ namespace Server.Temptation
 			{
 				case ActionButtonType.Decline:
 					{
-			var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
+						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
 						context.Flags = TemptationFlags.None;
 						TemptationEngine.Instance.ApplyContext(m_Target, context);
 						if (m_OnDecline != null)
@@ -134,7 +134,7 @@ namespace Server.Temptation
 					}
 
 				case ActionButtonType.Accept:
-			{
+					{
 						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
 						context.Flags = m_Context.Flags;
 						TemptationEngine.Instance.ApplyContext(m_Target, context);
@@ -145,14 +145,14 @@ namespace Server.Temptation
 
 				case ActionButtonType.Help:
 					{
-					var from = sender.Mobile;
-					from.SendGump(new InfoHelpGump(
-						from, "Temptations",
+						var from = sender.Mobile;
+						from.SendGump(new InfoHelpGump(
+							from, "Temptations",
 							"Command: [Temptations<br><br>Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.", true,
 							() => m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline))
-						)
-					);
-					return;
+							)
+						);
+						return;
 					}
 
 				case ActionButtonType.I_can_take_it:
@@ -223,8 +223,8 @@ namespace Server.Temptation
 			switch (actionButtonType)
 			{
 				case ActionButtonType.I_can_take_it:
-					return "+ You do 10% increased damage"
-					+ "<br>x You take 20% increased damage";
+					return "+ You do 10% more damage"
+					+ "<br>x You take 20% more damage";
 
 				case ActionButtonType.Strongest_Avenger:
 					return "+ You learn how to wear pants"
