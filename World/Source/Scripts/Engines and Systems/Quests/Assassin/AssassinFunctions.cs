@@ -55,7 +55,7 @@ namespace Server.Misc
 					m.PrivateOverheadMessage(MessageType.Regular, 0x22, false, "Your victim has been assassinated!", m.NetState);
 					victim = victim.Replace("#0#", "#1#");
 					m.SendSound( 0x3D );
-					LoggingFunctions.LogQuestKill( m, "m", target );
+					LoggingFunctions.LogQuestKill( m, "assassin", target );
 					PlayerSettings.SetQuestInfo( m, "AssassinQuest", victim );
 				}
 			}

@@ -987,7 +987,7 @@ namespace Server.Misc
 						case 3: sLoot = "has completed a bounty on";	break;
 					}
 				}
-				if ( sBox == "sea" )
+				else if ( sBox == "sea" )
 				{
 					sWho = " on the high seas";
 					switch( Utility.Random( 4 ) )
@@ -998,7 +998,7 @@ namespace Server.Misc
 						case 3: sLoot = "has completed a bounty on";	break;
 					}
 				}
-				if ( sBox == "assassin" )
+				else if ( sBox == "assassin" )
 				{
 					sWho = " for the guild";
 					switch( Utility.Random( 4 ) )

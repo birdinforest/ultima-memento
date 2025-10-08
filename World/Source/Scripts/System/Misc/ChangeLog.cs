@@ -87,6 +87,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Hoard Minion no longer freezes when the Player has a combatant<br>");
 			builder.Append("- Pets - Dead pets no longer abandon their owners who log out for 24hours<br>");
 			builder.Append("- Quest - Tribute quest items no longer change ownership when lifted<br>");
+			builder.Append("- Quest - Assassin quest completion is now properly logs<br>");
 			builder.Append("- Race - Alien character type behaviors now honor the S_AllowAlienChoice setting<br>");
 			builder.Append("- Skill - Provocation no longer sets cooldown when failing to select a 2nd target<br>");
 			builder.Append("- Spell - Elemental soul now produces a soul orb<br>");
