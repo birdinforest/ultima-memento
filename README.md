@@ -4,6 +4,25 @@
   - We have focused on defining a power curve so Players are given opportunities to enjoy the journey
   - Some pre-requisites have been added to make it more about the journey than the destination
 
+# How to play
+## Client info
+
+- Find the [latest Release](https://github.com/Jascen/ultima-memento/releases/latest)
+- Go to the `Client files` section
+- Download the latest `Client`
+- Consider downloading the [Player Guide](https://drive.google.com/file/d/1NDA57M_nmgUa9PaDd4yhte5krRAF4EWE/view?usp=sharing)
+
+<details>
+  <summary>Running locally</summary>
+
+  - Download the [latest Release](https://github.com/Jascen/ultima-memento/releases/latest)
+  - Compile the World.exe:
+    - Navigate to `World\Source\Tools`
+    - Execute `compile-world-win.bat`
+    - Execute `World\World.exe`
+
+</details>
+
 # What are some features `Memento` added?
 <details>
   <summary>Achievement system</summary>
@@ -211,9 +230,3 @@
   ![Vendor safeguard disable demo](./World/Documentation/Showcase/command-vendorgold.gif)
   
 </details>
-
-# Running locally
-Compile the World.exe:
-- Navigate to `World\Source\Tools`
-- Execute `compile-world-win.bat`
-- Execute `World\World.exe`
