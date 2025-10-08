@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Item - Mallet Stake single and double click actions have been swapped<br>");
 			builder.Append("- Item - The resource of an Artefact may now transmuted up to one time<br>");
 			builder.Append("- Item - Dough now weighs 0.25, down from 1.0<br>");
+			builder.Append("- Item - Beeswax now costs 200, down from 1000<br>");
 			builder.Append("- Misc - Double damage from Puzzle chest failures<br>");
 			builder.Append("- Misc - Add Remove Trap checks against Puzzle chest failures<br>");
 			builder.Append("- Misc - Risky refactor to Player skill caps<br>");
