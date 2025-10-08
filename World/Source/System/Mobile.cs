@@ -12038,15 +12038,20 @@ namespace Server
 				return m_SkillCheckDirectLocationHandler( this, skill, chance );
 		}
 
-		public bool CheckTargetSkill( SkillName skill, object target, double minSkill, double maxSkill )
+		public bool CheckTargetSkillExplicit( SkillName skill, object target, double minSkill, double maxSkill )
 		{
-			if ( maxSkill >= 100.0 )
-				maxSkill = 126.0;
-
 			if( m_SkillCheckTargetHandler == null )
 				return false;
 			else
 				return m_SkillCheckTargetHandler( this, skill, target, minSkill, maxSkill );
+		}
+
+		public bool CheckTargetSkill( SkillName skill, object target, double minSkill, double maxSkill )
+		{
+			if ( maxSkill >= 100.0 )
+				maxSkill = 126.0;
+			
+			return CheckTargetSkillExplicit( skill, target, minSkill, maxSkill );
 		}
 
 		public bool CheckTargetSkill( SkillName skill, object target, double chance )
