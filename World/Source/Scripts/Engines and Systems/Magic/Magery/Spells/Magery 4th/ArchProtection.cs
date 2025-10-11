@@ -77,32 +77,6 @@ namespace Server.Spells.Fourth
 			FinishSequence();
 		}
 
-		private class InternalTimer : Timer
-		{
-			private Mobile m_Owner;
-			private int m_Val;
-
-			public InternalTimer( Mobile target, Mobile caster, int val ) : base( TimeSpan.FromSeconds( 0 ) )
-			{
-				double time = Spell.ItemSkillValue( caster, SkillName.Magery, false ) * 1.2;
-				if ( time > 144 )
-					time = 144;
-				Delay = TimeSpan.FromSeconds( time );
-				Priority = TimerPriority.OneSecond;
-
-				m_Owner = target;
-				m_Val = val;
-			}
-
-			protected override void OnTick()
-			{
-				m_Owner.EndAction( typeof( ArchProtectionSpell ) );
-				m_Owner.VirtualArmorMod -= m_Val;
-				if ( m_Owner.VirtualArmorMod < 0 )
-					m_Owner.VirtualArmorMod = 0;
-			}
-		}
-
 		private class InternalTarget : Target
 		{
 			private ArchProtectionSpell m_Owner;

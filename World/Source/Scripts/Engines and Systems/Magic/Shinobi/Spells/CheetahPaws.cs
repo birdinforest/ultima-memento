@@ -86,26 +86,5 @@ namespace Server.Spells.Shinobi
 
             FinishSequence();
 		}
-
-		private class InternalTimer : Timer
-		{
-			private Mobile m_m;
-			private DateTime m_Expire;
-
-			public InternalTimer( Mobile Caster, TimeSpan duration ) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 0.1 ) )
-			{
-				m_m = Caster;
-				m_Expire = DateTime.Now + duration;
-			}
-
-			protected override void OnTick()
-			{
-				if ( DateTime.Now >= m_Expire )
-				{
-					CheetahPaws.RemoveEffect( m_m );
-					Stop();
-				}
-			}
-		}
 	}
 }

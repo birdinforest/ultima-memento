@@ -36,8 +36,8 @@ namespace Server.Spells.Elementalism
 			 * a decreased "magic resistance" skill value by -35 + (Inscription/20),
 			 * and a slower casting speed modifier (technically, a negative "faster cast speed") of 2 points.
 			 * The protection spell has an indefinite duration, becoming active when cast, and deactivated when re-cast.
-			 * Reactive Armor, Protection, and Magic Reflection will stay on—even after logging out,
-			 * even after dying—until you “turn them off” by casting them again.
+			 * Reactive Armor, Protection, and Magic Reflection will stay onï¿½even after logging out,
+			 * even after dyingï¿½until you ï¿½turn them offï¿½ by casting them again.
 			 */
 
 			object[] mods = (object[])m_Table[target];
@@ -113,30 +113,6 @@ namespace Server.Spells.Elementalism
 				Toggle( Caster, Caster );
 
 			FinishSequence();
-		}
-
-		private class InternalTimer : Timer
-		{
-			private Mobile m_Caster;
-
-			public InternalTimer( Mobile caster ) : base( TimeSpan.FromSeconds( 0 ) )
-			{
-				double val = caster.Skills[SkillName.Elementalism].Value * 2.0;
-				if ( val < 15 )
-					val = 15;
-				else if ( val > 240 )
-					val = 240;
-
-				m_Caster = caster;
-				Delay = TimeSpan.FromSeconds( val );
-				Priority = TimerPriority.OneSecond;
-			}
-
-			protected override void OnTick()
-			{
-				Elemental_Protection_Spell.Registry.Remove( m_Caster );
-				DefensiveSpell.Nullify( m_Caster );
-			}
 		}
 	}
 }
