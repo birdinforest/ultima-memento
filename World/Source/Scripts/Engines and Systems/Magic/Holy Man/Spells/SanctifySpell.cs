@@ -62,8 +62,6 @@ namespace Server.Spells.HolyMan
 
 		public override void OnCast()
 		{
-            TransformationSpellHelper.OnCast(Caster, this);
-
             if ( CheckSequence() )
 			{
                 RemoveEffect(Caster);
