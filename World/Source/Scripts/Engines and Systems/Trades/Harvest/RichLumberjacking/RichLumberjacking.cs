@@ -62,8 +62,8 @@ namespace Server.Engines.Harvest
 				EffectActions = new int[]{ 13 },
 				EffectSounds = new int[]{ 0x13E },
 				EffectCounts = new int[]{ 1 },
-				EffectDelay = TimeSpan.FromSeconds( 1.6 ),
-				EffectSoundDelay = TimeSpan.FromSeconds( 0.9 ),
+				EffectDelay = TimeSpan.FromSeconds( 0.5 ),
+				EffectSoundDelay = TimeSpan.FromSeconds( 0.5 ),
 
 				NoResourcesMessage = 500493, // There's not enough wood here to harvest.
 				FailMessage = 500495, // You hack at the tree for a while, but fail to produce any useable wood.

@@ -66,8 +66,8 @@ namespace Server.Engines.Harvest
 			lumber.EffectActions = new int[]{ 13 };
 			lumber.EffectSounds = new int[]{ 0x13E };
 			lumber.EffectCounts = (Core.AOS ? new int[]{ 1 } : new int[]{ 1, 2, 2, 2, 3 });
-			lumber.EffectDelay = TimeSpan.FromSeconds( 1.6 );
-			lumber.EffectSoundDelay = TimeSpan.FromSeconds( 0.9 );
+			lumber.EffectDelay = TimeSpan.FromSeconds( 0.5 );
+			lumber.EffectSoundDelay = TimeSpan.FromSeconds( 0.5 );
 
 			lumber.NoResourcesMessage = 500493; // There's not enough wood here to harvest.
 			lumber.FailMessage = 500495; // You hack at the tree for a while, but fail to produce any useable wood.

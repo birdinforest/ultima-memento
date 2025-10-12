@@ -32,6 +32,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Harpoon rope can now be crafted in a batch<br>");
 			builder.Append("- Craft - Librarian Set now requires 3 leather and 2 blank scrolls<br>");
 			builder.Append("- Gather - Removed several unreachable 'Glistening Ore Vein'<br>");
+			builder.Append("- Gather - Lumberjacking animation reduced to 0.5s, down from 1.6s<br>");
 			builder.Append("- Gump - Changed icon and added tooltip indicating certain spells are not craftable<br>");
 			builder.Append("- Gump - Risky refactor to Help gump plumbing<br>");
 			builder.Append("- Gump - Adjusted Toolbars page on Help gump to narrow to relevant toolbars<br>");
