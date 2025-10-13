@@ -64,7 +64,7 @@ namespace Server.Spells.Shinobi
             {
                 Caster.SendMessage( "You cannot use this ability while on a mount!" );
             }
-			else
+			else if ( CheckSequence( ) )
 			{
 				if ( !Caster.CanBeginAction( typeof( CheetahPaws ) ) )
 				{

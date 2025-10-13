@@ -180,6 +180,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Add message when Enchant spell fizzles due to having an orb<br>");
 			builder.Append("- Spell - Wrath no longer does doubles damage to one target<br>");
 			builder.Append("- Spell - Restoration now properly restores mana and stamina<br>");
+			builder.Append("- Spell - Cheetah Paws now requires mana to cast<br>");
 			builder.Append("- Spell - Death Knight spells no longer get double benefit from LMC<br>");
 			builder.Append("- Spell - Holy Man spells no longer get double benefit from LMC<br>");
 			builder.Append("- Spell - Jedi spells no longer get double benefit from LMC<br>");
