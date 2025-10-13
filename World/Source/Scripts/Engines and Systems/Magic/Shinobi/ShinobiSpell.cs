@@ -84,12 +84,7 @@ namespace Server.Spells.Shinobi
 
 			Caster.TithingPoints -= requiredTithing;
 
-			if ( !base.CheckFizzle() )
-				return false;
-
-			Caster.Mana -= mana;
-
-			return true;
+			return base.CheckFizzle();
 		}
 
 		public override void SayMantra()
@@ -115,7 +110,7 @@ namespace Server.Spells.Shinobi
 
 		public override int GetMana()
 		{
-			return ScaleMana( RequiredMana );
+			return RequiredMana;
 		}
 
 		public override void OnDisturb( DisturbType type, bool message )
