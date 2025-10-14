@@ -9,6 +9,7 @@ using Server.Regions;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Commands;
+using Server.Multis;
 
 namespace Server.Items
 {
@@ -177,13 +178,27 @@ namespace Server.Items
 					m.Hidden = true;
 				}
 
-				if ( Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) == "the Basement" && m.Region is PublicRegion && Server.Items.BasementDoor.HatchAtOtherEnd( m ) )
+				if ( Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) == "the Basement" && m.Region is PublicRegion )
 				{
-					((PlayerMobile)m).CharacterPublicDoor = null;
-					Point3D loc = new Point3D( mX, mY, mZ );
-					PublicTeleport( m, loc, mWorld, mZone, "exit" );
+					BasementDoor door = Server.Items.BasementDoor.HatchAtOtherEnd( m );
+					if (door != null)
+					{
+						((PlayerMobile)m).CharacterPublicDoor = null;
+						Point3D loc = new Point3D( mX, mY, mZ );
+						PublicTeleport( m, loc, mWorld, mZone, "exit" );
+
+						// Add a slight delay to prevent the player from falling through the floor of their house
+						if ( !m.CantWalk && BaseHouse.FindHouseAt(door) != null)
+						{
+							m.CantWalk = true;
+							Timer.DelayCall( TimeSpan.FromSeconds( 0.5 ), () => m.CantWalk = false );
+						}
+
+						return;
+					}
 				}
-				else if ( Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) != "the Basement" && m.Region is PublicRegion && sPublicDoor != null )
+
+				if ( Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) != "the Basement" && m.Region is PublicRegion && sPublicDoor != null )
 				{
 					((PlayerMobile)m).CharacterPublicDoor = null;
 					Point3D loc = new Point3D( mX, mY, mZ );

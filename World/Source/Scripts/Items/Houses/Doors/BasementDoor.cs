@@ -140,7 +140,7 @@ namespace Server.Items
 			return (house != null && house.HasSecureAccess(m, m_Level));
 		}
 
-		public static bool HatchAtOtherEnd( Mobile m )
+		public static BasementDoor HatchAtOtherEnd( Mobile m )
 		{
 			if ( m is PlayerMobile )
 			{
@@ -171,7 +171,7 @@ namespace Server.Items
 				Point3D loc = new Point3D( mX, mY, mZ );
 
 				if ( mWorld == null )
-					return false;
+					return null;
 
 				IPooledEnumerable eable = mWorld.GetItemsInRange( loc, 4 );
 
@@ -179,14 +179,14 @@ namespace Server.Items
 				{
 					if ( item is BasementDoor )
 					{
-						eable.Free(); return true;
+						eable.Free(); return (BasementDoor)item;
 					}
 				}
 
 				eable.Free();
-				return false;
+				return null;
 			}
-			return false;
+			return null;
 		}
 
 		public BasementDoor( Serial serial ) : base( serial )
