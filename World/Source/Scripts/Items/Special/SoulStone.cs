@@ -132,16 +132,16 @@ namespace Server.Items
 			base.GetProperties( list );
 			
 			if ( !string.IsNullOrWhiteSpace(Account) )
-				list.Add( 1070722, "[Account Bound]" );
-			else if ( IsEmpty )
-				list.Add( 1070722, "[Binds to account when used]" );
-
-			if ( !IsEmpty )
 			{
+				list.Add( 1070722, "[Account Bound]" );
 				string name = !string.IsNullOrWhiteSpace(LastUserName) ? LastUserName : string.Format( "#{0}", 1074235 ); // Unknown
 				list.Add( 1041602, "{0}", name ); // Owner: ~1_val~
-				list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
+
+				if ( !IsEmpty )
+					list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
 			}
+			else if ( IsEmpty )
+				list.Add( 1070722, "[Binds to account when used]" );
 		}
 
 		private static bool CheckCombat( Mobile m, TimeSpan time )

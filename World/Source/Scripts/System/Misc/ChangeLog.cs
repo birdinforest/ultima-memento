@@ -166,6 +166,7 @@ namespace Server.Misc
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
 			builder.Append("- Item - All spell scrolls now properly indicate their type<br>");
 			builder.Append("- Item - Warfork and Royal Sword can now be sold to vendors<br>");
+			builder.Append("- Item - Soulstone now displays the last user, regardless if it has skills<br>");
 			builder.Append("- Misc - More Fast-player changes<br>");
 			builder.Append("- Misc - Remove bad images from manage Player Vendor gump<br>");
 			builder.Append("- Misc - Traps are now being checked for players with >= 5.0 Remove Trap<br>");
