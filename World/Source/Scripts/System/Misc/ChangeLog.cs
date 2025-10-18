@@ -177,6 +177,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix crash when house no longer has an account owning it<br>");
 			builder.Append("- Misc - The book of truth can now be rumored about<br>");
 			builder.Append("- Misc - Add delay to in-house basement doors to prevent falling through the floor<br>");
+			builder.Append("- Misc - Fix crash when trying to secure an item<br>");
 			builder.Append("- Pets - Experience bonus from Herding is now working<br>");
 			builder.Append("- Quest - Serpent of Balance quest should be completable again<br>");
 			builder.Append("- Skill - Searching cooldown is now set after targeting instead of immediately<br>");
