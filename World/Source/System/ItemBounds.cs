@@ -25,6 +25,7 @@ namespace Server
 {
 	public static class ItemBounds
 	{
+		private const int MAX_ITEM_ID = 0x10000; // 65536
 		private static Rectangle2D[] m_Bounds;
 
 		public static Rectangle2D[] Table
@@ -43,10 +44,12 @@ namespace Server
 				{
 					BinaryReader bin = new BinaryReader( fs );
 
-					m_Bounds = new Rectangle2D[0x4000];
+					m_Bounds = new Rectangle2D[MAX_ITEM_ID];
 
-					for ( int i = 0; i < 0x4000; ++i )
+					for ( int i = 0; i < MAX_ITEM_ID; ++i )
 					{
+						if (bin.BaseStream.Length <= bin.BaseStream.Position) break;
+
 						int xMin = bin.ReadInt16();
 						int yMin = bin.ReadInt16();
 						int xMax = bin.ReadInt16();
@@ -62,7 +65,7 @@ namespace Server
 			{
 				Console.WriteLine( "Warning: Wrong Game Version!" );
 
-				m_Bounds = new Rectangle2D[0x4000];
+				m_Bounds = new Rectangle2D[MAX_ITEM_ID];
 			}
 		}
 	}
