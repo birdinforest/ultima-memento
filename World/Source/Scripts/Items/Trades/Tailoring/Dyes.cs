@@ -47,16 +47,16 @@ namespace Server.Items
 
 			private class InternalPicker : HuePicker
 			{
-				private DyeTub m_Tub;
+				private readonly Action<int> m_SetHue;
 
-				public InternalPicker( DyeTub tub ) : base( tub.ItemID )
+				public InternalPicker( Action<int> setHue ) : base( 0x4C5A )
 				{
-					m_Tub = tub;
+					m_SetHue = setHue;
 				}
 
 				public override void OnResponse( int hue )
 				{
-					m_Tub.DyedHue = hue;
+					m_SetHue(hue);
 				}
 			}
 
@@ -74,13 +74,26 @@ namespace Server.Items
 					if ( tub.Redyable )
 					{
 						if ( tub.CustomHuePicker == null )
-							from.SendHuePicker( new InternalPicker( tub ) );
+							from.SendHuePicker( new InternalPicker( hue => tub.DyedHue = hue ) );
 						else
 							from.SendGump( new CustomHuePickerGump( from, tub.CustomHuePicker, new CustomHuePickerCallback( SetTubHue ), tub ) );
 					}
 					else if ( tub is BlackDyeTub )
 					{
 						from.SendLocalizedMessage( 1010092 ); // You can not use this on a black dye tub.
+					}
+					else
+					{
+						from.SendMessage( "That dye tub may not be redyed." );
+					}
+				}
+				else if ( targeted is DyeTubTempBase )
+				{
+					DyeTubTempBase tub = (DyeTubTempBase) targeted;
+
+					if ( !tub.HasDye )
+					{
+						from.SendHuePicker( new InternalPicker( hue => tub.ApplyHue( from, hue, 0x23E ) ) );
 					}
 					else
 					{

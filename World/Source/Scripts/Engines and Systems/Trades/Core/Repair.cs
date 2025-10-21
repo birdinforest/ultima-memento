@@ -165,6 +165,13 @@ namespace Server.Engines.Craft
 						}
 						else
 						{
+							if (!usingDeed)
+							{
+								var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+								if (gloves != null)
+									gloves.ConsumeCharge(from, m_CraftSystem);
+							}
+
 							if ( damage > (int)(skillValue * 0.3) )
 								damage = (int)(skillValue * 0.3);
 
@@ -225,6 +232,13 @@ namespace Server.Engines.Craft
 					}
 					else
 					{
+						if (!usingDeed)
+						{
+							var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+							if (gloves != null)
+								gloves.ConsumeCharge(from, m_CraftSystem);
+						}
+
 						if ( CheckWeaken( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
 						{
 							weapon.MaxHitPoints -= toWeaken;
@@ -270,6 +284,13 @@ namespace Server.Engines.Craft
 					}
 					else
 					{
+						if (!usingDeed)
+						{
+							var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+							if (gloves != null)
+								gloves.ConsumeCharge(from, m_CraftSystem);
+						}
+
 						if ( CheckWeaken( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
 						{
 							armor.MaxHitPoints -= toWeaken;
@@ -315,6 +336,13 @@ namespace Server.Engines.Craft
 					}
 					else
 					{
+						if (!usingDeed)
+						{
+							var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+							if (gloves != null)
+								gloves.ConsumeCharge(from, m_CraftSystem);
+						}
+
 						if ( CheckWeaken( from, skill, clothing.HitPoints, clothing.MaxHitPoints ) )
 						{
 							clothing.MaxHitPoints -= toWeaken;
@@ -342,6 +370,13 @@ namespace Server.Engines.Craft
 
 					if( from.Skills[skill].Value >= 50.0 )
 					{
+						if (!usingDeed)
+						{
+							var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+							if (gloves != null)
+								gloves.ConsumeCharge(from, m_CraftSystem);
+						}
+
 						((BlankScroll)targeted).Consume( 1 );
 						RepairDeed deed = new RepairDeed( RepairDeed.GetTypeFor( m_CraftSystem ), from.Skills[skill].Value, from );
 						BaseContainer.PutStuffInContainer( from, 2, deed );

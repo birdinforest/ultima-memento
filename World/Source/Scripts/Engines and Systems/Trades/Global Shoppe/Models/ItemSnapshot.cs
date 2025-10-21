@@ -4,5 +4,6 @@
 	{
 		public int ItemID { get; set; }
 		public string Name { get; set; }
+		public string DefaultDescription { get; set; }
 	}
 }

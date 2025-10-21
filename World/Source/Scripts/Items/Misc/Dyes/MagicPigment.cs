@@ -77,10 +77,17 @@ namespace Server.Items
 					}
 					else if ( iDye.IsChildOf( from.Backpack ) || backpack )
 					{
-						iDye.Hue = m_Dye.Hue;
-							if ( iDye.Hue == 0x2EF ){ iDye.Hue = 0; }
-						from.RevealingAction();
-						from.PlaySound( 0x23F );
+						if ( iDye is DyeTubTempBase )
+						{
+							((DyeTubTempBase)iDye).ApplyHue(from, m_Dye.Hue, 0x23F);
+						}
+						else
+						{
+							iDye.Hue = m_Dye.Hue;
+								if ( iDye.Hue == 0x2EF ){ iDye.Hue = 0; }
+							from.RevealingAction();
+							from.PlaySound( 0x23F );
+						}
 					}
 					else
 					{

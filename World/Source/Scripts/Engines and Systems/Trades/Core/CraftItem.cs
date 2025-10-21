@@ -1128,6 +1128,10 @@ namespace Server.Engines.Craft
 
 				tool.UsesRemaining--;
 
+				var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+				if (gloves != null)
+					gloves.ConsumeCharge(from, craftSystem);
+
 				if ( tool.UsesRemaining < 1 )
 				{
 					toolBroken = true;

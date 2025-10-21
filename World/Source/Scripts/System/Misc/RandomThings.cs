@@ -2702,5 +2702,54 @@ namespace Server.Misc
 				}
 			}
 		}
+
+		public static int GetRandomColor( CraftResourceType craftResourceType )
+		{
+			CraftResource resource;
+			switch ( craftResourceType )
+			{
+				case CraftResourceType.Metal:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.Iron + 1, (int)CraftResource.Xonolite );
+					break;
+
+				case CraftResourceType.Leather:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.RegularLeather + 1, (int)CraftResource.Thermoweave );
+					break;
+
+				case CraftResourceType.Scales:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.RedScales + 1, (int)CraftResource.KraytScales );
+					break;
+
+				case CraftResourceType.Wood:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.RegularWood + 1, (int)CraftResource.VeshokTree );
+					break;
+
+				case CraftResourceType.Block:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.AmethystBlock + 1, (int)CraftResource.CaddelliteBlock );
+					break;
+
+				case CraftResourceType.Skin:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.DemonSkin + 1, (int)CraftResource.DeadSkin );
+					break;
+
+				case CraftResourceType.Special:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.SpectralSpec + 1, (int)CraftResource.TurtleSpec );
+					break;
+
+				case CraftResourceType.Skeletal:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.BrittleSkeletal + 1, (int)CraftResource.ZabrakSkeletal );
+					break;
+
+				case CraftResourceType.Fabric:
+					resource = (CraftResource) Utility.RandomMinMax( (int)CraftResource.Fabric + 1, (int)CraftResource.FiendishFabric );
+					break;
+
+				case CraftResourceType.None:
+				default:
+					return 0;
+			}
+
+			return CraftResources.GetHue( resource );
+		}
 	}
 }

@@ -36,8 +36,9 @@ namespace Server.Engines.GlobalShoppe
 
                 return _cache[type] = new ItemSnapshot
                 {
-                    Name = item.Name.ToLower(),
-                    ItemID = item.ItemID,
+					Name = item.Name.ToLower(),
+					ItemID = item.ItemID,
+					DefaultDescription = item.DefaultDescription,
                 };
             }
             catch (Exception e)

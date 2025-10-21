@@ -76,10 +76,18 @@ namespace Server.Items
 					}
 					else if ( iDye.IsChildOf( from.Backpack ) || backpack )
 					{
-						iDye.Hue = m_Dye.Hue;
-							if ( iDye.Hue == 0x2EF ){ iDye.Hue = 0; }
-						from.RevealingAction();
-						from.PlaySound( 0x23E );
+						if ( iDye is DyeTubTempBase )
+						{
+							if ( false == ( ( DyeTubTempBase ) iDye ).ApplyHue( from, m_Dye.Hue, 0x23E ) ) return;
+						}
+						else
+						{
+							iDye.Hue = m_Dye.Hue;
+								if ( iDye.Hue == 0x2EF ){ iDye.Hue = 0; }
+							from.RevealingAction();
+							from.PlaySound( 0x23E );
+						}
+
 						from.AddToBackpack( new Bottle() );
 						m_Dye.Consume();
 					}

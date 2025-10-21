@@ -77,6 +77,10 @@ namespace Server.Engines.Craft
 			if ( !craftItem.ConsumeRes( from, resType, craftSystem, ref resHue, ref maxAmount, ConsumeType.None, ref resMessage ) )
 				return EnhanceResult.NoResources;
 
+			var gloves = from.FindItemOnLayer(Layer.OneHanded) as AncientCraftingGloves;
+			if (gloves != null)
+				gloves.ConsumeCharge(from, craftSystem);
+
 			int playerSkill = (int)from.Skills[craftSystem.MainSkill].Value;
 			int materialSkill = (int)CraftResources.GetSkill( resource );
 			int densityMod = (int)(item.Density) * 5;
