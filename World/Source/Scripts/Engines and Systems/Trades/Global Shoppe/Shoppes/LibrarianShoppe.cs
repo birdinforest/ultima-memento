@@ -23,12 +23,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefInscription.CraftSystem; } }
-
 		public override NpcGuild Guild { get { return NpcGuild.LibrariansGuild; } }
+		public override ShoppeType ShoppeType { get { return ShoppeType.Librarian; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Inscribe; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Librarian; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

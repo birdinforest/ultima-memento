@@ -23,12 +23,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefLeatherworking.CraftSystem; } }
-
+		public override ShoppeType ShoppeType { get { return ShoppeType.Tailor; } }
 		public override NpcGuild Guild { get { return NpcGuild.TailorsGuild; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Tailoring; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Tailor; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

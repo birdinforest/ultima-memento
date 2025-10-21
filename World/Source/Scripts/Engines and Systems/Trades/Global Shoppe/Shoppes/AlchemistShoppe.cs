@@ -22,12 +22,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefAlchemy.CraftSystem; } }
-
 		public override NpcGuild Guild { get { return NpcGuild.AlchemistsGuild; } }
+		public override ShoppeType ShoppeType { get { return ShoppeType.Alchemist; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Alchemy; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Alchemist; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

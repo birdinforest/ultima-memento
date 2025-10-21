@@ -23,12 +23,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefBowFletching.CraftSystem; } }
-
 		public override NpcGuild Guild { get { return NpcGuild.ArchersGuild; } }
+		public override ShoppeType ShoppeType { get { return ShoppeType.Bowyer; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Bowcraft; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Bowyer; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

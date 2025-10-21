@@ -21,12 +21,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefDruidism.CraftSystem; } }
-
 		public override NpcGuild Guild { get { return NpcGuild.DruidsGuild; } }
+		public override ShoppeType ShoppeType { get { return ShoppeType.Herbalist; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Druidism; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Herbalist; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

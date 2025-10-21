@@ -18,9 +18,9 @@ namespace Server.Engines.GlobalShoppe
         }
 
         public override NpcGuild Guild { get { return NpcGuild.CartographersGuild; } }
+        public override ShoppeType ShoppeType { get { return ShoppeType.Cartography; } }
 
         protected override SkillName PrimarySkill { get { return SkillName.Cartography; } }
-        protected override ShoppeType ShoppeType { get { return ShoppeType.Cartography; } }
 
         public override bool OnDragDrop(Mobile from, Item dropped)
         {

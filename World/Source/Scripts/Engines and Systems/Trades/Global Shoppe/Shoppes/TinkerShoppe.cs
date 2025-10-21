@@ -23,12 +23,10 @@ namespace Server.Engines.GlobalShoppe
 		}
 
 		public override CraftSystem CraftSystem { get { return DefTinkering.CraftSystem; } }
-
 		public override NpcGuild Guild { get { return NpcGuild.TinkersGuild; } }
+		public override ShoppeType ShoppeType { get { return ShoppeType.Tinker; } }
 
 		protected override SkillName PrimarySkill { get { return SkillName.Tinkering; } }
-
-		protected override ShoppeType ShoppeType { get { return ShoppeType.Tinker; } }
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
 		{

@@ -21,9 +21,9 @@ namespace Server.Engines.GlobalShoppe
 		{ get { return false; } }
 
 		public abstract NpcGuild Guild { get; }
+		public abstract ShoppeType ShoppeType { get; }
 
 		protected abstract SkillName PrimarySkill { get; }
-		protected abstract ShoppeType ShoppeType { get; }
 
 		public override void Deserialize(GenericReader reader)
 		{
