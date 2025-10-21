@@ -107,13 +107,9 @@ namespace Server.Spells.HolyMan
 			if ( !base.CheckFizzle() )
 				return false;
 
-			return true;
-		}
-
-		public override void FinishSequence()
-		{
 			DrainSoulsInSymbol( Caster, RequiredTithing );
-			base.FinishSequence();
+
+			return true;
 		}
 
 		public override void DoFizzle()

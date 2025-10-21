@@ -91,8 +91,6 @@ namespace Server.Spells.HolyMan
 
 					BuffInfo.RemoveBuff( Caster, BuffIcon.Enchant );
 					BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Enchant, 1063542, TimeSpan.FromMinutes( val ), Caster ) );
-
-					DrainSoulsInSymbol( Caster, RequiredTithing );
 				}
 			}
 			else

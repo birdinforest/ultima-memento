@@ -30,7 +30,6 @@ namespace Server.Spells.HolyMan
 			if ( CheckSequence() )
 			{
 				Item weap = new HammerOfFaith( Caster );
-				DrainSoulsInSymbol( Caster, RequiredTithing );
 
 				Caster.AddToBackpack( weap );
 				Caster.SendMessage( "You create a magical hammer and place it in your backpack." );

@@ -191,6 +191,8 @@ namespace Server.Misc
 			builder.Append("- Spell - Jedi spells no longer get double benefit from LMC<br>");
 			builder.Append("- Spell - Research spells no longer get double benefit from LMC<br>");
 			builder.Append("- Spell - Syth spells no longer get double benefit from LMC<br>");
+			builder.Append("- Spell - Holy Man spell costs are now properly deducted<br>");
+			builder.Append("- Spell - Holy Man Banish spell now costs mana and now fizzle<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

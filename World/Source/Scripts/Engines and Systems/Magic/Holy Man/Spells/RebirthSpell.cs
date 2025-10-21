@@ -45,8 +45,6 @@ namespace Server.Spells.HolyMan
 					m.FixedEffect( 0x376A, 10, 16 );
 					m.SendMessage( "You summon a magical orb to protect your soul." );
 				}
-
-				DrainSoulsInSymbol( Caster, RequiredTithing );
             }
             else if ( m == Caster )
             {
@@ -78,7 +76,6 @@ namespace Server.Spells.HolyMan
  
                 m.CloseGump( typeof( ResurrectGump ) );
                 m.SendGump( new ResurrectGump( m, Caster ) );
-				DrainSoulsInSymbol( Caster, RequiredTithing );
             }
             else if (m is BaseCreature && CheckBSequence( m, true ) )
 			{
@@ -91,7 +88,6 @@ namespace Server.Spells.HolyMan
  
                 master.CloseGump(typeof(PetResurrectGump));
                 master.SendGump(new PetResurrectGump(master, pet));
-				DrainSoulsInSymbol( Caster, RequiredTithing );
             }
             FinishSequence();
         }

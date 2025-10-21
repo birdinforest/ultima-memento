@@ -75,7 +75,6 @@ namespace Server.Spells.HolyMan
 				m.PlaySound( 0x1FB );
 
 				HarmfulSpell( m );
-				DrainSoulsInSymbol( Caster, RequiredTithing );
 			}
 
 			FinishSequence();

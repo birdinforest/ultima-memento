@@ -52,8 +52,6 @@ namespace Server.Spells.HolyMan
 				Effects.SendMovingParticles( from, to, 0x2255, 1, 0, false, false, 13, 3, 9501, 1, 0, EffectLayer.Head, 0x100 );
 
 				Server.Spells.Chivalry.RemoveCurseSpell.RemoveBadThings( m );
-
-				DrainSoulsInSymbol( Caster, RequiredTithing );
 			}
 
 			FinishSequence();
