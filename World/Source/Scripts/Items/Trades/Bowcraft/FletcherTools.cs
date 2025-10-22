@@ -9,7 +9,12 @@ namespace Server.Items
 		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
 
 		[Constructable]
-		public FletcherTools() : base( 0x66F9 )
+		public FletcherTools() : this( 50 )
+		{
+		}
+
+		[Constructable]
+		public FletcherTools( int uses ) : base( uses, 0x66F9 )
 		{
 			Name = "bowcrafting tools";
 			Weight = 1.0;
