@@ -4,6 +4,7 @@ using Server.Network;
 using System.Linq;
 using System;
 using Server;
+using Server.Utilities;
 
 namespace Scripts.Mythik.Systems.Achievements.Gumps
 {
@@ -161,9 +162,8 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
             AddLabel(350, 15 + CARD_HEIGHT + CARD_Y_OFFSET + (index * HEIGHT_PER_CARD), 49, title);
             if (ac.ItemIcon > 0)
             {
-                Rectangle2D bounds = ItemBounds.Table[ac.ItemIcon];
                 int y = 35 + CARD_HEIGHT + CARD_Y_OFFSET + (index * HEIGHT_PER_CARD);
-                AddItem(321 - bounds.Width / 2 - bounds.X, y - bounds.Height / 2 - bounds.Y, ac.ItemIcon);
+				GumpUtilities.AddCenteredItemToGump(this, ac.ItemIcon, 321, y);
             }
 
             if (!isComplete && 1 < ac.CompletionTotal)
