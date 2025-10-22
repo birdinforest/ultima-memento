@@ -541,16 +541,6 @@ namespace Server.Misc
 		private static TimeSpan m_StatGainDelay = MyServerSettings.StatGainDelay();
 		private static TimeSpan m_PetStatGainDelay = MyServerSettings.PetStatGainDelay();
 
-		public static void ResetStatGain( Mobile from, int extra )
-		{
-			if ( extra < 2 )
-			{
-				from.LastStrGain = DateTime.Now.AddMinutes(-60.01);
-				from.LastDexGain = DateTime.Now.AddMinutes(-60.01);
-				from.LastIntGain = DateTime.Now.AddMinutes(-60.01);
-			}
-		}
-
 		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
 		{
 			var gainDelay = player.Temptations.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;

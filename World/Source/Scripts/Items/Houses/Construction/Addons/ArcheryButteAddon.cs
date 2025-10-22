@@ -205,13 +205,10 @@ namespace Server.Items
 			ScoreEntry se = GetEntryFor( from );
 
 			int cycle = MyServerSettings.TrainMulti()-1;
-			int extra = 0;
 
 			while ( cycle > 0 )
 			{
 				cycle--;
-				extra++;	if ( extra > MyServerSettings.StatGainDelayNum() ){ extra = 1; }
-				Server.Misc.SkillCheck.ResetStatGain( from, extra );
 				from.CheckSkill( bow.Skill, m_MinSkill, m_MaxSkill );
 			}
 

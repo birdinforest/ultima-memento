@@ -76,13 +76,10 @@ namespace Server.Items
 			Effects.PlaySound( GetWorldLocation(), Map, 0x4F );
 
 			int cycle = MyServerSettings.TrainMulti()-1;
-			int extra = 0;
 
 			while ( cycle > 0 )
 			{
 				cycle--;
-				extra++;	if ( extra > MyServerSettings.StatGainDelayNum() ){ extra = 1; }
-				Server.Misc.SkillCheck.ResetStatGain( from, extra );
 				from.CheckSkill( SkillName.Stealing, m_MinSkill, m_MaxSkill );
 				from.CheckSkill( SkillName.Snooping, m_MinSkill, m_MaxSkill );
 			}

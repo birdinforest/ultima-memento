@@ -88,13 +88,6 @@ namespace Server
 			return TimeSpan.FromMinutes( MySettings.S_StatGainDelay ); // 15.0 IS DEFAULT
 		}
 
-		public static int StatGainDelayNum()
-		{
-			if ( MySettings.S_StatGainDelay > 60 ){ MySettings.S_StatGainDelay = 60; } else if ( MySettings.S_StatGainDelay < 5 ){ MySettings.S_StatGainDelay = 5; }
-
-			return Convert.ToInt32( MySettings.S_StatGainDelay );
-		}
-
 		public static TimeSpan PetStatGainDelay()
 		{
 			// THIS IS NOT ADVISED, BUT YOU CAN CHANGE THE TIME BETWEEN STAT GAINS FOR PETS

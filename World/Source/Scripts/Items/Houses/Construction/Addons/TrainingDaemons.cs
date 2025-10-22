@@ -96,13 +96,10 @@ namespace Server.Items
 			if ( from is PlayerMobile )
 			{
 				int cycle = MyServerSettings.TrainMulti();
-				int extra = 0;
 
 				while ( cycle > 0 )
 				{
 					cycle--;
-					extra++;	if ( extra > MyServerSettings.StatGainDelayNum() ){ extra = 1; }
-					Server.Misc.SkillCheck.ResetStatGain( from, extra );
 					from.CheckSkill( weapon.Skill, m_MinSkill, m_MaxSkill );
 				}
 			}

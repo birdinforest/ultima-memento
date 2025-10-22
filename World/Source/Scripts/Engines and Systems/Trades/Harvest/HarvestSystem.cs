@@ -231,12 +231,9 @@ namespace Server.Engines.Harvest
 							if ( addUp )
 							{
 								int skillCycle = MyServerSettings.Resources() - 1;
-								int extra = 0;
 
 								while ( skillCycle > 0 )
 								{
-									extra++;	if ( extra > MyServerSettings.StatGainDelayNum() ){ extra = 1; }
-									Server.Misc.SkillCheck.ResetStatGain( from, extra );
 									from.CheckSkill( def.Skill, skillMin, skillMax );
 									skillCycle--;
 								}

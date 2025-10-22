@@ -133,6 +133,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Pedestals now create multiple stacks of coins when they are over 60k<br>");
 			builder.Append("- Misc - Most items are now autostacked in treasure chests<br>");
 			builder.Append("- Misc - Rare rumors have been slightly revised<br>");
+			builder.Append("- Misc - Stat gain cooldown is no longer reset during Training and Harvesting activities<br>");
 			builder.Append("- Mobs - Players are now immune to peacemaking for 30s after it ends<br>");
 			builder.Append("- Mobs - Reduced health and increased damage of Rotting Corpses<br>");
 			builder.Append("- NPC - Mercantile/guild barter bonus is reduced to +100% of item value, down from +300%<br>");
