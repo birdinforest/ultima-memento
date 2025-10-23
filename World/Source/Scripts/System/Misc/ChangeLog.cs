@@ -163,6 +163,7 @@ namespace Server.Misc
 			builder.Append("- Achievements - Fix entrance info for Mad Archmage and Lich King Dungeons<br>");
 			builder.Append("- Champs - Barracoon's rats now scale with spawn difficulty<br>");
 			builder.Append("- Champs - Final scoreboard is no longer blank<br>");
+			builder.Append("- Craft - Clothing now gets the hue of the fabric used<br>");
 			builder.Append("- Item - Quick fix to prevent crash with locked containers<br>");
 			builder.Append("- Item - Orphaned projectiles are no longer created when using a ranged weapon<br>");
 			builder.Append("- Item - Orphaned clothing are no longer created during dress up<br>");
