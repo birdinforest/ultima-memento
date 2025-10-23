@@ -10,6 +10,7 @@ namespace Server.Engines.GlobalShoppe
 		{
 			Close = 0,
 			Help = 1,
+			ShowRewards = 2,
 			AcceptBase = 50,
 			RejectBase = 100,
 			DoOrderBase = 150,
@@ -161,30 +162,11 @@ namespace Server.Engines.GlobalShoppe
 					return;
 				}
 
-				TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Customers</RIGHT>", context.Customers.Count, ShoppeConstants.MAX_CUSTOMERS), HtmlColors.MUSTARD);
-				y += 20;
-
-				if (supportsCustomers)
-				{
-					int CUSTOMERS_PER_PAGE = supportsOrders ? 3 : 7;
-					for (int index = 0; index < CUSTOMERS_PER_PAGE; index++)
-					{
-						if (index < context.Customers.Count)
-						{
-							CustomerContext customer = context.Customers[index];
-							AddCustomerCard(from, (ICustomerShoppe)m_Shoppe, context, customer, index, ref y);
-						}
-						else
-						{
-							AddTextCard(y, "Awaiting Next Customer");
-							y += CARD_HEIGHT;
-							y += 12;
-						}
-					}
-				}
-
 				if (supportsOrders)
 				{
+					AddButton(21, y + 5, 4005, 4005, (int)Actions.ShowRewards, GumpButtonType.Reply, 0);
+					TextDefinition.AddHtmlText(this, 21 + 35, y + 8, CARD_WIDTH, 20, "Purchase Rewards", HtmlColors.MUSTARD);
+
 					y += 10;
 					TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Orders</RIGHT>", context.Orders.Count, ShoppeConstants.MAX_ORDERS), HtmlColors.MUSTARD);
 					y += 20;
@@ -205,6 +187,28 @@ namespace Server.Engines.GlobalShoppe
 						}
 					}
 				}
+
+				if (supportsCustomers)
+				{
+					TextDefinition.AddHtmlText(this, 21, y, CARD_WIDTH, 20, string.Format("<RIGHT>{0}/{1} Customers</RIGHT>", context.Customers.Count, ShoppeConstants.MAX_CUSTOMERS), HtmlColors.MUSTARD);
+					y += 20;
+
+					int CUSTOMERS_PER_PAGE = supportsOrders ? 3 : 7;
+					for (int index = 0; index < CUSTOMERS_PER_PAGE; index++)
+					{
+						if (index < context.Customers.Count)
+						{
+							CustomerContext customer = context.Customers[index];
+							AddCustomerCard(from, (ICustomerShoppe)m_Shoppe, context, customer, index, ref y);
+						}
+						else
+						{
+							AddTextCard(y, "Awaiting Next Customer");
+							y += CARD_HEIGHT;
+							y += 12;
+						}
+					}
+				}
 			}
 		}
 
@@ -212,6 +216,9 @@ namespace Server.Engines.GlobalShoppe
 		{
 			var buttonID = info.ButtonID;
 			if (buttonID == 0) return;
+
+			var player = sender.Mobile as PlayerMobile;
+			if (player == null) return;
 
 			if ((int)Actions.RejectOrderBase <= buttonID) // Reject Order is higher
 			{
@@ -221,13 +228,13 @@ namespace Server.Engines.GlobalShoppe
 			else if ((int)Actions.CompleteOrderBase <= buttonID) // Complete is higher
 			{
 				var index = buttonID - (int)Actions.CompleteOrderBase;
-				((IOrderShoppe)m_Shoppe).OpenRewardSelectionGump(index, sender.Mobile, m_Context);
+				((IOrderShoppe)m_Shoppe).OpenRewardSelectionGump(index, player, m_Context);
 				return;
 			}
 			else if ((int)Actions.DoOrderBase <= buttonID) // Do Order is higher
 			{
 				var index = buttonID - (int)Actions.DoOrderBase;
-				((IOrderShoppe)m_Shoppe).OpenOrderGump(index, sender.Mobile, m_Context);
+				((IOrderShoppe)m_Shoppe).OpenOrderGump(index, player, m_Context);
 				return;
 			}
 			else if ((int)Actions.RejectBase <= buttonID) // Reject is higher
@@ -238,10 +245,29 @@ namespace Server.Engines.GlobalShoppe
 			else if ((int)Actions.AcceptBase <= buttonID) // Accept is higher
 			{
 				var index = buttonID - (int)Actions.AcceptBase;
-				((CustomerShoppe)m_Shoppe).AcceptCustomer(index, sender.Mobile, m_Context);
+				((CustomerShoppe)m_Shoppe).AcceptCustomer(index, player, m_Context);
+			}
+			else
+			{
+				if (buttonID == (int)Actions.ShowRewards)
+				{
+					player.SendGump(new ShoppeRewardGump(player, m_Shoppe.ShoppeType, 1, () =>
+					{
+						player.SendGump(new ShoppeGump(
+							m_From,
+							m_Shoppe,
+							m_Context,
+							m_Title,
+							m_ToolName,
+							m_ResourceName,
+							buttonID == (int)Actions.Help
+						));
+					}));
+					return;
+				}
 			}
 
-			sender.Mobile.SendGump(new ShoppeGump(
+			player.SendGump(new ShoppeGump(
 				m_From,
 				m_Shoppe,
 				m_Context,
