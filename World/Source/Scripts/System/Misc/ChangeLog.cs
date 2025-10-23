@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 1.3.1";
+			return "Version: 2.0.0";
 		}
 
 		public static string Versions()
