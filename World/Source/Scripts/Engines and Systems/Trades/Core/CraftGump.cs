@@ -6,6 +6,7 @@ using Server.Network;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Utilities;
 
 namespace Server.Engines.Craft
 {
@@ -103,7 +104,11 @@ namespace Server.Engines.Craft
 					AddImageTiled(INFO_PANEL_START + 10, y, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE); // Top border -- Margin
 					y += 10;
 
-					if ( needsRecipe )
+					if ( context.LastMade != null && tool is IRunicTool && !TypeUtilities.IsEquipmentType(context.LastMade.ItemType ) )
+					{
+						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>No runic benefit</BASEFONT>", FontColor ), false, false );
+					}
+					else if ( needsRecipe )
 					{
 						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>You don't know this recipe</BASEFONT>", FontColor ), false, false );
 					}
@@ -374,7 +379,12 @@ namespace Server.Engines.Craft
 
 				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
 
-				if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons)
+				if ( m_Tool is IRunicTool && !TypeUtilities.IsEquipmentType( craftItem.ItemType ) )
+				{
+					AddImage( 239, 66+moveDown + (index * 20), 2449 );
+					AddTooltip("No runic benefit");
+				}
+				else if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons )
 				{
 					AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 					if (0 < craftItem.NameNumber)
@@ -400,7 +410,7 @@ namespace Server.Engines.Craft
 					{
 						if ( m_CraftSystem is DefInscription )
 						{
-							AddImage( 239, 65+moveDown + (index * 20), 2449 );
+							AddImage( 239, 66+moveDown + (index * 20), 2449 );
 							AddTooltip("This cannot be crafted.");
 						}
 						else

@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Utilities;
 
 namespace Server.Engines.Craft
 {
@@ -111,7 +112,11 @@ namespace Server.Engines.Craft
 					AddImageTiled(INFO_PANEL_START + 10, y, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE); // Top border -- Margin
 					y += 10;
 
-					if ( needsRecipe )
+					if ( m_Tool is IRunicTool && !TypeUtilities.IsEquipmentType( craftItem.ItemType ) )
+					{
+						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR={0}>No runic benefit</BASEFONT>", TextColor ), false, false );
+					}
+					else if ( needsRecipe )
 					{
 						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR={0}>You don't know this recipe</BASEFONT>", TextColor ), false, false );
 					}
