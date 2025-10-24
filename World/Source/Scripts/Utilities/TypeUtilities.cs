@@ -44,5 +44,19 @@ namespace Server.Utilities
                 typeof(BaseInstrument)
             );
         }
+
+        public static bool IsEquipmentType(Type type)
+        {
+            if (type == null) return false;
+
+            return IsAnyTypeOrDerived(
+                type,
+                typeof(BaseArmor),
+                typeof(BaseWeapon),
+                typeof(BaseClothing),
+                typeof(BaseInstrument),
+                typeof(BaseTrinket)
+            );
+        }
     }
 }
