@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 2.0.0";
+			return "Version: 2.1.0";
 		}
 
 		public static string Versions()
@@ -14,6 +14,16 @@ namespace Server.Misc
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append(SEPARATOR_LINE);
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 2.0.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Achievements - Permadeath characters now have their own [feats history<br>");
@@ -92,6 +102,7 @@ namespace Server.Misc
 			builder.Append("- Race - Alien character type behaviors now honor the S_AllowAlienChoice setting<br>");
 			builder.Append("- Skill - Provocation no longer sets cooldown when failing to select a 2nd target<br>");
 			builder.Append("- Spell - Elemental soul now produces a soul orb<br>");
+			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
