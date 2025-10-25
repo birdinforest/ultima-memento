@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append(value: "- Gather - Mining for Sand is notably faster<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

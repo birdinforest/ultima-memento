@@ -154,15 +154,15 @@ namespace Server.Engines.Harvest
 			sand.MaxRange = 2;
 
 			// One sand per harvest action
-			sand.ConsumedPerHarvest = 1 * MyServerSettings.Resources();
+			sand.ConsumedPerHarvest = 2 * MyServerSettings.Resources();
 			sand.ConsumedPerIslesDreadHarvest = sand.ConsumedPerHarvest + (int)(sand.ConsumedPerHarvest/2) + 2;
 
 			// The digging effect
 			sand.EffectActions = new int[]{ 11 };
 			sand.EffectSounds = new int[]{ 0x125, 0x126 };
-			sand.EffectCounts = new int[]{ 6 };
-			sand.EffectDelay = TimeSpan.FromSeconds( 1.6 );
-			sand.EffectSoundDelay = TimeSpan.FromSeconds( 0.9 );
+			sand.EffectCounts = new int[]{ 2, 3, 3 };
+			sand.EffectDelay = TimeSpan.FromSeconds( 0.8 );
+			sand.EffectSoundDelay = TimeSpan.FromSeconds( 0.5 );
 
 			sand.NoResourcesMessage = 1044629; // There is no sand here to mine.
 			sand.DoubleHarvestMessage = 1044629; // There is no sand here to mine.
