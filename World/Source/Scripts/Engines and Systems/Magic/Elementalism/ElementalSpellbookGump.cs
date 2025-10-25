@@ -151,8 +151,11 @@ namespace Server.Gumps
 				if ( HasSpell(from, spell) ){ AddButton(74, 86, spellIcon, spellIcon, spell, GumpButtonType.Reply, 0); }
 				else AddImage( 74, 86, spellIcon );
 
+				var spellName = ElementalSpell.CommonInfo( spell, 1 );
+
 				AddHtml( 34, 13, 133, 20, @"<BODY><BASEFONT Color=" + fnt + "><BIG><CENTER>Elemental</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 34, 29, 133, 20, @"<BODY><BASEFONT Color=" + fnt + "><BIG><CENTER>" + ElementalSpell.CommonInfo( spell, 1 ) + "</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 34, 29, 133, 20, @"<BODY><BASEFONT Color=" + fnt + "><BIG><CENTER>" + spellName + "</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 26, 130, 144, 20, @"<BODY><BASEFONT Color=" + fnt + "><CENTER>[E" + spellName + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 34, 166, 100, 20, @"<BODY><BASEFONT Color=" + fnt + "><BIG>Power:</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 139, 166, 38, 20, @"<BODY><BASEFONT Color=" + fnt + "><BIG>" + power + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 

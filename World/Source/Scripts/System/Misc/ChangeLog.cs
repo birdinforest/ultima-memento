@@ -17,6 +17,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append(value: "- Gather - Mining for Sand is notably faster<br>");
+			builder.Append(value: "- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append(value: "- Misc - Boat movement is no longer blocked by corpses<br>");
 
 			builder.Append("<br>");
