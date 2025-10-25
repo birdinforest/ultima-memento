@@ -1775,7 +1775,7 @@ namespace Server.Multis
 
 			foreach ( Item item in eable )
 			{
-				if ( item is BaseMulti || item.ItemID > TileData.MaxItemValue || item.Z < p.Z || !item.Visible )
+				if ( item is BaseMulti || item.ItemID > TileData.MaxItemValue || item.Z < p.Z || !item.Visible || item is Corpse )
 					continue;
 
 				int x = item.X - p.X + newComponents.Min.X;
@@ -2149,12 +2149,14 @@ namespace Server.Multis
 
 			foreach ( object o in map.GetObjectsInBounds( new Rectangle2D( X + mcl.Min.X, Y + mcl.Min.Y, mcl.Width, mcl.Height ) ) )
 			{
-				if ( o == this || o is TillerMan || o is Hold || o is Plank || o is BoatDoor)
+				if ( o == this || o is TillerMan || o is Hold || o is Plank || o is BoatDoor )
 					continue;
 
 				if ( o is Item )
 				{
 					Item item = (Item)o;
+					if ( !item.Movable )
+						continue;
 
 					if ( Contains( item ) && item.Visible && item.Z >= Z )
 						list.Add( item );
