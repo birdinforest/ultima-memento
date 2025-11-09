@@ -124,8 +124,8 @@ namespace Server.Items
 
 		public int RunicMinAttributes { get { return 3; } }
 		public int RunicMaxAttributes { get { return 3; } }
-		public int RunicMinIntensity { get { return 50; } }
-		public int RunicMaxIntensity { get { return 50; } }
+		public int RunicMinIntensity { get { return 70; } }
+		public int RunicMaxIntensity { get { return 70; } }
 
 		public override void Deserialize(GenericReader reader)
 		{
