@@ -995,13 +995,9 @@ namespace Server.Items
 		{
 			if ( !IsCriminalAction( from ) )
 				return true;
-
-			Map map = this.Map;
-
-			if ( map == null || (map.Rules & MapRules.HarmfulRestrictions) != 0 )
-				return false;
-
-			return true;
+			
+			// Block looting if it would be a criminal act
+			return false;
 		}
 
 		public bool CheckLoot( Mobile from, Item item )
@@ -1021,6 +1017,8 @@ namespace Server.Items
 					from.SendLocalizedMessage( 1005036 ); // Looting this monster corpse will be a criminal act!
 				else
 					from.SendLocalizedMessage( 1005038 ); // Looting this corpse will be a criminal act!
+
+				return false;
 			}
 
 			return true;
