@@ -81,45 +81,34 @@ namespace Server.Misc
 
 		public static bool Mobile_AllowHarmful( Mobile from, Mobile target )
 		{
-			if ( from == null || target == null )
-				return false;
+			PlayerMobile attackingPlayer = MobileUtilities.TryGetMasterPlayer(from);
+			PlayerMobile targetPlayer = MobileUtilities.TryGetMasterPlayer(target);
 
-			BaseCreature bc = from as BaseCreature;
-			Mobile controller = null;
+			if ( attackingPlayer == null && targetPlayer == null )
+				return true; // No player involved, can attack anyone
 
-			if ( bc != null )
+			// Same player
+			if ( attackingPlayer == targetPlayer )
 			{
-				if ( bc.Controlled && bc.ControlMaster == target )
-					return false;
+				if ( from is PlayerMobile )
+					return true; // Player can hurt himself or pets
 
-				if ( bc.Summoned && bc.SummonMaster == target )
-					return false;
+				if ( target is PlayerMobile )
+					return MySettings.S_PetsCanHarmOwner; // Player's pet trying to injure player
 
-				if ( bc.Controlled )
-					controller = bc.ControlMaster;
+				return MySettings.S_PetsCanHarmSiblingPets; // Same player's pets trying to injure ally pet
+			}
 
-				if ( bc.Summoned )
-					controller = bc.SummonMaster;
+			// Two different players
+			if ( attackingPlayer != null && targetPlayer != null )
+			{
+				Guild fromGuild = attackingPlayer.Guild as Guild;
+				Guild targetGuild = targetPlayer.Guild as Guild;
 
-				if ( target is BaseCreature && controller != null )
-				{
-					BaseCreature bt = target as BaseCreature;
-					Mobile other = null;
+				if( fromGuild != null && targetGuild != null && (targetGuild == fromGuild || fromGuild.IsAlly( targetGuild )) )
+					return true; // Guild members can attack each other
 
-					if ( bt != null )
-					{
-						if ( bt.Controlled )
-							other = bt.ControlMaster;
-
-						if ( bt.Summoned )
-							other = bt.SummonMaster;
-
-						if ( other == controller )
-							return false;
-						else
-							return true;
-					}
-				}
+				return false; // Two different players, in different guilds, denied!
 			}
 
 			return true;

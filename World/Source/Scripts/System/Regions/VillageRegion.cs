@@ -27,11 +27,6 @@ namespace Server.Regions
 			return false;
 		}
 
-		public override bool AllowHarmful( Mobile from, Mobile target )
-		{
-			return true;
-		}
-
 		public override void AlterLightLevel( Mobile m, ref int global, ref int personal )
 		{
 			if ( this.Map == Map.Underworld ){ global = LightCycle.DungeonLevel; }

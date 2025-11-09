@@ -129,7 +129,7 @@ namespace Server.Regions
 				}
 			}
 
-			return true;
+			return base.AllowHarmful( from, target );
 		}
 
 		public static bool CanSpawn( Region region, params Type[] types )

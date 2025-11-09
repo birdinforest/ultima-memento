@@ -29,64 +29,6 @@ namespace Server.Regions
 			return false;
 		}
 
-		public override bool AllowHarmful( Mobile from, Mobile target )
-		{
-			int CanHarm = 0;
-
-			if ( from is BaseCreature )
-			{
-				BaseCreature enemy = (BaseCreature)from;
-
-				if ( enemy.Summoned )
-				{
-					if ( enemy.SummonMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-				else if ( enemy.Controlled )
-				{
-					if ( enemy.ControlMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-				else if ( enemy.BardProvoked )
-				{
-					if ( enemy.BardMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-			}
-
-			if ( target is BaseCreature )
-			{
-				BaseCreature enemy = (BaseCreature)target;
-
-				if ( enemy.Summoned )
-				{
-					if ( enemy.SummonMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-				else if ( enemy.Controlled )
-				{
-					if ( enemy.ControlMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-				else if ( enemy.BardProvoked )
-				{
-					if ( enemy.BardMaster != null )
-						CanHarm = CanHarm + 1;
-				}
-			}
-
-			if ( from is PlayerMobile || from is BaseVendor || from is BaseNPC || from is BasePerson )
-				CanHarm = CanHarm + 1;
-
-			if ( target is PlayerMobile || target is BaseVendor || target is BaseNPC || target is BasePerson )
-				CanHarm = CanHarm + 1;
-
-			if ( CanHarm > 1 )
-				return false;
-			else
-				return base.AllowHarmful( from, target );
-		}
-
 		public override void OnEnter( Mobile m )
 		{
 			base.OnEnter( m );
