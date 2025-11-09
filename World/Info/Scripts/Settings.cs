@@ -691,6 +691,9 @@ namespace Server
 
 		public static int S_CriticalToPets = 5;
 
+	// If true, then pets will match the notoriety of their master. Otherwise, they will be blue or criminal when appropriate.
+		public static bool S_PetsMatchMasterNotoriety = false;
+
 	// If true, some areas will not allow you to mount a creature for riding. This makes dungeons (for example)
 	// more challenging. Player mounts get stabled when they go in certain areas like dungeons or caves and
 	// they will remount them when they leave these areas. Set to false if you do not want to limit where they

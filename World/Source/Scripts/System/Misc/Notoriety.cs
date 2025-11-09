@@ -249,14 +249,17 @@ namespace Server.Misc
 				if ( master != null && master.AccessLevel > AccessLevel.Player )
 					return Notoriety.CanBeAttacked;
 
-				master = bc.ControlMaster;
-
-				if ( Core.ML && master != null )
+				if ( MySettings.S_PetsMatchMasterNotoriety )
 				{
-					if ( ( source == master && CheckAggressor( target.Aggressors, source ) ) || ( CheckAggressor( source.Aggressors, bc ) ) )
-						return Notoriety.CanBeAttacked;
-					else
-						return MobileNotoriety( source, master );
+					master = bc.ControlMaster;
+
+					if ( Core.ML && master != null )
+					{
+						if ( ( source == master && CheckAggressor( target.Aggressors, source ) ) || ( CheckAggressor( source.Aggressors, bc ) ) )
+							return Notoriety.CanBeAttacked;
+						else
+							return MobileNotoriety( source, master );
+					}
 				}
 
 				if( !bc.Summoned && !bc.Controlled && ((PlayerMobile)source).EnemyOfOneType == target.GetType() )
