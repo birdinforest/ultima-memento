@@ -9872,7 +9872,7 @@ namespace Server.Mobiles
         private uint m_level = 1;
         protected virtual TimeSpan NextMateDelay(uint atLevel) { return (atLevel == AbsMaxLevel ? TimeSpan.FromDays(14) : TimeSpan.FromDays(7)); }
         public virtual uint ExpNeeded(uint atLevel) { return (uint)(155.34 * Math.Pow(atLevel, 1.634)); }
-        public virtual uint TraitsGiven(uint atLevel) { return (atLevel < 0 && atLevel % 10 == 0) ? (uint)5 : (uint)2; }
+        public virtual uint TraitsGiven(uint atLevel) { return (0 < atLevel && atLevel % 10 == 0) ? (uint)5 : (uint)2; }
         public string SexString { get { return (Female ? "Female" : "Male"); } }
         public JakoAttributes m_jakoAttributes = new JakoAttributes();
 

@@ -25,6 +25,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
+			builder.Append("- Pets - Hitting level 10 on pets now provides 5 traits instead of 2<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
