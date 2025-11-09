@@ -27,10 +27,7 @@ namespace Server.Regions
 
 		public override bool AllowHarmful( Mobile from, Mobile target )
 		{
-			if (( from is PlayerMobile ) && ( target is PlayerMobile ))
-				return false;
-			else
-				return base.AllowHarmful( from, target );
+			return false;
 		}
 
 		public override bool OnBeginSpellCast( Mobile m, ISpell s )

@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
+			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 
 			builder.Append("<br>");
