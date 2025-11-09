@@ -370,6 +370,15 @@ namespace Server.Mobiles
 
 		public override bool DoActionFlee()
 		{
+			if ( m_Mobile.CanSwim )
+			{
+				if ( m_Mobile.Debug )
+					m_Mobile.DebugSay( "I can swim, so I will continue fighting" );
+
+				Action = ActionType.Combat;
+				return true;
+			}
+
 			if ( m_Mobile.Hits > (m_Mobile.HitsMax / 2) )
 			{
 				if ( m_Mobile.Debug )
