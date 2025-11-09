@@ -155,6 +155,7 @@ namespace Server.Engines.GlobalShoppe
 				ShoppeType.Tailor, new List<_Reward>
 				{
 					_Reward.Create(1000, () => { return new SewingKit(1000); }, uses: 1000),
+					_Reward.Create(1000, () => { return new LeatherworkingTools(1000); }, uses: 1000),
 					_Reward.Create(5000, () => { return new AdvancedSkinningKnife(20, 100); }, uses: 100, name: "Advanced Skinning Knife", description: "Increases carving yields by 20%."),
 					_Reward.Create(5000, () => { return new LeatherDyeTubTemp(20); }, uses: 20, description: "Apply dye to leather items."),
 					_Reward.Create(10000, () => { return new AncientCraftingGloves(SkillName.Tailoring, 5, 10); }, uses: 10, name: "Ancient Tailor Gloves (+5 skill)"),
