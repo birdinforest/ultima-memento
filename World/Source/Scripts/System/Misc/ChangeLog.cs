@@ -17,6 +17,8 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Admin - New setting to turn pets Blue instead of match the notoriety of their master<br>");
+			builder.Append("- Admin - New setting to prevent pets from attacking their owners<br>");
+			builder.Append("- Admin - New setting to prevent pets from attacking other pets from the same owner<br>");
 			builder.Append("- Combat - Mobs that can swim no longer flee from combat<br>");
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
