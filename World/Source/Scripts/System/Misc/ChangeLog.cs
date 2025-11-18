@@ -29,6 +29,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
+			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

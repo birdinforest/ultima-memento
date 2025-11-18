@@ -555,13 +555,15 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Classic Poisoning", PageActionType.Setting_ClassicPoisoning, PageActionType.Setting_ClassicPoisoning_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				if ( from.RaceID > 0 && (from.Region).Name == "the Tavern" && Server.Items.BaseRace.GetMonsterMage( from.RaceID ) )
+				if ( from.RaceID > 0 && Server.Items.BaseRace.GetMonsterMage( from.RaceID ) )
 				{
 					string magic = "Default";
 					if ( from.RaceMagicSchool == 1 ){ magic = "Magery"; }
 					else if ( from.RaceMagicSchool == 2 ){ magic = "Necromancy"; }
 					else if ( from.RaceMagicSchool == 3 ){ magic = "Elementalism"; }
-					AddSetting(xs, g, from, "Creature Magic (" + magic + ")", PageActionType.Setting_CreatureMagicFocus, PageActionType.Setting_CreatureMagicFocus_Info);
+
+					var inTavern = from.Region.Name == "the Tavern";
+					AddSetting(xs, g, from, "Creature Magic (" + magic + ")", PageActionType.Setting_CreatureMagicFocus, PageActionType.Setting_CreatureMagicFocus_Info, inTavern);
 					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 				}
 
@@ -757,7 +759,7 @@ namespace Server.Engines.Help
 			}
 		}
 
-		private void AddSetting(int x, int y, PlayerMobile from, string name, PageActionType actionType, PageActionType infoType)
+		private void AddSetting(int x, int y, PlayerMobile from, string name, PageActionType actionType, PageActionType infoType, bool addActionButton = true)
 		{
 			const int RIGHT_ARROW = 4005;
 			const int CHECKED_BOX = 4018;
@@ -767,7 +769,10 @@ namespace Server.Engines.Help
 				: IsActive(from, actionType)
 					? CHECKED_BOX
 					: UNCHECKED_BOX;
-			AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
+
+			if (addActionButton)
+				AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
+
 			AddButton(x+40, y, 4011, 4011, (int)infoType, GumpButtonType.Reply, 0);
 			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
@@ -2225,7 +2230,7 @@ namespace Server.Engines.Help
 				{
 					scrollbar = false;
 					title = "Creature Magic";
-					info = "Some creatures have a natural ability for magic. This setting lets you change which school of magic you want to focus on: magery, necromancy, or elementalism. This allows magery or necromancy creatures to move their focus into elementalism, or to switch between magery and necromancy.";
+					info = "You must be in the Tavern to change this setting.<br><br>Some creatures have a natural ability for magic. This setting lets you change which school of magic you want to focus on: magery, necromancy, or elementalism. This allows magery or necromancy creatures to move their focus into elementalism, or to switch between magery and necromancy.";
 					break;
 				}
 
