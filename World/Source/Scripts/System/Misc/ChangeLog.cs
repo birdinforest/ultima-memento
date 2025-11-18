@@ -30,6 +30,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
+			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");

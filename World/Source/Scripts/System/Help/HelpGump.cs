@@ -1308,7 +1308,7 @@ namespace Server.Engines.Help
 					case PageActionType.Setting_CreatureType:
 					{
 						from.RaceSection = 1;
-						from.SendGump( new Server.Items.RacePotions.RacePotionsGump( from, 1 ) );
+						from.SendGump( new Server.Items.RacePotions.RacePotionsGump( from, 1, true ) );
 						break;
 					}
 					case PageActionType.Setting_CreatureSounds:
