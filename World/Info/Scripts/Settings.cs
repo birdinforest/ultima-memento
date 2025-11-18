@@ -692,7 +692,7 @@ namespace Server
 		public static int S_CriticalToPets = 5;
 
 	// If true, then pets will match the notoriety of their master. Otherwise, they will be blue or criminal when appropriate.
-		public static bool S_PetsMatchMasterNotoriety = false;
+		public static bool S_PetsMatchMasterNotoriety = true;
 
 	// If true, then pets will be able to harm the player who owns them.
 	// Note: Pets abilities may still hurt owners unless this is disabled.
