@@ -11,11 +11,6 @@ namespace Server.Items
 		public override void ItemIdentified( bool id )
 		{
 			m_NotIdentified = id;
-			if ( !id )
-			{
-				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
-			}
 		}
 
 		public int RelicFlipID1;

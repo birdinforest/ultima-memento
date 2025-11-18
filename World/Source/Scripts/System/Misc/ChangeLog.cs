@@ -23,6 +23,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
+			builder.Append("- Item - Tablets no longer have a tooltip indicating their worth<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
