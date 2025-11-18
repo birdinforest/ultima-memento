@@ -10119,8 +10119,7 @@ namespace Server.Mobiles
 						{
 							if (MinTameSkill < 1) break;
 
-							ControlMaster.CheckTargetSkill( SkillName.Taming, this, MinTameSkill - 25.0, MinTameSkill + 25.0 );
-							MinTameSkill--;
+							ControlMaster.CheckTargetSkillExplicit( SkillName.Taming, this, MinTameSkill - 25.0, MinTameSkill + 25.0 );
 						}
 					}
                 }
