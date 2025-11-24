@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Achievement - Category buttons are now easier to click<br>");
 			builder.Append("- Admin - New setting to turn pets Blue instead of match the notoriety of their master<br>");
 			builder.Append("- Admin - New setting to prevent pets from attacking their owners<br>");
 			builder.Append("- Admin - New setting to prevent pets from attacking other pets from the same owner<br>");
