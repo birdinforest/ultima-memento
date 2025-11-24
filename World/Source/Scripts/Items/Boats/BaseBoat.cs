@@ -2076,7 +2076,9 @@ namespace Server.Multis
 
 						item.NoMoveHS = true;
 
-						if ( !( item is TillerMan || item is Hold || item is Plank ) )
+						if ( item is Corpse ) // This makes it look like it changes it's location because the boat moves
+							item.Location = new Point3D( item.X, item.Y, item.Z );
+						else if ( !( item is TillerMan || item is Hold || item is Plank ) )
 							item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z );
 					}
 					else if ( e is Mobile )
@@ -2155,7 +2157,7 @@ namespace Server.Multis
 				if ( o is Item )
 				{
 					Item item = (Item)o;
-					if ( !item.Movable )
+					if ( !item.Movable && false == (item is Corpse) )
 						continue;
 
 					if ( Contains( item ) && item.Visible && item.Z >= Z )
