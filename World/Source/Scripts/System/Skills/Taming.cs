@@ -335,7 +335,7 @@ namespace Server.SkillHandlers
 
 						double mod = m_Tamer.Skills[SkillName.Druidism].Value / 5;
 
-						if ( CheckMastery( m_Tamer, m_Creature ) || alreadyOwned || m_Tamer.CheckTargetSkillExplicit( skill: SkillName.Taming, m_Creature, (minSkill-25.0-mod), (minSkill+25.0) ) )
+						if ( CheckMastery( m_Tamer, m_Creature ) || alreadyOwned || m_Tamer.CheckTargetSkillExplicit( SkillName.Taming, m_Creature, (minSkill-25.0-mod), (minSkill+25.0) ) )
 						{
 							if ( m_Creature.Owners.Count == 0 ) // First tame
 							{
