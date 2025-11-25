@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Admin - New setting to prevent pets from attacking other pets from the same owner<br>");
 			builder.Append("- Combat - Mobs that can swim no longer flee from combat<br>");
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
+			builder.Append("- Craft - Bulk crafting now shows crafting error messages<br>");
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append("- Item - Tablets no longer have a tooltip indicating their worth<br>");
