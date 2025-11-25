@@ -157,6 +157,10 @@ namespace Server.SkillHandlers
 						{
 							creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1005615, from.NetState ); // This animal has had too many owners and is too upset for you to tame.
 						}
+						else if ( MustBeSubdued( creature ) )
+						{
+							creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1054025, from.NetState ); // You must subdue this creature before you can tame it!
+						}
 						else if ( CheckMastery( from, creature ) || from.Skills[SkillName.Taming].Value >= creature.MinTameSkill )
 						{
 							if ( m_BeingTamed.Contains( targeted ) )
@@ -279,13 +283,6 @@ namespace Server.SkillHandlers
 						m_BeingTamed.Remove( m_Creature );
 						m_Tamer.NextSkillTime = DateTime.Now;
 						m_Creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1005615, m_Tamer.NetState ); // This animal has had too many owners and is too upset for you to tame.
-						Stop();
-					}
-					else if ( MustBeSubdued( m_Creature ) )
-					{
-						m_BeingTamed.Remove( m_Creature );
-						m_Tamer.NextSkillTime = DateTime.Now;
-						m_Creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1054025, m_Tamer.NetState ); // You must subdue this creature before you can tame it!
 						Stop();
 					}
 					else if ( de != null && de.LastDamage > m_StartTime )
