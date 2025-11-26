@@ -29,6 +29,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
+			builder.Append("- Misc - Players are now warned when exiting a house with unsecured items<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
