@@ -249,7 +249,7 @@ namespace Server
 		{
 		}
 
-		public static int GetValue( Mobile m, AosAttribute attribute )
+		public static int GetValue( Mobile m, AosAttribute attribute, bool applyCap = true )
 		{
 			if( !Core.AOS )
 				return 0;
@@ -346,6 +346,8 @@ namespace Server
 				if ( ((PlayerMobile)m).Temptations.ReduceRacialMagicalAttributes ) value = Math.Max( value, raceValue ); // Does not effect Stats, Skills, or Resists
 				else value += raceValue;
 			}
+
+			if (!applyCap) return value;
 				
 			if ( attribute == AosAttribute.LowerRegCost && value > MyServerSettings.LowerReg() )
 				value = MyServerSettings.LowerReg();

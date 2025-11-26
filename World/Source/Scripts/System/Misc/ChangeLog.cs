@@ -36,6 +36,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Pets - Hitting level 10 on pets now provides 5 traits instead of 2<br>");

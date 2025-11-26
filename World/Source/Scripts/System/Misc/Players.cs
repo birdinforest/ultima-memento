@@ -953,9 +953,9 @@ namespace Server.Gumps
             AddStatLine(260, 375, 80, "Mana Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenMana)), null, color, colCD);
 
             if (MyServerSettings.LowerReg() > 0)
-                AddStatLine(260, 375, 80, "Low Reagent", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerRegCost), MyServerSettings.LowerReg()), "Increases chance to not use reagents when casting", color, colCD);
+                AddStatLine(260, 375, 80, "Low Reagent", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerRegCost, false), MyServerSettings.LowerReg()), "Increases chance to not use reagents when casting", color, colCD);
             if (MyServerSettings.LowerMana() > 0)
-                AddStatLine(260, 375, 80, "Low Mana", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerManaCost), MyServerSettings.LowerMana()), "Reduces mana cost of casting spells and using abilities", color, colCD);
+                AddStatLine(260, 375, 80, "Low Mana", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerManaCost, false), MyServerSettings.LowerMana()), "Reduces mana cost of casting spells and using abilities", color, colCD);
 
             AddStatLine(260, 375, 80, "Spell Damage +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.SpellDamage), SDICap), "Increases damage done by spells", color, colCD);
             AddStatLine(260, 375, 80, "Resurrect Cost", string.Format("{0}", GetPlayerInfo.GetResurrectCost(from)), null, color, colCD);
