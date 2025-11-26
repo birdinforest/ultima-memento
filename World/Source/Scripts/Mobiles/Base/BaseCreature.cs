@@ -8651,12 +8651,12 @@ namespace Server.Mobiles
 			return rights;
 		}
 
-		public virtual void OnKilledBy( Mobile mob )
+		public virtual void OnKilledBy( Mobile mob, Container corpse )
 		{
 			if ( m_Paragon && Paragon.CheckArtifactChance( mob, this ) )
 				Paragon.GiveArtifactTo( mob );
 
-            EventSink.InvokeOnKilledBy(new OnKilledByArgs(this, mob));
+            EventSink.InvokeOnKilledBy( this, mob, corpse );
 		}
 
 		public override void OnDeath( Container c )
@@ -8823,7 +8823,7 @@ namespace Server.Mobiles
 							karma.Add( totalKarma );
 						}
 
-						OnKilledBy( ds.m_Mobile );
+						OnKilledBy( ds.m_Mobile, c );
 					}
 					for ( int i = 0; i < titles.Count; ++i )
 					{
