@@ -15,53 +15,53 @@ namespace Server.Misc
 		public static void Initialize()
 		{
 			// Register our event handler
-			EventSink.CharacterCreated += new CharacterCreatedEventHandler( EventSink_CharacterCreated );
+			EventSink.CharacterCreated += new CharacterCreatedEventHandler(EventSink_CharacterCreated);
 		}
 
-		private static void AddBackpack( Mobile m )
+		private static void AddBackpack(Mobile m)
 		{
 			Container pack = m.Backpack;
 
-			if ( pack == null )
+			if (pack == null)
 			{
 				pack = new Backpack();
 				pack.Movable = false;
 
-				m.AddItem( pack );
+				m.AddItem(pack);
 			}
 
 			// PackItem( new BeginnerBook() );
 
 			//---------------------------------------------
-			if ( MyServerSettings.StartingGold() > 0 )
-				PackItem(pack, new Gold( MyServerSettings.StartingGold() ) );
+			if (MyServerSettings.StartingGold() > 0)
+				PackItem(pack, new Gold(MyServerSettings.StartingGold()));
 
-			PackItem(pack,  new Pitcher( BeverageType.Water ) );
+			PackItem(pack, new Pitcher(BeverageType.Water));
 
-			switch ( Utility.RandomMinMax( 1, 2 ) )
+			switch (Utility.RandomMinMax(1, 2))
 			{
-				case 1: PackItem(pack,  new Dagger() ); break;
-				case 2: PackItem(pack,  new LargeKnife() ); break;
+				case 1: PackItem(pack, new Dagger()); break;
+				case 2: PackItem(pack, new LargeKnife()); break;
 			}
 			//---------------------------------------------
 			Container bag = new Bag();
 			int food = 10;
-			while ( food > 0 )
+			while (food > 0)
 			{
 				food--;
-				bag.DropItem( Loot.RandomFoods( true, true ) );
+				bag.DropItem(Loot.RandomFoods(true, true));
 			}
-			PackItem(pack,  bag );
+			PackItem(pack, bag);
 			//---------------------------------------------
 			int light = 2;
-			while ( light > 0 )
+			while (light > 0)
 			{
 				light--;
-				switch ( Utility.RandomMinMax( 1, 3 ) )
+				switch (Utility.RandomMinMax(1, 3))
 				{
-					case 1: PackItem(pack, new Torch() ); break;
-					case 2: PackItem(pack, new Lantern() ); break;
-					case 3: PackItem(pack, new Candle() ); break;
+					case 1: PackItem(pack, new Torch()); break;
+					case 2: PackItem(pack, new Lantern()); break;
+					case 3: PackItem(pack, new Candle()); break;
 				}
 			}
 			//---------------------------------------------
@@ -70,35 +70,35 @@ namespace Server.Misc
 			((PlayerMobile)m).GumpHue = 1;
 		}
 
-		private static Mobile CreateMobile( Account a )
+		private static Mobile CreateMobile(Account a)
 		{
-			if ( a.Count >= a.Limit )
+			if (a.Count >= a.Limit)
 				return null;
 
-			for ( int i = 0; i < a.Length; ++i )
+			for (int i = 0; i < a.Length; ++i)
 			{
-				if ( a[i] == null )
+				if (a[i] == null)
 					return (a[i] = new PlayerMobile());
 			}
 
 			return null;
 		}
 
-		private static void EventSink_CharacterCreated( CharacterCreatedEventArgs args )
+		private static void EventSink_CharacterCreated(CharacterCreatedEventArgs args)
 		{
-			if ( !VerifyProfession( args.Profession ) )
+			if (!VerifyProfession(args.Profession))
 				args.Profession = 0;
 
 			NetState state = args.State;
 
-			if ( state == null )
+			if (state == null)
 				return;
 
-			Mobile newChar = CreateMobile( args.Account as Account );
+			Mobile newChar = CreateMobile(args.Account as Account);
 
-			if ( newChar == null )
+			if (newChar == null)
 			{
-				Console.WriteLine( "Login: {0}: Character creation failed, account full", state );
+				Console.WriteLine("Login: {0}: Character creation failed, account full", state);
 				return;
 			}
 
@@ -106,36 +106,36 @@ namespace Server.Misc
 			m_Mobile = newChar;
 
 			newChar.Player = true;
-			newChar.StatCap = 250; 
-			((PlayerMobile)newChar).SetCharacterType( CharacterType.Default );
+			newChar.StatCap = 250;
+			((PlayerMobile)newChar).SetCharacterType(CharacterType.Default);
 			newChar.AccessLevel = args.Account.AccessLevel;
 			newChar.Female = args.Female;
 			newChar.Race = Race.Human;
 			newChar.RaceMakeSounds = true;
 
-			newChar.Hue = newChar.Race.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
+			newChar.Hue = newChar.Race.ClipSkinHue(args.Hue & 0x3FFF) | 0x8000;
 
-			if ( newChar.Hue >= 33770 ){ newChar.Hue = newChar.Hue - 32768; }
+			if (newChar.Hue >= 33770) { newChar.Hue = newChar.Hue - 32768; }
 
 			newChar.Hunger = 20;
 			newChar.Thirst = 20;
 
 			bool young = false;
 
-			if ( newChar is PlayerMobile )
+			if (newChar is PlayerMobile)
 			{
-				PlayerMobile pm = (PlayerMobile) newChar;
+				PlayerMobile pm = (PlayerMobile)newChar;
 				pm.PublicInfo = true;
 				young = pm.Young = false;
 			}
 
-			SetName( newChar, args.Name );
+			SetName(newChar, args.Name);
 
-			AddBackpack( newChar );
+			AddBackpack(newChar);
 
-			SetStats( newChar, state, args.Str, args.Dex, args.Int );
-			SkillNameValue[] setSkills = SetSkills( newChar, args.Skills, args.Profession );
-            AddSkillBasedItems(newChar, setSkills);
+			SetStats(newChar, state, args.Str, args.Dex, args.Int);
+			SkillNameValue[] setSkills = SetSkills(newChar, args.Skills, args.Profession);
+			AddSkillBasedItems(newChar, setSkills);
 
 			newChar.Mana = args.Int * 2;
 			newChar.Hits = args.Str * 2;
@@ -143,49 +143,49 @@ namespace Server.Misc
 
 			Race race = newChar.Race;
 
-			if( race.ValidateHair( newChar, args.HairID ) )
+			if (race.ValidateHair(newChar, args.HairID))
 			{
 				newChar.HairItemID = args.HairID;
-				newChar.HairHue = race.ClipHairHue( args.HairHue );
-				newChar.RecordsHair( true );
+				newChar.HairHue = race.ClipHairHue(args.HairHue);
+				newChar.RecordsHair(true);
 			}
 
-			if( race.ValidateFacialHair( newChar, args.BeardID ) )
+			if (race.ValidateFacialHair(newChar, args.BeardID))
 			{
 				newChar.FacialHairItemID = args.BeardID;
-				newChar.FacialHairHue = race.ClipHairHue( args.BeardHue );
-				newChar.RecordsHair( true );
+				newChar.FacialHairHue = race.ClipHairHue(args.BeardHue);
+				newChar.RecordsHair(true);
 			}
 
-			Server.Misc.IntelligentAction.DressUpMerchants( newChar );
+			Server.Misc.IntelligentAction.DressUpMerchants(newChar);
 
-			switch ( Utility.RandomMinMax( 1, 3 ) )
+			switch (Utility.RandomMinMax(1, 3))
 			{
-				case 1: Item torch = new Torch(); 		newChar.AddItem( torch ); 	torch.OnDoubleClick( newChar); 	break;
-				case 2: Item lamp = new Lantern(); 		newChar.AddItem( lamp ); 	lamp.OnDoubleClick( newChar); 	break;
-				case 3: Item candle = new Candle(); 	newChar.AddItem( candle );	candle.OnDoubleClick( newChar); break;
+				case 1: Item torch = new Torch(); newChar.AddItem(torch); torch.OnDoubleClick(newChar); break;
+				case 2: Item lamp = new Lantern(); newChar.AddItem(lamp); lamp.OnDoubleClick(newChar); break;
+				case 3: Item candle = new Candle(); newChar.AddItem(candle); candle.OnDoubleClick(newChar); break;
 			}
 
-			newChar.RecordFeatures( true );
+			newChar.RecordFeatures(true);
 
-			CityInfo city = new CityInfo( "Sosaria", "Forest", 3579, 3423, 0, Map.Sosaria );
+			CityInfo city = new CityInfo("Sosaria", "Forest", 3579, 3423, 0, Map.Sosaria);
 
-			newChar.MoveToWorld( city.Location, city.Map );
+			newChar.MoveToWorld(city.Location, city.Map);
 
-			Console.WriteLine( "Login: {0}: New character being created (account={1})", state, args.Account.Username );
+			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
 
-			new WelcomeTimer( newChar ).Start();
+			new WelcomeTimer(newChar).Start();
 		}
 
-		public static bool VerifyProfession( int profession )
+		public static bool VerifyProfession(int profession)
 		{
-			if ( profession < 0 )
+			if (profession < 0)
 				return false;
-			else if ( profession < 4 )
+			else if (profession < 4)
 				return true;
-			else if ( Core.AOS && profession < 6 )
+			else if (Core.AOS && profession < 6)
 				return true;
-			else if ( Core.SE && profession < 8 )
+			else if (Core.SE && profession < 8)
 				return true;
 			else
 				return false;
@@ -195,7 +195,7 @@ namespace Server.Misc
 		{
 			Mobile m_Mobile;
 			int m_Message;
-			public BadStartMessage( Mobile m, int message ) : base( TimeSpan.FromSeconds ( 3.5 ) )
+			public BadStartMessage(Mobile m, int message) : base(TimeSpan.FromSeconds(3.5))
 			{
 				m_Mobile = m;
 				m_Message = message;
@@ -204,11 +204,11 @@ namespace Server.Misc
 
 			protected override void OnTick()
 			{
-				m_Mobile.SendLocalizedMessage( m_Message );
+				m_Mobile.SendLocalizedMessage(m_Message);
 			}
 		}
 
-		private static void FixStats( ref int str, ref int dex, ref int intel, int max )
+		private static void FixStats(ref int str, ref int dex, ref int intel, int max)
 		{
 			int vMax = max - 30;
 
@@ -216,18 +216,18 @@ namespace Server.Misc
 			int vDex = dex - 10;
 			int vInt = intel - 10;
 
-			if ( vStr < 0 )
+			if (vStr < 0)
 				vStr = 0;
 
-			if ( vDex < 0 )
+			if (vDex < 0)
 				vDex = 0;
 
-			if ( vInt < 0 )
+			if (vInt < 0)
 				vInt = 0;
 
 			int total = vStr + vDex + vInt;
 
-			if ( total == 0 || total == vMax )
+			if (total == 0 || total == vMax)
 				return;
 
 			double scalar = vMax / (double)total;
@@ -236,42 +236,42 @@ namespace Server.Misc
 			vDex = (int)(vDex * scalar);
 			vInt = (int)(vInt * scalar);
 
-			FixStat( ref vStr, (vStr + vDex + vInt) - vMax, vMax );
-			FixStat( ref vDex, (vStr + vDex + vInt) - vMax, vMax );
-			FixStat( ref vInt, (vStr + vDex + vInt) - vMax, vMax );
+			FixStat(ref vStr, (vStr + vDex + vInt) - vMax, vMax);
+			FixStat(ref vDex, (vStr + vDex + vInt) - vMax, vMax);
+			FixStat(ref vInt, (vStr + vDex + vInt) - vMax, vMax);
 
 			str = vStr + 10;
 			dex = vDex + 10;
 			intel = vInt + 10;
 		}
 
-		private static void FixStat( ref int stat, int diff, int max )
+		private static void FixStat(ref int stat, int diff, int max)
 		{
 			stat += diff;
 
-			if ( stat < 0 )
+			if (stat < 0)
 				stat = 0;
-			else if ( stat > max )
+			else if (stat > max)
 				stat = max;
 		}
 
-		private static void SetStats( Mobile m, NetState state, int str, int dex, int intel )
+		private static void SetStats(Mobile m, NetState state, int str, int dex, int intel)
 		{
 			int max = state.NewCharacterCreation ? 90 : 80;
 
-			FixStats( ref str, ref dex, ref intel, max );
+			FixStats(ref str, ref dex, ref intel, max);
 
-			if ( str < 10 || str > 60 || dex < 10 || dex > 60 || intel < 10 || intel > 60 || (str + dex + intel) != max )
+			if (str < 10 || str > 60 || dex < 10 || dex > 60 || intel < 10 || intel > 60 || (str + dex + intel) != max)
 			{
 				str = 10;
 				dex = 10;
 				intel = 10;
 			}
 
-			m.InitStats( str, dex, intel );
+			m.InitStats(str, dex, intel);
 		}
 
-		private static void SetName( Mobile m, string name )
+		private static void SetName(Mobile m, string name)
 		{
 			name = name.Trim();
 
@@ -280,160 +280,160 @@ namespace Server.Misc
 			else
 				m.Name = name;
 		}
-      
-		public static bool CheckDupe( Mobile m, string name )
+
+		public static bool CheckDupe(Mobile m, string name)
 		{
-			if( m == null || name == null || name.Length == 0 )
+			if (m == null || name == null || name.Length == 0)
 				return false;
 
 			name = name.Trim(); //Trim the name and re-assign it
 
-			if( !NameVerification.Validate( name, 2, 16, true, true, true, 1, NameVerification.SpaceDashPeriodQuote ) )
+			if (!NameVerification.Validate(name, 2, 16, true, true, true, 1, NameVerification.SpaceDashPeriodQuote))
 				return false;
 
-			foreach( Mobile wm in World.Mobiles.Values )
+			foreach (Mobile wm in World.Mobiles.Values)
 			{
-				if( wm != m && !wm.Deleted && wm is PlayerMobile && Insensitive.Equals(wm.RawName, name) ) //Filter Mobiles by PlayerMobile type and do the name check in one go, no need for another list.
+				if (wm != m && !wm.Deleted && wm is PlayerMobile && Insensitive.Equals(wm.RawName, name)) //Filter Mobiles by PlayerMobile type and do the name check in one go, no need for another list.
 					return false; // No need to clear anything since we did not make any temporary lists.
 			}
 
 			return true;
 		}
 
-		private static bool ValidSkills( SkillNameValue[] skills )
+		private static bool ValidSkills(SkillNameValue[] skills)
 		{
 			int total = 0;
 
-			for ( int i = 0; i < skills.Length; ++i )
+			for (int i = 0; i < skills.Length; ++i)
 			{
-				if ( skills[i].Value < 0 || skills[i].Value > 50 )
+				if (skills[i].Value < 0 || skills[i].Value > 50)
 					return false;
 
 				total += skills[i].Value;
 
-				for ( int j = i + 1; j < skills.Length; ++j )
+				for (int j = i + 1; j < skills.Length; ++j)
 				{
-					if ( skills[j].Value > 0 && skills[j].Name == skills[i].Name )
+					if (skills[j].Value > 0 && skills[j].Name == skills[i].Name)
 						return false;
 				}
 			}
 
-			return ( total == 100 || total == 120 );
+			return (total == 100 || total == 120);
 		}
 
 		private static Mobile m_Mobile;
 
-		private static SkillNameValue[] SetSkills( Mobile m, SkillNameValue[] skills, int prof )
+		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, int prof)
 		{
-			switch ( prof )
+			switch (prof)
 			{
 				case 6: // Mage
-				{
-					m.InitStats( 35, 10, 45 ); // 90
-					skills = new SkillNameValue[]
-						{
+					{
+						m.InitStats(35, 10, 45); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Magery, 30 ),
 							new SkillNameValue( SkillName.Psychology, 30 ),
 							new SkillNameValue( SkillName.Mercantile, 30 ),
 							new SkillNameValue( SkillName.FistFighting, 30 )
-						};
+							};
 
-					break;
-				}
-				case 7:	// Archer
-				{
-					m.InitStats( 35, 40, 15 ); // 90
-					skills = new SkillNameValue[]
-						{
+						break;
+					}
+				case 7: // Archer
+					{
+						m.InitStats(35, 40, 15); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Marksmanship, 30 ),
 							new SkillNameValue( SkillName.Tactics, 30 ),
 							new SkillNameValue( SkillName.Bowcraft, 30 ),
 							new SkillNameValue( SkillName.Lumberjacking, 30 )
-						};
-					break;
-				}
-				case 5:	// Warrior
-				{
-					m.InitStats( 50, 30, 10 ); // 90
-					skills = new SkillNameValue[]
-						{
+							};
+						break;
+					}
+				case 5: // Warrior
+					{
+						m.InitStats(50, 30, 10); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Swords, 30 ),
 							new SkillNameValue( SkillName.Tactics, 30 ),
 							new SkillNameValue( SkillName.Parry, 30 ),
 							new SkillNameValue( SkillName.Healing, 30 )
-						};
-					break;
-				}
+							};
+						break;
+					}
 				case 4: // Knight
-				{
-					m.InitStats( 50, 25, 15 ); // 90
-					skills = new SkillNameValue[]
-						{
+					{
+						m.InitStats(50, 25, 15); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Knightship, 30 ),
 							new SkillNameValue( SkillName.Tactics, 30 ),
 							new SkillNameValue( SkillName.Healing, 30 ),
 							new SkillNameValue( SkillName.Swords, 30 )
-						};
+							};
 
-					break;
-				}
+						break;
+					}
 				case 1: // Ninja
-				{
-					m.InitStats( 40, 30, 20 ); // 90
-					skills = new SkillNameValue[]
-						{
+					{
+						m.InitStats(40, 30, 20); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Ninjitsu, 30 ),
 							new SkillNameValue( SkillName.Hiding, 30 ),
 							new SkillNameValue( SkillName.Stealth, 30 ),
 							new SkillNameValue( SkillName.Fencing, 30 )
-						};
+							};
 
-					break;
-				}
+						break;
+					}
 				case 2: // Bard
-				{
-					m.InitStats( 40, 30, 20 ); // 90
-					skills = new SkillNameValue[]
-						{
+					{
+						m.InitStats(40, 30, 20); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Musicianship, 30 ),
 							new SkillNameValue( SkillName.Peacemaking, 30 ),
 							new SkillNameValue( SkillName.Discordance, 30 ),
 							new SkillNameValue( SkillName.Provocation, 30 )
-						};
+							};
 
-					break;
-				}
+						break;
+					}
 				case 3: // Druid
-				{
-					m.InitStats( 30, 20, 40 ); // 90
-					skills = new SkillNameValue[]
-						{
+					{
+						m.InitStats(30, 20, 40); // 90
+						skills = new SkillNameValue[]
+							{
 							new SkillNameValue( SkillName.Druidism, 30 ),
 							new SkillNameValue( SkillName.Taming, 30 ),
 							new SkillNameValue( SkillName.Veterinary, 30 ),
 							new SkillNameValue( SkillName.Herding, 30 )
-						};
+							};
 
-					break;
-				}
+						break;
+					}
 				default:
-				{
-					if ( !ValidSkills( skills ) )
-						return new SkillNameValue[] { };
+					{
+						if (!ValidSkills(skills))
+							return new SkillNameValue[] { };
 
-					break;
-				}
+						break;
+					}
 			}
 
-			for ( int i = 0; i < skills.Length; ++i )
+			for (int i = 0; i < skills.Length; ++i)
 			{
 				SkillNameValue snv = skills[i];
 
-				if ( snv.Value > 0 && ( snv.Name != SkillName.Stealth || prof == 1 ) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism )
+				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == 1) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism)
 				{
 					Skill skill = m.Skills[snv.Name];
 
-					if ( skill != null )
+					if (skill != null)
 					{
 						skill.BaseFixedPoint = snv.Value * 10;
 					}
@@ -768,7 +768,7 @@ namespace Server.Misc
 
 					case SkillName.Lockpicking:
 						PackItem(bag, new Lockpick { Amount = 10 });
-						PackItem(bag, new PickBoxDifficult() { Movable = true } );
+						PackItem(bag, new PickBoxDifficult() { Movable = true });
 						break;
 
 					case SkillName.Magery:
@@ -957,5 +957,5 @@ namespace Server.Misc
 				}
 			}
 		}
-    }
+	}
 }
