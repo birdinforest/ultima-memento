@@ -4,13 +4,13 @@ using Server.Mobiles;
 using Server.Network;
 using System;
 using System.Collections.Generic;
-using System.Linq; //Unique Naming System//
+using System.Linq;
 
 namespace Server.Misc
 {
 	public class CharacterCreation
 	{
-		public const string GENERIC_NAME = "Generic Player"; //Unique Naming System//
+		public const string GENERIC_NAME = "Generic Player";
 
 		private static readonly List<Layer> NonArmorLayers = new List<Layer>
 		{
@@ -31,6 +31,22 @@ namespace Server.Misc
 		};
 
 		private static Mobile m_Mobile;
+
+		private enum _StarterProfessions
+		{
+			FIRST = Custom,
+
+			Custom = 0,
+			Ninja = 1,
+			Bard = 2,
+			Druid = 3,
+			Knight = 4,
+			Warrior = 5,
+			Mage = 6,
+			Archer = 7,
+
+			LAST = Archer
+		}
 
 		public static bool CheckDupe(Mobile m, string name)
 		{
@@ -55,72 +71,6 @@ namespace Server.Misc
 		{
 			// Register our event handler
 			EventSink.CharacterCreated += new CharacterCreatedEventHandler(EventSink_CharacterCreated);
-		}
-
-		public static bool VerifyProfession(int profession)
-		{
-			if (profession < 0)
-				return false;
-			else if (profession < 4)
-				return true;
-			else if (Core.AOS && profession < 6)
-				return true;
-			else if (Core.SE && profession < 8)
-				return true;
-			else
-				return false;
-		}
-
-		private static void AddBackpack(Mobile m)
-		{
-			Container pack = m.Backpack;
-
-			if (pack == null)
-			{
-				pack = new Backpack();
-				pack.Movable = false;
-
-				m.AddItem(pack);
-			}
-
-			// PackItem( new BeginnerBook() );
-
-			//---------------------------------------------
-			if (MyServerSettings.StartingGold() > 0)
-				PackItem(pack, new Gold(MyServerSettings.StartingGold()));
-
-			PackItem(pack, new Pitcher(BeverageType.Water));
-
-			switch (Utility.RandomMinMax(1, 2))
-			{
-				case 1: PackItem(pack, new Dagger()); break;
-				case 2: PackItem(pack, new LargeKnife()); break;
-			}
-			//---------------------------------------------
-			Container bag = new Bag();
-			int food = 10;
-			while (food > 0)
-			{
-				food--;
-				bag.DropItem(Loot.RandomFoods(true, true));
-			}
-			PackItem(pack, bag);
-			//---------------------------------------------
-			int light = 2;
-			while (light > 0)
-			{
-				light--;
-				switch (Utility.RandomMinMax(1, 3))
-				{
-					case 1: PackItem(pack, new Torch()); break;
-					case 2: PackItem(pack, new Lantern()); break;
-					case 3: PackItem(pack, new Candle()); break;
-				}
-			}
-			//---------------------------------------------
-
-			((PlayerMobile)m).WeaponBarOpen = 1;
-			((PlayerMobile)m).GumpHue = 1;
 		}
 
 		private static void AddSkillBasedItems(Mobile m, SkillNameValue[] skills)
@@ -439,15 +389,71 @@ namespace Server.Misc
 			}
 		}
 
-		private static Mobile CreateMobile(Account a)
+		private static void ApplyCharacterDefaults(PlayerMobile newChar, AccessLevel accessLevel, bool female, int hue)
+		{
+			newChar.Player = true;
+			newChar.Young = false;
+			newChar.StatCap = 250;
+			newChar.SetCharacterType(CharacterType.Default);
+			newChar.AccessLevel = accessLevel;
+
+			// Appearance
+			newChar.Female = female;
+			newChar.Race = Race.Human;
+			newChar.RaceMakeSounds = true;
+			newChar.Hue = newChar.Race.ClipSkinHue(hue & 0x3FFF) | 0x8000;
+			if (newChar.Hue >= 33770) { newChar.Hue = newChar.Hue - 32768; }
+
+			newChar.Hunger = 20;
+			newChar.Thirst = 20;
+
+			InitializeBackpack(newChar);
+
+			// Dress up character
+			Server.Misc.IntelligentAction.DressUpMerchants(newChar);
+			switch (Utility.RandomMinMax(1, 3))
+			{
+				case 1: Item torch = new Torch(); newChar.AddItem(torch); torch.OnDoubleClick(newChar); break;
+				case 2: Item lamp = new Lantern(); newChar.AddItem(lamp); lamp.OnDoubleClick(newChar); break;
+				case 3: Item candle = new Candle(); newChar.AddItem(candle); candle.OnDoubleClick(newChar); break;
+			}
+
+			newChar.MoveToWorld(new Point3D(3579, 3423, 0), Map.Sosaria); // Gypsy Forest
+		}
+
+		private static void ApplyHairStyling(PlayerMobile newChar, int hairId, int hairHue, int beardId, int beardHue)
+		{
+			var race = newChar.Race;
+			if (race.ValidateHair(newChar, hairId))
+			{
+				newChar.HairItemID = hairId;
+				newChar.HairHue = race.ClipHairHue(hairHue);
+				newChar.RecordsHair(true);
+			}
+
+			if (race.ValidateFacialHair(newChar, beardId))
+			{
+				newChar.FacialHairItemID = beardId;
+				newChar.FacialHairHue = race.ClipHairHue(beardHue);
+				newChar.RecordsHair(true);
+			}
+
+			newChar.RecordFeatures(true);
+		}
+
+		private static PlayerMobile CreateMobile(Account a)
 		{
 			if (a.Count >= a.Limit)
 				return null;
 
 			for (int i = 0; i < a.Length; ++i)
 			{
-				if (a[i] == null)
-					return (a[i] = new PlayerMobile());
+				Mobile mobile = a[i];
+				if (mobile == null)
+				{
+					mobile = a[i] = new PlayerMobile();
+					return (PlayerMobile)mobile;
+				}
 			}
 
 			return null;
@@ -455,16 +461,13 @@ namespace Server.Misc
 
 		private static void EventSink_CharacterCreated(CharacterCreatedEventArgs args)
 		{
-			if (!VerifyProfession(args.Profession))
-				args.Profession = 0;
+			var state = args.State;
+			if (state == null) return;
 
-			NetState state = args.State;
+			if (args.Profession < (int)_StarterProfessions.FIRST || (int)_StarterProfessions.LAST < args.Profession)
+				args.Profession = (int)_StarterProfessions.Custom;
 
-			if (state == null)
-				return;
-
-			Mobile newChar = CreateMobile(args.Account as Account);
-
+			var newChar = CreateMobile(args.Account as Account);
 			if (newChar == null)
 			{
 				Console.WriteLine("Login: {0}: Character creation failed, account full", state);
@@ -474,76 +477,32 @@ namespace Server.Misc
 			args.Mobile = newChar;
 			m_Mobile = newChar;
 
-			newChar.Player = true;
-			newChar.StatCap = 250;
-			((PlayerMobile)newChar).SetCharacterType(CharacterType.Default);
-			newChar.AccessLevel = args.Account.AccessLevel;
-			newChar.Female = args.Female;
-			newChar.Race = Race.Human;
-			newChar.RaceMakeSounds = true;
-
-			newChar.Hue = newChar.Race.ClipSkinHue(args.Hue & 0x3FFF) | 0x8000;
-
-			if (newChar.Hue >= 33770) { newChar.Hue = newChar.Hue - 32768; }
-
-			newChar.Hunger = 20;
-			newChar.Thirst = 20;
-
-			bool young = false;
-
-			if (newChar is PlayerMobile)
 			{
-				PlayerMobile pm = (PlayerMobile)newChar;
-				pm.PublicInfo = true;
-				young = pm.Young = false;
+				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue);
+				ApplyHairStyling(newChar, args.HairID, args.HairHue, args.BeardID, args.BeardHue);
+
+				if (newChar.AccessLevel < AccessLevel.Counselor)
+					SetName(newChar, args.Name);
+
+				SetStats(newChar, state, args.Str, args.Dex, args.Int);
+
+				var setSkills = SetSkills(newChar, args.Skills, (_StarterProfessions)args.Profession);
+				newChar.Hits = newChar.HitsMax;
+				newChar.Stam = newChar.StamMax;
+				newChar.Mana = newChar.ManaMax;
+
+				AddSkillBasedItems(newChar, setSkills);
+
+				newChar.SetCharacterType(CharacterType.Default);
+
+				// Apply player option Defaults
+				newChar.PublicInfo = true;
+				newChar.WeaponBarOpen = 1;
+				newChar.GumpHue = 1;
 			}
-
-			SetName(newChar, args.Name);
-
-			AddBackpack(newChar);
-
-			SetStats(newChar, state, args.Str, args.Dex, args.Int);
-			SkillNameValue[] setSkills = SetSkills(newChar, args.Skills, args.Profession);
-			AddSkillBasedItems(newChar, setSkills);
-
-			newChar.Mana = args.Int * 2;
-			newChar.Hits = args.Str * 2;
-			newChar.Stam = args.Dex * 2;
-
-			Race race = newChar.Race;
-
-			if (race.ValidateHair(newChar, args.HairID))
-			{
-				newChar.HairItemID = args.HairID;
-				newChar.HairHue = race.ClipHairHue(args.HairHue);
-				newChar.RecordsHair(true);
-			}
-
-			if (race.ValidateFacialHair(newChar, args.BeardID))
-			{
-				newChar.FacialHairItemID = args.BeardID;
-				newChar.FacialHairHue = race.ClipHairHue(args.BeardHue);
-				newChar.RecordsHair(true);
-			}
-
-			Server.Misc.IntelligentAction.DressUpMerchants(newChar);
-
-			switch (Utility.RandomMinMax(1, 3))
-			{
-				case 1: Item torch = new Torch(); newChar.AddItem(torch); torch.OnDoubleClick(newChar); break;
-				case 2: Item lamp = new Lantern(); newChar.AddItem(lamp); lamp.OnDoubleClick(newChar); break;
-				case 3: Item candle = new Candle(); newChar.AddItem(candle); candle.OnDoubleClick(newChar); break;
-			}
-
-			newChar.RecordFeatures(true);
-
-			CityInfo city = new CityInfo("Sosaria", "Forest", 3579, 3423, 0, Map.Sosaria);
-
-			newChar.MoveToWorld(city.Location, city.Map);
-
-			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
 
 			new WelcomeTimer(newChar).Start();
+			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
 		}
 
 		private static void FixStat(ref int stat, int diff, int max)
@@ -753,6 +712,51 @@ namespace Server.Misc
 			return item;
 		}
 
+		private static void InitializeBackpack(Mobile m)
+		{
+			Container pack = m.Backpack;
+			if (pack == null)
+			{
+				pack = new Backpack { Movable = false };
+				m.AddItem(pack);
+			}
+
+			// PackItem( new BeginnerBook() );
+
+			//---------------------------------------------
+			if (MyServerSettings.StartingGold() > 0)
+				PackItem(pack, new Gold(MyServerSettings.StartingGold()));
+
+			PackItem(pack, 1, () =>
+			{
+				switch (Utility.RandomMinMax(1, 2))
+				{
+					default:
+					case 1: return new Dagger();
+					case 2: return new LargeKnife();
+				}
+			});
+
+			PackItem(pack, new Pitcher(BeverageType.Water));
+			PackItem(pack, 1, () =>
+			{
+				Container bag = new Bag();
+				PackItem(bag, 10, () => Loot.RandomFoods(true, true));
+				return bag;
+			});
+
+			PackItem(pack, 2, () =>
+			{
+				switch (Utility.RandomMinMax(1, 3))
+				{
+					default:
+					case 1: return new Torch();
+					case 2: return new Lantern();
+					case 3: return new Candle();
+				}
+			});
+		}
+
 		private static void PackItem(Container pack, int count, Func<Item> itemFactory, bool asUnidentified = false)
 		{
 			for (var i = 0; i < count; i++)
@@ -784,99 +788,107 @@ namespace Server.Misc
 				m.Name = name;
 		}
 
-		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, int prof)
+		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, _StarterProfessions prof)
 		{
 			switch (prof)
 			{
-				case 6: // Mage
+				case _StarterProfessions.Mage:
 					{
 						m.InitStats(35, 10, 45); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Magery, 30 ),
-							new SkillNameValue( SkillName.Psychology, 30 ),
-							new SkillNameValue( SkillName.Mercantile, 30 ),
-							new SkillNameValue( SkillName.FistFighting, 30 )
+								new SkillNameValue( SkillName.Magery, 30 ),
+								new SkillNameValue( SkillName.Psychology, 30 ),
+								new SkillNameValue( SkillName.Mercantile, 30 ),
+								new SkillNameValue( SkillName.FistFighting, 30 )
 							};
 
 						break;
 					}
-				case 7: // Archer
+
+				case _StarterProfessions.Archer:
 					{
 						m.InitStats(35, 40, 15); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Marksmanship, 30 ),
-							new SkillNameValue( SkillName.Tactics, 30 ),
-							new SkillNameValue( SkillName.Bowcraft, 30 ),
-							new SkillNameValue( SkillName.Lumberjacking, 30 )
+								new SkillNameValue( SkillName.Marksmanship, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Bowcraft, 30 ),
+								new SkillNameValue( SkillName.Lumberjacking, 30 )
 							};
 						break;
 					}
-				case 5: // Warrior
+
+				case _StarterProfessions.Warrior:
 					{
 						m.InitStats(50, 30, 10); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Swords, 30 ),
-							new SkillNameValue( SkillName.Tactics, 30 ),
-							new SkillNameValue( SkillName.Parry, 30 ),
-							new SkillNameValue( SkillName.Healing, 30 )
+								new SkillNameValue( SkillName.Swords, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Parry, 30 ),
+								new SkillNameValue( SkillName.Healing, 30 )
 							};
 						break;
 					}
-				case 4: // Knight
+
+				case _StarterProfessions.Knight:
 					{
 						m.InitStats(50, 25, 15); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Knightship, 30 ),
-							new SkillNameValue( SkillName.Tactics, 30 ),
-							new SkillNameValue( SkillName.Healing, 30 ),
-							new SkillNameValue( SkillName.Swords, 30 )
+								new SkillNameValue( SkillName.Knightship, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Healing, 30 ),
+								new SkillNameValue( SkillName.Swords, 30 )
 							};
 
 						break;
 					}
-				case 1: // Ninja
+
+				case _StarterProfessions.Ninja:
 					{
 						m.InitStats(40, 30, 20); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Ninjitsu, 30 ),
-							new SkillNameValue( SkillName.Hiding, 30 ),
-							new SkillNameValue( SkillName.Stealth, 30 ),
-							new SkillNameValue( SkillName.Fencing, 30 )
+								new SkillNameValue( SkillName.Ninjitsu, 30 ),
+								new SkillNameValue( SkillName.Hiding, 30 ),
+								new SkillNameValue( SkillName.Stealth, 30 ),
+								new SkillNameValue( SkillName.Fencing, 30 )
 							};
 
 						break;
 					}
-				case 2: // Bard
+
+				case _StarterProfessions.Bard:
 					{
 						m.InitStats(40, 30, 20); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Musicianship, 30 ),
-							new SkillNameValue( SkillName.Peacemaking, 30 ),
-							new SkillNameValue( SkillName.Discordance, 30 ),
-							new SkillNameValue( SkillName.Provocation, 30 )
+								new SkillNameValue( SkillName.Musicianship, 30 ),
+								new SkillNameValue( SkillName.Peacemaking, 30 ),
+								new SkillNameValue( SkillName.Discordance, 30 ),
+								new SkillNameValue( SkillName.Provocation, 30 )
 							};
 
 						break;
 					}
-				case 3: // Druid
+
+				case _StarterProfessions.Druid:
 					{
 						m.InitStats(30, 20, 40); // 90
 						skills = new SkillNameValue[]
 							{
-							new SkillNameValue( SkillName.Druidism, 30 ),
-							new SkillNameValue( SkillName.Taming, 30 ),
-							new SkillNameValue( SkillName.Veterinary, 30 ),
-							new SkillNameValue( SkillName.Herding, 30 )
+								new SkillNameValue( SkillName.Druidism, 30 ),
+								new SkillNameValue( SkillName.Taming, 30 ),
+								new SkillNameValue( SkillName.Veterinary, 30 ),
+								new SkillNameValue( SkillName.Herding, 30 )
 							};
 
 						break;
 					}
+
+				case _StarterProfessions.Custom:
 				default:
 					{
 						if (!ValidSkills(skills))
@@ -890,7 +902,7 @@ namespace Server.Misc
 			{
 				SkillNameValue snv = skills[i];
 
-				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == 1) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism)
+				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == _StarterProfessions.Ninja) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism)
 				{
 					Skill skill = m.Skills[snv.Name];
 
@@ -939,24 +951,6 @@ namespace Server.Misc
 			}
 
 			return (total == 100 || total == 120);
-		}
-
-		private class BadStartMessage : Timer
-		{
-			private int m_Message;
-			private Mobile m_Mobile;
-
-			public BadStartMessage(Mobile m, int message) : base(TimeSpan.FromSeconds(3.5))
-			{
-				m_Mobile = m;
-				m_Message = message;
-				this.Start();
-			}
-
-			protected override void OnTick()
-			{
-				m_Mobile.SendLocalizedMessage(m_Message);
-			}
 		}
 	}
 }
