@@ -749,6 +749,18 @@ namespace Server.Mobiles
 			return min;
 		}
 
+		public override void OnManaChange(int oldValue)
+		{
+			base.OnManaChange(oldValue);
+			if (ExecutesLightningStrike > 0)
+			{
+				if (Mana < ExecutesLightningStrike)
+				{
+					LightningStrike.ClearCurrentMove(this);
+				}
+			}
+		}
+
 		private static void OnLogin( LoginEventArgs e )
 		{
 			PlayerMobile from = e.Mobile as PlayerMobile;
