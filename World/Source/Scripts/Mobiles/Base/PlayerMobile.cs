@@ -144,7 +144,6 @@ namespace Server.Mobiles
 		private bool m_InnocentFugitive;
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
 		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
-		private bool m_NinjaWepCooldown;
 		/*
 		 * a value of zero means, that the mobile is not executing the spell. Otherwise,
 		 * the value should match the BaseMana required
@@ -154,35 +153,14 @@ namespace Server.Mobiles
 
 		private List<Mobile> m_AutoStabled;
 		private List<Mobile> m_AllFollowers;
-		private List<Mobile> m_RecentlyReported;
 
 		#region Getters & Setters
 
-		public List<Mobile> RecentlyReported
-		{
-			get
-			{
-				return m_RecentlyReported;
-			}
-			set
-			{
-				m_RecentlyReported = value;
-			}
-		}
+		public List<Mobile> RecentlyReported { get; set; }
 
 		public List<Mobile> AutoStabled { get { return m_AutoStabled; } }
 
-		public bool NinjaWepCooldown
-		{
-			get
-			{
-				return m_NinjaWepCooldown;
-			}
-			set
-			{
-				m_NinjaWepCooldown = value;
-			}
-		}
+		public bool NinjaWepCooldown { get; set; }
 
 		public List<Mobile> AllFollowers
 		{
@@ -264,9 +242,6 @@ namespace Server.Mobiles
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime InnTime { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool PauseDoor { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool SneakDamage { get; set; }
@@ -2584,7 +2559,7 @@ namespace Server.Mobiles
 			m_VisList = new List<Mobile>();
 			m_PermaFlags = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
-			m_RecentlyReported = new List<Mobile>();
+			RecentlyReported = new List<Mobile>();
 
 			m_GameTime = TimeSpan.Zero;
 			m_ShortTermElapse = TimeSpan.FromHours( 8.0 );
@@ -3464,8 +3439,8 @@ namespace Server.Mobiles
 				}
 			}
 
-			if (m_RecentlyReported == null)
-				m_RecentlyReported = new List<Mobile>();
+			if (RecentlyReported == null)
+				RecentlyReported = new List<Mobile>();
 
 			if ( m_PermaFlags == null )
 				m_PermaFlags = new List<Mobile>();
