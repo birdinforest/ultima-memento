@@ -21,6 +21,7 @@ using Server.Accounting;
 using Server.Engines.Craft;
 using Server.Engines.PartySystem;
 using Server.Engines.MLQuests;
+using Server.SpellBars;
 
 namespace Server.Mobiles
 {
@@ -83,6 +84,22 @@ namespace Server.Mobiles
 
 	public class PlayerMobile : Mobile
 	{
+		private SpellBarsContext _spellBars;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public SpellBarsContext SpellBars
+		{
+			get
+			{
+				if (_spellBars == null) _spellBars = new SpellBarsContext();
+
+				return _spellBars;
+			}
+			set
+			{
+			}
+		}
+
 		public bool WarnedSkaraBrae;
 		public bool WarnedBottleCity;
 
@@ -2935,72 +2952,6 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool UsingAncientBook { get; set; }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMage1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMage2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMage3 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMage4 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsNecro1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsNecro2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsKnight1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsKnight2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsDeath1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsDeath2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsBard1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsBard2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsPriest1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsPriest2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMonk1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsMonk2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsArch1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsArch2 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsArch3 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsArch4 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsElly1 { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string SpellBarsElly2 { get; set; }
-
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3098,6 +3049,9 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 49:
+					_spellBars = new SpellBarsContext( reader );
+					goto case 48;
 				case 48:
 					ColorlessFabricBreakdown = reader.ReadBool();
 					goto case 47;
@@ -3169,7 +3123,7 @@ namespace Server.Mobiles
 				case 34:
 				{
 					UsingAncientBook = reader.ReadBool();
-					SpellBarsArch4 = reader.ReadString();
+					if ( version < 49 ) SpellBars.Arch4 = reader.ReadString();
 
 					goto case 33;
 				}
@@ -3235,27 +3189,30 @@ namespace Server.Mobiles
 					MessageQuest = reader.ReadString();
 					BardsTaleQuest = reader.ReadString();
 
-					SpellBarsMage1 = reader.ReadString();
-					SpellBarsMage2 = reader.ReadString();
-					SpellBarsMage3 = reader.ReadString();
-					SpellBarsMage4 = reader.ReadString();
-					SpellBarsNecro1 = reader.ReadString();
-					SpellBarsNecro2 = reader.ReadString();
-					SpellBarsKnight1 = reader.ReadString();
-					SpellBarsKnight2 = reader.ReadString();
-					SpellBarsDeath1 = reader.ReadString();
-					SpellBarsDeath2 = reader.ReadString();
-					SpellBarsBard1 = reader.ReadString();
-					SpellBarsBard2 = reader.ReadString();
-					SpellBarsPriest1 = reader.ReadString();
-					SpellBarsPriest2 = reader.ReadString();
-					SpellBarsArch1 = reader.ReadString();
-					SpellBarsArch2 = reader.ReadString();
-					SpellBarsArch3 = reader.ReadString();
-					SpellBarsMonk1 = reader.ReadString();
-					SpellBarsMonk2 = reader.ReadString();
-					SpellBarsElly1 = reader.ReadString();
-					SpellBarsElly2 = reader.ReadString();
+					if ( version < 49 )
+					{
+						SpellBars.Mage1 = reader.ReadString();
+						SpellBars.Mage2 = reader.ReadString();
+						SpellBars.Mage3 = reader.ReadString();
+						SpellBars.Mage4 = reader.ReadString();
+						SpellBars.Necro1 = reader.ReadString();
+						SpellBars.Necro2 = reader.ReadString();
+						SpellBars.Knight1 = reader.ReadString();
+						SpellBars.Knight2 = reader.ReadString();
+						SpellBars.Death1 = reader.ReadString();
+						SpellBars.Death2 = reader.ReadString();
+						SpellBars.Bard1 = reader.ReadString();
+						SpellBars.Bard2 = reader.ReadString();
+						SpellBars.Priest1 = reader.ReadString();
+						SpellBars.Priest2 = reader.ReadString();
+						SpellBars.Arch1 = reader.ReadString();
+						SpellBars.Arch2 = reader.ReadString();
+						SpellBars.Arch3 = reader.ReadString();
+						SpellBars.Monk1 = reader.ReadString();
+						SpellBars.Monk2 = reader.ReadString();
+						SpellBars.Elly1 = reader.ReadString();
+						SpellBars.Elly2 = reader.ReadString();
+					}
 
 					QuickBar = reader.ReadString();
 					ThiefQuest = reader.ReadString();
@@ -3510,7 +3467,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 48 ); // version
+			writer.Write( (int) 49 ); // version
+
+			SpellBars.Serialize( writer );
 
 			writer.Write( ColorlessFabricBreakdown );
 			writer.Write( SingleAttemptID );
@@ -3542,7 +3501,6 @@ namespace Server.Mobiles
 			writer.Write( InnTime );
 
 			writer.Write( UsingAncientBook );
-			writer.Write( SpellBarsArch4 );
 
 			writer.Write( Camp );
 			writer.Write( Bedroll );
@@ -3569,28 +3527,6 @@ namespace Server.Mobiles
 			writer.Write( AssassinQuest );
 			writer.Write( MessageQuest );
 			writer.Write( BardsTaleQuest );
-
-			writer.Write( SpellBarsMage1 );
-			writer.Write( SpellBarsMage2 );
-			writer.Write( SpellBarsMage3 );
-			writer.Write( SpellBarsMage4 );
-			writer.Write( SpellBarsNecro1 );
-			writer.Write( SpellBarsNecro2 );
-			writer.Write( SpellBarsKnight1 );
-			writer.Write( SpellBarsKnight2 );
-			writer.Write( SpellBarsDeath1 );
-			writer.Write( SpellBarsDeath2 );
-			writer.Write( SpellBarsBard1 );
-			writer.Write( SpellBarsBard2 );
-			writer.Write( SpellBarsPriest1 );
-			writer.Write( SpellBarsPriest2 );
-			writer.Write( SpellBarsArch1 );
-			writer.Write( SpellBarsArch2 );
-			writer.Write( SpellBarsArch3 );
-			writer.Write( SpellBarsMonk1 );
-			writer.Write( SpellBarsMonk2 );
-			writer.Write( SpellBarsElly1 );
-			writer.Write( SpellBarsElly2 );
 
 			writer.Write( QuickBar );
 			writer.Write( ThiefQuest );

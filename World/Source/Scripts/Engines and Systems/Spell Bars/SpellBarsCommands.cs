@@ -25,7 +25,7 @@ using Server.Spells.Research;
 using Server.Prompts;
 using Server.Gumps;
 
-namespace Server.Items
+namespace Server.SpellBars
 {
     class AncientBook
     {

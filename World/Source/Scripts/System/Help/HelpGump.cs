@@ -16,6 +16,7 @@ using Server.Items;
 using System.Globalization;
 using Server.Engines.MLQuests.Gumps;
 using Scripts.Mythik.Systems.Achievements;
+using Server.SpellBars;
 
 namespace Server.Engines.Help
 {
