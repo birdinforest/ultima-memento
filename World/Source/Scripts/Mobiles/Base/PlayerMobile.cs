@@ -244,6 +244,9 @@ namespace Server.Mobiles
 		public DateTime InnTime { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
+		public bool PauseDoor { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
 		public bool SneakDamage { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
