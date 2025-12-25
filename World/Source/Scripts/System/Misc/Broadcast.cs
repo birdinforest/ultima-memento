@@ -41,12 +41,7 @@ namespace Server
 			{
 				m.RecordsHair( true );
 
-				// THESE 3 LINES CAN BE REMOVED...MAYBE BY 1-JAN-2022. STORAGE VALUES REPLACED.
-				m.RecordHairColor = ((PlayerMobile)m).WeaponBarOpen;
-				m.RecordBeardColor = ((PlayerMobile)m).WeaponBarOpen;
-				m.RecordSkinColor = ((PlayerMobile)m).GumpHue;
-
-				((PlayerMobile)m).WeaponBarOpen = 1;
+				((PlayerMobile)m).Preferences.WeaponBarOpen = true;
 				((PlayerMobile)m).GumpHue = 1;
 			}
 

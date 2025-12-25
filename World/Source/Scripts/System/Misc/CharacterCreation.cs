@@ -497,7 +497,7 @@ namespace Server.Misc
 
 				// Apply player option Defaults
 				newChar.PublicInfo = true;
-				newChar.WeaponBarOpen = 1;
+				newChar.Preferences.WeaponBarOpen = true;
 				newChar.GumpHue = 1;
 			}
 

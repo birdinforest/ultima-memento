@@ -100,6 +100,22 @@ namespace Server.Mobiles
 			}
 		}
 
+		private PlayerPreferenceContext _preferences;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public PlayerPreferenceContext Preferences
+		{
+			get
+			{
+				if (_preferences == null) _preferences = new PlayerPreferenceContext();
+
+				return _preferences;
+			}
+			set
+			{
+			}
+		}
+
 		public bool WarnedSkaraBrae;
 		public bool WarnedBottleCity;
 
@@ -266,19 +282,7 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool SneakDamage { get; set; }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool DoubleClickID { get; set; }
-
 		public int ExecutesLightningStrike { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool SuppressVendorTooltip { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool SingleAttemptID { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool ColorlessFabricBreakdown { get; set; }
 
 		#endregion
 
@@ -2586,7 +2590,6 @@ namespace Server.Mobiles
 			m_LongTermElapse = TimeSpan.FromHours( 40.0 );
 
 			m_GuildRank = Guilds.RankDefinition.Lowest;
-			ColorlessFabricBreakdown = true;
 		}
 
 		public override bool MutateSpeech( List<Mobile> hears, ref string text, ref object context )
@@ -2873,9 +2876,6 @@ namespace Server.Mobiles
 		public string CharacterDiscovered { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterSheath { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public int CharacterGuilds { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -2888,16 +2888,7 @@ namespace Server.Mobiles
 		public int CharacterBegging { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterWepAbNames { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public int GumpHue { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int WeaponBarOpen { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string CharMusical { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string CharacterLoot { get; set; }
@@ -2972,9 +2963,6 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MagerySpellHue { get; set; }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int ClassicPoisoning { get; set; }
-
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3020,8 +3008,6 @@ namespace Server.Mobiles
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IgnoreVendorGoldSafeguard { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Temptation.PlayerContext Temptations
@@ -3051,14 +3037,15 @@ namespace Server.Mobiles
 			{
 				case 49:
 					_spellBars = new SpellBarsContext( reader );
+					_preferences = new PlayerPreferenceContext( reader );
 					goto case 48;
 				case 48:
-					ColorlessFabricBreakdown = reader.ReadBool();
+					if (version < 49) Preferences.ColorlessFabricBreakdown = reader.ReadBool();
 					goto case 47;
 				case 47:
-					if (version == 47) ColorlessFabricBreakdown = true;
+					if (version == 47) Preferences.ColorlessFabricBreakdown = true;
 
-					SingleAttemptID = reader.ReadBool();
+					if (version < 49) Preferences.SingleAttemptID = reader.ReadBool();
 					goto case 46;
 				case 46:
 					IsTitanOfEther = reader.ReadBool();
@@ -3070,12 +3057,12 @@ namespace Server.Mobiles
 					goto case 44;
 				case 44:
 					if ( version == 44 ) m_NeedRemoveIDSkills = true;
-					SuppressVendorTooltip = reader.ReadBool();
+					if (version < 49) Preferences.SuppressVendorTooltip = reader.ReadBool();
 					goto case 43;
 
 				case 43:
 				case 42:
-					IgnoreVendorGoldSafeguard = reader.ReadBool();
+					if (version < 49) Preferences.IgnoreVendorGoldSafeguard = reader.ReadBool();
 					goto case 41;
 				case 41:
 				case 40:
@@ -3097,7 +3084,7 @@ namespace Server.Mobiles
 				case 38:
 				case 37:
 				{
-					DoubleClickID = reader.ReadBool();
+					if (version < 49) Preferences.DoubleClickID = reader.ReadBool();
 					goto case 36;
 				}
 				case 36:
@@ -3171,12 +3158,12 @@ namespace Server.Mobiles
 					CharacterSkill = reader.ReadInt();
 					CharacterKeys = reader.ReadString();
 					CharacterDiscovered = reader.ReadString();
-					CharacterSheath = reader.ReadInt();
+					if (version < 49) Preferences.CharacterSheath = reader.ReadInt() == 1;
 					CharacterGuilds = reader.ReadInt();
 					CharacterBoatDoor = reader.ReadString();
 					CharacterPublicDoor = reader.ReadString();
 					CharacterBegging = reader.ReadInt();
-					CharacterWepAbNames = reader.ReadInt();
+					if (version < 49) Preferences.CharacterWepAbNames = reader.ReadInt() == 1;
 					CharacterElement = reader.ReadInt();
 
 					if (version < 39) // Property was removed
@@ -3220,16 +3207,16 @@ namespace Server.Mobiles
 					MusicPlaylist = reader.ReadString();
 					CharacterWanted = reader.ReadString();
 					CharacterLoot = reader.ReadString();
-					CharMusical = reader.ReadString();
+					if (version < 49) Preferences.CharMusical = reader.ReadString();
 					EpicQuestName = reader.ReadString();
 					CharacterBarbaric = reader.ReadInt();
 					SkillDisplay = reader.ReadInt();
 					MagerySpellHue = reader.ReadInt();
-					ClassicPoisoning = reader.ReadInt();
+					if (version < 49) Preferences.ClassicPoisoning = reader.ReadInt() == 1;
 					CharacterEvil = reader.ReadInt();
 					CharacterOriental = reader.ReadInt();
 					GumpHue = reader.ReadInt();
-					WeaponBarOpen = reader.ReadInt();
+					if (version < 49) Preferences.WeaponBarOpen = reader.ReadInt() == 1;
 					EpicQuestNumber = reader.ReadInt();
 
 					goto case 28;
@@ -3470,17 +3457,13 @@ namespace Server.Mobiles
 			writer.Write( (int) 49 ); // version
 
 			SpellBars.Serialize( writer );
-
-			writer.Write( ColorlessFabricBreakdown );
-			writer.Write( SingleAttemptID );
+			Preferences.Serialize( writer );
 
 			writer.Write( IsTitanOfEther );
 			writer.Write( (int)CharacterType );
 			writer.Write( m_InnocentFugitive );
 
 			writer.Write(m_NeedRemoveIDSkills);
-			writer.Write(SuppressVendorTooltip);
-			writer.Write(IgnoreVendorGoldSafeguard);
 
 			if( m_AcquiredRecipes == null )
 			{
@@ -3495,8 +3478,6 @@ namespace Server.Mobiles
 					writer.Write( kvp.Value );
 				}
 			}
-
-			writer.Write( DoubleClickID );
 
 			writer.Write( InnTime );
 
@@ -3514,12 +3495,10 @@ namespace Server.Mobiles
 			writer.Write( CharacterSkill );
 			writer.Write( CharacterKeys );
 			writer.Write( CharacterDiscovered );
-			writer.Write( CharacterSheath );
 			writer.Write( CharacterGuilds );
 			writer.Write( CharacterBoatDoor );
 			writer.Write( CharacterPublicDoor );
 			writer.Write( CharacterBegging );
-			writer.Write( CharacterWepAbNames );
 			writer.Write( CharacterElement );
 
 			writer.Write( StandardQuest );
@@ -3534,16 +3513,13 @@ namespace Server.Mobiles
 			writer.Write( MusicPlaylist );
 			writer.Write( CharacterWanted );
 			writer.Write( CharacterLoot );
-			writer.Write( CharMusical );
 			writer.Write( EpicQuestName );
 			writer.Write( CharacterBarbaric );
 			writer.Write( SkillDisplay );
 			writer.Write( MagerySpellHue );
-			writer.Write( ClassicPoisoning );
 			writer.Write( CharacterEvil );
 			writer.Write( CharacterOriental );
 			writer.Write( GumpHue );
-			writer.Write( WeaponBarOpen );
 			writer.Write( EpicQuestNumber );
 
 			writer.Write( (DateTime) PeacedUntil );

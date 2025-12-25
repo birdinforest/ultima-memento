@@ -886,22 +886,22 @@ namespace Server.Engines.Help
 				case PageActionType.Do_Toggle_AFK: return Server.Commands.AFK.m_AFK.Contains( from.Serial.Value );
 
 				case PageActionType.Setting_AutoAttack: return !from.NoAutoAttack;
-				case PageActionType.Setting_AutoSheath: return from.CharacterSheath == 1;
-				case PageActionType.Setting_ClassicPoisoning: return from.ClassicPoisoning == 1;
+				case PageActionType.Setting_AutoSheath: return from.Preferences.CharacterSheath;
+				case PageActionType.Setting_ClassicPoisoning: return from.Preferences.ClassicPoisoning;
 				case PageActionType.Setting_CreatureSounds: return from.RaceMakeSounds;
 				case PageActionType.Setting_GumpImages: return from.GumpHue > 0;
 				case PageActionType.Setting_MessageColors: return from.RainbowMsg;
-				case PageActionType.Setting_MusicTone: return from.CharMusical == "Forest";
+				case PageActionType.Setting_MusicTone: return from.Preferences.CharMusical == "Forest";
 				case PageActionType.Setting_PrivatePlay: return !from.PublicInfo;
-				case PageActionType.Setting_WeaponAbilityBar: return from.WeaponBarOpen > 0;
-				case PageActionType.Setting_WeaponAbilityNames: return from.CharacterWepAbNames == 1;
+				case PageActionType.Setting_WeaponAbilityBar: return from.Preferences.WeaponBarOpen;
+				case PageActionType.Setting_WeaponAbilityNames: return from.Preferences.CharacterWepAbNames;
 				case PageActionType.Setting_UseAncientSpellbook: return ResearchSettings.BookCaster( from );
-				case PageActionType.Setting_DoubleClickToIDItems: return from.DoubleClickID;
+				case PageActionType.Setting_DoubleClickToIDItems: return from.Preferences.DoubleClickID;
 				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
-				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.IgnoreVendorGoldSafeguard;
-				case PageActionType.Setting_SuppressVendorTooltips: return from.SuppressVendorTooltip;
-				case PageActionType.Setting_SingleAttemptID: return from.SingleAttemptID;
-				case PageActionType.Setting_ColorlessFabricBreakdown: return from.ColorlessFabricBreakdown;
+				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.Preferences.IgnoreVendorGoldSafeguard;
+				case PageActionType.Setting_SuppressVendorTooltips: return from.Preferences.SuppressVendorTooltip;
+				case PageActionType.Setting_SingleAttemptID: return from.Preferences.SingleAttemptID;
+				case PageActionType.Setting_ColorlessFabricBreakdown: return from.Preferences.ColorlessFabricBreakdown;
 
 				case PageActionType.Setting_Playstyle_Normal: return from.CharacterEvil == 0 && from.CharacterOriental == 0 && from.CharacterBarbaric == 0;
 				case PageActionType.Setting_Playstyle_Evil: return from.CharacterEvil == 1;
@@ -1165,41 +1165,27 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Setting_WeaponAbilityNames:
 					{
-						if ( ((PlayerMobile)from).CharacterWepAbNames != 1 )
-						{
-							((PlayerMobile)from).CharacterWepAbNames = 1;
-						}
-						else
-						{
-							((PlayerMobile)from).CharacterWepAbNames = 0;
-						}
+						from.Preferences.CharacterWepAbNames = !from.Preferences.CharacterWepAbNames;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_AutoSheath:
 					{
-						if ( ((PlayerMobile)from).CharacterSheath == 1 )
-						{
-							((PlayerMobile)from).CharacterSheath = 0;
-						}
-						else
-						{
-							((PlayerMobile)from).CharacterSheath = 1;
-						}
+						from.Preferences.CharacterSheath = !from.Preferences.CharacterSheath;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_MusicTone:
 					{
-						string tunes = ((PlayerMobile)from).CharMusical;
+						string tunes = from.Preferences.CharMusical;
 
 						if ( tunes == "Forest" )
 						{
-							((PlayerMobile)from).CharMusical = "Dungeon";
+							from.Preferences.CharMusical = "Dungeon";
 						}
 						else
 						{
-							((PlayerMobile)from).CharMusical = "Forest";
+							from.Preferences.CharMusical = "Forest";
 						}
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
@@ -1273,16 +1259,7 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Setting_WeaponAbilityBar:
 					{
-						int wep = ((PlayerMobile)from).WeaponBarOpen;
-
-						if ( wep > 0 )
-						{
-							((PlayerMobile)from).WeaponBarOpen = 0;
-						}
-						else
-						{
-							((PlayerMobile)from).WeaponBarOpen = 1;
-						}
+						from.Preferences.WeaponBarOpen = !from.Preferences.WeaponBarOpen;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
@@ -1398,14 +1375,7 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Setting_ClassicPoisoning:
 					{
-						if ( ((PlayerMobile)from).ClassicPoisoning == 1 )
-						{
-							((PlayerMobile)from).ClassicPoisoning = 0;
-						}
-						else
-						{
-							((PlayerMobile)from).ClassicPoisoning = 1;
-						}
+						from.Preferences.ClassicPoisoning = !from.Preferences.ClassicPoisoning;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
@@ -1417,31 +1387,31 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Setting_DoubleClickToIDItems:
 					{
-						((PlayerMobile)from).DoubleClickID = !((PlayerMobile)from).DoubleClickID;
+						from.Preferences.DoubleClickID = !from.Preferences.DoubleClickID;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_RemoveVendorGoldSafeguard:
 					{
-						((PlayerMobile)from).IgnoreVendorGoldSafeguard = !((PlayerMobile)from).IgnoreVendorGoldSafeguard;
+						from.Preferences.IgnoreVendorGoldSafeguard = !from.Preferences.IgnoreVendorGoldSafeguard;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_SuppressVendorTooltips:
 					{
-						((PlayerMobile)from).SuppressVendorTooltip = !((PlayerMobile)from).SuppressVendorTooltip;
+						from.Preferences.SuppressVendorTooltip = !from.Preferences.SuppressVendorTooltip;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_SingleAttemptID:
 					{
-						((PlayerMobile)from).SingleAttemptID = !((PlayerMobile)from).SingleAttemptID;
+						from.Preferences.SingleAttemptID = !from.Preferences.SingleAttemptID;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_ColorlessFabricBreakdown:
 					{
-						((PlayerMobile)from).ColorlessFabricBreakdown = !((PlayerMobile)from).ColorlessFabricBreakdown;
+						from.Preferences.ColorlessFabricBreakdown = !from.Preferences.ColorlessFabricBreakdown;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}

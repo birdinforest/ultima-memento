@@ -1840,8 +1840,7 @@ namespace Server.Items
 
 				bool willPoison = true;
 
-				int ClassicPoisons = 0;
-				ClassicPoisons = ((PlayerMobile)attacker).ClassicPoisoning;
+				bool ClassicPoisons = ((PlayerMobile)attacker).Preferences.ClassicPoisoning;
 
 				if ( p != null )
 				{
@@ -1861,11 +1860,11 @@ namespace Server.Items
 							willPoison = false;
 					}
 
-					if ( Server.Items.WeaponAbility.GetCurrentAbility( attacker ) == WeaponAbility.ShadowInfectiousStrike && willPoison == true && ClassicPoisons == 0 )
+					if ( Server.Items.WeaponAbility.GetCurrentAbility( attacker ) == WeaponAbility.ShadowInfectiousStrike && willPoison == true && !ClassicPoisons )
 						willPoison = false;
-					else if ( Server.Items.WeaponAbility.GetCurrentAbility( attacker ) == WeaponAbility.InfectiousStrike && willPoison == true && ClassicPoisons == 0 )
+					else if ( Server.Items.WeaponAbility.GetCurrentAbility( attacker ) == WeaponAbility.InfectiousStrike && willPoison == true && !ClassicPoisons )
 						willPoison = false;
-					else if ( ClassicPoisons == 0 )
+					else if ( !ClassicPoisons )
 						willPoison = false;
 
 					if ( defender.Poisoned && willPoison == true )
@@ -1877,7 +1876,7 @@ namespace Server.Items
 							willPoison = false;
 					}
 
-					if ( ClassicPoisons > 0 && !( this is BaseKnife || this is BaseSword || this is BaseSpear ) )
+					if ( ClassicPoisons && !( this is BaseKnife || this is BaseSword || this is BaseSpear ) )
 					{
 						willPoison = false;
 					}

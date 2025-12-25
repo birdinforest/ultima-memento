@@ -293,7 +293,7 @@ namespace Server.Misc
 			{
 				PlayerSettings.MarkQuestInfo( m );
 
-				if ( ((PlayerMobile)m).WeaponBarOpen > 0 ){ return true; }
+				if ( ((PlayerMobile)m).Preferences.WeaponBarOpen ){ return true; }
 			}
 
 			return false;

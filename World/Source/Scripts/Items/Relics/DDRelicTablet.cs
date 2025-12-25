@@ -231,7 +231,7 @@ namespace Server.Items
 			// Try to ID it
 			if (NotIdentified)
 			{
-				if ( e is PlayerMobile && !((PlayerMobile)e).DoubleClickID ) return;
+				if ( e is PlayerMobile && !((PlayerMobile)e).Preferences.DoubleClickID ) return;
 
 				if ( !IsChildOf( e.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack ) 
 					e.SendMessage( "This must be in your backpack to identify." );
