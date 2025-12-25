@@ -83,6 +83,15 @@ namespace Server.Temptation
 			return m_Context[serial] = new PlayerContext();
 		}
 
+		public void MigrateContext(Mobile oldMobile, Mobile newMobile)
+		{
+			var context = GetContextOrDefault(oldMobile);
+			if (context == PlayerContext.Default) return;
+
+			m_Context.Remove(oldMobile.Serial);
+			m_Context.Add(newMobile.Serial, context);
+		}
+
 		private static void LoadData()
 		{
 			Instance.IsEnabled = !File.Exists("Saves//Player//Temptations.bin");
