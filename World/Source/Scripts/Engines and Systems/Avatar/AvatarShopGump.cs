@@ -1,4 +1,5 @@
 using Server.Gumps;
+using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Utilities;
@@ -408,6 +409,18 @@ namespace Server.Engines.Avatar
 					{
 						return new List<IReward>
 						{
+							_ItemReward.Create(
+								1000,
+								() => { return new Gold(500); },
+								amount: 500,
+								graphicOverride: GOLD_STACK_ITEM_ID
+							),
+							_ItemReward.Create(
+								10000,
+								() => { return new Gold(5000); },
+								amount: 5000,
+								graphicOverride: GOLD_STACK_ITEM_ID
+							),
 						};
 					}
 			}
