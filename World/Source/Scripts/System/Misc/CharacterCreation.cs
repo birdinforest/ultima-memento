@@ -101,7 +101,14 @@ namespace Server.Misc
 			newChar.InitStats(existingCharacter.RawStr, existingCharacter.RawDex, existingCharacter.RawInt);
 			newChar.SetCharacterType(CharacterType.Default);
 
+			var netState = existingCharacter.NetState;
+			netState.BlockAllPackets = true;
+			existingCharacter.NetState = null;
+			newChar.NetState = netState;
 			existingCharacter.Name += "_Deleted";
+			existingCharacter.Internalize();
+			netState.BlockAllPackets = false;
+
 			existingCharacter.Delete();
 
 			return newChar;
