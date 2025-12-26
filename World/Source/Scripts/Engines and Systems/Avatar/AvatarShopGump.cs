@@ -207,7 +207,7 @@ namespace Server.Engines.Avatar
 						{
 							context.PointsSaved -= reward.Cost;
 							player.AddToBackpack(item);
-							player.SendMessage("You have purchased the '{0}' for '{1}' coins.", reward.Name, reward.Cost);
+							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, reward.Cost);
 						}
 					}
 					else
@@ -217,7 +217,7 @@ namespace Server.Engines.Avatar
 						{
 							actionReward.OnSelect();
 							context.PointsSaved -= reward.Cost;
-							player.SendMessage("You have purchased the '{0}' for '{1}' coins.", reward.Name, reward.Cost);
+							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, reward.Cost);
 							AvatarEngine.Instance.ApplyContext(player, player.Avatar);
 						}
 					}
