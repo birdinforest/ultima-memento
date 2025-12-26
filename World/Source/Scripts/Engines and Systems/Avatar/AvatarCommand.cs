@@ -18,7 +18,7 @@ namespace Server.Engines.Avatar
 					from.SendMessage("You do not have the Avatar status enabled.");
 					return;
 				}
-				
+
 				const int value = 50000;
 				from.Avatar.PointsSaved += value;
 				from.SendMessage("You have been awarded {0} coins.", value);
@@ -52,6 +52,7 @@ namespace Server.Engines.Avatar
 					from.SendMessage("You have enabled the Avatar status.");
 					var newCharacter = CharacterCreation.ResetCharacter(from);
 					AvatarEngine.InitializePlayer(newCharacter);
+					AvatarEngine.Instance.ApplyContext(newCharacter, newCharacter.Avatar);
 				}
 			);
 			from.SendGump(confirmation);
@@ -65,6 +66,12 @@ namespace Server.Engines.Avatar
 			if (!InGypsyEncampment(from))
 			{
 				from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
+				return;
+			}
+
+			if (!from.Avatar.Active)
+			{
+				from.SendMessage("You do not have the Avatar status enabled.");
 				return;
 			}
 
