@@ -55,7 +55,6 @@ namespace Server.Engines.Avatar
 		{
 			writer.Write(0); // version
 
-			writer.Write(Active);
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
 			writer.Write(SkillCapLevel);
