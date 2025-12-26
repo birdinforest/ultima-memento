@@ -135,7 +135,7 @@ namespace Server.Engines.Avatar
 		{
 			if (e.Corpse == null) return;
 
-			var player = MobileUtilities.TryGetMasterPlayer(e.Killed);
+			var player = MobileUtilities.TryGetKillingPlayer(e.Killed);
 			if (player == null) return;
 
 			var context = GetContextOrDefault(player);
@@ -152,7 +152,7 @@ namespace Server.Engines.Avatar
 			value += GetValue<DDGoldNuggets>(10, corpse);
 			if (value < 1) return;
 
-			value = (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
+			value += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 			context.PointsFarmed += value;
 
 			player.SendMessage("You have gained {0} coins.", value);

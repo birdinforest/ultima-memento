@@ -11,7 +11,8 @@ namespace Server.Engines.Avatar
 		{
 			CommandSystem.Register("avatar-enable", AccessLevel.Player, new CommandEventHandler(EnableAvatarCommand));
 			CommandSystem.Register("avatar-shop", AccessLevel.Player, new CommandEventHandler(OpenAvatarShopCommand));
-			CommandSystem.Register("avatar-points", AccessLevel.Player, args => {
+			CommandSystem.Register("avatar-points", AccessLevel.Player, args =>
+			{
 				var from = (PlayerMobile)args.Mobile;
 				if (!from.Avatar.Active)
 				{
@@ -65,8 +66,9 @@ namespace Server.Engines.Avatar
 			var from = (PlayerMobile)e.Mobile;
 			if (!InGypsyEncampment(from))
 			{
-				from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
-				return;
+				from.SendMessage("Normally you must be in the Gypsy encampment to open the Avatar Shop...");
+				// from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
+				// return;
 			}
 
 			if (!from.Avatar.Active)
