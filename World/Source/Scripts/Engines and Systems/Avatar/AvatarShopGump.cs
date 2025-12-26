@@ -97,7 +97,6 @@ namespace Server.Engines.Avatar
 			{
 				const int ITEMS_PER_PAGE = 8;
 				var skip = (pageNumber - 1) * ITEMS_PER_PAGE;
-				var itemIndex = skip;
 
 				if (pageNumber == 1)
 				{
@@ -110,6 +109,7 @@ namespace Server.Engines.Avatar
 				}
 
 				m_Rewards = new List<IReward>();
+				var itemIndex = 0;
 				foreach (var reward in rewards.Skip(skip).Take(ITEMS_PER_PAGE))
 				{
 					m_Rewards.Add(reward);
@@ -159,6 +159,16 @@ namespace Server.Engines.Avatar
 			string Name { get; }
 		}
 
+		private interface IItemReward : IReward
+		{
+			Func<Item> OnSelect { get; set; }
+		}
+
+		private interface IActionReward : IReward
+		{
+			Action OnSelect { get; set; }
+		}
+
 		public override void OnResponse(NetState sender, RelayInfo info)
 		{
 			var buttonID = info.ButtonID;
@@ -180,6 +190,38 @@ namespace Server.Engines.Avatar
 			}
 			else if ((int)_Actions.PurchaseBase <= buttonID) // Purchase is higher
 			{
+				var index = buttonID - (int)_Actions.PurchaseBase;
+				var reward = m_Rewards[index];
+				var context = m_Context;
+				if (context.PointsSaved < reward.Cost)
+				{
+					player.SendMessage("You do not have enough coins to purchase this.");
+				}
+				else
+				{
+					var itemReward = reward as IItemReward;
+					if (itemReward != null)
+					{
+						var item = itemReward.OnSelect();
+						if (item != null)
+						{
+							context.PointsSaved -= reward.Cost;
+							player.AddToBackpack(item);
+							player.SendMessage("You have purchased the '{0}' for '{1}' coins.", reward.Name, reward.Cost);
+						}
+					}
+					else
+					{
+						var actionReward = reward as IActionReward;
+						if (actionReward != null)
+						{
+							actionReward.OnSelect();
+							context.PointsSaved -= reward.Cost;
+							player.SendMessage("You have purchased the '{0}' for '{1}' coins.", reward.Name, reward.Cost);
+						}
+					}
+				}
+
 				sender.Mobile.SendGump(new AvatarShopGump(m_From, m_SelectedCategory, m_PageNumber, m_onGumpClose));
 			}
 			else if ((int)_Actions.SelectCategoryBase <= buttonID) // Select Category is higher
@@ -237,20 +279,16 @@ namespace Server.Engines.Avatar
 				y += 6;
 
 				// Purchase section
-				const int GRAPHIC_WIDTH = 55;
-				const int GRAPHIC_HEIGHT = 22;
-				const int POINTS_ITEM = 0x0EEC;
 				var canAfford = cost <= points;
 				var pointsColor = canAfford ? HtmlColors.ORANGE : HtmlColors.RED;
-				// GumpUtilities.AddCenteredItemToGump(this, POINTS_ITEM, x, y, GRAPHIC_WIDTH, GRAPHIC_HEIGHT, 0x44C);
-				TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 50, 20, cost.ToString("n0"), pointsColor);
+				TextDefinition.AddHtmlText(this, x, y + 2, 50, 20, cost.ToString("n0"), pointsColor);
 
 				if (canAfford)
 				{
 					y += 30;
 
 					AddButton(x + 13, y - 1, 4023, 4023, (int)_Actions.PurchaseBase + index, GumpButtonType.Reply, 0); // OK
-					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, "Purchase", HtmlColors.ORANGE);
+					TextDefinition.AddHtmlText(this, x, y + 2, 60, 20, "Purchase", HtmlColors.ORANGE);
 				}
 			}
 		}
@@ -393,7 +431,7 @@ namespace Server.Engines.Avatar
 			return (int)(baseCost * Math.Pow(level, 2) + baseCost * level);
 		}
 
-		private class _ItemReward : IReward
+		private class _ItemReward : IItemReward
 		{
 			private static readonly TextInfo m_TextInfo = new CultureInfo("en-US", false).TextInfo;
 
@@ -432,7 +470,7 @@ namespace Server.Engines.Avatar
 			}
 		}
 
-		private class _Reward : IReward
+		private class _Reward : IActionReward
 		{
 			private _Reward()
 			{

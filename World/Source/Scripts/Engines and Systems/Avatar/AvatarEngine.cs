@@ -147,7 +147,10 @@ namespace Server.Engines.Avatar
 			value += GetValue<DDGoldNuggets>(10, corpse);
 			if (value < 1) return;
 
-			context.PointsFarmed += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
+			value = (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
+			context.PointsFarmed += value;
+
+			player.SendMessage("You have gained {0} coins.", value);
 		}
 
 		private void OnPlayerDeath(PlayerDeathEventArgs e)
