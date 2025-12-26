@@ -384,8 +384,8 @@ namespace Server.Engines.Avatar
 							_Reward.Create(
 								SecondOrderCost(100, context.PointGainRateLevel + 1),
 								NO_ITEM_ID,
-								string.Format("Point Gain Rate ({0} of {1})", context.PointGainRateLevel, PlayerContext.POINT_GAIN_RATE_MAX_LEVEL),
-								string.Format("Increases the point gain rate by {0}%. Current bonus: {1}%", PlayerContext.POINT_GAIN_RATE_PER_LEVEL, PlayerContext.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
+								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, PlayerContext.POINT_GAIN_RATE_MAX_LEVEL),
+								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", PlayerContext.POINT_GAIN_RATE_PER_LEVEL, PlayerContext.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
 								context.PointGainRateLevel < PlayerContext.POINT_GAIN_RATE_MAX_LEVEL,
 								() => context.PointGainRateLevel += 1
 							),
