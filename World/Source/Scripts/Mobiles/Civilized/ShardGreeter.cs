@@ -656,6 +656,8 @@ namespace Server.Gumps
 
 			var player = (PlayerMobile)m;
 			TemptationEngine.Instance.ApplyContext( player, player.Temptations );
+			if (player.Avatar.Active) Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
+
 			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
 
 			m.MoveToWorld( loc, map );

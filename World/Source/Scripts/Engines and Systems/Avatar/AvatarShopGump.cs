@@ -101,7 +101,6 @@ namespace Server.Engines.Avatar
 
 				if (pageNumber == 1)
 				{
-					m_Context.PointsSaved = 123456789;
 					var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your war chest is empty.";
 					message += "<br>Coins are earned by killing monsters and completing quests.";
 					AddInformationCard(GIANT_COIN_ITEM_ID, "Your War Chest", message, y, false);
@@ -219,6 +218,7 @@ namespace Server.Engines.Avatar
 							actionReward.OnSelect();
 							context.PointsSaved -= reward.Cost;
 							player.SendMessage("You have purchased the '{0}' for '{1}' coins.", reward.Name, reward.Cost);
+							AvatarEngine.Instance.ApplyContext(player, player.Avatar);
 						}
 					}
 				}
@@ -280,16 +280,17 @@ namespace Server.Engines.Avatar
 				y += 6;
 
 				// Purchase section
+				const int GRAPHIC_WIDTH = 55;
 				var canAfford = cost <= points;
 				var pointsColor = canAfford ? HtmlColors.ORANGE : HtmlColors.RED;
-				TextDefinition.AddHtmlText(this, x, y + 2, 50, 20, cost.ToString("n0"), pointsColor);
+				TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 50, 20, cost.ToString("n0"), pointsColor);
 
 				if (canAfford)
 				{
 					y += 30;
 
 					AddButton(x + 13, y - 1, 4023, 4023, (int)_Actions.PurchaseBase + index, GumpButtonType.Reply, 0); // OK
-					TextDefinition.AddHtmlText(this, x, y + 2, 60, 20, "Purchase", HtmlColors.ORANGE);
+					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, "Purchase", HtmlColors.ORANGE);
 				}
 			}
 		}
@@ -353,10 +354,11 @@ namespace Server.Engines.Avatar
 
 				case Categories.Limits:
 					{
+						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
 						return new List<IReward>
 						{
 							_Reward.Create(
-								SecondOrderCost(1000, context.SkillCapLevel + 1),
+								SecondOrderCost(100, context.SkillCapLevel + 1),
 								FAT_BOTTLE_ITEM_ID,
 								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, PlayerContext.SKILL_CAP_MAX_LEVEL),
 								string.Format("Increases the skill cap by {0}. Current bonus: {1}", PlayerContext.SKILL_CAP_PER_LEVEL, PlayerContext.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),

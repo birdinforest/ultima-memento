@@ -1,9 +1,9 @@
-using System;
-using Server.Mobiles;
-using System.Collections.Generic;
-using System.IO;
 using Server.Items;
 using Server.Misc;
+using Server.Mobiles;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Server.Engines.Avatar
 {
@@ -39,6 +39,11 @@ namespace Server.Engines.Avatar
 				EventSink.OnKilledBy += Instance.OnKilledBy;
 				EventSink.PlayerDeath += Instance.OnPlayerDeath;
 			}
+		}
+
+		public static void InitializePlayer(PlayerMobile player)
+		{
+			player.InitStats(20, 20, 20);
 		}
 
 		public void ApplyContext(PlayerMobile player, PlayerContext context)
@@ -167,6 +172,7 @@ namespace Server.Engines.Avatar
 			var newPlayer = CharacterCreation.ResetCharacter(player);
 			if (newPlayer == null) return;
 
+			InitializePlayer(newPlayer);
 			ApplyContext(newPlayer, newPlayer.Avatar);
 		}
 	}

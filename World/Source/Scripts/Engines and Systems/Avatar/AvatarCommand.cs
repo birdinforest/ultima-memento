@@ -11,6 +11,18 @@ namespace Server.Engines.Avatar
 		{
 			CommandSystem.Register("avatar-enable", AccessLevel.Player, new CommandEventHandler(EnableAvatarCommand));
 			CommandSystem.Register("avatar-shop", AccessLevel.Player, new CommandEventHandler(OpenAvatarShopCommand));
+			CommandSystem.Register("avatar-points", AccessLevel.Player, args => {
+				var from = (PlayerMobile)args.Mobile;
+				if (!from.Avatar.Active)
+				{
+					from.SendMessage("You do not have the Avatar status enabled.");
+					return;
+				}
+				
+				const int value = 50000;
+				from.Avatar.PointsSaved += value;
+				from.SendMessage("You have been awarded {0} coins.", value);
+			});
 		}
 
 		[Usage("avatar-enable")]
@@ -38,7 +50,8 @@ namespace Server.Engines.Avatar
 				{
 					var _ = AvatarEngine.Instance.GetOrCreateContext(from);
 					from.SendMessage("You have enabled the Avatar status.");
-					CharacterCreation.ResetCharacter(from);
+					var newCharacter = CharacterCreation.ResetCharacter(from);
+					AvatarEngine.InitializePlayer(newCharacter);
 				}
 			);
 			from.SendGump(confirmation);

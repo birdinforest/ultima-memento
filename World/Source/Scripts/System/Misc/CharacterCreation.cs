@@ -97,8 +97,11 @@ namespace Server.Misc
 			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue);
 			ApplyHairStyling(newChar, existingCharacter.HairItemID, existingCharacter.HairHue, existingCharacter.FacialHairItemID, existingCharacter.FacialHairHue);
 
+			// Copy stats from existing character
+			newChar.InitStats(existingCharacter.RawStr, existingCharacter.RawDex, existingCharacter.RawInt);
 			newChar.SetCharacterType(CharacterType.Default);
 
+			existingCharacter.Name += "_Deleted";
 			existingCharacter.Delete();
 
 			return newChar;
