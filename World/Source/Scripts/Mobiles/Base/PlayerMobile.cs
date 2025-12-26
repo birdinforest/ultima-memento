@@ -2147,6 +2147,26 @@ namespace Server.Mobiles
 			base.OnDamage( amount, from, willKill );
 		}
 
+		public PlayerMobile CreateCopy(bool includeRecipes)
+		{
+			var newPlayer = new PlayerMobile
+			{
+				Name = Name,
+				StatCap = StatCap,
+
+				_spellBars = SpellBars,
+				_preferences = Preferences,
+				RecordSkinColor = 1, // Idk man, this is to avoid a different hack
+			};
+
+			if (includeRecipes) newPlayer.m_AcquiredRecipes = m_AcquiredRecipes;
+
+			Engines.Avatar.AvatarEngine.Instance.MigrateContext(this, newPlayer);
+			Temptation.TemptationEngine.Instance.MigrateContext(this, newPlayer);
+
+			return newPlayer;
+		}
+
 		public override void Resurrect()
 		{
 			if (Temptations.HasPermanentDeath)
@@ -2996,18 +3016,25 @@ namespace Server.Mobiles
 			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
 			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
+			var avatarAmount = Avatar.Active && Avatar.SkillCapLevel > 0 ? 1000 * Avatar.SkillCapLevel * Engines.Avatar.PlayerContext.SKILL_CAP_PER_LEVEL : 0;
 
 			var titanAmount = IsTitanOfEther
-				? Temptations.LimitTitanBonus
+				? Temptations.LimitTitanBonus || Avatar.Active
 					? 2000
 					: 5000
 				: 0;
 
-			Skills.Cap = baseAmount + boostAmount + typeAmount + titanAmount;
+			Skills.Cap = baseAmount + boostAmount + typeAmount + avatarAmount + titanAmount;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Engines.Avatar.PlayerContext Avatar
+		{
+			get { return Engines.Avatar.AvatarEngine.Instance.GetContextOrDefault(this); }
+			set { }
+		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Temptation.PlayerContext Temptations

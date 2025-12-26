@@ -73,6 +73,37 @@ namespace Server.Misc
 			EventSink.CharacterCreated += new CharacterCreatedEventHandler(EventSink_CharacterCreated);
 		}
 
+		public static PlayerMobile ResetCharacter(PlayerMobile existingCharacter)
+		{
+			var account = existingCharacter.Account as Account;
+			if (account == null) return null;
+
+			// Replace the character slot
+			PlayerMobile newChar = null;
+			for (int i = 0; i < account.Length; ++i)
+			{
+				Mobile mobile = account[i];
+				if (mobile == existingCharacter)
+				{
+					newChar = existingCharacter.CreateCopy(false);
+					account[i] = newChar;
+					break;
+				}
+			}
+
+			if (newChar == null) return null;
+
+			m_Mobile = newChar;
+			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue);
+			ApplyHairStyling(newChar, existingCharacter.HairItemID, existingCharacter.HairHue, existingCharacter.FacialHairItemID, existingCharacter.FacialHairHue);
+
+			newChar.SetCharacterType(CharacterType.Default);
+
+			existingCharacter.Delete();
+
+			return newChar;
+		}
+
 		private static void AddSkillBasedItems(Mobile m, SkillNameValue[] skills)
 		{
 			for (int i = 0; i < skills.Length; i++)
@@ -393,8 +424,6 @@ namespace Server.Misc
 		{
 			newChar.Player = true;
 			newChar.Young = false;
-			newChar.StatCap = 250;
-			newChar.SetCharacterType(CharacterType.Default);
 			newChar.AccessLevel = accessLevel;
 
 			// Appearance
@@ -478,6 +507,7 @@ namespace Server.Misc
 			m_Mobile = newChar;
 
 			{
+				newChar.StatCap = 250;
 				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue);
 				ApplyHairStyling(newChar, args.HairID, args.HairHue, args.BeardID, args.BeardHue);
 

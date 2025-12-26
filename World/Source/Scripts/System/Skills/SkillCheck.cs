@@ -163,6 +163,7 @@ namespace Server.Misc
 
 			if (from is PlayerMobile)
 			{	
+				var player = (PlayerMobile)from;
 				if (skill.Base <= 50)
 					gc *= 1.5;
 				else if (skill.Base <= 70)
@@ -182,7 +183,13 @@ namespace Server.Misc
 				else if (skill.Base <= 125)
 					gc *= 0.38;
 				
-				if (((PlayerMobile)from).Temptations.AcceleratedSkillGain)
+				if (player.Avatar.Active)
+				{
+					if (player.Avatar.SkillGainRateLevel > 0)
+						gc *= 1 + (Engines.Avatar.PlayerContext.SKILL_GAIN_RATE_PER_LEVEL * player.Avatar.SkillGainRateLevel * 0.01);
+				}
+
+				if (player.Temptations.AcceleratedSkillGain)
 					gc *= 1.25;
 			}
 			
@@ -543,7 +550,7 @@ namespace Server.Misc
 
 		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
 		{
-			var gainDelay = player.Temptations.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
+			var gainDelay = player.Temptations.ReduceStatGainDelay || player.Avatar.Active ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
 
 			DateTime end;
 			switch( stat )
