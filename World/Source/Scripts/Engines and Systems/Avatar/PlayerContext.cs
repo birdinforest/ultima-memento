@@ -32,6 +32,8 @@ namespace Server.Engines.Avatar
 			SkillGainRateLevel = reader.ReadInt();
 			PointGainRateLevel = reader.ReadInt();
 			if (0 < version) ImprovedTemplateCount = reader.ReadInt();
+			if (0 < version) UnlockPrimarySkillBoost = reader.ReadBool();
+			if (0 < version) UnlockSecondarySkillBoost = reader.ReadBool();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -61,6 +63,12 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int StatCapLevel { get; set; }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockPrimarySkillBoost { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockSecondarySkillBoost { get; set; }
+
 		public void Serialize(GenericWriter writer)
 		{
 			writer.Write(1); // version
@@ -72,6 +80,8 @@ namespace Server.Engines.Avatar
 			writer.Write(SkillGainRateLevel);
 			writer.Write(PointGainRateLevel);
 			writer.Write(ImprovedTemplateCount);
+			writer.Write(UnlockPrimarySkillBoost);
+			writer.Write(UnlockSecondarySkillBoost);
 		}
 
 		public override string ToString()
