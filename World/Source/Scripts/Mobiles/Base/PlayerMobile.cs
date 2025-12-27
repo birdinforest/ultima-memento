@@ -3040,13 +3040,19 @@ namespace Server.Mobiles
 			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
 			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
-			var avatarAmount = Avatar.Active && Avatar.SkillCapLevel > 0 ? 1000 * Avatar.SkillCapLevel * Engines.Avatar.PlayerContext.SKILL_CAP_PER_LEVEL : 0;
-
+			var avatarAmount = 0;
 			var titanAmount = IsTitanOfEther
-				? Temptations.LimitTitanBonus || Avatar.Active
+				? Temptations.LimitTitanBonus
 					? 2000
 					: 5000
 				: 0;
+			
+			if ( Avatar.Active )
+			{
+				baseAmount = AvatarConstants.SKILL_CAP_BASE;
+				avatarAmount = Avatar.SkillCapLevel > 0 ? 1000 * Avatar.SkillCapLevel * PlayerContext.SKILL_CAP_PER_LEVEL : 0;
+				titanAmount = AvatarConstants.TITAN_SKILL_BONUS;
+			}
 
 			Skills.Cap = baseAmount + boostAmount + typeAmount + avatarAmount + titanAmount;
 		}
