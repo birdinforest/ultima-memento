@@ -252,13 +252,17 @@ namespace Server.Engines.Avatar
 						{
 							actionReward.OnSelect();
 							m_Context.PointsSaved -= cost;
-							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
-							AvatarEngine.Instance.ApplyContext(player, player.Avatar);
+							if (m_SelectedCategory != Categories.Templates)
+							{
+								player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
+								AvatarEngine.Instance.ApplyContext(player, player.Avatar);
+							}
 						}
 					}
 				}
 
-				sender.Mobile.SendGump(new AvatarShopGump(m_From, m_SelectedCategory, m_PageNumber, m_onGumpClose));
+				if (m_SelectedCategory != Categories.Templates)
+					sender.Mobile.SendGump(new AvatarShopGump(m_From, m_SelectedCategory, m_PageNumber, m_onGumpClose));
 			}
 			else if ((int)_Actions.SelectCategoryBase <= buttonID) // Select Category is higher
 			{

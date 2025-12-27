@@ -1,3 +1,4 @@
+using Server.Gumps;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
@@ -82,22 +83,32 @@ namespace Server.Engines.Avatar
 						{
 							if (m_From.NetState == null) return;
 
-							if (m_From.Backpack != null)
-								m_From.Backpack.Delete();
+							var confirmation = new ConfirmationGump(
+								m_From,
+								"Select Template?",
+								string.Format("Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills.", TextDefinition.GetColorizedText("destructive action", HtmlColors.RED)),
+								() =>
+								{
+									if (m_From.Backpack != null)
+										m_From.Backpack.Delete();
 
-							// Reduce all skills to 0
-							for (var i = 0; i < m_From.Skills.Length; i++)
-							{
-								var skill = m_From.Skills[i];
-								if (0 < skill.Base)
-									skill.Base = 0;
-							}
+									// Reduce all skills to 0
+									for (var i = 0; i < m_From.Skills.Length; i++)
+									{
+										var skill = m_From.Skills[i];
+										if (0 < skill.Base)
+											skill.Base = 0;
+									}
 
-							m_From.NetState.BlockAllPackets = true;
-							CharacterCreation.InitializeBackpack(m_From);
-							m_From.NetState.BlockAllPackets = false;
+									m_From.NetState.BlockAllPackets = true;
+									CharacterCreation.InitializeBackpack(m_From);
+									m_From.NetState.BlockAllPackets = false;
 
-							action(m_From);
+									action(m_From);
+									AvatarEngine.Instance.ApplyContext(m_From, m_From.Avatar);
+								}
+							);
+							m_From.SendGump(confirmation);
 						};
 						var rewards = new List<IReward>
 						{
