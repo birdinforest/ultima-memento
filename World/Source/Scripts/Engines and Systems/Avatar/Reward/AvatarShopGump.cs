@@ -149,8 +149,12 @@ namespace Server.Engines.Avatar
 
 			if (randomRewardIndexes == null) return;
 
-			var randomRewards = randomRewardIndexes.Select(index => index < rewards.Count ? rewards[index] : null).Where(reward => reward != null).ToList();
-			if (randomRewards == null) return;
+			var randomRewards = randomRewardIndexes
+				.Select(index => index < rewards.Count ? rewards[index] : null)
+				.Where(reward => reward != null)
+				.OrderBy(reward => reward.Name)
+				.ToList();
+			if (randomRewards.Count < 1) return;
 
 			const int ITEMS_PER_PAGE = 8;
 			var toTake = ITEMS_PER_PAGE;
