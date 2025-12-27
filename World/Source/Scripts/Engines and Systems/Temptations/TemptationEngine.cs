@@ -65,6 +65,11 @@ namespace Server.Temptation
 
 			// Skill cap could have changed (Titan or some other bonus could be reduced)
 			player.RefreshSkillCap();
+
+			if (context.HasPermanentDeath)
+				SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
+			else
+				WorldUtilities.DeleteAllItems<SoulOrb>(item => item.Owner == player);
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
