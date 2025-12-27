@@ -1,6 +1,7 @@
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Multis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -292,20 +293,168 @@ namespace Server.Engines.Avatar
 					{
 						return new List<IReward>
 						{
+							// Currency
 							ItemReward.Create(
 								1000,
 								true,
 								() => { return new Gold(500); },
 								amount: 500,
 								graphicOverride: AvatarShopGump.GOLD_STACK_ITEM_ID
-							).AsStatic(),
+							),
 							ItemReward.Create(
 								10000,
 								true,
 								() => { return new Gold(5000); },
 								amount: 5000,
 								graphicOverride: AvatarShopGump.GOLD_STACK_ITEM_ID
-							).AsStatic(),
+							),
+
+							// Resources
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new IronIngot(100); },
+								100
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new Fabric(100); },
+								100
+							),
+							ItemReward.Create(
+								200,
+								true,
+								() => { return new Bottle(); },
+								10
+							),
+
+							// Tools
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new TinkerTools(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new SmithHammer(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new CarpenterTools(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new SewingKit(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new Hatchet(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new Spade(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new FishingPole(); }
+							),
+							ItemReward.Create(
+								200,
+								true,
+								() => { return new Scissors(); }
+							),
+
+							// Equipment
+							ItemReward.Create(
+								1000,
+								true,
+								() => { return new HikingBoots(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new BookOfChivalry(); }
+							),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new NecromancerSpellbook(); }
+							).WithName("Necromancer Spellbook (Empty)"),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new Spellbook(); }
+							).WithName("Mage's Spellbook (Empty)"),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new ElementalSpellbook(); }
+							).WithName("Elementalist Spellbook (Empty)"),
+
+							// Utility
+							ItemReward.Create(
+								1000,
+								true,
+								() => {
+									var bag = new Bag();
+									bag.AddItem(new Bandage(50));
+									bag.AddItem(new Scissors());
+									bag.AddItem(new Fabric(50));
+
+									return bag;
+								 }
+							).WithName("Healer's Kit"),
+							ItemReward.Create(
+								1000,
+								true,
+								() => {
+									var bag = new Bag();
+									bag.AddItem(new CurePotion() { Amount = 10 });
+									bag.AddItem(new HealPotion() { Amount = 10 });
+									bag.AddItem(new RefreshPotion() { Amount = 10 });
+
+									return bag;
+								 }
+							).WithName("Warrior's Potion Bag"),
+							ItemReward.Create(
+								1000,
+								true,
+								() => { return new BagOfReagents(); }
+							).WithName("Bag of Reagents"),
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new BagOfNecroReagents(); }
+							).WithName("Bag of Necro Reagents"),
+							ItemReward.Create(
+								10000,
+								true,
+								() => { return new SmallBoatDeed(); }
+							),
+							ItemReward.Create(
+								30000,
+								true,
+								() => { return new MagicCarpetADeed(); }
+							),
+
+							// Tames
+							ItemReward.Create(
+								500,
+								true,
+								() => { return new CagedHorse(); }
+							),
+							ItemReward.Create(
+								1000,
+								true,
+								() => { return new CagedPackHorse(); }
+							),
 						};
 					}
 			}

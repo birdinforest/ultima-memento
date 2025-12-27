@@ -50,5 +50,11 @@ namespace Server.Engines.Avatar
 			Static = true;
 			return this;
 		}
+
+		public ItemReward WithName(string name)
+		{
+			Name = name;
+			return this;
+		}
 	}
 }
