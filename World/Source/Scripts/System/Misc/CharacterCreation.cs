@@ -8,6 +8,22 @@ using System.Linq;
 
 namespace Server.Misc
 {
+	public enum StarterProfessions
+	{
+		FIRST = Custom,
+
+		Custom = 0,
+		Ninja = 1,
+		Bard = 2,
+		Druid = 3,
+		Knight = 4,
+		Warrior = 5,
+		Mage = 6,
+		Archer = 7,
+
+		LAST = Archer
+	}
+
 	public class CharacterCreation
 	{
 		public const string GENERIC_NAME = "Generic Player";
@@ -32,21 +48,6 @@ namespace Server.Misc
 
 		private static Mobile m_Mobile;
 
-		private enum _StarterProfessions
-		{
-			FIRST = Custom,
-
-			Custom = 0,
-			Ninja = 1,
-			Bard = 2,
-			Druid = 3,
-			Knight = 4,
-			Warrior = 5,
-			Mage = 6,
-			Archer = 7,
-
-			LAST = Archer
-		}
 
 		public static bool CheckDupe(Mobile m, string name)
 		{
@@ -114,7 +115,7 @@ namespace Server.Misc
 			return newChar;
 		}
 
-		private static void AddSkillBasedItems(Mobile m, SkillNameValue[] skills)
+		public static void AddSkillBasedItems(Mobile m, SkillNameValue[] skills)
 		{
 			for (int i = 0; i < skills.Length; i++)
 			{
@@ -430,6 +431,11 @@ namespace Server.Misc
 			}
 		}
 
+		public static SkillNameValue[] SetTemplateSkills(Mobile m, StarterProfessions prof)
+		{
+			return SetSkills(m, null, prof);
+		}
+
 		private static void ApplyCharacterDefaults(PlayerMobile newChar, AccessLevel accessLevel, bool female, int hue)
 		{
 			newChar.Player = true;
@@ -503,8 +509,8 @@ namespace Server.Misc
 			var state = args.State;
 			if (state == null) return;
 
-			if (args.Profession < (int)_StarterProfessions.FIRST || (int)_StarterProfessions.LAST < args.Profession)
-				args.Profession = (int)_StarterProfessions.Custom;
+			if (args.Profession < (int)StarterProfessions.FIRST || (int)StarterProfessions.LAST < args.Profession)
+				args.Profession = (int)StarterProfessions.Custom;
 
 			var newChar = CreateMobile(args.Account as Account);
 			if (newChar == null)
@@ -526,7 +532,7 @@ namespace Server.Misc
 
 				SetStats(newChar, state, args.Str, args.Dex, args.Int);
 
-				var setSkills = SetSkills(newChar, args.Skills, (_StarterProfessions)args.Profession);
+				var setSkills = SetSkills(newChar, args.Skills, (StarterProfessions)args.Profession);
 				newChar.Hits = newChar.HitsMax;
 				newChar.Stam = newChar.StamMax;
 				newChar.Mana = newChar.ManaMax;
@@ -752,7 +758,7 @@ namespace Server.Misc
 			return item;
 		}
 
-		private static void InitializeBackpack(Mobile m)
+		public static void InitializeBackpack(Mobile m)
 		{
 			Container pack = m.Backpack;
 			if (pack == null)
@@ -828,11 +834,11 @@ namespace Server.Misc
 				m.Name = name;
 		}
 
-		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, _StarterProfessions prof)
+		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, StarterProfessions prof)
 		{
 			switch (prof)
 			{
-				case _StarterProfessions.Mage:
+				case StarterProfessions.Mage:
 					{
 						m.InitStats(35, 10, 45); // 90
 						skills = new SkillNameValue[]
@@ -846,7 +852,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Archer:
+				case StarterProfessions.Archer:
 					{
 						m.InitStats(35, 40, 15); // 90
 						skills = new SkillNameValue[]
@@ -859,7 +865,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Warrior:
+				case StarterProfessions.Warrior:
 					{
 						m.InitStats(50, 30, 10); // 90
 						skills = new SkillNameValue[]
@@ -872,7 +878,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Knight:
+				case StarterProfessions.Knight:
 					{
 						m.InitStats(50, 25, 15); // 90
 						skills = new SkillNameValue[]
@@ -886,7 +892,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Ninja:
+				case StarterProfessions.Ninja:
 					{
 						m.InitStats(40, 30, 20); // 90
 						skills = new SkillNameValue[]
@@ -900,7 +906,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Bard:
+				case StarterProfessions.Bard:
 					{
 						m.InitStats(40, 30, 20); // 90
 						skills = new SkillNameValue[]
@@ -914,7 +920,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Druid:
+				case StarterProfessions.Druid:
 					{
 						m.InitStats(30, 20, 40); // 90
 						skills = new SkillNameValue[]
@@ -928,7 +934,7 @@ namespace Server.Misc
 						break;
 					}
 
-				case _StarterProfessions.Custom:
+				case StarterProfessions.Custom:
 				default:
 					{
 						if (!ValidSkills(skills))
@@ -942,7 +948,7 @@ namespace Server.Misc
 			{
 				SkillNameValue snv = skills[i];
 
-				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == _StarterProfessions.Ninja) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism)
+				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == StarterProfessions.Ninja) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Elementalism)
 				{
 					Skill skill = m.Skills[snv.Name];
 
