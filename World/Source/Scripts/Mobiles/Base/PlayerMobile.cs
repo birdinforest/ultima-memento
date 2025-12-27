@@ -18,6 +18,7 @@ using Server.Spells.Bushido;
 using Server.Targeting;
 using Server.Regions;
 using Server.Accounting;
+using Server.Engines.Avatar;
 using Server.Engines.Craft;
 using Server.Engines.PartySystem;
 using Server.Engines.MLQuests;
@@ -2169,7 +2170,7 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
-			if (Temptations.HasPermanentDeath)
+			if (Temptations.HasPermanentDeath || Avatar.Active)
 			{
 				var confirmation = new ConfirmationGump(
 					this,
@@ -2177,7 +2178,16 @@ namespace Server.Mobiles
 					"Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
 					() =>
 					{
-						CharacterCreation.ResetCharacter( this );
+						if (Avatar.Active)
+						{
+							var newPlayer = CharacterCreation.ResetCharacter( this );
+							AvatarEngine.InitializePlayer(this);
+							AvatarEngine.Instance.ApplyContext(this, Avatar);
+						}
+						else
+						{
+							CharacterCreation.ResetCharacter( this );
+						}
 					}
 				);
 				SendGump(confirmation);

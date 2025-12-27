@@ -50,30 +50,12 @@ namespace Server.Engines.Avatar
 		{
 			if (!context.Active) return;
 
-			// Item pants = player.FindItemOnLayer(Layer.InnerLegs);
-			// if (!context.CanWearTightPants && pants != null)
-			// {
-			// 	player.RemoveItem(pants);
-			// }
-
-			// BaseRace playerRace = player.FindItemOnLayer(Layer.Special) as BaseRace;
-			// if (playerRace != null)
-			// {
-			// 	playerRace.Delete();
-			// 	BaseRace.SyncRace(player, true);
-			// }
-
-			// WorldUtilities.DeleteAllItems<OldSwordTalisman>(item => item.Owner == player);
-			// if (context.Flags.HasFlag(TemptationFlags.Deathwish))
-			// {
-			// 	var knife = new OldSwordTalisman { Owner = player };
-			// 	player.AddToBackpack(knife);
-			// }
-
 			player.StatCap = 100 + context.StatCapLevel * PlayerContext.STAT_CAP_PER_LEVEL;
 
 			// Skill cap could have changed
 			player.RefreshSkillCap();
+
+			SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
@@ -189,6 +171,10 @@ namespace Server.Engines.Avatar
 
 			context.PointsSaved += context.PointsFarmed;
 			context.PointsFarmed = 0;
+
+			// TODO: Remove this for LIVE deployment
+			var item = player.Backpack != null ? player.Backpack.FindItemByType<SoulOrb>() : null;
+			if (item != null) return;
 
 			var newPlayer = CharacterCreation.ResetCharacter(player);
 			if (newPlayer == null) return;

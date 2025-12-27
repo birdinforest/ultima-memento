@@ -68,7 +68,7 @@ namespace Server.Temptation
 
 			if (context.HasPermanentDeath)
 				SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
-			else
+			else if (!player.Avatar.Active)
 				WorldUtilities.DeleteAllItems<SoulOrb>(item => item.Owner == player);
 		}
 

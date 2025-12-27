@@ -85,7 +85,7 @@ namespace Server.Items
 			if ( false == ( from is PlayerMobile ) ) return null;
 
 			var player = from as PlayerMobile;
-			if ( player.Temptations.HasPermanentDeath )
+			if ( player.Temptations.HasPermanentDeath || player.Avatar.Active )
 			{
 				if ( orbType != SoulOrbType.PermadeathPlaceholder )
 				{
