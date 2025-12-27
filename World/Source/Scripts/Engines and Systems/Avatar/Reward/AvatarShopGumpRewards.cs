@@ -1,0 +1,268 @@
+using Server.Items;
+using Server.Misc;
+using Server.Mobiles;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Server.Engines.Avatar
+{
+	public class RewardFactory
+	{
+		public static List<IReward> CreateRewards(PlayerMobile m_From, Categories selectedCategory, PlayerContext context)
+		{
+			switch (selectedCategory)
+			{
+				default:
+				case Categories.Information:
+					{
+						// Never reached
+						return null;
+					}
+
+				case Categories.Unlocks:
+					{
+						return new List<IReward>
+						{
+						};
+					}
+
+				case Categories.Limits:
+					{
+						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
+						return new List<IReward>
+						{
+							ActionReward.Create(
+								SecondOrderCost(100, context.SkillCapLevel + 1),
+								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, PlayerContext.SKILL_CAP_MAX_LEVEL),
+								string.Format("Increases the skill cap by {0}. Current bonus: {1}", PlayerContext.SKILL_CAP_PER_LEVEL, PlayerContext.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
+								context.SkillCapLevel < PlayerContext.SKILL_CAP_MAX_LEVEL,
+								() => context.SkillCapLevel += 1
+							).AsStatic(),
+
+							ActionReward.Create(
+								SecondOrderCost(100, context.StatCapLevel + 1),
+								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, PlayerContext.STAT_CAP_MAX_LEVEL),
+								string.Format("Increases the stat cap by {0}. Current bonus: {1}", PlayerContext.STAT_CAP_PER_LEVEL, PlayerContext.STAT_CAP_PER_LEVEL * context.StatCapLevel),
+								context.StatCapLevel < PlayerContext.STAT_CAP_MAX_LEVEL,
+								() => context.StatCapLevel += 1
+							).AsStatic(),
+						};
+					}
+
+				case Categories.Rates:
+					{
+						return new List<IReward>
+						{
+							ActionReward.Create(
+								SecondOrderCost(100, context.PointGainRateLevel + 1),
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, PlayerContext.POINT_GAIN_RATE_MAX_LEVEL),
+								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", PlayerContext.POINT_GAIN_RATE_PER_LEVEL, PlayerContext.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
+								context.PointGainRateLevel < PlayerContext.POINT_GAIN_RATE_MAX_LEVEL,
+								() => context.PointGainRateLevel += 1
+							).AsStatic(),
+							ActionReward.Create(
+								ExponentialCost(2000, context.SkillGainRateLevel + 1),
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, PlayerContext.SKILL_GAIN_RATE_MAX_LEVEL),
+								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", PlayerContext.SKILL_GAIN_RATE_PER_LEVEL, PlayerContext.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
+								context.SkillGainRateLevel < PlayerContext.SKILL_GAIN_RATE_MAX_LEVEL,
+								() => context.SkillGainRateLevel += 1
+							).AsStatic(),
+						};
+					}
+
+				case Categories.Templates:
+					{
+						Action<Action<PlayerMobile>> applyTemplate = action =>
+						{
+							if (m_From.NetState == null) return;
+
+							if (m_From.Backpack != null)
+								m_From.Backpack.Delete();
+
+							// Reduce all skills to 0
+							for (var i = 0; i < m_From.Skills.Length; i++)
+							{
+								var skill = m_From.Skills[i];
+								if (0 < skill.Base)
+									skill.Base = 0;
+							}
+
+							m_From.NetState.BlockAllPackets = true;
+							CharacterCreation.InitializeBackpack(m_From);
+							m_From.NetState.BlockAllPackets = false;
+
+							action(m_From);
+						};
+						var rewards = new List<IReward>
+						{
+							ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								AvatarShopGump.NO_ITEM_ID,
+								"The Brute",
+								"Starts with 60 strength, 10 dexterity, and 10 intelligence.",
+								true,
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(60, 10, 10);
+										}
+									);
+								}
+							),
+							ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								AvatarShopGump.NO_ITEM_ID,
+								"The Acrobat",
+								"Starts with 10 strength, 60 dexterity, and 10 intelligence.",
+								true,
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(10, 60, 10);
+										}
+									);
+								}
+							),
+							ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								AvatarShopGump.NO_ITEM_ID,
+								"The Scholar",
+								"Starts with 10 strength, 10 dexterity, and 60 intelligence.",
+								true,
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(10, 10, 60);
+										}
+									);
+								}
+							),
+						};
+
+						var professions = new List<StarterProfessions>
+						{
+							// StarterProfessions.Custom,
+							StarterProfessions.Ninja,
+							StarterProfessions.Bard,
+							StarterProfessions.Druid,
+							StarterProfessions.Knight,
+							StarterProfessions.Warrior,
+							StarterProfessions.Mage,
+							StarterProfessions.Archer,
+						};
+
+						foreach (var profession in professions.OrderBy(p => p.ToString()))
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("The {0}", profession.ToString()),
+								string.Format("Start with the stats, skills, and items of a {0}.", profession.ToString()),
+								true,
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											var skills = CharacterCreation.SetTemplateSkills(player, profession);
+											CharacterCreation.AddSkillBasedItems(player, skills);
+										}
+									);
+								}
+							));
+						}
+						return rewards;
+					}
+
+				case Categories.Boosts:
+					{
+						var nextStatCost = SecondOrderCost(1, Math.Max(1, m_From.RawStatTotal - 90));
+						var canSelectStatBoost = m_From.RawStatTotal < m_From.StatCap;
+						return new List<IReward>
+						{
+							ActionReward.Create(
+								nextStatCost,
+								AvatarShopGump.NO_ITEM_ID,
+								"Strength Boost",
+								"Increases your strength by 1 point.",
+								canSelectStatBoost,
+								() => {
+									m_From.RawStr += 1;
+								}
+							),
+							ActionReward.Create(
+								nextStatCost,
+								AvatarShopGump.NO_ITEM_ID,
+								"Dexterity Boost",
+								"Increases your dexterity by 1 point.",
+								canSelectStatBoost,
+								() => {
+									m_From.RawDex += 1;
+								}
+							),
+							ActionReward.Create(
+								nextStatCost,
+								AvatarShopGump.NO_ITEM_ID,
+								"Intelligence Boost",
+								"Increases your intelligence by 1 point.",
+								canSelectStatBoost,
+								() => {
+									m_From.RawInt += 1;
+								}
+							),
+						};
+					}
+
+				case Categories.Items:
+					{
+						return new List<IReward>
+						{
+							ItemReward.Create(
+								1000,
+								true,
+								() => { return new Gold(500); },
+								amount: 500,
+								graphicOverride: AvatarShopGump.GOLD_STACK_ITEM_ID
+							).AsStatic(),
+							ItemReward.Create(
+								10000,
+								true,
+								() => { return new Gold(5000); },
+								amount: 5000,
+								graphicOverride: AvatarShopGump.GOLD_STACK_ITEM_ID
+							).AsStatic(),
+						};
+					}
+			}
+		}
+
+		private static int ExponentialCost(int baseCost, int level)
+		{
+			var cost = baseCost;
+			if (level <= 0) return cost;
+
+			for (int i = 0; i < level; i++)
+			{
+				cost *= 2;
+			}
+
+			return cost;
+		}
+
+		private static int SecondOrderCost(double baseCost, int level)
+		{
+			return (int)(baseCost * Math.Pow(level, 2) + baseCost * level);
+		}
+	}
+}

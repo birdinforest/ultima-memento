@@ -43,12 +43,32 @@ namespace Server.Engines.Avatar
 
 		public static void InitializePlayer(PlayerMobile player)
 		{
-			player.InitStats(20, 20, 20);
+			player.InitStats(10, 10, 10);
 		}
 
 		public void ApplyContext(PlayerMobile player, PlayerContext context)
 		{
 			if (!context.Active) return;
+
+			// Item pants = player.FindItemOnLayer(Layer.InnerLegs);
+			// if (!context.CanWearTightPants && pants != null)
+			// {
+			// 	player.RemoveItem(pants);
+			// }
+
+			// BaseRace playerRace = player.FindItemOnLayer(Layer.Special) as BaseRace;
+			// if (playerRace != null)
+			// {
+			// 	playerRace.Delete();
+			// 	BaseRace.SyncRace(player, true);
+			// }
+
+			// WorldUtilities.DeleteAllItems<OldSwordTalisman>(item => item.Owner == player);
+			// if (context.Flags.HasFlag(TemptationFlags.Deathwish))
+			// {
+			// 	var knife = new OldSwordTalisman { Owner = player };
+			// 	player.AddToBackpack(knife);
+			// }
 
 			player.StatCap = 100 + context.StatCapLevel * PlayerContext.STAT_CAP_PER_LEVEL;
 
@@ -76,9 +96,10 @@ namespace Server.Engines.Avatar
 		{
 			var context = GetContextOrDefault(oldMobile);
 			if (!context.Active) return;
+			if (!m_Context.Remove(oldMobile.Serial)) return;
 
-			m_Context.Remove(oldMobile.Serial);
 			m_Context.Add(newMobile.Serial, context);
+			context.RewardCache = null;
 		}
 
 		private static void LoadData()

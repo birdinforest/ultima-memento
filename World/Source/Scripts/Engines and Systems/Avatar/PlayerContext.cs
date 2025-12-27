@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Server.Engines.Avatar
 {
 	[PropertyObject]
@@ -31,7 +33,8 @@ namespace Server.Engines.Avatar
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool Active { get { return this != Default; } }
+		public bool Active
+		{ get { return this != Default; } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointGainRateLevel { get; set; }
@@ -41,6 +44,8 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointsSaved { get; set; }
+
+		public Dictionary<Categories, List<int>> RewardCache { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SkillCapLevel { get; set; }
