@@ -187,41 +187,105 @@ namespace Server.Engines.Avatar
 
 				case Categories.Boosts:
 					{
+						var rewards = new List<IReward>();
+
 						var nextStatCost = SecondOrderCost(1, Math.Max(1, m_From.RawStatTotal - 90));
 						var canSelectStatBoost = m_From.RawStatTotal < m_From.StatCap;
-						return new List<IReward>
-						{
+
+						// Stats
+						rewards.Add(
 							ActionReward.Create(
 								nextStatCost,
 								AvatarShopGump.NO_ITEM_ID,
 								"Strength Boost",
 								"Increases your strength by 1 point.",
 								canSelectStatBoost,
-								() => {
+								() =>
+								{
 									m_From.RawStr += 1;
 								}
-							),
+							)
+						);
+						rewards.Add(
 							ActionReward.Create(
 								nextStatCost,
 								AvatarShopGump.NO_ITEM_ID,
 								"Dexterity Boost",
 								"Increases your dexterity by 1 point.",
 								canSelectStatBoost,
-								() => {
+								() =>
+								{
 									m_From.RawDex += 1;
 								}
-							),
+							)
+						);
+						rewards.Add(
 							ActionReward.Create(
 								nextStatCost,
 								AvatarShopGump.NO_ITEM_ID,
 								"Intelligence Boost",
 								"Increases your intelligence by 1 point.",
 								canSelectStatBoost,
-								() => {
+								() =>
+								{
 									m_From.RawInt += 1;
 								}
-							),
-						};
+							)
+						);
+
+						// Skills
+						var primarySkills = new List<Skill>();
+						var secondarySkills = new List<Skill>();
+						for (var i = 0; i < m_From.Skills.Length; i++)
+						{
+							var skill = m_From.Skills[i];
+							if (skill.IsSecondarySkill())
+							{
+								secondarySkills.Add(skill);
+							}
+							else
+							{
+								primarySkills.Add(skill);
+							}
+						}
+
+						var nextPrimarySkillCost = SecondOrderCost(1, Math.Max(1, primarySkills.Sum(s => s.BaseFixedPoint) / 10));
+						foreach (var skill in primarySkills)
+						{
+							rewards.Add(
+								ActionReward.Create(
+									nextPrimarySkillCost,
+									AvatarShopGump.NO_ITEM_ID,
+									string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 10, skill.CapFixedPoint / 10),
+									string.Format("Increases your skill in {0} by 1 point.", skill.Name),
+									skill.BaseFixedPoint < skill.CapFixedPoint,
+									() =>
+									{
+										skill.BaseFixedPoint += 10;
+									}
+								)
+							);
+						}
+
+						var nextSecondarySkillCost = SecondOrderCost(1, Math.Max(1, secondarySkills.Sum(s => s.BaseFixedPoint) / 10));
+						foreach (var skill in secondarySkills)
+						{
+							rewards.Add(
+								ActionReward.Create(
+									nextSecondarySkillCost,
+									AvatarShopGump.NO_ITEM_ID,
+									string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 10, skill.CapFixedPoint / 10),
+									string.Format("Increases your skill in {0} by 1 point.", skill.Name),
+									skill.BaseFixedPoint < skill.CapFixedPoint,
+									() =>
+									{
+										skill.BaseFixedPoint += 10;
+									}
+								)
+							);
+						}
+
+						return rewards;
 					}
 
 				case Categories.Items:
