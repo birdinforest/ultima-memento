@@ -5,6 +5,7 @@ namespace Server.Engines.Avatar
 	[PropertyObject]
 	public class PlayerContext
 	{
+		public const int IMPROVED_TEMPLATE_MAX_COUNT = 5;
 		public const int POINT_GAIN_RATE_MAX_LEVEL = 150;
 		public const int POINT_GAIN_RATE_PER_LEVEL = 1;
 		public const int SKILL_CAP_MAX_LEVEL = 70;
@@ -30,11 +31,15 @@ namespace Server.Engines.Avatar
 			StatCapLevel = reader.ReadInt();
 			SkillGainRateLevel = reader.ReadInt();
 			PointGainRateLevel = reader.ReadInt();
+			if (0 < version) ImprovedTemplateCount = reader.ReadInt();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Active
 		{ get { return this != Default; } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int ImprovedTemplateCount { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointGainRateLevel { get; set; }
@@ -58,7 +63,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(0); // version
+			writer.Write(1); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -66,6 +71,7 @@ namespace Server.Engines.Avatar
 			writer.Write(StatCapLevel);
 			writer.Write(SkillGainRateLevel);
 			writer.Write(PointGainRateLevel);
+			writer.Write(ImprovedTemplateCount);
 		}
 
 		public override string ToString()

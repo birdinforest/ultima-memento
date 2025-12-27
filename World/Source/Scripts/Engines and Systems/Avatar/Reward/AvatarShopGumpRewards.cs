@@ -174,12 +174,23 @@ namespace Server.Engines.Avatar
 							StarterProfessions.Archer,
 						};
 
+						var boostedProfessions = new HashSet<StarterProfessions>();
+						if (0 < context.ImprovedTemplateCount && context.ImprovedTemplateCount <= professions.Count)
+						{
+							// Keep boosting a random profession until we reach our max
+							while (boostedProfessions.Count != context.ImprovedTemplateCount)
+							{
+								boostedProfessions.Add(Utility.Random(professions));
+							}
+						}
+
 						foreach (var profession in professions.OrderBy(p => p.ToString()))
 						{
+							var boosted = 0 < boostedProfessions.Count && boostedProfessions.Contains(profession);
 							rewards.Add(ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("The {0}", profession.ToString()),
+								string.Format("The {0}{1}", profession.ToString(), boosted ? " (Improved)" : ""),
 								string.Format("Start with the stats, skills, and items of a {0}.", profession.ToString()),
 								true,
 								() =>
@@ -189,6 +200,17 @@ namespace Server.Engines.Avatar
 										{
 											var skills = CharacterCreation.SetTemplateSkills(player, profession);
 											CharacterCreation.AddSkillBasedItems(player, skills);
+											if (!boosted) return;
+
+											foreach (var skillNameValue in skills)
+											{
+												if (skillNameValue.Value < 1) continue;
+
+												Skill skill = player.Skills[skillNameValue.Name];
+												if (skill == null) continue;
+
+												skill.BaseFixedPoint += 100; // +10 to each skill that was set
+											}
 										}
 									);
 								}
