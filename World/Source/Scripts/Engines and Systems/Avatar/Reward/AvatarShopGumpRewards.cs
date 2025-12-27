@@ -35,7 +35,7 @@ namespace Server.Engines.Avatar
 						return new List<IReward>
 						{
 							ActionReward.Create(
-								SecondOrderCost(100, context.SkillCapLevel + 1),
+								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
 								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
 								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, PlayerContext.SKILL_CAP_MAX_LEVEL),
 								string.Format("Increases the skill cap by {0}. Current bonus: {1}", PlayerContext.SKILL_CAP_PER_LEVEL, PlayerContext.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
