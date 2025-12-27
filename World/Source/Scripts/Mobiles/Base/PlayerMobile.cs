@@ -2171,10 +2171,24 @@ namespace Server.Mobiles
 		{
 			if (Temptations.HasPermanentDeath)
 			{
-				SendMessage("We warned you it was dangerous. You cannot be resurrected.");
+				var confirmation = new ConfirmationGump(
+					this,
+					"Permanent Death",
+					"Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
+					() =>
+					{
+						CharacterCreation.ResetCharacter( this );
+					}
+				);
+				SendGump(confirmation);
 				return;
 			}
 
+			DoResurrect();
+		}
+
+		private void DoResurrect()
+		{
 			bool wasAlive = this.Alive;
 
 			base.Resurrect();
