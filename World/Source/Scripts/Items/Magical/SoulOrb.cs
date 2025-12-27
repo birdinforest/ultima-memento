@@ -173,11 +173,21 @@ namespace Server.Items
 				m_Timer = null;
 			}
 
-			m_Timer = Timer.DelayCall(m_Delay, () =>
+			m_Timer = Timer.DelayCall(m_Delay, m_Delay, () =>
 				{
 					if ( Owner != null && !Owner.Deleted && !Deleted )
 					{
-						if ( Owner.Alive ) return;
+						if ( Owner.Alive )
+						{
+							if ( m_Timer != null )
+							{
+								m_Timer.Stop();
+								m_Timer = null;
+							}
+
+							return;
+						}
+
 						if ( Owner.NetState == null ) return;
 
 						var gump = new AutoResurrectGump(this);
