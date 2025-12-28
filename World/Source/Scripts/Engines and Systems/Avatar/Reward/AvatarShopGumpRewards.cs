@@ -384,12 +384,12 @@ namespace Server.Engines.Avatar
 										ActionReward.Create(
 											nextPrimarySkillCost,
 											AvatarShopGump.NO_ITEM_ID,
-											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 10, skill.CapFixedPoint / 10),
-											string.Format("Increases your skill in {0} by 1 point.", skill.Name),
-											skill.BaseFixedPoint < skill.CapFixedPoint,
+											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 50, skill.CapFixedPoint / 50),
+											string.Format("Increases your skill in {0} by 5 points.", skill.Name),
+											skill.Lock == SkillLock.Up && skill.BaseFixedPoint < skill.CapFixedPoint,
 											() =>
 											{
-												skill.BaseFixedPoint += 10;
+												skill.BaseFixedPoint = Math.Min(skill.BaseFixedPoint + 50, skill.CapFixedPoint);
 											}
 										)
 									);
@@ -398,19 +398,19 @@ namespace Server.Engines.Avatar
 
 							if (context.UnlockSecondarySkillBoost)
 							{
-								var nextSecondarySkillCost = SecondOrderCost(1, Math.Max(1, secondarySkills.Sum(s => s.BaseFixedPoint) / 10));
+								var nextSecondarySkillCost = SecondOrderCost(2, Math.Max(1, secondarySkills.Sum(s => s.BaseFixedPoint) / 10));
 								foreach (var skill in secondarySkills)
 								{
 									rewards.Add(
 										ActionReward.Create(
 											nextSecondarySkillCost,
 											AvatarShopGump.NO_ITEM_ID,
-											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 10, skill.CapFixedPoint / 10),
-											string.Format("Increases your skill in {0} by 1 point.", skill.Name),
-											skill.BaseFixedPoint < skill.CapFixedPoint,
+											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 50, skill.CapFixedPoint / 50),
+											string.Format("Increases your skill in {0} by 5 points.", skill.Name),
+											skill.Lock == SkillLock.Up && skill.BaseFixedPoint < skill.CapFixedPoint,
 											() =>
 											{
-												skill.BaseFixedPoint += 10;
+												skill.BaseFixedPoint = Math.Min(skill.BaseFixedPoint + 50, skill.CapFixedPoint);
 											}
 										)
 									);
