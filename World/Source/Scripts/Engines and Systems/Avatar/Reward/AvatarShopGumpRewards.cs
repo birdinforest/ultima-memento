@@ -11,6 +11,8 @@ namespace Server.Engines.Avatar
 {
 	public class RewardFactory
 	{
+		private const int ONE_THOUSAND_GOLD = 10000;
+
 		public static List<IReward> CreateRewards(PlayerMobile m_From, Categories selectedCategory, PlayerContext context)
 		{
 			switch (selectedCategory)
@@ -26,7 +28,77 @@ namespace Server.Engines.Avatar
 					{
 						return new List<IReward>
 						{
-						};
+							!context.UnlockPrimarySkillBoost
+								? ActionReward.Create(
+									ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Boost - Primary Skills",
+									"Unlock the ability to boost your primary skills.",
+									true,
+									() => context.UnlockPrimarySkillBoost = true
+								)
+								: null,
+							!context.UnlockSecondarySkillBoost
+								? ActionReward.Create(
+									ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Boost - Secondary Skills",
+									"Unlock the ability to boost your secondary skills.",
+									true,
+									() => context.UnlockSecondarySkillBoost = true
+								)
+								: null,
+							context.ImprovedTemplateCount < PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT
+								? ActionReward.Create(
+									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
+									AvatarShopGump.NO_ITEM_ID,
+									string.Format("Improved Starter Template ({0} of {1})", context.ImprovedTemplateCount, PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT),
+									string.Format("An Improved template received 10 additional skill points for each skill it starts with."),
+									true,
+									() => context.ImprovedTemplateCount += 1
+								)
+								: null,
+							!context.UnlockTemptations
+								? ActionReward.Create(
+									5 * ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Temptation System",
+									"Unlock the ability to use the Temptations system.",
+									true,
+									() => context.UnlockTemptations = true
+								)
+								: null,
+							!context.UnlockMonsterRaces
+								? ActionReward.Create(
+									50 * ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Monster Characters",
+									"Unlock the ability to create monster characters.",
+									true,
+									() => context.UnlockMonsterRaces = true
+								)
+								: null,
+							!context.UnlockSavageRace
+								? ActionReward.Create(
+									100 * ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Savage Character",
+									"Unlock the ability to create savage characters.",
+									true,
+									() => context.UnlockSavageRace = true
+								)
+								: null,
+							!context.UnlockFugitiveMode
+								? ActionReward.Create(
+									150 * ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Fugitive Character",
+									"Unlock the ability to use fugitive mode.",
+									true,
+									() => context.UnlockFugitiveMode = true
+								)
+								: null,
+						}.Where(r => r != null).ToList();
 					}
 
 				case Categories.Limits:
