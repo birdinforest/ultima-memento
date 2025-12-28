@@ -1476,6 +1476,8 @@ namespace Server.Mobiles
 					int GoldReward = scroll.MsgReward * 1000;
 						if ( scroll.ForAlignment == "neutral" ){ GoldReward = scroll.MsgReward * 1500; }
 
+					CustomEventSink.InvokeCombatQuestCompleted( from, GoldReward );
+
 					from.AddToBackpack( new Gold( GoldReward ) );
 
 					string GoldText = GoldReward.ToString();

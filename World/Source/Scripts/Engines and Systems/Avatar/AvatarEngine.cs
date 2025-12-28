@@ -38,6 +38,7 @@ namespace Server.Engines.Avatar
 			{
 				EventSink.OnKilledBy += Instance.OnKilledBy;
 				EventSink.PlayerDeath += Instance.OnPlayerDeath;
+				CustomEventSink.CombatQuestCompleted += Instance.OnCombatQuestCompleted;
 			}
 		}
 
@@ -134,6 +135,29 @@ namespace Server.Engines.Avatar
 			return item.Amount * multiplier;
 		}
 
+		private void GrantCoins(PlayerMobile player, int value, PlayerContext context)
+		{
+			value += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
+			context.PointsFarmed += value;
+
+			player.AddToBackpack(new Gold(value));
+			player.SendMessage("You have gained {0} coins.", value);
+		}
+
+		private void OnCombatQuestCompleted(CombatQuestCompletedArgs e)
+		{
+			if (e == null) return;
+			if (e.Award < 1) return;
+			if (false == (e.Mobile is PlayerMobile)) return;
+
+			var player = (PlayerMobile)e.Mobile;
+			if (!player.Avatar.Active) return;
+
+			var value = e.Award * 10; // Gold multiplier
+
+			GrantCoins(player, value, player.Avatar);
+		}
+
 		private void OnKilledBy(OnKilledByArgs e)
 		{
 			if (e.Corpse == null) return;
@@ -155,10 +179,7 @@ namespace Server.Engines.Avatar
 			value += GetValue<DDGoldNuggets>(10, corpse);
 			if (value < 1) return;
 
-			value += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
-			context.PointsFarmed += value;
-
-			player.SendMessage("You have gained {0} coins.", value);
+			GrantCoins(player, value, context);
 		}
 
 		private void OnPlayerDeath(PlayerDeathEventArgs e)

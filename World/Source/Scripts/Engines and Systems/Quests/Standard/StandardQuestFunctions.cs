@@ -275,6 +275,7 @@ namespace Server.Misc
 					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, sMessage, m.NetState);
 					StandardQuestFunctions.QuestTimeAllowed( m );
 
+					CustomEventSink.InvokeCombatQuestCompleted( m, nPCFee );
 					Titles.AwardFame( m, ((int)(nPCFee/100)), true );
 					if ( ((PlayerMobile)m).KarmaLocked == true ){ Titles.AwardKarma( m, -((int)(nPCFee/100)), true ); }
 					else { Titles.AwardKarma( m, ((int)(nPCFee/100)), true ); }

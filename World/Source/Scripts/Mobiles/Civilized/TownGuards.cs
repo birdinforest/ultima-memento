@@ -86,6 +86,7 @@ namespace Server.Mobiles
 						case 9:	sReward = "Their crimes called for a bounty of " + gold.ToString() + " gold.";		break;
 					}
 
+					CustomEventSink.InvokeCombatQuestCompleted( from, gold );
 					Titles.AwardKarma( from, karma, true );
 					Titles.AwardFame( from, fame, true );
 					from.SendSound( 0x2E6 );
@@ -149,6 +150,9 @@ namespace Server.Mobiles
 						karma = Utility.RandomMinMax( 60, 80 );
 						gold = Utility.RandomMinMax( 100, 140 );
 					}
+
+					if ( 0 < gold )
+						CustomEventSink.InvokeCombatQuestCompleted( from, gold );
 
 					switch ( Utility.RandomMinMax( 0, 9 ) )
 					{
