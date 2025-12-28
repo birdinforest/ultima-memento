@@ -11,6 +11,8 @@ namespace Server.Engines.Avatar
 {
 	public class RewardFactory
 	{
+		private const int TEN_GOLD = 100;
+		private const int ONE_HUNDRED_GOLD = 1000;
 		private const int ONE_THOUSAND_GOLD = 10000;
 
 		public static List<IReward> CreateRewards(PlayerMobile m_From, Categories selectedCategory, PlayerContext context)
@@ -427,14 +429,14 @@ namespace Server.Engines.Avatar
 						{
 							// Currency
 							ItemReward.Create(
-								1000,
+								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new Gold(500); },
 								amount: 500,
 								graphicOverride: AvatarShopGump.GOLD_STACK_ITEM_ID
 							),
 							ItemReward.Create(
-								10000,
+								5 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new Gold(5000); },
 								amount: 5000,
@@ -443,19 +445,19 @@ namespace Server.Engines.Avatar
 
 							// Resources
 							ItemReward.Create(
-								500,
+								2 * ONE_HUNDRED_GOLD,
 								true,
-								() => { return new IronIngot(100); },
+								() => { return new IronIngot(50); },
 								100
 							),
 							ItemReward.Create(
-								500,
+								ONE_HUNDRED_GOLD,
 								true,
-								() => { return new Fabric(100); },
+								() => { return new Fabric(50); },
 								100
 							),
 							ItemReward.Create(
-								200,
+								5 * TEN_GOLD,
 								true,
 								() => { return new Bottle(); },
 								10
@@ -463,76 +465,76 @@ namespace Server.Engines.Avatar
 
 							// Tools
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new TinkerTools(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new SmithHammer(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new CarpenterTools(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new SewingKit(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new Hatchet(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new Spade(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * TEN_GOLD,
 								true,
 								() => { return new FishingPole(); }
 							),
 							ItemReward.Create(
-								200,
+								5 * TEN_GOLD,
 								true,
 								() => { return new Scissors(); }
 							),
 
 							// Equipment
 							ItemReward.Create(
-								1000,
+								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new HikingBoots(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new BookOfChivalry(); }
 							),
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new NecromancerSpellbook(); }
 							).WithName("Necromancer Spellbook (Empty)"),
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new Spellbook(); }
 							).WithName("Mage's Spellbook (Empty)"),
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new ElementalSpellbook(); }
 							).WithName("Elementalist Spellbook (Empty)"),
 
 							// Utility
 							ItemReward.Create(
-								1000,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => {
 									var bag = new Bag();
@@ -544,7 +546,7 @@ namespace Server.Engines.Avatar
 								 }
 							).WithName("Healer's Kit"),
 							ItemReward.Create(
-								1000,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => {
 									var bag = new Bag();
@@ -556,34 +558,34 @@ namespace Server.Engines.Avatar
 								 }
 							).WithName("Warrior's Potion Bag"),
 							ItemReward.Create(
-								1000,
+								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new BagOfReagents(); }
 							).WithName("Bag of Reagents"),
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new BagOfNecroReagents(); }
 							).WithName("Bag of Necro Reagents"),
 							ItemReward.Create(
-								10000,
+								10 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new SmallBoatDeed(); }
 							),
 							ItemReward.Create(
-								30000,
+								30 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new MagicCarpetADeed(); }
 							),
 
 							// Tames
 							ItemReward.Create(
-								500,
+								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new CagedHorse(); }
 							),
 							ItemReward.Create(
-								1000,
+								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new CagedPackHorse(); }
 							),
