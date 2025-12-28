@@ -25,6 +25,7 @@ namespace Server.Engines.Avatar
 		private static readonly List<Categories> m_Categories = new List<Categories>
 		{
 			Categories.Information,
+			Categories.Unlocks,
 			Categories.Limits,
 			Categories.Rates,
 			Categories.Templates,
@@ -111,27 +112,37 @@ namespace Server.Engines.Avatar
 					case Categories.Boosts:
 					case Categories.Items:
 						randomRewardIndexes = new List<int>();
-						if (rewards.Any(reward => reward.Static))
+						if (selectedCategory == Categories.Unlocks)
 						{
 							randomRewardIndexes.AddRange(
 								rewards
-								.Where(reward => reward.Static)
-								.Select(reward => rewards.FindIndex(r => r == reward))
+								.Select((reward, index) => index)
 							);
 						}
-
-						if (rewards.Any(reward => !reward.Static))
+						else
 						{
-							var nonStaticRewards = rewards.Where(reward => !reward.Static).ToList();
-							var rewardsToPick = nonStaticRewards.Count / 2;
-							if (0 < rewardsToPick)
+							if (rewards.Any(reward => reward.Static))
 							{
 								randomRewardIndexes.AddRange(
-									nonStaticRewards
-									.OrderBy(r => Utility.RandomMinMax(0, 100))
-									.Take(rewardsToPick)
+									rewards
+									.Where(reward => reward.Static)
 									.Select(reward => rewards.FindIndex(r => r == reward))
 								);
+							}
+
+							if (rewards.Any(reward => !reward.Static))
+							{
+								var nonStaticRewards = rewards.Where(reward => !reward.Static).ToList();
+								var rewardsToPick = nonStaticRewards.Count / 2;
+								if (0 < rewardsToPick)
+								{
+									randomRewardIndexes.AddRange(
+										nonStaticRewards
+										.OrderBy(r => Utility.RandomMinMax(0, 100))
+										.Take(rewardsToPick)
+										.Select(reward => rewards.FindIndex(r => r == reward))
+									);
+								}
 							}
 						}
 
