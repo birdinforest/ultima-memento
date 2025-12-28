@@ -16,10 +16,10 @@ namespace Server.Engines.Avatar
 				var from = (PlayerMobile)args.Mobile;
 				if (!from.Avatar.Active) return;
 
-				var warChest = from.Avatar.PointsSaved;
+				var treasury = from.Avatar.PointsSaved;
 				var earned = from.Avatar.PointsFarmed;
-				var total = warChest + earned;
-				from.SendMessage("You have '{0:n0}' coins in your war chest.", warChest);
+				var total = treasury + earned;
+				from.SendMessage("You have '{0:n0}' coins in your treasury.", treasury);
 				from.SendMessage("You have earned '{0:n0}' coins.", earned);
 				from.SendMessage("You will have a total of '{0:n0}' coins to spend in the Gypsy encampment.", total);
 			});

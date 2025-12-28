@@ -172,9 +172,9 @@ namespace Server.Engines.Avatar
 
 			if (pageNumber == 1)
 			{
-				var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your war chest is empty.";
+				var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your treasury is empty.";
 				message += "<br>Coins are earned by killing monsters and completing quests.";
-				AddInformationCard(GIANT_COIN_ITEM_ID, "Your War Chest", message, y, false);
+				AddInformationCard(GIANT_COIN_ITEM_ID, "Your Treasury", message, y, false);
 				y += CARD_HEIGHT;
 				y += 10;
 
