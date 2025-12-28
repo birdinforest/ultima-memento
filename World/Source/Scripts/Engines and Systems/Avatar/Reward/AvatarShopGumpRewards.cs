@@ -151,7 +151,7 @@ namespace Server.Engines.Avatar
 
 				case Categories.Templates:
 					{
-						Action<Action<PlayerMobile>> applyTemplate = action =>
+						Action<Func<PlayerMobile, bool>> applyTemplate = action =>
 						{
 							if (m_From.NetState == null) return;
 
@@ -163,6 +163,8 @@ namespace Server.Engines.Avatar
 								{
 									if (m_From.Backpack != null)
 										m_From.Backpack.Delete();
+
+									SkillCheck.DisableSkillGains = true;
 
 									// Reduce all skills to 0
 									for (var i = 0; i < m_From.Skills.Length; i++)
@@ -176,8 +178,31 @@ namespace Server.Engines.Avatar
 									CharacterCreation.InitializeBackpack(m_From);
 									m_From.NetState.BlockAllPackets = false;
 
-									action(m_From);
+									var boosted = action(m_From);
+
+									// Set Lock status and boost if necessary
+									for (var i = 0; i < m_From.Skills.Length; i++)
+									{
+										Skill skill = m_From.Skills[i];
+										if (skill == null) continue;
+
+										if (0 < skill.Value)
+										{
+											skill.SetLockNoRelay(SkillLock.Up);
+											if (boosted)
+												skill.BaseFixedPoint += 100; // +10 to each skill that was set
+										}
+										else
+										{
+											skill.SetLockNoRelay(SkillLock.Locked);
+										}
+									}
+
+									SkillCheck.DisableSkillGains = false;
+
 									AvatarEngine.Instance.ApplyContext(m_From, m_From.Avatar);
+									m_From.OnSkillsQuery(m_From);
+									m_From.SendMessage("Your skills have been set to the chosen template. All other skills have been set to Locked.");
 								}
 							);
 							m_From.SendGump(confirmation);
@@ -196,6 +221,7 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(60, 10, 10);
+											return false;
 										}
 									);
 								}
@@ -212,6 +238,7 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(10, 60, 10);
+											return false;
 										}
 									);
 								}
@@ -228,6 +255,7 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(10, 10, 60);
+											return false;
 										}
 									);
 								}
@@ -272,17 +300,7 @@ namespace Server.Engines.Avatar
 										{
 											var skills = CharacterCreation.SetTemplateSkills(player, profession);
 											CharacterCreation.AddSkillBasedItems(player, skills);
-											if (!boosted) return;
-
-											foreach (var skillNameValue in skills)
-											{
-												if (skillNameValue.Value < 1) continue;
-
-												Skill skill = player.Skills[skillNameValue.Name];
-												if (skill == null) continue;
-
-												skill.BaseFixedPoint += 100; // +10 to each skill that was set
-											}
+											return boosted;
 										}
 									);
 								}
