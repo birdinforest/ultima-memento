@@ -26,6 +26,16 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			if ( from is PlayerMobile )
+			{
+				var player = (PlayerMobile)from;
+				if (player.Avatar.Active && !player.Avatar.UnlockMonsterRaces)
+				{
+					from.SendMessage("An Avatar must unlock the Monster Races system before using this.");
+					return;
+				}
+			}
+
 			if ( from.InRange( this.GetWorldLocation(), 4 ) && MyServerSettings.MonstersAllowed() )
 			{
 				if ( from.RaceSection < 1 ){ from.RaceSection = 1; }

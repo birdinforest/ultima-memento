@@ -2163,8 +2163,11 @@ namespace Server.Mobiles
 
 			if (includeRecipes) newPlayer.m_AcquiredRecipes = m_AcquiredRecipes;
 
-			Engines.Avatar.AvatarEngine.Instance.MigrateContext(this, newPlayer);
-			Temptation.TemptationEngine.Instance.MigrateContext(this, newPlayer);
+			AvatarEngine.Instance.MigrateContext(this, newPlayer);
+
+			// Only copy Temptations if they're unlocked
+			if (Avatar.Active && Avatar.UnlockTemptations)
+				Temptation.TemptationEngine.Instance.MigrateContext(this, newPlayer);
 
 			return newPlayer;
 		}

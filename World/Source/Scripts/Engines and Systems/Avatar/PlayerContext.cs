@@ -34,6 +34,10 @@ namespace Server.Engines.Avatar
 			if (0 < version) ImprovedTemplateCount = reader.ReadInt();
 			if (0 < version) UnlockPrimarySkillBoost = reader.ReadBool();
 			if (0 < version) UnlockSecondarySkillBoost = reader.ReadBool();
+			if (0 < version) UnlockFugitiveMode = reader.ReadBool();
+			if (0 < version) UnlockMonsterRaces = reader.ReadBool();
+			if (0 < version) UnlockSavageRace = reader.ReadBool();
+			if (0 < version) UnlockTemptations = reader.ReadBool();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -64,10 +68,22 @@ namespace Server.Engines.Avatar
 		public int StatCapLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockFugitiveMode { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockMonsterRaces { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockPrimarySkillBoost { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockSavageRace { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockSecondarySkillBoost { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemptations { get; set; }
 
 		public void Serialize(GenericWriter writer)
 		{
@@ -82,6 +98,10 @@ namespace Server.Engines.Avatar
 			writer.Write(ImprovedTemplateCount);
 			writer.Write(UnlockPrimarySkillBoost);
 			writer.Write(UnlockSecondarySkillBoost);
+			writer.Write(UnlockFugitiveMode);
+			writer.Write(UnlockMonsterRaces);
+			writer.Write(UnlockSavageRace);
+			writer.Write(UnlockTemptations);
 		}
 
 		public override string ToString()

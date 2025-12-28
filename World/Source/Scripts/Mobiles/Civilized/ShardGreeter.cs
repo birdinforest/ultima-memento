@@ -235,7 +235,7 @@ namespace Server.Gumps
 
 			if ( from.RaceID > 0 )
 			{
-				bool canBeFugitive = !BaseRace.IsGood( from );
+				bool canBeFugitive = !BaseRace.IsGood( from ) && ( !from.Avatar.Active || from.Avatar.UnlockFugitiveMode );
 
 				if ( forward )
 				{
@@ -261,6 +261,7 @@ namespace Server.Gumps
 			else
 			{
 				var disallowAlien = !MySettings.S_AllowAlienChoice && from.RaceID == 0;
+				bool canBeSavage = visitSavage( from ) && ( !from.Avatar.Active || from.Avatar.UnlockSavageRace );
 
 				if ( forward )
 				{
@@ -268,7 +269,7 @@ namespace Server.Gumps
 
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page++; }
-					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page++; }
+					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page++; }
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page++; }
 
 					if ( page > (int)HumanPage.LAST_OPTION ){ page = pageShow(from, (int)HumanPage.FIRST_OPTION - 1, forward); }
@@ -278,7 +279,7 @@ namespace Server.Gumps
 					page--;
 
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page--; }
-					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page--; }
+					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page--; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page--; }
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page--; }
 
@@ -696,7 +697,10 @@ namespace Server.Gumps
 					return;
 				}
 
-				from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
+				if ( !from.Avatar.Active || from.Avatar.UnlockTemptations )
+					from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
+				else
+					EnterLand( page, from );
 			}
 			else
 			{
