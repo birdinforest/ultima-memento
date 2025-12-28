@@ -367,6 +367,10 @@ namespace Server.Engines.Avatar
 							for (var i = 0; i < m_From.Skills.Length; i++)
 							{
 								var skill = m_From.Skills[i];
+								if (skill.SkillName == SkillName.Mysticism) continue;
+								if (skill.SkillName == SkillName.Imbuing) continue;
+								if (skill.SkillName == SkillName.Throwing) continue;
+
 								if (skill.IsSecondarySkill())
 								{
 									secondarySkills.Add(skill);
