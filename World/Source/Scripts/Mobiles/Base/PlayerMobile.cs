@@ -3052,7 +3052,7 @@ namespace Server.Mobiles
 			{
 				baseAmount = AvatarConstants.SKILL_CAP_BASE;
 				avatarAmount = Avatar.SkillCapLevel > 0 ? 1000 * Avatar.SkillCapLevel * PlayerContext.SKILL_CAP_PER_LEVEL : 0;
-				titanAmount = AvatarConstants.TITAN_SKILL_BONUS;
+				titanAmount =  IsTitanOfEther ? AvatarConstants.TITAN_SKILL_BONUS : 0;
 			}
 
 			Skills.Cap = baseAmount + boostAmount + typeAmount + avatarAmount + titanAmount;
