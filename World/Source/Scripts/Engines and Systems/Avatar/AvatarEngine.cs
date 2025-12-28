@@ -107,6 +107,18 @@ namespace Server.Engines.Avatar
 					Instance.IsEnabled = true;
 				}
 			);
+
+			foreach(var key in Instance.m_Context.Keys)
+			{
+				Mobile mobile;
+				World.Mobiles.TryGetValue(key, out mobile);
+				if (false == (mobile is PlayerMobile)) continue;
+
+				var player = (PlayerMobile)mobile;
+				if (!player.Avatar.Active) continue;
+
+				Instance.ApplyContext(player, player.Avatar);
+			}
 		}
 
 		private static void OnWorldSave(WorldSaveEventArgs e)
