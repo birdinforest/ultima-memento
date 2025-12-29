@@ -550,7 +550,9 @@ namespace Server.Misc
 
 		public static TimeSpan GetCooldownRemaining(PlayerMobile player, StatType stat)
 		{
-			var gainDelay = player.Temptations.ReduceStatGainDelay || player.Avatar.Active ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
+			if (player.Avatar.Active) return TimeSpan.Zero;
+
+			var gainDelay = player.Temptations.ReduceStatGainDelay ? TimeSpan.FromMinutes(5) : m_StatGainDelay;
 
 			DateTime end;
 			switch( stat )
@@ -568,6 +570,8 @@ namespace Server.Misc
 
 		public static void GainStat( Mobile from, Stat stat )
 		{
+			var isAvatar = from is PlayerMobile && ((PlayerMobile)from).Avatar.Active;
+
 			switch( stat )
 			{
 				case Stat.Str:
@@ -576,7 +580,7 @@ namespace Server.Misc
 						if ( (from.LastStrGain + m_PetStatGainDelay) >= DateTime.Now )
 							return;
 					}
-					else if( (from.LastStrGain + m_StatGainDelay) >= DateTime.Now )
+					else if( !isAvatar && (from.LastStrGain + m_StatGainDelay) >= DateTime.Now )
 						return;
 
 					from.LastStrGain = DateTime.Now;
@@ -588,7 +592,7 @@ namespace Server.Misc
 						if ( (from.LastDexGain + m_PetStatGainDelay) >= DateTime.Now )
 							return;
 					}
-					else if( (from.LastDexGain + m_StatGainDelay) >= DateTime.Now )
+					else if( !isAvatar && (from.LastDexGain + m_StatGainDelay) >= DateTime.Now )
 						return;
 
 					from.LastDexGain = DateTime.Now;
@@ -601,7 +605,7 @@ namespace Server.Misc
 							return;
 					}
 
-					else if( (from.LastIntGain + m_StatGainDelay) >= DateTime.Now )
+					else if( !isAvatar && (from.LastIntGain + m_StatGainDelay) >= DateTime.Now )
 						return;
 
 					from.LastIntGain = DateTime.Now;
