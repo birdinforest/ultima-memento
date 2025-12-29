@@ -19,6 +19,7 @@ namespace Server.Engines.Avatar
 
 		public PlayerContext()
 		{
+			Skills = new SkillArchive();
 		}
 
 		public PlayerContext(GenericReader reader)
@@ -38,6 +39,7 @@ namespace Server.Engines.Avatar
 			if (0 < version) UnlockMonsterRaces = reader.ReadBool();
 			if (0 < version) UnlockSavageRace = reader.ReadBool();
 			if (0 < version) UnlockTemptations = reader.ReadBool();
+			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -65,6 +67,9 @@ namespace Server.Engines.Avatar
 		public int SkillGainRateLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public SkillArchive Skills { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int StatCapLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -87,7 +92,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(1); // version
+			writer.Write(2); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -102,6 +107,7 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockMonsterRaces);
 			writer.Write(UnlockSavageRace);
 			writer.Write(UnlockTemptations);
+			Skills.Serialize(writer);
 		}
 
 		public override string ToString()

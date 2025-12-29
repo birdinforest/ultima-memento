@@ -38,6 +38,7 @@ namespace Server.Engines.Avatar
 			{
 				EventSink.OnKilledBy += Instance.OnKilledBy;
 				EventSink.PlayerDeath += Instance.OnPlayerDeath;
+				EventSink.SkillGain += Instance.OnSkillGain;
 				CustomEventSink.CombatQuestCompleted += Instance.OnCombatQuestCompleted;
 			}
 		}
@@ -108,7 +109,7 @@ namespace Server.Engines.Avatar
 				}
 			);
 
-			foreach(var key in Instance.m_Context.Keys)
+			foreach (var key in Instance.m_Context.Keys)
 			{
 				Mobile mobile;
 				World.Mobiles.TryGetValue(key, out mobile);
@@ -213,6 +214,18 @@ namespace Server.Engines.Avatar
 
 			InitializePlayer(newPlayer);
 			ApplyContext(newPlayer, newPlayer.Avatar);
+		}
+
+		private void OnSkillGain(SkillGainArgs e)
+		{
+			if (e == null) return;
+			if (e.Skill == null) return;
+			if (false == (e.From is PlayerMobile)) return;
+
+			var player = (PlayerMobile)e.From;
+			if (!player.Avatar.Active) return;
+
+			player.Avatar.Skills[e.Skill.SkillID] = Math.Max(player.Avatar.Skills[e.Skill.SkillID], e.Skill.BaseFixedPoint);
 		}
 	}
 }
