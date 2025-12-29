@@ -152,7 +152,6 @@ namespace Server.Engines.Avatar
 			value += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 			context.PointsFarmed += value;
 
-			player.AddToBackpack(new Gold(value));
 			player.SendMessage("You have gained {0} coins.", value);
 		}
 
