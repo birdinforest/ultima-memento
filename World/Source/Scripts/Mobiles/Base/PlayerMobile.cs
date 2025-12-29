@@ -2184,13 +2184,13 @@ namespace Server.Mobiles
 					{
 						if (Avatar.Active)
 						{
-							var newPlayer = CharacterCreation.ResetCharacter( this );
+							var newPlayer = CharacterCreation.ResetCharacter( this, true );
 							AvatarEngine.InitializePlayer(this);
 							AvatarEngine.Instance.ApplyContext(this, Avatar);
 						}
 						else
 						{
-							CharacterCreation.ResetCharacter( this );
+							CharacterCreation.ResetCharacter( this, false );
 						}
 					}
 				);

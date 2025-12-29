@@ -74,7 +74,7 @@ namespace Server.Misc
 			EventSink.CharacterCreated += new CharacterCreatedEventHandler(EventSink_CharacterCreated);
 		}
 
-		public static PlayerMobile ResetCharacter(PlayerMobile existingCharacter)
+		public static PlayerMobile ResetCharacter(PlayerMobile existingCharacter, bool copySkillCaps)
 		{
 			var account = existingCharacter.Account as Account;
 			if (account == null) return null;
@@ -93,6 +93,14 @@ namespace Server.Misc
 			}
 
 			if (newChar == null) return null;
+
+			if (copySkillCaps)
+			{
+				for (int i = 0; i < existingCharacter.Skills.Length; i++)
+				{
+					newChar.Skills[i].Cap = existingCharacter.Skills[i].Cap;
+				}
+			}
 
 			m_Mobile = newChar;
 			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue);

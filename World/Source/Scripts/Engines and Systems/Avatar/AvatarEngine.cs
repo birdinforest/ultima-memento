@@ -204,16 +204,6 @@ namespace Server.Engines.Avatar
 
 			context.PointsSaved += context.PointsFarmed;
 			context.PointsFarmed = 0;
-
-			// TODO: Remove this for LIVE deployment
-			var item = player.Backpack != null ? player.Backpack.FindItemByType<SoulOrb>() : null;
-			if (item != null) return;
-
-			var newPlayer = CharacterCreation.ResetCharacter(player);
-			if (newPlayer == null) return;
-
-			InitializePlayer(newPlayer);
-			ApplyContext(newPlayer, newPlayer.Avatar);
 		}
 
 		private void OnSkillGain(SkillGainArgs e)

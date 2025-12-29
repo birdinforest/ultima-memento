@@ -65,7 +65,7 @@ namespace Server.Engines.Avatar
 				{
 					var _ = AvatarEngine.Instance.GetOrCreateContext(from);
 					from.SendMessage("You have enabled the Avatar status.");
-					var newCharacter = CharacterCreation.ResetCharacter(from);
+					var newCharacter = CharacterCreation.ResetCharacter(from, false);
 					AvatarEngine.InitializePlayer(newCharacter);
 					AvatarEngine.Instance.ApplyContext(newCharacter, newCharacter.Avatar);
 				}

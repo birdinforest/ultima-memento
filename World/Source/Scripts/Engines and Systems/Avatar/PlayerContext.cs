@@ -39,6 +39,7 @@ namespace Server.Engines.Avatar
 			if (0 < version) UnlockMonsterRaces = reader.ReadBool();
 			if (0 < version) UnlockSavageRace = reader.ReadBool();
 			if (0 < version) UnlockTemptations = reader.ReadBool();
+			if (0 < version) UnlockRecordSkillCaps = reader.ReadBool();
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 		}
 
@@ -82,6 +83,9 @@ namespace Server.Engines.Avatar
 		public bool UnlockPrimarySkillBoost { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockRecordSkillCaps { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockSavageRace { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -107,6 +111,7 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockMonsterRaces);
 			writer.Write(UnlockSavageRace);
 			writer.Write(UnlockTemptations);
+			writer.Write(UnlockRecordSkillCaps);
 			Skills.Serialize(writer);
 		}
 
