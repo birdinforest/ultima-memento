@@ -2157,7 +2157,8 @@ namespace Server.Mobiles
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
-				m_AcquiredRecipes = m_AcquiredRecipes,
+				MyLibrary = MyLibrary,
+				GumpHue = GumpHue,
 				RecordSkinColor = 1, // Idk man, this is to avoid a different hack
 			};
 
