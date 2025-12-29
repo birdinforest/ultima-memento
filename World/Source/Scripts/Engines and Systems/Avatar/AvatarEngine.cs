@@ -178,7 +178,7 @@ namespace Server.Engines.Avatar
 			var creature = (BaseCreature)e.Killed;
 			if (creature.AI == AIType.AI_Vendor) return;
 
-			var player = MobileUtilities.TryGetKillingPlayer(e.Killed);
+			var player = MobileUtilities.TryGetMasterPlayer(e.KilledBy);
 			if (player == null) return;
 
 			var context = GetContextOrDefault(player);
