@@ -1,6 +1,7 @@
 using Server.Accounting;
 using Server.Items;
 using Server.Mobiles;
+using Server.Multis;
 using Server.Network;
 using System;
 using System.Collections.Generic;
@@ -117,6 +118,10 @@ namespace Server.Misc
 			existingCharacter.Name += "_Deleted";
 			existingCharacter.Internalize();
 			netState.BlockAllPackets = false;
+
+			var previousHouse = World.Items.Values.FirstOrDefault(item => item != null && !item.Deleted && item is BaseHouse && ((BaseHouse)item).Owner == existingCharacter) as BaseHouse;
+			if (previousHouse != null)
+				previousHouse.Owner = newChar;
 
 			existingCharacter.Delete();
 
