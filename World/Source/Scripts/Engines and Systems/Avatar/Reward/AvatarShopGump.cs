@@ -251,9 +251,9 @@ namespace Server.Engines.Avatar
 						var item = itemReward.OnSelect();
 						if (item != null)
 						{
+							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 							m_Context.PointsSaved -= cost;
 							player.AddToBackpack(item);
-							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 						}
 					}
 					else
@@ -264,13 +264,13 @@ namespace Server.Engines.Avatar
 							if (m_SelectedCategory == Categories.Templates)
 							{
 								player.SendMessage("You have selected a template.");
-								Timer.DelayCall(TimeSpan.FromSeconds(0.5), () => actionReward.OnSelect());
+								Timer.DelayCall(TimeSpan.FromSeconds(0.25), () => actionReward.OnSelect());
 							}
 							else
 							{
+								player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 								m_Context.PointsSaved -= cost;
 								actionReward.OnSelect();
-								player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 								AvatarEngine.Instance.ApplyContext(player, player.Avatar);
 							}
 						}

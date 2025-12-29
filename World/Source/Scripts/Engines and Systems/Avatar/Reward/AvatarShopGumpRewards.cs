@@ -34,70 +34,104 @@ namespace Server.Engines.Avatar
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Boost - Primary Skills",
-									"Unlock the ability to boost your primary skills.",
+									"Jack of No Trades",
+									"Learn from the greatest masters. Unlock the ability to enhance your primary skills.",
 									true,
-									() => context.UnlockPrimarySkillBoost = true
+									() => {
+										context.UnlockPrimarySkillBoost = true;
+										m_From.SendMessage("You have unlocked the option to boost your primary skills.");
+									}
 								)
 								: null,
 							!context.UnlockSecondarySkillBoost
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Boost - Secondary Skills",
-									"Unlock the ability to boost your secondary skills.",
+									"Artisan's Mastery",
+									"Master the crafts. Unlock the ability to enhance your secondary skills.",
 									true,
-									() => context.UnlockSecondarySkillBoost = true
+									() => {
+										context.UnlockSecondarySkillBoost = true;
+										m_From.SendMessage("You have unlocked the option to boost your secondary skills.");
+									}
 								)
 								: null,
 							context.ImprovedTemplateCount < PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
 									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Improved Starter Template ({0} of {1})", context.ImprovedTemplateCount, PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT),
-									string.Format("An Improved template received 10 additional skill points for each skill it starts with."),
+									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT),
+									string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
 									true,
-									() => context.ImprovedTemplateCount += 1
+									() => {
+										context.ImprovedTemplateCount += 1;
+										m_From.SendMessage("Your templates may now spawn as (Improved).");
+									}
 								)
 								: null,
 							!context.UnlockTemptations
 								? ActionReward.Create(
 									5 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Temptation System",
-									"Unlock the ability to use the Temptations system.",
+									"Power Overwhelming",
+									"Answer the seductive call of power. Gain strength through temptation and desire.",
 									true,
-									() => context.UnlockTemptations = true
+									() => {
+										context.UnlockTemptations = true;
+										m_From.SendMessage("You have unlocked the ability to use Temptations.");
+									}
 								)
 								: null,
 							!context.UnlockMonsterRaces
 								? ActionReward.Create(
 									50 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Monster Characters",
-									"Unlock the ability to create monster characters.",
+									"Bestial Transformation",
+									"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
 									true,
-									() => context.UnlockMonsterRaces = true
+									() => {
+										context.UnlockMonsterRaces = true;
+										m_From.SendMessage("You have unlocked the option to select a non-human race.");
+									}
 								)
 								: null,
 							!context.UnlockSavageRace
 								? ActionReward.Create(
 									100 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Savage Character",
-									"Unlock the ability to create savage characters.",
+									"Primal Awakening",
+									"Return to your untamed roots. Live life as a savage and embrace your barbaric heritage.",
 									true,
-									() => context.UnlockSavageRace = true
+									() => {
+										context.UnlockSavageRace = true;
+										m_From.SendMessage("You have unlocked a new tarot card for Humans.");
+									}
 								)
 								: null,
 							!context.UnlockFugitiveMode
 								? ActionReward.Create(
 									150 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Fugitive Character",
-									"Unlock the ability to use fugitive mode.",
+									"Outlaw's Mark",
+									"Bear the mark of the hunted. Strengthen your core and live as an exile.",
 									true,
-									() => context.UnlockFugitiveMode = true
+									() => {
+										context.UnlockFugitiveMode = true;
+										m_From.SendMessage("You have unlocked a new tarot card for Monsters and Humans.");
+									}
+								)
+								: null,
+							!context.UnlockRecordSkillCaps
+								? ActionReward.Create(
+									100 * ONE_THOUSAND_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Erudian Teachings",
+									"Reinforce your mind. Higher learning will become second nature.",
+									true,
+									() => {
+										context.UnlockRecordSkillCaps = true;
+										m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
+									}
 								)
 								: null,
 						}.Where(r => r != null).ToList();
