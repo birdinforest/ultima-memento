@@ -128,7 +128,7 @@ namespace Server.Mobiles
 					if ( head.m_Job == "Thief" )
 					{
 						karma = Utility.RandomMinMax( 40, 60 );
-						gold = Utility.RandomMinMax( 80, 120 );
+						gold = Utility.RandomMinMax( 60, 80 );
 					}
 					else if ( head.m_Job == "Bandit" )
 					{
@@ -143,12 +143,12 @@ namespace Server.Mobiles
 					else if ( head.m_Job == "Pirate" )
 					{
 						karma = Utility.RandomMinMax( 90, 110 );
-						gold = Utility.RandomMinMax( 120, 160 );
+						gold = Utility.RandomMinMax( 30, 120 );
 					}
 					else if ( head.m_Job == "Assassin" )
 					{
 						karma = Utility.RandomMinMax( 60, 80 );
-						gold = Utility.RandomMinMax( 100, 140 );
+						gold = Utility.RandomMinMax( 80, 120 );
 					}
 
 					if ( 0 < gold )
