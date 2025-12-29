@@ -173,6 +173,10 @@ namespace Server.Engines.Avatar
 		private void OnKilledBy(OnKilledByArgs e)
 		{
 			if (e.Corpse == null) return;
+			if (false == (e.Killed is BaseCreature)) return;
+
+			var creature = (BaseCreature)e.Killed;
+			if (creature.AI == AIType.AI_Vendor) return;
 
 			var player = MobileUtilities.TryGetKillingPlayer(e.Killed);
 			if (player == null) return;
