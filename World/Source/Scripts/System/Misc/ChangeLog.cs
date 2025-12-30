@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
 			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
+			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
