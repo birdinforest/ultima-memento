@@ -27,7 +27,6 @@ namespace Server.Engines.Avatar
 
 		public static void Configure()
 		{
-			EventSink.WorldSave += OnWorldSave;
 		}
 
 		public static void Initialize()
@@ -36,6 +35,7 @@ namespace Server.Engines.Avatar
 
 			if (Instance.IsEnabled || true)
 			{
+				EventSink.WorldSave += Instance.OnWorldSave;
 				EventSink.OnKilledBy += Instance.OnKilledBy;
 				EventSink.PlayerDeath += Instance.OnPlayerDeath;
 				EventSink.SkillGain += Instance.OnSkillGain;
@@ -122,7 +122,7 @@ namespace Server.Engines.Avatar
 			}
 		}
 
-		private static void OnWorldSave(WorldSaveEventArgs e)
+		private void OnWorldSave(WorldSaveEventArgs e)
 		{
 			Persistence.Serialize(
 				"Saves//Player//Avatar.bin",
@@ -130,8 +130,8 @@ namespace Server.Engines.Avatar
 				{
 					writer.Write(0); // version
 
-					writer.Write(Instance.m_Context.Count);
-					foreach (var kv in Instance.m_Context)
+					writer.Write(m_Context.Count);
+					foreach (var kv in m_Context)
 					{
 						writer.Write(kv.Key);
 						kv.Value.Serialize(writer);
