@@ -64,7 +64,16 @@ namespace Server.Engines.Avatar
 
 			if (selectedCategory == Categories.Information)
 			{
-				AddInformationCard(NO_ITEM_ID, "An Avatar is Born", "You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth.", y);
+				AddInformationCard(
+					NO_ITEM_ID,
+					"An Avatar is Born",
+					string.Format(
+						"You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth.<br>Your current {0} and your current {1}",
+						TextDefinition.GetColorizedText(string.Format("Stat cap is {0}", m_From.StatCap.ToString()), HtmlColors.ORANGE),
+						TextDefinition.GetColorizedText(string.Format("Skill cap is {0}", (m_From.SkillsCap / 10).ToString("n0")), HtmlColors.ORANGE)
+					),
+					y
+				);
 				y += CARD_HEIGHT;
 				y += 10;
 
