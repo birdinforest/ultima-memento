@@ -358,7 +358,7 @@ namespace Server.Engines.Avatar
 				if (0 < cost)
 				{
 					var pointsColor = canAfford ? HtmlColors.ORANGE : HtmlColors.RED;
-					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 50, 20, cost.ToString("n0"), pointsColor);
+					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 80, 20, cost.ToString("n0"), pointsColor);
 				}
 
 				if (canAfford)
