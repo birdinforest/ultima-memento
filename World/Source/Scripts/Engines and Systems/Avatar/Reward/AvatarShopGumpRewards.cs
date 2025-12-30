@@ -30,7 +30,7 @@ namespace Server.Engines.Avatar
 					{
 						return new List<IReward>
 						{
-							!context.UnlockPrimarySkillBoost
+							!context.UnlockPrimarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
@@ -43,7 +43,7 @@ namespace Server.Engines.Avatar
 									}
 								)
 								: null,
-							!context.UnlockSecondarySkillBoost
+							!context.UnlockSecondarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
@@ -123,7 +123,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									100 * ONE_THOUSAND_GOLD,
+									3 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Erudian Teachings",
 									"Reinforce your mind. Higher learning will become second nature.",
@@ -140,11 +140,18 @@ namespace Server.Engines.Avatar
 				case Categories.Limits:
 					{
 						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
+						var currentErudianBonus = context.GetRecordedSkillCap();
+						var erudianCapCost = 0;
+						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(500, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(1000, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(2000, context.RecordedSkillCapLevel + 1);
+						else erudianCapCost = SecondOrderCost(10000 + 100 * (currentErudianBonus - 100) / 5, context.RecordedSkillCapLevel + 1);
+
 						return new List<IReward>
 						{
 							context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									SecondOrderCost(100, context.RecordedSkillCapLevel + 1),
+									erudianCapCost,
 									AvatarShopGump.FAT_BOTTLE_ITEM_ID,
 									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
 									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
