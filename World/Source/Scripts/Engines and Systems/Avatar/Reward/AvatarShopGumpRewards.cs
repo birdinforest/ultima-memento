@@ -32,27 +32,27 @@ namespace Server.Engines.Avatar
 						{
 							!context.UnlockPrimarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									ONE_THOUSAND_GOLD,
+									2 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Jack of No Trades",
-									"Learn from the greatest masters. Unlock the ability to enhance your primary skills.",
+									"Learn from the greatest masters. Unlock the ability to restore Primary skills.",
 									true,
 									() => {
 										context.UnlockPrimarySkillBoost = true;
-										m_From.SendMessage("You have unlocked the option to boost your primary skills.");
+										m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
 									}
 								)
 								: null,
 							!context.UnlockSecondarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									ONE_THOUSAND_GOLD,
+									2 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Artisan's Mastery",
-									"Master the crafts. Unlock the ability to enhance your secondary skills.",
+									"Master the crafts. Unlock the ability to restore Secondary skills.",
 									true,
 									() => {
 										context.UnlockSecondarySkillBoost = true;
-										m_From.SendMessage("You have unlocked the option to boost your secondary skills.");
+										m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
 									}
 								)
 								: null,
@@ -123,7 +123,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									3 * ONE_THOUSAND_GOLD,
+									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Erudian Teachings",
 									"Reinforce your mind. Higher learning will become second nature.",
@@ -142,10 +142,10 @@ namespace Server.Engines.Avatar
 						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
 						var currentErudianBonus = context.GetRecordedSkillCap();
 						var erudianCapCost = 0;
-						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(500, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(1000, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(2000, context.RecordedSkillCapLevel + 1);
-						else erudianCapCost = SecondOrderCost(10000 + 100 * (currentErudianBonus - 100) / 5, context.RecordedSkillCapLevel + 1);
+						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(1000, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(2000, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(4000, context.RecordedSkillCapLevel + 1);
+						else erudianCapCost = SecondOrderCost(8000, context.RecordedSkillCapLevel + 1);
 
 						return new List<IReward>
 						{
@@ -403,7 +403,7 @@ namespace Server.Engines.Avatar
 										AvatarShopGump.NO_ITEM_ID,
 										string.Format("{0}", skill.Name),
 										string.Format("Raise your skill in {0} up to {1:n1}", skill.Name, maxValue),
-										skill.Lock == SkillLock.Up && skill.BaseFixedPoint < maxValueFixedPoint,
+										skill.BaseFixedPoint < maxValueFixedPoint,
 										() =>
 										{
 											if (skill.IsSecondarySkill())
@@ -445,7 +445,7 @@ namespace Server.Engines.Avatar
 												skill.BaseFixedPoint += amountToIncrease;
 											}
 										}
-									).AsStatic() // TODO: Display half as random
+									)
 								);
 							}
 						}
