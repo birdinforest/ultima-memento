@@ -10,6 +10,7 @@ namespace Server.Engines.Avatar
 		public static void Initialize()
 		{
 			CommandSystem.Register("avatar-enable", AccessLevel.Player, new CommandEventHandler(EnableAvatarCommand));
+			CommandSystem.Register("avatar-force-enable", AccessLevel.Player, new CommandEventHandler(ForceEnableAvatarCommand));
 			CommandSystem.Register("avatar-shop", AccessLevel.Player, new CommandEventHandler(OpenAvatarShopCommand));
 			CommandSystem.Register("avatar-balance", AccessLevel.Player, args =>
 			{
@@ -71,6 +72,22 @@ namespace Server.Engines.Avatar
 				}
 			);
 			from.SendGump(confirmation);
+		}
+
+		[Usage("avatar-force-enable")]
+		[Description("Force enables the Avatar status for the Player.")]
+		public static void ForceEnableAvatarCommand(CommandEventArgs e)
+		{
+			var from = (PlayerMobile)e.Mobile;
+
+			if (from.Avatar.Active)
+			{
+				from.SendMessage("You already have the Avatar status enabled.");
+				return;
+			}
+
+			var _ = AvatarEngine.Instance.GetOrCreateContext(from);
+			from.SendMessage("You have enabled the Avatar status.");
 		}
 
 		[Usage("avatar-shop")]
