@@ -90,8 +90,7 @@ namespace Server.Engines.Avatar
 				y += 10;
 
 				AddInformationCard(NO_ITEM_ID, "Temporary Enhancements", string.Format(
-					"{0} and {1} are temporary and will be lost upon death.",
-					TextDefinition.GetColorizedText("Boosts", HtmlColors.ORANGE),
+					"{0} are temporary and will be lost upon death.",
 					TextDefinition.GetColorizedText("Items", HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
