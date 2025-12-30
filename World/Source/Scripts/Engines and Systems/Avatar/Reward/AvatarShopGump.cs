@@ -181,9 +181,17 @@ namespace Server.Engines.Avatar
 
 			if (pageNumber == 1)
 			{
-				var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your treasury is empty.";
-				message += "<br>Coins are earned by killing monsters and completing quests.";
-				AddInformationCard(GIANT_COIN_ITEM_ID, "Your Treasury", message, y, false);
+				if (m_SelectedCategory == Categories.Boosts)
+				{
+					AddInformationCard(GIANT_COIN_ITEM_ID, "Your Skill Archive", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
+				}
+				else
+				{
+					var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your treasury is empty.";
+					message += "<br>Coins are earned by killing monsters and completing quests.";
+					AddInformationCard(GIANT_COIN_ITEM_ID, "Your Treasury", message, y, false);
+				}
+
 				y += CARD_HEIGHT;
 				y += 10;
 
@@ -397,7 +405,26 @@ namespace Server.Engines.Avatar
 				AddImage(x + 17, y + 10 + (i * HEIGHT_PER_ITEM), gemGraphic, gemHue);
 
 				var color = isSelected ? HtmlColors.ORANGE : HtmlColors.COOL_BLUE;
-				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, category.ToString(), color);
+
+				string categoryName;
+				switch (category)
+				{
+					case Categories.Boosts:
+						categoryName = "Skills Archive";
+						break;
+
+					case Categories.Information:
+					case Categories.Unlocks:
+					case Categories.Limits:
+					case Categories.Rates:
+					case Categories.Templates:
+					case Categories.Items:
+					default:
+						categoryName = category.ToString();
+						break;
+				}
+
+				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, categoryName, color);
 				++i;
 			}
 		}
