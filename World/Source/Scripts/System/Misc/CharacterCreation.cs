@@ -119,8 +119,8 @@ namespace Server.Misc
 			existingCharacter.Internalize();
 			netState.BlockAllPackets = false;
 
-			var previousHouses = World.Items.Values.Where(item => item != null && !item.Deleted && item is BaseHouse && ((BaseHouse)item).Owner == existingCharacter).Cast<BaseHouse>();
-			if (previousHouses.Any())
+			var previousHouses = BaseHouse.GetHouses( existingCharacter );
+			if (0 < previousHouses.Count)
 			{
 				foreach (var house in previousHouses)
 				{
