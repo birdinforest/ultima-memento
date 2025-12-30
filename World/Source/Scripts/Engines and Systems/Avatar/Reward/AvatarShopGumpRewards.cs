@@ -142,6 +142,16 @@ namespace Server.Engines.Avatar
 						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
 						return new List<IReward>
 						{
+							context.UnlockRecordSkillCaps
+								? ActionReward.Create(
+									SecondOrderCost(100, context.RecordedSkillCapLevel + 1),
+									AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, PlayerContext.RECORDED_SKILL_CAP_MAX_LEVEL),
+									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", PlayerContext.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+									context.RecordedSkillCapLevel < PlayerContext.RECORDED_SKILL_CAP_MAX_LEVEL,
+									() => context.RecordedSkillCapLevel += 1
+								).AsStatic()
+								: null,
 							ActionReward.Create(
 								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
 								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
@@ -159,7 +169,7 @@ namespace Server.Engines.Avatar
 								context.StatCapLevel < PlayerContext.STAT_CAP_MAX_LEVEL,
 								() => context.StatCapLevel += 1
 							).AsStatic(),
-						};
+						}.Where(r => r != null).ToList();
 					}
 
 				case Categories.Rates:
@@ -352,8 +362,7 @@ namespace Server.Engines.Avatar
 						// Skills
 						if (context.UnlockPrimarySkillBoost || context.UnlockSecondarySkillBoost)
 						{
-							var primarySkills = new List<Skill>();
-							var secondarySkills = new List<Skill>();
+							var skills = new List<Skill>();
 							for (var i = 0; i < m_From.Skills.Length; i++)
 							{
 								var skill = m_From.Skills[i];
@@ -361,56 +370,76 @@ namespace Server.Engines.Avatar
 								if (skill.SkillName == SkillName.Imbuing) continue;
 								if (skill.SkillName == SkillName.Throwing) continue;
 
-								if (skill.IsSecondarySkill())
+								if (!skill.IsSecondarySkill())
 								{
-									secondarySkills.Add(skill);
+									if (!context.UnlockPrimarySkillBoost) continue;
 								}
 								else
 								{
-									primarySkills.Add(skill);
+									if (!context.UnlockSecondarySkillBoost) continue;
 								}
+
+								skills.Add(skill);
 							}
 
-							if (context.UnlockPrimarySkillBoost)
+							foreach (var skill in skills)
 							{
-								var nextPrimarySkillCost = SecondOrderCost(1, Math.Max(1, primarySkills.Sum(s => s.BaseFixedPoint) / 10));
-								foreach (var skill in primarySkills)
-								{
-									rewards.Add(
-										ActionReward.Create(
-											nextPrimarySkillCost,
-											AvatarShopGump.NO_ITEM_ID,
-											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 50, skill.CapFixedPoint / 50),
-											string.Format("Increases your skill in {0} by 5 points.", skill.Name),
-											skill.Lock == SkillLock.Up && skill.BaseFixedPoint < skill.CapFixedPoint,
-											() =>
-											{
-												skill.BaseFixedPoint = Math.Min(skill.BaseFixedPoint + 50, skill.CapFixedPoint);
-											}
-										)
-									);
-								}
-							}
+								const int NEOPHYTE_SKILL_VALUE = 30;
+								var archiveValue = context.Skills[skill.SkillName];
+								if (archiveValue < NEOPHYTE_SKILL_VALUE) continue;
 
-							if (context.UnlockSecondarySkillBoost)
-							{
-								var nextSecondarySkillCost = SecondOrderCost(2, Math.Max(1, secondarySkills.Sum(s => s.BaseFixedPoint) / 10));
-								foreach (var skill in secondarySkills)
-								{
-									rewards.Add(
-										ActionReward.Create(
-											nextSecondarySkillCost,
-											AvatarShopGump.NO_ITEM_ID,
-											string.Format("{0} ({1} of {2})", skill.Name, skill.BaseFixedPoint / 50, skill.CapFixedPoint / 50),
-											string.Format("Increases your skill in {0} by 5 points.", skill.Name),
-											skill.Lock == SkillLock.Up && skill.BaseFixedPoint < skill.CapFixedPoint,
-											() =>
+								var maxValue = Math.Min(archiveValue / 10f, context.GetRecordedSkillCap());
+								var maxValueFixedPoint = (int)(maxValue * 10);
+								rewards.Add(
+									ActionReward.Create(
+										AvatarShopGump.COST_FREE,
+										AvatarShopGump.NO_ITEM_ID,
+										string.Format("{0}", skill.Name),
+										string.Format("Raise your skill in {0} up to {1:n1}", skill.Name, maxValue),
+										skill.Lock == SkillLock.Up && skill.BaseFixedPoint < maxValueFixedPoint,
+										() =>
+										{
+											if (skill.IsSecondarySkill())
 											{
-												skill.BaseFixedPoint = Math.Min(skill.BaseFixedPoint + 50, skill.CapFixedPoint);
+												skill.BaseFixedPoint = maxValueFixedPoint;
 											}
-										)
-									);
-								}
+											else
+											{
+												var amountToGain = maxValueFixedPoint - skill.BaseFixedPoint;
+												var amountAvailable = Math.Max(0, m_From.SkillsCap - m_From.SkillsTotal);
+
+												var amountToIncrease = amountToGain;
+												if (amountAvailable < amountToIncrease)
+												{
+													var amountRequired = amountToIncrease - amountAvailable;
+													for (int i = 0; i < m_From.Skills.Length; ++i)
+													{
+														if (m_From.Skills[i].Lock != SkillLock.Down)
+															continue;
+
+														if (amountRequired >= m_From.Skills[i].BaseFixedPoint)
+														{
+															amountRequired -= m_From.Skills[i].BaseFixedPoint;
+															m_From.Skills[i].Base = 0.0;
+														}
+														else
+														{
+															m_From.Skills[i].BaseFixedPoint -= amountRequired;
+															amountRequired = 0;
+                                                            break;
+														}
+													}
+
+													// Didn't get enough free points, so we'll just take what we can get
+													if (0 < amountRequired)
+														amountToIncrease -= amountRequired;
+												}
+
+												skill.BaseFixedPoint += amountToIncrease;
+											}
+										}
+									).AsStatic() // TODO: Display half as random
+								);
 							}
 						}
 
