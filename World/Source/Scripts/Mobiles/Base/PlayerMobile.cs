@@ -3054,9 +3054,9 @@ namespace Server.Mobiles
 			
 			if ( Avatar.Active )
 			{
-				baseAmount = AvatarConstants.SKILL_CAP_BASE;
-				avatarAmount = Avatar.SkillCapLevel > 0 ? Avatar.SkillCapLevel * PlayerContext.SKILL_CAP_PER_LEVEL * 10: 0;
-				titanAmount =  IsTitanOfEther ? AvatarConstants.TITAN_SKILL_BONUS : 0;
+				baseAmount = Constants.SKILL_CAP_BASE;
+				avatarAmount = Avatar.SkillCapLevel > 0 ? Avatar.SkillCapLevel * Constants.SKILL_CAP_PER_LEVEL * 10: 0;
+				titanAmount =  IsTitanOfEther ? Constants.TITAN_SKILL_BONUS : 0;
 			}
 
 			Skills.Cap = baseAmount + boostAmount + typeAmount + avatarAmount + titanAmount;

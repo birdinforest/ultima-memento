@@ -56,11 +56,11 @@ namespace Server.Engines.Avatar
 									}
 								)
 								: null,
-							context.ImprovedTemplateCount < PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT
+							context.ImprovedTemplateCount < Constants.IMPROVED_TEMPLATE_MAX_COUNT
 								? ActionReward.Create(
 									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
 									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, PlayerContext.IMPROVED_TEMPLATE_MAX_COUNT),
+									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
 									string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
 									true,
 									() => {
@@ -146,27 +146,27 @@ namespace Server.Engines.Avatar
 								? ActionReward.Create(
 									SecondOrderCost(100, context.RecordedSkillCapLevel + 1),
 									AvatarShopGump.FAT_BOTTLE_ITEM_ID,
-									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, PlayerContext.RECORDED_SKILL_CAP_MAX_LEVEL),
-									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", PlayerContext.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
-									context.RecordedSkillCapLevel < PlayerContext.RECORDED_SKILL_CAP_MAX_LEVEL,
+									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
+									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+									context.RecordedSkillCapLevel < Constants.RECORDED_SKILL_CAP_MAX_LEVEL,
 									() => context.RecordedSkillCapLevel += 1
 								).AsStatic()
 								: null,
 							ActionReward.Create(
 								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
 								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
-								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, PlayerContext.SKILL_CAP_MAX_LEVEL),
-								string.Format("Increases the skill cap by {0}. Current bonus: {1}", PlayerContext.SKILL_CAP_PER_LEVEL, PlayerContext.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
-								context.SkillCapLevel < PlayerContext.SKILL_CAP_MAX_LEVEL,
+								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
+								string.Format("Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
+								context.SkillCapLevel < Constants.SKILL_CAP_MAX_LEVEL,
 								() => context.SkillCapLevel += 1
 							).AsStatic(),
 
 							ActionReward.Create(
 								SecondOrderCost(100, context.StatCapLevel + 1),
 								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
-								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, PlayerContext.STAT_CAP_MAX_LEVEL),
-								string.Format("Increases the stat cap by {0}. Current bonus: {1}", PlayerContext.STAT_CAP_PER_LEVEL, PlayerContext.STAT_CAP_PER_LEVEL * context.StatCapLevel),
-								context.StatCapLevel < PlayerContext.STAT_CAP_MAX_LEVEL,
+								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
+								string.Format("Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
+								context.StatCapLevel < Constants.STAT_CAP_MAX_LEVEL,
 								() => context.StatCapLevel += 1
 							).AsStatic(),
 						}.Where(r => r != null).ToList();
@@ -179,17 +179,17 @@ namespace Server.Engines.Avatar
 							ActionReward.Create(
 								SecondOrderCost(100, context.PointGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, PlayerContext.POINT_GAIN_RATE_MAX_LEVEL),
-								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", PlayerContext.POINT_GAIN_RATE_PER_LEVEL, PlayerContext.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
-								context.PointGainRateLevel < PlayerContext.POINT_GAIN_RATE_MAX_LEVEL,
+								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, Constants.POINT_GAIN_RATE_MAX_LEVEL),
+								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
+								context.PointGainRateLevel < Constants.POINT_GAIN_RATE_MAX_LEVEL,
 								() => context.PointGainRateLevel += 1
 							).AsStatic(),
 							ActionReward.Create(
 								ExponentialCost(2000, context.SkillGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, PlayerContext.SKILL_GAIN_RATE_MAX_LEVEL),
-								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", PlayerContext.SKILL_GAIN_RATE_PER_LEVEL, PlayerContext.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
-								context.SkillGainRateLevel < PlayerContext.SKILL_GAIN_RATE_MAX_LEVEL,
+								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, Constants.SKILL_GAIN_RATE_MAX_LEVEL),
+								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
+								context.SkillGainRateLevel < Constants.SKILL_GAIN_RATE_MAX_LEVEL,
 								() => context.SkillGainRateLevel += 1
 							).AsStatic(),
 						};
@@ -426,7 +426,7 @@ namespace Server.Engines.Avatar
 														{
 															m_From.Skills[i].BaseFixedPoint -= amountRequired;
 															amountRequired = 0;
-                                                            break;
+															break;
 														}
 													}
 

@@ -1,5 +1,4 @@
 using Server.Items;
-using Server.Misc;
 using Server.Mobiles;
 using System;
 using System.Collections.Generic;
@@ -52,7 +51,7 @@ namespace Server.Engines.Avatar
 		{
 			if (!context.Active) return;
 
-			player.StatCap = 100 + context.StatCapLevel * PlayerContext.STAT_CAP_PER_LEVEL;
+			player.StatCap = 100 + context.StatCapLevel * Constants.STAT_CAP_PER_LEVEL;
 
 			// Skill cap could have changed
 			player.RefreshSkillCap();
@@ -150,7 +149,7 @@ namespace Server.Engines.Avatar
 
 		private void GrantCoins(PlayerMobile player, int value, PlayerContext context)
 		{
-			value += (int)(value * context.PointGainRateLevel * PlayerContext.POINT_GAIN_RATE_PER_LEVEL * 0.01);
+			value += (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 			context.PointsFarmed += value;
 
 			player.SendMessage("You have gained {0} coins.", value);

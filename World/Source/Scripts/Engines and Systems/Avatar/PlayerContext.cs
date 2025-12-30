@@ -6,18 +6,6 @@ namespace Server.Engines.Avatar
 	[PropertyObject]
 	public class PlayerContext
 	{
-		public const int IMPROVED_TEMPLATE_MAX_COUNT = 5;
-		public const int POINT_GAIN_RATE_MAX_LEVEL = 150;
-		public const int POINT_GAIN_RATE_PER_LEVEL = 1;
-		public const int RECORDED_SKILL_CAP_INTERVAL = 5;
-		public const int RECORDED_SKILL_CAP_MAX_AMOUNT = 125;
-		public const int RECORDED_SKILL_CAP_MAX_LEVEL = 25;
-		public const int SKILL_CAP_MAX_LEVEL = 70;
-		public const int SKILL_CAP_PER_LEVEL = 10;
-		public const int SKILL_GAIN_RATE_MAX_LEVEL = 10;
-		public const int SKILL_GAIN_RATE_PER_LEVEL = 10;
-		public const int STAT_CAP_MAX_LEVEL = 150;
-		public const int STAT_CAP_PER_LEVEL = 1;
 
 		public static readonly PlayerContext Default = new PlayerContext();
 
@@ -104,7 +92,7 @@ namespace Server.Engines.Avatar
 
 		public int GetRecordedSkillCap()
 		{
-			return Math.Min(RECORDED_SKILL_CAP_MAX_AMOUNT, 50 + (RecordedSkillCapLevel * RECORDED_SKILL_CAP_INTERVAL));
+			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, 50 + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
 		}
 
 		public void Serialize(GenericWriter writer)
