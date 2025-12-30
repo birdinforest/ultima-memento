@@ -349,50 +349,6 @@ namespace Server.Engines.Avatar
 					{
 						var rewards = new List<IReward>();
 
-						var nextStatCost = SecondOrderCost(1, Math.Max(1, m_From.RawStatTotal - 90));
-						var canSelectStatBoost = m_From.RawStatTotal < m_From.StatCap;
-
-						// Stats
-						rewards.Add(
-							ActionReward.Create(
-								nextStatCost,
-								AvatarShopGump.NO_ITEM_ID,
-								"Strength Boost",
-								"Increases your strength by 1 point.",
-								canSelectStatBoost,
-								() =>
-								{
-									m_From.RawStr += 1;
-								}
-							)
-						);
-						rewards.Add(
-							ActionReward.Create(
-								nextStatCost,
-								AvatarShopGump.NO_ITEM_ID,
-								"Dexterity Boost",
-								"Increases your dexterity by 1 point.",
-								canSelectStatBoost,
-								() =>
-								{
-									m_From.RawDex += 1;
-								}
-							)
-						);
-						rewards.Add(
-							ActionReward.Create(
-								nextStatCost,
-								AvatarShopGump.NO_ITEM_ID,
-								"Intelligence Boost",
-								"Increases your intelligence by 1 point.",
-								canSelectStatBoost,
-								() =>
-								{
-									m_From.RawInt += 1;
-								}
-							)
-						);
-
 						// Skills
 						if (context.UnlockPrimarySkillBoost || context.UnlockSecondarySkillBoost)
 						{
