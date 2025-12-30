@@ -43,7 +43,7 @@ namespace Server.Engines.Avatar
 			if (0 < version) UnlockMonsterRaces = reader.ReadBool();
 			if (0 < version) UnlockSavageRace = reader.ReadBool();
 			if (0 < version) UnlockTemptations = reader.ReadBool();
-			if (0 < version) UnlockRecordSkillCaps = reader.ReadBool();
+			if (1 < version) UnlockRecordSkillCaps = reader.ReadBool();
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 		}
