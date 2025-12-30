@@ -580,9 +580,6 @@ namespace Server
 						case 10: min = 70; max = 100; break;
 					}
 
-					if (0 < levelNormalized && from != null)
-						Console.WriteLine("({4}) Loot from {3} was boosted due to level '{0}'. ({1}/2 + {2})", levelNormalized, level, dungeonLevelBonus, from.Fame, from.Name, from.GetType());
-
 					if ( bonusProps < m_MaxProps && LootPack.CheckLuck( luckChance ) )
 						++bonusProps;
 
