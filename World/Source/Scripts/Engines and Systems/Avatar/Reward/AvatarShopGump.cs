@@ -368,9 +368,36 @@ namespace Server.Engines.Avatar
 					if (canPurchase)
 						AddButton(x + 13, y - 1, 4023, 4023, (int)_Actions.PurchaseBase + index, GumpButtonType.Reply, 0); // OK
 					else
-						AddImage(x + 13, y - 1, 4020); // Cancel button
+						AddImage(x + 21, y + 3, 2092); // Lock icon
 
-					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, "Purchase", HtmlColors.ORANGE);
+					string purchaseText;
+					switch (m_SelectedCategory)
+					{
+						case Categories.Templates:
+							purchaseText = "Select";
+							break;
+
+						case Categories.Boosts:
+							purchaseText = "Teach Me";
+							break;
+
+						case Categories.Unlocks:
+							purchaseText = "Unlock";
+							break;
+
+						case Categories.Limits:
+						case Categories.Rates:
+							purchaseText = "Upgrade";
+							break;
+
+						case Categories.Items:
+						case Categories.Information:
+						default:
+							purchaseText = "Purchase";
+							break;
+					}
+
+					TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, purchaseText, HtmlColors.ORANGE);
 				}
 			}
 		}
