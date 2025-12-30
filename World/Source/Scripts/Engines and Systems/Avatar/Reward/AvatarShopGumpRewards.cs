@@ -471,20 +471,20 @@ namespace Server.Engines.Avatar
 								2 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new IronIngot(50); },
-								100
-							),
+								50
+							).WithDescription("A handful of ingots to get you started."),
 							ItemReward.Create(
 								ONE_HUNDRED_GOLD,
 								true,
 								() => { return new Fabric(50); },
-								100
-							),
+								50
+							).WithDescription("A handful of fabric to get you started."),
 							ItemReward.Create(
 								5 * TEN_GOLD,
 								true,
 								() => { return new Bottle(); },
 								10
-							),
+							).WithDescription("A handful of bottles to get you started."),
 
 							// Tools
 							ItemReward.Create(
@@ -561,13 +561,12 @@ namespace Server.Engines.Avatar
 								true,
 								() => {
 									var bag = new Bag();
-									bag.AddItem(new Bandage(50));
 									bag.AddItem(new Scissors());
 									bag.AddItem(new Fabric(50));
 
 									return bag;
 								 }
-							).WithName("Healer's Kit"),
+							).WithName("Healer's Kit").WithDescription("Contains scissors and fabric."),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
@@ -579,39 +578,39 @@ namespace Server.Engines.Avatar
 
 									return bag;
 								 }
-							).WithName("Warrior's Potion Bag"),
+							).WithName("Warrior's Potion Bag").WithDescription("Contains healing, cure, and refresh potions."),
 							ItemReward.Create(
 								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new BagOfReagents(); }
-							).WithName("Bag of Reagents"),
+							).WithName("Bag of Reagents").WithDescription("Contains magery reagents for spells."),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new BagOfNecroReagents(); }
-							).WithName("Bag of Necro Reagents"),
+							).WithName("Bag of Necro Reagents").WithDescription("Contains necromancy reagents for spells."),
 							ItemReward.Create(
 								10 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new SmallBoatDeed(); }
-							),
+							).WithDescription("Hit the seas sailing!"),
 							ItemReward.Create(
 								30 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new MagicCarpetADeed(); }
-							),
+							).WithDescription("I can show you the world!"),
 
 							// Tames
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new CagedHorse(); }
-							),
+							).WithDescription("A horse is a great way to get around."),
 							ItemReward.Create(
 								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new CagedPackHorse(); }
-							),
+							).WithDescription("For when you're too weak to carry things yourself."),
 						};
 					}
 			}
