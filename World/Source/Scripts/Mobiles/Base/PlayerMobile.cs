@@ -23,6 +23,7 @@ using Server.Engines.Craft;
 using Server.Engines.PartySystem;
 using Server.Engines.MLQuests;
 using Server.SpellBars;
+using Server.Utilities;
 
 namespace Server.Mobiles
 {
@@ -2500,6 +2501,29 @@ namespace Server.Mobiles
 				res = DeathMoveResult.MoveToBackpack;
 
 			return res;
+		}
+
+		private bool _recursiveDeleteBlock;
+		public override void OnDelete()
+		{
+			base.OnDelete();
+
+			if (!_recursiveDeleteBlock)
+			{
+				_recursiveDeleteBlock = true;
+
+				foreach (var pet in WorldUtilities.ForEachMobile<Mobile>(mobile => mobile != this && mobile != null && !mobile.Deleted && MobileUtilities.TryGetMasterPlayer(mobile) == this))
+				{
+					pet.Delete();
+				}
+
+				foreach (var corpse in WorldUtilities.ForEachItem<Corpse>(item => item != null && !item.Deleted && item.Owner == this))
+				{
+					corpse.Delete();
+				}
+
+				_recursiveDeleteBlock = false;
+			}
 		}
 
 		public override DeathMoveResult GetInventoryMoveResultFor( Item item )
