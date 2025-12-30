@@ -406,7 +406,7 @@ namespace Server.Engines.Avatar
 				var color = isSelected ? HtmlColors.ORANGE : HtmlColors.COOL_BLUE;
 
 				string categoryName;
-				switch (selectedCategory)
+				switch (category)
 				{
 					case Categories.Boosts:
 						categoryName = "Skills Archive";
