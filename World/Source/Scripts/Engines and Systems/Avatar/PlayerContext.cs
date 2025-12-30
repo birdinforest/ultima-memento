@@ -92,7 +92,7 @@ namespace Server.Engines.Avatar
 
 		public int GetRecordedSkillCap()
 		{
-			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, 50 + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
+			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, Constants.RECORDED_SKILL_CAP_MIN_AMOUNT + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
 		}
 
 		public void Serialize(GenericWriter writer)
