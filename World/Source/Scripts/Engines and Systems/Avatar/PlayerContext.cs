@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Server.Engines.Avatar
@@ -8,6 +9,9 @@ namespace Server.Engines.Avatar
 		public const int IMPROVED_TEMPLATE_MAX_COUNT = 5;
 		public const int POINT_GAIN_RATE_MAX_LEVEL = 150;
 		public const int POINT_GAIN_RATE_PER_LEVEL = 1;
+		public const int RECORDED_SKILL_CAP_INTERVAL = 5;
+		public const int RECORDED_SKILL_CAP_MAX_AMOUNT = 125;
+		public const int RECORDED_SKILL_CAP_MAX_LEVEL = 25;
 		public const int SKILL_CAP_MAX_LEVEL = 70;
 		public const int SKILL_CAP_PER_LEVEL = 10;
 		public const int SKILL_GAIN_RATE_MAX_LEVEL = 10;
@@ -40,6 +44,7 @@ namespace Server.Engines.Avatar
 			if (0 < version) UnlockSavageRace = reader.ReadBool();
 			if (0 < version) UnlockTemptations = reader.ReadBool();
 			if (0 < version) UnlockRecordSkillCaps = reader.ReadBool();
+			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 		}
 
@@ -58,6 +63,9 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointsSaved { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int RecordedSkillCapLevel { get; set; }
 
 		public Dictionary<Categories, List<int>> RewardCache { get; set; }
 
@@ -94,9 +102,14 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockTemptations { get; set; }
 
+		public int GetRecordedSkillCap()
+		{
+			return Math.Min(RECORDED_SKILL_CAP_MAX_AMOUNT, 50 + (RecordedSkillCapLevel * RECORDED_SKILL_CAP_INTERVAL));
+		}
+
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(2); // version
+			writer.Write(3); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -112,6 +125,7 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockSavageRace);
 			writer.Write(UnlockTemptations);
 			writer.Write(UnlockRecordSkillCaps);
+			writer.Write(RecordedSkillCapLevel);
 			Skills.Serialize(writer);
 		}
 
