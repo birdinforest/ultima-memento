@@ -51,6 +51,12 @@ namespace Server.Engines.Avatar
 			return this;
 		}
 
+		public ItemReward WithDescription(string description)
+		{
+			Description = description;
+			return this;
+		}
+
 		public ItemReward WithName(string name)
 		{
 			Name = name;
