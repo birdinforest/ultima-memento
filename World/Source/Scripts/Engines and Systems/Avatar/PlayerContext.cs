@@ -44,8 +44,8 @@ namespace Server.Engines.Avatar
 			if (0 < version) UnlockSavageRace = reader.ReadBool();
 			if (0 < version) UnlockTemptations = reader.ReadBool();
 			if (0 < version) UnlockRecordSkillCaps = reader.ReadBool();
-			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
+			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -125,8 +125,8 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockSavageRace);
 			writer.Write(UnlockTemptations);
 			writer.Write(UnlockRecordSkillCaps);
-			writer.Write(RecordedSkillCapLevel);
 			Skills.Serialize(writer);
+			writer.Write(RecordedSkillCapLevel);
 		}
 
 		public override string ToString()
