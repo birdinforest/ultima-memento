@@ -136,7 +136,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockRecordRecipes
 								? ActionReward.Create(
-									1 * ONE_HUNDRED_GOLD,
+									ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Crafter Lineage",
 									"Record recipes that you have learned.",
