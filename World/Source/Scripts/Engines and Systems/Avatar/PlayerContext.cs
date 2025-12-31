@@ -33,7 +33,7 @@ namespace Server.Engines.Avatar
 			if (1 < version) UnlockRecordSkillCaps = reader.ReadBool();
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
-			if (2 < version) UnlockRecordRecipes = reader.ReadBool();
+			if (3 < version) UnlockRecordRecipes = reader.ReadBool();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -100,7 +100,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(3); // version
+			writer.Write(4); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
