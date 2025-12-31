@@ -32,7 +32,7 @@ namespace Server.Engines.Avatar
 						{
 							!context.UnlockPrimarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									2 * ONE_THOUSAND_GOLD,
+									2 * ONE_HUNDRED_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Jack of No Trades",
 									"Learn from the greatest masters. Unlock the ability to restore Primary skills.",
@@ -45,7 +45,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockSecondarySkillBoost && context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									2 * ONE_THOUSAND_GOLD,
+									2 * ONE_HUNDRED_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Artisan's Mastery",
 									"Master the crafts. Unlock the ability to restore Secondary skills.",
@@ -123,7 +123,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockRecordSkillCaps
 								? ActionReward.Create(
-									ONE_THOUSAND_GOLD,
+									ONE_HUNDRED_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Erudian Teachings",
 									"Reinforce your mind. Higher learning will become second nature.",
@@ -142,10 +142,10 @@ namespace Server.Engines.Avatar
 						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
 						var currentErudianBonus = context.GetRecordedSkillCap();
 						var erudianCapCost = 0;
-						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(1000, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(2000, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(4000, context.RecordedSkillCapLevel + 1);
-						else erudianCapCost = SecondOrderCost(8000, context.RecordedSkillCapLevel + 1);
+						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(100, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(200, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(400, context.RecordedSkillCapLevel + 1);
+						else erudianCapCost = SecondOrderCost(800, context.RecordedSkillCapLevel + 1);
 
 						return new List<IReward>
 						{
