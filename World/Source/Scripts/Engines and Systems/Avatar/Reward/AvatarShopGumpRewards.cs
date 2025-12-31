@@ -134,6 +134,19 @@ namespace Server.Engines.Avatar
 									}
 								)
 								: null,
+							!context.UnlockRecordRecipes
+								? ActionReward.Create(
+									1 * ONE_HUNDRED_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Crafter Lineage",
+									"Record recipes that you have learned.",
+									true,
+									() => {
+										context.UnlockRecordRecipes = true;
+										m_From.SendMessage("Your recipes are now permanently unlocked.");
+									}
+								)
+								: null,
 						}.Where(r => r != null).ToList();
 					}
 
