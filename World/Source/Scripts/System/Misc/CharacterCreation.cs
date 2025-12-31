@@ -87,7 +87,8 @@ namespace Server.Misc
 				Mobile mobile = account[i];
 				if (mobile == existingCharacter)
 				{
-					newChar = existingCharacter.CreateCopy(false);
+					var avatar = existingCharacter.Avatar;
+					newChar = existingCharacter.CreateCopy(avatar.Active && avatar.UnlockRecordRecipes);
 					account[i] = newChar;
 					break;
 				}

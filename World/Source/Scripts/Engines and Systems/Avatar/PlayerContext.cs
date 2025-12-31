@@ -6,7 +6,6 @@ namespace Server.Engines.Avatar
 	[PropertyObject]
 	public class PlayerContext
 	{
-
 		public static readonly PlayerContext Default = new PlayerContext();
 
 		public PlayerContext()
@@ -34,6 +33,7 @@ namespace Server.Engines.Avatar
 			if (1 < version) UnlockRecordSkillCaps = reader.ReadBool();
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
+			if (2 < version) UnlockRecordRecipes = reader.ReadBool();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -79,6 +79,9 @@ namespace Server.Engines.Avatar
 		public bool UnlockPrimarySkillBoost { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockRecordRecipes { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockRecordSkillCaps { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -115,6 +118,7 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockRecordSkillCaps);
 			Skills.Serialize(writer);
 			writer.Write(RecordedSkillCapLevel);
+			writer.Write(UnlockRecordRecipes);
 		}
 
 		public override string ToString()
