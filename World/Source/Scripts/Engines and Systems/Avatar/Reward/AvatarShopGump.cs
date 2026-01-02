@@ -110,23 +110,24 @@ namespace Server.Engines.Avatar
 			List<int> randomRewardIndexes;
 			if (!m_Context.RewardCache.TryGetValue(selectedCategory, out randomRewardIndexes))
 			{
+				randomRewardIndexes = new List<int>();
+
 				switch (selectedCategory)
 				{
-					case Categories.Unlocks:
 					case Categories.Limits:
 					case Categories.Rates:
-					case Categories.Templates:
-					case Categories.Boosts:
-					case Categories.Items:
-						randomRewardIndexes = new List<int>();
-						if (selectedCategory == Categories.Unlocks)
+					case Categories.Unlocks:
 						{
 							randomRewardIndexes.AddRange(
 								rewards
 								.Select((reward, index) => index)
 							);
+							break;
 						}
-						else
+
+					case Categories.Templates:
+					case Categories.Boosts:
+					case Categories.Items:
 						{
 							if (rewards.Any(reward => reward.Static))
 							{
@@ -151,17 +152,15 @@ namespace Server.Engines.Avatar
 									);
 								}
 							}
+							break;
 						}
-
-						randomRewardIndexes.Sort();
-						break;
 
 					case Categories.Information:
 					default:
-						randomRewardIndexes = null;
 						break;
 				}
 
+				randomRewardIndexes.Sort();
 				m_Context.RewardCache[selectedCategory] = randomRewardIndexes;
 			}
 
