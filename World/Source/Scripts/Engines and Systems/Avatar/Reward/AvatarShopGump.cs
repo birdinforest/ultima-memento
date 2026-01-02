@@ -64,20 +64,19 @@ namespace Server.Engines.Avatar
 
 			if (selectedCategory == Categories.Information)
 			{
-				AddInformationCard(
-					NO_ITEM_ID,
-					"An Avatar is Born",
-					string.Format(
-						"You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth.<br>Your current {0} and your current {1}",
-						TextDefinition.GetColorizedText(string.Format("Stat cap is {0}", m_From.StatCap.ToString()), HtmlColors.ORANGE),
-						TextDefinition.GetColorizedText(string.Format("Skill cap is {0}", (m_From.SkillsCap / 10).ToString("n0")), HtmlColors.ORANGE)
-					),
-					y
-				);
+				AddKeyValuePairsCard(NAVIGATION_WIDTH + 20, y);
+				y += CARD_HEIGHT;
+				y += 10;
+
+				AddInformationCard(NO_ITEM_ID, "An Avatar is Born", "You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth.", y);
 				y += CARD_HEIGHT;
 				y += 10;
 
 				AddInformationCard(NO_ITEM_ID, "Everything is Temporary", "Upon death, your character will be reborn and all evidence of your former life will be destroyed.", y);
+				y += CARD_HEIGHT;
+				y += 10;
+
+				AddInformationCard(NO_ITEM_ID, "Your Treasury", "Coins are earned by killing monsters and completing quests.", y);
 				y += CARD_HEIGHT;
 				y += 10;
 
@@ -178,18 +177,9 @@ namespace Server.Engines.Avatar
 			const int ITEMS_PER_PAGE = 8;
 			var toTake = ITEMS_PER_PAGE;
 
-			if (pageNumber == 1)
+			if (pageNumber == 1 && m_SelectedCategory == Categories.Boosts)
 			{
-				if (m_SelectedCategory == Categories.Boosts)
-				{
-					AddInformationCard(GIANT_COIN_ITEM_ID, "Your Skill Archive", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
-				}
-				else
-				{
-					var message = m_Context.PointsSaved > 0 ? string.Format("You've earned {0} coins.", TextDefinition.GetColorizedText(m_Context.PointsSaved.ToString("n0"), HtmlColors.ORANGE)) : "Your treasury is empty.";
-					message += "<br>Coins are earned by killing monsters and completing quests.";
-					AddInformationCard(GIANT_COIN_ITEM_ID, "Your Treasury", message, y, false);
-				}
+				AddInformationCard(BLANK_ITEM_ID, "Your Skill Archive", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
 
 				y += CARD_HEIGHT;
 				y += 10;
@@ -404,13 +394,25 @@ namespace Server.Engines.Avatar
 
 		private void AddCategoryList(Categories selectedCategory, int x, int y)
 		{
+			// Show current coins
+			{
+				var firstRowY = y + 20 - 3;
+				var secondRowY = firstRowY + 20;
+
+				AddBackground(x, y, CATEGORY_WIDTH, CARD_HEIGHT + 5, 2620);
+				GumpUtilities.AddCenteredItemToGump(this, GIANT_COIN_ITEM_ID, x + 10, y, 40, CARD_HEIGHT + 5);
+				TextDefinition.AddHtmlText(this, x + 60, firstRowY, CATEGORY_WIDTH - 20, 40, string.Format("{0}", m_From.Avatar.PointsSaved.ToString("n0")), HtmlColors.ORANGE);
+				TextDefinition.AddHtmlText(this, x + 60, secondRowY, CATEGORY_WIDTH - 20, 40, "Coins", HtmlColors.COOL_BLUE);
+				y += CARD_HEIGHT + 10;
+			}
+
 			int i = 0;
 			foreach (var category in m_Categories)
 			{
 				var isSelected = selectedCategory == category;
-				const int CARD_HEIGHT = 34;
+				const int CATEGORY_CARD_HEIGHT = 34;
 				const int TOP_PADDING = 6;
-				const int HEIGHT_PER_ITEM = CARD_HEIGHT + TOP_PADDING; // Extra top padding
+				const int HEIGHT_PER_ITEM = CATEGORY_CARD_HEIGHT + TOP_PADDING; // Extra top padding
 				const int LEFT_PADDING = 36;
 
 				if (!isSelected)
@@ -458,6 +460,28 @@ namespace Server.Engines.Avatar
 		private void AddInformationCard(int itemId, string name, string description, int y, bool scrollable = false)
 		{
 			AddCard(0, itemId, name, description, false, 0, 0, y, scrollable);
+		}
+
+		private void AddKeyValuePairsCard(int x, int y)
+		{
+			AddBackground(x, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
+
+			const int COUNT = 2;
+			const int WIDTH_AVAILABLE = CARD_WIDTH;
+			var cardWidth = Math.Min(100, WIDTH_AVAILABLE / COUNT);
+
+			var space = cardWidth + (int)((double)cardWidth / (COUNT - 1));
+			x += (WIDTH_AVAILABLE - (space * (COUNT - 1)) - cardWidth) / 2; // Split any excess due to card width limits
+
+			var firstRowY = y + 20;
+			var secondRowY = firstRowY + 20;
+
+			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", m_From.StatCap), HtmlColors.ORANGE);
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Stat Cap</CENTER>", HtmlColors.COOL_BLUE);
+
+			x += space;
+			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", (m_From.SkillsCap / 10).ToString("n0")), HtmlColors.ORANGE);
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Skill Cap</CENTER>", HtmlColors.COOL_BLUE);
 		}
 	}
 }
