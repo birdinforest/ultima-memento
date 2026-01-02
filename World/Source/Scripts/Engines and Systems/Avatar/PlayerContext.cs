@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Server.Engines.Avatar
 {
 	[PropertyObject]
-	public class PlayerContext
+	public partial class PlayerContext
 	{
 		public static readonly PlayerContext Default = new PlayerContext();
 
@@ -55,8 +55,6 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int RecordedSkillCapLevel { get; set; }
 
-		public Dictionary<Categories, List<int>> RewardCache { get; set; }
-
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SkillCapLevel { get; set; }
 
@@ -93,11 +91,6 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockTemptations { get; set; }
 
-		public int GetRecordedSkillCap()
-		{
-			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, Constants.RECORDED_SKILL_CAP_MIN_AMOUNT + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
-		}
-
 		public void Serialize(GenericWriter writer)
 		{
 			writer.Write(4); // version
@@ -124,6 +117,23 @@ namespace Server.Engines.Avatar
 		public override string ToString()
 		{
 			return "...";
+		}
+	}
+
+	public partial class PlayerContext
+	{
+		public Dictionary<Categories, List<int>> RewardCache { get; set; }
+
+		public void ClearRewardCache(Categories category)
+		{
+			if (RewardCache == null) return;
+
+			RewardCache.Remove(category);
+		}
+
+		public int GetRecordedSkillCap()
+		{
+			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, Constants.RECORDED_SKILL_CAP_MIN_AMOUNT + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
 		}
 	}
 }

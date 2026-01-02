@@ -56,6 +56,7 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockPrimarySkillBoost = true;
+										context.ClearRewardCache(Categories.Boosts);
 										m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
 									}
 								)
@@ -69,6 +70,7 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockSecondarySkillBoost = true;
+										context.ClearRewardCache(Categories.Boosts);
 										m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
 									}
 								)
@@ -147,6 +149,7 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockRecordSkillCaps = true;
+										context.ClearRewardCache(Categories.Boosts);
 										m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
 									}
 								)
@@ -186,7 +189,11 @@ namespace Server.Engines.Avatar
 									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
 									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
 									context.RecordedSkillCapLevel < Constants.RECORDED_SKILL_CAP_MAX_LEVEL,
-									() => context.RecordedSkillCapLevel += 1
+									() => 
+									{
+										context.RecordedSkillCapLevel += 1;
+										context.ClearRewardCache(Categories.Boosts);
+									}
 								).AsStatic()
 								: null,
 							ActionReward.Create(
