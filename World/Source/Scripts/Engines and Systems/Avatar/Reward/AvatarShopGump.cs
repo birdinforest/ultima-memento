@@ -29,7 +29,8 @@ namespace Server.Engines.Avatar
 			Categories.Limits,
 			Categories.Rates,
 			Categories.Templates,
-			Categories.Boosts,
+			Categories.PrimaryBoosts,
+			Categories.SecondaryBoosts,
 			Categories.Items,
 		};
 
@@ -103,7 +104,7 @@ namespace Server.Engines.Avatar
 			}
 
 			var rewards = RewardFactory.CreateRewards(m_From, selectedCategory, m_Context);
-			if (rewards == null) return;
+			if (rewards == null || rewards.Count == 0) return;
 
 			if (m_Context.RewardCache == null) m_Context.RewardCache = new Dictionary<Categories, List<int>>();
 
@@ -126,7 +127,8 @@ namespace Server.Engines.Avatar
 						}
 
 					case Categories.Templates:
-					case Categories.Boosts:
+					case Categories.PrimaryBoosts:
+					case Categories.SecondaryBoosts:
 					case Categories.Items:
 						{
 							if (rewards.Any(reward => reward.Static))
@@ -176,7 +178,7 @@ namespace Server.Engines.Avatar
 			const int ITEMS_PER_PAGE = 8;
 			var toTake = ITEMS_PER_PAGE;
 
-			if (pageNumber == 1 && m_SelectedCategory == Categories.Boosts)
+			if (pageNumber == 1 && (m_SelectedCategory == Categories.PrimaryBoosts || m_SelectedCategory == Categories.SecondaryBoosts))
 			{
 				AddInformationCard(BLANK_ITEM_ID, "Your Skill Archive", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
 
@@ -366,7 +368,8 @@ namespace Server.Engines.Avatar
 							purchaseText = "Select";
 							break;
 
-						case Categories.Boosts:
+						case Categories.PrimaryBoosts:
+						case Categories.SecondaryBoosts:
 							purchaseText = "Teach Me";
 							break;
 
@@ -436,8 +439,12 @@ namespace Server.Engines.Avatar
 				string categoryName;
 				switch (category)
 				{
-					case Categories.Boosts:
-						categoryName = "Skills Archive";
+					case Categories.PrimaryBoosts:
+						categoryName = "Primary Skills";
+						break;
+
+					case Categories.SecondaryBoosts:
+						categoryName = "Secondary Skills";
 						break;
 
 					case Categories.Information:

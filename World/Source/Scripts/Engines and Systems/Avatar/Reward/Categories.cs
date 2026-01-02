@@ -7,7 +7,8 @@ namespace Server.Engines.Avatar
 		Limits,
 		Rates,
 		Templates,
-		Boosts,
+		PrimaryBoosts,
+		SecondaryBoosts,
 		Items,
 	}
 }

@@ -39,7 +39,8 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockPrimarySkillBoost = true;
-										context.ClearRewardCache(Categories.Boosts);
+										context.ClearRewardCache(Categories.PrimaryBoosts);
+										context.ClearRewardCache(Categories.SecondaryBoosts);
 										m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
 									}
 								)
@@ -53,7 +54,8 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockSecondarySkillBoost = true;
-										context.ClearRewardCache(Categories.Boosts);
+										context.ClearRewardCache(Categories.PrimaryBoosts);
+										context.ClearRewardCache(Categories.SecondaryBoosts);
 										m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
 									}
 								)
@@ -132,7 +134,8 @@ namespace Server.Engines.Avatar
 									true,
 									() => {
 										context.UnlockRecordSkillCaps = true;
-										context.ClearRewardCache(Categories.Boosts);
+										context.ClearRewardCache(Categories.PrimaryBoosts);
+										context.ClearRewardCache(Categories.SecondaryBoosts);
 										m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
 									}
 								)
@@ -175,7 +178,8 @@ namespace Server.Engines.Avatar
 									() =>
 									{
 										context.RecordedSkillCapLevel += 1;
-										context.ClearRewardCache(Categories.Boosts);
+										context.ClearRewardCache(Categories.PrimaryBoosts);
+										context.ClearRewardCache(Categories.SecondaryBoosts);
 									}
 								).AsStatic()
 								: null,
@@ -382,12 +386,13 @@ namespace Server.Engines.Avatar
 						return rewards;
 					}
 
-				case Categories.Boosts:
+				case Categories.PrimaryBoosts:
+				case Categories.SecondaryBoosts:
 					{
 						var rewards = new List<IReward>();
 
 						// Skills
-						if (context.UnlockPrimarySkillBoost || context.UnlockSecondarySkillBoost)
+						if ((context.UnlockPrimarySkillBoost && selectedCategory == Categories.PrimaryBoosts) || (context.UnlockSecondarySkillBoost && selectedCategory == Categories.SecondaryBoosts))
 						{
 							var skills = new List<Skill>();
 							for (var i = 0; i < m_From.Skills.Length; i++)
