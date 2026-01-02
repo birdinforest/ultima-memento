@@ -1,3 +1,4 @@
+using Server.Gumps;
 using Server.Items;
 using Server.Mobiles;
 using System;
@@ -151,6 +152,7 @@ namespace Server.Engines.Avatar
 		{
 			value += (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 			context.PointsFarmed += value;
+			CombatBar.Refresh(player);
 
 			player.SendMessage("You have gained {0} coins.", value);
 		}
