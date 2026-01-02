@@ -9,6 +9,23 @@ using System.Linq;
 
 namespace Server.Engines.Avatar
 {
+	/*
+		Starting professions
+		- Improved starting professions (I/II/III - +10 to each skill they have, each tier also means that's how many boosted templates are available)
+		Starter items
+		Facets
+		Fast Travel / Moongates(?)
+	*/
+	// context.UnlockRecordSkillCaps // TODO: Number of extra boosts
+	// 	? ActionReward.Create(
+	// 		SecondOrderCost(100, context.RecordedSkillCapLevel + 1),
+	// 		AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+	// 		string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, AvatarConstants.RECORDED_SKILL_CAP_MAX_LEVEL),
+	// 		string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", AvatarConstants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+	// 		context.RecordedSkillCapLevel < AvatarConstants.RECORDED_SKILL_CAP_MAX_LEVEL,
+	// 		() => context.RecordedSkillCapLevel += 1
+	// 	).AsStatic()
+	// 	: null,
 	public class RewardFactory
 	{
 		private const int TEN_GOLD = 100;
@@ -404,7 +421,7 @@ namespace Server.Engines.Avatar
 
 							foreach (var skill in skills)
 							{
-								const int NEOPHYTE_SKILL_VALUE = 30;
+								const int NEOPHYTE_SKILL_VALUE = 300;
 								var archiveValue = context.Skills[skill.SkillName];
 								if (archiveValue < NEOPHYTE_SKILL_VALUE) continue;
 
