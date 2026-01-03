@@ -24,20 +24,6 @@ namespace Server.Engines.Avatar
 				from.SendMessage("You have earned '{0:n0}' coins.", earned);
 				from.SendMessage("You will have a total of '{0:n0}' coins to spend in the Gypsy encampment.", total);
 			});
-			CommandSystem.Register("avatar-points", AccessLevel.Player, args =>
-			{ // TODO: Remove this!
-				var from = (PlayerMobile)args.Mobile;
-				if (!from.Avatar.Active)
-				{
-					from.SendMessage("Normally you must be in the Gypsy encampment to open the Avatar Shop...");
-					// from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
-					// return;
-				}
-
-				const int value = 50000;
-				from.Avatar.PointsSaved += value;
-				from.SendMessage("You have been awarded {0} coins.", value);
-			});
 		}
 
 		[Usage("avatar-enable")]
