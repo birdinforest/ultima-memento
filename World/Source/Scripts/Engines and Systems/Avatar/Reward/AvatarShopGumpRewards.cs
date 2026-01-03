@@ -351,7 +351,12 @@ namespace Server.Engines.Avatar
 							StarterProfessions.Archer,
 						};
 
-						var boostedProfessions = new HashSet<StarterProfessions>();
+						HashSet<StarterProfessions> boostedProfessions = context.BoostedTemplateCache;
+						if (boostedProfessions == null)
+						{
+							context.BoostedTemplateCache = boostedProfessions = new HashSet<StarterProfessions>();
+						}
+
 						if (0 < context.ImprovedTemplateCount && context.ImprovedTemplateCount <= professions.Count)
 						{
 							// Keep boosting a random profession until we reach our max

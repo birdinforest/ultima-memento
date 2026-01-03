@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Misc;
 
 namespace Server.Engines.Avatar
 {
@@ -123,6 +124,7 @@ namespace Server.Engines.Avatar
 	public partial class PlayerContext
 	{
 		public Dictionary<Categories, List<int>> RewardCache { get; set; }
+		public HashSet<StarterProfessions> BoostedTemplateCache { get; set; }
 
 		public void ClearRewardCache(Categories category)
 		{
