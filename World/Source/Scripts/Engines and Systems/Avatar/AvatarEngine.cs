@@ -83,7 +83,10 @@ namespace Server.Engines.Avatar
 			if (!m_Context.Remove(oldMobile.Serial)) return;
 
 			m_Context.Add(newMobile.Serial, context);
+
+			// Clear any cache
 			context.RewardCache = null;
+			context.BoostedTemplateCache = null;
 		}
 
 		private static void LoadData()
