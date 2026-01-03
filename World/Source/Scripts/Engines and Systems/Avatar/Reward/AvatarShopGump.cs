@@ -450,7 +450,7 @@ namespace Server.Engines.Avatar
 
 				AddBackground(x, y, CATEGORY_WIDTH, CARD_HEIGHT + 5, 2620);
 				GumpUtilities.AddCenteredItemToGump(this, GIANT_COIN_ITEM_ID, x + 10, y, 40, CARD_HEIGHT + 5);
-				TextDefinition.AddHtmlText(this, x + 60, firstRowY, CATEGORY_WIDTH - 20, 40, string.Format("{0}", m_From.Avatar.PointsSaved.ToString("n0")), HtmlColors.ORANGE);
+				TextDefinition.AddHtmlText(this, x + 60, firstRowY, CATEGORY_WIDTH - 20, 40, string.Format("{0}", (m_From.Avatar.PointsSaved + m_From.Avatar.PointsFarmed).ToString("n0")), HtmlColors.ORANGE);
 				TextDefinition.AddHtmlText(this, x + 60, secondRowY, CATEGORY_WIDTH - 20, 40, "Coins", HtmlColors.COOL_BLUE);
 				y += CARD_HEIGHT + 10;
 			}
