@@ -25,9 +25,7 @@ namespace Server.Engines.Avatar
 		private static readonly List<Categories> m_Categories = new List<Categories>
 		{
 			Categories.Information,
-			Categories.Unlocks,
-			Categories.Limits,
-			Categories.Rates,
+			Categories.Ascensions,
 			Categories.Templates,
 			Categories.PrimaryBoosts,
 			Categories.SecondaryBoosts,
@@ -103,6 +101,43 @@ namespace Server.Engines.Avatar
 				return;
 			}
 
+			bool hasInfoCard = true;
+			if (pageNumber == 1)
+			{
+				switch (m_SelectedCategory)
+				{
+					case Categories.Ascensions:
+						{
+							AddInformationCard(BLANK_ITEM_ID, "Ascensions - Unlock Permanent Enhancements", "Ascensions are a way to apply permanent changes to your lineage. Some of these changes may allow you to persist knowledge between runs while others may simply make you stronger.", y);
+							break;
+						}
+
+					case Categories.Templates:
+						{
+							AddInformationCard(BLANK_ITEM_ID, "Templates - Select Your Beginning", "A template can provide a fixed combination of skills, stats, and/or items to aid with your run. The templates available to you will change each run.", y);
+							break;
+						}
+
+					case Categories.PrimaryBoosts:
+					case Categories.SecondaryBoosts:
+						{
+							AddInformationCard(BLANK_ITEM_ID, "Skill Archive - Customize Your Build", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
+							break;
+						}
+
+					case Categories.Items:
+						{
+							AddInformationCard(BLANK_ITEM_ID, "Items - Purchase Temporary Conveniences", "Items can be purchased to assist you with your next run. Be wary of how much you invest, as these items are lost upon death.", y);
+							break;
+						}
+
+					case Categories.Information:
+					default:
+						hasInfoCard = false;
+						break;
+				}
+			}
+
 			var rewards = RewardFactory.CreateRewards(m_From, selectedCategory, m_Context);
 			if (rewards == null || rewards.Count == 0) return;
 
@@ -115,9 +150,7 @@ namespace Server.Engines.Avatar
 
 				switch (selectedCategory)
 				{
-					case Categories.Limits:
-					case Categories.Rates:
-					case Categories.Unlocks:
+					case Categories.Ascensions:
 						{
 							randomRewardIndexes.AddRange(
 								rewards
@@ -178,13 +211,10 @@ namespace Server.Engines.Avatar
 			const int ITEMS_PER_PAGE = 8;
 			var toTake = ITEMS_PER_PAGE;
 
-			if (pageNumber == 1 && (m_SelectedCategory == Categories.PrimaryBoosts || m_SelectedCategory == Categories.SecondaryBoosts))
+			if (hasInfoCard)
 			{
-				AddInformationCard(BLANK_ITEM_ID, "Your Skill Archive", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
-
 				y += CARD_HEIGHT;
 				y += 10;
-
 				toTake -= 1;
 			}
 
@@ -373,13 +403,8 @@ namespace Server.Engines.Avatar
 							purchaseText = "Teach Me";
 							break;
 
-						case Categories.Unlocks:
+						case Categories.Ascensions:
 							purchaseText = "Unlock";
-							break;
-
-						case Categories.Limits:
-						case Categories.Rates:
-							purchaseText = "Upgrade";
 							break;
 
 						case Categories.Items:
@@ -448,9 +473,7 @@ namespace Server.Engines.Avatar
 						break;
 
 					case Categories.Information:
-					case Categories.Unlocks:
-					case Categories.Limits:
-					case Categories.Rates:
+					case Categories.Ascensions:
 					case Categories.Templates:
 					case Categories.Items:
 					default:

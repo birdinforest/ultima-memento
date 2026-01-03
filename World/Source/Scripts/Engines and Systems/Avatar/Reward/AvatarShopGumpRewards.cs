@@ -26,8 +26,16 @@ namespace Server.Engines.Avatar
 						return null;
 					}
 
-				case Categories.Unlocks:
+				case Categories.Ascensions:
 					{
+						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
+						var currentErudianBonus = context.GetRecordedSkillCap();
+						var erudianCapCost = 0;
+						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(100, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(200, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(400, context.RecordedSkillCapLevel + 1);
+						else erudianCapCost = SecondOrderCost(800, context.RecordedSkillCapLevel + 1);
+
 						return new List<IReward>
 						{
 							!context.UnlockPrimarySkillBoost && context.UnlockRecordSkillCaps
@@ -57,19 +65,6 @@ namespace Server.Engines.Avatar
 										context.ClearRewardCache(Categories.PrimaryBoosts);
 										context.ClearRewardCache(Categories.SecondaryBoosts);
 										m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
-									}
-								)
-								: null,
-							context.ImprovedTemplateCount < Constants.IMPROVED_TEMPLATE_MAX_COUNT
-								? ActionReward.Create(
-									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
-									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
-									string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
-									true,
-									() => {
-										context.ImprovedTemplateCount += 1;
-										m_From.SendMessage("Your templates may now spawn as (Improved).");
 									}
 								)
 								: null,
@@ -153,25 +148,25 @@ namespace Server.Engines.Avatar
 									}
 								)
 								: null,
-						}.Where(r => r != null).ToList();
-					}
+							context.ImprovedTemplateCount < Constants.IMPROVED_TEMPLATE_MAX_COUNT
+								? ActionReward.Create(
+									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
+									AvatarShopGump.NO_ITEM_ID,
+									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
+									string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
+									true,
+									() => {
+										context.ImprovedTemplateCount += 1;
+										m_From.SendMessage("Your templates may now spawn as (Improved).");
+									}
+								)
+								: null,
 
-				case Categories.Limits:
-					{
-						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
-						var currentErudianBonus = context.GetRecordedSkillCap();
-						var erudianCapCost = 0;
-						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(100, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(200, context.RecordedSkillCapLevel + 1);
-						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(400, context.RecordedSkillCapLevel + 1);
-						else erudianCapCost = SecondOrderCost(800, context.RecordedSkillCapLevel + 1);
-
-						return new List<IReward>
-						{
+							// Limits
 							context.UnlockRecordSkillCaps
 								? ActionReward.Create(
 									erudianCapCost,
-									AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+									AvatarShopGump.NO_ITEM_ID,
 									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
 									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
 									context.RecordedSkillCapLevel < Constants.RECORDED_SKILL_CAP_MAX_LEVEL,
@@ -181,32 +176,26 @@ namespace Server.Engines.Avatar
 										context.ClearRewardCache(Categories.PrimaryBoosts);
 										context.ClearRewardCache(Categories.SecondaryBoosts);
 									}
-								).AsStatic()
+								)
 								: null,
 							ActionReward.Create(
 								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
-								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
 								string.Format("Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
 								context.SkillCapLevel < Constants.SKILL_CAP_MAX_LEVEL,
 								() => context.SkillCapLevel += 1
-							).AsStatic(),
-
+							),
 							ActionReward.Create(
 								SecondOrderCost(100, context.StatCapLevel + 1),
-								AvatarShopGump.FAT_BOTTLE_ITEM_ID,
+								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
 								string.Format("Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
 								context.StatCapLevel < Constants.STAT_CAP_MAX_LEVEL,
 								() => context.StatCapLevel += 1
-							).AsStatic(),
-						}.Where(r => r != null).ToList();
-					}
-
-				case Categories.Rates:
-					{
-						return new List<IReward>
-						{
+							),
+							
+							// Rates
 							ActionReward.Create(
 								SecondOrderCost(100, context.PointGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
@@ -214,7 +203,7 @@ namespace Server.Engines.Avatar
 								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
 								context.PointGainRateLevel < Constants.POINT_GAIN_RATE_MAX_LEVEL,
 								() => context.PointGainRateLevel += 1
-							).AsStatic(),
+							),
 							ActionReward.Create(
 								ExponentialCost(2000, context.SkillGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
@@ -222,8 +211,8 @@ namespace Server.Engines.Avatar
 								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
 								context.SkillGainRateLevel < Constants.SKILL_GAIN_RATE_MAX_LEVEL,
 								() => context.SkillGainRateLevel += 1
-							).AsStatic(),
-						};
+							),
+						}.Where(r => r != null).ToList();
 					}
 
 				case Categories.Templates:
