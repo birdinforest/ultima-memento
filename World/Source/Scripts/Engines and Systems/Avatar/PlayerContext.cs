@@ -36,9 +36,14 @@ namespace Server.Engines.Avatar
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 			if (3 < version) UnlockRecordRecipes = reader.ReadBool();
-			if (4 < version) RivalSlayerName = (SlayerName)reader.ReadInt();
-			if (4 < version) RivalBonusEnabled = reader.ReadBool();
-			if (4 < version) RivalBonusPoints = reader.ReadInt();
+			if (4 < version)
+			{
+				RivalSlayerName = (SlayerName)reader.ReadInt();
+				RivalBonusEnabled = reader.ReadBool();
+				RivalBonusPoints = reader.ReadInt();
+			}
+			else
+				GenerateRivalry();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
