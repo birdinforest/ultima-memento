@@ -19,11 +19,10 @@ namespace Server.Engines.Avatar
 		public static void EnableAvatarCommand(CommandEventArgs e)
 		{
 			var from = (PlayerMobile)e.Mobile;
-			if (!InGypsyEncampment(from))
+			if (!AvatarShopGump.InGypsyEncampment(from))
 			{
-				from.SendMessage("Normally you must be in the Gypsy encampment to open the Avatar Shop...");
-				// from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
-				// return;
+				from.SendMessage("You must be in the Gypsy encampment to become an Avatar.");
+				return;
 			}
 
 			if (from.Avatar.Active)
@@ -53,6 +52,12 @@ namespace Server.Engines.Avatar
 		public static void ForceEnableAvatarCommand(CommandEventArgs e)
 		{
 			var from = (PlayerMobile)e.Mobile;
+			if (!AvatarShopGump.InGypsyEncampment(from))
+			{
+				from.SendMessage("Normally you must be in the Gypsy encampment to open the Avatar Shop...");
+				// from.SendMessage("You must be in the Gypsy encampment to become an Avatar.");
+				// return;
+			}
 
 			if (from.Avatar.Active)
 			{
@@ -69,14 +74,6 @@ namespace Server.Engines.Avatar
 		public static void OpenAvatarShopCommand(CommandEventArgs e)
 		{
 			var from = (PlayerMobile)e.Mobile;
-			if (!InGypsyEncampment(from))
-			{
-				// TODO: Remove this!
-				from.SendMessage("Normally you must be in the Gypsy encampment to open the Avatar Shop...");
-				// from.SendMessage("You must be in the Gypsy encampment to open the Avatar Shop.");
-				// return;
-			}
-
 			if (!from.Avatar.Active)
 			{
 				from.SendMessage("You do not have the Avatar status enabled.");
@@ -84,11 +81,6 @@ namespace Server.Engines.Avatar
 			}
 
 			from.SendGump(new AvatarShopGump(from));
-		}
-
-		private static bool InGypsyEncampment(PlayerMobile from)
-		{
-			return from.Region != null && from.Region.Name == "the Forest";
 		}
 	}
 }

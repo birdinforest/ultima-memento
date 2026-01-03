@@ -38,6 +38,7 @@ namespace Server.Engines.Avatar
 		private readonly int m_PageNumber;
 		private readonly List<IReward> m_Rewards;
 		private readonly Categories m_SelectedCategory;
+		private readonly bool m_InGypsyEncampment;
 
 		public AvatarShopGump(PlayerMobile from, Categories selectedCategory = Categories.Information, int pageNumber = 1, Action onGumpClose = null) : base(25, 25)
 		{
@@ -46,6 +47,7 @@ namespace Server.Engines.Avatar
 			m_onGumpClose = onGumpClose;
 			m_PageNumber = pageNumber;
 			m_SelectedCategory = selectedCategory;
+			m_InGypsyEncampment = InGypsyEncampment(from);
 
 			AddPage(0);
 
@@ -135,7 +137,7 @@ namespace Server.Engines.Avatar
 									"Your skill archive maintains a record of the skills that you've become proficient in ({0} skill). As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
 									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
 									),
-							 	y
+								y
 							 );
 							break;
 						}
@@ -240,7 +242,7 @@ namespace Server.Engines.Avatar
 			foreach (var reward in randomRewards.Skip(skip).Take(toTake))
 			{
 				m_Rewards.Add(reward);
-				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, reward.CanSelect, reward.Cost, itemIndex, y);
+				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, m_InGypsyEncampment && reward.CanSelect, reward.Cost, itemIndex, y);
 
 				y += CARD_HEIGHT;
 				y += 10;
@@ -265,6 +267,11 @@ namespace Server.Engines.Avatar
 			SelectCategoryBase = 10,
 			PurchaseBase = 50,
 			PageBase = 500,
+		}
+
+		public static bool InGypsyEncampment(PlayerMobile from)
+		{
+			return from.Region != null && from.Region.Name == "the Forest";
 		}
 
 		public override void OnResponse(NetState sender, RelayInfo info)
