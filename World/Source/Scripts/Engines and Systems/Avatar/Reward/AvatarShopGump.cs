@@ -101,7 +101,7 @@ namespace Server.Engines.Avatar
 					y += 10;
 				}
 
-				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", "Your vessel is frail; you may not purchase enhancements once you leave the Gypsy encampment.", y);
+				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", "Your vessel is frail; once you leave the Gypsy encampment you may not purchase anything from this gump.", y);
 				y += CARD_HEIGHT;
 				y += 10;
 
@@ -128,7 +128,15 @@ namespace Server.Engines.Avatar
 					case Categories.PrimaryBoosts:
 					case Categories.SecondaryBoosts:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Skill Archive - Customize Your Build", "Your skill archive maintains a record of the skills that you've become proficient in. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.", y, false);
+							AddInformationCard(
+								BLANK_ITEM_ID,
+								"Skill Archive - Customize Your Build",
+								string.Format(
+									"Your skill archive maintains a record of the skills that you've become proficient in ({0} skill). As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
+									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
+									),
+							 	y
+							 );
 							break;
 						}
 
