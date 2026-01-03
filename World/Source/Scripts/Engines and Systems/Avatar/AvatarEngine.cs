@@ -158,7 +158,7 @@ namespace Server.Engines.Avatar
 			if (!player.Avatar.Active) return;
 
 			var value = e.Award * 10; // Gold multiplier
-			value = GetBonusCoinsAmount(value, player.Avatar);
+			value += GetBonusCoinsAmount(value, player.Avatar);
 
 			GrantCoins(player, value, player.Avatar);
 		}
