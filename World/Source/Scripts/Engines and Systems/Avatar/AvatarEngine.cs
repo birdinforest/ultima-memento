@@ -87,6 +87,8 @@ namespace Server.Engines.Avatar
 			// Clear any cache
 			context.RewardCache = null;
 			context.BoostedTemplateCache = null;
+
+			context.GenerateRivalry();
 		}
 
 		private static void LoadData()
@@ -125,22 +127,9 @@ namespace Server.Engines.Avatar
 			}
 		}
 
-		private void OnWorldSave(WorldSaveEventArgs e)
+		private int GetBonusCoinsAmount(int value, PlayerContext context)
 		{
-			Persistence.Serialize(
-				"Saves//Player//Avatar.bin",
-				writer =>
-				{
-					writer.Write(0); // version
-
-					writer.Write(m_Context.Count);
-					foreach (var kv in m_Context)
-					{
-						writer.Write(kv.Key);
-						kv.Value.Serialize(writer);
-					}
-				}
-			);
+			return (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 		}
 
 		private int GetValue<T>(int multiplier, Container corpse) where T : Item
@@ -153,7 +142,6 @@ namespace Server.Engines.Avatar
 
 		private void GrantCoins(PlayerMobile player, int value, PlayerContext context)
 		{
-			value += (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 			context.PointsFarmed += value;
 			CombatBar.Refresh(player);
 
@@ -170,6 +158,7 @@ namespace Server.Engines.Avatar
 			if (!player.Avatar.Active) return;
 
 			var value = e.Award * 10; // Gold multiplier
+			value = GetBonusCoinsAmount(value, player.Avatar);
 
 			GrantCoins(player, value, player.Avatar);
 		}
@@ -204,6 +193,35 @@ namespace Server.Engines.Avatar
 			value += GetValue<DDGoldNuggets>(10, corpse);
 			if (value < 1) return;
 
+			// Apply bonus coin multiplier
+			value += GetBonusCoinsAmount(value, context);
+
+			// Apply rivalry bonus
+			if (context.HasRivalFaction && context.RivalBonusEnabled)
+			{
+				var slayer = SlayerGroup.GetEntryByName(context.RivalSlayerName);
+				if (slayer != null && slayer.Slays(e.Killed))
+				{
+					var bonus = (int)(value * Constants.RIVAL_BONUS_PERCENT * 0.01);
+					if (0 < bonus)
+					{
+						bonus = GetBonusCoinsAmount(bonus, context);
+						context.RivalBonusPoints += bonus;
+						value += bonus;
+
+						if (Constants.RIVAL_BONUS_MAX_POINTS <= context.RivalBonusPoints)
+						{
+							context.RivalBonusEnabled = false;
+							player.SendMessage("You have avenged your family by vanquishing all members of '{0}'.", context.RivalFactionName);
+						}
+						else
+						{
+							player.SendMessage("You have eliminated another member of '{0}'.", context.RivalFactionName);
+						}
+					}
+				}
+			}
+
 			GrantCoins(player, value, context);
 		}
 
@@ -229,6 +247,24 @@ namespace Server.Engines.Avatar
 			if (!player.Avatar.Active) return;
 
 			player.Avatar.Skills[e.Skill.SkillID] = Math.Max(player.Avatar.Skills[e.Skill.SkillID], e.Skill.BaseFixedPoint);
+		}
+
+		private void OnWorldSave(WorldSaveEventArgs e)
+		{
+			Persistence.Serialize(
+				"Saves//Player//Avatar.bin",
+				writer =>
+				{
+					writer.Write(0); // version
+
+					writer.Write(m_Context.Count);
+					foreach (var kv in m_Context)
+					{
+						writer.Write(kv.Key);
+						kv.Value.Serialize(writer);
+					}
+				}
+			);
 		}
 	}
 }

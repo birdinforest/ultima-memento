@@ -1,6 +1,7 @@
+using Server.Items;
+using Server.Misc;
 using System;
 using System.Collections.Generic;
-using Server.Misc;
 
 namespace Server.Engines.Avatar
 {
@@ -35,6 +36,9 @@ namespace Server.Engines.Avatar
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
 			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
 			if (3 < version) UnlockRecordRecipes = reader.ReadBool();
+			if (4 < version) RivalSlayerName = (SlayerName)reader.ReadInt();
+			if (4 < version) RivalBonusEnabled = reader.ReadBool();
+			if (4 < version) RivalBonusPoints = reader.ReadInt();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -55,6 +59,15 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int RecordedSkillCapLevel { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool RivalBonusEnabled { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int RivalBonusPoints { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public SlayerName RivalSlayerName { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SkillCapLevel { get; set; }
@@ -94,7 +107,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(4); // version
+			writer.Write(5); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -113,6 +126,9 @@ namespace Server.Engines.Avatar
 			Skills.Serialize(writer);
 			writer.Write(RecordedSkillCapLevel);
 			writer.Write(UnlockRecordRecipes);
+			writer.Write((int)RivalSlayerName);
+			writer.Write(RivalBonusEnabled);
+			writer.Write(RivalBonusPoints);
 		}
 
 		public override string ToString()
@@ -123,8 +139,9 @@ namespace Server.Engines.Avatar
 
 	public partial class PlayerContext
 	{
-		public Dictionary<Categories, List<int>> RewardCache { get; set; }
 		public HashSet<StarterProfessions> BoostedTemplateCache { get; set; }
+
+		public Dictionary<Categories, List<int>> RewardCache { get; set; }
 
 		public void ClearRewardCache(Categories category)
 		{
@@ -136,6 +153,66 @@ namespace Server.Engines.Avatar
 		public int GetRecordedSkillCap()
 		{
 			return Math.Min(Constants.RECORDED_SKILL_CAP_MAX_AMOUNT, Constants.RECORDED_SKILL_CAP_MIN_AMOUNT + (RecordedSkillCapLevel * Constants.RECORDED_SKILL_CAP_INTERVAL));
+		}
+	}
+
+	public partial class PlayerContext
+	{
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool HasRivalFaction
+		{ get { return RivalSlayerName != SlayerName.None; } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public string RivalFactionName
+		{
+			get
+			{
+				switch (RivalSlayerName)
+				{
+					case SlayerName.None: return "None";
+					case SlayerName.Silver: return "The Returned";
+					case SlayerName.Repond: return "The Oathbreakers";
+					case SlayerName.ReptilianDeath: return "The Scaled Ones";
+					case SlayerName.Exorcism: return "The Dreadwings";
+					case SlayerName.ArachnidDoom: return "The Doom Weavers";
+					case SlayerName.ElementalBan: return "The Riftborn";
+					case SlayerName.WizardSlayer: return "The Spellreavers";
+					case SlayerName.AvianHunter: return "The Skycleave Talons";
+					case SlayerName.SlimyScourge: return "The Oozen Swarm";
+					case SlayerName.AnimalHunter: return "The Pack";
+					case SlayerName.GiantKiller: return "The Colossal";
+					case SlayerName.GolemDestruction: return "The Construct";
+					case SlayerName.WeedRuin: return "The Briarblight";
+					case SlayerName.NeptunesBane: return "The Tidebreakers";
+					case SlayerName.Fey: return "The Faeborn Circle";
+
+					default:
+						return "Unknown Rival Race";
+				}
+			}
+		}
+
+		public void GenerateRivalry()
+		{
+			RivalSlayerName = Utility.Random(new SlayerName[]
+			{
+				SlayerName.Silver,
+				SlayerName.Repond,
+				SlayerName.ReptilianDeath,
+				SlayerName.Exorcism,
+				SlayerName.ArachnidDoom,
+				SlayerName.ElementalBan,
+				SlayerName.WizardSlayer,
+				SlayerName.AvianHunter,
+				SlayerName.SlimyScourge,
+				SlayerName.AnimalHunter,
+				SlayerName.GiantKiller,
+				SlayerName.GolemDestruction,
+				SlayerName.WeedRuin,
+				SlayerName.NeptunesBane,
+				SlayerName.Fey,
+			});
+			RivalBonusEnabled = true;
 		}
 	}
 }

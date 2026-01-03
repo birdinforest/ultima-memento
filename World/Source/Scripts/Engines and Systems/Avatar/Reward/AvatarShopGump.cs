@@ -55,7 +55,7 @@ namespace Server.Engines.Avatar
 
 			const int GUMP_WIDTH = BACKGROUND_WIDTH;
 			const int GUMP_HEIGHT = BACKGROUND_HEIGHT;
-			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, "<CENTER>Ascensions</CENTER>", HtmlColors.COOL_BLUE);
+			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, "<CENTER>The Avatar's Ascent</CENTER>", HtmlColors.COOL_BLUE);
 
 			AddCategoryList(selectedCategory, 27, 48);
 
@@ -93,6 +93,13 @@ namespace Server.Engines.Avatar
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
+
+				if (m_Context.HasRivalFaction)
+				{
+					AddInformationCard(NO_ITEM_ID, "Enemy Faction", string.Format("Your family has been wronged by {0}. You will receive a bonus each time you kill monsters of this faction. Once you have avenged your family, you will no longer receive the bonus.", TextDefinition.GetColorizedText(m_Context.RivalFactionName, HtmlColors.ORANGE)), y);
+					y += CARD_HEIGHT;
+					y += 10;
+				}
 
 				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", "Your vessel is frail; you may not purchase enhancements once you leave the Gypsy encampment.", y);
 				y += CARD_HEIGHT;
@@ -495,7 +502,7 @@ namespace Server.Engines.Avatar
 		{
 			AddBackground(x, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
 
-			const int COUNT = 2;
+			const int COUNT = 3;
 			const int WIDTH_AVAILABLE = CARD_WIDTH;
 			var cardWidth = Math.Min(100, WIDTH_AVAILABLE / COUNT);
 
@@ -511,6 +518,11 @@ namespace Server.Engines.Avatar
 			x += space;
 			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", (m_From.SkillsCap / 10).ToString("n0")), HtmlColors.ORANGE);
 			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Skill Cap</CENTER>", HtmlColors.COOL_BLUE);
+
+			x += space;
+			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", Math.Min(Constants.RIVAL_BONUS_MAX_POINTS, m_Context.RivalBonusPoints).ToString("n0")), HtmlColors.ORANGE);
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Faction Bonus</CENTER>", HtmlColors.COOL_BLUE);
+			AddTooltip("The amount of coins you have received for killing your enemy faction.");
 		}
 	}
 }
