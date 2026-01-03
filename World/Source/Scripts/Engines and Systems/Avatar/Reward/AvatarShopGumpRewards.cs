@@ -384,9 +384,11 @@ namespace Server.Engines.Avatar
 				case Categories.SecondaryBoosts:
 					{
 						var rewards = new List<IReward>();
+						var showPrimarySkills = context.UnlockPrimarySkillBoost && selectedCategory == Categories.PrimaryBoosts;
+						var showSecondarySkills = context.UnlockSecondarySkillBoost && selectedCategory == Categories.SecondaryBoosts;
 
 						// Skills
-						if ((context.UnlockPrimarySkillBoost && selectedCategory == Categories.PrimaryBoosts) || (context.UnlockSecondarySkillBoost && selectedCategory == Categories.SecondaryBoosts))
+						if (showPrimarySkills || showSecondarySkills)
 						{
 							var skills = new List<Skill>();
 							for (var i = 0; i < m_From.Skills.Length; i++)
@@ -396,13 +398,13 @@ namespace Server.Engines.Avatar
 								if (skill.SkillName == SkillName.Imbuing) continue;
 								if (skill.SkillName == SkillName.Throwing) continue;
 
-								if (!skill.IsSecondarySkill())
+								if (skill.IsSecondarySkill())
 								{
-									if (!context.UnlockPrimarySkillBoost) continue;
+									if (!showSecondarySkills) continue;
 								}
 								else
 								{
-									if (!context.UnlockSecondarySkillBoost) continue;
+									if (!showPrimarySkills) continue;
 								}
 
 								skills.Add(skill);
