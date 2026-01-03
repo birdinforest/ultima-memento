@@ -178,6 +178,11 @@ namespace Server.Engines.Avatar
 
 			var creature = (BaseCreature)e.Killed;
 			if (creature.AI == AIType.AI_Vendor) return;
+			if (
+				creature.NoKillAwards // Idk, but seems reasonable
+				|| (creature.IsEphemeral && false == creature is BaseChampion) // No temporary mobs
+				|| MobileUtilities.TryGetMasterPlayer(creature) != null // No pets
+			 ) return;
 
 			var player = MobileUtilities.TryGetMasterPlayer(e.KilledBy);
 			if (player == null) return;
