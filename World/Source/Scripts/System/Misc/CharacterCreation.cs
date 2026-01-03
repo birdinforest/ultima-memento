@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
+using Server.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,6 +121,7 @@ namespace Server.Misc
 			existingCharacter.Internalize();
 			netState.BlockAllPackets = false;
 
+			WorldUtilities.DeleteAllItems<BaseBoat>(item => item.Owner == existingCharacter);
 			var previousHouses = BaseHouse.GetHouses( existingCharacter );
 			if (0 < previousHouses.Count)
 			{
