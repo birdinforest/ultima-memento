@@ -5488,15 +5488,20 @@ namespace Server.Mobiles
 		{
 			if ( CheckTeachingMatch( from ) )
 			{
-				if ( Teach( m_Teaching, from, dropped.Amount, true ) )
+				int cost = 0;
+				if ( Teach( m_Teaching, from, dropped.Amount, true, out cost ) )
 				{
 					if ( this is BaseVendor )
-						((BaseVendor)this).AddToCoinPurse( from, dropped.Amount );
-
+						((BaseVendor)this).AddToCoinPurse( from, cost );
+					
 					this.InvalidateProperties();
 
-					dropped.Delete();
-					return true;
+					dropped.Amount -= cost;
+					if (dropped.Amount < 1)
+						dropped.Delete();
+
+					// If it wasn't deleted, bounce it back
+					return dropped.Deleted;
 				}
 			}
 			else if ( IsHumanInTown() )
@@ -7002,6 +7007,13 @@ namespace Server.Mobiles
 
 		public virtual bool Teach( SkillName skill, Mobile m, int maxPointsToLearn, bool doTeach )
 		{
+			int cost = 0;
+			return Teach( skill, m, maxPointsToLearn, doTeach, out cost );
+		}
+
+		public virtual bool Teach( SkillName skill, Mobile m, int maxPointsToLearn, bool doTeach, out int cost )
+		{
+			cost = 0;
 			int pointsToLearn = 0;
 			TeachResult res = CheckTeachSkills( skill, m, maxPointsToLearn, ref pointsToLearn, doTeach );
 
@@ -7035,6 +7047,7 @@ namespace Server.Mobiles
 						Say( 501539 ); // Let me show thee something of how this is done.
 						m.SendLocalizedMessage( 501540 ); // Your skill level increases.
 
+						cost = pointsToLearn;
 						m_Teaching = (SkillName)(-1);
 
 						if ( m is PlayerMobile )

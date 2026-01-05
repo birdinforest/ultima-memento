@@ -33,6 +33,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Players are now warned when exiting a house with unsecured items<br>");
 			builder.Append("- Misc - Soul Orbs now repeatedly prompt on an interval<br>");
 			builder.Append("- Misc - Permadeath characters can now be auto-recreated upon death<br>");
+			builder.Append("- Misc - Training skills from the Vendor now refunds excess gold<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
