@@ -110,9 +110,11 @@ namespace Server.Engines.Avatar
 				return;
 			}
 
-			bool hasInfoCard = true;
+			bool hasInfoCard = false;
 			if (pageNumber == 1)
 			{
+				hasInfoCard = true;
+
 				switch (m_SelectedCategory)
 				{
 					case Categories.Ascensions:
