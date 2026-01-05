@@ -119,13 +119,13 @@ namespace Server.Engines.Avatar
 				{
 					case Categories.Ascensions:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Ascensions - Unlock Permanent Enhancements", "Ascensions are a way to apply permanent changes to your lineage. Some of these changes may allow you to persist knowledge between runs while others may simply make you stronger.", y);
+							AddInformationCard(BLANK_ITEM_ID, "Ascensions - Unlock Permanent Enhancements", "Ascensions are a way to apply permanent changes to your lineage. Some of these changes may allow you to persist knowledge between runs while others may simply make you stronger.", y, addBackground: false);
 							break;
 						}
 
 					case Categories.Templates:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Templates - Select Your Beginning", "A template can provide a fixed combination of skills, stats, and/or items to aid with your run. The templates available to you will change each run.", y);
+							AddInformationCard(BLANK_ITEM_ID, "Templates - Select Your Beginning", "A template can provide a fixed combination of skills, stats, and/or items to aid with your run. The templates available to you will change each run.", y, addBackground: false);
 							break;
 						}
 
@@ -139,14 +139,15 @@ namespace Server.Engines.Avatar
 									"Your skill archive maintains a record of the skills that you've become proficient in ({0} skill). As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
 									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
 									),
-								y
+								y,
+								addBackground: false
 							 );
 							break;
 						}
 
 					case Categories.Items:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Items - Purchase Temporary Conveniences", "Items can be purchased to assist you with your next run. Be wary of how much you invest, as these items are lost upon death.", y);
+							AddInformationCard(BLANK_ITEM_ID, "Items - Purchase Temporary Conveniences", "Items can be purchased to assist you with your next run. Be wary of how much you invest, as these items are lost upon death.", y, addBackground: false);
 							break;
 						}
 
@@ -357,7 +358,8 @@ namespace Server.Engines.Avatar
 			int purchaseCost,
 			int index,
 			int y,
-			bool scrollable = false
+			bool scrollable = false,
+			bool addBackground = true
 			)
 		{
 			const int START_X = NAVIGATION_WIDTH + 20;
@@ -370,7 +372,8 @@ namespace Server.Engines.Avatar
 			if (cost == COST_NO_BUY) cost = int.MinValue;
 			if (cost == COST_FREE) cost = 0;
 
-			AddBackground(x, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
+			if (addBackground)
+				AddBackground(x, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
 
 			// Item image
 			if (itemId > BLANK_ITEM_ID)
@@ -510,9 +513,16 @@ namespace Server.Engines.Avatar
 			}
 		}
 
-		private void AddInformationCard(int itemId, string name, string description, int y, bool scrollable = false)
+		private void AddInformationCard(
+			int itemId,
+			string name,
+			string description,
+			int y,
+			bool scrollable = false,
+			bool addBackground = true
+		)
 		{
-			AddCard(0, itemId, name, description, false, 0, 0, y, scrollable);
+			AddCard(0, itemId, name, description, false, 0, 0, y, scrollable, addBackground);
 		}
 
 		private void AddKeyValuePairsCard(int x, int y)
