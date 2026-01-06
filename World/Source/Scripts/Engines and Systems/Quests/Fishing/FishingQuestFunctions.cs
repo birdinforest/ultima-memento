@@ -139,9 +139,7 @@ namespace Server.Misc
 		{
 			PlayerMobile PC = (PlayerMobile)m;
 
-			int PirateHunt = 0;
-			int WorldPick = Utility.RandomMinMax( 0, 14 );
-				if ( Utility.RandomMinMax( 1, 8 ) == 1 && 4000 < fee ){ PirateHunt = 1; WorldPick = Utility.RandomMinMax( 0, 6 ); }
+			var PirateHunt = Utility.RandomMinMax( 1, 8 ) == 1 && 4000 < fee;
 
 			var options = new List<Land>
 			{
@@ -171,7 +169,7 @@ namespace Server.Misc
 			{
 				reg = Region.Find( target.Location, target.Map );
 
-				if ( PirateHunt == 1 )
+				if ( PirateHunt )
 				{
 					if ( searchLocation == Land.Sosaria )
 					{
