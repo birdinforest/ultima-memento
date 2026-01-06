@@ -118,8 +118,10 @@ namespace Server.Misc
 			return QuestTime;
 		}
 
-		public static void FindTarget( Mobile m, int fee )
+		public static void FindTarget( Mobile m, int minFame, int maxFame )
 		{
+			maxFame = Math.Min(25000, maxFame); // Clamp
+
 			var options = new List<Land>
 			{
 				Land.Sosaria,
@@ -142,8 +144,7 @@ namespace Server.Misc
 			var searchLocation = PlayerSettings.GetRandomDiscoveredLand(m as PlayerMobile, options, null);
 
 			var targets = new List<BaseCreature>();
-			var fallbacks = new List<BaseCreature>();
-			foreach(var target in WorldUtilities.ForEachMobile<BaseCreature>(x => x.EmoteHue != 123 && x.Karma < 0 && x.Fame < fee))
+			foreach(var target in WorldUtilities.ForEachMobile<BaseCreature>(x => x.EmoteHue != 123 && x.Karma < 0 && minFame <= x.Fame && x.Fame <= maxFame))
 			{
 				var tWorld = Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y );
 
@@ -159,13 +160,25 @@ namespace Server.Misc
 						}
 					}
 				}
-
-				// Consider anywhere in Sosaria, including the Overworld
-				if (tWorld == Land.Sosaria)
-					fallbacks.Add(target);
 			}
 
-			var theone = 0 < targets.Count ? Utility.Random(targets) : Utility.Random(fallbacks);
+			// Fallback: Shouldn't be necessary, but just in case... consider anywhere in Sosaria, including the Overworld
+			if (targets.Count < 1)
+			{
+				var candidates = WorldUtilities.ForEachMobile<BaseCreature>(target => {
+					if (target.EmoteHue != 123 && target.Karma < 0)
+					{
+						var tWorld = Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y );
+
+						return tWorld == Land.Sosaria;
+					}
+
+					return false;
+				});
+				targets.AddRange(candidates);
+			}
+
+			var theone = Utility.Random(targets);
 
 			if ( Utility.RandomMinMax( 1, 2 ) == 1 ) // KILL SOMETHING
 			{
