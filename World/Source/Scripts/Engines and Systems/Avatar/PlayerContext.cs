@@ -44,6 +44,7 @@ namespace Server.Engines.Avatar
 			}
 			else
 				GenerateRivalry();
+			if (5 < version) SelectedProfession = (StarterProfessions)reader.ReadInt();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -112,7 +113,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(5); // version
+			writer.Write(6); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -134,6 +135,7 @@ namespace Server.Engines.Avatar
 			writer.Write((int)RivalSlayerName);
 			writer.Write(RivalBonusEnabled);
 			writer.Write(RivalBonusPoints);
+			writer.Write((int)SelectedProfession);
 		}
 
 		public override string ToString()
@@ -147,6 +149,8 @@ namespace Server.Engines.Avatar
 		public HashSet<StarterProfessions> BoostedTemplateCache { get; set; }
 
 		public Dictionary<Categories, List<int>> RewardCache { get; set; }
+
+		public StarterProfessions SelectedProfession { get; set; }
 
 		public void ClearRewardCache(Categories category)
 		{

@@ -660,8 +660,24 @@ namespace Server.Gumps
 			}
 
 			var player = (PlayerMobile)m;
+
 			TemptationEngine.Instance.ApplyContext( player, player.Temptations );
-			if (player.Avatar.Active) Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
+
+			if (player.Avatar.Active)
+			{
+				Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
+
+				var profession = player.Avatar.SelectedProfession;
+				if ( profession != StarterProfessions.Custom )
+				{
+					player.NetState.BlockAllPackets = true;
+					CharacterCreation.InitializeBackpack(player);
+					var skills = CharacterCreation.GetTemplateSkills( profession );
+					CharacterCreation.AddSkillBasedItems( player, skills );
+					player.Avatar.SelectedProfession = StarterProfessions.Custom;
+					player.NetState.BlockAllPackets = false;
+				}
+			}
 
 			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
 

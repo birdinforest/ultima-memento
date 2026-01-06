@@ -46,6 +46,9 @@ namespace Server.Engines.Avatar
 		public static void InitializePlayer(PlayerMobile player)
 		{
 			player.InitStats(10, 10, 10);
+
+			if (player.Backpack == null)
+				player.AddItem(new Backpack() { Movable = false });
 		}
 
 		public void ApplyContext(PlayerMobile player, PlayerContext context)

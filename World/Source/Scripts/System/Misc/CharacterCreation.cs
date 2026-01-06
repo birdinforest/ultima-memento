@@ -76,7 +76,7 @@ namespace Server.Misc
 			EventSink.CharacterCreated += new CharacterCreatedEventHandler(EventSink_CharacterCreated);
 		}
 
-		public static PlayerMobile ResetCharacter(PlayerMobile existingCharacter, bool copySkillCaps)
+		public static PlayerMobile ResetCharacter(PlayerMobile existingCharacter, bool copySkillCaps, bool createBackpack)
 		{
 			var account = existingCharacter.Account as Account;
 			if (account == null) return null;
@@ -106,7 +106,7 @@ namespace Server.Misc
 			}
 
 			m_Mobile = newChar;
-			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue);
+			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue, createBackpack);
 			ApplyHairStyling(newChar, existingCharacter.HairItemID, existingCharacter.HairHue, existingCharacter.FacialHairItemID, existingCharacter.FacialHairHue);
 
 			// Copy stats from existing character
@@ -122,7 +122,7 @@ namespace Server.Misc
 			netState.BlockAllPackets = false;
 
 			WorldUtilities.DeleteAllItems<BaseBoat>(item => item.Owner == existingCharacter);
-			var previousHouses = BaseHouse.GetHouses( existingCharacter );
+			var previousHouses = BaseHouse.GetHouses(existingCharacter);
 			if (0 < previousHouses.Count)
 			{
 				foreach (var house in previousHouses)
@@ -457,7 +457,7 @@ namespace Server.Misc
 			return SetSkills(m, null, prof);
 		}
 
-		private static void ApplyCharacterDefaults(PlayerMobile newChar, AccessLevel accessLevel, bool female, int hue)
+		private static void ApplyCharacterDefaults(PlayerMobile newChar, AccessLevel accessLevel, bool female, int hue, bool createBackpack)
 		{
 			newChar.Player = true;
 			newChar.Young = false;
@@ -473,7 +473,8 @@ namespace Server.Misc
 			newChar.Hunger = 20;
 			newChar.Thirst = 20;
 
-			InitializeBackpack(newChar);
+			if (createBackpack)
+				InitializeBackpack(newChar);
 
 			// Dress up character
 			Server.Misc.IntelligentAction.DressUpMerchants(newChar);
@@ -545,7 +546,7 @@ namespace Server.Misc
 
 			{
 				newChar.StatCap = 250;
-				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue);
+				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue, true);
 				ApplyHairStyling(newChar, args.HairID, args.HairHue, args.BeardID, args.BeardHue);
 
 				if (newChar.AccessLevel < AccessLevel.Counselor)
@@ -855,6 +856,95 @@ namespace Server.Misc
 				m.Name = name;
 		}
 
+		public static SkillNameValue[] GetTemplateSkills(StarterProfessions prof)
+		{
+			switch (prof)
+			{
+				case StarterProfessions.Mage:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Magery, 30 ),
+								new SkillNameValue( SkillName.Psychology, 30 ),
+								new SkillNameValue( SkillName.Mercantile, 30 ),
+								new SkillNameValue( SkillName.FistFighting, 30 )
+							};
+					}
+
+				case StarterProfessions.Archer:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Marksmanship, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Bowcraft, 30 ),
+								new SkillNameValue( SkillName.Lumberjacking, 30 )
+							};
+					}
+
+				case StarterProfessions.Warrior:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Swords, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Parry, 30 ),
+								new SkillNameValue( SkillName.Healing, 30 )
+							};
+					}
+
+				case StarterProfessions.Knight:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Knightship, 30 ),
+								new SkillNameValue( SkillName.Tactics, 30 ),
+								new SkillNameValue( SkillName.Healing, 30 ),
+								new SkillNameValue( SkillName.Swords, 30 )
+							};
+					}
+
+				case StarterProfessions.Ninja:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Ninjitsu, 30 ),
+								new SkillNameValue( SkillName.Hiding, 30 ),
+								new SkillNameValue( SkillName.Stealth, 30 ),
+								new SkillNameValue( SkillName.Fencing, 30 )
+							};
+					}
+
+				case StarterProfessions.Bard:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Musicianship, 30 ),
+								new SkillNameValue( SkillName.Peacemaking, 30 ),
+								new SkillNameValue( SkillName.Discordance, 30 ),
+								new SkillNameValue( SkillName.Provocation, 30 )
+							};
+					}
+
+				case StarterProfessions.Druid:
+					{
+						return new SkillNameValue[]
+							{
+								new SkillNameValue( SkillName.Druidism, 30 ),
+								new SkillNameValue( SkillName.Taming, 30 ),
+								new SkillNameValue( SkillName.Veterinary, 30 ),
+								new SkillNameValue( SkillName.Herding, 30 )
+							};
+					}
+
+				case StarterProfessions.Custom:
+				default:
+					{
+						return new SkillNameValue[] { };
+					}
+			}
+		}
+
 		private static SkillNameValue[] SetSkills(Mobile m, SkillNameValue[] skills, StarterProfessions prof)
 		{
 			switch (prof)
@@ -862,96 +952,49 @@ namespace Server.Misc
 				case StarterProfessions.Mage:
 					{
 						m.InitStats(35, 10, 45); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Magery, 30 ),
-								new SkillNameValue( SkillName.Psychology, 30 ),
-								new SkillNameValue( SkillName.Mercantile, 30 ),
-								new SkillNameValue( SkillName.FistFighting, 30 )
-							};
-
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Archer:
 					{
 						m.InitStats(35, 40, 15); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Marksmanship, 30 ),
-								new SkillNameValue( SkillName.Tactics, 30 ),
-								new SkillNameValue( SkillName.Bowcraft, 30 ),
-								new SkillNameValue( SkillName.Lumberjacking, 30 )
-							};
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Warrior:
 					{
 						m.InitStats(50, 30, 10); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Swords, 30 ),
-								new SkillNameValue( SkillName.Tactics, 30 ),
-								new SkillNameValue( SkillName.Parry, 30 ),
-								new SkillNameValue( SkillName.Healing, 30 )
-							};
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Knight:
 					{
 						m.InitStats(50, 25, 15); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Knightship, 30 ),
-								new SkillNameValue( SkillName.Tactics, 30 ),
-								new SkillNameValue( SkillName.Healing, 30 ),
-								new SkillNameValue( SkillName.Swords, 30 )
-							};
-
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Ninja:
 					{
 						m.InitStats(40, 30, 20); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Ninjitsu, 30 ),
-								new SkillNameValue( SkillName.Hiding, 30 ),
-								new SkillNameValue( SkillName.Stealth, 30 ),
-								new SkillNameValue( SkillName.Fencing, 30 )
-							};
-
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Bard:
 					{
 						m.InitStats(40, 30, 20); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Musicianship, 30 ),
-								new SkillNameValue( SkillName.Peacemaking, 30 ),
-								new SkillNameValue( SkillName.Discordance, 30 ),
-								new SkillNameValue( SkillName.Provocation, 30 )
-							};
-
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 
 				case StarterProfessions.Druid:
 					{
 						m.InitStats(30, 20, 40); // 90
-						skills = new SkillNameValue[]
-							{
-								new SkillNameValue( SkillName.Druidism, 30 ),
-								new SkillNameValue( SkillName.Taming, 30 ),
-								new SkillNameValue( SkillName.Veterinary, 30 ),
-								new SkillNameValue( SkillName.Herding, 30 )
-							};
-
+						skills = GetTemplateSkills(prof);
 						break;
 					}
 

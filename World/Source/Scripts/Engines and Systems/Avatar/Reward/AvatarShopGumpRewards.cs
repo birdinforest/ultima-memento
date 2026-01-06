@@ -227,10 +227,12 @@ namespace Server.Engines.Avatar
 								string.Format("Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills.", TextDefinition.GetColorizedText("destructive action", HtmlColors.RED)),
 								() =>
 								{
-									if (m_From.Backpack != null)
-										m_From.Backpack.Delete();
-
+									context.SelectedProfession = StarterProfessions.Custom;
 									SkillCheck.DisableSkillGains = true;
+
+									// Auto-Lock Focus and Meditation to prevent them from naturally raising
+									m_From.Skills.Focus.SetLockNoRelay(SkillLock.Locked);
+									m_From.Skills.Meditation.SetLockNoRelay(SkillLock.Locked);
 
 									// Reduce all skills to 0
 									for (var i = 0; i < m_From.Skills.Length; i++)
@@ -240,13 +242,9 @@ namespace Server.Engines.Avatar
 											skill.Base = 0;
 									}
 
-									m_From.NetState.BlockAllPackets = true;
-									CharacterCreation.InitializeBackpack(m_From);
-									m_From.NetState.BlockAllPackets = false;
-
 									var boosted = action(m_From);
 
-									// Set Lock status and boost if necessary
+									// Boost skills if necessary
 									for (var i = 0; i < m_From.Skills.Length; i++)
 									{
 										Skill skill = m_From.Skills[i];
@@ -254,13 +252,8 @@ namespace Server.Engines.Avatar
 
 										if (0 < skill.Value)
 										{
-											skill.SetLockNoRelay(SkillLock.Up);
 											if (boosted)
 												skill.BaseFixedPoint += 100; // +10 to each skill that was set
-										}
-										else
-										{
-											skill.SetLockNoRelay(SkillLock.Locked);
 										}
 									}
 
@@ -268,7 +261,7 @@ namespace Server.Engines.Avatar
 
 									AvatarEngine.Instance.ApplyContext(m_From, m_From.Avatar);
 									m_From.OnSkillsQuery(m_From);
-									m_From.SendMessage("Your skills have been set to the chosen template. All other skills have been set to Locked.");
+									m_From.SendMessage("Your skills have been set to the chosen template. Focus and Meditation have been set to Locked.");
 								}
 							);
 							m_From.SendGump(confirmation);
@@ -369,8 +362,8 @@ namespace Server.Engines.Avatar
 									applyTemplate(
 										player =>
 										{
-											var skills = CharacterCreation.SetTemplateSkills(player, profession);
-											CharacterCreation.AddSkillBasedItems(player, skills);
+											CharacterCreation.SetTemplateSkills(player, profession);
+											context.SelectedProfession = profession;
 											return boosted;
 										}
 									);
