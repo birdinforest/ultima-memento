@@ -3,7 +3,7 @@ namespace Server.Engines.Avatar
 	public class Constants
 	{
 		public const int RIVAL_BONUS_MAX_POINTS = 50 * 1000;
-		public const int RIVAL_BONUS_PERCENT = 20;
+		public const int RIVAL_BONUS_PERCENT = 50;
 		public const int SKILL_CAP_BASE = 3000;
 		public const int TITAN_SKILL_BONUS = 2000;
 
