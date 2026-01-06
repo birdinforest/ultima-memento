@@ -165,7 +165,7 @@ namespace Server.Engines.Avatar
 			var player = (PlayerMobile)e.Mobile;
 			if (!player.Avatar.Active) return;
 
-			var value = e.Award * 10; // Gold multiplier
+			var value = e.Award * 5; // Gold multiplier
 			value += GetBonusCoinsAmount(value, player.Avatar);
 
 			GrantCoins(player, value, player.Avatar);
