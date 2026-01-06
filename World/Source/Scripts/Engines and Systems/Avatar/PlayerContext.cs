@@ -44,7 +44,12 @@ namespace Server.Engines.Avatar
 			}
 			else
 				GenerateRivalry();
-			if (5 < version) SelectedProfession = (StarterProfessions)reader.ReadInt();
+			if (5 < version)
+			{
+				SelectedProfession = (StarterProfessions)reader.ReadInt();
+				LifetimePointsGained = reader.ReadInt();
+				LifetimeDeaths = reader.ReadInt();
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -53,6 +58,12 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ImprovedTemplateCount { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int LifetimeDeaths { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int LifetimePointsGained { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointGainRateLevel { get; set; }
@@ -136,6 +147,8 @@ namespace Server.Engines.Avatar
 			writer.Write(RivalBonusEnabled);
 			writer.Write(RivalBonusPoints);
 			writer.Write((int)SelectedProfession);
+			writer.Write(LifetimePointsGained);
+			writer.Write(LifetimeDeaths);
 		}
 
 		public override string ToString()

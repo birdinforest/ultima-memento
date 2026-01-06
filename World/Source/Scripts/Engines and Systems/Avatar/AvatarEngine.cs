@@ -236,6 +236,8 @@ namespace Server.Engines.Avatar
 			var context = GetContextOrDefault(player);
 			if (!context.Active) return;
 
+			context.LifetimeDeaths += 1;
+			context.LifetimePointsGained += context.PointsFarmed;
 			context.PointsSaved += context.PointsFarmed;
 			context.PointsFarmed = 0;
 		}
