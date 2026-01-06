@@ -1,15 +1,10 @@
 using System;
-using Server;
-using System.Collections;
 using System.Collections.Generic;
-using Server.Misc;
 using Server.Items;
 using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
 using Server.Mobiles;
-using Server.Accounting;
 using Server.Regions;
+using Server.Utilities;
 
 /*
 3002004	Tell
@@ -144,93 +139,76 @@ namespace Server.Misc
 				Land.Underworld,
 				Land.Ambrosia,
 			};
-			Land searchLocation = PlayerSettings.GetRandomDiscoveredLand(m as PlayerMobile, options, null);
+			var searchLocation = PlayerSettings.GetRandomDiscoveredLand(m as PlayerMobile, options, null);
 
-			int aCount = 0;
-			Region reg = null;
-			ArrayList targets = new ArrayList();
-			foreach ( Mobile target in World.Mobiles.Values )
-			if ( target is BaseCreature )
+			var targets = new List<BaseCreature>();
+			var fallbacks = new List<BaseCreature>();
+			foreach(var target in WorldUtilities.ForEachMobile<BaseCreature>(x => x.EmoteHue != 123 && x.Karma < 0 && x.Fame < fee))
 			{
-				reg = Region.Find( target.Location, target.Map );
-				Land tWorld = Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y );
+				var tWorld = Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y );
 
-				if ( target.EmoteHue !=123 && target.Karma < 0 && target.Fame < fee && ( Server.Difficult.GetDifficulty( target.Location, target.Map ) <= GetPlayerInfo.GetPlayerDifficulty( m ) ) && reg.IsPartOf( typeof( DungeonRegion ) ) )
+				var reg = Region.Find( target.Location, target.Map );
+				if ( reg.IsPartOf( typeof( DungeonRegion )) )
 				{
-					if ( searchLocation == Land.Sosaria && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.Lodoria  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.Serpent  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.IslesDread  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.Savaged  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.UmberVeil  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.Kuldar  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-					else if ( searchLocation == Land.Underworld  && tWorld == searchLocation ){ targets.Add( target ); aCount++; }
-				}
-
-				if ( aCount < 1 ) // SAFETY CATCH IF IT FINDS NO CREATURES AT ALL...IT WILL FIND AT LEAST ONE IN SOSARIA //
-				{
-					if ( target.Karma < 0 && target.Fame < fee && reg.IsPartOf( typeof( DungeonRegion ) ) && tWorld == Land.Sosaria )
+					if ( Server.Difficult.GetDifficulty( target.Location, target.Map ) <= GetPlayerInfo.GetPlayerDifficulty( m ) )
 					{
-						targets.Add( target ); aCount++;
+						if (tWorld == searchLocation)
+						{
+							targets.Add(target);
+							continue;
+						}
 					}
 				}
+
+				// Consider anywhere in Sosaria, including the Overworld
+				if (tWorld == Land.Sosaria)
+					fallbacks.Add(target);
 			}
 
-			aCount = Utility.RandomMinMax( 1, aCount );
+			var theone = 0 < targets.Count ? Utility.Random(targets) : Utility.Random(fallbacks);
 
-			int xCount = 0;
-			for ( int i = 0; i < targets.Count; ++i )
+			if ( Utility.RandomMinMax( 1, 2 ) == 1 ) // KILL SOMETHING
 			{
-				xCount++;
+				string kWorld = Server.Lands.LandName( Server.Lands.GetLand( theone.Map, theone.Location, theone.X, theone.Y ) );
 
-				if ( xCount == aCount )
-				{
-					if ( Utility.RandomMinMax( 1, 2 ) == 1 ) // KILL SOMETHING
-					{
-						Mobile theone = ( Mobile )targets[ i ];
-						string kWorld = Server.Lands.LandName( Server.Lands.GetLand( theone.Map, theone.Location, theone.X, theone.Y ) );
+				string kexplorer = theone.GetType().ToString();
+				int nFee = theone.Fame / 5;
+				nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
+				string kDollar = nFee.ToString();
 
-						string kexplorer = theone.GetType().ToString();
-						int nFee = theone.Fame / 5;
-						nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
-						string kDollar = nFee.ToString();
+				string killName = theone.Name;
+				string killTitle = theone.Title;
+					if ( theone is Wyrms ){ killName = "a wyrm"; killTitle = ""; }
+					if ( theone is Daemon ){ killName = "a daemon"; killTitle = ""; }
+					if ( theone is Balron ){ killName = "a balron"; killTitle = ""; }
+					if ( theone is RidingDragon || theone is Dragons ){ killName = "a dragon"; killTitle = ""; }
+					if ( theone is BombWorshipper ){ killName = "a worshipper of the bomb"; killTitle = ""; }
+					if ( theone is Psionicist ){ killName = "a psychic of the bomb"; killTitle = ""; }
 
-						string killName = theone.Name;
-						string killTitle = theone.Title;
-							if ( theone is Wyrms ){ killName = "a wyrm"; killTitle = ""; }
-							if ( theone is Daemon ){ killName = "a daemon"; killTitle = ""; }
-							if ( theone is Balron ){ killName = "a balron"; killTitle = ""; }
-							if ( theone is RidingDragon || theone is Dragons ){ killName = "a dragon"; killTitle = ""; }
-							if ( theone is BombWorshipper ){ killName = "a worshipper of the bomb"; killTitle = ""; }
-							if ( theone is Psionicist ){ killName = "a psychic of the bomb"; killTitle = ""; }
+				string myexplorer = kexplorer + "#" + killTitle + "#" + killName + "#" + Server.Misc.Worlds.GetRegionName( theone.Map, theone.Location ) + "#0#" + kDollar + "#" + kWorld + "#Monster";
+				PlayerSettings.SetQuestInfo( m, "StandardQuest", myexplorer );
 
-						string myexplorer = kexplorer + "#" + killTitle + "#" + killName + "#" + Server.Misc.Worlds.GetRegionName( theone.Map, theone.Location ) + "#0#" + kDollar + "#" + kWorld + "#Monster";
-						PlayerSettings.SetQuestInfo( m, "StandardQuest", myexplorer );
+				string theStory = myexplorer + "#" + StandardQuestFunctions.QuestSentence( m ); // ADD THE STORY PART
 
-						string theStory = myexplorer + "#" + StandardQuestFunctions.QuestSentence( m ); // ADD THE STORY PART
+				PlayerSettings.SetQuestInfo( m, "StandardQuest", theStory );
+			}
+			else // FIND SOMETHING
+			{
+				string kWorld = Server.Lands.LandName( Server.Lands.GetLand( theone.Map, theone.Location, theone.X, theone.Y ) );
 
-						PlayerSettings.SetQuestInfo( m, "StandardQuest", theStory );
-					}
-					else // FIND SOMETHING
-					{
-						Mobile theone = ( Mobile )targets[ i ];
-						string kWorld = Server.Lands.LandName( Server.Lands.GetLand( theone.Map, theone.Location, theone.X, theone.Y ) );
+				string kexplorer = theone.GetType().ToString();
+				int nFee = theone.Fame / 3;
+				nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
+				string kDollar = nFee.ToString();
 
-						string kexplorer = theone.GetType().ToString();
-						int nFee = theone.Fame / 3;
-						nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
-						string kDollar = nFee.ToString();
+				string ItemToFind = QuestCharacters.QuestItems( true );
 
-						string ItemToFind = QuestCharacters.QuestItems( true );
+				string myexplorer = "##" + ItemToFind + "#" + Server.Misc.Worlds.GetRegionName( theone.Map, theone.Location ) + "#0#" + kDollar + "#" + kWorld + "#Item";
+				PlayerSettings.SetQuestInfo( m, "StandardQuest", myexplorer );
 
-						string myexplorer = "##" + ItemToFind + "#" + Server.Misc.Worlds.GetRegionName( theone.Map, theone.Location ) + "#0#" + kDollar + "#" + kWorld + "#Item";
-						PlayerSettings.SetQuestInfo( m, "StandardQuest", myexplorer );
+				string theStory = myexplorer + "#" + StandardQuestFunctions.QuestSentence( m ); // ADD THE STORY PART
 
-						string theStory = myexplorer + "#" + StandardQuestFunctions.QuestSentence( m ); // ADD THE STORY PART
-
-						PlayerSettings.SetQuestInfo( m, "StandardQuest", theStory );
-					}
-				}
+				PlayerSettings.SetQuestInfo( m, "StandardQuest", theStory );
 			}
 		}
 
