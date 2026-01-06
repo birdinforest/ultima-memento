@@ -96,7 +96,7 @@ namespace Server.Engines.Avatar
 								: null,
 							!context.UnlockSavageRace
 								? ActionReward.Create(
-									100 * ONE_THOUSAND_GOLD,
+									25 * ONE_THOUSAND_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
 									"Primal Awakening",
 									"Return to your untamed roots. Live life as a savage and embrace your barbaric heritage.",
@@ -168,7 +168,7 @@ namespace Server.Engines.Avatar
 									erudianCapCost,
 									AvatarShopGump.NO_ITEM_ID,
 									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
-									string.Format("Increases the maximum of skill that Boosts can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+									string.Format("Increases the maximum of skill that your Skill Archive can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
 									context.RecordedSkillCapLevel < Constants.RECORDED_SKILL_CAP_MAX_LEVEL,
 									() =>
 									{
@@ -630,7 +630,7 @@ namespace Server.Engines.Avatar
 
 							// Tames
 							ItemReward.Create(
-								5 * ONE_HUNDRED_GOLD,
+								ONE_HUNDRED_GOLD,
 								true,
 								() => { return new CagedHorse(); }
 							).WithDescription("A horse is a great way to get around."),
