@@ -49,6 +49,9 @@ namespace Server.Engines.Avatar
 
 			if (player.Backpack == null)
 				player.AddItem(new Backpack() { Movable = false });
+			
+			if (player.Backpack.FindItemByType<AvatarBook>() == null)
+				player.Backpack.AddItem(new AvatarBook());
 		}
 
 		public void ApplyContext(PlayerMobile player, PlayerContext context)
@@ -60,7 +63,9 @@ namespace Server.Engines.Avatar
 			// Skill cap could have changed
 			player.RefreshSkillCap();
 
-			SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
+			var orb = SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
+			if (orb != null)
+				orb.Visible = false;
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
