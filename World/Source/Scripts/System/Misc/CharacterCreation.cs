@@ -566,7 +566,7 @@ namespace Server.Misc
 				// Apply player option Defaults
 				newChar.PublicInfo = true;
 				newChar.Preferences.WeaponBarOpen = true;
-				newChar.GumpHue = 1;
+				newChar.Preferences.GumpHue = 1;
 			}
 
 			new WelcomeTimer(newChar).Start();

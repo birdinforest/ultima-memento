@@ -118,6 +118,22 @@ namespace Server.Mobiles
 			}
 		}
 
+		private PlayerQuestContext _quests;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public PlayerQuestContext Quests
+		{
+			get
+			{
+				if (_quests == null) _quests = new PlayerQuestContext();
+
+				return _quests;
+			}
+			set
+			{
+			}
+		}
+
 		public bool WarnedSkaraBrae;
 		public bool WarnedBottleCity;
 
@@ -2158,8 +2174,6 @@ namespace Server.Mobiles
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
-				MyLibrary = MyLibrary,
-				GumpHue = GumpHue,
 				RecordSkinColor = 1, // Idk man, this is to avoid a different hack
 			};
 
@@ -2937,9 +2951,6 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterMOTD { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public int CharacterSkill { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -2961,19 +2972,7 @@ namespace Server.Mobiles
 		public int CharacterBegging { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int GumpHue { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string CharacterLoot { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public string CharacterWanted { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterOriental { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterEvil { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CharacterElement { get; set; }
@@ -2981,74 +2980,10 @@ namespace Server.Mobiles
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string MessageQuest { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string StandardQuest { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string FishingQuest { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string AssassinQuest { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string BardsTaleQuest { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string EpicQuestName { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int EpicQuestNumber { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool UsingAncientBook { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string ThiefQuest { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public string KilledSpecialMonsters { get; set; }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string MusicPlaylist { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int CharacterBarbaric { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public int SkillDisplay { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int MagerySpellHue { get; set; }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string QuickBar { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string RegBar { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string MyLibrary { get; set; }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string MyChat { get; set; }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3121,6 +3056,9 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 50:
+					_quests = new PlayerQuestContext( reader );	
+					goto case 49;
 				case 49:
 					_spellBars = new SpellBarsContext( reader );
 					_preferences = new PlayerPreferenceContext( reader );
@@ -3195,7 +3133,7 @@ namespace Server.Mobiles
 				}
 				case 34:
 				{
-					UsingAncientBook = reader.ReadBool();
+					if (version < 50) Preferences.UsingAncientBook = reader.ReadBool();
 					if ( version < 49 ) SpellBars.Arch4 = reader.ReadString();
 
 					goto case 33;
@@ -3227,20 +3165,20 @@ namespace Server.Mobiles
 				}
 				case 31:
 				{
-					MyChat = reader.ReadString();
+					if (version < 50) Preferences.MyChat = reader.ReadString();
 
 					goto case 30;
 				}
 				case 30:
 				{
-					RegBar = reader.ReadString();
-					MyLibrary = reader.ReadString();
+					if (version < 50) Preferences.RegBar = reader.ReadString();
+					if (version < 50) Preferences.MyLibrary = reader.ReadString();
 
 					goto case 29;
 				}
 				case 29:
 				{
-					CharacterMOTD = reader.ReadInt();
+					if (version < 50) Preferences.MessageOfTheDay = reader.ReadInt() == 1;
 					CharacterSkill = reader.ReadInt();
 					CharacterKeys = reader.ReadString();
 					CharacterDiscovered = reader.ReadString();
@@ -3256,11 +3194,11 @@ namespace Server.Mobiles
 					{
 						var ArtifactQuestTime = reader.ReadString();
 					}
-					StandardQuest = reader.ReadString();
-					FishingQuest = reader.ReadString();
-					AssassinQuest = reader.ReadString();
-					MessageQuest = reader.ReadString();
-					BardsTaleQuest = reader.ReadString();
+					if (version < 50) Quests.StandardQuest = reader.ReadString();
+					if (version < 50) Quests.FishingQuest = reader.ReadString();
+					if (version < 50) Quests.AssassinQuest = reader.ReadString();
+					if (version < 50) Quests.MessageQuest = reader.ReadString();
+					if (version < 50) Quests.BardsTaleQuest = reader.ReadString();
 
 					if ( version < 49 )
 					{
@@ -3287,23 +3225,23 @@ namespace Server.Mobiles
 						SpellBars.Elly2 = reader.ReadString();
 					}
 
-					QuickBar = reader.ReadString();
-					ThiefQuest = reader.ReadString();
+					if (version < 50) Preferences.QuickBar = reader.ReadString();
+					if (version < 50) Quests.ThiefQuest = reader.ReadString();
 					KilledSpecialMonsters = reader.ReadString();
-					MusicPlaylist = reader.ReadString();
+					if (version < 50) Preferences.MusicPlaylist = reader.ReadString();
 					CharacterWanted = reader.ReadString();
-					CharacterLoot = reader.ReadString();
+					if (version < 50) Preferences.CharacterLoot = reader.ReadString();
 					if (version < 49) Preferences.CharMusical = reader.ReadString();
-					EpicQuestName = reader.ReadString();
-					CharacterBarbaric = reader.ReadInt();
+					if (version < 50) Quests.EpicQuestName = reader.ReadString();
+					if (version < 50) Preferences.CharacterBarbaric = reader.ReadInt();
 					SkillDisplay = reader.ReadInt();
-					MagerySpellHue = reader.ReadInt();
+					if (version < 50) Preferences.MagerySpellHue = reader.ReadInt();
 					if (version < 49) Preferences.ClassicPoisoning = reader.ReadInt() == 1;
-					CharacterEvil = reader.ReadInt();
-					CharacterOriental = reader.ReadInt();
-					GumpHue = reader.ReadInt();
+					if (version < 50) Preferences.CharacterEvil = reader.ReadInt() == 1;
+					if (version < 50) Preferences.CharacterOriental = reader.ReadInt() == 1;
+					if (version < 50) Preferences.GumpHue = reader.ReadInt();
 					if (version < 49) Preferences.WeaponBarOpen = reader.ReadInt() == 1;
-					EpicQuestNumber = reader.ReadInt();
+					if (version < 50) Quests.EpicQuestNumber = reader.ReadInt();
 
 					goto case 28;
 				}
@@ -3540,8 +3478,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 49 ); // version
+			writer.Write( (int) 50 ); // version
 
+			Quests.Serialize( writer );
 			SpellBars.Serialize( writer );
 			Preferences.Serialize( writer );
 
@@ -3567,17 +3506,9 @@ namespace Server.Mobiles
 
 			writer.Write( InnTime );
 
-			writer.Write( UsingAncientBook );
-
 			writer.Write( Camp );
 			writer.Write( Bedroll );
 
-			writer.Write( MyChat );
-
-			writer.Write( RegBar );
-			writer.Write( MyLibrary );
-
-			writer.Write( CharacterMOTD );
 			writer.Write( CharacterSkill );
 			writer.Write( CharacterKeys );
 			writer.Write( CharacterDiscovered );
@@ -3587,26 +3518,9 @@ namespace Server.Mobiles
 			writer.Write( CharacterBegging );
 			writer.Write( CharacterElement );
 
-			writer.Write( StandardQuest );
-			writer.Write( FishingQuest );
-			writer.Write( AssassinQuest );
-			writer.Write( MessageQuest );
-			writer.Write( BardsTaleQuest );
-
-			writer.Write( QuickBar );
-			writer.Write( ThiefQuest );
 			writer.Write( KilledSpecialMonsters );
-			writer.Write( MusicPlaylist );
 			writer.Write( CharacterWanted );
-			writer.Write( CharacterLoot );
-			writer.Write( EpicQuestName );
-			writer.Write( CharacterBarbaric );
 			writer.Write( SkillDisplay );
-			writer.Write( MagerySpellHue );
-			writer.Write( CharacterEvil );
-			writer.Write( CharacterOriental );
-			writer.Write( GumpHue );
-			writer.Write( EpicQuestNumber );
 
 			writer.Write( (DateTime) PeacedUntil );
 			writer.Write( (DateTime) AnkhNextUse );

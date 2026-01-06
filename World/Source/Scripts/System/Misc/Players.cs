@@ -1,16 +1,9 @@
-using Server.Accounting;
-using Server.Commands.Generic;
 using Server.Commands;
-using Server.ContextMenus;
 using Server.Gumps;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
-using Server.Targeting;
-using Server; 
-using System.Collections.Generic;
-using System.Collections;
 using System;
 using Server.Spells.Seventh;
 using System.Linq;
@@ -685,13 +678,13 @@ namespace Server.Misc
 		{
 			if ( m != null && m is PlayerMobile )
 			{
-				return ((PlayerMobile)m).CharacterOriental == 1;
+				return ((PlayerMobile)m).Preferences.CharacterOriental;
 			}
 			else if ( m != null && m is BaseCreature )
 			{
 				PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( m );
 
-				return killer != null && killer.CharacterOriental == 1;
+				return killer != null && killer.Preferences.CharacterOriental;
 			}
 
 			return false;
@@ -701,8 +694,8 @@ namespace Server.Misc
 		{
 			if ( m != null && m is PlayerMobile )
 			{
-				if ( ((PlayerMobile)m).CharacterBarbaric > 0 )
-					return ((PlayerMobile)m).CharacterBarbaric;
+				if ( ((PlayerMobile)m).Preferences.CharacterBarbaric > 0 )
+					return ((PlayerMobile)m).Preferences.CharacterBarbaric;
 			}
 
 			return 0;
@@ -712,7 +705,7 @@ namespace Server.Misc
 		{
 			if ( m != null && m is PlayerMobile )
 			{
-				if ( ((PlayerMobile)m).CharacterEvil == 1 )
+				if ( ((PlayerMobile)m).Preferences.CharacterEvil )
 					return true;
 			}
 			else if ( m != null && m is BaseCreature )
@@ -740,7 +733,7 @@ namespace Server.Misc
 
 				if ( killer != null && killer is PlayerMobile )
 				{
-					if ( ((PlayerMobile)killer).CharacterEvil == 1 )
+					if ( ((PlayerMobile)killer).Preferences.CharacterEvil )
 						return true;
 				}
 				else
@@ -768,7 +761,7 @@ namespace Server.Misc
 
 					if ( hitter != null && hitter is PlayerMobile )
 					{
-						if ( ((PlayerMobile)hitter).CharacterEvil == 1 )
+						if ( ((PlayerMobile)hitter).Preferences.CharacterEvil )
 							return true;
 					}
 				}
