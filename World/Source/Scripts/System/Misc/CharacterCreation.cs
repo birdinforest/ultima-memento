@@ -107,6 +107,9 @@ namespace Server.Misc
 
 			m_Mobile = newChar;
 			ApplyCharacterDefaults(newChar, existingCharacter.AccessLevel, existingCharacter.Female, existingCharacter.Hue, createBackpack);
+
+			existingCharacter.ShowHair();
+			newChar.Female = existingCharacter.RaceID != 0 ? existingCharacter.RaceWasFemale : existingCharacter.Female;
 			ApplyHairStyling(newChar, existingCharacter.HairItemID, existingCharacter.HairHue, existingCharacter.FacialHairItemID, existingCharacter.FacialHairHue);
 
 			// Copy stats from existing character

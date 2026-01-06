@@ -2174,7 +2174,6 @@ namespace Server.Mobiles
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
-				RecordSkinColor = 1, // Idk man, this is to avoid a different hack
 			};
 
 			if (includeRecipes) newPlayer.m_AcquiredRecipes = m_AcquiredRecipes;
