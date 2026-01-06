@@ -38,6 +38,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Players now fully log out after 30 seconds, down from 5 minutes<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Quest - 'Seeking Brave Adventurers' quests are now more likely to be challenging<br>");
+			builder.Append("- Quest - 'Seeking Brave Adventurers' targets can now be in Ambrosia<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Shoppe - All Permadeath on a single account now share Shoppes<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
