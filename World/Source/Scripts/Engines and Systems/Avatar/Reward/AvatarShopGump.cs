@@ -110,11 +110,8 @@ namespace Server.Engines.Avatar
 				return;
 			}
 
-			bool hasInfoCard = false;
 			if (pageNumber == 1)
 			{
-				hasInfoCard = true;
-
 				switch (m_SelectedCategory)
 				{
 					case Categories.Ascensions:
@@ -153,7 +150,6 @@ namespace Server.Engines.Avatar
 
 					case Categories.Information:
 					default:
-						hasInfoCard = false;
 						break;
 				}
 			}
@@ -231,14 +227,21 @@ namespace Server.Engines.Avatar
 			const int ITEMS_PER_PAGE = 8;
 			var toTake = ITEMS_PER_PAGE;
 
+			var skip = (pageNumber - 1) * toTake;
+
+			// All pages except the Information page have a description card
+			var hasInfoCard = selectedCategory != Categories.Information;
 			if (hasInfoCard)
+			{
+				if (pageNumber == 1) toTake -= 1;
+				else skip -= 1;
+			}
+
+			if (pageNumber == 1)
 			{
 				y += CARD_HEIGHT;
 				y += 10;
-				toTake -= 1;
 			}
-
-			var skip = (pageNumber - 1) * toTake;
 
 			m_Rewards = new List<IReward>();
 			var itemIndex = 0;
