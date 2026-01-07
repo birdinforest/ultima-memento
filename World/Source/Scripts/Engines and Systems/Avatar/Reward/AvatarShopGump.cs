@@ -215,7 +215,6 @@ namespace Server.Engines.Avatar
 						break;
 				}
 
-				randomRewardIndexes.Sort();
 				m_Context.RewardCache[selectedCategory] = randomRewardIndexes;
 			}
 
