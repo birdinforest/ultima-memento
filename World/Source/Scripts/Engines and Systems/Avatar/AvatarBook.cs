@@ -8,7 +8,6 @@ namespace Server.Engines.Avatar
 		public AvatarBook() : base(0x2147)
 		{
 			Name = "The Avatar's Ascent";
-			Movable = false;
 		}
 
 		public override void OnDoubleClick(Mobile from)
