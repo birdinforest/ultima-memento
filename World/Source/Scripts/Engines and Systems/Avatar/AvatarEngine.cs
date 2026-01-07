@@ -49,7 +49,7 @@ namespace Server.Engines.Avatar
 
 			if (player.Backpack == null)
 				player.AddItem(new Backpack() { Movable = false });
-			
+
 			if (player.Backpack.FindItemByType<AvatarBook>() == null)
 				player.Backpack.AddItem(new AvatarBook());
 		}
@@ -168,6 +168,8 @@ namespace Server.Engines.Avatar
 			var value = e.Award * 5; // Gold multiplier
 			value += GetBonusCoinsAmount(value, player.Avatar);
 
+			player.Avatar.LifetimeCombatQuestCompletions += 1;
+
 			GrantCoins(player, value, player.Avatar);
 		}
 
@@ -176,6 +178,14 @@ namespace Server.Engines.Avatar
 			if (e.Corpse == null) return;
 			if (false == (e.Killed is BaseCreature)) return;
 
+			var player = MobileUtilities.TryGetMasterPlayer(e.KilledBy);
+			if (player == null) return;
+
+			var context = GetContextOrDefault(player);
+			if (!context.Active) return;
+
+			context.LifetimeCreatureKills += 1;
+
 			var creature = (BaseCreature)e.Killed;
 			if (creature.AI == AIType.AI_Vendor) return;
 			if (
@@ -183,12 +193,6 @@ namespace Server.Engines.Avatar
 				|| (creature.IsEphemeral && false == creature is BaseChampion) // No temporary mobs
 				|| MobileUtilities.TryGetMasterPlayer(creature) != null // No pets
 			 ) return;
-
-			var player = MobileUtilities.TryGetMasterPlayer(e.KilledBy);
-			if (player == null) return;
-
-			var context = GetContextOrDefault(player);
-			if (!context.Active) return;
 
 			var corpse = e.Corpse;
 			int value = GetValue<DDCopper>(1, corpse);
@@ -205,26 +209,31 @@ namespace Server.Engines.Avatar
 			value += GetBonusCoinsAmount(value, context);
 
 			// Apply rivalry bonus
-			if (context.HasRivalFaction && context.RivalBonusEnabled)
+			if (context.HasRivalFaction)
 			{
 				var slayer = SlayerGroup.GetEntryByName(context.RivalSlayerName);
 				if (slayer != null && slayer.Slays(e.Killed))
 				{
-					var bonus = (int)(value * Constants.RIVAL_BONUS_PERCENT * 0.01);
-					if (0 < bonus)
-					{
-						bonus = GetBonusCoinsAmount(bonus, context);
-						context.RivalBonusPoints += bonus;
-						value += bonus;
+					context.LifetimeEnemyFactionKills += 1;
 
-						if (Constants.RIVAL_BONUS_MAX_POINTS <= context.RivalBonusPoints)
+					if (context.RivalBonusEnabled)
+					{
+						var bonus = (int)(value * Constants.RIVAL_BONUS_PERCENT * 0.01);
+						if (0 < bonus)
 						{
-							context.RivalBonusEnabled = false;
-							player.SendMessage("You have avenged your family by vanquishing all members of '{0}'.", context.RivalFactionName);
-						}
-						else
-						{
-							player.SendMessage("You have eliminated another member of '{0}'.", context.RivalFactionName);
+							bonus = GetBonusCoinsAmount(bonus, context);
+							context.RivalBonusPoints += bonus;
+							value += bonus;
+
+							if (Constants.RIVAL_BONUS_MAX_POINTS <= context.RivalBonusPoints)
+							{
+								context.RivalBonusEnabled = false;
+								player.SendMessage("You have avenged your family by vanquishing all members of '{0}'.", context.RivalFactionName);
+							}
+							else
+							{
+								player.SendMessage("You have eliminated another member of '{0}'.", context.RivalFactionName);
+							}
 						}
 					}
 				}

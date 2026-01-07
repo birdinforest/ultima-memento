@@ -134,6 +134,13 @@ namespace Server.Misc
 				}
 			}
 
+			if (newChar.Avatar.Active)
+			{
+				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
+				if (newChar.Avatar.UnlockRecordDiscovered)
+					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
+			}
+
 			existingCharacter.Delete();
 
 			return newChar;

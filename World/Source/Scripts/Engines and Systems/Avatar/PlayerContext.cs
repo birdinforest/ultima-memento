@@ -44,11 +44,21 @@ namespace Server.Engines.Avatar
 			}
 			else
 				GenerateRivalry();
+
 			if (5 < version)
 			{
 				SelectedProfession = (StarterProfessions)reader.ReadInt();
 				LifetimePointsGained = reader.ReadInt();
 				LifetimeDeaths = reader.ReadInt();
+			}
+
+			if (6 < version)
+			{
+				UnlockRecordDiscovered = reader.ReadBool();
+				LifetimeEnemyFactionKills = reader.ReadInt();
+				LifetimeGameTime = reader.ReadTimeSpan();
+				LifetimeCombatQuestCompletions = reader.ReadInt();
+				LifetimeCreatureKills = reader.ReadInt();
 			}
 		}
 
@@ -60,7 +70,19 @@ namespace Server.Engines.Avatar
 		public int ImprovedTemplateCount { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public int LifetimeCombatQuestCompletions { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int LifetimeCreatureKills { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int LifetimeDeaths { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int LifetimeEnemyFactionKills { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public TimeSpan LifetimeGameTime { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int LifetimePointsGained { get; set; }
@@ -108,6 +130,9 @@ namespace Server.Engines.Avatar
 		public bool UnlockPrimarySkillBoost { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockRecordDiscovered { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockRecordRecipes { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -124,7 +149,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(6); // version
+			writer.Write(7); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -149,6 +174,11 @@ namespace Server.Engines.Avatar
 			writer.Write((int)SelectedProfession);
 			writer.Write(LifetimePointsGained);
 			writer.Write(LifetimeDeaths);
+			writer.Write(UnlockRecordDiscovered);
+			writer.Write(LifetimeEnemyFactionKills);
+			writer.Write(LifetimeGameTime);
+			writer.Write(LifetimeCombatQuestCompletions);
+			writer.Write(LifetimeCreatureKills);
 		}
 
 		public override string ToString()
