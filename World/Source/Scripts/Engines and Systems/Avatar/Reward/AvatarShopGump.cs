@@ -221,11 +221,12 @@ namespace Server.Engines.Avatar
 
 			if (randomRewardIndexes == null) return;
 
-			var randomRewards = randomRewardIndexes
+			var queryable = randomRewardIndexes
 				.Select(index => index < rewards.Count ? rewards[index] : null)
-				.Where(reward => reward != null)
-				.OrderBy(reward => reward.Name)
-				.ToList();
+				.Where(reward => reward != null);
+			if (selectedCategory != Categories.Ascensions) queryable = queryable.OrderBy(reward => reward.Name);
+
+			var randomRewards = queryable.ToList();
 			if (randomRewards.Count < 1) return;
 
 			const int ITEMS_PER_PAGE = 8;
