@@ -198,8 +198,10 @@ namespace Server.Gumps
 			LAST_OPTION = The_Star,
 		}
 
-		public bool visitLodor( Mobile from )
+		private bool ShowLodorOptions( PlayerMobile from )
 		{
+			if ( from.Avatar.Active ) return PlayerSettings.GetDiscovered( from, Land.Lodoria );
+
 			Account a = from.Account as Account;
 			if ( a == null ) return false;
 
@@ -212,8 +214,10 @@ namespace Server.Gumps
 			return false;
 		}
 
-		public bool visitSavage( Mobile from )
+		private bool ShowSavageOption( PlayerMobile from )
 		{
+			if ( from.Avatar.Active ) return from.Avatar.UnlockSavageRace && PlayerSettings.GetDiscovered( from, Land.Savaged );
+
 			Account a = from.Account as Account;
 			if ( a == null ) return false;
 
@@ -231,12 +235,12 @@ namespace Server.Gumps
 		/// </summary>
 		public int pageShow( PlayerMobile from, int page, bool forward )
 		{
-			bool hasVisitedLodor = visitLodor( from );
+			bool hasVisitedLodor = ShowLodorOptions( from );
+			bool canBeFugitive = from.RaceID == 0 || !BaseRace.IsGood( from );
+			if ( canBeFugitive && from.Avatar.Active ) canBeFugitive = from.Avatar.UnlockFugitiveMode;
 
 			if ( from.RaceID > 0 )
 			{
-				bool canBeFugitive = !BaseRace.IsGood( from ) && ( !from.Avatar.Active || from.Avatar.UnlockFugitiveMode );
-
 				if ( forward )
 				{
 					page++;
@@ -261,12 +265,13 @@ namespace Server.Gumps
 			else
 			{
 				var disallowAlien = !MySettings.S_AllowAlienChoice && from.RaceID == 0;
-				bool canBeSavage = visitSavage( from ) && ( !from.Avatar.Active || from.Avatar.UnlockSavageRace );
+				bool canBeSavage = ShowSavageOption( from );
 
 				if ( forward )
 				{
 					page++;
 
+					if (page == (int)HumanPage.The_Hanged_Man) if ( !canBeFugitive ) { page++; }
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page++; }
@@ -282,6 +287,7 @@ namespace Server.Gumps
 					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page--; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page--; }
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page--; }
+					if (page == (int)HumanPage.The_Hanged_Man) if ( !canBeFugitive ) { page--; }
 
 					if ( page < (int)HumanPage.FIRST_OPTION ){ page = pageShow(from, (int)HumanPage.LAST_OPTION + 1, forward); }
 				}
