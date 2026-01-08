@@ -38,178 +38,174 @@ namespace Server.Engines.Avatar
 
 						return new List<IReward>
 						{
-							!context.UnlockPrimarySkillBoost && context.UnlockRecordSkillCaps
-								? ActionReward.Create(
-									2 * ONE_HUNDRED_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Jack of No Trades",
-									"Learn from the greatest masters. Unlock the ability to restore Primary skills.",
-									true,
-									() => {
-										context.UnlockPrimarySkillBoost = true;
-										context.ClearRewardCache(Categories.PrimaryBoosts);
-										context.ClearRewardCache(Categories.SecondaryBoosts);
-										m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
-									}
-								)
-								: null,
-							!context.UnlockSecondarySkillBoost && context.UnlockRecordSkillCaps
-								? ActionReward.Create(
-									2 * ONE_HUNDRED_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Artisan's Mastery",
-									"Master the crafts. Unlock the ability to restore Secondary skills.",
-									true,
-									() => {
-										context.UnlockSecondarySkillBoost = true;
-										context.ClearRewardCache(Categories.PrimaryBoosts);
-										context.ClearRewardCache(Categories.SecondaryBoosts);
-										m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
-									}
-								)
-								: null,
-							!context.UnlockTemptations
-								? ActionReward.Create(
-									5 * ONE_THOUSAND_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Power Overwhelming",
-									"Answer the seductive call of power. Gain strength through temptation and desire.",
-									true,
-									() => {
-										context.UnlockTemptations = true;
-										m_From.SendMessage("You have unlocked the ability to use Temptations.");
-									}
-								)
-								: null,
-							!context.UnlockMonsterRaces
-								? ActionReward.Create(
-									50 * ONE_THOUSAND_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Bestial Transformation",
-									"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
-									true,
-									() => {
-										context.UnlockMonsterRaces = true;
-										m_From.SendMessage("You have unlocked the option to select a non-human race.");
-									}
-								)
-								: null,
-							!context.UnlockSavageRace
-								? ActionReward.Create(
-									25 * ONE_THOUSAND_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Primal Awakening",
-									"Return to your untamed roots. Live life as a savage and embrace your barbaric heritage.",
-									true,
-									() => {
-										context.UnlockSavageRace = true;
-										m_From.SendMessage("You have unlocked a new tarot card for Humans.");
-									}
-								)
-								: null,
-							!context.UnlockFugitiveMode
-								? ActionReward.Create(
-									150 * ONE_THOUSAND_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Outlaw's Mark",
-									"Bear the mark of the hunted. Strengthen your core and live as an exile.",
-									true,
-									() => {
-										context.UnlockFugitiveMode = true;
-										m_From.SendMessage("You have unlocked a new tarot card for Monsters and Humans.");
-									}
-								)
-								: null,
-							!context.UnlockRecordSkillCaps
-								? ActionReward.Create(
-									ONE_HUNDRED_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Erudian Teachings",
-									"Reinforce your mind. Higher learning will become second nature.",
-									true,
-									() => {
-										context.UnlockRecordSkillCaps = true;
-										context.ClearRewardCache(Categories.PrimaryBoosts);
-										context.ClearRewardCache(Categories.SecondaryBoosts);
-										m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
-									}
-								)
-								: null,
-							!context.UnlockRecordRecipes
-								? ActionReward.Create(
-									ONE_THOUSAND_GOLD,
-									AvatarShopGump.NO_ITEM_ID,
-									"Crafter Lineage",
-									"Record recipes that you have learned.",
-									true,
-									() => {
-										context.UnlockRecordRecipes = true;
-										m_From.SendMessage("Your recipes are now permanently unlocked.");
-									}
-								)
-								: null,
-							context.ImprovedTemplateCount < Constants.IMPROVED_TEMPLATE_MAX_COUNT
-								? ActionReward.Create(
-									ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
-									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
-									string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
-									true,
-									() => {
-										context.ImprovedTemplateCount += 1;
-										m_From.SendMessage("Your templates may now spawn as (Improved).");
-									}
-								)
-								: null,
+							ActionReward.Create(
+								context.UnlockPrimarySkillBoost,
+								2 * ONE_HUNDRED_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Jack of No Trades",
+								"Learn from the greatest masters. Unlock the ability to restore Primary skills.",
+								() => {
+									context.UnlockPrimarySkillBoost = true;
+									context.ClearRewardCache(Categories.PrimaryBoosts);
+									context.ClearRewardCache(Categories.SecondaryBoosts);
+									m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
+								}
+							).WithPrereq(
+								context.UnlockRecordSkillCaps,
+								"Requires Erudian Knowledge to be unlocked."
+							),
+							ActionReward.Create(
+								context.UnlockSecondarySkillBoost,
+								2 * ONE_HUNDRED_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Artisan's Mastery",
+								"Master the crafts. Unlock the ability to restore Secondary skills.",
+								() => {
+									context.UnlockSecondarySkillBoost = true;
+									context.ClearRewardCache(Categories.PrimaryBoosts);
+									context.ClearRewardCache(Categories.SecondaryBoosts);
+									m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
+								}
+							).WithPrereq(
+								context.UnlockRecordSkillCaps,
+								"Requires Erudian Knowledge to be unlocked."
+							),
+							ActionReward.Create(
+								context.UnlockTemptations,
+								5 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Power Overwhelming",
+								"Answer the seductive call of power. Gain strength through temptation and desire.",
+								() => {
+									context.UnlockTemptations = true;
+									m_From.SendMessage("You have unlocked the ability to use Temptations.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockMonsterRaces,
+								50 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Bestial Transformation",
+								"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
+								() => {
+									context.UnlockMonsterRaces = true;
+									m_From.SendMessage("You have unlocked the option to select a non-human race.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockRecordDiscovered,
+								10 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"World Class Cartographer",
+								"Discover the world and its wonders. Permanently record your travels to every land.",
+								() => {
+									context.UnlockRecordDiscovered = true;
+									m_From.SendMessage("Your facet discoveries are now permanently recorded.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockSavageRace,
+								25 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Primal Awakening",
+								"Return to your untamed roots. Live life as a savage and embrace your barbaric heritage.",
+								() => {
+									context.UnlockSavageRace = true;
+									m_From.SendMessage("You have unlocked a new tarot card for Humans.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockFugitiveMode,
+								150 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Outlaw's Mark",
+								"Bear the mark of the hunted. Strengthen your core and live as an exile.",
+								() => {
+									context.UnlockFugitiveMode = true;
+									m_From.SendMessage("You have unlocked a new tarot card for Monsters and Humans.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockRecordSkillCaps,
+								100 * ONE_HUNDRED_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Erudian Teachings",
+								"Reinforce your mind. Higher learning will become second nature.",
+								() => {
+									context.UnlockRecordSkillCaps = true;
+									context.ClearRewardCache(Categories.PrimaryBoosts);
+									context.ClearRewardCache(Categories.SecondaryBoosts);
+									m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockRecordRecipes,
+								1000 * ONE_HUNDRED_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Crafter Lineage",
+								"Record recipes that you have learned.",
+								() => {
+									context.UnlockRecordRecipes = true;
+									m_From.SendMessage("Your recipes are now permanently unlocked.");
+								}
+							),
+							ActionReward.Create(
+								Constants.IMPROVED_TEMPLATE_MAX_COUNT <= context.ImprovedTemplateCount,
+								ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
+								string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
+								() => {
+									context.ImprovedTemplateCount += 1;
+									m_From.SendMessage("Your templates may now spawn as (Improved).");
+								}
+							),
 
 							// Limits
-							context.UnlockRecordSkillCaps
-								? ActionReward.Create(
-									erudianCapCost,
-									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
-									string.Format("Increases the maximum of skill that your Skill Archive can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
-									context.RecordedSkillCapLevel < Constants.RECORDED_SKILL_CAP_MAX_LEVEL,
-									() =>
-									{
-										context.RecordedSkillCapLevel += 1;
-										context.ClearRewardCache(Categories.PrimaryBoosts);
-										context.ClearRewardCache(Categories.SecondaryBoosts);
-									}
-								)
-								: null,
 							ActionReward.Create(
+								Constants.RECORDED_SKILL_CAP_MAX_LEVEL <= context.RecordedSkillCapLevel,
+								erudianCapCost,
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
+								string.Format("Increases the maximum of skill that your Skill Archive can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+								() => {
+									context.RecordedSkillCapLevel += 1;
+									context.ClearRewardCache(Categories.PrimaryBoosts);
+									context.ClearRewardCache(Categories.SecondaryBoosts);
+								}
+							),
+							ActionReward.Create(
+								Constants.SKILL_CAP_MAX_LEVEL <= context.SkillCapLevel,
 								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
 								string.Format("Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
-								context.SkillCapLevel < Constants.SKILL_CAP_MAX_LEVEL,
 								() => context.SkillCapLevel += 1
 							),
 							ActionReward.Create(
+								Constants.STAT_CAP_MAX_LEVEL <= context.StatCapLevel,
 								SecondOrderCost(100, context.StatCapLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
 								string.Format("Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
-								context.StatCapLevel < Constants.STAT_CAP_MAX_LEVEL,
 								() => context.StatCapLevel += 1
 							),
-							
+
 							// Rates
 							ActionReward.Create(
+								Constants.POINT_GAIN_RATE_MAX_LEVEL <= context.PointGainRateLevel,
 								SecondOrderCost(100, context.PointGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, Constants.POINT_GAIN_RATE_MAX_LEVEL),
 								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
-								context.PointGainRateLevel < Constants.POINT_GAIN_RATE_MAX_LEVEL,
 								() => context.PointGainRateLevel += 1
 							),
 							ActionReward.Create(
+								Constants.SKILL_GAIN_RATE_MAX_LEVEL <= context.SkillGainRateLevel,
 								ExponentialCost(2000, context.SkillGainRateLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, Constants.SKILL_GAIN_RATE_MAX_LEVEL),
 								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
-								context.SkillGainRateLevel < Constants.SKILL_GAIN_RATE_MAX_LEVEL,
 								() => context.SkillGainRateLevel += 1
 							),
 						}.Where(r => r != null).ToList();
@@ -273,7 +269,6 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.NO_ITEM_ID,
 								"The Brute",
 								"Starts with 60 strength, 10 dexterity, and 10 intelligence.",
-								true,
 								() =>
 								{
 									applyTemplate(
@@ -290,7 +285,6 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.NO_ITEM_ID,
 								"The Acrobat",
 								"Starts with 10 strength, 60 dexterity, and 10 intelligence.",
-								true,
 								() =>
 								{
 									applyTemplate(
@@ -307,7 +301,6 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.NO_ITEM_ID,
 								"The Scholar",
 								"Starts with 10 strength, 10 dexterity, and 60 intelligence.",
-								true,
 								() =>
 								{
 									applyTemplate(
@@ -356,7 +349,6 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("The {0}{1}", profession.ToString(), boosted ? " (Improved)" : ""),
 								string.Format("Start with the stats, skills, and items of a {0}.", profession.ToString()),
-								true,
 								() =>
 								{
 									applyTemplate(
@@ -413,11 +405,11 @@ namespace Server.Engines.Avatar
 								var maxValueFixedPoint = (int)(maxValue * 10);
 								rewards.Add(
 									ActionReward.Create(
+										maxValueFixedPoint <= skill.BaseFixedPoint,
 										AvatarShopGump.COST_FREE,
 										AvatarShopGump.NO_ITEM_ID,
 										string.Format("{0}", skill.Name),
 										string.Format("Raise your skill in {0} up to {1:n1}", skill.Name, maxValue),
-										skill.BaseFixedPoint < maxValueFixedPoint,
 										() =>
 										{
 											if (skill.IsSecondarySkill())

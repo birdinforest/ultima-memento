@@ -34,11 +34,11 @@ namespace Server.Engines.Avatar
 
 		private readonly PlayerContext m_Context;
 		private readonly PlayerMobile m_From;
+		private readonly bool m_InGypsyEncampment;
 		private readonly Action m_onGumpClose;
 		private readonly int m_PageNumber;
 		private readonly List<IReward> m_Rewards;
 		private readonly Categories m_SelectedCategory;
-		private readonly bool m_InGypsyEncampment;
 
 		public AvatarShopGump(PlayerMobile from, Categories selectedCategory = Categories.Information, int pageNumber = 1, Action onGumpClose = null) : base(25, 25)
 		{
@@ -248,7 +248,12 @@ namespace Server.Engines.Avatar
 			foreach (var reward in randomRewards.Skip(skip).Take(toTake))
 			{
 				m_Rewards.Add(reward);
-				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, m_InGypsyEncampment && reward.CanSelect, reward.Cost, itemIndex, y);
+
+				var tooltip = reward is ActionReward ? ((ActionReward)reward).PrequisiteTooltip : null;
+				var canPurchase = m_InGypsyEncampment && reward.CanSelect && string.IsNullOrWhiteSpace(tooltip);
+				var cost = reward is ActionReward && ((ActionReward)reward).IsComplete ? COST_NO_BUY : reward.Cost;
+
+				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, canPurchase, cost, itemIndex, y, tooltip);
 
 				y += CARD_HEIGHT;
 				y += 10;
@@ -361,6 +366,7 @@ namespace Server.Engines.Avatar
 			int purchaseCost,
 			int index,
 			int y,
+			string tooltip = null,
 			bool scrollable = false,
 			bool addBackground = true
 			)
@@ -419,7 +425,11 @@ namespace Server.Engines.Avatar
 					if (canPurchase)
 						AddButton(x + 13, y - 1, 4023, 4023, (int)_Actions.PurchaseBase + index, GumpButtonType.Reply, 0); // OK
 					else
+					{
 						AddImage(x + 21, y + 3, 2092); // Lock icon
+						if (!string.IsNullOrWhiteSpace(tooltip))
+							AddTooltip(tooltip);
+					}
 
 					string purchaseText;
 					switch (m_SelectedCategory)
@@ -521,11 +531,12 @@ namespace Server.Engines.Avatar
 			string name,
 			string description,
 			int y,
+			string tooltip = null,
 			bool scrollable = false,
 			bool addBackground = true
 		)
 		{
-			AddCard(0, itemId, name, description, false, 0, 0, y, scrollable, addBackground);
+			AddCard(0, itemId, name, description, false, 0, 0, y, tooltip, scrollable, addBackground);
 		}
 
 		private void AddKeyValuePairsCard(int x, int y)
