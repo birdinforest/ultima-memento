@@ -2197,16 +2197,21 @@ namespace Server.Mobiles
 					"Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
 					() =>
 					{
-						if (Avatar.Active)
-						{
-							var newPlayer = CharacterCreation.ResetCharacter( this, true, false );
-							AvatarEngine.InitializePlayer(newPlayer);
-							AvatarEngine.Instance.ApplyContext(newPlayer, newPlayer.Avatar);
-						}
-						else
-						{
-							CharacterCreation.ResetCharacter( this, false, true);
-						}
+						SendMessage("Your character will be recreated and you will be disconnected shortly...");
+
+						Timer.DelayCall(TimeSpan.FromSeconds(1), () => {
+
+							if (Avatar.Active)
+							{
+								var newPlayer = CharacterCreation.ResetCharacter( this, true, false );
+								AvatarEngine.InitializePlayer(newPlayer);
+								AvatarEngine.Instance.ApplyContext(newPlayer, newPlayer.Avatar);
+							}
+							else
+							{
+								CharacterCreation.ResetCharacter( this, false, true);
+							}
+						});
 					}
 				);
 				SendGump(confirmation);
