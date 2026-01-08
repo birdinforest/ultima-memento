@@ -19,7 +19,7 @@ namespace Server.Engines.Avatar
 		public const int SKILL_CAP_MAX_LEVEL = 70;
 		public const int SKILL_CAP_PER_LEVEL = 10;
 		public const int SKILL_GAIN_RATE_MAX_LEVEL = 10;
-		public const int SKILL_GAIN_RATE_PER_LEVEL = 10;
+		public const int SKILL_GAIN_RATE_PER_LEVEL = 5;
 		public const int STAT_CAP_MAX_LEVEL = 150;
 		public const int STAT_CAP_PER_LEVEL = 1;
 
