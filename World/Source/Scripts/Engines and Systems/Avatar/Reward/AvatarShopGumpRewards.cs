@@ -28,16 +28,63 @@ namespace Server.Engines.Avatar
 
 				case Categories.Ascensions:
 					{
-						var skillCapCost = 50 + 25 * (context.SkillCapLevel / 10);
 						var currentErudianBonus = context.GetRecordedSkillCap();
-						var erudianCapCost = 0;
+						int erudianCapCost;
 						if (currentErudianBonus < 70) erudianCapCost = SecondOrderCost(100, context.RecordedSkillCapLevel + 1);
 						else if (currentErudianBonus < 90) erudianCapCost = SecondOrderCost(200, context.RecordedSkillCapLevel + 1);
 						else if (currentErudianBonus < 100) erudianCapCost = SecondOrderCost(400, context.RecordedSkillCapLevel + 1);
-						else erudianCapCost = SecondOrderCost(800, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 105) erudianCapCost = SecondOrderCost(800, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 110) erudianCapCost = SecondOrderCost(1000, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 115) erudianCapCost = SecondOrderCost(1200, context.RecordedSkillCapLevel + 1);
+						else if (currentErudianBonus < 120) erudianCapCost = SecondOrderCost(2400, context.RecordedSkillCapLevel + 1);
+						else erudianCapCost = SecondOrderCost(4800, context.RecordedSkillCapLevel + 1);
+
+						var currentSkillCap = (Constants.SKILL_CAP_BASE / 10) + (context.SkillCapLevel * Constants.SKILL_CAP_PER_LEVEL);
+						int skillCapCost;
+						if (currentSkillCap < 400) skillCapCost = SecondOrderCost(200, 1);
+						else if (currentSkillCap < 500) skillCapCost = SecondOrderCost(800, 1);
+						else if (currentSkillCap < 600) skillCapCost = SecondOrderCost(1600, 1);
+						else if (currentSkillCap < 700) skillCapCost = SecondOrderCost(3200, 1);
+						else if (currentSkillCap < 800) skillCapCost = SecondOrderCost(6400, 1);
+						else if (currentSkillCap < 900) skillCapCost = SecondOrderCost(12800, 1);
+						else if (currentSkillCap < 1000) skillCapCost = SecondOrderCost(51200, 1);
+						else skillCapCost = SecondOrderCost(4000, 1);
+
+						int statCapCost;
+						if (context.StatCapLevel < 10) statCapCost = SecondOrderCost(200, 1);
+						else if (context.StatCapLevel < 20) statCapCost = SecondOrderCost(600, 1);
+						else if (context.StatCapLevel < 30) statCapCost = SecondOrderCost(1200, 1);
+						else if (context.StatCapLevel < 40) statCapCost = SecondOrderCost(2400, 1);
+						else if (context.StatCapLevel < 50) statCapCost = SecondOrderCost(4800, 1);
+						else if (context.StatCapLevel < 60) statCapCost = SecondOrderCost(9600, 1);
+						else if (context.StatCapLevel < 70) statCapCost = SecondOrderCost(19200, 1);
+						else if (context.StatCapLevel < 80) statCapCost = SecondOrderCost(38400, 1);
+						else if (context.StatCapLevel < 90) statCapCost = SecondOrderCost(76800, 1);
+						else if (context.StatCapLevel < 100) statCapCost = SecondOrderCost(153600, 1);
+						else if (context.StatCapLevel < 110) statCapCost = SecondOrderCost(307200, 1);
+						else if (context.StatCapLevel < 120) statCapCost = SecondOrderCost(614400, 1);
+						else if (context.StatCapLevel < 130) statCapCost = SecondOrderCost(1228800, 1);
+						else if (context.StatCapLevel < 140) statCapCost = SecondOrderCost(2457600, 1);
+						else statCapCost = SecondOrderCost(4915200, 1);
+
+						int pointGainRateCost = SecondOrderCost(50, context.PointGainRateLevel + 1);
+						int skillGainRateCost = ExponentialCost(2000, context.SkillGainRateLevel + 1);
 
 						return new List<IReward>
 						{
+							ActionReward.Create(
+								context.UnlockRecordSkillCaps,
+								ONE_HUNDRED_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Erudian Teachings",
+								"Reinforce your mind. Higher learning will become second nature.",
+								() => {
+									context.UnlockRecordSkillCaps = true;
+									context.ClearRewardCache(Categories.PrimaryBoosts);
+									context.ClearRewardCache(Categories.SecondaryBoosts);
+									m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
+								}
+							),
 							ActionReward.Create(
 								context.UnlockPrimarySkillBoost,
 								2 * ONE_HUNDRED_GOLD,
@@ -71,36 +118,36 @@ namespace Server.Engines.Avatar
 								"Requires Erudian Knowledge to be unlocked."
 							),
 							ActionReward.Create(
-								context.UnlockTemptations,
-								5 * ONE_THOUSAND_GOLD,
+								context.UnlockRecordRecipes,
+								ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Power Overwhelming",
-								"Answer the seductive call of power. Gain strength through temptation and desire.",
+								"Crafter Lineage",
+								"Record recipes that you have learned.",
 								() => {
-									context.UnlockTemptations = true;
-									m_From.SendMessage("You have unlocked the ability to use Temptations.");
-								}
-							),
-							ActionReward.Create(
-								context.UnlockMonsterRaces,
-								50 * ONE_THOUSAND_GOLD,
-								AvatarShopGump.NO_ITEM_ID,
-								"Bestial Transformation",
-								"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
-								() => {
-									context.UnlockMonsterRaces = true;
-									m_From.SendMessage("You have unlocked the option to select a non-human race.");
+									context.UnlockRecordRecipes = true;
+									m_From.SendMessage("Your recipes are now permanently unlocked.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockRecordDiscovered,
-								10 * ONE_THOUSAND_GOLD,
+								5 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
 								"World Class Cartographer",
 								"Discover the world and its wonders. Permanently record your travels to every land.",
 								() => {
 									context.UnlockRecordDiscovered = true;
 									m_From.SendMessage("Your facet discoveries are now permanently recorded.");
+								}
+							),
+							ActionReward.Create(
+								context.UnlockTemptations,
+								10 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Power Overwhelming",
+								"Answer the seductive call of power. Gain strength through temptation and desire.",
+								() => {
+									context.UnlockTemptations = true;
+									m_From.SendMessage("You have unlocked the ability to use Temptations.");
 								}
 							),
 							ActionReward.Create(
@@ -115,6 +162,17 @@ namespace Server.Engines.Avatar
 								}
 							),
 							ActionReward.Create(
+								context.UnlockMonsterRaces,
+								50 * ONE_THOUSAND_GOLD,
+								AvatarShopGump.NO_ITEM_ID,
+								"Bestial Transformation",
+								"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
+								() => {
+									context.UnlockMonsterRaces = true;
+									m_From.SendMessage("You have unlocked the option to select a non-human race.");
+								}
+							),
+							ActionReward.Create(
 								context.UnlockFugitiveMode,
 								150 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
@@ -125,30 +183,7 @@ namespace Server.Engines.Avatar
 									m_From.SendMessage("You have unlocked a new tarot card for Monsters and Humans.");
 								}
 							),
-							ActionReward.Create(
-								context.UnlockRecordSkillCaps,
-								100 * ONE_HUNDRED_GOLD,
-								AvatarShopGump.NO_ITEM_ID,
-								"Erudian Teachings",
-								"Reinforce your mind. Higher learning will become second nature.",
-								() => {
-									context.UnlockRecordSkillCaps = true;
-									context.ClearRewardCache(Categories.PrimaryBoosts);
-									context.ClearRewardCache(Categories.SecondaryBoosts);
-									m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
-								}
-							),
-							ActionReward.Create(
-								context.UnlockRecordRecipes,
-								1000 * ONE_HUNDRED_GOLD,
-								AvatarShopGump.NO_ITEM_ID,
-								"Crafter Lineage",
-								"Record recipes that you have learned.",
-								() => {
-									context.UnlockRecordRecipes = true;
-									m_From.SendMessage("Your recipes are now permanently unlocked.");
-								}
-							),
+
 							ActionReward.Create(
 								Constants.IMPROVED_TEMPLATE_MAX_COUNT <= context.ImprovedTemplateCount,
 								ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
@@ -176,7 +211,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								Constants.SKILL_CAP_MAX_LEVEL <= context.SkillCapLevel,
-								SecondOrderCost(skillCapCost, context.SkillCapLevel + 1),
+								skillCapCost,
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
 								string.Format("Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
@@ -184,7 +219,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								Constants.STAT_CAP_MAX_LEVEL <= context.StatCapLevel,
-								SecondOrderCost(100, context.StatCapLevel + 1),
+								statCapCost,
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
 								string.Format("Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
@@ -194,7 +229,7 @@ namespace Server.Engines.Avatar
 							// Rates
 							ActionReward.Create(
 								Constants.POINT_GAIN_RATE_MAX_LEVEL <= context.PointGainRateLevel,
-								SecondOrderCost(100, context.PointGainRateLevel + 1),
+								pointGainRateCost,
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, Constants.POINT_GAIN_RATE_MAX_LEVEL),
 								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
@@ -202,7 +237,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								Constants.SKILL_GAIN_RATE_MAX_LEVEL <= context.SkillGainRateLevel,
-								ExponentialCost(2000, context.SkillGainRateLevel + 1),
+								skillGainRateCost,
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, Constants.SKILL_GAIN_RATE_MAX_LEVEL),
 								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
