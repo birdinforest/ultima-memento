@@ -10,7 +10,7 @@ namespace Server.Engines.Avatar
 		#region Shop Constants
 
 		public const int IMPROVED_TEMPLATE_MAX_COUNT = 5;
-		public const int POINT_GAIN_RATE_MAX_LEVEL = 150;
+		public const int POINT_GAIN_RATE_MAX_LEVEL = 100;
 		public const int POINT_GAIN_RATE_PER_LEVEL = 1;
 		public const int RECORDED_SKILL_CAP_INTERVAL = 5;
 		public const int RECORDED_SKILL_CAP_MAX_AMOUNT = 125;
