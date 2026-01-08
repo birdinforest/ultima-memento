@@ -1,8 +1,5 @@
 using System;
-using Server;
-using Server.Misc;
 using Server.Mobiles;
-using Server.Temptation;
 
 namespace Server.Misc
 {
@@ -469,23 +466,25 @@ namespace Server.Misc
 					return false;
 			}
 
-			if ( from.StatCap > 250 )
+			if ( from is PlayerMobile )
 			{
-				switch ( stat )
+				var player = (PlayerMobile)from;
+				if (player.IsTitanOfEther)
 				{
-					case Stat.Str: return ( from.StrLock == StatLockType.Up && from.RawStr < 175 );
-					case Stat.Dex: return ( from.DexLock == StatLockType.Up && from.RawDex < 175 );
-					case Stat.Int: return ( from.IntLock == StatLockType.Up && from.RawInt < 175 );
+					switch ( stat )
+					{
+						case Stat.Str: return from.StrLock == StatLockType.Up && from.RawStr < 175;
+						case Stat.Dex: return from.DexLock == StatLockType.Up && from.RawDex < 175;
+						case Stat.Int: return from.IntLock == StatLockType.Up && from.RawInt < 175;
+					}
 				}
 			}
-			else
+
+			switch ( stat )
 			{
-				switch ( stat )
-				{
-					case Stat.Str: return ( from.StrLock == StatLockType.Up && from.RawStr < 150 );
-					case Stat.Dex: return ( from.DexLock == StatLockType.Up && from.RawDex < 150 );
-					case Stat.Int: return ( from.IntLock == StatLockType.Up && from.RawInt < 150 );
-				}
+				case Stat.Str: return from.StrLock == StatLockType.Up && from.RawStr < 150;
+				case Stat.Dex: return from.DexLock == StatLockType.Up && from.RawDex < 150;
+				case Stat.Int: return from.IntLock == StatLockType.Up && from.RawInt < 150;
 			}
 
 			return false;
