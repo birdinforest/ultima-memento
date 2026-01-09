@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
 			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
+			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");
@@ -126,7 +127,6 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Achievements - Fix issue where points were being saved per character instead of per account<br>");
 			builder.Append("- Commands - Fix Achievement command and aliases -- [feats / [achievement / [achievements<br>");
-			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
 			builder.Append("- Item - Pants and Leg Armor can now both give resistances<br>");
 			builder.Append("- Item - Bag of holding message now shows seconds when < 1 minute remains<br>");
 			builder.Append("- Misc - Prevent access to moat in Caverns of Poseidon<br>");
