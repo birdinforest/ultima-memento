@@ -31,9 +31,11 @@ namespace Server.Misc
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
 			builder.Append("- Misc - Players are now warned when exiting a house with unsecured items<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
+			builder.Append("- Pets - Pets will now auto-bond every time they level up to 3 or higher<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
 			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
+			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
