@@ -5488,15 +5488,20 @@ namespace Server.Mobiles
 		{
 			if ( CheckTeachingMatch( from ) )
 			{
-				if ( Teach( m_Teaching, from, dropped.Amount, true ) )
+				int cost = 0;
+				if ( Teach( m_Teaching, from, dropped.Amount, true, out cost ) )
 				{
 					if ( this is BaseVendor )
-						((BaseVendor)this).AddToCoinPurse( from, dropped.Amount );
-
+						((BaseVendor)this).AddToCoinPurse( from, cost );
+					
 					this.InvalidateProperties();
 
-					dropped.Delete();
-					return true;
+					dropped.Amount -= cost;
+					if (dropped.Amount < 1)
+						dropped.Delete();
+
+					// If it wasn't deleted, bounce it back
+					return dropped.Deleted;
 				}
 			}
 			else if ( IsHumanInTown() )
@@ -7002,6 +7007,13 @@ namespace Server.Mobiles
 
 		public virtual bool Teach( SkillName skill, Mobile m, int maxPointsToLearn, bool doTeach )
 		{
+			int cost = 0;
+			return Teach( skill, m, maxPointsToLearn, doTeach, out cost );
+		}
+
+		public virtual bool Teach( SkillName skill, Mobile m, int maxPointsToLearn, bool doTeach, out int cost )
+		{
+			cost = 0;
 			int pointsToLearn = 0;
 			TeachResult res = CheckTeachSkills( skill, m, maxPointsToLearn, ref pointsToLearn, doTeach );
 
@@ -7035,6 +7047,7 @@ namespace Server.Mobiles
 						Say( 501539 ); // Let me show thee something of how this is done.
 						m.SendLocalizedMessage( 501540 ); // Your skill level increases.
 
+						cost = pointsToLearn;
 						m_Teaching = (SkillName)(-1);
 
 						if ( m is PlayerMobile )
@@ -8397,6 +8410,7 @@ namespace Server.Mobiles
 				GenerateLoot( false );
 				if ( Backpack != null )
 				{
+					LootPackChange.MakeCoins(this.Backpack, this);
 					var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
 					var mobiles = lootingRights.Select(store => store.m_Mobile);
 					NotIdentified.DoAutoDelete( Backpack, mobiles );
@@ -8651,12 +8665,12 @@ namespace Server.Mobiles
 			return rights;
 		}
 
-		public virtual void OnKilledBy( Mobile mob, Container corpse )
+		public virtual void OnKilledBy( Mobile mob, Container corpse, int damagerCount )
 		{
 			if ( m_Paragon && Paragon.CheckArtifactChance( mob, this ) )
 				Paragon.GiveArtifactTo( mob );
 
-            EventSink.InvokeOnKilledBy( this, mob, corpse );
+            EventSink.InvokeOnKilledBy( this, mob, corpse, damagerCount );
 		}
 
 		public override void OnDeath( Container c )
@@ -8776,17 +8790,14 @@ namespace Server.Mobiles
 					int totalKarma = -Karma / 100;
 
 					List<DamageStore> list = GetLootingRights( this.DamageEntries, this.HitsMax );
+					list = list.Where(ds => ds.m_HasRight).ToList();
+
 					List<Mobile> titles = new List<Mobile>();
 					List<int> fame = new List<int>();
 					List<int> karma = new List<int>();
 
-					for ( int i = 0; i < list.Count; ++i )
+					foreach ( var ds in list )
 					{
-						DamageStore ds = list[i];
-
-						if ( !ds.m_HasRight )
-							continue;
-
 						Party party = Engines.PartySystem.Party.Get( ds.m_Mobile );
 
 						if ( party != null )
@@ -8823,7 +8834,7 @@ namespace Server.Mobiles
 							karma.Add( totalKarma );
 						}
 
-						OnKilledBy( ds.m_Mobile, c );
+						OnKilledBy( ds.m_Mobile, c, list.Count );
 					}
 					for ( int i = 0; i < titles.Count; ++i )
 					{

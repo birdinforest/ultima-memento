@@ -86,7 +86,7 @@ namespace Server.Mobiles
 					mobile.CloseGump( typeof( GypsyTarotGump ) );
 					mobile.CloseGump( typeof( WelcomeGump ) );
 					mobile.CloseGump( typeof( RacePotions.RacePotionsGump ) );
-					mobile.SendGump(new GypsyTarotGump( m_Mobile, 0 ) );
+					mobile.SendGump(new GypsyTarotGump( mobile, 0 ) );
 				}
 				else
 				{
@@ -198,8 +198,10 @@ namespace Server.Gumps
 			LAST_OPTION = The_Star,
 		}
 
-		public bool visitLodor( Mobile from )
+		private bool ShowLodorOptions( PlayerMobile from )
 		{
+			if ( from.Avatar.Active ) return PlayerSettings.GetDiscovered( from, Land.Lodoria );
+
 			Account a = from.Account as Account;
 			if ( a == null ) return false;
 
@@ -212,8 +214,10 @@ namespace Server.Gumps
 			return false;
 		}
 
-		public bool visitSavage( Mobile from )
+		private bool ShowSavageOption( PlayerMobile from )
 		{
+			if ( from.Avatar.Active ) return from.Avatar.UnlockSavageRace && PlayerSettings.GetDiscovered( from, Land.Savaged );
+
 			Account a = from.Account as Account;
 			if ( a == null ) return false;
 
@@ -229,17 +233,21 @@ namespace Server.Gumps
 		/// <summary>
 		/// Skips illegal pages and cycles back to the Gypsy page
 		/// </summary>
-		public int pageShow( Mobile from, int page, bool forward )
+		public int pageShow( PlayerMobile from, int page, bool forward )
 		{
+			bool hasVisitedLodor = ShowLodorOptions( from );
+			bool canBeFugitive = from.RaceID == 0 || !BaseRace.IsGood( from );
+			if ( canBeFugitive && from.Avatar.Active ) canBeFugitive = from.Avatar.UnlockFugitiveMode;
+
 			if ( from.RaceID > 0 )
 			{
 				if ( forward )
 				{
 					page++;
 
-					if (page == (int)CreaturePage.The_Night) if ( Server.Items.BaseRace.IsGood( from ) ) { page++; }
-					if (page == (int)CreaturePage.The_Light) if ( !visitLodor( from ) ) { page++; }
-					if (page == (int)CreaturePage.The_Dark) if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page++; }
+					if (page == (int)CreaturePage.The_Night) if ( !canBeFugitive ) { page++; }
+					if (page == (int)CreaturePage.The_Light) if ( !hasVisitedLodor ) { page++; }
+					if (page == (int)CreaturePage.The_Dark) if ( !canBeFugitive || !hasVisitedLodor ) { page++; }
 
 					if ( page > (int)CreaturePage.LAST_OPTION ){ page = pageShow(from, (int)CreaturePage.FIRST_OPTION - 1, forward); }
 				}
@@ -247,9 +255,9 @@ namespace Server.Gumps
 				{
 					page--;
 
-					if (page == (int)CreaturePage.The_Dark) if ( Server.Items.BaseRace.IsGood( from ) || !visitLodor( from ) ) { page--; }
-					if (page == (int)CreaturePage.The_Light) if ( !visitLodor( from ) ) { page--; }
-					if (page == (int)CreaturePage.The_Night) if ( Server.Items.BaseRace.IsGood( from ) ) { page--; }
+					if (page == (int)CreaturePage.The_Dark) if ( !canBeFugitive || !hasVisitedLodor ) { page--; }
+					if (page == (int)CreaturePage.The_Light) if ( !hasVisitedLodor ) { page--; }
+					if (page == (int)CreaturePage.The_Night) if ( !canBeFugitive ) { page--; }
 
 					if ( page < (int)CreaturePage.FIRST_OPTION ){ page = pageShow(from, (int)CreaturePage.LAST_OPTION + 1, forward); }
 				}
@@ -257,14 +265,16 @@ namespace Server.Gumps
 			else
 			{
 				var disallowAlien = !MySettings.S_AllowAlienChoice && from.RaceID == 0;
+				bool canBeSavage = ShowSavageOption( from );
 
 				if ( forward )
 				{
 					page++;
 
-					if (page == (int)HumanPage.The_Hierophant) if ( !visitLodor( from ) ) { page++; }
-					if (page == (int)HumanPage.The_High_Priestess) if ( !visitLodor( from ) ) { page++; }
-					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page++; }
+					if (page == (int)HumanPage.The_Hanged_Man) if ( !canBeFugitive ) { page++; }
+					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page++; }
+					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page++; }
+					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page++; }
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page++; }
 
 					if ( page > (int)HumanPage.LAST_OPTION ){ page = pageShow(from, (int)HumanPage.FIRST_OPTION - 1, forward); }
@@ -274,9 +284,10 @@ namespace Server.Gumps
 					page--;
 
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page--; }
-					if (page == (int)HumanPage.Strength) if ( !visitSavage( from ) ) { page--; }
-					if (page == (int)HumanPage.The_High_Priestess) if ( !visitLodor( from ) ) { page--; }
-					if (page == (int)HumanPage.The_Hierophant) if ( !visitLodor( from ) ) { page--; }
+					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page--; }
+					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page--; }
+					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page--; }
+					if (page == (int)HumanPage.The_Hanged_Man) if ( !canBeFugitive ) { page--; }
 
 					if ( page < (int)HumanPage.FIRST_OPTION ){ page = pageShow(from, (int)HumanPage.LAST_OPTION + 1, forward); }
 				}
@@ -298,7 +309,7 @@ namespace Server.Gumps
 			return "Greetings, " + from.Name + "...you are about to enter one of the lands in the " + MySettings.S_ServerName + ". Not too long ago the Stranger arrived in Sosaria and foiled the evil plans of Exodus. Castle Exodus lies in ruins and Sosaria is once again trying to rebuild in peace. Many vile monsters still roam the land, however, but hardy adventurers have bravely sought to rid us of these terrors. To begin your journey, simply choose your fate from my deck of tarot cards (begin by pressing the top-right button). Once you look through the deck (pressing the arrow buttons) you can draw a card of your choice (by pressing the OK button on the top-right)." + monst + "<br><br>Now let me tell you some things of the world that fate has brought you to. Traveling the lands can be dangerous as other adventurers may decide to kill you for your gold or property. The taverns, inns, and banks are safe from such threats, but there are also many guards in the settlements to keep the peace. They have been known to quickly dispatch with murderers and criminals. There are many merchants throughout the settlements. They are not able to sell or buy everything they normally deal in, as their choices of what they buy and sell change from day to day.<br><br>There are secrets to be learned and magic items to be found in the many dungeons. Each settlement in Sosaria is somewhat safe in the surrounding land so hunting for food or skins should be relatively safe. I cannot say such things of other lands. There is also a minor dungeon near each settlement of Sosaria, if you wish to begin traversing the dangers below before you are fully prepared. Be warned that the vile creatures are not all that you must face. There are many deadly traps in the rooms and halls of these places that could kill you quicker than the monster you may be fleeing from.<br><br>Prepare to go forth and make your life your own. Become the finest craftsman in the land, a wealthy owner of lands and castles, the mightiest warrior, or even the most powerful wizard. The choice is yours.<br><br>This world can be travelled alone or with friends, where one could have great adventures. Like I stated already, your chosen course in life is whatever you want to do. You may be a mighty warrior or powerful wizard. You may simply start a potion shop near a large city. You may be a master of beasts or a mystical bard. This is a world where great wealth and artefacts can be obtained from the many dungeons throughout the land. You may be slain by a creature, die from hunger, get lost in the dark, or stumble onto a deadly trap. You may find powerful relics and enough gold to build your own castle.<br><br>" + races + "is best served if you have a name that is commensurate with a this rich fantasy world. You have one final chance to change your name if you need to, by simply using my journal on the table behind me. You cannot have a name that someone else already has, so it must be unique. If you want to change your name, proceed to the table where I keep my journal. Once your name is changed, return here for your tarot card reading.";
 		}
 
-		public GypsyTarotGump( Mobile from, int page ): base( 50, 50 )
+		public GypsyTarotGump( PlayerMobile from, int page ): base( 50, 50 )
 		{
             this.Closable=true;
 			this.Disposable=true;
@@ -655,7 +666,25 @@ namespace Server.Gumps
 			}
 
 			var player = (PlayerMobile)m;
+
 			TemptationEngine.Instance.ApplyContext( player, player.Temptations );
+
+			if (player.Avatar.Active)
+			{
+				Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
+
+				var profession = player.Avatar.SelectedProfession;
+				if ( profession != StarterProfessions.Custom )
+				{
+					player.NetState.BlockAllPackets = true;
+					CharacterCreation.InitializeBackpack(player);
+					var skills = CharacterCreation.GetTemplateSkills( profession );
+					CharacterCreation.AddSkillBasedItems( player, skills );
+					player.Avatar.SelectedProfession = StarterProfessions.Custom;
+					player.NetState.BlockAllPackets = false;
+				}
+			}
+
 			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
 
 			m.MoveToWorld( loc, map );
@@ -690,7 +719,10 @@ namespace Server.Gumps
 					return;
 				}
 
-				from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
+				if ( !from.Avatar.Active || from.Avatar.UnlockTemptations )
+					from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
+				else
+					EnterLand( page, from );
 			}
 			else
 			{

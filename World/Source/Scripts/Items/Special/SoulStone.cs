@@ -212,6 +212,11 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1070735 ); // You may not use a Soulstone while your character is paralyzed.
 				return false;
 			}
+			else if ( pm.Avatar.Active )
+			{
+				from.SendMessage("Avatars may not use Soulstones");
+				return false;
+			}
 
 			#region Scroll of Alacrity
 			if ( pm.AcceleratedStart > DateTime.Now )

@@ -94,10 +94,10 @@ namespace Server.Items
 				}
 				else
 				{
-					int nFame = m_Mobile.Fame * 2;
-						nFame = Utility.RandomMinMax( 0, nFame )+2000;
+					var minFame = m_Mobile.Fame;
+					var maxFame = Utility.RandomMinMax( minFame, minFame * 2 ) + 2000;
 
-					StandardQuestFunctions.FindTarget( m_Mobile, nFame );
+					StandardQuestFunctions.FindTarget( m_Mobile, minFame, maxFame );
 
 					string TellQuest = StandardQuestFunctions.QuestStatus( m_Mobile ) + ".";
 					m_Mobile.PrivateOverheadMessage(MessageType.Regular, 1150, false, TellQuest, m_Mobile.NetState);

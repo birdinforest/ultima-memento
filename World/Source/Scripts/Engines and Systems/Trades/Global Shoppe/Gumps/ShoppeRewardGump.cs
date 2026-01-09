@@ -417,7 +417,7 @@ namespace Server.Engines.GlobalShoppe
 				return Create(itemSnapshot.ItemID, name, description, cost, onSelect);
 			}
 
-			public static _Reward Create(int graphic, string name, string description, int cost, Func<Item> onSelect)
+			private static _Reward Create(int graphic, string name, string description, int cost, Func<Item> onSelect)
 			{
 				return new _Reward
 				{
