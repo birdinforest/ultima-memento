@@ -250,6 +250,8 @@ namespace Server.Engines.Avatar
 			var context = GetContextOrDefault(player);
 			if (!context.Active) return;
 
+			DeathContext.TrySave(player, context);
+
 			context.LifetimeDeaths += 1;
 			context.LifetimePointsGained += context.PointsFarmed;
 			context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
