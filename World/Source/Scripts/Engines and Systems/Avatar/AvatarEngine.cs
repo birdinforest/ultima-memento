@@ -17,7 +17,7 @@ namespace Server.Engines.Avatar
 			get
 			{
 				if (m_Engine == null)
-					m_Engine = new AvatarEngine();
+					m_Engine = new AvatarEngine() { IsEnabled = true };
 
 				return m_Engine;
 			}
@@ -33,7 +33,7 @@ namespace Server.Engines.Avatar
 		{
 			LoadData();
 
-			if (Instance.IsEnabled || true)
+			if (Instance.IsEnabled)
 			{
 				EventSink.WorldSave += Instance.OnWorldSave;
 				EventSink.OnKilledBy += Instance.OnKilledBy;
@@ -101,8 +101,6 @@ namespace Server.Engines.Avatar
 
 		private static void LoadData()
 		{
-			Instance.IsEnabled = !File.Exists("Saves//Player//Avatar.bin");
-
 			Persistence.Deserialize(
 				"Saves//Player//Avatar.bin",
 				reader =>
@@ -118,7 +116,6 @@ namespace Server.Engines.Avatar
 					}
 
 					Console.WriteLine("Loaded Avatar data for '{0}' characters", Instance.m_Context.Count);
-					Instance.IsEnabled = true;
 				}
 			);
 
