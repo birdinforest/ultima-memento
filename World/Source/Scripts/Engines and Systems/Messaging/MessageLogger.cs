@@ -87,7 +87,8 @@ namespace Server.Engines.Messaging
 		private void OnBeginJourney(BeginJourneyArgs e)
 		{
 			var player = e.Mobile;
-			var message = string.Format("*{0}* has begun their journey", player.Name);
+			var name = player.Avatar.Active ? string.Format("{0} {1}", Icons.Dagger, player.Name) : player.Name;
+			var message = string.Format("*{0}* has begun their journey", name);
 
 			var temptationFlags = player.Temptations.Flags;
 			if (temptationFlags != TemptationFlags.None)
