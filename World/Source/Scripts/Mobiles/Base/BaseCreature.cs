@@ -10111,8 +10111,10 @@ namespace Server.Mobiles
         /// <returns>The amount of experience the mobile had before the change.</returns>
         public uint setLevel(uint newLevel, bool tellOwner)
         {
+			bool levelUp = m_level < newLevel;
+
             uint oldExp = Experience;
-            if (newLevel < m_level)
+            if (!levelUp)
             {
                 if (tellOwner && ControlMaster != null)
                     ControlMaster.SendMessage("Your pet has decreased in level!");
@@ -10135,16 +10137,7 @@ namespace Server.Mobiles
 					}
                 }
 
-				if ( newLevel == 3 ) // Auto-Bond
-				{
-					if (!IsBonded && ControlMaster != null)
-					{
-						IsBonded = true;
-						BondingBegin = DateTime.MinValue;
-						ControlMaster.SendLocalizedMessage( 1049666 ); // Your pet has bonded with you!
-					}
-				}
-				else if ( newLevel == AbsMaxLevel ) // Reduce control slots, down to 2
+				if ( newLevel == AbsMaxLevel ) // Reduce control slots, down to 2
 				{
 					const int MIN_CONTROL_SLOTS = 2;
 					if ( MIN_CONTROL_SLOTS <= ControlSlots - 1)
@@ -10162,6 +10155,16 @@ namespace Server.Mobiles
 				// Pet is re-leveling up
                 m_level = newLevel;
             }
+
+			if ( levelUp && 3 <= newLevel ) // Auto-Bond
+			{
+				if (!IsBonded && ControlMaster != null)
+				{
+					IsBonded = true;
+					BondingBegin = DateTime.MinValue;
+					ControlMaster.SendLocalizedMessage( 1049666 ); // Your pet has bonded with you!
+				}
+			}
 
             //Effects.SendLocationParticles(EffectItem.Create(Location, Map, EffectItem.DefaultDuration), 0x20F6, 10, 5, 5023);
             if (tellOwner && ControlMaster != null)
