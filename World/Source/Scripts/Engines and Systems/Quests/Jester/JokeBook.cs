@@ -49,12 +49,5 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 		}
-
-		public override void AppendChildProperties(ObjectPropertyList list)
-		{
-			base.AppendChildProperties(list);
-
-			list.Add("There's a name written on the front cover: ");
-		}
 	}
 }
