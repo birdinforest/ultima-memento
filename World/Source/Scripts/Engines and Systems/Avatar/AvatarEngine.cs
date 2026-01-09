@@ -205,6 +205,8 @@ namespace Server.Engines.Avatar
 			value += GetValue<DDGoldNuggets>(10, corpse);
 			if (value < 1) return;
 
+			if (1 < e.DamagerCount) value /= 2;
+
 			// Apply bonus coin multiplier
 			value += GetBonusCoinsAmount(value, context);
 
