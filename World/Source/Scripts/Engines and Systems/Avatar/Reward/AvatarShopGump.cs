@@ -73,25 +73,22 @@ namespace Server.Engines.Avatar
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Everything is Temporary", "Upon death, your character will be reborn and all evidence of your former life will be destroyed.", y);
+				AddInformationCard(NO_ITEM_ID, "Everything is Temporary", "Unless explicitly stated, everything your character owns will be deleted when your character dies. The only exception to this is your house, which will be inherited by your new character.", y);
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Your Treasury", "Coins are earned by killing monsters and completing quests.", y);
-				y += CARD_HEIGHT;
-				y += 10;
-
-				AddInformationCard(NO_ITEM_ID, "Permanent Enhancements", string.Format(
-					"{0} and {1} will apply to each rebirth.",
-					TextDefinition.GetColorizedText("Limits", HtmlColors.ORANGE),
-					TextDefinition.GetColorizedText("Rates", HtmlColors.ORANGE)
+				AddInformationCard(NO_ITEM_ID, "Meta Progression", string.Format(
+					"{0} are permanent and may be purchased for a fee. {0} can enable permanence between runs, unlock new features, accelerate progression, or even raise the ceiling of your character.",
+					TextDefinition.GetColorizedText("Ascensions", HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Temporary Enhancements", string.Format(
-					"{0} are temporary and will be lost upon death.",
-					TextDefinition.GetColorizedText("Items", HtmlColors.ORANGE)
+				AddInformationCard(NO_ITEM_ID, "Your Template", string.Format(
+					"Your Avatar is weak when they are reborn. It is recommended that you select a {0} each run. The Erudian Ascensions will allw you to recover skills using the {1} and {2} skill pages.",
+					TextDefinition.GetColorizedText("Template", HtmlColors.ORANGE),
+					TextDefinition.GetColorizedText("Primary", HtmlColors.ORANGE),
+					TextDefinition.GetColorizedText("Secondary", HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
@@ -103,7 +100,10 @@ namespace Server.Engines.Avatar
 					y += 10;
 				}
 
-				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", "Your vessel is frail; once you leave the Gypsy encampment you may not purchase anything from this gump.", y);
+				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", string.Format(
+					"Your vessel is frail; once you leave the {0} you may not purchase anything from this gump.",
+					TextDefinition.GetColorizedText("Gypsy Encampment", HtmlColors.ORANGE)
+				), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
@@ -468,6 +468,7 @@ namespace Server.Engines.Avatar
 
 				AddBackground(x, y, CATEGORY_WIDTH, CARD_HEIGHT + 5, 2620);
 				GumpUtilities.AddCenteredItemToGump(this, GIANT_COIN_ITEM_ID, x + 10, y, 40, CARD_HEIGHT + 5);
+				AddTooltip("Coins are earned by killing monsters and completing combat-based quests.");
 				TextDefinition.AddHtmlText(this, x + 60, firstRowY, CATEGORY_WIDTH - 20, 40, string.Format("{0}", (m_From.Avatar.PointsSaved + m_From.Avatar.PointsFarmed).ToString("n0")), HtmlColors.ORANGE);
 				TextDefinition.AddHtmlText(this, x + 60, secondRowY, CATEGORY_WIDTH - 20, 40, "Coins", HtmlColors.COOL_BLUE);
 				y += CARD_HEIGHT + 10;
