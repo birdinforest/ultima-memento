@@ -252,8 +252,9 @@ namespace Server.Engines.Avatar
 
 			context.LifetimeDeaths += 1;
 			context.LifetimePointsGained += context.PointsFarmed;
-			context.PointsSaved += context.PointsFarmed;
+			context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
 			context.PointsFarmed = 0;
+			context.RivalBonusPoints = 0;
 		}
 
 		private void OnSkillGain(SkillGainArgs e)
