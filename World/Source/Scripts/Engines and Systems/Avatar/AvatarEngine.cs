@@ -63,9 +63,7 @@ namespace Server.Engines.Avatar
 			// Skill cap could have changed
 			player.RefreshSkillCap();
 
-			var orb = SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
-			if (orb != null)
-				orb.Visible = false;
+			SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)

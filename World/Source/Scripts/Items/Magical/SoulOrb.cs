@@ -127,6 +127,10 @@ namespace Server.Items
 					break;
 
 				case SoulOrbType.PermadeathPlaceholder:
+					orb.Visible = false;
+					orb.Movable = false;
+					break;
+				
 				case SoulOrbType.Default:
 				default:
 					break;
