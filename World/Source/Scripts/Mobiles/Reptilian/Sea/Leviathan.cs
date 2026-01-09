@@ -134,9 +134,9 @@ namespace Server.Mobiles
 			m.SendMessage( "As a reward for slaying the mighty leviathan, an artifact has been placed in your backpack." );
 		}
 
-		public override void OnKilledBy( Mobile mob, Container corpse )
+		public override void OnKilledBy( Mobile mob, Container corpse, int damagerCount )
 		{
-			base.OnKilledBy( mob, corpse );
+			base.OnKilledBy( mob, corpse, damagerCount );
 
 			if ( Paragon.CheckArtifactChance( mob, this ) )
 			{
