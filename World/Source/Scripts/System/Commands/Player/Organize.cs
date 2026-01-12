@@ -316,7 +316,7 @@ namespace Server.Commands
 
 			public override bool CheckHold(Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight)
 			{
-				return AcceptItems || item.Parent == this || AccessLevel.Player < m.AccessLevel;
+				return item.Parent == this || AccessLevel.Player < m.AccessLevel;
 			}
 
 			public override bool CheckLift(Mobile from, Item item, ref LRReason reject)
