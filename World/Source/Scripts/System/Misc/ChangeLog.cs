@@ -56,6 +56,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
 			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
+			builder.Append("- Item - Knightship and Death Knight books now properly require appropriate skills/karma to equip<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");

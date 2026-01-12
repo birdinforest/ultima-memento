@@ -765,12 +765,12 @@ namespace Server.Items
 				from.SendMessage("Your need at least a natural neophyte skill in bushido to equip that!");
 				return false;
 			}}
-			else if ( this is BookOfChivalry ){ if ( from.Skills[SkillName.Knightship].Base < 30 && from.Karma < 0 )
+			else if ( this is BookOfChivalry ){ if ( from.Skills[SkillName.Knightship].Base < 30 || from.Karma < 0 )
 			{
 				from.SendMessage("Your need at least a natural neophyte skill in knightship to equip that!");
 				return false;
 			}}
-			else if ( this is DeathKnightSpellbook ){ if ( from.Skills[SkillName.Knightship].Base < 30 && from.Karma > 0 )
+			else if ( this is DeathKnightSpellbook ){ if ( from.Skills[SkillName.Knightship].Base < 30 || from.Karma > 0 )
 			{
 				from.SendMessage("Your need at least a natural neophyte skill in knightship to equip that!");
 				return false;
