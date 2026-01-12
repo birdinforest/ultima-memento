@@ -101,7 +101,10 @@ namespace Server.Misc
 			if ( prependNameAndTitle )
 			{
 				string sTitle = mobile.Title != null ? mobile.Title : "the " + GetPlayerInfo.GetSkillTitle( mobile );
-				sEvent = mobile.Name + sTitle + sEvent;
+				if (0 < sEvent.Length && sEvent.StartsWith(" "))
+					sEvent = sEvent.Substring(1);
+
+				sEvent = mobile.Name + sTitle + " " + sEvent;
 			}
 
 			LogEvent( sEvent, sLog, includeDate );

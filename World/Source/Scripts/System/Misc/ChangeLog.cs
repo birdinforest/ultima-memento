@@ -60,6 +60,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");
 			builder.Append("- Misc - Titan Relic reward is now guaranteed once per character<br>");
+			builder.Append("- Misc - Town Crier should now appropriately put a space after player title and events<br>");
 			builder.Append("- Pets - Hitting level 10 on pets now provides 5 traits instead of 2<br>");
 			builder.Append("- Pets - Taming attempts are now less likely to fail<br>");
 			builder.Append("- Pets - Really remove subdue mechanic once taming has started<br>");
