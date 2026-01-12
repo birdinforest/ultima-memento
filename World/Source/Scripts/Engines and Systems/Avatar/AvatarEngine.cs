@@ -160,7 +160,7 @@ namespace Server.Engines.Avatar
 			var player = (PlayerMobile)e.Mobile;
 			if (!player.Avatar.Active) return;
 
-			var value = e.Award * 5; // Gold multiplier
+			var value = Math.Min(e.Award * 5, 50000); // Cap at 50k
 			value += GetBonusCoinsAmount(value, player.Avatar);
 
 			player.Avatar.LifetimeCombatQuestCompletions += 1;
