@@ -11,9 +11,9 @@ namespace Server.Engines.Avatar
 {
 	public class RewardFactory
 	{
-		private const int ONE_HUNDRED_GOLD = 1000;
-		private const int ONE_THOUSAND_GOLD = 10000;
-		private const int TEN_GOLD = 100;
+		public const int ONE_HUNDRED_GOLD = 1000;
+		public const int ONE_THOUSAND_GOLD = 10000;
+		public const int TEN_GOLD = 100;
 
 		public static List<IReward> CreateRewards(PlayerMobile m_From, Categories selectedCategory, PlayerContext context)
 		{
@@ -186,7 +186,7 @@ namespace Server.Engines.Avatar
 
 							ActionReward.Create(
 								Constants.IMPROVED_TEMPLATE_MAX_COUNT <= context.ImprovedTemplateCount,
-								ONE_THOUSAND_GOLD * (context.ImprovedTemplateCount + 1),
+								ONE_HUNDRED_GOLD * (context.ImprovedTemplateCount + 1),
 								AvatarShopGump.NO_ITEM_ID,
 								string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
 								string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),

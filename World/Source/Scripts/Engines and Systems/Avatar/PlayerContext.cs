@@ -63,6 +63,24 @@ namespace Server.Engines.Avatar
 				LifetimeCombatQuestCompletions = reader.ReadInt();
 				LifetimeCreatureKills = reader.ReadInt();
 			}
+
+			if (version == 7)
+			{
+				if (0 < ImprovedTemplateCount)
+				{
+					// Refund old cost
+					for (int i = 1; i <= ImprovedTemplateCount; i++)
+					{
+						PointsSaved += i * RewardFactory.ONE_THOUSAND_GOLD;
+					}
+
+					// Deduct new cost
+					for (int i = 1; i <= ImprovedTemplateCount; i++)
+					{
+						PointsSaved -= i * RewardFactory.ONE_HUNDRED_GOLD;
+					}
+				}
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -152,7 +170,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(7); // version
+			writer.Write(8); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
