@@ -218,7 +218,6 @@ namespace Server.Engines.Avatar
 						var bonus = (int)(value * Constants.RIVAL_BONUS_PERCENT * 0.01);
 						if (0 < bonus)
 						{
-							bonus = GetBonusCoinsAmount(bonus, context);
 							context.RivalBonusPoints += bonus;
 							value += bonus;
 
