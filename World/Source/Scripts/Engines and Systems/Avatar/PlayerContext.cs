@@ -25,16 +25,19 @@ namespace Server.Engines.Avatar
 			StatCapLevel = reader.ReadInt();
 			SkillGainRateLevel = reader.ReadInt();
 			PointGainRateLevel = reader.ReadInt();
-			if (0 < version) ImprovedTemplateCount = reader.ReadInt();
-			if (0 < version) UnlockPrimarySkillBoost = reader.ReadBool();
-			if (0 < version) UnlockSecondarySkillBoost = reader.ReadBool();
-			if (0 < version) UnlockFugitiveMode = reader.ReadBool();
-			if (0 < version) UnlockMonsterRaces = reader.ReadBool();
-			if (0 < version) UnlockSavageRace = reader.ReadBool();
-			if (0 < version) UnlockTemptations = reader.ReadBool();
+			if (0 < version)
+			{
+				ImprovedTemplateCount = reader.ReadInt();
+				UnlockPrimarySkillBoost = reader.ReadBool();
+				UnlockSecondarySkillBoost = reader.ReadBool();
+				UnlockFugitiveMode = reader.ReadBool();
+				UnlockMonsterRaces = reader.ReadBool();
+				UnlockSavageRace = reader.ReadBool();
+				UnlockTemptations = reader.ReadBool();
+			}
 			if (1 < version) UnlockRecordSkillCaps = reader.ReadBool();
 			Skills = 1 < version ? new SkillArchive(reader) : new SkillArchive();
-			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : UnlockRecordSkillCaps ? 1 : 0;
+			RecordedSkillCapLevel = 2 < version ? reader.ReadInt() : 0;
 			if (3 < version) UnlockRecordRecipes = reader.ReadBool();
 			if (4 < version)
 			{
