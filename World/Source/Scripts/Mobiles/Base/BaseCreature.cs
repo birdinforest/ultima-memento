@@ -8665,12 +8665,12 @@ namespace Server.Mobiles
 			return rights;
 		}
 
-		public virtual void OnKilledBy( Mobile mob, Container corpse, int damagerCount )
+		public virtual void OnKilledBy( Mobile mob, Container corpse, int damagerCount, int totalDamage )
 		{
 			if ( m_Paragon && Paragon.CheckArtifactChance( mob, this ) )
 				Paragon.GiveArtifactTo( mob );
 
-            EventSink.InvokeOnKilledBy( this, mob, corpse, damagerCount );
+            EventSink.InvokeOnKilledBy( this, mob, corpse, damagerCount, totalDamage );
 		}
 
 		public override void OnDeath( Container c )
@@ -8790,7 +8790,6 @@ namespace Server.Mobiles
 					int totalKarma = -Karma / 100;
 
 					List<DamageStore> list = GetLootingRights( this.DamageEntries, this.HitsMax );
-					list = list.Where(ds => ds.m_HasRight).ToList();
 
 					List<Mobile> titles = new List<Mobile>();
 					List<int> fame = new List<int>();
@@ -8834,7 +8833,7 @@ namespace Server.Mobiles
 							karma.Add( totalKarma );
 						}
 
-						OnKilledBy( ds.m_Mobile, c, list.Count );
+						OnKilledBy( ds.m_Mobile, c, list.Count, ds.m_Damage );
 					}
 					for ( int i = 0; i < titles.Count; ++i )
 					{

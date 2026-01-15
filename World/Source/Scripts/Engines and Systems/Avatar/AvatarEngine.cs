@@ -179,8 +179,6 @@ namespace Server.Engines.Avatar
 			var context = GetContextOrDefault(player);
 			if (!context.Active) return;
 
-			context.LifetimeCreatureKills += 1;
-
 			var creature = (BaseCreature)e.Killed;
 			if (creature.AI == AIType.AI_Vendor) return;
 			if (
@@ -188,6 +186,9 @@ namespace Server.Engines.Avatar
 				|| (creature.IsEphemeral && false == creature is BaseChampion) // No temporary mobs
 				|| MobileUtilities.TryGetMasterPlayer(creature) != null // No pets
 			 ) return;
+
+			// If the total damage is less than 10% of the creature's max hits, no coins!
+			if (e.TotalDamage < (e.Killed.HitsMax / 10)) return;
 
 			var corpse = e.Corpse;
 			int value = GetValue<DDCopper>(1, corpse);
@@ -201,6 +202,8 @@ namespace Server.Engines.Avatar
 			if (value < 1) return;
 
 			if (1 < e.DamagerCount) value /= 2;
+
+			context.LifetimeCreatureKills += 1;
 
 			// Apply bonus coin multiplier
 			value += GetBonusCoinsAmount(value, context);
