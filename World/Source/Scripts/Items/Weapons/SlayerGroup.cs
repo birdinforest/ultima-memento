@@ -488,6 +488,7 @@ namespace Server.Items
 				typeof( Phoenix ), 
 				typeof( SnowHarpy ), 
 				typeof( StoneHarpy ), 
+				typeof( YoungRoc ), 
 				typeof( SwampBird ), 
 				typeof( DesertBird ),
 				typeof( TropicalBird ) );
@@ -651,6 +652,7 @@ namespace Server.Items
 				typeof( DarkHound ), 
 				typeof( DiseasedRat ), 
 				typeof( WhiteRabbit ), 
+				typeof( YoungRoc ), 
 				typeof( DeathBear ), 
 				typeof( DeathWolf ) );
 			animal.Entries = new SlayerEntry[0];
@@ -1440,7 +1442,6 @@ namespace Server.Items
 				typeof( WaterNaga ), 
 				typeof( Raptus ), 
 				typeof( LavaSnake ), 
-				typeof( YoungRoc ), 
 				typeof( Lizardman ), 
 				typeof( Reptaur ), 
 				typeof( OphidianArchmage ), 
@@ -1532,7 +1533,6 @@ namespace Server.Items
 						typeof( AncientDrake ), 
 						typeof( SwampDrakeRiding ),  
 						typeof( Roc ), 
-						typeof( YoungRoc ), 
 						typeof( ShadowWyrm ), 
 						typeof( SkeletalDragon ), 
 						typeof( SkeletonDragon ), 
