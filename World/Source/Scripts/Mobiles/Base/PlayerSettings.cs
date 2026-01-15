@@ -103,8 +103,9 @@ namespace Server.Misc
 			bracers.ItemID = 0x564D;
 			m.AddItem( bracers );
 
-			SavageTalisman talisman = new SavageTalisman();
+			SavageTalisman talisman = player.Avatar.Active ? new SavageTalisman(50, 50) : new SavageTalisman();
 			talisman.ItemOwner = m;
+
 			m.AddItem( talisman );
 
 			BaseWeapon dagger = new Dagger();
