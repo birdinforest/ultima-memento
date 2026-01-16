@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
 			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
+			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Temptation - Permadeath characters now automatically receive a soul orb<br>");
 
 			builder.Append("<br>");
