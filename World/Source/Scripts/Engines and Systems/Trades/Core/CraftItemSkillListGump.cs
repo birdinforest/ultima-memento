@@ -4,6 +4,7 @@ using Server.Gumps;
 using Server.Network;
 using Server.Items;
 using System.Linq;
+using Server.Mobiles;
 
 namespace Server.Engines.Craft
 {
@@ -26,11 +27,12 @@ namespace Server.Engines.Craft
 			const int HORIZONTAL_LINE = 2700;
 			const int BORDER_WIDTH = 2;
 			const int ITEM_HEIGHT = 30;
-			const int INFO_WINDOW_WIDTH = 270;
+			const int INFO_WINDOW_WIDTH = 300;
 			AddImageTiled(0, 0, INFO_WINDOW_WIDTH, 400, 2702);
 
-			const int NAME_COLUMN_X = 10;
-			const int SKILL_COLUMN_WIDTH = 40;
+			const int LOCK_COLUMN_X = 5;
+			const int NAME_COLUMN_X = LOCK_COLUMN_X + 15;
+			const int SKILL_COLUMN_WIDTH = NAME_COLUMN_X + 30;
 			const int SKILL_COLUMN_X = INFO_WINDOW_WIDTH - SKILL_COLUMN_WIDTH;
 			const int ITEM_START_Y = 2 * ITEM_HEIGHT;
 
@@ -47,13 +49,22 @@ namespace Server.Engines.Craft
 					CraftSkill skill = craftItem.Skills.GetAt(k);
 					if (skill.SkillToMake == craftSystem.MainSkill)
 					{
+						var y = ITEM_START_Y + (lineIndex * ITEM_HEIGHT);
 						// Add border above item
 						if (0 < lineIndex)  // Skip the first
-							AddImageTiled(10, ITEM_START_Y + (lineIndex * ITEM_HEIGHT) - 7, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE);
+							AddImageTiled(10, y - 7, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE);
 
 						var name = craftItem.NameString == null ? CliLocTable.Lookup(craftItem.NameNumber) : craftItem.NameString;
-						TextDefinition.AddHtmlText(this, NAME_COLUMN_X, ITEM_START_Y + (lineIndex * ITEM_HEIGHT), SKILL_COLUMN_X - 20, 20, name, false, false, HtmlColors.OFFWHITE, HtmlColors.OFFWHITE);
-						TextDefinition.AddHtmlText(this, SKILL_COLUMN_X, ITEM_START_Y + (lineIndex * ITEM_HEIGHT), SKILL_COLUMN_WIDTH, 20, String.Format("{0:F1}", skill.MaxSkill), false, false, HtmlColors.OFFWHITE, HtmlColors.OFFWHITE);
+						var hasRecipe = craftItem.Recipe == null || (from is PlayerMobile && ((PlayerMobile)from).HasRecipe( craftItem.Recipe ));
+
+						if (!hasRecipe)
+						{
+							AddImage(LOCK_COLUMN_X, y + 3, 2092); // Lock icon
+							AddTooltip("You don't know this recipe");
+						}
+
+						TextDefinition.AddHtmlText(this, NAME_COLUMN_X, y, SKILL_COLUMN_X - 20, 20, name, false, false, HtmlColors.OFFWHITE, HtmlColors.OFFWHITE);
+						TextDefinition.AddHtmlText(this, SKILL_COLUMN_X, y, SKILL_COLUMN_WIDTH, 20, String.Format("{0:F1}", skill.MaxSkill), false, false, HtmlColors.OFFWHITE, HtmlColors.OFFWHITE);
 
 						lineIndex++;
 						break;
