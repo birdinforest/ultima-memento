@@ -134,6 +134,11 @@ namespace Server.Misc
 				}
 			}
 
+			foreach (var vendor in WorldUtilities.ForEachMobile<PlayerVendor>(mobile => mobile.Owner == existingCharacter))
+			{
+				vendor.Owner = newChar;
+			}
+
 			if (newChar.Avatar.Active)
 			{
 				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
