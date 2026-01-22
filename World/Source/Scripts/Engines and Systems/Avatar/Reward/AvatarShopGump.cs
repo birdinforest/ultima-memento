@@ -29,7 +29,7 @@ namespace Server.Engines.Avatar
 			Categories.Templates,
 			Categories.PrimaryBoosts,
 			Categories.SecondaryBoosts,
-			Categories.Items,
+			// Categories.Items,
 		};
 
 		private readonly PlayerContext m_Context;
