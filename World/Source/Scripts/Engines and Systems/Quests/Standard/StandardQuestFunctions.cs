@@ -168,6 +168,8 @@ namespace Server.Misc
 				return;
 			}
 
+			int maxFee = searchLocation == Land.Sosaria ? 5000 : 0;
+
 			var theone = Utility.Random(targets);
 
 			if ( Utility.RandomMinMax( 1, 2 ) == 1 ) // KILL SOMETHING
@@ -177,6 +179,7 @@ namespace Server.Misc
 				string kexplorer = theone.GetType().ToString();
 				int nFee = theone.Fame / 5;
 				nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
+				if (0 < maxFee) nFee = Math.Min(nFee, maxFee);
 				string kDollar = nFee.ToString();
 
 				string killName = theone.Name;
@@ -202,6 +205,7 @@ namespace Server.Misc
 				string kexplorer = theone.GetType().ToString();
 				int nFee = theone.Fame / 3;
 				nFee = (int)( (MyServerSettings.QuestRewardModifier() * 0.01) * nFee ) + 20 + nFee;
+				if (0 < maxFee) nFee = Math.Min(nFee, maxFee);
 				string kDollar = nFee.ToString();
 
 				string ItemToFind = QuestCharacters.QuestItems( true );
