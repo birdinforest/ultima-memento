@@ -2174,6 +2174,7 @@ namespace Server.Mobiles
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
+				PublicInfo = PublicInfo,
 			};
 
 			if (includeRecipes) newPlayer.m_AcquiredRecipes = m_AcquiredRecipes;
@@ -3060,8 +3061,10 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 51:
 				case 50:
 					_quests = new PlayerQuestContext( reader );	
+					if (version < 51) PublicInfo = true;
 					goto case 49;
 				case 49:
 					_spellBars = new SpellBarsContext( reader );
@@ -3482,7 +3485,7 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 50 ); // version
+			writer.Write( (int) 51 ); // version
 
 			Quests.Serialize( writer );
 			SpellBars.Serialize( writer );
