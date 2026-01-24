@@ -36,6 +36,7 @@ namespace Server.Misc
 			builder.Append("- Item - Reduced weight of bottles and jars to 0.5 stones each, down from 1<br>");
 			builder.Append("- Item - Arcane artifact set has been retroactively buffed<br>");
 			builder.Append("- Item - Aegis artifact set has been retroactively buffed<br>");
+			builder.Append("- Item - Holy Knight artifact set has been retroactively buffed<br>");
 			builder.Append("- Item - Shroud robes will no longer have Lower Mana Cost (not retroactive)<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
