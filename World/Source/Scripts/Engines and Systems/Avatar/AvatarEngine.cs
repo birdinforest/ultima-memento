@@ -93,6 +93,7 @@ namespace Server.Engines.Avatar
 			// Clear any cache
 			context.RewardCache = null;
 			context.BoostedTemplateCache = null;
+			context.SelectedTemplate = AvatarStarterTemplates.None;
 
 			context.GenerateRivalry();
 		}

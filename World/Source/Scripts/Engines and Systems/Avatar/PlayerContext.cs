@@ -1,5 +1,4 @@
 using Server.Items;
-using Server.Misc;
 using System;
 using System.Collections.Generic;
 
@@ -50,7 +49,7 @@ namespace Server.Engines.Avatar
 
 			if (5 < version)
 			{
-				SelectedProfession = (StarterProfessions)reader.ReadInt();
+				SelectedTemplate = (AvatarStarterTemplates)reader.ReadInt();
 				LifetimePointsGained = reader.ReadInt();
 				LifetimeDeaths = reader.ReadInt();
 			}
@@ -192,7 +191,7 @@ namespace Server.Engines.Avatar
 			writer.Write((int)RivalSlayerName);
 			writer.Write(RivalBonusEnabled);
 			writer.Write(RivalBonusPoints);
-			writer.Write((int)SelectedProfession);
+			writer.Write((int)SelectedTemplate);
 			writer.Write(LifetimePointsGained);
 			writer.Write(LifetimeDeaths);
 			writer.Write(UnlockRecordDiscovered);
@@ -210,11 +209,11 @@ namespace Server.Engines.Avatar
 
 	public partial class PlayerContext
 	{
-		public HashSet<StarterProfessions> BoostedTemplateCache { get; set; }
+		public HashSet<AvatarStarterTemplates> BoostedTemplateCache { get; set; }
 
 		public Dictionary<Categories, List<int>> RewardCache { get; set; }
 
-		public StarterProfessions SelectedProfession { get; set; }
+		public AvatarStarterTemplates SelectedTemplate { get; set; }
 
 		public void ClearRewardCache(Categories category)
 		{

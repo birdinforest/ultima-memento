@@ -258,7 +258,6 @@ namespace Server.Engines.Avatar
 								string.Format("Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills.", TextDefinition.GetColorizedText("destructive action", HtmlColors.RED)),
 								() =>
 								{
-									context.SelectedProfession = StarterProfessions.Custom;
 									SkillCheck.DisableSkillGains = true;
 
 									// Auto-Lock Focus and Meditation to prevent them from naturally raising
@@ -310,6 +309,7 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(60, 10, 10);
+											context.SelectedTemplate = AvatarStarterTemplates.Brute;
 											return false;
 										}
 									);
@@ -326,6 +326,7 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(10, 60, 10);
+											context.SelectedTemplate = AvatarStarterTemplates.Acrobat;
 											return false;
 										}
 									);
@@ -342,6 +343,8 @@ namespace Server.Engines.Avatar
 										player =>
 										{
 											m_From.InitStats(10, 10, 60);
+											context.SelectedTemplate = AvatarStarterTemplates.Scholar;
+											
 											return false;
 										}
 									);
@@ -349,48 +352,48 @@ namespace Server.Engines.Avatar
 							),
 						};
 
-						var professions = new List<StarterProfessions>
+						var templates = new List<AvatarStarterTemplates>
 						{
 							// StarterProfessions.Custom,
-							StarterProfessions.Ninja,
-							StarterProfessions.Bard,
-							StarterProfessions.Druid,
-							StarterProfessions.Knight,
-							StarterProfessions.Warrior,
-							StarterProfessions.Mage,
-							StarterProfessions.Archer,
+							AvatarStarterTemplates.Ninja,
+							AvatarStarterTemplates.Bard,
+							AvatarStarterTemplates.Druid,
+							AvatarStarterTemplates.Knight,
+							AvatarStarterTemplates.Warrior,
+							AvatarStarterTemplates.Mage,
+							AvatarStarterTemplates.Archer,
 						};
 
-						HashSet<StarterProfessions> boostedProfessions = context.BoostedTemplateCache;
-						if (boostedProfessions == null)
+						HashSet<AvatarStarterTemplates> boostedTemplates = context.BoostedTemplateCache;
+						if (boostedTemplates == null)
 						{
-							context.BoostedTemplateCache = boostedProfessions = new HashSet<StarterProfessions>();
+							context.BoostedTemplateCache = boostedTemplates = new HashSet<AvatarStarterTemplates>();
 						}
 
-						if (0 < context.ImprovedTemplateCount && context.ImprovedTemplateCount <= professions.Count)
+						if (0 < context.ImprovedTemplateCount && context.ImprovedTemplateCount <= templates.Count)
 						{
 							// Keep boosting a random profession until we reach our max
-							while (boostedProfessions.Count != context.ImprovedTemplateCount)
+							while (boostedTemplates.Count != context.ImprovedTemplateCount)
 							{
-								boostedProfessions.Add(Utility.Random(professions));
+								boostedTemplates.Add(Utility.Random(templates));
 							}
 						}
 
-						foreach (var profession in professions.OrderBy(p => p.ToString()))
+						foreach (var template in templates.OrderBy(p => p.ToString()))
 						{
-							var boosted = 0 < boostedProfessions.Count && boostedProfessions.Contains(profession);
+							var boosted = 0 < boostedTemplates.Count && boostedTemplates.Contains(template);
 							rewards.Add(ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("The {0}{1}", profession.ToString(), boosted ? " (Improved)" : ""),
-								string.Format("Start with the stats, skills, and items of a {0}.", profession.ToString()),
+								string.Format("The {0}{1}", template.ToString(), boosted ? " (Improved)" : ""),
+								string.Format("Start with the stats, skills, and items of a {0}.", template.ToString()),
 								() =>
 								{
 									applyTemplate(
 										player =>
 										{
-											CharacterCreation.SetTemplateSkills(player, profession);
-											context.SelectedProfession = profession;
+											CharacterCreation.SetTemplateSkills(player, (StarterProfessions)template);
+											context.SelectedTemplate = template;
 											return boosted;
 										}
 									);

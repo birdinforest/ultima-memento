@@ -8,6 +8,7 @@ using Server.Mobiles;
 using Server.Accounting;
 using System;
 using Server.Temptation;
+using Server.Engines.Avatar;
 
 namespace Server.Mobiles
 {
@@ -522,13 +523,23 @@ namespace Server.Gumps
 			return text;
 		}
 
-		public void EnterLand( int page, Mobile m )
+		private void TryEnterLand(int page, PlayerMobile m)
 		{
 			m.CloseGump( typeof( GypsyTarotGump ) );
 			m.CloseGump( typeof( WelcomeGump ) );
 			m.CloseGump( typeof( RacePotions.RacePotionsGump ) );
 			m.CloseGump( typeof( TemptationGump ) );
+			
+			ConfirmationGump.PromptIfFalse(
+				m,
+				m.Avatar.Active && m.Avatar.SelectedTemplate == AvatarStarterTemplates.None,
+				() => EnterLand( page, m ),
+				onConfirmed => new ConfirmationGump(m, "No template selected", "You have not selected a template yet. Are you sure you want to enter the land?", onConfirmed)
+			);
+		}
 
+		public void EnterLand( int page, Mobile m )
+		{
 			Point3D loc = new Point3D(2999, 1030, 0);
 			Map map = Map.Sosaria;
 
@@ -673,16 +684,18 @@ namespace Server.Gumps
 			{
 				Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
 
-				var profession = player.Avatar.SelectedProfession;
-				if ( profession != StarterProfessions.Custom )
+				player.NetState.BlockAllPackets = true;
+				CharacterCreation.InitializeBackpack(player);
+
+				var template = player.Avatar.SelectedTemplate;
+				if ( template >= AvatarStarterTemplates.DEFAULT_START && template <= AvatarStarterTemplates.DEFAULT_END )
 				{
-					player.NetState.BlockAllPackets = true;
-					CharacterCreation.InitializeBackpack(player);
+					var profession = (StarterProfessions)template;
 					var skills = CharacterCreation.GetTemplateSkills( profession );
 					CharacterCreation.AddSkillBasedItems( player, skills );
-					player.Avatar.SelectedProfession = StarterProfessions.Custom;
-					player.NetState.BlockAllPackets = false;
 				}
+
+				player.NetState.BlockAllPackets = false;
 			}
 
 			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
@@ -720,9 +733,13 @@ namespace Server.Gumps
 				}
 
 				if ( !from.Avatar.Active || from.Avatar.UnlockTemptations )
-					from.SendGump( new TemptationGump(from, new PlayerContext(from.Temptations), from, () => EnterLand( page, from ), () => EnterLand( page, from )) );
+				{
+					from.SendGump( new TemptationGump(from, new Temptation.PlayerContext(from.Temptations), from, () => TryEnterLand( page, from ), () => TryEnterLand( page, from )) );
+				}
 				else
-					EnterLand( page, from );
+				{
+					TryEnterLand( page, from );
+				}
 			}
 			else
 			{
