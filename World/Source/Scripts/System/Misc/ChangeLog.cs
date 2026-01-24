@@ -34,6 +34,7 @@ namespace Server.Misc
 			builder.Append("- Item - [Organize containers now allow you to place items in them<br>");
 			builder.Append("- Item - Ghost Ship Anchor now weighs 80, down from 200<br>");
 			builder.Append("- Item - Reduced weight of bottles and jars to 0.5 stones each, down from 1<br>");
+			builder.Append("- Item - Arcane artifact set has been retroactively buffed<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
