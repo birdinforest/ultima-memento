@@ -162,20 +162,10 @@ namespace Server.Misc
 				}
 			}
 
-			// Fallback: Shouldn't be necessary, but just in case... consider anywhere in Sosaria, including the Overworld
 			if (targets.Count < 1)
 			{
-				var candidates = WorldUtilities.ForEachMobile<BaseCreature>(target => {
-					if (target.EmoteHue != 123 && target.Karma < 0)
-					{
-						var tWorld = Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y );
-
-						return tWorld == Land.Sosaria;
-					}
-
-					return false;
-				});
-				targets.AddRange(candidates);
+				PlayerSettings.SetQuestInfo( m, "StandardQuest", "" );
+				return;
 			}
 
 			var theone = Utility.Random(targets);
