@@ -688,7 +688,7 @@ namespace Server.Gumps
 				CharacterCreation.InitializeBackpack(player);
 
 				var template = player.Avatar.SelectedTemplate;
-				if ( template >= AvatarStarterTemplates.DEFAULT_START && template <= AvatarStarterTemplates.DEFAULT_END )
+				if ( template > AvatarStarterTemplates.DEFAULT_START && template < AvatarStarterTemplates.DEFAULT_END )
 				{
 					var profession = (StarterProfessions)template;
 					var skills = CharacterCreation.GetTemplateSkills( profession );

@@ -2,7 +2,7 @@ namespace Server.Engines.Avatar
 {
 	public enum AvatarStarterTemplates
 	{
-		DEFAULT_START = Ninja,
+		DEFAULT_START = -1,
 
 		None = 0,
 		Ninja = 1,
@@ -13,7 +13,7 @@ namespace Server.Engines.Avatar
 		Mage = 6,
 		Archer = 7,
 
-		DEFAULT_END = Archer,
+		DEFAULT_END,
 
 		Brute,
 		Acrobat,
