@@ -160,6 +160,9 @@ namespace Server.Engines.Avatar
 									context.UnlockSavageRace = true;
 									m_From.SendMessage("You have unlocked a new tarot card for Humans.");
 								}
+							).WithPrereq(
+								context.UnlockRecordDiscovered,
+								"Requires World Class Cartographer to be unlocked."
 							),
 							ActionReward.Create(
 								context.UnlockMonsterRaces,
@@ -208,6 +211,9 @@ namespace Server.Engines.Avatar
 									context.ClearRewardCache(Categories.PrimaryBoosts);
 									context.ClearRewardCache(Categories.SecondaryBoosts);
 								}
+							).WithPrereq(
+								context.UnlockPrimarySkillBoost || context.UnlockSecondarySkillBoost,
+								"Requires Jack of No Trades or Artisan's Mastery to be unlocked."
 							),
 							ActionReward.Create(
 								Constants.SKILL_CAP_MAX_LEVEL <= context.SkillCapLevel,
