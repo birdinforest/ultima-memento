@@ -779,10 +779,11 @@ namespace Server.Items
 			{
 				return false;
 			}
-			else if ( this is MysticSpellbook )
+			else if ( this is MysticSpellbook ){ if ( from.Skills[SkillName.Focus].Base < 100 || from.Skills[SkillName.Meditation].Base < 100 )
 			{
+				from.SendMessage("Your need at least a natural grandmaster skill in focus and meditation to equip that!");
 				return false;
-			}
+			}}
 			else if ( this is SythSpellbook )
 			{
 				return false;
