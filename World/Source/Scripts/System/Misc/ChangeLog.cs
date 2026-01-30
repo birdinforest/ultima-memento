@@ -59,6 +59,7 @@ namespace Server.Misc
 			builder.Append("- Quest - 'Seeking Brave Adventurers' reward is limited to 5,000 in Sosaria<br>");
 			builder.Append("- Quest - Bounty rewards for providing proof of death to Guards have been reduced<br>");
 			builder.Append("- Quest - Crates now show delivery instructions on their tooltip<br>");
+			builder.Append("- Quest - 'Seeking Brave Adventurers' quests are now less likely to find items<br>");
 			builder.Append("- Shoppe - A 1,000 use leatherworking tool is now available<br>");
 			builder.Append("- Shoppe - All Permadeath on a single account now share Shoppes<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");

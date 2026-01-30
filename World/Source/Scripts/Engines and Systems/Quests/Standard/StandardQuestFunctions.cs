@@ -18,7 +18,7 @@ namespace Server.Misc
     {
 		public static int ChanceToFindQuestedItem()
 		{
-			return 10;
+			return 7;
 		}
 
 		public static void CheckTarget( Mobile m, Mobile target, Item box )
