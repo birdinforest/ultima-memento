@@ -71,6 +71,10 @@ namespace Server.Temptation
 		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ReduceFugitiveSkillCap
+		{ get { return GetFlag(TemptationFlags.Puzzle_master); } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ReduceStatGainDelay
 		{ get { return GetFlag(TemptationFlags.Deathwish); } }
 
