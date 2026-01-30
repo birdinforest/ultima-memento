@@ -1664,16 +1664,6 @@ namespace Server.Items
 			if ( context != null && context.Type == typeof( VampiricEmbraceSpell ) )
 				lifeLeech += 20; // Vampiric embrace gives an additional 20% life leech
 
-			if ( context != null && context.Type == typeof( WraithFormSpell ) )
-			{
-				wraithLeech = (5 + (int)((15 * attacker.Skills.Spiritualism.Value) / 100)); // Wraith form gives an additional 5-20% mana leech
-
-				// Mana leeched by the Wraith Form spell is actually stolen, not just leeched.
-				defender.Mana -= AOS.Scale( damageGiven, wraithLeech );
-
-				manaLeech += wraithLeech;
-			}
-
 			if ( lifeLeech != 0 )
 				attacker.Hits += AOS.Scale( damageGiven, lifeLeech );
 
