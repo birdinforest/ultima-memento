@@ -50,6 +50,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Training skills from the Vendor now refunds excess gold<br>");
 			builder.Append("- Misc - Players now fully log out after 30 seconds, down from 5 minutes<br>");
 			builder.Append("- Misc - Player vendors owner is now propagated when rebirthing<br>");
+			builder.Append("- Misc - Coded Parchment have been rewards reduced but are now much more likely to contain an artifact<br>");
 			builder.Append("- Mobs - Rocs and Roclings are now treated as Birds instead of Dragons<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Pets - Pets will now auto-bond every time they level up to 3 or higher<br>");
