@@ -3009,6 +3009,8 @@ namespace Server.Mobiles
 			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
 			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
+			if (CharacterType == CharacterType.Fugitive && Temptations.ReduceFugitiveSkillCap) typeAmount -= 1000;
+
 			var avatarAmount = 0;
 			var titanAmount = IsTitanOfEther
 				? Temptations.LimitTitanBonus

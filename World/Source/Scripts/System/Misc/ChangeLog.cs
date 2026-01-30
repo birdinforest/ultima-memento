@@ -69,6 +69,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Temptation - Permadeath characters now automatically receive a soul orb<br>");
+			builder.Append("- Temptation - Puzzle master properly now reduces skill cap for Fugitives<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
