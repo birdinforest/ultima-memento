@@ -204,7 +204,6 @@ namespace Server.Spells.DeathKnight
 
 			if ( tithing > 0 )
 			{
-				ArrayList targets = new ArrayList();
 				foreach ( Item item in World.Items.Values )
 				{
 					if ( item is SoulLantern )
