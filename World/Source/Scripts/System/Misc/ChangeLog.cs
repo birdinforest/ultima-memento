@@ -71,6 +71,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Campfire cooldown is now 3 minutes, down from 10<br>");
 			builder.Append("- Skill - Provoked mobs now say '*looks furious*' overhead again<br>");
 			builder.Append("- Skill - Lightning Strike now has a bonus to accuracy based on Bushido skill (25% HCI at 50, 50% HCI for 100+)<br>");
+			builder.Append("- Skill - Surprise Attack now lasts for 30 seconds, up from 8 seconds<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Temptation - Permadeath characters now automatically receive a soul orb<br>");
