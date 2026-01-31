@@ -58,7 +58,7 @@ namespace Server.Items
 
         protected bool ApplyBonus(Mobile from, BaseWeapon weapon)
         {
-            ConsecrateWeaponSpell.Apply(from, weapon, TimeSpan.FromHours(1), false);
+            ConsecrateWeaponSpell.Apply(from, weapon, TimeSpan.FromHours(4), false);
             return true;
         }
 

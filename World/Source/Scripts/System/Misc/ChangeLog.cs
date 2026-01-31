@@ -39,6 +39,7 @@ namespace Server.Misc
 			builder.Append("- Item - Holy Knight artifact set has been retroactively buffed<br>");
 			builder.Append("- Item - Shroud robes will no longer have Lower Mana Cost (not retroactive)<br>");
 			builder.Append("- Item - Mystics can now equip their spellbooks<br>");
+			builder.Append("- Item - Consecration stones now lasts 4 hours, up from 1 hour<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
