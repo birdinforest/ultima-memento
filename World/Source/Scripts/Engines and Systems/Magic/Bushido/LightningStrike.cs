@@ -22,7 +22,10 @@ namespace Server.Spells.Bushido
 
 		public override int GetAccuracyBonus( Mobile attacker )
 		{
-			return 50;
+			var bushido = attacker.Skills[SkillName.Bushido].Value;
+			var bonus = (int)Math.Max(0, (bushido - 50) / 2);
+
+			return Math.Min(50, 25 + bonus);
 		}
 
 		public override bool Validate(Mobile from)
