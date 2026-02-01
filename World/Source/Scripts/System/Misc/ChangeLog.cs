@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Item - Skins now sell for twice as much<br>");
 			builder.Append("- Item - Reduced Staff of Five parts LMC (10%, down from 40%) and LRC (20%, down from 100%)<br>");
 			builder.Append("- Item - Dumping Liquids no longer reduces karma<br>");
+			builder.Append("- Item - Throwing slimes have been buffed (alch benefit added, tasting benefit increased)<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
