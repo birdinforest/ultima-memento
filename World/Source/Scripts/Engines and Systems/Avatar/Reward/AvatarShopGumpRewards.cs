@@ -413,8 +413,8 @@ namespace Server.Engines.Avatar
 				case Categories.SecondaryBoosts:
 					{
 						var rewards = new List<IReward>();
-						var showPrimarySkills = context.UnlockPrimarySkillBoost && selectedCategory == Categories.PrimaryBoosts;
-						var showSecondarySkills = context.UnlockSecondarySkillBoost && selectedCategory == Categories.SecondaryBoosts;
+						var showPrimarySkills = selectedCategory == Categories.PrimaryBoosts;
+						var showSecondarySkills = selectedCategory == Categories.SecondaryBoosts;
 
 						// Skills
 						if (showPrimarySkills || showSecondarySkills)
@@ -495,6 +495,9 @@ namespace Server.Engines.Avatar
 												skill.BaseFixedPoint += amountToIncrease;
 											}
 										}
+									).WithPrereq(
+										showPrimarySkills ? context.UnlockPrimarySkillBoost : context.UnlockSecondarySkillBoost,
+										string.Format("Requires {0} to be unlocked.", showPrimarySkills ? "Jack of No Trades" : "Artisan's Mastery")
 									)
 								);
 							}
