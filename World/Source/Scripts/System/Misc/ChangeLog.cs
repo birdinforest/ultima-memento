@@ -78,6 +78,9 @@ namespace Server.Misc
 			builder.Append("- Skill - Surprise Attack now lasts for 30 seconds, up from 8 seconds<br>");
 			builder.Append("- Skill - Hidden Inscription bonus provides 10% more SDI (20% total) for Grandmasters<br>");
 			builder.Append("- Skill - Alchemy now provides 1% EP per 3 points (125=41% EP), up from 30% EP for 100 points<br>");
+			builder.Append("- Skill - Death Strike now triggers at 3 steps, down from 5<br>");
+			builder.Append("- Skill - Death Strike damage is now uncapped and 300% higher<br>");
+			builder.Append("- Skill - Death Strike now paralyzes the target for 2-4 seconds<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Spell - Intellect provides 1% SDI per 3 points, up from 1% SDI per 10 points<br>");
