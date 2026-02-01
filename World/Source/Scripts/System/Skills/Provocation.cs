@@ -114,7 +114,7 @@ namespace Server.SkillHandlers
 					}
 					else if ( m_Creature != creature )
 					{
-						double diff = ((m_Instrument.GetDifficultyFor( m_Creature ) + m_Instrument.GetDifficultyFor( creature )) * 0.5) - 10.0;
+						double diff = Math.Max( m_Instrument.GetDifficultyFor( m_Creature ), m_Instrument.GetDifficultyFor( creature ) ) - 10.0;
 						double music = from.Skills[SkillName.Musicianship].Value;
 
 						if ( music > 100.0 )

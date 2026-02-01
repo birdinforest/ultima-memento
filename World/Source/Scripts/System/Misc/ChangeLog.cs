@@ -73,6 +73,7 @@ namespace Server.Misc
 			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
 			builder.Append("- Setting - Spell Damage Increase vs Monsters is now capped at 150%, down from 200%<br>");
 			builder.Append("- Skill - Campfire cooldown is now 3 minutes, down from 10<br>");
+			builder.Append("- Skill - Provocation now uses the higher difficulty between the two targets (this is a buff)<br>");
 			builder.Append("- Skill - Provoked mobs now say '*looks furious*' overhead again<br>");
 			builder.Append("- Skill - Lightning Strike now has a bonus to accuracy based on Bushido skill (25% HCI at 50, 50% HCI for 100+)<br>");
 			builder.Append("- Skill - Surprise Attack now lasts for 30 seconds, up from 8 seconds<br>");
