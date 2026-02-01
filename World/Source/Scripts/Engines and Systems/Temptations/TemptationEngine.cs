@@ -97,6 +97,14 @@ namespace Server.Temptation
 			m_Context.Add(newMobile.Serial, context);
 		}
 
+		public void ReplaceContext(Mobile mobile, PlayerContext context)
+		{
+			m_Context.Remove(mobile.Serial);
+			if (context == PlayerContext.Default) return;
+
+			m_Context.Add(mobile.Serial, context);
+		}
+
 		private static void LoadData()
 		{
 			Instance.IsEnabled = !File.Exists("Saves//Player//Temptations.bin");

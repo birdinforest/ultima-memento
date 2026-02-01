@@ -678,10 +678,11 @@ namespace Server.Gumps
 
 			var player = (PlayerMobile)m;
 
-			TemptationEngine.Instance.ApplyContext( player, player.Temptations );
-
 			if (player.Avatar.Active)
 			{
+				TemptationEngine.Instance.ReplaceContext( player, new Temptation.PlayerContext(player.Temptations) { HasAggressiveNerfs = true } );
+				TemptationEngine.Instance.ApplyContext( player, player.Temptations );
+
 				Engines.Avatar.AvatarEngine.Instance.ApplyContext( player, player.Avatar );
 
 				player.NetState.BlockAllPackets = true;
@@ -696,6 +697,10 @@ namespace Server.Gumps
 				}
 
 				player.NetState.BlockAllPackets = false;
+			}
+			else
+			{
+				TemptationEngine.Instance.ApplyContext( player, player.Temptations );
 			}
 
 			CustomEventSink.InvokeBeginJourney(new BeginJourneyArgs(player));
