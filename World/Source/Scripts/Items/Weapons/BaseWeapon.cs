@@ -1645,7 +1645,6 @@ namespace Server.Items
 			int lifeLeech = 0;
 			int stamLeech = 0;
 			int manaLeech = 0;
-			int wraithLeech = 0;
 
 			if ( (int)(m_AosWeaponAttributes.HitLeechHits * propertyBonus) > Utility.Random( 100 ) )
 				lifeLeech += 30; // HitLeechHits% chance to leech 30% of damage as hit points
@@ -1658,11 +1657,6 @@ namespace Server.Items
 
 			if ( m_Cursed )
 				lifeLeech += 50; // Additional 50% life leech for cursed weapons (necro spell)
-
-			context = TransformationSpellHelper.GetContext( attacker );
-
-			if ( context != null && context.Type == typeof( VampiricEmbraceSpell ) )
-				lifeLeech += 20; // Vampiric embrace gives an additional 20% life leech
 
 			if ( lifeLeech != 0 )
 				attacker.Hits += AOS.Scale( damageGiven, lifeLeech );
@@ -1907,8 +1901,6 @@ namespace Server.Items
 
 				// SDI bonus
 				damageBonus += AosAttributes.GetValue( attacker, AosAttribute.SpellDamage );
-
-				TransformContext context = TransformationSpellHelper.GetContext( attacker );
 			}
 
 			damage = AOS.Scale( damage, 100 + damageBonus );
