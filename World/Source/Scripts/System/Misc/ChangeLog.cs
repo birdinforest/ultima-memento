@@ -42,6 +42,7 @@ namespace Server.Misc
 			builder.Append("- Item - Consecration stones now lasts 4 hours, up from 1 hour<br>");
 			builder.Append("- Item - Skins now sell for twice as much<br>");
 			builder.Append("- Item - Reduced Staff of Five parts LMC (10%, down from 40%) and LRC (20%, down from 100%)<br>");
+			builder.Append("- Item - Dumping Liquids no longer reduces karma<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
@@ -84,6 +85,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
 			builder.Append("- Item - Knightship and Death Knight books now properly require appropriate skills/karma to equip<br>");
 			builder.Append("- Item - Fix crash from summon items if owner was deleted<br>");
+			builder.Append("- Item - Fix typo when dumping Liquids<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");
