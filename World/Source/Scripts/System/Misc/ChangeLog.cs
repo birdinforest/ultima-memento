@@ -70,12 +70,15 @@ namespace Server.Misc
 			builder.Append("- Shoppe - All Permadeath on a single account now share Shoppes<br>");
 			builder.Append("- Setting - Creature Magic setting is now always visible and notes you must be in the Tavern<br>");
 			builder.Append("- Setting - Changing to a Human race now warns players that it is one-way and permanent<br>");
+			builder.Append("- Setting - Spell Damage Increase vs Monsters is now capped at 150%, down from 200%<br>");
 			builder.Append("- Skill - Campfire cooldown is now 3 minutes, down from 10<br>");
 			builder.Append("- Skill - Provoked mobs now say '*looks furious*' overhead again<br>");
 			builder.Append("- Skill - Lightning Strike now has a bonus to accuracy based on Bushido skill (25% HCI at 50, 50% HCI for 100+)<br>");
 			builder.Append("- Skill - Surprise Attack now lasts for 30 seconds, up from 8 seconds<br>");
+			builder.Append("- Skill - Hidden Inscription bonus provides 10% more SDI (20% total) for Grandmasters<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
+			builder.Append("- Spell - Intellect provides 1% SDI per 3 points, up from 1% SDI per 10 points<br>");
 			builder.Append("- Temptation - Permadeath characters now automatically receive a soul orb<br>");
 			builder.Append("- Temptation - Puzzle master properly now reduces skill cap for Fugitives<br>");
 

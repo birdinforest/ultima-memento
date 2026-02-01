@@ -217,7 +217,7 @@ namespace Server
 
 	// Spell damage toward monsters can be between 25 and 200 percent.
 
-		public static int S_SpellDamageIncreaseVsMonsters = 200;
+		public static int S_SpellDamageIncreaseVsMonsters = 150;
 
 	// Spell damage toward player characters can be between 25 and 200 percent.
 
