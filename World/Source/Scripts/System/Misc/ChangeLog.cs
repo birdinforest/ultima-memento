@@ -62,6 +62,7 @@ namespace Server.Misc
 			builder.Append("- Quest - 'Seeking Brave Adventurers' targets can now be in Ambrosia<br>");
 			builder.Append("- Quest - 'Seeking Brave Adventurers' quests can no longer assign overworld mobs<br>");
 			builder.Append("- Quest - 'Seeking Brave Adventurers' reward is limited to 5,000 in Sosaria<br>");
+			builder.Append("- Quest - 'Seeking Brave Adventurers' reward is limited to 12,000 in Lodoria<br>");
 			builder.Append("- Quest - Bounty rewards for providing proof of death to Guards have been reduced<br>");
 			builder.Append("- Quest - Crates now show delivery instructions on their tooltip<br>");
 			builder.Append("- Quest - 'Seeking Brave Adventurers' quests are now less likely to find items<br>");

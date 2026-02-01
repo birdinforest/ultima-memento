@@ -161,7 +161,7 @@ namespace Server.Engines.Avatar
 			var player = (PlayerMobile)e.Mobile;
 			if (!player.Avatar.Active) return;
 
-			var value = Math.Min(e.Award * 5, 50000); // Cap at 50k
+			var value = e.Award * 5;
 			value += GetBonusCoinsAmount(value, player.Avatar);
 
 			player.Avatar.LifetimeCombatQuestCompletions += 1;

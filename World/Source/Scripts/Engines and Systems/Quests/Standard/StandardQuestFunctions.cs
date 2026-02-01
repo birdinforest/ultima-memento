@@ -168,7 +168,11 @@ namespace Server.Misc
 				return;
 			}
 
-			int maxFee = searchLocation == Land.Sosaria ? 5000 : 0;
+			int maxFee = searchLocation == Land.Sosaria 
+				? 5000 
+				: searchLocation == Land.Lodoria 
+					? 12000
+					: 0;
 
 			var theone = Utility.Random(targets);
 
