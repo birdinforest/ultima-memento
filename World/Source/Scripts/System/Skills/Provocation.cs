@@ -146,7 +146,7 @@ namespace Server.SkillHandlers
 								}
 								else
 								{
-									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+									from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 6 );
 									from.SendLocalizedMessage( 501602 ); // Your music succeeds, as you start a fight.
 									m_Instrument.PlayInstrumentWell( from );
 									m_Instrument.ConsumeUse( from );
