@@ -931,7 +931,7 @@ namespace Server.Gumps
             AddStatLine(20, 135, 80, "Tithe", string.Format("{0}", from.TithingPoints), string.Format("Maximum Tithe: {0}", TithingGump.MaxTithingPoints), color, colAB);
             AddStatLine(20, 135, 80, "Hunger", string.Format("{0}", from.Hunger), "Maximum Hunger: 20.", color, colAB);
             AddStatLine(20, 135, 80, "Thirst", string.Format("{0}", from.Thirst), "Maximum Thirst: 20.", color, colAB);
-            AddStatLine(20, 135, 80, "Potion Enhance", string.Format("{0}/50%", BasePotion.EnhancePotions(from)), "Increases effect when consuming potions.", color, colAB);
+            AddStatLine(20, 135, 80, "Potion Enhance", string.Format("{0}/{1}%", BasePotion.EnhancePotions(from), BasePotion.MAX_ENHANCED_POTIONS), "Increases effect when consuming potions.", color, colAB);
             AddStatLine(20, 135, 80, "Bank Gold", Banker.GetBalance(from).ToString(), null, color, colAB);
 
             ///////////////////////////////////////////////////////////////////////////////////

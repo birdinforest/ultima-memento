@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append("- Gump - Craft Skill List now shows a lock icon for items you don't know the recipe for<br>");
+			builder.Append("- Gump - Status gump no longer includes Alchemy bonus in EP% cap<br>");
 			builder.Append("- Item - Tablets no longer have a tooltip indicating their worth<br>");
 			builder.Append("- Item - Normal and Greater Strength Potions bonuses have been reduced<br>");
 			builder.Append("- Item - The book of jokes now has a description<br>");
@@ -76,6 +77,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Lightning Strike now has a bonus to accuracy based on Bushido skill (25% HCI at 50, 50% HCI for 100+)<br>");
 			builder.Append("- Skill - Surprise Attack now lasts for 30 seconds, up from 8 seconds<br>");
 			builder.Append("- Skill - Hidden Inscription bonus provides 10% more SDI (20% total) for Grandmasters<br>");
+			builder.Append("- Skill - Alchemy now provides 1% EP per 3 points (125=41% EP), up from 30% EP for 100 points<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Spell - Intellect provides 1% SDI per 3 points, up from 1% SDI per 10 points<br>");
