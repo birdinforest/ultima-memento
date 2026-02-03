@@ -271,7 +271,7 @@ namespace Server.Items
 		public static int EnhancePotions( Mobile m )
 		{
 			int EP = Math.Min(MAX_ENHANCED_POTIONS, AosAttributes.GetValue( m, AosAttribute.EnhancePotions ));
-			int skillBonus = m.Skills.Alchemy.Fixed / 3;
+			int skillBonus = m.Skills.Alchemy.Fixed / 30;
 			return EP + skillBonus;
 		}
 
