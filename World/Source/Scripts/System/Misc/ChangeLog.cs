@@ -21,6 +21,7 @@ namespace Server.Misc
 			builder.Append("- Admin - New setting to prevent pets from attacking their owners<br>");
 			builder.Append("- Admin - New setting to prevent pets from attacking other pets from the same owner<br>");
 			builder.Append("- Combat - Mobs that can swim no longer flee from combat<br>");
+			builder.Append("- Commands - Add [UseSkill command to activate a skill by name<br>");
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
 			builder.Append("- Craft - Bulk crafting now shows crafting error messages<br>");
 			builder.Append("- Craft - Ranger Armor and Hide Chests can now be enhanced<br>");
