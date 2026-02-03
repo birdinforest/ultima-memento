@@ -1,4 +1,5 @@
 using Server.Mobiles;
+using Server.Network;
 
 namespace Server.Engines.Avatar
 {
@@ -8,13 +9,27 @@ namespace Server.Engines.Avatar
 		public AvatarBook() : base(0x2147)
 		{
 			Name = "The Avatar's Ascent";
+			LootType = LootType.Blessed;
 		}
 
 		public override void OnDoubleClick(Mobile from)
 		{
-			if (false == from is PlayerMobile) return;
+			var player = from as PlayerMobile;
+			if (player == null) return;
 
-			from.SendGump(new AvatarShopGump((PlayerMobile)from));
+			if (!from.InRange(this.GetWorldLocation(), 2))
+			{
+				from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1019045); // I can't reach that.
+				return;
+			}
+
+			if (!player.Avatar.Active)
+			{
+				from.SendMessage("You must be an Avatar to use this book.");
+				return;
+			}
+
+			player.SendGump(new AvatarShopGump(player));
 		}
 
 		public AvatarBook(Serial serial) : base(serial)
