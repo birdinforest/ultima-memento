@@ -99,6 +99,7 @@ namespace Server.Misc
 			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
 			builder.Append("- Gump - Fix typo in Magic Rune Bag gump<br>");
 			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
+			builder.Append("- Gump - Bard spellbook now shows the exact book's spells<br>");
 			builder.Append("- Item - Knightship and Death Knight books now properly require appropriate skills/karma to equip<br>");
 			builder.Append("- Item - Fix crash from summon items if owner was deleted<br>");
 			builder.Append("- Item - Fix typo when dumping Liquids<br>");

@@ -16,11 +16,13 @@ namespace Server.Gumps
 	{ 
 		private SongBook m_Book; 
 
-		public static bool HasSpell( Mobile from, int spellID ) 
-		{ 
-			Spellbook book = Spellbook.Find( from, spellID ); 
-			return ( book != null && book.HasSpell( spellID ) ); 
-		} 
+		public bool HasSpell( Mobile from, int spellID )
+		{
+			if ( m_Book.RootParentEntity == from )
+				return (m_Book.HasSpell(spellID));
+			else
+				return false;
+		}
        
 		public SongBookGump( Mobile from, SongBook book, int page ) : base( 100, 100 ) 
 		{ 
