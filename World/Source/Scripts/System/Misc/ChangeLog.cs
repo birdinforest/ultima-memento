@@ -88,6 +88,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Death Strike damage is now uncapped and 300% higher<br>");
 			builder.Append("- Skill - Death Strike now paralyzes the target for 2-4 seconds<br>");
 			builder.Append("- Skill - Backstab can now paralyze the target<br>");
+			builder.Append("- Skill - Ninjitsu is now 50% more likely to gain<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Spell - Intellect provides 1% SDI per 3 points, up from 1% SDI per 10 points<br>");

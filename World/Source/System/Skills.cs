@@ -856,7 +856,7 @@ namespace Server
 				new SkillInfo( 50, "Focus",				0.0,	0.0,	0.0,	"Driven",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 51, "Knightship",		0.0,	0.0,	0.0,	"Knight",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 52, "Bushido",			0.0,	0.0,	0.0,	"Samurai",	null,	0.0,	0.0,	0.0,	1.0 ),
-				new SkillInfo( 53, "Ninjitsu",			0.0,	0.0,	0.0,	"Ninja",	null,	0.0,	0.0,	0.0,	1.0 ),
+				new SkillInfo( 53, "Ninjitsu",			0.0,	0.0,	0.0,	"Ninja",	null,	0.0,	0.0,	0.0,	1.5 ),
 				new SkillInfo( 54, "Elementalism",		0.0,	0.0,	15.0,	"Elementalist",		null,	0.0,	1.0,	1.0,	1.0 ),
 				new SkillInfo( 55, "Mysticism",			0.0,	0.0,	0.0,	"Mystic",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 56, "Imbuing",			0.0,	0.0,	0.0,	"Artificer",	null,	0.0,	0.0,	0.0,	1.0 ),
