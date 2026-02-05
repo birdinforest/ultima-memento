@@ -597,7 +597,7 @@ namespace Server.Items
 			{
 				player.AddItem(new HoardMinionFamiliarItem());
 				ApproachObsidian.TitanRiches( player );
-				CustomEventSink.InvokeCombatQuestCompleted(player, 5000);
+				CustomEventSink.InvokeCombatQuestCompleted(player, 10000);
 				player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + book.GoalItem4 + ".");
 				book.QuestTomeGoals++;
 

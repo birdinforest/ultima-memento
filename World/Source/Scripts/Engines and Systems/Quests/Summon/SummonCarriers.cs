@@ -847,7 +847,7 @@ namespace Server.Misc
 								if ( myHue == 0 ){ myHue = prison.RewardHue; }
 							}
 
-							CustomEventSink.InvokeCombatQuestCompleted( killer, 5000 );
+							CustomEventSink.InvokeCombatQuestCompleted( killer, 10000 );
 							break;
 						}
 					}
