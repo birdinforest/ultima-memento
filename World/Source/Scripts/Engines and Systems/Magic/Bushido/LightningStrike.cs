@@ -16,6 +16,21 @@ namespace Server.Spells.Bushido
 
 		public override bool DelayedContext{ get{ return true; } }
 
+		public override void CheckGain(Mobile m)
+		{
+            if (m.Skills[MoveSkill].Value >= RequiredSkill + 37.5)
+            {
+                if (0.25 > Utility.RandomDouble())
+                {
+                    m.CheckSkillExplicit(MoveSkill, 0, m.Skills[MoveSkill].Cap);
+                }
+            }
+            else
+            {
+                base.CheckGain(m);
+            }
+		}
+
 		public override int GetAccuracyBonus( Mobile attacker )
 		{
 			var bushido = attacker.Skills[SkillName.Bushido].Value;
