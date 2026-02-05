@@ -840,7 +840,13 @@ namespace Server
 				else if ( type == typeof( GreaterHealPotion ) )
 					item = Loot.RandomPotion( 12, false );
 				else if ( type == typeof( BlackPearl ) )
+				{
 					item = Loot.RandomPossibleReagent();
+
+					var cooking = creator != null ? (int)creator.Skills[SkillName.Cooking].Value : 0;
+					if (creator is PlayerMobile && item.Stackable && 30 <= cooking && Utility.RandomMinMax(0, 125) < cooking)
+						item.Amount += (int)(0.2 * item.Amount);
+				}
 				else if ( type == typeof( GoldBricks ) )
 					item = Loot.RandomSArty( playOrient, null );
 				else if ( type == typeof( ClumsyScroll ) ) // low scroll
