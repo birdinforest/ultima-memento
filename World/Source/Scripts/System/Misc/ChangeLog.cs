@@ -96,6 +96,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Ability - Fix crash when a mob used Lightning Strike<br>");
 			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
 			builder.Append("- Gump - Fix typo in Magic Rune Bag gump<br>");
 			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
