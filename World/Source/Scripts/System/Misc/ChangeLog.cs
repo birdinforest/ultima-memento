@@ -61,6 +61,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Player vendors owner is now propagated when rebirthing<br>");
 			builder.Append("- Misc - Coded Parchment have been rewards reduced but are now much more likely to contain an artifact<br>");
 			builder.Append("- Misc - Deleted players are now removed from their party<br>");
+			builder.Append("- Misc - Knight template now starts with Bludgeoning instead of Swordsmanship<br>");
 			builder.Append("- Mobs - Rocs and Roclings are now treated as Birds instead of Dragons<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Pets - Pets will now auto-bond every time they level up to 3 or higher<br>");

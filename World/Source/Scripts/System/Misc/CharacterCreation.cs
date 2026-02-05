@@ -915,7 +915,7 @@ namespace Server.Misc
 								new SkillNameValue( SkillName.Knightship, 30 ),
 								new SkillNameValue( SkillName.Tactics, 30 ),
 								new SkillNameValue( SkillName.Healing, 30 ),
-								new SkillNameValue( SkillName.Swords, 30 )
+								new SkillNameValue( SkillName.Bludgeoning, 30 )
 							};
 					}
 
