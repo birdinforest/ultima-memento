@@ -2541,6 +2541,12 @@ namespace Server.Mobiles
 					corpse.Delete();
 				}
 
+				var party = Party as Party;
+				if (party != null)
+				{
+					party.Remove(this);
+				}
+
 				_recursiveDeleteBlock = false;
 			}
 		}
