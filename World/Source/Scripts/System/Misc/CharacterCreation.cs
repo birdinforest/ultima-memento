@@ -641,7 +641,7 @@ namespace Server.Misc
 
 			while (true)
 			{
-				var item = Utility.Random(itemOptions).Construct(false);
+				var item = Utility.Random(itemOptions).Construct(false, null);
 				if (item != null)
 				{
 					if (isMagic)

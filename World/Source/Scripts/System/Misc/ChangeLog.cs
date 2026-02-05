@@ -117,6 +117,7 @@ namespace Server.Misc
 			builder.Append("- Pets - Hitting level 10 on pets now provides 5 traits instead of 2<br>");
 			builder.Append("- Pets - Taming attempts are now less likely to fail<br>");
 			builder.Append("- Pets - Really remove subdue mechanic once taming has started<br>");
+			builder.Append("- Skill - Tasting now increases the chance of higher tier potion drops<br>");
 			builder.Append("- Spell - Elemental Purge now has a unique mantra<br>");
 			builder.Append("- Spell - Wraith Form weapon attacks now only steal mana that when available<br>");
 			builder.Append(SEPARATOR_LINE);
