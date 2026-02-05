@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
 			builder.Append("- Craft - Bulk crafting now shows crafting error messages<br>");
 			builder.Append("- Craft - Ranger Armor and Hide Chests can now be enhanced<br>");
+			builder.Append("- Craft - Most resources no longer provide Lower Requirements<br>");
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append("- Gump - Craft Skill List now shows a lock icon for items you don't know the recipe for<br>");
