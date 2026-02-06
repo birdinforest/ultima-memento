@@ -32,6 +32,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Craft Skill List now shows a lock icon for items you don't know the recipe for<br>");
 			builder.Append("- Gump - Status gump no longer includes Alchemy bonus in EP% cap<br>");
 			builder.Append("- Gump - Vendor bulletin is now limited to displays based on Normal, Avatar, or Permadeath character status<br>");
+			builder.Append("- Gump - CombatBar value column is now wider<br>");
 			builder.Append("- Item - Tablets no longer have a tooltip indicating their worth<br>");
 			builder.Append("- Item - Normal and Greater Strength Potions bonuses have been reduced<br>");
 			builder.Append("- Item - The book of jokes now has a description<br>");

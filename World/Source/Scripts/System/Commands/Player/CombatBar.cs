@@ -111,7 +111,7 @@ namespace Server.Gumps
 				AddHtml(x, y, 60, 40, @"<BASEFONT Color=#FCFF00>" + label + "</BASEFONT>", (bool)false, (bool)false);
 
 				if (multiLineLabel) y += 20;
-				AddHtml(x + LABEL_AMOUNT_OFFSET_X, y, 50, 20, @"<BASEFONT Color=" + (warningAmount >= 0 && amount <= warningAmount ? COLOR_RED : COLOR_YELLOW) + ">" + amount.ToString("n0") + "</BASEFONT>", false, false);
+				AddHtml(x + LABEL_AMOUNT_OFFSET_X, y, 75, 20, @"<BASEFONT Color=" + (warningAmount >= 0 && amount <= warningAmount ? COLOR_RED : COLOR_YELLOW) + ">" + amount.ToString("n0") + "</BASEFONT>", false, false);
 			}
 		}
 	}
