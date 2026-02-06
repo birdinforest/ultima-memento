@@ -43,6 +43,8 @@ namespace Server.Spells.Ninjitsu
 			else
 				chance = 63 + (ninjitsu - 100) * 1.1;
 
+			CheckGain( attacker );
+
 			if( (chance / 100) < Utility.RandomDouble() )
 			{
 				attacker.SendLocalizedMessage( 1070779 ); // You missed your opponent with a Death Strike.
@@ -75,8 +77,6 @@ namespace Server.Spells.Ninjitsu
 			info.m_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( ProcessDeathStrike ), defender );
 
 			m_Table[defender] = info;
-
-			CheckGain( attacker );
 		}
 
 		private static Hashtable m_Table = new Hashtable();

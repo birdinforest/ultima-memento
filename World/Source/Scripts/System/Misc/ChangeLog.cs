@@ -90,6 +90,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Hidden Inscription bonus provides 10% more SDI (20% total) for Grandmasters<br>");
 			builder.Append("- Skill - Alchemy now provides 1% EP per 3 points (125=41% EP), up from 30% EP for 100 points<br>");
 			builder.Append("- Skill - Death Strike now triggers at 3 steps, down from 5<br>");
+			builder.Append("- Skill - Death Strike can now gain skill as long as the basic attack lands<br>");
 			builder.Append("- Skill - Death Strike damage is now uncapped and 300% higher<br>");
 			builder.Append("- Skill - Death Strike now paralyzes the target for 2-4 seconds<br>");
 			builder.Append("- Skill - Backstab can now paralyze the target<br>");
