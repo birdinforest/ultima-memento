@@ -1,13 +1,12 @@
 using System;
-using Server;
 using Server.Mobiles;
-using Server.Misc;
 using Server.Network;
 
 namespace Server.Items
 {
 	public class SetTrap : Item
 	{
+		private const int RANGE = 1;
 		public Mobile owner;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -17,6 +16,8 @@ namespace Server.Items
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Power { get{ return power; } set{ power = value; } }
+
+		public override bool HandlesOnMovement{ get{ return true; } }
 
 		private DateTime m_DecayTime;
 		private Timer m_DecayTimer;
@@ -35,6 +36,16 @@ namespace Server.Items
 
 		public SetTrap(Serial serial) : base(serial)
 		{
+		}
+
+		public override void OnMovement( Mobile m, Point3D oldLocation )
+		{
+			if ( m is PlayerMobile ) return; // Players must walk over it directly
+
+			if ( m.InRange( this, RANGE ) )
+			{
+				OnMoveOver( m );
+			}
 		}
 
 		public override bool OnMoveOver( Mobile m )
