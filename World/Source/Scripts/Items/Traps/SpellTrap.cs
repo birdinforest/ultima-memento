@@ -100,18 +100,18 @@ namespace Server.Items
 
 							switch( Utility.RandomMinMax( 1, itSicks ) )
 							{
-								case 1: m.ApplyPoison( m, Poison.Lesser );	break;
-								case 2: m.ApplyPoison( m, Poison.Regular );	break;
-								case 3: m.ApplyPoison( m, Poison.Greater );	break;
-								case 4: m.ApplyPoison( m, Poison.Deadly );	break;
-								case 5: m.ApplyPoison( m, Poison.Lethal );	break;
+								case 1: m.ApplyPoison( owner, Poison.Lesser );	break;
+								case 2: m.ApplyPoison( owner, Poison.Regular );	break;
+								case 3: m.ApplyPoison( owner, Poison.Greater );	break;
+								case 4: m.ApplyPoison( owner, Poison.Deadly );	break;
+								case 5: m.ApplyPoison( owner, Poison.Lethal );	break;
 							}
 
 							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 							Effects.PlaySound( this.Location, this.Map, 0x231 );
 							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
 							itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PoisonResistance ) ) / 100 );
-							m.Damage( itHurts, m );
+							m.Damage( itHurts, owner );
 						}
 						else if ( this.Hue == 0x489 ) // FLAME TRAP
 						{
@@ -119,7 +119,7 @@ namespace Server.Items
 							Effects.PlaySound( this.Location, this.Map, 0x225 );
 							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.FireResistance ) ) / 100 );
-							m.Damage( itHurts, m );
+							m.Damage( itHurts, owner );
 						}
 						else if ( this.Hue == 0x48E ) // EXPLOSION TRAP
 						{
@@ -127,14 +127,14 @@ namespace Server.Items
 							m.PlaySound( 0x307 );
 							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PhysicalResistance ) ) / 100 );
-							m.Damage( itHurts, m );
+							m.Damage( itHurts, owner );
 						}
 						else if ( this.Hue == 0x490 ) // ELECTRICAL TRAP
 						{
 							m.BoltEffect( 0 );
 							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.EnergyResistance ) ) / 100 );
-							m.Damage( itHurts, m );
+							m.Damage( itHurts, owner );
 						}
 						else if ( this.Hue == 0x480 ) // BLIZZARD TRAP
 						{
@@ -143,7 +143,7 @@ namespace Server.Items
 							m.PlaySound( 0x10B );
 							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.ColdResistance ) ) / 100 );
-							m.Damage( itHurts, m );
+							m.Damage( itHurts, owner );
 						}
 
 						if ( m is BaseCreature )

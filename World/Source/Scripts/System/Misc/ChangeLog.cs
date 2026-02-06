@@ -127,6 +127,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Cooking now increases the chance to boost the amount of reagent drops<br>");
 			builder.Append("- Spell - Elemental Purge now has a unique mantra<br>");
 			builder.Append("- Spell - Wraith Form weapon attacks now only steal mana that when available<br>");
+			builder.Append("- Spell - Magic Trap now properly credits the Caster with damage<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
