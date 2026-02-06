@@ -134,6 +134,9 @@ namespace Server.Items
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.ColdResistance ) ) / 100 );
 							m.Damage( itHurts, m );
 						}
+
+						if ( m is BaseCreature )
+							owner.DoHarmful( m );
 					}
 					this.Delete();
 				}

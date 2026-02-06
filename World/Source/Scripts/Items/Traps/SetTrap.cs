@@ -66,6 +66,8 @@ namespace Server.Items
 						if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a trap!"); }
 						int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PhysicalResistance ) ) / 100 ) + 10;
 						m.Damage( itHurts, owner );
+						if ( m is BaseCreature )
+							owner.DoHarmful( m );
 					}
 					else
 					{
