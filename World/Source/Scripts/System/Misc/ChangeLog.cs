@@ -68,6 +68,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Knight template now starts with Bludgeoning instead of Swordsmanship<br>");
 			builder.Append("- Misc - Player vendor tooltips now show the type of player they belong to<br>");
 			builder.Append("- Misc - Player house limits are now enforced based on character type<br>");
+			builder.Append("- Misc - Sherry has developed a mild case of lactose intolerance<br>");
 			builder.Append("- Mobs - Rocs and Roclings are now treated as Birds instead of Dragons<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Pets - Pets will now auto-bond every time they level up to 3 or higher<br>");
