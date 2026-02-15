@@ -55,7 +55,9 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( owner != m )
+			if ( owner == m ) return true;
+
+			if ( m.Region.AllowHarmful( owner, m ) )
 			{
 				int StrMax = power;
 				int StrMin = (int)(power/2);

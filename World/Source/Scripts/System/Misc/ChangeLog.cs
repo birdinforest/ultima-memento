@@ -119,6 +119,7 @@ namespace Server.Misc
 			builder.Append("- Item - Fix crash from summon items if owner was deleted<br>");
 			builder.Append("- Item - Fix typo when dumping Liquids<br>");
 			builder.Append("- Item - Fix typo in Vampiric Embrace scroll name<br>");
+			builder.Append("- Item - Player Traps properly respect 'can harm' checks<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");
