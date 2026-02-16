@@ -48,7 +48,7 @@ namespace Server.Items
             base.GetProperties(list);
 
             list.Add(1060584, Uses.ToString()); // uses remaining: ~1_val~
-            list.Add("Consecrates a weapon for 1 hour");
+            list.Add("Consecrates a weapon for 4 hours");
         }
 
         public override void OnDoubleClick(Mobile from)
