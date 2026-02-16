@@ -841,7 +841,7 @@ namespace Server
 				new SkillInfo( 35, "Taming",			14.0,	2.0,	4.0,	"Beastmaster",	null,	1.4,	0.2,	0.4,	1.0 ),
 				new SkillInfo( 36, "Tasting",			0.0,	0.0,	0.0,	"Food Taster",		null,	0.2,	0.0,	0.8,	1.0 ),
 				new SkillInfo( 37, "Tinkering",			5.0,	2.0,	3.0,	"Tinker",	null,	0.5,	0.2,	0.3,	1.0 ),
-				new SkillInfo( 38, "Tracking",			0.0,	12.5,	12.5,	"Ranger",	null,	0.0,	1.25,	1.25,	1.0 ),
+				new SkillInfo( 38, "Tracking",			0.0,	12.5,	12.5,	"Ranger",	null,	0.0,	1.25,	1.25,	1.5 ),
 				new SkillInfo( 39, "Veterinary",		8.0,	4.0,	8.0,	"Veterinarian",	null,	0.8,	0.4,	0.8,	1.0 ),
 				new SkillInfo( 40, "Swordsmanship",		7.5,	2.5,	0.0,	"Swordsman",	null,	0.75,	0.25,	0.0,	1.0 ),
 				new SkillInfo( 41, "Bludgeoning",		9.0,	1.0,	0.0,	"Bludgeoner",	null,	0.9,	0.1,	0.0,	1.0 ),

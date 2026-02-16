@@ -23,6 +23,7 @@ namespace Server.Misc
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
+			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
