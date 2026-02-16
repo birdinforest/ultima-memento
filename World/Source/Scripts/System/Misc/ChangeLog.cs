@@ -17,6 +17,7 @@ namespace Server.Misc
 
 			builder.Append("Changes<br>");
 			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
+			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
