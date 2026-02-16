@@ -26,6 +26,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
