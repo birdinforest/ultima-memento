@@ -16,6 +16,8 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Ability - Focus Attack is now usable with ranged weapons<br>");
+			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
 			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 
