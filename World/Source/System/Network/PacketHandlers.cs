@@ -1186,16 +1186,32 @@ namespace Server.Network
 
 					if (!buttonExists)
 					{
-						state.WriteConsole("Invalid gump response, disconnecting...");
-						state.Dispose();
+						if ( state.Mobile != null )
+						{
+							state.Mobile.SendMessage("That Button doesn't exist!");
+						}
+						else
+						{
+							state.WriteConsole("Invalid gump response, disconnecting...");
+							state.Dispose();
+						}
+
 						return;
 					}
 
 					int switchCount = pvSrc.ReadInt32();
 
 					if ( switchCount < 0 || switchCount > gump.m_Switches ) {
-						state.WriteConsole( "Invalid gump response, disconnecting..." );
-						state.Dispose();
+						if ( state.Mobile != null )
+						{
+							state.Mobile.SendMessage("That Switch doesn't exist!");
+						}
+						else
+						{
+							state.WriteConsole("Invalid gump response, disconnecting...");
+							state.Dispose();
+						}
+
 						return;
 					}
 
