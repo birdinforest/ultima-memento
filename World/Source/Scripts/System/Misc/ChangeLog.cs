@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 2.1.0";
+			return "Version: 2.2.0";
 		}
 
 		public static string Versions()
@@ -14,6 +14,15 @@ namespace Server.Misc
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 2.1.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Achievement - Category buttons are now easier to click<br>");
