@@ -8,5 +8,6 @@ namespace Server.Engines.Avatar
 		PrimaryBoosts,
 		SecondaryBoosts,
 		Items,
+		FullSkillArchive
 	}
 }
