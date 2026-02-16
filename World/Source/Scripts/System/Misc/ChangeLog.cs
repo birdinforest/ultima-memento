@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Avatars can now view their Skill Archive<br>");
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
+			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 
