@@ -134,6 +134,9 @@ namespace Server.Spells.Ninjitsu
 			if ( info.m_isRanged )
 				damage /= 2;
 
+			// Mortally wound target
+			MortalStrike.BeginWound( info.m_Target, MortalStrike.NPCDuration );
+
 			info.m_Target.Damage( damage, info.m_Attacker ); // Damage is direct.
 
 			// Paralyze the target

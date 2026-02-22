@@ -27,6 +27,7 @@ namespace Server.Misc
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
+			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
