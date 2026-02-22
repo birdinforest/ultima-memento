@@ -330,6 +330,7 @@ namespace Server.Engines.CannedEvil
 
 			m_DamageEntries.Clear();
 
+			m_ExpireTime = DateTime.UtcNow + m_ExpireDelay;
 			m_Timer = new SliceTimer(this);
 			m_Timer.Start();
 

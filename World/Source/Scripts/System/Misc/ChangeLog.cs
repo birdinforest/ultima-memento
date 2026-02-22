@@ -30,6 +30,7 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
 			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 
