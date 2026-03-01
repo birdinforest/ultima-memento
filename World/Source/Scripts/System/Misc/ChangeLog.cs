@@ -33,6 +33,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
+			builder.Append("- Skill - Initial targeting range for Taming is now 3, up from 2<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
