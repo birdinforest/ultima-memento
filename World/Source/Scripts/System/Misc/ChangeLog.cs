@@ -26,6 +26,7 @@ namespace Server.Misc
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
+			builder.Append("- Misc - Fishing poles dropped from sunken ships are no longer basic wood<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");

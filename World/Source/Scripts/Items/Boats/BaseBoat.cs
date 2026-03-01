@@ -547,7 +547,7 @@ namespace Server.Multis
 
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i1 = new RawFishSteak( Utility.RandomMinMax( 1, 8 ) ); 	ShipWreck.DropItem( i1 ); }
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i2 = new Fish( Utility.RandomMinMax( 1, 8 ) ); 			ShipWreck.DropItem( i2 ); }
-			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i3 = new FishingPole(); 									ShipWreck.DropItem( i3 ); }
+			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i3 = new FishingPole() { Resource = CraftResources.GetRandomNonBasicResource( CraftResourceType.Wood ) }; ShipWreck.DropItem( i3 ); }
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i4 = new NewFish(); 										ShipWreck.DropItem( i4 ); }
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i5 = new Sextant(); 										ShipWreck.DropItem( i5 ); }
 			if ( Utility.RandomMinMax( 1, 10 ) == 1 )
