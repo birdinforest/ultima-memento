@@ -242,8 +242,6 @@ namespace Server.Items
 				{
 					if ( IsEmpty )
 						player.SendGump( new SelectSkillGump( this, player ) );
-					else if ( player.Avatar.Active )
-						player.SendMessage("You would explode if you tried to absorb this skill.");
 					else					
 						player.SendGump( new ConfirmTransferGump( this, player ) );
 				},
@@ -509,7 +507,9 @@ namespace Server.Items
 				if ( info.ButtonID == 0 || m_Stone.IsEmpty )
 					return;
 
-				Mobile from = sender.Mobile;
+				PlayerMobile from = sender.Mobile as PlayerMobile;
+				if ( from == null )
+					return;
 
 				if ( !m_Stone.CheckUse( from ) )
 					return;
@@ -566,6 +566,12 @@ namespace Server.Items
 					 */
 
 					from.SendGump( new ErrorGump( m_Stone, 1070717, 1070716 ) );
+					return;
+				}
+
+				if ( from.Avatar.Active )
+				{
+					from.SendMessage( "You would explode if you tried to absorb this skill." );
 					return;
 				}
 
