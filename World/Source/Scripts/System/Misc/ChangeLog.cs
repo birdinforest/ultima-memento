@@ -41,6 +41,7 @@ namespace Server.Misc
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
 			builder.Append("- Misc - Treasure hoards now delete when they run out of uses<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
+			builder.Append("- NPC - Barber will now sell you their items<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
