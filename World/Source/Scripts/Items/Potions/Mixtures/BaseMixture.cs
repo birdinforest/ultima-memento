@@ -132,20 +132,16 @@ namespace Server.Items
 				{
 					Effects.PlaySound(d, from.Map, 0x026);
 
-					int slimy = 0;
+					bool bonusSlime = from.Skills[SkillName.Cooking].Value >= Utility.RandomMinMax( 1, 200 )
+						|| from.Skills[SkillName.Tasting].Value >= Utility.RandomMinMax( 1, 200 );
 
-					if ( EnhancePotions( from ) >= Utility.RandomMinMax( 1, 120 ) ){ slimy++; }
-					if ( from.Skills[SkillName.Alchemy].Value >= Utility.RandomMinMax( 1, 100 ) ){ slimy++; }
-					if ( from.Skills[SkillName.Cooking].Value >= Utility.RandomMinMax( 1, 200 ) ){ slimy++; }
-					if ( from.Skills[SkillName.Tasting].Value >= Utility.RandomMinMax( 1, 200 ) ){ slimy++; }
-
-					if ( slimy > ( ( from.FollowersMax - from.Followers - 1 ) ) )
-						slimy = from.FollowersMax - from.Followers;
+					int toAdd = bonusSlime ? 2 : 1;
+					if ( toAdd > ( ( from.FollowersMax - from.Followers - 1 ) ) )
+						toAdd = from.FollowersMax - from.Followers;
+					if ( toAdd < 1 ) return;
 
 					Server.Mobiles.AlchemicSlime.MakeSlime( from, d, m_Potion.SlimeMagery, m_Potion.SlimePoisons, m_Potion.SlimeName, m_Potion.SlimeHue, m_Potion.SlimePhys, m_Potion.SlimeCold, m_Potion.SlimeFire, m_Potion.SlimePois, m_Potion.SlimeEngy, m_Potion.SlimeGlow, m_Potion.SlimeHate );
-					if ( slimy > 0 ){ Server.Mobiles.AlchemicSlime.MakeSlime( from, d, m_Potion.SlimeMagery, m_Potion.SlimePoisons, m_Potion.SlimeName, m_Potion.SlimeHue, m_Potion.SlimePhys, m_Potion.SlimeCold, m_Potion.SlimeFire, m_Potion.SlimePois, m_Potion.SlimeEngy, m_Potion.SlimeGlow, m_Potion.SlimeHate ); }
-					if ( slimy > 1 ){ Server.Mobiles.AlchemicSlime.MakeSlime( from, d, m_Potion.SlimeMagery, m_Potion.SlimePoisons, m_Potion.SlimeName, m_Potion.SlimeHue, m_Potion.SlimePhys, m_Potion.SlimeCold, m_Potion.SlimeFire, m_Potion.SlimePois, m_Potion.SlimeEngy, m_Potion.SlimeGlow, m_Potion.SlimeHate ); }
-					if ( slimy > 2 ){ Server.Mobiles.AlchemicSlime.MakeSlime( from, d, m_Potion.SlimeMagery, m_Potion.SlimePoisons, m_Potion.SlimeName, m_Potion.SlimeHue, m_Potion.SlimePhys, m_Potion.SlimeCold, m_Potion.SlimeFire, m_Potion.SlimePois, m_Potion.SlimeEngy, m_Potion.SlimeGlow, m_Potion.SlimeHate ); }
+					if ( toAdd > 1 ){ Server.Mobiles.AlchemicSlime.MakeSlime( from, d, m_Potion.SlimeMagery, m_Potion.SlimePoisons, m_Potion.SlimeName, m_Potion.SlimeHue, m_Potion.SlimePhys, m_Potion.SlimeCold, m_Potion.SlimeFire, m_Potion.SlimePois, m_Potion.SlimeEngy, m_Potion.SlimeGlow, m_Potion.SlimeHate ); }
 				}
 
 				if ( nThrown > 0 )
