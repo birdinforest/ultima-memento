@@ -388,9 +388,10 @@ namespace Server.Gumps
 					sText = "Do you wish to plead to the gods for your life back now? If you do, you will suffer a " + c2 + "% loss to your fame and karma. You will also lose " + c1 + "% of your statistics and skills. You cannot afford the resurrection tribute due to the lack of gold in the bank or tithed, so perhaps you may want to do this.";
 			}
 
-			string sGrave = "YOU HAVE DIED!";
+			string sGrave;
 			switch ( Utility.RandomMinMax( 0, 3 ) )
 			{
+				default:
 				case 0:	sGrave = "YOU HAVE DIED!";			break;
 				case 1:	sGrave = "YOU HAVE PERISHED!";		break;
 				case 2:	sGrave = "YOU MET YOUR END!";		break;
