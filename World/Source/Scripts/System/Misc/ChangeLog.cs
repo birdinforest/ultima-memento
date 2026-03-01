@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
 			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
 			builder.Append("- Gump - Avatars can now view their Skill Archive<br>");
+			builder.Append("- Gump - Skill craft list now has an info button next to each item<br>");
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
