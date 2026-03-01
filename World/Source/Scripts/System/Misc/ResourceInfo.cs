@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Server.Misc;
+using System.Linq;
 
 namespace Server.Items
 {
@@ -583,22 +583,27 @@ namespace Server.Items
 			return (CraftResource)obj;
 		}
 
+		private static CraftResourceInfo[] GetResourceList( CraftResourceType resourceType )
+		{
+			switch ( resourceType )
+			{
+				case CraftResourceType.Metal: return m_MetalInfo;
+				case CraftResourceType.Leather: return m_LeatherInfo;
+				case CraftResourceType.Scales: return m_ScaleInfo;
+				case CraftResourceType.Wood: return m_WoodInfo;
+				case CraftResourceType.Block: return m_BlockInfo;
+				case CraftResourceType.Skin: return m_SkinInfo;
+				case CraftResourceType.Special: return m_SpecialInfo;
+				case CraftResourceType.Skeletal: return m_SkeletalInfo;
+				case CraftResourceType.Fabric: return m_FabricInfo;
+			}
+			
+			return null;
+		}
+
 		public static CraftResourceInfo GetInfo( CraftResource resource )
 		{
-			CraftResourceInfo[] list = null;
-
-			switch ( GetType( resource ) )
-			{
-				case CraftResourceType.Metal: list = m_MetalInfo; break;
-				case CraftResourceType.Leather: list = m_LeatherInfo; break;
-				case CraftResourceType.Scales: list = m_ScaleInfo; break;
-				case CraftResourceType.Wood: list = m_WoodInfo; break;
-				case CraftResourceType.Block: list = m_BlockInfo; break;
-				case CraftResourceType.Skin: list = m_SkinInfo; break;
-				case CraftResourceType.Special: list = m_SpecialInfo; break;
-				case CraftResourceType.Skeletal: list = m_SkeletalInfo; break;
-				case CraftResourceType.Fabric: list = m_FabricInfo; break;
-			}
+			CraftResourceInfo[] list = GetResourceList( GetType( resource ) );
 
 			if ( list != null )
 			{
@@ -609,6 +614,35 @@ namespace Server.Items
 			}
 
 			return null;
+		}
+
+		public static CraftResource GetRandomNonBasicResource( CraftResourceType resourceType )
+		{
+			CraftResourceInfo[] list = GetResourceList( resourceType );
+			if ( list == null ) return CraftResource.None;
+
+			var basicType = GetStart( resourceType );
+
+			return Utility.Random( list.Where(x => !IsVeryBasic(x.Resource) ).ToList() ).Resource;
+		}
+
+		public static bool IsVeryBasic( CraftResource resource )
+		{
+			switch ( resource )
+			{
+				case CraftResource.Iron:
+				case CraftResource.RegularLeather:
+				case CraftResource.RegularWood:
+				case CraftResource.Fabric:
+				case CraftResource.BrittleSkeletal:
+				case CraftResource.RedScales:
+				// case CraftResource.AmethystBlock:
+				// case CraftResource.DemonSkin:
+				// case CraftResource.SpectralSpec:
+					return true;
+			}
+
+			return false;
 		}
 
 		public static CraftResourceType GetType( CraftResource resource )
@@ -818,9 +852,9 @@ namespace Server.Items
 			return (CraftResources.GetName( resource )).ToLower();
 		}
 
-		public static CraftResource GetStart( CraftResource resource )
+		public static CraftResource GetStart( CraftResourceType resourceType )
 		{
-			switch ( GetType( resource ) )
+			switch ( resourceType )
 			{
 				case CraftResourceType.Metal: return CraftResource.Iron;
 				case CraftResourceType.Leather: return CraftResource.RegularLeather;
@@ -834,6 +868,11 @@ namespace Server.Items
 			}
 
 			return CraftResource.None;
+		}
+
+		public static CraftResource GetStart( CraftResource resource )
+		{
+			return GetStart( GetType( resource ) );
 		}
 
 		public static int GetIndex( CraftResource resource )
