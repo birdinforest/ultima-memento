@@ -161,37 +161,53 @@ namespace Server.Items
 		{
 			int value = 10;
 
-			int time = 30; 																// MIN 30
-			int bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/2); 			// MAX 25
-			int skill1 = (int)(m.Skills[SkillName.Cooking].Value/2); 					// MAX 62
-			int skill2 = (int)(m.Skills[SkillName.Tasting].Value/2); 					// MAX 62
-			int TotalTime = (int)(( time + bonus + skill1 + skill2 ));
+			if ( category == "time" )
+			{
+				int time = 30; 																// MIN 30
+				int bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/2); 			// MAX 25
+				int skill1 = (int)(m.Skills[SkillName.Cooking].Value/2); 					// MAX 62
+				int skill2 = (int)(m.Skills[SkillName.Tasting].Value/2); 					// MAX 62
 
-			int buff_default = 15;														// +15 DEFAULT
-			int buff_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m ) / 5 );	// +10 MAX
-			int buff_skill1 = (int)(m.Skills[SkillName.Cooking].Value / 4); 			// +31 MAX
-			int buff_skill2 = (int)(m.Skills[SkillName.Tasting].Value / 3); 			// +41 MAX
-			int TotalBuff = ( buff_default + buff_bonus + buff_skill1 + buff_skill2 );
+				return time + bonus + skill1 + skill2;
+			}
 
-			int skill = 40; 															// MIN 40
-			int skb_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/2);		// MAX 25
-			int skb_skill1 = (int)(m.Skills[SkillName.Cooking].Value/2); 				// MAX 62
-			int skb_skill2 = (int)(m.Skills[SkillName.Tasting].Value/2); 				// MAX 62
-			int TotalSkill = (int)( skill + skb_bonus + skb_skill1 + skb_skill2 );
+			if ( category == "strength" )
+			{
+				int buff_default = 15;														// +15 DEFAULT
+				int buff_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m ) / 5 );	// +10 MAX
+				int buff_skill1 = (int)(m.Skills[SkillName.Cooking].Value / 4); 			// +31 MAX
+				int buff_skill2 = (int)(m.Skills[SkillName.Tasting].Value / 3); 			// +41 MAX
 
-			int damage = 1; 															// MIN 1
-			int dmg_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/40); 		// MAX 2
-			int dmg_skill1 = (int)(m.Skills[SkillName.Cooking].Value/25); 				// MAX 5
-			int dmg_skill2 = (int)(m.Skills[SkillName.Tasting].Value/15); 				// MAX 8
-			int TotalDamage = (int)( damage + dmg_bonus + dmg_skill1 + dmg_skill2 );
+				return buff_default + buff_bonus + buff_skill1 + buff_skill2;
+			}
 
-			int TotalPoison = (int)(m.Skills[SkillName.Poisoning].Value/25) + 1; 		// MAX 6
+			if ( category == "skills" )
+			{
+				int skill = 40; 															// MIN 40
+				int skb_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/2);		// MAX 25
+				int skb_skill1 = (int)(m.Skills[SkillName.Cooking].Value/2); 				// MAX 62
+				int skb_skill2 = (int)(m.Skills[SkillName.Tasting].Value/2); 				// MAX 62
 
-			if ( category == "time" ){ value = TotalTime; }
-			else if ( category == "strength" ){ value = TotalBuff; }
-			else if ( category == "skills" ){ value = TotalSkill; }
-			else if ( category == "damage" ){ value = TotalDamage; }
-			else if ( category == "poison" ){ value = TotalPoison; }
+				return skill + skb_bonus + skb_skill1 + skb_skill2;
+			}
+
+			if ( category == "damage" )
+			{
+				int damage = 1; 															// MIN 1
+				int dmg_bonus = (int)(Server.Items.BasePotion.EnhancePotions( m )/40); 		// MAX 2
+				int dmg_skill1 = (int)(m.Skills[SkillName.Cooking].Value/25); 				// MAX 5
+				int dmg_skill2 = (int)(m.Skills[SkillName.Tasting].Value/15); 				// MAX 8
+
+				return damage + dmg_bonus + dmg_skill1 + dmg_skill2;
+			}
+
+			if ( category == "poison" )
+			{
+				int poison = (int)(m.Skills[SkillName.Poisoning].Value/25) + 1; 		// MAX 6
+
+				return poison;
+			}
+
 
 			return value;
 		}
