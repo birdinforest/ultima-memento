@@ -28,6 +28,7 @@ namespace Server.Misc
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
 			builder.Append("- Item - Throwing slimes have been nerfed (production caps at 2 per jar and amount no longer benefits from alch/ep%)<br>");
 			builder.Append("- Misc - Fishing poles dropped from sunken ships are no longer basic wood<br>");
+			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
@@ -38,6 +39,7 @@ namespace Server.Misc
 			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
 			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
+			builder.Append("- Misc - Treasure hoards now delete when they run out of uses<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
