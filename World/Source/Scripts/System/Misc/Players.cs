@@ -443,8 +443,11 @@ namespace Server.Misc
 			return difficulty;
 		}
 
-		public static int GetResurrectCost( Mobile m )
+		public static int GetResurrectCost( Mobile m, bool force = false )
 		{
+			if ( !force && ( m.SkillsTotal <= 200 || (m.RawDex + m.RawInt + m.RawStr) <= 90 ) )
+				return 0;
+
 			int fame = m.Fame;
 				if ( fame > 15000){ fame = 15000; }
 			int karma = m.Karma * -1;
@@ -951,7 +954,7 @@ namespace Server.Gumps
                 AddStatLine(260, 375, 80, "Low Mana", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerManaCost, false), MyServerSettings.LowerMana()), "Reduces mana cost of casting spells and using abilities", color, colCD);
 
             AddStatLine(260, 375, 80, "Spell Damage +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.SpellDamage), SDICap), "Increases damage done by spells", color, colCD);
-            AddStatLine(260, 375, 80, "Resurrect Cost", string.Format("{0}", GetPlayerInfo.GetResurrectCost(from)), null, color, colCD);
+            AddStatLine(260, 375, 80, "Resurrect Cost", string.Format("{0}", GetPlayerInfo.GetResurrectCost(from, true)), null, color, colCD);
             AddStatLine(260, 375, 80, "Murders", string.Format("{0}", from.Kills), null, color, colCD);
 
             ///////////////////////////////////////////////////////////////////////////////////
