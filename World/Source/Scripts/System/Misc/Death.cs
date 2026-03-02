@@ -322,13 +322,12 @@ namespace Server
 	{ 
 		public static void Initialize()
 		{
-			EventSink.PlayerDeath += new PlayerDeathEventHandler(EventSink_PlayerDeath);
+			EventSink.PlayerDeath += e => QueueResurrect(e.Mobile);
+			EventSink.Login += e => QueueResurrect(e.Mobile);
 		}
 
-		private static void EventSink_PlayerDeath(PlayerDeathEventArgs e)
+		private static void QueueResurrect(Mobile m)
 		{
-			Mobile m = e.Mobile;
-
 			if ( m != null && !m.Alive && GetPlayerInfo.GetResurrectCost( m ) > 0 )
 			{
 				Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), ResurrectNow, m );
