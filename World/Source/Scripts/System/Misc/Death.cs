@@ -311,8 +311,6 @@ namespace Server.Gumps
 			else
 			{
 				from.SendMessage( "You decide to remain in the spirit realm." );
-				Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), ResurrectNow, from );
-				return;
 			}
 		}
 	}
