@@ -34,6 +34,12 @@ namespace Server.Engines.MobileEnhancement
 			EventSink.WorldLoad += Instance.OnWorldLoad;
 		}
 
+		public void AddEnhancement(Mobile mobile, IEnhancement enhancement)
+		{
+			var context = GetOrCreateContext(mobile);
+			context.AddEnhancement(enhancement);
+		}
+
 		/// <summary>Returns the context for the mobile if one exists; otherwise returns the shared default (no-op) context.</summary>
 		public MobileContext GetContextOrDefault(Mobile mobile)
 		{
