@@ -1,15 +1,7 @@
 using System;
-using Server;
-using System.Collections;
 using System.Collections.Generic;
-using Server.Misc;
 using Server.Items;
 using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
-using Server.Mobiles;
-using Server.Accounting;
-using Server.Regions;
 
 namespace Server.Misc
 {
@@ -125,6 +117,23 @@ namespace Server.Spells.Song
 		public override int GetMana() 
 		{ 
 			return RequiredMana; 
+		}
+
+		protected List<Mobile> GetNearbyFriends(int range = 10)
+		{
+			var enumerable = Caster.GetMobilesInRange(range);
+
+			var targets = new List<Mobile>();
+
+			foreach (Mobile m in enumerable)
+			{
+				if (isFriendly(Caster, m))
+					targets.Add(m);
+			}
+
+			enumerable.Free();
+
+			return targets;
 		}
 	} 
 }
