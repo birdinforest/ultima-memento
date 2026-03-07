@@ -29,5 +29,26 @@ namespace Server.Engines.MobileEnhancement
 		{
 			return AppliedAt + Duration;
 		}
+
+		public override void Remove()
+		{
+			if (TargetMobile == null || TargetMobile.Deleted) return;
+
+			RemoveInternal();
+		}
+
+		public override bool TryApply()
+		{
+			if (TargetMobile == null || TargetMobile.Deleted) return false;
+			if (!TryApplyInternal()) return false;
+
+			AppliedAt = DateTime.Now;
+
+			return true;
+		}
+
+		protected abstract void RemoveInternal();
+
+		protected abstract bool TryApplyInternal();
 	}
 }
