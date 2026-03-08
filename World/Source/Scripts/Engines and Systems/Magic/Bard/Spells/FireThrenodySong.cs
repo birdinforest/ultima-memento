@@ -63,7 +63,7 @@ namespace Server.Spells.Song
 				m.FixedParticles(0x374A, 10, 30, 5013, 0x489, 2, EffectLayer.Waist);
 
 				var musicSkill = MusicSkill(Caster);
-				var durationSeconds = 30 + (musicSkill / 100);
+				var durationSeconds = 0.24 * MusicSkill(Caster) + 30;
 				int amount = musicSkill / 16;
 				if (m is BaseCreature && CheckSlayer(instrument, m))
 				{
