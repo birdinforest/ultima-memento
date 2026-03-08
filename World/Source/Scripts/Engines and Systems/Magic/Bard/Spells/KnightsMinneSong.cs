@@ -1,6 +1,7 @@
-using System;
-using System.Collections;
+using Server.Engines.MobileEnhancement;
 using Server.Misc;
+using Server.Mobiles;
+using System;
 
 namespace Server.Spells.Song
 {
@@ -27,70 +28,68 @@ namespace Server.Spells.Song
 
 			if (CheckSequence())
 			{
+				var duration = TimeSpan.FromSeconds(MusicSkill(Caster) * 2);
+
+				foreach (var friend in GetNearbyFriends())
+				{
+					var recipient = new KnightsMinneRecipient(Caster, friend, duration);
+					Engine.Instance.AddEnhancement(friend, recipient);
+				}
+
 				sings = true;
-
-				ArrayList targets = new ArrayList();
-
-				foreach (Mobile m in Caster.GetMobilesInRange(10))
-				{
-					if (isFriendly(Caster, m) && m.PhysicalResistance < MySettings.S_MaxResistance)
-						targets.Add(m);
-				}
-
-				for (int i = 0; i < targets.Count; ++i)
-				{
-					Mobile m = (Mobile)targets[i];
-
-					TimeSpan duration = TimeSpan.FromSeconds((double)(MusicSkill(Caster) * 2));
-					int amount = MyServerSettings.PlayerLevelMod((int)(MusicSkill(Caster) / 16), Caster);
-
-					if ((amount + m.PhysicalResistance) > MySettings.S_MaxResistance)
-						amount = MySettings.S_MaxResistance - m.PhysicalResistance;
-
-					m.SendMessage("Your resistance to physical attacks has increased.");
-					ResistanceMod mod1 = new ResistanceMod(ResistanceType.Physical, +amount);
-
-					m.AddResistanceMod(mod1);
-
-					m.FixedParticles(0x373A, 10, 15, 5012, 0x450, 3, EffectLayer.Waist);
-
-					new ExpireTimer(m, mod1, duration).Start();
-
-					string args = String.Format("{0}", amount);
-					BuffInfo.RemoveBuff(m, BuffIcon.KnightsMinne);
-					BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.KnightsMinne, 1063577, 1063578, duration, m, args.ToString(), true));
-				}
 			}
 
 			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
 			FinishSequence();
 		}
 
-		private class ExpireTimer : Timer
+		private class KnightsMinneRecipient : TimeDependentRecipient<KnightsMinneSong>
 		{
-			private Mobile m_Mobile;
-			private ResistanceMod m_Mods;
+			private readonly Mobile Caster;
+			private ResistanceMod m_Mod;
 
-			public ExpireTimer(Mobile m, ResistanceMod mod, TimeSpan delay) : base(delay)
+			public KnightsMinneRecipient(Mobile caster, Mobile targetMobile, TimeSpan duration) : base(targetMobile, duration)
 			{
-				m_Mobile = m;
-				m_Mods = mod;
+				Caster = caster;
 			}
 
-			public void DoExpire()
+			protected override void RemoveInternal()
 			{
-				m_Mobile.RemoveResistanceMod(m_Mods);
+				if (m_Mod == null) return;
 
-				Stop();
+				var m = TargetMobile;
+				m.RemoveResistanceMod(m_Mod);
+				m_Mod = null;
+
+				BuffInfo.RemoveBuff(m, BuffIcon.KnightsMinne);
+				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
 			}
 
-			protected override void OnTick()
+			protected override bool TryApplyInternal()
 			{
-				if (m_Mobile != null)
+				var m = TargetMobile;
+				var amount = MyServerSettings.PlayerLevelMod(MusicSkill(Caster) / 16, Caster);
+
+				// Clamp creature resistance bonus to player max
+				if (m is BaseCreature)
 				{
-					m_Mobile.SendMessage("The effect of the knight's minne wears off.");
-					DoExpire();
+					if ((amount + m.PhysicalResistance) > MySettings.S_MaxResistance)
+					{
+						amount = MySettings.S_MaxResistance - m.PhysicalResistance;
+						if (amount < 1) return false;
+					}
 				}
+
+				m.SendMessage("Your resistance to physical attacks has increased.");
+				m_Mod = new ResistanceMod(ResistanceType.Physical, +amount);
+				m.AddResistanceMod(m_Mod);
+				m.FixedParticles(0x373A, 10, 15, 5012, 0x450, 3, EffectLayer.Waist);
+
+				string args = String.Format("{0}", amount);
+				BuffInfo.RemoveBuff(m, BuffIcon.KnightsMinne);
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.KnightsMinne, 1063577, 1063578, Duration, null, args));
+
+				return true;
 			}
 		}
 	}

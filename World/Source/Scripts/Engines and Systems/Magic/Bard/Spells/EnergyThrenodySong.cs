@@ -1,8 +1,9 @@
 using System;
-using Server.Targeting;
-using Server.Mobiles;
+using Server.Engines.MobileEnhancement;
 using Server.Items;
 using Server.Misc;
+using Server.Mobiles;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
@@ -34,91 +35,90 @@ namespace Server.Spells.Song
 
 		public override void OnCast()
 		{
+			base.OnCast();
+
 			Caster.Target = new InternalTarget(this);
 		}
 
 		public void Target(Mobile m)
 		{
-			base.OnCast();
-
 			bool sings = false;
 
 			if (!Caster.CanSee(m))
 			{
 				Caster.SendLocalizedMessage(500237); // Target can not be seen.
 			}
+			else if (m_Book.Instrument == null || !Caster.InRange(m_Book.Instrument.GetWorldLocation(), 1))
+			{
+				Caster.SendMessage("Your instrument is missing! You can select another from your song book.");
+			}
 			else if (CheckHSequence(m))
 			{
-
 				sings = true;
 
-				if (m_Book.Instrument == null || !(Caster.InRange(m_Book.Instrument.GetWorldLocation(), 1)))
-				{
-					Caster.SendMessage("Your instrument is missing! You can select another from your song book.");
-					return;
-				}
-
-				Mobile source = Caster;
-
-				SpellHelper.Turn(source, m);
+				SpellHelper.Turn(Caster, m);
 
 				m.FixedParticles(0x374A, 10, 30, 5013, 0x14, 2, EffectLayer.Waist);
 
-				bool IsSlayer = false;
-				if (m is BaseCreature) { IsSlayer = CheckSlayer(m_Book.Instrument, m); }
+				bool isSlayer = m is BaseCreature && CheckSlayer(m_Book.Instrument, m);
 
-				int amount = MyServerSettings.PlayerLevelMod((int)(MusicSkill(Caster) / 16), Caster);
-				TimeSpan duration = TimeSpan.FromSeconds((double)(MusicSkill(Caster)));
-
-				if (IsSlayer == true)
+				var musicSkill = MusicSkill(Caster);
+				TimeSpan duration;
+				int amount = musicSkill / 16;
+				if (isSlayer)
 				{
 					amount = amount * 2;
-					duration = TimeSpan.FromSeconds((double)(MusicSkill(Caster) * 2));
+					duration = TimeSpan.FromSeconds(musicSkill * 2);
+				}
+				else
+				{
+					duration = TimeSpan.FromSeconds(musicSkill);
 				}
 
-				m.SendMessage("Your resistance to energy has decreased.");
-				ResistanceMod mod1 = new ResistanceMod(ResistanceType.Energy, -amount);
-
-				m.AddResistanceMod(mod1);
-
-				ExpireTimer timer1 = new ExpireTimer(m, mod1, duration);
-				timer1.Start();
-
-				string args = String.Format("{0}", amount);
-				BuffInfo.RemoveBuff(m, BuffIcon.EnergyThrenody);
-				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.EnergyThrenody, 1063567, 1063568, duration, m, args.ToString(), true));
+				var recipient = new EnergyThrenodyRecipient(m, duration, amount);
+				Engine.Instance.AddEnhancement(m, recipient);
 			}
 
 			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
 			FinishSequence();
 		}
 
-		private class ExpireTimer : Timer
+		private class EnergyThrenodyRecipient : TimeDependentRecipient<EnergyThrenodySong>
 		{
-			private Mobile m_Mobile;
-			private ResistanceMod m_Mods;
+			private readonly int m_Amount;
+			private ResistanceMod m_Mod;
 
-			public ExpireTimer(Mobile m, ResistanceMod mod, TimeSpan delay) : base(delay)
+			public EnergyThrenodyRecipient(Mobile targetMobile, TimeSpan duration, int amount) : base(targetMobile, duration)
 			{
-				m_Mobile = m;
-				m_Mods = mod;
+				m_Amount = amount;
 			}
 
-			public void DoExpire()
+			protected override void RemoveInternal()
 			{
-				PlayerMobile p = m_Mobile as PlayerMobile;
-				m_Mobile.RemoveResistanceMod(m_Mods);
+				if (m_Mod == null) return;
 
-				Stop();
+				var m = TargetMobile;
+				m.RemoveResistanceMod(m_Mod);
+				m_Mod = null;
+
+				BuffInfo.RemoveBuff(m, BuffIcon.EnergyThrenody);
+				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
 			}
 
-			protected override void OnTick()
+			protected override bool TryApplyInternal()
 			{
-				if (m_Mobile != null)
-				{
-					m_Mobile.SendMessage("The effect of the energy threnody wears off.");
-					DoExpire();
-				}
+				var m = TargetMobile;
+
+				m.SendMessage("Your resistance to energy has decreased.");
+				m_Mod = new ResistanceMod(ResistanceType.Energy, -m_Amount);
+				m.AddResistanceMod(m_Mod);
+				m.FixedParticles(0x374A, 10, 30, 5013, 0x14, 2, EffectLayer.Waist);
+
+				string args = String.Format("{0}", m_Amount);
+				BuffInfo.RemoveBuff(m, BuffIcon.EnergyThrenody);
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.EnergyThrenody, 1063567, 1063568, Duration, m, args, true));
+
+				return true;
 			}
 		}
 

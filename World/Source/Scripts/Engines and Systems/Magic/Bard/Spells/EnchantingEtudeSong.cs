@@ -1,6 +1,6 @@
-using System;
-using System.Collections;
+using Server.Engines.MobileEnhancement;
 using Server.Misc;
+using System;
 
 namespace Server.Spells.Song
 {
@@ -27,39 +27,56 @@ namespace Server.Spells.Song
 
 			if (CheckSequence())
 			{
+				var duration = TimeSpan.FromSeconds(MusicSkill(Caster) * 2);
+
+				foreach (var friend in GetNearbyFriends())
+				{
+					var recipient = new EnchantingEtudeRecipient(Caster, friend, duration);
+					Engine.Instance.AddEnhancement(friend, recipient);
+				}
+
 				sings = true;
-
-				ArrayList targets = new ArrayList();
-
-				foreach (Mobile m in Caster.GetMobilesInRange(10))
-				{
-					if (isFriendly(Caster, m))
-						targets.Add(m);
-				}
-
-				for (int i = 0; i < targets.Count; ++i)
-				{
-					Mobile m = (Mobile)targets[i];
-
-					int amount = MyServerSettings.PlayerLevelMod((int)(MusicSkill(Caster) / 16), Caster);
-					string intt = "int";
-
-					double duration = (double)(MusicSkill(Caster) * 2);
-
-					StatMod mod = new StatMod(StatType.Int, intt, +amount, TimeSpan.FromSeconds(duration));
-
-					m.AddStatMod(mod);
-
-					m.FixedParticles(0x375A, 10, 15, 5017, 0x1F8, 3, EffectLayer.Waist);
-
-					string args = String.Format("{0}", amount);
-					BuffInfo.RemoveBuff(m, BuffIcon.EnchantingEtude);
-					BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.EnchantingEtude, 1063563, 1063564, TimeSpan.FromSeconds(duration), m, args.ToString(), true));
-				}
 			}
 
 			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
 			FinishSequence();
+		}
+
+		private class EnchantingEtudeRecipient : TimeDependentRecipient<EnchantingEtudeSong>
+		{
+			private readonly Mobile Caster;
+			private const string StatModName = "[Bard] EnchantingEtudeSong";
+
+			public EnchantingEtudeRecipient(Mobile caster, Mobile targetMobile, TimeSpan duration) : base(targetMobile, duration)
+			{
+				Caster = caster;
+			}
+
+			protected override void RemoveInternal()
+			{
+				var m = TargetMobile;
+				m.RemoveStatMod(StatModName);
+
+				BuffInfo.RemoveBuff(m, BuffIcon.EnchantingEtude);
+				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+			}
+
+			protected override bool TryApplyInternal()
+			{
+				var m = TargetMobile;
+				int amount = MyServerSettings.PlayerLevelMod(MusicSkill(Caster) / 16, Caster);
+
+				StatMod mod = new StatMod(StatType.Int, StatModName, +amount, TimeSpan.Zero);
+				m.AddStatMod(mod);
+
+				m.FixedParticles(0x375A, 10, 15, 5017, 0x1F8, 3, EffectLayer.Waist);
+
+				string args = String.Format("{0}", amount);
+				BuffInfo.RemoveBuff(m, BuffIcon.EnchantingEtude);
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.EnchantingEtude, 1063563, 1063564, Duration, null, args));
+
+				return true;
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Engines.MobileEnhancement;
 
 namespace Server.Spells.Song
 {
@@ -28,71 +28,68 @@ namespace Server.Spells.Song
 
 			if (CheckSequence())
 			{
+				var duration = TimeSpan.FromSeconds(MusicSkill(Caster) * 2);
+
+				foreach (var friend in GetNearbyFriends())
+				{
+					var recipient = new IceCarolRecipient(Caster, friend, duration);
+					Engine.Instance.AddEnhancement(friend, recipient);
+				}
+
 				sings = true;
-
-				ArrayList targets = new ArrayList();
-
-				foreach (Mobile m in Caster.GetMobilesInRange(10))
-				{
-					if (isFriendly(Caster, m) && m.ColdResistance < MySettings.S_MaxResistance)
-						targets.Add(m);
-				}
-
-				for (int i = 0; i < targets.Count; ++i)
-				{
-					Mobile m = (Mobile)targets[i];
-
-					TimeSpan duration = TimeSpan.FromSeconds((double)(MusicSkill(Caster) * 2));
-					int amount = MyServerSettings.PlayerLevelMod((int)(MusicSkill(Caster) / 16), Caster);
-
-					if ((amount + m.ColdResistance) > MySettings.S_MaxResistance)
-						amount = MySettings.S_MaxResistance - m.ColdResistance;
-
-					m.SendMessage("Your resistance to cold has increased.");
-					ResistanceMod mod1 = new ResistanceMod(ResistanceType.Cold, +amount);
-
-					m.AddResistanceMod(mod1);
-
-					m.FixedParticles(0x373A, 10, 15, 5012, 0x480, 3, EffectLayer.Waist);
-
-					new ExpireTimer(m, mod1, duration).Start();
-
-					string args = String.Format("{0}", amount);
-					BuffInfo.RemoveBuff(m, BuffIcon.IceCarol);
-					BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.IceCarol, 1063573, 1063574, duration, m, args.ToString(), true));
-				}
 			}
 
 			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
 			FinishSequence();
 		}
 
-		private class ExpireTimer : Timer
+		private class IceCarolRecipient : TimeDependentRecipient<IceCarolSong>
 		{
-			private Mobile m_Mobile;
-			private ResistanceMod m_Mods;
+			private readonly Mobile Caster;
+			private ResistanceMod m_Mod;
 
-			public ExpireTimer(Mobile m, ResistanceMod mod, TimeSpan delay) : base(delay)
+			public IceCarolRecipient(Mobile caster, Mobile targetMobile, TimeSpan duration) : base(targetMobile, duration)
 			{
-				m_Mobile = m;
-				m_Mods = mod;
+				Caster = caster;
 			}
 
-			public void DoExpire()
+			protected override void RemoveInternal()
 			{
-				PlayerMobile dpm = m_Mobile as PlayerMobile;
-				m_Mobile.RemoveResistanceMod(m_Mods);
+				if (m_Mod == null) return;
 
-				Stop();
+				var m = TargetMobile;
+				m.RemoveResistanceMod(m_Mod);
+				m_Mod = null;
+
+				BuffInfo.RemoveBuff(m, BuffIcon.IceCarol);
+				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
 			}
 
-			protected override void OnTick()
+			protected override bool TryApplyInternal()
 			{
-				if (m_Mobile != null)
+				var m = TargetMobile;
+				var amount = MyServerSettings.PlayerLevelMod(MusicSkill(Caster) / 16, Caster);
+
+				// Clamp creature resistance bonus to player max
+				if (m is BaseCreature)
 				{
-					m_Mobile.SendMessage("The effect of the ice carol wears off.");
-					DoExpire();
+					if ((amount + m.ColdResistance) > MySettings.S_MaxResistance)
+					{
+						amount = MySettings.S_MaxResistance - m.ColdResistance;
+						if (amount < 1) return false;
+					}
 				}
+
+				m.SendMessage("Your resistance to cold has increased.");
+				m_Mod = new ResistanceMod(ResistanceType.Cold, +amount);
+				m.AddResistanceMod(m_Mod);
+				m.FixedParticles(0x373A, 10, 15, 5012, 0x480, 3, EffectLayer.Waist);
+
+				string args = String.Format("{0}", amount);
+				BuffInfo.RemoveBuff(m, BuffIcon.IceCarol);
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.IceCarol, 1063573, 1063574, Duration, null, args));
+
+				return true;
 			}
 		}
 	}
