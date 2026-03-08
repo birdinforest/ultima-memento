@@ -87,7 +87,7 @@ namespace Server.Spells.Song
 				});
 
 				BuffInfo.RemoveBuff(m, BuffIcon.ArmysPaeon);
-				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.ArmysPaeon, 1063561, Duration, m));
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.ArmysPaeon, 1063561, 1063560, Duration, m));
 
 				m.FixedParticles(0x376A, 9, 32, 5030, 0x21, 3, EffectLayer.Waist);
 

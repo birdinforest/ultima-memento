@@ -50,6 +50,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Treasure hoards now delete when they run out of uses<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 			builder.Append("- NPC - Barber will now sell you their items<br>");
+			builder.Append("- Spell - Mages Ballad and Army's Paeon buffs now use the correct tooltip<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

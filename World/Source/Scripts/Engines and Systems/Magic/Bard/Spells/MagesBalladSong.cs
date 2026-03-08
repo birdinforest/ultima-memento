@@ -87,7 +87,7 @@ namespace Server.Spells.Song
 				});
 
 				BuffInfo.RemoveBuff(m, BuffIcon.MagesBallad);
-				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.MagesBallad, 1063580, Duration, m));
+				BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.MagesBallad, 1063579, 1063580, Duration, m));
 
 				m.FixedParticles(0x376A, 9, 32, 5030, 0x256, 3, EffectLayer.Waist);
 				m.PlaySound(0x1F2);
