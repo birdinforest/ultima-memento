@@ -28,7 +28,8 @@ namespace Server.Spells.Song
 
 			if (CheckSequence())
 			{
-				var duration = TimeSpan.FromSeconds(MusicSkill(Caster) * 2);
+				var durationSeconds = Math.Min(120, 30 + (MusicSkill(Caster) / 100));
+				var duration = TimeSpan.FromSeconds(durationSeconds);
 
 				foreach (var friend in GetNearbyFriends())
 				{
