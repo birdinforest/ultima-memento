@@ -44,6 +44,7 @@ namespace Server.Spells.Song
 	{
 		public SongBook m_Book;
 
+		public virtual bool UseDefaultInstrument{ get{ return true; } } 
 		public abstract double RequiredSkill{ get; } 
 		public abstract int RequiredMana{ get; } 
 
@@ -73,6 +74,12 @@ namespace Server.Spells.Song
 				Caster.SendLocalizedMessage( 1063013, args ); // You need at least ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ skill to use that ability.
 				return false;
 			}
+			
+			if ( UseDefaultInstrument && BaseInstrument.GetInstrument( Caster) == null )
+			{
+				BaseInstrument.PickInstrument( Caster, null );
+				return false;
+			}
 
             Spellbook book = Spellbook.Find(Caster, -1, SpellbookType.Song);
 
@@ -82,12 +89,6 @@ namespace Server.Spells.Song
             if ( m_Book == null )
             {
                 Caster.SendMessage("You seem to be missing your book of songs.");
-                return false;
-            }
-
-            if ( m_Book.Instrument == null || m_Book.Instrument.Parent != Caster )
-            {
-                Caster.SendMessage("Your instrument is not equipped!");
                 return false;
             }
 

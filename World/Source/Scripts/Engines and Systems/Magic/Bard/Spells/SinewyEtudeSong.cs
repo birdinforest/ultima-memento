@@ -1,6 +1,7 @@
 using Server.Engines.MobileEnhancement;
 using Server.Misc;
 using System;
+using Server.Items;
 
 namespace Server.Spells.Song
 {
@@ -38,14 +39,14 @@ namespace Server.Spells.Song
 				sings = true;
 			}
 
-			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
+			BardFunctions.UseBardInstrument(BaseInstrument.GetInstrument(Caster), sings, Caster);
 			FinishSequence();
 		}
 
 		private class SinewyEtudeRecipient : TimeDependentRecipient<SinewyEtudeSong>
 		{
-			private readonly Mobile Caster;
 			private const string StatModName = "[Bard] SinewyEtudeSong";
+			private readonly Mobile Caster;
 
 			public SinewyEtudeRecipient(Mobile caster, Mobile targetMobile, TimeSpan duration) : base(targetMobile, duration)
 			{

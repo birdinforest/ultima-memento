@@ -44,11 +44,13 @@ namespace Server.Spells.Song
 		{
 			bool sings = false;
 
+			var instrument = BaseInstrument.GetInstrument(Caster);
+
 			if (!Caster.CanSee(m))
 			{
 				Caster.SendLocalizedMessage(500237); // Target can not be seen.
 			}
-			else if (m_Book.Instrument == null || !Caster.InRange(m_Book.Instrument.GetWorldLocation(), 1))
+			else if (instrument == null || !Caster.InRange(instrument.GetWorldLocation(), 1))
 			{
 				Caster.SendMessage("Your instrument is missing! You can select another from your song book.");
 			}
@@ -60,7 +62,7 @@ namespace Server.Spells.Song
 
 				m.FixedParticles(0x374A, 10, 30, 5013, 0x238, 2, EffectLayer.Waist);
 
-				bool isSlayer = m is BaseCreature && CheckSlayer(m_Book.Instrument, m);
+				bool isSlayer = m is BaseCreature && CheckSlayer(instrument, m);
 
 				var musicSkill = MusicSkill(Caster);
 				TimeSpan duration;
@@ -79,7 +81,7 @@ namespace Server.Spells.Song
 				Engine.Instance.AddEnhancement(m, recipient);
 			}
 
-			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
+			BardFunctions.UseBardInstrument(instrument, sings, Caster);
 			FinishSequence();
 		}
 
