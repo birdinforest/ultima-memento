@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Engines.MobileEnhancement;
+using Server.Items;
 
 namespace Server.Spells.Song
 {
@@ -18,7 +19,6 @@ namespace Server.Spells.Song
 
 		public PoisonCarolSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
 		{
-
 		}
 
 		public override void OnCast()
@@ -40,7 +40,7 @@ namespace Server.Spells.Song
 				sings = true;
 			}
 
-			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
+			BardFunctions.UseBardInstrument(BaseInstrument.GetInstrument(Caster), sings, Caster);
 			FinishSequence();
 		}
 

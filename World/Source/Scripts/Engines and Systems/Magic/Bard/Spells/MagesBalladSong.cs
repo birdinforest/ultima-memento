@@ -1,4 +1,5 @@
 using Server.Engines.MobileEnhancement;
+using Server.Items;
 using Server.Misc;
 using System;
 
@@ -43,14 +44,14 @@ namespace Server.Spells.Song
 				sings = true;
 			}
 
-			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
+			BardFunctions.UseBardInstrument(BaseInstrument.GetInstrument(Caster), sings, Caster);
 			FinishSequence();
 		}
 
 		private class MagesBalladRecipient : TimeDependentRecipient<MagesBalladSong>
 		{
-			private Timer m_Timer;
 			private readonly int m_TickAmount;
+			private Timer m_Timer;
 
 			public MagesBalladRecipient(Mobile targetMobile, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
 			{

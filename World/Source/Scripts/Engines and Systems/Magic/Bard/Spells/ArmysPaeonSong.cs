@@ -1,4 +1,5 @@
 using Server.Engines.MobileEnhancement;
+using Server.Items;
 using Server.Misc;
 using System;
 
@@ -11,7 +12,7 @@ namespace Server.Spells.Song
 			-1
 			);
 
-		public override bool BlocksMovement { get{ return true; } }
+		public override bool BlocksMovement { get { return true; } }
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(5); } }
 		public override double RequiredSkill { get { return 55.0; } }
 		public override int RequiredMana { get { return 15; } }
@@ -43,14 +44,14 @@ namespace Server.Spells.Song
 				sings = true;
 			}
 
-			BardFunctions.UseBardInstrument(m_Book.Instrument, sings, Caster);
+			BardFunctions.UseBardInstrument(BaseInstrument.GetInstrument(Caster), sings, Caster);
 			FinishSequence();
 		}
 
 		private class ArmysPaeonRecipient : TimeDependentRecipient<ArmysPaeonSong>
 		{
-			private Timer m_Timer;
 			private readonly int m_TickAmount;
+			private Timer m_Timer;
 
 			public ArmysPaeonRecipient(Mobile targetMobile, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
 			{
