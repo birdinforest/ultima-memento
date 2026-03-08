@@ -2573,6 +2573,9 @@ namespace Server.Mobiles
 
 			base.OnDeath(c);
 
+			var context = Engines.MobileEnhancement.Engine.Instance.GetContextOrDefault(this);
+			context.Validate(true);
+
 			RevertMods();
 
 			SkillHandlers.StolenItem.ReturnOnDeath( this, c );
