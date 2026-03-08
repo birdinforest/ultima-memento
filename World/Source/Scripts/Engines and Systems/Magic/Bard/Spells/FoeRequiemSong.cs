@@ -134,9 +134,9 @@ namespace Server.Spells.Song
 							currentDamage *= 0.75;
 
 						m.Damage((int)currentDamage, Caster);
+						m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Head);
 					});
 
-					m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Head);
 					Caster.MovingParticles(m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);
 					m.PlaySound(0x1EA);
 				}
