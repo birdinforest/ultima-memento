@@ -350,7 +350,7 @@ namespace Server.Engines.Avatar
 										{
 											m_From.InitStats(10, 10, 60);
 											context.SelectedTemplate = AvatarStarterTemplates.Scholar;
-											
+
 											return false;
 										}
 									);
@@ -406,6 +406,41 @@ namespace Server.Engines.Avatar
 								}
 							));
 						}
+						return rewards;
+					}
+
+				case Categories.FullSkillArchive:
+					{
+						var skills = new List<Skill>();
+						for (var i = 0; i < m_From.Skills.Length; i++)
+						{
+							var skill = m_From.Skills[i];
+							if (skill.SkillName == SkillName.Mysticism) continue;
+							if (skill.SkillName == SkillName.Imbuing) continue;
+							if (skill.SkillName == SkillName.Throwing) continue;
+
+							var archiveValue = context.Skills[skill.SkillName];
+							if (archiveValue < 1) continue;
+
+							skills.Add(skill);
+						}
+
+						var rewards = new List<IReward>();
+						foreach (var skill in skills.OrderBy(s => s.IsSecondarySkill()).ThenBy(s => m_From.Skills[s.SkillName].Name))
+						{
+							var value = context.Skills[skill.SkillName] / 10f;
+
+							rewards.Add(
+								ActionReward.Create(
+									AvatarShopGump.COST_NO_BUY,
+									AvatarShopGump.NO_ITEM_ID,
+									skill.Name,
+									string.Format("{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? "Primary" : "Secondary", value),
+									() => { }
+								)
+							);
+						}
+
 						return rewards;
 					}
 

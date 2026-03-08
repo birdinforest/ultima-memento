@@ -641,7 +641,7 @@ namespace Server.Misc
 
 			while (true)
 			{
-				var item = Utility.Random(itemOptions).Construct(false);
+				var item = Utility.Random(itemOptions).Construct(false, null);
 				if (item != null)
 				{
 					if (isMagic)
@@ -915,7 +915,7 @@ namespace Server.Misc
 								new SkillNameValue( SkillName.Knightship, 30 ),
 								new SkillNameValue( SkillName.Tactics, 30 ),
 								new SkillNameValue( SkillName.Healing, 30 ),
-								new SkillNameValue( SkillName.Swords, 30 )
+								new SkillNameValue( SkillName.Bludgeoning, 30 )
 							};
 					}
 

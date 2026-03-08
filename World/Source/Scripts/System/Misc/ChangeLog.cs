@@ -6,7 +6,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: 2.1.0";
+			return "Version: 2.2.0";
 		}
 
 		public static string Versions()
@@ -14,6 +14,44 @@ namespace Server.Misc
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Ability - Focus Attack is now usable with ranged weapons<br>");
+			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
+			builder.Append("- Ability - Mortal Strike now prevents mobs from cheating death<br>");
+			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
+			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
+			builder.Append("- Gump - Avatars can now view their Skill Archive<br>");
+			builder.Append("- Gump - Skill craft list now has an info button next to each item<br>");
+			builder.Append("- Gump - Declining a healer resurrect gump no longer queues the red (penalty) res gump<br>");
+			builder.Append("- Gump - Resurrect Now (penalty) gump can now trigger after re-logging<br>");
+			builder.Append("- Gump - Resurrect gumps now have a confirmation when you will incur a penalty<br>");
+			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
+			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
+			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
+			builder.Append("- Item - Throwing slimes have been nerfed (production caps at 2 per jar and amount no longer benefits from alch/ep%)<br>");
+			builder.Append("- Misc - Fishing poles dropped from sunken ships are no longer basic wood<br>");
+			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
+			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
+			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
+			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
+			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
+			builder.Append("- Skill - Initial targeting range for Taming is now 3, up from 2<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Avatar - Avatars can now delete skills from Soulstones<br>");
+			builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
+			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
+			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
+			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
+			builder.Append("- Misc - Treasure hoards now delete when they run out of uses<br>");
+			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
+			builder.Append("- NPC - Barber will now sell you their items<br>");
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 2.1.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Achievement - Category buttons are now easier to click<br>");
@@ -26,11 +64,13 @@ namespace Server.Misc
 			builder.Append("- Craft - Tier 3 runic tools now provide 3x magical attributes at 70% intensity, up from 50%<br>");
 			builder.Append("- Craft - Bulk crafting now shows crafting error messages<br>");
 			builder.Append("- Craft - Ranger Armor and Hide Chests can now be enhanced<br>");
+			builder.Append("- Craft - Most resources no longer provide Lower Requirements<br>");
 			builder.Append("- Gather - Mining for Sand is notably faster<br>");
 			builder.Append("- Gump - Elemental spell commands are now shown on their respective pages<br>");
 			builder.Append("- Gump - Craft Skill List now shows a lock icon for items you don't know the recipe for<br>");
 			builder.Append("- Gump - Status gump no longer includes Alchemy bonus in EP% cap<br>");
 			builder.Append("- Gump - Vendor bulletin is now limited to displays based on Normal, Avatar, or Permadeath character status<br>");
+			builder.Append("- Gump - CombatBar value column is now wider<br>");
 			builder.Append("- Item - Tablets no longer have a tooltip indicating their worth<br>");
 			builder.Append("- Item - Normal and Greater Strength Potions bonuses have been reduced<br>");
 			builder.Append("- Item - The book of jokes now has a description<br>");
@@ -48,6 +88,8 @@ namespace Server.Misc
 			builder.Append("- Item - Reduced Staff of Five parts LMC (10%, down from 40%) and LRC (20%, down from 100%)<br>");
 			builder.Append("- Item - Dumping Liquids no longer reduces karma<br>");
 			builder.Append("- Item - Throwing slimes have been buffed (alch benefit added, tasting benefit increased)<br>");
+			builder.Append("- Item - Player Traps now count as aggressive actions on mobs<br>");
+			builder.Append("- Item - Player Traps now have a 1 tile triggering radius<br>");
 			builder.Append("- Misc - Boat movement is no longer blocked by corpses<br>");
 			builder.Append("- Misc - Corpses can no longer be looted while it would cause a criminal action<br>");
 			builder.Append("- Misc - Combat is now prevented in starting zones and Jail<br>");
@@ -60,6 +102,11 @@ namespace Server.Misc
 			builder.Append("- Misc - Players now fully log out after 30 seconds, down from 5 minutes<br>");
 			builder.Append("- Misc - Player vendors owner is now propagated when rebirthing<br>");
 			builder.Append("- Misc - Coded Parchment have been rewards reduced but are now much more likely to contain an artifact<br>");
+			builder.Append("- Misc - Deleted players are now removed from their party<br>");
+			builder.Append("- Misc - Knight template now starts with Bludgeoning instead of Swordsmanship<br>");
+			builder.Append("- Misc - Player vendor tooltips now show the type of player they belong to<br>");
+			builder.Append("- Misc - Player house limits are now enforced based on character type<br>");
+			builder.Append("- Misc - Sherry has developed a mild case of lactose intolerance<br>");
 			builder.Append("- Mobs - Rocs and Roclings are now treated as Birds instead of Dragons<br>");
 			builder.Append("- Pets - Required taming skill is no longer reduced when leveling<br>");
 			builder.Append("- Pets - Pets will now auto-bond every time they level up to 3 or higher<br>");
@@ -85,9 +132,13 @@ namespace Server.Misc
 			builder.Append("- Skill - Hidden Inscription bonus provides 10% more SDI (20% total) for Grandmasters<br>");
 			builder.Append("- Skill - Alchemy now provides 1% EP per 3 points (125=41% EP), up from 30% EP for 100 points<br>");
 			builder.Append("- Skill - Death Strike now triggers at 3 steps, down from 5<br>");
+			builder.Append("- Skill - Death Strike can now gain skill as long as the basic attack lands<br>");
 			builder.Append("- Skill - Death Strike damage is now uncapped and 300% higher<br>");
 			builder.Append("- Skill - Death Strike now paralyzes the target for 2-4 seconds<br>");
 			builder.Append("- Skill - Backstab can now paralyze the target<br>");
+			builder.Append("- Skill - Ninjitsu is now 50% more likely to gain<br>");
+			builder.Append("- Skill - Lightning Strike now has a slight chance to gain up to the player's skill cap<br>");
+			builder.Append("- Skill - Searching will no longer reveal players in the same party<br>");
 			builder.Append("- Spell - Remove Curse and Hag Hand now have failure messages when failing on cursed items<br>");
 			builder.Append("- Spell - Blade Spirits and Elemental Fiend now have a shorter cast delay<br>");
 			builder.Append("- Spell - Intellect provides 1% SDI per 3 points, up from 1% SDI per 10 points<br>");
@@ -96,13 +147,17 @@ namespace Server.Misc
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
+			builder.Append("- Ability - Fix crash when a mob used Lightning Strike<br>");
 			builder.Append("- Gump - LRC/LMC now show uncapped values on [Status gump<br>");
 			builder.Append("- Gump - Fix typo in Magic Rune Bag gump<br>");
 			builder.Append("- Gump - Fix issue where using DK1 gump would close DK2 spell bars<br>");
 			builder.Append("- Gump - Bard spellbook now shows the exact book's spells<br>");
+			builder.Append("- Gump - Spiked Club is no improperly longer listed as Spiked Mace<br>");
 			builder.Append("- Item - Knightship and Death Knight books now properly require appropriate skills/karma to equip<br>");
 			builder.Append("- Item - Fix crash from summon items if owner was deleted<br>");
 			builder.Append("- Item - Fix typo when dumping Liquids<br>");
+			builder.Append("- Item - Fix typo in Vampiric Embrace scroll name<br>");
+			builder.Append("- Item - Player Traps properly respect 'can harm' checks<br>");
 			builder.Append("- Misc - Fixed an issue where unsecured items near a house were inaccessible<br>");
 			builder.Append("- Misc - Fix typo in logged death message<br>");
 			builder.Append("- Misc - Fix issue where monsters only dropped gold coins and not other currencies<br>");
@@ -111,8 +166,11 @@ namespace Server.Misc
 			builder.Append("- Pets - Hitting level 10 on pets now provides 5 traits instead of 2<br>");
 			builder.Append("- Pets - Taming attempts are now less likely to fail<br>");
 			builder.Append("- Pets - Really remove subdue mechanic once taming has started<br>");
+			builder.Append("- Skill - Tasting now increases the chance of higher tier potion drops<br>");
+			builder.Append("- Skill - Cooking now increases the chance to boost the amount of reagent drops<br>");
 			builder.Append("- Spell - Elemental Purge now has a unique mantra<br>");
 			builder.Append("- Spell - Wraith Form weapon attacks now only steal mana that when available<br>");
+			builder.Append("- Spell - Magic Trap now properly credits the Caster with damage<br>");
 			builder.Append(SEPARATOR_LINE);
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

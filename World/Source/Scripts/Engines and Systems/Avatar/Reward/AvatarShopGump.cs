@@ -14,11 +14,11 @@ namespace Server.Engines.Avatar
 		public const int COST_FREE = -1;
 		public const int FAT_BOTTLE_ITEM_ID = 0x1FD9;
 		public const int GOLD_STACK_ITEM_ID = 0x0EEF;
+		public const int COST_NO_BUY = 0;
 		public const int NO_ITEM_ID = -1;
 		private const int CARD_HEIGHT = 68;
 		private const int CARD_WIDTH = 864 - NAVIGATION_WIDTH;
 		private const int CATEGORY_WIDTH = NAVIGATION_WIDTH - 28 - 20;
-		private const int COST_NO_BUY = 0;
 		private const int GIANT_COIN_ITEM_ID = 0x4FAD;
 		private const int NAVIGATION_WIDTH = 152 + 20 + 20;
 
@@ -29,6 +29,7 @@ namespace Server.Engines.Avatar
 			Categories.Templates,
 			Categories.PrimaryBoosts,
 			Categories.SecondaryBoosts,
+			Categories.FullSkillArchive,
 			// Categories.Items,
 		};
 
@@ -129,16 +130,33 @@ namespace Server.Engines.Avatar
 					case Categories.PrimaryBoosts:
 					case Categories.SecondaryBoosts:
 						{
+							var isPrimary = m_SelectedCategory == Categories.PrimaryBoosts;
 							AddInformationCard(
 								BLANK_ITEM_ID,
-								"Skill Archive - Customize Your Build",
+								isPrimary ? "Available Primary Skills" : "Available Secondary Skills",
 								string.Format(
-									"Your skill archive maintains a record of the skills that you've become proficient in ({0} skill). As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
+									"Only half the {0} skills that you've ever become proficient in ({1} skill) are available for selection. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
+									isPrimary ? "Primary" : "Secondary",
 									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
 									),
 								y,
 								addBackground: false
-							 );
+							);
+							break;
+						}
+
+					case Categories.FullSkillArchive:
+						{
+							AddInformationCard(
+								BLANK_ITEM_ID,
+								"Skill Archive",
+								string.Format(
+									"Review the highest you've ever reached in each skill. Once you become proficient ({0} skill), you may be able to restore the skill to that value for free.",
+									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
+									),
+								y,
+								addBackground: false
+							);
 							break;
 						}
 
@@ -167,6 +185,7 @@ namespace Server.Engines.Avatar
 				switch (selectedCategory)
 				{
 					case Categories.Ascensions:
+					case Categories.FullSkillArchive:
 						{
 							randomRewardIndexes.AddRange(
 								rewards
@@ -219,7 +238,7 @@ namespace Server.Engines.Avatar
 			var queryable = randomRewardIndexes
 				.Select(index => index < rewards.Count ? rewards[index] : null)
 				.Where(reward => reward != null);
-			if (selectedCategory != Categories.Ascensions) queryable = queryable.OrderBy(reward => reward.Name);
+			if (selectedCategory != Categories.Ascensions && selectedCategory != Categories.FullSkillArchive) queryable = queryable.OrderBy(reward => reward.Name);
 
 			var randomRewards = queryable.ToList();
 			if (randomRewards.Count < 1) return;
@@ -511,6 +530,10 @@ namespace Server.Engines.Avatar
 
 					case Categories.SecondaryBoosts:
 						categoryName = "Secondary Skills";
+						break;
+
+					case Categories.FullSkillArchive:
+						categoryName = "Skill Archive";
 						break;
 
 					case Categories.Information:

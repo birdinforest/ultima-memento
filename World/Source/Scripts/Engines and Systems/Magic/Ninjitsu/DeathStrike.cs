@@ -43,6 +43,8 @@ namespace Server.Spells.Ninjitsu
 			else
 				chance = 63 + (ninjitsu - 100) * 1.1;
 
+			CheckGain( attacker );
+
 			if( (chance / 100) < Utility.RandomDouble() )
 			{
 				attacker.SendLocalizedMessage( 1070779 ); // You missed your opponent with a Death Strike.
@@ -50,17 +52,11 @@ namespace Server.Spells.Ninjitsu
 			}
 
 			DeathStrikeInfo info;
-
-			int damageBonus = 0;
-
 			if( m_Table.Contains( defender ) )
 			{
 				defender.SendLocalizedMessage( 1063092 ); // Your opponent lands another Death Strike!
 
 				info = (DeathStrikeInfo)m_Table[defender];
-
-				if( info.m_Steps > 0 )
-					damageBonus = attacker.Skills[SkillName.Ninjitsu].Fixed / 150;
 
 				if( info.m_Timer != null )
 					info.m_Timer.Stop();
@@ -77,12 +73,10 @@ namespace Server.Spells.Ninjitsu
 			defender.FixedParticles( 0x374A, 1, 17, 0x26BC, EffectLayer.Waist );
 			attacker.PlaySound( attacker.Female ? 0x50D : 0x50E );
 
-			info = new DeathStrikeInfo( defender, attacker, damageBonus, isRanged );
+			info = new DeathStrikeInfo( defender, attacker, isRanged );
 			info.m_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( ProcessDeathStrike ), defender );
 
 			m_Table[defender] = info;
-
-			CheckGain( attacker );
 		}
 
 		private static Hashtable m_Table = new Hashtable();
@@ -92,15 +86,13 @@ namespace Server.Spells.Ninjitsu
 			public Mobile m_Target;
 			public Mobile m_Attacker;
 			public int m_Steps;
-			public int m_DamageBonus;
-			public Timer m_Timer;
+			public int m_DamageBonus;			public Timer m_Timer;
 			public bool m_isRanged;
 
-			public DeathStrikeInfo( Mobile target, Mobile attacker, int damageBonus, bool isRanged )
+			public DeathStrikeInfo( Mobile target, Mobile attacker, bool isRanged )
 			{
 				m_Target = target;
 				m_Attacker = attacker;
-				m_DamageBonus = damageBonus;
 				m_isRanged = isRanged;
 			}
 		}
@@ -141,6 +133,9 @@ namespace Server.Spells.Ninjitsu
 
 			if ( info.m_isRanged )
 				damage /= 2;
+
+			// Mortally wound target
+			MortalStrike.BeginWound( info.m_Target, MortalStrike.NPCDuration );
 
 			info.m_Target.Damage( damage, info.m_Attacker ); // Damage is direct.
 
