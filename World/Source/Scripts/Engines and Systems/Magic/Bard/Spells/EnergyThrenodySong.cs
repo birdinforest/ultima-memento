@@ -62,21 +62,16 @@ namespace Server.Spells.Song
 
 				m.FixedParticles(0x374A, 10, 30, 5013, 0x14, 2, EffectLayer.Waist);
 
-				bool isSlayer = m is BaseCreature && CheckSlayer(instrument, m);
-
 				var musicSkill = MusicSkill(Caster);
-				TimeSpan duration;
+				var durationSeconds = 30 + (musicSkill / 100);
 				int amount = musicSkill / 16;
-				if (isSlayer)
+				if (m is BaseCreature && CheckSlayer(instrument, m))
 				{
-					amount = amount * 2;
-					duration = TimeSpan.FromSeconds(musicSkill * 2);
-				}
-				else
-				{
-					duration = TimeSpan.FromSeconds(musicSkill);
+					amount *= 2;
+					durationSeconds *= 2;
 				}
 
+				var duration = TimeSpan.FromSeconds(Math.Min(120, durationSeconds));
 				var recipient = new EnergyThrenodyRecipient(m, duration, amount);
 				Engine.Instance.AddEnhancement(m, recipient);
 			}
