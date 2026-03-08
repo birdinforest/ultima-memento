@@ -51,6 +51,7 @@ namespace Server.Spells.Song
 		public override SkillName DamageSkill{ get{ return SkillName.Musicianship; } } 
 
 		public override bool ClearHandsOnCast{ get{ return false; } } 
+		public override bool BlocksMovement{ get{ return false; } }
 
 		public Song( Mobile caster, Item scroll, SpellInfo info ) : base( caster, scroll, info ) 
 		{ 
@@ -117,6 +118,12 @@ namespace Server.Spells.Song
 		public override int GetMana() 
 		{ 
 			return RequiredMana; 
+		}
+
+		public override TimeSpan GetCastDelay()
+		{
+			// Not affected by FC
+			return CastDelayBase;
 		}
 
 		protected List<Mobile> GetNearbyFriends(int range = 10)
