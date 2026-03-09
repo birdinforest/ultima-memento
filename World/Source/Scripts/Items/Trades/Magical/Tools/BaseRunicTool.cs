@@ -1018,7 +1018,7 @@ namespace Server.Items
 				if ( random == -1 )
 					break;
 
-				if ( random == 15 && !spellbook.MageryBook() )
+				if ( random == 15 && !spellbook.AllowSlayers() )
 					random = GetUniqueRandom( 15 );
 
 				switch ( random )

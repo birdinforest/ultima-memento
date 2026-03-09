@@ -109,6 +109,12 @@ namespace Server.Items
 			return true;
 		}
 
+		public bool AllowSlayers()
+		{
+			return this is ElementalSpellbook
+				|| GetType() == typeof(Spellbook);
+		}
+
 		public static void Initialize()
 		{
 			EventSink.OpenSpellbookRequest += new OpenSpellbookRequestEventHandler( EventSink_OpenSpellbookRequest );
