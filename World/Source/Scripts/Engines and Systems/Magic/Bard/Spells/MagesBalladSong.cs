@@ -52,10 +52,12 @@ namespace Server.Spells.Song
 		{
 			private readonly int m_TickAmount;
 			private Timer m_Timer;
+			private readonly TimeSpan m_TickInterval;
 
 			public MagesBalladRecipient(Mobile targetMobile, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
 			{
 				m_TickAmount = tickAmount;
+				m_TickInterval = tickInterval;
 			}
 
 			protected override void RemoveInternal()
@@ -75,11 +77,16 @@ namespace Server.Spells.Song
 			{
 				var m = TargetMobile;
 				m.SendMessage("Your mind clears.");
-				m_Timer = Timer.DelayCall(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2), () =>
+				m_Timer = Timer.DelayCall(m_TickInterval, m_TickInterval, () =>
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)
 					{
-						m_Timer.Stop();
+						// Not sure how this can happen, but just in case
+						if (m_Timer != null)
+						{
+							m_Timer.Stop();
+						}
+
 						return;
 					}
 
