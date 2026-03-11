@@ -9,6 +9,8 @@ namespace Server.Engines.Avatar
 	{
 		public static readonly PlayerContext Default = new PlayerContext();
 
+		private Serial _safetyDepositBoxSerial;
+
 		public PlayerContext()
 		{
 			Skills = new SkillArchive();
@@ -80,11 +82,20 @@ namespace Server.Engines.Avatar
 					}
 				}
 			}
+
+			if (8 < version)
+			{
+				_safetyDepositBoxSerial = reader.ReadInt();
+				SafetyDepositBoxLevel = reader.ReadInt();
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Active
 		{ get { return this != Default; } }
+
+		public bool HasSafetyDepositBox
+		{ get { return _safetyDepositBoxSerial != Serial.Zero && World.Items.ContainsKey(_safetyDepositBoxSerial); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ImprovedTemplateCount { get; set; }
@@ -129,6 +140,9 @@ namespace Server.Engines.Avatar
 		public SlayerName RivalSlayerName { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public int SafetyDepositBoxLevel { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int SkillCapLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -167,9 +181,24 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockTemptations { get; set; }
 
+		public SafetyDepositBox GetOrCreateSafetyDepositBox(Mobile owner)
+		{
+			if (!HasSafetyDepositBox)
+			{
+				var box = new SafetyDepositBox(owner);
+				_safetyDepositBoxSerial = box.Serial;
+				owner.BankBox.AddItem(box);
+				box.Location = new Point3D(0, 0, 0);
+
+				return box;
+			}
+
+			return World.Items[_safetyDepositBoxSerial] as SafetyDepositBox;
+		}
+
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(8); // version
+			writer.Write(9); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -199,6 +228,8 @@ namespace Server.Engines.Avatar
 			writer.Write(LifetimeGameTime);
 			writer.Write(LifetimeCombatQuestCompletions);
 			writer.Write(LifetimeCreatureKills);
+			writer.Write(_safetyDepositBoxSerial);
+			writer.Write(SafetyDepositBoxLevel);
 		}
 
 		public override string ToString()

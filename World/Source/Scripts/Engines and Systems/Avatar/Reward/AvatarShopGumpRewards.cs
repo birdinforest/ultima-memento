@@ -72,6 +72,32 @@ namespace Server.Engines.Avatar
 
 						return new List<IReward>
 						{
+							!context.HasSafetyDepositBox
+								? ActionReward.Create(
+									context.HasSafetyDepositBox,
+									ONE_HUNDRED_GOLD,
+									AvatarShopGump.NO_ITEM_ID,
+									"Persistent Storage Container",
+									"A safety deposit box is placed in your bankbox. Items in this container will persist through death.",
+									() => {
+										var box = context.GetOrCreateSafetyDepositBox(m_From);
+										context.SafetyDepositBoxLevel = Math.Max(1, context.SafetyDepositBoxLevel);
+										m_From.SendMessage("A safety deposit box has been placed in your bank box.");
+									}
+								)
+								: ActionReward.Create(
+									Constants.SAFETY_DEPOSIT_BOX_MAX_LEVEL <= context.SafetyDepositBoxLevel,
+									SecondOrderCost(ONE_HUNDRED_GOLD, context.SafetyDepositBoxLevel + 1),
+									AvatarShopGump.NO_ITEM_ID,
+									string.Format("Safety Deposit Box ({0} of {1})", context.SafetyDepositBoxLevel, Constants.SAFETY_DEPOSIT_BOX_MAX_LEVEL),
+									string.Format("Increase storage capacity of your safety deposit box. Current capacity: {0}", context.SafetyDepositBoxLevel),
+									() => {
+										var box = context.GetOrCreateSafetyDepositBox(m_From);
+										context.SafetyDepositBoxLevel += 1;
+										box.MaxItems = context.SafetyDepositBoxLevel;
+										m_From.SendMessage("Your safety deposit box can now hold {0} items.", context.SafetyDepositBoxLevel);
+									}
+								),
 							ActionReward.Create(
 								context.UnlockRecordSkillCaps,
 								ONE_HUNDRED_GOLD,

@@ -1384,6 +1384,15 @@ namespace Server.Mobiles
 
 			m_NextMovementTime += speed;
 
+			if ( Avatar.Active && Avatar.HasSafetyDepositBox )
+			{
+				var box = Avatar.GetOrCreateSafetyDepositBox( this );
+				if ( box.Opened )
+				{
+					box.Close();
+				}
+			}
+
 			return true;
 		}
 

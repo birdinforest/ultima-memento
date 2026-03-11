@@ -144,6 +144,13 @@ namespace Server.Misc
 				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
 				if (newChar.Avatar.UnlockRecordDiscovered)
 					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
+				
+				if (newChar.Avatar.HasSafetyDepositBox)
+				{
+					var box = newChar.Avatar.GetOrCreateSafetyDepositBox(newChar);
+					box.Owner = newChar;
+					newChar.BankBox.AddItem(box);
+				}
 			}
 
 			existingCharacter.Delete();

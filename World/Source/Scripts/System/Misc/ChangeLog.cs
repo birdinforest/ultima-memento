@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Avatar - Add a new ascension for a persistent storage container<br>");
 			builder.Append("- Ability - Focus Attack is now usable with ranged weapons<br>");
 			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
 			builder.Append("- Ability - Mortal Strike now prevents mobs from cheating death<br>");
