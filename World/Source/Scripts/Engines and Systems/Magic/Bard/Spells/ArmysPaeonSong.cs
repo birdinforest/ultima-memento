@@ -79,7 +79,12 @@ namespace Server.Spells.Song
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)
 					{
-						m_Timer.Stop();
+						// Not sure how this can happen, but just in case
+						if (m_Timer != null)
+						{
+							m_Timer.Stop();
+						}
+
 						return;
 					}
 
