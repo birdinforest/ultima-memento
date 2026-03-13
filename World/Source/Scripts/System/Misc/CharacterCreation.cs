@@ -124,6 +124,9 @@ namespace Server.Misc
 			existingCharacter.Internalize();
 			netState.BlockAllPackets = false;
 
+			if (newChar.Backpack == null)
+				newChar.AddItem(new Backpack() { Movable = false });
+
 			WorldUtilities.DeleteAllItems<BaseBoat>(item => item.Owner == existingCharacter);
 			var previousHouses = BaseHouse.GetHouses(existingCharacter);
 			if (0 < previousHouses.Count)
