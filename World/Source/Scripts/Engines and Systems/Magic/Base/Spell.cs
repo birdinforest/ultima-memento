@@ -707,9 +707,9 @@ namespace Server.Spells
 			GetCastSkills( out minSkill, out maxSkill );
 
 			if ( DamageSkill != CastSkill )
-				Caster.CheckSkill( DamageSkill, 0.0, Caster.Skills[ DamageSkill ].Cap );
+				Caster.CheckSkillExplicit( DamageSkill, 0.0, Caster.Skills[ DamageSkill ].Cap );
 
-			return Caster.CheckSkill( CastSkill, minSkill, maxSkill );
+			return Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
 		}
 
 		public abstract int GetMana();
