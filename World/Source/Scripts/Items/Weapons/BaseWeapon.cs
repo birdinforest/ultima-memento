@@ -1223,7 +1223,7 @@ namespace Server.Items
 					chance *= Evasion.GetParryScalar( defender );
 
 				// Low dexterity lowers the chance.
-				if ( defender.Dex < 80 )
+				if ( defender.Dex < Parrying.DEXTERITY_PENALTY_THRESHOLD )
 					chance = chance * (20 + defender.Dex) / 100;
 
 				return defender.CheckSkill( SkillName.Parry, chance );

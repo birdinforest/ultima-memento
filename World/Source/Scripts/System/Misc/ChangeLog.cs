@@ -45,6 +45,7 @@ namespace Server.Misc
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
 			builder.Append("- Skill - Initial targeting range for Taming is now 3, up from 2<br>");
 			builder.Append("- Skill - Players can now target themselves for the second target in provocation<br>");
+			builder.Append("- Skill - Parrying can now be activated to temporarily provide damage absorption<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
