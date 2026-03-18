@@ -27,6 +27,8 @@ namespace Server.Spells
 {
 	public abstract class Spell : ISpell
 	{
+		public Action SpellFailCallback;
+		public Action SpellSuccessCallback;
 		private Mobile m_Caster;
 		private Item m_Scroll;
 		private SpellInfo m_Info;
@@ -615,16 +617,13 @@ namespace Server.Spells
 
 					return true;
 				}
-				else
-				{
-					return false;
-				}
 			}
 			else
 			{
 				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana
 			}
 
+			if (SpellFailCallback != null) SpellFailCallback.Invoke();
 			return false;
 		}
 
@@ -709,7 +708,10 @@ namespace Server.Spells
 			if ( DamageSkill != CastSkill )
 				Caster.CheckSkillExplicit( DamageSkill, 0.0, Caster.Skills[ DamageSkill ].Cap );
 
-			return Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
+			var success = Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
+			//if (!success && SpellFailCallback != null) SpellFailCallback.Invoke();
+
+			return success;
 		}
 
 		public abstract int GetMana();
@@ -880,12 +882,16 @@ namespace Server.Spells
 					}
 				}
 
+				if ( SpellSuccessCallback != null) SpellSuccessCallback.Invoke();
+
 				return true;
 			}
 			else
 			{
 				DoFizzle();
 			}
+
+			if (SpellFailCallback != null) SpellFailCallback.Invoke();
 
 			return false;
 		}

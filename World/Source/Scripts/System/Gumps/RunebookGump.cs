@@ -1,6 +1,7 @@
 ﻿using Server.Items;
 using Server.Network;
 using Server.Prompts;
+using Server.Spells;
 using Server.Spells.Chivalry;
 using Server.Spells.Elementalism;
 using Server.Spells.Fourth;
@@ -516,6 +517,7 @@ namespace Server.Gumps
 								if (entry == null) return; // Make sure we have a valid target
 								if (spellId == SpellType.None) return; // Make sure we have a valid spell
 
+								Spell spell;
 								switch (spellId)
 								{
 									// Self only
@@ -531,7 +533,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new TravelSpell(from, m_Book, entry, m_Book).Cast();
+											spell = new TravelSpell(from, m_Book, entry, m_Book);
 											break;
 										}
 									case SpellType.Astral_Travel:
@@ -542,7 +544,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new AstralTravel(from, null, entry, null).Cast();
+											spell = new AstralTravel(from, null, entry, null);
 											break;
 										}
 									case SpellType.Demonic_Fire:
@@ -554,7 +556,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new HellsGateSpell(from, null, entry, null).Cast();
+											spell = new HellsGateSpell(from, null, entry, null);
 											from.SendMessage("You empty a jar in the attempt.");
 											from.AddToBackpack(new Jar());
 											potion.Consume();
@@ -563,7 +565,7 @@ namespace Server.Gumps
 									case SpellType.Ethereal_Travel:
 										{
 											// Reagent check still happens
-											new ResearchEtherealTravel(from, null, entry, null).Cast();
+											spell = new ResearchEtherealTravel(from, null, entry, null);
 											break;
 										}
 									case SpellType.Nature_Passage:
@@ -575,7 +577,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new NaturesPassageSpell(from, null, entry, null).Cast();
+											spell = new NaturesPassageSpell(from, null, entry, null);
 											from.SendMessage("You empty a jar in the attempt.");
 											from.AddToBackpack(new Jar());
 											potion.Consume();
@@ -589,7 +591,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new RecallSpell(from, null, entry, null).Cast();
+											spell = new RecallSpell(from, null, entry, null);
 											break;
 										}
 									case SpellType.Sacred_Journey:
@@ -600,7 +602,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new SacredJourneySpell(from, null, entry, null).Cast();
+											spell = new SacredJourneySpell(from, null, entry, null);
 											break;
 										}
 									case SpellType.Elemental_Void:
@@ -611,7 +613,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new Elemental_Void_Spell(from, null, entry, null).Cast();
+											spell = new Elemental_Void_Spell(from, null, entry, null);
 											break;
 										}
 
@@ -625,7 +627,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new UndeadGraveyardGatewaySpell(from, null, entry).Cast();
+											spell = new UndeadGraveyardGatewaySpell(from, null, entry);
 											from.SendMessage("You empty a jar in the attempt.");
 											from.AddToBackpack(new Jar());
 											potion.Consume();
@@ -639,7 +641,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new Elemental_Gate_Spell(from, null, entry).Cast();
+											spell = new Elemental_Gate_Spell(from, null, entry);
 											break;
 										}
 									case SpellType.Gate:
@@ -650,7 +652,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new GateTravelSpell(from, null, entry).Cast();
+											spell = new GateTravelSpell(from, null, entry);
 											break;
 										}
 									case SpellType.Mushroom_Gateway:
@@ -662,7 +664,7 @@ namespace Server.Gumps
 												return;
 											}
 
-											new MushroomGatewaySpell(from, null, entry).Cast();
+											spell = new MushroomGatewaySpell(from, null, entry);
 											from.SendMessage("You empty a jar in the attempt.");
 											from.AddToBackpack(new Jar());
 											potion.Consume();
@@ -674,17 +676,35 @@ namespace Server.Gumps
 										return;
 								}
 
-								int xLong = 0, yLat = 0;
-								int xMins = 0, yMins = 0;
-								bool xEast = false, ySouth = false;
-
-								if (Sextant.Format(entry.Location, entry.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth))
+								// Custom handling
+								removeOpener = false;
+								spell.SpellFailCallback = () =>
 								{
-									string location = String.Format("{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W");
-									from.SendMessage(location);
+									from.CloseGump(typeof(RunebookGump));
+									from.SendGump(new RunebookGump(from, m_Book, m_PageType, m_SelectedEntryIndex));
+								};
+								spell.SpellSuccessCallback = () =>
+								{
+									m_Book.Openers.Remove(from);
+									int xLong = 0, yLat = 0;
+									int xMins = 0, yMins = 0;
+									bool xEast = false, ySouth = false;
+
+									if (Sextant.Format(entry.Location, entry.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth))
+									{
+										string location = String.Format("{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W");
+										from.SendMessage(location);
+									}
+
+									m_Book.OnTravel();
+								};
+
+								if (!spell.Cast())
+								{
+									spell.SpellFailCallback.Invoke();
 								}
 
-								m_Book.OnTravel();
+								return;
 							}
 							else if (ActionButtonType.SetDefaultSpellBase <= buttonId) // Selecting default spell
 							{
