@@ -16,38 +16,29 @@ namespace Server.Items
 		public override int AbsorbDamage( Mobile attacker, Mobile defender, int damage )
 		{
 			damage = base.AbsorbDamage( attacker, defender, damage );
+			if ( damage < 1 ) return 0;
 
-			if ( Core.AOS )
-				return damage;
-			
 			int absorb = defender.MeleeDamageAbsorb;
+			if ( absorb < 1 ) return damage;
 
-			if ( absorb > 0 )
+			// Absorb half of the damage
+			int absorbed = Math.Min( absorb, damage / 2 );
+			if ( absorbed < 1 ) return damage;
+
+			// Only consume half of the charges for what is absorbed
+			defender.MeleeDamageAbsorb -= Math.Max( 1, absorbed / 2 );
+			if ( defender.MeleeDamageAbsorb < 1 )
 			{
-				if ( absorb > damage )
-				{
-					int react = damage / 5;
-
-					if ( react <= 0 )
-						react = 1;
-
-					defender.MeleeDamageAbsorb -= damage;
-					damage = 0;
-
-					attacker.Damage( react, defender );
-
-					attacker.PlaySound( 0x1F1 );
-					attacker.FixedEffect( 0x374A, 10, 16 );
-				}
-				else
-				{
-					defender.MeleeDamageAbsorb = 0;
-					defender.SendLocalizedMessage( 1005556 ); // Your reactive armor spell has been nullified.
-					DefensiveSpell.Nullify( defender );
-				}
+				defender.MeleeDamageAbsorb = 0;
+				DefensiveSpell.Nullify( defender );
 			}
 
-			return damage;
+			attacker.Damage( absorbed, defender );
+			attacker.PlaySound( 0x1F1 );
+			attacker.FixedEffect( 0x374A, 10, 16 );
+			defender.SendMessage( "Your shield absorbs some of the damage.", damage );
+
+			return damage - absorbed;
 		}
 
 		public override void Serialize( GenericWriter writer )

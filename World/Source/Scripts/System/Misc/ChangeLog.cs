@@ -20,6 +20,8 @@ namespace Server.Misc
 			builder.Append("- Ability - Focus Attack is now usable with ranged weapons<br>");
 			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
 			builder.Append("- Ability - Mortal Strike now prevents mobs from cheating death<br>");
+			builder.Append("- Combat - Melee damage absorb now absorbs 50% of melee damage<br>");
+			builder.Append("- Combat - Melee damage absorb now absorbs at 200% efficiency<br>");
 			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
 			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
 			builder.Append("- Gump - Avatars can now view their Skill Archive<br>");
@@ -48,6 +50,7 @@ namespace Server.Misc
 			builder.Append("Fixes<br>");
 			builder.Append("- Avatar - Avatars can now delete skills from Soulstones<br>");
 			builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
+			builder.Append("- Combat - Fix issue where melee damage absorb would never be consumed<br>");
 			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
 			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
