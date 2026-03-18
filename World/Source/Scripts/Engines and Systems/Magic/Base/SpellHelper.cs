@@ -46,7 +46,7 @@ namespace Server
 
 		public static void EndDefense( Mobile from )
 		{
-			if ( from.MagicDamageAbsorb < 1 && from.MeleeDamageAbsorb < 1 )
+			if ( from.MagicDamageAbsorb < 1 )
 				from.EndAction( typeof( DefensiveSpell ) );
 		}
 	}

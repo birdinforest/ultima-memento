@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using Server.Targeting;
-using Server.Network;
 
 namespace Server.Spells.First
 {
@@ -27,12 +25,7 @@ namespace Server.Spells.First
 			if ( Core.AOS )
 				return true;
 
-			if ( Caster.MeleeDamageAbsorb > 0 )
-			{
-				Caster.SendLocalizedMessage( 1005559 ); // This spell is already in effect.
-				return false;
-			}
-			else if ( !Caster.CanBeginAction( typeof( DefensiveSpell ) ) )
+			if ( !Caster.CanBeginAction( typeof( DefensiveSpell ) ) )
 			{
 				Caster.SendLocalizedMessage( 1005385 ); // The spell will not adhere to you at this time.
 				return false;
@@ -49,7 +42,7 @@ namespace Server.Spells.First
 			 * 15 + (Inscription/20) Physcial bonus
 			 * -5 Elemental
 			 * The reactive armor spell has an indefinite duration, becoming active when cast, and deactivated when re-cast. 
-			 * Reactive Armor, Protection, and Magic Reflection will stay on—even after logging out, even after dying—until you “turn them off” by casting them again. 
+			 * Reactive Armor, Protection, and Magic Reflection will stay onï¿½even after logging out, even after dyingï¿½until you ï¿½turn them offï¿½ by casting them again. 
 			 * (+20 physical -5 elemental at 100 Inscription)
 			 */
 

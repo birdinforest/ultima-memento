@@ -59,6 +59,7 @@ namespace Server.Misc
 			builder.Append("- NPC - Barber will now sell you their items<br>");
 			builder.Append("- Spell - Mages Ballad and Army's Paeon buffs now use the correct tooltip<br>");
 			builder.Append("- Spell - Difficulty checks now correctly match the spell circle<br>");
+			builder.Append("- Spell - Reactive Armor and defensive spell checks no longer incorrectly check Melee Damage Absorb<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
