@@ -48,6 +48,10 @@ namespace Server.Misc
 			builder.Append("- Skill - Initial targeting range for Taming is now 3, up from 2<br>");
 			builder.Append("- Skill - Players can now target themselves for the second target in provocation<br>");
 			builder.Append("- Skill - Parrying can now be activated to temporarily provide damage absorption<br>");
+			builder.Append("- Skill - Hiding has been rewritten<br>");
+			builder.Append("        - Out of combat gains are now capped to 100 skill<br>");
+			builder.Append("        - 100 skill is required to attempt in-combat hiding<br>");
+			builder.Append("        - Grandmaster+ will now attempt to Stealth when hiding succeeds<br>");
 			builder.Append("- Skill - Stealth cooldown after using Backstab or Surprise Attack is now removed<br>");
 
 			builder.Append("<br>");
