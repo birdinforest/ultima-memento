@@ -72,7 +72,7 @@ namespace Server.Spells.Herbalist
 			{
 				Caster.SendMessage( "The destination seems magically unreachable." );
 			}
-			else if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z ) )
+			else if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z, false ) )
 			{
 				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
 			}

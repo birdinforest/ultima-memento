@@ -49,7 +49,7 @@ namespace Server.Spells.Herbalist
 
 		public void Effect( Point3D loc, Map map, bool checkMulti )
 		{
-			if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z ) )
+			if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z, false ) )
 			{
 				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
 			}

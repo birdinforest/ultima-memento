@@ -81,7 +81,7 @@ namespace Server.Spells.Elementalism
 			else if ( !SpellHelper.CheckTravel( Caster,  map, loc, TravelCheckType.GateTo ) )
 			{
 			}
-			else if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z ) )
+			else if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z, false ) )
 			{
 				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
 			}

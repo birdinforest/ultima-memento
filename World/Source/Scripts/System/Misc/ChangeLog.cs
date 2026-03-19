@@ -40,6 +40,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
 			builder.Append("- Spell - Curse now reduces elemental resistances for Monsters by 10<br>");
 			builder.Append("- Spell - Shadow Jump now allows targeting mobiles<br>");
+			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
