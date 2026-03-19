@@ -1860,10 +1860,15 @@ namespace Server
 
 		public bool CanSpawnMobile( int x, int y, int z )
 		{
+			return CanSpawnMobile( x, y, z, true );
+		}
+
+		public bool CanSpawnMobile( int x, int y, int z, bool checkMobiles )
+		{
 			if ( !Region.Find( new Point3D( x, y, z ), this ).AllowSpawn() )
 				return false;
 
-			return CanFit( x, y, z, 16 );
+			return CanFit( x, y, z, 16, false, checkMobiles );
 		}
 		#endregion
 
