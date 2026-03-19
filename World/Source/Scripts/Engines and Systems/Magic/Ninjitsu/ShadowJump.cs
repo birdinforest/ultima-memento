@@ -67,7 +67,7 @@ namespace Server.Spells.Ninjitsu
 			else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom ) || !SpellHelper.CheckTravel( Caster, map, new Point3D( p ), TravelCheckType.TeleportTo ))
 			{
 			}
-			else if ( map == null || !map.CanSpawnMobile( p.X, p.Y, p.Z ) )
+			else if ( map == null || !map.CanSpawnMobile( p.X, p.Y, p.Z, false ) )
 			{
 				Caster.SendLocalizedMessage( 502831 ); // Cannot teleport to that spot.
 			}
