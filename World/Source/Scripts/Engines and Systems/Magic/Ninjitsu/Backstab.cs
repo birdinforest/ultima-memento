@@ -35,16 +35,7 @@ namespace Server.Spells.Ninjitsu
 
 		public override bool OnBeforeSwing( Mobile attacker, Mobile defender )
 		{
-			bool valid = Validate( attacker ) && CheckMana( attacker, true );
-
-			if( valid )
-			{
-				attacker.BeginAction( typeof( Stealth ) );
-				Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), delegate { attacker.EndAction( typeof( Stealth ) ); } );
-			}
-
-			return valid;
-
+			return Validate( attacker ) && CheckMana( attacker, true );
 		}
 
 		public override bool ValidatesDuringHit { get { return false; } }
