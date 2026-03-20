@@ -24,6 +24,7 @@ namespace Server.Misc
 			builder.Append("- Ability - Backstab now ignores armor when performed from behind<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs 50% of melee damage<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs at 200% efficiency<br>");
+			builder.Append("- Combat - Sneak attacks now only occur if no other move or ability is being used<br>");
 			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
 			builder.Append("- Gump - Sending buttons/switches that don't exist now warn the Player instead of disconnecting<br>");
 			builder.Append("- Gump - Avatars can now view their Skill Archive<br>");

@@ -1095,21 +1095,26 @@ namespace Server.Items
 			WeaponAbility a = WeaponAbility.GetCurrentAbility( attacker );
 
 			if( a != null && !a.OnBeforeSwing( attacker, defender ) )
+			{
 				WeaponAbility.ClearCurrentAbility( attacker );
+				a = null;
+			}
 
 			SpecialMove move = SpecialMove.GetCurrentMove( attacker );
 
 			if( move != null && !move.OnBeforeSwing( attacker, defender ) )
+			{
 				SpecialMove.ClearCurrentMove( attacker );
+				move = null;
+			}
+
+			// Only attempt sneak attack if no other move is being used
+			if ( move != null || a != null ) return;
 
 			if( attacker.Hidden && attacker is PlayerMobile && attacker.Skills[SkillName.Hiding].Value > Utility.RandomMinMax( 1, 125 ) )
 			{
 				PlayerMobile pm = (PlayerMobile)attacker;
-
-				pm.SneakDamage = false;
-
-				if ( attacker.Skills[SkillName.Stealth].Value > Utility.RandomMinMax( 1, 250 ) )
-					pm.SneakDamage = true;
+				pm.SneakDamage = attacker.Skills[SkillName.Stealth].Value > Utility.RandomMinMax( 1, 250 );
 			}
 		}
 
