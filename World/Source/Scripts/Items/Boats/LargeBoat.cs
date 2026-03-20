@@ -6,6 +6,8 @@ namespace Server.Multis
 {
 	public class LargeBoat : BaseBoat
 	{
+		protected override int DefaultBoatSpeedIncrease { get { return 2; } }
+
 		public override int NorthID{ get{ return 0x10; } }
 		public override int  EastID{ get{ return 0x11; } }
 		public override int SouthID{ get{ return 0x12; } }

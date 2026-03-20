@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Items;
 using Server.Mobiles;
-using Server.Movement;
 using Server.Network;
 using Server.Gumps;
 using Server.Misc;
@@ -21,6 +19,7 @@ namespace Server.Multis
 	// Smooth sailing - https://github.com/runuo/runuo/commit/110bd99e565441c2df33bacb3696bdffb9d70675
 	public abstract class BaseBoat : BaseMulti
 	{
+		public const int MAX_SPEED_BOOSTS = 4; // Absolute max amount of boosts
 		const string CLEAR_THE_DECK = "clear the deck";
 
 		// THE LAST TWO INTEGERS ARE THE SEA WIDTH AND HEIGHT //
@@ -910,22 +909,44 @@ namespace Server.Multis
 		// Legacy clients will continue to see the old-style movement, but speeds are adjusted
 		private int m_SlowSpeedDelay = 500;
 		private int m_FastSpeedDelay = 250;
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int SlowSpeedDelay { get { return m_SlowSpeedDelay; } set { m_SlowSpeedDelay = Math.Max(0, value); } }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int FastSpeedDelay { get { return m_FastSpeedDelay; } set { m_FastSpeedDelay = Math.Max(0, value); } }
+		protected virtual int DefaultBoatSpeedIncrease { get { return 0; } }
 
 		private static bool NewBoatMovement = true;
 
 		private static int SlowSpeed = 1;
 		private static int FastSpeed = NewBoatMovement ? 1 : 3;
 
-		private TimeSpan GetSlowInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? SlowSpeedDelay : 750 ); }
-		private TimeSpan GetFastInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? FastSpeedDelay : 750 ); }
-		private TimeSpan GetSlowDriftInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? SlowSpeedDelay : 1500 ); }
-		private TimeSpan GetFastDriftInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? FastSpeedDelay : 750 ); }
+		private TimeSpan GetSlowInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? m_SlowSpeedDelay : 750 ); }
+		private TimeSpan GetSlowDriftInterval() { return TimeSpan.FromMilliseconds( NewBoatMovement ? m_SlowSpeedDelay : 1500 ); }
+
+		private TimeSpan GetFastInterval( Mobile from )
+		{
+			var speed = NewBoatMovement ? m_FastSpeedDelay : 750;
+
+			return TimeSpan.FromMilliseconds( ApplySpeedBoost( from, speed ) );
+		}
+
+		private TimeSpan GetFastDriftInterval( Mobile from )
+		{
+			var speed = NewBoatMovement ? m_FastSpeedDelay : 750;
+
+			return TimeSpan.FromMilliseconds( ApplySpeedBoost( from, speed ) );
+		}
+
+		private int ApplySpeedBoost( Mobile from, int speed )
+		{
+			if ( false == from is PlayerMobile ) return speed;
+
+			var speedBoosts = DefaultBoatSpeedIncrease;
+
+			if ( speedBoosts < 1 ) return speed;
+
+			const int MILLISECONDS_PER_BOOST = 25;
+			var speedBoost = MILLISECONDS_PER_BOOST * Math.Min( speedBoosts, MAX_SPEED_BOOSTS );
+
+			return speed - speedBoost;
+		}
+
 		private static int SlowDriftSpeed = 1;
 		private static int FastDriftSpeed = 1;
 
@@ -1042,13 +1063,13 @@ namespace Server.Multis
 			return true;
 		}
 
-		public bool StartMove( Direction dir, bool fast )
+		public bool StartMove( Mobile from, Direction dir, bool fast )
 		{
 			if ( CheckDecay() )
 				return false;
 
 			bool drift = ( dir != Forward && dir != ForwardLeft && dir != ForwardRight );
-			TimeSpan interval = (fast ? (drift ? GetFastDriftInterval() : GetFastInterval()) : (drift ? GetSlowDriftInterval() : GetSlowInterval()));
+			TimeSpan interval = (fast ? (drift ? GetFastDriftInterval( from ) : GetFastInterval( from )) : (drift ? GetSlowDriftInterval() : GetSlowInterval()));
 			int speed = (fast ? (drift ? FastDriftSpeed : FastSpeed) : (drift ? SlowDriftSpeed : SlowSpeed));
 			int clientSpeed = fast ? 0x4 : 0x3;
 
@@ -1063,13 +1084,13 @@ namespace Server.Multis
 			return false;
 		}
 
-		public bool OneMove( Direction dir )
+		public bool OneMove( Mobile from, Direction dir )
 		{
 			if ( CheckDecay() )
 				return false;
 
 			bool drift = ( dir != Forward );
-			TimeSpan interval = drift ? GetFastDriftInterval() : GetFastInterval();
+			TimeSpan interval = drift ? GetFastDriftInterval( from ) : GetFastInterval( from );
 			int speed = drift ? FastDriftSpeed : FastSpeed;
 
 			if ( StartMove( dir, speed, 0x1, interval, true, true ) )
@@ -1401,7 +1422,7 @@ namespace Server.Multis
 			}
 		}
 
-		public bool StartCourse( string navPoint, bool single, bool message )
+		public bool StartCourse( Mobile from, string navPoint, bool single, bool message )
 		{
 			int number = -1;
 
@@ -1442,10 +1463,10 @@ namespace Server.Multis
 			}
 
 			NextNavPoint = number;
-			return StartCourse( single, message );
+			return StartCourse( from, single, message );
 		}
 
-		public bool StartCourse( bool single, bool message )
+		public bool StartCourse( Mobile from, bool single, bool message )
 		{
 			if ( CheckDecay() )
 				return false;
@@ -1485,7 +1506,7 @@ namespace Server.Multis
 			if ( m_MoveTimer != null )
 				m_MoveTimer.Stop();
 
-			m_MoveTimer = new MoveTimer( this, GetFastInterval(), false );
+			m_MoveTimer = new MoveTimer( this, GetFastInterval( from ), false );
 			m_MoveTimer.Start();
 
 			if ( message && TillerMan != null )
@@ -1517,43 +1538,43 @@ namespace Server.Multis
 							case 0x42: SetName( e ); break;
 							case 0x43: RemoveName( e.Mobile ); break;
 							case 0x44: GiveName( e.Mobile ); break;
-							case 0x45: StartMove( Forward, true ); break;
-							case 0x46: StartMove( Backward, true ); break;
-							case 0x47: StartMove( Left, true ); break;
-							case 0x48: StartMove( Right, true ); break;
-							case 0x4B: StartMove( ForwardLeft, true ); break;
-							case 0x4C: StartMove( ForwardRight, true ); break;
-							case 0x4D: StartMove( BackwardLeft, true ); break;
-							case 0x4E: StartMove( BackwardRight, true ); break;
+							case 0x45: StartMove( from, Forward, true ); break;
+							case 0x46: StartMove( from, Backward, true ); break;
+							case 0x47: StartMove( from, Left, true ); break;
+							case 0x48: StartMove( from, Right, true ); break;
+							case 0x4B: StartMove( from, ForwardLeft, true ); break;
+							case 0x4C: StartMove( from, ForwardRight, true ); break;
+							case 0x4D: StartMove( from, BackwardLeft, true ); break;
+							case 0x4E: StartMove( from, BackwardRight, true ); break;
 							case 0x4F: StopMove( true ); break;
-							case 0x50: StartMove( Left, false ); break;
-							case 0x51: StartMove( Right, false ); break;
-							case 0x52: StartMove( Forward, false ); break;
-							case 0x53: StartMove( Backward, false ); break;
-							case 0x54: StartMove( ForwardLeft, false ); break;
-							case 0x55: StartMove( ForwardRight, false ); break;
-							case 0x56: StartMove( BackwardRight, false ); break;
-							case 0x57: StartMove( BackwardLeft, false ); break;
-							case 0x58: OneMove( Left ); break;
-							case 0x59: OneMove( Right ); break;
-							case 0x5A: OneMove( Forward ); break;
-							case 0x5B: OneMove( Backward ); break;
-							case 0x5C: OneMove( ForwardLeft ); break;
-							case 0x5D: OneMove( ForwardRight ); break;
-							case 0x5E: OneMove( BackwardRight ); break;
-							case 0x5F: OneMove( BackwardLeft ); break;
+							case 0x50: StartMove( from, Left, false ); break;
+							case 0x51: StartMove( from, Right, false ); break;
+							case 0x52: StartMove( from, Forward, false ); break;
+							case 0x53: StartMove( from, Backward, false ); break;
+							case 0x54: StartMove( from, ForwardLeft, false ); break;
+							case 0x55: StartMove( from, ForwardRight, false ); break;
+							case 0x56: StartMove( from, BackwardRight, false ); break;
+							case 0x57: StartMove( from, BackwardLeft, false ); break;
+							case 0x58: OneMove( from, Left ); break;
+							case 0x59: OneMove( from, Right ); break;
+							case 0x5A: OneMove( from, Forward ); break;
+							case 0x5B: OneMove( from, Backward ); break;
+							case 0x5C: OneMove( from, ForwardLeft ); break;
+							case 0x5D: OneMove( from, ForwardRight ); break;
+							case 0x5E: OneMove( from, BackwardRight ); break;
+							case 0x5F: OneMove( from, BackwardLeft ); break;
 							case 0x49: case 0x65: StartTurn(  2, true ); break; // turn right
 							case 0x4A: case 0x66: StartTurn( -2, true ); break; // turn left
 							case 0x67: StartTurn( -4, true ); break; // turn around, come about
-							case 0x68: StartMove( Forward, true ); break;
+							case 0x68: StartMove( from, Forward, true ); break;
 							case 0x69: StopMove( true ); break;
 							case 0x6A: LowerAnchor( true ); break;
 							case 0x6B: RaiseAnchor( true ); break;
 							case 0x60: GiveNavPoint(); break; // nav
-							case 0x61: NextNavPoint = 0; StartCourse( false, true ); break; // start
-							case 0x62: StartCourse( false, true ); break; // continue
-							case 0x63: StartCourse( e.Speech, false, true ); break; // goto*
-							case 0x64: StartCourse( e.Speech, true, true ); break; // single*
+							case 0x61: NextNavPoint = 0; StartCourse( from, false, true ); break; // start
+							case 0x62: StartCourse( from, false, true ); break; // continue
+							case 0x63: StartCourse( from, e.Speech, false, true ); break; // goto*
+							case 0x64: StartCourse( from, e.Speech, true, true ); break; // single*
 						}
 
 						handled = true;
