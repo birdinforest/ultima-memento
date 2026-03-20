@@ -70,6 +70,7 @@ namespace Server.Misc
 			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
 			builder.Append("- Misc - Treasure hoards now delete when they run out of uses<br>");
+			builder.Append("- Misc - My Library now properly memorizes missing lore books and scrolls<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 			builder.Append("- NPC - Barber will now sell you their items<br>");
 			builder.Append("- Spell - Mages Ballad and Army's Paeon buffs now use the correct tooltip<br>");
