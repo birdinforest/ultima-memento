@@ -20,6 +20,7 @@ namespace Server.Misc
 			builder.Append("- Ability - Focus Attack is now usable with ranged weapons<br>");
 			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
 			builder.Append("- Ability - Mortal Strike now prevents mobs from cheating death<br>");
+			builder.Append("- Ability - Death Strike now applies a mortal wound to the target<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs 50% of melee damage<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs at 200% efficiency<br>");
 			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
@@ -43,7 +44,6 @@ namespace Server.Misc
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
-			builder.Append("- Skill - Death Strike now applies a mortal wound to the target<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
 			builder.Append("- Skill - Initial targeting range for Taming is now 3, up from 2<br>");
 			builder.Append("- Skill - Players can now target themselves for the second target in provocation<br>");
