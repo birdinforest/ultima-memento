@@ -86,8 +86,11 @@ namespace Server.Gumps
 					if ( rows == 24 || rows == 48 || rows == 72 ){ x = x+i; y = 52; }
 
                     bool discovered = key == "1";
+					var info = bookInfo( entry, 1 );
+					if (string.IsNullOrWhiteSpace(info)) continue; // Skip any that don't actually exist
+
+                    string title = discovered ? info : "---------------";
                     if ( discovered ) AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
-                    string title = discovered ? bookInfo( entry, 1 ) : "---------------";
                     AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
                     y=y+d;
                     rows++;

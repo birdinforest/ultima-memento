@@ -65,6 +65,7 @@ namespace Server.Misc
 			builder.Append("- Avatar - Avatars can now delete skills from Soulstones<br>");
 			builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
 			builder.Append("- Combat - Fix issue where melee damage absorb would never be consumed<br>");
+			builder.Append("- Gump - Fix issue where My Library had an extra book<br>");
 			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
 			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
