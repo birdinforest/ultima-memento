@@ -1,3 +1,5 @@
+using Server.Gumps;
+
 namespace Server.Mobiles
 {
 	[PropertyObject]
@@ -39,6 +41,8 @@ namespace Server.Mobiles
 				RegBar = reader.ReadString();
 				UsingAncientBook = reader.ReadBool();
 			}
+
+			DefaultRunebookSpellType = 2 < version ? (RunebookGump.SpellType)reader.ReadInt() : RunebookGump.SpellType.None;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -67,6 +71,9 @@ namespace Server.Mobiles
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ColorlessFabricBreakdown { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public RunebookGump.SpellType DefaultRunebookSpellType { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DoubleClickID { get; set; }
@@ -112,7 +119,7 @@ namespace Server.Mobiles
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(2);
+			writer.Write(3);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
@@ -138,6 +145,7 @@ namespace Server.Mobiles
 			writer.Write(QuickBar);
 			writer.Write(RegBar);
 			writer.Write(UsingAncientBook);
+			writer.Write((int)DefaultRunebookSpellType);
 		}
 	}
 }

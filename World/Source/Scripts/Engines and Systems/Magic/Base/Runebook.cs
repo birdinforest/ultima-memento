@@ -14,8 +14,6 @@ namespace Server.Items
 	{
 		public const int MAX_RECALL_RUNES = 16;
 
-		public RunebookGump.SpellType SpellType { get; set; }
-
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )
@@ -123,7 +121,6 @@ namespace Server.Items
 			m_MaxCharges = maxCharges;
 			m_DefaultIndex = -1;
 			m_Level = SecureLevel.CoOwners;
-			SpellType = RunebookGump.SpellType.None;
 		}
 
 		[Constructable]
@@ -176,9 +173,8 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 4 );
+			writer.Write( (int) 5 );
 
-			writer.Write( (int) SpellType );
 			writer.Write( (int) m_Level );
 
 			writer.Write( m_Entries.Count );
@@ -199,9 +195,10 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 5:
 				case 4:
 					{
-						SpellType = (RunebookGump.SpellType)reader.ReadInt();
+						if (version < 5) { var SpellType = (RunebookGump.SpellType)reader.ReadInt(); }
 						goto case 3;
 					}
 				case 3:
@@ -362,8 +359,11 @@ namespace Server.Items
 				LabelTo( from, 1050043, m_BuiltBy.Name );
 		}
 
-		public override void OnDoubleClick( Mobile from )
+		public override void OnDoubleClick( Mobile m )
 		{
+			var from = m as PlayerMobile;
+			if (from == null) return;
+
 			if ( from.InRange( GetWorldLocation(), (Core.ML ? 3 : 1) ) && CheckAccess( from ) )
 			{
 				if ( RootParent is BaseCreature )

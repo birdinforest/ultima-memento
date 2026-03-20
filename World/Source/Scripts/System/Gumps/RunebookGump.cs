@@ -1,4 +1,5 @@
 ﻿using Server.Items;
+using Server.Mobiles;
 using Server.Network;
 using Server.Prompts;
 using Server.Spells;
@@ -32,10 +33,12 @@ namespace Server.Gumps
 		private readonly PageType m_PageType;
 		private readonly RunebookEntry m_SelectedEntry;
 		private readonly int m_SelectedEntryIndex;
+		private readonly PlayerMobile m_Opener;
 		private Runebook m_Book;
 
-		public RunebookGump(Mobile from, Runebook book, PageType page, int selectedEntryIndex) : base(50, 50)
+		public RunebookGump(PlayerMobile from, Runebook book, PageType page, int selectedEntryIndex) : base(50, 50)
 		{
+			m_Opener = from;
 			m_Book = book;
 			m_SelectedEntryIndex = selectedEntryIndex;
 			m_PageType = page;
@@ -314,7 +317,7 @@ namespace Server.Gumps
 			const int CHECKED_BOX = 4017;
 			const int RIGHT_ARROW = 4005;
 
-			var isDefault = spellType == m_Book.SpellType;
+			var isDefault = spellType == m_Opener.Preferences.DefaultRunebookSpellType;
 			var actionBase = settingDefault ? (int)ActionButtonType.SetDefaultSpellBase : (int)ActionButtonType.CastSpellBase;
 			var graphic = settingDefault
 				? isDefault
@@ -384,7 +387,9 @@ namespace Server.Gumps
 
 		public override void OnResponse(NetState state, RelayInfo info)
 		{
-			Mobile from = state.Mobile;
+			var from = state.Mobile as PlayerMobile;
+			if (from == null) return;
+
 			var removeOpener = true;
 
 			try
@@ -506,7 +511,7 @@ namespace Server.Gumps
 								{
 									var runeIndex = (int)buttonId - (int)ActionButtonType.ExecuteDefaultSpellAgainstTargetBase;
 									entry = m_Book.TryGetRune(runeIndex);
-									spellId = m_Book.SpellType;
+									spellId = m_Opener.Preferences.DefaultRunebookSpellType;
 								}
 								else if (buttonId >= ActionButtonType.CastSpellBase) // Use provided spell on default rune
 								{
@@ -711,7 +716,7 @@ namespace Server.Gumps
 								var spellId = (SpellType)(info.ButtonID - (int)ActionButtonType.SetDefaultSpellBase);
 								if (!Enum.IsDefined(typeof(SpellType), spellId)) return;
 
-								m_Book.SpellType = spellId;
+								from.Preferences.DefaultRunebookSpellType = spellId;
 								removeOpener = false;
 								from.CloseGump(typeof(RunebookGump));
 								from.SendGump(new RunebookGump(from, m_Book, m_PageType, m_SelectedEntryIndex));
@@ -758,21 +763,25 @@ namespace Server.Gumps
 				m_SelectedEntryIndex = selectedEntryIndex;
 			}
 
-			public override void OnCancel(Mobile from)
+			public override void OnCancel(Mobile m)
 			{
+				PlayerMobile from = m as PlayerMobile;
+				if (from == null) return;
+
 				from.SendLocalizedMessage(502415); // Request cancelled.
 
-				if (!m_Book.Deleted && from.InRange(m_Book.GetWorldLocation(), (Core.ML ? 3 : 1)))
+				if (!m_Book.Deleted && from.InRange(m_Book.GetWorldLocation(), 3))
 				{
 					from.CloseGump(typeof(RunebookGump));
 					from.SendGump(new RunebookGump(from, m_Book, m_PageType, m_SelectedEntryIndex));
 				}
 			}
 
-			public override void OnResponse(Mobile from, string text)
+			public override void OnResponse(Mobile m, string text)
 			{
-				if (m_Book.Deleted || !from.InRange(m_Book.GetWorldLocation(), (Core.ML ? 3 : 1)))
-					return;
+				var from = m as PlayerMobile;
+				if (from == null) return;
+				if (m_Book.Deleted || !from.InRange(m_Book.GetWorldLocation(), 3)) return;
 
 				if (m_Book.CheckAccess(from))
 				{
@@ -807,9 +816,12 @@ namespace Server.Gumps
 				m_SelectedEntryIndex = selectedEntryIndex;
 			}
 
-			public override void OnResponse(Mobile from, string text)
+			public override void OnResponse(Mobile m, string text)
 			{
-				if (m_Book.Deleted || !from.InRange(m_Book.GetWorldLocation(), (Core.ML ? 3 : 1)))
+				var from = m as PlayerMobile;
+				if (from == null) return;
+
+				if (m_Book.Deleted || !from.InRange(m_Book.GetWorldLocation(), 3))
 					return;
 
 				if (m_Book.CheckAccess(from))
