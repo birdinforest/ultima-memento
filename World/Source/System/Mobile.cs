@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Server;
 using Server.Accounting;
@@ -10886,6 +10887,26 @@ namespace Server
 				return Direction.North;
 
 			return GetDirectionTo( p.X, p.Y );
+		}
+
+		public bool IsInFront( IEntity entity )
+		{
+			if ( entity.X == X && entity.Y == Y ) return false;
+			if ( entity.Map != Map || Math.Abs( entity.Z - Z ) >= 16 ) return false;
+
+			var directionToEntity = GetDirectionTo( entity );
+
+			return Utility.GetForwardArc( Direction ).Any( d => d == directionToEntity );
+		}
+
+		public bool IsBehind( IEntity entity )
+		{
+			if ( entity.X == X && entity.Y == Y ) return false;
+			if ( entity.Map != Map || Math.Abs( entity.Z - Z ) >= 16 ) return false;
+
+			var directionToEntity = GetDirectionTo( entity );
+
+			return Utility.GetBehindArc( Direction ).Any( d => d == directionToEntity );
 		}
 
 		#endregion
