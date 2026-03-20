@@ -1,4 +1,3 @@
-using System;
 using Server.Items;
 using Server.SkillHandlers;
 
@@ -20,6 +19,11 @@ namespace Server.Spells.Ninjitsu
 			double ninjitsu = attacker.Skills[SkillName.Ninjitsu].Value;
 
 			return 1.0 + (ninjitsu / 360) + Tracking.GetStalkingBonus( attacker, defender ) / 100;
+		}
+
+		public override bool IgnoreArmor( Mobile attacker, Mobile defender )
+		{
+			return defender.IsBehind( attacker );
 		}
 
 		public override bool Validate( Mobile from )

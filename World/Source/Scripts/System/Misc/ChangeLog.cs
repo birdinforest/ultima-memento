@@ -21,6 +21,7 @@ namespace Server.Misc
 			builder.Append("- Ability - Focus Attack is now usable while holding a shield<br>");
 			builder.Append("- Ability - Mortal Strike now prevents mobs from cheating death<br>");
 			builder.Append("- Ability - Death Strike now applies a mortal wound to the target<br>");
+			builder.Append("- Ability - Backstab now ignores armor when performed from behind<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs 50% of melee damage<br>");
 			builder.Append("- Combat - Melee damage absorb now absorbs at 200% efficiency<br>");
 			builder.Append("- Craft - Runic tools now have 15/10/5 uses, up from 5/5/5<br>");
