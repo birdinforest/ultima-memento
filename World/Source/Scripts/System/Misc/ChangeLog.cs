@@ -45,6 +45,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
 			builder.Append("- Misc - Larger boats now travel faster<br>");
 			builder.Append("- Misc - Seafaring skill now affects boats travel speed<br>");
+			builder.Append("- Misc - Dramatically increased the purchase price of larger boats<br>");
 			builder.Append("- Spell - Curse now reduces elemental resistances for Monsters by 10<br>");
 			builder.Append("- Spell - Shadow Jumping to a mobile will now attempt to jump behind it<br>");
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
