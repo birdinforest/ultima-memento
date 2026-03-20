@@ -42,35 +42,35 @@ namespace Server.Gumps
 			int rows = 0;
 
 			AddButton(x, y, 4011, 4011, 400, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Basics</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Basics</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			if ( from.RaceID > 0 )
 			{
 				AddButton(x, y, 4011, 4011, 401, GumpButtonType.Reply, 0);
-				AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Creature Help</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Creature Help</BASEFONT></BODY>", (bool)false, (bool)false);
 				y=y+d;
 				rows++;
 			}
 
 			AddButton(x, y, 4011, 4011, 402, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Fame & Karma</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Fame & Karma</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 403, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Item Properties</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Item Properties</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 404, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Skills</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Skills</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 405, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Weapon Abilities</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Weapon Abilities</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
@@ -91,7 +91,7 @@ namespace Server.Gumps
 
                     string title = discovered ? info : "---------------";
                     if ( discovered ) AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
-                    AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
                     y=y+d;
                     rows++;
                     entry++;
