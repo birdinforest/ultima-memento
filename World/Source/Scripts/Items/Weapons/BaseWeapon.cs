@@ -1405,31 +1405,6 @@ namespace Server.Items
 
 		public virtual void OnHit( Mobile attacker, Mobile defender, double damageBonus )
 		{
-            double sneakBonus = 0.0;
-
-			if( attacker is PlayerMobile && ((PlayerMobile)attacker).SneakDamage )
-            {
-                PlayerMobile pm = (PlayerMobile)attacker;
-
-				double sneakAttack = attacker.Skills[SkillName.Hiding].Value;
-				sneakAttack = sneakAttack + attacker.Skills[SkillName.Stealth].Value;
-				
-				double bonusrange = Utility.RandomDouble();
-				if (bonusrange < 0.50)
-					bonusrange += 0.40;
-				if (bonusrange > 0.90)
-					bonusrange -= 0.10;
-				
-				sneakBonus = ( (0.015 * sneakAttack) / 1.50) * bonusrange;
-					if ( sneakBonus > 1.25 ){ sneakBonus = 1.25; }
-					if ( this is BaseRanged ){ sneakBonus = (double)(sneakBonus/2); }
-
-				int tellBonus = (int)(sneakBonus * 100);
-
-				attacker.SendMessage( "You perform a sneak attack for " + tellBonus + "% more damage!" );
-				pm.SneakDamage = false;
-			}
-
 			if ( MirrorImage.HasClone( defender ) && (defender.Skills.Ninjitsu.Value / 150.0) > Utility.RandomDouble() )
 			{
 				Clone bc;
@@ -1556,7 +1531,29 @@ namespace Server.Items
 
 			percentageBonus = Math.Min( percentageBonus, 300 );
 
-			damage = damage + (int)( damage * sneakBonus );
+			if( attacker is PlayerMobile && ((PlayerMobile)attacker).SneakDamage )
+            {
+                PlayerMobile pm = (PlayerMobile)attacker;
+
+				double sneakAttack = attacker.Skills[SkillName.Hiding].Value + attacker.Skills[SkillName.Stealth].Value;
+				
+				double bonusrange = Utility.RandomDouble();
+				if (bonusrange < 0.50)
+					bonusrange += 0.40;
+				if (bonusrange > 0.90)
+					bonusrange -= 0.10;
+				
+				var sneakBonus = ( (0.015 * sneakAttack) / 1.50) * bonusrange;
+				if ( sneakBonus > 1.25 ){ sneakBonus = 1.25; }
+				if ( this is BaseRanged ){ sneakBonus = (double)(sneakBonus/2); }
+
+				int tellBonus = (int)(sneakBonus * 100);
+
+				attacker.SendMessage( "You perform a sneak attack for " + tellBonus + "% more damage!" );
+				pm.SneakDamage = false;
+
+				damage += (int)( damage * sneakBonus );
+			}
 
 			damage = AOS.Scale( damage, 100 + percentageBonus );
 			#endregion
