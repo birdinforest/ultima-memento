@@ -684,6 +684,41 @@ namespace Server
 			}
 		}
 
+		/// <summary>
+		/// Returns the direction that is opposite to the given direction.
+		/// </summary>
+		public static Direction GetOppositeDirection( Direction direction )
+		{
+			return direction + 4 & Direction.Mask;
+		}
+
+		/// <summary>
+		/// Get the arc of directions that are opposite the given direction.
+		/// </summary>
+		public static IEnumerable<Direction> GetBehindArc( Direction direction )
+		{
+			switch ( direction )
+			{
+				case Direction.North: yield return Direction.South; yield return Direction.Left; yield return Direction.Down; yield break;
+				case Direction.South: yield return Direction.North; yield return Direction.Right; yield return Direction.Up; yield break;
+				case Direction.East: yield return Direction.West; yield return Direction.Up; yield return Direction.Left; yield break;
+				case Direction.West: yield return Direction.East; yield return Direction.Right; yield return Direction.Down; yield break;
+				case Direction.Right: yield return Direction.South; yield return Direction.West; yield return Direction.Left; yield break;
+				case Direction.Left: yield return Direction.North; yield return Direction.East; yield return Direction.Right; yield break;
+				case Direction.Down: yield return Direction.North; yield return Direction.West; yield return Direction.Up; yield break;
+				case Direction.Up: yield return Direction.South; yield return Direction.East; yield return Direction.Down; yield break;
+				default: yield break;
+			}
+		}
+
+		/// <summary>
+		/// Get the arc of directions that are forward of the given direction.
+		/// </summary>
+		public static IEnumerable<Direction> GetForwardArc( Direction direction )
+		{
+			return GetBehindArc( GetOppositeDirection( direction ) );
+		}
+
 		/* Should probably be rewritten to use an ITile interface
 
 		public static bool CanMobileFit( int z, StaticTile[] tiles )
