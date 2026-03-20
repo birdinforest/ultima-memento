@@ -9,6 +9,7 @@ namespace Server.Engines.Avatar
 
 		#region Shop Constants
 
+		public const int BOAT_SPEED_MAX_LEVEL = Multis.BaseBoat.MAX_SPEED_BOOSTS;
 		public const int IMPROVED_TEMPLATE_MAX_COUNT = 5;
 		public const int POINT_GAIN_RATE_MAX_LEVEL = 100;
 		public const int POINT_GAIN_RATE_PER_LEVEL = 1;

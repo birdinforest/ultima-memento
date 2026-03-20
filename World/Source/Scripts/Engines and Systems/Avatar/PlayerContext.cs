@@ -88,11 +88,16 @@ namespace Server.Engines.Avatar
 				_safetyDepositBoxSerial = reader.ReadInt();
 				SafetyDepositBoxLevel = reader.ReadInt();
 			}
+
+			BoatSpeedLevel = 9 < version ? reader.ReadInt() : 0;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Active
 		{ get { return this != Default; } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int BoatSpeedLevel { get; set; }
 
 		public bool HasSafetyDepositBox
 		{ get { return _safetyDepositBoxSerial != Serial.Zero && World.Items.ContainsKey(_safetyDepositBoxSerial); } }
@@ -198,7 +203,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(9); // version
+			writer.Write(10); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -230,6 +235,7 @@ namespace Server.Engines.Avatar
 			writer.Write(LifetimeCreatureKills);
 			writer.Write(_safetyDepositBoxSerial);
 			writer.Write(SafetyDepositBoxLevel);
+			writer.Write(BoatSpeedLevel);
 		}
 
 		public override string ToString()

@@ -166,6 +166,17 @@ namespace Server.Engines.Avatar
 								}
 							),
 							ActionReward.Create(
+								Constants.BOAT_SPEED_MAX_LEVEL <= context.BoatSpeedLevel,
+								ExponentialCost(5 * ONE_THOUSAND_GOLD, context.BoatSpeedLevel + 1),
+								AvatarShopGump.NO_ITEM_ID,
+								string.Format("Fast Seaman ({0} of {1})", context.BoatSpeedLevel, Constants.BOAT_SPEED_MAX_LEVEL),
+								"Increase your sailing speed.",
+								() => {
+									context.BoatSpeedLevel += 1;
+									m_From.SendMessage("Your sailing speed has been increased.");
+								}
+							),
+							ActionReward.Create(
 								context.UnlockTemptations,
 								10 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,

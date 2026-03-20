@@ -949,6 +949,9 @@ namespace Server.Multis
 
 			speedBoosts = Math.Max( speedBoosts, seafaringBoosts );
 
+			if ( player.Avatar.Active )
+				speedBoosts = Math.Max( speedBoosts, player.Avatar.BoatSpeedLevel );
+
 			if ( speedBoosts < 1 ) return speed;
 
 			const int MILLISECONDS_PER_BOOST = 25;
