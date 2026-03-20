@@ -937,7 +937,17 @@ namespace Server.Multis
 		{
 			if ( false == from is PlayerMobile ) return speed;
 
+			var player = (PlayerMobile)from;
 			var speedBoosts = DefaultBoatSpeedIncrease;
+
+			var seafaringValue = player.Skills[SkillName.Seafaring].Value;
+			var seafaringBoosts = 0;
+			if ( 125 <= seafaringValue ) seafaringBoosts = 4;
+			else if ( 100 <= seafaringValue ) seafaringBoosts = 3;
+			else if ( 75 <= seafaringValue ) seafaringBoosts = 2;
+			else if ( 50 <= seafaringValue ) seafaringBoosts = 1;
+
+			speedBoosts = Math.Max( speedBoosts, seafaringBoosts );
 
 			if ( speedBoosts < 1 ) return speed;
 
