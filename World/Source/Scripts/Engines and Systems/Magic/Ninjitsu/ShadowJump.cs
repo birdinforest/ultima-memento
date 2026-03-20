@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using Server.Network;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using System.Linq;
 
 namespace Server.Spells.Ninjitsu
 {
@@ -107,8 +106,58 @@ namespace Server.Spells.Ninjitsu
 
 			protected override void OnTarget( Mobile from, object o )
 			{
-				IPoint3D p = o as IPoint3D;
+				if ( o is Mobile )
+				{
+					// Try to teleport behind the mobile
+					var mobile = (Mobile)o;
+					int discardZ = 0;
+					var directions = Utility.GetBehindArc( mobile.Direction ).Where(d => mobile.CheckMovement( d, out discardZ )).ToList();
+					if ( 0 < directions.Count )
+					{
+						var d = Utility.Random(directions);
 
+						int newZ;
+						mobile.CheckMovement( d, out newZ );
+
+						int x = mobile.Location.X, y = mobile.Location.Y;
+						switch( d & Direction.Mask )
+						{
+							case Direction.North:
+								--y;
+								break;
+							case Direction.Right:
+								++x;
+								--y;
+								break;
+							case Direction.East:
+								++x;
+								break;
+							case Direction.Down:
+								++x;
+								++y;
+								break;
+							case Direction.South:
+								++y;
+								break;
+							case Direction.Left:
+								--x;
+								++y;
+								break;
+							case Direction.West:
+								--x;
+								break;
+							case Direction.Up:
+								--x;
+								--y;
+								break;
+						}
+
+						m_Owner.Target( new Point3D( x, y, newZ ) );
+						return;
+					}
+				}
+
+				var p = o as IPoint3D;
 				if ( p != null )
 					m_Owner.Target( p );
 			}

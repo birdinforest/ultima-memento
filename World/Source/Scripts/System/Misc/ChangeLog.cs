@@ -46,7 +46,7 @@ namespace Server.Misc
 			builder.Append("- Misc - Larger boats now travel faster<br>");
 			builder.Append("- Misc - Seafaring skill now affects boats travel speed<br>");
 			builder.Append("- Spell - Curse now reduces elemental resistances for Monsters by 10<br>");
-			builder.Append("- Spell - Shadow Jump now allows targeting mobiles<br>");
+			builder.Append("- Spell - Shadow Jumping to a mobile will now attempt to jump behind it<br>");
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
