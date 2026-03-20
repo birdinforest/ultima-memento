@@ -1636,7 +1636,7 @@ namespace Server.Items
 			WeaponAbility weaponA;
 			bool BladeWeaving = Bladeweave.BladeWeaving(attacker, out weaponA);
 
-			bool ignoreArmor = ( a is ArmorIgnore || (move != null && move.IgnoreArmor( attacker )) || (BladeWeaving && weaponA is ArmorIgnore ));
+			bool ignoreArmor = ( a is ArmorIgnore || (move != null && move.IgnoreArmor( attacker, defender )) || (BladeWeaving && weaponA is ArmorIgnore ));
 
 			damageGiven = AOS.Damage( defender, attacker, damage, ignoreArmor, phys, fire, cold, pois, nrgy, chaos, direct, false, this is BaseRanged, false );
 

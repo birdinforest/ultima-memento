@@ -63,7 +63,7 @@ namespace Server.Spells
 		{
 		}
 
-		public virtual bool IgnoreArmor( Mobile attacker )
+		public virtual bool IgnoreArmor( Mobile attacker, Mobile defender )
 		{
 			return false;
 		}

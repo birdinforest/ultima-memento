@@ -52,7 +52,7 @@ namespace Server.Spells.Bushido
 			return true;
 		}
 
-		public override bool IgnoreArmor( Mobile attacker )
+		public override bool IgnoreArmor( Mobile attacker, Mobile defender )
 		{
 			double bushido = attacker.Skills[SkillName.Bushido].Value;
 			double criticalChance = (bushido * bushido) / 72000.0;
