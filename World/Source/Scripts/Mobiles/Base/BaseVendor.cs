@@ -329,9 +329,9 @@ namespace Server.Mobiles
 			return m_CoinsPerAccount.TryGetValue( id, out value ) ? value : 0;
 		}
 
-		public bool AddToCoinPurse( Mobile buyer, int amount )
+		public bool AddToCoinPurse( Mobile buyer, int amount, bool canCreate = true )
 		{
-			var coins = TryGetCoinPurse( buyer );
+			var coins = canCreate ? GetOrCreateCoinPurse( this, buyer, false ) : TryGetCoinPurse( buyer );
 			if ( coins == null ) return false;
 
 			return SetCoinPurse( buyer, Math.Max( 0, coins.Value + amount ) );
@@ -2177,7 +2177,7 @@ namespace Server.Mobiles
 				}
 
 				// Deduct the gold
-				AddToCoinPurse( seller, 0 - GiveGold );
+				AddToCoinPurse( seller, 0 - GiveGold, false );
 
 				// Chance to learn mercantile
 				if ( !isBegging && !isInGuild )
