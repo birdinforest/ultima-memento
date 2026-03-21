@@ -50,6 +50,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
+			m = MobileUtilities.TryGetMasterPlayer(m);
 			if ( owner == m ) return true;
 
 			if ( m.Region.AllowHarmful( owner, m ) )

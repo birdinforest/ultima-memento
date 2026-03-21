@@ -41,6 +41,7 @@ namespace Server.Misc
 			builder.Append("- Item - Throwing slimes have been nerfed (production caps at 2 per jar and amount no longer benefits from alch/ep%)<br>");
 			builder.Append("- Item - Instruments can now roll slayers<br>");
 			builder.Append("- Item - Elemental spellbooks can now roll slayers<br>");
+			builder.Append("- Item - Player Traps no longer trigger on their own pets<br>");
 			builder.Append("- Misc - Fishing poles dropped from sunken ships are no longer basic wood<br>");
 			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
 			builder.Append("- Misc - Larger boats now travel faster<br>");
