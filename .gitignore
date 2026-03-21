@@ -50,3 +50,7 @@ World/Scripts/Obsolete
 World.exe
 World.exe.config
 src/World.exe - Shortcut
+World/Data/Files/*
+World/Saves/*
+World/*.exe
+.specstory
