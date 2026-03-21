@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Gump - Resurrect gumps now have a confirmation when you will incur a penalty<br>");
 			builder.Append("- Gump - Failed runebook casts now reopen the gump<br>");
 			builder.Append("- Gump - Default runebook spell is now saved per player instead of per runebook<br>");
+			builder.Append("- Gump - Exceptional tools are now categorized as such on the craft session indicator<br>");
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");

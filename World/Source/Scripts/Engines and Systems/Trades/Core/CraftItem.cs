@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Commands;
 using Server.Misc;
 using Server.Engines.MLQuests;
+using Server.Utilities;
 
 namespace Server.Engines.Craft
 {
@@ -1029,17 +1030,6 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		private bool IsExceptional(Item item)
-		{
-			if (item == null) return false;
-
-			return (item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Exceptional)
-				|| (item is BaseWeapon && ((BaseWeapon)item).Quality == WeaponQuality.Exceptional)
-				|| (item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Exceptional)
-				|| (item is BaseTrinket && ((BaseTrinket)item).Quality == TrinketQuality.Exceptional)
-				|| (item is BaseInstrument && ((BaseInstrument)item).Quality == InstrumentQuality.Exceptional);
-		}
-
 		public void CompleteCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CustomCraft customCraft, BulkCraftContext bulkCraftContext )
 		{
 			if ( bulkCraftContext != null)
@@ -1143,7 +1133,7 @@ namespace Server.Engines.Craft
 						var runic = (IRunicTool)tool;
 						BaseRunicTool.ApplyAttributes(from, item, runic.RunicMinAttributes, runic.RunicMaxAttributes, runic.RunicMinIntensity, runic.RunicMaxIntensity);
 					}
-					else if (tool is IRunicWhenExceptional && IsExceptional(item)) // Exceptional applies a runic
+					else if (tool is IRunicWhenExceptional && ItemUtilities.IsExceptional(item)) // Exceptional applies a runic
 					{
 						BaseRunicTool.ApplyAttributesTo(item, 1, 5, 20);
 					}
@@ -1268,7 +1258,7 @@ namespace Server.Engines.Craft
                 {
                     bulkCraftContext.LastMessage = null;
                     bulkCraftContext.Success++;
-					if ( IsExceptional(item) )
+					if ( ItemUtilities.IsExceptional(item) )
 						bulkCraftContext.Exceptional++;
 				}
 				else
