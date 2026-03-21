@@ -1945,7 +1945,7 @@ namespace Server.Mobiles
 			AddToCoinPurse( buyer, totalCost );
 
 			// Chance to learn mercantile
-			int skillChecks = totalCost / 500; // One check per 500 gold
+			int skillChecks = totalCost / 200; // One check per 200 gold
 			SkillUtilities.DoSkillChecks(buyer, SkillName.Mercantile, skillChecks, totalItems);
 
 			if ( fullPurchase )
@@ -2182,8 +2182,8 @@ namespace Server.Mobiles
 				// Chance to learn mercantile
 				if ( !isBegging && !isInGuild )
 				{
-					// 500 / 1000 / 2000 / 3000 / etc
-					int skillChecks = GiveGold < 500 ? 0 : 1 + ( GiveGold / 1000 );
+					// 200 / 500 / 1000 / 1500 / 2000 / etc
+					int skillChecks = GiveGold < 200 ? 0 : 1 + ( GiveGold / 500 );
 					SkillUtilities.DoSkillChecks(seller, SkillName.Mercantile, skillChecks, Sold);
 				}
 

@@ -62,6 +62,7 @@ namespace Server.Misc
 			builder.Append("        - 100 skill is required to attempt in-combat hiding<br>");
 			builder.Append("        - Grandmaster+ will now attempt to Stealth when hiding succeeds<br>");
 			builder.Append("- Skill - Stealth cooldown after using Backstab or Surprise Attack is now removed<br>");
+			builder.Append("- Skill - Mercantile checks from npc transactions (Buy/Sell) are now more frequent<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
