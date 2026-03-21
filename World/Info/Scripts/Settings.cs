@@ -81,6 +81,12 @@ namespace Server
 
 		public static bool S_AutoDetect = true;
 
+	// Relative path from the server working directory to the Ultima Online client data files
+	// (map*.mul, tiledata.mul, statics*.mul, cliloc.enu, etc.). Change this if your .mul files
+	// live somewhere else.
+
+		public static string S_DataFilesPath = "Data/Files";
+
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
