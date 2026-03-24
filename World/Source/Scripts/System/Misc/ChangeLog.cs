@@ -53,6 +53,8 @@ namespace Server.Misc
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
 			builder.Append("- Spell - Foe Requiem skill requirement has been reduced to 50, down from 80<br>");
 			builder.Append("- Spell - Quivering Palm now has a start/finish message<br>");
+			builder.Append("- Spell - Gentle Touch now has a 2.5s cast time, down from 3s<br>");
+			builder.Append("- Spell - Purity of Body now has a 2.5s cast time, down from 3s<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
