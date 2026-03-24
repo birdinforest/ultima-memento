@@ -52,6 +52,7 @@ namespace Server.Misc
 			builder.Append("- Spell - Shadow Jumping to a mobile will now attempt to jump behind it<br>");
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
 			builder.Append("- Spell - Foe Requiem skill requirement has been reduced to 50, down from 80<br>");
+			builder.Append("- Spell - Quivering Palm now has a start/finish message<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
