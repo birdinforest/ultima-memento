@@ -22,7 +22,7 @@ namespace Server.Spells.Song
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(2); } }
 		public override int RequiredMana { get { return 30; } }
-		public override double RequiredSkill { get { return 80.0; } }
+		public override double RequiredSkill { get { return 50.0; } }
 		public override bool UseDefaultInstrument { get { return false; } }
 
 		public static bool HasEffect(Mobile m)
