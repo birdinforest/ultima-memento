@@ -45,26 +45,38 @@ namespace Server.Spells.Third
 			Map map = Caster.Map;
 
 			SpellHelper.GetSurfaceTop( ref p );
+			var isPlayer = Caster is PlayerMobile;
 
-			if ( Server.Misc.WeightOverloading.IsOverloaded( Caster ) )
+			if ( isPlayer )
 			{
-				Caster.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
+				var isValid = false;
+				if ( Server.Misc.WeightOverloading.IsOverloaded( Caster ) )
+				{
+					Caster.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
+				}
+				else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom ) )
+				{
+				}
+				else if ( !SpellHelper.CheckTravel( Caster, map, new Point3D( p ), TravelCheckType.TeleportTo ) )
+				{
+				}
+				else if ( map == null || !map.CanSpawnMobile( p.X, p.Y, p.Z ) )
+				{
+					Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
+				}
+				else if ( SpellHelper.CheckMulti( new Point3D( p ), map ) )
+				{
+					Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
+				}
+				else
+				{
+					isValid = true;
+				}
+
+				if ( !isValid ) return;
 			}
-			else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom ) )
-			{
-			}
-			else if ( !SpellHelper.CheckTravel( Caster, map, new Point3D( p ), TravelCheckType.TeleportTo ) )
-			{
-			}
-			else if ( map == null || !map.CanSpawnMobile( p.X, p.Y, p.Z ) )
-			{
-				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
-			}
-			else if ( SpellHelper.CheckMulti( new Point3D( p ), map ) )
-			{
-				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
-			}
-			else if ( CheckSequence() )
+
+			if ( CheckSequence() )
 			{
 				if (Caster is PlayerMobile){ Point3D peto = new Point3D( p ); BaseCreature.TeleportPets( Caster, peto, map, false ); }
 				SpellHelper.Turn( Caster, orig );
