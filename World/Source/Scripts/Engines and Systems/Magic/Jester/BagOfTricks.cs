@@ -145,7 +145,7 @@ namespace Server.Items
 			else if ( ability == 20750 || ability == ( 20750 + 10 ) ){ if ( type == "name" ){ 	str = "Hilarity"; } else if ( type == "points" ){ 		str = "40"; } else if ( type == "mana" ){ 	str = "50"; } else { 
 				str = "Keep your audience in stitches! Tell a joke and see if others are frozen in laughter. The duration of the laughter is based on both your jester skills and the difficulty of the audience. The range of which your joke is heard, is also dependent on your jester skills.";
 			}}
-			else if ( ability == 20747 || ability == ( 20747 + 10 ) ){ if ( type == "name" ){ 	str = "Insult"; } else if ( type == "points" ){ 		str = "60"; } else if ( type == "mana" ){ 	str = "60"; } else { 
+			else if ( ability == 20747 || ability == ( 20747 + 10 ) ){ if ( type == "name" ){ 	str = "Insult"; } else if ( type == "points" ){ 		str = "40"; } else if ( type == "mana" ){ 	str = "60"; } else { 
 				str = "Get ready to deal a sharp tongued insult! Although your words won't have them slipping on their tears, it will demoralize them to the point where their mana will begin to fade as they reflect on their hurt feelings. The duration of the decline, as well as how much mana is lost each second, is dependent on your jester skills.";
 			}}
 			else if ( ability == 20754 || ability == ( 20754 + 10 ) ){ if ( type == "name" ){ 	str = "Jump Around"; } else if ( type == "points" ){ 	str = "20"; } else if ( type == "mana" ){ 	str = "20"; } else { 
