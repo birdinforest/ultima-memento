@@ -47,7 +47,6 @@ namespace Server.Spells.Syth
 				Point3D boom = new Point3D( target.X+1, target.Y+2, target.Z+5);
 				Effects.SendLocationEffect( boom, target.Map, 0x3822, 60, 10, 0xAF1, 0 );
 				target.PlaySound( 0x658 );
-				DrainCrystals( Caster, RequiredTithing );
 			}
 		}
 
@@ -59,7 +58,7 @@ namespace Server.Spells.Syth
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( Caster.CanBeHarmful( m ) && CheckSequence() )
+			else if ( CheckHSequence( m ) )
 			{
 				Mobile from = Caster, target = m;
 
@@ -73,8 +72,6 @@ namespace Server.Spells.Syth
 					new TimerStateCallback( AosDelay_Callback ),
 					new object[]{ Caster, target, m, min, max } );
 			}
-
-			FinishSequence();
 		}
 
 		public override double GetSlayerDamageScalar( Mobile target )

@@ -211,12 +211,13 @@ namespace Server.Spells.Syth
 				return false;
 			}
 
+			DrainCrystals( Caster, requiredTithing );
+
 			return true;
 		}
 
 		public override void FinishSequence()
 		{
-			DrainCrystals( Caster, RequiredTithing );
 			base.FinishSequence();
 		}
 

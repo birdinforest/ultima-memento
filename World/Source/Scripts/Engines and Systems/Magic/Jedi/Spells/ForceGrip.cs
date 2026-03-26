@@ -40,8 +40,6 @@ namespace Server.Spells.Jedi
 
                 obj.OnTelekinesis(this.Caster);
             }
-
-            this.FinishSequence();
         }
 
         public void Target(Container item)
@@ -55,7 +53,6 @@ namespace Server.Spells.Jedi
                 if (!item.IsAccessibleTo(this.Caster))
                 {
                     item.OnDoubleClickNotAccessible(this.Caster);
-					DrainCrystals( Caster, RequiredTithing );
                 }
                 else if (!item.CheckItemUse(this.Caster, item))
                 {
@@ -63,7 +60,6 @@ namespace Server.Spells.Jedi
                 else if (root != null && root is Mobile && root != this.Caster)
                 {
                     item.OnSnoop(this.Caster);
-					DrainCrystals( Caster, RequiredTithing );
                 }
                 else if (item is Corpse && !((Corpse)item).CheckLoot(this.Caster, null))
                 {
@@ -74,11 +70,8 @@ namespace Server.Spells.Jedi
                     Effects.PlaySound(item.Location, item.Map, 0x1F5);
 
                     item.OnItemUsed(this.Caster, item);
-					DrainCrystals( Caster, RequiredTithing );
                 }
             }
-
-            this.FinishSequence();
         }
 
 #region Grab
@@ -99,10 +92,8 @@ namespace Server.Spells.Jedi
 					Effects.PlaySound(item.Location, item.Map, 0x1F5);
 					Caster.AddToBackpack( item );
 					Caster.SendMessage( "You move the object to within your grasp and place it in your backpack."); 
-					DrainCrystals( Caster, RequiredTithing );
 				}
 			}
-            this.FinishSequence();
         }
 #endregion
 

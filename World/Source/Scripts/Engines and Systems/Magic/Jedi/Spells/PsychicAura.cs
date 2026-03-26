@@ -26,11 +26,6 @@ namespace Server.Spells.Jedi
         {
         }
 
-		public override bool CheckCast()
-		{
-			return true;
-		}
-
 		private static Hashtable m_Table = new Hashtable();
 
 		public override void OnCast()
@@ -45,7 +40,6 @@ namespace Server.Spells.Jedi
 				{
 					targ.PlaySound( 0x1E9 );
 					targ.FixedParticles( 0x376A, 9, 32, 5008, 0xB41, 0, EffectLayer.Waist );
-					DrainCrystals( Caster, RequiredTithing );
 
 					int phys = (int)( (targ.Skills[SkillName.Inscribe].Value / 15) + (GetJediDamage(Caster) / 50) );
 					int engy = (int)( (targ.Skills[SkillName.Inscribe].Value / 25) + (GetJediDamage(Caster) / 75) );

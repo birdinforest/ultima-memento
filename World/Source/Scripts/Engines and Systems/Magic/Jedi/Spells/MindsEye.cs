@@ -172,9 +172,6 @@ namespace Server.Spells.Jedi
 				}
 			}
 
-			DrainCrystals( Caster, RequiredTithing );
-
-			FinishSequence();
 		}
 
 		// Reveal uses magery and searching vs. hide and stealth 

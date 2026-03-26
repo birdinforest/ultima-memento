@@ -105,9 +105,6 @@ namespace Server.Spells.Jedi
 				m.FixedParticles( 0x376A, 9, 32, 5030, 0xB41, 0, EffectLayer.Waist );
 				m.PlaySound( 0x202 );
 			}
-
-			DrainCrystals( Caster, RequiredTithing );
-			FinishSequence();
 		}
 
 		public class InternalTarget : Target

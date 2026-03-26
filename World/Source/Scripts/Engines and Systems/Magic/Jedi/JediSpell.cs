@@ -211,12 +211,13 @@ namespace Server.Spells.Jedi
 				return false;
 			}
 
+			DrainCrystals( Caster, requiredTithing );
+
 			return true;
 		}
 
 		public override void FinishSequence()
 		{
-			DrainCrystals( Caster, RequiredTithing );
 			base.FinishSequence();
 		}
 
