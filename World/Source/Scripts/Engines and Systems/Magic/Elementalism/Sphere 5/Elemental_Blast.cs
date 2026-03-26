@@ -84,7 +84,7 @@ namespace Server.Spells.Elementalism
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( Caster.CanBeHarmful( m ) && CheckSequence() )
+			else if ( CheckHSequence( m ) )
 			{
 				Mobile from = Caster, target = m;
 
