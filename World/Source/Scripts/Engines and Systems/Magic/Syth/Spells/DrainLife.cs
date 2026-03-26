@@ -84,7 +84,6 @@ namespace Server.Spells.Syth
 				Caster.Hits = Caster.Hits + drain;
 				AOS.Damage( m, Caster, drain, true, 100, 0, 0, 0, 0 );
 				new DrainTimer( Caster, m, duration, min, max ).Start();
-				DrainCrystals( Caster, RequiredTithing );
 
 				BuffInfo.RemoveBuff( Caster, BuffIcon.DrainLifeGood );
 				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.DrainLifeGood, 1063502, duration, Caster ) );
@@ -92,8 +91,6 @@ namespace Server.Spells.Syth
 				BuffInfo.RemoveBuff( m, BuffIcon.DrainLifeBad );
 				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.DrainLifeBad, 1063504, duration, m ) );
 			}
-
-			FinishSequence();
 		}
 
 		public class InternalTarget : Target

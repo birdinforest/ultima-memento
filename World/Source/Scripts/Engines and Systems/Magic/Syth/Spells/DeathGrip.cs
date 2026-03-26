@@ -52,15 +52,10 @@ namespace Server.Spells.Syth
 				int max = ( (int)( GetSythDamage(Caster) / 25 ) + 5 );
 				AOS.Damage( m, Caster, Utility.RandomMinMax( min, max ), true, 100, 0, 0, 0, 0 );
 
-				Caster.DoHarmful( m );
-
 				new GripTimer( m, duration, min, max, Caster ).Start();
 
 				HarmfulSpell( m );
-				DrainCrystals( Caster, RequiredTithing );
 			}
-
-			FinishSequence();
 		}
 
 		public class InternalTarget : Target

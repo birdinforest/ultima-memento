@@ -40,8 +40,6 @@ namespace Server.Spells.Syth
 					Effects.SendLocationEffect(m.Location, m.Map, 0x373A, 15, 0x81F, 0);
 					m.SendMessage( "You create a cloning crystal with your genetic pattern." );
 				}
-
-				DrainCrystals( Caster, RequiredTithing );
 			}
 
             FinishSequence();
