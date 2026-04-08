@@ -2,18 +2,34 @@ using System.Text;
 
 namespace Server.Misc
 {
-    class ChangeLog
-    {
+	class ChangeLog
+	{
 		public static string Version()
 		{
-			return "Version: 2.2.0";
+			return "Version: 2.3.0";
 		}
 
 		public static string Versions()
-        {
+		{
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
+			builder.Append("               - Elemental Blast/Storm, Mindblast, Explosion, Psionic Blast, Hail Storm<br>");
+			builder.Append("- Mobs - Can now teleport in more places (Boats, Dungeon Time, etc)<br>");
+			builder.Append("- Spell - Mages Ballad, Army's Paeon, and Foe Requiem now grant musicianship checks every tick<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Gump - Fix issue where Chemist Bar (Alchemist Pouch) buttons didn't work<br>");
+			builder.Append("- Spell - Syth and Jedi spells now properly consume the displayed crystal cost, down from 200% or 300%<br>");
+			builder.Append("- Spell - Insult implementation and displayed info now match<br>");
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 2.2.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Avatar - Add a new ascension for a persistent storage container<br>");
@@ -36,8 +52,6 @@ namespace Server.Misc
 			builder.Append("- Gump - Failed runebook casts now reopen the gump<br>");
 			builder.Append("- Gump - Default runebook spell is now saved per player instead of per runebook<br>");
 			builder.Append("- Gump - Exceptional tools are now categorized as such on the craft session indicator<br>");
-			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
-			builder.Append("               - Elemental Blast/Storm, Mindblast, Explosion, Psionic Blast, Hail Storm<br>");
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
@@ -51,7 +65,6 @@ namespace Server.Misc
 			builder.Append("- Misc - Seafaring skill now affects boats travel speed<br>");
 			builder.Append("- Misc - Dramatically increased the purchase price of larger boats<br>");
 			builder.Append("- Misc - Bards now receive a songbook and foe requiem during character creation<br>");
-			builder.Append("- Mobs - Can now teleport in more places (Boats, Dungeon Time, etc)<br>");
 			builder.Append("- Spell - Curse now reduces elemental resistances for Monsters by 10<br>");
 			builder.Append("- Spell - Shadow Jumping to a mobile will now attempt to jump behind it<br>");
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
@@ -59,7 +72,6 @@ namespace Server.Misc
 			builder.Append("- Spell - Quivering Palm now has a start/finish message<br>");
 			builder.Append("- Spell - Gentle Touch now has a 2.5s cast time, down from 3s<br>");
 			builder.Append("- Spell - Purity of Body now has a 2.5s cast time, down from 3s<br>");
-			builder.Append("- Spell - Mages Ballad, Army's Paeon, and Foe Requiem now grant musicianship checks every tick<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
@@ -81,7 +93,6 @@ namespace Server.Misc
 			builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
 			builder.Append("- Combat - Fix issue where melee damage absorb would never be consumed<br>");
 			builder.Append("- Gump - Fix issue where My Library had an extra book<br>");
-			builder.Append("- Gump - Fix issue where Chemist Bar (Alchemist Pouch) buttons didn't work<br>");
 			builder.Append("- Item - Fixed tooltip for Consecrated sharpening stones to indicate 4 hour durations<br>");
 			builder.Append("- Item - Mixtures can now be placed into Alchemist Pouches<br>");
 			builder.Append("- Item - Nosferatu's Robe now has a Spiritualism bonus<br>");
@@ -93,8 +104,6 @@ namespace Server.Misc
 			builder.Append("- Spell - Mages Ballad and Army's Paeon buffs now use the correct tooltip<br>");
 			builder.Append("- Spell - Difficulty checks now correctly match the spell circle<br>");
 			builder.Append("- Spell - Reactive Armor and defensive spell checks no longer incorrectly check Melee Damage Absorb<br>");
-			builder.Append("- Spell - Syth and Jedi spells now properly consume the displayed crystal cost, down from 200% or 300%<br>");
-			builder.Append("- Spell - Insult implementation and displayed info now match<br>");
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
