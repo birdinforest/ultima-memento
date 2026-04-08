@@ -135,6 +135,9 @@ namespace Server.Spells.Song
 
 						m.Damage((int)currentDamage, Caster);
 						m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Head);
+
+						// Each tick gives the chance to gain musicianship
+						Caster.CheckSkill(SkillName.Musicianship, 0.5);
 					});
 
 					Caster.MovingParticles(m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);
