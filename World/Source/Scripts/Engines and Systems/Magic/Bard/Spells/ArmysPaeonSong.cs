@@ -37,7 +37,7 @@ namespace Server.Spells.Song
 
 				foreach (var friend in GetNearbyFriends())
 				{
-					var recipient = new ArmysPaeonRecipient(friend, tickAmount, tickInterval, duration);
+					var recipient = new ArmysPaeonRecipient(friend, friend == Caster, tickAmount, tickInterval, duration);
 					Engine.Instance.AddEnhancement(friend, recipient);
 				}
 
@@ -50,12 +50,16 @@ namespace Server.Spells.Song
 
 		private class ArmysPaeonRecipient : TimeDependentRecipient<ArmysPaeonSong>
 		{
+			private readonly bool m_IsCaster;
 			private readonly int m_TickAmount;
+			private readonly TimeSpan m_TickInterval;
 			private Timer m_Timer;
 
-			public ArmysPaeonRecipient(Mobile targetMobile, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
+			public ArmysPaeonRecipient(Mobile targetMobile, bool isCaster, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
 			{
 				m_TickAmount = tickAmount;
+				m_TickInterval = tickInterval;
+				m_IsCaster = isCaster;
 			}
 
 			protected override void RemoveInternal()
@@ -75,7 +79,7 @@ namespace Server.Spells.Song
 			{
 				var m = TargetMobile;
 				m.SendMessage("Your wounds begin to heal.");
-				m_Timer = Timer.DelayCall(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2), () =>
+				m_Timer = Timer.DelayCall(m_TickInterval, m_TickInterval, () =>
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)
 					{
@@ -89,6 +93,9 @@ namespace Server.Spells.Song
 					}
 
 					m.Hits = Math.Min(m.Hits + m_TickAmount, m.HitsMax);
+
+					// Each tick gives the chance to gain musicianship
+					if (m_IsCaster) m.CheckSkill(SkillName.Musicianship, 0.5);
 				});
 
 				BuffInfo.RemoveBuff(m, BuffIcon.ArmysPaeon);
