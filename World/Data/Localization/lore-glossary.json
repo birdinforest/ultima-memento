@@ -1,0 +1,5004 @@
+{
+  "version": 1,
+  "description": "Heuristic proper-noun and lore-term glossary from localization + quest C#.",
+  "stats": {
+    "unique_terms": 128,
+    "localization_strings": 3371,
+    "quest_item_types": 164
+  },
+  "item_types_in_quests": [
+    {
+      "kind": "item_type",
+      "name": "Gold",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs",
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs",
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs",
+        "Source/Scripts/Engines and Systems/Quests/Prisoners/Prisoner.cs"
+      ],
+      "file_count": 4
+    },
+    {
+      "kind": "item_type",
+      "name": "SewingKit",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Frankenstein/FrankenItem.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "VortexCube",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Codex/ApproachVoid.cs",
+        "Source/Scripts/Engines and Systems/Quests/Codex/DoorCodex.cs",
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 3
+    },
+    {
+      "kind": "item_type",
+      "name": "BoardGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs",
+        "Source/Scripts/Engines and Systems/Quests/Fishing/FishingQuestBoard.cs",
+        "Source/Scripts/Engines and Systems/Quests/Standard/StandardQuestBoard.cs"
+      ],
+      "file_count": 3
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestTome",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Major/QuestTome.cs",
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "BlacksmithDeliveryCrate",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ThiefNote",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Thief/HayCrate.cs",
+        "Source/Scripts/Engines and Systems/Quests/Thief/HollowStump.cs",
+        "Source/Scripts/Engines and Systems/Quests/Thief/StealBase.cs"
+      ],
+      "file_count": 3
+    },
+    {
+      "kind": "item_type",
+      "name": "DDCopper",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DDSilver",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MuseumBook",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Museum/MuseumBook.cs",
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "PirateRegion",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Fishing/FishingQuestFunctions.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DungeonRegion",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Assassin/AssassinFunctions.cs",
+        "Source/Scripts/Engines and Systems/Quests/Standard/StandardQuestFunctions.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "SearchPage",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "AlienEgg",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ResearchBag",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DragonEgg",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DracolichSkull",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DemonPrison",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "CourierMail",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GemImmortality",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Shadowlords/GemImmortality.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SearchGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs",
+        "Source/Scripts/Engines and Systems/Quests/Epic/CourierMail.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "ClueGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/ScrollClue.cs",
+        "Source/Scripts/Engines and Systems/Quests/SomeRandomNote.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice4",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice6",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice8",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice10",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice12",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Dice20",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DungeonMastersGuide",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlayersHandbook",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MonsterManual",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "VillageRegion",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Assassin/AssassinFunctions.cs",
+        "Source/Scripts/Engines and Systems/Quests/Golems/GolemManual.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "DDXormite",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "LeadCoin",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RuneBox",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Runes/RunesBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DDRelicTablet",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Search/SearchBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "FrankenGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Frankenstein/FrankenJournal.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "CodexWisdom",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Codex/DoorCodex.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "LenseGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Codex/CodexWisdom.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ObeliskTip",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Pagan/PaganBase.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestLogDetailedGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/QuestLogDetailedGump.cs",
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/QuestLogGump.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "Sage",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingmailChest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs",
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/TheWar.cs"
+      ],
+      "file_count": 2
+    },
+    {
+      "kind": "item_type",
+      "name": "BritainGuildmasterSmithGuy",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingmailGloves",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingmailLegs",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MontorSmithGirl",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ChainCoif",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ChainChest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DevilGuardSmithGuy",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateGorget",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateChest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "YewSmithGuy",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "HorseArmor",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MoonSmithGuy",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalBoots",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalArms",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GreySmithGuy",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestsGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Quests.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GygaxGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/GygaxStatue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GolemManualGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Golems/GolemManual.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SummonTutorial",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BlackPearl",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Bloodmoss",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Garlic",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Ginseng",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MandrakeRoot",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Nightshade",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SpidersSilk",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SulfurousAsh",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GraveDust",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "NoxCrystal",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DaemonBlood",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BatWing",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PigIron",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "EyeOfToad",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "FairyEgg",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "GargoyleEar",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BeetleShell",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MoonCrystal",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PixieSkull",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RedLotus",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SeaSalt",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SilverWidow",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SwampBerries",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Brimstone",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ButterflyWings",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BitterRoot",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BlackSand",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BloodRose",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DriedToad",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Maggot",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MummyWrap",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "VioletFungus",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "WerewolfClaw",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Wolfsbane",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "StarSapphire",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Emerald",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Sapphire",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Ruby",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Citrine",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Amethyst",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Tourmaline",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Amber",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Diamond",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Summon/SummonPrison.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "WaterElemental",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Magic Pools/MagicPool.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RuneBoxGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Runes/RuneBox.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MuseumBookGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Museum/MuseumBook.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "NoteGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Thief/ThiefNote.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PrisonerGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Prisoners/Prisoner.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestTomeGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Major/QuestTome.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RobotSchematicsGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Robots/RobotSchematics.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "CodexGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Codex/CodexWisdom.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "VortexGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Codex/VortexCube.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ObeliskGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Pagan/ObeliskTip.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PaganArtifactGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Pagan/PaganArtifact.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BlackrockSerpentOrder",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Serpents/SerpentSpawners.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "BlackrockSerpentChaos",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Serpents/SerpentSpawners.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "MLQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/MLQuestSystem.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "IQuestGiver",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/MLQuestSystem.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuesterNameAttribute",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/QuesterNameAttribute.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "T",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/ValidationQueue.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestLogGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/QuestLogGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "InfoNPCGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestRewardGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestConversationGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestReportBackGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "UnknownGump807",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestCancelConfirmGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/BaseQuestGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "QuestOfferGump",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Gumps/QuestOfferGump.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ArtifactRumorTownsfolk",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Citizens",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/SageArtifact.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "IronIngot",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithTraining.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "SmithHammer",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithTraining.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Blacksmith",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithTraining.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "WarEffortRecruiter",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/TheWar.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingArmorQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "WoodenKiteShield",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingmailArms",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RingmailSkirt",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ChainArmorQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ChainLegs",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "ChainSkirt",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateArmorQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateArms",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateGloves",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateLegs",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateSkirt",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "FemalePlateChest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateMempo",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateDo",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateHiroSode",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateSuneate",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "PlateHaidate",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "AnimalArmorQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "DragonBardingDeed",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalArmorQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalGloves",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalGorget",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalHelm",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalsLegs",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "RoyalChest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "TridentQuest",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    },
+    {
+      "kind": "item_type",
+      "name": "Pitchfork",
+      "source_files": [
+        "Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithRecipes.cs"
+      ],
+      "file_count": 1
+    }
+  ],
+  "terms": [
+    {
+      "canonical_en": "Serpent",
+      "occurrence_count": 17,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Order",
+          "shared_strings": 5
+        },
+        {
+          "term": "Blackrock",
+          "shared_strings": 5
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 5
+        },
+        {
+          "term": "Blackrock Serpent",
+          "shared_strings": 4
+        },
+        {
+          "term": "Balance",
+          "shared_strings": 3
+        },
+        {
+          "term": "Stone",
+          "shared_strings": 3
+        },
+        {
+          "term": "Pillars",
+          "shared_strings": 2
+        },
+        {
+          "term": "Serpent Pillars",
+          "shared_strings": 1
+        },
+        {
+          "term": "Poseidon",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos Serpent Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance Serpent Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Order Serpent Stone",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Not knowing the secret of the Serpent Pillars, you suffer Poseidon's wrath.",
+        "You have acquired the power from the Serpent of Balance.",
+        "You have obtained the Blackrock Serpent of Order!",
+        "You have subdued the Serpent of Order!",
+        "You have obtained the Blackrock Serpent of Chaos!"
+      ]
+    },
+    {
+      "canonical_en": "Exodus",
+      "occurrence_count": 10,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Castle Exodus",
+          "shared_strings": 1
+        },
+        {
+          "term": "Castle",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sosaria",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Exodus",
+        "You destroy the dark core of Exodus, unleashing the power.",
+        "Castle Exodus lies in ruins, no one knowing what evil lurks below.",
+        "The Stranger has saved Sosaria from Exodus.",
+        "of Exodus"
+      ]
+    },
+    {
+      "canonical_en": "Mangar",
+      "occurrence_count": 8,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearn",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skara Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skara",
+          "shared_strings": 1
+        },
+        {
+          "term": "Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Robe",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There is more than one way into Mangar's tower.",
+        "Some believe that a deal was struck between Kylearan and Mangar",
+        "Some believe that the key to Mangar's tower was seen in Kylearn's tower.",
+        "There are three silver shapes that are needed to enter Mangar's room.",
+        "You already have the onyx key. Use it to enter Mangar's tower."
+      ]
+    },
+    {
+      "canonical_en": "Chaos",
+      "occurrence_count": 8,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 5
+        },
+        {
+          "term": "Chaos Bane",
+          "shared_strings": 3
+        },
+        {
+          "term": "Bane",
+          "shared_strings": 3
+        },
+        {
+          "term": "Discipline",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lantern",
+          "shared_strings": 1
+        },
+        {
+          "term": "Logic",
+          "shared_strings": 1
+        },
+        {
+          "term": "Orb",
+          "shared_strings": 1
+        },
+        {
+          "term": "Scales",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ethicality",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blackrock Serpent",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blackrock",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Lantern of Discipline has vanished after dispatching the Chaos Bane.",
+        "The Orb of Logic has vanished after dispatching the Chaos Bane.",
+        "The Scales of Ethicality have vanished after dispatching the Chaos Bane.",
+        "You have obtained the Blackrock Serpent of Chaos!",
+        "You have subdued the Serpent of Chaos!"
+      ]
+    },
+    {
+      "canonical_en": "Titan",
+      "occurrence_count": 7,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Helm",
+          "shared_strings": 2
+        },
+        {
+          "term": "Tongue",
+          "shared_strings": 1
+        },
+        {
+          "term": "Flame",
+          "shared_strings": 1
+        },
+        {
+          "term": "Seas",
+          "shared_strings": 1
+        },
+        {
+          "term": "Tear",
+          "shared_strings": 1
+        },
+        {
+          "term": "Heart",
+          "shared_strings": 1
+        },
+        {
+          "term": "Earth",
+          "shared_strings": 1
+        },
+        {
+          "term": "Air",
+          "shared_strings": 1
+        },
+        {
+          "term": "Breath",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ether",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You absord the Titan's power into the Tongue of Flame.",
+        "You absord the Titan's power into the Tear of the Seas.",
+        "You absord the Titan's power into the Heart of Earth.",
+        "You absord the Titan's power into the Breath of Air.",
+        "Being a Titan of Ether, you have no use for that."
+      ]
+    },
+    {
+      "canonical_en": "Chest",
+      "occurrence_count": 7,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Treasure Chest",
+          "shared_strings": 3
+        },
+        {
+          "term": "Treasure",
+          "shared_strings": 3
+        },
+        {
+          "term": "Metal",
+          "shared_strings": 1
+        },
+        {
+          "term": "Metal Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Harkyn",
+          "shared_strings": 1
+        },
+        {
+          "term": "Virtue",
+          "shared_strings": 1
+        },
+        {
+          "term": "Dwarven",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ancient Dwarven Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ancient",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Metal Chest",
+        "Mangar's Treasure Chest",
+        "Chest of",
+        "Kylearan's Treasure Chest",
+        "Harkyn's Treasure Chest"
+      ]
+    },
+    {
+      "canonical_en": "Coins",
+      "occurrence_count": 7,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Gold Coins",
+          "shared_strings": 7
+        }
+      ],
+      "sample_contexts": [
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins"
+      ]
+    },
+    {
+      "canonical_en": "Gold Coins",
+      "occurrence_count": 7,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Coins",
+          "shared_strings": 7
+        }
+      ],
+      "sample_contexts": [
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins",
+        "Gold Coins"
+      ]
+    },
+    {
+      "canonical_en": "Someone",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Someone passed by, but your stealthiness has avoided you from being seen.",
+        "Someone is currently using the control panel.",
+        "Someone already owns this house!",
+        "Someone already used acid to melt the skin away.",
+        "Someone is already handling that page."
+      ]
+    },
+    {
+      "canonical_en": "Avatar",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Gypsy",
+          "shared_strings": 1
+        },
+        {
+          "term": "Temptations",
+          "shared_strings": 1
+        },
+        {
+          "term": "Monster",
+          "shared_strings": 1
+        },
+        {
+          "term": "Monster Races",
+          "shared_strings": 1
+        },
+        {
+          "term": "Races",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You must be an Avatar to use this book.",
+        "You already have the Avatar status enabled.",
+        "You must be in the Gypsy encampment to become an Avatar.",
+        "An Avatar must unlock the Temptations system before using this command.",
+        "You do not have the Avatar status enabled."
+      ]
+    },
+    {
+      "canonical_en": "Death",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Gulch",
+          "shared_strings": 1
+        },
+        {
+          "term": "Death Gulch",
+          "shared_strings": 1
+        },
+        {
+          "term": "Love",
+          "shared_strings": 1
+        },
+        {
+          "term": "Moon",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sol",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "No! You cannot send me toward the light! Death is not eternal!",
+        "Death Gulch",
+        "Death",
+        "The order was Love, Sol, Moon, and Death.",
+        "Death is only a distraction to me!"
+      ]
+    },
+    {
+      "canonical_en": "Moon",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Rocks",
+          "shared_strings": 2
+        },
+        {
+          "term": "Smelted Moon Rocks",
+          "shared_strings": 2
+        },
+        {
+          "term": "Smelted",
+          "shared_strings": 2
+        },
+        {
+          "term": "Love",
+          "shared_strings": 1
+        },
+        {
+          "term": "Death",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sol",
+          "shared_strings": 1
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Moon",
+        "The order was Love, Sol, Moon, and Death.",
+        "Delivery: Smelted Moon Rocks",
+        "\"The master will never ask, but it would be healthy for us to maintain, uh, connections across the realm. Would you be so kind as to deliver this to Moon for...",
+        "- Location: The city of Moon"
+      ]
+    },
+    {
+      "canonical_en": "Shard",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Falsehood",
+          "shared_strings": 2
+        },
+        {
+          "term": "Hatred",
+          "shared_strings": 2
+        },
+        {
+          "term": "Cowardice",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "You have obtained the Shard of Falsehood!",
+        "You have obtained the Shard of Hatred!",
+        "You have obtained the Shard of Cowardice!",
+        "Shard of Falsehood",
+        "Shard of Hatred"
+      ]
+    },
+    {
+      "canonical_en": "Blackrock",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 5
+        },
+        {
+          "term": "Blackrock Serpent",
+          "shared_strings": 4
+        },
+        {
+          "term": "Order",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blackrock Gate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Inert",
+          "shared_strings": 1
+        },
+        {
+          "term": "Inert Blackrock Serpent",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You have obtained the Blackrock Serpent of Order!",
+        "You have obtained the Blackrock Serpent of Chaos!",
+        "You have obtained the Blackrock Serpent of Balance!",
+        "Blackrock Gate",
+        "Blackrock Serpent"
+      ]
+    },
+    {
+      "canonical_en": "Location",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Grey",
+          "shared_strings": 1
+        },
+        {
+          "term": "Devil",
+          "shared_strings": 1
+        },
+        {
+          "term": "Devil Guard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Guard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Britain",
+          "shared_strings": 1
+        },
+        {
+          "term": "Montor",
+          "shared_strings": 1
+        },
+        {
+          "term": "Moon",
+          "shared_strings": 1
+        },
+        {
+          "term": "Yew",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "- Location: The city of Grey",
+        "- Location: Devil Guard",
+        "- Location: Britain",
+        "- Location: Montor",
+        "- Location: The city of Moon"
+      ]
+    },
+    {
+      "canonical_en": "Codex",
+      "occurrence_count": 6,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Cube",
+          "shared_strings": 1
+        },
+        {
+          "term": "Vortex",
+          "shared_strings": 1
+        },
+        {
+          "term": "Vortex Cube",
+          "shared_strings": 1
+        },
+        {
+          "term": "Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ultimate Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ultimate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chamber",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You draw the Codex out from the Void!",
+        "You don't need the Vortex Cube since the Codex is already in your pack.",
+        "This Codex does not belong to you so it vanishes!",
+        "Codex of Ultimate Wisdom",
+        "This Codex does not belong to you!"
+      ]
+    },
+    {
+      "canonical_en": "Sage",
+      "occurrence_count": 6,
+      "linked_item_type": "Sage",
+      "co_occurs_with": [
+        {
+          "term": "Don",
+          "shared_strings": 1
+        },
+        {
+          "term": "Advice",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sage Advice",
+          "shared_strings": 1
+        },
+        {
+          "term": "Their",
+          "shared_strings": 1
+        },
+        {
+          "term": "Speak",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bribe",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Sage shrugs. Don't say I didn't give you the chance.",
+        "Sage Advice",
+        "The Sage casually rub their thumb and fingers together, a small, almost teasing gesture, as if to silently signal that something is owed. Their eyes narrow s...",
+        "Speak to townsfolk until you verify the Sage's rumor",
+        "Bribe the Sage"
+      ]
+    },
+    {
+      "canonical_en": "Sosaria",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Skara Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skara",
+          "shared_strings": 1
+        },
+        {
+          "term": "Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Exodus",
+          "shared_strings": 1
+        },
+        {
+          "term": "Virtues",
+          "shared_strings": 1
+        },
+        {
+          "term": "Tunics",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ringmail Tunics",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ringmail",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There was a mad god that left ruins of Skara Brae in Sosaria.",
+        "One day the Stranger will return to Sosaria.",
+        "The Stranger has saved Sosaria from Exodus.",
+        "By the Virtues, your generosity will not be forgotten! Your contribution to this cause is beyond measure, and the warriors on the front lines will wear the R...",
+        "But there is still hope, and that hope lies in our hands. We need brave souls, yes, but we also need the skilled hands of craftsmen, like you, to support our..."
+      ]
+    },
+    {
+      "canonical_en": "Stone",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 3
+        },
+        {
+          "term": "Sand",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone Crafts",
+          "shared_strings": 1
+        },
+        {
+          "term": "Crafts",
+          "shared_strings": 1
+        },
+        {
+          "term": "Illusionist",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos Serpent Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance Serpent Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance",
+          "shared_strings": 1
+        },
+        {
+          "term": "Order",
+          "shared_strings": 1
+        },
+        {
+          "term": "Order Serpent Stone",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Sand & Stone Crafts",
+        "The Illusionist Stone magically changed color.",
+        "Chaos Serpent Stone",
+        "Balance Serpent Stone",
+        "Order Serpent Stone"
+      ]
+    },
+    {
+      "canonical_en": "Karma",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "You have too much Karma to cast this spell.",
+        "You have too little Karma to invoke this prayer.",
+        "Your Karma is too low to use this power.",
+        "You do not have enough Karma to use this ability.",
+        "You have too much Karma to use this power."
+      ]
+    },
+    {
+      "canonical_en": "Syth",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Syth Lord",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lord",
+          "shared_strings": 1
+        },
+        {
+          "term": "Syth Knowledge",
+          "shared_strings": 1
+        },
+        {
+          "term": "Datacron",
+          "shared_strings": 1
+        },
+        {
+          "term": "Knowledge",
+          "shared_strings": 1
+        },
+        {
+          "term": "Malak",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This mysticron contains the knowledge of a long dead Syth Lord.",
+        "You have obtained Malak's Datacron of Syth Knowledge.",
+        "You will kneel before the Syth!",
+        "The Syth will be the last thing you see,",
+        "Do with these what you will, Syth."
+      ]
+    },
+    {
+      "canonical_en": "Lord",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Syth",
+          "shared_strings": 1
+        },
+        {
+          "term": "Syth Lord",
+          "shared_strings": 1
+        },
+        {
+          "term": "Time Lord",
+          "shared_strings": 1
+        },
+        {
+          "term": "Suddenly",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lord British",
+          "shared_strings": 1
+        },
+        {
+          "term": "British",
+          "shared_strings": 1
+        },
+        {
+          "term": "Don",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grey",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This mysticron contains the knowledge of a long dead Syth Lord.",
+        "Time Lord",
+        "Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes.",
+        "The Time Lord's trials consist of four but missing a fifth. The demon lies within the bottle of missing worlds.",
+        "\"Don't give me that look. You can always ask the Grey blacksmith for an apprenticeship. Lord knows what that would entail though, I don't know anyone better ..."
+      ]
+    },
+    {
+      "canonical_en": "Because",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "{0} has ended your rental agreement.  Because you revoked their access, their last payment will be refunded.",
+        "You have ended your rental agreement with {0}.  Because your access was revoked, your last payment is refunded.",
+        "Why did the dinosaur live longer than the dragon? Because it didnt smoke!",
+        "Why were the early days called the dark ages? Because there were so many knights!",
+        "Why did the dinosaur live longer than the dragon? Because it didn’t smoke!"
+      ]
+    },
+    {
+      "canonical_en": "Seek",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Heh",
+          "shared_strings": 1
+        },
+        {
+          "term": "Yew",
+          "shared_strings": 1
+        },
+        {
+          "term": "Book",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There's a problem returning your gold, this game is closed. Seek the gods for help.",
+        "There's a problem trying to cash a check in your backpack, this game is closed. Seek help from the gods.",
+        "There's a problem with this table's gold amount, this game is closed. Seek the gods for help.",
+        "\"I suggest you travel northeast, to another town shielded by mountains. Seek out Yew. I am aware of a blacksmith who used to live there. He is...interesting....",
+        "Some know the way of knightship, but very few have learned the ways of the vile paladin. Seek the Book of"
+      ]
+    },
+    {
+      "canonical_en": "Britain",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Deliver",
+          "shared_strings": 1
+        },
+        {
+          "term": "Britain Smith",
+          "shared_strings": 1
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        },
+        {
+          "term": "Britain Blacksmith",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Britain",
+        "TODO: Deliver this to the Britain Smith",
+        "- Location: Britain",
+        "- Return to the Britain Blacksmith",
+        "You wake up in a Britain jail cell."
+      ]
+    },
+    {
+      "canonical_en": "Montor",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Metals",
+          "shared_strings": 2
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Montor",
+        "\"Take this package due south to the Montor blacksmith and I'm sure someone there will be delighted to teach you something more useful.\"",
+        "- Location: Montor",
+        "Delivery: Metals of Montor",
+        "Delivery: Metals of Montor"
+      ]
+    },
+    {
+      "canonical_en": "Invalid",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Invalid gold won amount({0}), reset to 0.",
+        "Invalid character selection detected.",
+        "Invalid quest type name.",
+        "Invalid skill name.",
+        "Invalid search string."
+      ]
+    },
+    {
+      "canonical_en": "Order",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 5
+        },
+        {
+          "term": "Blackrock Serpent",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blackrock",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Order Serpent Stone",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You have obtained the Blackrock Serpent of Order!",
+        "You have subdued the Serpent of Order!",
+        "The Serpent of Order comes forth to challenge you!",
+        "Order Serpent Stone",
+        "Serpent of Order"
+      ]
+    },
+    {
+      "canonical_en": "Good",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Good,",
+        "Good day to you,",
+        "Good, more treasure for me.",
+        "So it is real?! I thought I might be imagining it, but now I'm sure I wasn't just making it up. Good luck on your journey!",
+        "Good one!"
+      ]
+    },
+    {
+      "canonical_en": "Leave",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Leave this place!",
+        "The blacksmith looks up, adjusts his glasses, and squints in the low flickering lighting. \"Who's there? Leave us alone.\" He bends back towards his work while...",
+        "\"Leave the crate beside the scrap iron barrel, and do not disturb a thing in my shop.\" The smith doesn't bother to look up from his work this time.",
+        "Leave me alone!",
+        "Leave me be!"
+      ]
+    },
+    {
+      "canonical_en": "Iron",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Golem",
+          "shared_strings": 2
+        },
+        {
+          "term": "Forged",
+          "shared_strings": 2
+        },
+        {
+          "term": "Forged Iron",
+          "shared_strings": 2
+        },
+        {
+          "term": "Iron Ingots",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Delivery: The Iron Golem",
+        "Delivery: Forged Iron",
+        "Iron Ingots",
+        "Delivery: Forged Iron",
+        "Delivery: The Iron Golem"
+      ]
+    },
+    {
+      "canonical_en": "Spawners",
+      "occurrence_count": 5,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Premium Spawners",
+          "shared_strings": 1
+        },
+        {
+          "term": "Premium",
+          "shared_strings": 1
+        },
+        {
+          "term": "Spawners Cataloged",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cataloged",
+          "shared_strings": 1
+        },
+        {
+          "term": "Converting",
+          "shared_strings": 1
+        },
+        {
+          "term": "Converting Spawners",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Spawners of region '{0}' have started.",
+        "Premium Spawners: {0}",
+        "Spawners of region '{0}' have stopped.",
+        "Spawners Cataloged!",
+        "Converting Spawners..."
+      ]
+    },
+    {
+      "canonical_en": "Shrine",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Intelligence",
+          "shared_strings": 1
+        },
+        {
+          "term": "Dexterity",
+          "shared_strings": 1
+        },
+        {
+          "term": "Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Strength",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This magic can only be unleashed at the Shrine of Intelligence.",
+        "This magic can only be unleashed at the Shrine of Dexterity.",
+        "This magic can only be unleashed at the Shrine of Wisdom.",
+        "This magic can only be unleashed at the Shrine of Strength."
+      ]
+    },
+    {
+      "canonical_en": "Skara Brae",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Skara",
+          "shared_strings": 4
+        },
+        {
+          "term": "Brae",
+          "shared_strings": 4
+        },
+        {
+          "term": "Sosaria",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There was a mad god that left ruins of Skara Brae in Sosaria.",
+        "The magician named Kylearan is really behind the fate of Skara Brae.",
+        "Skara Brae",
+        "Mangar used a powerful spell to put the Skara Brae into a bottle he keeps on his book shelf. We can break the bottle and set everyone free."
+      ]
+    },
+    {
+      "canonical_en": "Skara",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Skara Brae",
+          "shared_strings": 4
+        },
+        {
+          "term": "Brae",
+          "shared_strings": 4
+        },
+        {
+          "term": "Sosaria",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There was a mad god that left ruins of Skara Brae in Sosaria.",
+        "The magician named Kylearan is really behind the fate of Skara Brae.",
+        "Skara Brae",
+        "Mangar used a powerful spell to put the Skara Brae into a bottle he keeps on his book shelf. We can break the bottle and set everyone free."
+      ]
+    },
+    {
+      "canonical_en": "Brae",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Skara Brae",
+          "shared_strings": 4
+        },
+        {
+          "term": "Skara",
+          "shared_strings": 4
+        },
+        {
+          "term": "Sosaria",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There was a mad god that left ruins of Skara Brae in Sosaria.",
+        "The magician named Kylearan is really behind the fate of Skara Brae.",
+        "Skara Brae",
+        "Mangar used a powerful spell to put the Skara Brae into a bottle he keeps on his book shelf. We can break the bottle and set everyone free."
+      ]
+    },
+    {
+      "canonical_en": "Strength",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Test",
+          "shared_strings": 2
+        },
+        {
+          "term": "Shrine",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stats",
+          "shared_strings": 1
+        },
+        {
+          "term": "Dexterity",
+          "shared_strings": 1
+        },
+        {
+          "term": "Intelligence",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This magic can only be unleashed at the Shrine of Strength.",
+        "- Stats (Strength, Dexterity, and Intelligence) have a hard",
+        "A Test of Strength",
+        "A Test of Strength"
+      ]
+    },
+    {
+      "canonical_en": "Underworld",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Almric",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "No! You cannot banish me! I will return from the Underworld!",
+        "The darkness of the Underworld seems to be affecting this spell.",
+        "In the name of Almric, open the gate to the Underworld!",
+        "The gate to the Underworld is already open."
+      ]
+    },
+    {
+      "canonical_en": "Humans",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Monsters",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You have unlocked a new tarot card for Monsters and Humans.",
+        "You have unlocked a new tarot card for Humans.",
+        "This won't fit Humans.",
+        "- Humans can increase their movement speed by purchasing"
+      ]
+    },
+    {
+      "canonical_en": "Dice",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Liars Dice",
+          "shared_strings": 4
+        },
+        {
+          "term": "Liars",
+          "shared_strings": 4
+        }
+      ],
+      "sample_contexts": [
+        "Liars Dice is currently at it maximum capacity of",
+        "You decided not to play Liars Dice.",
+        "You decided not to exit Liars Dice!",
+        "You exited Liars Dice!"
+      ]
+    },
+    {
+      "canonical_en": "Liars Dice",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Dice",
+          "shared_strings": 4
+        },
+        {
+          "term": "Liars",
+          "shared_strings": 4
+        }
+      ],
+      "sample_contexts": [
+        "Liars Dice is currently at it maximum capacity of",
+        "You decided not to play Liars Dice.",
+        "You decided not to exit Liars Dice!",
+        "You exited Liars Dice!"
+      ]
+    },
+    {
+      "canonical_en": "Liars",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Dice",
+          "shared_strings": 4
+        },
+        {
+          "term": "Liars Dice",
+          "shared_strings": 4
+        }
+      ],
+      "sample_contexts": [
+        "Liars Dice is currently at it maximum capacity of",
+        "You decided not to play Liars Dice.",
+        "You decided not to exit Liars Dice!",
+        "You exited Liars Dice!"
+      ]
+    },
+    {
+      "canonical_en": "Combat",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Combat 4",
+        "Combat 2",
+        "Combat 3",
+        "Combat 1"
+      ]
+    },
+    {
+      "canonical_en": "Stealable",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Stealable artifacts spawner removed.",
+        "Stealable artifacts spawner already present.",
+        "Stealable artifacts spawner generated.",
+        "Stealable artifacts spawner not present."
+      ]
+    },
+    {
+      "canonical_en": "Maybe",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Avatarhood",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Maybe you can get",
+        "Maybe you should flee before it is too late!",
+        "Maybe one day the Stranger will achieve Avatarhood.",
+        "Maybe the owner of this boat fell into the sea and drowned."
+      ]
+    },
+    {
+      "canonical_en": "Hey",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Cashing",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Hey, you left some cash at the table! Cashing out.",
+        "Hey, you left some cash on the table! Cashing out.",
+        "Hey!",
+        "\"Hey, look at that! Those look great.\" The blacksmith covets your delivery of royal armor pieces."
+      ]
+    },
+    {
+      "canonical_en": "Heart",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Dark Heart",
+          "shared_strings": 1
+        },
+        {
+          "term": "Dark",
+          "shared_strings": 1
+        },
+        {
+          "term": "Titan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Earth",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You need a Dark Heart to resurrect the dead.",
+        "You absord the Titan's power into the Heart of Earth.",
+        "The Heart of the Forge",
+        "The Heart of the Forge"
+      ]
+    },
+    {
+      "canonical_en": "Yew",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Decorations",
+          "shared_strings": 1
+        },
+        {
+          "term": "Heh",
+          "shared_strings": 1
+        },
+        {
+          "term": "Seek",
+          "shared_strings": 1
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Yew",
+        "As you enter the shop, you gaze in wonder at the scene set before you, barely remembering to keep your mouth from falling open. Decorations, embellishments, ...",
+        "\"I suggest you travel northeast, to another town shielded by mountains. Seek out Yew. I am aware of a blacksmith who used to live there. He is...interesting....",
+        "- Location: Yew"
+      ]
+    },
+    {
+      "canonical_en": "Blackrock Serpent",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 4
+        },
+        {
+          "term": "Blackrock",
+          "shared_strings": 4
+        },
+        {
+          "term": "Order",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You have obtained the Blackrock Serpent of Order!",
+        "You have obtained the Blackrock Serpent of Chaos!",
+        "You have obtained the Blackrock Serpent of Balance!",
+        "Blackrock Serpent"
+      ]
+    },
+    {
+      "canonical_en": "Groo",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Gre",
+          "shared_strings": 2
+        },
+        {
+          "term": "Gro",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gror",
+          "shared_strings": 1
+        },
+        {
+          "term": "Groo Grar Gro Gratch Gror Gre",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gratch",
+          "shared_strings": 1
+        },
+        {
+          "term": "Groo Grite Grood",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grood",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grite",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gri Gril Gestroy Groo",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gril",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gri",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Groo Grar Gro Gratch Gror Gre!",
+        "Groo Grite Grood!",
+        "Gri Gril Gestroy Groo!",
+        "Groo Gran Grever Gregreat Gre!"
+      ]
+    },
+    {
+      "canonical_en": "Let",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "His",
+          "shared_strings": 1
+        },
+        {
+          "term": "Aye",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Let this be your final battle!",
+        "Let the mountain fires take you,",
+        "Let the shadows take you,",
+        "\"Aye? Done already? Let me have a look.\" The Smith reaches for the ingots. His weathered hands are steady, fingertips tracing the surface with a practiced ey..."
+      ]
+    },
+    {
+      "canonical_en": "See",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Aye",
+          "shared_strings": 1
+        },
+        {
+          "term": "Finished",
+          "shared_strings": 1
+        },
+        {
+          "term": "Object",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "What did the fish say to the other when the horse fell in the moat? See horse!",
+        "\"Aye. See my chainmail over yonder?\" With a short motion, the head of his hammer briefly guides your gaze before returning back to the metal. *clang clang cl...",
+        "Finished test. See stock.txt for details.",
+        "Object table has been generated. See the file : <runuo root>/objects.log"
+      ]
+    },
+    {
+      "canonical_en": "Look",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Look into my eyes,",
+        "Look into my eyes...",
+        "\"Look, I've no time for another apprentice. I've got some notes on the basics of ringmail armor that you can pore over, but you'll have to make it worth my w...",
+        "The guards know not where we plot and plan, but your skills have risen to a level which caught our attention. Look for the oak book shelf and tell no one."
+      ]
+    },
+    {
+      "canonical_en": "Usage",
+      "occurrence_count": 4,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Rename",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Usage: SpawnGen [<filename>]|[remove <region>|<rect>|<ID>]|[save <region>|<rect>|<ID>]",
+        "Usage:",
+        "Usage: [UseSkill <skill name>",
+        "Usage: [Rename <new name>"
+      ]
+    },
+    {
+      "canonical_en": "Crafts",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Reptile",
+          "shared_strings": 1
+        },
+        {
+          "term": "Scale",
+          "shared_strings": 1
+        },
+        {
+          "term": "Reptile Scale Crafts",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sand",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone Crafts",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bone Crafts",
+          "shared_strings": 1
+        },
+        {
+          "term": "Leather",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Reptile Scale Crafts",
+        "Sand & Stone Crafts",
+        "Leather & Bone Crafts"
+      ]
+    },
+    {
+      "canonical_en": "Black",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Black Magic Guild",
+          "shared_strings": 2
+        },
+        {
+          "term": "Magic",
+          "shared_strings": 2
+        },
+        {
+          "term": "Bard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Carpenters Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cartographers Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary",
+          "shared_strings": 1
+        },
+        {
+          "term": "Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Librarians",
+          "shared_strings": 1
+        },
+        {
+          "term": "Thief",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ranger",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blacksmith Guild",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "<BODY><BASEFONT Color=#b6d593>There are many groups in the land that have established guild houses and are often looking for members. These guilds are separa...",
+        "If mages find our ways too questionable, we can search the city for the Black Magic Guild. There we can rest and research the dark arts without the watchful ...",
+        "Black Beard's brandy"
+      ]
+    },
+    {
+      "canonical_en": "Harkyn",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "There is a statue of the mad god is on top of Harkyn's tower.",
+        "There is a passageway behind Harkyn's throne.",
+        "Harkyn's Treasure Chest"
+      ]
+    },
+    {
+      "canonical_en": "Kylearan",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skara Brae",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skara",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Treasure",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Some believe that a deal was struck between Kylearan and Mangar",
+        "The magician named Kylearan is really behind the fate of Skara Brae.",
+        "Kylearan's Treasure Chest"
+      ]
+    },
+    {
+      "canonical_en": "Metal",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Metal Smithing",
+          "shared_strings": 1
+        },
+        {
+          "term": "Tinkering",
+          "shared_strings": 1
+        },
+        {
+          "term": "Smithing",
+          "shared_strings": 1
+        },
+        {
+          "term": "Metal Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chest",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sheet Metal",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sheet",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Metal Smithing & Tinkering",
+        "Metal Chest",
+        "<BODY><BASEFONT Color=#00FF06>Sheet Metal</BIG></BASEFONT></BODY>"
+      ]
+    },
+    {
+      "canonical_en": "Wisdom",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Shrine",
+          "shared_strings": 1
+        },
+        {
+          "term": "Datacron",
+          "shared_strings": 1
+        },
+        {
+          "term": "Jedi Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Zoda",
+          "shared_strings": 1
+        },
+        {
+          "term": "Jedi",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ultimate Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ultimate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Codex",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This magic can only be unleashed at the Shrine of Wisdom.",
+        "You have obtained Zoda's Datacron of Jedi Wisdom.",
+        "Codex of Ultimate Wisdom"
+      ]
+    },
+    {
+      "canonical_en": "World",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Changing",
+          "shared_strings": 1
+        },
+        {
+          "term": "Menu",
+          "shared_strings": 1
+        },
+        {
+          "term": "Top Menu Bar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Map",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bar",
+          "shared_strings": 1
+        },
+        {
+          "term": "World Map",
+          "shared_strings": 1
+        },
+        {
+          "term": "Top",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Changing World",
+        "- Use the Top Menu Bar to access a 'World Map'",
+        "World generating complete. {0} items were generated."
+      ]
+    },
+    {
+      "canonical_en": "Current",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Value",
+          "shared_strings": 1
+        },
+        {
+          "term": "Current Value",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Current Value:",
+        "Current rentals are using {0} of your lockdowns.",
+        "Current rentals are using {0} of your secures."
+      ]
+    },
+    {
+      "canonical_en": "Jedi",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Master",
+          "shared_strings": 1
+        },
+        {
+          "term": "Jedi Master",
+          "shared_strings": 1
+        },
+        {
+          "term": "Datacron",
+          "shared_strings": 1
+        },
+        {
+          "term": "Zoda",
+          "shared_strings": 1
+        },
+        {
+          "term": "Jedi Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Wisdom",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bring",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This holocron contains the wisdom of a Jedi Master from long ago.",
+        "You have obtained Zoda's Datacron of Jedi Wisdom.",
+        "Bring light to the world with these, Jedi."
+      ]
+    },
+    {
+      "canonical_en": "Deleted",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Deleted '{0}' entities created by the OreVeinEngine",
+        "Deleted '{0}' quest spawners.",
+        "Deleted '{0}' of type '{1}'"
+      ]
+    },
+    {
+      "canonical_en": "Exporting",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Exporting configuration for OreVeinEngine took {0} ms for: {1}.",
+        "Exporting all static items to \"{0}\"...",
+        "Exporting statics..."
+      ]
+    },
+    {
+      "canonical_en": "Players",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Handbook",
+          "shared_strings": 2
+        },
+        {
+          "term": "Players Handbook",
+          "shared_strings": 1
+        },
+        {
+          "term": "Couldn",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You would probably need the Players Handbook for that.",
+        "The Players Handbook doesn't cover those types of characters.",
+        "Couldn't find any Players to convert."
+      ]
+    },
+    {
+      "canonical_en": "Healing",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Pass",
+          "shared_strings": 1
+        },
+        {
+          "term": "Fail",
+          "shared_strings": 1
+        },
+        {
+          "term": "Check",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Healing (Pass, now {0})",
+        "Healing (Fail)",
+        "Healing (Check skills)"
+      ]
+    },
+    {
+      "canonical_en": "Halloween",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Happy Halloween",
+          "shared_strings": 2
+        },
+        {
+          "term": "Happy",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Here is some candy for you. Happy Halloween.",
+        "Well, I am out of goodies, but let me give this instead. Happy Halloween.",
+        "Sorry, I do not celebrate Halloween."
+      ]
+    },
+    {
+      "canonical_en": "Castle",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "British",
+          "shared_strings": 1
+        },
+        {
+          "term": "Castle British",
+          "shared_strings": 1
+        },
+        {
+          "term": "Castle Knowledge",
+          "shared_strings": 1
+        },
+        {
+          "term": "Knowledge",
+          "shared_strings": 1
+        },
+        {
+          "term": "Castle Exodus",
+          "shared_strings": 1
+        },
+        {
+          "term": "Exodus",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Castle British",
+        "Castle Knowledge",
+        "Castle Exodus lies in ruins, no one knowing what evil lurks below."
+      ]
+    },
+    {
+      "canonical_en": "Since",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "{0} has ended your rental agreement.  Since they broke the contract, your are refunded the last payment.",
+        "Since this home is free, you do not receive the deposit.",
+        "Since you can not afford the rent, the bank has reclaimed your town house."
+      ]
+    },
+    {
+      "canonical_en": "Manual",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Monster Manual",
+          "shared_strings": 1
+        },
+        {
+          "term": "Monster",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skull Gate",
+          "shared_strings": 1
+        },
+        {
+          "term": "Skull",
+          "shared_strings": 1
+        },
+        {
+          "term": "Golems",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You would probably need the Monster Manual for that.",
+        "Manual of Skull Gate",
+        "Manual of Golems"
+      ]
+    },
+    {
+      "canonical_en": "Monster",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Manual",
+          "shared_strings": 1
+        },
+        {
+          "term": "Monster Manual",
+          "shared_strings": 1
+        },
+        {
+          "term": "Avatar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Monster Races",
+          "shared_strings": 1
+        },
+        {
+          "term": "Races",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You would probably need the Monster Manual for that.",
+        "An Avatar must unlock the Monster Races system before using this.",
+        "- Monster races can increase their movement speed by"
+      ]
+    },
+    {
+      "canonical_en": "Robe",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Christmas",
+          "shared_strings": 2
+        },
+        {
+          "term": "Christmas Robe",
+          "shared_strings": 2
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You remove your Christmas Robe.",
+        "You put on your Christmas Robe.",
+        "Mangar's Robe"
+      ]
+    },
+    {
+      "canonical_en": "Devil",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Devil Guard",
+          "shared_strings": 3
+        },
+        {
+          "term": "Guard",
+          "shared_strings": 3
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Devil Guard",
+        "\"Time fer findin' safety in da mountains - Devil Guard lies northwest o' here. Take me goods with ye.\" She stuffs a crate in your arms and smacks you on the ...",
+        "- Location: Devil Guard"
+      ]
+    },
+    {
+      "canonical_en": "Devil Guard",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Devil",
+          "shared_strings": 3
+        },
+        {
+          "term": "Guard",
+          "shared_strings": 3
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Devil Guard",
+        "\"Time fer findin' safety in da mountains - Devil Guard lies northwest o' here. Take me goods with ye.\" She stuffs a crate in your arms and smacks you on the ...",
+        "- Location: Devil Guard"
+      ]
+    },
+    {
+      "canonical_en": "Guard",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Devil",
+          "shared_strings": 3
+        },
+        {
+          "term": "Devil Guard",
+          "shared_strings": 3
+        },
+        {
+          "term": "Location",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Devil Guard",
+        "\"Time fer findin' safety in da mountains - Devil Guard lies northwest o' here. Take me goods with ye.\" She stuffs a crate in your arms and smacks you on the ...",
+        "- Location: Devil Guard"
+      ]
+    },
+    {
+      "canonical_en": "Grandmaster",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Grandmaster Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Carpenter",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grandmaster Carpenter",
+          "shared_strings": 1
+        },
+        {
+          "term": "Alchemist",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grandmaster Alchemist",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Only a Grandmaster Miner can learn from this book.",
+        "Only a Grandmaster Carpenter can learn from this book.",
+        "Only a Grandmaster Alchemist can learn from this book."
+      ]
+    },
+    {
+      "canonical_en": "Check",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Healing",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Healing (Check skills)",
+        "I have nothing for you at the moment. Check back in",
+        "Check your quest log for details on the locations."
+      ]
+    },
+    {
+      "canonical_en": "Balance",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Serpent",
+          "shared_strings": 3
+        },
+        {
+          "term": "Blackrock Serpent",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blackrock",
+          "shared_strings": 1
+        },
+        {
+          "term": "Balance Serpent Stone",
+          "shared_strings": 1
+        },
+        {
+          "term": "Stone",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You have acquired the power from the Serpent of Balance.",
+        "You have obtained the Blackrock Serpent of Balance!",
+        "Balance Serpent Stone"
+      ]
+    },
+    {
+      "canonical_en": "Thank",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Together",
+          "shared_strings": 1
+        },
+        {
+          "term": "Rest",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Thank you for your services!",
+        "Thank you,",
+        "Your work will protect the innocent and help bring us one step closer to victory. The courage you've shown in this dark time speaks volumes, and I am proud t..."
+      ]
+    },
+    {
+      "canonical_en": "Grey",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Location",
+          "shared_strings": 1
+        },
+        {
+          "term": "Don",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lord",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Grey",
+        "- Location: The city of Grey",
+        "\"Don't give me that look. You can always ask the Grey blacksmith for an apprenticeship. Lord knows what that would entail though, I don't know anyone better ..."
+      ]
+    },
+    {
+      "canonical_en": "Seeking",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Brave",
+          "shared_strings": 2
+        },
+        {
+          "term": "Sailors",
+          "shared_strings": 1
+        },
+        {
+          "term": "Seeking Brave Sailors",
+          "shared_strings": 1
+        },
+        {
+          "term": "Adventurers",
+          "shared_strings": 1
+        },
+        {
+          "term": "Seeking Brave Adventurers",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Seeking",
+        "Seeking Brave Sailors",
+        "Seeking Brave Adventurers"
+      ]
+    },
+    {
+      "canonical_en": "Ahhh",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Ahhh...",
+        "Ahhh...bandages can be of great use. I have",
+        "Ahhh...a cut of the treasure. This journey is worth the risk."
+      ]
+    },
+    {
+      "canonical_en": "Love",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Candle",
+          "shared_strings": 2
+        },
+        {
+          "term": "Moon",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sol",
+          "shared_strings": 1
+        },
+        {
+          "term": "Death",
+          "shared_strings": 1
+        },
+        {
+          "term": "Shadowlord",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The order was Love, Sol, Moon, and Death.",
+        "The Candle of Love has vanished after dispatching the Shadowlord.",
+        "Candle of Love"
+      ]
+    },
+    {
+      "canonical_en": "Bring",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Jedi",
+          "shared_strings": 1
+        },
+        {
+          "term": "Gathered",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bring Gathered Materials",
+          "shared_strings": 1
+        },
+        {
+          "term": "Materials",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Bring light to the world with these, Jedi.",
+        "\"I accept your sincerity. I will teach you what I know, but for a price. Bring me ART - the canvas will be horse barding!\"",
+        "<BODY><BASEFONT Color=#00FF06>Bring Gathered Materials to the Tinker in"
+      ]
+    },
+    {
+      "canonical_en": "Chuckles",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Chuckles gave you one of his suits!",
+        "Chuckles gave you one of his hats!",
+        "Chuckles gave you a check for"
+      ]
+    },
+    {
+      "canonical_en": "King",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Sir",
+          "shared_strings": 1
+        },
+        {
+          "term": "King Arthur",
+          "shared_strings": 1
+        },
+        {
+          "term": "Sir Cumference",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cumference",
+          "shared_strings": 1
+        },
+        {
+          "term": "Arthur",
+          "shared_strings": 1
+        },
+        {
+          "term": "Author",
+          "shared_strings": 1
+        },
+        {
+          "term": "Round Table",
+          "shared_strings": 1
+        },
+        {
+          "term": "Table",
+          "shared_strings": 1
+        },
+        {
+          "term": "King Author",
+          "shared_strings": 1
+        },
+        {
+          "term": "Round",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lich",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lich King",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Who invented King Arthur's round table? Sir Cumference!",
+        "What king was famous because he spent so many nights at his Round Table writing books? King Author!",
+        "The crown of the Lich King is said to give the wearer ultimate power from death. The maze confuses us so we never learned for sure."
+      ]
+    },
+    {
+      "canonical_en": "Shadowlord",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Love",
+          "shared_strings": 1
+        },
+        {
+          "term": "Candle",
+          "shared_strings": 1
+        },
+        {
+          "term": "Book",
+          "shared_strings": 1
+        },
+        {
+          "term": "Truth",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bell",
+          "shared_strings": 1
+        },
+        {
+          "term": "Courage",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Candle of Love has vanished after dispatching the Shadowlord.",
+        "The Book of Truth has vanished after dispatching the Shadowlord.",
+        "The Bell of Courage has vanished after dispatching the Shadowlord."
+      ]
+    },
+    {
+      "canonical_en": "Did",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Aaaaaalrighty",
+          "shared_strings": 1
+        },
+        {
+          "term": "Build",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Did you not meditate before the coming sun?",
+        "Did you have too much",
+        "\"Aaaaaalrighty then. That's, uhh, good. Very good -wait! Did you just say royal armor?! Uh. Then, uh. We'll just pick up where you left off. Build me a pair ..."
+      ]
+    },
+    {
+      "canonical_en": "Chaos Bane",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Chaos",
+          "shared_strings": 3
+        },
+        {
+          "term": "Bane",
+          "shared_strings": 3
+        },
+        {
+          "term": "Discipline",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lantern",
+          "shared_strings": 1
+        },
+        {
+          "term": "Logic",
+          "shared_strings": 1
+        },
+        {
+          "term": "Orb",
+          "shared_strings": 1
+        },
+        {
+          "term": "Scales",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ethicality",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Lantern of Discipline has vanished after dispatching the Chaos Bane.",
+        "The Orb of Logic has vanished after dispatching the Chaos Bane.",
+        "The Scales of Ethicality have vanished after dispatching the Chaos Bane."
+      ]
+    },
+    {
+      "canonical_en": "Bane",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Chaos Bane",
+          "shared_strings": 3
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 3
+        },
+        {
+          "term": "Discipline",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lantern",
+          "shared_strings": 1
+        },
+        {
+          "term": "Logic",
+          "shared_strings": 1
+        },
+        {
+          "term": "Orb",
+          "shared_strings": 1
+        },
+        {
+          "term": "Scales",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ethicality",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Lantern of Discipline has vanished after dispatching the Chaos Bane.",
+        "The Orb of Logic has vanished after dispatching the Chaos Bane.",
+        "The Scales of Ethicality have vanished after dispatching the Chaos Bane."
+      ]
+    },
+    {
+      "canonical_en": "Orb",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Logic",
+          "shared_strings": 2
+        },
+        {
+          "term": "Chaos Bane",
+          "shared_strings": 1
+        },
+        {
+          "term": "Chaos",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bane",
+          "shared_strings": 1
+        },
+        {
+          "term": "Abyss",
+          "shared_strings": 1
+        },
+        {
+          "term": "Satan",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Orb of Logic has vanished after dispatching the Chaos Bane.",
+        "You have obtained Satan's Orb of the Abyss!",
+        "Orb of Logic"
+      ]
+    },
+    {
+      "canonical_en": "Flame",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Call",
+          "shared_strings": 2
+        },
+        {
+          "term": "Tongue",
+          "shared_strings": 1
+        },
+        {
+          "term": "Titan",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You absord the Titan's power into the Tongue of Flame.",
+        "The Flame's Call",
+        "The Flame's Call"
+      ]
+    },
+    {
+      "canonical_en": "Book",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Truth",
+          "shared_strings": 2
+        },
+        {
+          "term": "Shadowlord",
+          "shared_strings": 1
+        },
+        {
+          "term": "Seek",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Book of Truth has vanished after dispatching the Shadowlord.",
+        "Some know the way of knightship, but very few have learned the ways of the vile paladin. Seek the Book of",
+        "Book of Truth"
+      ]
+    },
+    {
+      "canonical_en": "Journal",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Frankenstein",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Frankenstein's Journal",
+        "Journal of",
+        "You take possession of Frankenstein's Journal!"
+      ]
+    },
+    {
+      "canonical_en": "Frankenstein",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Journal",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Frankenstein's Journal",
+        "You take possession of Frankenstein's Journal!",
+        "That isn't Frankenstein's journal."
+      ]
+    },
+    {
+      "canonical_en": "Treasure Chest",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Chest",
+          "shared_strings": 3
+        },
+        {
+          "term": "Treasure",
+          "shared_strings": 3
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Harkyn",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Mangar's Treasure Chest",
+        "Kylearan's Treasure Chest",
+        "Harkyn's Treasure Chest"
+      ]
+    },
+    {
+      "canonical_en": "Treasure",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Chest",
+          "shared_strings": 3
+        },
+        {
+          "term": "Treasure Chest",
+          "shared_strings": 3
+        },
+        {
+          "term": "Mangar",
+          "shared_strings": 1
+        },
+        {
+          "term": "Kylearan",
+          "shared_strings": 1
+        },
+        {
+          "term": "Harkyn",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Mangar's Treasure Chest",
+        "Kylearan's Treasure Chest",
+        "Harkyn's Treasure Chest"
+      ]
+    },
+    {
+      "canonical_en": "Help",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Paperdoll",
+          "shared_strings": 2
+        },
+        {
+          "term": "Search",
+          "shared_strings": 1
+        },
+        {
+          "term": "Moongate Search",
+          "shared_strings": 1
+        },
+        {
+          "term": "Moongate",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "- On your Paperdoll, click 'Help' -> 'Moongate Search'",
+        "you in your journey. Click 'Help' on your Paperdoll.",
+        "You can use the 'Help' button on your paperdoll for more information."
+      ]
+    },
+    {
+      "canonical_en": "Cube",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Vortex",
+          "shared_strings": 3
+        },
+        {
+          "term": "Vortex Cube",
+          "shared_strings": 2
+        },
+        {
+          "term": "Codex",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You don't need the Vortex Cube since the Codex is already in your pack.",
+        "Your Vortex Cube is already in your pack.",
+        "You take possession of the Vortex Cube!"
+      ]
+    },
+    {
+      "canonical_en": "Vortex",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Cube",
+          "shared_strings": 3
+        },
+        {
+          "term": "Vortex Cube",
+          "shared_strings": 2
+        },
+        {
+          "term": "Codex",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You don't need the Vortex Cube since the Codex is already in your pack.",
+        "Your Vortex Cube is already in your pack.",
+        "You take possession of the Vortex Cube!"
+      ]
+    },
+    {
+      "canonical_en": "Almric",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Baron Almric",
+          "shared_strings": 2
+        },
+        {
+          "term": "Baron",
+          "shared_strings": 2
+        },
+        {
+          "term": "Underworld",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "This is the skull of the long dead Baron Almric.",
+        "In the name of Almric, open the gate to the Underworld!",
+        "skull of Baron Almric"
+      ]
+    },
+    {
+      "canonical_en": "Don",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Sage",
+          "shared_strings": 1
+        },
+        {
+          "term": "Grey",
+          "shared_strings": 1
+        },
+        {
+          "term": "Lord",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "The Sage shrugs. Don't say I didn't give you the chance.",
+        "\"Don't give me that look. You can always ask the Grey blacksmith for an apprenticeship. Lord knows what that would entail though, I don't know anyone better ...",
+        "Don't hurt me!"
+      ]
+    },
+    {
+      "canonical_en": "Aye",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "His",
+          "shared_strings": 1
+        },
+        {
+          "term": "Let",
+          "shared_strings": 1
+        },
+        {
+          "term": "See",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "\"I will not waste efforts supporting humans fighting humans...the cycle which never ends. Aye, ye can't get into too much trouble, I suppose.\"",
+        "\"Aye? Done already? Let me have a look.\" The Smith reaches for the ingots. His weathered hands are steady, fingertips tracing the surface with a practiced ey...",
+        "\"Aye. See my chainmail over yonder?\" With a short motion, the head of his hammer briefly guides your gaze before returning back to the metal. *clang clang cl..."
+      ]
+    },
+    {
+      "canonical_en": "Exceptionally",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "- Exceptionally crafted weapons and armor both",
+        "- Exceptionally crafted armor have more total resists",
+        "- Exceptionally crafted weapons deal more damage"
+      ]
+    },
+    {
+      "canonical_en": "Stats",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Strength",
+          "shared_strings": 1
+        },
+        {
+          "term": "Dexterity",
+          "shared_strings": 1
+        },
+        {
+          "term": "Intelligence",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "- Stats (Strength, Dexterity, and Intelligence) have a hard",
+        "- You can permanently increase Stats by raising your skills",
+        "- You can temporarily increase Stats with potions, spells,"
+      ]
+    },
+    {
+      "canonical_en": "Gygax",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Statue",
+          "shared_strings": 2
+        },
+        {
+          "term": "Gygax Statue",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Statue of Gygax",
+        "scroll of Gygax",
+        "Gygax Statue"
+      ]
+    },
+    {
+      "canonical_en": "Duration",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Ban",
+          "shared_strings": 2
+        },
+        {
+          "term": "Ban Duration",
+          "shared_strings": 2
+        },
+        {
+          "term": "Infinite",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Duration unspecified.",
+        "Ban Duration: Infinite",
+        "Ban Duration: {0}"
+      ]
+    },
+    {
+      "canonical_en": "Property",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Property ({0}) is read only.",
+        "Property ({0}) not found.",
+        "Property not found: {0}"
+      ]
+    },
+    {
+      "canonical_en": "Region",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Region '{0}' has respawned.",
+        "Region name not found",
+        "Region name not found."
+      ]
+    },
+    {
+      "canonical_en": "Unable",
+      "occurrence_count": 3,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Unable to give out to 1 or more players.",
+        "Unable to dupe.  Item must have a 0 parameter constructor.",
+        "Unable to refund house."
+      ]
+    },
+    {
+      "canonical_en": "Carpenters Guild",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Bard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cartographers Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary",
+          "shared_strings": 1
+        },
+        {
+          "term": "Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Librarians",
+          "shared_strings": 1
+        },
+        {
+          "term": "Thief",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ranger",
+          "shared_strings": 1
+        },
+        {
+          "term": "Druids",
+          "shared_strings": 1
+        },
+        {
+          "term": "Elemental Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Librarians Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cartographers",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "<BODY><BASEFONT Color=#b6d593>There are many groups in the land that have established guild houses and are often looking for members. These guilds are separa...",
+        "Only those of the Carpenters Guild may use this!"
+      ]
+    },
+    {
+      "canonical_en": "Black Magic Guild",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Black",
+          "shared_strings": 2
+        },
+        {
+          "term": "Magic",
+          "shared_strings": 2
+        },
+        {
+          "term": "Bard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Alchemists Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Carpenters Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cartographers Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary",
+          "shared_strings": 1
+        },
+        {
+          "term": "Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Librarians",
+          "shared_strings": 1
+        },
+        {
+          "term": "Thief",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ranger",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "<BODY><BASEFONT Color=#b6d593>There are many groups in the land that have established guild houses and are often looking for members. These guilds are separa...",
+        "If mages find our ways too questionable, we can search the city for the Black Magic Guild. There we can rest and research the dark arts without the watchful ..."
+      ]
+    },
+    {
+      "canonical_en": "Archers Guild",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Alchemists Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Bard",
+          "shared_strings": 1
+        },
+        {
+          "term": "Carpenters Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Cartographers Guild",
+          "shared_strings": 1
+        },
+        {
+          "term": "Culinary",
+          "shared_strings": 1
+        },
+        {
+          "term": "Miner",
+          "shared_strings": 1
+        },
+        {
+          "term": "Black",
+          "shared_strings": 1
+        },
+        {
+          "term": "Librarians",
+          "shared_strings": 1
+        },
+        {
+          "term": "Thief",
+          "shared_strings": 1
+        },
+        {
+          "term": "Ranger",
+          "shared_strings": 1
+        },
+        {
+          "term": "Blacksmith Guild",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "<BODY><BASEFONT Color=#b6d593>There are many groups in the land that have established guild houses and are often looking for members. These guilds are separa...",
+        "Only those of the Archers Guild may use this!"
+      ]
+    },
+    {
+      "canonical_en": "Skill Archive",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Archive",
+          "shared_strings": 2
+        },
+        {
+          "term": "Primary",
+          "shared_strings": 1
+        },
+        {
+          "term": "Secondary",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Some of your Primary skills are now available in the Skill Archive.",
+        "Some of your Secondary skills are now available in the Skill Archive."
+      ]
+    },
+    {
+      "canonical_en": "Happy Halloween",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Halloween",
+          "shared_strings": 2
+        },
+        {
+          "term": "Happy",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Here is some candy for you. Happy Halloween.",
+        "Well, I am out of goodies, but let me give this instead. Happy Halloween."
+      ]
+    },
+    {
+      "canonical_en": "Christmas Robe",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Christmas",
+          "shared_strings": 2
+        },
+        {
+          "term": "Robe",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "You remove your Christmas Robe.",
+        "You put on your Christmas Robe."
+      ]
+    },
+    {
+      "canonical_en": "Smelted Moon Rocks",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Rocks",
+          "shared_strings": 2
+        },
+        {
+          "term": "Smelted",
+          "shared_strings": 2
+        },
+        {
+          "term": "Moon",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Delivery: Smelted Moon Rocks",
+        "Delivery: Smelted Moon Rocks"
+      ]
+    },
+    {
+      "canonical_en": "Quest Log",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Log",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "* Click yourself to view your Quest Log",
+        "- Click yourself to view your Quest Log<br>"
+      ]
+    },
+    {
+      "canonical_en": "Robot Schematics",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Schematics",
+          "shared_strings": 2
+        },
+        {
+          "term": "Robot",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "<BODY><BASEFONT Color=#00FF06>Robot Schematics</BIG></BASEFONT></BODY>",
+        "Robot Schematics"
+      ]
+    },
+    {
+      "canonical_en": "Vortex Cube",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Cube",
+          "shared_strings": 2
+        },
+        {
+          "term": "Vortex",
+          "shared_strings": 2
+        },
+        {
+          "term": "Codex",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "You don't need the Vortex Cube since the Codex is already in your pack.",
+        "You take possession of the Vortex Cube!"
+      ]
+    },
+    {
+      "canonical_en": "Baron Almric",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Baron",
+          "shared_strings": 2
+        },
+        {
+          "term": "Almric",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "This is the skull of the long dead Baron Almric.",
+        "skull of Baron Almric"
+      ]
+    },
+    {
+      "canonical_en": "Deathly Veil",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Veil",
+          "shared_strings": 2
+        },
+        {
+          "term": "Deathly",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "of the Deathly Veil",
+        "of the Deathly Veil"
+      ]
+    },
+    {
+      "canonical_en": "Shattered Steel",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Shattered",
+          "shared_strings": 2
+        },
+        {
+          "term": "Steel",
+          "shared_strings": 2
+        },
+        {
+          "term": "Broken",
+          "shared_strings": 2
+        },
+        {
+          "term": "Bonds",
+          "shared_strings": 2
+        },
+        {
+          "term": "Broken Bonds",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Shattered Steel & Broken Bonds",
+        "Shattered Steel & Broken Bonds"
+      ]
+    },
+    {
+      "canonical_en": "Broken Bonds",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Broken",
+          "shared_strings": 2
+        },
+        {
+          "term": "Bonds",
+          "shared_strings": 2
+        },
+        {
+          "term": "Shattered",
+          "shared_strings": 2
+        },
+        {
+          "term": "Shattered Steel",
+          "shared_strings": 2
+        },
+        {
+          "term": "Steel",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Shattered Steel & Broken Bonds",
+        "Shattered Steel & Broken Bonds"
+      ]
+    },
+    {
+      "canonical_en": "Forged Iron",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Forged",
+          "shared_strings": 2
+        },
+        {
+          "term": "Iron",
+          "shared_strings": 2
+        }
+      ],
+      "sample_contexts": [
+        "Delivery: Forged Iron",
+        "Delivery: Forged Iron"
+      ]
+    },
+    {
+      "canonical_en": "Smith Hammer",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [],
+      "sample_contexts": [
+        "Smith Hammer",
+        "Smith Hammer"
+      ]
+    },
+    {
+      "canonical_en": "Ban Duration",
+      "occurrence_count": 2,
+      "linked_item_type": null,
+      "co_occurs_with": [
+        {
+          "term": "Ban",
+          "shared_strings": 2
+        },
+        {
+          "term": "Duration",
+          "shared_strings": 2
+        },
+        {
+          "term": "Infinite",
+          "shared_strings": 1
+        }
+      ],
+      "sample_contexts": [
+        "Ban Duration: Infinite",
+        "Ban Duration: {0}"
+      ]
+    }
+  ]
+}
