@@ -8,14 +8,14 @@ This document describes how to add **Chinese (Simplified)** as a second language
 
 ### Goals
 
-- **Bilingual UX**: English remains the default; Chinese is available as an explicit player choice.
-- **Data outside code**: Translatable strings live in **versioned text files** (recommended: **JSON** per language; alternatives below).
-- **Hot reload**: Editing translation files or switching language updates what the player sees **without restarting the shard**, within defined limits (see §5).
+- **Bilingual UX**: **`zh-Hans` only** (no Traditional in scope). The **default language for new accounts** comes from **shard configuration** (e.g. `en` or `zh-Hans`), not from hard-coded English.
+- **Data outside code**: Translatable strings live in **versioned text files** (recommended: **JSON** per language; alternatives below). **`zh-Hans.json` (and companion files) are committed in the repository.**
+- **Hot reload (player-facing)**: Switching language **in game** takes effect **without shard restart** and **without special permissions** — any player with account access can change their preference (see §4).
 - **Low merge friction**: Core engine scripts stay mostly untouched; new logic lives in a **small, isolated module** plus data files.
 
 ### Non-goals (initial phase)
 
-- Replacing **client Cliloc** strings (UO client UI) — server-side `Say`, gumps, system messages, and custom shard text are in scope first.
+- **v1 coverage is server-only**: custom shard strings (`Say`, gumps, system messages, etc.). **Client Cliloc / client tooltips are out of scope** for v1.
 - Full coverage of every legacy literal in thousands of scripts in one step — use a **phased** approach (§7).
 
 ---
@@ -57,23 +57,24 @@ Same keys in `zh-Hans.json` with Chinese values. Missing keys fall back to `en.j
 
 ---
 
-## 3. Player language state (in-game switch)
+## 3. Account language state (in-game switch)
 
-- **Persist per character** (typical): add a field on `PlayerMobile` (or a small `PlayerSettings` component) such as `string LanguageCode` defaulting to `en`.
-- **Command or gump**: e.g. `[lang zh]` / `[lang en]` or an options menu entry that sets the code, saves the mobile, and notifies the provider for that session.
-- **Session binding**: `Localization` resolves strings using **the speaking mobile’s** language when `Mobile` context exists; for log-only or system-wide messages, define explicit policy (server locale vs. mobile override).
+- **Persist per account**: store `LanguageCode` (BCP 47, e.g. `en`, `zh-Hans`) on **`Account`** (see `Scripts/System/Misc/Accounts.cs`) — e.g. new serializable field or **`AccountTag`** so all characters on that login share the same language.
+- **Initial value**: when an account is first created, set `LanguageCode` from **configuration** (`Localization:DefaultLanguage` or equivalent in existing config style). Do not infer from OS/client.
+- **Command or gump**: e.g. `[lang zh-Hans]` / `[lang en]` or an options menu entry that updates the **account**, persists, and applies immediately for the current session (and any concurrent characters on that account, if applicable).
+- **Session binding**: resolve strings using the **current `Mobile`’s account** language; for messages with no player context, fall back to **configured default language**.
 
-Hot reload of **files** is independent: `Reload()` re-reads JSON from disk for all languages or for one file; active players keep their `LanguageCode` but see updated strings on next `Get`.
+Reloading **string data from JSON on disk** (operator edits files while shard runs) is optional and separate from player language switching: if implemented, prefer **`Reload()` on a timer**, on **next login**, or an **optional staff command** — product decision not locked for v1.
 
 ---
 
-## 4. Hot reload semantics
+## 4. Hot reload semantics (locked for v1)
 
-| Trigger | Behavior |
-|---------|----------|
-| Player switches language | In-memory preference changes immediately; no file read required beyond initial load. |
-| Operator edits JSON on disk | Expose **`[reloadlang]`** (staff-only) or a **watch timer** (e.g. poll `LastWriteTime` every N seconds in DEBUG only) to call `Reload()`. |
-| Malformed JSON on reload | Keep previous cache; log error; optionally notify staff. |
+| Trigger | Behavior | Permissions |
+|---------|----------|-------------|
+| Player switches language in game | Account `LanguageCode` updates; subsequent `Localization.Get` for that account uses the new language **without shard restart**. | **None** — not staff-gated. |
+| Operator edits JSON on disk (optional) | If supported: `Reload()` refreshes in-memory dictionaries; players keep account language tags. | Define separately if needed (not required for v1 player switching). |
+| Malformed JSON on reload | Keep previous cache; log error. | N/A |
 
 **Limits:** code that captured a translated string at startup will not auto-update until that code path runs again — acceptable if UI is built on demand. Long-lived gumps may need **close/reopen** or explicit refresh hooks; document this for designers.
 
@@ -81,7 +82,7 @@ Hot reload of **files** is independent: `Reload()` re-reads JSON from disk for a
 
 ## 5. Minimizing coupling with upstream (Ruins and Riches / ServUO-style cores)
 
-1. **New folder** under something like `Scripts/Localization/` (or `Engines/Localization/`) containing only **new** types — avoid editing `PlayerMobile.cs` until necessary; if you must, keep the diff to **one field + serialization** and no refactors.
+1. **New folder** under something like `Scripts/Localization/` (or `Engines/Localization/`) containing only **new** types — prefer extending **`Account`** (or tags) for persistence rather than `PlayerMobile` to reduce coupling and match **per-account** storage.
 2. **Do not** mass-reformat upstream files when touching them.
 3. **Prefer wrapper** over forking: e.g. `LocalizedSay(Mobile m, string key)` extension instead of changing every `Say()` in core.
 4. **String extraction** for legacy scripts: optional tooling (Roslyn or regex-based) can live in `World/Source/Tools/` — not loaded at runtime — so it does not bloat `World.exe`.
@@ -91,10 +92,10 @@ Hot reload of **files** is independent: `Reload()` re-reads JSON from disk for a
 
 ## 6. Chinese-specific notes
 
-- Use **`zh-Hans`** as the culture/language tag (BCP 47) for clarity vs. Traditional (`zh-Hant`).
+- Use **`zh-Hans`** only (BCP 47); **`zh-Hant` is not in scope.**
 - Ensure **UTF-8** encoding for JSON files (no BOM preferred for cross-platform tooling).
 - **Pluralization and gender**: English and Chinese differ; prefer keys that encode full sentences (`"shop.buy.confirm": "Buy {0} for {1} gold?"`) rather than fragile concatenation.
-- **Font/client**: confirm the **game client** displays Chinese in journal/system messages; if not, scope may be limited to **Unicode-capable** paths only.
+- **Font/client**: v1 is **server-emitted text only**; still confirm the client displays Unicode in journal/system messages where the shard sends Chinese.
 
 ---
 
@@ -102,8 +103,8 @@ Hot reload of **files** is independent: `Reload()` re-reads JSON from disk for a
 
 | Phase | Scope | Risk |
 |-------|--------|------|
-| **0** | Plan + sample keys + `en`/`zh-Hans` files + provider + staff reload command | Low |
-| **1** | Player command + persistence + all **new** features use keys | Low |
+| **0** | Plan + sample keys + `en`/`zh-Hans` in repo + provider + config default + account persistence + in-game language switch (no permissions) | Low |
+| **1** | Optional on-disk JSON reload for operators + all **new** features use keys | Low |
 | **2** | High-traffic areas (login, help, achievements, main gumps) | Medium |
 | **3** | Broader script migration (opportunistic with file edits) | Ongoing |
 
@@ -111,27 +112,29 @@ Hot reload of **files** is independent: `Reload()` re-reads JSON from disk for a
 
 ## 8. Testing checklist
 
-- Switch `en` ↔ `zh-Hans` mid-session; journal and targeted gumps show correct language.
-- Missing key in `zh-Hans` falls back to `en` without crash.
-- Reload with bad JSON does not take down the shard.
-- Serialize/deserialize `PlayerMobile` with new field (if added) across restart.
+- New account gets **configured default** language; switching `en` ↔ `zh-Hans` mid-session updates **account** and all characters under that login as designed.
+- Journal and targeted gumps show correct language for **server-emitted** strings.
+- Missing key in `zh-Hans` falls back to configured fallback (typically `en`) without crash.
+- If on-disk reload is implemented: bad JSON does not take down the shard.
+- Serialize/deserialize **account** language across restart.
 
 ---
 
-## 9. Clarifications needed from maintainers
+## 9. Product decisions (locked)
 
-Please confirm or correct the following so implementation matches product intent:
+| Topic | Decision |
+|-------|----------|
+| Chinese variant | **`zh-Hans` only** (no `zh-Hant`) |
+| v1 coverage | **Server-emitted text only** (no client Cliloc/tooltips) |
+| Default language | **Shard configuration** defines default for new accounts |
+| Hot reload / language switch | **In-game switch without restart; no special permissions** |
+| Persistence | **Per account** |
+| Shipping translations | **`zh-Hans.json` (and related files) committed in repo** |
 
-1. **Scope of “Chinese”**: Simplified only (`zh-Hans`), or also Traditional (`zh-Hant`) later?
-2. **Client vs. server**: Must **all** visible text (including Cliloc-dependent tooltips) be Chinese, or is **server-emitted text only** acceptable for v1?
-3. **Default for new players**: Always English until chosen, or infer from OS/client (usually not available on shard)?
-4. **Who may hot-reload**: Players, all accounts, or **staff only**?
-5. **Persistence**: Language preference per **character**, per **account**, or global per installation?
-6. **Distribution**: Ship `zh-Hans.json` in the repo, or download/update from a separate pack for modders?
-7. **Target .NET / JSON API**: Confirm runtime supports `System.Text.Json` (vs. Newtonsoft) for consistency with the rest of the solution.
+**Still to confirm with engineering:** whether to standardize on **`System.Text.Json`** vs **Newtonsoft.Json** for the loader (match existing solution packages).
 
 ---
 
 ## 10. Summary
 
-Use a **small localization façade**, **JSON per language under `Data/Localization/`**, **per-player language** with optional **reload command**, and **incremental key adoption** in scripts. That satisfies Chinese-only support for the first wave, file-backed content, hot reload for players/operators, and **minimal surface area** on upstream-sensitive files.
+Use a **small localization façade**, **JSON per language under `Data/Localization/`** (in repo), **per-account `LanguageCode`** with **config-defined default**, **in-game language switching without restart or privileges**, **server-only** v1 scope (**`zh-Hans` only**), and **incremental key adoption** in scripts. Keep optional **on-disk file reload** separate if operators need live translation edits without redeploy.
