@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Network;
 
 namespace Server
@@ -17,7 +18,10 @@ namespace Server
 
 		public static void SendMessageTo( Item from, Mobile to, string text, int hue )
 		{
-			to.Send( new UnicodeMessage( from.Serial, from.ItemID, MessageType.Regular, hue, 3, "ENU", "", text ) );
+			string lang = AccountLang.GetLanguageCode( to != null ? to.Account : null );
+			string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+			to.Send( new UnicodeMessage( from.Serial, from.ItemID, MessageType.Regular, hue, 3, "ENU", "", outText ) );
 		}
 	}
 }

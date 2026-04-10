@@ -23,6 +23,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Server;
+using Server.Accounting;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Gumps
@@ -351,6 +353,20 @@ namespace Server.Gumps
 			}
 		}
 
+		public int InternLocalized( NetState ns, string englishOrLiteral )
+		{
+			if ( englishOrLiteral == null )
+				return Intern( "" );
+
+			string lang = AccountLang.GetLanguageCode( ns != null ? ns.Account : null );
+			string resolved = StringCatalog.TryResolve( lang, englishOrLiteral );
+
+			if ( resolved != null )
+				return Intern( resolved );
+
+			return Intern( englishOrLiteral );
+		}
+
 		public void SendTo( NetState state )
 		{
 			state.AddGump( this );
@@ -380,9 +396,9 @@ namespace Server.Gumps
 			IGumpWriter disp;
 
 			if ( ns != null && ns.Unpack )
-				disp = new DisplayGumpPacked( this );
+				disp = new DisplayGumpPacked( this, ns );
 			else
-				disp = new DisplayGumpFast( this );
+				disp = new DisplayGumpFast( this, ns );
 
 			if ( !m_Dragable )
 				disp.AppendLayout( m_NoMove );
