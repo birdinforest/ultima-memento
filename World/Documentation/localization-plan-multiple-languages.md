@@ -138,3 +138,9 @@ Reloading **string data from JSON on disk** (operator edits files while shard ru
 ## 10. Summary
 
 Use a **small localization façade**, **JSON per language under `Data/Localization/`** (in repo), **per-account `LanguageCode`** with **config-defined default**, **in-game language switching without restart or privileges**, **server-only** v1 scope (**`zh-Hans` only**), and **incremental key adoption** in scripts. Keep optional **on-disk file reload** separate if operators need live translation edits without redeploy.
+
+---
+
+## 11. Related document
+
+For moving **existing game copy** (thousands of literals and Clilocs) into JSON with waves, tooling, and CI, see [`localization-content-migration-plan.md`](./localization-content-migration-plan.md).
