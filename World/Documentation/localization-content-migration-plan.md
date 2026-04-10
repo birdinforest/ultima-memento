@@ -71,6 +71,8 @@ World/Data/Localization/
 
 **Loader behavior:** merge dictionaries at startup (and on reload) in a defined order; later files **must not** unintentionally overwrite keys (detect duplicates in CI).
 
+**Implementation in this repo:** strings are sharded as `Data/Localization/en/<category>.json` and `Data/Localization/zh-Hans/<category>.json` (categories from `Scripts/*` top folder + `system` for `Source/System`). See `World/Documentation/localization-implementation-review.md` for coverage gaps vs. “all content.”
+
 **Key naming convention (stable IDs):**
 
 ```text

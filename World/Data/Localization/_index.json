@@ -1,0 +1,13 @@
+{
+  "description": "Manifest of English shard files merged at runtime (see StringCatalog).",
+  "enSubdirectory": "en",
+  "zhHansSubdirectory": "zh-Hans",
+  "files": [
+    "en/system.json",
+    "en/scripts-system.json",
+    "en/scripts-items.json",
+    "en/scripts-mobiles.json",
+    "en/scripts-engines-and-systems.json",
+    "en/scripts-utilities.json"
+  ]
+}
