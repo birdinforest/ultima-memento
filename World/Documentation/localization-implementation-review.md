@@ -15,7 +15,11 @@ This document answers two audit questions against [`localization-content-migrati
 | **`SendMessage("literal")`** | Yes — resolved at runtime via hash key → JSON. |
 | **`SendAsciiMessage("literal")`** | Yes — same; non-ASCII result uses Unicode packet. |
 | **`Say("literal")`** | Yes — **per receiving client** for `PublicOverheadMessage` Unicode path. |
-| **Catalog source** | **~2784** unique string literals from those patterns under `World/Source`. |
+| **Gump strings** | **`AddHtml` / `AddLabel` / text entry initial text** — `Gump.InternLocalized` at compile time (viewer language). |
+| **Books (`BaseBook`)** | **Title, author, page lines** — resolved when `BookHeader` / `BookPageDetails` are built. |
+| **Quest tree literals** | Extra extraction in `Scripts/.../Quests/` for `builder.Append("...")`, `Title=` / `Description=`, `DummyObjective`, `CollectObjective` names, `TextDefinition("...")`, `AddHtml` verbatim strings, etc. — stored in **`scripts-quests.json`**. |
+| **Books tree literals** | Same patterns under **`Scripts/Items/Books`** → **`scripts-books.json`**. |
+| **Catalog size** | On the order of **~3.3k+** unique English keys (grows as scanner patterns expand). |
 
 ### What is explicitly **not** covered (still English / Cliloc-only)
 
@@ -24,7 +28,7 @@ This document answers two audit questions against [`localization-content-migrati
 | **`SendMessage(format, args)`** | Format string is not the same as stored English sentence key; not in scanner. |
 | **`SendLocalizedMessage(int)`** | Client Cliloc; out of scope for v1 per product decision (plan §1 / gray area). |
 | **`Emote` / `Whisper` / `Yell` with string literals** | Not wired in `Mobile.cs` (only `Say` path uses overhead localization). |
-| **Gumps: `AddHtml`, `AddLabel`, verbatim UI copy** | Plan calls these out; scanner does not extract them. |
+| **Gumps outside Quests/Books** | Strings are **localized at send** if present in JSON; extraction currently adds **extra** patterns only under Quests and Books paths (other folders still rely on `SendMessage`/`Say` scan or future scanner expansion). |
 | **Books, dynamic quest text, concatenated strings** | Not systematically scanned. |
 | **Console / staff-only / debug strings** | Intentionally excluded from “game content” in practice. |
 

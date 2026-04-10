@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
-Scan World/Source for SendMessage/SendAsciiMessage/Say string literals and emit
-split JSON files under Data/Localization/en/<category>.json and
-Data/Localization/zh-Hans/<category>.json.
+Scan World/Source for translatable string literals and emit split JSON under
+Data/Localization/en/<category>.json and Data/Localization/zh-Hans/<category>.json.
 
-Category is derived from the source path (Scripts/* top folder, or System).
+Categories: scripts-quests, scripts-books (subpaths), else scripts-* / system.
 
-Keys match Server.Localization.StringKey.ForEnglish (SHA-256 UTF-8, first 8 bytes hex).
+Patterns:
+  - SendMessage / SendAsciiMessage / Say (all Scripts)
+  - Quests & Books trees: builder.Append("..."), Title=/Description=/etc., DummyObjective,
+    CollectObjective name string, TextDefinition("..."), AddHtml (incl. verbatim @"),
+    AddLabel, ItemReward("...", MLQuestSystem.Tell(..., "..."), etc.
+
+Keys: SHA-256 UTF-8 of exact English (matches Server.Localization.StringKey.ForEnglish).
 
 Usage:
   python3 build_localization_strings.py [--no-translate]
-
-  --no-translate: merge existing zh-Hans/*.json for unchanged English values.
 """
 from __future__ import annotations
 
@@ -21,6 +24,7 @@ import json
 import os
 import re
 import sys
+import time
 from typing import Dict, Iterable, List, Set
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -33,6 +37,31 @@ RE_SEND = re.compile(
     re.MULTILINE,
 )
 RE_SAY = re.compile(r"\bSay\s*\(\s*\"((?:\\.|[^\"\\])*)\"", re.MULTILINE)
+
+# Quest / book–specific (also applied when path matches Quests/ or Books/)
+RE_APPEND = re.compile(
+    r"(?:\bbuilder|\b(?:sb|str|desc|msg|s|text))\s*\.Append\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_QUEST_ASSIGN = re.compile(
+    r"\b(?:Title|Description|RefusalMessage|InProgressMessage|CompletionMessage|CompletionNotice|Name|ScrollMessage)\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_DUMMY_OBJ = re.compile(r"new\s+DummyObjective\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
+RE_COLLECT_NAME = re.compile(
+    r"new\s+CollectObjective\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"\s*\)"
+)
+RE_TEXT_DEF = re.compile(r"new\s+TextDefinition\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
+RE_ITEM_REWARD = re.compile(r"new\s+ItemReward\s*\(\s*\"((?:\\.|[^\"\\])*)\"")
+RE_TELL = re.compile(
+    r"\bMLQuestSystem\.Tell\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
+RE_ADD_LABEL = re.compile(
+    r"\bAddLabel\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
+RE_ADD_HTML_TEXT = re.compile(
+    r"TextDefinition\.AddHtmlText\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
 
 
 def csharp_unescape(s: str) -> str:
@@ -84,11 +113,97 @@ def category_for_path(abs_path: str) -> str:
     if not parts:
         return "misc"
     if parts[0] == "Scripts" and len(parts) > 1:
+        if len(parts) > 2 and parts[1] == "Engines and Systems" and parts[2] == "Quests":
+            return "scripts-quests"
+        if parts[1] == "Items" and len(parts) > 2 and parts[2] == "Books":
+            return "scripts-books"
         seg = parts[1].lower().replace(" ", "-")
         return "scripts-" + seg
     if parts[0] == "System":
         return "system"
     return "misc"
+
+
+def is_quest_or_book_path(abs_path: str) -> bool:
+    rel = os.path.relpath(abs_path, SOURCE_ROOT).replace("\\", "/")
+    return "/Engines and Systems/Quests/" in "/" + rel + "/" or "/Items/Books/" in "/" + rel + "/"
+
+
+def extract_addhtml_fifth_arg(data: str) -> List[str]:
+    """Fifth argument to AddHtml( x, y, w, h, TEXT, ... ) — regular or verbatim @\"\"\"."""
+    found: List[str] = []
+    i = 0
+    while True:
+        idx = data.find("AddHtml(", i)
+        if idx < 0:
+            break
+        p = idx + len("AddHtml(")
+        depth = 1
+        commas = 0
+        start_fifth = None
+        while p < len(data) and depth > 0:
+            c = data[p]
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                depth -= 1
+            elif c == "," and depth == 1:
+                commas += 1
+                if commas == 4:
+                    start_fifth = p + 1
+                    break
+            p += 1
+        if start_fifth is None:
+            i = idx + 1
+            continue
+        p = start_fifth
+        while p < len(data) and data[p] in " \t\n\r":
+            p += 1
+        if p + 1 < len(data) and data[p : p + 2] == '@"':
+            p += 2
+            sb: List[str] = []
+            while p < len(data):
+                if data[p] == '"' and p + 1 < len(data) and data[p + 1] == '"':
+                    sb.append('"')
+                    p += 2
+                    continue
+                if data[p] == '"':
+                    found.append("".join(sb))
+                    break
+                sb.append(data[p])
+                p += 1
+        elif p < len(data) and data[p] == '"':
+            p += 1
+            m = re.match(r"((?:\\.|[^\"\\])*)\"", data[p:])
+            if m:
+                found.append(csharp_unescape(m.group(1)))
+        i = idx + 1
+    return found
+
+
+def collect_strings_from_file(path: str, data: str) -> List[str]:
+    texts: List[str] = []
+    for rx in (RE_SEND, RE_SAY):
+        for m in rx.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+
+    if "Scripts" in path.replace("\\", "/") and is_quest_or_book_path(path):
+        for rx in (
+            RE_APPEND,
+            RE_QUEST_ASSIGN,
+            RE_DUMMY_OBJ,
+            RE_COLLECT_NAME,
+            RE_TEXT_DEF,
+            RE_ITEM_REWARD,
+            RE_TELL,
+            RE_ADD_LABEL,
+            RE_ADD_HTML_TEXT,
+        ):
+            for m in rx.finditer(data):
+                texts.append(csharp_unescape(m.group(1)))
+        texts.extend(extract_addhtml_fifth_arg(data))
+
+    return [t for t in texts if t and t.strip()]
 
 
 def iter_cs_files(base: str) -> Iterable[str]:
@@ -99,10 +214,6 @@ def iter_cs_files(base: str) -> Iterable[str]:
 
 
 def collect_by_category() -> Dict[str, Dict[str, str]]:
-    """
-    category -> { hash_key: english_text }
-    First occurrence of a string wins its category (stable when scanning sorted paths).
-    """
     buckets: Dict[str, Dict[str, str]] = {}
     seen_key: Set[str] = set()
 
@@ -114,17 +225,14 @@ def collect_by_category() -> Dict[str, Dict[str, str]]:
         cat = category_for_path(path)
         if cat not in buckets:
             buckets[cat] = {}
-        for rx in (RE_SEND, RE_SAY):
-            for m in rx.finditer(data):
-                raw = m.group(1)
-                text = csharp_unescape(raw)
-                if not text.strip():
-                    continue
-                k = key_for_english(text)
-                if k in seen_key:
-                    continue
-                seen_key.add(k)
-                buckets[cat][k] = text
+
+        for text in collect_strings_from_file(path, data):
+            k = key_for_english(text)
+            if k in seen_key:
+                continue
+            seen_key.add(k)
+            buckets[cat][k] = text
+
     return buckets
 
 
@@ -134,7 +242,7 @@ def load_all_zh_flat(zh_dir: str) -> Dict[str, str]:
         return merged
     for root, _, files in os.walk(zh_dir):
         for fn in files:
-            if not fn.endswith(".json"):
+            if not fn.endswith(".json") or fn == "_index.json":
                 continue
             p = os.path.join(root, fn)
             try:
@@ -207,10 +315,7 @@ def main() -> int:
     os.makedirs(OUT_EN_DIR, exist_ok=True)
     os.makedirs(OUT_ZH_DIR, exist_ok=True)
 
-    all_en_flat: Dict[str, str] = {}
     for cat, en_map in sorted(buckets.items()):
-        for k, v in en_map.items():
-            all_en_flat[k] = v
         write_json(os.path.join(OUT_EN_DIR, f"{cat}.json"), dict(sorted(en_map.items())))
 
     flat_texts = sorted({v for m in buckets.values() for v in m.values()})
@@ -231,14 +336,12 @@ def main() -> int:
             zh_map = {k: tr.get(v, v) for k, v in en_map.items()}
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
 
-    # Drop stale category files (optional cleanup)
     en_names = {f"{c}.json" for c in buckets}
-    zh_names = en_names.copy()
-    for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, zh_names)):
+    for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
         if not os.path.isdir(d):
             continue
         for fn in os.listdir(d):
-            if fn.endswith(".json") and fn not in keep and fn != "_readme.json":
+            if fn.endswith(".json") and fn not in keep and fn not in ("_index.json",):
                 try:
                     os.remove(os.path.join(d, fn))
                     print(f"removed stale {os.path.join(d, fn)}")

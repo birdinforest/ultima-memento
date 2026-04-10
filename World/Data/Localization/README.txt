@@ -11,10 +11,17 @@ Categories match World/Source layout:
   scripts-system.json          — Source/Scripts/System
   scripts-items.json           — Source/Scripts/Items
   scripts-mobiles.json       — Source/Scripts/Mobiles
-  scripts-engines-and-systems.json — Source/Scripts/Engines and Systems
+  scripts-engines-and-systems.json — Source/Scripts/Engines and Systems (excl. Quests subtree)
   scripts-utilities.json       — Source/Scripts/Utilities
+  scripts-quests.json          — Source/Scripts/Engines and Systems/Quests
+  scripts-books.json           — Source/Scripts/Items/Books
 
 _index.json lists en files for translators (runtime loads all *.json in en/ and zh-Hans/).
+
+Gump & books
+------------
+AddHtml / AddLabel / text entries are localized at gump compile time using the viewer's account.
+BaseBook page lines and title/author use StringCatalog when opened.
 
 Configuration
 -------------

@@ -2251,6 +2251,7 @@ namespace Server.Network
 	{
 		int TextEntries { get; set; }
 		int Switches { get; set; }
+		NetState NetState { get; }
 
 		void AppendLayout( bool val );
 		void AppendLayout( int val );
@@ -2269,16 +2270,20 @@ namespace Server.Network
 		public int Switches { get { return m_Switches; } set { m_Switches = value; } }
 
 		private Gump m_Gump;
+		private NetState m_NetState;
 
 		private PacketWriter m_Layout;
 		private PacketWriter m_Strings;
 
 		private int m_StringCount;
 
-		public DisplayGumpPacked( Gump gump )
+		public NetState NetState { get { return m_NetState; } }
+
+		public DisplayGumpPacked( Gump gump, NetState ns )
 			: base( 0xDD )
 		{
 			m_Gump = gump;
+			m_NetState = ns;
 
 			m_Layout = PacketWriter.CreateInstance( 8192 );
 			m_Strings = PacketWriter.CreateInstance( 8192 );
@@ -2405,12 +2410,16 @@ namespace Server.Network
 		private int m_TextEntries, m_Switches;
 
 		private int m_LayoutLength;
+		private NetState m_NetState;
 
 		public int TextEntries{ get{ return m_TextEntries; } set{ m_TextEntries = value; } }
 		public int Switches{ get{ return m_Switches; } set{ m_Switches = value; } }
+		public NetState NetState { get { return m_NetState; } }
 
-		public DisplayGumpFast( Gump g ) : base( 0xB0 )
+		public DisplayGumpFast( Gump g, NetState ns ) : base( 0xB0 )
 		{
+			m_NetState = ns;
+
 			EnsureCapacity( 4096 );
 
 			m_Stream.Write( (int) g.Serial );

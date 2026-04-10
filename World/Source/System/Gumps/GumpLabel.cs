@@ -98,7 +98,7 @@ namespace Server.Gumps
 			disp.AppendLayout( m_X );
 			disp.AppendLayout( m_Y );
 			disp.AppendLayout( m_Hue );
-			disp.AppendLayout( Parent.Intern( m_Text ) );
+			disp.AppendLayout( Parent.InternLocalized( disp.NetState, m_Text ) );
 		}
 	}
 }
