@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using Server;
 using Server.Accounting;
+using Server.Localization;
 using Server.Commands;
 using Server.ContextMenus;
 using Server.Guilds;
@@ -11417,29 +11418,21 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				Packet p = null;
-
 				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
 
 				foreach( NetState state in eable )
 				{
 					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
 					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text );
+						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
+						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
 
-							p.Acquire();
-						}
-
-						state.Send( p );
+						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
+						else
+							state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -11515,10 +11508,13 @@ namespace Server
 			if( state == null )
 				return;
 
-			if( ascii )
-				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text ) );
+			string lang = AccountLang.GetLanguageCode( state.Mobile != null ? state.Mobile.Account : null );
+			string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+			if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
 			else
-				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 		}
 
 		public void PrivateOverheadMessage( MessageType type, int hue, int number, NetState state )
@@ -11705,7 +11701,11 @@ namespace Server
 			NetState ns = m_NetState;
 
 			if( ns != null )
-				ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", text ) );
+			{
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+				ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", outText ) );
+			}
 		}
 
 		public void SendMessage( int hue, string format, params object[] args )
@@ -11730,7 +11730,15 @@ namespace Server
 			NetState ns = m_NetState;
 
 			if( ns != null )
-				ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text ) );
+			{
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+				if( StringCatalog.IsAsciiOnly( outText ) )
+					ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", outText ) );
+				else
+					ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", outText ) );
+			}
 		}
 
 		public void SendAsciiMessage( int hue, string format, params object[] args )

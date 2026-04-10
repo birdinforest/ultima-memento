@@ -35,5 +35,8 @@ namespace Server.Accounting
 		void Delete();
 		void SetPassword( string password );
 		bool CheckPassword( string password );
+
+		string GetTag( string name );
+		void SetTag( string name, string value );
 	}
 }
