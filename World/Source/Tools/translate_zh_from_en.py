@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fill strings.zh-Hans.json from strings.en.json using Google Translate (machine)."""
+"""Fill Data/Localization/zh-Hans/*.json from matching en/*.json (machine translate)."""
 from __future__ import annotations
 
 import json
@@ -8,47 +8,65 @@ import sys
 import time
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-EN = os.path.join(ROOT, "Data", "Localization", "strings.en.json")
-ZH = os.path.join(ROOT, "Data", "Localization", "strings.zh-Hans.json")
+EN_DIR = os.path.join(ROOT, "Data", "Localization", "en")
+ZH_DIR = os.path.join(ROOT, "Data", "Localization", "zh-Hans")
+
+
+def translate_batch(vals: list[str]) -> list[str]:
+    from deep_translator import GoogleTranslator
+
+    t = GoogleTranslator(source="en", target="zh-CN")
+    batch = 80
+    out: list[str] = []
+    for i in range(0, len(vals), batch):
+        chunk = vals[i : i + batch]
+        try:
+            zh_list = t.translate_batch(chunk)
+        except Exception:
+            zh_list = None
+        if zh_list is None or len(zh_list) != len(chunk):
+            zh_list = []
+            for v in chunk:
+                try:
+                    zh_list.append(t.translate(v))
+                except Exception:
+                    zh_list.append(v)
+                time.sleep(0.05)
+        out.extend(zh_list)
+        print(f"translated {min(i + batch, len(vals))}/{len(vals)}")
+        time.sleep(0.35)
+    return out
 
 
 def main() -> int:
-    from deep_translator import GoogleTranslator
+    if not os.path.isdir(EN_DIR):
+        print(f"missing {EN_DIR}", file=sys.stderr)
+        return 1
 
-    with open(EN, encoding="utf-8") as f:
-        en: dict[str, str] = json.load(f)
+    os.makedirs(ZH_DIR, exist_ok=True)
 
-    items = list(en.items())
-    t = GoogleTranslator(source="en", target="zh-CN")
-    zh: dict[str, str] = {}
-    batch = 80
+    for fn in sorted(os.listdir(EN_DIR)):
+        if not fn.endswith(".json"):
+            continue
+        en_path = os.path.join(EN_DIR, fn)
+        zh_path = os.path.join(ZH_DIR, fn)
+        with open(en_path, encoding="utf-8") as f:
+            en: dict[str, str] = json.load(f)
+        items = list(en.items())
+        if not items:
+            with open(zh_path, "w", encoding="utf-8") as f:
+                json.dump({}, f)
+                f.write("\n")
+            continue
+        keys = [k for k, _ in items]
+        vals = [v for _, v in items]
+        translated = translate_batch(vals)
+        zh = {k: (z or en[k]) for k, z in zip(keys, translated)}
+        with open(zh_path, "w", encoding="utf-8") as f:
+            json.dump(dict(sorted(zh.items())), f, ensure_ascii=False, indent=2, sort_keys=True)
+            f.write("\n")
+        print(f"wrote {zh_path}")
 
-    for i in range(0, len(items), batch):
-        keys = [k for k, _ in items[i : i + batch]]
-        vals = [v for _, v in items[i : i + batch]]
-        try:
-            translated = t.translate_batch(vals)
-        except Exception:
-            translated = None
-        if translated is None or len(translated) != len(vals):
-            translated = []
-            for v in vals:
-                try:
-                    translated.append(t.translate(v))
-                except Exception:
-                    translated.append(v)
-                time.sleep(0.05)
-        for k, z in zip(keys, translated):
-            zh[k] = z or en[k]
-        print(f"translated {min(i + batch, len(items))}/{len(items)}")
-        time.sleep(0.35)
-
-    os.makedirs(os.path.dirname(ZH), exist_ok=True)
-    with open(ZH, "w", encoding="utf-8") as f:
-        json.dump(zh, f, ensure_ascii=False, indent=2, sort_keys=True)
-        f.write("\n")
-
-    print(f"wrote {ZH}")
     return 0
 
 

@@ -12,14 +12,72 @@ namespace Server.Localization
 		private static Dictionary<string, string> m_Zh = new Dictionary<string, string>( StringComparer.Ordinal );
 		private static bool m_Loaded;
 
+		private static readonly string[] m_LegacyEnFiles = new string[]
+		{
+			"Data/Localization/strings.en.json"
+		};
+
+		private static readonly string[] m_LegacyZhFiles = new string[]
+		{
+			"Data/Localization/strings.zh-Hans.json"
+		};
+
 		public static void Load()
 		{
 			lock ( m_Lock )
 			{
-				m_En = LoadFile( Path.Combine( Core.BaseDirectory, "Data/Localization/strings.en.json" ) );
-				m_Zh = LoadFile( Path.Combine( Core.BaseDirectory, "Data/Localization/strings.zh-Hans.json" ) );
+				m_En = new Dictionary<string, string>( StringComparer.Ordinal );
+				m_Zh = new Dictionary<string, string>( StringComparer.Ordinal );
+
+				string root = Path.Combine( Core.BaseDirectory, "Data/Localization" );
+				string enRoot = Path.Combine( root, "en" );
+				string zhRoot = Path.Combine( root, "zh-Hans" );
+
+				int enFiles = 0, zhFiles = 0;
+
+				if ( Directory.Exists( enRoot ) )
+				{
+					foreach ( string path in Directory.GetFiles( enRoot, "*.json", SearchOption.AllDirectories ) )
+					{
+						MergeJsonFile( path, m_En, "en" );
+						++enFiles;
+					}
+				}
+
+				if ( Directory.Exists( zhRoot ) )
+				{
+					foreach ( string path in Directory.GetFiles( zhRoot, "*.json", SearchOption.AllDirectories ) )
+					{
+						MergeJsonFile( path, m_Zh, "zh-Hans" );
+						++zhFiles;
+					}
+				}
+
+				// Legacy single-file layout (deprecated)
+				if ( m_En.Count == 0 )
+				{
+					for ( int i = 0; i < m_LegacyEnFiles.Length; ++i )
+					{
+						string p = Path.Combine( Core.BaseDirectory, m_LegacyEnFiles[i] );
+
+						if ( File.Exists( p ) )
+							MergeJsonFile( p, m_En, "en (legacy)" );
+					}
+				}
+
+				if ( m_Zh.Count == 0 )
+				{
+					for ( int i = 0; i < m_LegacyZhFiles.Length; ++i )
+					{
+						string p = Path.Combine( Core.BaseDirectory, m_LegacyZhFiles[i] );
+
+						if ( File.Exists( p ) )
+							MergeJsonFile( p, m_Zh, "zh-Hans (legacy)" );
+					}
+				}
+
 				m_Loaded = true;
-				Console.WriteLine( "Localization: loaded {0} English and {1} Chinese string overrides.", m_En.Count, m_Zh.Count );
+				Console.WriteLine( "Localization: merged {0} English keys from {1} files, {2} Chinese keys from {3} files.", m_En.Count, enFiles > 0 ? enFiles.ToString() : "legacy", m_Zh.Count, zhFiles > 0 ? zhFiles.ToString() : "legacy" );
 			}
 		}
 
@@ -28,24 +86,31 @@ namespace Server.Localization
 			Load();
 		}
 
-		private static Dictionary<string, string> LoadFile( string path )
+		private static void MergeJsonFile( string path, Dictionary<string, string> target, string labelForLog )
 		{
-			var dict = new Dictionary<string, string>( StringComparer.Ordinal );
-
 			if ( !File.Exists( path ) )
-				return dict;
+				return;
 
 			try
 			{
 				string json = File.ReadAllText( path );
-				SimpleJsonObject.ParseStringProperties( json, dict );
+				var chunk = new Dictionary<string, string>( StringComparer.Ordinal );
+				SimpleJsonObject.ParseStringProperties( json, chunk );
+
+				foreach ( var kv in chunk )
+				{
+					string existing;
+
+					if ( target.TryGetValue( kv.Key, out existing ) && existing != kv.Value )
+						Console.WriteLine( "Localization: duplicate key {0} in {1} ({2}) — keeping first value.", kv.Key, path, labelForLog );
+					else
+						target[kv.Key] = kv.Value;
+				}
 			}
 			catch ( Exception ex )
 			{
 				Console.WriteLine( "Localization: failed to load {0}: {1}", path, ex.Message );
 			}
-
-			return dict;
 		}
 
 		public static string TryResolve( string languageCode, string englishLiteral )

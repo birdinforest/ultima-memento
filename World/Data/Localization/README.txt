@@ -1,35 +1,41 @@
 Localization (server-side)
 ============================
 
-Files
------
-- strings.en.json   — English text keyed by hash of the exact English string (matches C# literals).
-- strings.zh-Hans.json — Simplified Chinese (machine-translated; review for lore/quests).
+Layout (split by source tree category)
+--------------------------------------
+Data/Localization/en/<category>.json
+Data/Localization/zh-Hans/<category>.json
+
+Categories match World/Source layout:
+  system.json                    — Source/System
+  scripts-system.json          — Source/Scripts/System
+  scripts-items.json           — Source/Scripts/Items
+  scripts-mobiles.json       — Source/Scripts/Mobiles
+  scripts-engines-and-systems.json — Source/Scripts/Engines and Systems
+  scripts-utilities.json       — Source/Scripts/Utilities
+
+_index.json lists en files for translators (runtime loads all *.json in en/ and zh-Hans/).
 
 Configuration
 -------------
 Data/System/CFG/localization.cfg
-  DefaultLanguage=en|zh-Hans   (new accounts)
-  FallbackLanguage=en
 
-Commands (in game)
-------------------
-[Lang]              — show current language
-[Lang en]         — English
-[Lang zh-Hans]    — Chinese (aliases: zh, zh-cn, cn, chinese)
-[ReloadLang]      — reload JSON from disk (no access level required)
+Commands
+--------
+[Lang]  [Lang en|zh-Hans]  [ReloadLang]
 
-Regenerating strings
---------------------
-From repository root:
+Regenerating
+------------
+cd to repository root (ultima-memento), then:
+
   python3 World/Source/Tools/build_localization_strings.py --no-translate
-    Refreshes strings.en.json from C# and merges new keys into zh-Hans (keeps existing Chinese).
+    Re-scan C# and rewrite split files; preserves Chinese when English unchanged.
 
+  pip install deep-translator
   python3 World/Source/Tools/translate_zh_from_en.py
-    Re-fills zh-Hans from en using Google Translate (requires: pip install deep-translator).
+    Machine-translate each en/*.json into zh-Hans/*.json.
 
-Notes
------
-- SendMessage / SendAsciiMessage / Say(single string) are resolved at runtime for the viewer's account language.
-- SendMessage(format, args) is NOT localized (format is not a full English sentence in the table).
-- Public overhead speech is translated per receiving client.
+Coverage notes
+--------------
+See World/Documentation/localization-implementation-review.md — not all server
+text is in JSON yet (gumps, Clilocs, formatted SendMessage, etc.).

@@ -1,0 +1,23 @@
+{
+  "s.0612a359d724bee6": "You can double click this to change the color.",
+  "s.13917c408e9935ca": "You can only match color of certain equipped items that have distinct colors.",
+  "s.1767be4bd775f667": "Your account could not be found.",
+  "s.197c0264a607d701": "Language set to {0}.",
+  "s.223a21630aca52a5": "Your access level has been changed. You are now {0}.",
+  "s.30538a2aa5da2ce8": "Unknown language. Use en or zh-Hans.",
+  "s.40607ae91260fb19": "That container cannot hold more items.",
+  "s.615b782bafc4358e": "You can only match colors of certain equipped items.",
+  "s.71acf5362178e215": "You must be wearing this to change the color.",
+  "s.79f157210f510c8f": "That Switch doesn't exist!",
+  "s.7a44a365f987b75d": "That is too heavy for you to lift.",
+  "s.7c89ef869c359c06": "Your language is {0}. Use [Lang en] or [Lang zh-Hans] to change.",
+  "s.7d794b24918e8f0a": "What worn item do you wish to match the color of?",
+  "s.9ce62ed98cab6286": "You change the color to match the item.",
+  "s.a319dedc666362eb": "That is not a valid command.",
+  "s.afe55e1a36f055f8": "You can not say anything, you have been squelched.",
+  "s.bf7aaeebb3af517d": "The item seems to do nothing.",
+  "s.d1736636744ef44d": "That container cannot hold more weight.",
+  "s.d39d293b6d56b1fd": "Localization files reloaded.",
+  "s.f7da8744226f7b73": "That Button doesn't exist!",
+  "s.fcc0840f3fb7f928": "Items selected must have a distinct color."
+}
