@@ -46,3 +46,14 @@ Coverage notes
 --------------
 See World/Documentation/localization-implementation-review.md — not all server
 text is in JSON yet (gumps, Clilocs, formatted SendMessage, etc.).
+
+Lore glossary & translation QA
+-------------------------------
+  python3 World/Source/Tools/build_lore_glossary.py
+    -> Data/Localization/lore-glossary.json
+    -> Documentation/lore-glossary.md
+
+  python3 World/Source/Tools/review_translations_glossary.py
+    -> Documentation/translation-glossary-review.md
+
+  Optional curated zh spellings: Data/Localization/glossary-approved-zh.json

@@ -65,6 +65,18 @@ Legacy monoliths `strings.en.json` / `strings.zh-Hans.json` are **removed**; if 
 
 ---
 
+## Lore glossary and translation QA
+
+Automated (heuristic) extraction of recurring **proper nouns / multi-word phrases** and **co-occurrence** from English localization plus quest `typeof()` links:
+
+- `World/Source/Tools/build_lore_glossary.py` → `Data/Localization/lore-glossary.json` and `Documentation/lore-glossary.md`
+- `World/Source/Tools/review_translations_glossary.py` → `Documentation/translation-glossary-review.md` (Latin leftovers in zh-Hans, EN phrases still embedded in ZH)
+- Optional curator file: `Data/Localization/glossary-approved-zh.json`
+
+This does **not** replace human lore judgment; it speeds **consistent** naming across machine translations.
+
+---
+
 ## Recommendations (next steps)
 
 1. **Document “definition of done”** per migration plan §11: CI scanner for remaining `SendMessage("` without matching catalog key (allowlist for formatted calls).
