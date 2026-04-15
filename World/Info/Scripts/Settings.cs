@@ -81,6 +81,12 @@ namespace Server
 
 		public static bool S_AutoDetect = true;
 
+	// Relative path from the server working directory to the Ultima Online client data files
+	// (map*.mul, tiledata.mul, statics*.mul, cliloc.enu, etc.). Change this if your .mul files
+	// live somewhere else.
+
+		public static string S_DataFilesPath = "Data/Files";
+
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -490,8 +496,8 @@ namespace Server
 	// rate than most of the creatures, and those particular creatures will use this spawn rate. They will then
 	// add additional minutes to reflect the longer spawn.
 
-		public static int S_SpawnMin = 45;
-		public static int S_SpawnMax = 60;
+		public static int S_SpawnMin = 5;
+		public static int S_SpawnMax = 10;
 
 
 	// This settings controls the limit in seconds by which you can be paralyzed by a monster. 
