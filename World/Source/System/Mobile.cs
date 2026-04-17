@@ -11536,10 +11536,13 @@ namespace Server
 
 			if( ns != null )
 			{
-				if( ascii )
-					ns.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text ) );
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+				if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+					ns.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
 				else
-					ns.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+					ns.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 			}
 		}
 
@@ -11590,29 +11593,21 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				Packet p = null;
-
 				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
 
 				foreach( NetState state in eable )
 				{
 					if( state != m_NetState && state.Mobile.CanSee( this ) )
 					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, Language, Name, text );
+						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
+						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
 
-							p.Acquire();
-						}
-
-						state.Send( p );
+						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
+						else
+							state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, Language, Name, outText ) );
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}

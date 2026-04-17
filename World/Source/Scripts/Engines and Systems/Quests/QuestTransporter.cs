@@ -60,7 +60,7 @@ namespace Server.Items
 						if ( m.BeginAction( this ) )
 						{
 							if ( m_MessageString != null )
-								m.Send( new UnicodeMessage( Serial, ItemID, MessageType.Regular, 0x3B2, 3, "ENU", null, m_MessageString ) );
+							MessageHelper.SendMessageTo( this, m, m_MessageString, 0x3B2 );
 
 							Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( EndMessageLock ), m );
 						}

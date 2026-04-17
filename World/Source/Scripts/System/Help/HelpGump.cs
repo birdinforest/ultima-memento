@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Regions;
 using System.Collections;
 using Server.Commands;
+using Server.Localization;
 using Server.Misc;
 using Server.Items;
 using Server.Engines.MLQuests.Gumps;
@@ -230,6 +231,9 @@ namespace Server.Engines.Help
 			Setting_SingleAttemptID_Info,
 			Setting_ColorlessFabricBreakdown,
 			Setting_ColorlessFabricBreakdown_Info,
+
+			Setting_Language_English = 60010,
+			Setting_Language_ZhHans = 60011,
 		}
 
 		public static void Initialize()
@@ -647,6 +651,16 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Suppress Vendor Tooltips", PageActionType.Setting_SuppressVendorTooltips, PageActionType.Setting_SuppressVendorTooltips_Info);
 				// Last setting, don't add a row
 
+				g += j;
+				xr = 0;
+				xs = SECTION_START_X;
+				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">Language</BASEFONT></BODY>", (bool)false, (bool)false);
+				g += j;
+				xs = SETTING_START_X;
+				AddAction( xs, g, from, "English", PageActionType.Setting_Language_English, 130 );
+				xs += 220;
+				AddAction( xs, g, from, "简体中文 (zh-Hans)", PageActionType.Setting_Language_ZhHans, 240 );
+
 				// Section - Play Styles
 				const int PLAYSTYLE_OPTIONS_PER_ROW = 4;
 				const int PLAYSTYLE_OPTION_WIDTH = 125;
@@ -911,6 +925,14 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_MagerySpellColor_Purple: return from.Preferences.MagerySpellHue == 0x490;
 				case PageActionType.Setting_MagerySpellColor_Yellow: return from.Preferences.MagerySpellHue == 0x491;
 				case PageActionType.Setting_MagerySpellColor_Default: return from.Preferences.MagerySpellHue == 0;
+
+				case PageActionType.Setting_Language_English:
+				{
+					string lang = AccountLang.GetLanguageCode( from.Account );
+					return Insensitive.Equals( lang, "en" );
+				}
+				case PageActionType.Setting_Language_ZhHans:
+					return AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) );
 
 				case PageActionType.Setting_SkillList: return true;
 			}
@@ -1407,6 +1429,50 @@ namespace Server.Engines.Help
 					case PageActionType.Setting_ColorlessFabricBreakdown:
 					{
 						from.Preferences.ColorlessFabricBreakdown = !from.Preferences.ColorlessFabricBreakdown;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_Language_English:
+					{
+						if ( from.Account == null )
+						{
+							from.SendMessage( "Your account could not be found." );
+							break;
+						}
+
+						AccountLang.SetLanguageCode( from.Account, "en" );
+						from.SendMessage( "Language set to en." );
+
+						try
+						{
+							World.Save( false, false );
+						}
+						catch
+						{
+						}
+
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_Language_ZhHans:
+					{
+						if ( from.Account == null )
+						{
+							from.SendMessage( "Your account could not be found." );
+							break;
+						}
+
+						AccountLang.SetLanguageCode( from.Account, "zh-Hans" );
+						from.SendMessage( "Language set to zh-Hans." );
+
+						try
+						{
+							World.Save( false, false );
+						}
+						catch
+						{
+						}
+
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}

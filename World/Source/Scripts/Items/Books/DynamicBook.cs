@@ -8,6 +8,7 @@ using Server.Misc;
 using Server.Network;
 using System.Collections;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -29,6 +30,57 @@ namespace Server.Items
 			}
 		}
 
+		private static string ViewerLang( Mobile viewer )
+		{
+			return AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+		}
+
+		/// <summary>Localized title when the book is opened (uses account language).</summary>
+		public static string ResolveBookTitleForViewer( Mobile viewer, DynamicBook book )
+		{
+			if ( book == null || book.BookTitle == null )
+				return "";
+
+			string lang = ViewerLang( viewer );
+			return StringCatalog.TryResolve( lang, book.BookTitle ) ?? book.BookTitle;
+		}
+
+		/// <summary>Localized author when the book is opened.</summary>
+		public static string ResolveBookAuthorForViewer( Mobile viewer, DynamicBook book )
+		{
+			if ( book == null || book.BookAuthor == null )
+				return "";
+
+			string lang = ViewerLang( viewer );
+			return StringCatalog.TryResolve( lang, book.BookAuthor ) ?? book.BookAuthor;
+		}
+
+		/// <summary>Localized body HTML; falls back to stored English when no catalog entry exists.</summary>
+		public static string ResolveBookBodyForViewer( Mobile viewer, DynamicBook book )
+		{
+			if ( book == null || book.BookText == null )
+				return "";
+
+			string lang = ViewerLang( viewer );
+			return StringCatalog.TryResolve( lang, book.BookText ) ?? book.BookText;
+		}
+
+		/// <summary>Joiner between title and author on a single header line (e.g. &quot; by &quot;).</summary>
+		public static string ResolveBetweenTitleAndAuthor( Mobile viewer )
+		{
+			string lang = ViewerLang( viewer );
+			return StringCatalog.TryResolveByKey( lang, "books.dynamic.between_title_author" )
+				?? StringCatalog.TryResolve( lang, " by " ) ?? " by ";
+		}
+
+		/// <summary>Prefix before the author on the second header line of the default book gump.</summary>
+		public static string ResolveByAuthorLinePrefix( Mobile viewer )
+		{
+			string lang = ViewerLang( viewer );
+			return StringCatalog.TryResolveByKey( lang, "books.dynamic.by_author_line" )
+				?? StringCatalog.TryResolve( lang, "by " ) ?? "by ";
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
@@ -45,11 +97,16 @@ namespace Server.Items
 				this.Resizable=false;
 				this.AddPage(0);
 
+				string title = DynamicBook.ResolveBookTitleForViewer( from, book );
+				string author = DynamicBook.ResolveBookAuthorForViewer( from, book );
+				string between = DynamicBook.ResolveBetweenTitleAndAuthor( from );
+				string body = DynamicBook.ResolveBookBodyForViewer( from, book );
+
 				AddImage(0, 0, 30521);
 				AddImage(51, 41, 11428);
 				AddImage(52, 438, 11426);
-				AddHtml( 275, 45, 445, 20, @"<BODY><BASEFONT Color=#FF0000>" + book.BookTitle + " by " + book.BookAuthor + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 275, 84, 445, 521, @"<BODY><BASEFONT Color=#00FF06>" + book.BookText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 275, 45, 445, 20, @"<BODY><BASEFONT Color=#FF0000>" + title + between + author + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 275, 84, 445, 521, @"<BODY><BASEFONT Color=#00FF06>" + body + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -69,11 +126,16 @@ namespace Server.Items
 				this.Resizable=false;
 				this.AddPage(0);
 
+				string title = DynamicBook.ResolveBookTitleForViewer( from, book );
+				string author = DynamicBook.ResolveBookAuthorForViewer( from, book );
+				string between = DynamicBook.ResolveBetweenTitleAndAuthor( from );
+				string body = DynamicBook.ResolveBookBodyForViewer( from, book );
+
 				AddImage(0, 0, 30521);
 				AddImage(51, 41, 11435);
 				AddImage(52, 438, 11433);
-				AddHtml( 275, 45, 445, 20, @"<BODY><BASEFONT Color=#308EB3>" + book.BookTitle + " by " + book.BookAuthor + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 275, 84, 445, 521, @"<BODY><BASEFONT Color=#00FF06>" + book.BookText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 275, 45, 445, 20, @"<BODY><BASEFONT Color=#308EB3>" + title + between + author + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 275, 84, 445, 521, @"<BODY><BASEFONT Color=#00FF06>" + body + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -93,6 +155,10 @@ namespace Server.Items
 				this.Resizable=false;
 
 				string color = "#d6c382";
+				string title = DynamicBook.ResolveBookTitleForViewer( from, book );
+				string author = DynamicBook.ResolveBookAuthorForViewer( from, book );
+				string byPrefix = DynamicBook.ResolveByAuthorLinePrefix( from );
+				string body = DynamicBook.ResolveBookBodyForViewer( from, book );
 
 				this.AddPage(0);
 
@@ -101,9 +167,9 @@ namespace Server.Items
 				AddImage(0, 0, 7024, 2736);
 				AddImage(362, 55, 1262, 2736);
 				AddImage(408, 94, book.BookCover, 2736);
-				AddHtml( 73, 49, 251, 20, @"<BODY><BASEFONT Color=" + color + ">" + book.BookTitle + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 73, 76, 251, 20, @"<BODY><BASEFONT Color=" + color + ">by " + book.BookAuthor + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 73, 105, 251, 290, @"<BODY><BASEFONT Color=" + color + ">" + book.BookText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 73, 49, 251, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 73, 76, 251, 20, @"<BODY><BASEFONT Color=" + color + ">" + byPrefix + author + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 73, 105, 251, 290, @"<BODY><BASEFONT Color=" + color + ">" + body + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )

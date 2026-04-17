@@ -1,4 +1,2340 @@
 {
-  "_comment": "Optional curated map: canonical English lore term -> approved Simplified Chinese. Used by translators; tooling can merge checks later.",
-  "terms": {}
+  "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
+  "_version": "1.2",
+  "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
+  "terms": {
+    "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
+    "Sosaria": {
+      "canonical": "索萨利亚",
+      "alternatives": [
+        "索萨里亚",
+        "索沙利亚"
+      ],
+      "category": "place",
+      "notes": "The mortal world in Ultima I-III; main landmass of this shard. Destroyed by Mondain's Gem of Immortality, later remade as Britannia.",
+      "reference_suggestion_zh": "索萨利亚",
+      "reference_note_zh": "Ultima I–III 的世界名称，通行译名。",
+      "translation_basis_zh": "参考词表建议「索萨利亚」，网络中文资料中也常见「索沙利亚 / 索萨利亚」一系写法。为贴近玩家通行译法并避免「里」字带来的额外音变，采用「索萨利亚」。"
+    },
+    "Britannia": {
+      "canonical": "不列颠尼亚",
+      "alternatives": [
+        "不列颠"
+      ],
+      "category": "place",
+      "notes": "The name of the world after Ultima IV; ruled by Lord British. Not to be confused with the city of Britain."
+    },
+    "Britain": {
+      "canonical": "不列颠",
+      "alternatives": [
+        "不列颠城"
+      ],
+      "category": "place",
+      "notes": "Capital city of Britannia; seat of Lord British. ★ also appears in auto-generated lore-glossary.",
+      "reference_suggestion_zh": "不列颠",
+      "reference_note_zh": "城市名，对应 Lord British 的首都。",
+      "translation_basis_zh": "参考词表建议「不列颠」。城市名，对应 Lord British 的首都。"
+    },
+    "British": {
+      "canonical": "布理提殊",
+      "alternatives": [
+        "不列颠"
+      ],
+      "category": "character",
+      "notes": "Short-form heroic name used before the title Lord British is bestowed.",
+      "reference_suggestion_zh": "布理提殊",
+      "reference_note_zh": "在早期故事中作为凡人英雄时的称呼，可与 Lord British 统一。",
+      "translation_basis_zh": "参考词表将 British 视为 Lord British 获封前的本名 / 英雄名。为区分城市 Britain 与人物 British，本词条采用音译「布理提殊」，避免与地名混淆。"
+    },
+    "Akalabeth": {
+      "canonical": "阿卡拉贝斯",
+      "alternatives": [],
+      "category": "place",
+      "notes": "The world before Sosaria; title of Ultima 0 (1979). Ancient land shrouded in dark legend.",
+      "reference_suggestion_zh": "阿卡拉贝斯",
+      "reference_note_zh": "Ultima 0 对应的地域 / 世界。",
+      "translation_basis_zh": "参考词表建议「阿卡拉贝斯」。Ultima 0 对应的地域 / 世界。"
+    },
+    "Ambrosia": {
+      "canonical": "安布罗西亚",
+      "alternatives": [
+        "神仙岛"
+      ],
+      "category": "place",
+      "notes": "Lost continent accessible through whirlpools in Ultima IV; home of shrines boosting stats.",
+      "reference_suggestion_zh": "安布罗西亚",
+      "reference_note_zh": "失落大陆，常见译法。",
+      "translation_basis_zh": "参考词表建议「安布罗西亚」。失落大陆，常见译法。"
+    },
+    "Moon": {
+      "canonical": "月镇",
+      "alternatives": [
+        "月城",
+        "月辉"
+      ],
+      "category": "place",
+      "notes": "City in old Sosaria / early Ultima maps. Distinct from Moonglow (月辉, Ultima IV+). ★ auto-gen overlap."
+    },
+    "Luna": {
+      "canonical": "月亮",
+      "alternatives": [
+        "月亮城",
+        "月华城"
+      ],
+      "category": "place",
+      "notes": "Paladin city on the Serpent Isle (Ultima VII Pt 2); later a player-market city in UO.",
+      "reference_suggestion_zh": "月亮",
+      "reference_note_zh": "文中作为月体名称，沿用音译。",
+      "translation_basis_zh": "参考词表明确指出此处的 Luna 指月体而非城市，因此首选改为「月亮」。原有「月亮城」保留为备选，用于其他上下文可能出现的城市义。"
+    },
+    "Devil Guard": {
+      "canonical": "魔鬼卫谷",
+      "alternatives": [
+        "恶魔卫城",
+        "魔卫",
+        "魔鬼卫",
+        "魔鬼岗峡谷"
+      ],
+      "category": "place",
+      "notes": "Fortress town in Sosaria on old Ultima maps; situated near demon-haunted terrain. ★ auto-gen overlap.",
+      "reference_suggestion_zh": "魔鬼岗峡谷 / 魔鬼卫谷",
+      "reference_note_zh": "文中山谷名，可按气氛意译。",
+      "translation_basis_zh": "参考词表建议「魔鬼卫谷」。文中山谷名，可按气氛意译。"
+    },
+    "Montor": {
+      "canonical": "蒙托城",
+      "alternatives": [
+        "蒙托尔"
+      ],
+      "category": "place",
+      "notes": "City in Ultima III Sosaria. ★ auto-gen overlap.",
+      "reference_suggestion_zh": "蒙托城",
+      "reference_note_zh": "熔岩之城，Ultima 早期城市名。",
+      "translation_basis_zh": "参考词表建议「蒙托城」。熔岩之城，Ultima 早期城市名。"
+    },
+    "Yew": {
+      "canonical": "紫杉城",
+      "alternatives": [
+        "紫杉"
+      ],
+      "category": "place",
+      "notes": "City of Justice and forestry in Britannia. ★ auto-gen overlap."
+    },
+    "Dawn": {
+      "canonical": "曙光城",
+      "alternatives": [
+        "黎明城",
+        "黎明"
+      ],
+      "category": "place",
+      "notes": "Magical city that only appears at dawn, accessible via moongate in Ultima III.",
+      "reference_suggestion_zh": "曙光城",
+      "reference_note_zh": "月面城市名。",
+      "translation_basis_zh": "参考词表建议「曙光城」。月面城市名。"
+    },
+    "Skara Brae": {
+      "canonical": "斯卡拉·布雷",
+      "alternatives": [
+        "斯卡拉布雷"
+      ],
+      "category": "place",
+      "notes": "City of Spirituality in Britannia; also the starting town in The Bard's Tale. ★ auto-gen overlap.",
+      "reference_suggestion_zh": "斯卡拉·布雷",
+      "reference_note_zh": "系列中常见小镇，已有固定译名。",
+      "translation_basis_zh": "参考词表建议「斯卡拉·布雷」。系列中常见小镇，已有固定译名。"
+    },
+    "Serpent Island": {
+      "canonical": "巨蛇岛",
+      "alternatives": [
+        "蛇岛",
+        "蛇人之岛"
+      ],
+      "category": "place",
+      "notes": "The Serpent Isle (Ultima VII Pt 2); ancient home of the Ophidian civilisation.",
+      "reference_suggestion_zh": "巨蛇岛",
+      "reference_note_zh": "Ultima VII Part 2 的主要舞台。",
+      "translation_basis_zh": "参考词表建议「巨蛇岛」。该译名较「蛇岛」更接近 Serpent 的庄严 / 神话感，也更符合中文奇幻地名习惯，因此升级为首选，同时保留「蛇岛」作简写备选。"
+    },
+    "Isle of Fire": {
+      "canonical": "火焰岛",
+      "alternatives": [
+        "炎之岛"
+      ],
+      "category": "place",
+      "notes": "Island in Britannia where the Forge of Virtue is found; setting of Ultima VII LBE add-on."
+    },
+    "Isles of Dread": {
+      "canonical": "惧怖群岛",
+      "alternatives": [
+        "恐惧群岛"
+      ],
+      "category": "place",
+      "notes": "Dangerous island chain; name echoes the classic D&D module.",
+      "reference_suggestion_zh": "惧怖群岛",
+      "reference_note_zh": "恐怖之岛群，可译「惧怖群岛」。",
+      "translation_basis_zh": "参考词表建议「惧怖群岛」。恐怖之岛群，可译「惧怖群岛」。"
+    },
+    "Fawn": {
+      "canonical": "法恩城",
+      "alternatives": [
+        "法恩"
+      ],
+      "category": "place",
+      "notes": "City of Beauty on the Serpent Isle (Ultima VII Pt 2)."
+    },
+    "Underworld": {
+      "canonical": "冥界深渊",
+      "alternatives": [
+        "地底世界",
+        "冥界",
+        "地下世界",
+        "地下冥界"
+      ],
+      "category": "place",
+      "notes": "Subterranean realm beneath Britannia; setting of Ultima Underworld. ★ auto-gen overlap.",
+      "reference_suggestion_zh": "地下冥界",
+      "reference_note_zh": "「比夜幕更黑的地方」，怪物涌出的深渊。",
+      "translation_basis_zh": "参考词表建议「冥界深渊 / 地下世界」。本项目原有「地底世界」更口语，但在书卷叙述中「冥界深渊」更能传达其作为古老深层世界的史诗感，故采用为首选，并保留原译作备选。"
+    },
+    "Ethereal Void": {
+      "canonical": "以太虚空",
+      "alternatives": [
+        "以太界"
+      ],
+      "category": "place",
+      "notes": "The infinite space between worlds; moongates open through it.",
+      "reference_suggestion_zh": "以太虚空",
+      "reference_note_zh": "系列中通向诸界的虚空。",
+      "translation_basis_zh": "参考词表建议「以太虚空」。系列中通向诸界的虚空。"
+    },
+    "Void": {
+      "canonical": "虚空",
+      "alternatives": [
+        "以太虚空",
+        "空界"
+      ],
+      "category": "place",
+      "notes": "Generic term for the planar emptiness surrounding Sosaria / Britannia."
+    },
+    "Umbra": {
+      "canonical": "本影城",
+      "alternatives": [
+        "暗影城"
+      ],
+      "category": "place",
+      "notes": "City of Necromancers on Isles of Dread in UO: Mondain's Legacy."
+    },
+    "Umber Veil": {
+      "canonical": "安柏迷雾岛",
+      "alternatives": [
+        "安伯面纱"
+      ],
+      "category": "place",
+      "notes": "Remote island; location referenced in shard quests.",
+      "reference_suggestion_zh": "安柏迷雾岛",
+      "reference_note_zh": "神秘小岛，「Veil」喻为迷雾帷幕。",
+      "translation_basis_zh": "参考词表建议「安柏迷雾岛」。神秘小岛，「Veil」喻为迷雾帷幕。"
+    },
+    "Lodor": {
+      "canonical": "洛多尔",
+      "alternatives": [
+        "洛多"
+      ],
+      "category": "place",
+      "notes": "Elven homeland; short form of Lodoria.",
+      "reference_suggestion_zh": "洛多尔",
+      "reference_note_zh": "精灵世界所在的大陆。",
+      "translation_basis_zh": "参考词表建议「洛多尔」。精灵世界所在的大陆。"
+    },
+    "Lodoria": {
+      "canonical": "洛多里亚",
+      "alternatives": [
+        "洛多利亚",
+        "洛多里亚城"
+      ],
+      "category": "place",
+      "notes": "Full name of the elven realm; home of the Rangers of Lodoria.",
+      "reference_suggestion_zh": "洛多里亚 / 洛多里亚城",
+      "reference_note_zh": "同一地区与其城邦。",
+      "translation_basis_zh": "参考词表建议「洛多里亚」。同一地区与其城邦。"
+    },
+    "City of Lodoria": {
+      "canonical": "洛多里亚城",
+      "alternatives": [
+        "洛多利亚城",
+        "洛多里亚"
+      ],
+      "category": "place",
+      "notes": "Capital of the elven realm Lodoria.",
+      "reference_suggestion_zh": "洛多里亚 / 洛多里亚城",
+      "reference_note_zh": "同一地区与其城邦。",
+      "translation_basis_zh": "参考词表建议「洛多里亚城」。同一地区与其城邦。"
+    },
+    "Lodoria City": {
+      "canonical": "洛多里亚城",
+      "alternatives": [
+        "洛多利亚城"
+      ],
+      "category": "place",
+      "notes": "Alternate form of City of Lodoria; treat as identical."
+    },
+    "Savaged Empire": {
+      "canonical": "野蛮帝域",
+      "alternatives": [
+        "野蛮帝国"
+      ],
+      "category": "place",
+      "notes": "Ancient or fallen empire; referenced in shard history.",
+      "reference_suggestion_zh": "野蛮帝域",
+      "reference_note_zh": "文中为兽人领地，可意译为「野蛮帝域」。",
+      "translation_basis_zh": "参考词表建议「野蛮帝域」。文中为兽人领地，可意译为「野蛮帝域」。"
+    },
+    "Stonegate": {
+      "canonical": "石门堡",
+      "alternatives": [
+        "石门",
+        "石门城堡"
+      ],
+      "category": "place",
+      "notes": "Castle of the Shadowlords in Ultima V; now ruins.",
+      "reference_suggestion_zh": "石门堡 / 石门城堡",
+      "reference_note_zh": "精灵城堡，被 Shadowlords 占据。",
+      "translation_basis_zh": "参考词表建议「石门堡」。精灵城堡，被 Shadowlords 占据。"
+    },
+    "Dracula's island": {
+      "canonical": "德古拉之岛",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Island associated with Dracula in shard-specific lore.",
+      "reference_suggestion_zh": "德古拉之岛",
+      "reference_note_zh": "其领地所在小岛。",
+      "translation_basis_zh": "参考词表建议「德古拉之岛」。其领地所在小岛。"
+    },
+    "Obsidian Fortress": {
+      "canonical": "黑曜石要塞",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Fortress from Ultima Underworld 2; home of the Zealan spirits.",
+      "reference_suggestion_zh": "黑曜石要塞",
+      "reference_note_zh": "由 Drow 建造的黑色堡垒。",
+      "translation_basis_zh": "参考词表建议「黑曜石要塞」。由 Drow 建造的黑色堡垒。"
+    },
+    "Serpent Sanctum": {
+      "canonical": "蛇神圣域",
+      "alternatives": [
+        "蛇圣殿"
+      ],
+      "category": "place",
+      "notes": "Holy site of the Ophidian Order of Order."
+    },
+    "Shrine of Wizardry": {
+      "canonical": "巫术神龛",
+      "alternatives": [
+        "巫术神殿"
+      ],
+      "category": "place",
+      "notes": "Shrine in old Sosaria; tests magical ability.",
+      "reference_suggestion_zh": "巫术神龛",
+      "reference_note_zh": "供法师登月之用的神龛。",
+      "translation_basis_zh": "参考词表建议「巫术神龛」。供法师登月之用的神龛。"
+    },
+    "Shrine of Intelligence": {
+      "canonical": "智慧神殿",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Shrine testing the Virtue of Intelligence.",
+      "reference_suggestion_zh": "智慧神殿",
+      "reference_note_zh": "属性神殿之一。",
+      "translation_basis_zh": "参考词表建议「智慧神殿」。属性神殿之一。"
+    },
+    "Shrine of Diligence": {
+      "canonical": "勤勉神龛",
+      "alternatives": [
+        "勤勉神殿"
+      ],
+      "category": "place",
+      "notes": "Shrine testing the Virtue of Diligence.",
+      "reference_suggestion_zh": "勤勉神龛",
+      "reference_note_zh": "与黑暗核心剧情相关的祭坛。",
+      "translation_basis_zh": "参考词表建议「勤勉神龛」。与黑暗核心剧情相关的祭坛。"
+    },
+    "Shrine of Dexterity": {
+      "canonical": "敏捷神殿",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Shrine testing the Virtue of Dexterity.",
+      "reference_suggestion_zh": "敏捷神殿",
+      "reference_note_zh": "属性神殿之一。",
+      "translation_basis_zh": "参考词表建议「敏捷神殿」。属性神殿之一。"
+    },
+    "Abyss": {
+      "canonical": "深渊",
+      "alternatives": [
+        "无底深渊"
+      ],
+      "category": "place",
+      "notes": "The Great Stygian Abyss; final dungeon in Ultima IV where the Codex resides."
+    },
+    "Dungeon Doom": {
+      "canonical": "毁灭地城",
+      "alternatives": [
+        "末日地下城",
+        "末日",
+        "毁灭地牢"
+      ],
+      "category": "dungeon",
+      "notes": "High-level dungeon in UO; accessed in the Abyss area.",
+      "reference_suggestion_zh": "毁灭地城 / 毁灭地牢",
+      "reference_note_zh": "Ultima Online 中著名地城「Doom」。",
+      "translation_basis_zh": "参考词表建议「毁灭地城」。Ultima Online 中著名地城「Doom」。"
+    },
+    "Dungeon Destard": {
+      "canonical": "德斯塔德地下城",
+      "alternatives": [
+        "德斯塔德"
+      ],
+      "category": "dungeon",
+      "notes": "Dragon lair dungeon in Britannia."
+    },
+    "Dungeon Shame": {
+      "canonical": "羞耻地下城",
+      "alternatives": [
+        "羞耻"
+      ],
+      "category": "dungeon",
+      "notes": "Dungeon of the Virtue of Humility."
+    },
+    "Destard": {
+      "canonical": "德斯塔德",
+      "alternatives": [],
+      "category": "dungeon",
+      "notes": "Short form of Dungeon Destard."
+    },
+    "Deceit": {
+      "canonical": "欺骗地下城",
+      "alternatives": [
+        "欺骗"
+      ],
+      "category": "dungeon",
+      "notes": "Dungeon opposing the Virtue of Honesty; filled with undead."
+    },
+    "Doom": {
+      "canonical": "毁灭地城",
+      "alternatives": [
+        "末日地下城",
+        "末日"
+      ],
+      "category": "dungeon",
+      "notes": "Short form of Dungeon Doom.",
+      "translation_basis_zh": "为与参考词表中的「Dungeon Doom → 毁灭地城」保持一致，相关简称统一采用同一译名。"
+    },
+    "Hythloth": {
+      "canonical": "海瑟洛斯",
+      "alternatives": [
+        "海斯洛斯"
+      ],
+      "category": "dungeon",
+      "notes": "Deep dungeon opposing Spirituality; connects to Britannia's lower depths.",
+      "reference_suggestion_zh": "海瑟洛斯",
+      "reference_note_zh": "传统译名「海瑟洛斯」或「虚空洞窟」。",
+      "translation_basis_zh": "参考词表建议「海瑟洛斯」。传统译名「海瑟洛斯」或「虚空洞窟」。"
+    },
+    "Renika": {
+      "canonical": "雷尼卡村",
+      "alternatives": [
+        "雷尼卡"
+      ],
+      "category": "place",
+      "notes": "Village on Umber Veil island; shard-specific lore.",
+      "reference_suggestion_zh": "雷尼卡村",
+      "reference_note_zh": "被黑骑士劫掠的村庄。",
+      "translation_basis_zh": "参考词表建议「雷尼卡村」。被黑骑士劫掠的村庄。"
+    },
+    "Rhundar": {
+      "canonical": "伦达尔",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Dwarven crafting hub; shard-specific lore."
+    },
+    "Springvale": {
+      "canonical": "春谷镇",
+      "alternatives": [
+        "斯普林维尔"
+      ],
+      "category": "place",
+      "notes": "Small village; shard-specific.",
+      "reference_suggestion_zh": "春谷镇",
+      "reference_note_zh": "另一港口小镇。",
+      "translation_basis_zh": "参考词表建议「春谷镇」。另一港口小镇。"
+    },
+    "Glacial Hills": {
+      "canonical": "冰川丘陵",
+      "alternatives": [
+        "冰川山丘"
+      ],
+      "category": "place",
+      "notes": "Cold highland region; shard-specific.",
+      "reference_suggestion_zh": "冰川丘陵",
+      "reference_note_zh": "港口航线目的地之一。",
+      "translation_basis_zh": "参考词表建议「冰川丘陵」。港口航线目的地之一。"
+    },
+    "Ravendark": {
+      "canonical": "乌鸦暗城",
+      "alternatives": [
+        "拉文达克"
+      ],
+      "category": "place",
+      "notes": "Gloomy fortress city; shard-specific."
+    },
+    "Grey": {
+      "canonical": "格雷村",
+      "alternatives": [
+        "灰村"
+      ],
+      "category": "place",
+      "notes": "Small settlement; shard-specific.",
+      "reference_suggestion_zh": "格雷村",
+      "reference_note_zh": "文中出现的小村落名。",
+      "translation_basis_zh": "参考词表建议「格雷村」。文中出现的小村落名。"
+    },
+    "Sempkin Burg": {
+      "canonical": "森普金堡",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Fortified town; shard-specific."
+    },
+    "Port of Dusk": {
+      "canonical": "黄昏港",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Harbour town; evokes twilight / danger theme.",
+      "reference_suggestion_zh": "黄昏港",
+      "reference_note_zh": "港口城镇名。",
+      "translation_basis_zh": "参考词表建议「黄昏港」。港口城镇名。"
+    },
+    "Weston": {
+      "canonical": "韦斯顿",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Western settlement; shard-specific."
+    },
+    "Tower of the Lich": {
+      "canonical": "巫妖之塔",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Lair of an ancient lich; shard-specific dungeon landmark.",
+      "reference_suggestion_zh": "巫妖之塔",
+      "reference_note_zh": "吸血鬼 Dracula 躲藏之处。",
+      "translation_basis_zh": "参考词表建议「巫妖之塔」。吸血鬼 Dracula 躲藏之处。"
+    },
+    "Undermountain": {
+      "canonical": "山腹深处",
+      "alternatives": [
+        "山下大厅"
+      ],
+      "category": "place",
+      "notes": "Vast subterranean ruin beneath a mountain; references the Forgotten Realms megadungeon."
+    },
+    "City of Furnace": {
+      "canonical": "熔炉城",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Gargoyle underground city on the Serpent Isle (Ultima VII Pt 2)."
+    },
+    "Sleepy Island Inn": {
+      "canonical": "睡意岛旅馆",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Tavern / inn; shard-specific."
+    },
+    "Scarlet Bard": {
+      "canonical": "猩红吟游诗人",
+      "alternatives": [
+        "赤红吟游诗人"
+      ],
+      "category": "place",
+      "notes": "Tavern; shard-specific."
+    },
+    "Velvet Sky": {
+      "canonical": "天鹅绒天空号",
+      "alternatives": [
+        "丝绒天空"
+      ],
+      "category": "place",
+      "notes": "Tavern or inn; shard-specific.",
+      "reference_suggestion_zh": "「天鹅绒天空号」",
+      "reference_note_zh": "船名。",
+      "translation_basis_zh": "参考词表建议「天鹅绒天空号」。船名。"
+    },
+    "Zeta Quadrant": {
+      "canonical": "泽塔象限",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Sci-fi / Star Wars flavoured location in shard cross-genre content."
+    },
+    "Corusant": {
+      "canonical": "科鲁森特",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Parody of Star Wars Coruscant; appears in cross-genre shard quests."
+    },
+    "The Pass of the Gods": {
+      "canonical": "诸神隘口",
+      "alternatives": [
+        "诸神之径"
+      ],
+      "category": "place",
+      "notes": "Mountain pass of divine significance; shard-specific.",
+      "reference_suggestion_zh": "诸神隘口",
+      "reference_note_zh": "山间要道书名或地点。",
+      "translation_basis_zh": "参考词表建议「诸神隘口」。山间要道书名或地点。"
+    },
+    "Great Ocean": {
+      "canonical": "大洋",
+      "alternatives": [
+        "大海洋"
+      ],
+      "category": "place",
+      "notes": "The ocean surrounding Britannia / Sosaria.",
+      "reference_suggestion_zh": "大洋",
+      "reference_note_zh": "包围世界的巨大海洋。",
+      "translation_basis_zh": "参考词表建议「大洋」。包围世界的巨大海洋。"
+    },
+    "Blood Temple": {
+      "canonical": "血神神殿",
+      "alternatives": [
+        "血庙"
+      ],
+      "category": "place",
+      "notes": "Temple of the Blood Cult; shard-specific."
+    },
+    "Wall of Lights": {
+      "canonical": "光之壁",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Magical barrier; referenced in shard quests."
+    },
+    "_SECTION_CHARACTERS": "── Characters ──────────────────────────────────────────────",
+    "Lord British": {
+      "canonical": "不列颠王",
+      "alternatives": [
+        "不列颠勋爵",
+        "不列颠大人",
+        "英雄王·布理提殊"
+      ],
+      "category": "character",
+      "notes": "King of Britannia; Richard Garriott's avatar in the Ultima series.",
+      "reference_suggestion_zh": "不列颠王 / 英雄王·布理提殊",
+      "reference_note_zh": "官方中多译为「不列颠王」，既是国王也是守护者。",
+      "translation_basis_zh": "参考词表建议「不列颠王」，网络中文资料与玩家讨论也普遍将 Lord British 称作「不列颠王」。因此以「不列颠王」为首选，同时保留「不列颠勋爵」与「英雄王·布理提殊」作备选。"
+    },
+    "Stranger": {
+      "canonical": "异乡人",
+      "alternatives": [
+        "异乡客",
+        "陌生人"
+      ],
+      "category": "character",
+      "notes": "Player-character title in Ultima I-III before becoming the Avatar.",
+      "reference_suggestion_zh": "异乡人",
+      "reference_note_zh": "Ultima I–III 的玩家角色传统译法，「异乡人」最符合设定。",
+      "translation_basis_zh": "参考词表建议「异乡人」。在 Ultima I-III 中，Stranger 是玩家角色的传统称谓，中文语感上「异乡人」比「异乡客」更稳定、更像正式称号，因此采用。"
+    },
+    "Mondain": {
+      "canonical": "蒙丹",
+      "alternatives": [
+        "蒙旦",
+        "莫丹",
+        "莫达因"
+      ],
+      "category": "character",
+      "notes": "Evil wizard; villain of Ultima I. Created the Gem of Immortality; son of King Wolfgang.",
+      "reference_suggestion_zh": "莫丹 / 莫达因",
+      "reference_note_zh": "通用译名，多数玩家习惯译为「莫丹」或「莫达因」，本文可统一一版。",
+      "translation_basis_zh": "参考词表给出「莫丹 / 莫达因」，但网络中文资料中也长期出现「蒙丹」。结合中文玩家习惯与现有项目上下文，保留「蒙丹」为首选，并将「莫丹」「莫达因」收为备选。"
+    },
+    "Minax": {
+      "canonical": "米纳克斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Enchantress; villain of Ultima II. Mondain's apprentice and lover; sought revenge after his death.",
+      "reference_suggestion_zh": "米纳克斯",
+      "reference_note_zh": "官方中常见音译。莫丹的情人兼弟子。",
+      "translation_basis_zh": "参考词表建议「米纳克斯」。官方中常见音译。莫丹的情人兼弟子。"
+    },
+    "Exodus": {
+      "canonical": "埃克索达斯",
+      "alternatives": [
+        "出埃及记",
+        "大劫",
+        "渎神"
+      ],
+      "category": "character",
+      "notes": "Half-daemon machine child of Mondain and Minax; villain of Ultima III. The name is used as a proper noun. ★ auto-gen overlap.",
+      "reference_suggestion_zh": "埃克索达斯",
+      "reference_note_zh": "莫丹与米纳克斯的“子嗣”（既非人亦非机器）。惯用音译保留异界感。",
+      "translation_basis_zh": "参考词表建议音译「埃克索达斯」。相较字面翻译「出埃及记」，音译更符合其作为独立反派实体的专有名词属性，也更符合中文奇幻 / 科幻命名习惯。"
+    },
+    "Guardian": {
+      "canonical": "守护者",
+      "alternatives": [
+        "黑暗守护者",
+        "监护者"
+      ],
+      "category": "character",
+      "notes": "Principal villain of Ultima VII-IX; a dark reflection of the Avatar's virtuous rejection.",
+      "reference_suggestion_zh": "监护者",
+      "reference_note_zh": "Ultima VII 之后的主反派。",
+      "translation_basis_zh": "参考词表使用「监护者」，但中文玩家社群与检索摘要里「守护者」更常见。为贴合 Ultima 讨论语境与读者习惯，保留「守护者」为首选，并把「监护者」列为备选。"
+    },
+    "Time Lord": {
+      "canonical": "时间领主",
+      "alternatives": [
+        "时主"
+      ],
+      "category": "character",
+      "notes": "Omniscient being who guides the Avatar through time; appears in Ultima V-VI."
+    },
+    "Mangar": {
+      "canonical": "曼加尔",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Evil wizard; villain of The Bard's Tale I. Imprisoned Skara Brae in eternal winter. ★ auto-gen overlap."
+    },
+    "Mangar the Dark": {
+      "canonical": "黑暗曼加尔",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Full title of Mangar; emphasises his sinister nature."
+    },
+    "Kylearan": {
+      "canonical": "凯利兰",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Good wizard in The Bard's Tale I; ally against Mangar. ★ auto-gen overlap."
+    },
+    "Harkyn": {
+      "canonical": "哈肯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Evil archmage; villain of The Bard's Tale II. ★ auto-gen overlap."
+    },
+    "Batlin": {
+      "canonical": "巴特林",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Leader of The Fellowship; main antagonist in Ultima VII: The Black Gate."
+    },
+    "Batlin the Druid": {
+      "canonical": "德鲁伊·巴特林",
+      "alternatives": [
+        "德鲁伊巴特林"
+      ],
+      "category": "character",
+      "notes": "Batlin in his druid aspect before revealing his true allegiance.",
+      "reference_suggestion_zh": "德鲁伊·巴特林",
+      "reference_note_zh": "Ultima VII 中的重要 NPC，这里仍用「巴特林」。",
+      "translation_basis_zh": "参考词表建议「德鲁伊·巴特林」。Ultima VII 中的重要 NPC，这里仍用「巴特林」。"
+    },
+    "Black Knight": {
+      "canonical": "黑骑士",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Fearsome antagonist; archetype shared across Ultima lore and shard quests."
+    },
+    "Dracula": {
+      "canonical": "德古拉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Vampire lord encountered in shard content; borrowing from classical Gothic fiction."
+    },
+    "Zekylis": {
+      "canonical": "泽基利斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Powerful archmage; shard-specific character."
+    },
+    "Vordo": {
+      "canonical": "沃多",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Dark mage antagonist; shard-specific."
+    },
+    "Kas": {
+      "canonical": "卡斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Death Knight; in D&D lore a lich's champion who betrayed his master. Shard uses this as a legendary warrior."
+    },
+    "Kas the Kind": {
+      "canonical": "仁慈者·卡斯",
+      "alternatives": [
+        "仁慈之卡斯",
+        "善良的卡斯"
+      ],
+      "category": "character",
+      "notes": "Kas in his earlier, benevolent phase before his corruption.",
+      "reference_suggestion_zh": "仁慈者·卡斯",
+      "reference_note_zh": "走向堕落前的称号。",
+      "translation_basis_zh": "参考词表建议「仁慈者·卡斯」。走向堕落前的称号。"
+    },
+    "Kas the Bloody Handed": {
+      "canonical": "血手·卡斯",
+      "alternatives": [
+        "血手卡斯",
+        "嗜血卡斯"
+      ],
+      "category": "character",
+      "notes": "Kas after his corruption; epithet refers to the blood of countless battles.",
+      "reference_suggestion_zh": "血手·卡斯",
+      "reference_note_zh": "成为死亡骑士后的称号。",
+      "translation_basis_zh": "参考词表建议「血手·卡斯」。成为死亡骑士后的称号。"
+    },
+    "Master Malak": {
+      "canonical": "马拉克大师",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Skilled craftsman or master; shard-specific."
+    },
+    "Malak": {
+      "canonical": "马拉克",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Short form of Master Malak."
+    },
+    "Elizabeth": {
+      "canonical": "伊丽莎白",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC in shard quests."
+    },
+    "Abraham": {
+      "canonical": "亚伯拉罕",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC in shard quests."
+    },
+    "King Wolfgang": {
+      "canonical": "沃尔夫冈国王",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Ancient king; father of Mondain. Ruled Sosaria before its corruption."
+    },
+    "Wolfgang": {
+      "canonical": "沃尔夫冈",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Short form of King Wolfgang."
+    },
+    "Destroyer": {
+      "canonical": "毁灭者",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Epithet for an apocalyptic entity; context-specific.",
+      "reference_suggestion_zh": "毁灭者",
+      "reference_note_zh": "预言中将至的终极破坏者。",
+      "translation_basis_zh": "参考词表建议「毁灭者」。预言中将至的终极破坏者。"
+    },
+    "Merlin": {
+      "canonical": "梅林",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Legendary wizard; appears in shard quests drawing on Arthurian mythology."
+    },
+    "Shamino the Anarch": {
+      "canonical": "无序者·沙米诺",
+      "alternatives": [
+        "无政府主义者沙米诺",
+        "混乱沙米诺"
+      ],
+      "category": "character",
+      "notes": "Shamino in his anarchic aspect; Shamino is a recurring Avatar companion in Ultima IV-VII.",
+      "reference_suggestion_zh": "无序者·沙米诺",
+      "reference_note_zh": "Shamino 是 Avatar 伙伴之一，这里特别称号 the Anarch 可译为「无序者」。",
+      "translation_basis_zh": "参考词表建议「无序者·沙米诺」。Shamino 是 Avatar 伙伴之一，这里特别称号 the Anarch 可译为「无序者」。"
+    },
+    "Garamon": {
+      "canonical": "嘉拉蒙",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Character from Ultima IV whose sacrifice helps summon the Avatar into the world."
+    },
+    "Captain Johne": {
+      "canonical": "约翰船长",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Sea captain; referenced in Ultima VI / shard content."
+    },
+    "Girmo": {
+      "canonical": "吉尔莫",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific.",
+      "reference_suggestion_zh": "吉尔莫",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「吉尔莫」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Johne": {
+      "canonical": "约翰",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Short form of Captain Johne."
+    },
+    "Khumash-Gor": {
+      "canonical": "库马什·戈尔",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Ancient Zealan warrior; from Ultima Underworld 2 lore."
+    },
+    "Erethian": {
+      "canonical": "伊雷西安",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Sage or scholar NPC; shard-specific."
+    },
+    "Durmas": {
+      "canonical": "杜尔马斯",
+      "alternatives": [
+        "杜马斯"
+      ],
+      "category": "character",
+      "notes": "Ancient king; shard-specific.",
+      "translation_basis_zh": "为与参考词表中的「杜尔马斯家族墓地」保持同一人名音译系统，相关人名统一改为「杜尔马斯」系。"
+    },
+    "King Durmas IV": {
+      "canonical": "杜尔马斯四世",
+      "alternatives": [
+        "杜马斯四世"
+      ],
+      "category": "character",
+      "notes": "Fourth of his lineage; ancient ruler in shard history.",
+      "translation_basis_zh": "为与参考词表中的「杜尔马斯家族墓地」保持同一人名音译系统，相关人名统一改为「杜尔马斯」系。"
+    },
+    "Almric": {
+      "canonical": "阿尔姆里克",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Baron-level NPC; shard-specific."
+    },
+    "Xurtzar": {
+      "canonical": "修尔查尔",
+      "alternatives": [
+        "徐尔察"
+      ],
+      "category": "character",
+      "notes": "Powerful demon or dark guardian; shard-specific."
+    },
+    "Brazuul": {
+      "canonical": "布拉祖尔",
+      "alternatives": [
+        "霸祖尔"
+      ],
+      "category": "character",
+      "notes": "Devil Lord commanding the infernal hierarchy; shard-specific."
+    },
+    "Cyrus Belmont": {
+      "canonical": "赛勒斯·贝尔蒙",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Vampire hunter; name references the Castlevania Belmont clan."
+    },
+    "The Gray Mouser": {
+      "canonical": "灰色鼠客",
+      "alternatives": [
+        "灰鼠侠"
+      ],
+      "category": "character",
+      "notes": "Fritz Leiber's famous thief character; appears in shard as a legendary rogue."
+    },
+    "Lilly": {
+      "canonical": "莉莉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Selena": {
+      "canonical": "塞莱娜",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Selene": {
+      "canonical": "赛莲娜",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Alternate spelling / distinct NPC from Selena; shard-specific."
+    },
+    "Moonbeam": {
+      "canonical": "月光",
+      "alternatives": [
+        "月光使者"
+      ],
+      "category": "character",
+      "notes": "Character name invoking lunar imagery.",
+      "reference_suggestion_zh": "月光",
+      "reference_note_zh": "召得的黑猫使魔之名。",
+      "translation_basis_zh": "参考词表建议「月光」。召得的黑猫使魔之名。"
+    },
+    "Murgox": {
+      "canonical": "穆尔戈克斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Monster or antagonist NPC; shard-specific."
+    },
+    "Vrendora": {
+      "canonical": "弗伦多拉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "NPC; shard-specific."
+    },
+    "Zorn": {
+      "canonical": "佐恩",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Legendary blacksmith or armorer; shard-specific."
+    },
+    "Kuldar": {
+      "canonical": "库尔达",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Dwarf NPC or location name; shard-specific."
+    },
+    "Xandru the Jedi": {
+      "canonical": "绝地武士桑德鲁",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Cross-genre Star Wars reference in shard content."
+    },
+    "Zoda the Jedi Master": {
+      "canonical": "绝地大师佐达",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Star Wars / Yoda parody character; cross-genre shard content."
+    },
+    "Jedi": {
+      "canonical": "绝地武士",
+      "alternatives": [
+        "绝地"
+      ],
+      "category": "faction",
+      "notes": "Star Wars-inspired order appearing in cross-genre shard content.",
+      "translation_basis_zh": "沿用中文玩家最熟悉的《星球大战》通行译名「绝地武士」，简写保留「绝地」作备选。"
+    },
+    "Asajj Ventress": {
+      "canonical": "阿萨吉·芬崔斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Star Wars character; appears in cross-genre shard content."
+    },
+    "Sentri the Seeker": {
+      "canonical": "寻求者·森崔",
+      "alternatives": [
+        "寻道者森崔"
+      ],
+      "category": "character",
+      "notes": "Sentri is a recurring companion in Ultima IV+; here with the 'Seeker' epithet.",
+      "reference_suggestion_zh": "寻求者·森崔",
+      "reference_note_zh": "Ultima 中曾出现的武士同名，可保留音译。",
+      "translation_basis_zh": "参考词表建议「寻求者·森崔」。Ultima 中曾出现的武士同名，可保留音译。"
+    },
+    "Satan": {
+      "canonical": "撒旦",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Appears in shard as an embodiment of ultimate evil; treat as a proper name, not a religious title."
+    },
+    "Reaper": {
+      "canonical": "收割者",
+      "alternatives": [
+        "死神"
+      ],
+      "category": "character",
+      "notes": "Grim Reaper archetype; also a specific enemy type in UO (animate evil tree)."
+    },
+    "Phoenix": {
+      "canonical": "凤凰",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Legendary reborn firebird; appears as a character or creature name in shard.",
+      "reference_suggestion_zh": "凤凰",
+      "reference_note_zh": "文中提到的强大鸟类怪物。",
+      "translation_basis_zh": "参考词表建议「凤凰」。文中提到的强大鸟类怪物。"
+    },
+    "Xavier": {
+      "canonical": "夏维尔",
+      "alternatives": [
+        "泽维尔"
+      ],
+      "category": "character",
+      "notes": "Named NPC; shard-specific.",
+      "reference_suggestion_zh": "夏维尔",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「夏维尔」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Willum": {
+      "canonical": "威勒姆",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Tendrin": {
+      "canonical": "腾德林",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Tendrin Horum": {
+      "canonical": "坦德林·霍鲁姆",
+      "alternatives": [
+        "腾德林·霍鲁姆"
+      ],
+      "category": "character",
+      "notes": "Full name of Tendrin.",
+      "reference_suggestion_zh": "坦德林·霍鲁姆",
+      "reference_note_zh": "石像鬼相关人物的常见音译风格。",
+      "translation_basis_zh": "参考词表建议「坦德林·霍鲁姆」。石像鬼相关人物的常见音译风格。"
+    },
+    "Purslos": {
+      "canonical": "普尔斯洛斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Gargoyle craftsman; references Ultima VII Pt 2 gargoyle culture."
+    },
+    "Tuxluka": {
+      "canonical": "图克斯卢卡",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Purslos's master craftsman; shard-specific."
+    },
+    "Granafla": {
+      "canonical": "格拉纳弗拉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "NPC; shard-specific."
+    },
+    "Garth": {
+      "canonical": "加斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Dreova": {
+      "canonical": "德雷欧娃",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Zuri": {
+      "canonical": "祖里",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Daran": {
+      "canonical": "达兰",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Killun": {
+      "canonical": "基伦",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific.",
+      "reference_suggestion_zh": "基伦",
+      "reference_note_zh": "文中「贫穷的【Killun】」，为普通人物名。",
+      "translation_basis_zh": "参考词表建议「基伦」。文中「贫穷的【Killun】」，为普通人物名。"
+    },
+    "Mareskon the Elf": {
+      "canonical": "精灵·马雷斯康",
+      "alternatives": [
+        "精灵马瑞斯孔"
+      ],
+      "category": "character",
+      "notes": "Elven NPC; shard-specific.",
+      "reference_suggestion_zh": "精灵·马雷斯康",
+      "reference_note_zh": "种族 + 名字。",
+      "translation_basis_zh": "参考词表建议「精灵·马雷斯康」。种族 + 名字。"
+    },
+    "Gram the Seventh": {
+      "canonical": "第七代·格拉姆",
+      "alternatives": [
+        "格拉姆七世"
+      ],
+      "category": "character",
+      "notes": "Royal lineage; shard-specific.",
+      "reference_suggestion_zh": "第七代·格拉姆",
+      "reference_note_zh": "指第七任，同族或家族称号。",
+      "translation_basis_zh": "参考词表建议「第七代·格拉姆」。指第七任，同族或家族称号。"
+    },
+    "Kylearn": {
+      "canonical": "凯利恩",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; may be related to Kylearan from Bard's Tale."
+    },
+    "Gadberry": {
+      "canonical": "盖伯利",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named NPC; shard-specific."
+    },
+    "Captain Gadberry": {
+      "canonical": "盖伯利船长",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Sea captain NPC; shard-specific."
+    },
+    "Druv the Dwarf": {
+      "canonical": "矮人德鲁夫",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Dwarf NPC; shard-specific."
+    },
+    "Magestykc": {
+      "canonical": "魔法秘群",
+      "alternatives": [
+        "奥法密会"
+      ],
+      "category": "faction",
+      "notes": "Secret mage society; the stylised spelling evokes archaic mysticism."
+    },
+    "Malek the Smith": {
+      "canonical": "铁匠马莱克",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Blacksmith NPC; shard-specific."
+    },
+    "Jarg the Blacksmith": {
+      "canonical": "铁匠·贾格",
+      "alternatives": [
+        "铁匠贾格"
+      ],
+      "category": "character",
+      "notes": "Blacksmith NPC; shard-specific.",
+      "reference_suggestion_zh": "铁匠·贾格",
+      "reference_note_zh": "普通职人，职称直译。",
+      "translation_basis_zh": "参考词表建议「铁匠·贾格」。普通职人，职称直译。"
+    },
+    "Arul Martos": {
+      "canonical": "阿鲁·马托斯",
+      "alternatives": [
+        "阿鲁尔·马托斯"
+      ],
+      "category": "character",
+      "notes": "Named NPC; shard-specific.",
+      "reference_suggestion_zh": "阿鲁·马托斯",
+      "reference_note_zh": "未给职业，纯音译。",
+      "translation_basis_zh": "参考词表建议「阿鲁·马托斯」。未给职业，纯音译。"
+    },
+    "Ataru Callis": {
+      "canonical": "阿塔鲁·卡利斯",
+      "alternatives": [
+        "阿塔鲁"
+      ],
+      "category": "character",
+      "notes": "Named NPC; shard-specific.",
+      "reference_suggestion_zh": "阿塔鲁",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「阿塔鲁·卡利斯」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Captain Feldora": {
+      "canonical": "费尔多拉船长",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Sea captain NPC; shard-specific."
+    },
+    "Frug the Explorer": {
+      "canonical": "探险家弗鲁格",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Explorer NPC; shard-specific."
+    },
+    "Ramzef the Bard": {
+      "canonical": "吟游诗人·拉姆泽夫",
+      "alternatives": [
+        "吟游诗人拉姆泽夫"
+      ],
+      "category": "character",
+      "notes": "Bard NPC; shard-specific.",
+      "reference_suggestion_zh": "吟游诗人·拉姆泽夫",
+      "reference_note_zh": "职业+姓名。",
+      "translation_basis_zh": "参考词表建议「吟游诗人·拉姆泽夫」。职业+姓名。"
+    },
+    "Grimm the Tracker": {
+      "canonical": "追踪者格里姆",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Ranger / tracker NPC; shard-specific."
+    },
+    "Cartwise the Librarian": {
+      "canonical": "图书馆员卡特怀斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Scholar NPC; shard-specific."
+    },
+    "Perdue the Magician": {
+      "canonical": "魔术师·珀杜",
+      "alternatives": [
+        "魔术师佩尔迪尤"
+      ],
+      "category": "character",
+      "notes": "Mage NPC; shard-specific.",
+      "reference_suggestion_zh": "魔术师·珀杜",
+      "reference_note_zh": "介于表演与法术之间，可用「魔术师」。",
+      "translation_basis_zh": "参考词表建议「魔术师·珀杜」。介于表演与法术之间，可用「魔术师」。"
+    },
+    "Harkan the Explorer": {
+      "canonical": "探险家·哈坎",
+      "alternatives": [
+        "探险家哈肯"
+      ],
+      "category": "character",
+      "notes": "Explorer NPC; may share name with Harkyn of Bard's Tale.",
+      "reference_suggestion_zh": "探险家·哈坎",
+      "reference_note_zh": "探索者。",
+      "translation_basis_zh": "参考词表建议「探险家·哈坎」。探索者。"
+    },
+    "Halgram the Obscure": {
+      "canonical": "晦涩的哈尔格拉姆",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Mysterious mage NPC; shard-specific."
+    },
+    "Lemka the Cloaked": {
+      "canonical": "斗篷者·莱姆卡",
+      "alternatives": [
+        "斗篷莱姆卡"
+      ],
+      "category": "character",
+      "notes": "Shadowy NPC; shard-specific.",
+      "reference_suggestion_zh": "斗篷者·莱姆卡",
+      "reference_note_zh": "the Cloaked 强调披着斗篷、隐匿身份。",
+      "translation_basis_zh": "参考词表建议「斗篷者·莱姆卡」。the Cloaked 强调披着斗篷、隐匿身份。"
+    },
+    "Gribs the High Mage": {
+      "canonical": "大法师·格里布斯",
+      "alternatives": [
+        "大法师格里布斯"
+      ],
+      "category": "character",
+      "notes": "High-ranking mage NPC; shard-specific.",
+      "reference_suggestion_zh": "大法师·格里布斯",
+      "reference_note_zh": "高阶法师，音译并加职称。",
+      "translation_basis_zh": "参考词表建议「大法师·格里布斯」。高阶法师，音译并加职称。"
+    },
+    "Suri the Bard": {
+      "canonical": "吟游诗人·苏丽",
+      "alternatives": [
+        "吟游诗人苏里"
+      ],
+      "category": "character",
+      "notes": "Bard NPC; shard-specific.",
+      "reference_suggestion_zh": "吟游诗人·苏丽",
+      "reference_note_zh": "保留吟游诗人身份。",
+      "translation_basis_zh": "参考词表建议「吟游诗人·苏丽」。保留吟游诗人身份。"
+    },
+    "Nedina the Ghastly": {
+      "canonical": "恐怖者·内迪娜",
+      "alternatives": [
+        "骇人奈迪娜"
+      ],
+      "category": "character",
+      "notes": "Necromancer or horror-themed NPC; shard-specific.",
+      "reference_suggestion_zh": "恐怖者·内迪娜",
+      "reference_note_zh": "形容词 the Ghastly 译为「恐怖者」。",
+      "translation_basis_zh": "参考词表建议「恐怖者·内迪娜」。形容词 the Ghastly 译为「恐怖者」。"
+    },
+    "Risa the Scholar": {
+      "canonical": "学者丽莎",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Scholar NPC; shard-specific."
+    },
+    "Hafar of the Red Robe": {
+      "canonical": "哈法尔",
+      "alternatives": [
+        "红袍哈法尔"
+      ],
+      "category": "character",
+      "notes": "Mage NPC distinguished by red robes.",
+      "reference_suggestion_zh": "哈法尔",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「哈法尔」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Milydor the Sage": {
+      "canonical": "贤者·米利多",
+      "alternatives": [
+        "贤者米利多尔",
+        "米利多"
+      ],
+      "category": "character",
+      "notes": "Sage NPC.",
+      "reference_suggestion_zh": "米利多",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「贤者·米利多」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Zalifar the Wizard": {
+      "canonical": "巫师·扎利法尔",
+      "alternatives": [
+        "巫师扎利法尔",
+        "扎利法尔"
+      ],
+      "category": "character",
+      "notes": "Wizard NPC.",
+      "reference_suggestion_zh": "扎利法尔",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「巫师·扎利法尔」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Miranda the Chemist": {
+      "canonical": "药剂师·米兰达",
+      "alternatives": [
+        "药剂师米兰达",
+        "米兰达"
+      ],
+      "category": "character",
+      "notes": "Alchemist / chemist NPC.",
+      "reference_suggestion_zh": "米兰达",
+      "reference_note_zh": "参考词表按音译人名处理；如有职称，则配合身份词一并翻译。",
+      "translation_basis_zh": "参考词表建议「药剂师·米兰达」。参考词表按音译人名处理；如有职称，则配合身份词一并翻译。"
+    },
+    "Zanthura of the Coin": {
+      "canonical": "金币赞图拉",
+      "alternatives": [
+        "赞图拉"
+      ],
+      "category": "character",
+      "notes": "Merchant or rogue NPC focused on coin."
+    },
+    "Vragan the Mixologist": {
+      "canonical": "调合师·弗拉甘",
+      "alternatives": [
+        "调药师弗拉干"
+      ],
+      "category": "character",
+      "notes": "Potion-maker NPC.",
+      "reference_suggestion_zh": "调合师·弗拉甘",
+      "reference_note_zh": "专精药剂调配。",
+      "translation_basis_zh": "参考词表建议「调合师·弗拉甘」。专精药剂调配。"
+    },
+    "Darun the Priest": {
+      "canonical": "祭司·达伦",
+      "alternatives": [
+        "祭司达伦"
+      ],
+      "category": "character",
+      "notes": "Priest NPC.",
+      "reference_suggestion_zh": "祭司·达伦",
+      "reference_note_zh": "神职者。",
+      "translation_basis_zh": "参考词表建议「祭司·达伦」。神职者。"
+    },
+    "Curan the Fighter": {
+      "canonical": "战士库兰",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Fighter NPC."
+    },
+    "Jaxina the Wise": {
+      "canonical": "智者·贾希娜",
+      "alternatives": [
+        "智者贾克西娜"
+      ],
+      "category": "character",
+      "notes": "Wise elder NPC.",
+      "reference_suggestion_zh": "智者·贾希娜",
+      "reference_note_zh": "the Wise 直译为「智者」。",
+      "translation_basis_zh": "参考词表建议「智者·贾希娜」。the Wise 直译为「智者」。"
+    },
+    "Dedric the Knight": {
+      "canonical": "骑士·德德里克",
+      "alternatives": [
+        "骑士戴德里克"
+      ],
+      "category": "character",
+      "notes": "Knight NPC.",
+      "reference_suggestion_zh": "骑士·德德里克",
+      "reference_note_zh": "具有骑士身份的 NPC。",
+      "translation_basis_zh": "参考词表建议「骑士·德德里克」。具有骑士身份的 NPC。"
+    },
+    "Vara the Explorer": {
+      "canonical": "探险家瓦拉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Explorer NPC."
+    },
+    "Vanesa the Sorcereress": {
+      "canonical": "女巫师·瓦妮莎",
+      "alternatives": [
+        "女巫瓦内萨"
+      ],
+      "category": "character",
+      "notes": "Sorceress NPC. Note: original English has a typo ('Sorcereress').",
+      "reference_suggestion_zh": "女巫师·瓦妮莎",
+      "reference_note_zh": "Sorcereress = 女性奥术施法者。",
+      "translation_basis_zh": "参考词表建议「女巫师·瓦妮莎」。Sorcereress = 女性奥术施法者。"
+    },
+    "Seryl the Assassin": {
+      "canonical": "刺客·塞里尔",
+      "alternatives": [
+        "刺客塞里尔"
+      ],
+      "category": "character",
+      "notes": "Assassin NPC.",
+      "reference_suggestion_zh": "刺客·塞里尔",
+      "reference_note_zh": "职业直译。",
+      "translation_basis_zh": "参考词表建议「刺客·塞里尔」。职业直译。"
+    },
+    "Quicksword Enilno": {
+      "canonical": "快剑·埃尼尔诺",
+      "alternatives": [
+        "快剑埃尼尔诺"
+      ],
+      "category": "character",
+      "notes": "Legendary swordsman from Ultima II. 'Enilno' is 'online' spelled backwards — an Easter egg by Richard Garriott.",
+      "reference_suggestion_zh": "快剑·埃尼尔诺",
+      "reference_note_zh": "惟一能杀死 Minax 的武器。",
+      "translation_basis_zh": "参考词表建议「快剑·埃尼尔诺」。惟一能杀死 Minax 的武器。"
+    },
+    "Jacen": {
+      "canonical": "贾森",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Star Wars: Jacen Solo; cross-genre shard content."
+    },
+    "_SECTION_FACTIONS": "── Factions / Organizations ────────────────────────────────",
+    "Fellowship": {
+      "canonical": "卫道士团",
+      "alternatives": [
+        "护法团",
+        "友好人士团"
+      ],
+      "category": "faction",
+      "notes": "Sinister cult organisation from Ultima VII: The Black Gate; appears virtuous but secretly serves the Guardian."
+    },
+    "Shadowlords": {
+      "canonical": "暗影领主",
+      "alternatives": [
+        "暗魂三主",
+        "影君"
+      ],
+      "category": "faction",
+      "notes": "Three dark entities in Ultima V formed from shards of the Gem of Immortality; embodiments of Hatred, Falsehood, and Cowardice.",
+      "reference_suggestion_zh": "影君 / 暗影领主",
+      "reference_note_zh": "源自宝石碎片的三大邪灵，常见译名为「暗影领主」。",
+      "translation_basis_zh": "参考词表建议「暗影领主」。源自宝石碎片的三大邪灵，常见译名为「暗影领主」。"
+    },
+    "Council of Mages": {
+      "canonical": "法师委员会",
+      "alternatives": [
+        "法师议会"
+      ],
+      "category": "faction",
+      "notes": "Governing body of mages in Britannia."
+    },
+    "Thieves' Guild": {
+      "canonical": "盗贼公会",
+      "alternatives": [],
+      "category": "faction",
+      "notes": "Criminal guild operating in the shadows of Britannia."
+    },
+    "Merchants Guild": {
+      "canonical": "商人行会",
+      "alternatives": [
+        "商人公会"
+      ],
+      "category": "faction",
+      "notes": "Trade organisation; controls commerce in key cities."
+    },
+    "Rangers of Lodoria": {
+      "canonical": "洛多利亚游侠队",
+      "alternatives": [
+        "洛多游侠"
+      ],
+      "category": "faction",
+      "notes": "Elite elven rangers defending Lodoria."
+    },
+    "Blood Cult": {
+      "canonical": "血祭教团",
+      "alternatives": [
+        "血神教",
+        "血灵教"
+      ],
+      "category": "faction",
+      "notes": "Cult worshipping the Blood Goddess; shard-specific.",
+      "reference_suggestion_zh": "血祭教团",
+      "reference_note_zh": "以血祭为信仰的邪教。",
+      "translation_basis_zh": "参考词表建议「血祭教团」。以血祭为信仰的邪教。"
+    },
+    "Syth": {
+      "canonical": "赛斯",
+      "alternatives": [],
+      "category": "faction",
+      "notes": "Star Wars Sith parody; dark-side force users in cross-genre shard content. ★ auto-gen overlap."
+    },
+    "Skulls and Shackles": {
+      "canonical": "骷髅与枷锁",
+      "alternatives": [],
+      "category": "faction",
+      "notes": "Pirate faction or campaign; references the Pathfinder AP of the same name."
+    },
+    "Lost Tribe of Sosaria": {
+      "canonical": "索萨里亚失落部族",
+      "alternatives": [],
+      "category": "faction",
+      "notes": "Ancient people displaced by the destruction of Sosaria."
+    },
+    "Altar of Golden Rangers": {
+      "canonical": "金色游侠祭坛",
+      "alternatives": [
+        "黄金游侠祭坛"
+      ],
+      "category": "item",
+      "notes": "Sacred site / artefact of the ranger order.",
+      "reference_suggestion_zh": "金色游侠祭坛",
+      "reference_note_zh": "用金羽祝福装备的祭坛。",
+      "translation_basis_zh": "参考词表建议「金色游侠祭坛」。用金羽祝福装备的祭坛。"
+    },
+    "_SECTION_DEITIES": "── Deities / Supernatural Entities ────────────────────────",
+    "Astaroth": {
+      "canonical": "阿斯塔罗斯",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Shadowlord of Hatred (Ultima V); formed from a shard of the Gem of Immortality.",
+      "reference_suggestion_zh": "阿斯塔罗斯",
+      "reference_note_zh": "憎恨之影君。沿用魔鬼传统译名。",
+      "translation_basis_zh": "参考词表建议「阿斯塔罗斯」。憎恨之影君。沿用魔鬼传统译名。"
+    },
+    "Faulinei": {
+      "canonical": "法乌利奈",
+      "alternatives": [
+        "福莱内伊"
+      ],
+      "category": "deity",
+      "notes": "Shadowlord of Falsehood (Ultima V).",
+      "reference_suggestion_zh": "法乌利奈",
+      "reference_note_zh": "虚伪之影君，采用音译。",
+      "translation_basis_zh": "参考词表建议「法乌利奈」。虚伪之影君，采用音译。"
+    },
+    "Nosfentor": {
+      "canonical": "诺斯范托",
+      "alternatives": [
+        "诺斯芬托"
+      ],
+      "category": "deity",
+      "notes": "Shadowlord of Cowardice (Ultima V).",
+      "reference_suggestion_zh": "诺斯范托",
+      "reference_note_zh": "怯懦之影君，同样音译。",
+      "translation_basis_zh": "参考词表建议「诺斯范托」。怯懦之影君，同样音译。"
+    },
+    "Shadowlord": {
+      "canonical": "暗影领主",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Singular form; one of the three dark entities from Ultima V.",
+      "translation_basis_zh": "为与 Shadowlords 的参考译法保持一致，单数形式统一为「暗影领主」。"
+    },
+    "Lithos": {
+      "canonical": "利托斯",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Titan of Earth (Ultima VIII: Pagan); imprisoned beneath the earth."
+    },
+    "Hydros": {
+      "canonical": "海德罗斯",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Titan of Water (Ultima VIII: Pagan); lord of the ocean depths."
+    },
+    "Pyros": {
+      "canonical": "皮罗斯",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Titan of Fire (Ultima VIII: Pagan); daemon overlord of Pagan."
+    },
+    "Stratos": {
+      "canonical": "斯特拉托斯",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Titan of Air (Ultima VIII: Pagan); rules the storms and sky."
+    },
+    "Great Earth Serpent": {
+      "canonical": "大地巨蛇",
+      "alternatives": [],
+      "category": "deity",
+      "notes": "Cosmic serpent of Balance in Ultima V / Serpent Isle cosmology."
+    },
+    "Blood Goddess": {
+      "canonical": "血神",
+      "alternatives": [
+        "血液女神"
+      ],
+      "category": "deity",
+      "notes": "Deity worshipped by the Blood Cult; shard-specific."
+    },
+    "Slasher of Veils": {
+      "canonical": "裂幕者",
+      "alternatives": [
+        "撕幕之刃",
+        "破幕者"
+      ],
+      "category": "deity",
+      "notes": "Cosmic horror entity from Ultima IX: Ascension; attempts to tear through the barriers between worlds.",
+      "reference_suggestion_zh": "裂幕者",
+      "reference_note_zh": "杀死 Almric 的怪物，也是 Underworld 关键 BOSS。",
+      "translation_basis_zh": "参考词表建议「裂幕者」。杀死 Almric 的怪物，也是 Underworld 关键 BOSS。"
+    },
+    "Devil Lord": {
+      "canonical": "魔王",
+      "alternatives": [
+        "恶魔领主"
+      ],
+      "category": "deity",
+      "notes": "Infernal ruler; shard-specific title."
+    },
+    "Bane of Insanity": {
+      "canonical": "狂乱祸灵",
+      "alternatives": [
+        "疯狂祸根",
+        "癫狂之祸"
+      ],
+      "category": "deity",
+      "notes": "One of the Chaos Banes from Ultima VII Pt 2; imprisoned in a champion.",
+      "reference_suggestion_zh": "狂乱祸灵",
+      "reference_note_zh": "附身使人疯狂。",
+      "translation_basis_zh": "参考词表建议「狂乱祸灵」。此译法比「疯狂祸根」更符合附身邪灵的语义场，也与 Chaos Banes 的总体译法保持一致。"
+    },
+    "Bane of Anarchy": {
+      "canonical": "无序祸灵",
+      "alternatives": [
+        "无政府祸根",
+        "混乱之祸"
+      ],
+      "category": "deity",
+      "notes": "One of the Chaos Banes from Ultima VII Pt 2.",
+      "reference_suggestion_zh": "无序祸灵",
+      "reference_note_zh": "代表混乱与无法无天。",
+      "translation_basis_zh": "参考词表建议「无序祸灵」。采用该译名以与「混沌祸灵」系统保持一致，同时避免「无政府」在现代汉语中的政治联想过强。"
+    },
+    "Bane of Wantoness": {
+      "canonical": "放纵祸灵",
+      "alternatives": [
+        "淫乱祸根",
+        "肆意之祸"
+      ],
+      "category": "deity",
+      "notes": "One of the Chaos Banes from Ultima VII Pt 2. 'Wantonness' refers to moral abandonment.",
+      "reference_suggestion_zh": "放纵祸灵",
+      "reference_note_zh": "代表放肆与欲望。",
+      "translation_basis_zh": "参考词表建议「放纵祸灵」。相较此前的「淫乱祸根」，新译更符合原词 wantonness 的语义范围，也更适合书面叙事。"
+    },
+    "Chaos Banes": {
+      "canonical": "混沌祸灵",
+      "alternatives": [
+        "混沌祸根"
+      ],
+      "category": "deity",
+      "notes": "The three Chaos Banes collectively; released in Ultima VII Pt 2: Serpent Isle.",
+      "reference_suggestion_zh": "混沌祸灵",
+      "reference_note_zh": "混沌化身的三个 Bane。",
+      "translation_basis_zh": "参考词表采用「混沌祸灵」，相较此前「混沌祸根」更能体现其作为附身邪灵 / 化身的设定，因此改用「祸灵」系译法，并同步统一 Banes / Bane 相关词条。"
+    },
+    "Banes": {
+      "canonical": "祸灵",
+      "alternatives": [
+        "祸根"
+      ],
+      "category": "deity",
+      "notes": "Short plural form of the Chaos Banes.",
+      "translation_basis_zh": "为与参考词表中的「混沌祸灵」及各个 Bane 词条保持一致，复数 / 单数统称统一译为「祸灵」。"
+    },
+    "Bane": {
+      "canonical": "祸灵",
+      "alternatives": [
+        "祸根"
+      ],
+      "category": "deity",
+      "notes": "Singular form.",
+      "translation_basis_zh": "为与参考词表中的「混沌祸灵」及各个 Bane 词条保持一致，复数 / 单数统称统一译为「祸灵」。"
+    },
+    "_SECTION_RACES": "── Races / Species ─────────────────────────────────────────",
+    "Ophidian": {
+      "canonical": "奥菲迪亚人",
+      "alternatives": [
+        "蛇裔",
+        "蛇族"
+      ],
+      "category": "race",
+      "notes": "Ancient serpent-people civilisation from Ultima VII Pt 2: Serpent Isle; split into Order and Chaos factions."
+    },
+    "Drow": {
+      "canonical": "卓尔精灵",
+      "alternatives": [
+        "地精灵",
+        "黑暗精灵"
+      ],
+      "category": "race",
+      "notes": "Dark elves from D&D; appear in shard cross-genre content.",
+      "reference_suggestion_zh": "卓尔精灵",
+      "reference_note_zh": "通常译为「卓尔」或「暗精灵」，为避免与一般黑暗精灵混淆，建议「卓尔精灵」。",
+      "translation_basis_zh": "参考词表建议「卓尔精灵」。通常译为「卓尔」或「暗精灵」，为避免与一般黑暗精灵混淆，建议「卓尔精灵」。"
+    },
+    "Zealan": {
+      "canonical": "泽兰人",
+      "alternatives": [],
+      "category": "race",
+      "notes": "Ancient civilisation from Ultima Underworld 2; spirits bound in the Obsidian Fortress.",
+      "reference_suggestion_zh": "泽兰人",
+      "reference_note_zh": "信奉旧神的古老民族，可直译为「泽兰人」。",
+      "translation_basis_zh": "参考词表建议「泽兰人」。信奉旧神的古老民族，可直译为「泽兰人」。"
+    },
+    "Orks": {
+      "canonical": "奥克斯人",
+      "alternatives": [
+        "兽人"
+      ],
+      "category": "race",
+      "notes": "Shard spelling for orcs; may denote a more civilised or distinct sub-species than common fantasy orcs."
+    },
+    "_SECTION_ITEMS": "── Items / Artefacts ────────────────────────────────────────",
+    "Codex of Ultimate Wisdom": {
+      "canonical": "终极智慧法典",
+      "alternatives": [
+        "至上智慧法典",
+        "法典"
+      ],
+      "category": "item",
+      "notes": "The sacred Codex in the Great Stygian Abyss; goal of the Avatar's quest in Ultima IV.",
+      "reference_suggestion_zh": "终极智慧法典",
+      "reference_note_zh": "Ultima 关键圣物。",
+      "translation_basis_zh": "参考词表建议「终极智慧法典」。Ultima 关键圣物。"
+    },
+    "laser sword": {
+      "canonical": "光剑",
+      "alternatives": [
+        "激光剑"
+      ],
+      "category": "item",
+      "notes": "Star Wars-inspired weapon in shard crossover content.",
+      "translation_basis_zh": "在中文语境中，Star Wars 相关武器几乎固定译为「光剑」；保留字面直译「激光剑」作备选。"
+    },
+    "Void Crystal": {
+      "canonical": "虚空水晶",
+      "alternatives": [
+        "虚空结晶"
+      ],
+      "category": "item",
+      "notes": "Shard-specific coloured crystal tied to void-themed quest progression.",
+      "translation_basis_zh": "结合该物件在任务中的颜色变体与水晶质感，采用「虚空水晶」为首选，更贴合玩家直觉。"
+    },
+    "Vortex Cube": {
+      "canonical": "漩涡立方体",
+      "alternatives": [
+        "涡旋立方体"
+      ],
+      "category": "item",
+      "notes": "Shard-specific magical cube used in Codex-related progression.",
+      "translation_basis_zh": "根据现有中文文本用法与物件外形，采用「漩涡立方体」；保留「涡旋立方体」作近义备选。"
+    },
+    "Treasure Chest": {
+      "canonical": "宝箱",
+      "alternatives": [
+        "藏宝箱"
+      ],
+      "category": "item",
+      "notes": "Generic treasure container label.",
+      "translation_basis_zh": "常规游戏 UI 用语，采用最常见的「宝箱」。"
+    },
+    "Skull Gate": {
+      "canonical": "骷髅门",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Named magical gate / mechanism in shard quest content.",
+      "translation_basis_zh": "按名称直译为「骷髅门」，既保留意象，也符合中文奇幻物件命名。"
+    },
+    "Serpent Pillars": {
+      "canonical": "巨蛇石柱",
+      "alternatives": [
+        "蛇柱"
+      ],
+      "category": "item",
+      "notes": "Serpent-themed pillar landmark / mechanism in shard quest content.",
+      "translation_basis_zh": "参考现有「巨蛇岛」译名体系，采用「巨蛇石柱」以保持意象统一。"
+    },
+    "Gem of Immortality": {
+      "canonical": "不朽宝石",
+      "alternatives": [
+        "永生宝石"
+      ],
+      "category": "item",
+      "notes": "Created by Mondain to make himself immortal; its destruction shattered Sosaria into mirror worlds.",
+      "reference_suggestion_zh": "不朽宝石",
+      "reference_note_zh": "莫丹的不死之源。",
+      "translation_basis_zh": "参考词表建议「不朽宝石」。莫丹的不死之源。"
+    },
+    "Book of Truth": {
+      "canonical": "真理之书",
+      "alternatives": [],
+      "category": "item",
+      "notes": "One of three items needed to destroy the Shadowlords in Ultima V.",
+      "reference_suggestion_zh": "真理之书",
+      "reference_note_zh": "三圣器之一，对应「真理」。",
+      "translation_basis_zh": "参考词表建议「真理之书」。三圣器之一，对应「真理」。"
+    },
+    "Candle of Love": {
+      "canonical": "爱之蜡烛",
+      "alternatives": [
+        "爱之烛",
+        "爱烛",
+        "之爱蜡烛"
+      ],
+      "category": "item",
+      "notes": "One of three items needed to destroy the Shadowlords in Ultima V.",
+      "reference_suggestion_zh": "之爱蜡烛 / 爱之蜡烛",
+      "reference_note_zh": "三圣器之一，对应德行「爱」。",
+      "translation_basis_zh": "参考词表建议「爱之蜡烛」。三圣器之一，对应德行「爱」。"
+    },
+    "Bell of Courage": {
+      "canonical": "勇气之钟",
+      "alternatives": [],
+      "category": "item",
+      "notes": "One of three items needed to destroy the Shadowlords in Ultima V.",
+      "reference_suggestion_zh": "勇气之钟",
+      "reference_note_zh": "三圣器之一，对应「勇气」。",
+      "translation_basis_zh": "参考词表建议「勇气之钟」。三圣器之一，对应「勇气」。"
+    },
+    "Book of the Dead": {
+      "canonical": "亡者之书",
+      "alternatives": [
+        "死者之书"
+      ],
+      "category": "item",
+      "notes": "Necromantic tome; unlocks the secrets of Necromancy.",
+      "reference_suggestion_zh": "亡者之书",
+      "reference_note_zh": "死灵法师追寻的黑暗典籍。",
+      "translation_basis_zh": "参考词表建议「亡者之书」。死灵法师追寻的黑暗典籍。"
+    },
+    "Orb of the Abyss": {
+      "canonical": "深渊之珠",
+      "alternatives": [
+        "深渊法球",
+        "深渊宝珠"
+      ],
+      "category": "item",
+      "notes": "Artefact bound to the Great Stygian Abyss.",
+      "reference_suggestion_zh": "深渊之珠",
+      "reference_note_zh": "让人在 Underworld 施法的宝珠。",
+      "translation_basis_zh": "参考词表建议「深渊之珠」。让人在 Underworld 施法的宝珠。"
+    },
+    "The Orb of the Abyss": {
+      "canonical": "深渊之珠",
+      "alternatives": [
+        "深渊法球"
+      ],
+      "category": "item",
+      "notes": "Definite-article form; same as Orb of the Abyss.",
+      "reference_suggestion_zh": "深渊之珠",
+      "reference_note_zh": "让人在 Underworld 施法的宝珠。",
+      "translation_basis_zh": "参考词表建议「深渊之珠」。让人在 Underworld 施法的宝珠。"
+    },
+    "The Staff of Ultimate Power": {
+      "canonical": "终极之力权杖",
+      "alternatives": [
+        "终极力量权杖"
+      ],
+      "category": "item",
+      "notes": "Definite-article form; same as Staff of Ultimate Power.",
+      "reference_suggestion_zh": "终极之力权杖",
+      "reference_note_zh": "被诸神打碎交由守护者看管。",
+      "translation_basis_zh": "参考词表建议「终极之力权杖」。被诸神打碎交由守护者看管。"
+    },
+    "Orb of Logic": {
+      "canonical": "理性之珠",
+      "alternatives": [
+        "逻辑法球",
+        "理性宝珠"
+      ],
+      "category": "item",
+      "notes": "Artefact representing pure rational thought.",
+      "reference_suggestion_zh": "理性之珠",
+      "reference_note_zh": "对付 Bane of Insanity 所需之物。",
+      "translation_basis_zh": "参考词表建议「理性之珠」。对付 Bane of Insanity 所需之物。"
+    },
+    "Forge of Virtue": {
+      "canonical": "美德熔炉",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Magical forge on the Isle of Fire; from the Ultima VII LBE expansion."
+    },
+    "Obelisk Tip": {
+      "canonical": "方尖碑顶石",
+      "alternatives": [
+        "黑石碑尖"
+      ],
+      "category": "item",
+      "notes": "Fragment of the Obelisk; key quest item in Ultima VIII: Pagan."
+    },
+    "Staff of Ultimate Power": {
+      "canonical": "终极之力权杖",
+      "alternatives": [
+        "终极力量权杖"
+      ],
+      "category": "item",
+      "notes": "Legendary staff of supreme magical power.",
+      "translation_basis_zh": "为与参考词表中的 The Staff of Ultimate Power 保持一致，去冠词形式统一译为「终极之力权杖」。"
+    },
+    "Scales of Ethicality": {
+      "canonical": "伦理天秤",
+      "alternatives": [
+        "道德天平",
+        "道德量尺"
+      ],
+      "category": "item",
+      "notes": "Symbolic scales judging ethical conduct.",
+      "reference_suggestion_zh": "伦理天秤",
+      "reference_note_zh": "对付 Bane of Anarchy 所需。",
+      "translation_basis_zh": "参考词表建议「伦理天秤」。对付 Bane of Anarchy 所需。"
+    },
+    "Lantern of Discipline": {
+      "canonical": "纪律之灯",
+      "alternatives": [
+        "戒律提灯",
+        "守律之灯"
+      ],
+      "category": "item",
+      "notes": "Lantern symbolising order and discipline.",
+      "reference_suggestion_zh": "纪律之灯",
+      "reference_note_zh": "对付 Bane of Wantoness 所需。",
+      "translation_basis_zh": "参考词表建议「纪律之灯」。对付 Bane of Wantoness 所需。"
+    },
+    "Caddellite": {
+      "canonical": "卡德莱石",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Blue meteorite ore used in UO: High Seas; forms exceptionally hard armour."
+    },
+    "blackrock": {
+      "canonical": "黑岩",
+      "alternatives": [
+        "黑石",
+        "黑岩矿",
+        "玄岩"
+      ],
+      "category": "item",
+      "notes": "Corrupted stone from the shattered Obelisk in Ultima V; conducts dark magical energy.",
+      "reference_suggestion_zh": "玄岩 / 黑岩",
+      "reference_note_zh": "U7 以后常译作「黑岩」。文中有「blackrock 蛇」。",
+      "translation_basis_zh": "参考词表指出 Ultima VII 以后 blackrock 常译作「黑岩」。相较本项目此前的「黑石」，「黑岩」更贴近中文玩家既有认知，因此采用「黑岩」为首选。"
+    },
+    "avarnium": {
+      "canonical": "阿瓦尼姆水晶",
+      "alternatives": [
+        "阿伐尼水晶"
+      ],
+      "category": "item",
+      "notes": "Crystal shards used to trap or bind demons; shard-specific material.",
+      "translation_basis_zh": "为与参考词表中的 Avarnium 保持一致，大小写变体统一译为「阿瓦尼姆水晶」。"
+    },
+    "Avarnium": {
+      "canonical": "阿瓦尼姆水晶",
+      "alternatives": [
+        "阿伐尼水晶"
+      ],
+      "category": "item",
+      "notes": "Capitalized form; same as avarnium.",
+      "reference_suggestion_zh": "阿瓦尼姆水晶",
+      "reference_note_zh": "囚禁恶魔的特殊水晶碎片。",
+      "translation_basis_zh": "参考词表建议「阿瓦尼姆水晶」。囚禁恶魔的特殊水晶碎片。"
+    },
+    "holocron": {
+      "canonical": "智慧圆球",
+      "alternatives": [
+        "宝典晶球"
+      ],
+      "category": "item",
+      "notes": "Star Wars: Force-user knowledge repository; appears in cross-genre shard content."
+    },
+    "datacron": {
+      "canonical": "数据晶石",
+      "alternatives": [
+        "数据记录仪"
+      ],
+      "category": "item",
+      "notes": "SWTOR-style lore crystal; appears in cross-genre shard content."
+    },
+    "Force Field Ring": {
+      "canonical": "力场之戒",
+      "alternatives": [
+        "力场戒指"
+      ],
+      "category": "item",
+      "notes": "Magical ring generating a protective force field; from Ultima II.",
+      "reference_suggestion_zh": "力场之戒",
+      "reference_note_zh": "保护持有者免受 Minax 魔法。",
+      "translation_basis_zh": "参考词表建议「力场之戒」。保护持有者免受 Minax 魔法。"
+    },
+    "Heart of Earth": {
+      "canonical": "大地之心",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Elemental core of the earth; key artefact in Pagan / elemental magic lore.",
+      "reference_suggestion_zh": "大地之心",
+      "reference_note_zh": "与地之泰坦 Lithos 相连的黑曜碎片。",
+      "translation_basis_zh": "参考词表建议「大地之心」。与地之泰坦 Lithos 相连的黑曜碎片。"
+    },
+    "Tear of the Seas": {
+      "canonical": "海之泪",
+      "alternatives": [
+        "海洋之泪"
+      ],
+      "category": "item",
+      "notes": "Elemental essence of water.",
+      "reference_suggestion_zh": "海之泪",
+      "reference_note_zh": "与水之泰坦 Hydros 相连的碎片。",
+      "translation_basis_zh": "参考词表建议「海之泪」。与水之泰坦 Hydros 相连的碎片。"
+    },
+    "Breath of Air": {
+      "canonical": "风之息",
+      "alternatives": [
+        "气息之风",
+        "空气之息"
+      ],
+      "category": "item",
+      "notes": "Elemental essence of air.",
+      "reference_suggestion_zh": "风之息",
+      "reference_note_zh": "与气之泰坦 Stratos 相连的碎片。",
+      "translation_basis_zh": "参考词表建议「风之息」。与气之泰坦 Stratos 相连的碎片。"
+    },
+    "Voided Death": {
+      "canonical": "虚空之死",
+      "alternatives": [
+        "虚空死咒",
+        "虚无死结"
+      ],
+      "category": "concept",
+      "notes": "Mangar's ultimate spell; sweeps victims into the Void.",
+      "reference_suggestion_zh": "虚无死结 / 虚空之死",
+      "reference_note_zh": "Mangar 用以封锁 Skara Brae 的魔法。",
+      "translation_basis_zh": "参考词表建议「虚空之死」。Mangar 用以封锁 Skara Brae 的魔法。"
+    },
+    "Blue Wave": {
+      "canonical": "蓝波号",
+      "alternatives": [
+        "蓝波",
+        "蓝涛"
+      ],
+      "category": "item",
+      "notes": "May refer to a tavern, ship, or magical effect; context-dependent.",
+      "reference_suggestion_zh": "「蓝波号」",
+      "reference_note_zh": "商船名，可加号字样。",
+      "translation_basis_zh": "参考词表建议「蓝波号」。商船名，可加号字样。"
+    },
+    "The Ararat": {
+      "canonical": "亚拉拉特号",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Ship name referencing Mount Ararat / Noah's Ark; shard-specific vessel."
+    },
+    "Shoppe": {
+      "canonical": "专柜",
+      "alternatives": [
+        "工坊"
+      ],
+      "category": "concept",
+      "notes": "In-game craft shop system; archaic spelling is intentional flavour. Translate as 专柜 to distinguish from generic 商店."
+    },
+    "_SECTION_CONCEPTS": "── Concepts / Events / Works ────────────────────────────────",
+    "The Fall of Mondain": {
+      "canonical": "蒙丹的覆灭",
+      "alternatives": [
+        "莫丹的覆灭"
+      ],
+      "category": "concept",
+      "notes": "Historical event / book title describing Mondain's defeat by the Stranger.",
+      "reference_suggestion_zh": "莫丹的覆灭",
+      "reference_note_zh": "记述莫丹败亡的史书。",
+      "translation_basis_zh": "参考词表建议「蒙丹的覆灭」。记述莫丹败亡的史书。"
+    },
+    "Time Doors": {
+      "canonical": "时之门",
+      "alternatives": [
+        "时间之门"
+      ],
+      "category": "concept",
+      "notes": "Time gates used in Ultima II to travel between eras.",
+      "reference_suggestion_zh": "时之门",
+      "reference_note_zh": "能穿越时间的门。",
+      "translation_basis_zh": "参考词表建议「时之门」。能穿越时间的门。"
+    },
+    "The Bard's Tale": {
+      "canonical": "吟游诗人的传说",
+      "alternatives": [
+        "吟游诗人传说"
+      ],
+      "category": "concept",
+      "notes": "Classic CRPG series (1985–88); referenced as in-world lore in this shard."
+    },
+    "Dungeon Clues": {
+      "canonical": "地下城线索",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "Quest-system category; denotes dungeon exploration clue items."
+    },
+    "Earth": {
+      "canonical": "地球",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "The real world / origin world; used when referencing the player's world of origin in Ultima lore."
+    },
+    "Chaos": {
+      "canonical": "混沌",
+      "alternatives": [
+        "混乱"
+      ],
+      "category": "concept",
+      "notes": "One of the two opposing cosmic forces (Order vs Chaos) in the Serpent Isle / Ophidian cosmology. ★ auto-gen overlap."
+    },
+    "Death Dealing": {
+      "canonical": "夺命之击",
+      "alternatives": [
+        "死亡施予",
+        "致命馈赠"
+      ],
+      "category": "concept",
+      "notes": "Destructive ability or title; shard-specific.",
+      "reference_suggestion_zh": "夺命之击 / 致命馈赠",
+      "reference_note_zh": "多为书名或能力名，按语境可选「夺命之击」。",
+      "translation_basis_zh": "参考词表建议「夺命之击」。多为书名或能力名，按语境可选「夺命之击」。"
+    },
+    "Tomb of Durmas": {
+      "canonical": "杜尔马斯家族墓地",
+      "alternatives": [
+        "杜马斯之墓"
+      ],
+      "category": "concept",
+      "notes": "Named tomb associated with King Durmas IV.",
+      "reference_suggestion_zh": "杜尔马斯家族墓地",
+      "reference_note_zh": "King Durmas IV 家族墓穴。",
+      "translation_basis_zh": "参考词表建议「杜尔马斯家族墓地」。King Durmas IV 家族墓穴。"
+    },
+    "Tomb of Kas": {
+      "canonical": "卡斯之墓",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "Named tomb associated with Kas.",
+      "reference_suggestion_zh": "卡斯之墓",
+      "reference_note_zh": "死亡骑士 Kas 的陵墓。",
+      "translation_basis_zh": "参考词表建议「卡斯之墓」。死亡骑士 Kas 的陵墓。"
+    },
+    "Fires of Hell": {
+      "canonical": "地狱烈焰之域",
+      "alternatives": [
+        "地狱之火"
+      ],
+      "category": "concept",
+      "notes": "Named infernal site in shard-specific lore.",
+      "reference_suggestion_zh": "地狱烈焰之域",
+      "reference_note_zh": "用于安葬 Malak 的地狱场所。",
+      "translation_basis_zh": "参考词表建议「地狱烈焰之域」。用于安葬 Malak 的地狱场所。"
+    },
+    "Neptune": {
+      "canonical": "尼普顿",
+      "alternatives": [
+        "海神尼普顿"
+      ],
+      "category": "deity",
+      "notes": "Sea god reference used as a proper name."
+    },
+    "daemon": {
+      "canonical": "恶魔",
+      "alternatives": [],
+      "category": "race",
+      "notes": "Lowercase in source, but used as a lore creature name / species."
+    },
+    "Tarjan": {
+      "canonical": "塔尔詹",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Unique Pagan-era figure and statue/boss name used by shard scripts.",
+      "translation_basis_zh": "根据源码中的 Tarjan.cs、TarjanStatue 等上下文判断，这是具名角色 / 邪神名。中文采用偏奇幻专名常见的音译「塔尔詹」，便于与通用词区分。"
+    },
+    "Vulcrum": {
+      "canonical": "伏尔克鲁姆",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named guardian tied to a vault/chest in shard quest content.",
+      "translation_basis_zh": "该词为自定义守卫者 / Boss 专名，并无稳定现成汉译；采用完整音译「伏尔克鲁姆」，与其宝库相关文本保持一致。"
+    },
+    "Surtaz": {
+      "canonical": "瑟塔兹",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named guardian tied to a vault/chest in shard quest content.",
+      "translation_basis_zh": "该词为自定义守卫者 / Boss 专名，采用中文奇幻文本更自然的音译「瑟塔兹」，避免保留英文破坏沉浸感。"
+    },
+    "Arachnar": {
+      "canonical": "阿拉克纳",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named spider guardian tied to a vault/chest in shard quest content.",
+      "translation_basis_zh": "词形明显带有 arachn-（蛛形）语感，但在游戏中已是固有名。采用音译「阿拉克纳」，既保留专名感，也贴近奇幻命名习惯。"
+    },
+    "Vordinax": {
+      "canonical": "沃尔迪纳克斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Named guardian tied to a vault/chest in shard quest content.",
+      "translation_basis_zh": "该名称为具名守卫 / Boss，采用完整音译「沃尔迪纳克斯」，与游戏内宝库文本对应。"
+    },
+    "Gygax": {
+      "canonical": "盖加克斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Reference-style proper name used for a statue item/quest object.",
+      "translation_basis_zh": "参考桌游 / 奇幻圈对 Gygax 的常见音译，采用「盖加克斯」。用于雕像名时辨识度较高。"
+    },
+    "Chamber of Virtue": {
+      "canonical": "美德之室",
+      "alternatives": [
+        "美德密室"
+      ],
+      "category": "place",
+      "notes": "Sacred chamber associated with cleansing the runes of virtue.",
+      "translation_basis_zh": "结合源码上下文，这是与美德符文净化相关的神圣地点。采用「美德之室」以保持庄重感，并与 Chamber of Corruption 等命名结构一致。"
+    },
+    "Ether": {
+      "canonical": "以太",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "Used in shard quest/title text such as Titan of Ether.",
+      "translation_basis_zh": "结合 Titan of Ether、ObeliskTip 等文本，此词表示超越四元素的第五种力量 / 属性。中文奇幻语境下以「以太」最自然，也与玩家习惯一致。"
+    },
+    "Sherry": {
+      "canonical": "雪莉",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Sherry the Mouse, a recurring Ultima reference character.",
+      "translation_basis_zh": "Sherry the Mouse 属于 Ultima 系列可识别角色名。中文采用常见人名音译「雪莉」，再由正文补足“老鼠”身份。"
+    },
+    "Zoda": {
+      "canonical": "佐达",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Star Wars parody Jedi master in shard-specific content.",
+      "translation_basis_zh": "作为 shard 内部的绝地大师专名，采用简洁自然的音译「佐达」，以贴近中文玩家对类 Yoda 角色的阅读习惯。"
+    },
+    "Trituns": {
+      "canonical": "特里顿族",
+      "alternatives": [],
+      "category": "race",
+      "notes": "Sea-dwelling humanoid race clue term in shard quest text.",
+      "translation_basis_zh": "结合英文语义与奇幻语境，此词对应居于海中的类人族群。中文采用常见奇幻译法「特里顿族」。"
+    },
+    "Xthizx": {
+      "canonical": "希兹克斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "Proper noun appearing in pagan/quest item naming.",
+      "translation_basis_zh": "该词为怪物或相关专名，中文以音译「希兹克斯」处理，避免保留英文破坏叙事一致性。"
+    }
+  }
 }

@@ -6,12 +6,16 @@ Data/Localization/en/<category>.json and Data/Localization/zh-Hans/<category>.js
 Categories: scripts-quests, scripts-books (subpaths), else scripts-* / system.
 
 Patterns:
-  - SendMessage / SendAsciiMessage / Say (all Scripts)
+  - SendMessage / SendAsciiMessage / Say (all Source, including hue-first overloads)
+  - AddHtml / AddLabel / AddTooltip / LabelTo / *OverheadMessage / Broadcast string literals
   - Quests & Books trees: builder.Append("..."), Title=/Description=/etc., DummyObjective,
     CollectObjective name string, TextDefinition("..."), AddHtml (incl. verbatim @"),
     AddLabel, ItemReward("...", MLQuestSystem.Tell(..., "..."), etc.
+  - Items/Books: book.BookText = / +=, BookTitle = / BookAuthor = string literals,
+    BasicHelp() string segments, mercrate = (DynamicBook / LoreBook).
 
 Keys: SHA-256 UTF-8 of exact English (matches Server.Localization.StringKey.ForEnglish).
+  Logical keys (e.g. books.dynamic.*) in existing JSON are preserved across rebuilds.
 
 Usage:
   python3 build_localization_strings.py [--no-translate]
@@ -36,7 +40,34 @@ RE_SEND = re.compile(
     r"\b(?:SendMessage|SendAsciiMessage)\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+RE_SEND_WITH_PREFIX = re.compile(
+    r"\b(?:SendMessage|SendAsciiMessage)\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 RE_SAY = re.compile(r"\bSay\s*\(\s*\"((?:\\.|[^\"\\])*)\"", re.MULTILINE)
+RE_TEXT_DEF = re.compile(r"new\s+TextDefinition\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
+RE_ADD_LABEL = re.compile(
+    r"\bAddLabel\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
+RE_ADD_LABEL_CROPPED = re.compile(
+    r"\bAddLabelCropped\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
+RE_LABEL_TO = re.compile(
+    r"\bLabelTo\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_ADD_TOOLTIP = re.compile(
+    r"\bAddTooltip\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BROADCAST = re.compile(
+    r"\b(?:World\.)?Broadcast\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_OVERHEAD_STRING = re.compile(
+    r"\b(?:LocalOverheadMessage|NonlocalOverheadMessage|PublicOverheadMessage|PrivateOverheadMessage)\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*(?:true|false|[A-Za-z_][A-Za-z0-9_\.]*)\s*,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 
 # Quest / book–specific (also applied when path matches Quests/ or Books/)
 RE_APPEND = re.compile(
@@ -51,17 +82,50 @@ RE_DUMMY_OBJ = re.compile(r"new\s+DummyObjective\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s
 RE_COLLECT_NAME = re.compile(
     r"new\s+CollectObjective\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"\s*\)"
 )
-RE_TEXT_DEF = re.compile(r"new\s+TextDefinition\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
 RE_ITEM_REWARD = re.compile(r"new\s+ItemReward\s*\(\s*\"((?:\\.|[^\"\\])*)\"")
 RE_TELL = re.compile(
     r"\bMLQuestSystem\.Tell\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
 )
-RE_ADD_LABEL = re.compile(
-    r"\bAddLabel\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
-)
 RE_ADD_HTML_TEXT = re.compile(
     r"TextDefinition\.AddHtmlText\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
 )
+
+# DynamicBook / LoreBook — literal assignments (matches runtime BookText / titles for StringCatalog)
+RE_BOOKTEXT_ASSIGN = re.compile(
+    r"\bbook\.BookText\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BOOKTEXT_IADD = re.compile(
+    r"\bbook\.BookText\s*\+=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BOOK_TITLE_ASSIGN = re.compile(
+    r"\bBookTitle\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BOOK_AUTHOR_ASSIGN = re.compile(
+    r"\bBookAuthor\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BOOK_MERCRATE = re.compile(
+    r"\bmercrate\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+# BasicHelp(): split literals around MySettings.S_ServerName and text += "..."
+RE_BASICHELP_TEXT_START = re.compile(
+    r"\bstring\s+text\s*=\s*\"((?:\\.|[^\"\\])*)\"\s*\+",
+    re.MULTILINE,
+)
+RE_BASICHELP_AFTER_SERVERNAME = re.compile(
+    r"MySettings\.S_ServerName\s*\+\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_BASICHELP_TEXT_CONCAT = re.compile(
+    r"\btext\s*=\s*text\s*\+\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+
+RE_HASH_KEY = re.compile(r"^s\.[0-9a-f]{16}$")
 
 
 def csharp_unescape(s: str) -> str:
@@ -183,9 +247,23 @@ def extract_addhtml_fifth_arg(data: str) -> List[str]:
 
 def collect_strings_from_file(path: str, data: str) -> List[str]:
     texts: List[str] = []
-    for rx in (RE_SEND, RE_SAY):
+    for rx in (
+        RE_SEND,
+        RE_SEND_WITH_PREFIX,
+        RE_SAY,
+        RE_TEXT_DEF,
+        RE_ADD_LABEL,
+        RE_ADD_LABEL_CROPPED,
+        RE_LABEL_TO,
+        RE_ADD_TOOLTIP,
+        RE_BROADCAST,
+        RE_OVERHEAD_STRING,
+    ):
         for m in rx.finditer(data):
             texts.append(csharp_unescape(m.group(1)))
+
+    if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
+        texts.extend(extract_addhtml_fifth_arg(data))
 
     if "Scripts" in path.replace("\\", "/") and is_quest_or_book_path(path):
         for rx in (
@@ -193,15 +271,26 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
             RE_QUEST_ASSIGN,
             RE_DUMMY_OBJ,
             RE_COLLECT_NAME,
-            RE_TEXT_DEF,
             RE_ITEM_REWARD,
             RE_TELL,
-            RE_ADD_LABEL,
             RE_ADD_HTML_TEXT,
         ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
-        texts.extend(extract_addhtml_fifth_arg(data))
+
+    if "Scripts" in path.replace("\\", "/") and "/Items/Books/" in path.replace("\\", "/"):
+        for rx in (
+            RE_BOOKTEXT_ASSIGN,
+            RE_BOOKTEXT_IADD,
+            RE_BOOK_TITLE_ASSIGN,
+            RE_BOOK_AUTHOR_ASSIGN,
+            RE_BOOK_MERCRATE,
+            RE_BASICHELP_TEXT_START,
+            RE_BASICHELP_AFTER_SERVERNAME,
+            RE_BASICHELP_TEXT_CONCAT,
+        ):
+            for m in rx.finditer(data):
+                texts.append(csharp_unescape(m.group(1)))
 
     return [t for t in texts if t and t.strip()]
 
@@ -298,6 +387,22 @@ def write_json(path: str, obj: dict) -> None:
         f.write("\n")
 
 
+def merge_preserved_logical_keys(en_json_path: str, en_map: Dict[str, str]) -> None:
+    """Re-insert keys that are not scanner-generated hash keys (e.g. books.dynamic.*)."""
+    if not os.path.isfile(en_json_path):
+        return
+    try:
+        with open(en_json_path, encoding="utf-8") as f:
+            prev = json.load(f)
+    except Exception:
+        return
+    for k, v in prev.items():
+        if RE_HASH_KEY.match(k):
+            continue
+        if k not in en_map:
+            en_map[k] = v
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-translate", action="store_true")
@@ -316,7 +421,9 @@ def main() -> int:
     os.makedirs(OUT_ZH_DIR, exist_ok=True)
 
     for cat, en_map in sorted(buckets.items()):
-        write_json(os.path.join(OUT_EN_DIR, f"{cat}.json"), dict(sorted(en_map.items())))
+        en_out = os.path.join(OUT_EN_DIR, f"{cat}.json")
+        merge_preserved_logical_keys(en_out, en_map)
+        write_json(en_out, dict(sorted(en_map.items())))
 
     flat_texts = sorted({v for m in buckets.values() for v in m.values()})
 

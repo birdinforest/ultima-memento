@@ -14,7 +14,6 @@ namespace Server.Localization
 		public static void Initialize()
 		{
 			StringCatalog.Load();
-			LangCommands.Initialize();
 		}
 	}
 }
