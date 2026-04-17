@@ -1,0 +1,610 @@
+{
+  "_comment": "Locale-specific follow-up rules for sync_localization_glossary.py. Keep this file for cases that are too context-sensitive for glossary-only normalization.",
+  "literal_replacements": [
+    {
+      "from": "datacron",
+      "to": "数据晶石",
+      "files": [
+        "scripts-engines-and-systems.json"
+      ]
+    },
+    {
+      "from": "Jedi Master",
+      "to": "绝地大师",
+      "files": [
+        "scripts-engines-and-systems.json"
+      ]
+    },
+    {
+      "from": "Jedi",
+      "to": "绝地武士",
+      "files": [
+        "scripts-engines-and-systems.json"
+      ]
+    },
+    {
+      "from": "laser sword",
+      "to": "光剑",
+      "files": [
+        "scripts-engines-and-systems.json"
+      ]
+    },
+    {
+      "from": "Void Crystal",
+      "to": "虚空水晶",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "Vortex Cube",
+      "to": "漩涡立方体",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "Treasure Chest",
+      "to": "宝箱",
+      "files": [
+        "scripts-engines-and-systems.json"
+      ]
+    },
+    {
+      "from": "Skull Gate",
+      "to": "骷髅门",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "Serpent Pillars",
+      "to": "巨蛇石柱",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "斯卡拉布雷",
+      "to": "斯卡拉·布雷",
+      "files": [
+        "scripts-items.json",
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "蒙托尔",
+      "to": "蒙托城",
+      "files": [
+        "scripts-items.json",
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "出埃及记",
+      "to": "埃克索达斯",
+      "files": [
+        "scripts-items.json",
+        "scripts-mobiles.json",
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "Syth",
+      "to": "赛斯",
+      "files": [
+        "scripts-items.json",
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "爱之烛",
+      "to": "爱之蜡烛",
+      "files": [
+        "scripts-mobiles.json",
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "道德天平",
+      "to": "伦理天秤",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "深渊宝珠",
+      "to": "深渊之珠",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "海洋之泪",
+      "to": "海之泪",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "索萨里亚",
+      "to": "索萨利亚",
+      "files": [
+        "scripts-books.json",
+        "scripts-mobiles.json",
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "黑石秩序之蛇",
+      "to": "黑岩秩序之蛇",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "黑石混沌之蛇",
+      "to": "黑岩混沌之蛇",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "黑石平衡之蛇",
+      "to": "黑岩平衡之蛇",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "黑石门",
+      "to": "黑岩门",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "黑石巨蛇",
+      "to": "黑岩巨蛇",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "惰性黑石蛇",
+      "to": "惰性黑岩蛇",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "黑石方尖碑尖",
+      "to": "黑岩方尖碑尖",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "类似的黑石",
+      "to": "类似的黑岩",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "这块黑石不属于你，所以它消失了！",
+      "to": "这块黑岩不属于你，所以它消失了！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "【Tarjan】",
+      "to": "塔尔詹",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Vulcrum】",
+      "to": "伏尔克鲁姆",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Surtaz】",
+      "to": "瑟塔兹",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Arachnar】",
+      "to": "阿拉克纳",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Vordinax】",
+      "to": "沃尔迪纳克斯",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Sherry】",
+      "to": "雪莉",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "GorgonRiding",
+      "to": "蛇发女妖",
+      "files": [
+        "scripts-mobiles.json"
+      ]
+    },
+    {
+      "from": "【Gygax】",
+      "to": "盖加克斯",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "【Chamber of Virtue】",
+      "to": "美德之室",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "Codex",
+      "to": "终极智慧法典",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the purple 虚空水晶!",
+      "to": "你找到了紫色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the white 虚空水晶!",
+      "to": "你找到了白色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the yellow 虚空水晶!",
+      "to": "你找到了黄色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the green 虚空水晶!",
+      "to": "你找到了绿色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the blue 虚空水晶!",
+      "to": "你找到了蓝色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You found the red 虚空水晶!",
+      "to": "你找到了红色虚空水晶！",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You learned the secrets of the 骷髅门.",
+      "to": "你学会了骷髅门的秘密。",
+      "files": [
+        "scripts-quests.json"
+      ]
+    },
+    {
+      "from": "You learned the secrets of the 巨蛇石柱.",
+      "to": "你学会了巨蛇石柱的秘密。",
+      "files": [
+        "scripts-quests.json"
+      ]
+    }
+  ],
+  "exact_value_overrides": [
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.2ce830d295dc2cac",
+      "value": "不！你不能驱逐我！我会从冥界深渊回来的！"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.434fd7c8a81ac27c",
+      "value": "冥界深渊的黑暗似乎正在影响这个法术。"
+    },
+    {
+      "file": "scripts-items.json",
+      "key": "s.59e84e473d89417c",
+      "value": "地狱烈焰之域"
+    },
+    {
+      "file": "scripts-items.json",
+      "key": "s.7d12d76e22e5d452",
+      "value": "你维持了秩序与混沌之间的平衡。"
+    },
+    {
+      "file": "scripts-items.json",
+      "key": "s.9ae72b370bc43a1b",
+      "value": "你摧毁了【埃克索达斯】的黑暗核心，释放了力量。"
+    },
+    {
+      "file": "scripts-items.json",
+      "key": "s.af646545d64b39df",
+      "value": "你已经获得了马拉克的赛斯知识数据晶石。"
+    },
+    {
+      "file": "scripts-items.json",
+      "key": "s.edf6bbdd3dae7cca",
+      "value": "你无法伪装自己，因为你已经在使用欺瞒手段了。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.011ad8d2f883ebf2",
+      "value": "我常常希望那位异乡人能回来。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.4229f908d90945b6",
+      "value": "赛斯将是你最后看到的东西，"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.7307bd76daa5e912",
+      "value": "戒律之灯在消灭混沌祸灵后就消失了。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.74ea98a0ae1cccb0",
+      "value": "逻辑之球在消灭混沌祸灵后就消失了。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.79bf82dcd78b2278",
+      "value": "有一天，异乡人将返回索萨利亚。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.80cbc576e2eb9d57",
+      "value": "异乡人将索萨利亚从埃克索达斯手中拯救出来。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.9af6a9112864e831",
+      "value": "消灭混沌祸灵后，伦理天秤消失了。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.aea822ac1c426676",
+      "value": "你已经获得了撒旦的深渊之珠！"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.b00d2f39ac78768a",
+      "value": "也许有一天，异乡人会成就圣者之道。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.b1a366b38fd05f89",
+      "value": "你将泰坦的力量吸收到海之泪中。"
+    },
+    {
+      "file": "scripts-mobiles.json",
+      "key": "s.f8fd5d454e5fe13d",
+      "value": "感受奥克斯人的力量！"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.27e6521dca70d9bd",
+      "value": "冥界深渊传送者"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.3aae9e6ea470b3d3",
+      "value": "你从虚空中取出终极智慧法典！"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.3faae3228d56c1bf",
+      "value": "当你走进商店时，你惊奇地看着眼前的场景，几乎不记得要张开嘴。房间里装饰着装饰品、装饰品，甚至金属小玩意，与您上次参观紫杉城的铁匠铺形成鲜明对比。这里甚至闻起来很香！"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.468cc612d99e2653",
+      "value": "凭着美德，您的慷慨将不会被忘记！您对这一事业的贡献是无法估量的，前线的战士们将自豪地穿着您精心制作的环甲外衣，因为他们知道它们是由像您这样的真正英雄之手打造的。你已经展示了代表索萨利亚意味着什么。"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.70dfcf10b31e31f5",
+      "value": "这本终极智慧法典不属于你，所以它消失了！"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.be45d50001da3c60",
+      "value": "“我建议你向东北方向走，去另一个被群山掩护的城镇。去紫杉城。我知道那里曾经住过一个铁匠。他……很有趣。一个优秀的工匠，但不太关注金属和……人类。呵呵。”铁匠自言自语地笑了笑，然后递出了一箱铁匠用品。"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.dabf4087d58ab46e",
+      "value": "这本终极智慧法典不属于你！"
+    },
+    {
+      "file": "scripts-system.json",
+      "key": "s.47ba6ba213e96c66",
+      "value": "这在终极智慧法典之厅内不起作用。"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.029ef12841dfc726",
+      "value": "<BODY><BASEFONT Color=#308EB3>绝地智慧数据晶石</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.103c77a83b38b1cb",
+      "value": "然后将耐钢放入数据晶石中。"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.1fda6e50014abe58",
+      "value": "<BODY><BASEFONT Color=#00FF06>你能在自己的心中听见绝地大师佐达的声音。他告诉你，只要你配得上这条道路，终有一日你也能成为强大的绝地武士。绝地武士以灵能与剑术追求目标；对绝地武士而言，其他类型的武器几乎毫无用处。<br><br>他继续解释，这枚数据晶石中的知识出自绝地武士团的十位成员。你必须找到他们安息之处，才能获得这些绝地先贤曾经掌握的力量。每一种力量都记载在这枚数据晶石中，同时也标明了有志成为绝地者能够找到这些坟墓的位置。找到坟墓，说出沉眠者的真名，便可获得绝地的智慧。<br><br>要与绝地同在，你必须拥有正向业力。业力越高，你所拥有的光明越强，因此你的力量也可能发挥出更大的效果。要使用绝地能力，必须在心理学与剑术上都具备同等造诣。战术不仅能帮助绝地战斗得更好，也能与剑术一同提升绝地能力的效果。成为绝地还必须满足若干条件：你必须始终持剑，并穿戴以本教团名义命名的服饰或饰物。这些可以是饰物、长袍、兜帽、风帽或盾牌；任意时刻只需穿戴其中一件即可。没有属于自己的数据晶石，就无法成为绝地。由于这个世界无法制造数据晶石，你只能继承佐达的那一枚。务必时刻将它带在身边，否则你便无法与绝地同在。若你找到了想保留的衣物或饰品，把它们放到数据晶石上，它就会把物品转化为适合绝地使用的样式。<br><br>绝地不能只依赖心灵之力，因为我们需要卡兰水晶为数据晶石供能，并赋予我们施展力量所需的原力。这个世界找不到卡兰水晶，因为它们通常来自绝地的故乡。虽然如此，我乘来的飞船上有一台夸德里特催化器，可以把黄金的分子结构结晶成卡兰水晶。我把这台装置留给了不列颠的贾森，他也许能帮你把金币转化成这些水晶。若你是在他去世很多年后才找到这枚数据晶石，也许他有个同样成了祭司的后人仍在不列颠。若真如此，你就该去找他们，看看能否把金币交给他们，由他们替你转成这些水晶。我们还发现，恶魔生物的骨骼中也含有卡兰水晶成分。这是我在斩杀一头祸害一家人的恶魔时偶然发现的。正是这个发现，才让绝地得以在此地立足；若你要走上这条道路，就必须知道这一点。若那台装置已不复存在，你就只能去消灭这片土地上的恶魔，用它们骨骼中的碎片来抵偿它们造下的恶业。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.2f43e061898f4f52",
+      "value": "<BODY><BASEFONT Color=#308EB3>你需要一颗普通宝石来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.395946b0bfed20b9",
+      "value": "<BODY><BASEFONT Color=#FF0000>你不是赛斯！</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.4959700cdcdd8ecf",
+      "value": "<BODY><BASEFONT Color=#FF0000>你的赛斯之力还不够强！</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.4c3fc27e6a72c52e",
+      "value": "<BODY><BASEFONT Color=#308EB3>你不是绝地武士！</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.4f5e0657466f3ec8",
+      "value": "<BODY><BASEFONT Color=#FF0000>你需要耐钢来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.5d0a339349973b6c",
+      "value": "<BODY><BASEFONT Color=#308EB3>你的绝地之力还不够强！</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.6f50f77355688249",
+      "value": "<BODY><BASEFONT Color=#00FF06>你已与绝地同在</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.758a9c567154c2bf",
+      "value": "<BODY><BASEFONT Color=#00FF06>当一名绝地武士在心理学、剑术与战术三项技艺上都达到宗师境界时，便可以打造属于自己的光剑。为此，你需要先找到一颗普通宝石，例如红宝石、绿宝石或蓝宝石。宝石将决定光剑剑刃成形后的颜色，并发出构成剑刃所需的光芒；这颗宝石会被镶入这枚数据晶石中。你还需要一块耐钢锭，这种金属并非出自这个世界。若想更换剑刃颜色，你可以在打造前随时更换宝石。除此之外，你的背包里还必须有 10,000 金币，用作额外材料。打造过程要求绝地武士深度冥想，为剑刃的诞生注入力量，因此你必须拥有 15,000 点业力，同时还需要 15,000 点名望。光剑铸成后，这两项数值都会归零，绝地武士的力量也会大幅衰弱，直到智慧再次增长。<br><br>光剑最初只是凡品，但只要不断使用，它便会随着你战胜这片土地上的诸多强敌而逐渐增强。此剑永远无需修理。若绝地武士不幸身亡，重返生者世界时它仍会伴随其身。凡是会影响已装备物品的陷阱，对这把剑都不会造成不利影响；试图损毁物品的生物，也无法毁掉它。不过若绝地武士粗心大意，把剑随意丢在外面，那它的命运就只能听天由命了。光剑会随着你战胜敌人而提升等级；每升一级，你都可以单击它并选择 'Enchant' 来赋予它更强的力量。添加能力时务必谨慎，因为一旦选定属性便无法再更改。若所选宝石的颜色不合心意，绝地武士也可以使用普通染缸为这些光剑染色。打造这把光剑时，你还必须身处佐达之墓，并可在普通剑型与双刃剑型之间进行选择。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.8601092a68ec93ac",
+      "value": "<BODY><BASEFONT Color=#FF0000>你欠缺身为赛斯、打造光剑所需的条件。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.a694f4bf1f56b5c9",
+      "value": "你的蜂巢工具已经损坏。"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.b73a1640d7943c46",
+      "value": "<BODY><BASEFONT Color=#308EB3>你需要耐钢来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.bce3e39fd2749f71",
+      "value": "<BODY><BASEFONT Color=#308EB3>你需要 10,000 金币来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.bf802f2aaf501348",
+      "value": "<BODY><BASEFONT Color=#00FF06>当一名赛斯在心理学、剑术与战术三项技艺上都达到宗师境界时，便可以打造属于自己的光剑。为此，你需要先找到一颗普通宝石，例如红宝石、绿宝石或蓝宝石。宝石将决定光剑剑刃成形后的颜色，并发出构成剑刃所需的光芒；这颗宝石会被镶入这枚数据晶石中。你还需要一块耐钢锭，这种金属并非出自这个世界。若想更换剑刃颜色，你可以在打造前随时更换宝石。除此之外，你的背包里还必须有 10,000 金币，用作额外材料。打造过程要求赛斯深入挖掘自身的憎恨与怒火，为剑刃的诞生注入力量，因此你必须拥有 -15,000 点业力，同时还需要 15,000 点名望。光剑铸成后，这两项数值都会归零，赛斯的力量也会大幅衰弱，直到怒火再次高涨。<br><br>光剑最初只是凡品，但只要不断使用，它便会随着你战胜这片土地上的诸多强敌而逐渐增强。此剑永远无需修理。若赛斯不幸身亡，重返生者世界时它仍会伴随其身。凡是会影响已装备物品的陷阱，对这把剑都不会造成不利影响；试图损毁物品的生物，也无法毁掉它。不过若赛斯粗心大意，把剑随意丢在外面，那它的命运就只能听天由命了。光剑会随着你战胜敌人而提升等级；每升一级，你都可以单击它并选择 'Enchant' 来赋予它更强的力量。添加能力时务必谨慎，因为一旦选定属性便无法再更改。若所选宝石的颜色不合心意，赛斯也可以使用普通染缸为这些光剑染色。打造这把光剑时，你还必须身处马拉克之墓，并可在普通剑型与双刃剑型之间进行选择。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.c04766839c6fb20b",
+      "value": "<BODY><BASEFONT Color=#FF0000>赛斯知识数据晶石</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.c2e9213e8ffdea9c",
+      "value": "<BODY><BASEFONT Color=#00FF06>你已与赛斯合而为一</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.ce442d0d5cb714c9",
+      "value": "<BODY><BASEFONT Color=#308EB3>你必须在佐达之墓中才能打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.d5ac8ee38f067514",
+      "value": "<BODY><BASEFONT Color=#308EB3>你欠缺身为绝地武士、打造光剑所需的条件。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.e55c267a8352b772",
+      "value": "<BODY><BASEFONT Color=#00FF06>你能在自己的心中听见赛斯领主马拉克的声音。他告诉你，只要你配得上这条道路，终有一日你也能成为强大的赛斯。赛斯以灵能与剑术追求目标；对赛斯而言，其他类型的武器几乎毫无用处。<br><br>他继续解释，这枚数据晶石中的知识原本是由十名背叛赛斯教团的人窃走的。你必须找到他们的墓穴，才能取回那些曾由马拉克掌握的赛斯力量。每一种力量都记载在这枚数据晶石中，同时也标明了有志成为赛斯者能够找到这些墓穴的位置。找到墓穴，以古老的赛斯语说出咒词，你就能夺取属于自己的奖赏。<br><br>要与赛斯合一，你必须拥有负向业力。你的业力越低，心中的狂怒越强，因此你的力量也可能发挥出更大的效果。要使用赛斯能力，必须在心理学与剑术上都具备同等造诣。战术不仅能帮助赛斯战斗得更好，也能与剑术一同提升赛斯能力的效果。成为赛斯还必须满足若干条件：你必须始终持剑，并穿戴以本教团名义命名的服饰或饰物。这些可以是饰物、长袍、兜帽、风帽或盾牌；金属头盔若属于赛斯装束，也同样算数。任意时刻只需穿戴其中一件衣物、饰物或头盔即可。没有属于自己的数据晶石，就无法成为赛斯。由于这个原始世界无法制造数据晶石，你只能暂时使用我的这一枚。务必时刻将它带在身边，否则你便无法与赛斯合一。若你找到了想保留的衣物、饰品或头盔，把它们放到数据晶石上，它就会把物品转化为适合赛斯使用的样式。<br><br>赛斯不能只依赖心灵之力，因为我们需要汲取赛拉卡拉克水晶中的能量，为数据晶石供能，并赋予我们释放力量所需的原力。这个世界找不到赛拉卡拉克水晶，因为它们通常来自赛斯的故乡。不过我们发现，恶魔生物的骨骼中也含有赛拉卡拉克水晶的成分。这是阿萨吉·芬崔斯在偶然将一头巴洛炎魔劈成两半时发现的。正是这个发现，才让赛斯得以在此地立足；若你要走上这条道路，就必须知道这一点。掌握这一新发现后，我们与黑魔法公会中的恶魔谈过。他愿意每收下五枚金币，就换给我们一枚赛拉卡拉克水晶。死灵法师把这些水晶称作地狱碎片，但不管名字如何，我们都需要它们。去找到那头恶魔，把他渴求的金币交给他。这样你就能为这枚数据晶石取得水晶，你的旅程也就可以开始。否则，你就必须去猎杀这片土地上的恶魔，从它们的尸体上夺取你所需之物。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.eaced32502fa9941",
+      "value": "<BODY><BASEFONT Color=#FF0000>你需要一颗普通宝石来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.f67ad2e11357ceb7",
+      "value": "<BODY><BASEFONT Color=#FF0000>你需要 10,000 金币来打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-engines-and-systems.json",
+      "key": "s.fdd51c4bd98ee170",
+      "value": "<BODY><BASEFONT Color=#FF0000>你必须在马拉克之墓中才能打造光剑。</BASEFONT></BODY>"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.1e65514ba1609018",
+      "value": "待办：把这个交给不列颠铁匠。"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.425af585949b774b",
+      "value": "你不需要漩涡立方体，因为终极智慧法典已经在你的背包里了。"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.7f020782857bdbc4",
+      "value": "特里顿族生活在海底。他们极少来到海面之上。他们单膝侍奉风暴巨人，而那正握有刀枪不入的关键。"
+    },
+    {
+      "file": "scripts-quests.json",
+      "key": "s.d231012eaf26cff8",
+      "value": "希兹克斯之脓液"
+    },
+    {
+      "file": "scripts-system.json",
+      "key": "s.2d9a78e58b52ae57",
+      "value": "<CENTER>封禁时长</CENTER>"
+    },
+    {
+      "file": "system.json",
+      "key": "s.79f157210f510c8f",
+      "value": "那个开关不存在！"
+    }
+  ]
+}

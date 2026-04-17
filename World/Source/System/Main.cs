@@ -35,6 +35,7 @@ using System.Threading.Tasks;
 using Server;
 using Server.Accounting;
 using Server.Gumps;
+using Server.Localization;
 using Server.Network;
 using System.Runtime;
 
@@ -484,9 +485,13 @@ namespace Server
 			}
 
 			ScriptCompiler.Invoke( "Configure" );
-			
+
+			LocalizationBootstrap.Configure();
+
 			Region.Load();
 			World.Load();
+
+			LocalizationBootstrap.Initialize();
 
 			ScriptCompiler.Invoke( "Initialize" );
 

@@ -16,20 +16,36 @@ Categories match World/Source layout:
   scripts-quests.json          — Source/Scripts/Engines and Systems/Quests
   scripts-books.json           — Source/Scripts/Items/Books
 
+Hand-maintained zh for scripts-books (merge from fragments):
+  World/Documentation/scripts-books-zh-translation-workflow.md
+  python3 World/Source/Tools/build_scripts_books_zh.py
+    Merges World/Source/Tools/scripts_books_zh_fragments/frag_*.json -> zh-Hans/scripts-books.json
+
+Glossary-based zh normalization:
+  World/Documentation/zh-localization-glossary-sync-workflow.md
+  python3 World/Source/Tools/sync_localization_glossary.py
+    Normalizes zh-Hans/*.json to current glossary-approved-zh.json canonical terms and
+    applies locale-specific follow-up rules from zh-Hans-glossary-sync-rules.json.
+
 _index.json lists en files for translators (runtime loads all *.json in en/ and zh-Hans/).
 
 Gump & books
 ------------
 AddHtml / AddLabel / text entries are localized at gump compile time using the viewer's account.
 BaseBook page lines and title/author use StringCatalog when opened.
+DynamicBook / LoreBook: gumps resolve title, author, body via StringCatalog; the string scanner
+also extracts book.BookText (= / +=), BookTitle/BookAuthor literals, BasicHelp() segments, and
+mercrate (see build_localization_strings.py). Logical JSON keys (e.g. books.dynamic.*) are kept
+when you re-run --no-translate.
 
 Configuration
 -------------
 Data/System/CFG/localization.cfg
 
-Commands
---------
-[Lang]  [Lang en|zh-Hans]  [ReloadLang]
+Player language
+----------------
+Use Help → Settings → Language (English or 简体中文). The choice is stored on the account and
+persists like other account settings. In-game chat commands for language were removed.
 
 Regenerating
 ------------
@@ -40,7 +56,16 @@ cd to repository root (ultima-memento), then:
 
   pip install deep-translator
   python3 World/Source/Tools/translate_zh_from_en.py
-    Machine-translate each en/*.json into zh-Hans/*.json.
+    Incremental: only keys missing in zh-Hans or where zh still equals en (hash keys s.*).
+    Logical keys (books.dynamic.*, etc.) are left as-is unless missing or use --include-named-keys.
+  python3 World/Source/Tools/translate_zh_from_en.py --full
+    Re-translate every entry (overwrites reviewed Chinese).
+
+  python3 World/Source/Tools/sync_localization_glossary.py
+    Post-process zh-Hans/*.json with glossary-approved-zh.json and
+    zh-Hans-glossary-sync-rules.json to normalize approved proper names and fixed phrasing.
+  python3 World/Source/Tools/sync_localization_glossary.py --check
+    Verification mode; exits non-zero if any target file still needs normalization.
 
 Coverage notes
 --------------
@@ -57,3 +82,19 @@ Lore glossary & translation QA
     -> Documentation/translation-glossary-review.md
 
   Optional curated zh spellings: Data/Localization/glossary-approved-zh.json
+
+Simplified Chinese (zh-Hans) translation guide
+------------------------------------------------
+World/Documentation/zh-localization-translation-guide.md
+  Editorial rules for books/quests and narrative strings: bracketed English for unapproved
+  proper names, context over misleading literals, no silent paraphrase in body text, 译注 workflow.
+
+World/Documentation/scripts-books-zh-translation-workflow.md
+  How zh-Hans/scripts-books.json is built from en + fragment JSON, tools, and maintenance steps.
+
+World/Documentation/zh-localization-glossary-sync-workflow.md
+  Repeatable glossary sync step for zh-Hans/*.json after extraction / translation / fragment merge.
+
+World/Documentation/localization-complete-coverage-roadmap.md
+  Program-level roadmap for full server-side localization coverage: runtime send paths,
+  extractor scope, glossary workflow, phased rollout, and acceptance criteria.

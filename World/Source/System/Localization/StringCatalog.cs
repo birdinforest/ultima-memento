@@ -142,6 +142,37 @@ namespace Server.Localization
 			return null;
 		}
 
+		/// <summary>
+		/// Looks up a stable logical key (e.g. books.dynamic.by_line) in merged locale JSON.
+		/// Use for strings that are not suitable for hash-based <see cref="TryResolve"/> (fragments, templates).
+		/// </summary>
+		public static string TryResolveByKey( string languageCode, string key )
+		{
+			if ( key == null || key.Length == 0 )
+				return null;
+
+			if ( !m_Loaded )
+				return null;
+
+			lock ( m_Lock )
+			{
+				if ( AccountLang.IsChinese( languageCode ) )
+				{
+					string zh;
+
+					if ( m_Zh.TryGetValue( key, out zh ) && zh != null && zh.Length > 0 )
+						return zh;
+				}
+
+				string en;
+
+				if ( m_En.TryGetValue( key, out en ) && en != null && en.Length > 0 )
+					return en;
+			}
+
+			return null;
+		}
+
 		public static bool IsAsciiOnly( string s )
 		{
 			if ( s == null )
