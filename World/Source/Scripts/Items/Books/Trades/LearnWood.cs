@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 7128, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -102,8 +102,8 @@ namespace Server.Items
 
 					string carve = "Bowcrafters can use boards to make arrows, bows, and crossbows. A carpenter can make shelves with woodworking tools, while they can use carpenter tools to make furniture, weapons, and armor. Molding wood into armor usually requires special oils from living trees. You can also use wood to make kindling for camping, or bark to make paper. Scribes can then take the bark and make scrolls from it.";
 
-					AddHtml( 122, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + wood + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + carve + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, wood ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, carve ), (bool)false, (bool)false);
 				}
 			}
 

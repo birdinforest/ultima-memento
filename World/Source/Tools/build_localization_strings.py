@@ -124,6 +124,34 @@ RE_BASICHELP_TEXT_CONCAT = re.compile(
     r"\btext\s*=\s*text\s*\+\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+RE_HELP_ADD_ACTION = re.compile(
+    r"\bAddAction\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_HELP_ADD_SETTING = re.compile(
+    r"\bAddSetting\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_HELP_TOOLBAR_ROW = re.compile(
+    r"\bAddMagicToolbarRow\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_HELP_ASSIGN = re.compile(
+    r"\b(?:string\s+)?(?P<name>HelpText|title|info)\s*=\s*(?P<expr>.*?);",
+    re.MULTILINE | re.DOTALL,
+)
+RE_MYLIBRARY_TITLE = re.compile(
+    r"\btitle\s*=\s*\"((?:\\.|[^\"\\])*)\"\s*;",
+    re.MULTILINE,
+)
+RE_TRADE_BOOK_TEXT = re.compile(
+    r"\bstring\s+(?P<name>rock|sand|leather|bone|tailoring|cloth|wood|carve|craft|scales|smithing|tinkering|mining|crafting|p1|p2)\s*=\s*(?P<expr>.*?);",
+    re.MULTILINE | re.DOTALL,
+)
+RE_INFO_GUMP_LITERAL = re.compile(
+    r"new\s+InfoGump\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 
 RE_HASH_KEY = re.compile(r"^s\.[0-9a-f]{16}$")
 
@@ -245,6 +273,50 @@ def extract_addhtml_fifth_arg(data: str) -> List[str]:
     return found
 
 
+def join_csharp_string_literals(expr: str) -> str:
+    expr = re.sub(r"(?m)^\s*//.*$", "", expr)
+    parts = [csharp_unescape(m.group(1)) for m in re.finditer(r"\"((?:\\.|[^\"\\])*)\"", expr)]
+    return "".join(parts)
+
+
+def collect_targeted_ui_strings(path: str, data: str) -> List[str]:
+    rel = path.replace("\\", "/")
+    texts: List[str] = []
+
+    if rel.endswith("/Scripts/System/Help/HelpGump.cs"):
+        for m in RE_HELP_ADD_ACTION.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+        for m in RE_HELP_ADD_SETTING.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+        for m in RE_HELP_TOOLBAR_ROW.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+
+        for m in RE_HELP_ASSIGN.finditer(data):
+            name = m.group("name")
+            expr = m.group("expr")
+            if name == "HelpText" and "?" in expr:
+                continue
+            joined = join_csharp_string_literals(expr)
+            if joined:
+                texts.append(joined)
+
+    if rel.endswith("/Scripts/System/Commands/Player/MyLibrary.cs"):
+        for m in RE_MYLIBRARY_TITLE.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+
+    if "/Scripts/Items/Books/Trades/" in rel:
+        for m in RE_TRADE_BOOK_TEXT.finditer(data):
+            joined = join_csharp_string_literals(m.group("expr"))
+            if joined:
+                texts.append(joined)
+
+    if rel.endswith("/InfoGump.cs"):
+        for m in RE_INFO_GUMP_LITERAL.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+
+    return texts
+
+
 def collect_strings_from_file(path: str, data: str) -> List[str]:
     texts: List[str] = []
     for rx in (
@@ -291,6 +363,8 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
         ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
+
+    texts.extend(collect_targeted_ui_strings(path, data))
 
     return [t for t in texts if t and t.strip()]
 

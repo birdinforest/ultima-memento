@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 8536, CraftResources.GetClr( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetPrefix( res ) + "Granite</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetPrefix( res ) + "Granite" ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -98,8 +98,8 @@ namespace Server.Items
 					string rock = "Mining is the skill one needs to find granite from caves and mountains. With this, carpenters can make stone furniture and statues using a mallet and chisel. You simply need to get a pick axe or a shovel, double-click it, and then target a mountain side or caven floor. You must single click the tool and set it for stone gathering. The many types of granite are listed on the next page. You need to first learn how to dig for it, and craft them, by finding books on the subjects.";
 					string sand = "Mining is also the skill one needs to find sand on beaches and desert sands. With this sand, alchemists can make items such as bottles and jars. You simply need to get a pick axe or a shovel, double-click it, and then target a the sand at your feet. You must single click the tool and set it for sand gathering. Sand comes in piles and you can use a blow pipe to glass items, You need to first learn how to dig for it, and craft them, by finding books on the subjects.";
 
-					AddHtml( 122, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + rock + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + sand + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, rock ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, sand ), (bool)false, (bool)false);
 				}
 			}
 

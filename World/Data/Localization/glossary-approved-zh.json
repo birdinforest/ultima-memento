@@ -1,7 +1,59 @@
 {
+  "Amazon": {
+    "canonical": "亚马逊女战士",
+    "alternatives": [
+      "亚马逊"
+    ],
+    "category": "title",
+    "notes": "Female barbaric-style title replacement mentioned in help text.",
+    "translation_basis_zh": "此处 Amazon 指女性化的野蛮战士称谓，而非地名或现代品牌。译作「亚马逊女战士」既保留神话色彩，也能避免歧义。"
+  },
+  "Familiar": {
+    "canonical": "使魔",
+    "alternatives": [
+      "魔宠"
+    ],
+    "category": "creature",
+    "notes": "Magical companion / summoned familiar term used in book titles and shard lore.",
+    "translation_basis_zh": "奇幻语境中 Familiar 通常指与施法者建立契约关系的灵性伴兽。采用「使魔」比「魔宠」更贴合经典奇幻与 Ultima 式书卷语感。"
+  },
+  "Familiars": {
+    "canonical": "使魔",
+    "alternatives": [
+      "魔宠"
+    ],
+    "category": "creature",
+    "notes": "Plural form of Familiar; normalize to the same Chinese headword.",
+    "translation_basis_zh": "中文里该类概念通常不靠复数词形区分，因此将复数形式统一归并为「使魔」，以保持书名与正文用语一致。"
+  },
+  "Guide to Adventure": {
+    "canonical": "冒险指南",
+    "alternatives": [
+      "冒险指引"
+    ],
+    "category": "book",
+    "notes": "Starter guide book referenced in Help and beginner onboarding text.",
+    "translation_basis_zh": "结合 Help 文本语境，这是新手入门用的书名，而非普通说明短语。译作「冒险指南」简洁自然，也符合中文游戏内常见书名风格。"
+  },
+  "Ninja": {
+    "canonical": "忍者",
+    "alternatives": [],
+    "category": "class",
+    "notes": "Eastern-flavored class / archetype name used in help text.",
+    "translation_basis_zh": "Ninja 在中文奇幻和日式题材语境中已有稳定通行译法「忍者」，无需另造译名。"
+  },
+  "Samurai": {
+    "canonical": "武士",
+    "alternatives": [
+      "侍"
+    ],
+    "category": "class",
+    "notes": "Eastern-flavored class / archetype name used in help text.",
+    "translation_basis_zh": "Samurai 在中文玩家语境中以「武士」最稳定、最易懂，也与 shard 中东方风格设定相容。"
+  },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
-  "_version": "1.2",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
+  "_version": "1.2",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {

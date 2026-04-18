@@ -59,6 +59,12 @@ namespace Server.Engines.Help
 	{
 		private const string TEXT_COLOR = "#ddbc4b"; // Yellowy
 
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		private enum PageActionType
 		{
 			Close = 0,
@@ -294,7 +300,7 @@ namespace Server.Engines.Help
 			if ( false == ( mobile is PlayerMobile ) ) return;
 
 			var from = (PlayerMobile)mobile;
-			string HelpText = MyHelp();
+			string HelpText = ResolveText( from, MyHelp() );
 			string color = TEXT_COLOR;
 
 			from.SendSound( 0x4A ); 
@@ -310,7 +316,7 @@ namespace Server.Engines.Help
 			int e = 30;
 
 			AddImage(0, 0, 9548, Server.Misc.PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">HELP OPTIONS</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "HELP OPTIONS" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(967, 10, 4017, 4017, (int)PageActionType.Close, GumpButtonType.Reply, 0);
 
 			const int NAVIGATION_START_X = 15;
@@ -335,7 +341,7 @@ namespace Server.Engines.Help
 			r += e;
 			if ( page == (int)PageActionType.Do_Toggle_AFK )
 			{
-				HelpText = IsActive(from, PageActionType.Do_Toggle_AFK) ? "Your 'Away From Keyboard' Settings Are Enabled." : "Your 'Away From Keyboard' Settings Are Disabled.";
+				HelpText = ResolveText( from, IsActive(from, PageActionType.Do_Toggle_AFK) ? "Your 'Away From Keyboard' Settings Are Enabled." : "Your 'Away From Keyboard' Settings Are Disabled." );
 				AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + HelpText + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 
@@ -353,7 +359,7 @@ namespace Server.Engines.Help
 
 			AddAction(nav_x, r, from, "Corpse Clear", PageActionType.Do_CorpseClear, NAVIGATION_ITEM_WIDTH);
 			r += e;
-			if ( page == (int)PageActionType.Do_CorpseClear ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">Your empty corpses have been removed.</BASEFONT></BODY>", (bool)false, (bool)true); }
+			if ( page == (int)PageActionType.Do_CorpseClear ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Your empty corpses have been removed." ) + "</BASEFONT></BODY>", (bool)false, (bool)true); }
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -394,50 +400,50 @@ namespace Server.Engines.Help
 
 				AddButton(904, 10, 3610, 3610, (int)PageActionType.ShowHelp_MagicToolbars, GumpButtonType.Reply, 0);
 
-				AddMagicToolbarRowHeader(SECTION_START_X, barS);
+				AddMagicToolbarRowHeader(from, SECTION_START_X, barS);
 				barS += barM;
 
 				if (hasResearch)
 				{
-					AddMagicToolbarRow(SECTION_START_X, barS, "Ancient Spell Bar", PageActionType.MagicToolbar_AncientSpellBarI_Config, PageActionType.MagicToolbar_Ancient_I_Open, PageActionType.MagicToolbar_Ancient_I_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Ancient Spell Bar", PageActionType.MagicToolbar_AncientSpellBarI_Config, PageActionType.MagicToolbar_Ancient_I_Open, PageActionType.MagicToolbar_Ancient_I_Close);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarII_Config, PageActionType.MagicToolbar_Ancient_II_Open, PageActionType.MagicToolbar_Ancient_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarII_Config, PageActionType.MagicToolbar_Ancient_II_Open, PageActionType.MagicToolbar_Ancient_II_Close);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarIII_Config, PageActionType.MagicToolbar_Ancient_III_Open, PageActionType.MagicToolbar_Ancient_III_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarIII_Config, PageActionType.MagicToolbar_Ancient_III_Open, PageActionType.MagicToolbar_Ancient_III_Close);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarIV_Config, PageActionType.MagicToolbar_Ancient_IV_Open, PageActionType.MagicToolbar_Ancient_IV_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_AncientSpellBarIV_Config, PageActionType.MagicToolbar_Ancient_IV_Open, PageActionType.MagicToolbar_Ancient_IV_Close);
 					barS += barM;
 				}
 
 				if (hasBarding)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Bard Songs Bar", PageActionType.MagicToolbar_BardSongsBarI_Config, PageActionType.MagicToolbar_Bard_I_Open, PageActionType.MagicToolbar_Bard_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Bard Songs Bar", PageActionType.MagicToolbar_BardSongsBarI_Config, PageActionType.MagicToolbar_Bard_I_Open, PageActionType.MagicToolbar_Bard_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_BardSongsBarII_Config, PageActionType.MagicToolbar_Bard_II_Open, PageActionType.MagicToolbar_Bard_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_BardSongsBarII_Config, PageActionType.MagicToolbar_Bard_II_Open, PageActionType.MagicToolbar_Bard_II_Close);
 					barS += barM;
 				}
 
 				if (hasKnightship)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Knight Spell Bar", PageActionType.MagicToolbar_KnightSpellBarI_Config, PageActionType.MagicToolbar_Knight_I_Open, PageActionType.MagicToolbar_Knight_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Knight Spell Bar", PageActionType.MagicToolbar_KnightSpellBarI_Config, PageActionType.MagicToolbar_Knight_I_Open, PageActionType.MagicToolbar_Knight_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_KnightSpellBarII_Config, PageActionType.MagicToolbar_Knight_II_Open, PageActionType.MagicToolbar_Knight_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_KnightSpellBarII_Config, PageActionType.MagicToolbar_Knight_II_Open, PageActionType.MagicToolbar_Knight_II_Close);
 					barS += barM;
 
 					if (hasNegativeKarma)
 					{
 						barS -= BAR_BORDER_HEIGHT;
-						AddMagicToolbarRow(SECTION_START_X, barS, "Death Knight Spell Bar", PageActionType.MagicToolbar_DeathKnightSpellBarI_Config, PageActionType.MagicToolbar_DeathKnight_I_Open, PageActionType.MagicToolbar_DeathKnight_I_Close, true);
+						AddMagicToolbarRow(from, SECTION_START_X, barS, "Death Knight Spell Bar", PageActionType.MagicToolbar_DeathKnightSpellBarI_Config, PageActionType.MagicToolbar_DeathKnight_I_Open, PageActionType.MagicToolbar_DeathKnight_I_Close, true);
 						barS += barM;
 
-						AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_DeathKnightSpellBarII_Config, PageActionType.MagicToolbar_DeathKnight_II_Open, PageActionType.MagicToolbar_DeathKnight_II_Close);
+						AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_DeathKnightSpellBarII_Config, PageActionType.MagicToolbar_DeathKnight_II_Open, PageActionType.MagicToolbar_DeathKnight_II_Close);
 						barS += barM;
 					}
 				}
@@ -445,56 +451,56 @@ namespace Server.Engines.Help
 				if (hasElementalism)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Elemental Spell Bar", PageActionType.MagicToolbar_ElementalSpellBarI_Config, PageActionType.MagicToolbar_Elemental_I_Open, PageActionType.MagicToolbar_Elemental_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Elemental Spell Bar", PageActionType.MagicToolbar_ElementalSpellBarI_Config, PageActionType.MagicToolbar_Elemental_I_Open, PageActionType.MagicToolbar_Elemental_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_ElementalSpellBarII_Config, PageActionType.MagicToolbar_Elemental_II_Open, PageActionType.MagicToolbar_Elemental_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_ElementalSpellBarII_Config, PageActionType.MagicToolbar_Elemental_II_Open, PageActionType.MagicToolbar_Elemental_II_Close);
 					barS += barM;
 				}
 
 				if (hasMagery)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Magery Spell Bar", PageActionType.MagicToolbar_MagerySpellBarI_Config, PageActionType.MagicToolbar_Magery_I_Open, PageActionType.MagicToolbar_Magery_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Magery Spell Bar", PageActionType.MagicToolbar_MagerySpellBarI_Config, PageActionType.MagicToolbar_Magery_I_Open, PageActionType.MagicToolbar_Magery_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarII_Config, PageActionType.MagicToolbar_Magery_II_Open, PageActionType.MagicToolbar_Magery_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarII_Config, PageActionType.MagicToolbar_Magery_II_Open, PageActionType.MagicToolbar_Magery_II_Close);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarIII_Config, PageActionType.MagicToolbar_Magery_III_Open, PageActionType.MagicToolbar_Magery_III_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarIII_Config, PageActionType.MagicToolbar_Magery_III_Open, PageActionType.MagicToolbar_Magery_III_Close);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarIV_Config, PageActionType.MagicToolbar_Magery_IV_Open, PageActionType.MagicToolbar_Magery_IV_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_MagerySpellBarIV_Config, PageActionType.MagicToolbar_Magery_IV_Open, PageActionType.MagicToolbar_Magery_IV_Close);
 					barS += barM;
 				}
 
 				if (hasMonk)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Monk Ability Bar", PageActionType.MagicToolbar_MonkSpellBarI_Config, PageActionType.MagicToolbar_Monk_I_Open, PageActionType.MagicToolbar_Monk_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Monk Ability Bar", PageActionType.MagicToolbar_MonkSpellBarI_Config, PageActionType.MagicToolbar_Monk_I_Open, PageActionType.MagicToolbar_Monk_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_MonkSpellBarII_Config, PageActionType.MagicToolbar_Monk_II_Open, PageActionType.MagicToolbar_Monk_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_MonkSpellBarII_Config, PageActionType.MagicToolbar_Monk_II_Open, PageActionType.MagicToolbar_Monk_II_Close);
 					barS += barM;
 				}
 
 				if (hasNecromancy)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Necromancer Spell Bar", PageActionType.MagicToolbar_NecromancerSpellBarI_Config, PageActionType.MagicToolbar_Necromancer_I_Open, PageActionType.MagicToolbar_Necromancer_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Necromancer Spell Bar", PageActionType.MagicToolbar_NecromancerSpellBarI_Config, PageActionType.MagicToolbar_Necromancer_I_Open, PageActionType.MagicToolbar_Necromancer_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_NecromancerSpellBarII_Config, PageActionType.MagicToolbar_Necromancer_II_Open, PageActionType.MagicToolbar_Necromancer_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_NecromancerSpellBarII_Config, PageActionType.MagicToolbar_Necromancer_II_Open, PageActionType.MagicToolbar_Necromancer_II_Close);
 					barS += barM;
 				}
 
 				if (hasHolyMan)
 				{
 					barS -= BAR_BORDER_HEIGHT;
-					AddMagicToolbarRow(SECTION_START_X, barS, "Priest Prayer Bar", PageActionType.MagicToolbar_PriestSpellBarI_Config, PageActionType.MagicToolbar_Priest_I_Open, PageActionType.MagicToolbar_Priest_I_Close, true);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, "Priest Prayer Bar", PageActionType.MagicToolbar_PriestSpellBarI_Config, PageActionType.MagicToolbar_Priest_I_Open, PageActionType.MagicToolbar_Priest_I_Close, true);
 					barS += barM;
 
-					AddMagicToolbarRow(SECTION_START_X, barS, null, PageActionType.MagicToolbar_PriestSpellBarII_Config, PageActionType.MagicToolbar_Priest_II_Open, PageActionType.MagicToolbar_Priest_II_Close);
+					AddMagicToolbarRow(from, SECTION_START_X, barS, null, PageActionType.MagicToolbar_PriestSpellBarII_Config, PageActionType.MagicToolbar_Priest_II_Open, PageActionType.MagicToolbar_Priest_II_Close);
 					barS += barM;
 				}
 			}
@@ -542,7 +548,7 @@ namespace Server.Engines.Help
 				int xs = SECTION_START_X;
 
 				// Section - Settings
-				AddHtml( SECTION_START_X, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Settings</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( SECTION_START_X, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Settings" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				g += j;
 
 				xs = SETTING_START_X;
@@ -654,7 +660,7 @@ namespace Server.Engines.Help
 				g += j;
 				xr = 0;
 				xs = SECTION_START_X;
-				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">Language</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Language" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				g += j;
 				xs = SETTING_START_X;
 				AddAction( xs, g, from, "English", PageActionType.Setting_Language_English, 130 );
@@ -669,7 +675,7 @@ namespace Server.Engines.Help
 
 				g += (int)(1.5 * j);
 				xs = SECTION_START_X;
-				AddHtml( xs, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Play Styles</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( xs, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Play Styles" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				g += j;
 
 				xs = SETTING_START_X;
@@ -693,7 +699,7 @@ namespace Server.Engines.Help
 
 				g += (int)(1.5 * j);
 				xs = SECTION_START_X;
-				AddHtml( xs, g + 3, 110, 20, @"<BODY><BASEFONT Color=" + color + ">Magery Spell Color</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( xs, g + 3, 110, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Magery Spell Color" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(xs + 124, g, 4011, 4011, (int)PageActionType.Setting_MagerySpellColor_Info, GumpButtonType.Reply, 0);
 
 				g += j;
@@ -784,7 +790,7 @@ namespace Server.Engines.Help
 				AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
 
 			AddButton(x+40, y, 4011, 4011, (int)infoType, GumpButtonType.Reply, 0);
-			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, name ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
 
 		private void AddAction(int x, int y, PlayerMobile from, string name, PageActionType actionType, int width = 100)
@@ -798,30 +804,30 @@ namespace Server.Engines.Help
 					? CHECKED_BOX
 					: UNCHECKED_BOX;
 			AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
-			AddHtml( x+40, y + 3, width, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+40, y + 3, width, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, name ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
 
-		private void AddMagicToolbarRowHeader(int x, int y)
+		private void AddMagicToolbarRowHeader(PlayerMobile from, int x, int y)
 		{
 			const int HORIZONTAL_LINE = 2700;
 			const int BORDER_WIDTH = 2;
 			AddImageTiled(x + 2, y + 25, 740 / 2, BORDER_WIDTH, HORIZONTAL_LINE);
 
-			AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Type</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, "Type" ) + "</BASEFONT></BODY>", false, false);
 			x += 225;
 
-			AddHtml(x, y + 3, 148, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Open</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 148, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, "Open" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 50;
-			AddHtml(x, y + 3, 148, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Close</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 148, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, "Close" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 50;
-			AddHtml(x, y + 3, 160, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Manage</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 160, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, "Manage" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 75;
 		}
 
-		private void AddMagicToolbarRow(int x, int y, string name, PageActionType config, PageActionType open, PageActionType close, bool addTopSeparator = false)
+		private void AddMagicToolbarRow(PlayerMobile from, int x, int y, string name, PageActionType config, PageActionType open, PageActionType close, bool addTopSeparator = false)
 		{
 			const int RIGHT_ARROW = 4005;
 			const int CANCEL_ICON = 4020;
@@ -836,7 +842,7 @@ namespace Server.Engines.Help
 			}
 
 			if (!string.IsNullOrWhiteSpace(name))
-				AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", false, false);
+				AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, name ) + "</BASEFONT></BODY>", false, false);
 
 			x += 225;
 			AddButton(x, y, RIGHT_ARROW, RIGHT_ARROW, (int)open, GumpButtonType.Reply, 0);
@@ -2183,7 +2189,9 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_Playstyle_Normal_Info:
 				{
 					title = "Play Style - Normal";
-					info = "This is the default play style for the " + MySettings.S_ServerName + ". It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game.";
+					info = String.Format(
+						ResolveText( from, "This is the default play style for the {0}. It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game." ),
+						MySettings.S_ServerName );
 					break;
 				}
 

@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Gumps
@@ -6,6 +7,12 @@ namespace Server.Gumps
 	public class InfoHelpGump : Gump
     {
 		private readonly Action m_OnClose;
+
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
 
 		public InfoHelpGump( Mobile from, string title, string info, bool scrollbar = true, Action onClose = null ) : base( 50, 50 )
 		{
@@ -18,10 +25,12 @@ namespace Server.Gumps
 			Dragable=true;
 
 			string color = "#ddbc4b";
+			string outTitle = ResolveText( from, title );
+			string outInfo = ResolveText( from, info );
 
 			AddImage(0, 0, 9577, Server.Misc.PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 239, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 12, 43, 278, 212, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)scrollbar);
+			AddHtml( 12, 12, 239, 20, @"<BODY><BASEFONT Color=" + color + ">" + outTitle + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 43, 278, 212, @"<BODY><BASEFONT Color=" + color + ">" + outInfo + "</BASEFONT></BODY>", (bool)false, (bool)scrollbar);
 			AddButton(268, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
 		}
 
