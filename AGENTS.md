@@ -1,6 +1,6 @@
 # Ultima Memento — AI Agent Guide
 
-> **Scope:** Game server repo (`ultima-memento`). For the website see `ultima-memento-web/AGENTS.md`.
+> **Scope:** Game server repo (`ultima-memento`). For the website see `ultima-memento-web/AGENTS.md`. **Cross-repo practice (site media + glossary-driven wiki index):** [§7](#7-website--player-facing-docs-ultima-memento-web).
 > **Update protocol:** When you change a convention or discover something that conflicts with this file, propose an edit at the end of your turn. Do not silently diverge.
 
 ---
@@ -14,6 +14,7 @@
 | Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
 | Translate new strings (LLM, not Google) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
 | Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
+| Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
 | Build and test the server | [§4 Build & Test](#4-build--test) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
 
@@ -322,6 +323,7 @@ Update `AGENTS.md` when:
 - A new Python tool is added to `World/Source/Tools/`.
 - A new source directory category is added under `World/Source/Scripts/`.
 - A build or test process changes.
+- Cross-repo website conventions change (§7: media paths, wiki index pipeline, glossary inputs).
 - An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
 
 ### 6.2 Language Expansion Protocol
@@ -340,3 +342,76 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 
 **Change log:**
 - 2026-04-18: Initial version created. Covers C# practices, localization pipeline, LLM translation policy, agent boundaries.
+- 2026-04-18: Added §7 — cross-repo practice standard for `ultima-memento-web` (media vendoring, glossary-driven wiki index).
+
+---
+
+## 7. Website & player-facing docs (`ultima-memento-web`)
+
+> **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
+> **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.
+
+### 7.1 Scope split
+
+| Concern | Owns it |
+|---|---|
+| Server C#, runtime strings, `glossary-approved-zh.json` schema & curation | **This repo** (`ultima-memento`) |
+| Next.js app, MDX under `content/` / `content-en/`, `public/` assets, wiki index JSON | **`ultima-memento-web`** |
+
+When you add or rename a **glossary** headword that should appear on the site’s auto wiki index, update the site after merging glossary changes (§7.4).
+
+### 7.2 Media practice standard (images & GIFs)
+
+**Rule:** Player-facing media on the website must be **vendored in the web repo** under `public/` — no dependence on hotlinked Wikimedia, arbitrary CDNs, or **GitHub `raw.githubusercontent.com`** for default page rendering.
+
+| Asset type | Location (web repo) | Notes |
+|---|---|---|
+| Encyclopedia / article stills (e.g. MDX figures) | `public/images/…` (e.g. `public/images/encyclopedia/`) | Prefer stable filenames; MDX uses paths like `/images/encyclopedia/foo.jpg`. |
+| Feature & home **GIF** previews | `public/showcase/*.gif` | Filenames must match `messages/zh.json` and `messages/en.json` (`media` fields) and any MDX that references the same names. |
+| Source of GIFs when refreshing from game tree | `World/Documentation/Showcase/` in **this** repo | Copy or sync binaries into `ultima-memento-web/public/showcase/`; do not rely on raw GitHub URLs in production `showcaseUrl` logic. |
+
+**Agent checklist (web PR):**
+
+- [ ] No new `https://` image URLs in MDX for assets we can legally mirror into `public/`.
+- [ ] New GIFs added to `public/showcase/` and wired in `messages` (both locales).
+- [ ] `npm run build` in `ultima-memento-web` passes.
+
+### 7.3 Glossary ↔ Ultima Codex / UOGuide index
+
+**Purpose:** MDX pages (guide / mechanics / history) can show a **“wiki index”** block: terms that appear on the page, intersected with the **approved glossary** in this repo, linked only to **Ultima Codex** and **UOGuide** URLs that have been **HEAD-validated**.
+
+**Source of truth for terms:** `World/Data/Localization/glossary-approved-zh.json` (English headwords under `terms`, plus top-level entries with `canonical` / `alternatives`).
+
+**Generated artifact (web repo):** `ultima-memento-web/lib/wiki-glossary-index.json`  
+**Generator:** `ultima-memento-web/scripts/build-wiki-glossary-index.mjs`  
+**Command:** `npm run build:wiki-index` (run from `ultima-memento-web/`).
+
+**Default glossary path** inside the script: sibling checkout  
+`ultima-memento/World/Data/Localization/glossary-approved-zh.json`  
+If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary-approved-zh.json`.
+
+**Matching rules (high level):**
+
+- English headwords: phrase / word-boundary style matching against concatenated MDX from `content/` and `content-en/`.
+- Chinese surfaces: `canonical` and `alternatives` from the glossary entry (`matchZh` in the generated JSON) for matching **Chinese** MDX.
+- Script maintains a **denylist** and **minimum token length** for headwords that would otherwise create false positives (e.g. generic English words with unrelated wiki articles).
+- Some glossary **alternatives** are valid for translation but must **not** drive wiki matching (e.g. ambiguous substring); those are stripped in the script (`MATCH_ZH_STRIP` map) — extend it when adding a problematic alternative.
+
+**Agent checklist (after glossary or site MDX changes that affect lore terms):**
+
+- [ ] If new headwords should appear in the site index: ensure they exist in `glossary-approved-zh.json` with stable English keys and appropriate `canonical` / `alternatives`.
+- [ ] Re-run `npm run build:wiki-index` with network access; commit the updated `wiki-glossary-index.json` if entries changed.
+- [ ] Spot-check Codex/UOGuide pages for **sense** (UO item vs Ultima lore disambiguation); drop or split a headword in the denylist or strip list if the wrong article keeps winning.
+
+### 7.4 When to touch which repo
+
+| You did this… | Also do this |
+|---|---|
+| Added GIFs under `World/Documentation/Showcase/` | Copy into `ultima-memento-web/public/showcase/` and verify both `messages/*.json` locales. |
+| Added/changed glossary entries used in player-facing lore on the site | Re-run `build:wiki-index`; adjust denylist / `MATCH_ZH_STRIP` in the script if matching becomes noisy. |
+| Wrote new MDX that introduces a major Ultima/UO proper noun | Prefer adding the term to **glossary** first, then regenerate the wiki index. |
+
+### 7.5 Single source of truth reminder
+
+- **Glossary curation** stays in **this** repo (§3.5).  
+- **Wiki URL validation and MDX matching** are implemented in **`ultima-memento-web`**; do not duplicate the JSON generator inside `World/Source/Tools/` unless we explicitly decide to merge pipelines later.
