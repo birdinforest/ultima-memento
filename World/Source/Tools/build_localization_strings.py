@@ -153,6 +153,26 @@ RE_INFO_GUMP_LITERAL = re.compile(
     re.MULTILINE,
 )
 
+# ResolveText / ResolveFormat helpers used in localized gumps
+RE_RESOLVE_TEXT = re.compile(
+    r"\bResolveText\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_RESOLVE_FORMAT = re.compile(
+    r"\bResolveFormat\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_ADD_HTML_TEXT_RESOLVE = re.compile(
+    r"TextDefinition\.AddHtmlText\s*\([^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*ResolveText\s*\([^,\n]+,\s*\"((?:\\.|[^\"\\]*))\"\s*\)",
+    re.MULTILINE,
+)
+
+# AbilityBook switch-case variable assignments
+RE_ABILITY_ASSIGN = re.compile(
+    r"\b(?:myAttack|myDescribe1|myDescribe2)\s*=\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+
 RE_HASH_KEY = re.compile(r"^s\.[0-9a-f]{16}$")
 
 
@@ -314,6 +334,10 @@ def collect_targeted_ui_strings(path: str, data: str) -> List[str]:
         for m in RE_INFO_GUMP_LITERAL.finditer(data):
             texts.append(csharp_unescape(m.group(1)))
 
+    if rel.endswith("/AbilityBook.cs"):
+        for m in RE_ABILITY_ASSIGN.finditer(data):
+            texts.append(csharp_unescape(m.group(1)))
+
     return texts
 
 
@@ -336,6 +360,9 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
 
     if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
         texts.extend(extract_addhtml_fifth_arg(data))
+        for rx in (RE_RESOLVE_TEXT, RE_RESOLVE_FORMAT, RE_ADD_HTML_TEXT_RESOLVE):
+            for m in rx.finditer(data):
+                texts.append(csharp_unescape(m.group(1)))
 
     if "Scripts" in path.replace("\\", "/") and is_quest_or_book_path(path):
         for rx in (
@@ -512,9 +539,21 @@ def main() -> int:
                     zh_map[k] = en_val
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
     else:
-        tr = translate_batch(flat_texts)
+        # Only translate strings that are not yet in zh (or identical to English).
+        # This preserves any existing Chinese translations even when Google Translate fails.
+        to_translate = sorted({
+            v for m in buckets.values() for k, v in m.items()
+            if not (prev_zh_flat.get(k) and prev_zh_flat.get(k) != v)
+        })
+        tr = translate_batch(to_translate)
         for cat, en_map in sorted(buckets.items()):
-            zh_map = {k: tr.get(v, v) for k, v in en_map.items()}
+            zh_map: Dict[str, str] = {}
+            for k, en_val in en_map.items():
+                prev = prev_zh_flat.get(k)
+                if prev and prev != en_val:
+                    zh_map[k] = prev          # keep existing Chinese
+                else:
+                    zh_map[k] = tr.get(en_val, en_val)   # use translation or English fallback
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
 
     en_names = {f"{c}.json" for c in buckets}

@@ -7,6 +7,7 @@ using Server.Gumps;
 using System.Collections;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,6 +22,12 @@ namespace Server.Items
 
 		public class AbilityBookGump : Gump
 		{
+			private static string ResolveText( Mobile from, string text )
+			{
+				string lang = AccountLang.GetLanguageCode( from.Account );
+				return StringCatalog.TryResolve( lang, text ) ?? text;
+			}
+
 			public AbilityBookGump( Mobile from ) : base( 100, 100 )
 			{
 				from.SendSound( 0x55 );
@@ -144,6 +151,10 @@ namespace Server.Items
 						case 54: myIcon = 0x402;	myAttack = "Toxic Strike";				myMana = 20; myDescribe1 = "Causes the weapon to do an extra amount of poison damage."; break;
 						case 55: myIcon = 0x403;	myAttack = "Whirlwind Attack";			myMana = 15; myDescribe1 = "Attacks all valid Targets within a one tile radius of the attacker."; break;
 					}
+
+					myAttack = ResolveText( from, myAttack );
+					myDescribe1 = ResolveText( from, myDescribe1 );
+					myDescribe2 = string.IsNullOrWhiteSpace( myDescribe2 ) ? "" : ResolveText( from, myDescribe2 );
 					AddPage( nPage ); 
 
 					AddButton( 401, 87, 0x89E, 0x89E, 18, GumpButtonType.Page, (nPage+1) );
@@ -156,7 +167,7 @@ namespace Server.Items
 					AddImage(296, 95, 0x5DD0);
 					AddImage(296, 95, myIcon);
 					AddHtml( 137, 113, 134, 44, @"" + myAttack + "", (bool)false, (bool)false);
-					AddHtml( 347, 115, 80, 19, @"Mana: " + sMana + "", (bool)false, (bool)false);
+					AddHtml( 347, 115, 80, 19, String.Format( ResolveText( from, "Mana: {0}" ), sMana ), (bool)false, (bool)false);
 					AddHtml( 137, 160, 131, 99, @"" + myDescribe1 + "", (bool)false, (bool)false);
 					AddHtml( 297, 145, 131, 121, @"" + myDescribe2 + "", (bool)false, (bool)false);
 				}

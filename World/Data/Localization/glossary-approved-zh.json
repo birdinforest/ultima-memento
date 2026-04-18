@@ -2387,6 +2387,43 @@
       "category": "character",
       "notes": "Proper noun appearing in pagan/quest item naming.",
       "translation_basis_zh": "该词为怪物或相关专名，中文以音译「希兹克斯」处理，避免保留英文破坏叙事一致性。"
+    },
+    "_SECTION_FAME_KARMA": "── Fame / Karma System ──────────────────────────────────────",
+    "Dread Lord": {
+      "canonical": "恐怖领主",
+      "alternatives": ["无畏领主"],
+      "category": "title",
+      "notes": "Highest-fame negative-karma title in the UO fame/karma system.",
+      "translation_basis_zh": "「Dread Lord」是UO业力系统中声名极高但业力极低的称号，通常代表强力邪恶领主。采用「恐怖领主」传达其威慑感。"
+    },
+    "Dark Lord": {
+      "canonical": "黑暗领主",
+      "alternatives": [],
+      "category": "title",
+      "notes": "High-fame very negative karma title. Also echoes Mondain as 'the Dark Lord'.",
+      "translation_basis_zh": "「Dark Lord」在Ultima宇宙中既是业力称号，也是指代蒙丹（Mondain）的传统用语。译为「黑暗领主」与传统中文Ultima译法一致。"
+    },
+    "Lord": {
+      "canonical": "领主",
+      "alternatives": ["主"],
+      "category": "title",
+      "notes": "Fame title prefix added to character name upon reaching certain fame thresholds.",
+      "translation_basis_zh": "UO中「Lord」为高声望的名誉称号前缀，译为「领主」契合中文封建/奇幻语境。"
+    },
+    "_SECTION_WEAPON_ABILITIES": "── Weapon Special Abilities ─────────────────────────────────",
+    "Whirlwind Attack": {
+      "canonical": "旋风攻击",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "Weapon special move hitting all enemies in range.",
+      "translation_basis_zh": "「Whirlwind Attack」是UO经典近战特殊技能，旋转击中周围所有敌人。译为「旋风攻击」自然直观。"
+    },
+    "Mortal Strike": {
+      "canonical": "必杀之击",
+      "alternatives": ["致命打击"],
+      "category": "concept",
+      "notes": "Weapon special move that prevents healing for a few seconds.",
+      "translation_basis_zh": "「Mortal Strike」阻止目标在数秒内被治疗，是极具威胁的特殊技能。译为「必杀之击」既传达其危险性，也保留武侠风格。"
     }
   }
 }

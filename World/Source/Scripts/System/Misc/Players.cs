@@ -1030,8 +1030,9 @@ namespace Server.Engines.Quests
 		public static void EventSink_QuestGumpRequest( QuestGumpRequestArgs e )
 		{
 			Mobile from = e.Mobile;
-			from.CloseGump( typeof( StatsGump ) );
-			from.SendGump( new StatsGump( from, from, 0 ) );
-        }
+
+			if ( from is PlayerMobile pm )
+				pm.ViewQuestLog();
+		}
 	}
 }
