@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.2",
+  "_version": "1.3",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -2388,6 +2388,105 @@
       "notes": "Proper noun appearing in pagan/quest item naming.",
       "translation_basis_zh": "该词为怪物或相关专名，中文以音译「希兹克斯」处理，避免保留英文破坏叙事一致性。"
     },
+    "_SECTION_WORLD_ATLAS": "── World atlas / web guide (shard geography) ────────────────",
+    "Elidor": {
+      "canonical": "埃利多",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Human city on Map.Lodor in Ruins & Riches lineage shards; matches Regions.xml City of Elidor.",
+      "translation_basis_zh": "城市专名，采用与「伊利多」区分的音译「埃利多」，与 Regions.xml 英文标签一致。"
+    },
+    "Kuldara": {
+      "canonical": "库尔达拉",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Northern human city on Map.Sosaria; Kuldar-themed name per Regions.xml.",
+      "translation_basis_zh": "北方城邦专名，音译「库尔达拉」，与库尔达（Kuldar）地域设定呼应。"
+    },
+    "Death Gulch": {
+      "canonical": "死谷",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Named settlement region on Map.Sosaria per Regions.xml.",
+      "translation_basis_zh": "沿用英文地名的直译意象「死谷」，突出其危险聚落氛围。"
+    },
+    "Mountain Crest": {
+      "canonical": "山嵴镇",
+      "alternatives": ["山脊镇"],
+      "category": "place",
+      "notes": "Town on Map.Sosaria per Regions.xml the Town of Mountain Crest.",
+      "translation_basis_zh": "取 crest 山脊意象，译为「山嵴镇」作定居点名。"
+    },
+    "Glacial Coast Village": {
+      "canonical": "冰川海岸村",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Coastal village on Map.Sosaria per Regions.xml.",
+      "translation_basis_zh": "直译描述性聚落名，便于与冰岸渔村区分。"
+    },
+    "Iceclad Fisherman's Village": {
+      "canonical": "冰岸渔村",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Fishing village on Map.Sosaria per Regions.xml.",
+      "translation_basis_zh": "突出渔民聚落与冰雪海岸意象。"
+    },
+    "Atlantis": {
+      "canonical": "亚特兰蒂斯",
+      "alternatives": ["亚特拉斯海图位面"],
+      "category": "place",
+      "notes": "Separate Map.Atlantis facet in shard; not the historical myth alone.",
+      "translation_basis_zh": "沿用 Ultima 系常见的「亚特兰蒂斯」专名，并注明为本碎片独立地图位面。"
+    },
+    "Serpent Sail Docks": {
+      "canonical": "蛇帆码头",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Safe dock region on Map.SerpentIsland per Regions.xml.",
+      "translation_basis_zh": "结合 Serpent 与 Sail 意象的简洁译名。"
+    },
+    "Cimmeran Hold": {
+      "canonical": "西默兰据点",
+      "alternatives": ["西弥尔要塞"],
+      "category": "place",
+      "notes": "Village/hold on Map.IslesDread per Regions.xml.",
+      "translation_basis_zh": "音译 Cimmeran 为「西默兰」，hold 作据点/要塞式聚落。"
+    },
+    "Barako": {
+      "canonical": "巴拉科",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Village name on Map.SavagedEmpire per Regions.xml the Village of Barako.",
+      "translation_basis_zh": "部落村落专名，短音译「巴拉科」。"
+    },
+    "Kurak": {
+      "canonical": "库拉克",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Village name on Map.SavagedEmpire per Regions.xml the Village of Kurak.",
+      "translation_basis_zh": "部落村落专名，音译「库拉克」。"
+    },
+    "Fort of Stonewall": {
+      "canonical": "石墙要塞",
+      "alternatives": [],
+      "category": "place",
+      "notes": "SafeRegion fort on Map.Sosaria per Regions.xml.",
+      "translation_basis_zh": "意译 stonewall 为石墙，fort 为要塞。"
+    },
+    "Fort of Tenebrae": {
+      "canonical": "泰涅布雷要塞",
+      "alternatives": ["特涅布雷要塞"],
+      "category": "place",
+      "notes": "SafeRegion fort on Map.Underworld; echoes Ultima Underworld city Tenebrae.",
+      "translation_basis_zh": "与 Ultima Underworld 的 Tenebrae 专名音系对齐，译为「泰涅布雷要塞」。"
+    },
+    "Anchor Rock Docks": {
+      "canonical": "锚岩码头",
+      "alternatives": [],
+      "category": "place",
+      "notes": "SafeRegion docks on Map.Sosaria per Regions.xml.",
+      "translation_basis_zh": "锚岩为 anchor rock 直译，码头标明功能。"
+    },
     "_SECTION_FAME_KARMA": "── Fame / Karma System ──────────────────────────────────────",
     "Dread Lord": {
       "canonical": "恐怖领主",
@@ -2409,6 +2508,14 @@
       "category": "title",
       "notes": "Fame title prefix added to character name upon reaching certain fame thresholds.",
       "translation_basis_zh": "UO中「Lord」为高声望的名誉称号前缀，译为「领主」契合中文封建/奇幻语境。"
+    },
+    "_SECTION_QUEST_DISPLAY": "── Quest bulletin / dynamic quest display ───────────────────",
+    "the Sanctum of Saltmarsh": {
+      "canonical": "盐沼圣所",
+      "alternatives": [],
+      "category": "dungeon",
+      "notes": "Dungeon-style place name used in random quest flavour text (QuestStories.SomePlace).",
+      "translation_basis_zh": "saltmarsh 为盐沼湿地意象；sanctum 作圣所/秘所，组合为「盐沼圣所」。"
     },
     "_SECTION_WEAPON_ABILITIES": "── Weapon Special Abilities ─────────────────────────────────",
     "Whirlwind Attack": {
