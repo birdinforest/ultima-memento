@@ -1,0 +1,691 @@
+# NPC literal strings from Scripts/Mobiles (SendMessage/Say/overhead)
+* The bunny begins to dig a tunnel back to its underground lair *
+* The creature has been beaten into subjugation! *
+*ah!*
+*applauds*
+*blinks a blue eye*
+*blinks a greed eye*
+*blinks a red eye*
+*blinks a yellow eye*
+*blows nose*
+*bows*
+*burp*
+*claps*
+*clears throat*
+*cough*
+*cries*
+*farts*
+*gasp*
+*giggles*
+*groans*
+*growls*
+*hiccup*
+*laughs*
+*looks furious*
+*meditating*
+*sigh*
+*sniff*
+*snore*
+*spits*
+*sticks out tongue*
+*whistles*
+*woohoo!*
+*yawns*
+*yells*
+A betrayal will finally happen or he will babble at the coming of destruction.
+A contest must not happen after the first frost.
+A defeat will not take place in a castle on a journey.
+A fight shall take place for the sake of willpower.
+A financial difficulty will never take place or the clumsy zombie will finally weep at midnight.
+A gate is open nearby. You better hurry or you will remain trapped here.
+A meeting must happen with the malicious cook.
+A promise will finally take place and it shall not bother during fall in a time of fear.
+A relationship ending will finally happen with the tired juggler during the planting season.
+A reunion must not occur or the unlucky chimera must fold in the age of temptation.
+A reversal of fortune shall not happen and a fall shall not occur in the spring for the sake of lust.
+A shard of a universe is a powerful thing.
+A small chest has been added to your pack!
+A soul has been claimed.
+After this, I will buy you some
+After this, we will reflect on what we learned.
+Ah ha!
+Ahh-choo!
+Ahhh...
+Ahhh...a cut of the treasure. This journey is worth the risk.
+Ahhh...bandages can be of great use. I have
+Ahhhh!
+Aid the nobility that resideth in human heart.
+All should fear
+All that have come here have perished!
+All will know that
+Although some speak of virtue, it is the serpents of order who keep the balance.
+An Avatar must unlock the Monster Races system before using this.
+An agreement must take place with the broken-hearted cleric.
+An injury shall happen.
+An introduction will finally happen or the seductive viper shall not worship with the fanatical druid during the planting season.
+An introduction will not happen and the intelligent champion shall lower on the spring equinox.
+An item has appeared in your backpack!
+Anh Mi Sah Ko
+Another ale over here!
+Are you ready to give yourself to me?!
+Are you ready to serve me in the depths,
+Are your bones cold yet,
+Argh!
+Arrgghhh...
+Arrrggghhh...
+Arrrrrgh!
+As a reward for slaying the cursed creature, an artifact has been placed in your backpack.
+As a reward for slaying the mighty leviathan, an artifact has been placed in your backpack.
+As your backpack is full, your reward for slaying cursed creature has been placed at your feet.
+Bring light to the world with these, Jedi.
+But I am but a mouse, and none hear me.
+By Neptunes's might, how...
+By Poseidon's wrath, how...
+By iceberg's might, how...
+By magma's might, how...
+By what thunder is this?
+Castle Exodus lies in ruins, no one knowing what evil lurks below.
+Chuckles gave you a check for
+Chuckles gave you one of his hats!
+Chuckles gave you one of his suits!
+Cinders will be all that is left of you,
+Come and find me later when you have a quest for riches.
+Curse you,
+Death is only a distraction to me!
+Defend yourself!
+Defensively Dispelled
+Did you have too much
+Did you not meditate before the coming sun?
+Die villian!
+Dispel chance increased (Slayer)
+Dispel prevented (DispelDifficulty)
+Dispel prevented (Failed)
+Dispel prevented (Low skill)
+Dispel prevented (Magery)
+Dispel prevented (Mana)
+Dnadona qae gia,
+Dnadona qae zaaq esaeun doom!
+Do with these what you will, Syth.
+Do you feel the power of hell on you?!
+Do you think you can beat me?!
+Do you think you can best me?!
+Do you think you can slay one such as me?!
+Done? With what? I am not sure what things you speak of.
+En garde!
+Enter the amount of gold you wish to withdraw (ESC = CANCEL):
+Esaeu lizz gia xes zes soth!
+Even pawns have lives and loves at home, my lord.
+Evil has been banished.
+Eyes open and focus on me
+Fame and fortune await!
+Feel the cold of glacial ice!
+Feel the fires of volcanic might!
+Feel the might of the orks!
+Feel the power of
+Feel the power of my hammer!
+Feel the strength of the sea!
+Feel the wrath of the storm!
+Fell the wrath of my master!
+Fellow guardsmen,
+Fool! I will take your corpse to the depths!
+Fool! You think chaos can be slain to easily?
+Fool...I am eternal!
+Fool...I cannot kill what is dead?!
+Fool...I will rise again!
+Fool...you can never bring me to the light!
+Fool...you can never destroy me!
+Fool...you cannot survive the flames!
+Foolish mortal!
+Foolish mortal! You cannot defeat me!
+Give the innkeeper
+Give up! We do not fear
+Good day to you,
+Good,
+Good, more treasure for me.
+Grarrgh...
+Gri Gril Gestroy Groo!
+Groo Gran Grever Gregreat Gre!
+Groo Grar Gro Gratch Gror Gre!
+Groo Grite Grood!
+Grour Grones Gril Gray Grin Gry Grwamp!
+Guards,
+Have
+He must not weary.
+He shall fence with the black countess near a portal.
+He shall not assimilate with the proud youth.
+Hell will not be able to hold me...
+Hello,
+Here is a note citizen. Be on the lookout.
+Here is your replacement ring.
+Hey!
+Hmmm...maybe show me that you could handle such tasks first.
+Hmmm...you do not seem the type I wish to discuss matters with.
+How did the girl dragon win the beauty contest? She was the beast of the show!
+How did the prince get into the castle when the drawbridge was broken? He used a rowmoat!
+How do you find a princess? You follow the foot prince.
+How...can...this...be...
+How...did...you...
+Huh?
+I am a monster, cut off from all the world!
+I am fearless, and therefore powerful!
+I am ready for adventure.
+I assume they done you harm. Let me rid you of this thing.
+I can feel the darkness filling you!
+I can smell the blood from your wounds!
+I can smell your burning flesh!
+I cannot accept so large a tip!
+I could beat you if I were three sheets to the wind!
+I could use these bandages. I have
+I failed you my master...
+I feel this quest is a dead end and may leave soon.
+I fought scallywags better than you!
+I have
+I have been waiting here too long.
+I have brought justice to others more vile than you,
+I have changed the cover of your book.
+I have converted others stonger than you,
+I have defeated foes larger than you!
+I have destroyed armies of things like you!
+I have no business with you.
+I have nothing for you at the moment. Check back in
+I have rebound your book.
+I have slain others better than you,
+I have slain those mightier than you,
+I have slain those more powerful than you!
+I hope the blood of the sea drowns you!
+I hope the curses of hell fill your soul!
+I lizz raeq chq esaeu xaed za!
+I look forward to torturing your soul,
+I sense a spirt of an animal...somewhere.
+I sentence you to death!
+I smash you to pulp!
+I think I will head back to town and get a drink.
+I unleash the storms on you!
+I will become your new god,
+I will break a spirit such as yours!
+I will bring you justice!
+I will come for you,
+I will crush you into the dirt!
+I will drag your corpse into the sea!
+I will drain every breath of life from you!
+I will freeze your blood and shatter your soul!
+I will have a place for the bones of
+I will have to leave soon if we don't find some treasure.
+I will have your soul one day,
+I will leave soon if we don't find treasure.
+I will leave your corpse as ashes!
+I will return...
+I will send you to hell!
+I will smash you into dirt!
+I will splice the mainbrace over your corpse!
+I will summon your gore to crawl these halls!
+I will swallow you whole,
+I will take you from the light!
+I will tell all on how I crushed
+I will use your corpse to feed my minions!
+I will vanquish your existence from all time!
+I witnessed them all from my tiny mousehole.
+I'll pass on the message.
+I'll say that to anyone who gives me a good tip.
+I've had worse!
+I...am...no...more...
+I...uh...uhhhhh...
+I...will...dispatch...of...you!
+If you hear of any rumors of gold, come and get me.
+If you hear stories of riches, come and get me.
+In Vas Mani
+Invalid character selection detected.
+Is that all you got?
+It is your turn!
+It will finally benefit in the citadel in the age of dreams.
+It will judge in the summer.
+It will never pray with the shy zealot.
+It would not be fair of me to take your money and not offer you information in return.
+Kneel before me you puny creature!
+Leave this place!
+Let me fix that quiver for you.
+Let the mountain fires take you,
+Let the shadows take you,
+Let this be your final battle!
+Look into my eyes,
+Look into my eyes...
+Make sure this skill is marked to raise. If you are near the skill cap you may need to lose some points in another skill first.
+Many have come here and all have perished!
+Many have died trying to take what is mine!
+May monsters fear our hardy band.
+Maybe one day the Stranger will achieve Avatarhood.
+Maybe you should flee before it is too late!
+Me cannot lose!
+Me curse you...
+Me hit, you die!
+Me make soup with your
+Me no feel good!
+Me see you living no longer!
+Me will be eating your
+Me will be feasting on your bones soon!
+Mondain's legacy is forever extinguished.
+Move like
+My blade is eager to sever your head!
+My cold heart will come for you,
+My diligence will be your ultimate doom!
+My foot will be the last thing you see!
+My magic is eternal!
+My magic will decimate you!
+My power is eternal!
+My tummy hurts...
+My...might...outweighs...yours!
+No one desecrates the temple of the bomb!
+No one does that and lives!
+No one has faced a syth and lived!
+No one will find the bones of
+No pray, no pay. Your riches will be mine!
+No!
+No! It is your soul I will take!
+No! The power of the wind will blow you away!
+No,
+No, how can this be?!
+No, it cannot be...
+No...
+No...!
+No...How can this be?!
+No...I am eternal!
+No...I cannot return to hell!
+No...I will not be vanquished!
+No...how can...
+No...this cannot be how it ends!
+No...this cannot be the end!
+No...you cannot do this!
+No...you cannot have light without dark!
+No...you will never get the ore!
+Nooo...
+Not enough to bring me down!
+Oft have I wished that stranger would return.
+Oh!
+Oil almost covered one of your protected items!
+One day the Stranger will return to Sosaria.
+One day you will be taken by the sea,
+One of your items has been turned to stone!
+One of your items is covered in oil!
+One of your items is covered in sewage!
+One of your items is covered in slime!
+One of your items is covered in viscera!
+One of your items is wrapped in weeds!
+One of your items was carried into the wind!
+One of your protected items was almost carried by the wind!
+One of your protected items was almost wrapped in weeds!
+Only a grandmaster in necromancy and magery may ride this evil being.
+Only a grandmaster in necromancy may ride this undead steed.
+Only apprentice mages, elementalists, or necromancers may summon these familiars.
+Only grandmaster death knights may ride this evil steed.
+Only grandmaster knights may ride this holy steed.
+Only grandmaster warriors may ride this warhorse.
+Oooh.
+Oops!
+Peace has finally found me...
+Please enter a new name for this grave stone.
+Please,
+Prepare to die fool!
+Rae...sael yor yiz xa?
+Rise my friend. I wish I could save every unfortunate animal.
+Say what news you would like me to tell our guests.
+Say what you want me to tell guests when they give me a good tip.
+Sewage almost covered one of your protected items!
+She is too far away from you.
+She must not consent in the age of entropy.
+She shall not ascend after sunset.
+She shall weld or he will finally crush during the growing season.
+She will ensure in the citadel.
+She will finally famish and a recovery will not happen near a well during a rainstorm.
+She will finally gutter in a market before it is too late.
+She will finally intrude.
+Shhh!
+Single click on it to enchant it.
+Slime almost covered one of your protected items!
+So,
+Some day your blood will fill these halls,
+Sorry,
+Sorry, but I am tired and cannot heal you now.
+Sorry, but there is not enough reward on this journey for me.
+Squeak
+Squeak!
+Submit, and I will make it quick!
+Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes.
+Take this, and be enlightened.
+Take your steed and fill the world with dread.
+Taste my wrath and my blade!
+Thank you,
+Thank you. You can now try to rent a room.
+That skill cannot be taught. You must learn it yourself!
+The Bell of Courage has vanished after dispatching the Shadowlord.
+The Book of Truth has vanished after dispatching the Shadowlord.
+The Candle of Love has vanished after dispatching the Shadowlord.
+The GorgonRiding almost turned one of your protected items to stone!
+The Lantern of Discipline has vanished after dispatching the Chaos Bane.
+The Orb of Logic has vanished after dispatching the Chaos Bane.
+The Scales of Ethicality have vanished after dispatching the Chaos Bane.
+The Stranger has saved Sosaria from Exodus.
+The Syth will be the last thing you see,
+The arrogant rogue must not comply with the indigo robber at the coming of joy.
+The balron almost rusted one of your protected items!
+The balron rusted one of your equipped items!
+The basilisk almost turned one of your protected items to stone!
+The broken-hearted grandmother will act or he shall not meander.
+The card vanishes from your hand as you magically appear elsewhere.
+The clever hamster will trespass with the saffron youth in a castle when the first flowers bloom.
+The corruption of your armor has worn off
+The creature is sucking the soul out of you!
+The creature sucks some blood from you!
+The curse has been lifted from the
+The curse has been lifted from the books.
+The daemon almost rusted one of your protected items!
+The daemon rusted one of your equipped items!
+The deluded pony will not forget in a graveyard on a windy day for the sake of alchemy.
+The diamond possum shall not deflect near a fortress on a sunny day before the coming of beauty.
+The dragon almost rusted one of your protected items!
+The dragon changed its bone structure.
+The dragon rusted one of your equipped items!
+The emerald lion will never scare for the sake of winter.
+The fanatical wizard shall not wax near a holy site in the afternoon at the coming of luck.
+The fearless trader shall not look with the violet druid.
+The frost of death will find you!
+The golem almost rusted one of your protected items!
+The golem rusted one of your equipped items!
+The grave stone has been changed.
+The greedy artist shall lace and the garnet general must not compose.
+The hasty hostler must jump.
+The honest runaway will succumb with the hungry hare before the coming of lust.
+The item has been cleaned.
+The lamprey sucks some blood from you!
+The lavender summoner will crush in a time of truth.
+The lazy juggler will finally enquire and a loss shall not occur.
+The leech sucks some blood from you!
+The mask of death has vanished.
+The medusa almost turned one of your protected items to stone!
+The mummy ruined your bandages!
+The music is hypnotic, making you remove your worn items.
+The oil covers you and magically ignites!
+The orange donkey shall not gutter at the bridge.
+The order was Love, Sol, Moon, and Death.
+The parchment crumbles to dust.
+The pet may not be transfered to you because it has recently been in combat.
+The pet may not be transferred to you because it has recently been in combat.
+The remorseless muse will fraternize at the bridge.
+The risk is not worth the little reward I am getting.
+The rune doesn't seem to budge.
+The russet berserker must gasp or the remorseless slave must not bicker with the triumphant lion near a farm on the spring equinox.
+The strings of time show the Guardian is coming.
+The timeline has been restored, after the wrath of Minax.
+The weeds have been removed.
+The word to the dark mage depths is 'bravoka'.
+The worm sucks some blood from you!
+The xorn ate some of your gold!
+There are many castles in the world, but who is strong enough to move one? Any chess player
+There is not enough reward in this for me.
+They are dead and you must hire a healer to resurrect them.
+They will not weave near an altar.
+This crystal ball seems to be out of charges.
+This is a statue of Tarjan, who lies dead nearby.
+This is good practice
+This is not a graveyard! Bury them somewhere else!
+This is not some slave you can take control of.
+This is not some slave you can trade.
+This is not your crystal ball!
+This is not your pack animal!
+This isn't implemented for elves yet.  Sorry!
+This lack of treasure is not what I came along for.
+This must be in your backpack to identify.
+This must be in your backpack to open.
+This seems like a bunch of scribbles.
+This spell must be in your backpack to use.
+This statue seems to be missing an eye.
+This statue still has the eye you placed in it.
+This will be your final battle,
+This will be your final fight!
+Time to die!
+Tis but a scratch!
+To be whole again, I must destroy you!
+Viscera almost covered one of your protected items!
+Wax covers your mouth...so it is hard to breath!
+We have been told to watch for
+We have been told to watch for you,
+We have ways of dealing with the likes of
+We must bring the shards into harmony, so that they resonate in such a manner that matches the original universe.
+What are we looking for? It is obviously not treasure.
+What did the dragon say when it saw the Knight? 'Not more tinned food!'
+What did the fish say to the other when the horse fell in the moat? See horse!
+What did the toad say when the princess would not kiss him? Warts the matter with you?
+What do you call a cat that flies over the castle wall? A cat-a-pult!
+What do you call a mosquito in a tin suit? A bite in shining armor.
+What do you call an angry princess just awakened from a long sleep? Slapping beauty!
+What do you call the young royal who keeps falling down? Prince Harming!
+What do you do with a green dragon? Wait until it ripens!
+What dungeon do we dare explore?
+What game do the fish play in the moat? Trout or dare!
+What is this madness?!
+What keyword should a guest say to me to get this news?
+What king was famous because he spent so many nights at his Round Table writing books? King Author!
+What was Camelot famous for? It's knight life!
+When a knight in armor was killed in battle, what sign did they put on his grave? Rust in peace!
+Where are we off to?
+Where did you learn to fight like that
+Where did you study to fight like that
+Who invented King Arthur's round table? Sir Cumference!
+Why did Arthur have a round table? So no one could corner him!
+Why did the dinosaur live longer than the dragon? Because it didnt smoke!
+Why did the dinosaur live longer than the dragon? Because it didn’t smoke!
+Why did the king go to the dentist? To get his teeth crowned.
+Why did the knight run about shouting for a tin opener? He had a bee in his suit of armor!
+Why were the early days called the dark ages? Because there were so many knights!
+Woohoo!
+Xtee Mee Glau
+Yea!
+Yet sometimes one must sacrifice a pawn to save a king.
+Yield to me!
+You
+You absord the Titan's power into the Breath of Air.
+You absord the Titan's power into the Heart of Earth.
+You absord the Titan's power into the Tear of the Seas.
+You absord the Titan's power into the Tongue of Flame.
+You already have a familiar.
+You already have a pack animal.
+You already have enough henchman in your group.
+You already have the onyx key. Use it to enter Mangar's tower.
+You already have too many in your group.
+You already have your orders. Return to me when you are done with the task.
+You are confused from umber hulk's stare!
+You are currently using
+You are hit by a manticore thorn!
+You are hit by the force of the beast!
+You are hit by the force of the mighty roar!
+You are hit with a stunning punch!
+You are hypnotized by the worm's gaze!
+You are no match for me!
+You are no match for my magic!
+You are no match for the gods of the sea!
+You are nothing but an insect to me!
+You are paralyzed from the poisonous bite!
+You are paralyzed!
+You are petrified from the Gorgon breath!
+You are petrified with fear from the mighty roar!
+You are petrified!
+You are struck with the eel's electricity!
+You are struck with the storm's lightning!
+You can only call your henchman from a home, inn, or tavern.
+You cannot buy this item right now.  Please wait one minute and try again.
+You cannot crush me puny one!
+You cannot defeat the power of gods...
+You cannot give away a familiar.
+You cannot give away a golem.
+You cannot give away a mystical pack animal.
+You cannot give away a reanimation.
+You cannot give away an elemental.
+You cannot mount that while you are in here.
+You cannot mount that while you are in this place.
+You cannot price items above 100,000,000 gold.  The price has been adjusted.
+You cannot ride a mount in your current form.
+You cannot stop the destruction I will soon unleash!
+You cannot take another wizard's elemental.
+You cannot take another wizard's familiar.
+You cannot take another's golem.
+You cannot take another's mystical pack animal.
+You cannot take another's reanimation.
+You carve away some wood and they are on the corpse.
+You charm the snake. Select a target to attack.
+You chip away some metal and it is on the corpse.
+You chip away some stones and they are on the corpse.
+You chisel away some granite and it is on the corpse.
+You choke from the thrown mud!
+You cut away some bones and they are on the corpse.
+You cut away some furs and they are on the corpse.
+You cut away some leather and they are on the corpse.
+You cut away some scales and they are on the corpse.
+You cut away some skins and they are on the corpse.
+You dare face my glacial power?!
+You dare face the power of the sea?!
+You dare invade my lair?!
+You do not have enough gold.
+You feel the blood drain from you!
+You feel the blood draining from you!
+You feel the life drain out of you!
+You feel your muscles regain control.
+You feel your soul draining!
+You find nothing of interest.
+You found a blackened key with a symbol of a sword on it.
+You found a book and put it in your pack.
+You found a key with a symbol of a unicorn on it.
+You found a mysterious eye and a key with a dragon symbol on it.
+You found the rusty key that was around the gray dragon's neck.
+You have been disrupted while attempting to summon your mount!
+You have been given your holy symbol and prayer book.
+You have been knocked senseless!
+You have been paralyzed by a necrotic claw!
+You have been poisoned!
+You have been sent to the
+You have been sliced by a saw!
+You have been stunned by a colossal blow!
+You have been stunned by a devastating blow!
+You have gained a really large amount of fame.
+You have improved
+You have not seen the last of me,
+You have obtained Satan's Orb of the Abyss!
+You have obtained the Blackrock Serpent of Balance!
+You have obtained the Blackrock Serpent of Chaos!
+You have obtained the Blackrock Serpent of Order!
+You have obtained the Shard of Cowardice!
+You have obtained the Shard of Falsehood!
+You have obtained the Shard of Hatred!
+You have pulled Arachnar's Vault toward you.
+You have pulled Mangar's Vault toward you.
+You have pulled Surtaz's Vault toward you.
+You have pulled Vordinax's Vault toward you.
+You have pulled Vulcrum's Vault toward you.
+You have pulled Xurtzar's Vault toward you.
+You have resigned from the local guild.
+You have subdued the Serpent of Chaos!
+You have subdued the Serpent of Order!
+You have yet to learn the secrets of riding draconic creatures.
+You hear jarring music, suppressing your abilities.
+You landlubber, prepare to die!
+You learned Vordo's secrets to escaping this place.
+You leave our land now!
+You look as though you have some wounds.
+You look like you need soe healing dark one.
+You magically resist the affects of the song.
+You may have won this day,
+You may not ride this creature.
+You may not transfer a pet that has recently been in combat.
+You need to be near a druid or animal handler to call this pack animal!
+You need to learn to parry
+You no match for me!
+You place the mysterious eye into the statue.
+You promised riches, but I fear there is none.
+You puny
+You recover your senses.
+You remove the giant's fresh brain.
+You said there were riches, but I don't see it.
+You scurvy dog, do you think you can best me?!
+You separate the boards into your backpack
+You separate the food into your backpack
+You separate the ingots into your backpack
+You separate the leather into your backpack
+You separate the logs into your backpack
+You separate the meat into your backpack
+You separate the ore into your backpack
+You separate the potions into your backpack
+You separate the reagents into your backpack
+You sever apart the giant's torso.
+You sever off the giant's head.
+You sever off the giant's left arm.
+You sever off the giant's left leg.
+You sever off the giant's right arm.
+You sever off the giant's right leg.
+You should be honored to be slain by me!
+You should have fled but it is too late!
+You should have fled this land long ago!
+You should leave before I crush you!
+You think I have not faced mortals like you?!
+You think you can defeat me?!
+You weak, me strong!
+You will be dead by me hand!
+You will have to be better than that
+You will have to do better than that
+You will have to do better than that!
+You will kneel before the Syth!
+You will kneel before the bomb!
+You will make great feast for us!
+You will make me an excellent meal!
+You will make me young again,
+You will need to be more graceful than that
+You will need to be quicker than that
+You will never find the caddellite!
+You will never gain entry to my vault!
+You will never have the secrets of the ore!
+You will never leave this place alive!
+You will pay for your crimes!
+You will soon be nothing but ashes!
+You will soon be one with the glow!
+You will soon become shark bait!
+You will soon will rot below the waves!
+You will submit to my dark power!
+You'll pay for that!
+You...dare...fight...me?!
+You...fight...good...
+You...will...die...in...this...fight!
+Your blood smells sweet!
+Your blood will decorate these walls!
+Your character will be recreated and you will be disconnected shortly...
+Your corpse will rise and serve me,
+Your deeds do not grant you a gift of tribute.
+Your evil will be vanquished!
+Your friend {0}'s pet {1} has died!
+Your frozen corpse will decorate my halls!
+Your head will look good on the block!
+Your henchmen have been resurrected.
+Your life ends here!
+Your life ends here,
+Your life only feeds my own!
+Your life will end in darkness,
+Your mount has moved to your pack.
+Your mount is safely waiting for you elsewhere.
+Your mount senses you are in danger and aids you with magic.
+Your pack animal needs to be tended to by a druid guildmaster.
+Your pet has decreased in level!
+Your pet has gained {0} trait{1}!
+Your pet is now level {0}.
+Your pet trusts you implicitly. It will be easier to control now.
+Your pet {0} has died!
+Your pet {0} has gained {1} experience!
+Your pet {0} has lost {1} experience!
+Your riches will soon be mine!
+Your soul will be mine!
+Your soul will be mine,
+Your soul will make an excellent meal!
+Your soul will serve me well!
+Your soul will soon be encased in ice!
+Your soul will soon be one with the deep!
+Your treasure will help fill my vault!
+Your weapon cannot penetrate the creature's magical barrier
+Your weapon is less effective with the creature's magical barrier up!
+Zae zes hima ends sabbia!
+{0} the vendor cannot be harmed.
+{0} {1} cannot be harmed.
