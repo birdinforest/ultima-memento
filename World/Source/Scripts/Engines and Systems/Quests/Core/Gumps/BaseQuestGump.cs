@@ -219,6 +219,7 @@ namespace Server.Engines.MLQuests.Gumps
 			pm.CloseGump( typeof( QuestReportBackGump ) );
 			//pm.CloseGump( typeof( UnknownGump807 ) );
 			pm.CloseGump( typeof( QuestCancelConfirmGump ) );
+			pm.CloseGump( typeof( ContractQuestAbandonConfirmGump ) );
 		}
 	}
 }

@@ -364,7 +364,38 @@ namespace Server.Gumps
 			if ( resolved != null )
 				return Intern( resolved );
 
+			resolved = TryResolveBaseFontWrappedText( lang, englishOrLiteral );
+
+			if ( resolved != null )
+				return Intern( resolved );
+
 			return Intern( englishOrLiteral );
+		}
+
+		private static string TryResolveBaseFontWrappedText( string lang, string text )
+		{
+			if ( text == null )
+				return null;
+
+			const string openTagPrefix = "<BASEFONT COLOR=#";
+			const string closeTag = "</BASEFONT>";
+
+			if ( !text.StartsWith( openTagPrefix ) || !text.EndsWith( closeTag ) )
+				return null;
+
+			int openTagEnd = text.IndexOf( '>' );
+
+			if ( openTagEnd < 0 || openTagEnd + 1 >= text.Length - closeTag.Length )
+				return null;
+
+			string openTag = text.Substring( 0, openTagEnd + 1 );
+			string innerText = text.Substring( openTagEnd + 1, text.Length - openTagEnd - 1 - closeTag.Length );
+			string resolvedInner = StringCatalog.TryResolve( lang, innerText );
+
+			if ( resolvedInner == null )
+				return null;
+
+			return openTag + resolvedInner + closeTag;
 		}
 
 		public void SendTo( NetState state )

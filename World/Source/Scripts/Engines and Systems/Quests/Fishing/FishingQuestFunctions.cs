@@ -10,6 +10,7 @@ using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
+using Server.Localization;
 
 /*
 3002004	Tell
@@ -21,6 +22,42 @@ namespace Server.Misc
 {
     class FishingQuestFunctions
     {
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
+		private static string BuildQuestStatusText( Mobile from, string targetTitle, string targetName, string region, string world, int fee, string category, string storedStory )
+		{
+			string targetDisplay = string.IsNullOrWhiteSpace( targetTitle ) ? targetName : targetTitle;
+			string regionDisplay = ResolveText( from, region );
+			string worldDisplay = ResolveText( from, world );
+			string targetDisplayLocalized = ResolveText( from, targetDisplay );
+			string feeText = fee.ToString( "#,##0" );
+
+			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+			{
+				if ( category == "Item" )
+					return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+
+				return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+			}
+
+			if ( !string.IsNullOrWhiteSpace( storedStory ) )
+				return storedStory;
+
+			if ( category == "Item" )
+				return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+
+			return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+		}
+
 		public static int ChanceToFindQuestedItem()
 		{
 			return 10;
@@ -597,9 +634,9 @@ namespace Server.Misc
 					nEntry++;
 				}
 
-				sexplorerQuest = sPCStory;
+				sexplorerQuest = BuildQuestStatusText( m, sPCTitle, sPCName, sPCRegion, sPCWorld, nPCFee, sPCCategory, sPCStory );
 				string sWorth = nPCFee.ToString("#,##0");
-				if ( nPCDone == 1 ){ sexplorerQuest = "Return to any sailor quest bulletin board for your " + sWorth + " gold payment"; }
+				if ( nPCDone == 1 ){ sexplorerQuest = ResolveFormat( m, "Return to any sailor quest bulletin board for your {0} gold payment", sWorth ); }
 			}
 			return sexplorerQuest;
 		}

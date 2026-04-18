@@ -1,5 +1,6 @@
 using System;
 using Server.Gumps;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Engines.GlobalShoppe
@@ -27,6 +28,17 @@ namespace Server.Engines.GlobalShoppe
 		private readonly IOrderContext m_Order;
 		private readonly RewardType m_SelectedReward;
 
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
 		public RewardSelectionGump(
 			Mobile from,
 			ShoppeBase shoppe,
@@ -53,13 +65,13 @@ namespace Server.Engines.GlobalShoppe
 				return;
 			}
 
-			TextDefinition.AddHtmlText(this, 20, 20, 360, 25, "<CENTER>Order Completed</CENTER>", HtmlColors.MUSTARD);
+			TextDefinition.AddHtmlText(this, 20, 20, 360, 25, string.Format("<CENTER>{0}</CENTER>", ResolveText(from, "Order Completed")), HtmlColors.MUSTARD);
 
 			TextDefinition.AddHtmlText(this, 20, 50, 360, 40,
-				string.Format("{0} thanks you for the {1}. {2}",
+				ResolveFormat(from, "{0} thanks you for the {1}. {2}",
 					order.Person,
 					((IOrderShoppe)m_Shoppe).GetDescription(order).Replace("Craft ", ""),
-					m_SelectedReward == RewardType.None ? TextDefinition.GetColorizedText("Choose your fee.", HtmlColors.OFFWHITE) : ""
+					m_SelectedReward == RewardType.None ? TextDefinition.GetColorizedText(ResolveText(from, "Choose your fee."), HtmlColors.OFFWHITE) : ""
 				), HtmlColors.BROWN);
 
 			int y = 120;
@@ -68,13 +80,13 @@ namespace Server.Engines.GlobalShoppe
 			int START_X = (400 - TOTAL_WIDTH) / 2;
 
 			int BOX_X = START_X + (BOX_WIDTH / 2);
-			AddRewardOption(Actions.SelectReputation, RewardType.Reputation, BOX_X, y, REPUTATION_ITEM_ID, m_Order.ReputationReward.ToString(), "Reputation");
+			AddRewardOption(Actions.SelectReputation, RewardType.Reputation, BOX_X, y, REPUTATION_ITEM_ID, m_Order.ReputationReward.ToString(), ResolveText(from, "Reputation"));
 			BOX_X += BOX_WIDTH;
 
-			AddRewardOption(Actions.SelectGold, RewardType.Gold, BOX_X, y, GOLD_ITEM_ID, m_Order.GoldReward.ToString(), "Gold");
+			AddRewardOption(Actions.SelectGold, RewardType.Gold, BOX_X, y, GOLD_ITEM_ID, m_Order.GoldReward.ToString(), ResolveText(from, "Gold"));
 			BOX_X += BOX_WIDTH;
 
-			AddRewardOption(Actions.SelectPoints, RewardType.Points, BOX_X, y, POINTS_ITEM_ID, m_Order.PointReward.ToString(), "Points");
+			AddRewardOption(Actions.SelectPoints, RewardType.Points, BOX_X, y, POINTS_ITEM_ID, m_Order.PointReward.ToString(), ResolveText(from, "Points"));
 
 			int BUTTON_Y = 250;
 			int CLAIM_BUTTON_X = 200;
@@ -82,7 +94,7 @@ namespace Server.Engines.GlobalShoppe
 			if (m_SelectedReward != RewardType.None)
 			{
 				AddButton(CLAIM_BUTTON_X, BUTTON_Y, 4023, 4023, (int)Actions.Claim, GumpButtonType.Reply, 0);
-				TextDefinition.AddHtmlText(this, CLAIM_BUTTON_X + 35, BUTTON_Y + 3, 100, 20, "Claim Your Fee", HtmlColors.MUSTARD);
+				TextDefinition.AddHtmlText(this, CLAIM_BUTTON_X + 35, BUTTON_Y + 3, 100, 20, ResolveText(from, "Claim Your Fee"), HtmlColors.MUSTARD);
 			}
 		}
 
