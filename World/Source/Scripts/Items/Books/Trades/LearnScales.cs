@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 9908, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + " Scales</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) + " Scales" ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -93,8 +93,8 @@ namespace Server.Items
 					string craft = "Blacksmiths are able to use the hardened scales of reptiles, to make various types of armor and shields. These scales can vary in color and properties they enhance, for the items you can make from them. Due to the hardened nature of these scales, you would need an anvil and forge in order to heat them and hammer them into the shape required.";
 					string scales = "Use a bladed item, like a dagger or knife, on a corpse by double clicking the item and then selecting the corpse. If there are reptile scales to be taken from it, they will appear in their pack. Different types of scales can be found on many creatures like lizards, dragons and dinosaurs. You can use these scales to make different types of armor and shields by using scaling tools. Some of the types of scales you can find are listed on the next page.";
 
-					AddHtml( 122, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + craft + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + scales + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, craft ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, scales ), (bool)false, (bool)false);
 				}
 			}
 

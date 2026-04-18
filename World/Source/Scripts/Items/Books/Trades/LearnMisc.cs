@@ -46,7 +46,7 @@ namespace Server.Items
 				AddImage(0, 0, 7006);
 				AddImage(0, 0, 7024, 2789);
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddItem(76, 192, 7123);
 				AddItem(74, 116, 2545);
@@ -67,8 +67,8 @@ namespace Server.Items
 
 				string p2 = "Animals are the best source of meat, while feathers come from bird like creatures. Bone come from many different creatures, and scales come from reptiles. Cloth is rare to find, but ghosts often have it. Wool can come from sheep and hides can come from any tough skinned creature. Rocks and metals are often found on golems and stone elementals, while wood is often fond on ents and reapers.";
 
-				AddHtml( 122, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + p1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 415, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + p2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 122, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, p1 ), (bool)false, (bool)false);
+				AddHtml( 415, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, p2 ), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 
