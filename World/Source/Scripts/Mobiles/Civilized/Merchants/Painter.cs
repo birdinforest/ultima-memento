@@ -78,11 +78,11 @@ namespace Server.Mobiles
 					paintPrice = paintPrice - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * paintPrice ); if ( paintPrice < 1 ){ paintPrice = 1; }
 				}
 
-				if (pack.ConsumeTotal(typeof(Gold), paintPrice))
-				{
-					if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-					this.SayTo(from, "Here is a nice painting of you.");
-					from.SendMessage(String.Format("You pay {0} gold.", paintPrice));
+			if (pack.ConsumeTotal(typeof(Gold), paintPrice))
+			{
+				if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
+				this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is a nice painting of you."));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", paintPrice));
 
 					WaxPaintingA portrait = new WaxPaintingA();
 
@@ -97,17 +97,17 @@ namespace Server.Mobiles
 
 					from.AddToBackpack ( portrait );
 				}
-				else
-				{
-					this.SayTo(from, "It would cost you {0} gold to have a portrait done.", paintPrice);
-					from.SendMessage("You do not have enough gold.");
-					from.AddToBackpack ( new PaintCanvas() );
-				}
+			else
+			{
+				this.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have a portrait done.", paintPrice));
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+				from.AddToBackpack ( new PaintCanvas() );
+			}
 				dropped.Delete();
 			}
-			else if ( dropped is WaxPaintingA && dropped.Weight == 15.0 )
-			{
-				this.SayTo(from, "How about this?");
+		else if ( dropped is WaxPaintingA && dropped.Weight == 15.0 )
+		{
+			this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "How about this?"));
 
 				WaxPaintingA portrait = (WaxPaintingA)dropped;
 

@@ -127,9 +127,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, "Since you are begging, do you still want me to charge a crystal balls of summoning with 5 charges, it will only cost you " + nCost.ToString() + " gold?");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to charge a crystal balls of summoning with 5 charges, it will only cost you {0} gold?", nCost));
 			}
-			else { SayTo(from, "If you want me to charge a crystal ball of summoning with 5 charges, it will cost you " + nCost.ToString() + " gold."); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to charge a crystal ball of summoning with 5 charges, it will cost you {0} gold.", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -163,7 +163,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Mage.SayTo(from, "That crystal ball has too many charges already.");
+						m_Mage.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That crystal ball has too many charges already."));
                     }
 
                     if (toConsume == 0)
@@ -172,20 +172,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Mage.SayTo(from, "Your crystal ball is charged.");
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        m_Mage.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your crystal ball is charged."));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 						ball.Charges = ball.Charges + 5;
                     }
                     else
                     {
-                        m_Mage.SayTo(from, "It would cost you {0} gold to have that charged.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_Mage.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that charged.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
                 }
 				else
 				{
-					m_Mage.SayTo(from, "That does not need my services.");
+					m_Mage.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
 				}
             }
         }
@@ -199,14 +199,14 @@ namespace Server.Mobiles
 
 				if ( ( Rubies > 19 ) && ( from.Skills[SkillName.Magery].Base >= 50 || from.Skills[SkillName.Necromancy].Base >= 50 ) )
 				{
-					sMessage = "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.");
 					HenchmanFamiliarItem ball = new HenchmanFamiliarItem();
 					ball.FamiliarOwner = from;
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = "Thank you for these. Rubies are something we often look for.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for these. Rubies are something we often look for.");
 				}
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -247,12 +247,12 @@ namespace Server.Mobiles
 					else if ( ball.FamiliarType == 0x15 && HighSpellCaster == 2 ){ ball.FamiliarType = 0x9; sMessage = "Your familiar is now in the form of a daemon." ; }
 					else if ( ball.FamiliarType == 0x4 || ball.FamiliarType == 0x9 ){ ball.FamiliarType = 0x16; sMessage = "Your familiar is now in the form of a gazer." ; }
 
-					sMessage = "You would perhaps like a different familiar? " + sMessage;
+					sMessage = Server.Localization.StringCatalog.ResolveFormat(from.Account, "You would perhaps like a different familiar? {0}", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = "Thank you for this. I could only assume an apprentice spell caster lost this.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for this. I could only assume an apprentice spell caster lost this.");
 					dropped.Delete();
 				}
 

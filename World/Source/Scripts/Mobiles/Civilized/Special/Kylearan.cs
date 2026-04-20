@@ -82,7 +82,7 @@ namespace Server.Mobiles
 
 				if ( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleEbonyKey" ) )
 				{
-					m_Giver.Say("You already have the onyx key. Use it to enter Mangar's tower.");
+					CitizenLocalization.SayLocalized(m_Giver, "You already have the onyx key. Use it to enter Mangar's tower.");
 				}
 				else if ( ! m_Mobile.HasGump( typeof( SpeechGump ) ) )
 				{

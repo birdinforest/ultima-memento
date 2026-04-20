@@ -7,12 +7,14 @@ using Server.Mobiles;
 namespace Server.Localization
 {
 	/// <summary>
-	/// Longest-first replacement of known English fragments inside dynamic quest text
-	/// (item names, region names, land titles) using StringCatalog entries.
+	/// Replacement of known English fragments inside dynamic quest text (lands, dungeons,
+	/// creature labels) using <c>quest-fragment-zh-table.json</c> first, then <see cref="StringCatalog"/>.
+	/// Iteration order follows <c>quest-composite-terms-order.txt</c> (list longer phrases before shorter substrings where needed).
 	/// </summary>
 	public static class QuestCompositeResolver
 	{
 		private static string[] s_OrderedTerms;
+		private static Dictionary<string, string> s_FragmentZh;
 		private static bool s_LoadAttempted;
 
 		public static void EnsureInitialized()
@@ -21,6 +23,22 @@ namespace Server.Localization
 				return;
 
 			s_LoadAttempted = true;
+
+			s_FragmentZh = new Dictionary<string, string>( StringComparer.Ordinal );
+
+			string tablePath = Path.Combine( Core.BaseDirectory, "Data/Localization/quest-fragment-zh-table.json" );
+
+			if ( File.Exists( tablePath ) )
+			{
+				try
+				{
+					string json = File.ReadAllText( tablePath );
+					SimpleJsonObject.ParseStringProperties( json, s_FragmentZh );
+				}
+				catch
+				{
+				}
+			}
 
 			var list = new List<string>();
 			string path = Path.Combine( Core.BaseDirectory, "Data/Localization/quest-composite-terms-order.txt" );
@@ -65,7 +83,15 @@ namespace Server.Localization
 				if ( en == null || en.Length == 0 || !work.Contains( en ) )
 					continue;
 
-				string zh = StringCatalog.TryResolve( lang, en );
+				string zh = null;
+
+				if ( s_FragmentZh != null && s_FragmentZh.TryGetValue( en, out zh ) && zh != null && zh.Length > 0 && zh != en )
+				{
+					work = work.Replace( en, zh );
+					continue;
+				}
+
+				zh = StringCatalog.TryResolve( lang, en );
 
 				if ( zh != null && zh.Length > 0 && zh != en )
 					work = work.Replace( en, zh );

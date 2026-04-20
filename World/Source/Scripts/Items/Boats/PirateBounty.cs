@@ -4,6 +4,8 @@ using Server.Misc;
 using Server.Items;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Items
 {
@@ -63,7 +65,7 @@ namespace Server.Items
 
 				AddHtml( 13, 13, 466, 20, @"<BODY><BASEFONT Color=" + color + ">" + bounty.BountyWho + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(492, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 14, 106, 246, 234, @"<BODY><BASEFONT Color=" + color + ">Bounties are often placed on famous pirates that sail the high seas and create havoc in their pursuit for booty. Giving this bounty contract to a town guard will reward you with the listed gold.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 14, 106, 246, 234, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Bounties are often placed on famous pirates that sail the high seas and create havoc in their pursuit for booty. Giving this bounty contract to a town guard will reward you with the listed gold." ) + "</BASEFONT></BODY>", (bool)false, (bool)false );
 				AddImage(269, 42, 10888);
 				AddHtml( 18, 57, 65, 20, @"<BODY><BASEFONT Color=" + color + ">Bounty:</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 94, 56, 161, 20, @"<BODY><BASEFONT Color=" + value + ">" + bounty.BountyValue + " Gold</BASEFONT></BODY>", (bool)false, (bool)false);

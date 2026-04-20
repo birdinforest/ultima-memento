@@ -68,16 +68,21 @@ namespace Server.Mobiles
 				this.Dragable=true;
 				this.Resizable=false;
 
-				from.SendSound( 0x4A ); 
-				string color = "#c8b67d";
+			from.SendSound( 0x4A ); 
+			string color = "#c8b67d";
+			string lang = Server.Localization.AccountLang.GetLanguageCode( from.Account );
 
-				AddPage(0);
+			AddPage(0);
 
-				AddImage(0, 0, 20767);
-				AddButton(968, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 13, 578, 981, 20, @"<BODY><BASEFONT Color=" + color + ">If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased.</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 13, 618, 981, 20, @"<BODY><BASEFONT Color=" + color + ">* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true.</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 670, 134, 27, 20, @"<BODY><BASEFONT Color=" + color + "><BIG>*</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddImage(0, 0, 20767);
+			AddButton(968, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
+
+			string _mountText = Server.Localization.StringCatalog.TryResolve( lang, "If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased." ) ?? "If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased.";
+			AddHtml( 13, 578, 981, 20, @"<BODY><BASEFONT Color=" + color + ">" + _mountText + "</BASEFONT></BODY>", (bool)false, (bool)false);
+
+			string _dragonText = Server.Localization.StringCatalog.TryResolve( lang, "* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true." ) ?? "* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true.";
+			AddHtml( 13, 618, 981, 20, @"<BODY><BASEFONT Color=" + color + ">" + _dragonText + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 670, 134, 27, 20, @"<BODY><BASEFONT Color=" + color + "><BIG>*</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 

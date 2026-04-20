@@ -115,15 +115,15 @@ namespace Server.Mobiles
 					switch ( Utility.RandomMinMax( 0, 8 ) )
 					{
 
-						case 0:	mouse.Say("Oft have I wished that stranger would return."); break;
-						case 1:	mouse.Say("We must bring the shards into harmony, so that they resonate in such a manner that matches the original universe."); break;
-						case 2:	mouse.Say("Yet sometimes one must sacrifice a pawn to save a king."); break;
-						case 3:	mouse.Say("Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes."); break;
-						case 4:	mouse.Say("I witnessed them all from my tiny mousehole."); break;
-						case 5:	mouse.Say("But I am but a mouse, and none hear me."); break;
-						case 6:	mouse.Say("A shard of a universe is a powerful thing."); break;
-						case 7:	mouse.Say("Aid the nobility that resideth in human heart."); break;
-						case 8:	mouse.Say("Even pawns have lives and loves at home, my lord."); break;
+						case 0:	CitizenLocalization.SayLocalized(mouse, "Oft have I wished that stranger would return."); break;
+						case 1:	CitizenLocalization.SayLocalized(mouse, "We must bring the shards into harmony, so that they resonate in such a manner that matches the original universe."); break;
+						case 2:	CitizenLocalization.SayLocalized(mouse, "Yet sometimes one must sacrifice a pawn to save a king."); break;
+						case 3:	CitizenLocalization.SayLocalized(mouse, "Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes."); break;
+						case 4:	CitizenLocalization.SayLocalized(mouse, "I witnessed them all from my tiny mousehole."); break;
+						case 5:	CitizenLocalization.SayLocalized(mouse, "But I am but a mouse, and none hear me."); break;
+						case 6:	CitizenLocalization.SayLocalized(mouse, "A shard of a universe is a powerful thing."); break;
+						case 7:	CitizenLocalization.SayLocalized(mouse, "Aid the nobility that resideth in human heart."); break;
+						case 8:	CitizenLocalization.SayLocalized(mouse, "Even pawns have lives and loves at home, my lord."); break;
 					}
 				}
 			}

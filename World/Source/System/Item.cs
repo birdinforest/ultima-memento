@@ -1827,7 +1827,14 @@ namespace Server
 				Resizable=false;
 				AddImage(0, 0, 9613);
 				TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
-				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + item.InfoData + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+				string info = item.InfoData;
+				if ( info != null && info.Length > 0 )
+				{
+					info = StringCatalog.TryResolve( lang, info ) ?? info;
+					info = QuestCompositeResolver.ResolveComposite( from, info );
+				}
+				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 		}
 

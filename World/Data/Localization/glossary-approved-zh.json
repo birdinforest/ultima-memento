@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.3",
+  "_version": "1.4",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -2486,6 +2486,39 @@
       "category": "place",
       "notes": "SafeRegion docks on Map.Sosaria per Regions.xml.",
       "translation_basis_zh": "锚岩为 anchor rock 直译，码头标明功能。"
+    },
+    "_SECTION_UO_WEB_CREATURES": "── UO classic creatures (web/docs) ───────────────────────────",
+    "Ostard": {
+      "canonical": "陆行鸟",
+      "alternatives": [
+        "鸵鸟"
+      ],
+      "category": "creature",
+      "notes": "Classic UO rideable ostrich-like mount line: Desert / Forest / Snow / Frenzied Ostard. Website copy uses 陆行鸟 for clarity.",
+      "translation_basis_zh": "Ostard 在官方与玩家语境中常被昵称为「鸵鸟系坐骑」。本站统一译为「陆行鸟」，突出骑乘生物而避免与现实鸵鸟类混淆。"
+    },
+    "Polar Bear": {
+      "canonical": "北极熊",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Rideable polar bear variants on this shard (e.g. Polar Bear, Elder Polar Bear as mounts).",
+      "translation_basis_zh": "北极熊为常见动物名译法，与英语 Polar Bear 对齐。"
+    },
+    "Gargoyle": {
+      "canonical": "翼魔",
+      "alternatives": [
+        "石像鬼"
+      ],
+      "category": "creature",
+      "notes": "Stygian Abyss expansion race in official UO; history page uses 翼魔 for Chinese encyclopedic tone.",
+      "translation_basis_zh": "UO 官方扩展中的种族名 Gargoyle，本站历史页采用「翼魔」与「冥河深渊」叙事一致；石像鬼可作为外观联想式别名。"
+    },
+    "Stygian Abyss": {
+      "canonical": "冥河深渊",
+      "alternatives": [],
+      "category": "dungeon",
+      "notes": "Major dungeon and expansion name; Chinese site uses 冥河深渊 for the SA dungeon emphasis in timeline table.",
+      "translation_basis_zh": "Stygian 有冥河、阴暗深渊意象；与扩展名「冥河深渊」并列，指向该资料片的标志性地下城。"
     },
     "_SECTION_FAME_KARMA": "── Fame / Karma System ──────────────────────────────────────",
     "Dread Lord": {

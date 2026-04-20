@@ -7,6 +7,7 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Network;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -459,7 +460,7 @@ namespace Server.Items
 				m_X = scroll.ScrollX;
 				m_Y = scroll.ScrollY;
 
-				string sText = scroll.ScrollText;
+				string sText = QuestCompositeResolver.ResolveComposite( from, scroll.ScrollText );
 				from.PlaySound( 0x249 );
 
 				this.Closable=true;

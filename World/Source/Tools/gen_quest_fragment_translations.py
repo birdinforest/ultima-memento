@@ -198,6 +198,12 @@ MISC_PLACES = {
     "the tunnels": "隧道", "the Tombs": "陵墓", "the tomb": "墓穴",
 }
 
+# Sea quest + mob labels (exact match to quest blob / composite order file)
+EXTRA_FRAGMENTS = {
+    "the high seas": "公海",
+    "an anhkheg": "一只安卡希巨虫",
+}
+
 
 def load_glossary_canonical() -> dict[str, str]:
     out: dict[str, str] = {}
@@ -214,7 +220,7 @@ def load_glossary_canonical() -> dict[str, str]:
 def build_table() -> dict[str, str]:
     gloss = load_glossary_canonical()
     main: dict[str, str] = {}
-    for d in (LANDS, DUNGEONS, ITEMS, ADJECTIVES, EPITHETS, ROLES, MISC_PLACES):
+    for d in (LANDS, DUNGEONS, ITEMS, ADJECTIVES, EPITHETS, ROLES, MISC_PLACES, EXTRA_FRAGMENTS):
         for k, v in d.items():
             main[k] = v
     for k, v in gloss.items():
