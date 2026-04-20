@@ -45,6 +45,10 @@ RE_SEND_WITH_PREFIX = re.compile(
     re.MULTILINE,
 )
 RE_SAY = re.compile(r"\bSay\s*\(\s*\"((?:\\.|[^\"\\])*)\"", re.MULTILINE)
+RE_SAY_LOCALIZED = re.compile(
+    r"\bSayLocalized(?:Format)?\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 RE_TEXT_DEF = re.compile(r"new\s+TextDefinition\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
 RE_ADD_LABEL = re.compile(
     r"\bAddLabel\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
@@ -153,9 +157,17 @@ RE_INFO_GUMP_LITERAL = re.compile(
     re.MULTILINE,
 )
 
-# ResolveText / ResolveFormat helpers used in localized gumps
+# ResolveText / Resolve / ResolveFormat helpers used in localized gumps and NPC speech
 RE_RESOLVE_TEXT = re.compile(
     r"\bResolveText\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_RESOLVE_PLAIN = re.compile(
+    r"(?<![A-Za-z])Resolve\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_TRY_RESOLVE = re.compile(
+    r"\bTryResolve\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
 RE_RESOLVE_FORMAT = re.compile(
@@ -347,6 +359,7 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
         RE_SEND,
         RE_SEND_WITH_PREFIX,
         RE_SAY,
+        RE_SAY_LOCALIZED,
         RE_TEXT_DEF,
         RE_ADD_LABEL,
         RE_ADD_LABEL_CROPPED,
@@ -360,7 +373,7 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
 
     if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
         texts.extend(extract_addhtml_fifth_arg(data))
-        for rx in (RE_RESOLVE_TEXT, RE_RESOLVE_FORMAT, RE_ADD_HTML_TEXT_RESOLVE):
+        for rx in (RE_RESOLVE_TEXT, RE_RESOLVE_PLAIN, RE_TRY_RESOLVE, RE_RESOLVE_FORMAT, RE_ADD_HTML_TEXT_RESOLVE):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
 

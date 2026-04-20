@@ -36,17 +36,17 @@ namespace Server.Misc
 		private static string BuildQuestStatusText( Mobile from, string targetTitle, string targetName, string region, string world, int fee, string category, string storedStory )
 		{
 			string targetDisplay = string.IsNullOrWhiteSpace( targetTitle ) ? targetName : targetTitle;
-			string regionDisplay = ResolveText( from, region );
-			string worldDisplay = ResolveText( from, world );
-			string targetDisplayLocalized = ResolveText( from, targetDisplay );
+			string regionDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, region ) );
+			string worldDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, world ) );
+			string targetDisplayLocalized = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, targetDisplay ) );
 			string feeText = fee.ToString( "#,##0" );
 
 			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
 			{
 				if ( category == "Item" )
-					return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+					return ResolveFormat( from, "前往{0}的{1}，寻找{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, feeText );
 
-				return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+				return ResolveFormat( from, "前往{0}的{1}，击败{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, feeText );
 			}
 
 			if ( !string.IsNullOrWhiteSpace( storedStory ) )
@@ -506,6 +506,9 @@ namespace Server.Misc
 				string sWorth = nPCFee.ToString("#,##0");
 				string sTheyCalled = sPCName;
 					if ( sPCTitle.Length > 0 ){ sTheyCalled = sPCTitle; }
+
+				if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( m.Account ) ) )
+					return "";
 
 				string sGiver = QuestCharacters.QuestGiverKarma( ((PlayerMobile)m).KarmaLocked );
 

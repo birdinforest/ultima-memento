@@ -173,6 +173,29 @@ namespace Server.Localization
 			return null;
 		}
 
+		/// <summary>
+		/// Convenience wrapper: resolves <paramref name="english"/> for the given account's language,
+		/// falling back to the English literal when no translation is found.
+		/// </summary>
+		public static string Resolve( Server.Accounting.IAccount account, string english )
+		{
+			if ( english == null )
+				return string.Empty;
+
+			string lang = AccountLang.GetLanguageCode( account );
+			return TryResolve( lang, english ) ?? english;
+		}
+
+		/// <summary>
+		/// Convenience wrapper: resolves a format template for <paramref name="account"/>'s language,
+		/// then substitutes <paramref name="args"/> via <see cref="string.Format"/>.
+		/// </summary>
+		public static string ResolveFormat( Server.Accounting.IAccount account, string englishFormat, params object[] args )
+		{
+			string resolved = Resolve( account, englishFormat );
+			return args == null || args.Length == 0 ? resolved : string.Format( resolved, args );
+		}
+
 		public static bool IsAsciiOnly( string s )
 		{
 			if ( s == null )

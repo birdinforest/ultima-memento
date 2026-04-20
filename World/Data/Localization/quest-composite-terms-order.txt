@@ -1,3 +1,121 @@
+ I can recharge any magic items you may have. Such items have a magical spell imbued in it, and allows you to cast such spell. I can only recharge such items if they have a minimum and maximum amount of uses, as those without a maximum amount can never be recharged by any wizard. If you want my help, then simply hand me your wand so I can perform the ritual needed.
+ I am quite a skilled wood worker, so if you need any wooden weapons repaired I can do it for you. Just hand me the weapon and I will see what I can do.
+ I am quite a skilled leather worker, so if you need any leather item repaired I can do it for you. Just hand me the item and I will see what I can do.
+ I am quite a skilled blacksmith, so if you need any metal weapons repaired I can do it for you. Just hand me the weapon and I will see what I can do.
+ I am quite a skilled wood worker, so if you need any wooden armor repaired I can do it for you. Just hand me the armor and I will see what I can do.
+ I am quite a skilled blacksmith, so if you need any metal armor repaired I can do it for you. Just hand me the armor and I will see what I can do.
+ If you need a chest or box unlocked, I can help you with that. Just hand me the container and I will see what I can do. I promise to give it back.
+ You can look in my backpack to examine the reagents if you wish. If you want to trade, then hand me the gold and I will give you the reagents.
+ You can look in my backpack to examine the potions if you wish. If you want to trade, then hand me the gold and I will give you the potions.
+ You can look in my backpack to examine the leather if you wish. If you want to trade, then hand me the gold and I will give you the leather.
+ You can look in my backpack to examine the ingots if you wish. If you want to trade, then hand me the gold and I will give you the ingots.
+ You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.
+ You can look in my backpack to examine the ore if you wish. If you want to trade, then hand me the gold and I will give you the ore.
+I heard many tales of adventurers going to 
+We are just here to rest after exploring 
+This is the first time I have been to 
+ was in the tavern talking about 
+ and they told me to bring back 
+I was talking with the local 
+ is where you would look for 
+a jar of necromancer reagents
+We overheard someone tell of
+a jar of alchemical reagents
+I overheard someone tell of
+ overheard another tell of
+ is spreading rumors about
+ in the forest outside of 
+ in the woods outside of 
+I heard something about 
+a jar of wizard reagents
+ is telling tales about
+We heard rumours about
+We heard a story about
+ in a cave outside of 
+ in a mine outside of 
+Someone told me that 
+, and they mentioned 
+I heard rumours about
+I heard a story about
+ heard rumours about
+ heard a story about
+ can be obtained in 
+willing to part with
+ in the forest near 
+ in the woods near 
+ in the forest by 
+ can be found in 
+Good day to you, 
+ in the woods by 
+an enchanted item
+willing to trade
+ in a cave near 
+ in a mine near 
+ searching for 
+willing to sell
+a card game in 
+ in a cave by 
+ in a mine by 
+ somewhere in 
+a special item
+I heard that 
+Someone from 
+. Welcome to 
+ deep within 
+ discovered 
+ outside of 
+a magic item
+and seeing 
+I met with 
+Greetings, 
+ came upon 
+ excavated 
+ concocted 
+ purchased 
+ that I am 
+ acquired 
+ prepared 
+ died in 
+ smelted 
+ chopped 
+ skinned 
+crate of 
+ reagents
+ forged 
+ dug up 
+ brewed 
+ logged 
+ tanned 
+ cooked 
+ bought 
+ carved 
+We found
+a scroll
+ leather
+ potions
+Hello, 
+ baked 
+ mined 
+ found 
+I found
+ boards
+ ingots
+ in it,
+Hail, 
+ near 
+a book
+a wand
+ gold.
+forest
+ with 
+ cut 
+ gold
+ for 
+ logs
+woods
+ ore
+cave
+mine
 the Dungeon of the Mad Archmage
 the Hall of the Mountain King
 the Tomb of the Fallen Wizard
@@ -367,3 +485,369 @@ Ice
 Icy
 Key
 Rod
+
+# --- Creature names (quest kill targets) ---
+a worshipper of the bomb
+the Great Earth Serpent
+a skeletal pyromancer
+an undead flamecaster
+a lightning elemental
+an ophidian matriarch
+a psychic of the bomb
+a skeletal fire mage
+an undead pyromancer
+a frost troll shaman
+an amethyst gargoyle
+a minotaur berserker
+a minotaur berserker
+an ancient nightmare
+a terathan matriarch
+a skeletal gargoyle
+an undead buccaneer
+an undead fisherman
+an arctic ogre lord
+a spectral gargoyle
+an ancient gargoyle
+a sapphire gargoyle
+an emerald gargoyle
+a coldwater serpent
+a giant black widow
+a great white shark
+a skeletal warrior
+a skeletal samurai
+a rotting skeleton
+an undead creature
+a deep water troll
+a ghostly gargoyle
+a minotaur warrior
+a rotting minotaur
+an earth elemental
+a poison elemental
+a plasma elemental
+a deep sea serpent
+a monstrous spider
+a terathan warrior
+a terathan avenger
+a firebone warrior
+a skeletal archer
+a skeletal wizard
+a skeletal knight
+a skeletal jailor
+a skeletal dragon
+a skeletal pirate
+a decaying zombie
+a zombie gargoyle
+a wailing banshee
+a decaying corpse
+an undead captain
+a ghoulish pirate
+a spectral pirate
+an enslaved demon
+a mutant gargoyle
+a zombie gargoyle
+an ashen gargoyle
+an elder gargoyle
+a marble gargoyle
+a mutant minotaur
+a water elemental
+a blood elemental
+a stone elemental
+a magma elemental
+a steam elemental
+a skeletal dragon
+a deadly scorpion
+an antaur soldier
+a skeletal guard
+a skeletal horse
+a skeletal steed
+a frail skeleton
+a burnt skeleton
+a rotting zombie
+a walking corpse
+a diseased mummy
+an aquatic ghoul
+an elder vampire
+an undead pirate
+an undead sailor
+an undead corpse
+a rotting pirate
+a gnome magician
+a gargoyle guard
+a stone gargoyle
+an onyx gargoyle
+a fire elemental
+an air elemental
+an ice elemental
+a lava elemental
+a snow elemental
+a ghostly dragon
+a silver serpent
+a golden serpent
+a deep sea snake
+a terathan drone
+an antaur worker
+Lord Blackthorne
+a skeletal mage
+a zombie dragon
+a demonic ghost
+a restless soul
+a rotten corpse
+a frozen corpse
+a young vampire
+an undead giant
+a greater demon
+an ettin shaman
+an arctic ettin
+a goblin archer
+a gnome warrior
+a kobold shaman
+a gargoyle lord
+a sand gargoyle
+a ruby gargoyle
+a minotaur lord
+a nox elemental
+a zombie dragon
+a great serpent
+a brass serpent
+a giant serpent
+Lord Draxinusom
+a walking dead
+a bone slasher
+a grave seeker
+a tomb watcher
+an undead bear
+an undead lion
+an undead wolf
+a lesser demon
+a lesser devil
+a shadow demon
+a shadow fiend
+an orc captain
+an orc warrior
+an arctic ogre
+a ghost dragyn
+a jade serpent
+a lava serpent
+an ice serpent
+a jungle viper
+a giant spider
+a dread spider
+a frost spider
+a phase spider
+a wooden golem
+an elder harpy
+a headless one
+an antaur lord
+a vorpal bunny
+a zombie mage
+a soul reaper
+a soul sucker
+a bone knight
+a dark reaper
+a vampire bat
+a dead pirate
+a frost troll
+a swamp troll
+a gray dragon
+a baby dragon
+a sea serpent
+a blood snake
+a giant snake
+a death adder
+a giant adder
+a large snake
+a magma snake
+a huge spider
+a sand spider
+a rune beetle
+an iron golem
+a stone golem
+a flesh golem
+a runic golem
+a stone harpy
+a shadow wisp
+a giant squid
+a giant leech
+a mind flayer
+an umber hulk
+the Time Lord
+a bone demon
+a bone golem
+a grave wurm
+an icy ghoul
+a demon lord
+a fire demon
+an ogre lord
+an ogre magi
+a sea dragon
+a water naga
+a giant crab
+a large crab
+a bone golem
+a rust golem
+an ice golem
+a snow harpy
+a kelp fiend
+the Guardian
+Lord British
+a lich lord
+a bone magi
+an orc lord
+an orc mage
+a sea troll
+a trollbear
+a hobgoblin
+a sea drake
+a sea viper
+a fire naga
+an anaconda
+a titanoboa
+a tarantula
+a wax golem
+a harpy hen
+a lich lord
+a giant eel
+a megalodon
+a leviathan
+an illithid
+a nightmare
+a dreadhorn
+a skeleton
+a revenant
+a succubus
+a gargoyle
+a minotaur
+a scorpion
+Mors Gotha
+Seggallion
+a skellot
+a specter
+a spectre
+a phantom
+a banshee
+a vampire
+a vampyre
+a bugbear
+a serpent
+a spinner
+a unicorn
+a phoenix
+a mongbat
+an antaur
+Nosfentor
+a zombie
+a wraith
+a shadow
+a corpse
+a reaper
+a daemon
+a balron
+a balrog
+an ettin
+a goblin
+a kobold
+a pirate
+a sailor
+a dragon
+a dragyn
+a spirit
+a kraken
+a gorgon
+a medusa
+Arcadion
+Astaroth
+Faulinei
+Morphius
+Samhayne
+a mummy
+a ghost
+a haunt
+a shade
+a wight
+a ghoul
+a demon
+a vrock
+an ogre
+a troll
+a gnoll
+a gnome
+a drake
+a wyvra
+a golem
+a harpy
+a titan
+a shark
+Balinor
+Garamon
+Mondain
+Shimazu
+a lich
+an orc
+a wyrm
+a naga
+a lich
+a wisp
+Nystal
+Tyball
+a roc
+Minax
+# --- Adventurer titles (must remain after compound creature names) ---
+Some 
+adventurer
+barbarian
+baroness
+cavalier
+conjurer
+defender
+diviner
+enchantress
+enchanter
+explorer
+gladiator
+heretic
+illusionist
+invoker
+magician
+mercenary
+minstrel
+mystic
+outlaw
+priestess
+princess
+prophet
+sorceress
+summoner
+templar
+traveler
+warlock
+warrior
+bandit
+fighter
+hunter
+knight
+mage
+monk
+paladin
+priest
+prince
+queen
+ranger
+rogue
+sage
+scout
+seeker
+seer
+shaman
+slayer
+sorcerer
+thief
+baron
+bard
+cleric
+king
+lady
+lord
+witch
+wizard
+the high seas
+an anhkheg

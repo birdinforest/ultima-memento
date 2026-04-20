@@ -109,21 +109,21 @@ namespace Server.Mobiles
 				int nWhenForAnotherQuest = nServerQuestTimeAllowed - nAllowedForAnotherQuest;
 				string sAllowedForAnotherQuest = nWhenForAnotherQuest.ToString();
 
-				if ( PlayerSettings.GetQuestState( m_Mobile, "AssassinQuest" ) )
-				{
-					m_Giver.Say("You already have your orders. Return to me when you are done with the task.");
-				}
-				else if ( mobile.NpcGuild != NpcGuild.AssassinsGuild ) // HE WILL ONLY TALK GUILD MEMBERS
-				{
-					m_Giver.Say("Hmmm...you do not seem the type I wish to discuss matters with.");
-				}
-				else if ( m_Mobile.Karma > -1250 ) // HE WILL ONLY TALK TO THE UNSAVORY GUILD MEMBERS
-				{
-					m_Giver.Say("Hmmm...maybe show me that you could handle such tasks first.");
+			if ( PlayerSettings.GetQuestState( m_Mobile, "AssassinQuest" ) )
+			{
+				CitizenLocalization.SayLocalized(m_Giver, "You already have your orders. Return to me when you are done with the task.");
+			}
+			else if ( mobile.NpcGuild != NpcGuild.AssassinsGuild ) // HE WILL ONLY TALK GUILD MEMBERS
+			{
+				CitizenLocalization.SayLocalized(m_Giver, "Hmmm...you do not seem the type I wish to discuss matters with.");
+			}
+			else if ( m_Mobile.Karma > -1250 ) // HE WILL ONLY TALK TO THE UNSAVORY GUILD MEMBERS
+			{
+				CitizenLocalization.SayLocalized(m_Giver, "Hmmm...maybe show me that you could handle such tasks first.");
 				}
 				else if ( nWhenForAnotherQuest > 0 )
 				{
-					m_Giver.Say("I have nothing for you at the moment. Check back in " + sAllowedForAnotherQuest + " minutes.");
+					m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "I have nothing for you at the moment. Check back in {0} minutes.", sAllowedForAnotherQuest ) );
 				}
 				else
 				{
@@ -179,7 +179,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					m_Giver.Say("Done? With what? I am not sure what things you speak of.");
+					CitizenLocalization.SayLocalized(m_Giver, "Done? With what? I am not sure what things you speak of.");
 				}
             }
         }

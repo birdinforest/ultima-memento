@@ -50,10 +50,12 @@ namespace Server.Misc
         {
             string time = ((int)(henchman.Fame/5)).ToString();
             string bandages = henchman.Hunger.ToString();
+            var bc = henchman as BaseCreature;
+            var masterAcct = bc != null && bc.ControlMaster != null ? bc.ControlMaster.Account : null;
             if (henchman is HenchmanMonster)
-                henchman.Say("Have " + bandages + " bandages. Will stay for " + time + " minutes.");
+                henchman.Say( Server.Localization.StringCatalog.ResolveFormat( masterAcct, "Have {0} bandages. Will stay for {1} minutes.", new object[]{ bandages, time } ) );
             else
-                henchman.Say("I have " + bandages + " bandages. I will travel with thee for " + time + " minutes.");
+                henchman.Say( Server.Localization.StringCatalog.ResolveFormat( masterAcct, "I have {0} bandages. I will travel with thee for {1} minutes.", new object[]{ bandages, time } ) );
         }
 
 		public static void DismountHenchman( Mobile from )
@@ -160,19 +162,19 @@ namespace Server.Misc
 						{
 							switch ( Utility.Random( 2 ) )		   
 							{
-								case 0: from.Say("There is not enough reward in this for me."); break;
-								case 1: from.Say("If you hear stories of riches, come and get me."); break;
+								case 0: CitizenLocalization.SayLocalized(from, "There is not enough reward in this for me."); break;
+								case 1: CitizenLocalization.SayLocalized(from, "If you hear stories of riches, come and get me."); break;
 							}
 						}
 						else
 						{
 							switch ( Utility.Random( 5 ) )		   
 							{
-								case 0: from.Say("Sorry, but there is not enough reward on this journey for me."); break;
-								case 1: from.Say("I think I will head back to town and get a drink."); break;
-								case 2: from.Say("The risk is not worth the little reward I am getting."); break;
-								case 3: from.Say("Come and find me later when you have a quest for riches."); break;
-								case 4: from.Say("If you hear of any rumors of gold, come and get me."); break;
+								case 0: CitizenLocalization.SayLocalized(from, "Sorry, but there is not enough reward on this journey for me."); break;
+								case 1: CitizenLocalization.SayLocalized(from, "I think I will head back to town and get a drink."); break;
+								case 2: CitizenLocalization.SayLocalized(from, "The risk is not worth the little reward I am getting."); break;
+								case 3: CitizenLocalization.SayLocalized(from, "Come and find me later when you have a quest for riches."); break;
+								case 4: CitizenLocalization.SayLocalized(from, "If you hear of any rumors of gold, come and get me."); break;
 							}
 						}
 						GoAway = true;
@@ -183,19 +185,19 @@ namespace Server.Misc
 						{
 							switch ( Utility.Random( 2 ) )		   
 							{
-								case 0: from.Say("I will leave soon if we don't find treasure."); break;
-								case 1: from.Say("You said there were riches, but I don't see it."); break;
+								case 0: CitizenLocalization.SayLocalized(from, "I will leave soon if we don't find treasure."); break;
+								case 1: CitizenLocalization.SayLocalized(from, "You said there were riches, but I don't see it."); break;
 							}
 						}
 						else
 						{
 							switch ( Utility.Random( 5 ))		   
 							{
-								case 0: from.Say("I will have to leave soon if we don't find some treasure."); break;
-								case 1: from.Say("I feel this quest is a dead end and may leave soon."); break;
-								case 2: from.Say("This lack of treasure is not what I came along for."); break;
-								case 3: from.Say("You promised riches, but I fear there is none."); break;
-								case 4: from.Say("What are we looking for? It is obviously not treasure."); break;
+								case 0: CitizenLocalization.SayLocalized(from, "I will have to leave soon if we don't find some treasure."); break;
+								case 1: CitizenLocalization.SayLocalized(from, "I feel this quest is a dead end and may leave soon."); break;
+								case 2: CitizenLocalization.SayLocalized(from, "This lack of treasure is not what I came along for."); break;
+								case 3: CitizenLocalization.SayLocalized(from, "You promised riches, but I fear there is none."); break;
+								case 4: CitizenLocalization.SayLocalized(from, "What are we looking for? It is obviously not treasure."); break;
 							}
 						}
 					}
@@ -254,21 +256,21 @@ namespace Server.Misc
 			{
 				switch ( Utility.Random( 28 ))		   
 				{
-					case 0: from.Say("Time to die!"); break;
-					case 1: from.Say("I will send you to hell!"); break;
-					case 2: from.Say("Your life ends here!"); break;
-					case 3: from.Say("You are no match for me!"); break;
-					case 4: from.Say("Prepare to die fool!"); break;
-					case 5: from.Say("Taste my wrath and my blade!"); break;
-					case 6: from.Say("Yield to me!"); break;
-					case 7: from.Say("I sentence you to death!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); from.Say( "*gasp*" ); break;
-					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); from.Say( "*growls*" ); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); from.Say( "Hey!" ); break;
-					case 11: from.PlaySound( from.Female ? 821 : 1095 ); from.Say( "*whistles*" ); break;
-					case 12: from.PlaySound( from.Female ? 783 : 1054 ); from.Say( "Woohoo!" ); break;
-					case 13: from.PlaySound( from.Female ? 823 : 1097 ); from.Say( "Yea!" ); break;
-					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); from.Say( "*yells*" ); break;
+					case 0: CitizenLocalization.SayLocalized(from, "Time to die!"); break;
+					case 1: CitizenLocalization.SayLocalized(from, "I will send you to hell!"); break;
+					case 2: CitizenLocalization.SayLocalized(from, "Your life ends here!"); break;
+					case 3: CitizenLocalization.SayLocalized(from, "You are no match for me!"); break;
+					case 4: CitizenLocalization.SayLocalized(from, "Prepare to die fool!"); break;
+					case 5: CitizenLocalization.SayLocalized(from, "Taste my wrath and my blade!"); break;
+					case 6: CitizenLocalization.SayLocalized(from, "Yield to me!"); break;
+					case 7: CitizenLocalization.SayLocalized(from, "I sentence you to death!"); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
+					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, "*whistles*"); break;
+					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, "Woohoo!"); break;
+					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, "Yea!"); break;
+					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -281,21 +283,21 @@ namespace Server.Misc
 			{
 				switch ( Utility.Random( 28 ))		   
 				{
-					case 0: from.Say("Time to die!"); break;
-					case 1: from.Say("I will send you to hell!"); break;
-					case 2: from.Say("Your life ends here!"); break;
-					case 3: from.Say("You are no match for me!"); break;
-					case 4: from.Say("Prepare to die fool!"); break;
-					case 5: from.Say("Taste my wrath and my blade!"); break;
-					case 6: from.Say("Yield to me!"); break;
-					case 7: from.Say("I sentence you to death!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); from.Say( "*gasp*" ); break;
-					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); from.Say( "*growls*" ); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); from.Say( "Hey!" ); break;
-					case 11: from.PlaySound( from.Female ? 821 : 1095 ); from.Say( "*whistles*" ); break;
-					case 12: from.PlaySound( from.Female ? 783 : 1054 ); from.Say( "Woohoo!" ); break;
-					case 13: from.PlaySound( from.Female ? 823 : 1097 ); from.Say( "Yea!" ); break;
-					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); from.Say( "*yells*" ); break;
+					case 0: CitizenLocalization.SayLocalized(from, "Time to die!"); break;
+					case 1: CitizenLocalization.SayLocalized(from, "I will send you to hell!"); break;
+					case 2: CitizenLocalization.SayLocalized(from, "Your life ends here!"); break;
+					case 3: CitizenLocalization.SayLocalized(from, "You are no match for me!"); break;
+					case 4: CitizenLocalization.SayLocalized(from, "Prepare to die fool!"); break;
+					case 5: CitizenLocalization.SayLocalized(from, "Taste my wrath and my blade!"); break;
+					case 6: CitizenLocalization.SayLocalized(from, "Yield to me!"); break;
+					case 7: CitizenLocalization.SayLocalized(from, "I sentence you to death!"); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
+					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, "*whistles*"); break;
+					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, "Woohoo!"); break;
+					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, "Yea!"); break;
+					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -310,18 +312,18 @@ namespace Server.Misc
 
 				switch ( Utility.Random( 22 ))		   
 				{
-					case 0: from.Say("Is that all you got?"); break;
-					case 1: from.Say("Tis but a scratch!"); break;
-					case 2: from.Say("I've had worse!"); break;
-					case 3: from.Say("You will have to do better than that!"); break;
-					case 4: from.Say("You'll pay for that!"); break;
-					case 5: from.Say("No one does that and lives!"); break;
-					case 6: from.Say("It is your turn!"); break;
-					case 7: from.Say("Not enough to bring me down!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); from.Say( "*gasp*" ); break;
-					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); from.Say( "*growls*" ); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); from.Say( "Hey!" ); break;
-					case 11: from.PlaySound( from.Female ? 0x31C : 0x42C ); from.Say( "*yells*" ); break;
+					case 0: CitizenLocalization.SayLocalized(from, "Is that all you got?"); break;
+					case 1: CitizenLocalization.SayLocalized(from, "Tis but a scratch!"); break;
+					case 2: CitizenLocalization.SayLocalized(from, "I've had worse!"); break;
+					case 3: CitizenLocalization.SayLocalized(from, "You will have to do better than that!"); break;
+					case 4: CitizenLocalization.SayLocalized(from, "You'll pay for that!"); break;
+					case 5: CitizenLocalization.SayLocalized(from, "No one does that and lives!"); break;
+					case 6: CitizenLocalization.SayLocalized(from, "It is your turn!"); break;
+					case 7: CitizenLocalization.SayLocalized(from, "Not enough to bring me down!"); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
+					case 11: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -378,14 +380,14 @@ namespace Server.Misc
 			if ( dropped is Bandage )
 			{
 				henchman.Hunger = henchman.Hunger + dropped.Amount;
-				if ( henchman is HenchmanMonster ){ henchman.Say("I could use these bandages. I have " + henchman.Hunger.ToString() + " of them now."); }
-				else { henchman.Say("Ahhh...bandages can be of great use. I have " + henchman.Hunger.ToString() + " of them now."); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "I could use these bandages. I have {0} of them now.", henchman.Hunger.ToString() ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Ahhh...bandages can be of great use. I have {0} of them now.", henchman.Hunger.ToString() ) ); }
 				dropped.Delete();
 			}
 			else if ( dropped is LesserCurePotion || dropped is CurePotion || dropped is GreaterCurePotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.Say("Good, " + from.Name + "."); }
-				else { henchman.Say("Thank you, " + from.Name + "."); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
 
 				henchman.CurePoison( henchman );
 				henchman.RevealingAction();
@@ -397,8 +399,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is RefreshPotion || dropped is TotalRefreshPotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.Say("Good, " + from.Name + "."); }
-				else { henchman.Say("Thank you, " + from.Name + "."); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
 
 				henchman.Stam = henchman.StamMax;
 				henchman.RevealingAction();
@@ -410,8 +412,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserHealPotion || dropped is HealPotion || dropped is GreaterHealPotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.Say("Good, " + from.Name + "."); }
-				else { henchman.Say("Thank you, " + from.Name + "."); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
 
 				henchman.Hits = henchman.HitsMax;
 				henchman.RevealingAction();
@@ -423,8 +425,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserRejuvenatePotion || dropped is RejuvenatePotion || dropped is GreaterRejuvenatePotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.Say("Good, " + from.Name + "."); }
-				else { henchman.Say("Thank you, " + from.Name + "."); }
+				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Good, {0}.", from.Name); }
+				else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}.", from.Name); }
 
 				henchman.Hits = henchman.HitsMax;
 				henchman.Stam = henchman.StamMax;
@@ -438,8 +440,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserManaPotion || dropped is ManaPotion || dropped is GreaterManaPotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.Say("Good, " + from.Name + "."); }
-				else { henchman.Say("Thank you, " + from.Name + "."); }
+				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Good, {0}.", from.Name); }
+				else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}.", from.Name); }
 
 				henchman.Mana = henchman.ManaMax;
 				henchman.RevealingAction();
@@ -483,25 +485,25 @@ namespace Server.Misc
 				{
 					if ( henchman.Fame >= 1800 )
 					{
-						if ( henchman is HenchmanMonster ){ henchman.Say("Sorry, " + from.Name + "...but my bag is full."); }
-						else { henchman.Say("Thank you, " + from.Name + "...but my treasure bag is full."); }
+						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Sorry, {0}...but my bag is full.", from.Name); }
+						else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}...but my treasure bag is full.", from.Name); }
 					}
 					else
 					{
-						if ( henchman is HenchmanMonster ){ henchman.Say("Good, more treasure for me."); }
-						else { henchman.Say("Ahhh...a cut of the treasure. This journey is worth the risk."); }
+						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalized(henchman, "Good, more treasure for me."); }
+						else { CitizenLocalization.SayLocalized(henchman, "Ahhh...a cut of the treasure. This journey is worth the risk."); }
 
 						if ( (henchman.Fame + nGold) > 1800 ){ henchman.Fame = 1800; }
 						else { henchman.Fame = henchman.Fame + nGold; }
 						int nTime = (int)(henchman.Fame/5);
-						from.SendMessage("" + henchman.Name + " will probably adventure with you for another " + nTime.ToString() + " minutes.");
+						from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} will probably adventure with you for another {1} minutes." ), henchman.Name, nTime ) );
 						dropped.Delete();
 					}
 				}
 				else
 				{
-					if ( henchman is HenchmanMonster ){ henchman.Say("No, " + from.Name + "...but that is useless to me."); }
-					else { henchman.Say("Sorry, " + from.Name + "...but I can't see much value in that."); }
+					if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "No, {0}...but that is useless to me.", from.Name); }
+					else { CitizenLocalization.SayLocalizedFormat(henchman, "Sorry, {0}...but I can't see much value in that.", from.Name); }
 				}
 			}
 

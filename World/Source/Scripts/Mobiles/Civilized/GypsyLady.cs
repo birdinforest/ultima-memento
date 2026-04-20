@@ -142,7 +142,7 @@ namespace Server.Mobiles
             if ( Deleted || !from.Alive )
                 return;
 
-			SayTo(from, "So you want me to reveal the truth of a parchment for you?");
+			CitizenLocalization.SayToLocalized(this, from, "So you want me to reveal the truth of a parchment for you?");
 
             from.Target = new RevealTarget(this);
         }
@@ -175,34 +175,35 @@ namespace Server.Mobiles
 
 					if ( scroll.ScrollIntelligence > 0 )
 					{
-						m_GypsyLady.SayTo(from, "That parchment hasn't been deciphered yet.");
+						CitizenLocalization.SayToLocalized(m_GypsyLady, from, "That parchment hasn't been deciphered yet.");
 					}
 					else if (pack.ConsumeTotal(typeof(Gold), toConsume))
 					{
 						string WillSay = "";
+						string WillSayZh = "";
 
 						switch ( Utility.RandomMinMax( 0, 3 ) ) 
 						{
-							case 0: WillSay = "The spirits tell me that this parchment is"; break;
-							case 1: WillSay = "My mind is showing me that this parchment is"; break;
-							case 2: WillSay = "The voices all speak that this parchment is"; break;
-							case 3: WillSay = "I can see beyond that this parchment is"; break;
+							case 0: WillSay = "The spirits tell me that this parchment is"; WillSayZh = "神灵告知我，这份羊皮纸"; break;
+							case 1: WillSay = "My mind is showing me that this parchment is"; WillSayZh = "我的心灵显现，这份羊皮纸"; break;
+							case 2: WillSay = "The voices all speak that this parchment is"; WillSayZh = "众灵皆言，这份羊皮纸"; break;
+							case 3: WillSay = "I can see beyond that this parchment is"; WillSayZh = "我能洞察，这份羊皮纸"; break;
 						}
 
 						if ( scroll.ScrollTrue == 1 )
 						{
-							m_GypsyLady.SayTo(from, WillSay + " truthfully written.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " truthfully written.", WillSayZh + "如实记载。");
 						}
 						else
 						{
-							m_GypsyLady.SayTo(from, WillSay + " falsely written.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " falsely written.", WillSayZh + "虚假记载。");
 						}
 
 						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, "I require {0} gold for my visions.", toConsume);
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -222,29 +223,30 @@ namespace Server.Mobiles
 					if (pack.ConsumeTotal(typeof(Gold), toConsume))
 					{
 						string WillSay = "";
+						string WillSayZh = "";
 
 						switch ( Utility.RandomMinMax( 0, 3 ) ) 
 						{
-							case 0: WillSay = "The spirits tell me that this legend "; break;
-							case 1: WillSay = "My mind is showing me that this legend "; break;
-							case 2: WillSay = "The voices all speak that this legend "; break;
-							case 3: WillSay = "I can see beyond that this legend "; break;
+							case 0: WillSay = "The spirits tell me that this legend "; WillSayZh = "神灵告知我，这段传说"; break;
+							case 1: WillSay = "My mind is showing me that this legend "; WillSayZh = "我的心灵显现，这段传说"; break;
+							case 2: WillSay = "The voices all speak that this legend "; WillSayZh = "众灵皆言，这段传说"; break;
+							case 3: WillSay = "I can see beyond that this legend "; WillSayZh = "我能洞察，这段传说"; break;
 						}
 
 						if ( scroll.LegendReal == 1 )
 						{
-							m_GypsyLady.SayTo(from, WillSay + " really happened.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " really happened.", WillSayZh + "确有其事。");
 						}
 						else
 						{
-							m_GypsyLady.SayTo(from, WillSay + " never happened.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " never happened.", WillSayZh + "实属虚构。");
 						}
 
 						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, "I require {0} gold for my visions.", toConsume);
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -264,29 +266,30 @@ namespace Server.Mobiles
 					if (pack.ConsumeTotal(typeof(Gold), toConsume))
 					{
 						string WillSay = "";
+						string WillSayZh = "";
 
 						switch ( Utility.RandomMinMax( 0, 3 ) ) 
 						{
-							case 0: WillSay = "The spirits tell me that this book "; break;
-							case 1: WillSay = "My mind is showing me that this book "; break;
-							case 2: WillSay = "The voices all speak that this book "; break;
-							case 3: WillSay = "I can see beyond that this book "; break;
+							case 0: WillSay = "The spirits tell me that this book "; WillSayZh = "神灵告知我，这本书"; break;
+							case 1: WillSay = "My mind is showing me that this book "; WillSayZh = "我的心灵显现，这本书"; break;
+							case 2: WillSay = "The voices all speak that this book "; WillSayZh = "众灵皆言，这本书"; break;
+							case 3: WillSay = "I can see beyond that this book "; WillSayZh = "我能洞察，这本书"; break;
 						}
 
 						if ( scroll.BookTrue > 0 )
 						{
-							m_GypsyLady.SayTo(from, WillSay + " contains the truth.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " contains the truth.", WillSayZh + "记载真实。");
 						}
 						else
 						{
-							m_GypsyLady.SayTo(from, WillSay + " contains falsehoods.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " contains falsehoods.", WillSayZh + "记载虚妄。");
 						}
 
 						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, "I require {0} gold for my visions.", toConsume);
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -306,29 +309,30 @@ namespace Server.Mobiles
 					if (pack.ConsumeTotal(typeof(Gold), toConsume))
 					{
 						string WillSay = "";
+						string WillSayZh = "";
 
 						switch ( Utility.RandomMinMax( 0, 3 ) ) 
 						{
-							case 0: WillSay = "The spirits tell me that this parchment is"; break;
-							case 1: WillSay = "My mind is showing me that this parchment is"; break;
-							case 2: WillSay = "The voices all speak that this parchment is"; break;
-							case 3: WillSay = "I can see beyond that this parchment is"; break;
+							case 0: WillSay = "The spirits tell me that this parchment is"; WillSayZh = "神灵告知我，这份羊皮纸"; break;
+							case 1: WillSay = "My mind is showing me that this parchment is"; WillSayZh = "我的心灵显现，这份羊皮纸"; break;
+							case 2: WillSay = "The voices all speak that this parchment is"; WillSayZh = "众灵皆言，这份羊皮纸"; break;
+							case 3: WillSay = "I can see beyond that this parchment is"; WillSayZh = "我能洞察，这份羊皮纸"; break;
 						}
 
 						if ( scroll.ScrollTrue == 1 )
 						{
-							m_GypsyLady.SayTo(from, WillSay + " truthfully written.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " truthfully written.", WillSayZh + "如实记载。");
 						}
 						else
 						{
-							m_GypsyLady.SayTo(from, WillSay + " falsely written.");
+							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " falsely written.", WillSayZh + "虚假记载。");
 						}
 
 						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, "I require {0} gold for my visions.", toConsume);
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -346,28 +350,29 @@ namespace Server.Mobiles
 					if (pack.ConsumeTotal(typeof(Gold), toConsume))
 					{
 						string WillSay = "";
+						string WillSayZh = "";
 
 						switch ( Utility.RandomMinMax( 0, 3 ) ) 
 						{
-							case 0: WillSay = "The spirits tell me that this glowing book is"; break;
-							case 1: WillSay = "My mind is showing me that this glowing book is"; break;
-							case 2: WillSay = "The voices all speak that this glowing book is"; break;
-							case 3: WillSay = "I can see beyond that this glowing book is"; break;
+							case 0: WillSay = "The spirits tell me that this glowing book is"; WillSayZh = "神灵告知我，这本光辉之书"; break;
+							case 1: WillSay = "My mind is showing me that this glowing book is"; WillSayZh = "我的心灵显现，这本光辉之书"; break;
+							case 2: WillSay = "The voices all speak that this glowing book is"; WillSayZh = "众灵皆言，这本光辉之书"; break;
+							case 3: WillSay = "I can see beyond that this glowing book is"; WillSayZh = "我能洞察，这本光辉之书"; break;
 						}
 
-						m_GypsyLady.SayTo(from, WillSay + " truthfully written.");
+						CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " truthfully written.", WillSayZh + "如实记载。");
 
 						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, "I require {0} gold for my visions.", toConsume);
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
 				else
 				{
-					m_GypsyLady.SayTo(from, "That is not a book or parchment.");
+					CitizenLocalization.SayToLocalized(m_GypsyLady, from, "That is not a book or parchment.");
 				}
             }
         }

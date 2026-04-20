@@ -45,6 +45,9 @@ namespace Server.Mobiles
 		[CommandProperty(AccessLevel.Owner)]
 		public string Citizen_Rumor { get { return CitizenRumor; } set { CitizenRumor = value; InvalidateProperties(); } }
 
+		public string CitizenRumorZh;
+		public string CitizenPhraseZh;
+
 		public override bool InitialInnocent{ get{ return true; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
 
@@ -190,39 +193,100 @@ namespace Server.Mobiles
 			int topic = Utility.RandomMinMax( 0, 40 );
 				if ( this is HouseVisitor ){ topic = 100; }
 
-			switch ( topic )
-			{
-				case 0:	CitizenRumor = "I heard that " + item + " can be obtained in " + locale + "."; break;
-				case 1:	CitizenRumor = "I heard something about " + item + " and " + locale + "."; break;
-				case 2:	CitizenRumor = "Someone told me that " + locale + " is where you would look for " + item + "."; break;
-				case 3:	CitizenRumor = "I heard many tales of adventurers going to " + locale + " and seeing " + item + "."; break;
-				case 4:	CitizenRumor = QuestCharacters.RandomWords() + " was in the tavern talking about " + item + " and " + locale + "."; break;
-				case 5:	CitizenRumor = "I was talking with the local " + RandomThings.GetRandomJob() + ", and they mentioned " + item + " and " + locale + "."; break;
-				case 6:	CitizenRumor = "I met with " + QuestCharacters.RandomWords() + " and they told me to bring back " + item + " from " + locale + "."; break;
-				case 7:	CitizenRumor = "I heard that " + item + " can be found in " + locale + "."; break;
-				case 8:	CitizenRumor = "Someone from " + RandomThings.GetRandomCity() + " died in " + locale + " searching for " + item + "."; break;
-				case 9:	CitizenRumor = Server.Misc.TavernPatrons.GetRareLocation( this, true, false );		break;
-			}
+		string adventurerZh = TranslateAdventurerZh( adventurer );
 
-			switch( Utility.RandomMinMax( 0, 13 ) )
-			{
-				case 0: preface = "I found"; 											break;
-				case 1: preface = "I heard rumours about"; 								break;
-				case 2: preface = "I heard a story about"; 								break;
-				case 3: preface = "I overheard someone tell of"; 						break;
-				case 4: preface = "Some " + adventurer + " found"; 						break;
-				case 5: preface = "Some " + adventurer + " heard rumours about"; 		break;
-				case 6: preface = "Some " + adventurer + " heard a story about"; 		break;
-				case 7: preface = "Some " + adventurer + " overheard another tell of"; 	break;
-				case 8: preface = "Some " + adventurer + " is spreading rumors about"; 	break;
-				case 9: preface = "Some " + adventurer + " is telling tales about"; 	break;
-				case 10: preface = "We found"; 											break;
-				case 11: preface = "We heard rumours about"; 							break;
-				case 12: preface = "We heard a story about"; 							break;
-				case 13: preface = "We overheard someone tell of"; 						break;
-			}
+		switch ( topic )
+		{
+			case 0:
+				CitizenRumor   = "I heard that " + item + " can be obtained in " + locale + ".";
+				CitizenRumorZh = "我听说" + item + "可在" + locale + "获得。";
+				break;
+			case 1:
+				CitizenRumor   = "I heard something about " + item + " and " + locale + ".";
+				CitizenRumorZh = "我听说了有关" + item + "与" + locale + "的消息。";
+				break;
+			case 2:
+				CitizenRumor   = "Someone told me that " + locale + " is where you would look for " + item + ".";
+				CitizenRumorZh = "有人告诉我，" + locale + "是寻找" + item + "的地方。";
+				break;
+			case 3:
+				CitizenRumor   = "I heard many tales of adventurers going to " + locale + " and seeing " + item + ".";
+				CitizenRumorZh = "我听说许多冒险者前往" + locale + "，并在那里见到了" + item + "。";
+				break;
+			case 4: {
+				string _rw4 = QuestCharacters.RandomWords();
+				CitizenRumor   = _rw4 + " was in the tavern talking about " + item + " and " + locale + ".";
+				CitizenRumorZh = _rw4 + "在酒馆中谈到了" + item + "与" + locale + "的事。";
+				break; }
+			case 5: {
+				string _job5 = RandomThings.GetRandomJob();
+				CitizenRumor   = "I was talking with the local " + _job5 + ", and they mentioned " + item + " and " + locale + ".";
+				CitizenRumorZh = "我与当地的" + TranslateJobZh( _job5 ) + "交谈，他们提到了" + item + "与" + locale + "。";
+				break; }
+			case 6: {
+				string _rw6 = QuestCharacters.RandomWords();
+				CitizenRumor   = "I met with " + _rw6 + " and they told me to bring back " + item + " from " + locale + ".";
+				CitizenRumorZh = "我与" + _rw6 + "相遇，他们让我从" + locale + "带回" + item + "。";
+				break; }
+			case 7:
+				CitizenRumor   = "I heard that " + item + " can be found in " + locale + ".";
+				CitizenRumorZh = "我听说" + item + "可在" + locale + "找到。";
+				break;
+			case 8: {
+				string _city8 = RandomThings.GetRandomCity();
+				CitizenRumor   = "Someone from " + _city8 + " died in " + locale + " searching for " + item + ".";
+				CitizenRumorZh = "一位来自" + _city8 + "的人在" + locale + "寻找" + item + "时不幸丧命。";
+				break; }
+			case 9:
+				CitizenRumor = Server.Misc.TavernPatrons.GetRareLocation( this, true, false );
+				break;
+		}
 
-			if ( CitizenRumor == null ){ CitizenRumor = preface + " " + Server.Misc.TavernPatrons.CommonTalk( "", city, dungeon, this, adventurer, true ) + "."; }
+		int prefaceCase = Utility.RandomMinMax( 0, 13 );
+		switch( prefaceCase )
+		{
+			case 0:  preface = "I found"; 											break;
+			case 1:  preface = "I heard rumours about"; 							break;
+			case 2:  preface = "I heard a story about"; 							break;
+			case 3:  preface = "I overheard someone tell of"; 						break;
+			case 4:  preface = "Some " + adventurer + " found"; 					break;
+			case 5:  preface = "Some " + adventurer + " heard rumours about"; 		break;
+			case 6:  preface = "Some " + adventurer + " heard a story about"; 		break;
+			case 7:  preface = "Some " + adventurer + " overheard another tell of"; break;
+			case 8:  preface = "Some " + adventurer + " is spreading rumors about"; break;
+			case 9:  preface = "Some " + adventurer + " is telling tales about"; 	break;
+			case 10: preface = "We found"; 											break;
+			case 11: preface = "We heard rumours about"; 							break;
+			case 12: preface = "We heard a story about"; 							break;
+			case 13: preface = "We overheard someone tell of"; 						break;
+		}
+
+		if ( CitizenRumor == null )
+		{
+			string _ct = Server.Misc.TavernPatrons.CommonTalk( "", city, dungeon, this, adventurer, true );
+			CitizenRumor = preface + " " + _ct + ".";
+
+			// Build Chinese preface: start + EnglishTopic + end  (topic translated at display time)
+			string _zhS, _zhE;
+			switch ( prefaceCase )
+			{
+				case 0:  _zhS = "我找到了";                                       _zhE = "";        break;
+				case 1:  _zhS = "我听闻了关于";                                   _zhE = "的传言";  break;
+				case 2:  _zhS = "我听说了";                                       _zhE = "的故事";  break;
+				case 3:  _zhS = "我无意间听到有人谈起";                           _zhE = "";        break;
+				case 4:  _zhS = "据说一位" + adventurerZh + "找到了";             _zhE = "";        break;
+				case 5:  _zhS = "据说一位" + adventurerZh + "听闻了关于";         _zhE = "的传言";  break;
+				case 6:  _zhS = "据说一位" + adventurerZh + "听说了";             _zhE = "的故事";  break;
+				case 7:  _zhS = "据说一位" + adventurerZh + "无意间听到另一人谈起"; _zhE = "";      break;
+				case 8:  _zhS = "据说一位" + adventurerZh + "正在散布关于";       _zhE = "的传言";  break;
+				case 9:  _zhS = "据说一位" + adventurerZh + "正在讲述";           _zhE = "的故事";  break;
+				case 10: _zhS = "我们找到了";                                     _zhE = "";        break;
+				case 11: _zhS = "我们听闻了关于";                                 _zhE = "的传言";  break;
+				case 12: _zhS = "我们听说了";                                     _zhE = "的故事";  break;
+				default: _zhS = "我们无意间听到有人谈起";                         _zhE = "";        break;
+			}
+			CitizenRumorZh = _zhS + _ct + _zhE + "。";
+		}
 
 			if ( this is HouseVisitor )
 			{
@@ -1085,10 +1149,22 @@ namespace Server.Mobiles
 				}
 				else if ( citizen.CitizenService == 0 )
 				{
-					speak = citizen.CitizenRumor;
+					string rumorLang = Server.Localization.AccountLang.GetLanguageCode( m_Mobile.Account );
+					bool isChineseRumor = Server.Localization.AccountLang.IsChinese( rumorLang );
+					speak = ( isChineseRumor && citizen.CitizenRumorZh != null && citizen.CitizenRumorZh.Length > 0 )
+						? citizen.CitizenRumorZh
+						: citizen.CitizenRumor;
 					if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", m_Mobile.Name); }
 					if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", m_Mobile.Region.Name); }
-					m_Giver.Say( speak );
+					if ( isChineseRumor )
+					{
+						string zhRumor = Server.Localization.QuestCompositeResolver.ResolveComposite( m_Mobile, speak );
+						m_Giver.SayTo( m_Mobile, false, zhRumor );
+					}
+					else
+					{
+						m_Giver.Say( speak );
+					}
 				}
 				else
 				{
@@ -1621,6 +1697,102 @@ namespace Server.Mobiles
 			return false;
 		}
 
+		public static string TranslateAdventurerZh( string en )
+		{
+			switch ( en )
+			{
+				case "adventurer": return "冒险者";
+				case "bandit":     return "强盗";
+				case "barbarian":  return "蛮族战士";
+				case "bard":       return "吟游诗人";
+				case "baron":      return "男爵";
+				case "baroness":   return "女男爵";
+				case "cavalier":   return "骑士";
+				case "cleric":     return "神职者";
+				case "conjurer":   return "召唤师";
+				case "defender":   return "卫士";
+				case "diviner":    return "占卜师";
+				case "enchanter":  return "附魔师";
+				case "enchantress":return "女附魔师";
+				case "explorer":   return "探索者";
+				case "fighter":    return "战士";
+				case "gladiator":  return "角斗士";
+				case "heretic":    return "异教徒";
+				case "hunter":     return "猎人";
+				case "illusionist":return "幻术师";
+				case "invoker":    return "咒召师";
+				case "king":       return "国王";
+				case "knight":     return "骑士";
+				case "lady":       return "贵妇";
+				case "lord":       return "领主";
+				case "mage":       return "法师";
+				case "magician":   return "魔法师";
+				case "mercenary":  return "佣兵";
+				case "minstrel":   return "吟游歌手";
+				case "monk":       return "修士";
+				case "mystic":     return "神秘者";
+				case "necromancer":return "死灵法师";
+				case "outlaw":     return "亡命之徒";
+				case "paladin":    return "圣骑士";
+				case "priest":     return "祭司";
+				case "priestess":  return "女祭司";
+				case "prince":     return "王子";
+				case "princess":   return "公主";
+				case "prophet":    return "先知";
+				case "queen":      return "女王";
+				case "ranger":     return "游侠";
+				case "rogue":      return "盗贼";
+				case "sage":       return "智者";
+				case "scout":      return "斥候";
+				case "seeker":     return "寻觅者";
+				case "seer":       return "预言者";
+				case "shaman":     return "萨满";
+				case "slayer":     return "杀手";
+				case "sorcerer":   return "术士";
+				case "sorceress":  return "女术士";
+				case "summoner":   return "召唤师";
+				case "templar":    return "圣殿骑士";
+				case "thief":      return "盗贼";
+				case "traveler":   return "旅人";
+				case "warlock":    return "战锁";
+				case "warrior":    return "战士";
+				case "witch":      return "女巫";
+				case "wizard":     return "巫师";
+				default:           return en;
+			}
+		}
+
+		public static string TranslateJobZh( string en )
+		{
+			switch ( en )
+			{
+				case "blacksmith":    return "铁匠";
+				case "jeweler":       return "珠宝商";
+				case "provisioner":   return "杂货商";
+				case "banker":        return "银行家";
+				case "minter":        return "铸币匠";
+				case "waiter":        return "服务生";
+				case "guard":         return "卫兵";
+				case "sage":          return "智者";
+				case "mage":          return "法师";
+				case "herbalist":     return "草药师";
+				case "alchemist":     return "炼金师";
+				case "healer":        return "治疗师";
+				case "guildmaster":   return "公会长";
+				case "tinker":        return "机关匠";
+				case "innkeeper":     return "客栈老板";
+				case "bartender":     return "酒保";
+				case "butcher":       return "屠夫";
+				case "tailor":        return "裁缝";
+				case "weaver":        return "织工";
+				case "shipwright":    return "造船师";
+				case "scribe":        return "书记员";
+				case "farmer":        return "农夫";
+				case "stable master": return "马厩管理员";
+				default:              return en;
+			}
+		}
+
 		public Citizens( Serial serial ) : base( serial )
 		{
 		}
@@ -1628,13 +1800,15 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 			writer.Write( CitizenService );
 			writer.Write( CitizenType );
 			writer.Write( CitizenCost );
 			writer.Write( CitizenPhrase );
 			writer.Write( CitizenRumor );
 			writer.Write( ShouldRemoveSomeStuff );
+			writer.Write( CitizenRumorZh );
+			writer.Write( CitizenPhraseZh );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -1648,6 +1822,11 @@ namespace Server.Mobiles
 			CitizenRumor = reader.ReadString();
 			if ( 0 < version )
 				ShouldRemoveSomeStuff = reader.ReadBool();
+			if ( 1 < version )
+			{
+				CitizenRumorZh = reader.ReadString();
+				CitizenPhraseZh = reader.ReadString();
+			}
 		}
 
 		public override void OnAfterSpawn()
@@ -1707,10 +1886,16 @@ namespace Server.Mobiles
 				this.Dragable=true;
 				this.Resizable=false;
 
-				string speak = b_Citizen.CitizenPhrase;
-				if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", c_Player.Name); }
-				if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", c_Player.Region.Name); }
-				if ( speak.Contains("G~G~G~G~G") ){ speak = speak.Replace("G~G~G~G~G", (b_Citizen.CitizenCost).ToString()); }
+			string gumpLang = Server.Localization.AccountLang.GetLanguageCode( player.Account );
+			bool isChinese = Server.Localization.AccountLang.IsChinese( gumpLang );
+			string speak = ( isChinese && b_Citizen.CitizenPhraseZh != null && b_Citizen.CitizenPhraseZh.Length > 0 )
+				? b_Citizen.CitizenPhraseZh
+				: b_Citizen.CitizenPhrase;
+			if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", c_Player.Name); }
+			if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", c_Player.Region.Name); }
+			if ( speak.Contains("G~G~G~G~G") ){ speak = speak.Replace("G~G~G~G~G", (b_Citizen.CitizenCost).ToString()); }
+			if ( isChinese )
+				speak = Server.Localization.QuestCompositeResolver.ResolveComposite( player, speak );
 
 				AddPage(0);
 

@@ -91,7 +91,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					m_Giver.Say( "Please, " + m_Mobile.Name + ". Take a seat and we will begin." );
+					m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "Please, {0}. Take a seat and we will begin.", m_Mobile.Name ) );
 				}
 			}
 		}
@@ -144,7 +144,12 @@ namespace Server.Gumps
 			if ( MySettings.S_ServerName == "Adventurers of Akalabeth" ){ header = 11377; }
 			AddImage(13, 12, header, 2126);
 
-			AddHtml( 13, 58, 482, 312, @"<BODY><BASEFONT Color=#94C541>For you, the day was normal compared to any other. However, when the evening sun finally disappeared below the landscape, you retired to bed where the sleep felt restless and the dreams more vivid. You cannot remember the details of the dream, but you can recall being drawn from this world through a swirling portal. When you awoke, you found yourself here in this forest. Your night clothes are gone and you are now dressed in some medieval garb, wielding a light in your hand.<BR><BR>Through the darkness of the night, you see a campfire just ahead. A colorful tent is next to it with the welcoming glow of lanterns about. The sounds of the nearby stream provides a tranquility, and you can see a grizzly bear soundly sleeping next to the warmth of the fire. If you were to shrug off the worries of your current life, you feel like this would be the place to start anew. You decide to see who is camping here and to perhaps find out where you are.</BASEFONT></BODY>", (bool)false, (bool)false);
+			{
+				string _lang = Server.Localization.AccountLang.GetLanguageCode( from.Account );
+				const string _enWelcome = "For you, the day was normal compared to any other. However, when the evening sun finally disappeared below the landscape, you retired to bed where the sleep felt restless and the dreams more vivid. You cannot remember the details of the dream, but you can recall being drawn from this world through a swirling portal. When you awoke, you found yourself here in this forest. Your night clothes are gone and you are now dressed in some medieval garb, wielding a light in your hand.<BR><BR>Through the darkness of the night, you see a campfire just ahead. A colorful tent is next to it with the welcoming glow of lanterns about. The sounds of the nearby stream provides a tranquility, and you can see a grizzly bear soundly sleeping next to the warmth of the fire. If you were to shrug off the worries of your current life, you feel like this would be the place to start anew. You decide to see who is camping here and to perhaps find out where you are.";
+				string _welcomeText = Server.Localization.StringCatalog.TryResolve( _lang, _enWelcome ) ?? _enWelcome;
+				AddHtml( 13, 58, 482, 312, @"<BODY><BASEFONT Color=#94C541>" + _welcomeText + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			}
 			
 			AddButton(468, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
         }
@@ -708,7 +713,7 @@ namespace Server.Gumps
 			m.MoveToWorld( loc, map );
 			Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 			m.SendSound( 0x65C );
-			m.SendMessage( "The card vanishes from your hand as you magically appear elsewhere." );
+			m.SendMessage( Server.Localization.StringCatalog.Resolve( m.Account, "The card vanishes from your hand as you magically appear elsewhere." ) );
 		}
 
 		public override void OnResponse( NetState state, RelayInfo info )
@@ -733,7 +738,7 @@ namespace Server.Gumps
 				bool isValid = pageShow(from, page - 1, true) == page; // Double-check that we can see the page when navigating forward
 				if (!isValid)
 				{
-					from.SendMessage("Invalid character selection detected.");
+					from.SendMessage( Server.Localization.StringCatalog.Resolve( from.Account, "Invalid character selection detected." ) );
 					return;
 				}
 

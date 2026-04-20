@@ -129,9 +129,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, "Since you are begging, do you still want me to tend to your pack animal for up to 5 journeys, it will only cost you " + nCost.ToString() + " gold?");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to tend to your pack animal for up to 5 journeys, it will only cost you {0} gold?", nCost));
 			}
-			else { SayTo(from, "If you want me to tend to your pack animal for up to 5 journeys, it will cost you " + nCost.ToString() + " gold."); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to tend to your pack animal for up to 5 journeys, it will cost you {0} gold.", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -165,7 +165,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Druid.SayTo(from, "You pack animal has been tended to enough.");
+						m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "You pack animal has been tended to enough."));
                     }
 
                     if (toConsume == 0)
@@ -174,20 +174,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Druid.SayTo(from, "Your pack animal is properly tended to.");
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your pack animal is properly tended to."));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 						ball.Charges = ball.Charges + 5;
                     }
                     else
                     {
-                        m_Druid.SayTo(from, "It would cost you {0} gold to have that pack animal tended to.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that pack animal tended to.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
                 }
 				else
 				{
-					m_Druid.SayTo(from, "That does not need my services.");
+					m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
 				}
             }
         }
@@ -201,14 +201,14 @@ namespace Server.Mobiles
 
 				if ( TreeSap > 19 )
 				{
-					sMessage = "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.");
 					PackBeastItem ball = new PackBeastItem();
 					ball.PorterOwner = from;
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = "Thank you for these. Mushrooms are something we often look for.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for these. Mushrooms are something we often look for.");
 				}
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -226,7 +226,7 @@ namespace Server.Mobiles
 				else if ( ball.PorterType == 177 ){ ball.ItemID = 0x20E1; ball.PorterType = 179; ball.Hue = 0; sMessage = "You may like a pack polar bear instead." ; }
 				else if ( ball.PorterType == 179 ){ ball.ItemID = 0x2126; ball.PorterType = 291; ball.Hue = 0; sMessage = "You may like a pack horse instead." ; }
 
-				sMessage = "You would perhaps like a different pack animal? " + sMessage;
+				sMessage = Server.Localization.StringCatalog.ResolveFormat(from.Account, "You would perhaps like a different pack animal? {0}", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
 				from.AddToBackpack ( ball );
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -252,7 +252,7 @@ namespace Server.Mobiles
 
 					if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
 					{
-						Say("I sense a spirt of an animal...somewhere.");
+						CitizenLocalization.SayLocalized( this, "I sense a spirt of an animal...somewhere." );
 					}
 					else
 					{
@@ -263,7 +263,7 @@ namespace Server.Mobiles
 
 						bc.ResurrectPet();
 
-						Say("Rise my friend. I wish I could save every unfortunate animal.");
+						CitizenLocalization.SayLocalized( this, "Rise my friend. I wish I could save every unfortunate animal." );
 					}
 				}
 			}
