@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# Mark tracked World/Saves files as skip-worktree so local server changes do not appear in status.
-# Undo: git ls-files -z -- World/Saves/ | xargs -0 git update-index --no-skip-worktree
+# Mark every tracked file under World/Saves/ as skip-worktree so local server writes do not
+# show as modified. Untracked files/dirs (Achievements, Craft, Player, new .bin, etc.) are
+# hidden via .gitignore: World/Saves/**
+#
+# Unset: bash World/Source/Tools/unsave_saves_worktree.sh
 
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
-while IFS= read -r f; do
-	[ -n "$f" ] && git update-index --skip-worktree "$f"
-done < <(git ls-files -- World/Saves/)
-echo "World/Saves: skip-worktree set for tracked files"
+n=0
+while IFS= read -r -d '' f; do
+	git update-index --skip-worktree "$f"
+	n=$((n + 1))
+done < <(git ls-files -z -- "World/Saves/")
+echo "World/Saves: skip-worktree set for $n tracked file(s)."
