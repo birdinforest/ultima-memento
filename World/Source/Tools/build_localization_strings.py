@@ -253,6 +253,57 @@ def is_quest_or_book_path(abs_path: str) -> bool:
     return "/Engines and Systems/Quests/" in "/" + rel + "/" or "/Items/Books/" in "/" + rel + "/"
 
 
+def extract_string_catalog_resolve_verbatim(data: str) -> List[str]:
+    """Second argument to StringCatalog.Resolve / ResolveFormat when it is a verbatim C# string (@\"...\")."""
+    found: List[str] = []
+    markers = ("StringCatalog.Resolve(", "StringCatalog.ResolveFormat(")
+    i = 0
+    while True:
+        best = -1
+        which_len = 0
+        for m in markers:
+            j = data.find(m, i)
+            if j >= 0 and (best < 0 or j < best):
+                best = j
+                which_len = len(m)
+        if best < 0:
+            break
+        p = best + which_len
+        depth = 1
+        first_comma: int | None = None
+        while p < len(data) and depth > 0:
+            c = data[p]
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                depth -= 1
+            elif c == "," and depth == 1:
+                first_comma = p
+                break
+            p += 1
+        if first_comma is None:
+            i = best + 1
+            continue
+        p = first_comma + 1
+        while p < len(data) and data[p] in " \t\n\r":
+            p += 1
+        if p + 1 < len(data) and data[p : p + 2] == '@"':
+            p += 2
+            sb: List[str] = []
+            while p < len(data):
+                if data[p] == '"' and p + 1 < len(data) and data[p + 1] == '"':
+                    sb.append('"')
+                    p += 2
+                    continue
+                if data[p] == '"':
+                    found.append("".join(sb))
+                    break
+                sb.append(data[p])
+                p += 1
+        i = best + 1
+    return found
+
+
 def extract_addhtml_fifth_arg(data: str) -> List[str]:
     """Fifth argument to AddHtml( x, y, w, h, TEXT, ... ) — regular or verbatim @\"\"\"."""
     found: List[str] = []
@@ -373,6 +424,7 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
 
     if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
         texts.extend(extract_addhtml_fifth_arg(data))
+        texts.extend(extract_string_catalog_resolve_verbatim(data))
         for rx in (RE_RESOLVE_TEXT, RE_RESOLVE_PLAIN, RE_TRY_RESOLVE, RE_RESOLVE_FORMAT, RE_ADD_HTML_TEXT_RESOLVE):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
@@ -570,11 +622,13 @@ def main() -> int:
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
 
     en_names = {f"{c}.json" for c in buckets}
+    # Hash-keyed templates maintained by gen_vendor_npc_speech_en.py / apply_vendor_npc_speech_zh.py
+    keep_extra = frozenset({"_index.json", "vendor_npc_speech.json"})
     for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
         if not os.path.isdir(d):
             continue
         for fn in os.listdir(d):
-            if fn.endswith(".json") and fn not in keep and fn not in ("_index.json",):
+            if fn.endswith(".json") and fn not in keep and fn not in keep_extra:
                 try:
                     os.remove(os.path.join(d, fn))
                     print(f"removed stale {os.path.join(d, fn)}")
