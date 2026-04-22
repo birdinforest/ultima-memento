@@ -1,3 +1,4 @@
 # Hooks and shell helpers must be LF (Unix) so the shebang runs on macOS/Linux
 .githooks/** text eol=lf
 World/Source/Tools/skip_saves_worktree.sh text eol=lf
+World/Source/Tools/unsave_saves_worktree.sh text eol=lf
