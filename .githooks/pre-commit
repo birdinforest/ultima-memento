@@ -1,0 +1,15 @@
+#!/bin/sh
+# Rejects commits that add or change files under World/Saves/ (local runtime / credentials).
+# To replace the stored baseline (rare): ALLOW_SAVES_BASELINE_UPDATE=1 git commit
+
+if [ -n "$ALLOW_SAVES_BASELINE_UPDATE" ]; then
+	exit 0
+fi
+
+if git diff --cached --name-only | grep -q '^World/Saves/'; then
+	printf '%s\n' "pre-commit: blocked — staged changes under World/Saves/ (keep local saves; do not commit them)." >&2
+	printf '%s\n' "To update the committed baseline: ALLOW_SAVES_BASELINE_UPDATE=1 git commit" >&2
+	printf '%s\n' "To hide local diffs: bash World/Source/Tools/skip_saves_worktree.sh" >&2
+	exit 1
+fi
+exit 0
