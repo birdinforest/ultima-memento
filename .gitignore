@@ -53,7 +53,9 @@ src/World.exe - Shortcut
 World/Data/Files/*
 # World/Saves/ holds a static dev snapshot in git; new runtime writes must not be committed.
 # Install: git config core.hooksPath .githooks
-# To hide local diffs: bash World/Source/Tools/skip_saves_worktree.sh
+# To hide local diffs to tracked files: bash World/Source/Tools/skip_saves_worktree.sh
+# Ignore untracked files/dirs (Achievements, Craft, Player, etc.); does not untrack the baseline
+World/Saves/**
 __pycache__/
 *.pyc
 World/*.exe
