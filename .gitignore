@@ -51,6 +51,10 @@ World.exe
 World.exe.config
 src/World.exe - Shortcut
 World/Data/Files/*
-World/Saves/*
+# World/Saves/ holds a static dev snapshot in git; new runtime writes must not be committed.
+# Install: git config core.hooksPath .githooks
+# To hide local diffs: bash World/Source/Tools/skip_saves_worktree.sh
+__pycache__/
+*.pyc
 World/*.exe
 .specstory
