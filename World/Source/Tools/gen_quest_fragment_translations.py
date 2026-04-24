@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ORDER = ROOT / "Data" / "Localization" / "quest-composite-terms-order.txt"
 OUT = ROOT / "Data" / "Localization" / "quest-fragment-zh-table.json"
 GLOSS = ROOT / "Data" / "Localization" / "glossary-approved-zh.json"
+CREATURE_ECHO = ROOT / "Data" / "Localization" / "creature-echo-fragment-zh.json"
 
 # Canonical land / world phrases (must match stored quest + GetRegionName fallbacks)
 LANDS = {
@@ -203,6 +204,8 @@ MISC_PLACES = {
 EXTRA_FRAGMENTS = {
     "the high seas": "公海",
     "an anhkheg": "一只安卡希巨虫",
+    # Trailing space intentional — matches "Some bard" etc., not "Someone"
+    "Some ": "某个",
 }
 
 
@@ -252,12 +255,32 @@ def build_table() -> dict[str, str]:
         main.setdefault(k, v)
     for k, v in _load_citizen_speech_fragments_map().items():
         main[k] = v  # overwrites identity fallbacks; citizen FRAGMENTS are authoritative for these keys
+    if CREATURE_ECHO.is_file():
+        try:
+            ce = json.loads(CREATURE_ECHO.read_text(encoding="utf-8"))
+            if isinstance(ce, dict):
+                for k, v in ce.items():
+                    if isinstance(k, str) and isinstance(v, str) and k.strip():
+                        main[k] = v
+        except Exception as e:  # noqa: BLE001
+            print("warning: could not load creature-echo-fragment-zh.json:", e, file=sys.stderr)
 
-    lines = [
-        ln.strip()
-        for ln in ORDER.read_text(encoding="utf-8").splitlines()
-        if ln.strip() and not ln.startswith("#")
-    ]
+    def _order_lines() -> list[str]:
+        out_ln: list[str] = []
+        for raw in ORDER.read_text(encoding="utf-8").splitlines():
+            ln = raw.rstrip("\r\n")
+            if not ln.strip():
+                continue
+            if ln.lstrip().startswith("#"):
+                continue
+            t = ln.strip()
+            # Match QuestCompositeResolver: lone "Some" line is the adventurer prefix with trailing space.
+            if t == "Some":
+                t = "Some "
+            out_ln.append(t)
+        return out_ln
+
+    lines = _order_lines()
     out: dict[str, str] = {}
     for en in lines:
         if en in main:

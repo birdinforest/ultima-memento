@@ -52,6 +52,11 @@ namespace Server.Localization
 					if ( t.Length == 0 || t[0] == '#' )
 						continue;
 
+					// Order file uses a line "Some " (trimmed to "Some") before adventurer titles:
+					// restore trailing space so replacement targets "Some bard" and not "Someone".
+					if ( t == "Some" )
+						t = "Some ";
+
 					list.Add( t );
 				}
 			}
