@@ -473,6 +473,39 @@ FULL: dict[str, str] = {
     "Shimazu": "岛津",
     "Balinor": "巴利诺尔",
     "Arcadion": "阿卡迪翁",
+    # Exact ORDER echo lines (no generic "a …" compose match); keep in sync with glossary creature section.
+    "a baby dragon": "一只幼龙",
+    "a burnt skeleton": "一具焦骸骷髅",
+    "a dead pirate": "一名死海盗",
+    "a diseased mummy": "一具染病木乃伊",
+    "a flesh golem": "一尊血肉魔像",
+    "a frozen corpse": "一具冰封尸躯",
+    "a gnome": "一名侏儒",
+    "a gorgon": "一名蛇发女妖",
+    "a grave seeker": "一只墓穴寻觅者",
+    "a grave wurm": "一条墓穴巨虫",
+    "a headless one": "一头无首者",
+    "a huge spider": "一只巨型蜘蛛",
+    "a jungle viper": "一条丛林蝰蛇",
+    "a kelp fiend": "一只海藻魔",
+    "a large crab": "一只大蟹",
+    "a large snake": "一条大蛇",
+    "a megalodon": "一头巨齿鲨",
+    "a mind flayer": "一名夺心魔",
+    "a mutant gargoyle": "一名变异石像鬼",
+    "a mutant minotaur": "一名变异牛头人",
+    "a nightmare": "一匹梦魇兽",
+    "a nox elemental": "一只剧毒元素",
+    "a phoenix": "一只凤凰",
+    "a pirate": "一名海盗",
+    "a restless soul": "一缕不安之魂",
+    "a sailor": "一名水手",
+    "a shadow": "一道暗影",
+    "a swamp troll": "一头沼泽巨魔",
+    "a vorpal bunny": "一只斩首怪兔",
+    "an antaur": "一只蚁牛人",
+    "an icy ghoul": "一只冰霜食尸鬼",
+    "an orc": "一名兽人",
 }
 
 # Single-token role / title lines in quest-composite-terms-order (echo without "the …")
@@ -565,7 +598,7 @@ def _compose_tail(tail: str) -> str:
     return "".join(out)
 
 
-def _zh_creature_line(en: str) -> str | None:
+def _zh_creature_line(en: str, *, allow_generic_a_an: bool = True) -> str | None:
     en = en.strip()
     if en in FULL:
         return FULL[en]
@@ -579,6 +612,9 @@ def _zh_creature_line(en: str) -> str | None:
         return "一只巨型" + _compose_tail(en[8:])
     if en.startswith("a bone "):
         return "一只骨" + _compose_tail(en[7:])
+    # Bare "an orc" must not fall through to generic "一只" + compose("orc").
+    if en == "an orc":
+        return "一名兽人"
     if en.startswith("an orc "):
         return "一名兽人" + _compose_tail(en[7:])
     if en.startswith("a sea "):
@@ -605,6 +641,11 @@ def _zh_creature_line(en: str) -> str | None:
         return "一只长老" + _compose_tail(en[9:])
     if en.startswith("a gnome "):
         return "一名侏儒" + _compose_tail(en[8:])
+    # "a mutant gargoyle" must not use generic "一只" + compose (→ 一只变异石像鬼).
+    if en == "a mutant gargoyle":
+        return "一名变异石像鬼"
+    if en == "a mutant minotaur":
+        return "一名变异牛头人"
     if en.startswith("a gargoyle"):
         if en == "a gargoyle":
             return "一只石像鬼"
@@ -888,12 +929,69 @@ def _zh_creature_line(en: str) -> str | None:
         return "一条森蚺"
     if en.startswith("an elephant"):
         pass
-    # generic "a X Y" / "an X"
-    if en.startswith("a ") and len(en) > 2:
-        return "一只" + _compose_tail(en[2:])
-    if en.startswith("an ") and len(en) > 3:
-        return "一只" + _compose_tail(en[3:])
+    # generic "a X Y" / "an X" — only for echo-diff repair; must stay off when scanning ORDER
+    # or CommonTalk static lines like "a bright white shrine..." would get wrong Chinese.
+    if allow_generic_a_an:
+        # Last-chance exact lines (also in FULL); guards if FULL merge order ever skips them.
+        if en == "a mutant gargoyle":
+            return "一名变异石像鬼"
+        if en == "a mutant minotaur":
+            return "一名变异牛头人"
+        if en == "an orc":
+            return "一名兽人"
+        if en.startswith("a ") and len(en) > 2:
+            return "一只" + _compose_tail(en[2:])
+        if en.startswith("an ") and len(en) > 3:
+            return "一只" + _compose_tail(en[3:])
     return None
+
+
+def _order_term_lines(order_path: Path) -> list[str]:
+    out: list[str] = []
+    for raw in order_path.read_text(encoding="utf-8").splitlines():
+        ln = raw.rstrip("\r\n")
+        if not ln.strip():
+            continue
+        if ln.lstrip().startswith("#"):
+            continue
+        t = ln.strip()
+        if t == "Some":
+            t = "Some "
+        out.append(t)
+    return out
+
+
+def build_creature_zh_from_order(
+    order_path: Path,
+    *,
+    commontalk_keys: frozenset[str] | None = None,
+) -> dict[str, str]:
+    """Rebuild creature/job/npc fragment zh for every ORDER term that needs _zh_creature_line (not echo-diff).
+
+    Used by gen_quest_fragment_translations.py so regenerating quest-fragment-zh-table.json does not
+    drop translations when creature-echo-fragment-zh.json would otherwise be empty.
+    """
+    ct_keys = commontalk_keys or frozenset()
+    out: dict[str, str] = {}
+    for t in _order_term_lines(order_path):
+        if t in ct_keys:
+            continue
+        if t in ROLE_SINGLE:
+            out[t] = ROLE_SINGLE[t]
+            continue
+        if t in FULL:
+            out[t] = FULL[t]
+            continue
+        if t == "a worshipper of the bomb":
+            out[t] = "一名炸弹教崇拜者"
+            continue
+        if t == "a psychic of the bomb":
+            out[t] = "一名炸弹教灵能者"
+            continue
+        z = _zh_creature_line(t, allow_generic_a_an=False)
+        if z:
+            out[t] = z
+    return out
 
 
 def build_echo_map() -> dict[str, str]:
@@ -914,16 +1012,27 @@ def build_echo_map() -> dict[str, str]:
         if k == "a psychic of the bomb":
             out[k] = "一名炸弹教灵能者"
             continue
-        z = _zh_creature_line(k)
+        z = _zh_creature_line(k, allow_generic_a_an=True)
         if z:
             out[k] = z
     return out
 
 
 def main() -> int:
-    m = build_echo_map()
-    OUT.write_text(json.dumps(m, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("wrote", len(m), "creature echo entries ->", OUT)
+    # Always emit full ORDER-based map for gen_quest merge (avoids empty JSON wiping translations).
+    ct_path = Path(__file__).resolve().parents[2] / "Data/Localization/commontalk-fragment-zh.json"
+    ct_keys: frozenset[str] = frozenset()
+    if ct_path.is_file():
+        try:
+            data = json.loads(ct_path.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                ct_keys = frozenset(data.keys())
+        except Exception:
+            pass
+    order_path = Path(__file__).resolve().parents[2] / "Data/Localization/quest-composite-terms-order.txt"
+    full = build_creature_zh_from_order(order_path, commontalk_keys=ct_keys) if order_path.is_file() else {}
+    OUT.write_text(json.dumps(full, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("wrote", len(full), "creature fragment entries ->", OUT)
     return 0
 
 

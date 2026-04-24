@@ -2561,6 +2561,228 @@
       "notes": "Dungeon-style place name used in random quest flavour text (QuestStories.SomePlace).",
       "translation_basis_zh": "saltmarsh 为盐沼湿地意象；sanctum 作圣所/秘所，组合为「盐沼圣所」。"
     },
+    "_SECTION_COMPOSITE_CREATURE_FRAGMENTS": "── Quest composite / tavern rumor creature phrases ─────────",
+    "Baby dragon": {
+      "canonical": "幼龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Small dragon mob line in quest-composite-terms-order / creature echo FULL.",
+      "translation_basis_zh": "与成年龙区分，突出体型幼小；量词在碎片表外层统一为「只」。"
+    },
+    "Burnt skeleton": {
+      "canonical": "焦骸骷髅",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Charred undead skeleton variant in composite rumor fragments.",
+      "translation_basis_zh": "burnt 作焦骸、焚残意象，与骷髅组合指被烧灼的不死骨骸。"
+    },
+    "Dead pirate": {
+      "canonical": "死海盗",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Undead or corpse-like pirate label in tavern composite text.",
+      "translation_basis_zh": "直译死海盗，与灵体海盗等区分，保持短标签可读。"
+    },
+    "Diseased mummy": {
+      "canonical": "染病木乃伊",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Mummy variant with plague/disease flavour in composite fragments.",
+      "translation_basis_zh": "diseased 强调疫病缠身，与木乃伊绑定为固定译名。"
+    },
+    "Flesh golem": {
+      "canonical": "血肉魔像",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Frankenstein-style flesh construct; classic fantasy term.",
+      "translation_basis_zh": "血肉魔像为奇幻通行译法，与蜡像、钢铁魔像等材质区分。"
+    },
+    "Frozen corpse": {
+      "canonical": "冰封尸躯",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Ice-preserved corpse undead line in composite fragments.",
+      "translation_basis_zh": "frozen 作冰封，尸躯比尸体略文气，贴合谣传口吻。"
+    },
+    "Gnome": {
+      "canonical": "侏儒",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Small humanoid race in fantasy UO context (not garden gnome decor).",
+      "translation_basis_zh": "奇幻种族侏儒，与地精、矮人区分；本站谣传碎片用此译。"
+    },
+    "Gorgon": {
+      "canonical": "蛇发女妖",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Petrifying mythic monster; distinct from generic medusa naming in some texts.",
+      "translation_basis_zh": "Gorgon 传统译蛇发女妖，与希腊神话意象一致。"
+    },
+    "Grave seeker": {
+      "canonical": "墓穴寻觅者",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Shard undead/scout-style mob name in composite ORDER.",
+      "translation_basis_zh": "grave+seeker 组合为墓穴中搜寻生魂或宝物的意象，译为寻觅者。"
+    },
+    "Grave wurm": {
+      "canonical": "墓穴巨虫",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Large worm creature tied to grave/tomb flavour text.",
+      "translation_basis_zh": "wurm 取巨虫、地龙虫意象，与墓穴场景绑定。"
+    },
+    "Headless one": {
+      "canonical": "无首者",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Headless undead humanoid label (cf. headless horseman tone).",
+      "translation_basis_zh": "无首者比无头怪略正式，贴合谣传叙述。"
+    },
+    "Huge spider": {
+      "canonical": "巨型蜘蛛",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Oversized spider mob in composite fragments.",
+      "translation_basis_zh": "huge 作巨型，与巨型蜘蛛类怪物中文习惯一致。"
+    },
+    "Jungle viper": {
+      "canonical": "丛林蝰蛇",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Venemous snake in jungle biome rumours.",
+      "translation_basis_zh": "viper 作蝰蛇，丛林点明生境。"
+    },
+    "Kelp fiend": {
+      "canonical": "海藻魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Sea/kelp themed minor fiend in tavern composite lines.",
+      "translation_basis_zh": "kelp 为海藻；fiend 作魔物简称海藻魔。"
+    },
+    "Large crab": {
+      "canonical": "大蟹",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Big crustacean mob label.",
+      "translation_basis_zh": "大蟹简洁自然，与「巨型」类用语区分体量。"
+    },
+    "Large snake": {
+      "canonical": "大蛇",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Big serpent mob label in rumours.",
+      "translation_basis_zh": "大蛇为中文常见说法。"
+    },
+    "Megalodon": {
+      "canonical": "巨齿鲨",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Prehistoric giant shark; also referenced in tavern tooth-sale rumour typo megaldon.",
+      "translation_basis_zh": "古生物与通俗用语统一为巨齿鲨。"
+    },
+    "Mind flayer": {
+      "canonical": "夺心魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Illithid-style telepath aberration; D&D-heritage term in fantasy games.",
+      "translation_basis_zh": "夺心魔为中文玩家社群对 mind flayer / illithid 的通行译名。"
+    },
+    "Mutant gargoyle": {
+      "canonical": "变异石像鬼",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Mutated gargoyle variant in ORDER fragments.",
+      "translation_basis_zh": "mutant 作变异；翼魔/石像鬼本站碎片表取石像鬼以与 BIGRAM 一致。整句谣传碎片用「一名变异石像鬼」，不用「只」类量词，以贴合类人生物语感。"
+    },
+    "Mutant minotaur": {
+      "canonical": "变异牛头人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Mutated minotaur variant in ORDER fragments.",
+      "translation_basis_zh": "牛头人为 minotaur 通行译，变异作前缀。谣传碎片表用「一名变异牛头人」，与兽人系量词一致。"
+    },
+    "Nightmare": {
+      "canonical": "梦魇兽",
+      "alternatives": [
+        "梦魇"
+      ],
+      "category": "creature",
+      "notes": "Mount/demonic horse-type creature in UO rumours; disambiguated from the word nightmare as sleep vision.",
+      "translation_basis_zh": "在坐骑与怪物语境取梦魇兽，避免与「噩梦」一词混淆。"
+    },
+    "Nox elemental": {
+      "canonical": "剧毒元素",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Poison/noxious elemental; matches BIGRAM nox elemental line.",
+      "translation_basis_zh": "nox 作剧毒，与元素类命名一致。"
+    },
+    "Pirate": {
+      "canonical": "海盗",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Generic human pirate in tavern composite (a pirate).",
+      "translation_basis_zh": "普通职业/身份译法。"
+    },
+    "Restless soul": {
+      "canonical": "不安之魂",
+      "alternatives": [
+        "躁动亡魂"
+      ],
+      "category": "creature",
+      "notes": "Haunted spirit line in composite rumours.",
+      "translation_basis_zh": "restless 作不安、躁动；谣传用一缕不安之魂更口语。"
+    },
+    "Sailor": {
+      "canonical": "水手",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Generic sailor NPC label in rumours (a sailor).",
+      "translation_basis_zh": "职业身份通用译名。"
+    },
+    "Shadow": {
+      "canonical": "暗影",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature token 'a shadow' in composite rumours; not the abstract noun only.",
+      "translation_basis_zh": "碎片表外层可加量词；此处词干取暗影以别于抽象阴影。"
+    },
+    "Swamp troll": {
+      "canonical": "沼泽巨魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Troll in swamp setting.",
+      "translation_basis_zh": "沼泽点明生境，巨魔为 troll 通行译。"
+    },
+    "Vorpal bunny": {
+      "canonical": "斩首怪兔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Joke/reference mob; matches existing BIGRAM vorpal bunny line.",
+      "translation_basis_zh": "延续既有碎片译名，突出 vorpal 斩首梗与兔子形象。"
+    },
+    "Antaur": {
+      "canonical": "蚁牛人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Ant-minotaur hybrid line used in ORDER (an antaur).",
+      "translation_basis_zh": "与蚁牛人领主等条目同族命名。"
+    },
+    "Icy ghoul": {
+      "canonical": "冰霜食尸鬼",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Cold-themed ghoul variant.",
+      "translation_basis_zh": "icy 作冰霜，与水生食尸鬼等变体并列。"
+    },
+    "Orc": {
+      "canonical": "兽人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic fantasy orc; fragment 'an orc' in ORDER.",
+      "translation_basis_zh": "兽人为 Orc 通行奇幻译名。碎片表整句为「一名兽人」，因 bare「an orc」曾误走泛化量词「一只」，已在生成脚本中单列匹配。"
+    },
     "_SECTION_WEAPON_ABILITIES": "── Weapon Special Abilities ─────────────────────────────────",
     "Whirlwind Attack": {
       "canonical": "旋风攻击",

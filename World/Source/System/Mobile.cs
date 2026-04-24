@@ -11409,6 +11409,23 @@ namespace Server
 
 		#region Overhead messages
 
+		/// <summary>
+		/// After StringCatalog resolution: for non-player speakers and zh-Hans viewers, replace quest/citizen
+		/// English fragments (guild titles, places) and known job/adventurer tokens.
+		/// </summary>
+		private string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
+		{
+			if ( outText == null || outText.Length == 0 || viewer == null )
+				return outText;
+			if ( Player )
+				return outText;
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			if ( !AccountLang.IsChinese( lang ) )
+				return outText;
+			string work = QuestCompositeResolver.ResolveComposite( viewer, outText );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( work );
+		}
+
 		public void PublicOverheadMessage( MessageType type, int hue, bool ascii, string text )
 		{
 			PublicOverheadMessage( type, hue, ascii, text, true );
@@ -11426,6 +11443,7 @@ namespace Server
 					{
 						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
 						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+						outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
 
 						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
 							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
@@ -11510,6 +11528,7 @@ namespace Server
 
 			string lang = AccountLang.GetLanguageCode( state.Mobile != null ? state.Mobile.Account : null );
 			string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+			outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
 
 			if( ascii && StringCatalog.IsAsciiOnly( outText ) )
 				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
@@ -11601,6 +11620,7 @@ namespace Server
 					{
 						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
 						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+						outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
 
 						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
 							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
