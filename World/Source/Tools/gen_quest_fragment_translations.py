@@ -12,6 +12,7 @@ ORDER = ROOT / "Data" / "Localization" / "quest-composite-terms-order.txt"
 OUT = ROOT / "Data" / "Localization" / "quest-fragment-zh-table.json"
 GLOSS = ROOT / "Data" / "Localization" / "glossary-approved-zh.json"
 CREATURE_ECHO = ROOT / "Data" / "Localization" / "creature-echo-fragment-zh.json"
+COMMONTALK = ROOT / "Data" / "Localization" / "commontalk-fragment-zh.json"
 
 # Canonical land / world phrases (must match stored quest + GetRegionName fallbacks)
 LANDS = {
@@ -208,6 +209,61 @@ EXTRA_FRAGMENTS = {
     "Some ": "某个",
 }
 
+# BaseGuildmaster.Title = "the {guild} guildmistress|guildmaster" — full phrase for overhead / Say().
+_GUILDS = (
+    "alchemist",
+    "assassin",
+    "archer",
+    "bard",
+    "blacksmith",
+    "carpenter",
+    "cartographer",
+    "culinary",
+    "druid",
+    "elemental",
+    "healer",
+    "librarian",
+    "merchant",
+    "miner",
+    "ranger",
+    "tailor",
+    "thief",
+    "tinker",
+    "warrior",
+    "wizard",
+    "mariner",
+    "black magic",
+)
+_ZH_GUILD = {
+    "alchemist": "炼金师",
+    "assassin": "刺客",
+    "archer": "弓箭手",
+    "bard": "吟游诗人",
+    "blacksmith": "铁匠",
+    "carpenter": "木匠",
+    "cartographer": "制图师",
+    "culinary": "庖厨",
+    "druid": "德鲁伊",
+    "elemental": "元素使",
+    "healer": "治疗师",
+    "librarian": "贤者",
+    "merchant": "商人",
+    "miner": "矿工",
+    "ranger": "游侠",
+    "tailor": "裁缝",
+    "thief": "盗贼",
+    "tinker": "机关匠",
+    "warrior": "战士",
+    "wizard": "巫师",
+    "mariner": "水手",
+    "black magic": "黑魔法",
+}
+GUILD_OVERHEAD_TITLES: dict[str, str] = {}
+for _g in _GUILDS:
+    _p = _ZH_GUILD[_g]
+    GUILD_OVERHEAD_TITLES[f"the {_g} guildmistress"] = f"{_p}公会女会长"
+    GUILD_OVERHEAD_TITLES[f"the {_g} guildmaster"] = f"{_p}公会会长"
+
 
 def _load_citizen_speech_fragments_map() -> dict[str, str]:
     """
@@ -245,16 +301,50 @@ def load_glossary_canonical() -> dict[str, str]:
     return out
 
 
+def _commontalk_key_set() -> frozenset[str]:
+    if not COMMONTALK.is_file():
+        return frozenset()
+    try:
+        ct = json.loads(COMMONTALK.read_text(encoding="utf-8"))
+        if isinstance(ct, dict):
+            return frozenset(k for k in ct if isinstance(k, str) and k.strip())
+    except Exception:
+        pass
+    return frozenset()
+
+
+def _creature_zh_from_order() -> dict[str, str]:
+    """Always derive creature/job fragments from ORDER + gen_creature rules (not empty echo JSON)."""
+    path = ROOT / "Source" / "Tools" / "gen_creature_echo_fragment_zh.py"
+    if not path.is_file():
+        return {}
+    try:
+        spec = importlib.util.spec_from_file_location("gen_creature_echo_fragment_zh", path)
+        if spec is None or spec.loader is None:
+            return {}
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)  # type: ignore[union-attr]
+        fn = getattr(mod, "build_creature_zh_from_order", None)
+        if fn is None or not ORDER.is_file():
+            return {}
+        return dict(fn(ORDER, commontalk_keys=_commontalk_key_set()))
+    except Exception as e:  # noqa: BLE001
+        print("warning: build_creature_zh_from_order failed:", e, file=sys.stderr)
+        return {}
+
+
 def build_table() -> dict[str, str]:
     gloss = load_glossary_canonical()
     main: dict[str, str] = {}
-    for d in (LANDS, DUNGEONS, ITEMS, ADJECTIVES, EPITHETS, ROLES, MISC_PLACES, EXTRA_FRAGMENTS):
+    for d in (LANDS, DUNGEONS, ITEMS, ADJECTIVES, EPITHETS, ROLES, MISC_PLACES, EXTRA_FRAGMENTS, GUILD_OVERHEAD_TITLES):
         for k, v in d.items():
             main[k] = v
     for k, v in gloss.items():
         main.setdefault(k, v)
     for k, v in _load_citizen_speech_fragments_map().items():
         main[k] = v  # overwrites identity fallbacks; citizen FRAGMENTS are authoritative for these keys
+    for k, v in _creature_zh_from_order().items():
+        main[k] = v
     if CREATURE_ECHO.is_file():
         try:
             ce = json.loads(CREATURE_ECHO.read_text(encoding="utf-8"))
@@ -264,6 +354,15 @@ def build_table() -> dict[str, str]:
                         main[k] = v
         except Exception as e:  # noqa: BLE001
             print("warning: could not load creature-echo-fragment-zh.json:", e, file=sys.stderr)
+    if COMMONTALK.is_file():
+        try:
+            ct = json.loads(COMMONTALK.read_text(encoding="utf-8"))
+            if isinstance(ct, dict):
+                for k, v in ct.items():
+                    if isinstance(k, str) and isinstance(v, str) and k.strip():
+                        main[k] = v
+        except Exception as e:  # noqa: BLE001
+            print("warning: could not load commontalk-fragment-zh.json:", e, file=sys.stderr)
 
     def _order_lines() -> list[str]:
         out_ln: list[str] = []
@@ -310,10 +409,34 @@ def build_table() -> dict[str, str]:
     return out
 
 
+def _sync_order_guild_titles_and_drop_bad_for() -> None:
+    """Insert guild Title phrases (longest first) before tavern rumor block; remove bare 'for' composite key."""
+    lines = ORDER.read_text(encoding="utf-8").splitlines()
+    lines = [ln for ln in lines if ln.strip() != "for"]
+    anchor = next((i for i, ln in enumerate(lines) if "I heard many tales of adventurers" in ln), 0)
+    existing: set[str] = set()
+    for ln in lines:
+        t = ln.strip()
+        if not t or t.startswith("#"):
+            continue
+        if t == "Some":
+            t = "Some "
+        existing.add(t)
+    keys_desc = sorted(GUILD_OVERHEAD_TITLES.keys(), key=len, reverse=True)
+    off = 0
+    for k in keys_desc:
+        if k not in existing:
+            lines.insert(anchor + off, k)
+            off += 1
+            existing.add(k)
+    ORDER.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     if not ORDER.is_file():
         print("missing", ORDER, file=sys.stderr)
         return 1
+    _sync_order_guild_titles_and_drop_bad_for()
     table = build_table()
     OUT.write_text(json.dumps(table, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"wrote {len(table)} entries -> {OUT}")

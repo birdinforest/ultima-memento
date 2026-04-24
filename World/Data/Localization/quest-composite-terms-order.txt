@@ -11,6 +11,50 @@
  You can look in my backpack to examine the ingots if you wish. If you want to trade, then hand me the gold and I will give you the ingots.
  You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.
  You can look in my backpack to examine the ore if you wish. If you want to trade, then hand me the gold and I will give you the ore.
+the cartographer guildmistress
+the black magic guildmistress
+the blacksmith guildmistress
+the cartographer guildmaster
+the alchemist guildmistress
+the carpenter guildmistress
+the elemental guildmistress
+the librarian guildmistress
+the black magic guildmaster
+the assassin guildmistress
+the blacksmith guildmaster
+the culinary guildmistress
+the merchant guildmistress
+the alchemist guildmaster
+the carpenter guildmaster
+the elemental guildmaster
+the librarian guildmaster
+the warrior guildmistress
+the mariner guildmistress
+the assassin guildmaster
+the archer guildmistress
+the culinary guildmaster
+the healer guildmistress
+the merchant guildmaster
+the ranger guildmistress
+the tailor guildmistress
+the tinker guildmistress
+the wizard guildmistress
+the druid guildmistress
+the miner guildmistress
+the thief guildmistress
+the warrior guildmaster
+the mariner guildmaster
+the archer guildmaster
+the bard guildmistress
+the healer guildmaster
+the ranger guildmaster
+the tailor guildmaster
+the tinker guildmaster
+the wizard guildmaster
+the druid guildmaster
+the miner guildmaster
+the thief guildmaster
+the bard guildmaster
 I heard many tales of adventurers going to 
 We are just here to rest after exploring 
 This is the first time I have been to 
@@ -110,7 +154,6 @@ forest
  with 
  cut 
  gold
- for 
  logs
 woods
  ore
@@ -791,6 +834,155 @@ Nystal
 Tyball
 a roc
 Minax
+# --- TavernPatrons.CommonTalk static
+a group of ogres and ettins that have been burning farmland south of the Town of Moon
+an underground passage that connects the northern and central islands of Lodoria
+this lighthouse keeper in Sosaria selling powerful artifacts found on the shore
+an altar in the Savaged Empire where those are sacrificed to the dragon king
+an abandoned logger home in Sosaria, with something beneath the floor boards
+a swamp in Sosaria with an ancient temple where a lich awaits the prophecy
+a cave west of Lodoria, that is filled with serpents, ettins, and trolls
+a powerful lich roaming within a tower in Sosaria, with a magical mirror
+mines the barbarians dig at, in the northern part of the Isles of Dread
+a City of Mistas that was supposedly swallowed by the sea centuries ago
+only necromancers and death knights living on that dead island in Lodor
+an ancient lair in the Lodor caves, where wizards and elementals dwell
+the Undermountain being able to be reached through the lizardmen caves
+a group of miners saying that Morinia is one of the best mines for ore
+scrolls of power, but they could only be used at shrines in Ambrosia
+bandits having a royal prisoner held in the northern part of Sosaria
+a wizard named Vordo who was able to make an entire island disappear
+an ancient prison hidden in the desert sands of the Serpent Island
+someone that touched a crystal ball in Mangar's tower and vanished
+a primitive orc fort near the old graveyard in the Savaged Empire
+an ancient lich that has an island fortress in the Savaged Empire
+a town called Skara Brae that wasn't really destroyed by a wizard
+an old ruined building in Sosaria, with treasure in the basement
+many different elementals guarding the Tomb of the Fallen Wizard
+a cave in Lodoria that only rangers or explorers could traverse
+a necromancer appearing out of the ever burning fire in Sosaria
+an abandoned castle of Stonegate, because all inside were slain
+a den of ancient gargoyles in the swamps of the Savaged Empire
+a magical portal in the bottom of the Pharaohs tomb in Sosaria
+some necromancers practicing black magic deep below the castle
+a cyclops warlord seeking silver to forge weapons for his army
+a twisted pass in the Savaged Empire with undead druids about
+an empty oak shelf that really is a door to the Thieves Guild
+Castle Exodus lying in ruins since the stranger destroyed it
+a dungeon called Deceit that is home to a very powerful lich
+a wizard named Mangar who built a tower somewhere in Sosaria
+a thief escaping from the cell in the castle of Lord British
+a gigantic squid living in the bottom of the Flooded Temple
+a secret entrance in the old cemetery of the Savaged Empire
+an ancient crypt where the gargoyles once buried their dead
+small settlements of primitive tribes in the Isles of Dread
+some old ruins in Sosaria, where ratmen now live beneath it
+this time lord that is sending people to the past or future
+a wizard that sails the Isles of Dread, selling rare spells
+a moonstone that can summon a moongate from almost anywhere
+a castle of evil mages ruled by an even more vile archmage
+an ork prophecy that speaks of their god returning to rule
+the Black Knight having an entire city trapped in a bottle
+a lost race of Zuluu that could ride the legendary dragyns
+a cave in the Lodor swamp that is home to scaly humanoids
+a great many secrets that can be learned in Dungeon Clues
+vile spider creatures in a castle in the jungles of Lodor
+a friendly dragon living beneath the Sosarian ice islands
+a lich in the Sosaria swamp carrying a marvelous artifact
+a cave of pixies and a crazy druid in the Savaged Empire
+a lair of vampires that exists north of the white shrine
+a demon king dwelling in dungeon doom that grants wishes
+a bright white shrine in Sosaria that leads to the moon
+a storm giant in a castle out on the Savaged Empire sea
+an island in the Savaged Empire with blue scaled drakes
+evil humans in an ancient temple in the Lodor mountains
+mystical stones that elves have that can color anything
+a secret passage in the tomb below the Lodoria cemetery
+some Shadowlords that took over the castle of Stonegate
+a group of ophidians worshiping in the Serpent Sanctum
+demons being unleashed below the desert sands of Lodor
+a tower in Sosaria where a lich holds a powerful staff
+a vault of the Black Knight that is too big to explore
+a pool of vile liquid in the bottom of Dungeon Wicked
+some forgotten halls below the castle of Lord British
+a clan of orcs that slowly mutated over the centuries
+an ancient wyrm guarding the way to the Hidden Valley
+a Dungeon of Doom in the southwest region of Sosaria
+a horrible secret within the mountains of Umber Veil
+a Savaged Empire lighthouse with a secret beneath it
+powerful cursed creatures roaming the Serpent Island
+some of the most poisonous creatures in Dungeon Bane
+an island mansion where Azerok is said to still live
+a magical seal, keeping the lich king from escaping
+a skull of Mondain that is deep below Castle Exodus
+a powerful troll lord in the bottom of Dardin's Pit
+a demonic lord corrupting the core of Dungeon Ankh
+a ghost haunting those ruins in the Savaged Empire
+an infestation of rats and snakes in Dungeon Wrath
+drakkul summoning demons in the ice caves of Lodor
+a pair of mystical boots that let you walk on lava
+an orc tribe that discovered the lost silver mines
+a den of cave bears in the bottom of Dardin's Pit
+some cultists bringing Kazibal back from the dead
+a legendary lumberjack that chopped up elven wood
+a den of dragons north of the Village of Whisper
+a pack of minotaurs guarding that old hedge maze
+mines in the Savaged Empire controlled by ratmen
+an ancient relic buried in a grave in Umber Veil
+an ancient evil beneath the mystical hedge maze
+bandits within a stronghold in northern Sosaria
+a mad wizard acting as a high priest of Kazibal
+a deep dungeon of dead in the Lodor cold lands
+a dungeon of ork sorcerers plotting against us
+dark elves summoning demons in dungeon destard
+the dragyns, that were once offspring of wyrms
+sailors exploring a reef in the Isles of Dread
+a chatty mouse in the castle that likes cheese
+an ancient evil dwelling below Castle British
+a vile wizard that has the gem of immortality
+a demigoddess of blood, and she has returned
+ancient crypts deep below the Savaged Empire
+a powerful spellbook in a ruined wizard home
+chests full of treasure in those magic pools
+an island appearing by the hands of Poseidon
+an evil knight that has the skull of Mondain
+a hidden cave below the Forgotten Lighthouse
+a group of devil worshipers in Dungeon Vile
+an ancient blood cult in the Isles of Dread
+an ancient dark elf city deep beneath Lodor
+an ancient wyrm sleeping below Dungeon Hate
+an elven pass that leads to great craftsmen
+cauldrons full of potions in those dungeons
+a grave being dug up in the Village of Grey
+a frozen palace where the ice queen dwells
+a magical hedge maze created centuries ago
+an abandoned mine north of Grey in Sosaria
+men made of ice that the ice queen summons
+a cemetery in Lodoria with a hidden secret
+some stranger who brought an end to Exodus
+a secret passage in the Umber Veil castle
+a valley of cyclops in the Savaged Empire
+dragon like creatures with scales of gems
+a legendary miner that dug up dwarven ore
+a Pharaohs tomb in the desert of Sosaria
+fire beetles nesting in the Cave of Fire
+a broken wall in the British family tomb
+some crystals being in the Morinia mines
+a den of harpies on the island in Lodor
+a large group of ship builders in Lodor
+really good ore in the Mines of Morinia
+titans that drop lightning from the sky
+a magical portal in the Savaged Empire
+a race of serpent men in dungeon scorn
+a master vampire on an island in Lodor
+a Black Magic Guild hidden around here
+a brass tower appearing in Umber Veil
+a horde of demons in Dungeon Torment
+catacombs under the city of Lodoria
+a volcanic dragon in southern Lodor
+a crypt beneath the cave of souls
+someone escaping from Skara Brae
+a magic mirror in Dungeon Fire
 # --- Adventurer titles (must remain after compound creature names) ---
 Some 
 adventurer

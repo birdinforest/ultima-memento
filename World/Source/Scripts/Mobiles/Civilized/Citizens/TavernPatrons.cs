@@ -526,6 +526,10 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		/// <summary>Random rumor clause (English literals). zh-Hans: static lines map in
+		/// <c>Data/Localization/commontalk-fragment-zh.json</c> (rebuild via
+		/// <c>World/Source/Tools/build_commontalk_fragment_zh.py</c> + <c>gen_quest_fragment_translations.py</c>).
+		/// Lines with string concatenation rely on quest-fragment + NPC vocab passes.</summary>
 		public static string CommonTalk( string sWords, string city, string dungeon, Mobile from, string adventurer, bool useAll )
 		{
 			string misc = "";

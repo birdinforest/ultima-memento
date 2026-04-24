@@ -77,7 +77,7 @@ namespace Server.Localization
 			EnsureInitialized();
 
 			if ( s_OrderedTerms == null || s_OrderedTerms.Length == 0 )
-				return text;
+				return PolishChineseCompositeGlue( text );
 
 			string work = text;
 
@@ -101,6 +101,25 @@ namespace Server.Localization
 				if ( zh != null && zh.Length > 0 && zh != en )
 					work = work.Replace( en, zh );
 			}
+
+			return PolishChineseCompositeGlue( work );
+		}
+
+		/// <summary>
+		/// After English fragments are swapped to Chinese, normalize leftover English glue in
+		/// citizen/tavern lines: cult-item pattern <c>the 'Name'</c> → corner quotes, <c>and</c> → 和.
+		/// </summary>
+		private static string PolishChineseCompositeGlue( string work )
+		{
+			if ( work == null || work.Length == 0 )
+				return work;
+
+			// Item closing quote + conjunction (must run before bare " and ").
+			work = work.Replace( "' and ", "」和 " );
+			work = work.Replace( "'和 ", "」和 " );
+			work = work.Replace( " and ", " 和 " );
+			work = work.Replace( " the '", "「" );
+			work = work.Replace( " The '", "「" );
 
 			return work;
 		}

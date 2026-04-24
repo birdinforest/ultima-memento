@@ -50,70 +50,25 @@ namespace Server.Mobiles
 		public string CitizenRumorZh;
 		public string CitizenPhraseZh;
 
-		/// <summary>English job tokens from <see cref="Server.Misc.RandomThings.GetRandomJob"/> for post-composite word replacement (Chinese UI).</summary>
-		private static readonly string[] s_JobVocabEn = new string[] {
-			"stable master", "guildmaster", "blacksmith", "jeweler", "provisioner", "banker", "minter", "waiter", "guard",
-			"herbalist", "alchemist", "healer", "innkeeper", "bartender", "butcher", "shipwright", "scribe", "farmer", "sage", "mage", "tinker", "tailor", "weaver" };
+		/// <summary>Replaces known English job/adventurer substrings with Chinese (after <see cref="QuestCompositeResolver"/>). Only used when the viewer account is zh-Hans.</summary>
+		/// <remarks>Implementation and switch tables are in <see cref="NpcSpeechTokenZh"/> (core assembly, for Mobile / CommonTalkDynamicZh). Tokens are not in localization JSON: they are procedural English fragments from <c>RandomThings</c>, not StringCatalog keys.</remarks>
+		public static string ApplyNpcVocabularyTokensToZh( string s ) => NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
 
-		/// <summary>Adventurer role words (must match <see cref="TranslateAdventurerZh"/>); longest sort applied in <see cref="EnsureNpcVocabEnOrder"/>.</summary>
-		private static readonly string[] s_AdventurerVocabEn = new string[] {
-			"necromancer", "illusionist", "enchantress", "enchanter", "adventurer", "bandit", "barbarian", "bard", "baron", "baroness", "cavalier", "cleric", "conjurer", "defender", "diviner", "explorer", "fighter", "gladiator", "heretic", "hunter", "invoker", "king", "knight", "lady", "lord", "mage", "magician", "mercenary", "minstrel", "monk", "mystic", "outlaw", "paladin", "priest", "priestess", "prince", "princess", "prophet", "queen", "ranger", "rogue", "sage", "scout", "seeker", "seer", "shaman", "slayer", "sorcerer", "sorceress", "summoner", "templar", "thief", "traveler", "warlock", "warrior", "witch", "wizard" };
+		/// <summary>Lowercase English adventurer / noble token → zh-Hans. See <see cref="NpcSpeechTokenZh.TranslateAdventurerZh"/>.</summary>
+		public static string TranslateAdventurerZh( string en ) => NpcSpeechTokenZh.TranslateAdventurerZh( en );
 
-		private static string[] s_NpcVocabEnLongestFirst;
-
-		private static void EnsureNpcVocabEnOrder()
-		{
-			if ( s_NpcVocabEnLongestFirst != null )
-				return;
-			var set = new HashSet<string>( StringComparer.Ordinal );
-			foreach ( string s in s_JobVocabEn )
-			{
-				if ( s != null && s.Length > 0 )
-					set.Add( s );
-			}
-			foreach ( string s in s_AdventurerVocabEn )
-			{
-				if ( s != null && s.Length > 0 )
-					set.Add( s );
-			}
-			var list = new List<string>( set );
-			list.Sort( ( a, b ) => b.Length - a.Length );
-			s_NpcVocabEnLongestFirst = list.ToArray();
-		}
-
-		private static string TryTranslateVocabToken( string en )
-		{
-			string t = TranslateJobZh( en );
-			if ( t != en )
-				return t;
-			return TranslateAdventurerZh( en );
-		}
-
-		/// <summary>Replaces known English job/adventurer substrings with Chinese (after <see cref="Server.Localization.QuestCompositeResolver"/>).</summary>
-		public static string ApplyNpcVocabularyTokensToZh( string s )
-		{
-			if ( s == null || s.Length == 0 )
-				return s;
-			EnsureNpcVocabEnOrder();
-			for ( int i = 0; i < s_NpcVocabEnLongestFirst.Length; ++i )
-			{
-				string en = s_NpcVocabEnLongestFirst[i];
-				if ( en == null || en.Length == 0 || s.Length < en.Length || s.IndexOf( en, StringComparison.Ordinal ) < 0 )
-					continue;
-				string zh = TryTranslateVocabToken( en );
-				if ( zh != null && zh.Length > 0 && zh != en )
-					s = s.Replace( en, zh );
-			}
-			return s;
-		}
+		/// <summary>Lowercase English job token → zh-Hans. See <see cref="NpcSpeechTokenZh.TranslateJobZh"/>.</summary>
+		public static string TranslateJobZh( string en ) => NpcSpeechTokenZh.TranslateJobZh( en );
 
 		/// <summary>Builds player-facing Chinese for citizen rumors: composite fragment table + job/adventurer token pass (single path; <see cref="CitizenRumorZh"/> is unused for display).</summary>
 		public static string ResolveCitizenRumorToChinese( Mobile m, string englishRumor )
 		{
 			if ( m == null || englishRumor == null || englishRumor.Length == 0 )
 				return englishRumor;
-			string s = Server.Localization.QuestCompositeResolver.ResolveComposite( m, englishRumor );
-			return ApplyNpcVocabularyTokensToZh( s );
+			string s = Server.Localization.CommonTalkDynamicZh.TryApply( m, englishRumor );
+			if ( s == null )
+				s = Server.Localization.QuestCompositeResolver.ResolveComposite( m, englishRumor );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
 		}
 
 		/// <summary>zh-Hans for a single English line used in vendor-style citizen lines (StringCatalog key = exact EN literal).</summary>
@@ -1841,102 +1796,6 @@ namespace Server.Mobiles
 				return true;
 
 			return false;
-		}
-
-		public static string TranslateAdventurerZh( string en )
-		{
-			switch ( en )
-			{
-				case "adventurer": return "冒险者";
-				case "bandit":     return "强盗";
-				case "barbarian":  return "蛮族战士";
-				case "bard":       return "吟游诗人";
-				case "baron":      return "男爵";
-				case "baroness":   return "女男爵";
-				case "cavalier":   return "骑士";
-				case "cleric":     return "神职者";
-				case "conjurer":   return "召唤师";
-				case "defender":   return "卫士";
-				case "diviner":    return "占卜师";
-				case "enchanter":  return "附魔师";
-				case "enchantress":return "女附魔师";
-				case "explorer":   return "探索者";
-				case "fighter":    return "战士";
-				case "gladiator":  return "角斗士";
-				case "heretic":    return "异教徒";
-				case "hunter":     return "猎人";
-				case "illusionist":return "幻术师";
-				case "invoker":    return "咒召师";
-				case "king":       return "国王";
-				case "knight":     return "骑士";
-				case "lady":       return "贵妇";
-				case "lord":       return "领主";
-				case "mage":       return "法师";
-				case "magician":   return "魔法师";
-				case "mercenary":  return "佣兵";
-				case "minstrel":   return "吟游歌手";
-				case "monk":       return "修士";
-				case "mystic":     return "神秘者";
-				case "necromancer":return "死灵法师";
-				case "outlaw":     return "亡命之徒";
-				case "paladin":    return "圣骑士";
-				case "priest":     return "祭司";
-				case "priestess":  return "女祭司";
-				case "prince":     return "王子";
-				case "princess":   return "公主";
-				case "prophet":    return "先知";
-				case "queen":      return "女王";
-				case "ranger":     return "游侠";
-				case "rogue":      return "盗贼";
-				case "sage":       return "智者";
-				case "scout":      return "斥候";
-				case "seeker":     return "寻觅者";
-				case "seer":       return "预言者";
-				case "shaman":     return "萨满";
-				case "slayer":     return "杀手";
-				case "sorcerer":   return "术士";
-				case "sorceress":  return "女术士";
-				case "summoner":   return "召唤师";
-				case "templar":    return "圣殿骑士";
-				case "thief":      return "盗贼";
-				case "traveler":   return "旅人";
-				case "warlock":    return "战锁";
-				case "warrior":    return "战士";
-				case "witch":      return "女巫";
-				case "wizard":     return "巫师";
-				default:           return en;
-			}
-		}
-
-		public static string TranslateJobZh( string en )
-		{
-			switch ( en )
-			{
-				case "blacksmith":    return "铁匠";
-				case "jeweler":       return "珠宝商";
-				case "provisioner":   return "杂货商";
-				case "banker":        return "银行家";
-				case "minter":        return "铸币匠";
-				case "waiter":        return "服务生";
-				case "guard":         return "卫兵";
-				case "sage":          return "智者";
-				case "mage":          return "法师";
-				case "herbalist":     return "草药师";
-				case "alchemist":     return "炼金师";
-				case "healer":        return "治疗师";
-				case "guildmaster":   return "公会长";
-				case "tinker":        return "机关匠";
-				case "innkeeper":     return "客栈老板";
-				case "bartender":     return "酒保";
-				case "butcher":       return "屠夫";
-				case "tailor":        return "裁缝";
-				case "weaver":        return "织工";
-				case "shipwright":    return "造船师";
-				case "scribe":        return "书记员";
-				case "farmer":        return "农夫";
-				case "stable master": return "马厩管理员";
-				default:              return en;
-			}
 		}
 
 		public Citizens( Serial serial ) : base( serial )

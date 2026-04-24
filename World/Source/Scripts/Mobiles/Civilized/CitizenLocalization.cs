@@ -3,6 +3,7 @@ using Server;
 using Server.Localization;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Network;
 
 namespace Server.Mobiles
 {
@@ -23,8 +24,8 @@ namespace Server.Mobiles
 			if ( speaker == null || english == null || english.Length == 0 )
 				return;
 
-			string zh = Server.Localization.StringCatalog.TryResolve( "zh-Hans", english );
-			speaker.Say( zh != null && zh.Length > 0 ? zh : english );
+			// Mobile.Say → PublicOverheadMessage applies StringCatalog.TryResolve per viewer language.
+			speaker.Say( english );
 		}
 
 		/// <summary>
@@ -33,14 +34,26 @@ namespace Server.Mobiles
 		/// </summary>
 		public static void SayLocalizedFormat( Mobile speaker, string englishFmt, params object[] args )
 		{
-			if ( speaker == null || englishFmt == null )
+			if ( speaker == null || englishFmt == null || speaker.Map == null )
 				return;
 
-			string fmt = Server.Localization.StringCatalog.TryResolve( "zh-Hans", englishFmt );
-			if ( fmt == null || fmt.Length == 0 )
-				fmt = englishFmt;
+			IPooledEnumerable eable = speaker.Map.GetClientsInRange( speaker.Location );
 
-			speaker.Say( string.Format( fmt, args ) );
+			foreach ( NetState state in eable )
+			{
+				Mobile m = state.Mobile;
+
+				if ( m == null || !m.CanSee( speaker ) )
+					continue;
+
+				string fmt = StringCatalog.Resolve( m.Account, englishFmt );
+				string msg = args == null || args.Length == 0 ? fmt : string.Format( fmt, args );
+
+				if ( msg != null && msg.Length > 0 )
+					speaker.SayTo( m, msg );
+			}
+
+			eable.Free();
 		}
 
 		/// <summary>
@@ -80,23 +93,66 @@ namespace Server.Mobiles
 
 			string lang = AccountLang.GetLanguageCode( target.Account );
 			bool isChinese = AccountLang.IsChinese( lang );
-			speaker.SayTo( target, isChinese && zh != null && zh.Length > 0 ? zh : english );
+			string msg = isChinese && zh != null && zh.Length > 0 ? QuestCompositeResolver.ResolveComposite( target, zh ) : english;
+			if ( isChinese && zh != null && zh.Length > 0 )
+				msg = NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( msg );
+			speaker.SayTo( target, msg );
 		}
 
 		/// <summary>
-		/// Broadcasts the pre-built zh string if non-empty, otherwise the English string.
-		/// Used for procedurally assembled speech (TavernPatrons, etc.) where the Chinese
-		/// version is constructed in parallel code (same random branch, different language).
+		/// Broadcasts tavern-style composite speech: each nearby client hears Chinese if their
+		/// account is zh-Hans and a parallel <paramref name="zh"/> string was supplied; otherwise
+		/// English. When <paramref name="zh"/> is null/empty, zh-Hans accounts still get
+		/// <see cref="QuestCompositeResolver"/> + NPC vocab token pass on <paramref name="english"/>.
 		/// </summary>
 		public static void SayLocalizedComposite( Mobile speaker, string english, string zh )
 		{
-			if ( speaker == null )
+			if ( speaker == null || speaker.Map == null )
 				return;
 
-			if ( zh != null && zh.Length > 0 )
-				speaker.Say( zh );
-			else if ( english != null && english.Length > 0 )
-				speaker.Say( english );
+			bool haveZh = zh != null && zh.Length > 0;
+
+			if ( !haveZh && ( english == null || english.Length == 0 ) )
+				return;
+
+			IPooledEnumerable eable = speaker.Map.GetClientsInRange( speaker.Location );
+
+			foreach ( NetState state in eable )
+			{
+				Mobile m = state.Mobile;
+
+				if ( m == null || !m.CanSee( speaker ) )
+					continue;
+
+				string lang = AccountLang.GetLanguageCode( m.Account );
+				bool isChinese = AccountLang.IsChinese( lang );
+
+				string msg;
+
+				// Pre-built zh may still embed English place names (e.g. dungeon concatenated in TavernPatrons);
+				// run the same fragment pass as English so quest-fragment-zh-table.json applies.
+				if ( haveZh && isChinese )
+				{
+					msg = QuestCompositeResolver.ResolveComposite( m, zh );
+					msg = NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( msg );
+				}
+				else if ( haveZh && !isChinese )
+					msg = english ?? "";
+				else if ( isChinese && english != null && english.Length > 0 )
+				{
+					msg = QuestCompositeResolver.ResolveComposite( m, english );
+					msg = NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( msg );
+				}
+				else
+					msg = english ?? "";
+
+				if ( msg == null || msg.Length == 0 )
+					continue;
+
+				speaker.SayTo( m, msg );
+			}
+
+			eable.Free();
 		}
 	}
 }
