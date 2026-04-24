@@ -18,6 +18,7 @@ using Server.Regions;
 using System.Globalization;
 using Server.Engines.MLQuests;
 using System.Linq;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -114,6 +115,65 @@ namespace Server.Mobiles
 			string s = Server.Localization.QuestCompositeResolver.ResolveComposite( m, englishRumor );
 			return ApplyNpcVocabularyTokensToZh( s );
 		}
+
+		/// <summary>zh-Hans for a single English line used in vendor-style citizen lines (StringCatalog key = exact EN literal).</summary>
+		private static string CitzT( string en )
+		{
+			if ( en == null || en.Length == 0 )
+				return en;
+			string z = StringCatalog.TryResolve( "zh-Hans", en );
+			return ( z != null && z.Length > 0 ) ? z : en;
+		}
+
+		/// <summary>Chinese opening line matching <see cref="initPhrase"/> in <c>SetupCitizen</c> (placeholders Z~/Y~ preserved for gump).</summary>
+		private static string GetCitizenOpeningPhraseChinese( int initPhrase, string dungeon )
+		{
+			switch ( initPhrase )
+			{
+				case 0: return CitzT( "Greetings, Z~Z~Z~Z~Z." );
+				case 1: return CitzT( "Hail, Z~Z~Z~Z~Z." );
+				case 2: return CitzT( "Good day to you, Z~Z~Z~Z~Z." );
+				case 3: return CitzT( "Hello, Z~Z~Z~Z~Z." );
+				case 4:
+					const string fRest = "We are just here to rest after exploring {0}.";
+					string zf = StringCatalog.TryResolve( "zh-Hans", fRest );
+					if ( zf == null || zf.Length == 0 )
+						zf = fRest;
+					return string.Format( zf, dungeon );
+				case 5: return CitzT( "This is the first time I have been to Y~Y~Y~Y~Y." );
+				case 6: return CitzT( "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y." );
+				default: return CitzT( "Greetings, Z~Z~Z~Z~Z." );
+			}
+		}
+
+#if false
+		/// <summary>build_localization_strings.py: register StringCatalog keys for <see cref="CitzT"/> and citizen item-sale (CitizenService 5) templates.</summary>
+		private static void _RegisterCitizenItemSaleKeysForExtraction()
+		{
+			StringCatalog.TryResolve( "zh-Hans", "Greetings, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Hail, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Good day to you, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Hello, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "We are just here to rest after exploring {0}." );
+			StringCatalog.TryResolve( "zh-Hans", "This is the first time I have been to Y~Y~Y~Y~Y." );
+			StringCatalog.TryResolve( "zh-Hans", "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y." );
+			StringCatalog.TryResolve( "zh-Hans", "a magic item" );
+			StringCatalog.TryResolve( "zh-Hans", "an enchanted item" );
+			StringCatalog.TryResolve( "zh-Hans", "a special item" );
+			StringCatalog.TryResolve( "zh-Hans", "found" );
+			StringCatalog.TryResolve( "zh-Hans", "discovered" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to part with" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to trade" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to sell" );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I won {1} from a card game in {2} that I am {3} for {4} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold." );
+			StringCatalog.TryResolve( "zh-Hans", " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item." );
+		}
+#endif
 
 		public override bool InitialInnocent{ get{ return true; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
@@ -489,20 +549,74 @@ namespace Server.Mobiles
 			}
 			else if ( CitizenService == 5 )
 			{
-				string aty1 = "a magic item"; if (Utility.RandomBool() ){ aty1 = "an enchanted item"; } else if (Utility.RandomBool() ){ aty1 = "a special item"; }
-				string aty2 = "found"; if (Utility.RandomBool() ){ aty2 = "discovered"; }
-				string aty3 = "willing to part with"; if (Utility.RandomBool() ){ aty3 = "willing to trade"; } else if (Utility.RandomBool() ){ aty3 = "willing to sell"; }
+				string aty1 = "a magic item";
+				if ( Utility.RandomBool() )
+					aty1 = "an enchanted item";
+				else if ( Utility.RandomBool() )
+					aty1 = "a special item";
+				string aty2 = "found";
+				if ( Utility.RandomBool() )
+					aty2 = "discovered";
+				string aty3 = "willing to part with";
+				if ( Utility.RandomBool() )
+					aty3 = "willing to trade";
+				else if ( Utility.RandomBool() )
+					aty3 = "willing to sell";
 
-				switch ( Utility.RandomMinMax( 0, 5 ) )
+				const string c5End = " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.";
+
+				string pZh = GetCitizenOpeningPhraseChinese( initPhrase, dungeon );
+				int saleStory = Utility.RandomMinMax( 0, 5 );
+				string mainEn = null;
+				string mainFmt = null;
+
+				switch ( saleStory )
 				{
-					case 0:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " while exploring " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 1:	CitizenPhrase = phrase + " I won " + aty1 + " from a card game in " + city + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 2:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on the remains of some " + adventurer + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 3:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " from a chest in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 4:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on a beast I killed in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 5:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on some " + adventurer + " in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
+					case 0:
+						mainFmt = "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 1:
+						mainFmt = "{0} I won {1} from a card game in {2} that I am {3} for {4} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, city, aty3, "G~G~G~G~G" );
+						break;
+					case 2:
+						mainFmt = "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, adventurer, aty3, "G~G~G~G~G" );
+						break;
+					case 3:
+						mainFmt = "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 4:
+						mainFmt = "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 5:
+						mainFmt = "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, adventurer, Clues, aty3, "G~G~G~G~G" );
+						break;
+					default: mainEn = string.Empty; break;
 				}
-				CitizenPhrase = CitizenPhrase + " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.";
+
+				CitizenPhrase = mainEn + c5End;
+
+				string zhMain = StringCatalog.TryResolve( "zh-Hans", mainFmt );
+				if ( zhMain != null && zhMain.Length > 0 && zhMain != mainFmt )
+				{
+					switch ( saleStory )
+					{
+						case 0: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 1: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), city, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 2: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), adventurer, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 3: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 4: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 5: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), adventurer, Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						default: CitizenPhraseZh = null; break;
+					}
+				}
+				else
+					CitizenPhraseZh = null;
 			}
 			else if ( CitizenType == 20 && CitizenService == 20 )
 			{
