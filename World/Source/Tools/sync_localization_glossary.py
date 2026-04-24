@@ -5,7 +5,7 @@ Default zh-Hans workflow:
   python3 World/Source/Tools/sync_localization_glossary.py
 
 What it does:
-  1. Normalize bracketed proper nouns: 【Sosaria】 -> 【索萨利亚】
+  1. Normalize bracketed proper nouns: 【Sosaria】 -> 【索沙尼亚】
   2. Normalize whole-value glossary variants: "蒙托尔" -> "蒙托城"
   3. Apply locale-specific literal replacements from a rules JSON
   4. Apply exact value overrides for context-sensitive strings

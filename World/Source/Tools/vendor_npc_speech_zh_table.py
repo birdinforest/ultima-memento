@@ -97,7 +97,7 @@ def translate_vendor_template(en: str) -> str:
 			"心灵传动可取不可及之物入包，不可对堆叠或他容器内物使用。地城多有隐阱宝箱，虽显形术本为寻匿，亦能找到陷阱与藏箱。<br><br>"
 			"施法繁琐，但可设至多四条自定义法术栏，详见纸娃娃“帮助”。<br><br>"
 			"兼修元素与魔法会导致施法失败，含装备加成亦然，须择一路。"
-			"若欲改修，可寻索萨利亚巫师洞或洛多利亚咒术洞中的晶石，忘却一系以学另一系。"
+			"若欲改修，可寻索沙尼亚巫师洞或洛多利亚咒术洞中的晶石，忘却一系以学另一系。"
 		)
 	if "bushido, ninjitsu, shinobi" in en:
 		return (
@@ -281,7 +281,7 @@ def translate_vendor_template(en: str) -> str:
 	if "secret guild of assassins" in en:
 		return (
 			"你好，{0}。你找到了我们隐秘的刺客行会。若有意入列，可与我说；我掌会务，然夏尔多克为至高。"
-			"他居索萨利亚小岛，欲接任务可寻。我亦售刺客用物。"
+			"他居索沙尼亚小岛，欲接任务可寻。我亦售刺客用物。"
 			"若因谋杀犯法王令，可等四十现实小时看卫兵是否淡忘；每多一罪亦须四十小时。"
 		)
 	if "Welcome to my island" in en and "Assassins Guild" in en:

@@ -64,9 +64,20 @@
       ],
       "category": "place",
       "notes": "The mortal world in Ultima I-III; main landmass of this shard. Destroyed by Mondain's Gem of Immortality, later remade as Britannia.",
-      "reference_suggestion_zh": "索萨利亚",
+      "reference_suggestion_zh": "索沙尼亚",
       "reference_note_zh": "Ultima I–III 的世界名称，通行译名。",
-      "translation_basis_zh": "参考词表建议「索萨利亚」，网络中文资料中也常见「索沙利亚 / 索萨利亚」一系写法。为贴近玩家通行译法并避免「里」字带来的额外音变，采用「索萨利亚」。"
+      "translation_basis_zh": "参考词表建议「索沙尼亚」，网络中文资料中也常见「索沙利亚 / 索萨利亚」一系写法。为贴近玩家通行译法并避免「里」字带来的额外音变，采用「索萨利亚」。"
+    },
+    "Shard": {
+      "canonical": "UO站",
+      "alternatives": [
+        "分片"
+      ],
+      "category": "concept",
+      "notes": "An independent Ultima Online server instance; English community term. Lore ties to shards of the Gem of Immortality.",
+      "reference_suggestion_zh": "UO站",
+      "reference_note_zh": "指玩家可登录的一台独立 UO 服务器；本站中文统一译作「UO站」，与叙事里「宝石残片」等用词区分。",
+      "translation_basis_zh": "英文 Shard 作「服务器实例」时曾译「分片」等；本站与对外文案统一为「UO站」。叙事或物品中的物理「碎片」不作此替换，须单独译（如恶魔碎片、宝石残片）。"
     },
     "Britannia": {
       "canonical": "不列颠尼亚",
@@ -1630,7 +1641,7 @@
       "notes": "Pirate faction or campaign; references the Pathfinder AP of the same name."
     },
     "Lost Tribe of Sosaria": {
-      "canonical": "索萨里亚失落部族",
+      "canonical": "索沙尼亚失落部族",
       "alternatives": [],
       "category": "faction",
       "notes": "Ancient people displaced by the destruction of Sosaria."

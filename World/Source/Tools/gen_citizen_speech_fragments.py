@@ -2,6 +2,10 @@
 """
 Adds Citizens.cs English speech fragments (greetings, prefaces, verbs, service phrases)
 to the composite resolver tables so Chinese players see translated citizen dialogue.
+
+Runtime resolution: World/Source/Tools/gen_quest_fragment_translations.py imports this file's
+FRAGMENTS to fill Data/Localization/quest-fragment-zh-table.json (no duplicate Chinese in Citizens.cs).
+Run gen_quest_fragment_translations.py after editing FRAGMENTS or quest-composite-terms-order.txt.
 """
 
 import json

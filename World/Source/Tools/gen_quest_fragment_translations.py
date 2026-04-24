@@ -2,6 +2,7 @@
 """Generate quest_fragment_zh_table.json from quest-composite-terms-order.txt using layered rules + explicit map."""
 from __future__ import annotations
 
+import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -13,7 +14,7 @@ GLOSS = ROOT / "Data" / "Localization" / "glossary-approved-zh.json"
 
 # Canonical land / world phrases (must match stored quest + GetRegionName fallbacks)
 LANDS = {
-    "the Land of Sosaria": "索萨利亚大陆",
+    "the Land of Sosaria": "索沙尼亚大陆",
     "the Land of Lodoria": "洛多利亚大陆",
     "the Land of Ambrosia": "安布罗西亚大陆",
     "the Land of Atlantis": "亚特兰蒂斯大陆",
@@ -30,7 +31,7 @@ LANDS = {
     "the Town of Skara Brae": "斯卡拉·布雷镇",
     "Skara Brae": "斯卡拉·布雷",
     "the Moon of Luna": "露娜之月",
-    "Sosaria": "索萨利亚",
+    "Sosaria": "索沙尼亚",
     "Lodoria": "洛多利亚",
     "Ambrosia": "安布罗西亚",
     "Atlantis": "亚特兰蒂斯",
@@ -205,6 +206,30 @@ EXTRA_FRAGMENTS = {
 }
 
 
+def _load_citizen_speech_fragments_map() -> dict[str, str]:
+    """
+    English→Chinese for citizen/quest composite lines, single source: gen_citizen_speech_fragments.FRAGMENTS.
+    Keys are stripped to match quest-composite-terms-order.txt lines (also trimmed in QuestCompositeResolver).
+    """
+    out: dict[str, str] = {}
+    path = Path(__file__).resolve().parent / "gen_citizen_speech_fragments.py"
+    if not path.is_file():
+        return out
+    try:
+        spec = importlib.util.spec_from_file_location("gen_citizen_speech_fragments", path)
+        if spec is None or spec.loader is None:
+            return out
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)  # type: ignore[union-attr]
+        for en_frag, zh in mod.FRAGMENTS:
+            k = en_frag.strip()
+            if k and zh is not None:
+                out[k] = zh
+    except Exception as e:  # noqa: BLE001
+        print("warning: could not import gen_citizen_speech_fragments.FRAGMENTS:", e, file=sys.stderr)
+    return out
+
+
 def load_glossary_canonical() -> dict[str, str]:
     out: dict[str, str] = {}
     if not GLOSS.is_file():
@@ -225,6 +250,8 @@ def build_table() -> dict[str, str]:
             main[k] = v
     for k, v in gloss.items():
         main.setdefault(k, v)
+    for k, v in _load_citizen_speech_fragments_map().items():
+        main[k] = v  # overwrites identity fallbacks; citizen FRAGMENTS are authoritative for these keys
 
     lines = [
         ln.strip()

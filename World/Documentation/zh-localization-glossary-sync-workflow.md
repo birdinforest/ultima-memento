@@ -33,8 +33,9 @@ The script reads:
 
 From those it builds a variant map such as:
 
-- `Sosaria` -> `索萨利亚`
-- `索萨里亚` -> `索萨利亚`
+- `Sosaria` -> `索沙尼亚`
+- `索萨里亚` -> `索沙尼亚`
+- `索萨利亚` -> `索沙尼亚`（与站内外文、approved glossary 主译名对齐）
 - `Skara Brae` -> `斯卡拉·布雷`
 - `斯卡拉布雷` -> `斯卡拉·布雷`
 
@@ -60,8 +61,8 @@ python3 World/Source/Tools/sync_localization_glossary.py
 The script applies four passes to each target locale JSON file:
 
 1. Bracket normalization
-   - Example: `【Sosaria】` -> `【索萨利亚】`
-   - Example: `【索萨里亚】` -> `【索萨利亚】`
+   - Example: `【Sosaria】` -> `【索沙尼亚】`
+   - Example: `【索萨里亚】` -> `【索沙尼亚】`
 2. Whole-value normalization
    - Example: a standalone item / place name like `蒙托尔` -> `蒙托城`
 3. Literal replacements from the locale rules file
