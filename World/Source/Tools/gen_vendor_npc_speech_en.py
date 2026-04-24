@@ -9,8 +9,10 @@ are emitted by build_localization_strings.py into scripts-*.json instead.
 Run from repo root:
   python3 World/Source/Tools/gen_vendor_npc_speech_en.py
 
-Then run:
+Then run (adds new keys to zh JSON with EN fallback; does not overwrite existing zh):
   python3 World/Source/Tools/apply_vendor_npc_speech_zh.py
+
+Optional bulk zh rewrite (in-repo dict): rebuild_vendor_npc_speech_zh.py
 """
 
 import hashlib

@@ -622,7 +622,7 @@ def main() -> int:
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
 
     en_names = {f"{c}.json" for c in buckets}
-    # Hash-keyed templates maintained by gen_vendor_npc_speech_en.py / apply_vendor_npc_speech_zh.py
+    # Hash-keyed templates maintained by gen_vendor_npc_speech_en.py; zh file synced by apply_vendor_npc_speech_zh.py (JSON is source of truth)
     keep_extra = frozenset({"_index.json", "vendor_npc_speech.json"})
     for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
         if not os.path.isdir(d):
