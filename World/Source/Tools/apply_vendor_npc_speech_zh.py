@@ -1,43 +1,45 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Merge vendor_npc_speech_zh_table translations into zh-Hans/vendor_npc_speech.json."""
+"""Sync zh-Hans/vendor_npc_speech.json with en/vendor_npc_speech.json without clobbering translations.
+
+The server resolves vendor speech via StringCatalog + hash keys in these JSON files only.
+Chinese strings are edited in Data/Localization/zh-Hans/vendor_npc_speech.json (or regenerated
+in-repo by rebuild_vendor_npc_speech_zh.py). This script does NOT read vendor_npc_speech_zh_table.py.
+
+When new English keys appear (e.g. after gen_vendor_npc_speech_en.py), missing zh entries fall back
+to English until someone translates the JSON.
+"""
 
 import json
 import os
-import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 EN_PATH = os.path.join(ROOT, "World", "Data", "Localization", "en", "vendor_npc_speech.json")
 ZH_PATH = os.path.join(ROOT, "World", "Data", "Localization", "zh-Hans", "vendor_npc_speech.json")
 
-sys.path.insert(0, os.path.dirname(__file__))
-from vendor_npc_speech_zh_table import build_zh_map  # noqa: E402
-
 
 def main() -> None:
 	with open(EN_PATH, encoding="utf-8") as f:
 		en = json.load(f)
-	if not os.path.isfile(ZH_PATH):
-		with open(ZH_PATH, "w", encoding="utf-8") as f:
-			json.dump(en, f, ensure_ascii=False, indent=2)
-			f.write("\n")
-	with open(ZH_PATH, encoding="utf-8") as f:
-		zh = json.load(f)
 
-	over = build_zh_map(EN_PATH)
-	for k, v in over.items():
-		zh[k] = v
+	prev: dict = {}
+	if os.path.isfile(ZH_PATH):
+		with open(ZH_PATH, encoding="utf-8") as f:
+			prev = json.load(f)
 
-	# Ensure every EN key exists in zh (fallback English until translated)
-	for k, v in en.items():
-		if k not in zh or zh[k] is None or len( str( zh[k] ) ) == 0:
-			zh[k] = v
+	out: dict = {}
+	for k, en_val in en.items():
+		z = prev.get(k)
+		if z is not None and isinstance(z, str) and len(z.strip()) > 0:
+			out[k] = z
+		else:
+			out[k] = en_val
 
 	with open(ZH_PATH, "w", encoding="utf-8") as f:
-		json.dump(zh, f, ensure_ascii=False, indent=2)
+		json.dump(out, f, ensure_ascii=False, indent=2)
 		f.write("\n")
 
-	print("Updated", ZH_PATH, "keys:", len(zh))
+	print("Updated", ZH_PATH, "keys:", len(out), "(preserved existing zh; new keys use EN until translated)")
 
 
 if __name__ == "__main__":

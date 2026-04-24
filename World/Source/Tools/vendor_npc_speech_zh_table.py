@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Chinese templates for vendor NPC speech gumps (Talk.cs → vendor_npc_speech.json).
+"""Legacy fragment-style Chinese templates (reference / one-off tooling only).
 
-Each template must keep the same {0} / {1} placeholders as the English source.
-Run: python3 World/Source/Tools/apply_vendor_npc_speech_zh.py
+Runtime and the normal localization pipeline use **only**:
+  Data/Localization/zh-Hans/vendor_npc_speech.json
+The server hashes the English template and looks up that key in merged locale JSON
+(StringCatalog.TryResolve). apply_vendor_npc_speech_zh.py no longer imports this module.
+
+Each template must keep the same {0} / {1} placeholders as the English source if reused.
 """
 
 
