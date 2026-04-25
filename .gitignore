@@ -55,8 +55,9 @@ World/Data/Files/*
 # Install: git config core.hooksPath .githooks
 # To hide local diffs to tracked files: bash World/Source/Tools/skip_saves_worktree.sh
 # Ignore untracked files/dirs (Achievements, Craft, Player, etc.); does not untrack the baseline
-World/Saves/**
+World/Saves/
 __pycache__/
 *.pyc
 World/*.exe
 .specstory
+World/Saves-backup/
