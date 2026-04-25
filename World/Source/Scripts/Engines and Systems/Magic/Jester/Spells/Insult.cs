@@ -17,7 +17,7 @@ namespace Server.Spells.Jester
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 2.0 ); } }
-		public override int RequiredTithing{ get{ return 120; } }
+		public override int RequiredTithing{ get{ return 60; } }
 		public override int RequiredMana{ get{ return 40; } }
 
 		public Insult( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )

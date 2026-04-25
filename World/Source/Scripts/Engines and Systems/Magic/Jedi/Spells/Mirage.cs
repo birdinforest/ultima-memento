@@ -65,7 +65,6 @@ namespace Server.Spells.Jedi
 			{
 				new JediMirage( Caster ).MoveToWorld( Caster.Location, Caster.Map );
 				Caster.Hidden = true;
-				DrainCrystals( Caster, RequiredTithing );
 			}
 
 			FinishSequence();

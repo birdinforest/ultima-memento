@@ -72,10 +72,7 @@ namespace Server.Spells.Jedi
 				m.FixedEffect( 0x376A, 6, 1, 0xB41, 0 );
 
 				HarmfulSpell( m );
-				DrainCrystals( Caster, RequiredTithing );
 			}
-
-			FinishSequence();
 		}
 
 		public class InternalTarget : Target

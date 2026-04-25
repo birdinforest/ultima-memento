@@ -2,18 +2,35 @@ using System.Text;
 
 namespace Server.Misc
 {
-    class ChangeLog
-    {
+	class ChangeLog
+	{
 		public static string Version()
 		{
-			return "Version: 2.2.0";
+			return "Version: 2.3.0";
 		}
 
 		public static string Versions()
-        {
+		{
 			const string SEPARATOR_LINE = "<br>---------------------------------------------------------------------------------<br><br>";
 			var builder = new StringBuilder();
 			builder.Append(Version() + "<br>");
+
+			builder.Append("Changes<br>");
+			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
+			builder.Append("               - Elemental Blast/Storm, Mindblast, Explosion, Psionic Blast, Hail Storm<br>");
+			builder.Append("- Mobs - Can now teleport in more places (Boats, Dungeon Time, etc)<br>");
+			builder.Append("- Spell - Mages Ballad, Army's Paeon, and Foe Requiem now grant musicianship checks every tick<br>");
+
+			builder.Append("<br>");
+			builder.Append("Fixes<br>");
+			builder.Append("- Gump - Fix issue where Chemist Bar (Alchemist Pouch) buttons didn't work<br>");
+			builder.Append("- Gump - Foe Requiem in song book matches the skill requirement (50 instead of 80)<br>");
+			builder.Append("- Spell - Syth and Jedi spells now properly consume the displayed crystal cost, down from 200% or 300%<br>");
+			builder.Append("- Spell - Insult implementation and displayed info now match<br>");
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			builder.Append("Version: 2.2.0<br>");
 
 			builder.Append("Changes<br>");
 			builder.Append("- Avatar - Add a new ascension for a persistent storage container<br>");
@@ -35,20 +52,27 @@ namespace Server.Misc
 			builder.Append("- Gump - Resurrect gumps now have a confirmation when you will incur a penalty<br>");
 			builder.Append("- Gump - Failed runebook casts now reopen the gump<br>");
 			builder.Append("- Gump - Default runebook spell is now saved per player instead of per runebook<br>");
+			builder.Append("- Gump - Exceptional tools are now categorized as such on the craft session indicator<br>");
 			builder.Append("- Item - Harpoon attack speed is now 4s, down from 5s<br>");
 			builder.Append("- Item - Harpoon weapon abilities are now less off-meta<br>");
 			builder.Append("- Item - Quivers now accept harpoon rope and throwing weapons<br>");
 			builder.Append("- Item - Throwing slimes have been nerfed (production caps at 2 per jar and amount no longer benefits from alch/ep%)<br>");
 			builder.Append("- Item - Instruments can now roll slayers<br>");
 			builder.Append("- Item - Elemental spellbooks can now roll slayers<br>");
+			builder.Append("- Item - Player Traps no longer trigger on their own pets<br>");
 			builder.Append("- Misc - Fishing poles dropped from sunken ships are no longer basic wood<br>");
 			builder.Append("- Misc - Treasure hoards now announce the items that are pulled<br>");
 			builder.Append("- Misc - Larger boats now travel faster<br>");
 			builder.Append("- Misc - Seafaring skill now affects boats travel speed<br>");
 			builder.Append("- Misc - Dramatically increased the purchase price of larger boats<br>");
+			builder.Append("- Misc - Bards now receive a songbook and foe requiem during character creation<br>");
 			builder.Append("- Spell - Curse now reduces elemental resistances for Monsters by 10<br>");
 			builder.Append("- Spell - Shadow Jumping to a mobile will now attempt to jump behind it<br>");
 			builder.Append("- Spell - Fast Travel and Gate Travel mechanisms now ignore Mobiles at destination tile<br>");
+			builder.Append("- Spell - Foe Requiem skill requirement has been reduced to 50, down from 80<br>");
+			builder.Append("- Spell - Quivering Palm now has a start/finish message<br>");
+			builder.Append("- Spell - Gentle Touch now has a 2.5s cast time, down from 3s<br>");
+			builder.Append("- Spell - Purity of Body now has a 2.5s cast time, down from 3s<br>");
 			builder.Append("- Skill - Tracking bonus for Ninjitsu now builds twice as fast<br>");
 			builder.Append("- Skill - Tracking is now 50% more likely to gain<br>");
 			builder.Append("- Skill - Remove Trap only sets a cooldown when targeting a valid entity<br>");
@@ -60,6 +84,9 @@ namespace Server.Misc
 			builder.Append("        - 100 skill is required to attempt in-combat hiding<br>");
 			builder.Append("        - Grandmaster+ will now attempt to Stealth when hiding succeeds<br>");
 			builder.Append("- Skill - Stealth cooldown after using Backstab or Surprise Attack is now removed<br>");
+			builder.Append("- Skill - Mercantile checks from npc transactions (Buy/Sell) are now more frequent<br>");
+			builder.Append("- Skill - Peacemaking now indicates if your skill is too low to succeed<br>");
+			builder.Append("- Skill - Provocation now indicates if your skill is too low to succeed<br>");
 
 			builder.Append("<br>");
 			builder.Append("Fixes<br>");
@@ -74,6 +101,7 @@ namespace Server.Misc
 			builder.Append("- Misc - My Library now properly memorizes missing lore books and scrolls<br>");
 			builder.Append("- Mobs - Casters are now aware when Players can Reflect their spells<br>");
 			builder.Append("- NPC - Barber will now sell you their items<br>");
+			builder.Append("- NPC - Fix issue where Vendor gold was not always being generated<br>");
 			builder.Append("- Spell - Mages Ballad and Army's Paeon buffs now use the correct tooltip<br>");
 			builder.Append("- Spell - Difficulty checks now correctly match the spell circle<br>");
 			builder.Append("- Spell - Reactive Armor and defensive spell checks no longer incorrectly check Melee Damage Absorb<br>");

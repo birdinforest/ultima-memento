@@ -83,7 +83,6 @@ namespace Server.Spells.Jedi
 				Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
 				Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x5590, 9, 32, 0, 0, 5022, 0);
 				Caster.PlaySound( 0x64F ); // Hail storm
-				DrainCrystals( Caster, RequiredTithing );
 			}
 
             FinishSequence();

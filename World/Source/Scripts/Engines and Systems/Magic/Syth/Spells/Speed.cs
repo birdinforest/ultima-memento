@@ -87,8 +87,6 @@ namespace Server.Spells.Syth
 				Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
 				Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x37CC, 9, 32, 0xB00, 0, 5022, 0);
 				Caster.PlaySound( 0x654 ); // Nether cyclone
-
-				DrainCrystals( Caster, RequiredTithing );
 			}
 
             FinishSequence();
