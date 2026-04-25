@@ -64,14 +64,74 @@ namespace Server.Localization
 			s_OrderedTerms = list.ToArray();
 		}
 
-		public static string ResolveComposite( Mobile m, string text )
+		private static bool IsAsciiLetter( char c )
 		{
-			if ( m == null || text == null || text.Length == 0 )
-				return text;
+			return ( c >= 'a' && c <= 'z' ) || ( c >= 'A' && c <= 'Z' );
+		}
 
-			string lang = AccountLang.GetLanguageCode( m.Account );
+		/// <summary>
+		/// Single-token ASCII fragments (e.g. <c>ore</c>, <c>demon</c>) must not match inside longer English words
+		/// (<c>explorer</c>, <c>demonic</c>). Multi-word phrases use plain replacement.
+		/// </summary>
+		private static bool NeedsAsciiWordBoundaries( string en )
+		{
+			if ( en == null || en.Length == 0 )
+				return false;
+			if ( en.IndexOf( ' ' ) >= 0 )
+				return false;
+			for ( int i = 0; i < en.Length; ++i )
+			{
+				char c = en[i];
+				if ( c > 127 || !char.IsLetter( c ) )
+					return false;
+			}
+			return true;
+		}
 
-			if ( !AccountLang.IsChinese( lang ) )
+		private static string ReplaceFragment( string work, string en, string zh, StringComparison cmp )
+		{
+			if ( work == null || en == null || en.Length == 0 || work.Length < en.Length )
+				return work;
+			if ( zh == null )
+				zh = "";
+			bool wholeWord = NeedsAsciiWordBoundaries( en );
+			int from = 0;
+			System.Text.StringBuilder sb = new System.Text.StringBuilder( work.Length + 32 );
+			while ( from <= work.Length - en.Length )
+			{
+				int pos = work.IndexOf( en, from, cmp );
+				if ( pos < 0 )
+				{
+					sb.Append( work, from, work.Length - from );
+					break;
+				}
+				sb.Append( work, from, pos - from );
+				bool ok = true;
+				if ( wholeWord )
+				{
+					if ( pos > 0 && IsAsciiLetter( work[pos - 1] ) )
+						ok = false;
+					int after = pos + en.Length;
+					if ( after < work.Length && IsAsciiLetter( work[after] ) )
+						ok = false;
+				}
+				if ( ok )
+				{
+					sb.Append( zh );
+					from = pos + en.Length;
+				}
+				else
+				{
+					sb.Append( work[pos] );
+					from = pos + 1;
+				}
+			}
+			return sb.ToString();
+		}
+
+		private static string ApplyCompositeReplacements( string text, string catalogLang )
+		{
+			if ( text == null || text.Length == 0 )
 				return text;
 
 			EnsureInitialized();
@@ -80,6 +140,7 @@ namespace Server.Localization
 				return PolishChineseCompositeGlue( text );
 
 			string work = text;
+			StringComparison cmp = StringComparison.Ordinal;
 
 			for ( int i = 0; i < s_OrderedTerms.Length; ++i )
 			{
@@ -92,17 +153,42 @@ namespace Server.Localization
 
 				if ( s_FragmentZh != null && s_FragmentZh.TryGetValue( en, out zh ) && zh != null && zh.Length > 0 && zh != en )
 				{
-					work = work.Replace( en, zh );
+					work = ReplaceFragment( work, en, zh, cmp );
 					continue;
 				}
 
-				zh = StringCatalog.TryResolve( lang, en );
+				zh = StringCatalog.TryResolve( catalogLang, en );
 
 				if ( zh != null && zh.Length > 0 && zh != en )
-					work = work.Replace( en, zh );
+					work = ReplaceFragment( work, en, zh, cmp );
 			}
 
 			return PolishChineseCompositeGlue( work );
+		}
+
+		public static string ResolveComposite( Mobile m, string text )
+		{
+			if ( m == null || text == null || text.Length == 0 )
+				return text;
+
+			string lang = AccountLang.GetLanguageCode( m.Account );
+
+			if ( !AccountLang.IsChinese( lang ) )
+				return text;
+
+			return ApplyCompositeReplacements( text, lang );
+		}
+
+		/// <summary>
+		/// Fragment + StringCatalog zh-Hans pass without a viewer <see cref="Mobile"/> (NPCs have no account).
+		/// Used to pre-build parallel Chinese for tavern broadcast lines; English clients still use the English string from <see cref="Server.Mobiles.CitizenLocalization.SayLocalizedComposite"/>.
+		/// </summary>
+		public static string ResolveCompositeToZhHans( string text )
+		{
+			if ( text == null || text.Length == 0 )
+				return text;
+
+			return ApplyCompositeReplacements( text, "zh-Hans" );
 		}
 
 		/// <summary>

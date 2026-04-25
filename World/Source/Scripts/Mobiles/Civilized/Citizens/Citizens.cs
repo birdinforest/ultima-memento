@@ -71,6 +71,58 @@ namespace Server.Mobiles
 			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
 		}
 
+		/// <summary>
+		/// Pre-build zh-Hans for NPC-spoken tavern chatter (no viewer account on the speaker). English accounts still hear the English string from <see cref="CitizenLocalization.SayLocalizedComposite"/>.
+		/// </summary>
+		public static string ResolveCitizenRumorToChineseForBroadcast( string englishRumor )
+		{
+			if ( englishRumor == null || englishRumor.Length == 0 )
+				return englishRumor;
+			string s = Server.Localization.CommonTalkDynamicZh.TryApplyForBroadcast( englishRumor );
+			if ( s == null )
+				s = Server.Localization.QuestCompositeResolver.ResolveCompositeToZhHans( englishRumor );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
+		}
+
+		/// <summary>Localize <see cref="Title"/> for zh-Hans (single-click label, citizen gump header).</summary>
+		public static string LocalizeCitizenTitleForZh( Mobile viewer, string titleEnglish )
+		{
+			if ( titleEnglish == null || titleEnglish.Length == 0 )
+				return titleEnglish;
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+			if ( !AccountLang.IsChinese( lang ) )
+				return titleEnglish;
+			string trimmed = titleEnglish.Trim();
+			string z = StringCatalog.TryResolve( lang, trimmed );
+			string t = ( z != null && z.Length > 0 && !z.Equals( trimmed, StringComparison.Ordinal ) ) ? z : QuestCompositeResolver.ResolveComposite( viewer, trimmed );
+			t = NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( t );
+			if ( t != null && t.StartsWith( "the ", StringComparison.OrdinalIgnoreCase ) && t.Length > 4 )
+			{
+				string rest = t.Substring( 4 );
+				if ( rest.Length > 0 && !StringCatalog.IsAsciiOnly( rest ) )
+					return rest.Trim();
+			}
+			return t;
+		}
+
+		/// <summary>Name + localized title for UI / gump when the viewer uses zh-Hans.</summary>
+		public static string FormatCitizenDisplayLine( Mobile viewer, Citizens c )
+		{
+			if ( c == null )
+				return "";
+			string n = c.Name ?? "";
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+			if ( !AccountLang.IsChinese( lang ) || c.Title == null || c.Title.Length == 0 )
+				return c.Title != null && c.Title.Length > 0 ? n + " " + c.Title : n;
+			string t = LocalizeCitizenTitleForZh( viewer, c.Title );
+			return t != null && t.Length > 0 ? n + " " + t : n;
+		}
+
+		public override string GetLocalizedClickSuffix( Mobile viewer, string titleEnglish )
+		{
+			return LocalizeCitizenTitleForZh( viewer, titleEnglish );
+		}
+
 		/// <summary>zh-Hans for a single English line used in vendor-style citizen lines (StringCatalog key = exact EN literal).</summary>
 		private static string CitzT( string en )
 		{
@@ -1907,7 +1959,7 @@ namespace Server.Mobiles
 				string color = "#d5a496";
 
 				AddImage(0, 2, 9543, Server.Misc.PlayerSettings.GetGumpHue( player ));
-				AddHtml( 12, 15, 341, 20, @"<BODY><BASEFONT Color=" + color + ">" + citizen.Name + " " + citizen.Title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 15, 341, 20, @"<BODY><BASEFONT Color=" + color + ">" + FormatCitizenDisplayLine( player, b_Citizen ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 12, 50, 380, 253, @"<BODY><BASEFONT Color=" + color + ">" + speak + "</BASEFONT></BODY>", (bool)false, (bool)true);
 				AddButton(367, 12, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			}

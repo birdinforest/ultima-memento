@@ -1088,6 +1088,14 @@ namespace Server
 			return suffix;
 		}
 
+		/// <summary>
+		/// Single-click overhead suffix (<see cref="Title"/>). Default is English; subclasses may localize per <paramref name="viewer"/>.
+		/// </summary>
+		public virtual string GetLocalizedClickSuffix( Mobile viewer, string titleEnglish )
+		{
+			return titleEnglish;
+		}
+
 		public virtual void AddNameProperties( ObjectPropertyList list )
 		{
 			string name = Name;
@@ -12039,7 +12047,7 @@ namespace Server
 			string suffix = "";
 
 			if( ClickTitle && Title != null && Title.Length > 0 )
-				suffix = Title;
+				suffix = GetLocalizedClickSuffix( from, Title );
 
 			suffix = ApplyNameSuffix( suffix );
 
