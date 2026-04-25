@@ -37,6 +37,20 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		private static string TavernPatronsJobZh( string titleCaseJob )
+		{
+			if ( titleCaseJob == null || titleCaseJob.Length == 0 )
+				return titleCaseJob;
+			string low = titleCaseJob.ToLowerInvariant();
+			string z = Citizens.TranslateAdventurerZh( low );
+			if ( z != null && z.Length > 0 && !z.Equals( low, StringComparison.OrdinalIgnoreCase ) )
+				return z;
+			z = Citizens.TranslateJobZh( low );
+			if ( z != null && z.Length > 0 && !z.Equals( low, StringComparison.OrdinalIgnoreCase ) )
+				return z;
+			return titleCaseJob;
+		}
+
 		public static string GetRareLocation( Mobile speaker, bool toPlayer, bool MixTogether )
 		{
 			string what = "";	
@@ -529,7 +543,8 @@ namespace Server.Misc
 		/// <summary>Random rumor clause (English literals). zh-Hans: static lines map in
 		/// <c>Data/Localization/commontalk-fragment-zh.json</c> (rebuild via
 		/// <c>World/Source/Tools/build_commontalk_fragment_zh.py</c> + <c>gen_quest_fragment_translations.py</c>).
-		/// Lines with string concatenation rely on quest-fragment + NPC vocab passes.</summary>
+		/// Lines with string concatenation rely on quest-fragment + NPC vocab passes.
+		/// <see cref="GetChatter"/> pre-builds parallel zh via <see cref="Citizens.ResolveCitizenRumorToChineseForBroadcast"/> (NPCs have no account).</summary>
 		public static string CommonTalk( string sWords, string city, string dungeon, Mobile from, string adventurer, bool useAll )
 		{
 			string misc = "";
@@ -956,12 +971,12 @@ namespace Server.Misc
 			case 5: sSource = "I heard someone talking about"; sSourceZh = "我听人议论过"; break;
 			case 6: sSource = "There is a story about"; sSourceZh = "有一个关于此事的故事"; break;
 			case 7: sSource = sSourceName + " told me about"; sSourceZh = sSourceName + "告诉了我"; break;
-			case 8: sSource = sSourceName + " the " + sSourceJob + " told me about"; sSourceZh = sSourceJob + " " + sSourceName + "告诉了我"; break;
-			case 9: sSource = "Some " + sSourceJob + " told me about"; sSourceZh = "某个" + sSourceJob + "告诉了我"; break;
-			case 10: sSource = sSourceName + " the " + sSourceJob + " heard about"; sSourceZh = sSourceJob + " " + sSourceName + "听说了"; break;
-			case 11: sSource = "Some " + sSourceJob + " heard about"; sSourceZh = "某个" + sSourceJob + "听说了"; break;
-			case 12: sSource = sSourceName + " the " + sSourceJob + " learned about"; sSourceZh = sSourceJob + " " + sSourceName + "得知了"; break;
-			case 13: sSource = "Some " + sSourceJob + " learned about"; sSourceZh = "某个" + sSourceJob + "得知了"; break;
+			case 8: sSource = sSourceName + " the " + sSourceJob + " told me about"; sSourceZh = TavernPatronsJobZh( sSourceJob ) + sSourceName + "告诉了我"; break;
+			case 9: sSource = "Some " + sSourceJob + " told me about"; sSourceZh = "某个" + TavernPatronsJobZh( sSourceJob ) + "告诉了我"; break;
+			case 10: sSource = sSourceName + " the " + sSourceJob + " heard about"; sSourceZh = TavernPatronsJobZh( sSourceJob ) + sSourceName + "听说了"; break;
+			case 11: sSource = "Some " + sSourceJob + " heard about"; sSourceZh = "某个" + TavernPatronsJobZh( sSourceJob ) + "听说了"; break;
+			case 12: sSource = sSourceName + " the " + sSourceJob + " learned about"; sSourceZh = TavernPatronsJobZh( sSourceJob ) + sSourceName + "得知了"; break;
+			case 13: sSource = "Some " + sSourceJob + " learned about"; sSourceZh = "某个" + TavernPatronsJobZh( sSourceJob ) + "得知了"; break;
 		}
 
 			string sThey = "Samson";	
@@ -972,6 +987,9 @@ namespace Server.Misc
 
 			string dungeon = QuestCharacters.SomePlace( "tavern" );	
 				if ( Utility.RandomMinMax( 1, 3 ) == 1 ){ dungeon = RandomThings.MadeUpDungeon(); }
+
+			string cityZh = Citizens.ResolveCitizenRumorToChineseForBroadcast( city );
+			string dungeonZh = Citizens.ResolveCitizenRumorToChineseForBroadcast( dungeon );
 
 			string sAdventurer = Adventurer();	
 
@@ -1687,6 +1705,22 @@ namespace Server.Misc
 				break;
 			}
 
+			if ( sSpeechZh == null && sSpeech != null && sSpeech.Length > 0 )
+			{
+				if ( sSource != null && sSource.Length > 0 && sSpeech.StartsWith( sSource + " ", StringComparison.Ordinal ) && sSpeech.Length > sSource.Length + 1 )
+				{
+					string tail = sSpeech.Substring( sSource.Length + 1 ).Trim();
+					if ( tail.Length > 0 )
+					{
+						string tailZh = Citizens.ResolveCitizenRumorToChineseForBroadcast( tail );
+						if ( tailZh != null && tailZh.Length > 0 && tailZh != tail )
+							sSpeechZh = sSourceZh + tailZh;
+					}
+				}
+				if ( sSpeechZh == null )
+					sSpeechZh = Citizens.ResolveCitizenRumorToChineseForBroadcast( sSpeech );
+			}
+
 		string sGossip = sSpeech; string sGossipZh = sSpeechZh;
 
 		switch( Utility.RandomMinMax( 1, ( 11 + CommonTalkingCount ) ) )
@@ -1718,49 +1752,49 @@ namespace Server.Misc
 		switch( Utility.RandomMinMax( 1, ( 2 + CommonTalkingCount ) ) )
 		{
 			case 1: sCitizen = sThey + " said this is the safest place to stay."; sCitizenZh = sThey + "说这里是最安全的落脚之处。"; break;
-			case 2: sCitizen = sThey + " lives somewhere near " + city + "."; sCitizenZh = sThey + "就住在" + city + "附近。"; break;
+			case 2: sCitizen = sThey + " lives somewhere near " + city + "."; sCitizenZh = sThey + "就住在" + cityZh + "附近。"; break;
 		}
 
 		string sHappen = "A friend of mine died"; string sEnd = ".";
 		string sEventZh = null;
 		switch( Utility.RandomMinMax( 0, 35 ) )
 		{
-			case 0: sHappen = "A friend of mine was lost in"; sEnd = "."; sEventZh = "我有个朋友在" + dungeon + "迷路了。"; break;
-			case 1: sHappen = "A friend of mine died in"; sEnd = "."; sEventZh = "我有个朋友在" + dungeon + "身亡了。"; break;
-			case 2: sHappen = "I lost that weapon in"; sEnd = "."; sEventZh = "那把武器是我在" + dungeon + "丢失的。"; break;
-			case 3: sHappen = "Have you ever been to"; sEnd = "?"; sEventZh = "你去过" + dungeon + "吗？"; break;
-			case 4: sHappen = "Have you ever heard of"; sEnd = "?"; sEventZh = "你听说过" + dungeon + "吗？"; break;
-			case 5: sHappen = "When did you go to"; sEnd = "?"; sEventZh = "你何时前往" + dungeon + "的？"; break;
-			case 6: sHappen = "How did you get to"; sEnd = "?"; sEventZh = "你是如何到达" + dungeon + "的？"; break;
-			case 7: sHappen = "Why did you go to"; sEnd = "?"; sEventZh = "你为何要前往" + dungeon + "？"; break;
-			case 8: sHappen = "What did you find in"; sEnd = "?"; sEventZh = "你在" + dungeon + "发现了什么？"; break;
-			case 9: sHappen = "You found that in"; sEnd = "?"; sEventZh = "那个是你在" + dungeon + "找到的吗？"; break;
-			case 10: sHappen = "They died in"; sEnd = "."; sEventZh = "他们在" + dungeon + "战死了。"; break;
-			case 11: sHappen = "I have never been to"; sEnd = "."; sEventZh = "我从未踏足过" + dungeon + "。"; break;
-			case 12: sHappen = "That artifact came from"; sEnd = "."; sEventZh = "那件神器正是出自" + dungeon + "。"; break;
-			case 13: sHappen = "They got lost in"; sEnd = "."; sEventZh = "他们在" + dungeon + "迷路了。"; break;
-			case 14: sHappen = "They vanished in"; sEnd = "."; sEventZh = "他们在" + dungeon + "失踪了。"; break;
-			case 15: sHappen = "I almost didn't make it out of"; sEnd = "."; sEventZh = "我差点没能从" + dungeon + "中逃出来。"; break;
-			case 16: sHappen = "They didn't make it out of"; sEnd = "."; sEventZh = "他们没能从" + dungeon + "中逃出来。"; break;
-			case 17: sHappen = "I lost that magic item in"; sEnd = "."; sEventZh = "那件魔法物品是我在" + dungeon + "丢失的。"; break;
-			case 18: sHappen = "Did you lose it in"; sEnd = "?"; sEventZh = "那是你在" + dungeon + "丢失的吗？"; break;
-			case 19: sHappen = "We should go search in"; sEnd = "."; sEventZh = "我们应当去" + dungeon + "搜寻一番。"; break;
-			case 20: sHappen = "We should go explore in"; sEnd = "."; sEventZh = "我们应当去探索" + dungeon + "。"; break;
-			case 21: sHappen = "Tonight we will go to"; sEnd = "."; sEventZh = "今晚我们就动身前往" + dungeon + "。"; break;
-			case 22: sHappen = sThey + " was lost in"; sEnd = "."; sEventZh = sThey + "在" + dungeon + "中迷路了。"; break;
-			case 23: sHappen = sThey + " died in"; sEnd = "."; sEventZh = sThey + "在" + dungeon + "战死了。"; break;
-			case 24: sHappen = sThey + " lost that weapon in"; sEnd = "."; sEventZh = sThey + "的武器在" + dungeon + "丢失了。"; break;
-			case 25: sHappen = "When did " + sThey + " go to"; sEnd = "?"; sEventZh = sThey + "是何时前往" + dungeon + "的？"; break;
-			case 26: sHappen = "How did " + sThey + " get to"; sEnd = "?"; sEventZh = sThey + "是如何到达" + dungeon + "的？"; break;
-			case 27: sHappen = "Why did " + sThey + " go to"; sEnd = "?"; sEventZh = sThey + "为何要前往" + dungeon + "？"; break;
-			case 28: sHappen = "What did " + sThey + " find in"; sEnd = "?"; sEventZh = sThey + "在" + dungeon + "找到了什么？"; break;
-			case 29: sHappen = sThey + " found that in"; sEnd = "?"; sEventZh = "那是" + sThey + "在" + dungeon + "找到的吗？"; break;
-			case 30: sHappen = sThey + " has never been to"; sEnd = "."; sEventZh = sThey + "从未踏足过" + dungeon + "。"; break;
-			case 31: sHappen = sThey + " vanished in"; sEnd = "."; sEventZh = sThey + "在" + dungeon + "失踪了。"; break;
-			case 32: sHappen = sThey + " almost didn't make it out of"; sEnd = "."; sEventZh = sThey + "差点没能从" + dungeon + "中逃出来。"; break;
-			case 33: sHappen = sThey + " didn't make it out of"; sEnd = "."; sEventZh = sThey + "没能从" + dungeon + "中逃出来。"; break;
-			case 34: sHappen = sThey + " lost that magic item in"; sEnd = "."; sEventZh = sThey + "的魔法物品在" + dungeon + "丢失了。"; break;
-			case 35: sHappen = "Did " + sThey + " lose it in"; sEnd = "?"; sEventZh = sThey + "是在" + dungeon + "丢失那件物品的吗？"; break;
+			case 0: sHappen = "A friend of mine was lost in"; sEnd = "."; sEventZh = "我有个朋友在" + dungeonZh + "迷路了。"; break;
+			case 1: sHappen = "A friend of mine died in"; sEnd = "."; sEventZh = "我有个朋友在" + dungeonZh + "身亡了。"; break;
+			case 2: sHappen = "I lost that weapon in"; sEnd = "."; sEventZh = "那把武器是我在" + dungeonZh + "丢失的。"; break;
+			case 3: sHappen = "Have you ever been to"; sEnd = "?"; sEventZh = "你去过" + dungeonZh + "吗？"; break;
+			case 4: sHappen = "Have you ever heard of"; sEnd = "?"; sEventZh = "你听说过" + dungeonZh + "吗？"; break;
+			case 5: sHappen = "When did you go to"; sEnd = "?"; sEventZh = "你何时前往" + dungeonZh + "的？"; break;
+			case 6: sHappen = "How did you get to"; sEnd = "?"; sEventZh = "你是如何到达" + dungeonZh + "的？"; break;
+			case 7: sHappen = "Why did you go to"; sEnd = "?"; sEventZh = "你为何要前往" + dungeonZh + "？"; break;
+			case 8: sHappen = "What did you find in"; sEnd = "?"; sEventZh = "你在" + dungeonZh + "发现了什么？"; break;
+			case 9: sHappen = "You found that in"; sEnd = "?"; sEventZh = "那个是你在" + dungeonZh + "找到的吗？"; break;
+			case 10: sHappen = "They died in"; sEnd = "."; sEventZh = "他们在" + dungeonZh + "战死了。"; break;
+			case 11: sHappen = "I have never been to"; sEnd = "."; sEventZh = "我从未踏足过" + dungeonZh + "。"; break;
+			case 12: sHappen = "That artifact came from"; sEnd = "."; sEventZh = "那件神器正是出自" + dungeonZh + "。"; break;
+			case 13: sHappen = "They got lost in"; sEnd = "."; sEventZh = "他们在" + dungeonZh + "迷路了。"; break;
+			case 14: sHappen = "They vanished in"; sEnd = "."; sEventZh = "他们在" + dungeonZh + "失踪了。"; break;
+			case 15: sHappen = "I almost didn't make it out of"; sEnd = "."; sEventZh = "我差点没能从" + dungeonZh + "中逃出来。"; break;
+			case 16: sHappen = "They didn't make it out of"; sEnd = "."; sEventZh = "他们没能从" + dungeonZh + "中逃出来。"; break;
+			case 17: sHappen = "I lost that magic item in"; sEnd = "."; sEventZh = "那件魔法物品是我在" + dungeonZh + "丢失的。"; break;
+			case 18: sHappen = "Did you lose it in"; sEnd = "?"; sEventZh = "那是你在" + dungeonZh + "丢失的吗？"; break;
+			case 19: sHappen = "We should go search in"; sEnd = "."; sEventZh = "我们应当去" + dungeonZh + "搜寻一番。"; break;
+			case 20: sHappen = "We should go explore in"; sEnd = "."; sEventZh = "我们应当去探索" + dungeonZh + "。"; break;
+			case 21: sHappen = "Tonight we will go to"; sEnd = "."; sEventZh = "今晚我们就动身前往" + dungeonZh + "。"; break;
+			case 22: sHappen = sThey + " was lost in"; sEnd = "."; sEventZh = sThey + "在" + dungeonZh + "中迷路了。"; break;
+			case 23: sHappen = sThey + " died in"; sEnd = "."; sEventZh = sThey + "在" + dungeonZh + "战死了。"; break;
+			case 24: sHappen = sThey + " lost that weapon in"; sEnd = "."; sEventZh = sThey + "的武器在" + dungeonZh + "丢失了。"; break;
+			case 25: sHappen = "When did " + sThey + " go to"; sEnd = "?"; sEventZh = sThey + "是何时前往" + dungeonZh + "的？"; break;
+			case 26: sHappen = "How did " + sThey + " get to"; sEnd = "?"; sEventZh = sThey + "是如何到达" + dungeonZh + "的？"; break;
+			case 27: sHappen = "Why did " + sThey + " go to"; sEnd = "?"; sEventZh = sThey + "为何要前往" + dungeonZh + "？"; break;
+			case 28: sHappen = "What did " + sThey + " find in"; sEnd = "?"; sEventZh = sThey + "在" + dungeonZh + "找到了什么？"; break;
+			case 29: sHappen = sThey + " found that in"; sEnd = "?"; sEventZh = "那是" + sThey + "在" + dungeonZh + "找到的吗？"; break;
+			case 30: sHappen = sThey + " has never been to"; sEnd = "."; sEventZh = sThey + "从未踏足过" + dungeonZh + "。"; break;
+			case 31: sHappen = sThey + " vanished in"; sEnd = "."; sEventZh = sThey + "在" + dungeonZh + "失踪了。"; break;
+			case 32: sHappen = sThey + " almost didn't make it out of"; sEnd = "."; sEventZh = sThey + "差点没能从" + dungeonZh + "中逃出来。"; break;
+			case 33: sHappen = sThey + " didn't make it out of"; sEnd = "."; sEventZh = sThey + "没能从" + dungeonZh + "中逃出来。"; break;
+			case 34: sHappen = sThey + " lost that magic item in"; sEnd = "."; sEventZh = sThey + "的魔法物品在" + dungeonZh + "丢失了。"; break;
+			case 35: sHappen = "Did " + sThey + " lose it in"; sEnd = "?"; sEventZh = sThey + "是在" + dungeonZh + "丢失那件物品的吗？"; break;
 		}
 
 		string sEvent = sHappen + " " + dungeon + sEnd;
@@ -1885,6 +1919,8 @@ namespace Server.Misc
 				sPhrase = sWords + ".";	
 			}
 
+			string sPhraseZh = Citizens.ResolveCitizenRumorToChineseForBroadcast( sPhrase );
+
 			Region reg = Region.Find( patron.Location, patron.Map );	
 
 			int iWillSay = Utility.RandomMinMax( 1, 8 );	
@@ -1934,7 +1970,7 @@ namespace Server.Misc
 					case 39: patron.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) ); break;	
 				}
 			}
-		else if ( iWillSay < 5 ){ CitizenLocalization.SayLocalizedComposite( patron, sPhrase, null ); }
+		else if ( iWillSay < 5 ){ CitizenLocalization.SayLocalizedComposite( patron, sPhrase, sPhraseZh ); }
 		else if ( iWillSay < 7 ){ CitizenLocalization.SayLocalizedComposite( patron, sEvent, sEventZh ); }
 		else if ( reg.Name == "the Basement" || reg.Name == "the Dungeon Room" || reg.Name == "the Camping Tent" ) { CitizenLocalization.SayLocalizedComposite( patron, sTent, sTentZh ); }
 		else if ( !( patron is TavernPatronNorth || patron is TavernPatronSouth || patron is TavernPatronEast || patron is TavernPatronWest ) ) { CitizenLocalization.SayLocalizedComposite( patron, sCitizen, sCitizenZh ); }

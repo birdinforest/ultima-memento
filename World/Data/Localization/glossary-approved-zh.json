@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.4",
+  "_version": "1.6",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -1859,6 +1859,20 @@
       "notes": "Shard spelling for orcs; may denote a more civilised or distinct sub-species than common fantasy orcs."
     },
     "_SECTION_ITEMS": "── Items / Artefacts ────────────────────────────────────────",
+    "artifact": {
+      "canonical": "神器",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Singular count noun for a rare or quest-grade magic item (tavern rumors, quest text, vendor lines); same headword intent as plural 'artifacts'.",
+      "translation_basis_zh": "与复数词条 artifacts 共用「神器」，便于工具按词形精确匹配；与「奇物」「遗物」等泛称区分，突出带威能或剧情份量的物件。"
+    },
+    "artifacts": {
+      "canonical": "神器",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Plural mass noun for rare or quest-grade magic items and loot in tavern rumors, vendor speech, and UO-style loot tables (distinct from mundane 'goods').",
+      "translation_basis_zh": "与单数词条 artifact 相同译名「神器」，便于工具分别匹配两种英文词形；在中文里不必强行区分单复数词形。"
+    },
     "Codex of Ultimate Wisdom": {
       "canonical": "终极智慧法典",
       "alternatives": [

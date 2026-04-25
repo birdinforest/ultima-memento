@@ -83,6 +83,7 @@ FRAGMENTS = [
     ("We overheard someone tell of",                "我们无意间听到有人谈起"),
     (" overheard another tell of",                  "无意间听到另一人谈起"),
     (" is spreading rumors about",                  "正在散布关于此事的传言"),
+    (" is spreading rumours about",                 "正在散布关于此事的传言"),
     ("Someone told me that ",                       "有人告诉我，"),
     (" is where you would look for ",               "是寻找"),
     (" and they told me to bring back ",            "，他们让我带回"),
