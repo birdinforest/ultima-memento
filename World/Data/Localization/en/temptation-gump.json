@@ -1,0 +1,23 @@
+{
+  "temptationgump.title.self": "Choose your Temptations",
+  "temptationgump.title.target": "{0}'s Temptations",
+  "temptationgump.tooltip.locked": "Setting can only be changed in the Gypsy Forest",
+  "temptationgump.once_tempted": "Once you've been tempted, you may never go back. Choose wisely.",
+  "temptationgump.not_tempted": "{0} was not tempted.",
+  "temptationgump.decline": "No thank you",
+  "temptationgump.accept": "I've been Tempted!",
+  "temptationgump.help.title": "Temptations",
+  "temptationgump.help.body": "Command: [Temptations<br><br>Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.",
+  "temptationgump.name.i_can_take_it": "I can take it",
+  "temptationgump.name.strongest_avenger": "Strongest Avenger",
+  "temptationgump.name.famine": "Red warrior needs food, badly!",
+  "temptationgump.name.puzzle_master": "Puzzle master",
+  "temptationgump.name.tribute": "This is just a tribute",
+  "temptationgump.name.deathwish": "It's dangerous to go alone! Take this.",
+  "temptationgump.desc.i_can_take_it": "+ You do 10% more damage<br>x You take 20% more damage",
+  "temptationgump.desc.strongest_avenger": "+ You learn how to wear pants<br>x Enemies cast spells faster",
+  "temptationgump.desc.famine": "+ Your stat and skill gain rate is impacted by your Hunger<br>x Hunger and thirst decay twice as fast",
+  "temptationgump.desc.puzzle_master": "+ You learn how to solve puzzle boxes<br>x Reduced skill cap bonuses for Fugitives (+200) and Titan of Ether quest (+200)<br>x Magical attributes from monster racial bonuses now act as Minimums. Resist/Stat bonuses still stack.",
+  "temptationgump.desc.tribute": "- Tribute quests rewards are changed",
+  "temptationgump.desc.deathwish": "+ You gain stats and skills faster<br>- An old sword<br>x You may never be resurrected"
+}
