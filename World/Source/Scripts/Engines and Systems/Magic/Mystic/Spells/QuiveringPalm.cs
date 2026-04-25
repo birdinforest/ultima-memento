@@ -40,9 +40,6 @@ namespace Server.Spells.Mystic
 			}
 			else if ( CheckSequence() )
 			{
-				IEntity from = new Entity( Serial.Zero, new Point3D( Caster.X, Caster.Y, Caster.Z ), Caster.Map );
-				IEntity to = new Entity( Serial.Zero, new Point3D( Caster.X, Caster.Y, Caster.Z + 50 ), Caster.Map );
-
 				Caster.PlaySound( 0x212 );
 				Effects.SendLocationParticles( EffectItem.Create( Caster.Location, Caster.Map, EffectItem.DefaultDuration ), 0x376A, 1, 29, 0x47D, 2, 9962, 0 );
 
@@ -57,7 +54,8 @@ namespace Server.Spells.Mystic
 
 				weapon.Consecrated = true;
 
-				m_Table[weapon] = t = new ExpireTimer( weapon, duration );
+				Caster.SendMessage( "Your fists glow with magical energy." );
+				m_Table[weapon] = t = new ExpireTimer( weapon, duration, Caster );
 
 				t.Start();
 			}
@@ -70,15 +68,20 @@ namespace Server.Spells.Mystic
 		private class ExpireTimer : Timer
 		{
 			private BaseWeapon m_Weapon;
+			private Mobile m_Caster;
 
-			public ExpireTimer( BaseWeapon weapon, TimeSpan delay ) : base( delay )
+			public ExpireTimer( BaseWeapon weapon, TimeSpan delay, Mobile caster ) : base( delay )
 			{
 				m_Weapon = weapon;
 				Priority = TimerPriority.FiftyMS;
+				m_Caster = caster;
 			}
 
 			protected override void OnTick()
 			{
+				if ( m_Table[m_Weapon] == null ) return;
+
+				m_Caster.SendMessage( "Your fists return to normal." );
 				m_Weapon.Consecrated = false;
 				Effects.PlaySound( m_Weapon.GetWorldLocation(), m_Weapon.Map, 0x1F8 );
 				m_Table.Remove( this );

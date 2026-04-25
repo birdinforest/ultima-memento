@@ -380,7 +380,7 @@ namespace Server.Items
 
                         int gumpId = 9508 + i;
                         xValue += mod;
-                        AddButton(xValue, yValue, gumpId, gumpId, btn, GumpButtonType.Reply, 0);
+                        AddButton(xValue, yValue, gumpId, gumpId, i, GumpButtonType.Reply, 0);
 
                         // New Row - Reset
                         if (++cyc > 15 && yValue == 0)

@@ -326,7 +326,9 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Musicianship:
-						PackItem(bag, 3, () => GenerateRandomItem(LootPack.Instruments, false));
+						PackItem(bag, GenerateRandomItem(LootPack.Instruments, false));
+						PackItem(bag, new SongBook());
+						PackItem(bag, new FoeRequiemScroll());
 						break;
 
 					case SkillName.Poisoning:

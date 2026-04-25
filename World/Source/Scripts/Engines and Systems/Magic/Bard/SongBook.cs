@@ -43,7 +43,7 @@ namespace Server.Items
 			else if ( spell == 354 ){ 	skl = "70";	txt = "Lowers the energy resistance of your target."; }
 			else if ( spell == 355 ){ 	skl = "50";	txt = "An area of effect that raises the fire resistance of your party."; }
 			else if ( spell == 356 ){ 	skl = "70";	txt = "Lowers the fire resistance of your target."; }
-			else if ( spell == 357 ){ 	skl = "80";	txt = "Damages your target with a burst of sonic energy."; }
+			else if ( spell == 357 ){ 	skl = "50";	txt = "Damages your target with a burst of sonic energy."; }
 			else if ( spell == 358 ){ 	skl = "50";	txt = "An area of effect that raises the cold resistance of your party."; }
 			else if ( spell == 359 ){ 	skl = "70";	txt = "Lowers the ice resistance of your target."; }
 			else if ( spell == 360 ){ 	skl = "50";	txt = "An area of effect that raises the physical resist of your party."; }

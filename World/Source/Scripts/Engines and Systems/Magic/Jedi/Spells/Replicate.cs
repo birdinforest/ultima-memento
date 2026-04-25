@@ -40,8 +40,6 @@ namespace Server.Spells.Jedi
 					Effects.SendLocationEffect(m.Location, m.Map, 0x373A, 15, 0, 0);
 					m.SendMessage( "You create a replication crystal with your genetic pattern." );
 				}
-
-				DrainCrystals( m, RequiredTithing );
 			}
 
 			FinishSequence();

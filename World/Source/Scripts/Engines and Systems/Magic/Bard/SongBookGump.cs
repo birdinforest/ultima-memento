@@ -203,7 +203,7 @@ namespace Server.Gumps
 				{
 					s12 = "Foe Requiem";
 					s13 = "Damages your target with a burst of sonic energy.";
-					s14 = "80";
+					s14 = "50";
 					s15 = "30";
 					s16 = "FoeRequiem";
 					s11 = 0x40A;

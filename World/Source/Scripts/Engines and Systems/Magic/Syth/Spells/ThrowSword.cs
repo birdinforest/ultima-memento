@@ -82,11 +82,8 @@ namespace Server.Spells.Syth
 
 					// Deal the damage
 					AOS.Damage( m, Caster, damage, phys, fire, cold, pois, engy );
-					DrainCrystals( Caster, RequiredTithing );
 				}
 			}
-
-			FinishSequence();
 		}
 
 		public Item GetSword()
