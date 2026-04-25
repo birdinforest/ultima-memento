@@ -170,7 +170,7 @@ namespace Server
 	// suffer double stat/fame/karma/skill loss on death with no tribute
 	// suffer normal stat/fame/karma/skill loss on death with tribute
 
-		public static bool S_AllowAlienChoice = false;
+		public static bool S_AllowAlienChoice = true;
 
 	// Set to the number 0 to disable. The other values are 1, 2, or 3 where the default is 1. When greater than 0, you will
 	// enable the creature character feature of the game. This allows players to become a creature of the game as their
