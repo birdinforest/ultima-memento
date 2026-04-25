@@ -125,6 +125,12 @@ namespace Server.SkillHandlers
 
 						if ( from.CanBeHarmful( m_Creature, true ) && from.CanBeHarmful( creature, true ) )
 						{
+							if ( from.Skills[SkillName.Provocation].Value < minSkill )
+							{
+								from.SendMessage("You need at least '{0}' Provocation skill to incite the target.", minSkill.ToString("F1"));
+								return;
+							}
+
 							if ( !BaseInstrument.CheckMusicianship( from ) )
 							{
 								from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3 );
@@ -174,6 +180,12 @@ namespace Server.SkillHandlers
 
 					if ( from.CanBeHarmful( m_Creature, true ) )
 					{
+						if ( from.Skills[SkillName.Provocation].Value < minSkill )
+						{
+							from.SendMessage("You need at least '{0}' Provocation skill to incite the target.", minSkill.ToString("F1"));
+							return;
+						}
+
 						if ( !BaseInstrument.CheckMusicianship( from ) )
 						{
 							from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 3 );

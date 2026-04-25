@@ -112,10 +112,7 @@ namespace Server.Spells.Syth
 						}
 					}
 				}
-				DrainCrystals( Caster, RequiredTithing );
 			}
-
-			FinishSequence();
 		}
 
 		private class InternalTarget : Target

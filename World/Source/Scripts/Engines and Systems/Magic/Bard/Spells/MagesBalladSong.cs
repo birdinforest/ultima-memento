@@ -37,7 +37,7 @@ namespace Server.Spells.Song
 
 				foreach (var friend in GetNearbyFriends())
 				{
-					var recipient = new MagesBalladRecipient(friend, tickAmount, tickInterval, duration);
+					var recipient = new MagesBalladRecipient(friend, friend == Caster, tickAmount, tickInterval, duration);
 					Engine.Instance.AddEnhancement(friend, recipient);
 				}
 
@@ -50,14 +50,16 @@ namespace Server.Spells.Song
 
 		private class MagesBalladRecipient : TimeDependentRecipient<MagesBalladSong>
 		{
+			private readonly bool m_IsCaster;
 			private readonly int m_TickAmount;
-			private Timer m_Timer;
 			private readonly TimeSpan m_TickInterval;
+			private Timer m_Timer;
 
-			public MagesBalladRecipient(Mobile targetMobile, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
+			public MagesBalladRecipient(Mobile targetMobile, bool isCaster, int tickAmount, TimeSpan tickInterval, TimeSpan duration) : base(targetMobile, duration)
 			{
 				m_TickAmount = tickAmount;
 				m_TickInterval = tickInterval;
+				m_IsCaster = isCaster;
 			}
 
 			protected override void RemoveInternal()
@@ -91,6 +93,9 @@ namespace Server.Spells.Song
 					}
 
 					m.Mana = Math.Min(m.Mana + m_TickAmount, m.ManaMax);
+
+					// Each tick gives the chance to gain musicianship
+					if (m_IsCaster) m.CheckSkill(SkillName.Musicianship, 0.5);
 				});
 
 				BuffInfo.RemoveBuff(m, BuffIcon.MagesBallad);

@@ -56,7 +56,6 @@ namespace Server.Spells.Jedi
 				Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
 				Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x376A, 9, 32, 0xB41, 0, 5022, 0);
 				Effects.PlaySound(Caster.Location, Caster.Map, 0x0F9);
-				DrainCrystals( Caster, RequiredTithing );
 				BuffInfo.RemoveBuff( Caster, BuffIcon.Deflection );
 				BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.Deflection, 1063524 ) );
 			}

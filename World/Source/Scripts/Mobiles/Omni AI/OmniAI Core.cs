@@ -1,31 +1,16 @@
 // Created by Peoharen
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Engines.PartySystem;
 using Server.Guilds;
 using Server.Items;
-using Server.Network;
-using Server.Misc;
-using Server.Mobiles;
-using Server.Regions;
-using Server.SkillHandlers;
 using Server.Spells;
-using Server.Spells.First;
-using Server.Spells.Second;
 using Server.Spells.Third;
-using Server.Spells.Fourth;
-using Server.Spells.Fifth;
 using Server.Spells.Sixth;
-using Server.Spells.Seventh;
-using Server.Spells.Eighth;
-using Server.Spells.Bushido;
-using Server.Spells.Chivalry;
-using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
-using Server.Spells.Mystic;
 using Server.Targeting;
+using Server.Multis;
+using System.Linq;
 
 namespace Server.Mobiles
 {
@@ -579,41 +564,49 @@ namespace Server.Mobiles
 					py = toTarget.Y;
 				}
 
-				for ( int i = 0; i < m_RandomLocations.Length; i += 2 )
-				{
-					int x = m_RandomLocations[i], y = m_RandomLocations[i + 1];
-
-					Point3D p = new Point3D( px + x, py + y, 0 );
-
-					LandTarget lt = new LandTarget( p, map );
-
-					if ( (targ.Range == -1 || m_Mobile.InRange( p, targ.Range )) && m_Mobile.InLOS( lt ) && map.CanSpawnMobile( px + x, py + y, lt.Z ) && !SpellHelper.CheckMulti( p, map ) )
-					{
-						targ.Invoke( m_Mobile, lt );
-						MarkTeleport();
-
-						return true;
-					}
-				}
-
 				int teleRange = targ.Range;
 
 				if ( teleRange < 0 )
 					teleRange = 12;
 
+				for ( int i = 0; i < m_RandomLocations.Length; i += 2 )
+				{
+					Point3D p = new Point3D( px + m_RandomLocations[i], py + m_RandomLocations[i + 1], 0 );
+
+					if ( TryTeleport( p, map, targ, teleRange ) ) return true;
+				}
+
+				// Try finding a path to the target
+				IPoint3D goal = new Point3D( toTarget.X, toTarget.Y, 0 );
+				Spells.SpellHelper.GetSurfaceTop(ref goal);
+				var goalPoint = new Point3D(goal.X, goal.Y, goal.Z);
+				var path = new MovementPath( m_Mobile, goalPoint );
+				if ( path.Success )
+				{
+					var x = goalPoint.X;
+					var y = goalPoint.Y;
+					var points = new List<Point3D>();
+					foreach ( Direction d in path.Directions )
+					{
+						Movement.Movement.Offset( d, ref x, ref y );
+						var tempPoint = new Point3D( x, y, 0 );
+						if ( !m_Mobile.InRange( tempPoint, teleRange ) ) continue;
+
+						points.Add( tempPoint );
+					}
+
+					// Try to get as close as possible to the goal
+					foreach ( var p in points.Reverse<Point3D>() )
+					{
+						if ( TryTeleport( p, map, targ, teleRange ) ) return true;
+					}
+				}
+
+				// Pick a random point within range
 				for ( int i = 0; i < 10; ++i )
 				{
-					Point3D randomPoint = new Point3D( m_Mobile.X - teleRange + Utility.Random( teleRange * 2 + 1 ), m_Mobile.Y - teleRange + Utility.Random( teleRange * 2 + 1 ), 0 );
-
-					LandTarget lt = new LandTarget( randomPoint, map );
-
-					if ( m_Mobile.InLOS( lt ) && map.CanSpawnMobile( lt.X, lt.Y, lt.Z ) && !SpellHelper.CheckMulti( randomPoint, map ) )
-					{
-						targ.Invoke( m_Mobile, new LandTarget( randomPoint, map ) );
-						MarkTeleport();
-
-						return true;
-					}
+					Point3D p = new Point3D( m_Mobile.X - teleRange + Utility.Random( teleRange * 2 + 1 ), m_Mobile.Y - teleRange + Utility.Random( teleRange * 2 + 1 ), 0 );
+					if ( TryTeleport( p, map, targ, teleRange ) ) return true;
 				}
 			}
 			// TODO: Verify Animating will not destroy the items on the corpse
@@ -667,6 +660,35 @@ namespace Server.Mobiles
 			else
 			{
 				targ.Cancel( m_Mobile, TargetCancelType.Canceled );
+			}
+
+			return false;
+		}
+
+		private bool TryTeleport( Point3D p, Map map, Target targ, int teleRange )
+		{
+			if (targ.Range != -1 && !m_Mobile.InRange(p, teleRange)) return false;
+
+			var highest = map.GetHighestEntity(p.X, p.Y);
+			if (highest is LandTile) p.Z = ((LandTile)highest).Z;
+			else if (highest is StaticTile) p.Z = ((StaticTile)highest).Z;
+			else if (highest is Item) p.Z = ((Item)highest).Z;
+
+			if (m_Mobile.InLOS(p) && (
+					(m_Mobile.CanSwim && BaseBoat.FindBoatAt(p, map) != null) ||
+					(map.CanSpawnMobile(p) && !SpellHelper.CheckMulti(p, map))
+				)
+			)
+			{
+				object entityTarget;
+				if (highest is LandTile) entityTarget = new LandTarget(p, map);
+				else if (highest is StaticTile) entityTarget = new StaticTarget(p, ((StaticTile)highest).ID);
+				else entityTarget = highest;
+
+				targ.Invoke(m_Mobile, entityTarget);
+				MarkTeleport();
+
+				return true;
 			}
 
 			return false;

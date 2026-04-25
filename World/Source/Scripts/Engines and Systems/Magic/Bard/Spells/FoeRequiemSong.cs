@@ -22,7 +22,7 @@ namespace Server.Spells.Song
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(2); } }
 		public override int RequiredMana { get { return 30; } }
-		public override double RequiredSkill { get { return 80.0; } }
+		public override double RequiredSkill { get { return 50.0; } }
 		public override bool UseDefaultInstrument { get { return false; } }
 
 		public static bool HasEffect(Mobile m)
@@ -135,6 +135,9 @@ namespace Server.Spells.Song
 
 						m.Damage((int)currentDamage, Caster);
 						m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Head);
+
+						// Each tick gives the chance to gain musicianship
+						Caster.CheckSkill(SkillName.Musicianship, 0.5);
 					});
 
 					Caster.MovingParticles(m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);

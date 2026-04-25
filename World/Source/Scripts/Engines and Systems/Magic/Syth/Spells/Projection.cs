@@ -65,7 +65,6 @@ namespace Server.Spells.Syth
 			{
 				new SythProjection( Caster ).MoveToWorld( Caster.Location, Caster.Map );
 				Caster.Hidden = true;
-				DrainCrystals( Caster, RequiredTithing );
 			}
 
 			FinishSequence();
