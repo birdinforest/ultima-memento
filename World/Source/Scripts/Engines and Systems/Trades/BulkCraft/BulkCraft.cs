@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Engines.Craft
 {
@@ -24,6 +25,8 @@ namespace Server.Engines.Craft
 		public static void StartTimer(BulkCraftTimer newTimer)
 		{
 			StopTimer(newTimer.Player);
+			if ( newTimer != null && newTimer.BulkAmount > 1 && newTimer.Player != null )
+				AnalyticsLogger.LogBulkCraftStarted( newTimer.Player, newTimer.BulkAmount, newTimer.CraftSystemName );
 			newTimer.Start();
 			m_Timers[newTimer.Player.Serial] = newTimer;
 		}

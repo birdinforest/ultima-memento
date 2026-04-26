@@ -59,5 +59,9 @@ World/Saves/
 __pycache__/
 *.pyc
 World/*.exe
+# Local secrets (loaded by DotEnvLoader from Core.BaseDirectory)
+.env
+**/.env
+!**/.env.example
 .specstory
 World/Saves-backup/

@@ -1,5 +1,6 @@
 using Server.Gumps;
 using Server.Localization;
+using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using System;
@@ -165,6 +166,7 @@ namespace Server.Temptation
 						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
 						context.Flags = m_Context.Flags;
 						TemptationEngine.Instance.ApplyContext(m_Target, context);
+						AnalyticsLogger.LogTemptationAccepted( m_Target, context.Flags );
 						if (m_OnAccept != null)
 							m_OnAccept();
 						return;

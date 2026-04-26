@@ -1,4 +1,6 @@
 using Server.Engines.Craft;
+using Server.Misc;
+using Server.Mobiles;
 using Server.Utilities;
 using System;
 using System.Collections.Generic;
@@ -42,6 +44,9 @@ namespace Server.Engines.GlobalShoppe
 
 			SkillUtilities.DoSkillChecks(from, SkillName.Mercantile, 3);
 			context.Orders.Remove(order);
+
+			if ( from is PlayerMobile shopPm )
+				AnalyticsLogger.LogShoppeOrderCompleted( shopPm, selectedReward, order.ReputationReward, CraftSystem != null ? CraftSystem.GetType().Name : "" );
 
 			from.PlaySound(0x32); // Dropgem1
 		}

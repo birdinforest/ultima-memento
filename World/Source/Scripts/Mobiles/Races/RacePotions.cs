@@ -382,6 +382,7 @@ namespace Server.Items
 				{
 					int race = info.ButtonID - 80000;
 					BaseRace.CreateRace( from, race, true );
+					AnalyticsLogger.LogRacePotionSelected( from, race );
 					if ( m_Tavern == 0 ){ from.PlaySound( Utility.RandomList( 0x030, 0x031 ) ); }
 					Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 0, 0, 5042, 0 );
 				}

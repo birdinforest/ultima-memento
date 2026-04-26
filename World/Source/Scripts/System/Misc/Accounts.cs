@@ -547,6 +547,7 @@ namespace Server.Misc
 			Console.WriteLine( "Login: {0}: Creating new account '{1}'", state, un );
 
 			Account a = new Account( un, pw );
+			AnalyticsLogger.OnAccountCreated( a );
 
 			return a;
 		}
@@ -1308,6 +1309,7 @@ namespace Server.Accounting
 		{
 			this.Young = false;
 
+			PlayerMobile logPm = null;
 			for ( int i = 0; i < m_Mobiles.Length; i++ )
 			{
 				PlayerMobile m = m_Mobiles[i] as PlayerMobile;
@@ -1315,6 +1317,9 @@ namespace Server.Accounting
 				if ( m != null && m.Young )
 				{
 					m.Young = false;
+
+					if ( logPm == null )
+						logPm = m;
 
 					if ( m.NetState != null )
 					{
@@ -1325,6 +1330,8 @@ namespace Server.Accounting
 					}
 				}
 			}
+
+			AnalyticsLogger.LogYoungStatusRemoved( this, logPm, message );
 		}
 
 		public void CheckYoung()

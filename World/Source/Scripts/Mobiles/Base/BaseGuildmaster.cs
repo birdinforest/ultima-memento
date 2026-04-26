@@ -199,6 +199,8 @@ namespace Server.Mobiles
 					pm.NpcGuildGameTime = pm.GameTime;
 					pm.CharacterGuilds++;
 
+					AnalyticsLogger.LogGuildJoined( pm, this.NpcGuild );
+
 					dropped.Delete();
 
 					ArrayList targets = new ArrayList();

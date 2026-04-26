@@ -41,10 +41,11 @@ namespace Server.Engines.Avatar
 					
 					Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
 					{
-						var _ = AvatarEngine.Instance.GetOrCreateContext(from);
-						var newCharacter = CharacterCreation.ResetCharacter(from, false, false);
-						AvatarEngine.InitializePlayer(newCharacter);
-						AvatarEngine.Instance.ApplyContext(newCharacter, newCharacter.Avatar);
+						var preCtx = AvatarEngine.Instance.GetOrCreateContext( from );
+						var newCharacter = CharacterCreation.ResetCharacter( from, false, false );
+						AvatarEngine.InitializePlayer( newCharacter );
+						AvatarEngine.Instance.ApplyContext( newCharacter, newCharacter.Avatar );
+						AnalyticsLogger.LogAvatarEnabled( newCharacter, preCtx );
 					});
 				}
 			);

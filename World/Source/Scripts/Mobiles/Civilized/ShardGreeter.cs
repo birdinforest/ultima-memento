@@ -611,6 +611,8 @@ namespace Server.Gumps
 
 		public void EnterLand( int page, Mobile m )
 		{
+			AnalyticsLogger.LogTarotEnterLand( m, page );
+
 			Point3D loc = new Point3D(2999, 1030, 0);
 			Map map = Map.Sosaria;
 

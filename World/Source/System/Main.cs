@@ -434,6 +434,8 @@ namespace Server
 			if( BaseDirectory.Length > 0 )
 				Directory.SetCurrentDirectory( BaseDirectory );
 
+			DotEnvLoader.LoadOptional();
+
 			Timer.TimerThread ttObj = new Timer.TimerThread();
 			timerThread = new Thread( new ThreadStart( ttObj.TimerMain ) );
 			timerThread.Name = "Timer Thread";

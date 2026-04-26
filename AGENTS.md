@@ -263,6 +263,8 @@ mono WorldLinux.exe             # from ultima-memento/ root
 
 The server outputs to stdout/stderr and writes logs under `World/`. Do not commit `World/Saves/` changes — these are runtime state.
 
+**Optional `.env` (secrets):** At startup, `DotEnvLoader` reads `.env` from `Core.BaseDirectory` (the folder containing `WorldLinux.exe`, usually `World/`) and sets process environment variables without overwriting keys already set in the shell. For analytics, set `UO_MEMENTO_ANALYTICS_ACCOUNT_SALT` (see `World/.env.example`). Do not commit `.env` (gitignored).
+
 ### 4.3 What to Verify After Changes
 
 | Change type | Verification |
