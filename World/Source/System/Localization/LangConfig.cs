@@ -5,7 +5,8 @@ namespace Server.Localization
 {
 	public static class LangConfig
 	{
-		private static string m_DefaultLanguage = "en";
+		/// <summary>Used until <see cref="Configure"/> runs (or if localization.cfg is absent). Must match shipped cfg default.</summary>
+		private static string m_DefaultLanguage = "zh-Hans";
 		private static string m_FallbackLanguage = "en";
 
 		public static string DefaultLanguage
