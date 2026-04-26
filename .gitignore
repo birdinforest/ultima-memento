@@ -65,3 +65,5 @@ World/*.exe
 !**/.env.example
 .specstory
 World/Saves-backup/
+# Local tooling (e.g. pip install --target for git-filter-repo)
+.tools/
