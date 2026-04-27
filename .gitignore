@@ -36,6 +36,10 @@ bld/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
+# VS Code settings files
+World/Source/.vscode/settings.json
+.vscode/settings.json
+
 # Files built by Visual Studio
 *.pdb
 
@@ -67,3 +71,4 @@ World/*.exe
 World/Saves-backup/
 # Local tooling (e.g. pip install --target for git-filter-repo)
 .tools/
+ultima-memento.code-workspace
