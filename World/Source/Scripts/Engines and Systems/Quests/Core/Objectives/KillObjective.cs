@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Engines.MLQuests.Gumps;
@@ -64,7 +65,7 @@ namespace Server.Engines.MLQuests.Objectives
 			if ( m_Name.Number > 0 )
 				g.AddHtmlLocalized( 133 + amount.Length * 15, y, 190, 18, m_Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false );
 			else if ( m_Name.String != null )
-				g.AddLabel( 133 + amount.Length * 15, y, BaseQuestGump.COLOR_LABEL, m_Name.String );
+				g.AddLabel( 133 + amount.Length * 15, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString( g, m_Name.String ) );
 
 			y += 16;
 
@@ -76,7 +77,7 @@ namespace Server.Engines.MLQuests.Objectives
 				if ( m_Area.Name.Number > 0 )
 					g.AddHtmlLocalized( 223, y, 312, 20, m_Area.Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false );
 				else if ( m_Area.Name.String != null )
-					g.AddLabel( 223, y, BaseQuestGump.COLOR_LABEL, m_Area.Name.String );
+					g.AddLabel( 223, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString( g, m_Area.Name.String ) );
 
 				y += 16;
 			}
@@ -172,11 +173,15 @@ namespace Server.Engines.MLQuests.Objectives
 
 			base.WriteToGump( g, ref y );
 
-			g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, "Total" );
+			g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString( g, "Total" ) );
 			g.AddLabel( 223, y, BaseQuestGump.COLOR_LABEL, m_Slain.ToString() );
 			y += 16;
 
-			g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor( Instance.QuesterType ) ) );
+			string dest = QuesterNameAttribute.GetQuesterNameFor( Instance.QuesterType );
+			string returnLine = Instance.Player != null && Instance.Player.Account != null
+				? StringCatalog.ResolveFormat( Instance.Player.Account, "Return to {0}.", dest )
+				: string.Format( "Return to {0}.", dest );
+			g.AddLabel( 103, y, BaseQuestGump.COLOR_LABEL, returnLine );
 			y += 16;
 		}
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Server.Gumps;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
@@ -56,10 +58,15 @@ namespace Server.Engines.MLQuests.Gumps
 		private int m_Label;
 		private string m_Title;
 		private List<ButtonInfo> m_Buttons;
+
+		/// <summary>Viewer whose <see cref="Server.Accounting.IAccount"/> language drives <c>StringCatalog</c> resolution for this gump.</summary>
+		public PlayerMobile QuestViewer { get; private set; }
+
 		// RunUO optimized version
-		public BaseQuestGump( int label )
+		public BaseQuestGump( int label, PlayerMobile viewer = null )
 			: base( 75, 25 )
 		{
+			QuestViewer = viewer;
 			m_Page = 0;
 			m_MaxPages = 0;
 			m_Label = label;
@@ -87,8 +94,104 @@ namespace Server.Engines.MLQuests.Gumps
 			foreach ( ButtonInfo button in m_Buttons )
 				AddButton( button.Position == ButtonPosition.Left ? 95 : 363, 425, (int)button.Graphic, (int)button.Graphic + 2, button.ButtonID, GumpButtonType.Reply, 0 );
 
-			if ( m_Title != null )
-				AddHtmlLocalized( 130, 68, 220, 48, 1114513, m_Title, COLOR_TITLE_LOCALIZED, false, false ); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>
+			if ( m_Title != null && m_Title.Length > 0 )
+			{
+				// Cliloc token substitution (~1~) only supports legacy args; Unicode titles (e.g. zh-Hans) become "????".
+				if ( m_Title.Length > 1 && m_Title[0] == '#' )
+					AddHtmlLocalized( 130, 68, 220, 48, 1114513, m_Title, COLOR_TITLE_LOCALIZED, false, false ); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>
+				else
+				{
+					string body = "<BODY><DIV ALIGN=CENTER>" + TextDefinition.GetColorizedText( EscapeQuestTitleHtml( m_Title ), HtmlColors.LIGHT_GOLD ) + "</DIV></BODY>";
+					AddHtml( 130, 68, 220, 48, body, false, false );
+				}
+			}
+		}
+
+		private static string EscapeQuestTitleHtml( string s )
+		{
+			if ( string.IsNullOrEmpty( s ) )
+				return "";
+
+			StringBuilder sb = new StringBuilder( s.Length + 8 );
+			for ( int i = 0; i < s.Length; ++i )
+			{
+				char c = s[i];
+				switch ( c )
+				{
+					case '&': sb.Append( "&amp;" ); break;
+					case '<': sb.Append( "&lt;" ); break;
+					case '>': sb.Append( "&gt;" ); break;
+					default: sb.Append( c ); break;
+				}
+			}
+			return sb.ToString();
+		}
+
+		/// <summary>Resolve an English catalog literal for the quest gump viewer (if any).</summary>
+		public static string ResolveQuestCatalogString( Gump g, string english )
+		{
+			if ( english == null || english.Length == 0 )
+				return english;
+
+			BaseQuestGump bqg = g as BaseQuestGump;
+
+			if ( bqg != null && bqg.QuestViewer != null && bqg.QuestViewer.Account != null )
+			{
+				string lang = AccountLang.GetLanguageCode( bqg.QuestViewer.Account );
+				string resolved = StringCatalog.TryResolve( lang, english ) ?? english;
+
+				if ( AccountLang.IsChinese( lang ) )
+					resolved = QuestCompositeResolver.ResolveComposite( bqg.QuestViewer, resolved );
+
+				return resolved;
+			}
+
+			return english;
+		}
+
+		/// <summary>Hash-key <see cref="TextDefinition"/> resolution for string literals (cliloc numbers unchanged).</summary>
+		public static TextDefinition ResolveQuestTextDefinition( Gump g, TextDefinition def )
+		{
+			if ( def == null || def.Number > 0 || def.String == null )
+				return def;
+
+			BaseQuestGump bqg = g as BaseQuestGump;
+
+			if ( bqg == null || bqg.QuestViewer == null || bqg.QuestViewer.Account == null )
+				return def;
+
+			PlayerMobile pm = bqg.QuestViewer;
+			string s = def.String;
+			string lang = AccountLang.GetLanguageCode( pm.Account );
+			string direct = StringCatalog.TryResolve( lang, s ) ?? s;
+			string resolved;
+
+			// One hash key for the full blob (e.g. short title). Multi-paragraph HTML is usually separate literals in JSON.
+			if ( direct != s )
+			{
+				resolved = direct;
+			}
+			else if ( s.IndexOf( "<br", StringComparison.OrdinalIgnoreCase ) >= 0 )
+			{
+				resolved = QuestHtmlSegmentCatalogResolver.Resolve( pm, s );
+			}
+			else
+			{
+				resolved = s;
+
+				if ( AccountLang.IsChinese( lang ) )
+					resolved = QuestCompositeResolver.ResolveComposite( pm, resolved );
+			}
+
+			if ( resolved == s )
+				return def;
+
+			return new TextDefinition( resolved );
+		}
+
+		protected TextDefinition ResolveQuestTextDefinition( TextDefinition def )
+		{
+			return ResolveQuestTextDefinition( this, def );
 		}
 
 		public void SetPageCount( int maxPages )
@@ -100,8 +203,23 @@ namespace Server.Engines.MLQuests.Gumps
 		{
 			if ( def.Number > 0 )
 				m_Title = String.Format( "#{0}", def.Number ); // OSI does "@@#{0}" instead, why? KR client related?
+			else if ( def.String != null )
+			{
+				if ( QuestViewer != null && QuestViewer.Account != null )
+				{
+					string lang = AccountLang.GetLanguageCode( QuestViewer.Account );
+					string r = StringCatalog.TryResolve( lang, def.String ) ?? def.String;
+
+					if ( AccountLang.IsChinese( lang ) )
+						r = QuestCompositeResolver.ResolveComposite( QuestViewer, r );
+
+					m_Title = r;
+				}
+				else
+					m_Title = def.String;
+			}
 			else
-				m_Title = def.String;
+				m_Title = null;
 		}
 
 		public void RegisterButton( ButtonPosition position, ButtonGraphic graphic, int buttonID )
@@ -114,7 +232,7 @@ namespace Server.Engines.MLQuests.Gumps
 		public void AddDescription( MLQuest quest )
 		{
 			AddHtmlLocalized( 98, 110, 312, 16, ( quest.IsChainTriggered || quest.NextQuest != null ) ? 1075024 : 1072202, COLOR_TITLE_LOCALIZED, false, false ); // Description [(quest chain)]
-			TextDefinition.AddHtmlText( this, 98, 126, 342, 260, quest.Description, false, true, COLOR_HTML, COLOR_HTML );
+			TextDefinition.AddHtmlText( this, 98, 126, 342, 260, ResolveQuestTextDefinition( quest.Description ), false, true, COLOR_HTML, COLOR_HTML );
 		}
 
 		public void AddObjectives( MLQuest quest )
@@ -193,7 +311,7 @@ namespace Server.Engines.MLQuests.Gumps
 
 		public void AddConversation( TextDefinition text )
 		{
-			TextDefinition.AddHtmlText( this, 98, 110, 342, 280, text, false, true, COLOR_HTML, COLOR_HTML );
+			TextDefinition.AddHtmlText( this, 98, 110, 342, 280, ResolveQuestTextDefinition( text ), false, true, COLOR_HTML, COLOR_HTML );
 		}
 
 		#endregion

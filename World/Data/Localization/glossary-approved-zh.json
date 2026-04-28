@@ -2797,6 +2797,77 @@
       "notes": "Classic fantasy orc; fragment 'an orc' in ORDER.",
       "translation_basis_zh": "兽人为 Orc 通行奇幻译名。碎片表整句为「一名兽人」，因 bare「an orc」曾误走泛化量词「一只」，已在生成脚本中单列匹配。"
     },
+    "_SECTION_CORE_STATS_UI": "── Core stats (character sheet UI) ───────────────────────────",
+    "Strength": {
+      "canonical": "力量",
+      "alternatives": [],
+      "category": "system",
+      "notes": "UO primary attribute STR; Stats gump and character sheet.",
+      "translation_basis_zh": "与敏捷、智力并列的基础属性，UO 与多数奇幻 RPG 一致译作「力量」。"
+    },
+    "Dexterity": {
+      "canonical": "敏捷",
+      "alternatives": [],
+      "category": "system",
+      "notes": "UO primary attribute DEX.",
+      "translation_basis_zh": "标准奇幻译名「敏捷」，与力量、智力并列。"
+    },
+    "Intelligence": {
+      "canonical": "智力",
+      "alternatives": [],
+      "category": "system",
+      "notes": "UO primary attribute INT.",
+      "translation_basis_zh": "标准奇幻译名「智力」，与力量、敏捷并列。"
+    },
+    "Fame": {
+      "canonical": "声望",
+      "alternatives": [],
+      "category": "system",
+      "notes": "UO Fame score; distinct from title prefix Lord/Lady.",
+      "translation_basis_zh": "UO 中 Fame 为可量化的名誉数值，中文玩家社区普遍称「声望」，与称号前缀「领主」等区分。"
+    },
+    "Karma": {
+      "canonical": "善恶值",
+      "alternatives": ["因果值"],
+      "category": "system",
+      "notes": "UO Karma moral alignment score.",
+      "translation_basis_zh": "Karma 在 UO 为道德倾向数值；「善恶值」直观；「因果值」偏佛学语感，作备选。"
+    },
+    "Mana": {
+      "canonical": "法力",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Spellcasting resource pool in UO.",
+      "translation_basis_zh": "UO 施法资源，通行译法「法力」。"
+    },
+    "Stamina": {
+      "canonical": "精力",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Physical action pool in UO (stam).",
+      "translation_basis_zh": "与「法力」对举的体能资源，译「精力」符合中文界面习惯。"
+    },
+    "Hits": {
+      "canonical": "生命值",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Stats gump label for hit points (HP); 'Hits' is OSI-style shorthand.",
+      "translation_basis_zh": "此处指生命/血量（HP），非「命中」；译「生命值」避免与 Hit Chance 混淆。"
+    },
+    "Level": {
+      "canonical": "等级",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Character level / progression tier in shard Stats gump.",
+      "translation_basis_zh": "角色等级或综合阶位，界面短标签用「等级」。"
+    },
+    "Tithe": {
+      "canonical": "奉献度",
+      "alternatives": ["奉献金"],
+      "category": "system",
+      "notes": "UO tithe points donated at shrine.",
+      "translation_basis_zh": "神殿捐献累积的数值；「奉献度」贴合系统条；「奉献金」偏金币语感可作备选。"
+    },
     "_SECTION_WEAPON_ABILITIES": "── Weapon Special Abilities ─────────────────────────────────",
     "Whirlwind Attack": {
       "canonical": "旋风攻击",

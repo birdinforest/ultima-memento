@@ -30,7 +30,7 @@ namespace Server.Engines.MLQuests.Gumps
 		}
 
 		public QuestLogGump(PlayerMobile pm, bool closeGumps)
-			: base(1046026) // Quest Log
+			: base(1046026, pm) // Quest Log
 		{
 			m_Owner = pm;
 			m_CloseGumps = closeGumps;
@@ -72,7 +72,7 @@ namespace Server.Engines.MLQuests.Gumps
 						stringColor = BaseQuestGump.COLOR_HTML;
 					}
 
-					TextDefinition.AddHtmlText(this, 98, rowY, 268, MLRowHeight - 4, questInstance.Quest.Title, false, false, numberColor, stringColor);
+					TextDefinition.AddHtmlText(this, 98, rowY, 268, MLRowHeight - 4, ResolveQuestTextDefinition(questInstance.Quest.Title), false, false, numberColor, stringColor);
 					AddButton(368, rowY + 2, 0x26B0, 0x26B1, 6 + 1 + i * 1000, GumpButtonType.Reply, 1); // Arrow
 					if (!questInstance.IsCompleted()
 						&& !questInstance.Failed

@@ -1,6 +1,7 @@
 using Server.Commands;
 using Server.Gumps;
 using Server.Items;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
@@ -906,7 +907,7 @@ namespace Server.Gumps
 
             string name = from.Name;
             if (from.Title != "" && from.Title != null) { name = name + " " + from.Title; }
-            else { name = name + " the " + GetPlayerInfo.GetSkillTitle(from) + ""; }
+            else { name = name + StatsGumpLocalization.Key(from, "statsgump.name_the", " the ") + GetPlayerInfo.GetSkillTitle(from) + ""; }
 
             AddHtml(15, 15, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + name.ToUpper() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
@@ -914,63 +915,63 @@ namespace Server.Gumps
 
             AddButton(260, 12, 4011, 4011, 666, GumpButtonType.Reply, 0);
             string warnColor = "#7ab582";
-            string warnMsg = "Innocent";
+            string warnMsg = StatsGumpLocalization.Key(from, "statsgump.innocent", "Innocent");
             if (Server.Misc.GetPlayerInfo.IsWanted(from))
             {
                 warnColor = "#d38a8a";
-                warnMsg = "Guilty";
+                warnMsg = StatsGumpLocalization.Key(from, "statsgump.guilty", "Guilty");
             }
 
             AddHtml(293, 16, 60, 20, @"<BODY><BASEFONT Color=" + warnColor + ">" + warnMsg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
             var colAB = new YPosition(45, 35);
 
-            AddStatLine(20, 135, 80, "Level", string.Format("{0}", GetPlayerInfo.GetPlayerLevel(from)), "A measure of your skills, stats, and reputation. Max: 100", color, colAB);
-            AddStatLine(20, 135, 80, "Strength", string.Format("{0} + {1}", from.RawStr, from.Str - from.RawStr), null, color, colAB);
-            AddStatLine(20, 135, 80, "Dexterity", string.Format("{0} + {1}", from.RawDex, from.Dex - from.RawDex), null, color, colAB);
-            AddStatLine(20, 135, 80, "Intelligence", string.Format("{0} + {1}", from.RawInt, from.Int - from.RawInt), null, color, colAB);
-            AddStatLine(20, 135, 80, "Fame", string.Format("{0}", from.Fame), string.Format("Maximum Fame: {0}", Titles.MaxFame), color, colAB);
-            AddStatLine(20, 135, 80, "Karma", string.Format("{0}", from.Karma), string.Format("Maximum Karma: {0}", Titles.MaxKarma), color, colAB);
-            AddStatLine(20, 135, 80, "Tithe", string.Format("{0}", from.TithingPoints), string.Format("Maximum Tithe: {0}", TithingGump.MaxTithingPoints), color, colAB);
-            AddStatLine(20, 135, 80, "Hunger", string.Format("{0}", from.Hunger), "Maximum Hunger: 20.", color, colAB);
-            AddStatLine(20, 135, 80, "Thirst", string.Format("{0}", from.Thirst), "Maximum Thirst: 20.", color, colAB);
-            AddStatLine(20, 135, 80, "Potion Enhance", string.Format("{0}/{1}%", Math.Min(BasePotion.MAX_ENHANCED_POTIONS, AosAttributes.GetValue( m, AosAttribute.EnhancePotions )), BasePotion.MAX_ENHANCED_POTIONS), "Increases effect when consuming potions.", color, colAB);
-            AddStatLine(20, 135, 80, "Bank Gold", Banker.GetBalance(from).ToString(), null, color, colAB);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.level", "Level", string.Format("{0}", GetPlayerInfo.GetPlayerLevel(from)), color, colAB, "statsgump.tooltip.level", "A measure of your skills, stats, and reputation. Max: 100", null);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.strength", "Strength", string.Format("{0} + {1}", from.RawStr, from.Str - from.RawStr), color, colAB);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.dexterity", "Dexterity", string.Format("{0} + {1}", from.RawDex, from.Dex - from.RawDex), color, colAB);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.intelligence", "Intelligence", string.Format("{0} + {1}", from.RawInt, from.Int - from.RawInt), color, colAB);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.fame", "Fame", string.Format("{0}", from.Fame), color, colAB, "statsgump.tooltip.max_fame", "Maximum Fame: {0}", new object[] { Titles.MaxFame });
+            AddStatLine(from, 20, 135, 80, "statsgump.label.karma", "Karma", string.Format("{0}", from.Karma), color, colAB, "statsgump.tooltip.max_karma", "Maximum Karma: {0}", new object[] { Titles.MaxKarma });
+            AddStatLine(from, 20, 135, 80, "statsgump.label.tithe", "Tithe", string.Format("{0}", from.TithingPoints), color, colAB, "statsgump.tooltip.max_tithe", "Maximum Tithe: {0}", new object[] { TithingGump.MaxTithingPoints });
+            AddStatLine(from, 20, 135, 80, "statsgump.label.hunger", "Hunger", string.Format("{0}", from.Hunger), color, colAB, "statsgump.tooltip.max_hunger", "Maximum Hunger: 20.", null);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.thirst", "Thirst", string.Format("{0}", from.Thirst), color, colAB, "statsgump.tooltip.max_thirst", "Maximum Thirst: 20.", null);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.potion_enhance", "Potion Enhance", string.Format("{0}/{1}%", Math.Min(BasePotion.MAX_ENHANCED_POTIONS, AosAttributes.GetValue( m, AosAttribute.EnhancePotions )), BasePotion.MAX_ENHANCED_POTIONS), color, colAB, "statsgump.tooltip.potion_enhance", "Increases effect when consuming potions.", null);
+            AddStatLine(from, 20, 135, 80, "statsgump.label.bank_gold", "Bank Gold", Banker.GetBalance(from).ToString(), color, colAB);
 
             ///////////////////////////////////////////////////////////////////////////////////
 
             var colCD = new YPosition(45, 35);
 
-            AddStatLine(260, 375, 80, "Hits", string.Format("{0} + {1}", from.Hits - AosAttributes.GetValue(from, AosAttribute.BonusHits), AosAttributes.GetValue(from, AosAttribute.BonusHits)), null, color, colCD);
-            AddStatLine(260, 375, 80, "Stamina", string.Format("{0} + {1}", from.Stam - AosAttributes.GetValue(from, AosAttribute.BonusStam), AosAttributes.GetValue(from, AosAttribute.BonusStam)), null, color, colCD);
-            AddStatLine(260, 375, 80, "Mana", string.Format("{0} + {1}", from.Mana - AosAttributes.GetValue(from, AosAttribute.BonusMana), AosAttributes.GetValue(from, AosAttribute.BonusMana)), null, color, colCD);
-            AddStatLine(260, 375, 80, "Hits Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenHits)), "Regenerates hit points over time", color, colCD);
-            AddStatLine(260, 375, 80, "Stamina Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenStam)), null, color, colCD);
-            AddStatLine(260, 375, 80, "Mana Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenMana)), null, color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.hits", "Hits", string.Format("{0} + {1}", from.Hits - AosAttributes.GetValue(from, AosAttribute.BonusHits), AosAttributes.GetValue(from, AosAttribute.BonusHits)), color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.stamina", "Stamina", string.Format("{0} + {1}", from.Stam - AosAttributes.GetValue(from, AosAttribute.BonusStam), AosAttributes.GetValue(from, AosAttribute.BonusStam)), color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.mana", "Mana", string.Format("{0} + {1}", from.Mana - AosAttributes.GetValue(from, AosAttribute.BonusMana), AosAttributes.GetValue(from, AosAttribute.BonusMana)), color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.hits_regen", "Hits Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenHits)), color, colCD, "statsgump.tooltip.hits_regen", "Regenerates hit points over time", null);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.stamina_regen", "Stamina Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenStam)), color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.mana_regen", "Mana Regen", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.RegenMana)), color, colCD);
 
             if (MyServerSettings.LowerReg() > 0)
-                AddStatLine(260, 375, 80, "Low Reagent", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerRegCost, false), MyServerSettings.LowerReg()), "Increases chance to not use reagents when casting", color, colCD);
+                AddStatLine(from, 260, 375, 80, "statsgump.label.low_reagent", "Low Reagent", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerRegCost, false), MyServerSettings.LowerReg()), color, colCD, "statsgump.tooltip.low_reagent", "Increases chance to not use reagents when casting", null);
             if (MyServerSettings.LowerMana() > 0)
-                AddStatLine(260, 375, 80, "Low Mana", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerManaCost, false), MyServerSettings.LowerMana()), "Reduces mana cost of casting spells and using abilities", color, colCD);
+                AddStatLine(from, 260, 375, 80, "statsgump.label.low_mana", "Low Mana", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.LowerManaCost, false), MyServerSettings.LowerMana()), color, colCD, "statsgump.tooltip.low_mana", "Reduces mana cost of casting spells and using abilities", null);
 
-            AddStatLine(260, 375, 80, "Spell Damage +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.SpellDamage), SDICap), "Increases damage done by spells", color, colCD);
-            AddStatLine(260, 375, 80, "Resurrect Cost", string.Format("{0}", GetPlayerInfo.GetResurrectCost(from, true)), null, color, colCD);
-            AddStatLine(260, 375, 80, "Murders", string.Format("{0}", from.Kills), null, color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.spell_damage_plus", "Spell Damage +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.SpellDamage), SDICap), color, colCD, "statsgump.tooltip.spell_damage", "Increases damage done by spells", null);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.resurrect_cost", "Resurrect Cost", string.Format("{0}", GetPlayerInfo.GetResurrectCost(from, true)), color, colCD);
+            AddStatLine(from, 260, 375, 80, "statsgump.label.murders", "Murders", string.Format("{0}", from.Kills), color, colCD);
 
             ///////////////////////////////////////////////////////////////////////////////////
             var colEF = new YPosition(45, 35);
 
-            AddStatLine(500, 615, 80, "Hit Chance", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.AttackChance), 45), "Increases chance to land weapon attacks", color, colEF);
-            AddStatLine(500, 615, 80, "Defend Chance", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.DefendChance), 45), "Increases chance to dodge weapon attacks", color, colEF);
-            AddStatLine(500, 615, 80, "Swing Speed", string.Format("{0}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff")), "Duration between weapon attacks", color, colEF);
-            AddStatLine(500, 615, 80, "Swing Speed +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.WeaponSpeed), 60), "Increases attack speed of weapon attacks", color, colEF); // Soft cap at 60, Hard cap at 100
-            AddStatLine(500, 615, 80, "Bandage Speed", string.Format("{0:0.0}s", new DateTime(TimeSpan.FromMilliseconds(BandageSpeedMilliseconds).Ticks).ToString("s.ff")), null, color, colEF);
-            AddStatLine(500, 615, 80, "Damage Increase", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.WeaponDamage), 100), "Increases damage of weapon attacks", color, colEF);
-            AddStatLine(500, 615, 80, "Reflect Damage", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.ReflectPhysical), 100), "Percent of received physical damage that the attacker also receives", color, colEF);
-            AddStatLine(500, 615, 80, "Fast Cast", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.CastSpeed)), string.Format("Cast Speed Increase: Pure Knights ({0}) / Otherwise ({1})", 4, 2), color, colEF);
-            AddStatLine(500, 615, 80, "Cast Recovery", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.CastRecovery)), null, color, colEF);
-            AddStatLine(500, 615, 80, "Magic Absorb", string.Format("{0}", from.MagicDamageAbsorb), null, color, colEF);
-            AddStatLine(500, 615, 80, "Melee Absorb", string.Format("{0}", from.MeleeDamageAbsorb), null, color, colEF);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.hit_chance", "Hit Chance", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.AttackChance), 45), color, colEF, "statsgump.tooltip.hit_chance", "Increases chance to land weapon attacks", null);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.defend_chance", "Defend Chance", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.DefendChance), 45), color, colEF, "statsgump.tooltip.defend_chance", "Increases chance to dodge weapon attacks", null);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.swing_speed", "Swing Speed", string.Format("{0}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff")), color, colEF, "statsgump.tooltip.swing_speed", "Duration between weapon attacks", null);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.swing_speed_plus", "Swing Speed +", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.WeaponSpeed), 60), color, colEF, "statsgump.tooltip.swing_speed_plus", "Increases attack speed of weapon attacks", null); // Soft cap at 60, Hard cap at 100
+            AddStatLine(from, 500, 615, 80, "statsgump.label.bandage_speed", "Bandage Speed", string.Format("{0:0.0}s", new DateTime(TimeSpan.FromMilliseconds(BandageSpeedMilliseconds).Ticks).ToString("s.ff")), color, colEF);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.damage_increase", "Damage Increase", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.WeaponDamage), 100), color, colEF, "statsgump.tooltip.damage_increase", "Increases damage of weapon attacks", null);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.reflect_damage", "Reflect Damage", string.Format("{0}/{1}%", AosAttributes.GetValue(from, AosAttribute.ReflectPhysical), 100), color, colEF, "statsgump.tooltip.reflect_damage", "Percent of received physical damage that the attacker also receives", null);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.fast_cast", "Fast Cast", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.CastSpeed)), color, colEF, "statsgump.tooltip.fast_cast", "Cast Speed Increase: Pure Knights ({0}) / Otherwise ({1})", new object[] { 4, 2 });
+            AddStatLine(from, 500, 615, 80, "statsgump.label.cast_recovery", "Cast Recovery", string.Format("{0}", AosAttributes.GetValue(from, AosAttribute.CastRecovery)), color, colEF);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.magic_absorb", "Magic Absorb", string.Format("{0}", from.MagicDamageAbsorb), color, colEF);
+            AddStatLine(from, 500, 615, 80, "statsgump.label.melee_absorb", "Melee Absorb", string.Format("{0}", from.MeleeDamageAbsorb), color, colEF);
         }
 
         private class YPosition
@@ -992,13 +993,22 @@ namespace Server.Gumps
 			}
 		}
 
-		private void AddStatLine(int labelX, int valueX, int width, string label, string value, string tooltip, string color, YPosition yPos)
+		private void AddStatLine( Mobile viewer, int labelX, int valueX, int width, string labelKey, string labelEn, string value, string color, YPosition yPos, string tooltipKey = null, string tooltipEn = null, object[] tooltipArgs = null )
 		{
 			int currentY = yPos.Next();
-			AddHtml(labelX, currentY, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + label + "</BASEFONT></BODY>", false, false);
-			if (!string.IsNullOrEmpty(tooltip))
-				AddTooltip(tooltip);
-			AddHtml(valueX, currentY, width, 20, @"<BODY><BASEFONT Color=" + color + "><div align=right>" + value + "</div></BASEFONT></BODY>", false, false);
+			string label = StatsGumpLocalization.Key( viewer, labelKey, labelEn );
+			AddHtml( labelX, currentY, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + label + "</BASEFONT></BODY>", false, false );
+
+			if ( !string.IsNullOrEmpty( tooltipKey ) )
+			{
+				string tip = ( tooltipArgs != null && tooltipArgs.Length > 0 )
+					? StatsGumpLocalization.KeyFormat( viewer, tooltipKey, tooltipEn, tooltipArgs )
+					: StatsGumpLocalization.Key( viewer, tooltipKey, tooltipEn );
+
+				AddTooltip( tip );
+			}
+
+			AddHtml( valueX, currentY, width, 20, @"<BODY><BASEFONT Color=" + color + "><div align=right>" + value + "</div></BASEFONT></BODY>", false, false );
 		}
     
 		public override void OnResponse( NetState sender, RelayInfo info )

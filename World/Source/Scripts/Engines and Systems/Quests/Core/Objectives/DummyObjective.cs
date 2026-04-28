@@ -21,7 +21,7 @@ namespace Server.Engines.MLQuests.Objectives
             if (Name.Number > 0)
                 g.AddHtmlLocalized(98, y, 312, 32, Name.Number, BaseQuestGump.COLOR_LOCALIZED, false, false);
             else if (Name.String != null)
-                g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, Name.String);
+                g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString(g, Name.String));
 
             y += 16;
         }
