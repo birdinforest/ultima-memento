@@ -19,7 +19,7 @@ This document answers two audit questions against [`localization-content-migrati
 | **Books (`BaseBook`)** | **Title, author, page lines** — resolved when `BookHeader` / `BookPageDetails` are built. |
 | **Quest tree literals** | Extra extraction in `Scripts/.../Quests/` for `builder.Append("...")`, `Title=` / `Description=`, `DummyObjective`, `CollectObjective` names, `TextDefinition("...")`, `AddHtml` verbatim strings, etc. — stored in **`scripts-quests.json`**. |
 | **Books tree literals** | Same patterns under **`Scripts/Items/Books`** → **`scripts-books.json`**. |
-| **Catalog size** | On the order of **~3.3k+** unique English keys (grows as scanner patterns expand). |
+| **Catalog size** | On the order of **~5k** unique English hash keys (grows as scanner patterns expand). |
 
 ### What is explicitly **not** covered (still English / Cliloc-only)
 
@@ -28,8 +28,8 @@ This document answers two audit questions against [`localization-content-migrati
 | **`SendMessage(format, args)`** | Format string is not the same as stored English sentence key; not in scanner. |
 | **`SendLocalizedMessage(int)`** | Client Cliloc; out of scope for v1 per product decision (plan §1 / gray area). |
 | **`Emote` / `Whisper` / `Yell` with string literals** | Not wired in `Mobile.cs` (only `Say` path uses overhead localization). |
-| **Gumps outside Quests/Books** | Strings are **localized at send** if present in JSON; extraction currently adds **extra** patterns only under Quests and Books paths (other folders still rely on `SendMessage`/`Say` scan or future scanner expansion). |
-| **Books, dynamic quest text, concatenated strings** | Not systematically scanned. |
+| **Highly dynamic string composition** | Concatenation/interpolation at runtime may bypass exact-hash matching unless a targeted resolver path is added. |
+| **Quest/Book deep builders outside known patterns** | Extra quest/book scanners cover many patterns, but not every custom composition style. |
 | **Console / staff-only / debug strings** | Intentionally excluded from “game content” in practice. |
 
 **Conclusion:** The implementation is a **solid first wave** for the three literal patterns above, not completion of “all game content text” from the migration plan.
@@ -48,14 +48,16 @@ World/Data/Localization/
     system.json                      # World/Source/System/*.cs
     scripts-system.json              # World/Source/Scripts/System/...
     scripts-items.json               # World/Source/Scripts/Items/...
+    scripts-books.json               # World/Source/Scripts/Items/Books/...
     scripts-mobiles.json             # World/Source/Scripts/Mobiles/...
+    scripts-quests.json              # World/Source/Scripts/Engines and Systems/Quests/...
     scripts-engines-and-systems.json # World/Source/Scripts/Engines and Systems/...
     scripts-utilities.json           # World/Source/Scripts/Utilities/...
   zh-Hans/
     (same file names as en/)
 ```
 
-Categories are derived from the **first folder under `Scripts/`** (with spaces → hyphens), plus **`system`** for `Source/System`. This mirrors **repository layout**, not every semantic domain in the plan (e.g. “quests” vs “items” are both under `scripts-engines-and-systems` today). Finer splits (e.g. `quests/`, `items/`) would require **naming rules or path depth** changes in `build_localization_strings.py`.
+Categories are derived from source path rules in `build_localization_strings.py`, with explicit dedicated buckets for `scripts-books` and `scripts-quests`, plus `system` for `Source/System`.
 
 ### Runtime
 
@@ -79,7 +81,7 @@ This does **not** replace human lore judgment; it speeds **consistent** naming a
 
 ## Recommendations (next steps)
 
-1. **Document “definition of done”** per migration plan §11: CI scanner for remaining `SendMessage("` without matching catalog key (allowlist for formatted calls).
-2. **Extend `Mobile`** for `Emote`/`Whisper`/`Yell` string paths if NPC flavor text matters for zh-Hans.
-3. **Optional:** second-level categories (e.g. split `scripts-engines-and-systems` by `Quests/`, `Magic/`) in the Python script.
-4. **Cliloc policy:** keep Option A (hybrid) or invest in Option B per plan §1 gray area.
+1. **Definition of done gate:** add CI/reporting for newly introduced unlocalized literals in touched files.
+2. **Dynamic composition audit:** keep adding targeted resolver patterns where exact-hash localization is structurally impossible.
+3. **Extractor stability:** ensure scanner output does not unintentionally prune repo-maintained split JSON files.
+4. **Cliloc policy:** keep hybrid boundary explicit (server-owned sentences vs client-owned numeric cliloc).

@@ -98,7 +98,6 @@ Run from repository root:
 python3 World/Source/Tools/build_localization_strings.py --no-translate
 python3 World/Source/Tools/build_lore_glossary.py
 python3 World/Source/Tools/review_translations_glossary.py
-python3 World/Source/Tools/translate_zh_from_en.py
 python3 World/Source/Tools/build_scripts_books_zh.py
 python3 World/Source/Tools/sync_localization_glossary.py
 python3 World/Source/Tools/sync_localization_glossary.py --check
@@ -109,7 +108,7 @@ Operator meaning:
 - `build_localization_strings.py`: rebuild English and placeholder zh-Hans catalogs from source
 - `build_lore_glossary.py`: refresh machine-extracted proper-noun evidence
 - `review_translations_glossary.py`: detect English leftovers / inconsistent zh-Hans handling
-- `translate_zh_from_en.py`: incremental machine-assisted fill for new keys
+- LLM translation step (external to this command list): translate new zh-Hans entries using project glossary and editorial guide
 - `build_scripts_books_zh.py`: merge hand-maintained book fragments
 - `sync_localization_glossary.py`: enforce approved glossary canon and context-specific overrides
 
@@ -117,14 +116,13 @@ Operator meaning:
 
 ### Phase A: runtime architecture gaps
 
-Highest value:
+Status: **baseline runtime path is already implemented** for major server-owned text routes (`SendMessage`/`SendAsciiMessage`, overhead string paths, `World.Broadcast`, `Item.PublicOverheadMessage`, gump interning, books).
 
-1. `Mobile.LocalOverheadMessage(string)`
-2. `Mobile.NonlocalOverheadMessage(string)`
-3. `Item.PublicOverheadMessage(string)`
-4. `World.Broadcast(string)`
+Current Phase A focus shifts to:
 
-These affect visible gameplay messages even if the JSON files are already translated.
+1. dynamic composition resolvers where exact-hash matching cannot work
+2. long-lived UI refresh semantics after language switch
+3. remaining edge routes discovered during QA spot checks
 
 ### Phase B: extraction coverage
 
@@ -169,7 +167,7 @@ We consider a wave complete when:
 
 - cliloc-driven UI still follows client resources rather than shard JSON
 - tooltip argument strings in `GumpTooltip` are not yet routed through `StringCatalog`
-- highly dynamic formatted strings still depend on extractor coverage and exact post-format matching
+- highly dynamic formatted strings still depend on targeted resolver coverage and exact post-format matching
 - long-tail scripts across `Mobiles/`, `Gumps/`, and commands remain large-volume migration work even after central runtime fixes
 
 ## 10. Deliverables for each wave

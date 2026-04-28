@@ -1,146 +1,123 @@
-# Localization plan: English + Chinese (file-backed, hot-reloadable)
+# Localization plan: current baseline and remaining gaps
 
-This document describes how to add **Chinese (Simplified)** as a second language for **Memento** (RunUO/ServUO-style C# shard under `World/Source`) while keeping **string data in external files**, supporting **in-game language switching without restart**, and **minimizing coupling** so future upstream merges stay tractable.
-
----
-
-## 1. Goals and non-goals
-
-### Goals
-
-- **Bilingual UX**: **`zh-Hans` only** (no Traditional in scope). The **default language for new accounts** comes from **shard configuration** (e.g. `en` or `zh-Hans`), not from hard-coded English.
-- **Data outside code**: Translatable strings live in **versioned text files** (recommended: **JSON** per language; alternatives below). **`zh-Hans.json` (and companion files) are committed in the repository.**
-- **Hot reload (player-facing)**: Switching language **in game** takes effect **without shard restart** and **without special permissions** — any player with account access can change their preference (see §4).
-- **Low merge friction**: Core engine scripts stay mostly untouched; new logic lives in a **small, isolated module** plus data files.
-
-### Non-goals (initial phase)
-
-- **v1 coverage is server-only**: custom shard strings (`Say`, gumps, system messages, etc.). **Client Cliloc / client tooltips are out of scope** for v1.
-- Full coverage of every legacy literal in thousands of scripts in one step — use a **phased** approach (§7).
+This document reflects the **implemented** localization architecture in `ultima-memento`, then defines the remaining plan to reach broader coverage.
 
 ---
 
-## 2. Recommended architecture (decoupled)
+## 1. Implemented baseline (as of current code)
 
-Introduce a single façade used by gameplay code:
+- **Locales:** `en` and `zh-Hans` are shipped; `zh-Hant` is out of scope.
+- **Language state:** per-account via `Account` tag (`AccountLang.TagName = "Language"`).
+- **Default/fallback config:** `World/Data/System/CFG/localization.cfg`
+  - `DefaultLanguage=...`
+  - `FallbackLanguage=...`
+- **Catalog loader:** `StringCatalog` loads all `*.json` under:
+  - `World/Data/Localization/en/`
+  - `World/Data/Localization/zh-Hans/`
+- **Fallback behavior:** `zh-Hans` key missing -> `en` key -> original English literal.
+- **Legacy compatibility:** still supports deprecated monolith files if split directories are empty.
 
-| Layer | Responsibility | Upstream coupling |
-|--------|----------------|-------------------|
-| **`ILocalizationProvider`** (interface) | `Get(string key, params object[] args)` (or keyed overloads) | None — lives in your tree |
-| **`JsonLocalizationProvider`** | Loads `Data/Localization/{lang}.json`, caches dictionary, thread-safe reads | None |
-| **`Localization`** (static entry) | Delegates to current provider; optional `Reload()` / `SetLanguage` | One thin static used by scripts |
-| **Data files** | Keys → strings (and optional metadata) | Zero C# coupling |
+---
 
-**Rule for script authors:** new user-visible English strings use **keys** (`Localization.Get("quest.blacksmith.intro")`) instead of embedding Chinese or English in random scripts. Existing literals migrate gradually.
-
-**Why JSON:** built-in `System.Text.Json` on modern .NET, diff-friendly, easy hot reload, no extra dependencies. **XML** is viable if you prefer tooling your translators already use; **RESX** is compile-time oriented and is weaker for hot reload unless you write a custom loader.
-
-Example file layout:
+## 2. Implemented data layout
 
 ```text
 World/Data/Localization/
-  en.json      # default / fallback
-  zh-Hans.json # Simplified Chinese
-  README.txt   # conventions for contributors (optional)
+  en/
+    system.json
+    scripts-system.json
+    scripts-items.json
+    scripts-books.json
+    scripts-mobiles.json
+    scripts-quests.json
+    scripts-engines-and-systems.json
+    scripts-utilities.json
+    ... (extra maintained JSON files, e.g. vendor_npc_speech.json)
+  zh-Hans/
+    (mirror of en/)
 ```
 
-Example `en.json` shape (illustrative):
+Notes:
 
-```json
-{
-  "commands.language.current": "Your language is set to {0}.",
-  "commands.language.changed": "Language changed to {0}."
-}
-```
-
-Same keys in `zh-Hans.json` with Chinese values. Missing keys fall back to `en.json` and optionally log once per key for translators.
+- Runtime merges all files into a single in-memory dictionary per locale.
+- Hash keys (`s.<16hex>`) come from the exact English sentence (`StringKey.ForEnglish`).
+- Logical keys (e.g. `books.dynamic.*`) are also supported via `TryResolveByKey`.
 
 ---
 
-## 3. Account language state (in-game switch)
+## 3. Implemented runtime localization paths
 
-- **Persist per account**: store `LanguageCode` (BCP 47, e.g. `en`, `zh-Hans`) on **`Account`** (see `Scripts/System/Misc/Accounts.cs`) — e.g. new serializable field or **`AccountTag`** so all characters on that login share the same language.
-- **Initial value**: when an account is first created, set `LanguageCode` from **configuration** (`Localization:DefaultLanguage` or equivalent in existing config style). Do not infer from OS/client.
-- **Command or gump**: e.g. `[lang zh-Hans]` / `[lang en]` or an options menu entry that updates the **account**, persists, and applies immediately for the current session (and any concurrent characters on that account, if applicable).
-- **Session binding**: resolve strings using the **current `Mobile`’s account** language; for messages with no player context, fall back to **configured default language**.
+The following are language-aware in current runtime:
 
-Reloading **string data from JSON on disk** (operator edits files while shard runs) is optional and separate from player language switching: if implemented, prefer **`Reload()` on a timer**, on **next login**, or an **optional staff command** — product decision not locked for v1.
+- `Mobile.SendMessage(string)` / `SendAsciiMessage(string)`
+- Overhead string paths:
+  - `PublicOverheadMessage(string)`
+  - `PrivateOverheadMessage(string)`
+  - `LocalOverheadMessage(string)`
+  - `NonlocalOverheadMessage(string)`
+- `Item.PublicOverheadMessage(string)`
+- `World.Broadcast(string)`
+- Gump string intern path via `Gump.InternLocalized(...)`
+- Books:
+  - `BaseBook` title/author/pages
+  - `DynamicBook` resolver paths (including split/template handling where added)
 
----
+Out of v1 scope / not fully owned:
 
-## 4. Hot reload semantics (locked for v1)
-
-| Trigger | Behavior | Permissions |
-|---------|----------|-------------|
-| Player switches language in game | Account `LanguageCode` updates; subsequent `Localization.Get` for that account uses the new language **without shard restart**. | **None** — not staff-gated. |
-| Operator edits JSON on disk (optional) | If supported: `Reload()` refreshes in-memory dictionaries; players keep account language tags. | Define separately if needed (not required for v1 player switching). |
-| Malformed JSON on reload | Keep previous cache; log error. | N/A |
-
-**Limits:** code that captured a translated string at startup will not auto-update until that code path runs again — acceptable if UI is built on demand. Long-lived gumps may need **close/reopen** or explicit refresh hooks; document this for designers.
-
----
-
-## 5. Minimizing coupling with upstream (Ruins and Riches / ServUO-style cores)
-
-1. **New folder** under something like `Scripts/Localization/` (or `Engines/Localization/`) containing only **new** types — prefer extending **`Account`** (or tags) for persistence rather than `PlayerMobile` to reduce coupling and match **per-account** storage.
-2. **Do not** mass-reformat upstream files when touching them.
-3. **Prefer wrapper** over forking: e.g. `LocalizedSay(Mobile m, string key)` extension instead of changing every `Say()` in core.
-4. **String extraction** for legacy scripts: optional tooling (Roslyn or regex-based) can live in `World/Source/Tools/` — not loaded at runtime — so it does not bloat `World.exe`.
-5. **Merge strategy**: keep `Data/Localization/*.json` on a branch or submodule if you want maximum isolation; submodule adds workflow cost — usually a dedicated directory in-repo is enough.
+- client cliloc-only numeric resources
+- player-authored text
+- all dynamic runtime-composed strings (depends on per-case resolver support)
 
 ---
 
-## 6. Chinese-specific notes
+## 4. Implemented extraction baseline
 
-- Use **`zh-Hans`** only (BCP 47); **`zh-Hant` is not in scope.**
-- Ensure **UTF-8** encoding for JSON files (no BOM preferred for cross-platform tooling).
-- **Pluralization and gender**: English and Chinese differ; prefer keys that encode full sentences (`"shop.buy.confirm": "Buy {0} for {1} gold?"`) rather than fragile concatenation.
-- **Font/client**: v1 is **server-emitted text only**; still confirm the client displays Unicode in journal/system messages where the shard sends Chinese.
+`World/Source/Tools/build_localization_strings.py` currently extracts:
 
----
+- core message literals (`SendMessage`, `SendAsciiMessage`, `Say`, tooltip/label/html/broadcast helpers)
+- gump-related literals (`AddHtml`, `AddLabel`, `AddLabelCropped`, `AddTooltip`, `LabelTo`)
+- quest/book-specific patterns (`builder.Append`, objective text, quest/gump helper patterns)
+- `DynamicBook` targeted constant extraction (`public const string ... = @"..."`) for hash stability
 
-## 7. Phased rollout
+Category mapping is path-based and already includes dedicated:
 
-| Phase | Scope | Risk |
-|-------|--------|------|
-| **0** | Plan + sample keys + `en`/`zh-Hans` in repo + provider + config default + account persistence + in-game language switch (no permissions) | Low |
-| **1** | Optional on-disk JSON reload for operators + all **new** features use keys | Low |
-| **2** | High-traffic areas (login, help, achievements, main gumps) | Medium |
-| **3** | Broader script migration (opportunistic with file edits) | Ongoing |
+- `scripts-books`
+- `scripts-quests`
 
 ---
 
-## 8. Testing checklist
+## 5. Translation policy (project rule)
 
-- New account gets **configured default** language; switching `en` ↔ `zh-Hans` mid-session updates **account** and all characters under that login as designed.
-- Journal and targeted gumps show correct language for **server-emitted** strings.
-- Missing key in `zh-Hans` falls back to configured fallback (typically `en`) without crash.
-- If on-disk reload is implemented: bad JSON does not take down the shard.
-- Serialize/deserialize **account** language across restart.
-
----
-
-## 9. Product decisions (locked)
-
-| Topic | Decision |
-|-------|----------|
-| Chinese variant | **`zh-Hans` only** (no `zh-Hant`) |
-| v1 coverage | **Server-emitted text only** (no client Cliloc/tooltips) |
-| Default language | **Shard configuration** defines default for new accounts |
-| Hot reload / language switch | **In-game switch without restart; no special permissions** |
-| Persistence | **Per account** |
-| Shipping translations | **`zh-Hans.json` (and related files) committed in repo** |
-
-**Still to confirm with engineering:** whether to standardize on **`System.Text.Json`** vs **Newtonsoft.Json** for the loader (match existing solution packages).
+- **LLM-only** translation workflow for new zh-Hans content.
+- Do **not** use Google/DeepL output as final shipping text.
+- Glossary enforcement is mandatory via:
+  - `sync_localization_glossary.py`
+  - `sync_localization_glossary.py --check`
 
 ---
 
-## 10. Summary
+## 6. Remaining gaps to close
 
-Use a **small localization façade**, **JSON per language under `Data/Localization/`** (in repo), **per-account `LanguageCode`** with **config-defined default**, **in-game language switching without restart or privileges**, **server-only** v1 scope (**`zh-Hans` only**), and **incremental key adoption** in scripts. Keep optional **on-disk file reload** separate if operators need live translation edits without redeploy.
+1. **Dynamic composition tails:** strings assembled at runtime still need targeted resolver handling when exact-hash matching is impossible.
+2. **Extractor breadth:** keep expanding edge-pattern extraction where new misses appear.
+3. **Doc + tooling alignment:** ensure extractor behavior around extra split JSON files stays aligned with repo-maintained assets.
+4. **QA gates:** continuously reduce English leftovers in changed zones before merge.
 
 ---
 
-## 11. Related document
+## 7. Acceptance checklist for each localization wave
 
-For moving **existing game copy** (thousands of literals and Clilocs) into JSON with waves, tooling, and CI, see [`localization-content-migration-plan.md`](./localization-content-migration-plan.md).
+- New English literals appear in correct `en/*.json` category.
+- `zh-Hans` updates preserve placeholders (`{0}`, etc.) and tags (`<BR>`, HTML spans).
+- `sync_localization_glossary.py --check` passes.
+- Runtime behavior validates in-game for touched UI/messages/books.
+- Diff contains only intended localization and supporting code/doc updates.
+
+---
+
+## 8. Related docs
+
+- `localization-implementation-review.md`
+- `localization-complete-coverage-roadmap.md`
+- `zh-localization-translation-guide.md`
+- `zh-localization-glossary-sync-workflow.md`

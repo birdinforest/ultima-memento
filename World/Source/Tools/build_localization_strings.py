@@ -13,6 +13,8 @@ Patterns:
     AddLabel, ItemReward("...", MLQuestSystem.Tell(..., "..."), etc.
   - Items/Books: book.BookText = / +=, BookTitle = / BookAuthor = string literals,
     BasicHelp() string segments, mercrate = (DynamicBook / LoreBook).
+  - DynamicBook.cs: public const string … = @\"…\" bodies (WorkShoppesBookText,
+    BasicHelpBookText, RuneJournalBookText) for StringCatalog hash alignment.
 
 Keys: SHA-256 UTF-8 of exact English (matches Server.Localization.StringKey.ForEnglish).
   Logical keys (e.g. books.dynamic.*) in existing JSON are preserved across rebuilds.
@@ -253,6 +255,35 @@ def is_quest_or_book_path(abs_path: str) -> bool:
     return "/Engines and Systems/Quests/" in "/" + rel + "/" or "/Items/Books/" in "/" + rel + "/"
 
 
+def extract_dynamic_book_public_const_verbatim(data: str) -> List[str]:
+    """Bodies of `public const string Name = @\"...\"` in DynamicBook catalog helpers."""
+    found: List[str] = []
+    marker = "public const string "
+    i = 0
+    while True:
+        j = data.find(marker, i)
+        if j < 0:
+            break
+        eq = data.find('= @"', j)
+        if eq < 0 or eq > j + 200:
+            i = j + 1
+            continue
+        p = eq + len('= @"')
+        sb: List[str] = []
+        while p < len(data):
+            if data[p] == '"' and p + 1 < len(data) and data[p + 1] == '"':
+                sb.append('"')
+                p += 2
+                continue
+            if data[p] == '"':
+                found.append("".join(sb))
+                break
+            sb.append(data[p])
+            p += 1
+        i = j + 1
+    return found
+
+
 def extract_string_catalog_resolve_verbatim(data: str) -> List[str]:
     """Second argument to StringCatalog.Resolve / ResolveFormat when it is a verbatim C# string (@\"...\")."""
     found: List[str] = []
@@ -455,6 +486,10 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
         ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
+
+    rel_path = os.path.relpath(path, SOURCE_ROOT).replace("\\", "/")
+    if rel_path == "Scripts/Items/Books/DynamicBook.cs":
+        texts.extend(extract_dynamic_book_public_const_verbatim(data))
 
     texts.extend(collect_targeted_ui_strings(path, data))
 
