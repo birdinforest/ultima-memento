@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.6",
+  "_version": "1.7",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -822,6 +822,13 @@
       "alternatives": [],
       "category": "character",
       "notes": "Dark mage antagonist; shard-specific."
+    },
+    "VordoKey": {
+      "canonical": "沃多之钥",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Internal PlayerSettings key flag for obtaining Vordo's key on Kuldar; mirrors C# identifier.",
+      "translation_basis_zh": "任务存档用键；「沃多」见人物词条。"
     },
     "Kas": {
       "canonical": "卡斯",
@@ -1629,10 +1636,11 @@
       "translation_basis_zh": "参考词表建议「血祭教团」。以血祭为信仰的邪教。"
     },
     "Syth": {
-      "canonical": "赛斯",
+      "canonical": "西斯",
       "alternatives": [],
       "category": "faction",
-      "notes": "Star Wars Sith parody; dark-side force users in cross-genre shard content. ★ auto-gen overlap."
+      "notes": "Star Wars Sith parody; dark-side force users in cross-genre shard content. ★ auto-gen overlap.",
+      "translation_basis_zh": "与「西斯武士」传统译名对齐；英文刻意写作 Syth 以避版权，中文仍用玩家熟悉的「西斯」指称该教团。"
     },
     "Skulls and Shackles": {
       "canonical": "骷髅与枷锁",
@@ -1719,6 +1727,34 @@
       "alternatives": [],
       "category": "deity",
       "notes": "Titan of Air (Ultima VIII: Pagan); rules the storms and sky."
+    },
+    "TitanHydros": {
+      "canonical": "泰坦海德罗斯",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Shard boss mobile; water-aspect titan naming aligned with Ultima VIII Hydros.",
+      "translation_basis_zh": "前缀「泰坦」+ 词表 Hydros（海德罗斯）规范译名。"
+    },
+    "TitanLithos": {
+      "canonical": "泰坦利托斯",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Shard boss mobile; earth-aspect titan naming aligned with Ultima VIII Lithos.",
+      "translation_basis_zh": "前缀「泰坦」+ 词表 Lithos（利托斯）规范译名。"
+    },
+    "TitanPyros": {
+      "canonical": "泰坦皮罗斯",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Shard boss mobile; fire-aspect titan naming aligned with Ultima VIII Pyros.",
+      "translation_basis_zh": "前缀「泰坦」+ 词表 Pyros（皮罗斯）规范译名。"
+    },
+    "TitanStratos": {
+      "canonical": "泰坦斯特拉托斯",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Shard boss mobile; air-aspect titan naming aligned with Ultima VIII Stratos.",
+      "translation_basis_zh": "前缀「泰坦」+ 词表 Stratos（斯特拉托斯）规范译名。"
     },
     "Great Earth Serpent": {
       "canonical": "大地巨蛇",
@@ -2249,6 +2285,27 @@
       ],
       "category": "concept",
       "notes": "Classic CRPG series (1985–88); referenced as in-world lore in this shard."
+    },
+    "BardsTaleWin": {
+      "canonical": "已击败邪恶法师曼加尔并逃出斯卡拉·布雷",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Internal PlayerSettings quest-flag key for the Mangar / Bard's Tale homage arc; EN localization mirrors the C# identifier. Player-facing summary matches HelpGump: defeated Mangar and escaped Skara Brae.",
+      "translation_basis_zh": "与 HelpGump 任务日志一致；「曼加尔」「斯卡拉·布雷」依本词表人物/地名译名。"
+    },
+    "AddToCont": {
+      "canonical": "添入容器",
+      "alternatives": [],
+      "category": "system",
+      "notes": "GM command alias (add item to container); appears in command help lists.",
+      "translation_basis_zh": "与 AddToPack 类比的容器版指令说明。"
+    },
+    "ThiefQuest": {
+      "canonical": "盗贼任务",
+      "alternatives": [],
+      "category": "system",
+      "notes": "Internal PlayerSettings / quest-save key for thief coffer arc; mirrors C# identifier.",
+      "translation_basis_zh": "任务存档键；与「盗贼公会」等词条语境一致。"
     },
     "Dungeon Clues": {
       "canonical": "地下城线索",
@@ -2867,6 +2924,22 @@
       "category": "system",
       "notes": "UO tithe points donated at shrine.",
       "translation_basis_zh": "神殿捐献累积的数值；「奉献度」贴合系统条；「奉献金」偏金币语感可作备选。"
+    },
+    "Inscribe": {
+      "canonical": "抄写",
+      "alternatives": [
+        "铭文"
+      ],
+      "category": "skill",
+      "notes": "UO SkillName.Inscribe: scribing spell scrolls and spellbooks, library shelf interactions, and related crafting. Player-facing Chinese on ultima-memento-web uses 抄写 as the canonical skill label.",
+      "translation_basis_zh": "该技能在玩法上体现为抄写卷轴、法术书及在书架搜寻等，「抄写」直指动作；「铭文」易与刻印、附魔类语感混淆。本站与对外中文统一为「抄写」，「铭文」仅作历史或别义备选。"
+    },
+    "Provocation": {
+      "canonical": "挑衅",
+      "alternatives": [],
+      "category": "skill",
+      "notes": "UO SkillName.Provocation; incites creatures to fight one another.",
+      "translation_basis_zh": "与《技艺与行当》条目中「挑衅 / 煽风者」一致。"
     },
     "_SECTION_WEAPON_ABILITIES": "── Weapon Special Abilities ─────────────────────────────────",
     "Whirlwind Attack": {

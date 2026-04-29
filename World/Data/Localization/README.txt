@@ -38,6 +38,10 @@ Glossary-based zh normalization:
 
 _index.json lists en files for translators (runtime loads all *.json in en/ and zh-Hans/).
 
+Hand-maintained logical-key bundles (same folders; not overwritten by build_localization_strings.py;
+listed in keep_extra in that script so they are never pruned as stale):
+  race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json
+
 Gump & books
 ------------
 AddHtml / AddLabel / text entries are localized at gump compile time using the viewer's account.
@@ -62,11 +66,24 @@ cd to repository root (ultima-memento), then:
 
   python3 World/Source/Tools/build_localization_strings.py --no-translate
     Re-scan C# and rewrite split files; preserves Chinese when English unchanged.
+    Optional: --prune-stale-locale-files (removes unknown *.json in en/zh-Hans; dangerous unless keep_extra is complete).
+    Writes Data/Localization/tools-output/extractor-key-drop-report.json (gitignored) listing keys removed
+    from category JSON vs the pre-run files. Optional: --fail-on-translated-zh-drop exits 2 if a dropped hash
+    key had reviewed Chinese (zh != previous en).
+
+  Incremental LLM pipeline (recommended; no machine-translation API):
+  python3 World/Source/Tools/llm_incremental_locale.py stats
+    Print how many hash-key entries still need zh (zh missing or zh == en), per file.
+  python3 World/Source/Tools/llm_incremental_locale.py queue -o Data/Localization/tools-output/llm-translation-queue.jsonl
+    Emit JSONL: one {"file","key","en"} per line — feed only these lines to an LLM (see AGENTS.md §3.4).
+  python3 World/Source/Tools/llm_incremental_locale.py split-queue -i .../llm-translation-queue.jsonl --lines 80 -o .../llm-batches/
+    Optional: split queue for smaller model requests.
+  python3 World/Source/Tools/llm_incremental_locale.py apply -i llm-translation-response.json
+    Merge LLM JSON (per-file key map or JSONL with file/key/zh) into zh-Hans/*.json. Then run sync_localization_glossary.py.
 
   pip install deep-translator
   python3 World/Source/Tools/translate_zh_from_en.py
-    Incremental: only keys missing in zh-Hans or where zh still equals en (hash keys s.*).
-    Logical keys (books.dynamic.*, etc.) are left as-is unless missing or use --include-named-keys.
+    Legacy Google-based filler (not the project LLM policy in AGENTS.md). Prefer llm_incremental_locale.py + LLM.
   python3 World/Source/Tools/translate_zh_from_en.py --full
     Re-translate every entry (overwrites reviewed Chinese).
 

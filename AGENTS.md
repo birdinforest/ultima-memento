@@ -12,6 +12,8 @@
 | Add a new game feature (C#) | [§2 Engineering Practices](#2-engineering-practices) |
 | Add translatable strings to C# code | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
 | Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
+| Incremental LLM locale queue (`stats` / `queue` / `apply`) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
+| Logical-key JSON (shard greeter, war shouts, …) | [§3.1 Architecture](#31-localization-architecture) |
 | Translate new strings (LLM, not Google) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
 | Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
 | Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
@@ -103,6 +105,18 @@ Data/Localization/
   zh-Hans/                             ← Mirrors en/ structure
 ```
 
+**Hand-maintained logical-key JSON** (same `en/` and `zh-Hans/` folders; **not** emitted by the C# extractor; keys are stable IDs consumed via `StringCatalog.TryResolveByKey` or equivalent). **Do not remove** — `build_localization_strings.py` whitelists them in `keep_extra`; deleting them drops translations at runtime. When adding a new bundle, edit that `keep_extra` set and extend this list.
+
+| File | Purpose (summary) |
+|---|---|
+| `race-system.json` | Race / gypsy potion shelf UI and related copy (`racepotions.*`, `baserace.*`, …). |
+| `shard-greeter.json` | Shard welcome / tarot gypsy and related copy (`shardgreeter.*`, …). |
+| `stats-gump.json` | Stats gump strings. |
+| `temptation-gump.json` | Temptation gump strings. |
+| `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
+
+Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
+
 **Key management:**
 - Hash keys: `s.` + 16 hex chars (SHA-256 of the exact EN string). These are stable as long as the English text is unchanged.
 - Logical keys (e.g. `books.dynamic.*`): preserved manually across re-extraction runs.
@@ -142,12 +156,19 @@ Run from repo root (`ultima-memento/`):
 # Re-scan C#; preserve existing ZH translations where EN is unchanged
 python3 World/Source/Tools/build_localization_strings.py --no-translate
 
+# Optional: delete unknown *.json under en/ and zh-Hans/ (off by default — safe for hand-maintained logical bundles)
+# python3 World/Source/Tools/build_localization_strings.py --no-translate --prune-stale-locale-files
+
+# Optional CI guard: fail if a hash key with reviewed Chinese disappears from category JSON
+# python3 World/Source/Tools/build_localization_strings.py --no-translate --fail-on-translated-zh-drop
+
 # After adding new EN strings, verify extraction output before committing:
 #   Check that new keys appear in the correct en/<category>.json
 #   Check that zh-Hans/<category>.json has no stale English echoes for new entries
+#   Inspect tools-output/extractor-key-drop-report.json (see README.txt) for removed keys vs pre-run JSON
 ```
 
-The extractor does **not** translate. Translation is a separate step (§3.4).
+The extractor does **not** translate. Translation is a separate step (§3.4). Each run writes `World/Data/Localization/tools-output/extractor-key-drop-report.json` (gitignored) listing keys dropped from category files compared to the JSON on disk before the run — use it to audit removals, not as a runtime merge.
 
 **Verification after extraction:**
 - New EN keys present in the correct category file. ✓
@@ -160,17 +181,27 @@ The extractor does **not** translate. Translation is a separate step (§3.4).
 
 **Standard translation process for new strings:**
 
-1. **Extract** new EN strings from `en/<category>.json` that are missing from `zh-Hans/<category>.json`.
+0. **Emit only deltas (saves tokens):** from repo root,
+   `python3 World/Source/Tools/llm_incremental_locale.py stats` then
+   `python3 World/Source/Tools/llm_incremental_locale.py queue -o Data/Localization/tools-output/llm-translation-queue.jsonl`.
+   Each JSONL line is one `{ "file", "key", "en" }` — that set is exactly what still needs Chinese (hash keys: missing or zh == en; logical keys: missing unless you pass `--include-named-keys`). Do **not** paste entire `zh-Hans/*.json` files into an LLM unless you intend a full review pass.
+1. **Extract** (already done if you ran `build_localization_strings.py --no-translate`): new/changed EN lives in `en/<category>.json`; queue step compares to `zh-Hans/<category>.json`.
 2. **Load the glossary** (`glossary-approved-zh.json`). Any EN term present in the glossary **must** use its `canonical` Chinese translation verbatim in the output.
-3. **Translate with LLM**, providing:
+3. **Translate with LLM** (batch on the queue lines or split batches only), providing:
    - The game context: Ultima Online-style fantasy MMORPG, historical Chinese localization sensibility.
    - The full glossary as a constraint.
    - The editorial rules from `World/Documentation/zh-localization-translation-guide.md`.
-4. **Apply glossary normalization** after translation:
+4. **Apply** LLM output into `zh-Hans/`:
+   ```bash
+   python3 World/Source/Tools/llm_incremental_locale.py apply -i path/to/llm-translation-response.json
+   ```
+   Response shape: nested JSON `{ "<category>.json": { "<key>": "<zh>", ... }, ... }`, or a JSON array / JSONL of `{ "file", "key", "zh" }` objects (see tool docstring).
+
+5. **Apply glossary normalization** after translation:
    ```bash
    python3 World/Source/Tools/sync_localization_glossary.py
    ```
-5. **Verify:**
+6. **Verify:**
    ```bash
    python3 World/Source/Tools/sync_localization_glossary.py --check
    # Must exit 0 (no unapproved glossary terms remain)
@@ -188,10 +219,13 @@ Mandatory glossary (use these exact translations, no alternatives):
 For proper nouns NOT in the glossary: transliterate in brackets 【English】 on first use.
 Do not paraphrase beyond what a professional game translator would. Keep punctuation natural for Chinese.
 
-Translate these strings:
+Translate these strings (one category per block if multiple files):
 <key>: <English value>
 ...
-Return JSON: { "<key>": "<zh translation>", ... }
+Return JSON. Prefer nested maps:
+``{ "scripts-quests.json": { "<key>": "<zh>", ... }, "scripts-system.json": { ... } }``.
+For one category, a flat ``{ "<key>": "<zh>", ... }`` is OK if you merge with
+``llm_incremental_locale.py apply -i response.json --base-file scripts-quests.json``.
 ```
 
 **For book text** (logical key `books.dynamic.*` and `scripts-books`):
@@ -235,6 +269,7 @@ Before finalizing any change that touches C# user-visible strings:
 
 - [ ] Ran `build_localization_strings.py --no-translate`
 - [ ] New EN keys appear in correct category JSON
+- [ ] For new zh-Hans work: used `llm_incremental_locale.py stats` / `queue` (delta only) before LLM, then `apply` — not Google/DeepL
 - [ ] New ZH translations follow LLM policy (§3.4) — not Google/DeepL
 - [ ] Glossary terms used correctly (`sync_localization_glossary.py --check` exits 0)
 - [ ] No hardcoded Chinese or English strings remaining in C# gumps/messages
@@ -322,6 +357,7 @@ At the end of every substantial task, report:
 
 Update `AGENTS.md` when:
 - A new localization language is added beyond `en` / `zh-Hans`.
+- A new **logical-key JSON** bundle is added under `Data/Localization/en/` (and `zh-Hans/`) — update §3.1 table and `keep_extra` in `build_localization_strings.py`.
 - A new Python tool is added to `World/Source/Tools/`.
 - A new source directory category is added under `World/Source/Scripts/`.
 - A build or test process changes.
@@ -345,6 +381,9 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 **Change log:**
 - 2026-04-18: Initial version created. Covers C# practices, localization pipeline, LLM translation policy, agent boundaries.
 - 2026-04-18: Added §7 — cross-repo practice standard for `ultima-memento-web` (media vendoring, glossary-driven wiki index).
+- 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
+- 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
+- 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 
 ---
 

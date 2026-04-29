@@ -33,7 +33,7 @@ namespace Server.Engines.MLQuests.Definitions
             Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
 
             builder.Clear();
-            builder.Append("Mark the shields as a quest item when you are ready.<br><br>");
+            builder.Append("Mark the tunics as a quest item when you are ready.<br><br>");
             builder.Append("- Click yourself to view your Quest Log<br>");
             builder.Append("- Click the reticle next to the quest<br>");
             builder.Append("- Target a container or the tunics directly<br>");

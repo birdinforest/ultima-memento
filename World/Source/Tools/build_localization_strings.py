@@ -20,7 +20,15 @@ Keys: SHA-256 UTF-8 of exact English (matches Server.Localization.StringKey.ForE
   Logical keys (e.g. books.dynamic.*) in existing JSON are preserved across rebuilds.
 
 Usage:
-  python3 build_localization_strings.py [--no-translate]
+  python3 build_localization_strings.py [--no-translate] [--prune-stale-locale-files] [--fail-on-translated-zh-drop]
+
+  By default, extra ``*.json`` files under ``en/`` and ``zh-Hans/`` are **not** deleted (safe).
+  Pass ``--prune-stale-locale-files`` only when you intend to remove unknown JSON (see ``keep_extra``).
+
+  After each run, ``Data/Localization/tools-output/extractor-key-drop-report.json`` lists hash / logical
+  keys that disappeared from category JSON (often because the English literal left the C# scan). Use
+  ``--fail-on-translated-zh-drop`` to exit non-zero if any dropped **hash** key had zh different from en
+  (likely loss of reviewed Chinese).
 """
 from __future__ import annotations
 
@@ -42,8 +50,10 @@ RE_SEND = re.compile(
     r"\b(?:SendMessage|SendAsciiMessage)\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+# First argument must not embed GreeterKey/RaceLocalization.Key calls (comma inside nested call
+# used to wrongly capture the logical key as the message literal).
 RE_SEND_WITH_PREFIX = re.compile(
-    r"\b(?:SendMessage|SendAsciiMessage)\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    r"\b(?:SendMessage|SendAsciiMessage)\s*\(\s*(?:(?!GreeterKey\()(?!RaceLocalization\.Key\()[^,])+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
 RE_SAY = re.compile(r"\bSay\s*\(\s*\"((?:\\.|[^\"\\])*)\"", re.MULTILINE)
@@ -176,6 +186,10 @@ RE_RESOLVE_FORMAT = re.compile(
     r"\bResolveFormat\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+RE_RESOLVE_QUEST_CATALOG = re.compile(
+    r"\bResolveQuestCatalogString\s*\(\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 RE_ADD_HTML_TEXT_RESOLVE = re.compile(
     r"TextDefinition\.AddHtmlText\s*\([^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*[^,\n]+,\s*ResolveText\s*\([^,\n]+,\s*\"((?:\\.|[^\"\\]*))\"\s*\)",
     re.MULTILINE,
@@ -188,6 +202,15 @@ RE_ABILITY_ASSIGN = re.compile(
 )
 
 RE_HASH_KEY = re.compile(r"^s\.[0-9a-f]{16}$")
+# Dot-separated logical ids (shardgreeter.*, racepotions.*) are not English player text; never catalog as hash keys.
+RE_LOGICAL_KEYISH_LITERAL = re.compile(r"^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+$")
+
+
+def is_probable_localization_logical_key_id(s: str) -> bool:
+    t = (s or "").strip()
+    if len(t) < 5 or "." not in t:
+        return False
+    return bool(RE_LOGICAL_KEYISH_LITERAL.match(t))
 
 
 def csharp_unescape(s: str) -> str:
@@ -456,7 +479,14 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
     if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
         texts.extend(extract_addhtml_fifth_arg(data))
         texts.extend(extract_string_catalog_resolve_verbatim(data))
-        for rx in (RE_RESOLVE_TEXT, RE_RESOLVE_PLAIN, RE_TRY_RESOLVE, RE_RESOLVE_FORMAT, RE_ADD_HTML_TEXT_RESOLVE):
+        for rx in (
+            RE_RESOLVE_TEXT,
+            RE_RESOLVE_PLAIN,
+            RE_TRY_RESOLVE,
+            RE_RESOLVE_FORMAT,
+            RE_RESOLVE_QUEST_CATALOG,
+            RE_ADD_HTML_TEXT_RESOLVE,
+        ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
 
@@ -493,7 +523,7 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
 
     texts.extend(collect_targeted_ui_strings(path, data))
 
-    return [t for t in texts if t and t.strip()]
+    return [t for t in texts if t and t.strip() and not is_probable_localization_logical_key_id(t)]
 
 
 def iter_cs_files(base: str) -> Iterable[str]:
@@ -588,6 +618,16 @@ def write_json(path: str, obj: dict) -> None:
         f.write("\n")
 
 
+def load_category_json(path: str) -> Dict[str, str]:
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
 def merge_preserved_logical_keys(en_json_path: str, en_map: Dict[str, str]) -> None:
     """Re-insert keys that are not scanner-generated hash keys (e.g. books.dynamic.*)."""
     if not os.path.isfile(en_json_path):
@@ -607,11 +647,27 @@ def merge_preserved_logical_keys(en_json_path: str, en_map: Dict[str, str]) -> N
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-translate", action="store_true")
+    ap.add_argument(
+        "--prune-stale-locale-files",
+        action="store_true",
+        help="Remove *.json under en/ and zh-Hans/ that are not scanner categories or keep_extra (dangerous).",
+    )
+    ap.add_argument(
+        "--fail-on-translated-zh-drop",
+        action="store_true",
+        help="Exit with code 2 if any dropped hash key had zh != en in the previous zh-Hans category file.",
+    )
     args = ap.parse_args()
 
     buckets = collect_by_category()
     total_keys = sum(len(v) for v in buckets.values())
     print(f"categories: {len(buckets)}, unique string keys: {total_keys}")
+
+    prev_en_cat: Dict[str, Dict[str, str]] = {}
+    prev_zh_cat: Dict[str, Dict[str, str]] = {}
+    for cat in sorted(buckets.keys()):
+        prev_en_cat[cat] = load_category_json(os.path.join(OUT_EN_DIR, f"{cat}.json"))
+        prev_zh_cat[cat] = load_category_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"))
 
     prev_zh_flat = load_all_zh_flat(OUT_ZH_DIR)
     if not prev_zh_flat:
@@ -621,10 +677,13 @@ def main() -> int:
     os.makedirs(OUT_EN_DIR, exist_ok=True)
     os.makedirs(OUT_ZH_DIR, exist_ok=True)
 
+    final_en_by_cat: Dict[str, Dict[str, str]] = {}
+
     for cat, en_map in sorted(buckets.items()):
         en_out = os.path.join(OUT_EN_DIR, f"{cat}.json")
         merge_preserved_logical_keys(en_out, en_map)
-        write_json(en_out, dict(sorted(en_map.items())))
+        final_en_by_cat[cat] = dict(en_map)
+        write_json(en_out, dict(sorted(final_en_by_cat[cat].items())))
 
     flat_texts = sorted({v for m in buckets.values() for v in m.values()})
 
@@ -656,19 +715,84 @@ def main() -> int:
                     zh_map[k] = tr.get(en_val, en_val)   # use translation or English fallback
             write_json(os.path.join(OUT_ZH_DIR, f"{cat}.json"), dict(sorted(zh_map.items())))
 
+    drop_report: List[Dict[str, str]] = []
+    for cat in sorted(buckets.keys()):
+        old_en = prev_en_cat.get(cat, {})
+        new_en = final_en_by_cat.get(cat, {})
+        dropped = sorted(set(old_en.keys()) - set(new_en.keys()))
+        old_zh = prev_zh_cat.get(cat, {})
+        for k in dropped:
+            drop_report.append(
+                {
+                    "category": f"{cat}.json",
+                    "key": k,
+                    "previousEn": old_en.get(k),
+                    "previousZh": old_zh.get(k),
+                }
+            )
+
+    tools_out = os.path.join(ROOT, "Data", "Localization", "tools-output")
+    os.makedirs(tools_out, exist_ok=True)
+    report_path = os.path.join(tools_out, "extractor-key-drop-report.json")
+    with open(report_path, "w", encoding="utf-8") as rf:
+        json.dump({"droppedKeyCount": len(drop_report), "droppedKeys": drop_report}, rf, ensure_ascii=False, indent=2)
+        rf.write("\n")
+    print(f"wrote {report_path} ({len(drop_report)} dropped keys vs pre-run category JSON)")
+
+    if args.fail_on_translated_zh_drop:
+        bad = [
+            r
+            for r in drop_report
+            if RE_HASH_KEY.match(r.get("key", ""))
+            and r.get("previousZh")
+            and r.get("previousEn")
+            and r["previousZh"] != r["previousEn"]
+        ]
+        if bad:
+            print(
+                f"error: --fail-on-translated-zh-drop: {len(bad)} hash key(s) lost Chinese (see report). First: {bad[0]['key']}",
+                file=sys.stderr,
+            )
+            return 2
+
     en_names = {f"{c}.json" for c in buckets}
     # Hash-keyed templates maintained by gen_vendor_npc_speech_en.py; zh file synced by apply_vendor_npc_speech_zh.py (JSON is source of truth)
-    keep_extra = frozenset({"_index.json", "vendor_npc_speech.json"})
-    for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
-        if not os.path.isdir(d):
-            continue
-        for fn in os.listdir(d):
-            if fn.endswith(".json") and fn not in keep and fn not in keep_extra:
-                try:
-                    os.remove(os.path.join(d, fn))
-                    print(f"removed stale {os.path.join(d, fn)}")
-                except OSError:
-                    pass
+    # Logical-key JSON not produced by this scanner (TryResolveByKey / curated copy). Never delete — removal drops zh/en at runtime.
+    keep_extra = frozenset(
+        {
+            "_index.json",
+            "vendor_npc_speech.json",
+            "race-system.json",
+            "shard-greeter.json",
+            "stats-gump.json",
+            "temptation-gump.json",
+            "thewar-quest.json",
+        }
+    )
+    if args.prune_stale_locale_files:
+        for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
+            if not os.path.isdir(d):
+                continue
+            for fn in os.listdir(d):
+                if fn.endswith(".json") and fn not in keep and fn not in keep_extra:
+                    try:
+                        os.remove(os.path.join(d, fn))
+                        print(f"removed stale {os.path.join(d, fn)}")
+                    except OSError:
+                        pass
+    elif any(os.path.isdir(d) for d in (OUT_EN_DIR, OUT_ZH_DIR)):
+        extra = []
+        for d, keep in ((OUT_EN_DIR, en_names), (OUT_ZH_DIR, en_names)):
+            if not os.path.isdir(d):
+                continue
+            for fn in os.listdir(d):
+                if fn.endswith(".json") and fn not in keep_extra and fn not in en_names:
+                    extra.append(os.path.join(d, fn))
+        if extra:
+            print(
+                "note: extra locale JSON present (not removed; use --prune-stale-locale-files to delete): "
+                + ", ".join(sorted(os.path.basename(x) for x in extra))
+            )
 
     legacy_en = os.path.join(ROOT, "Data", "Localization", "strings.en.json")
     legacy_zh = os.path.join(ROOT, "Data", "Localization", "strings.zh-Hans.json")

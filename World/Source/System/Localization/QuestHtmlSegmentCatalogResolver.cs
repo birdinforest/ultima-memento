@@ -38,16 +38,31 @@ namespace Server.Localization
 				int len = brMatch.Index - last;
 
 				if ( len > 0 )
-					sb.Append( ResolveTextSegment( m, html.Substring( last, len ) ) );
+				{
+					SegmentResolveResult res = ResolveTextSegmentWithFollowingBr( m, html.Substring( last, len ), brMatch.Value );
 
-				sb.Append( brMatch.Value );
+					sb.Append( res.Text );
+
+					if ( !res.ConsumedFollowingBrRun )
+						sb.Append( brMatch.Value );
+				}
+				else
+					sb.Append( brMatch.Value );
+
 				last = brMatch.Index + brMatch.Length;
 			}
 
 			if ( last < html.Length )
-				sb.Append( ResolveTextSegment( m, html.Substring( last ) ) );
+				sb.Append( ResolveTextSegmentWithFollowingBr( m, html.Substring( last ), null ).Text );
 
 			return sb.ToString();
+		}
+
+		private struct SegmentResolveResult
+		{
+			public string Text;
+			/// <summary>True when the catalog match was for <c>trimmedText + followingBrRun</c> (translation already includes that markup).</summary>
+			public bool ConsumedFollowingBrRun;
 		}
 
 		private static string ResolvePlainText( Mobile m, string s )
@@ -61,28 +76,46 @@ namespace Server.Localization
 			return r;
 		}
 
-		private static string ResolveTextSegment( Mobile m, string segment )
+		/// <summary>
+		/// Extractor keys often include the trailing <c>&lt;br&gt;</c> run that follows a segment in source (e.g. one Append literal ends with <c>&lt;br&gt;&lt;br&gt;</c>).
+		/// Splitting on <c>&lt;br&gt;</c> alone drops that suffix from the hashed English, so we try <paramref name="trimmedText"/> + <paramref name="followingBrRun"/> first.
+		/// </summary>
+		private static SegmentResolveResult ResolveTextSegmentWithFollowingBr( Mobile m, string segment, string followingBrRun )
 		{
 			if ( segment == null || segment.Length == 0 )
-				return segment;
+				return new SegmentResolveResult { Text = segment, ConsumedFollowingBrRun = false };
 
 			string original = segment;
 			string t = segment.Trim();
 
 			if ( t.Length == 0 )
-				return original;
+				return new SegmentResolveResult { Text = original, ConsumedFollowingBrRun = false };
 
 			string lang = AccountLang.GetLanguageCode( m.Account );
+
+			if ( !string.IsNullOrEmpty( followingBrRun ) )
+			{
+				string compound = t + followingBrRun;
+				string rCompound = StringCatalog.TryResolve( lang, compound );
+
+				if ( rCompound != null )
+				{
+					if ( AccountLang.IsChinese( lang ) )
+						rCompound = QuestCompositeResolver.ResolveComposite( m, rCompound );
+
+					return new SegmentResolveResult { Text = rCompound, ConsumedFollowingBrRun = true };
+				}
+			}
+
 			string r = StringCatalog.TryResolve( lang, t ) ?? t;
 
 			if ( AccountLang.IsChinese( lang ) )
 				r = QuestCompositeResolver.ResolveComposite( m, r );
 
-			// Unchanged: keep original whitespace if only whitespace / no mapping.
 			if ( r == t )
-				return original;
+				return new SegmentResolveResult { Text = original, ConsumedFollowingBrRun = false };
 
-			return r;
+			return new SegmentResolveResult { Text = r, ConsumedFollowingBrRun = false };
 		}
 	}
 }
