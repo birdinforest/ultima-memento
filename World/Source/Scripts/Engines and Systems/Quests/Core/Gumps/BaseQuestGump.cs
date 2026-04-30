@@ -6,6 +6,7 @@ using Server.Localization;
 using Server.Mobiles;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
+using Server.Engines.RpgDialogue;
 
 namespace Server.Engines.MLQuests.Gumps
 {
@@ -138,7 +139,7 @@ namespace Server.Engines.MLQuests.Gumps
 			if ( bqg != null && bqg.QuestViewer != null && bqg.QuestViewer.Account != null )
 			{
 				string lang = AccountLang.GetLanguageCode( bqg.QuestViewer.Account );
-				string resolved = StringCatalog.TryResolve( lang, english ) ?? english;
+				string resolved = StringCatalog.TryResolveLogicalOrHash( lang, english ) ?? english;
 
 				if ( AccountLang.IsChinese( lang ) )
 					resolved = QuestCompositeResolver.ResolveComposite( bqg.QuestViewer, resolved );
@@ -163,7 +164,7 @@ namespace Server.Engines.MLQuests.Gumps
 			PlayerMobile pm = bqg.QuestViewer;
 			string s = def.String;
 			string lang = AccountLang.GetLanguageCode( pm.Account );
-			string direct = StringCatalog.TryResolve( lang, s ) ?? s;
+			string direct = StringCatalog.TryResolveLogicalOrHash( lang, s ) ?? s;
 			string resolved;
 
 			// One hash key for the full blob (e.g. short title). Multi-paragraph HTML is usually separate literals in JSON.
@@ -208,7 +209,7 @@ namespace Server.Engines.MLQuests.Gumps
 				if ( QuestViewer != null && QuestViewer.Account != null )
 				{
 					string lang = AccountLang.GetLanguageCode( QuestViewer.Account );
-					string r = StringCatalog.TryResolve( lang, def.String ) ?? def.String;
+					string r = StringCatalog.TryResolveLogicalOrHash( lang, def.String ) ?? def.String;
 
 					if ( AccountLang.IsChinese( lang ) )
 						r = QuestCompositeResolver.ResolveComposite( QuestViewer, r );
@@ -334,6 +335,8 @@ namespace Server.Engines.MLQuests.Gumps
 			pm.CloseGump( typeof( InfoNPCGump ) );
 			pm.CloseGump( typeof( QuestRewardGump ) );
 			pm.CloseGump( typeof( QuestConversationGump ) );
+			pm.CloseGump( typeof( RpgDialogueGump ) );
+			pm.CloseGump( typeof( DynamicRpgDialogueGump ) );
 			pm.CloseGump( typeof( QuestReportBackGump ) );
 			//pm.CloseGump( typeof( UnknownGump807 ) );
 			pm.CloseGump( typeof( QuestCancelConfirmGump ) );

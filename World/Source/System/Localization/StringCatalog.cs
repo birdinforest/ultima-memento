@@ -174,6 +174,32 @@ namespace Server.Localization
 		}
 
 		/// <summary>
+		/// For strings whose <paramref name="text"/> is a stable logical id (prefix <c>quest-</c>),
+		/// tries <see cref="TryResolveByKey"/> first, then hash <see cref="TryResolve"/>; otherwise only hash lookup.
+		/// Used by ML quest gumps and RPG dialogue so quest copy can live in hand-maintained JSON keys.
+		/// </summary>
+		public static string TryResolveLogicalOrHash( string languageCode, string text )
+		{
+			if ( text == null || text.Length == 0 )
+				return null;
+
+			if ( !m_Loaded )
+				return null;
+
+			if ( text.StartsWith( "quest-", StringComparison.Ordinal ) )
+			{
+				string byKey = TryResolveByKey( languageCode, text );
+
+				if ( byKey != null && byKey.Length > 0 )
+					return byKey;
+
+				return TryResolve( languageCode, text );
+			}
+
+			return TryResolve( languageCode, text );
+		}
+
+		/// <summary>
 		/// Convenience wrapper: resolves <paramref name="english"/> for the given account's language,
 		/// falling back to the English literal when no translation is found.
 		/// </summary>

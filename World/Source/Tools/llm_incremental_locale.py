@@ -44,6 +44,9 @@ RE_HASH_KEY = re.compile(r"^s\.[0-9a-f]{16}$")
 # When zh-Hans mirrors ``en`` on purpose (markup, placeholders, internal ids), do not queue.
 _IDENTITY_HASH_EN_VALUES = frozenset(
     {
+        # UO / Ultima runic circle words and similar fictive incantations: zh-Hans must mirror en.
+        "In Vas Mani",
+        "Xtee Mee Glau",
         "English",
         "en",
         "zh-Hans",

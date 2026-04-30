@@ -114,6 +114,7 @@ Data/Localization/
 | `stats-gump.json` | Stats gump strings. |
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
+| `script-quest-unsent-letter.json` | **The Unsent Letter** quest: stable logical keys (`quest-unsent-letter.*`, …) via `StringCatalog.TryResolveByKey`, same pattern as other logical bundles; see `World/Documentation/quest-unsent-letter-implementation.md`. |
 
 Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
 
@@ -169,6 +170,16 @@ python3 World/Source/Tools/build_localization_strings.py --no-translate
 ```
 
 The extractor does **not** translate. Translation is a separate step (§3.4). Each run writes `World/Data/Localization/tools-output/extractor-key-drop-report.json` (gitignored) listing keys dropped from category files compared to the JSON on disk before the run — use it to audit removals, not as a runtime merge.
+
+#### 3.3.1 Runic spell words and English-only incantations
+
+Some extracted strings are **not natural-language copy**: they are UO / Ultima **runic** circle words
+(e.g. *In Vas Mani*) or other **fictional incantation tokens** (e.g. *Xtee Mee Glau*). For these,
+`zh-Hans` **must match `en` verbatim** (same English letters and spacing). Do **not** translate
+or spell them out in Chinese (e.g. avoid「在瓦斯玛尼」for *In Vas Mani*). When using the LLM
+incremental queue, copy the English string unchanged into the Chinese field; `llm_incremental_locale.py`
+also whitelists common examples in `_IDENTITY_HASH_EN_VALUES` so `stats` does not count them as
+untranslated. Add new fixed incantation strings to that set if they are meant to stay English-only.
 
 **Verification after extraction:**
 - New EN keys present in the correct category file. ✓
@@ -384,6 +395,8 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
+- 2026-04-29: `build_localization_strings.py` — quest scan adds **`new DummyReward("…")`** and **`DefaultName => "…"`** (alongside existing `ItemReward` / RPG gump patterns) so text-only rewards and co-located quest item names register in `scripts-quests.json`.
+- 2026-04-29: §3.3.1 — runic / incantation strings (e.g. *In Vas Mani*, *Xtee Mee Glau*): `zh-Hans` mirrors `en`; `llm_incremental_locale.py` `_IDENTITY_HASH_EN_VALUES` extended; `README.txt` + `zh-localization-translation-guide.md` §2.6.
 
 ---
 

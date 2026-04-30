@@ -8,7 +8,7 @@ Categories: scripts-quests, scripts-books (subpaths), else scripts-* / system.
 Patterns:
   - SendMessage / SendAsciiMessage / Say (all Source, including hue-first overloads)
   - AddHtml / AddLabel / AddTooltip / LabelTo / *OverheadMessage / Broadcast string literals
-  - Quests & Books trees: builder.Append("..."), Title=/Description=/etc., DummyObjective,
+  - Quests & Books trees: builder.Append("..."), Title=/Description=/etc., DummyObjective, DummyReward("..."),
     CollectObjective name string, TextDefinition("..."), AddHtml (incl. verbatim @"),
     AddLabel, ItemReward("...", MLQuestSystem.Tell(..., "..."), etc.
   - Items/Books: book.BookText = / +=, BookTitle = / BookAuthor = string literals,
@@ -95,12 +95,34 @@ RE_QUEST_ASSIGN = re.compile(
     re.MULTILINE,
 )
 RE_DUMMY_OBJ = re.compile(r"new\s+DummyObjective\s*\(\s*\"((?:\\.|[^\"\\])*)\"\s*\)")
+RE_DUMMY_REWARD = re.compile(r"new\s+DummyReward\s*\(\s*\"((?:\\.|[^\"\\])*)\"")
 RE_COLLECT_NAME = re.compile(
     r"new\s+CollectObjective\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"\s*\)"
 )
 RE_ITEM_REWARD = re.compile(r"new\s+ItemReward\s*\(\s*\"((?:\\.|[^\"\\])*)\"")
+RE_DEFAULT_NAME_ARROW = re.compile(
+    r"\bDefaultName\s*=>\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 RE_TELL = re.compile(
     r"\bMLQuestSystem\.Tell\s*\([^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
+)
+# RPG branching dialogue (Server.Engines.RpgDialogue) — first string arg only
+RE_RPG_DIALOGUE_NODE = re.compile(
+    r"new\s+RpgDialogueNode\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_RPG_DIALOGUE_OPTION = re.compile(
+    r"new\s+RpgDialogueOption\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_DYNAMIC_RPG_GUMP_BODY = re.compile(
+    r"new\s+DynamicRpgDialogueGump\s*\(\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
+RE_DYNAMIC_RPG_OPTION = re.compile(
+    r"new\s+DynamicRpgDialogueOption\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
 )
 RE_ADD_HTML_TEXT = re.compile(
     r"TextDefinition\.AddHtmlText\s*\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\""
@@ -455,6 +477,34 @@ def collect_targeted_ui_strings(path: str, data: str) -> List[str]:
         for m in RE_ABILITY_ASSIGN.finditer(data):
             texts.append(csharp_unescape(m.group(1)))
 
+    # RpgDialogueGump: ResolveLine(pm, "literal") and BuildEmpty("literal")
+    if rel.endswith("RpgDialogueGump.cs"):
+        for m in re.finditer(
+            r"\bResolveLine\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+            data,
+            re.MULTILINE,
+        ):
+            texts.append(csharp_unescape(m.group(1)))
+        for m in re.finditer(
+            r"BuildEmpty\s*\(\s*\"((?:\\.|[^\"\\])*)\"",
+            data,
+            re.MULTILINE,
+        ):
+            texts.append(csharp_unescape(m.group(1)))
+
+    if rel.endswith("/Scripts/Engines and Systems/Quests/RpgDialogue/UnsentLetterRpgDialogue.cs"):
+        for m in re.finditer(
+            r"string pitch\s*=\s*\r?\n\s*\"((?:\\.|[^\"\\])*)\"",
+            data,
+            re.MULTILINE,
+        ):
+            texts.append(csharp_unescape(m.group(1)))
+        for m in re.finditer(
+            r"string offerFooter\s*=\s*\"((?:\\.|[^\"\\])*)\";",
+            data,
+        ):
+            texts.append(csharp_unescape(m.group(1)))
+
     return texts
 
 
@@ -495,10 +545,16 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
             RE_APPEND,
             RE_QUEST_ASSIGN,
             RE_DUMMY_OBJ,
+            RE_DUMMY_REWARD,
             RE_COLLECT_NAME,
             RE_ITEM_REWARD,
+            RE_DEFAULT_NAME_ARROW,
             RE_TELL,
             RE_ADD_HTML_TEXT,
+            RE_RPG_DIALOGUE_NODE,
+            RE_RPG_DIALOGUE_OPTION,
+            RE_DYNAMIC_RPG_GUMP_BODY,
+            RE_DYNAMIC_RPG_OPTION,
         ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
@@ -767,6 +823,7 @@ def main() -> int:
             "stats-gump.json",
             "temptation-gump.json",
             "thewar-quest.json",
+            "script-quest-unsent-letter.json",
         }
     )
     if args.prune_stale_locale_files:

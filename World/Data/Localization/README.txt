@@ -14,6 +14,8 @@ Categories match World/Source layout:
   scripts-engines-and-systems.json — Source/Scripts/Engines and Systems (excl. Quests subtree)
   scripts-utilities.json       — Source/Scripts/Utilities
   scripts-quests.json          — Source/Scripts/Engines and Systems/Quests
+    Scanner also picks up: new DummyReward("…") text-only rewards, and item
+    DefaultName => "…" literals in the same quest source tree (see build_localization_strings.py).
   scripts-books.json           — Source/Scripts/Items/Books
 
 Hand-maintained zh for scripts-books (merge from fragments):
@@ -40,7 +42,9 @@ _index.json lists en files for translators (runtime loads all *.json in en/ and 
 
 Hand-maintained logical-key bundles (same folders; not overwritten by build_localization_strings.py;
 listed in keep_extra in that script so they are never pruned as stale):
-  race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json
+  race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json,
+  script-quest-unsent-letter.json (The Unsent Letter; keys consumed via TryResolveByKey — see
+  World/Documentation/quest-unsent-letter-implementation.md)
 
 Gump & books
 ------------
@@ -114,6 +118,13 @@ Simplified Chinese (zh-Hans) translation guide
 World/Documentation/zh-localization-translation-guide.md
   Editorial rules for books/quests and narrative strings: bracketed English for unapproved
   proper names, context over misleading literals, no silent paraphrase in body text, 译注 workflow.
+
+Runic spell words (English-only in zh-Hans)
+-------------------------------------------
+  Standard UO / Ultima-style runic circle phrases (e.g. ``In Vas Mani``) and similar
+  non-dialogue **incantation tokens** (e.g. ``Xtee Mee Glau``) must keep **zh-Hans identical
+  to en** — do not translate or transliterate into Chinese. See ``AGENTS.md`` §3.3.1 and
+  ``llm_incremental_locale.py`` note on ``_IDENTITY_HASH_EN_VALUES`` for known examples.
 
 World/Documentation/scripts-books-zh-translation-workflow.md
   How zh-Hans/scripts-books.json is built from en + fragment JSON, tools, and maintenance steps.
