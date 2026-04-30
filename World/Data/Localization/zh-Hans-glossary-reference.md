@@ -71,7 +71,7 @@
 | 【Montor】 | 蒙托城 | 熔岩之城，Ultima 早期城市名。 |
 | 【Umber Veil】 | 安柏迷雾岛 | 神秘小岛，「Veil」喻为迷雾帷幕。 |
 | 【Renika】 | 雷尼卡村 | 被黑骑士劫掠的村庄。 |
-| 【Grey】 | 格雷村 | 文中出现的小村落名。 |
+| 【Grey】 | 灰镇 | 索沙里亚聚落地名（the Village of Grey）。 |
 | 【Dungeon Doom】 | 毁灭地城 / 毁灭地牢 | Ultima Online 中著名地城「Doom」。 |
 | 【Hythloth】 | 海瑟洛斯 | 传统译名「海瑟洛斯」或「虚空洞窟」。 |
 | 【Underworld】（重复） | 冥界深渊 | 统一用法。 |

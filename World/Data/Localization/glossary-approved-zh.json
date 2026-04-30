@@ -550,15 +550,16 @@
       "notes": "Gloomy fortress city; shard-specific."
     },
     "Grey": {
-      "canonical": "格雷村",
+      "canonical": "灰镇",
       "alternatives": [
+        "格雷村",
         "灰村"
       ],
       "category": "place",
-      "notes": "Small settlement; shard-specific.",
-      "reference_suggestion_zh": "格雷村",
-      "reference_note_zh": "文中出现的小村落名。",
-      "translation_basis_zh": "参考词表建议「格雷村」。文中出现的小村落名。"
+      "notes": "Small settlement / the Village of Grey; shard-specific. English copy sometimes says ‘city’.",
+      "reference_suggestion_zh": "灰镇",
+      "reference_note_zh": "索沙里亚聚落地名（the Village of Grey），与英文名 Grey 对应。",
+      "translation_basis_zh": "译为「灰镇」：Grey 字面义 + 镇长住聚落语感；与原「格雷」音译相比更贴近字面且与塔罗牌灰隐士线一致。"
     },
     "Sempkin Burg": {
       "canonical": "森普金堡",
