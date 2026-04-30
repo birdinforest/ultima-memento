@@ -71,6 +71,7 @@ namespace Server.Engines.MLQuests.Definitions
 			}
 
 			PlayerMobile pm = instance.Player;
+			MLQuestInstance instRef = instance;
 			BaseQuestGump.CloseOtherGumps(pm);
 
 			Mobile npc = instance.Quester as Mobile;
@@ -94,7 +95,12 @@ namespace Server.Engines.MLQuests.Definitions
 
 			foreach (BaseReward reward in quest.Rewards)
 			{
-				string line = ResolveTextDefString(pm, reward.Name);
+				string line;
+
+				if (reward is UnsentLetterEndingMementoReward)
+					line = ResolveCatalogBody(pm, UnsentLetterEndingMementoReward.ResolveCaptionKey(instRef));
+				else
+					line = ResolveTextDefString(pm, reward.Name);
 
 				if (string.IsNullOrEmpty(line))
 					continue;
@@ -105,7 +111,6 @@ namespace Server.Engines.MLQuests.Definitions
 			}
 
 			string body = sb.ToString();
-			MLQuestInstance instRef = instance;
 
 			pm.SendGump(new DynamicRpgDialogueGump(npc, pm, body,
 				new[]
@@ -258,7 +263,7 @@ namespace Server.Engines.MLQuests.Definitions
 				opened = TryOpenNoQuestFallback(pm, npc);
 
 			if (opened)
-				MLQuestSystem.TurnToFace(npc, pm);
+				npc.Direction = npc.GetDirectionTo(pm);
 		}
 
 		private static bool TryOpenClaimRewardWrongNpc(PlayerMobile pm, Mobile npc)

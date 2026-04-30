@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "questId": "unsent-letter",
+  "spawners": [
+    {
+      "typeName": "UnsentLetterMara",
+      "map": "Sosaria",
+      "x": 2999,
+      "y": 1064,
+      "z": 0,
+      "amount": 1,
+      "minDelayMinutes": 5,
+      "maxDelayMinutes": 10,
+      "team": 0,
+      "homeRange": 5
+    },
+    {
+      "typeName": "UnsentLetterLina",
+      "map": "Sosaria",
+      "x": 2997,
+      "y": 1061,
+      "z": 0,
+      "amount": 1,
+      "minDelayMinutes": 5,
+      "maxDelayMinutes": 10,
+      "team": 0,
+      "homeRange": 5
+    },
+    {
+      "typeName": "UnsentLetterThomas",
+      "map": "Sosaria",
+      "x": 1458,
+      "y": 3788,
+      "z": 0,
+      "amount": 1,
+      "minDelayMinutes": 5,
+      "maxDelayMinutes": 10,
+      "team": 0,
+      "homeRange": 5
+    },
+    {
+      "typeName": "UnsentLetterMiner",
+      "map": "Sosaria",
+      "x": 3185,
+      "y": 2585,
+      "z": 0,
+      "amount": 1,
+      "minDelayMinutes": 5,
+      "maxDelayMinutes": 10,
+      "team": 0,
+      "homeRange": 5
+    },
+    {
+      "typeName": "UnsentLetterClerk",
+      "map": "Sosaria",
+      "x": 1455,
+      "y": 3792,
+      "z": 0,
+      "amount": 1,
+      "minDelayMinutes": 5,
+      "maxDelayMinutes": 10,
+      "team": 0,
+      "homeRange": 5
+    }
+  ],
+  "ambush": {
+    "waves": [
+      { "count": 3 },
+      { "count": 4 }
+    ],
+    "spawnOffsetMin": -3,
+    "spawnOffsetMax": 3,
+    "buffSecondWaveHits": true,
+    "brigandTypeName": "UnsentGreyCloakBrigand",
+    "brigandBody": -1,
+    "brigandHue": -1,
+    "equipment": []
+  },
+  "clerkFight": {
+    "hirelingCount": 4,
+    "hirelingTypeName": "UnsentHireling",
+    "hirelingExtraHits": 40,
+    "offsets": [
+      { "x": -1, "y": -1 },
+      { "x": 1, "y": -1 },
+      { "x": -1, "y": 1 },
+      { "x": 1, "y": 1 }
+    ]
+  },
+  "questItems": {
+    "adrianBadge": { "itemId": 5357, "hue": 2213, "weight": 1.0 },
+    "tornPage": { "itemId": 5357, "hue": 1150, "weight": 1.0 },
+    "fullLetter": { "itemId": 5357, "hue": 1160, "weight": 1.0 }
+  }
+}

@@ -6,6 +6,8 @@ using Server.Network;
 using Server.Targets;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Engines.MLQuests.Gumps;
+using Server.Mobiles;
 
 namespace Server.Gumps
 {
@@ -171,6 +173,25 @@ namespace Server.Gumps
 
 					break;
 				}
+				case 12: // ML Quest progress (GM remove)
+				{
+					Resend( from, info );
+
+					if ( from.AccessLevel >= AccessLevel.GameMaster && ( from == focus || from.AccessLevel > focus.AccessLevel ) )
+					{
+						PlayerMobile pm = focus as PlayerMobile;
+
+						if ( pm == null )
+							from.SendMessage( "ML Quest progress applies to player characters only." );
+						else if ( BaseCommand.IsAccessible( from, focus ) )
+						{
+							from.SendGump( new GmClientMLQuestRemovalGump( from, pm ) );
+							CommandLogging.WriteLine( from, "{0} {1} opening ML quest removal for {2} ", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( focus ) );
+						}
+					}
+
+					break;
+				}
 			}
 		}
 
@@ -294,6 +315,12 @@ namespace Server.Gumps
 				{
 					AddButton( 246, 36 + (line * 20), 0xFA5, 0xFA7, 11, GumpButtonType.Reply, 0 );
 					AddHtml( 280, 38 + (line++ * 20), 100, 20, Color( "Skills browser", LabelColor32 ), false, false );
+				}
+
+				if ( from.AccessLevel >= AccessLevel.GameMaster && ( from == m || from.AccessLevel > m.AccessLevel ) && m is PlayerMobile )
+				{
+					AddButton( 246, 36 + (line * 20), 0xFA5, 0xFA7, 12, GumpButtonType.Reply, 0 );
+					AddHtml( 280, 38 + (line++ * 20), 150, 20, Color( "Remove ML quest progress", LabelColor32 ), false, false );
 				}
 			}
 		}

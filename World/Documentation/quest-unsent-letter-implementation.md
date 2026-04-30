@@ -9,6 +9,8 @@ For narrative design, beats, and localization notes, see the sibling documentati
 | Area | Location |
 |------|----------|
 | Quest class, objectives, NPCs, items, spawners | `World/Source/Scripts/Engines and Systems/Quests/Core/Definitions/UnsentLetter.cs` |
+| Quest pack DTO + loader + runtime helpers | `World/Source/Scripts/Engines and Systems/Quests/Core/UnsentLetterQuestPack.cs` |
+| **Data-driven pack (JSON)** | `World/Data/Quests/unsent-letter-pack.json` (resolved under **`Core.BaseDirectory`**, same folder as the runtime executable — e.g. `World/`) |
 | RPG dialogue (UI + branching; opened from NPC context menu **Talk**) | `World/Source/Scripts/Engines and Systems/Quests/RpgDialogue/UnsentLetterRpgDialogue.cs`, `DynamicRpgDialogueGump.cs` |
 | Quest strings (EN + zh-Hans), **stable logical keys** | `World/Data/Localization/en/script-quest-unsent-letter.json`, `zh-Hans/script-quest-unsent-letter.json` (`quest-unsent-letter-*`; resolved via `StringCatalog.TryResolveLogicalOrHash`) |
 | Legacy quest hash keys (other quests) | `scripts-quests.json` / `zh-Hans/scripts-quests.json` (extractor) |
@@ -101,17 +103,17 @@ The quest adds objectives in this order; **`FindObjective<T>`** always targets t
 | 2 | **`UnsentPuzzleObjective`** | Puzzle **started** and **`Step > 3`** (three answers processed). |
 | 3 | **`UnsentAmbushObjective`** | **`Phase >= 3`** (two waves cleared, evidence dropped). |
 | 4 | **`UnsentEvidenceObjective`** | Backpack contains **`UnsentAdrianBadge`** and **`UnsentTornLetterPage`**, and **`LinaTold`**. |
-| 5 | **`UnsentClerkObjective`** | Fight started and all **four** hirelings defeated; **`UnsentFullLetter`** added to backpack. |
+| 5 | **`UnsentClerkObjective`** | Fight started and all hirelings defeated (default **four**; see pack JSON); **`UnsentFullLetter`** added to backpack. |
 | 6 | **`UnsentFamilyEndingObjective`** | **`UnsentFullLetter`** in backpack, **`FamilyTalks >= 2`**, **`EndingChoice != 0`** (Mara ending options in **Talk**). |
 
 ---
 
 ## NPCs and world spawns
 
-**`UnsentLetterQuest.Generate()`** places **ML-QS spawners** (named `MLQS-UnsentLetterQuest`) at fixed points on **`Map.Sosaria`**. First boot or regeneration creates them; existing spawners at the same spot are replaced per **`PutSpawner`** rules.
+**`UnsentLetterQuest.Generate()`** reads **`UnsentLetterQuestPackLoader`** and places **ML-QS spawners** (named `MLQS-UnsentLetterQuest`) from the pack’s **`spawners`** array. Each entry uses **`Map.Parse(map)`** (invalid map names are skipped with a console line). If the JSON file is missing, corrupt, or **`schemaVersion < 1`**, the loader falls back to **`CreateBuiltinDefaults()`** (same coordinates as the table below). First boot or regeneration creates spawners; existing spawners at the same spot are replaced per **`PutSpawner`** rules.
 
-| Mobile type | Role | Approximate location (X, Y, Z) | Map |
-|-------------|------|-------------------------------|-----|
+| Mobile type | Role | Default location (X, Y, Z) | Map |
+|-------------|------|---------------------------|-----|
 | **`UnsentLetterMara`** | Quest giver, puzzle host, ending choice | (2999, 1064, 0) | Sosaria |
 | **`UnsentLetterLina`** | Family + evidence (“evidence”) | (2997, 1061, 0) | Sosaria |
 | **`UnsentLetterThomas`** | Family + ending (“letter”) | (1458, 3788, 0) | Sosaria |
@@ -119,6 +121,21 @@ The quest adds objectives in this order; **`FindObjective<T>`** always targets t
 | **`UnsentLetterClerk`** (“Garron”) | Clerk fight via **Talk** | (1455, 3792, 0) | Sosaria |
 
 In character, Mara and Lina are **Britain**; Thomas and the clerk are **Renika**; the miner is on the **Montor road** quarry-side area as implemented by coordinates above.
+
+### Data-driven pack: `Data/Quests/unsent-letter-pack.json`
+
+Edit this file and **restart the world** for changes to apply. **`System.Runtime.Serialization.Json.DataContractJsonSerializer`** deserializes into **`UnsentLetterPackRoot`** (`UnsentLetterQuestPack.cs`). Property names are **camelCase** in JSON.
+
+| Section | Purpose |
+|---------|---------|
+| **`schemaVersion`** | Must be **`>= 1`**. Older/missing → built-in defaults. |
+| **`questId`** | Informational (`unsent-letter`). |
+| **`spawners[]`** | **`typeName`**: NPC class name (must resolve via **`ScriptCompiler.FindTypeByName`**). **`map`**: string for **`Map.Parse`**. **`x`/`y`/`z`**. **`amount`**, **`minDelayMinutes`**, **`maxDelayMinutes`**, **`team`**, **`homeRange`** → **`Spawner`** ctor. **`walkingRange`**: if **`>= 0`**, sets **`Spawner.WalkingRange`**; **`-1`** leaves spawner default. Unknown **`typeName`** → entry skipped (logged). |
+| **`ambush`** | **`waves[]`**: each **`count`** for wave 1 and 2. **`spawnOffsetMin`/`spawnOffsetMax`**: random tile offset from player when spawning brigands. **`buffSecondWaveHits`**: if true, second wave gets extra hits (legacy behavior). **`brigandTypeName`**: default **`UnsentGreyCloakBrigand`** — **keep this type** unless you duplicate **`OnDeath`** quest hooks in another mobile type. **`brigandBody`/`brigandHue`**: **`-1`** = do not override. **`equipment[]`**: **`typeName`** (item class), optional **`hue`**, optional **`layer`** (0 = omit). Items are **`EquipItem`** first; fallback **`AddItem`** / backpack. |
+| **`clerkFight`** | **`hirelingCount`**, **`hirelingTypeName`** (default **`UnsentHireling`** — same hook warning as brigands). **`hirelingExtraHits`**: applied only when the spawned mobile is **not** **`UnsentHireling`** (the hireling ctor already adds HP for the scripted type). **`hirelingBody`/`hirelingHue`**, **`equipment[]`** as for ambush. **`offsets[]`**: **`x`/`y`** pairs relative to the clerk for each hireling index. |
+| **`questItems`** | **`adrianBadge`**, **`tornPage`**, **`fullLetter`**: each may set **`itemId`** (decimal in JSON, e.g. **5357** for **0x14ED**), **`hue`**, **`weight`**. Applied after **`new UnsentAdrianBadge`** / **`UnsentTornLetterPage`** / **`UnsentFullLetter`** via **`ApplyQuestItem`** (affects **new** instances only; not retroactive on saved items). |
+
+Bad JSON or I/O errors: console message and full fallback to built-in defaults (world still starts).
 
 ---
 

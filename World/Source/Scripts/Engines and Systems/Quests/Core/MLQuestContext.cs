@@ -130,6 +130,31 @@ namespace Server.Engines.MLQuests
 			}
 		}
 
+		/// <summary>GM tools: number of persisted completion records (one-time / restart delay).</summary>
+		public int DoneQuestRecordCount
+		{
+			get { return m_DoneQuests.Count; }
+		}
+
+		/// <summary>GM tools: snapshot entry for listing (index into <see cref="DoneQuestRecordCount"/>).</summary>
+		public bool TryGetDoneQuestRecord(int index, out MLQuest quest, out DateTime nextAvailable)
+		{
+			quest = null;
+			nextAvailable = DateTime.MinValue;
+
+			if (index < 0 || index >= m_DoneQuests.Count)
+				return false;
+
+			MLDoneQuestInfo info = m_DoneQuests[index];
+
+			if (info == null || info.Quest == null)
+				return false;
+
+			quest = info.Quest;
+			nextAvailable = info.NextAvailable;
+			return true;
+		}
+
 		public void HandleDeath()
 		{
 			for (int i = QuestInstances.Count - 1; i >= 0; --i)

@@ -10,6 +10,8 @@ using Server.Prompts;
 using Server.Network;
 using Server.Accounting;
 using Server.Commands;
+using Server.Engines.MLQuests.Gumps;
+using Server.Mobiles;
 using System.IO;
 
 namespace Server.Gumps
@@ -633,6 +635,9 @@ namespace Server.Gumps
 
                         AddButtonLabeled(20, y, GetButtonID(7, 12), "Kill");
                         AddButtonLabeled(200, y, GetButtonID(7, 13), "Resurrect");
+                        y += 20;
+
+                        AddButtonLabeled(20, y, GetButtonID(7, 15), "Remove ML quest progress");
                         y += 20;
 
                         break;
@@ -2643,6 +2648,21 @@ namespace Server.Gumps
                                 {
                                     from.SendGump(new AdminGump(from, AdminGumpPage.AccountDetails_Information, 0, null, null, m.Account));
                                     sendGump = false;
+                                    break;
+                                }
+                            case 15:
+                                {
+                                    PlayerMobile pmTarget = m as PlayerMobile;
+
+                                    if (pmTarget == null)
+                                        notice = "ML Quest progress applies to player characters only.";
+                                    else
+                                    {
+                                        from.SendGump(new GmClientMLQuestRemovalGump(from, pmTarget));
+                                        CommandLogging.WriteLine(from, "{0} {1} opening ML quest removal for {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(m));
+                                        sendGump = false;
+                                    }
+
                                     break;
                                 }
                         }

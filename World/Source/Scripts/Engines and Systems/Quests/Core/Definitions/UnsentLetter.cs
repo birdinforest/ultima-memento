@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Server;
 using Server.ContextMenus;
 using Server.Engines.MLQuests.Gumps;
 using Server.Engines.MLQuests.Objectives;
@@ -117,6 +118,21 @@ namespace Server.Engines.MLQuests.Definitions
 			}
 
 			return null;
+		}
+
+		/// <summary>Mara ending branch: 1 = public, 2 = private, 3 = quiet.</summary>
+		public static int GetFamilyEndingChoice(MLQuestInstance inst)
+		{
+			if (inst?.Objectives == null)
+				return 0;
+
+			foreach (BaseObjectiveInstance o in inst.Objectives)
+			{
+				if (o is UnsentFamilyEndingObjectiveInstance e)
+					return e.EndingChoice;
+			}
+
+			return 0;
 		}
 
 		public static T FindIncompleteObjective<T>(MLQuestInstance inst) where T : BaseObjectiveInstance
@@ -514,9 +530,10 @@ namespace Server.Engines.MLQuests.Objectives
 				return;
 
 			Phase = 1;
-			Remaining = 3;
-			bridge.SpawnWave(3, Phase);
-			UnsentLetterDevLog.Write(Instance.Player as PlayerMobile, "ambush", "BeginAmbush phase=1 remaining=3 (wave spawn)");
+			int c0 = UnsentLetterQuestPackRuntime.AmbushWaveCount(0);
+			Remaining = c0;
+			bridge.SpawnWave(c0, Phase);
+			UnsentLetterDevLog.Write(Instance.Player as PlayerMobile, "ambush", string.Format("BeginAmbush phase=1 remaining={0} (wave spawn)", c0));
 		}
 
 		public void OnBrigandKilled(PlayerMobile pm)
@@ -533,9 +550,10 @@ namespace Server.Engines.MLQuests.Objectives
 			if (Phase == 1)
 			{
 				Phase = 2;
-				Remaining = 4;
-				UnsentGreyCloakBrigand.SpawnWaveFor(pm, 4, Phase);
-				UnsentLetterDevLog.Write(pm, "ambush", "wave2 started phase=2 remaining=4");
+				int c1 = UnsentLetterQuestPackRuntime.AmbushWaveCount(1);
+				Remaining = c1;
+				UnsentGreyCloakBrigand.SpawnWaveFor(pm, c1, Phase);
+				UnsentLetterDevLog.Write(pm, "ambush", string.Format("wave2 started phase=2 remaining={0}", c1));
 			}
 			else if (Phase == 2)
 			{
@@ -550,6 +568,8 @@ namespace Server.Engines.MLQuests.Objectives
 		{
 			var i1 = new UnsentAdrianBadge();
 			var i2 = new UnsentTornLetterPage();
+			UnsentLetterQuestPackRuntime.ApplyQuestItem(i1, UnsentLetterQuestPackRuntime.ItemConfigForBadge());
+			UnsentLetterQuestPackRuntime.ApplyQuestItem(i2, UnsentLetterQuestPackRuntime.ItemConfigForTornPage());
 			pm.PlaySound(0x5B4);
 			pm.AddToBackpack(i1);
 			pm.AddToBackpack(i2);
@@ -716,20 +736,24 @@ namespace Server.Engines.MLQuests.Objectives
 				return;
 
 			FightStarted = true;
-			HirelingsLeft = 4;
-			for (int i = 0; i < 4; i++)
+			int n = UnsentLetterQuestPackRuntime.ClerkHirelingCount();
+			HirelingsLeft = n;
+
+			for (int i = 0; i < n; i++)
 			{
-				var h = new UnsentHireling();
-				h.QuestPlayer = pm;
-				int ox = (i % 2) * 2 - 1;
-				int oy = (i / 2) * 2 - 1;
-				h.MoveToWorld(new Point3D(loc.X + ox, loc.Y + oy, loc.Z), map);
+				Mobile h = UnsentLetterQuestPackRuntime.CreateHirelingForClerk(pm);
+
+				if (h == null)
+					continue;
+
+				Point3D off = UnsentLetterQuestPackRuntime.ClerkOffset(i);
+				h.MoveToWorld(new Point3D(loc.X + off.X, loc.Y + off.Y, loc.Z), map);
 				h.Combatant = pm;
 				h.FocusMob = pm;
 			}
 
 			UnsentLetterDevLog.Write(pm, "clerk_fight",
-				string.Format("StartFight hires=4 at {0},{1},{2}", loc.X, loc.Y, map));
+				string.Format("StartFight hires={0} at {1},{2},{3}", n, loc.X, loc.Y, map));
 		}
 
 		public void OnHirelingDeath(PlayerMobile pm)
@@ -742,7 +766,9 @@ namespace Server.Engines.MLQuests.Objectives
 
 			if (HirelingsLeft == 0)
 			{
-				pm.AddToBackpack(new UnsentFullLetter());
+				var letter = new UnsentFullLetter();
+				UnsentLetterQuestPackRuntime.ApplyQuestItem(letter, UnsentLetterQuestPackRuntime.ItemConfigForFullLetter());
+				pm.AddToBackpack(letter);
 				UnsentLetterI18n.SendMessageLocalized(pm, "quest-unsent-letter-handler-clerk-letter-001");
 				UnsentLetterDevLog.Write(pm, "clerk_fight", "all hirelings defeated; full letter awarded");
 				CheckComplete();
@@ -928,14 +954,12 @@ namespace Server.Mobiles
 
 			for (int i = 0; i < count; i++)
 			{
-				var b = new UnsentGreyCloakBrigand();
-				b.QuestPlayer = pm;
-				if (wavePhase >= 2)
-					b.SetHits(Math.Min(b.HitsMax + 25, b.HitsMax + (int)(b.HitsMax * 0.18)));
+				Mobile m = UnsentLetterQuestPackRuntime.CreateBrigandForAmbush(pm, wavePhase);
 
-				b.MoveToWorld(new Point3D(o.X + Utility.RandomMinMax(-3, 3), o.Y + Utility.RandomMinMax(-3, 3), o.Z), map);
-				b.Combatant = pm;
-				b.FocusMob = pm;
+				if (m == null)
+					continue;
+
+				UnsentLetterQuestPackRuntime.SpawnAmbushMobile(pm, m, wavePhase);
 			}
 
 			Server.Engines.MLQuests.UnsentLetterDevLog.Write(pm, "ambush_spawn", string.Format("count={0} wavePhase={1} at {2} {3}", count, wavePhase, o, map));
@@ -1213,6 +1237,132 @@ namespace Server.Items
 		{
 			base.Deserialize(reader);
 			reader.ReadInt();
+		}
+	}
+
+	/// <summary>
+	/// Quest reward: equippable middle-torso sash; hue and +3 Str/Dex/Int depend on Mara ending (1 public, 2 private, 3 quiet).
+	/// </summary>
+	[Flipable(0x1541, 0x1542)]
+	public class UnsentLetterCounselSash : BaseMiddleTorso
+	{
+		private int m_Ending;
+
+		public static string ResolveNameKey(int ending)
+		{
+			switch (NormalizeEnding(ending))
+			{
+				case 1:
+					return "quest-unsent-letter-reward-memento-public-001";
+				case 2:
+					return "quest-unsent-letter-reward-memento-private-001";
+				case 3:
+					return "quest-unsent-letter-reward-memento-quiet-001";
+				default:
+					return "quest-unsent-letter-reward-memento-public-001";
+			}
+		}
+
+		private static int NormalizeEnding(int ending)
+		{
+			if (ending < 1 || ending > 3)
+				return 1;
+			return ending;
+		}
+
+		private static int ResolveRareHue(int ending)
+		{
+			switch (NormalizeEnding(ending))
+			{
+				case 1:
+					return 1366;
+				case 2:
+					return 1267;
+				case 3:
+					return 1175;
+				default:
+					return 1366;
+			}
+		}
+
+		private void ApplyStatsAndHue()
+		{
+			int e = NormalizeEnding(m_Ending);
+			Hue = ResolveRareHue(e);
+			Attributes.BonusStr = 0;
+			Attributes.BonusDex = 0;
+			Attributes.BonusInt = 0;
+
+			switch (e)
+			{
+				case 1:
+					Attributes.BonusStr = 3;
+					break;
+				case 2:
+					Attributes.BonusDex = 3;
+					break;
+				case 3:
+					Attributes.BonusInt = 3;
+					break;
+			}
+		}
+
+		[Constructable]
+		public UnsentLetterCounselSash()
+			: this(1)
+		{
+		}
+
+		[Constructable]
+		public UnsentLetterCounselSash(int ending)
+			: base(0x1541, 0)
+		{
+			m_Ending = NormalizeEnding(ending);
+			Weight = 1.0;
+			LootType = LootType.Blessed;
+			ApplyStatsAndHue();
+		}
+
+		public UnsentLetterCounselSash(Serial serial)
+			: base(serial)
+		{
+		}
+
+		public override void AddNameProperty(ObjectPropertyList list)
+		{
+			string key = ResolveNameKey(m_Ending);
+			PlayerMobile pm = RootParent as PlayerMobile;
+			string resolved = key;
+
+			if (pm != null && pm.Account != null)
+			{
+				string lang = AccountLang.GetLanguageCode(pm.Account);
+				resolved = StringCatalog.TryResolveLogicalOrHash(lang, key) ?? key;
+
+				if (AccountLang.IsChinese(lang))
+					resolved = QuestCompositeResolver.ResolveComposite(pm, resolved);
+			}
+
+			list.Add(resolved);
+		}
+
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+			writer.Write(1);
+			writer.Write(m_Ending);
+		}
+
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			reader.ReadInt();
+			m_Ending = reader.ReadInt();
+
+			if (m_Ending < 1 || m_Ending > 3)
+				m_Ending = 1;
+
+			ApplyStatsAndHue();
 		}
 	}
 }
@@ -1520,6 +1670,30 @@ namespace Server.Engines.MLQuests.Definitions
 				return;
 
 			end.SetEnding(choice);
+			ScheduleUnsentLetterRewardChain(pm);
+		}
+
+		/// <summary>
+		/// After Mara confirms the family's choice in <B>Talk</B>, open the same RPG reward sheet as the quest log turn-in (no extra Quests click).
+		/// </summary>
+		private static void ScheduleUnsentLetterRewardChain(PlayerMobile pm)
+		{
+			if (pm == null)
+				return;
+
+			PlayerMobile pmRef = pm;
+			Server.Timer.DelayCall(TimeSpan.FromMilliseconds(250), () => TryBeginUnsentLetterRewardOffer(pmRef));
+		}
+
+		private static void TryBeginUnsentLetterRewardOffer(PlayerMobile pm)
+		{
+			if (pm == null || pm.Deleted)
+				return;
+
+			MLQuestInstance inst = UnsentLetterQuestHelper.FindAnyUnsentLetterInstance(pm);
+
+			if (inst != null && inst.Quest is UnsentLetterQuest && inst.IsCompleted() && !inst.ClaimReward && !inst.Removed)
+				inst.ContinueReportBack(true);
 		}
 
 		public static void ApplyLinaFather(PlayerMobile pm)
@@ -1613,6 +1787,7 @@ namespace Server.Engines.MLQuests.Definitions
 			Objectives.Add(new UnsentFamilyEndingObjective());
 
 			Rewards.Add(new DummyReward("quest-unsent-letter-reward-thanks-001"));
+			Rewards.Add(new UnsentLetterEndingMementoReward());
 			Rewards.Add(new ItemReward("quest-unsent-letter-reward-gold-caption-001", typeof(Gold), 500));
 
 			ObjectiveType = ObjectiveType.All;
@@ -1681,20 +1856,53 @@ namespace Server.Engines.MLQuests.Definitions
 		{
 			base.Generate();
 
-			PutSpawner(new Spawner(1, 5, 10, 0, 0, "UnsentLetterMara"),
-				new Point3D(2999, 1064, 0), Map.Sosaria);
+			UnsentLetterQuestPackLoader.EnsureLoaded();
+			List<UnsentLetterPackSpawnerEntry> list = UnsentLetterQuestPackLoader.Root?.spawners;
 
-			PutSpawner(new Spawner(1, 5, 10, 0, 0, "UnsentLetterLina"),
-				new Point3D(2997, 1061, 0), Map.Sosaria);
+			if (list == null || list.Count == 0)
+			{
+				Console.WriteLine("UnsentLetterQuest: pack has no spawners; skipping world generation.");
+				return;
+			}
 
-			PutSpawner(new Spawner(1, 5, 10, 0, 0, "UnsentLetterThomas"),
-				new Point3D(1458, 3788, 0), Map.Sosaria);
+			foreach (UnsentLetterPackSpawnerEntry e in list)
+			{
+				if (String.IsNullOrWhiteSpace(e.typeName))
+					continue;
 
-			PutSpawner(new Spawner(1, 5, 10, 0, 0, "UnsentLetterMiner"),
-				new Point3D(3185, 2585, 0), Map.Sosaria);
+				Map map = null;
 
-			PutSpawner(new Spawner(1, 5, 10, 0, 0, "UnsentLetterClerk"),
-				new Point3D(1455, 3792, 0), Map.Sosaria);
+				try
+				{
+					map = Map.Parse(e.map);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("UnsentLetterQuestPack: spawner map '{0}' invalid: {1}", e.map, ex.Message);
+					continue;
+				}
+
+				if (map == null || map == Map.Internal)
+					continue;
+
+				Type st = ScriptCompiler.FindTypeByName(e.typeName.Trim());
+
+				if (st == null)
+				{
+					Console.WriteLine("UnsentLetterQuestPack: spawner type '{0}' unknown; skipped.", e.typeName);
+					continue;
+				}
+
+				int amt = e.amount > 0 ? e.amount : 1;
+				int minD = e.minDelayMinutes > 0 ? e.minDelayMinutes : 5;
+				int maxD = e.maxDelayMinutes >= minD ? e.maxDelayMinutes : Math.Max(minD, 10);
+				Spawner s = new Spawner(amt, minD, maxD, e.team, e.homeRange, e.typeName.Trim());
+
+				if (e.walkingRange >= 0)
+					s.WalkingRange = e.walkingRange;
+
+				PutSpawner(s, new Point3D(e.x, e.y, e.z), map);
+			}
 		}
 	}
 }

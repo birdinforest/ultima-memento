@@ -10,6 +10,7 @@
 | Task | Jump to |
 |---|---|
 | Add a new game feature (C#) | [§2 Engineering Practices](#2-engineering-practices) |
+| Rename/remove persistable C# types (`Item` / `Mobile` / …) | [§2.4 Persistence & saves](#24-persistence--saves) |
 | Add translatable strings to C# code | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
 | Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
 | Incremental LLM locale queue (`stats` / `queue` / `apply`) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
@@ -82,6 +83,16 @@ ultima-memento/
 - C# files: `PascalCase.cs`, matching the primary public class name.
 - Python tools: `snake_case.py`.
 - Localization JSON: `<category>.json` (see §3.1 for category names).
+
+### 2.4 Persistence & saves
+
+Persisted world state under `World/Saves/` (see §5.1 — agents do not edit it by hand) contains **serialized type names** and instance data for items, mobiles, and other `ISerializable` / `ISerialized` objects.
+
+**During development:**
+
+- **Removing, renaming, or moving** a C# type that can already exist in live saves may cause **deserialize failures**, startup exceptions, or **orphaned / vanishing** objects on existing shards.
+- Treat this as a **compatibility** change: call it out in the PR/response; do not assume only fresh installs.
+- **Mitigations** (choose what matches operator expectations): keep a **stub subclass** or alias that reads old data and deletes/replaces the item; add **`Deserialize` version branches** that migrate fields; document a one-time **save wipe** or tooling for operators.
 
 ---
 
@@ -319,6 +330,7 @@ The server outputs to stdout/stderr and writes logs under `World/`. Do not commi
 | New localization strings | Extraction runs cleanly; ZH file updated; glossary check passes |
 | Glossary edit | `sync_localization_glossary.py --check` exits 0 |
 | Quest system changes | No null reference exceptions on quest board load |
+| Renamed/removed persistable types | See §2.4; load test or document migration for existing `World/Saves/` |
 
 ---
 
@@ -351,6 +363,7 @@ Pause and ask the user before proceeding when:
 - A C# compile error originates in a file you did not modify (may indicate pre-existing breakage).
 - Translation of a culturally sensitive or lore-critical term has no obvious correct answer.
 - The extraction tool output looks wrong (key counts change unexpectedly, categories mismatch).
+- You **remove or rename** a type that may exist in player saves, unless a migration path or operator acknowledgment is explicit (see §2.4).
 
 ### 5.4 Self-Reporting
 
@@ -373,7 +386,7 @@ Update `AGENTS.md` when:
 - A new source directory category is added under `World/Source/Scripts/`.
 - A build or test process changes.
 - Cross-repo website conventions change (§7: media paths, wiki index pipeline, glossary inputs).
-- An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
+- An AI agent discovers a recurring mistake pattern (add it to §5.1, §5.2, or §2.4 as appropriate).
 
 ### 6.2 Language Expansion Protocol
 
@@ -397,6 +410,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 - 2026-04-29: `build_localization_strings.py` — quest scan adds **`new DummyReward("…")`** and **`DefaultName => "…"`** (alongside existing `ItemReward` / RPG gump patterns) so text-only rewards and co-located quest item names register in `scripts-quests.json`.
 - 2026-04-29: §3.3.1 — runic / incantation strings (e.g. *In Vas Mani*, *Xtee Mee Glau*): `zh-Hans` mirrors `en`; `llm_incremental_locale.py` `_IDENTITY_HASH_EN_VALUES` extended; `README.txt` + `zh-localization-translation-guide.md` §2.6.
+- 2026-04-29: §2.4 — persistence / deserialization when removing or renaming persistable C# types; §0 index row; §4.3 verification table; §5.3 pause trigger; §6.1 update trigger.
 
 ---
 
