@@ -9,7 +9,8 @@ namespace Server.Localization
 	/// <summary>
 	/// Replacement of known English fragments inside dynamic quest text (lands, dungeons,
 	/// creature labels) using <c>quest-fragment-zh-table.json</c> first, then <see cref="StringCatalog"/>.
-	/// Iteration order follows <c>quest-composite-terms-order.txt</c> (list longer phrases before shorter substrings where needed).
+	/// Terms from <c>quest-composite-terms-order.txt</c> are applied <b>longest-first</b> (stable tie-break: file order) so
+	/// phrases like <c>an ancient wyrm sleeping below Dungeon Hate</c> replace as a whole before bare <c>Dungeon Hate</c>.
 	/// </summary>
 	public static class QuestCompositeResolver
 	{
@@ -59,6 +60,23 @@ namespace Server.Localization
 
 					list.Add( t );
 				}
+			}
+
+			// Longer multi-word fragments must win over shorter contained keys (e.g. dungeon names).
+			if ( list.Count > 1 )
+			{
+				var indexed = new List<KeyValuePair<int, string>>( list.Count );
+				for ( int li = 0; li < list.Count; ++li )
+					indexed.Add( new KeyValuePair<int, string>( li, list[li] ) );
+				indexed.Sort( delegate( KeyValuePair<int, string> a, KeyValuePair<int, string> b )
+				{
+					int cmp = b.Value.Length.CompareTo( a.Value.Length );
+					if ( cmp != 0 )
+						return cmp;
+					return a.Key.CompareTo( b.Key );
+				} );
+				for ( int li = 0; li < indexed.Count; ++li )
+					list[li] = indexed[li].Value;
 			}
 
 			s_OrderedTerms = list.ToArray();

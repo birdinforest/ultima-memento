@@ -129,6 +129,22 @@
       "reference_note_zh": "失落大陆，常见译法。",
       "translation_basis_zh": "参考词表建议「安布罗西亚」。失落大陆，常见译法。"
     },
+    "Ancient Wyrm": {
+      "canonical": "远古龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "High-end wingless dragon-type mob in UO (\"Ancient Wyrm\"); distinct from generic drakes. Used in tavern rumors and dungeon lore.",
+      "translation_basis_zh": "沿用中文社区对大型龙族精英怪的俗称「远古龙」；与种统称 Wyrm（亚龙）区分，避免与「古龙」类奇幻译名混用。"
+    },
+    "Wyrm": {
+      "canonical": "亚龙",
+      "alternatives": [
+        "飞龙"
+      ],
+      "category": "creature",
+      "notes": "UO creature family (wyrms / serpentine dragons). Not the same wording as the specific Ancient Wyrm elite.",
+      "translation_basis_zh": "作为龙族下位种统称采用「亚龙」；与专有强度的「远古龙」分开，便于任务与谣言句式自然。"
+    },
     "Moon": {
       "canonical": "月镇",
       "alternatives": [
