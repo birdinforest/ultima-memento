@@ -448,6 +448,11 @@ namespace Server.Localization
 				return "我付给「" + ma.Groups[1].Value.Trim() + "」" + ma.Groups[2].Value + "枚" + MapCoin( ma.Groups[3].Value ) + "，买下了「" + item + "」。";
 			}
 
+			// Defer "A/An … found …. " (sentence ending with period) to CommonTalkDynamicZh.FormatArticleRoleFoundRumorZh.
+			// Otherwise the greedy (.+)(found)(.+) rule below yields 「A queen」… and broken token polish.
+			if ( Regex.IsMatch( en, @"^((?:A|An)\s+.+?)\s+found\s+(.+)\.$", RegexOptions.CultureInvariant ) )
+				return null;
+
 			ma = Regex.Match( en, @"^(.+) (destroyed|sold|lost|found|discovered|traded|stole) (.+)\.$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
 				return "「" + ma.Groups[1].Value.Trim() + "」" + MapRelicAct( ma.Groups[2].Value ) + "「" + Cmp( viewer, ma.Groups[3].Value.Trim() ) + "」。";

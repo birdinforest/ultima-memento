@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.serpent-island",
+  "pipeline": "composite_only",
+  "en": "Serpent Island",
+  "expectedZh": "巨蛇岛",
+  "tags": "place-fragment"
+}

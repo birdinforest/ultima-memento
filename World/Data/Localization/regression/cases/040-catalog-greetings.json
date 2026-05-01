@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.greetings-citizen",
+  "pipeline": "string_catalog_only",
+  "en": "Greetings, Z~Z~Z~Z~Z.",
+  "expectedZh": "你好，Z~Z~Z~Z~Z。",
+  "tags": "string-catalog,citizen"
+}

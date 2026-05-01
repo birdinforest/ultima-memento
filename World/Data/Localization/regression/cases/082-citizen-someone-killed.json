@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.someone-killed-dragon-hate",
+  "pipeline": "citizen_broadcast",
+  "en": "someone who killed the dragon in Dungeon Hate",
+  "expectedZh": "传闻在「憎恨地城」，有人杀害了那条龙。",
+  "tags": "s-rules,someone-who-killed",
+  "notes": "dragon fragment 那条龙; Dungeon Hate → 憎恨地城"
+}

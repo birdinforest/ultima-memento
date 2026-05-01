@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.discovered",
+  "pipeline": "string_catalog_only",
+  "en": "discovered",
+  "expectedZh": "发现",
+  "tags": "scripts-mobiles"
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.black-sword-dungeon",
+  "pipeline": "citizen_broadcast",
+  "en": "a black sword resting in Dungeon Hate",
+  "expectedZh": "传闻一把乌黑长剑静置在「憎恨地城」。",
+  "tags": "commontalk-s-rules"
+}

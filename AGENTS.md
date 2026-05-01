@@ -18,6 +18,7 @@
 | Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
 | Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
 | Build and test the server | [§4 Build & Test](#4-build--test) |
+| Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
 
 ---
@@ -55,6 +56,8 @@ ultima-memento/
 - Glossary sync: `World/Documentation/zh-localization-glossary-sync-workflow.md`
 - Translation editorial rules: `World/Documentation/zh-localization-translation-guide.md`
 - Coverage roadmap: `World/Documentation/localization-complete-coverage-roadmap.md`
+- Localization regression testing plan & test tiers: `World/Documentation/localization-regression-testing.md`
+- Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
 
 ---
 
@@ -272,7 +275,7 @@ Before finalizing any change that touches C# user-visible strings:
 - [ ] For new zh-Hans work: used `llm_incremental_locale.py stats` / `queue` (delta only) before LLM, then `apply` — not Google/DeepL
 - [ ] New ZH translations follow LLM policy (§3.4) — not Google/DeepL
 - [ ] Glossary terms used correctly (`sync_localization_glossary.py --check` exits 0)
-- [ ] No hardcoded Chinese or English strings remaining in C# gumps/messages
+- [ ] Dynamic zh pipelines (`CommonTalkDynamicZh`, `QuestCompositeResolver`, overhead): `bash World/Source/Tools/run_localization_regression.sh` exits 0 (after compile)
 
 ---
 
@@ -308,6 +311,25 @@ The server outputs to stdout/stderr and writes logs under `World/`. Do not commi
 | New localization strings | Extraction runs cleanly; ZH file updated; glossary check passes |
 | Glossary edit | `sync_localization_glossary.py --check` exits 0 |
 | Quest system changes | No null reference exceptions on quest board load |
+| Localization dynamic pipelines (tavern/composite/overhead) | After the lightweight host is implemented: regression suite passes in CI (see §4.4). |
+
+### 4.4 Localization regression (lightweight host)
+
+**Implementation:** After `LocalizationBootstrap.Initialize()`, run:
+
+```bash
+bash World/Source/Tools/run_localization_regression.sh
+```
+
+(from repo root; requires `World/WorldLinux.exe`). Equivalent: `cd World && mono WorldLinux.exe -localization-regression` (alias `-locreg`). Exit **1** on mismatch; failures also listed in `World/Data/Localization/tools-output/localization-regression-report.json` (gitignored).
+
+**Trade-off:** The hook runs after **`World.Load()`** in `Main` today — CI is correct but startup is **slow**; Phase 2 may skip world load (see [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md)).
+
+**Chosen model (target):** Golden-case checks for dynamic zh (minimal long-lived server; early `Environment.Exit`). **Not** “compiler-only” tests.
+
+**Authoritative detail** (pipelines, `Data/Localization/regression/cases/`, T0–T3 test-tier framework): [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md).
+
+**Until the runner exists:** ~~Use manual…~~ **Implemented** — run the command above after changing `CommonTalkDynamicZh`, `QuestCompositeResolver`, `NpcSpeechTokenZh`, or related data.
 
 ---
 
@@ -359,10 +381,12 @@ Update `AGENTS.md` when:
 - A new localization language is added beyond `en` / `zh-Hans`.
 - A new **logical-key JSON** bundle is added under `Data/Localization/en/` (and `zh-Hans/`) — update §3.1 table and `keep_extra` in `build_localization_strings.py`.
 - A new Python tool is added to `World/Source/Tools/`.
+- A new shell helper under `World/Source/Tools/` is added (e.g. `run_localization_regression.sh`).
 - A new source directory category is added under `World/Source/Scripts/`.
-- A build or test process changes.
+- A build or test process changes (including localization regression host invocation or test tiers).
 - Cross-repo website conventions change (§7: media paths, wiki index pipeline, glossary inputs).
 - An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
+- A new **authoritative design pack** is added under `World/Documentation/` that agents should routinely consult (index it in §1 bullet list and here).
 
 ### 6.2 Language Expansion Protocol
 
@@ -379,13 +403,13 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-04-30: §1 / §6.1 — design pack index for **`CraftResource`** / harvest definitions: `World/Documentation/resources-design/README.md` (+ linked split docs).
 - 2026-04-18: Initial version created. Covers C# practices, localization pipeline, LLM translation policy, agent boundaries.
 - 2026-04-18: Added §7 — cross-repo practice standard for `ultima-memento-web` (media vendoring, glossary-driven wiki index).
 - 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
-
----
+- 2026-05-01: §4.4 — localization regression **implemented** (`-localization-regression`, `run_localization_regression.sh`, `regression/cases/*.json`); notes World.Load cost + Phase 2.
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

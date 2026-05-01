@@ -276,6 +276,10 @@ Dungeon Ankh
 Dungeon Bane
 Dungeon Doom
 Dungeon Hate
+Britain
+relic
+trader
+dragon
 Dungeon Rock
 Dungeon Vile
 Magnificence

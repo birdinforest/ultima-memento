@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.some-selling-artifacts",
+  "pipeline": "citizen_broadcast",
+  "en": "some trader selling artifacts in Britain",
+  "expectedZh": "传闻在不列颠，有位商人在兜售神器。",
+  "tags": "some-selling",
+  "notes": "trader → 商人 fragment; Britain → 不列颠"
+}

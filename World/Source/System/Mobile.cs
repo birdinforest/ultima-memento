@@ -11422,7 +11422,7 @@ namespace Server
 		/// <see cref="Server.Localization.CommonTalkDynamicZh.TryApply"/> (full-line tavern / museum templates), then
 		/// fragment replacement and NPC token polish.
 		/// </summary>
-		private string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
+		internal string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
 		{
 			if ( outText == null || outText.Length == 0 || viewer == null )
 				return outText;

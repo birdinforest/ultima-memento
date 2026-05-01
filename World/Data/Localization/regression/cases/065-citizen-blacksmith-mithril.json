@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.blacksmith-mithril",
+  "pipeline": "citizen_broadcast",
+  "en": "a blacksmith in Britain that makes weapons out of mithril",
+  "expectedZh": "传闻不列颠有位铁匠能以秘银打造兵器。",
+  "tags": "commontalk-s-rules",
+  "notes": "Britain → 不列颠 via composite + catalog"
+}

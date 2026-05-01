@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.tinker-golem",
+  "pipeline": "citizen_broadcast",
+  "en": "some relic that had a tinker in Britain make a golem with a dark core",
+  "expectedZh": "传闻有位遗物在不列颠雇工匠以黑暗核心铸成一尊魔像。",
+  "tags": "commontalk-rule",
+  "notes": "relic / Britain resolved via fragment + composite order (StringCatalog Britain)"
+}

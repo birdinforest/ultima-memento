@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.ancient-book-magic",
+  "pipeline": "citizen_broadcast",
+  "en": "an ancient book of magic buried in Dungeon Hate",
+  "expectedZh": "传闻一册古法魔典埋藏于「憎恨地城」。",
+  "tags": "commontalk-s-rules"
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.volcanic-dragon-broadcast",
+  "pipeline": "citizen_broadcast",
+  "en": "a volcanic dragon in southern Lodor",
+  "expectedZh": "洛多尔南部有火山巨龙。",
+  "tags": "composite-fallback"
+}

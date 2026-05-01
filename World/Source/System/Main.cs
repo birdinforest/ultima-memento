@@ -36,6 +36,7 @@ using Server;
 using Server.Accounting;
 using Server.Gumps;
 using Server.Localization;
+using Server.Localization.Regression;
 using Server.Network;
 using System.Runtime;
 
@@ -55,6 +56,7 @@ namespace Server
 		private static Thread m_Thread;
 		private static bool m_Service;
 		private static bool m_Debug;
+		private static bool m_LocalizationRegression;
 		private static bool m_Cache = true;
 		private static bool m_HaltOnWarning;
 		private static bool m_VBdotNET;
@@ -398,6 +400,8 @@ namespace Server
 					m_Service = true;
 				else if ( Insensitive.Equals( args[i], "-profile" ) )
 					Profiling = true;
+				else if ( Insensitive.Equals( args[i], "-localization-regression" ) || Insensitive.Equals( args[i], "-locreg" ) )
+					m_LocalizationRegression = true;
 				else if ( Insensitive.Equals( args[i], "-nocache" ) )
 					m_Cache = false;
 				else if ( Insensitive.Equals( args[i], "-haltonwarning" ) )
@@ -494,6 +498,12 @@ namespace Server
 			World.Load();
 
 			LocalizationBootstrap.Initialize();
+
+			if ( m_LocalizationRegression )
+			{
+				int regExit = LocalizationRegressionRunner.Run();
+				Environment.Exit( regExit );
+			}
 
 			ScriptCompiler.Invoke( "Initialize" );
 

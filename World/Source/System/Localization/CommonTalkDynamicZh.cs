@@ -30,20 +30,20 @@ namespace Server.Localization
 			// (pattern, format template, number of capturing groups). Longer / more specific first.
 			var raw = new[]
 			{
-				(@"^some (.+) that had a tinker in (.+) make a golem with a dark core$", "传闻有位「{0}」在「{1}」雇工匠以黑暗核心铸成一尊魔像。", 2),
+				(@"^some (.+) that had a tinker in (.+) make a golem with a dark core$", "传闻有位{0}在{1}雇工匠以黑暗核心铸成一尊魔像。", 2),
 				(@"^some (.+) that was killed by a cyclops' eye$", "传闻有位「{0}」丧命于独眼巨人之瞳。", 1),
 				(@"^some (.+) that was killed by elemental grues$", "传闻有位「{0}」命丧元素格鲁之手。", 1),
 				// Job from RandomThings.GetRandomJob() may be multi-word (e.g. "stable master"); do not use [a-z]+ only.
 				(@"^some (.+?) solving the mystery of the Skull Gate$", "传闻有位「{0}」正试图揭开颅骨门之谜。", 1),
 				(@"^some (.+?) solving the mystery of the Serpent Pillars$", "传闻有位「{0}」正试图揭开巨蛇柱之谜。", 1),
 				(@"^someone buried with great treasure in the graveyard in (.+)$", "传闻「{0}」的墓园中，有人携重宝藏于坟冢。", 1),
-				(@"^a demilich dwelling below (.+)$", "传闻「{0}」地下盘踞着一名半巫妖。", 1),
-				(@"^some (.+?) selling artifacts in (.+)$", "传闻在「{1}」，有位「{0}」在兜售神器。", 2),
-				(@"^someone who killed the (.+?) in (.+)$", "传闻在「{1}」，有人杀害了那位「{0}」。", 2),
+				(@"^a demilich dwelling below (.+)$", "传闻{0}地下盘踞着一名半巫妖。", 1),
+				(@"^some (.+?) selling artifacts in (.+)$", "传闻在{1}，有位{0}在兜售神器。", 2),
+				(@"^someone who killed the (.+?) in (.+)$", "传闻在「{1}」，有人杀害了{0}。", 2),
 				(@"^an ancient book of magic buried in (.+)$", "传闻一册古法魔典埋藏于「{0}」。", 1),
 				(@"^a wizard that sails the Isles of Dread, selling rare spells$", "传闻有位法师驾舟于恐惧群岛，贩卖珍奇法术。", 0),
-				(@"^a blacksmith in (.+) that makes weapons out of mithril$", "传闻「{0}」有位铁匠能以秘银打造兵器。", 1),
-				(@"^Zorn living in (.+)$", "传闻佐恩栖身于「{0}」。", 1),
+				(@"^a blacksmith in (.+) that makes weapons out of mithril$", "传闻{0}有位铁匠能以秘银打造兵器。", 1),
+				(@"^Zorn living in (.+)$", "传闻佐恩栖身于{0}。", 1),
 				(@"^a black sword resting in (.+)$", "传闻一把乌黑长剑静置在「{0}」。", 1),
 			};
 
@@ -624,6 +624,11 @@ namespace Server.Localization
 				return "有位" + roleZh + "提到了「" + bzh + "」。";
 			}
 
+			// TavernPatrons GetChatter (LogReader 0/1): "A queen found …" — must beat generic (An|The|A) … found below.
+			ma = Regex.Match( en, @"^((?:A|An)\s+.+?)\s+found\s+(.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return FormatArticleRoleFoundRumorZh( m, ma.Groups[1].Value, ma.Groups[2].Value );
+
 			ma = Regex.Match( en, @"^((?:An|The|A)\s+.+?)\s+found\s+(.+)$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
 			{
@@ -641,6 +646,7 @@ namespace Server.Localization
 			}
 
 			// Citizens.SetupCitizen — fixed-topic rumors (full English sentence).
+
 			ma = Regex.Match( en, @"^I met with (.+?) and they told me to bring back (.+) from (.+)\.$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
 				return "我与「" + CompositePart( m, ma.Groups[1].Value.Trim() ) + "」会面，对方嘱咐我从「" + CompositePart( m, ma.Groups[3].Value.Trim() ) + "」带回「" + CompositePart( m, ma.Groups[2].Value.Trim() ) + "」。";
@@ -682,11 +688,6 @@ namespace Server.Localization
 				if ( rareMix != null )
 					return rareMix;
 			}
-
-			// TavernPatrons GetChatter (LogReader 0/1): "A queen found …" — not "Some queen found"
-			ma = Regex.Match( en, @"^((?:A|An)\s+.+?)\s+found\s+(.+)\.$", RegexOptions.CultureInvariant );
-			if ( ma.Success )
-				return FormatArticleRoleFoundRumorZh( m, ma.Groups[1].Value, ma.Groups[2].Value );
 
 			ma = Regex.Match( en, @"^Some ([a-z]+) found\s+(.+)$", RegexOptions.CultureInvariant );
 			if ( ma.Success )

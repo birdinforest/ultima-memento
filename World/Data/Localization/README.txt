@@ -124,3 +124,11 @@ World/Documentation/zh-localization-glossary-sync-workflow.md
 World/Documentation/localization-complete-coverage-roadmap.md
   Program-level roadmap for full server-side localization coverage: runtime send paths,
   extractor scope, glossary workflow, phased rollout, and acceptance criteria.
+
+Localization regression (golden JSON)
+--------------------------------------
+  World/Documentation/localization-regression-testing.md — CI/local commands, pipelines, test tiers.
+  Data/Localization/regression/cases/*.json — one case per file (see cases/README.txt).
+  Run: from repo root, bash World/Source/Tools/run_localization_regression.sh
+    (after build; World/WorldLinux.exe -localization-regression / -locreg).
+  Note: current Main hook still performs full World.Load before tests (slow but correct).

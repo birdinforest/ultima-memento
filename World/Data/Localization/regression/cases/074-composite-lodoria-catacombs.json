@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.lodoria-catacombs",
+  "pipeline": "composite_only",
+  "en": "the Lodoria Catacombs",
+  "expectedZh": "洛多利亚地下墓穴",
+  "tags": "short-fragment"
+}
