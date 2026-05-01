@@ -357,6 +357,15 @@
       "category": "place",
       "notes": "Alternate form of City of Lodoria; treat as identical."
     },
+    "Ancient dark elf city beneath Lodor": {
+      "canonical": "洛多尔地底深处的远古暗精灵城",
+      "alternatives": [
+        "远古暗精灵城"
+      ],
+      "category": "place",
+      "notes": "Procedural tavern rumor clause (TavernPatrons CommonTalk); English: an ancient dark elf city deep beneath Lodor. Not a single Regions.xml dungeon marker.",
+      "translation_basis_zh": "与酒馆碎片句式对应：地点为「洛多尔」地底叙事空间，对象为传说中的暗精灵遗迹城；玩家可见文案与 quest-fragment / commontalk 表一致。"
+    },
     "Savaged Empire": {
       "canonical": "野蛮帝域",
       "alternatives": [

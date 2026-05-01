@@ -185,6 +185,35 @@ namespace Server.Localization
 			return zh;
 		}
 
+		private const string EnAncientDarkElfCityDeepBeneathLodor = "an ancient dark elf city deep beneath Lodor";
+
+		/// <summary>TavernPatrons GetChatter uses <c>A queen found …</c> (see <c>sJob + " found"</c>); map to natural 一个{职业}…</summary>
+		private static string TranslateArticleAdventurerOneZh( Mobile m, string aOrAnRole )
+		{
+			if ( aOrAnRole == null || aOrAnRole.Length == 0 )
+				return "";
+			string p = aOrAnRole.Trim();
+			Match jm = Regex.Match( p, @"^(A|An)\s+(.+)$", RegexOptions.CultureInvariant );
+			if ( !jm.Success )
+				return CompositePart( m, p );
+			string core = jm.Groups[2].Value.Trim();
+			string low = core.ToLowerInvariant();
+			string zh = NpcSpeechTokenZh.TranslateAdventurerZh( low );
+			if ( zh == null || zh.Length == 0 || zh.Equals( low, StringComparison.OrdinalIgnoreCase ) )
+				zh = CompositePart( m, core );
+			return "一个" + zh;
+		}
+
+		private static string FormatArticleRoleFoundRumorZh( Mobile m, string articleRoleEn, string bodyEn )
+		{
+			string who = TranslateArticleAdventurerOneZh( m, articleRoleEn );
+			string b = bodyEn.Trim();
+			if ( b.Equals( EnAncientDarkElfCityDeepBeneathLodor, StringComparison.OrdinalIgnoreCase ) )
+				return who + "在洛多尔地底深处找到了远古暗精灵城。";
+			string bzh = CompositePart( m, b );
+			return who + "找到了" + bzh + "。";
+		}
+
 		private static string MapWitnessBookRumorPreambleZh( string en )
 		{
 			switch ( en )
@@ -653,6 +682,11 @@ namespace Server.Localization
 				if ( rareMix != null )
 					return rareMix;
 			}
+
+			// TavernPatrons GetChatter (LogReader 0/1): "A queen found …" — not "Some queen found"
+			ma = Regex.Match( en, @"^((?:A|An)\s+.+?)\s+found\s+(.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return FormatArticleRoleFoundRumorZh( m, ma.Groups[1].Value, ma.Groups[2].Value );
 
 			ma = Regex.Match( en, @"^Some ([a-z]+) found\s+(.+)$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
