@@ -767,6 +767,7 @@ def main() -> int:
             "stats-gump.json",
             "temptation-gump.json",
             "thewar-quest.json",
+            "resource-harvest-extra.json",
         }
     )
     if args.prune_stale_locale_files:

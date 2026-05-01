@@ -40,7 +40,12 @@ _index.json lists en files for translators (runtime loads all *.json in en/ and 
 
 Hand-maintained logical-key bundles (same folders; not overwritten by build_localization_strings.py;
 listed in keep_extra in that script so they are never pruned as stale):
-  race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json
+  race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json,
+  resource-harvest-extra.json — hash-key EN display names for CraftResourceInfo material labels,
+  mining gem / bark / mushroom bonus strings, harvest quantity "some", and a few harvest UI lines
+  (see World/Documentation/resources-design/07-localization-and-player-copy.md). After materially
+  changing zh-Hans here or in extractor-owned harvest strings, extend regression/cases with
+  string_catalog_only goldens (see localization-regression-testing.md).
 
 Gump & books
 ------------

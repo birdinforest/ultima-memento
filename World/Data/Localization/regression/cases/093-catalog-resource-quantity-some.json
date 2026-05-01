@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.resource.quantity.some",
+  "pipeline": "string_catalog_only",
+  "en": "some",
+  "expectedZh": "一些",
+  "tags": "harvest,craft-resources,quantity-word,string_catalog_only"
+}

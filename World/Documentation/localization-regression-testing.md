@@ -42,6 +42,7 @@ Non-exhaustive list aligned with recent bug classes:
 - **Quest composite** — `QuestCompositeResolver` + `quest-fragment-zh-table.json` ordering (longer matches before shorter substrings).
 - **Overhead / viewer chain** — `Mobile.LocalizeDynamicOverheadForViewer` (`internal`); runner uses NPC speaker + viewer with `RegressionZhHansStubAccount`.
 - **Book / museum / tome patterns** — where regex or fragment tables must stay in sync with C# (e.g. `MuseumBook`-class patterns).
+- **`StringCatalog` harvest & craft-resource copy** — `string_catalog_only` goldens for gems/bark/mushroom bonus phrases, formatted templates (e.g. `You dig up {0} {1} ore.`), quantity word `some`, material shorts (e.g. `Iron`), library/grave strings; zh often lives in `resource-harvest-extra.json`. **Merge note:** this file sorts before `scripts-*.json`, so duplicate hash keys defined in both keep the **`resource-harvest-extra.json`** value.
 
 New regressions **add JSON** (and, if needed, one focused helper API) instead of duplicating logic in Python.
 
@@ -49,7 +50,7 @@ New regressions **add JSON** (and, if needed, one focused helper API) instead of
 
 ## CI / local invocation
 
-1. Build: `cd World/Source && ./compile-world-mac.sh` (or `compile-world-linux.sh`).
+1. Build: `cd World/Source/Tools && bash compile-world-mac.sh` (or `compile-world-linux.sh`; produces `World/WorldLinux.exe`).
 2. Run (from repo root, where `World/WorldLinux.exe` exists):
 
 ```bash
@@ -86,9 +87,10 @@ Use **explicit tiers** so new work lands in the right bucket. Higher tiers cost 
 ## Checklist when adding a regression case
 
 1. Minimal repro **EN input** and **expected zh-Hans** (agree with glossary / editorial guide).
-2. Add case to `Data/Localization/regression/` under the right `pipeline` / suite.
-3. Run `bash World/Source/Tools/run_localization_regression.sh` (or `cd World && mono WorldLinux.exe -localization-regression`); fix code or golden if intentional behavior change.
-4. If a new pipeline kind is needed, document it in this file and add dispatch in the runner.
+2. Add case under `World/Data/Localization/regression/cases/` using the correct `pipeline` (`string_catalog_only` for pure `StringCatalog.TryResolve`; others for Citizens/overhead/composite paths).
+3. When finishing harvest / resource **`StringCatalog`** or **`resource-harvest-extra.json`** zh work, extend this suite with a few representative lines (bonus drops, `{0}/{1}` templates, common material shorts).
+4. Run `bash World/Source/Tools/run_localization_regression.sh` (or `cd World && mono WorldLinux.exe -localization-regression`); fix code or golden if intentional behavior change.
+5. If a new pipeline kind is needed, document it in this file and add dispatch in the runner.
 
 ---
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -935,6 +937,20 @@ namespace Server.Items
 			CraftResourceInfo info = GetInfo( resource );
 
 			return ( info == null ? String.Empty : info.Name );
+		}
+
+		/// <summary>Display name (<see cref="GetName"/> English text) localized for harvesting / system messages.</summary>
+		public static string GetDisplayNameLocalized( CraftResource resource, IAccount account )
+		{
+			string plain = GetName( resource );
+
+			if ( plain == null || plain.Length == 0 )
+				return plain;
+
+			if ( account != null )
+				return StringCatalog.Resolve( account, plain ) ?? plain;
+
+			return plain;
 		}
 
 		public static string GetPrefix( CraftResource resource )

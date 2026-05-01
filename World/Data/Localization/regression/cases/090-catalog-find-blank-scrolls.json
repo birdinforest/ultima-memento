@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.find.blank.scrolls",
+  "pipeline": "string_catalog_only",
+  "en": "You find some blank scrolls.",
+  "expectedZh": "你发现一些空白卷轴。",
+  "tags": "harvest,librarian,string_catalog_only"
+}

@@ -117,6 +117,7 @@ Data/Localization/
 | `stats-gump.json` | Stats gump strings. |
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
+| `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
 
 Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
 
@@ -274,8 +275,9 @@ Before finalizing any change that touches C# user-visible strings:
 - [ ] New EN keys appear in correct category JSON
 - [ ] For new zh-Hans work: used `llm_incremental_locale.py stats` / `queue` (delta only) before LLM, then `apply` — not Google/DeepL
 - [ ] New ZH translations follow LLM policy (§3.4) — not Google/DeepL
-- [ ] Glossary terms used correctly (`sync_localization_glossary.py --check` exits 0)
-- [ ] Dynamic zh pipelines (`CommonTalkDynamicZh`, `QuestCompositeResolver`, overhead): `bash World/Source/Tools/run_localization_regression.sh` exits 0 (after compile)
+- [ ] Glossary terms used correctly (`sync_localization_glossary.py --check` exits 0); if you touched `resource-harvest-extra.json`, apply bracket wholesale sync first (`sync_localization_glossary.py` without `--check`) until `--check` exits 0
+- [ ] Harvest/resource **`StringCatalog`** work: extend **golden `string_catalog_only`** cases under `World/Data/Localization/regression/cases/` for representative English lines (bonus gem phrases, `You dig/chop/find…` templates, quantity **some**, a material short such as **Iron**)
+- [ ] Dynamic zh pipelines (`CommonTalkDynamicZh`, `QuestCompositeResolver`, overhead) **and harvest–resource catalog regressions**: `bash World/Source/Tools/run_localization_regression.sh` exits 0 (after compile)
 
 ---
 
@@ -329,7 +331,7 @@ bash World/Source/Tools/run_localization_regression.sh
 
 **Authoritative detail** (pipelines, `Data/Localization/regression/cases/`, T0–T3 test-tier framework): [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md).
 
-**Until the runner exists:** ~~Use manual…~~ **Implemented** — run the command above after changing `CommonTalkDynamicZh`, `QuestCompositeResolver`, `NpcSpeechTokenZh`, or related data.
+**Implemented** — run the command above after changing `CommonTalkDynamicZh`, `QuestCompositeResolver`, `NpcSpeechTokenZh`, **`resource-harvest-extra.json`**, harvest-related **`StringCatalog`** English literals, or related data.
 
 ---
 
@@ -409,7 +411,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
-- 2026-05-01: §4.4 — localization regression **implemented** (`-localization-regression`, `run_localization_regression.sh`, `regression/cases/*.json`); notes World.Load cost + Phase 2.
+- 2026-05-01: §4.4 localization regression (**`-localization-regression`**, **`run_localization_regression.sh`**, **`regression/cases/`**); World.Load trade-off + Phase 2. §3.1 **`resource-harvest-extra.json`** row; §3.6 / §4.3 / §4.4 — **`string_catalog_only`** harvest goldens after resource **`StringCatalog`** zh edits.
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

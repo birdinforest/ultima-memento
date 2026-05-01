@@ -9,6 +9,7 @@ using Server.Misc;
 using Server.Network;
 using Server.Regions;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Engines.Harvest
 {
@@ -256,7 +257,7 @@ namespace Server.Engines.Harvest
 									if ( shelf != null )
 									{
 										BaseContainer.PutStuffInContainer( from, 3, shelf );
-										from.SendMessage( "you found " + name + "!" );
+										from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You found {0}!", name ) );
 									}
 								}
 							}

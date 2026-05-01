@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.library.found.item.template",
+  "pipeline": "string_catalog_only",
+  "en": "You found {0}!",
+  "expectedZh": "你发现了 {0}！",
+  "tags": "harvest,librarian,ResolveFormat,string_catalog_only"
+}

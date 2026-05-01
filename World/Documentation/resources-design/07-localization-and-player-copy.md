@@ -36,7 +36,15 @@ Harvest feedback uses **mixed** modalities:
 | Librarian gates | Numerous **`SendMessage("…")`** region failures + shelf jackpot narration |
 | Grave Robbing gathers | Embedded English success strings passed as `HarvestResource` message |
 
-**Localization debt marker:** Anything using **`Mobile.SendMessage("literal english")`** should be enumerated when planning a harvesting copy pass (extract literals per **`build_localization_strings.py`** conventions after refactor).
+**Localization debt marker:** Anything using **`Mobile.SendMessage("literal english")`** should be enumerated when planning a harvesting copy pass (extract literals per **`build_localization_strings.py`** conventions after refactor). Refactored gathers use **`StringCatalog.Resolve`** / **`ResolveFormat`** (**`HarvestSystem`** ore/granite/log templates, librarian book/scroll/blank-scroll lines, grave chest); **`TextDefinition.SendMessageTo`** (bonus gems, bark, mushrooms) resolves string **`BonusHarvestResource`** messages through **`StringCatalog`** for **`zh-Hans`**.
+
+### Hand-maintained `resource-harvest-extra.json`
+
+`StringCatalog` merges every `*.json` under **`Data/Localization/en/`** and **`zh-Hans/`**; duplicate hash keys **keep the first merged value** (lexicographic file path order). **`resource-harvest-extra.json`** sorts before **`scripts-*.json`**, so overrides for harvest polish land here deliberately.
+
+Paired **`en/`** + **`zh-Hans/`** files (**`keep_extra`** in **`build_localization_strings.py`**) carry craft-resource shorts, ML gem / bark / mushroom lines, **`some`**, **`You found {0}!`**, grave-chest wording as needed — see **`World/Data/Localization/README.txt`**.
+
+**Regression workflow:** After a substantive harvest/resource **`StringCatalog`** zh pass, extend **`World/Data/Localization/regression/cases/`** with typical **`pipeline: "string_catalog_only"`** inputs (bonus phrase, `{0}`/`{1}` template, quantity word **`some`**, material short **`Iron`**), then run **`bash World/Source/Tools/run_localization_regression.sh`** (**`World/Documentation/localization-regression-testing.md`**).
 
 ---
 
@@ -64,4 +72,5 @@ Sci‑fi material names (Star Wars–adjacent woods / metals) may need **transli
 - [ ] Enumerate affected Cliloc IDs + confirm client string meaning in both EN clients used by playerbase.
 - [ ] If replacing with `StringCatalog`, run extractor (`--no-translate`) + queue LLM translation per **`AGENTS.md`**.
 - [ ] Player MDX: no raw `S_*` settings symbols; describe outcomes.
+- [ ] Add or refresh representative **`string_catalog_only`** regressions (`World/Data/Localization/regression/cases/`) and run **`run_localization_regression.sh`** when harvest/resource **`StringCatalog`** zh changes materially.
 - [ ] Update this doc folder if new harvest string pattern introduced (maintenance contract in **`README.md`**).

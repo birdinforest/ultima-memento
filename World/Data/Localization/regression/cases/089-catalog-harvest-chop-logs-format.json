@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.chop.logs.template",
+  "pipeline": "string_catalog_only",
+  "en": "You chop {0} {1} logs.",
+  "expectedZh": "您砍伐了 {0} {1} 根木头。",
+  "tags": "harvest,lumber,ResolveFormat,string_catalog_only"
+}
