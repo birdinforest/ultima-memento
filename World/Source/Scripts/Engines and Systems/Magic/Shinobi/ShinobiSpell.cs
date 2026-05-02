@@ -3,6 +3,7 @@ using Server;
 using Server.Spells;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Shinobi
 {
@@ -35,7 +36,7 @@ namespace Server.Spells.Shinobi
 			}
 			else if ( Caster.Skills[SkillName.Ninjitsu].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You are not a skilled enough ninja to do that!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not a skilled enough ninja to do that!" ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
@@ -45,7 +46,7 @@ namespace Server.Spells.Shinobi
 			}
 			else if ( this is CheetahPaws && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This ability doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This ability doesn't seem to work in this place." ) );
 				return false;
 			}
 
@@ -68,7 +69,7 @@ namespace Server.Spells.Shinobi
 			}
 			else if ( Caster.Skills[SkillName.Ninjitsu].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You are not a skilled enough ninja to do that!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not a skilled enough ninja to do that!" ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
@@ -78,7 +79,7 @@ namespace Server.Spells.Shinobi
 			}
 			else if ( this is CheetahPaws && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This ability doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This ability doesn't seem to work in this place." ) );
 				return false;
 			}
 

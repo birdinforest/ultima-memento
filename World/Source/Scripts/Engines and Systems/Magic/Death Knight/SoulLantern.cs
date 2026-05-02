@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -31,7 +32,7 @@ namespace Server.Items
 			else { list.Add( 1049644, "Double-Click to Equip"); }
 
 			string sPower = string.Format("{0:n0}", TrappedSouls);
-            if ( owner != null ){ list.Add( 1070722, "Souls For " + owner.Name + ": " + sPower + ""); }
+            if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Souls For {0}: {1}", owner.Name, sPower ) ); }
         } 
 
 		public override void OnDoubleClick( Mobile from )
@@ -54,7 +55,7 @@ namespace Server.Items
 				{
 					from.AddToBackpack( from.FindItemOnLayer( Layer.TwoHanded ) );
 				}
-				from.SendMessage( "You put the lantern in your left hand." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You put the lantern in your left hand." ) );
 				from.AddItem(this);
 				this.ItemID = 0xA15;
 				from.PlaySound( 0x47 );
@@ -62,7 +63,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "This is not your lantern!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your lantern!" ) );
 			}
 		}
 

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -27,7 +28,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "The sheet music must be in your music book." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "The sheet music must be in your music book." ) );
 		}
 
 		public override void Serialize( GenericWriter writer )

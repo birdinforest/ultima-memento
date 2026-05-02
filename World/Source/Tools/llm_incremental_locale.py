@@ -48,6 +48,10 @@ _IDENTITY_HASH_EN_VALUES = frozenset(
         "en",
         "zh-Hans",
         "zZz",
+        # UO-style incantation tokens: zh-Hans must mirror EN verbatim (AGENTS §3.3.1).
+        "Xtee Mee Glau",
+        "Anh Mi Sah Ko",
+        "In Vas Mani",
     }
 )
 

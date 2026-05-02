@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
@@ -49,7 +50,7 @@ namespace Server.Spells.DeathKnight
 				if ( timer != null )
 					timer.DoExpire();
 				else
-					m.SendMessage( "You feel hatred shielding you from physical harm." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You feel hatred shielding you from physical harm." ) );
             		m.PlaySound( 0x5C0 );
 					m.FixedParticles( 0x376A, 1, 29, 9961, 1152, 0, EffectLayer.Waist ); 
 
@@ -89,7 +90,7 @@ namespace Server.Spells.DeathKnight
 			if ( t == null )
 				return false;
 
-			m.SendMessage( "The shield around you dissipates..." );
+			m.SendMessage( StringCatalog.Resolve( m.Account, "The shield around you dissipates..." ) );
 			m.PlaySound( 488 );
 			t.DoExpire();
 			return true;
@@ -123,7 +124,7 @@ namespace Server.Spells.DeathKnight
 
 			protected override void OnTick()
 			{
-				m_Mobile.SendMessage( "The shield around you dissipates..." );
+				m_Mobile.SendMessage( StringCatalog.Resolve( m_Mobile.Account, "The shield around you dissipates..." ) );
 				m_Mobile.PlaySound( 488 );
 				DoExpire();
 			}

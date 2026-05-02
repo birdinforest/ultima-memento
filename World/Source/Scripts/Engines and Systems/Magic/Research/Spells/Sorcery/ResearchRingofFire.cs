@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Misc;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -41,11 +42,11 @@ namespace Server.Spells.Research
 
 			if ( fires > 23 )
 			{
-				Caster.SendMessage( "There are too many magical fires in the area!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There are too many magical fires in the area!" ) );
 			}
 			else
 			{
-				Caster.SendMessage( "Where do you want to create a ring of fire?" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Where do you want to create a ring of fire?" ) );
 				Caster.Target = new InternalTarget( this );
 			}
 		}

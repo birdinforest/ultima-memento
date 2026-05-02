@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Server.Spells;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -40,7 +41,7 @@ namespace Server.Spells.Jedi
 
 			if( (Caster.Followers + 3) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to create a mirage." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to create a mirage." ) );
 				return false;
 			}
 
@@ -55,11 +56,11 @@ namespace Server.Spells.Jedi
 			}
 			else if ( (Caster.Followers + 3) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to create a mirage." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to create a mirage." ) );
 			}
 			else if( TransformationSpellHelper.UnderTransformation( Caster, typeof( HorrificBeastSpell ) ) )
 			{
-				Caster.SendMessage( "You cannot create a mirage while you look like that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot create a mirage while you look like that." ) );
 			}
 			else if ( CheckSequence() )
 			{

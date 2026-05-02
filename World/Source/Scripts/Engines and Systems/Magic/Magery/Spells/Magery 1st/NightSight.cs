@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.First
 {

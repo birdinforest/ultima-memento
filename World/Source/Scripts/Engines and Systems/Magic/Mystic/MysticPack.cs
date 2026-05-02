@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -22,7 +23,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "Belongs to " + owner.Name + "" ); }
+			if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) ); }
         }
 
 		public override void OnDoubleClick( Mobile from )
@@ -30,7 +31,7 @@ namespace Server.Items
 			if ( owner == from && from.Skills[SkillName.FistFighting].Value >= 100 && Server.Misc.GetPlayerInfo.isMonk( from ) )
 				Open( from );
 			else
-                from.SendMessage("You cannot seem to open the rucksack.");
+                from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot seem to open the rucksack." ) );
 		}
 
 		public override bool OnDragDropInto( Mobile from, Item dropped, Point3D p )
@@ -40,7 +41,7 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			from.SendMessage("You cannot seem to open the rucksack.");
+			from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot seem to open the rucksack." ) );
 			return false;
         }
 
@@ -51,7 +52,7 @@ namespace Server.Items
 				return base.OnDragDrop(from, dropped);
 			}
 
-			from.SendMessage("You cannot seem to open the rucksack.");
+			from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot seem to open the rucksack." ) );
 			return false;
         }
 

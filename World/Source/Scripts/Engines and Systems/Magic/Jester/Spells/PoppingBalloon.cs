@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Jester
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Jester
 
 			if( (Caster.Followers + 3) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to blow up a balloon." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to blow up a balloon." ) );
 				return false;
 			}
 

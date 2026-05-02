@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Commands;
 using Server.Mobiles;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -377,8 +378,8 @@ namespace Server.Misc
 					Server.Misc.Research.SetPrepared( bag, spellIndex, -1 );
 					int remaining = Server.Misc.Research.GetPrepared( bag, spellIndex );
 
-					if ( remaining == 1 ){ from.SendMessage( "You have 1 scroll left for this spell." ); }
-					else if ( remaining < 1 ){ from.SendMessage( "You have no scrolls left for this spell." ); }
+					if ( remaining == 1 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You have 1 scroll left for this spell." ) ); }
+					else if ( remaining < 1 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You have no scrolls left for this spell." ) ); }
 					else if ( remaining < 11 ){ from.SendMessage( "You have " + remaining + " scrolls left for this spell." ); }
 
 					if ( from.HasGump( typeof( Server.Items.ResearchBag.ResearchGump ) ) ) {
@@ -571,7 +572,7 @@ namespace Server.Misc
 		{
 			if ( bag.BagInk >= 50000 )
 			{
-				from.SendMessage( "This pack can only hold 50000 bottles of octupus ink so you dump out what you found." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This pack can only hold 50000 bottles of octupus ink so you dump out what you found." ) );
 			}
 			else
 			{

@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -43,7 +44,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Choose where you will unleash the vortex." );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Choose where you will unleash the vortex." ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -68,7 +69,7 @@ namespace Server.Spells.Research
 				BaseCreature.Summon( new DeathVortex(), false, Caster, new Point3D( p ), 0x212, duration );
 				Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 			}
 
 			FinishSequence();

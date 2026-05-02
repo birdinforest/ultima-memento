@@ -8,6 +8,7 @@ using Server.Spells;
 using Server.Targeting;
 using Server.Spells.Elementalism;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -128,7 +129,7 @@ namespace Server.Items
 		private static void AllSpells_OnCommand( CommandEventArgs e )
 		{
 			e.Mobile.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( AllSpells_OnTarget ) );
-			e.Mobile.SendMessage( "Target the spellbook to fill." );
+			e.Mobile.SendMessage( StringCatalog.Resolve( e.Mobile.Account, "Target the spellbook to fill." ) );
 		}
 
 		private static void AllSpells_OnTarget( Mobile from, object obj )
@@ -142,7 +143,7 @@ namespace Server.Items
 				else
 					book.Content = (1ul << book.BookCount) - 1;
 
-				from.SendMessage( "The spellbook has been filled." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The spellbook has been filled." ) );
 
 				CommandLogging.WriteLine( from, "{0} {1} filling spellbook {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( book ) );
 			}
@@ -161,7 +162,7 @@ namespace Server.Items
 			else
 			{
 				from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( AllSpells_OnTarget ) );
-				from.SendMessage( "That is not a spellbook. Try again." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That is not a spellbook. Try again." ) );
 			}
 		}
 
@@ -491,14 +492,14 @@ namespace Server.Items
 
 				if ( dropped is BlankScroll && book.paper > 50000 )
 				{
-					from.SendMessage( "This book has too many pages already." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This book has too many pages already." ) );
 				}
 				else if ( dropped is BlankScroll )
 				{
 					from.PlaySound( 0x48 );
 					book.paper = book.paper + dropped.Amount;
 					dropped.Delete();
-					from.SendMessage( "The blank scrolls are now extra pages in your book." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The blank scrolls are now extra pages in your book." ) );
 				}
 				else if ( dropped is ScribesPen && this is AncientSpellbook )
 				{
@@ -506,14 +507,14 @@ namespace Server.Items
 
 					if ( book.quill > 50000 )
 					{
-						from.SendMessage( "This book has too many quills set aside for it." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This book has too many quills set aside for it." ) );
 					}
 					else
 					{
 						from.PlaySound( 0x48 );
 						book.quill = book.quill + tool.UsesRemaining;
 						dropped.Delete();
-						from.SendMessage( "The quills have been set aside for your book." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The quills have been set aside for your book." ) );
 					}
 				}
 			}
@@ -530,8 +531,8 @@ namespace Server.Items
 				}
 				else if ( HasSpell( scroll.SpellID ) )
 				{
-					if ( this is SythSpellbook ){ from.SendMessage( "That power is already in that datacron." ); }
-					else if ( this is JediSpellbook ){ from.SendMessage( "That wisdom is already in that datacron." ); }
+					if ( this is SythSpellbook ){ from.SendMessage( StringCatalog.Resolve( from.Account, "That power is already in that datacron." ) ); }
+					else if ( this is JediSpellbook ){ from.SendMessage( StringCatalog.Resolve( from.Account, "That wisdom is already in that datacron." ) ); }
 					else { from.SendLocalizedMessage( 500179 ); } // That spell is already present in that spellbook.
 					return false;
 				}
@@ -611,7 +612,7 @@ namespace Server.Items
 			}
 		}
 
-		public override string DefaultDescription{ get{ return "This book is used by mages, where they can record the magic they can unleash. Dropping such scrolls onto this book will place the spell within its pages. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This book is used by mages, where they can record the magic they can unleash. Dropping such scrolls onto this book will place the spell within its pages. Some books have enhanced properties, that are only effective when the book is held." ); } }
 
 		[Constructable]
 		public Spellbook() : this( (ulong)0 )
@@ -742,19 +743,19 @@ namespace Server.Items
 
 			if ( this is SongBook ){ if ( from.Skills[SkillName.Musicianship].Base < 30 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in musicianship to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in musicianship to equip that!" ) );
 				return false;
 			}}
 			else if ( this is NecromancerSpellbook ){ if ( from.Skills[SkillName.Necromancy].Base < 30 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in necromancy to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in necromancy to equip that!" ) );
 				return false;
 			}}
 			else if ( this is ElementalSpellbook )
 			{
 				if ( from.Skills[SkillName.Elementalism].Base < 30 )
 				{
-					from.SendMessage("Your need at least a natural neophyte skill in elementalism to equip that!");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in elementalism to equip that!" ) );
 					return false;
 				}
 				if ( !ElementalSpell.CanUseBook( this, from, true ) )
@@ -763,22 +764,22 @@ namespace Server.Items
 
 			else if ( this is BookOfNinjitsu ){ if ( from.Skills[SkillName.Ninjitsu].Base < 30 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in ninjitsu to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in ninjitsu to equip that!" ) );
 				return false;
 			}}
 			else if ( this is BookOfBushido ){ if ( from.Skills[SkillName.Bushido].Base < 30 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in bushido to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in bushido to equip that!" ) );
 				return false;
 			}}
 			else if ( this is BookOfChivalry ){ if ( from.Skills[SkillName.Knightship].Base < 30 || from.Karma < 0 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in knightship to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in knightship to equip that!" ) );
 				return false;
 			}}
 			else if ( this is DeathKnightSpellbook ){ if ( from.Skills[SkillName.Knightship].Base < 30 || from.Karma > 0 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in knightship to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in knightship to equip that!" ) );
 				return false;
 			}}
 			else if ( this is HolyManSpellbook )
@@ -787,7 +788,7 @@ namespace Server.Items
 			}
 			else if ( this is MysticSpellbook ){ if ( from.Skills[SkillName.Focus].Base < 100 || from.Skills[SkillName.Meditation].Base < 100 )
 			{
-				from.SendMessage("Your need at least a natural grandmaster skill in focus and meditation to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural grandmaster skill in focus and meditation to equip that!" ) );
 				return false;
 			}}
 			else if ( this is SythSpellbook )
@@ -804,13 +805,13 @@ namespace Server.Items
 					return false;
 				if ( from.Skills[SkillName.Magery].Base < 30 && from.Skills[SkillName.Necromancy].Base < 30 )
 				{
-					from.SendMessage("Your need at least a natural neophyte skill in magery or necromancy to equip that!");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in magery or necromancy to equip that!" ) );
 					return false;
 				}
 			}
 			else if ( from.Skills[SkillName.Magery].Base < 30 )
 			{
-				from.SendMessage("Your need at least a natural neophyte skill in magery to equip that!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your need at least a natural neophyte skill in magery to equip that!" ) );
 				return false;
 			}
 

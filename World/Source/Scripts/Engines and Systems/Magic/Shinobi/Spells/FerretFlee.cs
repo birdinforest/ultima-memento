@@ -8,6 +8,7 @@ using Server.Spells.Fourth;
 using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Shinobi
 {
@@ -33,7 +34,7 @@ namespace Server.Spells.Shinobi
 		{
 			if ( !Caster.Paralyzed && !Caster.Frozen )
 			{
-				Caster.SendMessage( "You are not held captive!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not held captive!" ) );
 			}
 			else if ( CheckBSequence( Caster ) )
 			{
@@ -45,12 +46,12 @@ namespace Server.Spells.Shinobi
 					Caster.Paralyzed = false;
 					Caster.Frozen = false;
 					BuffInfo.CleanupIcons( Caster, true );
-					Caster.SendMessage( "You freed yourself!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You freed yourself!" ) );
 				}
 				else
 				{
 					Caster.PlaySound( Caster.Female ? 815 : 1089 );
-					Caster.SendMessage( "You failed to free yourself!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to free yourself!" ) );
 				}
 			}
 

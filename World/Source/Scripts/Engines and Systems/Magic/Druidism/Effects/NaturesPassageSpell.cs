@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Regions;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Herbalist
 {
@@ -62,15 +63,15 @@ namespace Server.Spells.Herbalist
 			}
 			else if ( Worlds.AllowEscape( Caster, Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That potion does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That potion does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedRecall( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That potion does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That potion does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( map, loc, loc.X, loc.Y ) == false )
 			{
-				Caster.SendMessage( "The destination seems magically unreachable." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The destination seems magically unreachable." ) );
 			}
 			else if ( !map.CanSpawnMobile( loc.X, loc.Y, loc.Z, false ) )
 			{

@@ -8,6 +8,7 @@ using Server.Gumps;
 using Server.Spells;
 using Server.Spells.Fifth;
 using Server.Spells.Seventh;
+using Server.Localization;
 
 namespace Server.Spells.Shinobi
 {
@@ -33,12 +34,12 @@ namespace Server.Spells.Shinobi
 		{
 			if ( !Caster.CanBeginAction( typeof( IncognitoSpell ) ) )
 			{
-				Caster.SendMessage( "You are already in a disguise!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already in a disguise!" ) );
 				return false;
 			}
 			else if ( !Caster.CanBeginAction( typeof( Deception ) ) )
 			{
-				Caster.SendMessage( "You are already in a disguise!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already in a disguise!" ) );
 				return false;
 			}
 
@@ -49,15 +50,15 @@ namespace Server.Spells.Shinobi
 		{
 			if ( !Caster.CanBeginAction( typeof( Deception ) ) )
 			{
-				Caster.SendMessage( "You are already in a disguise!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already in a disguise!" ) );
 			}
 			else if ( !Caster.CanBeginAction( typeof( IncognitoSpell ) ) )
 			{
-				Caster.SendMessage( "You are already in a disguise!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already in a disguise!" ) );
 			}
 			else if ( DisguiseTimers.IsDisguised( Caster ) )
 			{
-				Caster.SendMessage( "You can't do that while disguised.!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can't do that while disguised.!" ) );
 			}
 			else if ( !Caster.CanBeginAction( typeof( PolymorphSpell ) ) || ( Caster.IsBodyMod && Caster.RaceID != Caster.BodyMod ) )
 			{

@@ -2,6 +2,7 @@ using System;
 using System.Collections; 
 using Server; 
 using Server.Items; 
+using Server.Localization; 
 using Server.Misc; 
 using Server.Network; 
 using Server.Spells; 
@@ -46,8 +47,6 @@ namespace Server.Gumps
 			m_Y_2 = 0;
 			m_NotHave_2 = false;
 
-			string color = "#df5e5e";
-
             this.Closable=true;
 			this.Disposable=true;
 			this.Dragable=true;
@@ -72,8 +71,8 @@ namespace Server.Gumps
 			AddButton(72, 45, 4014, 4014, PriorPage, GumpButtonType.Reply, 0);
 			AddButton(590, 48, 4005, 4005, NextPage, GumpButtonType.Reply, 0);
 
-			AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>DEATH MAGIC</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 398, 48, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>DEATH MAGIC</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 107, 46, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e><CENTER>DEATH MAGIC</CENTER></BASEFONT></BODY>" ), false, false );
+			AddHtml( 398, 48, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e><CENTER>DEATH MAGIC</CENTER></BASEFONT></BODY>" ), false, false );
 
 			if ( page == 1 )
 			{
@@ -111,7 +110,7 @@ namespace Server.Gumps
 						else if ( SpellsListed == 762 ){ SpellName = "Succubus Skin"; }
 						else if ( SpellsListed == 763 ){ SpellName = "Wrath"; }
 
-						AddHtml( x+30, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + SpellName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+30, y, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", SpellName ), false, false );
 						AddButton(x, y-4, 7050, 7050, SpellsListed, GumpButtonType.Reply, 0);
 						y=y+v;
 
@@ -123,17 +122,17 @@ namespace Server.Gumps
 			}
 			else if ( page == 9 )
 			{
-				string lowreg = "Magic from lower reagent properties can affect the amount of souls needed to invoke the magic. ";
+				string lowreg = StringCatalog.Resolve( from.Account, "Magic from lower reagent properties can affect the amount of souls needed to invoke the magic. " );
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg = "";
 
-				info = "In order to learn the ways of the Death Knight, you must master the art of Knightship while spreading evil deeds throughout the land, avoiding Karmic influences. One must seek out the 14 Disciple Knights of Kas, and learn the power they each mastered. Find their resting places, speak their names, and claim their skulls which contains the knowledge they had. Placing the skulls onto this book will increase its spell potential, but be quick about it. Anyone that calls forth their skull will cause it to appear no matter where it is in the land, taking it from another that may possess it. You will need the power of souls to use such magic. Find humanoid creatures like brigands, orcs, titans, goblins, or trolls...those that carry gold, and slay them while holding the lantern in your left hand. Although their gold will turn to dust, your lantern will increase in power that will drain as you use this magic. You do not need to hold the lantern while unleashing this power, but only when collecting souls. The lantern does not need to be in your possession either, as death magic will claim the souls from the lantern wherever it is. " + lowreg + "Although most magic relies on your Knightship skill alone, there are also some elements that will have greater effect the lower your Karma is. Go forth Death Knight, and bring our order back to this world. Beware, Death Knight. Powerful Death Knights are often not tolerated in the city streets and may be attacked on site.";
+				info = StringCatalog.ResolveFormat( from.Account, "In order to learn the ways of the Death Knight, you must master the art of Knightship while spreading evil deeds throughout the land, avoiding Karmic influences. One must seek out the 14 Disciple Knights of Kas, and learn the power they each mastered. Find their resting places, speak their names, and claim their skulls which contains the knowledge they had. Placing the skulls onto this book will increase its spell potential, but be quick about it. Anyone that calls forth their skull will cause it to appear no matter where it is in the land, taking it from another that may possess it. You will need the power of souls to use such magic. Find humanoid creatures like brigands, orcs, titans, goblins, or trolls...those that carry gold, and slay them while holding the lantern in your left hand. Although their gold will turn to dust, your lantern will increase in power that will drain as you use this magic. You do not need to hold the lantern while unleashing this power, but only when collecting souls. The lantern does not need to be in your possession either, as death magic will claim the souls from the lantern wherever it is. {0}Although most magic relies on your Knightship skill alone, there are also some elements that will have greater effect the lower your Karma is. Go forth Death Knight, and bring our order back to this world. Beware, Death Knight. Powerful Death Knights are often not tolerated in the city streets and may be attacked on site.", lowreg );
 
-				AddHtml( 78, 80, 250, 314, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 78, 80, 250, 314, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", info ), false, true );
 
-				info = "Magic Toolbars: Here are the commands you can use (include the bracket) to manage magic toolbars that might help you play better.<BR><BR>[deathspell1 - Opens the 1st death knight spell bar editor.<BR><BR>[deathspell2 - Opens the 2nd death knight spell bar editor.<BR><BR>[deathtool1 - Opens the 1st death knight spell bar.<BR><BR>[deathtool2 - Opens the 2nd death knight spell bar.<BR><BR>[deathclose1 - Closes the 1st death knight spell bar.<BR><BR>[deathclose2 - Closes the 2nd death knight spell bar.<BR><BR>Below are the [ commands you can either type to quickly cast a particular spell, or set a hot key to issue this command and cast the spell.<BR><BR>[DKBanish<BR>    Cast Banish<BR><BR>[DKDemonicTouch<BR>    Cast Demonic Touch<BR><BR>[DKDevilPact<BR>    Cast Devil Pact<BR><BR>[DKGrimReaper<BR>    Cast Grim Reaper<BR><BR>[DKHagHand<BR>    Cast Hag Hand<BR><BR>[DKHellfire<BR>    Cast Hellfire<BR><BR>[DKLucifersBolt<BR>    Cast Lucifer's Bolt<BR><BR>[DKOrbOrcus<BR>    Cast Orb of Orcus<BR><BR>[DKShieldHate<BR>    Cast Shield of Hate<BR><BR>[DKSoulReaper<BR>    Cast Soul Reaper<BR><BR>[DKStrengthSteel<BR>    Cast Strength of Steel<BR><BR>[DKStrike<BR>    Cast Strike<BR><BR>[DKSuccubusSkin<BR>    Cast Succubus Skin<BR><BR>[DKWrath<BR>    Cast Wrath<BR><BR>";
+				info = StringCatalog.Resolve( from.Account, "Magic Toolbars: Here are the commands you can use (include the bracket) to manage magic toolbars that might help you play better.<BR><BR>[deathspell1 - Opens the 1st death knight spell bar editor.<BR><BR>[deathspell2 - Opens the 2nd death knight spell bar editor.<BR><BR>[deathtool1 - Opens the 1st death knight spell bar.<BR><BR>[deathtool2 - Opens the 2nd death knight spell bar.<BR><BR>[deathclose1 - Closes the 1st death knight spell bar.<BR><BR>[deathclose2 - Closes the 2nd death knight spell bar.<BR><BR>Below are the [ commands you can either type to quickly cast a particular spell, or set a hot key to issue this command and cast the spell.<BR><BR>[DKBanish<BR>    Cast Banish<BR><BR>[DKDemonicTouch<BR>    Cast Demonic Touch<BR><BR>[DKDevilPact<BR>    Cast Devil Pact<BR><BR>[DKGrimReaper<BR>    Cast Grim Reaper<BR><BR>[DKHagHand<BR>    Cast Hag Hand<BR><BR>[DKHellfire<BR>    Cast Hellfire<BR><BR>[DKLucifersBolt<BR>    Cast Lucifer's Bolt<BR><BR>[DKOrbOrcus<BR>    Cast Orb of Orcus<BR><BR>[DKShieldHate<BR>    Cast Shield of Hate<BR><BR>[DKSoulReaper<BR>    Cast Soul Reaper<BR><BR>[DKStrengthSteel<BR>    Cast Strength of Steel<BR><BR>[DKStrike<BR>    Cast Strike<BR><BR>[DKSuccubusSkin<BR>    Cast Succubus Skin<BR><BR>[DKWrath<BR>    Cast Wrath<BR><BR>" );
 
-				AddHtml( 366, 80, 250, 314, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 366, 80, 250, 314, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", info ), false, true );
 			}
 			else
 			{
@@ -168,8 +167,8 @@ namespace Server.Gumps
 					soul1 = "56";
 					skil1 = "40";
 					mana1 = "36";
-					text1 = ""; if ( !this.HasSpell( from, 750) ){ m_NotHave_1 = true; z1=220; text1 = "Saint Kargoth<BR>Land of Sosaria: Ancient Pyramid<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Banish summoned creatures back to their realm, demons back to hell, or elementals back to their plane of existence.";
+					text1 = ""; if ( !this.HasSpell( from, 750) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Saint Kargoth<BR>Land of Sosaria: Ancient Pyramid<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Banish summoned creatures back to their realm, demons back to hell, or elementals back to their plane of existence." );
 					icon1 = 0x5010;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Clues", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
@@ -177,8 +176,8 @@ namespace Server.Gumps
 					soul2 = "21";
 					skil2 = "15";
 					mana2 = "16";
-					text2 = ""; if ( !this.HasSpell( from, 751) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Monduiz Dephaar<BR>Land of Sosaria: Dungeon Clues<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The death knight's target is healed by demonic forces for a significant amount.";
+					text2 = ""; if ( !this.HasSpell( from, 751) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Lord Monduiz Dephaar<BR>Land of Sosaria: Dungeon Clues<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The death knight's target is healed by demonic forces for a significant amount." );
 					icon2 = 0x5009;
 				}
 				else if ( page == 3 )
@@ -188,8 +187,8 @@ namespace Server.Gumps
 					soul1 = "98";
 					skil1 = "90";
 					mana1 = "60";
-					text1 = ""; if ( !this.HasSpell( from, 752) ){ m_NotHave_1 = true; z1=220; text1 = "Lady Kath of Naelex<BR>Land of Sosaria: Dungeon Doom<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Summons the devil to battle with the death knight.";
+					text1 = ""; if ( !this.HasSpell( from, 752) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Lady Kath of Naelex<BR>Land of Sosaria: Dungeon Doom<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Summons the devil to battle with the death knight." );
 					icon1 = 0x5005;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "the Fires of Hell", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
@@ -197,8 +196,8 @@ namespace Server.Gumps
 					soul2 = "42";
 					skil2 = "30";
 					mana2 = "28";
-					text2 = ""; if ( !this.HasSpell( from, 753) ){ m_NotHave_2 = true; z2=220; text2 = "Prince Myrhal of Rax<BR>Land of Sosaria: Fires of Hell<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The next target hit becomes marked by the grim reaper. All damage dealt to it is increased, but the death knight takes extra damage from other kinds of creatures.";
+					text2 = ""; if ( !this.HasSpell( from, 753) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Prince Myrhal of Rax<BR>Land of Sosaria: Fires of Hell<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The next target hit becomes marked by the grim reaper. All damage dealt to it is increased, but the death knight takes extra damage from other kinds of creatures." );
 					icon2 = 0x402;
 				}
 				else if ( page == 4 )
@@ -208,8 +207,8 @@ namespace Server.Gumps
 					soul1 = "7";
 					skil1 = "5";
 					mana1 = "8";
-					text1 = ""; if ( !this.HasSpell( from, 754) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Maeril of Naelax<BR>Land of Sosaria: Dungeon Exodus<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Your hand holds the powers of a hag, where it can remove curses from items and others.";
+					text1 = ""; if ( !this.HasSpell( from, 754) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Sir Maeril of Naelax<BR>Land of Sosaria: Dungeon Exodus<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Your hand holds the powers of a hag, where it can remove curses from items and others." );
 					icon1 = 0x5002;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "the City of the Dead", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
@@ -217,8 +216,8 @@ namespace Server.Gumps
 					soul2 = "84";
 					skil2 = "70";
 					mana2 = "52";
-					text2 = ""; if ( !this.HasSpell( from, 755) ){ m_NotHave_2 = true; z2=220; text2 = "Sir Farian of Lirtham<BR>Land of Ambrosia: City of the Dead<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The death knights's enemy is scorched by a hellfire that continues to burn the enemy for a short duration.";
+					text2 = ""; if ( !this.HasSpell( from, 755) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Sir Farian of Lirtham<BR>Land of Ambrosia: City of the Dead<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The death knights's enemy is scorched by a hellfire that continues to burn the enemy for a short duration." );
 					icon2 = 0x3E9;
 				}
 				else if ( page == 5 )
@@ -228,8 +227,8 @@ namespace Server.Gumps
 					soul1 = "35";
 					skil1 = "25";
 					mana1 = "24";
-					text1 = ""; if ( !this.HasSpell( from, 756) ){ m_NotHave_1 = true; z1=220; text1 = "Lord Androma of Gara<BR>Island of Umber Veil: the Mausoleum<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Calls down a bolt of energy from Lucifer himself, and temporarily stuns the enemy.";
+					text1 = ""; if ( !this.HasSpell( from, 756) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Lord Androma of Gara<BR>Island of Umber Veil: the Mausoleum<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Calls down a bolt of energy from Lucifer himself, and temporarily stuns the enemy." );
 					icon1 = 0x5DC0;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Despise", Map.Lodor, out placer_2, out xc_2, out yc_2 );
@@ -237,8 +236,8 @@ namespace Server.Gumps
 					soul2 = "200";
 					skil2 = "80";
 					mana2 = "56";
-					text2 = ""; if ( !this.HasSpell( from, 757) ){ m_NotHave_2 = true; z2=220; text2 = "Sir Oslan Knarren<BR>Land of Lodoria: Dungeon Despise<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The forces of Orcus surround the knight and refelecta a certain amount of magical effects back at the caster.";
+					text2 = ""; if ( !this.HasSpell( from, 757) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Sir Oslan Knarren<BR>Land of Lodoria: Dungeon Despise<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The forces of Orcus surround the knight and refelecta a certain amount of magical effects back at the caster." );
 					icon2 = 0x1B;
 				}
 				else if ( page == 6 )
@@ -248,8 +247,8 @@ namespace Server.Gumps
 					soul1 = "77";
 					skil1 = "60";
 					mana1 = "48";
-					text1 = ""; if ( !this.HasSpell( from, 758) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Rezinar of Haxx<BR>Land of Lodoria: Dungeon Deceit<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Channels hatred to form a barrier around the target, shielding them from physical harm.";
+					text1 = ""; if ( !this.HasSpell( from, 758) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Sir Rezinar of Haxx<BR>Land of Lodoria: Dungeon Deceit<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Channels hatred to form a barrier around the target, shielding them from physical harm." );
 					icon1 = 0x3EE;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Wrong", Map.Lodor, out placer_2, out xc_2, out yc_2 );
@@ -257,8 +256,8 @@ namespace Server.Gumps
 					soul2 = "63";
 					skil2 = "45";
 					mana2 = "40";
-					text2 = ""; if ( !this.HasSpell( from, 759) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Thyrian of Naelax<BR>Land of Lodoria: Dungeon Wrong<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "Drains the enemy of their soul, reducing their mana for a short period of time.";
+					text2 = ""; if ( !this.HasSpell( from, 759) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Lord Thyrian of Naelax<BR>Land of Lodoria: Dungeon Wrong<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "Drains the enemy of their soul, reducing their mana for a short period of time." );
 					icon2 = 0x5006;
 				}
 				else if ( page == 7 )
@@ -268,8 +267,8 @@ namespace Server.Gumps
 					soul1 = "28";
 					skil1 = "20";
 					mana1 = "20";
-					text1 = ""; if ( !this.HasSpell( from, 760) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Minar of Darmen<BR>Land of Lodoria: Lodoria Catacombs<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "Greatly increases the target's strength for a short period.";
+					text1 = ""; if ( !this.HasSpell( from, 760) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Sir Minar of Darmen<BR>Land of Lodoria: Lodoria Catacombs<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "Greatly increases the target's strength for a short period." );
 					icon1 = 0x2B;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Shame", Map.Lodor, out placer_2, out xc_2, out yc_2 );
@@ -277,8 +276,8 @@ namespace Server.Gumps
 					soul2 = "14";
 					skil2 = "10";
 					mana2 = "12";
-					text2 = ""; if ( !this.HasSpell( from, 761) ){ m_NotHave_2 = true; z2=220; text2 = "Duke Urkar of Torquann<BR>Land of Lodoria: Dungeon Shame<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The death knight's enemy is damaged by a demonic energy from the nine hells.";
+					text2 = ""; if ( !this.HasSpell( from, 761) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Duke Urkar of Torquann<BR>Land of Lodoria: Dungeon Shame<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The death knight's enemy is damaged by a demonic energy from the nine hells." );
 					icon2 = 0x12;
 				}
 				else if ( page == 8 )
@@ -288,8 +287,8 @@ namespace Server.Gumps
 					soul1 = "49";
 					skil1 = "35";
 					mana1 = "32";
-					text1 = ""; if ( !this.HasSpell( from, 762) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Luren the Boar<BR>Land of Lodoria: the City of Embers<BR>" + sGrave + "<BR><BR>"; }
-					text1 = text1 + "The death knight's target has their skin regenerate health over time.";
+					text1 = ""; if ( !this.HasSpell( from, 762) ){ m_NotHave_1 = true; z1=220; text1 = StringCatalog.ResolveFormat( from.Account, "Sir Luren the Boar<BR>Land of Lodoria: the City of Embers<BR>{0}<BR><BR>", sGrave ); }
+					text1 = text1 + StringCatalog.Resolve( from.Account, "The death knight's target has their skin regenerate health over time." );
 					icon1 = 0x500C;
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Hythloth", Map.Lodor, out placer_2, out xc_2, out yc_2 );
@@ -297,8 +296,8 @@ namespace Server.Gumps
 					soul2 = "70";
 					skil2 = "50";
 					mana2 = "44";
-					text2 = ""; if ( !this.HasSpell( from, 763) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Khayven of Rax<BR>Land of Lodoria: Dungeon Hythloth<BR>" + sGrave + "<BR><BR>"; }
-					text2 = text2 + "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage.";
+					text2 = ""; if ( !this.HasSpell( from, 763) ){ m_NotHave_2 = true; z2=220; text2 = StringCatalog.ResolveFormat( from.Account, "Lord Khayven of Rax<BR>Land of Lodoria: Dungeon Hythloth<BR>{0}<BR><BR>", sGrave ); }
+					text2 = text2 + StringCatalog.Resolve( from.Account, "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage." );
 					icon2 = 0x2E;
 				}
 
@@ -311,25 +310,25 @@ namespace Server.Gumps
 
 				AddImage(73, 78, 7052);
 				AddImage(75, 80, icon1, 2405);
-				AddHtml( 129, 93, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + name1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Souls:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + soul1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + skil1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + mana1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 78, z1, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + text1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 129, 93, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", name1 ), false, false );
+				AddHtml( 134, 130, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Souls:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 130, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", soul1 ), false, false );
+				AddHtml( 134, 160, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Skill:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 160, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", skil1 ), false, false );
+				AddHtml( 134, 190, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Mana:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 190, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", mana1 ), false, false );
+				AddHtml( 78, z1, 250, 175, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", text1 ), false, false );
 
 				AddImage(360, 78, 7052);
 				AddImage(362, 80, icon2, 2405);
-				AddHtml( 417, 93, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + name2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Souls:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + soul2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + skil2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + mana2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 366, z2, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + text2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 93, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", name2 ), false, false );
+				AddHtml( 422, 130, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Souls:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 130, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", soul2 ), false, false );
+				AddHtml( 422, 160, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Skill:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 160, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", skil2 ), false, false );
+				AddHtml( 422, 190, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#df5e5e>Mana:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 190, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", mana2 ), false, false );
+				AddHtml( 366, z2, 250, 175, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#df5e5e>{0}</BASEFONT></BODY>", text2 ), false, false );
 
 				if ( Sextants.HasSextant( from ) && m_X_1 > 0 && m_NotHave_1 )
 					AddButton(73, 368, 10461, 10461, 98000+page, GumpButtonType.Reply, 0);

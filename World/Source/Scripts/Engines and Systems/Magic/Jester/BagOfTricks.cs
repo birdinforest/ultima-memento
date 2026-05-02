@@ -52,7 +52,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            if ( PrankPoints > 0 ){ list.Add( 1070722, "" + PrankPoints + " Prank Points"); }
+            if ( PrankPoints > 0 ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "{0} Prank Points", PrankPoints ) ); }
         } 
 
 		public static int GetPranks( Mobile m )

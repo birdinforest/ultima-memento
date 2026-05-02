@@ -4,6 +4,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -69,7 +70,7 @@ namespace Server.Spells.HolyMan
 				m.PlaySound( 0x202 );
 				m.FixedParticles( 0x376A, 1, 62, 9923, 3, 3, EffectLayer.Waist );
 				m.FixedParticles( 0x3779, 1, 46, 9502, 5, 3, EffectLayer.Waist );
-				m.SendMessage( "A holy aura surrounds you causing your wounds to heal faster." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "A holy aura surrounds you causing your wounds to heal faster." ) );
 			}
 
 			FinishSequence();

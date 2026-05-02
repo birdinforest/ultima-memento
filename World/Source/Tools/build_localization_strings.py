@@ -186,6 +186,11 @@ RE_RESOLVE_FORMAT = re.compile(
     r"\bResolveFormat\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+# Item / gump: Name = "English";
+RE_SCRIPT_NAME_ASSIGN = re.compile(
+    r"^\s*Name\s*=\s*\"((?:\\.|[^\"\\])*)\"\s*;",
+    re.MULTILINE,
+)
 RE_RESOLVE_QUEST_CATALOG = re.compile(
     r"\bResolveQuestCatalogString\s*\(\s*[^,]+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
@@ -358,6 +363,19 @@ def extract_string_catalog_resolve_verbatim(data: str) -> List[str]:
     return found
 
 
+def is_dubious_html_fragment(s: str) -> bool:
+    """Fragment from AddHtml when the fifth argument is split across `+ color +` concatenation — not a whole
+    HTML document and pollutes the catalog with useless keys."""
+    if not s or "<BODY>" not in s:
+        return False
+    t = s.strip()
+    if "</BODY>" not in t:
+        return True
+    if t.count("<BODY>") != t.count("</BODY>"):
+        return True
+    return False
+
+
 def extract_addhtml_fifth_arg(data: str) -> List[str]:
     """Fifth argument to AddHtml( x, y, w, h, TEXT, ... ) — regular or verbatim @\"\"\"."""
     found: List[str] = []
@@ -477,7 +495,9 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
             texts.append(csharp_unescape(m.group(1)))
 
     if "/Scripts/" in path.replace("\\", "/") or "/System/" in path.replace("\\", "/"):
-        texts.extend(extract_addhtml_fifth_arg(data))
+        for _s in extract_addhtml_fifth_arg(data):
+            if not is_dubious_html_fragment(_s):
+                texts.append(_s)
         texts.extend(extract_string_catalog_resolve_verbatim(data))
         for rx in (
             RE_RESOLVE_TEXT,
@@ -502,6 +522,12 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
         ):
             for m in rx.finditer(data):
                 texts.append(csharp_unescape(m.group(1)))
+
+    if "/Scripts/Engines and Systems/Magic/" in path.replace("\\", "/"):
+        for m in RE_SCRIPT_NAME_ASSIGN.finditer(data):
+            _n = csharp_unescape(m.group(1))
+            if _n and _n.strip():
+                texts.append(_n)
 
     if "Scripts" in path.replace("\\", "/") and "/Items/Books/" in path.replace("\\", "/"):
         for rx in (

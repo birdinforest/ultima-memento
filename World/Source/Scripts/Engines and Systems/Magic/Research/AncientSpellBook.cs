@@ -2,6 +2,7 @@ using System;
 using Server.Network;
 using Server.Gumps;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -50,7 +51,7 @@ namespace Server.Items
 
 			if ( owner != from )
 			{
-				from.SendMessage( "These pages appears as scribbles to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -64,7 +65,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null && owner.Name != names ){ list.Add( 1070722, "Belongs to " + owner.Name + "" ); }
+            if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) ); }
         }
 
 		public AncientSpellbook( Serial serial ) : base( serial )

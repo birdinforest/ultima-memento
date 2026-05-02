@@ -194,7 +194,7 @@ namespace Server.Items
 				public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "Written by " + BookAuthor );
+			list.Add( StringCatalog.ResolveFormat( null, "Written by {0}", BookAuthor ) );
 		}
 
 		public class DynamicSythGump : Gump

@@ -4,6 +4,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Regions;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Elementalism
 {
@@ -44,11 +45,11 @@ namespace Server.Spells.Elementalism
 			}
 			else if ( reg.IsPartOf( typeof( PirateRegion ) ) )
 			{
-				Caster.SendMessage( "These waters are too rough to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "These waters are too rough to cast this spell." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That spell does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That spell does not seem to work in this place." ) );
 			}
 			else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.Mark ) )
 			{

@@ -4,6 +4,7 @@ using Server.Misc;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -25,7 +26,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Single Click For Information");
+			list.Add( 1070722, StringCatalog.Resolve( null, "Single Click For Information" ) );
             list.Add( 1049644, "Double Click To Use");
         }
 
@@ -56,8 +57,8 @@ namespace Server.Items
 			{
 			    if( false == ( m_Mobile is PlayerMobile ) ) return;
 
-				m_Mobile.SendMessage("Current Value: " + m_Stake.VampiresSlain + " Gold!");
-				m_Mobile.SendGump(new SpeechGump( m_Mobile, "The Vampire Scourge", SpeechFunctions.SpeechText( m_Mobile, m_Mobile, "Stake" ) ));
+				m_Mobile.SendMessage( StringCatalog.ResolveFormat( m_Mobile.Account, "Current Value: {0} Gold!", m_Stake.VampiresSlain ) );
+				m_Mobile.SendGump(new SpeechGump( m_Mobile, StringCatalog.Resolve( m_Mobile.Account, "The Vampire Scourge" ), SpeechFunctions.SpeechText( m_Mobile, m_Mobile, "Stake" ) ));
             }
         }
 
@@ -65,11 +66,11 @@ namespace Server.Items
 		{
 			if ( VampiresSlain >= 10000 )
 			{
-				from.SendMessage("This has killed enough vampires.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This has killed enough vampires." ) );
 				return;
 			}
 			
-			from.SendMessage("What vampire do you want to stake?");
+			from.SendMessage( StringCatalog.Resolve( from.Account, "What vampire do you want to stake?" ) );
 			from.Target = new CorpseTarget( this );
 		}
 
@@ -95,7 +96,7 @@ namespace Server.Items
 
 					if ( c.VisitedByTaxidermist == true )
 					{
-						from.SendMessage("You don't need to do that!");
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need to do that!" ) );
 						return;
 					}
 					else
@@ -114,21 +115,21 @@ namespace Server.Items
 							const int MAX_VAMPIRES_SLAIN = 10000;
 							score = m_Stake.VampiresSlain + score > MAX_VAMPIRES_SLAIN ? MAX_VAMPIRES_SLAIN - m_Stake.VampiresSlain : score;
 							m_Stake.VampiresSlain += score;
-							from.SendMessage("Vampire Reward: " + score + " Gold!");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "Vampire Reward: {0} Gold!", score ) );
 							c.VisitedByTaxidermist = true;
 							from.PlaySound( 0x13E );
 							m_Stake.InvalidateProperties();
 						}
 						else 
 						{
-							from.SendMessage("You don't need to do that!");
+							from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need to do that!" ) );
 							return;
 						}
 					}
 				}
 				else
 				{
-					from.SendMessage("You don't need to do that!");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need to do that!" ) );
 					return;
 				}
 			}

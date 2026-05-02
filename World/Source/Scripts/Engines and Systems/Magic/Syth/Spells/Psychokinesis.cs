@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Regions;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -82,16 +83,16 @@ namespace Server.Spells.Syth
                 SpellHelper.Turn(this.Caster, item);
                 object root = item.RootParent;
 
-				if (item.Movable == false){ Caster.SendMessage( "That item does not seem to move." ); }
-				else if (item.Amount > 1){ Caster.SendMessage( "There are too many items stacked here to move." ); }
-				else if (item.Weight > (Caster.Int / 20)){ Caster.SendMessage( "That is to heavy to move." ); }
-				else if (item.RootParentEntity != null){ Caster.SendMessage( "You can not move objects that are inside of other objects or being worn." ); }
+				if (item.Movable == false){ Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That item does not seem to move." ) ); }
+				else if (item.Amount > 1){ Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There are too many items stacked here to move." ) ); }
+				else if (item.Weight > (Caster.Int / 20)){ Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That is to heavy to move." ) ); }
+				else if (item.RootParentEntity != null){ Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can not move objects that are inside of other objects or being worn." ) ); }
 				else
 				{
 					Effects.SendLocationParticles(EffectItem.Create(item.Location, item.Map, EffectItem.DefaultDuration), 0x376A, 9, 32, 0, 0, 5022, 0);
 					Effects.PlaySound(item.Location, item.Map, 0x1F5);
 					Caster.AddToBackpack( item );
-					Caster.SendMessage( "You move the object to within your grasp and place it in your backpack."); 
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You move the object to within your grasp and place it in your backpack." ) ); 
 				}
 			}
         }
@@ -114,7 +115,7 @@ namespace Server.Spells.Syth
                     else if (o is Item)
                     this.m_Owner.Target((Item)o);
                 else
-					from.SendMessage( "This power will not work on that!"); 
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This power will not work on that!" ) ); 
             }
 
             protected override void OnTargetFinish(Mobile from)

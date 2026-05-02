@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -25,7 +26,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "You cannot seem to wear the robe!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot seem to wear the robe!" ) );
 				return false;
 			}
 			return true;

@@ -5,6 +5,7 @@ using System.Collections;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Magical
 {
@@ -60,7 +61,7 @@ namespace Server.Spells.Magical
 				duration = TimeSpan.FromSeconds( 120 );
 				BaseCreature.Summon( new SummonSnakes(), false, Caster, new Point3D( p ), 0x212, duration );
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 			}
 			FinishSequence();
 		}

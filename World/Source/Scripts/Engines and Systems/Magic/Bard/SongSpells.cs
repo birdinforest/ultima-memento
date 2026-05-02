@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -88,7 +89,7 @@ namespace Server.Spells.Song
 
             if ( m_Book == null )
             {
-                Caster.SendMessage("You seem to be missing your book of songs.");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You seem to be missing your book of songs." ) );
                 return false;
             }
 

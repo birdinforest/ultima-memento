@@ -4,6 +4,7 @@ using Server.Mobiles;
 using Server.Targeting;
 using System;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Spells.Song
 {
@@ -53,7 +54,7 @@ namespace Server.Spells.Song
 
 			if (GetEquippedInstrument() == null)
 			{
-				Caster.SendMessage("You must equip an instrument for this song!");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You must equip an instrument for this song!" ) );
 				return false;
 			}
 
@@ -83,7 +84,7 @@ namespace Server.Spells.Song
 			var instrument = GetEquippedInstrument();
 			if (instrument == null)
 			{
-				Caster.SendMessage("You must equip an instrument for this song!");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You must equip an instrument for this song!" ) );
 				return;
 			}
 

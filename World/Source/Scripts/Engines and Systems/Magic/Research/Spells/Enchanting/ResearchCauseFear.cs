@@ -6,6 +6,7 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Who do you want to invoke terror at?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Who do you want to invoke terror at?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -55,7 +56,7 @@ namespace Server.Spells.Research
 			}
 			else if ( !CanAffect )
 			{
-				Caster.SendMessage( "This spell cannot affect golems or constructs." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot affect golems or constructs." ) );
 			}
 			else if ( CheckHSequence( m ) )
 			{
@@ -71,7 +72,7 @@ namespace Server.Spells.Research
 				if ( m is PlayerMobile )
 				{
 					m.Paralyze( duration );
-					m.SendMessage( "You are frozen in fear." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You are frozen in fear." ) );
 					BuffInfo.RemoveBuff( m, BuffIcon.Fear );
 					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Fear, 1063688, duration, m ) );
 				}

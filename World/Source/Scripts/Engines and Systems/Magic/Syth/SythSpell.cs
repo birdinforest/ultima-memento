@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -28,12 +29,22 @@ namespace Server.Spells.Syth
 
 		public static string SpellDescription( int spell )
 		{
-			string txt = "This contains the knowledge of a Syth ability: " + SpellInfo( spell, 0 ) + "";
+			return SpellDescription( null, spell );
+		}
 
-			return txt + " It requires a Syth to be at least a " + SpellInfo( spell, 2 ) + " in ability.";
+		public static string SpellDescription( Server.Accounting.IAccount account, int spell )
+		{
+			string txt = StringCatalog.Resolve( account, "This contains the knowledge of a Syth ability: " ) + SpellInfo( account, spell, 0 ) + "";
+
+			return txt + " " + StringCatalog.ResolveFormat( account, "It requires a Syth to be at least a {0} in ability.", SpellInfo( account, spell, 2 ) );
 		}
 
 		public static string SpellInfo( int spellID, int slice )
+		{
+			return SpellInfo( null, spellID, slice );
+		}
+
+		public static string SpellInfo( Server.Accounting.IAccount account, int spellID, int slice )
 		{
 			string value = "";
 			string name = "";
@@ -50,25 +61,25 @@ namespace Server.Spells.Syth
 			string icon = "";
 
 			if ( spellID == 270 ){ name = "Psychokinesis"; icon="1038"; crystal = "6"; skill = "10"; mana = "5"; mantra = "Dzwol Hyal"; map = "Sosaria"; dungeon = "the Fires of Hell"; world = "Land of Sosaria"; syth = "Prince Myrhal of Rax"; scroll = "SythDatacron01"; 
-				describe = "Allows a Syth to use or move an object that is out of reach. Can be used to set off some Chest Traps from a safe distance as well."; }
+				describe = StringCatalog.Resolve( account, "Allows a Syth to use or move an object that is out of reach. Can be used to set off some Chest Traps from a safe distance as well." ); }
 			else if ( spellID == 271 ){ name = "Death Grip"; icon="1002"; crystal = "16"; skill = "20"; mana = "8"; mantra = "Zayin Kun"; map = "Sosaria"; dungeon = "Dungeon Doom"; world = "Land of Sosaria"; syth = "Lady Kath of Naelex"; scroll = "SythDatacron02"; 
-				describe = "The Syth can reach out with their hatred and anger, psychically gripping a foe for 5-20 points of damage every few seconds. This effect lasts for 2-75 seconds. The more a Syth is skilled with swords and tactics, and their accumulated hatred and anger, increases the effectiveness of this power."; }
+				describe = StringCatalog.Resolve( account, "The Syth can reach out with their hatred and anger, psychically gripping a foe for 5-20 points of damage every few seconds. This effect lasts for 2-75 seconds. The more a Syth is skilled with swords and tactics, and their accumulated hatred and anger, increases the effectiveness of this power." ); }
 			else if ( spellID == 272 ){ name = "Projection"; icon="21287"; crystal = "24"; skill = "30"; mana = "12"; mantra = "Rhak Skuri"; map = "Sosaria"; dungeon = "the Ancient Pyramid"; world = "Land of Sosaria"; syth = "Saint Kargoth"; scroll = "SythDatacron03"; 
-				describe = "This power allows the Syth to create a projection of themselves that can distract foes from the Syth themselves. This projection contains physical attributes as the psychic energy of the Syth can maintain the illusion for up to about 3 minutes, depending on how powerful they are."; }
+				describe = StringCatalog.Resolve( account, "This power allows the Syth to create a projection of themselves that can distract foes from the Syth themselves. This projection contains physical attributes as the psychic energy of the Syth can maintain the illusion for up to about 3 minutes, depending on how powerful they are." ); }
 			else if ( spellID == 273 ){ name = "Throw Sword"; icon="1005"; crystal = "12"; skill = "40"; mana = "16"; mantra = "Chwit Sutta"; map = "Sosaria"; dungeon = "Dungeon Exodus"; world = "Land of Sosaria"; syth = "Sir Maeril of Naelax"; scroll = "SythDatacron04"; 
-				describe = "The Syth can throw their equipped sword at an enemy, doing not only the sword's normal damage but also an extra 17-53 points of damage. The types of resistances that the sword inflicts damage on match that of the sword. The sword quickly returns to the Syth's hand upon throwing it."; }
+				describe = StringCatalog.Resolve( account, "The Syth can throw their equipped sword at an enemy, doing not only the sword's normal damage but also an extra 17-53 points of damage. The types of resistances that the sword inflicts damage on match that of the sword. The sword quickly returns to the Syth's hand upon throwing it." ); }
 			else if ( spellID == 274 ){ name = "Speed"; icon="1043"; crystal = "80"; skill = "50"; mana = "20"; mantra = "Qyasik Tukata"; map = "Sosaria"; dungeon = "Dungeon Clues"; world = "Land of Sosaria"; syth = "Lord Monduiz Dephaar"; scroll = "SythDatacron05"; 
-				describe = "This increases the running speed of the Syth for about 10-25 minutes, making them run as fast as a stallion. This power cannot be called upon within certain areas and will often cease to function when entering those areas."; }
+				describe = StringCatalog.Resolve( account, "This increases the running speed of the Syth for about 10-25 minutes, making them run as fast as a stallion. This power cannot be called upon within certain areas and will often cease to function when entering those areas." ); }
 			else if ( spellID == 275 ){ name = "Syth Lightning"; icon="1010"; crystal = "32"; skill = "60"; mana = "24"; mantra = "Sutta Wo"; map = "Sosaria"; dungeon = "the Mausoleum"; world = "Island of Umber Veil"; syth = "Lord Androma of Gara"; scroll = "SythDatacron06"; 
-				describe = "The power of Syth lightning can be massive, and the stronger the Syth, the more enemies that will be struck by the power of this lightning. The damage dealt will be around 12-75 points of energy damage for each that are struck."; }
+				describe = StringCatalog.Resolve( account, "The power of Syth lightning can be massive, and the stronger the Syth, the more enemies that will be struck by the power of this lightning. The damage dealt will be around 12-75 points of energy damage for each that are struck." ); }
 			else if ( spellID == 276 ){ name = "Absorption"; icon="23015"; crystal = "500"; skill = "70"; mana = "28"; mantra = "Taral Wai"; map = "Sosaria"; dungeon = "the City of the Dead"; world = "Land of Ambrosia"; syth = "Sir Farian of Lirtham"; scroll = "SythDatacron07"; 
-				describe = "This power gives the essence of the Syth the ability to absorb most damaging magery spells, and the Syth then redirects those spells back at the one who cast it. The amount that a Syth can absorb is dependent on their power."; }
+				describe = StringCatalog.Resolve( account, "This power gives the essence of the Syth the ability to absorb most damaging magery spells, and the Syth then redirects those spells back at the one who cast it. The amount that a Syth can absorb is dependent on their power." ); }
 			else if ( spellID == 277 ){ name = "Psychic Blast"; icon="23010"; crystal = "48"; skill = "80"; mana = "32"; mantra = "Wai Kusk"; map = "Lodor"; dungeon = "Dungeon Wrong"; world = "Land of Lodoria"; syth = "Lord Thyrian of Naelax"; scroll = "SythDatacron08"; 
-				describe = "Summon your rage to perform a mental attack that deals an amount of energy damage based upon your power as a Syth. Elemental Resistances may reduce damage done by this attack. The damage dealt can be between 80-125 points."; }
+				describe = StringCatalog.Resolve( account, "Summon your rage to perform a mental attack that deals an amount of energy damage based upon your power as a Syth. Elemental Resistances may reduce damage done by this attack. The damage dealt can be between 80-125 points." ); }
 			else if ( spellID == 278 ){ name = "Drain Life"; icon="1026"; crystal = "52"; skill = "90"; mana = "36"; mantra = "Derriphan Tyuk"; map = "Lodor"; dungeon = "the Lodoria Catacombs"; world = "Land of Lodoria"; syth = "Sir Minar of Darmen"; scroll = "SythDatacron09"; 
-				describe = "This power will drain about 10-15 points of life, every few seconds, from a creature for 10-60 seconds, where such life is transferred to the Syth. This power cannot affect supernatural creatures, constructs, golems, or elementals."; }
+				describe = StringCatalog.Resolve( account, "This power will drain about 10-15 points of life, every few seconds, from a creature for 10-60 seconds, where such life is transferred to the Syth. This power cannot affect supernatural creatures, constructs, golems, or elementals." ); }
 			else if ( spellID == 279 ){ name = "Clone"; icon="2261"; crystal = "250"; skill = "100"; mana = "40"; mantra = "Itsu Sutta"; map = "Lodor"; dungeon = "Dungeon Deceit"; world = "Land of Lodoria"; syth = "Sir Rezinar of Haxx"; scroll = "SythDatacron10"; 
-				describe = "This power allows the Syth to create a cloning crystal that can hold the Syth's genetic pattern. If the Syth meets an untimely end, the crystal will activate in 30 seconds and create a clone body that the Syth's soul can then occupy. These crystal are quite fragile so you would need to make sure the crystal did not crumble while you were resting for long periods of time."; }
+				describe = StringCatalog.Resolve( account, "This power allows the Syth to create a cloning crystal that can hold the Syth's genetic pattern. If the Syth meets an untimely end, the crystal will activate in 30 seconds and create a clone body that the Syth's soul can then occupy. These crystal are quite fragile so you would need to make sure the crystal did not crumble while you were resting for long periods of time." ); }
 
 			if ( slice == 1 ){ value = name; }
 			else if ( slice == 2 ){ value = skill; }
@@ -153,7 +164,7 @@ namespace Server.Spells.Syth
 
 			if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to use this power." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to use this power." ) );
 				return false;
 			}
 			else if ( GetSythSkillMax( Caster ) < RequiredSkill )
@@ -173,7 +184,7 @@ namespace Server.Spells.Syth
 			}
 			else if ( this is SythSpeed && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This power doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This power doesn't seem to work in this place." ) );
 				return false;
 			}
 
@@ -187,7 +198,7 @@ namespace Server.Spells.Syth
 
 			if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to use this power." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to use this power." ) );
 				return false;
 			}
 			else if ( GetSythSkillMax( Caster ) < RequiredSkill )
@@ -207,7 +218,7 @@ namespace Server.Spells.Syth
 			}
 			else if ( this is SythSpeed && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This power doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This power doesn't seem to work in this place." ) );
 				return false;
 			}
 

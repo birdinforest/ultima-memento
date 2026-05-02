@@ -4,6 +4,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -41,15 +42,15 @@ namespace Server.Spells.Research
 			}
 			else if ( m is BaseCreature && ((BaseCreature)m).IsAnimatedDead )
 			{
-				Caster.SendMessage( "This spell will have no affect on that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell will have no affect on that." ) );
 			}
 			else if ( m.IsDeadBondedPet )
 			{
-				Caster.SendMessage( "This spell will have no affect on that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell will have no affect on that." ) );
 			}
 			else if ( m is Golem )
 			{
-				Caster.SendMessage( "This spell will have no affect on that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell will have no affect on that." ) );
 			}
 			else if ( CheckBSequence( m ) )
 			{

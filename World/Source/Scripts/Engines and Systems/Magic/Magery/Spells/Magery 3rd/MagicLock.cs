@@ -6,6 +6,7 @@ using Server.Network;
 using Server.Items;
 using Server.Mobiles;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Spells.Third
 {
@@ -81,7 +82,7 @@ namespace Server.Spells.Third
 					if ( Server.Items.DoorType.IsDungeonDoor( door ) )
 					{
 						if ( door.Locked == true )
-							Caster.SendMessage( "That door is already locked!" );
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That door is already locked!" ) );
 						else
 						{
 							SpellHelper.Turn( Caster, door );
@@ -94,7 +95,7 @@ namespace Server.Spells.Third
 
 							Effects.PlaySound( loc, door.Map, 0x1FA );
 
-							Caster.SendMessage( "That door is now locked!" );
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That door is now locked!" ) );
 
 							door.Locked = true;
 							Server.Items.DoorType.LockDoors( door );
@@ -103,17 +104,17 @@ namespace Server.Spells.Third
 						}
 					}
 					else
-						Caster.SendMessage( "This spell has no effect on that!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell has no effect on that!" ) );
 				}
 				else
 				{
-					Caster.SendMessage( "This spell has no effect on that!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell has no effect on that!" ) );
 				}
 				
 			}
 			else if ( o is PlayerMobile )
 			{
-				Caster.SendMessage( "That soul seems too strong to trap in the flask!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That soul seems too strong to trap in the flask!" ) );
 			}
 			else if ( o is BaseCreature )
 			{
@@ -121,24 +122,24 @@ namespace Server.Spells.Third
 
 				if ( !bc.Alive )
 				{
-					Caster.SendMessage( "You cannot trap something that is dead!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot trap something that is dead!" ) );
 				}
 				else if ( o is LockedCreature )
 				{
-					Caster.SendMessage( "That creature cannot be trapped again!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That creature cannot be trapped again!" ) );
 				}
 				else if ( bc.Controlled )
 				{
-					Caster.SendMessage( "That is under the control of another!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That is under the control of another!" ) );
 				}
 				else if ( bc.EmoteHue == 505 || bc.ControlSlots >= 100 ) // SUMMON QUEST AND QUEST MONSTERS
 				{
 					IntelligentAction.FizzleSpell( Caster );
-					Caster.SendMessage( "You are not powerful enough to trap that!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not powerful enough to trap that!" ) );
 				}
 				else if ( Caster.Backpack.FindItemByType( typeof ( IronFlask ) ) == null )
 				{
-					Caster.SendMessage( "You need an empty iron flask to trap them!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need an empty iron flask to trap them!" ) );
 				}
 				else
 				{
@@ -152,7 +153,7 @@ namespace Server.Spells.Third
 						if ( Utility.RandomMinMax( 1, 100 ) > success )
 						{
 							IntelligentAction.FizzleSpell( Caster );
-							Caster.SendMessage( "You fail to trap them in the flask!" );
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You fail to trap them in the flask!" ) );
 						}
 						else
 						{
@@ -237,7 +238,7 @@ namespace Server.Spells.Third
 					else
 					{
 						IntelligentAction.FizzleSpell( Caster );
-						Caster.SendMessage( "You are not powerful enough to trap that!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not powerful enough to trap that!" ) );
 					}
 				}
 			}
@@ -310,7 +311,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( "This flask is empty." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This flask is empty." ) );
 			}
 		}
 
@@ -364,11 +365,11 @@ namespace Server.Items
 
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 			}
 			else if ( nFollowers < 1 )
 			{
-				from.SendMessage("You already have enough henchman in your group.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have enough henchman in your group." ) );
 			}
 			else if ( HenchmanFunctions.IsInRestRegion( from ) == false )
 			{
@@ -428,7 +429,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("You don't think it would be a good idea to do that here.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You don't think it would be a good idea to do that here." ) );
 			}
 		}
 

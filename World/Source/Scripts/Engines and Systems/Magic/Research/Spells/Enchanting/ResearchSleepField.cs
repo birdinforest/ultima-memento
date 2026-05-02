@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Network;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Where do you want the field to materialize?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Where do you want the field to materialize?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 

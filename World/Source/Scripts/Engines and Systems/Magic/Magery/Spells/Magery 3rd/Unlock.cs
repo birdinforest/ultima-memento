@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Third
 {
@@ -56,11 +57,11 @@ namespace Server.Spells.Third
 					}
 					else if ( o is BaseHouseDoor )  // house door check
 					{
-						from.SendMessage( "This spell is to unlock certain containers and other types of doors." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This spell is to unlock certain containers and other types of doors." ) );
 					}
 					else if ( o is Item && ((Item)o).VirtualContainer )
 					{
-						from.SendMessage( "This key is to unlock almost any container." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This key is to unlock almost any container." ) );
 					}
 					else if ( o is BaseDoor )
 					{
@@ -93,15 +94,15 @@ namespace Server.Spells.Third
 							from.SendLocalizedMessage( 501666 ); // You can't unlock that!
 						else if ( (this.GetType()).IsAssignableFrom(typeof(TreasureMapChest)) )
 						{
-							from.SendMessage( "A magical aura on this long lost treasure seems to negate your spell." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "A magical aura on this long lost treasure seems to negate your spell." ) );
 						}
 						else if ( (this.GetType()).IsAssignableFrom(typeof(ParagonChest)) )
 						{
-							from.SendMessage( "A magical aura on this long lost treasure seems to negate your spell." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "A magical aura on this long lost treasure seems to negate your spell." ) );
 						}
 						else if ( (this.GetType()).IsAssignableFrom(typeof(PirateChest)) )
 						{
-							from.SendMessage( "This seems to be protected from magic, but maybe a thief can get it open." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "This seems to be protected from magic, but maybe a thief can get it open." ) );
 						}
 						else {
 							int level = (int)( Spell.ItemSkillValue( from, SkillName.Magery, false ) ) + 20;

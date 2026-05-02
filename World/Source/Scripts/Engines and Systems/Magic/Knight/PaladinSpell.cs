@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Spells;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Spells.Chivalry
 {
@@ -34,12 +35,12 @@ namespace Server.Spells.Chivalry
 
 			if ( Caster.Stam < cost )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma < 0 )
 			{
-				Caster.SendMessage( "You do not have enough Karma to use this ability." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have enough Karma to use this ability." ) );
 				return false;
 			}
 			else if ( Caster.TithingPoints < RequiredTithing )
@@ -67,12 +68,12 @@ namespace Server.Spells.Chivalry
 
 			if ( Caster.Stam < cost )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma < 0 )
 			{
-				Caster.SendMessage( "You do not have enough Karma to use this ability." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have enough Karma to use this ability." ) );
 				return false;
 			}
 			else if ( Caster.TithingPoints < requiredTithing )

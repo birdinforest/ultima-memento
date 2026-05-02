@@ -5,6 +5,7 @@ using Server.Network;
 using System.Text;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Mystic
 {
@@ -53,7 +54,7 @@ namespace Server.Spells.Mystic
 				BuffInfo.RemoveBuff( m, BuffIcon.WindRunner );
 				m.EndAction( typeof( WindRunner ) );
 				m.PlaySound( 0x64C ); // Cleansing winds
-				m.SendMessage("You feel the wind around you dissipate");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel the wind around you dissipate" ) );
 				FastPlayer.Refresh(m as PlayerMobile);
 			}
 		}
@@ -64,7 +65,7 @@ namespace Server.Spells.Mystic
 
             if ( Caster.Mounted )
             {
-                Caster.SendMessage( "You cannot use this ability while on a mount!" );
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot use this ability while on a mount!" ) );
             }
 			else
 			{

@@ -3,6 +3,7 @@ using Server;
 using Server.Spells;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Jester
 {
@@ -34,7 +35,7 @@ namespace Server.Spells.Jester
 			}
 			else if ( !Server.Misc.GetPlayerInfo.isJester( Caster ) )
 			{
-				Caster.SendMessage( "You are not a jester!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not a jester!" ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
@@ -62,7 +63,7 @@ namespace Server.Spells.Jester
 			}
 			else if ( !Server.Misc.GetPlayerInfo.isJester( Caster ) )
 			{
-				Caster.SendMessage( "You are not a jester!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not a jester!" ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )

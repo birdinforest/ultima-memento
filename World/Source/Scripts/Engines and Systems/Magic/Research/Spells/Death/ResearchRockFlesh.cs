@@ -5,6 +5,7 @@ using Server.Network;
 using System.Text;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -46,7 +47,7 @@ namespace Server.Spells.Research
 			m.HueMod = -1;
 			m.BodyMod = 0;
 			m.RaceBody();
-			m.SendMessage( "Your flesh turns back to normal." );
+			m.SendMessage( StringCatalog.Resolve( m.Account, "Your flesh turns back to normal." ) );
 
 			BuffInfo.RemoveBuff( m, BuffIcon.RockFlesh );
 
@@ -99,7 +100,7 @@ namespace Server.Spells.Research
 						mt.Rider = null;
 					}
 
-				Caster.SendMessage( "Your flesh turns to stone." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your flesh turns to stone." ) );
 
 				Server.Misc.Research.ConsumeScroll( Caster, true, spellID, alwaysConsume, Scroll );
 

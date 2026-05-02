@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Items;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Mystic
 {
@@ -32,11 +33,11 @@ namespace Server.Spells.Mystic
 
 			if ( weapon == null || weapon is Fists )
 			{
-				Caster.SendMessage( "You must be wearing some type of pugilist gloves!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You must be wearing some type of pugilist gloves!" ) );
 			}
 			else if ( !( weapon is IPugilistGlove ) )
 			{
-				Caster.SendMessage( "You must be wearing some type of pugilist gloves!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You must be wearing some type of pugilist gloves!" ) );
 			}
 			else if ( CheckSequence() )
 			{
@@ -54,7 +55,7 @@ namespace Server.Spells.Mystic
 
 				weapon.Consecrated = true;
 
-				Caster.SendMessage( "Your fists glow with magical energy." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your fists glow with magical energy." ) );
 				m_Table[weapon] = t = new ExpireTimer( weapon, duration, Caster );
 
 				t.Start();
@@ -81,7 +82,7 @@ namespace Server.Spells.Mystic
 			{
 				if ( m_Table[m_Weapon] == null ) return;
 
-				m_Caster.SendMessage( "Your fists return to normal." );
+				m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "Your fists return to normal." ) );
 				m_Weapon.Consecrated = false;
 				Effects.PlaySound( m_Weapon.GetWorldLocation(), m_Weapon.Map, 0x1F8 );
 				m_Table.Remove( this );

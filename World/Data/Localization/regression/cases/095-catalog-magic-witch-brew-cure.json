@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.magic-witch-brew-cure-disease",
+  "pipeline": "string_catalog_only",
+  "en": "This is created from a witch's brew: Cures one of poisonous diseases. To use it, one should have a 45 in Forensics and a 40 in Necromancy.",
+  "expectedZh": "此为女巫秘酿所成：可祛除剧毒疫病。使用需取证技能45、死灵法术40。",
+  "tags": "magic,witch-brew,potion,string_catalog_only",
+  "source": "BookWitchBrewing potionDesc (StringCatalog.Resolve)"
+}

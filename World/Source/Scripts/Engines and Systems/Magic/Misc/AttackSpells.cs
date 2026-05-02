@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Magical
 {
@@ -204,7 +205,7 @@ namespace Server.Spells.Magical
 					m.Stam = m.Stam - drain;
 						if ( m.Stam < 0 ){ m.Stam = 0; }
 
-					m.SendMessage( "You feel your soul draining!" );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your soul draining!" ) );
 					phy = 20;
 					fir = 20;
 					cld = 20;
@@ -740,7 +741,7 @@ namespace Server.Spells.Magical
 					m.Stam = m.Stam - drain;
 						if ( m.Stam < 0 ){ m.Stam = 0; }
 
-					m.SendMessage( "You feel your soul draining!" );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your soul draining!" ) );
 					phy = 20;
 					fir = 20;
 					cld = 20;

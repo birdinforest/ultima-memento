@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Fifth
 {
@@ -39,7 +40,7 @@ namespace Server.Spells.Fifth
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Diamond ) ) == null )
 			{
-				Caster.SendMessage( "You need a diamond to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a diamond to cast this spell!" ) );
 				return false;
 			}
 
@@ -56,7 +57,7 @@ namespace Server.Spells.Fifth
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Diamond ) ) == null )
 			{
-				Caster.SendMessage( "You need a diamond to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a diamond to cast this spell!" ) );
 			}
 			else if ( CheckSequence() )
 			{

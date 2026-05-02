@@ -1,0 +1,28 @@
+{
+  "scripts-engines-and-systems.json": {
+    "s.14bb1204e3e10f29": "Xtee Mee Glau",
+    "s.7cb98c0c6527401e": "Magic Toolbars: Here are the commands you can use (include the bracket) to manage magic toolbars that might help you play better.<BR><BR>[deathspell1 - Opens the 1st death knight spell bar editor.<BR><BR>[deathspell2 - Opens the 2nd death knight spell bar editor.<BR><BR>[deathtool1 - Opens the 1st death knight spell bar.<BR><BR>[deathtool2 - Opens the 2nd death knight spell bar.<BR><BR>[deathclose1 - Closes the 1st death knight spell bar.<BR><BR>[deathclose2 - Closes the 2nd death knight spell bar.<BR><BR>Below are the [ commands you can either type to quickly cast a particular spell, or set a hot key to issue this command and cast the spell.<BR><BR>[DKBanish<BR>    Cast Banish<BR><BR>[DKDemonicTouch<BR>    Cast Demonic Touch<BR><BR>[DKDevilPact<BR>    Cast Devil Pact<BR><BR>[DKGrimReaper<BR>    Cast Grim Reaper<BR><BR>[DKHagHand<BR>    Cast Hag Hand<BR><BR>[DKHellfire<BR>    Cast Hellfire<BR><BR>[DKLucifersBolt<BR>    Cast Lucifer's Bolt<BR><BR>[DKOrbOrcus<BR>    Cast Orb of Orcus<BR><BR>[DKShieldHate<BR>    Cast Shield of Hate<BR><BR>[DKSoulReaper<BR>    Cast Soul Reaper<BR><BR>[DKStrengthSteel<BR>    Cast Strength of Steel<BR><BR>[DKStrike<BR>    Cast Strike<BR><BR>[DKSuccubusSkin<BR>    Cast Succubus Skin<BR><BR>[DKWrath<BR>    Cast Wrath<BR><BR>",
+    "s.7d2a5b379f5f370f": "'. The last known coordinates of the tomb's outer entrance is:<br><br>",
+    "s.7e8ee00d962e118f": "Saint Kargoth<BR>Land of Sosaria: Ancient Pyramid<BR>{0}<BR><BR>",
+    "s.7ff1e27aa6c997f9": "Close Quick Bars",
+    "s.81409007ac56e0dd": "You Are Not A Syth!",
+    "s.831f3d30931d6f58": "Poison Threnody",
+    "s.885b74d4c9cdf49a": "Greatly increases the target's strength for a short period.",
+    "s.8870dc9d0f1ab34d": "Skill:",
+    "s.89848446d8e76c49": "You Need Durasteel!",
+    "s.8e184a29888cf36f": "An area of effect that raises the strength of your party.",
+    "s.973670e1df0e5646": "If you manage to find magical items that have a lower reagent quality, then the stamina required for spells will be reduced proportionally by that value. ",
+    "s.9a09260836131dbf": "Construct Laser Sword",
+    "s.a270746605e6e810": "Reagents: ",
+    "s.a2dc9c1a1128fe83": "Open Vertical Quick Bar",
+    "s.a2e9ebcacd7cfbac": "You Are One With The Syth",
+    "s.a57977677ee962b5": "Lord Monduiz Dephaar<BR>Land of Sosaria: Dungeon Clues<BR>{0}<BR><BR>",
+    "s.a7c95e229de49f65": "The death knight's enemy is damaged by a demonic energy from the nine hells.",
+    "s.a7ef0d083abb54b8": "Lowers the poison resistance of your target.",
+    "s.ad2394878ee8a3f7": "You Need A Gem!",
+    "s.ae2e68d4e5a27605": "Anh Mi Sah Ko",
+    "s.af372686cfabca91": "Prince Myrhal of Rax<BR>Land of Sosaria: Fires of Hell<BR>{0}<BR><BR>",
+    "s.af5e9c266f3d8bd5": "In order to learn the ways of the Death Knight, you must master the art of Knightship while spreading evil deeds throughout the land, avoiding Karmic influences. One must seek out the 14 Disciple Knights of Kas, and learn the power they each mastered. Find their resting places, speak their names, and claim their skulls which contains the knowledge they had. Placing the skulls onto this book will increase its spell potential, but be quick about it. Anyone that calls forth their skull will cause it to appear no matter where it is in the land, taking it from another that may possess it. You will need the power of souls to use such magic. Find humanoid creatures like brigands, orcs, titans, goblins, or trolls...those that carry gold, and slay them while holding the lantern in your left hand. Although their gold will turn to dust, your lantern will increase in power that will drain as you use this magic. You do not need to hold the lantern while unleashing this power, but only when collecting souls. The lantern does not need to be in your possession either, as death magic will claim the souls from the lantern wherever it is. {0}Although most magic relies on your Knightship skill alone, there are also some elements that will have greater effect the lower your Karma is. Go forth Death Knight, and bring our order back to this world. Beware, Death Knight. Powerful Death Knights are often not tolerated in the city streets and may be attacked on site.",
+    "s.c75d7b6115de5dd2": "'.<br><br>"
+  }
+}

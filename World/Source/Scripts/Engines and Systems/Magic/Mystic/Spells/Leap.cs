@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Mystic
 {
@@ -38,7 +39,7 @@ namespace Server.Spells.Mystic
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Choose a spot to leap to." );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Choose a spot to leap to." ) );
 			Caster.Target = new InternalTarget( this );
 		}
 

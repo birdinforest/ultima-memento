@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Syth
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Who do you want to put to grip?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Who do you want to put to grip?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 

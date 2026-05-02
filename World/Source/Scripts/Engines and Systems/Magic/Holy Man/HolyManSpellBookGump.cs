@@ -6,7 +6,8 @@ using Server.Misc;
 using Server.Network; 
 using Server.Spells; 
 using Server.Spells.HolyMan; 
-using Server.Prompts; 
+using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Gumps 
 { 
@@ -36,7 +37,6 @@ namespace Server.Gumps
 		{
 			from.PlaySound( 0x55 );
 			m_Book = book;
-			string color = "#dddddd";
 
 			m_Map_1 = Map.Internal;
 			m_X_1 = 0;
@@ -70,8 +70,8 @@ namespace Server.Gumps
 			AddButton(72, 45, 4014, 4014, PriorPage, GumpButtonType.Reply, 0);
 			AddButton(590, 48, 4005, 4005, NextPage, GumpButtonType.Reply, 0);
 
-			AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>PRAYER BOOK</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 398, 48, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>PRAYER BOOK</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 107, 46, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd><CENTER>PRAYER BOOK</CENTER></BASEFONT></BODY>" ), false, false );
+			AddHtml( 398, 48, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd><CENTER>PRAYER BOOK</CENTER></BASEFONT></BODY>" ), false, false );
 
 			if ( page == 1 )
 			{
@@ -109,7 +109,7 @@ namespace Server.Gumps
 						else if ( SpellsListed == 782 ){ SpellName = "Touch of Life"; }
 						else if ( SpellsListed == 783 ){ SpellName = "Trial by Fire"; }
 
-						AddHtml( x+30, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + SpellName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+30, y, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", SpellName ), false, false );
 						AddButton(x, y-4, 7049, 7049, SpellsListed, GumpButtonType.Reply, 0);
 						y=y+v;
 
@@ -127,11 +127,11 @@ namespace Server.Gumps
 
 				info = "In order to learn the ways of the light, you must pursue proficiency in healing and spiritualism. One must seek out the graves of 14 priests, which are spread throughout the lands. Find their resting places, speak their mantra, and claim theirholy symbols which contains the power granted from the gods. Placing the symbols onto this book will add the prayer, but be quick about it. Anyone that calls forth their symbols will cause it to appear no matter where it is in the land, taking it from another that may possess it. You will need to banish evil to use such prayers. Find creatures like demons and the undead...those that carry gold, and slay them while holding the symbol where trinkets go. Although their gold will vanish, your symbol will increase in piety that will deplete as you use these prayers. You do not need to hold the symbol while praying, but only when dispatching such evil. The symbol does not need to be in your possession either, as prayers will use the piety wherever it is. " + lowreg + "Although most prayers rely on your Spiritualism skill alone, there are also some elements that will have greater effect based on your Healing skill. Go forth Priest, and rid the world of evil.";
 
-				AddHtml( 78, 80, 250, 314, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 78, 80, 250, 314, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", info ), false, true );
 
 				info = "Magic Toolbars: Here are the commands you can use (include the bracket) to manage magic toolbars that might help you play better.<br><br>[holyspell1 - Opens the 1st priest spell bar editor.<BR><BR>[holyspell2 - Opens the 2nd priest spell bar editor.<BR><BR>[holytool1 - Opens the 1st priest spell bar.<BR><BR>[holytool2 - Opens the 2nd priest spell bar.<BR><BR>[holyclose1 - Closes the 1st priest spell bar.<BR><BR>[holyclose2 - Closes the 2nd priest spell bar.<BR><BR>Below are the [ commands you can either type to quickly cast a particular spell, or set a hot key to issue this command and cast the spell.<BR><BR>[HMBanish<BR>    Cast Banish<BR><BR>[HMDampenSpirit<BR>    Cast Dampen Spirit<BR><BR>[HMEnchant<BR>    Cast Enchant<BR><BR>[HMHammerFaith<BR>    Cast Hammer of Faith<BR><BR>[HMHeavenlyLight<BR>    Cast Heavenly Light<BR><BR>[HMNourish<BR>    Cast Nourish<BR><BR>[HMPurge<BR>    Cast Purge<BR><BR>[HMRebirth<BR>    Cast Rebirth<BR><BR>[HMSacredBoon<BR>    Cast Sacred Boon<BR><BR>[HMSanctify<BR>    Cast Sanctify<BR><BR>[HMSeance<BR>    Cast Seance<BR><BR>[HMSmite<BR>    Cast Smite<BR><BR>[HMTouchLife<BR>    Cast Touch of Life<BR><BR>[HMTrialFire<BR>    Cast Trial by Fire<BR><BR>";
 
-				AddHtml( 366, 80, 250, 314, @"<BODY><BASEFONT Color=" + color + ">" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 366, 80, 250, 314, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", info ), false, true );
 			}
 			else
 			{
@@ -310,24 +310,24 @@ namespace Server.Gumps
 				m_Y_2 = yc_2;
 
 				AddImage(75, 80, icon1, 1071);
-				AddHtml( 129, 93, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + name1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Piety:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + pity1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + skil1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 196, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + mana1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 78, z1, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + text1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 129, 93, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", name1 ), false, false );
+				AddHtml( 134, 130, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Piety:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 130, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", pity1 ), false, false );
+				AddHtml( 134, 160, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Skill:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 160, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", skil1 ), false, false );
+				AddHtml( 134, 190, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Mana:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 196, 190, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", mana1 ), false, false );
+				AddHtml( 78, z1, 250, 175, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", text1 ), false, false );
 
 				AddImage(362, 80, icon2, 1071);
-				AddHtml( 417, 93, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + name2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Piety:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 130, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + pity2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + skil2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 422, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 484, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + mana2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 366, z2, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + text2 + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 93, 200, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", name2 ), false, false );
+				AddHtml( 422, 130, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Piety:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 130, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", pity2 ), false, false );
+				AddHtml( 422, 160, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Skill:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 160, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", skil2 ), false, false );
+				AddHtml( 422, 190, 57, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#dddddd>Mana:</BASEFONT></BODY>" ), false, false );
+				AddHtml( 484, 190, 57, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", mana2 ), false, false );
+				AddHtml( 366, z2, 250, 175, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#dddddd>{0}</BASEFONT></BODY>", text2 ), false, false );
 
 				if ( Sextants.HasSextant( from ) && m_X_1 > 0 && m_NotHave_1 )
 					AddButton(73, 368, 10461, 10461, 98000+page, GumpButtonType.Reply, 0);

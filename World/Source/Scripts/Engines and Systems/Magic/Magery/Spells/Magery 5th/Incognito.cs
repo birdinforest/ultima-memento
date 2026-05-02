@@ -8,6 +8,7 @@ using Server.Gumps;
 using Server.Spells;
 using Server.Spells.Seventh;
 using Server.Spells.Shinobi;
+using Server.Localization;
 
 namespace Server.Spells.Fifth
 {
@@ -37,7 +38,7 @@ namespace Server.Spells.Fifth
 			}
 			else if ( !Caster.CanBeginAction( typeof( Deception ) ) )
 			{
-				Caster.SendMessage( "You are already disguised!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already disguised!" ) );
 				return false;
 			}
 
@@ -52,7 +53,7 @@ namespace Server.Spells.Fifth
 			}
 			else if ( !Caster.CanBeginAction( typeof( Deception ) ) )
 			{
-				Caster.SendMessage( "You are already disguised!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already disguised!" ) );
 			}
 			else if ( DisguiseTimers.IsDisguised( Caster ) )
 			{

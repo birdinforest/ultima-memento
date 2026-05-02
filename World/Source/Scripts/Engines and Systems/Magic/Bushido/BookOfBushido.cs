@@ -1,12 +1,13 @@
 using System;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BookOfBushido : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by samurai, in order for them to use various combat abilities in battle. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This book is used by samurai, in order for them to use various combat abilities in battle. Some books have enhanced properties, that are only effective when the book is held." ); } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Samurai; } }
 		public override int BookOffset{ get{ return 400; } }

@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -33,14 +34,14 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 			string sPower = string.Format("{0:n0}", BanishedEvil);
-            if ( owner != null ){ list.Add( 1070722, "Piety for " + owner.Name + ": " + sPower + ""); }
+            if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Piety for {0}: {1}", owner.Name, sPower ) ); }
         } 
 
 		public override bool OnEquip( Mobile from )
 		{
 			if ( owner != from )
 			{
-				from.SendMessage ("This is not your holy symbol!");
+				from.SendMessage (StringCatalog.Resolve( from.Account, "This is not your holy symbol!" ));
 				return false;
 			}
 

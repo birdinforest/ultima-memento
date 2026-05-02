@@ -6,6 +6,7 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Who do you want to put to sleep?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Who do you want to put to sleep?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -61,7 +62,7 @@ namespace Server.Spells.Research
 			}
 			else if ( !CanAffect )
 			{
-				Caster.SendMessage( "This spell cannot affect supernatural creatures, golems, constructs, or elementals." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot affect supernatural creatures, golems, constructs, or elementals." ) );
 			}
 			else if ( CheckHSequence( m ) )
 			{

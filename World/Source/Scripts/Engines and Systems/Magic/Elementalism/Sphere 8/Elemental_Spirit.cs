@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Elementalism
 {
@@ -74,7 +75,7 @@ namespace Server.Spells.Elementalism
 					BaseCreature.Summon( new ElementalSpiritWater(), false, Caster, new Point3D( p ), 0x026, duration );
 				}
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 			}
 
 			FinishSequence();

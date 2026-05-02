@@ -11,6 +11,7 @@ using Server.Items;
 using Server.ContextMenus;
 using Server.Misc;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -52,7 +53,7 @@ namespace Server.Items
 			if ( Enchanted == MagicSpell.None )
 			{
 				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "There is no magic on the bag!" );
-				from.SendMessage( "There is no magic on the bag!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "There is no magic on the bag!" ) );
 				return false;
 			}
 			base.OnEquip( from );
@@ -90,7 +91,7 @@ namespace Server.Items
 				from.PlaySound( 0x48 );
 			}
 			else
-				from.SendMessage( "You can only use this from your pack." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this from your pack." ) );
 		}
 
 		public class MagicRuneGump : Gump
@@ -100,9 +101,7 @@ namespace Server.Items
 
 			public MagicRuneGump( Mobile from, MagicRuneBag bag ): base( 50, 50 )
 			{
-				string color = "#FFC100";
-
-				mBag = bag;
+			mBag = bag;
 				mFrom = from;
 
 				Closable=true;
@@ -117,8 +116,8 @@ namespace Server.Items
 
 				AddImage(0, 0, 10465);
 
-				AddHtml( 12, 11, 424, 66, @"<BODY><BASEFONT Color=" + color + ">This magical bag will hold runes of power for which you can combine to cast spells from the bag. When a bag is set for a spell, it must then be equipped in order to cast it by double clicking the bag.</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 13, 370, 424, 163, @"<BODY><BASEFONT Color=" + color + ">You can add runes by dropping them onto the bag. You can use the down arrow buttons to remove the rune from the bag. To select a rune to have ready for a spell, select the button to the right of the arrow for the rune. If you have a proper combination, then the bag will be readied for a spell and can then be equipped to use. These bags always have the book to reference this unusual form of magic, and you can read the book by selecting the scroll button on the bottom right. These bags can have a certain number of charges, where a mage can recharge it for you for a fee.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 11, 424, 66, @"<BODY><BASEFONT Color=#FFC100>" + StringCatalog.Resolve( from.Account, "This magical bag will hold runes of power for which you can combine to cast spells from the bag. When a bag is set for a spell, it must then be equipped in order to cast it by double clicking the bag." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 13, 370, 424, 163, @"<BODY><BASEFONT Color=#FFC100>" + StringCatalog.Resolve( from.Account, "You can add runes by dropping them onto the bag. You can use the down arrow buttons to remove the rune from the bag. To select a rune to have ready for a spell, select the button to the right of the arrow for the rune. If you have a proper combination, then the bag will be readied for a spell and can then be equipped to use. These bags always have the book to reference this unusual form of magic, and you can read the book by selecting the scroll button on the bottom right. These bags can have a certain number of charges, where a mage can recharge it for you for a fee." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				if ( mBag.m_Rune_An )
 				{
@@ -1033,7 +1032,7 @@ namespace Server.Items
 
 			if ( success )
 			{
-				from.SendMessage( "You place the rune in the bag." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You place the rune in the bag." ) );
 
 				if ( from.HasGump( typeof( MagicRuneBag.MagicRuneGump ) ) )
 				{
@@ -1044,7 +1043,7 @@ namespace Server.Items
 				return true;
 			}
 
-			from.SendMessage( "That rune is already in the bag." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "That rune is already in the bag." ) );
 			return false;
 		}
 

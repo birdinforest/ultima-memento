@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Eighth
 {
@@ -66,7 +67,7 @@ namespace Server.Spells.Eighth
 
 				BaseCreature.Summon( new EnergyVortex(), false, Caster, new Point3D( p ), 0x212, duration );
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 			}
 
 			FinishSequence();

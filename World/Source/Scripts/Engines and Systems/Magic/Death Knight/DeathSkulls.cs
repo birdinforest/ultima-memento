@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 using Server.Spells.DeathKnight;
 
 namespace Server.Items
@@ -24,7 +25,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull750( Serial serial ) : base( serial )
@@ -63,7 +64,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull751( Serial serial ) : base( serial )
@@ -102,7 +103,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull752( Serial serial ) : base( serial )
@@ -141,7 +142,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull753( Serial serial ) : base( serial )
@@ -180,7 +181,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull754( Serial serial ) : base( serial )
@@ -219,7 +220,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull755( Serial serial ) : base( serial )
@@ -258,7 +259,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull756( Serial serial ) : base( serial )
@@ -297,7 +298,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull757( Serial serial ) : base( serial )
@@ -336,7 +337,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull758( Serial serial ) : base( serial )
@@ -375,7 +376,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull759( Serial serial ) : base( serial )
@@ -414,7 +415,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull760( Serial serial ) : base( serial )
@@ -453,7 +454,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull761( Serial serial ) : base( serial )
@@ -492,7 +493,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull762( Serial serial ) : base( serial )
@@ -531,7 +532,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This skull is from a long dead death knight." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
 		}
 
 		public DeathKnightSkull763( Serial serial ) : base( serial )

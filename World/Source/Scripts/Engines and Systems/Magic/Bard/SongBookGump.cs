@@ -1,4 +1,5 @@
 using Server.Items; 
+using Server.Localization;
 using Server.Network; 
 using Server.Spells.Song; 
  
@@ -20,7 +21,6 @@ namespace Server.Gumps
 		public SongBookGump( Mobile from, SongBook book, int page ) : base( 100, 100 ) 
 		{ 
 			m_Book = book;
-			string color = "#d6c382";
 			from.PlaySound( 0x55 );
 
 			this.Closable=true;
@@ -45,7 +45,7 @@ namespace Server.Gumps
 
 			if ( page == 1 )
 			{
-				AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 107, 46, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>" ), false, false);
 
 				int x = 95;
 				int y = 100;
@@ -54,88 +54,88 @@ namespace Server.Gumps
 				if (HasSpell( from, 351) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 351, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Army's Paeon</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Army's Paeon</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 352) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 352, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Enchanting Etude</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Enchanting Etude</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 353) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 353, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Energy Carol</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Energy Carol</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 354) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 354, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Energy Threnody</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Energy Threnody</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 355) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 355, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Fire Carol</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Fire Carol</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 356) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 356, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Fire Threnody</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Fire Threnody</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 357) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 357, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Foe Requiem</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Foe Requiem</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 358) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 358, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Ice Carol</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Ice Carol</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 359) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 359, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Ice Threnody</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Ice Threnody</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 360) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 360, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Knight's Minne</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Knight's Minne</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 361) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 361, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Mage's Ballad</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Mage's Ballad</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 362) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 362, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Magic Finale</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Magic Finale</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 363) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 363, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Poison Carol</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Poison Carol</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 364) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 364, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Poison Threnody</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Poison Threnody</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 365) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 365, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Shepherd's Dance</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Shepherd's Dance</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 				if (HasSpell( from, 366) ) 
 				{
 					AddButton(x-5, y-5, 7048, 7048, 366, GumpButtonType.Reply, 0);
-					AddHtml( x+25, y, 148, 20, @"<BODY><BASEFONT Color=" + color + ">Sinewy Etude</BASEFONT></BODY>", (bool)false, (bool)false); c++; y = y + 38;
+					AddHtml( x+25, y, 148, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Sinewy Etude</BASEFONT></BODY>" ), false, false); c++; y = y + 38;
 				} if (c == 8){ x = 415; y = 100; }
 			}
 			else
 			{
-				AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 398, 48, 186, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 107, 46, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>" ), false, false);
+				AddHtml( 398, 48, 186, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382><CENTER>BARDIC SONGS</CENTER></BASEFONT></BODY>" ), false, false);
 
 				int s11 = 0;
 				string s12 = "";
@@ -153,15 +153,15 @@ namespace Server.Gumps
 
 				if ( page == 2 )
 				{
-					s12 = "Army's Paeon";
-					s13 = "An area of effect that regenerates your party's health slowly.";
+					s12 = StringCatalog.Resolve( from.Account, "Army's Paeon" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that regenerates your party's health slowly." );
 					s14 = "55";
 					s15 = "15";
 					s16 = "ArmysPaeon";
 					s11 = 0x404;
 
-					s22 = "Enchanting Etude";
-					s23 = "An area of effect that raises the intelligence of your party.";
+					s22 = StringCatalog.Resolve( from.Account, "Enchanting Etude" );
+					s23 = StringCatalog.Resolve( from.Account, "An area of effect that raises the intelligence of your party." );
 					s24 = "60";
 					s25 = "20";
 					s26 = "EnchantingEtude";
@@ -169,15 +169,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 3 )
 				{
-					s12 = "Energy Carol";
-					s13 = "An area of effect that raises the energy resistance of your party.";
+					s12 = StringCatalog.Resolve( from.Account, "Energy Carol" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that raises the energy resistance of your party." );
 					s14 = "50";
 					s15 = "12";
 					s16 = "EnergyCarol";
 					s11 = 0x406;
 
-					s22 = "Energy Threnody";
-					s23 = "Lowers the energy resistance of your target.";
+					s22 = StringCatalog.Resolve( from.Account, "Energy Threnody" );
+					s23 = StringCatalog.Resolve( from.Account, "Lowers the energy resistance of your target." );
 					s24 = "70";
 					s25 = "25";
 					s26 = "EnergyThrenody";
@@ -185,15 +185,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 4 )
 				{
-					s12 = "Fire Carol";
-					s13 = "An area of effect that raises the fire resistance of your party.";
+					s12 = StringCatalog.Resolve( from.Account, "Fire Carol" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that raises the fire resistance of your party." );
 					s14 = "50";
 					s15 = "12";
 					s16 = "FireCarol";
 					s11 = 0x408;
 
-					s22 = "Fire Threnody";
-					s23 = "Lowers the fire resistance of your target.";
+					s22 = StringCatalog.Resolve( from.Account, "Fire Threnody" );
+					s23 = StringCatalog.Resolve( from.Account, "Lowers the fire resistance of your target." );
 					s24 = "70";
 					s25 = "25";
 					s26 = "FireThrenody";
@@ -201,15 +201,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 5 )
 				{
-					s12 = "Foe Requiem";
-					s13 = "Damages your target with a burst of sonic energy.";
+					s12 = StringCatalog.Resolve( from.Account, "Foe Requiem" );
+					s13 = StringCatalog.Resolve( from.Account, "Damages your target with a burst of sonic energy." );
 					s14 = "50";
 					s15 = "30";
 					s16 = "FoeRequiem";
 					s11 = 0x40A;
 
-					s22 = "Ice Carol";
-					s23 = "An area of effect that raises the cold resistance of your party.";
+					s22 = StringCatalog.Resolve( from.Account, "Ice Carol" );
+					s23 = StringCatalog.Resolve( from.Account, "An area of effect that raises the cold resistance of your party." );
 					s24 = "50";
 					s25 = "12";
 					s26 = "IceCarol";
@@ -217,15 +217,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 6 )
 				{
-					s12 = "Ice Threnody";
-					s13 = "Lowers the ice resistance of your target.";
+					s12 = StringCatalog.Resolve( from.Account, "Ice Threnody" );
+					s13 = StringCatalog.Resolve( from.Account, "Lowers the ice resistance of your target." );
 					s14 = "70";
 					s15 = "25";
 					s16 = "IceThrenody";
 					s11 = 0x40C;
 
-					s22 = "Knight's Minne";
-					s23 = "An area of effect that raises the physical resist of your party.";
+					s22 = StringCatalog.Resolve( from.Account, "Knight's Minne" );
+					s23 = StringCatalog.Resolve( from.Account, "An area of effect that raises the physical resist of your party." );
 					s24 = "50";
 					s25 = "12";
 					s26 = "KnightsMinne";
@@ -233,15 +233,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 7 )
 				{
-					s12 = "Mage's Ballad";
-					s13 = "An area of effect that regenerates your party's mana slowly.";
+					s12 = StringCatalog.Resolve( from.Account, "Mage's Ballad" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that regenerates your party's mana slowly." );
 					s14 = "55";
 					s15 = "15";
 					s16 = "MagesBallad";
 					s11 = 0x40E;
 
-					s22 = "Magic Finale";
-					s23 = "An area of effect that dispels all summoned creatures around you.";
+					s22 = StringCatalog.Resolve( from.Account, "Magic Finale" );
+					s23 = StringCatalog.Resolve( from.Account, "An area of effect that dispels all summoned creatures around you." );
 					s24 = "90";
 					s25 = "35";
 					s26 = "MagicFinale";
@@ -249,15 +249,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 8 )
 				{
-					s12 = "Poison Carol";
-					s13 = "An area of effect that raises the poison resistance of your party.";
+					s12 = StringCatalog.Resolve( from.Account, "Poison Carol" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that raises the poison resistance of your party." );
 					s14 = "50";
 					s15 = "12";
 					s16 = "PoisonCarol";
 					s11 = 0x411;
 
-					s22 = "Poison Threnody";
-					s23 = "Lowers the poison resistance of your target.";
+					s22 = StringCatalog.Resolve( from.Account, "Poison Threnody" );
+					s23 = StringCatalog.Resolve( from.Account, "Lowers the poison resistance of your target." );
 					s24 = "70";
 					s25 = "25";
 					s26 = "PoisonThrenody";
@@ -265,15 +265,15 @@ namespace Server.Gumps
 				}
 				else if ( page == 9 )
 				{
-					s12 = "Shepherd's Dance";
-					s13 = "An area of effect that raises the dexterity of your party.";
+					s12 = StringCatalog.Resolve( from.Account, "Shepherd's Dance" );
+					s13 = StringCatalog.Resolve( from.Account, "An area of effect that raises the dexterity of your party." );
 					s14 = "60";
 					s15 = "20";
 					s16 = "ShephardsDance";
 					s11 = 0x413;
 
-					s22 = "Sinewy Etude";
-					s23 = "An area of effect that raises the strength of your party.";
+					s22 = StringCatalog.Resolve( from.Account, "Sinewy Etude" );
+					s23 = StringCatalog.Resolve( from.Account, "An area of effect that raises the strength of your party." );
 					s24 = "60";
 					s25 = "20";
 					s26 = "SinewyEtude";
@@ -281,24 +281,24 @@ namespace Server.Gumps
 				}
 
 				AddImage(75, 80, s11);
-				AddHtml( 134, 90, 177, 20, @"<BODY><BASEFONT Color=" + color + ">" + s12 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 135, 125, 56, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 199, 125, 56, 20, @"<BODY><BASEFONT Color=" + color + ">" + s14 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 134, 155, 56, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 198, 155, 56, 20, @"<BODY><BASEFONT Color=" + color + ">" + s15 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 95, 215, 189, 20, @"<BODY><BASEFONT Color=" + color + ">[" + s16 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 76, 250, 247, 143, @"<BODY><BASEFONT Color=" + color + ">" + s13 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 77, 190, 189, 20, @"<BODY><BASEFONT Color=" + color + ">Keyboard Command:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 134, 90, 177, 20, @"<BODY><BASEFONT Color=#d6c382>" + s12 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 135, 125, 56, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Skill:</BASEFONT></BODY>" ), false, false);
+				AddHtml( 199, 125, 56, 20, @"<BODY><BASEFONT Color=#d6c382>" + s14 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 134, 155, 56, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Mana:</BASEFONT></BODY>" ), false, false);
+				AddHtml( 198, 155, 56, 20, @"<BODY><BASEFONT Color=#d6c382>" + s15 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 95, 215, 189, 20, @"<BODY><BASEFONT Color=#d6c382>[" + s16 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 76, 250, 247, 143, @"<BODY><BASEFONT Color=#d6c382>" + s13 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 77, 190, 189, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Keyboard Command:</BASEFONT></BODY>" ), false, false);
 
 				AddImage(370, 80, s21);
-				AddHtml( 429, 90, 177, 20, @"<BODY><BASEFONT Color=" + color + ">" + s22 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 430, 125, 56, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 494, 125, 56, 20, @"<BODY><BASEFONT Color=" + color + ">" + s24 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 429, 155, 56, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 493, 155, 56, 20, @"<BODY><BASEFONT Color=" + color + ">" + s25 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 390, 215, 189, 20, @"<BODY><BASEFONT Color=" + color + ">[" + s26 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 371, 250, 247, 143, @"<BODY><BASEFONT Color=" + color + ">" + s23 + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 372, 190, 189, 20, @"<BODY><BASEFONT Color=" + color + ">Keyboard Command:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 429, 90, 177, 20, @"<BODY><BASEFONT Color=#d6c382>" + s22 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 430, 125, 56, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Skill:</BASEFONT></BODY>" ), false, false);
+				AddHtml( 494, 125, 56, 20, @"<BODY><BASEFONT Color=#d6c382>" + s24 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 429, 155, 56, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Mana:</BASEFONT></BODY>" ), false, false);
+				AddHtml( 493, 155, 56, 20, @"<BODY><BASEFONT Color=#d6c382>" + s25 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 390, 215, 189, 20, @"<BODY><BASEFONT Color=#d6c382>[" + s26 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 371, 250, 247, 143, @"<BODY><BASEFONT Color=#d6c382>" + s23 + @"</BASEFONT></BODY>", false, false);
+				AddHtml( 372, 190, 189, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#d6c382>Keyboard Command:</BASEFONT></BODY>" ), false, false);
 			}
 		}
        

@@ -4,6 +4,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Elementalism
 {
@@ -35,19 +36,19 @@ namespace Server.Spells.Elementalism
 			}
 			else if ( Caster.Region.IsPartOf( typeof( PublicRegion ) ) )
 			{
-				Caster.SendMessage( "You cannot cast this here." ); 
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot cast this here." ) ); 
 			}
 			else if ( Server.Misc.Worlds.IsOnBoat( Caster ) )
 			{
-				Caster.SendMessage( "You cannot cast this near a boat." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot cast this near a boat." ) );
 			}
 			else if ( Server.Misc.Worlds.IsOnSpaceship( Caster.Location, Caster.Map ) )
 			{
-				Caster.SendMessage( "The metal walls of this place seems to be blocking this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The metal walls of this place seems to be blocking this spell." ) );
 			}
 			else if ( inCombat )
 			{
-				Caster.SendMessage( "You cannot cast this while in combat." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot cast this while in combat." ) );
 			}
 			else if ( ( Caster.Region.IsPartOf( typeof( BardDungeonRegion ) ) || Caster.Region.IsPartOf( typeof( DungeonRegion ) ) ) && Caster.Skills[SkillName.Elementalism].Value >= 90 )
 			{
@@ -59,7 +60,7 @@ namespace Server.Spells.Elementalism
 						!Caster.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
 						!Caster.Region.IsPartOf( typeof( VillageRegion ) ) )
 			{
-				Caster.SendMessage( "You are only skilled enough to cast this spell outdoors." ); 
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are only skilled enough to cast this spell outdoors." ) ); 
 			}
 			else if (	Caster.Skills[SkillName.Elementalism].Value >= 90 && 
 						!Caster.Region.IsPartOf( typeof( DungeonRegion ) ) && 
@@ -69,7 +70,7 @@ namespace Server.Spells.Elementalism
 						!Caster.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
 						!Caster.Region.IsPartOf( typeof( VillageRegion ) ) )
 			{
-				Caster.SendMessage( "You can only cast this spell outdoors or in dungeons." ); 
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can only cast this spell outdoors or in dungeons." ) ); 
 			}
 			else
 			{

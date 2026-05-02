@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Choose a focal point for this spell, if you dare!" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Choose a focal point for this spell, if you dare!" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -44,7 +45,7 @@ namespace Server.Spells.Research
 			}
 			else if ( Server.Misc.Worlds.NoApocalypse( Caster.Location, Caster.Map ) )
 			{
-				Caster.SendMessage( "You don't think it is wise to cast this here." ); 
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You don't think it is wise to cast this here." ) ); 
 				return;
 			}
 			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )

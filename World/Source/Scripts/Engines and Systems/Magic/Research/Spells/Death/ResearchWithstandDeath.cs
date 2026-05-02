@@ -8,6 +8,7 @@ using Server.Items;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -40,7 +41,7 @@ namespace Server.Spells.Research
 
 			if ( Caster.Backpack.FindItemByType( typeof ( Sapphire ) ) == null )
 			{
-				Caster.SendMessage( "You need a sapphire to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a sapphire to cast this spell!" ) );
 				return false;
 			}
 
@@ -49,7 +50,7 @@ namespace Server.Spells.Research
 
         public override void OnCast()
         {
-			Caster.SendMessage( "Choose who you are going to summon a jewel for." );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Choose who you are going to summon a jewel for." ) );
 			Caster.Target = new InternalTarget( this );
         }
  
@@ -61,13 +62,13 @@ namespace Server.Spells.Research
             }
 			else if ( Caster.Backpack.FindItemByType( typeof ( Sapphire ) ) == null )
 			{
-				Caster.SendMessage( "You need a sapphire to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a sapphire to cast this spell!" ) );
 			}
             else if ( CheckBSequence( m, true ) )
             {
                 m.PlaySound( 0x214 );
                 m.FixedEffect( 0x376A, 10, 16, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0 );
-				m.SendMessage( "A magical jewel has been summoned to protect you from death." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "A magical jewel has been summoned to protect you from death." ) );
 				Item jewel = new JewelImmortality();
 				m.AddToBackpack( jewel );
 				Item sapphire = Caster.Backpack.FindItemByType( typeof ( Sapphire ) );
@@ -98,7 +99,7 @@ namespace Server.Spells.Research
                 }
                 else if ( o is Item )
                 {
-					from.SendMessage( "This spell will not work on that." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This spell will not work on that." ) );
                 }
             }
  
@@ -129,7 +130,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Imbued with Magic");
+			list.Add( 1070722, StringCatalog.Resolve( null, "Imbued with Magic" ) );
             list.Add( 1049644, "Magically Avoid Death");
         }
 
@@ -162,7 +163,7 @@ namespace Server.Misc
 				Item rock = m.Backpack.FindItemByType( typeof ( JewelImmortality ) );
 				m.Hits = m.HitsMax;
 				m.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
-				m.SendMessage( "You are restored with the power of the jewel!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You are restored with the power of the jewel!" ) );
 				m.CurePoison( m );
 				m.PlaySound( 0x202 );
 				rock.Delete();

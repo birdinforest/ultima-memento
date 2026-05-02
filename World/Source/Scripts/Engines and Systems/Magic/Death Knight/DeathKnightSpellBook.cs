@@ -1,4 +1,5 @@
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -61,7 +62,7 @@ namespace Server.Items
 
 			if ( Owner != from )
 			{
-				from.SendMessage( "These pages appears as scribbles to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -75,7 +76,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1070722, "For " + Owner.Name + "" ); }
+			if ( Owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "For {0}", Owner.Name ) ); }
         }
 
 		public DeathKnightSpellbook( Serial serial ) : base( serial )

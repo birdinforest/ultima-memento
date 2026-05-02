@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.8",
+  "_version": "1.9",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -128,6 +128,24 @@
       "reference_suggestion_zh": "安布罗西亚",
       "reference_note_zh": "失落大陆，常见译法。",
       "translation_basis_zh": "参考词表建议「安布罗西亚」。失落大陆，常见译法。"
+    },
+    "Crystal of Wizardry": {
+      "canonical": "魔法技艺水晶",
+      "alternatives": [
+        "奥法水晶"
+      ],
+      "category": "item",
+      "notes": "In-world name for the Forgetful Gem gump title; crystal in sorcerer/conjurer caves that lets casters forget a magic school.",
+      "translation_basis_zh": "与 UI 标题 CRYSTAL OF WIZARDRY 对齐：强调其切换魔法学派的仪式用法，「魔法技艺」涵盖 Magery/Necromancy/Elementalism，较直译「巫术」更不易与女巫系混淆。"
+    },
+    "Monk's tome": {
+      "canonical": "僧侣秘典",
+      "alternatives": [
+        "武僧秘卷"
+      ],
+      "category": "book",
+      "notes": "Mystic spellbook item default name; monk/mystic ability tome.",
+      "translation_basis_zh": "与 mystic/monk  ability book 语境相合；「秘典」贴合经书卷册，避免与奥术 Spellbook 泛称完全同形。"
     },
     "Ancient Wyrm": {
       "canonical": "远古龙",
@@ -3122,6 +3140,48 @@
       "category": "concept",
       "notes": "Weapon special move that prevents healing for a few seconds.",
       "translation_basis_zh": "「Mortal Strike」阻止目标在数秒内被治疗，是极具威胁的特殊技能。译为「必杀之击」既传达其危险性，也保留武侠风格。"
+    },
+    "The Witch's Brew": {
+      "canonical": "女巫秘酿",
+      "alternatives": ["巫女秘酿"],
+      "category": "book",
+      "notes": "In-world recipe tome for witchery (necromancy-linked) jar potions on the shard.",
+      "translation_basis_zh": "书名强调秘术酿制与女巫体系，「秘酿」比直译「酿造」更贴合卷轴与药罐系统的仪式感。"
+    },
+    "Druidic Herbalism": {
+      "canonical": "德鲁伊草本学",
+      "alternatives": ["德鲁伊草药学"],
+      "category": "book",
+      "notes": "Companion tome to druidic jar potions and belt-pouch organization.",
+      "translation_basis_zh": "与游戏内德鲁伊技线、草药与兽医学挂钩，用「草本学」概括采集—配方—合剂一体化，避免与泛用的「草药」混同。"
+    },
+    "Eyes of the Dead Mixture": {
+      "canonical": "亡者视界合剂",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Witch brew that grants undead-like darkvision in lore text.",
+      "translation_basis_zh": "混合物名具仪式色彩，「亡者视界」比字译「死者之眼」更利排版且不失诡秘感。"
+    },
+    "Black Gate Draught": {
+      "canonical": "黑门药剂",
+      "alternatives": [],
+      "category": "item",
+      "notes": "High-tier witch brew tied to black gate travel trope.",
+      "translation_basis_zh": "与黑门传送意象一致，保留「黑门」作为玩家已熟悉的恐怖传送符码。"
+    },
+    "Pixie Skull": {
+      "canonical": "小仙灵颅骨",
+      "alternatives": ["小妖灵颅骨"],
+      "category": "item",
+      "notes": "Rare witchery reagent; pixie as fey creature.",
+      "translation_basis_zh": "Pixie 译成小仙灵以贴合 UO 里妖精系生物尺度，颅骨点明材料形态。"
+    },
+    "Phantasm Elixir": {
+      "canonical": "幻象灵药",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Witch brew to disarm traps via spirits in book UI.",
+      "translation_basis_zh": "Phantasm 取「幻象」与陷阱幻惑叙事一致。"
     }
   }
 }

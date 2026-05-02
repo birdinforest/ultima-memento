@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -31,7 +32,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Choose who you want to unleaseh this storm on." );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Choose who you want to unleaseh this storm on." ) );
 			Caster.Target = new InternalTarget( this );
 		}
 

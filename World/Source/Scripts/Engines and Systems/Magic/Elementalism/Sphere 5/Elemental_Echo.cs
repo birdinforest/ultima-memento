@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Elementalism
 {
@@ -37,22 +38,22 @@ namespace Server.Spells.Elementalism
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Amethyst ) ) == null && elm == "air" )
 			{
-				Caster.SendMessage( "You need an amethyst to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need an amethyst to cast this spell!" ) );
 				return false;
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Emerald ) ) == null && elm == "earth" )
 			{
-				Caster.SendMessage( "You need an emerald to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need an emerald to cast this spell!" ) );
 				return false;
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Ruby ) ) == null && elm == "fire" )
 			{
-				Caster.SendMessage( "You need a ruby to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a ruby to cast this spell!" ) );
 				return false;
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Sapphire ) ) == null && elm == "water" )
 			{
-				Caster.SendMessage( "You need a sapphire to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a sapphire to cast this spell!" ) );
 				return false;
 			}
 
@@ -73,19 +74,19 @@ namespace Server.Spells.Elementalism
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Amethyst ) ) == null && elm == "air" )
 			{
-				Caster.SendMessage( "You need an amethyst to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need an amethyst to cast this spell!" ) );
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Emerald ) ) == null && elm == "earth" )
 			{
-				Caster.SendMessage( "You need an emerald to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need an emerald to cast this spell!" ) );
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Ruby ) ) == null && elm == "fire" )
 			{
-				Caster.SendMessage( "You need a ruby to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a ruby to cast this spell!" ) );
 			}
 			else if ( Caster.Backpack.FindItemByType( typeof ( Sapphire ) ) == null && elm == "water" )
 			{
-				Caster.SendMessage( "You need a sapphire to cast this spell!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a sapphire to cast this spell!" ) );
 			}
 			else if ( CheckSequence() )
 			{
