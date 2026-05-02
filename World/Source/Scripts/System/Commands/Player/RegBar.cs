@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using Server.Commands;
 using Server.Misc;
 using Server.Items;
-using System.Globalization;
+using Server.Localization;
 
 namespace Server.Gumps 
 {
@@ -364,16 +364,16 @@ namespace Server.Gumps
 			AddPage(0);
 
 			AddImage(0, 0, 9548, PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">CONFIGURE REAGENT BAR</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "CONFIGURE REAGENT BAR" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(967, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 14, 55, 981, 94, @"<BODY><BASEFONT Color=" + color + ">This toolbar provides a quick and convenient way to keep an eye on your reagents. You must choose what icons will appear on your quick bar, and you can select those here. The bar will display reagents by category of magery, necromancy, research/misc, and witch brewing.</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 14, 55, 981, 94, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "This toolbar provides a quick and convenient way to keep an eye on your reagents. You must choose what icons will appear on your quick bar, and you can select those here. The bar will display reagents by category of magery, necromancy, research/misc, and witch brewing." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(277, 151, btn1, btn1, 1, GumpButtonType.Reply, 0);
-			AddHtml( 316, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">Horizontal Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 316, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Horizontal Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(580, 151, btn2, btn2, 2, GumpButtonType.Reply, 0);
-			AddHtml( 619, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">Open At Login</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 619, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Open At Login" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			int icons = 2;
 
@@ -457,40 +457,40 @@ namespace Server.Gumps
 
 			switch ( set )
 			{
-				case 1: icon = "10937"; name = "Black Pearl"; count = m.Backpack.GetAmount( typeof( BlackPearl ), true ); break;
-				case 2: icon = "10938"; name = "Bloodmoss"; count = m.Backpack.GetAmount( typeof( Bloodmoss ), true ); break;
-				case 3: icon = "10939"; name = "Garlic"; count = m.Backpack.GetAmount( typeof( Garlic ), true ); break;
-				case 4: icon = "10940"; name = "Ginseng"; count = m.Backpack.GetAmount( typeof( Ginseng ), true ); break;
-				case 5: icon = "10941"; name = "Mandrake Root"; count = m.Backpack.GetAmount( typeof( MandrakeRoot ), true ); break;
-				case 6: icon = "10942"; name = "Nightshade"; count = m.Backpack.GetAmount( typeof( Nightshade ), true ); break;
-				case 7: icon = "10943"; name = "Spider Silk"; count = m.Backpack.GetAmount( typeof( SpidersSilk ), true ); break;
-				case 8: icon = "10944"; name = "Sulfurous Ash"; count = m.Backpack.GetAmount( typeof( SulfurousAsh ), true ); break;
-				case 9: icon = "10945"; name = "Bat Wing"; count = m.Backpack.GetAmount( typeof( BatWing ), true ); break;
-				case 10: icon = "10946"; name = "Daemon Blood"; count = m.Backpack.GetAmount( typeof( DaemonBlood ), true ); break;
-				case 11: icon = "10947"; name = "Grave Dust"; count = m.Backpack.GetAmount( typeof( GraveDust ), true ); break;
-				case 12: icon = "10948"; name = "Nox Crystal"; count = m.Backpack.GetAmount( typeof( NoxCrystal ), true ); break;
-				case 13: icon = "10949"; name = "Pig Iron"; count = m.Backpack.GetAmount( typeof( PigIron ), true ); break;
-				case 14: icon = "10950"; name = "BeetleShell"; count = m.Backpack.GetAmount( typeof( BeetleShell ), true ); break;
-				case 15: icon = "10951"; name = "Brimstone"; count = m.Backpack.GetAmount( typeof( Brimstone ), true ); break;
-				case 16: icon = "10952"; name = "Butterfly Wings"; count = m.Backpack.GetAmount( typeof( ButterflyWings ), true ); break;
-				case 17: icon = "10953"; name = "Eye of Toad"; count = m.Backpack.GetAmount( typeof( EyeOfToad ), true ); break;
-				case 18: icon = "10954"; name = "Fairy Egg"; count = m.Backpack.GetAmount( typeof( FairyEgg ), true ); break;
-				case 19: icon = "10955"; name = "Gargoyle Ear"; count = m.Backpack.GetAmount( typeof( GargoyleEar ), true ); break;
-				case 20: icon = "10956"; name = "Moon Crystal"; count = m.Backpack.GetAmount( typeof( MoonCrystal ), true ); break;
-				case 21: icon = "10957"; name = "Pixie Skull"; count = m.Backpack.GetAmount( typeof( PixieSkull ), true ); break;
-				case 22: icon = "10958"; name = "Red Lotus"; count = m.Backpack.GetAmount( typeof( RedLotus ), true ); break;
-				case 23: icon = "10959"; name = "Sea Salt"; count = m.Backpack.GetAmount( typeof( SeaSalt ), true ); break;
-				case 24: icon = "10960"; name = "Silver Widow"; count = m.Backpack.GetAmount( typeof( SilverWidow ), true ); break;
-				case 25: icon = "10961"; name = "Swamp Berries"; count = m.Backpack.GetAmount( typeof( SwampBerries ), true ); break;
-				case 26: icon = "10962"; name = "Bitter Root"; count = m.Backpack.GetAmount( typeof( BitterRoot ), true ); break;
-				case 27: icon = "10963"; name = "Black Sand"; count = m.Backpack.GetAmount( typeof( BlackSand ), true ); break;
-				case 28: icon = "10964"; name = "Blood Rose"; count = m.Backpack.GetAmount( typeof( BloodRose ), true ); break;
-				case 29: icon = "10965"; name = "Dried Toad"; count = m.Backpack.GetAmount( typeof( DriedToad ), true ); break;
-				case 30: icon = "10966"; name = "Maggot"; count = m.Backpack.GetAmount( typeof( Maggot ), true ); break;
-				case 31: icon = "10967"; name = "Mummy Wrap"; count = m.Backpack.GetAmount( typeof( MummyWrap ), true ); break;
-				case 32: icon = "10968"; name = "Violet Fungus"; count = m.Backpack.GetAmount( typeof( VioletFungus ), true ); break;
-				case 33: icon = "10969"; name = "Werewolf Claw"; count = m.Backpack.GetAmount( typeof( WerewolfClaw ), true ); break;
-				case 34: icon = "10970"; name = "Wolfsbane"; count = m.Backpack.GetAmount( typeof( Wolfsbane ), true ); break;
+				case 1: icon = "10937"; name = StringCatalog.Resolve( m.Account, "Black Pearl" ); count = m.Backpack.GetAmount( typeof( BlackPearl ), true ); break;
+				case 2: icon = "10938"; name = StringCatalog.Resolve( m.Account, "Bloodmoss" ); count = m.Backpack.GetAmount( typeof( Bloodmoss ), true ); break;
+				case 3: icon = "10939"; name = StringCatalog.Resolve( m.Account, "Garlic" ); count = m.Backpack.GetAmount( typeof( Garlic ), true ); break;
+				case 4: icon = "10940"; name = StringCatalog.Resolve( m.Account, "Ginseng" ); count = m.Backpack.GetAmount( typeof( Ginseng ), true ); break;
+				case 5: icon = "10941"; name = StringCatalog.Resolve( m.Account, "Mandrake Root" ); count = m.Backpack.GetAmount( typeof( MandrakeRoot ), true ); break;
+				case 6: icon = "10942"; name = StringCatalog.Resolve( m.Account, "Nightshade" ); count = m.Backpack.GetAmount( typeof( Nightshade ), true ); break;
+				case 7: icon = "10943"; name = StringCatalog.Resolve( m.Account, "Spider Silk" ); count = m.Backpack.GetAmount( typeof( SpidersSilk ), true ); break;
+				case 8: icon = "10944"; name = StringCatalog.Resolve( m.Account, "Sulfurous Ash" ); count = m.Backpack.GetAmount( typeof( SulfurousAsh ), true ); break;
+				case 9: icon = "10945"; name = StringCatalog.Resolve( m.Account, "Bat Wing" ); count = m.Backpack.GetAmount( typeof( BatWing ), true ); break;
+				case 10: icon = "10946"; name = StringCatalog.Resolve( m.Account, "Daemon Blood" ); count = m.Backpack.GetAmount( typeof( DaemonBlood ), true ); break;
+				case 11: icon = "10947"; name = StringCatalog.Resolve( m.Account, "Grave Dust" ); count = m.Backpack.GetAmount( typeof( GraveDust ), true ); break;
+				case 12: icon = "10948"; name = StringCatalog.Resolve( m.Account, "Nox Crystal" ); count = m.Backpack.GetAmount( typeof( NoxCrystal ), true ); break;
+				case 13: icon = "10949"; name = StringCatalog.Resolve( m.Account, "Pig Iron" ); count = m.Backpack.GetAmount( typeof( PigIron ), true ); break;
+				case 14: icon = "10950"; name = StringCatalog.Resolve( m.Account, "BeetleShell" ); count = m.Backpack.GetAmount( typeof( BeetleShell ), true ); break;
+				case 15: icon = "10951"; name = StringCatalog.Resolve( m.Account, "Brimstone" ); count = m.Backpack.GetAmount( typeof( Brimstone ), true ); break;
+				case 16: icon = "10952"; name = StringCatalog.Resolve( m.Account, "Butterfly Wings" ); count = m.Backpack.GetAmount( typeof( ButterflyWings ), true ); break;
+				case 17: icon = "10953"; name = StringCatalog.Resolve( m.Account, "Eye of Toad" ); count = m.Backpack.GetAmount( typeof( EyeOfToad ), true ); break;
+				case 18: icon = "10954"; name = StringCatalog.Resolve( m.Account, "Fairy Egg" ); count = m.Backpack.GetAmount( typeof( FairyEgg ), true ); break;
+				case 19: icon = "10955"; name = StringCatalog.Resolve( m.Account, "Gargoyle Ear" ); count = m.Backpack.GetAmount( typeof( GargoyleEar ), true ); break;
+				case 20: icon = "10956"; name = StringCatalog.Resolve( m.Account, "Moon Crystal" ); count = m.Backpack.GetAmount( typeof( MoonCrystal ), true ); break;
+				case 21: icon = "10957"; name = StringCatalog.Resolve( m.Account, "Pixie Skull" ); count = m.Backpack.GetAmount( typeof( PixieSkull ), true ); break;
+				case 22: icon = "10958"; name = StringCatalog.Resolve( m.Account, "Red Lotus" ); count = m.Backpack.GetAmount( typeof( RedLotus ), true ); break;
+				case 23: icon = "10959"; name = StringCatalog.Resolve( m.Account, "Sea Salt" ); count = m.Backpack.GetAmount( typeof( SeaSalt ), true ); break;
+				case 24: icon = "10960"; name = StringCatalog.Resolve( m.Account, "Silver Widow" ); count = m.Backpack.GetAmount( typeof( SilverWidow ), true ); break;
+				case 25: icon = "10961"; name = StringCatalog.Resolve( m.Account, "Swamp Berries" ); count = m.Backpack.GetAmount( typeof( SwampBerries ), true ); break;
+				case 26: icon = "10962"; name = StringCatalog.Resolve( m.Account, "Bitter Root" ); count = m.Backpack.GetAmount( typeof( BitterRoot ), true ); break;
+				case 27: icon = "10963"; name = StringCatalog.Resolve( m.Account, "Black Sand" ); count = m.Backpack.GetAmount( typeof( BlackSand ), true ); break;
+				case 28: icon = "10964"; name = StringCatalog.Resolve( m.Account, "Blood Rose" ); count = m.Backpack.GetAmount( typeof( BloodRose ), true ); break;
+				case 29: icon = "10965"; name = StringCatalog.Resolve( m.Account, "Dried Toad" ); count = m.Backpack.GetAmount( typeof( DriedToad ), true ); break;
+				case 30: icon = "10966"; name = StringCatalog.Resolve( m.Account, "Maggot" ); count = m.Backpack.GetAmount( typeof( Maggot ), true ); break;
+				case 31: icon = "10967"; name = StringCatalog.Resolve( m.Account, "Mummy Wrap" ); count = m.Backpack.GetAmount( typeof( MummyWrap ), true ); break;
+				case 32: icon = "10968"; name = StringCatalog.Resolve( m.Account, "Violet Fungus" ); count = m.Backpack.GetAmount( typeof( VioletFungus ), true ); break;
+				case 33: icon = "10969"; name = StringCatalog.Resolve( m.Account, "Werewolf Claw" ); count = m.Backpack.GetAmount( typeof( WerewolfClaw ), true ); break;
+				case 34: icon = "10970"; name = StringCatalog.Resolve( m.Account, "Wolfsbane" ); count = m.Backpack.GetAmount( typeof( Wolfsbane ), true ); break;
 			}
 
 			if ( cat == 1 )
