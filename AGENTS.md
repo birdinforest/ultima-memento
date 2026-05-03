@@ -236,9 +236,46 @@ For one category, a flat ``{ "<key>": "<zh>", ... }`` is OK if you merge with
 - Follow `World/Documentation/scripts-books-zh-translation-workflow.md` for the fragment-based merge process.
 - Use the same LLM policy above; do not write fragments directly into `zh-Hans/scripts-books.json`.
 
-### 3.5 Glossary Management
+### 3.5 Proper Noun Annotation Convention
 
-**File:** `World/Data/Localization/glossary-approved-zh.json`
+**Rule: In zh-Hans localization files, every proper noun (place, person, creature, item, faction, deity, dungeon, race) must be annotated with its English original using the format `中文（English）`.**
+
+This applies to all zh-Hans translation files regardless of context type:
+
+| Context | Format | Example |
+|---|---|---|
+| Narrative text with **`【】` brackets** (scripts-books, engines, quests, items, mobiles) | `【中文（English）】` | `【蒙丹（Mondain）】` |
+| **Inline text without brackets** (commontalk-fragment-zh, vendor_npc_speech) | `中文（English）` inline | `莫瑞尼亚矿坑（Mines of Morinia）出产上佳矿石。` |
+
+**When to annotate:**
+- **All proper noun categories:** place, character, creature, item, deity, faction, dungeon, race.
+- **Skip:** concept, system, skill, title, book — these are functional descriptors, not named entities.
+- **Skip:** purely-ASCII brackets like `【Death Knight】` — already English, no annotation needed.
+- **Skip:** brackets already annotated (`【蒙丹（Mondain）】`) — no double-annotation.
+
+**Tool support:** `World/Source/Tools/annotate_proper_nouns.py`
+- `python3 World/Source/Tools/annotate_proper_nouns.py --dry-run` — preview new annotations
+- `python3 World/Source/Tools/annotate_proper_nouns.py` — apply annotations
+
+The tool handles two strategies:
+1. **Bracket annotation** for zh-Hans/\*.json files: matches `【中文】` → `【中文（English）】` using the glossary zh→en map.
+2. **Curated inline annotation** for `commontalk-fragment-zh.json`: uses a manually-maintained EN-phrase → ZH-phrase mapping (see `COMMONTALK_ANNOTATIONS` in the script), with word-boundary matching on English keys. This avoids false positives from short or generic Chinese terms.
+
+**Translation workflow for new strings:**
+When writing new zh-Hans translations:
+1. Identify all proper nouns in the English source text.
+2. Look up each term in `glossary-approved-zh.json` (`terms` section).
+3. For narrative/book text: wrap in `【】` brackets with `（English）` — e.g. `【索沙尼亚（Sosaria）】`.
+4. For natural-speech text (commontalk, vendor speech): annotate inline at first occurrence — e.g. `索沙尼亚（Sosaria）`.
+5. If the English term is not in the glossary, propose an entry via the glossary management process (§3.6).
+6. Run `sync_localization_glossary.py` and `--check` to verify consistency.
+7. If adding new EN-glossary proper nouns that appear in commontalk English keys, extend `COMMONTALK_ANNOTATIONS` in the annotation script.
+
+**Limitation:** Inline annotation without English-key validation (e.g. `vendor_npc_speech.json`) is not automated because short Chinese glossary terms (2–3 chars like `恶魔`, `宝箱`) cause false positives. Such files should be annotated manually or by extending the curated mapping.
+
+---
+
+### 3.6 Glossary Management
 
 Each entry:
 ```json
@@ -267,7 +304,7 @@ Each entry:
 3. Get human confirmation before committing the glossary entry.
 4. Run glossary sync after confirmation.
 
-### 3.6 Localization Checklist for Any PR
+### 3.7 Localization Checklist for Any PR
 
 Before finalizing any change that touches C# user-visible strings:
 
@@ -411,7 +448,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
-- 2026-05-01: §4.4 localization regression (**`-localization-regression`**, **`run_localization_regression.sh`**, **`regression/cases/`**); World.Load trade-off + Phase 2. §3.1 **`resource-harvest-extra.json`** row; §3.6 / §4.3 / §4.4 — **`string_catalog_only`** harvest goldens after resource **`StringCatalog`** zh edits.
+- 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

@@ -60,7 +60,8 @@
       "canonical": "索萨利亚",
       "alternatives": [
         "索萨里亚",
-        "索沙利亚"
+        "索沙利亚",
+        "索沙尼亚"
       ],
       "category": "place",
       "notes": "The mortal world in Ultima I-III; main landmass of this shard. Destroyed by Mondain's Gem of Immortality, later remade as Britannia.",
@@ -81,9 +82,7 @@
     },
     "Britannia": {
       "canonical": "不列颠尼亚",
-      "alternatives": [
-        "不列颠"
-      ],
+      "alternatives": [],
       "category": "place",
       "notes": "The name of the world after Ultima IV; ruled by Lord British. Not to be confused with the city of Britain."
     },
@@ -772,6 +771,7 @@
     "Exodus": {
       "canonical": "埃克索达斯",
       "alternatives": [
+        "艾克索杜斯",
         "出埃及记",
         "大劫",
         "渎神"
@@ -1686,6 +1686,15 @@
       "notes": "Star Wars Sith parody; dark-side force users in cross-genre shard content. ★ auto-gen overlap.",
       "translation_basis_zh": "与「西斯武士」传统译名对齐；英文刻意写作 Syth 以避版权，中文仍用玩家熟悉的「西斯」指称该教团。"
     },
+    "Syth Lord": {
+      "canonical": "西斯尊主",
+      "alternatives": [
+        "西斯领主"
+      ],
+      "category": "title",
+      "notes": "The Syth Lord title; used for Asajj Ventress parody character in shard cross-genre content.",
+      "translation_basis_zh": "「西斯尊主」结合「西斯」教团身份与「尊主」称号，比「西斯领主」更符合中文奇幻对高级黑暗面统治者的命名习惯。"
+    },
     "Skulls and Shackles": {
       "canonical": "骷髅与枷锁",
       "alternatives": [],
@@ -1898,6 +1907,22 @@
       "category": "deity",
       "notes": "Singular form.",
       "translation_basis_zh": "为与参考词表中的「混沌祸灵」及各个 Bane 词条保持一致，复数 / 单数统称统一译为「祸灵」。"
+    },
+    "blackrock serpent": {
+      "canonical": "黑岩蛇",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Blackrock serpent creature in Chaos Bane quest; referenced in book lore.",
+      "translation_basis_zh": "直译「黑岩蛇」，与「黑岩」材质一致，用于主线三蛇任务线。"
+    },
+    "Erudian Knowledge": {
+      "canonical": "埃鲁迪安学识",
+      "alternatives": [
+        "埃鲁迪安之识"
+      ],
+      "category": "concept",
+      "notes": "Required unlock for certain elementalist skills; shard-specific term.",
+      "translation_basis_zh": "音译「埃鲁迪安」+「学识」以保持技能树用词的一致性。"
     },
     "_SECTION_RACES": "── Races / Species ─────────────────────────────────────────",
     "Ophidian": {
