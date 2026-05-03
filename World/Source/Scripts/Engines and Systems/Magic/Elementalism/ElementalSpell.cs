@@ -215,39 +215,40 @@ namespace Server.Spells.Elementalism
 			string mantra = "";
 			string sphere = "First";
 			string skill = "0";
+			string keyboardCommand = "";
 
-			if ( id == 300 ){ 	   shortName = StringCatalog.Resolve( account, "Armor" ); longName = StringCatalog.Resolve( account, "Elemental Armor" ); mantra = "Armura"; }
-			else if ( id == 301 ){ shortName = StringCatalog.Resolve( account, "Bolt" ); longName = StringCatalog.Resolve( account, "Elemental Bolt" ); mantra = "Sulita"; }
-			else if ( id == 302 ){ shortName = StringCatalog.Resolve( account, "Mend" ); longName = StringCatalog.Resolve( account, "Elemental Mend" ); mantra = "Vindeca"; }
-			else if ( id == 303 ){ shortName = StringCatalog.Resolve( account, "Sanctuary" ); longName = StringCatalog.Resolve( account, "Elemental Sanctuary" ); mantra = "Invata"; }
-			else if ( id == 304 ){ shortName = StringCatalog.Resolve( account, "Pain" ); longName = StringCatalog.Resolve( account, "Elemental Pain" ); mantra = "Durere"; sphere = "Second"; }
-			else if ( id == 305 ){ shortName = StringCatalog.Resolve( account, "Protection" ); longName = StringCatalog.Resolve( account, "Elemental Protection" ); mantra = "Proteja"; sphere = "Second"; }
-			else if ( id == 306 ){ shortName = StringCatalog.Resolve( account, "Purge" ); longName = StringCatalog.Resolve( account, "Elemental Purge" ); mantra = "Purifica"; sphere = "Second"; }
-			else if ( id == 307 ){ shortName = StringCatalog.Resolve( account, "Steed" ); longName = StringCatalog.Resolve( account, "Elemental Steed" ); mantra = "Faptura"; sphere = "Second"; }
-			else if ( id == 308 ){ shortName = StringCatalog.Resolve( account, "Call" ); longName = StringCatalog.Resolve( account, "Elemental Call" ); mantra = "Striga"; sphere = "Third"; skill = "9"; }
-			else if ( id == 309 ){ shortName = StringCatalog.Resolve( account, "Force" ); longName = StringCatalog.Resolve( account, "Elemental Force" ); mantra = "Forta"; sphere = "Third"; skill = "9"; }
+			if ( id == 300 ){ 	   shortName = StringCatalog.Resolve( account, "Armor" ); longName = StringCatalog.Resolve( account, "Elemental Armor" ); mantra = "Armura"; keyboardCommand = "EArmor"; }
+			else if ( id == 301 ){ shortName = StringCatalog.Resolve( account, "Bolt" ); longName = StringCatalog.Resolve( account, "Elemental Bolt" ); mantra = "Sulita"; keyboardCommand = "EBolt"; }
+			else if ( id == 302 ){ shortName = StringCatalog.Resolve( account, "Mend" ); longName = StringCatalog.Resolve( account, "Elemental Mend" ); mantra = "Vindeca"; keyboardCommand = "EMend"; }
+			else if ( id == 303 ){ shortName = StringCatalog.Resolve( account, "Sanctuary" ); longName = StringCatalog.Resolve( account, "Elemental Sanctuary" ); mantra = "Invata"; keyboardCommand = "ESanctuary"; }
+			else if ( id == 304 ){ shortName = StringCatalog.Resolve( account, "Pain" ); longName = StringCatalog.Resolve( account, "Elemental Pain" ); mantra = "Durere"; sphere = "Second"; keyboardCommand = "EPain"; }
+			else if ( id == 305 ){ shortName = StringCatalog.Resolve( account, "Protection" ); longName = StringCatalog.Resolve( account, "Elemental Protection" ); mantra = "Proteja"; sphere = "Second"; keyboardCommand = "EProtection"; }
+			else if ( id == 306 ){ shortName = StringCatalog.Resolve( account, "Purge" ); longName = StringCatalog.Resolve( account, "Elemental Purge" ); mantra = "Purifica"; sphere = "Second"; keyboardCommand = "EPurge"; }
+			else if ( id == 307 ){ shortName = StringCatalog.Resolve( account, "Steed" ); longName = StringCatalog.Resolve( account, "Elemental Steed" ); mantra = "Faptura"; sphere = "Second"; keyboardCommand = "ESteed"; }
+			else if ( id == 308 ){ shortName = StringCatalog.Resolve( account, "Call" ); longName = StringCatalog.Resolve( account, "Elemental Call" ); mantra = "Striga"; sphere = "Third"; skill = "9"; keyboardCommand = "ECall"; }
+			else if ( id == 309 ){ shortName = StringCatalog.Resolve( account, "Force" ); longName = StringCatalog.Resolve( account, "Elemental Force" ); mantra = "Forta"; sphere = "Third"; skill = "9"; keyboardCommand = "EForce"; }
 			else if ( id == 310 ){ shortName = StringCatalog.Resolve( account, "Wall" ); longName = StringCatalog.Resolve( account, "Elemental Wall" ); mantra = "Perete"; sphere = "Third"; skill = "9"; }
-			else if ( id == 311 ){ shortName = StringCatalog.Resolve( account, "Warp" ); longName = StringCatalog.Resolve( account, "Elemental Warp" ); mantra = "Urzeala"; sphere = "Third"; skill = "9"; }
+			else if ( id == 311 ){ shortName = StringCatalog.Resolve( account, "Warp" ); longName = StringCatalog.Resolve( account, "Elemental Warp" ); mantra = "Urzeala"; sphere = "Third"; skill = "9"; keyboardCommand = "EWarp"; }
 			else if ( id == 312 ){ shortName = StringCatalog.Resolve( account, "Field" ); longName = StringCatalog.Resolve( account, "Elemental Field" ); mantra = "Limite"; sphere = "Fourth"; skill = "23"; }
-			else if ( id == 313 ){ shortName = StringCatalog.Resolve( account, "Restoration" ); longName = StringCatalog.Resolve( account, "Elemental Restoration" ); mantra = "Restabili"; sphere = "Fourth"; skill = "23"; }
-			else if ( id == 314 ){ shortName = StringCatalog.Resolve( account, "Strike" ); longName = StringCatalog.Resolve( account, "Elemental Strike" ); mantra = "Lovitura"; sphere = "Fourth"; skill = "23"; }
-			else if ( id == 315 ){ shortName = StringCatalog.Resolve( account, "Void" ); longName = StringCatalog.Resolve( account, "Elemental Void" ); mantra = "Mutare"; sphere = "Fourth"; skill = "23"; }
+			else if ( id == 313 ){ shortName = StringCatalog.Resolve( account, "Restoration" ); longName = StringCatalog.Resolve( account, "Elemental Restoration" ); mantra = "Restabili"; sphere = "Fourth"; skill = "23"; keyboardCommand = "ERestoration"; }
+			else if ( id == 314 ){ shortName = StringCatalog.Resolve( account, "Strike" ); longName = StringCatalog.Resolve( account, "Elemental Strike" ); mantra = "Lovitura"; sphere = "Fourth"; skill = "23"; keyboardCommand = "EStrike"; }
+			else if ( id == 315 ){ shortName = StringCatalog.Resolve( account, "Void" ); longName = StringCatalog.Resolve( account, "Elemental Void" ); mantra = "Mutare"; sphere = "Fourth"; skill = "23"; keyboardCommand = "EVoid"; }
 			else if ( id == 316 ){ shortName = StringCatalog.Resolve( account, "Blast" ); longName = StringCatalog.Resolve( account, "Elemental Blast" ); mantra = "Deteriora"; sphere = "Fifth"; skill = "38"; }
-			else if ( id == 317 ){ shortName = StringCatalog.Resolve( account, "Echo" ); longName = StringCatalog.Resolve( account, "Elemental Echo" ); mantra = "Oglinda"; sphere = "Fifth"; skill = "38"; }
+			else if ( id == 317 ){ shortName = StringCatalog.Resolve( account, "Echo" ); longName = StringCatalog.Resolve( account, "Elemental Echo" ); mantra = "Oglinda"; sphere = "Fifth"; skill = "38"; keyboardCommand = "EEcho"; }
 			else if ( id == 318 ){ shortName = StringCatalog.Resolve( account, "Fiend" ); longName = StringCatalog.Resolve( account, "Elemental Fiend" ); mantra = "Diavol"; sphere = "Fifth"; skill = "38"; }
-			else if ( id == 319 ){ shortName = StringCatalog.Resolve( account, "Hold" ); longName = StringCatalog.Resolve( account, "Elemental Hold" ); mantra = "Temnita"; sphere = "Fifth"; skill = "38"; }
+			else if ( id == 319 ){ shortName = StringCatalog.Resolve( account, "Hold" ); longName = StringCatalog.Resolve( account, "Elemental Hold" ); mantra = "Temnita"; sphere = "Fifth"; skill = "38"; keyboardCommand = "EHold"; }
 			else if ( id == 320 ){ shortName = StringCatalog.Resolve( account, "Barrage" ); longName = StringCatalog.Resolve( account, "Elemental Barrage" ); mantra = "Baraj"; sphere = "Sixth"; skill = "52"; }
-			else if ( id == 321 ){ shortName = StringCatalog.Resolve( account, "Rune" ); longName = StringCatalog.Resolve( account, "Elemental Rune" ); mantra = "Marca"; sphere = "Sixth"; skill = "52"; }
-			else if ( id == 322 ){ shortName = StringCatalog.Resolve( account, "Storm" ); longName = StringCatalog.Resolve( account, "Elemental Storm" ); mantra = "Furtuna"; sphere = "Sixth"; skill = "52"; }
-			else if ( id == 323 ){ shortName = StringCatalog.Resolve( account, "Summon" ); longName = StringCatalog.Resolve( account, "Elemental Summon" ); mantra = "Convoca"; sphere = "Sixth"; skill = "52"; }
-			else if ( id == 324 ){ shortName = StringCatalog.Resolve( account, "Devastation" ); longName = StringCatalog.Resolve( account, "Elemental Devastation" ); mantra = "Devasta"; sphere = "Seventh"; skill = "66"; }
-			else if ( id == 325 ){ shortName = StringCatalog.Resolve( account, "Fall" ); longName = StringCatalog.Resolve( account, "Elemental Fall" ); mantra = "Toamna"; sphere = "Seventh"; skill = "66"; }
-			else if ( id == 326 ){ shortName = StringCatalog.Resolve( account, "Gate" ); longName = StringCatalog.Resolve( account, "Elemental Gate" ); mantra = "Poarta"; sphere = "Seventh"; skill = "66"; }
-			else if ( id == 327 ){ shortName = StringCatalog.Resolve( account, "Havoc" ); longName = StringCatalog.Resolve( account, "Elemental Havoc" ); mantra = "Haotic"; sphere = "Seventh"; skill = "66"; }
-			else if ( id == 328 ){ shortName = StringCatalog.Resolve( account, "Apocalypse" ); longName = StringCatalog.Resolve( account, "Elemental Apocalypse" ); mantra = "Moarte"; sphere = "Eighth"; skill = "80"; }
-			else if ( id == 329 ){ shortName = StringCatalog.Resolve( account, "Lord" ); longName = StringCatalog.Resolve( account, "Elemental Lord" ); mantra = "Dumnezeu"; sphere = "Eighth"; skill = "80"; }
-			else if ( id == 330 ){ shortName = StringCatalog.Resolve( account, "Soul" ); longName = StringCatalog.Resolve( account, "Elemental Soul" ); mantra = "Viata"; sphere = "Eighth"; skill = "80"; }
-			else if ( id == 331 ){ shortName = StringCatalog.Resolve( account, "Spirit" ); longName = StringCatalog.Resolve( account, "Elemental Spirit" ); mantra = "Fantoma"; sphere = "Eighth"; skill = "80"; }
+			else if ( id == 321 ){ shortName = StringCatalog.Resolve( account, "Rune" ); longName = StringCatalog.Resolve( account, "Elemental Rune" ); mantra = "Marca"; sphere = "Sixth"; skill = "52"; keyboardCommand = "ERune"; }
+			else if ( id == 322 ){ shortName = StringCatalog.Resolve( account, "Storm" ); longName = StringCatalog.Resolve( account, "Elemental Storm" ); mantra = "Furtuna"; sphere = "Sixth"; skill = "52"; keyboardCommand = "EStorm"; }
+			else if ( id == 323 ){ shortName = StringCatalog.Resolve( account, "Summon" ); longName = StringCatalog.Resolve( account, "Elemental Summon" ); mantra = "Convoca"; sphere = "Sixth"; skill = "52"; keyboardCommand = "ESummon"; }
+			else if ( id == 324 ){ shortName = StringCatalog.Resolve( account, "Devastation" ); longName = StringCatalog.Resolve( account, "Elemental Devastation" ); mantra = "Devasta"; sphere = "Seventh"; skill = "66"; keyboardCommand = "EDevastation"; }
+			else if ( id == 325 ){ shortName = StringCatalog.Resolve( account, "Fall" ); longName = StringCatalog.Resolve( account, "Elemental Fall" ); mantra = "Toamna"; sphere = "Seventh"; skill = "66"; keyboardCommand = "EFall"; }
+			else if ( id == 326 ){ shortName = StringCatalog.Resolve( account, "Gate" ); longName = StringCatalog.Resolve( account, "Elemental Gate" ); mantra = "Poarta"; sphere = "Seventh"; skill = "66"; keyboardCommand = "EGate"; }
+			else if ( id == 327 ){ shortName = StringCatalog.Resolve( account, "Havoc" ); longName = StringCatalog.Resolve( account, "Elemental Havoc" ); mantra = "Haotic"; sphere = "Seventh"; skill = "66"; keyboardCommand = "EHavoc";}
+			else if ( id == 328 ){ shortName = StringCatalog.Resolve( account, "Apocalypse" ); longName = StringCatalog.Resolve( account, "Elemental Apocalypse" ); mantra = "Moarte"; sphere = "Eighth"; skill = "80"; keyboardCommand = "EApocalypse"; }
+			else if ( id == 329 ){ shortName = StringCatalog.Resolve( account, "Lord" ); longName = StringCatalog.Resolve( account, "Elemental Lord" ); mantra = "Dumnezeu"; sphere = "Eighth"; skill = "80"; keyboardCommand = "ELord"; }
+			else if ( id == 330 ){ shortName = StringCatalog.Resolve( account, "Soul" ); longName = StringCatalog.Resolve( account, "Elemental Soul" ); mantra = "Viata"; sphere = "Eighth"; skill = "80"; keyboardCommand = "ESoul"; }
+			else if ( id == 331 ){ shortName = StringCatalog.Resolve( account, "Spirit" ); longName = StringCatalog.Resolve( account, "Elemental Spirit" ); mantra = "Fantoma"; sphere = "Eighth"; skill = "80"; keyboardCommand = "ESpirit"; }
 
 			if ( cat == 1 ){ info = shortName; }
 			else if ( cat == 2 ){ info = longName; }
@@ -256,6 +257,7 @@ namespace Server.Spells.Elementalism
 			else if ( cat == 5 ){ info = longName.ToLower(); }
 			else if ( cat == 6 ){ info = sphere; }
 			else if ( cat == 7 ){ info = skill; }
+			else if ( cat == 8 ){ info = keyboardCommand; }
 
 			return info;
 		}

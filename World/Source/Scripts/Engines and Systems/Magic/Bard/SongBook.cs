@@ -6,7 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x671B, 0x671C )]
 	public class SongBook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by bards to write the mystical songs they find. The songs within the book can be used to produce varying magical effects. These songs require the use of a musical instrument. Dropping such scrolls onto this book will place the song within its pages. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This book is used by bards to write the mystical songs they find. The songs within the book can be used to produce varying magical effects. These songs require the use of a musical instrument. Dropping such scrolls onto this book will place the song within its pages. Some books have enhanced properties, that are only effective when the book is held." ); } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Song; } }
 		public override int BookOffset{ get{ return 351; } }
