@@ -11418,10 +11418,11 @@ namespace Server
 		#region Overhead messages
 
 		/// <summary>
-		/// After StringCatalog resolution: for non-player speakers and zh-Hans viewers, replace quest/citizen
-		/// English fragments (guild titles, places) and known job/adventurer tokens.
+		/// After StringCatalog resolution: for non-player speakers and zh-Hans viewers, run
+		/// <see cref="Server.Localization.CommonTalkDynamicZh.TryApply"/> (full-line tavern / museum templates), then
+		/// fragment replacement and NPC token polish.
 		/// </summary>
-		private string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
+		internal string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
 		{
 			if ( outText == null || outText.Length == 0 || viewer == null )
 				return outText;
@@ -11430,7 +11431,11 @@ namespace Server
 			string lang = AccountLang.GetLanguageCode( viewer.Account );
 			if ( !AccountLang.IsChinese( lang ) )
 				return outText;
-			string work = QuestCompositeResolver.ResolveComposite( viewer, outText );
+			string work = outText;
+			string dynamicZh = Server.Localization.CommonTalkDynamicZh.TryApply( viewer, work );
+			if ( dynamicZh != null && dynamicZh.Length > 0 )
+				work = dynamicZh;
+			work = QuestCompositeResolver.ResolveComposite( viewer, work );
 			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( work );
 		}
 

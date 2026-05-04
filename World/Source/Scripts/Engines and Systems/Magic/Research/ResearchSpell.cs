@@ -8,6 +8,7 @@ using Server.Items;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -100,12 +101,12 @@ namespace Server.Spells.Research
 
 			if ( book != null && book.paper < 1 )
 			{
-				Caster.SendMessage( "You do not have enough pages in your book to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have enough pages in your book to cast this spell." ) );
 				return false;
 			}
 			else if ( book != null && book.quill < 1 )
 			{
-				Caster.SendMessage( "You do not have enough quills for your book to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have enough quills for your book to cast this spell." ) );
 				return false;
 			}
 
@@ -121,7 +122,7 @@ namespace Server.Spells.Research
 			}
 			else if ( !SpellPrepared( Caster, spellIndex ) && !ResearchSettings.BookCaster( Caster ) )
 			{
-				Caster.SendMessage( "You do not have that spell prepared." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have that spell prepared." ) );
 				return false;
 			}
 
@@ -142,7 +143,7 @@ namespace Server.Spells.Research
 			}
 			else if ( !SpellPrepared( Caster, spellIndex ) && !ResearchSettings.BookCaster( Caster ) )
 			{
-				Caster.SendMessage( "You do not have that spell prepared." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You do not have that spell prepared." ) );
 				return false;
 			}
 

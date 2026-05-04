@@ -53,14 +53,15 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.7",
+  "_version": "1.9",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
       "canonical": "索萨利亚",
       "alternatives": [
         "索萨里亚",
-        "索沙利亚"
+        "索沙利亚",
+        "索沙尼亚"
       ],
       "category": "place",
       "notes": "The mortal world in Ultima I-III; main landmass of this shard. Destroyed by Mondain's Gem of Immortality, later remade as Britannia.",
@@ -81,9 +82,7 @@
     },
     "Britannia": {
       "canonical": "不列颠尼亚",
-      "alternatives": [
-        "不列颠"
-      ],
+      "alternatives": [],
       "category": "place",
       "notes": "The name of the world after Ultima IV; ruled by Lord British. Not to be confused with the city of Britain."
     },
@@ -128,6 +127,40 @@
       "reference_suggestion_zh": "安布罗西亚",
       "reference_note_zh": "失落大陆，常见译法。",
       "translation_basis_zh": "参考词表建议「安布罗西亚」。失落大陆，常见译法。"
+    },
+    "Crystal of Wizardry": {
+      "canonical": "魔法技艺水晶",
+      "alternatives": [
+        "奥法水晶"
+      ],
+      "category": "item",
+      "notes": "In-world name for the Forgetful Gem gump title; crystal in sorcerer/conjurer caves that lets casters forget a magic school.",
+      "translation_basis_zh": "与 UI 标题 CRYSTAL OF WIZARDRY 对齐：强调其切换魔法学派的仪式用法，「魔法技艺」涵盖 Magery/Necromancy/Elementalism，较直译「巫术」更不易与女巫系混淆。"
+    },
+    "Monk's tome": {
+      "canonical": "僧侣秘典",
+      "alternatives": [
+        "武僧秘卷"
+      ],
+      "category": "book",
+      "notes": "Mystic spellbook item default name; monk/mystic ability tome.",
+      "translation_basis_zh": "与 mystic/monk  ability book 语境相合；「秘典」贴合经书卷册，避免与奥术 Spellbook 泛称完全同形。"
+    },
+    "Ancient Wyrm": {
+      "canonical": "远古龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "High-end wingless dragon-type mob in UO (\"Ancient Wyrm\"); distinct from generic drakes. Used in tavern rumors and dungeon lore.",
+      "translation_basis_zh": "沿用中文社区对大型龙族精英怪的俗称「远古龙」；与种统称 Wyrm（亚龙）区分，避免与「古龙」类奇幻译名混用。"
+    },
+    "Wyrm": {
+      "canonical": "亚龙",
+      "alternatives": [
+        "飞龙"
+      ],
+      "category": "creature",
+      "notes": "UO creature family (wyrms / serpentine dragons). Not the same wording as the specific Ancient Wyrm elite.",
+      "translation_basis_zh": "作为龙族下位种统称采用「亚龙」；与专有强度的「远古龙」分开，便于任务与谣言句式自然。"
     },
     "Moon": {
       "canonical": "月镇",
@@ -341,6 +374,15 @@
       "category": "place",
       "notes": "Alternate form of City of Lodoria; treat as identical."
     },
+    "Ancient dark elf city beneath Lodor": {
+      "canonical": "洛多尔地底深处的远古暗精灵城",
+      "alternatives": [
+        "远古暗精灵城"
+      ],
+      "category": "place",
+      "notes": "Procedural tavern rumor clause (TavernPatrons CommonTalk); English: an ancient dark elf city deep beneath Lodor. Not a single Regions.xml dungeon marker.",
+      "translation_basis_zh": "与酒馆碎片句式对应：地点为「洛多尔」地底叙事空间，对象为传说中的暗精灵遗迹城；玩家可见文案与 quest-fragment / commontalk 表一致。"
+    },
     "Savaged Empire": {
       "canonical": "野蛮帝域",
       "alternatives": [
@@ -550,15 +592,16 @@
       "notes": "Gloomy fortress city; shard-specific."
     },
     "Grey": {
-      "canonical": "格雷村",
+      "canonical": "灰镇",
       "alternatives": [
+        "格雷村",
         "灰村"
       ],
       "category": "place",
-      "notes": "Small settlement; shard-specific.",
-      "reference_suggestion_zh": "格雷村",
-      "reference_note_zh": "文中出现的小村落名。",
-      "translation_basis_zh": "参考词表建议「格雷村」。文中出现的小村落名。"
+      "notes": "Small settlement / the Village of Grey; shard-specific. English copy sometimes says ‘city’.",
+      "reference_suggestion_zh": "灰镇",
+      "reference_note_zh": "索沙里亚聚落地名（the Village of Grey），与英文名 Grey 对应。",
+      "translation_basis_zh": "译为「灰镇」：Grey 字面义 + 镇长住聚落语感；与原「格雷」音译相比更贴近字面且与塔罗牌灰隐士线一致。"
     },
     "Sempkin Burg": {
       "canonical": "森普金堡",
@@ -728,6 +771,7 @@
     "Exodus": {
       "canonical": "埃克索达斯",
       "alternatives": [
+        "艾克索杜斯",
         "出埃及记",
         "大劫",
         "渎神"
@@ -1642,6 +1686,15 @@
       "notes": "Star Wars Sith parody; dark-side force users in cross-genre shard content. ★ auto-gen overlap.",
       "translation_basis_zh": "与「西斯武士」传统译名对齐；英文刻意写作 Syth 以避版权，中文仍用玩家熟悉的「西斯」指称该教团。"
     },
+    "Syth Lord": {
+      "canonical": "西斯尊主",
+      "alternatives": [
+        "西斯领主"
+      ],
+      "category": "title",
+      "notes": "The Syth Lord title; used for Asajj Ventress parody character in shard cross-genre content.",
+      "translation_basis_zh": "「西斯尊主」结合「西斯」教团身份与「尊主」称号，比「西斯领主」更符合中文奇幻对高级黑暗面统治者的命名习惯。"
+    },
     "Skulls and Shackles": {
       "canonical": "骷髅与枷锁",
       "alternatives": [],
@@ -1854,6 +1907,22 @@
       "category": "deity",
       "notes": "Singular form.",
       "translation_basis_zh": "为与参考词表中的「混沌祸灵」及各个 Bane 词条保持一致，复数 / 单数统称统一译为「祸灵」。"
+    },
+    "blackrock serpent": {
+      "canonical": "黑岩蛇",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Blackrock serpent creature in Chaos Bane quest; referenced in book lore.",
+      "translation_basis_zh": "直译「黑岩蛇」，与「黑岩」材质一致，用于主线三蛇任务线。"
+    },
+    "Erudian Knowledge": {
+      "canonical": "埃鲁迪安学识",
+      "alternatives": [
+        "埃鲁迪安之识"
+      ],
+      "category": "concept",
+      "notes": "Required unlock for certain elementalist skills; shard-specific term.",
+      "translation_basis_zh": "音译「埃鲁迪安」+「学识」以保持技能树用词的一致性。"
     },
     "_SECTION_RACES": "── Races / Species ─────────────────────────────────────────",
     "Ophidian": {
@@ -2949,12 +3018,195 @@
       "notes": "Weapon special move hitting all enemies in range.",
       "translation_basis_zh": "「Whirlwind Attack」是UO经典近战特殊技能，旋转击中周围所有敌人。译为「旋风攻击」自然直观。"
     },
+    "_SECTION_CRAFT_RESOURCE_SHORTS": "── Craft resource short labels (harvest/extra bundle) ────────",
+    "Beskar": {
+      "canonical": "贝斯卡合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Fiction-origin beskar-equivalent smithing alloy on this shard; used as CraftResource short label.",
+      "translation_basis_zh": "采用音译「贝斯卡」+物料类后缀「合金」，与科幻源流辨识度一致，又与中文冶炼用语搭配自然。"
+    },
+    "Carbonite": {
+      "canonical": "碳凝合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Craft alloy name; unrelated to terrestrial carbon steel in everyday speech.",
+      "translation_basis_zh": "结合「凝固」意象与合金类后缀，回避易与「碳钢」混淆的直白直译。"
+    },
+    "Cortosis": {
+      "canonical": "科托西斯矿",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Rare ore / alloy lineage used in sci-fi smithing tables on shard.",
+      "translation_basis_zh": "音译科托西斯，尾缀「矿」与矿石掉落、锭料流程一致。"
+    },
+    "Durasteel": {
+      "canonical": "耐钢",
+      "alternatives": ["杜拉钢"],
+      "category": "item",
+      "notes": "Sci-fi structural steel analogue in craft tables.",
+      "translation_basis_zh": "短标签需省字；「耐钢」表耐久合金，备选音译兼顾老玩家习惯。"
+    },
+    "Laminasteel": {
+      "canonical": "叠层钢",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Layered futuristic steel crafting material.",
+      "translation_basis_zh": "意译贴合 laminate 语义，归为钢材类后缀。"
+    },
+    "Songsteel": {
+      "canonical": "歌咏钢",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Musical-metaphor rare steel tier in imbuing smith lines.",
+      "translation_basis_zh": "保留隐喻色彩，译为「歌咏」+「钢」以贴合奇幻装备语感。"
+    },
+    "Trimantium": {
+      "canonical": "三重铰金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Constructed metal name in high-tier smith resources.",
+      "translation_basis_zh": "Tri-表三元结构，译为「三重」；铰金虚构贵金属语感，与普通「钛」类区分。"
+    },
+    "Quadranium": {
+      "canonical": "夸德兰合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Constructed alloy syllable-stack used on shard.",
+      "translation_basis_zh": "音译 Quadranium 主干为夸德兰，尾缀合金统一物料类别。"
+    },
+    "Promethium": {
+      "canonical": "普罗米修姆",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Rare metal strand in fiction-flavoured smith tables.",
+      "translation_basis_zh": "常见科幻金属音译范式，保持不变体以利检索。"
+    },
+    "Star Ruby": {
+      "canonical": "星光红宝石",
+      "alternatives": [],
+      "category": "item",
+      "notes": "UO-style star ruby gem tier; material short label in harvest/extra bundle.",
+      "translation_basis_zh": "珠宝界「星光红宝石」为稳定说法，省去括号英文。"
+    },
+    "Kyshyyyk": {
+      "canonical": "卡希克木",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Exotic lumber label referencing fiction forest world; short craft name.",
+      "translation_basis_zh": "取常见简称「卡希克」+木材后缀「木」，保持异域林木语感；若站内已有更长译名片可迁至 alternatives。"
+    },
+    "Hypercloth": {
+      "canonical": "超纤织物",
+      "alternatives": ["超纤布"],
+      "category": "item",
+      "notes": "Sci-fi tailoring fabric analogue.",
+      "translation_basis_zh": "意译高性能纤维织布，归入织物而非金属。"
+    },
+    "Syncloth": {
+      "canonical": "合成织料",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Synthetic cloth craft resource.",
+      "translation_basis_zh": "Synth→合成；织料与裁缝链路一致。"
+    },
+    "Thermoweave": {
+      "canonical": "热织革",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Heat-themed woven armour leather/fibre hybrid label.",
+      "translation_basis_zh": "保留热控意象，归为革料以贴合装备材质栏。"
+    },
+    "Durafiber": {
+      "canonical": "杜纤革",
+      "alternatives": [],
+      "category": "item",
+      "notes": "High-durability fibre leather-styled resource.",
+      "translation_basis_zh": "Dur-音头 +纤维意象，后缀革与UO皮革类 short label 对齐。"
+    },
+    "Phrik": {
+      "canonical": "弗里克合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Dense exotic smithing alloy in fiction-flavoured resource tables.",
+      "translation_basis_zh": "经典音译 + 合金后缀，与同文件其他虚构金属命名一致。"
+    },
+    "Agrinium": {
+      "canonical": "阿格里尼合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Constructed agri-/tech hybrid metal label on shard.",
+      "translation_basis_zh": "音节译名与合金尾缀匹配，略带农耕科技混搭语感。"
+    },
+    "Neuranium": {
+      "canonical": "神经合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Neuro-/metal blend craft resource.",
+      "translation_basis_zh": "neo-语义转写为神经，合金类后缀与冶炼链对齐。"
+    },
+    "Xonolite": {
+      "canonical": "索诺矿革",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Alien mineral-fibre tier used as leather/metal crossover label.",
+      "translation_basis_zh": "音译 + 矿革混称以贴合游戏里跨界材质语感。"
+    },
+    "Cerlin": {
+      "canonical": "瑟林合金",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Synthetic alloy moniker in imbuing smith lists.",
+      "translation_basis_zh": "短小音译便于物品栏排版。"
+    },
     "Mortal Strike": {
       "canonical": "必杀之击",
       "alternatives": ["致命打击"],
       "category": "concept",
       "notes": "Weapon special move that prevents healing for a few seconds.",
       "translation_basis_zh": "「Mortal Strike」阻止目标在数秒内被治疗，是极具威胁的特殊技能。译为「必杀之击」既传达其危险性，也保留武侠风格。"
+    },
+    "The Witch's Brew": {
+      "canonical": "女巫秘酿",
+      "alternatives": ["巫女秘酿"],
+      "category": "book",
+      "notes": "In-world recipe tome for witchery (necromancy-linked) jar potions on the shard.",
+      "translation_basis_zh": "书名强调秘术酿制与女巫体系，「秘酿」比直译「酿造」更贴合卷轴与药罐系统的仪式感。"
+    },
+    "Druidic Herbalism": {
+      "canonical": "德鲁伊草本学",
+      "alternatives": ["德鲁伊草药学"],
+      "category": "book",
+      "notes": "Companion tome to druidic jar potions and belt-pouch organization.",
+      "translation_basis_zh": "与游戏内德鲁伊技线、草药与兽医学挂钩，用「草本学」概括采集—配方—合剂一体化，避免与泛用的「草药」混同。"
+    },
+    "Eyes of the Dead Mixture": {
+      "canonical": "亡者视界合剂",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Witch brew that grants undead-like darkvision in lore text.",
+      "translation_basis_zh": "混合物名具仪式色彩，「亡者视界」比字译「死者之眼」更利排版且不失诡秘感。"
+    },
+    "Black Gate Draught": {
+      "canonical": "黑门药剂",
+      "alternatives": [],
+      "category": "item",
+      "notes": "High-tier witch brew tied to black gate travel trope.",
+      "translation_basis_zh": "与黑门传送意象一致，保留「黑门」作为玩家已熟悉的恐怖传送符码。"
+    },
+    "Pixie Skull": {
+      "canonical": "小仙灵颅骨",
+      "alternatives": ["小妖灵颅骨"],
+      "category": "item",
+      "notes": "Rare witchery reagent; pixie as fey creature.",
+      "translation_basis_zh": "Pixie 译成小仙灵以贴合 UO 里妖精系生物尺度，颅骨点明材料形态。"
+    },
+    "Phantasm Elixir": {
+      "canonical": "幻象灵药",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Witch brew to disarm traps via spirits in book UI.",
+      "translation_basis_zh": "Phantasm 取「幻象」与陷阱幻惑叙事一致。"
     }
   }
 }

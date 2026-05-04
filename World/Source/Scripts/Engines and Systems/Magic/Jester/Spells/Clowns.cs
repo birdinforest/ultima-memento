@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Server.Spells;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
+using Server.Localization;
 
 namespace Server.Spells.Jester
 {
@@ -35,7 +36,7 @@ namespace Server.Spells.Jester
 
 			if( (Caster.Followers + 1) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to be clowning around." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to be clowning around." ) );
 				return false;
 			}
 
@@ -50,11 +51,11 @@ namespace Server.Spells.Jester
 			}
 			else if ( (Caster.Followers + 1) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to be clowning around." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to be clowning around." ) );
 			}
 			else if( TransformationSpellHelper.UnderTransformation( Caster, typeof( HorrificBeastSpell ) ) )
 			{
-				Caster.SendMessage( "You cannot be clowning around while you look like that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot be clowning around while you look like that." ) );
 			}
 			else if ( CheckSequence() )
 			{

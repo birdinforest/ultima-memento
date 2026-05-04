@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Targeting;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Necromancy
 {
@@ -70,15 +71,15 @@ namespace Server.Spells.Necromancy
 
 					if ( undead.Slays(m) )
 					{
-						Caster.SendMessage( "You cannot animate supernatural creatures!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot animate supernatural creatures!" ) );
 					}
 					else if ( golems.Slays(m) )
 					{
-						Caster.SendMessage( "You cannot animate constructs!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot animate constructs!" ) );
 					}
 					else if ( level_corpse > level_caster )
 					{
-						Caster.SendMessage( "You are not powerful enough to animate that!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are not powerful enough to animate that!" ) );
 					}
 					else if ( slots_limit >= slots_max )
 					{

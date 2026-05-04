@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Spells.Elementalism;
@@ -44,21 +45,21 @@ namespace Server.Items
 					m.FixedParticles( 0x3709, 10, 30, 5052, 0, 0, EffectLayer.LeftFoot );
 					m.PlaySound( 0x208 );
 					MorphingTime.ColorOnlyClothes( m, Server.Spells.Elementalism.ElementalSpell.ElementalHue( this.Name ), 0 );
-					m.SendMessage( "Your equipment is burned with elemental fire." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "Your equipment is burned with elemental fire." ) );
 				}
 				else if ( Name == "water" && ((PlayerMobile)m).CharacterElement == 3 )
 				{
 					Effects.SendLocationEffect( m.Location, m.Map, 0x23B2, 30, 10, 0, 0 );
 					Effects.PlaySound( m.Location, m.Map, 0x026 );
 					MorphingTime.ColorOnlyClothes( m, Server.Spells.Elementalism.ElementalSpell.ElementalHue( this.Name ), 0 );
-					m.SendMessage( "Your equipment is soaked with elemental water." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "Your equipment is soaked with elemental water." ) );
 				}
 				else if ( Name == "air" && ((PlayerMobile)m).CharacterElement == 0 )
 				{
 					Effects.SendLocationEffect( m.Location, m.Map, 0x5590, 30, 10, 0xB24, 0 );
 					m.PlaySound( 0x10B );
 					MorphingTime.ColorOnlyClothes( m, Server.Spells.Elementalism.ElementalSpell.ElementalHue( this.Name ), 0 );
-					m.SendMessage( "Your equipment is gusted with elemental air." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "Your equipment is gusted with elemental air." ) );
 				}
 				else if ( Name == "earth" && ((PlayerMobile)m).CharacterElement == 1 )
 				{
@@ -66,7 +67,7 @@ namespace Server.Items
 					Effects.SendLocationEffect( hands, m.Map, 0x3837, 23, 10, 0, 0 );
 					m.PlaySound( 0x65A );
 					MorphingTime.ColorOnlyClothes( m, Server.Spells.Elementalism.ElementalSpell.ElementalHue( this.Name ), 0 );
-					m.SendMessage( "Your equipment is grounded with elemental earth." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "Your equipment is grounded with elemental earth." ) );
 				}
 			}
 		}
@@ -95,7 +96,7 @@ namespace Server.Items
 					Effects.SendLocationEffect( Location, Map, 0x3709, 30, 10, 0, 0 );
 					Effects.PlaySound( m.Location, m.Map, 0x208 );
 					ElementalSpell.ChangeBooks( m, 2 );
-					m.SendMessage( "You are now focused on the elemental magic of fire." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You are now focused on the elemental magic of fire." ) );
 					newWindows = true;
 				}
 				else if ( Name == "water" && ((PlayerMobile)m).CharacterElement != 3 )
@@ -104,7 +105,7 @@ namespace Server.Items
 					Effects.SendLocationEffect( Location, Map, 0x23B2, 30, 10, 0, 0 );
 					Effects.PlaySound( m.Location, m.Map, 0x026 );
 					ElementalSpell.ChangeBooks( m, 3 );
-					m.SendMessage( "You are now focused on the elemental magic of water." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You are now focused on the elemental magic of water." ) );
 					newWindows = true;
 				}
 				else if ( Name == "air" && ((PlayerMobile)m).CharacterElement != 0 )
@@ -113,7 +114,7 @@ namespace Server.Items
 					Effects.SendLocationEffect( this.Location, this.Map, 0x5590, 30, 10, 0xB24, 0 );
 					m.PlaySound( 0x10B );
 					ElementalSpell.ChangeBooks( m, 0 );
-					m.SendMessage( "You are now focused on the elemental magic of air." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You are now focused on the elemental magic of air." ) );
 					newWindows = true;
 				}
 				else if ( Name == "earth" && ((PlayerMobile)m).CharacterElement != 1 )
@@ -123,7 +124,7 @@ namespace Server.Items
 					Effects.SendLocationEffect( hands, this.Map, 0x3837, 23, 10, 0, 0 );
 					m.PlaySound( 0x65A );
 					ElementalSpell.ChangeBooks( m, 1 );
-					m.SendMessage( "You are now focused on the elemental magic of earth." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You are now focused on the elemental magic of earth." ) );
 					newWindows = true;
 				}
 

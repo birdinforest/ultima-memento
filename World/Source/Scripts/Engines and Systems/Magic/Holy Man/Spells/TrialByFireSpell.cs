@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -34,7 +35,7 @@ namespace Server.Spells.HolyMan
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "You are already under the effects of this prayer." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already under the effects of this prayer." ) );
 				return false;
 			}
 
@@ -49,13 +50,13 @@ namespace Server.Spells.HolyMan
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "You are already under the effects of this prayer." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already under the effects of this prayer." ) );
 			}
 			else if ( CheckSequence() )
 			{
 				int value = (int)( ( Caster.Skills[SkillName.Healing].Value + Caster.Skills[SkillName.Spiritualism].Value ) / 4 );
 				Caster.MagicDamageAbsorb = value;
-				Caster.SendMessage( "Your body is covered by holy flames." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your body is covered by holy flames." ) );
 				Caster.FixedParticles( 0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot );
 				Caster.PlaySound( 0x208 );
 				BuffInfo.RemoveBuff( Caster, BuffIcon.TrialByFire );

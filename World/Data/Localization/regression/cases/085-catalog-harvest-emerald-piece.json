@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.emerald.piece",
+  "pipeline": "string_catalog_only",
+  "en": "You harvest a piece of Emerald.",
+  "expectedZh": "你在矿脉中剥落一块祖母绿。",
+  "tags": "harvest,mining,gem,string_catalog_only"
+}

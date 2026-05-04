@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.found",
+  "pipeline": "string_catalog_only",
+  "en": "found",
+  "expectedZh": "找到",
+  "tags": "fragment-word,citizen"
+}

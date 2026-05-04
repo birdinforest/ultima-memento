@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Spells.Jester
 {
@@ -25,7 +26,7 @@ namespace Server.Spells.Jester
 
 			if( (Caster.Followers + 1) > Caster.FollowersMax )
 			{
-				Caster.SendMessage( "You have too many followers to open that can." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too many followers to open that can." ) );
 				return false;
 			}
 

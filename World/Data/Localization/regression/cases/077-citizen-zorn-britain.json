@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.zorn-city",
+  "pipeline": "citizen_broadcast",
+  "en": "Zorn living in Britain",
+  "expectedZh": "传闻佐恩栖身于不列颠。",
+  "tags": "proper-noun,zorn"
+}

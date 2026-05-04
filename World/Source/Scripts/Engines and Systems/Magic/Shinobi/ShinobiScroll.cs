@@ -12,6 +12,7 @@ using Server.Commands;
 using System.Globalization;
 using Server.Regions;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -73,7 +74,7 @@ namespace Server.Items
 						remove = true;
 						from.AddToBackpack( item );
 						from.PlaySound( 0x249 );
-						from.SendMessage( "You already have a scroll so you toss this one out!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a scroll so you toss this one out!" ) );
 					}
 				}
 				owner = from;
@@ -90,12 +91,12 @@ namespace Server.Items
 			{
 				if ( owner != from )
 				{
-					from.SendMessage( "This is not your scroll!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your scroll!" ) );
 					return;
 				}
 				else if ( !IsChildOf( from.Backpack ) ) 
 				{
-					from.SendMessage( "This must be in your backpack to read." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to read." ) );
 					return;
 				}
 				else
@@ -124,7 +125,7 @@ namespace Server.Items
 				if ( win != "" )
 				{
 					from.CloseGump( typeof( ShinobiScrollGump ) );
-					from.SendMessage( "You learned the " + win + " ability!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learned the " ) + win + StringCatalog.Resolve( from.Account, " ability!" ) );
 					from.PlaySound( 0x4D5 );
 					dropped.Delete();
 					InvalidateProperties();
@@ -141,7 +142,7 @@ namespace Server.Items
 			int skills = CheetahPaws + Deception + EagleEye + Espionage + FerretFlee + MonkeyLeap + MysticShuriken + TigerStrength;
 
             list.Add( 1049644, "" + skills + " Abilities");
-			if ( owner != null ){ list.Add( 1070722, "Belongs to " + owner.Name + "" ); }
+            if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) ); }
         } 
 
 		public static bool GetShinobi( Mobile m, int skill )
@@ -420,13 +421,13 @@ namespace Server.Items
 				else if ( scroll.Page == 2 )
 				{
 					AddButton(60, 90, 4011, 4011, 21, GumpButtonType.Reply, 0);
-					AddHtml( 100, 90, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>Open Horizontal Ability Bar</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 100, 90, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>" + StringCatalog.Resolve( from.Account, "Open Horizontal Ability Bar" ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(60, 135, 4011, 4011, 22, GumpButtonType.Reply, 0);
-					AddHtml( 100, 135, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>Open Vertical Ability Bar</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 100, 135, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>" + StringCatalog.Resolve( from.Account, "Open Vertical Ability Bar" ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(60, 180, 4017, 4017, 23, GumpButtonType.Reply, 0);
-					AddHtml( 100, 180, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>Close Ability Bar</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 100, 180, 340, 21, @"<BODY><BASEFONT Color=#111111><BIG>" + StringCatalog.Resolve( from.Account, "Close Ability Bar" ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( scroll.Page >= 3 && scroll.Page <= 10 )
 				{
@@ -440,7 +441,7 @@ namespace Server.Items
 					else
 					{
 						AddImage(47, 57, Int32.Parse( Server.Items.ShinobiScroll.ShinobiInfo( ability, "icon" ) ));
-						clue = "To be worthy of this ability, you need to either get the " + ShinobiInfo( ability, "prize1" ) + " at " + ShinobiInfo( ability, "where1" ) + " in the Land of Sosaria or the " + ShinobiInfo( ability, "prize2" ) + " at " + ShinobiInfo( ability, "where2" ) + " in the Land of Lodoria.";
+						clue = StringCatalog.Resolve( from.Account, "To be worthy of this ability, you need to either get the " ) + ShinobiInfo( ability, "prize1" ) + StringCatalog.Resolve( from.Account, " at " ) + ShinobiInfo( ability, "where1" ) + StringCatalog.Resolve( from.Account, " in the Land of Sosaria or the " ) + ShinobiInfo( ability, "prize2" ) + StringCatalog.Resolve( from.Account, " at " ) + ShinobiInfo( ability, "where2" ) + StringCatalog.Resolve( from.Account, " in the Land of Lodoria." );
 					}
 
 					AddHtml( 56, 109, 414, 92, @"<BODY><BASEFONT Color=#111111><BIG>" + clue + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);

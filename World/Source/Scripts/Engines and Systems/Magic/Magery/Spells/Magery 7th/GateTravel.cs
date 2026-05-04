@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Regions;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Seventh
 {
@@ -71,15 +72,15 @@ namespace Server.Spells.Seventh
 			}
 			else if ( Worlds.AllowEscape( Caster, Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That spell does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That spell does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedRecall( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That spell does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That spell does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( map, loc, loc.X, loc.Y ) == false )
 			{
-				Caster.SendMessage( "The destination seems magically unreachable." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The destination seems magically unreachable." ) );
 			}
 			else if ( !SpellHelper.CheckTravel( Caster,  map, loc, TravelCheckType.GateTo ) )
 			{

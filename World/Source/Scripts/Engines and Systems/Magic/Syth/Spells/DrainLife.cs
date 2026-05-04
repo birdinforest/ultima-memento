@@ -6,6 +6,7 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.Syth
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Who do you want to put to drain life from?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Who do you want to put to drain life from?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -57,7 +58,7 @@ namespace Server.Spells.Syth
 			}
 			else if ( !CanAffect )
 			{
-				Caster.SendMessage( "This power cannot affect supernatural creatures, golems, constructs, or elementals." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This power cannot affect supernatural creatures, golems, constructs, or elementals." ) );
 			}
 			else if ( CheckHSequence( m ) )
 			{

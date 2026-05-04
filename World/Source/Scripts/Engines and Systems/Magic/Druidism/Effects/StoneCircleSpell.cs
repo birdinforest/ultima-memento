@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Herbalist
 {
@@ -178,7 +179,7 @@ namespace Server.Spells.Herbalist
 
 			public override bool OnMoveOver( Mobile m )
 			{
-				m.SendMessage("The magic of the stones prevents you from crossing.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "The magic of the stones prevents you from crossing." ) );
 				return false;
 			}
 

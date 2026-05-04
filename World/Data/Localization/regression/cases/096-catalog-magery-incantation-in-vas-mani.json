@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.magery-incantation-in-vas-mani",
+  "pipeline": "string_catalog_only",
+  "en": "In Vas Mani",
+  "expectedZh": "In Vas Mani",
+  "tags": "magic,magery,runic,identity-zh-equals-en,string_catalog_only",
+  "source": "Spell incantation — zh-Hans mirrors EN per localization policy"
+}

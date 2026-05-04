@@ -4,6 +4,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Targeting;
 using System;
+using Server.Localization;
 
 namespace Server.Spells.Song
 {
@@ -52,7 +53,7 @@ namespace Server.Spells.Song
 			}
 			else if (instrument == null || !Caster.InRange(instrument.GetWorldLocation(), 1))
 			{
-				Caster.SendMessage("Your instrument is missing! You can select another from your song book.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your instrument is missing! You can select another from your song book." ) );
 			}
 			else if (CheckHSequence(m))
 			{
@@ -106,7 +107,7 @@ namespace Server.Spells.Song
 			{
 				var m = TargetMobile;
 
-				m.SendMessage("Your resistance to energy has decreased.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to energy has decreased." ) );
 				m_Mod = new ResistanceMod(ResistanceType.Energy, -m_Amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x374A, 10, 30, 5013, 0x14, 2, EffectLayer.Waist);

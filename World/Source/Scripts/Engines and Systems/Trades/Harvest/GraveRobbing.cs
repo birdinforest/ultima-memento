@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Targeting;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Engines.Harvest
 {
@@ -364,7 +365,7 @@ namespace Server.Engines.Harvest
 							}
 
 							chest.MoveToWorld( loc, map );
-							from.SendMessage( "you dig up a graveyard chest." );
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You dig up a graveyard chest." ) );
 						}
 					}
 				}

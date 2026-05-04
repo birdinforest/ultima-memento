@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.good-day-citizen",
+  "pipeline": "string_catalog_only",
+  "en": "Good day to you, Z~Z~Z~Z~Z.",
+  "expectedZh": "日安，Z~Z~Z~Z~Z。",
+  "tags": "scripts-mobiles"
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.dungeon-hate-token",
+  "pipeline": "composite_only",
+  "en": "Dungeon Hate",
+  "expectedZh": "憎恨地城",
+  "tags": "composite-only,short-fragment"
+}

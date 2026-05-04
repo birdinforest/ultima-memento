@@ -207,3 +207,4 @@ Both quest items in pack; **Talk** → evidence option → **`ApplyLinaEvidence`
 
 - Pointer file: `World/Documentation/quest-unsent-letter-pointer.md`
 - ML core: `World/Source/Scripts/Engines and Systems/Quests/Core/MLQuest.cs`, `MLQuestSystem.cs`, `MLQuestEntry.cs`
+- **传言系统集成设计（跨仓库，任务融入传闻网络）：** `uo-dev-documentations/memento/game-design-idea/UNSENT_LETTER_RUMOR_INTEGRATION.md`

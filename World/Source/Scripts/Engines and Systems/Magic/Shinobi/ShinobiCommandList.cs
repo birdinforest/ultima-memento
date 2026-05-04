@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Spells;
 using Server.Spells.Shinobi;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Scripts.Commands
 {
@@ -53,7 +54,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
         }
 
@@ -72,7 +73,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -91,7 +92,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -110,7 +111,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -129,7 +130,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -148,7 +149,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -167,7 +168,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 
@@ -186,7 +187,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You did not learn that ability." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You did not learn that ability." ) );
 			}
 		}
 	}

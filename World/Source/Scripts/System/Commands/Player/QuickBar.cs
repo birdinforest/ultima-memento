@@ -15,6 +15,7 @@ using Server.Misc;
 using Server.Items;
 using System.Globalization;
 using Server.SpellBars;
+using Server.Localization;
 
 namespace Server.Gumps 
 {
@@ -583,16 +584,16 @@ namespace Server.Gumps
 			AddPage(0);
 
 			AddImage(0, 0, 9548, PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">CONFIGURE QUICK BAR</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "CONFIGURE QUICK BAR" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(967, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 14, 55, 981, 94, @"<BODY><BASEFONT Color=" + color + ">This toolbar provides a quick and convenient way to keep an eye on certain inventory items, invoke commands, and access information. Images are used to represent the function of the various buttons. You must choose what icons will appear on your quick bar, and you can select those here. The icons for spells, songs, or abilities will open or close the bar for those categories.</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 14, 55, 981, 94, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "This toolbar provides a quick and convenient way to keep an eye on certain inventory items, invoke commands, and access information. Images are used to represent the function of the various buttons. You must choose what icons will appear on your quick bar, and you can select those here. The icons for spells, songs, or abilities will open or close the bar for those categories." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(277, 151, btn1, btn1, 1, GumpButtonType.Reply, 0);
-			AddHtml( 316, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">Horizontal Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 316, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Horizontal Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(580, 151, btn2, btn2, 2, GumpButtonType.Reply, 0);
-			AddHtml( 619, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">Open At Login</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 619, 151, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Open At Login" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			int icons = 2;
 			int count = 2;
@@ -666,7 +667,7 @@ namespace Server.Gumps
 				}
 
 				AddButton(x, y+6, button, button, icons, GumpButtonType.Reply, 0);
-				AddHtml( x+74, y+5, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + rowText( icons ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( x+74, y+5, 223, 20, @"<BODY><BASEFONT Color=" + color + ">" + rowText( icons, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 		}
@@ -686,49 +687,49 @@ namespace Server.Gumps
 				from.SendSound( 0x4A );
 		}
 
-		public static string rowText( int set )
+		public static string rowText( int set, Mobile from )
 		{
 			string row = "";
 
-			if ( set == 3 ){ row = "Away from Keyboard"; }
-			else if ( set == 4 ){ row = "Emotes"; }
-			else if ( set == 5 ){ row = "Find Nearest Magic Portal"; }
-			else if ( set == 6 ){ row = "Gold in the Bank"; }
-			else if ( set == 7 ){ row = "Message of the Day"; }
-			else if ( set == 8 ){ row = "Find Your Corpse"; }
-			else if ( set == 9 ){ row = "Your Main Quests"; }
-			else if ( set == 10 ){ row = "Chat & Messages"; }
-			else if ( set == 11 ){ row = "Switch Song"; }
-			else if ( set == 12 ){ row = "Music Playlist"; }
-			else if ( set == 13 ){ row = "Special Attack Bar"; }
-			else if ( set == 14 ){ row = "Bandage Yourself & Quantity"; }
-			else if ( set == 15 ){ row = "Bandage Other"; }
-			else if ( set == 16 ){ row = "Arrow Quantity"; }
-			else if ( set == 17 ){ row = "Bolt Quantity"; }
-			else if ( set == 18 ){ row = "Harpoon Rope Quantity"; }
-			else if ( set == 19 ){ row = "Mage Eye Quantity"; }
-			else if ( set == 20 ){ row = "Krystal Quantity"; }
-			else if ( set == 21 ){ row = "Throwing Weapon Quantity"; }
-			else if ( set == 22 ){ row = "Reagent Bar"; }
-			else if ( set == 23 ){ row = "Library"; }
-			else if ( set == 24 ){ row = "Conversations"; }
-			else if ( set == 25 ){ row = "Bard Songs"; }
-			else if ( set == 26 ){ row = "Chivalry Magic"; }
-			else if ( set == 27 ){ row = "Death Knight Magic"; }
-			else if ( set == 28 ){ row = "Druid Potions"; }
-			else if ( set == 29 ){ row = "Elementalist Spells"; }
-			else if ( set == 30 ){ row = "Jedi Abilities"; }
-			else if ( set == 31 ){ row = "Jester Abilities"; }
-			else if ( set == 32 ){ row = "Magery Spells"; }
-			else if ( set == 33 ){ row = "Monk Abilities"; }
-			else if ( set == 34 ){ row = "Necromancy Spells"; }
-			else if ( set == 35 ){ row = "Priest Prayers"; }
-			else if ( set == 36 ){ row = "Ancient Spells"; }
-			else if ( set == 37 ){ row = "Shinobi Abilities"; }
-			else if ( set == 38 ){ row = "Syth Abilities"; }
-			else if ( set == 39 ){ row = "Witch Potions"; }
-			else if ( set == 40 ){ row = "Skill List"; }
-			else if ( set == 41 ){ row = "Combat Bar"; }
+			if ( set == 3 ){ row = StringCatalog.Resolve( from.Account, "Away from Keyboard" ); }
+			else if ( set == 4 ){ row = StringCatalog.Resolve( from.Account, "Emotes" ); }
+			else if ( set == 5 ){ row = StringCatalog.Resolve( from.Account, "Find Nearest Magic Portal" ); }
+			else if ( set == 6 ){ row = StringCatalog.Resolve( from.Account, "Gold in the Bank" ); }
+			else if ( set == 7 ){ row = StringCatalog.Resolve( from.Account, "Message of the Day" ); }
+			else if ( set == 8 ){ row = StringCatalog.Resolve( from.Account, "Find Your Corpse" ); }
+			else if ( set == 9 ){ row = StringCatalog.Resolve( from.Account, "Your Main Quests" ); }
+			else if ( set == 10 ){ row = StringCatalog.Resolve( from.Account, "Chat & Messages" ); }
+			else if ( set == 11 ){ row = StringCatalog.Resolve( from.Account, "Switch Song" ); }
+			else if ( set == 12 ){ row = StringCatalog.Resolve( from.Account, "Music Playlist" ); }
+			else if ( set == 13 ){ row = StringCatalog.Resolve( from.Account, "Special Attack Bar" ); }
+			else if ( set == 14 ){ row = StringCatalog.Resolve( from.Account, "Bandage Yourself & Quantity" ); }
+			else if ( set == 15 ){ row = StringCatalog.Resolve( from.Account, "Bandage Other" ); }
+			else if ( set == 16 ){ row = StringCatalog.Resolve( from.Account, "Arrow Quantity" ); }
+			else if ( set == 17 ){ row = StringCatalog.Resolve( from.Account, "Bolt Quantity" ); }
+			else if ( set == 18 ){ row = StringCatalog.Resolve( from.Account, "Harpoon Rope Quantity" ); }
+			else if ( set == 19 ){ row = StringCatalog.Resolve( from.Account, "Mage Eye Quantity" ); }
+			else if ( set == 20 ){ row = StringCatalog.Resolve( from.Account, "Krystal Quantity" ); }
+			else if ( set == 21 ){ row = StringCatalog.Resolve( from.Account, "Throwing Weapon Quantity" ); }
+			else if ( set == 22 ){ row = StringCatalog.Resolve( from.Account, "Reagent Bar" ); }
+			else if ( set == 23 ){ row = StringCatalog.Resolve( from.Account, "Library" ); }
+			else if ( set == 24 ){ row = StringCatalog.Resolve( from.Account, "Conversations" ); }
+			else if ( set == 25 ){ row = StringCatalog.Resolve( from.Account, "Bard Songs" ); }
+			else if ( set == 26 ){ row = StringCatalog.Resolve( from.Account, "Chivalry Magic" ); }
+			else if ( set == 27 ){ row = StringCatalog.Resolve( from.Account, "Death Knight Magic" ); }
+			else if ( set == 28 ){ row = StringCatalog.Resolve( from.Account, "Druid Potions" ); }
+			else if ( set == 29 ){ row = StringCatalog.Resolve( from.Account, "Elementalist Spells" ); }
+			else if ( set == 30 ){ row = StringCatalog.Resolve( from.Account, "Jedi Abilities" ); }
+			else if ( set == 31 ){ row = StringCatalog.Resolve( from.Account, "Jester Abilities" ); }
+			else if ( set == 32 ){ row = StringCatalog.Resolve( from.Account, "Magery Spells" ); }
+			else if ( set == 33 ){ row = StringCatalog.Resolve( from.Account, "Monk Abilities" ); }
+			else if ( set == 34 ){ row = StringCatalog.Resolve( from.Account, "Necromancy Spells" ); }
+			else if ( set == 35 ){ row = StringCatalog.Resolve( from.Account, "Priest Prayers" ); }
+			else if ( set == 36 ){ row = StringCatalog.Resolve( from.Account, "Ancient Spells" ); }
+			else if ( set == 37 ){ row = StringCatalog.Resolve( from.Account, "Shinobi Abilities" ); }
+			else if ( set == 38 ){ row = StringCatalog.Resolve( from.Account, "Syth Abilities" ); }
+			else if ( set == 39 ){ row = StringCatalog.Resolve( from.Account, "Witch Potions" ); }
+			else if ( set == 40 ){ row = StringCatalog.Resolve( from.Account, "Skill List" ); }
+			else if ( set == 41 ){ row = StringCatalog.Resolve( from.Account, "Combat Bar" ); }
 
 			return row;
 		}

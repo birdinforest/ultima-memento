@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.ancient-wyrm-hidden-valley",
+  "pipeline": "composite_only",
+  "en": "an ancient wyrm guarding the way to the Hidden Valley",
+  "expectedZh": "远古龙守望着通往隐秘谷之路",
+  "tags": "fragment-table,wyrm"
+}

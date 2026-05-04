@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Commands;
 using Server.SpellBars;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -36,15 +37,15 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( "This must be in your pack to do any research. " + Research.GetMaxSchoolResearched( this ) + " - " + Research.GetMaxCircleResearched( this ) + "" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your pack to do any research. " ) + Research.GetMaxSchoolResearched( this ) + " - " + Research.GetMaxCircleResearched( this ) + "" );
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < 30 )
 			{
-				from.SendMessage( "You cannot understand anything that is in this bag." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot understand anything that is in this bag." ) );
 			}
 			else if ( BagOwner != from )
 			{
-				from.SendMessage( "This bag doesn't belong to you so you throw it out." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This bag doesn't belong to you so you throw it out." ) );
 				bool remove = true;
 				foreach ( Account a in Accounts.GetAccounts() )
 				{
@@ -90,7 +91,7 @@ namespace Server.Items
 				{
 					if ( BagScrolls > 50000 )
 					{
-						from.SendMessage( "This pack can only hold 50000 blank scrolls." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This pack can only hold 50000 blank scrolls." ) );
 					}
 					else
 					{
@@ -101,7 +102,7 @@ namespace Server.Items
 						if ( need >= have ){ BagScrolls = BagScrolls + have; dropped.Delete(); }
 						else { BagScrolls = 50000; dropped.Amount = dropped.Amount - need; }
 
-						from.SendMessage( "The blank scrolls have been added to your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The blank scrolls have been added to your pack." ) );
 
 						if( from.HasGump( typeof(ResearchGump)) )
 						{
@@ -116,7 +117,7 @@ namespace Server.Items
 
 					if ( BagQuills > 50000 )
 					{
-						from.SendMessage( "This pack can only hold 50000 quills." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This pack can only hold 50000 quills." ) );
 					}
 					else
 					{
@@ -125,7 +126,7 @@ namespace Server.Items
 						dropped.Delete();
 						if ( BagQuills > 50000 ){ BagQuills = 50000; }
 
-						from.SendMessage( "The quills have been added to your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The quills have been added to your pack." ) );
 
 						if( from.HasGump( typeof(ResearchGump)) )
 						{
@@ -257,7 +258,7 @@ namespace Server.Items
 					}
 
 					book.Delete();
-					from.SendMessage( "Using your research, you make a new spellbook." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Using your research, you make a new spellbook." ) );
 					
 					from.AddToBackpack( rune );
 					from.PlaySound( 0x55 );
@@ -279,7 +280,6 @@ namespace Server.Items
 			public ResearchGump( ResearchBag bag, Mobile from ) : base( 50, 50 )
 			{
 				from.SendSound( 0x55 );
-				string color = "#6cb89a";
 				string titleTxt = "";
 				string lowreg = "";
 
@@ -299,9 +299,9 @@ namespace Server.Items
 				AddItem(397, 17, 3636);
 				AddItem(533, 9, 8273);
 				AddItem(654, 11, 10282);
-				AddHtml( 441, 16, 80, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagScrolls).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 567, 16, 80, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagQuills).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 684, 16, 80, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagInk).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 441, 16, 80, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagScrolls).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 567, 16, 80, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagQuills).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 684, 16, 80, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagInk).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				if ( ( m_Page < 10 || m_Page > 20 ) && Research.GetRunes( bag, 26 ) ) /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
@@ -340,51 +340,51 @@ namespace Server.Items
 					int a = -28;
 
 					AddItem(104+a, 160, 3636);
-					AddHtml( 145+a, 163, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Scrolls</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 239+a, 163, 53, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagScrolls).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 145+a, 163, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Scrolls</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 239+a, 163, 53, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagScrolls).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddItem(417+a, 148, 8273);
-					AddHtml( 444+a, 163, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Quills</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 538+a, 163, 53, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagQuills).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 444+a, 163, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Quills</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 538+a, 163, 53, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagQuills).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddItem(698+a, 159, 10282);
-					AddHtml( 727+a, 163, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Ink</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 821+a, 163, 53, 20, @"<BODY><BASEFONT Color=" + color + ">" + (bag.BagInk).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 727+a, 163, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Ink</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 821+a, 163, 53, 20, @"<BODY><BASEFONT Color=#6cb89a>" + (bag.BagInk).ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					string msg = "Your pack is fully stocked with octopus ink.";
 					if ( bag.BagInk < 50000 ){ msg = "More octopus ink is rumored to be at " + bag.BagInkLocation + " in " + Server.Lands.LandName( bag.BagInkWorld ) + "."; }
 
-					AddHtml( 100+a, 207, 778, 20, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 100+a, 207, 778, 20, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					if ( Research.GetResearch( bag, 1 ) )
 					{
 						AddButton(121+a, 304, 4005, 4005, 1201, GumpButtonType.Reply, 0);
-						AddHtml( 161+a, 304, 204, 20, @"<BODY><BASEFONT Color=" + color + ">Ancient Spell Bar I</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 161+a, 304, 204, 20, @"<BODY><BASEFONT Color=#6cb89a>Ancient Spell Bar I</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(436+a, 304, 4005, 4005, 1211, GumpButtonType.Reply, 0);
-						AddHtml( 478+a, 304, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 478+a, 304, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(693+a, 304, 4017, 4017, 1221, GumpButtonType.Reply, 0);
-						AddHtml( 734+a, 304, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 734+a, 304, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 
 						AddButton(121+a, 344, 4005, 4005, 1202, GumpButtonType.Reply, 0);
-						AddHtml( 161+a, 344, 204, 20, @"<BODY><BASEFONT Color=" + color + ">Ancient Spell Bar II</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 161+a, 344, 204, 20, @"<BODY><BASEFONT Color=#6cb89a>Ancient Spell Bar II</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(436+a, 344, 4005, 4005, 1212, GumpButtonType.Reply, 0);
-						AddHtml( 478+a, 344, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 478+a, 344, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(693+a, 344, 4017, 4017, 1222, GumpButtonType.Reply, 0);
-						AddHtml( 734+a, 344, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 734+a, 344, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 
 						AddButton(121+a, 384, 4005, 4005, 1203, GumpButtonType.Reply, 0);
-						AddHtml( 161+a, 384, 204, 20, @"<BODY><BASEFONT Color=" + color + ">Ancient Spell Bar III</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 161+a, 384, 204, 20, @"<BODY><BASEFONT Color=#6cb89a>Ancient Spell Bar III</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(436+a, 384, 4005, 4005, 1213, GumpButtonType.Reply, 0);
-						AddHtml( 478+a, 384, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 478+a, 384, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(693+a, 384, 4017, 4017, 1223, GumpButtonType.Reply, 0);
-						AddHtml( 734+a, 384, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 734+a, 384, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 
 						AddButton(121+a, 424, 4005, 4005, 1204, GumpButtonType.Reply, 0);
-						AddHtml( 161+a, 424, 204, 20, @"<BODY><BASEFONT Color=" + color + ">Ancient Spell Bar IV</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 161+a, 424, 204, 20, @"<BODY><BASEFONT Color=#6cb89a>Ancient Spell Bar IV</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(436+a, 424, 4005, 4005, 1214, GumpButtonType.Reply, 0);
-						AddHtml( 478+a, 424, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 478+a, 424, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Open Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(693+a, 424, 4017, 4017, 1224, GumpButtonType.Reply, 0);
-						AddHtml( 734+a, 424, 147, 20, @"<BODY><BASEFONT Color=" + color + ">Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 734+a, 424, 147, 20, @"<BODY><BASEFONT Color=#6cb89a>Close Toolbar</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 				}
 				if ( m_Page == 2 ) // RUNES FOUND /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -398,92 +398,92 @@ namespace Server.Items
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 146, icon);
-					AddHtml( 192, 156, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 156, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 146, icon);
-					AddHtml( 377, 156, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 156, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 146, icon);
-					AddHtml( 562, 156, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 156, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 146, icon);
-					AddHtml( 747, 156, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 156, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 226, icon);
-					AddHtml( 192, 236, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 236, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 226, icon);
-					AddHtml( 377, 236, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 236, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 226, icon);
-					AddHtml( 562, 236, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 236, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 226, icon);
-					AddHtml( 747, 236, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 236, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 306, icon);
-					AddHtml( 192, 316, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 316, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 306, icon);
-					AddHtml( 377, 316, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 316, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 306, icon);
-					AddHtml( 562, 316, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 316, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 306, icon);
-					AddHtml( 747, 316, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 316, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 386, icon);
-					AddHtml( 192, 396, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 396, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 386, icon);
-					AddHtml( 377, 396, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 396, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 386, icon);
-					AddHtml( 562, 396, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 396, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 386, icon);
-					AddHtml( 747, 396, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 396, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 466, icon);
-					AddHtml( 192, 476, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 476, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 466, icon);
-					AddHtml( 377, 476, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 476, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 466, icon);
-					AddHtml( 562, 476, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 476, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 466, icon);
-					AddHtml( 747, 476, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 476, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(145, 546, icon);
-					AddHtml( 192, 556, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 192, 556, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 546, icon);
-					AddHtml( 377, 556, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 556, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 546, icon);
-					AddHtml( 562, 556, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 556, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(700, 546, icon);
-					AddHtml( 747, 556, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 747, 556, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(330, 626, icon);
-					AddHtml( 377, 636, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 377, 636, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					r++;	Rune = Research.RuneName( r, 1 );	rune = Research.RuneName( r, 0 );	icon = 11277; if ( Research.GetRunes( bag, r ) ){ icon = Research.RuneIndex( rune, 1 ); } else if ( next > 0 ){ icon = 11278; next = 0; missing = Rune; }
 					AddImage(515, 626, icon);
-					AddHtml( 562, 636, 50, 20, @"<BODY><BASEFONT Color=" + color + ">" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 562, 636, 50, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Rune + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					string msg = "You have found all of the Cubes of Power.";
 					if ( missing != "" ){ msg = "The Cube of " + missing + " is said to be in " + bag.RuneLocation + " in " + Server.Lands.LandName( bag.RuneWorld ) + "."; }
-					AddHtml( 104, 117, 778, 20, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 104, 117, 778, 20, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(777, 10, 3610, 3610, 12, GumpButtonType.Reply, 0); // HELP BUTTON
 				}
@@ -494,49 +494,49 @@ namespace Server.Items
 
 					int mcircleIcon = 3609; if ( m_Page == 21 || m_Page == 3 ){ mcircleIcon = 4017; }
 					AddButton(105+n, 150, mcircleIcon, mcircleIcon, 21, GumpButtonType.Reply, 0);
-					AddHtml( 145+n, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">1st Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 145+n, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>1st Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					if ( Research.GetWizardry( bag, 8 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 22 ){ mcircleIcon = 4017; }
 						AddButton(325+n, 150, mcircleIcon, mcircleIcon, 22, GumpButtonType.Reply, 0);
-						AddHtml( 365+n, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">2nd Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 365+n, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>2nd Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 16 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 23 ){ mcircleIcon = 4017; }
 						AddButton(545+n, 150, mcircleIcon, mcircleIcon, 23, GumpButtonType.Reply, 0);
-						AddHtml( 585+n, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">3rd Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 585+n, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>3rd Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 24 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 24 ){ mcircleIcon = 4017; }
 						AddButton(765+n, 150, mcircleIcon, mcircleIcon, 24, GumpButtonType.Reply, 0);
-						AddHtml( 805+n, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">4th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 805+n, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>4th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 32 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 25 ){ mcircleIcon = 4017; }
 						AddButton(105+n, 190, mcircleIcon, mcircleIcon, 25, GumpButtonType.Reply, 0);
-						AddHtml( 145+n, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">5th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 145+n, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>5th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 40 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 26 ){ mcircleIcon = 4017; }
 						AddButton(325+n, 190, mcircleIcon, mcircleIcon, 26, GumpButtonType.Reply, 0);
-						AddHtml( 365+n, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">6th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 365+n, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>6th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 48 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 27 ){ mcircleIcon = 4017; }
 						AddButton(545+n, 190, mcircleIcon, mcircleIcon, 27, GumpButtonType.Reply, 0);
-						AddHtml( 585+n, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">7th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 585+n, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>7th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					if ( Research.GetWizardry( bag, 56 ) )
 					{
 						mcircleIcon = 3609; if ( m_Page == 28 ){ mcircleIcon = 4017; }
 						AddButton(765+n, 190, mcircleIcon, mcircleIcon, 28, GumpButtonType.Reply, 0);
-						AddHtml( 805+n, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">8th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 805+n, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>8th Circle</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 
 					string spellCircle = "first";
@@ -552,49 +552,49 @@ namespace Server.Items
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(115+n, 340, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 340, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 340, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+n, 340, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(115+n, 390, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 390, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 390, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+n, 390, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(115+n, 440, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 440, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 440, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+n, 440, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(115+n, 490, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 490, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 490, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+n, 490, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(670+n, 340, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+n, 340, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+n, 340, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+n, 340, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(670+n, 390, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+n, 390, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+n, 390, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+n, 390, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(670+n, 440, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+n, 440, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+n, 440, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+n, 440, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 					if ( Research.GetWizardry( bag, spellName ) )
 					{
 						AddButton(670+n, 490, 4005, 4005, 400+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+n, 490, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+n, 490, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+n, 490, 4011, 4011, 300+spellName, GumpButtonType.Reply, 0);
 					} spellName++;
 
@@ -610,7 +610,7 @@ namespace Server.Items
 						msg = "To learn the " + nextSpell + " spell you need to find " + bag.SpellsMageItem + " at " + bag.SpellsMageLocation + " in " + Server.Lands.LandName( bag.SpellsMageWorld ) + ".";
 					}
 
-					AddHtml( 111+n, 278, 760, 45, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 111+n, 278, 760, 45, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(777, 10, 3610, 3610, 13, GumpButtonType.Reply, 0); // HELP BUTTON
 				}
@@ -625,103 +625,103 @@ namespace Server.Items
 					{
 						AddButton(115+n, 235, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 235, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 235, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 235, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 265, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 265, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 265, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 265, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 295, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 295, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 295, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 295, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 325, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(154+n, 325, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 325, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 325, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 355, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 355, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 355, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 355, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 385, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 385, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 385, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 385, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 415, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 415, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 415, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 415, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 445, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 445, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 445, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 445, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(115+n, 475, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(155+n, 475, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 195+n, 475, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+n, 475, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 235, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 235, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 235, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 235, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 265, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 265, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 265, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 265, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 295, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 295, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 295, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 295, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 325, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 325, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 325, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 325, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 355, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 355, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 355, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 355, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 385, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 385, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 385, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 385, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 415, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 415, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 415, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 415, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 					if ( Research.GetNecromancy( bag, spellName ) )
 					{
 						AddButton(620+n, 445, 4005, 4005, 400+spellName+64, GumpButtonType.Reply, 0);
 						AddButton(660+n, 445, 4011, 4011, 300+spellName+64, GumpButtonType.Reply, 0);
-						AddHtml( 700+n, 445, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 700+n, 445, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.ScrollInformation( spellName+64, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName++;
 
 					string msg = "You have researched all of the necromancy spells.";
@@ -736,7 +736,7 @@ namespace Server.Items
 						msg = "To learn the " + nextSpell + " spell you need to find " + bag.SpellsNecroItem + " at " + bag.SpellsNecroLocation + " in " + Server.Lands.LandName( bag.SpellsNecroWorld ) + ".";
 					}
 
-					AddHtml( 113+n, 160, 760, 45, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 113+n, 160, 760, 45, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(777, 10, 3610, 3610, 14, GumpButtonType.Reply, 0); // HELP BUTTON
 				}
@@ -748,42 +748,42 @@ namespace Server.Items
 
 					int mcircleIcon = 3609; if ( m_Page == 31 || m_Page == 5 ){ mcircleIcon = 4017; }
 					AddButton(105+r, 150, mcircleIcon, mcircleIcon, 31, GumpButtonType.Reply, 0);
-					AddHtml( 185+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Conjuration</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 185+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Conjuration</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(144+r, 143, Int32.Parse( Research.SpellInformation( 1, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 32 ){ mcircleIcon = 4017; }
 					AddButton(298+r, 150, mcircleIcon, mcircleIcon, 32, GumpButtonType.Reply, 0);
-					AddHtml( 378+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Death</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 378+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Death</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(337+r, 143, Int32.Parse( Research.SpellInformation( 2, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 33 ){ mcircleIcon = 4017; }
 					AddButton(506+r, 150, mcircleIcon, mcircleIcon, 33, GumpButtonType.Reply, 0);
-					AddHtml( 586+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Enchanting</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 586+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Enchanting</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(545+r, 143, Int32.Parse( Research.SpellInformation( 3, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 34 ){ mcircleIcon = 4017; }
 					AddButton(704+r, 150, mcircleIcon, mcircleIcon, 34, GumpButtonType.Reply, 0);
-					AddHtml( 784+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Sorcery</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 784+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Sorcery</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(743+r, 143, Int32.Parse( Research.SpellInformation( 4, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 35 ){ mcircleIcon = 4017; }
 					AddButton(105+r, 190, mcircleIcon, mcircleIcon, 35, GumpButtonType.Reply, 0);
-					AddHtml( 185+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Summoning</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 185+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Summoning</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(144+r, 183, Int32.Parse( Research.SpellInformation( 5, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 36 ){ mcircleIcon = 4017; }
 					AddButton(298+r, 190, mcircleIcon, mcircleIcon, 36, GumpButtonType.Reply, 0);
-					AddHtml( 378+r, 190, 95, 20, @"<BODY><BASEFONT Color=" + color + ">Thaumaturgy</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 378+r, 190, 95, 20, @"<BODY><BASEFONT Color=#6cb89a>Thaumaturgy</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(337+r, 183, Int32.Parse( Research.SpellInformation( 6, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 37 ){ mcircleIcon = 4017; }
 					AddButton(506+r, 190, mcircleIcon, mcircleIcon, 37, GumpButtonType.Reply, 0);
-					AddHtml( 586+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Theurgy</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 586+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Theurgy</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(545+r, 183, Int32.Parse( Research.SpellInformation( 7, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 38 ){ mcircleIcon = 4017; }
 					AddButton(704+r, 190, mcircleIcon, mcircleIcon, 38, GumpButtonType.Reply, 0);
-					AddHtml( 784+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Wizardry</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 784+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Wizardry</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(743+r, 183, Int32.Parse( Research.SpellInformation( 8, 10 ) ) );
 
 					string spellCircle = "conjuration";
@@ -801,49 +801,49 @@ namespace Server.Items
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(115+r, 340, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+r, 340, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+r, 340, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+r, 340, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(115+r, 390, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+r, 390, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+r, 390, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+r, 390, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(115+r, 440, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+r, 440, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+r, 440, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+r, 440, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(115+r, 490, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 195+r, 490, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 195+r, 490, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(155+r, 490, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(670+r, 340, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+r, 340, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+r, 340, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+r, 340, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(670+r, 390, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+r, 390, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+r, 390, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+r, 390, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(670+r, 440, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+r, 440, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+r, 440, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+r, 440, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
 						AddButton(670+r, 490, 4005, 4005, 600+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 750+r, 490, 176, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 750+r, 490, 176, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddButton(710+r, 490, 4011, 4011, 500+spellName, GumpButtonType.Reply, 0);
 					} spellName+=8;
 
@@ -859,7 +859,7 @@ namespace Server.Items
 						msg = "To learn the magic of " + nextSpell + " you need to find " + bag.ResearchItem + " at " + bag.ResearchLocation + " in " + Server.Lands.LandName( bag.ResearchWorld ) + ".";
 					}
 
-					AddHtml( 111+r, 278, 760, 45, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 111+r, 278, 760, 45, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(777, 10, 3610, 3610, 15, GumpButtonType.Reply, 0); // HELP BUTTON
 				}
@@ -871,46 +871,46 @@ namespace Server.Items
 
 					int mcircleIcon = 3609; if ( m_Page == 41 || m_Page == 6 ){ mcircleIcon = 4017; }
 					AddButton(105+r, 150, mcircleIcon, mcircleIcon, 41, GumpButtonType.Reply, 0);
-					AddHtml( 185+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Conjuration</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 185+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Conjuration</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(144+r, 143, Int32.Parse( Research.SpellInformation( 1, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 42 ){ mcircleIcon = 4017; }
 					AddButton(298+r, 150, mcircleIcon, mcircleIcon, 42, GumpButtonType.Reply, 0);
-					AddHtml( 378+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Death</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 378+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Death</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(337+r, 143, Int32.Parse( Research.SpellInformation( 2, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 43 ){ mcircleIcon = 4017; }
 					AddButton(506+r, 150, mcircleIcon, mcircleIcon, 43, GumpButtonType.Reply, 0);
-					AddHtml( 586+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Enchanting</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 586+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Enchanting</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(545+r, 143, Int32.Parse( Research.SpellInformation( 3, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 44 ){ mcircleIcon = 4017; }
 					AddButton(704+r, 150, mcircleIcon, mcircleIcon, 44, GumpButtonType.Reply, 0);
-					AddHtml( 784+r, 150, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Sorcery</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 784+r, 150, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Sorcery</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(743+r, 143, Int32.Parse( Research.SpellInformation( 4, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 45 ){ mcircleIcon = 4017; }
 					AddButton(105+r, 190, mcircleIcon, mcircleIcon, 45, GumpButtonType.Reply, 0);
-					AddHtml( 185+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Summoning</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 185+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Summoning</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(144+r, 183, Int32.Parse( Research.SpellInformation( 5, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 46 ){ mcircleIcon = 4017; }
 					AddButton(298+r, 190, mcircleIcon, mcircleIcon, 46, GumpButtonType.Reply, 0);
-					AddHtml( 378+r, 190, 95, 20, @"<BODY><BASEFONT Color=" + color + ">Thaumaturgy</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 378+r, 190, 95, 20, @"<BODY><BASEFONT Color=#6cb89a>Thaumaturgy</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(337+r, 183, Int32.Parse( Research.SpellInformation( 6, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 47 ){ mcircleIcon = 4017; }
 					AddButton(506+r, 190, mcircleIcon, mcircleIcon, 47, GumpButtonType.Reply, 0);
-					AddHtml( 586+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Theurgy</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 586+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Theurgy</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(545+r, 183, Int32.Parse( Research.SpellInformation( 7, 10 ) ) );
 
 					mcircleIcon = 3609; if ( m_Page == 48 ){ mcircleIcon = 4017; }
 					AddButton(704+r, 190, mcircleIcon, mcircleIcon, 48, GumpButtonType.Reply, 0);
-					AddHtml( 784+r, 190, 85, 20, @"<BODY><BASEFONT Color=" + color + ">Wizardry</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 784+r, 190, 85, 20, @"<BODY><BASEFONT Color=#6cb89a>Wizardry</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddImage(743+r, 183, Int32.Parse( Research.SpellInformation( 8, 10 ) ) );
 
 					string msg = bag.BagMsgString;	
-					AddHtml( 103+r, 236, 760, 45, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 103+r, 236, 760, 45, @"<BODY><BASEFONT Color=#6cb89a>" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					int spellName = 1;
 						if ( m_Page == 42 ){ spellName = 2; }
@@ -928,38 +928,38 @@ namespace Server.Items
 
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(120+r, 305, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(170+r, 315, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(210+r, 315, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 120+r, 275, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 120+r, 275, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 250+r, 315, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(120+r, 395, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(170+r, 405, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(210+r, 405, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 120+r, 365, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 120+r, 365, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 250+r, 405, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(120+r, 485, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(170+r, 495, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(210+r, 495, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 120+r, 455, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 120+r, 455, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 250+r, 495, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(120+r, 575, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(170+r, 585, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(210+r, 585, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 120+r, 545, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 120+r, 545, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 250+r, 585, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 
@@ -967,38 +967,38 @@ namespace Server.Items
 
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(620+shft, 305, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(670+shft, 315, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(710+shft, 315, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 620+shft, 275, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 620+shft, 275, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 750+shft, 315, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(620+shft, 395, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(670+shft, 405, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(710+shft, 405, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 620+shft, 365, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 620+shft, 365, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 750+shft, 405, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(620+shft, 485, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(670+shft, 495, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(710+shft, 495, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 620+shft, 455, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 620+shft, 455, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 750+shft, 495, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 					if ( Research.GetResearch( bag, spellName ) )
 					{
-						PrepareColor = "" + color + ""; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
+						PrepareColor = "#6cb89a"; IsPrepared = Research.GetPrepared( bag, spellName ); if ( IsPrepared > 10 ){ PrepareColor = "#15E650"; } else if (IsPrepared > 0 ){ PrepareColor = "#F25A5A"; }
 						AddImage(620+shft, 575, Int32.Parse( Research.SpellInformation( spellName, 11 ) ) );
 						AddButton(670+shft, 585, 4011, 4011, 700+spellName, GumpButtonType.Reply, 0);
 						AddButton(710+shft, 585, 4014, 4014, 800+spellName, GumpButtonType.Reply, 0);
-						AddHtml( 620+shft, 545, 250, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 620+shft, 545, 250, 20, @"<BODY><BASEFONT Color=#6cb89a>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 750+shft, 585, 60, 20, @"<BODY><BASEFONT Color=" + PrepareColor + ">" + IsPrepared + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					} spellName+=8;
 
@@ -1012,25 +1012,25 @@ namespace Server.Items
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg = "";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">Spell research is something that the most dedicated of wizards pursue. It requires the accumulation of knowledge of those that came before. Mages and Necromancers once practiced this strange magic, that was thought to be lost through the passage of time. No matter the research goal, one would need to find the cubes of power in order to scribe spells. Once all of the cubes of power are found, the true research can begin.<BR><BR>Some perform research to write commonly used spells, but cannot find the original scroll that contains the vital information needed to cast it. This research has a scribe searching for the pages of tomes that contain the information to write the spell to parchment. Creating scrolls in this manner require the use of octopus ink, which is scarce since the last octopus was seen centuries ago as the kraken were said to have wiped them out. The more difficult the spell, the more ink that is required to scribe the scroll. Your research will indicate where more octopus ink can be obtained. The better your skills in alchemy, cooking, and tasting the more use you will find from the collected ink. Modern spells can be learned in the areas of magery and necromancy. You can research each area simultaneously if you choose, but each area will require you to learn the magic in a specific order as the learned spell will help the researcher learn more of the next spell until all are discovered.<BR><BR>The main goal of spell research is for a spell caster to learn the ancient magic that has been long forgotten. This ancient magic consists of 64 different spells in 8 different schools of magic. These spells were once used by mages and necromancers alike, where those that reached the status of archmage benefited the most from the power these spells unleash.<BR><BR>The magic can be scribed to individual scrolls that the caster can then store in their research bag and later read from. When read, the scroll crumples to dust. " + lowreg + "You can also create an ancient spellbook, for a more traditional way to travel and use your newly discovered spells.<BR><BR>This bag will hold all of your research, as well as blank scrolls, quills, and octopus ink for a maximum quantity of 50,000 each. You can drop scribe pens and blank scrolls onto the bag to replenish those materials. Discovered ink will be placed in your bag when found. It will also hold all of the cubes of power as well as any ancient magic you put to parchment. This bag will hold 500 scrolls of each ancient magic spell. The bag is yours and no one else can look inside it or use the magic you researched within it. If you lose the bag, you should find a scribe immediately and give them another 500 gold where maybe you will have your research returned. If not, you will have to begin your research all over again with an empty bag.<BR><BR>You can also create an ancient spellbook for easier travels. To create an ancient spellbook, you need to find any spellbook you wish to begin with. It can be books like a magery spellbook, a necromancy spellbook, or even a book of ninjitsu. Drop the book onto your research bag. The attributes of the book you start with, will also give your ancient spellbook those same characteristics. The book will automatically be scribed with all of the ancient magic you learned thus far. Whenever you learn new ancient spells, you can drop the book back onto the research bag to update its pages. Like the research bag, this book will be yours alone to use and you can only have one book at any given time. Creating a new book will cause any current books to crumple to dust. Using ancient spellbooks requires the caster to carry reagents with them. The book pages may also turn to dust when spells are cast, so the wizard will need to keep extra pages (blank scrolls) within the book. They will also need to keep quills (scribe pens) set aside as well. Simply place these items on the book in order to maintain a supply of each. If you run out, you will not be able to cast any spells until you acquire more. You might find that you don't consume any scrolls or quills when reagent lowering attributes exist. These books can be equipped like other spellbooks.<BR><BR>" + Server.Misc.ResearchSettings.BagOrBook() + "<BR><BR>Spells are cast with those skilled in either magery or necromancy, whichever is higher. The effectiveness of the spells is dependent on the combination of magery, necromancy, spiritualism, and psychology. If you are simply skilled in only a couple of these skills, then the spells will have only an average effect. It is those that pursue all four of the skills of wizardry, that will gain the most benefit. When ancient spells are performed, it helps a researcher practice inscription, magery, necromancy, spiritualism, and psychology at the same time. This is why ancient spell research interests archmages, as they have achieved the level of grandmaster in both areas of magic. Some ancient magic has similarities to spells used today, as is to be expected that some of the knowledge survived the ages. So very few spells will be similar to current magery spells, and even fewer spells that are similar to modern necromancer spells. Although they are similar, the ancient spell usually proves to be much more powerful.<BR><BR>There are a few different ways to cast the ancient magic. The first is within the bag from the prepared spell section. There is an arrow icon next to each spell that can cast it for you. If you chose to create an ancient spellbook, you can cast spells from within that tome. Spell bars are also available for casting convenience, and they can be configured in the main section of this bag and only if you learned at least 1 of the ancient spells. You can also configure them in the HELP section. You are able to have 4 different spell bars for ancient magic, and you can customize each in a variety of ways. The last way to cast these spells is by a typed command, which allows you to make macros for spell casting if you want. Each of these commands are listed below:" + Server.Misc.ResearchSettings.AncientKeywords() + "</BASEFONT></BODY>", (bool)false, (bool)true);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>Spell research is something that the most dedicated of wizards pursue. It requires the accumulation of knowledge of those that came before. Mages and Necromancers once practiced this strange magic, that was thought to be lost through the passage of time. No matter the research goal, one would need to find the cubes of power in order to scribe spells. Once all of the cubes of power are found, the true research can begin.<BR><BR>Some perform research to write commonly used spells, but cannot find the original scroll that contains the vital information needed to cast it. This research has a scribe searching for the pages of tomes that contain the information to write the spell to parchment. Creating scrolls in this manner require the use of octopus ink, which is scarce since the last octopus was seen centuries ago as the kraken were said to have wiped them out. The more difficult the spell, the more ink that is required to scribe the scroll. Your research will indicate where more octopus ink can be obtained. The better your skills in alchemy, cooking, and tasting the more use you will find from the collected ink. Modern spells can be learned in the areas of magery and necromancy. You can research each area simultaneously if you choose, but each area will require you to learn the magic in a specific order as the learned spell will help the researcher learn more of the next spell until all are discovered.<BR><BR>The main goal of spell research is for a spell caster to learn the ancient magic that has been long forgotten. This ancient magic consists of 64 different spells in 8 different schools of magic. These spells were once used by mages and necromancers alike, where those that reached the status of archmage benefited the most from the power these spells unleash.<BR><BR>The magic can be scribed to individual scrolls that the caster can then store in their research bag and later read from. When read, the scroll crumples to dust. " + lowreg + "You can also create an ancient spellbook, for a more traditional way to travel and use your newly discovered spells.<BR><BR>This bag will hold all of your research, as well as blank scrolls, quills, and octopus ink for a maximum quantity of 50,000 each. You can drop scribe pens and blank scrolls onto the bag to replenish those materials. Discovered ink will be placed in your bag when found. It will also hold all of the cubes of power as well as any ancient magic you put to parchment. This bag will hold 500 scrolls of each ancient magic spell. The bag is yours and no one else can look inside it or use the magic you researched within it. If you lose the bag, you should find a scribe immediately and give them another 500 gold where maybe you will have your research returned. If not, you will have to begin your research all over again with an empty bag.<BR><BR>You can also create an ancient spellbook for easier travels. To create an ancient spellbook, you need to find any spellbook you wish to begin with. It can be books like a magery spellbook, a necromancy spellbook, or even a book of ninjitsu. Drop the book onto your research bag. The attributes of the book you start with, will also give your ancient spellbook those same characteristics. The book will automatically be scribed with all of the ancient magic you learned thus far. Whenever you learn new ancient spells, you can drop the book back onto the research bag to update its pages. Like the research bag, this book will be yours alone to use and you can only have one book at any given time. Creating a new book will cause any current books to crumple to dust. Using ancient spellbooks requires the caster to carry reagents with them. The book pages may also turn to dust when spells are cast, so the wizard will need to keep extra pages (blank scrolls) within the book. They will also need to keep quills (scribe pens) set aside as well. Simply place these items on the book in order to maintain a supply of each. If you run out, you will not be able to cast any spells until you acquire more. You might find that you don't consume any scrolls or quills when reagent lowering attributes exist. These books can be equipped like other spellbooks.<BR><BR>" + Server.Misc.ResearchSettings.BagOrBook() + "<BR><BR>Spells are cast with those skilled in either magery or necromancy, whichever is higher. The effectiveness of the spells is dependent on the combination of magery, necromancy, spiritualism, and psychology. If you are simply skilled in only a couple of these skills, then the spells will have only an average effect. It is those that pursue all four of the skills of wizardry, that will gain the most benefit. When ancient spells are performed, it helps a researcher practice inscription, magery, necromancy, spiritualism, and psychology at the same time. This is why ancient spell research interests archmages, as they have achieved the level of grandmaster in both areas of magic. Some ancient magic has similarities to spells used today, as is to be expected that some of the knowledge survived the ages. So very few spells will be similar to current magery spells, and even fewer spells that are similar to modern necromancer spells. Although they are similar, the ancient spell usually proves to be much more powerful.<BR><BR>There are a few different ways to cast the ancient magic. The first is within the bag from the prepared spell section. There is an arrow icon next to each spell that can cast it for you. If you chose to create an ancient spellbook, you can cast spells from within that tome. Spell bars are also available for casting convenience, and they can be configured in the main section of this bag and only if you learned at least 1 of the ancient spells. You can also configure them in the HELP section. You are able to have 4 different spell bars for ancient magic, and you can customize each in a variety of ways. The last way to cast these spells is by a typed command, which allows you to make macros for spell casting if you want. Each of these commands are listed below:" + Server.Misc.ResearchSettings.AncientKeywords() + "</BASEFONT></BODY>", (bool)false, (bool)true);
 				}
 				else if ( m_Page == 12 ) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
 					titleTxt = "CUBES OF POWER";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">In order to pursue any type of spell research, you must first collect all of the Cubes of Power. There are 26 cubes in total, and they have been lost throughout the land of Sosaria centuries ago. When you begin your search for the cubes, you will have a clue on where the first cube is rumored to be. Once you find this cube, you will learn the whereabouts to another cube. As you find these cubes, they will appear in your pack. Each cube has a word of power engraved in the top, and you need to use these cubes to scribe the magic to scrolls. Once all of the cubes have been found, you can further your research into areas such as wizardry, necromancy, or the spells that were once used by long dead mages. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the cube you seek.<br><br>Every cube you find, you will also receive a souvenir that is a replica of the cube you found. These can be used to decorate your home and display your goals in the realm of spell research. Each cube will have a soft glow to them, and their symbols are carved on the top.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>In order to pursue any type of spell research, you must first collect all of the Cubes of Power. There are 26 cubes in total, and they have been lost throughout the land of Sosaria centuries ago. When you begin your search for the cubes, you will have a clue on where the first cube is rumored to be. Once you find this cube, you will learn the whereabouts to another cube. As you find these cubes, they will appear in your pack. Each cube has a word of power engraved in the top, and you need to use these cubes to scribe the magic to scrolls. Once all of the cubes have been found, you can further your research into areas such as wizardry, necromancy, or the spells that were once used by long dead mages. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the cube you seek.<br><br>Every cube you find, you will also receive a souvenir that is a replica of the cube you found. These can be used to decorate your home and display your goals in the realm of spell research. Each cube will have a soft glow to them, and their symbols are carved on the top.</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Page == 13 ) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
 					titleTxt = "MAGERY RESEARCH";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">Magery spell research is done in a linear order from the least difficult spell to the most difficult. As you collect the wisdom of wizards that lived long ago, you will gain additional knowledge to construct the next series of spells in the field of magery. There are 64 magery spells in total, and the wisdom of those that originally created them are lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. The more difficult the spell, the more octopus ink you will need to scribe the words onto parchment. You can also attempt to scribe the scroll from the information window by pressing the scroll button. If you fail in your attempt, there is a chance that some of the materials will be lost. Scribes that pursue this type of research are those that cannot find a scroll for a particular spell, so this research aids them toward obtaining the spell.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>Magery spell research is done in a linear order from the least difficult spell to the most difficult. As you collect the wisdom of wizards that lived long ago, you will gain additional knowledge to construct the next series of spells in the field of magery. There are 64 magery spells in total, and the wisdom of those that originally created them are lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. The more difficult the spell, the more octopus ink you will need to scribe the words onto parchment. You can also attempt to scribe the scroll from the information window by pressing the scroll button. If you fail in your attempt, there is a chance that some of the materials will be lost. Scribes that pursue this type of research are those that cannot find a scroll for a particular spell, so this research aids them toward obtaining the spell.</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Page == 14 ) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
 					titleTxt = "NECROMANCY RESEARCH";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">Necromancy spell research is done in a linear order from the least difficult spell to the most difficult. As you collect the wisdom of necromancers that lived long ago, you will gain additional knowledge to construct the next series of spells in the field of necromancy. There are 17 necromancy spells in total, and the wisdom of those that originally created them are lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. The more difficult the spell, the more octopus ink you will need to scribe the words onto parchment. You can also attempt to scribe the scroll from the information window by pressing the scroll button. If you fail in your attempt, there is a chance that some of the materials will be lost. Scribes that pursue this type of research are those that cannot find a scroll for a particular spell, so this research aids them toward obtaining the spell.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>Necromancy spell research is done in a linear order from the least difficult spell to the most difficult. As you collect the wisdom of necromancers that lived long ago, you will gain additional knowledge to construct the next series of spells in the field of necromancy. There are 17 necromancy spells in total, and the wisdom of those that originally created them are lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. The more difficult the spell, the more octopus ink you will need to scribe the words onto parchment. You can also attempt to scribe the scroll from the information window by pressing the scroll button. If you fail in your attempt, there is a chance that some of the materials will be lost. Scribes that pursue this type of research are those that cannot find a scroll for a particular spell, so this research aids them toward obtaining the spell.</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Page == 15 ) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
@@ -1044,7 +1044,7 @@ namespace Server.Items
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg2 = "";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">Ancient spell research is done in a linear order from the least difficult spell to the most difficult where each school of magic is given a turn in the phases of discovery. This means that you will find the information for the easiest conjuration spell first. You will then need to find the information for the easiest death spell next. When you find the easiest spells for each of the 8 schools of magic, the rotation will begin again for the next least difficult spell for each school. This progression needs to be followed until all 64 spells are learned. The wizards that once used these spells died centuries ago, and the written tomes they possessed was lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them if you have the skills, mana, and resources to do so. Once scribed, the scroll will remain in your bag until you choose to cast it. As you cast these spells, the scribed scrolls will be depleted. " + lowreg2 + "You can learn more about casting these spells on the main screen's Help section or the prepared spells section. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. You can also attempt to scribe the scroll from the information window by pressing the scroll button if you choose to only scribe a single scroll. You can also press the other button to scribe as many scrolls as you have reagents, quills, and blank scrolls. When you scribe many at once, you only need the required mana as though you were scribing a single scroll, but the resources multiply toward the total quantity that is to be created. " + lowreg + "If you fail in your attempt, there is a chance that some of the materials will be lost.<br><br><br><br></BASEFONT></BODY>", (bool)false, (bool)true);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>Ancient spell research is done in a linear order from the least difficult spell to the most difficult where each school of magic is given a turn in the phases of discovery. This means that you will find the information for the easiest conjuration spell first. You will then need to find the information for the easiest death spell next. When you find the easiest spells for each of the 8 schools of magic, the rotation will begin again for the next least difficult spell for each school. This progression needs to be followed until all 64 spells are learned. The wizards that once used these spells died centuries ago, and the written tomes they possessed was lost throught the many lands. When you begin your search for these tomes, you will have a clue on where the first book is rumored to be. Once you find this book, you will learn the whereabouts to another book. As you find these tomes, the information on a particular spell will appear in your bag. Search the dungeon that the clue provides, and seek the runic pedestal with the small chest on top. If you search the contents, you may find the book you seek.<br><br>As you learn these spells, you can begin to scribe them if you have the skills, mana, and resources to do so. Once scribed, the scroll will remain in your bag until you choose to cast it. As you cast these spells, the scribed scrolls will be depleted. " + lowreg2 + "You can learn more about casting these spells on the main screen's Help section or the prepared spells section. Each spell listed has a button to attempt to scribe the scroll (arrow button) or a button that displays the information about the spell (scroll button). Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. You can also attempt to scribe the scroll from the information window by pressing the scroll button if you choose to only scribe a single scroll. You can also press the other button to scribe as many scrolls as you have reagents, quills, and blank scrolls. When you scribe many at once, you only need the required mana as though you were scribing a single scroll, but the resources multiply toward the total quantity that is to be created. " + lowreg + "If you fail in your attempt, there is a chance that some of the materials will be lost.<br><br><br><br></BASEFONT></BODY>", (bool)false, (bool)true);
 				}
 				else if ( m_Page == 16 ) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				{
@@ -1054,13 +1054,13 @@ namespace Server.Items
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg = "";
 
-					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=" + color + ">As you learn these spells, you can begin to scribe them if you have the skills, mana, and resources to do so. Once scribed, the scroll will remain in your bag until you choose to cast it. As you cast these spells, the scribed scrolls will be depleted. " + lowreg + "To cast a spell from this window, select the arrow button next to the spell icon. Each spell listed has a scroll button that displays the information about the spell. Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. You can attempt to scribe the scroll from the information window by pressing the scroll button if you choose to only scribe a single scroll. You can also press the other button to scribe as many scrolls as you have reagents, quills, and blank scrolls. When you scribe many at once, you only need the required mana as though you were scribing a single scroll, but the resources multiply toward the total quantity that is to be created. Lower reagent attributes do not work toward reagents needing to scribe these spells. If you fail in your attempt, there is a chance that some of the materials will be lost.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 60, 871, 639, @"<BODY><BASEFONT Color=#6cb89a>As you learn these spells, you can begin to scribe them if you have the skills, mana, and resources to do so. Once scribed, the scroll will remain in your bag until you choose to cast it. As you cast these spells, the scribed scrolls will be depleted. " + lowreg + "To cast a spell from this window, select the arrow button next to the spell icon. Each spell listed has a scroll button that displays the information about the spell. Look over the information to see what you will need to attempt to scribe the scroll. All scrolls require a certain inscription skill and mana to attempt, but also a blank scroll, quill, and reagents. You can attempt to scribe the scroll from the information window by pressing the scroll button if you choose to only scribe a single scroll. You can also press the other button to scribe as many scrolls as you have reagents, quills, and blank scrolls. When you scribe many at once, you only need the required mana as though you were scribing a single scroll, but the resources multiply toward the total quantity that is to be created. Lower reagent attributes do not work toward reagents needing to scribe these spells. If you fail in your attempt, there is a chance that some of the materials will be lost.</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				bag.BagMsgString = "";
 				bag.BagMessage = 0;
 
-				AddHtml( 12, 12, 382, 20, @"<BODY><BASEFONT Color=" + color + ">" + titleTxt + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 12, 382, 20, @"<BODY><BASEFONT Color=#6cb89a>" + titleTxt + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -1363,7 +1363,6 @@ namespace Server.Items
 			public SpellInformation( ResearchBag bag, Mobile from, int page, int spell, int area ) : base( 50, 50 )
 			{
 				from.SendSound( 0x55 );
-				string color = "#ddbc4b";
 
 				m_Bag = bag;
 				m_Scribe = from;
@@ -1401,28 +1400,25 @@ namespace Server.Items
 					}
 
 					AddImage( 555, 82, Int32.Parse( Research.SpellInformation( spell, 10 ) ) );
-
-					AddHtml( 12, 12, 317, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spell, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 18, 142, 564, 230, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spell, 3 ) + " School of Magic<br><br>" + Research.SpellInformation( spell, 6 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-
-					AddHtml( 252, 71, 74, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 336, 71, 74, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spell, 7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 252, 105, 74, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 336, 105, 74, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.SpellInformation( spell, 8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-
+					AddHtml( 12, 12, 317, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.SpellInformation( spell, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 18, 142, 564, 230, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.SpellInformation( spell, 3 ) + " School of Magic<br><br>" + Research.SpellInformation( spell, 6 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 252, 71, 74, 20, @"<BODY><BASEFONT Color=#ddbc4b>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 336, 71, 74, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.SpellInformation( spell, 7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 252, 105, 74, 20, @"<BODY><BASEFONT Color=#ddbc4b>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 336, 105, 74, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.SpellInformation( spell, 8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddItem(468, 70, 3827);
-					AddHtml( 512, 69, 30, 20, @"<BODY><BASEFONT Color=" + color + ">1</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 512, 69, 30, 20, @"<BODY><BASEFONT Color=#ddbc4b>1</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddItem(481, 97, 8273);
-					AddHtml( 512, 105, 30, 20, @"<BODY><BASEFONT Color=" + color + ">1</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 512, 105, 30, 20, @"<BODY><BASEFONT Color=#ddbc4b>1</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					string reagents = Research.SpellInformation( spell, 5 );
 						if ( reagents.Contains(", ") ){ reagents = reagents.Replace(", ", "<br>"); }
 
                     int g = 0;
 
-                    AddHtml(348, 391 + g, 234, 125, @"<BODY><BASEFONT Color=" + color + ">REAGENTS:<BR>" + reagents + "</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(155, 394 + g, 120, 20, @"<BODY><BASEFONT Color=" + color + ">Scribe One</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(155, 440 + g, 120, 20, @"<BODY><BASEFONT Color=" + color + ">Scribe Most</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(348, 391 + g, 234, 125, @"<BODY><BASEFONT Color=#ddbc4b>REAGENTS:<BR>" + reagents + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(155, 394 + g, 120, 20, @"<BODY><BASEFONT Color=#ddbc4b>Scribe One</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(155, 440 + g, 120, 20, @"<BODY><BASEFONT Color=#ddbc4b>Scribe Most</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(111, 394+g, 4011, 4011, 500+spell, GumpButtonType.Reply, 0);
 					AddButton(111, 440+g, 4029, 4029, 600+spell, GumpButtonType.Reply, 0);
@@ -1431,27 +1427,27 @@ namespace Server.Items
 				else
 				{
 					AddButton(12, 356, 4011, 4011, spell, GumpButtonType.Reply, 0);
-					AddHtml( 55, 356, 160, 20, @"<BODY><BASEFONT Color=" + color + ">Scribe Spell</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 55, 356, 160, 20, @"<BODY><BASEFONT Color=#ddbc4b>Scribe Spell</BASEFONT></BODY>", (bool)false, (bool)false);
 
-					AddHtml( 12, 14, 299, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spell, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 14, 299, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.ScrollInformation( spell, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddItem(306, 17, 3636);
 					AddItem(399, 9, 8273);
 					AddItem(479, 13, 10282);
-					AddHtml( 350, 15, 40, 20, @"<BODY><BASEFONT Color=" + color + ">1</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 433, 15, 40, 20, @"<BODY><BASEFONT Color=" + color + ">1</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 509, 15, 40, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spell, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 350, 15, 40, 20, @"<BODY><BASEFONT Color=#ddbc4b>1</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 433, 15, 40, 20, @"<BODY><BASEFONT Color=#ddbc4b>1</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 509, 15, 40, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.ScrollInformation( spell, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddHtmlLocalized( 12, 64, 578, 282, Int32.Parse( Research.ScrollInformation( spell, 6 ) ), 0x7FFF, false, false );
 
-					AddHtml( 12, 450, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 12, 495, 61, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 90, 450, 61, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spell, 5 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 90, 495, 61, 20, @"<BODY><BASEFONT Color=" + color + ">" + Research.ScrollInformation( spell, 4 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 450, 61, 20, @"<BODY><BASEFONT Color=#ddbc4b>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 495, 61, 20, @"<BODY><BASEFONT Color=#ddbc4b>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 90, 450, 61, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.ScrollInformation( spell, 5 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 90, 495, 61, 20, @"<BODY><BASEFONT Color=#ddbc4b>" + Research.ScrollInformation( spell, 4 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					string reagents = Research.ScrollInformation( spell, 3 );
 						if ( reagents.Contains(", ") ){ reagents = reagents.Replace(", ", "<br>"); }
 
-					AddHtml( 486, 430, 166, 100, @"<BODY><BASEFONT Color=" + color + ">REAGENTS:<BR>" + reagents + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 486, 430, 166, 100, @"<BODY><BASEFONT Color=#ddbc4b>REAGENTS:<BR>" + reagents + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 			}
 

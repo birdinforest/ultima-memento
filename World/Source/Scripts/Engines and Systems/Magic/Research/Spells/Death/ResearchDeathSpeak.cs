@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -106,11 +107,11 @@ namespace Server.Spells.Research
 
 					KarmaMod( Caster, ((int)RequiredSkill+RequiredMana) );
 
-					Caster.SendMessage( "You speak in strange tongues to the soul of the dead supernatural creature." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You speak in strange tongues to the soul of the dead supernatural creature." ) );
 				}
 				else
 				{
-					Caster.SendMessage( "You fail to speak to any dead supernatural creatures in the area." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You fail to speak to any dead supernatural creatures in the area." ) );
 					Caster.PlaySound( 0x1D6 );
 				}
 			}

@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Misc;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -64,15 +65,15 @@ namespace Server.Spells.Undead
 			}
 			else if ( Worlds.AllowEscape( Caster, Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That spell does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That spell does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedRecall( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That potion does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That potion does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( map, loc, loc.X, loc.Y ) == false )
 			{
-				Caster.SendMessage( "The destination seems magically unreachable with this potion." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The destination seems magically unreachable with this potion." ) );
 			}
 			else if ( !SpellHelper.CheckTravel( Caster,  map, loc, TravelCheckType.GateTo ) )
 			{
@@ -91,7 +92,7 @@ namespace Server.Spells.Undead
 			}
 			else if ( CheckSequence() )
 			{
-				Caster.SendMessage( "You open a black gate to another location." ); 
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You open a black gate to another location." ) ); 
 
 				Effects.PlaySound( Caster.Location, Caster.Map, 0x653 );
 				InternalItem firstGate = new InternalItem( loc, map, Server.Items.BasePotion.EnhancePotions( Caster ) );

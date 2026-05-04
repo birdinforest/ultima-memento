@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -26,7 +27,7 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			if ( this.Weight > 1.0 ){ list.Add( 1070722, "Single Click to Organize" ); }
+			if ( this.Weight > 1.0 ){ list.Add( 1070722, StringCatalog.Resolve( null, "Single Click to Organize" ) ); }
 		}
 
 		public override bool OnDragDropInto( Mobile from, Item dropped, Point3D p )
@@ -36,7 +37,7 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			from.SendMessage("This belt pouch is for witchery brewing items.");
+			from.SendMessage(StringCatalog.Resolve( from.Account, "This belt pouch is for witchery brewing items." ));
 			return false;
         }
 
@@ -47,7 +48,7 @@ namespace Server.Items
 				return base.OnDragDrop(from, dropped);
 			}
 
-			from.SendMessage("This belt pouch is for witchery brewing items.");
+			from.SendMessage(StringCatalog.Resolve( from.Account, "This belt pouch is for witchery brewing items." ));
 			return false;
         }
 
@@ -57,7 +58,6 @@ namespace Server.Items
 
 			public WitchBag( Mobile from, WitchPouch bag ) : base( 50, 50 )
 			{
-				string color = "#d89191";
 				m_Pouch = bag;
 				m_Pouch.Weight = 1.0;
 
@@ -69,112 +69,112 @@ namespace Server.Items
 				AddPage(0);
 
 				AddImage(0, 0, 7026, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 13, 13, 300, 20, @"<BODY><BASEFONT Color=" + color + ">WITCH'S BELT POUCH</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 13, 13, 300, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "WITCH'S BELT POUCH" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddImage(10, 43, 11437);
 				AddButton(863, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 325, 42, 565, 142, @"<BODY><BASEFONT Color=" + color + ">This bag is only for items used in the creation of witchery brews, as well as the concoctions created by it. These items will have their weight greatly reduced while in this bag. Here you can configure a quick belt pouch for these potions. This is also the only place where you can open and close the quick belt pouch, which is a bar that will open with icons for easy potion access. You can configure the bar to be either horizontal or vertical. You can choose if you want the names of the potions to appear with a vertical bar. You have to select which potions will appear in the bar. To learn more about witchery brewing, seek out the book titled - The Witch's Brew.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 325, 42, 565, 142, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "This bag is only for items used in the creation of witchery brews, as well as the concoctions created by it. These items will have their weight greatly reduced while in this bag. Here you can configure a quick belt pouch for these potions. This is also the only place where you can open and close the quick belt pouch, which is a bar that will open with icons for easy potion access. You can configure the bar to be either horizontal or vertical. You can choose if you want the names of the potions to appear with a vertical bar. You have to select which potions will appear in the bar. To learn more about witchery brewing, seek out the book titled - The Witch's Brew." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				// ------------------------------------------------------------------------
 
 				int b1 = 3609; if ( bag.UndeadEyes > 0 ){ b1 = 4017; }
 				AddButton(18, 338, b1, b1, 1, GumpButtonType.Reply, 0);
 				AddImage(57, 328, 0x2CC4);
-				AddHtml( 113, 338, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Eyes of the Dead</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 113, 338, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Eyes of the Dead" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b2 = 3609; if ( bag.NecroUnlock > 0 ){ b2 = 4017; }
 				AddButton(18, 393, b2, b2, 2, GumpButtonType.Reply, 0);
 				AddImage(57, 383, 0x2CCC);
-				AddHtml( 113, 393, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Tomb Raiding</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 113, 393, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Tomb Raiding" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b3 = 3609; if ( bag.NecroPoison > 0 ){ b3 = 4017; }
 				AddButton(18, 448, b3, b3, 3, GumpButtonType.Reply, 0);
 				AddImage(57, 438, 0x2CC2);
-				AddHtml( 113, 448, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Disease</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 113, 448, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Disease" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b4 = 3609; if ( bag.Phantasm > 0 ){ b4 = 4017; }
 				AddButton(18, 503, b4, b4, 4, GumpButtonType.Reply, 0);
 				AddImage(57, 493, 0x2CC9);
-				AddHtml( 113, 503, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Phantasm</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 113, 503, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Phantasm" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b5 = 3609; if ( bag.RetchedAir > 0 ){ b5 = 4017; }
 				AddButton(18, 558, b5, b5, 5, GumpButtonType.Reply, 0);
 				AddImage(57, 548, 0x2CCA);
-				AddHtml( 113, 558, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Retched Air</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 113, 558, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Retched Air" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				// ------------------------------------------------------------------------
 
 				int b6 = 3609; if ( bag.ManaLeech > 0 ){ b6 = 4017; }
 				AddButton(322, 283, b6, b6, 6, GumpButtonType.Reply, 0);
 				AddImage(361, 273, 0x2CC8);
-				AddHtml( 417, 283, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Lich Leech</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 283, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Lich Leech" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b7 = 3609; if ( bag.WallOfSpikes > 0 ){ b7 = 4017; }
 				AddButton(322, 338, b7, b7, 7, GumpButtonType.Reply, 0);
 				AddImage(361, 328, 0x2CCE);
-				AddHtml( 417, 338, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Wall of Spikes</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 338, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Wall of Spikes" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b8 = 3609; if ( bag.NecroCurePoison > 0 ){ b8 = 4017; }
 				AddButton(322, 393, b8, b8, 8, GumpButtonType.Reply, 0);
 				AddImage(361, 383, 0x2CC3);
-				AddHtml( 417, 393, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Disease Curing</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 393, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Disease Curing" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b9 = 3609; if ( bag.BloodPact > 0 ){ b9 = 4017; }
 				AddButton(322, 448, b9, b9, 9, GumpButtonType.Reply, 0);
 				AddImage(361, 438, 0x2CC0);
-				AddHtml( 417, 448, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Blood Pact</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 448, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Blood Pact" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b10 = 3609; if ( bag.SpectreShadow > 0 ){ b10 = 4017; }
 				AddButton(322, 503, b10, b10, 10, GumpButtonType.Reply, 0);
 				AddImage(361, 493, 0x2CCB);
-				AddHtml( 417, 503, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Spectre Shadow</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 503, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Spectre Shadow" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b11 = 3609; if ( bag.GhostPhase > 0 ){ b11 = 4017; }
 				AddButton(322, 558, b11, b11, 11, GumpButtonType.Reply, 0);
 				AddImage(361, 548, 0x2CC5);
-				AddHtml( 417, 558, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Ghost Phase</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 558, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Ghost Phase" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				// ------------------------------------------------------------------------
 
 				int b12 = 3609; if ( bag.HellsGate > 0 ){ b12 = 4017; }
 				AddButton(631, 338, b12, b12, 12, GumpButtonType.Reply, 0);
 				AddImage(670, 328, 0x2CC1);
-				AddHtml( 726, 338, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Demonic Fire</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 726, 338, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Demonic Fire" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b13 = 3609; if ( bag.GhostlyImages > 0 ){ b13 = 4017; }
 				AddButton(631, 393, b13, b13, 13, GumpButtonType.Reply, 0);
 				AddImage(670, 383, 0x2CC6);
-				AddHtml( 726, 393, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Ghostly Images</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 726, 393, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Ghostly Images" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b14 = 3609; if ( bag.HellsBrand > 0 ){ b14 = 4017; }
 				AddButton(631, 448, b14, b14, 14, GumpButtonType.Reply, 0);
 				AddImage(670, 438, 0x2CC7);
-				AddHtml( 726, 448, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Hellish Branding</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 726, 448, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Hellish Branding" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b15 = 3609; if ( bag.GraveyardGateway > 0 ){ b15 = 4017; }
 				AddButton(631, 503, b15, b15, 15, GumpButtonType.Reply, 0);
 				AddImage(670, 493, 0x2CBF);
-				AddHtml( 726, 503, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Black Gate</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 726, 503, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Black Gate" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int b16 = 3609; if ( bag.VampireGift > 0 ){ b16 = 4017; }
 				AddButton(631, 558, b16, b16, 16, GumpButtonType.Reply, 0);
 				AddImage(670, 548, 0x2CCD);
-				AddHtml( 726, 558, 144, 20, @"<BODY><BASEFONT Color=" + color + ">Vampire Blood</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 726, 558, 144, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Vampire Blood" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				// ------------------------------------------------------------------------
 
 				AddButton(675, 201, 4029, 4029, 20, GumpButtonType.Reply, 0);
-				AddHtml( 715, 201, 170, 20, @"<BODY><BASEFONT Color=" + color + ">Open Belt Pouch</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 715, 201, 170, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Open Belt Pouch" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddButton(675, 231, 4020, 4020, 21, GumpButtonType.Reply, 0);
-				AddHtml( 715, 231, 170, 20, @"<BODY><BASEFONT Color=" + color + ">Close Belt Pouch</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 715, 231, 170, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Close Belt Pouch" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int bDisplay = 3609; if ( bag.Titles > 0 ){ bDisplay = 4017; }
 				AddButton(325, 201, bDisplay, bDisplay, 22, GumpButtonType.Reply, 0);
-				AddHtml( 365, 201, 295, 20, @"<BODY><BASEFONT Color=" + color + ">Display Potion Names When Vertical</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 365, 201, 295, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Display Potion Names When Vertical" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int bVertical = 3609; if ( bag.Bar > 0 ){ bVertical = 4017; }
 				AddButton(325, 231, bVertical, bVertical, 23, GumpButtonType.Reply, 0);
-				AddHtml( 365, 231, 295, 20, @"<BODY><BASEFONT Color=" + color + ">Vertical Belt Pouch</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 365, 231, 295, 20, @"<BODY><BASEFONT Color=#d89191>" + StringCatalog.Resolve( from.Account, "Vertical Belt Pouch" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 
@@ -286,22 +286,22 @@ namespace Server.Items
 
 					if ( bag.Titles > 0 )
 					{
-						if ( bag.UndeadEyes > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Eyes of the Dead"); }
-						if ( bag.NecroUnlock > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Tomb Raiding"); }
-						if ( bag.NecroPoison > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Disease"); }
-						if ( bag.Phantasm > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Phantasm"); }
-						if ( bag.RetchedAir > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Retched Air"); }
-						if ( bag.ManaLeech > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Lich Leech"); }
-						if ( bag.WallOfSpikes > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Wall of Spikes"); }
-						if ( bag.NecroCurePoison > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Disease Curing"); }
-						if ( bag.BloodPact > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Blood Pact"); }
-						if ( bag.SpectreShadow > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Spectre Shadow"); }
-						if ( bag.GhostPhase > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Ghost Phase"); }
-						if ( bag.HellsGate > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Demonic Fire"); }
-						if ( bag.GhostlyImages > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Ghostly Images"); }
-						if ( bag.HellsBrand > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Hellish Brand"); }
-						if ( bag.GraveyardGateway > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Black Gate"); }
-						if ( bag.VampireGift > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, @"Vampire Blood"); }
+						if ( bag.UndeadEyes > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Eyes of the Dead" )); }
+						if ( bag.NecroUnlock > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Tomb Raiding" )); }
+						if ( bag.NecroPoison > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Disease" )); }
+						if ( bag.Phantasm > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Phantasm" )); }
+						if ( bag.RetchedAir > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Retched Air" )); }
+						if ( bag.ManaLeech > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Lich Leech" )); }
+						if ( bag.WallOfSpikes > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Wall of Spikes" )); }
+						if ( bag.NecroCurePoison > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Disease Curing" )); }
+						if ( bag.BloodPact > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Blood Pact" )); }
+						if ( bag.SpectreShadow > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Spectre Shadow" )); }
+						if ( bag.GhostPhase > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Ghost Phase" )); }
+						if ( bag.HellsGate > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Demonic Fire" )); }
+						if ( bag.GhostlyImages > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Ghostly Images" )); }
+						if ( bag.HellsBrand > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Hellish Brand" )); }
+						if ( bag.GraveyardGateway > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Black Gate" )); }
+						if ( bag.VampireGift > 0 ){ txt = txt + 50; AddLabel(70, txt, 2433, StringCatalog.Resolve( from.Account, "Vampire Blood" )); }
 					}
 				}
 				else
@@ -383,15 +383,13 @@ namespace Server.Items
 
 		public static void warnMe( Mobile from )
 		{
-			string text = "You don't have that brewed!";
-
-			from.SendMessage( text );
-			from.LocalOverheadMessage(MessageType.Emote, 1150, true, text);
+			from.SendMessage( StringCatalog.Resolve( from.Account, "You don't have that brewed!" ) );
+			from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You don't have that brewed!" ) );
 		}
 
 		public override bool OnDragLift( Mobile from )
 		{
-			from.SendMessage( "Single click this bag to organize it." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "Single click this bag to organize it." ) );
 			return base.OnDragLift( from );
 		}
 
@@ -549,7 +547,7 @@ namespace Server.Items
 				} 
 				else 
 				{
-					m_From.SendMessage( "This must be in your backpack to organize." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "This must be in your backpack to organize." ) );
 				} 
 			} 
 		} 

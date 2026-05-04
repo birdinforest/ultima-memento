@@ -45,6 +45,11 @@ listed in keep_extra in that script so they are never pruned as stale):
   race-system.json, shard-greeter.json, stats-gump.json, temptation-gump.json, thewar-quest.json,
   script-quest-unsent-letter.json (The Unsent Letter; keys consumed via TryResolveByKey — see
   World/Documentation/quest-unsent-letter-implementation.md)
+  resource-harvest-extra.json — hash-key EN display names for CraftResourceInfo material labels,
+  mining gem / bark / mushroom bonus strings, harvest quantity "some", and a few harvest UI lines
+  (see World/Documentation/resources-design/07-localization-and-player-copy.md). After materially
+  changing zh-Hans here or in extractor-owned harvest strings, extend regression/cases with
+  string_catalog_only goldens (see localization-regression-testing.md).
 
 Gump & books
 ------------
@@ -135,3 +140,11 @@ World/Documentation/zh-localization-glossary-sync-workflow.md
 World/Documentation/localization-complete-coverage-roadmap.md
   Program-level roadmap for full server-side localization coverage: runtime send paths,
   extractor scope, glossary workflow, phased rollout, and acceptance criteria.
+
+Localization regression (golden JSON)
+--------------------------------------
+  World/Documentation/localization-regression-testing.md — CI/local commands, pipelines, test tiers.
+  Data/Localization/regression/cases/*.json — one case per file (see cases/README.txt).
+  Run: from repo root, bash World/Source/Tools/run_localization_regression.sh
+    (after build; World/WorldLinux.exe -localization-regression / -locreg).
+  Note: current Main hook still performs full World.Load before tests (slow but correct).

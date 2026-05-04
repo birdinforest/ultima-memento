@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using System.Collections;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -67,10 +68,10 @@ namespace Server.Items
 
 				switch ( Utility.Random( 4 ) )
 				{
-					case 0: PackShrine = "Shrine of Intelligence"; 	break;
-					case 1: PackShrine = "Shrine of Strength"; 		break;
-					case 2: PackShrine = "Shrine of Wisdom"; 		break;
-					case 3: PackShrine = "Shrine of Dexterity"; 	break;
+					case 0: PackShrine = StringCatalog.Resolve( null, "Shrine of Intelligence" ); 	break;
+					case 1: PackShrine = StringCatalog.Resolve( null, "Shrine of Strength" ); 		break;
+					case 2: PackShrine = StringCatalog.Resolve( null, "Shrine of Wisdom" ); 		break;
+					case 3: PackShrine = StringCatalog.Resolve( null, "Shrine of Dexterity" ); 	break;
 				}
 			}
 		}
@@ -82,12 +83,12 @@ namespace Server.Items
 			if ( Owner == null && from is PlayerMobile )
 			{
 				Owner = from;
-				from.SendMessage( "You use your ki to bind the book to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You use your ki to bind the book to you." ) );
 			}
 
 			if ( from != owner )
 			{
-				from.SendMessage( "The book doesn't seem to open." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The book doesn't seem to open." ) );
 			}
 			else if ( PackTest( this, from ) )
 			{
@@ -107,7 +108,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "Belongs to " + owner.Name + "" ); }
+			if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) ); }
         }
 
 		static Random _random = new Random();
@@ -156,7 +157,7 @@ namespace Server.Items
 					MysticPack bag = new MysticPack();
 					bag.owner = from;
 					from.AddToBackpack( bag );
-					from.SendMessage( "You summon a monk's rucksack from the astral plane." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You summon a monk's rucksack from the astral plane." ) );
 
 					string[] chant = new string[] {"Ahm", "Mu", "Ra", "Beh", "Cah", "Summ", "Om", "Lum"};
 						string pray_chant_1 = chant[Utility.RandomMinMax( 0, (chant.Length-1) )];
@@ -204,11 +205,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant01;
-					from.SendMessage( "You learn the secrets of astral projection." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of astral projection." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 251 ) && from.Map == book.WritMap02 && from.X >= book.WritX102 && from.Y >= book.WritY102 && from.X <= book.WritX202 && from.Y <= book.WritY202 )
@@ -221,11 +222,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant02;
-					from.SendMessage( "You learn the secrets of astral travel." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of astral travel." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 252 ) && from.Map == book.WritMap03 && from.X >= book.WritX103 && from.Y >= book.WritY103 && from.X <= book.WritX203 && from.Y <= book.WritY203 )
@@ -238,11 +239,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant03;
-					from.SendMessage( "You learn the secrets of creating mystical monk robes." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of creating mystical monk robes." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 253 ) && from.Map == book.WritMap04 && from.X >= book.WritX104 && from.Y >= book.WritY104 && from.X <= book.WritX204 && from.Y <= book.WritY204 )
@@ -255,11 +256,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant04;
-					from.SendMessage( "You learn the secrets of the gentle touch." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of the gentle touch." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 254 ) && from.Map == book.WritMap05 && from.X >= book.WritX105 && from.Y >= book.WritY105 && from.X <= book.WritX205 && from.Y <= book.WritY205 )
@@ -272,11 +273,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant05;
-					from.SendMessage( "You learn the secrets of leaping." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of leaping." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 255 ) && from.Map == book.WritMap06 && from.X >= book.WritX106 && from.Y >= book.WritY106 && from.X <= book.WritX206 && from.Y <= book.WritY206 )
@@ -289,11 +290,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant06;
-					from.SendMessage( "You learn the secrets of the psionic blast." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of the psionic blast." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 256 ) && from.Map == book.WritMap07 && from.X >= book.WritX107 && from.Y >= book.WritY107 && from.X <= book.WritX207 && from.Y <= book.WritY207 )
@@ -306,11 +307,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant07;
-					from.SendMessage( "You learn the secrets of the psychic wall." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of the psychic wall." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 257 ) && from.Map == book.WritMap08 && from.X >= book.WritX108 && from.Y >= book.WritY108 && from.X <= book.WritX208 && from.Y <= book.WritY208 )
@@ -323,11 +324,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant08;
-					from.SendMessage( "You learn the secrets of the purity of the body." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of the purity of the body." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 258 ) && from.Map == book.WritMap09 && from.X >= book.WritX109 && from.Y >= book.WritY109 && from.X <= book.WritX209 && from.Y <= book.WritY209 )
@@ -340,11 +341,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant09;
-					from.SendMessage( "You learn the secrets of the quivering palm." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of the quivering palm." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 			else if ( !book.HasSpell( 259 ) && from.Map == book.WritMap10 && from.X >= book.WritX110 && from.Y >= book.WritY110 && from.X <= book.WritX210 && from.Y <= book.WritY210 )
@@ -357,11 +358,11 @@ namespace Server.Items
 					paper.owner = from;
 					from.AddToBackpack( paper );
 					speak = book.WritChant10;
-					from.SendMessage( "You learn the secrets of running like the wind." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You learn the secrets of running like the wind." ) );
 				}
 				else
 				{
-					from.SendMessage( "You do not have a blank scroll to record what you learned." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have a blank scroll to record what you learned." ) );
 				}
 			}
 

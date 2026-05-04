@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -68,7 +69,7 @@ namespace Server.Spells.Undead
 						LockableContainer cont = (LockableContainer)o;
 
 						if ( Multis.BaseHouse.CheckSecured( cont ) ) 
-							from.SendMessage("You cannot use this on a secure item.");
+							from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use this on a secure item." ) );
 						else if ( !cont.Locked )
 							from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 503101 ); // That did not need to be unlocked.
 						else if ( cont.LockLevel == 0 )

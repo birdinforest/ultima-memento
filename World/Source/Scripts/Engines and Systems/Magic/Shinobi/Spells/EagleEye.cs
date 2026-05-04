@@ -9,6 +9,7 @@ using Server.Mobiles;
 using Server.Multis;
 using Server.Regions;
 using Server.Spells.Sixth;
+using Server.Localization;
 
 namespace Server.Spells.Shinobi
 {
@@ -66,7 +67,7 @@ namespace Server.Spells.Shinobi
 
 						Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 						Caster.PlaySound( Caster.Female ? 779 : 1050 );
-						Caster.SendMessage( "There is a trap nearby! " + sTrap + "" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is a trap nearby! " ) + sTrap + "" );
 						Caster.Say( "*ah ha!*" );
 						foundAnyone = true;
 					}
@@ -97,7 +98,7 @@ namespace Server.Spells.Shinobi
 					{
 						Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 						Caster.PlaySound( Caster.Female ? 779 : 1050 );
-						Caster.SendMessage( "There is a hidden door nearby!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is a hidden door nearby!" ) );
 						Caster.Say( "*ah ha!*" );
 						foundAnyone = true;
 					}
@@ -107,7 +108,7 @@ namespace Server.Spells.Shinobi
 						{
 							Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 							Caster.PlaySound( Caster.Female ? 779 : 1050 );
-							Caster.SendMessage( "There is a hidden floor trap somewhere nearby!" );
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is a hidden floor trap somewhere nearby!" ) );
 							Caster.Say( "*ah ha!*" );
 							foundAnyone = true;
 							HiddenTrap.DiscoverTrap( item );
@@ -170,7 +171,7 @@ namespace Server.Spells.Shinobi
 				{
 					Caster.PlaySound( Caster.Female ? 0x31B : 0x42B );
 					Caster.Say( "*groans*" );
-					Caster.SendMessage( "Your don't notice anything." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You don't notice anything." ) );
 				}
 			}
 

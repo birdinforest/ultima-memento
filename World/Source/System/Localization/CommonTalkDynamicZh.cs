@@ -30,20 +30,20 @@ namespace Server.Localization
 			// (pattern, format template, number of capturing groups). Longer / more specific first.
 			var raw = new[]
 			{
-				(@"^some (.+) that had a tinker in (.+) make a golem with a dark core$", "传闻有位「{0}」在「{1}」雇工匠以黑暗核心铸成一尊魔像。", 2),
+				(@"^some (.+) that had a tinker in (.+) make a golem with a dark core$", "传闻有位{0}在{1}雇工匠以黑暗核心铸成一尊魔像。", 2),
 				(@"^some (.+) that was killed by a cyclops' eye$", "传闻有位「{0}」丧命于独眼巨人之瞳。", 1),
 				(@"^some (.+) that was killed by elemental grues$", "传闻有位「{0}」命丧元素格鲁之手。", 1),
 				// Job from RandomThings.GetRandomJob() may be multi-word (e.g. "stable master"); do not use [a-z]+ only.
 				(@"^some (.+?) solving the mystery of the Skull Gate$", "传闻有位「{0}」正试图揭开颅骨门之谜。", 1),
 				(@"^some (.+?) solving the mystery of the Serpent Pillars$", "传闻有位「{0}」正试图揭开巨蛇柱之谜。", 1),
 				(@"^someone buried with great treasure in the graveyard in (.+)$", "传闻「{0}」的墓园中，有人携重宝藏于坟冢。", 1),
-				(@"^a demilich dwelling below (.+)$", "传闻「{0}」地下盘踞着一名半巫妖。", 1),
-				(@"^some (.+?) selling artifacts in (.+)$", "传闻在「{1}」，有位「{0}」在兜售神器。", 2),
-				(@"^someone who killed the (.+?) in (.+)$", "传闻在「{1}」，有人杀害了那位「{0}」。", 2),
+				(@"^a demilich dwelling below (.+)$", "传闻{0}地下盘踞着一名半巫妖。", 1),
+				(@"^some (.+?) selling artifacts in (.+)$", "传闻在{1}，有位{0}在兜售神器。", 2),
+				(@"^someone who killed the (.+?) in (.+)$", "传闻在「{1}」，有人杀害了{0}。", 2),
 				(@"^an ancient book of magic buried in (.+)$", "传闻一册古法魔典埋藏于「{0}」。", 1),
 				(@"^a wizard that sails the Isles of Dread, selling rare spells$", "传闻有位法师驾舟于恐惧群岛，贩卖珍奇法术。", 0),
-				(@"^a blacksmith in (.+) that makes weapons out of mithril$", "传闻「{0}」有位铁匠能以秘银打造兵器。", 1),
-				(@"^Zorn living in (.+)$", "传闻佐恩栖身于「{0}」。", 1),
+				(@"^a blacksmith in (.+) that makes weapons out of mithril$", "传闻{0}有位铁匠能以秘银打造兵器。", 1),
+				(@"^Zorn living in (.+)$", "传闻佐恩栖身于{0}。", 1),
 				(@"^a black sword resting in (.+)$", "传闻一把乌黑长剑静置在「{0}」。", 1),
 			};
 
@@ -129,7 +129,7 @@ namespace Server.Localization
 				case "hydra": return "九头蛇";
 				case "dragon": return "巨龙";
 				case "drake": return "双足飞龙";
-				case "wyrm": return "古龙";
+				case "wyrm": return "亚龙";
 				default: return k;
 			}
 		}
@@ -183,6 +183,123 @@ namespace Server.Localization
 			if ( zh == null || zh.Length == 0 || zh.Equals( low, StringComparison.OrdinalIgnoreCase ) )
 				return low;
 			return zh;
+		}
+
+		private const string EnAncientDarkElfCityDeepBeneathLodor = "an ancient dark elf city deep beneath Lodor";
+
+		/// <summary>TavernPatrons GetChatter uses <c>A queen found …</c> (see <c>sJob + " found"</c>); map to natural 一个{职业}…</summary>
+		private static string TranslateArticleAdventurerOneZh( Mobile m, string aOrAnRole )
+		{
+			if ( aOrAnRole == null || aOrAnRole.Length == 0 )
+				return "";
+			string p = aOrAnRole.Trim();
+			Match jm = Regex.Match( p, @"^(A|An)\s+(.+)$", RegexOptions.CultureInvariant );
+			if ( !jm.Success )
+				return CompositePart( m, p );
+			string core = jm.Groups[2].Value.Trim();
+			string low = core.ToLowerInvariant();
+			string zh = NpcSpeechTokenZh.TranslateAdventurerZh( low );
+			if ( zh == null || zh.Length == 0 || zh.Equals( low, StringComparison.OrdinalIgnoreCase ) )
+				zh = CompositePart( m, core );
+			return "一个" + zh;
+		}
+
+		private static string FormatArticleRoleFoundRumorZh( Mobile m, string articleRoleEn, string bodyEn )
+		{
+			string who = TranslateArticleAdventurerOneZh( m, articleRoleEn );
+			string b = bodyEn.Trim();
+			if ( b.Equals( EnAncientDarkElfCityDeepBeneathLodor, StringComparison.OrdinalIgnoreCase ) )
+				return who + "在洛多尔地底深处找到了远古暗精灵城。";
+			string bzh = CompositePart( m, b );
+			return who + "找到了" + bzh + "。";
+		}
+
+		private static string MapWitnessBookRumorPreambleZh( string en )
+		{
+			switch ( en )
+			{
+				case "I heard": return "我听说";
+				case "I learned": return "我得知";
+				case "I found out": return "我打听下来";
+				default: return "我听说";
+			}
+		}
+
+		/// <summary>Museum book &amp; quest tome citizen rumors (English templates from MuseumBook / QuestTome GetRumor talk lines).</summary>
+		private static string FormatBookRelicLocateZh( Mobile m, string subjectEn, string locateEn, string dungeonEn, string worldEn )
+		{
+			string subj = CompositePart( m, subjectEn.Trim() );
+			string dun = CompositePart( m, dungeonEn.Trim() );
+			string world = CompositePart( m, worldEn.Trim() );
+			switch ( locateEn )
+			{
+				case "held by a powerful creature":
+					return "「" + subj + "」或许正由强敌把守于「" + world + "」的「" + dun + "」。";
+				case "lost somewhere":
+					return "「" + subj + "」或许已失落于「" + world + "」的「" + dun + "」某处。";
+				case "found":
+					return "「" + subj + "」或许已在「" + world + "」的「" + dun + "」现身。";
+				default:
+					return "「" + subj + "」或许与「" + CompositePart( m, locateEn ) + "」有关，所在「" + world + "」的「" + dun + "」。";
+			}
+		}
+
+		/// <summary>Optional museum/tome rumor clauses; <c>null</c> if <paramref name="en"/> does not match.</summary>
+		private static string TryMuseumAndQuestTomeRumorZh( Mobile m, string en )
+		{
+			if ( m == null || en == null || en.Length == 0 )
+				return null;
+
+			Match ma;
+
+			ma = Regex.Match( en, @"^(I heard|I learned|I found out) that the (.+?) may be (held by a powerful creature|lost somewhere) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return MapWitnessBookRumorPreambleZh( ma.Groups[1].Value ) + "，" + FormatBookRelicLocateZh( m, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value );
+
+			ma = Regex.Match( en, @"^The (.+?) in (.+?) told me that the (.+?) may be (held by a powerful creature|lost somewhere) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+			{
+				string jobZh = CompositePart( m, ma.Groups[1].Value.Trim() );
+				string cityZh = CompositePart( m, ma.Groups[2].Value.Trim() );
+				return "「" + cityZh + "」的「" + jobZh + "」告诉我，" + FormatBookRelicLocateZh( m, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value, ma.Groups[6].Value );
+			}
+
+			ma = Regex.Match( en, @"^I overheard some (.+?) say that the (.+?) may be (held by a powerful creature|lost somewhere) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+			{
+				string jobZh = CompositePart( m, ma.Groups[1].Value.Trim() );
+				return "我无意间听见有位「" + jobZh + "」说起，" + FormatBookRelicLocateZh( m, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value );
+			}
+
+			ma = Regex.Match( en, @"^My friend told me that the (.+?) may be (held by a powerful creature|lost somewhere) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return "友人告诉我，" + FormatBookRelicLocateZh( m, ma.Groups[1].Value, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value );
+
+			// Quest tome: no "the " before goal name; locate may be "found"
+			ma = Regex.Match( en, @"^(I heard|I learned|I found out) that (.+?) may be (held by a powerful creature|lost somewhere|found) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return MapWitnessBookRumorPreambleZh( ma.Groups[1].Value ) + "，" + FormatBookRelicLocateZh( m, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value );
+
+			ma = Regex.Match( en, @"^The (.+?) in (.+?) told me that (.+?) may be (held by a powerful creature|lost somewhere|found) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+			{
+				string jobZh = CompositePart( m, ma.Groups[1].Value.Trim() );
+				string cityZh = CompositePart( m, ma.Groups[2].Value.Trim() );
+				return "「" + cityZh + "」的「" + jobZh + "」告诉我，" + FormatBookRelicLocateZh( m, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value, ma.Groups[6].Value );
+			}
+
+			ma = Regex.Match( en, @"^I overheard some (.+?) say that (.+?) may be (held by a powerful creature|lost somewhere|found) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+			{
+				string jobZh = CompositePart( m, ma.Groups[1].Value.Trim() );
+				return "我无意间听见有位「" + jobZh + "」说起，" + FormatBookRelicLocateZh( m, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value, ma.Groups[5].Value );
+			}
+
+			ma = Regex.Match( en, @"^My friend told me that (.+?) may be (held by a powerful creature|lost somewhere|found) within (.+?) in (.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return "友人告诉我，" + FormatBookRelicLocateZh( m, ma.Groups[1].Value, ma.Groups[2].Value, ma.Groups[3].Value, ma.Groups[4].Value );
+
+			return null;
 		}
 
 		private static bool TryClassifyCitizenRareMixPreface( string pref, out int pclass, out string advLow )
@@ -315,9 +432,9 @@ namespace Server.Localization
 			switch ( pclass )
 			{
 				case 0:
-					return "我听说" + mid + "。";
+					return "我得知" + mid + "。";
 				case 1:
-					return "我们听说" + mid + "。";
+					return "我们得知" + mid + "。";
 				case 2:
 					return "有传言称" + mid + "。";
 				case 3:
@@ -374,6 +491,12 @@ namespace Server.Localization
 
 			if ( en == "We need to find a bank and split this loot we have." )
 				return "我们得去找家银行，把这批战利品分了。";
+
+			{
+				string bookRumor = TryMuseumAndQuestTomeRumorZh( m, en );
+				if ( bookRumor != null )
+					return bookRumor;
+			}
 
 			ma = Regex.Match( en, @"^amagic item called (.+) lost in (.+)$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
@@ -501,6 +624,11 @@ namespace Server.Localization
 				return "有位" + roleZh + "提到了「" + bzh + "」。";
 			}
 
+			// TavernPatrons GetChatter (LogReader 0/1): "A queen found …" — must beat generic (An|The|A) … found below.
+			ma = Regex.Match( en, @"^((?:A|An)\s+.+?)\s+found\s+(.+)\.$", RegexOptions.CultureInvariant );
+			if ( ma.Success )
+				return FormatArticleRoleFoundRumorZh( m, ma.Groups[1].Value, ma.Groups[2].Value );
+
 			ma = Regex.Match( en, @"^((?:An|The|A)\s+.+?)\s+found\s+(.+)$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
 			{
@@ -513,11 +641,12 @@ namespace Server.Localization
 					body = body.Substring( 0, body.Length - 1 );
 				string bzh = CompositePart( m, body );
 				if ( q )
-					return "有位" + roleZh + "发现了「" + bzh + "」吗？";
-				return "有位" + roleZh + "发现了「" + bzh + "」。";
+					return "有位" + roleZh + "找到了「" + bzh + "」吗？";
+				return "有位" + roleZh + "找到了「" + bzh + "」。";
 			}
 
 			// Citizens.SetupCitizen — fixed-topic rumors (full English sentence).
+
 			ma = Regex.Match( en, @"^I met with (.+?) and they told me to bring back (.+) from (.+)\.$", RegexOptions.CultureInvariant );
 			if ( ma.Success )
 				return "我与「" + CompositePart( m, ma.Groups[1].Value.Trim() ) + "」会面，对方嘱咐我从「" + CompositePart( m, ma.Groups[3].Value.Trim() ) + "」带回「" + CompositePart( m, ma.Groups[2].Value.Trim() ) + "」。";
@@ -572,8 +701,8 @@ namespace Server.Localization
 					body = body.Substring( 0, body.Length - 1 );
 				string bzh = CompositePart( m, body );
 				if ( q )
-					return "听说有位" + advZh + "发现了「" + bzh + "」吗？";
-				return "听说有位" + advZh + "发现了「" + bzh + "」。";
+					return "听说有位" + advZh + "找到了「" + bzh + "」吗？";
+				return "听说有位" + advZh + "找到了「" + bzh + "」。";
 			}
 
 			ma = Regex.Match( en, @"^Some ([a-z]+) heard rumou?rs about\s+(.+)$", RegexOptions.CultureInvariant );
@@ -644,8 +773,8 @@ namespace Server.Localization
 				string bzh = CompositePart( m, body );
 				string subj = iw == "We" ? "我们" : "我";
 				if ( q )
-					return subj + "发现了「" + bzh + "」吗？";
-				return subj + "发现了「" + bzh + "」。";
+					return subj + "找到了「" + bzh + "」吗？";
+				return subj + "找到了「" + bzh + "」。";
 			}
 
 			ma = Regex.Match( en, @"^(I|We) heard rumou?rs about\s+(.+)$", RegexOptions.CultureInvariant );

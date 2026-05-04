@@ -7,6 +7,7 @@ using Server.Misc;
 using Server.Network; 
 using Server.Spells; 
 using Server.Spells.Syth; 
+using Server.Localization;
 using Server.Prompts;
 
 namespace Server.Gumps 
@@ -42,41 +43,41 @@ namespace Server.Gumps
 			{
 				AddImage(517, 40, 11428);
 
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>DATACRON OF SYTH KNOWLEDGE</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "DATACRON OF SYTH KNOWLEDGE" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddButton(443, 40, 3610, 3610, 2, GumpButtonType.Reply, 0);
 
 				AddItem(43, 81, 16314);
 				AddItem(60, 131, 9698);
 				AddItem(51, 181, 0x3003, 0x869);
-				AddHtml( 110, 85, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 110, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 110, 185, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Crystals:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 85, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 185, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Crystals:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 85, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.GetSythSkillMax( from)  + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 135, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + from.ManaMax + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 185, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.GetCrystals( from ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(305, 122, 8547);
-				AddHtml( 360, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Power:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 360, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Power:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 460, 135, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + ((int)(Server.Spells.Syth.SythSpell.GetSythDamage(from))) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				if ( Server.Misc.GetPlayerInfo.isSyth ( from, true ) ){ AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#00FF06>You Are One With The Syth</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#FF0000>You Are Not A Syth!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( Server.Misc.GetPlayerInfo.isSyth ( from, true ) ){ AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Are One With The Syth" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You Are Not A Syth!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 
-				AddHtml( 105, 236, 246, 20, @"<BODY><BASEFONT Color=#FF0000>Open Horizontal Quick Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 236, 246, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Open Horizontal Quick Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 236, 4005, 4005, 3, GumpButtonType.Reply, 0);
-				AddHtml( 105, 276, 246, 20, @"<BODY><BASEFONT Color=#FF0000>Open Vertical Quick Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 276, 246, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Open Vertical Quick Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 276, 4005, 4005, 4, GumpButtonType.Reply, 0);
 
 				int name_show = 3609; if ( m_Book.names > 0 ){ name_show = 4017; }
 
-				AddHtml( 105, 316, 246, 20, @"<BODY><BASEFONT Color=#FF0000>Vertical Bar Names</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 316, 246, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Vertical Bar Names" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 316, name_show, name_show, 5, GumpButtonType.Reply, 0);
 
-				AddHtml( 350, 236, 246, 20, @"<BODY><BASEFONT Color=#FF0000>Close Quick Bars</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 350, 236, 246, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Close Quick Bars" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(305, 236, 4005, 4005, 9, GumpButtonType.Reply, 0);
 
-				AddHtml( 350, 316, 246, 20, @"<BODY><BASEFONT Color=#FF0000>Construct Laser Sword</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 350, 316, 246, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Construct Laser Sword" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(305, 316, 4011, 4011, 6, GumpButtonType.Reply, 0);
 
 				string wordColor = "#FF0000";
@@ -153,32 +154,32 @@ namespace Server.Gumps
 			}
 			else if ( page == 2 )
 			{
-				string lowreg = " There is a magical property on this world with lower reagent qualities. These are helpful for a Syth in regards to hell shards, but only half as such as wizards are granted.";
+				string lowreg = StringCatalog.Resolve( from.Account, " There is a magical property on this world with lower reagent qualities. These are helpful for a Syth in regards to hell shards, but only half as such as wizards are granted." );
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg = "";
 
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>DATACRON OF SYTH KNOWLEDGE</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 57, 77, 652, 528, @"<BODY><BASEFONT Color=#00FF06>You can hear the voice of Malek the Syth Lord from within your own mind. He tells you that if you are worthy of the path, you can one day become a powerful Syth yourself. A Syth pursues their goals with their psychic abilities and their sword. Any other type of weapon is virtually useless to a Syth. <br><br>He continues to explain that the knowledge this datacron contained was stolen by ten traitors of the Syth order. You will need to find their tombs to obtain each of the Syth powers once wielded by Malak. Each power is described within the datacron, and the location of where an aspiring Syth may find the tomb. Find the tomb, speak the words in the ancient Syth language, and claim your prize.<br><br>To be one with the Syth, you need to have negative karma. The lower your karma, the more rage you possess and thus your powers will have a potential of greater effect. To use a Syth power, one would need an equal amount of skill in both psychology and sword fighting. Tactics can help a Syth not only fight better, but tactics (along with sword fighting) can also increase the effectiveness of Syth powers. There are certain criteria to be a Syth. They must always wield a sword and wear clothing or trinkets named after our order. These could be either trinkets, robes, hoods, cowls, or shields. Metallic helmets also can be that of the Syth, and thus count as well. Only one piece of clothing, trinket, or helm need be worn at a time. Without a datacron of their own, a Syth cannot be. Since datacrons cannot be created on this primitive world, you will have to settle for mine. Keep it with you at all times or you will not be one with the Syth. If you find clothing, trinkets, or helms that you wish to keep, place them onto the datacron and it will transform the item into something appropriate for a Syth. <br><br>A Syth cannot rely solely on the power of the mind, as we need the energy we can drain from syrcarak crystals to power our datacrons and give us the force we need to unleash our power. We could not find syrcarak crystals on this world, as they are normally from the Syth home world. We did discover, however, that demonic creatures have an element of syrcarak crystals within their bones. This was discovered by Asajj Ventress by accident, when she cleaved a balron in two. It was a discovery that allowed the Syth to exist here, and you must know this if you pursue this life. With this new found knowledge, we spoke with the demon in the Black Magic Guild. They offered to exchange a syrcarak crystal for every five gold we give him. The necromancers call these crystals hell shards, but no matter the name, we need them. Seek this demon out, and give him the gold he craves. Then you will have the crystals for this datacron and your journey can begin. Otherwise, you must hunt down the demons of the land and claim what you need from their corpses." + lowreg + "<br><br>If you want to have the grand title of 'Syth', then make sure your skill title is set to that of psychology and that you also follow the Syth ways. Syth are looked upon as a scourge of this world, and many believe us to be death knights at times. Their minds cannot comprehend the origin of our power and that they do not come from spiritual demons or gods. It is the raw power of the raging mind that gives the Syth strength. Nevertheless, we Syth seem to be embraced by the Black Magic Guild and have also been welcome on Dracula’s island to build a home and live. Once a Syth becomes powerful, city guards will attempt to slay you and villages will not welcome you into their borders. We did find two settlements that paid us no attention, and one was a small city of Umbra.<br><br>Go forth, and bring order to this world. Remain in the shadows but rule from the darkness!<br><br>You can use these powers by a typed command, which allows you to make macros for using these if you want. Each of these commands are listed below:<br><br>[Psychokinesis<br><br>[DeathGrip<br><br>[Projection<br><br>[ThrowSword<br><br>[SythSpeed<br><br>[SythLightning<br><br>[Absorption<br><br>[PsychicBlast<br><br>[DrainLife<br><br>[CloneBody <br><br><br><br></BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "DATACRON OF SYTH KNOWLEDGE" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 57, 77, 652, 528, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>You can hear the voice of Malek the Syth Lord from within your own mind. He tells you that if you are worthy of the path, you can one day become a powerful Syth yourself. A Syth pursues their goals with their psychic abilities and their sword. Any other type of weapon is virtually useless to a Syth. <br><br>He continues to explain that the knowledge this datacron contained was stolen by ten traitors of the Syth order. You will need to find their tombs to obtain each of the Syth powers once wielded by Malak. Each power is described within the datacron, and the location of where an aspiring Syth may find the tomb. Find the tomb, speak the words in the ancient Syth language, and claim your prize.<br><br>To be one with the Syth, you need to have negative karma. The lower your karma, the more rage you possess and thus your powers will have a potential of greater effect. To use a Syth power, one would need an equal amount of skill in both psychology and sword fighting. Tactics can help a Syth not only fight better, but tactics (along with sword fighting) can also increase the effectiveness of Syth powers. There are certain criteria to be a Syth. They must always wield a sword and wear clothing or trinkets named after our order. These could be either trinkets, robes, hoods, cowls, or shields. Metallic helmets also can be that of the Syth, and thus count as well. Only one piece of clothing, trinket, or helm need be worn at a time. Without a datacron of their own, a Syth cannot be. Since datacrons cannot be created on this primitive world, you will have to settle for mine. Keep it with you at all times or you will not be one with the Syth. If you find clothing, trinkets, or helms that you wish to keep, place them onto the datacron and it will transform the item into something appropriate for a Syth. <br><br>A Syth cannot rely solely on the power of the mind, as we need the energy we can drain from syrcarak crystals to power our datacrons and give us the force we need to unleash our power. We could not find syrcarak crystals on this world, as they are normally from the Syth home world. We did discover, however, that demonic creatures have an element of syrcarak crystals within their bones. This was discovered by Asajj Ventress by accident, when she cleaved a balron in two. It was a discovery that allowed the Syth to exist here, and you must know this if you pursue this life. With this new found knowledge, we spoke with the demon in the Black Magic Guild. They offered to exchange a syrcarak crystal for every five gold we give him. The necromancers call these crystals hell shards, but no matter the name, we need them. Seek this demon out, and give him the gold he craves. Then you will have the crystals for this datacron and your journey can begin. Otherwise, you must hunt down the demons of the land and claim what you need from their corpses." ) + lowreg + StringCatalog.Resolve( from.Account, "<br><br>If you want to have the grand title of 'Syth', then make sure your skill title is set to that of psychology and that you also follow the Syth ways. Syth are looked upon as a scourge of this world, and many believe us to be death knights at times. Their minds cannot comprehend the origin of our power and that they do not come from spiritual demons or gods. It is the raw power of the raging mind that gives the Syth strength. Nevertheless, we Syth seem to be embraced by the Black Magic Guild and have also been welcome on Dracula's island to build a home and live. Once a Syth becomes powerful, city guards will attempt to slay you and villages will not welcome you into their borders. We did find two settlements that paid us no attention, and one was a small city of Umbra.<br><br>Go forth, and bring order to this world. Remain in the shadows but rule from the darkness!<br><br>You can use these powers by a typed command, which allows you to make macros for using these if you want. Each of these commands are listed below:<br><br>[Psychokinesis<br><br>[DeathGrip<br><br>[Projection<br><br>[ThrowSword<br><br>[SythSpeed<br><br>[SythLightning<br><br>[Absorption<br><br>[PsychicBlast<br><br>[DrainLife<br><br>[CloneBody <br><br><br><br></BASEFONT></BODY>" ), (bool)false, (bool)true);
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 				AddItem(634, 34, 19680);
 			}
 			else if ( page == 6 )
 			{
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>DATACRON OF SYTH KNOWLEDGE</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "DATACRON OF SYTH KNOWLEDGE" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 				AddImage(52, 78, 11428);
 
 				AddItem(273, 80, 7153, 0x7A9);
 
-				if ( m_Book.steel > 0 ){ AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#00FF06>You Have Durasteel</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#FF0000>You Need Durasteel!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( m_Book.steel > 0 ){ AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Have Durasteel" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You Need Durasteel!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 
 				int jewel = 0xB38;
-				if ( m_Book.gem > 0 ){ jewel = m_Book.gem; AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#00FF06>You Have A Gem</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#FF0000>You Need A Gem!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( m_Book.gem > 0 ){ jewel = m_Book.gem; AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Have A Gem" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You Need A Gem!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 				AddItem(272, 131, 11421, jewel);
 
-				AddHtml( 278, 221, 436, 382, @"<BODY><BASEFONT Color=#00FF06>When a Syth has reached the level of grandmaster in psychology, sword fighting, and tactics they can construct their own laser sword. In order to do this, they will need to find an ordinary gem of their choice. These are gems like rubies, emeralds, or sapphires. The gem will set the color for the blade of the laser sword after it is constructed and emit the light needed for the blade, where this gem is put into this datacron. They will also need a metal durasteel ingot, which is not a metal born of this world. They can replace gems at any time before construction if they want to choose a different color for the blade. They will also need 10,000 gold in their pack for additional materials. The construction will require a Syth to dig deep within their hatred and anger to power the creation of the blade, where -15,000 karma will be required. They will also need 15,000 points of fame. Both elements of the Syth will be set to zero after the creation of the laser sword, where the Syth will be greatly weakened in their powers until their fury grows strong again.<br><br>The laser sword will begin as something ordinary, but as long as it is used it will grow in power as victories are achieved over the many fearsome foes of the lands. This sword will never need to be repaired. If a Syth meets an untimely end, they will have it in their possession when they return to the living. Certain traps that affect equipped items will have no adverse effects on this. Creatures, that attempt to ruin items, will fail in the attempt. If a Syth is careless with the sword, and leave it lying about, then fate will speak for what may happen to it. This sword will gain levels as it achieves victory over a Syth’s adversaries. When the sword gains a level, a Syth can single click on it and select 'Enchant' to give the sword more power. Be careful adding powers, as one cannot change any attributes once they select them. A Syth can use regular dye tubs on these, making them any color they choose if the gem they selected does not meet their expectations. They must also be in Malak's tomb to construct this laser sword, where they will have their choice of a regular or a double bladed weapon.</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 278, 221, 436, 382, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>When a Syth has reached the level of grandmaster in psychology, sword fighting, and tactics they can construct their own laser sword. In order to do this, they will need to find an ordinary gem of their choice. These are gems like rubies, emeralds, or sapphires. The gem will set the color for the blade of the laser sword after it is constructed and emit the light needed for the blade, where this gem is put into this datacron. They will also need a metal durasteel ingot, which is not a metal born of this world. They can replace gems at any time before construction if they want to choose a different color for the blade. They will also need 10,000 gold in their pack for additional materials. The construction will require a Syth to dig deep within their hatred and anger to power the creation of the blade, where -15,000 karma will be required. They will also need 15,000 points of fame. Both elements of the Syth will be set to zero after the creation of the laser sword, where the Syth will be greatly weakened in their powers until their fury grows strong again.<br><br>The laser sword will begin as something ordinary, but as long as it is used it will grow in power as victories are achieved over the many fearsome foes of the lands. This sword will never need to be repaired. If a Syth meets an untimely end, they will have it in their possession when they return to the living. Certain traps that affect equipped items will have no adverse effects on this. Creatures, that attempt to ruin items, will fail in the attempt. If a Syth is careless with the sword, and leave it lying about, then fate will speak for what may happen to it. This sword will gain levels as it achieves victory over a Syth's adversaries. When the sword gains a level, a Syth can single click on it and select 'Enchant' to give the sword more power. Be careful adding powers, as one cannot change any attributes once they select them. A Syth can use regular dye tubs on these, making them any color they choose if the gem they selected does not meet their expectations. They must also be in Malak's tomb to construct this laser sword, where they will have their choice of a regular or a double bladed weapon.</BASEFONT></BODY>" ), (bool)false, (bool)true);
 
 				AddItem(132, 416, 16314);
 				AddItem(136, 525, 11499);
@@ -187,23 +188,23 @@ namespace Server.Gumps
 
 				if ( !Server.Misc.GetPlayerInfo.isSyth ( from, false ) || from.Skills[SkillName.Psychology].Value < 100 || from.Skills[SkillName.Tactics].Value < 100 || from.Skills[SkillName.Swords].Value < 100 || from.Fame < 15000 || from.Karma > -15000 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>You lack the attributes as a Syth to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You lack the attributes as a Syth to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( !( reg.IsPartOf( "the Tomb of Malak the Syth Lord" ) ) )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>You need to be at Malak's tomb to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You need to be at Malak's tomb to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Book.steel < 1 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>You need durasteel to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You need durasteel to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Book.gem < 1 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>You need an ordinary gem to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You need an ordinary gem to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( GetWealth( from ) < 10000 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>You need 10,000 gold to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You need 10,000 gold to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
@@ -213,14 +214,14 @@ namespace Server.Gumps
 			}
 			else if ( page >= 270 && page < 280 )
 			{
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>DATACRON OF SYTH KNOWLEDGE</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "DATACRON OF SYTH KNOWLEDGE" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 
 				AddImage(517, 43, 11426);
 				AddItem(307, 82, 19679);
 				AddHtml( 114, 83, 154, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( page, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 57, 286, 652, 186, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( page, 0 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 57, 286, 652, 186, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( from.Account, page, 0 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int prev = m_Book.page - 1; if ( prev < 270 ){ prev = 279; }
 				int next = m_Book.page + 1; if ( next > 279 ){ next = 270; }
@@ -231,24 +232,24 @@ namespace Server.Gumps
 				AddButton(691, 586, 4005, 4005, next, GumpButtonType.Reply, 0);
 
 				AddItem(46, 132, 16314);
-					AddHtml( 115, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 135, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 135, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( page, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(63, 182, 9698);
-					AddHtml( 115, 185, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 185, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 185, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( page, 3 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(54, 232, 0x3003, 0x869);
-					AddHtml( 115, 235, 70, 20, @"<BODY><BASEFONT Color=#FF0000>Crystals:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 235, 70, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Crystals:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 235, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Syth.SythSpell.SpellInfo( page, 10 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				if ( HasSpell( from, page ) ){ AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#00FF06>Learned</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( HasSpell( from, page ) ){ AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "Learned" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 				else
 				{
-					AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#FF0000>Not Learned</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Not Learned" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-					string hidden = "You can find the Syth Mysticron of " + Server.Spells.Syth.SythSpell.SpellInfo( page, 1 ) + " at " + Server.Spells.Syth.SythSpell.SpellInfo( page, 6 ) + " in the " + Server.Spells.Syth.SythSpell.SpellInfo( page, 7 ) + ".";
-					hidden = hidden + " It is hidden in the tomb of a Syth Lord known as " + Server.Spells.Syth.SythSpell.SpellInfo( page, 8 ) + ", and it can be revealed by speaking the words '" + Server.Spells.Syth.SythSpell.SpellInfo( page, 4 ) + "'. The last known coordinates of the tomb's outer entrance is:<br><br>";
+					string hidden = StringCatalog.Resolve( from.Account, "You can find the Syth Mysticron of " ) + Server.Spells.Syth.SythSpell.SpellInfo( page, 1 ) + StringCatalog.Resolve( from.Account, " at " ) + Server.Spells.Syth.SythSpell.SpellInfo( page, 6 ) + StringCatalog.Resolve( from.Account, " in the " ) + Server.Spells.Syth.SythSpell.SpellInfo( page, 7 ) + StringCatalog.Resolve( from.Account, "." );
+					hidden = hidden + StringCatalog.Resolve( from.Account, " It is hidden in the tomb of a Syth Lord known as " ) + Server.Spells.Syth.SythSpell.SpellInfo( page, 8 ) + StringCatalog.Resolve( from.Account, ", and it can be revealed by speaking the words '" ) + Server.Spells.Syth.SythSpell.SpellInfo( page, 4 ) + StringCatalog.Resolve( from.Account, "'. The last known coordinates of the tomb's outer entrance is:<br><br>" );
 
 					string map = Server.Spells.Syth.SythSpell.SpellInfo( page, 5 );
 					Map land = Map.Sosaria;
@@ -266,14 +267,14 @@ namespace Server.Gumps
 				{
 					if ( Server.Spells.Syth.SythSpell.GetSythSkill( from, ( Int32.Parse( Server.Spells.Syth.SythSpell.SpellInfo( page, 2 ) ) ) ) )
 					{
-						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#00FF06>You Are One With The Syth</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Are One With The Syth" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					else
 					{
-						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#FF0000>Your Syth Powers Are Not Strong Enough!</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "Your Syth Powers Are Not Strong Enough!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 				}
-				else { AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#FF0000>You Are Not A Syth!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#FF0000>" + StringCatalog.Resolve( from.Account, "You Are Not A Syth!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 			}
 		}
 
@@ -396,7 +397,7 @@ namespace Server.Gumps
 					sword.Name = SwordName( sword.Name, from );
 					from.AddToBackpack ( sword );
 					LoggingFunctions.LogCreatedSyth( from, sword.Name );
-					from.SendMessage( "You can construct your own laser sword.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You can construct your own laser sword." ) );
 					Point3D blast = new Point3D( ( from.X ), ( from.Y ), from.Z+10 );
 					Effects.SendLocationEffect( blast, from.Map, 0x2A4E, 30, 10, 0xB00, 0 );
 					from.PlaySound( 0x653 );

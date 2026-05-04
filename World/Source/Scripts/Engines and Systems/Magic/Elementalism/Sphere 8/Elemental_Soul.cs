@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -72,12 +73,12 @@ namespace Server.Spells.Elementalism
 					item.Hue = color;
 					m.PlaySound( 0x214 );
 					m.FixedEffect( 0x3039, 10, 16, hue, 0 );
-					m.SendMessage( "You summon a magical orb of " + orb + " to protect your soul." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You summon a magical orb of " + orb + " to protect your soul." ) );
 				}
             }
             else if ( m == Caster )
             {
-				Caster.SendMessage("You failed to summon an orb.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to summon an orb." ) );
 			}
             else if ( !Caster.Alive )
             {
@@ -136,7 +137,7 @@ namespace Server.Spells.Elementalism
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanWizardItem && CheckSequence() )
@@ -152,7 +153,7 @@ namespace Server.Spells.Elementalism
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanArcherItem && CheckSequence() )
@@ -168,7 +169,7 @@ namespace Server.Spells.Elementalism
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if (hench is HenchmanMonsterItem && CheckSequence() )
@@ -184,12 +185,12 @@ namespace Server.Spells.Elementalism
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else
 			{
-				Caster.SendMessage("This spell didn't seem to work.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell didn't seem to work." ) );
 			}
             FinishSequence();
 		}

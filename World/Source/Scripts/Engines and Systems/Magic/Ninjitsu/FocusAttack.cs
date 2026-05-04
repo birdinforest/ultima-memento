@@ -1,4 +1,5 @@
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Ninjitsu
 {
@@ -21,7 +22,7 @@ namespace Server.Spells.Ninjitsu
 			Item handTwo = from.FindItemOnLayer( Layer.TwoHanded ) as BaseWeapon;
 			if ( handTwo != null ) return base.Validate( from );
 
-			from.SendMessage("You must be wielding a weapon to use this ability.");
+			from.SendMessage( StringCatalog.Resolve( from.Account, "You must be wielding a weapon to use this ability." ) );
 			return false;
 		}
 

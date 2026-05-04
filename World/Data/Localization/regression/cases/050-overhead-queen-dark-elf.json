@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "overhead.queen-dark-elf",
+  "pipeline": "overhead_chain",
+  "en": "A queen found an ancient dark elf city deep beneath Lodor.",
+  "expectedZh": "一个女王在洛多尔地底深处找到了远古暗精灵城。",
+  "tags": "overhead_chain,pattern-article-found,dark-elf",
+  "notes": "FormatArticleRoleFoundRumorZh; Tavern deferral + rule order — not mixed 「A …」glue"
+}

@@ -10,7 +10,7 @@ namespace Server.Localization
 		public static string GetLanguageCode( IAccount acct )
 		{
 			if ( acct == null )
-				return LangConfig.FallbackLanguage;
+				return LangConfig.DefaultLanguage;
 
 			string code = acct.GetTag( TagName );
 

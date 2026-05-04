@@ -2,6 +2,7 @@ using Server.Engines.MobileEnhancement;
 using Server.Items;
 using Server.Misc;
 using System;
+using Server.Localization;
 
 namespace Server.Spells.Song
 {
@@ -78,7 +79,7 @@ namespace Server.Spells.Song
 			protected override bool TryApplyInternal()
 			{
 				var m = TargetMobile;
-				m.SendMessage("Your mind clears.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your mind clears." ) );
 				m_Timer = Timer.DelayCall(m_TickInterval, m_TickInterval, () =>
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)

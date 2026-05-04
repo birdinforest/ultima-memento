@@ -80,6 +80,18 @@ Use stable shard terms unless glossary says otherwise:
 | camp | 扎营 |
 | gold / gems / jewels | 黄金 / 宝石 / 珠玉 |
 
+### 2.6 Runic spell words and English-only incantations
+
+Some catalog strings are **magic formulas**, not narrative prose: Ultima / UO-style **runic**
+circle phrases (e.g. *In Vas Mani*) or other fixed **incantation tokens** (e.g. *Xtee Mee Glau*).
+
+For these, **leave zh-Hans identical to English** — same spelling and spacing as `en/`. Do **not**
+translate into Chinese or approximate with phonetic spellings (误译示例：「在瓦斯玛尼」for *In Vas Mani*).
+
+**Distinction:** Narrative dialogue that *mentions* a spell may still be translated; only the **pure**
+formula strings assigned as localized values must stay English. Follow `AGENTS.md` §3.3.1 and add any new
+fixed formulas to `llm_incremental_locale.py` `_IDENTITY_HASH_EN_VALUES` when needed.
+
 ---
 
 ## 3. Translator notes (译注) — when reviewing
@@ -99,7 +111,8 @@ contain **no** 译注; conclusions should become glossary entries or updates to 
 
 ## 4. Workflow
 
-1. Read the English; highlight anything that might be a **proper noun**.  
+1. Read the English; highlight anything that might be a **proper noun** or a **runic / incantation**
+   token (§2.6 — if applicable, copy English verbatim for zh-Hans).  
 2. Check `glossary-approved-zh.json`.  
    - If listed: use the approved Chinese.  
    - If not: **【English】** in the draft.  

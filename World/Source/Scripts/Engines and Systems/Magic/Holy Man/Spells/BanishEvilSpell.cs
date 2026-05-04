@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -43,21 +44,21 @@ namespace Server.Spells.HolyMan
             }
             else if (m is PlayerMobile)
             {
-                Caster.SendMessage("Your prayers cannot banish that!");
+                Caster.SendMessage(StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish that!"));
             }
 			else if (!undead.Slays(m) && !exorcism.Slays(m))
 			{
-                Caster.SendMessage("Your prayers cannot banish such a creature!");
+                Caster.SendMessage(StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish such a creature!"));
             }
 			else if( bc.IsBonded )
 			{
-                Caster.SendMessage("Your prayers cannot banish such a creature!");
+                Caster.SendMessage(StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish such a creature!"));
 			}
             else if (CheckHSequence( m ) )
             {
 				if ( exorcism.Slays(m) && !bc.IsDispellable )
 				{
-					m.Say("Your pitiful prayers are heard by no one, mortal!");
+					m.Say(StringCatalog.Resolve( m.Account, "Your pitiful prayers are heard by no one, mortal!"));
 					double damage;
 					damage = GetNewAosDamage(48, 1, 5, Caster);
 					m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
@@ -66,7 +67,7 @@ namespace Server.Spells.HolyMan
 				}
 				else if ( m.Fame >= 23000 )
 				{
-					m.Say("Your pitiful prayers are heard by no one, mortal!");
+					m.Say(StringCatalog.Resolve( m.Account, "Your pitiful prayers are heard by no one, mortal!"));
 					double damage;
 					damage = GetNewAosDamage(48, 1, 5, Caster);
 					m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
@@ -82,11 +83,11 @@ namespace Server.Spells.HolyMan
 
 					if (undead.Slays(m))
 					{
-						m.Say("No! You cannot banish me! I will return from the Underworld!");
+						m.Say(StringCatalog.Resolve( m.Account, "No! You cannot banish me! I will return from the Underworld!"));
 					}
 					else
 					{
-						m.Say("No! You cannot kill that which is dead! I will return!");
+						m.Say(StringCatalog.Resolve( m.Account, "No! You cannot kill that which is dead! I will return!"));
 					}
 
 					new InternalTimer(m).Start();

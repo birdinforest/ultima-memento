@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Mystic
 {
@@ -34,7 +35,7 @@ namespace Server.Spells.Mystic
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your mind is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your mind is already protected!" ) );
 				return false;
 			}
 
@@ -49,7 +50,7 @@ namespace Server.Spells.Mystic
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your mind is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your mind is already protected!" ) );
 			}
 			else if ( CheckSequence() )
 			{
