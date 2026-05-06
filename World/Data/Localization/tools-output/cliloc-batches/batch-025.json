@@ -1,0 +1,3006 @@
+{
+ "batch": 25,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1151084",
+   "text": "~1_ITEM~ crumbles to dust!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151085",
+   "text": "I cannot thank you enough for culling the daemons from the isle, adventurer. The documents that you retrieved may seem unimportant upon first glance, but they are windows into our history. <br><br>In return for your assistance, please accept this book. Written in my own hand, it is a chronicle of my life. My dearly departed friend Queen Dawn requested that I write this long ago, for us to be able to know one another better. Sadly, I was not able to finish it before she was taken from this world. Thus, I offer it to you, so that you may understand what we face and the events that brought me to where I am today.<br><br>Thank you again for your service",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151086",
+   "text": "deep sea sponge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151087",
+   "text": "Increases your defense chance for a short time and reduces the next incoming damage while applying a temporary hit chance penalty. (Damage reduction scales with parry skill. Increased damage reduction with 2 handed weapon or shield.)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151088",
+   "text": "Increases your physical resistance while reducing your ability to inflict damage. (Resistance Increase scales with Parry and Bushido or Ninjitsu skill, dependent on the weapon.)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151089",
+   "text": "This attack gives you the chance to perform extra attacks for a short duration. This effect can be stacked up to 2 additional times. Each additional dual wield attack increases the duration by 2 seconds. (Duration increases with high ninjitsu skill.) <BR> Requires: Ninjitsu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151090",
+   "text": "The archer focuses their will into an arrow of pure force, dealing additional damage and dazing their enemy. Dazed enemies are temporarily easier to hit, and sometimes forget who they are attacking. This attack will interrupt the target's spell casting even if they are under the effect of the protection.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151091",
+   "text": "Temporarily enchants the attacker's weapon with deadly psychic energy, allowing it to damage the defender's mind and their ability to inflict damage with magic and use mana effeciently.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151092",
+   "text": "You need an open sack of flour to make that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151093",
+   "text": "You must have arrows to use this ability",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151094",
+   "text": "You manage to equip the stone ~1_token~ and find you can no longer move!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151095",
+   "text": "stone ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151096",
+   "text": "path to the palace. The City I had so longed to see was being annihilated, and it filled me with a blinding rage. This was the center of our kingdom, a sanctum that had stood, safe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151097",
+   "text": "week",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151098",
+   "text": "weeks",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151099",
+   "text": "day",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151100",
+   "text": "days",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151101",
+   "text": "hour",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151102",
+   "text": "hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151103",
+   "text": "minute",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151104",
+   "text": "minutes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151105",
+   "text": "second",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151106",
+   "text": "seconds",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151107",
+   "text": "wk",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151108",
+   "text": "day",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151109",
+   "text": "hr",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151110",
+   "text": "min",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151111",
+   "text": "sec",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151112",
+   "text": "~1_COUNT~ ~2_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151113",
+   "text": "~1_COUNT~ ~2_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151114",
+   "text": "~1_COUNT~ ~2_UNITS~ and ~3_COUNT~ ~4_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151115",
+   "text": "~1_COUNT~ ~2_UNITS~ ~3_COUNT~ ~4_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151116",
+   "text": "~1_COUNT~ ~2_UNITS~, ~3_COUNT~ ~4_UNITS~, and ~5_COUNT~ ~6_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151117",
+   "text": "~1_COUNT~ ~2_UNITS~ ~3_COUNT~ ~4_UNITS~ ~5_COUNT~ ~6_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151118",
+   "text": "~1_COUNT~ ~2_UNITS~, ~3_COUNT~ ~4_UNITS~, ~5_COUNT~ ~6_UNITS~, and ~7_COUNT~ ~8_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151119",
+   "text": "~1_COUNT~ ~2_UNITS~ ~3_COUNT~ ~4_UNITS~ ~5_COUNT~ ~6_UNITS~ ~7_COUNT~ ~8_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151120",
+   "text": "~1_COUNT~ ~2_UNITS~, ~3_COUNT~ ~4_UNITS~, ~5_COUNT~ ~6_UNITS~, ~7_COUNT~ ~8_UNITS~, and ~9_COUNT~ ~10_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151121",
+   "text": "~1_COUNT~ ~2_UNITS~ ~3_COUNT~ ~4_UNITS~ ~5_COUNT~ ~6_UNITS~ ~7_COUNT~ ~8_UNITS~ ~9_COUNT~ ~10_UNITS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151122",
+   "text": "Ritual: Scales of a Dream Serpent",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151123",
+   "text": "Greetings, adventurer.  Our  queen has need of your services again, should you be willing to come to her aid.<br><br>\tAs you may know, her Majesty has spent the past thousand years diligently researching ways in which she could defeat the Defiler.  I have personally assisted her in this effort and we have discovered a ritual which will magnify the cleansing magic that she originally used against him, potentially breaking the barrier that protects the Defiler’s body from harm. <br><br>\tThe ritual is ancient, dangerous, and requires many obscure components that are not easy to obtain. Her Majesty has been successful in acquiring all but five of them over the years but, now, time is running out and she has asked me to task you with their acquisition. I have been provided with a list of the five remaining components and would like you to obtain them.<br><br>\tThe first component that I require is a handful of scales from a Dream Serpent.<br><br>\tDream Serpents are mischievous but benevolent creatures that live off of magical energy.  They are extremely rare and hard to catch, preferring to live in the realm of dreams rather than the physical realm. However, there is one location within the kingdom that you may find one.<br><br>\tJourney once again to the Southwestern Flight Tower.  On your way to the Athenaeum, you may have noticed a clearing surrounded by four hillocks. This location is an intersection of ley lines which run throughout Ter Mur.  Ley lines are energized, concentrated strands of magical energy and thus they are irresistible to the creatures.  If my calculations are correct, you should find a serpent and be able to interact with the creature. Heed my warning, adventurer: you should not seek to harm the beast. Offensive tactics must be avoided at all costs, as these magical beings help keep the very energy of Ter Mur harnessed and in balance. Speak with the creature and ask for its aid, but do not harm it. When you have acquired the scales, return to me and I shall reward you and guide you towards the second component.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151124",
+   "text": "You do not wish to assist us? Then we shall wait for someone who does not wish to sit idly by while our people suffer. Be gone from my sight, coward.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151125",
+   "text": "Were you able to acquire the scales? Please do not dally, adventurer!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151126",
+   "text": "You have the scales? Excellent! <br><br>\tWe are now one step closer to completing the list of components for the ritual, my friend. With your assistance, I believe we will be able to acquire all of them just in time.<br><br>\tNow, on to the next component.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151127",
+   "text": "Ritual: Hair of the Dryad Queen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151128",
+   "text": "Hail, adventurer.<br><br> I have heard of your continued assistance and loyalty to our Queen, and I cannot thank you enough for what you have done.  Our darkest hour is approaching, and you have truly proven a valuable ally. <br><br>The Queen and her Advisor have begun preparing the empowerment ritual with the previous components you gathered. They have made excellent progress and have informed me they are almost ready for the final two components.  Thus, I have been tasked with pointing you in the right direction.<br><br>\tFirst, they require a strand of hair from a dryad queen.<br><br>\tForces of nature unto themselves, dryad queens oversee the rule of the lush and verdant forests throughout our world.  You must seek out Oakwhisper, Queen of the Fire Island dryad clan. She has aided us in the past and we hope she shall be willing do so once again.<br><br>\tJourney to Fire Island and venture deep into the labyrinthine woods.  What you seek is an ancient, majestic tree that towers above all of the rest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151129",
+   "text": "Have you met with Queen Oakwhisper?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151130",
+   "text": "You have acquired a strand of Oakwhisper's hair? You have my gratitude for your continued support. Now, for the next component.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151131",
+   "text": "Ritual: Tears of a Soulbinder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151132",
+   "text": "I fear I must now send you to convene with a creature that may not prove as willing to help as the ones you have encountered previously, my friend. I require the crystallized tear of a Soulbinder, a malevolent creature that prefers to roam the desolate edges of Ter Mur where the Void has consumed much of the area.<br><br>\tSpawned from the depths of the Abyss, the Soulbinder is a vile and disgusting creature that prefers to consume its victims alive, devouring their souls during its digestion. It is the spirit of its prey that nourishes the beast, and this hunger is the only thing the beast knows. I know not how you will cause one of these monsters to shed a tear, but I believe you are resourceful enough to find a way.<br><br>\tJourney to the northeast, and follow the twisting strips of land surrounded by the Void",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151133",
+   "text": "Were you able to obtain the Soulbinder's Tear?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151134",
+   "text": "You continue to amaze me, my friend. I will admit I was concerned that the Soulbinder would prove to be too much of a challenge and, yet, here you are. <br><br>Are you ready to go after the next component?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151135",
+   "text": "Now, you must traverse the northern desert. On the far edge, you will find a teleporter similar to that which you took to the Athenaeum Isle.  This will take you to a barren, small, and twisted piece of land that was long ago drained by the Void. <br><br>\tThe next component will be found there: a pristine crystal lotus. Long ago, what is now desert was a beautiful field of these flowers. Sadly, the Defiler's magic drained the land of life and energy, causing the land to become the wasteland it is today. However, one bloom remains, and it is that bloom you must acquire for me.<br><br>\tIn my research, I discovered that Queen Zhah’s predecessor, King Trajalem, had the only surviving bloom placed within a protective barrier on the island I am directing you to. No one knows exactly why he did so, but I have journeyed there myself and seen it with my own eyes. Unfortunately, I was not able to discern how to break the barrier protecting the lotus.<br><br>\tThe lotus stands on a pedestal surrounded by a configuration of magical tiles. I feel that these tiles are the key to breaking the barrier and obtaining the bloom.  However, their secret eluded me. What I was able to discover through research is that you must speak the words ‘I seek the lotus’ to activate the tiles.  Additionally, if you do manage to satisfy the secret of the tiles, you must state ‘Give me the lotus.’<br><br>\tJourney to the area, my friend, and please obtain the lotus. If anyone can do it, I have faith that it is you.<br><br>\tBe well, and I look forward to your return.<br><br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151136",
+   "text": "Ritual: Pristine Crystal Lotus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151137",
+   "text": "Have you solved the secret of the lotus, my friend?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151138",
+   "text": "Once again, you astound me with your perserverance and triumph! I cannot thank you enough. You are truly proving yourself a loyal friend.<br><br>Now, only two components remain.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151139",
+   "text": "Ritual: Heart of the Night Terror",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151140",
+   "text": "The bearer of the last component will be easy to find but extremely challenging to overcome, I fear. <br><br>\tIn eastern Ter Mur there lies a ghost town. Formerly a fishing village, this town was long since abandoned due to the instability of the land it sits upon. Now, it is the haunting ground of a group of vile and insidious creatures:  the Night Terrors.<br><br>\tThe Night Terrors walk the empty streets of the village, slaying any who venture into their path.  It is the heart of one of these creatures that I require.  Journey to the village and slay one of the beasts. Once you have done so, cut it open and tear out its heart. That is the final ingredient that needed for the ritual.<br><br>Be careful, as the beasts are fiercely protective of one another and are extremely powerful. I look forward to your return.<br><br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151141",
+   "text": "You have come this far and turn away now? I am disappointed in you, adventurer, as are my people. Should you regain your sense of honor, do let me know.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151142",
+   "text": "Have you slain the beast and obtained its heart? Time is of the essence, friend",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151143",
+   "text": "The Night Terror is no more? I see by the heart in your hand that you have felled the beast. With this final component, you have given us more than a fighting chance against the Defiler.  You have proven yourself a great and powerful ally to our people, and the Queen has asked that I provide you with this small token of appreciation.<br><br>The time for battle is nigh, my friend, and I hope that you will stand by Queen Zhah when she goes to release the Defiler. With you standing by her, I know we shall succeed!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151144",
+   "text": "Catch Me If You Can!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151145",
+   "text": "Oh, have you come to see me?<br><br>\tThis is wonderful! I haven’t spoken to a mortal in so long.  It can get pretty droll here in the realm of dreams, and I have no one to play with! There aren’t many of us left. <br><br>\tWhat’s that? You want something? <br><br>\tMy scales! Ha ha! You mortals are so silly, always after something or other. <br><br>\tWell, I’ll happily give you some scales if you agree to play a game with me! I love games, don’t you? <br><br>\tThe game is simple:  if you can hit me 6 times, then you win!  Take this stone and step into the circle here. Then, use the stone and it will take you to my favorite place to play! <br><br>\tSo, shall we play? Excellent! Be sure to put away your pets before you teleport with me!<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151146",
+   "text": "You don’t want to play? Boo! Go away!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151147",
+   "text": "Ah ha! Looks like you are not very fast. Want to play again?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151148",
+   "text": "Boo, I don’t like to lose! But wasn’t that fun? <br><br>\tHere are some of my scales",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151149",
+   "text": "Knowledge of Nature",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151150",
+   "text": "Greetings, mortal. <br><br>\tI sensed the aura of the Gargoyle Queen surrounding you, which is why you have been allowed entry into my bower.  Zhah proved herself a friend to my people long ago when she aided us in escaping her crumbling lands .   <br><br>Do not think that will be enough for me to provide you with what you seek.  <br><br>\tI know that you require a strand of my hair, mortal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151151",
+   "text": "No? You will not gain my help without proving yourself.  If you will not do so, then apparently the Gargoyle Queen was a fool to choose you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151152",
+   "text": "It would appear that you need to improve your knowledge of nature, mortal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151153",
+   "text": "Indeed, you possess great knowledge of nature, mortal. You have surprised me. <br><br>\tHere, accept this strand of my hair with my blessing.  Tell the Gargoyle Queen that I wish her luck, and hope that she will see her land whole again. <br><br>\tMay the sun shine on you, mortal. Farewell.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151154",
+   "text": "Ah, what do we have here? <br><br>\tBah! I was so hoping you would be something other than a human, gargoyle, or elf. Do you know how many of them I have eaten? Your souls have filled me but, now, they are no longer appealing. You are in luck that I have recently eaten, however, or else I would have devoured you anyway. <br><br>\tYou want something, yes? I can smell the desire for something on your soul.  Desire used to be such a lovely dessert for me but now it is bland and droll. <br><br>\tMy tears, eh? Ha! Such an odd request. But you have my interest piqued. <br><br>\tI’ll tell you what",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151155",
+   "text": "Filthy Lifestealers!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151156",
+   "text": "You dare refuse me? You are truly an imbecile. Ah well, I guess I shall eat you, after all! Just as soon as I finish digesting my last meal, that is.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151157",
+   "text": "Have you killed the Lifestealers yet? Don’t try my patience, or I will eat you!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151158",
+   "text": "I can smell their deaths upon you, mortal. Each Lifestealer you killed let loose all of the souls that they had taken, and I was able to draw them here with my magic. I am so full, now! I think this will hold me over for quite some time. <br><br>\tHere, take what you came for. While you were gone, the thought of those Lifestealers dying was enough to make me laugh so hard I cried. I filled this bottle for you. <br><br>\tOff with you, now! <br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151159",
+   "text": "Color Guard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151160",
+   "text": "As you approach the pedestal, you notice the shimmering barrier protecting the beautiful lotus within.  As the Gargoyle Queen warned, this barrier covers the area surrounding the pedestal, preventing access to its treasure.  <br><br>Reaching out, you test the barrier with your weapon. The weapon does not penetrate but rather acts as if it is being pushed against a brick wall. You notice, however, that making contact with the barrier causes the colored tiles around you to come to life, their brilliant colors flashing in what seems to be a sequence. <br><br>You observe the tiles as they beautifully light up, one after the other. There seems to be a pattern to their flashing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151161",
+   "text": "You step away from the pedestal, and the barrier shines brightly, as if mocking and daring you to accept its challenge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151162",
+   "text": "As you step on the tile, the barrier around the pedestal pulses brightly for a moment and all of the tiles around you go dark. It appears that you failed to appropriately match the displayed sequence. Perhaps you should try again?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151163",
+   "text": "As you step upon the final tile, all of the colored tiles shine brightly and a pulse of light from the pedestal temporarily blinds you. As you lower your arm from your eyes, you see that the barrier surrounding the lotus is deteriorating.  The sparkling light fades, leaving the Lotus unprotected. <br><br>\tReaching down, you delicately lift the fragile flower and admire its beauty. The petals are transparent, with a faint bluish hue and the petals voluminous and soft to the touch. Upon first glance, the lotus does indeed look as if it were carved from crystal.  The heady, intoxicating scent that rises from its petals, proves that it is, indeed, not a sculpture. It is truly sad that this is the last of its kind",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151164",
+   "text": "Chronicle of the Gargoyle Queen Vol. II",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151165",
+   "text": "Chronicle of the Gargoyle Queen Vol. III",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151166",
+   "text": "lava rock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151167",
+   "text": "Dream Serpent Scales",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151168",
+   "text": "Hair of a Dryad Queen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151169",
+   "text": "Pristine Crystal Lotus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151170",
+   "text": "Soulbinder's Tears",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151171",
+   "text": "Night Terror Heart",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151172",
+   "text": "Ter Mur Snowglobe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151173",
+   "text": "Ignite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151174",
+   "text": "Extinguish",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151175",
+   "text": "You ignite your weapon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151176",
+   "text": "You extinguish your weapon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151177",
+   "text": "The searing attack cauterizes the wound on impact.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151178",
+   "text": "The cauterized wound resists some of your healing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151179",
+   "text": "Clean Up Britannia Ticket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151180",
+   "text": "You must wait a while before eating another enchanted apple.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151181",
+   "text": "You have not been afflicted with any curses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151182",
+   "text": "This effect cannot be applied to a searing weapon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151183",
+   "text": "Searing Weapon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151184",
+   "text": "Spring Cleaning 2011 Donation Box Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151185",
+   "text": "Spring Cleaning 2011 Donation Box Silver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151186",
+   "text": "Aka-Sabi",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151187",
+   "text": "Dream Serpent Charm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151188",
+   "text": "Soulbinder's Jar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151189",
+   "text": "Fisherman's Eelskin Gloves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151190",
+   "text": "Fisherman's Tall Straw Hat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151191",
+   "text": "Fisherman's Trousers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151192",
+   "text": "Fisherman's Vest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151193",
+   "text": "Artificer's Earrings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151194",
+   "text": "Artificer's Cloth Chest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151195",
+   "text": "Artificer's Cloth Kilt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151196",
+   "text": "Artificer's Mysticism Spellbook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151197",
+   "text": "Bestial Helm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151198",
+   "text": "Bestial Gloves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151199",
+   "text": "Bestial Leggings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151200",
+   "text": "Bestial Gorget",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151201",
+   "text": "Mysterious Barrier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151202",
+   "text": "Humans & Elves are our friends!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151203",
+   "text": "Gargoyles are our friends!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151204",
+   "text": "We are pirates!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151205",
+   "text": "Follower of Bane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151206",
+   "text": "Queen Dawn Forever",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151207",
+   "text": "Boots of the Lava Lizard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151208",
+   "text": "Boots of the Ice Wyrm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151209",
+   "text": "Boots of the Crystal Hydra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151210",
+   "text": "Boots of the Thrasher",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151211",
+   "text": "~1_skill~ ~2_val~ (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151212",
+   "text": "~1_skill~ ~2_val~ (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151213",
+   "text": "Hit the Dream Serpent 6 times before the time is up.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151214",
+   "text": "~1_NAME~ Bonus: ~2_val~% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151215",
+   "text": "~1_NAME~ Exceptional Bonus: ~2_val~% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151216",
+   "text": "damage increase ~1_val~% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151217",
+   "text": "mana cost increase ~1_val~% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151218",
+   "text": "Lily Pad",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151219",
+   "text": "Lily Pads",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151220",
+   "text": "table lamp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151221",
+   "text": "footed chest of drawers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151222",
+   "text": "sophisticated elven tapestry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151223",
+   "text": "Boots of the Lava Lizard<br>Fire Resist 2%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151224",
+   "text": "Snake Skin Boots<br>Poison Resist 2%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151225",
+   "text": "Boots of the Ice Wyrm<br>Cold Resist 2%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151226",
+   "text": "Boots of the Crystal Hydra<br>Energy Resist 2%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151227",
+   "text": "Boots of the Thrasher<br>Physical Resist 2%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151228",
+   "text": "Aka-Sabi<br>Brittle<br>Hit Curse 50%<br>Splintering Weapon 20%<br>Reactive Paralyze<br>Hit Chance Increase 15%<br>Damage Increase 50%<br>Poison Damage 100%<br>Durability 120",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151229",
+   "text": "Bestial Helm<br>(can be imbued)<br>Berserk 1<br>Physical Resist 8%<br>Fire Resist 6%<br>Cold Resist 22%<br>Poison Resist 7%<br>Energy Resist 7%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151230",
+   "text": "Bestial Gloves<br>(can be imbued)<br>Berserk 1<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151231",
+   "text": "Bestial Leggings<br>(can be imbued)<br>Berserk 1<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151232",
+   "text": "Bestial Gorget<br>(can be imbued)<br>Berserk 1<br>Physical Resist 6%<br>Fire Resist 20%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151233",
+   "text": "Artificer's Earrings<br>Gargoyles Only<br>Item Identification +1<br>Imbuing +1<br>Night Sight<br>Physical Resist 1%<br>Fire Resist 2%<br>Cold Resist 2%<br>Poison Resist 2%<br>Energy Resist 3%<br>Set Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151234",
+   "text": "Artificer's Cloth Chest<br>Gargoyles Only<br>Item Identification +1<br>Imbuing +1<br>Physical Resist 25%<br>Fire Resist 7%<br>Cold Resist 6%<br>Poison Resist 6%<br>Energy Resist 6%<br>Set Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151235",
+   "text": "Artificer's Cloth Kilt<br>Gargoyles Only<br>Item Identification +1<br>Imbuing +1<br>Physical Resist 25%<br>Fire Resist 7%<br>Cold Resist 6%<br>Poison Resist 6%<br>Energy Resist 6%<br>Set Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151236",
+   "text": "Artificer's Mysticism Spellbook<br>Mysticism +10<br>Item Identification +1<br>Imbuing +1<br>Strength Bonus 3<br>Set Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151237",
+   "text": "Fisherman's Eelskin Gloves<br>(can be imbued)<br>Fish Bait Strength +10%<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151238",
+   "text": "Fisherman's Tall Straw Hat<br>(can be imbued)<br>Fish Bait Strength +10%<br>Physical Resist 3%<br>Fire Resist 8%<br>Cold Resist 23%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151239",
+   "text": "Fisherman's Trousers<br>(can be imbued)<br>Fish Bait Strength +10%<br>Physical Resist 6%<br>Fire Resist 20%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151240",
+   "text": "Fisherman's Vest<br>(can be imbued)<br>Fish Bait Strength +10%<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151241",
+   "text": "Etoile Bleue<br>Luck 150<br>Faster Cast Recovery 1<br>Faster Casting 1<br>Part of a Jewelry Set (2 pieces)<br>Set Bonus:<br>Luck 100<br>Faster Casting 1<br>Faster Cast Recovery 4<br>Hit Point Regeneration 2<br>Mana Regeneration 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151242",
+   "text": "Novo Bleue<br>Luck 150<br>Faster Cast Recovery 1<br>Faster Casting 1<br>Part of a Jewelry Set (2 pieces)<br>Set Bonus:<br>Luck 100<br>Faster Casting 1<br>Faster Cast Recovery 4<br>Hit Point Regeneration 2<br>Mana Regeneration 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151243",
+   "text": "Nocturne Earrings<br>Night Sight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151244",
+   "text": "Knight's Close Helm [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151245",
+   "text": "Knight's Norse Helm [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151246",
+   "text": "Knight's Plate Helm [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151247",
+   "text": "Knight's Bascinet [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151248",
+   "text": "Knight's Gorget [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151249",
+   "text": "Knight's Gloves [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151250",
+   "text": "Knight's Arms [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151251",
+   "text": "Knight's Legs [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151252",
+   "text": "Knight's Breastplate [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151253",
+   "text": "Knight's Breastplate [Replica]<br>Female Only<br>Durability 100 / 100<br>No Powder of Fortification<br>Hit Point Increase 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Hit Point Increase 6<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151254",
+   "text": "Scout's Circlet [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151255",
+   "text": "Scout's Small Plate Jingasa [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151256",
+   "text": "Scout's Studded Gorget [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151257",
+   "text": "Scout's Studded Sleeves [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151258",
+   "text": "Scout's Studded Tunic [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151259",
+   "text": "Scout's Studded Gloves [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151260",
+   "text": "Scout's Studded Leggings [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151261",
+   "text": "Scout's Female Studded Armor [Replica]<br>Female Only<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151262",
+   "text": "Scout's Studded Bustier [Replica]<br>Female Only<br>Durability 100 / 100<br>No Powder of Fortification<br>Dexterity Bonus 1<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Dexterity Bonus 6<br>Mana Regeneration 2<br>Hit Point Regeneration 2<br>Hit Chance Increase 10%<br>Defense Chance Increase 10%<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151263",
+   "text": "Sorcerer's Hat [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151264",
+   "text": "Sorcerer's Gorget [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151265",
+   "text": "Sorcerer's Sleeves [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151266",
+   "text": "Sorcerer's Tunic [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151267",
+   "text": "Sorcerer's Female Armor [Replica]<br>Female Only<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151268",
+   "text": "Sorcerer's Gloves [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151269",
+   "text": "Sorcerer's Skirt [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151270",
+   "text": "Sorcerer's Leggings [Replica]<br>Durability 100 / 100<br>No Powder of Fortification<br>Intelligence Bonus 1<br>Lower Reagent Cost 10%<br>Physical Resist 7%<br>Fire Resist 7%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 7%<br>Part of an Armor Set (6 pieces)<br>Set Bonus:<br>Lower Reagent Cost 40%<br>Lower Mana Cost 5%<br>Mana Regeneration 2<br>Defense Chance Increase 10%<br>Intelligence Bonus 6<br>Physical Resist 28%<br>Fire Resist 28%<br>Cold Resist 28%<br>Poison Resist 28%<br>Energy Resist 28%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151271",
+   "text": "This item has no turn-in value for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151272",
+   "text": "This item is worth less than one point for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151273",
+   "text": "This item is worth approximately one point for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151274",
+   "text": "This item is worth approximately ~1_VALUE~ points for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151275",
+   "text": "You have received a fraction of a point for turning in an item for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151276",
+   "text": "You have received approximately one point for turning in an item for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151277",
+   "text": "You have received approximately ~1_VALUE~ points for turning in an item for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151278",
+   "text": "You have received a fraction of a point for turning in ~2_COUNT~ items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151279",
+   "text": "You have received approximately one point for turning in ~2_COUNT~ items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151280",
+   "text": "You have received approximately ~1_VALUE~ points for turning in ~2_COUNT~ items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151281",
+   "text": "Your Clean Up Britannia point total is now ~1_VALUE~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151282",
+   "text": "You have received a fraction of a point for turning in items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151283",
+   "text": "You have received approximately one point for turning in items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151284",
+   "text": "You have received approximately ~1_VALUE~ points for turning in items for Clean Up Britannia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151285",
+   "text": "Force Arrow Effect: Dazed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151286",
+   "text": "Your defense chance has been reduced by ~1_VAL~%.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151287",
+   "text": "You are temporarily unable to arm a weapon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151288",
+   "text": "Disarmed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151289",
+   "text": "Defense Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151290",
+   "text": "Physical resist: +~1_VAL~% <br> Damage Penalty: -~2_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151291",
+   "text": "Block",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151292",
+   "text": "Next incoming damage reduced.<br>Defense Chance Increase: +~1_val~%<br>Incoming Spell Damage: -~2_val~%<br>Incoming Attack Damage: -~3_val~%<br>Hit Chance Penalty: ~4_val~%<br>Damage Penalty: ~5_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151293",
+   "text": "Extra attack chance: ~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151294",
+   "text": "Dual Wield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151295",
+   "text": "You are bandaging yourself.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151296",
+   "text": "Psychic Attack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151297",
+   "text": "Spell Damage: ~1_val~% <br><br>Mana Cost Increased: ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151298",
+   "text": "Appraise for Cleanup",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151299",
+   "text": "Target items to see how many Clean Up Britannia points you will receive for throwing them away. Continue targeting items until done, then press the ESC key to cancel the targeting cursor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151300",
+   "text": "Complete the puzzle to obtain a Pristine Crystal Lotus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151301",
+   "text": "You marvel at the flashing tiles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151302",
+   "text": "A Pristine Crystal Lotus has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151303",
+   "text": "You have not completed the puzzle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151304",
+   "text": "You matched that pattern correctly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151305",
+   "text": "You did not complete the pattern correctly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151306",
+   "text": "You may now retrieve a Pristine Crystal Lotus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151307",
+   "text": "Reduce incoming attack damage from ~1_val~ by ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151308",
+   "text": "Feint",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151309",
+   "text": "HP Regeneration: -~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151310",
+   "text": "Talon Strike",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151311",
+   "text": "Healing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151312",
+   "text": "Defense Chance: -35%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151313",
+   "text": "Lower Defense",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151314",
+   "text": "Hit Chance: -~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151315",
+   "text": "Lower Attack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151316",
+   "text": "Clean Up Britannia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151317",
+   "text": "Clean Up Britannia Reward Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151318",
+   "text": "lava infused ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151319",
+   "text": "mysterious weapon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151320",
+   "text": "Virtuoso's Cap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151321",
+   "text": "Virtuoso's Tunic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151322",
+   "text": "Virtuoso's Kid Gloves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151323",
+   "text": "Virtuoso's Collar<br>(can be imbued)<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151324",
+   "text": "Virtuoso's Cap<br>(can be imbued)<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 3%<br>Fire Resist 8%<br>Cold Resist 23%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151325",
+   "text": "Virtuoso's Tunic<br>(can be imbued)<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 6%<br>Fire Resist 20%<br>Cold Resist 7%<br>Poison Resist 7%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151326",
+   "text": "You have obtained a spell component! Don't forget to return to the Queen's Advisor for the next quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151327",
+   "text": "You may not enter an answer until the pattern is complete.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151328",
+   "text": "You may now enter your pattern.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151329",
+   "text": "At what age does an oak tree begin to produce acorns?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151330",
+   "text": "Between 20 and 50 years old",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151331",
+   "text": "Between 10 and 20 years old",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151332",
+   "text": "Between 50 and 60 years old",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151333",
+   "text": "What is the process called in which a tree evaporates water through its leaves?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151334",
+   "text": "Aspiration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151335",
+   "text": "Expiration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151336",
+   "text": "Respiration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151337",
+   "text": "Transpiration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151338",
+   "text": "What is the average lifespan of an oak tree?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151339",
+   "text": "400 years",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151340",
+   "text": "300 years",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151341",
+   "text": "200 years",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151342",
+   "text": "500 years",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151343",
+   "text": "Of which family of trees is an oak?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151344",
+   "text": "Birch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151345",
+   "text": "Cypress",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151346",
+   "text": "Sandalwood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151347",
+   "text": "Beech",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151348",
+   "text": "What is unique about pine trees?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151349",
+   "text": "They are the only species to reproduce through seeds in a cone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151350",
+   "text": "They can grow in any soil.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151351",
+   "text": "They can grow anywhere in the world.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151352",
+   "text": "They are the only species of tree to live over 600 years.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151353",
+   "text": "What is a pomaceous fruit?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151354",
+   "text": "A fruit that grows in tropical climates.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151355",
+   "text": "You may not obtain more than one of this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151356",
+   "text": "A fruit produced by flowering plants.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151357",
+   "text": "A fruit that grows in the roots of a plant.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151358",
+   "text": "A fruit that only grows at night.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151359",
+   "text": "This plant is known as ‘deadly nightshade:’",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151360",
+   "text": "Datura",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151361",
+   "text": "Wolfsbane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151362",
+   "text": "Atropa Belladonna",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151363",
+   "text": "Mandrake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151364",
+   "text": "Which of the following plants possesses a fruit that is extremely poisonous and shaped like a spiked ball?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151365",
+   "text": "Hemlock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151366",
+   "text": "Which is the species of flower that produces vanilla?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151367",
+   "text": "Lillies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151368",
+   "text": "Daisies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151369",
+   "text": "Orchids",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151370",
+   "text": "Roses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151371",
+   "text": "A notch in the trunk of a tree will stay the same distance from the ground as the tree grows in height",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151372",
+   "text": "TRUE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151373",
+   "text": "FALSE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151374",
+   "text": "Which tree type is called the ‘axe breaker?’",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151375",
+   "text": "Ironwood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151376",
+   "text": "Lockwood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151377",
+   "text": "Deadwood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151378",
+   "text": "Silverwood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151379",
+   "text": "Which commonly consumed vegetable can also to be used medicinally to treat burns, bee stings, and infections?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151380",
+   "text": "Lettuce",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151381",
+   "text": "Carrot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151382",
+   "text": "Onion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151383",
+   "text": "Eggplant",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151384",
+   "text": "The gratitude of the Gargoyle Queen and the next quest in the chain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151385",
+   "text": "Consecrate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151386",
+   "text": "Proc Chance: ~1_val~% <br>Bonus Damage: ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151387",
+   "text": "Tribulation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151388",
+   "text": "Target: ~1_val~ <br> Damage Factor: ~2_val~% <br> Damage Chance: ~3_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151389",
+   "text": "Despair",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151390",
+   "text": "Target: ~1_val~ <br>Damage: ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151391",
+   "text": "Spell Focusing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151392",
+   "text": "Target: ~1_val~<br>Damage Modifier: ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151393",
+   "text": "Weapon Focusing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151394",
+   "text": "Target: ~1_val~<br>Damage Bonus: ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151395",
+   "text": "Protective Ward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151396",
+   "text": "Type: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151397",
+   "text": "Surge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151398",
+   "text": "Type: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151399",
+   "text": "Hand of the Defiler",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151400",
+   "text": "Target: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151401",
+   "text": "4 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151402",
+   "text": "5 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151403",
+   "text": "6 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151404",
+   "text": "7 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151405",
+   "text": "8 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151406",
+   "text": "9 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151407",
+   "text": "10 tile radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151408",
+   "text": "~1NT_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151409",
+   "text": "You are now one step closer to retrieving the Crystal Lotus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151410",
+   "text": "Only a few more patterns to match.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151411",
+   "text": "You are quickly progressing through this challenge.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151412",
+   "text": "One final pattern and you will have completed the puzzle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151413",
+   "text": "~1_skillname~ +~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151414",
+   "text": "Hair of a Dryad Queen has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151415",
+   "text": "Imbuing Success Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151416",
+   "text": "Rare Fish Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151417",
+   "text": "Focusing yourself, you prepare to show your knowledge about the natural world.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151418",
+   "text": "Commodity brokers cannot trade in certain special or rare items, or items that have been dyed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151419",
+   "text": "This broker had invalid items in its inventory. These items have been delivered to your backpack in the form of commodity deeds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151420",
+   "text": "Your pet can't get to the target!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151421",
+   "text": "You've obtained a spell component! Don't forget to return to the Guard Captain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151422",
+   "text": "You have found a spell component! Be sure to return to the Guard Captain!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151423",
+   "text": "Hail, adventurer.<br><br> I have heard of your continued assistance and loyalty to our Queen, and I cannot thank you enough for what you have done. Our darkest hour is approaching, and you have truly proven a valuable ally. <br><br>The Queen and her Advisor have begun preparing the empowerment ritual with the previous components you gathered. They have made excellent progress and have informed me they are almost ready for the final two components. Thus, I have been tasked with pointing you in the right direction.<br><br> First, they require a strand of hair from a dryad queen.<br><br> Forces of nature unto themselves, dryad queens oversee the rule of the lush and verdant forests throughout our world. You must seek out Oakwhisper, Queen of the Fire Island dryad clan. She has aided us in the past and we hope she shall be willing do so once again.<br><br> Journey to Fire Island and seek out the fork in the river. There you will find an oddly colored tree which, when touched, will take you to the bower of Queen Oakwhisper. <br><br>Approach the Dryad Queen and ask for her assistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151424",
+   "text": "Second Age vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151425",
+   "text": "Renaissance Vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151426",
+   "text": "Third Dawn vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151427",
+   "text": "Blackthorn vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151428",
+   "text": "Portrait of Sir Geoffrey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151429",
+   "text": "Portrait of Dupre",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151430",
+   "text": "Portrait of Iolo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151431",
+   "text": "Portrait of Shamino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151432",
+   "text": "Statue of Queen Dawn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151433",
+   "text": "Statue of Queen Zhah",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151434",
+   "text": "Statue of Emperor of Tokuno",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151435",
+   "text": "Statue of Lord British",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151436",
+   "text": "large pearl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151437",
+   "text": "large diamond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151438",
+   "text": "large emerald",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151439",
+   "text": "large amber",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151440",
+   "text": "Shadow vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151441",
+   "text": "Samurai vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151442",
+   "text": "Elf vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151443",
+   "text": "Stygian Abyss vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151444",
+   "text": "Portrait of Lord Blackthorn the man",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151445",
+   "text": "Portrait of Minax",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151446",
+   "text": "Portrait of Queen Zhah",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151447",
+   "text": "Portrait of King Casca",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151448",
+   "text": "visage of happiness",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151449",
+   "text": "visage of sadness",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151450",
+   "text": "visage of anger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151451",
+   "text": "visage of peace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151452",
+   "text": "enormous pearl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151453",
+   "text": "enormous diamond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151454",
+   "text": "enormous emerald",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151455",
+   "text": "enormous amber",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151456",
+   "text": "Tapestry of Dragon War panel 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151457",
+   "text": "Tapestry of Dragon War panel 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151458",
+   "text": "Tapestry of Dragon War panel 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151459",
+   "text": "Tapestry of Dragon War panel 4",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151460",
+   "text": "Shield with symbol of Humility",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151461",
+   "text": "Shield with symbol of Valor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151462",
+   "text": "Shield with symbol of compassion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151463",
+   "text": "Shield with symbol of Honesty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151464",
+   "text": "First Age of Darkness vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151465",
+   "text": "Revenge of the Enchantress vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151466",
+   "text": "Exodus vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151467",
+   "text": "Quest of the Avatar vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151468",
+   "text": "Portrait of Lord British",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151469",
+   "text": "Portrait of Mondain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151470",
+   "text": "Portrait of Lord Blackthorn the machine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151471",
+   "text": "Portrait of Queen Dawn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151472",
+   "text": "Tapestry depicting the Bane Chosen Assult on Ophidians",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151473",
+   "text": "Tapestry depicting Bane Chosen Assult on Meer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151474",
+   "text": "Tapestry depicting Gargoyles, Ophidians and Meer assisting Britannia against the Bane Chosen",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151475",
+   "text": "Tapestry Depicting the Defeat of Virtuebane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151476",
+   "text": "Shield with Symbol for Spirituality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151477",
+   "text": "Decorative Shield with Symbol for Justice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151478",
+   "text": "Decorative Shield with Symbol for Sacrifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151479",
+   "text": "Decorative Shield with Symbol for Honor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151480",
+   "text": "Dryad Queen's Home",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151481",
+   "text": "Channeling the corrupted mana has damaged you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151482",
+   "text": "Your mana has been tainted!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151483",
+   "text": "Your mana is no longer corrupted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151484",
+   "text": "You feel extra mana being drawn from you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151485",
+   "text": "Your mana is being diverted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151486",
+   "text": "Your mana is no longer being diverted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151487",
+   "text": "~1NT_PREFIX~~2NT_NAME~~3NT_SUFFIX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151488",
+   "text": "Minor Magic Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151489",
+   "text": "Lesser Magic Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151490",
+   "text": "Greater Magic Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151491",
+   "text": "Major Magic Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151492",
+   "text": "Lesser Artifact",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151493",
+   "text": "Greater Artifact",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151494",
+   "text": "Major Artifact",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151495",
+   "text": "Legendary Artifact",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151496",
+   "text": "~1_NUMBER~ ~2NT_ITEMNAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151497",
+   "text": "detect hidden",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151498",
+   "text": "Hey, ye look disrespectable, get over here, I got somethin to tell ye.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151499",
+   "text": "Thieves Guild Quest - Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151500",
+   "text": "This quest involves stealing items from townspeople (not players) in various cities of Sosaria looking for specific items, then bring those items back to receive a gift from the thieves guild.  The challenge and the gifts will improve with your continued success.  You will be given a magic sack to fill with the goods needed.  You will not be able to drop this sack or trade it, but the things placed in this sack will be reduced in weight.<br><br><center>-----</center><br><br>So, ye think ye have something to offer the guild, eh?  You think your talented eh?  Well, we'll see.<br><br>I got an order for ye to \"procure\" if'n ye know what I mean.<br><br>If'n ye get caught procurin' it, I'll tell em ye stole the sack from me.  But if ye make good on the order, I got a gift waitin' for ye from the guild.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151501",
+   "text": "Fill the sack with the items listed on it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151502",
+   "text": "Speak with Louie in Britain when the order is complete.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151503",
+   "text": "A rare gift from the thieves guild.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151504",
+   "text": "Aye, tis best ye don't get involved.  Now, go home to yer mudder where ye be safe.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151505",
+   "text": "So, still trying to get up the nerve to do what must be done?  Well, don't be hangin around here, someone might see us together.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151506",
+   "text": "Ye done a good thing, mate, here's a little somethin' from the guild.  Now get out of here before someone thinks I know ye.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151507",
+   "text": "This bag belongs to Slick Shoe Pete, if anyone else has it, they stole it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151508",
+   "text": "Shop Recall Rune",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151509",
+   "text": "You have reached the Clean Up Britannia turn-in point cap. You may not receive more points until you spend some to reduce your point total.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151510",
+   "text": "Your ~1_COUNT~ points for Spring Cleaning 2008 have been converted into points for Clean Up Britannia!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151511",
+   "text": "Your power in the Virtues decays with time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151512",
+   "text": "Chief Paroxysmus Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151513",
+   "text": "Lady Melisande Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151514",
+   "text": "Monstrous Interred Grizzle Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151515",
+   "text": "No thank you, that isn't mine.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151516",
+   "text": "Oh, thank you! I am so glad to get this back!  I will tell everyone of your honesty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151517",
+   "text": "Tales of your honesty have reached my ears and earned you a discount of ~1_val~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151518",
+   "text": "Your resurrections through Sacrifice have been reset.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151519",
+   "text": "You claim the item as your own.  Finders keepers, losers weepers!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151520",
+   "text": "lost item (Return to gain Honesty)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151521",
+   "text": "This item belongs to ~1_val~ who lives in ~2_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151522",
+   "text": "You find seeds from a familiar plant stuck to the item which suggests that this item is from ~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151523",
+   "text": "You place the item in the lost and found.  You have gained some Honesty!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151524",
+   "text": "<center>SET YOUR KEY NUMBER</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151525",
+   "text": "Set your key number. If you want to leave this unlocked, click CANCEL button.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151526",
+   "text": "<center>ENTER THE KEY NUMBER</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151527",
+   "text": "Enter the key number to open.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151528",
+   "text": "The key numbers have been set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151529",
+   "text": "lost and found box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151530",
+   "text": "This is not a lost item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151531",
+   "text": "Unknown Dungeon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151532",
+   "text": "You enter a berserk rage!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151533",
+   "text": "Your rage grows!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151534",
+   "text": "Your rage recedes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151535",
+   "text": "Your berserk rage has subsided.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151536",
+   "text": "You have three hours to turn this item in for Honesty credit, otherwise it will cease to be a quest item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151537",
+   "text": "This decoration must be placed next to a wall.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151538",
+   "text": "Virtue Tapestry Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151539",
+   "text": "In your rage, you shrug off ~1_VALUE~ points of damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151540",
+   "text": "Your rage blocks ~1_VALUE~ points of healing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151541",
+   "text": "Berserk ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151542",
+   "text": "Berserk ~1_VAL~ (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151543",
+   "text": "Bestial Earrings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151544",
+   "text": "Bestial Necklace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151545",
+   "text": "Bestial Arms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151546",
+   "text": "Bestial Kilt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151547",
+   "text": "Bestial Earrings<br>(can be imbued)<br>Gargoyles Only<br>Berserk 1<br>Physical Resist 3%<br>Fire Resist 4%<br>Cold Resist 4%<br>Poison Resist 4%<br>Energy Resist 17%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151548",
+   "text": "Bestial Necklace<br>(can be imbued)<br>Gargoyles Only<br>Berserk 1<br>Physical Resist 3%<br>Fire Resist 4%<br>Cold Resist 4%<br>Poison Resist 4%<br>Energy Resist 17%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151549",
+   "text": "Bestial Arms<br>(can be imbued)<br>Gargoyles Only<br>Berserk 1<br>Physical Resist 7%<br>Fire Resist 8%<br>Cold Resist 21%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151550",
+   "text": "Bestial Kilt<br>(can be imbued)<br>Gargoyles Only<br>Berserk 1<br>Physical Resist 24%<br>Fire Resist 10%<br>Cold Resist 9%<br>Poison Resist 10%<br>Energy Resist 9%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Berserk 5 (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151551",
+   "text": "You have served your time and are released from jail.  Now stay out of trouble!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151552",
+   "text": "You rattle the bars but nobody seems to care.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151553",
+   "text": "Activate: Bard Mastery Bonus x2<br>(Effect: 1 min. Cooldown: 30 min.)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151554",
+   "text": "Bard Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151555",
+   "text": "Virtuoso's Collar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151556",
+   "text": "Virtuoso's Necklace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151557",
+   "text": "Virtuoso's Earpieces",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151558",
+   "text": "Virtuoso's Armbands",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151559",
+   "text": "Virtuoso's Kilt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151560",
+   "text": "Virtuoso's Kid Gloves<br>(can be imbued)<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 4%<br>Fire Resist 19%<br>Cold Resist 5%<br>Poison Resist 5%<br>Energy Resist 5%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151561",
+   "text": "Virtuoso's Necklace<br>(can be imbued)<br>Gargoyles Only<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 3%<br>Fire Resist 4%<br>Cold Resist 4%<br>Poison Resist 4%<br>Energy Resist 17%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151562",
+   "text": "Virtuoso's Earpieces<br>(can be imbued)<br>Gargoyles Only<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 3%<br>Fire Resist 4%<br>Cold Resist 4%<br>Poison Resist 4%<br>Energy Resist 17%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151563",
+   "text": "Virtuoso's Armbands<br>(can be imbued)<br>Gargoyles Only<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 24%<br>Fire Resist 10%<br>Cold Resist 9%<br>Poison Resist 10%<br>Energy Resist 9%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151564",
+   "text": "Virtuoso's Kilt<br>(can be imbued)<br>Gargoyles Only<br>Activate: Bard Mastery Bonus X2<br>(Effect: 1 min Cooldown: 30 min)<br>Physical Resist 7%<br>Fire Resist 8%<br>Cold Resist 21%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151565",
+   "text": "This item has not yet recharged.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151566",
+   "text": "Cooldown Remaining: ~1_VAL~ min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151567",
+   "text": "You are already under the Virtuoso effect, and cannot activate this item now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151568",
+   "text": "You have no Bard Mastery, so this item will not work for you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151569",
+   "text": "The magic of the ~1_ITEMNAME~ enhances your skills, doubling your Mastery Bonus!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151570",
+   "text": "The magic of the ~1_ITEMNAME~ fades.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151571",
+   "text": "Mastery Bonus Cooldown: 15 min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151572",
+   "text": "Fish Bait Strength +~1_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151573",
+   "text": "Fish Bait Strength +~1_VAL~% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151574",
+   "text": "Fisherman's Chestguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151575",
+   "text": "Fisherman's Kilt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151576",
+   "text": "Fisherman's Arms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151577",
+   "text": "Fisherman's Earrings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151578",
+   "text": "Fisherman's Chestguard<br>(can be imbued)<br>Gargoyles Only<br>Fish Bait Strength +10%<br>Physical Resist 24%<br>Fire Resist 10%<br>Cold Resist 9%<br>Poison Resist 10%<br>Energy Resist 9%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151579",
+   "text": "Fisherman's Kilt<br>(can be imbued)<br>Gargoyles Only<br>Fish Bait Strength +10%<br>Physical Resist 7%<br>Fire Resist 8%<br>Cold Resist 21%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151580",
+   "text": "Fisherman's Arms<br>(can be imbued)<br>Gargoyles Only<br>Fish Bait Strength +10%<br>Physical Resist 7%<br>Fire Resist 8%<br>Cold Resist 21%<br>Poison Resist 8%<br>Energy Resist 8%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151581",
+   "text": "Fisherman's Earrings<br>(can be imbued)<br>Gargoyles Only<br>Fish Bait Strength +10%<br>Physical Resist 3%<br>Fire Resist 4%<br>Cold Resist 4%<br>Poison Resist 4%<br>Energy Resist 17%<br>Durability 125 / 125<br>Part of an Armor Set (4 Pieces)<br>Set Bonus:<br>Fish Bait Strength +50% (total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151582",
+   "text": "<center>CUSTOMIZE BODY</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151583",
+   "text": "Secret Chest",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

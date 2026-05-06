@@ -1,0 +1,3006 @@
+{
+ "batch": 2,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1012014",
+   "text": "<BASEFONT COLOR=#2DDC1B>伊絲娜大陸</BASEFONT>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013000",
+   "text": "我們偵測到你正在使用非經本公司允許使用的外掛程式，使用此類程式已違反了  http://www.uoherald.com/support/service.php 所記載的「網路創世紀玩家行為規範」<br>以下的部份：<br>第 18 條 ─ 你不能干擾、入侵、或是破解任何由《網路創世紀》伺服器進出的資訊。<br>你的這項舉動已經被記載到你的帳戶資料中，如果你繼續使用此類非經本公司允許使用的程式，我們將會針對你的舉動採取必要的措施，包括暫停或是永久取消你的帳號。請勿於《網路創世紀》中使用此類非經本公司允許使用的程式。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013001",
+   "text": "<center>歡迎來到測試中心！</center><br>這是一個非產品伺服器，目的是為了在將新的程式碼放上產品伺服器前先行進行測試。本伺服器對公眾開放，並採與與一般伺服器相同的規範：http://www.uoherald.com/support/service.php。<br><br>本伺服器並不提供GM支援，因為它屬於開發工具，而非產品伺服器。<br><br>l<br><br>此外，在此伺服器上，嚴格要求你不得干擾或騷擾《網路創世紀》測試人員。他們的名字上會顯示「OSI」、「EA」或「GM」作為識別。<br><BR>若發現任何臭蟲，請知會TCbugs@uo.com",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013002",
+   "text": "<center>Siege Perilous！</center><br>The Siege Perilous 伺服器是一台新的伺服器，具有不同的遊戲規則，膽小者請勿進入。在 Siege Perilous 伺服器開創人物前，請到以下的網址閱讀有關此伺服器的詳細資料：http://www.uoherald.com/guide/siege_0.php <br><br>*你只能開啟一位人物，所以請你慎選之。<br><br>*如果你在目前的伺服器中不是一位令人嫉妒、欽羨、崇拜的領主或是女貴族，千萬不要進入 Siege Perilous 伺服器。<br><br>*當你落在另一位玩家手中時，很可能會遭到不測。<br><br>歡迎進入 Siege Perilous！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013004",
+   "text": "<center> 聲明放棄「新玩者」狀態</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013005",
+   "text": "做為「新玩者」，你已經處於一個嚴格的保護體系之下，其他的玩家和某些特定怪物完全無法攻擊你。<br><br>倘若你想要聲明放棄「新玩者」狀態，就會喪失此保護。其他的玩家可以攻擊你，以往只能怒目注視你的怪獸以後只要一看到你就會開始攻擊！<br><br>如果你想要聲明放棄「新玩者」狀態，請按下「確定」，否則請按下「取消」。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013006",
+   "text": "<center>髮髭顏色選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013008",
+   "text": "<CENTER>髮型選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013030",
+   "text": "<center> 候選人 </center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1013062",
+   "text": "<center>改變公會種類選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014012",
+   "text": "LB？或許你指的是 Lord British ...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014014",
+   "text": "Lord British 一向支持藝術。穿越吟遊詩人音樂學校就有一座公共劇院。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014027",
+   "text": "在這個區域裡頭所有的農場都在鄉下，也就是在 Lord British 城堡的西邊。你必須要穿越奈洛斯河，並且沿著路走才可以到達。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014040",
+   "text": "在這個城市裡有許多公會。這就是居住在 Lord British 所在的首都所擁有的好處。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014075",
+   "text": "你可以在舊要塞裡頭練習你的劍術，那就在 Lord British 城堡的南方。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014081",
+   "text": "戴普爾？喔，是的，我相信你指的是 Lord British 的朋友與親密伙伴。如果你要找他，我建議你到旅店裡去試試。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014096",
+   "text": "我住在 _Town_。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014111",
+   "text": "艾歐羅？喔！是的，我相信他就是 Lord British 的朋友與親密伙伴。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014116",
+   "text": "讓我們來看看…我記得它們的名字是羞恥、錯誤、鄙視、以及Hythloth 。我自己從來沒有擁有過一張不列顛尼亞地圖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014117",
+   "text": "Lord British 希望每一個人、甚至每一個生命都能有選擇自由的機會。有些人說他甚至視不列顛尼亞上的半獸族和蜥蜴人都應該和人類平等。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014118",
+   "text": "沙米諾王。喔！是的，我相信它就是 Lord British 的朋友與親密伙伴。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014131",
+   "text": "這個名字我聽起來很熟悉...喔！對了...我相信他就是 Lord British 的貴賓。或許你可以在當地的泉水附近找到他在那邊做採樣工作。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014141",
+   "text": "儘管羅貝爾王在年輕的時候也曾經是善良與仁慈的，但傳說中，他在晚年卻極端渴望擁有權力。並未命令銀蛇準備與 Lord British 進行戰鬥，此大陸將是屬於具有雄心的征服者。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014158",
+   "text": "我自己從來沒有見過 Lord British 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014196",
+   "text": "Lord British ？當然他就是我們的統治者！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014257",
+   "text": "我們有兩個公會：戰士公會和礦工公會。W",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014266",
+   "text": "昇月城被 Lord British 發現，並且把它用來當作研究用的殖民地。利肯城就是用來研究的地方。幾乎所有在不列顛城的新手魔法師都來自那棟位在西北半島上面的建築物。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014406",
+   "text": "自從 Lord British 從「邪惡的」Lord Robert 手上奪下政權之後，就成為不列顛尼亞大陸上統一的君主這個故事大部分人都知道，當然了，大部分這些資料的作者都是難以考究的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014407",
+   "text": "Lord British 是不列顛尼亞大陸的統治者。他看起來似乎適宜個善良且公正的君主，並且正試著為他的人民做出正確的事。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014539",
+   "text": "又一次見到你了。我應該如何幫你呢，_Name_？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1014554",
+   "text": "我是 _Job_。你希望我能賣給你甚麼呢？，",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015000",
+   "text": "<center>煉金選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015029",
+   "text": "<center>鐵匠選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015075",
+   "text": "<center>木匠選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015155",
+   "text": "<center>製弓選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015162",
+   "text": "<center>抄錄選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015228",
+   "text": "<center>製圖選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015234",
+   "text": "<center>變身術選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015255",
+   "text": "<center>裁縫選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1015313",
+   "text": "<center></center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016001",
+   "text": "10a",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016002",
+   "text": "10b",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016012",
+   "text": "6a",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016013",
+   "text": "6b",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016039",
+   "text": "Almonjin，預知之眼",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016043",
+   "text": "Anshu，生命的氣息",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016056",
+   "text": "Baratoz，地窖守護者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016161",
+   "text": "Kaltivel，學識管理人",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016163",
+   "text": "Lord British 音樂學校",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016174",
+   "text": "Maliel，天命之首",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016437",
+   "text": "假如你收到此訊息則表示由於使用太久的巨集指令，請參閱以下網頁：http://uo.custhelp.com/ ，謝謝！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1016438",
+   "text": "YuGLuKs GarDuN - nO hUmMieS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016478",
+   "text": "dyn_replenish_all.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016479",
+   "text": "dyn_singulars_felucca.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016480",
+   "text": "dyn_singulars_trammel.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016481",
+   "text": "dynfix_factions_felucca.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016482",
+   "text": "dynfix_factions_trammel.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016483",
+   "text": "dynfix_gm.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016484",
+   "text": "dynfix_haven.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016485",
+   "text": "dynfix_ilshenar.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016486",
+   "text": "dynfix_khaldun.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016487",
+   "text": "dynfix_tutorial.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016488",
+   "text": "facetconfig.txt0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016489",
+   "text": "facetconfig.txt1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016490",
+   "text": "facetconfig.txt2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016493",
+   "text": "old_dynfix_gold_feluc.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1016494",
+   "text": "old_dynfix_gold_tram.txt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1017324",
+   "text": "夜視術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017325",
+   "text": "保護術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017326",
+   "text": "笨拙術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017327",
+   "text": "弱智術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017328",
+   "text": "衰弱術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017329",
+   "text": "治療術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017330",
+   "text": "大治療術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017331",
+   "text": "敏捷術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017332",
+   "text": "機靈術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017333",
+   "text": "強壯術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017334",
+   "text": "傷害術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017335",
+   "text": "詛咒術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017336",
+   "text": "祝福術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017337",
+   "text": "瞬間移動點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017338",
+   "text": "解毒術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017339",
+   "text": "魔法耗弱點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017340",
+   "text": "麻痺術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017347",
+   "text": "隱形術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017348",
+   "text": "復原點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017350",
+   "text": "鑑定術點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017371",
+   "text": "魔法反射點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1017386",
+   "text": "Troll (巨人) 屠殺者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018023",
+   "text": "<center>確定移除公會石？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018053",
+   "text": "<center>確定將房子建在此處嗎？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018066",
+   "text": "<u>教學模式選項</u> 請選擇你想要觀看的新手教學模式項目。你也可以隨時選擇離開此教學模式。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018067",
+   "text": "<u>初階教學模式</u> 這個選項會帶你從頭進入教學模式，從這邊你可以再次觀看整個教學模式的內容。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018068",
+   "text": "<u>使用及裝備教學</u> 這個選項將帶你熟悉遊戲中所有物品以及裝備的使用方法等事宜。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018069",
+   "text": "<u>戰鬥教學</u> 這個選項將帶你學習並熟悉遊戲中該如何進行戰鬥等等細節。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018071",
+   "text": "只要你的新進玩家狀態並沒有消失，你隨時都可以再次觀看教學模式的內容。想要再次觀看教學模式時，請從你的紙娃娃人偶旁選擇「求助 (Help) 」選項，然後再選擇「教學模式 (Tutorial Options) 」選項即可。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018299",
+   "text": "<u>與商家產生互動</u> 這個選項將帶你熟悉在遊戲中如何和商家買賣物品等等交易行為。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018320",
+   "text": "來自大不列顛君王之 Nystul 的簡短訊息：你所交易的物件擁有相當大的價值，在你將他賣掉之前可以研究看看它可以值多少。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018353",
+   "text": "<center>新髮型</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018354",
+   "text": "<center>新鬍鬚樣式</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1018355",
+   "text": "<center>選擇想要變更的髮型：</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019005",
+   "text": "<center><basefont color=#0000FF>警告</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019006",
+   "text": "<center><basefont color=#0000FF>注意</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019007",
+   "text": "<center>你被認定為殺人犯，一個月最多只被允許傳送到該地點一次。</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019008",
+   "text": "<center>你確定現在進行傳送？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019009",
+   "text": "<center>你被認定為殺人犯，這個月已經傳送到該地點過了，無法使用月之門傳送回去。 </center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019010",
+   "text": "<center>你現在在屬性下降期，你將無法在該處增加任何技能。</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1019039",
+   "text": "你在Ultima Online內已經不被認為是新手玩家了，先前的限制與優惠將自此取消。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1023664",
+   "text": "rustic bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1023665",
+   "text": "rustic bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1023666",
+   "text": "rustic bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1023667",
+   "text": "rustic bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1023902",
+   "text": "arrow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1025375",
+   "text": "seive",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1026812",
+   "text": "Flax",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1026813",
+   "text": "Flax",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1027167",
+   "text": "crossbow bolt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1027847",
+   "text": "永N寶石的碎片",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1028794",
+   "text": "Book of Masteries",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1028795",
+   "text": "Book of Masteries",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029010",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029011",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029012",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029013",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029014",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029015",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029016",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029017",
+   "text": "fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1029722",
+   "text": "Dasha隊長",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1029724",
+   "text": "戰王Kabur",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1029863",
+   "text": "Hooded Robe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1030086",
+   "text": "denkou yajuu",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1030089",
+   "text": "gouzen ha",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1030903",
+   "text": "<center>靈魂之石</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1033042",
+   "text": "pedestal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1034370",
+   "text": "剪開的巨人皮革 / 巨人毛皮 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034374",
+   "text": "巨人皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034375",
+   "text": "一塊巨人皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034376",
+   "text": "巨人兽皮堆 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034377",
+   "text": "一堆巨人毛皮 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034381",
+   "text": "剪開的龍皮革 / 龍皮甲 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034385",
+   "text": "龍皮革塊 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034386",
+   "text": "一塊龍皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034387",
+   "text": "龍皮甲堆 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034388",
+   "text": "一堆龍皮甲 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034392",
+   "text": "剪開地獄獸皮 / 惡魔皮革 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034396",
+   "text": "惡魔皮革塊 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034397",
+   "text": "一塊惡魔皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034398",
+   "text": "地獄獸皮堆 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034399",
+   "text": "一堆地獄獸皮 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034403",
+   "text": "剪開的骨疽獸皮 / 骨疽皮革 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034407",
+   "text": "骨疽獸皮塊 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034408",
+   "text": "一塊骨疽獸皮 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034409",
+   "text": "骨疽獸皮堆 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034410",
+   "text": "一堆骨疽獸皮 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034414",
+   "text": "剪開火山皮革 / 火焰獸皮 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034418",
+   "text": "火山皮革塊 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034419",
+   "text": "一块火山皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034420",
+   "text": "成堆的火山兽皮 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034421",
+   "text": "一堆的火山兽皮 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034425",
+   "text": "剪開的冰雪皮革 / 冰雪獸皮 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034429",
+   "text": "冰雪皮革塊 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034430",
+   "text": "一塊冰雪皮革 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034431",
+   "text": "冰雪兽皮堆 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034432",
+   "text": "一堆冰雪兽皮 (~1_PILES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034436",
+   "text": "神秘礦(Xormite)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034437",
+   "text": "神秘礦(Xormite) (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034438",
+   "text": "神秘礦錠(Xormite Ingots)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034439",
+   "text": "神秘礦(Xormite)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034442",
+   "text": "神秘礦(Xormite) ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034443",
+   "text": "神秘礦錠(Xormite Ingots)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034444",
+   "text": "異形獸皮 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034448",
+   "text": "異形皮革塊 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034449",
+   "text": "一塊異形皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034450",
+   "text": "異形獸皮堆 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1034451",
+   "text": "一堆異形獸皮 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036104",
+   "text": "恐龍獸皮 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036108",
+   "text": "恐龍皮革塊 (~1_PIECES~碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036109",
+   "text": "一塊恐龍皮革 (~1_PIECES~ 碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036110",
+   "text": "恐龍獸皮堆 (~1_PIECES~碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036111",
+   "text": "一堆恐龍獸皮 (~1_PIECES~碼)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036137",
+   "text": "秘銀 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036142",
+   "text": "秘銀 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036144",
+   "text": "鋼  (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036150",
+   "text": "鋼 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036152",
+   "text": "黃銅 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036157",
+   "text": "黃銅 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036162",
+   "text": "黑曜石 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036170",
+   "text": "黑曜石 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036173",
+   "text": "軟玉礦 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036178",
+   "text": "軟玉礦 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1036181",
+   "text": "矮人礦 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1038213",
+   "text": "它看來是一個魔法物品，並且可以施展一些魔法。當它被裝配上去的時候，就會施展出相對應於 Des Corp 或 In Corp Del 的魔法，你的分析同時指出，這一項物品在用完剩餘的魔法點數後將會自動壞掉。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1038214",
+   "text": "它看來是一個魔法物品，並且可以施展一些魔法。當它被裝配上去的時候，就會施展出相對應於 Des Corp 或 An Ex Del 的魔法，你的分析同時指出，這一項物品在用完剩餘的魔法點數後將會自動壞掉。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1038215",
+   "text": "它看來是一個魔法物品，並且可以施展一些魔法。當它被裝配上去的時候，就會施展出相對應於 In Corp Del 或 An Ex Del 的魔法，你的分析同時指出，這一項物品在用完剩餘的魔法點數後將會自動壞掉。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1039000",
+   "text": "Abacus, Abra, Adama, Adara, Aemon, Aerathi, Aerin, Aesop, Aeval, Aho, Aidan Al'Beryth, Aiel, Akasha, Akira, Aladarn, Alatar, Alby, Aldous, Alia, Allion, Allworth, Aloha, Althalus, Ambrosia, Ammut, Anakah, Anastasiia, Ancalagon, Andraax, Angelika, Angeline, Angelus, Annalynn, Anya, Aole, Aori, Apollo, Aqua, Arachnid, Aratinga, Arbus, Arcanum, Arcanus, Arcturus Rann, Arcyion, Ardanious, Arden, Argyll, Ariana, Arianna, Ariel, Aries, Arioch of Chaos, Aristar, Aristoteles, Aristotle, Arithon, Arkon, Artillery, Artur Paendrag, Arutha, Arwen, Arylon, Asgarde, Asher, Ashlynn, Ashtar, Asmodai, Asten, Astinus, Astinus, Astro, Athena, Atrius, Attreui, Auriane, Avalon, Avidus, Awrentia, Axion, Babydoll, Baggins, Bahset, Baine, Bakura, Balron, Baran, Barnabas, Barons, Bartman, Beacon, Bean, Belgarath, Belle, Belphegor, Belsar, Beltane, Belzar, Bender, Benuis, Benyaha, Beorhtnoth, Bilbo Baggins, Bink, Bismarck, Black, Black Rain, Blaine, Blake, Blazer, Bleach,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039001",
+   "text": "Blender, Blondie, Blu, Blue Angel, BlueSpook, Bo, Bones, Bonzi, Boo, Bookwyrm, Borealis, Boudreaux, Bouncebunny, Braksis, Branwyn, Brethil, Bria, Brigit, Brillig, Brimstone, Broli, Broshack, Bullwinkle, Burns, Butterfly, Byte, Bytes, Cadderly, Cael, Caelan, Calindus, Calrissium, Camel, Camille, Capuccino, Caramon, Caran, Carbon, Carouser, CarpeDiem, Cartman, Casper, Catman, Catti-brie, Cavalier, Cayton, Celestia, Celestia, Cellista, Chanity, Channa, Charm, Chauncey, Chaz, Cheetara, Chendar, Cheyenne, Cheysuli, Chima, Chronos, Chuin, Chumlord, Cinder, Cindy, Cipher, Circe, Claypole, Cliffjumper, Clockwork, Clothahump, Clotho, Clutz, Coira, Colette, Concise, Corona, Cortlandt, Corwin, Craydan, Crimson, Crowe, Crowely, Cruentus, Crystalius, Cuchulainn, Cupid, Cypress, Cyrene, DachshunD, Daedus, Dagnir, Dahl, Dallas, Damiano, Damien Vryce, Damon, Damsel, Dane, Danika, Dantes, Danwil, Dark Arrow, Darkangel, Darkar, Darkbow, Darkhan, DarkLight, Darkmoon,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039002",
+   "text": "DarkShade, Darkshadow, DarkSky, Darksun Amun, Darkwing, Dawnfire, Daylight, Dayspring, DayStar, Ddantgwyn, Dean Ween, Delta, Demetria, Demic, Denalana, Den'Ri, Derek, Desiree, Despaxus, Desquain, Destiny, DeVir, Diesis, Djad, Djarum, Doc, Doc Holliday, Docinho, DocIzm, Dogan, Dolby, Domaris, Down Under, Draco, Dracor, Dragavon, Drago, Dragoness, DragonFang, Dragonfyre, Dragonheart, Dragoon, Dragora, Draig, Dranconis, Draven, Drax, Dream On, Dreamweaver, Dreswick, Drum, DTRoland, Dumbledor, Dunadan, Dune, Dupre, Durwin, Duryn, Dym, Dymon, Dyson, Eggnopolis, EinStein, Eir, Elbereth, Elendil, Elesahr, Elijah, Elkantar, Elmore, Eloise, Elph, Ember, Emmett Kelly, Emowyn, Enchantress, Endrak, Enki, Eolith, Eros, Etho, Europe, EvenFire, Excelior, Eyeore, Faberge, Fade, Falcon, Falcor, Falken, FallenStar, Falquan, Falstaff, Fantasia, Fate, Faye Tallity, Fejadon, Fenix, Ferret, Fesryn, Feyht, Fidelus, Finnigan, Fire Tiger, Firedancer, FireFly, Firespawn,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039003",
+   "text": "FireWalker, Fishbulb, Fistandantilus, Flame, Flanders, Forge, Fortune, Fox, Fracto, Friar, Frodo, FrostFire, Furinax, FuzzyBunny, Gaea, Gage Brightblade, Gahan, Galadriel, Galahad, Galdar, Galpar, Gannon, Gantris, Gar, Garath, Gargon, Garion, Gath, Geldof, Gellor, Gem, Geri, Getafix, Gilean, Giovanni, Glamdring, Glass, Godiva, Godot, Godwin, Godzilla, Goldeneye, GoldWing, Gom, Gonzalo, Gonzo, Goodspell, Gorgon, Granamier, Grazzt, Greenleaf, Greven, Grey Wolf, Greycat, Greystar, Greystone, Greywolf, Griffin, Grimm, Grusim, Guan Yu, Guardian Angel, Gumleaf, Gundam X, Gwendalynne, Gwenllian, Gwenwhyfar, Gynvael, Haemir, Halifax, Halo, Hamlet, Hanley, Harmonie, Hawk, Hawkwing, Heimdall, Henri, Hero, Hezron, Hitomi, Hobbit, Horacio, Hugo, Hurricane, Hyuni, Ianthe, Icculus, Ice Cat, Ice-Bear, Ice-Bear, IceStorm, Idoru, Ignatius, Ignavus, Illithana, Immemorial, Inculcate, Innocence, Inquisitor, Ionic, IronChef, Ironwolf, Ironwulf, Irwin, Isaac, Jace, Jaeder,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039004",
+   "text": "Jake, Jaku Katta, Jamu, Janus, Javlin, Jean, Jelly, Jesta, Jetalle, Jethro, Jhaniss, Jim, Jinxi, Jirrin, Joker, JokieSmurf, Jonah, Jondolar, Josias, Jozack, Juno, Jupiter, Justice, Justin, Justitia, Jynx, Kabal, Kahlua, Kai, Kaida, Kai'enn, Kain, Kalanu, Kalevipoeg, Kalidorn, Kalkin, Kalmaji'andra, Kalquinn, Kalyn, Kalypso, Kaori, Karama Shaitan, Karandras, Kardinal, Kata, Kathlar, Katlynn, Katrina, Kedrin, Kehleyr, KeKe, Kellog, Kenai, Kenny, KenShin, Kentarre, Kentarre Fyre, Kentor, Kera, Keridwen, Kethnin, Keystone, Khalil, Khaos, Khelereth, Kilkenny, Kimberlyn, Kissimee, Kitana, Kitara, Kitaro, Knave, Knightfall, KO Kerr, Kodiak, Koreth, Korihor, Kregus, Krell, Kristof, Kruminilius, Kunimitsu, Kurgen, Kurn, Kypher, Kyrie, KyrTanfenol, Kytryl, Lagoth Zanta, Lakoda, Lance, Lanny, Laphraeus, Laviticus, Leah, LeeLand, Leeroy, Legend, Leldorin, Lemming, LeShemhazi, Leta, Lexius, Lexos, Liet, Lilly, LinValle, Lithrien, LittleAngel, Littlefoot, Llewyn,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039005",
+   "text": "Lo, Loch, Logan, Longbow, Lordjim, Lore, Loth, Lothar, Lubanak, Lupus, Luskie, Lynnariel, Lyric, Lysander, MacBeth, Madragon, Magnaar, Majestic, Malaury, Malleus, Mannannan, Manyx, Mara, Marcellus, Marcos, Marikoth, Marley, Marquez, Mat Cauthon, Matrim, Matrix, Matt, Maxim, Maximus, Maxwell, Mayhem, McClain, Medic, Meerkat, Mellow, Memnoch, Menticor, Mephisto, Mesanna, Midnight Sky, Millano, Miller, MindBlast, Mindtrip, Mirage, Mistchiff, MisticTide, Mistie, Misty Eyed, Mithandir, Moatman, Mogley, Moira, Mont, Monty, MoonChild, MoonFire, Moonsong, Morbius, Mordac, Morgan, Morgoth, Moria, Morkin, Morlach, Morlock, Morpheus, Morseca, Mount of Olives, MtnRIGE, Munin, Musketeer, Mustang, Mynx, Myrcalis, Myrddin, Mystery, Mystfall, Mystic, Mystra, Mystral, Mysty, Myth, Nae'l, Nairb, Nakor, Nalgae, Namlook, Narianya, Narim, Natas, Nathan, Neblic, Nebulus, Necromancer, Nementa, Neo, Neo Heaven, Nero, Neroon, Nessy, Neth, Neutron, Nevin, Nexus, Nieves, NightShade,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039006",
+   "text": "Nilrym, Njord, Nonnus, Nym Whisperwind, Nystul, Oakmoore, Odan-Urr, Odin, Ogre, Old Night, Olgen-Keare, Olojin'ni'ayah, Omen, Oneiros, Opihi, Orchidea, Oreo, Orien, Orion, Oroto, Oz, Padawan, Padishar, Paks, Paladius, Palpatine, Patrick, Paul, Pegbyter, PeppermintPatty, Persephone, Perth, Peter, Phaide, Phalanx, Pharkzuul, Phillip, Philo, Phoenix, Pinkster, Plop, Pluie, Poe, Pogo, Poodle, Praxis, Prometeus, Province, Pythias, Quazar, Quest, Radiankh, Ragnarok, Rahvin, Raiden, Rainsong, Raithe, Rakorium, Rakshah, Rannulf, Rath, RathGather, Raven, Ravenlock, Rayall, Rayne, Raynor, Raziel, Relm, Revo, Rhaxxan, Rhiannon, Riff Raff, RiftWeaver, Riggs, Rini, Riondil, Rising Sun, Rmageddon, Romulus, Rose, Rowan Sidhe, Rune, Sabbath, Sachiel, Sagitar, Saint, Salena, Salty, Samhain, Samson, Sanctum, Sandstorm, Sanka, Sapphire, Sarasvati, Sargothian, Sas'Quatch, Sassafras, Satyr, Savage, Scarlett Witch, Schatten, Schatzo, Scooby, Scooby Doo, Scooter, Scotia,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039007",
+   "text": "Scratch, Sean, Sebratis, Seccora, Selena, Seminole, Sencha, Sentinel, Sephrenia, Seraine, SeraphAngel, Seraphina, Serene, Seth, Seven, Sgt Pepper, Shadow, Shadowcat, Shadowthorn, ShadowWing, Shakespeare, Shalamar, Shalayla, Shandalle, Shandra, Shandril, Sheba, Sheffield, Sheyla, Shiel, Shining, Shoeless Joe, Shogun, Shredder, Siebenstein, Sigma, Silver, SilverShadow, SilverSteed, Simba, Sinistrell, Sinthalis, Sir Lionel, Sir William, Sirena, Siris, SirTharsis, Siv, Skarloey, Skylla, Skylr, Slainte, Snoopy, Snow, Snowflake, Softsmile, Sol Burn, Solaris, Solarius, Sollo, Sollok, Solmyr, Solomon, Sorsha, Soul Keeper, Soundwave, Spanky, Sparkles, Sparky, Sparrow Hawk, Spawn, SpiderMan, Spinner, Spiral, Splash, Squamate, Squeaker, Squirrel, Ssendam, Stacey, Starburst, Starcrosser, StarFire, StarFox, Stargazer, Stark, Starlight, Starscream, Sting, StJude, Stone, Stonegate, Storm, Stormrider, Stormshadow, StPeter, Strider, Strobe, Stroud, Sturm, Styx,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039008",
+   "text": "Subaltern, Subity, SunChaser, Sunday, Sunrider, Sunrock, Suzanne, SwagMan, Sweet Adeline, Symphony, Syrid, Systemetrix, Ta, Tabaluga, Tai'an, Talak'aal, Taliesin, Talis, Tallion, Talon, Talos, Taltos, Tamrin, Tannim, Tantras, Tao, Tarai, Taranis, Tarl, Tarragon, Taulk, Tazz, Tearyl, Tehran, Telegraph, Teliset, Teriodin, Terra, Themis, Theodora, Thor, Thrill, Ti'ene, Tierra, Tiffanie, Tiger, Tigershark, Tigger, Tika, Tinker, Titou, Tivo, Togan, Toko, Tolkien, Tonka, Tori, Tori Ann, Tracus, Trajan, Trebuchet, Tremere, Treva, Trinity, Trip, Triton, Troglodyte, Troi, Trollkin, Truth, T'sew, Tsolyani, Tsunami, Tul Garath, Tums, Turaine, Ty, Tybern, Tygrys, Tyr, Tyra, Ulvain, Uncle Al, Uriah, Urqhart, Urza, Usul, Vagruk, Vai, Valeria, Vampire, Vandergraff, Vector, Veers, Velvet, Ven, Venkman, Venus, Verabolis, Verden, Verity, Verkat, Viator, Victory, Vilhelm, Vlad, Voiello, Volbard, Vortex, Vulpechula, Waffe, Wallaby, Walpurgis, Wamphyri, Warchef,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039009",
+   "text": "WarDancer, Warrick, WaterLily, Weasel, Werewolf, Wesley, Westin, Whats, Whisper, Whistler, Will, Willow, Winddancer, WindFury, Windwalker, Wingfang, Winggy, Wings, Winston, Winterfrost, Winthrop, Wislem, Witch King, Wolfgang, Wolverine, Wombat, Wotan, Xan, Xanaza, Xanthon, Xaxtax, Xention, Yavanna, Yazoo, Yeager, Yeran, Yoshimitsu, Zandor, Zandorian, Zarathustra, Zarc, Zarel, Zayne, Zealot, Zenistar, Zephyros, Zeus, Zhang Fei, Zoe, ZoeRon, Zorloch, Zorn, Zuke, Zweistein, Zynfandel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039010",
+   "text": "Anomius, Arislan, Asher, Athenee, Belgarion, Bregan Daerth, Bridgeet, Caerdin, Camus, Candyman, Cirak, Curunir, Cylus, Daven, Draeenen, DragonAsh, Dragonfire, Ebenezer, Eiric, El Cid, Elezebethe, Epoch, Fixxxer, Geryn, Gorn, Gwydion, Hawk, Hermes, Iago, Imladris, Intaria, Jozack, Justarius, JymJ, Jyrra, Kaeros, Kelmar, Kerris, Kieron, Kintail, Kintara, Kristos, Kyrianna, Lachlan, LordJim, Lupus Hetfield, Masara, Minnow, Moebius, Moria, Myrath, Nafien, Naratis, Nikademus, Oakmoor, Onyx, Oryx, Pann, Pitvipr, Priam, Quandary, Reinath, Reyna, Riptide, Rudeger, Rumil, Sandoval, Sannio, Seibh, Seth, Sharisha, Shearn, Sidarus, Sirideain, Solus, Somberlain, Spectre, Stone, Syrthiss, Takara, Taliya, Tar, Thadeaus, Thalos, Theowulf, Thomas Earl, Treebeard, Trilord, Tymmorn, Tzeentch, Vecknon, Vengeance, Verkat, Viconius, Wilmeth, Woudvester, Xeranth, Xoryn, Zardoz, Zianna, Zixwhwizs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1039011",
+   "text": "Belgarath, Cliath, Danthor, Dell, Lestrel, Mongo, Mozart, Osirys, Prez, RiftWeaver, Sarane, Tasha, Venal_Siege, Zoryn",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041010",
+   "text": "cliloc10",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041011",
+   "text": "cliloc11",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041012",
+   "text": "cliloc13",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041013",
+   "text": "cliloc14",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041014",
+   "text": "cliloc15",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041015",
+   "text": "cliloc16",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041016",
+   "text": "cliloc17",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041017",
+   "text": "cliloc7",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041018",
+   "text": "cliloc8",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1041220",
+   "text": "雙層木頭灰泥L型屋契約",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041221",
+   "text": "雙層石頭灰泥L型屋契約",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041432",
+   "text": "來自Sage的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041433",
+   "text": "來自LadyMOI的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041434",
+   "text": "來自Tyrant的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041435",
+   "text": "來自FierY iCe的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041436",
+   "text": "來自Melantus的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041437",
+   "text": "來自Ignatz的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041438",
+   "text": "來自Vex的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041439",
+   "text": "來自Hanse的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041440",
+   "text": "來自Jalek的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041441",
+   "text": "來自Adrick的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041442",
+   "text": "來自Lord Krum的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041443",
+   "text": "來自Oaks的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041444",
+   "text": "來自Prophet的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041445",
+   "text": "來自Greyburn的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041446",
+   "text": "來自Evocare的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041447",
+   "text": "來自Runesabre的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041448",
+   "text": "來自Alai的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041449",
+   "text": "來自Tajima的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041450",
+   "text": "來自Stellerex的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041451",
+   "text": "來自Bulldoz的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041452",
+   "text": "來自T-Bone的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041453",
+   "text": "來自Nimrond的假日鈴鐺",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041476",
+   "text": "一把鑰匙：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041507",
+   "text": "被 ~1_val~ 完成的藏寶圖",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041509",
+   "text": "給叫 ~1_val~ 商人的契約",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041525",
+   "text": "<BODY><BASEFONT COLOR=BLACK><u>新手玩家哈文鎮傳送</u> 如果你想被傳送，請選擇：<BASEFONT COLOR=#00FF00>哈文鎮<BASEFONT COLOR=BLACK>。</BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041526",
+   "text": "<u>Go to Haven.</u>這項功能將帶你到哈文鎮。哈文鎮是讓新手學習適應大不列顛尼亞的地方。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041527",
+   "text": "<CENTER>我們很抱歉，現在正常的支援功能暫時未開放。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041528",
+   "text": "<CENTER>測試中心主機是由品管部門及發展小組使用的主機。不開放支援功能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041601",
+   "text": "寵物名：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041602",
+   "text": "主人：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041642",
+   "text": "~1_val~ 首領",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1041644",
+   "text": "~1_val~ 船",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042018",
+   "text": "動作現在可以用'animate' (啟動) 這個字來發動",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042020",
+   "text": "動作現在可以用'animate' (啟動) 這個字來發動",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042109",
+   "text": "像是 startX startY endX endY 一樣輸入起點和終點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042111",
+   "text": "不適當的格式。務必輸入起點和終點，在起點X Y後面輸入終點 X Y，並於所有參數間加入空格。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042112",
+   "text": "請依照 starting X Y 再來 ending X Y 的順序，並記得中間要有空格。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042188",
+   "text": "doAggressionCheck失敗：無法找到objVar lstFactionGuardAggression",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042208",
+   "text": "取得一則 faction_check_version 訊息！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042211",
+   "text": "intResult is TRUE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042212",
+   "text": "intAccountId != 0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042213",
+   "text": "intAccountId == 0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042214",
+   "text": "intResult is FALSE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042215",
+   "text": "intAccountId != 0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042216",
+   "text": "IS in lstBackupData",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042217",
+   "text": "IS NOT is lstBackupData",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042218",
+   "text": "intAccountId == 0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042304",
+   "text": "我是過去的 zdif。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042310",
+   "text": "取得 checkGMCallStatus 函式呼叫！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042314",
+   "text": "Kal Ort Por",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042438",
+   "text": "這是和3d可以並存的客戶端",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042455",
+   "text": "這是和3d可以並存的客戶端",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042472",
+   "text": "這是和3d可以並存的客戶端",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042490",
+   "text": "An Nox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042491",
+   "text": "In Vas Mani",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042492",
+   "text": "In Mani",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042493",
+   "text": "An Ort",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1042605",
+   "text": "輸入工作區域 (x, y) (x, y)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042625",
+   "text": "這張契約似乎破損了n.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042630",
+   "text": "附掛了 tut_attach_init ！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042633",
+   "text": "取得 TUTORIAL_INIT 訊息",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042640",
+   "text": "句法：'load <shardname>' - all lower case and no spaces in shardname",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042641",
+   "text": "格式：'load <shardname>' - all lower case and no spaces in shardname",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042644",
+   "text": "當你在哈文鎮時，你不能是unavailable的狀態",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042655",
+   "text": "老玩家回饋除錯：VETREWARDS_RESPONSE",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042657",
+   "text": "老玩家回饋除錯：vr_NewReward does not exist",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042658",
+   "text": "老玩家回饋除錯：vr_NewReward is invalid",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042683",
+   "text": "得分：射 ~2_shotcount~ 次後得到 ~1_score~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042718",
+   "text": "如果你有興趣，點選當地的布告欄觀看細節，或是說'I will take thee'",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042732",
+   "text": "(~1_FACTION_NAME~ 陣營的領導)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042733",
+   "text": "~1_FACTION_NAME~ 的領導",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042734",
+   "text": "~1_CITY~ 的保安官，~2_FACTION_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042735",
+   "text": "~1_CITY~ 的財政部長，~2_FACTION_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042736",
+   "text": "你已賺得 ~1_SILVER_AMOUNT~ ，因為你擊敗 ~2_PLAYER_NAME~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042737",
+   "text": "你已獲得 ~1_KILL_POINTS~ 殺敵點數，因你擊敗 ~2_DEAD_PLAYER~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042738",
+   "text": "你已失去 ~1_KILL_POINTS~ 殺敵點數，因為你被 ~3_ATTACKER_NAME~ 擊敗！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042739",
+   "text": "你已獲得 ~1_KILL_POINTS~ 殺敵點數，因為你擊敗 ~2_DEAD_PLAYER~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042740",
+   "text": "你已失去 ~1_KILL_POINTS~ 殺敵點數，因為你被 ~3_ATTACKER_NAME~ 擊敗！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042741",
+   "text": "你的服務期限將在 ~1_HOURS~ 小時後結束。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042743",
+   "text": "你的服務期限將在 ~1_DAYS~ 天後結束。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042744",
+   "text": "這城鎮被 ~1_FACTION_NAME~ 控制。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042745",
+   "text": "這城鎮被 ~1_FACTION_NAME~ 控制。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042746",
+   "text": "這城鎮是中立的。~2_null~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042747",
+   "text": "你沒有足夠的金錢。你只有 ~1_AMOUNT!~ 的銀幣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042748",
+   "text": "你殺了這可惡的生物，已經賺得 ~1_AMOUNT~ 銀幣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042749",
+   "text": "這鎖被 ~1_PICKER_NAME~ 打開。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042750",
+   "text": "法官 ~1_NAME~ 已經發覺這：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042751",
+   "text": "這人被 ~1_KILLER_NAME~ 所殺。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042752",
+   "text": "這身體被 ~1_PLAYERS~ 攪亂。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042753",
+   "text": "~1_SOMETHING~ 被暫時取消。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042754",
+   "text": "你必須成為《次世代》的玩家才能 ~1_DO_SOMETHING~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042755",
+   "text": "~1_NAME~ 有些被激怒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042757",
+   "text": "~1_NAME~ 擁有一個不同的陣營關係。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042758",
+   "text": "你現在效忠於 ~1_NAME~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042759",
+   "text": "你的銀行餘額是 ~1_AMOUNT~ 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042760",
+   "text": "你已存放 ~1_AMOUNT~ 的金錢。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042761",
+   "text": "你已存放 ~1_AMOUNT~ 的金錢。剩下的錢退還到你的身上。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042762",
+   "text": "只有 ~1_AMOUNT~ 金錢可以被存放。 ~2_CHECK_AMOUNT~ 的錢被退還給你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042763",
+   "text": "~1_AMOUNT~ 金錢存放到你帳號中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042764",
+   "text": "檢查發生 ~1_AMOUNT~ 一些前被放在你的銀行保險箱中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042765",
+   "text": "檢查發生 ~1_AMOUNT~ 一些錢放在你的背包中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042806",
+   "text": "你帶路！我會在到 ~1_DESTINATION~時給你一筆錢！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042808",
+   "text": "在我們出發前，你必須要休息 ~1_MINUTES~ 分鐘。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042809",
+   "text": "我們到了！我想是這了， ~1_PLAYER_NAME~！ 我不需要任何協助了。這是你的報酬。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042810",
+   "text": "<說 'I will take thee' 來接受任務。>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042839",
+   "text": "~1_PLAYER_NAME~ 被永遠踢出這房子。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042840",
+   "text": "~1_PLAYER NAME~ 被驅逐出這房子。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042844",
+   "text": "*這世界突然變得複雜。* *~1_PLAYER_NAME~ 看起來變得慌張。*",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042854",
+   "text": "~1_PLAYER_NAME~ 沒獲得施捨。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042855",
+   "text": "~1_PLAYER_NAME~ 施捨 ~2_AMOUNT~ 的黃金，並且計算到你的銀行存款中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042858",
+   "text": "*~1_PLAYER_NAME~ 感覺不適。*",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042860",
+   "text": "* ~1_PLAYER_NAME~ 感覺相當不適。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042862",
+   "text": "* ~1_PLAYER_NAME~ 因痛倒在地上。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042864",
+   "text": "* ~1_PLAYER_NAME~ 因為極度痛楚而瀕死亡。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042866",
+   "text": "* ~1_PLAYER_NAME~ 開始無法控制地抽搐。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042867",
+   "text": "* ~1_PLAYER_NAME~ 感覺相當不適。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042868",
+   "text": "* ~1_PLAYER_NAME~ 因痛倒在地上。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042869",
+   "text": "* ~1_PLAYER_NAME~ 因為極度痛楚而瀕臨死亡。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042870",
+   "text": "* ~1_PLAYER_NAME~ 開始無法控制的抽搐。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042874",
+   "text": "我們已經到達導航點 ~1_POINT_NUM~ ，主人。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042875",
+   "text": "朝導航點 ~1_POINT_NUM~ 走，主人。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042881",
+   "text": "這艘船叫 ~1_BOAT_NAME~.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042883",
+   "text": "我現在的目的地的導航點是在 ~1_NAV_POINT_NUM~ 點。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042884",
+   "text": "~1_SHIP_NAME~ 的舵手",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042885",
+   "text": "現在這艘船叫做 ~1_NEW_SHIP_NAME~.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042886",
+   "text": "~1_NUMBERS_OF_SPELLS~ 個法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042887",
+   "text": "這保險箱是 ~1_OWNER_NAME~ 的",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042888",
+   "text": "你開始使用它時， ~1_RESOURCE_NAME~ 的數量開始改變。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042889",
+   "text": "你失去一些 ~1_RESOURCE_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042890",
+   "text": "奇異的閃光閃耀著 ~1_ITEM_NAME~.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042958",
+   "text": "~1_TIME~ 精準的說",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1042971",
+   "text": "~1_NOTHING~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1043032",
+   "text": "很抱歉， ~1_PLAYER_NAME~，但 ~2_PLAYER_NAME~ 在叫我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043128",
+   "text": "請接受 ~1_ITEM_NAME~ 作為酬謝",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043129",
+   "text": "你給我 ~1_ITEM_NAME~ 嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043231",
+   "text": "~1_NAME~ 停下來認真聽。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043232",
+   "text": "我現在接受 ~1_NAME~ 的命令。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043244",
+   "text": "我將遵照 ~1_NAME~ 給我的命令，並且如朋友般對待他們。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043245",
+   "text": "~1_NAME~ 現在將接受 ~2_PLAYER_NAME~ 的指令，並且允許他們接近被守護的地區。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043246",
+   "text": "~1_NAME~ 現在給予你能力對他們的寵物 ~2_PET_NAME~下命令。這個生物將成為你的朋友。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043248",
+   "text": "這個寵物拒絕被轉讓，因為它將不會服從 ~1_NAME~.~3_BLANK~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043249",
+   "text": "這個寵物不會接受你作主人，因為它不信任你。~3_BLANK~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043250",
+   "text": "這個寵物拒絕被轉讓，因為它不完全服從你。~3_BLANK~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043251",
+   "text": "這個寵物不會接受你作主人，因為它不信任 ~2_NAME~.~3_BLANK~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043252",
+   "text": "~1_NAME~ 已經轉讓 ~2_PET_NAME~ 的使用權給你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043253",
+   "text": "你已經轉讓你的寵物給 ~3_GETTER~.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043254",
+   "text": "~1_NAME~ 已經轉讓 ~2_PET_NAME~ 的擁有權給你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043255",
+   "text": "~1_NAME~ 看來已決定沒有主人更好！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043256",
+   "text": "雇用我的租金是 ~1_AMOUNT~ 金幣一天。如果你給我金幣，我就為你工作。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043258",
+   "text": "謝謝你付我錢。我將為你工作 ~1_NUMBER~ 天。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043270",
+   "text": "* ~1_NAME~ 絕望地看著週圍 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043282",
+   "text": "我不能給你 ~1_ITEM_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043283",
+   "text": "我正在跟隨 ~1_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043288",
+   "text": "一個系統錯誤發生了，請找GM來為你服務。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043297",
+   "text": "你拉出 ~1_ITEM_NAME~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043303",
+   "text": "輸入價格及 ~1_ITEM~ 物品介紹： (ESC = 非賣品)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043304",
+   "text": "價格：~1_COST~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043305",
+   "text": "物品介紹：~1_DESC~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043309",
+   "text": "你用你銀行帳戶的錢購買了 ~1_ITEM_NAME~ 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043322",
+   "text": "~1_NAME~ 已經對你下毒了！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043324",
+   "text": "IGR concurrency限制已到。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043325",
+   "text": "IGR時間限制已到。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043326",
+   "text": "一個一般的IGR認證失敗發生了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1043355",
+   "text": "新玩家？請按ACCOUNT去設定一個帳戶",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044001",
+   "text": "<CENTER>煉金選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044002",
+   "text": "<CENTER>鐵匠選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044003",
+   "text": "<CENTER>烹飪選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044004",
+   "text": "<CENTER>木匠選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044005",
+   "text": "<CENTER>裁縫選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044006",
+   "text": "<CENTER>製弓選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044007",
+   "text": "<CENTER>鉗工選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044008",
+   "text": "<CENTER>製圖選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044009",
+   "text": "<CENTER>抄錄技能</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044010",
+   "text": "<CENTER>類別</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044011",
+   "text": "<CENTER>選擇項目</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044012",
+   "text": "<CENTER>注意</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044022",
+   "text": "鐵 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044023",
+   "text": "暗銅 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044024",
+   "text": "暗鐵 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044025",
+   "text": "銅 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044026",
+   "text": "青銅 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044027",
+   "text": "金 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044028",
+   "text": "情誼粉 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044029",
+   "text": "真實綠 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044030",
+   "text": "價值藍 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044054",
+   "text": "<CENTER>技能</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044055",
+   "text": "<CENTER>原料</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044056",
+   "text": "<CENTER>其他</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044500",
+   "text": "<CENTER>石工選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044525",
+   "text": "一般 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1044622",
+   "text": "<CENTER>吹製玻璃選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1045105",
+   "text": "附近有 ~1_NUMBER~ 個敵人。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1045112",
+   "text": "You can not hue that item",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1045114",
+   "text": "You can not bless that item",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1045118",
+   "text": "神聖物品 [被祝福] - 剩餘時間：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1045119",
+   "text": "邪惡 [被祝福] - 剩餘時間：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046011",
+   "text": "我並不想與你有任何的爭吵 ~1_NAME~ 。你最好在我改變心意之前趕快離開這裡。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046012",
+   "text": "幸會了，~1_NAME~！感謝老天你終於來了！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046110",
+   "text": "T這是一個壞預兆，這個被綁架的學徒是少數幾個知道我新魔法組成配方的其中一個人。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046215",
+   "text": "帶著這張藏寶圖和這枝鏟子，雙擊藏寶圖就可以知道寶藏在哪裡，X 的標誌就是寶藏的所在地。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046233",
+   "text": "按下 ALT-R 來帶出你的俯瞰地圖。接著你就可以雙擊那個已經被施展魔法的六分儀，它會告訴你該怎麼走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046301",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>嗯...喔...你好。我...嗯...我有一些錢是應該要給你的...那是由好心的幽瑟安，那位你等一會兒將會見到的魔法師所交代的。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046302",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>但是，你看，那些蝙蝠的其中之一在你抵達之前就從我的手上把錢搶走了。我想你將可以從那些生物手上把錢搶回來。不用擔心，我可以教你一些你將會需要知道的常識。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046303",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>接受這個任務</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046304",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>跳過這個任務，並且前往哈文鎮</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046305",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>很好，讓我們開始吧。你將需要攻擊並且抵禦蝙蝠的攻擊來搶回你的錢。第一件你要做的事就是裝備好你的武器…這也就是說，你必須要把武器放在你的手裡。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046306",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你需要打開你的紙娃娃還有你的背包。我們現在要先裝備上你的匕首；要裝備好匕首，你必須按下滑鼠左鍵並且拖曳匕首到你的紙娃娃上，接著放開滑鼠按鍵。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046307",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要怎麼開啟我的紙娃娃？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046308",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要怎麼開啟我的紙娃娃？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046309",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要怎麼開啟我的物品存放欄？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046310",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要怎麼開啟我的物品存放欄？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046311",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要開啟你的紙娃娃的話，只要用滑鼠左鍵單擊你的角色，並且選擇<BASEFONT COLOR=#FFFFFF>開啟紙娃娃<BASEFONT COLOR=#DFDFC0>.</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046312",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要怎麼裝備武器？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046313",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要怎麼裝備武器？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046314",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要怎麼從屍體裡拿出東西？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046315",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要怎麼從屍體裡拿出東西？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046316",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要開啟你的物品存放欄的話，用滑鼠左鍵單擊你的角色，並且選擇<BASEFONT COLOR=#FFFFFF>打開背包<BASEFONT COLOR=#DFDFC0>.</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046317",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>接下來，你將需要知道要怎麼到處去走走。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046318",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要走路或跑步，按下並且持續在螢幕上往你要移動的方向押著你的滑鼠右鍵，這時你的角色就會朝向游標的方向移動。當游標離你比較近時，你的角色會用走路的方式移動，而當游標離你比較遠時，你的角色就會以跑步的方式移動。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046319",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>繼續</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046320",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>好，現在是攻擊那隻蝙蝠並且拿回你的金錢的時候了。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046321",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要攻擊某個人或某樣東西時，進入戰鬥模式並且用滑鼠左鍵雙擊目標物。你只需要用滑鼠左鍵雙擊一次就可以了。使用大部分的武器都必須要站得離你的目標物夠近才可以揮擊到它。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046322",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要如何切換到戰鬥模式？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046323",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要如何切換到戰鬥模式？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046324",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要如何知道要攻擊哪一隻蝙蝠？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046325",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要如何知道要攻擊哪一隻蝙蝠？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046326",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>好…很好的一個問題：我要如何切換到戰鬥模式？ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046327",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>沒有問題。你可以藉由在紙娃娃視窗裡按下「Peace」或「War」來切換戰鬥或和平模式。你也可以使用鍵盤上的ALT-C來切換。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046328",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>當你在戰鬥模式時，你將會自動出現戰鬥姿勢，而你在紙娃娃視窗上面的按鈕將會出現「War」字樣，並且將會轉為紅色。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046329",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>重要：不要在戰鬥模式裡用滑鼠左鍵雙擊任何人或任何東西，除非你想要攻擊他們！</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046330",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>我要如何攻擊蝙蝠？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046331",
+   "text": "<BODY><BASEFONT COLOR=#FF0000>我要如何攻擊蝙蝠？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046332",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>這是另一個很好的問題：我怎麼知道要攻擊哪一隻蝙蝠？</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046333",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>那一隻被標示成灰色的蝙蝠就是你應該要攻擊的目標。任何一隻被標示成藍色的蝙蝠你都應該不要去碰他。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046334",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>標示的意思就是當你進入戰鬥模式時，當你的滑鼠指到一個生物時，那個生物就會被給予一個顏色標示，並且覆蓋到整個生物身上。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046335",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>當你準備好的時候，去找那隻被標示成灰色的蝙蝠，並且攻擊牠。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046336",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>現在這隻蝙蝠已經死了，牠的屍體掉在你雙腳前面的地上。雙擊這個屍體就可以看看這隻蝙蝠帶了什麼東西在身上。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046337",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>那一堆錢就是先前你被偷了的。嗯，哇！一罐強力治療藥水…酷！如果你使用了一罐強力治療藥水，它將會治療你在戰鬥中所受到的損傷。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046338",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要拿起這些物品的話，在要拿起的物品上面按下，並且持續押著你的滑鼠左鍵，把它拖曳到你的背包裡，接下來放開滑鼠左鍵。兩項物品都用這樣的方式來拿取。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046339",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>做得好！你拿回你的錢了！ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046340",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要離開這個地區的話，利用靠近中間房間角落的樓梯，接著爬上位於那間房間中間的樓梯。那個樓梯將會帶你到先前你遇到幽瑟安，也就是哈文鎮裡。幽瑟安就在那邊等你。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046341",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>喔，還有...我求求你...請不要告訴幽瑟安我把要給你的金幣遺失了，拜託你！！ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046342",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>再見，順便祝你玩得愉快！ </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046343",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>在你準備好之後裝備起你的武器。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046357",
+   "text": "在你的鍵盤上按下ALT和R就可以開啟地圖雷達 (或者叫俯瞰地圖) 。它可以從鳥瞰的視角立即觀看你的周遭狀態。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046358",
+   "text": "按下兩次ALT-R將會讓你的雷達地圖看起來更大一點。這張地圖以鳥瞰的方式立即顯現出你周邊景物的狀況。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046364",
+   "text": "記得內文選單可以藉由左鍵單擊該項物品的方式叫出 (或者你如果改變一了選項的話，可以用Shift加上按下滑鼠左鍵的方式叫出) 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046366",
+   "text": "說到了內文選單，你可以藉由帶出你自己聖者的內文選單來觀看你自己的狀態 (以滑鼠左鍵單擊，或者按住Shift再用滑鼠左鍵單擊你自己) 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046412",
+   "text": "一旦你雙擊符石，你將會看到有一段文字內容迸出，鍵入新的描述內容，並且在你的鍵盤上按下[enter] 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046414",
+   "text": "~1_NAME~ 的遺留物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1046415",
+   "text": "~1_bulkname~ / ~2_amountreq~：~3_intamount~ / ~4_excep~ / ~5_ingottype~ / ~6_itemname~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1046482",
+   "text": "你接受~1_NAME~的戰爭戰帖",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048067",
+   "text": "一旦你對你的載貨馬重新命名之後，就可以使牠聽從你的命令。 最常被使用的命令是'follow me'和'stay'。 然而，你必須保持在寵物能聽見你命令的距離之內才會有效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048069",
+   "text": "試著從你的載貨馬身邊走開並藉由用滑鼠左鍵在載貨馬身上點選叫出選單點選'follow'指令。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048070",
+   "text": "欲命令你的寵物停留，你可以在載貨馬身上按下滑鼠左鍵並在命令列裡選擇'stay'。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048105",
+   "text": "在它的生命值狀態條的名字處按一下並消除牠現在的名字替代鍵入像'Ed'或'Trigger'這樣的新名字 (名字裡不能有空白) 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048107",
+   "text": "如果選單沒有顯示出來的話，試著按住「shift」鍵並在載貨馬身上按下滑鼠左鍵。 帶著你的載貨馬往南邊的山脈去以接獲進一步指示。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048108",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你必須打開你的紙娃娃和背包。 我們要把你的劍 - 一把武士刀 - 放到你的手裡",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048109",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你必須打開你的紙娃娃和背包。 我們要把你的鐵匠槌子放到你的手裡",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048110",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>雖然在魔法施展時你不需要把魔法書拿在手上，但這看起來不是很酷*呵呵*! 要將魔法書放在手上，要在魔法書上面用滑鼠左鍵點選並持續按住，接著拖曳到你的紙娃娃上面，再放開滑鼠按鍵。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048111",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>你將要施展魔法箭來攻擊一隻吸血蝙蝠。 以滑鼠左鍵雙擊你的魔法書來把它打開。 書裡的第一頁，標記著「第一環」的地方，你將會看到一些文字 <BASEFONT COLOR=#FFFFFF>魔法箭<BASEFONT COLOR=#DFDFC0>.</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048112",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>欲施展這魔法，你要在魔法書裡雙擊這些文字， <BASEFONT COLOR=#FFFFFF>魔法箭<BASEFONT COLOR=#DFDFC0>，在魔法書上，接著用選取游標以滑鼠左鍵在吸血蝙蝠上面點選。 重複這個動作直到你將吸血蝙蝠打倒為止。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048113",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>另一個好問題：我怎麼知道是對哪一隻吸血蝙蝠施展魔法?</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048114",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>反白就是當你在施展魔法之後出現的選取游標指向一個你要選取的生物時， 該生物將會被給與一個反白的顏色罩住整個身體。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048115",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>當你完成你的攻擊行動之後記得要退出戰鬥模式。 你可以藉由以滑鼠左鍵按下紙娃娃視窗裡變成紅色的戰鬥模式按鈕來切換回來。 你也可以用鍵盤的熱鍵，同時按下ALT和C鍵，來做戰鬥模式與和平模式間的快速切換。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048116",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>很好，現在讓我們開始吧。 你將需要攻擊並打倒吸血蝙蝠這樣才能把你的金幣拿回來。 我們首先要做的就是把你的魔法書裝配起... 這也就是說你將需要把它拿在手上。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048121",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>在你準備好之後立即把你的魔法書裝配上去。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048149",
+   "text": "'視覺輔助' 視窗會將你現在所接受的任務目標以圖像資訊顯示之。你可以隨意的移動或是放置這個視窗。 <BR><BR> 在該視窗上按滑鼠右鍵即可關閉它。 如要重新開啟'視覺輔助'視窗，你可以透過你所控制的聖者身上的 '檢視任務日誌' 或 '顯示視覺輔助' 裡的 '情況選單' 來打開任務日誌。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1048166",
+   "text": "你可以利用在你聖者身上的'情況選單'觀看到現在執行的任務的狀況 (單擊左鍵選取，或是直接按住shift並在你身上敲擊滑鼠左鍵) 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049008",
+   "text": "<I>守衛在你靠近時對你說話... </I><BR><BR>歡迎，旅行者！<BR><BR>幽瑟安，這間屋子的主人和本城的看護者 - <a href=\"?ForceTopic72\">哈文鎮</a>, 想請你一談。<BR><BR>本城周圍最近出現一些怪物騷擾居民和旅行者。似乎沒有人能夠阻止它們。<BR><BR>本城的民兵似乎完全不是這些邪惡怪物的對手。<BR><BR>在這門後的便是幽瑟安，正在尋找傭兵來幫忙這場戰鬥。<BR><BR>你能幫助我們嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049039",
+   "text": "訂單將於大約於 ~1_hours~ 小時後能再度拿到",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049069",
+   "text": "<STRONG>交談事件</STRONG>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049080",
+   "text": "任務日誌更新 <BR><CENTER>[按此觀看]</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049088",
+   "text": "<I>幽瑟安在你靠近時和你打招乎...</I><BR><BR>你好，旅行者！<BR><BR>我是幽瑟安，本屋的主人和哈文鎮的看護者。我知道我們是初識，但是時間所剩不多了，而我們需要加強我們在山邊通道的兵力，所以我只得省過一些繁文縟節。<BR><BR>我們一直嘗試對那些最近開始攻擊本城的怪物 <I>游牧族的嘍囉</I> 反擊，但是卻一直沒有多大效果。我們極需要幫助！<BR><BR>你的首要任務將是幫助山邊通道的防守，並幫助我們的士兵抵抗該處游牧族的嘍囉。<BR><BR>循著本屋門口開始地上有發光符紋的道路前行。在你進入戰鬥前，也許你該<a href=\"?ForceTopic27\">查詢戰鬥技術</a>以及<a href = \"?ForceTopic29\">治療自己的技巧</a>.<BR><BR>為了讓你的戰鬥有更大幫助，也許你也該向鐵匠法藍克<a href = \"?ForceTopic33\">購買裝備</a>，他就站在這L<a href = \"?ForceTopic13\">以南</a>。<BR><BR>祝你幸運，年輕的戰士。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049089",
+   "text": "找到延著符紋道路過去的山邊<BR><BR>幫助城市民兵擊殺<I>游牧族的嘍囉</I>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049091",
+   "text": "這是徒勞無功的。<I>游牧族的嘍囉</I>的數目太多了。他們似乎從四面八方出現。<BR><BR>回去向烏克藍報告你目前所知的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049092",
+   "text": "<I><U>重要任務情報</U></I><BR><BR>在你的任務中，任何訊息<a href = \"?ForceTopic31\">非玩家角色 (NPC) </a>所給你的都會出現在和本視窗一樣的視窗中。你可以在任務中任何時候檢視這些資料。<BR><BR><U>尋求幫助</U><BR><BR>你任務進行中所出現的部分字眼將會是有底線的<a href=\"?ForceTopic73\">連結到智慧寶典</a>，或是線上輔助系統。你可以在字上點一下以得到詳細的相關資料。你也可以按F1以打開智慧寶典或按工具條上的「?」。<BR><BR><U>內容表</U><BR><BR>內容表可以在大部分的物品或NPC上按右鍵一下 (或Shift + 右鍵一下，如果你改變它的話) 。幾乎任何物品包括你自己的角色都會有內容表。打開你自己角色的內容表將給你取消任務和瀏覽任務內容的選項。<BR><BR>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049093",
+   "text": "<I>萬一你日後改變主意...</I><BR><BR>你能在你還是新手狀態時重新開始這個任務。只要回到幽瑟安的大屋和任何一個守衛對話即可。<BR><BR>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049095",
+   "text": "這邊走， ~1_NAME~...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049097",
+   "text": "別擔心 ~1_NAME~，我會在你需要時出現。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1049099",
+   "text": "請跟我來 ~1_NAME~，我們所剩時間不多了。",
+   "flag": "Modified",
+   "category": "mixed"
+  }
+ ]
+}

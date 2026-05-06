@@ -1,0 +1,3006 @@
+{
+ "batch": 29,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1153086",
+   "text": "Moonbound: Indestructible",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153087",
+   "text": "The power of the moon Felucca strengthens your Faction gear.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153088",
+   "text": "The power of the moon Felucca no longer strengthens your Faction gear.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153089",
+   "text": "Lifespan: ~1_val~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153090",
+   "text": "Lifespan: ~1_val~ hours",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153091",
+   "text": "Lifespan: ~1_val~ days",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153092",
+   "text": "Lifespan: ~1_val~ weeks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153093",
+   "text": "Confirm Cancellation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153094",
+   "text": "Are you certain you wish to cancel this fight?  If you are the owner of this fight, the session itself will be canceled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153095",
+   "text": "Yes, I really want to cancel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153096",
+   "text": "No, I don't want to cancel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153097",
+   "text": "Farspeaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153098",
+   "text": "Charges: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153099",
+   "text": "Max: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153100",
+   "text": "Add Charges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153101",
+   "text": "Target gemstones in your backpack to recharge this farspeaker.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153102",
+   "text": "That cannot be used to recharge farspeakers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153103",
+   "text": "You have canceled your session!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153104",
+   "text": "See your pet and tactics",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153105",
+   "text": "There is no available session now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153106",
+   "text": "Pet Arena - Entry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153107",
+   "text": "Reset UI Locs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153108",
+   "text": "You cannot link a farspeaker to itself.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153109",
+   "text": "The creature no longer wishes to follow anyone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153110",
+   "text": "Are you sure you wish to donate this animal?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153111",
+   "text": "Quarantine Area! Danger! Entry Prohibited By Order of Queen Zhah",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153112",
+   "text": "Lava",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153113",
+   "text": "That item cannot be used here.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153114",
+   "text": "Cora drains ~1_VAL~ points of your mana!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153115",
+   "text": "You cannot use the pet under the rule of this session.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153116",
+   "text": "Pet Arena - Session Details",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153117",
+   "text": "You have opened your pet fight session!!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153118",
+   "text": "This session was canceled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153119",
+   "text": "The targeted player is too far away from the pet arena stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153120",
+   "text": "Survival Threads",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153121",
+   "text": "The Elves Thimble",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153122",
+   "text": "The Tinderbox Smithy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153123",
+   "text": "The Sandy Smithy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153124",
+   "text": "Sand In Ya Britches Tailor Hut",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153125",
+   "text": "You need to gather more participants.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153126",
+   "text": "There are no booked sessions now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153127",
+   "text": "Pet Arena - Status of Booking",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153128",
+   "text": "Are you sure you wish to donate these items?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153129",
+   "text": "Boards: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153130",
+   "text": "Ingots: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153131",
+   "text": "Hides: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153132",
+   "text": "Cut Leather: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153133",
+   "text": "Ribs: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153134",
+   "text": "Baked Bread: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153135",
+   "text": "Fish Steaks: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153136",
+   "text": "Crabs: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153137",
+   "text": "Lobsters: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153138",
+   "text": "Simple Potions: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153139",
+   "text": "Bows: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153140",
+   "text": "Crossbows: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153141",
+   "text": "Your session has been booked. Please wait a few moments to start the fight.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153142",
+   "text": "Your pet appear in the paddock!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153143",
+   "text": "Your session is in progress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153144",
+   "text": "Some of your items were not donated because the container they were in was not in your or one of your pet's backpacks.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153145",
+   "text": "An Anniversary Muffin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153146",
+   "text": "15th Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153147",
+   "text": "Happy 15th Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153148",
+   "text": "Happy 15th Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153149",
+   "text": "Happy 15th Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153150",
+   "text": "A 15th Anniversary Cake Decorated by ~1_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153151",
+   "text": "Slices: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153152",
+   "text": "Sands of Sosaria",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153153",
+   "text": "~1_year~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153154",
+   "text": "Mondain murdered his father and twisted his family’s Sun Ruby into the Gem of Immortality. Using this power, Mondain sent armies to the ends of Sosaria to conquer everything. The Stranger's sword smashed the dark gem, killing Mondain and shattering the world into different shards.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153155",
+   "text": "The leaders of the Followers of Armageddon, Martoo Saul, Junin Pince, Zendella Kxriss, and Miron Vehl, bargained with wisps to learn the Armageddon spell and worked in secret to collect enough blackrock to cast it. Their conspiracy of terror resulted in the death of many innocents, but eventually the group’s leaders were captured and executed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153156",
+   "text": "The Followers of Armageddon unsuccessfully cast the Armageddon Spell, but the magic unleashed resulted in earthquakes and tremors that opened entrances to a mysterious land. These Lost Lands were explored by Crawworth during the first Britannian expedition. However, the unsuspecting humans were thrown into an ancient struggle between the Terathans and Ophidians. The dangers of the land proved too great, and Crawworth lost his life at the start of the second age.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153157",
+   "text": "Empowered by stone monuments built in the eight Virtue cities, the wizard Nystul cast an ancient spell, using the blue moon of Trammel to create a new facet of Britannia. The people of Britannia fled to this new land to escape the armies of Minax. Spells woven into the matrix of this new facet of Trammel protected its people from certain dangers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153158",
+   "text": "The facet of Ilshenar was rediscovered. Ilshenar had been cut off from the rest of Sosaria after the destruction of the Gem of Immortality. The land was originally settled by people known as the Anskitas. Their civilization fell into ruin long before Britannians began to explore these lands of danger and despair.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153159",
+   "text": "The being Exodus tore the Juka through time to be its army against Britannia. The Meer went to sleep only to wake with the return of their old enemy. Exodus’s plans required a controllable human leader and a subjugated gargoyle people. These plans failed when Exodus mysteriously disappeared, leaving the Juka and Blackthorn to face defeat.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153160",
+   "text": "The dark facet of Malas was discovered, a land crumbling into a sea of stars. The lore of Chivalry and Necromancy were discovered in the rival cities of Luna and Umbra. Many lost their lives in expeditions to the ancient and terrible dungeon of Doom. <br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153161",
+   "text": "Britannians discovered the way to Tokuno and began exploring its many islands. This facet is ruled by the Empress from her capital of Zento. Warriors from Britannia learned new martial skills from the samurai and ninjas of these feudal islands.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153162",
+   "text": "In the center of Yew, the Heartwood was reconnected to Sosaria. The Heartwood is the ancestral elf home, severed from the world when the Gem of Immortality was shattered. With the return of the elven people, their blood was reawakened in humans with elven ancestors.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153163",
+   "text": "The legendary thief Ricardo stole the artificed scion from the Ophidians. This resulted in Ophidian attacks on Papua and Vesper. While the attacks were repelled, Ricardo was placed on trial and found guilty. Inu the Crone appeared with cryptic warnings about a troubled future.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153164",
+   "text": "A dark gate opened, and an army of demons invaded the prideful island of Magincia. While the demons were eventually defeated, Magincia’s buildings were reduced to rubble, and the isle remained cursed and blighted.  The strange figures were seen near the dark gate as the final demon berserkers were killed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153165",
+   "text": "The Mad Mage Kronos activated what he believed to be a blackrock detector. It instead tore a hole into the Ethereal Void, allowing the Shadowlords entry to our world. The Shadowlords wasted no time in causing upheaval, murdering the Royal Council and inviting their Crimson dragon allies to strike.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153166",
+   "text": "A reformed and highly secretive Royal Council appointed the elf Casca as king pro-tempore. Casca had been corrupted by the Shadowlords",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153167",
+   "text": "A renewed interest in ocean trade lead to increased activity on Sosaria’s waters. Merchant and pirate ships took to the high seas, hoping to make new fortunes by trade or by plunder. Ancient sea monsters such as the Scalis rose from the depths, attracted by these fleets of ships.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153168",
+   "text": "Dawn, the young warrior queen, ordered her subjects to bring the Crystal of Duplicity out of the great vault, only to lose the crystal and her life to Virtuebane. Eventually, an alliance of humans, gargoyles, and Meer would force the demon and his army to retreat into the Void.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153169",
+   "text": "Chaos gripped the land, as fear and strife tore across Britannia. The being Exodus returned from the Void, forcing a retreat out of Ilshenar by the gargoyles of Ver Lor Reg. Returning to their ancient homeland in Ter Mur, these refugees carried with them a deadly plague. Only a noble figure from Britannia’s past was able to restore order and hope to Sosaria.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153170",
+   "text": "By Malachi the Archivist",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153171",
+   "text": "Sands of Sosaria",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153172",
+   "text": "Casino Cashier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153173",
+   "text": "Your Bank Balance:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153174",
+   "text": "Your Chip Balance:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153175",
+   "text": "Cash Out",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153176",
+   "text": "Buy Chips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153177",
+   "text": "There was a problem completing your transaction:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153178",
+   "text": "Your bank does not have sufficient gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153179",
+   "text": "Your bank cannot hold that much gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153180",
+   "text": "You do not have enough casino chips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153181",
+   "text": "The number of casino chips would exceed the maximum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153182",
+   "text": "An unknown error occurred: ~1_DESC~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153183",
+   "text": "Each casino chip costs 100gp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153184",
+   "text": "You will receive 100gp for each chip",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153185",
+   "text": "Number of chips to cash out:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153186",
+   "text": "Number of chips to buy:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153187",
+   "text": "You entered an invalid value",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153188",
+   "text": "Transaction successful:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153189",
+   "text": "You purchased ~1_AMT~ chips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153190",
+   "text": "You cashed out ~1_AMT~ chips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153191",
+   "text": "Pets, hirelings, summoned creatures, etc. that require more than one control slot are not permitted in this area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153192",
+   "text": "Your pet has been teleported outside the Despise dungeon entrance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153193",
+   "text": "Your summoned creature has been dispelled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153194",
+   "text": "~1_NAME~ shouted with angry fury!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153195",
+   "text": "~1_NAME~ build up the defense!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153196",
+   "text": "~1_NAME~ healed its wound!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153197",
+   "text": "~1_NAME~ hid itself from enemies!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153198",
+   "text": "~1_ATTACKER~ killed ~2_LOSER~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153199",
+   "text": "~1_VAL~ !",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153200",
+   "text": "BATTLE START!!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153201",
+   "text": "We're accepting your bets for ~1_SEC~ seconds!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153202",
+   "text": "No more bets!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153203",
+   "text": "This function has not been implemented yet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153204",
+   "text": "The pet is too far away from you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153205",
+   "text": "NEXT ROUND!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153206",
+   "text": "The fight's over!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153207",
+   "text": "Winner: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153208",
+   "text": "Betting - Main Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153209",
+   "text": "You can bet on the pet fight if it is in session.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153210",
+   "text": "Bet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153211",
+   "text": "The dead pet cannot join in the pet fight!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153212",
+   "text": "Pay Back",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153213",
+   "text": "Owner: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153214",
+   "text": "Position: ~1_NUMBER~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153215",
+   "text": "Betting - Betting Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153216",
+   "text": "Pos",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153217",
+   "text": "Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153218",
+   "text": "Your bet will be forfeited if the session was draw.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153219",
+   "text": "Your Bet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153220",
+   "text": "Total Bet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153221",
+   "text": "Betting - Bet Your Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153222",
+   "text": "Bet 1,000 gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153223",
+   "text": "Bet 5,000 gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153224",
+   "text": "Bet 10,000 gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153225",
+   "text": "Bet 50,000 gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153226",
+   "text": "Bet 100,000 gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153227",
+   "text": "YOUR BETS: ~1_AMOUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153228",
+   "text": "BET",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153229",
+   "text": "(TOTAL BETS: ~1_AMOUNT~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153230",
+   "text": "GOLD AVAILABLE: ~1_AMOUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153231",
+   "text": "There is no session you can bet now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153232",
+   "text": "The bet time has already passed. You cannot bet on this session.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153233",
+   "text": "The Wisp Orb vanishes to whence it came...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153234",
+   "text": "Deposit your gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153235",
+   "text": "Withdraw your deposit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153236",
+   "text": "YOUR DEPOSIT: ~1_GOLD~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153237",
+   "text": "Please enter amount of gold you want to deposit for betting:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153238",
+   "text": "(Gold in your bank box: ~1_AMOUNT~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153239",
+   "text": "You didn't deposit any gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153240",
+   "text": "You cannot deposit more than 10,000,000 gold at once.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153241",
+   "text": "You don't have enough gold for deposit in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153242",
+   "text": "You cannot deposit more than 10,000,000 gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153243",
+   "text": "You have deposited ~1_VAL~ gold from your bank box (Total Deposit: ~2_VAL~ gold)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153244",
+   "text": "Please enter amount of gold you want to withdraw from your deposit:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153245",
+   "text": "(Your deposit: ~1_AMOUNT~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153246",
+   "text": "You have withdrawn ~1_VAL~ gold and put them into your bank box (Current Deposit: ~2_VAL~ gold)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153247",
+   "text": "You didn't withdraw any gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153248",
+   "text": "Gold and bank checks in your bank box were consolidated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153249",
+   "text": "You don't have enough space in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153250",
+   "text": "You don't have enough deposit to bet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153251",
+   "text": "You need to deposit more than 1000 gold in advance if you want to bet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153252",
+   "text": "Please withdraw some deposit before you try to receive the payback.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153253",
+   "text": "You have received ~1_AMOUNT~ gold as the payback (Current Deposit: ~2_VAL~ gold)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153254",
+   "text": "Set Keyword",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153255",
+   "text": "That keyword is too long.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153256",
+   "text": "That keyword is disallowed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153257",
+   "text": "The keyword has been set.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153258",
+   "text": "~1_VAL~ minutes elapsed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153259",
+   "text": "Enter a new keyword for your npc (20 characters max):",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153260",
+   "text": "Leash: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153261",
+   "text": "Tight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153262",
+   "text": "Short",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153263",
+   "text": "Long",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153264",
+   "text": "None",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153265",
+   "text": "Anchor: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153266",
+   "text": "Location",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153267",
+   "text": "Aggression: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153268",
+   "text": "Passive",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153269",
+   "text": "Defensive",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153270",
+   "text": "Aggressive",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153271",
+   "text": "Berserk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153272",
+   "text": "Controlling: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153273",
+   "text": "Wisp Orb",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153274",
+   "text": "Target a creature to possess.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153275",
+   "text": "That creature is already possessed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153276",
+   "text": "Your Wisp Orb takes control of the creature!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153277",
+   "text": "Target an object or creature to set the anchor. Target the Wisp Orb to change the leash setting. Target the possessed creature to change its aggression.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153278",
+   "text": "Your possessed creature's leash is now: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153279",
+   "text": "Your possessed creature's aggression level is now: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153280",
+   "text": "Your possessed creature is now anchored to ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153281",
+   "text": "Your possessed creature has gained karma!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153282",
+   "text": "Your possessed creature has lost karma!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153283",
+   "text": "Your possessed creature has changed alignment! It may now become more powerful, and you may now add it to your army.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153284",
+   "text": "Release",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153285",
+   "text": "Conscript",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153286",
+   "text": "That cannot be possessed by a Wisp Orb.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153287",
+   "text": "That creature is already under the control of a Wisp Orb.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153288",
+   "text": "Compassion's Eye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153289",
+   "text": "Unicorn Mane Woven Sandals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153290",
+   "text": "Despicable Quiver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153291",
+   "text": "Unforgiven Veil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153292",
+   "text": "Hailstorm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153293",
+   "text": "~1_NAME~ is growing in strength.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153294",
+   "text": "~1_NAME~ has achieved a new threshold in power!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153295",
+   "text": "* This creature is now under the control of ~1_NAME~ *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153296",
+   "text": "* This creature is no longer influenced by a Wisp Orb *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153297",
+   "text": "Power Level: ~1_LEVEL~: ~2_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153298",
+   "text": "Normal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153299",
+   "text": "Improved",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153300",
+   "text": "Heightened",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153301",
+   "text": "Magnified",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153302",
+   "text": "Amplified",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153303",
+   "text": "Controller: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153304",
+   "text": "You cannot place this vendor, steward or barkeep. Make sure the house is public and has sufficient storage available.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153305",
+   "text": "Army Size: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153306",
+   "text": "Army Power: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153307",
+   "text": "Inspired",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153308",
+   "text": "Galvanized",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153309",
+   "text": "Your controlled creature cannot gain further power.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153310",
+   "text": "The creature you are controlling will now fight with you when the Call to Arms sounds. If you do not wish this, then release control of it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153311",
+   "text": "The creature under control of your Wisp Orb cannot be conscripted at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153312",
+   "text": "The Wisp Orb dissolves into aether.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153313",
+   "text": "You are no longer aligned with your Wisp Orb. It dissolves into aether!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153314",
+   "text": "Unicorn Mane Woven Talons",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153315",
+   "text": "You must empty the mannequin's backpack before re-deeding.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153316",
+   "text": "You have bet ~1_AMOUNT~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153317",
+   "text": "You couldn't receive any payback...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153318",
+   "text": "You can bet your gold on duelists or team for 90 seconds after opening the session.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153319",
+   "text": "You will be able to receive payback if your made a correct assumption.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153320",
+   "text": "You need to deposit your gold by \"Deposit your gold\" button before betting. Deposited gold is withdrawn from your bank box automatically.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153321",
+   "text": "You can withdraw your deposit by \"Withdraw your deposit\" button anytime.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153322",
+   "text": "The session data is kept for about 48 hours. If 48 hours passed, you never be able to receive a payback of the session.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153323",
+   "text": "Payback is calculated by the following formula: All gold bet the match x (gold you=winner bet / all gold winners bet) * 97%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153324",
+   "text": "If the session ended abnormally, you will be able to receive all your bets as payback.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153325",
+   "text": "Max bet is 1,000,000 gold per a duelist/team.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153326",
+   "text": "You can deposit up to 10,000,000 gold from your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153327",
+   "text": "You cannot receive more than 500,000,000 gold as payback.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153328",
+   "text": "Betting - Rule Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153329",
+   "text": "Alignment: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153330",
+   "text": "Good",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153331",
+   "text": "Evil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153332",
+   "text": "The Call to Arms has sounded. The forces of your alignment are strong, and you have been called to battle!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153333",
+   "text": "The Call to Arms has sounded, but your forces are not yet strong enough to heed it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153334",
+   "text": "Your enemy forces are stronger, and they have been called to battle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153335",
+   "text": "You have released control of ~1_NAME~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153336",
+   "text": "That creature is too powerful for you to coerce.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153337",
+   "text": "You will be teleported into the depths of the dungeon within 60 seconds to heed the Call to Arms, unless you release your conscripted creature or it dies.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153338",
+   "text": "You have under 60 seconds to conscript a creature to answer the Call to Arms, or you will not be summoned for the battle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153339",
+   "text": "You have been called to assist in a fight of good versus evil. Fight your way to the Lake, and defeat the enemy overlord and its lieutenants!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153340",
+   "text": "The Overlord is shielded from all attacks by players, but not by creatures possessed by Wisp Orbs. You must protect your controlled creature as it fights.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153341",
+   "text": "The Lieutenants are vulnerable to your attacks. If you die during this battle, your possessed creature will fall. Furthermore, your ghost and your corpse will be teleported back to your home base.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153342",
+   "text": "You were unable to be teleported to heed the Call to Arms.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153343",
+   "text": "The battle has ended. The battlefield will be cleared in five minutes and you will be returned to your home base at that time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153344",
+   "text": "Steward Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153345",
+   "text": "This session fell through as gamble. Your bets are paid back as it is.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153346",
+   "text": "You are summoned back to your stronghold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153347",
+   "text": "Without the presence of a Wisp Orb, strong magical forces send you back to whence you came...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153348",
+   "text": "You were unable to defeat the enemy overlord in the time allotted. He has activated a Doom Spell!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153349",
+   "text": "Britannia Year 289",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153350",
+   "text": "Thy spirit be not compatible with our goals!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153351",
+   "text": "Britannia Year 294",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153352",
+   "text": "Britannia Year 299",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153353",
+   "text": "Britannia Year 304",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153354",
+   "text": "Britannia Year 309",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153355",
+   "text": "I will follow thy guidance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153356",
+   "text": "Britannia Year 314",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153357",
+   "text": "Thou can guide but one of us.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153358",
+   "text": "Britannia Year 319",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153359",
+   "text": "Britannia Year 324",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153360",
+   "text": "Britannia Year 329",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153361",
+   "text": "Britannia Year 334",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153362",
+   "text": "Britannia Year 339",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153363",
+   "text": "Britannia Year 344",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153364",
+   "text": "Britannia Year 354",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153365",
+   "text": "Britannia Year 359",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153366",
+   "text": "Britannia Year 364",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153367",
+   "text": "Britannia Year 349",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153368",
+   "text": "CHUCKLES' LUCK",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153369",
+   "text": "Place a bet on any number. The dealer will roll three dice. Win back your bet times the number of times your lucky number comes up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153370",
+   "text": "You have ~1_VAL~ chips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153371",
+   "text": "Amount to bet:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153372",
+   "text": "Enter your bet below and click the die showing your lucky number!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153373",
+   "text": "You won ~1_VAL~ chips!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153374",
+   "text": "You lost. Better luck next time!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153375",
+   "text": "*bets ~1_AMT~ chips on ~2_PROP~*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153376",
+   "text": "*rakes in ~1_NAME~'s ~2_VAL~-chip bet*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153377",
+   "text": "*pays out ~2_VAL~ chips to ~1_NAME~*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153378",
+   "text": "You have no chips to bet with. Please visit the Casino Cashier to buy chips.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153379",
+   "text": "We apologize, but there was a problem accessing your casino chip account. Please try again momentarily.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153380",
+   "text": "Invalid bet amount entered",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153381",
+   "text": "The dealer prepares to roll the dice...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153382",
+   "text": "Betting On:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153383",
+   "text": "Amount of Bet:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153384",
+   "text": "The dice matched your number ~1_COUNT~ times. You win ~2_AMT~ chips!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153385",
+   "text": "The dice did not match your number. You lose your bet of ~1_AMT~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153386",
+   "text": "Vibrant Crimson Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153387",
+   "text": "Reflective Shadow Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153388",
+   "text": "The dealer rolls:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153389",
+   "text": "COLLECT",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153390",
+   "text": "CONTINUE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153391",
+   "text": "*rolls the dice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153392",
+   "text": "HI-MIDDLE-LO",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153393",
+   "text": "Place a bet on Low, Middle, High, or Outside. The dealer rolls 3 dice. The house always wins on 3-of-a-kind. High Bets win on a total of 11 or more. Low Bets win on a total of 10 or less. Middle Bets win on a total of 9, 10, 11, or 12. Bets for Low, Middle, and High pay even money. Outside Bets win on totals of 4, 5, 6, 15, 16, or 17 and pay 5:1.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153394",
+   "text": "HIGH",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153395",
+   "text": "MIDDLE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153396",
+   "text": "LOW",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153397",
+   "text": "OUTSIDE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153398",
+   "text": "It's three-of-a-kind! All bets lose.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153399",
+   "text": "High Bets Lose",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153400",
+   "text": "High Bets Win",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153401",
+   "text": "Middle Bets Lose",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153402",
+   "text": "Middle Bets Win",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153403",
+   "text": "Low Bets Lose",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153404",
+   "text": "Low Bets Win",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153405",
+   "text": "Outside Bets Lose",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153406",
+   "text": "Outside Bets Win",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153407",
+   "text": "Choose Your Bet:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153408",
+   "text": "high",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153409",
+   "text": "middle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153410",
+   "text": "low",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153411",
+   "text": "outside",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153412",
+   "text": "Enter your wager here and select which way you wish to bet:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153413",
+   "text": "You lost ~1_AMT~ chips. Better luck next time!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153414",
+   "text": "You won ~1_AMT~ chips!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153415",
+   "text": "Fortune's Fire Grog",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153416",
+   "text": "Here you are, hun.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153417",
+   "text": "Drink up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153418",
+   "text": "Enjoy the drink. Tips are appreciated!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153419",
+   "text": "Drinks? Anyone need a beverage?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153420",
+   "text": "Oh, thank you dearie!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153421",
+   "text": "You can't trade this chest while setting your key number.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153422",
+   "text": "You can't pick that chest up while setting your key number.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153423",
+   "text": "You have gained ~1_AMT~ Dungeon Crystal Points of Despise.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153424",
+   "text": "putrid heart",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153425",
+   "text": "Price: ~1_AMT~ Despise Crystals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153426",
+   "text": "Buy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153427",
+   "text": "You have spent ~1_AMT~ Dungeon Crystal Points of Despise.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153428",
+   "text": "You cannot gain more Dungeon Crystal Points of Despise right now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153429",
+   "text": "Despise: ~1_AMT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153430",
+   "text": "You cannot afford that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153431",
+   "text": "You purchase the item for ~1_AMT~ Despise Crystals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153432",
+   "text": "You cannot perform this action while you still have stewards in this house.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153433",
+   "text": "You are about to be traded a home that has stewards. While there are stewards in this house, you <strong>cannot</strong> demolish <strong>OR</strong> customize the home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153434",
+   "text": "Thou shall greet mine wee ally!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153435",
+   "text": "!!! WARNING !!! You have placed a blessed item into the Secure Trade window.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153436",
+   "text": "Many a politician has attempted to tame the beastly and tumultuous nature of Jhelom. Paladins, Warriors, Dragon Tamers, Merchant Princes, Gypsy Duelists...many rise and fall. The violent nature and draw of battle combined with the promise of a mercenaries pay make the Pit of Jhelom an irresistible destination for both the hero and the adventurer.<br>Yet, there is another side to this sprawling walled island, one rarely remembered or spoken of. The hospitality of Jhelom and the peasantry who scurry around behind the scenes, and not just shopkeepers and merchants, but bar maids, farmers, purveyors of animal husbandry, sailors and dock workers too!<br>It seems the overflow of warriors and a custom of commonplace duels have made the cities hospitality the best in all the land. The bar maids are polite, the shopkeepers are honest, even the dock workers are happy to help with an occasional load off a merchants back for free. It seems that it does ring true, that \"an armed society is a polite society!\"<br>Still a third Jhelom exists, although only related through antiquity and rumor. I speak of New Jhelom or rather Nujel'm as she is called now by her people. The root of this lone Sultanate is rumored to be a colony that sprouted from the city of Jhelom in antiquity. Although it is denied by the Sultan and all the well classed citizens of Nujel'm, the first colonists are believed to have been Gypsy princes who set off from Jhelom after making their fortune.<br>It is not a debate that now, after the destruction of Magincia that Nujel'm is the jewel of Sosaria. Her sprawling city is unbeatably beautiful, rich and decadent. The Sultan lives in an Ivory palace, and even the lowliest home within the city walls is of higher class and wealth that the richest merchant of Britain.<br>Yet in Nujel'm stray not far from the golden footpaths, for the shadow it casts is long and the dark side of the Sultanate lays outside the walls. Poverty and servitude among the poor in ways not seen in Britannia itself since antiquity.<br>The cousin cities, Jhelom and Nujel'm. Paradoxes both.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153437",
+   "text": "Many in the Common Era do not realize that traditionally the magical arts were feared and even shunned by most people of Sosaria. It was thought, and still is among many peasants and townsfolk that magery, alchemy and other magical temptations darkened the spirit of a person and turned them toward Vice and immorality. The rise of both Relvinian and Mondain did nothing to dissuade this worldwide prejudice against magic. <br>So when the fortress of Verity Isle was transformed into the Lycaeum the magically inclined flocked to it and felt safe to conduct their learning there. In spite of the prejudice against magic all the great Kings of Sosaria have had a court mage at their side. Even now the Mage Guild of Moonglow remains the center of knowledge and learning within Sosaria.<br>The great observatory stretches its vast eye into the stars and charts the course of the heavens. The libraries, great and small litter Verity isle with knowledge once considered forbidden. Magic now, has almost become mainstream among the heroes and adventurers of Sosaria. With the introduction of Gargoyles and Elves into mainstream society it is no wonder why. Yet even I, a creature of a mystical nature do wonder if the predilection for magical power and learning have somehow stolen aspects of hard work, pride and morality from us.<br>Invention and experimentation continues within the city, even now some poor fool attempts to build some sort of balloon of hot air to rise above the clouds. He has yet to devise a safe method of landing though, most believe he will either drown in the sea, or melt by getting too close to the sun.<br>The Flame of Truth still burns and the Book of Truth still has sages that turn her pages. Moonglow abides. Moonglow remains.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153438",
+   "text": "ALLOW TRADE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153439",
+   "text": "CANCEL",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153440",
+   "text": "An artifact has been placed in your backpack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153441",
+   "text": "You are corporeal-sentient. We would deal with you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153442",
+   "text": "Corporeal?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153443",
+   "text": "You are corporeal. We are not.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153444",
+   "text": "Sentient?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153445",
+   "text": "You are sentient. We are sentient.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153446",
+   "text": "Deal?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153447",
+   "text": "We would learn. You would teach. We and you would trade.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153448",
+   "text": "Learn? Teach?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153449",
+   "text": "We would learn of evil and good. You would teach of evil or good.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153450",
+   "text": "Good and Evil?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153451",
+   "text": "You would guide us. We would follow.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153452",
+   "text": "Guide?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153453",
+   "text": "You would show us why you fight. We would join the mind of one who fights.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153454",
+   "text": "Follow?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153455",
+   "text": "You would show us how to fight. We would command the mind of one who fights.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153456",
+   "text": "Fight?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153457",
+   "text": "In the earth here, find the shrine that resonates. There, ask and we will join you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153458",
+   "text": "Resonate?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153459",
+   "text": "Good or evil, what resonates in you?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153460",
+   "text": "Join?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153461",
+   "text": "We will form a corporeal entity that you would touch. Through touch you will command us. We will obey and we will learn.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153462",
+   "text": "Command?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153463",
+   "text": "Command us to join the mind of one who fights. Command us where to fight. Command us when to fight.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153464",
+   "text": "Obey?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153465",
+   "text": "The one which we join would obey us, and we would obey you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153466",
+   "text": "Trade?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153467",
+   "text": "Collect for us the hateful putrid hearts of those who fight. For those we will give you objects of magic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153468",
+   "text": "Mysterious Wisp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153469",
+   "text": "Move",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153470",
+   "text": "The caverns rumble as your enemy begins channeling strong magic, in preparation to casting the Doom Spell.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153471",
+   "text": "Beach Towel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153472",
+   "text": "Sun Cream",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153473",
+   "text": "Tanning Oil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153474",
+   "text": "Massage Oil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153475",
+   "text": "Dancer's Pole",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153476",
+   "text": "A Check for 1, 000, 000, 000 Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153477",
+   "text": "Fiery Ash",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153478",
+   "text": "Lucky Darts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153479",
+   "text": "Dice Games",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153480",
+   "text": "Disco Tent",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153481",
+   "text": "Clothing Optional Beyond this Point!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153482",
+   "text": "Stable All Pets Before entering by saying \"Stable\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153483",
+   "text": "This is a no fly zone! Gargoyles must land!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153484",
+   "text": "Zero Tolerance For Cheaters or Griefers!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153485",
+   "text": "Fortune's Fire Resort & Casino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153486",
+   "text": "New Haven Mine - Enter At Own Risk!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153487",
+   "text": "To Climb Down the Hole Double Click the Rope",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153488",
+   "text": "~1_name~'s Bones",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153489",
+   "text": "Garden Shed (East)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153490",
+   "text": "Garden Shed (South)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153491",
+   "text": "Garden Shed Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153492",
+   "text": "garden shed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153493",
+   "text": "*Your keen senses detect something hidden in the area...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153494",
+   "text": "House Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153495",
+   "text": "Metallic Leather Dye Tub",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153496",
+   "text": "15th Anniversary Commemorative Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153497",
+   "text": "A 15th Anniversary Commemorative Robe has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153498",
+   "text": "exodus summoning rite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153499",
+   "text": "summon daemon scrolls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153500",
+   "text": "exodus sacrificial dagger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153501",
+   "text": "nexus core",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153502",
+   "text": "exodus summoning altar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153503",
+   "text": "Horn of Plenty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153504",
+   "text": "gold dust",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153505",
+   "text": "roast duck",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153506",
+   "text": "roast chicken",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153507",
+   "text": "roast turkey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153508",
+   "text": "turkey leg",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153509",
+   "text": "giblet gravy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153510",
+   "text": "robe of rite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153511",
+   "text": "*gobble* *gobble*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153512",
+   "text": "That one's not cooked!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153513",
+   "text": "* ZzzzZzzzZzzzZ *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153514",
+   "text": "sweet potato pie",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153515",
+   "text": "~1_COUNT~ pieces",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153516",
+   "text": "mashed sweet potatoes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153517",
+   "text": "turkey platter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153518",
+   "text": "basket of rolls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153519",
+   "text": "slice of pie",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153520",
+   "text": "dinner roll",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153521",
+   "text": "Scroll of Valiant Commendation [Replica]",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153522",
+   "text": "Claimed By ~1_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153523",
+   "text": "Bracers of Alchemical Devastation [Replica]",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153524",
+   "text": "Hygieia's Amulet [Replica]",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153525",
+   "text": "15% Bandage Healing Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153526",
+   "text": "Asclepius [Replica]",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153527",
+   "text": "Making valuables with Stonecrafting",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153528",
+   "text": "Crafting glass with Glassblowing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153529",
+   "text": "Making valuables with Basket Weaving",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153530",
+   "text": "Mining For Quality Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153531",
+   "text": "Find Glass-Quality Sand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153532",
+   "text": "Turkey Dinner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153533",
+   "text": "Happy Thanksgiving from Ultima Online! A Horn of Plenty has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153534",
+   "text": "Davies' Locker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153535",
+   "text": "Deed to Davies' Locker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153536",
+   "text": "Clockwork Leggings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153537",
+   "text": "Help! Ship going do...n heavy storms...precious cargo...st reach dest...current coordinates ~1_SEXTANT~...ve any survivors...ease!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153538",
+   "text": "...was a cad and a boor, no matter what momma s...rew him overboard! Oh, Anna, 'twas so exciting! Unfort...y he grabbe...est, and all his riches went with him! ...sked the captain, and he says we're at ~1_SEXTANT~ ... so maybe ...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153539",
+   "text": "...know that the wreck is near ~1_SEXTANT~ but have not found it. Could the message passed down in my family for generations be wrong? No... I swear on the soul of my grandfather, I will find...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153540",
+   "text": "...Ar! ~1_SEXTANT~ and, a fair wind! No chance...storms, though--ar! Is that a sea serp...<br><br>uh oh.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153541",
+   "text": "WANTED: divers exp...d in shipwre...overy. Must have own vess...pply at ~1_SEXTANT~...good benefits, flexible hours...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153542",
+   "text": "...isaster indeed. Capt. McQ...overboard, fear the worst. These are t...ast days of the good ship Norr...ast known position was ~1_SEXTANT~ but ...'re beyond salvag...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153543",
+   "text": "...never expected an iceberg...silly woman on bow crushed instantly...send help to ~1_SEXTANT~...ey'll never forget the tragedy of the sinking of the...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153544",
+   "text": "...so I threw the treasure overboard, before the curse could get me too. But I was too late. Now I am doomed to wander these seas, a ghost forever. Join me: seek ye at ~1_SEXTANT~ if thou wishest my company...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153545",
+   "text": "...then the ship exploded. A dragon swooped over. The slime swallowed Bertie whole--he screamed, it was amazing. The sky glowed orange...A sextant reading put us at ~1_SEXTANT~. Norma was chattering about sailing over the edge of the world. I looked at my hands and saw through them...\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153546",
+   "text": "...been inside this whale for three days now. I've run out of food I can pick out of his teeth. I took a sextant reading through the blowhole: ~1_SEXTANT~. I'll never see my treasure again...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153547",
+   "text": "...grand adventure! Captain Quacklebush had me swab down the decks daily... ...pirates came, I was in the rigging practicing with my sextant. ~1_SEXTANT~ if I am not mistaken... ...scuttled the ship, and our precious cargo went with her and the screaming pirates, down to the bottom of the sea...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153548",
+   "text": "...nobody knew I was a girl. They just assumed I was another sailor...then we met the undine. ~1_SEXTANT~. It demanded sacrifice...I was youngest, they figured...grabbed the captain's treasure, screamed \"It'll go down with me!\" ...they took me up on it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153549",
+   "text": "...trapped on a deserted island with a magic fountain supplying food, fresh water springs, gorgeous scenery, and my lovely young wife. I know the ship with all our life's earnings sank at ~1_SEXTANT ~ but I don't know what our coordinates are...someone has GOT to rescue me before Sunday's finals game or I'll go mad...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153550",
+   "text": "...round Jhelom towne we did roam, drinking all night. Got into a fight...hoisted sail on the morn, all crew aboard but the cook...ull breach, last known coordinates ~1_SEXTANT~...be better off in Stone's jail cell!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153551",
+   "text": "Dupre's Sword",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153552",
+   "text": "<DIV ALIGN=\"CENTER\">Davies' Locker</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153553",
+   "text": "<DIV ALIGN=\"CENTER\">ADD MAPS</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153554",
+   "text": "<DIV ALIGN=\"CENTER\">Get</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153555",
+   "text": "<DIV ALIGN=\"CENTER\">Facet</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153556",
+   "text": "<DIV ALIGN=\"CENTER\">Level</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153557",
+   "text": "<DIV ALIGN=\"CENTER\">Coords</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153558",
+   "text": "<DIV ALIGN=\"CENTER\">Status</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153559",
+   "text": "<DIV ALIGN=\"CENTER\">Map</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153560",
+   "text": "Maps: ~1_NUM~ of ~2_MAX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153561",
+   "text": "Page ~1_CUR~ of ~2_MAX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153562",
+   "text": "<DIV ALIGN=\"CENTER\">PAGE</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153563",
+   "text": "Target maps in your backpack or a sub-container to add them to the Locker. When done, press ESC.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153564",
+   "text": "That is not a treasure map or message in a bottle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153565",
+   "text": "The locker is full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153566",
+   "text": "You must be carrying the map to add it to the locker.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153567",
+   "text": "Tram / Fel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153568",
+   "text": "S-O-S",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153569",
+   "text": "Unknown",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153570",
+   "text": "Unopened",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153571",
+   "text": "Opened",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153572",
+   "text": "Ancient",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153573",
+   "text": "1 - Plain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153574",
+   "text": "2 - Expert",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153575",
+   "text": "3 - Adept",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153576",
+   "text": "4 - Clever",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153577",
+   "text": "5 - Devious",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153578",
+   "text": "6 - Ingenious",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153579",
+   "text": "7 - Diabolic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153580",
+   "text": "Not Decoded",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153581",
+   "text": "Decoded",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153582",
+   "text": "Completed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153583",
+   "text": "Maps: ~1_COUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153584",
+   "text": "...twas a massive beast, thirty odd fathoms long and mean as a me brother’s wife!  The harpoon stuck deep but twas no use! A giant bite it took from...water floods, last known coordinates ~1_SEXTANT~...down way the briny deep!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153585",
+   "text": "...the seas they were rough! Arr tiny ship was tossed! If not fer the courage o’ da Captain & Crew we were sure ta be lost! Set ground near a tiny island, last known coordinates ~1_SEXTANT~...send help!",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

@@ -1,0 +1,3006 @@
+{
+ "batch": 24,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1150584",
+   "text": "You are now bidding on the next available stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150585",
+   "text": "You are now bidding on Stall ~1_NEWSTALL~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150586",
+   "text": "a dead plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150587",
+   "text": "CHANGE MATCH BID",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150588",
+   "text": "Your attempt to increase your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp failed. The difference of ~3_CHANGE~gp could not be withdrawn from your bank account balance. Your current bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150589",
+   "text": "You have increased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The difference of ~3_CHANGE~gp has been withdrawn from your bank account balance. Your previous bank balance was ~4_OLDBAL~gp and your current bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150590",
+   "text": "Your attempt to decrease your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp failed. The difference of ~3_CHANGE~gp could not be deposited into your bank box. Your current bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150591",
+   "text": "You have decreased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The difference of ~3_CHANGE~gp has been deposited into your bank box. Your previous bank balance was ~4_OLDBAL~gp and your current bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150592",
+   "text": "You have not changed your Match Bid.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150593",
+   "text": "rustic bench (south)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150594",
+   "text": "rustic bench (east)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150595",
+   "text": "advanced training dummy (south)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150596",
+   "text": "advanced training dummy (east)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150597",
+   "text": "Select the item you wish to send to your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150598",
+   "text": "auto recharge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150599",
+   "text": "Select the target you wish to associate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150600",
+   "text": "It's already registered into the master list.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150601",
+   "text": "It's already registered into the follower list.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150602",
+   "text": "Your skill in parry cannot improve any further by simply practicing with a dummy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150603",
+   "text": "The dummy's sword swings at you! Defend yourself!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150604",
+   "text": "You need a training dummy (east) deed to make that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150605",
+   "text": "You need a training dummy (south) deed to make that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150606",
+   "text": "You need a platemail tunic to craft that (human male, non-magic).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150607",
+   "text": "Total Inventory:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150608",
+   "text": "Total Sales:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150609",
+   "text": "Fees Collected:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150610",
+   "text": "Commissions Collected:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150611",
+   "text": "Total Deposits:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150612",
+   "text": "Total Withdrawals:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150613",
+   "text": "Board and Batten Arches",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150614",
+   "text": "Your Pet Broker charges a weekly fee of 5% of the total sales price of all pets in its inventory. Fees are effective immediately upon placing pets up for sale. Fees are recalculated immediately when pet prices are changed. Once a pet is sold or removed from inventory, no more fees are charged for that pet. For example, if a pet is priced at 10,000gp, the weekly fee is 500gp. If the pet is sold 24 hours after being placed up for sale, the total fee paid for that pet will be 71gp. Fees are charged incrementally over time.<br><br>In addition, the Pet Broker charges a 5% commission on each sale. This commission is in addition to the weekly fee.<br><br>It is possible for your account balance with your Pet Broker to become negative due to fees charged. To prevent this, you must deposit sufficient funds in advance to cover fees. If your pet broker does not have sufficient funds to cover fees charged, you will be required to pay the back fees before you may alter pet pricing or adjust the shop inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150615",
+   "text": "This broker's account balance is negative, because its weekly fees have not been paid and sales have not been sufficient to cover those fees. Before you may continue, you MUST deposit funds to cover these fees.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150616",
+   "text": "You need a close helmet to craft that (human, non-magic).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150617",
+   "text": "You need a metal sheild to craft that (human, non-magic).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150618",
+   "text": "You need a broadsword to craft that (human, non-magic).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150619",
+   "text": "You don't need to water it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150620",
+   "text": "Garden Bed (Large)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150621",
+   "text": "Garden Bed (Small)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150622",
+   "text": "A Plain Grey Wing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150623",
+   "text": "NEGATIVE BALANCE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150624",
+   "text": "Gothic Arches",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150625",
+   "text": "EDIT PET PRICES",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150626",
+   "text": "Click the button next to a pet to select it. Enter the new price you wish to charge into the box below the pet list, then click the \"SET PRICE\" button.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150627",
+   "text": "SET PRICE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150628",
+   "text": "That pet is not in the shop inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150629",
+   "text": "Gothic Walls",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150630",
+   "text": "Board and Batten Walls",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150631",
+   "text": "You cannot add more pets to this animal broker's inventory at this time, because the shop inventory is full.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150632",
+   "text": "REMOVE PET",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150633",
+   "text": "Click the button next to a pet to select it, then click the REMOVE PET button below to transfer that pet to your stables.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150634",
+   "text": "Failed to transfer the selected pet to your stables. Either the pet is no longer in the broker's inventory, or you do not have any available stable slots.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150635",
+   "text": "Your pet ~1_TYPE~ named ~2_NAME~ has been transferred to the stables.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150636",
+   "text": "Commodity Broker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150637",
+   "text": "<CENTER>COMMODITY BROKER</CENTER><BR><BR>Commodity brokers will buy and/or sell commodity items for you. The broker charges a 5% commission on all transactions. Additionally, the broker charges a 5% weekly fee on the total sale price of all its sellable inventory. The weekly fees are charged incrementally over time. The broker charges no fees for outstanding offers to buy commodities.<BR><BR>Your commodity broker has an account balance, which you must fund from your bank box. These funds will be used to pay weekly fees on inventory for sale, and will be used to buy commodities from others. If the broker has no funds available, it cannot purchase commodities for you. Proceeds from each transaction go into this account. You may deposit into it and withdraw from it at any time.<BR><BR>To enter an item into your broker's inventory, you must have a sample of it, either as an item or a filled commodity deed. Click \"Add to Inventory\" and target the item or deed. It will be stored in the broker (and can be retrieved later if desired). Once your broker has stored an item for the first time, it has learned about that item and will be able to buy and/or sell that item for you.<BR><BR>After you have stocked your broker with funds and commodities, you may then set prices and trade limits. Trade limits instruct your broker to only buy a commodity when its stock level is below the limit you set, or to only sell a commodity when its stock level is above the limit you set. Your broker may buy and sell the same commodity at the same time, so long as its sale price is higher than its buy price.<BR><BR>When your broker buys commodities, the seller receives the full price you offer from your broker's account balance, and then the broker deducts its 5% commission on top. When your broker sells commodities, the broker receives the full price from the buyer, then deducts its 5% commission and adds the remainder to the account balance. Brokers cannot buy commodities when they do not have sufficient funds for the trade (i.e. 105% of the value of the trade).<BR><BR>It is possible for your broker's account balance to become negative due to fees charged. If this happens, the broker will continue to sell commodities, and any proceeds will cover the negative account balance first. However, a broker with a negative account balance will not be able to buy commodities, nor will it allow you access to its inventory, until you have deposited funds to cover the negative account balance.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150638",
+   "text": "There are no commodities in this broker's inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150639",
+   "text": "SELECT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150640",
+   "text": "Distillery",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150641",
+   "text": "Click the button next to the commodity to select it. Enter the amount to withdraw in the entry field below, and click the WITHDRAW button to receive your items. Use the UP / DOWN buttons to change the display order of the commodities.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150642",
+   "text": "You did not select a commodity.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150643",
+   "text": "A commodity deed worth ~1_AMOUNT~ ~2_ITEM~ has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150644",
+   "text": "Click the button next to a commodity to select it. Using the input boxes below, enter the following:<BR><BR>SELL PRICE - the amount of gold per unit at which  the broker sells the item to others. Enter 0 if you do not wish to sell this item. Leave this value empty if you do not wish to change it.<BR>SELL LIMIT - The broker will only sell stock in excess of this amount. Enter 0 if you wish to sell your entire stock of this item. Leave this value empty if you do not wish to change it.<BR><BR>BUY PRICE - the amount of gold per unit at which the broker buys this item from others. Enter 0 if you do not wish to buy this item. Leave this value empty if you do not wish to change it.<BR>BUY LIMIT - the broker will not buy this item if it has this many or more of the item in stock. Enter 0 if you do not wish to set a limit. Leave this value empty if you do not wish to change it.<BR><BR>You may both buy and sell a commodity at the same time. In order to do so, your Sell Price must be higher than your Buy Price.<BR><BR>Your broker charges a fee of 5% of the total sales price of all sellable commodities in stock, per week. This fee is charged continuously in small increments, and is adjusted as stock levels change. There is no fee charged for buy orders.<BR><BR>If your broker's account balance becomes negative, you will be unable to access your inventory or perform any other maintenance until you deposit sufficient funds to bring the balance positive again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150645",
+   "text": "BUY LMT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150646",
+   "text": "SELL LMT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150647",
+   "text": "EDIT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150648",
+   "text": "You must have the Rustic theme pack to use this feature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150649",
+   "text": "You must have the Gothic theme pack to use this feature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150650",
+   "text": "* Requires the \"Gothic\" theme pack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150651",
+   "text": "* Requires the \"Rustic\" theme pack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150652",
+   "text": "You are now set to cut topiaries.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150653",
+   "text": "You are already set to cut topiaries!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150654",
+   "text": "This broker trades in commodities. Commodity brokers can buy and sell most commodities, either in item or deed form. The menu shows all commodities this broker will deal in.<BR><BR>The center column lists the commodities by name. The columns on the left indicate how much of the commodity the broker has available for purchase, and the price per unit. The right-hand columns indicate how much of the commodity the broker is willing to buy from you and the price it will pay per unit.<BR><BR>If you wish to buy that commodity, click the button to the left of it to select it, then enter the quantity you wish to buy in the QUANTITY field below. If you wish to sell a commodity to the broker, click the button to the right of it and enter the quantity you wish to sell below. Finally, click the \"TRADE\" button. You will be presented with a confirmation window that will show the item being traded, the quantity, and how much gold will change hands.<BR><BR>If a broker lists a price but shows 0 quantity available, the broker may be out of stock (unable to sell to you) or may have reached its purchasing limit (unable to buy from you). All gold transactions are between your bank box and the commodity broker. Gold or bank checks in your backpack cannot be used for these trades. Commodities are traded between your backpack and the broker, and commodity items/deeds in your bank box cannot be used for these trades.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150655",
+   "text": "COMMODITY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150656",
+   "text": "BUY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150657",
+   "text": "SELL",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150658",
+   "text": "LIMIT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150659",
+   "text": "PRICE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150660",
+   "text": "Set to cut topiaries",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150661",
+   "text": "You must have the Stygian Abyss expansion pack or the Rustic theme pack to use these.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150662",
+   "text": "QUANTITY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150663",
+   "text": "distillery (south)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150664",
+   "text": "distillery (east)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150665",
+   "text": "Price Per Unit:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150666",
+   "text": "Please review the details of this transaction. If you wish to make this trade, click the TRADE button below. Otherwise, click the MAIN MENU button to return to the price list.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150667",
+   "text": "You do not have the requested amount of that commodity (either in item or deed form) in your backpack to trade. Note that commodities cannot be traded from your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150668",
+   "text": "You have sold ~1_QUANTITY~ units of ~2_COMMODITY~ to the broker. These have been transferred from deeds and/or items in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150669",
+   "text": "You must have the Stygian Abyss expansion pack to use this setting.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150670",
+   "text": "You must have the Rustic theme pack to use this setting.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150671",
+   "text": "You may only create a topiary from a decorative bush.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150672",
+   "text": "You clip the bush into a topiary.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150673",
+   "text": "Your broker inventory and/or funds in storage at the New Magincia Warehouse have been donated to charity, because these items remained unclaimed for a full week. These items may no longer be recovered, but the orphans will appreciate a nice hot meal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150674",
+   "text": "Your hired broker has transferred any remaining inventory and funds from your stall at the New Magincia Bazaar into storage at the New Magincia Warehouse. You must reclaim these items or they will be destroyed! To reclaim these items, see the Warehouse Superintendent in New Magincia.<br><br>This service is provided free of charge. If you owed your broker any back fees, those fees must be paid before you can reclaim your belongings. The storage period lasts 7 days starting with the expiration of your lease at the New Magincia Bazaar, and this storage period cannot be extended. Claim your possessions and gold without delay!<br><br>The expiration time of this message coincides with the expiration time of your Warehouse storage.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150675",
+   "text": "metal keg",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150676",
+   "text": "Commodity Broker Storage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150677",
+   "text": "There are no longer any items or funds in storage for your former bazaar stall. Thank you for your diligence in recovering your possessions.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150678",
+   "text": "Some personal possessions that were equipped on the broker still remain in storage, because your backpack cannot hold them. Please free up space in your backpack and return to claim these items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150679",
+   "text": "Distiller: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150680",
+   "text": "Yeast: ~1_VAL~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150681",
+   "text": "Broker Storage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150682",
+   "text": "<center>DISTILLERY MENU</center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150683",
+   "text": "<center>Select the group</center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150684",
+   "text": "<center>Select the liquor type</center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150685",
+   "text": "You are currently viewing a stall that you are not leasing. In order to set up or modify your stall, please use that stall's sign.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150686",
+   "text": "HIRE ANIMAL BROKER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150687",
+   "text": "HIRE COMMODITY BROKER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150688",
+   "text": "FIRE BROKER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150689",
+   "text": "ABANDON LEASE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150690",
+   "text": "Choose a stall style from the list below to see a preview. Once you preview and confirm your choice, the encampment will be erected in your stall and your hired broker will arrive to operate it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150691",
+   "text": "In order to fire your broker, you must empty its inventory, withdraw all funds, and remove any of your personal items from the broker and stall. When ready, return to this menu selection to confirm.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150692",
+   "text": "This option will release your hired broker from service and vacate your stall. You will then be able to hire a different broker. Click the CONFIRM button below if you wish to clear out your stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150693",
+   "text": "In order to abandon your lease, your stall must be empty. To clear out your stall, you must first retrieve all inventory, funds, and personal items from your broker and the stall area, then choose the Fire Broker option to release the broker. Once the stall is cleared, return to this menu to confirm the abandonment of your lease.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150694",
+   "text": "By clicking the CONFIRM button below, you will abandon your lease on this stall and receive no refund of your lease payment. A new lease on this stall will be auctioned within 12 hours.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150695",
+   "text": "CONFIRM",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150696",
+   "text": "The selected style is now being previewed in the stall. To use this style, click the CONFIRM button below. Click the CHOOSE OTHER STYLE button to return to the list.<BR><BR>This preview lasts for one minute. You may close this window and examine the stall, then return to this menu page to either select another style or confirm your choice.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150697",
+   "text": "CHOOSE OTHER STYLE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150698",
+   "text": "You need empty metal kegs to craft that",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150699",
+   "text": "You need heating stands to craft that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150700",
+   "text": "You need copper wire to craft that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150701",
+   "text": "STYLE 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150702",
+   "text": "STYLE 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150703",
+   "text": "STYLE 3",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150704",
+   "text": "You create a new backpack to this creature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150705",
+   "text": "You put the item into the creature's pack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150706",
+   "text": "<CENTER>Liquor Labeling Tool</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150707",
+   "text": "Select a player made liquor to label.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150708",
+   "text": "You carefully remove the label from the liquor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150709",
+   "text": "The liquor was not labeled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150710",
+   "text": "You labled the liquor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150711",
+   "text": "The selected item is not accessible to label.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150712",
+   "text": "The labeling attempt failed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150713",
+   "text": "You can not access the labeling tool.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150714",
+   "text": "You can only label player made liquors.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150715",
+   "text": "The labeling attempt failed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150716",
+   "text": "Your broker has set up shop. Double-click the broker NPC to work with your new shop.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150717",
+   "text": "Liquor Labeling Tool",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150718",
+   "text": "Labeled: ~1_MESSAGE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150719",
+   "text": "Strong Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150720",
+   "text": "Strong Bourbon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150721",
+   "text": "Strong Spirytus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150722",
+   "text": "Strong Cassis",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150723",
+   "text": "Strong Melon Liqueur",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150724",
+   "text": "Strong Mist",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150725",
+   "text": "Strong Akvavit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150726",
+   "text": "Strong Arak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150727",
+   "text": "Strong Corn Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150728",
+   "text": "Strong Brandy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150729",
+   "text": "Standard Distillation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150730",
+   "text": "Double Distillation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150731",
+   "text": "Mark Distiller Name",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150732",
+   "text": "Do Not Mark",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150733",
+   "text": "~1_NAME~ : ~2_NUMBER~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150734",
+   "text": "Please enter the text with which you wish to label the liquor that you will distill. You many enter up to 15 characters. Leave the text area blank to remove any existing text.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150735",
+   "text": "<center>Ingredients of ~1_NAME~</center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150736",
+   "text": "Wheat Based",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150737",
+   "text": "Water Based",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150738",
+   "text": "empty metal keg",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150739",
+   "text": "You are already distilling.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150740",
+   "text": "You have chosen the yeast.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150741",
+   "text": "That is not yeast.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150742",
+   "text": "You have already chosen other yeast.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150743",
+   "text": "You no longer choose this yeast.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150744",
+   "text": "An unknown error has occurred. Please choose yeast again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150745",
+   "text": "You have failed your distillation attempt and ingredients have been lost.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150746",
+   "text": "You succeed at your first distillation attempt, but fail the extra attempt.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150747",
+   "text": "You don't have enough ingredients.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150748",
+   "text": "Label :",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150749",
+   "text": "That's a waste! It's yours!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150750",
+   "text": "Oh...it's bad manners!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150751",
+   "text": "He already has a drink.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150752",
+   "text": "I missed!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150753",
+   "text": "The bottle thrown by ~1_NAME~ has hit my head and liquid in the bottle has spilled out!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150754",
+   "text": "No thank you!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150755",
+   "text": "Sweet!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150756",
+   "text": "Hey baby. It's on me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150757",
+   "text": "Hi, handsome. It's on me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150758",
+   "text": "Thanks girl!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150759",
+   "text": "It's on me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150760",
+   "text": "Wow!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150761",
+   "text": "You have received a drink from ~1_NAME~!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150762",
+   "text": "You don't have enough empty bottles to make that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150763",
+   "text": "You don't have enough empty wooden kegs to make that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150764",
+   "text": "You don't have enough barrel lids to make that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150765",
+   "text": "You don't have enough barrel taps to make that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150766",
+   "text": "His hands are full now!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150767",
+   "text": "Her hands are full now!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150768",
+   "text": "She already has a drink",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150769",
+   "text": "treat from ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150770",
+   "text": "<center>Distillery Options</center>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150771",
+   "text": "Execute Distillation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150772",
+   "text": "You succeed at your distillation attempt.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150773",
+   "text": "You must upgrade your account with the Rustic Theme Pack in order to place these tiles.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150774",
+   "text": "You must upgrade your account with the Gothic Theme Pack in order to place these tiles.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150775",
+   "text": "Shop names are limited to 40 characters in length. Shop names must pass an obscenity filter check. The text you have entered is not valid.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150776",
+   "text": "You have entered an invalid numeric value. Negative values are not allowed. Trade quantities are limited to 60,000 per transaction.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150777",
+   "text": "That pet cannot be traded by an animal broker.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150778",
+   "text": "~1_name~ : None Selected",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150779",
+   "text": "~1_name~ : Selected",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150780",
+   "text": "No thank you!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150781",
+   "text": "Oh, that's too bad.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150782",
+   "text": "It's on me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150783",
+   "text": "He refused a drink already.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150784",
+   "text": "She refused a drink already.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150785",
+   "text": "You cannot transfer pets to your stables at this time because you do not have any free stable slots.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150786",
+   "text": "~1_name~ makes a head shot!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150787",
+   "text": "~1_name~ hits the heart location!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150788",
+   "text": "~1_name~ hits the body.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150789",
+   "text": "~1_name~ hits a limb.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150790",
+   "text": "Your account lacks the entitlement required to use this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150791",
+   "text": "You must have the Rustic theme pack or the Gothic theme pack to use this feature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150792",
+   "text": "Minimum bid 1,000gp. Bids are rounded down to nearest 1,000gp (1,999gp becomes 1,000gp).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150793",
+   "text": "In order to fire your broker, you must retrieve all your inventory and withdraw all funds from its account. Once your broker's inventory is empty and its account balance is zero, return to the MY STALL LEASE menu and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150794",
+   "text": "Your broker has packed up shop and your stall is now empty. You may now hire another broker or abandon your lease.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150795",
+   "text": "If you choose to abandon your lease, you will not receive a refund of any fees paid. The stall will be re-auctioned for a new lease within 12 hours. Note that you may choose to bid for a new lease on a different stall without abandoning your current lease.<br><br>If you are certain you wish to abandon your stall lease, click the CONFIRM button below.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150796",
+   "text": "If you choose to abandon your lease, you will not receive a refund of any fees paid. The stall will be re-auctioned for a new lease within 12 hours. Note that you may choose to bid for a new lease on a different stall without abandoning your current lease.<br><br>You may not abandon your lease at this time because you have a hired broker working in the stall. To abandon your lease, fire your broker and return here to try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150797",
+   "text": "You have abandoned your lease on this stall. This still is no longer under your control. It will be auctioned for a new lease within 12 hours.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150798",
+   "text": "You may not trade a dead pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150799",
+   "text": "You can only toss bottles.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150800",
+   "text": "You cannot toss it to a player in the heat of combat!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150801",
+   "text": "This liquor type requires time to<br>mature",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150802",
+   "text": "You realize that the liquor is on the process of maturation so you leave it alone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150803",
+   "text": "You begin to take off your clothing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150804",
+   "text": "matured: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150805",
+   "text": "start date: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150806",
+   "text": "You need to wait until the liquor in the barrel has matured.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150807",
+   "text": "liquor barrel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150808",
+   "text": "This barrel is for distilling.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150809",
+   "text": "Please select the liquor type which you want to make.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150810",
+   "text": "Target an empty liquor barrel in your backpack. If you don't have one already, you can use the Carpentry skill to make one.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150811",
+   "text": "This liquor barrel already contains liquor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150812",
+   "text": "maturing: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150813",
+   "text": "Remaining Time: about ~1_HOURS~ hour(s)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150814",
+   "text": "Remaining Time: about ~1_DAYS~ day(s) ~2_HOURS~ hour(s)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150815",
+   "text": "You have poured matured liquid into the bottle.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150816",
+   "text": "empty liquor barrel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150817",
+   "text": "I am getting very sleepy...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150818",
+   "text": "You have woken up feeling groggy...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150819",
+   "text": "Zzzzzzzzz....",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150820",
+   "text": "I'm free!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150821",
+   "text": "It's hot in here...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150822",
+   "text": "Hey everyone. Listen to my song!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150823",
+   "text": "~1_NAME~ begins to sing ~2_SONGNAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150824",
+   "text": "You are going to be sick...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150825",
+   "text": "...I'm not wasted...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150826",
+   "text": "...I'm not wasted...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150827",
+   "text": "The broker is not able to store any more of that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150828",
+   "text": "You have poured liquor into the bottle.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150829",
+   "text": "Remaining Time: within 1 hour",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150830",
+   "text": "Set Ability: good healing burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150831",
+   "text": "Set Ability: evil healing burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150832",
+   "text": "Helm of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150833",
+   "text": "Gorget of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150834",
+   "text": "Breastplate of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150835",
+   "text": "Arms of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150836",
+   "text": "Gauntlets of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150837",
+   "text": "Legs of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150838",
+   "text": "Helm of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150839",
+   "text": "Gorget of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150840",
+   "text": "Breastplate of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150841",
+   "text": "Arms of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150842",
+   "text": "Gauntlets of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150843",
+   "text": "Legs of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150844",
+   "text": "Collected Items",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150845",
+   "text": "Missing Items",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150846",
+   "text": "Earrings of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150847",
+   "text": "Necklace of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150848",
+   "text": "Earrings of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150849",
+   "text": "Necklace of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150850",
+   "text": "Kilt of Villainous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150851",
+   "text": "Kilt of Virtuous Regeneration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150852",
+   "text": "You do not have a complete set of the items to combine.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150853",
+   "text": "A set of items in your backpack or in a sub-container has been combined.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150854",
+   "text": "You have a full set of items to combine, but you do not have sufficient room in your backpack to combine them. Please free up some space and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150855",
+   "text": "DOWN",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150856",
+   "text": "UP",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150857",
+   "text": "A charybdis wouldn't be this close to the shore.  Try moving farther out to sea.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150858",
+   "text": "You see a few bubbles, but no charybdis.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150859",
+   "text": "You have waited too long to make your selection, your distillation attempt has timed out.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150860",
+   "text": "You are attempting to distill again. All of your distillation options have been reset.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150861",
+   "text": "Charybdis have never been seen in these waters, try somewhere else.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150862",
+   "text": "The charybdis has moved on from this location, consult Oracle Of The Seas again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150863",
+   "text": "fish oil flask",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150864",
+   "text": "You fill the lamp with oil.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150865",
+   "text": "You fill the lamp with fish oil.  It should burn for a nice long time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150866",
+   "text": "empty oil flask",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150867",
+   "text": "Click the button next to the commodity to select it. Enter the amount to withdraw in the entry field below, and click the WITHDRAW button to receive your items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150868",
+   "text": "A strong magical energy prevents the creature from responding.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150869",
+   "text": "You need an empty oil flask to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150870",
+   "text": "Your spirit speak skill must be higher.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150871",
+   "text": "You receive charybdis bait",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150872",
+   "text": "Parrots can only be placed on Parrot Perches on ships where you are at least the captain.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150873",
+   "text": "CUSTOMIZE APPEARANCE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150874",
+   "text": "The broker had some items equipped. ~1_COUNT~ of these items have been transferred to your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150875",
+   "text": "Your backpack could not hold ~1_COUNT~ items. These are still in storage. Please free up space in your backpack and return here to claim those items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150876",
+   "text": "Broker Name:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150877",
+   "text": "RELOCATE BROKER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150878",
+   "text": "To relocate your broker, you must stand on the encampment at the location the broker will move to before clicking the MOVE BROKER button.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150879",
+   "text": "~1_token~ has magically received an item from the charybdis corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150880",
+   "text": "Your broker has been relocated to the place where you stand.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150881",
+   "text": "Your have changed the broker's name.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150882",
+   "text": "~1_token~ hook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150883",
+   "text": "junk proof hook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150884",
+   "text": "You tie the hook to the fishing line.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150885",
+   "text": "special hook: ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150886",
+   "text": "Splashes from the creature encrust your weapon and equipment, slowing your movement.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150887",
+   "text": "You are no longer slowed and encrusted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150888",
+   "text": "lava proof hook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150889",
+   "text": "Hook condition: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150890",
+   "text": "Dredging hook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150891",
+   "text": "By order of the newly crowned Queen Zhah, the Great Library will be rebuilt in the Royal City. The Athenaeum Isle has been deemed dangerous territory. All salvageable items from the fallen library on the Isle will be secured and transferred to the Royal City.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150892",
+   "text": "Prugyilonus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150893",
+   "text": "King Trajalem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150894",
+   "text": "No one alive can remember when the tendrils of darkness first turned their grasp to the beauty of Ter Mur. For as long as our history exists, we have been locked in battle with the Void.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150895",
+   "text": "Looming over us like impending death, the darkness seeks to swallow our kingdom and take us into the dark. Do not stare into the darkness, for it will",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150896",
+   "text": "swallow you. Do not fool yourself that you can challenge it",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150897",
+   "text": "Set Keyword for Teleport by Keyword",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150898",
+   "text": "Zhah",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150899",
+   "text": "A shining light has left the lands",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150900",
+   "text": "May she be remembered as the strong, holy, and beloved mother that she was, and may her soul know peace.<br><br>- Zhah, High Broodmother of the Isle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150901",
+   "text": "I am the Gargoyle Queen.  Even now, a thousand years later, it feels so strange to write these words.  It has been a long, hard road, paved with failure, success, and great loss. But I do",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150902",
+   "text": "Greetings, adventurer. <br><br>\tAs you know, my people have suffered the incessant onslaught of the Void and its minions for as long as Gargish history exists. Protecting Ter Mur from the darkness, and its desire to consume the land completely, is a burden passed down from one ruler to another upon ascension to the throne.  During my rule, I have been more successful than my predecessors but, now, I fear that the greatest evil both myself and my people have ever faced is about to return.<br><br>\tLong ago, Ter Mur was assaulted by the most formidable and horrid servant of the Void it had ever faced. Called Scelestus the Defiler, this daemon proved invincible to any weapon or spell that was utilized against him. I was unable to defeat him and was forced to imprison him instead. Sadly, my own daughter was caught in the spell and stands imprisoned next to the daemon. It has been this way for a thousand years now.<br><br>\tI have received word that the isle which houses the daemon, Athenaeum Isle, is once again swarming with daemons. Based on the description provided to me, I believe these are the minions of the Defiler himself. They have no doubt crawled out of the dark in anticipation of their master’s return. In truth, the prison I placed him within will not last forever.<br><br>\tI ask that you journey to the southwestern flight tower, adventurer, and head further southwest towards the shore. Near the water's edge, you will find an ancient teleport site which will transport you to the isle. Once there, please slay as many of these monsters as you can. Additionally, please keep your eye out for any documents that you may discover. This isle was the former home of our Great Library and, when it fell, not all of the documents and books were able to be taken to the new location here in the Royal City.<br><br>\tSlay the beasts and return to me any documents that you acquire.<br><br>\tBe careful, and go with honor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150903",
+   "text": "You have returned! I cannot thank you enough for the service you have done me, adventurer. <br><br>\tThe documents that you have retrieved may seem unimportant to you, as they are naught but random letters and doctrines. But they each represent an echo of the past, musings of our ancestors. I had always meant to return to the former library and retrieve all that I could, but I had thought they were safe, gathering dust in the ruins. I will immediately have these cleaned and placed in the Great Library here in the Royal City.<br><br>\tAs thanks, I offer you this book. It is the chronicle of my life, of the arrival of the Defiler, and a history of my people. In hopes that you will be granted further understanding of the impending danger we suffer, I offer it to you as a gesture of friendship and goodwill.<br><br>\tThank you again, on behalf of the Gargoyle people. I may have need of your assistance at another time, should you be willing to come to my aid again.<br><br>\tUntil then, farewell.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150904",
+   "text": "The Challenge Rite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150905",
+   "text": "Athenaeum Decree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150906",
+   "text": "A Letter from the King",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150907",
+   "text": "On the Void",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150908",
+   "text": "Shilaxrinar's Memorial",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150909",
+   "text": "To the High Scholar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150910",
+   "text": "To the High Broodmother",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150911",
+   "text": "Reply to the High Scholar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150912",
+   "text": "Access to the Isle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150913",
+   "text": "In Memory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150914",
+   "text": "Chronicle of the Gargoyle Queen Vol. I",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150915",
+   "text": "<br>In accordance with Gargish law, the rite of Challenge is open to all warrior males who wish to issue a challenge to the King.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150916",
+   "text": "A male wishing to issue challenge must make their desire known to the King formally during the introduction ceremony at the Challenge ring. The King must accept all challenges.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150917",
+   "text": "Once all Challenges are issued, the arbiter of the rite will announce the commencement of battle. Battle must adhere to the following rules of honor:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150918",
+   "text": "1. Weapons are not allowed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150919",
+   "text": "2. The first opponent knocked to the ground must admit defeat and withdraw from the Challenge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150920",
+   "text": "3. If the King falls before all challengers are defeated, the warrior that defeated him must defeat the other challengers in order to prove themselves the true successor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150921",
+   "text": "4. The warrior that defeats all challengers will be declared King.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150922",
+   "text": "5. If all challengers are defeated by the current King, he has secured his rule until the next Challenge rite is allowable.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150923",
+   "text": "To Her Honor the High Broodmother, Lady Zhah from his majesty, King Trajalem:<br><br>\tHigh Broodmother, I have received your latest petition regarding your desires and I once again must remind you that I have absolutely no interest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150924",
+   "text": "in altering tradition or granting you the freedom from the slavery you have deluded yourself into believing makes up your life.<br><br>Please remember that your office may be stripped by me if you are deemed unfit to lead the other",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150925",
+   "text": "Broodmothers. Be happy with your place and do not forget it",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150926",
+   "text": "Set Destination Facet",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150927",
+   "text": "Add Destination Coordinate (Format: Facet, X, Y, Z)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150928",
+   "text": "Gargish Document - ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150929",
+   "text": "Journey to the Athenaeum Isle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150930",
+   "text": "Understood. Perhaps you are not as brave as I initially thought. Be on your way, then.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150931",
+   "text": "You have returned. Did you manage to slay the beasts and obtain any documents that may be of interest?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150932",
+   "text": "Hail, adventurer! I require your aid, should you be willing to assist me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150933",
+   "text": "Obtain Gargish Document - Challenge Rite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150934",
+   "text": "Obtain Gargish Document - Athenaeum Decree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150935",
+   "text": "Obtain Gargish Document - Letter from the King",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150936",
+   "text": "Obtain Gargish Document - On the Void",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150937",
+   "text": "Obtain Gargish Document - Shilaxrinar's Memorial",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150938",
+   "text": "Obtain Gargish Document - To the High Scholar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150939",
+   "text": "Obtain Gargish Document - To the High Broodmother",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150940",
+   "text": "Obtain Gargish Document - Reply to the High Scholar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150941",
+   "text": "Obtain Gargish Document - Access to the Isle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150942",
+   "text": "Obtain Gargish Document - In Memory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150943",
+   "text": "not regret the choices I have made, nor do I regret accepting the responsibility bestowed upon me.  I have decided to chronicle the events of my life that led up to my ascension to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150944",
+   "text": "the throne.  Let history judge me as it will, but let it be by my own words.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150945",
+   "text": "Entry I - The Beginning",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150946",
+   "text": "A thousand years ago, Gargish life was vastly different than the enlightened society we are today.  Controlled by an ancient system of tradition and caste, our lives were",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150947",
+   "text": "dictated based on customs established since time remembered.  As a female, I was considered lesser than a male. In Gargish society, males were deemed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150948",
+   "text": "superior",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150949",
+   "text": "Wingless Ones.  As a Broodmother, you had only one purpose:  to create children.  The creation of children was accomplished by channeling your very life force and weaving",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150950",
+   "text": "it, manifesting it into eggs. In one birthing rite, a single Broodmother could produce anywhere from ten to twenty five Wingless Ones.  Usually, all children created were to be",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150951",
+   "text": "male (you can designate the gender during your weaving)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150952",
+   "text": "The birthing ritual was conducted and overseen by the High Broodmother",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150953",
+   "text": "This duty was sacred but it was also finite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150954",
+   "text": "At this point, she steps down as High Broodmother.  After five hundred years, my predecessor, Shilaxrinar could no longer perform and named me her successor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150955",
+   "text": "Though all the other Mothers were envious, I was not happy to obtain this respected position",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150956",
+   "text": "Ever since I could remember, I had chafed at the fact that females were treated as nothing but glorified slaves.  Forced to birth until our magical power was destroyed or to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150957",
+   "text": "be nursemaids, I vehemently disagreed with these traditions and longed to bring about change.  With my ascension to High Broodmother, I had hoped to use the",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150958",
+   "text": "respect of the title to gain the ear of the king and perhaps bring about the change I so desperately wanted…but I was a fool.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150959",
+   "text": "Entry II - The Hubris of Kings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150960",
+   "text": "The paragon of Gargish tradition, our King had absolutely no desire to hear my thoughts and desires.  He told me that, if the Void was finally destroyed, perhaps then we could discuss",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150961",
+   "text": "breaking tradition and granting more freedom to the females of our race. When I countered that perhaps allowing only males to fight the Void was the reason we had yet to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150962",
+   "text": "win, he flew into a furious rage and reminded me to remember my place.  I asked him how could I possibly forget my place when it was so small in the world and I was naught but",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150963",
+   "text": "a glorified slave and prisoner? The King silenced me with a wave of his hand and advised me to go back to the Breeding Grounds, never troubling him with my ‘foolish notions’",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150964",
+   "text": "again.  Bitter, I did as he asked, and bided my time until a new King was chosen.  Gargish rulers did not last long, you see. It was believed that the king must be the strongest of all",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150965",
+   "text": "warriors, able to best any opposition. Thus, to ensure that we were consistently ruled by the best of the best, each year the Challenge Rite was conducted. During this rite, any",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150966",
+   "text": "male who wished to challenge the current king was allowed to do so through an official session of trials by combat. Through these trials, if the current king was defeated, the",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150967",
+   "text": "new champion of the people would ascend to the throne. It was a brutal selection process, and provided constant changes to the throne of Ter Mur. With this knowledge, I bided",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150968",
+   "text": "my time, anxiously awaiting the next king’s selection.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150969",
+   "text": "Entry III - The Beginning of the End",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150970",
+   "text": "One hundred years and countless kings later, nothing had changed. Each time a new King ascended through the Challenge, I attempted to win him over to my cause and",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150971",
+   "text": "listen to my desires to allow my sisters and I more freedom, to aid in the battle against the Void.  Each request was refused adamantly and vehemently, the response being that",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150972",
+   "text": "our entire society was based on these traditions and females have no purpose in life other than to heal and make children. . No matter how hard I tried, I was a female",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150973",
+   "text": "and, in the eyes of the males, lesser than they.  I bitterly resigned myself to my fate and admitted that I would never be granted the life that I wanted. I over saw countless birthing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150974",
+   "text": "rites, watching my power flow out of me again and again, cursing it each time. Outside of our walls, the Void continued to swallow our land, tearing it apart at the seams.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150975",
+   "text": "Set Teleporter Item Type",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150976",
+   "text": "Entry IV - The Fall of the Old Regime",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150977",
+   "text": "The Void had always been a formidable enemy. Shapeless, unpredictable and primal, its attacks held no tactics or system.  But, that year, everything changed. For the first",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150978",
+   "text": "time, the Void was organized. Out of the darkness, a daemon general like no other arose, rallying the seemingly mindless, destructive beasts that plagued our land into a single and",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150979",
+   "text": "brutal force. In just a few short months, more of our kingdom had been taken by the Void than ever before, and Scelestus the Defiler had proven to be impossible to destroy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150980",
+   "text": "Unlike the other creatures of the Void, Scelestus was immune to all magical and physical attacks used against him. No matter what they tried, our warriors could not manage to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150981",
+   "text": "harm the monster, and that was if they were even able to get close to him. Scelestus controlled a seemingly endless army of his own personal minions",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150982",
+   "text": "monsters whose breath was lethal poison.  Desperate, our king went against the advise of his councilors and rode out in battle amidst his personal guard. Honed and war-",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150983",
+   "text": "forged, the King’s guards were the fiercest warriors in the kingdom.  Leading the army himself, the King met Scelestus on the battlefield, determined to annihilate the beast.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150984",
+   "text": "It was in that moment the history of Ter Mur was completely rewritten.  Trajalem, the current king, was defeated in battle by the Defiler, along with all of his guards.  The Defiler felled",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150985",
+   "text": "them as if they were Wingless Ones, slaughtering them mercilessly. Thus, Ter Mur was without a leader.  The Royal City fell into political chaos and infighting as the councilors all",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150986",
+   "text": "fought over who should ascend to the throne and lead the people. It was then that Naxatilor the Seer, who had been the previous king’s closest advisor, came to me and told me of",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150987",
+   "text": "his plan, which would change my life forever.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150988",
+   "text": "The Seer is the one who brought the news of the king’s death to me, and of the Defiler.  As my Broodmothers and I listened, terror in our hearts, he explained how the Defiler had",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150989",
+   "text": "proven invincible and that he feared, if something was not done, Ter Mur would fall to the void.  Naxatilor then proceeded to explain that he had been studying the Void for",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150990",
+   "text": "generations, and testing out different theories as to how it could be attacked and, one day, defeated.  He had come to the conclusion that the key to overpowering",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150991",
+   "text": "the darkness was in wielding its anathema against it: creation. The Void is the personification of destruction and annihilation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150992",
+   "text": "as its polar opposite, may prove to be an extremely potent.  Creation magic, the very magic that we Broodmothers used to create eggs.  The Seer had come to us because he wanted to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150993",
+   "text": "train us to wield that magic as a weapon and fight against the Void.   The mothers were hesitant to accept as quickly as I, with the exception of one: my daughter, Rhista.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150994",
+   "text": "Shortly after I had given up petitioning the various kings, I found solace in creating a child of my very own, outside of the birthing rite. As High Broodmother, I was allowed to make",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150995",
+   "text": "an exception and create a child of my own, on the auspice of naming my successor.  I had woven Rhista in a private ritual, with her being the only child I created. She",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150996",
+   "text": "had grown into a beautiful and honorable gargoyle woman, and reminded me so much of myself.  It was she that raised her voice to the other Broodmothers in",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150997",
+   "text": "unison with mine, inspiring them to accept Naxatilor’s offer of training on behalf of our people.Thus, our training began.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150998",
+   "text": "Entry V - From Broodmother to Warrior",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150999",
+   "text": "Naxatilor put us through the most intense and demanding training that any of us had ever experienced. He ran us into the ground, a relentless and unforgiving",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151000",
+   "text": "trainer.  But we did not complain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151001",
+   "text": "City and informed us that there was no more time.  Thus, for the first time in our life, we stepped foot off of Athenaeum Isle. Opening a portal, Naxatilor transported us to the Throne",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151002",
+   "text": "Room in the Royal City. There was no time to stand in awe at the beauty we had so longed to see, as the Seer led us to the Armory, where he advised us to don any armor that would fit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151003",
+   "text": "us in preparation of battle. The ten of us donned haphazard, mismatching armor, and chose weapons for close combat.  I remember, in that last moment before we left, Naxatilor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151004",
+   "text": "turned and looked over our motley crew, nodding his head in approval. He then proceeded to explain his plan for battling the Defiler. He was confident that our magic would be",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151005",
+   "text": "potent against the minor demons in the army, but he was unsure about the Defiler himself. He believed that the Defiler protected his body with a tightly woven shield of",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151006",
+   "text": "corruption and Void energy, and breaking that shield may not be possible.  Thus, he offered his ultimate plan:  if we found that we were unable to wound the Void general, we were to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151007",
+   "text": "combine our powers and encase him in the same protective field that we used to protect newly created eggs.  When an egg is manifested, it is fragile",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151008",
+   "text": "to weave a protective barrier around it that is full of nurturing energy. It fosters health and strength, nurturing the egg until it is ready to hatch. Naxatilor explained that we",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151009",
+   "text": "simply must alter our intent when we weave the barrier, turning the field into a prison rather than a nurturing shield. He believed that, with our powers combined, we could",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151010",
+   "text": "indefinitely imprison the beast, removing him from battle. It would not be a permanent solution, but something that would buy us more time to hone our powers and prepare",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151011",
+   "text": "ourselves to face him again eventually. The next few hours were a blur. The Defiler’s army had breached the gates to the Royal City and had begun wreaking havoc in destruction in their",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151012",
+   "text": "and uncorrupted, for countless millennia. Though I had never walked its streets, I knew what it symbolized.  That rage fueled my powers, and the daemons fell before",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151013",
+   "text": "me. My sisters and I were like a force of nature, cutting through the daemonic forces like a furious storm. Naxatilor had been correct",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151014",
+   "text": "fueling our magic, we were lethal to the Void. I remember fighting alongside the males of our army, and watching the respect and awe on their faces as my sisters and I slew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151015",
+   "text": "these vicious beasts almost instantly.  But, despite the fact that we knew our powers were lethal to the Void, it still seemed to easy. Though the army had breached the Royal City, it was",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151016",
+   "text": "small in number. It was then that the news came which confirmed my suspicions.  The attack on the Royal City had been a distraction tactic. The Defiler had launched",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151017",
+   "text": "an assault on the Athenaeum Isle, and it was now swarming with the bulk of his army.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151018",
+   "text": "Entry VI - The Cost of Victory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151019",
+   "text": "Naxatilor cursed and immediately opened a portal to take us back to the Isle.  As we stepped through and returned to the Isle, we all let out a cry of horror. I remember falling to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151020",
+   "text": "my knees, tears welling up in my eyes.  Fire raged across the complex, and the daemons swarmed the area.  The Breeding Hall looked as if it were the first to have been",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151021",
+   "text": "assaulted",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151022",
+   "text": "before they ever had a chance to live.  It was a grisly sight which, to this day, hurts me to recall. We tore through the complex with a fury unmatched, killing every daemon that",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151023",
+   "text": "crossed our paths. Our emotion only added fuel to our power, increasing its potency. Soon, the ground was littered with the corpses of our enemies. It was then that the Defiler",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151024",
+   "text": "finally showed himself and the final battle began. At first, we were confident, because we were able to damage him slightly. He was so used to being invulnerable that,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151025",
+   "text": "when my first bolt of energy hit him, he recoiled in shock when it damaged the shield that guarded his body.  We immediately began assaulting him endlessly but, despite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151026",
+   "text": "being able to damage his shield, we could not destroy it. We fought relentlessly and honorably, and eventually found ourselves at the northern end of the isle. His attacks were",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151027",
+   "text": "vicious, and we were unable to get to a point where we could begin to weave the prison that Naxatilor had instructed.  Then, the moment finally came, but at a great cost.  Rhista and I had",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151028",
+   "text": "been separated from the other mothers during the battle, so the Defiler was between us. It was a decision made in the heat of battle, confirmed with a gaze between myself and",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151029",
+   "text": "my sisters. They managed to distract the Defiler with their attacks, and Rhista and I immediately began weaving the prison around him. He caught on too late",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151030",
+   "text": "forming his movements became sluggish, weighed down by the magic. Raising his arm, he uttered words we did not understand and Rhista was instantly teleported into his",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151031",
+   "text": "grasp. Just as the spell was completing, hardening around him, he had my daughter in his hand. The tendrils of the spell started to extend towards her, writhing up his arm",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151032",
+   "text": "and curling around her.  In horror, I watched as my daughter was bound in the prison alongside the foul daemon. She raised her eyes to me one last time, tears",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151033",
+   "text": "running down her face. She reached out a hand to me, and said her last word to me:  “Mother.”",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151034",
+   "text": "Entry VII - From Warrior to Queen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151035",
+   "text": "Thus, we returned to the Royal City, triumphant, with heavy hearts. I was in a haze.  My entire life had been turned upside down, and I had lost the only family I had ever",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151036",
+   "text": "known. My home was destroyed. I did not know what to do or where to go. I remember as we arrived at the gates of the city, I was practically being carried by Naxatilor,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151037",
+   "text": "his arm around me. All of my energy had fled from my body with the end of the war.  In that moment, Naxatilor whispered in my ear that I needed to gather my strength and stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151038",
+   "text": "tall. I needed to show strength, for the people were looking to me for guidance. I was confused, but I summoned what little energy I had left and stood on my own. The Seer took my",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151039",
+   "text": "hand, and raised it with his above our heads.  The words he uttered next sealed my fate.  Calling for the crowd to quiet, Naxatilor the Seer issued a decree to all:  “Behold your savior,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151040",
+   "text": "and your protector. In our darkest hour, she came to our aid.  Forged in the heat of battle, I hereby declare your new liege:  Zhah, the Gargoyle Queen.”",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151041",
+   "text": "There was shock and surprise on all of their faces but it was immediately replaced by a wave of acceptance when they cried out in unison: “All hail our liege and savior,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151042",
+   "text": "Queen Zhah!!”",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151043",
+   "text": "Entry VIII - Into the Light",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151044",
+   "text": "Thus, tradition be damned, the Gargoyle people accepted a female as their leader.  I ascended to the throne and swore to them all that I would guide them, protect",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151045",
+   "text": "them, and push back the Void. It was agreed that the Challenge rite would be abolished",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151046",
+   "text": "I led my people out of the dark and into a bright future. I declared that males and females would be treated equally",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151047",
+   "text": "had survived the Isle’s attack, I taught the power of creation magic to males of the race. In return, females were free to choose their own path, no longer bound by the limited",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151048",
+   "text": "and narrow traditions that had led to our almost complete annihilation.The Royal City was rebuilt, stronger and more beautiful, and a period of peace existed for numerous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151049",
+   "text": "years. A powerful blow had been dealt to the Void, and it took time for it to recover. We remained vigilant, knowing that the day would come when it would retaliate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151050",
+   "text": "When that day finally came, my people were trained in the power that would put them on equal ground against the darkness. Male and female, standing together, my people",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151051",
+   "text": "fought together and the Void was unable to increase its hold on Ter Mur.All of this time, I have continued to sharpen and hone my powers and research ways to increase my ability.  I",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151052",
+   "text": "have devoured every text I can find that exists on magic of all schools, hoping to find a way to destroy the Defiler once and for all when he returns to plague the land. My studies have",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151053",
+   "text": "taken me away from the kingdom for days, sometimes weeks, at a time, but I leave my kingdom in capable hands. My people are no longer the dependent, mindless slaves that they used",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151054",
+   "text": "to be. Freed from the social captivity our caste system had inflicted upon them, they exist in freedom and harmony. I know that, should an attack come when I am away, they will not",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151055",
+   "text": "lack for guidance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151056",
+   "text": "called me paranoid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151057",
+   "text": "daemon, and I know, with my daughter at my side once again, I will defeat him. In the past year, I have discovered a ritual that empowers any spell that is cast during its execution.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151058",
+   "text": "An ancient text revealed it to me, and I have been travelling the kingdom gathering the massive amount of spell components that the ritual requires. I believe, if I am able to",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151059",
+   "text": "conduct this ritual, a cleansing spell will purge the Defiler of his protective shield.Then, I will eradicate the daemon for once and for all. Rhista will be at my side once again, and",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151060",
+   "text": "we will lead our people to freedom.  One day, the Void will be defeated and Ter Mur will be whole. I am the Gargoyle Queen, and this I swear to you:  we will be free of the",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151061",
+   "text": "darkness.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151062",
+   "text": "To his Grace the High Scholar,<br><br>I humbly request an audience with your Grace at your earliest convenience. I wish to discuss a matter of the utmost importance.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151063",
+   "text": "Please send word when you have time to receive me.<br><br> - Shilaxrinar, High Broodmother",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151064",
+   "text": "To Her Holiness, the High Broodmother Shilaxrinar:<br><br>My Lady, I am humbly honored by your request to converse. I would receive you immediately",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151065",
+   "text": "called away by his Majesty to attend him in the Royal City. I will be gone for some time",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151066",
+   "text": "Prugyilonus,<br><br>Forgive the lack of titles",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151067",
+   "text": "In truth, the assistance I require may only be brought to your attention. Please send word as soon as you have returned from the city so that we may speak. It is regarding Z.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151068",
+   "text": "I would like you to meet with her and hopefully help dispel some of the rebelliousness I mentioned to you previously.<br><br>Shilaxrinar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151069",
+   "text": "By order of Queen Zhah, access to the Athenaeum Isle is strictly forbidden.<BR><BR>All bridges are to be destroyed and all portals will be closed. Only those with the Queen’s direct order and dispensation may step foot on the isle.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151070",
+   "text": "Teleport By Keyword",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151071",
+   "text": "What once was a center of life, learning, and beauty now sits in ruin.<br><br>Let us never forget those who lost their lives to the Defiler’s malevolent machinations.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151072",
+   "text": "All of our brothers and sisters, and our children that were never given their first breath, we will never forget you and your memory will live on in our hearts for eternity.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151073",
+   "text": "Their deaths will not be in vain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151074",
+   "text": "Queen Zhah",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151075",
+   "text": "barnacle covered ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151076",
+   "text": "~1_CLASS~ ~2_TYPE~ Vessel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151077",
+   "text": "Orcish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151078",
+   "text": "Tokuno",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151079",
+   "text": "Gargish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151080",
+   "text": "Britannian",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151081",
+   "text": "Merchant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151082",
+   "text": "Pirate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1151083",
+   "text": "~1_ITEM~ channels mana!",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

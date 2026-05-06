@@ -1,0 +1,3006 @@
+{
+ "batch": 35,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1156090",
+   "text": "+~1_STAMINA~ Stamina Regeneration and +~2_HP~% Hit Points for summoned pets.<br>Increased difficulty for summoned pets to be dispelled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156091",
+   "text": "Your bow range has been reduced as you play the odds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156092",
+   "text": "Your bow range has returned to normal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156093",
+   "text": "Places you in an offensive stance which allows you to strike your target with your shield on your next successful attack or parry.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156094",
+   "text": "Your target is already under the effect of this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156095",
+   "text": "Your mastery of poisoning allows you to use your poison charge without consuming it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156096",
+   "text": "You must be wielding a shield to use this ability!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156097",
+   "text": "Your ability was interrupted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156098",
+   "text": "Your target is no longer in range of your ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156099",
+   "text": "Another player is offering to bodyguard you:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156100",
+   "text": "Your pet is now being protected by ~1_NAME~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156101",
+   "text": "You resist the effects of death ray.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156102",
+   "text": "Your target resists the effects of death ray.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156103",
+   "text": "Bodyguard has expired.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156104",
+   "text": "Deposit Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156105",
+   "text": "Enter the amount of gold you wish to deposit (ESC = CANCEL):",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156106",
+   "text": "You guide your pet's behaviors, providing a ~1_VAL~% chance to increase skill gains.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156107",
+   "text": "You train ~2_NAME~ to use ~1_SKILLNAME~.<br>Mana Upkeep: ~3_COST~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156108",
+   "text": "Consume Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156109",
+   "text": "Empowerment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156110",
+   "text": "Your ability was canceled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156111",
+   "text": "You do not have enough mana to keep your ability active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156112",
+   "text": "This ability requires you to have pets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156113",
+   "text": "Select Training",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156114",
+   "text": "You must upgrade your account with the Time of Legends Expansion in order to place these tiles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156115",
+   "text": "Jungle Walls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156116",
+   "text": "Shadowguard Walls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156117",
+   "text": "Jungle Arches",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156118",
+   "text": "Shadowguard Arches",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156119",
+   "text": "Jungle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156120",
+   "text": "Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156121",
+   "text": "Jungle Doors",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156122",
+   "text": "Shadowguard Doors",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156123",
+   "text": "Jungle Roof",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156124",
+   "text": "Shadowguard Roof",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156125",
+   "text": "Balakai's Shaman Staff",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156126",
+   "text": "Eodon Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156127",
+   "text": "Halawa's Hunting Bow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156128",
+   "text": "Lerei's Hunting Spear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156129",
+   "text": "Grugor's Shield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156130",
+   "text": "Jumu's Sacred Hide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156131",
+   "text": "Moctapotl's Obsidian Sword",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156132",
+   "text": "Wamap's Bone Earrings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156133",
+   "text": "~2_NAME~ reduces your poison resistance by ~1_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156134",
+   "text": "Myrmidex Drone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156135",
+   "text": "Myrmidex Warrior",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156136",
+   "text": "Msafiri Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156137",
+   "text": "kinect eater: ~1_val~(total)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156138",
+   "text": "You ready your weapon to unleash an injected strike!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156139",
+   "text": "* You must upgrade to the Time of Legends in order to use this. *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156140",
+   "text": "* Requires the \"Time of Legends\" expansion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156141",
+   "text": "18th Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156142",
+   "text": "Happy 18th Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156143",
+   "text": "Happy 18th Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156144",
+   "text": "Happy 18th Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156145",
+   "text": "A Personally Written Anniversary Card from ~1_name~ to ~2_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156146",
+   "text": "In Commemoration Of Eighteen Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156147",
+   "text": "Tall 18th Anniversary Vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156148",
+   "text": "Short 18th Anniversary Vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156149",
+   "text": "An Ornately Decorated Commemorative Plate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156150",
+   "text": "The Stranger Shatters the Gem of Immortality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156151",
+   "text": "Mondain the Wizard Murders King Wolfgang",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156152",
+   "text": "Juo'nar the Lich Occupies Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156153",
+   "text": "Lord Dupre Leads an Army Against Exodus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156154",
+   "text": "Minax Enchants the Mage Anon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156155",
+   "text": "Lord Blackthorn Accepts the Throne of Britannia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156156",
+   "text": "The Time Lord Opens a Gate to the Valley of Eodon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156157",
+   "text": "Lord Crawworth Discovers the Lost Lands",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156158",
+   "text": "Edible Berries",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156159",
+   "text": "You look to be immune to the effect of this bubble.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156160",
+   "text": "You deal increased damage to ~1_NAME~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156161",
+   "text": "~1_NAME~ attacks you for 50% damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156162",
+   "text": "These indigenous berries to the Valley of Eodon provide more than a delicious snack...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156163",
+   "text": "Your next successful attack will poison your target and reduce its poison resist by:<br>~1_VAL~% PvM<br>~2_VAL~% PvP",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156164",
+   "text": "Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156165",
+   "text": "The Bar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156166",
+   "text": "The Orchard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156167",
+   "text": "The Armory",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156168",
+   "text": "The Fountain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156169",
+   "text": "The Belfry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156170",
+   "text": "The Roof",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156171",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156172",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156173",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156174",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156175",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156176",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156177",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156178",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156179",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156180",
+   "text": "Reserved for Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156181",
+   "text": "Select the area of Shadowguard you wish to explore...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156182",
+   "text": "The fortress is currently full right now. You are currently ~1_NUM~ in the queue.  You will be messaged when an encounter is available.  You must remain in the lobby in order to be able to join.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156183",
+   "text": "You must wait before trying to enter the fortress again. Continued attempts will result in longer wait times.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156184",
+   "text": "You may not start a Shadowguard encounter while in a party unless you are the party leader.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156185",
+   "text": "Please wait while your Shadowguard encounter is prepared. Do no leave the area or logoff during this time. You will teleported when the encounter is ready and if you leave there is no way to enter once the encounter begins.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156186",
+   "text": "All members of your party must remain in the lobby of Shadowguard while your encounter is prepared. Make sure all members of your party are in the lobby and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156187",
+   "text": "Your pet ~1_NAME~ may not enter Shadowguard. Please choose another pet to bring with you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156188",
+   "text": "You have exceeded the max number of attempts at joining a Shadowguard encounter. Please try again later.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156189",
+   "text": "~1_NAME~ in your party is already attempting to join a Shadowguard encounter.  Start a new party without them or wait until they are finished and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156190",
+   "text": "A Shadowguard encounter has opened. You are currently ~1_NUM~ in the queue. If you are next, you may proceed to the entry stone to join.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156191",
+   "text": "Thy generosity is most appreciated, however I cannot manage a donation of that magnitude.  Perhaps you could reduce the amount of the donation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156192",
+   "text": "Dragon Turtle Debuff",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156193",
+   "text": "~1_NAME~ takes ~2_PERCT~ of the damage from your physical attacks.You take ~3_PERCT~ of the damage from ~1_NAME~ physical attacks.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156194",
+   "text": "Your number of stable slots has been increased by ~1_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156195",
+   "text": "~1_VAL~% chance to not consume poison charges when using infecting strike or injected strike.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156196",
+   "text": "You must complete each level of Shadowguard before attempting the Roof.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156197",
+   "text": "You cut away some pelts, but they remain on the corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156198",
+   "text": "You cut away some scoots, but they remain on the corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156199",
+   "text": "Moon Dial",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156200",
+   "text": "Black Tiger Pelts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156201",
+   "text": "White Tiger Pelts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156202",
+   "text": "You skin it, and place the pelts in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156203",
+   "text": "Your Current Gold Balance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156204",
+   "text": "Your Current Platinum Balance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156205",
+   "text": "Your Trade Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156206",
+   "text": "Your Trade Platinum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156207",
+   "text": "Their Trade Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156208",
+   "text": "Their Trade Platinum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156209",
+   "text": "You have received a mastery primer!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156210",
+   "text": "An Enchanted Apple of ~1_TYPE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156211",
+   "text": "You cannot throw this there!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156212",
+   "text": "*Your throw seems to have summoned an ambush!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156213",
+   "text": "*Your throw releases powerful magics and destroys the tree!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156214",
+   "text": "The Withered Bones of an Adventurer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156215",
+   "text": "A Tattered Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156216",
+   "text": "I've finally found...this vile orchard is the key to Minax's enchantments!...days I've spent trapped within this tower, I dare not pick the fruit from the foliage for I know not what consequences may...Hunger is building...so hungry I must...Blech! Vile fruit!...What's this? For when I tossed this vile apple from whence it came a horrific beast appeared!...for I hope I can fight it...<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156217",
+   "text": "Purifying Flames",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156218",
+   "text": "Cursed Suit of Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156219",
+   "text": "You cannot place this there!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156220",
+   "text": "Corrupt Phylactery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156221",
+   "text": "Purified Phylactery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156222",
+   "text": "*You throw the phylactery at the armor causing it to disintegrate!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156223",
+   "text": "Shattered Metal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156224",
+   "text": "*The cursed armor rejects the phylactery!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156225",
+   "text": "*You purify the phylactery!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156226",
+   "text": "Mastery Index",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156227",
+   "text": "Active Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156228",
+   "text": "Canal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156229",
+   "text": "You cannot use this item while it is in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156230",
+   "text": "Flowing Trough",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156231",
+   "text": "Bell Stand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156232",
+   "text": "Feeding Bell",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156233",
+   "text": "Magic Drake Wing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156234",
+   "text": "All damage from your physical attacks have been reduced by ~1_val~%.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156235",
+   "text": "An Enchanting Crystal Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156236",
+   "text": "You need at least ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ skill to use that mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156237",
+   "text": "Donate Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156238",
+   "text": "Dragon Turtle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156239",
+   "text": "You hatch a dragon turtle!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156240",
+   "text": "dinosaur slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156241",
+   "text": "myrmidex slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156242",
+   "text": "Darden's Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156243",
+   "text": "Aloron's Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156244",
+   "text": "You have bested this tower of Shadowguard! You will be teleported out of the tower in 60 seconds!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156245",
+   "text": "You are currently already in the queue for the finale. You cannot join this queue unless you leave the other queue. Use the context menu option on the crystal ball to exit that queue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156246",
+   "text": "You are currently already in the queue for one of the tower encounters. You cannot join this queue unless you leave the other queue. Use the context menu option on the crystal ball to exit that queue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156247",
+   "text": "Exit Shadowguard Queues",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156248",
+   "text": "You have been removed from all Shadowguard queues",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156249",
+   "text": "All members of your party must complete each of the Shadowguard Towers before attempting the finale.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156250",
+   "text": "Congratulations! You have bested Shadowguard and prevented Minax from exploiting the Time Gate! You will be teleported out in a few minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156251",
+   "text": "There is a 30 minute time limit for each encounter. You will receive a time limit warning at 5 minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156252",
+   "text": "You have 5 minutes remaining in the encounter!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156253",
+   "text": "The encounter timer has expired!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156254",
+   "text": "Minax laughs as she deflects your puny attacks! Defeat her minions to close the Time Gate!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156255",
+   "text": "Minax Says: Well Well! You've managed to get through my fortress but alas you shall never foil my plans! Perhaps you need some friends to play with? Muwahhahah!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156256",
+   "text": "You prepare yourself to attempt to land three hits in rapid succession to the next target that damages you within a 2 tile radius.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156257",
+   "text": "How...How could this happen! I shall nay be bested by mere mortals! We shall meet again vile heroes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156258",
+   "text": "You shall burn as Trinsic burned at the hands of the Vile Lich Juo'nar!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156259",
+   "text": "Oh Anon my dear! Deal with these pesky intruders will you? Burn them to ASH!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156260",
+   "text": "You didn't think that ridiculous pie trick would work twice in a row? Virtuebane I command thee destroy these vile creatures!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156261",
+   "text": "And now you shall bow to the King of Kings! Suffer at the hands of the Feudal Lord Ozymandias!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156262",
+   "text": "Valley of Eodon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156263",
+   "text": "Auto Ignore Corpses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156264",
+   "text": "Object handles will be removed from viewed corpses for thirty minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156265",
+   "text": "Enhanced Client User Warning: You must enable tree foliage in order to do this encounter!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156266",
+   "text": "Mesanna's Minion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156267",
+   "text": "All members of your party are dead, have logged off, or have chosen to exit Shadowguard. You will be removed from the encounter shortly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156268",
+   "text": "Tiger Pelts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156269",
+   "text": "For your valor in defeating your foe a specialty item has been awarded to you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156270",
+   "text": "*You ready the bottle to throw but it's enchanting label persuades you to drink it instead!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156271",
+   "text": "*You wind up to throw but in your inebriated state you manage to hit yourself!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156272",
+   "text": "A Drain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156273",
+   "text": "*It appears to be an empty drain. You surmise that in order to stop the flood of elementals it may be best to divert the fountain's flow from each spigot*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156274",
+   "text": "*It looks to be an empty canal. You surmise you may be able to divert the flow of water in the fountain by connecting the spigots to the drains and turning on the spigots*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156275",
+   "text": "A Spigot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156276",
+   "text": "Myrmidex Larvae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156277",
+   "text": "silverback gorilla",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156278",
+   "text": "Infernus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156279",
+   "text": "Dimetrosaur",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156280",
+   "text": "Allosaurus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156281",
+   "text": "Gallusaurus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156282",
+   "text": "Archaeosarus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156283",
+   "text": "Najasaurus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156284",
+   "text": "Anchisaur",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156285",
+   "text": "Dragon Turtle Hatchling",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156286",
+   "text": "Wild Tiger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156287",
+   "text": "Exit Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156288",
+   "text": "Are you sure you wish to exit Shadowguard?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156289",
+   "text": "Saurosaurus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156290",
+   "text": "*The vines looks as though they may be strong enough to support climbing...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156291",
+   "text": "Eodon Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156292",
+   "text": "Silverback Gorilla",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156293",
+   "text": "Greater Phoenix",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156294",
+   "text": "Totem of the Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156295",
+   "text": "Anon's Boots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156296",
+   "text": "Shanty's Waders",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156297",
+   "text": "Minax's Sandals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156298",
+   "text": "Ozymandias' Obi",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156299",
+   "text": "Hawkwind's Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156300",
+   "text": "Juo'nar's Grimoire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156301",
+   "text": "Enchantress' Cameo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156302",
+   "text": "This title is obtained from Parry Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156303",
+   "text": "This title is obtained from Magery Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156304",
+   "text": "This title is obtained from Poisoning Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156305",
+   "text": "This title is obtained from Archery Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156306",
+   "text": "This title is obtained from Animal Taming Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156307",
+   "text": "This title is obtained from Swordsmanship Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156308",
+   "text": "This title is obtained from Mace Fighting Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156309",
+   "text": "This title is obtained from Fencing Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156310",
+   "text": "This title is obtained from Wrestling Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156311",
+   "text": "This title is obtained from Necromancy Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156312",
+   "text": "This title is obtained from Chivalry Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156313",
+   "text": "This title is obtained from Bushido Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156314",
+   "text": "This title is obtained from Ninjitsu Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156315",
+   "text": "This title is obtained from Spellweaving Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156316",
+   "text": "This title is obtained from Mysticism Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156317",
+   "text": "This title is obtained from Throwing Mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156318",
+   "text": "Destroyer of the Time Rift",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156319",
+   "text": "This is a reward title given for completing Shadowguard.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156320",
+   "text": "An Unstable Time Rift",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156321",
+   "text": "*You peer into the Time Rift and see back to the very beginning of Time...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156322",
+   "text": "A reward of ~1_ITEM~ has been placed in your bank.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156323",
+   "text": "A Fractured Time Gate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156324",
+   "text": "Defeat Semidar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156325",
+   "text": "Defeat Mephitis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156326",
+   "text": "Defeat Rikktor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156327",
+   "text": "Defeat Lord Oaks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156328",
+   "text": "Defeat Neira",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156329",
+   "text": "Defeat The Piper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156330",
+   "text": "Defeat Serado",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156331",
+   "text": "Defeat Meraktus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156332",
+   "text": "Defeat Ilhenir",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156333",
+   "text": "Defeat Twaulo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156334",
+   "text": "Defeat Abyssal Infernal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156335",
+   "text": "Defeat Primeval Lich",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156336",
+   "text": "Defeat Corgul",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156337",
+   "text": "Defeat A Dragon Turtle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156338",
+   "text": "A Time for Legends",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156339",
+   "text": "Greetings Brave Traveler!<br><br>Throughout my travels in time I have forever encountered those who've reached the pinnacle of their profession.  These Legends are told of in our most cherished tales and are the fabric by which heroes are born.  I offer you now a chance to walk the path of these Legends.  Complete my task and you too shall know the secrets of the Master.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156340",
+   "text": "Choose your path:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156341",
+   "text": "Prove yourself to Hawkwind, defeat thy foe in order to begin your journey among the Legendary.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156342",
+   "text": "You have proven your prowess on the battlefield and have completed the first step on the path of the Master!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156343",
+   "text": "Are you certain you wish to cancel at this time?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156344",
+   "text": "Anon's Spellbook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156345",
+   "text": "Dinosaur Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156346",
+   "text": "Myrmidex Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156347",
+   "text": "Eodon Tribe Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156348",
+   "text": "Stone Door (S Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156349",
+   "text": "Stone Door (E In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156350",
+   "text": "Left Metal Door (S Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156351",
+   "text": "Right Metal Door (S Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156352",
+   "text": "Left Metal Door (E In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156353",
+   "text": "Right Metal Door (E In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156354",
+   "text": "Defeat Dread Horn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156355",
+   "text": "Defeat Travesty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156356",
+   "text": "Defeat Chief Paroxysmus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156357",
+   "text": "Defeat Lady Melisande",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156358",
+   "text": "Defeat Monstrous Interred Grizzle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156359",
+   "text": "Defeat Shimmering Effusion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156360",
+   "text": "Inflicts double damage versus fey. Beware - this item property will make you more vulnerable to damage from demon creatures.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156361",
+   "text": "Trade Successful.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156362",
+   "text": "Trade cancelled due to invalid trade item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156363",
+   "text": "Trade cancelled due to one of the trader's lack of funds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156364",
+   "text": "HIRE AUCTION BROKER",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156365",
+   "text": "HIRE AUCTION BROKER",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156366",
+   "text": "Auction Broker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156367",
+   "text": "Dragon Turtle Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156368",
+   "text": "Crimson Dragon Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156369",
+   "text": "Spinning Lathe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156370",
+   "text": "Fletching Station",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156371",
+   "text": "Auction Safe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156372",
+   "text": "That item is not an auction safe.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156373",
+   "text": "You have added an auction safe to your broker.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156374",
+   "text": "You have removed an auction safe from your broker.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156375",
+   "text": "The broker is not able to add this auction safe at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156376",
+   "text": "The broker is not able to remove this auction safe at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156377",
+   "text": "Happy Holidays from the Ultima Online Team! We have placed a gift token in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156378",
+   "text": "Recipe for a Chocolate Nutcracker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156379",
+   "text": "Potted Snowfluff Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156380",
+   "text": "Recipe for a Runic Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156381",
+   "text": "Happy Holidays! Please choose a gift:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156382",
+   "text": "Holiday Giftbox",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156384",
+   "text": "ADD AUCTION SAFE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156385",
+   "text": "REMOVE AUCTION SAFE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156386",
+   "text": "2015 Holiday Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156387",
+   "text": "Dark Chocolate Nutcracker Wrapped in Gold Foil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156388",
+   "text": "Milk Chocolate Nutcracker Wrapped in Gold Foil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156389",
+   "text": "White Chocolate Nutcracker Wrapped in Gold Foil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156390",
+   "text": "dark chocolate nutcracker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156391",
+   "text": "milk chocolate nutcracker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156392",
+   "text": "white chocolate nutcracker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156393",
+   "text": "*You carefully peel back the wrapper...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156394",
+   "text": "Peculiar Potted Snowfluff Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156395",
+   "text": "Card of Semidar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156396",
+   "text": "Dupre the Paladin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156397",
+   "text": "Nystul the Mage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156398",
+   "text": "Shamino Sallé Dacil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156399",
+   "text": "Juo'nar the Lich",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156400",
+   "text": "Description:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156401",
+   "text": "sweet cocoa butter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156402",
+   "text": "You don't have any foil.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156403",
+   "text": "You don't have any sweet cocoa butter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156404",
+   "text": "Time Remaining:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156405",
+   "text": "Your Current Gold Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156406",
+   "text": "Your Current Platinum Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156407",
+   "text": "Place Bid",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156408",
+   "text": "Buy Now Price:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156409",
+   "text": "Buy Now",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156410",
+   "text": "Item Starting Bid Plat:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156411",
+   "text": "Item Starting Gold Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156412",
+   "text": "Buy Now Gold Price:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156413",
+   "text": "Buy Now Plat Price:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156414",
+   "text": "Start Auction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156415",
+   "text": "Stop Auction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156416",
+   "text": "Set Starting Bids",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156417",
+   "text": "Set Buy Now Price",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156418",
+   "text": "Three Days",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156419",
+   "text": "Five Days",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156420",
+   "text": "Seven Days",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156421",
+   "text": "Select New Auction Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156422",
+   "text": "History",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156423",
+   "text": "Platinum Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156424",
+   "text": "Gold Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156425",
+   "text": "Bid Time:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156426",
+   "text": "You have won an auction for ~1_ITEMNAME~! Your bid amount of ~2_BIDAMT~plat and ~3_BIDAMT~gp won the auction. You have 3 days from the end of the auction to claim your item or it will be lost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156427",
+   "text": "You have been out bid in an auction for ~1_ITEMNAME~. The current winning bid amount is ~2_BIDAMT~plat and ~3_BIDAMT~gp.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156428",
+   "text": "Your auction for ~1_ITEMNAME~ has ended with a winning bid of ~2_BIDAMT~plat and ~3_BIDAMT~gp. The winning bid has been deposited into your currency account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156429",
+   "text": "You must wait for your auctioned item to be claimed before adding a new item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156430",
+   "text": "You must wait for your auctioned item to be claimed before modifying this auction safe.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156431",
+   "text": "You cannot modify this while an auction is in progress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156432",
+   "text": "There is no active auction to complete this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156433",
+   "text": "Your bid has been placed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156434",
+   "text": "You must set a starting bid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156435",
+   "text": "Current Gold Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156436",
+   "text": "Current Platinum Bid:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156437",
+   "text": "Auction Safes can only be placed in public type houses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156438",
+   "text": "Auction Ended",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156439",
+   "text": "*You peel back to the wrapper to reveal a Card of Semidar!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156440",
+   "text": "Auction Pending",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156441",
+   "text": "<DIV ALIGN=CENTER>Auction Safe</DIV><DIV ALIGN=LEFT><BR>Auction Safe deeds can be obtained from the veteran reward system.<BR>An Auction Safe can be placed within public houses. When placed in a home the owner will be able to set access security on which users are allowed to place bids.<br>Setting up an auction first requires you to select an item from your backpack for auction. This item cannot be gold, a container, over 399 stones in weight, and must meet <A HREF=\"http://uo.com/wiki/ultima-online-wiki/gameplay/npc-commercial-transactions/npcs-player-owned\"> requirements for adding an item to a vendor.</A>Once the item has been added it will be placed on the auction safe to be displayed. A starting bid and auction length must be set before you can start the auction and cannot be changed once the auction begins. 140 characters can be used to describe your auction item which can be updated at any time. A Buy Now price can be set which will allow customers to skip a bidding war and purchase the item at listed cost, but by doing so includes an approximate 5% fee on the purchase price.<br>On completion of the auction the owner account will receive their payment immediately and will be notified by in game mail of the outcome. The winning bidder will now have 3 days to retrieve their item from the auction safe or it will revert back to the owner. Once the auctioned item has been retrieved the auction safe will once again be available to start a new auction.<br><br>In order to bid on an auction, players must have<A HREF=\"http://uo.com/wiki/ultima-online-wiki/player/money\"> currency available in their account.</A> Bidders can then place a bid for the maximum amount they are willing to pay for the listed item. Funds will immediately be removed from your account if your bid is successful. If your bid is higher than the current maximum bid yours will become the current winning bid. If you are out bid as the winning bid you will be notified by in game mail and your bid will be refunded to your account. On completion of the auction if you are the winning bid you will be notified that you have three days to claim your item. Upon claiming your item if you have any change as a result of your maximum bid it will be refunded to you.</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156442",
+   "text": "BIDDER MENU",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156443",
+   "text": "Runic Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156444",
+   "text": "Auction Safe Pouch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156445",
+   "text": "You have been out bid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156446",
+   "text": "You must use an axe on this item to retrieve it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156447",
+   "text": "This auction is private.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156448",
+   "text": "*He holds his spear up in a threatening manner and lowers it when he realizes you aren't a bird*  Ahhh..oh...another adventurer! What a relief! What is this place? One moment I'm on the road with my cart here, set out to deliver an order of delicious treats and the next I'm here! It wouldn't have been so bad except for those vicious birds that ambushed me! They've flown off with all my gold foil and without it holiday chocolates just aren't the same. I bet if you were to track down those vicious birds you'd find some foil. You can use it to cook up some delectable chocolate treats. Good luck!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156449",
+   "text": "Shredded Foil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156450",
+   "text": "Macaw Feathers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156451",
+   "text": "Willy the Legendary Chocolatier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156452",
+   "text": "You can't use a bladed item on an auction safe that has an auction item or is currently active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156453",
+   "text": "You cannot currently take this action because you have auction safes locked down in your home. You must remove them first.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156454",
+   "text": "Your winning bid amount of ~1_BIDAMT~plat and ~2_BIDAMT~gp for ~3_ITEMNAME~ has been refunded to you due to house collapse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156455",
+   "text": "One Hour",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156456",
+   "text": "You cannot commit this house design because housing customization is currently unavailable. Please wait a few minutes and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156457",
+   "text": "House customization is currently unavailable. Please wait a few minutes and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156458",
+   "text": "Hawkwind: I'm afraid I have foreseen a most unfortunate timeline of events...<br><br>Blackthorn: Tell me, what is it that troubles you?<br><br>Hawkwind: I brought the Britannians to Shadowguard to aid in the battle against Minax, in doing so I fear I may have placed the native peoples in grave peril. The Britannians are a curious and brave people, I fear that curiosity has put the Valley of Eodon at risk. Britannians seek to take advantage of the natural resources in Eodon.<br><br>Blackthorn: Such is the nature of all humans. Surely you knew of this risk?<br><br>Hawkwind: Indeed, for every action there is an equal and opposite reaction. Cause and effect are linked at the most fundamental levels.<br><br>Blackthorn: And so what is the effect of the Britannian's adventurism?<br><br>Hawkwind: Scores of Dragon Turtles lay dead, tiger carcasses litter the jungle floor. Native tribes people have been murdered at the hands of what they only know as foreign invaders.<br><br>Blackthorn: *Blackthorn looks down solemnly* One must ask whether the ends justify the means...<br><br>Hawkwind: We could not allow Minax to take hold in Eodon.  As any other threat, I am certain the Britannians will answer the call.<br><br>Blackthorn: Tis the very nature of my Kingdom and its peoples to rise in a time of need.<br><br>Hawkwind: With so much death the Myrmidex have grown increasingly bold. The abundance of carrion has lured them from their dark pits to feed and bolster their numbers. The Barrab Tribe has seen this as an omen and increased the fervor of their zealotism. If the Myrmidex are not held in check, I fear the entire Valley will be overrun.<br><br>Blackthorn: Is there no way to stop the invasion?<br><br>Hawkwind: There is always another path on the Time Line. We must unite the Tribes of Eodon against the Barrab. Only then can they stop the Myrmidex invasion.<br><br>Blackthorn: *King Blackthorn smiles at you* Well then!  Take these orders to Sir Geoffrey at his camp near the Barrab Tribe in the Valley of Eodon.  Godspeed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156459",
+   "text": "A step closer to quelling the Myrmidex threat...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156460",
+   "text": "Tis unfortunate, in this time of great need we must look to our inner courage...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156461",
+   "text": "There is little time to delay. Deliver the orders to Sir Geoffrey at his camp near the Barrab Tribe in the Valley of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156462",
+   "text": "Ahh, King Blackthorn sent you did he?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156463",
+   "text": "Uniting the Tribes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156464",
+   "text": "*Sir Geoffrey looks up at you* What's this? Ah! Here to join the effort then? We've been trying for weeks to push through to the Barrab and get them to give us the secrets to entering the Myrmidex pits, but alas we have had little luck.  King Blackthorn seems to think our only hope is to pressure the Barrab via the other Eodonian tribes.  We tried to approach them initially but were met with aggression.  It wasn't until Professor Rafkin arrived that we were able to peacefully communicate with them.  In order for them to join our cause you'll need to gain their trust.  The Sakkhra worship these overgrown Lizardmen, \"Di-no-saur\" is the word they use, bunch of rubbish if you ask me, but you should find their High Chief in the Sakkhra walled village to the North beyond the rivers.  The Urali worship the Dragon Turtle, shucks, to be honest I thought such a creature was myth until one came crashing up on a beach during one of our early expeditions.  You can find the Urali just north of the beach lined streams that are home to the Dragon Turtles.  The Jukari worship the great Volcano.  Nasty bunch too, took out a company of my men with pickaxes to the skull.  In any case, they can be found at the base of the Volcano to the Southeast.  The Kurak are lightning fast and worship the jungle cats they call \"Ti-gers\"  Cute little things until one rips you apart and drags you back to its den *chuckles a bit*  Their tribe is in the lowlands to the Southwest.  The Barako live high up in the trees and worship the gorillas that populate that region.  Professor Rafkin says something about a mythical giant ape, bunch of baloney if you ask me.  Their tribe sits in the forest canopy to the East.  Bring me back proof that the tribes have agreed to join our cause and you'll be rewarded handsomely.  Or this jungle will tear you apart, whichever happens first.  Good luck!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156465",
+   "text": "The situation is dire, King Blackthorn. I fear only a courageous adventurer can aid us...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156466",
+   "text": "Get these supplies unloaded! Set up a perimeter! I don't want to see a Myrmidex within 10 feet of this camp! Where's that bloody assistance the King promised!?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156467",
+   "text": "Mosaic of Heluzz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156468",
+   "text": "Totem of Fabozz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156469",
+   "text": "Fires of Kukuzz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156470",
+   "text": "The Skull of Motazz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156471",
+   "text": "The Skull of Aphazz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156472",
+   "text": "Well then stop wasting my bloody time! Haven't you see we've got a war to win?!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156473",
+   "text": "This is an account-bound item which cannot be added.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156474",
+   "text": "Map to Auction ~1_ITEMNAME~: ~2_HOUSE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156475",
+   "text": "Please select 'Accept' if you would like to pay ~1_cost~ gold to teleport to auction house ~2_name~. For this price you will also be able to teleport back to this location within the next ~3_minutes~ minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156476",
+   "text": "This title is obtained by completing the Valley of One Quest in the Valley of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156477",
+   "text": "Dinosaur Hunter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156478",
+   "text": "The auction safe map has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156479",
+   "text": "Not Antique",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156480",
+   "text": "Banana Horde",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156481",
+   "text": "Tiger Rug",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156482",
+   "text": "Black Tiger Rug",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156483",
+   "text": "White Tiger Rug",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156484",
+   "text": "Small Banana Hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156485",
+   "text": "Medium Banana Hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156486",
+   "text": "Large Banana Hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156487",
+   "text": "Select One:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156488",
+   "text": "Dragon Turtle Fountain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156489",
+   "text": "*The stone feels warm and pulses as you touch it*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156490",
+   "text": "<center>Enclosure Locking Mechanism</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156491",
+   "text": "<center>Unlock the Enclosure</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156492",
+   "text": "Attempt to pick the enclosure lock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156493",
+   "text": "*A poisonous dart embeds itself into your neck!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156494",
+   "text": "*You are ambushed by attacking trappers!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156495",
+   "text": "*The shaking ground damages and disorients you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156496",
+   "text": "*The Hatchling safely burrows into the sand*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156497",
+   "text": "*The flowing lava scorches you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156498",
+   "text": "Endless Journey accounts cannot join Vice vs Virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156499",
+   "text": "*The enclosure unlocks!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156500",
+   "text": "*The cub looks at you playfully. Your attack fails as you are overwhelmed by its cuteness*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156501",
+   "text": "*You watch as the Tiger Cub safely returns to the Kurak Tribe*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156502",
+   "text": "*The cub begins warily making its way towards the Kurak Tribe. You decide it best to protect it*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156503",
+   "text": "You attack is ignored. You are not on the correct quest step.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156504",
+   "text": "*The Egg begins to jostle...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156505",
+   "text": "You must select a shorter auction length due to the fact that this stall lease will expire before the auction has completed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156506",
+   "text": "*The Volcano is becoming unstable!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156507",
+   "text": "*You uncover a lava rock and carefully store it for later!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156508",
+   "text": "Uh oh...that doesn't look like a lava rock!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156509",
+   "text": "You loosen some dirt but fail to find anything.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156510",
+   "text": "This item must be equipped or in your backpack to be used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156511",
+   "text": "*The ground cracks beneath your feet as steam rises up and scorches you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156512",
+   "text": "A Valley of One",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156513",
+   "text": "The Myrmidex Invasion of the Valley of Eodon has reached a critical point.  In order to force pressure on the Barrab Tribe and their Myrmidex allies, you must unite the Jukari, Kurak, Barako, Urali, and Sakkhra tribes to your cause.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156514",
+   "text": "You have disturbed the nesting grounds recently. You must wait before you can try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156515",
+   "text": "*You sense someone else is watching this nest...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156516",
+   "text": "Orders from King Blackthorn to Sir Geoffrey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156517",
+   "text": "Tiger Cub Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156518",
+   "text": "These tribes aren't going to unite themselves, best get on with it and visit the Sakkhra, Urali, Jukari, Kurak, and Barako tribes!  We've got a war to win!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156519",
+   "text": "Well done! I don't know how you managed to pull it off but this is the break we've been waiting for! With the support of the other tribes we can begin to plan an offensive to quell the Myrmidex threat!  It will likely take some time before our troops and the Tribes are ready.  I will send word when the time to attack comes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156520",
+   "text": "We now have the support to rally against the Myrmidex. Well done and many thanks!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156521",
+   "text": "The Great Hunt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156522",
+   "text": "*The Sakkhra High Chieftess looks at you apprehensively, as the greeting Professor Rafkin's book taught you rolls from your tongue The High Chief smiles and warms to you*  Rafkin say you can help Sakkhra.  Sakkhra do not trust you.  You want Sakkhra trust, then you fight biggest of all dinosaur, T Rex!  You survive the T Rex hunt, then Sakkhra trust you.  *The Chief motions you west to the nearby dinosaur plains*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156523",
+   "text": "Empty Nest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156524",
+   "text": "*The Urali High Chieftess looks at you apprehensively, as the greeting Professor Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms to you*  Rafkin say you can help Urali.  Urali do not trust you.  You want Urali trust, then you stop them taking Dragon Turtle Egg.  You stop Dragon Turtle Egg theft, then Urali trust you.  *The Chieftess motions you south towards the nearby nesting beach*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156525",
+   "text": "The Great Volcano",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156526",
+   "text": "*The Jukari High Chief looks at you apprehensively, as the greeting Professor Rafkin's book taught you rolls from your tongue The Chief smiles and warms to you* Rafkin say you can help Jukari. Jukari do not trust you. You want Jukari trust, then you mine Jukari Lavastone from Volcano.  Volcano no eat you, then Jukari trust you. *The chief motions you east toward the Volcano*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156527",
+   "text": "The Pride of the Ambush",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156528",
+   "text": "*The Kurak High Chief looks at you apprehensively, as the greeting Professor Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms to you*  Rafkin say you can help Kurak.  Kurak do not trust you.  You want Kurak trust, then you free cubs from trappers.  You free cubs from trappers, then Kurak trust you. *The chieftess motions you south to the lowlands*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156529",
+   "text": "The Great Ape",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156530",
+   "text": "*The Barako High Chief looks at you apprehensively, as the greeting Professor Rafkin's book taught you rolls from your tongue The Chief smiles and warms to you*  Rafkin say you can help Barako.  Barako do not trust you.  You want Barako trust, then you battle Great Ape.  You go to banana cave and ape no eat you, then Barako trust you.  *The Chief motions you northeast toward the nearby banana cave*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156531",
+   "text": "You not kill giant dino yet? Sakkhra will not help until you kill big dino!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156532",
+   "text": "*The Chief looks at you...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156533",
+   "text": "Slay the Tyrannosaurus Rex",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156534",
+   "text": "Rescue 5 Dragon Turtle Hatchlings from poachers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156535",
+   "text": "You have rescued ~1_count~ of ~2_max~ Dragon Turtle Hatchlings.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156536",
+   "text": "You not save Dragon Turtle Hatchlings yet? Urali will not help until you save Dragon Turtle Hatchlings!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156537",
+   "text": "Ahhh-OOO! Ahhh-OOO!  Dragon Turtle dig-dig and swim-swim! You good to Urali! Urali trust you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156538",
+   "text": "Recover 5 lava rocks from the Caldera of the Great Volcano",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156539",
+   "text": "You have recovered ~1_count~ of ~2_max~ Lava Rocks.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156540",
+   "text": "You afraid of Great Volcano? Ha Ha! Britannian afraid!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156541",
+   "text": "OOO!  You bring Jukari lava rock, mean Volcano no like your taste HA HA! Jukari help you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156542",
+   "text": "You are not on the correct quest step to use this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156543",
+   "text": "You have rescued ~1_count~ of ~2_max~ tiger cubs.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156544",
+   "text": "Rescue 5 tiger cubs from the trapper enclosures.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156545",
+   "text": "You save tiger cubs! They little and helpless! Kurak will not help until you save tiger cubs!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156546",
+   "text": "You save tiger cubs! Kurak thank you and help you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156547",
+   "text": "Defeat the Great Ape",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156548",
+   "text": "*Thumps chest!* You battle Great Ape or Barako will not trust you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156549",
+   "text": "*Thumps chest* You battle Great Ape and win! You strong and Barako respect and trust you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156550",
+   "text": "*The Chieftess looks at you...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156551",
+   "text": "Trust of the Sakkhra Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156552",
+   "text": "Trust of the Urali Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156553",
+   "text": "Trust of the Jukari Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156554",
+   "text": "Trust of the Kurak Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156555",
+   "text": "Trust of the Barako Tribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156556",
+   "text": "Great Ape's Banana Hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156557",
+   "text": "Ahh-Ooo! Ahh-Ooo!  Britainnian kill big dino! Show courage and strength!  Sakkrah trust you now!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156558",
+   "text": "Volcano Caldera",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156559",
+   "text": "You must upgrade to Time of Legends to participate in this quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156560",
+   "text": "Fancy Loveseat (North)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156561",
+   "text": "Fancy Loveseat (West)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156562",
+   "text": "Professor Ellie Rafkin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156563",
+   "text": "Night in the Valley Volume I",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156564",
+   "text": "Night in the Valley Volume II",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156565",
+   "text": "The Morning After Volume I",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156566",
+   "text": "The Morning After Volume II",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156567",
+   "text": "On the Tribes of Eodon: Sakkhra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156568",
+   "text": "On the Tribes of Eodon: Urali",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156569",
+   "text": "On the Tribes of Eodon: Jukari",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156570",
+   "text": "On the Tribes of Eodon: Kurak",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156571",
+   "text": "On the Tribes of Eodon: Barako",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156572",
+   "text": "Written of in the most aged of manuscripts is a reference to a creature described as \"an aquatic dragon that inhabits the seas and are considered an even greater menace to mariners than the winds of a typhoon.  They are protected by a shell tougher than enchanted plate armor, and thus are extraordinarily difficult to defeat in combat\"  The Dragon Turtle prefers a sandy habitat and any who have been fortunate enough to catch a glimpse of the creature are almost certain to take note of its uncanny speed for its massive size, surely the result of the strong flippers it uses to move about.  The Urali revere the dragon turtle and view it as a gift from the heavens, a protector and near-deity among their people.  The Urali adorn allow themselves to sacrifice one dragon turtle every solar cycle to provide food and resources to their tribe.  The Urali are fine craftsman and have fashioned armor and adornments from the shells and sinews of the dragon turtle.  It is unfortunate that with the introduction of the Britannians to Eodon the Urali fear future generations of dragon turtles are in peril as their eggs have become quite prized.  A dragon turtle nest is in a sandy area, not far from a source of water.  A single female can lay many eggs, the hatchlings are then left to fend for themselves at the conclusion of their gestation.  I have observed Britannian poachers laying in wait for others to approach the nest so no others can try and make claim to the egg.  One member of our party was stealthy enough to sneak past the poachers and was able to return with samples of a hatched egg, as well as nesting materials.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156573",
+   "text": "The Northern stretches of Eodon are cut through by flowing streams and a vast swamp.  Lizard like beasts of fantastic origins inhabit these lands.  Our escorts have more than once attempted to best of these beasts, their armor and weapons showing the wear of such a challenge.  Protected from these creatures by tall stone walls - and displaying the most advanced building and farming technologies we have thus encountered in the Valley - are the Sakkhra.  The Sakkhra worship these lizard-like creatures which they refer to in a native word \"Di-no-saur\".  The towering walls of their village protect them from the Dinosaurs, but still the Sakkhra, adorned in colors as vibrant and varied as the reptiles they worship venture beyond the safety of their village to hunt the greatest of the dinosaurs, Tyrannosaurus Rex.  I have yet to encounter, and am almost thankful for it, the beast but in my exchanges with the Sakkrah I have learned the the Tyrannosaurus Rex is vicious animal that has an appetite for other dinosaurs which it feeds on to grow stronger.  I have urged my escorts to allow us to venture into the swamps in an effort to better study the creatures - alas they say it is too dangerous.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156574",
+   "text": "In the southern lowlands of the Valley of Eodon we encountered nimble jungle cats that hunt by the dim moonlight each night.  Several of our party were unfortunate enough to encounter these animals before our escorts were able to secure a perimeter.  The cats are worshiped by the Kurak Tribe.  The Kurak are a caring people with shared morals and beliefs of the Urali, but in relation to the tiger.  The Kurak adorn themselves in a variety of colors - matching the rarity in which one may encounter tigers in the wild with orange being the most common, with black and white being progressively more uncommon.  Wealthy homesteads in Britannia covet the furs of the tigers, particularly those of the juvenile tiger cubs.  Trappers have taken to the practice of enclosing the cubs before they can transport them for skinning.  Our escorts had a nasty encounter with several of the trappers, and antidotes to powerful poisons were required to save several who were injured.  The Kurak have attempted to free the cubs, the intricate locking mechanisms of the enclosures, has unfortunately proved to complex for them.  Care should be taken in the lowlands as the native tiger population does not take kindly to intruders given the circumstances.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156575",
+   "text": "A large volcano sits solemnly in the southern reaches of the Valley of Eodon.  Our expedition into this area of the Valley was met with litte in the way of encounters.  I had begun to dissect the native tongue of the indiginous peoples and had become somewhat proficient at modest communication with the wandering shaman we ocassionally encountered.  As we made our way deeper into the jungle we passed the temple complex that my escort refused further exploration until we knew more of the Valley's secrets.  It was nearing dusk when we first encountered the Jukari.  The deep crimson hue of their skin struck me as peculiar as first.  My apprehension from their appearance was quickly quelled as we began our exchange.  The Jukari are a faithful people and view the Volcano as a great sleeping giant.  Of particular note is their custom of proving bravery among their kin.  Hidden deep within the caldera of the volcano is a sacred rock the Jukari call the lava rock.  The lava rock pulses with an inner fire, and the Jukari covet the shards of this stone as prized possessions.  Only the bravest of their tribe venture into the most fertile grounds closest to the lava flow.  The Jukari have described a process by which the Volcano \"eats\" those who are not fast enough, alas I can only surmise this refers to the unfortunate seekers who are trapped within the scorching lava flows and do not seek refuge within the outcroppings of the lava tubes where I am told the flow gets diverted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156576",
+   "text": "During our exploration of the Northeastern reaches of the Valley we encountered a dense forest with a tall, expansive canopy.  Bananas grow in mass within the forest, a welcome surprise to our escorts who somehow manage to continue to eat whatever nightly concoction our cooks manage to prepare.  I was unaware bananas could be prepared with such variety, and I must admit while the sound of a warm banana salad left little to be desired on my starving palate I was pleasantly surprised how delicious the dish was.  As one might suspect, bananas in the Valley of Eodon are similar to what one might encounter in Britannia, albeit they are somewhat longer and more slender.  It seemed to matter little to the indigenous gorilla population who when approached can be quite aggressive and possess great strength and accuracy, particularly when targeting someone with a recently picked banana.  In huts nestled high in the trees are the Barako tribe.  The Barako, much like the other tribes of Eodon, worship the gorilla and are in awe of their strength.  The Barako are battle tested and their dress reflects their readiness for a fight.  Most interestingly enough, however, was what the Chief of the Barako described to me as the Great Ape.  As the legend goes a great ape lives in a cave, surround by a hoard of bananas the ape's lesser gorilla accomplices gather, not far from the Barako.  The Chief also went on to describe the few encounters their people had with the Great Ape, particularly mentioned the strength and throwing accuracy of the Ape itself.  Some scouts in our party ventured into the cave only to report what appeared to be man made trusses with barrels resting on top.  While the barrels appeared massive and likely requiring the effort of several men to move, they would be little challenge for a creature of the size and stature of the Great Ape.  Our scouts did not stay long, however, as the number of gorillas within the cave quickly swelled with their presence before the scouts retreated out of a fear for their safety.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156577",
+   "text": "The dim light from the campfire flickered against the canvass tent.  In the still of night the jungle was alive with the howls of monkeys and the singing of crickets.  A gentle breeze rustled the fronds of nearby palms.  Even though it had been months since I'd left the Lyceum, the jungles of Eodon still made me uneasy.  I had seen such beauty in the Valley during my time here.  Brilliant fauna gave Eodon character and intimacy.  Meandering streams cutting through the verdant landscape made it feel alive and fertile.  In the distance the towering caldera of a great volcano smoked confidently, owing to its wise past.  On the surface, Eodon appeared inviting and warm, but a foreign and present danger lay hidden beneath.  I had been fortunate enough to only encounter the Myrmidex once.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156578",
+   "text": "A gleam of sunshine had caught my eye, the reflection from their chitonous exoskeleton.  Before I could focus on what I was seeing my escort let out a bellowing war cry and brought his axe down in front of me.  The axe cut through the air and landed squarely in the thorax of the Myrmidex warrior.  Greenish hemolymph oozed from the wound as the creature struggled and writhed.  I tried to turn away but my curiosity drew me in.  The creature was large, nearly twice the size of a man.  Insectoid in appearance with elongated, jointed appendages.  The unmistakable crimson of blood spattered a pair of pincers protruding from the head.  As I moved closer to get a better look my escort cleaved his axe through the air once again, this time decapitating the beast.  More greenish ooze leaked from the creature's neck and pooled onto the jungle floor.  I had not seen a Myrmidex since that day.  I would come to learn the Myrmidex were a mostly subterranean species, coming to the surface only on occasion to hunt for food to return to the hive.  Eodon was full of surprises and each day was rich with discovery.  Such work had made me tired, a welcome benefit as it made it easier to fall asleep and assuage my unease.  Just as I felt my mind begin to drift to the land of nod the jungle fell silent.  Seconds later a chilling scream echoed throughout the Valley.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156579",
+   "text": "The jungle air was cool.  Morning dew weighed on nearby palms and chirping birds welcomed the rising sun.  I'd only managed a few hours sleep and woke groggy, my mind was in a fog.  Several porters had been attacked in the middle of the night, what remained of their corpses was covered in a thick yellowish-green mucous.  The escorts managed to defend against the Myrmidex, but not before they had their chance at us.  The escorts assembled the corpses, both of the porters and the Myrmidex a short ways from the camp so that I could examine them.  As I meandered awkwardly through the camp I looked at the men who'd been escorting me.  Their faces looked tired and worn.  It had been months since we first set foot into the Valley.  I remembered the exhilaration I felt when I stepped through the Moongate and the lushness of the Valley of Eodon came into my focus for the first time.  Eodon, despite its dangers, was a truly remarkable place.  Flora and fauna previously unknown to Britannia was ripe for study.  Creatures, both friendly and foe, looked upon us with an equal level of curiosity.  I had spent these months carefully indexing and cataloging everything we'd come across.  The landscape, the beautiful flowers, the curious creatures that called Eodon home.  Inside one of our tents a small table had a modest selection of provisions.  Our cook had unfortunately fallen from a sheer rock face so we'd  been surviving on rations of salted fish steaks and whatever fruit we could forage from the jungle.  If I'd never seen another banana in my life it'd be too soon.  The corpse showed clear signs of mastication.  I had learned much about the biology of the Myrmidex since we first encountered them.  From my observations I knew there were three stages in the growth cycle.  Like most insects the Myrmidex grew from a single egg implanted into an organic host.  These eggs were mostly implanted by the drone of the species, often moderately sized with modified fangs that served as ovipositors.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156580",
+   "text": "The eggs were no doubt provided to the drones by a Queen, however this is only my hypothesis as we have yet to venture into their pits.  The Myrmidex live in a sandy habitat and create elaborate subterranean pits within the sand.  The species is mostly nocturnal, as we have not encountered them in daylight hours.  As I examined the corpse even further I could see the embryonic mucosa covering the tissues - a viscous greenish-yellow slime leftover from the larvae feeding.  No doubt the larva feeding on this corpse had already burrowed and soon will emerge as the largest of the species we'd observed so far, the Warrior.  The Myrmidex Warriors were huge.  Their forward tarsus was modified into a razor sharp talon, capable of slicing their prey with ease.  The exoskeleton of the Warrior was much hardier than that of other individuals, often times marred with the scars of past aggression.  I motioned over to the escorts and instructed them to burn the bodies.  Burning the bodies was the only sure way, so far as we had determined, to prevent additional larva from hatching were they present.  I returned to makeshift mess tent.  I didn't have much of an appetite. I had collected some samples from the corpses before the escorts burned them.  I stored them within my already growing collection of items I'd collected during our time in the Valley.  I always aimed for a well kept tent, but often found my work strewn about as I furiously tried to document everything I'd seen.  For all its danger Eodon was truly an enchanting place and I was hungry for knowledge.  Outside the sun was just beginning to peak from behind the Volcano.  I looked up and closed my eyes, basking in the warmth of its gentle rays.  I let myself smile and relax for just a moment before opening my eyes once again.  The sun was higher now and I had to squint.  As my eyes came into focus I felt my heart sink, unease consumed my body.  I froze immediately.  Just beyond the perimeter of our camp I felt a hundred eyes on me.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156581",
+   "text": "A bag with a unique treasure",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156582",
+   "text": "Fancy Couch (North)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156583",
+   "text": "Fancy Couch (West)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156584",
+   "text": "Ahhhh-OOOO! Ahhh-OOOO!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156585",
+   "text": "You've completed a quest!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156586",
+   "text": "Before using the in game store, you must be in a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156587",
+   "text": "Featured",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156588",
+   "text": "Character",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156589",
+   "text": "Promotional Code",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156590",
+   "text": "Newest",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}
