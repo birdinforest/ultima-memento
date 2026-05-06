@@ -749,7 +749,9 @@ namespace Server.Engines.MLQuests.Objectives
 				Point3D off = UnsentLetterQuestPackRuntime.ClerkOffset(i);
 				h.MoveToWorld(new Point3D(loc.X + off.X, loc.Y + off.Y, loc.Z), map);
 				h.Combatant = pm;
-				h.FocusMob = pm;
+
+				if (h is BaseCreature bc)
+					bc.FocusMob = pm;
 			}
 
 			UnsentLetterDevLog.Write(pm, "clerk_fight",

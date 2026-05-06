@@ -409,7 +409,10 @@ namespace Server.Engines.MLQuests
 				br.QuestPlayer = pm;
 
 			if (a != null && a.buffSecondWaveHits && wavePhase >= 2)
-				m.SetHits(Math.Min(m.HitsMax + 25, m.HitsMax + (int)(m.HitsMax * 0.18)));
+			{
+				if (m is BaseCreature bc)
+					bc.SetHits(Math.Min(m.HitsMax + 25, m.HitsMax + (int)(m.HitsMax * 0.18)));
+			}
 
 			return m;
 		}
@@ -454,8 +457,8 @@ namespace Server.Engines.MLQuests
 
 			if (h != null)
 				h.QuestPlayer = pm;
-			else if (c != null && c.hirelingExtraHits > 0)
-				m.SetHits(m.HitsMax + c.hirelingExtraHits);
+			else if (c != null && c.hirelingExtraHits > 0 && m is BaseCreature bc)
+				bc.SetHits(m.HitsMax + c.hirelingExtraHits);
 
 			return m;
 		}
@@ -479,7 +482,9 @@ namespace Server.Engines.MLQuests
 			m.MoveToWorld(new Point3D(o.X + Utility.RandomMinMax(min, max), o.Y + Utility.RandomMinMax(min, max), o.Z), map);
 
 			m.Combatant = pm;
-			m.FocusMob = pm;
+
+			if (m is BaseCreature bc)
+				bc.FocusMob = pm;
 		}
 
 		private static void ApplyMobileAppearance(Mobile m, int body, int hue, List<UnsentLetterPackEquipEntry> equipment)
@@ -534,10 +539,7 @@ namespace Server.Engines.MLQuests
 					it.Hue = e.hue;
 
 				if (!m.EquipItem(it))
-				{
-					if (!m.AddItem(it))
-						m.AddToBackpack(it);
-				}
+					m.AddToBackpack(it);
 			}
 		}
 
