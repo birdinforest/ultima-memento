@@ -104,7 +104,7 @@ namespace Server.Gumps
 			col5 = col5 + ResolveText( from, "Sinister" ) + "<BR><BR>";
 			col5 = col5 + ResolveText( from, "Villainous" ) + "<BR><BR>";
 			col5 = col5 + ResolveText( from, "Evil" ) + "<BR><BR>";
-			col5 = col5 + ResolveText( from, "Dread" ) + "<BR><BR>";
+			col5 = col5 + ResolveText( from, "Dire" ) + "<BR><BR>";
 
 			string col6 = "";
 			col6 = col6 + ResolveText( from, "10,000 & up" ) + "<BR><BR>";
@@ -118,7 +118,7 @@ namespace Server.Gumps
 			col6 = col6 + ResolveText( from, "Sinister Lord" ) + "<BR><BR>";
 			col6 = col6 + ResolveText( from, "Dark Lord" ) + "<BR><BR>";
 			col6 = col6 + ResolveText( from, "Evil Lord" ) + "<BR><BR>";
-			col6 = col6 + ResolveText( from, "Dread Lord" ) + "<BR><BR>";
+			col6 = col6 + ResolveText( from, "Dire Lord" ) + "<BR><BR>";
 
 			AddHtml( 20, 80, 144, 495, @"<BODY><BASEFONT Color=" + color + ">" + col1 + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 164, 80, 144, 495, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + col2 + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);

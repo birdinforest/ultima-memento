@@ -831,6 +831,24 @@ def main() -> int:
             except OSError as e:
                 print(f"could not remove {p}: {e}", file=sys.stderr)
 
+    # Normalize all locale JSON to consistent 2-space indent, preventing
+    # whitelisted keep_extra files from drifting after manual edits.
+    for d in (OUT_EN_DIR, OUT_ZH_DIR):
+        if not os.path.isdir(d):
+            continue
+        for fn in os.listdir(d):
+            if not fn.endswith(".json"):
+                continue
+            p = os.path.join(d, fn)
+            try:
+                with open(p, encoding="utf-8") as f:
+                    data = json.load(f)
+                with open(p, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+                    f.write("\n")
+            except Exception:
+                pass  # skip unreadable files
+
     print(f"wrote {OUT_EN_DIR}/*.json and {OUT_ZH_DIR}/*.json")
     return 0
 

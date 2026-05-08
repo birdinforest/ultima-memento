@@ -418,20 +418,20 @@ namespace Server.Items
 			};																														
 			private static CraftResourceInfo[] m_SpecialInfo = new CraftResourceInfo[]																														
 			{																														
-			new CraftResourceInfo( 2859,	2859,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064088	,	1064102	,	1063811,	 "Spectral",	CraftAttributeInfo.SpectralSpec,	CraftResource.SpectralSpec,	typeof( SpectralSpec ) ),		
-			new CraftResourceInfo( 2860,	2860,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064089	,	1064103	,	1063812,	 "Dread",	CraftAttributeInfo.DreadSpec,	CraftResource.DreadSpec,	typeof( DreadSpec ) ),		
-			new CraftResourceInfo( 2937,	2937,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064090	,	1064104	,	1063813,	 "Ghoulish",	CraftAttributeInfo.GhoulishSpec,	CraftResource.GhoulishSpec,	typeof( GhoulishSpec ) ),		
-			new CraftResourceInfo( 2817,	2817,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064091	,	1064105	,	1063814,	 "Wyrm",	CraftAttributeInfo.WyrmSpec,	CraftResource.WyrmSpec,	typeof( WyrmSpec ) ),		
-			new CraftResourceInfo( 2882,	2882,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064092	,	1064106	,	1063815,	 "Holy",	CraftAttributeInfo.HolySpec,	CraftResource.HolySpec,	typeof( HolySpec ) ),		
-			new CraftResourceInfo( 1194,	1194,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064093	,	1064107	,	1063816,	 "Bloodless",	CraftAttributeInfo.BloodlessSpec,	CraftResource.BloodlessSpec,	typeof( BloodlessSpec ) ),		
-			new CraftResourceInfo( 2815,	2815,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064094	,	1064108	,	1063817,	 "Gilded",	CraftAttributeInfo.GildedSpec,	CraftResource.GildedSpec,	typeof( GildedSpec ) ),		
-			new CraftResourceInfo( 2858,	2858,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064095	,	1064109	,	1063818,	 "Demilich",	CraftAttributeInfo.DemilichSpec,	CraftResource.DemilichSpec,	typeof( DemilichSpec ) ),		
-			new CraftResourceInfo( 2867,	2867,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064096	,	1064110	,	1063819,	 "Wintry",	CraftAttributeInfo.WintrySpec,	CraftResource.WintrySpec,	typeof( WintrySpec ) ),		
-			new CraftResourceInfo( 0xB54,	0xB54,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064097	,	1064111	,	1064077,	 "Fire",	CraftAttributeInfo.FireSpec,	CraftResource.FireSpec,	typeof( FireSpec ) ),		
-			new CraftResourceInfo( 0xB57,	0xB57,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064098	,	1064112	,	1064079,	 "Cold",	CraftAttributeInfo.ColdSpec,	CraftResource.ColdSpec,	typeof( ColdSpec ) ),		
-			new CraftResourceInfo( 0xB51,	0xB51,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064099	,	1064113	,	1064081,	 "Venom",	CraftAttributeInfo.PoisSpec,	CraftResource.PoisSpec,	typeof( PoisSpec ) ),		
-			new CraftResourceInfo( 0xAFE,	0xAFE,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064100	,	1064114	,	1064083,	 "Energy",	CraftAttributeInfo.EngySpec,	CraftResource.EngySpec,	typeof( EngySpec ) ),		
-			new CraftResourceInfo( 1072,	1072,	4	,	16	,	4.20	,	120.0	,	150	,	27	,	41	,	14	,	1	,	1064101	,	1064115	,	1018194,	 "Exodus",	CraftAttributeInfo.ExodusSpec,	CraftResource.ExodusSpec,	typeof( ExodusSpec ) ),		
+			new CraftResourceInfo( 2859,	2859,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064088	,	1064102	,	1063811,	 "Spectral",	CraftAttributeInfo.SpectralSpec,	CraftResource.SpectralSpec,	typeof( SpectralSpec ) ),
+			new CraftResourceInfo( 2860,	2860,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064089	,	1064103	,	1063812,	 "Dread",	CraftAttributeInfo.DreadSpec,	CraftResource.DreadSpec,	typeof( DreadSpec ) ),
+			new CraftResourceInfo( 2937,	2937,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064090	,	1064104	,	1063813,	 "Ghoulish",	CraftAttributeInfo.GhoulishSpec,	CraftResource.GhoulishSpec,	typeof( GhoulishSpec ) ),
+			new CraftResourceInfo( 2817,	2817,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064091	,	1064105	,	1063814,	 "Wyrm",	CraftAttributeInfo.WyrmSpec,	CraftResource.WyrmSpec,	typeof( WyrmSpec ) ),
+			new CraftResourceInfo( 2882,	2882,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064092	,	1064106	,	1063815,	 "Holy",	CraftAttributeInfo.HolySpec,	CraftResource.HolySpec,	typeof( HolySpec ) ),
+			new CraftResourceInfo( 1194,	1194,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064093	,	1064107	,	1063816,	 "Bloodless",	CraftAttributeInfo.BloodlessSpec,	CraftResource.BloodlessSpec,	typeof( BloodlessSpec ) ),
+			new CraftResourceInfo( 2815,	2815,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064094	,	1064108	,	1063817,	 "Gilded",	CraftAttributeInfo.GildedSpec,	CraftResource.GildedSpec,	typeof( GildedSpec ) ),
+			new CraftResourceInfo( 2858,	2858,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064095	,	1064109	,	1063818,	 "Demilich",	CraftAttributeInfo.DemilichSpec,	CraftResource.DemilichSpec,	typeof( DemilichSpec ) ),
+			new CraftResourceInfo( 2867,	2867,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	1	,	1064096	,	1064110	,	1063819,	 "Wintry",	CraftAttributeInfo.WintrySpec,	CraftResource.WintrySpec,	typeof( WintrySpec ) ),
+			new CraftResourceInfo( 0xB54,	0xB54,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064097	,	1064111	,	1064077,	 "Fire",	CraftAttributeInfo.FireSpec,	CraftResource.FireSpec,	typeof( FireSpec ) ),
+			new CraftResourceInfo( 0xB57,	0xB57,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064098	,	1064112	,	1064079,	 "Cold",	CraftAttributeInfo.ColdSpec,	CraftResource.ColdSpec,	typeof( ColdSpec ) ),
+			new CraftResourceInfo( 0xB51,	0xB51,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064099	,	1064113	,	1064081,	 "Venom",	CraftAttributeInfo.PoisSpec,	CraftResource.PoisSpec,	typeof( PoisSpec ) ),
+			new CraftResourceInfo( 0xAFE,	0xAFE,	3	,	6	,	1.60	,	80.0	,	30	,	6	,	9	,	3	,	0	,	1064100	,	1064114	,	1064083,	 "Energy",	CraftAttributeInfo.EngySpec,	CraftResource.EngySpec,	typeof( EngySpec ) ),
+			new CraftResourceInfo( 1072,	1072,	4	,	16	,	4.20	,	120.0	,	150	,	27	,	41	,	14	,	1	,	1064101	,	1064115	,	1018194,	 "Exodus",	CraftAttributeInfo.ExodusSpec,	CraftResource.ExodusSpec,	typeof( ExodusSpec ) ),
 			new CraftResourceInfo( 0x9ED,	0x9ED,	3	,	10	,	3.00	,	110.0	,	130	,	26	,	42	,	13	,	0	,	1064116	,	1064117	,	1064119,	 "Turtle Shell",	CraftAttributeInfo.TurtleSpec,	CraftResource.TurtleSpec,	typeof( TurtleSpec ) )		
 			};																														
 			private static CraftResourceInfo[] m_LeatherInfo = new CraftResourceInfo[]																														
@@ -948,7 +948,22 @@ namespace Server.Items
 				return plain;
 
 			if ( account != null )
+			{
+				// Special resources use logical (short) keys instead of hash-based lookup
+				if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec )
+				{
+					string lang = AccountLang.GetLanguageCode( account );
+					string logicalKey = "resource.special." + plain.ToLower();
+					string localized = StringCatalog.TryResolveByKey( lang, logicalKey );
+
+					if ( localized != null )
+						return localized;
+
+					return plain;
+				}
+
 				return StringCatalog.Resolve( account, plain ) ?? plain;
+			}
 
 			return plain;
 		}

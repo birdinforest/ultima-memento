@@ -228,7 +228,7 @@ namespace Server.Misc
 				case 14: sAdjective = "Terror"; 		break;
 				case 15: sAdjective = "the Cursed"; 	break;
 				case 16: sAdjective = "Doom"; 			break;
-				case 17: sAdjective = "Dread"; 			break;
+				case 17: sAdjective = "Dire"; 			break;
 				case 18: sAdjective = "Repulsion"; 		break;
 				case 19: sAdjective = "Spite"; 			break;
 				case 20: sAdjective = "Wrath"; 			break;
@@ -417,7 +417,7 @@ namespace Server.Misc
 				case 14: sAdjective = "Terror"; 		break;
 				case 15: sAdjective = "the Cursed"; 	break;
 				case 16: sAdjective = "Doom"; 			break;
-				case 17: sAdjective = "Dread"; 			break;
+				case 17: sAdjective = "Dire"; 			break;
 				case 18: sAdjective = "Repulsion"; 		break;
 				case 19: sAdjective = "Spite"; 			break;
 				case 20: sAdjective = "Wrath"; 			break;
