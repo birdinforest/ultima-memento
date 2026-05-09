@@ -1018,12 +1018,16 @@ namespace Server.Items
 							m.Karma = finalKarma;
 
 							// Mirror AwardKarma's KarmaLocked logic when alignment crosses zero
+							bool alignmentCrossedZero = false;
 							if ( m is PlayerMobile )
 							{
 								PlayerMobile pm = (PlayerMobile)m;
 								bool isNowPositive = m.Karma >= 0;
 								if ( !Core.AOS && wasPositive && !isNowPositive && !pm.KarmaLocked )
+								{
 									pm.KarmaLocked = true;
+									alignmentCrossedZero = true;
+								}
 								else if ( isNowPositive && pm.KarmaLocked )
 									pm.KarmaLocked = false;
 							}
@@ -1034,8 +1038,11 @@ namespace Server.Items
 							m.PlaySound( 0x1E1 );
 							sTrapType = textLog;
 
-							// Hint at recovery path — players should know there is one
-							m.SendMessage( "Your moral self feels corrupted. Seek an ankh shrine to begin recovering your alignment." );
+							// Direct players toward the correct recovery action
+							if ( alignmentCrossedZero )
+								m.SendMessage( "Your alignment has been inverted. Visit an ankh shrine and unlock your karma, then rebuild through virtuous deeds." );
+							else
+								m.SendMessage( "Your moral conviction was weakened by the trap. Rebuild your alignment through virtuous deeds." );
 						}
 					}
 
