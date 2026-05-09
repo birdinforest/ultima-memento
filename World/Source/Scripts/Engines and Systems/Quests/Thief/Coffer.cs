@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -10,6 +11,17 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
 	public class Coffer : Container
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
 		public override bool DisplaysContent{ get{ return false; } }
 		public override bool DisplayWeight{ get{ return false; } }
 
@@ -147,13 +159,13 @@ namespace Server.Items
 
         public override bool OnDragDrop(Mobile from, Item dropped)
         {
-			from.SendMessage("This isn't your coffer!");
+			from.SendMessage(ResolveText( from, "This isn't your coffer!" ));
 			return false;
         }
 
 		public override bool OnDragDropInto( Mobile from, Item item, Point3D p )
         {
-			from.SendMessage("This isn't your coffer!");
+			from.SendMessage(ResolveText( from, "This isn't your coffer!" ));
 			return false;
         }
 
@@ -165,11 +177,11 @@ namespace Server.Items
 			{
 				if ( CofferGold > 0 )
 				{
-					from.SendMessage("Use your stealing skill on the coffer if you want the " + CofferGold + " gold.");
+					from.SendMessage( ResolveFormat( from, "Use your stealing skill on the coffer if you want the {0} gold.", CofferGold ) );
 				}
 				else
 				{
-					from.SendMessage("There is no gold in the coffer.");
+					from.SendMessage( ResolveText( from, "There is no gold in the coffer." ) );
 				}
 			}
 			else if ( from.CheckSkill( SkillName.Snooping, 10, 125 ) )
@@ -177,22 +189,22 @@ namespace Server.Items
 				Server.Items.Coffer.AssignSnooper( this, from );
 				if ( CofferGold > 0 )
 				{
-					from.SendMessage("You can see about " + CofferGold + " gold in the coffer.");
+					from.SendMessage( ResolveFormat( from, "You can see about {0} gold in the coffer.", CofferGold ) );
 				}
 				else
 				{
-					from.SendMessage("There is no gold in the coffer.");
+					from.SendMessage( ResolveText( from, "There is no gold in the coffer." ) );
 				}
 			}
 			else if ( from.Skills[SkillName.Snooping].Base >= 10 )
 			{
-				from.SendMessage("You can't seem to get a peek inside the coffer.");
+				from.SendMessage( ResolveText( from, "You can't seem to get a peek inside the coffer." ) );
 				if ( from.Skills[SkillName.Hiding].Value / 2 < Utility.Random( 100 ) )
 					from.RevealingAction();
 			}
 			else
 			{
-				from.SendMessage("You should probably get better at snooping first.");
+				from.SendMessage( ResolveText( from, "You should probably get better at snooping first." ) );
 			}
 		}
 

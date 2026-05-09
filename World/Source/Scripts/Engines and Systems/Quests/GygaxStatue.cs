@@ -7,6 +7,7 @@ using System.Collections;
 using Server.Network;
 using Server.Mobiles;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -102,7 +103,7 @@ namespace Server.Items
 
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( "This must be in your backpack to use." );
+				e.SendMessage( StringCatalog.Resolve( e.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else if ( e.Map == Map.Lodor && e.X >= 6261 && e.Y >= 40 && e.X <= 6279 && e.Y <= 60 && pieces > 8 )
@@ -128,7 +129,7 @@ namespace Server.Items
 
 				PlayerSettings.SetKeys( e, "Gygax", true );
 
-				e.LocalOverheadMessage(MessageType.Emote, 1150, true, "You claim the Statue of Gygax!");
+				e.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( e.Account, "You claim the Statue of Gygax!" ) );
 				e.SendSound( 0x3D );
 
 				this.Delete();

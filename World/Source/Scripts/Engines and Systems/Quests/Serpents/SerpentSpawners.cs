@@ -1,4 +1,5 @@
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,11 +22,11 @@ namespace Server.Items
 				monster.MoveToWorld(this.Location, this.Map);
 				monster.PlaySound(0x217);
 
-				from.SendMessage("The Serpent of Order comes forth to challenge you!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The Serpent of Order comes forth to challenge you!" ) );
 			}
 			else
 			{
-				from.SendMessage("The statue glows with an eerie blue color.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The statue glows with an eerie blue color." ) );
 			}
 		}
 
@@ -65,11 +66,11 @@ namespace Server.Items
 				monster.MoveToWorld(this.Location, this.Map);
 				monster.PlaySound(0x217);
 
-				from.SendMessage("The Serpent of Chaos comes forth to challenge you!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The Serpent of Chaos comes forth to challenge you!" ) );
 			}
 			else
 			{
-				from.SendMessage("The statue glows with an eerie red color.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The statue glows with an eerie red color." ) );
 			}
 		}
 

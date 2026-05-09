@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 using System.Collections;
 
 namespace Server.Items
@@ -56,8 +57,8 @@ namespace Server.Items
 							book.HasConvexLense = 1;
 							book.HasConcaveLense = 1;
 							m.AddToBackpack( book );
-							m.SendMessage( "You draw the Codex out from the Void!" );
-							m.LocalOverheadMessage(MessageType.Emote, 1150, true, "You draw the Codex out from the Void");
+							m.SendMessage( StringCatalog.Resolve( m.Account, "You draw the Codex out from the Void!" ) );
+							m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( m.Account, "You draw the Codex out from the Void" ) );
 							m.SendSound( 0x203 );
 							LoggingFunctions.LogGeneric( m, "has obtained the Codex of Ultimate Wisdom." );
 						}

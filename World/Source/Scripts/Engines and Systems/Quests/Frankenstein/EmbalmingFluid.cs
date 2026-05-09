@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -39,7 +40,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What do you want to use the embalming fluid on?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What do you want to use the embalming fluid on?" ) );
 				t = new FluidTarget( this );
 				from.Target = t;
 			}
@@ -66,7 +67,7 @@ namespace Server.Items
 
 					if ( !iFluid.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this fluid on items in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this fluid on items in your pack." ) );
 					}
 					else if ( myCharges < 100 )
 					{
@@ -77,7 +78,7 @@ namespace Server.Items
 
 						if ( xFluid.Limits > 100 ){ xFluid.Limits = 100; }
 
-						from.SendMessage( "You preserve your reanimation with the embalming fluid." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You preserve your reanimation with the embalming fluid." ) );
 
 						xFluid.InvalidateProperties();
 
@@ -88,12 +89,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That reanimation is already full of fluid." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That reanimation is already full of fluid." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You don't think that will really do anything." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't think that will really do anything." ) );
 				}
 			}
 		}

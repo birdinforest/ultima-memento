@@ -44,7 +44,7 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 			list.Add( 1070722, StringCatalog.Resolve( null, "Imbued with Magic" ) );
-            list.Add( 1049644, "Magically Avoid Death");
+            list.Add( 1049644, StringCatalog.Resolve( null, "Magically Avoid Death") );
         }
 
 		public static void ConsumeCharge( Mobile from, GemImmortality gem )
@@ -104,7 +104,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Devoid of Magic");
+			list.Add( 1070722, StringCatalog.Resolve( null, "Devoid of Magic") );
         }
 
 		public DudImmortality( Serial serial ) : base( serial )
@@ -143,7 +143,7 @@ namespace Server.Misc
 				m.Mana = m.ManaMax;
 				m.Stam = m.StamMax;
 				m.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
-				m.SendMessage( "You are restored with the power of the gem!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You are restored with the power of the gem!" ) );
 				m.CurePoison( m );
 				m.PlaySound( 0x202 );
 

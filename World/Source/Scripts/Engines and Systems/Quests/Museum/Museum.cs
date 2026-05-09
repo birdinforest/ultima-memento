@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -51,7 +52,7 @@ namespace Server.Items
 			if ( IsChildOf( from.Backpack ) )
 			{
 				int cost = Museums.AntiqueTotalValue( ThisValue, from, false );
-				from.SendMessage( "This antique is worth " + cost + " gold to an art collector." );
+				from.SendMessage( StringCatalog.ResolveFormat( from.Account, "This antique is worth {0} gold to an art collector.", cost ) );
 			}
 			else
 			{
@@ -116,25 +117,25 @@ namespace Server.Items
 
 		public static void GiveAntique( Museums antique, Mobile vendor, Mobile player )
 		{
-			string say = "Thank you!";
+			string say = StringCatalog.ResolveFormat( player.Account, "Thank you!" );
 			int cost = Museums.AntiqueTotalValue( antique.ThisValue, player, true );
 
 			switch ( Utility.RandomMinMax( 0, 9 ) )
 			{
-				case 0:	say = "I have been looking for something like this. Here is " + cost.ToString() + " gold for you.";		break;
-				case 1:	say = "I have heard of this item before. Here is " + cost.ToString() + " gold for you.";		break;
-				case 2:	say = "I never thought I would see one of these. Here is " + cost.ToString() + " gold for you.";		break;
-				case 3:	say = "I have never seen one of these. Here is " + cost.ToString() + " gold for you.";		break;
-				case 4:	say = "What a rare item. Here is " + cost.ToString() + " gold for you.";		break;
-				case 5:	say = "This is quite rare. Here is " + cost.ToString() + " gold for you.";		break;
-				case 6:	say = "This will go nicely in my museum. Here is " + cost.ToString() + " gold for you.";		break;
-				case 7:	say = "I have only heard tales about such items. Here is " + cost.ToString() + " gold for you.";		break;
-				case 8:	say = "How did you come across this? Here is " + cost.ToString() + " gold for you.";		break;
-				case 9:	say = "Where did you find this? Here is " + cost.ToString() + " gold for you.";		break;
+				case 0:	say = StringCatalog.ResolveFormat( player.Account, "I have been looking for something like this. Here is {0} gold for you.", cost.ToString() );		break;
+				case 1:	say = StringCatalog.ResolveFormat( player.Account, "I have heard of this item before. Here is {0} gold for you.", cost.ToString() );		break;
+				case 2:	say = StringCatalog.ResolveFormat( player.Account, "I never thought I would see one of these. Here is {0} gold for you.", cost.ToString() );		break;
+				case 3:	say = StringCatalog.ResolveFormat( player.Account, "I have never seen one of these. Here is {0} gold for you.", cost.ToString() );		break;
+				case 4:	say = StringCatalog.ResolveFormat( player.Account, "What a rare item. Here is {0} gold for you.", cost.ToString() );		break;
+				case 5:	say = StringCatalog.ResolveFormat( player.Account, "This is quite rare. Here is {0} gold for you.", cost.ToString() );		break;
+				case 6:	say = StringCatalog.ResolveFormat( player.Account, "This will go nicely in my museum. Here is {0} gold for you.", cost.ToString() );		break;
+				case 7:	say = StringCatalog.ResolveFormat( player.Account, "I have only heard tales about such items. Here is {0} gold for you.", cost.ToString() );		break;
+				case 8:	say = StringCatalog.ResolveFormat( player.Account, "How did you come across this? Here is {0} gold for you.", cost.ToString() );		break;
+				case 9:	say = StringCatalog.ResolveFormat( player.Account, "Where did you find this? Here is {0} gold for you.", cost.ToString() );		break;
 			}
 
 			player.SendSound( 0x2E6 );
-			player.SendMessage( "You receive " + cost + " gold." );
+			player.SendMessage( StringCatalog.ResolveFormat( player.Account, "You receive {0} gold.", cost ) );
 			player.AddToBackpack ( new Gold( cost ) );
 			antique.Delete();
 			vendor.PrivateOverheadMessage(MessageType.Regular, 1153, false, say, player.NetState);

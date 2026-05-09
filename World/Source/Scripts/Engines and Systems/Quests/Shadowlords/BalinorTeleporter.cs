@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -31,7 +32,7 @@ namespace Server.Items
 					if ( c is Daemon && c.Name == "Balinor" )
 					{
 						CanTeleport = 0;
-						m.SendMessage( "You cannot enter as Balinor is protecting the entrance!" );
+						m.SendMessage( StringCatalog.Resolve( m.Account, "You cannot enter as Balinor is protecting the entrance!" ) );
 					}
 				}
 

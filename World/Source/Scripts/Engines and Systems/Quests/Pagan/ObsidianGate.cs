@@ -15,6 +15,7 @@ using Server.Gumps;
 using Server.Targeting;
 using Server.Multis;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -50,22 +51,22 @@ namespace Server.Items
 		{
 			if ( Movable )
 			{
-				from.SendMessage( "This must be secured down in a home to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be secured down in a home to use." ) );
 			}
 			else if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to use that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to use that." ) );
 			}
 			else if ( !CheckAccess( from ) )
 			{
-				from.SendMessage ("You cannot seem to use this.");
+				from.SendMessage (StringCatalog.Resolve( from.Account, "You cannot seem to use this." ));
 			}
 			else
 			{
 				from.PlaySound( 0x20E );
 				from.CloseGump( typeof( Server.Items.GateMoon.MoonGateGump ) );
 				from.SendGump( new Server.Items.GateMoon.MoonGateGump( from, true ) );
-				from.SendMessage( "Choose a destination." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Choose a destination." ) );
 			}
 
 			return;

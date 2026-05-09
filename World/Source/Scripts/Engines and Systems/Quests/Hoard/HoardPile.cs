@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -83,11 +84,11 @@ namespace Server.Items
 		{
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot look through that while in this state." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot look through that while in this state." ) );
 			}
 			else if ( !from.InRange( GetWorldLocation(), 3 ) )
 			{
-				from.SendMessage( "You will have to get closer to it!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to it!" ) );
 			}
 			else if ( m_Uses < 5 )
 			{
@@ -219,7 +220,7 @@ namespace Server.Items
 
 					from.PlaySound( 0x2E5 );
 					if ( string.IsNullOrWhiteSpace( name ) )
-						from.SendMessage( "You pull something from the treasure hoard!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You pull something from the treasure hoard!" ) );
 					else
 					{
 						from.LocalOverheadMessage( Network.MessageType.Regular, 1150, false, string.Format( "{0} !", m_TextInfo.ToTitleCase( name ) ) );
@@ -227,13 +228,13 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "The item slipped out of your hand!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The item slipped out of your hand!" ) );
 				}
 			}
 			
 			if ( 5 <= m_Uses )
 			{
-				from.SendMessage( "There is nothing else worth taking from this pile!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "There is nothing else worth taking from this pile!" ) );
 				this.Delete();
 			}
 		}

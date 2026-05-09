@@ -5,6 +5,7 @@ using Server.Multis;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -78,7 +79,7 @@ namespace Server.Items
 			}
 			else if ( ObeliskOwner != from )
 			{
-				from.SendMessage( "This blackrock does not belong to you so it vanishes!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This blackrock does not belong to you so it vanishes!" ) );
 				bool remove = true;
 				foreach ( Account a in Accounts.GetAccounts() )
 				{
@@ -172,8 +173,8 @@ namespace Server.Items
 
 				AddImage(0, 0, 7031, Server.Misc.PlayerSettings.GetGumpHue( from ));
 				AddButton(864, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 12, 11, 665, 20, @"<BODY><BASEFONT Color=" + color + ">THE TITAN OF ETHER</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 87, 632, 354, @"<BODY><BASEFONT Color=" + color + ">There are those that seek to become the Titan of Ether, but in order to do so, one must defeat the four Titans of the Underworld. Lithos, Pyros, Hydros, and Stratos all contain an elemental power that can be infused within blackrock and empower another. These Titans cannot simply be slain by normal means, as their opponent must possess a particular piece of blackrock in order to best them. These blackrock fragments are scattered throughout the lands and you will have to search far and wide to find them. If you undertake this great quest, be sure to carry the Obelisk Tip with you at all times. If you have the appropriate piece of blackrock, you can decide to face the Titan. If the Titan is slain, the blackrock will absorb their power. Once all of the Titans' power has been absorbed in the four pieces of blackrock, bring the Obelisk Tip to the Obsidian Fortress and approach the Blackrock Gate to become the Titan of Ether. Titans of Ether can become grandmasters in five additional skills, and their abilities can total 300 instead of 250.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 11, 665, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>THE TITAN OF ETHER</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+				AddHtml( 245, 87, 632, 354, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>There are those that seek to become the Titan of Ether, but in order to do so, one must defeat the four Titans of the Underworld. Lithos, Pyros, Hydros, and Stratos all contain an elemental power that can be infused within blackrock and empower another. These Titans cannot simply be slain by normal means, as their opponent must possess a particular piece of blackrock in order to best them. These blackrock fragments are scattered throughout the lands and you will have to search far and wide to find them. If you undertake this great quest, be sure to carry the Obelisk Tip with you at all times. If you have the appropriate piece of blackrock, you can decide to face the Titan. If the Titan is slain, the blackrock will absorb their power. Once all of the Titans' power has been absorbed in the four pieces of blackrock, bring the Obelisk Tip to the Obsidian Fortress and approach the Blackrock Gate to become the Titan of Ether. Titans of Ether can become grandmasters in five additional skills, and their abilities can total 300 instead of 250.</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 
 				AddItem(42, 95, 13042);
 				AddItem(42, 165, 13042);
@@ -181,24 +182,24 @@ namespace Server.Items
 				AddItem(42, 305, 13042);
 				AddItem(42, 375, 13042);
 
-				AddHtml( 106, 102, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Obelisk Tip</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 106, 125, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Khumash-Gor</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 102, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Obelisk Tip</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+			AddHtml( 106, 125, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Khumash-Gor</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 				AddItem(48, 95, 6239);
 
-				AddHtml( 106, 172, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Breath of Air</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 106, 195, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Stratos</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 172, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Breath of Air</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+			AddHtml( 106, 195, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Stratos</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 				if ( tip.HasAir > 0 ){ AddItem(48, 170, 6240); }
 
-				AddHtml( 106, 242, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Tongue of Flame</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 106, 265, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Pyros</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 242, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Tongue of Flame</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+			AddHtml( 106, 265, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Pyros</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 				if ( tip.HasFire > 0 ){ AddItem(47, 238, 6241); }
 
-				AddHtml( 106, 312, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Heart of Earth</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 106, 335, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Lithos</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 312, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Heart of Earth</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+			AddHtml( 106, 335, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Lithos</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 				if ( tip.HasEarth > 0 ){ AddItem(48, 311, 6242); }
 
-				AddHtml( 106, 381, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Tear of the Seas</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 106, 405, 150, 20, @"<BODY><BASEFONT Color=" + color + ">Hydros</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 381, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Tear of the Seas</BASEFONT></BODY>", color ), (bool)false, (bool)false);
+			AddHtml( 106, 405, 150, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>Hydros</BASEFONT></BODY>", color ), (bool)false, (bool)false);
 				if ( tip.HasWater > 0 ){ AddItem(48, 376, 6243); }
 
 				///////////////////////////////////////////////////////////////////////////////////
@@ -206,27 +207,27 @@ namespace Server.Items
 				int rocks = tip.HasAir + tip.HasFire + tip.HasEarth + tip.HasWater + 1;
 				int titan = tip.WonAir + tip.WonFire + tip.WonEarth + tip.WonWater;
 
-				string stones = "1 of the Pieces of Blackrock Found!";
-				string titans = "No Titans Have Been Defeated Yet!";
+				string stones = StringCatalog.Resolve( from.Account, "1 of the Pieces of Blackrock Found!" );
+				string titans = StringCatalog.Resolve( from.Account, "No Titans Have Been Defeated Yet!" );
 
-				if ( rocks > 4 ){ stones = "All of the Pieces of Blackrock Found!"; }
-				else if ( rocks > 1 ){ stones = rocks + " Pieces of Blackrock Found!"; }
+				if ( rocks > 4 ){ stones = StringCatalog.Resolve( from.Account, "All of the Pieces of Blackrock Found!" ); }
+				else if ( rocks > 1 ){ stones = StringCatalog.ResolveFormat( from.Account, "{0} Pieces of Blackrock Found!", rocks ); }
 
 				if ( titan > 0 )
 				{
 					titans = "";
-					if ( titan > 3 ){ titans = "All of the Titans Have Been Defeated!"; }
+					if ( titan > 3 ){ titans = StringCatalog.Resolve( from.Account, "All of the Titans Have Been Defeated!" ); }
 					else
 					{
-						if ( tip.WonAir > 0 ){ titans = titans + "Stratos has been defeated! "; }
-						if ( tip.WonFire > 0 ){ titans = titans + "Pyros has been destroyed! "; }
-						if ( tip.WonEarth > 0 ){ titans = titans + "Lithos has been slain! "; }
-						if ( tip.WonWater > 0 ){ titans = titans + "Hydros has been vanquished! "; }
+						if ( tip.WonAir > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Stratos has been defeated! " ); }
+						if ( tip.WonFire > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Pyros has been destroyed! " ); }
+						if ( tip.WonEarth > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Lithos has been slain! " ); }
+						if ( tip.WonWater > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Hydros has been vanquished! " ); }
 					}
 				}
 
-				AddHtml( 40, 489, 878, 20, @"<BODY><BASEFONT Color=" + color + ">" + stones + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 40, 545, 878, 20, @"<BODY><BASEFONT Color=" + color + ">" + titans + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 40, 489, 878, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", color, stones ), (bool)false, (bool)false);
+				AddHtml( 40, 545, 878, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", color, titans ), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState sender, RelayInfo info )

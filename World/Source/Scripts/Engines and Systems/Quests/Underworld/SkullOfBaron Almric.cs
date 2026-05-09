@@ -10,6 +10,7 @@ using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -52,16 +53,16 @@ namespace Server.Items
 
 						item.Delete();
 					}
-					from.Say( "In the name of Almric, open the gate to the Underworld!" );
+					from.Say( StringCatalog.Resolve( from.Account, "In the name of Almric, open the gate to the Underworld!" ) );
 				}
 				else
 				{
-					from.SendMessage( "The gate to the Underworld is already open." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The gate to the Underworld is already open." ) );
 				}
 			}
 			else
 			{
-				from.SendMessage( "This is the skull of the long dead Baron Almric." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is the skull of the long dead Baron Almric." ) );
 			}
 		}
 

@@ -9,6 +9,7 @@ using Server.Items;
 using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -32,7 +33,7 @@ namespace Server.Items
 				{
 					PlayerSettings.ClearQuestInfo( from, "AssassinQuest" );
 					AssassinFunctions.QuestTimeAllowed( from );
-					from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your failure in this task has been forgiven.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( from.Account, "Your failure in this task has been forgiven." ), from.NetState);
 					dropped.Delete();
 				}
 				else

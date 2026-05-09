@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -80,7 +81,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " metal plate" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} metal plate" + sEnd, iAmount ) );
 					dropped.Delete();
 					return true;
 				}
@@ -88,7 +89,7 @@ namespace Server.Items
 				{
 					dropped.Delete();
 					HaveCircuitBoard = HaveCircuitBoard + 1;
-					from.SendMessage( "You added a circuit board." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added a circuit board." ) );
 					dropped.Delete();
 					return true;
 				}
@@ -96,7 +97,7 @@ namespace Server.Items
 				{
 					dropped.Delete();
 					HaveTransistors = HaveTransistors + 1;
-					from.SendMessage( "You added a transistor." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added a transistor." ) );
 					dropped.Delete();
 					return true;
 				}
@@ -104,7 +105,7 @@ namespace Server.Items
 				{
 					dropped.Delete();
 					HaveEngineParts = HaveEngineParts + 1;
-					from.SendMessage( "You added some engine parts." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added some engine parts." ) );
 					dropped.Delete();
 					return true;
 				}
@@ -120,7 +121,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveOil = HaveOil + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " robot oil can" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} robot oil can" + sEnd, iAmount ) );
 					dropped.Delete();
 					return true;
 				}
@@ -136,7 +137,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveGears = HaveGears + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " gear" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} gear{1}", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -152,7 +153,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveBolts = HaveBolts + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " bolts" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} bolt{1}", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -168,7 +169,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveXormite = HaveXormite + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " xormite coin" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} xormite coin{1}", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -254,7 +255,7 @@ namespace Server.Items
 
 			if ( HaveIngredients < 8 ){ return false; }
 
-			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); tinker.Say( "Here is " + XormiteReturn.ToString() + " xormite back for all of your help." ); }
+			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); tinker.Say( StringCatalog.ResolveFormat( m.Account, "Here is {0} xormite back for all of your help.", XormiteReturn ) ); }
 
 			RobotItem ball = new RobotItem();
 
@@ -265,7 +266,7 @@ namespace Server.Items
 
 			LoggingFunctions.LogGenericQuest( m, "had a robot built" );
 
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "My robot has been built.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "My robot has been built." ), m.NetState);
 			m.SendSound( 0x559 );
 
 			dropped.Delete();
@@ -282,7 +283,7 @@ namespace Server.Items
 				m_Book = gBook;
 				RobotSchematics pedia = (RobotSchematics)gBook;
 
-				string sText = "This schematic contains the knowledge to construct a robot. With these plans you will see what you need to obtain in order to have it constructed. These items are particularly used in the construction of robots. You will need metal, bolts, engine parts, circuit boards, gears, transistors, oil, and xormite for the tinker's fee. The tinker that can actually construct this robot is at the location shown at the bottom of this screen. If you have any tinkering skill, they may refund some of the xormite for the help you may provide in the construction. These robots are programmed for combat and will consume 3 follower slots to accompany you. As you find materials, simply drag and drop them onto this data pad to add to the materials. The top half of the screen will track what you have obtained thus far. When every item is acquired, give this data pad to a tinker and they will construct your robot. The robot built will be yours alone, and it will have a limited amount of charges. A charge is used whenever you power on the robot to travel with you. You will have to obtain more batteries in order to add more charges, where each battery will add an extra charge. A robot can only hold 100 charges at a time. Robots are controlled just like tamed beasts or summoned creatures. They can be told to follow, stay, or stop. You can also dismiss the robot, where the robot item will reappear in your pack. They are automatons so they do not need to be fed, other than the batteries already mentioned. Remember, they are not transferable once constructed. The one giving the tinker the book will own the robot that is constructed.";
+				string sText = StringCatalog.Resolve( from.Account, "This schematic contains the knowledge to construct a robot. With these plans you will see what you need to obtain in order to have it constructed. These items are particularly used in the construction of robots. You will need metal, bolts, engine parts, circuit boards, gears, transistors, oil, and xormite for the tinker's fee. The tinker that can actually construct this robot is at the location shown at the bottom of this screen. If you have any tinkering skill, they may refund some of the xormite for the help you may provide in the construction. These robots are programmed for combat and will consume 3 follower slots to accompany you. As you find materials, simply drag and drop them onto this data pad to add to the materials. The top half of the screen will track what you have obtained thus far. When every item is acquired, give this data pad to a tinker and they will construct your robot. The robot built will be yours alone, and it will have a limited amount of charges. A charge is used whenever you power on the robot to travel with you. You will have to obtain more batteries in order to add more charges, where each battery will add an extra charge. A robot can only hold 100 charges at a time. Robots are controlled just like tamed beasts or summoned creatures. They can be told to follow, stay, or stop. You can also dismiss the robot, where the robot item will reappear in your pack. They are automatons so they do not need to be fed, other than the batteries already mentioned. Remember, they are not transferable once constructed. The one giving the tinker the book will own the robot that is constructed." );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -293,42 +294,42 @@ namespace Server.Items
 				AddImage(0, 0, 30521);
 				AddItem(596, 33, 13697);
 
-				AddHtml( 46, 42, 310, 20, @"<BODY><BASEFONT Color=#00FF06>Robot Schematics</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 46, 42, 310, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Robot Schematics</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
 
 				AddItem(45, 81, 13636);
-				AddHtml( 85, 83, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Sheet Metal</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 83, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveMetalQty.ToString() + "/" + gBook.NeedMetalQty.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 83, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Sheet Metal</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 245, 83, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveMetalQty, gBook.NeedMetalQty ), (bool)false, (bool)false);
 
 				AddItem(46, 114, 13505);
-				AddHtml( 85, 116, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Engine Parts</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 116, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveEngineParts.ToString() + "/" + gBook.NeedEngineParts.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 116, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Engine Parts</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 245, 116, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveEngineParts, gBook.NeedEngineParts ), (bool)false, (bool)false);
 
 				AddItem(44, 149, 13421);
-				AddHtml( 85, 151, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Curcuit Board</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 151, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveCircuitBoard.ToString() + "/" + gBook.NeedCircuitBoard.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 151, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Curcuit Board</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 245, 151, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveCircuitBoard, gBook.NeedCircuitBoard ), (bool)false, (bool)false);
 
 				AddItem(46, 183, 13382);
-				AddHtml( 85, 185, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Transistors</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 185, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveTransistors.ToString() + "/" + gBook.NeedTransistors.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 185, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Transistors</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 245, 185, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveTransistors, gBook.NeedTransistors ), (bool)false, (bool)false);
 
 				AddItem(46, 218, 8238);
-				AddHtml( 85, 220, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Gears</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 245, 220, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveGears.ToString() + "/" + gBook.NeedGears.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 220, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Gears</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 245, 220, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveGears, gBook.NeedGears ), (bool)false, (bool)false);
 
 				AddItem(396, 184, 13635);
-				AddHtml( 435, 185, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Oil</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 595, 185, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveOil.ToString() + "/" + gBook.NeedOil.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 435, 185, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Oil</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 595, 185, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveOil, gBook.NeedOil ), (bool)false, (bool)false);
 
 				AddItem(394, 218, 8225);
-				AddHtml( 435, 220, 136, 20, @"<BODY><BASEFONT Color=#00FF06>Bolts</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 595, 220, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveBolts.ToString() + "/" + gBook.NeedBolts.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 435, 220, 136, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>Bolts</BIG></BASEFONT></BODY>" ), (bool)false, (bool)false);
+				AddHtml( 595, 220, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveBolts, gBook.NeedBolts ), (bool)false, (bool)false);
 
 				AddItem(398, 41, 3823, 0xB96);
-				AddHtml( 439, 43, 136, 20, @"<BODY><BASEFONT Color=#00FF06>" + gBook.HaveXormite.ToString() + "/" + gBook.NeedXormite.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 439, 43, 136, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}/{1}</BIG></BASEFONT></BODY>", gBook.HaveXormite, gBook.NeedXormite ), (bool)false, (bool)false);
 
-				AddHtml( 55, 256, 660, 321, @"<BODY><BASEFONT Color=#00FF06>" + sText + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 55, 256, 660, 321, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>{0}</BIG></BASEFONT></BODY>", sText ), (bool)false, (bool)false);
 
-				AddHtml( 55, 593, 653, 20, @"<BODY><BASEFONT Color=#00FF06>Bring Gathered Materials to the Tinker in " + gBook.TinkerLocation + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 55, 593, 653, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#00FF06>Bring Gathered Materials to the Tinker in {0}</BIG></BASEFONT></BODY>", gBook.TinkerLocation ), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )

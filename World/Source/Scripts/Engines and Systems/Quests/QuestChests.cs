@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -32,16 +33,16 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSilverSquare" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSilverSquare", true );
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleCrystalSword", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a silver square and a crystal sword.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver square and a crystal sword." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You found a silver square and a crystal sword. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it. The sword looks strong enough to shatter crystal sculptures.", "The Silver Square" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver square and a crystal sword. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it. The sword looks strong enough to shatter crystal sculptures." ), StringCatalog.Resolve( from.Account, "The Silver Square" ) ) );
 				}
 			}
 			else
@@ -83,15 +84,15 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSilverTriangle" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSilverTriangle", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a silver triangle.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver triangle." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You found a silver triangle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it.", "The Silver Triangle" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver triangle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it." ), StringCatalog.Resolve( from.Account, "The Silver Triangle" ) ) );
 				}
 			}
 			else
@@ -135,15 +136,15 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSilverCircle" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSilverCircle", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a silver circle.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver circle." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You found a silver circle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it.", "The Silver Circle" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver circle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it." ), StringCatalog.Resolve( from.Account, "The Silver Circle" ) ) );
 				}
 			}
 			else
@@ -187,7 +188,7 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleMangarKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This golden skull has an eerie glow.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "This golden skull has an eerie glow." ), from.NetState);
 				}
 				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSilverSquare" ) && 
 					PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSilverTriangle" ) && 
@@ -195,13 +196,13 @@ namespace Server.Items
 				{
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleMangarKey", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "Placing the 3 silver shapes on the skull, the mouth opens to reveal a silver key.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "Placing the 3 silver shapes on the skull, the mouth opens to reveal a silver key." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You have obtained the silver key from the golden skull. Perhaps it works on that dark door to the west of you.", "The Silver Key" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You have obtained the silver key from the golden skull. Perhaps it works on that dark door to the west of you." ), StringCatalog.Resolve( from.Account, "The Silver Key" ) ) );
 				}
 				else
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This golden skull has an eerie glow, and there seems to be 3 different shapes carved on it.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "This golden skull has an eerie glow, and there seems to be 3 different shapes carved on it." ), from.NetState);
 				}
 			}
 			else
@@ -245,15 +246,15 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleBedroomKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleBedroomKey", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a key with a symbol of a tree on it.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a key with a symbol of a tree on it." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You found a key with a symbol of a tree on it.", "The Forest Key" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a key with a symbol of a tree on it." ), StringCatalog.Resolve( from.Account, "The Forest Key" ) ) );
 				}
 			}
 			else
@@ -321,11 +322,11 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleBedroomKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This crystal statue looks beautiful.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "This crystal statue looks beautiful." ), from.NetState);
 				}
 				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleCrystalSword" ) && !( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleBedroomKey" ) ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You hit the statue with the crystal sword, shattering both the statue and the sword.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You hit the statue with the crystal sword, shattering both the statue and the sword." ), from.NetState);
 					from.PlaySound( 0x040 );
 
 					CrystalStatueBoxKyl MyChest = new CrystalStatueBoxKyl();
@@ -353,7 +354,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You can make out a small jade box within the crystal statue.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You can make out a small jade box within the crystal statue." ), from.NetState);
 				}
 			}
 			else
@@ -394,13 +395,13 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetKeys( from, "UndermountainKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetKeys( from, "UndermountainKey", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a dwarven key.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a dwarven key." ), from.NetState);
 				}
 			}
 			else
@@ -442,19 +443,19 @@ namespace Server.Items
 			{
 				if ( from is PlayerMobile && Server.Items.BaseRace.IsEvilDeadCreature( from ) && !PlayerSettings.GetDiscovered( from, "the Land of Sosaria" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This book would make more sense if you ever find a way to Sosaria.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "This book would make more sense if you ever find a way to Sosaria." ), from.NetState);
 				}
 				else if ( PlayerSettings.GetKeys( from, "SkullGate" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You already learned this book's secrets.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You already learned this book's secrets." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetKeys( from, "SkullGate", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You learned the secrets of the Skull Gate.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You learned the secrets of the Skull Gate." ), from.NetState);
 				}
-				from.SendMessage( "Check your quest log for details on the locations." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Check your quest log for details on the locations." ) );
 			}
 			else
 			{
@@ -495,15 +496,15 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetKeys( from, "SerpentPillars" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You already learned this book's secrets.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You already learned this book's secrets." ), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetKeys( from, "SerpentPillars", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You learned the secrets of the Serpent Pillars.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You learned the secrets of the Serpent Pillars." ), from.NetState);
 				}
-				from.SendMessage( "Check your quest log for details on the locations." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Check your quest log for details on the locations." ) );
 			}
 			else
 			{
@@ -542,14 +543,14 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetKeys( from, "DragonRiding" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You already learned these secrets so you toss it out.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You already learned these secrets so you toss it out." ), from.NetState);
 					this.Delete();
 				}
 				else
 				{
 					PlayerSettings.SetKeys( from, "DragonRiding", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You learned the secrets of dragon riding.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You learned the secrets of dragon riding." ), from.NetState);
 					this.Delete();
 				}
 			}

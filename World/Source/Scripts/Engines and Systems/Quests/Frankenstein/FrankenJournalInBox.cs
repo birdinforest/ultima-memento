@@ -4,6 +4,7 @@ using System.Collections;
 using Server.Network;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -48,7 +49,7 @@ namespace Server.Items
 					if ( item is FrankenJournal )
 					{
 						from.AddToBackpack( item );
-						from.SendMessage( "You don't need this journal as there is already one in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need this journal as there is already one in your pack." ) );
 					}
 				}
 
@@ -57,7 +58,7 @@ namespace Server.Items
 					FrankenJournal journal = new FrankenJournal();
 					journal.JournalOwner = from;
 					from.AddToBackpack( journal );
-					from.SendMessage( "You take possession of Frankenstein's Journal!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You take possession of Frankenstein's Journal!" ) );
 					from.SendSound( 0x3D );
 					LoggingFunctions.LogGeneric( from, "has found Frankenstein's Journal." );
 					this.Delete();

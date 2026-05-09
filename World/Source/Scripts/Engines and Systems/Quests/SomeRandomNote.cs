@@ -6,12 +6,19 @@ using System.Text;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
+using Server.Accounting;
 using Server.Localization;
 
 namespace Server.Items
 {
 	public class SomeRandomNote : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Scroll; } }
 
 		public string ScrollMessage;
@@ -405,7 +412,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( ResolveText( e, "This must be in your backpack to read." ) );
 			}
 			else
 			{

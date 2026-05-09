@@ -7,12 +7,19 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Network;
 using System.Collections.Generic;
+using Server.Accounting;
 using Server.Localization;
 
 namespace Server.Items
 {
 	public class ScrollClue : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Scroll; } }
 
 		public string ScrollText;
@@ -500,7 +507,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( ResolveText( e, "This must be in your backpack to read." ) );
 				return;
 			}
 			else
@@ -529,19 +536,19 @@ namespace Server.Items
 
 						if ( graveshovel == null )
 						{
-							e.SendMessage("You need to be holding a grave shovel!");
+							e.SendMessage( ResolveText( e, "You need to be holding a grave shovel!" ) );
 						}
 						else if ( graveshovel != null && !(graveshovel is GraveSpade) )
 						{
-							e.SendMessage("You need to be holding a grave shovel!");
+							e.SendMessage( ResolveText( e, "You need to be holding a grave shovel!" ) );
 						}
 						else if ( e.Mounted )
 						{
-							e.SendMessage("You can't dig very well when riding on a mount!");
+							e.SendMessage( ResolveText( e, "You can't dig very well when riding on a mount!" ) );
 						}
 						else if ( e.IsBodyMod && !e.Body.IsHuman && e.RaceID < 1 )
 						{
-							e.SendMessage("You cannot dig very well while polymorphed.");
+							e.SendMessage( ResolveText( e, "You cannot dig very well while polymorphed." ) );
 						}
 						else if ( ScrollTrue == 0 )
 						{
@@ -549,19 +556,19 @@ namespace Server.Items
 							e.Animate( 14, 5, 1, true, false, 0 );
 							switch( Utility.RandomMinMax( 0, 6 ) )
 							{
-								case 0: e.SendMessage("It appears someone was already here, so you toss the parchment out."); break;
-								case 1: e.SendMessage("The message must have been a lie, so you toss the parchment out."); break;
-								case 2: e.SendMessage("This must have been a hoax, so you toss the parchment out."); break;
-								case 3: e.SendMessage("There is obviously nothing here, so you toss the parchment out."); break;
-								case 4: e.SendMessage("You notice an empty hole nearby, so you toss the parchment out."); break;
-								case 5: e.SendMessage("This looks like it was a waste of time, so you toss the parchment out."); break;
-								case 6: e.SendMessage("You traveled all this way for nothing, so you toss the parchment out."); break;
+								case 0: e.SendMessage( ResolveText( e, "It appears someone was already here, so you toss the parchment out." ) ); break;
+								case 1: e.SendMessage( ResolveText( e, "The message must have been a lie, so you toss the parchment out." ) ); break;
+								case 2: e.SendMessage( ResolveText( e, "This must have been a hoax, so you toss the parchment out." ) ); break;
+								case 3: e.SendMessage( ResolveText( e, "There is obviously nothing here, so you toss the parchment out." ) ); break;
+								case 4: e.SendMessage( ResolveText( e, "You notice an empty hole nearby, so you toss the parchment out." ) ); break;
+								case 5: e.SendMessage( ResolveText( e, "This looks like it was a waste of time, so you toss the parchment out." ) ); break;
+								case 6: e.SendMessage( ResolveText( e, "You traveled all this way for nothing, so you toss the parchment out." ) ); break;
 							}
 							this.Delete();
 						}
 						else
 						{
-							e.SendMessage("You found the body just below the ground, so you have no more use for the parchment.");
+							e.SendMessage( ResolveText( e, "You found the body just below the ground, so you have no more use for the parchment." ) );
 							Item chest = new BuriedBody( ScrollLevel*2, ScrollCharacter, e );
 							LoggingFunctions.LogQuestBody( e, ScrollCharacter );
 							chest.MoveToWorld( e.Location, e.Map );
@@ -578,19 +585,19 @@ namespace Server.Items
 
 						if ( shovel == null )
 						{
-							e.SendMessage("You need to be holding a shovel!");
+							e.SendMessage( ResolveText( e, "You need to be holding a shovel!" ) );
 						}
 						else if ( shovel != null && !(shovel is Spade) )
 						{
-							e.SendMessage("You need to be holding a shovel!");
+							e.SendMessage( ResolveText( e, "You need to be holding a shovel!" ) );
 						}
 						else if ( e.Mounted )
 						{
-							e.SendMessage("You can't dig very well when riding on a mount!");
+							e.SendMessage( ResolveText( e, "You can't dig very well when riding on a mount!" ) );
 						}
 						else if ( e.IsBodyMod && !e.Body.IsHuman && e.RaceID < 1 )
 						{
-							e.SendMessage("You cannot dig very well while polymorphed.");
+							e.SendMessage( ResolveText( e, "You cannot dig very well while polymorphed." ) );
 						}
 						else if ( ScrollTrue == 0 )
 						{
@@ -598,19 +605,19 @@ namespace Server.Items
 							e.Animate( 14, 5, 1, true, false, 0 );
 							switch( Utility.RandomMinMax( 0, 6 ) )
 							{
-								case 0: e.SendMessage("It appears someone was already here, so you toss the parchment out."); break;
-								case 1: e.SendMessage("The message must have been a lie, so you toss the parchment out."); break;
-								case 2: e.SendMessage("This must have been a hoax, so you toss the parchment out."); break;
-								case 3: e.SendMessage("There is obviously nothing here, so you toss the parchment out."); break;
-								case 4: e.SendMessage("You notice an empty hole nearby, so you toss the parchment out."); break;
-								case 5: e.SendMessage("This looks like it was a waste of time, so you toss the parchment out."); break;
-								case 6: e.SendMessage("You traveled all this way for nothing, so you toss the parchment out."); break;
+								case 0: e.SendMessage( ResolveText( e, "It appears someone was already here, so you toss the parchment out." ) ); break;
+								case 1: e.SendMessage( ResolveText( e, "The message must have been a lie, so you toss the parchment out." ) ); break;
+								case 2: e.SendMessage( ResolveText( e, "This must have been a hoax, so you toss the parchment out." ) ); break;
+								case 3: e.SendMessage( ResolveText( e, "There is obviously nothing here, so you toss the parchment out." ) ); break;
+								case 4: e.SendMessage( ResolveText( e, "You notice an empty hole nearby, so you toss the parchment out." ) ); break;
+								case 5: e.SendMessage( ResolveText( e, "This looks like it was a waste of time, so you toss the parchment out." ) ); break;
+								case 6: e.SendMessage( ResolveText( e, "You traveled all this way for nothing, so you toss the parchment out." ) ); break;
 							}
 							this.Delete();
 						}
 						else
 						{
-							e.SendMessage("You found the chest just below the ground, so you have no more use for the parchment.");
+							e.SendMessage( ResolveText( e, "You found the chest just below the ground, so you have no more use for the parchment." ) );
 
 							int level = 1 + Math.Min( 10, Math.Max(0, ScrollLevel) );
 							Item chest = new BuriedChest( level, ScrollCharacter, e );
@@ -624,7 +631,7 @@ namespace Server.Items
 
 					else { e.SendGump( new ClueGump( e, this ) ); e.PlaySound( 0x249 ); }
 				}
-				else { e.SendMessage("You cannot seem to figure out what is written here!"); }
+				else { e.SendMessage( ResolveText( e, "You cannot seem to figure out what is written here!" ) ); }
 			}
 		}
 

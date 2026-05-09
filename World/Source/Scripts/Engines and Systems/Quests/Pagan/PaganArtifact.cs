@@ -6,6 +6,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -122,11 +123,11 @@ namespace Server.Items
 
 				AddImage(0, 0, 7012, Server.Misc.PlayerSettings.GetGumpHue( from ));
 
-				AddHtml( 12, 12, 420, 20, @"<BODY><BASEFONT Color=" + hue + ">" + arty.PaganName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 12, 420, 20, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", hue, arty.PaganName ), (bool)false, (bool)false);
 
 				AddButton(447, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-				AddHtml( 14, 44, 460, 219, @"<BODY><BASEFONT Color=" + hue + ">This chest contains a Pagan artifact, " + arty.PaganName + ". If you take it out of this chest, it will be yours. When it is in your possession, single-click the item where a menu will be presented for you to spend points to customize this artifact to your liking. Once the points are spent, the item will be as it is forever. Do you wish to take the Pagan artifact, " + arty.PaganName + ", from the chest?</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 14, 44, 460, 219, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color={0}>This chest contains a Pagan artifact, {1}. If you take it out of this chest, it will be yours. When it is in your possession, single-click the item where a menu will be presented for you to spend points to customize this artifact to your liking. Once the points are spent, the item will be as it is forever. Do you wish to take the Pagan artifact, {1}, from the chest?</BASEFONT></BODY>", hue, arty.PaganName ), (bool)false, (bool)false);
 
 				AddButton(10, 275, 4023, 4023, 1, GumpButtonType.Reply, 0);
 				AddButton(447, 275, 4020, 4020, 0, GumpButtonType.Reply, 0);
@@ -199,7 +200,7 @@ namespace Server.Items
         				armor.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( armor );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan armor artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x1BC4 || m_Artifact.PaganItem == 0x1BC3 )
@@ -216,7 +217,7 @@ namespace Server.Items
         				shield.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( shield );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan shield artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x1406 || m_Artifact.PaganItem == 0xF5D )
@@ -241,7 +242,7 @@ namespace Server.Items
         				mace.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( mace );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x2D2C )
@@ -258,7 +259,7 @@ namespace Server.Items
 						dagger.SkillBonuses.SetValues( 0, SkillName.Poisoning, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( dagger );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x13FA )
@@ -275,7 +276,7 @@ namespace Server.Items
 						axe.SkillBonuses.SetValues( 0, SkillName.Swords, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( axe );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else
@@ -296,7 +297,7 @@ namespace Server.Items
         				sword.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( sword );
-						from.SendMessage( "You take possession of the Pagan artifact, " + m_Artifact.PaganName + "!" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 

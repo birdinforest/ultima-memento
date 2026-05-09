@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
 using Server.Utilities;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -48,9 +49,9 @@ namespace Server.Items
 
 			m.AddToBackpack( new ObsidianGate() );
 			if (m.Temptations.LimitTitanBonus) m.AddToBackpack( new SoulStone() );
-			m.SendMessage( "Some items have appeared in your pack." );
-			m.SendMessage( "You can change your title for this achievement." );
-			m.LocalOverheadMessage( MessageType.Emote, 1150, true, "You are now a Titan of Ether!" );
+			m.SendMessage( StringCatalog.Resolve( m.Account, "Some items have appeared in your pack." ) );
+			m.SendMessage( StringCatalog.Resolve( m.Account, "You can change your title for this achievement." ) );
+			m.LocalOverheadMessage( MessageType.Emote, 1150, true, StringCatalog.Resolve( m.Account, "You are now a Titan of Ether!" ) );
 			LoggingFunctions.LogGeneric( m, "has become a Titan of Ether." );
 
 			return true;

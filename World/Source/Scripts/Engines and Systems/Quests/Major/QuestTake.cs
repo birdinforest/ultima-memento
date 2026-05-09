@@ -4,12 +4,19 @@ using System.Collections;
 using Server.Network;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 using System.Globalization;
 
 namespace Server.Items
 {
 	public class QuestTake : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public Map DeliverMap;
 		public int DeliverX;
 		public int DeliverY;
@@ -57,7 +64,7 @@ namespace Server.Items
 					item.Name = Name;
 					item.Hue = Hue;
 					from.AddToBackpack( item );
-					from.SendMessage( "You take possession of the book!" );
+					from.SendMessage( ResolveText( from, "You take possession of the book!" ) );
 					from.SendSound( 0x3D );
 					this.Delete();
 				}
@@ -65,7 +72,7 @@ namespace Server.Items
 				if ( !HasTome )
 				{
 					SetupBook( from );
-					from.SendMessage( "You take possession of the book!" );
+					from.SendMessage( ResolveText( from, "You take possession of the book!" ) );
 					from.SendSound( 0x3D );
 					LoggingFunctions.LogGeneric( from, "has found a Book of Questing." );
 					this.Delete();
@@ -605,6 +612,12 @@ namespace Server.Items
 
 	public class MajorItemOnCorpse : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public string VillainName;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Villain_Name { get{ return VillainName; } set{ VillainName = value; } }
@@ -642,7 +655,7 @@ namespace Server.Items
 			}
 			else if ( from.InRange( this.GetWorldLocation(), 5 ) )
 			{
-				from.SendMessage( "The chest appears to be empty." );
+				from.SendMessage( ResolveText( from, "The chest appears to be empty." ) );
 			}
 			else
 			{

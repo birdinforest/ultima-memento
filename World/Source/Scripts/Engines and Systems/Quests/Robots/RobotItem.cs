@@ -9,6 +9,7 @@ using Server.Mobiles;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -70,19 +71,19 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage("You already have a robot.");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "You already have a robot." ));
 			}
 			else if ( nFollowers > 0 )
 			{
-				from.SendMessage("You already have too many in your group.");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "You already have too many in your group." ));
 			}
 			else if ( Charges == 0 )
 			{
-				from.SendMessage("Your robot needs another battery.");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "Your robot needs another battery." ));
 			}
 			else if ( RobotOwner == null || RobotOwner.Serial != from.Serial )
 			{
-				from.SendMessage("This is not your robot!");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "This is not your robot!" ));
 			}
 			else
 			{

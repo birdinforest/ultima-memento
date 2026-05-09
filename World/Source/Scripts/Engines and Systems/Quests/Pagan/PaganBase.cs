@@ -7,6 +7,7 @@ using Server.Misc;
 using Server.Network;
 using Server.Accounting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -65,7 +66,7 @@ namespace Server.Items
 			{
 				if ( DateTime.Now >= m_NextTalk && Utility.InRange( m.Location, this.Location, 2 ) )
 				{
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, "I could use that item on the pedestal to take it.", m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( m.Account, "I could use that item on the pedestal to take it." ), m.NetState);
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}
 			}
@@ -98,7 +99,7 @@ namespace Server.Items
 		{
 			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to take that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to take that." ) );
 			}
 			else if ( from.Backpack.FindItemByType( typeof ( ObeliskTip ) ) != null )
 			{
@@ -115,12 +116,12 @@ namespace Server.Items
 						paganType = "Breath of Air";
 						if ( tip.HasAir > 0 )
 						{
-							from.SendMessage( "You already have the " + paganType + ".");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
 						}
 						else
 						{
 							tip.HasAir = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + paganType + "!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -130,12 +131,12 @@ namespace Server.Items
 						paganType = "Tongue of Flame";
 						if ( tip.HasFire > 0 )
 						{
-							from.SendMessage( "You already have the " + paganType + ".");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
 						}
 						else
 						{
 							tip.HasFire = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + paganType + "!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -145,12 +146,12 @@ namespace Server.Items
 						paganType = "Heart of Earth";
 						if ( tip.HasEarth > 0 )
 						{
-							from.SendMessage( "You already have the " + paganType + ".");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
 						}
 						else
 						{
 							tip.HasEarth = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + paganType + "!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -160,12 +161,12 @@ namespace Server.Items
 						paganType = "Tear of the Seas";
 						if ( tip.HasWater > 0 )
 						{
-							from.SendMessage( "You already have the " + paganType + ".");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
 						}
 						else
 						{
 							tip.HasWater = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + paganType + "!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -182,7 +183,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "This piece of blackrock does not belong to you so it vanishes!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This piece of blackrock does not belong to you so it vanishes!" ) );
 					bool remove = true;
 					foreach ( Account a in Accounts.GetAccounts() )
 					{
@@ -215,7 +216,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "You need a similar piece of blackrock to move this stone!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You need a similar piece of blackrock to move this stone!" ) );
 			}
 		}
 

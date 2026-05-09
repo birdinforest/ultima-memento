@@ -81,7 +81,7 @@ namespace Server.Misc
 
 				if ( sVictim == sAssassinTarget && Server.Misc.Worlds.GetRegionName( target.Map, target.Location ) == sAssassinRegion && nAssassinDone != 1 )
 				{
-					m.PrivateOverheadMessage(MessageType.Regular, 0x22, false, "Your victim has been assassinated!", m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 0x22, false, ResolveText( m, "Your victim has been assassinated!" ), m.NetState);
 					victim = victim.Replace("#0#", "#1#");
 					m.SendSound( 0x3D );
 					LoggingFunctions.LogQuestKill( m, "assassin", target );
@@ -311,19 +311,19 @@ namespace Server.Misc
 				{
 					m.SendSound( 0x3D );
 					m.AddToBackpack ( new Gold( nAssassinFee ) );
-					string sMessage = "";
-					switch ( Utility.RandomMinMax( 0, 9 ) )
+					string sMessage = ResolveFormat( m, "I assume the death was quick. Here is {0} gold for you.", nAssassinFee );
+					int msgIdx = Utility.RandomMinMax( 0, 9 );
+					switch ( msgIdx )
 					{
-						case 0:	sMessage = "I assume the death was quick. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 1:	sMessage = "I bet they never seen you coming. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 2:	sMessage = "Was the death swift? Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 3:	sMessage = "Were there any witnesses? Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 4:	sMessage = "I am impressed. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 5:	sMessage = "Word of your deed already reached my ears. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 6:	sMessage = "How you did that one, I'll never know. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 7:	sMessage = "You are one of my best. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 8:	sMessage = "Did you leave the body behind? Here is " + nAssassinFee.ToString() + " gold for you.";		break;
-						case 9:	sMessage = "Next time, strike from the shadows. Here is " + nAssassinFee.ToString() + " gold for you.";		break;
+						case 1:	sMessage = ResolveFormat( m, "I bet they never seen you coming. Here is {0} gold for you.", nAssassinFee );		break;
+						case 2:	sMessage = ResolveFormat( m, "Was the death swift? Here is {0} gold for you.", nAssassinFee );		break;
+						case 3:	sMessage = ResolveFormat( m, "Were there any witnesses? Here is {0} gold for you.", nAssassinFee );		break;
+						case 4:	sMessage = ResolveFormat( m, "I am impressed. Here is {0} gold for you.", nAssassinFee );		break;
+						case 5:	sMessage = ResolveFormat( m, "Word of your deed already reached my ears. Here is {0} gold for you.", nAssassinFee );		break;
+						case 6:	sMessage = ResolveFormat( m, "How you did that one, I'll never know. Here is {0} gold for you.", nAssassinFee );		break;
+						case 7:	sMessage = ResolveFormat( m, "You are one of my best. Here is {0} gold for you.", nAssassinFee );		break;
+						case 8:	sMessage = ResolveFormat( m, "Did you leave the body behind? Here is {0} gold for you.", nAssassinFee );		break;
+						case 9:	sMessage = ResolveFormat( m, "Next time, strike from the shadows. Here is {0} gold for you.", nAssassinFee );		break;
 					}
 					leader.Say( sMessage );
 

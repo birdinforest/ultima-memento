@@ -8,6 +8,7 @@ using Server.Misc;
 using Server.Regions;
 using System.Collections;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server
 {
@@ -30,16 +31,17 @@ namespace Server
 
 			AddPage(0);
 
-			string title = "CHOOSE TWO SKILLS TO STUDY";
-			if ( m_CodexWisdom.SkillFirst > 0 && m_CodexWisdom.SkillSecond > 0 ){ title = "CHOOSE A SKILL TO FORGET SO YOU CAN LEARN A DIFFERENT ONE"; }
-			else if ( m_CodexWisdom.SkillFirst == 0 && m_CodexWisdom.SkillSecond > 0 ){ title = "CHOOSE ONE SKILL TO STUDY OR ONE TO FORGET SO YOU CAN LEARN A DIFFERENT ONE"; }
-			else if ( m_CodexWisdom.SkillFirst > 0 && m_CodexWisdom.SkillSecond == 0 ){ title = "CHOOSE ONE SKILL TO STUDY OR ONE TO FORGET SO YOU CAN LEARN A DIFFERENT ONE"; }
+			string title = StringCatalog.Resolve( from.Account, "CHOOSE TWO SKILLS TO STUDY" );
+			if ( m_CodexWisdom.SkillFirst > 0 && m_CodexWisdom.SkillSecond > 0 ){ title = StringCatalog.Resolve( from.Account, "CHOOSE A SKILL TO FORGET SO YOU CAN LEARN A DIFFERENT ONE" ); }
+			else if ( m_CodexWisdom.SkillFirst == 0 && m_CodexWisdom.SkillSecond > 0 ){ title = StringCatalog.Resolve( from.Account, "CHOOSE ONE SKILL TO STUDY OR ONE TO FORGET SO YOU CAN LEARN A DIFFERENT ONE" ); }
+			else if ( m_CodexWisdom.SkillFirst > 0 && m_CodexWisdom.SkillSecond == 0 ){ title = StringCatalog.Resolve( from.Account, "CHOOSE ONE SKILL TO STUDY OR ONE TO FORGET SO YOU CAN LEARN A DIFFERENT ONE" ); }
 
-			if ( warn == null ){ warn = "If you change your skills and leave the chamber, the lenses will vanish and you may need to find others."; }
+			if ( warn == null ){ warn = StringCatalog.Resolve( from.Account, "If you change your skills and leave the chamber, the lenses will vanish and you may need to find others." ); }
 
 			AddImage(0, 0, 7029, Server.Misc.PlayerSettings.GetGumpHue( from ));
 			AddButton(962, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
-			AddHtml( 12, 12, 727, 20, @"<BODY><BASEFONT Color=" + color + ">CODEX OF ULTIMATE WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+			string codexTitle = StringCatalog.Resolve( from.Account, "CODEX OF ULTIMATE WISDOM" );
+			AddHtml( 12, 12, 727, 20, @"<BODY><BASEFONT Color=" + color + ">" + codexTitle + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 12, 46, 976, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 12, 80, 976, 20, @"<BODY><BASEFONT Color=" + color + ">" + warn + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
@@ -51,72 +53,72 @@ namespace Server
 				display--;
 				line++;
 
-				GetLine( line, Skill1, Skill2 );
+				GetLine( from, line, Skill1, Skill2 );
 			}
 		}
 
-		public void GetLine( int val, int skill1, int skill2 )
+		public void GetLine( Mobile from, int val, int skill1, int skill2 )
 		{
 			string color = "#6cb89a";
 			int skl = 0;
 			string txt = "";
 			int btn = 3609;
 
-			if ( val == 1 ){ skl = 1; txt = "Alchemy"; }
-			else if ( val == 2 ){ skl = 2; txt = "Anatomy"; }
-			else if ( val == 3 ){ skl = 6; txt = "Arms Lore"; }
-			else if ( val == 4 ){ skl = 7; txt = "Begging"; }
-			else if ( val == 5 ){ skl = 8; txt = "Blacksmithing"; }
-			else if ( val == 6 ){ skl = 30; txt = "Bludgeoning"; }
-			else if ( val == 7 ){ skl = 20; txt = "Bowcrafting"; }
-			else if ( val == 8 ){ skl = 9; txt = "Bushido"; }
-			else if ( val == 9 ){ skl = 10; txt = "Camping"; }
-			else if ( val == 10 ){ skl = 11; txt = "Carpentry"; }
-			else if ( val == 11 ){ skl = 12; txt = "Cartography"; }
-			else if ( val == 12 ){ skl = 14; txt = "Cooking"; }
-			else if ( val == 13 ){ skl = 16; txt = "Discordance"; }
-			else if ( val == 14 ){ skl = 3; txt = "Druidism"; }
-			else if ( val == 15 ){ skl = 55; txt = "Elementalism"; }
-			else if ( val == 16 ){ skl = 18; txt = "Fencing"; }
-			else if ( val == 17 ){ skl = 54; txt = "Fist Fighting"; }
-			else if ( val == 18 ){ skl = 21; txt = "Focus"; }
-			else if ( val == 19 ){ skl = 22; txt = "Forensics"; }
-			else if ( val == 20 ){ skl = 23; txt = "Healing"; }
-			else if ( val == 21 ){ skl = 24; txt = "Herding"; }
-			else if ( val == 22 ){ skl = 25; txt = "Hiding"; }
-			else if ( val == 23 ){ skl = 26; txt = "Inscription"; }
-			else if ( val == 24 ){ skl = 13; txt = "Knightship"; }
-			else if ( val == 25 ){ skl = 28; txt = "Lockpicking"; }
-			else if ( val == 26 ){ skl = 29; txt = "Lumberjacking"; }
-			else if ( val == 27 ){ skl = 31; txt = "Magery"; }
-			else if ( val == 28 ){ skl = 32; txt = "Magic Resistance"; }
-			else if ( val == 29 ){ skl = 5; txt = "Marksmanship"; }
-			else if ( val == 30 ){ skl = 33; txt = "Meditation"; }
-			else if ( val == 31 ){ skl = 27; txt = "Mercantile"; }
-			else if ( val == 32 ){ skl = 34; txt = "Mining"; }
-			else if ( val == 33 ){ skl = 35; txt = "Musicianship"; }
-			else if ( val == 34 ){ skl = 36; txt = "Necromancy"; }
-			else if ( val == 35 ){ skl = 37; txt = "Ninjitsu"; }
-			else if ( val == 36 ){ skl = 38; txt = "Parrying"; }
-			else if ( val == 37 ){ skl = 39; txt = "Peacemaking"; }
-			else if ( val == 38 ){ skl = 40; txt = "Poisoning"; }
-			else if ( val == 39 ){ skl = 41; txt = "Provocation"; }
-			else if ( val == 40 ){ skl = 17; txt = "Psychology"; }
-			else if ( val == 41 ){ skl = 42; txt = "Remove Trap"; }
-			else if ( val == 42 ){ skl = 19; txt = "Seafaring"; }
-			else if ( val == 43 ){ skl = 15; txt = "Searching"; }
-			else if ( val == 44 ){ skl = 43; txt = "Snooping"; }
-			else if ( val == 45 ){ skl = 44; txt = "Spiritualism"; }
-			else if ( val == 46 ){ skl = 45; txt = "Stealing"; }
-			else if ( val == 47 ){ skl = 46; txt = "Stealth"; }
-			else if ( val == 48 ){ skl = 47; txt = "Swordsmanship"; }
-			else if ( val == 49 ){ skl = 48; txt = "Tactics"; }
-			else if ( val == 50 ){ skl = 49; txt = "Tailoring"; }
-			else if ( val == 51 ){ skl = 4; txt = "Taming"; }
-			else if ( val == 52 ){ skl = 50; txt = "Tasting"; }
-			else if ( val == 53 ){ skl = 51; txt = "Tinkering"; }
-			else if ( val == 54 ){ skl = 52; txt = "Tracking"; }
-			else if ( val == 55 ){ skl = 53; txt = "Veterinary"; }
+			if ( val == 1 ){ skl = 1; txt = StringCatalog.Resolve( from.Account, "Alchemy" ); }
+			else if ( val == 2 ){ skl = 2; txt = StringCatalog.Resolve( from.Account, "Anatomy" ); }
+			else if ( val == 3 ){ skl = 6; txt = StringCatalog.Resolve( from.Account, "Arms Lore" ); }
+			else if ( val == 4 ){ skl = 7; txt = StringCatalog.Resolve( from.Account, "Begging" ); }
+			else if ( val == 5 ){ skl = 8; txt = StringCatalog.Resolve( from.Account, "Blacksmithing" ); }
+			else if ( val == 6 ){ skl = 30; txt = StringCatalog.Resolve( from.Account, "Bludgeoning" ); }
+			else if ( val == 7 ){ skl = 20; txt = StringCatalog.Resolve( from.Account, "Bowcrafting" ); }
+			else if ( val == 8 ){ skl = 9; txt = StringCatalog.Resolve( from.Account, "Bushido" ); }
+			else if ( val == 9 ){ skl = 10; txt = StringCatalog.Resolve( from.Account, "Camping" ); }
+			else if ( val == 10 ){ skl = 11; txt = StringCatalog.Resolve( from.Account, "Carpentry" ); }
+			else if ( val == 11 ){ skl = 12; txt = StringCatalog.Resolve( from.Account, "Cartography" ); }
+			else if ( val == 12 ){ skl = 14; txt = StringCatalog.Resolve( from.Account, "Cooking" ); }
+			else if ( val == 13 ){ skl = 16; txt = StringCatalog.Resolve( from.Account, "Discordance" ); }
+			else if ( val == 14 ){ skl = 3; txt = StringCatalog.Resolve( from.Account, "Druidism" ); }
+			else if ( val == 15 ){ skl = 55; txt = StringCatalog.Resolve( from.Account, "Elementalism" ); }
+			else if ( val == 16 ){ skl = 18; txt = StringCatalog.Resolve( from.Account, "Fencing" ); }
+			else if ( val == 17 ){ skl = 54; txt = StringCatalog.Resolve( from.Account, "Fist Fighting" ); }
+			else if ( val == 18 ){ skl = 21; txt = StringCatalog.Resolve( from.Account, "Focus" ); }
+			else if ( val == 19 ){ skl = 22; txt = StringCatalog.Resolve( from.Account, "Forensics" ); }
+			else if ( val == 20 ){ skl = 23; txt = StringCatalog.Resolve( from.Account, "Healing" ); }
+			else if ( val == 21 ){ skl = 24; txt = StringCatalog.Resolve( from.Account, "Herding" ); }
+			else if ( val == 22 ){ skl = 25; txt = StringCatalog.Resolve( from.Account, "Hiding" ); }
+			else if ( val == 23 ){ skl = 26; txt = StringCatalog.Resolve( from.Account, "Inscription" ); }
+			else if ( val == 24 ){ skl = 13; txt = StringCatalog.Resolve( from.Account, "Knightship" ); }
+			else if ( val == 25 ){ skl = 28; txt = StringCatalog.Resolve( from.Account, "Lockpicking" ); }
+			else if ( val == 26 ){ skl = 29; txt = StringCatalog.Resolve( from.Account, "Lumberjacking" ); }
+			else if ( val == 27 ){ skl = 31; txt = StringCatalog.Resolve( from.Account, "Magery" ); }
+			else if ( val == 28 ){ skl = 32; txt = StringCatalog.Resolve( from.Account, "Magic Resistance" ); }
+			else if ( val == 29 ){ skl = 5; txt = StringCatalog.Resolve( from.Account, "Marksmanship" ); }
+			else if ( val == 30 ){ skl = 33; txt = StringCatalog.Resolve( from.Account, "Meditation" ); }
+			else if ( val == 31 ){ skl = 27; txt = StringCatalog.Resolve( from.Account, "Mercantile" ); }
+			else if ( val == 32 ){ skl = 34; txt = StringCatalog.Resolve( from.Account, "Mining" ); }
+			else if ( val == 33 ){ skl = 35; txt = StringCatalog.Resolve( from.Account, "Musicianship" ); }
+			else if ( val == 34 ){ skl = 36; txt = StringCatalog.Resolve( from.Account, "Necromancy" ); }
+			else if ( val == 35 ){ skl = 37; txt = StringCatalog.Resolve( from.Account, "Ninjitsu" ); }
+			else if ( val == 36 ){ skl = 38; txt = StringCatalog.Resolve( from.Account, "Parrying" ); }
+			else if ( val == 37 ){ skl = 39; txt = StringCatalog.Resolve( from.Account, "Peacemaking" ); }
+			else if ( val == 38 ){ skl = 40; txt = StringCatalog.Resolve( from.Account, "Poisoning" ); }
+			else if ( val == 39 ){ skl = 41; txt = StringCatalog.Resolve( from.Account, "Provocation" ); }
+			else if ( val == 40 ){ skl = 17; txt = StringCatalog.Resolve( from.Account, "Psychology" ); }
+			else if ( val == 41 ){ skl = 42; txt = StringCatalog.Resolve( from.Account, "Remove Trap" ); }
+			else if ( val == 42 ){ skl = 19; txt = StringCatalog.Resolve( from.Account, "Seafaring" ); }
+			else if ( val == 43 ){ skl = 15; txt = StringCatalog.Resolve( from.Account, "Searching" ); }
+			else if ( val == 44 ){ skl = 43; txt = StringCatalog.Resolve( from.Account, "Snooping" ); }
+			else if ( val == 45 ){ skl = 44; txt = StringCatalog.Resolve( from.Account, "Spiritualism" ); }
+			else if ( val == 46 ){ skl = 45; txt = StringCatalog.Resolve( from.Account, "Stealing" ); }
+			else if ( val == 47 ){ skl = 46; txt = StringCatalog.Resolve( from.Account, "Stealth" ); }
+			else if ( val == 48 ){ skl = 47; txt = StringCatalog.Resolve( from.Account, "Swordsmanship" ); }
+			else if ( val == 49 ){ skl = 48; txt = StringCatalog.Resolve( from.Account, "Tactics" ); }
+			else if ( val == 50 ){ skl = 49; txt = StringCatalog.Resolve( from.Account, "Tailoring" ); }
+			else if ( val == 51 ){ skl = 4; txt = StringCatalog.Resolve( from.Account, "Taming" ); }
+			else if ( val == 52 ){ skl = 50; txt = StringCatalog.Resolve( from.Account, "Tasting" ); }
+			else if ( val == 53 ){ skl = 51; txt = StringCatalog.Resolve( from.Account, "Tinkering" ); }
+			else if ( val == 54 ){ skl = 52; txt = StringCatalog.Resolve( from.Account, "Tracking" ); }
+			else if ( val == 55 ){ skl = 53; txt = StringCatalog.Resolve( from.Account, "Veterinary" ); }
 
 			if ( txt != "" )
 			{
@@ -155,7 +157,7 @@ namespace Server
 				if ( ( m_CodexWisdom.SkillFirst == 55 || m_CodexWisdom.SkillSecond == 55 ) && ( m_CodexWisdom.SkillFirst == 31 || m_CodexWisdom.SkillSecond == 31 ) )
 				{
 					updateBook = false;
-					warn = "You cannot have both magery and elementalism studied!";
+					warn = StringCatalog.Resolve( from.Account, "You cannot have both magery and elementalism studied!" );
 					from.SendMessage( warn );
 					m_CodexWisdom.SkillFirst = storeSkillFirst;
 					m_CodexWisdom.SkillSecond = storeSkillSecond;
@@ -163,7 +165,7 @@ namespace Server
 				if ( ( m_CodexWisdom.SkillFirst == 55 || m_CodexWisdom.SkillSecond == 55 ) && ( m_CodexWisdom.SkillFirst == 36 || m_CodexWisdom.SkillSecond == 36 ) )
 				{
 					updateBook = false;
-					warn = "You cannot have both necromancy and elementalism studied!";
+					warn = StringCatalog.Resolve( from.Account, "You cannot have both necromancy and elementalism studied!" );
 					from.SendMessage( warn );
 					m_CodexWisdom.SkillFirst = storeSkillFirst;
 					m_CodexWisdom.SkillSecond = storeSkillSecond;
@@ -196,14 +198,15 @@ namespace Server
 			AddPage(0);
 
 
-			string phrase = "You will need the Concave and Convex Lenses to read the Codex.";
-			if ( status > 0 ){ phrase = "This can only be studied within the Chamber of the Codex."; }
+			string phrase = StringCatalog.Resolve( from.Account, "You will need the Concave and Convex Lenses to read the Codex." );
+			if ( status > 0 ){ phrase = StringCatalog.Resolve( from.Account, "This can only be studied within the Chamber of the Codex." ); }
 
 
 			AddImage(0, 0, 7039, Server.Misc.PlayerSettings.GetGumpHue( from ));
 			AddButton(217, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">CODEX OF WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+			string lenseTitle = StringCatalog.Resolve( from.Account, "CODEX OF WISDOM" );
+			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + lenseTitle + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddHtml( 12, 50, 227, 71, @"<BODY><BASEFONT Color=" + hue + ">" + phrase + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
@@ -214,21 +217,21 @@ namespace Server
 
 			if ( m_CodexWisdom.HasConcaveLense > 0 )
 			{
-				AddHtml( 12, 154, 200, 71, @"<BODY><BASEFONT Color=" + color + ">You have the Concave Lense.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 154, 200, 71, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "You have the Concave Lense." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddItem(207, 157, 1517);
 			}
 			else
 			{
-				AddHtml( 12, 154, 200, 71, @"<BODY><BASEFONT Color=" + color + ">Naxatilor " + Server.Items.VortexCube.GargoyleLocation( "Naxatilor" ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 154, 200, 71, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "Naxatilor {0}.", Server.Items.VortexCube.GargoyleLocation( from, "Naxatilor" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 			if ( m_CodexWisdom.HasConvexLense > 0 )
 			{
-				AddHtml( 45, 251, 200, 71, @"<BODY><BASEFONT Color=" + hue + ">You have the Convex Lense.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 45, 251, 200, 71, @"<BODY><BASEFONT Color=" + hue + ">" + StringCatalog.Resolve( from.Account, "You have the Convex Lense." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddItem(-4, 251, 1518);
 			}
 			else
 			{
-				AddHtml( 45, 251, 200, 71, @"<BODY><BASEFONT Color=" + hue + ">Lor-wis-lem " + Server.Items.VortexCube.GargoyleLocation( "Lor-wis-lem" ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 45, 251, 200, 71, @"<BODY><BASEFONT Color=" + hue + ">" + StringCatalog.ResolveFormat( from.Account, "Lor-wis-lem {0}.", Server.Items.VortexCube.GargoyleLocation( from, "Lor-wis-lem" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 		}
 
@@ -301,7 +304,7 @@ namespace Server
 		{
 			if ( CodexOwner != from )
 			{
-				from.SendMessage( "This Codex does not belong to you!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This Codex does not belong to you!" ) );
 				return false;
 			}
 
@@ -321,7 +324,7 @@ namespace Server
 				}
 				else if ( CodexOwner != from )
 				{
-					from.SendMessage( "This Codex does not belong to you so it vanishes!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This Codex does not belong to you so it vanishes!" ) );
 					bool remove = true;
 					foreach ( Account a in Accounts.GetAccounts() )
 					{

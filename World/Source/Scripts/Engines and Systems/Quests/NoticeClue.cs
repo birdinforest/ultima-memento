@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -23,32 +24,32 @@ namespace Server.Items
 					if ( this.X == 5764 && this.Y == 2215 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "Seems like an odd phrase. Perhaps I should remember the name that some give to a ruby.", "The Bloodstone" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "Seems like an odd phrase. Perhaps I should remember the name that some give to a ruby." ), StringCatalog.Resolve( from.Account, "The Bloodstone" ) ) );
 					}
 					else if ( this.X == 6268 && this.Y == 2661 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "What altars did Harkyn set? What name must be spoken?", "Harkyn's Altars" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "What altars did Harkyn set? What name must be spoken?" ), StringCatalog.Resolve( from.Account, "Harkyn's Altars" ) ) );
 					}
 					else if ( this.X == 6293 && this.Y == 1649 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "The emerald gate? Perhaps a magical gate of green? If I speak the name of the ruby near it, I may be able to enter.", "The Emerald Gate" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "The emerald gate? Perhaps a magical gate of green? If I speak the name of the ruby near it, I may be able to enter." ), StringCatalog.Resolve( from.Account, "The Emerald Gate" ) ) );
 					}
 					else if ( this.X == 6497 && this.Y == 1440 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "The shapes of three, silver they be, can make the golden skull speak? Perhaps these things I must find, but where?", "The Silver Shapes" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "The shapes of three, silver they be, can make the golden skull speak? Perhaps these things I must find, but where?" ), StringCatalog.Resolve( from.Account, "The Silver Shapes" ) ) );
 					}
 					else if ( this.X == 6501 && this.Y == 1773 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "Know this, that a man called Tarjan, thought by many to be insane, had through wizardly powers proclaimed himself a god in Skara Brae a hundred years ago. Perhaps that cult in town knows of this.", "The Mad God" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "Know this, that a man called Tarjan, thought by many to be insane, had through wizardly powers proclaimed himself a god in Skara Brae a hundred years ago. Perhaps that cult in town knows of this." ), StringCatalog.Resolve( from.Account, "The Mad God" ) ) );
 					}
 					else if ( this.X == 6988 && this.Y == 164 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, "You can already feel the magical energy that is sealing this door. Perhaps there is another way to enter this vile place.", "Mangar's Tower Door" ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You can already feel the magical energy that is sealing this door. Perhaps there is another way to enter this vile place." ), StringCatalog.Resolve( from.Account, "Mangar's Tower Door" ) ) );
 					}
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));

@@ -5,7 +5,8 @@ using Server.Mobiles;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Misc;
-using Server.Regions; 
+using Server.Regions;
+using Server.Localization; 
 
 namespace Server.Items
 {
@@ -46,7 +47,7 @@ namespace Server.Items
 
 			if ( from != ArtOwner )
 			{
-				from.SendMessage( "The book doesn't belong to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The book doesn't belong to you." ) );
 			}
 			else
 			{
@@ -223,7 +224,7 @@ namespace Server.Items
 					else if ( AntiqueInfo( thing, 6, book ) == "2" ){ relic.Light = LightType.Circle300; }
 					player.AddToBackpack( relic );
 
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + say + ".");
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( player.Account, "You found the {0}.", say ));
 					player.SendSound( 0x5B4 );
 					book.RumorWorld = Land.None;
 					book.RumorDungeon = "";
@@ -236,7 +237,7 @@ namespace Server.Items
 				}
 				else
 				{
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, book.RumorFrom + " was either wrong or they lied.");
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( player.Account, "{0} was either wrong or they lied.", book.RumorFrom ));
 					player.SendSound( 0x5B3 );
 					book.RumorWorld = Land.None;
 					book.RumorDungeon = "";

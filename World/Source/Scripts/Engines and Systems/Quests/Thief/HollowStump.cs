@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Network;
@@ -12,6 +13,12 @@ namespace Server.Items
 	[Flipable( 0x19FD, 0x19FE )]
 	public class HollowStump : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public string StumpTown;
 		[CommandProperty(AccessLevel.Owner)]
 		public string Stump_Town { get { return StumpTown; } set { StumpTown = value; InvalidateProperties(); } }
@@ -62,8 +69,8 @@ namespace Server.Items
 						Titles.AwardFame( from, ((int)(envelope.NoteReward/100)), true );
 						Titles.AwardKarma( from, -((int)(envelope.NoteReward/100)), true );
 						Server.Items.ThiefNote.SetupNote( envelope, from );
-						from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You collected your reward.");
-						from.SendMessage( "You found another secret note for you." );
+						from.LocalOverheadMessage(MessageType.Emote, 1150, true, ResolveText( from, "You collected your reward." ) );
+						from.SendMessage( ResolveText( from, "You found another secret note for you." ) );
 						from.SendSound( 0x3D );
 						from.CloseGump( typeof( Server.Items.ThiefNote.NoteGump ) );
 						Server.Items.ThiefNote.ThiefTimeAllowed( from );
@@ -73,13 +80,13 @@ namespace Server.Items
 
 				if ( LookInside )
 				{
-					string message = "There is nothing of interest in here.";
+					string message = ResolveText( from, "There is nothing of interest in here." );
 
 					if ( Utility.RandomMinMax( 1, 20 ) == 1 && Stackable == false )
 					{
 						Item randItem = Loot.RandomItem( from, Utility.RandomMinMax(1,4) );
 						randItem.MoveToWorld( from.Location, from.Map );
-						message = "You pull something out of the stump and it falls by your feet.";
+						message = ResolveText( from, "You pull something out of the stump and it falls by your feet." );
 					}
 					Stackable = true;
 

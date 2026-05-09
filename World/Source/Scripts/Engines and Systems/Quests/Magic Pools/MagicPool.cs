@@ -2,6 +2,7 @@ using System;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Utilities;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -195,11 +196,11 @@ namespace Server.Items
 		{
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot drink from the pool while in this state." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot drink from the pool while in this state." ) );
 			}
 			else if ( !from.InRange( GetWorldLocation(), 3 ) )
 			{
-				from.SendMessage( "You will have to get closer to drink from the magical pool!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to drink from the magical pool!" ) );
 			}
 			else if ( m_Uses > 0 )
 			{
@@ -218,16 +219,16 @@ namespace Server.Items
 						else if ( chance >= 75 ){ up = AvailPoints( from, 3 ); }
 						else if ( chance >= 50 ){ up = AvailPoints( from, 2 ); }
 
-						if ( water == 1 ){ from.RawInt = from.RawInt + up; from.SendMessage( "You drink from the pool and you feel much smarter!" ); }
-						else if ( water == 2 ){ from.RawStr = from.RawStr + up; from.SendMessage( "You drink from the pool and you feel much stronger!" ); }
-						else { from.RawDex = from.RawDex + up; from.SendMessage( "You drink from the pool and you feel much quicker!" ); }
+						if ( water == 1 ){ from.RawInt = from.RawInt + up; from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and you feel much smarter!" ) ); }
+						else if ( water == 2 ){ from.RawStr = from.RawStr + up; from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and you feel much stronger!" ) ); }
+						else { from.RawDex = from.RawDex + up; from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and you feel much quicker!" ) ); }
 						
 						this.m_Uses = 0;
 					}
 					else
 					{
 						from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
-						from.SendMessage( "You drink from the pool and nothing happens!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 						this.m_Uses = this.m_Uses - 1;
 					}
 				}
@@ -238,13 +239,13 @@ namespace Server.Items
 					{
 						from.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
 						from.CurePoison( from );
-						from.SendMessage( "You feel much better after drinking from the pool!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You feel much better after drinking from the pool!" ) );
 						this.m_Uses = this.m_Uses - 1;
 					}
 					else
 					{
 						from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
-						from.SendMessage( "You drink from the pool and nothing happens!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 						this.m_Uses = this.m_Uses - 1;
 					}
 				}
@@ -255,7 +256,7 @@ namespace Server.Items
 					{
 						if ( from.Poisoned || MortalStrike.IsWounded( from ) )
 						{
-							from.SendMessage( "You drink from the pool and nothing happens!" );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 							this.m_Uses = this.m_Uses - 1;
 						}
 						else
@@ -266,14 +267,14 @@ namespace Server.Items
 								if ( m_Bonus > 8 ) { min = 125; max = 175; }
 								else if ( m_Bonus > 5 ) { min = 75; max = 125; }
 							from.Heal( Utility.RandomMinMax( min, max ) );
-							from.SendMessage( "You drink from the pool and your wounds magically heal!" );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and your wounds magically heal!" ) );
 							this.m_Uses = this.m_Uses - 1;
 						}
 					}
 					else
 					{
 						from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
-						from.SendMessage( "You drink from the pool and nothing happens!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 						this.m_Uses = this.m_Uses - 1;
 					}
 				}
@@ -311,7 +312,7 @@ namespace Server.Items
 					catch
 					{
 					}
-					from.SendMessage( "A water elemental emerges from the pool!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "A water elemental emerges from the pool!" ) );
 					this.m_Uses = this.m_Uses - 1;
 				}
 				else if ( m_Pool == 5 ) // GOLD TO LEAD
@@ -335,7 +336,7 @@ namespace Server.Items
 						foreach (var item in ItemUtilities.AddStacks(totalAmount, () => new LeadCoin()))
 							from.AddToBackpack( item );
 
-						from.SendMessage( "After drinking from the pool, you notice all of your coins has turned to lead!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "After drinking from the pool, you notice all of your coins has turned to lead!" ) );
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
 
 						LoggingFunctions.LogGenericQuest( from, "had all of their coins turn to lead after drinking from a strange pool" );
@@ -343,7 +344,7 @@ namespace Server.Items
 					else
 					{
 						from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
-						from.SendMessage( "You drink from the pool and nothing happens!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 					}
 					this.m_Uses = this.m_Uses - 1;
 				}
@@ -356,7 +357,7 @@ namespace Server.Items
 					if ( ILost != null ){ ILost.Delete(); mReturn = 1; }
 					if ( mReturn != 1 )
 					{
-						from.SendMessage( "After drinking from the pool, you notice one of your equipped items disappears!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "After drinking from the pool, you notice one of your equipped items disappears!" ) );
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
 
 						LoggingFunctions.LogGenericQuest( from, "had an item vanish after drinking from a strange pool" );
@@ -370,18 +371,18 @@ namespace Server.Items
 
 					if ( m_Bonus > 8 )
 					{
-						if ( from.RawStr > 10 ) { from.RawStr = from.RawStr - 1; from.SendMessage( "You feel weaker after drinking from the pool!" ); }
-						else { from.SendMessage( "You drink from the pool and nothing happens!" ); mCurse = 0; }
+						if ( from.RawStr > 10 ) { from.RawStr = from.RawStr - 1; from.SendMessage( StringCatalog.Resolve( from.Account, "You feel weaker after drinking from the pool!" ) ); }
+						else { from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) ); mCurse = 0; }
 					}
 					else if ( m_Bonus > 5 )
 					{
-						if ( from.RawDex > 10 ) { from.RawDex = from.RawDex - 1; from.SendMessage( "You feel sluggish after drinking from the pool!" ); }
-						else { from.SendMessage( "You drink from the pool and nothing happens!" ); mCurse = 0; }
+						if ( from.RawDex > 10 ) { from.RawDex = from.RawDex - 1; from.SendMessage( StringCatalog.Resolve( from.Account, "You feel sluggish after drinking from the pool!" ) ); }
+						else { from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) ); mCurse = 0; }
 					}
 					else
 					{
-						if ( from.RawInt > 10 ) { from.RawInt = from.RawInt - 1; from.SendMessage( "Your mind is foggy after drinking from the pool!" ); }
-						else { from.SendMessage( "You drink from the pool and nothing happens!" ); mCurse = 0; }
+						if ( from.RawInt > 10 ) { from.RawInt = from.RawInt - 1; from.SendMessage( StringCatalog.Resolve( from.Account, "Your mind is foggy after drinking from the pool!" ) ); }
+						else { from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) ); mCurse = 0; }
 					}
 
 					if ( mCurse == 1 )
@@ -393,7 +394,7 @@ namespace Server.Items
 				else if ( m_Pool == 8 ) // TREASURE CHEST
 				{
 					from.PlaySound( 0x364 );
-					from.SendMessage( "You pull a mystical chest out from the pool!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You pull a mystical chest out from the pool!" ) );
 					this.m_Uses = 0;
 					LootChest MyChest = new LootChest(6);
 					MyChest.ItemID = Utility.RandomList( 0x2823, 0x2824, 0x4FE6, 0x4FE7, 0x281F, 0x2820 );
@@ -431,14 +432,14 @@ namespace Server.Items
 						foreach (var item in ItemUtilities.AddStacks(totalAmount, () => new Gold()))
 							from.AddToBackpack( item );
 
-						from.SendMessage( "After drinking from the pool, you notice your meager coins turn to gold!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "After drinking from the pool, you notice your meager coins turn to gold!" ) );
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
 
 						LoggingFunctions.LogGenericQuest( from, "had all of their meager coins turn to gold after drinking from a strange pool" );
 					}
 					else
 					{
-						from.SendMessage( "You drink from the pool and nothing happens!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink from the pool and nothing happens!" ) );
 					}
 					this.m_Uses = 0;
 				}
@@ -446,7 +447,7 @@ namespace Server.Items
 				{
 					if ( from.Poisoned )
 					{
-						from.SendMessage( "You are too sick to drink from this pool!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You are too sick to drink from this pool!" ) );
 					}
 					else 
 					{
@@ -456,14 +457,14 @@ namespace Server.Items
 							else if ( m_Bonus > 7 ) { from.ApplyPoison( from, Poison.Greater ); }
 							else if ( m_Bonus > 4 ) { from.ApplyPoison( from, Poison.Regular ); }
 							else { from.ApplyPoison( from, Poison.Lesser ); }
-						from.SendMessage( "You feel more sick after drinking from the pool!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You feel more sick after drinking from the pool!" ) );
 						this.m_Uses = this.m_Uses - 1;
 					}
 				}
 			}
 			else
 			{
-				from.SendMessage( "The magic from the pool seems to be drained!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The magic from the pool seems to be drained!" ) );
 			}
 		}
 

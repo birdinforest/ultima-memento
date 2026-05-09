@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Network;
 using System.Text;
 using Server.Items;
@@ -90,19 +91,19 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage("You already have a golem.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a golem." ) );
 			}
 			else if ( nFollowers > 0 )
 			{
-				from.SendMessage("You already have too many in your group.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have too many in your group." ) );
 			}
 			else if ( Charges == 0 )
 			{
-				from.SendMessage("Your golem needs another power crystal.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your golem needs another power crystal." ) );
 			}
 			else if ( PorterOwner == null || PorterOwner.Serial != from.Serial )
 			{
-				from.SendMessage("This is not your golem!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your golem!" ) );
 			}
 			else
 			{

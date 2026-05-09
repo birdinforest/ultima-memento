@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -18,8 +19,8 @@ namespace Server.Items
 			{
 				if ( DateTime.Now >= m_NextTalk && Utility.InRange( from.Location, this.Location, 5 ) )
 				{
-					if ( Name == "gypsy bag" ){ from.SendMessage( 68, "Double click the backpack, on your character window, to open it." ); }
-					else if ( Name == "gypsy help" ){ from.SendMessage( 68, "Single click the gypsy and select 'Talk' to speak with her." ); }
+					if ( Name == "gypsy bag" ){ from.SendMessage( 68, StringCatalog.Resolve( from.Account, "Double click the backpack, on your character window, to open it." ) ); }
+					else if ( Name == "gypsy help" ){ from.SendMessage( 68, StringCatalog.Resolve( from.Account, "Single click the gypsy and select 'Talk' to speak with her." ) ); }
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 15 ));
 				}

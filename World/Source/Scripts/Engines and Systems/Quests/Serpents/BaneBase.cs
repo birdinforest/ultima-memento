@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -63,7 +64,7 @@ namespace Server.Items
 			{
 				if ( DateTime.Now >= m_NextTalk && Utility.InRange( m.Location, this.Location, 2 ) )
 				{
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, "I could use that item on the pedestal to take it.", m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( m.Account, "I could use that item on the pedestal to take it." ), m.NetState);
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}
 			}
@@ -96,7 +97,7 @@ namespace Server.Items
 		{
 			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to take that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to take that." ) );
 			}
 			else 
 			{
@@ -162,7 +163,7 @@ namespace Server.Items
 				BaneBaseEmpty Pedul = new BaneBaseEmpty();
 				Pedul.ItemType = ItemType;
 				Pedul.MoveToWorld (new Point3D(this.X, this.Y, this.Z), this.Map);
-				from.SendMessage( "You have found the " + serpentType + "!" );
+				from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You have found the {0}!", serpentType ) );
 				from.SendSound( 0x3D );
 				LoggingFunctions.LogGeneric( from, "has found the " + serpentType + "." );
 				this.Delete();

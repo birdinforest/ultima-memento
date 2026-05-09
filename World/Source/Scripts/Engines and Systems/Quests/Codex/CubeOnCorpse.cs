@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Items
@@ -57,7 +58,7 @@ namespace Server.Items
 					if ( item is CodexWisdom )
 					{
 						from.AddToBackpack( item );
-						from.SendMessage( "You don't need the Vortex Cube since the Codex is already in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need the Vortex Cube since the Codex is already in your pack." ) );
 					}
 					else if ( item is VortexCube )
 					{
@@ -68,7 +69,7 @@ namespace Server.Items
 						else
 						{
 							from.AddToBackpack( item );
-							from.SendMessage( "Your Vortex Cube is already in your pack." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "Your Vortex Cube is already in your pack." ) );
 						}
 					}
 				}
@@ -76,7 +77,7 @@ namespace Server.Items
 				if ( !HasCube )
 				{
 					SetupCube( from );
-					from.SendMessage( "You take possession of the Vortex Cube!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You take possession of the Vortex Cube!" ) );
 					from.SendSound( 0x3D );
 					LoggingFunctions.LogGeneric( from, "has found the Vortex Cube." );
 					this.Delete();

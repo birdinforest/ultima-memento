@@ -11,6 +11,7 @@ using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {

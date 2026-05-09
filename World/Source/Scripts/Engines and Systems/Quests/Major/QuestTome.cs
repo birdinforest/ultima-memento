@@ -6,6 +6,7 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Localization;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Regions; 
@@ -15,6 +16,12 @@ namespace Server.Items
 {
 	public class QuestTome : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public Map DeliverMap;
 		public int DeliverX;
 		public int DeliverY;
@@ -146,7 +153,7 @@ namespace Server.Items
 			}
 			else if ( QuestTomeOwner != from )
 			{
-				from.SendMessage( "This book does not belong and it crumbles to dust!" );
+				from.SendMessage( ResolveText( from, "This book does not belong and it crumbles to dust!" ) );
 				bool remove = true;
 				foreach ( Account a in Accounts.GetAccounts() )
 				{

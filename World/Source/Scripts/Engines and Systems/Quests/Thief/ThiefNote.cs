@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 using System.Globalization;
 using Server.Regions;
 using Server.Accounting;
@@ -17,6 +18,17 @@ namespace Server.Items
 {
 	public class ThiefNote : Item
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
 		public Mobile NoteOwner;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Note_Owner { get{ return NoteOwner; } set{ NoteOwner = value; } }
@@ -75,7 +87,7 @@ namespace Server.Items
 		{
 			if ( ThiefAllowed( from ) != null )
 			{
-				from.SendMessage( "You need a break from the last job, so read this note in about " + ThiefAllowed( from ) + " minutes." );
+				from.SendMessage( ResolveFormat( from, "You need a break from the last job, so read this note in about {0} minutes.", ThiefAllowed( from ) ) );
 			}
 			else if ( !IsChildOf( from.Backpack ) )
 			{
@@ -83,7 +95,7 @@ namespace Server.Items
 			}
 			else if ( NoteOwner != from )
 			{
-				from.SendMessage( "This note is written in a code you don't understand so you throw it away!" );
+				from.SendMessage( ResolveText( from, "This note is written in a code you don't understand so you throw it away!" ) );
 				bool remove = true;
 				foreach ( Account a in Accounts.GetAccounts() )
 				{

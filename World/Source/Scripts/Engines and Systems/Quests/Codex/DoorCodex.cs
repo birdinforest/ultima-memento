@@ -3,6 +3,7 @@ using Server;
 using Server.Network;
 using Server.Spells;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -42,7 +43,7 @@ namespace Server.Items
 					}
 					else
 					{
-						m.SendMessage( "This door seems to be magically sealed." );
+						m.SendMessage( StringCatalog.Resolve( m.Account, "This door seems to be magically sealed." ) );
 					}
 				}
 			}
@@ -61,7 +62,7 @@ namespace Server.Items
 					}
 					else
 					{
-						m.SendMessage( "This door seems to be magically sealed." );
+						m.SendMessage( StringCatalog.Resolve( m.Account, "This door seems to be magically sealed." ) );
 					}
 				}
 				else if ( tome is CodexWisdom )
@@ -74,13 +75,13 @@ namespace Server.Items
 					}
 					else
 					{
-						m.SendMessage( "This door seems to be magically sealed." );
+						m.SendMessage( StringCatalog.Resolve( m.Account, "This door seems to be magically sealed." ) );
 					}
 				}
 			}
 			else if ( m.InRange( this.GetWorldLocation(), 2 ) )
 			{
-				m.SendMessage( "This door seems to be magically sealed." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "This door seems to be magically sealed." ) );
 			}
 			else
 			{
@@ -96,7 +97,7 @@ namespace Server.Items
 			}
 			else if ( m.InRange( this.GetWorldLocation(), 2 ) )
 			{
-				m.SendMessage( "This door seems to be magically sealed." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "This door seems to be magically sealed." ) );
 			}
 			else
 			{

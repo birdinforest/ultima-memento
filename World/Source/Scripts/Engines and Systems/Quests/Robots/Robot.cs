@@ -6,6 +6,7 @@ using Server.Mobiles;
 using Server.Network;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Mobiles 
 {
@@ -106,7 +107,7 @@ namespace Server.Mobiles
 				
 				if ( difficulty > 50.0 && difficulty > from.Skills[SkillName.Lumberjacking].Value )
 				{
-					from.SendMessage( "You have no idea how to have the robot cut this type of wood!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You have no idea how to have the robot cut this type of wood!" ) );
 					return false;
 				}
 
@@ -114,7 +115,7 @@ namespace Server.Mobiles
 				{
 					if ( m_Log.Amount <= 0 )
 					{
-						from.SendMessage( "There is not enough wood in this pile to make a board." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "There is not enough wood in this pile to make a board." ) );
 					}
 					else
 					{
@@ -124,7 +125,7 @@ namespace Server.Mobiles
 						wood.Amount = amount;
 						from.AddToBackpack( wood );
 						from.PlaySound( 0x21C );
-						from.SendMessage( "The robot cuts the logs and you put some boards in your backpack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The robot cuts the logs and you put some boards in your backpack." ) );
 					}
 				}
 				else
@@ -135,12 +136,12 @@ namespace Server.Mobiles
 					if ( amount < 2 || lose == amount )
 					{
 						m_Log.Delete();
-						from.SendMessage( "The robot tries to cut the logs but ruins all of the wood." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The robot tries to cut the logs but ruins all of the wood." ) );
 					}
 					else
 					{
 						m_Log.Amount = amount - lose;
-						from.SendMessage( "The robot tries to cut the logs but ruins some of the wood." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The robot tries to cut the logs but ruins some of the wood." ) );
 					}
 
 					from.PlaySound( 0x21C );
@@ -148,7 +149,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				from.SendMessage( "The robot doesn't know what to do with that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The robot doesn't know what to do with that." ) );
 			}
 			return base.OnDragDrop( from, dropped );
 		}

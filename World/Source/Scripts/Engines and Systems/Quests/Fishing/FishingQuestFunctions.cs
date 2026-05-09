@@ -124,7 +124,7 @@ namespace Server.Misc
 				{
 					if ( sPCCategory == "Item" && target.WhisperHue == 999 && FishingQuestFunctions.ChanceToFindQuestedItem() >= Utility.RandomMinMax( 1, 100 ) && Server.Lands.LandName( Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y ) ) == sPCWorld && nPCDone != 1 )
 					{
-						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Ahh...they had " + sPCName + "!", m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, ResolveFormat( m, "Ahh...they had {0}!", sPCName ), m.NetState);
 						explorer = explorer.Replace("#0#", "#1#");
 						m.SendSound( 0x3D );
 						LoggingFunctions.LogQuestItem( m, sPCName );
@@ -137,7 +137,7 @@ namespace Server.Misc
 
 					if ( sexplorer == sPCTarget && IsSeaTarget == true && Server.Lands.LandName( Server.Lands.GetLand( target.Map, target.Location, target.X, target.Y ) ) == sPCWorld && nPCDone != 1 )
 					{
-						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The quested bounty has been fulfilled!", m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, ResolveText( m, "The quested bounty has been fulfilled!" ), m.NetState);
 						explorer = explorer.Replace("#0#", "#1#");
 						m.SendSound( 0x3D );
 						LoggingFunctions.LogQuestKill( m, "sea", target );
@@ -413,8 +413,7 @@ namespace Server.Misc
 				{
 					m.SendSound( 0x3D );
 					m.AddToBackpack ( new Gold( nPCFee ) );
-					string sMessage = "Here is " + nPCFee.ToString() + " gold for you.";
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, sMessage, m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveFormat( m, "Here is {0} gold for you.", nPCFee ), m.NetState);
 					FishingQuestFunctions.QuestTimeAllowed( m );
 
 					CustomEventSink.InvokeCombatQuestCompleted( m, nPCFee );

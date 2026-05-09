@@ -1,5 +1,6 @@
 using Server;
 using System;
+using Server.Localization;
 using Server.Misc;
 
 namespace Server.Items
@@ -23,7 +24,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "I don't think you want to drink that!" );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "I don't think you want to drink that!" ) );
 		}
 
 		public BottleOil( Serial serial ) : base( serial )

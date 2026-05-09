@@ -4,6 +4,7 @@ using System.Collections;
 using Server.Network;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -33,7 +34,7 @@ namespace Server.Items
 				if ( pm.IsTitanOfEther )
 				{
 					HasObelisk = true;
-					from.SendMessage( "Being a Titan of Ether, you have no use for that." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Being a Titan of Ether, you have no use for that." ) );
 				}
 				else
 				{
@@ -56,7 +57,7 @@ namespace Server.Items
 						if ( item is ObeliskTip )
 						{
 							from.AddToBackpack( item );
-							from.SendMessage( "Your Obelisk Tip is already in your pack." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "Your Obelisk Tip is already in your pack." ) );
 						}
 					}
 				}
@@ -64,7 +65,7 @@ namespace Server.Items
 				if ( !HasObelisk )
 				{
 					SetupObelisk( from );
-					from.SendMessage( "You take possession of the blackrock Obelisk Tip!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You take possession of the blackrock Obelisk Tip!" ) );
 					from.SendSound( 0x3D );
 					LoggingFunctions.LogGeneric( from, "has found the Obelisk Tip." );
 					this.Delete();

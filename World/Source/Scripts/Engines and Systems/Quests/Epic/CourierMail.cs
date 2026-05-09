@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -107,7 +108,7 @@ namespace Server.Items
 				m_X2 = scroll.xB;
 				m_Y2 = scroll.yB;
 
-				if ( scroll.MsgComplete > 0 ){ sText = "You have found the '" + scroll.SearchItem + "'. Return to " + scroll.ForWho + " and bring them this message.<br><br>" + sText; }
+				if ( scroll.MsgComplete > 0 ){ sText = StringCatalog.ResolveFormat( from.Account, "You have found the '{0}'. Return to {1} and bring them this message.<br><br>", scroll.SearchItem, scroll.ForWho ) + sText; }
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -154,7 +155,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( StringCatalog.Resolve( e.Account, "This must be in your backpack to read." ) );
 			}
 			else
 			{

@@ -9,6 +9,7 @@ using Server.Mobiles;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -80,19 +81,19 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage("You already have a reanimation.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a reanimation." ) );
 			}
 			else if ( nFollowers > 0 )
 			{
-				from.SendMessage("You already have too many in your group.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have too many in your group." ) );
 			}
 			else if ( Limits == 0 )
 			{
-				from.SendMessage("Your reanimation needs more embalming fluid.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your reanimation needs more embalming fluid." ) );
 			}
 			else if ( PorterOwner == null || PorterOwner.Serial != from.Serial )
 			{
-				from.SendMessage("This is not your reanimation!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your reanimation!" ) );
 			}
 			else
 			{

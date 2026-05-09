@@ -1,6 +1,7 @@
 using Server;
 using System;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -31,7 +32,7 @@ namespace Server.Items
 			}
 			else if ( !forge )
 			{
-				from.SendMessage( "You need to be near a forge to smelt that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You need to be near a forge to smelt that." ) );
 			}
 			else if ( from.Skills[SkillName.Blacksmith].Value >= 50 )
 			{
@@ -39,12 +40,12 @@ namespace Server.Items
 				ingot.Amount = this.Amount*3;
 				from.AddToBackpack( ingot );
 				from.PlaySound( 0x208 );
-				from.SendMessage( "You smelt this into usable iron ingots." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You smelt this into usable iron ingots." ) );
 				this.Delete();
 			}
 			else
 			{
-				from.SendMessage( "Only an apprentice blacksmith can smelt that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Only an apprentice blacksmith can smelt that." ) );
 			}
 		}
 

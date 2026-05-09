@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -20,12 +21,12 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else
 			{
-				from.SendMessage( "You feel the hate emanating from this shard." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You feel the hate emanating from this shard." ) );
 			}
 		}
 

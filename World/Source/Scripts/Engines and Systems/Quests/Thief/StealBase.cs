@@ -1,6 +1,8 @@
 using System;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
+using Server.Accounting;
 using System.Linq;
 using Server.Engines.PuzzleChest;
 using Server.Mobiles;
@@ -9,6 +11,17 @@ namespace Server.Items
 {
 	public class StealBase : BaseAddon
 	{
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
 		private PuzzleChest m_PuzzleChest;
 
 		public int BoxType;
@@ -238,13 +251,13 @@ namespace Server.Items
 
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot open that while in this state." );
+				from.SendMessage( ResolveText( from, "You cannot open that while in this state." ) );
 				return;
 			}
 
 			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to try and steal the item." );
+				from.SendMessage( ResolveText( from, "You will have to get closer to try and steal the item." ) );
 				return;
 			}
 			
@@ -265,7 +278,7 @@ namespace Server.Items
 				Item Pedul = new StealBaseEmpty();
 				Pedul.ItemID = PedType;
 				Pedul.MoveToWorld (new Point3D(this.X, this.Y, this.Z), this.Map);
-				from.SendMessage( "Your fingers were not nimble enough and your prize has vanished!" );
+				from.SendMessage( ResolveText( from, "Your fingers were not nimble enough and your prize has vanished!" ) );
 				this.Delete();
 			}
 			else if ( !from.CheckSkill( SkillName.Snooping, 0, 125 ) )
@@ -273,7 +286,7 @@ namespace Server.Items
 				m_Tries++;
 				if ( from.CheckSkill( SkillName.RemoveTrap, 0, 125 ) )
 				{
-					from.SendMessage( "You pull back just in time to avoid a trap!" );
+					from.SendMessage( ResolveText( from, "You pull back just in time to avoid a trap!" ) );
 				}
 				else
 				{
@@ -290,7 +303,7 @@ namespace Server.Items
 					if ( envelope.NoteItemArea == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && envelope.NoteItemGot == 0 )
 					{
 						envelope.NoteItemGot = 1;
-						from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + envelope.NoteItem + ".");
+						from.LocalOverheadMessage(MessageType.Emote, 1150, true, ResolveFormat( from, "You found {0}.", envelope.NoteItem ) );
 						from.SendSound( 0x3D );
 						from.CloseGump( typeof( Server.Items.ThiefNote.NoteGump ) );
 						envelope.InvalidateProperties();
@@ -299,13 +312,13 @@ namespace Server.Items
 				}
 
 				Take(from);
-				from.SendMessage( "Your nimble fingers manage to steal the item." );
+				from.SendMessage( ResolveText( from, "Your nimble fingers manage to steal the item." ) );
 				LoggingFunctions.LogStandard( from, "has stolen an item from a pedestal." );
 			}
 			else
 			{
 				m_Tries++;
-				from.SendMessage( "You fail to steal the item." );
+				from.SendMessage( ResolveText( from, "You fail to steal the item." ) );
 			}
 		}
 
@@ -326,7 +339,7 @@ namespace Server.Items
 							else if ( nPoison > 4 ) { to.ApplyPoison( to, Poison.Regular ); }
 							else { to.ApplyPoison( to, Poison.Lesser ); }
 
-						to.SendMessage( "You accidentally trigger a poison trap!" );
+						to.SendMessage( ResolveText( to, "You accidentally trigger a poison trap!" ) );
 						LoggingFunctions.LogTraps( to, "a pedestal poison trap", false );
 						break;
 					}
@@ -337,7 +350,7 @@ namespace Server.Items
 						to.LocalOverheadMessage(MessageType.Regular, 0xEE, 1010524); // Searing heat scorches thy skin.
 
 						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), to, to, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
-						to.SendMessage( "You accidentally trigger an explosion trap!" );
+						to.SendMessage( ResolveText( to, "You accidentally trigger an explosion trap!" ) );
 						LoggingFunctions.LogTraps( to, "a pedestal explosion trap", false );
 						break;
 					}
@@ -347,7 +360,7 @@ namespace Server.Items
 						to.LocalOverheadMessage(MessageType.Regular, 0x62, 1010525); // Pain lances through thee from a sharp metal blade.
 
 						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 100, 0, 0, 0, 0);
-						to.SendMessage( "You accidentally trigger a blade trap!" );
+						to.SendMessage( ResolveText( to, "You accidentally trigger a blade trap!" ) );
 						LoggingFunctions.LogTraps( to, "a pedestal blade trap", false );
 						break;
 					}
@@ -358,7 +371,7 @@ namespace Server.Items
 						to.LocalOverheadMessage(MessageType.Regular, 0xEE, 1010524); // Searing heat scorches thy skin.
 
 						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), to, to, Utility.RandomMinMax( 10, 80 ), 0, 100, 0, 0, 0 );
-						to.SendMessage( "You accidentally trigger a flame trap!" );
+						to.SendMessage( ResolveText( to, "You accidentally trigger a flame trap!" ) );
 						LoggingFunctions.LogTraps( to, "a pedestal fire trap", false );
 						break;
 					}
@@ -368,7 +381,7 @@ namespace Server.Items
 						to.LocalOverheadMessage(MessageType.Regular, 0xDA, 1010526); // Lightning arcs through thy body.
 
 						AOS.Damage(to, to, Utility.RandomMinMax(10, 80), 0, 0, 0, 0, 100);
-						to.SendMessage( "You accidentally trigger an electrical trap!" );
+						to.SendMessage( ResolveText( to, "You accidentally trigger an electrical trap!" ) );
 						LoggingFunctions.LogTraps( to, "a pedestal electrical trap", false );
 
 						break;

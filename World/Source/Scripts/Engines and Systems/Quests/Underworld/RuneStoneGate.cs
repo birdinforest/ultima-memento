@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -14,7 +15,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This large stone door is covered in strange runes." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This large stone door is covered in strange runes." ) );
 		}
 
 		public RuneStoneGate(Serial serial) : base(serial)

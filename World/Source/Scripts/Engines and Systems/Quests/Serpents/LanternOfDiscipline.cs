@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -23,12 +24,12 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else
 			{
-				from.SendMessage( "The lantern glows with a disciplined light." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The lantern glows with a disciplined light." ) );
 			}
 		}
 

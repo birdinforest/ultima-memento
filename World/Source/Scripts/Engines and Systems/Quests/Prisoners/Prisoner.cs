@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -271,26 +272,25 @@ namespace Server.Items
 				AddButton(368, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
 
-				string FullName = m_Jail.PrisonerName + " " + m_Jail.PrisonerTitle;
-					if ( m_Jail.PrisonerType == 97 ){ FullName = FullName + " (Warrior)"; }
-					else if ( m_Jail.PrisonerType == 98 ){ FullName = FullName + " (Archer)"; }
-					else if ( m_Jail.PrisonerType == 99 ){ FullName = FullName + " (Wizard)"; }
+				string prisonerFullName = m_Jail.PrisonerName + " " + m_Jail.PrisonerTitle;
 
-				string paragraph = "" + m_Jail.PrisonerName + " " + m_Jail.PrisonerTitle + " has been locked in this cage and is begging to be freed. You can choose to leave them to their fate, or they will give you " + m_Jail.PrisonerReward + " gold if you release them. Another choice you can make is to offer them " + m_Jail.PrisonerJoin + " gold to join you on your journey. If you decide to do this, they will be released from this cage and become your henchman. A henchman item will appear in your backpack. Continue reading on if you need an explanation on how henchman work.";
+				string paragraph1 = StringCatalog.ResolveFormat( from.Account, "{0} has been locked in this cage and is begging to be freed. You can choose to leave them to their fate, or they will give you {1} gold if you release them. Another choice you can make is to offer them {2} gold to join you on your journey. If you decide to do this, they will be released from this cage and become your henchman. A henchman item will appear in your backpack. Continue reading on if you need an explanation on how henchman work.", prisonerFullName, m_Jail.PrisonerReward, m_Jail.PrisonerJoin );
 
-				paragraph = paragraph + "<br><br>Henchman are followers that can join you on adventures so you do not have to traverse the dangerous dungeons alone. These henchman use a similar system for tamed animals, with a few exceptions. First, you can heal your henchmen with your healing skill. Second, you cannot transfer an active henchman to another player. Third, you cannot stable your henchmen. Lastly, you cannot be bonded to your henchmen. Although you cannot transfer your henchman, you can give the 'henchman item' to another person where they will then have possession of the henchman. Along those lines, if someone else manages to get your 'henchman item' from you, the henchman is then theirs.<br><br>You must be in an area such as an inn, tavern, or home to call your henchman. Once you call them, they will take possession of the 'henchman item' and keep it until one of the following occur...they are killed, you release them, or they get annoyed with the lack of treasure being found. For every 5 gold you give them, they will travel with you for 1 minute. This equals to 300 gold per hour, where the maximum they will take from you is enough for 6 hours of adventuring. You can pay your henchman in a few different ways. You can give them many types of treasure like coins, gems, or rare items for payment. Rare items are those unique items you may find that you can give to merchants in towns for a high price. Each time you pay them, you will get a message indicating how many minutes they will be traveling with you. When they have about 5 minutes left, they will begin to express their annoyance for the lack of treasure. This is a warning to find some treasure quickly, or your henchman will leave. If your henchman does depart, the 'henchman item' will appear in your backpack. The next time you call upon your henchman, make sure you have something to give them so they will travel with you. A henchman always remembers how much treasure you have given them. This means if a henchman has about 4 hours left of travel, and you 'release' them, they will remember that they have 4 hours of travel when you call upon them again. Keep in mind that this 'adventuring time' does not count down when you are in an area like a tavern, home, inn, bank, or camping tent.<br><br>Each henchman will have a unique name and title. As mentioned earlier, you do not stable henchmen. You instead 'release' them and their 'henchman item' will appear in your backpack and you can call the henchman later. You can release henchman anywhere you are. If a henchman is slain, the 'henchman item' will appear in your backpack. The name of the 'henchman item' will indicate that the henchman is dead. You will have to seek out a healer and 'hire' them to resurrect your henchman. When you 'hire' a healer to do this, it will cost an amount of gold indicated on the item...and you must select the 'henchman item' when the targeting cursor comes up. The 'dead' indicator will vanish and you can then return to an area like an inn, tavern, bank, or home and call your henchman again.<br><br>If you ever mount a creature or magically enhance your travel speed, your henchman will increase their speed so they can keep up with you. Henchman are only as able of an adventurer as you are. Their skill level is an average value of your total skills. Their stats are a distribution of your total non-magically-enhanced stats. So basically, the better you are...the better your henchmen will be. These henchmen only help you in your battles. They do not pick locks or remove traps. That is up to you to manage. You can give them bandages and they will use them as they need them to cure their poison or heal their wounds. You can give them potions though and they will drink them...giving you an empty bottle back. The potions they can make use of are heal, cure, rejuvenate, refresh, and mana potions. You are only able to take two henchman with you at any one time.";
+				string paragraph2 = StringCatalog.Resolve( from.Account, "Henchman are followers that can join you on adventures so you do not have to traverse the dangerous dungeons alone. These henchman use a similar system for tamed animals, with a few exceptions. First, you can heal your henchmen with your healing skill. Second, you cannot transfer an active henchman to another player. Third, you cannot stable your henchmen. Lastly, you cannot be bonded to your henchmen. Although you cannot transfer your henchman, you can give the 'henchman item' to another person where they will then have possession of the henchman. Along those lines, if someone else manages to get your 'henchman item' from you, the henchman is then theirs. You must be in an area such as an inn, tavern, or home to call your henchman. Once you call them, they will take possession of the 'henchman item' and keep it until one of the following occur...they are killed, you release them, or they get annoyed with the lack of treasure being found. For every 5 gold you give them, they will travel with you for 1 minute. This equals to 300 gold per hour, where the maximum they will take from you is enough for 6 hours of adventuring. You can pay your henchman in a few different ways. You can give them many types of treasure like coins, gems, or rare items for payment. Rare items are those unique items you may find that you can give to merchants in towns for a high price. Each time you pay them, you will get a message indicating how many minutes they will be traveling with you. When they have about 5 minutes left, they will begin to express their annoyance for the lack of treasure. This is a warning to find some treasure quickly, or your henchman will leave. If your henchman does depart, the 'henchman item' will appear in your backpack. The next time you call upon your henchman, make sure you have something to give them so they will travel with you. A henchman always remembers how much treasure you have given them. This means if a henchman has about 4 hours left of travel, and you 'release' them, they will remember that they have 4 hours of travel when you call upon them again. Keep in mind that this 'adventuring time' does not count down when you are in an area like a tavern, home, inn, bank, or camping tent. Each henchman will have a unique name and title. As mentioned earlier, you do not stable henchmen. You instead 'release' them and their 'henchman item' will appear in your backpack and you can call the henchman later. You can release henchman anywhere you are. If a henchman is slain, the 'henchman item' will appear in your backpack. The name of the 'henchman item' will indicate that the henchman is dead. You will have to seek out a healer and 'hire' them to resurrect your henchman. When you 'hire' a healer to do this, it will cost an amount of gold indicated on the item...and you must select the 'henchman item' when the targeting cursor comes up. The 'dead' indicator will vanish and you can then return to an area like an inn, tavern, bank, or home and call your henchman again. If you ever mount a creature or magically enhance your travel speed, your henchman will increase their speed so they can keep up with you. Henchman are only as able of an adventurer as you are. Their skill level is an average value of your total skills. Their stats are a distribution of your total non-magically-enhanced stats. So basically, the better you are...the better your henchmen will be. These henchmen only help you in your battles. They do not pick locks or remove traps. That is up to you to manage. You can give them bandages and they will use them as they need them to cure their poison or heal their wounds. You can give them potions though and they will drink them...giving you an empty bottle back. The potions they can make use of are heal, cure, rejuvenate, refresh, and mana potions. You are only able to take two henchman with you at any one time." );
+
+				string paragraph = paragraph1 + "<br><br>" + paragraph2;
 
 
-				AddHtml( 12, 12, 346, 20, @"<BODY><BASEFONT Color=" + color + ">PRISONER - " + FullName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 12, 346, 20, @"<BODY><BASEFONT Color=" + color + ">PRISONER - " + prisonerFullName + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddHtml( 12, 44, 382, 361, @"<BODY><BASEFONT Color=" + color + ">" + paragraph + "</BASEFONT></BODY>", (bool)false, (bool)true);
 
 				AddButton(9, 417, 4005, 4005, 1, GumpButtonType.Reply, 0);
 				AddButton(9, 450, 4008, 4008, 2, GumpButtonType.Reply, 0);
 				AddButton(9, 483, 4020, 4020, 3, GumpButtonType.Reply, 0);
-				AddHtml( 48, 417, 346, 20, @"<BODY><BASEFONT Color=" + color + ">Set Them Free & Earn " + m_Jail.PrisonerReward + " Gold</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 48, 450, 346, 20, @"<BODY><BASEFONT Color=" + color + ">Give Them " + m_Jail.PrisonerJoin + " Gold to Join You</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 48, 483, 346, 20, @"<BODY><BASEFONT Color=" + color + ">Leave Them to Their Fate</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 48, 417, 346, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "Set Them Free & Earn {0} Gold", m_Jail.PrisonerReward ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 48, 450, 346, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "Give Them {0} Gold to Join You", m_Jail.PrisonerJoin ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 48, 483, 346, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Leave Them to Their Fate" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState sender, RelayInfo info )
@@ -301,7 +301,7 @@ namespace Server.Items
 				if ( info.ButtonID == 1 )
 				{
 					from.AddToBackpack ( new Gold( m_Jail.PrisonerReward ) );
-					from.SendMessage( "You free " + m_Jail.PrisonerName + " from their prison." );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You free {0} from their prison.", m_Jail.PrisonerName ) );
 					LoggingFunctions.LogStandard( from, "has freed " + m_Jail.PrisonerName + " " + m_Jail.PrisonerTitle + "." );
 
 					CustomEventSink.InvokeCombatQuestCompleted( from, m_Jail.PrisonerReward );
@@ -331,9 +331,9 @@ namespace Server.Items
 						cont.ConsumeTotal( typeof( Gold ), join );
 
 						if ( begging )
-							from.SendMessage( "You beg " + m_Jail.PrisonerName + " to join you as a henchman for only " + join + " gold." );
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You beg {0} to join you as a henchman for only {1} gold.", m_Jail.PrisonerName, join ) );
 						else
-							from.SendMessage( "" + m_Jail.PrisonerName + " has joined you as a henchman." );
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "{0} has joined you as a henchman.", m_Jail.PrisonerName ) );
 
 						if ( m_Jail.PrisonerType == 97 )
 						{
@@ -391,18 +391,18 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You do not have enough gold to convince them to join you." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have enough gold to convince them to join you." ) );
 					}
 				}
 				else if ( info.ButtonID == 3 )
 				{
 					switch ( Utility.RandomMinMax( 0, 4 ) )
 					{
-						case 0: from.Say("I will leave you to your fate, " + m_Jail.PrisonerName + "!"); break;
-						case 1: from.Say("" + m_Jail.PrisonerName + ", stay here and rot!"); break;
-						case 2: from.Say("" + m_Jail.PrisonerName + ", the world is better with you in here!"); break;
-						case 3: from.Say("You are not the sort I wish to free, " + m_Jail.PrisonerName + "."); break;
-						case 4: from.Say("You must be here for a reason, " + m_Jail.PrisonerName + "."); break;
+						case 0: from.Say( StringCatalog.ResolveFormat( from.Account, "I will leave you to your fate, {0}!", m_Jail.PrisonerName ) ); break;
+						case 1: from.Say( StringCatalog.ResolveFormat( from.Account, "{0}, stay here and rot!", m_Jail.PrisonerName ) ); break;
+						case 2: from.Say( StringCatalog.ResolveFormat( from.Account, "{0}, the world is better with you in here!", m_Jail.PrisonerName ) ); break;
+						case 3: from.Say( StringCatalog.ResolveFormat( from.Account, "You are not the sort I wish to free, {0}.", m_Jail.PrisonerName ) ); break;
+						case 4: from.Say( StringCatalog.ResolveFormat( from.Account, "You must be here for a reason, {0}.", m_Jail.PrisonerName ) ); break;
 					}
 				}
 			}

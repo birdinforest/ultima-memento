@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -35,7 +36,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What do you want to put the batteries in?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What do you want to put the batteries in?" ) );
 				t = new PowerTarget( this );
 				from.Target = t;
 			}
@@ -62,7 +63,7 @@ namespace Server.Items
 
 					if ( !iBattery.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this battery on robots in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this battery on robots in your pack." ) );
 					}
 					else if ( myCharges < 100 )
 					{
@@ -70,7 +71,7 @@ namespace Server.Items
 
 						if ( xBattery.m_Charges > 100 ){ xBattery.m_Charges = 100; }
 
-						from.SendMessage( "You charge your robot with the battery." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You charge your robot with the battery." ) );
 						from.RevealingAction();
 						from.SendSound( 0x559 );
 
@@ -80,12 +81,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That robot is already fully charged." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That robot is already fully charged." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You don't think that will really do anything." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't think that will really do anything." ) );
 				}
 			}
 		}
