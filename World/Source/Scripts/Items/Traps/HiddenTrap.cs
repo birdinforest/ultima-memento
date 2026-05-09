@@ -963,15 +963,80 @@ namespace Server.Items
 						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						sTrapType = textLog;
 					}
-					else if ( nTrapType == 25 && m.Karma != 0 && SavingThrow( m, "Magic", true, this ) == false ) // ALIGNMENT TRAP
+					else if ( nTrapType == 25 && m.Karma != 0 ) // ALIGNMENT TRAP — graduated corruption, conviction-based resistance
 					{
-						m.Karma = m.Karma * -1;
-						textSay = "A trap triggered, making your mind warp your morality!";
-						textLog = "a mind warping trap";
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-						m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
-						m.PlaySound( 0x1E1 );
-						sTrapType = textLog;
+						// Base Magic save (Int + MagicResist + EnergyResist), same formula as other Magic saves
+						int alignBaseSave = (int)(( m.Int + m.Skills[SkillName.MagicResist].Value + m.EnergyResistance ) / 4);
+
+						// Moral disciplines strengthen resistance to soul corruption
+						int moralDisciplineBonus = (int)(( m.Skills[SkillName.Meditation].Value + m.Skills[SkillName.SpiritSpeak].Value ) / 20);
+
+						// Deep moral conviction anchors identity — the more committed, the harder to corrupt
+						// (+1 per 300 karma, up to +50 at maximum ±15000)
+						int convictionBonus = Math.Abs( m.Karma ) / 300;
+
+						int alignSaveThrow = Math.Min( alignBaseSave + moralDisciplineBonus + convictionBonus, 75 );
+						bool savedAlignment = alignSaveThrow >= Utility.RandomMinMax( 1, 100 );
+
+						if ( savedAlignment )
+						{
+							if ( MySettings.S_AnnounceTrapSaves )
+							{
+								m.LocalOverheadMessage( Network.MessageType.Emote, 0x3B2, false,
+									"You got near a hidden trap, but your moral convictions shield you from corruption." );
+								m.PlaySound( m.Female ? 778 : 1049 );
+								HiddenTrapType = 1000;
+							}
+						}
+						else
+						{
+							int absKarma = Math.Abs( m.Karma );
+							bool wasPositive = m.Karma >= 0;
+							int finalKarma;
+
+							if ( absKarma > 10000 )
+							{
+								// Deeply aligned: conviction partially holds; alignment is badly weakened but does NOT invert
+								finalKarma = (int)( m.Karma * 0.4 );
+								textSay = "A trap triggers a dark wave — your morality wavers violently, but your deep conviction refuses to break.";
+							}
+							else if ( absKarma > 4000 )
+							{
+								// Moderately aligned: alignment inverts but at reduced magnitude — something to rebuild from
+								finalKarma = -(int)( m.Karma * 0.7 );
+								if ( finalKarma > 15000 ) finalKarma = 15000;
+								if ( finalKarma < -15000 ) finalKarma = -15000;
+								textSay = "A trap triggered, your morality shatters and reforms inverted — seek a shrine to reclaim yourself!";
+							}
+							else
+							{
+								// Weakly aligned: no anchor to hold; devastating full flip
+								finalKarma = m.Karma * -1;
+								textSay = "A trap triggered, making your mind warp your morality!";
+							}
+
+							m.Karma = finalKarma;
+
+							// Mirror AwardKarma's KarmaLocked logic when alignment crosses zero
+							if ( m is PlayerMobile )
+							{
+								PlayerMobile pm = (PlayerMobile)m;
+								bool isNowPositive = m.Karma >= 0;
+								if ( !Core.AOS && wasPositive && !isNowPositive && !pm.KarmaLocked )
+									pm.KarmaLocked = true;
+								else if ( isNowPositive && pm.KarmaLocked )
+									pm.KarmaLocked = false;
+							}
+
+							textLog = "a mind warping trap";
+							m.LocalOverheadMessage( MessageType.Emote, 0x916, true, textSay );
+							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
+							m.PlaySound( 0x1E1 );
+							sTrapType = textLog;
+
+							// Hint at recovery path — players should know there is one
+							m.SendMessage( "Your moral self feels corrupted. Seek an ankh shrine to begin recovering your alignment." );
+						}
 					}
 
 					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
