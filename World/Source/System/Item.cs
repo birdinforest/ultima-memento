@@ -1466,19 +1466,134 @@ namespace Server
 		}
 
 		/// <summary>
+		/// Maps property shotkeys to their display color (6-digit hex RGB, no #).
+		/// During bilingual OPL construction (<see cref="BuildingPropertyListLocale" /> is set),
+		/// properties with a color mapping are rendered in color. Properties without a
+		/// mapping use default white text.
+		/// </summary>
+		private static readonly Dictionary<string, string> PropertyColorMap = new Dictionary<string, string>
+		{
+			// === Elemental Resists ===
+			{ "prop.resist.physical",	"8B4513" },	// 褐色 — 大地/物理
+			{ "prop.resist.fire",		"B22222" },	// 红色 — 火焰
+			{ "prop.resist.cold",		"4682B4" },	// 蓝色 — 寒冷
+			{ "prop.resist.poison",		"2E8B57" },	// 绿色 — 毒素
+			{ "prop.resist.energy",		"800080" },	// 紫色 — 能量
+
+			// === Elemental Damage Types ===
+			{ "prop.physical.damage",	"8B4513" },
+			{ "prop.fire.damage",		"B22222" },
+			{ "prop.cold.damage",		"4682B4" },
+			{ "prop.poison.damage",		"2E8B57" },
+			{ "prop.energy.damage",		"800080" },
+			{ "prop.chaos.damage",		"808080" },
+			{ "prop.direct.damage",		"808080" },
+
+			// === Combat Stats (Gold) ===
+			{ "prop.damage.increase",		"DAA520" },
+			{ "prop.hit.chance.increase",		"DAA520" },
+			{ "prop.defense.chance.increase",	"DAA520" },
+			{ "prop.swing.speed.increase",		"DAA520" },
+			{ "prop.luck",				"DAA520" },
+			{ "prop.velocity",			"DAA520" },
+			{ "prop.balanced",			"DAA520" },
+			{ "prop.use.best.weapon.skill",		"DAA520" },
+			{ "prop.exceptional",			"DAA520" },
+			{ "prop.weapon.damage.range",		"DAA520" },
+			{ "prop.weapon.speed",			"DAA520" },
+			{ "prop.range",				"DAA520" },
+			{ "prop.artifact.rarity",		"DAA520" },
+			{ "prop.blessed",			"DAA520" },
+			{ "prop.blessed.for",			"DAA520" },
+
+			// === Spell & Magic (Purple) ===
+			{ "prop.faster.casting",		"9370DB" },
+			{ "prop.faster.cast.recovery",		"9370DB" },
+			{ "prop.spell.damage.increase",		"9370DB" },
+			{ "prop.spell.channeling",		"9370DB" },
+			{ "prop.hit.lightning",			"9370DB" },
+			{ "prop.hit.magic.arrow",		"9370DB" },
+			{ "prop.hit.dispel",			"9370DB" },
+			{ "prop.hit.energy.area",		"9370DB" },
+
+			// === Strength / Life / Fire (Red) ===
+			{ "prop.strength.bonus",		"B22222" },
+			{ "prop.hit.point.increase",		"B22222" },
+			{ "prop.hit.point.regeneration",	"B22222" },
+			{ "prop.hit.life.leech",		"B22222" },
+			{ "prop.hit.harm",			"B22222" },
+			{ "prop.hit.physical.area",		"8B4513" },
+			{ "prop.hit.fire.area",			"B22222" },
+			{ "prop.hit.fireball",			"B22222" },
+			{ "prop.cursed",			"B22222" },
+
+			// === Dexterity / Stamina / Nature (Green) ===
+			{ "prop.dexterity.bonus",		"2E8B57" },
+			{ "prop.stamina.increase",		"2E8B57" },
+			{ "prop.stamina.regeneration",		"2E8B57" },
+			{ "prop.lower.reagent.cost",		"2E8B57" },
+			{ "prop.enhance.potions",		"2E8B57" },
+			{ "prop.hit.stamina.leech",		"2E8B57" },
+			{ "prop.hit.poison.area",		"2E8B57" },
+
+			// === Intelligence / Mana / Cold (Blue) ===
+			{ "prop.intelligence.bonus",		"4682B4" },
+			{ "prop.mana.increase",			"4682B4" },
+			{ "prop.mana.regeneration",		"4682B4" },
+			{ "prop.lower.mana.cost",		"4682B4" },
+			{ "prop.mage.weapon",			"4682B4" },
+			{ "prop.mage.armor",			"4682B4" },
+			{ "prop.night.sight",			"4682B4" },
+			{ "prop.hit.mana.leech",		"4682B4" },
+			{ "prop.hit.cold.area",			"4682B4" },
+
+			// === Information / Utility (Gray) ===
+			{ "prop.strength.requirement",		"808080" },
+			{ "prop.lower.requirements",		"808080" },
+			{ "prop.durability",			"808080" },
+			{ "prop.durability.bonus",		"808080" },
+			{ "prop.self.repair",			"808080" },
+			{ "prop.uses",				"808080" },
+			{ "prop.crafted.by",			"808080" },
+			{ "prop.hit.lower.attack",		"808080" },
+			{ "prop.hit.lower.defense",		"808080" },
+			{ "prop.reflect.physical.damage",	"8B4513" },
+			{ "prop.insured",			"808080" },
+			{ "prop.transmutable",			"C6D11C" },
+			{ "prop.decorative.artifact",		"C6D11C" },
+			{ "prop.quest.item",			"DAA520" },
+			{ "prop.locked.down",			"808080" },
+			{ "prop.locked.down.secure",		"808080" },
+			{ "prop.elves.only",			"DAA520" },
+			{ "prop.skill.swordsmanship",		"808080" },
+			{ "prop.skill.bludgeoning",		"808080" },
+			{ "prop.skill.fencing",			"808080" },
+			{ "prop.skill.marksmanship",		"808080" },
+			{ "prop.skill.fist.fighting",		"808080" },
+		};
+
+		/// <summary>
 		/// Adds a localized property string to the OPL using a shotkey.
 		/// During bilingual OPL construction (<see cref="BuildingPropertyListLocale" /> is set),
 		/// resolves the shotkey in the current locale and applies <paramref name="args" />.
 		/// Falls back to the English key text if localization is unavailable.
+		/// If the shotkey has a color mapping in <see cref="PropertyColorMap" />, the text is
+		/// wrapped in a <basefont> tag to display in the mapped color.
 		/// </summary>
 		public void AddLocalizedProperty( ObjectPropertyList list, string shotkey, params object[] args )
 		{
 			string template = ResolvePropertyText( shotkey );
+			string text;
 
 			if ( args != null && args.Length > 0 )
-				list.Add( string.Format( template, args ));
+				text = string.Format( template, args );
 			else
-				list.Add( template );
+				text = template;
+
+			if ( PropertyColorMap.TryGetValue( shotkey, out string color ) )
+				list.Add( "<BASEFONT COLOR=#" + color + ">" + text + "</BASEFONT>" );
+			else
+				list.Add( text );
 		}
 
 		/// <summary>

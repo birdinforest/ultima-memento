@@ -12,11 +12,12 @@
 3. [双缓存机制](#3-双缓存机制)
 4. [Cliloc 控制码速查表](#4-cliloc-控制码速查表)
 5. [颜色控制](#5-颜色控制)
-6. [字体与字号控制](#6-字体与字号控制)
-7. [Shotkey 文本索引系统](#7-shotkey-文本索引系统)
-8. [启用本地化的代码路径](#8-启用本地化的代码路径)
-9. [典型案例](#9-典型案例)
-10. [性能说明](#10-性能说明)
+6. [属性颜色对照表](#6-属性颜色对照表)
+7. [字体与字号控制](#7-字体与字号控制)
+8. [Shotkey 文本索引系统](#8-shotkey-文本索引系统)
+9. [启用本地化的代码路径](#9-启用本地化的代码路径)
+10. [典型案例](#10-典型案例)
+11. [性能说明](#11-性能说明)
 
 ---
 
@@ -299,9 +300,139 @@ public override void AddNameProperty( ObjectPropertyList list )
 
 ---
 
-## 6. 字体与字号控制
+## 6. 属性颜色对照表
 
-### 6.1 可用字号
+`AddLocalizedProperty()` 方法内建了一个 `PropertyColorMap` 字段，根据 shotkey 自动为中文属性文本添加 `<BASEFONT COLOR=#>...</BASEFONT>` 包裹。以下为完整颜色对照表。
+
+### 6.1 元素抵抗 / 伤害
+
+| Shotkey | 中文示例 | 颜色 | HEX | 设计依据 |
+|---------|---------|------|-----|---------|
+| `prop.resist.physical` | 物理抵抗 10% | 褐色 | `8B4513` | 大地/岩石 |
+| `prop.resist.fire` / `prop.fire.damage` | 火焰抵抗 15% | 红色（Fire Ruby） | `B22222` | 火焰 |
+| `prop.resist.cold` / `prop.cold.damage` | 寒冷抵抗 12% | 蓝色 | `4682B4` | 冰霜 |
+| `prop.resist.poison` / `prop.poison.damage` | 毒素抵抗 8% | 绿色 | `2E8B57` | 自然毒素 |
+| `prop.resist.energy` / `prop.energy.damage` | 能量抵抗 10% | 紫色 | `800080` | 魔法能量 |
+| `prop.physical.damage` | 物理伤害 50% | 褐色 | `8B4513` | 大地/物理 |
+| `prop.reflect.physical.damage` | 反射物理伤害 30% | 褐色 | `8B4513` | 同物理 |
+| `prop.chaos.damage` / `prop.direct.damage` | 混沌伤害 20% | 灰色 | `808080` | 混沌/混沌 |
+
+### 6.2 战斗属性（金色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.damage.increase` | 伤害增加 30% | `DAA520` |
+| `prop.hit.chance.increase` | 命中几率增加 15% | `DAA520` |
+| `prop.defense.chance.increase` | 防御几率增加 10% | `DAA520` |
+| `prop.swing.speed.increase` | 攻击速度增加 20% | `DAA520` |
+| `prop.luck` | 幸运 100 | `DAA520` |
+| `prop.velocity` | 速度 50% | `DAA520` |
+| `prop.balanced` | 平衡 | `DAA520` |
+| `prop.use.best.weapon.skill` | 使用最佳武器技能 | `DAA520` |
+| `prop.exceptional` | 卓越品质 | `DAA520` |
+| `prop.weapon.damage.range` | 武器伤害 15 - 20 | `DAA520` |
+| `prop.weapon.speed` | 武器速度 30 | `DAA520` |
+| `prop.range` | 范围 10 | `DAA520` |
+| `prop.artifact.rarity` | 神器稀有度 3 | `DAA520` |
+| `prop.blessed` / `prop.blessed.for` | 受祝福的 / 对 Forrrest 祝福 | `DAA520` |
+| `prop.quest.item` | 任务物品 | `DAA520` |
+| `prop.elves.only` | 仅限精灵使用 | `DAA520` |
+
+### 6.3 法术与魔法（紫色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.faster.casting` | 快速施法 1 | `9370DB` |
+| `prop.faster.cast.recovery` | 快速施法恢复 2 | `9370DB` |
+| `prop.spell.damage.increase` | 法术伤害增加 15% | `9370DB` |
+| `prop.spell.channeling` | 法术引导 | `9370DB` |
+| `prop.hit.lightning` | 击中闪电 50% | `9370DB` |
+| `prop.hit.magic.arrow` | 击中魔法箭 50% | `9370DB` |
+| `prop.hit.dispel` | 击退驱散 50% | `9370DB` |
+| `prop.hit.energy.area` | 击中能量区域 50% | `9370DB` |
+
+### 6.4 力量 / 生命 / 火焰（红色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.strength.bonus` | 力量增加 5 | `B22222` |
+| `prop.hit.point.increase` | 增加生命值 10 | `B22222` |
+| `prop.hit.point.regeneration` | 生命恢复 2 | `B22222` |
+| `prop.hit.life.leech` | 击中生命偷取 30% | `B22222` |
+| `prop.hit.harm` | 击中毒害 50% | `B22222` |
+| `prop.hit.fire.area` | 击中火焰区域 50% | `B22222` |
+| `prop.hit.fireball` | 击中火球 50% | `B22222` |
+| `prop.cursed` | 被诅咒的 | `B22222` |
+
+### 6.5 敏捷 / 精力 / 自然（绿色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.dexterity.bonus` | 敏捷增加 5 | `2E8B57` |
+| `prop.stamina.increase` | 精力增加 10 | `2E8B57` |
+| `prop.stamina.regeneration` | 精力恢复 2 | `2E8B57` |
+| `prop.lower.reagent.cost` | 降低药材料消耗 20% | `2E8B57` |
+| `prop.enhance.potions` | 增强药水 30% | `2E8B57` |
+| `prop.hit.stamina.leech` | 击中精力偷取 30% | `2E8B57` |
+| `prop.hit.poison.area` | 击中毒素区域 50% | `2E8B57` |
+
+### 6.6 智力 / 法力 / 寒冷（蓝色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.intelligence.bonus` | 智力增加 5 | `4682B4` |
+| `prop.mana.increase` | 增加魔法值 10 | `4682B4` |
+| `prop.mana.regeneration` | 魔法恢复 2 | `4682B4` |
+| `prop.lower.mana.cost` | 降低魔法消耗 10% | `4682B4` |
+| `prop.mage.weapon` | 法师武器 -30 技能 | `4682B4` |
+| `prop.mage.armor` | 法师护甲 | `4682B4` |
+| `prop.night.sight` | 夜视 | `4682B4` |
+| `prop.hit.mana.leech` | 击中魔法偷取 30% | `4682B4` |
+| `prop.hit.cold.area` | 击中寒冷区域 50% | `4682B4` |
+
+### 6.7 信息 / 辅助（灰色）
+
+| Shotkey | 中文示例 | HEX |
+|---------|---------|-----|
+| `prop.strength.requirement` | 力量需求 30 | `808080` |
+| `prop.lower.requirements` | 降低需求 20% | `808080` |
+| `prop.durability` | 耐久度 45 / 50 | `808080` |
+| `prop.durability.bonus` | 耐久度 50% | `808080` |
+| `prop.self.repair` | 自我修复 3 | `808080` |
+| `prop.uses` | 使用次数：50 | `808080` |
+| `prop.crafted.by` | 制造者：Forrrest | `808080` |
+| `prop.hit.lower.attack` | 击中降低攻击 50% | `808080` |
+| `prop.hit.lower.defense` | 击中降低防御 50% | `808080` |
+| `prop.insured` | 已保险 | `808080` |
+| `prop.locked.down` | 已锁定 | `808080` |
+| `prop.locked.down.secure` | 已锁定并安全 | `808080` |
+| `prop.skill.*` | 所需技能：剑术等 | `808080` |
+| `prop.transmutable` | 可转换材料 | `C6D11C`（黄绿） |
+| `prop.decorative.artifact` | 装饰性神器 | `C6D11C`（黄绿） |
+| `prop.hit.physical.area` | 击中物理区域 50% | `8B4513`（褐色） |
+
+### 6.8 实现原理
+
+颜色由 `AddLocalizedProperty()` 自动完成，无需在每个调用处指定颜色：
+
+```csharp
+// 在 GetProperties() 中只需要传递 shotkey 和数值
+AddLocalizedProperty( list, "prop.damage.increase", 30 );
+AddLocalizedProperty( list, "prop.night.sight" );
+AddLocalizedProperty( list, "prop.resist.fire", 15 );
+
+// AddLocalizedProperty 内部自动查找 PropertyColorMap，
+// 找到匹配的 shotkey 后自动包装颜色标签：
+// → "<BASEFONT COLOR=#DAA520>伤害增加 30%</BASEFONT>"
+// → "<BASEFONT COLOR=#4682B4>夜视</BASEFONT>"
+// → "<BASEFONT COLOR=#B22222>火焰抵抗 15%</BASEFONT>"
+```
+
+完整颜色映射定义位于 `Item.cs:PropertyColorMap`。未映射的 shotkey 使用默认白色文本。
+
+## 7. 字体与字号控制
+
+### 7.1 可用字号
 
 UO 客户端在 OPL 中仅支持两种字号：
 
@@ -316,7 +447,7 @@ UO 客户端在 OPL 中仅支持两种字号：
 - `<big>...</big>` — 放大加粗
 - `<b>...</b>` — 加粗（部分客户端支持）
 
-### 6.2 如何选择字号
+### 7.2 如何选择字号
 
 ```csharp
 // 大号加粗彩色 — 使用 1072171
@@ -329,15 +460,15 @@ list.Add( 1042971, "<basefont color=#9F44FF>圣辉符文</basefont>" );
 AddLocalizedProperty( list, "prop.damage.increase", 15 );
 ```
 
-### 6.3 字体
+### 7.3 字体
 
 UO 客户端使用自己的游戏字体（通常是 `Unifont` 或系统 `Arial`），**无法通过服务器控制字体类型**。所有 OPL 文本使用相同的客户端字体。
 
 ---
 
-## 7. Shotkey 文本索引系统
+## 8. Shotkey 文本索引系统
 
-### 7.1 什么是 Shotkey
+### 8.1 什么是 Shotkey
 
 Shotkey（逻辑键）是服务器端使用的稳定文本标识符，格式为 `prop.<category>.<name>`，存储在 `en/equipment-properties.json` 和 `zh-Hans/equipment-properties.json` 中。
 
@@ -361,7 +492,7 @@ Shotkey（逻辑键）是服务器端使用的稳定文本标识符，格式为 
 }
 ```
 
-### 7.2 Helper 方法
+### 8.2 Helper 方法
 
 ```csharp
 // AddLocalizedProperty 完整实现（Item.cs:1474-1482）
@@ -401,7 +532,7 @@ AddLocalizedProperty( list, "prop.durability", 45, 50 );
 // → en: "durability 45 / 50"   → zh: "耐久度 45 / 50"
 ```
 
-### 7.3 Shotkey 命名规范
+### 8.3 Shotkey 命名规范
 
 ```
 prop.<分类>.<属性名>     — 通用装备属性
@@ -412,7 +543,7 @@ prop.hit.<效果>          — 击中特效
 
 所有已在使用的 shotkey 列表：[`en/equipment-properties.json`](../../Data/Localization/en/equipment-properties.json)
 
-### 7.4 添加新 Shotkey
+### 8.4 添加新 Shotkey
 
 1. 在 `en/equipment-properties.json` 和 `zh-Hans/equipment-properties.json` 中添加条目
 2. 在 C# 中使用 `AddLocalizedProperty(list, "prop.new.key", value)` 调用
@@ -420,9 +551,9 @@ prop.hit.<效果>          — 击中特效
 
 ---
 
-## 8. 启用本地化的代码路径
+## 9. 启用本地化的代码路径
 
-### 8.1 步骤一：设置 `IsContentLocalized`
+### 9.1 步骤一：设置 `IsContentLocalized`
 
 在目标物品类的基类中：
 
@@ -443,7 +574,7 @@ public override bool IsContentLocalized => true;
 | `BaseInstrument` | `Instruments/BaseInstrument.cs` | 171 |
 | `BaseSpecial` | `Trades/Special.cs` | 17 |
 
-### 8.2 步骤二：改造 `GetProperties()`
+### 9.2 步骤二：改造 `GetProperties()`
 
 在 `GetProperties()` 中，原来使用 cliloc 编号的代码需要增加双语分支：
 
@@ -490,7 +621,7 @@ else
 }
 ```
 
-### 8.3 步骤三：改造 `AddNameProperty()`
+### 9.3 步骤三：改造 `AddNameProperty()`
 
 物品名称需要按语言返回不同文本。参考 `BaseSpecial.cs`：
 
@@ -515,7 +646,7 @@ public override void AddNameProperty( ObjectPropertyList list )
 
 ---
 
-## 9. 典型案例
+## 10. 典型案例
 
 ### 案例 1：武器属性展示
 
@@ -618,7 +749,7 @@ InfoText2 = "Magically Crafts Items";
 
 ---
 
-## 10. 性能说明
+## 11. 性能说明
 
 1. **缓存命中率：** 每个物品每种语言只构建一次 OPL，后续相同语言的玩家共享同一缓存。缓存随 `InvalidateProperties()` 清除。
 
