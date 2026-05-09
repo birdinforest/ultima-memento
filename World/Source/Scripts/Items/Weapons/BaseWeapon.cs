@@ -23,6 +23,8 @@ namespace Server.Items
 	public abstract class BaseWeapon : Item, IWeapon, IScissorable, ICraftable, ISlayer, IDurability
 	{
 		private string m_EngravedText;
+
+		public override bool IsContentLocalized => true;
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string EngravedText
@@ -3227,23 +3229,47 @@ namespace Server.Items
 			base.GetProperties( list );
 
 			if ( m_BuiltBy != null )
-				list.Add( 1050043, m_BuiltBy.Name ); // crafted by ~1_NAME~
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.crafted.by", m_BuiltBy.Name );
+				else
+					list.Add( 1050043, m_BuiltBy.Name ); // crafted by ~1_NAME~
+			}
 
 			if ( m_AosSkillBonuses != null )
 				m_AosSkillBonuses.GetProperties( list );
 
 			if ( m_Quality == WeaponQuality.Exceptional )
-				list.Add( 1060636 ); // exceptional
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.exceptional" );
+				else
+					list.Add( 1060636 ); // exceptional
+			}
 
 			if( RequiredRace == Race.Elf )
-				list.Add( 1075086 ); // Elves Only
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.elves.only" );
+				else
+					list.Add( 1075086 ); // Elves Only
+			}
 
 			if ( ArtifactRarity > 0 )
-				list.Add( 1061078, ArtifactRarity.ToString() ); // artifact rarity ~1_val~
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.artifact.rarity", ArtifactRarity );
+				else
+					list.Add( 1061078, ArtifactRarity.ToString() ); // artifact rarity ~1_val~
+			}
 
 			if ( this is IUsesRemaining && ((IUsesRemaining)this).ShowUsesRemaining )
-				list.Add( 1060584, "{0}\t{1}", ((IUsesRemaining)this).UsesRemaining.ToString(), "Uses" );
-
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.uses", ((IUsesRemaining)this).UsesRemaining );
+				else
+					list.Add( 1060584, "{0}\t{1}", ((IUsesRemaining)this).UsesRemaining.ToString(), "Uses" );
+			}
 
 			if ( m_Poison != null && m_PoisonCharges > 0 )
 				list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
@@ -3267,182 +3293,450 @@ namespace Server.Items
 			int prop;
 
 			if ( Core.ML && this is BaseRanged && ( (BaseRanged) this ).Balanced )
-				list.Add( 1072792 ); // Balanced
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.balanced" );
+				else
+					list.Add( 1072792 ); // Balanced
+			}
 
 			if ( (prop = m_AosWeaponAttributes.UseBestSkill) != 0 )
-				list.Add( 1060400 ); // use best weapon skill
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.use.best.weapon.skill" );
+				else
+					list.Add( 1060400 ); // use best weapon skill
+			}
+
+			bool localized = BuildingPropertyListLocale != null;
 
 			if ( (prop = (GetDamageBonus() + m_AosAttributes.WeaponDamage)) != 0 )
-				list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.damage.increase", prop );
+				else
+					list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.DefendChance) != 0 )
-				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.defense.chance.increase", prop );
+				else
+					list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.EnhancePotions) != 0 )
-				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.enhance.potions", prop );
+				else
+					list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.CastRecovery) != 0 )
-				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.faster.cast.recovery", prop );
+				else
+					list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.CastSpeed) != 0 )
-				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.faster.casting", prop );
+				else
+					list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
+			}
 
 			if ( (prop = (GetHitChanceBonus() + m_AosAttributes.AttackChance)) != 0 )
-				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.chance.increase", prop );
+				else
+					list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitColdArea) != 0 )
-				list.Add( 1060416, prop.ToString() ); // hit cold area ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.cold.area", prop );
+				else
+					list.Add( 1060416, prop.ToString() ); // hit cold area ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitDispel) != 0 )
-				list.Add( 1060417, prop.ToString() ); // hit dispel ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.dispel", prop );
+				else
+					list.Add( 1060417, prop.ToString() ); // hit dispel ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitEnergyArea) != 0 )
-				list.Add( 1060418, prop.ToString() ); // hit energy area ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.energy.area", prop );
+				else
+					list.Add( 1060418, prop.ToString() ); // hit energy area ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitFireArea) != 0 )
-				list.Add( 1060419, prop.ToString() ); // hit fire area ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.fire.area", prop );
+				else
+					list.Add( 1060419, prop.ToString() ); // hit fire area ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitFireball) != 0 )
-				list.Add( 1060420, prop.ToString() ); // hit fireball ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.fireball", prop );
+				else
+					list.Add( 1060420, prop.ToString() ); // hit fireball ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitHarm) != 0 )
-				list.Add( 1060421, prop.ToString() ); // hit harm ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.harm", prop );
+				else
+					list.Add( 1060421, prop.ToString() ); // hit harm ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLeechHits) != 0 )
-				list.Add( 1060422, prop.ToString() ); // hit life leech ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.life.leech", prop );
+				else
+					list.Add( 1060422, prop.ToString() ); // hit life leech ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLightning) != 0 )
-				list.Add( 1060423, prop.ToString() ); // hit lightning ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.lightning", prop );
+				else
+					list.Add( 1060423, prop.ToString() ); // hit lightning ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLowerAttack) != 0 )
-				list.Add( 1060424, prop.ToString() ); // hit lower attack ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.lower.attack", prop );
+				else
+					list.Add( 1060424, prop.ToString() ); // hit lower attack ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLowerDefend) != 0 )
-				list.Add( 1060425, prop.ToString() ); // hit lower defense ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.lower.defense", prop );
+				else
+					list.Add( 1060425, prop.ToString() ); // hit lower defense ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitMagicArrow) != 0 )
-				list.Add( 1060426, prop.ToString() ); // hit magic arrow ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.magic.arrow", prop );
+				else
+					list.Add( 1060426, prop.ToString() ); // hit magic arrow ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLeechMana) != 0 )
-				list.Add( 1060427, prop.ToString() ); // hit mana leech ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.mana.leech", prop );
+				else
+					list.Add( 1060427, prop.ToString() ); // hit mana leech ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitPhysicalArea) != 0 )
-				list.Add( 1060428, prop.ToString() ); // hit physical area ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.physical.area", prop );
+				else
+					list.Add( 1060428, prop.ToString() ); // hit physical area ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitPoisonArea) != 0 )
-				list.Add( 1060429, prop.ToString() ); // hit poison area ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.poison.area", prop );
+				else
+					list.Add( 1060429, prop.ToString() ); // hit poison area ~1_val~%
+			}
 
 			if ( (prop = m_AosWeaponAttributes.HitLeechStam) != 0 )
-				list.Add( 1060430, prop.ToString() ); // hit stamina leech ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.stamina.leech", prop );
+				else
+					list.Add( 1060430, prop.ToString() ); // hit stamina leech ~1_val~%
+			}
 
 			if ( Core.ML && this is BaseRanged && ( prop = ( (BaseRanged) this ).Velocity ) != 0 )
-				list.Add( 1072793, prop.ToString() ); // Velocity ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.velocity", prop );
+				else
+					list.Add( 1072793, prop.ToString() ); // Velocity ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.BonusDex) != 0 )
-				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.dexterity.bonus", prop );
+				else
+					list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.BonusHits) != 0 )
-				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.point.increase", prop );
+				else
+					list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.BonusInt) != 0 )
-				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.intelligence.bonus", prop );
+				else
+					list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.LowerManaCost) != 0 && MyServerSettings.LowerMana() > 0 )
 			{
 				if ( prop > MyServerSettings.LowerMana() ){ prop = MyServerSettings.LowerMana(); }
-				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.mana.cost", prop );
+				else
+					list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
 			}
 
 			if ( (prop = m_AosAttributes.LowerRegCost) != 0 && MyServerSettings.LowerReg() > 0 )
 			{
 				if ( prop > MyServerSettings.LowerReg() ){ prop = MyServerSettings.LowerReg(); }
-				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.reagent.cost", prop );
+				else
+					list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
 			}
 
 			if ( (prop = GetLowerStatReq()) != 0 )
-				list.Add( 1060435, prop.ToString() ); // lower requirements ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.requirements", prop );
+				else
+					list.Add( 1060435, prop.ToString() ); // lower requirements ~1_val~%
+			}
 
 			if ( (prop = (GetLuckBonus() + m_AosAttributes.Luck)) != 0 )
-				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.luck", prop );
+				else
+					list.Add( 1060436, prop.ToString() ); // luck ~1_val~
+			}
 
 			if ( (prop = m_AosWeaponAttributes.MageWeapon) != 0 )
-				list.Add( 1060438, (30 - prop).ToString() ); // mage weapon -~1_val~ skill
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.mage.weapon", (30 - prop) );
+				else
+					list.Add( 1060438, (30 - prop).ToString() ); // mage weapon -~1_val~ skill
+			}
 
 			if ( (prop = m_AosAttributes.BonusMana) != 0 )
-				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.mana.increase", prop );
+				else
+					list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.RegenMana) != 0 )
-				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.mana.regeneration", prop );
+				else
+					list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.NightSight) != 0 && !(this is LightSword) && !(this is DoubleLaserSword) && !(this is LevelLaserSword) && !(this is LevelDoubleLaserSword) )
-				list.Add( 1060441 ); // night sight
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.night.sight" );
+				else
+					list.Add( 1060441 ); // night sight
+			}
 
 			if ( (prop = m_AosAttributes.ReflectPhysical) != 0 )
-				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.reflect.physical.damage", prop );
+				else
+					list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.RegenStam) != 0 )
-				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.stamina.regeneration", prop );
+				else
+					list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.RegenHits) != 0 )
-				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.point.regeneration", prop );
+				else
+					list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
+			}
 
 			if ( (prop = m_AosWeaponAttributes.SelfRepair) != 0 )
-				list.Add( 1060450, prop.ToString() ); // self repair ~1_val~0%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.self.repair", prop );
+				else
+					list.Add( 1060450, prop.ToString() ); // self repair ~1_val~0%
+			}
 
 			if ( (prop = m_AosAttributes.SpellChanneling) != 0 )
-				list.Add( 1060482 ); // spell channeling
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.spell.channeling" );
+				else
+					list.Add( 1060482 ); // spell channeling
+			}
 
 			if ( (prop = m_AosAttributes.SpellDamage) != 0 )
-				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.spell.damage.increase", prop );
+				else
+					list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
+			}
 
 			if ( (prop = m_AosAttributes.BonusStam) != 0 )
-				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.stamina.increase", prop );
+				else
+					list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.BonusStr) != 0 )
-				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.strength.bonus", prop );
+				else
+					list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
+			}
 
 			if ( (prop = m_AosAttributes.WeaponSpeed) != 0 )
-				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.swing.speed.increase", prop );
+				else
+					list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
+			}
 
 			int phys, fire, cold, pois, nrgy, chaos, direct;
 
 			GetDamageTypes( null, out phys, out fire, out cold, out pois, out nrgy, out chaos, out direct );
 
 			if ( phys != 0 )
-				list.Add( 1060403, phys.ToString() ); // physical damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.physical.damage", phys );
+				else
+					list.Add( 1060403, phys.ToString() ); // physical damage ~1_val~%
+			}
 
 			if ( fire != 0 )
-				list.Add( 1060405, fire.ToString() ); // fire damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.fire.damage", fire );
+				else
+					list.Add( 1060405, fire.ToString() ); // fire damage ~1_val~%
+			}
 
 			if ( cold != 0 )
-				list.Add( 1060404, cold.ToString() ); // cold damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.cold.damage", cold );
+				else
+					list.Add( 1060404, cold.ToString() ); // cold damage ~1_val~%
+			}
 
 			if ( pois != 0 )
-				list.Add( 1060406, pois.ToString() ); // poison damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.poison.damage", pois );
+				else
+					list.Add( 1060406, pois.ToString() ); // poison damage ~1_val~%
+			}
 
 			if ( nrgy != 0 )
-				list.Add( 1060407, nrgy.ToString() ); // energy damage ~1_val
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.energy.damage", nrgy );
+				else
+					list.Add( 1060407, nrgy.ToString() ); // energy damage ~1_val
+			}
 
 			if ( Core.ML && chaos != 0 )
-				list.Add( 1072846, chaos.ToString() ); // chaos damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.chaos.damage", chaos );
+				else
+					list.Add( 1072846, chaos.ToString() ); // chaos damage ~1_val~%
+			}
 
 			if ( Core.ML && direct != 0 )
-				list.Add( 1079978, direct.ToString() ); // Direct Damage: ~1_PERCENT~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.direct.damage", direct );
+				else
+					list.Add( 1079978, direct.ToString() ); // Direct Damage: ~1_PERCENT~%
+			}
 
-			list.Add( 1061168, "{0}\t{1}", MinDamage.ToString(), MaxDamage.ToString() ); // weapon damage ~1_val~ - ~2_val~
-
-			if ( Core.ML )
-				list.Add( 1061167, String.Format( "{0}s", Speed ) ); // weapon speed ~1_val~
+			if ( localized )
+			{
+				AddLocalizedProperty( list, "prop.weapon.damage.range", MinDamage, MaxDamage );
+				AddLocalizedProperty( list, "prop.weapon.speed", Core.ML ? Speed + "s" : Speed.ToString() );
+				if ( MaxRange > 1 )
+					AddLocalizedProperty( list, "prop.range", MaxRange );
+			}
 			else
-				list.Add( 1061167, Speed.ToString() );
+			{
+				list.Add( 1061168, "{0}\t{1}", MinDamage.ToString(), MaxDamage.ToString() ); // weapon damage ~1_val~ - ~2_val~
 
-			if ( MaxRange > 1 )
-				list.Add( 1061169, MaxRange.ToString() ); // range ~1_val~
+				if ( Core.ML )
+					list.Add( 1061167, String.Format( "{0}s", Speed ) ); // weapon speed ~1_val~
+				else
+					list.Add( 1061167, Speed.ToString() );
+
+				if ( MaxRange > 1 )
+					list.Add( 1061169, MaxRange.ToString() ); // range ~1_val~
+			}
 
 			int strReq = AOS.Scale( StrRequirement, 100 - GetLowerStatReq() );
 
 			if ( strReq > 0 )
-				list.Add( 1061170, strReq.ToString() ); // strength requirement ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.strength.requirement", strReq );
+				else
+					list.Add( 1061170, strReq.ToString() ); // strength requirement ~1_val~
+			}
 
 			list.Add( 1061182, EquipLayerName( Layer ) );
 
@@ -3451,18 +3745,37 @@ namespace Server.Items
 
 			if ( Core.SE || m_AosWeaponAttributes.UseBestSkill == 0 )
 			{
-				switch ( Skill )
+				if ( localized )
 				{
-					case SkillName.Swords:  		list.Add( 1061172 ); break; // skill required: swordsmanship
-					case SkillName.Bludgeoning:  	list.Add( 1061173 ); break; // skill required: bludgeoning
-					case SkillName.Fencing: 		list.Add( 1061174 ); break; // skill required: fencing
-					case SkillName.Marksmanship: 	list.Add( 1061175 ); break; // skill required: marksmanship
-					case SkillName.FistFighting: 	list.Add( "skill required: fist fighting" ); break;
+					switch ( Skill )
+					{
+						case SkillName.Swords:      AddLocalizedProperty( list, "prop.skill.swordsmanship" ); break;
+						case SkillName.Bludgeoning: AddLocalizedProperty( list, "prop.skill.bludgeoning" ); break;
+						case SkillName.Fencing:     AddLocalizedProperty( list, "prop.skill.fencing" ); break;
+						case SkillName.Marksmanship:AddLocalizedProperty( list, "prop.skill.marksmanship" ); break;
+						case SkillName.FistFighting:AddLocalizedProperty( list, "prop.skill.fist.fighting" ); break;
+					}
+				}
+				else
+				{
+					switch ( Skill )
+					{
+						case SkillName.Swords:       list.Add( 1061172 ); break;
+						case SkillName.Bludgeoning:  list.Add( 1061173 ); break;
+						case SkillName.Fencing:      list.Add( 1061174 ); break;
+						case SkillName.Marksmanship: list.Add( 1061175 ); break;
+						case SkillName.FistFighting: list.Add( "skill required: fist fighting" ); break;
+					}
 				}
 			}
 
 			if ( m_Hits >= 0 && m_MaxHits > 0 )
-				list.Add( 1060639, "{0}\t{1}", m_Hits, m_MaxHits ); // durability ~1_val~ / ~2_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.durability", m_Hits, m_MaxHits );
+				else
+					list.Add( 1060639, "{0}\t{1}", m_Hits, m_MaxHits ); // durability ~1_val~ / ~2_val~
+			}
 		}
 
 		public override void OnSingleClick( Mobile from )

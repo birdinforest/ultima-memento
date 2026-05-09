@@ -53,7 +53,7 @@
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
   "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
-  "_version": "1.9",
+  "_version": "1.10",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
     "Sosaria": {
@@ -3207,6 +3207,48 @@
       "category": "item",
       "notes": "Witch brew to disarm traps via spirits in book UI.",
       "translation_basis_zh": "Phantasm 取「幻象」与陷阱幻惑叙事一致。"
+    },
+    "Swordsmanship": {
+      "canonical": "剑术",
+      "alternatives": ["剑系武器技能"],
+      "category": "skill",
+      "notes": "Weapon skill for swords used in equipment properties.",
+      "translation_basis_zh": "UO 标准中文社区译名，对应 Swordsmanship 技能。"
+    },
+    "Bludgeoning": {
+      "canonical": "锤术",
+      "alternatives": ["钝器技能"],
+      "category": "skill",
+      "notes": "Weapon skill for maces and bludgeoning weapons used in equipment properties.",
+      "translation_basis_zh": "UO 标准中文社区译名，对应 Bludgeoning 技能。"
+    },
+    "Fencing": {
+      "canonical": "刺击",
+      "alternatives": ["刺系武器技能"],
+      "category": "skill",
+      "notes": "Weapon skill for fencing weapons used in equipment properties.",
+      "translation_basis_zh": "UO 标准中文社区译名，对应 Fencing 技能。"
+    },
+    "Marksmanship": {
+      "canonical": "射击",
+      "alternatives": ["远程武器技能"],
+      "category": "skill",
+      "notes": "Weapon skill for ranged weapons used in equipment properties.",
+      "translation_basis_zh": "UO 标准中文社区译名，对应 Marksmanship 技能。"
+    },
+    "Fist Fighting": {
+      "canonical": "徒手格斗",
+      "alternatives": ["拳术"],
+      "category": "skill",
+      "notes": "Unarmed combat skill used in equipment properties.",
+      "translation_basis_zh": "Fist Fighting 即徒手战斗。UO 社区中文译名常用「徒手格斗」或「拳术」。"
+    },
+    "Elves Only": {
+      "canonical": "仅限精灵",
+      "alternatives": ["精灵专用"],
+      "category": "concept",
+      "notes": "Race restriction property on equipment.",
+      "translation_basis_zh": "装备的种族限制属性，标准 UO 中文社区译法。"
     }
   }
 }

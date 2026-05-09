@@ -622,6 +622,11 @@ namespace Server
 
 		private Packet m_OPLPacket;
 		private ObjectPropertyList m_PropertyList;
+		private Dictionary<string, ObjectPropertyList> m_PropertyListByLang;
+		private Dictionary<string, Packet> m_OPLPacketByLang;
+
+		[ThreadStatic]
+		protected static string BuildingPropertyListLocale;
 		#endregion
 
 		public bool NameWasSynced { get; private set; }
@@ -1383,7 +1388,97 @@ namespace Server
 		/// </summary>
 		public virtual void SendPropertiesTo( Mobile from )
 		{
-			from.Send( PropertyList );
+			Console.WriteLine( "SendPropertiesTo: " + Name );
+			Console.WriteLine( "IsContentLocalized: " + IsContentLocalized );
+			if ( IsContentLocalized )
+			{
+				string lang = AccountLang.GetLanguageCode( from?.Account );
+				string locale = AccountLang.IsChinese( lang ) ? "zh" : "en";
+				from.Send( GetLocalizedPropertyList( locale ) );
+			}
+			else
+			{
+				from.Send( PropertyList );
+			}
+		}
+
+		public ObjectPropertyList GetLocalizedPropertyList( string locale )
+		{
+			Console.WriteLine( "GetLocalizedPropertyList: " + locale );
+			if ( m_PropertyListByLang == null )
+				m_PropertyListByLang = new Dictionary<string, ObjectPropertyList>( 2 );
+
+			ObjectPropertyList list;
+			if ( !m_PropertyListByLang.TryGetValue( locale, out list ) )
+			{
+				BuildingPropertyListLocale = locale;
+				try
+				{
+					Console.WriteLine( "GetProperties: " + this.Name );
+					list = new ObjectPropertyList( this );
+					GetProperties( list );
+					AppendChildProperties( list );
+					list.Terminate();
+					list.SetStatic();
+				}
+				finally
+				{
+					BuildingPropertyListLocale = null;
+				}
+				m_PropertyListByLang[locale] = list;
+			}
+			Console.WriteLine( "GetLocalizedPropertyList: " + list.ToString() );
+			return list;
+		}
+
+		public Packet GetLocalizedOPLPacket( string locale )
+		{
+			if ( m_OPLPacketByLang == null )
+				m_OPLPacketByLang = new Dictionary<string, Packet>( 2 );
+
+			Packet pkt;
+			if ( !m_OPLPacketByLang.TryGetValue( locale, out pkt ) )
+			{
+				pkt = new OPLInfo( GetLocalizedPropertyList( locale ) );
+				pkt.SetStatic();
+				m_OPLPacketByLang[locale] = pkt;
+			}
+			return pkt;
+		}
+
+		/// <summary>
+		/// Overridable. When true, uses per-locale OPL cache so that <see cref="AddNameProperty" /> can return viewer-appropriate text.
+		/// During OPL construction <see cref="BuildingPropertyListLocale" /> is set to "zh" or "en".
+		/// </summary>
+		public virtual bool IsContentLocalized => false;
+
+		/// <summary>
+		/// Resolves a shotkey in the current OPL-building locale.
+		/// Falls back to English if the locale-specific key is missing,
+		/// then to the shotkey itself if no localization is found.
+		/// </summary>
+		protected string ResolvePropertyText( string shotkey )
+		{
+			string locale = BuildingPropertyListLocale ?? "en";
+			return StringCatalog.TryResolveByKey( locale, shotkey )
+				?? StringCatalog.TryResolveByKey( "en", shotkey )
+				?? shotkey;
+		}
+
+		/// <summary>
+		/// Adds a localized property string to the OPL using a shotkey.
+		/// During bilingual OPL construction (<see cref="BuildingPropertyListLocale" /> is set),
+		/// resolves the shotkey in the current locale and applies <paramref name="args" />.
+		/// Falls back to the English key text if localization is unavailable.
+		/// </summary>
+		public void AddLocalizedProperty( ObjectPropertyList list, string shotkey, params object[] args )
+		{
+			string template = ResolvePropertyText( shotkey );
+
+			if ( args != null && args.Length > 0 )
+				list.Add( string.Format( template, args ));
+			else
+				list.Add( template );
 		}
 
 		/// <summary>
@@ -1414,6 +1509,17 @@ namespace Server
 		/// </summary>
 		public virtual void AddLootTypeProperty( ObjectPropertyList list )
 		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( m_LootType == LootType.Blessed )
+					AddLocalizedProperty( list, "prop.blessed" );
+				else if ( m_LootType == LootType.Cursed )
+					AddLocalizedProperty( list, "prop.cursed" );
+				else if ( Insured )
+					AddLocalizedProperty( list, "prop.insured" );
+				return;
+			}
+
 			if ( m_LootType == LootType.Blessed )
 				list.Add( 1038021 ); // blessed
 			else if ( m_LootType == LootType.Cursed )
@@ -1430,27 +1536,52 @@ namespace Server
 			int v = PhysicalResistance;
 
 			if ( v != 0 )
-				list.Add( 1060448, v.ToString() ); // physical resist ~1_val~%
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.resist.physical", v );
+				else
+					list.Add( 1060448, v.ToString() ); // physical resist ~1_val~%
+			}
 
 			v = FireResistance;
 
 			if ( v != 0 )
-				list.Add( 1060447, v.ToString() ); // fire resist ~1_val~%
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.resist.fire", v );
+				else
+					list.Add( 1060447, v.ToString() ); // fire resist ~1_val~%
+			}
 
 			v = ColdResistance;
 
 			if ( v != 0 )
-				list.Add( 1060445, v.ToString() ); // cold resist ~1_val~%
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.resist.cold", v );
+				else
+					list.Add( 1060445, v.ToString() ); // cold resist ~1_val~%
+			}
 
 			v = PoisonResistance;
 
 			if ( v != 0 )
-				list.Add( 1060449, v.ToString() ); // poison resist ~1_val~%
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.resist.poison", v );
+				else
+					list.Add( 1060449, v.ToString() ); // poison resist ~1_val~%
+			}
 
 			v = EnergyResistance;
 
 			if ( v != 0 )
-				list.Add( 1060446, v.ToString() ); // energy resist ~1_val~%
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.resist.energy", v );
+				else
+					list.Add( 1060446, v.ToString() ); // energy resist ~1_val~%
+			}
 		}
 
 		/// <summary>
@@ -1476,6 +1607,15 @@ namespace Server
 		public virtual void AddWeightProperty( ObjectPropertyList list )
 		{
 			int weight = this.PileWeight + this.TotalWeight;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( weight == 1 )
+					AddLocalizedProperty( list, "prop.weight", weight );
+				else
+					AddLocalizedProperty( list, "prop.weight.plural", weight );
+				return;
+			}
 
 			if ( weight == 1 ) {
 				list.Add( 1072788, weight.ToString() ); //Weight: ~1_WEIGHT~ stone
@@ -1539,14 +1679,22 @@ namespace Server
 					break;
 				case ArtifactLevel.StandardArtefact:
 					list.Add( 1070754 );
-					if (ResourceCanChange())
-						list.Add( "<BASEFONT COLOR=#C6D11C>May be transmuted</BASEFONT>" );
+					if ( ResourceCanChange() )
+					{
+						if ( BuildingPropertyListLocale != null )
+							AddLocalizedProperty( list, "prop.transmutable" );
+						else
+							list.Add( "<BASEFONT COLOR=#C6D11C>May be transmuted</BASEFONT>" );
+					}
 					break;
 				case ArtifactLevel.Artifact:
 					list.Add( 1070753 );
 					break;
 				case ArtifactLevel.DecorativeArtefact:
-					list.Add( "<BASEFONT COLOR=#C6D11C>Decorative Artefact</BASEFONT>" );
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.decorative.artifact" );
+					else
+						list.Add( "<BASEFONT COLOR=#C6D11C>Decorative Artefact</BASEFONT>" );
 					break;
 			}
 
@@ -1608,6 +1756,11 @@ namespace Server
 		/// </summary>
 		public virtual void AddQuestItemProperty( ObjectPropertyList list )
 		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.quest.item" );
+				return;
+			}
 			list.Add( 1072351 ); // Quest Item
 		}
 
@@ -1616,6 +1769,11 @@ namespace Server
 		/// </summary>
 		public virtual void AddSecureProperty( ObjectPropertyList list )
 		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.locked.down.secure" );
+				return;
+			}
 			list.Add( 501644 ); // locked down & secure
 		}
 
@@ -1624,6 +1782,11 @@ namespace Server
 		/// </summary>
 		public virtual void AddLockedDownProperty( ObjectPropertyList list )
 		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.locked.down" );
+				return;
+			}
 			list.Add( 501643 ); // locked down
 		}
 
@@ -1632,6 +1795,11 @@ namespace Server
 		/// </summary>
 		public virtual void AddBlessedForProperty( ObjectPropertyList list, Mobile m )
 		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.blessed.for", m.Name );
+				return;
+			}
 			list.Add( 1062203, "{0}", m.Name ); // Blessed for ~1_NAME~
 		}
 
@@ -2377,6 +2545,20 @@ namespace Server
 		{
 			Packet.Release( ref m_PropertyList );
 			Packet.Release( ref m_OPLPacket );
+
+			if ( m_PropertyListByLang != null )
+			{
+				foreach ( var opl in m_PropertyListByLang.Values )
+					opl.Release();
+				m_PropertyListByLang.Clear();
+			}
+
+			if ( m_OPLPacketByLang != null )
+			{
+				foreach ( var pkt in m_OPLPacketByLang.Values )
+					pkt.Release();
+				m_OPLPacketByLang.Clear();
+			}
 		}
 
 		public void InvalidateProperties()
@@ -2388,6 +2570,20 @@ namespace Server
 			{
 				ObjectPropertyList oldList = m_PropertyList;
 				m_PropertyList = null;
+
+				if ( m_PropertyListByLang != null )
+				{
+					foreach ( var opl in m_PropertyListByLang.Values )
+						opl.Release();
+					m_PropertyListByLang.Clear();
+				}
+				if ( m_OPLPacketByLang != null )
+				{
+					foreach ( var pkt in m_OPLPacketByLang.Values )
+						pkt.Release();
+					m_OPLPacketByLang.Clear();
+				}
+
 				ObjectPropertyList newList = PropertyList;
 
 				if ( oldList == null || oldList.Hash != newList.Hash )
@@ -3566,7 +3762,16 @@ namespace Server
 			state.Send( GetWorldPacketFor( state ) );
 
 			if ( sendOplPacket ) {
-				state.Send( OPLPacket );
+				if ( IsContentLocalized )
+				{
+					string lang = AccountLang.GetLanguageCode( state.Mobile?.Account );
+					string locale = AccountLang.IsChinese( lang ) ? "zh" : "en";
+					state.Send( GetLocalizedOPLPacket( locale ) );
+				}
+				else
+				{
+					state.Send( OPLPacket );
+				}
 			}
 		}
 

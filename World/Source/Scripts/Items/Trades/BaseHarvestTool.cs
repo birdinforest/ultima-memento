@@ -93,6 +93,8 @@ namespace Server.Items
 		public bool HasHarvestSystem { get { return HarvestSystem != null; } }
 		public abstract HarvestSystem HarvestSystem{ get; }
 
+		public override bool IsContentLocalized => true;
+
         public BaseHarvestTool( int itemID ) : this( 50, itemID )
 		{
 		}
@@ -139,14 +141,25 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			if ( m_Quality == ToolQuality.Exceptional )
-				list.Add( 1060636 ); // exceptional
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( m_Quality == ToolQuality.Exceptional )
+					AddLocalizedProperty( list, "prop.exceptional" );
+			}
+			else
+			{
+				if ( m_Quality == ToolQuality.Exceptional )
+					list.Add( 1060636 ); // exceptional
+			}
 
 			m_AosSkillBonuses.GetProperties( list );
 
 			list.Add( 1061182, EquipLayerName( Layer ) );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.uses", m_UsesRemaining );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 		}
 
 		private string GetNameString()

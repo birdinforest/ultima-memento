@@ -18,6 +18,8 @@ namespace Server.Items
 		public override string DefaultDescription{ get{ return "These tools are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Tool; } }
+		
+		public override bool IsContentLocalized => true;
 
 		public override void ResourceChanged( CraftResource resource )
 		{
@@ -162,14 +164,25 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			if ( m_Quality == ToolQuality.Exceptional )
-				list.Add( 1060636 ); // exceptional
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( m_Quality == ToolQuality.Exceptional )
+					AddLocalizedProperty( list, "prop.exceptional" );
+			}
+			else
+			{
+				if ( m_Quality == ToolQuality.Exceptional )
+					list.Add( 1060636 ); // exceptional
+			}
 
 			m_AosSkillBonuses.GetProperties( list );
 
 			list.Add( 1061182, EquipLayerName( Layer ) );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.uses", m_UsesRemaining );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 		}
 
 		public virtual void DisplayDurabilityTo( Mobile m )
