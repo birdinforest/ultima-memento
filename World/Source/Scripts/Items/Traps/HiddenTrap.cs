@@ -203,31 +203,37 @@ namespace Server.Items
 						Container cont = m.Backpack;
 						int nDull = 0;
 
-						int m_gAmount = m.Backpack.GetAmount( typeof( Gold ) );
-						int m_cAmount = m.Backpack.GetAmount( typeof( DDCopper ) );
-						int m_sAmount = m.Backpack.GetAmount( typeof( DDSilver ) );
-						int m_xAmount = m.Backpack.GetAmount( typeof( DDXormite ) );
+					// Partial corruption — only half the coins are transmuted (the rest clatter to the floor)
+					int m_gAmount = m.Backpack.GetAmount( typeof( Gold ) );
+					int m_cAmount = m.Backpack.GetAmount( typeof( DDCopper ) );
+					int m_sAmount = m.Backpack.GetAmount( typeof( DDSilver ) );
+					int m_xAmount = m.Backpack.GetAmount( typeof( DDXormite ) );
 
-						if ( cont.ConsumeTotal( typeof( Gold ), m_gAmount ) )
-						{
-							m.AddToBackpack( new LeadCoin( m_gAmount ) );
-							nDull = 1;
-						}
-						if ( cont.ConsumeTotal( typeof( DDCopper ), m_cAmount ) )
-						{
-							m.AddToBackpack( new LeadCoin( m_cAmount ) );
-							nDull = 1;
-						}
-						if ( cont.ConsumeTotal( typeof( DDSilver ), m_sAmount ) )
-						{
-							m.AddToBackpack( new LeadCoin( m_sAmount ) );
-							nDull = 1;
-						}
-						if ( cont.ConsumeTotal( typeof( DDXormite ), m_xAmount ) )
-						{
-							m.AddToBackpack( new LeadCoin( m_xAmount ) );
-							nDull = 1;
-						}
+					int m_gDestroy = ( m_gAmount + 1 ) / 2;
+					int m_cDestroy = ( m_cAmount + 1 ) / 2;
+					int m_sDestroy = ( m_sAmount + 1 ) / 2;
+					int m_xDestroy = ( m_xAmount + 1 ) / 2;
+
+					if ( m_gDestroy > 0 && cont.ConsumeTotal( typeof( Gold ), m_gDestroy ) )
+					{
+						m.AddToBackpack( new LeadCoin( m_gDestroy ) );
+						nDull = 1;
+					}
+					if ( m_cDestroy > 0 && cont.ConsumeTotal( typeof( DDCopper ), m_cDestroy ) )
+					{
+						m.AddToBackpack( new LeadCoin( m_cDestroy ) );
+						nDull = 1;
+					}
+					if ( m_sDestroy > 0 && cont.ConsumeTotal( typeof( DDSilver ), m_sDestroy ) )
+					{
+						m.AddToBackpack( new LeadCoin( m_sDestroy ) );
+						nDull = 1;
+					}
+					if ( m_xDestroy > 0 && cont.ConsumeTotal( typeof( DDXormite ), m_xDestroy ) )
+					{
+						m.AddToBackpack( new LeadCoin( m_xDestroy ) );
+						nDull = 1;
+					}
 						if ( nDull > 0 )
 						{
 							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
@@ -521,41 +527,50 @@ namespace Server.Items
 							sTrapType = textLog;
 						}
 					}
-					else if ( nTrapType == 9 && SavingThrow( m, "Magic", true, this ) == false ) // REAGENT TRAP
-					{
-						int nAmount = 0;
+				else if ( nTrapType == 9 && SavingThrow( m, "Magic", true, this ) == false ) // REAGENT TRAP
+				{
+					// Partial spoilage — half of each reagent stack is ruined, half remains usable
+					int nAmount = 0;
 
-						if ( m != null && m.Backpack != null )
+					if ( m != null && m.Backpack != null )
+					{
+						List<Item> list = new List<Item>();
+						(m.Backpack).RecurseItems( list );
+						foreach ( Item i in list )
 						{
-							List<Item> list = new List<Item>();
-							(m.Backpack).RecurseItems( list );
-							foreach ( Item i in list )
+							if ( i.Catalog == Catalogs.Reagent )
 							{
-								if ( i.Catalog == Catalogs.Reagent )
+								int destroyAmt = Math.Max( 1, i.Amount / 2 );
+								nAmount += destroyAmt;
+								if ( destroyAmt >= i.Amount )
 								{
-									nAmount = nAmount + i.Amount;
-									if (i.Parent is NotIdentified)
+									if ( i.Parent is NotIdentified )
 										((NotIdentified)i.Parent).Delete();
 									i.Delete();
 								}
+								else
+								{
+									i.Amount -= destroyAmt;
+								}
 							}
 						}
-
-						if ( nAmount > 0 )
-						{
-							textSay = "You walked into a toxic cloud, ruining your reagents!";
-							textLog = "a toxic cloud trap";
-
-							RottedReagents regs = new RottedReagents();
-							regs.Weight = nAmount * 0.1;
-							regs.RottedCount = nAmount;
-							m.AddToBackpack ( regs );
-							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
-							Effects.PlaySound( this.Location, this.Map, 0x231 );
-							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-							sTrapType = textLog;
-						}
 					}
+
+					if ( nAmount > 0 )
+					{
+						textSay = "You walked into a toxic cloud, spoiling half your reagents!";
+						textLog = "a toxic cloud trap";
+
+						RottedReagents regs = new RottedReagents();
+						regs.Weight = nAmount * 0.1;
+						regs.RottedCount = nAmount;
+						m.AddToBackpack ( regs );
+						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
+						Effects.PlaySound( this.Location, this.Map, 0x231 );
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
+						sTrapType = textLog;
+					}
+				}
 					else if ( nTrapType == 10 && SavingThrow( m, "Magic", true, this ) == false ) // BOOK BOUND TRAP
 					{
 						Container cont = m.Backpack;
@@ -764,133 +779,142 @@ namespace Server.Items
 						m.Damage( itHurts, m );
 						sTrapType = textLog;
 					}
-					else if ( nTrapType == 20 && SavingThrow( m, "Agility", true, this ) == false ) // TRIP WIRE THAT BREAKS ARROWS
+				else if ( nTrapType == 20 && SavingThrow( m, "Agility", true, this ) == false ) // TRIP WIRE THAT BREAKS ARROWS
+				{
+					// Partial breakage — only half the ammo shatters on impact; the rest scatters but survives
+					List<Item> items = new List<Item>();
+					int nBroken = 0;
+					int WhichArrows = Utility.RandomMinMax( 1, 2 );
+					string sTripped = "";
+					int nAmount = 0;
+
+					if ( WhichArrows == 1 )
 					{
-						List<Item> items = new List<Item>();
-						int nBroken = 0;
-						int WhichArrows = Utility.RandomMinMax( 1, 2 );
-						string sTripped = "";
-						int nAmount = 0;
-
-						if ( WhichArrows == 1 )
-						{
-							foreach( Item i in m.Backpack.FindItemsByType( typeof( Arrow ), true ) )
-							{
-								items.Add(i);
-								nBroken = 1;
-								sTripped = "arrows";
-							}
-						}
-						else
-						{
-							foreach( Item i in m.Backpack.FindItemsByType( typeof( Bolt ), true ) )
-							{
-								items.Add(i);
-								nBroken = 1;
-								sTripped = "crossbow bolts";
-							}
-						}
-						if ( nBroken > 0 )
-						{
-							foreach ( Item item in items )
-							{
-								if ( item != null )
-								{
-									nAmount = nAmount + item.Amount;
-									item.Delete();
-								}
-							}
-							if ( nAmount > 0 )
-							{
-								textSay = "You tripped over a wire and broke all of your " + sTripped + "!";
-								textLog = "a trip wire trap";
-					
-								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
-								{
-									textSay = "You tripped over a loose deck plate and broke all of your " + sTripped + "!";
-									textLog = "a loose deck plate";
-								}
-
-								Shaft wood = new Shaft();
-								wood.Amount = nAmount;
-								m.AddToBackpack ( wood );
-
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-								m.PlaySound( m.Female ? 812 : 1086 );
-								sTrapType = textLog;
-							}
-						}
-					}
-					else if ( nTrapType == 21 && SavingThrow( m, "Poison", true, this ) == false ) // TAINTED TRAP
-					{
-						List<Item> items = new List<Item>();
-						int nAmount = 0;
-
-						foreach( Item i in m.Backpack.FindItemsByType( typeof( Bandage ), true ) )
+						foreach( Item i in m.Backpack.FindItemsByType( typeof( Arrow ), true ) )
 						{
 							items.Add(i);
+							nBroken = 1;
+							sTripped = "arrows";
 						}
+					}
+					else
+					{
+						foreach( Item i in m.Backpack.FindItemsByType( typeof( Bolt ), true ) )
+						{
+							items.Add(i);
+							nBroken = 1;
+							sTripped = "crossbow bolts";
+						}
+					}
+					if ( nBroken > 0 )
+					{
 						foreach ( Item item in items )
 						{
 							if ( item != null )
 							{
-								nAmount = nAmount + item.Amount;
-								item.Delete();
+								int destroyAmt = Math.Max( 1, item.Amount / 2 );
+								nAmount += destroyAmt;
+								if ( destroyAmt >= item.Amount )
+									item.Delete();
+								else
+									item.Amount -= destroyAmt;
 							}
 						}
 						if ( nAmount > 0 )
 						{
-							TaintedBandage bandage = new TaintedBandage();
-							bandage.Weight = nAmount * 0.1;
-							string sAmount = nAmount.ToString();
-							if ( nAmount > 1 ){ bandage.Name = sAmount + " tainted bandages"; }
-							m.AddToBackpack ( bandage );
-
-							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
-							Effects.PlaySound( this.Location, this.Map, 0x231 );
-							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You walked into a noxious cloud, tainting your bandages!");
-
-							sTrapType = "a noxious cloud trap";
-						}
-					}
-					else if ( nTrapType == 22 && SavingThrow( m, "Agility", true, this ) == false ) // TRIP WIRE THAT BREAKS POTIONS
-					{
-						List<Item> items = new List<Item>();
-						int nBroken = 0;
-
-						if ( m != null && m.Backpack != null )
-						{
-							List<Item> list = new List<Item>();
-							(m.Backpack).RecurseItems( list );
-							foreach ( Item i in list )
-							{
-								if ( i.Catalog == Catalogs.Potion )
-								{
-									nBroken = 1;
-									if (i.Parent is NotIdentified)
-										((NotIdentified)i.Parent).Delete();
-									
-									i.Delete();
-								}
-							}
-						}
-
-						if ( nBroken > 0 )
-						{
-							textSay = "You tripped over a wire and broke all of your potion bottles!";
+							textSay = "You tripped over a wire and broke half your " + sTripped + "!";
 							textLog = "a trip wire trap";
-				
+					
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You tripped over a loose deck plate and broke all of your potion bottles!";
+								textSay = "You tripped over a loose deck plate and broke half your " + sTripped + "!";
 								textLog = "a loose deck plate";
 							}
 
+							Shaft wood = new Shaft();
+							wood.Amount = nAmount;
+							m.AddToBackpack ( wood );
+
 							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-							m.PlaySound( 0x040 );
+							m.PlaySound( m.Female ? 812 : 1086 );
 							sTrapType = textLog;
 						}
 					}
+				}
+				else if ( nTrapType == 21 && SavingThrow( m, "Poison", true, this ) == false ) // TAINTED TRAP
+				{
+					// Partial taint — only half the bandages are contaminated; the rest were shielded in your pack
+					List<Item> items = new List<Item>();
+					int nAmount = 0;
+
+					foreach( Item i in m.Backpack.FindItemsByType( typeof( Bandage ), true ) )
+					{
+						items.Add(i);
+					}
+					foreach ( Item item in items )
+					{
+						if ( item != null )
+						{
+							int taintAmt = Math.Max( 1, item.Amount / 2 );
+							nAmount += taintAmt;
+							if ( taintAmt >= item.Amount )
+								item.Delete();
+							else
+								item.Amount -= taintAmt;
+						}
+					}
+					if ( nAmount > 0 )
+					{
+						TaintedBandage bandage = new TaintedBandage();
+						bandage.Weight = nAmount * 0.1;
+						string sAmount = nAmount.ToString();
+						if ( nAmount > 1 ){ bandage.Name = sAmount + " tainted bandages"; }
+						m.AddToBackpack ( bandage );
+
+						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
+						Effects.PlaySound( this.Location, this.Map, 0x231 );
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You walked into a noxious cloud, tainting half your bandages!");
+
+						sTrapType = "a noxious cloud trap";
+					}
+				}
+				else if ( nTrapType == 22 && SavingThrow( m, "Agility", true, this ) == false ) // TRIP WIRE THAT BREAKS POTIONS
+				{
+					// Partial breakage — each potion has a 50% chance to survive the fall; glass rattle, not total loss
+					int nBroken = 0;
+
+					if ( m != null && m.Backpack != null )
+					{
+						List<Item> list = new List<Item>();
+						(m.Backpack).RecurseItems( list );
+						foreach ( Item i in list )
+						{
+							if ( i.Catalog == Catalogs.Potion && Utility.RandomMinMax( 1, 2 ) == 1 )
+							{
+								nBroken = 1;
+								if ( i.Parent is NotIdentified )
+									((NotIdentified)i.Parent).Delete();
+								i.Delete();
+							}
+						}
+					}
+
+					if ( nBroken > 0 )
+					{
+						textSay = "You tripped over a wire and shattered some of your potion bottles!";
+						textLog = "a trip wire trap";
+				
+						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+						{
+							textSay = "You tripped over a loose deck plate and shattered some of your potion bottles!";
+							textLog = "a loose deck plate";
+						}
+
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
+						m.PlaySound( 0x040 );
+						sTrapType = textLog;
+					}
+				}
 					else if ( nTrapType == 23 && SavingThrow( m, "Magic", true, this ) == false ) // JEWELERY TRAP
 					{
 						// Tangle equipped jewelry
@@ -1345,29 +1369,36 @@ namespace Server.Items
 		{
 			string textSay;
 
-			if ( m.Skills.RemoveTrap.Value >= 5 )
+		if ( m.Skills.RemoveTrap.Value >= 5 )
+		{
+			if ( m is PlayerMobile && m.CheckSkill( SkillName.RemoveTrap, 0, 125 ) )
 			{
-				if ( m is PlayerMobile && m.CheckSkill( SkillName.RemoveTrap, 0, 125 ) )
+				if ( Trap is MushroomTrap )
 				{
-					if ( Trap is MushroomTrap )
-					{
-						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a strange mushroom, but your skill in removing traps has helped you avoid it.");
-					}
-					else
-					{
-						textSay = "You got near a hidden trap, but your skill in removing traps has helped you disable it.";
-						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
-						{
-							textSay = "You got near something dangerous, but your skill in removing traps has helped you avoid it.";
-						}
-						m.PlaySound( m.Female ? 0x32E : 0x440 );
-						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
-						m.PlaySound( 0x241 );
-					}
-
-					return false;
+					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a strange mushroom, but your skill in removing traps has helped you avoid it.");
 				}
+				else
+				{
+					textSay = "You got near a hidden trap, but your skill in removing traps has helped you disable it.";
+					if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+					{
+						textSay = "You got near something dangerous, but your skill in removing traps has helped you avoid it.";
+					}
+					m.PlaySound( m.Female ? 0x32E : 0x440 );
+					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
+					m.PlaySound( 0x241 );
+
+					// Skilled disarm yields salvageable components — positive reinforcement for trap expertise
+					// Reward scales with Remove Trap skill (5–25 gold equivalent at skill 25–125)
+					int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
+					Gold salvage = new Gold( salvageValue );
+					salvage.MoveToWorld( Trap.Location, Trap.Map );
+					m.SendMessage( "You salvage useful components from the trap mechanism." );
+				}
+
+				return false;
 			}
+		}
 
 			if ( m is PlayerMobile )
 			{
