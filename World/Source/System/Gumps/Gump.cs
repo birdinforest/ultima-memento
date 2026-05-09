@@ -23,6 +23,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Server;
+using Server.Accounting;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Gumps
@@ -351,6 +353,51 @@ namespace Server.Gumps
 			}
 		}
 
+		public int InternLocalized( NetState ns, string englishOrLiteral )
+		{
+			if ( englishOrLiteral == null )
+				return Intern( "" );
+
+			string lang = AccountLang.GetLanguageCode( ns != null ? ns.Account : null );
+			string resolved = StringCatalog.TryResolve( lang, englishOrLiteral );
+
+			if ( resolved != null )
+				return Intern( resolved );
+
+			resolved = TryResolveBaseFontWrappedText( lang, englishOrLiteral );
+
+			if ( resolved != null )
+				return Intern( resolved );
+
+			return Intern( englishOrLiteral );
+		}
+
+		private static string TryResolveBaseFontWrappedText( string lang, string text )
+		{
+			if ( text == null )
+				return null;
+
+			const string openTagPrefix = "<BASEFONT COLOR=#";
+			const string closeTag = "</BASEFONT>";
+
+			if ( !text.StartsWith( openTagPrefix ) || !text.EndsWith( closeTag ) )
+				return null;
+
+			int openTagEnd = text.IndexOf( '>' );
+
+			if ( openTagEnd < 0 || openTagEnd + 1 >= text.Length - closeTag.Length )
+				return null;
+
+			string openTag = text.Substring( 0, openTagEnd + 1 );
+			string innerText = text.Substring( openTagEnd + 1, text.Length - openTagEnd - 1 - closeTag.Length );
+			string resolvedInner = StringCatalog.TryResolve( lang, innerText );
+
+			if ( resolvedInner == null )
+				return null;
+
+			return openTag + resolvedInner + closeTag;
+		}
+
 		public void SendTo( NetState state )
 		{
 			state.AddGump( this );
@@ -380,9 +427,9 @@ namespace Server.Gumps
 			IGumpWriter disp;
 
 			if ( ns != null && ns.Unpack )
-				disp = new DisplayGumpPacked( this );
+				disp = new DisplayGumpPacked( this, ns );
 			else
-				disp = new DisplayGumpFast( this );
+				disp = new DisplayGumpFast( this, ns );
 
 			if ( !m_Dragable )
 				disp.AppendLayout( m_NoMove );

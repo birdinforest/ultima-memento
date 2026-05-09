@@ -18,6 +18,7 @@ using Server.Regions;
 using System.Globalization;
 using Server.Engines.MLQuests;
 using System.Linq;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -44,6 +45,142 @@ namespace Server.Mobiles
 		public string CitizenRumor;
 		[CommandProperty(AccessLevel.Owner)]
 		public string Citizen_Rumor { get { return CitizenRumor; } set { CitizenRumor = value; InvalidateProperties(); } }
+
+		/// <summary>Legacy field; new rumors use English <see cref="CitizenRumor"/> + <see cref="ResolveCitizenRumorToChinese"/> only.</summary>
+		public string CitizenRumorZh;
+		public string CitizenPhraseZh;
+
+		/// <summary>Replaces known English job/adventurer substrings with Chinese (after <see cref="QuestCompositeResolver"/>). Only used when the viewer account is zh-Hans.</summary>
+		/// <remarks>Implementation and switch tables are in <see cref="NpcSpeechTokenZh"/> (core assembly, for Mobile / CommonTalkDynamicZh). Tokens are not in localization JSON: they are procedural English fragments from <c>RandomThings</c>, not StringCatalog keys.</remarks>
+		public static string ApplyNpcVocabularyTokensToZh( string s ) => NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
+
+		/// <summary>Lowercase English adventurer / noble token → zh-Hans. See <see cref="NpcSpeechTokenZh.TranslateAdventurerZh"/>.</summary>
+		public static string TranslateAdventurerZh( string en ) => NpcSpeechTokenZh.TranslateAdventurerZh( en );
+
+		/// <summary>Lowercase English job token → zh-Hans. See <see cref="NpcSpeechTokenZh.TranslateJobZh"/>.</summary>
+		public static string TranslateJobZh( string en ) => NpcSpeechTokenZh.TranslateJobZh( en );
+
+		/// <summary>Builds player-facing Chinese for citizen rumors: composite fragment table + job/adventurer token pass (single path; <see cref="CitizenRumorZh"/> is unused for display).</summary>
+		public static string ResolveCitizenRumorToChinese( Mobile m, string englishRumor )
+		{
+			if ( m == null || englishRumor == null || englishRumor.Length == 0 )
+				return englishRumor;
+			string s = Server.Localization.CommonTalkDynamicZh.TryApply( m, englishRumor );
+			if ( s == null )
+				s = Server.Localization.QuestCompositeResolver.ResolveComposite( m, englishRumor );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
+		}
+
+		/// <summary>
+		/// Pre-build zh-Hans for NPC-spoken tavern chatter (no viewer account on the speaker). English accounts still hear the English string from <see cref="CitizenLocalization.SayLocalizedComposite"/>.
+		/// </summary>
+		public static string ResolveCitizenRumorToChineseForBroadcast( string englishRumor )
+		{
+			if ( englishRumor == null || englishRumor.Length == 0 )
+				return englishRumor;
+			string s = Server.Localization.CommonTalkDynamicZh.TryApplyForBroadcast( englishRumor );
+			if ( s == null )
+				s = Server.Localization.QuestCompositeResolver.ResolveCompositeToZhHans( englishRumor );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( s );
+		}
+
+		/// <summary>Localize <see cref="Title"/> for zh-Hans (single-click label, citizen gump header).</summary>
+		public static string LocalizeCitizenTitleForZh( Mobile viewer, string titleEnglish )
+		{
+			if ( titleEnglish == null || titleEnglish.Length == 0 )
+				return titleEnglish;
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+			if ( !AccountLang.IsChinese( lang ) )
+				return titleEnglish;
+			string trimmed = titleEnglish.Trim();
+			string z = StringCatalog.TryResolve( lang, trimmed );
+			string t = ( z != null && z.Length > 0 && !z.Equals( trimmed, StringComparison.Ordinal ) ) ? z : QuestCompositeResolver.ResolveComposite( viewer, trimmed );
+			t = NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( t );
+			if ( t != null && t.StartsWith( "the ", StringComparison.OrdinalIgnoreCase ) && t.Length > 4 )
+			{
+				string rest = t.Substring( 4 );
+				if ( rest.Length > 0 && !StringCatalog.IsAsciiOnly( rest ) )
+					return rest.Trim();
+			}
+			return t;
+		}
+
+		/// <summary>Name + localized title for UI / gump when the viewer uses zh-Hans.</summary>
+		public static string FormatCitizenDisplayLine( Mobile viewer, Citizens c )
+		{
+			if ( c == null )
+				return "";
+			string n = c.Name ?? "";
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+			if ( !AccountLang.IsChinese( lang ) || c.Title == null || c.Title.Length == 0 )
+				return c.Title != null && c.Title.Length > 0 ? n + " " + c.Title : n;
+			string t = LocalizeCitizenTitleForZh( viewer, c.Title );
+			return t != null && t.Length > 0 ? n + " " + t : n;
+		}
+
+		public override string GetLocalizedClickSuffix( Mobile viewer, string titleEnglish )
+		{
+			return LocalizeCitizenTitleForZh( viewer, titleEnglish );
+		}
+
+		/// <summary>zh-Hans for a single English line used in vendor-style citizen lines (StringCatalog key = exact EN literal).</summary>
+		private static string CitzT( string en )
+		{
+			if ( en == null || en.Length == 0 )
+				return en;
+			string z = StringCatalog.TryResolve( "zh-Hans", en );
+			return ( z != null && z.Length > 0 ) ? z : en;
+		}
+
+		/// <summary>Chinese opening line matching <see cref="initPhrase"/> in <c>SetupCitizen</c> (placeholders Z~/Y~ preserved for gump).</summary>
+		private static string GetCitizenOpeningPhraseChinese( int initPhrase, string dungeon )
+		{
+			switch ( initPhrase )
+			{
+				case 0: return CitzT( "Greetings, Z~Z~Z~Z~Z." );
+				case 1: return CitzT( "Hail, Z~Z~Z~Z~Z." );
+				case 2: return CitzT( "Good day to you, Z~Z~Z~Z~Z." );
+				case 3: return CitzT( "Hello, Z~Z~Z~Z~Z." );
+				case 4:
+					const string fRest = "We are just here to rest after exploring {0}.";
+					string zf = StringCatalog.TryResolve( "zh-Hans", fRest );
+					if ( zf == null || zf.Length == 0 )
+						zf = fRest;
+					return string.Format( zf, dungeon );
+				case 5: return CitzT( "This is the first time I have been to Y~Y~Y~Y~Y." );
+				case 6: return CitzT( "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y." );
+				default: return CitzT( "Greetings, Z~Z~Z~Z~Z." );
+			}
+		}
+
+#if false
+		/// <summary>build_localization_strings.py: register StringCatalog keys for <see cref="CitzT"/> and citizen item-sale (CitizenService 5) templates.</summary>
+		private static void _RegisterCitizenItemSaleKeysForExtraction()
+		{
+			StringCatalog.TryResolve( "zh-Hans", "Greetings, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Hail, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Good day to you, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "Hello, Z~Z~Z~Z~Z." );
+			StringCatalog.TryResolve( "zh-Hans", "We are just here to rest after exploring {0}." );
+			StringCatalog.TryResolve( "zh-Hans", "This is the first time I have been to Y~Y~Y~Y~Y." );
+			StringCatalog.TryResolve( "zh-Hans", "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y." );
+			StringCatalog.TryResolve( "zh-Hans", "a magic item" );
+			StringCatalog.TryResolve( "zh-Hans", "an enchanted item" );
+			StringCatalog.TryResolve( "zh-Hans", "a special item" );
+			StringCatalog.TryResolve( "zh-Hans", "found" );
+			StringCatalog.TryResolve( "zh-Hans", "discovered" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to part with" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to trade" );
+			StringCatalog.TryResolve( "zh-Hans", "willing to sell" );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I won {1} from a card game in {2} that I am {3} for {4} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold." );
+			StringCatalog.TryResolve( "zh-Hans", "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold." );
+			StringCatalog.TryResolve( "zh-Hans", " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item." );
+		}
+#endif
 
 		public override bool InitialInnocent{ get{ return true; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
@@ -190,39 +327,70 @@ namespace Server.Mobiles
 			int topic = Utility.RandomMinMax( 0, 40 );
 				if ( this is HouseVisitor ){ topic = 100; }
 
-			switch ( topic )
-			{
-				case 0:	CitizenRumor = "I heard that " + item + " can be obtained in " + locale + "."; break;
-				case 1:	CitizenRumor = "I heard something about " + item + " and " + locale + "."; break;
-				case 2:	CitizenRumor = "Someone told me that " + locale + " is where you would look for " + item + "."; break;
-				case 3:	CitizenRumor = "I heard many tales of adventurers going to " + locale + " and seeing " + item + "."; break;
-				case 4:	CitizenRumor = QuestCharacters.RandomWords() + " was in the tavern talking about " + item + " and " + locale + "."; break;
-				case 5:	CitizenRumor = "I was talking with the local " + RandomThings.GetRandomJob() + ", and they mentioned " + item + " and " + locale + "."; break;
-				case 6:	CitizenRumor = "I met with " + QuestCharacters.RandomWords() + " and they told me to bring back " + item + " from " + locale + "."; break;
-				case 7:	CitizenRumor = "I heard that " + item + " can be found in " + locale + "."; break;
-				case 8:	CitizenRumor = "Someone from " + RandomThings.GetRandomCity() + " died in " + locale + " searching for " + item + "."; break;
-				case 9:	CitizenRumor = Server.Misc.TavernPatrons.GetRareLocation( this, true, false );		break;
-			}
+		switch ( topic )
+		{
+			case 0:
+				CitizenRumor   = "I heard that " + item + " can be obtained in " + locale + ".";
+				break;
+			case 1:
+				CitizenRumor   = "I heard something about " + item + " and " + locale + ".";
+				break;
+			case 2:
+				CitizenRumor   = "Someone told me that " + locale + " is where you would look for " + item + ".";
+				break;
+			case 3:
+				CitizenRumor   = "I heard many tales of adventurers going to " + locale + " and seeing " + item + ".";
+				break;
+			case 4: {
+				string _rw4 = QuestCharacters.RandomWords();
+				CitizenRumor   = _rw4 + " was in the tavern talking about " + item + " and " + locale + ".";
+				break; }
+			case 5: {
+				string _job5 = RandomThings.GetRandomJob();
+				CitizenRumor   = "I was talking with the local " + _job5 + ", and they mentioned " + item + " and " + locale + ".";
+				break; }
+			case 6: {
+				string _rw6 = QuestCharacters.RandomWords();
+				CitizenRumor   = "I met with " + _rw6 + " and they told me to bring back " + item + " from " + locale + ".";
+				break; }
+			case 7:
+				CitizenRumor   = "I heard that " + item + " can be found in " + locale + ".";
+				break;
+			case 8: {
+				string _city8 = RandomThings.GetRandomCity();
+				CitizenRumor   = "Someone from " + _city8 + " died in " + locale + " searching for " + item + ".";
+				break; }
+			case 9:
+				CitizenRumor = Server.Misc.TavernPatrons.GetRareLocation( this, true, false );
+				break;
+		}
 
-			switch( Utility.RandomMinMax( 0, 13 ) )
-			{
-				case 0: preface = "I found"; 											break;
-				case 1: preface = "I heard rumours about"; 								break;
-				case 2: preface = "I heard a story about"; 								break;
-				case 3: preface = "I overheard someone tell of"; 						break;
-				case 4: preface = "Some " + adventurer + " found"; 						break;
-				case 5: preface = "Some " + adventurer + " heard rumours about"; 		break;
-				case 6: preface = "Some " + adventurer + " heard a story about"; 		break;
-				case 7: preface = "Some " + adventurer + " overheard another tell of"; 	break;
-				case 8: preface = "Some " + adventurer + " is spreading rumors about"; 	break;
-				case 9: preface = "Some " + adventurer + " is telling tales about"; 	break;
-				case 10: preface = "We found"; 											break;
-				case 11: preface = "We heard rumours about"; 							break;
-				case 12: preface = "We heard a story about"; 							break;
-				case 13: preface = "We overheard someone tell of"; 						break;
-			}
+		int prefaceCase = Utility.RandomMinMax( 0, 13 );
+		switch( prefaceCase )
+		{
+			case 0:  preface = "I found"; 											break;
+			case 1:  preface = "I heard rumours about"; 							break;
+			case 2:  preface = "I heard a story about"; 							break;
+			case 3:  preface = "I overheard someone tell of"; 						break;
+			case 4:  preface = "Some " + adventurer + " found"; 					break;
+			case 5:  preface = "Some " + adventurer + " heard rumours about"; 		break;
+			case 6:  preface = "Some " + adventurer + " heard a story about"; 		break;
+			case 7:  preface = "Some " + adventurer + " overheard another tell of"; break;
+			case 8:  preface = "Some " + adventurer + " is spreading rumors about"; break;
+			case 9:  preface = "Some " + adventurer + " is telling tales about"; 	break;
+			case 10: preface = "We found"; 											break;
+			case 11: preface = "We heard rumours about"; 							break;
+			case 12: preface = "We heard a story about"; 							break;
+			case 13: preface = "We overheard someone tell of"; 						break;
+		}
 
-			if ( CitizenRumor == null ){ CitizenRumor = preface + " " + Server.Misc.TavernPatrons.CommonTalk( "", city, dungeon, this, adventurer, true ) + "."; }
+		if ( CitizenRumor == null )
+		{
+			string _ct = Server.Misc.TavernPatrons.CommonTalk( "", city, dungeon, this, adventurer, true );
+			CitizenRumor = preface + " " + _ct + ".";
+		}
+
+		CitizenRumorZh = null;
 
 			if ( this is HouseVisitor )
 			{
@@ -388,20 +556,74 @@ namespace Server.Mobiles
 			}
 			else if ( CitizenService == 5 )
 			{
-				string aty1 = "a magic item"; if (Utility.RandomBool() ){ aty1 = "an enchanted item"; } else if (Utility.RandomBool() ){ aty1 = "a special item"; }
-				string aty2 = "found"; if (Utility.RandomBool() ){ aty2 = "discovered"; }
-				string aty3 = "willing to part with"; if (Utility.RandomBool() ){ aty3 = "willing to trade"; } else if (Utility.RandomBool() ){ aty3 = "willing to sell"; }
+				string aty1 = "a magic item";
+				if ( Utility.RandomBool() )
+					aty1 = "an enchanted item";
+				else if ( Utility.RandomBool() )
+					aty1 = "a special item";
+				string aty2 = "found";
+				if ( Utility.RandomBool() )
+					aty2 = "discovered";
+				string aty3 = "willing to part with";
+				if ( Utility.RandomBool() )
+					aty3 = "willing to trade";
+				else if ( Utility.RandomBool() )
+					aty3 = "willing to sell";
 
-				switch ( Utility.RandomMinMax( 0, 5 ) )
+				const string c5End = " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.";
+
+				string pZh = GetCitizenOpeningPhraseChinese( initPhrase, dungeon );
+				int saleStory = Utility.RandomMinMax( 0, 5 );
+				string mainEn = null;
+				string mainFmt = null;
+
+				switch ( saleStory )
 				{
-					case 0:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " while exploring " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 1:	CitizenPhrase = phrase + " I won " + aty1 + " from a card game in " + city + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 2:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on the remains of some " + adventurer + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 3:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " from a chest in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 4:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on a beast I killed in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
-					case 5:	CitizenPhrase = phrase + " I have " + aty1 + " I " + aty2 + " on some " + adventurer + " in " + Clues + " that I am " + aty3 + " for G~G~G~G~G gold."; break;
+					case 0:
+						mainFmt = "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 1:
+						mainFmt = "{0} I won {1} from a card game in {2} that I am {3} for {4} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, city, aty3, "G~G~G~G~G" );
+						break;
+					case 2:
+						mainFmt = "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, adventurer, aty3, "G~G~G~G~G" );
+						break;
+					case 3:
+						mainFmt = "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 4:
+						mainFmt = "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, Clues, aty3, "G~G~G~G~G" );
+						break;
+					case 5:
+						mainFmt = "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold.";
+						mainEn = string.Format( mainFmt, phrase, aty1, aty2, adventurer, Clues, aty3, "G~G~G~G~G" );
+						break;
+					default: mainEn = string.Empty; break;
 				}
-				CitizenPhrase = CitizenPhrase + " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.";
+
+				CitizenPhrase = mainEn + c5End;
+
+				string zhMain = StringCatalog.TryResolve( "zh-Hans", mainFmt );
+				if ( zhMain != null && zhMain.Length > 0 && zhMain != mainFmt )
+				{
+					switch ( saleStory )
+					{
+						case 0: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 1: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), city, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 2: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), adventurer, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 3: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 4: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						case 5: CitizenPhraseZh = string.Format( zhMain, pZh, CitzT( aty1 ), CitzT( aty2 ), adventurer, Clues, CitzT( aty3 ), "G~G~G~G~G" ) + CitzT( c5End ); break;
+						default: CitizenPhraseZh = null; break;
+					}
+				}
+				else
+					CitizenPhraseZh = null;
 			}
 			else if ( CitizenType == 20 && CitizenService == 20 )
 			{
@@ -1085,10 +1307,17 @@ namespace Server.Mobiles
 				}
 				else if ( citizen.CitizenService == 0 )
 				{
+					string rumorLang = Server.Localization.AccountLang.GetLanguageCode( m_Mobile.Account );
+					bool isChineseRumor = Server.Localization.AccountLang.IsChinese( rumorLang );
 					speak = citizen.CitizenRumor;
-					if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", m_Mobile.Name); }
-					if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", m_Mobile.Region.Name); }
-					m_Giver.Say( speak );
+					if ( speak != null && speak.Contains( "Z~Z~Z~Z~Z" ) )
+						speak = speak.Replace( "Z~Z~Z~Z~Z", m_Mobile.Name );
+					if ( speak != null && speak.Contains( "Y~Y~Y~Y~Y" ) )
+						speak = speak.Replace( "Y~Y~Y~Y~Y", m_Mobile.Region.Name );
+					if ( isChineseRumor && speak != null && speak.Length > 0 )
+						m_Giver.SayTo( m_Mobile, false, Citizens.ResolveCitizenRumorToChinese( m_Mobile, speak ) );
+					else if ( speak != null && speak.Length > 0 )
+						m_Giver.Say( speak );
 				}
 				else
 				{
@@ -1628,13 +1857,15 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 			writer.Write( CitizenService );
 			writer.Write( CitizenType );
 			writer.Write( CitizenCost );
 			writer.Write( CitizenPhrase );
 			writer.Write( CitizenRumor );
 			writer.Write( ShouldRemoveSomeStuff );
+			writer.Write( CitizenRumorZh );
+			writer.Write( CitizenPhraseZh );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -1648,6 +1879,11 @@ namespace Server.Mobiles
 			CitizenRumor = reader.ReadString();
 			if ( 0 < version )
 				ShouldRemoveSomeStuff = reader.ReadBool();
+			if ( 1 < version )
+			{
+				CitizenRumorZh = reader.ReadString();
+				CitizenPhraseZh = reader.ReadString();
+			}
 		}
 
 		public override void OnAfterSpawn()
@@ -1707,17 +1943,23 @@ namespace Server.Mobiles
 				this.Dragable=true;
 				this.Resizable=false;
 
-				string speak = b_Citizen.CitizenPhrase;
-				if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", c_Player.Name); }
-				if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", c_Player.Region.Name); }
-				if ( speak.Contains("G~G~G~G~G") ){ speak = speak.Replace("G~G~G~G~G", (b_Citizen.CitizenCost).ToString()); }
+			string gumpLang = Server.Localization.AccountLang.GetLanguageCode( player.Account );
+			bool isChinese = Server.Localization.AccountLang.IsChinese( gumpLang );
+			string speak = ( isChinese && b_Citizen.CitizenPhraseZh != null && b_Citizen.CitizenPhraseZh.Length > 0 )
+				? b_Citizen.CitizenPhraseZh
+				: b_Citizen.CitizenPhrase;
+			if ( speak.Contains("Z~Z~Z~Z~Z") ){ speak = speak.Replace("Z~Z~Z~Z~Z", c_Player.Name); }
+			if ( speak.Contains("Y~Y~Y~Y~Y") ){ speak = speak.Replace("Y~Y~Y~Y~Y", c_Player.Region.Name); }
+			if ( speak.Contains("G~G~G~G~G") ){ speak = speak.Replace("G~G~G~G~G", (b_Citizen.CitizenCost).ToString()); }
+			if ( isChinese )
+				speak = Server.Localization.QuestCompositeResolver.ResolveComposite( player, speak );
 
 				AddPage(0);
 
 				string color = "#d5a496";
 
 				AddImage(0, 2, 9543, Server.Misc.PlayerSettings.GetGumpHue( player ));
-				AddHtml( 12, 15, 341, 20, @"<BODY><BASEFONT Color=" + color + ">" + citizen.Name + " " + citizen.Title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 15, 341, 20, @"<BODY><BASEFONT Color=" + color + ">" + FormatCitizenDisplayLine( player, b_Citizen ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 12, 50, 380, 253, @"<BODY><BASEFONT Color=" + color + ">" + speak + "</BASEFONT></BODY>", (bool)false, (bool)true);
 				AddButton(367, 12, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			}

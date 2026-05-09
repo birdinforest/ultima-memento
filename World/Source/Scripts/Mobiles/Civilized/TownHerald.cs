@@ -232,7 +232,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m_Giver.Say("Good day to you, " + m_Mobile.Name + ".");
+						m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "Good day to you, {0}.", m_Mobile.Name ) );
 					}
 				}
             }

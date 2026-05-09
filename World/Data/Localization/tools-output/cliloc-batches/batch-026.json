@@ -1,0 +1,3006 @@
+{
+ "batch": 26,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1151584",
+   "text": "<center>TRIES LEFT</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151585",
+   "text": "Customize Body",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151586",
+   "text": "Rotate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151587",
+   "text": "You rotate the mannequin a little bit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151588",
+   "text": "Edit your key number. If you don't want to change current key number, click CANCEL button.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151589",
+   "text": "You succeed at entering the correct key number",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151590",
+   "text": "The number which you have entered is wrong. You still can't open this chest...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151591",
+   "text": "You cannot place items into a locked chest!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151592",
+   "text": "You must have this chest or place it in your own house to lock. Remember, this can be decayed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151593",
+   "text": "You must have this chest or place it in your own house to reset the key number.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151594",
+   "text": "The number key has not been set on this chest yet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151595",
+   "text": "This chest has an unknown error. First, please reset the key number via context menu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151596",
+   "text": "This chest has an unknown error. You can't open this now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151597",
+   "text": "You reset the number key of this with your godly powers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151598",
+   "text": "You have reset the number key of this chest. This is unlocked now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151599",
+   "text": "You cannot access the chest now, having exhausted your number of attempts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151600",
+   "text": "You remember the key number of this chest, so you can open this now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151601",
+   "text": "Redeed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151602",
+   "text": "Mannequin Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151603",
+   "text": "~1_ITEMNAME~ [Replica]",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151604",
+   "text": "There is nothing left to harvest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151605",
+   "text": "You harvest a ~1_val~ from the ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151606",
+   "text": "Switch Clothes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151607",
+   "text": "You quickly swap clothes with the mannequin.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151608",
+   "text": "Set/Edit Key Number",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151609",
+   "text": "Reset Key Number",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151610",
+   "text": "Locked",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151611",
+   "text": "You have exhausted your unlock attempts for this chest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151612",
+   "text": "I cannot accept a number key locked item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151613",
+   "text": "You are already operating another chest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151614",
+   "text": "If you use this ability now, your power in Sacrifice will diminish greatly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151615",
+   "text": "Honesty is gained when returning \"lost items\" to their owners or to lost-and-found boxes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151616",
+   "text": "jester's singing ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151617",
+   "text": "14th Anniversary Gift Ticket",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151618",
+   "text": "14th anniversary gift bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151619",
+   "text": "There is already a wall hanging like this one at the targeted location.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151620",
+   "text": "The champion accepts your challenge. You have one hour to find and defeat him!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151621",
+   "text": "The champion for this dungeon level has already been summoned.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151622",
+   "text": "The champion has recently been defeated, and cannot be summoned again for a few minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151623",
+   "text": "You are not yet worthy of challenging the champion.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151624",
+   "text": "Crystal of Shame",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151625",
+   "text": "Summoning the dungeon level's champion costs you ~1_COST~ Crystals of Shame.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151626",
+   "text": "Throwing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151627",
+   "text": "Fire Dungeon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151628",
+   "text": "You failed to defeat the champion in time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151629",
+   "text": "The distinct smell of a familiar pub lets you know this item has been in ~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151630",
+   "text": "This item carries the smell of a perfume that is popular in ~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151631",
+   "text": "This item is dirty, but the dirt is not from here, it is a soil common in ~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151632",
+   "text": "You find a spatter of sauce on this item that is familiar to you",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151633",
+   "text": "You did not summon this champion, so you may not attack it at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151634",
+   "text": "You gain ~1_AMT~ dungeon points for ~2_NAME~. Your total is now ~3_TOTAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151635",
+   "text": "You lost ~1_AMT~ dungeon points for ~2_NAME~. Your total is now ~3_TOTAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151636",
+   "text": "Guardian's Altar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151637",
+   "text": "Unfortunately, I could not sell you all the goods you requested.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151638",
+   "text": "The total of your purchase is ~1_val~ gold, which has been drawn from your bank account.  My thanks for the patronage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151639",
+   "text": "The total of your purchase is ~1_val~ gold.  My thanks for the patronage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151640",
+   "text": "Some of the items you are trying to swap are gender specific.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151641",
+   "text": "~1_COUNT~ items could not be swapped between you and the mannequin. These items are now in your backpack, or on the floor at your feet if your backpack is too full to hold them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151642",
+   "text": "This grapevine is now guaranteed to grow grapes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151643",
+   "text": "There is nothing wrong with this grapevine.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151644",
+   "text": "That is not a grapevine.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151645",
+   "text": "Grapevine Repair",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151646",
+   "text": "If you have grapevines that<br>Do not grow grapes, drop them<br>Into this box. Magical elves<br>Will dispel the gremlins and <br>Return the vines to you<br>Immediately. You may also drop<br>In a container and any grapevines<br>Inside it will be fixed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151647",
+   "text": "A gift of ~1_GIFTNAME~ has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151648",
+   "text": "A gift of ~1_GIFTNAME~ could not be placed in your backpack. We will try again to deliver it on your next login.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151649",
+   "text": "Hunter Green Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151650",
+   "text": "Lavender Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151651",
+   "text": "Phoenix Red Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151652",
+   "text": "You apply the dye.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151653",
+   "text": "Slate Blue Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151654",
+   "text": "Your backpack is too full to carry out this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151655",
+   "text": "The mannequin cannot fit there.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151656",
+   "text": "Mannequin creation failed. Please try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151657",
+   "text": "Where do you wish to place this?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151658",
+   "text": "You remove a Scroll of Transcendence and put it in your pack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151659",
+   "text": ".1 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151660",
+   "text": ".2 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151661",
+   "text": ".3 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151662",
+   "text": ".4 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151663",
+   "text": ".5 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151664",
+   "text": ".6 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151665",
+   "text": ".7 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151666",
+   "text": ".8 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151667",
+   "text": ".9 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151668",
+   "text": "1.0 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151669",
+   "text": "3.0 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151670",
+   "text": "5.0 Skill Increase:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151671",
+   "text": "Endless Journey accounts may only join the Help channel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151672",
+   "text": "Shame: ~1_AMT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151673",
+   "text": "Dungeon Crystal Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151674",
+   "text": "You add the scroll to your Scrolls of Transcendence book.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151675",
+   "text": "Scrolls of Transcendence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151676",
+   "text": "There are no scrolls in this book. Add a scroll by dragging it onto the book.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151677",
+   "text": "This book only holds Scrolls of Transcendence.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151678",
+   "text": "This book is full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151679",
+   "text": "Scrolls of Transcendence Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151680",
+   "text": "Add Message",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151681",
+   "text": "Enter up to three lines of personallized text.  you may enter up to 25 characters per line.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151682",
+   "text": "Mighty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151683",
+   "text": "Vitality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151684",
+   "text": "Mystic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151685",
+   "text": "Sorcery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151686",
+   "text": "Animated",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151687",
+   "text": "Haste",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151688",
+   "text": "Arcane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151689",
+   "text": "Wizardry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151690",
+   "text": "Exquisite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151691",
+   "text": "Quality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151692",
+   "text": "Vampiric",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151693",
+   "text": "the Vampire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151694",
+   "text": "Invigorating",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151695",
+   "text": "Restoration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151696",
+   "text": "Fortified",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151697",
+   "text": "Defense",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151698",
+   "text": "Auspicious",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151699",
+   "text": "Fortune",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151700",
+   "text": "Charmed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151701",
+   "text": "Alchemy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151702",
+   "text": "Vicious",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151703",
+   "text": "Slaughter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151704",
+   "text": "Towering",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151705",
+   "text": "Aegis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151706",
+   "text": "Mystic / of Sorcery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151707",
+   "text": "Animated / of Haste",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151708",
+   "text": "Arcane / of Wizardry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151709",
+   "text": "Exquisite / of Quality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151710",
+   "text": "Vampiric / of the Vampire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151711",
+   "text": "Invigorating / of Restoration",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151712",
+   "text": "Fortified / of Defense",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151713",
+   "text": "Auspicious / of Fortune",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151714",
+   "text": "Charmed / of Alchemy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151715",
+   "text": "Vicious / of Slaughter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151716",
+   "text": "Towering / of Aegis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151717",
+   "text": "Mighty / of Vitality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151718",
+   "text": "This item will:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151719",
+   "text": "Set Teleporter Type",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151720",
+   "text": "Set Hue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151721",
+   "text": "<i>Should you accept this trade order your ability to magically teleport to another location will be disabled.  You may cancel the trade order at any time by accessing the context menu on the trade crate by single left clicking</i>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151722",
+   "text": "It appears you are already delivering a trade order. Deliver your current order before requesting another.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151723",
+   "text": "Destination: w ~1_FACET~ ~2_DEST~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151724",
+   "text": "I don't have a trade order available right now.  Try again in a few minutes or try another Trade Minister.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151725",
+   "text": "This trade order does not require this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151726",
+   "text": "You are trying to add too many of this item to the trade order. Only add the required quantity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151727",
+   "text": "Cancel Trade Order",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151728",
+   "text": "Are you sure you wish to cancel this trade order?  All contents of the trade crate will be placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151729",
+   "text": "Turn in a Trade Order",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151730",
+   "text": "Target the trade order you wish to turn in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151731",
+   "text": "That is not a valid trade order. Please try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151732",
+   "text": "This trade order has not been fulfilled.  Fill the trade order with all necessary items and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151733",
+   "text": "You cannot do that while carrying a Trade Order.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151734",
+   "text": "*A passerby slips a rolled bit of parchment into your hand...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151735",
+   "text": "*You unfurl the parchment, it appears to be a handwritten note*<br><br>Taking up delivery of goods fer the crown are ya? Well...maybe yer interested in a bit of something fer yerself?  Look fer me in Felucca...the taverns of Ocllo, Nujelm, & Serpent's Hold if ye want to fence yer goods.<br><br>-A Friend",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151736",
+   "text": "Haha! These goods will fetch me quite a bit o' coin!  Thanks fer yer help!  Here's a little something I was able to get me hands on...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151737",
+   "text": "Destination City: ~1_city~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151738",
+   "text": "Begging thy pardon, but those goods are destined for the City of ~1_city~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151739",
+   "text": "Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151740",
+   "text": "This title is obtained by delivering 1 trade order to a City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151741",
+   "text": "Exporter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151742",
+   "text": "This title is obtained by delivering 25 trade orders to a City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151743",
+   "text": "Broker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151744",
+   "text": "This title is obtained by delivering 50 trade orders to a City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151745",
+   "text": "Tycoon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151746",
+   "text": "This title is obtained by delivering 100 trade orders to a City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151747",
+   "text": "Smuggler",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151748",
+   "text": "This title is obtained by delivering 50 trade orders to Slim the Fence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151749",
+   "text": "Expired Voucher for a Free Drink at the Fortune's Fire Casino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151750",
+   "text": "Forged Artwork from King Blackthorn's Collection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151751",
+   "text": "Slim the Fence's little black book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151752",
+   "text": "Slim's Lucky Playing Cards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151753",
+   "text": "A Mysterious Note",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151754",
+   "text": "The raucous crowd does sing: \"Alas! Alas! Who be your lady? Alas! Alas! Dear boy of Britain, who be your lady?! - Alas! Alas! There she be...A drink! For her! A drink! For you? Two?! Or three! Dear boy of Britain! - Alas! Alas! A game for you, do you play chess?! Throw a dart?! Or two?! Or Three! Alas! Alas! A drink! For you! Or Two! Or Three! Dear boy of Britain!\" The crowd then quiets: \"Alas! Alas! The lady does see ol' Davey climb away...His shoulders? Broad! His nose? Long! And away they go!\" The raucous crowd then laughs: \"Alas! Alas! Dear boy of Britain, where be your lady?! Alas! Alas! Where did she go?! Alas! Alas! A drink! For you! Two or Three, Dear boy of Britain!\"<br>The tavern wenches always seem to laugh a bit more at this song than the patrons and innkeepers, but all in good fun. You know you have arrived at the Blue Boar Tavern. A decadent and lavish traditional Britannian Tavern and Inn. <br>Fortunes lost at the turn of a card. Ladies seeking court with rich merchants...rich merchants seeking court with ladies. Romances discarded and traded. The Blue Boar is never dull, never mundane, and never a place for the unwary. The ale and wine does flow, liberally across the lips of both peasant and prince. Vintages from Yew, Trinsic and the Serpent's Hold, all roads lead to Britain.<br>The seat of our King, the capitol of our Kingdom. Some would say the true jewel is not in the crown but in her inn.<br>The Blue Boar Rages, Don't be shy.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151755",
+   "text": "The enormous sandstone walls that bring Trinsic both protection from its enemies and fame throughout Sosaria are a subject of much debate. While the walls do indeed provide protection and make the city a fortress, the walls too restrict the size and scope of the city itself leading to overcrowding and an occasional exodus of our middle aged men and women to Britain and Skara Brae.<br>The history of the walls that surround our proud city dates far into the Age of Darkness. Even before the Great King came into power. Then the walls of Trinsic were a pointed wooden lattice hewn from the forest lands to the north. The warring Kingdoms of Men demanded strong walls, and the forest depleted quicker than many could have imagined in those years.<br>When the flood waters first came, the wooden walls did very little to protect us from the sea and the north peninsula became a swampland and bog. It was then the first plans for the Trinsic Wall first began. Sandstone from the vast sandstone deposits on Barrier Isle to the east were requisitioned and too that resource was torn from the land. <br>It was quickly determined that by reaping any further sandstone from the isle that Trinsic proper would be at risk from further flooding and tidal fluctuations. And so Barrier Isle excavation was abandoned and the walls have stayed static and unchanged since that Age.<br>Still, the sacrifices, triumphs and battles we the people of Trinsic have endured to maintain and build our great walls have not been in vain. For we are the shield of Britannia, the King looks to us as the bastion of defense for our motherland of Britannia. We train her Paladins, we instruct her Generals, and we protect the people and the peace. We are Trinsic, and our walls will hold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151756",
+   "text": "~1_PREFIX~ ~2_ITEM~ of ~3_SUFFIX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151757",
+   "text": "~1_PREFIX~ ~2_ITEM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151758",
+   "text": "~1_ITEM~ of ~2_SUFFIX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151759",
+   "text": "customizable rounded door mat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151760",
+   "text": "customizable squared door mat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151761",
+   "text": "customizable wall sign",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151762",
+   "text": "~1_VAL~ Holiday Card",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151763",
+   "text": "From: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151764",
+   "text": "To: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151765",
+   "text": "You must lock this book down in a house to add scrolls to it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151766",
+   "text": "You can't receive a gift when you are dead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151767",
+   "text": "Happy holidays from the entire Ultima Online team!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151768",
+   "text": "You may not have more than 1,000,000 Dungeon Crystal Points. Please try again with fewer crystals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151769",
+   "text": "Greater Bracelet of Binding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151770",
+   "text": "This bracelet is already bound to this character.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151771",
+   "text": "The target player must be wearing a Bracelet of Binding or Greater Bracelet of Binding for the device to work.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151772",
+   "text": "You must be wearing this item to bind to another character.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151773",
+   "text": "~1_val~ is attempting to bind bracelets with you.  Do you accept?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151774",
+   "text": "Releasing ~1_val~'s bracelet from yours.  Are you sure you want to do this?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151775",
+   "text": "You may not bind your bracelet to that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151776",
+   "text": "This bracelet will only bind to another while both are equipped.  Equip this bracelet and have your friend equip the other bracelet.  When prompted, target your friend.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151777",
+   "text": "Waiting for ~1_val~ to respond.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151778",
+   "text": "~1_val~ has declined your request to bind bracelets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151779",
+   "text": "The bracelet cannot bind with itself.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151780",
+   "text": "durability +~1_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151781",
+   "text": "The target player's greater bracelet of binding is full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151782",
+   "text": "cannot be repaired",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151783",
+   "text": "* You concentrate on the bracelet to summon its power *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151784",
+   "text": "Your broker's inventory size is over the limit of 40 different item types. Excess stock has been returned to you in deed form.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151785",
+   "text": "Commodity brokers are limited to dealing in at most 40 different types of items. You cannot add any new commodity types to your broker's inventory, but you may continue adding stock to items already there.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151786",
+   "text": "flame elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151787",
+   "text": "stone elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151788",
+   "text": "quartz elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151789",
+   "text": "molten earth elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151790",
+   "text": "mud pie",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151791",
+   "text": "clay golem",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151792",
+   "text": "mud elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151793",
+   "text": "wind elemental",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151794",
+   "text": "crazed wizard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151795",
+   "text": "chaos vortex",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151796",
+   "text": "**Choose slot to bind**",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151797",
+   "text": "Scrolls in book: ~1_val~/~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151798",
+   "text": "2.0 Skill Increase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151799",
+   "text": "This book can only hold up to 99 of each scroll.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151800",
+   "text": "Physical Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151801",
+   "text": "Fire Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151802",
+   "text": "Cold Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151803",
+   "text": "Poison Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151804",
+   "text": "Energy Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151805",
+   "text": "Chaos Damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151806",
+   "text": "squared door mat deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151807",
+   "text": "You fail to re-deed the mat.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151808",
+   "text": "Quartz Grit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151809",
+   "text": "Corrosive Ash",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151810",
+   "text": "Cursed Oilstone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151811",
+   "text": "Whetstone of Enervation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151812",
+   "text": "You have managed to form the items into a rancid smelling, crag covered, hardened lump. In a moment of prescience, you realize what it must be named. The Whetstone of Enervation!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151813",
+   "text": "You do not have a required component: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151814",
+   "text": "You have removed the damage increase from this weapon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151815",
+   "text": "Large door mat south",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151816",
+   "text": "Large door mat east",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151817",
+   "text": "Edit Sign",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151818",
+   "text": "Item Curse Removal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151819",
+   "text": "These services cost Clean Up Britannia points. I can remove the following curses from this item at these prices:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151820",
+   "text": "These services cost Clean Up Britannia points. You cannot afford to remove any of these curses from this item at these prices:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151821",
+   "text": "Luck -100",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151822",
+   "text": "DESCRIPTION",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151823",
+   "text": "PRICE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151824",
+   "text": "Your Cleanup Point Balance:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151825",
+   "text": "Are you sure you wish to spend ~1_COST~ Clean Up Britannia points to remove \"~2_CURSE~\" from this item?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151826",
+   "text": "Cannot Be Repaired",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151827",
+   "text": "Remove Item Curses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151828",
+   "text": "Target a piece of magical equipment in your backpack to see if it can be improved by removing negative item properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151829",
+   "text": "I cannot modify that item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151830",
+   "text": "That item has no removable negative magic item properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151831",
+   "text": "You have spent ~1_COST~ Clean Up Britannia points. Your balance is now ~2_NEWVAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151832",
+   "text": "You must remove \"Cannot Be Repaired\" before you can remove \"Brittle\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151833",
+   "text": "You may not get confirmation from this player at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151834",
+   "text": "Resources: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151835",
+   "text": "Sheep Statue Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151836",
+   "text": "You may not dye toggled quest items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151837",
+   "text": "You may not scour toggled quest items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151838",
+   "text": "This item cannot be stored in the seed box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151839",
+   "text": "There is not enough room in the box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151840",
+   "text": "Remove: 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151841",
+   "text": "Remove: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151842",
+   "text": "Shift Right",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151843",
+   "text": "Shift Left",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151844",
+   "text": "There is not enough room in your backpack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151845",
+   "text": "You stop executing distillation because you are carrying too much weight. Please make some room in your backpack and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151846",
+   "text": "You put the seed in the seedbox.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151847",
+   "text": "Seeds in Box: ~1_val~ / ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151848",
+   "text": "Unique Seeds In Box: ~1_val~ / ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151849",
+   "text": "Click this button and target a seed to add it here.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151850",
+   "text": "{Page: ~1_val~ / ~2_val~}",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151851",
+   "text": "Insert Seed Before",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151852",
+   "text": "Insert Seed After",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151853",
+   "text": "Legends Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151854",
+   "text": "Arirang Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151855",
+   "text": "Asuka Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151856",
+   "text": "Atlantic Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151857",
+   "text": "Baja Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151858",
+   "text": "Balhae Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151859",
+   "text": "Catskills Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151860",
+   "text": "Chesapeake Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151861",
+   "text": "Drachenfels Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151862",
+   "text": "Europa Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151863",
+   "text": "Formosa Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151864",
+   "text": "Great Lakes Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151865",
+   "text": "Hokuto Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151866",
+   "text": "Izumo Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151867",
+   "text": "Lake Austin Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151868",
+   "text": "Lake Superior Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151869",
+   "text": "Mizuho Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151870",
+   "text": "Napa Valley Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151871",
+   "text": "Oceania Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151872",
+   "text": "Origin Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151873",
+   "text": "Pacific Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151874",
+   "text": "Sakura Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151875",
+   "text": "Sonoma Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151876",
+   "text": "Wakoku Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151877",
+   "text": "Yamato Transfer Shield Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151878",
+   "text": "You must stable all of your pets before you can use a Shield Transfer Token.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151879",
+   "text": "Lock down to use",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151880",
+   "text": "You receive a Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151881",
+   "text": "Legends Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151882",
+   "text": "Arirang Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151883",
+   "text": "Asuka Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151884",
+   "text": "Atlantic Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151885",
+   "text": "Baja Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151886",
+   "text": "Balhae Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151887",
+   "text": "Catskills Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151888",
+   "text": "Chesapeake Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151889",
+   "text": "Drachenfels Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151890",
+   "text": "Europa Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151891",
+   "text": "Formosa Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151892",
+   "text": "Great Lakes Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151893",
+   "text": "Hokuto Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151894",
+   "text": "Izumo Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151895",
+   "text": "Lake Austin Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151896",
+   "text": "Lake Superior Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151897",
+   "text": "Mizuho Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151898",
+   "text": "Napa Valley Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151899",
+   "text": "Oceania Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151900",
+   "text": "Origin Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151901",
+   "text": "Pacific Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151902",
+   "text": "Sakura Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151903",
+   "text": "Sonoma Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151904",
+   "text": "Wakoku Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151905",
+   "text": "Yamato Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151906",
+   "text": "Ignore Channel Chat Players",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151907",
+   "text": "You may only target seeds that are in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151908",
+   "text": "Please enter the text with which you wish to label the liquor that you will distill. You many enter up to ~1_VAL~ characters. Leave the text area blank to remove any existing text.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151909",
+   "text": "Polished Bronze Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151910",
+   "text": "Glossy Blue Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151911",
+   "text": "Black and Green Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151912",
+   "text": "Deep Violet Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151913",
+   "text": "You can only edit signs in your own house.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151914",
+   "text": "Minutes remaining for credit: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151915",
+   "text": "Field Spells",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151916",
+   "text": "Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151917",
+   "text": "Charges Remaining: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151918",
+   "text": "You will gain one charge each month your account is active. (Max Charges: 10)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151919",
+   "text": "You already have a transfer in progress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151920",
+   "text": "This item is Account Bound, you are not permitted to take this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151921",
+   "text": "You may not ignore yourself.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151922",
+   "text": "In order to use this item under this rule, You need to have 50.0 unmodified Mysticism skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151923",
+   "text": "Radius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151924",
+   "text": "Ignore NW",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151925",
+   "text": "Ignore NE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151926",
+   "text": "Ignore SE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151927",
+   "text": "Ignore SW",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151928",
+   "text": "<center>Capture Multi</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151929",
+   "text": "Poisoned weapons are unable to be used under the current ruleset.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151930",
+   "text": "Skill: ~1_skillname~ ~2_skillamount~ ~3_unitname~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151931",
+   "text": "skill points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151932",
+   "text": "Test Center Shield Transfer Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151933",
+   "text": "Runebooks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151934",
+   "text": "Pixie Legs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151935",
+   "text": "Signed Tuition Reimbursement Forms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151936",
+   "text": "Completed Tuition Reimbursement Forms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151937",
+   "text": "Tiger Claw Sect Badges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151938",
+   "text": "Serpent Fang Sect Badges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151939",
+   "text": "Dragon Flame Sect Badges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151940",
+   "text": "Minotaur Artifacts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151941",
+   "text": "tainted tree samples",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151942",
+   "text": "Friends of the Library Applications",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151943",
+   "text": "Current last word:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151944",
+   "text": "You have gotten the ability of Last Word as the reward of your duel! Let's open your context menu and choose Set Last Word.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151945",
+   "text": "Discord Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151946",
+   "text": "Provocation Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151947",
+   "text": "Peacemaking Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151948",
+   "text": "Switch Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151949",
+   "text": "You have changed to ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151950",
+   "text": "You do not have the required skill levels to switch to this mastery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151951",
+   "text": "+~1_HCI~% Hit Chance Increase.<br>+~2_SDI~% Spell Damage Increase.<br>+~3_DI~% Damage Increase.<br>Bonus Damage Modifier: + ~4_DM~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151952",
+   "text": "Runic Crafting Options",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151953",
+   "text": "Charges Consumed Per Use:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151954",
+   "text": "Powerful Re-Forging",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151955",
+   "text": "Structural Re-Forging",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151956",
+   "text": "Fortified Re-Forging",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151957",
+   "text": "Fundamental Re-Forging",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151958",
+   "text": "Integral Re-Forging",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151959",
+   "text": "Focused Imbuing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151960",
+   "text": "Concentrated Imbuing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151961",
+   "text": "Grand Artifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151962",
+   "text": "Inspired Artifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151963",
+   "text": "Exalted Artifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151964",
+   "text": "Sublime Artifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151965",
+   "text": "Powerful Re-Forging causes the item to have slightly more magical power.<br><br>Structural Re-Forging causes the item to have more magical power, but the item will be Brittle.<br><br>Fortified Re-Forging causes the item to have higher durability.<br><br>Fundamental Re-Forging causes the item to have significantly more magical power, but the item cannot be repaired. Its durability will be increased.<br><br>Integral Re-Forging further increases the item's durability.<br><br>Grand Artifice guarantees that the resulting item will have one name, either a prefix or a suffix.<br><br>Inspired Artifice allows you to choose which name will be added to the item.<br><br>Exalted Artifice guarantees that the item will have two names, both a prefix and a suffix.<br><br>Sublime Artifice allows you to choose a name to be added to the item.<br><br>You must use both Inspired Artifice and Sublime Artifice in conjunction if you wish to choose both names to add to the item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151966",
+   "text": "Runic Crafting Help",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151967",
+   "text": "letter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151968",
+   "text": "letters",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151969",
+   "text": "battered bucket",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151970",
+   "text": "battered buckets",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151971",
+   "text": "stolen ring",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151972",
+   "text": "stolen rings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151973",
+   "text": "Love Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151974",
+   "text": "Love Tokens",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151975",
+   "text": "sealing wax order",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151976",
+   "text": "sealing wax orders",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151977",
+   "text": "Speckled Poison Sacs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151978",
+   "text": "sealing wax",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151979",
+   "text": "Notarized applications",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151980",
+   "text": "Miniature mushrooms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151981",
+   "text": "Seeker's Symbols",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151982",
+   "text": "arielle's baubles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151983",
+   "text": "Lucky Dagger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151984",
+   "text": "Lucky Daggers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151985",
+   "text": "Lord Denthe's Journals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151986",
+   "text": "Primitive Fetishes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151987",
+   "text": "corroded strongboxes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151988",
+   "text": "Grobu's Furs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151989",
+   "text": "Coil's Fangs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151990",
+   "text": "Thrasher's Tails",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151991",
+   "text": "Hydra Scale",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151992",
+   "text": "Hydra Scales",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151993",
+   "text": "Abscess' Tails",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151994",
+   "text": "Saliva's Feathers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151995",
+   "text": "Resolve's Bridles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151996",
+   "text": "gifts for arielle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151997",
+   "text": "Stout Whips",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151998",
+   "text": "Special Treats for Drithen",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1151999",
+   "text": "power crystals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152000",
+   "text": "Crates for Sledge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152001",
+   "text": "Disintegrating Thesis Note",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152002",
+   "text": "Fragments of a Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152003",
+   "text": "Gaman Horn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152004",
+   "text": "Tuition Reimbursement Form",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152005",
+   "text": "Assassination Contracts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152006",
+   "text": "Tuition Reimbursement Forms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152007",
+   "text": "Ki-Rin Brain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152008",
+   "text": "sealed note for Jamal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152009",
+   "text": "sample of corrupted water",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152010",
+   "text": "Spirit bottles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152011",
+   "text": "Alchemist's Bandages",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152012",
+   "text": "Portraits of the Bride",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152013",
+   "text": "Mirrors of Purification",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152014",
+   "text": "tribal berries",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152015",
+   "text": "Pepta's Satiety Cures",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152016",
+   "text": "Specimen Basins",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152017",
+   "text": "Cloaks of Corruption",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152018",
+   "text": "Threads of Life",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152019",
+   "text": "Threads of Fate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152020",
+   "text": "Threads of Thought",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152021",
+   "text": "Books of Truth",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152022",
+   "text": "Rusty Pen",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152023",
+   "text": "Rusty Pens",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152024",
+   "text": "Purified Candle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152025",
+   "text": "Purified Candles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152026",
+   "text": "Ariel Haven Writs of Membership",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152027",
+   "text": "Barrels of Barley",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152028",
+   "text": "Talismans of Goblin Slaying",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152029",
+   "text": "Red Herrings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152030",
+   "text": "Mud Puppies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152031",
+   "text": "Boura Skins",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152032",
+   "text": "Undamaged Iron Beetle Scales",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152033",
+   "text": "Fairy Dragon Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152034",
+   "text": "Arcane Gems",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152035",
+   "text": "Undamaged Undead Gargoyle Horn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152036",
+   "text": "leather wolf skins",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152037",
+   "text": "Undead Gargoyle Medallions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152038",
+   "text": "infused glass staves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152039",
+   "text": "white chocolates",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152040",
+   "text": "elven fletchings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152041",
+   "text": "crystalline blackrocks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152042",
+   "text": "seed of the Silver Sapling",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152043",
+   "text": "seeds of the Silver Sapling",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152044",
+   "text": "rare serpent egg",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152045",
+   "text": "rare serpent eggs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152046",
+   "text": "dark wisp orbs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152047",
+   "text": "draconic orb",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152048",
+   "text": "draconic orbs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152049",
+   "text": "pirate bindin' ropes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152050",
+   "text": "Helms of Spirituality",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152051",
+   "text": "Gorget of Honesty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152052",
+   "text": "Gorgets of Honesty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152053",
+   "text": "Breastplate of Justice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152054",
+   "text": "Breastplates of Justice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152055",
+   "text": "Arms of Compassion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152056",
+   "text": "Legs of Honor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152057",
+   "text": "Sollerets of Sacrifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152058",
+   "text": "Void Crystals of Corrupted Arcane Essence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152059",
+   "text": "Void Crystals of Corrupted Spiritual Essence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152060",
+   "text": "Void Crystals of Corrupted Mystical Essence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152061",
+   "text": "small pieces of blackrock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152062",
+   "text": "completed clockwork assemblies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152063",
+   "text": "Night Terror Hearts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152064",
+   "text": "You cannot invite other players in an arena to your party!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152065",
+   "text": "This title is obtained from your valorous fights in arenas.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152066",
+   "text": "You have gotten a new overhead name title, ~1_VAL~, in reward for your duel!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152067",
+   "text": "You have gotten a new subtitle, ~1_VAL~, in reward for your duel!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152068",
+   "text": "Fledgling Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152069",
+   "text": "Budding Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152070",
+   "text": "Promising Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152071",
+   "text": "Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152072",
+   "text": "Well-known Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152073",
+   "text": "Veteran Gladiator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152074",
+   "text": "You have gotten a new overhead title, ~1_VAL~, and subtitle, ~2_VAL~, in reward for your duel!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152075",
+   "text": "This is a reward title given for your valorous fights in arenas.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152076",
+   "text": "You are captured by the jailor and returned to your cell.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152077",
+   "text": "TOOL CHARGES:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152078",
+   "text": "CHARGES NEEDED:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152079",
+   "text": "COMBINE TOOLS",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152080",
+   "text": "REFORGE ITEM",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152081",
+   "text": "Enchanted Hot Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152082",
+   "text": "(Escape from dungeon to remove spell)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152083",
+   "text": "The stolen item magically returns to the trunk where you found it.",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Knives.Chat3
 {
@@ -10,11 +11,17 @@ namespace Knives.Chat3
 		private string c_Text;
 		private bool c_Scroll;
 
+		private static string ResolveText( Mobile m, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( m.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
 		public InfoGump( Mobile m, int width, int height, string text, bool scroll ) : base( m, 100, 100 )
 		{
 			c_Width = width;
 			c_Height = height;
-			c_Text= text;
+			c_Text = ResolveText( m, text );
 			c_Scroll = scroll;
 
 			NewGump();

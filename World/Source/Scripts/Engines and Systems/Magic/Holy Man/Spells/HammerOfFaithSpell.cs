@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.HolyMan
 				Item weap = new HammerOfFaith( Caster );
 
 				Caster.AddToBackpack( weap );
-				Caster.SendMessage( "You create a magical hammer and place it in your backpack." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You create a magical hammer and place it in your backpack." ) );
 
 				Caster.PlaySound( 0x212 );
 				Caster.PlaySound( 0x206 );
@@ -99,7 +100,7 @@ namespace Server.Spells.HolyMan
 
 			public void Remove()
 			{
-				m_Owner.SendMessage( "Your hammer slowly disappears." );
+				m_Owner.SendMessage( StringCatalog.Resolve( m_Owner.Account, "Your hammer slowly disappears." ) );
 				BuffInfo.RemoveBuff( m_Owner, BuffIcon.HammerOfFaith );
 				Delete();
 			}

@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 4199, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -99,7 +99,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 8899, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -120,8 +120,8 @@ namespace Server.Items
 					string leather = "There are various types of hides you may acquire from skinning creatures throughout the land. Some leathers are listed on the next page, that a tailor can use. Hides can be obtained from skinning certain creatures by double clicking a bladed weapon and then selecting a corpse. These hides can then be cut with scissors and turned into leather. Then tanning tools can be used to craft various armor and bags.";
 					string bone = "There are various types of bones you may acquire from carving creatures throughout the land. Some bones are listed on the page after the next, that an undertaker can use. Bones can be obtained from carving certain creatures by double clicking a bladed weapon and then selecting a corpse. These bones can then be used by an undertaker kit to craft various types of armor.";
 
-					AddHtml( 122, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + leather + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 300, @"<BODY><BASEFONT Color=" + color + ">" + bone + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, leather ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 300, TradesBookLocalization.Body( m_Mobile, color, bone ), (bool)false, (bool)false);
 				}
 			}
 

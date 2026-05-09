@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
+using Server.Localization;
 using Server.Targeting;
 using Server.Gumps;
 using Server.Mobiles;
@@ -246,7 +247,7 @@ namespace Server.Engines.Harvest
 							if ( item is BlankScroll )
 							{
 								amount = Utility.RandomMinMax( amount, (int)(amount+(from.Skills[SkillName.Inscribe].Value/10)) );
-								from.SendMessage( "You find some blank scrolls.");
+								from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You find some blank scrolls." ) );
 							}
 
 							if ( from.Land == Land.IslesDread || ( reg.IsPartOf( "the Mines of Morinia" ) && item is BaseOre && Utility.RandomMinMax( 1, 3 ) > 1 ) )
@@ -297,7 +298,9 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You dig up {0} {1} ore.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
+								string amtWord = item.Amount < 2 ? StringCatalog.Resolve( from.Account, "some" ) ?? "some" : item.Amount.ToString();
+								string rn = CraftResources.GetDisplayNameLocalized( item.Resource, from.Account );
+								from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You dig up {0} {1} ore.", amtWord, rn ) );
 							}
 							else if (item is BaseGranite) // Mining
 							{
@@ -342,7 +345,9 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You dig up {0} {1} granite.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
+								string amtGranite = item.Amount < 2 ? StringCatalog.Resolve( from.Account, "some" ) ?? "some" : item.Amount.ToString();
+								string rnGranite = CraftResources.GetDisplayNameLocalized( item.Resource, from.Account );
+								from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You dig up {0} {1} granite.", amtGranite, rnGranite ) );
 							}
 							else if (item is BaseLog ) // Lumberjacking
 							{
@@ -375,7 +380,9 @@ namespace Server.Engines.Harvest
 									}
 								}
 
-								from.SendMessage( "You chop {0} {1} logs.", item.Amount < 2 ? "some" : item.Amount.ToString(), CraftResources.GetName(item.Resource) );
+								string amtLogs = item.Amount < 2 ? StringCatalog.Resolve( from.Account, "some" ) ?? "some" : item.Amount.ToString();
+								string rnLogs = CraftResources.GetDisplayNameLocalized( item.Resource, from.Account );
+								from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You chop {0} {1} logs.", amtLogs, rnLogs ) );
 							}
 							else if ( item is LesserCurePotion ) // Graverobbing - Mutation
 							{
@@ -408,7 +415,7 @@ namespace Server.Engines.Harvest
 						}
 						else if ( item is WritingBook || item is LoreBook || item is DDRelicBook || item is Spellbook || item is ArtifactManual )
 						{
-							from.SendMessage( "You find a book.");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You find a book." ) );
 							if ( item is DDRelicBook ){ item.CoinPrice = item.CoinPrice + Utility.RandomMinMax( 1, (int)(from.Skills[SkillName.Inscribe].Value*2) ); }
 							else if ( item is WritingBook ){ item.Name = "Book"; item.ItemID = RandomThings.GetRandomBookItemID(); }
 							else if ( item is Spellbook ){ item.Delete(); item = Spellbook.MagicBook(); }
@@ -422,7 +429,7 @@ namespace Server.Engines.Harvest
 							else if ( item is ParalyzeScroll ){ item.Delete(); item = Loot.RandomScroll( Utility.RandomMinMax(8,9) ); }
 							else if ( item is ExplosionScroll ){ item.Delete(); item = Loot.RandomScroll( Utility.RandomMinMax(10,12) ); }
 
-							from.SendMessage( "You find a scroll.");
+							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You find a scroll." ) );
 							if ( item is DDRelicScrolls ){ item.CoinPrice = item.CoinPrice + Utility.RandomMinMax( 1, (int)(from.Skills[SkillName.Inscribe].Value*2) ); }
 						}
 

@@ -1,0 +1,3006 @@
+{
+ "batch": 1,
+ "count": 500,
+ "entries": [
+  {
+   "number": "500021",
+   "text": "語法：.addres bank|world resourcetype (amount)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500023",
+   "text": "Bad sethue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500028",
+   "text": "無法開啟主機端寫入的 reslist.txt",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500029",
+   "text": "開啟主機端的 reslist.txt",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500037",
+   "text": "語法：become template_number",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500040",
+   "text": "GM模式開啟",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500041",
+   "text": "GM模式關閉",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500042",
+   "text": "語法：gm [on|off]",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500062",
+   "text": "語法：getplayers num x y z",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500066",
+   "text": "語法：multi_repos id x y z",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500068",
+   "text": "multi template id 錯誤",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500069",
+   "text": "語法：multi_nosend id value",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500071",
+   "text": "multi template id 錯誤",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500072",
+   "text": "語法：decay_test value",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500080",
+   "text": "受刑人未設定釋放地點，請使用 release",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500084",
+   "text": "很抱歉，此動作會將一位不具有 Gold 版本的玩家傳送到 Gold 版本的地圖內",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500087",
+   "text": "GM求助請求已輸入",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500095",
+   "text": "將請求通知GM",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500114",
+   "text": "你現在進入城鎮守衛的保護下，如果有需要你可以喊 'guards '呼叫守衛！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500121",
+   "text": "名聲下降，但 oneWay 阻止了它",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500122",
+   "text": "名聲提昇，但 oneWay 阻止了它",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500137",
+   "text": "呼叫IsMoveable.....",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500138",
+   "text": "mulitcomp，無法移動",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500140",
+   "text": "No Draw，No Go",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500144",
+   "text": "Tile Manager 核准，確定",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500145",
+   "text": "跌落到 IsMoveable 的底部，無法移動",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500146",
+   "text": "無法找到 Duplicate Id",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500148",
+   "text": "格式：set <target> <variable> <value>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500149",
+   "text": "變數：strength, dexterity, intelligence, maxhp, curhp, maxmana, curmana, maxfatigue, curfatigue, hue, notoriety, fame, karma, name, body, skill, location, naturalac, naturalwc, tithingpoints, race, sex",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500150",
+   "text": "格式：set <target> <variable> <value>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500151",
+   "text": "變數：strength, dexterity, intelligence, maxhp, curhp, maxmana, curmana, maxfatigue, curfatigue, hue, notoriety, fame, karma, name, body, skill, location, naturalac, naturalwc, tithingpoints, race, sex",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500154",
+   "text": "語法：set target location [x y|x y z]",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500155",
+   "text": "格式：set <target> skill <value>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500157",
+   "text": "格式：set <target> skillmod <value>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500159",
+   "text": "格式：query <target> <variable>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500160",
+   "text": "變數：strength, dexterity, intelligence, strengthmod, dexteritymod, intelligencemod, hunger, maxhp, curhp, maxmana, curmana, maxfatigue, curfatigue, luck, nightsight, reflectphysicaldamage, potionstrength, attackchance, defensechance, spelldamage, castrecovery, castspeed, manacost, reagentcost, swingspeed, damagemodifier, race, sex, resist <type> [max], notoriety, fame, karma, adjfame, adjkarma, body, skill <num>, skillval, skillmod, updaterange, creationtime",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500162",
+   "text": "格式：add <target> <variable> <value>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500163",
+   "text": "變數：strength，dexterity，intelligence，maxhp，curhp，maxmana，curmana，maxfatigue，curfatigue",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500183",
+   "text": "下一位有空的顧問或是GM將會盡快回覆",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500184",
+   "text": "下一位有空的GM將會盡快回覆",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500253",
+   "text": "max =",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500254",
+   "text": "rate =",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500255",
+   "text": "level =",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500256",
+   "text": "satisfaction =",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500259",
+   "text": "輸入要進行地形掃描的區域，以 (x,y) (x,y) 格式進行：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500303",
+   "text": "藥水上並沒有寫著 'power' objVar。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500305",
+   "text": "藥水上並沒有寫著 'modifier' objVar。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500319",
+   "text": "你的罪行已經被赦免了。-- Lord British .",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500320",
+   "text": "原諒不良的行為！ --Lord Blackthorn",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500337",
+   "text": "Targetobj called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500340",
+   "text": "Targetloc called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500370",
+   "text": "請輸入你所投的票上的意見，然後按 ENTER，當全部完成後按 ESC",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500371",
+   "text": "投票 zeroed out。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500377",
+   "text": "下一行或是按 ESC 結束：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500383",
+   "text": "你必須擁有至少 5000 gp才能夠換成支票",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500525",
+   "text": "你因為名聲過低而不能將罪行向 Lord British 的守衛報告",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500527",
+   "text": "你因為名聲過低而不能將罪行向 Lord British 的守衛報告",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500528",
+   "text": "被害人沒有 lastCriminal 紀錄",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500575",
+   "text": "以 (x,y) (x,y) 格式輸入要進行地形掃描的區域：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500581",
+   "text": "輸入目標高度，以 (a，b) 格式輸入一 +/- 值作為亂數產生用：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500604",
+   "text": "~1_name~ 完全的錯過了目標",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500644",
+   "text": "要到你的盾牌，詢問任何一位屬於 Lord Blackthorn 的守衛。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500745",
+   "text": "如果你要退出陣營你可以喊 'I resign from my faction'",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500793",
+   "text": "找到 floortile 已經存在",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500797",
+   "text": "在 Help and Guidance / Playguide / Counselors. 下",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500798",
+   "text": "輸入 OBJ_NUM, (X, Y) (X, Y)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500809",
+   "text": "transTo 並無法使用",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500812",
+   "text": "說 'x1 y1 x2 y2' 來使用他",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500849",
+   "text": "*hxxx*",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500928",
+   "text": "這是一個 GM 專用的工具",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500930",
+   "text": "這是一個 GM 專用的工具",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500936",
+   "text": "這是一個 GM 專用的工具",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500938",
+   "text": "這是一個 GM 專用的工具",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500942",
+   "text": "LOP",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "500983",
+   "text": "fixme 現在應該已經對所有玩家執行過了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500984",
+   "text": "發現 floortile 已經呈現",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "500999",
+   "text": "inside targetobj",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501008",
+   "text": "Targetobj called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501011",
+   "text": "Targetloc called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501018",
+   "text": "發送此 wobble llama oss 清單",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501067",
+   "text": "發送訊息給 vol",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501069",
+   "text": "來源是UO Gold",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501070",
+   "text": "來源不是UO Gold",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501071",
+   "text": "目的地是UO Gold",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501072",
+   "text": "目的地不是UO Gold",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501127",
+   "text": "CORPSE BAD (flobbitz)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501128",
+   "text": "CORPSE OK (flobbitz)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501129",
+   "text": "[guarded]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501130",
+   "text": "[guarded]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501132",
+   "text": "你無法傳送本工會石，它是被一位IGM所設置的",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501134",
+   "text": "身為 virtual guilds 的成員必須顯示他們的陣營",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501136",
+   "text": "Lord British 宣告當房屋提領措施完成後才能夠建立新的工會",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501234",
+   "text": "下一位有空的顧問或是GM將會盡快回覆，請每隔幾分鐘就查看你的日誌",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501270",
+   "text": "Lord British 宣佈了禁建措施，因此你現在無法造屋.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501398",
+   "text": "輸入 checkInteriorDoor",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501491",
+   "text": "執行doScavenge ()",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501567",
+   "text": "REL WIS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501572",
+   "text": "pointPlayerToLocation called：1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "501667",
+   "text": "已輸入 interior lockable door loop。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501686",
+   "text": "已輸入 else for tryInteriordoor",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501687",
+   "text": "tryInteriorDoor，成功",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501692",
+   "text": "歡迎來到 Abyss shard，要查看你目前被紀錄多少殺人點數請說 'How many kill points have I'",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501723",
+   "text": "你的房屋報告有 0 樣物品被鎖定了，請到 http://www.uo.com/mailBug.html 報告這個臭蟲",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501725",
+   "text": "你的房屋報告有 0 樣保管物品了，請到 http://www.uo.com/mailBug.html 報告這個臭蟲",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501768",
+   "text": "如日升般開始並隨時間移動，當元素放置時詳加思考，命令的缺乏將帶來 Relvinian 的禍根。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501826",
+   "text": "假人正呼叫 pointPlayerToLocation",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501842",
+   "text": "傳送 slaveObj 失敗",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501870",
+   "text": "暫存 objvar遺失！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501920",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501921",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501922",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501923",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501924",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501925",
+   "text": "你必須具備一個巫術蠟燭 ( necromantic candle ) 才能夠施展該法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501927",
+   "text": "選擇任何其他標示為 NEW PLAYER 的票卷來對獎",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501931",
+   "text": "你必須找另一張標示為 NEW PLAYER 的票卷",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501938",
+   "text": "你不能同時設定 shadowform 與 nightform！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "501968",
+   "text": "要拿取屬於你的盾牌，詢問任一位 Lord British 的守衛",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502001",
+   "text": "沒找到 myBoss 列表變數",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502084",
+   "text": "開啟瀏覽器以獲得更多有關 Siege Perilous 的資料...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502282",
+   "text": "無法在任務蛋附近找到 NPC，取消",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502287",
+   "text": "已輸入 completeQuest",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502288",
+   "text": "移除 questEggId 中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502289",
+   "text": "pointPlayerToLocation called：1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502291",
+   "text": "已輸入 pickEggLocation",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502292",
+   "text": "呼叫 initQuestLocation",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502293",
+   "text": "自 initQuestLocation 回來",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502294",
+   "text": "設定 questLocation objVar",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502295",
+   "text": "questLocation objVar 設定",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502296",
+   "text": "傳回foo",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502297",
+   "text": "呼叫 pickEggLocation",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502299",
+   "text": "已輸入 function doQuestReward",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502300",
+   "text": "pointPlayerToLocation called：0",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502302",
+   "text": "已輸入 hasOngoingQuest",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502303",
+   "text": "questSender 與本 NPC 不符合",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502304",
+   "text": "玩家依舊有 questEggID",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502305",
+   "text": "已輸入 function giveReturnMessage",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502313",
+   "text": "呼叫 configureSender 中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502314",
+   "text": "完成 configureSender",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502316",
+   "text": "呼叫 layEgg",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502317",
+   "text": "完成 layEgg",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502318",
+   "text": "pointPlayerToLocation called：1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502320",
+   "text": "questEggID 家給你",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502321",
+   "text": "啟動器進入範圍啟用 (quest_egg.wxx)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502322",
+   "text": "沒有找到 questEggID objvar",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502323",
+   "text": "questEggID 與這個並不相同！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502325",
+   "text": "已輸入 function activateEgg ()",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502327",
+   "text": "creatingGlobalNPC",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502328",
+   "text": "creatingGlobalObjectAt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502329",
+   "text": "Deleting nodraw。",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502332",
+   "text": "玩家無法看見 Quest Sender.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502333",
+   "text": "呼叫 hasOngoingQuest 中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502336",
+   "text": "已輸入 enterrange trigger",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502338",
+   "text": "QuestEgg failed to recognize quester！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502339",
+   "text": "QuestEgg doesn't have ObjListVar questInfodump！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502340",
+   "text": "開啟Generic QuestInfoDump gump",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502341",
+   "text": "呼叫 completeQuest 中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502430",
+   "text": "CALLBACK_TRAP_STOP_ANIM",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502463",
+   "text": "你不能同時進行 nightformed 與 shadowform！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502520",
+   "text": "啊r，水流太亂無法轉彎，長官！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502631",
+   "text": "臭蟲！請報告：Invalid takeReagent return.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502652",
+   "text": "CALLBACK_TRAP_STOP_ANIM",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502663",
+   "text": "Targetobj called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502666",
+   "text": "Targetloc called",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "502679",
+   "text": "很好，你的寵物已經被寄放了。如果你要領回，可以對我說 'claim'。在真實世界的一週後，如果你沒有向我領回，我將會將它賣掉！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502680",
+   "text": "Stat (s) 修正",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502882",
+   "text": "因為你的背包內沒有空間放置，因此你所擁有一個物品被保存在此。要領回它，只要雙擊票卷桶並選擇 OPTIONS 下的 'Return held items to me'",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502885",
+   "text": "以 (x,y) (x,y) 格式輸入要進行地形掃描的區域：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502889",
+   "text": "以 (x,y) (x,y) 格式輸入要進行地形掃描的區域：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502893",
+   "text": "以 (x,y) (x,y) 格式輸入要進行地形掃描的區域：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "502897",
+   "text": "以 (x,y) (x,y) 格式輸入要進行地形掃描的區域：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503197",
+   "text": "要購買物品，就說 'vendor buy'",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503222",
+   "text": "選擇另一個要買的物品，或是按下 Esc 離開",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503247",
+   "text": "putMobInContainer 失效",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503249",
+   "text": "Lord British 已經公告在未來通知之前都不能夠設置任何小販",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503265",
+   "text": "身為 virtual guilds 的成員必須顯示他們的陣營",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503270",
+   "text": "錯誤：你不能以此標定怪物/NPCs/自願者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503291",
+   "text": "當你有新手得幫助時你不能使用本指令，先使用 'releasenewbie' 指令",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503310",
+   "text": "你只能夠轉移玩家，NPCs，怪獸或是屍體",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503333",
+   "text": "使用 `helpnewbie' 命令來幫助他們",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503364",
+   "text": "首領 Comp 只能夠貶損 Comps 及 Comps 長者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503365",
+   "text": "Comp 長者無法貶損指導員長者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503371",
+   "text": "Ivalid 自願者類型，設定至 1。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "503380",
+   "text": "請與 GameMaster 聯絡，讓他們知道這裡有臭蟲",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000000",
+   "text": "<BASEFONT COLOR=#DFDFC0><DIV ALIGN=RIGHT>下一頁",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000001",
+   "text": "<BASEFONT COLOR=#DFDFC0>上一步",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000002",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>歡迎進入網路創世紀指導課程。這些視窗將會指引你如何進行網路創世紀的遊戲，你可以使用右邊的捲軸來上下觀看這份文件，當你準備就緒，請點選<B>下一步</B> 。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000003",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在，你將會學到如何發言。首先，請在鍵盤輸入<B>Hello</B>，看到在你的視窗左下角所出現的字了嗎？在遊戲中，你將可以在這個地方看到你所打出的文字，而當你按下了 Enter 鍵之後，，這段文字將會使在你周圍的玩家都可以看得到，現在請按下<B> Enter </B>鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000004",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>當你按下了<b> Enter </b>鍵，你剛才所輸入的文字將會出現在你角色的頭頂上，這可以使其他的玩家知道是你正在說話。同樣的道理，當你看到在其他玩家的頭上出現了文字，你也應該能夠理解那便是那位玩家正在說的話。現在，你將學習如何在這個世界裡移動。首先在你的角色四周移動你的游標，看到游標的型態有改變嗎？這將會顯示出你行走時的方向，持續按下你的滑鼠右鍵將會使你的角色開始移動，現在把游標移動到你的角色旁邊並按一下你的滑鼠右鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000005",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>做得好！你剛才已經完成了以按下滑鼠右鍵來使你的角色移動的動作，現在請你用剛才學到的走路方式來跟隨著藍色的足跡行走，請依照這些足跡行走。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000006",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>非常好！現在將要指導你以<B>Pathfind</B>的方式來行走。是一種自動行走的模式，這種模式將會使你自動繞開障礙物而到達你所指定的地點，這種模式將會在你雙擊滑鼠右鍵之後自動啟動。現在請將游標移動到<B>紅色</B>目標物上，並且雙擊你的滑鼠右鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000007",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你是否看到角色避開了沿路上的障礙物而自動行走？這就是所謂的<B>Pathfinding</B>。藉由雙擊你的滑鼠右鍵來啟動，當你啟動了這種模式時，你的角色會開始移動，並且會在你角色的頭頂上出現 Pathfinding 字樣。請順著著個走廊中的紅色足跡以此方式行走。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000008",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將學習如何<B>跑步</B>。要在遊戲中跑步，按下滑鼠右鍵並持續按著，並且將游標從距離你角色很近的地方移動到視窗的邊緣。這將會使你的角色順著你游標的方向開始跑了起來。你也可以用這種操作方式來使你的角色持續行走的動作，只需要將游標移動到靠近你角色的任何方向即可。請沿著藍色足跡跑過這個走廊。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000009",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你做得太棒了！現在請順著藍色足跡行走。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000010",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將會在螢幕上看到一對金屬門，走過去並且儘可能的靠近門。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000011",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你現在正站在門邊，請走到門的正前方。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000012",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將學習如何來<B>使用</B>一項物品。在滑鼠上雙擊滑鼠的左鍵將可以使用一項物品。在門上雙擊滑鼠左鍵將可以打開一扇門、在食物上雙擊滑鼠左鍵將可以吃掉該項食物。現在試著去打開在你面前得那扇門吧。移動你的滑鼠到其中一扇門上，並且在門上雙擊你的滑鼠左鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000013",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>帥呆了！你是否已經注意到當你<B>使用</B>這扇門時，他便順利開啟了呢？現在請走進下一個房間。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000014",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將要學習關於所操控的聖者。聖者是你在遊戲中的代表，你將會<B>使用</B>你的聖者來開啟<B>紙娃娃</B>。要完成這個動作，將游標放在你自己身上並雙擊滑鼠左鍵，這將會開啟一個大一點、代表你聖者的人物像，我們稱他為紙娃娃。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000015",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這就是你的紙娃娃。他將會顯示出你目前所穿的衣服及所佩帶的物件。在你紙娃娃右手邊的一些按鈕都是非常重要的。最上方的按鈕<B>Help</B>將會幫你向我們的遊戲中的支援人員提出支援申請，你可以在當你在遊戲中被卡住、或是有任何遊戲中的問題時按下這一個選項。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000016",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>下面一個按鈕是<B>Options</B>。這個按鈕將可以讓你更改一些遊戲中的設定，例如畫面的解析度和文字的顏色。<B>Logout</B>按鈕將會允許你離開網路創世紀中的世界。<B>Skills</B>鈕則可以讓你看到關於角色所有能力值的詳細列表。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000017",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER><B>Journal</B>將會開啟一個錄下最近的談話及動作的紀錄日誌。<B>Chat</B>按鈕將會代你進入一個可以讓你與其他玩家對話的遊戲中聊天室。<B>Peace</B>按鈕將可以讓你進入攻擊怪獸的戰鬥模式。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000018",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>最後，<B>Status</B>按鈕將會提供關於聖者的屬性，在我們提到這部分之前，先讓我們來學習關於<B>背包</B>的部分。你的背包位於紙娃娃中的右下角。這就是存放你所有未穿上或佩帶物品的地方。當你使用它時便會打開。現在請你移動你的游標到背包上並雙擊你的滑鼠左鍵來打開它。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000019",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>酷斃了！這就是你的背包。這就是你在網路創世紀的冒險中將會存放物品並隨時可以拿取的地方。在你背包裡的是一根香蕉，我們將要教你與更多物品產生一些互動。單擊滑鼠左鍵以<B>檢視</B>世界中的一項物品。當你做了這個動作之後將會在物品的上方出現一段這個物品的敘述。移動滑鼠游標到這根香蕉上並單擊滑鼠左鍵來看這一根香蕉。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000020",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看到物品上的敘述了嗎？你可以用單擊滑鼠左鍵的方式來觀看這個世界裡的任何物品。按住滑鼠左鍵不放將可以拿起一項物品。你可以拖曳這項物品到四周。當你按住不放時，這項物品將會定在你的滑鼠游標末端。將游標移到香蕉上面，按下滑鼠左鍵並且不要放開將可以拿起你的香蕉。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000021",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>太棒了！你已經拿起你的香蕉了。現在移動一下滑鼠，看到香蕉隨著你滑鼠的移動而跟著移動了嗎？這就是你在網路創世紀中<B>移動</B>物品的方法。把滑鼠游標移到背包裡並放開滑鼠左鍵，樣就能放開這一根香蕉。現在把香蕉放回到你的背包中。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000022",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看來你把香蕉丟到地上去了，我已經幫你移到背包裡了。你可以像在真實世界中<B>使用</B>物品一般地使用遊戲中的物品。舉例來說，雙擊香蕉就可以<B>吃</B>掉他。現在請吃掉香蕉。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000023",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這就是你在網路創世紀中<B>移動</B>物品的方法。你可以像在真實世界中<B>使用</B>物品一般地使用遊戲中的物品。舉例來說，雙擊香蕉就可以<B>吃</B>掉他。現在請吃掉香蕉。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000024",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>真是美味啊！你已經吃掉了香蕉了。現在在你的背包中有一頂藍色的帽子。衣服及許多其他的物品都是可以穿戴並脫下的，要完成這樣的動作只需要撿起並拖曳你所要穿戴的配備到你的紙娃娃上面。首先，請先撿起你的帽子。將游標移到該項物品上面、按住滑鼠左鍵不放，這樣就可以檢起這頂帽子。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000025",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你已經握住了帽子。小心一點.. 不要放開滑鼠。拖曳你的滑鼠到你的紙娃娃的頭上並放開滑鼠左鍵，這將會使帽子<B>裝備</B>在你的頭上。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000026",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>喔喔.. ，看來你不小心把帽子掉在地上了。請試著再把它撿起來一次。將游標移到帽子上，按住滑鼠左鍵不放就可以完成這個動作。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000027",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>很好！你已經<B>裝備</B>了這頂帽子。看到了在你紙娃娃上和你聖者上有相同的裝扮了嗎？你可以用相同的方式來裝備衣服、武器、以及盔甲。現在我們來學習如何脫下這頂帽子。將游標移到你紙娃娃裡的帽子上，按下滑鼠左鍵並開始拖曳，然後放開滑鼠。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000028",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你又再一次抓住了帽子，將它放回你的背包裡。將帽子拖曳到你的背包之後放開滑鼠左鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000029",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看來你放的過程並不正確，我已經幫你把帽子放到你的背包中了。現在你已經知道如何使用及處理這個世界中的物品了。接下來我將要多告訴你一些關於移動遊戲中視窗的知識。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000030",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>做得好。現在你已經知道如何使用及處理這個世界中的物品了。接下來我將要多告訴你一些關於移動遊戲中視窗的知識。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000031",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>首先，看到你紙娃娃中的右下角。<B>-</B> 這是<B>最小化</B>這個紙娃娃視窗的按鈕。這樣的最小化按鈕將會出現在所有出現在網路創世紀的視窗之中以滑鼠左鍵單擊此按鈕，該視窗將會更方便的最小化。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000032",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看到紙娃娃視窗最小化進了主視窗並且變成了<B>條狀</B>了嗎？這就是紙娃娃視窗的最小化模式，它能讓你藉由按下滑鼠左鍵並拖曳來移動它，而雙擊這個顯示 Character 的條狀棒就能將它最大化視窗。現在請雙擊它。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000033",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在我們將要交你如何<B>關閉</B>一個視窗。在視窗上單擊滑鼠右鍵就能關閉它。現在請在紙娃娃視窗中按下滑鼠右鍵來關閉它。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000034",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>以滑鼠左鍵雙擊你的聖者圖像就能再度打開你的紙娃娃視窗。現在你已經知道如何移動、最大化、最小化、及關閉所有可以讓你運用的視窗了。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000035",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將要運用我們先前所學到的部分。在這間房子內的是<B>月之門</B>。月之門是一個可以將你傳送到另外一個新地點的魔法通道。月之門在一個有八扇門的小房間裡面，穿過這些門並<B>使用</B>他們。 (提示：雙擊門可以打開它們) 在你開啟這些門之後，走進去月之門裡。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000036",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將要學習更多關於你聖者的常識。將游標移到你的聖者身上。現在請單擊滑鼠左鍵並持續按住它，並將游標從你的角色身上慢慢拖曳出來。當你完成了這個動作之後點選下一步以完成。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000037",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這就是你的<B>狀態</B>條狀圖示。這代表了你聖者的人物狀況。這裡顯示出了三個主要狀況。第一個、同時也是最重要的一項是最上方的條狀， 表示你聖者的<B>生命點數</B>，生命點數代表你角色的健康狀態。你的生命點數將會因為你的受傷而減少，而當你的生命點數一旦減少，這一條狀態圖示將會由原本整條都是藍色開始轉為紅色。我將會讓你知道它看起來是長得什麼樣子。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000038",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>我已經先把你的生命點數降到剩下一半。看到原本整條都是藍色的狀態圖示變成有一半是紅色了嗎？你其他的狀態圖示都和原來一樣沒有變化。生命點數將會隨著時間流逝而自然地慢慢恢復。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000039",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你的另一項狀態圖示為中間的條狀，這代表了<B>魔法值</B>。魔法值代表你的角色所儲存的魔法能量。施展魔法將會減少你所儲存的魔法值。魔法值將會隨著時間流逝而自然地慢慢恢復。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000040",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>最後一項狀態為最下方條狀，表示你目前的<B>精力</B>。精力條狀代表了你的角色的疲累狀況。跑步、戰鬥、以及其他的精力付出活動都會減低你的精力。小心不要讓你的精力值降低到 0 ，否則將會嚴重阻礙到你的任何行動。精力將會在你停止活動之後隨著時間流逝而自然地慢慢恢復。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000041",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在我們將要更詳細地觀看你的狀態圖示。狀態棒狀圖示可以在你雙擊滑鼠左鍵之後最大化。將游標移到狀態圖示棒上並雙擊滑鼠左鍵。當完成時點選下一步。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000042",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這是你的角色更詳細狀態視窗。它將會以數值方式顯示你的精力值、魔法值、及生命值，而且還包括其他的屬性。首先看到的屬性是<B>STR</B>，這代表你的<B>力量</B>。力量是評估你聖者的強壯程度及耐不耐打的指標。你的力量越高，你就擁有越多的生命點數，你也就有更多肉搏上的優越性。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000043",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>下一項屬性是<B>Dex</B>，這是<B>敏捷</B>。敏捷屬性代表你的聖者有多敏捷與行動快速。如果你的敏捷屬性非常高，你將可以對敵人進行兩次的攻擊，並且能展現快速的物理活動能力。敏捷屬性將會同時影響了你所擁有的精力值。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000044",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>最後一項屬性是<B>INT</B>。這是你聖者的<B>智力</B>。智力代表了你的角色有多聰明。一個有高智力的角色將可以在心靈活動上表現得相當傑出。智慧會同時影響了你所擁有的魔法值。 點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000045",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>接下來，<B>SEX</B>顯示你的聖者是男性或女性。在下面是<B>AR</B>。AR 代表了你角色的武裝程度。AR 代表了你的裝甲可以保護你聖者的程度。數值越高，就越能保護你的聖者減少所受到的傷害。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000046",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>接下來是一連串的數值代表生命值、精力值、及魔法值。再下面是<B>GP</B>這裡可以告訴你你的角色帶了多少錢在身上。下面是<B>重量</B>。重量顯示出你帶了多重的東西在身上。你的聖者帶了越重的物品，當你進行一般物理性動作時，他們要消耗的精力值就會花的越多。若你攜帶了超重的物品，你的聖者將會無法正常行動。 點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000047",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你已經對你的聖者有更多的認識了，以單擊滑鼠右鍵關閉狀態視窗。現在請隨著紅色的足跡到下一個區域。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000048",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>繼續跟隨著足跡到另外一個房間，在裡頭你將會看到許多人物。這些都是 NPC。NPC就是由電腦來控制的非玩家聖者。現在這些NPC是<B>Shopkeepers</B>。Shopkeepers 將會與玩家進行買賣交易。走過去並站在NPC身旁。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000049",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>NPC和玩家一樣也有紙娃娃。要打開NPC的紙娃娃，將游標移到NPC的身上並且雙擊你的滑鼠左鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000050",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>NPC的紙娃娃上顯示了關於這個NPC的資料。NPC的穿著裝扮就如同他的姓名和職業一般。NPC的<B>狀態</B>圖示也可以從紙娃娃中被打開。按下滑鼠右鍵以關閉NPC的紙娃娃。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000051",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在你將要學習如何與NPC進行買賣交易。NPC會回應你所說的話，就像其他的真實玩家一樣。我已經給你一些錢了。金錢，就像你其他的東西一樣，都被存放在你的背包之中。雙擊你的聖者來打開你的紙娃娃。接下來雙擊你的背包來打開它。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000052",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在關閉你的紙娃娃。 (提示：在你的紙娃娃上單擊滑鼠右鍵) 你的背包將仍然會是開啟的。你將會在背包中看到一些<B>Gold</B>。以滑鼠左鍵單擊這些金錢將會顯示出數量。你現在擁有 10 單位的金錢。你將要利用這些金錢去跟店主購買一些東西。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000053",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>要跟NPC購買你想要買的物品的話，你必須輸入<B>Vendor Buy</B>。輸入這些字並按下Enter鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000054",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這就是<B>購物</B>視窗。這就是你在商店中可以選擇購買物品的地方。買一條麵包。在購物視窗上面部分麵包的描述裡雙擊滑鼠左鍵即可完成此動作。在視窗的上方部分顯示出物品的名稱、價格、及存貨，而在下方部分則顯示出你所選擇的物品種類及總共的金額。買一條麵包，在購物視窗上面部分<B>麵包</B>的描述裡雙擊滑鼠左鍵即可完成此動作。完成後點選下一步。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000055",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>麵包的存貨數量已經減少了一個。一條麵包已經被放置在購物視窗的下面部分，你可以藉由視窗下面部分加號<B>+</B>或減號<B>-</B>更改購買的數量。在該視窗左下角紅色確認圓框中單擊滑鼠左鍵來完成此項動作。完成後點選下一步。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000056",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>做得好極了！現在你已經有一條麵包在你的背包中了，但你窮到只剩 4 單位的金錢了。你也可以將物品賣給 NPC，他們將不會付給你購買時同等的價值。我們將要把這一條麵包賣還給 NPC。輸入<B>Vendor Sell</B>並按下Enter鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000057",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER><B>銷售</B>視窗安排的方式和購買視窗完全一樣，但<B>你</B>的擁有物將會取代店主的擁有物而出現在視窗上方。在麵包的描述上雙擊滑鼠左鍵。它將會出現在該視窗的下方。注意到NPC將付給你的金錢大約只有你購買時的一半金額。現在請以滑鼠左鍵在確認核對中單擊打勾以結束此項交易。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000058",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你已經賣出了麵包。正確的金額已經被放置在你的背包之中。現在你已經熟悉了從NPC那裡進行買賣交易的程序。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000059",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在請跟隨著藍色的足跡。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000060",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這些生物是<B>Mongbats</B>。Mongbats是不列顛尼亞中的邪惡怪物。怪物就像NPC一樣，但它們沒有紙娃娃，他們只有簡單的狀態圖示條。左擊鍵並持續按住怪物拖曳滑鼠以開啟怪物的狀態圖示條。完成後點選下一步。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000061",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這就是怪物的狀態圖示條，它顯示了怪物現在的生命點數。就像是你的生命點數一樣，它將會隨著怪物越接近死亡而轉趨變成紅色。當生命點數完全變成紅色，怪物就會死亡。現在打開你自己的狀態條狀圖示。以滑鼠左鍵在你的聖者身上按下並拖曳滑鼠。完成後點選下一步。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000062",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在我們要開始學習如何進入<B>戰鬥</B>模式。戰鬥模式將會允許你開始攻擊怪物及其他玩家。按下<B>ALT-C</B>。看到了你的狀態條狀圖示轉變成紅色、而且你的聖者改變了站立姿勢嗎？這就是<B>戰鬥</B>模式，而這就顯示了你已經準備好將要進行戰鬥了。多試試幾次進入及退出戰鬥模式。點選下一步以繼續。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000063",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>首先你必須先裝備好武器。打開你的紙娃娃 (滑鼠左鍵雙擊你的聖者) ，並且打開你的背包 (滑鼠左鍵雙擊你的背包) 。你將會發現有一把劍在你的背包裡，撿起劍並以滑鼠左鍵拖曳出這把劍。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000064",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>作得好！你已經撿起了這把劍。將它拖曳到你的紙娃娃中並放開滑鼠左鍵。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000065",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看來你並沒有正確地做到這個步驟。我已經將你的劍放回你的背包中。左擊並拖曳這把劍到你的紙娃娃中。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000066",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你的武器已經裝配好了。單擊滑鼠右鍵關閉你的紙娃娃及背包。現在你已經做好準備要<B>攻擊</B>怪物了，進入戰鬥模式。按下<B>ALT-C</B>直到你看到你的角色做出了攻擊姿勢。在怪物身上單擊滑鼠左鍵並拖曳出它的條狀狀態圖示。把聖者移動到怪物旁邊並且開始攻擊它。在戰鬥模式中<B>使用</B>它並雙擊怪物即可開始攻擊他。現在就開始行動。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000067",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>你現在正在<B>攻擊</B>怪物。你將會持續攻擊的動作直到它死亡為止。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000068",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>做得棒透了！你已經殺死了這個怪物，現在我們來<B>使用</B>這個屍體，這將會使你可以從怪物身上拿取一些戰利品。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000069",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>以滑鼠左鍵雙擊怪物的屍體。這是怪物的屍體。在裡面可能是怪物生前帶在身上的任何裝備。在這個例子中，怪物擁有一個水晶球。以左鍵單擊滑鼠並拖曳出這個水晶球。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000070",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>現在把水晶球直接拖曳到你的聖者身上並放開滑鼠左鍵。這將使你直接拿起物品而不必打開你的背包，當你放開了滑鼠左鍵之後，物品將會直接進入你的背包中。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000071",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>看來你並沒有完成此項動作。我已經幫你把水晶球放回怪物的屍體中。現在把水晶球直接拖曳到你的聖者身上。這將使你直接從這個世界中拿起物品而不必打開你的背包，當你放開了滑鼠左鍵之後，物品將會直接進入你的背包中。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000072",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>恭喜！你現在已經知道了如何去殺怪獸並奪取他們的財物了，繼續隨著藍色足跡行進。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000073",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>繼續跟隨著藍色足跡到下一個房間。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000074",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>這個紅色的月之門將會帶你到哈文鎮。哈文鎮是一個讓你繼續學習的城市。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000075",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>走進這個紅色的月之門將會把你傳送到不列顛尼亞上獨一無二的一個城鎮。這個叫做哈文的城鎮是使新玩家熟悉這個世界的跳板。這個城鎮不只是在技能學習上是安全的，就連與網路創世紀中的其他人互動也都是安全無虞的。哈文鎮中有許多資深的玩家可以供你詢問你所關心的任何問題。請確定你在哈文鎮中不會待上太短的時間，因為在正式踏上不列顛尼亞之前，你在這裡所學得的知識將會相當珍貴。當你準備好了就可以走進紅色的月之門。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1000076",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>走進這個紅色的月之門將回到你開始的城鎮，你可以繼續不列顛尼亞的冒險旅程。</CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001000",
+   "text": "抱歉，但是GM現在無法協助你，我們已經將你的請求轉交至顧問。假如顧問沒有回應你，請將瀏覽 http://uo.custhelp.com/ 找尋問題的解答，或是將你的問題以電子郵件告訴我們。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001001",
+   "text": "有關於GM能協助的時間方面更詳細資料，請瀏覽 http://uo.custhelp.com/ 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001002",
+   "text": "<CENTER><U>《網路創世紀》求助選單</U></CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001003",
+   "text": "<U>關於《網路創世紀》的一般問題</U>：假如你在學習使用技能上遇到困難、假如你迷失了或假如你有一般遊戲進行問題，請點選此選項。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001004",
+   "text": "<U>我的人物遭到停止或無法繼續執行</U>：此選項包含如當你的人物身限於某個區域無法移動的狀況。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001005",
+   "text": "<U>另一位玩家正在騷擾我</U>：另一名玩家以言語或行為騷擾你的人物，或有任何違反服務條款的行為。欲檢視構成騷擾的行為，請參考 <A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=45&p_created=975447441&p_sid=hayiH6Ei&p_lva=&p_sp=cF9zcmNoPTEmcF9zb3J0X2J5PSZwX2dyaWRzb3J0PSZwX3Jvd19jbnQ9MjMmcF9wcm9kcz03LDc2OSZwX2NhdHM9MCZwX3B2PTIuNzY5JnBfY3Y9JnBfcGFnZT0xJnBfc2VhcmNoX3RleHQ9aGFyYXNzbWVudA**&p_li=&p_topview=1\">我如何投訴在《網路創世紀》中騷擾我的人？</A>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001006",
+   "text": "<U>其他</U>：假如你於遊戲中發生的問題不在此說明項目或是支援網站 (<A HREF=\"http://uo.custhelp.com/\">http://uo.custhelp.com/</A>)， 需要遊戲中顧問的協助，請使用此選項。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001007",
+   "text": "假如你於此列表中找不到你的問題，請瀏覽我們的網站 <A HREF=\"http://uo.custhelp.com/\">http://uo.custhelp.com/</A> 以取得其他相關資料及如何與客戶服務部門的詳細聯絡方法。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001008",
+   "text": "<U>瀏覽《網路創世紀》網站</U>：你可以於我們的網站找到許多最常見問題的詳細解答。此區域將啟動你的瀏覽器並進入此回答網頁。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001009",
+   "text": "<U>回報程式臭蟲</U>：使用此選項將啟動你的瀏覽器並以郵件回報程式臭蟲。我們的QA部門人員將仔細閱讀你的回報。很抱歉，我們將不會一一回覆你的回報。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001010",
+   "text": "<U>聯絡顧問</U>：顧問為網路創世紀的老玩家，並自願花費自己的時間以回答玩家的一般問題。選擇此選項將幫助你傳送郵件給顧問。請切記顧問為自願性質，同時並非隨時上線，所以希望你能耐心等候其回信並時常檢視網站資料是否有更新。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001011",
+   "text": "<U>回到第一頁。</U>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001012",
+   "text": "<U>請再次確定你已經做過以下努力無效後，再繼續</U>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001013",
+   "text": "你要投訴《網路創世紀》中有其他玩家騷擾你。如果你傳送此頁，我們的客服人員將會檢視你的紀錄檔，同時你會經由電子郵件收到有關你投訴狀況的處理狀況。請確定你登錄的電子郵件是正確的。我們於網站上有關於騷擾的詳細說明：<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=45&p_created=975447441&p_sid=hayiH6Ei&p_lva=&p_sp=cF9zcmNoPTEmcF9zb3J0X2J5PSZwX2dyaWRzb3J0PSZwX3Jvd19jbnQ9MjMmcF9wcm9kcz03LDc2OSZwX2NhdHM9MCZwX3B2PTIuNzY5JnBfY3Y9JnBfcGFnZT0xJnBfc2VhcmNoX3RleHQ9aGFyYXNzbWVudA**&p_li=&p_topview=1\">瀏覽網站</A><br><br><U><CENTER>請確定你已做過以下努力但無效後再繼續：</CENTER></U><BR> 1. 你已經要求該名玩家停止該行為，但是對方仍相應不理。 <BR> 2. 你已經盡可能脫離該狀況。 <BR> 3. 你並未進行任何挑釁或助長此騷擾動作的鼓勵行為。 <BR> 4. 你已經仔細閱讀並瞭解 Origin 對於騷擾行為所下的定義。 <BR> 你是否要繼續此請求？<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001014",
+   "text": "是 - 我要傳送此騷擾記錄給GM。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1001016",
+   "text": "你的帳號目前處於新玩家狀態。如果你希望留在米納克斯控制的戰爭肆虐之地，你必須放棄新玩家狀態。如果你不希望放棄你的新玩家狀態，選擇「取消」你將會自動被傳送至 Lord British 的領地。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002013",
+   "text": "要為你的寵物命名，你將需要以滑鼠左鍵在動物身上點選並且拖曳，這將會拖曳出一條附有動物名稱的狀態條。只要單擊狀態條中動物的名稱部分並且以“Backspace”鍵刪除目前的動物名稱。一旦目前的動物名稱被刪除，你就可以輸入任何你想為你的寵物命名的新名字。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002014",
+   "text": "你將可以對你的寵物下達命令。如果你的寵物對你仍然是忠誠的，牠將會聽從你所下達的命令。所有的命令下達的方式是先叫出你的寵物名字，隨後打出你的命令。舉例來說，“Spot stay”。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002015",
+   "text": "Attack：這個指令將可以用來命令你的寵物攻擊其他生物。當你打出這個命令時將會出現一個選取游標，接著選擇你所希望攻擊的生物，如果你的寵物對你忠誠而且這個目標生物不是太強壯，你的寵物將會嘗試進行攻擊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002016",
+   "text": "Bring：這個指令將會使你的寵物撿起一項物品並且把它帶回來給你。當你打出這個命令時將會出現一個選取游標，接著選擇希望你的寵物帶回來的物品。你將會需要再加上“drop”這個指令來使你的寵物放下物品。如果你的寵物已經裝載了在牠能力範圍內的物品容量，牠將不會再為你帶回任何物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002017",
+   "text": "Come：這個指令將會告訴你的寵物靠近過來你所站立的位置。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002018",
+   "text": "Drop：這個指令將會告訴你的寵物放下牠所載運的所有物品。因為所有的物品都將會被牠放到地上，所以請你確定你是在一個安全的區域而不會被其他人拿走這些物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002019",
+   "text": "Fetch：這個指令將會使你的寵物撿起一項物品並且把它帶回來給你。當你打出這個命令時將會出現一個選取游標，接著選擇希望你的寵物帶回來的物品。你將會需要再加上“drop”這個指令來使你的寵物放下物品。如果你的寵物已經裝載了在牠能力範圍內的物品容量，牠將不會再為你帶回任何物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002020",
+   "text": "Follow：這個指令將會告訴你的寵物去跟隨一個人。使用這個指令之後將會出現一個選擇游標，以游標選擇一位你想讓你的寵物跟隨的玩家。如果你想讓你的寵物跟隨著你，只需要加一個“me”在你的指令後方。 (舉例來說：“Spot follow me”)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002021",
+   "text": "Friend：這個指令將會使你的寵物接受其他玩家的命令。使用這個指令之後將會出現一個選擇游標，以游標選擇一位你想讓你的寵物接受他命令的玩家。如果你的寵物還是忠誠的，牠從現在開始將會接受那位玩家的命令。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002022",
+   "text": "Get：這個指令將會使你的寵物撿起一項物品並且把它帶回來給你。當你打出這個命令時將會出現一個選取游標，接著選擇希望你的寵物帶回來的物品。你將會需要再加上“drop”這個指令來使你的寵物放下物品。如果你的寵物已經裝載了在牠能力範圍內的物品容量，牠將不會再為你帶回任何物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002023",
+   "text": "Kill：這個指令將可以用來命令你的寵物攻擊其他生物。當你打出這個命令時將會出現一個選取游標，接著選擇你所希望攻擊的生物。如果你的寵物對你忠誠而且這個目標生物不是太強壯，你的寵物將會嘗試進行攻擊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002024",
+   "text": "Patrol：這個指令將可以用來命令你的寵物巡邏牠現在所在的地方。如果你的寵物對你忠誠，牠將會開始巡邏這個區域並攻擊入侵者。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002025",
+   "text": "Release：如果你想讓你的寵物再度享受自由的感覺，只要打出這個指令。這個指令將會使你的寵物獲得自由，並且不再聽從你的命令。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002026",
+   "text": "Stay：這個指令將會告訴你的寵物停留在他現在所站立的地方。如果牠原本是處在跟隨的狀態，牠也將會停止跟隨。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002027",
+   "text": "Stop：這個指令將會告訴你的寵物停留在他現在所站立的地方。如果牠原本是處在跟隨的狀態，牠也將會停止跟隨。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002028",
+   "text": "Transfer：這個指令將可以讓你移轉你寵物的所有權。當你打出這個命令時將會出現一個選取游標，接著選擇你所希望將寵物所有權移轉的玩家。如果你的寵物接受了這個新主人，你將不再擁有這隻寵物，而被你所選取的這個人也將會成為寵物的新主人。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002031",
+   "text": "如果你裝配上了一把弓，你可以像平常一樣攻擊一位玩家、動物、非玩家控制人物 (NPC) 、或是怪物。只要你的背包中有箭 (arrow) 或弩箭 (bolt) ，你的弓或十字弓就能夠發射。只要你的目標與你可視範圍成一直線，你就可以對目標發動攻擊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002038",
+   "text": "在遊戲中你的銀行保險箱提供你一種功能，它提供你一個安全的物品存放空間。只有你自己才能打開你銀行中的保險箱。如果你希望得到正確的程序來打開你銀行中的保險箱，你將需要在當地的銀行裡說出「Bank」，銀行服務員將會為你打開你的銀行保險箱。就像是在這片土地上所有其他的容器一樣，你將可以從保險箱中拖曳任何物品或金錢進來或出去。當你想要關上保險箱時，以滑鼠右鍵單擊它後就能完成。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002039",
+   "text": "銀行管理員也可以為你從你的保險箱中自動存款或提款。要了解你目前的銀行結存，你只需要說出「balance」。如果你要提出1000GP，只需說出「withdraw 1000」。如果你要存入1000GP，只需說出「deposit 1000」。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002061",
+   "text": "這項技能對船上的旅行者來說是很有用的。你可以在地圖上標示出你的目的地，然後把地圖交給你的船夫，然後只要說出“Start”，船夫就會依照你所標示出的路線來行走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002074",
+   "text": "刺擊武器技能是一種互毆用的戰鬥技能，它能提供戰鬥時的快速攻擊。刺擊者可以使用 kryss、茅、乾草叉、戰叉、短茅、或小刀來在戰鬥中得到大效用。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002077",
+   "text": "捕魚技能將讓你從廣大的海洋中抓到魚。雙擊釣竿，接著單擊水面上的一點。如果成功了，你將會釣上來一條魚。這項技能的成功與否也同時取決於該地點魚群數量的多寡。你同時也會釣起其他的物品，包括藏寶和裝在瓶中的 SOS求救信。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002091",
+   "text": "這項技能主要被用在把魔法抄錄在空白捲軸上。要把魔法抄錄在捲軸之上，你必須知道這項魔法、有足夠的魔法值 (Mana) 、及擁有相對應於這項魔法的藥材在你的背包中 (藥材將會在嘗試抄錄時被消耗) 。要開始抄錄，從你的技能選單中選取抄錄技能，接著選擇一個空白捲軸。一個顯示出所有你能施展的法術的捲軸選擇表將會出現。從這個選單中，選取你所要抄錄的魔法項目。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002141",
+   "text": "通靈技能是用來瞭解鬼魂所說的話用的。如果你沒有這項技能，當鬼魂說話的時候你只能看見「oooooo」 。使用這項技能，你只要從你的技能表中點選就可以。假如你成功了，你就可以了解鬼魂所說的話。翻譯出鬼魂的話所持續的時間和你技能與智慧的高低有關。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1002152",
+   "text": "劍類武器技能是一種互打戰鬥的技能，是一種使用強勁武器攻擊的打鬥方式。一個劍術家在戰鬥中是可以使用斧頭 (axe) 、戰斧 (battle axe) 、雙面斧頭 (double axe) 、死刑執行者的斧頭 (executioner's axe) 、短柄的小斧頭 (hatchet) 、大戰斧 (large battle axe) 、十字鎬 (pickaxe) 、兩手的斧頭 (two-handed axe) ，屠夫的刀子 (butcher knife) 、切肉刀 (cleaver) 、剝皮的刀子 (skinning knife) 、 刀戟 (bardiche) 、戟 (halberd) 、闊劍 (broad sword) 、短劍 (cutlass) 、武士刀 (katana) 、長劍 (longsword) 、半圓形彎刀 (scimitar) 、維京劍 (viking sword) 將敵人撕成一條條。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1003000",
+   "text": "<center><b>***網路創世紀：文藝復興發行版本***</B><P>本伺服器目前已經更新至網路創世紀：文藝復興發行版本。請注意你已經閱讀最新的遊戲更新資訊，該資訊位於 <A HREF=\"uo.com\">uo.com 網站，</A>以瞭解所有新版本的最新功能。<P>於此版本中新增或修改的某些功能包含：<P>* 陸地擴大 *<BR>* 玩家互動變更 *<BR>* 戰鬥修正 *<BR>* 陣營系統 *<BR><P>欲開啟網頁瀏覽器並閱讀所有此版本最新的功能，請點選以下的按鈕。<center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004015",
+   "text": "你必須搭配 dc 選項使用此 s 指令！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004016",
+   "text": "你必須搭配 dc 選項使用此 s 指令！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004017",
+   "text": "你必須搭配 dc 選項使用此 s 指令！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004020",
+   "text": "沒有 repoAccounts.txt 檔案，釋放。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004033",
+   "text": "你已更改一項物件的ID",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1004054",
+   "text": "You can not perform negative acts on your target.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005001",
+   "text": "DEBUG：在 testSkillSeed 內",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005002",
+   "text": "輸入testSkillRealSeed",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005013",
+   "text": "所要製作的物品，其資源已經低於最低限制量。請聯絡 GM 並回報此問題。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005014",
+   "text": "所要製作的物品，其資源已經高於最大限制量。請聯絡 GM 並回報此問題。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005029",
+   "text": "PathNotFound Guard_Activity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005050",
+   "text": "好了。笑鬧夠了！該離開The Hally了！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005139",
+   "text": "DEBUG：我無法攻擊，因為我看不見目標",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005140",
+   "text": "DEBUG：我無法攻擊，因為目標躲起來了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005141",
+   "text": "DEBUG：我無法攻擊，因為目標距離太遠",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005142",
+   "text": "doAggressionCheck 失敗：找不到 objVar lstFactionGuardAggression",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005153",
+   "text": "Something FUCKED UP BADLY!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005161",
+   "text": "Hueing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005162",
+   "text": "unhuing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005167",
+   "text": "inFaction",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005168",
+   "text": "相同Id的",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005172",
+   "text": "hasSigil",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005181",
+   "text": "Lord British 的追隨者將被忽略。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005182",
+   "text": "Lord British 的追隨者將收到即將到來的毀滅警告。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005183",
+   "text": "Lord British 的追隨者現在將遭受攻擊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005209",
+   "text": "TownUpkeep完成！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005266",
+   "text": "在 factions.wxx 內",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005267",
+   "text": "stubjoin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005278",
+   "text": "DEBUG：在 getSeed 內",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005314",
+   "text": "Lord British 頒佈法令，現在不得建構任何房屋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005315",
+   "text": "Lord British 頒佈法令，只有城堡及要塞可以建造，直到未來另行宣布！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005316",
+   "text": "Lord British 頒佈法令，現在此片大陸上只有特定大小的房屋方能建造。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005473",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005474",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005475",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005476",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005477",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005478",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005479",
+   "text": "'all'命令對於所需目標無效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005529",
+   "text": "嘗試使用 'release' 命令取代。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005617",
+   "text": "要設定角色狀態的話，只要說出'set (str|dex|int) ###'。###的數值必須要在10到100之間，而且數值總和必須要在225以內。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005618",
+   "text": "要設定角色技能的話，只要說出'set <技能名稱> ###'。###的數值必須要在0到1000之間，你無法將數值總和設定超過700以上。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005620",
+   "text": "歡迎來到這個測試主機。你可以在任何你想要的時候進行角色技能及狀態的調整。只要你說出'help'就可以觀看如何使用這些指令的方法。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005621",
+   "text": "Could not deposit gold into your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1005635",
+   "text": "於移動此物件並開始測試前，檢查 Runesabre。x6433",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005646",
+   "text": "增加任何事物至 dyn_tracksystem.txt 檔",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005684",
+   "text": "已修改 ac。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005685",
+   "text": "未修改 wc。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005686",
+   "text": "已修改 wc。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005687",
+   "text": "未修改 wc。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1005695",
+   "text": "一張盆栽證書已經放置到你的背包中。A",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1006003",
+   "text": "<B>網路創世紀獎勵活動</B><BR>感謝你在過去整整一年來成為網路創世紀社群中的一份子。為了要表示我們對你的誠摯感激，你可以在以下選單中選擇一項遊戲中的獎勵物品。這一份禮物將會將歸屬於你在選擇該項獎勵物品時，所登入主機中的角色所擁有。你可以選擇的獎勵物品數量如同下所示，並且這些數量是以你的整個帳號來做計算。如果你想要在做出決定之前閱讀更多關於這些獎項的詳細資訊，請連線至<A HREF=\"http://www.uoherald.com/guide/miscellaneous_6.php\">uo.com網站</A>閱讀相關訊息。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1006004",
+   "text": "<B>網路創世紀獎勵活動</B><BR>感謝你在過去整整兩年來成為網路創世紀社群中的一份子。為了要表示我們對你的誠摯感激，你可以在以下選單中選擇一項遊戲中的獎勵物品。這一份禮物將會將歸屬於你在選擇該項獎勵物品時，所登入主機中的角色所擁有。你可以選擇的獎勵物品數量如同下所示，並且這些數量是以你的整個帳號來做計算。如果你想要在做出決定之前閱讀更多關於這些獎項的詳細資訊，請連線至<A HREF=\"http://www.uoherald.com/guide/miscellaneous_6.php\">uo.com網站</A>閱讀相關訊息。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1006005",
+   "text": "<B>網路創世紀獎勵活動</B><BR>感謝你在過去整整三年來成為網路創世紀社群中的一份子。為了要表示我們對你的誠摯感激，你可以在以下選單中選擇一項遊戲中的獎勵物品。這一份禮物將會將歸屬於你在選擇該項獎勵物品時，所登入主機中的角色所擁有。你可以選擇的獎勵物品數量如同下所示，並且這些數量是以你的整個帳號來做計算。如果你想要在做出決定之前閱讀更多關於這些獎項的詳細資訊，請連線至<A HREF=\"http://www.uoherald.com/guide/miscellaneous_6.php\">uo.com網站</A>閱讀相關訊息。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007128",
+   "text": "看來你很像想要自願加入 Blackthorn 守衛隊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007129",
+   "text": "你有興趣加入 Blackthorn 守衛隊嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007130",
+   "text": "Blackthorn 守衛隊正在找尋像你這樣的人呢！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007131",
+   "text": "你是一個很好且誠實的人，你願意加入 Blackthorn 守衛隊的行列嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007132",
+   "text": "如果你有興趣加入 Blackthorn 守護隊，你可以找到一個地方來滿足你的願望。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007133",
+   "text": "如果你也感到有興趣的話，就說一聲「yea」吧！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007134",
+   "text": "看來你很像想要自願加入 Lord British 的守衛隊？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007137",
+   "text": "你並不是一個誠實並且善良的好人，你還奢望加入 Lord British 的守衛隊？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007138",
+   "text": "如果你對加入 Lord British 的守衛隊有興趣，你可以找到一個地方來滿足你的願望。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007164",
+   "text": "嗯，煤礦、或是獻給 Blackthorn 的水果蛋糕？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1007172",
+   "text": "我要回到故鄉 Lizabeth 了！這是件大事！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008055",
+   "text": "我是The Default Guild of Superheroic Non-Player Characters公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008056",
+   "text": "我是The Guild of Arcane Arts公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008057",
+   "text": "我是The Warrior's Guild公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008058",
+   "text": "我是The Society of Thieves公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008059",
+   "text": "我是the League of Rangers公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008060",
+   "text": "我是The Healer's Guuild公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008061",
+   "text": "我是The Mining Cooperative公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008062",
+   "text": "我是The Merchant's Association公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008063",
+   "text": "我是The Order of Engineers公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008064",
+   "text": "我是The Society of Clothiers公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008065",
+   "text": "我是The Maritime Guild公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008066",
+   "text": "我是The Bardic Collegium公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008067",
+   "text": "我是The Fellowship of Blacksmiths公會的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008084",
+   "text": "你可以造訪我們位於www.uo.com的網站，或藉由電子郵件support@uo.com來與我們聯絡，要取消你的呼叫請求，請再度選擇求助鈕，並且選擇取消。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1008089",
+   "text": "：有人邀請你加入團隊，請鍵入 /accept來加入，或者鍵入 /decline來拒絕邀請。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010027",
+   "text": "~1_name~ 的箭射中了另一個靶的靶心！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010028",
+   "text": "~1_name~ 的箭射中了另一個靶的內圈！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010029",
+   "text": "~1_name~ 的箭射中了另一個靶的中圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010030",
+   "text": "~1_name~ 的箭射中了另一個靶的外圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010031",
+   "text": "~1_name~ 的箭射中了另一個靶的靶心！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010032",
+   "text": "~1_name~ 的箭射中了另一個靶的內圈！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010033",
+   "text": "~1_name~ 的箭射中了另一個靶的中圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010034",
+   "text": "~1_name~ 的箭射中了另一個靶的外圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010035",
+   "text": "~1_name~ 的箭射中了靶心！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010036",
+   "text": "~1_name~ 的箭射中了內圈！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010037",
+   "text": "~1_name~ 的箭射中了中圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010038",
+   "text": "~1_name~ 的箭射中了外圈。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010102",
+   "text": "FLS已觸發",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010126",
+   "text": "不列顛城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010127",
+   "text": "特林希克城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010128",
+   "text": "昇月城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010129",
+   "text": "德魯西亞城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010130",
+   "text": "米諾克城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010131",
+   "text": "紫杉城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010132",
+   "text": "史卡拉坡城收到了10K 的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010133",
+   "text": "美琴西亞城收到了10K的銀幣",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010212",
+   "text": "doAggressionCheck 失敗：找不到 objVar lstFactionGuardAggression",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010231",
+   "text": "doAggressionCheck 失敗：找不到 objVar lstFactionGuardAggression",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010274",
+   "text": "Lord British 的信徒從現在開始被忽略了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010275",
+   "text": "Lord British 的信徒從現在開始被警告即將被毀滅",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010276",
+   "text": "視線中的 Lord British 信徒現在開始被攻擊了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010277",
+   "text": "Shadowlords的隨從從現在開始被忽略了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010278",
+   "text": "Shadowlords的隨從從現在開始被警告即將被毀滅",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010279",
+   "text": "Shadowlords的隨從從現在開始將被任意攻擊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010280",
+   "text": "Council of Mages的會員從現在開始被忽略了",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010281",
+   "text": "Council of Mages的會員從現在開始被告知要滾出去。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010282",
+   "text": "Council of Mages的會員從現在開始將會被冷酷地殺死。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010283",
+   "text": "Minax 的信徒從現在開始將會被忽略。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010284",
+   "text": "Minax 的信徒從現在開始被告知要滾出去。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010285",
+   "text": "Minax 的信徒將會被冷酷地殺死。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010308",
+   "text": "TownUpkeep完成！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010425",
+   "text": "試著使用'release'這個指令來取代。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010434",
+   "text": "Minax宣布現在不能在這塊土地上蓋任何的房屋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010443",
+   "text": "Lord British 已經宣佈在這個時候沒有任何建築物可以被豎立起來。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010472",
+   "text": "我的 isGoodObject 失效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010548",
+   "text": "我的 isGoodObject 失效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1010629",
+   "text": "Trafficcop: Checkflush:: 未嚴重跳過！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011000",
+   "text": "<center>投票箱擁有者選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011001",
+   "text": "<center>投票箱 - 請在這裡投票！</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011002",
+   "text": "<center>主題</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011003",
+   "text": "<center>總投票數</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011009",
+   "text": "<center>邀請</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011013",
+   "text": "<center>髮色選取選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011015",
+   "text": "<center>藉由野營的方式登出遊戲</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011017",
+   "text": "<center>再見！</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011020",
+   "text": "城裡的許多人都可以幫助你精進你的技能。要知道我能不能傳授給你你所感到興趣的技能的方法非常簡單，你只需要說出「TRAIN」(訓練)就可以了。我將會說出一堆我所擅長的技能項目。要選擇你想要接受訓練的項目的話，只需要走靠近我，並且說出「TRAIN」(訓練)，後面並且加上該項技能的名稱，這樣我就會把接受這項訓練所必須付出的價錢告訴你。把正確數量的金錢從你的背包裡頭拖曳放到我的身上，接著你這一項技能的數值就會增加了。如果你給我的金錢數量沒有辦法全額付清，你可以少付一些，但是你將無法獲的完整的訓練，同時你也無法像全額付清這樣上升這麼多的技能數值。技能數值的上升幅度取決於老師的能力，所以當你嘗試要學習一項技能時，最好先確定對方是這一項技能的首席擅長者。此外請你特別記住，總體來說，你可以從他人身上學習來的技能數值是有限制的，也因為如此，你應該不會想要嘗試學習所有的技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011021",
+   "text": "<center>技能訓練</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011022",
+   "text": "<center>復活</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011023",
+   "text": "在這個混亂神殿要為你復活是可能的，你要試試嗎？ <br>繼續 - 你選擇嘗試現在回到人間。<br>取消 - 你現在只想暫時以鬼魂的姿態四處遊走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011024",
+   "text": "在這個美德神殿要為你復活是可能的，你要試試嗎？ <br>繼續 - 你選擇嘗試現在回到人間。<br>取消 - 你現在只想暫時以鬼魂的姿態四處遊走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011025",
+   "text": "藉由眼前的這個治療師要幫你復活是可能的，你要試試嗎？ <br>繼續 - 你選擇嘗試現在回到人間。<br>取消 - 你現在只想暫時以鬼魂的姿態四處遊走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011026",
+   "text": "現在要為你復活是可能的，你要試試嗎？ <br>繼續 - 你選擇嘗試現在回到人間。<br>取消 - 你現在只想暫時以鬼魂的姿態四處遊走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011037",
+   "text": "<center>購買與販賣</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011045",
+   "text": "<center>小偷專用喬裝工具組</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011047",
+   "text": "Pageboy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011048",
+   "text": "Receding",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011049",
+   "text": "2-tails",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011050",
+   "text": "Topknot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011051",
+   "text": "None",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011052",
+   "text": "Short",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011053",
+   "text": "Long",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011054",
+   "text": "Ponytail",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011055",
+   "text": "Mohawk",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011059",
+   "text": "Hair Style Selections",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011060",
+   "text": "Short beard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011061",
+   "text": "Long beard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011062",
+   "text": "Mustache",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011069",
+   "text": "<center>鐵匠選擇選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011105",
+   "text": "<center>戰爭功能</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011121",
+   "text": "<center>公會會長功能</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011123",
+   "text": "<center>公會授權選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011133",
+   "text": "<center>戰爭狀態</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011151",
+   "text": "<center>鉗工選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011168",
+   "text": "<center>焊工選取選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011284",
+   "text": "<center>一道謎題鎖</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011301",
+   "text": "<center>土地調查工具</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011323",
+   "text": "泥石屋<br>提供了所有日常生活所需的必需品，泥石屋為成功的冒險者或商人提供了一個堅固耐用的居住環境。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011324",
+   "text": "有院子的石屋<br>一幢擁有前院的房子。這一間房子擁有兼顧的外牆來抵禦來自屋外任何怪物所可能帶來的威脅。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011325",
+   "text": "小磚屋<br>這一間房屋將會非常適合融入任何一個社區之中。房子的磚瓦是從帕普亞城進口，而所用的泥土是從特林希克城的泥沼所引進。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011326",
+   "text": "小木屋<br>這些木材來自紫杉城郊外的森林裡頭，這一些高級的木材給一個家庭提供了溫暖的舒適感，同時也可以抵擋最嚴酷的風暴侵襲。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011327",
+   "text": "木頭與泥漿混合屋<br>一種融合兩種建材優點的建築物，讓你與任何鄰居的房屋比較比較，都能夠感受到這幢房屋的確擁有一種獨一無二的舒適感。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011328",
+   "text": "茅草屋頂農舍<br>千萬不要讓農舍這樣的名稱愚弄了你。這一間房子提供了比其他房子都還多的房間，也便宜了許多。或許你還可以發現到幾個野蠻人。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011329",
+   "text": "磚屋<br>這一間房屋不僅僅是小磚屋的加大版本。這間房屋就是著名的諾里與他的十個太太最後選擇定居下來的房屋。<br>可設定的保全箱最高數量：8<br>可鎖定最大數量：1100",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011330",
+   "text": "兩層樓木頭與泥漿混合屋<br>當土地上的空間令人開始擔憂的時候，建築物也就開始向上發展了。理想的樓層空間使這幢房屋成為商人最理想的居住選擇。<br>可設定的保全箱最高數量：10<br>可鎖定最大數量：1370",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011331",
+   "text": "兩層樓泥石屋<br>就所有人的口碑來說，石頭與泥土建材明顯是所有商人選擇住屋建材時的最佳選擇。就外觀上來說，幽雅的外觀可以吸引住顧客的目光，而多間房間的設計也可以儲存你的商品。<br>可設定的保全箱最高數量：10<br>可鎖定最大數量：1370",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011332",
+   "text": "塔<br>對於想要登上最高點的公會來說，擁有一做塔將是不二選擇。一座巨大的堡壘卻實地高聳入雲端，因此將沒有人膽敢看不起你。<br>可設定的保全箱最高數量：15<br>可鎖定最大數量：2119",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011333",
+   "text": "小石要塞<br>就讓巴頓納木斯這個瘋子去找到對於這一幢要塞所能想到的更糟糕名詞吧。當你被一大群瘋狂咆哮鍾的半獸人追趕時，沒有任何一個地方會比躲進這一幢建築物來得安全。 (當然這並不包括你立即生火紮營並且逃跑的情況) <br>可設定的保全箱最高數量：18<br>可鎖定最大數量：2625",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011334",
+   "text": "城堡<br>大、巨大、事實上是非常大。這一幢奇妙的建築物就像在對地表上的所有物品宣示，究竟何謂真正的堅固。<br>可設定的保全箱最高數量：28<br>可鎖定最大數量：4076",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011335",
+   "text": "有院子的大屋<br>對那些從事裁縫或鐵匠工作的人來說，應該會對有院子的房屋感到特別珍惜。不用懷疑，如果你希望能在工作時一邊與你的鄰居聊天，你就需要這一間房子。<br>可設定的保全箱最高數量：8<br>可鎖定最大數量：1100",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011336",
+   "text": "有院子的大理石屋<br>想要慵懶地住進一幢具有極致舒適感的房子裡嗎？這一幢房子將會告訴注重外觀與品質的你，為什麼大理石是建造房屋的最好材質。露天的院子就像是蛋糕上面的糖衣一樣，有畫龍點睛的效果。<br>可設定的保全箱最高數量：10<br>可鎖定最大數量：1370",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011337",
+   "text": "小石塔<br>需要一個地方來存放你的魔法物品嗎？這一個小石塔提供了一個三層樓，並且具有幽雅外觀的絕佳存放場所。對學者與魔法師來說，這是魔法參與者的最佳選擇。<br>可設定的保全箱最高數量：4<br>可鎖定最大數量：580",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011338",
+   "text": "兩層樓小木屋<br>這是一幢懂得鑑賞的冒險家會喜歡的鄉下小屋。當你想要最好的房子，而不希罕虛榮時，這就是符合你需求的房子。半獸人將會把你的門敲下來，並且在房屋裡與它的主人見面。<br>可設定的保全箱最高數量：8<br>可鎖定最大數量：1100",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011339",
+   "text": "雙層別墅<br>花一點時間來鑑賞生命中美好的事物是你我都應該要學習的一件事。想像一下這間房子就是交你學習這件事的絕佳導師。兩層樓的超級豪華舒適感、以及它卓越的美感，都是你必須要擁有它的絕佳理由。<br>可設定的保全箱最高數量：8<br>可鎖定最大數量：1100",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011340",
+   "text": "有院子的沙岩屋<br>特林希克城的建築師認為這是一種良好的建屋材料，而你應該也會認為如此。這是一座相當堅固的堡壘，並且將會經得起時間的考驗，同時也是擺放小販的最佳場所。<br>可設定的保全箱最高數量：6<br>可鎖定最大數量：850",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011341",
+   "text": "小型石造工作室<br>將鐵匠的工作室與住家全都融合在同一個空間裡。這是一幢結合了開放空間熔爐與店鋪的堅固房屋，二樓同時也提供了幾間可以做為個人生活使用的起居室。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011342",
+   "text": "小型大理石工作室<br>這一種房子有三層樓，可以讓你以最小的距離得到最理想的效率。這一類房子擁有非常理想的空間使用率，不論是對冒險者或生意人來說，這一類房屋都是深具吸引力的。<br>可設定的保全箱最高數量：3<br>可鎖定最大數量：425",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011356",
+   "text": "<center>小販自訂選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011398",
+   "text": "Short beard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011399",
+   "text": "Short Beard / Mustache / Long Beard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011400",
+   "text": "Long Beard / Mustache / Goatee",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011401",
+   "text": "Vandyke",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1011421",
+   "text": "<center>米納克斯信徒</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011422",
+   "text": "<center>魔法師議會</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011423",
+   "text": "<center>真‧不列顛尼亞</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011424",
+   "text": "<center>黑暗之影</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011448",
+   "text": "米納克斯的信徒們已取得了對舊大陸的控制，並仍打算竭盡所能地掌握住整個舊大陸。他們已經和獸人、無頭人、眼魔、巨人及其他野獸種族結盟，他們伺機向 Lord British 復仇。雖然這有部分實情和部分象徵意義，但有若干的跟隨者只是想在不知情的百姓身上發洩和破壞而已。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011449",
+   "text": "魔法師議會起源自他們曾經在那聚集過的昇月城。他們以小規模的運動做為開端，獻身於召喚那位曾經拯救過這塊大陸的陌生人。但一連串來自那些向 Lord British 效忠者的謀殺和私刑審判，迫使這個集團掀起了大規模的戰鬥。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011450",
+   "text": "真‧不列顛尼亞陣營效忠於 Lord British 的政權。他們拒絕放棄他們的家鄉給污穢的米納克斯，也厭惡闇影之王的邪惡手段。此外，魔法師議會同時威脅到了他們的統治，因此他們自行武裝，並準備對所有其他勢力作戰。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011454",
+   "text": "這個城市被 Lord British 所控制。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1011536",
+   "text": "LORD BRITISH",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1012012",
+   "text": "<BASEFONT COLOR=#2DDC1B>崔美爾大陸</BASEFONT>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1012013",
+   "text": "<BASEFONT COLOR=#2DDC1B>斐盧卡大陸</BASEFONT>",
+   "flag": "Modified",
+   "category": "mixed"
+  }
+ ]
+}

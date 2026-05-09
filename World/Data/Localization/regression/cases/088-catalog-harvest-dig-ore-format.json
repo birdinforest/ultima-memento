@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.dig.ore.template",
+  "pipeline": "string_catalog_only",
+  "en": "You dig up {0} {1} ore.",
+  "expectedZh": "您挖出了 {0} {1} 矿石。",
+  "tags": "harvest,mining,ResolveFormat,string_catalog_only"
+}

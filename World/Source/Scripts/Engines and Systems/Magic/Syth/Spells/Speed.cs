@@ -5,6 +5,7 @@ using Server.Network;
 using System.Text;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -56,7 +57,7 @@ namespace Server.Spells.Syth
 				BuffInfo.RemoveBuff( m, BuffIcon.Speed );
 				m.EndAction( typeof( SythSpeed ) );
 				m.PlaySound( 0x64C ); // Cleansing winds
-				m.SendMessage("You feel the wind around you dissipate");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel the wind around you dissipate" ) );
 				FastPlayer.Refresh(m as PlayerMobile);
 			}
 		}
@@ -65,7 +66,7 @@ namespace Server.Spells.Syth
 		{
             if ( Caster.Mounted )
             {
-                Caster.SendMessage( "You cannot use this power while on a mount!" );
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot use this power while on a mount!" ) );
             }
 			else if ( CheckSequence() )
 			{

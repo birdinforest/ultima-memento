@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using Server;
 using Server.Accounting;
+using Server.Localization;
 using Server.Commands;
 using Server.ContextMenus;
 using Server.Guilds;
@@ -1085,6 +1086,14 @@ namespace Server
 		public virtual string ApplyNameSuffix( string suffix )
 		{
 			return suffix;
+		}
+
+		/// <summary>
+		/// Single-click overhead suffix (<see cref="Title"/>). Default is English; subclasses may localize per <paramref name="viewer"/>.
+		/// </summary>
+		public virtual string GetLocalizedClickSuffix( Mobile viewer, string titleEnglish )
+		{
+			return titleEnglish;
 		}
 
 		public virtual void AddNameProperties( ObjectPropertyList list )
@@ -11408,6 +11417,28 @@ namespace Server
 
 		#region Overhead messages
 
+		/// <summary>
+		/// After StringCatalog resolution: for non-player speakers and zh-Hans viewers, run
+		/// <see cref="Server.Localization.CommonTalkDynamicZh.TryApply"/> (full-line tavern / museum templates), then
+		/// fragment replacement and NPC token polish.
+		/// </summary>
+		internal string LocalizeDynamicOverheadForViewer( Mobile viewer, string outText )
+		{
+			if ( outText == null || outText.Length == 0 || viewer == null )
+				return outText;
+			if ( Player )
+				return outText;
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			if ( !AccountLang.IsChinese( lang ) )
+				return outText;
+			string work = outText;
+			string dynamicZh = Server.Localization.CommonTalkDynamicZh.TryApply( viewer, work );
+			if ( dynamicZh != null && dynamicZh.Length > 0 )
+				work = dynamicZh;
+			work = QuestCompositeResolver.ResolveComposite( viewer, work );
+			return NpcSpeechTokenZh.ApplyNpcVocabularyTokensToZh( work );
+		}
+
 		public void PublicOverheadMessage( MessageType type, int hue, bool ascii, string text )
 		{
 			PublicOverheadMessage( type, hue, ascii, text, true );
@@ -11417,29 +11448,22 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				Packet p = null;
-
 				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
 
 				foreach( NetState state in eable )
 				{
 					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
 					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text );
+						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
+						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+						outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
 
-							p.Acquire();
-						}
-
-						state.Send( p );
+						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
+						else
+							state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -11515,10 +11539,14 @@ namespace Server
 			if( state == null )
 				return;
 
-			if( ascii )
-				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text ) );
+			string lang = AccountLang.GetLanguageCode( state.Mobile != null ? state.Mobile.Account : null );
+			string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+			outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
+
+			if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
 			else
-				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 		}
 
 		public void PrivateOverheadMessage( MessageType type, int hue, int number, NetState state )
@@ -11540,10 +11568,13 @@ namespace Server
 
 			if( ns != null )
 			{
-				if( ascii )
-					ns.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text ) );
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+				if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+					ns.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
 				else
-					ns.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+					ns.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, outText ) );
 			}
 		}
 
@@ -11594,29 +11625,22 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				Packet p = null;
-
 				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
 
 				foreach( NetState state in eable )
 				{
 					if( state != m_NetState && state.Mobile.CanSee( this ) )
 					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, Language, Name, text );
+						string lang = AccountLang.GetLanguageCode( state.Mobile.Account );
+						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+						outText = LocalizeDynamicOverheadForViewer( state.Mobile, outText );
 
-							p.Acquire();
-						}
-
-						state.Send( p );
+						if( ascii && StringCatalog.IsAsciiOnly( outText ) )
+							state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, outText ) );
+						else
+							state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, Language, Name, outText ) );
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -11705,7 +11729,11 @@ namespace Server
 			NetState ns = m_NetState;
 
 			if( ns != null )
-				ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", text ) );
+			{
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+				ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", outText ) );
+			}
 		}
 
 		public void SendMessage( int hue, string format, params object[] args )
@@ -11730,7 +11758,15 @@ namespace Server
 			NetState ns = m_NetState;
 
 			if( ns != null )
-				ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text ) );
+			{
+				string lang = AccountLang.GetLanguageCode( m_Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+				if( StringCatalog.IsAsciiOnly( outText ) )
+					ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", outText ) );
+				else
+					ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", outText ) );
+			}
 		}
 
 		public void SendAsciiMessage( int hue, string format, params object[] args )
@@ -12016,7 +12052,7 @@ namespace Server
 			string suffix = "";
 
 			if( ClickTitle && Title != null && Title.Length > 0 )
-				suffix = Title;
+				suffix = GetLocalizedClickSuffix( from, Title );
 
 			suffix = ApplyNameSuffix( suffix );
 

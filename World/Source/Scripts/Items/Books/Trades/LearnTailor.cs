@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), false, false );
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 5987, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -98,8 +98,8 @@ namespace Server.Items
 					string tailoring = "Tailoring is the skill of taking cloth and making clothing. Using a sewing kit, you can use cloth and turn it into items like robes, pants, or hat. The better the cloth, the better the clothing you can create. The types of cloth one can find can be viewed on the next page. You can also use scissors on existing clothing, and if your skill is high enough, it will be turned into workable cloth. You can sheer sheep with a bladed weapon to get wool by double clicking the weapon and then selecting the sheep.";
 					string cloth = "You can also find gardens that grow cotton and flax. You can gather these by using them or walking over them. The plants will be gathered in your pack. Once gathered, you can use them on a spinning wheel to make string. Once you have the string, you can use that on a loom to make cloth by using the string and then selecting the loom. You can also cut the cloth down into bandages if you need them.";
 
-					AddHtml( 122, 80, 200, 310, @"<BODY><BASEFONT Color=" + color + ">" + tailoring + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 310, @"<BODY><BASEFONT Color=" + color + ">" + cloth + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 310, TradesBookLocalization.Body( m_Mobile, color, tailoring ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 310, TradesBookLocalization.Body( m_Mobile, color, cloth ), (bool)false, (bool)false);
 				}
 			}
 

@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.Research
 		public override void OnCast()
 		{
 			Caster.Target = new InternalTarget( this );
-			Caster.SendMessage( "Which undead creature do you wish to banish?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Which undead creature do you wish to banish?" ) );
 		}
 
 		public void Target( Mobile m )
@@ -53,18 +54,18 @@ namespace Server.Spells.Research
 
 				if (!undead.Slays(m))
 				{
-					Caster.SendMessage( "This spell cannot be used on this type of creature." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot be used on this type of creature." ) );
 				}
 				else if( bc.IsBonded )
 				{
-					Caster.SendMessage("This spell cannot affect such a creature!");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot affect such a creature!" ) );
 				}
 				else if ( CheckHSequence(m) )
 				{
 					int exChance = (int)(m.Fame/200)+10;
 					if ( DamagingSkill( Caster ) >= Utility.RandomMinMax( 1, exChance ) )
 					{
-						m.Say("No! You cannot send me toward the light! Death is not eternal!");
+						m.Say( StringCatalog.Resolve( m.Account, "No! You cannot send me toward the light! Death is not eternal!" ) );
 						SpellHelper.Turn(Caster, m);
 						m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
 						m.PlaySound(0x208);
@@ -72,7 +73,7 @@ namespace Server.Spells.Research
 					}
 					else
 					{
-						Caster.SendMessage( "You fail at your attempt, but did cause some energy damage." );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You fail at your attempt, but did cause some energy damage." ) );
 						m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
 						m.PlaySound(0x208);
 						SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);

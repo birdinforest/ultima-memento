@@ -1,0 +1,3006 @@
+{
+ "batch": 41,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1159108",
+   "text": "Cleaner Shrimp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159109",
+   "text": "Mantis Shrimp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159110",
+   "text": "Arrow Crab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159111",
+   "text": "Blue Hermit Crab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159112",
+   "text": "Horseshoe Crab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159113",
+   "text": "Feather Duster",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159114",
+   "text": "Flamingo Tongue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159115",
+   "text": "Squid",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159116",
+   "text": "Octopus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159117",
+   "text": "Fire Clam",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159118",
+   "text": "Giant Anemone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159119",
+   "text": "Lion’s Mane Jelly",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159120",
+   "text": "Sea Urchin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159121",
+   "text": "Orange Elephant Ear Sponge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159122",
+   "text": "Barrel Sponge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159123",
+   "text": "Fire Coral",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159124",
+   "text": "Sea Fan",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159125",
+   "text": "Staghorn Coral",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159126",
+   "text": "Elkhorn Coral",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159127",
+   "text": "Tree Coral",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159128",
+   "text": "Leafy Sea Dragon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159129",
+   "text": "Hippo Tang",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159130",
+   "text": "Chironex Jelly",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159131",
+   "text": "Chocolate Chip Seastar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159132",
+   "text": "You don't have enough live rock to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159133",
+   "text": "Live Rock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159134",
+   "text": "small elegant aquarium",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159135",
+   "text": "wall mounted aquarium",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159136",
+   "text": "large elegant aquarium",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159137",
+   "text": "How much whilst thou tithe?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159138",
+   "text": "Displays all public house contents without entering houses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159139",
+   "text": "Tithe Maximum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159140",
+   "text": "You have entered an invalid entry. You must enter a number between 1 and 100,000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159141",
+   "text": "22nd Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159142",
+   "text": "Happy 22nd Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159143",
+   "text": "Happy 22nd Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159144",
+   "text": "Happy 22nd Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159145",
+   "text": "22nd Anniversary Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159146",
+   "text": "Copper Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159147",
+   "text": "Copper Portraits",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159148",
+   "text": "Copper Ship Relief",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159149",
+   "text": "Copper Sunflower",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159150",
+   "text": "<BASEFONT COLOR=#FFD24D>Cast from Flowers Grown in The Warm Sun of ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159151",
+   "text": "<BASEFONT COLOR=#FFD24D>Relief of ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159152",
+   "text": "<BASEFONT COLOR=#FFD24D>Depicting the Maiden Voyage of ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159153",
+   "text": "<BASEFONT COLOR=#FFD24D>Symbolizing Glory During the ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159154",
+   "text": "Copper Portrait",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159155",
+   "text": "In Commemoration Of Twenty-two Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159156",
+   "text": "A Commission Contract of Employment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159157",
+   "text": "My commission per sale:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159158",
+   "text": "Relocate Container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159159",
+   "text": "This container has been released and is no longer secure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159160",
+   "text": "Target the location that you wish to relocate this container. Once selected the container will no longer be secured.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159161",
+   "text": "Alliance Members",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159162",
+   "text": "ocean sapphire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159163",
+   "text": "salted serpent steak",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159164",
+   "text": "charybdis bait",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159165",
+   "text": "Coconut Crab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159166",
+   "text": "Receive a Coconut Crab statuette. This blessed statuette may be used to create a coconut crab mount.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159167",
+   "text": "ethereal soulbinder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159168",
+   "text": "ethereal sand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159169",
+   "text": "You don't have any ethereal sand.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159170",
+   "text": "The machine only accepts filled ethereal soulbinders.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159171",
+   "text": "Submitting this soulbinder would put you over the maximum allowable amount of Fellowship Silver you may hold. Spend some and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159172",
+   "text": "Mythical",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159173",
+   "text": "Legendary",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159174",
+   "text": "Exalted",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159175",
+   "text": "Grand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159176",
+   "text": "Meager",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159177",
+   "text": "An Empty Soulbinder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159178",
+   "text": "Contains a ~1_TYPE~ Soul",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159179",
+   "text": "You have ~1_COUNT~ Fellowship Silver!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159180",
+   "text": "I can sell you items from the Fellowship for Fellowship Silver!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159181",
+   "text": "Browse the Fellowship Shop",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159182",
+   "text": "Fellowship Shop",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159183",
+   "text": "The Fellowship Shop",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159184",
+   "text": "Your Fellowship Silver:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159185",
+   "text": "Would you like to buy something?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159186",
+   "text": "You don't have enough Fellowship Silver for that!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159187",
+   "text": "You had no soulbinder with enough capacity to hold the soul, so some of it was lost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159188",
+   "text": "<BASEFONT COLOR=#FF8300>Soulbound<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159189",
+   "text": "The soul has been cleansed and you have been awarded ~1_SILVER~ Fellowship Silver for your efforts!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159190",
+   "text": "Ethereal Sand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159191",
+   "text": "GP: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159192",
+   "text": "Available For Purchase: ~1_PART~ / ~2_WHOLE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159193",
+   "text": "x~1_QUANT~ GP: ~2_COST~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159194",
+   "text": "Purchase a Commodity Deed filled with ~1_QUANT~ ~2_NAME~ for ~3_COST~ GP?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159195",
+   "text": "Begging thy pardon, but your family has purchased the maximum amount of that commodity.  I cannot sell you more until a new shipment arrives!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159196",
+   "text": "Ethereal Soulcleanser",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159197",
+   "text": "grilled serpent steak",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159198",
+   "text": "BBQ dino ribs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159199",
+   "text": "waku chicken",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159200",
+   "text": "fresh seasoning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159201",
+   "text": "salt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159202",
+   "text": "raw sea serpent steak",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159203",
+   "text": "raw dino ribs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159204",
+   "text": "grilled serpent steak recipe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159205",
+   "text": "BBQ Dino Ribs Recipe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159206",
+   "text": "Waku Chicken Recipe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159207",
+   "text": "bake kitsune hat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159208",
+   "text": "mace belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159209",
+   "text": "sword belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159210",
+   "text": "dagger belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159211",
+   "text": "crimson mace belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159212",
+   "text": "crimson sword belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159213",
+   "text": "crimson dagger belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159214",
+   "text": "Ensign",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159215",
+   "text": "Commander",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159216",
+   "text": "Captain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159217",
+   "text": "This title is obtained from the Forsaken Foes event.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159218",
+   "text": "You have just been hit by a Jack o' Lantern!!!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159219",
+   "text": "You hit your target!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159220",
+   "text": "Exploding Jack o' Lantern",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159221",
+   "text": "Hungry Coconut Crab Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159222",
+   "text": "*Redeemable for a pet*<br>*Requires High Seas Booster Pack*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159223",
+   "text": "Jack O' Lantern Helm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159224",
+   "text": "elegant collar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159225",
+   "text": "elegant collar of fortune",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159226",
+   "text": "assassin's cowl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159227",
+   "text": "mage's hood",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159228",
+   "text": "cowl of the mace & shield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159229",
+   "text": "mage's hood of scholarly insight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159230",
+   "text": "Admiral Jack's Pumpkin Spice Ale",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159231",
+   "text": "Captain of ~1_SHIP~'s Hearty Rum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159232",
+   "text": "Pumpkin Cannon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159233",
+   "text": "Pumpkin Rowboat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159234",
+   "text": "Frost Drake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159235",
+   "text": "You may not pass.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159236",
+   "text": "Wait? What are you doing here?! Civilians aren't supposed to be this deep into the dungeon after the collapse! Unless you're heading to the Beacons - I suggest you turn back!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159237",
+   "text": "Dungeon Cleanup Worker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159238",
+   "text": "This castle stinks! Miracle the collapse in the sewers didn't bring the whole place down! Since the cave in, the sewer has flooded most of the dungeon. May have been a bit dangerous before with all the critters and what not running around, but now it's a death trap! Crew's been working at it nonstop to contain the leaks and sure up what's left. Mages got down here and setup a teleporter network to get us to where it's dry. Gotta insist you stay back though, too dangerous to let civilians in!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159239",
+   "text": "Welcome, please - proceed on the teleporter. Careful managing the \"disastrous sewer collapse\" *winks and chuckles*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159240",
+   "text": "Have you seen it? I haven't. I was hoping to get an assignment deeper in the dungeon, but I'm stuck here. We are not supposed to talk about it, my inner voice is quite pleased however.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159241",
+   "text": "Ah, greetings! I hope you weren't inconvenienced too bad by the \"collapse\" *winks and chuckles*. Careful moving forward - we caused quite the chaos down here! I can't believe we managed to smuggle all the blackrock, cadellite, and other rare materials into Britain without any of the guilds finding out.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159242",
+   "text": "The sewer disaster was just what we needed. Can you feel it? Can you feel the power emanating from this place? We knew we needed a way in, and the dungeon's proximity to the sewer provided just the means to do so. They didn't want to listen. Batlin told them. We are everywhere. We are everyone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159243",
+   "text": "They say its magnificent, an absolute marvel of a machine. We are not told for what the device is used for, only that it is imperative to our success. I bet Elizabeth and Abraham know, they are overseeing the project.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159244",
+   "text": "I was part of the team that caused the sewer collapse - a few well placed kegs of purple potion and KABOOM - next thing ya know the entire dungeon was turned to a sewer. The plan worked brilliantly! My inner voice revels in the progress!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159245",
+   "text": "Now that we have control of the dungeon, we can harness the power of Blackthorn's beacons to charge our...well I shouldn't say but if you have come this far you will know soon enough.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159246",
+   "text": "You have proved your devotion to our cause. Trust, Worth, Unity. Take this medallion to acknowledge your full membership in our organization. What Batlin has planned for Britannia is magnificent, and the device will be at full power before long. There will be no stopping us. The time has come for a new edict - a new path to glory following the tenants of the Fellowship. Return now to the world and spread the good news of our success.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159247",
+   "text": "This is an otherwise unassuming metal medallion in the shape of a triangle.  The letters T, W, and U are engraved on it. It is almost immediately recognizable as a sign of the Fellowship.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159248",
+   "text": "Fellowship Medallion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159249",
+   "text": "Endless Journey accounts may not purchase commodities from this vendor.  You may purchase this commodity from other adventurers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159250",
+   "text": "Non-commission vendors only.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159251",
+   "text": "Happy Anniversary! 22nd ANNIVERSARY REWARDS available!<br><br>HALLOWEEN FAVORITES coming OCTOBER 1 - Jack o' Lanterns, Trick or Treating & Skeletons!<br><br>New vendor style - THE COMMISSION VENDOR - can be purchased anywhere vendors are sold!<br><br>Here fishy fish! New CREATURES for AQUARIUMS from ANCIENT SOS!<br><br>Something stinks in BLACKTHORN'S DUNGEON! Major sewer collapse to blame for castle closure!<br><br>NEW REWARDS for Champions of the HUNTMASTER'S CHALLENGE!<br><br>THE SOULBOUND plague the sea! Aid THE FELLOWSHIP in cleansing the souls of the soulbound with ETHEREAL SOULBINDERS in exchange for NEW ARTIFACT STYLES and MORE!<br><br>FORSAKEN FOES have been awoken! NEW EQUIPMENT and REWARDS can be found on SCALIS, CORGUL, and CHARYBDIS!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159252",
+   "text": "Soulbound Creatures",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159253",
+   "text": "Repond Vulnerability",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159254",
+   "text": "Holiday Wall Art",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159255",
+   "text": "Dove Cage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159256",
+   "text": "Jolly Holiday Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159257",
+   "text": "2019 Holiday Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159258",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159259",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159260",
+   "text": "Crafted By A Glassblower From ~1_WHERE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159261",
+   "text": "A Cage With A Single ~1_WHERE~ Dove",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159262",
+   "text": "Disaster at Castle Blackthorn! Dungeon Flooded! Calls for Souls in Wake of Maritime Threat!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159263",
+   "text": "Northern Britain was rocked by the news that a disastrous cave-in at Castle Blackthorn has caused a massive flood throughout the dungeon! When asked for comment, a spokesperson for the Crown simply confirmed the incident but assured citizens there is no threat to the public. Despite these reassurances, rumors have been spreading throughout the city that this most recent accident is another one of Heckles' mischievous escapades. Members of the various artisan guilds were seen heading into the castle with full supply pack horses in tow, presumably to repair the damage.<br><br>In other news, the Town Cryer has learned of peculiar happenings on the Sea. It seems a large number of mariners are reporting ships adorned with pumpkins and vines. One mariner reported seeing Jack o' Lantern headed crew tending to an approaching pirate ship. While the Town Cryer could not independently confirm these reports, mariners are advised to take caution. Mages from the Fellowship warn these reports are a sign of ominous magics. In an effort to quell what they call \"Soulbound\" individuals the Fellowship has partnered with the Glassblowers of the realm to create ethereal soulbinders, which can be used to hold the souls of those who have been ensorcelled by these ominous magics. Ethereal soulbinders are crafted with ethereal sand which can be found in abundance on The Isle of the Soulbinder. For those unable or unwilling to visit such a dangerous place, quantities of ethereal sand can be purchased from the Mining Cooperative headquartered at The Golden Pickaxe in Minoc. The Fellowship is offering a trade of silver for ethereal soulbinders filled with souls, and are promoting a variety of interesting trinkets and curios that can be obtained with Fellowship Silver from the Fellowship Adepts at the Fellowship Hall in East Britain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159264",
+   "text": "The Sorcerer's Castle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159265",
+   "text": "The Castle Cascade",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159266",
+   "text": "The House Built On The Ruins",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159267",
+   "text": "The Sandstone Fortress Of Grand Cross",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159268",
+   "text": "The Dragonstone Castle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159269",
+   "text": "The Terrace Gardens",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159270",
+   "text": "A Jolly Holiday Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159271",
+   "text": "<BASEFONT COLOR=#FFD24D>Jolly Holiday Tree from ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159272",
+   "text": "Decorative Stable Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159273",
+   "text": "There is quite a ways to go before the tree will grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159274",
+   "text": "The tree is very close to being ready to grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159275",
+   "text": "The tree is about a three-quarters of the way before it will grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159276",
+   "text": "The tree is about half way before it will grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159277",
+   "text": "The tree is about a quarter of the way before it will grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159278",
+   "text": "Receive a decorative stable set that includes a magical wooden cow, magical wooden chicken, decorative wooden palamino horse, decorative feed bag, decorative 5x5 fence, and a functional metal water tub and  cow patty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159279",
+   "text": "Equipment Stats",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159280",
+   "text": "Medable Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159281",
+   "text": "barbed whip",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159282",
+   "text": "spiked whip",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159283",
+   "text": "bladed whip",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159284",
+   "text": "Naughty Elf's Gloves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159285",
+   "text": "Rude Ranger's Tunic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159286",
+   "text": "broken wristwatch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159287",
+   "text": "Recovered from Krampus' Coinpurse",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159288",
+   "text": "The gloves appear to be the appropriate size for a elf of small stature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159289",
+   "text": "The tunic appears to be a standard piece of ranger's armor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159290",
+   "text": "The watchface is broken, even though it's probably right twice per day. This is not one of those times.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159291",
+   "text": "EQUIPPED",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159292",
+   "text": "Krampus Star",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159293",
+   "text": "The star burns bright with Krampus' love, or his ire. Whichever you fancy...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159294",
+   "text": "Target the item you wish to compare.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159295",
+   "text": "Compare With Item In Slot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159296",
+   "text": "View Suit Stats",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159297",
+   "text": "View Suit Stats With Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159298",
+   "text": "...the time has finally come...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159299",
+   "text": "...under my guidance...Britannia will flourish!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159300",
+   "text": "...all the people shall rejoice...and pay homage!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159301",
+   "text": "...you...to, shall kneel!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159302",
+   "text": "...you shall aknowledge my authority!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159303",
+   "text": "...I shall be your master!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159304",
+   "text": "...do you really know where you're going?...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159305",
+   "text": "...Go Away!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159306",
+   "text": "...Go inside!  Tell them!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159307",
+   "text": "...Ha, ha, ha!....",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159308",
+   "text": "...do not believe him!...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159309",
+   "text": "...trust me, for I am your companion...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159310",
+   "text": "* You attempt to read the journal but the characters are jumbled in your field of vision. Now your head hurts. *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159311",
+   "text": "My inner voice guided me but has fallen silent...and to that end I have failed my purpose. We set sail for Iver's Rounding West of Skara Brae...I fear the end has come though, we are far off course and provisions are low and the weather has turned. The Love I had is my only Truth now. All that is left is Courage. When will my inner voice return?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159312",
+   "text": "Enabled and disabled through a context menu on the item this property affects damage spells aimed at a single target. The first spell has a damage modifier of -30% subsequent spells increase in increments of 6% until 00% then in increments of 2%, until +20%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159313",
+   "text": "Increases the strength requirement of the item to 125. This property ignores Lower Requirements.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159314",
+   "text": "Increased item weight to 50 stones.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159315",
+   "text": "Lower Ammo Cost",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159316",
+   "text": "Increases your skill points in a particular skill, up to, but not exceeding your cap in that skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159317",
+   "text": "~1_ITEM~ bearing the Fellowship Insignia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159318",
+   "text": "You notice the Fellowship Insignia on your fallen foe's equipment and decide it may be of some value...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159319",
+   "text": "Use Transparent Gump",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159320",
+   "text": "<BASEFONT COLOR=#FF8080>The Valiant<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159321",
+   "text": "<BASEFONT COLOR=#F2F2F2>The Spiritual<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159322",
+   "text": "<BASEFONT COLOR=#FF9900>The Sacrificing<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159323",
+   "text": "<BASEFONT COLOR=#33CC33>The Just<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159324",
+   "text": "<BASEFONT COLOR=#BFBFBF>The Humble<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159325",
+   "text": "<BASEFONT COLOR=#BF80FF>The Honorable<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159326",
+   "text": "<BASEFONT COLOR=#0099FF>The Honest<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159327",
+   "text": "<BASEFONT COLOR=#FFFF00>The Compassionate<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159328",
+   "text": "*Thou ~1_CONDIATION~ truly ~2_VIRTUE~...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159329",
+   "text": "are",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159330",
+   "text": "are not",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159331",
+   "text": "Valiant",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159332",
+   "text": "Spiritual",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159333",
+   "text": "Sacrificing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159334",
+   "text": "Just",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159335",
+   "text": "Humble",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159336",
+   "text": "Honorable",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159337",
+   "text": "Honest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159338",
+   "text": "Compassionate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159339",
+   "text": "Thous hast proven thou walks the path of Virtue!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159340",
+   "text": "Cloak of the Virtuous",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159341",
+   "text": "*You strum the lute, it is tuned to ~1_NOTE~*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159342",
+   "text": "*You hear a click as the chest in the corner unlocks!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159343",
+   "text": "Sheet Music for Stones",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159344",
+   "text": "Recovered from a Strongbox in Castle British with a Musical Lock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159345",
+   "text": "Standard sheet music for the seminal <i>Stones</i> by Iolo the Bard. Written, unsurprisingly, for the lute.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159346",
+   "text": "Admiral Jack Shipwrecked! Shrines & Virtue Crumble!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159347",
+   "text": "The Town Cryer has received reports that Admiral Jack, facing almost certain defeat at the hands of the Royal Britannian Navy, has shipwrecked somewhere north of Moonglow.  While the Town Cryer cannot independently confirm these reports, several expeditions have launched in search of Jack and his crew.   <br><br>Jack became the admiral of a large armada of ships following the demise of former Guild leader Hook. Previously, Jack was renowned for his skills in necromancy and known for his fondness of pumpkins. The self-proclaimed \"Pumpkin King\" became known to Britannians in years past when he sequestered himself inside the Sorcerer's Dungeon in Ilshenar, binding the inhabitants to his will. Only recently did Jack take to the High Seas, using his magics to command an armada of pumpkin ships and crew. With his apparent demise, the fate of that crew and those ships can only be left to the imagination.<br><br>The news of Admiral Jack's tumultuous end comes on the heels of a peculiar report from the monks at the Hall of Virtue in Britain. Almost overnight, strange runes have appeared atop the Virtue pedestals there. When pressed for details, the monks offered little insight, but assured The Town Cryer that investigations into their origin and purpose are ongoing. The monks further stated that there appears to be no threat to the public, but as history has shown us - Britannians should exercise caution in uncertain and troubling times.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159348",
+   "text": "I was a bard you know, trained under Iolo I did! We had a lovely ballad prepared for the arrival of our Forgotten King! Times of revelry indeed! We all gathered here!<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159349",
+   "text": "Such a momentous occasion it was! The arrival of a traveler from the stars! Even Sherry the Mouse made the trip from Britain!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159350",
+   "text": "I visited the castle when the traveler became King - it was magnificent! So many rooms! A library truly fit for a king!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159351",
+   "text": "I remember thinking how lovely Castle Sallé Dacil would look in the noon sun, just in time for the wedding - such a beautiful place. Now though, only a skeleton of its former glory. Tis a shame.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159352",
+   "text": "Princess Beatrix had such beauty! Shamino was indeed lucky to have her hand! I was practicing my musical scales in hopes of performing at the wedding. I still remember it to this day! C4 D E F G A B C5! Sherry would sing with me while I practiced!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159353",
+   "text": "Auction Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159354",
+   "text": "Non Auction Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159355",
+   "text": "Sandalwood Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159356",
+   "text": "The corpse is frozen solid and appears to have suffered a blow to the back of the head. Bits of what appear to be a large pumpkin lay frozen in the snow. The corpse clutches an amulet that is firmly worn around the neck. The cause of death was most likely exposure following a blow to the head when the ship wrecked.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159357",
+   "text": "Enable Auto-Renew Auction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159358",
+   "text": "Disable Auto-Renew Auction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159359",
+   "text": "Auto-Renew Auction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159360",
+   "text": "Pet Whistle for ~1_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159361",
+   "text": "Thou art not virtuous...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159362",
+   "text": "Thou art virtuous, but have not truly fought for virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159363",
+   "text": "Your devotion to virtue has been rewarded. You may choose to claim your reward you can then choose to apply special properties to your existing reward.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159364",
+   "text": "Claim Reward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159365",
+   "text": "Convert Existing Reward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159366",
+   "text": "You are about to claim your Tabard of Virtue. The tabard will be named and hued based on your current devotion to the virtues shown on your character mouseover.  Are you sure you wish to claim this tabard right now?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159367",
+   "text": "Tabard of Virtue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159368",
+   "text": "You are about to apply special properties to your Tabard of Virtue. The item you are applying the special properties from will be destroyed and your Tabard of Virtue will then have those properties.  Do you wish to proceed?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159369",
+   "text": "Tabard of ~1_VIRTUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159370",
+   "text": "Thou art virtuous, but have not truly fought for ~1_VIRTUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159371",
+   "text": "The item you wish to apply special properties FROM could not be found in your main backpack.  Please check your backpack and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159372",
+   "text": "The item you wish to apply special properties TO could not be found in your main backpack.  Please check your backpack and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159373",
+   "text": "This item can only be linked to a bonded pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159374",
+   "text": "Pet Whistle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159375",
+   "text": "Play Dead",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159376",
+   "text": "Sit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159377",
+   "text": "Wait",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159378",
+   "text": "Settle Down",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159379",
+   "text": "Tis true, I am unlike the spirits you will see roaming nearby - the Well of Souls has allowed me a more robust form between the plane of reality and the ethereal void. Tis no matter though, I return to Britannia only to remember my beloved Beatrix. My how beautiful my Beatrix was... We were to be wed you know! <br><br>What a wedding it would have been! Castle Sallé Dacil was decorated in full regalia and the ceremony was to begin promptly at noon. Elegantly carved swans, a feast set for a king, and a generous gift from our Forgotten King - a magnificent sandalwood box! <br><br>Alas, none of that happened. I was rushed off to the war against Mondain in service of our Forgotten King. <br><br>Ah, I remember my first meeting with him well, I nearly chopped off my own leg from the shock!  Offworld travelers were a rarity then, those would be crowned king even more so!  Little about him was ordinary, right up to his coronation - tis no small feat to assemble such a crowd at midnight! It was very important to pay attention to the clocks so we wouldn't miss the spectacle, but many were in attendance to rejoice in the occasion despite the late hour.<br><br>Time is a funny thing - and my time in the ethereal plane has allowed me to see what would have been. *gestures to the glowing Well* I am afraid in this age of uncertainty, travel to the ethereal void via the Well of Souls is most perilous. Only those bearing the blessing of the Forgotten King will be able to pass. <br><br>And pass you must, for the Time Lord, Hawkwind, has been bound there by dark magics, and only a mortal being, virtuous and true, will be able to free him!  Even bound, time is a fickle thing and the influence of its agent no doubt still at hand. Your quest on this timeline is the one true way forward...<br><br>Thank you for listening to me reminisce. It is especially nice to remember my beloved Beatrix. *smiles*<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159380",
+   "text": "* You attempt to understand the spirit but your connection to them is weak... *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159381",
+   "text": "*squeak squeak* Have you come to play the instruments? *squeak squeak* I bet you are as good as Iolo! “Practice! Practice!” he would say, “Practice your musical scales!” *squeak squeak* My fingers were too tiny for the lute, but I could sing! Do Re Mi Fa So La Ti Do! *squeak squeak*  <br><br>Long ago, I was supposed to perform at the wedding of Shamino and Princess Beatrix. Ready to go at noon on the nose I would have been, but that was before...everything. *frowns* Sometimes I still visit Castle Sallé Dacil through a secret door in Ilshenar. Even though the castle has seen better days, I am still reminded of the Pure Love Princess Beatrix had for Shamino! *squeak squeak*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159382",
+   "text": "* You cannot quite focus your connection to the ethereal world... *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159383",
+   "text": "Greetings, Britannian! Seems Hawkwind is having some fun with the timeline again? Britannia will always face threats, but it is brave adventurers such as yourself who forge the Britannian Legacy everyday. With your courage, you uphold the ideals of Virtue and the integrity of our realm against threats from monstrous evils and world thieves alike. Go now, visit the Well of Souls and free Hawkwind and restore Virtue to the realm!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159384",
+   "text": "A Voice from the Past",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159385",
+   "text": "* Your connection to the ethereal void is not honed, you cannot pass... *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159386",
+   "text": "You have found yourself here, or have I made it so you find yourself here? *grins* Alas, here you are! <br><br>Virtue is being drained from your world at the hands of the Fellowship under the guise of their altruistic intent. Do not be fooled, their objective is nefarious and their presence in Britannia is a pox upon our shared devotion to the Virtues. <br><br>The Fellowship has been successful in destroying the Runes of Virtue and the encouraging greed in those coveting Fellowship Treasure. This is fueling the destruction of Shrines across Britannia. To combat this trend, I reached deep inside the timeline and placed fragments of the Runes of Virtue in treasure chests hidden throughout the realm. With these fragments we can begin to restore the Shrines. Place these mysterious fragments at Shrines across Britannia to lure the armies of the Fellowship from hiding. <br><br>If you best eight of these armies at a single shrine you have restored the most fragments, your devotion to Virtue will be rewarded with the Tabard of Virtue. This tabard will reflect the Virtue to which you have restored the most fragments. A corresponding title will also be bestowed upon you. <br><br>For those who are truly devout and summon the Courage to best three of the armies at each Shrine, they will be awarded the Cloak of the Virtuous - a truly auspicious honor! <br><br>When you have completed your quest visit the Ankh behind me to claim your Tabard of Virtue. To claim the Cloak of the Virtuous approach each representation of the Virtues surrounding me. When you are true to each, the Cloak of the Virtuous shall be yours!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159387",
+   "text": "Hawkwind",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159388",
+   "text": "What's that?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159389",
+   "text": "You must command your pet to stay before using this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159390",
+   "text": "Target a bonded pet to link this whistle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159391",
+   "text": "You must wait ~1_minutes~ minutes before you can link another pet to this whistle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159392",
+   "text": "You must wait ~1_seconds~ seconds before you can link another pet to this whistle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159393",
+   "text": "Link Bonded Pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159394",
+   "text": "This whistle can be used to command one of your bonded pets to perform tricks! The whistle must be bond to a pet in order to command and can be re-bonded after a week delay. (Account Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159395",
+   "text": "You must remove personal bless status from any items you wish to convert.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159396",
+   "text": "Use Non-Transparent Gump",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159397",
+   "text": "Mana Burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159398",
+   "text": "Medable Armor does not block passive and active meditation skill. Weapons and shields that have Spell Channeling are considered medable as they do not disarm with the use of the meditation skill.<br>Non-Medable Armor will block passive and active meditation but can potentially provide the following benefits: Non-medable armor provides lower mana cost (with the exception of woodland armor). Each piece of armor up to five pieces will provide a percentage that is not subject to the lower mana cost cap of 40. The armor pieces which provide the most lower mana cost will take priority. Platemail, ringmail, chainmail, and dragon armor provides 1% of lower mana cost per piece. Studded leather, hide armor, stone armor and bone armor provides 3% of lower mana cost per piece.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159399",
+   "text": "Bandage Healing Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159400",
+   "text": "Gorgon Lens Charges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159401",
+   "text": "Damage Modifier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159402",
+   "text": "hit lightning ~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159403",
+   "text": "This property provides a chance to cast a lightning spell on the target. The lightning effect is similar to the magery fourth circle spell lightning. Damage is based on Wrestling or Anatomy & Evaluating Intelligence.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159404",
+   "text": "Tis the season to be Jolly! Some great presents can be claimed from HOLIDAY GIFT TOKENS available to all veteran characters who are at least 30 days old logging in between Tuesday, December 3, 2019 12:01:00 AM GMT-05:00 and Friday, January 3, 2020 11:59:00 PM GMT-05:00!<br><br> The Artisan Festival Returns! A fresh batch of Vice and Virtue themed rewards are available to complete the full set of pillows, paintings, sculptures and lanterns! This year the event kicks off in Britain!<br><br> Beware Krampus terrorizing trade routes with new trinkets to collect from his coin purse!<br><br> Mannequins receive major upgrade to help with building that perfect suit to fight even the toughest monsters!<br><br> Is this the end of Jack the Pumpkin King? Read the latest from the Town Cryer to learn his fate and embark on an adventure to uncover the truth behind mysterious fragments and restore Virtue to Britannia!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159405",
+   "text": "Attack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159406",
+   "text": "Eat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159407",
+   "text": "Block",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159408",
+   "text": "Enter the description to add to the mannequin. Leave the text area blank to remove any existing text.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159409",
+   "text": "<CENTER>Mannequin</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159410",
+   "text": "Description: ~1_MESSAGE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159411",
+   "text": "Add Description",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159412",
+   "text": "Updated",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159413",
+   "text": "A Lute Tuned to Stones",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159414",
+   "text": "The Keep Calm and Carry On Keep",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159415",
+   "text": "The Ravenloft Keep",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159416",
+   "text": "The Queen's Retreat Keep",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159417",
+   "text": "Pig Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159418",
+   "text": "Goat Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159419",
+   "text": "Ice Fiend Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159420",
+   "text": "Glass Kiln",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159421",
+   "text": "Enchanted Sculpting Tool",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159422",
+   "text": "Enchanted Granite Cart",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159423",
+   "text": "War Boar Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159424",
+   "text": "Ultima Online Veteran Rewards Program",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159425",
+   "text": "Thank you for being part of the Ultima Online community! As a token of our appreciation, you may select from the following in-game reward items listed below. The gift items will be attributed to the character you have logged-in with on the shard you are on when you choose the item(s). The number of rewards you are entitled to are listed below and are for your entire account. To read more about these rewards before making a selection, feel free to visit the <A HREF=\"https://uo.com/wiki/ultima-online-wiki/items/veteran-rewards/\">uo.com website</A>.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159426",
+   "text": "You have already chosen ~1_COUNT~ rewards.  You have ~2_COUNT~ remaining rewards to choose.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159427",
+   "text": "Statuettes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159428",
+   "text": "Equippables",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159429",
+   "text": "spiral staircase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159430",
+   "text": "Choose an option:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159431",
+   "text": "Without Topper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159432",
+   "text": "With Topper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159433",
+   "text": "Glass Kiln",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159434",
+   "text": "Enchanted Sculpting Tool",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159435",
+   "text": "Granite: ~1_COUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159436",
+   "text": "Enchanted Granite Cart",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159437",
+   "text": "Anvil of Artifacts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159438",
+   "text": "A charge could not be refunded to the last Anvil of Artifacts tool you used, you must use this charge.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159439",
+   "text": "A charge could not be refunded to the last Anvil of Artifacts tool you used because the item is not in range.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159440",
+   "text": "A charged has been refunded to your Anvil of Artifacts tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159441",
+   "text": "The teleportation destination is invalid.  The teleportation destination must be free of objects.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159442",
+   "text": "Select Resists",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159443",
+   "text": "Anvil of Artifacts (South)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159444",
+   "text": "Anvil of Artifacts (East)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159445",
+   "text": "metal ladder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159446",
+   "text": "*CAUTION* You are under the following EXCEPTIONAL ITEM buff. Do you want to remove it?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159447",
+   "text": "The next time that you try to craft an exceptional piece of armor the bonus resists will be the values input below. The required materials to craft will be increased while this buff is active. One charge on this item will be consumed per use and only one instance of this buff can be active at any time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159448",
+   "text": "The magical aura that surrounded you dissipates and you feel that your exceptional item resist chances have returned to normal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159449",
+   "text": "A magical aura surrounds you and you feel that your next attempt to craft an exceptional piece of armor will have favorable bonus resists.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159450",
+   "text": "Runic Exceptional Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159451",
+   "text": "Exceptional Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159452",
+   "text": "Shrine Battle Virtue Title",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159453",
+   "text": "You are about to renounce your Shrine Battle virtue title. You may recover the title by placing a mysterious fragment at any shrine. Do you wish to proceed?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159454",
+   "text": "The Royal Engineers have warned of a structure in danger of collapsing near ~2_where~ at ~1_coords~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159455",
+   "text": "Collapsing in: ~1_val~ seconds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159456",
+   "text": "Collapsing in: ~1_val~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159457",
+   "text": "Collapsing in: less than ~1_val~ hours",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159458",
+   "text": "Collapsing in: ~1_val~ days",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159459",
+   "text": "You can't ride a mount at your location.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159460",
+   "text": "Your weapon seems to have no effect.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159461",
+   "text": "You cannot damage this because it would put you over your weight limit or item count.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159462",
+   "text": "Decorative Wine Rack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159463",
+   "text": "This decorative container will hold all of your prized possessions and display as either empty or full of wine bottles based on if the container is empty or full.  Can be hued with regular, natural, pigment, and Ultima Store dyes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159464",
+   "text": "Decorative Garden Sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159465",
+   "text": "This decorative garden sculpture is sure to bring an extra bit of beauty to your garden!  Can be hued with regular, natural, pigment, and Ultima Store dyes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159466",
+   "text": "The Anvil of Artifacts allows a player to set the value of all exceptional resist bonuses provided when crafting an exceptional piece of armor.  When crafting with a runic tool the resulting armor is still subject to random magic item properties. (18 charges)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159467",
+   "text": "decorative dungeon bull",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159468",
+   "text": "Decorative Dungeon Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159469",
+   "text": "decorative dungeon wall hook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159470",
+   "text": "decorative dungeon chair",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159471",
+   "text": "decorative dungeon stool",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159472",
+   "text": "decorative dungeon stocks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159473",
+   "text": "decorative dungeon mask",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159474",
+   "text": "decorative dungeon fountain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159475",
+   "text": "This decorative dungeon set includes 1 decorative wall hook, 1 decorative dungeon chair, 1 decorative dungeon stool, 1 decorative stocks, 1 decorative dungeon mask, 1 decorative dungeon fountain, and 1 decorative dungeon bull. All items can be dyed with regular, furniture, natural, pigment, and promotional dyes.  All items are for decoration only.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159476",
+   "text": "New Veteran Rewards are here, complete with a redemption gump!  Check out the new monster statuettes, enchanted granite cart, power tools, and the awesome War Boar ethereal mount!<br><br>Look for new items coming soon to the Ultima Store, including the Spiral Staircase, Metal Ladder, Decorative Wine Rack, Decorative Garden Sculpture, Anvil of Artifacts, and the Decorative Dungeon Set!<br><br>New combat updates are here! Check out the <A HREF=\"https://uo.com/wiki/ultima-online-wiki/publish-notes/publish-108/\">full publish notes</A>. for full details!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159477",
+   "text": "You have received ~1_NUM~ IDOC loot items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159478",
+   "text": "Metal Ladder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159479",
+   "text": "This ladder can be placed in your home as either a regular or castle ladder and can be hued with regular, natural, pigment, metal, and Ultima Store dyes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159480",
+   "text": "Spiral Staircase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159481",
+   "text": "This spiral staircase will magically teleport players up and down a floor within their home. The staircase can be placed with or without a topper. A spiral staircase placed “with” a topper is useful in pre-fab houses and will place a series of tiles on the above floor of the staircase. A spiral staircase “without” a topper is useful in customizeable houses where customized flooring does not require the above floor to have additional tiles placed on top. The staircase can be dyed with normal, furniture, plant, pigment, and Ultima Store dyes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159482",
+   "text": "Min DPS",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159483",
+   "text": "Max DPS",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159484",
+   "text": "You have been transported to a safe location in which you can resurrect as an Endless Journey player.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159485",
+   "text": "Set Reward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159486",
+   "text": "Update Guild Information",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159487",
+   "text": "You must be in a guild to do this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159488",
+   "text": "The stone has been updated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159489",
+   "text": "The guild this stone is linked to is no longer valid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159490",
+   "text": "Decorative Guildstone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159491",
+   "text": "This decorative guildstone can be placed in a home and used to view information about your current guild including the guild name, guild abbreviation, alliance name, guild charter, guildmaster name and title. Older guilds can also view their guild number. Can be dyed with regular, pigment, natural, and promotional dyes. Shardbound.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159492",
+   "text": "Capybara",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159493",
+   "text": "Receive a Capybara statuette. This blessed statuette may be used to create a capybara mount.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159494",
+   "text": "Set Source Object",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159495",
+   "text": "Set Destination Object",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159496",
+   "text": "This will allow you to transfer the properties from one robe slot item to another robe slot item.  Use the \"Set Source Object\" to set the object that you wish to transfer the properties FROM.  Use \"Set Destination Object\" to set the object that you wish to transfer the properties TO.  The destination object must be free of all magical properties.  You will be presented with a confirmation before the transfer is finalized. The destination object will retain its hue after the transfer. If the source object has a unique name then it will be transferred to the destination object as well. The blessed status will be retained. This process is final and cannot be undone!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159497",
+   "text": "Convert!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159498",
+   "text": "Target the object that you wish to transfer properties FROM...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159499",
+   "text": "Target the object you wish to transfer properties TO...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159500",
+   "text": "That is not a valid robe-slot item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159501",
+   "text": "Transmogrification Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159502",
+   "text": "You are about to transmogrify the items you have selected. The source object will be destroyed and the destination object will take on the properties of the source object.  Blessed status will be retained.  Are you sure you wish to proceed?  This process is final and cannot be undone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159503",
+   "text": "Robe Slot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159504",
+   "text": "The destination item must be free of any magical properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159505",
+   "text": "Transmogrification Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159506",
+   "text": "23rd Anniversary Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159507",
+   "text": "Silver Plated Lamppost",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159508",
+   "text": "Silver Plated Bubbling Cauldron",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159509",
+   "text": "Silver Plated Tome",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159510",
+   "text": "In Commemoration Of Twenty-three Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159511",
+   "text": "23rd Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159512",
+   "text": "Happy Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159513",
+   "text": "Happy Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159514",
+   "text": "Happy Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159515",
+   "text": "The Tale of the ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159516",
+   "text": "Tongue Length: ~1_VAL~ feet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159517",
+   "text": "You cannot use that right now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159518",
+   "text": "You may not set the source and destination objects to the same object!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159519",
+   "text": "Event Moderator reward items may not be used with this tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159520",
+   "text": "Book of Lore",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159521",
+   "text": "Decorative Mage Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159522",
+   "text": "Decorative Mage's Rug",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159523",
+   "text": "Choose a size:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159524",
+   "text": "This decorative mage's set is the perfect addition to your magical home! Includes 2 decorative mage thrones, 1 decorative mage's book stand, 2 decorative specimen shelves, 1 decorative mage's crystal ball, and 1 decorative mage's rug.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159525",
+   "text": "You have already received a reward for this encounter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159526",
+   "text": "Mini Castle - The Spires",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159527",
+   "text": "Mini Keep - Robin's Nest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159528",
+   "text": "A mini house deed of \"The Spires\" castle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159529",
+   "text": "A mini house deed of \"Robin's Nest\" keep.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159530",
+   "text": "~1_DE_TOT_OBJ_TID~ ~2_DE_TOT_SUFFIX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159531",
+   "text": "Points from this event will expire: ~1_DATE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159532",
+   "text": "DE ToT Event ID: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159533",
+   "text": "Turn In Artifacts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159534",
+   "text": "~1_EVENTNAME~ Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159535",
+   "text": "Your Reward Points<br><center>~1_VAL~</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159536",
+   "text": "<center>Points from this event will expire: ~1_DATE~</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159537",
+   "text": "Reward redemption is currently unavailable. Please contact in-game support.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159538",
+   "text": "You have made an invalid selection. Please try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159539",
+   "text": "You do not have enough reward points for that item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159540",
+   "text": "This event has not yet started. This event will begin ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1159541",
+   "text": "Personal blessed items are not valid targets. Please remove the personal blessing and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "3000000",
+   "text": "Quit Ultima Online?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000029",
+   "text": "ping 回覆錯誤",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000035",
+   "text": "你的帳號因下列原因被鎖定了：1) 你的的付費資訊無效或過期。 2) 你的遊戲時間到期。 3) 你的帳號因違反使用條款而被暫時凍結。 4) 你的帳號因違反使用條款而被終止。有關解決方法，請見FAQ：http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=232",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000037",
+   "text": "你與 Origin 的連線出現了問題，請你重新啟動網路創世紀。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000038",
+   "text": "Log in to Ultima Online",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000052",
+   "text": "Logging into Britannia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000111",
+   "text": "Strength",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000112",
+   "text": "Intelligence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000113",
+   "text": "Dexterity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000114",
+   "text": "Initial Skills",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000115",
+   "text": "Skill One",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000116",
+   "text": "Skill Two",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000117",
+   "text": "Skill Three",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000118",
+   "text": "Male",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000119",
+   "text": "Female",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000120",
+   "text": "Gender",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000121",
+   "text": "Hair Style",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000122",
+   "text": "Facial Hair Style",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000123",
+   "text": "Credits",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000124",
+   "text": "Quit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000125",
+   "text": "City Selection",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000126",
+   "text": "Starting Location",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000183",
+   "text": "Skin Tone",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000184",
+   "text": "Hair Color",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000185",
+   "text": "Facial Hair Color",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000193",
+   "text": "我的UO",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000214",
+   "text": "無法建立檔案 servers.tmp！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000215",
+   "text": "無法解析伺服器 gq.origin.ea.com",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000216",
+   "text": "無法開啟檔案 servers.tmp！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000260",
+   "text": "~1skillname~已經上昇了：~2changeamt~。目前變成：~3newvalue~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000261",
+   "text": "~1skillname~已經下降了：~2changeamt~。目前變成：~3newvalue~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000262",
+   "text": "~1objectname~：下降到~2quantity~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000263",
+   "text": "~1shardname~：你已經與該伺服器失去連線。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000264",
+   "text": "【偵測到垃圾郵件，言論已排列~1timeinseconds~秒】",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000265",
+   "text": "【系統】~1systemmessage~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000266",
+   "text": "~1shardname~：你已經登入此伺服器。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000272",
+   "text": "力量屬性已經改變~1changeamount~了。目前為~2newvalue~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000273",
+   "text": "敏捷屬性已經改變~1changeamount~了。目前為~2newvalue~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000274",
+   "text": "智力屬性已經改變~1changeamount~了。目前為~2newvalue~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000275",
+   "text": "~1servername~：此主機目前不在伺服器列表中！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000276",
+   "text": "~1servername~：你在此伺服器內並沒有任何角色！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000277",
+   "text": "~1servername~：你以~2charactername~連線至此伺服器。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000278",
+   "text": "~1servername~：這個主機已經滿載了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000279",
+   "text": "~1servername~：登入中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000280",
+   "text": "~1servername~：你已經與此伺服器失去連線了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000281",
+   "text": "季節：~1seasonname~ 溫度：~2tempindegreesf~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "3000323",
+   "text": "Character Deletion",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000324",
+   "text": "Select a Shard on Which to Play Ultima Online",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000325",
+   "text": "Design the Appearance of Your Character",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000326",
+   "text": "Choose a Trade for Your Character",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000327",
+   "text": "Strength:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000328",
+   "text": "Dexterity:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000329",
+   "text": "Intelligence:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000330",
+   "text": "Amount:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000331",
+   "text": "Select Your Starting City",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000340",
+   "text": "None",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000341",
+   "text": "Short",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000342",
+   "text": "Long",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000343",
+   "text": "Ponytail",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000344",
+   "text": "Mohawk",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000345",
+   "text": "Pageboy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000346",
+   "text": "Topknot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000347",
+   "text": "Curly",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000348",
+   "text": "Receding",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000349",
+   "text": "Pigtails",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "3000350",
+   "text": "Buns",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

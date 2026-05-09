@@ -10,11 +10,40 @@ using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Misc
 {
     class AssassinFunctions
     {
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
+		private static string BuildQuestStatusText( Mobile from, string targetTitle, string targetName, string region, string world, int fee, string storedStory )
+		{
+			string targetDisplay = string.IsNullOrWhiteSpace( targetTitle ) ? targetName : targetTitle;
+			string regionDisplay = ResolveText( from, region );
+			string worldDisplay = ResolveText( from, world );
+			string targetDisplayLocalized = ResolveText( from, targetDisplay );
+			string feeText = fee.ToString( "#,##0" );
+
+			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+				return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+
+			if ( !string.IsNullOrWhiteSpace( storedStory ) )
+				return storedStory;
+
+			return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+		}
+
 		public static void CheckTarget( Mobile m, Mobile target )
 		{
 			string victim = PlayerSettings.GetQuestInfo( m, "AssassinQuest" );
@@ -466,9 +495,9 @@ namespace Server.Misc
 					nEntry++;
 				}
 
-				sVictimQuest = sAssassinStory;
+				sVictimQuest = BuildQuestStatusText( m, sAssassinTitle, sAssassinName, sAssassinRegion, sAssassinWorld, nAssassinFee, sAssassinStory );
 				string sWorth = nAssassinFee.ToString("#,##0");
-				if ( nAssassinDone == 1 ){ sVictimQuest = "Return to Xardok for your " + sWorth + " gold payment"; }
+				if ( nAssassinDone == 1 ){ sVictimQuest = ResolveFormat( m, "Return to Xardok for your {0} gold payment", sWorth ); }
 			}
 			return sVictimQuest;
 		}

@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Regions;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -38,7 +39,7 @@ namespace Server.Spells.Jedi
 				{
 					m.PlaySound( 0x244 );
 					Effects.SendLocationEffect(m.Location, m.Map, 0x373A, 15, 0, 0);
-					m.SendMessage( "You create a replication crystal with your genetic pattern." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You create a replication crystal with your genetic pattern." ) );
 				}
 			}
 

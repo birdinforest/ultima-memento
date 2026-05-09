@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Spells.Mystic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -28,26 +29,26 @@ namespace Server.Items
 		{
 			if ( from != owner )
 			{
-				from.SendMessage( "The parchement crumbles in your hand." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The parchement crumbles in your hand." ) );
 				this.Delete();
 			}
 			else
 			{
-				from.SendMessage( "These writings need to be added to a monk's tome." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These writings need to be added to a monk's tome." ) );
 			}
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "Written by " + owner.Name + "" ); }
+			if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Written by {0}", owner.Name ) ); }
         }
 
 		public override bool OnDragLift( Mobile from )
 		{
 			if ( from != owner )
 			{
-				from.SendMessage( "The parchement crumbles in your hand." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The parchement crumbles in your hand." ) );
 				this.Delete();
 			}
 

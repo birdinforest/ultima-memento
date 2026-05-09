@@ -127,9 +127,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, "Since you are begging, do you still want me to unlock a box? It will only cost you " + nCost.ToString() + ".");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to unlock a box? It will only cost you {0}.", nCost));
 			}
-			else { SayTo(from, "If you want me to unlock a box, it will cost you " + nCost.ToString() + " gold."); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to unlock a box, it will cost you {0} gold.", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -162,8 +162,8 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Thief.SayTo(from, "That is now unlocked.");
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        m_Thief.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That is now unlocked."));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x241);
 						box.Locked = false;
 						box.TrapPower = 0;
@@ -175,13 +175,13 @@ namespace Server.Mobiles
                     }
                     else
                     {
-                        m_Thief.SayTo(from, "It would cost you {0} gold to have that unlocked.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_Thief.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that unlocked.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
                 }
 				else
 				{
-					m_Thief.SayTo(from, "That does not need my services.");
+					m_Thief.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
 				}
             }
         }

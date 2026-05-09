@@ -102,9 +102,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, "Since you are begging, do you still want me to decipher a treasure map for you, it will only cost " + nCost.ToString() + " gold per level of the map?");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to decipher a treasure map for you, it will only cost {0} gold per level of the map?", nCost));
 			}
-			else { SayTo(from, "If you want me to decipher a treasure map for you, it will cost " + nCost.ToString() + " gold per level of the map"); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to decipher a treasure map for you, it will cost {0} gold per level of the map", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -141,31 +141,31 @@ namespace Server.Mobiles
 
 					if ( tmap.Decoder != null )
 					{
-						m_CartographersGuildmaster.SayTo(from, "That map has already been deciphered.");
+						m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That map has already been deciphered."));
 					}
                     else if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-						if ( tmap.Level == 1 ){ m_CartographersGuildmaster.SayTo(from, "This map was really quite simple."); }
-						else if ( tmap.Level == 2 ){ m_CartographersGuildmaster.SayTo(from, "Seemed pretty easy...so here it is."); }
-						else if ( tmap.Level == 3 ){ m_CartographersGuildmaster.SayTo(from, "This map was a bit of a challenge."); }
-						else if ( tmap.Level == 4 ){ m_CartographersGuildmaster.SayTo(from, "Whoever drew this map, did not want it found."); }
-						else if ( tmap.Level == 5 ){ m_CartographersGuildmaster.SayTo(from, "This took more research than normal."); }
-						else { m_CartographersGuildmaster.SayTo(from, "With the ancient writings and riddles, this map should now lead you there."); }
+						if ( tmap.Level == 1 ){ m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "This map was really quite simple.")); }
+						else if ( tmap.Level == 2 ){ m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Seemed pretty easy...so here it is.")); }
+						else if ( tmap.Level == 3 ){ m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "This map was a bit of a challenge.")); }
+						else if ( tmap.Level == 4 ){ m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Whoever drew this map, did not want it found.")); }
+						else if ( tmap.Level == 5 ){ m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "This took more research than normal.")); }
+						else { m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "With the ancient writings and riddles, this map should now lead you there.")); }
 
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x249);
 						tmap.Decoder = from;
                     }
                     else
                     {
-                        m_CartographersGuildmaster.SayTo(from, "It would cost you {0} gold for me to decipher that map.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold for me to decipher that map.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
                 }
 				else
 				{
-					m_CartographersGuildmaster.SayTo(from, "That does not need my services.");
+					m_CartographersGuildmaster.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
 				}
             }
         }

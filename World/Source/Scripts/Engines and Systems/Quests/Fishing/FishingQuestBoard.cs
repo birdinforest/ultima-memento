@@ -9,6 +9,8 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Items
 {
@@ -36,7 +38,9 @@ namespace Server.Items
 			if ( e.InRange( this.GetWorldLocation(), 4 ) )
 			{
 				e.CloseGump( typeof( BoardGump ) );
-				e.SendGump( new BoardGump( e, "SEEKING BRAVE SAILORS", "The townsfolk are looking for brave sailors of the high seas, " + e.Name +". Sailors are given bounties on pirates or sea creatures, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous a sailor, the better chance to get a high priced bounty or valuable item to find.<br><br><br><br>To get a quest, one must simply ask this bulletin board if any townsfolk wish to 'hire' them. These quests do not send you to seas you have never been. Any details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.", "#9dc2e8", false ) );
+				string title = StringCatalog.Resolve( e.Account, "SEEKING BRAVE SAILORS" );
+				string body = StringCatalog.ResolveFormat( e.Account, "The townsfolk are looking for brave sailors of the high seas, {0}. Sailors are given bounties on pirates or sea creatures, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous a sailor, the better chance to get a high priced bounty or valuable item to find.<br><br><br><br>To get a quest, one must simply ask this bulletin board if any townsfolk wish to 'hire' them. These quests do not send you to seas you have never been. Any details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.", e.Name );
+				e.SendGump( new BoardGump( e, title, body, "#9dc2e8", false ) );
 			}
 			else
 			{
@@ -59,7 +63,9 @@ namespace Server.Items
 				return;
 				
 				m_Mobile.CloseGump( typeof( BoardGump ) );
-				m_Mobile.SendGump( new BoardGump( m_Mobile, "SEEKING BRAVE SAILORS", "The townsfolk are looking for brave sailors of the high seas, " + m_Mobile.Name +". Sailors are given bounties on pirates or sea creatures, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous a sailor, the better chance to get a high priced bounty or valuable item to find.<br><br><br><br>To get a quest, one must simply ask this bulletin board if any townsfolk wish to 'hire' them. These quests do not send you to seas you have never been. Any details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.", "#9dc2e8", false ) );
+				string title = StringCatalog.Resolve( m_Mobile.Account, "SEEKING BRAVE SAILORS" );
+				string body = StringCatalog.ResolveFormat( m_Mobile.Account, "The townsfolk are looking for brave sailors of the high seas, {0}. Sailors are given bounties on pirates or sea creatures, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous a sailor, the better chance to get a high priced bounty or valuable item to find.<br><br><br><br>To get a quest, one must simply ask this bulletin board if any townsfolk wish to 'hire' them. These quests do not send you to seas you have never been. Any details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.", m_Mobile.Name );
+				m_Mobile.SendGump( new BoardGump( m_Mobile, title, body, "#9dc2e8", false ) );
             }
         }
 
@@ -86,11 +92,11 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetQuestState( m_Mobile, "FishingQuest" ) )
 				{
-					m_Mobile.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You are already on a quest. Return here when you are done.", m_Mobile.NetState);
+					m_Mobile.PrivateOverheadMessage( MessageType.Regular, 1150, false, StringCatalog.Resolve( m_Mobile.Account, "You are already on a quest. Return here when you are done." ), m_Mobile.NetState );
 				}
 				else if ( nWhenForAnotherQuest > 0 )
 				{
-					m_Mobile.PrivateOverheadMessage(MessageType.Regular, 1150, false, "There are no quests at the moment. Check back in " + sAllowedForAnotherQuest + " minutes.", m_Mobile.NetState);
+					m_Mobile.PrivateOverheadMessage( MessageType.Regular, 1150, false, StringCatalog.ResolveFormat( m_Mobile.Account, "There are no quests at the moment. Check back in {0} minutes.", sAllowedForAnotherQuest ), m_Mobile.NetState );
 				}
 				else
 				{

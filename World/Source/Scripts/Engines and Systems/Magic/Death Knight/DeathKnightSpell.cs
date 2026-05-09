@@ -1,6 +1,7 @@
 using System;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
@@ -20,28 +21,33 @@ namespace Server.Spells.DeathKnight
 
 		public static string SpellDescription( int spell )
 		{
-			string txt = "This skull holds the knowledge of Death Knight magic: ";
+			return SpellDescription( null, spell );
+		}
+
+		public static string SpellDescription( Server.Accounting.IAccount account, int spell )
+		{
+			string txt = StringCatalog.Resolve( account, "This skull holds the knowledge of Death Knight magic: " );
 			string skl = "0";
 
-			if ( spell == 750 ){ 		skl = "40";	txt += "Banish summoned creatures back to their realm, demons back to hell, or elementals back to their plane of existence."; }
-			else if ( spell == 751 ){ 	skl = "15";	txt += "The death knight's target is healed by demonic forces for a significant amount."; }
-			else if ( spell == 752 ){ 	skl = "90";	txt += "Summons the devil to battle with the death knight."; }
-			else if ( spell == 753 ){ 	skl = "30";	txt += "The next target hit becomes marked by the grim reaper. All damage dealt to it is increased, but the death knight takes extra damage from other kinds of creatures."; }
-			else if ( spell == 754 ){ 	skl = "5";	txt += "Your hand holds the powers of a hag, where it can remove curses from items and others."; }
-			else if ( spell == 755 ){ 	skl = "70";	txt += "The death knights's enemy is scorched by a hellfire that continues to burn the enemy for a short duration."; }
-			else if ( spell == 756 ){ 	skl = "25";	txt += "Calls down a bolt of energy from Lucifer himself, and temporarily stuns the enemy."; }
-			else if ( spell == 757 ){ 	skl = "80";	txt += "The forces of Orcus surround the knight and refelecta a certain amount of magical effects back at the caster."; }
-			else if ( spell == 758 ){ 	skl = "60";	txt += "Channels hatred to form a barrier around the target, shielding them from physical harm."; }
-			else if ( spell == 759 ){ 	skl = "45";	txt += "Drains the enemy of their soul, reducing their mana for a short period of time."; }
-			else if ( spell == 760 ){ 	skl = "20";	txt += "Greatly increases the target's strength for a short period."; }
-			else if ( spell == 761 ){ 	skl = "10";	txt += "The death knight's enemy is damaged by a demonic energy from the nine hells."; }
-			else if ( spell == 762 ){ 	skl = "35";	txt += "The death knight's target has their skin regenerate health over time."; }
-			else if ( spell == 763 ){ 	skl = "50";	txt += "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage."; }
+			if ( spell == 750 ){ 		skl = "40";	txt += StringCatalog.Resolve( account, "Banish summoned creatures back to their realm, demons back to hell, or elementals back to their plane of existence." ); }
+			else if ( spell == 751 ){ 	skl = "15";	txt += StringCatalog.Resolve( account, "The death knight's target is healed by demonic forces for a significant amount." ); }
+			else if ( spell == 752 ){ 	skl = "90";	txt += StringCatalog.Resolve( account, "Summons the devil to battle with the death knight." ); }
+			else if ( spell == 753 ){ 	skl = "30";	txt += StringCatalog.Resolve( account, "The next target hit becomes marked by the grim reaper. All damage dealt to it is increased, but the death knight takes extra damage from other kinds of creatures." ); }
+			else if ( spell == 754 ){ 	skl = "5";	txt += StringCatalog.Resolve( account, "Your hand holds the powers of a hag, where it can remove curses from items and others." ); }
+			else if ( spell == 755 ){ 	skl = "70";	txt += StringCatalog.Resolve( account, "The death knights's enemy is scorched by a hellfire that continues to burn the enemy for a short duration." ); }
+			else if ( spell == 756 ){ 	skl = "25";	txt += StringCatalog.Resolve( account, "Calls down a bolt of energy from Lucifer himself, and temporarily stuns the enemy." ); }
+			else if ( spell == 757 ){ 	skl = "80";	txt += StringCatalog.Resolve( account, "The forces of Orcus surround the knight and refelecta a certain amount of magical effects back at the caster." ); }
+			else if ( spell == 758 ){ 	skl = "60";	txt += StringCatalog.Resolve( account, "Channels hatred to form a barrier around the target, shielding them from physical harm." ); }
+			else if ( spell == 759 ){ 	skl = "45";	txt += StringCatalog.Resolve( account, "Drains the enemy of their soul, reducing their mana for a short period of time." ); }
+			else if ( spell == 760 ){ 	skl = "20";	txt += StringCatalog.Resolve( account, "Greatly increases the target's strength for a short period." ); }
+			else if ( spell == 761 ){ 	skl = "10";	txt += StringCatalog.Resolve( account, "The death knight's enemy is damaged by a demonic energy from the nine hells." ); }
+			else if ( spell == 762 ){ 	skl = "35";	txt += StringCatalog.Resolve( account, "The death knight's target has their skin regenerate health over time." ); }
+			else if ( spell == 763 ){ 	skl = "50";	txt += StringCatalog.Resolve( account, "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage." ); }
 
 			if ( skl == "0" )
 				return txt;
 
-			return txt + " It requires a Death Knight to be at least a " + skl + " in Knightship.";
+			return txt + " " + StringCatalog.ResolveFormat( account, "It requires a Death Knight to be at least a {0} in Knightship.", skl );
 		}
 
 		public override bool CheckCast()
@@ -53,12 +59,12 @@ namespace Server.Spells.DeathKnight
 
 			if ( Caster.Stam < mana )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to cast this spell." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )
@@ -87,12 +93,12 @@ namespace Server.Spells.DeathKnight
 
 			if ( Caster.Stam < mana )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to cast this spell." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )

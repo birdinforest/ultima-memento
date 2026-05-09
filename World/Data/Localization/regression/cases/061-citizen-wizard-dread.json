@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.wizard-isles-dread",
+  "pipeline": "citizen_broadcast",
+  "en": "a wizard that sails the Isles of Dread, selling rare spells",
+  "expectedZh": "传闻有位法师驾舟于恐惧群岛，贩卖珍奇法术。",
+  "tags": "commontalk-rule,fixed-sentence"
+}

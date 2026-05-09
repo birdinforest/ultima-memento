@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.mushrooms",
+  "pipeline": "string_catalog_only",
+  "en": "You pick up some nearby Mushrooms.",
+  "expectedZh": "你在附近拾起一些蘑菇。",
+  "tags": "harvest,lumber,bonus,string_catalog_only"
+}

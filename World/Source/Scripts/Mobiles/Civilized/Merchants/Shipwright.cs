@@ -90,17 +90,17 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), 1000))
                     {
 						ReturnToBoat( boat.GetMarkedLocation(), boat.Map, from );
-                        from.SendMessage(String.Format("You pay 1,000 gold."));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You pay 1,000 gold."));
 					}
 					else
 					{
-                        this.SayTo(from, "It would cost you 1,000 gold to be returned to your ship.");
-                        from.SendMessage("You do not have enough gold.");
+                        this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "It would cost you 1,000 gold to be returned to your ship."));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
 					}
 				}
 				else
 				{
-					this.SayTo(from, "There is nothing I can do with that.");
+					this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "There is nothing I can do with that."));
 				}
 			}
 
@@ -114,15 +114,15 @@ namespace Server.Mobiles
 			}
 			else if ( Worlds.AllowEscape( from, from.Map, from.Location, from.X, from.Y ) == false )
 			{
-				this.SayTo(from, "Your ship is somewhere I cannot send you." );
+				this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your ship is somewhere I cannot send you.") );
 			}
 			else if ( Worlds.RegionAllowedRecall( from.Map, from.Location, from.X, from.Y ) == false )
 			{
-				this.SayTo(from, "Your ship is somewhere I cannot send you." );
+				this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your ship is somewhere I cannot send you.") );
 			}
 			else if ( Worlds.RegionAllowedTeleport( map, loc, loc.X, loc.Y ) == false )
 			{
-				this.SayTo(from, "Your ship is somewhere I cannot send you." );
+				this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your ship is somewhere I cannot send you.") );
 			}
 			else if ( !SpellHelper.CheckTravel( from, map, loc, TravelCheckType.RecallTo ) )
 			{

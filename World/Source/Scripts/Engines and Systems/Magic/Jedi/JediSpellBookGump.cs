@@ -7,6 +7,7 @@ using Server.Misc;
 using Server.Network; 
 using Server.Spells; 
 using Server.Spells.Jedi; 
+using Server.Localization;
 using Server.Prompts;
 
 namespace Server.Gumps 
@@ -42,41 +43,41 @@ namespace Server.Gumps
 			{
 				AddImage(517, 40, 11435);
 
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>DATACRON OF JEDI WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "DATACRON OF JEDI WISDOM" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddButton(443, 40, 3610, 3610, 2, GumpButtonType.Reply, 0);
 
 				AddItem(43, 81, 16314);
 				AddItem(60, 131, 9698);
 				AddItem(51, 181, 0x3003, 0xB96);
-				AddHtml( 110, 85, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 110, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 110, 185, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Crystals:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 85, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 110, 185, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Crystals:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 85, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.GetJediSkillMax( from)  + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 135, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + from.ManaMax + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 210, 185, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.GetCrystals( from ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(305, 122, 0x2162);
-				AddHtml( 360, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Power:</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 360, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Power:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 460, 135, 55, 20, @"<BODY><BASEFONT Color=#00FF06>" + ((int)(Server.Spells.Jedi.JediSpell.GetJediDamage(from))) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				if ( Server.Misc.GetPlayerInfo.isJedi ( from, true ) ){ AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#00FF06>You Are One With The Jedi</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#308EB3>You Are Not A Jedi!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( Server.Misc.GetPlayerInfo.isJedi ( from, true ) ){ AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Are One With The Jedi" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 310, 85, 183, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You Are Not A Jedi!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 
-				AddHtml( 105, 236, 246, 20, @"<BODY><BASEFONT Color=#308EB3>Open Horizontal Quick Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 236, 246, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Open Horizontal Quick Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 236, 4005, 4005, 3, GumpButtonType.Reply, 0);
-				AddHtml( 105, 276, 246, 20, @"<BODY><BASEFONT Color=#308EB3>Open Vertical Quick Bar</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 276, 246, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Open Vertical Quick Bar" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 276, 4005, 4005, 4, GumpButtonType.Reply, 0);
 
 				int name_show = 3609; if ( m_Book.names > 0 ){ name_show = 4017; }
 
-				AddHtml( 105, 316, 246, 20, @"<BODY><BASEFONT Color=#308EB3>Vertical Bar Names</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 105, 316, 246, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Vertical Bar Names" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(60, 316, name_show, name_show, 5, GumpButtonType.Reply, 0);
 
-				AddHtml( 350, 236, 246, 20, @"<BODY><BASEFONT Color=#308EB3>Close Quick Bars</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 350, 236, 246, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Close Quick Bars" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(305, 236, 4005, 4005, 9, GumpButtonType.Reply, 0);
 
-				AddHtml( 350, 316, 246, 20, @"<BODY><BASEFONT Color=#308EB3>Construct Laser Sword</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 350, 316, 246, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Construct Laser Sword" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(305, 316, 4011, 4011, 6, GumpButtonType.Reply, 0);
 
 				string wordColor = "#308EB3";
@@ -153,33 +154,33 @@ namespace Server.Gumps
 			}
 			else if ( page == 2 )
 			{
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>DATACRON OF JEDI WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "DATACRON OF JEDI WISDOM" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				string lowreg = " There is a magical property on this world with lower reagent qualities. These are helpful for a Jedi in regards to syrcarak crystals, but only half as such as wizards are granted.";
+				string lowreg = StringCatalog.Resolve( from.Account, " There is a magical property on this world with lower reagent qualities. These are helpful for a Jedi in regards to syrcarak crystals, but only half as such as wizards are granted." );
 					if ( MyServerSettings.LowerReg() < 1 )
 						lowreg = "";
 
-				AddHtml( 57, 77, 652, 528, @"<BODY><BASEFONT Color=#00FF06>You can hear the voice of Zoda the Jedi Master from within your own mind. He tells you that if you are worthy of the path, you can one day become a powerful Jedi yourself. A Jedi pursues their goals with their psychic abilities and their sword. Any other type of weapon is virtually useless to a Jedi. <br><br>He continues to explain that the knowledge this datacron contained was given by ten members of the Jedi order. You will need to find their resting places to obtain each of the Jedi powers once wielded by the Jedi. Each power is described within the datacron, and the location of where an aspiring Jedi may find the graves. Find the grave, speak the true name of the one resting there, and gain the wisdom of the Jedi.<br><br>To be one with the Jedi, you need to have positive karma. The greater your karma, the more light you possess and thus your powers will have a potential of greater effect. To use a Jedi power, one would need an equal amount of skill in both psychology and sword fighting. Tactics can help a Jedi not only fight better, but tactics (along with sword fighting) can also increase the effectiveness of Jedi powers. There are certain criteria to be a Jedi. They must always wield a sword and wear clothing or trinkets named after our order. These could be either trinkets, robes, hoods, cowls, or shields. Only one piece of clothing or trinket need be worn at a time. Without a datacron of their own, a Jedi cannot be. Since datacrons cannot be created on this world, you will have to embrace Zoda's. Keep it with you at all times or you will not be one with the Jedi. If you find clothing, or trinkets that you wish to keep, place them onto the datacron and it will transform the item into something appropriate for a Jedi.<br><br>A Jedi cannot rely solely on the power of the mind, as we need the energy from karan crystals to power our datacrons and give us the force we need to use our power. We could not find karan crystals on this world, as they are normally from the Jedi home world. The ship I came here on did have a quadrit catalizer, however, that can cystalize the molecular structure of gold into karan crystals. I left this device with Jacen in Britain, so he may be able to help you turn gold coins into these crystals. If you find this datacron many years beyond his passing, perhaps he had a child that also became a priest and may still be in Britain. It is up to you to seek them out if this is true, and see if you can give them gold coins they will turn into these crystals for you. We also discovered that demonic creatures have an element of karan crystals within their bones. This was by accident, when I slain a daemon terrorizing a family. It was a discovery that helped the Jedi to exist here, and you must know this if you pursue this life. If the device no longer exists, then you must vanquish the demons of the land and use the shards from their bones to undo the evil they wrought." + lowreg + "<br><br>If you want to have the grand title of 'Jedi', then make sure your skill title is set to that of psychology and that you also follow the Jedi ways. If you also pursue the passage of becoming a grandmaster in this world's noble acts of knightship, then you can be a 'Jedi Knight'.<br><br>Go forth, and bring peace to this world. Remain in the light and beware the darkness!<br><br>You can use these powers by a typed command, which allows you to make macros for using these if you want. Each of these commands are listed below:<br><br>[ForceGrip<br><br>[MindsEye<br><br>[Mirage<br><br>[ThrowSabre<br><br>[Celerity<br><br>[PsychicAura<br><br>[Deflection<br><br>[SoothingTouch<br><br>[StasisField<br><br>[Replicate <br><br><br><br></BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 57, 77, 652, 528, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#00FF06>You can hear the voice of Zoda the Jedi Master from within your own mind. He tells you that if you are worthy of the path, you can one day become a powerful Jedi yourself. A Jedi pursues their goals with their psychic abilities and their sword. Any other type of weapon is virtually useless to a Jedi. <br><br>He continues to explain that the knowledge this datacron contained was given by ten members of the Jedi order. You will need to find their resting places to obtain each of the Jedi powers once wielded by the Jedi. Each power is described within the datacron, and the location of where an aspiring Jedi may find the graves. Find the grave, speak the true name of the one resting there, and gain the wisdom of the Jedi.<br><br>To be one with the Jedi, you need to have positive karma. The greater your karma, the more light you possess and thus your powers will have a potential of greater effect. To use a Jedi power, one would need an equal amount of skill in both psychology and sword fighting. Tactics can help a Jedi not only fight better, but tactics (along with sword fighting) can also increase the effectiveness of Jedi powers. There are certain criteria to be a Jedi. They must always wield a sword and wear clothing or trinkets named after our order. These could be either trinkets, robes, hoods, cowls, or shields. Only one piece of clothing or trinket need be worn at a time. Without a datacron of their own, a Jedi cannot be. Since datacrons cannot be created on this world, you will have to embrace Zoda's. Keep it with you at all times or you will not be one with the Jedi. If you find clothing, or trinkets that you wish to keep, place them onto the datacron and it will transform the item into something appropriate for a Jedi.<br><br>A Jedi cannot rely solely on the power of the mind, as we need the energy from karan crystals to power our datacrons and give us the force we need to use our power. We could not find karan crystals on this world, as they are normally from the Jedi home world. The ship I came here on did have a quadrit catalizer, however, that can cystalize the molecular structure of gold into karan crystals. I left this device with Jacen in Britain, so he may be able to help you turn gold coins into these crystals. If you find this datacron many years beyond his passing, perhaps he had a child that also became a priest and may still be in Britain. It is up to you to seek them out if this is true, and see if you can give them gold coins they will turn into these crystals for you. We also discovered that demonic creatures have an element of karan crystals within their bones. This was by accident, when I slain a daemon terrorizing a family. It was a discovery that helped the Jedi to exist here, and you must know this if you pursue this life. If the device no longer exists, then you must vanquish the demons of the land and use the shards from their bones to undo the evil they wrought." ) + lowreg + StringCatalog.Resolve( from.Account, "<br><br>If you want to have the grand title of 'Jedi', then make sure your skill title is set to that of psychology and that you also follow the Jedi ways. If you also pursue the passage of becoming a grandmaster in this world's noble acts of knightship, then you can be a 'Jedi Knight'.<br><br>Go forth, and bring peace to this world. Remain in the light and beware the darkness!<br><br>You can use these powers by a typed command, which allows you to make macros for using these if you want. Each of these commands are listed below:<br><br>[ForceGrip<br><br>[MindsEye<br><br>[Mirage<br><br>[ThrowSabre<br><br>[Celerity<br><br>[PsychicAura<br><br>[Deflection<br><br>[SoothingTouch<br><br>[StasisField<br><br>[Replicate <br><br><br><br></BASEFONT></BODY>" ), (bool)false, (bool)true );
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 				AddItem(634, 34, 0x543D);
 			}
 			else if ( page == 6 )
 			{
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>DATACRON OF JEDI WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "DATACRON OF JEDI WISDOM" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 				AddImage(52, 78, 11435);
 
 				AddItem(273, 80, 7153, 0x7A9);
 
-				if ( m_Book.steel > 0 ){ AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#00FF06>You Have Durasteel</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#308EB3>You Need Durasteel!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( m_Book.steel > 0 ){ AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Have Durasteel" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 325, 81, 190, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You Need Durasteel!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 
 				int jewel = 0xB38;
-				if ( m_Book.gem > 0 ){ jewel = m_Book.gem; AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#00FF06>You Have A Gem</BASEFONT></BODY>", (bool)false, (bool)false); }
-				else { AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#308EB3>You Need A Gem!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( m_Book.gem > 0 ){ jewel = m_Book.gem; AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Have A Gem" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 325, 126, 190, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You Need A Gem!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 				AddItem(272, 131, 11421, jewel);
 
-				AddHtml( 278, 221, 436, 382, @"<BODY><BASEFONT Color=#00FF06>When a Jedi has reached the level of grandmaster in psychology, sword fighting, and tactics they can construct their own laser sword. In order to do this, they will need to find an ordinary gem of their choice. These are gems like rubies, emeralds, or sapphires. The gem will set the color for the blade of the laser sword after it is constructed and emit the light needed for the blade, where this gem is put into this datacron. They will also need a metal durasteel ingot, which is not a metal born of this world. They can replace gems at any time before construction if they want to choose a different color for the blade. They will also need 10,000 gold in their pack for additional materials. The construction will require a Jedi to mediate deeply to power the creation of the blade, where 15,000 karma will be required. They will also need 15,000 points of fame. Both elements of the Jedi will be set to zero after the creation of the laser sword, where the Jedi will be greatly weakened in their powers until their wisdom grows strong again.<br><br>The laser sword will begin as something ordinary, but as long as it is used it will grow in power as victories are achieved over the many fearsome foes of the lands. This sword will never need to be repaired. If a Jedi meets an untimely end, they will have it in their possession when they return to the living. Certain traps that affect equipped items will have no adverse effects on this. Creatures, that attempt to ruin items, will fail in the attempt. If a Jedi is careless with the sword, and leave it lying about, then fate will speak for what may happen to it. This sword will gain levels as it achieves victory over a Jedi’s adversaries. When the sword gains a level, a Jedi can single click on it and select 'Enchant' to give the sword more power. Be careful adding powers, as one cannot change any attributes once they select them. A Jedi can use regular dye tubs on these, making them any color they choose if the gem they selected does not meet their expectations. They must also be in Zoda's tomb to construct this laser sword, where they will have their choice of a regular or a double bladed weapon.</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 278, 221, 436, 382, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "When a Jedi has reached the level of grandmaster in psychology, sword fighting, and tactics they can construct their own laser sword. In order to do this, they will need to find an ordinary gem of their choice. These are gems like rubies, emeralds, or sapphires. The gem will set the color for the blade of the laser sword after it is constructed and emit the light needed for the blade, where this gem is put into this datacron. They will also need a metal durasteel ingot, which is not a metal born of this world. They can replace gems at any time before construction if they want to choose a different color for the blade. They will also need 10,000 gold in their pack for additional materials. The construction will require a Jedi to mediate deeply to power the creation of the blade, where 15,000 karma will be required. They will also need 15,000 points of fame. Both elements of the Jedi will be set to zero after the creation of the laser sword, where the Jedi will be greatly weakened in their powers until their wisdom grows strong again.<br><br>The laser sword will begin as something ordinary, but as long as it is used it will grow in power as victories are achieved over the many fearsome foes of the lands. This sword will never need to be repaired. If a Jedi meets an untimely end, they will have it in their possession when they return to the living. Certain traps that affect equipped items will have no adverse effects on this. Creatures, that attempt to ruin items, will fail in the attempt. If a Jedi is careless with the sword, and leave it lying about, then fate will speak for what may happen to it. This sword will gain levels as it achieves victory over a Jedi's adversaries. When the sword gains a level, a Jedi can single click on it and select 'Enchant' to give the sword more power. Be careful adding powers, as one cannot change any attributes once they select them. A Jedi can use regular dye tubs on these, making them any color they choose if the gem they selected does not meet their expectations. They must also be in Zoda's tomb to construct this laser sword, where they will have their choice of a regular or a double bladed weapon." ) + "</BASEFONT></BODY>", (bool)false, (bool)true);
 
 				AddItem(132, 416, 16314);
 				AddItem(136, 525, 11499);
@@ -188,23 +189,23 @@ namespace Server.Gumps
 
 				if ( !Server.Misc.GetPlayerInfo.isJedi ( from, false ) || from.Skills[SkillName.Psychology].Value < 100 || from.Skills[SkillName.Tactics].Value < 100 || from.Skills[SkillName.Swords].Value < 100 || from.Fame < 15000 || from.Karma < 15000 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>You lack the attributes as a Jedi to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You lack the attributes as a Jedi to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( !( reg.IsPartOf( "the Tomb of Zoda the Jedi Master" ) ) )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>You need to be at Zoda's tomb to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You need to be at Zoda's tomb to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Book.steel < 1 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>You need durasteel to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You need durasteel to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( m_Book.gem < 1 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>You need an ordinary gem to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You need an ordinary gem to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else if ( GetWealth( from ) < 10000 )
 				{ 
-					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>You need 10,000 gold to construct a laser sword.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 281, 182, 430, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You need 10,000 gold to construct a laser sword." ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
@@ -214,14 +215,14 @@ namespace Server.Gumps
 			}
 			else if ( page >= 280 && page < 290 )
 			{
-				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>DATACRON OF JEDI WISDOM</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 40, 437, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "DATACRON OF JEDI WISDOM" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(691, 38, 4017, 4017, 1, GumpButtonType.Reply, 0);
 
 				AddImage(510, 43, 11433);
 				AddItem(307, 82, 21564, 0xB3E);
 				AddHtml( 114, 83, 154, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 57, 286, 652, 186, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 0 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 57, 286, 652, 186, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( from.Account, page, 0 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				int prev = m_Book.page - 1; if ( prev < 280 ){ prev = 289; }
 				int next = m_Book.page + 1; if ( next > 289 ){ next = 280; }
@@ -232,26 +233,26 @@ namespace Server.Gumps
 				AddButton(691, 586, 4005, 4005, next, GumpButtonType.Reply, 0);
 
 				AddItem(46, 132, 16314);
-					AddHtml( 115, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Skill:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 135, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 135, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(63, 182, 9698);
-					AddHtml( 115, 185, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 185, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 185, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 3 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(54, 232, 0x3003, 0xB96);
-					AddHtml( 115, 235, 70, 20, @"<BODY><BASEFONT Color=#308EB3>Crystals:</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 115, 235, 70, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Crystals:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						AddHtml( 210, 235, 54, 20, @"<BODY><BASEFONT Color=#00FF06>" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 10 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				if ( HasSpell( from, page ) ){ AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#00FF06>Learned</BASEFONT></BODY>", (bool)false, (bool)false); }
+				if ( HasSpell( from, page ) ){ AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "Learned" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 				else
 				{
-					AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#308EB3>Not Learned</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 352, 82, 154, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Not Learned" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					string locale = Worlds.GetTown( 0, Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ), out placer, out xc, out yc );
 
-					string hidden = "You can find the Jedi Holocron of " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 1 ) + " at " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ) + " in the " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 7 ) + ".";
-					hidden = hidden + " It is safely in the grave of a Jedi Master known as " + Server.Spells.Jedi.JediSpell.SpellInfo( page, 8 ) + ", and it can be revealed by speaking their true name of '" + Server.Spells.Jedi.JediSpell.SpellInfo( page, 4 ) + "'.<br><br>";
+					string hidden = StringCatalog.Resolve( from.Account, "You can find the Jedi Holocron of " ) + Server.Spells.Jedi.JediSpell.SpellInfo( page, 1 ) + StringCatalog.Resolve( from.Account, " at " ) + Server.Spells.Jedi.JediSpell.SpellInfo( page, 6 ) + StringCatalog.Resolve( from.Account, " in the " ) + Server.Spells.Jedi.JediSpell.SpellInfo( page, 7 ) + StringCatalog.Resolve( from.Account, "." );
+					hidden = hidden + StringCatalog.Resolve( from.Account, " It is safely in the grave of a Jedi Master known as " ) + Server.Spells.Jedi.JediSpell.SpellInfo( page, 8 ) + StringCatalog.Resolve( from.Account, ", and it can be revealed by speaking their true name of '" ) + Server.Spells.Jedi.JediSpell.SpellInfo( page, 4 ) + StringCatalog.Resolve( from.Account, "'.<br><br>" );
 					hidden = hidden + locale;
 
 					AddHtml( 57, 480, 664, 100, @"<BODY><BASEFONT Color=#308EB3>" + hidden + "</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -264,14 +265,14 @@ namespace Server.Gumps
 				{
 					if ( Server.Spells.Jedi.JediSpell.GetJediSkill( from, ( Int32.Parse( Server.Spells.Jedi.JediSpell.SpellInfo( page, 2 ) ) ) ) )
 					{
-						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#00FF06>You Are One With The Jedi</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve( from.Account, "You Are One With The Jedi" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 					else
 					{
-						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#308EB3>Your Jedi Powers Are Not Strong Enough!</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "Your Jedi Powers Are Not Strong Enough!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					}
 				}
-				else { AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#308EB3>You Are Not A Jedi!</BASEFONT></BODY>", (bool)false, (bool)false); }
+				else { AddHtml( 352, 226, 300, 20, @"<BODY><BASEFONT Color=#308EB3>" + StringCatalog.Resolve( from.Account, "You Are Not A Jedi!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 			}
 		}
 
@@ -394,7 +395,7 @@ namespace Server.Gumps
 					sword.Name = SwordName( sword.Name, from );
 					from.AddToBackpack ( sword );
 					LoggingFunctions.LogCreatedJedi( from, sword.Name );
-					from.SendMessage( "You can construct your own laser sword.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You can construct your own laser sword." ) );
 					from.FixedParticles( 0x373A, 9, 32, 5030, 0xB41, 0, EffectLayer.Waist );
 					from.PlaySound( 0x5C9 );
 				}

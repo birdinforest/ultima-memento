@@ -2,6 +2,7 @@ using Server;
 using System;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 using System.Collections;
 
 namespace Server.Items
@@ -37,10 +38,10 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
-			if ( NoFood( SpeciesID ) ){ list.Add( 1070722, "Does not need to eat"); }
-			else if ( NoFoodOrDrink( SpeciesID ) ){ list.Add( 1070722, "Does not need to eat or drink"); }
-			else if ( BloodDrinker( SpeciesID ) ){ list.Add( 1070722, "Needs to consume fresh blood"); }
-			else if ( BrainEater( SpeciesID ) ){ list.Add( 1070722, "Needs to consume fresh brains"); }
+			if ( NoFood( SpeciesID ) ){ list.Add( 1070722, RaceLocalization.KeyDefault( "baserace.needs.no_eat", "Does not need to eat" ) ); }
+			else if ( NoFoodOrDrink( SpeciesID ) ){ list.Add( 1070722, RaceLocalization.KeyDefault( "baserace.needs.no_eat_drink", "Does not need to eat or drink" ) ); }
+			else if ( BloodDrinker( SpeciesID ) ){ list.Add( 1070722, RaceLocalization.KeyDefault( "baserace.needs.blood", "Needs to consume fresh blood" ) ); }
+			else if ( BrainEater( SpeciesID ) ){ list.Add( 1070722, RaceLocalization.KeyDefault( "baserace.needs.brains", "Needs to consume fresh brains" ) ); }
         }
 
 		public static void ConfigureCostume( int race, BaseRace costume )
@@ -485,15 +486,15 @@ namespace Server.Items
 			string start = StartArea( race );
 			string zone = "";
 
-			if ( start == "cave" ){ zone = "The Cave"; }
-			else if ( start == "ice" ){ zone = "The Tundra"; }
-			else if ( start == "pits" ){ zone = "The Pits"; }
-			else if ( start == "sand" ){ zone = "The Desert"; }
-			else if ( start == "sea" ){ zone = "The Sea"; }
-			else if ( start == "sky" ){ zone = "The Mountains"; }
-			else if ( start == "swamp" ){ zone = "The Swamp"; }
-			else if ( start == "tomb" ){ zone = "The Tomb"; }
-			else if ( start == "woods" ){ zone = "The Woods"; }
+			if ( start == "cave" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.cave", "The Cave" ); }
+			else if ( start == "ice" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.ice", "The Tundra" ); }
+			else if ( start == "pits" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.pits", "The Pits" ); }
+			else if ( start == "sand" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.sand", "The Desert" ); }
+			else if ( start == "sea" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.sea", "The Sea" ); }
+			else if ( start == "sky" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.sky", "The Mountains" ); }
+			else if ( start == "swamp" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.swamp", "The Swamp" ); }
+			else if ( start == "tomb" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.tomb", "The Tomb" ); }
+			else if ( start == "woods" ){ zone = RaceLocalization.KeyDefault( "baserace.startname.woods", "The Woods" ); }
 
 			return zone;
 		}
@@ -502,15 +503,15 @@ namespace Server.Items
 		{
 			string zone = "";
 
-			if ( start == "The Cave" ){ zone = "in a cave"; }
-			else if ( start == "The Tundra" ){ zone = "in the winterlands"; }
-			else if ( start == "The Pits" ){ zone = "in the hellish pits"; }
-			else if ( start == "The Desert" ){ zone = "in the hot deserts"; }
-			else if ( start == "The Sea" ){ zone = "under the sea"; }
-			else if ( start == "The Mountains" ){ zone = "on the high mountains"; }
-			else if ( start == "The Swamp" ){ zone = "in the putrid swamps"; }
-			else if ( start == "The Tomb" ){ zone = "in a tomb"; }
-			else if ( start == "The Woods" ){ zone = "in the dense forest"; }
+			if ( start == RaceLocalization.KeyDefault( "baserace.startname.cave", "The Cave" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.cave", "in a cave" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.ice", "The Tundra" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.ice", "in the winterlands" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.pits", "The Pits" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.pits", "in the hellish pits" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.sand", "The Desert" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.sand", "in the hot deserts" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.sea", "The Sea" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.sea", "under the sea" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.sky", "The Mountains" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.sky", "on the high mountains" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.swamp", "The Swamp" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.swamp", "in the putrid swamps" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.tomb", "The Tomb" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.tomb", "in a tomb" ); }
+			else if ( start == RaceLocalization.KeyDefault( "baserace.startname.woods", "The Woods" ) ){ zone = RaceLocalization.KeyDefault( "baserace.startsentence.woods", "in the dense forest" ); }
 
 			return zone;
 		}
@@ -1253,41 +1254,41 @@ namespace Server.Items
 				Item item = GetCostume( raceID );
 				BaseRace race = (BaseRace)item;
 
-				if ( race.Resistances.Physical > 0 ){ txt = txt + "<BR>Physical Resist: " + race.Resistances.Physical + "%"; }
-				if ( race.Resistances.Fire > 0 ){ txt = txt + "<BR>Fire Resist: " + race.Resistances.Fire + "%"; }
-				if ( race.Resistances.Cold > 0 ){ txt = txt + "<BR>Cold Resist: " + race.Resistances.Cold + "%"; }
-				if ( race.Resistances.Poison > 0 ){ txt = txt + "<BR>Poison Resist: " + race.Resistances.Poison + "%"; }
-				if ( race.Resistances.Energy > 0 ){ txt = txt + "<BR>Energy Resist: " + race.Resistances.Energy + "%"; }
-				if ( race.Attributes.WeaponDamage > 0 ){ txt = txt + "<BR>Damage Increase: " + race.Attributes.WeaponDamage + "%"; }
-				if ( race.Attributes.DefendChance > 0 ){ txt = txt + "<BR>Defend Chance Increase: " + race.Attributes.DefendChance + "%"; }
-				if ( race.Attributes.BonusDex > 0 ){ txt = txt + "<BR>Dexterity Bonus: " + race.Attributes.BonusDex + ""; }
-				if ( race.Attributes.EnhancePotions > 0 ){ txt = txt + "<BR>Enhance Potions: " + race.Attributes.EnhancePotions + "%"; }
-				if ( race.Attributes.CastSpeed > 0 ){ txt = txt + "<BR>Faster Casting: " + race.Attributes.CastSpeed + ""; }
-				if ( race.Attributes.CastRecovery > 0 ){ txt = txt + "<BR>Faster Cast Recovery: " + race.Attributes.CastRecovery + ""; }
-				if ( race.Attributes.AttackChance > 0 ){ txt = txt + "<BR>Hit Chance Increase: " + race.Attributes.AttackChance + "%"; }
-				if ( race.Attributes.BonusHits > 0 ){ txt = txt + "<BR>Hit Point Increase: " + race.Attributes.BonusHits + ""; }
-				if ( race.Attributes.RegenHits > 0 ){ txt = txt + "<BR>Hit Point Regeneration: " + race.Attributes.RegenHits + ""; }
-				if ( race.Attributes.BonusInt > 0 ){ txt = txt + "<BR>Intelligence Bonus: " + race.Attributes.BonusInt + ""; }
-				if ( race.Attributes.LowerManaCost > 0 ){ txt = txt + "<BR>Lower Mana Cost: " + race.Attributes.LowerManaCost + "%"; }
-				if ( race.Attributes.LowerRegCost > 0 ){ txt = txt + "<BR>Lower Reagent Cost: " + race.Attributes.LowerRegCost + "%"; }
-				if ( race.Attributes.Luck > 0 ){ txt = txt + "<BR>Luck: " + race.Attributes.Luck + ""; }
-				if ( race.Attributes.BonusMana > 0 ){ txt = txt + "<BR>Mana Increase: " + race.Attributes.BonusMana + ""; }
-				if ( race.Attributes.RegenMana > 0 ){ txt = txt + "<BR>Mana Regeneration: " + race.Attributes.RegenMana + ""; }
-				if ( race.Attributes.NightSight > 0 ){ txt = txt + "<BR>Night Sight"; }
-				if ( race.Attributes.ReflectPhysical > 0 ){ txt = txt + "<BR>Reflect Physical Damage: " + race.Attributes.ReflectPhysical + "%"; }
+				if ( race.Resistances.Physical > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.physical", "Physical Resist" ) + ": " + race.Resistances.Physical + "%"; }
+				if ( race.Resistances.Fire > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.fire", "Fire Resist" ) + ": " + race.Resistances.Fire + "%"; }
+				if ( race.Resistances.Cold > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.cold", "Cold Resist" ) + ": " + race.Resistances.Cold + "%"; }
+				if ( race.Resistances.Poison > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.poison", "Poison Resist" ) + ": " + race.Resistances.Poison + "%"; }
+				if ( race.Resistances.Energy > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.energy", "Energy Resist" ) + ": " + race.Resistances.Energy + "%"; }
+				if ( race.Attributes.WeaponDamage > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.damage", "Damage Increase" ) + ": " + race.Attributes.WeaponDamage + "%"; }
+				if ( race.Attributes.DefendChance > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.defend", "Defend Chance Increase" ) + ": " + race.Attributes.DefendChance + "%"; }
+				if ( race.Attributes.BonusDex > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.dex", "Dexterity Bonus" ) + ": " + race.Attributes.BonusDex + ""; }
+				if ( race.Attributes.EnhancePotions > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.potions", "Enhance Potions" ) + ": " + race.Attributes.EnhancePotions + "%"; }
+				if ( race.Attributes.CastSpeed > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.cast", "Faster Casting" ) + ": " + race.Attributes.CastSpeed + ""; }
+				if ( race.Attributes.CastRecovery > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.cast_recovery", "Faster Cast Recovery" ) + ": " + race.Attributes.CastRecovery + ""; }
+				if ( race.Attributes.AttackChance > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.hit", "Hit Chance Increase" ) + ": " + race.Attributes.AttackChance + "%"; }
+				if ( race.Attributes.BonusHits > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.hp", "Hit Point Increase" ) + ": " + race.Attributes.BonusHits + ""; }
+				if ( race.Attributes.RegenHits > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.hp_reg", "Hit Point Regeneration" ) + ": " + race.Attributes.RegenHits + ""; }
+				if ( race.Attributes.BonusInt > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.int", "Intelligence Bonus" ) + ": " + race.Attributes.BonusInt + ""; }
+				if ( race.Attributes.LowerManaCost > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.lmc", "Lower Mana Cost" ) + ": " + race.Attributes.LowerManaCost + "%"; }
+				if ( race.Attributes.LowerRegCost > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.lrc", "Lower Reagent Cost" ) + ": " + race.Attributes.LowerRegCost + "%"; }
+				if ( race.Attributes.Luck > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.luck", "Luck" ) + ": " + race.Attributes.Luck + ""; }
+				if ( race.Attributes.BonusMana > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.mana", "Mana Increase" ) + ": " + race.Attributes.BonusMana + ""; }
+				if ( race.Attributes.RegenMana > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.mana_reg", "Mana Regeneration" ) + ": " + race.Attributes.RegenMana + ""; }
+				if ( race.Attributes.NightSight > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.night_sight", "Night Sight" ); }
+				if ( race.Attributes.ReflectPhysical > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.reflect", "Reflect Physical Damage" ) + ": " + race.Attributes.ReflectPhysical + "%"; }
 				if ( race.Attributes.SpellDamage > 0 ){ txt = txt + "<BR>Spell Damage Increase: " + race.Attributes.SpellDamage + "%"; }
-				if ( race.Attributes.BonusStam > 0 ){ txt = txt + "<BR>Stamina Increase: " + race.Attributes.BonusStam + ""; }
-				if ( race.Attributes.RegenStam > 0 ){ txt = txt + "<BR>Stamina Regeneration: " + race.Attributes.RegenStam + ""; }
-				if ( race.Attributes.BonusStr > 0 ){ txt = txt + "<BR>Strength Bonus: " + race.Attributes.BonusStr + ""; }
-				if ( race.Attributes.WeaponSpeed > 0 ){ txt = txt + "<BR>Swing Speed Increase: " + race.Attributes.WeaponSpeed + "%"; }
+				if ( race.Attributes.BonusStam > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.stam", "Stamina Increase" ) + ": " + race.Attributes.BonusStam + ""; }
+				if ( race.Attributes.RegenStam > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.stam_reg", "Stamina Regeneration" ) + ": " + race.Attributes.RegenStam + ""; }
+				if ( race.Attributes.BonusStr > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.str", "Strength Bonus" ) + ": " + race.Attributes.BonusStr + ""; }
+				if ( race.Attributes.WeaponSpeed > 0 ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.abilities.swing", "Swing Speed Increase" ) + ": " + race.Attributes.WeaponSpeed + "%"; }
 
 				if ( race.SkillBonuses.Skill_1_Value > 0 ){ txt = txt + "<BR>" + SkillInfo.Table[(int)(race.SkillBonuses.Skill_1_Name)].Name + " +" + race.SkillBonuses.Skill_1_Value + ""; }
 				if ( race.SkillBonuses.Skill_2_Value > 0 ){ txt = txt + "<BR>" + SkillInfo.Table[(int)(race.SkillBonuses.Skill_2_Name)].Name + " +" + race.SkillBonuses.Skill_2_Value + ""; }
 
-				if ( NoFood( raceID ) ){ txt = txt + "<BR>Does not need to eat, but still needs to drink"; }
-				if ( NoFoodOrDrink( raceID ) ){ txt = txt + "<BR>Does not need to eat or drink"; }
-				if ( BloodDrinker( raceID ) ){ txt = txt + "<BR>Needs to consume fresh blood"; }
-				if ( BrainEater( raceID ) ){ txt = txt + "<BR>Needs to consume fresh brains"; }
+				if ( NoFood( raceID ) ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.needs.no_eat_still_drink", "Does not need to eat, but still needs to drink" ); }
+				if ( NoFoodOrDrink( raceID ) ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.needs.no_eat_drink", "Does not need to eat or drink" ); }
+				if ( BloodDrinker( raceID ) ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.needs.blood", "Needs to consume fresh blood" ); }
+				if ( BrainEater( raceID ) ){ txt = txt + "<BR>" + RaceLocalization.KeyDefault( "baserace.needs.brains", "Needs to consume fresh brains" ); }
 
 				race.Delete();
 			}

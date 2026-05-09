@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Regions;
 using Server.Utilities;
+using Server.Localization;
 
 /*
 3002004	Tell
@@ -16,6 +17,41 @@ namespace Server.Misc
 {
     class StandardQuestFunctions
     {
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
+		private static string BuildQuestStatusText( Mobile from, string targetTitle, string targetName, string region, string world, int fee, string category, string storedStory )
+		{
+			string targetDisplay = string.IsNullOrWhiteSpace( targetTitle ) ? targetName : targetTitle;
+			string regionDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, region ) );
+			string worldDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, world ) );
+			string targetDisplayLocalized = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, targetDisplay ) );
+
+			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+			{
+				if ( category == "Item" )
+					return ResolveFormat( from, "前往{0}的{1}，寻找{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, fee.ToString( "#,##0" ) );
+
+				return ResolveFormat( from, "前往{0}的{1}，击败{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, fee.ToString( "#,##0" ) );
+			}
+
+			if ( !string.IsNullOrWhiteSpace( storedStory ) )
+				return storedStory;
+
+			if ( category == "Item" )
+				return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, fee.ToString( "#,##0" ) );
+
+			return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, fee.ToString( "#,##0" ) );
+		}
+
 		public static int ChanceToFindQuestedItem()
 		{
 			return 7;
@@ -58,7 +94,7 @@ namespace Server.Misc
 				{
 					if ( sPCCategory == "Item" && StandardQuestFunctions.ChanceToFindQuestedItem() >= Utility.RandomMinMax( 1, 100 ) && Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) == sPCRegion && nPCDone != 1 )
 					{
-						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Ahh...they had " + sPCName + "!", m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, ResolveFormat( m, "Ahh...they had {0}!", ResolveText( m, sPCName ) ), m.NetState);
 						explorer = explorer.Replace("#0#", "#1#");
 						m.SendSound( 0x3D );
 						LoggingFunctions.LogQuestItem( m, sPCName );
@@ -69,7 +105,7 @@ namespace Server.Misc
 				{
 					if ( sPCCategory == "Item" && StandardQuestFunctions.ChanceToFindQuestedItem() >= Utility.RandomMinMax( 1, 100 ) && Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) == sPCRegion && nPCDone != 1 )
 					{
-						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Ahh...I found " + sPCName + "!", m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, ResolveFormat( m, "Ahh...I found {0}!", ResolveText( m, sPCName ) ), m.NetState);
 						LoggingFunctions.LogFoundItemQuest( m, sPCName );
 						explorer = explorer.Replace("#0#", "#1#");
 						m.SendSound( 0x3D );
@@ -83,7 +119,7 @@ namespace Server.Misc
 
 					if ( sexplorer == sPCTarget && Server.Misc.Worlds.GetRegionName( target.Map, target.Location ) == sPCRegion && nPCDone != 1 )
 					{
-						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The quested bounty has been fulfilled!", m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1153, false, ResolveText( m, "The quested bounty has been fulfilled!" ), m.NetState);
 						explorer = explorer.Replace("#0#", "#1#");
 						m.SendSound( 0x3D );
 						LoggingFunctions.LogQuestKill( m, "bounty", target );
@@ -260,7 +296,7 @@ namespace Server.Misc
 				{
 					m.SendSound( 0x3D );
 					m.AddToBackpack ( new Gold( nPCFee ) );
-					string sMessage = "Here is " + nPCFee.ToString() + " gold for you.";
+					string sMessage = ResolveFormat( m, "Here is {0} gold for you.", nPCFee.ToString() );
 					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, sMessage, m.NetState);
 					StandardQuestFunctions.QuestTimeAllowed( m );
 
@@ -439,9 +475,9 @@ namespace Server.Misc
 					nEntry++;
 				}
 
-				sexplorerQuest = sPCStory;
+				sexplorerQuest = BuildQuestStatusText( m, sPCTitle, sPCName, sPCRegion, sPCWorld, nPCFee, sPCCategory, sPCStory );
 				string sWorth = nPCFee.ToString("#,##0");
-				if ( nPCDone == 1 ){ sexplorerQuest = "Return to any quest bulletin board for your " + sWorth + " gold payment"; }
+				if ( nPCDone == 1 ){ sexplorerQuest = ResolveFormat( m, "Return to any quest bulletin board for your {0} gold payment", sWorth ); }
 			}
 			return sexplorerQuest;
 		}

@@ -4,12 +4,13 @@ using Server.Gumps;
 using Server.Spells;
 using Server.Misc;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class SythSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This datacron can hold ancient knowledge of the Syth. Acquiring such abilities can only be achieved by finding the resting places of Syth from long ago."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This datacron can hold ancient knowledge of the Syth. Acquiring such abilities can only be achieved by finding the resting places of Syth from long ago." ); } }
 
 		public Mobile owner;
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -61,7 +62,7 @@ namespace Server.Items
 
 			if ( owner != from )
 			{
-				from.SendMessage( "This device seems strange to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This device seems strange to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -71,7 +72,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "This datacron must be in your backpack (and not in a container within) to open." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This datacron must be in your backpack (and not in a container within) to open." ) );
 			}
 		}
 
@@ -84,17 +85,17 @@ namespace Server.Items
 
 			if ( !MyServerSettings.AlterArtifact( dropped ) )
 			{
-				from.SendMessage( "This cannot be used on artifacts!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This cannot be used on artifacts!" ) );
 			}
 			else if ( dropped is HellShard )
 			{
 				if ( crystals >= 50000 )
 				{
-					from.SendMessage( "That datacron is already fully charged." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "That datacron is already fully charged." ) );
 				}
 				else if ( ( crystals + dropped.Amount ) < 50000 )
 				{
-					from.SendMessage( "The datacron has been charged." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The datacron has been charged." ) );
 					crystals = crystals + dropped.Amount;
 					from.PlaySound( 0x54B );
 					dropped.Delete();
@@ -102,7 +103,7 @@ namespace Server.Items
 				else
 				{
 					int need = 50000 - crystals;
-					from.SendMessage( "The datacron has been charged to maximum capacity, so you did not use all of them." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The datacron has been charged to maximum capacity, so you did not use all of them." ) );
 					crystals = 50000;
 					dropped.Amount = dropped.Amount - need;
 					from.PlaySound( 0x54B );
@@ -164,21 +165,21 @@ namespace Server.Items
 				from.PlaySound( 0x55B );
 				from.RevealingAction();
 				dropped.Hue = color;
-				from.SendMessage( "The datacron transformed the item." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The datacron transformed the item." ) );
 			}
 			else if ( doGemColor )
 			{
 				from.PlaySound( 0x55B );
 				from.RevealingAction();
 				dropped.Delete();
-				from.SendMessage( "The add the colored gem to the datacron." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The add the colored gem to the datacron." ) );
 			}
 			else if ( doSteelAdd )
 			{
 				from.PlaySound( 0x55B );
 				from.RevealingAction();
 				dropped.Delete();
-				from.SendMessage( "The add the durasteel to the datacron." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The add the durasteel to the datacron." ) );
 			}
 
 			base.OnDragDrop( from, dropped );
@@ -191,7 +192,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "For " + owner.Name + "" ); }
+			if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "For {0}", owner.Name ) ); }
         }
 
 		public SythSpellbook( Serial serial ) : base( serial )

@@ -76,7 +76,7 @@ namespace Server.Items
 
 			if ( animalfriend == 0 )
 			{
-				from.SendMessage( "You need to be near a druid or animal handler to call this pack animal!" );
+				from.SendMessage( Server.Localization.StringCatalog.Resolve(from.Account, "You need to be near a druid or animal handler to call this pack animal!") );
 			}
 			else
 			{
@@ -99,19 +99,19 @@ namespace Server.Items
 				}
 				else if ( pets.Count > 0 )
 				{
-					from.SendMessage("You already have a pack animal.");
+					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have a pack animal."));
 				}
 				else if ( nFollowers > 0 )
 				{
-					from.SendMessage("You already have too many in your group.");
+					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have too many in your group."));
 				}
 				else if ( Charges < 1 )
 				{
-					from.SendMessage("Your pack animal needs to be tended to by a druid guildmaster.");
+					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "Your pack animal needs to be tended to by a druid guildmaster."));
 				}
 				else if ( PorterOwner == null || PorterOwner.Serial != from.Serial )
 				{
-					from.SendMessage("This is not your pack animal!");
+					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This is not your pack animal!"));
 				}
 				else
 				{

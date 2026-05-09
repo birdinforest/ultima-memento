@@ -3,6 +3,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -62,7 +63,7 @@ namespace Server.Spells.HolyMan
 					}
 					else
 					{
-						from.SendMessage( "{0} already have nightsight.", from == targ ? "You" : "They" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "{0} already have nightsight.", from == targ ? "You" : "They" ) );
 					}
 				}
 

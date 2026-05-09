@@ -9,6 +9,7 @@ using Server.Network;
 using System.Collections;
 using Server.Commands.Generic;
 using Server.Items;
+using Server.Localization;
 using System.IO;
 using System.Reflection;
 using Server.Engines.MLQuests.Definitions;
@@ -812,12 +813,17 @@ namespace Server.Engines.MLQuests
 		{
 			TurnToFace(quester, pm);
 
+			string msg = message;
+
+			if (pm != null && pm.Account != null && msg != null)
+				msg = StringCatalog.Resolve(pm.Account, msg);
+
 			if (quester is Mobile)
-				((Mobile)quester).PrivateOverheadMessage(MessageType.Regular, SpeechColor, false, message, pm.NetState);
+				((Mobile)quester).PrivateOverheadMessage(MessageType.Regular, SpeechColor, false, msg, pm.NetState);
 			else if (quester is Item)
-				MessageHelper.SendMessageTo((Item)quester, pm, message, SpeechColor);
+				MessageHelper.SendMessageTo((Item)quester, pm, msg, SpeechColor);
 			else
-				pm.SendMessage(SpeechColor, message);
+				pm.SendMessage(SpeechColor, msg);
 		}
 
 		public static void TellDef(IQuestGiver quester, PlayerMobile pm, TextDefinition def)

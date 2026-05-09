@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Items;
 using System.Collections.Generic;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -55,7 +56,7 @@ namespace Server.Spells.Research
 
 				Caster.PlaySound( 0x1ED );
 				Caster.FixedParticles( 0x376A, 9, 32, 5008, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.Waist );
-				Caster.SendMessage( "You summon the mask of death into your pack." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You summon the mask of death into your pack." ) );
 				Item iMask = new DeathlyMask(Caster,time);
 				Caster.AddToBackpack( iMask );
 				Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );

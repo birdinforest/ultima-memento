@@ -15,7 +15,7 @@ namespace Server.Engines.MLQuests.Gumps
 		}
 
 		public QuestLogDetailedGump(MLQuestInstance instance, bool closeGumps)
-			: base(1046026) // Quest Log
+			: base(1046026, instance.Player) // Quest Log
 		{
 			m_Instance = instance;
 			m_CloseGumps = closeGumps;

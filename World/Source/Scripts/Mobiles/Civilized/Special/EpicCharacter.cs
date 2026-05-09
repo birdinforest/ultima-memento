@@ -248,28 +248,28 @@ namespace Server.Mobiles
 				else if ( ((EpicCharacter)m_Giver).MyAlignment == "evil" && m_Pay ){ if ( m_Mobile.Fame >= 4000 && m_Mobile.Karma <= -4000 ){ PassTest = true; } merit = "tenacity"; }
 				else if ( ((EpicCharacter)m_Giver).MyAlignment == "neutral" && m_Pay ){ if ( m_Mobile.Fame >= 7000 ){ PassTest = true; } }
 
-				if ( m_Mobile.TotalGold < 5000 && m_Pay )
+			if ( m_Mobile.TotalGold < 5000 && m_Pay )
+			{
+				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "{0} needs at least 5,000 gold to construct the item for you." ), m_Giver.Name ) );
+			}
+			else if ( !(HaveSpecialItemRequirement( m_Mobile )) && m_Pay )
+			{
+				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "{0} will need a symbol of your {1} ({2})." ), m_Giver.Name, merit, GetSpecialItemRequirement( m_Mobile ) ) );
+			}
+			else if ( PassTest == true || !m_Pay )
+			{
+				PlayerMobile mobile = (PlayerMobile) m_Mobile;
 				{
-					m_Mobile.SendMessage( m_Giver.Name + " needs at least 5,000 gold to construct the item for you.");
-				}
-				else if ( !(HaveSpecialItemRequirement( m_Mobile )) && m_Pay )
-				{
-					m_Mobile.SendMessage( m_Giver.Name + " will need the a symbol of your " + merit + " (" + GetSpecialItemRequirement( m_Mobile ) + ").");
-				}
-				else if ( PassTest == true || !m_Pay )
-				{
-					PlayerMobile mobile = (PlayerMobile) m_Mobile;
+					if ( ! mobile.HasGump( typeof( EpicBookGump ) ) )
 					{
-						if ( ! mobile.HasGump( typeof( EpicBookGump ) ) )
-						{
-							mobile.SendGump( new EpicBookGump( m_Mobile, m_Giver, 0, m_Pay ) );
-						}
+						mobile.SendGump( new EpicBookGump( m_Mobile, m_Giver, 0, m_Pay ) );
 					}
 				}
-				else
-				{
-					m_Mobile.SendMessage( "Your deeds do not grant you a gift of tribute.");
-				}
+			}
+			else
+			{
+				m_Mobile.SendMessage( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "Your deeds do not grant you a gift of tribute." ) );
+			}
             }
         }
 
@@ -1038,7 +1038,8 @@ namespace Server.Mobiles
 
 				AddButton(668, 9, 4017, 4017, page_prev, GumpButtonType.Reply, 0);
 
-				AddHtml( 61, 12, 579, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>TRIBUTE GIFTS</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+				{ string _tg = Server.Localization.StringCatalog.TryResolve( Server.Localization.AccountLang.GetLanguageCode( from.Account ), "TRIBUTE GIFTS" ) ?? "TRIBUTE GIFTS";
+			AddHtml( 61, 12, 579, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + _tg + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false); }
 
 				AddButton(9, 425, 4014, 4014, page_prev, GumpButtonType.Reply, 0);
 				AddButton(668, 425, 4005, 4005, page_next, GumpButtonType.Reply, 0);
@@ -1138,13 +1139,13 @@ namespace Server.Mobiles
 					int page = info.ButtonID - 100000;
 					from.SendGump( new EpicBookGump( from, m_Giver, page, m_Pay ) );
 				}
-				else if ( from.TotalGold < 5000 && m_Pay )
-				{
-					from.SendMessage( m_Giver.Name + " needs at least 5,000 gold to construct the item for you.");
-				}
-				else if ( !(HaveSpecialItemRequirement( from )) && m_Pay )
-				{
-					from.SendMessage( m_Giver.Name + " will need the a symbol of your " + merit + " (" + GetSpecialItemRequirement( from ) + ").");
+			else if ( from.TotalGold < 5000 && m_Pay )
+			{
+				from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} needs at least 5,000 gold to construct the item for you." ), m_Giver.Name ) );
+			}
+			else if ( !(HaveSpecialItemRequirement( from )) && m_Pay )
+			{
+				from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} will need a symbol of your {1} ({2})." ), m_Giver.Name, merit, GetSpecialItemRequirement( from ) ) );
 				}
 				else if ( ( passTest == true && pack.ConsumeTotal(typeof(Gold), 5000) ) || !m_Pay )
 				{
@@ -1274,10 +1275,10 @@ namespace Server.Mobiles
 						from.PlaySound( 0x3D );
 					}
 				}
-				else if ( passTest == false && info.ButtonID > 0 && info.ButtonID < 262 )
-				{
-					from.SendMessage( "Your deeds do not grant you a gift of tribute.");
-				}
+			else if ( passTest == false && info.ButtonID > 0 && info.ButtonID < 262 )
+			{
+				from.SendMessage( Server.Localization.StringCatalog.Resolve( from.Account, "Your deeds do not grant you a gift of tribute." ) );
+			}
 			}
 		}
 
@@ -1449,7 +1450,7 @@ namespace Server.Mobiles
 					( dropped is Artifact_IolosLute && this.Name == "Iolo" )
 				)
 			{
-				this.Say( "Thank you, " + from.Name + "! I lost that this years ago." );
+				this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}! I lost that this years ago.", from.Name ) );
 				from.SendSound( 0x5B4 );
 				dropped.Delete();
 				int gold = Utility.RandomMinMax(5,10) * 1000;

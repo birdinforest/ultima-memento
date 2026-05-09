@@ -1,0 +1,3006 @@
+{
+ "batch": 15,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1115602",
+   "text": "Donate ALL",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115603",
+   "text": "<DIV ALIGN=\"RIGHT\">Count:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115604",
+   "text": "There is nothing in that container that can be donated here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115605",
+   "text": "Donate a Bag",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115606",
+   "text": "Target a container in your backpack whose contents you wish to donate to this collection.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115607",
+   "text": "You may only target a container in the top level of your backpack in order to donate its contents.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115608",
+   "text": "You donate ~1_count~ items for a total of ~2_points~ points.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115609",
+   "text": "Exhilarator",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115610",
+   "text": "Galvanizer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115611",
+   "text": "Desponder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115612",
+   "text": "Inspire",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115613",
+   "text": "Invigorate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115614",
+   "text": "Resilience",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115615",
+   "text": "Perseverance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115616",
+   "text": "Tribulation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115617",
+   "text": "Despair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115618",
+   "text": "Summoning Crystal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115619",
+   "text": "Arena Menu - Main",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115620",
+   "text": "You can host/join a duel or check your duel stats.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115621",
+   "text": "Host a duel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115622",
+   "text": "Join a duel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115623",
+   "text": "Check your stats",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115624",
+   "text": "Arena Menu - Queuing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115625",
+   "text": "Start the duel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115626",
+   "text": "Cancel the duel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115627",
+   "text": "See the participants and rules",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115628",
+   "text": "See the rules",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115629",
+   "text": "Command me, Master",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115630",
+   "text": "Going up",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115631",
+   "text": "Going down",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115632",
+   "text": "Don't stop... believing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115633",
+   "text": "Memorial Stone",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115634",
+   "text": "Alchemist",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115635",
+   "text": "Woodworker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115636",
+   "text": "<body>85 Carpentry<br>85 Bowcraft/Fletching<br>85 Lumberjacking<br>70 Tinkering<br>70 Magery<br>90 Strength<br>85 Dexterity<br>50 Intelligence</body>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115637",
+   "text": "<body>85 Alchemy<br>85 Cooking<br>85 Fishing<br>70 Tinkering<br>70 Magery<br>90 Strength<br>85 Dexterity<br>50 Intelligence</body>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115638",
+   "text": "<body>85 Imbuing<br>85 Item Identification<br>85 Tinkering<br>70 Mining<br>70 Magery<br>90 Strength<br>50 Dexterity<br>85 Intelligence</body>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115639",
+   "text": "Click OK to choose the woodworker template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115640",
+   "text": "Click OK to choose the alchemist/chef template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115641",
+   "text": "Click OK to choose the artificer template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115642",
+   "text": "Click OK to choose the mystic artificer template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115643",
+   "text": "Click OK to choose the driven mystic template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115644",
+   "text": "Click OK to choose the bladeweaver template.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115645",
+   "text": "for somewhere in Tokuno Islands",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115646",
+   "text": "for somewhere in Ter Mur",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115647",
+   "text": "Jade Snake Head",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115648",
+   "text": "Please enter the music number:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115649",
+   "text": "Shadow Cloak of Rejuvenation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115650",
+   "text": "Wing Armor of Rejuvenation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115651",
+   "text": "You may not start a new character copy because character copy is disabled for this shard.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115652",
+   "text": "An error has prevented your Character Copy from completing. Please page a Game Master through the Help menu.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115653",
+   "text": "spined ~1_item~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115654",
+   "text": "horned ~1_item~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115655",
+   "text": "barbed ~1_item~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115656",
+   "text": "This quest is the single quest required for a player to unlock the provocation mastery abilities for bards. This quest can be completed multiple times to reinstate the provocation mastery. To prove yourself worthy, you must be able to incite even the most peaceful to frenzied battle lust.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115657",
+   "text": "Indoctrination of a Battle Rouser",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115658",
+   "text": "Incite rabbits into battle with 5 wandering healers.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115659",
+   "text": "Recognition for mastery of battle rousing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115660",
+   "text": "To inspire you must persevere.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115661",
+   "text": "You have proven yourself worthy of driving armies. Go forth, and have the blessing and curse of the War Heralds always in your heart and mind. May peace always dwell before you, may destruction mark your wake, and may fury be your constant companion. Sow the seeds of battle and glory in the music of war.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115662",
+   "text": "Carry the song of battle to the masses.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115663",
+   "text": "It has been too long since you have decoded this map that you have forgotten the correct location and must decode it again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115664",
+   "text": "You are not on the correct path for using this mastery ability.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115665",
+   "text": "You do not have enough mana to continue infusing your song with magic.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115666",
+   "text": "<u>Character Copy:</u> This option will allow you to transfer your character to a test center shard without removing the character from this shard.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115667",
+   "text": "Start Character Copy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115668",
+   "text": "<BODY><CENTER>Character Copy<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115669",
+   "text": "Thank you for participating in the character copy program. <br>- Items eligible for copying include your character, everything your character has equipped (both wearing and holding), your backpack, your bank box, all your stabled pets, all your character's pets within the immediate vicinity, and their associated contents. (Temporary \"followers,\" such as hirelings, escorts, and animated dead, will not be copied.)<br>- Please verify the contents of your character's \"transfer crate\" are correct before initiating the transfer to the new shard. You will not get another opportunity to do so, nor can items be added if you find them missing afterwards.<br>- Houses and their secured items will not be copied.<br>- Your affiliations to guilds, factions, and parties will not exist on the new shard.<br>- Bracelets of Binding and Balls of Pet Summoning will have their links cleared when copied to the new shard.<br>- All legacy \"house deeds\" will be converted into house placement tools.<br>- You can cancel the copy at any point during the process, and resume at a later date.<br>- You will not be able to log into the destination shard until the copy is complete.<br>- You will have to recreate any custom game macros for that character after the copy to the new shard.<br>- After entering the new shard, <i>you will have 7 days to remove all items from your character's \"transfer crate.\" </i>Any items that remain in the crate after that time will disappear forever. (You can access your transfer crate at any time by choosing the \"Open Transfer Crate\" option from the context menu on your character.)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115670",
+   "text": "Please select the shard to which you would like this character to be copied.  If a shard is currently unavailable for character copy, you will be unable to select it. (If a shard is experiencing temporary downtime, you will not be able to select it until that downtime has ended.)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115671",
+   "text": "Final Confirmation: Your character will be copied from this shard to the selected destination shard. Everything in your character's \"transfer crate\" will be transferred as well.  After the transfer, you will have 7 days to empty your character's \"transfer crate.\" Once this time period has expired and the items have been deleted they cannot be recovered. To accept and initiate the copy, please click \"Copy me!\" below.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115672",
+   "text": "In order to begin your character transfer or copy, you must be in a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115673",
+   "text": "Character copy has been cancelled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115674",
+   "text": "Copy me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115675",
+   "text": "Your character has been copied.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115676",
+   "text": "This quest is the single quest required for a player to unlock the peacemaking mastery abilities for bards. This quest can be completed multiple times to reinstate the peacemaking mastery. To prove yourself worthy, you must first be a master of peacemaking and musicianship. You must be able to calm even the most vicious beast into tranquility.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115677",
+   "text": "The Beacon of Harmony",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115678",
+   "text": "Calm five mongbats.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115679",
+   "text": "Recognition for mastery of spirit soothing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115680",
+   "text": "To deliver peace you must persevere.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115681",
+   "text": "You have proven yourself a beacon of peace and a bringer of harmony. Only a warrior may choose the peaceful solution, all others are condemned to it. May your message of peace flow into the world and shelter you from harm.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115682",
+   "text": "This merchant's trinket has been updated.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115683",
+   "text": "Inspire",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115684",
+   "text": "Invigorate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115685",
+   "text": "Resilience",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115686",
+   "text": "Perseverance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115687",
+   "text": "Tribulation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115688",
+   "text": "Despair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115689",
+   "text": "This is  a battle hymn interwoven with magical energy. It increases the confidence and focus of party members giving them bonuses to their offensive combat prowess. Party hit chance increase by up to 15%, melee damage increased by up to 40%, Spell Damage increased by up to 15%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115690",
+   "text": "This is  an invigorating tune interwoven with magical energy. It increases the alertness of party members and makes them feel empowered, giving them bonuses to their stats. Party hit points increased by up to 20, strength, intelligence and dexterity increased by up to 8. All party members healed for 7-16 damage every 4 seconds.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115691",
+   "text": "This is  a song of fortitude interwoven with magical energy. It increases the natural resilience of party members giving them bonuses to regeneration and resistance to detrimental effects. Party hit point regeneration, stamina regeneration, and mana regeneration increased by up to 8, reduced duration on curses, bleed, and mortal wound. Increased resistance to poison.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115692",
+   "text": "This is  a song of protection interwoven with magical energy. It envelopes party members in protective magical energy. Party defense chance increase by up to 16%, damage taken reduced by up to 16%, casting focus increased by up to 4%.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115693",
+   "text": "This is a bard spellsong which disrupts the target's ability to concentrate, reducing their hit chance and spell damage. The spell song also has the chance of causing any damage taken by the target to cause a burst of physical damage proportional to the damage taken. The amount of physical damage is proportional to the discord skill of the bard, and the chance for the physical damage to take effect is proportional to the musicianship skill of the bard.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115694",
+   "text": "This is a bard spellsong which will reduce the target's strength and periodically inflict physical damage on the target, as long as the target remains in range, and the bard has enough mana to sustain the effect. The damage inflicted is proportional to the bards Discord and Musicianship skills.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115695",
+   "text": "This bag has no questid.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115696",
+   "text": "Wielding the Sonic Blade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115697",
+   "text": "This quest is the single quest required for a player to unlock the discordance mastery abilities for bards. This quest can be completed multiple times to reinstate the discordance mastery. To prove yourself worthy, you must first be a master of discordance and musicianship. You must be willing to distort your notes to bring pain to even the most indifferent ears.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115698",
+   "text": "Discord five goats.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115699",
+   "text": "Recognition for mastery of song wielding.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115700",
+   "text": "You must strive to spread discord.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115701",
+   "text": "You have proven yourself worthy of wielding your music as a weapon. Rend the ears of your foes with your wails of discord. Let your song be feared as much as any sword.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115702",
+   "text": "You must quit your other mastery quests before engaging on a new one.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115703",
+   "text": "Your skills in this focus area are less than the required master level. (90 minimum)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115704",
+   "text": "Be a beacon for peace.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115705",
+   "text": "Wield your music!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115706",
+   "text": "This title is obtained from Provocation Mastery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115707",
+   "text": "This title is obtained from Peacemaking Mastery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115708",
+   "text": "This title is obtained from Discordance Mastery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115709",
+   "text": "Your skills are not high enough to invoke this mastery ability.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115710",
+   "text": "Your spell song has been interrupted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115711",
+   "text": "You may not copy a character while the warehouse is down.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115712",
+   "text": "Cancel Copy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115713",
+   "text": "You may not start another character copy since it has been less than 10 minutes since your last character copy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115714",
+   "text": "You may not start a new copy now because you already have another character transfer or copy in progress. Please wait until your previous transfer or copy completes before starting a new copy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115715",
+   "text": "An error has prevented your Character copy from completing. Please page a Game Master through the Help menu.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115716",
+   "text": "An error has occurred while processing your character copy. Please try again later. If this problem persists, page a Game Master using the Help menu.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115717",
+   "text": "<BODY><CENTER>Copy Summary<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115718",
+   "text": "Upkeep Cost:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115719",
+   "text": "armor points: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115720",
+   "text": "The metal plating on your swamp dragon is not conducive to meditation.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115721",
+   "text": "You cannot engrave this gravestone. Perhaps you might have better luck on a different gravestone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115722",
+   "text": "Sutek's Dirty Gear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115723",
+   "text": "You have polished the dirty gear...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115724",
+   "text": "Ranger of the Abyss",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115725",
+   "text": "Warden of the Abyss",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115726",
+   "text": "This is a reward title given for owning the Brittania outpost in the Stygian Abyss.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115727",
+   "text": "This is a reward title given for owning the Ter-Mur outpost in the Stygian Abyss.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115728",
+   "text": "The title \"~1_TITLE~\" has been stripped from you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115729",
+   "text": "+~1_HCI~% Hit Chance Increase.<br>+~2_SDI~% Spell Damage Increase.<br>+~3_DI~% Damage Increase.<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115730",
+   "text": "+~1_HPI~ Hit Point Increase.<br>+~2_STR~ Strength.<br>+~3_INT~ Intelligence.<br>+~4_DEX~ Dexterity.<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115731",
+   "text": "+~1_HPR~ Hit Point Regeneration.<br>+~2_SR~ Stamina Regeneration.<br>+~3_MR~ Mana Regeneration.<br>Curse Durations Reduced.<br>Resistance to Poison.<br>Bleed Duration Reduced.<br>Mortal Wound Duration Reduced.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115732",
+   "text": "+~1_DCI~% Defense Chance Increase.<br>~2_DAM~% Damage Taken.<br>+~3_CF~% Casting Focus.<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115733",
+   "text": "Ophidian",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115734",
+   "text": "Bane Chosen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115735",
+   "text": "Neutral",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115736",
+   "text": "You feel inspired by the bard's spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115737",
+   "text": "You feel invigorated by the bard's spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115738",
+   "text": "The bard's spellsong fills you with a feeling of resilience.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115739",
+   "text": "The bard's spellsong fills you with a feeling of invincibility.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115740",
+   "text": "Tribulation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115741",
+   "text": "Despair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115742",
+   "text": "~1_HCI~% Hit Chance.<br>~2_SDI~% Spell Damage.<br>Damage taken has a ~3_EXP~% chance to cause additional burst of physical damage.<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115743",
+   "text": "~1_STR~ Strength.<br>~2_DAM~ physical damage every 2 seconds while spellsong remains in effect.<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115744",
+   "text": "fear essence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115745",
+   "text": "This creature is angered by your attempt to make it wear armor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115746",
+   "text": "a dread swamp dragon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115747",
+   "text": "Creatures remaining to be calmed:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115748",
+   "text": "Conflicts remaining to be incited:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115749",
+   "text": "Creatures remaining to be discorded:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115751",
+   "text": "You don't want to eat this, it smells horrible.  It looks like food for some kind of demon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115752",
+   "text": "blackrock stew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115753",
+   "text": "Your bane dragon is returned to maximum power by this stew.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115754",
+   "text": "Your bane dragon seems a bit peckish today and is not at full power.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115755",
+   "text": "The creature looks at you strangely and shakes its head no.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115756",
+   "text": "Only males can use this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115757",
+   "text": "drill",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115758",
+   "text": "You make a small hole in the barrel staves.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115759",
+   "text": "Shatter Potion",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115760",
+   "text": "~1_NAME~'s shatter potion hits you, but nothing happens.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115761",
+   "text": "~1_NAME~'s shatter potion destroys a potion in your inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115762",
+   "text": "~1_NAME~'s shatter potion destroys ~2_NUM~ potions in your inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115763",
+   "text": "Participant List",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115764",
+   "text": "***Survival Mode***",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115766",
+   "text": "You cannot gather water here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115767",
+   "text": "Ophidian loyalty decrease (base): ~1_VAL~ (peril bonus): ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115768",
+   "text": "Bane Chosen loyalty decrease (base): ~1_VAL~ (peril bonus): ~2_VAL~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115769",
+   "text": "Ophidian loyalty increase (base): ~1_VAL~ (peril bonus): ~2_VAL~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115770",
+   "text": "Bane Chosen loyalty increase (base): ~1_VAL~ (peril bonus): ~2_VAL~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115771",
+   "text": "Your target is no longer in range of your spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115772",
+   "text": "Your target is already under the effect of this spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115773",
+   "text": "Your target is dead.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115774",
+   "text": "You halt your spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115775",
+   "text": "Warded Demonbone Bracers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115776",
+   "text": "Petrified Matriarch's Tongue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115777",
+   "text": "A wave of despair overcomes you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115778",
+   "text": "You suddenly feel as if everything you do will go awry.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115779",
+   "text": "with five wandering healers or priests.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115780",
+   "text": "Maximum Entries",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115781",
+   "text": "Battle Mode",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115782",
+   "text": "Time Limit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115783",
+   "text": "Pet Slots",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115784",
+   "text": "Riding/Flying",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115785",
+   "text": "Arena",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115786",
+   "text": "Ranged Weapons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115787",
+   "text": "Arena Menu - Rules",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115788",
+   "text": "Victory to the Ophidians! You have earned a reward for your service! (double click the chest in the Ophidian temple for your reward.)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115789",
+   "text": "Victory to the Bane Chosen! You have earned a reward for your service!  (double click the chest in the Bane Chosen camp for your reward.)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115790",
+   "text": "If you want to be one of the Chosen, you gotta pull your weight!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115791",
+   "text": "Dragon food",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115792",
+   "text": "Obtain 20 pieces of crystalline blackrock and return for your reward.  You can mine for crystalline blackrock in Ter-Mur or you can get it by killing the upper level Ophidians who spawn on the front lines of the battle in this event.  The reward for this quest is food for the bane dragon, it is the only known thing that they eat.<br><br><center>-----</center><br><br>What are you looking at, you lay about?!  You think you can be one of the Chosen?  Well, you have to prove yourself and get your own bane dragon!<br><br>Getting one takes guts and brawn but keeping one takes some of my special stew.  I'll give you a bowl of it, but you gotta prove yourself by service to the Bane Chosen.<br><br>I want twenty pieces of crystalline blackrock in exchange for a bowl of my special dragon food.  You can mine for it, if you haven't got anything better to do, but the fastest way to get it is from the cold dead hand of one of those Ophidians out on the front lines....  Now, get to it you wanna-be Chosen!  Make yourself useful!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115793",
+   "text": "Where's my crystalline blackrock?  Are you serious about getting your own dragon or not?!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115794",
+   "text": "Figures....",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115795",
+   "text": "Well... not a bad days work, says I.<br><br>Here, recruit, now good luck being food for the dragon.  I mean... good luck feeding the dragon.  Heh, heh.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115796",
+   "text": "Do not delete!  This is the Bane Chosen camp control object!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115797",
+   "text": "Bane Chosen War Chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115798",
+   "text": "Ophidian War Chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115799",
+   "text": "Do not Delete! This is the Ophidian camp control object for the Bane Invasion!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115800",
+   "text": "You have created a new duel session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115801",
+   "text": "Sympathizer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115802",
+   "text": "Friend",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115803",
+   "text": "Essence of Fear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115804",
+   "text": "Obtain 10 crystalline blackrock and return for your reward.  The most efficient way to get it is by killing higher tier Bane Chosen on the frontline of this event.<br><br><CENTER>-----</CENTER><br><br>Greetings-s-s-s friend.  You have s-s-served us-s-s well.  We will be glad to trade with the likes-s-s-s of you.<br><br>Alchemist am I, developed very s-s-special potion to defend agains-s-s-st the humans who attacks us-s-s-s.  Potion that makes-s-s them fear us-s-s-s.<br><br>Bring to me ten crys-s-stalline blackrock and we s-s-shall trade.  The Bane Chos-s-sen takes-s-s it from our land.  They have found a vein of it in our land and they takes-s-s it.  We must takes-s-s it back.  Kill their leaders-s-s and bring to me the crystalline blackrock.  We will trade, yes-s-s?<br><br>Yes-s-s-s. Very powerful potion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115805",
+   "text": "Three Fear Essence Potions-s-s-s",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115806",
+   "text": "As-s-s-s you wish-sh-sh-sh....",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115807",
+   "text": "Welcome friend.  Has-s-s you crystalline blackrock to trade with us-s-s?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115808",
+   "text": "Exc-s-s-s-ellent!  You have done well in collecting this-s-s treasure.<br><br>I trades-s-s with you gladly.  Take these potions-s-s with our thanks-s-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115809",
+   "text": "It wants-s-s to trade with us-s-s?  We have potions-s-s-s to trade.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115810",
+   "text": "It is-s-s friend to us-s-s-s.  I will trade with friends-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115811",
+   "text": "Desperate Measures",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115812",
+   "text": "Obtain 10 crystalline blackrock and return for your reward.  The most efficient way to get it is by killing higher tier Bane Chosen on the frontline of this event.<br><br><CENTER>-----</CENTER><br><br>Friend to Ophidians-s-s-s.  Come, s-s-speak with me.<br><br>Alchemis-s-st am I, protecting us-s from humans-s-s.  Developed very s-s-s-special potion.  Creates great s-s-sound which can s-s-shatter.  Our s-soldiers-s-s us-s-se it to prevent the humans from es-s-scaping with our crys-s-stalline blackrock.  If they can't have our crystals-s-s, they will go away.<br><br>S-s-sad to s-s-see it destroyed am I.  Collecting it am I.  Bring to me ten crys-s-stalline blackrock and I will trade to you s-s-some of my potions-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115813",
+   "text": "Three shattering potions-s-s-s",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115814",
+   "text": "S-s-s-so be it... friend.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115815",
+   "text": "You resist the effects of the Fear Essence.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115816",
+   "text": "I s-s-shall not trade with you, s-s-strange one.  We do not trus-s-st you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115817",
+   "text": "Why would I trade with you?  Strangers aren't welcome here!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115818",
+   "text": "Rules",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115819",
+   "text": "Confirm Duel Cancellation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115820",
+   "text": "Are you certain you wish to cancel this duel? If you are the owner of this duel, the duel session itself will be cancelled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115821",
+   "text": "Yes, I really want to cancel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115822",
+   "text": "No, I don't want to cancel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115825",
+   "text": "Hound! Defend me!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115826",
+   "text": "You kill one of the Ophidians in the back ranks of their army and gain little recognition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115827",
+   "text": "You kill one of the Bane Chosen in the back ranks of their army and gain little recognition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115828",
+   "text": "You assist the Bane Chosen in pushing back the Ophidian army.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115829",
+   "text": "You assist the Ophidians in pushing back the Bane Chosen army.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115830",
+   "text": "The Ophidians have secured this location, the front line has moved up!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115831",
+   "text": "The Bane Chosen have secured this location, the front line has moved up!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115832",
+   "text": "Ophidians have lost ~1_VAL~ of ~2_VAL~ from wave ~3_VAL~ of their front line.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115833",
+   "text": "Bane Chosen have lost ~1_VAL~ of ~2_VAL~ from wave ~3_VAL~ of their front line.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115834",
+   "text": "Final Ban Confirmation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115835",
+   "text": "Are you certain you wish to ban this player?  Banned players cannot rejoin this session any longer.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115836",
+   "text": "Yes, I want to ban him/her.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115837",
+   "text": "No, I don't want to ban him/her.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115838",
+   "text": "You cannot ban yourself!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115839",
+   "text": "Only the session owner can use this function.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115840",
+   "text": "Ophidian allies drove away the Bane Chosen ~1_VAL~ minutes ago.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115841",
+   "text": "Bane Chosen allies drove away the Ophidians ~1_VAL~ minutes ago.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115842",
+   "text": "Arena Menu - Entry",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115843",
+   "text": "+~1_INV~% bonus to invigorate effects.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115844",
+   "text": "+~1_INS~% bonus to inspire effects.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115845",
+   "text": "+~1_PRE~% bonus to perseverance effects.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115846",
+   "text": "+~1_RES~% bonus to resilience effects.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115847",
+   "text": "Entry",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115848",
+   "text": "Host Player",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115851",
+   "text": "You have assisted the Ophidians in routing the Bane Chosen but you have insufficient loyalty with them to receive a reward. (1000 loyalty required)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115852",
+   "text": "You have assisted the Bane Chosen in routing the Ophidians but you have insufficient loyalty with them to receive a reward. (1000 loyalty required)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115853",
+   "text": "Beware, reinforcements are coming!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115854",
+   "text": "We use the bane dragons because they are powerful and loyal mounts, our bane dragons cannot be stolen.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115855",
+   "text": "A hell hound trained by our hound masters bond to them supernaturally, the hound will defend its master to the death.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115856",
+   "text": "Lieutenant John of the Bane Chosen army.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115857",
+   "text": "It is my duty to recruit new soldiers for the Bane Chosen cause.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115858",
+   "text": "We seek to take back the land of Sosaria from the uncivilized races, such as the Ophidians.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115859",
+   "text": "The Ophidians are a vile race. I lost several members of my family when they attacked Britannia.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115860",
+   "text": "If you commit to our cause and help us drive out the Ophidians, I will pay you and the other soldiers from this chest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115861",
+   "text": "The bounty collector is collecting crystalline blackrock to keep it from the Ophidians but he will only discuss it with those who have proven their loyalty.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115862",
+   "text": "If you want to prove yourself, go up to the front lines where the banners are and start killing Ophidians.  Telling me you're loyal proves nothing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115863",
+   "text": "My name is-s-s Ophidian Delphi.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115864",
+   "text": "I s-s-seek to reward those who help us-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115865",
+   "text": "The Bane Chos-s-sen attack us-s-s.  They s-seek our crys-s-stalline blackrock.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115866",
+   "text": "The Ophidians-s-s want peace with the humans-s-s.  They attack us-s-s unprovoked... again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115867",
+   "text": "This-s-s ches-s-st.  It contains-s-s s-s-some of our mos-s-st valuable treas-s-sure.  If you help us-s-s drive away the Bane Chos-s-sen, we will pay you from it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115868",
+   "text": "Our alchemis-s-st trade for crys-s-stalline blackrock.  But they will not trade with those who s-s-seek to hurt us-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115869",
+   "text": "Thos-s-se who are loyal to us-s-s would drive away the Bane Chos-s-sen.  Help us-s-s on the front lines-s-s of the battle and you will be rewarded well.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115870",
+   "text": "The fear potion caus-ses-s thos-se who are affected to be paralyz-s-zed with fear.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115871",
+   "text": "The s-s-shattering potion caus-s-ses-s-s crys-s-stal and glass-s-s to shatter!  We have found a way to make it much more powerful than it was-s-s.  Use it against the Bane Chos-s-sen!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115872",
+   "text": "Arena Menu - Details",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115873",
+   "text": "ENTRY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115874",
+   "text": "The arena gate has opened near the arena stone. <br>You've ninety seconds to use the gate or you'll be removed from this duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115875",
+   "text": "The arena gate has opened near the arena stone. You have ninety seconds to use the gate or you will be removed from this duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115876",
+   "text": "Big Majik Flippers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115877",
+   "text": "You no longer have the required items to complete this quest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115878",
+   "text": "Arena Stone",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115879",
+   "text": "Arena Gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115880",
+   "text": "Host: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115881",
+   "text": "Arena: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115882",
+   "text": "You don't need to declare again. You are already under Honorable Combat with this target.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115883",
+   "text": "Now you are not eligible for the Honorable Combat against that. Remember you had declared Honorable Combat against that once and abandoned it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115884",
+   "text": "You started Honorable Combat!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115885",
+   "text": "cider",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115886",
+   "text": "liquor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115887",
+   "text": "ale",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115888",
+   "text": "wine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115889",
+   "text": "Auto Water Refill",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115890",
+   "text": "You stop short of throwing it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115891",
+   "text": "Link",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115892",
+   "text": "Target a water source you wish to link.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115893",
+   "text": "Linked",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115894",
+   "text": "Unlinked",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115895",
+   "text": "It seems that this water elemental no longer has a magical decanter...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115896",
+   "text": "The water pitcher has shattered.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115897",
+   "text": "The water elemental has thrown a magical decanter back to you!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115898",
+   "text": "The link between this decanter and the water source has been removed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115899",
+   "text": "That water source has been linked to this decanter.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115900",
+   "text": "Invalid target. Please target a water trough.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115901",
+   "text": "The decanter has automatically been filled from the linked water source.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115902",
+   "text": "The Piper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115903",
+   "text": "Neira",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115904",
+   "text": "Rikktor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115905",
+   "text": "Semidar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115906",
+   "text": "Mephitis",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115907",
+   "text": "Lord Oaks",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115908",
+   "text": "Silvani",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115909",
+   "text": "Serado",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115910",
+   "text": "Ilhenir",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115911",
+   "text": "Twaulo",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115912",
+   "text": "Water",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115913",
+   "text": "Use English Item Names",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115914",
+   "text": "Always display item names in English, regardless of the selected language.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115916",
+   "text": "a glass of ~1_DRINK_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115917",
+   "text": "You receive a reward: ~1_QUANTITY~ ~2_ITEM~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115918",
+   "text": "Ignore Mouse Actions on Self",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115919",
+   "text": "All mouse actions, such as mouse overs and clicking, will be disabled for your character in the world. You will still be able to interact with yourself through the user interface with items such as your portrait or health bar.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115920",
+   "text": "Your loyalty to ~1_GROUP~ has increased by ~2_AMOUNT~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115921",
+   "text": "Your loyalty to ~1_GROUP~ has decreased by ~2_AMOUNT~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115922",
+   "text": "the Gargoyle Queen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115923",
+   "text": "the Ophidians",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115924",
+   "text": "the Bane Chosen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115925",
+   "text": "See booked duels",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115926",
+   "text": "Arena Menu - Booking Status",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115927",
+   "text": "Show Corpse Names",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115928",
+   "text": "Names will automatically appear over corpses in the world.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115929",
+   "text": "Endless Decanter of Water",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115930",
+   "text": "Unlink",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115931",
+   "text": "You are too far away from the arena stone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115932",
+   "text": "Your target resists the effects of your spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115933",
+   "text": "You resist the effects of the spellsong.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115934",
+   "text": "The Bane Chosen have surged ahead, and this area is no longer on the front lines.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115935",
+   "text": "Dismount",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115936",
+   "text": "Dismounts from your mount if you are currently mounted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115937",
+   "text": "The Ophidians have surged ahead, and this area is no longer on the front lines.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115938",
+   "text": "Your spellsong has finished.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115939",
+   "text": "a dust pile<br>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115940",
+   "text": "You must wait a while for this item to recharge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115941",
+   "text": "You must be carrying this item to use it",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115942",
+   "text": "powerful fireworks wand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115943",
+   "text": "reward template: ~1_QUANTITY~ ~2_ITEMNAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115944",
+   "text": "reward template: ~1_ITEMNAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115945",
+   "text": "empty reward template",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115946",
+   "text": "Your account is already hosting an active duel session.  Please cancel it before attempting to host a new session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115947",
+   "text": "The session owner has canceled the duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115948",
+   "text": "One of the participants has left your duel session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115949",
+   "text": "Only the session's host may use this function.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115950",
+   "text": "You have banned the specified participant.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115951",
+   "text": "You have been banned from the session by the host player.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115952",
+   "text": "An unknown error has occurred.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115953",
+   "text": "This session has already been closed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115954",
+   "text": "This session is already full.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115955",
+   "text": "You have joined the session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115956",
+   "text": "A new duelist has joined your session!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115957",
+   "text": "This session has expired. Please create a new session and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115958",
+   "text": "To start a duel, you will need to gather more players/participants.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115959",
+   "text": "You need to return to the facet that you opened the session on to start this duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115960",
+   "text": "There are currently no open arenas. Your duel session has been added to the booking queue.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115961",
+   "text": "You cannot do that because your session has already started.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115962",
+   "text": "Your session was not found.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115963",
+   "text": "Your duel is about to begin but you are currently the only participant. This session will be aborted and you will be ejected from the arena.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115964",
+   "text": "The duel will start in 5 seconds!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115965",
+   "text": "All participants will be ejected from this arena in 40 seconds.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115966",
+   "text": "There are no duel sessions available.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115967",
+   "text": "You study the treasure map but need more time to attempt to decode.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115968",
+   "text": "You cannot exit until this duel has started.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115969",
+   "text": "Confirm Arena Exit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115970",
+   "text": "You will lose this duel if you choose to exit before a winner is decided. Are you certain you wish to leave?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115971",
+   "text": "You have been ejected from the arena.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115972",
+   "text": "The decanter’s refill attempt failed because the linked water source is not in the area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115973",
+   "text": "Thank you for your participation! Please return to the arena stone for additional dueling opportunities!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115974",
+   "text": "You currently exceed the maximum number of pet slots for this duel. Please stable your pet(s) with the arena manager before proceeding.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115975",
+   "text": "Congratulations! You have won the duel!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115976",
+   "text": "<CENTER>Arena Menu - Stats</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115977",
+   "text": "Wins",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115978",
+   "text": "Losses",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115979",
+   "text": "Draws",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115980",
+   "text": "Latest Stats",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115981",
+   "text": "Kills",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115982",
+   "text": "Deaths",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115983",
+   "text": "Stats - Survival",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115984",
+   "text": "Kill/Death Stats",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115985",
+   "text": "OK",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115986",
+   "text": "KILLED",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115987",
+   "text": "KILLED BY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115988",
+   "text": "Your session has been canceled because you were the only scheduled participant.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115989",
+   "text": "Thank you for your participation! Please return to the arena stone for additional dueling opportunities!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115990",
+   "text": "Arena Menu - Results",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115991",
+   "text": "You must destroy all the guardians before you can unlock the chest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115992",
+   "text": "Please don't forget to gather all of your belongings from your corpse.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115993",
+   "text": "Enable Hardware Death Effect",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115994",
+   "text": "Enables a hardware-accelerated screen effect when dead. Turning this option off will increase performance when dead at the cost of visual quality.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115995",
+   "text": "The damage from your opponents ranged weapon has been negated.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115996",
+   "text": "The rules prohibit the use of ranged weapons!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115997",
+   "text": "The rules prohibit riding a mount or flying.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115998",
+   "text": "The rules prohibit riding a mount or flying. You have received penalty damage!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1115999",
+   "text": "You may not do that in this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116000",
+   "text": "You may not use that skill in this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116001",
+   "text": "You may not use that ability in this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116002",
+   "text": "Endless Journey accounts and young players users may not participate in duels.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116003",
+   "text": "This arena stone no longer requires special access privileges.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116004",
+   "text": "You may not use this arena stone unless you have been granted special access privileges.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116005",
+   "text": "You have been granted special access privileges. Please start a duel within 3 minutes!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116006",
+   "text": "Special access privileges have been given to the character.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116007",
+   "text": "The cannon is already clean.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116008",
+   "text": "You cannot clean the cannon with this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116009",
+   "text": "The fuse needs to be removed to clean the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116010",
+   "text": "The ammo needs to be removed to clean the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116011",
+   "text": "The powder charge needs to be removed to clean the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116012",
+   "text": "The cannon is already charged.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116013",
+   "text": "You cannot charge the cannon with this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116014",
+   "text": "The magazine does not have a powder charge to charge this cannon with.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116015",
+   "text": "The cannon is already loaded with a cannonball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116016",
+   "text": "The cannon is already loaded with a grapeshot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116017",
+   "text": "You cannot load the cannon with this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116018",
+   "text": "The cannon needs to be charged with a rammer and powder charge before it can be loaded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116019",
+   "text": "The cannon is already primed and ready to be fired.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116020",
+   "text": "You cannot prime the cannon with this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116021",
+   "text": "The cannon needs to be charged and loaded before it can be primed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116022",
+   "text": "The cannon needs to be loaded with a cannon ball before it can be primed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116023",
+   "text": "An action is being performed on this weapon. Double-click it to assist.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116024",
+   "text": "Pink Champagne",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116025",
+   "text": "Cleaned: ~1_VALUE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116026",
+   "text": "Charged: ~1_VALUE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116027",
+   "text": "Ammo: ~1_VALUE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116028",
+   "text": "Primed: ~1_VALUE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116029",
+   "text": "Cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116030",
+   "text": "grapeshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116031",
+   "text": "Yes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116032",
+   "text": "No",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116033",
+   "text": "None",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116034",
+   "text": "~1_NAME~ begins preparing the cannon for firing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116035",
+   "text": "~1_NAME~ begins loading the cannon with a powder charge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116036",
+   "text": "~1_NAME~ begins loading the cannon with a cannonball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116037",
+   "text": "~1_NAME~ begins loading the cannon with a grapeshot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116038",
+   "text": "~1_NAME~ begins priming the cannon with a cannon fuse.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116039",
+   "text": "~1_NAME~ continues preparing the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116040",
+   "text": "~1_NAME~ continues charging the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116041",
+   "text": "~1_NAME~ continues loading the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116042",
+   "text": "~1_NAME~ continues priming the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116043",
+   "text": "~1_NAME~ assists in preparing the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116044",
+   "text": "~1_NAME~ assists in charging the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116045",
+   "text": "~1_NAME~ assists in loading the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116046",
+   "text": "~1_NAME~ assists in priming the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116047",
+   "text": "~1_NAME~ resumes preparing the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116048",
+   "text": "~1_NAME~ resumes charging the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116049",
+   "text": "~1_NAME~ resumes loading the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116050",
+   "text": "~1_NAME~ resumes priming the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116051",
+   "text": "The effort to prepare the cannon has paused.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116052",
+   "text": "The effort to charge the cannon has paused.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116053",
+   "text": "The effort to load the cannon has paused.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116054",
+   "text": "The effort to prime the cannon has paused.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116055",
+   "text": "~1_NAME~ cancels the effort of preparing the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116056",
+   "text": "~1_NAME~ cancels the effort of charging the cannon and retrieves the powder charge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116057",
+   "text": "~1_NAME~ cancels the effort of loading the cannon and retrieves the cannonball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116058",
+   "text": "~1_NAME~ cancels the effort of loading the cannon and retrieves the grapeshot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116059",
+   "text": "~1_NAME~ cancels the effort of priming the cannon and retrieves the cannon fuse.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116060",
+   "text": "~1_NAME~ finishes preparing the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116061",
+   "text": "~1_NAME~ finishes charging the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116062",
+   "text": "~1_NAME~ finishes loading the cannon with a cannonball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116063",
+   "text": "~1_NAME~ finishes loading the cannon with a grapeshot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116064",
+   "text": "~1_NAME~ finishes priming the cannon. It is ready to be fired!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116065",
+   "text": "~1_NAME~ carefully removes the powder charge from the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116066",
+   "text": "~1_NAME~ carefully removes the cannonball from the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116067",
+   "text": "~1_NAME~ carefully removes the grapeshot from the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116068",
+   "text": "~1_NAME~ carefully removes the cannon fuse from the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116069",
+   "text": "Dismantle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116070",
+   "text": "Remove Charge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116071",
+   "text": "Remove Ammo",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116072",
+   "text": "Unload",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116073",
+   "text": "~1_NAME~ dismantles the ship cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116074",
+   "text": "~1_NAME~ deploys a ship cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116075",
+   "text": "There is already a weapon deployed here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116076",
+   "text": "The ship must be near shore or a sea market to deploy this weapon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116077",
+   "text": "The ammunition must be unloaded before you can adjust the powder charge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116078",
+   "text": "There is no fuse to light! Prep the cannon first.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116079",
+   "text": "You cannot light the cannon's fuse with that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116080",
+   "text": "~1_NAME~ sets fire to the cannon's fuse. Stand back!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116081",
+   "text": "The cannon's fuse is burning!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116082",
+   "text": "~1_NAME~ removes the burning fuse from the cannon and discards it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116083",
+   "text": "The cannon failed to fire because it is not charged with powder.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116084",
+   "text": "Boom goes the dynamite! Next time try it with ammo.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116085",
+   "text": "kingfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116086",
+   "text": "unicorn fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116087",
+   "text": "holy mackerel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116088",
+   "text": "giant koi",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116089",
+   "text": "fairy salmon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116090",
+   "text": "autumn dragonfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116091",
+   "text": "summer dragonfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116092",
+   "text": "crystal fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116093",
+   "text": "fire fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116094",
+   "text": "reaper fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116095",
+   "text": "bull fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116096",
+   "text": "lava fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116097",
+   "text": "blue marlin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116098",
+   "text": "yellowtail barracuda",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116099",
+   "text": "black marlin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116100",
+   "text": "great barracuda",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116101",
+   "text": "zombie fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116102",
+   "text": "golden tuna",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116103",
+   "text": "giant samurai fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116104",
+   "text": "spring dragonfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116105",
+   "text": "winter dragonfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116106",
+   "text": "lantern fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116107",
+   "text": "dungeon pike",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116108",
+   "text": "rainbow fish",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

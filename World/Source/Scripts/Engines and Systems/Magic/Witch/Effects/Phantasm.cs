@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -19,7 +20,7 @@ namespace Server.Spells.Undead
 		public override void OnCast()
 		{
 			Caster.Target = new InternalTarget( this );
-			Caster.SendMessage( "What trap do you want the spirit to disable?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "What trap do you want the spirit to disable?" ) );
 		}
 
 		public void Target( TrapableContainer item )
@@ -70,7 +71,7 @@ namespace Server.Spells.Undead
 				}
 				else
 				{
-					from.SendMessage( "The spirit cannot disarm that" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The spirit cannot disarm that" ) );
 				}
 			}
 

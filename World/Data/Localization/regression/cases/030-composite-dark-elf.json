@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.dark-elf-phrase",
+  "pipeline": "composite_only",
+  "en": "an ancient dark elf city deep beneath Lodor",
+  "expectedZh": "洛多尔地底深处的远古暗精灵城",
+  "tags": "composite-only",
+  "notes": "quest-fragment-zh-table long phrase"
+}

@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using Server.Network;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -94,6 +95,10 @@ text = text + "Tasting - Used once by royalty to determine if food was poisoned,
 text = text + "Tinkering - This skill allows one to make many different types of tools and intricate items. If one wants to make jewelry, then this skill can accomplish that. Tinker tools are needed...along with metal ingots, wood, and gems for jewelry.<BR><BR>";
 text = text + "Tracking - Hunters are proficient with this skill as it allows them to track their prey. With a good tracking skill, one may even track hidden or invisible creatures.<BR><BR>";
 text = text + "Veterinary - If one decides to become a Tamer, this skill will allow you to use bandages to heal your pets and even resurrect them. This skill is also required if one intends to explore druidic herbalism.<BR><BR>";
+
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			text = StringCatalog.TryResolve( lang, text ) ?? text;
+			text = QuestCompositeResolver.ResolveComposite( from, text );
 
 			AddHtml( 17, 49, 875, 726, @"<BODY><BASEFONT Color=" + color + ">" + text + "</BASEFONT></BODY>", (bool)false, (bool)true);
 

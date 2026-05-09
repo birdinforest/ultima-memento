@@ -1,0 +1,3006 @@
+{
+ "batch": 39,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1158108",
+   "text": "You've completed a quest!  Return to the Lord Commander of the Paladins in Trinsic to claim your reward.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158109",
+   "text": "Citizens may be shocked to learn the Royal Britannian Guard has completely lost control of the Prison Dungeon Wrong. Details are still unclear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158110",
+   "text": "Scandal at Castle Blackthorn? Garish Dungeon Raises Questions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158111",
+   "text": "You have proven yourself Honorable, the Lord Commander looks overjoyed as you approach him triumphantly! Speak to him to claim your reward!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158112",
+   "text": "The realm rejoiced as King Blackthorn once again seemed to prove his prowess as the savior of Britannia, but a learned mage as well. In order to quell the threats posed on Britannia's cities by Minax's beacons his Majesty bound their evils under the foundation of his very castle! Initially heralded as an act of true selflessness, questions now abound regarding the true nature of that dungeon. Speaking on the condition of anonymity, a representative of the Crown had this to say, \"Sure Minax's beacons have been bound in the dungeon, and per his Majesty any brave enough to test themselves against that evil shall be permitted to do so in order to keep it at bay. You have to understand though, folks want a little something for their time - coin, artifacts, fame...whatever it may be, folks expect to be compensated. The same goes for the Crown. As you know his Majesty is very active in research and the arcane arts, well the dungeon provides the perfect venue for that. Adventurers get treasures not available anywhere else, and at the same time our knowledge of the arcane arts advance.\"<br><br>The Town Cryer pressed on the ethics of such an arrangement, however our source merely belched after taking a strong swig from a bottle of ale. Those who wish to adventure into Castle Blackthorn's Dungeon do so at their own peril, but are sure to find Artifacts Bearing the Crest of Minax which the Crown has assured they will exchange for a variety of treasures.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158113",
+   "text": "Diabolically Lucrative? Huge Treasure Troves Confirmed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158114",
+   "text": "It seems the Paladins of Trinsic are working hard to see the threats of Shame are kept inside Shame, perhaps it would be a good idea to visit their headquarters in Northeast Trinsic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158115",
+   "text": "Cartographers from the Maritime Guild have confirmed the appearance of treasure maps leading to a literal trove of treasures among the clandestine dealings of treasure hunters throughout the realm. Rumors of these maps have long circulated, however, The Town Cryer is the first to confirm their existence. The Town Cryer has also learned that a potential catalyst for the new encryption techniques used for the treasure location may stem from the influx of high end items pirates, brigands, highwaymen, and other hoarders are stashing in their treasure chests. The Maritime Guild cautions those foreseeing a quick payday - new encryption usually is accompanied by enhanced security at the location of the treasure chest. Those treasure hunters fortunate enough to come across one of these new maps are advised to take caution against the most difficult of wild foes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158116",
+   "text": "The Virtues Revisited, Acknowledging Britannia's Roots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158117",
+   "text": "Find the Lord Commander of the Paladins of Trinsic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158118",
+   "text": "When was the last time you visited the Chamber of Virtue in Britain? It is easy to lose track of the founding principles of Britannia, especially with our current King and his adherence to the tenants of Chaos. Even with the warriors of Vice and Virtue doing battle in Felucca's cities, the daily impact of that war is not felt by the majority of the realm. Those who devote themselves to the Virtues, however, will find themselves gifted with unique abilities. New among those gifts are those who walk the paths of Humility and Spirituality. <br><br>Teachings tell us Humility is the absence of Truth, Love, and Courage. To humble oneself is to truly put others before them, stripping themselves down to the most basic level. For those brave enough to embark on the path of Humility, they will find themselves facing Britannia's most dangerous threats without the protection of armor. Master this path and the power of Humility will in turn protect the Knight of Humility's pets by granting them immense regenerative powers.<br><br>Opposite Humility is Spirituality, or the full embrace of Love, Truth, and Courage. To be truly spiritual is to seek Love, Truth, and Courage from all the world and in turn truly know oneself. For those who embrace these teachings, they will find attunement and be handsomely rewarded for their commitments. The Knight of Spirituality can summon the energies of the world around them to absorb harmful damage and withstand the onslaught of an opponent.<br><br>These are the most recent revelations by the monks at the Chamber of Virtue, and all our readers are encouraged to visit the Chamber of Virtue and learn more about each virtue and the benefits of walking their paths.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158119",
+   "text": "Yearning for Domination Sorceress Takes Hold of Dungeon Covetous",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158120",
+   "text": "A unique opportunity to join the Paladins of Trinsic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158121",
+   "text": "Speaking on the condition of anonymity, the Town Cryer has learned from a source within the Lycaeum that Dungeon Covetous has come under control of a powerful sorceress with previous ties to the institution. This Mage, known as Cora, is well known to those within magical circles. What may shock most of our readers, however, is the violent past Cora had while training at the Lycaeum, her eventual expulsion and disappearance. Cora seems to have reappeared after that disappearance and has now bound all of Covetous to her evil magic. Reports from within Covetous are grim, to say the least. It seems that Cora has enslaved the creatures within to destroy the Lycaeum's attempts at channeling Cora's magics into what they call the \"Void Pool.\"  While citizens are encouraged to avoid Covetous, those that dare challenge Cora's magics are said to do so at their own peril. Despite these warnings, many adventurer groups have looked to Covetous as the location of their next major pay day. In speaking with several groups on the roads to and from Covetous it would seem a bit of a contest has emerged among those who dare challenge Cora's forces at the void pool. To those who are skilled and determined enough to hold back her forces, cities throughout the realm have already recognized those accomplishments and have seen fit to build large triumphs heralding that accomplishment. Still, the Lycaeum reaffirms its public position that all of Britannia's dungeons are home to dark magics and unknown risks, imploring all citizens to only venture to areas protected by Royal Britannian Guard and official mages of the Lycaeum.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158122",
+   "text": "The Tragedy of Andros and Adrian",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158123",
+   "text": "Speak to the Lord Commander of the Paladins of Trinsic located in Northeast Trinsic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158124",
+   "text": "When brotherly love goes wrong, Britannia suffers. Dungeon Despise has become the battleground for a feud between two powerful twin brothers, Andros and Adrian. <br><br>The fathers of these brothers, both well learned in the arcane arts, lusted for the same woman. She was but a simple maiden, tending to the ranches dotting the Britannian countryside, her beauty, however, was without equal. Both men knew should they compete against one another, neither would succeed in bearing fruit with such beauty. So, the brothers conspired, and began to corrupt the very fabric of her love. Together the brothers conjured a powerful Polymorph spell to transfigure themselves into the perfect man for the maiden to love. For months they would deceive her love, the maiden unknowingly accomplice to a corrupt triangle. Finally, she gave birth to twins. Despite the powerful magics the brothers used to pursue their ruse, the mother's love for her children was too great and the brother's trickery was uncovered. Outraged at such a thing the maiden cast away her lovers forever, cursing them to the Abyss. As the twins grew and their mother aged they would learn of her hate towards their fathers. As each twin grew to adulthood and became their own man, they would blame the other for their own father's fate, and come to despise one another.<br><br>Already practiced in their fathers' art and fully possessing their arcane talent the twins began bartering with the mysterious Wisps. Eventually each convinced the Wisps to conjure an army with which to destroy the other. Their mother, bearing witness to this feud and knowing the dangers of the likely outcome, pleaded with her sons to reconcile. Corrupt with rage, there was no foregoing their anger and so she meditated at the Shrine of Compassion, hoping in her heart of hearts for her sons to end the feud. As she meditated a mysterious Wisp appeared to her and in an instant an eternal pact was made. The mother's love was enough to save Britannia from impending war, but her sons, filled with despise would be cast there forever...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158125",
+   "text": "Lean More about this article (Opens UO Wiki)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158126",
+   "text": "Go on this quest!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158127",
+   "text": "The life of a Shipwreck Salvager does seem exciting!  Visiting Hepler Paulson at the Sons of the Sea in the City of Trinsic is certainly to be an adventure!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158128",
+   "text": "Complete the Exploring the Deep Quest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158129",
+   "text": "Complete the Exploring the Deep Quest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158130",
+   "text": "You decide against accepting the quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158131",
+   "text": "Speak to Hepler Paulson at the Sons of the Sea in Trinsic and complete the Exploring the Deep Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158132",
+   "text": "Each month the Ranger's Guild in Skara Brae hosts a contest to see who can hunt Britannia's largest creatures! Visit the Skara Brae Ranger's Guild to learn more!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158133",
+   "text": "Visit the Skara Brae Ranger's Guild and participate in the Huntmaster's Challenge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158134",
+   "text": "Visit the Skara Brae Ranger's Guild. The Guild is located on the mainland. You can use the ferry at the docks to get there.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158135",
+   "text": "the remains of a would-be paladin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158136",
+   "text": "You have discovered the secrets of the Wreck of the Ararat and aided in binding the Shadowlords to their tomb within!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158137",
+   "text": "*You notice the skeleton clutching a small journal...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158138",
+   "text": "*the text is mostly a journal chronicling the adventures of a man who wished to join the Paladins of Trinsic.  Of particular note is the final entry...*<br><br>This is the most shameful entry I will write...for I have fallen short of my goal. My only hope is my failures will serve to assist those who come after me with the courage to pursue the truth, and with my notes they will find success. I have found strange crystals on the corpses of the creatures I slay here. When I touch the crystal, I can feel it absorbed into my being. A growing voice inside me compels me to altars located throughout the dungeon. When the voice within grew loud enough I could no longer ignore it, I touched my hand to the altar and before me a grand champion stood! I was quick to react to the crushing blow my newly summoned opponent sought to deliver, and I was victorious! Alas, the deeper into the dungeon I explored, the more powerful the altar champions become and now I find myself in this dire situation.... To anyone who reads this...do me the honor and defeat the three champions and slay the unbound energy vortexes that inhabit the deepest depths of this place...for I feel my time here is shor...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158139",
+   "text": "A Reward Title Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158140",
+   "text": "Hunter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158141",
+   "text": "This title is obtained by completing the Huntmaster's Challenge Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158142",
+   "text": "Uncovering the secrets of the deep...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158143",
+   "text": "Vault Locations",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158144",
+   "text": "Only Endless Journey account players may rent vaults.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158145",
+   "text": "There are no available vault locations at this time. Please try again later.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158146",
+   "text": "You are unable to claim this vault. This vault is awaiting auction.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158147",
+   "text": "Endless Journey accounts may only remove up to 50 items from their bank boxes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158148",
+   "text": "Items removed from bank box: ~1_COUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158149",
+   "text": "You have removed the maximum amount of items from your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158150",
+   "text": "Righting Wrong",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158151",
+   "text": "The situation at the Prison Dungeon Wrong seems to have gotten out of control. The article mentioned the Royal Britannian Guard has started contracting adventuring groups to handle the situation. Perhaps it would be prudent to inquire about opportunities with the Guard at the Court of Truth in Yew.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158152",
+   "text": "Inquire about the events at Wrong with the Royal Britannian Guard at the Court of Truth in Yew.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158153",
+   "text": "A unique opportunity with the Royal Britannian Guard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158154",
+   "text": "Speak to someone from the Royal Britannian Guard at the Court of Truth located in Northwest Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158155",
+   "text": "Another wanna-be guardsman expecting to wrangle this mess? You should know that inside Wrong there are many terrors. Lizardman have squatted in the entire prison, eaten most of the prisoners and staff. The few staff that are left have gone mad. If you expect to make it as a Guardsman you are going to need to thin out the heard. Head inside and kill the creatures within!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158156",
+   "text": "Go inside the prison dungeon Wrong and slay the creatures within!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158157",
+   "text": "Well then, I guess you aren't as useless as you look. Made quick work of the Lizards, that's fine work indeed! Your next test is going to require you travel deeper into the prison. Seems there is an ogre who has taken to mastering his cooking skills at the expense of the former prisoners. The Guard can't have that, so you need to go in there and make sure this cook is prepping his last meal!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158158",
+   "text": "Go inside the prison dungeon Wrong and slay Fezzik the Ogre Cook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158159",
+   "text": "Royal Britannian Guard Orders",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158160",
+   "text": "ROYAL BRITANNIAN GUARD<br>MINISTRY OF PRISONS DETACHMENT<br><br>ORIGINAL ORDERS<br>ROYAL BRITANNIAN GUARD<br>WRONG PRISON DIVISION<br><br>From: COMMAND, RBG Yew<br>To: Lieutenant Bennet Yardley, RBG Yew<br><br>Subject: Wrong Prison Treasure Expedition<br><br>1. RBG Intelligence has indicated the presence of highly prized cache of weapons stashed within the deepest confinements of the Prison Dungeon Wrong. Intelligence indicates these weapons were confiscated at the time of various assassination attempts among the prisoners before the prison was lost.<br><br>2. Official cover story remains in place - no outside interference expected and only official RBG personnel are permitted entry.<br><br>3. Interview with former prison officials indicate weapons under heavy lock and key, suggest specialist assignment of lock picking skills and tools.<br><br>*The remainder of the document is illegible*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158161",
+   "text": "Warden of Wrong",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158162",
+   "text": "This title is obtained by completing the Righting Wrong Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158163",
+   "text": "Looks like Fezzik won't be making anymore stew! Hah! Well done! Your final task is going to require you to learn the most important lesson of being a Guardsman - we never leave a man behind. One of our comrades was captured by the demonic jailers and taken to the prison. You need to get yourself captured by the jailers and taken inside the deepest part of the prison. Once inside, find our fallen comrade and escape. Here's a copy of his orders to help you find his corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158164",
+   "text": "Find the fallen Guard's corpse and escape the prison.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158165",
+   "text": "A Unique Honor from the Royal Britannian Guard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158166",
+   "text": "Go inside the prison dungeon Wrong and get yourself captured by the Demonic Jailors. Once inside, find the fallen Guard and escape with his corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158167",
+   "text": "A step closer to righting Wrong",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158168",
+   "text": "The Corpse of Bennet Yardley",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158169",
+   "text": "You have found the corpse of Lieutenant Bennet Yardley of the Royal Britannian Guard. Unfortunately, it seems there is not much left to return to the Field Commander. Regardless, you hold back your urge to become sick and gather his remains. Escape the prison and return to the Field Commander.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158170",
+   "text": "You have brought Justice to the forgotten prison dungeon Wrong! The Royal Britannian Guard thanks you for your service, and for not leaving the Lieutenant behind. You fought bravely this day and escaped the prison. As a thank you for your service, and a testament to your accomplishment, you have been granted the title Warden of Wrong!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158171",
+   "text": "orders",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158172",
+   "text": "Stories from the Time Between Crowns - Prologue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158173",
+   "text": "Stories from the Time Between Crowns - Chapter 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158174",
+   "text": "Stories from the Time Between Crowns - Chapter 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158175",
+   "text": "Stories from the Time Between Crowns - Chapter 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158176",
+   "text": "Stories from the Time Between Crowns - Chapter 4",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158177",
+   "text": "Stories from the Time Between Crowns - Chapter 5",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158178",
+   "text": "Stories from the Time Between Crowns - Chapter 6",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158179",
+   "text": "Stories from the Time Between Crowns - Chapter 7",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158180",
+   "text": "Prologue - Introduction by Sherry the Mouse<br><br>After the death of Queen Dawn, but before King Blackthorn assumed the throne, there was a period of chaos, now called the Time between Crowns. After the defeat of Virtuebane, the common banner against daemonic invasion was gone. Without leadership from Britain, the cities and towns were pulled apart by petty squabbles. Even Britain itself was torn apart from within. As humanity turned inward, they ignored their responsibilities to their allies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158181",
+   "text": "Chapter 1 - The Broken Bridge<br><br>Victor shares a story of chaos and despair and those who stood against it. - Sherry the Mouse<br><br>Travelling city to city as a wagon driver, I saw the chaos firsthand.  <br><br>Many have heard stories about the Britain Riot, remembered for the looting and fire bombing of the original Castle Blackthorn. Arson and rioting were rampant. I saw someone attempting to set fire to Empath Abbey itself in a fit of rage! Some of this chaos was caused by criminals who were always outside the laws of Britannia, but much of the violence was caused by ordinary people driven to extremes by grief and desperation. The riots were more about bread than politics. <br> <br>As our roads became more dangerous, the kingdom separated into feuding cities. Where were the rich and powerful during all of this? They were buying and selling any piece of Britannia they could get their hands on! Want to be a knight, dame, baronet, or duke? Each city was selling grants of title as quickly as the ink could dry. Many accepted the titles of leadership while doing nothing to lead! <br><br>There were those who tried to make things better. Those who fed the hungry. Those who protected the roads and cities. Those who brought criminals to justice. They saved us. One saved me. A ranger rescued me after I’d been left for dead on the road to Skara Brae. I’ll never forget her or those who like her who got us through those dark days.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158182",
+   "text": "Chapter 2 - The Girl Who Woke Exodus<br><br>Balthan the Guide shares a story that illustrates the difference between intelligence and wisdom. - Sherry the Mouse<br><br>Callie never stopped moving. She was a stranger in our settlement, and despite exhaustion from her travels, she immediately asked to hire a guide. She had this giant backpack, filled with notebooks and tools, and when she sat by the fire, she pulled a dozen maps of Ilshenar from it. Callie needed a guide through Exodus’s former domain. It was dangerous work, but I’d done it before. <br><br>During our travels, I learned that she was completing the work of her parents: a study of the magic and tinkering created by the being Exodus. This had led her to every library, mage circle, and tinker’s workshop in the land. When she had exhausted that well of knowledge, she’d spent the last of her money hiring me.<br><br>When we entered the clockwork tunnels, Callie set to work. Despite the dangers, she pulled apart and studied every gear, gizmo, and glowing power crystal. She learned enough to repair the larger devices inside Exodus’s mechanized lair. Those great machines had been left broken since the fight between Britannia and Exodus’s false Blackthorn and the Juka. Her tinkering know-how guided us as we moved the large components and rebuilt the first Nexus device. When she activated it, we barely escaped with our lives as every golem and cultist in the dungeon converged on us. <br><br>This set into motion a plan by the mastermind machine itself that would return the scourge of Exodus to Sosaria. Later, others would duplicate her efforts and build unlinked Nexus devices in an attempt to stop Exodus, but their work could not completely undo what she had done. As for Callie, she was hunted down and killed by an agent of Exodus. Her knowledge of Exodus’s arcane workings was lost as well.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158183",
+   "text": "Chapter 3 - The Waymaster<br><br>Argahrok, Shirron of the Juka, shares a story of unlikely bonds and the need to listen. - Sherry the Mouse<br><br>My tale starts with a nightmare. <br><br>I am a Juka warrior. I have stood in battle since I was old enough to hold a sword, and fear has never been a companion. Yet, thoughts of that nightmare send a chill down my spine. It was a horror shared by all Juka. It forced some of us back to the waking world, screaming, and some of my kin never woke at all. Each night for a week, the Meer and my people had visions of a battle that had never happened, a history forgotten. <br><br>Many of my warriors believed it a curse, a precursor to a larger attack by the Meer. However, my greatest scout, Waymaster Harlann, was not so sure. She disguised herself as one of the Meer and spoke with the other factions of Ilshenar. The gargoyles and humans were unaffected, but she found the Meer were also afflicted. With this knowledge, she returned to our stronghold, hoping to convince me to find the true source. She was almost too late. <br><br>Harlann was right that the dreams were an omen of something worse, connected with the Meer and Juka’s shared origin. For when Exodus’s machines came to life, they set in motion long dormant machinations. One of these was a contingency for if the Juka betrayed Exodus.<br><br>I did not believe her when she demanded that we abandon our fortifications. Great Mother, I was wrong! Our great fortress was torn from its place and cast back to where it came from. Many of my warriors were not able to escape and were pulled through the mana tempest. Older Juka in the vicinity, those who had arrived years earlier as part of Kabur’s alliance with Exodus, died as two opposing timelines crashed together. <br><br>I would not have survived if Harlann had not pulled me, unconscious, half the way to Ver Lor Reg, before collapsing from her own injuries. If I had only listened, so many more would have been saved.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158184",
+   "text": "Chapter 4 - The Fall of Ver Lor Reg<br><br>Dupre shares the story of the desperate battle for the gargoyle city. - Sherry the Mouse<br><br>In the months prior to the manifestation of Exodus, the gargoyles of Ter Mur had reached out to their brethren in Ver Lor Reg. During the long history of the gargoyle people, there were stories of a “lost” colony, cut off from Ter Mur by a cataclysm. Many believed this to be Ver Lor Reg. Queen Zhah invited the residents of Ver Lor Reg to leave the dangers of Ilshenar and strengthen Ter Mur. There was much debate in the cliff city, but in the end, other forces decided for them.<br><br>Ver Lor Reg became the location chosen to manifest Exodus in Sosaria. Its machine horrors and loyal cultists relentlessly attacked the city. The gargoyles fled when hundreds of machines forced their way out of the ground and shredded everything in their way. Ver Lor Reg was lost in under an hour. <br><br>I went to Ilshenar to lay siege to the city, but dire reports from gargoyle scouts made it clear we must storm the city. This was not the battle for Trinsic. There, we faced an entrenched enemy, but we knew our city better than they did. Here, the machines of Exodus had reshaped the materials of the streets and buildings along their own logic. We lost time destroying walls and barriers to get to the center of the city. Our scattered forces converged too late to stop the ritual. <br><br>The summoned Exodus itself was more of a threat than any of its forces. I worried if we were enough to stop the carnage. The unfamiliar terrain flanked us while Exodus relentlessly attacked. I had come to Ilshenar, expecting an orderly siege, but what I got was a brawl with a creature that stood stories above my army. It was a desperate fight we barely won. We did not realize the cost until later.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158185",
+   "text": "Chapter 5 - The Shattered Gate<br><br>The mage Gilforn shares a story of magic and moongates. - Sherry the Mouse<br><br>As Exodus was defeated, there was a powerful surge of magic. A secret that the daemon-machine took into oblivion is whether this was some malice or a malfunction of its dark core. The mana disrupted the Honor Shrine moongate and threatened the Ilshenar gate system, which had existed for hundreds of years since the times of Ulvol.<br><br>Initially, many thought it was a minor disruption, a mere inconvenience that would stabilize given time. When this did not happen, various experts on moongates and magic were consulted, including myself. What we found was far more troubling than one disrupted gate. While a single moongate distorts the fabric of reality to connect distant points, this ethereal aberration was a growing tear.  <br><br>Many of us tried and failed to restore the damaged gate and heal the rip into the Ethereal Void. I will admit that I lacked the raw mana to sew together the ripped edges of reality. Some of the most powerful mages in Moonglow believed they controlled the raw elemental magic necessary, but those reckless attempts resulted in injury or the mage being pulled into the Ethereal Void. <br><br>Blackthorn’s spell was ultimately successful in repairing the moongate. When I spoke to him about it, he admitted he had studied the writings of Nystul, Doost, and myself as part of his attempt to imprison Exodus, but it was not enough. The greatest living mage knew he did not have the mana necessary. In a desperate gamble, Blackthorn had made a connection with the Shrine of Honor itself, borrowing the energies needed to save that part of Ilshenar. <br><br>I can’t tell you if he tapped into people’s belief in Virtue, the Honor of those around him, or some primal good magic waiting in the shrine. I do know that he was successful where so many others failed. Greatness is sometimes the right combination of knowledge and humility. Oh, and magic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158186",
+   "text": "Chapter 6 - The Great Gargish Blight<br><br>Princess Rhista of Ter Mur shares a story of Compassion and a mysterious healer. - Sherry the Mouse<br><br>Our gargish kin brought very little when Ver Lor Reg fell, but they carried with them something unexpected: the Blight. For those who grew up in Ilshenar, the disease was a minor childhood ailment, something that the generations had fortified against. For those of Ter Mur, it was a scourge that cut down even the healthy. <br><br>When the Blight started moving through the Royal City, my mother made the decision to quarantine the refugees from Ver Lor Reg to one distant corner of our land and all of those afflicted to another. I, myself, caught the wasting disease while bringing supplies to a remote fishing village in the quarantine area. Some will call my mother harsh, sacrificing even her own daughter so our civilization could survive, but I am not sure I would have made a different decision. <br><br>At this time, a stranger came to our land. We found this human unconscious on the edge of Ter Mur. Since his people were immune to the Blight, he volunteered to care for the afflicted. There is truth in saying that this mysterious healer saved our people. His knowledge of alchemy identified the ingredients necessary for the cure, and he helped organize the alchemists who treated us. <br><br>Still, he was not alone. Many, from all over Sosaria, came to our aid. There are some gargoyles who see Singularity as limited to the unity of the gargish people, but I saw that virtue in the faces of the humans, elves, and gargoyles who cared for us as we lay so near death.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158187",
+   "text": "Chapter 7 - Rebuilding and Homecoming <br><br>Heckles, the Royal Jester, shares a story of a happy reunion. - Sherry the Mouse<br> <br>Blackthorn always was a fair boss. He gave me free rein in his well-stocked wine cellar, so even after all the stories about him, I felt it was my job to maintain his castle and other properties. During the Britain Riot, I valiantly protected his legacy by fleeing from the castle with the keys to the vault.  <br><br>After the riot, things are a little hazy for a bit. I’m pretty sure I had a few drinks to fortify myself, but then it was time to get back to work! I set myself to the task of restoring Castle Blackthorn using various treasure that my lord had saved for just such a rainy day. The builders took Blackthorn’s gold just fine and set to work. When it was finished, I did my best having it furnished as my lord would have liked. Since this was before Blackthorn’s majestic return, some will ask why? Why did I do it? Well, a jester needs a castle as much as a king. <br><br>The day Lord Blackthorn came home was an event. People gathered across the bridge to see his arrival. There were no grumbles about the clockwork abomination that had stolen his face. This was Lord Blackthorn, Healer of the Gargoyles, Stitcher of Moongates, The Uniter. He seemed surprised by all of this, but he gave the crowd a wave and crossed the bridge into his castle. I was there lined up with the few servants I had hired. Seeing me there standing at attention made him laugh. Years of jokes, jests, and stories, and it was me trying to stand up straight that got the best laugh.<br> <br>The stress of planning the coronation was a bit of a blur, but this jester kept busy and mostly sober. Sir Dupre was the one to finally put the crown on King Blackthorn’s head. Even a paragon of restraint like myself might have shed a tear to see a crowned ruler again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158188",
+   "text": "Bank Contents",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158189",
+   "text": "Endless Journey accounts cannot use this feature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158190",
+   "text": "Friends & Endless Journey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158191",
+   "text": "Endless Journey accounts may only enter public housing and may not access containers or stacks of items within a house.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158192",
+   "text": "Storage Vault Credit (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158193",
+   "text": "You have increased your storage vault credit on this character. Your total credit count is now ~1_VAL~. Visit the nearest Vault Manager to rent a storage vault.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158194",
+   "text": "You cannot increase the number of vault credits on this character.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158195",
+   "text": "Thou art a criminal and cannot access thy vault.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158196",
+   "text": "There was an error with your transaction. Verify that your balance for this action is not greater than 1,000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158197",
+   "text": "A Visit to Castle Blackthorn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158198",
+   "text": "It seems that Castle Blackthorn has some secrets that are worth investigating. Your history on how Blackthorn even became king is a little fuzzy. You decide a visit to Castle Blackthorn would be worthwhile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158199",
+   "text": "Visit Castle Blackthorn in Northern Britain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158200",
+   "text": "A step closer to understanding the history of Blackthorn's Rise to the Throne.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158201",
+   "text": "Visit Castle Blackthorn in Northern Britain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158202",
+   "text": "History with Heckles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158203",
+   "text": "As you cross the bridge Blackthorn's massive castle towers up from the terrain it sits atop.  The jet-black stone of her walls are foreboding, yet invite your curiosity. Your eyes scan the courtyard and fixate on an incredibly handsome man. You've never seen such beauty and style! Their exquisitely apportioned jester suit perfectly toes the line between comedic expression and fashion. His hat is masterfully crafted with golden bells matching radiant jewelry that jingles as he swigs from a bottle. You decide to follow the jester, who is no doubt headed for the castle bar.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158204",
+   "text": "*hic* Are ye here with the wine delivery from the Abbey? No? Silly me to think you could lift a crate of wine with the strength of a lapwing! Haha! What do you want then, I'm very busy you know - many suitors and lots of wine to test. Oh, you want to know about the dungeon and His Majesty? Do I look like the Royal Archivist? Fine fine...look - the archivist gave me some volumes to store away but I dunno. I lost them. If you can find them I'll let you in on a little secret about the dungeon that'll make it worth your while! I wrote down what I can remember about where they are in this book here. Good luck. Or not. *hic*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158205",
+   "text": "Follow Heckles' clues and using any skill level of detecting hidden to find the missing 8 historical volumes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158206",
+   "text": "Heckle's Notes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158207",
+   "text": "It's a good thing I'm writing this down. I probably shouldn't have had that fifth bottle of Moonglow Red, just so delicious though. The archivist asked me to put these historical volumes in His Majesty's office for his perusal but I can't find them anywhere.  Where did I go last night...<br><br>I remember hearing the chime of an elderly clock. <br><br>The band of musical bards from Jhelom played great music!<br><br>I woke up at the bar this morning. My head was pounding!<br><br>What did I eat for dinner? I can't remember what was even cooking!<br><br>I'll never forget desert! The cookies were amazing!<br><br>I lost my favorite drinking mug last week, so I raided one of the guest rooms for a replacement haha!<br><br>I met up with one of the blacksmith's and we shared a drink! The swords we made weren't very sharp!<br><br>What's this bug bite? Was I stung by something?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158208",
+   "text": "Brigands",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158209",
+   "text": "Select the vault you wish to claim.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158210",
+   "text": "Your keen senses have detected one of Heckles' missing books! You have found ~1_count~ of 8 books. Use Heckles' notes to find the rest!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158211",
+   "text": "Heckles' Hero",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158212",
+   "text": "*hic* Well, you aren't as useless as you look! Haha! Look, finding those texts was a real solid so I'm gonna let you do one more thing for me. See, the truth is...erm...after the King used his magic to seal Minax's creatures inside the dungeon I -may- have accidentally let some of them back in while tooling around the wine cellar...If you could help clear out the dungeon, I will definitely make it worth your while! *hic*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158213",
+   "text": "A special reward from Heckles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158214",
+   "text": "Enter Castle Blackthorn's Dungeon and slay the specified creatures inside.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158215",
+   "text": "Page",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158216",
+   "text": "the Historian",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158217",
+   "text": "This title is obtained by completing the Heckles' Hero Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158218",
+   "text": "*hic* Wow! You aren't completely worthless! You made quick work of the creatures in the Dungeon. I'll be sure to let His Majesty know I handled it perfectly. By the power vested in me as the master of this bar I grant you this title, and some pull with the Artifact Agents! *hic*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158219",
+   "text": "You've found all the missing volumes! Return to Heckles to let him know!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158220",
+   "text": "Your backpack cannot hold the this item. You will need to free up space in order to receive this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158221",
+   "text": "As a special reward for helping Heckles you have been awarded bonus Blackthorn Artifact points! Redeem them from the Agent of the Crown at the entrance to Blackthorn's Dungeon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158222",
+   "text": "You've cleared out all the creatures from Heckles' list! Return to him for your reward!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158223",
+   "text": "Treasure Hunting sure does sound like an interesting profession! Think of the riches to be found! You'd have everything you've ever dreamed of! The Town Cryer article is fairly vague, however you have heard whispers of a mapmaker in Vesper at the Majestic Boat who may know a thing or two about decoding treasure maps.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158224",
+   "text": "A step closer to becoming a treasure hunter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158225",
+   "text": "The Cartographer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158226",
+   "text": "The Cartographer seems busy at her desk pouring over stacks of rolled parchment. You decide to break the silence with courteous *Ahem*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158227",
+   "text": "A treasure seeker then? There is no telling the lengths someone will go to protect their most prized possessions. Over time maps to certain treasure troves have been found and their bounties recovered. The bounty within a treasure chest is directly related to the difficulty of deciphering the map and overcoming the protections of the chest itself. Cartographers use a variety of terms to describe the difficulty of a map that is drawn. This includes maps that lead to a stash, supply, cache, hoarde, and trove. Even the most basically trained cartographer can decode a map leading to a stash. The Cartographer can also discern the type of loot they might find based on the profession of whom the map belongs. Beyond that, however, some training in cartography is required. Once deciphered, the cartographer must find the location within the world and use a digging tool, such as a pickaxe or shovel to dig up the chest. Those skilled at mining will have a much easier time finding the chest, but it is not a requirement. The chest will be no doubt locked and trapped, so some skill with lockpicking and trap removal is suggested, although mages skilled enough may use magical means to unlock lower end treasure chests. Removing the trap with limited training will take more time. Finally, the chest is likely to be guarded by a variety of creatures that will attempt to defend the treasure at all costs, both following the unearthing of the chest and during the remove trap process. Combat skills are imperative to dispatch those creatures safely! Sounds like a challenge? Well it can be, but alas it is also incredibly rewarding and you will have a much easier time of it if you recruit other adventures into your budding treasure seeking business. Alas, here's a map I had lying around. You can visit the Adventurer's Supplies just on the mainland of Vesper to get some basic supplies.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158228",
+   "text": "Visit the Adventurer's Supplies in Northern Vesper, just across the bridge, and speak to the Master Provisioner to get some basic treasure hunting equipment.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158229",
+   "text": "A mysterious treasure map personally given to you by the Legendary Cartographer in Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158230",
+   "text": "Buried Riches",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158231",
+   "text": "Visit the Legendary Cartographer at the The Majestic Boat in Vesper.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158232",
+   "text": "Tools of the Trade",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158233",
+   "text": "The Adventurer's Supplies is a large provisioner with many different types of adventuring equipment available for purchase. You spot the shopkeeper the Cartographer described and approach with a friendly greeting!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158234",
+   "text": "Find the location marked on the Treasure Map given to you by the Cartographer and use the supplies the Provisioner gave you to recover the treasure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158235",
+   "text": "Expand your experience as a Treasure Hunter with a map leading to a Supply.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158236",
+   "text": "Complete your experience as a Treasure Hunter by discovering the final treasure hoard.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158237",
+   "text": "Treasure!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158238",
+   "text": "Use the book \"Treasure Hunting: A Practical Approach\" to help you decode the treasure maps you have been given and those that you find during your adventure and use the information contained within the text to aid you in your quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158239",
+   "text": "The Treasure Chase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158240",
+   "text": "A Mysterious Treasure Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158241",
+   "text": "Given to you by the Master Cartographer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158242",
+   "text": "The Cartographer has given you a mysterious treasure map and offered you some tips on how to go about recovering the treasure. As the Cartographer leaned in and handed you the furled parchment, she told you of the origins of this mysterious document. \"Legend has it...\" she tells you, \"this map is the lost treasure of an ancient Sosarian Order of Zealots. I'm told over the centuries they would bury small portions of their treasure throughout the Britannian countryside in an effort to thwart any attempts to recover the hoard in its entirety.\" Your eyes widen at the thought of a massive treasure hoard and you can't wait to find it!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158243",
+   "text": "Your time studying Treasure Hunting: A Practical Approach helps you decode the map...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158244",
+   "text": "*You decide to visit the Provisioner at the Adventurer's Supplies in Vesper before trying to decode the map...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158245",
+   "text": "You have found the first zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158246",
+   "text": "You have found the second zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158247",
+   "text": "You have found the final zealot treasure! There are no doubt riches to be had within! Your experience has earned you a reward title that has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158248",
+   "text": "This title is obtained by completing the Treasure Chase Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158249",
+   "text": "Another rusted chest emerges from the broken ground at your feet! As you pry it open the brilliant shimmer of gold and jewels catches your eye. This map too is highly decorated with ancient runic text and marks another location for the hoard. You notice the magical creatures guarding the previous hoard were more challenging than the first, and you expect that trend to continue. With greater difficulty comes greater reward! On the reverse of the map is a short hand-written note,<br><br><i>For those who will come long after and discover this treasure, know you will never truly discover the extent of our wealth. If you posses this map you no doubt have some connection to our society, which has survived generation after generation. Use this wealth for what we have used it for, to be virtuous and good throughout Sosaria...</i><br><br>The note is very cryptic about the origins of these zealots and their beliefs, but from what you can gleam they are a long gone organization who's values were that of virtue and good. You are warmed by this altruistic purpose and decide to use your wealth to promote their cause throughout the realm as you search for other treasures.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158250",
+   "text": "Recovered from a Mysterious Treasure",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158251",
+   "text": "Your eyes widen as you pry open the old chest and reveal the treasure within! Even this small cache excites you as the thought of bigger and better treasure looms on the horizon! The map is covered in ancient runes and marks the location of another treasure hoard. You carefully furl the map and set off on your next adventure!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158252",
+   "text": "*Your recent study of Treasure Hunting helps you pick the lock...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158253",
+   "text": "Treasure Hunting: A Practical Approach",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158254",
+   "text": "Vespyr Jones",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158255",
+   "text": "Hail and Well Met! I am renowned Treasure Hunter Vespyr Jones! In this text I will give you the secrets you will need to become a Treasure Hunter yourself! Often times you will come across treasure maps throughout your journeys in Britannia. These maps can be obtained from a variety of monsters and even pulled up from the depths of the ocean! Once you've got your hands on a map you will undoubtedly notice the details the cartographer took to draw it. Maps leading to a stash are the easiest to decode while those leading to a trove require the highest levels of training in Cartography. It goes without saying that the greater the difficulty of the map, the greater the treasure to be had! A map will also tell the Cartographer the profession of whom the treasure belongs, useful information when trying to target specific loot. Cartography is one of only several skills the successful treasure seeker needs to uncover a hoard. Lockpicking will assist with unlocking secured chests. Remove Trap will handle any booby-traps meant to deter intruders. A complement of combat skills, or fellow adventurers to get your back, are needed to dispatch any treasure guardians enchanted to protect the chest. Remember too that more difficult chests are no doubt to be protected by the strongest guardians. Follow these simple rules and before long your pockets will be overflowing with coin & treasure! Happy Hunting!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158256",
+   "text": "A mysterious treasure map recovered from a treasure hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158257",
+   "text": "You must be on the \"The Treasure Chase\" quest offered via the Town Cryer to dig up this treasure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158258",
+   "text": "Treasure Seeker's Lockpicks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158259",
+   "text": "A Plea from Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158260",
+   "text": "The Governor of Minoc has made a plea to any and all of those willing and able to come to defense of the City. Cora the Sorcerers has overtaken the Dungeon Covetous and corrupted the creatures that reside within. You hear rumors the Governor has authorized the Sheriff of Minoc to bestow great fortune and fame to those who sacrifice in the name of the city.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158261",
+   "text": "Visit the City of Minoc and speak to the Minoc Sheriff.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158262",
+   "text": "An opportunity to serve the City of Minoc.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158263",
+   "text": "Clearing Covetous",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158264",
+   "text": "That's right, I'm the Sheriff of Minoc, what can I help you with citizen? What you read in the Town Cryer is true, Covetous has become quite dangerous. It seems a vile Sorcerers called Cora has overtaken the dungeon and corrupted the creatures within, binding them to her cruel rule. The Lycaeum had been trying to contain her magics within the dungeon with something called the \"Void Pool\" but the mage they sent has not been seen in quite some time. The place is dangerous to say the least and requires skilled combatants who will encounter greater success if they pool their resources. None the less, the Governor has authorized me to deputize any and all who sacrifice on behalf of Minoc and attempt to cleanse Covetous. As you know the mountain is a key strategic resource to valuable ore that is vital to Minoc's economy. Prove yourself to the City and you shall not soon be forgotten...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158265",
+   "text": "A step closer to glory for thy deeds...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158266",
+   "text": "Go to the dungeon Covetous Level 1 and defeat the creatures within!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158267",
+   "text": "You've cleared enough creatures to allow the miners of Minoc to return to their mining operations. Return to the Sheriff and report the news.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158268",
+   "text": "Indeed, you have proven yourself, and with your clearing of the creatures in the upper levels of Covetous Mountain our miners can once again return to their normal operations, ensuring the lifeblood of our city is one again flowing. You are no doubt brave and strong, but your next task will test your endurance no doubt. As I said, the Lycaeum is keeping Cora's power at bay with something called the Void Pool. The magics prevent Cora herself from destroying it, but her minions are not bound by that restriction. Only blade and spell can defeat her forces as they try to destroy the Void Pool. Defend the Void Pool at all costs and sacrifice for Minoc. Do this and you will no doubt be remembered a hero.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158269",
+   "text": "Go to the Void Pool located in Level 2 of Covetous and defend it from Cora's armies!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158270",
+   "text": "You have defended the void pool until your last breath, your sacrifice for Minoc will not be soon forgotten! Return to the Sheriff of Minoc and report the news!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158271",
+   "text": "A Forced Sacrifice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158272",
+   "text": "Despite your failure in protecting the void pool, your efforts have allowed the mages of the Lycaeum to use their magics and bind the void pool in an infinite time loop, forever sealing Cora within the dungeon. This is only a stopgap measure, however, and Cora cannot be allowed to continue her twisted craft. Now comes the ultimate test, you must venture to the deepest level of Dungeon Covetous and slay Cora. It is the only way. Take this, it is all the city can offer you in an effort to slay Cora. The City is counting on you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158273",
+   "text": "Go to the furthest depths of Covetous and slay Cora!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158274",
+   "text": "You have slayed the sorceress Cora!  Return to the Sheriff of Minoc and report the news!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158275",
+   "text": "The Sheriff of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158276",
+   "text": "You spot the Sheriff of Minoc! His mustache is characteristic of any good lawman. You approach with a friendly greeting!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158277",
+   "text": "You have fought valiantly and your sacrifice for the city of Minoc in defense against Cora's armies will not soon be forgotten! Despite your best attempts her forces have destroyed the void pool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158278",
+   "text": "Hero of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158279",
+   "text": "This title is obtained by completing the \"A Forced Sacrifice\" quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158280",
+   "text": "For the Glory of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158281",
+   "text": "You have slayed the vile sorceress Cora! A powerful mage as she was, her armies will no doubt attempt to resurrect their general - for now though Minoc is safe. The economic future of Minoc has been secured and for your efforts you are hereby bestowed a great honor!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158282",
+   "text": "For your accomplishments you have been awarded a bonus 2000 Covetous points! Visit Vela in the Town of Cove to redeem them!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158283",
+   "text": "Cora's Mana Rage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158284",
+   "text": "You are immune to Cora's Mana Rage attack while participating on this quest.  The immunity will last 3 days.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158285",
+   "text": "You must be on the \"A Forced Sacrifice\" quest to use this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158286",
+   "text": "A Mysterious Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158287",
+   "text": "This potion will aid you in your battle against Cora. The effects of this potion will last 3 days or until you finish the quest and can only be consumed once. Are you sure you wish to drink it now?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158288",
+   "text": "*You resist Cora's attack!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158289",
+   "text": "You have already used this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158290",
+   "text": "Endless Journey accounts may not access containers, safe logout or stacks of items within a public house. EJ accounts may only access wall safes placed in a public house.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158291",
+   "text": "You've found the Royal Guard Captain! Speak to him to learn more!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158292",
+   "text": "You made quick work of those monsters! Well done! I'll send word to the Field Commander you are ready for your next assignment. Speak to him in order to get your next task. He's located just outside the Dungeon Wrong.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158293",
+   "text": "Well done slaying Fezzik, you may make a fine Guardsman yet! Speak to me when you are ready for your next assignment.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158294",
+   "text": "Endless Journey account players cannot reclaim expired vendors.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158295",
+   "text": "This item cannot be created by an Endless Journey account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158296",
+   "text": "Wishes of Wisps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158297",
+   "text": "Visit the Dungeon Despise and investigate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158298",
+   "text": "A step closer to understanding what happened at Despise",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158299",
+   "text": "The promo code redemption system cannot be used by Endless Journey accounts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158300",
+   "text": "Whispering with Wisps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158301",
+   "text": "The mysterious wisp seems friendly. You are taken by the mysterious creature and it's iridescent glow. The wisp directs you inside the dungeon, but otherwise does not respond to your presence. You feel guided by your karma. Entering the dungeon with negative karma will draw you to the depths of despise while entering with positive karma will draw you up into the peaceful glades above. You have learned from the wisp you must venture inside the dungeon and seek an Ankh.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158302",
+   "text": "Enter the appropriate level of despise based on your karma. Once inside, find and use an ankh.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158303",
+   "text": "The Battle of Wisps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158304",
+   "text": "The Ankh pulses with energy in front of you! You are drawn to it! As you place your hand on the ankh an inner voice speaks to you as you are joined to your Wisp companion...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158305",
+   "text": "Using your wisp, posses a creature within the dungeon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158306",
+   "text": "Defeat Andros or Adrian in the depths of Despise.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158307",
+   "text": "A powerful gift from the Wisps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158308",
+   "text": "Use the Wisp to force a creature under your control. Train the creature until it is powerful enough for the final battle. Once you have done so, defeat one of the brothers in the depths of Despise!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158309",
+   "text": "The Wisp surges with magical energy as a dim glow from its body illuminates the surroundings. It does not seem hostile. You decide to approach and attempt to communicate with it...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158310",
+   "text": "*The creature glows but does not respond to you*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158311",
+   "text": "You have found an ankh. Use the ankh to continue your journey.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158312",
+   "text": "You have found an ankh inside the dungeon Despise. Touching the Ankh a wisp has joined you. Use the wisp to control creatures and train them to become powerful enough to challenge the Brothers Andros and Adrian.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158313",
+   "text": "But thou hast not the vault tokens! Please visit the Ultima Store for more details.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158314",
+   "text": "There was an error with your transaction. Verify that your vault token balance is not greater than 3.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158315",
+   "text": "Vault Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158316",
+   "text": "Receive an account bound vault token which will allow you to rent a storage vault which holds 125 items for thirty days. A vault provides shared storage across all characters for a specific account on a shard.<br><br>You must keep your vault token balance up to date or risk loss of items after 168 hours of unpaid rent unless claimed. Vaults can have a prepaid balance up to three tokens at a time.<br><br>You may redeem your token at the vault manager located in select banks (Britain Commons, Bank of Delucia, New Haven Bank, Bank of Minoc, Bank of Moonglow, the Trinsic Royal Bank, Bank of Yew, Bank of Wind, and the Royal City Bank).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158317",
+   "text": "You have proven yourself honorable and the Lord Commander has invited you to join the elite order of the Paladin of Trinsic! Congratulations, Paladin!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158318",
+   "text": "The story of the brothers Andros and Adrian is troubling, yet fascinates you. You have heard rumor of items traded by the mysterious wisps. Despite the dangers you decide you should venture to the dungeon Despise.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158319",
+   "text": "*The wisp offers to trade with you*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158320",
+   "text": "You've completed a quest objective!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158321",
+   "text": "The wisp orb can be used to control your creature. Battling your creature against creatures of opposite alignment will make them more powerful, while battling your creature against creatures of similar alignment will make them less so. Different creatures have different abilities. When you feel as though you have trained your creature to maximum effectiveness, answer the call to battle and defeat the Brothers!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158322",
+   "text": "You have successfully slayed the brother and freed Despise from their eternal feud! Return to the Wisp outside the dungeon to claim your reward!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158323",
+   "text": "You have successfully freed Despise from the eternal feud between Andros and Adrian. Despite your efforts, you no doubt believe their strong magics will compel them to battle once again. You rejoice, however, in your small albeit short lived victory! The wisp seems eternally grateful and grants you a generous gift!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158324",
+   "text": "This title is obtained by completing the \"Whispering with Wisps\" quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158325",
+   "text": "Judge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158326",
+   "text": "For your accomplishments you have been awarded a bonus 1000 Despise points! Trade with the wisp to redeem them!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158327",
+   "text": "The amount entered is invalid. The amount must be less than or equal to the total quantity of the item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158328",
+   "text": "Learn more about the Event Moderators (Opens UO Wiki)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158329",
+   "text": "There is nothing to harvest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158330",
+   "text": "*You collect a plant from the wheelbarrow*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158331",
+   "text": "This item cannot be used by an Endless Journey account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158332",
+   "text": "picnic blanket",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158333",
+   "text": "enchanted picnic basket",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158334",
+   "text": "You can't move that because it is within a vended container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158335",
+   "text": "Endless Journey accounts can't move that because it is within a bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158336",
+   "text": "You may not add runes to this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158337",
+   "text": "Least Difficult",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158338",
+   "text": "Moderately Difficult",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158339",
+   "text": "Most Difficult",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158340",
+   "text": "Mining efforts in the southern corner of New Haven have created a perfect safe hold for a variety of nefarious creatures. Earth Elementals and Lizardmen provide easy targets for the training combatant, while Ogre Lords on the lower level offer a challenge for those with the courage to test themselves.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158341",
+   "text": "Sometimes what's dead in Britannia doesn't necessarily stay dead. The Yew Cemetery, located east of the City, is one of the realms smallest but offers little in the way of magical creatures to deter the neophyte warrior. Skeletons make good targets for enhancing one's skill level and provide a modest amount of coin.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158342",
+   "text": "The Dungeon Covetous is home to one of Britannia's most feared threats, Cora the Sorceress. Fortunately the majority of her vile antics are contained in the more dangerous Levels 2 and 3. The first level of Covetous is home to a variety of non-aggressive creatures including Dazzled Harpies, Vampire Mongbats, Headless Miners. Only the Strange Gazers will show outward signs of aggression and care should be taken against their powerful magics. Feathers may be harvested from the harpies, as well as gold and gems from other creatures located throughout the dungeon's first level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158343",
+   "text": "The Solen are an insect race that live in sprawling subterranean tunnels. Each individual follows a queen who provides the greatest challenge. Care should be taken when venturing into their habitat as other poisonous creatures such as Dread Spiders can be found within. The discerning adventurer incapable of curing themselves of poison through healing or magical means would be wise to bring a supply of powerful cure potions or a supply of orange petals. The Zoogi fungus that grows naturally in the tunnels is often in high demand by the Solen who will trade it for translocation powder.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158344",
+   "text": "This large Orc Fort has long plagued the Village of Cove to the North. Home to all manner of orcish kin adventurers should expect to face Orcs, Orc Captains, Orc Lords, and Orcish Magi. While none of these individuals are particularly skilled fighters, they can quickly hoard and overwhelm even the most seasoned of warriors. Care should also be taken against the primitive, yet effective, magics of the magi. Despite these hazards, the fort is an excellent training ground for young fighters looking to improve their skills.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158345",
+   "text": "Hides have long been the backbone of Britannia's tailoring market, and the pasture behind the Healer's Hut in Delucia is never in short supply. Even the most unskilled of fighters will find excellent training opportunities in harvesting the herd there. Hides can be collected with any bladed item and offer a steady stream of coin when traded to shopkeepers and other adventurers alike.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158346",
+   "text": "Unlike Britannia proper, the islands of Tokuno offer encounters with creatures not found anywhere in any other realm. This large swamp covering the southern tip of the Tokunese island of Homare-Jima is an excellent training ground despite its inhospitable conditions. Bullfrogs, Deathwatch Beetles, Giant Rats, Giant Serpents, Giant Toads, Kappa, Lizardman and Swamp Tentacles all inhabit the area. Some means to cure oneself is recommended against the often noxious deterrence these creatures employ.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158347",
+   "text": "Zento is the capital city of Tokuno, and its moongate connection to other realms make it a popular place for shopkeepers to peddle their goods. The City is also home to a variety of services that adventurer can take advantage of. To the north of the city is a large desert that is an excellent, yet more challenging, training ground for those looking to improve their skills. Bone Knights, Bone Magi, Deathwatch Beetles, Orc Captains, Skeletal Knights & Mages all take refuge in the sprawling desert. Several of these creatures are crudely trained in the arcane arts and care should be taken to deter against their spells. The adventurer must constantly be aware of their position and keep enemies at bay in order to prevent themselves from being overwhelmed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158348",
+   "text": "Home to a brutish clan of cave dwellers, The Painted Caves offer great fame and karma to those wishing to make a name for themselves, as well as enhance their combat readiness. Few Glorious Lords and Ladies of the realm have earned such a reputation without challenging the Painted Caves. Trogdolytes inhabit the majority of the small caves and offer a moderate level of difficulty. Caution should be taken, however, against the Trogdolyte leader Lurg and his pet bear, Grobu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158349",
+   "text": "Located deep within the Castle Blackthorn complex the dungeons are where the Crown claims many of Britannia's worst nightmares are secured. Magical transport directly into the castle is forbidden for obvious security reasons, so the adventurer must cross the moat and make their way to the dungeon entrance located on the western side of the complex. Once inside you will no doubt see the Agent of The Crown who will exchange artifacts recovered in the dungeon for a variety of wares. The Dungeon can be an unforgiving place and is home to creatures ranging in difficulty from paltry rats to towering Greater Dragons. Powerful magics protect the dungeon as well, and it is advisable to exit the dungeon should you need a break from adventuring. At the northern end of the dungeon is a containment area setup by Lord Blackthorn to contain Minax's invaders who besieged Britannia some time ago. Only the most seasoned of adventurers are advised to challenge these demanding foes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158350",
+   "text": "The Yew Cemetery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158351",
+   "text": "Orc Fort",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158352",
+   "text": "The Delucia Pasture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158353",
+   "text": "The Crane Marsh",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158354",
+   "text": "The Waste",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158355",
+   "text": "Runic Hunter's Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158356",
+   "text": "You are currently at the cap for Despise points, spend some before using the token.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158357",
+   "text": "You are currently at the cap for Covetous points, spend some before using the token.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158358",
+   "text": "You are currently at the cap for Blackthorn points, spend some before using the token.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158359",
+   "text": "You have been awarded ~1_VAL~ Blackthorn Turnin points. Your total is now ~2_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158360",
+   "text": "Your total is now ~2_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158361",
+   "text": "You have been awarded ~1_val~ Covetous points. Your total is ~2_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158362",
+   "text": "Dungeon Point Award Token (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158363",
+   "text": "Community Collection Point Award Token (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158364",
+   "text": "You have been awarded ~1_val~ community collection points! Visit community collection vendors throughout the realm to redeem them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158365",
+   "text": "Finest provisions in all of Britannia! Right here! *The Provisioner looks you up and down* I've seen your kind before - I know that look! You're a treasure seeker! I take it you spoke to the Cartographer then? Of course you have, why else would you be visiting Britannia's premiere outfitter of Treasure Hunting supplies! I trust you will be most successful with treasure hunting so I'll kit you out with basic supplies free of charge - just remember me when you've become a famous treasure hunter!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158366",
+   "text": "To redeem this token visit the Vesper Museum, Moonglow Zoo, or Britain Library collection of your choice. This token is worth ~1_val~ collection points and will be consumed upon redemption at the community collection of your choice.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158367",
+   "text": "This account bound item can only be used by the account it was redeemed on.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158368",
+   "text": "Deluxe Starter Pack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158369",
+   "text": "This starter pack is a perfect way to jumpstart your journey in Britannia!  This starter pack includes, <br>A Runic Atlas (a high capacity runebook) that comes pre-loaded with recall runes to Britannia's Vaults, Banks, and Points of Interest<br>A Runic Hunter's Atlas that allows recalling to a variety of hunting grounds friendly to the training adventurer, complete with location descriptions and tips<br>A full complement of full spellbooks for all magic schools including Bushido, Chivalry, Magery, Mysticism, Necromancy, and Ninjitsu<br>A Token of Skill Alacrity that allows you and your party members to experience an increased rate of skill gain for an entire week",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158370",
+   "text": "A Bag of Journeyman's Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158371",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158372",
+   "text": "Deluxe Journeyman's Armor Set Token (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158373",
+   "text": "stamina regeneration +~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158374",
+   "text": "<br><BASEFONT COLOR=#00BDFF>Full Armor Set Present Bonus:<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158375",
+   "text": "Journeyman's Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158376",
+   "text": "You can't say anything, you are dead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158377",
+   "text": "You must wait ~1_val~ ~2_label~ before you can receive another set of starter items from this quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158378",
+   "text": "You have braved the wilds of Britannia and slayed a mighty beast! You have meticulously documented your kill and submitted it to the Ranger's Guild for evaluation. If luck was on your side you may indeed have the largest quarry for the month...or maybe not. Alas, your bravery has earned you the well deserved title of Hunter! May you go fearlessly into the wilderness in search of your next big kill! Well done!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158379",
+   "text": "Endless Journey accounts cannot access a bank box. Visit UO.com for more information on Endless Journey account restrictions.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158380",
+   "text": "Target the check or gold in your backpack that you wish to add to your currency account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158381",
+   "text": "Make Deposit into Currency Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158382",
+   "text": "Virtue Shield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158383",
+   "text": "While equipped this shield will grant a ~1_VAL~% bonus to all virtue points gained!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158384",
+   "text": "This shield grants a bonus to virtue points gained while equipped! The shield provides 8% to all resists, penalty free spell channeling, and 10% defense chance increase.  Can be used by Humans, Elves, and Gargoyles and dyed with metallic, plant, and specialty pigments.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158385",
+   "text": "<center>Welcome to Britannia</center><br><br>Whether these are your first steps or you have long been a citizen of the realm you will find the Town Cryer is your goto source for all the latest happenings in the realm! Towncriers are stationed at all major banks and points of interest and will always have the most up to date news! Check often for updates and Happy Adventuring!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158386",
+   "text": "Close and do not show this version again",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158387",
+   "text": "Global Chat is currently unavailable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158388",
+   "text": "Greetings, Avatar!<br><br>Welcome to Britannia! Whether these are your first steps or you are a seasoned veteran King Blackthorn welcomes you! The realm is bustling with opportunities for adventure! Towncriers can be visited at all banks and points of interest to learn about the latest goings on in the realm. Many guilds are actively recruiting members, so be sure to check the Town Cryer guild section for the latest recruitment events. <br><br>We wish you the best of luck in your <A HREF=\"https://uo.com/endless-journey/\">Endless Journey</A>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158389",
+   "text": "Treasure Hunter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158390",
+   "text": "Global Chat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158391",
+   "text": "So, you seek to learn the way of the virtues? <br><br>Walking the path of Knighthood in a Virtue requires devotion to the teachings of that virtue. All virtues are guided by the three principles...Love, Truth, and Courage.<br><br>Compassion is the pure Love of others. Those walking the path of Compassion will provide escort to those seeking to travel the realm. As a gift for thy devotion, fellow adventurers and pets that you resurrect will rejoin the land of the living with more health than normal.<br><br>Honesty is respect for Truth. Those walking the path of Honesty will recover items lost among the citizens of Britannia and return those items to their owners. As a gift for thy devotion, shopkeepers will offer a discount on their wares to those who are honest.<br><br>Honor is Courage to seek and uphold Truth. Those walking the path of Honor will engage in honorable combat with thy foes. As a gift for thy devotion, those who are honorable may pass unharmed among creature who would seek to do thee harm. Further, those samurai who are honorable may imitate perfection in combat.<br><br>Humility is the opposite Pride, the absence of Love, Truth, and Courage. Those walking the path of Humility will initiate combat without protection from their magical and physical protection. As a gift for thy devotion and owing to the shepherding origins of the City of Humility, Magincia, those who are humble can increase the life force regeneration of a pet.<br><br>Justice is Truth, tempered by Love. Those walking the path of Justice will hunt down and deliver judgement on those who choose to murder innocents. As a gift for thy devotion, those who deliver justice will find themselves rewarded with powerful scrolls when challenging the Champions of the realm.<br><br>Sacrifice is Courage to give oneself in the name of Love. Those walking the path of Sacrifice will sacrifice their reputation to redeem creatures who have lost their virtuous path. As a gift for thy devotion, those who have sacrificed for others will find themselves able to rejoin the living upon death without need for traditional healing.<br><br>Spirituality is to seek Truth, Love, and Courage from one's own self and the world around. Those walking the path of Spirituality will offer healing to those fellow adventurers in need. As a gift for thy devotion, the spirit can be summoned to offer protection, absorbing incoming damage from attackers.<br><br>Valor is Courage to stand up against risks. Those walking the path of Valor will challenge the minions of Champions of the realm and defeat them in combat. As a gift for thy devotion, those valiant can challenge Champions of the realm at their whim.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158392",
+   "text": "You may not equip this item on a mannequin.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158393",
+   "text": "Global Chat Friend Request",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158394",
+   "text": "~1_name~ would like to add you as a friend. By doing so you will be able to communicate with them privately across Shards. Do you accept?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158395",
+   "text": "The friend request has timed out.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158396",
+   "text": "You may not request Global Chat friends at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158397",
+   "text": "Target player to request as Global Chat friend.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158398",
+   "text": "You must enable Global Chat to request a friend.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158399",
+   "text": "This user is not accepting Global Chat friend requests at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158400",
+   "text": "You may only use this in a cemetery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158401",
+   "text": "All Resists +~1_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158402",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158403",
+   "text": "All Resists +~1_VAL~%<br>Hit Point Increase ~2_VAL~<br>Mana Increase ~3_VAL~<br>Stamina Increase ~4_VAL~<br>Hit Point Regeneration ~5_VAL~<br>Mana Regeneration ~6_VAL~<br>Stamina Regeneration ~7_VAL~<br>Strength Bonus ~8_VAL~<br>Dexterity Bonus ~9_VAL~<br>Intelligence Bonus ~10_VAL~<br>Lower Reagent Cost +~11_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158404",
+   "text": "Violet Soulstone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158405",
+   "text": "Receive a token which when used will create an account bound Soulstone. The soulstone allows you to trade out and store skills from your character. The stored skill may be retrieved by another character on the account. The stone may only hold one skill at a time and all standard skill level maximums are enforced when retrieving skills from the stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158406",
+   "text": "You have reached your global chat friend limit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158407",
+   "text": "You may only message your friends.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158408",
+   "text": "You are unable to add new friends at this time. Please try again in a moment.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158409",
+   "text": "Player currently unavailable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158410",
+   "text": "Endless Journey account players may not have access to private houses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158411",
+   "text": "Remove Quantity",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158412",
+   "text": "Endless Journey accounts may only create up to two characters per server.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158413",
+   "text": "Global Chat is now connected.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158414",
+   "text": "This cannot be used with an Endless Journey account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158415",
+   "text": "Accept Friend Requests",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158416",
+   "text": "Refuse Friend Requests",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158417",
+   "text": "Friend global chat name color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158418",
+   "text": "Friend global chat text color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158419",
+   "text": "My global chat name color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158420",
+   "text": "My global chat text color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158421",
+   "text": "Add a friend to Global Chat. By doing so you will be able to communicate with them privately across Shards.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158422",
+   "text": "GLOBAL CHAT",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158423",
+   "text": "Invalid Friend",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158424",
+   "text": "How many seeds would you like to remove?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158425",
+   "text": "You may not remove that quantity of seeds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158426",
+   "text": "You remove ~1_quant~ seed(s) from the seedbox.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158427",
+   "text": "Global Chat Offline",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158428",
+   "text": "Global Chat Online",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158429",
+   "text": "You must be online to send a Global Chat message.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158430",
+   "text": "Unacceptable name for global chat. Please contact customer support to resolve this issue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158431",
+   "text": "You may not use a soulstone while your character has a skill mastery active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158432",
+   "text": "Your mount currently contains items and you will no longer be able to remount it if dismounted as an Endless Journey player.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158433",
+   "text": "Receive a Eowmu statuette. This blessed statuette may be used to create a colorful emu mount.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158434",
+   "text": "Target the item in your backpack that you wish to add to your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158435",
+   "text": "Deposit an item into Bank Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158436",
+   "text": "Target the item in your backpack that you wish to add to your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158437",
+   "text": "Your bank box is currently over its item limit as a result, you will not be able to remove any items at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158438",
+   "text": "Accepting this item would put you over your bank box limit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158439",
+   "text": "This item requires you to remove the entire stack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158440",
+   "text": "The source of the currency exchange must accept the trade first.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158441",
+   "text": "Verify currency amounts before accepting trade.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158442",
+   "text": "Endless Journey Transfer Bank Box (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158443",
+   "text": "All of your bank contents have been deposited into your temporary transfer bank box. Visit your nearest banker to transfer items back into your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158444",
+   "text": "This item may only be used by an Endless Journey account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158445",
+   "text": "You may only have one Endless Journey Transfer Bank Box active at a time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158446",
+   "text": "Your bank box is empty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158447",
+   "text": "Your Endless Journey Transfer Bank Box is empty and will be destroyed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158448",
+   "text": "You combine the charges on the items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158449",
+   "text": "Cleanup Point Exchange",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158450",
+   "text": "This account already has points waiting to be withdrawn.  Withdraw those points before trying to deposit more.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158451",
+   "text": "This account has no points to deposit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158452",
+   "text": "You have deposited ~1_VALUE~ Cleanup Britannia Points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158453",
+   "text": "You have withdrawn ~1_VALUE~ Cleanup Britannia Points.  You now have ~2_VALUE~ points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158454",
+   "text": "Your Cleanup Point Balance: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158455",
+   "text": "Points Currently in Exchange: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158456",
+   "text": "Some of your cleanup points could not be transferred because you have too many.  Spend some points or use a different character to claim them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158457",
+   "text": "This account has no points to withdraw.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158458",
+   "text": "You can currently withdraw ~1_VALUE~ points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158459",
+   "text": "You can currently deposit ~1_VALUE~ points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158460",
+   "text": "You have deposited ~1_VALUE~ Cleanup Britannia Points.  You now have ~2_VALUE~ points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158461",
+   "text": "Reduce outgoing attack damage to ~1_val~ by ~2_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158462",
+   "text": "Skeletal Cat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158463",
+   "text": "You have too many non-party status bars open, reusing old status bar for new one.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158464",
+   "text": "You may not use a soulstone in your current form.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158465",
+   "text": "Withdraw Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158466",
+   "text": "Deposit Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158467",
+   "text": "I accept the above license agreements and understand EA’s Privacy and Cookie Policy below applies.<br><A HREF=\"http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/\">EA Privacy and Cookie Policy</A>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158468",
+   "text": "I have read and accept the above license agreements.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158469",
+   "text": "<A HREF=\"http://tos.ea.com/legalapp/WEBTERMS/US/en/PC/\">Electronic Arts User Agreement</A><br><br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158470",
+   "text": "<A HREF=\"http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/\">EA Privacy and Cookie Policy</A><br><br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158471",
+   "text": "An item has been placed in your vault.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158472",
+   "text": "<A HREF=\"http://broadsword.com/terms.html\">Broadsword Terms of Use Agreement</A><br><br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158473",
+   "text": "Deposit to Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158474",
+   "text": "Items removed from your bank box will been placed in your available vault space.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158475",
+   "text": "Items removed from your bank box will been placed in your available backpack space.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158476",
+   "text": "Deposit to Backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158477",
+   "text": "<BASEFONT COLOR=#FFD24D>From the personal study of ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158478",
+   "text": "Dragon Jack o' Lantern",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158479",
+   "text": "Brass Orrery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158480",
+   "text": "Brass Telescope",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158481",
+   "text": "21st Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158482",
+   "text": "Happy 21st Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158483",
+   "text": "Happy 21st Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158484",
+   "text": "Happy 21st Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158485",
+   "text": "21st Anniversary Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158486",
+   "text": "In Commemoration Of Twenty-one Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158487",
+   "text": "You are already under the effect of this token.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158488",
+   "text": "You have entered invalid coordinates.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158489",
+   "text": "RA",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158490",
+   "text": "DEC",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158491",
+   "text": "You peer into the heavens and see...only empty space...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158492",
+   "text": "You peer into the heavens and see...a constellation!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158493",
+   "text": "star chart",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158494",
+   "text": "Which telescope do you wish to create the star chart from?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158495",
+   "text": "There is nothing to chart at these coordinates at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158496",
+   "text": "You successfully map the time-coordinate of the constellation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158497",
+   "text": "Right Ascension",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158498",
+   "text": "Declination",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158499",
+   "text": "View Coordinate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158500",
+   "text": "Charted By: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158501",
+   "text": "Constellation Name:<br>\t<BASEFONT COLOR=#D7AF00>~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158502",
+   "text": "Charted By:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158503",
+   "text": "Charted On:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158504",
+   "text": "Time-Coordinate:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158505",
+   "text": "Constellation Name:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158506",
+   "text": "Evening",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158507",
+   "text": "Late at night",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158508",
+   "text": "Midnight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158509",
+   "text": "Middle of the night",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158510",
+   "text": "You are too far away to open your vault.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158511",
+   "text": "You have entered an invalid name. Please try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158512",
+   "text": "You record the name of the constellation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158513",
+   "text": "You won't have much luck seeing the night sky during the day...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158514",
+   "text": "You peer into the heavens and see...a comet!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158515",
+   "text": "Looking to the Heavens: A Primer on Britannian Astronomy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158516",
+   "text": "The study of Britannian astronomy dates back to the appearances of strangers from offwordly realms. When it was learned that Sosaria exists within a much larger universe, curiosity tilted our heads upwards towards the sky. Before long skilled tinkers granted the ability to see objects at great distance became a reality - enter the telescope. While the most impressive example of these contraptions is the one located in Moonglow at 43o 52'N, 122o 4'W, where I have chosen to spend my time deep in research, recent developments in miniaturization have brought the size of these instruments within the grasp of the casual observer.<br><br>Using a telescope may appear quite simple, but one would be naive to think there is no more beyond haphazardly pointing towards the sky to make observations!<br><br>The best viewing hours are during the night between the hours of 5pm and 4am. Any standard clock is an essential tool in mapping the night sky!<br><br>While there are a variety of objects in the night sky to observe if one points their telescope at the object as it traverses space, the real search is for constellations - a unique collection of several stars.<br><br>Constellations appear at various periods during the night. Constellations can be seen during the early evening (5pm-8pm), late at night (9pm-11pm), midnight (12am), or the middle of the night (1am-4am). After 4am daylight will drown out any attempt at making meaningful observations.<br><br>Constellations can be observed in these time periods based on their location in the night sky. Britannian astronomers have adopted a coordinate system that uses right ascension (RA) and declination (DEC) to pinpoint a constellation's location during night time periods.<br><br>RA can be measured from 0-24 and DEC can be measured from 0-90. Current Telescopes are capable of resolving increments of 1 hour of RA and 0.2 degrees of DEC.<br><br>When a time period has been selected and the RA and DEC have been set one need only initiate a switch conveniently located in the viewfinder, to check that section of the sky! Should you be lucky enough to see a constellation a standard mapmaking pen can be used to create a star chart. As the potential discoverer of a new constellation you have the opportunity to name and submit your discovery to the Britannian Astronomical Society, of whom this author is primary registrar, for documentation.<br><br>Happy skywatching!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158517",
+   "text": "Willebrord the Astronomer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158518",
+   "text": "*tinkers with the telescope lenses* Comets tail! You startled me! Beautiful isn't it? There's nothing quite like the precision of a finely tuned instrument performing at its best as a sum of all its components - am I right? *chuckles* Astronomy, you know, is such a rewarding field of study. Sure, most of the graduates from the Lycaeum take up the more fashionable disciplines like Magery or Alchemy, but not me! You look like you've got a keen eye for the heavens - why don't you have a look at the table there and read my treatise on Astronomy to learn how to use a telescope? Or if you'd prefer you can browse the constellation ledger to see discoveries other astronomers have made.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158519",
+   "text": "Wow! Would you look at that! Always amazes me how even an amateur can make such profound discoveries! I've recorded your discovery in the ledger. Here's some items I think you have more than earned! Well done!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158520",
+   "text": "Constellation Ledger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158521",
+   "text": "Constellations Discovered: ~1_VAL~ / ~2_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158522",
+   "text": "Constellation Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158523",
+   "text": "Astronomer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158524",
+   "text": "Discovery Date",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158525",
+   "text": "Night Period",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158526",
+   "text": "Coordinates",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158527",
+   "text": "RA ~1_VAL~  DEC ~2_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158528",
+   "text": "Renew Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158529",
+   "text": "What's this? I haven't time for this! Star Charts only please!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158530",
+   "text": "Sorry to say that constellation has already been discovered! Fix your eyes to the heavens and keep up the search!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158531",
+   "text": "Your auction proceeds have expired due to failure to free space in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158532",
+   "text": "Auction proceeds will be delivered to you once you free up room in your backpack these proceeds will expire in ~1_val~ seconds!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158533",
+   "text": "Auction proceeds have been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158534",
+   "text": "Auction proceeds will be delivered to you once you are resurrected these proceeds will expire in ~1_val~ seconds!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158535",
+   "text": "An auction proceed of ~1_ITEM~ has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158536",
+   "text": "<DIV ALIGN=CENTER>Auction Safe</DIV><DIV ALIGN=LEFT><br>In order to bid on an auction, players must have<A HREF=\"http://uo.com/wiki/ultima-online-wiki/player/money\"> currency available in their account.</A> Bidders can then place a bid for the maximum amount they are willing to pay for the listed item. Funds will immediately be removed from your account if your bid is successful. If your bid is higher than the current maximum bid yours will become the current winning bid. If you are outbid as the winning bid you will be notified by in game mail and your bid will be refunded to your account. On completion of the auction the winning bidder will have three days to retrieve their item from the auction safe or it will lost. Upon claiming your item if you have any change as a result of your maximum bid it will be refunded to you.</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158537",
+   "text": "This title is obtained by discovering a constellation using the telescope.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158538",
+   "text": "3-Story Customizable Keep",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158539",
+   "text": "3-Story Customizable Castle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158540",
+   "text": "Custom House Contest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158541",
+   "text": "Detective Branch - Chief Inspector Jasper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158542",
+   "text": "You may not rename someone else's discovery!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158543",
+   "text": "Submit House Design to Contest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158544",
+   "text": "Exit House Design Contest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158545",
+   "text": "You cannot currently take this action because you have entered your home into the housing contest. You must first remove your home from the contest to preform this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158546",
+   "text": "You have entered your home into the house design contest. Once voting begins you will no longer be able to make edits to your design. The voting period will last one week and only active accounts will be able to vote. Good Luck!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158547",
+   "text": "Your house design has been removed from the contest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158548",
+   "text": "You have already voted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158549",
+   "text": "The voting period has ended.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158550",
+   "text": "House Design Contest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158551",
+   "text": "Map to House: ~1_Name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158552",
+   "text": "Royal Brittanian Guard Detective Branch Gets new HQ, Inspector Jasper named as Chief",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158553",
+   "text": "The Royal Britannian Guard was in full color as it announced the grand opening of the new Headquarters of the Detective Branch in East Britain. The opening is heralded as a step in the right direction by opponents who see a broader need for expanded investigation capabilities by the Guard. Opponents point out the Crown's abuse of eminent domain to seize buildings in the eastern quarter of the capital city. Inspector Jasper, the newly named Chief of the Branch offered little in the way of remarks and reiterate the mission of the Guard,<br><br>\"It has always been, and continues to be the mission of the Detective Branch to investigate those occurrences beyond the scope of the normal enforcement duties of the Royal Britannian Guard and to bring those we find in offense of His Majesty's laws to Justice!\"<br><br>Despite the seemingly benign nature of this announcement, the Town Cryer has learned this move may have been the result of a need to satisfy the concerns of wealthy Britons in the wake of last year's invasions by the Elemental Titans. Even with a decided victory against that threat, the Town Cryer has learned those pagan zealots may still be among us and this move by the RBG is the latest in its efforts to deter them once and for all.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158554",
+   "text": "Keep",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158555",
+   "text": "Visit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158556",
+   "text": "*You notice something hidden in the floor...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158557",
+   "text": "The door is secured with an alpha-numeric lock, how do you wish to arrange the mechanism?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158558",
+   "text": "Custom House Contest Rules",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158559",
+   "text": "*You discover a hidden trap door!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158560",
+   "text": "You have too many followers to enter...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158561",
+   "text": "damaged headstone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158562",
+   "text": "The damage to the epitaph seems deliberate.  Using your training from Inspector Jasper you have found a hidden message among the scratches. You recreate the original epitaph in your mind's eye...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158563",
+   "text": "*It appears to be a normal, yet oddly damaged, headstone. The epitaph is illegible..*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158564",
+   "text": "*cries uncontrollably*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158565",
+   "text": "I'll always Honor your memory.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158566",
+   "text": "I'm glad the titans were defeated, and I'm proud of you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158567",
+   "text": "Rest easy friend.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158568",
+   "text": "*sniffle*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158569",
+   "text": "*places a hand on the coffin and nods solemnly*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158570",
+   "text": "Solemn job you know, but someone has to do it. Been pretty busy since the invasions, hardly a day goes by we don't have the kin of someone who embraced Sacrifice and gave themselves in defense of the realm against the Titans. Ah well, makes me feel good knowing me shovel gives em a good final resting place. Worst part ya know though - plenty of people been in and out of the cemetery for sure, but I don't know why they insist on messing up the headstones!? To think, some people have no Shame!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158571",
+   "text": "*You examine the headstone...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158572",
+   "text": "Most of the bottles have recently been uncorked and very little of the liquid remains inside. You discern a slightly noticeable ring of dried liquid near the bottle. Someone was hasty in pouring the contents of the bottle into a stemmed glass - or had a bit too much to drink.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158573",
+   "text": "The fibers of the rope are frayed from use. Upon closer inspection you discover small bits of hair, tissue, and dried blood interwoven with the weave of the rope. Someone used these ropes to bind something...or someone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158574",
+   "text": "The maps have mostly been scrawled over with indiscernible text. You recognize the areas as mostly the trade routes between Britannia's major cities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158575",
+   "text": "The parchment is scrawled with indiscernible text. Perhaps it is some kind of code, or perhaps it is gibberish.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158576",
+   "text": "The tools seem to have been well used. The handles are worn and the bladed instruments are dulled. The tools are quite small and no doubt were used for extremely exacting and intricate work. Not unlike those used in restorations of fine arts, artifacts, and relics.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158577",
+   "text": "The book is ordained with symbols that seem otherworldly. A large pentagram is embossed in the front cover. The pages are filled with indiscernible writings, and goes on for pages and pages. You think you recognize some pattern to the text, but its comprehension is beyond your understanding. A scribe would certainly be able to make a usable copy without disturbing the scene...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158578",
+   "text": "rolled parchment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158579",
+   "text": "Copied From a Book Found in a Hidden Supply Cache",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158580",
+   "text": "You copied several of the pages from the mysterious tome you found in the hidden supply cache on several pieces of parchment and rolled them up. You can't quite make sense of it all yet, but you have a hunch this is the type of evidence Inspector Jasper is looking for.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158581",
+   "text": "its origin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158582",
+   "text": "*You copy several pages onto some parchment and roll it up...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158583",
+   "text": "mysterious book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158584",
+   "text": "Custom House Design Contest Rules:<br>Players will be able to create a 3-story custom Castle or Keep. After placing the Castle or Keep plot the house must be set to public access to enter the contest. Using the customization page, a player will be able to toggle your house entry into the contest during the sign-up period.Players are allowed one entry per account. No lockdown or secure items can be used in the design. The sign-up/design period will last two weeks then transition into the voting period.The voting Period will last one week in which active accounts will be able to vote on the submitted houses. Once the voting period has completed the house design winners will be selected and ranked.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158585",
+   "text": "House Design Contest Community Winners",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158586",
+   "text": "You may not customize a house while it is being voted on in a contest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158587",
+   "text": "This house has been entered into a contest and may not be removed until complete.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158588",
+   "text": "Going Gumshoe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158589",
+   "text": "You've heard rumblings of Pagan Cultists causing petty crimes in the more upscale sections of Britannia's cities, but to your understanding these are sympathizers taking advantage of fear to make some easy coin. Still, if the Crown is rolling out a new division of the RBG to investigate...something...you bet there's an opportunity for you! You should find Inspector Jasper and inquire further.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158590",
+   "text": "Find Inspector Jasper, and inquire about the Town Cryer article at the new Detective Branch in East Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158591",
+   "text": "Speak to Inspector Jasper from the Royal Britannian Guard Detective Branch at their headquarters in East Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158592",
+   "text": "You can drop the coffee pods with the investigators outside...*looks up*...oh, you aren't here for the delivery? I warned them talking with reporters was a terrible idea - we've been getting walk-ins like you since the article broke, lads and ladies thinking they can become renowned detectives - Ha! Think you've got the intellect? The cunning and wisdom to sniff a case where it leads you? Well I guess we'll see about that. I've got bigger cases to deal with, you can take this one. Something about vandalism and a funeral at the Britain Cemetery. Report back to me if you find anything worthwhile - and I do mean worthwhile! Don't come back to me with half baked theories and bogus evidence. I need facts! Oh - and read this, you'll need it if you even hope to break a single case.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158593",
+   "text": "You have been assigned as a probationary investigator with the Detective Branch of the RBG. Pursue leads and follow the clues where they lead you...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158594",
+   "text": "What are you still doing here? Didn't I send you to the cemetery?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158595",
+   "text": "*You approach Inspector Jasper and show him the evidence you have discovered as well as your report on the state of your investigation* Would you look at that, I suspect you aren't as useless as you look. With a little luck you may even crack this case wide open! It looks like these notes are encrypted - we need to find out what they say. There's a cryptologist at the Lycaeum who I've worked with in the past. Get his help and we should be a step closer to figuring out what all this means.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158596",
+   "text": "Go to the Lycaeum in Moonglow and enlist the assistance of the Cryptologist to help decode the evidence. Return to Inspector Jasper when you have more to report.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158597",
+   "text": "What are you still doing here? Didn't I send you to the Lycaeum?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158598",
+   "text": "Introductory Detective Work: A Gumshoe's Guide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158599",
+   "text": "K. Jasper, Chief Inspector",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158600",
+   "text": "Law & Order are bedrock to Britannian society, what though can one expect when brute enforcement cannot solve miscarriages of Justice? Enter the detective. With an analytical mind, keen wit, and a little luck the detective can perform investigatory duties normal Royal Guardsman are simply untrained to handle. The benefit of these investigatory duties will often yield far greater reaching results as petty crime often has much more sinister origins.<br>An aspiring detective must become aware of the world around them, and only through exacting observation can they draw conclusions to further an investigation. The learned appraiser or the learned mage can often discern the origins of items discovered in ones travels, the detective, however, is the only one equipped to utilize Forensic Evaluation to discover the hidden true nature of an object or clue.<br>While an often unpopular opinion, the Thieves' Guild, a longtime adversary to the detective, is the premier organization for the study and application of techniques in detecting hidden things throughout the world. The discerning investigator would take note to learn the tricks of their trade as even a neophyte understanding is sometimes enough to uncover a hidden clue.<br>When encountering a scene, the detective must take precaution to not disturb items in situ and instead take careful notes or make copies for later examination. Preservation of the scene is an important component of every investigation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158601",
+   "text": "Are you here to make more coffee?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158602",
+   "text": "I don't know how I'll ever investigate all these reports...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158603",
+   "text": "*shuffles some papers around*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158604",
+   "text": "ZzzzZzzzZzzz...*wakes up at your footsteps*...Just, uhhh...following up on leads Sir!...oh, you...*falls back asleep*..Zzzzz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158605",
+   "text": "I'm gonna make chief detective one day!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158606",
+   "text": "You've spoken to the Grave Digger and have paid your respects to those who perished in the fight against the titans. How someone could defile a grave stone, you have no idea. You decide to take a closer look...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158607",
+   "text": "<center>Thomas Vilyum<br>Born: Vesper<br>Lived: Moonglow<br>Worked: Yew<br>Died: Britain<br><i>In death find eternal slumber</i></center>",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

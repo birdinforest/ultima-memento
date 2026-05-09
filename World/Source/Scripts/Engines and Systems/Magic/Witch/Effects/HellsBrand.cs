@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -42,11 +43,11 @@ namespace Server.Spells.Undead
 			}
 			else if ( reg.IsPartOf( typeof( PirateRegion ) ) )
 			{
-				Caster.SendMessage( "These waters are too rough to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "These waters are too rough to cast this spell." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That potion does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That potion does not seem to work in this place." ) );
 			}
 			else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.Mark ) )
 			{

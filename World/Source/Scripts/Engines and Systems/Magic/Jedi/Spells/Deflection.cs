@@ -1,5 +1,6 @@
 using System;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -33,7 +34,7 @@ namespace Server.Spells.Jedi
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your essence is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your essence is already protected!" ) );
 				return false;
 			}
 
@@ -46,7 +47,7 @@ namespace Server.Spells.Jedi
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your essence is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your essence is already protected!" ) );
 			}
 			else if ( CheckSequence() )
 			{

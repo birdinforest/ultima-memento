@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Globalization;
 using Server;
 using Server.Commands;
 using System.Collections;
@@ -95,51 +96,15 @@ namespace Server.Misc
 			World.Save( true, permitBackgroundWrite );
 		}
 
-		private static string[] m_Backups = new string[]
-			{
-				"Sixth Backup",
-				"Fifth Backup",
-				"Fourth Backup",
-				"Third Backup",
-				"Second Backup",
-				"Most Recent"
-			};
+		private const int TodayBackupRetention = 6;
+		private const int PreviousDayBackupRetention = 3;
 
 		private static void Backup()
 		{
-			if ( m_Backups.Length == 0 )
-				return;
-
 			string root = Path.Combine( Core.BaseDirectory, "Backups/Automatic" );
 
 			if ( !Directory.Exists( root ) )
 				Directory.CreateDirectory( root );
-
-			string[] existing = Directory.GetDirectories( root );
-
-			for ( int i = 0; i < m_Backups.Length; ++i )
-			{
-				DirectoryInfo dir = Match( existing, m_Backups[i] );
-
-				if ( dir == null )
-					continue;
-
-				if ( i > 0 )
-				{
-					string timeStamp = FindTimeStamp( dir.Name );
-
-					if ( timeStamp != null )
-					{
-						try{ dir.MoveTo( FormatDirectory( root, m_Backups[i - 1], timeStamp ) ); }
-						catch{}
-					}
-				}
-				else
-				{
-					try{ dir.Delete( true ); }
-					catch{}
-				}
-			}
 
 			string saves = Path.Combine( Core.BaseDirectory, "Saves" );
 
@@ -150,7 +115,7 @@ namespace Server.Misc
 
 				string time = GetTimeStamp();
 
-				string rootBackup = FormatDirectory( root, m_Backups[m_Backups.Length - 1], time );
+				string rootBackup = FormatDirectory( root, "Backup", time );
 				string rootOrigin = saves;
 
 				// Create new directories
@@ -205,6 +170,8 @@ namespace Server.Misc
 
 			}
 
+			ApplyBackupRetention( root );
+
 			Server.Misc.Cleanup.RemoveScripts();
 		}
 
@@ -242,19 +209,6 @@ namespace Server.Misc
 			}
 		}
 
-		private static DirectoryInfo Match( string[] paths, string match )
-		{
-			for ( int i = 0; i < paths.Length; ++i )
-			{
-				DirectoryInfo info = new DirectoryInfo( paths[i] );
-
-				if ( info.Name.StartsWith( match ) )
-					return info;
-			}
-
-			return null;
-		}
-
 		private static string FormatDirectory( string root, string name, string timeStamp )
 		{
 			return Path.Combine( root, String.Format( "{0} ({1})", name, timeStamp ) );
@@ -287,6 +241,93 @@ namespace Server.Misc
 					now.Minute,
 					now.Second
 				);
+		}
+
+		private static void ApplyBackupRetention( string root )
+		{
+			List<KeyValuePair<DirectoryInfo, DateTime>> backups = GetDatedBackups( root );
+
+			if ( backups.Count == 0 )
+				return;
+
+			DateTime today = DateTime.Today;
+			DateTime previousDay = today.AddDays( -1 );
+
+			TrimBackupGroup( backups, today, TodayBackupRetention );
+			TrimBackupGroup( backups, previousDay, PreviousDayBackupRetention );
+			RemoveBackupsOutsideDates( backups, today, previousDay );
+		}
+
+		private static List<KeyValuePair<DirectoryInfo, DateTime>> GetDatedBackups( string root )
+		{
+			List<KeyValuePair<DirectoryInfo, DateTime>> results = new List<KeyValuePair<DirectoryInfo, DateTime>>();
+			string[] directories = Directory.GetDirectories( root );
+
+			for ( int i = 0; i < directories.Length; ++i )
+			{
+				DirectoryInfo dir = new DirectoryInfo( directories[i] );
+				DateTime backupTime;
+
+				if ( TryGetBackupTime( dir, out backupTime ) )
+					results.Add( new KeyValuePair<DirectoryInfo, DateTime>( dir, backupTime ) );
+			}
+
+			return results;
+		}
+
+		private static bool TryGetBackupTime( DirectoryInfo dir, out DateTime backupTime )
+		{
+			string stamp = FindTimeStamp( dir.Name );
+
+			if ( stamp != null &&
+				DateTime.TryParseExact( stamp, "d-M-yyyy H-mm-ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out backupTime ) )
+			{
+				return true;
+			}
+
+			backupTime = DateTime.MinValue;
+			return false;
+		}
+
+		private static void TrimBackupGroup( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime targetDate, int keepCount )
+		{
+			List<KeyValuePair<DirectoryInfo, DateTime>> matching = backups.FindAll(
+				delegate( KeyValuePair<DirectoryInfo, DateTime> entry )
+				{
+					return entry.Value.Date == targetDate.Date;
+				} );
+
+			matching.Sort(
+				delegate( KeyValuePair<DirectoryInfo, DateTime> a, KeyValuePair<DirectoryInfo, DateTime> b )
+				{
+					return b.Value.CompareTo( a.Value );
+				} );
+
+			for ( int i = keepCount; i < matching.Count; ++i )
+				DeleteDirectorySafe( matching[i].Key );
+		}
+
+		private static void RemoveBackupsOutsideDates( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime today, DateTime previousDay )
+		{
+			for ( int i = 0; i < backups.Count; ++i )
+			{
+				DateTime date = backups[i].Value.Date;
+
+				if ( date != today.Date && date != previousDay.Date )
+					DeleteDirectorySafe( backups[i].Key );
+			}
+		}
+
+		private static void DeleteDirectorySafe( DirectoryInfo dir )
+		{
+			try
+			{
+				if ( dir.Exists )
+					dir.Delete( true );
+			}
+			catch
+			{
+			}
 		}
 	}
 }

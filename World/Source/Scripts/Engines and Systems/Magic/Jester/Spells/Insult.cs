@@ -5,6 +5,7 @@ using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Spells.Jester
 {
@@ -76,7 +77,7 @@ namespace Server.Spells.Jester
 				if ( Utility.RandomBool() ){ Effects.PlaySound( m.Location, m.Map, m.Female ? 0x31B : 0x42B ); m.Say( "*groans*" ); }
 				else { Effects.PlaySound( m.Location, m.Map, m.Female ? 0x338 : 0x44A ); m.Say( "*growls*" ); }
 
-				m.SendMessage( "You have been quite insulted!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You have been quite insulted!" ) );
 			}
 
 			FinishSequence();
@@ -216,7 +217,7 @@ namespace Server.Spells.Jester
 				{
 					Stop();
 					m_Table.Remove( m_Owner );
-					m_Owner.SendMessage( "The insult is wearing off." );
+					m_Owner.SendMessage( StringCatalog.Resolve( m_Owner.Account, "The insult is wearing off." ) );
 				}
 				else if ( m_Owner.Mana < m_Loss )
 				{

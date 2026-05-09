@@ -77,7 +77,7 @@ namespace Server.Mobiles
 					{
 						if ( Server.Misc.Research.AlreadyHasBag( from ) )
 						{
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.Resolve(from.Account, "Good luck with your research.") ); 
 						}
 						else
 						{
@@ -85,19 +85,19 @@ namespace Server.Mobiles
 							from.PlaySound( 0x2E6 );
 							Server.Misc.Research.SetupBag( from, bag );
 							from.AddToBackpack( bag );
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.Resolve(from.Account, "Good luck with your research.") ); 
 						}
 						dropped.Delete();
 					}
 					else
 					{
-						sMessage = "You need to be a neophyte scribe before I sell that to you.";
+						sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "You need to be a neophyte scribe before I sell that to you.");
 						from.AddToBackpack ( dropped );
 					}
 				}
 				else
 				{
-					sMessage = "You look like you need this more than I do.";
+					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "You look like you need this more than I do.");
 					from.AddToBackpack ( dropped );
 				}
 
@@ -108,14 +108,14 @@ namespace Server.Mobiles
 				dropped.ItemID = 0x56F9;
 				from.PlaySound( 0x249 );
 				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I have rebound your book.", from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.Resolve(from.Account, "I have rebound your book."), from.NetState);
 			}
 			else if ( dropped is LargeHollowBook )
 			{
 				dropped.ItemID = 0x5703;
 				from.PlaySound( 0x249 );
 				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I have rebound your book.", from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.Resolve(from.Account, "I have rebound your book."), from.NetState);
 			}
 			else if ( dropped is Runebook )
 			{
@@ -129,7 +129,7 @@ namespace Server.Mobiles
 
 				from.PlaySound( 0x249 );
 				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I have changed the cover of your book.", from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.Resolve(from.Account, "I have changed the cover of your book."), from.NetState);
 			}
 
 			return base.OnDragDrop( from, dropped );
@@ -171,9 +171,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost );
-				SayTo(from, "Since you are begging, do you want me to decipher a note for " + nCost.ToString() + " gold?");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you want me to decipher a note for {0} gold?", nCost));
 			}
-			else { SayTo(from, "Do you want me to decipher a note for " + nCost.ToString() + " gold?"); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Do you want me to decipher a note for {0} gold?", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -203,7 +203,7 @@ namespace Server.Mobiles
 
                     if ( WhatIsIt.ScrollIntelligence == 0 )
                     {
-                        m_Sage.SayTo( from, "That was already deciphered by someone." );
+                        m_Sage.SayTo( from, Server.Localization.StringCatalog.Resolve(from.Account, "That was already deciphered by someone.") );
 					}
                     else if (packs.ConsumeTotal(typeof(Gold), toConsume))
                     {
@@ -217,20 +217,20 @@ namespace Server.Mobiles
 
 						WhatIsIt.ScrollIntelligence = 0;
 						WhatIsIt.InvalidateProperties();
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
-						m_Sage.SayTo(from, "Let me show you what this reads...");
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+						m_Sage.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Let me show you what this reads..."));
 						WhatIsIt.ScrollSolved = "Deciphered by " + m_Sage.Name + " the Librarian";
 						from.PlaySound( 0x249 );
 						WhatIsIt.InvalidateProperties();
                     }
                     else
                     {
-                        m_Sage.SayTo(from, "It would cost you {0} gold to have that deciphered.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_Sage.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that deciphered.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
 				}
 				else
-					m_Sage.SayTo(from, "That does not need my services.");
+					m_Sage.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
             }
         }
 

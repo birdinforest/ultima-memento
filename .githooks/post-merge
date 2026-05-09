@@ -1,0 +1,6 @@
+#!/bin/sh
+# After pull/merge, re-apply skip-worktree for World/Saves/ tracked files.
+root=$(git rev-parse --show-toplevel) || exit 0
+script=$root/World/Source/Tools/skip_saves_worktree.sh
+[ -f "$script" ] || exit 0
+exec bash "$script" </dev/null

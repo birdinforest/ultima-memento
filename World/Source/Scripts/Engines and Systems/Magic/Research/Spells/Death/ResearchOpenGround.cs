@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -34,7 +35,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Where do you want the rip the ground open?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Where do you want the rip the ground open?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -56,11 +57,11 @@ namespace Server.Spells.Research
 
 				if ( pits > 0 )
 				{
-					Caster.SendMessage( "There is already an open chasm nearby!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is already an open chasm nearby!" ) );
 				}
 				else if ( Server.Misc.Worlds.NoApocalypse( Caster.Location, Caster.Map ) )
 				{
-					Caster.SendMessage( "You don't think it is wise to open a chasm in this area." ); 
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You don't think it is wise to open a chasm in this area." ) ); 
 					return;
 				}
 				else
@@ -156,7 +157,7 @@ namespace Server.Spells.Research
 				}
 				else
 				{
-					from.SendMessage( "The spell doesn't seem to do anything there." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The spell doesn't seem to do anything there." ) );
 				}
 			}
 

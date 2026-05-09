@@ -75,23 +75,23 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage("You already have a familiar.");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have a familiar."));
 			}
 			else if ( nFollowers > 0 )
 			{
-				from.SendMessage("You already have too many in your group.");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have too many in your group."));
 			}
 			else if ( from.Skills[SkillName.Elementalism].Base < 50 && from.Skills[SkillName.Magery].Base < 50 && from.Skills[SkillName.Necromancy].Base < 50 )
 			{
-				from.SendMessage("Only apprentice mages, elementalists, or necromancers may summon these familiars.");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "Only apprentice mages, elementalists, or necromancers may summon these familiars."));
 			}
 			else if ( Charges < 1 )
 			{
-				from.SendMessage("This crystal ball seems to be out of charges.");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This crystal ball seems to be out of charges."));
 			}
 			else if ( FamiliarOwner == null || FamiliarOwner.Serial != from.Serial )
 			{
-				from.SendMessage("This is not your crystal ball!");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This is not your crystal ball!"));
 			}
 			else
 			{

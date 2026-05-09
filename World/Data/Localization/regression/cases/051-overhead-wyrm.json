@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "overhead.wyrm-hate",
+  "pipeline": "overhead_chain",
+  "en": "an ancient wyrm sleeping below Dungeon Hate",
+  "expectedZh": "沉睡在憎恨地城之下的远古龙",
+  "tags": "overhead_chain,composite"
+}

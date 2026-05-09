@@ -1,0 +1,3006 @@
+{
+ "batch": 33,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1155086",
+   "text": "Equip Book 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155087",
+   "text": "Equip Book 4",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155088",
+   "text": "Equip Book 5",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155089",
+   "text": "Default Quiver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155090",
+   "text": "Quiver Pink",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155091",
+   "text": "Quiver Green",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155092",
+   "text": "Quiver Blue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155093",
+   "text": "Quiver Purple",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155094",
+   "text": "Quiver Black",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155095",
+   "text": "Quiver Fire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155096",
+   "text": "Target The Ship Wheel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155097",
+   "text": "Use this action inside of a macro followed by \"Use Targeted Object\" to use the ship wheel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155098",
+   "text": "~1_NAME~ will be ignored.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155099",
+   "text": "You can only ignore players!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155100",
+   "text": "Legacy containers enabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155101",
+   "text": "Legacy containers disabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155102",
+   "text": "Ignore mouse actions on self enabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155103",
+   "text": "Toggle Legacy Containers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155104",
+   "text": "Toggle Sound",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155105",
+   "text": "Toggle Sound Effects",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155106",
+   "text": "Toggle Music",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155107",
+   "text": "Toggle Footsteps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155108",
+   "text": "Talisman Alchemy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155109",
+   "text": "Talisman Blacksmith",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155110",
+   "text": "Talisman Fletching",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155111",
+   "text": "Talisman Carpentry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155112",
+   "text": "Talisman Cartography",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155113",
+   "text": "Talisman Cooking",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155114",
+   "text": "Talisman Glassblowing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155115",
+   "text": "Talisman Inscription",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155116",
+   "text": "Talisman Masonry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155117",
+   "text": "Talisman Tailoring",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155118",
+   "text": "Talisman Tinkering",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155119",
+   "text": "Target the instrument.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155120",
+   "text": "Player Context Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155121",
+   "text": "Toggle Trades",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155122",
+   "text": "Allow/Refuse to trade with other players.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155123",
+   "text": "Export Items to File",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155124",
+   "text": "Export a list of all the accessible items of the targeted container into a text file.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155125",
+   "text": "The container items list has been saved into the file ~1_FILE~ inside the \"Logs\" directory of the game.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155126",
+   "text": "Close All Containers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155127",
+   "text": "Close all the open containers except for your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155128",
+   "text": "Close All Corpses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155129",
+   "text": "Close all opened corpses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155130",
+   "text": "Select Organizer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155131",
+   "text": "Vacuum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155132",
+   "text": "The Vacuum action executes the active organizer on every open container except for your backpack and the destination container.<br>To switch organizers use the context menu on this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155133",
+   "text": "Load Shurikens",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155134",
+   "text": "Automatically load ten charges of shuriken into the ninja belt.<br>Make sure that you have enough shurikens in your backpack before using this action.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155135",
+   "text": "Toggle AFK Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155136",
+   "text": "Use this action to prevent the client from being disconnected due to inactivity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155137",
+   "text": "Close All Healthbars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155138",
+   "text": "Drop Into Container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155139",
+   "text": "If you have something on your cursor, it will be dropped into the specified container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155140",
+   "text": "Dress What You Are Currently Holding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155141",
+   "text": "If there is something on your cursor, by using this action that item will be dressed (like dragging it onto your paperdoll).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155142",
+   "text": "Drop What You Are Currently Holding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155143",
+   "text": "If something is stuck on your cursor and you are unable to drop it, use this function to drop the item into your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155144",
+   "text": "Trap Box un-set!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155145",
+   "text": "Target your trap box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155146",
+   "text": "Only crates can be used as trapped boxes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155147",
+   "text": "Trap Box Set!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155148",
+   "text": "The trapped box must be in your backpack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155149",
+   "text": "You cannot set this container as a trap box!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155150",
+   "text": "Toggle Trap Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155151",
+   "text": "Setting a container as a Trap Box prevents you from dropping items into the box by mistake and when you open it, it will not be shown like a normal container.<br>The Trap Box that you set will become ice hued.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155152",
+   "text": "Loot Bag un-set!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155153",
+   "text": "Target your loot bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155154",
+   "text": "Loot Bag Set!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155155",
+   "text": "The loot bag must be in your backpack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155156",
+   "text": "You cannot set this container as a loot bag!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155157",
+   "text": "Toggle Loot Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155158",
+   "text": "Setting a container as Loot Bag allows you to move items inside of it by right-clicking them.<br>Note: The gold will be moved in the main level of the backpack.<br><br>The Loot Bag will become golden hued.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155159",
+   "text": "This is not an accessible container!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155160",
+   "text": "Alpha Mode Enabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155161",
+   "text": "Alpha Mode Disabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155162",
+   "text": "Toggle Alpha Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155163",
+   "text": "Allows you to add some transparency to almost any game window by using the mouse wheel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155164",
+   "text": "Toggle Scale Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155165",
+   "text": "Allows you to scale almost every game window by using the mouse wheel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155166",
+   "text": "Scale Mode Enabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155167",
+   "text": "Scale Mode Disabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155168",
+   "text": "This action allows you to change the object handle filter on the fly.<br>This action also allows you to set a text filter in order to quickly find an item or a mobile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155169",
+   "text": "Set Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155170",
+   "text": "Remove Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155171",
+   "text": "Add Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155172",
+   "text": "If you set a filter only the items/mobiles that contains the specified text in their name will be shown.<br>This action also allows you to set a text filter in order to quickly find an item or a mobile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155173",
+   "text": "Healthbar From Current Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155174",
+   "text": "Pick the healthbar of your current target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155175",
+   "text": "You cannot get your own healthbar, you have the status bar!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155176",
+   "text": "You don't have a current target!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155177",
+   "text": "Get Type ID",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155178",
+   "text": "Get the type ID of an item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155179",
+   "text": "Get Hue ID",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155180",
+   "text": "Get the hue ID of an item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155181",
+   "text": "Target the item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155182",
+   "text": "It works only on items!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155183",
+   "text": "You should target a dynamic item!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155184",
+   "text": "The item type ID is: ~1_ID~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155185",
+   "text": "The item color ID is: ~1_ID~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155186",
+   "text": "Known As: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155187",
+   "text": "Chat Alpha",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155188",
+   "text": "Auto-Hide Chat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155189",
+   "text": "Fade Out Time",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155190",
+   "text": "Show Window On Mouse Over",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155191",
+   "text": "Enable Text Fading",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155192",
+   "text": "Show Timestamp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155193",
+   "text": "Lock Chat Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155194",
+   "text": "Minimum Total Damage To Log",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155195",
+   "text": "You See Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155196",
+   "text": "Special Filters",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155197",
+   "text": "Show Spells",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155198",
+   "text": "Show Spell Casting Messages",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155199",
+   "text": "Show Perfection Messages",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155200",
+   "text": "Allow Multiple Equals Messages",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155201",
+   "text": "Hide Channel's Tag.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155202",
+   "text": "Add Tab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155203",
+   "text": "Rename",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155204",
+   "text": "Extract",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155205",
+   "text": "Re-Integrate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155206",
+   "text": "Damage Information",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155207",
+   "text": "Remove",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155208",
+   "text": "You See",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155209",
+   "text": "Note To Self",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155210",
+   "text": "Set Filters",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155211",
+   "text": "Save To File",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155212",
+   "text": "Clear Journal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155213",
+   "text": "Set Fonts Size",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155214",
+   "text": "Enter the font size (8 to 36)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155215",
+   "text": "Set Fonts Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155216",
+   "text": "Channel Message Selection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155217",
+   "text": "~1_NUM~ MORE LEFT!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155218",
+   "text": "An ignored item is no more visible on object handles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155219",
+   "text": "Ignore Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155220",
+   "text": "Target the item to ignore.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155221",
+   "text": "The item will be ignored for 30 minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155222",
+   "text": "Clear the ignored item list.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155223",
+   "text": "Clear Ignored Item List.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155224",
+   "text": "Ignore items list is now clear!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155225",
+   "text": "Toggle Block Other Paperdoll",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155226",
+   "text": "Other paperdolls enabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155227",
+   "text": "Other paperdolls disabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155228",
+   "text": "When active you will be able to open only your paperdoll.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155229",
+   "text": "Player Location:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155230",
+   "text": "Undress to bag.<br>Use this to move all your equipment into a container.<br>Right Click to select the undress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155231",
+   "text": "Target the hotbag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155232",
+   "text": "Select Undress",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155233",
+   "text": "Show Hotbar.<br>Right Click for more options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155234",
+   "text": "Hide Hotbar.<br>Right Click for more options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155235",
+   "text": "Close to Right",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155236",
+   "text": "Close to Bottom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155237",
+   "text": "Close to Left",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155238",
+   "text": "Close to Top",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155239",
+   "text": "Change Handle Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155240",
+   "text": "Text in opposite side",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155241",
+   "text": "Set Text",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155242",
+   "text": "Hotbar LOCKED!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155243",
+   "text": "Hotbar UNLOCKED!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155244",
+   "text": "Hotbar will close on the ~1_SIDE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155245",
+   "text": "Right",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155246",
+   "text": "Bottom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155247",
+   "text": "Left",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155248",
+   "text": "Top",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155249",
+   "text": "Enter the text for this hotbar.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155250",
+   "text": "Unlock Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155251",
+   "text": "Lock Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155252",
+   "text": "Show Character Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155253",
+   "text": "Call the guards to aid you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155254",
+   "text": "Latency: ~1_LAG~<br>Packet Loss: ~2_PLOSS~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155255",
+   "text": "Unlock HP Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155256",
+   "text": "Lock HP Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155257",
+   "text": "Unlock Mana Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155258",
+   "text": "Lock Mana Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155259",
+   "text": "Unlock Stamina Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155260",
+   "text": "Lock Stamina Status Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155261",
+   "text": "Ask for a Bulk Order Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155262",
+   "text": "Ask for a Bulk Order Deed from the current target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155263",
+   "text": "~1_Val~ Store",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155264",
+   "text": "Buy Agent<br>Use this to automatically select the items to buy from this vendor.<br>Right Click to select the buy agent.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155265",
+   "text": "<br>Current: ~1_AGENT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155266",
+   "text": "Sell Agent<br>Use this to automatically select the items to sell to this vendor.<br>Right Click to select the sell agent.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155267",
+   "text": "Bribe Vendor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155268",
+   "text": "Bribe the vendor in order to get a better Bulk Order Deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155269",
+   "text": "Enter the amount of items you want to purchase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155270",
+   "text": "Rename Pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155271",
+   "text": "Title:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155272",
+   "text": "Training Methods:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155273",
+   "text": "You will be logged out in ~1_Time~.<br><br>If you don't wait, you will be unable to log in with another character on this account.<br><br>Do you want to log out immediately?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155274",
+   "text": "Log Out?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155275",
+   "text": "Lock Chat Line To The Game Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155276",
+   "text": "Healthbars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155277",
+   "text": "Containers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155278",
+   "text": "Overhead Text",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155279",
+   "text": "Set Border",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155280",
+   "text": "Enable Grid Legacy Containers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155281",
+   "text": "This option enables the grid legacy containers.  The grid legacy containers are a hybrid between grid/list container from the Enhanced Client and legacy containers from the Classic Client.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155282",
+   "text": "Enable Grid On Containers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155283",
+   "text": "This option enables you to remove the grid from every kind of gridded container, but keeps the items separated by and invisible grid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155284",
+   "text": "Toggle Container Contents Info",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155285",
+   "text": "Enables you to see the contents information under the container gump instead of requiring you to check the container properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155286",
+   "text": "Enable Alternate Grid Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155287",
+   "text": "This option allows you to alternate the grid background color.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155288",
+   "text": "Enable Extra Bright Background",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155289",
+   "text": "This option allows you to have an extra bright background on your grid view.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155290",
+   "text": "Base Grid Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155291",
+   "text": "Click the square to change the default container grid background color...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155292",
+   "text": "Alternate Grid Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155293",
+   "text": "Click the square to change the default container grid background color...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155294",
+   "text": "Enable Map Area/Facet Combo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155295",
+   "text": "If enabled this allows you to navigate through the maps and dungeons without being there personally.<br>If disabled, you will be able to navigate through the map areas by using the context menu (left-click on the map).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155296",
+   "text": "Enable Window Snap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155297",
+   "text": "The snap mode allows you to easily dock the windows to each other.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155298",
+   "text": "Block Other Paperdolls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155299",
+   "text": "When this option is active you will be able to open your paperdoll but no other paperdolls.  A toggle is also available through actions.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155300",
+   "text": "Block War on Pets",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155301",
+   "text": "Prevents you from attacking your own pet while in war mode.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155302",
+   "text": "Block War on Party",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155303",
+   "text": "Prevents you from attacking your party members while in war mode.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155304",
+   "text": "Block War on Friendly",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155305",
+   "text": "Prevents you from attacking friendly targets while in war mode.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155306",
+   "text": "Low HP Warning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155307",
+   "text": "Pets Low HP Warning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155308",
+   "text": "Disabled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155309",
+   "text": "Allows you to change the low HP warning to a custom percentage or to disable it entirely.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155310",
+   "text": "Allows you to change the pet low HP warning to a custom percentage or to disable it entirely.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155311",
+   "text": "Ignore Summons For Low HP Warning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155312",
+   "text": "If the low pets HP warning is enabled then this option will allow you to toggle the warning for your summons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155313",
+   "text": "Healthbars Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155314",
+   "text": "Status Window Style",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155315",
+   "text": "Classic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155316",
+   "text": "Advanced",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155317",
+   "text": "Enable Healthbars/Status Spells Buttons",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155318",
+   "text": "Toggle customizable spells buttons on healthbars and status.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155319",
+   "text": "Enable Notoriety Aura",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155320",
+   "text": "Toggle the aura animation around the character picture on the status and party healthbars.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155321",
+   "text": "Enable Mobile Arrow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155322",
+   "text": "Shows an arrow bouncing over the head of the mobile connected to the healthbar under your mouse pointer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155323",
+   "text": "Buttons Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155324",
+   "text": "Enable Right-Click to Close Healthbars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155325",
+   "text": "If enabled this option allows you to close healthbars by right-clicking them.<br>Note: This option will also disable the context menu on the healthbars.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155326",
+   "text": "Enable Right-Click to Close Healthbars (Pets ONLY)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155327",
+   "text": "If enabled this option allows you to close a pet's healthbar by right-clicking it.<br>Note: This option will also disable the context menu on a pet's healthbar.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155328",
+   "text": "Show Close and Extract Buttons on Healthbars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155329",
+   "text": "Shows the Close and Extract button on healthbars.<br>If disabled, you can use CTRL + CLICK to extract the healthbars and ALT + CLICK to close them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155330",
+   "text": "Show Word of Death Buttons on Healthbars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155331",
+   "text": "When enabled a button for Word of Death will appear on healthbars when the life percentage is at the right level based on your spellweaving skill level and your arcane circle level.<br>You must have enough spellweaving to cast the Word of Death spell in order to see this button.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155332",
+   "text": "Spell Button Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155333",
+   "text": "Overhead Text",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155334",
+   "text": "Disable Overhead Spellcasting Text",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155335",
+   "text": "Toggles the overhead spells text.  Disabling this allows you to cast spells without any words of power or spell names.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155336",
+   "text": "Show Spell Names",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155337",
+   "text": "Toggles spell names near the spell's words of power.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155338",
+   "text": "Enable Poison Messages On Others",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155339",
+   "text": "If enabled you will see messages related to poison for others.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155340",
+   "text": "Enable Clickable Overhead Names",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155341",
+   "text": "Text Size +",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155342",
+   "text": "Text Size -",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155343",
+   "text": "Speech Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155344",
+   "text": "Names Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155345",
+   "text": "Spells Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155346",
+   "text": "Damages Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155347",
+   "text": "Overhead Chat Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155348",
+   "text": "Overhead Names Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155349",
+   "text": "Overhead Spells Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155350",
+   "text": "Overhead Damage Font",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155351",
+   "text": "Text Colors",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155352",
+   "text": "Healing Spells Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155353",
+   "text": "Curse Spells Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155354",
+   "text": "Paralyze Spells Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155355",
+   "text": "Neutral Spells Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155356",
+   "text": "Negative Overhead Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155357",
+   "text": "Positive Overhead Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155358",
+   "text": "Your Damage Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155359",
+   "text": "Your Pet Damage Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155360",
+   "text": "Enemy Damage Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155361",
+   "text": "Default Physical Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155362",
+   "text": "Default Fire Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155363",
+   "text": "Default Cold Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155364",
+   "text": "Default Poison Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155365",
+   "text": "Default Energy Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155366",
+   "text": "Default Chaos Text Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155367",
+   "text": "Enable War/Peace Shield Button",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155368",
+   "text": "Toggles the War/Peace shield button.  If the button is removed you may use the War/Peace action to achieve the same results.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155369",
+   "text": "WARNING:<br>Always check inside all containers before accepting a trade!<br><br>If you are using containers for trading gold/bank checks, open them to update the gold counter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155370",
+   "text": "Use the imbuing skill first!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155371",
+   "text": "Enter a numeric value to use as delay:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155372",
+   "text": "Crafting Utilities",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155373",
+   "text": "Unravel Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155374",
+   "text": "Press the \"Unravel Item\" button in the Imbuing Menu.<br><br>NOTE: You must open the imbuing menu first.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155375",
+   "text": "Imbue Last Property",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155376",
+   "text": "Press the \"Imbue Last Property\" button in the Imbuing Menu.<br><br>Note: You must open the imbuing menu first.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155377",
+   "text": "Alter an item in order to use it with a gargoyle.<br>The item must be made with the active skill.<br><br>NOTE: The alter process is FINAL, there is no going back!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155378",
+   "text": "Enhance an item made with the current tool with the selected material properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155379",
+   "text": "Repair an item made with current tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155380",
+   "text": "Recycle a blacksmithing item into ingots.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155381",
+   "text": "Create the last item made with current tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155382",
+   "text": "You cannot alter anything with this tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155383",
+   "text": "You cannot enhance anything with this tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155384",
+   "text": "This works only for blacksmithing!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155385",
+   "text": "You can now move the whole group of hotbars with SHIFT + DRAG and you can collapse all with SHIFT + CLICK on the \"Hide Hotbar\" button.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155386",
+   "text": "Destroy Hotbars Group",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155387",
+   "text": "Are you sure you want to destroy this hotbar group?  All data for these hotbars will be lost!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155388",
+   "text": "Remove Criteria",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155389",
+   "text": "Price Range",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155390",
+   "text": "Are you sure?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155391",
+   "text": "Show Icon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155392",
+   "text": "Show Frame",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155393",
+   "text": "Show Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155394",
+   "text": "Show Cap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155395",
+   "text": "Set Background Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155396",
+   "text": "Set Frame Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155397",
+   "text": "Set Name Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155398",
+   "text": "Set Value Color",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155399",
+   "text": "Destroy Label",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155400",
+   "text": "Amount Alert",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155401",
+   "text": "Enter the minimum amount required to trigger the warning.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155402",
+   "text": "Disable Auto-Hide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155403",
+   "text": "Enable Auto-Hide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155404",
+   "text": "Do you really want to drop that rune?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155405",
+   "text": "Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155406",
+   "text": "This item can only be used in an active VvV battle region!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155407",
+   "text": "The trap limit for this battle has been reached!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155408",
+   "text": "You must wait a few moments before attempting to place another trap.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155409",
+   "text": "Where do you want to place the trap?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155410",
+   "text": "Target the location to run the tripwire...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155411",
+   "text": "*You successfully lay the tripwire*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155412",
+   "text": "*You successfully set the trap*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155413",
+   "text": "*You carefully disarm the trap and put it away*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155414",
+   "text": "You may not remove the sigil from the battle region!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155415",
+   "text": "Only participants in Vice vs Virtue may use this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155416",
+   "text": "17th Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155417",
+   "text": "Happy 17th Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155418",
+   "text": "Happy 17th Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155419",
+   "text": "Happy 17th Anniversary!  To get your gift, please remove some items from you backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155420",
+   "text": "Massive",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155421",
+   "text": "An Ornately Embroidered Hand Towel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155422",
+   "text": "A Personally Engraved Broadsword from ~1_name~ to ~2_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155423",
+   "text": "In Commemoration of Seventeen Amazing Years! Thank You and Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155424",
+   "text": "All Release",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155425",
+   "text": "Remove selected item?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155426",
+   "text": "Cannot determine this account's age.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155427",
+   "text": "Restock.<br>Use this to restock from this container.<br>Right Click to select the restock.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155428",
+   "text": "Center Screen Text",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155429",
+   "text": "Release all the creatures under your command.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155430",
+   "text": "Big Icon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155431",
+   "text": "Small Icon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155432",
+   "text": "Use a crafting tool first!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155433",
+   "text": "You cannot repair anything with this tool!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155434",
+   "text": "Target the pet summoning ball.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155435",
+   "text": "Ignore Mouse Actions On Self Disabled!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155436",
+   "text": "Tracked Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155437",
+   "text": "Use Buy ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155438",
+   "text": "Buy ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155439",
+   "text": "Use Sell ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155440",
+   "text": "Sell ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155441",
+   "text": "Use Organizer ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155442",
+   "text": "Organizer ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155443",
+   "text": "Use Restock ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155444",
+   "text": "Restock ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155445",
+   "text": "Open the destination container first!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155446",
+   "text": "Target Dragon Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155447",
+   "text": "Target Cu Sidhe Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155448",
+   "text": "Target Hiryu Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155449",
+   "text": "Target Nightmare/Dread War Horse Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155450",
+   "text": "Target Bake Kitsune Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155451",
+   "text": "Target Rune Beetle Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155452",
+   "text": "Target Swamp/Bane Dragon Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155453",
+   "text": "Target Boura Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155454",
+   "text": "Target Raptor Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155455",
+   "text": "Target Skree Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155456",
+   "text": "Target Vollem Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155457",
+   "text": "Target Fire Beetle Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155458",
+   "text": "Target Giant Beetle Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155459",
+   "text": "Target Pack Horse Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155460",
+   "text": "Target Pack Llama Pet Summoning Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155461",
+   "text": "Use this action inside a macro followed by 'Use Targeted Object' to use the instrument.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155462",
+   "text": "Object Targeting",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155463",
+   "text": "Super Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155464",
+   "text": "Lesser Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155465",
+   "text": "Talisman Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155466",
+   "text": "Worker's Talisman's",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155467",
+   "text": "Bard's Super Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155468",
+   "text": "Bard's Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155469",
+   "text": "Adjust Thief Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155470",
+   "text": "Grow Plant",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155471",
+   "text": "Enter the number of slots to create a single hotbar.<br>Enter Rows x Columns (example: 3x2) to create a set of hotbars (max 12x12)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155472",
+   "text": "TEST Message",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155473",
+   "text": "Add By Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155474",
+   "text": "Add From Chat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155475",
+   "text": "Delete",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155476",
+   "text": "Worlds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155477",
+   "text": "Areas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155478",
+   "text": "Set Amount Warning (~1_AMT~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155479",
+   "text": "*Your keen senses alert you to an incoming ambush of attackers!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155480",
+   "text": "Ambusher",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155481",
+   "text": "Magnate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155482",
+   "text": "This title is obtained by delivering 150 trade orders to a City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155483",
+   "text": "Your backpack was too full so the item was placed at your feet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155484",
+   "text": "You must wait ~1_MIN~ minutes for another shield shard transfer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155485",
+   "text": "Advisor Request Queue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155486",
+   "text": "Advisor Queue is empty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155487",
+   "text": "Current Request",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155488",
+   "text": "Please add additional details for the GM ticket.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155489",
+   "text": "Notice: The faction system has been replaced with the Vice vs Virtue system.  We invite you to check out this new and exciting PvP experience!  As a result some items including Greater Stamina Potions, Supernova Potions, Shrine Gems, Faction Stronghold Runes, and Cloaks of Command have been removed from your inventory.  Some of these items are available from participating in Vice vs Virtue.  You can join Vice vs Virtue by clicking on \"Join Vice vs Virtue\" from the front page of the guild menu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155490",
+   "text": "Impassable items placed in this area will be automatically placed in this container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155491",
+   "text": "The container is emptied every 10 minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155492",
+   "text": "*Noxious gas is suffocating you! You should attempt to leave the area immediately!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155493",
+   "text": "Your skills are being looked at by an Advisor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155494",
+   "text": "<U>Cancel Advisor Request</U>: You currently have an active request in the Advisor queue. Selecting this option will cancel the request.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155495",
+   "text": "Advisor request cancelled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155496",
+   "text": "This item can only be used by VvV participants!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155497",
+   "text": "The ground is too charged to use a mana spike!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155498",
+   "text": "*Your body convulses as energy surges through it!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155499",
+   "text": "*You drive the spike into the ground!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155500",
+   "text": "*Your body is too charged with electrical energy to hide!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155501",
+   "text": "*The turret is reloading!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155502",
+   "text": "The turret limit for this battle has been reached!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155503",
+   "text": "Plans for a Cannon Turret",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155504",
+   "text": "Double Click to Deploy at Current Location",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155505",
+   "text": "A Cannon Turret",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155506",
+   "text": "*Attack to destroy turret!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155507",
+   "text": "Claim VvV Rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155508",
+   "text": "Mana Spike",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155509",
+   "text": "You lack the mana required to use this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155510",
+   "text": "You cannot place a turret here.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155511",
+   "text": "That location is within an active VvV region!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155512",
+   "text": "VvV Rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155513",
+   "text": "Vice vs Virtue Reward Vendor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155514",
+   "text": "Toggle Deployment Type",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155515",
+   "text": "*You adjust the deployment mechanism*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155516",
+   "text": "Covetous Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155517",
+   "text": "Deceit Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155518",
+   "text": "Despise Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155519",
+   "text": "Destard Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155520",
+   "text": "Hythloth Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155521",
+   "text": "Pride Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155522",
+   "text": "Shame Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155523",
+   "text": "Wrong Tile",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155524",
+   "text": "Forged Royal Pardon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155525",
+   "text": "Using this pardon again will remove ALL murder counts from your character and consume the pardon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155526",
+   "text": "Account Bound",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155527",
+   "text": "Poison Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155528",
+   "text": "Freezing Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155529",
+   "text": "Shocking Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155530",
+   "text": "Blades Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155531",
+   "text": "Explosion Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155532",
+   "text": "Virtue Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155533",
+   "text": "Vice Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155534",
+   "text": "I will convert your human artifacts to gargoyle versions if you hand them to me.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155535",
+   "text": "A Batch of ~1_ITEMS~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155536",
+   "text": "Shard Bound",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155537",
+   "text": "You may not transfer items that are flagged as \"Shard Bound.\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155538",
+   "text": "Virtue Hair Dye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155539",
+   "text": "Vice Hair Dye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155540",
+   "text": "You feel the effects of your stat loss fade.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155541",
+   "text": "Stat Loss Removal Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155542",
+   "text": "You are not currently under the effects of stat loss.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155543",
+   "text": "Potion of Anti Paralysis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155544",
+   "text": "You are not currently paralyzed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155545",
+   "text": "VvV War Horse",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155546",
+   "text": "VvV War Ostard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155547",
+   "text": "Pets obtained from VvV are non-transferable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155548",
+   "text": "You may not add friends to a VvV War Steed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155549",
+   "text": "*Your steed's battle readiness is fading...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155550",
+   "text": "*Your steed has depleted it's battle readiness!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155551",
+   "text": "*Your steed's battle readiness is dangerously low!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155552",
+   "text": "*Your steed's battle readiness has increased!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155553",
+   "text": "*Your steed is at maximum battle readiness!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155554",
+   "text": "Essence of Courage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155555",
+   "text": "Feed this to VvV War Steeds to maintain their battle readiness!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155556",
+   "text": "Join Vice vs Virtue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155557",
+   "text": "Resign Vice vs Virtue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155558",
+   "text": "Are you sure you wish to resign from Vice vs Virtue? You will not be allowed to rejoin for 3 days.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155559",
+   "text": "You have begun the Vice vs Virtue resignation process.  You will be removed from VvV in 3 days.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155560",
+   "text": "You are currently in the process of quitting Vice vs Virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155561",
+   "text": "You are no longer in Vice vs Virtue!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155562",
+   "text": "Young players may not join Vice vs Virtue. Renounce your young player status by saying, \"I renounce my young player status\" and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155563",
+   "text": "You must be in a guild to join Vice vs Virtue. Join a guild and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155564",
+   "text": "You have joined Vice vs Virtue!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155565",
+   "text": "Vice vs Virtue Signup",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155566",
+   "text": "Greetings! You are about to join Vice vs Virtue! VvV is an exhilarating Player vs Player experience that you can have fun with whether you have hours or only a few minutes to jump into the action!  Be forewarned, once you join VvV you will be freely attackable by other VvV participants in non-consensual PvP facets.<br><br>Will you answer the call and lead your guild to victory?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155567",
+   "text": "Learn more about VvV!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155568",
+   "text": "You must quit Vice vs Virtue before you attempting to character transfer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155569",
+   "text": "Potions: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155570",
+   "text": "Your backpack could not hold the item.  Free up some space and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155571",
+   "text": "Silver Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155572",
+   "text": "<DIV ALIGN=RIGHT>Assists:</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155573",
+   "text": "<DIV ALIGN=RIGHT>Stolen Sigil:</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155574",
+   "text": "<DIV ALIGN=RIGHT>Disarmed Traps:</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155575",
+   "text": "<DIV ALIGN=RIGHT>Returned Sigil:</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155576",
+   "text": "The ~1_name~ Alliance has won the battle!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155577",
+   "text": "You may not re-join Vice vs Virtue during the resignation period.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155578",
+   "text": "Your Vice vs Virtue resignation period has ended.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155579",
+   "text": "You are currently in the Vice vs Virtue resignation period.  You will still flag to Vice vs Virtue players until this period has concluded.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155580",
+   "text": "You have quit a guild while participating in Vice vs Virtue.  You will be freely attackable by members of Vice vs Virtue until your resignation period has ended!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155581",
+   "text": "Warning: Quitting a guild while enrolled in Vice vs Virtue will still require a 3 day resignation period during which time you will be freely attackable by Vice vs Virtue players in non-consensual PvP rule sets!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155582",
+   "text": "Warning!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155583",
+   "text": "You are in an active Vice vs Virtue battle region!  If you do not leave the City you will be open to attack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155584",
+   "text": "You are now open to attack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155585",
+   "text": "You have no silver to trade with. Join Vice vs Virtue and return to me.",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

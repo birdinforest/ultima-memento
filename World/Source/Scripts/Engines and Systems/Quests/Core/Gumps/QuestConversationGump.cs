@@ -5,7 +5,7 @@ namespace Server.Engines.MLQuests.Gumps
 	public class QuestConversationGump : BaseQuestGump
 	{
 		public QuestConversationGump(MLQuest quest, PlayerMobile pm, TextDefinition text)
-			: base(3006156) // Quest Conversation
+			: base(3006156, pm) // Quest Conversation
 		{
 			CloseOtherGumps(pm);
 

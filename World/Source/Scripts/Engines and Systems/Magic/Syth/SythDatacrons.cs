@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Spells.Syth;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -19,7 +20,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron01( Serial serial ) : base( serial )
@@ -53,7 +54,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron02( Serial serial ) : base( serial )
@@ -87,7 +88,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron03( Serial serial ) : base( serial )
@@ -121,7 +122,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron04( Serial serial ) : base( serial )
@@ -155,7 +156,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron05( Serial serial ) : base( serial )
@@ -189,7 +190,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron06( Serial serial ) : base( serial )
@@ -223,7 +224,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron07( Serial serial ) : base( serial )
@@ -257,7 +258,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron08( Serial serial ) : base( serial )
@@ -291,7 +292,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron09( Serial serial ) : base( serial )
@@ -325,7 +326,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This mysticron contains the knowledge of a long dead Syth Lord." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This mysticron contains the knowledge of a long dead Syth Lord." ) );
 		}
 
 		public SythDatacron10( Serial serial ) : base( serial )

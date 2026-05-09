@@ -1,0 +1,521 @@
+# Ultima Memento — AI Agent Guide
+
+> **Scope:** Game server repo (`ultima-memento`). For the website see `ultima-memento-web/AGENTS.md`. **Cross-repo practice (site media + glossary-driven wiki index):** [§7](#7-website--player-facing-docs-ultima-memento-web).
+> **Update protocol:** When you change a convention or discover something that conflicts with this file, propose an edit at the end of your turn. Do not silently diverge.
+
+---
+
+## 0. Quick-Start Index
+
+| Task | Jump to |
+|---|---|
+| Add a new game feature (C#) | [§2 Engineering Practices](#2-engineering-practices) |
+| Add translatable strings to C# code | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
+| Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
+| Incremental LLM locale queue (`stats` / `queue` / `apply`) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
+| Logical-key JSON (shard greeter, war shouts, …) | [§3.1 Architecture](#31-localization-architecture) |
+| Translate new strings (LLM, not Google) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
+| Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
+| Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
+| Build and test the server | [§4 Build & Test](#4-build--test) |
+| Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
+| Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
+
+---
+
+## 1. Project Structure
+
+```
+ultima-memento/
+├── World/
+│   ├── Source/
+│   │   ├── System/          # Core engine (C#): Localization/, Gumps/, etc.
+│   │   ├── Scripts/
+│   │   │   ├── Engines and Systems/   # Quest, Trade, Dungeons, etc.
+│   │   │   ├── Items/                 # Items, Books
+│   │   │   ├── Mobiles/               # Creatures, NPCs
+│   │   │   ├── System/                # Commands, Skills, Misc
+│   │   │   └── Utilities/
+│   │   └── Tools/           # Python pipelines (localization, build helpers)
+│   ├── Data/
+│   │   ├── Localization/
+│   │   │   ├── en/          # Split EN JSON (source of truth)
+│   │   │   ├── zh-Hans/     # Split ZH JSON (generated + curated)
+│   │   │   ├── glossary-approved-zh.json   # Canonical glossary (hand-curated)
+│   │   │   └── zh-Hans-glossary-sync-rules.json
+│   │   └── System/CFG/      # localization.cfg, other runtime config
+│   ├── Documentation/       # Workflow guides (authoritative)
+│   └── Saves/               # Runtime world state — never edit manually
+└── WorldLinux.exe           # Runtime binary (Linux/macOS)
+```
+
+**Key documentation to read before working on each domain:**
+
+- Localization: `World/Data/Localization/README.txt` — authoritative layout and commands.
+- Book translation: `World/Documentation/scripts-books-zh-translation-workflow.md`
+- Glossary sync: `World/Documentation/zh-localization-glossary-sync-workflow.md`
+- Translation editorial rules: `World/Documentation/zh-localization-translation-guide.md`
+- Coverage roadmap: `World/Documentation/localization-complete-coverage-roadmap.md`
+- Localization regression testing plan & test tiers: `World/Documentation/localization-regression-testing.md`
+- Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
+
+---
+
+## 2. Engineering Practices
+
+### 2.1 C# Style
+
+- **RunUO / ServUO conventions apply.** When in doubt, match the surrounding file's style.
+- **No unsolicited refactoring.** Only modify code outside the stated task scope if a linter error or critical bug requires it. Note any such changes in your response.
+- **Avoid magic numbers and bare strings.** Use constants, enums, and `StringCatalog`-managed strings.
+- **Gumps:** All user-visible strings in gumps must pass through the localization catalog (see §3). Do not hardcode Chinese or English inline.
+- **Access modifiers:** Default to the narrowest access level that works (`private` → `protected` → `public`).
+- **Error handling:** Follow existing patterns. Do not silently swallow exceptions.
+
+### 2.2 Adding New Features
+
+1. **Read at least one analogous existing implementation** before starting. Pattern-match to the existing architecture.
+2. **Plan before writing:** For features touching more than two files, state your approach in plain language first.
+3. **Localization from day one:** Any user-visible text added to C# must go through `StringCatalog` (see §3.2). Never defer localization.
+4. **Quests:** Follow `World/Source/Scripts/Engines and Systems/Quests/Core/` patterns. New quest types subclass existing base classes.
+5. **Items/Books:** Follow `World/Source/Scripts/Items/Books/` patterns for book text extraction compatibility.
+
+### 2.3 File Naming
+
+- C# files: `PascalCase.cs`, matching the primary public class name.
+- Python tools: `snake_case.py`.
+- Localization JSON: `<category>.json` (see §3.1 for category names).
+
+---
+
+## 3. Localization System
+
+The server supports **English (`en`)** and **Simplified Chinese (`zh-Hans`)**. Every player-facing string must be in the catalog. The default language is `en`; `zh-Hans` is the secondary locale.
+
+### 3.1 Localization Architecture
+
+```
+Data/Localization/
+  en/
+    system.json                        ← World/Source/System/**
+    scripts-system.json                ← Scripts/System/**
+    scripts-items.json                 ← Scripts/Items/** (excl. Books)
+    scripts-mobiles.json               ← Scripts/Mobiles/**
+    scripts-engines-and-systems.json   ← Scripts/Engines and Systems/** (excl. Quests)
+    scripts-utilities.json             ← Scripts/Utilities/**
+    scripts-quests.json                ← Scripts/Engines and Systems/Quests/**
+    scripts-books.json                 ← Scripts/Items/Books/**
+  zh-Hans/                             ← Mirrors en/ structure
+```
+
+**Hand-maintained logical-key JSON** (same `en/` and `zh-Hans/` folders; **not** emitted by the C# extractor; keys are stable IDs consumed via `StringCatalog.TryResolveByKey` or equivalent). **Do not remove** — `build_localization_strings.py` whitelists them in `keep_extra`; deleting them drops translations at runtime. When adding a new bundle, edit that `keep_extra` set and extend this list.
+
+| File | Purpose (summary) |
+|---|---|
+| `race-system.json` | Race / gypsy potion shelf UI and related copy (`racepotions.*`, `baserace.*`, …). |
+| `shard-greeter.json` | Shard welcome / tarot gypsy and related copy (`shardgreeter.*`, …). |
+| `stats-gump.json` | Stats gump strings. |
+| `temptation-gump.json` | Temptation gump strings. |
+| `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
+| `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
+
+Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
+
+**Key management:**
+- Hash keys: `s.` + 16 hex chars (SHA-256 of the exact EN string). These are stable as long as the English text is unchanged.
+- Logical keys (e.g. `books.dynamic.*`): preserved manually across re-extraction runs.
+- The runtime merges **all `*.json`** under `en/` and `zh-Hans/` at startup.
+
+**Resolution:** `StringCatalog.TryResolve(key, lang)` → falls back to `en` if `zh-Hans` key is missing.
+
+### 3.2 Adding Strings to C#
+
+**Rule: Every user-visible literal must be localized. No exceptions.**
+
+Use the `StringCatalog`-aware APIs that the extractor already handles:
+
+```csharp
+// NPC/system messages
+mobile.SendMessage("Your message here.");
+mobile.Say("Greeting text.");
+
+// Gumps
+AddLabel(x, y, hue, "Label text");
+AddHtml(x, y, w, h, "Html content", false, false);
+AddTooltip("Tooltip text");
+
+// Quest objectives / text blocks
+new TextDefinition("Objective description")
+```
+
+**Do not** pass variables as the string argument if the content must be localized; the extractor only captures string literals.
+
+After adding strings to C#, **always run the extractor** (§3.3) to register them in the JSON files.
+
+### 3.3 Extraction Tool
+
+Run from repo root (`ultima-memento/`):
+
+```bash
+# Re-scan C#; preserve existing ZH translations where EN is unchanged
+python3 World/Source/Tools/build_localization_strings.py --no-translate
+
+# Optional: delete unknown *.json under en/ and zh-Hans/ (off by default — safe for hand-maintained logical bundles)
+# python3 World/Source/Tools/build_localization_strings.py --no-translate --prune-stale-locale-files
+
+# Optional CI guard: fail if a hash key with reviewed Chinese disappears from category JSON
+# python3 World/Source/Tools/build_localization_strings.py --no-translate --fail-on-translated-zh-drop
+
+# After adding new EN strings, verify extraction output before committing:
+#   Check that new keys appear in the correct en/<category>.json
+#   Check that zh-Hans/<category>.json has no stale English echoes for new entries
+#   Inspect tools-output/extractor-key-drop-report.json (see README.txt) for removed keys vs pre-run JSON
+```
+
+The extractor does **not** translate. Translation is a separate step (§3.4). Each run writes `World/Data/Localization/tools-output/extractor-key-drop-report.json` (gitignored) listing keys dropped from category files compared to the JSON on disk before the run — use it to audit removals, not as a runtime merge.
+
+**Verification after extraction:**
+- New EN keys present in the correct category file. ✓
+- No EN strings duplicated into `zh-Hans/` as untranslated placeholders. ✓
+- Run `python3 World/Source/Tools/sync_localization_glossary.py --check` — must exit 0. ✓
+
+### 3.4 Translation Workflow — LLM Only
+
+> **Policy:** Use LLM-based translation (e.g. Claude, GPT-4) for all new translations. **Do not use Google Translate or DeepL.** Machine translation from non-LLM sources produces lower-quality results that require more correction effort.
+
+**Standard translation process for new strings:**
+
+0. **Emit only deltas (saves tokens):** from repo root,
+   `python3 World/Source/Tools/llm_incremental_locale.py stats` then
+   `python3 World/Source/Tools/llm_incremental_locale.py queue -o Data/Localization/tools-output/llm-translation-queue.jsonl`.
+   Each JSONL line is one `{ "file", "key", "en" }` — that set is exactly what still needs Chinese (hash keys: missing or zh == en; logical keys: missing unless you pass `--include-named-keys`). Do **not** paste entire `zh-Hans/*.json` files into an LLM unless you intend a full review pass.
+1. **Extract** (already done if you ran `build_localization_strings.py --no-translate`): new/changed EN lives in `en/<category>.json`; queue step compares to `zh-Hans/<category>.json`.
+2. **Load the glossary** (`glossary-approved-zh.json`). Any EN term present in the glossary **must** use its `canonical` Chinese translation verbatim in the output.
+3. **Translate with LLM** (batch on the queue lines or split batches only), providing:
+   - The game context: Ultima Online-style fantasy MMORPG, historical Chinese localization sensibility.
+   - The full glossary as a constraint.
+   - The editorial rules from `World/Documentation/zh-localization-translation-guide.md`.
+4. **Apply** LLM output into `zh-Hans/`:
+   ```bash
+   python3 World/Source/Tools/llm_incremental_locale.py apply -i path/to/llm-translation-response.json
+   ```
+   Response shape: nested JSON `{ "<category>.json": { "<key>": "<zh>", ... }, ... }`, or a JSON array / JSONL of `{ "file", "key", "zh" }` objects (see tool docstring).
+
+5. **Apply glossary normalization** after translation:
+   ```bash
+   python3 World/Source/Tools/sync_localization_glossary.py
+   ```
+6. **Verify:**
+   ```bash
+   python3 World/Source/Tools/sync_localization_glossary.py --check
+   # Must exit 0 (no unapproved glossary terms remain)
+   ```
+
+**LLM translation prompt template:**
+
+```
+You are translating Ultima Online game server strings into Simplified Chinese (zh-Hans).
+Context: Historical fantasy MMORPG. Tone: literary, slightly archaic, consistent with classic UO lore.
+
+Mandatory glossary (use these exact translations, no alternatives):
+<paste relevant entries from glossary-approved-zh.json>
+
+For proper nouns NOT in the glossary: transliterate in brackets 【English】 on first use.
+Do not paraphrase beyond what a professional game translator would. Keep punctuation natural for Chinese.
+
+Translate these strings (one category per block if multiple files):
+<key>: <English value>
+...
+Return JSON. Prefer nested maps:
+``{ "scripts-quests.json": { "<key>": "<zh>", ... }, "scripts-system.json": { ... } }``.
+For one category, a flat ``{ "<key>": "<zh>", ... }`` is OK if you merge with
+``llm_incremental_locale.py apply -i response.json --base-file scripts-quests.json``.
+```
+
+**For book text** (logical key `books.dynamic.*` and `scripts-books`):
+- Follow `World/Documentation/scripts-books-zh-translation-workflow.md` for the fragment-based merge process.
+- Use the same LLM policy above; do not write fragments directly into `zh-Hans/scripts-books.json`.
+
+### 3.5 Proper Noun Annotation Convention
+
+**Rule: In zh-Hans localization files, every proper noun (place, person, creature, item, faction, deity, dungeon, race) must be annotated with its English original using the format `中文（English）`.**
+
+This applies to all zh-Hans translation files regardless of context type:
+
+| Context | Format | Example |
+|---|---|---|
+| Narrative text with **`【】` brackets** (scripts-books, engines, quests, items, mobiles) | `【中文（English）】` | `【蒙丹（Mondain）】` |
+| **Inline text without brackets** (commontalk-fragment-zh, vendor_npc_speech) | `中文（English）` inline | `莫瑞尼亚矿坑（Mines of Morinia）出产上佳矿石。` |
+
+**When to annotate:**
+- **All proper noun categories:** place, character, creature, item, deity, faction, dungeon, race.
+- **Skip:** concept, system, skill, title, book — these are functional descriptors, not named entities.
+- **Skip:** purely-ASCII brackets like `【Death Knight】` — already English, no annotation needed.
+- **Skip:** brackets already annotated (`【蒙丹（Mondain）】`) — no double-annotation.
+
+**Tool support:** `World/Source/Tools/annotate_proper_nouns.py`
+- `python3 World/Source/Tools/annotate_proper_nouns.py --dry-run` — preview new annotations
+- `python3 World/Source/Tools/annotate_proper_nouns.py` — apply annotations
+
+The tool handles two strategies:
+1. **Bracket annotation** for zh-Hans/\*.json files: matches `【中文】` → `【中文（English）】` using the glossary zh→en map.
+2. **Curated inline annotation** for `commontalk-fragment-zh.json`: uses a manually-maintained EN-phrase → ZH-phrase mapping (see `COMMONTALK_ANNOTATIONS` in the script), with word-boundary matching on English keys. This avoids false positives from short or generic Chinese terms.
+
+**Translation workflow for new strings:**
+When writing new zh-Hans translations:
+1. Identify all proper nouns in the English source text.
+2. Look up each term in `glossary-approved-zh.json` (`terms` section).
+3. For narrative/book text: wrap in `【】` brackets with `（English）` — e.g. `【索沙尼亚（Sosaria）】`.
+4. For natural-speech text (commontalk, vendor speech): annotate inline at first occurrence — e.g. `索沙尼亚（Sosaria）`.
+5. If the English term is not in the glossary, propose an entry via the glossary management process (§3.6).
+6. Run `sync_localization_glossary.py` and `--check` to verify consistency.
+7. If adding new EN-glossary proper nouns that appear in commontalk English keys, extend `COMMONTALK_ANNOTATIONS` in the annotation script.
+
+**Limitation:** Inline annotation without English-key validation (e.g. `vendor_npc_speech.json`) is not automated because short Chinese glossary terms (2–3 chars like `恶魔`, `宝箱`) cause false positives. Such files should be annotated manually or by extending the curated mapping.
+
+---
+
+### 3.6 Glossary Management
+
+Each entry:
+```json
+"English Term": {
+  "canonical": "中文正式译名",
+  "alternatives": ["备用译名1"],
+  "category": "creature|item|place|skill|title|book|system",
+  "notes": "English rationale for why this translation was chosen.",
+  "translation_basis_zh": "中文说明，说明翻译选择的理由。"
+}
+```
+
+**Rules:**
+- **Only add entries that have been reviewed and agreed upon.** Do not add speculative terms.
+- Every new entry needs both `notes` (English) and `translation_basis_zh` (Chinese).
+- After adding or modifying glossary entries, run:
+  ```bash
+  python3 World/Source/Tools/sync_localization_glossary.py
+  python3 World/Source/Tools/sync_localization_glossary.py --check
+  ```
+- Run `python3 World/Source/Tools/review_translations_glossary.py` to check consistency across all ZH files.
+
+**Adding a new term:**
+1. Confirm the English term is stable (not likely to be renamed).
+2. Propose the canonical Chinese with rationale in `translation_basis_zh`.
+3. Get human confirmation before committing the glossary entry.
+4. Run glossary sync after confirmation.
+
+### 3.7 Localization Checklist for Any PR
+
+Before finalizing any change that touches C# user-visible strings:
+
+- [ ] Ran `build_localization_strings.py --no-translate`
+- [ ] New EN keys appear in correct category JSON
+- [ ] For new zh-Hans work: used `llm_incremental_locale.py stats` / `queue` (delta only) before LLM, then `apply` — not Google/DeepL
+- [ ] New ZH translations follow LLM policy (§3.4) — not Google/DeepL
+- [ ] Glossary terms used correctly (`sync_localization_glossary.py --check` exits 0); if you touched `resource-harvest-extra.json`, apply bracket wholesale sync first (`sync_localization_glossary.py` without `--check`) until `--check` exits 0
+- [ ] Harvest/resource **`StringCatalog`** work: extend **golden `string_catalog_only`** cases under `World/Data/Localization/regression/cases/` for representative English lines (bonus gem phrases, `You dig/chop/find…` templates, quantity **some**, a material short such as **Iron**)
+- [ ] Dynamic zh pipelines (`CommonTalkDynamicZh`, `QuestCompositeResolver`, overhead) **and harvest–resource catalog regressions**: `bash World/Source/Tools/run_localization_regression.sh` exits 0 (after compile)
+
+---
+
+## 4. Build & Test
+
+### 4.1 Building the Server
+
+```bash
+# Linux/macOS
+cd World/Source
+./compile-world-linux.sh        # or compile-world-mac.sh if present
+# Windows
+.\compile-world-win.bat
+```
+
+On compile error: read the error, trace the file and line, fix the issue. Do not guess or apply partial fixes.
+
+### 4.2 Running the Server
+
+```bash
+mono WorldLinux.exe             # from ultima-memento/ root
+```
+
+The server outputs to stdout/stderr and writes logs under `World/`. Do not commit `World/Saves/` changes — these are runtime state.
+
+**Optional `.env` (secrets):** At startup, `DotEnvLoader` reads `.env` from `Core.BaseDirectory` (the folder containing `WorldLinux.exe`, usually `World/`) and sets process environment variables without overwriting keys already set in the shell. For analytics, set `UO_MEMENTO_ANALYTICS_ACCOUNT_SALT` (see `World/.env.example`). Do not commit `.env` (gitignored).
+
+### 4.3 What to Verify After Changes
+
+| Change type | Verification |
+|---|---|
+| New C# feature | Compile succeeds; server starts without exception |
+| New localization strings | Extraction runs cleanly; ZH file updated; glossary check passes |
+| Glossary edit | `sync_localization_glossary.py --check` exits 0 |
+| Quest system changes | No null reference exceptions on quest board load |
+| Localization dynamic pipelines (tavern/composite/overhead) | After the lightweight host is implemented: regression suite passes in CI (see §4.4). |
+
+### 4.4 Localization regression (lightweight host)
+
+**Implementation:** After `LocalizationBootstrap.Initialize()`, run:
+
+```bash
+bash World/Source/Tools/run_localization_regression.sh
+```
+
+(from repo root; requires `World/WorldLinux.exe`). Equivalent: `cd World && mono WorldLinux.exe -localization-regression` (alias `-locreg`). Exit **1** on mismatch; failures also listed in `World/Data/Localization/tools-output/localization-regression-report.json` (gitignored).
+
+**Trade-off:** The hook runs after **`World.Load()`** in `Main` today — CI is correct but startup is **slow**; Phase 2 may skip world load (see [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md)).
+
+**Chosen model (target):** Golden-case checks for dynamic zh (minimal long-lived server; early `Environment.Exit`). **Not** “compiler-only” tests.
+
+**Authoritative detail** (pipelines, `Data/Localization/regression/cases/`, T0–T3 test-tier framework): [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md).
+
+**Implemented** — run the command above after changing `CommonTalkDynamicZh`, `QuestCompositeResolver`, `NpcSpeechTokenZh`, **`resource-harvest-extra.json`**, harvest-related **`StringCatalog`** English literals, or related data.
+
+---
+
+## 5. Agent Boundaries & Verification
+
+### 5.1 Hard Boundaries — Never Do These
+
+- **Never edit `World/Saves/`** (accounts, items, mobiles). These are live runtime state.
+- **Never translate using Google Translate or DeepL APIs.** LLM-based translation only (§3.4).
+- **Never add a glossary entry without human review** unless the user has explicitly approved the term in this session.
+- **Never commit binary files** (`*.bin`, `*.idx`, `*.tdb`, `*.exe`, `*.dll`, compiled `*.pyc`).
+- **Never modify the extraction regex patterns** in `build_localization_strings.py` without stating the change and its impact first.
+- **Never hardcode user-visible strings in C#.** Always use the catalog.
+
+### 5.2 Required Verification Steps
+
+Before declaring a task complete, you must verify:
+
+1. **Code compiles.** If you cannot run the compiler, state this explicitly.
+2. **Localization extractor runs without error** (if C# strings were added/changed).
+3. **Glossary sync check passes** (if any ZH files were modified).
+4. **No unintended files modified.** Run `git diff --name-only` and confirm the list matches your intent.
+
+### 5.3 When to Pause and Ask
+
+Pause and ask the user before proceeding when:
+
+- A task would modify more than 5 files outside of the primary stated scope.
+- A glossary term conflict is discovered (existing `canonical` contradicts a new string).
+- A C# compile error originates in a file you did not modify (may indicate pre-existing breakage).
+- Translation of a culturally sensitive or lore-critical term has no obvious correct answer.
+- The extraction tool output looks wrong (key counts change unexpectedly, categories mismatch).
+
+### 5.4 Self-Reporting
+
+At the end of every substantial task, report:
+- Files modified (list them).
+- Verification steps completed (and their outcome).
+- Any deferred items or open questions.
+- Any discovered conventions that contradict this guide (propose an update).
+
+---
+
+## 6. Scaling & Updating This Guide
+
+### 6.1 When to Update This File
+
+Update `AGENTS.md` when:
+- A new localization language is added beyond `en` / `zh-Hans`.
+- A new **logical-key JSON** bundle is added under `Data/Localization/en/` (and `zh-Hans/`) — update §3.1 table and `keep_extra` in `build_localization_strings.py`.
+- A new Python tool is added to `World/Source/Tools/`.
+- A new shell helper under `World/Source/Tools/` is added (e.g. `run_localization_regression.sh`).
+- A new source directory category is added under `World/Source/Scripts/`.
+- A build or test process changes (including localization regression host invocation or test tiers).
+- Cross-repo website conventions change (§7: media paths, wiki index pipeline, glossary inputs).
+- An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
+- A new **authoritative design pack** is added under `World/Documentation/` that agents should routinely consult (index it in §1 bullet list and here).
+
+### 6.2 Language Expansion Protocol
+
+When adding a third language (e.g. `zh-Hant`, `ja`):
+1. Create `World/Data/Localization/<new-locale>/` mirroring `en/` categories.
+2. Add the locale to `World/Data/System/CFG/localization.cfg`.
+3. Create a dedicated translation guide under `World/Documentation/`.
+4. Create a glossary file `glossary-approved-<locale>.json` following the same schema.
+5. Update `build_localization_strings.py` to emit to the new locale directory.
+6. Update this guide (§3.1 table, §3.4 prompt template locale, §3.6 checklist).
+
+### 6.3 Versioning
+
+This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
+
+**Change log:**
+- 2026-04-30: §1 / §6.1 — design pack index for **`CraftResource`** / harvest definitions: `World/Documentation/resources-design/README.md` (+ linked split docs).
+- 2026-04-18: Initial version created. Covers C# practices, localization pipeline, LLM translation policy, agent boundaries.
+- 2026-04-18: Added §7 — cross-repo practice standard for `ultima-memento-web` (media vendoring, glossary-driven wiki index).
+- 2026-04-29: §3.1 — documented hand-maintained logical-key JSON files and `keep_extra` contract; §6.1 — update trigger for new bundles.
+- 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
+- 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
+- 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
+
+## 7. Website & player-facing docs (`ultima-memento-web`)
+
+> **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
+> **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.
+
+### 7.1 Scope split
+
+| Concern | Owns it |
+|---|---|
+| Server C#, runtime strings, `glossary-approved-zh.json` schema & curation | **This repo** (`ultima-memento`) |
+| Next.js app, MDX under `content/` / `content-en/`, `public/` assets, wiki index JSON | **`ultima-memento-web`** |
+
+When you add or rename a **glossary** headword that should appear on the site’s auto wiki index, update the site after merging glossary changes (§7.4).
+
+### 7.2 Media practice standard (images & GIFs)
+
+**Rule:** Player-facing media on the website must be **vendored in the web repo** under `public/` — no dependence on hotlinked Wikimedia, arbitrary CDNs, or **GitHub `raw.githubusercontent.com`** for default page rendering.
+
+| Asset type | Location (web repo) | Notes |
+|---|---|---|
+| Encyclopedia / article stills (e.g. MDX figures) | `public/images/…` (e.g. `public/images/encyclopedia/`) | Prefer stable filenames; MDX uses paths like `/images/encyclopedia/foo.jpg`. |
+| Feature & home **GIF** previews | `public/showcase/*.gif` | Filenames must match `messages/zh.json` and `messages/en.json` (`media` fields) and any MDX that references the same names. |
+| Source of GIFs when refreshing from game tree | `World/Documentation/Showcase/` in **this** repo | Copy or sync binaries into `ultima-memento-web/public/showcase/`; do not rely on raw GitHub URLs in production `showcaseUrl` logic. |
+
+**Agent checklist (web PR):**
+
+- [ ] No new `https://` image URLs in MDX for assets we can legally mirror into `public/`.
+- [ ] New GIFs added to `public/showcase/` and wired in `messages` (both locales).
+- [ ] `npm run build` in `ultima-memento-web` passes.
+
+### 7.3 Glossary ↔ Ultima Codex / UOGuide index
+
+**Purpose:** MDX pages (guide / mechanics / history) can show a **“wiki index”** block: terms that appear on the page, intersected with the **approved glossary** in this repo, linked only to **Ultima Codex** and **UOGuide** URLs that have been **HEAD-validated**.
+
+**Source of truth for terms:** `World/Data/Localization/glossary-approved-zh.json` (English headwords under `terms`, plus top-level entries with `canonical` / `alternatives`).
+
+**Generated artifact (web repo):** `ultima-memento-web/lib/wiki-glossary-index.json`  
+**Generator:** `ultima-memento-web/scripts/build-wiki-glossary-index.mjs`  
+**Command:** `npm run build:wiki-index` (run from `ultima-memento-web/`).
+
+**Default glossary path** inside the script: sibling checkout  
+`ultima-memento/World/Data/Localization/glossary-approved-zh.json`  
+If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary-approved-zh.json`.
+
+**Matching rules (high level):**
+
+- English headwords: phrase / word-boundary style matching against concatenated MDX from `content/` and `content-en/`.
+- Chinese surfaces: `canonical` and `alternatives` from the glossary entry (`matchZh` in the generated JSON) for matching **Chinese** MDX.
+- Script maintains a **denylist** and **minimum token length** for headwords that would otherwise create false positives (e.g. generic English words with unrelated wiki articles).
+- Some glossary **alternatives** are valid for translation but must **not** drive wiki matching (e.g. ambiguous substring); those are stripped in the script (`MATCH_ZH_STRIP` map) — extend it when adding a problematic alternative.
+
+**Agent checklist (after glossary or site MDX changes that affect lore terms):**
+
+- [ ] If new headwords should appear in the site index: ensure they exist in `glossary-approved-zh.json` with stable English keys and appropriate `canonical` / `alternatives`.
+- [ ] Re-run `npm run build:wiki-index` with network access; commit the updated `wiki-glossary-index.json` if entries changed.
+- [ ] Spot-check Codex/UOGuide pages for **sense** (UO item vs Ultima lore disambiguation); drop or split a headword in the denylist or strip list if the wrong article keeps winning.
+
+### 7.4 When to touch which repo
+
+| You did this… | Also do this |
+|---|---|
+| Added GIFs under `World/Documentation/Showcase/` | Copy into `ultima-memento-web/public/showcase/` and verify both `messages/*.json` locales. |
+| Added/changed glossary entries used in player-facing lore on the site | Re-run `build:wiki-index`; adjust denylist / `MATCH_ZH_STRIP` in the script if matching becomes noisy. |
+| Wrote new MDX that introduces a major Ultima/UO proper noun | Prefer adding the term to **glossary** first, then regenerate the wiki index. |
+
+### 7.5 Single source of truth reminder
+
+- **Glossary curation** stays in **this** repo (§3.5).  
+- **Wiki URL validation and MDX matching** are implemented in **`ultima-memento-web`**; do not duplicate the JSON generator inside `World/Source/Tools/` unless we explicitly decide to merge pipelines later.

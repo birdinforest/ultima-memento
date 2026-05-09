@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Second
 {
@@ -85,11 +86,11 @@ namespace Server.Spells.Second
 
 				if ( traps > 2 )
 				{
-					Caster.SendMessage( "There are too many magical traps in the area!" );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There are too many magical traps in the area!" ) );
 				}
 				else if ( !Caster.Region.AllowHarmful( Caster, Caster ) )
 				{
-					Caster.SendMessage( "That doesn't feel like a good idea." ); 
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That doesn't feel like a good idea." ) ); 
 					return;
 				}
 				else
@@ -133,7 +134,7 @@ namespace Server.Spells.Second
 				}
 				else
 				{
-					from.SendMessage( "You can't trap that!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You can't trap that!" ) );
 				}
 			}
 

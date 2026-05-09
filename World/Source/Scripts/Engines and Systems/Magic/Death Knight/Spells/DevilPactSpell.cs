@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
@@ -69,7 +70,7 @@ namespace Server.Spells.DeathKnight
 
 				BaseCreature.Summon( new DevilPact(), false, Caster, new Point3D( p ), 0x212, duration );
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 				DrainSoulsInLantern( Caster, RequiredTithing );
 			}
 

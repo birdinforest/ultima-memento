@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Spells.Jedi;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -19,7 +20,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron01( Serial serial ) : base( serial )
@@ -53,7 +54,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron02( Serial serial ) : base( serial )
@@ -87,7 +88,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron03( Serial serial ) : base( serial )
@@ -121,7 +122,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron04( Serial serial ) : base( serial )
@@ -155,7 +156,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron05( Serial serial ) : base( serial )
@@ -189,7 +190,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron06( Serial serial ) : base( serial )
@@ -223,7 +224,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron07( Serial serial ) : base( serial )
@@ -257,7 +258,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron08( Serial serial ) : base( serial )
@@ -291,7 +292,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron09( Serial serial ) : base( serial )
@@ -325,7 +326,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This holocron contains the wisdom of a Jedi Master from long ago." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This holocron contains the wisdom of a Jedi Master from long ago." ) );
 		}
 
 		public JediDatacron10( Serial serial ) : base( serial )

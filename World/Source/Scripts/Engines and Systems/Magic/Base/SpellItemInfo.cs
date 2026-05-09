@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Mobiles;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -218,7 +219,7 @@ namespace Server.Items
 					uses = item.EnchantMod;
 
 			if ( item.Parent != from )
-				from.SendMessage("That must be equipped to use.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That must be equipped to use." ) );
 			else if ( item.EnchantUses >= uses )
 				SpellItems.Cast( SpellRegistry.NewSpell( GetRegNum( item.Enchanted ), from, item ), from );
 			else

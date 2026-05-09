@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Spells.Necromancy
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Necromancy
 		public override void OnCast()
 		{
 			Caster.Target = new InternalTarget( this );
-			Caster.SendMessage( "Which demon or undead do you wish to exorcise from this realm?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Which demon or undead do you wish to exorcise from this realm?" ) );
 		}
 
 		public override bool CheckCast()
@@ -59,15 +60,15 @@ namespace Server.Spells.Necromancy
 
 				if (!undead.Slays(m) && !exorcism.Slays(m))
 				{
-					Caster.SendMessage( "This spell cannot be used on this type of creature." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot be used on this type of creature." ) );
 				}
 				else if( bc.IsBonded )
 				{
-					Caster.SendMessage("This spell cannot banish such a creature!");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot banish such a creature!" ) );
 				}
 				else if ( exorcism.Slays(m) && !bc.IsDispellable )
 				{
-					m.Say("Your pitiful spell amuses me, mortal!");
+					m.Say( StringCatalog.Resolve( m.Account, "Your pitiful spell amuses me, mortal!" ) );
 					double damage;
 					damage = GetNewAosDamage(48, 1, 5, Caster);
 					m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
@@ -76,7 +77,7 @@ namespace Server.Spells.Necromancy
 				}
 				else if ( m.Fame >= 23000 )
 				{
-					m.Say("Your magic is puny in comparison to my power!");
+					m.Say( StringCatalog.Resolve( m.Account, "Your magic is puny in comparison to my power!" ) );
 					double damage;
 					damage = GetNewAosDamage(48, 1, 5, Caster);
 					m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);
@@ -90,11 +91,11 @@ namespace Server.Spells.Necromancy
 					{
 						if (undead.Slays(m))
 						{
-							m.Say("No! You cannot banish me! I will return from the Underworld!");
+							m.Say( StringCatalog.Resolve( m.Account, "No! You cannot banish me! I will return from the Underworld!" ) );
 						}
 						else
 						{
-							m.Say("No! You cannot kill that which is dead! I will return!");
+							m.Say( StringCatalog.Resolve( m.Account, "No! You cannot kill that which is dead! I will return!" ) );
 						}
 
 						SpellHelper.Turn(Caster, m);
@@ -104,7 +105,7 @@ namespace Server.Spells.Necromancy
 					}
 					else
 					{
-						Caster.SendMessage( "You fail at your exorcism, but did cause some damage." );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You fail at your exorcism, but did cause some damage." ) );
 						double damage;
 						damage = GetNewAosDamage(48, 1, 5, Caster);
 						m.FixedParticles(0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot);

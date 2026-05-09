@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Server;
+using Server.Localization;
 using Server.ContextMenus;
 using Server.Network;
 using Server.Gumps;
@@ -354,7 +355,7 @@ namespace Server.Items
 			}
 
 			from.Send( new BookHeader( from, this ) );
-			from.Send( new BookPageDetails( this ) );
+			from.Send( new BookPageDetails( this, from ) );
 		}
 
 		public static void Initialize()
@@ -474,9 +475,11 @@ namespace Server.Items
 
 	public sealed class BookPageDetails : Packet
 	{
-		public BookPageDetails( BaseBook book ) : base( 0x66 )
+		public BookPageDetails( BaseBook book, Mobile viewer ) : base( 0x66 )
 		{
 			EnsureCapacity( 256 );
+
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
 
 			m_Stream.Write( (int)    book.Serial );
 			m_Stream.Write( (ushort) book.PagesCount );
@@ -490,7 +493,13 @@ namespace Server.Items
 
 				for ( int j = 0; j < page.Lines.Length; ++j )
 				{
-					byte[] buffer = Utility.UTF8.GetBytes( page.Lines[j] );
+					string line = page.Lines[j];
+					string localized = StringCatalog.TryResolve( lang, line );
+
+					if ( localized != null )
+						line = localized;
+
+					byte[] buffer = Utility.UTF8.GetBytes( line );
 
 					m_Stream.Write( buffer, 0, buffer.Length );
 					m_Stream.Write( (byte) 0 );
@@ -503,8 +512,20 @@ namespace Server.Items
 	{
 		public BookHeader( Mobile from, BaseBook book ) : base ( 0xD4 )
 		{
+			string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+
 			string title = book.Title == null ? "" : book.Title;
 			string author = book.Author == null ? "" : book.Author;
+
+			string tLoc = StringCatalog.TryResolve( lang, title );
+
+			if ( tLoc != null )
+				title = tLoc;
+
+			string aLoc = StringCatalog.TryResolve( lang, author );
+
+			if ( aLoc != null )
+				author = aLoc;
 
 			byte[] titleBuffer = Utility.UTF8.GetBytes( title );
 			byte[] authorBuffer = Utility.UTF8.GetBytes( author );

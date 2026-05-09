@@ -9,6 +9,7 @@ using Server.Spells.Fourth;
 using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
@@ -121,7 +122,7 @@ namespace Server.Spells.DeathKnight
 				caster.PlaySound( 0x1DF );
 
 				if ( o is BookBox || o is CurseItem )
-					caster.SendMessage("You fail to lift the curse.");
+					caster.SendMessage( StringCatalog.Resolve( caster.Account, "You fail to lift the curse." ) );
 			}
 
 			FinishSequence();

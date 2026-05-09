@@ -1,0 +1,3006 @@
+{
+ "batch": 12,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1114082",
+   "text": "tattered map fragment",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114083",
+   "text": "You swiftly reassemble the pieces.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114084",
+   "text": "The creature's nest should be hidden somewhere in that area. Use an ornithologist's brush to reveal it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114085",
+   "text": "Target the map of the nest you're attempting to reveal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114086",
+   "text": "What you seek is somewhere nearby...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114087",
+   "text": "What you seek is very close!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114088",
+   "text": "This nest has already been plundered. You should come back later.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114089",
+   "text": "stuffing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114090",
+   "text": "What you seek is not in this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114091",
+   "text": "Ornithologist's Brush",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114092",
+   "text": "Harvest Wine 2009",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114093",
+   "text": "Harvest Cider 2009",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114094",
+   "text": "Your backpack was too full so the reward is lost.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114095",
+   "text": "You reveal the hidden nest. Swiftly search it before it vanishes again!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114096",
+   "text": "Harvester's Blade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114097",
+   "text": "You pluck the bird and place the feathers in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114098",
+   "text": "You cut away some scales and put them in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114099",
+   "text": "You shear the creature and put the resources in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114100",
+   "text": "You take some blood off the corpse and put it in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114101",
+   "text": "You carve some meat and put it in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114102",
+   "text": "A butcher might be interested in this high quality meat.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114103",
+   "text": "You destroy the egg.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114104",
+   "text": "This is a non-mutant egg. You decide to leave it alone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114105",
+   "text": "You destroy the last egg and the nest collapses.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114106",
+   "text": "The nest blends with its surroundings and fades from view.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114107",
+   "text": "You've hatched the egg!!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114108",
+   "text": "You must first target the map of the nest you're searching for.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114109",
+   "text": "You must wait ~1_seconds~ seconds before using another one of these.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114110",
+   "text": "You must wait ~1_minutes~ minutes before using another one of these.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114111",
+   "text": "I have no use for this, but a butcher might find it of great interest!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114112",
+   "text": "What a fine specimen this is!! Thank you and please accept this for your trouble!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114113",
+   "text": "You take a bottle from the cornucopia.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114114",
+   "text": "You take some food from the cornucopia.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114115",
+   "text": "Arcane Gem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114116",
+   "text": "You hear a loud rumble as something seems to happen!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114117",
+   "text": "The mechanism appears to be locked.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114118",
+   "text": "PAPERDOLL ITEMS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114119",
+   "text": "BACKPACK ITEMS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114120",
+   "text": "ALL ITEMS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114121",
+   "text": "<CENTER>ITEM INSURANCE MENU</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114122",
+   "text": "AUTO REINSURE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114123",
+   "text": "TOTAL COST OF INSURANCE:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114124",
+   "text": "TOTAL AMOUNT IN BANK:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114125",
+   "text": "NUMBER OF DEATHS PAYABLE:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114126",
+   "text": "right here",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114127",
+   "text": "to the north",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114128",
+   "text": "to the northeast",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114129",
+   "text": "to the east",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114130",
+   "text": "to the southeast",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114131",
+   "text": "to the south",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114132",
+   "text": "to the southwest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114133",
+   "text": "to the west",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114134",
+   "text": "to the northwest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114135",
+   "text": "in some direction",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114137",
+   "text": "Ar! Did I ever tell thee about the time I was in ~1_CITY~ and I met ~2_GENDER~ ~3_STORY~ Anyway, 'tis a dull story.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114138",
+   "text": "Yew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114139",
+   "text": "Minoc",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114140",
+   "text": "Vesper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114141",
+   "text": "New Magincia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114142",
+   "text": "Trinsic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114143",
+   "text": "Moonglow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114144",
+   "text": "Buccaneer's Den",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114145",
+   "text": "Skara Brae",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114146",
+   "text": "Jhelom",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114147",
+   "text": "Nujel'm",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114148",
+   "text": "Britain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114149",
+   "text": "Serpent's Hold",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114150",
+   "text": "the Tokuno Islands",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114151",
+   "text": "a fellow who",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114152",
+   "text": "a wench who",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114153",
+   "text": "turned into a sea serpent?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114154",
+   "text": "befriended a cuddly ferret?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114155",
+   "text": "was set upon by silent ninjas?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114156",
+   "text": "claimed to be an Avatar of the virtues?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114157",
+   "text": "claimed to be Lord British? I beat him up.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114158",
+   "text": "got in a duel and beat three rogues with only a pocketknife?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114159",
+   "text": "tried to make friendly with a tavern wench and got ale dumped on his head?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114160",
+   "text": "got so drunk he claimed he'd tamed a dragon?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114161",
+   "text": "claimed he'd tamed a dragon? They laughed, until he brought it inside the tavern!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114162",
+   "text": "thought this world was just a reflected image of the real one?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114163",
+   "text": "claimed a city named Wind exists somewhere up in the mountains?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114164",
+   "text": "dared me to sail around the world? He tried, and was never seen again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114165",
+   "text": "claimed to be a pirate who sank whole merchant fleets?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114166",
+   "text": "claimed to have four wives in different cities?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114167",
+   "text": "said he had heard of thee? I figured he must have been lying.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114168",
+   "text": "turned out to be a master mage?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114169",
+   "text": "turned out to be a follower of Blackthorn?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114170",
+   "text": "turned out to be a ghost?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114171",
+   "text": "turned out to be a thief?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114172",
+   "text": "kept muttering about Shadowlords, whatever they are.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114173",
+   "text": "claimed to be some sort of Time Lord?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114174",
+   "text": "said he'd found a piece of Exodus, but accidentally dropped it in a well?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114175",
+   "text": "turned out to be a liche who wanted to steal my soul?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114176",
+   "text": "turned out to be one of Lord British's guards on a secret mission?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114177",
+   "text": "had some get rich quick scheme involving selling tickets to watch people kick a ball around?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114178",
+   "text": "was the best healer I've ever seen... until he caught ill and died.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114179",
+   "text": "liked the wilderness so much he got hives when he was in the city?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114180",
+   "text": "insisted that sailing west would eventually take you to the land where all the dead live?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114181",
+   "text": "said his dog was so smart it could talk?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114182",
+   "text": "danced on the tavern table, but fell off and spitted himself on his sword?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114183",
+   "text": "could tell you all about every sort of animal there ever was?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114184",
+   "text": "built himself a castle out in the woods?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114185",
+   "text": "was having a ship built in the harbor? It was huge, but it sank at the christening.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114186",
+   "text": "used to mutter a spell over his food, just in case it was poisoned.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114187",
+   "text": "said he'd been swallowed by a whirlpool, and it had turned his hair white?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114188",
+   "text": "turned into an octopus?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114189",
+   "text": "was entranced by a cuddly ferret?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114190",
+   "text": "wooed by a handsome samurai?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114191",
+   "text": "told me she was from another world?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114192",
+   "text": "claimed to be an Avatar of the virtues?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114193",
+   "text": "said she knew Lord British personally?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114194",
+   "text": "had golden hair as lovely as the sun?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114195",
+   "text": "kicked me really hard when I got friendly?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114196",
+   "text": "served the sweetest apple wine I ever tasted?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114197",
+   "text": "made the best apple pies I ever saw?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114198",
+   "text": "made the worst clam chowder I ever tasted?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114199",
+   "text": "thought the world was round? Ha!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114200",
+   "text": "claimed to have visited a magical city in the mountains?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114201",
+   "text": "dared me to race across Brittany Bay?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114202",
+   "text": "claimed to own a fleet of merchant ships?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114203",
+   "text": "threatened to marry me?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114204",
+   "text": "claimed to know thee? I think she was lying, though.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114205",
+   "text": "turned out to be a powerful mage?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114206",
+   "text": "turned out to be a follower of Blackthorn?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114207",
+   "text": "turned out to be married?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114208",
+   "text": "turned out to be a pirate?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114209",
+   "text": "was dead but didn't know it?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114210",
+   "text": "had found sunken treasure but spent it all?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114211",
+   "text": "loved moonlight so much she slept during the day?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114212",
+   "text": "was so scared of the dark she always had a lit lantern?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114213",
+   "text": "thought I was terribly handsome?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114214",
+   "text": "told me I was the ugliest old salt she'd ever seen?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114215",
+   "text": "offered me a kiss and a wish, and like an idiot I took the kiss? She vanished in a puff of smoke right afterwards.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114216",
+   "text": "turned me into a toad? It stuck for two weeks, until another toad kissed me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114217",
+   "text": "accidentally dropped a tray of ale mugs on my lap?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114218",
+   "text": "used to braid fox tails into her hair?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114219",
+   "text": "played the lute like nothing you ever heard?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114220",
+   "text": "sang with an awful screech?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114221",
+   "text": "wore so much plate mail she rusted solid and starved to death when it rained?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114222",
+   "text": "zombie costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114223",
+   "text": "mongbat costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114224",
+   "text": "fire elemental costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114225",
+   "text": "wisp costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114226",
+   "text": "giant toad costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114227",
+   "text": "gore fiend costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114228",
+   "text": "terathan warrior costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114229",
+   "text": "ophidian warrior costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114230",
+   "text": "ophidian matriarch costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114231",
+   "text": "solen warrior costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114232",
+   "text": "wolf spider costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114233",
+   "text": "maddening horror costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114234",
+   "text": "cyclops costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114235",
+   "text": "centaur costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114236",
+   "text": "pixie costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114237",
+   "text": "minotaur costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114238",
+   "text": "titan costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114239",
+   "text": "exodus minion costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114240",
+   "text": "skittering hopper costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114241",
+   "text": "Lady of the Snow costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114242",
+   "text": "oni costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114243",
+   "text": "ethereal warrior costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114244",
+   "text": "giant pixie costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114245",
+   "text": "drake costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114246",
+   "text": "You have ~1_COUNT~ point credited from Halloween masks turned in. You need ~2_NUM~ more points for this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114247",
+   "text": "I will trade your Halloween costumes and red crystallized essences for exotic costumes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114248",
+   "text": "Casting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114249",
+   "text": "Combat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114250",
+   "text": "Hit Area Effects",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114251",
+   "text": "Hit Effects",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114252",
+   "text": "Misc.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114253",
+   "text": "Ranged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114254",
+   "text": "Resists",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114255",
+   "text": "Skill Group 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114256",
+   "text": "Skill Group 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114257",
+   "text": "Skill Group 3",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114258",
+   "text": "Skill Group 4",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114259",
+   "text": "Skill Group 5",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114260",
+   "text": "Skill Group 6",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114261",
+   "text": "Skill Group 7",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114262",
+   "text": "Stats",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114263",
+   "text": "Slayers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114264",
+   "text": "Super Slayers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114265",
+   "text": "Click a Halloween mask to give it to Sarah.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114266",
+   "text": "dream wraith",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114267",
+   "text": "Imbue Item",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114268",
+   "text": "Back",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114269",
+   "text": "PROPERTY INFORMATION",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114270",
+   "text": "Property:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114271",
+   "text": "Replaces:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114272",
+   "text": "Weight:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114273",
+   "text": "Intensity:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114274",
+   "text": "Imbue Last Property - Imbues a new item with the last property",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114275",
+   "text": "Unravel Container - Unravels all items in a container",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114276",
+   "text": "MNX",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114277",
+   "text": "COM",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114278",
+   "text": "TB",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114279",
+   "text": "SL",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114280",
+   "text": "Your current point balance is: ~1_COUNT~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114281",
+   "text": "You do not have any Halloween costumes or red crystallized essences to turn in.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114282",
+   "text": "Thank you for an honest trade! I have placed the ~1_OBJTYPE~ in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114283",
+   "text": "Say \"browse\", \"turn in\" or approach me to trade your costumes or see mine!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114284",
+   "text": "YES",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114285",
+   "text": "NO",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114286",
+   "text": "void wanderer costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114287",
+   "text": "satyr costume",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114288",
+   "text": "Type Player ID's of Involved Players From Chat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114289",
+   "text": "Type the player ID's of up to three players involved in this complaint.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114290",
+   "text": "You may select up to three players as the targets of this complaint. Please select one of the options below to select the players by either targeting them, typing their names, typing their player ID's, or selecting their names from a list. Since there may be several players with the same name, targeting the players is the most accurate way to identify the players.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114291",
+   "text": "You cannot imbue the last property on that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114292",
+   "text": "Unravel Item",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114293",
+   "text": "You do not have looting rights.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114294",
+   "text": "The special materials in this item are too old to survive the imbuing process.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114295",
+   "text": "nutcracker deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114296",
+   "text": "snow statue deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114297",
+   "text": "a holiday gift ticket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114298",
+   "text": "This must be locked down in order to use it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114299",
+   "text": "Open Item Insurance Menu",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114300",
+   "text": "Do you wish to insure all newly selected items?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114301",
+   "text": "Abyssal Infernal's Lair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114302",
+   "text": "Primeval Lich's Lair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114303",
+   "text": "You extinguish the candelabra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114304",
+   "text": "You light the candelabra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114305",
+   "text": "Equip Last Weapon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114306",
+   "text": "Bandage Self",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114307",
+   "text": "Bandage Selected Target",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114308",
+   "text": "Quit Game",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114309",
+   "text": "You must carry a stack of bandages before using the bandage macro.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114310",
+   "text": "GOLD AVAILABLE:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114311",
+   "text": "Insured",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114312",
+   "text": "You cannot imbue faction items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114313",
+   "text": "Endless Journey accounts may not participate in custom channels.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114314",
+   "text": "You are too young to get a gift.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114315",
+   "text": "You can only combine runes of the same type and material.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114316",
+   "text": "You cannot combine Vas runes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114317",
+   "text": "The runes meld together.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114318",
+   "text": "The runes combine to create a more powerful rune!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114319",
+   "text": "You are still missing ~1_KEY~ key fragments.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114320",
+   "text": "That template is not a tameable pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114321",
+   "text": "You have too many followers to control that pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114322",
+   "text": "You destroy the bone pile.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114323",
+   "text": "You damage the bone pile.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114324",
+   "text": "This bracelet is not bound to another bracelet!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114325",
+   "text": "There is no more room in your chicken coop!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114326",
+   "text": "You could not hold all your items and some of them were placed in your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114327",
+   "text": "The arcane item crumbles when you attempt to pick it up.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114328",
+   "text": "Who do you wish to throw your pie at?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114329",
+   "text": "Some toxins have been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114330",
+   "text": "Some void essences have been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114331",
+   "text": "Some silver serpent venom has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114332",
+   "text": "Some Medusa blood has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114333",
+   "text": "You must be young to have this item recharged.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114334",
+   "text": "You should only use water on this!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114335",
+   "text": "You fill the container.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114336",
+   "text": "The control device has been overloaded. Shutdown is impossible.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114337",
+   "text": "Target the faction shopkeeper you wish to dismiss.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114338",
+   "text": "That is not a faction vendor!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114339",
+   "text": "You have lost kill points for killing a faction mate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114340",
+   "text": "You have lost all of your life force for killing a faction mate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114341",
+   "text": "You cannot elect someone who is in the process of quitting the faction to a town position!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114342",
+   "text": "The Ultima Online Team would like to thank you for your patience during Catskill's recent downtime. A gift has been placed into your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114343",
+   "text": "A copy of the book 'The Shattering' has been added to your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114344",
+   "text": "Tried to put a copy of the book 'The Shattering' into your bank box, but there was no room.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114345",
+   "text": "You'll need a better jailbreak plan than that!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114346",
+   "text": "You must complete your current quest before going to Haven.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114347",
+   "text": "Invalid level selected for your house.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114348",
+   "text": "You are already at the max level of your house.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114349",
+   "text": "You are already at the ground level of your house.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114350",
+   "text": "This house is being traded. Please wait.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114351",
+   "text": "Some gossamer has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114352",
+   "text": "You cannot steal the sigil while disguised in savage paint.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114353",
+   "text": "You cannot steal the sigil while carrying the plague!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114354",
+   "text": "The required time has not passed to steal the sigil!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114355",
+   "text": "You are still missing ~1_ETCHING~ etchings.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114356",
+   "text": "You are missing ~1_GOSSAMER~ gossamers to complete your web.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114357",
+   "text": "You must make room in your backpack before painting.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114358",
+   "text": "Having no further use for the paints, you decide to throw them away.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114359",
+   "text": "Your attack has no effect on the creature's armor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114360",
+   "text": "Your weapon cannot penetrate the creature's magical barrier.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114361",
+   "text": "Thank you for purchasing Ultima Online: Age of Shadows! A mini-house deed has been added to your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114362",
+   "text": "You charm the snake.  Select a target to attack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114363",
+   "text": "Select the pet that you wish to dye.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114364",
+   "text": "This is not a living creature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114365",
+   "text": "I don't think that player would appreciate that. Good try though.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114366",
+   "text": "This is not a tame creature.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114367",
+   "text": "You cannot dye dead pets.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114368",
+   "text": "This is not your pet!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114369",
+   "text": "This seed has already been identified.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114370",
+   "text": "Short Term Murders: ~1_SHORT~ Long Term Murders: ~2_LONG~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114371",
+   "text": "You may not honor someone whose karma is locked.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114372",
+   "text": "This looks like part of a larger contraption.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114373",
+   "text": "Please select the pet that you wish to freshen up!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114374",
+   "text": "Love that new Pet smell err look.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114375",
+   "text": "That is not your pet. You can only freshen up your own pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114376",
+   "text": "You can't throw snowballs while riding or flying.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114377",
+   "text": "Rations and Grobu's Furs must be submitted in stacks of 1, 10, or 100.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114378",
+   "text": "Ropes, Wires and Brightly Colored Eggs must be submitted in stacks of 1, 10, or 100.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114379",
+   "text": "Easter Eggs & Halloween Candy must be submitted in stacks of 1, 10, or 100.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114380",
+   "text": "Vet Rewards have been added to your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114381",
+   "text": "Unable to add vet rewards to the bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114382",
+   "text": "Unable to place ammo in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114383",
+   "text": "Unable to place potion bag in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114384",
+   "text": "Unable to place Treasure Maps in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114385",
+   "text": "Unable to place tool bag in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114386",
+   "text": "Unable to place runic tool bag in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114387",
+   "text": "Unable to place reagents in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114388",
+   "text": "Unable to place reagents in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114389",
+   "text": "Unable to place raw materials bag in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114390",
+   "text": "Unable to put elven materials in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114391",
+   "text": "Unable to put imbuing materials in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114392",
+   "text": "Unable to place wood in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114393",
+   "text": "Armor sets added to bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114394",
+   "text": "Unable to add armor sets to bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114395",
+   "text": "Unable to place elven recipes in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114396",
+   "text": "Artifacts added to your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114397",
+   "text": "Unable to add armor sets to bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114398",
+   "text": "Unable to place Ethy's in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114399",
+   "text": "A bag of plant spawners has been created at your feet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114400",
+   "text": "A bag of plant spawners has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114401",
+   "text": "A box of seeds has been placed into your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114402",
+   "text": "Unable to place Seed Box in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114403",
+   "text": "You have already buffed yourself.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114404",
+   "text": "You have successfully buffed your mage Skills and stats. Items are in your inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114405",
+   "text": "You have successfully buffed your warrior skills and stats. Items are in your inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114406",
+   "text": "A bag of crafting resource spawners has been created.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114407",
+   "text": "A bag of crafting resource spawners has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114408",
+   "text": "You have successfully adjusted your ~1_SKILL~ skill.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114409",
+   "text": "Resources have been added to your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114410",
+   "text": "Unable to place resources in your bank.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114411",
+   "text": "A token to test your own Personal Attendants has been carefully placed in your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114412",
+   "text": "I'm going to give you ~1_VALUE~ tickets.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114413",
+   "text": "This text has been added to this town crier:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114414",
+   "text": "This text has been added to all town criers:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114415",
+   "text": "The name of the destination is now: ~1_TILENAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114416",
+   "text": "You must have a digging tool to dig for treasure.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114417",
+   "text": "You seem to have the wrong number of items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114418",
+   "text": "Congratulations! Your submission has been entered! <3",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114419",
+   "text": "Sorry! This box is now full!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114420",
+   "text": "You have lost some Compassion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114421",
+   "text": "Your resurrectons through Sacrifice have been reset.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114422",
+   "text": "You are already asking a young player to be your squire.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114423",
+   "text": "A holiday statue has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114424",
+   "text": "Your squire has renounced young player status.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114425",
+   "text": "dook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114426",
+   "text": "dook dook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114427",
+   "text": "dook dook dook!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114428",
+   "text": "* A magical bunny leaps out of its hole, disturbed by the thorn's effect! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114429",
+   "text": "* Strange green tendrils rise from the ground, whipping wildly! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114430",
+   "text": "* Slithering ice serpents rise to the surface to investigate the disturbance! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114431",
+   "text": "* The sand collapses, revealing a dark hole. *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114432",
+   "text": "* The ground erupts with chaotic growth! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114433",
+   "text": "* You slice through the plague beast's amorphous tissue *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114434",
+   "text": "* ~1_NAME~ slices through the plague beast's amorphous tissue *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114435",
+   "text": "* Your skin begins to itch as hideous boils cover your flesh *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114436",
+   "text": "* ~1_NAME~ is covered with hideous boils! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114437",
+   "text": "* You cry out in agony as your brain begins to boil *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114438",
+   "text": "* ~1_NAME~ emits a hideous scream of pain! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114439",
+   "text": "* The plague spawn begins to dissolve *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114440",
+   "text": "* The plague spawn burbles incoherently *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114441",
+   "text": "* You feel yourself resisting the effects of the poison *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114442",
+   "text": "* ~1_NAME~ seems resistant to the poison *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114443",
+   "text": "* Your body convulses from electric shock *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114444",
+   "text": "* ~1_NAME~ spasms from electric shock *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114445",
+   "text": "* The solen queen summons her workers to her aid! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114446",
+   "text": "* ~1_NAME~ dives into the mysterious hole! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114447",
+   "text": "* ~1_NAME~ is stung by a swarm of insects *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114448",
+   "text": "All Crystal Locks Disabled. Core Shutdown in ten seconds.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114449",
+   "text": "Correct Code Entered. Crystal Lock Disengaged.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114450",
+   "text": "* The bunny begins to dig a tunnel back to its underground lair *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114451",
+   "text": "* The bunny splashes into the water! *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114452",
+   "text": "Chat Channel Message Color",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114453",
+   "text": "Get Trade Order",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114454",
+   "text": "An Offer for a Trade Order",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114455",
+   "text": "Greetings! His majesty thanks you for furthering the economic interests of the City! The Trade Association hath decreed that all goods shall be transported without the use of magic, for fear that use of such magics will corrupt the quality of the goods held within.  Be forewarned! The life of a trader is sure to be met with peril as highwayman and pirates alike seek to profit a bit of coin for the goods.  Good luck!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114456",
+   "text": "Your backpack cannot hold the Trade Order.  Free up space and speak to the Trade Minister again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114457",
+   "text": "Retirees",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114458",
+   "text": "<DIV ALIGN=CENTER>Renown</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114459",
+   "text": "<DIV ALIGN=CENTER>Score</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114460",
+   "text": "<DIV ALIGN=RIGHT>Damage:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114461",
+   "text": "<DIV ALIGN=RIGHT>Healing:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114462",
+   "text": "<DIV ALIGN=RIGHT>Stealth:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114463",
+   "text": "<DIV ALIGN=RIGHT>Intel:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114464",
+   "text": "<DIV ALIGN=RIGHT>Sigil:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114465",
+   "text": "Deserter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114466",
+   "text": "Recruit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114467",
+   "text": "Initiate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114468",
+   "text": "Soldier",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114469",
+   "text": "Veteran",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114470",
+   "text": "Defender",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114471",
+   "text": "Guardian",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114472",
+   "text": "Sentinel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114473",
+   "text": "Knight",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114474",
+   "text": "Associate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114475",
+   "text": "Agent",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114476",
+   "text": "Enforcer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114477",
+   "text": "Assassin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114478",
+   "text": "Slayer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114479",
+   "text": "Butcher",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114480",
+   "text": "Executioner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114481",
+   "text": "Avenger",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114482",
+   "text": "Forgettable",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114483",
+   "text": "Unremarkable",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114484",
+   "text": "Ordinary",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114485",
+   "text": "Noteworthy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114486",
+   "text": "Exemplary",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114487",
+   "text": "Amazing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114488",
+   "text": "Legendary",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114489",
+   "text": "<DIV ALIGN=RIGHT>Current Rank:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114490",
+   "text": "<DIV ALIGN=RIGHT>Potential Rank:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114491",
+   "text": "Universal EM Teleporter Tool",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114492",
+   "text": "Satisfactory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114493",
+   "text": "Exemplary",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114494",
+   "text": "You are not currently slated to be promoted or demoted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114495",
+   "text": "<DIV ALIGN=CENTER>RENOWN</DIV><P>Renown amongst your warrior peers is gained on the field of battle. You will gain recognition for harming foes, healing compatriots, sneaking amongst your enemies, rooting out spies and concealed traps, and for fighting for control of sigils.</P><P>Additionally, you gain more recognition for fighting in larger battles and for fighting against larger enemy forces.</P><P>The system displays numerical ratings showing how you perform compared to the average for all current Faction members. Your rating descriptions depend on your ratings but are capped by your average activity level.</P><P>Ranks are awarded by renown but are capped by activity level",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114496",
+   "text": "<MNX>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114497",
+   "text": "<COM>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114498",
+   "text": "<TB>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114499",
+   "text": "<SL>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114500",
+   "text": "Team Damage:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114501",
+   "text": "Your performance on the field of battle is exemplary and your dedication is high. You are currently being considered for promotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114502",
+   "text": "Your performance on the field of battle is comparable to that of your peers, though your dedication is high. You are not currently being considered for promotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114503",
+   "text": "Your performance on the field of battle is lagging behind that of your peers, though your dedication is high. You are currently being considered for demotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114504",
+   "text": "Your performance on the field of battle is exemplary, and your dedication is comparable to that of your peers. You are not currently being considered for promotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114505",
+   "text": "Your performance on the field of battle and your dedication to combat are comparable to those of your peers. You are not currently being considered for promotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114506",
+   "text": "Your performance on the field of battle is lagging behind that of your peers, and your dedication is comparable. You are currently being considered for demotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114507",
+   "text": "Your performance on the field of battle is exemplary, but your dedication is found to be lacking. You are currently being considered for demotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114508",
+   "text": "Your performance on the field of battle is comparable to that of your peers, but your dedication is found to be lacking. You are currently being considered for demotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114509",
+   "text": "Your performance on the field of battle is lagging behind that of your peers, and your dedication is found to be lacking. You are currently being considered for demotion.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114513",
+   "text": "<DIV ALIGN=CENTER>~1_TOKEN~</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114514",
+   "text": "<DIV ALIGN=RIGHT>~1_TOKEN~</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114515",
+   "text": "The Fight",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114516",
+   "text": "Birds of Britannia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114517",
+   "text": "The Bold Stranger",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114518",
+   "text": "The Burning of Trinsic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114519",
+   "text": "A Song of Samlethe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114520",
+   "text": "The Wild Girl of the Forest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114521",
+   "text": "Treatise on Alchemy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114522",
+   "text": "A Primer on Arms and Weapons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114523",
+   "text": "Classic Tales of Vesper, Volume 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114524",
+   "text": "Classic Children Tales, Volume 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114525",
+   "text": "A Politic Call to Anarchy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114526",
+   "text": "On the Diversity of Our Land",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114527",
+   "text": "Regarding Llamas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114528",
+   "text": "The Life of a Traveling Minstrel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114529",
+   "text": "Taming Dragons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114530",
+   "text": "Britannian Flora: A Casual Guide",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114531",
+   "text": "My Story",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114532",
+   "text": "Dimensional Travel, a Monograph",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114533",
+   "text": "The Major Trade Associations",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114534",
+   "text": "Beltran's Guide to Guilds",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114535",
+   "text": "Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114536",
+   "text": "Ethical Hedonism: An Introduction",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114537",
+   "text": "The Rankings of Trades",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114538",
+   "text": "A Grammar of Orcish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114539",
+   "text": "Talking to Wisp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114540",
+   "text": "A Tale of Three Tribes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114541",
+   "text": "Deceit: A Dungeon of Horrors",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114542",
+   "text": "Quest of the Virtues, Volume 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114543",
+   "text": "Quest of the Virtues, Volume 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114544",
+   "text": "The Shattering",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114545",
+   "text": "Romantic Selections I",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114546",
+   "text": "Romantic Selections II",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114547",
+   "text": "Romantic Selections III",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114548",
+   "text": "M. de la Garza",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114549",
+   "text": "Thom the Heathen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114550",
+   "text": "Old Fabio the Poor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114551",
+   "text": "Japheth of Trinsic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114552",
+   "text": "A Song of Samlethe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114553",
+   "text": "Horace the Trader",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114554",
+   "text": "Felicia Hierophant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114555",
+   "text": "Martin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114556",
+   "text": "Clarke's Printery",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114557",
+   "text": "Guilhem, Editor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114558",
+   "text": "Lord Blackthorn",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114559",
+   "text": "Simon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114560",
+   "text": "Sarah of Yew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114561",
+   "text": "Wyrd Beastmaster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114562",
+   "text": "Herbert the Lost",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114563",
+   "text": "Sherry the Mouse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114564",
+   "text": "Dryus Doost, Mage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114565",
+   "text": "Pieter of Vesper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114566",
+   "text": "Beltran",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114567",
+   "text": "Lord British",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114568",
+   "text": "Richard Garriott",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114569",
+   "text": "Lord Higginbotham",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114570",
+   "text": "Yorick of Yew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114571",
+   "text": "Yorick of Moonglow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114572",
+   "text": "Janet, Scribe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114573",
+   "text": "Mercenary Justin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114574",
+   "text": "Autenil",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114575",
+   "text": "Nystul",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114576",
+   "text": "Elizabeth B. Browning",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114577",
+   "text": "John Keats",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114578",
+   "text": "William Shakespeare",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114579",
+   "text": "A cold autumn's morning with misty fog secures a dozen brave knights, supplying hidden shelter from prying eyes deep in the foothills of the vibrant valley.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114580",
+   "text": "Dragons soar like fierce warriors, circling around and around, then roaring like thunder, rallying all that listen. <br><br>The dragons land swiftly beside the proud warriors,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114581",
+   "text": "bending necks and extending wings, lifting black claws and allowing valiant fighters to ride forth and win an arisen battle. <br><br>The increasing winds",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114582",
+   "text": "silence the sounds of combat, and they fight, standing their ground like mothers protecting their children, bright armor flashing as each one falls.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114583",
+   "text": "A cold autumn's evening with misty fog cradles a dozen battered corpses of knights, creasing them in currents of winds that run deep in the foothills of the desolate valley.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114584",
+   "text": "Dragons glide like silent angels, circling around and around, then calling like banshees",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1114585",
+   "text": "bending their necks and extending wings, lifting black claws and pinching the sacred ground and new eternal home. <br><br>The dying winds whistle among the dead in somber",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

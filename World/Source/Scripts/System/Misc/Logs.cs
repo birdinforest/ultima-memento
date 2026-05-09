@@ -1,4 +1,5 @@
 using Server.Accounting;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
@@ -1015,7 +1016,7 @@ namespace Server.Misc
 
 				sLoot = sLoot + " " + t.Name + " " + t.Title;
 
-				string sEvent = sLoot + sWho;
+				string sEvent = QuestCompositeResolver.ResolveComposite( pm, sLoot + sWho );
 				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}

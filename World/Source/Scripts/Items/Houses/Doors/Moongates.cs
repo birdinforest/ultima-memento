@@ -321,7 +321,7 @@ namespace Server.Items
 					if ( m.BeginAction( this ) )
 					{
 						if ( m_MessageString != null )
-							m.Send( new UnicodeMessage( Serial, ItemID, MessageType.Regular, 0x3B2, 3, "ENU", null, m_MessageString ) );
+							MessageHelper.SendMessageTo( this, m, m_MessageString, 0x3B2 );
 						else if ( m_MessageNumber != 0 )
 							m.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, m_MessageNumber, null, "" ) );
 

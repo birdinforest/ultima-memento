@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Syth
 {
@@ -37,7 +38,7 @@ namespace Server.Spells.Syth
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your essence is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your essence is already protected!" ) );
 				return false;
 			}
 
@@ -50,7 +51,7 @@ namespace Server.Spells.Syth
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "Your essence is already protected!" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your essence is already protected!" ) );
 			}
 			else if ( CheckSequence() )
 			{

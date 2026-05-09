@@ -1,0 +1,370 @@
+# Quest display fragments (lands, regions, places, item words) longest-first for composite resolve
+the Dungeon of the Mad Archmage
+the Hall of the Mountain King
+the Tomb of the Fallen Wizard
+the Vault of the Black Knight
+the Dungeon of the Lich King
+the Bottle World of Kuldar
+the Cave of Banished Mages
+the Depths of Carthax Lake
+the Dungeon of Time Awaits
+the Halls of Undermountain
+the Valley of Dark Druids
+the Island of Umber Veil
+the Sanctum of Saltmarsh
+the Catacombs of Azerok
+the Caverns of Poseidon
+the Ancient Elven Mine
+the Ice Queen Fortress
+the Town of Skara Brae
+the Castle of Dracula
+the Cave of the Zuluu
+the Crypts of Dracula
+the Lodoria Catacombs
+the Ancient Sky Ship
+the City of the Dead
+the Crypts of Kuldar
+the Halls of Ogrimar
+the Land of Ambrosia
+the Land of Atlantis
+the Mines of Morinia
+the Storm Giant Lair
+the Temple of Osirus
+Morgaelin's Inferno
+the Ancient Pyramid
+the Forgotten Halls
+the Gargoyle Crypts
+the Land of Lodoria
+the Land of Sosaria
+the Perinian Depths
+the Serpent Sanctum
+the Tomb of Kazibal
+the Undersea Castle
+the Ancient Prison
+the City of Embers
+the Flooded Temple
+the Ice Fiend Lair
+the Isles of Dread
+the Kuldara Sewers
+the Savaged Empire
+the Serpent Island
+the Tower of Brass
+Argentrock Castle
+the Cave of Souls
+the Daemon's Crag
+the Fires of Hell
+the Stygian Abyss
+the Undersea Pass
+the Volcanic Cave
+Dungeon Covetous
+Dungeon Hythloth
+Stonegate Castle
+the Azure Castle
+the Blood Temple
+the Cave of Fire
+the Corrupt Pass
+the Dragon's Maw
+the Frozen Hells
+the Glacial Scar
+the Moon of Luna
+the Ratmen Mines
+the Zealan Tombs
+Dungeon Despise
+Dungeon Destard
+Dungeon Torment
+Negative Energy
+the Enchantress
+the Illusionist
+the Necromancer
+the Other World
+the Pirate Cave
+the Ratmen Lair
+the Scurvy Reef
+the Sorcereress
+Vordo's Dungeon
+Dungeon Deceit
+Dungeon Exodus
+Dungeon Wicked
+Isles of Dread
+Savaged Empire
+Serpent Island
+the Adventurer
+the Underworld
+Vordo's Castle
+Demonic Power
+Dungeon Clues
+Dungeon Scorn
+Dungeon Shame
+Dungeon Wrath
+Dungeon Wrong
+Extraordinary
+Terathan Keep
+the Barbarian
+the Enchanter
+the Forgotten
+the Gladiator
+the graveyard
+the labyrinth
+the Mausoleum
+the Mercenary
+the Priestess
+Ultimate Evil
+Crystal Ball
+Dardin's Pit
+Dungeon Ankh
+Dungeon Bane
+Dungeon Doom
+Dungeon Hate
+Dungeon Rock
+Dungeon Vile
+Magnificence
+the Almighty
+the Ancients
+the Baroness
+the Cavalier
+the cemetery
+the Conjurer
+the Defender
+the Explorer
+the Magician
+the Minstrel
+the Princess
+the Sorcerer
+the Summoner
+the Traveler
+Astonishing
+Enchantment
+Magnificent
+the Diviner
+the dungeon
+the Dungeon
+the Fighter
+the Heretic
+the Invoker
+the Paladin
+the Prophet
+the Spirits
+the Templar
+the tunnels
+the Warlock
+the Warrior
+Unspeakable
+Astounding
+Electrical
+Excellence
+Holy Light
+Incredible
+Mysterious
+Phenomenal
+Skara Brae
+the Bandit
+the castle
+the Cleric
+the Cursed
+the Damned
+the desert
+the Divine
+the forest
+the Hunter
+the jungle
+the Knight
+the Mighty
+the Mystic
+the Outlaw
+the Planes
+the Priest
+the Prince
+the Ranger
+the Sacred
+the Seeker
+the Shaman
+the Slayer
+the Wizard
+Umber Veil
+Underworld
+Ancestral
+Blackened
+Enchanted
+Excellent
+Fantastic
+Forgotten
+Greatness
+Illusions
+Legendary
+Marvelous
+Mysticism
+Parchment
+Pure Evil
+Spellbook
+Supremacy
+the Angel
+the Baron
+the crypt
+the Demon
+the Devil
+the Earth
+the Ghost
+the Light
+the Queen
+the Rogue
+the ruins
+the Scout
+the Stars
+the swamp
+the Thief
+the Tombs
+the tower
+the Witch
+Warhammer
+Wonderful
+Almighty
+Ambrosia
+Atlantis
+Bracelet
+Crossbow
+Darkness
+Earrings
+Ethereal
+Fabulous
+Glorious
+Infernal
+Mystical
+Mythical
+Necklace
+Nobility
+Portrait
+Scabbard
+Scimitar
+Shackles
+the Bard
+the cave
+the Dark
+the Dead
+the Fowl
+the King
+the Lady
+the Lord
+the Lost
+the Mage
+the maze
+the Monk
+the Moon
+the Sage
+the Seer
+the Tomb
+the tomb
+the Vile
+the Void
+Ultimate
+Wondrous
+Amazing
+Angelic
+Blessed
+Burning
+Chalice
+Cutlass
+Deathly
+Demonic
+Glowing
+Halberd
+Lantern
+Lexicon
+Lodoria
+Magical
+Missing
+Mystery
+Reality
+Sceptre
+Sosaria
+Supreme
+the Sky
+the Sun
+Trident
+Unknown
+Amulet
+Bottle
+Bright
+Candle
+Cursed
+Dagger
+Damned
+Divine
+Doomed
+Elixir
+Exotic
+Fabled
+Frozen
+Gloves
+Goblet
+Kuldar
+Legend
+Marvel
+Mighty
+Mirror
+Ornate
+Potion
+Purity
+Sacred
+Scroll
+Shield
+Tablet
+Unholy
+Wonder
+Armor
+Blade
+Bones
+Boots
+Cloak
+Codex
+Crown
+Death
+Flute
+Glory
+Hades
+Hexed
+Knife
+Kryss
+Lunar
+Magic
+Might
+Pouch
+Power
+Skull
+Solar
+Staff
+Stone
+Sword
+Venom
+Belt
+Book
+Cape
+Club
+Dark
+Drum
+Dust
+Evil
+Fire
+Helm
+Holy
+Horn
+Life
+Lost
+Luna
+Lute
+Mace
+Rare
+Ring
+Robe
+Rope
+Tome
+Vile
+Wand
+Axe
+Bag
+Bow
+Gem
+Hat
+Ice
+Icy
+Key
+Rod

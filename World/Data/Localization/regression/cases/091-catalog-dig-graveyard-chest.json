@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.graveyard.chest",
+  "pipeline": "string_catalog_only",
+  "en": "You dig up a graveyard chest.",
+  "expectedZh": "你从墓穴中挖出一只墓地宝箱。",
+  "tags": "harvest,graverobbing,string_catalog_only"
+}

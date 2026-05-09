@@ -1,5 +1,6 @@
 using Server.Gumps;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Network;
 using Server.Utilities;
@@ -194,6 +195,17 @@ namespace Server.Engines.GlobalShoppe
 		private readonly int m_PageNumber;
 		private readonly ShoppeType m_SelectedShoppeType;
 
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private static string ResolveFormat( Mobile from, string format, params object[] args )
+		{
+			return string.Format( ResolveText( from, format ), args );
+		}
+
 		public ShoppeRewardGump(PlayerMobile from, ShoppeType selectedShoppeType = (ShoppeType)(-1), int pageNumber = 1, Action onGumpClose = null) : base(25, 25)
 		{
 			m_Context = ShoppeEngine.Instance.GetOrCreateContext(from);
@@ -208,7 +220,7 @@ namespace Server.Engines.GlobalShoppe
 
 			const int GUMP_WIDTH = 904;
 			const int GUMP_HEIGHT = 729;
-			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, "<CENTER>Shoppe Reward Selection</CENTER>", HtmlColors.BROWN);
+			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, string.Format("<CENTER>{0}</CENTER>", ResolveText(from, "Shoppe Reward Selection")), HtmlColors.BROWN);
 
 
 			AddShoppeTypeList(selectedShoppeType, 27, 48);
@@ -279,7 +291,7 @@ namespace Server.Engines.GlobalShoppe
 				var context = m_Context[m_SelectedShoppeType];
 				if (context.Points < reward.Cost)
 				{
-					player.SendMessage("You do not have enough points to purchase this reward.");
+					player.SendMessage(ResolveText(player, "You do not have enough points to purchase this reward."));
 				}
 				else
 				{
@@ -288,7 +300,7 @@ namespace Server.Engines.GlobalShoppe
 					{
 						context.Points -= reward.Cost;
 						player.AddToBackpack(item);
-						player.SendMessage("You have purchased the {0} for {1} points.", reward.Name, reward.Cost);
+						player.SendMessage(ResolveFormat(player, "You have purchased the {0} for {1} points.", ResolveText(player, reward.Name), reward.Cost));
 					}
 				}
 
@@ -332,8 +344,8 @@ namespace Server.Engines.GlobalShoppe
 			x = DESCRIPTION_START;
 			y += 5; // Top padding
 			const int LAZY_AMOUNT = 30; // Arbitrary value to account for left padding
-			TextDefinition.AddHtmlText(this, x, y, DESCRIPTION_WIDTH - LAZY_AMOUNT, 20, name, HtmlColors.MUSTARD);
-			TextDefinition.AddHtmlText(this, x + 10, y + 20, DESCRIPTION_WIDTH - LAZY_AMOUNT, 40, TextDefinition.GetColorizedText(description, HtmlColors.BROWN), false, true);
+			TextDefinition.AddHtmlText(this, x, y, DESCRIPTION_WIDTH - LAZY_AMOUNT, 20, ResolveText(m_From, name), HtmlColors.MUSTARD);
+			TextDefinition.AddHtmlText(this, x + 10, y + 20, DESCRIPTION_WIDTH - LAZY_AMOUNT, 40, TextDefinition.GetColorizedText(ResolveText(m_From, description), HtmlColors.BROWN), false, true);
 
 			x = START_X + CARD_WIDTH - PURCHASE_WIDTH;
 			y += 6;
@@ -352,7 +364,7 @@ namespace Server.Engines.GlobalShoppe
 				y += 30;
 
 				AddButton(x + 13, y - 1, 4023, 4023, (int)Actions.PurchaseBase + index, GumpButtonType.Reply, 0); // OK
-				TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, "Purchase", HtmlColors.MUSTARD);
+				TextDefinition.AddHtmlText(this, x + GRAPHIC_WIDTH, y + 2, 60, 20, ResolveText(m_From, "Purchase"), HtmlColors.MUSTARD);
 			}
 		}
 
@@ -385,8 +397,8 @@ namespace Server.Engines.GlobalShoppe
 				AddImage(x + 17, y + 10 + (i * HEIGHT_PER_ITEM), gemGraphic, gemHue);
 
 				var color = isSelected ? HtmlColors.MUSTARD : HtmlColors.BROWN;
-				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, shoppeType.ToString(), color);
-				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 27 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, string.Format("{0:n0} points", m_Context[shoppeType].Points), HtmlColors.MUSTARD);
+				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, ResolveText(m_From, shoppeType.ToString()), color);
+				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 27 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, ResolveFormat(m_From, "{0:n0} points", m_Context[shoppeType].Points), HtmlColors.MUSTARD);
 				++i;
 			}
 		}

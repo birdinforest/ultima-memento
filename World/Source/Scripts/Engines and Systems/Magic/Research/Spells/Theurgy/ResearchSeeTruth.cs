@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -63,7 +64,7 @@ namespace Server.Spells.Research
 
 					if ( scroll.ScrollIntelligence > 0 )
 					{
-						from.SendMessage("That parchment hasn't been deciphered yet.");
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That parchment hasn't been deciphered yet." ) );
 					}
 					else
 					{
@@ -185,7 +186,7 @@ namespace Server.Spells.Research
 				///////////////////////////////////////////////////////////////////////////////////
 				else
 				{
-					from.SendMessage("That is not a book or parchment.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "That is not a book or parchment." ) );
 				}
 
 				if ( consume ){ Server.Misc.Research.ConsumeScroll( from, true, m_SpellIndex, m_alwaysConsume, m_fromBook ); }

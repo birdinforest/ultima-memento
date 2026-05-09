@@ -142,7 +142,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to open." );
+				from.SendMessage( Server.Localization.StringCatalog.Resolve(from.Account, "This must be in your backpack to open.") );
 				return;
 			}
 			else
@@ -240,7 +240,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to open." );
+				from.SendMessage( Server.Localization.StringCatalog.Resolve(from.Account, "This must be in your backpack to open.") );
 				return;
 			}
 			else

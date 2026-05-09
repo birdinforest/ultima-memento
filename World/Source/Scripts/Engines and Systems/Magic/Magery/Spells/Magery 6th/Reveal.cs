@@ -8,6 +8,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Spells.Sixth
 {
@@ -93,7 +94,7 @@ namespace Server.Spells.Sixth
 					{
 						Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, 5024, 0 );
 						Effects.PlaySound( item.Location, item.Map, 0x1FA );
-						Caster.SendMessage( "There is a hidden door nearby!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is a hidden door nearby!" ) );
 						foundAnyone = true;
 					}
 					else if ( item is HiddenTrap )
@@ -102,7 +103,7 @@ namespace Server.Spells.Sixth
 						{
 							Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, 5024, 0 );
 							Effects.PlaySound( item.Location, item.Map, 0x1FA );
-							Caster.SendMessage( "There is a hidden floor trap somewhere nearby!" );
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "There is a hidden floor trap somewhere nearby!" ) );
 							foundAnyone = true;
 							HiddenTrap.DiscoverTrap( item );
 						}
@@ -162,7 +163,7 @@ namespace Server.Spells.Sixth
 				if ( !foundAnyone )
 				{
 					Caster.PlaySound( 0x1D6 );
-					Caster.SendMessage( "Your don't notice anything." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your don't notice anything." ) );
 				}
 			}
 

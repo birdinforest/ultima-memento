@@ -30,6 +30,7 @@ using Server.Mobiles;
 using Server.Accounting;
 using Server.Network;
 using Server.Guilds;
+using Server.Localization;
 
 namespace Server {
 	public static class World {
@@ -102,23 +103,23 @@ namespace Server {
 		}
 
 		public static void Broadcast( int hue, bool ascii, string text ) {
-			Packet p;
-
-			if ( ascii )
-				p = new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text );
-			else
-				p = new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", text );
-
 			List<NetState> list = NetState.Instances;
 
-			p.Acquire();
-
 			for ( int i = 0; i < list.Count; ++i ) {
-				if ( list[i].Mobile != null )
-					list[i].Send( p );
-			}
+				NetState state = list[i];
+				Mobile mobile = state.Mobile;
 
-			p.Release();
+				if ( mobile == null )
+					continue;
+
+				string lang = AccountLang.GetLanguageCode( mobile.Account );
+				string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+				if ( ascii && StringCatalog.IsAsciiOnly( outText ) )
+					state.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", outText ) );
+				else
+					state.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", outText ) );
+			}
 
 			NetState.FlushAll();
 		}

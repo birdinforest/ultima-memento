@@ -286,7 +286,7 @@ namespace Server.Items
 				desc = "";
 
 			if ( desc.Length > 0 )
-				from.Send( new UnicodeMessage( Serial, ItemID, MessageType.Regular, 0x3B2, 3, "ENU", "", desc ) );
+				MessageHelper.SendMessageTo( this, from, desc, 0x3B2 );
 		}
 
 		public bool UseOn( Mobile from, ILockable o )

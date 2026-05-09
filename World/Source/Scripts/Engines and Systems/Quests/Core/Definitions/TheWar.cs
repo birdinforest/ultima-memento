@@ -5,6 +5,7 @@ using Server.Engines.Craft;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Engines.MLQuests.Definitions
@@ -32,7 +33,7 @@ namespace Server.Engines.MLQuests.Definitions
             Objectives.Add(new DummyObjective("* Click yourself to view your Quest Log"));
 
             builder.Clear();
-            builder.Append("Mark the shields as a quest item when you are ready.<br><br>");
+            builder.Append("Mark the tunics as a quest item when you are ready.<br><br>");
             builder.Append("- Click yourself to view your Quest Log<br>");
             builder.Append("- Click the reticle next to the quest<br>");
             builder.Append("- Target a container or the tunics directly<br>");
@@ -125,14 +126,24 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override void Shout(PlayerMobile pm)
         {
+            int line = Utility.RandomMinMax(1, 4);
             string message;
-            switch (Utility.RandomMinMax(1, 4))
+
+            switch (line)
             {
                 default:
-                case 1: message = "Oi! You there! Yes, you! I need hands, skilled and steady!"; break;
-                case 2: message = "We're in need of armor, strong and ready! The war's not waiting, and neither are we! If you've got the craft in your blood, the forge needs you now!"; break;
-                case 3: message = "Steel your nerves and your hearts! We're building for the fight of our lives—get to the forge, and do your part!"; break;
-                case 4: message = "The need's great, and the pay's fair!"; break;
+                case 1:
+                    message = TheWarLocalization.RecruiterShout(pm, 1, "Oi! You there! Yes, you! I need hands, skilled and steady!");
+                    break;
+                case 2:
+                    message = TheWarLocalization.RecruiterShout(pm, 2, "We're in need of armor, strong and ready! The war's not waiting, and neither are we! If you've got the craft in your blood, the forge needs you now!");
+                    break;
+                case 3:
+                    message = TheWarLocalization.RecruiterShout(pm, 3, "Steel your nerves and your hearts! We're building for the fight of our lives—get to the forge, and do your part!");
+                    break;
+                case 4:
+                    message = TheWarLocalization.RecruiterShout(pm, 4, "The need's great, and the pay's fair!");
+                    break;
             }
 
             MLQuestSystem.Tell(this, pm, message);

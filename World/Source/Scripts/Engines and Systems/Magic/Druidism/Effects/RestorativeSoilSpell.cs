@@ -7,6 +7,7 @@ using Server.Items;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Herbalist
 {
@@ -40,12 +41,12 @@ namespace Server.Spells.Herbalist
 				{
 					m.PlaySound( 0x5C9 );
 					m.FixedEffect( 0x54F4, 10, 16, 0, 0 );
-					m.SendMessage( "You pour the mystical mud in your pack to protect your soul." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You pour the mystical mud in your pack to protect your soul." ) );
 				}
             }
             else if ( m == Caster )
             {
-				Caster.SendMessage("You failed to conjure some mystical mud.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to conjure some mystical mud." ) );
 			}
             else if ( !Caster.Alive )
             {
@@ -104,7 +105,7 @@ namespace Server.Spells.Herbalist
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanWizardItem && CheckSequence() )
@@ -120,7 +121,7 @@ namespace Server.Spells.Herbalist
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanArcherItem && CheckSequence() )
@@ -136,7 +137,7 @@ namespace Server.Spells.Herbalist
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if (hench is HenchmanMonsterItem && CheckSequence() )
@@ -152,12 +153,12 @@ namespace Server.Spells.Herbalist
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else
 			{
-				Caster.SendMessage("This potion didn't seem to work.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This potion didn't seem to work." ) );
 			}
             FinishSequence();
 		}

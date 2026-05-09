@@ -9,7 +9,7 @@ namespace Server.Engines.MLQuests.Gumps
 		private readonly MLQuestInstance m_Instance;
 
 		public QuestReportBackGump(MLQuestInstance instance)
-			: base(3006156) // Quest Conversation
+			: base(3006156, instance.Player) // Quest Conversation
 		{
 			m_Instance = instance;
 

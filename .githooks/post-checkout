@@ -1,0 +1,9 @@
+#!/bin/sh
+# After switching branches, re-apply skip-worktree for tracked World/Saves/ files
+# (new paths may have appeared). $3=1 when switching branches, 0 for file checkout.
+# shellcheck disable=SC1091
+[ "$3" = "1" ] || exit 0
+root=$(git rev-parse --show-toplevel) || exit 0
+script=$root/World/Source/Tools/skip_saves_worktree.sh
+[ -f "$script" ] || exit 0
+exec bash "$script" </dev/null
