@@ -3249,6 +3249,34 @@
       "category": "concept",
       "notes": "Race restriction property on equipment.",
       "translation_basis_zh": "装备的种族限制属性，标准 UO 中文社区译法。"
+    },
+    "Arrow": {
+      "canonical": "箭矢",
+      "alternatives": ["箭"],
+      "category": "item",
+      "notes": "Projectile used with bows; also used in quiver ammo display.",
+      "translation_basis_zh": "UO 中箭矢的通用名，结合弹药量显示译为「箭矢」。"
+    },
+    "Bolt": {
+      "canonical": "弩箭",
+      "alternatives": ["弩矢"],
+      "category": "item",
+      "notes": "Projectile used with crossbows; also used in quiver ammo display.",
+      "translation_basis_zh": "UO 中弩箭的通用名，与箭矢区分译为「弩箭」。"
+    },
+    "Lower Ammo Cost": {
+      "canonical": "降低弹药消耗",
+      "alternatives": ["弹药消耗降低"],
+      "category": "concept",
+      "notes": "Quiver property that reduces ammunition consumption percentage.",
+      "translation_basis_zh": "箭袋的特殊属性，按百分比减少弹药消耗。"
+    },
+    "Weight Reduction": {
+      "canonical": "重量减少",
+      "alternatives": ["减重"],
+      "category": "concept",
+      "notes": "Quiver property that reduces the weight of carried ammunition.",
+      "translation_basis_zh": "箭袋属性，减少所携带弹药的重量。"
     }
   }
 }

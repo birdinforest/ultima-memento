@@ -11,6 +11,7 @@ using Server.Multis;
 using Server.Targeting;
 using Server.Engines.GlobalShoppe;
 using Server.Utilities;
+using Server.Localization;
 using System.Linq;
 
 namespace Server.Mobiles
@@ -905,6 +906,9 @@ namespace Server.Mobiles
 
 			if ( this.RaceID == 0 && Utility.RandomBool() ){ this.PlaySound( this.Female ? 797 : 1069 ); }
 
+			string lang = AccountLang.GetLanguageCode( from?.Account );
+			string locale = AccountLang.IsChinese( lang ) ? "zh" : "en";
+
 			int count = 0;
 			List<BuyItemState> list;
 			IBuyItemInfo[] buyInfo = this.GetBuyInfo();
@@ -945,7 +949,10 @@ namespace Server.Mobiles
 					}
                     else
                     {
-                        opls.Add(((Item)disp).PropertyList);
+						if ( item.IsContentLocalized )
+							opls.Add( item.GetLocalizedPropertyList( locale ) );
+						else
+							opls.Add( ((Item)disp).PropertyList );
                     }
                 } else if ( disp is Mobile ) {
 					opls.Add( ( ( Mobile ) disp ).PropertyList );
@@ -994,7 +1001,10 @@ namespace Server.Mobiles
 						opls = new List<ObjectPropertyList>();
 					}
 
-					opls.Add( item.PropertyList );
+					if ( item.IsContentLocalized )
+						opls.Add( item.GetLocalizedPropertyList( locale ) );
+					else
+						opls.Add( item.PropertyList );
 				}
 			}
 

@@ -82,5 +82,10 @@
   "prop.durability.bonus": "durability {0}%",
   "prop.locked.down": "locked down",
   "prop.locked.down.secure": "locked down & secure",
-  "prop.blessed.for": "Blessed for {0}"
+  "prop.blessed.for": "Blessed for {0}",
+  "prop.ammo.arrows": "Ammo: {0}/{1} arrows",
+  "prop.ammo.bolts": "Ammo: {0}/{1} bolts",
+  "prop.lower.ammo.cost": "Lower Ammo Cost {0}%",
+  "prop.contents": "Contents: {0}/{1} items, {2}/{3} stones",
+  "prop.weight.reduction": "Weight reduction: {0}%"
 }

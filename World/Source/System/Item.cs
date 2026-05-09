@@ -1570,6 +1570,11 @@ namespace Server
 			{ "prop.skill.fencing",			"808080" },
 			{ "prop.skill.marksmanship",		"808080" },
 			{ "prop.skill.fist.fighting",		"808080" },
+			{ "prop.ammo.arrows",			"808080" },
+			{ "prop.ammo.bolts",			"808080" },
+			{ "prop.lower.ammo.cost",		"2E8B57" },
+			{ "prop.contents",			"808080" },
+			{ "prop.weight.reduction",		"808080" },
 		};
 
 		/// <summary>

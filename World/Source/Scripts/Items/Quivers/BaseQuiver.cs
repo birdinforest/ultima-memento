@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Network;
 using Server.Engines.Craft;
 
@@ -69,6 +70,8 @@ namespace Server.Items
 		public BaseQuiver() : this( 0x2B02 )
 		{
 		}
+
+		public override bool IsContentLocalized => true;
 
 		public BaseQuiver( int itemID ) : base( itemID )
 		{
@@ -250,24 +253,51 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-				
+
+			bool localized = BuildingPropertyListLocale != null;
+
 			if ( m_BuiltBy != null )
-				list.Add( 1050043, m_BuiltBy.Name ); // crafted by ~1_NAME~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.crafted.by", m_BuiltBy.Name );
+				else
+					list.Add( 1050043, m_BuiltBy.Name ); // crafted by ~1_NAME~
+			}
 
 			if ( m_Quality == ClothingQuality.Exceptional )
-				list.Add( 1063341 ); // exceptional
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.exceptional" );
+				else
+					list.Add( 1063341 ); // exceptional
+			}
 
 			Item ammo = Ammo;
 
-			if ( ammo != null )
+			if ( localized )
 			{
-				if ( ammo is Arrow )
-					list.Add( 1075265, "{0}\t{1}", ammo.Amount, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ arrows
-				else if ( ammo is Bolt )
-					list.Add( 1075266, "{0}\t{1}", ammo.Amount, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ bolts
+				if ( ammo != null )
+				{
+					if ( ammo is Arrow )
+						AddLocalizedProperty( list, "prop.ammo.arrows", ammo.Amount, Capacity );
+					else if ( ammo is Bolt )
+						AddLocalizedProperty( list, "prop.ammo.bolts", ammo.Amount, Capacity );
+				}
+				else
+					AddLocalizedProperty( list, "prop.ammo.arrows", 0, Capacity );
 			}
 			else
-				list.Add( 1075265, "{0}\t{1}", 0, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ arrows
+			{
+				if ( ammo != null )
+				{
+					if ( ammo is Arrow )
+						list.Add( 1075265, "{0}\t{1}", ammo.Amount, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ arrows
+					else if ( ammo is Bolt )
+						list.Add( 1075266, "{0}\t{1}", ammo.Amount, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ bolts
+				}
+				else
+					list.Add( 1075265, "{0}\t{1}", 0, Capacity ); // Ammo: ~1_QUANTITY~/~2_CAPACITY~ arrows
+			}
 
 			int prop;
 
@@ -280,109 +310,258 @@ namespace Server.Items
 			AlterBowDamage( ref phys, ref fire, ref cold, ref pois, ref nrgy, ref chaos, ref direct );
 
 			if ( phys != 0 )
-				list.Add( 1060403, phys.ToString() ); // physical damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.physical.damage", phys );
+				else
+					list.Add( 1060403, phys.ToString() ); // physical damage ~1_val~%
+			}
 
 			if ( fire != 0 )
-				list.Add( 1060405, fire.ToString() ); // fire damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.fire.damage", fire );
+				else
+					list.Add( 1060405, fire.ToString() ); // fire damage ~1_val~%
+			}
 
 			if ( cold != 0 )
-				list.Add( 1060404, cold.ToString() ); // cold damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.cold.damage", cold );
+				else
+					list.Add( 1060404, cold.ToString() ); // cold damage ~1_val~%
+			}
 
 			if ( pois != 0 )
-				list.Add( 1060406, pois.ToString() ); // poison damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.poison.damage", pois );
+				else
+					list.Add( 1060406, pois.ToString() ); // poison damage ~1_val~%
+			}
 
 			if ( nrgy != 0 )
-				list.Add( 1060407, nrgy.ToString() ); // energy damage ~1_val
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.energy.damage", nrgy );
+				else
+					list.Add( 1060407, nrgy.ToString() ); // energy damage ~1_val
+			}
 
 			if ( chaos != 0 )
-				list.Add( 1072846, chaos.ToString() ); // chaos damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.chaos.damage", chaos );
+				else
+					list.Add( 1072846, chaos.ToString() ); // chaos damage ~1_val~%
+			}
 
 			if ( direct != 0 )
-				list.Add( 1079978, direct.ToString() ); // Direct Damage: ~1_PERCENT~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.direct.damage", direct );
+				else
+					list.Add( 1079978, direct.ToString() ); // Direct Damage: ~1_PERCENT~%
+			}
 
 			if ( (prop = m_Attributes.DefendChance) != 0 )
-				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.defense.chance.increase", prop );
+				else
+					list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
+			}
 
 			if ( (prop = m_Attributes.BonusDex) != 0 )
-				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.dexterity.bonus", prop );
+				else
+					list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
+			}
 
 			if ( (prop = m_Attributes.EnhancePotions) != 0 )
-				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.enhance.potions", prop );
+				else
+					list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
+			}
 
 			if ( (prop = m_Attributes.CastRecovery) != 0 )
-				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.faster.cast.recovery", prop );
+				else
+					list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
+			}
 
 			if ( (prop = m_Attributes.CastSpeed) != 0 )
-				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.faster.casting", prop );
+				else
+					list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
+			}
 
 			if ( (prop = m_Attributes.AttackChance) != 0 )
-				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.chance.increase", prop );
+				else
+					list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
+			}
 
 			if ( (prop = m_Attributes.BonusHits) != 0 )
-				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.point.increase", prop );
+				else
+					list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
+			}
 
 			if ( (prop = m_Attributes.BonusInt) != 0 )
-				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.intelligence.bonus", prop );
+				else
+					list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
+			}
 
 			if ( (prop = m_Attributes.LowerManaCost) != 0 && MyServerSettings.LowerMana() > 0 )
 			{
 				if ( prop > MyServerSettings.LowerMana() ){ prop = MyServerSettings.LowerMana(); }
-				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.mana.cost", prop );
+				else
+					list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
 			}
 
 			if ( (prop = m_Attributes.LowerRegCost) != 0 && MyServerSettings.LowerReg() > 0 )
 			{
 				if ( prop > MyServerSettings.LowerReg() ){ prop = MyServerSettings.LowerReg(); }
-				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.reagent.cost", prop );
+				else
+					list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
 			}
 
 			if ( (prop = (GetLuckBonus() + m_Attributes.Luck)) != 0 )
-				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.luck", prop );
+				else
+					list.Add( 1060436, prop.ToString() ); // luck ~1_val~
+			}
 
 			if ( (prop = m_Attributes.BonusMana) != 0 )
-				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.mana.increase", prop );
+				else
+					list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
+			}
 
 			if ( (prop = m_Attributes.RegenMana) != 0 )
-				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.mana.regeneration", prop );
+				else
+					list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
+			}
 
 			if ( (prop = m_Attributes.NightSight) != 0 )
-				list.Add( 1060441 ); // night sight
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.night.sight" );
+				else
+					list.Add( 1060441 ); // night sight
+			}
 
 			if ( (prop = m_Attributes.ReflectPhysical) != 0 )
-				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.reflect.physical.damage", prop );
+				else
+					list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
+			}
 
 			if ( (prop = m_Attributes.RegenStam) != 0 )
-				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.stamina.regeneration", prop );
+				else
+					list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
+			}
 
 			if ( (prop = m_Attributes.RegenHits) != 0 )
-				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.hit.point.regeneration", prop );
+				else
+					list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
+			}
 
 			if ( (prop = m_Attributes.SpellDamage) != 0 )
-				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.spell.damage.increase", prop );
+				else
+					list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
+			}
 
 			if ( (prop = m_Attributes.BonusStam) != 0 )
-				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.stamina.increase", prop );
+				else
+					list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
+			}
 
 			if ( (prop = m_Attributes.BonusStr) != 0 )
-				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.strength.bonus", prop );
+				else
+					list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
+			}
 
 			if ( (prop = m_Attributes.WeaponSpeed) != 0 )
-				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.swing.speed.increase", prop );
+				else
+					list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
+			}
 
 			list.Add( 1061182, EquipLayerName( Layer ) );
 
 			if ( (prop = m_LowerAmmoCost) > 0 )
-				list.Add( 1075208, prop.ToString() ); // Lower Ammo Cost ~1_Percentage~%
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.lower.ammo.cost", prop );
+				else
+					list.Add( 1075208, prop.ToString() ); // Lower Ammo Cost ~1_Percentage~%
+			}
 
 			double weight = 0;
 
 			if ( ammo != null )
 				weight = ammo.Weight * ammo.Amount;
 
-			list.Add( 1072241, "{0}\t{1}\t{2}\t{3}", Items.Count, DefaultMaxItems, (int) weight, DefaultMaxWeight ); // Contents: ~1_COUNT~/~2_MAXCOUNT items, ~3_WEIGHT~/~4_MAXWEIGHT~ stones
+			if ( localized )
+				AddLocalizedProperty( list, "prop.contents", Items.Count, DefaultMaxItems, (int) weight, DefaultMaxWeight );
+			else
+				list.Add( 1072241, "{0}\t{1}\t{2}\t{3}", Items.Count, DefaultMaxItems, (int) weight, DefaultMaxWeight ); // Contents: ~1_COUNT~/~2_MAXCOUNT items, ~3_WEIGHT~/~4_MAXWEIGHT~ stones
 
 			if ( (prop = m_WeightReduction) != 0 )
-				list.Add( 1072210, prop.ToString() ); // Weight reduction: ~1_PERCENTAGE~%	
+			{
+				if ( localized )
+					AddLocalizedProperty( list, "prop.weight.reduction", prop );
+				else
+					list.Add( 1072210, prop.ToString() ); // Weight reduction: ~1_PERCENTAGE~%
+			}
 		}
 		
 		private static void SetSaveFlag( ref SaveFlag flags, SaveFlag toSet, bool setIf )

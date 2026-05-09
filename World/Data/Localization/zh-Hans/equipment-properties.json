@@ -82,5 +82,10 @@
   "prop.durability.bonus": "耐久度 {0}%",
   "prop.locked.down": "已锁定",
   "prop.locked.down.secure": "已锁定并安全",
-  "prop.blessed.for": "对 {0} 祝福"
+  "prop.blessed.for": "对 {0} 祝福",
+  "prop.ammo.arrows": "弹药：{0}/{1} 箭矢",
+  "prop.ammo.bolts": "弹药：{0}/{1} 弩箭",
+  "prop.lower.ammo.cost": "降低弹药消耗 {0}%",
+  "prop.contents": "内容：{0}/{1} 件物品，{2}/{3} 石",
+  "prop.weight.reduction": "重量减少：{0}%"
 }
