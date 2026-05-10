@@ -1,0 +1,35 @@
+{"file": "scripts-items.json", "key": "s.19fd8de20ffb1f36", "en": "You got near something dangerous, but with luck on your side...you avoid it."}
+{"file": "scripts-items.json", "key": "s.21c344f5bad46a8c", "en": "Your moral conviction was weakened by the trap. Rebuild your alignment through virtuous deeds."}
+{"file": "scripts-items.json", "key": "s.262363538ddde29b", "en": "A trap triggered, ruining one of your equipped items!"}
+{"file": "scripts-items.json", "key": "s.2b3af4ea60cd5877", "en": "You got near a hidden trap, but your moral convictions shield you from corruption."}
+{"file": "scripts-items.json", "key": "s.30b5c057d0ebf3a5", "en": "Your spiritual attunement was not strong enough to break the curse."}
+{"file": "scripts-items.json", "key": "s.3542080ee8f31119", "en": "You notice subtle signs of a {0} floor trap to the {1}, {2}."}
+{"file": "scripts-items.json", "key": "s.397548e4d179dff6", "en": "A trap triggered, your jewelry begins to weave together!"}
+{"file": "scripts-items.json", "key": "s.43dbab53c83d5b9c", "en": "Your instincts warn you of a hidden trap to the {0}, {1}."}
+{"file": "scripts-items.json", "key": "s.4cf4b88dcad4c5e1", "en": "This item is cursed by a trap. A healer, a skilled spiritualist, or a holy shrine prayer may remove the curse. The curse will fade naturally after 24 hours."}
+{"file": "scripts-items.json", "key": "s.4df93a89c34a6d7e", "en": "You got near something dangerous, but your skill in removing traps has helped you avoid it."}
+{"file": "scripts-items.json", "key": "s.646a3deb5fc9722e", "en": "You walked into a toxic cloud, spoiling half your reagents!"}
+{"file": "scripts-items.json", "key": "s.6d1164e4fa7c1a50", "en": "A fall into a deep pit!"}
+{"file": "scripts-items.json", "key": "s.9512999c5a1b6e7c", "en": "You tap your ten foot pole, disabling a hidden trap and breaking the pole."}
+{"file": "scripts-items.json", "key": "s.a10ec8c0949a6e4c", "en": "You got near something dangerous, but the magic of your orb has helped you avoid it."}
+{"file": "scripts-items.json", "key": "s.a2066a7c6b61531f", "en": "You tap your ten foot pole, avoiding something dangerous."}
+{"file": "scripts-items.json", "key": "s.a3c088d0bc580884", "en": "You tap your ten foot pole, avoiding something dangerous and breaking the pole."}
+{"file": "scripts-items.json", "key": "s.a903f37284e644bb", "en": "A trap triggered, severely damaging your equipment! Find a blacksmith to repair it before it fails completely."}
+{"file": "scripts-items.json", "key": "s.ad6ab124e55c0342", "en": "{0}% Avoiding Traps"}
+{"file": "scripts-items.json", "key": "s.b38ae46a06fc5b98", "en": "You lack the spiritual attunement to remove this curse. Seek a healer or a holy shrine."}
+{"file": "scripts-items.json", "key": "s.b79848736075b2bf", "en": "Something feels wrong nearby, but you can't quite tell where."}
+{"file": "scripts-items.json", "key": "s.c500429efb27ac7f", "en": "You salvage useful components from the trap mechanism."}
+{"file": "scripts-items.json", "key": "s.d166fca364e3e870", "en": "You got near a hidden trap, but your skill in removing traps has helped you disable it."}
+{"file": "scripts-items.json", "key": "s.d9b50bb6c339a916", "en": "You got near a hidden trap, but with your {0}...you avoid it."}
+{"file": "scripts-items.json", "key": "s.daa4384788498ea9", "en": "You walked into a noxious cloud, tainting half your bandages!"}
+{"file": "scripts-items.json", "key": "s.dff3203cd2adfe6b", "en": "Your alignment has been inverted. Visit an ankh shrine and unlock your karma, then rebuild through virtuous deeds."}
+{"file": "scripts-items.json", "key": "s.e087bee25f875e70", "en": "You got near something dangerous, but with your {0}...you avoid it."}
+{"file": "scripts-items.json", "key": "s.e4d13f0fcd05f1f0", "en": "You got near a hidden trap, but the magic of your orb has disabled it."}
+{"file": "scripts-items.json", "key": "s.ec7f49dd4c257abc", "en": "A trap triggered, rusting one of your equipped items!"}
+{"file": "scripts-items.json", "key": "s.f36b8744f0d93aac", "en": "You tap your ten foot pole, disabling a hidden trap."}
+{"file": "scripts-items.json", "key": "s.f8ccb5c273a6ef44", "en": "Your spiritual attunement breaks the curse, freeing the item inside."}
+{"file": "scripts-items.json", "key": "s.f9e3a9ceda2c99f0", "en": "You got near a hidden trap, but with luck on your side...it broke."}
+{"file": "scripts-items.json", "key": "s.fbd1253458457768", "en": "For Wall, Floor & Container Traps"}
+{"file": "scripts-system.json", "key": "s.0079c7e966061581", "en": "There is a hidden floor trap to the {0}!"}
+{"file": "scripts-system.json", "key": "s.04f4a2911080bee9", "en": "There is a dangerous area to the {0}!"}
+{"file": "scripts-system.json", "key": "s.bfb83804dd2a8759", "en": "The floor here shows signs of recent trap activity — a trap was triggered to the {0} within the last {1} minute(s)."}

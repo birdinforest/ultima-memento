@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -28,12 +29,22 @@ namespace Server.Spells.Jedi
 
 		public static string SpellDescription( int spell )
 		{
-			string txt = "This contains the knowledge of a Jedi ability: " + SpellInfo( spell, 0 ) + "";
+			return SpellDescription( null, spell );
+		}
 
-			return txt + " It requires a Jedi to be at least a " + SpellInfo( spell, 2 ) + " in ability.";
+		public static string SpellDescription( Server.Accounting.IAccount account, int spell )
+		{
+			string txt = StringCatalog.Resolve( account, "This contains the knowledge of a Jedi ability: " ) + SpellInfo( account, spell, 0 ) + "";
+
+			return txt + " " + StringCatalog.ResolveFormat( account, "It requires a Jedi to be at least a {0} in ability.", SpellInfo( account, spell, 2 ) );
 		}
 
 		public static string SpellInfo( int spellID, int slice )
+		{
+			return SpellInfo( null, spellID, slice );
+		}
+
+		public static string SpellInfo( Server.Accounting.IAccount account, int spellID, int slice )
 		{
 			string value = "";
 			string name = "";
@@ -50,25 +61,25 @@ namespace Server.Spells.Jedi
 			string icon = "";
 
 			if ( spellID == 280 ){ name = "Force Grip"; icon="11244"; crystal = "6"; skill = "10"; mana = "5"; mantra = "Drumat"; map = "Sosaria"; dungeon = "the City of Britain"; world = "Land of Sosaria"; jedi = "Jacen Sollo"; scroll = "JediDatacron01"; 
-				describe = "Allows a Jedi to use or move an object that is out of reach. Can be used to set off some Chest Traps from a safe distance as well."; }
+				describe = StringCatalog.Resolve( account, "Allows a Jedi to use or move an object that is out of reach. Can be used to set off some Chest Traps from a safe distance as well." ); }
 			else if ( spellID == 281 ){ name = "Mind's Eye"; icon="11243"; crystal = "16"; skill = "20"; mana = "8"; mantra = "Vincent"; map = "Sosaria"; dungeon = "the Town of Moon"; world = "Land of Sosaria"; jedi = "Kiadi Mundia"; scroll = "JediDatacron02"; 
-				describe = "Allows the Jedi to concentrate and see that which cannot be seen. They may be able to notice something hidden or a concealed trap."; }
+				describe = StringCatalog.Resolve( account, "Allows the Jedi to concentrate and see that which cannot be seen. They may be able to notice something hidden or a concealed trap." ); }
 			else if ( spellID == 282 ){ name = "Mirage"; icon="11201"; crystal = "24"; skill = "30"; mana = "12"; mantra = "Michal"; map = "Sosaria"; dungeon = "the Village of Grey"; world = "Land of Sosaria"; jedi = "Kip Fisto"; scroll = "JediDatacron03"; 
-				describe = "This power allows the Jedi to create a projection of themselves that can distract foes from the Jedi themselves. This projection contains physical attributes as the psychic energy of the Jedi can maintain the illusion for up to about 3 minutes, depending on how powerful they are."; }
+				describe = StringCatalog.Resolve( account, "This power allows the Jedi to create a projection of themselves that can distract foes from the Jedi themselves. This projection contains physical attributes as the psychic energy of the Jedi can maintain the illusion for up to about 3 minutes, depending on how powerful they are." ); }
 			else if ( spellID == 283 ){ name = "Throw Sabre"; icon="11215"; crystal = "12"; skill = "40"; mana = "16"; mantra = "Tiana"; map = "Sosaria"; dungeon = "the City of Montor"; world = "Land of Sosaria"; jedi = "Marra Jade"; scroll = "JediDatacron04"; 
-				describe = "The Jedi can throw their equipped sword at an enemy, doing not only the sword's normal damage but also an extra 17-53 points of damage. The types of resistances that the sword inflicts damage on match that of the sword. The sword quickly returns to the Jedi's hand upon throwing it."; }
+				describe = StringCatalog.Resolve( account, "The Jedi can throw their equipped sword at an enemy, doing not only the sword's normal damage but also an extra 17-53 points of damage. The types of resistances that the sword inflicts damage on match that of the sword. The sword quickly returns to the Jedi's hand upon throwing it." ); }
 			else if ( spellID == 284 ){ name = "Celerity"; icon="11249"; crystal = "80"; skill = "50"; mana = "20"; mantra = "Abigayl"; map = "Sosaria"; dungeon = "the Town of Renika"; world = "the Island of Umber Veil"; jedi = "Numi Sunrider"; scroll = "JediDatacron05"; 
-				describe = "This increases the running speed of the Jedi for about 10-25 minutes, making them run as fast as a stallion. This power cannot be called upon within certain areas and will often cease to function when entering those areas."; }
+				describe = StringCatalog.Resolve( account, "This increases the running speed of the Jedi for about 10-25 minutes, making them run as fast as a stallion. This power cannot be called upon within certain areas and will often cease to function when entering those areas." ); }
 			else if ( spellID == 285 ){ name = "Psychic Aura"; icon="11237"; crystal = "32"; skill = "20"; mana = "24"; mantra = "Wilems"; map = "Lodor"; dungeon = "the City of Elidor"; world = "Land of Lodoria"; jedi = "Plo Kune"; scroll = "JediDatacron06"; 
-				describe = "The Jedi can create an aura around them that will protect them better from physical and energy damage, but also makes them weaker against cold, fire, and poison damage. A Jedi will have to use to power again in order to remove these effects."; }
+				describe = StringCatalog.Resolve( account, "The Jedi can create an aura around them that will protect them better from physical and energy damage, but also makes them weaker against cold, fire, and poison damage. A Jedi will have to use to power again in order to remove these effects." ); }
 			else if ( spellID == 286 ){ name = "Deflection"; icon="11204"; crystal = "500"; skill = "70"; mana = "28"; mantra = "Morden"; map = "Lodor"; dungeon = "the Village of Springvale"; world = "Land of Lodoria"; jedi = "Kyle Katran"; scroll = "JediDatacron07"; 
-				describe = "This power gives the essence of the Jedi the ability to deflect most damaging magery spells back at the one who cast it. The amount that a Jedi can deflect is dependent on their power."; }
+				describe = StringCatalog.Resolve( account, "This power gives the essence of the Jedi the ability to deflect most damaging magery spells back at the one who cast it. The amount that a Jedi can deflect is dependent on their power." ); }
 			else if ( spellID == 287 ){ name = "Soothing Touch"; icon="11213"; crystal = "48"; skill = "10"; mana = "32"; mantra = "Kurklan"; map = "Lodor"; dungeon = "the Village of Islegem"; world = "Land of Lodoria"; jedi = "Kyp Duron"; scroll = "JediDatacron08"; 
-				describe = "The Jedi can heal themselves and others. With a high enough level of Jedi power, they could potentially cure poison, stop bleeding, and heal mortal wounds."; }
+				describe = StringCatalog.Resolve( account, "The Jedi can heal themselves and others. With a high enough level of Jedi power, they could potentially cure poison, stop bleeding, and heal mortal wounds." ); }
 			else if ( spellID == 288 ){ name = "Stasis Field"; icon="11253"; crystal = "52"; skill = "50"; mana = "36"; mantra = "Greggs"; map = "Lodor"; dungeon = "Greensky Village"; world = "Land of Lodoria"; jedi = "Ganer Rhysode"; scroll = "JediDatacron09"; 
-				describe = "A Jedi can create a field around another that will put them in stasis for a period of time, where they cannot take any actions for a short duration."; }
+				describe = StringCatalog.Resolve( account, "A Jedi can create a field around another that will put them in stasis for a period of time, where they cannot take any actions for a short duration." ); }
 			else if ( spellID == 289 ){ name = "Replicate"; icon="11218"; crystal = "250"; skill = "100"; mana = "40"; mantra = "Leantre"; map = "Sosaria"; dungeon = "the City of Kuldara"; world = "the Bottle World of Kuldar"; jedi = "Coran Horn"; scroll = "JediDatacron10"; 
-				describe = "This power allows the Jedi to create a replication crystal that can hold the Jedi's genetic pattern. If the Jedi meets an untimely end, the crystal will activate in 30 seconds and create a replicant that the Jedi's soul can then occupy. These crystal are quite fragile so you would need to make sure the crystal did not crumble while you were resting for long periods of time."; }
+				describe = StringCatalog.Resolve( account, "This power allows the Jedi to create a replication crystal that can hold the Jedi's genetic pattern. If the Jedi meets an untimely end, the crystal will activate in 30 seconds and create a replicant that the Jedi's soul can then occupy. These crystal are quite fragile so you would need to make sure the crystal did not crumble while you were resting for long periods of time." ); }
 
 			if ( slice == 1 ){ value = name; }
 			else if ( slice == 2 ){ value = skill; }
@@ -153,7 +164,7 @@ namespace Server.Spells.Jedi
 
 			if ( Caster.Karma < 0 )
 			{
-				Caster.SendMessage( "Your Karma is too low to use this power." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your Karma is too low to use this power." ) );
 				return false;
 			}
 			else if ( GetJediSkillMax( Caster ) < RequiredSkill )
@@ -173,7 +184,7 @@ namespace Server.Spells.Jedi
 			}
 			else if ( this is Celerity && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This power doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This power doesn't seem to work in this place." ) );
 				return false;
 			}
 
@@ -187,7 +198,7 @@ namespace Server.Spells.Jedi
 
 			if ( Caster.Karma < 0 )
 			{
-				Caster.SendMessage( "Your Karma is too low to use this power." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your Karma is too low to use this power." ) );
 				return false;
 			}
 			else if ( GetJediSkillMax( Caster ) < RequiredSkill )
@@ -207,7 +218,7 @@ namespace Server.Spells.Jedi
 			}
 			else if ( this is Celerity && MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( Caster, Region.Find( Caster.Location, Caster.Map ) ) )
 			{
-				Caster.SendMessage( "This power doesn't seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This power doesn't seem to work in this place." ) );
 				return false;
 			}
 

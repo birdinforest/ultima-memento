@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 using Server.Utilities;
 
 namespace Server.Engines.MLQuests.Definitions
@@ -114,7 +115,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override void WriteToGump(Gump g, ref int y)
         {
-            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, "Speak to townsfolk until you verify the Sage's rumor");
+            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString(g, "Speak to townsfolk until you verify the Sage's rumor"));
         }
 
         public override BaseObjectiveInstance CreateInstance(MLQuestInstance instance)
@@ -187,25 +188,32 @@ namespace Server.Engines.MLQuests.Definitions
                 base.WriteToGump(g, ref y);
 
                 y += 16;
-                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasLand ? GetOrAddHint(RumorType.Land) : "You must narrow down the location.");
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasLand ? GetOrAddHint(RumorType.Land) : BaseQuestGump.ResolveQuestCatalogString(g, "You must narrow down the location."));
 
                 if (HasLand)
                 {
                     y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasDungeon ? GetOrAddHint(RumorType.Dungeon) : "You must narrow down the location.");
+                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasDungeon ? GetOrAddHint(RumorType.Dungeon) : BaseQuestGump.ResolveQuestCatalogString(g, "You must narrow down the location."));
                 }
 
                 y += 16;
-                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasRelicNumber ? GetOrAddHint(RumorType.Item) : "You wonder which artefact everyone is talking about.");
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasRelicNumber ? GetOrAddHint(RumorType.Item) : BaseQuestGump.ResolveQuestCatalogString(g, "You wonder which artefact everyone is talking about."));
 
                 if (IsCompleted())
                 {
                     y += 16;
                     y += 16;
-                    g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("You heard {0} rumors, no wonder you're exhausted!", RumorAttempts));
+                    string rumorsLine = Instance.Player != null && Instance.Player.Account != null
+                        ? StringCatalog.ResolveFormat(Instance.Player.Account, "You heard {0} rumors, no wonder you're exhausted!", RumorAttempts)
+                        : string.Format("You heard {0} rumors, no wonder you're exhausted!", RumorAttempts);
+                    g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, rumorsLine);
                     
                     y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType)));
+                    string dest = QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType);
+                    string returnLine = Instance.Player != null && Instance.Player.Account != null
+                        ? StringCatalog.ResolveFormat(Instance.Player.Account, "Return to {0}.", dest)
+                        : string.Format("Return to {0}.", dest);
+                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, returnLine);
                 }
             }
         }

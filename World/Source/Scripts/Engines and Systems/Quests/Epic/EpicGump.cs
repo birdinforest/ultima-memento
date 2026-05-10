@@ -10,6 +10,7 @@ using Server.Mobiles;
 using System.Collections;
 using Server.Commands.Generic;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -302,6 +303,9 @@ namespace Server.Gumps
 					sText = "Well, well, well. I see that " + yourName + " has come to pursue knowledge in the resting places of the dead. But alas you have failed to further my efforts against the living. Go forth, and return when you have dispatched those that oppose me." + sBare;
 				}
 			}
+
+			sTitle = QuestCompositeResolver.ResolveComposite( listener, sTitle );
+			sText = QuestCompositeResolver.ResolveComposite( listener, sText );
 
             this.Closable=true;
 			this.Disposable=true;

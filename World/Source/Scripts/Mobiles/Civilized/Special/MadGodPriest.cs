@@ -119,13 +119,13 @@ namespace Server.Mobiles
 			    if( !( m_Mobile is PlayerMobile ) )
 				return;
 
-				if ( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey" ) )
-				{
-					m_Giver.SayTo(m_Mobile, "Have you been meditating in the Catacombs?");
-				}
-				else if ( !( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleMadGodName" ) ) )
-				{
-					m_Giver.SayTo(m_Mobile, "Only a true disciple knows the name of the Mad God.");
+			if ( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey" ) )
+			{
+				CitizenLocalization.SayToLocalized(m_Giver, m_Mobile, "Have you been meditating in the Catacombs?");
+			}
+			else if ( !( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleMadGodName" ) ) )
+			{
+				CitizenLocalization.SayToLocalized(m_Giver, m_Mobile, "Only a true disciple knows the name of the Mad God.");
 				}
 				else if ( !( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey" ) ) )
 				{

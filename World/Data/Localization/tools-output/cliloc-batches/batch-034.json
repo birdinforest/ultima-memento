@@ -1,0 +1,3006 @@
+{
+ "batch": 34,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1155586",
+   "text": "sanctuary, blackthorn.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155587",
+   "text": "You may not place this item in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155588",
+   "text": "You notice the crest of Doom on your fallen foe's equipment and decide it may be of some value...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155589",
+   "text": "~1_ITEM~ of Doom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155590",
+   "text": "You have turned in ~1_COUNT~ artifacts of Doom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155591",
+   "text": "Bring me items of Doom and I will reward you with valuable items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155592",
+   "text": "Turn In Artifacts of the Kotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155593",
+   "text": "Claim Rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155594",
+   "text": "Artifacts of Doom Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155595",
+   "text": "Artifacts of Doom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155596",
+   "text": "What can I interest you in...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155597",
+   "text": "~1_NAME~'s Lantern of Light",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155598",
+   "text": "[Your Character Name]'s Lantern of Light",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155599",
+   "text": "You are already bestowed with this title.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155600",
+   "text": "Defender of the Living",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155601",
+   "text": "This title is obtained from the Halloween Treasures of Doom Event.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155602",
+   "text": "Preserver of the Faith",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155603",
+   "text": "The Atoned",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155604",
+   "text": "A Deed for a Reward Title",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155605",
+   "text": "Thou hath been bestowed the title ~1_TITLE~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155606",
+   "text": "Sterling Silver Ring",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155607",
+   "text": "Boots of Escaping",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155608",
+   "text": "Cloak of Light",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155609",
+   "text": "Double Click to Set Skill Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155610",
+   "text": "Please Choose A Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155611",
+   "text": "Are you sure you wish to apply the selected skill bonus to this item?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155612",
+   "text": "A skill bonus has been applied to the item!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155613",
+   "text": "Target the weapon, spellbook, or instrument you wish to apply this to...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155614",
+   "text": "This item is already treated with Tincture of Silver!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155615",
+   "text": "You cannot apply Tincture of Silver to this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155616",
+   "text": "You carefully apply Tincture of Silver to the item.  The effects will fade in one hour.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155617",
+   "text": "Silvered",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155618",
+   "text": "Your ~1_name~'s Tincture of Silver has worn off.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155619",
+   "text": "Tincture of Silver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155620",
+   "text": "When Applied:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155621",
+   "text": "200% Damage Increase towards ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155622",
+   "text": "Undead Vulnerability",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155623",
+   "text": "Sceptre of Pride",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155624",
+   "text": "Crook of Humility",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155625",
+   "text": "Ancient Clay Vase",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155626",
+   "text": "*It appears to be an ancient vase. The top is sealed with some kind of wax. A bladed item would perhaps be useful...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155627",
+   "text": "Ancient Parchment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155628",
+   "text": "*The parchment appears heavily worn and in need of restoration by a skilled Scribe...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155629",
+   "text": "*The vase shatters as you cut away the sealing wax!\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155630",
+   "text": "Antique Documents Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155631",
+   "text": "Prophetic Manuscript",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155632",
+   "text": "I was a boy of nine when I had my first vision. As I slept, I dreamt of darkness, studded with<br>brilliant gems reflecting a wondrous light. A thousand swirls of shimmering dust appeared, dancing<br>across the field before me. I reached for them, and suddenly the dust came together and there was<br>a great flash, and then for a moment, nothing. I became aware of a whispering voice as a form<br>slowly resolved in front of me - it was a man whose appearance was at once imperceptible and<br>unforgettable, wonderful and ordinary, inspriring and terrifying. Gradually, I became able to<br>understand the whispering, which came to me as though it were an echo from somewhere else. It<br>was the being in front of me, and after so many years, so many visits, I still remember <br>everything he said:<br><br>     \"Owain. Long has your family had a gift of sight, and long so it shall be. I come to you<br>from the past to show you the future, and from the future shall I come with memories of the<br>past. I will be your Guide, once you are ready to see.\"<br><br>     When I awoke, I was frightened - too frightened to even speak of it. As one year turned into<br>the next, however, I gradually learned to forget the dream. Some years later, when I was still a<br>young man, I fell terribly ill. The healers were unable to explain this malady, and as a result,<br>I lost the use of my eyes. I knew fear once again. It was then that I was visited in my dreams<br>for the second time:<br>\t<br>     \"It is time, Owain. There is much work to be done, now that you are ready to see.\"<br><br>     I have been shown many things in my dreams - things that once were, and those that have yet<br>to be. Here, at the end of my life, at the beginning of a Golden Age in the realm, I shall <br>recount in secret the most important events that I have received glimpses of. While they may <br>need to remain secret for some time, the day will come when the realm will need to know what <br>I have seen.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155633",
+   "text": "I cannot describe in detail the being that has visited my dreams. Try as I might,<br>his specific nature eludes me, and the harder I try to envision him in my mind, the <br>less it seems I am able to do so. He did not accompany during all of the visions I <br>have experienced, but he guided me through the most important ones - the ones I now<br>record. <br><br>   Many generations from now, the world will be fractured. The land I know will grow <br>darker, and a powerful Enchantress will wage constant war. Wishing to provide his<br>people an escape from death and mayhem, a Noble King will lead his subjects to a new<br>land, created by powerful magic and being a mirror image of the one which they<br>fled from. There they will be free from the turmoil that had taken hold in their<br>former home, if only for a short time. New conflicts will happen, even as the old ones <br>persist in the lands left behind. The King will depart for distant lands, and new <br>powers will rise and fall until the kingdom will be in danger of collapse.<br><br>   Without leadership, the cities will turn against one another as citizens take<br>to the streets in protest and bandits roam the land unimpeded. Into this will arrive<br>a Healer, whose face will be revealed to be that of a demon to many, and whose motive <br>will be endlessly questioned. But he shall ascend the throne, and reunite the people<br>of the realm once again, giving them more power over their lives in the process.<br><br>   Not all wounds can be healed, however. In the Old Lands a long struggle will enter<br>its final stage as the factions who remained in the wake of the Great Exodus dwindle<br>in number. The Enchantress, having seduced a powerful Mage, will have an advantage<br>over her remaining enemy - the Knight who stayed behind to protect those unwilling to<br>leave their homes and lives, perilous though those lives may be.<br><br>   With the Enchantress gaining strength, bolstered by the warriors of her defeated<br>enemies, she will be on the cusp of taking control of the Old Lands. Then, something<br>unforseen shall occur.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155634",
+   "text": "I should say that I have been exceptionally lucky in my life. By the time of the <br>third visit from my Guide, I had wed and even had two children - a son and a daughter.<br>The regret of never having been able to see their faces pales in comparison to the joy<br>they have brought to me. It is to them I leave this final account, with instructions<br>to hide it well.<br><br>   On his third arrival, I spoke to my Guide for the first time - I asked his name. <br>He responded only with cryptic remarks, saying he had and will be called many things. <br>When I asked why he was helping me to see the things I had seen, he said that he is only<br>concerned with keeping \"order\" and that one day my words would help him do so. It was then<br>that he showed me something that which, hundreds of years from now, would surprise all<br>who lived - the return of the Noble King.<br><br>   Upon his return to the Kingdom he had created, the Noble King will be surprised to find<br>the Healer, a dear friend but also an ideological rival, alive and on the throne. Seeing<br>the people happy as citizens rather than subjects, and largely content with his old friend's<br>rule, the King will lay to rest their old rivalry and resolve to stay for a short time<br>before returning to the distant lands he had arrived from. It will not be long however, <br>before the King's attention is drawn towards the Old Lands and those who elected to stay <br>when he led the Great Exodus. In doing so, he will be sad, as he will see naught but turmoil<br>as the forces of the Enchantress seem poised to overtake at last the stalwart Knight.<br><br>   It is then that he will make a decision that will change the course of all lands - he <br>will call for all those who followed him once before, to do so again. Charging them with<br>the protection of the Old Lands, he will encourage them them to uphold the virtuous<br>philosophy he had ruled and lived by. In response, the Enchantress will amass an army of wickedness <br>the likes of which the world has never seen. Thus, a war of control will turn into a war of <br>ideology.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155635",
+   "text": "It is a curious thing, to be blind and to write. My mother taught me to write<br>when I was very young - I was well practiced by the time I had lost the use of<br>my eyes. I maintained the skill through the years with careful practice. I know<br>one day these will be found and read - I have foreseen it.<br><br>   I was past midaged by the time of my Guide's final visit. It was then that he<br>showed me what the lands I knew of as home would one day come to look like, as <br>the clash of two opposing ideologies will cause blood to be shed in every city.<br>This will not be a war of control for territory, however, but rather a battle<br>for the soul of the world taking place in a land once forsaken but now remembered.<br><br>   It will not only be the forces of the Enchantress and the Noble King and his Knight <br>who enter into the fight, however. Many will be drawn into violence, from all<br>corners of the world. And through this conflict and strife, a forgotten<br>secret will be rediscovered. My Guide's final words to me were:<br><br>   \"The greatest treasure of a long-dead king will have the power to save all lands. <br>Look for salvation in the shadows of the Old Lands, and in the ruins in the stars.\" <br><br>   Then, turning back into a thousand swirls of dust, he disappeared, never to <br>enter into my dreams again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155636",
+   "text": "The Time Lord. That is how he will be known when the events I <br>have spoken of will transpire. In my sleep last night I had a<br>vision of this name being spoken, and of an image of <br>the being who has acted as my Guide for all my life.<br><br>   Though he never visited me again, I continued to have visions<br>of the future. It was in one of these that I saw the most troubling<br>events of all, for I believe I saw things that the Time Lord would not<br>have liked me to see.<br><br>   One day, these words will be found in the darkest, most dangerous<br>depths imaginable. On this day I shall walk upon the world once more,<br>if in spirit only. The secret of which I have spoken will be discovered,<br>and the path to the greatest treasure of a dead king will be revealed.<br>Of this I am certain, even if I do not know what, or where it is.<br><br>   Not all may be as the Time Lord showed me, however. For while I saw<br>the salvation he spoke of, I now believe that this treasure also has<br>the power to destroy our world, along with countless others. This<br>may come as a surprise to any who read this, but it is one of the <br>possibilities I have foreseen. Not all things that are meant to happen, will.<br><br>   Now I come to the end of it. I will not be much longer for this world,<br>and I am at peace. I have done my part, and these pages will now lie in wait <br>until the time is right.<br><br>   Until the world is ready to see.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155637",
+   "text": "Owain the Blind Prophet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155638",
+   "text": "The Bridge of Two Ships",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155639",
+   "text": "Behind the Bellwether",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155640",
+   "text": "The Shepherd's Bane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155641",
+   "text": "The Pretty Prince's Throng",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155642",
+   "text": "Bully's Breakfast",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155643",
+   "text": "This property indicates that an item has increased durability loss and only can be powdered 3 times. Each powder will reduce max durability to 250, 200, and 150 respectively. This item can be repaired.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155644",
+   "text": "This property indicates that an item has increased item insurance cost and cannot be blessed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155645",
+   "text": "This property indicates that an item cannot be shard transferred.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155646",
+   "text": "This property indicates that an item can only be used by Vice vs Virtue players.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155647",
+   "text": "Teleport to nearest Moongate?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155648",
+   "text": "The Professor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155649",
+   "text": "Oh! Hello there! you must be from the Lyca...oh, no you don't look like anyone from there.  I suppose you are here about the artifacts?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155650",
+   "text": "What artifacts?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155651",
+   "text": "Some time ago we uncovered some ancient texts that pointed to the dungeon Doom here as a potential site for archaeological excavation.  We had been quietly going about our work until we found...something.  It's exact nature and origins elude us still, however, since then our guards have reported finding artifacts bearing a previously unknown crest from the creatures inside the dungeon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155652",
+   "text": "What have you excavated?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155653",
+   "text": "What is the crest?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155654",
+   "text": "You can see for yourself inside, just off the chamber where that kooky sorceress peddles her wares.  We've also unearthed some ancient clay vases that appear to have some value, but those are items of great historical importance and I must insist they be left undisturbed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155655",
+   "text": "So you're saying I can't have them...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155656",
+   "text": "No you cannot have them! I cannot condone the theft of antiques that have been claimed by the research team here!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155657",
+   "text": "As far as we can tell, the crest is associated in some way with the Dungeon Doom.  It appears to bear a striking resemblance to a scepter and a crook crossed on a circle.  We are still investigating the origins.  The artifacts themselves seem to have some power and we've determined they have no other sinister effects.  You are welcome to collect them, I've even instructed my research assistants to trade artifacts for items you may find valuable to further our research.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155658",
+   "text": "*You reveal something hidden about the object...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155659",
+   "text": "*The wooden sign seems in oddly good condition for how old the sarcophagus is. Most of the inscription is worn away...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155660",
+   "text": "*You examine the plaque...there appears to be a series of runic characters that are raised up...they look like buttons...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155661",
+   "text": "Enter the characters you wish to push...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155662",
+   "text": "Plaque",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155663",
+   "text": "Nothing happens.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155664",
+   "text": "The Blind Prophet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155665",
+   "text": "*The man raises his head in your direction* I was wondering when you might arrive.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155666",
+   "text": "You knew I was coming?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155667",
+   "text": "I know a great many things, and your arrival here was foretold to me long ago.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155668",
+   "text": "Who told you I was coming?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155669",
+   "text": "What is this place?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155670",
+   "text": "You are no doubt familiar with my abilities, as your presence here suggests you've read my manuscripts...or perhaps your connection to the ethereal void is so strong you came about my location here and the secret to its entry...no matter.  I know a great many things.  I know of things that will, have, and are.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155671",
+   "text": "You can see the future?!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155672",
+   "text": "The more fitting question my friend is when is this place...long before the events of your world have played out across a thousand realms just like it, the one you know as Mondain was just a boy - a boy with an insatiable appetite for power and a penchant for jealousy.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155673",
+   "text": "Mondain the Wizard?!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155674",
+   "text": "I have been told of a great and eternal war. Imagine a game of chess where victory and defeat bring about another game.  This is the war that is brewing.  I speak of a war of ideologies, a war fought in lands long forgotten. A war between Vice and Virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155675",
+   "text": "Vice and Virtue?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155676",
+   "text": "You know him as the vile wizard responsible for binding all of Sosaria to his cruel embrace before the Stranger appeared to shatter the Gem of Immortality, freeing Sosaria and inadvertently creating the shards that have held so much power for those who wish to harness them...for better or for worse.  Before that, however, he was like all...just a boy, albeit a troubled one at that.  Mondain's father, Wolfgang, became concerned for his son and insisted he take a year at the local abbey to assuage his son's afflictions.  Wolfgang promised his son a magical ruby gem capable of harnessing the power of the Sun as reward for his son's compliance.  Mondain learned of this, and rather than fulfill his father's wishes he chose to slay him and take the powerful gem.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155677",
+   "text": "Murdered his father!?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155678",
+   "text": "Just as there is light and dark, there is Virtue and Vice.  There are two sides to every coin.  This is the war of ideologies that wages now and will wage forever.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155679",
+   "text": "Yes. And that is when we find ourselves...the funeral of the great King Wolfgang, murdered at the hands of an enraged and jealous son, is to be held in this very cathedral.  This is all I can tell you for now.  I feel we are soon to have a long journey with one another.  *The man appears to bow his head and look towards the floor*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155680",
+   "text": "You cannot apply Tincture of Silver to items that are already slayers!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155681",
+   "text": "You cannot alter an item that has been treated with Tincture of Silver.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155682",
+   "text": "Talons of Escaping",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155683",
+   "text": "Wing Armor of Light",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155684",
+   "text": "Power Scroll Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155685",
+   "text": "Wondrous (105)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155686",
+   "text": "Exalted   (110)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155687",
+   "text": "Mythical  (115)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155688",
+   "text": "Legendary (120)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155689",
+   "text": "Power Scrolls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155690",
+   "text": "You remove a Power Scroll and put it in your pack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155691",
+   "text": "This book only holds Power Scrolls.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155692",
+   "text": "You add the scroll to your Power Scroll book.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155693",
+   "text": "This item is impermissible and can not be added to the book.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155694",
+   "text": "*You carefully pick some pods from the plant*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155695",
+   "text": "The plant is not ready to be picked from.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155696",
+   "text": "Blue Marble Fireplace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155697",
+   "text": "Gold Marble Fireplace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155698",
+   "text": "Green Marble Fireplace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155699",
+   "text": "Happy Holidays 2014",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155700",
+   "text": "Coffee Grounds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155701",
+   "text": "Get Hunting Permit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155702",
+   "text": "You already have a hunting permit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155703",
+   "text": "Your backpack was too full so the permit was deleted. Empty your backpack and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155704",
+   "text": "Hunting Permit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155705",
+   "text": "Target the kill you wish to document",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155706",
+   "text": "That is not a valid kill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155707",
+   "text": "You cannot document someone else's kill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155708",
+   "text": "Hunter: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155709",
+   "text": "Date of Kill: ~1_DATE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155710",
+   "text": "Wingspan: ~1_VAL~ feet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155711",
+   "text": "Length: ~1_VAL~ feet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155712",
+   "text": "This hunting permit has already documented a kill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155713",
+   "text": "*You document your kill on the permit*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155714",
+   "text": "Turkey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155715",
+   "text": "Boar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155716",
+   "text": "Walrus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155717",
+   "text": "Alligator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155718",
+   "text": "Species: ~1_TYPE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155719",
+   "text": "This permit has already been submitted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155720",
+   "text": "This permit was documented in a different month or year than the current month and year. I only accept permits documented in the current month and year.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155721",
+   "text": "Begging thy pardon, but your permit has not broken the current record for this species!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155722",
+   "text": "<I>The Huntmaster's Challenge</I><BR>Your kill has either beaten or tied with the current leader for this month's Huntmaster's Challenge!  If no one beats your kill before the first day of the next month, return to claim a prize!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155723",
+   "text": "Ancient Hell Hound Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155724",
+   "text": "Ridable Ancient Hell Hound Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155725",
+   "text": "Double Click to Join Huntmaster's Challenge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155726",
+   "text": "Huntmaster's Challenge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155727",
+   "text": "Huntmaster's Champion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155728",
+   "text": "This title is obtained from the Huntmaster's Challenge at the Ranger's Guild in Skara Brae.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155729",
+   "text": "That is not something that can be ground.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155730",
+   "text": "What do you wish to grind?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155731",
+   "text": "Brew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155732",
+   "text": "You must be near a steam powered beverage maker to do that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155733",
+   "text": "You are not near a steam powered beverage maker.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155734",
+   "text": "You don't have any coffee grounds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155735",
+   "text": "Coffee Grounds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155736",
+   "text": "Beverages",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155737",
+   "text": "Coffee",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155738",
+   "text": "Hot Cocoa",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155739",
+   "text": "*You sip from the mug*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155740",
+   "text": "Adding this to the power tool would put it over the max number of charges the tool can hold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155741",
+   "text": "Charges have been added to the power tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155742",
+   "text": "Toggle: On/Off",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155743",
+   "text": "*You toggle the machine's power switch*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155744",
+   "text": "Member of the Skara Brae Ranger's Guild",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155745",
+   "text": "Platinum Dragon Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155746",
+   "text": "Flesh Renderer Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155747",
+   "text": "Crystal Elemental Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155748",
+   "text": "Dark Father Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155749",
+   "text": "*This must be locked down in a house in order to grow*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155750",
+   "text": "Greetings! Only the most brave Hunters dare take my challenge! To participate, simply purchase a hunting permit from me for 5,000gp.  When you are ready to to hunt seek any species of prey represented by the trophies in this hall.  When you have bested your quarry use the deed on the corpse to document your kill.  Return to me and hand me the permit and I will process it.  If your kill beats or ties the current best record for that species, you will be eligible for rewards when the contest finishes on the first day of the next month!    Return and speak to me on the first day of the next month to claim your rewards should your record hold up during the month long contest! You may also use a taxidermy kit, purchasable from a tanner, to create a trophy of your kill like the ones you see here. Happy Hunting!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155751",
+   "text": "*You hear an unsettling rustling in the woods nearby!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155752",
+   "text": "*You are being pecked to death!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155753",
+   "text": "Auto Renew Trade Deal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155754",
+   "text": "You have cancelled auto-renew of your trade deal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155755",
+   "text": "You have set the trade deal to auto-renew.  So long as funds are available the current trade deal will be renewed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155756",
+   "text": "Nomination period ends after: ~1_DATE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155757",
+   "text": "Voting Period Ends After: ~1_DATE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155758",
+   "text": "City Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155759",
+   "text": "This item can only be used on New Magincia Gardening Plants.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155760",
+   "text": "You may do this once every other month.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155761",
+   "text": "A Gardener is already tending to this plant.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155762",
+   "text": "You have hired a gardener to tend to your plant.  The gardener will no longer tend to your plant when server maintenance occurs after the expiration date of your gardening contract.  While a gardener is tending to your plant you will not have to care for it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155763",
+   "text": "Gardening Contract Expires: ~1_TIME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155764",
+   "text": "Gardening Contract",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155765",
+   "text": "Target the New Magincia plant you wish to have a gardener tend to...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155766",
+   "text": "A charge could not be refunded to the last Forged Metal of Artifacts tool you used, you must use this charge.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155767",
+   "text": "A charge could not be refunded to the last Forged Metal of Artifacts tool you used because the item is not in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155768",
+   "text": "A charged has been refunded to your Forged Metal of Artifacts tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155769",
+   "text": "Valentine's Day Picnic Basket",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155770",
+   "text": "A Freshly Picked Rose",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155771",
+   "text": "Magery Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155772",
+   "text": "Mysticism Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155773",
+   "text": "Necromancy Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155774",
+   "text": "Spellweaving Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155775",
+   "text": "Bushido Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155776",
+   "text": "Chivalry Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155777",
+   "text": "Ninjitsu Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155778",
+   "text": "Fencing Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155779",
+   "text": "Mace Fighting Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155780",
+   "text": "Swordsmanship Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155781",
+   "text": "Throwing Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155782",
+   "text": "Parrying Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155783",
+   "text": "Poisoning Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155784",
+   "text": "Wrestling Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155785",
+   "text": "Animal Taming Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155786",
+   "text": "Archery Mastery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155787",
+   "text": "You must wait ~1_minutes~ minutes before you can use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155788",
+   "text": "Your target is already at full health, mana and stamina!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155789",
+   "text": "You feel completely rejuvenated!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155790",
+   "text": "Your target has been rejuvenated!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155791",
+   "text": "You feel rejuvenated!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155792",
+   "text": "Stone Walls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155793",
+   "text": "This action disturbs the focus necessary to keep your death ray active and it dissipates.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155794",
+   "text": "Rough Windowless",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155795",
+   "text": "Your journey on the Path of the Humble will end in ~1_SECONDS~ seconds, at that time your resists will be returned to normal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155796",
+   "text": "You have already ended your journey on the Path of Humility.  You must wait before you restart your path.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155797",
+   "text": "Rough Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155798",
+   "text": "~1_STR~ Energy Resist.<br>~2_DAM~ energy damage every 3 seconds while death ray remains in effect.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155799",
+   "text": "Rough Arch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155800",
+   "text": "You have ended your journey on the Path of Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155801",
+   "text": "You must wait before you can once again begin your journey on the Path of Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155802",
+   "text": "You have begun your journey on the Path of Humility.  Your resists have been debuffed by ~1_DEBUFF~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155803",
+   "text": "Target: ~1_val~<br>Damage: ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155804",
+   "text": "Rough Pillar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155805",
+   "text": "Rough Rounded Arch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155806",
+   "text": "-~1_VAL~% to all resists",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155807",
+   "text": "Path of Humility",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155808",
+   "text": "You cannot gain more Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155809",
+   "text": "You have gained in Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155810",
+   "text": "Rough Small Arch",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155811",
+   "text": "You have gained a path in Humility!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155812",
+   "text": "You must be at least a Seeker of Humility to Invoke this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155813",
+   "text": "You can only embrace your Humility on a pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155814",
+   "text": "Rough Angled Pillar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155815",
+   "text": "You cannot embrace Humility on the dead!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155816",
+   "text": "Short Rough",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155817",
+   "text": "Target the pet you wish to embrace with your Humility...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155818",
+   "text": "You have lost some Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155819",
+   "text": "*Your pet surges with the power of your Humility!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155820",
+   "text": "Stone Stairs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155821",
+   "text": "Rough Block",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155822",
+   "text": "Rough Steps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155823",
+   "text": "*Your pet's power returns to normal*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155824",
+   "text": "Spirituality Virtue Shield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155825",
+   "text": "~1_VAL~% Reduction to Incoming Damage<br>~2_VAL~ Shield HP Remaining",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155826",
+   "text": "Rough Corner Steps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155827",
+   "text": "Target whom you wish to embrace with your Spirituality...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155828",
+   "text": "Thy target must be among the living.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155829",
+   "text": "You must be a Seeker of Spirituality to invoke this Virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155830",
+   "text": "Rough Rounded Corner Steps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155831",
+   "text": "You cannot gain more Spirituality.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155832",
+   "text": "You have gained in Spirituality.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155833",
+   "text": "You have gained a path in Spirituality!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155834",
+   "text": "Rough Inset Steps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155835",
+   "text": "You have lost some Spirituality.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155836",
+   "text": "They are already embraced by Spirituality.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155837",
+   "text": "You can only embrace players and pets with Spirituality.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155838",
+   "text": "Rough Rounded Inset Steps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155839",
+   "text": "Your spirit has been embraced! You feel more powerful!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155840",
+   "text": "Your spirit is no longer embraced. You feel less powerful.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155841",
+   "text": "You can't use a bladed item on a wall safe with a balance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155842",
+   "text": "Small Display Case (South)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155843",
+   "text": "Small Display Case (East)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155844",
+   "text": "You may not build any higher.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155845",
+   "text": "Large Display Case (South)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155846",
+   "text": "Large Display Case (East)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155847",
+   "text": "Thy current transfer balance is ~1_AMOUNT~ platinum and ~2_AMOUNT~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155848",
+   "text": "Thy current secure balance is ~1_AMOUNT~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155849",
+   "text": "Dark Wooden Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155850",
+   "text": "Light Wooden Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155851",
+   "text": "Curled Metal Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155852",
+   "text": "Flourished Metal Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155853",
+   "text": "Inward Curled Metal Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155854",
+   "text": "End Curled Metal Sign Hanger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155855",
+   "text": "Thy current bank balance is ~1_AMOUNT~ platinum and ~2_AMOUNT~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155856",
+   "text": "~1_AMOUNT~ gold has been removed from your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155857",
+   "text": "Currency Wall Safe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155858",
+   "text": "You are now on a Humility Hunt. For each kill while you forgo the protection of resists, you shall continue on your path to Humility.  You may end your Hunt by speaking \"Lum Lum Lum\" at any time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155859",
+   "text": "Gold Deposited: ~1_AMOUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155860",
+   "text": "Currency Wall Safe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155861",
+   "text": "Deposit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155862",
+   "text": "Withdraw",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155863",
+   "text": "Safe Transactions:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155864",
+   "text": "~1_NAME~'s Secure Account: ~2_AMOUNT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155865",
+   "text": "Enter amount to deposit:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155866",
+   "text": "Enter amount to withdraw:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155867",
+   "text": "The amount entered is invalid. Verify that there are sufficient funds to complete this transaction.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155868",
+   "text": "Unable to modify a trade marked as accepted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155869",
+   "text": "~1_AMOUNT~ platinum has been deposited into your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155870",
+   "text": "Thy current transfer balance is ~1_AMOUNT~ platinum and ~2_AMOUNT~ gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155871",
+   "text": "Enter amount of gold to add to shard transfer balance from current account balance of ~1_AMOUNT~:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155872",
+   "text": "Enter amount of platinum to add to shard transfer balance from current account balance of ~1_AMOUNT~:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155873",
+   "text": "Your shard transfer balance is been reset.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155874",
+   "text": "You do not have enough mana to keep your death ray active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155875",
+   "text": "You must have the Time of Legends expansion to use this feature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155876",
+   "text": "* Requires the \"Time of Legends\" expansion.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155877",
+   "text": "Stone Floor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155878",
+   "text": "Light Paver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155879",
+   "text": "Medium Paver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155880",
+   "text": "Dark Paver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155881",
+   "text": "mystic weapon -~1_val~ skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155882",
+   "text": "Primer on ~1_Skill~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155883",
+   "text": "Volume ~1_Level~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155884",
+   "text": "You are already proficient in this level of ~1_MasterySkill~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155885",
+   "text": "You have increased your proficiency in ~1_SkillMastery~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155886",
+   "text": "Your active skill mastery is now set to ~1_MasterySkill~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155887",
+   "text": "You may not wield a weapon and perform this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155888",
+   "text": "You must wait before using this ability again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155889",
+   "text": "You are already under the effect of this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155890",
+   "text": "*You attempt channel your wrestling mastery into a fit of rage!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155891",
+   "text": "You have already learned that level of ~1_SkillMastery~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155892",
+   "text": "Rampage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155893",
+   "text": "Each successful hit or offensive spell grants:<br>+~1_VAL~ Hit Point Regeneration<br>+~2_VAL~ Stamina Regeneration<br>+~3_VAL~ Swing Speed Increase.<br>+~4_VAL~ Casting Focus.<br>(Once you miss your target this buff will end)<br>Current totals:<br>+~5_VAL~ Hit Point Regeneration<br>+~6_VAL~ Stamina Regeneration<br>+~7_VAL~ Swing Speed Increase.<br>+~8_VAL~ Casting Focus.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155894",
+   "text": "You unleash the fury of your fists on your opponent!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155895",
+   "text": "You ready yourself to unleash your fists of fury!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155896",
+   "text": "Death Ray",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155897",
+   "text": "Ethereal Burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155898",
+   "text": "Nether Blast",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155899",
+   "text": "Mystic Weapon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155900",
+   "text": "Command Undead",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155901",
+   "text": "Conduit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155902",
+   "text": "Mana Shield",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155903",
+   "text": "Summon Reaper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155904",
+   "text": "Enchanted<br>Summoning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155905",
+   "text": "Anticipate Hit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155906",
+   "text": "Warcry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155907",
+   "text": "Intuition",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155908",
+   "text": "Rejuvenate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155909",
+   "text": "Holy Fist",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155910",
+   "text": "Shadow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155911",
+   "text": "White Tiger Form",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155912",
+   "text": "Flaming Shot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155913",
+   "text": "Playing the Odds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155914",
+   "text": "Thrust",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155915",
+   "text": "Pierce",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155916",
+   "text": "Stagger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155917",
+   "text": "Toughness",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155918",
+   "text": "Onslaught",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155919",
+   "text": "Focused Eye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155920",
+   "text": "Elemental Fury",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155921",
+   "text": "Calledshot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155922",
+   "text": "Saving Throw",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155923",
+   "text": "Shield Bash",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155924",
+   "text": "Bodyguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155925",
+   "text": "Heighten Senses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155926",
+   "text": "Tolerance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155927",
+   "text": "Injected Strike",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155928",
+   "text": "Potency",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155929",
+   "text": "Rampage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155930",
+   "text": "Fists of Fury",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155931",
+   "text": "Knockout",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155932",
+   "text": "Whispering",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155933",
+   "text": "Combat Training",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155934",
+   "text": "Boarding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155935",
+   "text": "Placeholder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155938",
+   "text": "The mage focuses a death ray on their opponent which snares the mage to their location and does damage based on magery skill, evaluating intelligence skill, and mastery level as long as the mage has mana and the target is in range.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155939",
+   "text": "The mage restores a large amount of mana based on mastery level and can recast the ability more often based on magery skill, evaluating intelligence skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155940",
+   "text": "The mystic releases a wave of nether energy that pulses on attacked targets based on mastery level and does chaos damage based on mysticism skill, and focus or imbuing skill. Nether Blast also can apply a mana rip debuff to targets that are hit which will cause the target to lose extra mana and restores that mana to the Nether Blast caster.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155941",
+   "text": "The mystic converts mysticism skill into an equipped weapon's required skill for a penalty to mysticism skill based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155942",
+   "text": "The necromancer has a chance to command the undead to do their bidding based on necromancy skill, spirit speak skill, mastery level, and creature barding difficulty while providing life leach to the target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155943",
+   "text": "The necromancer creates a conduit field at a targeted location that causes all targeted necromancy spells to effect all valid targets within the field at reduced spell strength based on necromancy skill, spirit speak skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155944",
+   "text": "Toggle ability that results in a shield on the spellweaver that has a chance to deduct incoming damage from the spellweaver's mana pool based on spellweaving skill, arcane focus, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155945",
+   "text": "The spellweaver summons a stationary reaper for a duration based on spellweaving skill, and arcane focus.  The strength of the summoned reaper is determined by spellweaving skill, arcane focus, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155946",
+   "text": "While the magery, necromancy, spellweaving, or mysticism masteries are active the magic user receives a buff to summoned creatures based on skill and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155947",
+   "text": "While the bushido mastery is active the samurai has a chance to reduce hit point regeneration instead of completely losing it when using confidence.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155948",
+   "text": "The samurai unleashes a warcry that will reduce incoming damage from targets within a radius based on the samurai's bushido skill, best weapon skill and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155949",
+   "text": "While the bushido, chivalry, or ninjitsu masteries are active mana is increased based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155950",
+   "text": "The paladin restores the hit points, stamina, and mana of a target based on mastery level, and with sufficient karma can remove poison and curses.  The paladin may rejuvenate a target more often based on higher mastery level, higher best weapon skill and higher Chivalry skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155951",
+   "text": "The paladin unleashes a flying fist against a target that does energy damage based on the paladin's chivalry skill, best weapon skill, and mastery level.  A bonus to damage is provided by high karma as well against undead targets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155952",
+   "text": "Toggle ability that while active will consume mana and make the ninja more difficult to become unhidden from taking damage based on ninjitsu skill, stealth skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155953",
+   "text": "The ninja transforms into a white tiger, providing the ninja with a buff to defense chance increase and max defense chance increase, a chance to evade attacks based on mastery level, and an applied bleed attack on targets based on ninjitsu skill and best weapon skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155954",
+   "text": "The archer fires a volley of flaming arrows at a target or location.  On successful hit fire damage based on mastery level is done to a number of targets in a radius based on the archery and tactics skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155955",
+   "text": "The archer’s party members rally for them with increased swing speed and hit chance as the archer’s range is decreased. Party member buffs are based on the archery and tactics skill of the archer along with the mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155956",
+   "text": "Toggle ability that provides increased physical attack damage and decreases targets physical attack damage based on the mastery level of the fencer.  This ability consumes mana while active. This ability does not stack with the special move Feint.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155957",
+   "text": "The fencer executes a piercing move on their opponent causing stamina drain on the victim based on the fencer's fencing and tactics skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155958",
+   "text": "The mace fighter executes a staggering move on their opponent causing a swing speed increase debuff and massive damage to the victim based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155959",
+   "text": "Toggle ability that provides the mace fighter with increased hit points based on the mace fighter's tactics and mace fighting skill, and mastery level that consumes mana while active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155960",
+   "text": "The swordsman executes an onslaught of attacks on their opponent reducing one of their victim's resists based on the swordsman's swordsmanship and tactics skill and the damage type of the weapon used for a duration based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155961",
+   "text": "Toggle ability that provides the swordsman with a hit chance increase buff based on the swordsman's swordsmanship and tactics skill and mastery level that consumes mana while active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155962",
+   "text": "When activated the thrower will generate a pool of fury based on their weapons damage type. Each successful attack the thrower deals will add fury to the pool. Once the pool is full the thrower will unleash the Elemental Fury. The duration and fury pool size are based on the thrower's mastery level, throwing, and tactics skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155963",
+   "text": "The thrower executes a called shot that provides a Hit Chance Increase and Damage increase based on the thrower's throwing and tactics skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155964",
+   "text": "While the archery, fencing, mace fighting, swordsmanship, or throwing masteries are active the combatant receives hit chance increase, defense chance increase, strength bonus, and damage bonus  based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155965",
+   "text": "When activated the shield user will execute a shield bash on successfully hitting or parrying their opponent causing physical damage and paralyzing their opponent based on parry skill, best weapon skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155966",
+   "text": "The shield user chooses a protectee to absorb a percentage of damage done to the protectee based on parry skill, best weapon skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155967",
+   "text": "Toggle ability that provides the Parrying Master with increased chance to parry based on parry skill, best weapon skill and mastery level that consumes mana while active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155968",
+   "text": "Toggle ability that grants the poisoner a reduction to poison level when poisoned at a stamina cost based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155969",
+   "text": "When activated the poisoner will apply a poison resistance debuff to their target for a duration based on poisoning skill, anatomy skill, and mastery level.  Any poisons applied to the poisoner's weapon will also be applied to the target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155970",
+   "text": "While the poisoning mastery is active, the poisoner has  a chance to not consume poison charges when using infected strike based on poisoning skill, anatomy skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155971",
+   "text": "The wrestler attempts to continually hit their opponent where with each successful hit the wrestler receives a bonus to hit point regeneration, stamina regeneration, casting focus, and swing speed increase based on mastery level.  The effect is lost if the wrestler misses, the wrestler's opponent parries the attack, or fails to cast a spell.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155972",
+   "text": "The wrestler attempts to land three hits in rapid succession to the next target that damages you within a 2 tile radius. If successful the third hit will deal direct damage based on the wrestler's mastery level. The duration of this ability is based on wrestling skill and anatomy skill or evaluating intelligence skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155973",
+   "text": "While the wrestling mastery is active the wrestler receives a damage bonus to each hit based on mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155974",
+   "text": "The animal tamer attempts to guide their pet on the path of skill gain, increasing the pet's skill gains based on the tamer's animal taming skill, animal lore skill, and mastery level.  This ability functions similarly to a scroll of alacrity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155975",
+   "text": "The animal tamer readies their pet for battle allowing the tamer to add combat abilities to their pet based on animal taming skill, animal lore skill, and mastery level.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155976",
+   "text": "While the animal taming mastery is active the animal tamer receives additional stables slots.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155979",
+   "text": "You may not wield a weapon and use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155980",
+   "text": "*You ready yourself to stagger your opponent!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155981",
+   "text": "Stagger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155982",
+   "text": "-~1_VAL~% swing speed increase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155983",
+   "text": "You must have a mace weapon equipped to use this ability!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155984",
+   "text": "You deliver a staggering blow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155985",
+   "text": "Toughness",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155986",
+   "text": "Hit Point Increase: ~1_VAL~.<br>Mana Upkeep Cost: ~2_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155987",
+   "text": "You embrace your toughness!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155988",
+   "text": "*You enter a thrusting stance!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155989",
+   "text": "Thrust",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155990",
+   "text": "Your next physical attack will be increased by +~1_VAL~% damage while reducing your victim's physical attack damage by ~2_VAL~%.<br>Mana Upkeep Cost: ~3_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155991",
+   "text": "You ready yourself to pierce your opponent!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155992",
+   "text": "You must have a fencing weapon equipped to use this ability!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155993",
+   "text": "You deliver a piercing blow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155994",
+   "text": "Pierce",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155995",
+   "text": "-~1_VAL~ Stamina Regeneration.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155996",
+   "text": "*You quiver seems infinite..*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155997",
+   "text": "Playing The Odds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155998",
+   "text": "~1_NAME~ grants you the following:<br>+~2_VAl~% Hit Chance Increase.<br>+~3_VAL~% Swing Speed Increase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155999",
+   "text": "You ready a volley of flaming arrows!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156000",
+   "text": "You must have an Archery weapon to use this ability!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156001",
+   "text": "*Flaming arrows rip through your flesh!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156002",
+   "text": "*You focus your eye on your opponents!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156003",
+   "text": "Focused Eye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156004",
+   "text": "+~1_VAL~% Hit Chance Increase.<br>Mana Upkeep Cost: ~2_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156005",
+   "text": "You must have a fencing weapon equipped to use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156006",
+   "text": "You must have a swordsmanship weapon equipped to use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156007",
+   "text": "*You ready an onslaught!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156008",
+   "text": "You deliver an onslaught of sword strikes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156009",
+   "text": "Onslaught",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156010",
+   "text": "-~2_VAL~% ~1_RESIST~ Debuff.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156011",
+   "text": "Commanded undead are loyal only to their masters.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156012",
+   "text": "You cannot transfer ownership of a commanded undead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156013",
+   "text": "You command the undead to follow and protect you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156014",
+   "text": "The undead becomes enraged by your command attempt and attacks you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156015",
+   "text": "You cannot command that!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156016",
+   "text": "You must have a throwing weapon equipped to use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156017",
+   "text": "*Your throw is enhanced by the Elemental Fury!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156018",
+   "text": "Elemental Fury",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156019",
+   "text": "Each attack the caster deals with ~1_TYPE~ damage will add up to ~3_VAL~ damage to the Fury Pool. Once the Fury Pool reaches ~2_VAL~ the throwing weapon will unleash the Elemental Fury.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156020",
+   "text": "Magnus Effect Debuff",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156021",
+   "text": "DCI: ~1_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156022",
+   "text": "You ready your shield.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156023",
+   "text": "Your senses heighten!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156024",
+   "text": "*You call your next shot...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156025",
+   "text": "Called Shot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156026",
+   "text": "Hit Chance Increase: ~1_VAL~%<br>Damage Increase: ~2_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156027",
+   "text": "You bash you target with your shield!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156028",
+   "text": "You can't summon a reaper there!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156029",
+   "text": "Knockout",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156030",
+   "text": "Wrestling Damage Bonus:<br>+~1_VAL~% PvM<br>+~2_VAL~% PvP",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156031",
+   "text": "Warrior's Gifts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156032",
+   "text": "Provides the following based on mastery level:<br>+~1_VAL~% Hit Chance Increase.<br>+~2_VAL~% Defense Chance Increase.<br>+~3_VAL~% Damage Increase(Capped at 300% in PvM).<br>+~4_VAL~ Strength Bonus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156033",
+   "text": "Your disarm attempt was blocked!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156034",
+   "text": "You blocked a disarm attempt!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156035",
+   "text": "Korean",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156036",
+   "text": "You must have at least ~1_STAM_REQUIREMENT~ Stamina to use this ability.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156037",
+   "text": "* The strength of the poison is reduced by your tolerance. *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156038",
+   "text": "You can't hide whilst on a Humility Hunt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156039",
+   "text": "You may not use the Spirituality Virtue while the Attunement spell is active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156040",
+   "text": "You may not cast Attunement whilst a Spirituality Shield is active!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156041",
+   "text": "You may not use the stables while on a Humility Hunt. To end your hunt say \"Lum Lum Lum\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156042",
+   "text": "There was an error with your transaction. Verify that your balance for this action is below 2,000,000,000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156043",
+   "text": "There was an error with your transaction. Verify that your balance for this action is not greater than 100,000,000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156044",
+   "text": "Total Gold:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156045",
+   "text": "Total Platinum:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156046",
+   "text": "UNUSED",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156047",
+   "text": "That pet has already embraced Humility.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156048",
+   "text": "<div align=center>Currency Conversion</div><br>All existing player-owned gold and checks that were located in the player’s bank box have been added to the player’s currency account on the shard. Players must add gold or checks to their currency account in order to use it. To add gold or checks to a player’s currency account, simply place it inside their bank box. Bankers no longer create checks from gold stored in the bank box. All bank checks are shard-bound. Both client trade windows have been updated to improve currency account trading.<br><br>*New Currency Type* Platinum has been minted. A platinum is valued at 1 billion gold. Once a player’s gold account reaches a balance of 1 billion gold, it will automatically convert to 1 platinum.<br><br>*New ways to interact with currency*<br>Character Transfer Account – Any currency that a player wishes to transfer to another shard must be placed in Character Transfer Account.<br>Wall Safe (House Add-on) – Once a wall safe is placed in a house, it can store up to 100,000,000 gold. This can be used to conduct offline transactions between players with security access. Currency can only be added/removed from the wall safe using the Secure Account.<br>Secure Account – Holds up to 100,000,000 gold and is only used to transfer currency from the player’s bank to the Wall Safe.<br><br>New Bank Action Gump:<br> Open bank box to view gump and mouse over actions for more information.<br><br>Further information can be found <A HREF=\"https://uo.com/wiki/ultima-online-wiki/player/money/\">here</A>.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156049",
+   "text": "Humility Buff",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156050",
+   "text": "Pet: ~1_NAME~<br>+~2_VAL~ HPR<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156051",
+   "text": "There was an error with your transaction. Your secure balance can't be greater than 100,000,000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156052",
+   "text": "Tier: ~1_LVL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156053",
+   "text": "Targeted Necromancy spells used on a target within the Conduit field will affect all valid targets within the field at ~1_PERCT~% strength.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156054",
+   "text": "~1_NAME~This effect takes 25% of the mana you use and gives it to your attacker. <br>This effect also imposes a ~2_COST~% mana cost increase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156055",
+   "text": "Converts Mysticism skill into the weapon's required skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156056",
+   "text": "~1_CHANCE~% chance to reduce incoming damage by ~2_DAMAGE~%. Costs ~2_DAMAGE~% of original damage in mana.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156057",
+   "text": "~1_CHANCE~% chance to reduce Confidence heal by ~2_REDUCE~% when hit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156058",
+   "text": "Reduces all incoming attack damage from opponents who hear the war cry within ~1_RANGE~ tiles by ~2_val~%.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156059",
+   "text": "Increases difficulty to be detected while hidden. <br>Increases difficulty to unhide from taking damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156060",
+   "text": "+~1_ARG~ Defense Chance Increase.<br>+~2_ARG~ Max Defense Chance Increase Cap.<br> Chance to evade attacks.<br>Applies bleed to victim with a max damage of ~4_ARG~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156061",
+   "text": "~1_NAME~ receives ~2_DAMAGE~% of all damage dealt to ~3_NAME~. All damage dealt to ~3_NAME~ will be reduced by ~4_DAMAGE~%. Body guard must be within 2 tiles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156062",
+   "text": "+~1_ARG~% Parry Bonus.<br>Mana Upkeep Cost: ~2_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156063",
+   "text": "Reduces poison strength when poisoned at the cost of stamina.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156064",
+   "text": "Deposit Gold into Character Transfer Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156065",
+   "text": "Deposit Platinum into Character Transfer Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156066",
+   "text": "Withdraw Gold from Character Transfer Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156067",
+   "text": "Withdraw Platinum from Character Transfer Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156068",
+   "text": "Deposit Gold into Secure Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156069",
+   "text": "Withdraw Gold from Secure Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156070",
+   "text": "Transfers gold from the bank to the character transfer account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156071",
+   "text": "Transfers platinum from the bank to the character transfer account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156072",
+   "text": "Transfers gold from the character transfer account to the bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156073",
+   "text": "Transfers platinum from the character transfer account to the bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156074",
+   "text": "Transfers gold from the bank to the player's secure account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156075",
+   "text": "Transfers gold from the secure account to the bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156076",
+   "text": "Bank Actions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156077",
+   "text": "This title is gained by battling against creatures of the Valley of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156078",
+   "text": "Stone Door (S In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156079",
+   "text": "Stone Door (E Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156080",
+   "text": "Left Metal Door (S In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156081",
+   "text": "Right Metal Door (S In)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156082",
+   "text": "Left Metal Door (E Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156083",
+   "text": "Right Metal Door (E Out)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156084",
+   "text": "*The trail of fire scorches you, setting you ablaze!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156085",
+   "text": "Deals ~2_DAMAGE~ to ~1_NAME~ every 3 seconds while in range. Preforming any action will end spell.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156086",
+   "text": "Energy Resist Debuff: ~1_VAL~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156087",
+   "text": "Your Mana Shield has expired.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156088",
+   "text": "Please see banker to deposit currency that was transferred.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156089",
+   "text": "Mana Increase ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

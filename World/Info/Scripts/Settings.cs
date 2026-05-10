@@ -1,3 +1,5 @@
+using System;
+
 namespace Server
 {
 	public static class MySettings
@@ -75,11 +77,17 @@ namespace Server
 
 	// Here you can enter the name of your server/world
 
-		public static string S_ServerName = "Memento";
+		public static string S_ServerName = "UO Expedition";
 
 	// If true, your public IP address will be auto detected to help with external connections.
 
 		public static bool S_AutoDetect = true;
+
+	// Relative path from the server working directory to the Ultima Online client data files
+	// (map*.mul, tiledata.mul, statics*.mul, cliloc.enu, etc.). Change this if your .mul files
+	// live somewhere else.
+
+		public static string S_DataFilesPath = "Data/Files";
 
 
 
@@ -490,8 +498,8 @@ namespace Server
 	// rate than most of the creatures, and those particular creatures will use this spawn rate. They will then
 	// add additional minutes to reflect the longer spawn.
 
-		public static int S_SpawnMin = 45;
-		public static int S_SpawnMax = 60;
+		public static int S_SpawnMin = 5;
+		public static int S_SpawnMax = 10;
 
 
 	// This settings controls the limit in seconds by which you can be paralyzed by a monster. 
@@ -780,6 +788,33 @@ namespace Server
 
 
 
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	// 013 - ANALYTICS (local JSONL / CSV, privacy-conscious) ////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	// If true, writes de-identified analytics to Logs/analytics/ under Core.BaseDirectory (see AnalyticsLogger.cs).
+
+		public static bool S_AnalyticsEnabled = true;
+
+	// Secret used only on the server to hash account/character identifiers in logs. Change from default before production.
+	// Prefer process env UO_MEMENTO_ANALYTICS_ACCOUNT_SALT (set in shell or via .env loaded at startup; see DotEnvLoader).
+
+		public static string S_AnalyticsAccountSalt = LoadAnalyticsSaltFromEnvironment();
+
+		private static string LoadAnalyticsSaltFromEnvironment()
+		{
+			string v = Environment.GetEnvironmentVariable( "UO_MEMENTO_ANALYTICS_ACCOUNT_SALT" );
+			if ( !string.IsNullOrWhiteSpace( v ) )
+				return v.Trim();
+			return "CHANGE_ME_SET_A_LONG_RANDOM_SECRET";
+		}
+
+	// Inclusive UTC bounds for the "old UO phase 1" cohort when using time-window assignment (see EVENT_SCHEMA.md).
+	// Use ISO-8601, e.g. 2026-04-01T00:00:00Z. Leave either empty to mark cohort as unclassified.
+
+		public static string S_AnalyticsPhase1StartUtc = "";
+		public static string S_AnalyticsPhase1EndUtc = "";
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 012 - ACKNOWLEDGEMENT //////////////////////////////////////////////////////////////////////

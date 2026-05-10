@@ -2,6 +2,7 @@
 using Server.Network;
 using Server.Gumps;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -154,7 +155,7 @@ namespace Server.Items
 			if ( IsChildOf( from.Backpack ) )
 			{
 				from.CloseGump( typeof( MessageGump ) );
-				from.SendGump( new MessageGump( m_TargetMap, m_TargetLocation, Server.Lands.LandName( MapWorld ), ShipStory, from ) );
+				from.SendGump( new MessageGump( m_TargetMap, m_TargetLocation, Server.Lands.LandName( MapWorld ), QuestCompositeResolver.ResolveComposite( from, ShipStory ), from ) );
 				from.PlaySound( 0x249 );
 			}
 			else

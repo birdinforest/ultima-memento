@@ -1,0 +1,23 @@
+{
+  "temptationgump.title.self": "选择你的试炼诱惑",
+  "temptationgump.title.target": "{0} 的试炼诱惑",
+  "temptationgump.tooltip.locked": "此设置只能在吉普赛森林内更改",
+  "temptationgump.once_tempted": "一旦接受诱惑，便无法回头。请谨慎选择。",
+  "temptationgump.not_tempted": "{0} 尚未接受诱惑。",
+  "temptationgump.decline": "不，谢谢",
+  "temptationgump.accept": "我已接受诱惑！",
+  "temptationgump.help.title": "试炼诱惑",
+  "temptationgump.help.body": "命令： [Temptations<br><br>“诱惑”会为你的角色新增或修改基础玩法机制。它们往往伴随强力收益，但也有显著代价。一旦接受诱惑，便无法回头。请谨慎选择。",
+  "temptationgump.name.i_can_take_it": "我扛得住",
+  "temptationgump.name.strongest_avenger": "最强复仇者",
+  "temptationgump.name.famine": "红色勇士急需食物！",
+  "temptationgump.name.puzzle_master": "谜盒大师",
+  "temptationgump.name.tribute": "这只是贡礼",
+  "temptationgump.name.deathwish": "独自上路太危险了！拿上这个。",
+  "temptationgump.desc.i_can_take_it": "+ 你造成的伤害提高 10%<br>x 你承受的伤害提高 20%",
+  "temptationgump.desc.strongest_avenger": "+ 你学会了穿裤子<br>x 敌人施法速度更快",
+  "temptationgump.desc.famine": "+ 你的属性/技能成长速率会受饥饿状态影响<br>x 饥饿与口渴衰减速度翻倍",
+  "temptationgump.desc.puzzle_master": "+ 你学会了解谜盒<br>x 逃亡者（+200）与以太泰坦任务（+200）的技能上限加成降低<br>x 怪物种族提供的魔法属性改为“最低值保障”；抗性/属性加成仍可叠加。",
+  "temptationgump.desc.tribute": "- 贡礼任务奖励发生变化",
+  "temptationgump.desc.deathwish": "+ 你获得属性与技能的速度更快<br>- 一把旧剑<br>x 你将永远无法被复活"
+}

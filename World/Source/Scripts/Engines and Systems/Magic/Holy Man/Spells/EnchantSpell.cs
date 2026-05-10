@@ -8,6 +8,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Regions;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -54,7 +55,7 @@ namespace Server.Spells.HolyMan
 				}
 				else if ( !weapon.IsChildOf( Caster.Backpack ) )
 				{
-					Caster.SendMessage( "The weapon must be in your pack to enchant." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The weapon must be in your pack to enchant." ) );
 				}
 				else if (CheckSequence())
 				{
@@ -95,7 +96,7 @@ namespace Server.Spells.HolyMan
 			}
 			else
 			{
-				Caster.SendMessage( "You can only enchant weapons with this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can only enchant weapons with this spell." ) );
 			}
             FinishSequence();
         }
@@ -117,7 +118,7 @@ namespace Server.Spells.HolyMan
                 }
                 else
                 {
-                    from.SendMessage("That cannot be enchanted.");
+                    from.SendMessage( StringCatalog.Resolve( from.Account, "That cannot be enchanted." ) );
                 }
             }
 

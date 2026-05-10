@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.harvest.bark.fragments",
+  "pipeline": "string_catalog_only",
+  "en": "You harvest some Bark Fragments.",
+  "expectedZh": "你剥落了一些树皮碎屑。",
+  "tags": "harvest,lumber,bonus,string_catalog_only"
+}

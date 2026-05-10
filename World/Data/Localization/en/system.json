@@ -1,0 +1,21 @@
+{
+  "s.0612a359d724bee6": "You can double click this to change the color.",
+  "s.13917c408e9935ca": "You can only match color of certain equipped items that have distinct colors.",
+  "s.21f302218a9499a9": "Game save complete. The entire process took {0:F1} seconds.",
+  "s.223a21630aca52a5": "Your access level has been changed. You are now {0}.",
+  "s.40607ae91260fb19": "That container cannot hold more items.",
+  "s.5b63f1369b61865b": "(cursed)",
+  "s.615b782bafc4358e": "You can only match colors of certain equipped items.",
+  "s.71acf5362178e215": "You must be wearing this to change the color.",
+  "s.79f157210f510c8f": "That Switch doesn't exist!",
+  "s.7a44a365f987b75d": "That is too heavy for you to lift.",
+  "s.7d794b24918e8f0a": "What worn item do you wish to match the color of?",
+  "s.9ce62ed98cab6286": "You change the color to match the item.",
+  "s.a319dedc666362eb": "That is not a valid command.",
+  "s.afe55e1a36f055f8": "You can not say anything, you have been squelched.",
+  "s.b98ad0025a780015": "The game is saving, please wait.",
+  "s.bf7aaeebb3af517d": "The item seems to do nothing.",
+  "s.d1736636744ef44d": "That container cannot hold more weight.",
+  "s.f7da8744226f7b73": "That Button doesn't exist!",
+  "s.fcc0840f3fb7f928": "Items selected must have a distinct color."
+}

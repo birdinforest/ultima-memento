@@ -66,14 +66,14 @@ namespace Server.Mobiles
 		{
 			if ( dropped is Gold && dropped.Amount == 10000 && from.Karma <= -5000 && from.Skills[SkillName.Knightship].Base >= 100 )
 			{
-				this.Say( "Take your steed and fill the world with dread." );
+				CitizenLocalization.SayLocalized( this, "Take your steed and fill the world with dread." );
 				from.AddToBackpack ( new DeathKnightWarhorse() );
 				dropped.Delete();
 			}
 			else if ( dropped is Gold && dropped.Amount >= 5 && Server.Misc.GetPlayerInfo.isSyth ( from, false ) )
 			{
 				int crystals = (int)( dropped.Amount / 5 );
-				this.Say( "Do with these what you will, Syth." );
+				CitizenLocalization.SayLocalized( this, "Do with these what you will, Syth." );
 				from.AddToBackpack ( new HellShard( crystals ) );
 				dropped.Delete();
 			}
@@ -88,7 +88,7 @@ namespace Server.Mobiles
                     {
                         from.SendMessage(String.Format("You pay {0} gold.", cost));
 						dropped.ItemID = Utility.RandomList( 0x2FC5, 0x317B );
-                        this.SayTo(from, "Here are your wings you so desire.");
+                        CitizenLocalization.SayToLocalized( this, from, "Here are your wings you so desire." );
 						dropped.Name = "demon wings";
                         Effects.PlaySound(from.Location, from.Map, 0x241);
 						switch ( Utility.RandomMinMax( 0, 4 ) )
@@ -102,14 +102,14 @@ namespace Server.Mobiles
 					}
 					else
 					{
-                        this.SayTo(from, "It would cost you {0} gold for demon wings you fool!", cost);
-                        from.SendMessage("You do not have enough gold.");
+                        this.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold for demon wings you fool!", cost));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
 					}
 				}
 				else if ( dropped.Layer == Layer.Cloak && ( dropped.ItemID == 0x2FC5 || dropped.ItemID == 0x317B ) )
 				{
 					dropped.ItemID = Utility.RandomList( 0x1515, 0x1530 );
-					this.SayTo(from, "Here is the cloak you so desire.");
+					CitizenLocalization.SayToLocalized( this, from, "Here is the cloak you so desire." );
 					dropped.Name = "cloak";
 
 				}

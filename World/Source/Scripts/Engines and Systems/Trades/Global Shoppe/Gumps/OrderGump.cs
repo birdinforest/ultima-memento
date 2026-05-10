@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Network;
 using Server.Targeting;
 using Server.Utilities;
+using Server.Localization;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace Server.Engines.GlobalShoppe
 	{
 		private readonly IOrderContext m_Deed;
 		private readonly Mobile m_From;
+
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
 
 		public OrderGump(Mobile from, IOrderContext deed) : base(25, 25)
 		{
@@ -44,7 +51,7 @@ namespace Server.Engines.GlobalShoppe
 			if (!deed.IsComplete)
 			{
 				AddButton(125, 202, 4005, 4007, 2, GumpButtonType.Reply, 0);
-				TextDefinition.AddHtmlText(this, 160, 205, 300, 20, "Add requested item", HtmlColors.WHITE);
+				TextDefinition.AddHtmlText(this, 160, 205, 300, 20, ResolveText(from, "Add requested item"), HtmlColors.WHITE);
 			}
 
 			AddButton(125, 226, 4005, 4007, 1, GumpButtonType.Reply, 0);
@@ -89,13 +96,13 @@ namespace Server.Engines.GlobalShoppe
 			if (requireResource)
 			{
 				++i;
-				AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + CraftResources.GetResourceName(((IResourceItem)deed).Resource), false, false);
+				AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>" + string.Format(ResolveText(m_From, "All items must be crafted with {0}"), CraftResources.GetResourceName(((IResourceItem)deed).Resource)), false, false);
 			}
 
 			if (requireGemType)
 			{
 				++i;
-				AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>All items must be crafted with " + ((IGemTypeItem)deed).GemType, false, false); // TODO: Better name
+				AddHtml(75, baseY + i * 24, 300, 20, "<basefont color=#FF0000>" + string.Format(ResolveText(m_From, "All items must be crafted with {0}"), ((IGemTypeItem)deed).GemType), false, false); // TODO: Better name
 			}
 		}
 
@@ -199,7 +206,7 @@ namespace Server.Engines.GlobalShoppe
 
 					if (resource >= CraftResource.AshTree && resource <= CraftResource.ElvenTree && item.Resource != resource)
 					{
-						from.SendMessage("The item is not made from the requested wood type.");
+						from.SendMessage(ResolveText(from, "The item is not made from the requested wood type."));
 						return false;
 					}
 				}
@@ -209,7 +216,7 @@ namespace Server.Engines.GlobalShoppe
 					var gemType = ((IGemTypeItem)order).GemType;
 					if ((item is BaseTrinket) == false || ((BaseTrinket)item).GemType != gemType)
 					{
-						from.SendMessage("The item does not have the requested gem type.");
+						from.SendMessage(ResolveText(from, "The item does not have the requested gem type."));
 
 						return false;
 					}
@@ -245,7 +252,7 @@ namespace Server.Engines.GlobalShoppe
 				if (order.IsComplete)
 				{
 					from.PlaySound(0x5B6); // public sound
-					TextDefinition.SendMessageTo(from, "Return to the shoppe to claim your reward.", 0x23);
+					TextDefinition.SendMessageTo(from, ResolveText(from, "Return to the shoppe to claim your reward."), 0x23);
 				}
 				else
 					BeginCombine(from, order);

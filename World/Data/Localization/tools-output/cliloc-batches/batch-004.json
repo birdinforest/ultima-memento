@@ -1,0 +1,3006 @@
+{
+ "batch": 4,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1060658",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060659",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060660",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060661",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060662",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060663",
+   "text": "~1_val~：~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060682",
+   "text": "<CENTER>房屋儲存物品清單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060684",
+   "text": "House Fixtures使用中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060717",
+   "text": "我感謝你到洞穴中除掉一些害蟲─這是你的報酬：一袋500金幣還有一個奇特的魔法物品，讓你在旅途上方便使用。<BR><BR>保重，年輕的聖騎士！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060718",
+   "text": "Expor Flamus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060719",
+   "text": "Obsu Vulni",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060720",
+   "text": "Consecrus Arma",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060721",
+   "text": "Dispiro Malas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060722",
+   "text": "Divinum Furis",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060723",
+   "text": "Forul Solum",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060724",
+   "text": "Augus Luminos",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060725",
+   "text": "Dium Prostra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060726",
+   "text": "Extermo Vomica",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060727",
+   "text": "Sanctum Viatas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060728",
+   "text": "點數：~1_val~ / ~2_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060730",
+   "text": "<CENTER>共同屋主名單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060731",
+   "text": "<CENTER>朋友名單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060732",
+   "text": "<CENTER>進入許可名單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060733",
+   "text": "<CENTER>黑名單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060738",
+   "text": "價值：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060739",
+   "text": "積分：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060741",
+   "text": "點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060746",
+   "text": "連結：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060749",
+   "text": "<I>夏曼德瑞克在你接近他的時候，幾乎沒有注意到你。他的心思似乎被其他事情所佔據。你向他解釋你是為了能量捲軸而來，隔了許久他才開始說話，但還是顯得心不在焉...</I><BR><BR>嗯...真是奇怪。非常奇怪的活動...我想...<BR><BR>嗯。噢，對了！你剛剛說捲軸嗎？抱歉我身上沒有。我的徒弟帶著它，但他跑進洞穴某處了。只要找到他你就能找到捲軸。<BR><BR>一旦你找到捲軸後，一定要把它帶給幽瑟安。他是除了我之外，唯一可以閱讀捲軸上古代符文的人了。在我找出這裡到底發生什麼事情前，我是不能離開的。真是奇怪的活動...<BR><BR>還有...<BR><BR>要小心附近徘徊無法安息的靈魂。他們似乎有種不自主攻擊人類的習慣。或許使用你的聖騎士能力<a href=\"?ForceTopic104\">最終對手</a>可以幫助你減低通過這些大廳的危險。<BR><BR><I>夏曼德瑞克回到他的工作上，他似乎已經完全忘卻你的存在...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060752",
+   "text": "<CENTER><BASEFONT COLOR=#960000>~1_val~</BASEFONT></CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060755",
+   "text": "在幽瑟安<a href=\"?ForceTopic13\">北方</a>的符石上使用你的<a href=\"?ForceTopic108\">神聖之旅</a>能力，就能傳送到墓園。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060756",
+   "text": "~1_val~ 海蛇麟片",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060758",
+   "text": "~1_NAME~ 正在大量失血",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060776",
+   "text": "~1_val~, ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060802",
+   "text": "公會名稱：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060804",
+   "text": "~1_val~ (馬拉斯大陸)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060805",
+   "text": "~1_val~ (斐盧卡大陸)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060806",
+   "text": "~1_val~ (崔美爾大陸)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060807",
+   "text": "你將水注入~1_val~中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060808",
+   "text": "選取你想要的容器注入~1_val~水。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060830",
+   "text": "~1_val~土盆",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060831",
+   "text": "~1_val~土盆，種有~2_val~~3_val~~4_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060832",
+   "text": "~1_val~土盆，種有~2_val~有活力的~3_val~~4_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060833",
+   "text": "~1_val~盆栽",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060836",
+   "text": "這個任務將提供你有用的資訊，技巧和裝備，可以幫助你能夠快速進入並了解遊戲。<BR><BR>你確定這次要取消嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060838",
+   "text": "~1_val~種子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060839",
+   "text": "有活力的~1_val~種子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060844",
+   "text": "~1_val~ 捲軸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060845",
+   "text": "~1_val~捲軸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060846",
+   "text": "公會：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060847",
+   "text": "~1_val~ ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1060853",
+   "text": "精良護具由~1_val~製作",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060859",
+   "text": "Sphynx的效用已經消失。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060864",
+   "text": "對你的命運有興趣是吧？長者Sphynx可以為你解讀未來 － 當然這需要付費…",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060868",
+   "text": "選擇你要保險的物品，按ESC鍵取消。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060875",
+   "text": "紅色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060876",
+   "text": "黃色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060877",
+   "text": "黑色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060878",
+   "text": "綠色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060879",
+   "text": "白色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1060880",
+   "text": "藍色鱗片 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061000",
+   "text": "TID的力量",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061006",
+   "text": "你沒有適當的金幣貢獻給Sphynx。你的命運並未被預測。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061039",
+   "text": "物件 | 配件<BR>最大物件數：~1_val~<BR>最大配件數：~2_val~<BR>配件即為門和傳送點。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061040",
+   "text": "配件：~1_val~ / ~2_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061067",
+   "text": "<CENTER>靈魂之石</CENTER><BR>你正準備使用靈魂之石。這個威力強大的工藝品，將協助你從你的角色身上移除所有的技能點數，並且儲存到靈魂之石上，供日後取用。為了使用這個石頭，你必須確定已解除所有你指定技能的技能鎖定。點選你紙娃娃上的「技能」鈕，開啟技能清單，然後雙擊你的技能鎖。<BR><BR>一旦你啟用石頭，所有指定技能的技能點數將會從你的角色身上移除。這些技能點數可以日後取用。重要：從靈魂之石取用技能點數時，靈魂之石將會取代你角色上現有的任何技能點數！<BR><BR>這是個帳號連結靈魂之石。儲存在裡頭的技能點數，可以由同樣帳號下的任何角色取用，只需將角色放入靈魂之石中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061068",
+   "text": "你正準備使用這個靈魂之石，它將移轉<STRONG>所有</STRONG>你選擇的技能點數到靈魂之石上。之後任何<STRONG>在<U>你</U>帳號裡</STRONG>的人物都可以使用靈魂之石，將你即將放棄的技能點數技能重新注入。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061071",
+   "text": "你正要<STRONG>摧毀</STRONG>這個靈魂之石吸取以下技能：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061078",
+   "text": "稀有工藝品~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061093",
+   "text": "Midnight Bracers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061112",
+   "text": "房屋名稱：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061113",
+   "text": "擁有者：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061114",
+   "text": "地點：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061119",
+   "text": "~1_LEATHER_TYPE~遠古符文裁縫工具",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061133",
+   "text": "一個修復服務契約由~1_SKILL_TITLE~級~2_SKILL_NAME~提供",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061167",
+   "text": "武器速度 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061168",
+   "text": "武器攻擊力 ~1_val~ - ~2_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061169",
+   "text": "範圍 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061170",
+   "text": "力量需求 ~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061276",
+   "text": "<CENTER>建立許可名單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061316",
+   "text": "詛咒術：降低目標物的力量、敏捷和智力，當進行PvP時也將降低目標的抗性。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061348",
+   "text": "復活術：復活一位玩家的鬼魂。但不能在NPC或是怪物身上使用。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061593",
+   "text": "Zyronic Claw",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061594",
+   "text": "Jackal的護頸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061602",
+   "text": "Ægis",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061606",
+   "text": "這個怪物需要 ~1_NECROMANCY~ 死靈法術以及 ~2_SPIRIT~ 通靈技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061610",
+   "text": "你剛剛屠殺了一個生物。現在正是學習身為死靈法師如何自我治療的好時機。<BR><BR>身為黑暗道路的追隨者，你可以利用<a href=\"?ForceTopic133\">通靈技能</a>透過和靈界交流來回復失去的生命值。可從<a href=\"?ForceTopic73\">智慧寶典</a>裡學習更多相關資訊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061616",
+   "text": "Hanse的旅館",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061617",
+   "text": "Eat at Joes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061618",
+   "text": "Lantern of Souls",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061639",
+   "text": "名稱：~1_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061640",
+   "text": "屋主：~1_OWNER~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061644",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>嗯... 呃... 你好. .我... 嗯... 有一些金幣應該是要交給你的... 這是馬杜斯的一點心意，他是一位死靈法師，你不久將會遇見他。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061653",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你需要打開你的紙娃娃並且開啟選單。我們將會放置腰刀在你的手上；要進行動作，在腰刀上按下滑鼠左鍵，拖曳到你的紙娃娃身上，然後在放開滑鼠左鍵。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061655",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>你將要在蝠猴上施展 \"痛苦之釘\" 法術。雙擊滑鼠左鍵以開啟你的魔法書。在第二頁你會看到咒文<BASEFONT COLOR=#FFFFFF>痛苦之釘<BASEFONT COLOR=#DFDFC0>。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061656",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要使用這項魔法，請你在雙擊該魔法 <BASEFONT COLOR=#FFFFFF>痛苦之釘<BASEFONT COLOR=#DFDFC0在你的魔法書內，然後在蝠猴身上按左鍵設為詛咒之目標 。在它身上重複使用直到你擊敗它。 </BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061658",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>略過這項任務，直接前往Umbra城</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061659",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要離開此處，由角落的樓梯走到房間的中央。然後升高樓梯至那房間的中間。然後你會遇見馬杜斯。他將會與你進行交談。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061660",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>噢，那個... 我請求你... 千萬不要告訴馬杜斯我弄丟了你的錢。拜託你！！</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061663",
+   "text": "控屍術可以讓死靈法師賦予死亡生物的屍體新的生命，創造出沒有大腦四處遊蕩的不死系生物。<BR><BR>這種由法術復生而來的不死系生物完全依據死靈法師的通靈技能和死靈法術，以及生物的種類和牠活著時的名聲而定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061665",
+   "text": "召喚術能召喚出邪惡生物為施法者效力。<BR><BR>施法者一次只能召喚一名妖精，它們也會計算在寵物點數限制範圍內。當一名施法者召喚出一名特殊種類的妖精 施法者會獲得一些特別的能力：<BR>野蠻人士兵<BR>- <BR>- 暗影之魂<BR>- 黑暗之狼<BR>- 死亡毒蛇<BR>- 吸血蝙蝠<BR><BR>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061667",
+   "text": "聖騎士所用的騎士精神之書，是一本類似法師的魔法書。在騎士精神之書裡面記載的是啟動聖騎士特別能力的圖示。此外，聖騎士也可以在書中檢視這些特別能力所需條件與個別效果。<BR><BR>騎士精神之書可以在聖騎士新月城裡的「騎士精神守護者」內買到。<BR><BR>任何以騎士精神技能起家的新角色，都可以在進入世界之際，在他們的背包裡找到騎士精神之書。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061669",
+   "text": "聖騎士的神聖之旅技能的效力幾乎等同於魔法<a href=\"?ForceTopic95\">傳送術</a>， 因此它可以傳送聖騎士到任何他或她擁有的<a href=\"?ForceTopic94\">已標記</a> 符石。<BR><BR> 成功使用這項技能需消耗奉獻點數和魔法值，依據騎士精神高低決定成功的機率。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061671",
+   "text": "<I>癒合傷口</I>是聖騎士的基本醫療能力。使用這個能力，可以讓聖騎士治療另一名玩家或生物。可治癒的生命值視聖騎士的<a href=\"?ForceTopic45\">善惡值</a>和騎士精神技能而定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061675",
+   "text": "死靈法師將自己的生命奉獻給為不列顛尼亞帶來死亡、腐敗和毀滅的活動，他們利用死亡本身的力量從事黑暗活動。<BR><BR>這些行使死亡力量的人，在他們自己的配置下，擁有令人敬畏的法術陣列，給阻擋他們行動的任何人帶來可怕陰森的死亡。<BR><BR>此外，死靈法師還可以是優秀的肉搏戰士，因為任何死靈法師法術都能夠在揮舞武器時同時施展 (和傳統法師的法術不同) 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061678",
+   "text": "死靈法師咒術是由那些精通死靈法術技能者才能施展。施展所有法術都需要魔法值和 <a href=\"?37\">藥材</a>的消耗。死靈法師稱號是對邪惡戰士的恭維，他們能夠同時使用死靈法師咒術和武器 。<BR><BR><U>咒術</U><BR><BR>-<a href=\"?116\">控屍術</a><BR>-<a href=\"?117\">血誓術</a><BR>-<a href=\"?118\">腐皮術</a><BR>-<a href=\"?119\">武器詛咒</a><BR>-<a href=\"?120\">惡兆術</a><BR>-<a href=\"?121\">妖獸術</a><BR>-<a href=\"?122\">巫妖術</a><BR>-<a href=\"?123\">心靈腐化</a><BR>-<a href=\"?124\">痛苦之釘</a><BR>-<a href=\"?125\">毒雲術</a><BR>-<a href=\"?126\">毒絞術</a><BR>-<a href=\"?127\">召喚術</a><BR>-<a href=\"?128\">吸血鬼擁抱</a><BR>-<a href=\"?129\">復仇之魂</a><BR>-<a href=\"?130\">凋萎術</a><BR>-<a href=\"?130\">鬼形術</a><BR><BR>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061680",
+   "text": "通靈技能藉由吸取靈力來進行用來自我治療。靈力可能來自於一具屍體或是施法者本身的靈力。若附近沒有屍體時，將會消耗自身的魔法值轉換為生命值。<BR><BR>效果會依屍體所殘留的靈力而定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061692",
+   "text": "如果你要離開塔，你應該學會關於雷達地圖的使用方法。<BR><BR>雷達地圖 (或稱為Overhead View) 在按下鍵盤上的'ALT-R'鍵後可被啟動。它以俯視角度顯示出你周圍的情況。<BR><BR>按兩次ALT-R，會放大一點。當你在冒險途中，善加利用雷達地圖來熟悉附近的環境。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061706",
+   "text": "騎乘猛擊：如果你沒有騎乘任何坐騎，施法後會讓你的對手從馬上跌下來，並會對乙太馬上的騎乘者造成傷害、或者會對還活著的馬造成傷害 (受到傷害的馬在再度被騎乘前必須先受到醫治) 。如果你騎在馬上，則會對同時也是騎在馬上的對手造成傷害及麻痺。<BR>需要武士道技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061707",
+   "text": "狂暴旋風：對你武器所能攻擊範圍內的所有敵人做出快速的攻擊。<BR>需要武士道或忍術技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061708",
+   "text": "阻擋：在短時間內提升你的防禦能力。<BR>需要武士道或忍術技能。",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1061709",
+   "text": "防禦熟練：短時間內增加你的物理抗性，但降低你造成傷害的能力。<BR>需要武士道或忍術技能。",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1061710",
+   "text": "神經攻擊：對你的對手造成短時間的傷害與癱瘓。<BR>需要武士道技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061711",
+   "text": "爪擊：長時間以額外的傷害增加攻擊力。<BR>需要忍術技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061712",
+   "text": "虛擊：短時間內對你的主要對手獲得防禦優勢。<BR>需要武士道或忍術技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061713",
+   "text": "雙重揮擊：當你用兩種武器同時揮擊時，攻擊的速度加快。<BR>需要忍術技能。",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1061714",
+   "text": "連擊：即使騎在馬背上依然可以對你的敵人連續發射兩支飛箭。<BR>需要武士道或忍術技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061715",
+   "text": "刺入裝甲：發射一支飛箭來製造機會刺穿敵人的盔甲，並且造成額外的傷害。<BR>需要武士道或忍術技能。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061800",
+   "text": "Armoury of Souls",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061802",
+   "text": "Lich's Hoard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061804",
+   "text": "Critter Pens",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061809",
+   "text": "Gravedigger's Apparatus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061817",
+   "text": "Hardwoods and More",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061820",
+   "text": "Proud Bridle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1061823",
+   "text": "當你死亡時完法繼續你的任務。走近他以尋求能夠具備復生能力的馬杜斯 (或是其他醫生) 的幫助。在你被復活之後，與馬杜斯進行交談，利用它的 <a href=\"?ForceTopic90\">交談選單</a> 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061827",
+   "text": "<CENTER>重新擺設商人</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061833",
+   "text": "這個行李箱內有~1_COUNT~ 小販/酒保。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061835",
+   "text": "Ale 商店",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061837",
+   "text": "神秘充能點數：~1_val~ / ~2_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061838",
+   "text": "測試新的TIDfield.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061850",
+   "text": "只有<STRONG>野蠻人士兵</STRONG>能夠替你取得捲軸。 <a href=\"?ForceTopic127\">釋放</a> 你目前的妖精，並 <a href=\"?ForceTopic127\">召喚</a>一名<STRONG>野蠻人士兵</STRONG>來為你取得捲軸。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061887",
+   "text": "一盆~1_val~土，種有~2_val~明亮的~3_val~~4_val~~5_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061888",
+   "text": "一盆~1_val~土，種有~2_val~~3_val~~4_val~~5_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061889",
+   "text": "一個~1_HEALTH~~2_COLOR~~3_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061890",
+   "text": "一個~1_HEALTH~~2_COLOR~~3_NAME~植物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061891",
+   "text": "一個~1_HEALTH~蓬勃~2_COLOR~~3_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061892",
+   "text": "一個~1_HEALTH~蓬勃~2_COLOR~~3_NAME~盆栽",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061915",
+   "text": "* ~1_PLAYER_NAME~ 將一株奇異的綠刺種植在地上。 *",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061917",
+   "text": "~1_COLOR~ ~2_TYPE~ 種子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1061918",
+   "text": "明亮的~1_COLOR~ ~2_TYPE~種子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062001",
+   "text": "你已無法揮動你的~1_WEAPON~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062002",
+   "text": "你已無法裝備你的~1_ARMOR~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062003",
+   "text": "你已無法裝備你的~1_SHIELD~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062005",
+   "text": "採礦技能加乘 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062007",
+   "text": "你無法成為這棟房屋的共同屋主因為你已經是別棟房屋的共同屋主。如果你希望解除你在別棟房屋的共同屋主權利，利用你角色選單上的「Release Co-Ownership」解除。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062011",
+   "text": "<CENTER>房屋樣品</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062028",
+   "text": "狀態：~1_CONDITION~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062031",
+   "text": "暗銅~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062032",
+   "text": "暗鐵~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062033",
+   "text": "銅~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062034",
+   "text": "青銅~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062035",
+   "text": "金~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062036",
+   "text": "情誼粉礦~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062037",
+   "text": "真實綠礦~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062038",
+   "text": "價值藍礦~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062039",
+   "text": "<BASEFONT COLOR=#2DDC1B>馬拉斯大陸</BASEFONT>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062047",
+   "text": "a fountain of sake",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062054",
+   "text": "你並不在~1_NAME~ 團隊成員中因此你無法幫忙解開謎題。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062058",
+   "text": "你沒有使用Calling捲軸回到這裡？恐怕這樣是行不通的。你必須回到水晶洞穴中在取出另一個捲軸。運用我西邊的傳送點到那裡去吧。完成後帶著捲軸回到這裡來。這次別再失敗了，年輕的邪惡學徒！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062060",
+   "text": "<CENTER>提交房屋設計</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062066",
+   "text": "你無法設置或接收房屋，因為你在上一週曾經設置一間房屋，或在房屋交易中接收了一間房屋，或是上週你將你的房屋層級設定更改為私人房屋。你必須在 ~1_HOURS~ 小時之後才能再度設置或接收一間房屋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062074",
+   "text": "Anh Mi Sah Ko",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062076",
+   "text": "你即將要將房屋更改為主要房屋。只要你的帳號在有效期限內，主要房屋便會自動更新。如果你的帳號未擁有別間房屋，此動作不會有負面影響。<BR><BR>如果在你的帳號下還擁有別間房屋，此間房屋將會變成你的主要房屋，其他房屋將會被充公。充公房屋無法進行房屋更新動作，且會在5天之後自動倒塌。你確定要這麼做？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062077",
+   "text": "紅色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062078",
+   "text": "黃色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062079",
+   "text": "黑色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062080",
+   "text": "綠色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062081",
+   "text": "白色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062082",
+   "text": "藍色~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062083",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你必須將你的紙娃娃和你的紀錄清單打開。我們將要把集骨者交到你的手上",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062086",
+   "text": "另一位玩家正試圖開始和你進行房屋的交易活動。為了使你能夠看到這個視窗，你和交易者必須站在距房屋標誌的2步範圍內才能進行交易活動。如果你按下 OKAY 鍵，房屋交易捲軸會出現在你的交易視窗中使你可以完成這項交易。這個捲軸是特殊的藍色，並在滑鼠移到上面去時會顯示這間房屋的種類、名稱、房屋所有人名字、房屋中心位置六分儀座標、以及房屋價值，請仔細檢視這些訊息。為了能夠成功完成這項交易，雙方都必須同意並接收這項交易，且必須保持在距離房屋標誌的2步範圍之內。<BR><BR>接受這間房屋的交易將會使你擁有的其他房屋<a href=\"?ForceTopic97\">充公</a>。你在<U>所有伺服器</U>上的所有房屋都將會受到影響。<BR><BR>此外，在1個真實世界星期內，你將無法放置另一間房屋、或是接收其他玩家的房屋。<BR><BR>一旦你接受這些條件，這些變更將無法恢復。再次交易房屋或是轉移新的房屋所有權 <U>不會</U> 解除你其他房屋的充公狀態，也不會消除1星期的時間限制。<BR><BR>如果你完全確定你希望進行這項交易，請按下 OKAY 鍵。如果你不希望進行這間房屋的交易，請按 CANCEL 鍵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062104",
+   "text": "請依照提供給你的兌換碼完整並確實輸入。不要輸入兌換碼以外的文字，然後按下Enter。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062118",
+   "text": "你可以使用<B>蓋屋工具<B>來創造房屋。你可以在四處各個城鎮裡的NPC建築師處購買本工具。工具本身並不昂貴，但為了佈置你的房屋，你在銀行必須擁有足夠的資金支付費用。除了工具和資金外，你也必須在城外擁有一塊開放的平坦空地。如果你找到一塊這樣的空地，然後點選蓋屋工具，從選單中選擇想要的房屋類型。接下來，你的游標會變成透明房屋影像。將透明房屋佈置妥當後，按下滑鼠左鍵提交。如果放置失敗，遊戲會告知你原因，你可以再試一次。蓋屋的規則有很多，你可以在以下章節裡找到：<a href=\"?136\">地點</a>、<a href=\"?137\">地形</a>、<a href=\"?138\">其他房屋</a>、<a href=\"?139\">屋主限制條款</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062120",
+   "text": "<B>地點：</B> <a href=\"?135\">房屋佈置</a>的位置不可在任何城市邊界或其他由守衛保護的區域內。建築物不可靠近任何地城出口或聖壇。被稱為失落的大陸地區和整個伊絲娜大陸裡面都不適合居住。最後，某些區域因其他理由而保留。當你試著在這些不合法地點放置房屋時，遊戲會告知你這裡無法放置房屋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062122",
+   "text": "<B>地形：</B> 房屋只能 <a href=\"?135\">建築</a>在平坦沒有障礙物的土地上。你的新屋要放置的位置必須是完全平整的土地。此外，房屋的地基和屋前台階無法建立在任何障礙物上，或者和任何障礙物相鄰。障礙物視為地標的一部份，玩家無法穿越。障礙物可以存在於房屋<B>底下</B>，只要它們不會太高以致突出房屋地板。你必須可以繞著屋子走一圈，而它的牆壁或屋前階梯緊緊相連，不被任何地面上的物品擋住才行。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062124",
+   "text": "<B>其他房屋：</B> 當 <a href=\"?135\">你放置新房屋時</a>，記得在東／西向兩棟房屋無法相鄰 － 在兩棟房屋之間一定要有一條沒有障礙物阻隔至少一格寬的小徑。還有，房屋南北向都有一個五格的緩衝區，不可放置其他房屋。最後，你無法在與另一個房屋的角落相鄰處放置房屋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062126",
+   "text": "<B>屋主限制條款：</B>每隔7天你只能<a href=\"?135\">放置</a>或<a href=\"?140\">交易</a>房屋一次。你的帳號只能擁有一間房屋。如果你放置或接收第二間房屋，你帳號上的其他房屋 (不論在哪個伺服器) 都將被<a href=\"?97\">充公</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062128",
+   "text": "你可以利用標準交易視窗向其他玩家購買房屋，或者出售自己的房屋給另一名玩家。但無法交換房屋。要和他人交易房屋，你必須符合所有房屋<a href=\"?139\">屋主限制條款</a>。如果你確實符合，那麼房屋屋主才可以開啟包括房屋交易捲軸的交易視窗。要進行這個步驟時，雙方必須站在離房屋門牌兩格距離之內，否則交易即告失敗。交易捲軸顯示房屋屋主名稱，房屋名稱，和房屋所在位置的座標。本捲軸顏色為無法造假的特殊冰藍色。<B>一定要確定你購買的是正確的房屋！</B>一旦雙方確認交易並同意，房屋就被移轉了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062130",
+   "text": "如果你擁有一個固定非自訂房屋，你可以將它轉換為<a href=\"?144\">泥地</a>。以下房屋種類<B>無法</B>轉換：城堡、堡壘、兩層木造與灰泥房屋，以及兩層石頭與灰泥房屋。所有其他房屋種類都可以轉換。當你將房屋轉換為泥地時，房子會消失並以與原房屋同樣尺寸的泥地取代。這個轉換完全安全且自動，因此你不會有失去房屋的風險。如果你符合擁有自訂泥地的<a href =\"?139\">條款</a>，你在使用房屋門牌時即可執行轉換。<BR><BR>當你轉換房屋時，原先購屋的金額會全額退還至你的銀行帳戶，然後再收取泥地的同等費用。大部分的情況下，原先購屋的金額會比泥地費用高，這表示你會收到退款 (你可以利用退款來自訂你的房屋) 。請注意，「原先購屋金額」代表你當初購買房屋契約的費用，或者是列在蓋屋工具選單中的金額，<B>並非</B>上次玩家對玩家交易的房屋金額。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062132",
+   "text": "遊戲限制每個帳號只能擁有一棟房屋，不論在哪個伺服器上。如果你在某伺服器已經擁有一棟房屋，那麼你在另一個伺服器上就不能再有第二棟房屋。如果你放置了一棟新房屋或接受房屋交易，你原有的房屋就會被充公。被充公的房屋在5天內會毀壞。唯一解除房屋充公狀態的方法是將它交易其他玩家。將新房屋交易給他人 <B>不會</B> 解除其他房屋的充公狀態。<BR><BR>不論你放置新房屋或接受房屋交易，不論你將新房屋拆除或交易給其他玩家，你都無法在7日內放置另一個房屋或接收房屋。<BR><BR>要擁有一間<a href=\"?143?\">可自訂</a>的房屋，你的帳號必須升級為<I>《網路創世紀：暗黑紀元》</I>。如果你的帳號並未升級，你將無法放置可自訂的<a href=\"?144?\">泥地</a>，或者接受自訂房屋的交易。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062134",
+   "text": "可自訂房屋有兩種模式：<a href=\"?168\">一般</a>以及<a href=\"?169\">自訂</a>。<BR><BR>當你進入自訂模式，所有房屋的內容物會被退出或打包裝入一只<a href=\"?170\">運輸箱</a>內。當你自訂房屋時，你與你的房屋都無法與任何物品、玩家或怪獸互動。你可以藉由<a href=\"?165\">提交新設計</a>離開自訂模式，或<a href=\"?164\">儲存你的設計稍後再完成</a>。提交新設計將收取費用，並需要你手動拆箱運輸箱。儲存設計以便將來繼續會讓房屋回復到之前的狀態。<BR><BR>自訂房屋需要遵守某些<a href=\"?163\">結構支援</a> 規則。<BR><BR>進行自訂房屋時，你的螢幕上會出現一個特別的房屋建築介面。這個介面有著多重選項，標示如下：<BR><BR><a href=\"?157\">元件選擇</a> (<a href=\"?173\">牆壁</a>、<a href=\"?158\">地板</a>、<a href=\"?159\">門</a>、<a href=\"?160\">樓梯</a>、<a href=\"?161\">傳送站</a>，以及<a href=\"?162\">雜項</a>)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062136",
+   "text": "<a href=\"?145\">自訂房屋選單</a>的中央區域是你選擇房屋設計元件的地方。大部分的元件<a href=\"?157\">項目</a>都有多頁物品可供選擇。選單左右兩側的箭頭圖示可以讓你在各頁間切換。從本選單點選一個元件，你將進入該元件的「填色」模式。<BR><BR>當你進入<a href=\"?173\">牆壁</a>或<a href=\"?162\">雜項</a>選項，本區域首先顯示一頁的次項目。點選次項目可檢視該項目底下的個別元件，朝上的箭頭圖示可讓你回到項目選單。<BR><BR>當你在牆壁項目下，本選單將有額外按鈕開關窗戶。<BR><BR>在<a href=\"?159\">門</a>項目裡，在每個門旁邊的圖示顯示開啟的方向。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062138",
+   "text": "在<a href=\"?145\">自訂房屋選單</a>裡的系統選單按鍵顯示多個圖示，讓你切換房屋模式與使用附加特色。這些按鈕為：<BR><BR><a href=\"?148\">同步</a>、<a href=\"?149\">清除</a>、<a href=\"?150\">備份</a>、<a href=\"?151\">回復</a>、<a href=\"?152\">提交</a>、<a href=\"?153\">轉換</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062140",
+   "text": "當你<a href=\"?145\">自訂</a>房屋時，網路狀況可能導致你的登入端與伺服器沒有同步進行。利用這個<a href=\"?147\">系統選單</a>按鍵強迫登入端與伺服器的動作同步。這可以讓你在登入端所看到的房屋設計和伺服器上一模一樣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062142",
+   "text": "當你<a href=\"?145\">自訂</a>房屋時，你可能希望將目前的設計清除掉並重新開始。按下<a href=\"?147\">系統選單</a>裡的清除鈕可以清除你目前的設計，並由空白泥地重新開始。請注意，這只會清除你目前進行中的設計，無法清除你已啟動或<a href=\"?150\">已儲存</a>的設計。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062144",
+   "text": "點選<a href=\"?145\">自訂房屋選單</a>底下<a href=\"?147\">系統選單</a>裡的備份按鍵可以為你進行中的設計做備份。如果你在離開設計模式時沒有提交設計，你進行中的設計將自動備份。你的房屋只能有一個備份設計，因此利用本選項可以覆寫之前的備份。利用<a href=\"?151\">回復</a>按鈕可讀取之前備份的設計。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062146",
+   "text": "點選<a href=\"?145\">自訂房屋選單</a>裡<a href=\"?147\">系統選單</a>底下的回復鍵可以回復前一個<a href=\"?150\">備份</a>的房屋設計。這並不會影響你已啟動的設計。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062148",
+   "text": "提交鈕位於<a href=\"?145\">自訂房屋選單</a>底下的<a href=\"?147\">系統選單</a>裡。點選該按鍵將提交你進行中的設計，並成為房屋的啟動設計。參照 <a href=\"?165\">提交新房屋設計</a>以取得更多資訊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062150",
+   "text": "當你<a href=\"?145\">自訂</a>你的房屋時，你可能希望用目前進行中的設計取代</a>目前已啟動的設計。這和<a href=\"?151\">回復</a>設計很類似，不過你是讀取前一個你所<a href=\"?152\">提交</a>的設計，而不是前一個你<a href=\"?150\">備份</a>的設計。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062152",
+   "text": "在<a href=\"?145\">自訂房屋選單</a>裡的重複使用工具可以讓你立即選擇一個已存在你房屋設計裡的<a href=\"?146\">元件</a>。點選清除圖示，選擇要拷貝的元件。元件選單切換至被選擇元件所在的頁數，你的游標也將切換成該元件的填色模式。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062154",
+   "text": "在<a href=\"?145\">自訂房屋選單</a>裡的消除工具讓你可以刪除房屋設計的<a href=\"?146\">元件</a>。要消除某個元件，點選消除圖示並選擇要清除的目標。當游標置於該目標上時，它將已紅色標示。按下滑鼠鍵清除目標。每清除一個目標你必須單擊滑鼠鍵一次。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062156",
+   "text": "<a href=\"?145\">自訂房屋選單</a>底部的數字代表你房屋設計中的元件與配件數量。將滑鼠移到該計數器上將帶出一個小視窗，顯示更詳細的資訊。<BR><BR>每個配件也以元件計算，目前包括<a href=\"?159\">門</a>與<a href=\"?161\">傳送站</a>。配件也計算入房屋保存數量限制內。房屋設計內可用的配件數量有限。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062158",
+   "text": "在<a href=\"?145\">自訂房屋選單左方有九個按鈕，排成三行三列。前兩行開啟你可以用在房屋設計上的元件清單。要選擇元件，點選你需要的項目，然後由<a href=\"?146\">項目選單中選擇你所需的元件。<B><B>可供選擇的元件項目為：<a href=\"?173\">牆壁、<a href=\"?158\">地板</a>、<a href=\"?159\">門</a>、<a href=\"?160\">樓梯</a>、<a href=\"?161\">傳送站</a>，以及<a href=\"?162\">雜項</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062160",
+   "text": "<a href=\"?146\">元件</a>在<a href=\"?157\">元件選單</a>裡依照型式分類。它們排列的方式是依照它們在你房屋裡應該放置的方法而定。在兩面牆於東南方接連處使用V型角落。最小的配件是用在兩面牆西北方接縫處的角落柱子。剩餘的牆壁配件是面對北方和東方的牆。你只要稍微練習，就可以知道這些配件如何互相連接了。牆壁必須有<a href=\"?163\">結構支持</a>，如果它們的高度完全，它們可以對放在上面的地板提供支持。<BR><BR>你可以利用元件選單頂端的視窗開關選擇附有嵌入式窗戶的牆壁。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062162",
+   "text": "地板<a href=\"?146\">元件</a>在<a href=\"?157\">元件選單</a>裡依照型式分類。選擇你房屋設計中要用的地板。如果你希望更改被牆壁擋住的地板，你可以利用<a href=\"?174\">透明度按鍵</a>查看它們。地板提供放在它們上方的非地板物件所需的<a href=\"?163\">結構支援</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062164",
+   "text": "門<a href=\"?146\">元件</a>是你可以加到房屋裡<a href=\"?156\">配件</a>種類中的其中一種。只要從<a href=\"?157\">元件選單</a>中選擇你設計房屋時所需的元件即可。就和<a href=\"?173\">牆壁</a>一樣，門也需要<a href=\"?163\">結構支援</a>，也可以提供放置在它上面的物品所需的支援。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062166",
+   "text": "樓梯<a href=\"?146\">元件</a>有兩種。第一種樓梯可以連接房屋的兩個樓層。另一種是屋前階梯，讓你可以進出地基。在<a href=\"?157\">元件選單</a>的樓梯項目裡，樓梯出現在最上面一行，屋前階梯出現在最下面一行。<BR><BR>樓梯是由多重tile組合而成的元件，擁有特殊屬性。它們必須有足夠的<a href=\"?163\">結構支援</a>。此外，你無法放置<a href=\"?158\">地板</a>在樓梯上面的空間，因為這些地板會擋住樓梯上方的移動。<BR><BR>屋前階梯只能放置在房屋地基的南向邊緣。請注意，自訂房屋系統可以讓你<a href=\"?155\">消除</a>所有屋前階梯。如果你這麼做，所有人 (包括你本人) 都無法進入你的房屋了。請小心務必建造一個可以進入屋子的路！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062168",
+   "text": "傳送點<a href=\"?146\">元件</a>是你可以增加到房屋內的<a href=\"?156\">配件</a>種類其中之一。它們和<a href=\"?158\">地板</a>元件非常類似，除了它們可以提供你在房屋內移動的替代方法。<BR><BR>要讓傳送點起作用，它必須和一個以上的傳送點連結。每個傳送點元件上面都刻有不同的符號。要連結傳送點，你必須放置數個符號相同的傳送點在屋內。當你<a href=\"?152\">提交</a>房屋新設計後，符號相同的傳送點就會連結。<BR><BR>站到一個已連結的傳送點上面，它就會將你傳送到另一個符號相同的傳送點。如果屋裡只有兩個符號相同的傳送點，站在其中一個上面就會將你傳送到另一個那裡。如果你放置有三個以上符號相同的傳送點，那麼你會在這些傳送點之前隨機被傳送。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062170",
+   "text": "雜項<a href=\"?146\">元件</a>項目包含不同磚瓦的選擇，包括拱門、城垛、柱子、籬笆，和瀑布。和其他大部分的元件相同，它們也需要<a href=\"?163\">結構支援</a>，並能提供其他元件所需的支援。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062172",
+   "text": "這些控制可以讓你變更房屋不同樓層裡牆壁和地板的可見度，讓你的設計更為容易。每個本列的按鈕對應房屋裡的不同樓層。每次你按下按鈕，透明度設定都會移往循環裡的下一個設定。當你<a href=\"?175\">改變樓層</a>時，所有樓層的透明度設定都將被重設。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062174",
+   "text": "要編輯房屋的不同樓層，請利用自訂房屋介面最右列的按鈕。每個按鍵對應房屋的一個樓層。只要點選某個按鈕即可傳送到該樓層。當你這麼做，所有樓層的<a href=\"?174\">透明度設定</a>都將被重設。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062176",
+   "text": "你的自訂房屋設計必須 (在某種程度上) 遵守物理原則。這表示你不能擁有浮在空中的地板或柱子。每個在你屋內的 <a href=\"?146\">元件</a>都必須被結構支援。大部分的元件提供某種形式的結構支援給其他元件。<BR><BR>這是運作的方式：兩種主要的結構支援元件為：地板和牆壁。你房屋設計的任何tile如果未具有有效的結構支援，它們將以橘色反白顯示。在任何tile未具有有效結構支援的情況下，你無法<a href=\"?165\">提交</a>你的房屋設計。<BR><BR><a href=\"?158\">地板 (和<a href=\"?161\">傳送站</a>) 必須下一個樓層的被非地板元件所支援。房屋一樓的地板元件視為被地基所支援。任何高度完整的<a href=\"?173\">牆壁</a>，<a href=\"?159\">門</a>，或<a href=\"?162\">雜項</a>元件可以提供它們上一個樓層放置的元件所需的結構支援。任何直接放置在支援元件頂端的地板視為被支援。任何放置在與支援地板相鄰處的地板也視為被支援。如果你在兩個直接支援磚瓦中間建造一排實心地板，那一排裡面所有磚瓦都視為有效支援。不論你何時排列長方形的支援地板磚瓦，所有在長方形裡的地板磚瓦都視為有效支援。<BR><BR>非地板元件必須由有效支援地板或相鄰的非地板物品取得所需的結構支援。任何和地面接觸的元件都可以從地板磚瓦接收支援。某些元件 (像是拱門的零件) 不會接觸地面，因此只能由高度足夠的相鄰元件接收支援。遊戲中限制相鄰支援元件之間距離的遠近。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062178",
+   "text": "如果你還沒準備好要<a href=\"?165\">提交</a>新房屋設計，你可以儲存設計以便稍後完成它。只要在<a href=\"?145\">自訂房屋選單</a>按下滑鼠右鍵。你會跳出 <a href=\"?169\">自訂模式</a>，你可以稍後再回來完成這些設計。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062180",
+   "text": "一旦你完成房屋的重新設計後，你就可以提交設計了。這個步驟必須在你銀行資金足夠 (以黃金或支票形式皆可) 支付新設計<a href=\"?167\">費用</a>的情況下才可執行。 (請注意，如果你的新設計元件較少，你可以收回部分資金。) 只要開啟<a href=\"?145\">自訂房屋介面</a>底下的<a href=\"?147\">系統選單</a>並選擇<a href=\"?XXX\">提交</a>選項。一旦你提交了之後，你的房屋會變成新設計。你必須檢查所有<a href=\"?159\">門</a> 和<a href=\"?161\">傳送站</a>的安全設定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062186",
+   "text": "在一般模式底下，可自訂的房屋和其他任何房屋一樣 － 你可以在它們周圍或裡面走動，在屋內存放物品等等。請同時參考：<a href=\"?169\">自訂模式</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062188",
+   "text": "在自訂模式裡，所有進出房屋的功能都被封鎖，除了自訂房屋的那個角色。在這個模式底下，所有其他玩家所看到的房屋都和它進入自訂模式前的樣子一樣，但他們無法進入房屋或和房屋互動。但是，正在自訂房屋的玩家可以看到並編輯正在進行中的設計。當你正在自訂房屋設計，你將成為隱形並免於遭受攻擊的危險。你可以穿過房屋的牆壁，也能站在空中不會掉落。這方便你在絕對的安全環境裡改變房屋設計。請注意，在本模式底下你無法從事其他動作。當你自訂房屋時，你無法開啟背包、使用任何物品與技能、和其他玩家交談，或離開房屋。感覺很像成了鬼魂。請同時參考：<a href=\"?168\">一般模式</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062190",
+   "text": "房屋的運輸箱是一種特別容器，在你編輯房屋時，它會將你的鎖定物品、安全容器、小販、酒保，以及房屋附加物品裝入箱內。當你進入<a href=\"?145\">自訂模式</a>時，你的物品就會被裝入運輸箱中，無法被看到。<BR><BR>如果你離開自訂模式時並未提交新設計，你的物品將自動從運輸箱內取出，並放回原來的位置。唯一的例外是房屋附加物品，你必須手動放置它們。<BR><BR>當你<a href=\"?165\">提交</a>新設計，物品就無法自動拆封。你必須親自<a href=\"?171\">拆封</a>這些物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062192",
+   "text": "當你<a href=\"?165\">提交</a>新房屋設計時，在你<a href=\"?170\">運輸箱</a>內的物品還是會放在裡面。你必須將這些物品移出來，並將它們放在你的房屋內。小販和酒保需要<a href=\"?172\">特別處理</a>。<BR><BR>運輸箱無法被拾起，你也無法把物品放進去。一旦你從箱內拿出某個物品，你就無法再將它放回去了。在運輸箱裡的物品也計入保存數量限制裡。你運輸箱裡的物品被放入次容器以方便整理。<BR><BR>你可以在任何時候傳送你的運輸箱，只要開啟房屋門牌選單，找到自訂選項，然後選擇<B>重新放置運輸箱</B>即可。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062194",
+   "text": "當小販和酒保被放置在<a href=\"?170\">運輸箱</a>裡面時是看不見的。要讓他們回到工作崗位上，你必須將之放在你屋內理想的位置。接下來，打開紙娃娃上的文字選單，選擇放置小販選項，即出現一張列有所有小販和酒保姓名的清單。選擇其中一名。如果你站立的位置正確，小販或酒保就會出現並回到工作崗位。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062195",
+   "text": "給~1_NAME~的個人祝福契約",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062197",
+   "text": "這個遊戲特色讓你創造出一個真正獨特的夢想家，你可以安排地磚，選擇牆壁地板的建築材料，和其他元件。要建造或擁有一個自訂房屋，你的帳號必須升級為《網路創世紀：暗黑紀元》。並非所有房屋都可以自訂的。要建造你自己的房屋，你必須取得可自訂的<a href=\"?144\">泥地</a>以及足夠的<a href=\"?167\">資金</a>以支付自訂費用。利用你房屋門牌，你可以進入<a href=\"?145\">自訂模式</a>並編輯你的房屋設計。當你準備好，你可以<a href=\"?165\">提交</a>你的新設計，將它呈現給全世界觀賞。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062199",
+   "text": "泥地是一種可以<a href=\"?143\">自訂</a>的特殊房屋種類。它們在各方面和一般房屋一樣，除了只有升級為《網路創世紀：暗黑紀元》的玩家才可以擁有它們。取得泥地的方法有三種：<a href=\"?135\">佈置</a>、<a href=\"?140\">購買</a>，或者<a href=\"?141\">轉換</a>房屋成為泥地。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062201",
+   "text": "只有擁有者~1_NAME~才能使用本契約。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062203",
+   "text": "為 ~1_NAME~ 祝福",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062207",
+   "text": "這間房屋是<a href=\"?ForceTopic97\">充公</a>的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062208",
+   "text": "這間房屋是<a href=\"?ForceTopic97\">祖父級</a>的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062209",
+   "text": "這間房屋是<a href=\"?ForceTopic97\">自動更新</a>的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062222",
+   "text": "BOD List",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062233",
+   "text": "現價：~1_amount~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062234",
+   "text": "存放物品：~1_AMOUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062243",
+   "text": "<CENTER>來自UO團隊的禮物</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062244",
+   "text": "為了答謝你繼續支持《網路創世紀：暗黑紀元》，我們特地送你一份大禮！<br><br>你可以選擇立刻接受你的禮物，或者你可以於下次登入時再接受禮物。然而，務必盡快接受這份禮物，因為這些物品只會保存幾天！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062247",
+   "text": "<CENTER>選擇你的物品</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062249",
+   "text": "<CENTER>選擇你的銘文</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062251",
+   "text": "給 [your name]，你誠摯的《暗黑紀元》團隊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062252",
+   "text": "感謝你 [your name] 支持《網路創世紀》！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062253",
+   "text": "給 [your name]，感謝支持《暗黑紀元》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062254",
+   "text": "給 [your name]，感謝一同迎接《暗黑紀元》的到來",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062255",
+   "text": "[your name] 見證了《暗黑紀元》的啟動！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062256",
+   "text": "[your name]，《暗黑紀元》初期移民",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062257",
+   "text": "[your name] 令《暗黑紀元》蓬篳生輝",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062258",
+   "text": "高貴的聖騎士 [your name]",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062259",
+   "text": "可怕的死靈法師 [your name]",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062260",
+   "text": "<CENTER>選擇額外訊息</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062268",
+   "text": "<CENTER>選擇顏色</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062272",
+   "text": "<CENTER>確認選擇</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062280",
+   "text": "給 ~1_CHARNAME~，你誠摯的《暗黑紀元》團隊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062281",
+   "text": "給 ~1_CHARNAME~，感謝支持《暗黑紀元》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062282",
+   "text": "給 ~1_CHARNAME~，感謝一同迎接《暗黑紀元》的到來",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062283",
+   "text": "~1_CHARNAME~，《暗黑紀元》初期移民",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062284",
+   "text": "~1_CHARNAME~ 令《暗黑紀元》蓬篳生輝",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062285",
+   "text": "高貴的聖騎士 ~1_CHARNAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062286",
+   "text": "可怕的死靈法師 ~1_CHARNAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062287",
+   "text": "<CENTER>等等！還有其他的</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062288",
+   "text": "你已獲得穿著物品或玫瑰。現在你可以選擇讓一項技能提升5點，或使你的屬性上限增加5點。一旦做了決定將無法反悔，所以請小心選擇！<b>此附加點數不能使一項技能超過其屬性上限！</b>如果你希望取消並於稍候選擇禮物，請點選底下的「取消」，或是在此選單上按右鍵。你將可以在下次登入時再做選擇。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062291",
+   "text": "<CENTER>選擇額外點數</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062292",
+   "text": "在這裡，你必須選擇提升技能，或是選擇增加你的屬性上限。在你選擇之後，將會要求你做確認。<b>記住，這份禮物無法使一項技能超過其上限！</b>確認選單將顯示你所選的技能的目前數值，以及加值之後的新數值。如果你選擇增加屬性上限，增加值將會累計至任何你過去使用過的或將會在未來使用的威力卷軸上，所以不會有失去此禮物效力的危險。請明智選擇！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062293",
+   "text": "<CENTER>無法繼續</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062295",
+   "text": "<CENTER>確認提升技能</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062296",
+   "text": "你已選擇提升一項技能。請確認這是你想要的。<b>記住，這份禮物不能使一項技能超過其屬性上限！</b>如果你希望取消並於稍候選擇禮物，請點選底下的「取消」，或是在此選單上按右鍵。你將可以在下次登入時再做選擇。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062301",
+   "text": "<CENTER>確認提升屬性上限</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062310",
+   "text": "<CENTER>選擇要提升的技能</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062313",
+   "text": "感謝你 ~1_CHARNAME~ 支持《網路創世紀》！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062314",
+   "text": "給 ~1_CHARNAME~，感謝支持《暗黑紀元》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062322",
+   "text": "刺皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062323",
+   "text": "精良刺皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062324",
+   "text": "角皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062325",
+   "text": "精良角皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062326",
+   "text": "鉤皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062327",
+   "text": "精良鉤皮~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062344",
+   "text": "書中契約：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062365",
+   "text": "請輸入這項契約的應付金額總數 (ESC可取消 ) ：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062366",
+   "text": "輸入你希望這位小販可使用的儲存數量 (按ESC取消) ：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062368",
+   "text": "可提供~1_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062373",
+   "text": "~1_NAME~ 提供你小販出租。若你願意接受此租約，請在30秒內決定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062374",
+   "text": "~1_NAME~ 謝絕你提供的小販出租。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062376",
+   "text": "~1_NAME~ 接受你提供的小販出租。租賃契約選項和細節可由小販身上的「契約選項」進行檢視 。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062412",
+   "text": "微量毒點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062413",
+   "text": "小毒點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062414",
+   "text": "大毒點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062415",
+   "text": "致命毒點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062416",
+   "text": "強力毒點數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062428",
+   "text": "<CENTER>商店</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062436",
+   "text": "你所選小販的物品清單中有 ~1_COUNT~ 件物品，其帳戶內有 ~2_AMOUNT~ 黃金。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062437",
+   "text": "~1_COUNT~ 件物品已從商店物品清單中移出並置入你的背包。~2_BANKCOUNT~ 件物品已從商店物品清單中移出並置入你的銀行保險箱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062449",
+   "text": "商店名稱：~1_NAME~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062452",
+   "text": "~1_val~ (斐盧卡大陸)(房屋)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062453",
+   "text": "~1_val~ (崔美爾大陸)(房屋)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062454",
+   "text": "~1_val~ (馬拉斯大陸)(房屋)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062455",
+   "text": "這個動作將會超過本屋佈告欄的上限值 (~1_VALUE~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062459",
+   "text": "<CENTER>頭髮</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062460",
+   "text": "<CENTER>鬍鬚</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062461",
+   "text": "<CENTER>其他</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062462",
+   "text": "你無法在任一小販上指定超過 ~1_VALUE~ 鎖定數量。你的選擇已改為 ~1_VALUE~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062464",
+   "text": "這個小販的租賃契約將在~1_DAY~天又 ~2_HOUR~ 小時後到期。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062481",
+   "text": "書名：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062487",
+   "text": "你即將要交易一間仍有使用中的小販契約在內的房屋。當仍有使用中的小販契約在屋內時，你<strong>無法</strong> 拆除 <strong>或</strong> 重新設計房屋。 當你接受這間房屋的同時，也接下了屋內所有小販契約的屋主權利。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062498",
+   "text": "小販 ~1_NAME~預定",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062501",
+   "text": "這位小販的東家正在提供你租賃費用的部分退還金，以立即終止你的租賃契約。<BR><BR>若你接受這項提議，小販將會立即被資遣。你將可領回小販為你保管的所有物品和金額，可經由本屋門牌中的內容選項領取。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062511",
+   "text": "同意，並且 <strong>解雇小販</strong>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062512",
+   "text": "不，我想要<strong>保留我的小販</strong>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062541",
+   "text": "你無法返回正常的遊戲狀態。請使用你的「求助」選單聯絡GM。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062542",
+   "text": "你無法進入不執行遊戲模式。請使用你的「求助」選單聯絡GM。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062552",
+   "text": "警告：你目前使用了未來將不再支援的安裝型態。<br><br>你目前的安裝型態需要你將《網路創世紀》遊戲光碟置入CD光碟機才能進行遊戲。儘管我們即將停止支援這種安裝型態 (或許在下個重大的遊戲用戶端程式版本釋出時) ，不過你可以透過簡單的方式解決這個問題。請重新安裝《網路創世紀》並選擇「完全安裝」。這將會把遊戲需要的所有元件都安裝到你的硬碟上，如此《網路創世紀》不再需要存取你CD光碟機內的光碟即可進行遊戲。在轉換為「完全安裝」後，遊戲執行效能也會有所提升。<br><br>如果你有任何相關的問題，請瀏覽<a href=\"http://uo.custhelp.com/\">http://uo.custhelp.com/</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062572",
+   "text": "<U><CENTER>其他玩家騷擾我 (或使用遊戲漏洞)。</CENTER></U><BR><BR>言語騷擾<BR>當其他玩家以言語騷擾你的角色時可利用此選項。言語騷擾行為包括但不限於，使用粗話、威脅字眼等等..在你申訴之前，務必確認你了解騷擾的定義 (<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=45\">什麼是言語騷擾？</A>)，同時你得遵循下列步驟：<BR>1. 你已要求該玩家停止，但他們仍舊繼續。<BR>2. 你曾嘗試讓自己脫離被騷擾的情況。<BR>3. 你並未挑動或進一步鼓勵騷擾行為。<BR>4. 你已將該玩家納入忽視清單 (<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=137\">我如何忽視一名玩家？</A>)。<BR>5. 你已經詳讀並了解Origin的騷擾定義。<BR>6. 你的帳號資訊為最新 (包括目前的電子郵件地址)。<BR>*如果你尚未採取這些步驟，GM可能無法對騷擾你的玩家採取行動。<BR>**GM將檢視聊天紀錄確定此申訴的正當性。濫用此系統會違反行為準則。<BR><BR>遊戲漏洞<BR>利用此選項回報某個使用遊戲漏洞或作弊的玩家 (<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=42\">遊戲漏洞的定義為何？</a>)。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062573",
+   "text": "<U><CENTER>其他玩家使用遊戲機制騷擾我。</CENTER></U><BR><BR>行為騷擾<BR>當其他玩家使用遊戲機制騷擾你時請利用此選項。行為騷擾包括但不限於引誘或任何導致玩家束縛受死的行為。在你申訴之前，務必確認你了解騷擾的定義 (<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=59\">什麼是行為騷擾？</A>)，同時你得遵循下列步驟：<BR>1. 你已要求該玩家停止，但他們仍舊繼續。<BR>2. 你曾嘗試讓自己脫離被騷擾的情況。<BR>3. 你並未挑動或進一步鼓勵騷擾行為。<BR>4. 你已將該玩家納入忽視清單 (<A HREF=\"http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=137\">我如何忽視一名玩家？</A>)。<BR>5. 你已經詳讀並了解Origin的騷擾定義。<BR>6. 你的帳號資訊為最新 (包括目前的電子郵件地址)。<BR>*如果你尚未採取這些步驟，GM可能無法對騷擾你的玩家採取行動。<BR>**GM將會驗證此問題，確定此申訴的正當性。濫用此系統會違反行為準則。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062597",
+   "text": "指定你想要檢視榮譽屬性的目標玩家 (ESC取消)",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1062610",
+   "text": "<CENTER><U>《網路創世紀》求助回應</U></CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062613",
+   "text": "~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062618",
+   "text": "你扳動了開關！在接下來60分鐘內，末日地城將成為PvP區域！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062626",
+   "text": "指定你打算決鬥的玩家 (ESC取消)",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1062634",
+   "text": "來自 ~1_NAME~ 的祝福",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062635",
+   "text": "來自攝政王 ~1_NAME~ 的祝福",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062651",
+   "text": "指定你希望裁判決鬥的玩家 (ESC取消)",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1062666",
+   "text": "透過攝政王 ~1_NAME~ 的祝福，你的心靈已經純淨。你的 ~2_NUMBER~ 次謀殺已被慷慨地寬恕。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062667",
+   "text": "你慷慨地寬恕了 ~1_NAME~ 的 ~2_NUMBER~ 次謀殺。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062683",
+   "text": "伺服器的攝政王禁止你進入該城堡！約 ~2_HOURS~ 又 ~3_MINUTES~ 後你將可以再次進入城堡。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062684",
+   "text": "伺服器的攝政王對你下達的 Lord British 城堡禁令已經失效。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062688",
+   "text": "該伺服器的攝政王禁止你進入 Lord British 的城堡一天！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062689",
+   "text": "~1_NAME~ 祝賀你歡度六週年",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062694",
+   "text": "<CENTER>你確定要離開此麻將遊戲？</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062695",
+   "text": "~1_name~ 擲出骰子得到一個 ~2_number~ 點和一個 ~3_number~ 點！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062698",
+   "text": "~1_name~ 被指定為莊家。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062699",
+   "text": "~1_name~ 被莊家趕出遊戲。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062719",
+   "text": "點數：~1_score~ ， 打出第一張後",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062762",
+   "text": "~1_name~ 已離開遊戲。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062771",
+   "text": "~1_name~ 已重置了遊戲。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062772",
+   "text": "~1_name~ 以玩家的身份參與遊戲。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062773",
+   "text": "~1_name~ 以莊家的身份參與遊戲。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062774",
+   "text": "~1_giver~ 給 ~2_reciever~ ~3_number~ 點。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062785",
+   "text": "<BODY><CENTER>角色轉移<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062786",
+   "text": "感謝你參與角色轉移計畫。為了繼續轉移程序，你必須點選「下一步」按鈕，表明你了解角色轉移程序。此程序的詳細細節可以透過你的網路瀏覽器在 <a href=\"http://support.uo.com/charactertransfer.html\">support.uo.com/charactertransfer.html</a> 找到，但我們希望請你特別留意下面幾點：<br>- 可以轉移的物品包括你的角色、你的角色裝備的所有東西 (包括穿戴的和持有的) 、你的背包、你的銀行保險箱、你所有寄放的寵物、附近的所有你的角色的寵物及牠們相關的內容物。 (臨時的「追隨著」，例如雇員、護衛和活死人將無法轉移。) <br>- 在開始轉移至新伺服器之前，請驗證你角色的「轉移箱」的內容物是正確的。你將沒有第二次機會；事後若發現缺少物品，也無法新增物品。<br>- 房屋及其保存的物品將不會轉移。<br>- 轉移完成後，你將會失去與公會、陣營和團隊的所有聯繫。<br>- 在轉移至新伺服器後，連結手鐲和召喚寵物水晶球的連結將會清除。<br>- 所有遺留的「房屋契約」將會轉換成房屋設置工具。<br>- 在程序中的任何時候，你都可以取消轉移，並於日後繼續轉移程序。<br>- 在轉移完成前，你將無法登入原始或目的伺服器。<br>- 在轉移至新伺服器後，你得為該角色重寫任何自訂的遊戲巨集。<br>- 進入新伺服器後， <i>你必須在七天之內將角色「轉移箱」內的物品全部移走。 </i>在這段時間之後，任何留在箱內的物品將會永遠消失。 (你可以在任何時候從你角色的關連性選單中選擇「開啟轉移箱」存取你的轉移箱。)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062787",
+   "text": "<BODY><CENTER>選擇新伺服器<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062788",
+   "text": "請選擇你想將此角色移入的伺服器。若伺服器目前無法進行角色轉移，你將無法選擇它。 (如果伺服器暫時停機，你將無法選擇它，直到停機時間結束為止。某些轉移選項，例如從Siege Perilous、Mugen或任何測試伺服器轉出或轉入，永久不被允許。)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062789",
+   "text": "<BODY><CENTER>驗證打包物品<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062791",
+   "text": "<BODY><CENTER>轉移摘要<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062792",
+   "text": "最後確認：你的角色將被從此伺服器轉移至所選的目的伺服器。在你角色「轉移箱」中的所有東西都會被一併轉移。 <b>轉移之後，你必須在七天之內將角色「轉移箱」內的物品全部移走。一旦超過時限，箱子內的物品將被刪除而且永遠無法回復。 </b>關於角色轉移程序的詳細資訊，請利用你的網頁瀏覽器查看 <a href=\"support.uo.com/charactertransfer.html\">support.uo.com/charactertransfer.html</a>。若同意並想要啟動轉移程序，請點選底下的「轉移我！」。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062793",
+   "text": "<BODY><CENTER>登出<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062795",
+   "text": "<BODY><CENTER>位置不適合轉移<CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062796",
+   "text": "為了開始你的角色轉移，你必須處於安全的登出位置 (例如旅店，或是將你納入屋主、副屋主或朋友名單上的房屋) 。關於角色轉移程序的詳細資料請請利用你的網頁瀏覽器查看support.uo.com/charactertransfer.html。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062798",
+   "text": "Arirang",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062799",
+   "text": "Asuka",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062800",
+   "text": "Atlantic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062801",
+   "text": "Baja",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062802",
+   "text": "Balhae",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062803",
+   "text": "Catskills",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062804",
+   "text": "Chesapeake",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062805",
+   "text": "Drachenfels",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062806",
+   "text": "Europa",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062807",
+   "text": "Formosa 福爾摩沙",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062808",
+   "text": "Great Lakes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062809",
+   "text": "Hokuto",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062810",
+   "text": "Izumo",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062811",
+   "text": "Lake Austin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062812",
+   "text": "Lake Superior",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062813",
+   "text": "Legends",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062814",
+   "text": "Mizuho",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062815",
+   "text": "Napa Valley",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062816",
+   "text": "Oceania",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062817",
+   "text": "Pacific",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062818",
+   "text": "Sakura",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062819",
+   "text": "Sonoma",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062820",
+   "text": "Wakoku",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062821",
+   "text": "Yamato",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062822",
+   "text": "Siege Perilous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062823",
+   "text": "Mugen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1062828",
+   "text": "~1_val~ 會留在寄放處內，因為你無法控制它。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062834",
+   "text": "轉移箱物品：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062835",
+   "text": "來自Origin團隊的佳節祝福！禮品已放入你的背包。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062836",
+   "text": "來自Origin團隊的佳節祝福！禮品已放入你的銀行保險箱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062841",
+   "text": "~1_NAME~ 雪人",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062849",
+   "text": "由於角色轉移進行中，你目前無法登入此伺服器。轉移程序將費時一小時。如果你在一小時後仍接獲此訊息，請登入其他的伺服器並利用遊戲中的求助選單向GM請求協助。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062856",
+   "text": "恭喜，你的角色已轉移完成。<br><br>- 你的原始銀行保險箱已自動換成新的銀行保險箱，現在可以透過正常的方式取用。<br>- 你的寄放寵物已自動轉移至當地的寄放處。你現在可以正常地在此伺服器上取用牠們。<br>- 你可以使用轉移箱內的背包關連性選單自動將其內容轉移至你的新背包中。<br>- 你可以使用轉移箱內「穿戴物品」容器的關連性選單，自動裝備上你在轉移前穿著/持有的任何物品。<br>- 你可以在寵物關連性選單中選擇「卸下寵物」選項，取回任何留在轉移箱內的寵物。<br><br><b><basefont color=#990000>你必須在七天之內將角色「轉移箱」內的物品全部移走。 在這段時間之後，任何留在箱內的物品將會永遠消失。一旦超過時限，箱子內的物品將被刪除而且永遠無法回復。</basefont></b>你可以限時其間內於任何時候從你角色的關連性選單中選擇「開啟轉移箱」存取你的轉移箱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062857",
+   "text": "由於角色轉移進行中，你目前無法登入此伺服器。轉移程序將費時一小時。如果你在一小時後仍接獲此訊息，請登入其他的伺服器並利用遊戲中的求助選單向GM請求協助。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062870",
+   "text": "<u>兌換碼：</u> 如果你手上有兌換碼，而且你想要將兌換碼用於本角色或本帳號上，請使用本選項。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062875",
+   "text": "<basefont color=#aaaa00><b>警告！ </b>當你的角色轉移至此伺服器時，你的「轉移箱」中仍留有物品。參考底下的日數，看看你還有多少時間可以清空箱子。<b>在這段時間之後，任何留在箱內的物品將會永遠消失。一旦超過時限，箱子內的物品將被刪除而且永遠無法回復。</b></basefont>你可以限時其間內於任何時候選擇關連性選單中的「開啟轉移箱」存取你的轉移箱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062876",
+   "text": "<basefont color=#ff0000><b>Alert! </b>當你的角色轉移至此伺服器時，你的「轉移箱」中仍留有物品，但是允許你將物品從轉移箱中移除的時限已過。 <b>你必須在登出前移出這些物品，否則它們將會被刪除；一旦你登出，物品將會被刪除且永遠無法回復。</b></basefont>你可以限時其間內於任何時候選擇關連性選單中的「開啟轉移箱」存取你的轉移箱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062879",
+   "text": "<BODY><CENTER>轉移箱警告</CENTER></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062897",
+   "text": "你無法轉移這名角色，因為你的寄放駝獸 ~1_NAME~ 的背包中仍有物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062898",
+   "text": "你的轉移已經取消，因為你的轉移箱的內容物超過 ~1_MAX~ 件物品的限制。請從你的背包、銀行或寵物背包中移除 ~2_NUMBER~ 件物品並再試一次。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062901",
+   "text": "執行你的角色轉移時發生錯誤。請稍候再試一次。如果問題持續存在，請使用求助選單呼叫GM。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062903",
+   "text": "你的角色轉移因發生錯誤而無法完成。請使用求助選單呼叫GM。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062912",
+   "text": "<body>當發現不列顛尼亞時，國王遭受火焰法術的攻擊，差點置他於死地。 (說他死亡的傳說過份誇大。) 自此之後，他隨身帶著皇家黑炭護腿。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062914",
+   "text": "<body>在不列顛尼亞的第二紀元，平和的特林希克城遭受混沌勢力的攻擊。在兇殘、血腥的戰鬥之後，該城鎮被徹底摧毀。這朵玫瑰乃是為了紀念特林希克捍衛者的榮耀。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062916",
+   "text": "<body>曾是索沙利亞國王的沙米諾，過去是 Lord British 的好伙伴之一。來以神聖崇高人民著稱的史卡拉坡城，沙米諾過著遊俠的生活，同時也是當地最厲害的神射手。這把十字弓是他的長期伙伴艾歐羅專門為他設計的。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062918",
+   "text": "<body>這件掛毯紀錄著世界的歷史，從不列顛尼亞的過往時光，乃至繁榮且充滿機會的黎明曙光紀元。它出自於 Lord British 最忠實的伙伴，同時也是吟遊詩人和說故事能手的艾歐羅之手。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062920",
+   "text": "<body>當黑刺王為了奪取不列顛尼亞而發動黑暗戰爭時，居民們晚上通常會留在家裡，而不敢外出。不列顛尼亞的善良子民在像這樣溫暖的壁爐旁邊度過了無數的寒冷夜晚。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062922",
+   "text": "<body>第五紀元，人稱暗黑紀元，是個艱困的時期。死靈法師學會了如何將死人從墳墓中喚醒，而神聖的聖騎士加入了將邪惡死靈巫術從世上剷除的行列。這場爭鬥至今仍舊持續著。多虧擁有秘術知識的鐵匠，聖騎士如今擁有得以協助他們征戰的聖劍。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062924",
+   "text": "<body>最近發現一件來自奇特世界的奇特物品。關於有新戰士的新大陸以及發動戰爭的新方法的謠言滿天亂飛。如果謠言屬實，不列顛尼亞可能會徹底改觀。這頂奇特的頭盔是由商船所帶回。它令人驚奇的華麗和它的耐用度形成強烈的對比。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062925",
+   "text": "花瓣：~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062928",
+   "text": "<CENTER>UO七週年紀念</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062930",
+   "text": "你必須升級到最新的資料片才可以放置這些地磚。關於最新資料片請見UO官網。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062939",
+   "text": "<center>公會選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062942",
+   "text": "<b>公會名稱：</b>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062946",
+   "text": "<center>你已獲邀加入一個公會！ (警告：接受將使你成為可攻擊的目標！) </center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062952",
+   "text": "<i>最後上線時間</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062953",
+   "text": "<i>公會頭銜</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062954",
+   "text": "<i>公會名稱</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062955",
+   "text": "<i>名稱</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062956",
+   "text": "<i>等級</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062957",
+   "text": "<i>縮寫</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062958",
+   "text": "<i>狀態</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062965",
+   "text": "<div align=center>你與這個公會正在交戰中！</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062966",
+   "text": "<i>你的殺敵數</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062967",
+   "text": "<i>他們的殺敵數</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062968",
+   "text": "<i>剩下時間</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062969",
+   "text": "<div align=center>這個公會向你宣戰！</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062970",
+   "text": "<div align=center>你和這個公會同盟。</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062971",
+   "text": "<div align=center>你以向此公會請求同盟。</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062972",
+   "text": "<div align=center>該公會已請求同盟。</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062973",
+   "text": "<div align=center>你與此公會和平相處。</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062975",
+   "text": "<div align=center><i>公會關係</i></div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062979",
+   "text": "<div align=center><i>宣戰</i></div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1062999",
+   "text": "該公會名稱已被使用：~1_name~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063001",
+   "text": "你沒有成立公會所需的 ~1_val~  枚金幣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063002",
+   "text": "~1_val~ 已加入公會！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063003",
+   "text": "~1_name~ 拒絕加入你的公會的提議。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063009",
+   "text": "<i>戰爭期間</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063011",
+   "text": "<i>勝利條件</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063013",
+   "text": "你需要至少 ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ 點技能才能使用該能力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063018",
+   "text": "<div align=center><i>公會會員資訊</i></div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063023",
+   "text": "<i>當你進入庭院，你發現褪色的文字。上頭寫著：</i><br><br>歡迎來到你的新家，武士。<br><br>雖然你的技能僅是麟毛鳳角，你必需證明自己遵守武士道精神。<br><br>去找大名合氣尋求指引。<br><br>你願意接受挑戰嗎？</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063025",
+   "text": "<i>同盟</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063027",
+   "text": "<div align=center>你已向此公會宣戰！</div>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063028",
+   "text": "<i>為了預防你改變心意...</i><br><br>只要你在這裡，你可以在任何時候重新開始這個任務。只需回到大名合氣的身邊和他談話。一旦你前往城市，你便無法回來。<br><br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063029",
+   "text": "幸會。我是大名合氣，此地的領主。<br><br>由於你來此地投靠我，你必須學習武士道。<br><br>揮舞刀劍很容易，任何人都能拿劍攻擊。學習如何正確且有技巧的戰鬥，才能成為一名裝甲兵。<br><br>學習如何使用武器，更重要的是，何時不使用武器，就是武士之道。也就是所謂的武士道。這也是你來此地的目的。<br><br>你將經歷七個試煉，證明你遵守武士道。<br><br>第一個試煉將測試你的取決技能。你只能進入綠色通道後方的區域。<br><br>別想加速你的試煉。只有當我認為你準備好時，衛兵才會讓你通過每個試煉。<br><br>在每個試煉區內，你可以使用金色傳送點作為最後手段，但這麼做，你必須自行承擔後果。一旦你選擇逃跑，你可能無法回來完成你的試煉。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063031",
+   "text": "在你面前有兩群麻煩之徒。<BR><BR> 被詛咒靈魂曾是驕傲的戰士，後來被邪惡的法師死迷惑。該法師後來坑殺他們，但是直到死亡法術的效力都還影響著他們的靈魂。 <BR><BR>年輕浪人是迷途的受訓武士。他們只對那些出得起銀子的傢伙表示忠誠。 <BR><BR>你必須決定與哪一方戰死方休。你或許希望 <a href=\"?ForceTopic27\">回顧戰鬥技巧</a>以及<a href=\"?ForceTopic29\">治療你自己的情報</a>。<BR><BR>在你完成試煉之後返回大名合氣那裡。<br><br>如果你在試煉過程中死亡，前往聖符神殿，你將會復活。在返回大名那裡之前，你應當從你的屍體上取回物品，否則你將無法再回到你的屍體所在處。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063033",
+   "text": "要檢視周遭區域，你應當學習如何使用雷達地圖。<BR><BR>你可以按下「ALT-R」鍵開啟雷達地圖 (或俯瞰視野) 。它會以鳥瞰視野顯示你的周遭環境。<BR><BR>按兩次「ALT-R」，將可稍微放大雷達地圖。當你在世界中旅行時，經常使用雷達地圖可以讓你熟悉周遭的環境。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063036",
+   "text": "公會名稱長度不能超過 ~1_val~ 個字。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063037",
+   "text": "縮寫長度不能超過 ~1_val~ 個字。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063038",
+   "text": "殺死的被詛咒靈魂數：~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063039",
+   "text": "殺死的年輕浪人數：~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063040",
+   "text": "你因為殺死一名被詛咒靈魂而獲得一些<a href=\"?ForceTopic45\">善惡值</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063041",
+   "text": "你因為殺死一名年輕浪人而獲得一些<a href=\"?ForceTopic45\">善惡值</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063045",
+   "text": "非常好，你清理了被詛咒靈魂之地，如此他們將入土為安。他們遭受詛咒，去做出那些他們自認是光榮的行為。現在，他們帶著榮耀死去。<BR><BR>我已將獎品放入你的背包中。<BR><BR>第二項試煉將考驗你的勇氣。你只需順著黃色路線走，即可見到等候你的事物。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063046",
+   "text": "你做得很好，你清除了那些不榮譽的武士。或許死亡能夠給他們一些教訓。<br><br>我已將一份獎品放入你的背包。<br><br>第二個試煉將考驗你的勇氣。你只能順著黃色路線前進，看看有什麼等著你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063049",
+   "text": "~1_val~ 拒絕了加入公會的邀約。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063050",
+   "text": "~1_val~ 已經是你公會的成員！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063051",
+   "text": "~1_val~ 已經是公會成員！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063052",
+   "text": "~1_val~ 目前正在考慮其他加入公會的邀約。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063053",
+   "text": "你邀請 ~1_val~ 加入你的公會。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063056",
+   "text": "你已經加入 ~1_val~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063057",
+   "text": "在衛兵之後是勇氣的考驗。你必須面對你的恐懼並攻擊一頭野獸。在庭院的門後有超過一個以上的門，你必須選擇要殺哪頭野獸。<br><br>進入庭院的小惡魔對周遭事物渾然不知。龍則蓄意地獵食人類的血肉 – 一頓豐富的野獸饗宴。<br><br>你必須將庭院裡的這些怪獸清除，但你一次只能選擇一隻攻擊。明智地做出選擇吧。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063059",
+   "text": "你的眼神中殘留著恐懼，但是你已經了解，外表並無法呈現所有事物的本質。<br><br>你一定也知道，龍會立刻將你殺死。你選擇弱小的對手，儘管小惡魔來此地並無惡意。你還有很多要學。<br><br>在這塊土地上，死亡並非永恆。神殿可以像法師或醫療師一樣讓你起死回生。<br><br>當你身受重傷時，尋找神殿。<br><br>下個試煉將考驗你的仁心。你只需順著藍色路線走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063060",
+   "text": "你面對著龍，自知死期將至。這正是武士應有的勇氣。<BR><BR>你已具有武士的魂魄。<BR><BR>在這塊土地上，死亡並非永恆。神殿可以像法師或醫療師一樣讓你起死回生。<br><br>當你身受重傷時，尋找他們。<br><br>下個試煉將考驗你的仁心。你只需順著藍色路線走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063062",
+   "text": "一群狼圍繞在你腳邊。牠們受傷且相當痛苦。殺死牠們能夠結束牠們的苦難。<br><br>使用你的光榮處決技能或是其他方式，殺死受傷的狼隻。這麼做之後，返回大名合氣那裡。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063065",
+   "text": "<i>當你走向大名合氣時，他看著你微笑。他輕聲說：</i><br><br>一名武士懂得幫助他人，即使是當他揮舞刀刃對抗他們時。<br><br>你展現了同情心。真正的武士即是對敵人也會表現仁心。為此，你應當獲得獎勵。<br><br>現在，你必須再度證明自己。順著紅色路線前進。稍候再聊。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063067",
+   "text": "<i>你靠近一名站在一座小屋附近、衣冠不整的吉普賽人。你發覺她它已有些時日沒有進食及梳洗。<br><br>在她附近，有一大群骯髒、生病的貓。顯然地，她將所賺來的微薄金錢，用來餵養貓群，並讓自己挨餓。<br><br>你必須做出選擇。你可以給她黃金，讓她為動物和自己購買一些食物。你也可以殺掉一些奄奄一息的貓隻，讓她專心拯救自己。</i><br><br>如果你選擇給吉普賽人金錢，你可以點擊你的金錢，並選擇「1」。然後將金錢拖曳到吉普賽人身上。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063070",
+   "text": "經由協助他人脫離困境，並使吉普賽人重拾失去的尊嚴，你展現了尊重。<br><br>現在，她可以自行用餐，恢復體力，返回她的營地。<br><br>貓群是她的家人– 被邪惡法師詛咒。<br><br>一旦她有足夠的力氣走回營地，她將能夠破解法術。<br><br>基於完成試煉，你獲得了獎勵。現在，你必須再次證明自己。<br><br>請從寶藏室取得我的武士刀，並帶來給我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063071",
+   "text": "尊重來自於讓他人做出自己的決定。否定吉普賽人的動物，你抹煞了她應有的尊重。或許你可以學到一些教訓，下次遇到類似情況時便知道該如何應付。<br><br>現在，你必須再次證明自己。請從寶藏室取得我的武士刀，並帶來給我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063076",
+   "text": "謝謝你將這把武士刀帶來給我，並且使其他寶藏原封不動。<br><br>你的訓練接近尾聲。在你完成你的最終試煉之前，你應該向在你之前成為武士的人表示敬意。<br><br>進入祭壇室，為他們點亮一支蠟燭。之後，回到我這裡。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063077",
+   "text": "謝謝你將這把武士刀帶來給我。然而，你拿取其他寶藏並據為己有的行為，實在太不應該。<br><br>想想你的所作所為，年輕人。<br><br>你的訓練接近尾聲。在你完成你的最終試煉之前，你應該向在你之前成為武士的人表示敬意。<br><br>進入祭壇室，為他們點亮一支蠟燭。之後，回到我這裡。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063079",
+   "text": "你做得很好，年輕的武士。還有一件事要做。<br><br>在最後的房間裡有個監牢，裡頭囚禁著一些前來刺殺我的年輕忍者。他們失風被捕，被我監禁起來。<br><br>給這些惡棍一些教訓，告訴他們你向誰效忠。<br><br>這是武士訓練的最後試煉。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063084",
+   "text": "<i>公會陣營</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063124",
+   "text": "<i>進階搜尋選項</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063125",
+   "text": "你已經證明你自己，年輕人。隨著年紀的增長，你將繼續提升你的技能。<br><br>現在，你該出發去探索這塊土地。這條路的後方，等著你的是禪道之城，也是你未來的家園。在這裡的地上，你將會發現稱為月之門的黃色橢圓形物體，穿過它，你將會發現自己置身在禪道之城。<br><br>當你抵達時，你可能會想要拜訪安賽菈．佳恩。<br><br>你必須學習此道。你是一名榮耀的戰士，備受尊崇的武士。<br><br>請接受這份我放到你背包裡的禮物。這是你贏得的。再會了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063126",
+   "text": "你已經證明你自己，年輕人。隨著年紀的增長，你將繼續提升你的技能。<br><br>現在，你該出發去探索這塊土地。這條路的後方，等著你的是禪道之城，也是你未來的家園。在這裡的地上，你將會發現稱為月之門的黃色橢圓形物體，穿過它，你將會發現自己置身在禪道之城。<br><br>當你抵達時，你可能會想要拜訪安賽菈．佳恩。<br><br>你必須學習此道。你是一名榮耀的戰士，備受尊崇的武士。<br><br>請接受這份我放到你背包裡的禮物。這是你贏得的。再會了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063139",
+   "text": "<i>縮寫</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063156",
+   "text": "~1_val~ 的公會資料已經更新。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063159",
+   "text": "你投票給 ~1_val~ ，選他擔任公會領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063175",
+   "text": "啊，另一名振翅待飛的菜鳥。歡迎來到我的家園，年輕人。<br><br>我是大名艾米諾，集狂暴於一身。任何妨礙我統治的人，都會遭到報復。<br><br>你看起來似乎能夠幫助我，但你的技能尚未經過測試。你想要證明自己有受雇於我的資質嗎？<br><br>精英忍者索爾在後院等著你。他會帶你去進行第一個試煉。當你抵達你的目的地時，你會接到進一步的指示。在探索庭院或洞穴入口前，你應該先與他談話。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063177",
+   "text": "<i>當你靠近索爾時，他端詳著你的臉。他冷漠地說：</i><br><br>大名艾米諾又派其他人來送死？前一人的血跡都還沒乾呢！<br><br>無所謂，等你死了以後再一起清理也無妨，嗯？<br><br>閒話休說，你唯一的任務是在廢棄的旅館中存活下來。<br><br>當你需要採取進一步的行動，並且回到我們這裡時，你會收到指示。<br><br>只有真正的忍者才能機敏地通過試煉，活著回來。<br><br>你的未來... 或你的死亡... 在此洞穴後頭等著你。<br><br>快去吧。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063180",
+   "text": "在你前面有道發光的拱門。<br><br>它的門框兩側鑲著惡魔頭顱，吐著火焰並監視你的一舉一動。<br><br>要通過這到拱門，你必須從惡魔的視線中消失之後，你才能緩慢地穿過拱門。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063181",
+   "text": "你必須先隱身，以便通過那道門。<br><br>要找出啟用此技能的方法，參見<a href=\"?ForceTopic73\">智慧寶典</a>。要啟用技能，在你的技能表中找到它，然後點擊位於技能名稱左側的藍色按鈕。<br><br>一旦你成功地隱身，你可以緩慢地穿過門。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063184",
+   "text": "<i>當你靠近大名艾米諾時，他對你微笑：</i><br><br>你成功地在第一個試煉和索爾怒氣之下存活下來。<br><br>因此，你獲得了符合你身份的護腿和手套。這些是真正忍者唯一需要的護甲。<br><br>你尚未充分證明你自己，年輕人。你必須通過另一個試煉。去找索爾。將這份短柬拿給他看，他便知道我們已經交談過。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063189",
+   "text": "<i>索爾從你的手中抓起卷軸，閱讀短柬內容：</i><br><br>還活著？在我向大名艾米諾認可你之前，你必須進一步地展現實力給我看。<br><br>你必須回到旅館，開始下個試煉。<br><br>我們認為有位伙伴，怎麼說呢，不慎地破棄了我們的約定。<br><br>你必須想辦法收集情報，並把消息回報給大名艾米諾。小心別丟掉了你的頭顱。<br><br>大名艾米諾住所內的藍色傳送點，將帶你通往你的命運。我建議你動作快一點。<br><br>...留意放輕腳步。笨重的腳步聲是最可怕的叛徒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063196",
+   "text": "你安靜地靠近門，看到一位叫做潔妲．安泰爾的女子，和一位穿著暗色衣服的可疑人物說話。你靠近了一些，以便偷聽他們的談話。幸運的是，你的潛入並未驚動這兩位專注於談話的人。<br><br>潔妲的急促的聲音劃過空氣：<i><br><br>那把刀已經藏起來了，我們將躲在這裡，直到大名艾米諾把我們遺忘。一旦他發現他最喜愛的刀不見了，他肯定會開始尋找竊賊。那時候，我們早已遠走高飛。</i><br><br>在偷聽到談話後，你了解自己被派來此地的原因。你必須立刻把你所聽到的告訴大名艾米諾。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063199",
+   "text": "<i>在你陳述偷聽到的內容時，大名艾米諾皺了皺眉頭。他沈思了一會兒，開口對你說：</i><br><br>潔妲曾是我寄予厚望的學生之一，但她的貪婪將會害死她。<br><br>稍候，我將派遣一名門徒去收拾她。現在，最要緊的是將刀先取回來。<br><br>我打算派你去尋找那把刀。她一定把刀藏在她附近。踏上我後院內的白色傳送點，檢查旅館裡的所有箱子和盒子，找到那把刀，然後帶回來給我。<br><br>務必要小心謹慎。潔妲是陷阱專家，毫無問地，她會設下陷阱保護那把刀。<br><br>如果你發現陷阱，嘗試找出節奏，你或許可以避免受到傷害。<br><br>我會提供你一些治療藥水，在你受傷時可以派上用場。<br><br>在袋子裡，你會發現適合你新職業的一些衣物。<br><br>請把刀帶回來給我。我請求你不要帶走其他藏在旅館內的東西。<br><br>謝謝你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063203",
+   "text": "箱子的蓋子一開始毫無動靜，但是你慢慢地將蓋子撬開。<br><br>裡頭躺的那把刀，正是你在尋找的。你迅速地拿起刀，將它放入你的背包中。把刀帶回去給大名艾米諾。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063205",
+   "text": "當你離開箱子時，房間響起叫喊聲。潔妲的追隨者察覺到你的存在。<br><br>該是發揮你的忍者精神的時候了。在返回大名艾米諾那裡之前，殺掉3名追隨者。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063211",
+   "text": "回到大名艾米諾那裡。經由你前來的房間回去。<br><br>當你返回大名艾米諾的身邊，把刀交給他。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063215",
+   "text": "你已經證明你自己，年輕人。隨著年紀的增長，你將繼續提升你的技能。<br><br>現在，你該出發去探索這塊土地。在洞穴入口的右邊，你會發現稱為月之門的發光橢圓形物體，穿過它，你將會發現自己置身在禪道之城，也是你未來的家園。<br><br>當你抵達時，你可能會想要拜訪安賽菈．佳恩。<br><br>謝謝你替我取回這把刀。你將會獲得獎賞。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063216",
+   "text": "這條路的後方，等著你的是禪道之城，也是你未來的家園。在洞穴入口的右邊，你將會發現稱為月之門的發光橢圓形物體，穿過它，你將會發現自己置身在禪道之城。<br><br>當你抵達時，你可能會想要拜訪安賽菈．佳恩。<br><br>請接受這份我放到你背包裡的禮物。這是你贏得的。再會了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063217",
+   "text": "這是你取回這把刀的謝禮。聊表我對你的謝意。<br><br>然而，由於你在寶藏室起了貪念，你的獎勵因此減少。別以為我沒發現你鼓漲的口袋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063239",
+   "text": "~1_val~ 不是 ~2_val~ 同盟的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063240",
+   "text": "在你可以再次擁抱榮譽美德之前，你必須等候 ~1_HONOR_WAIT~ 分鐘",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063244",
+   "text": "~1_val~ 不屬於你的陣營。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063248",
+   "text": "<i>衛兵不發一語，讓你通過。你走入大名的寶藏庫時，他毫不為意。這裡存放著大量的黃金、寶石和珠寶！顯然的，少了任何一件小東西，大名絕對不會發現...<br><br>你很快就在寶石堆和其他珍貴物品中發現了刀。你快速地拿起刀，並將它放到你的背包裡。</i>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063249",
+   "text": "~1_val~ 接受了你的邀請，加入了 ~2_val~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063250",
+   "text": "~1_val~ 拒絕了你的邀請，沒有加入 ~2_val~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063259",
+   "text": "~1_val~ (德野島)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063260",
+   "text": "~1_val~ (德野島)(房屋)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063315",
+   "text": "勾魂甲蟲幼雛再次蹂躪我的土地，真是討厭！請幫我幹掉這些可怕的幼雛。如果你能夠殺掉10隻，你便可獲得獎勵。勾魂甲蟲幼雛居住在荒地裡 - 一片靠近這座城市的沙漠。<br><br>你願意接受這項挑戰嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063317",
+   "text": "<i>為了預防你改變心意...</i><br><br>只要你仍舊是考慮的對象 (新手) ，你可以在任何時候重新開始這個任務。只需回到安賽菈．佳恩的身邊和他談話。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063321",
+   "text": "謝謝你幫我除掉這些可惡的怪蟲！你的善行會獲得獎勵。如果你未來有意願幫我忙，再來拜訪我吧。<br><br>再會。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063331",
+   "text": "~1_val~ 已經是公會成員。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063347",
+   "text": "你需要 ~1_SKILL_REQUIREMENT~ 武士道或忍術來進行該攻擊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063352",
+   "text": "你需要 ~1_SKILL_REQUIREMENT~ 忍術來進行該攻擊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063394",
+   "text": "<center>動物外型選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063415",
+   "text": "<BASEFONT COLOR=#2DDC1B>德野島</BASEFONT>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063416",
+   "text": "~1_val~ 目前正考慮另一同盟的提議。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063419",
+   "text": "該員並不屬於 ~1_val~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063420",
+   "text": "~1_val~ 已經是 ~2_val~ 的一員。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063422",
+   "text": "該員並不屬於 ~1_val~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063426",
+   "text": "~1_val~ 已經是某同盟的一員。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063427",
+   "text": "~1_val~ 已經涉入宣戰中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063434",
+   "text": "~1_val~ 現在是 ~2_val~ 的領袖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063449",
+   "text": "從 ~1_val~ 取得 (完美)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063457",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>嗯... 你好，我... 嗯... 有帶一些要接給你的... 金幣... 來自大名和氣的禮金，也就是你稍後要面見的武士。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063458",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>跳過任務進入和氣之居</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063459",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>嗯... 你好，我... 嗯... 有帶一些要接給你的... 金幣... 來自大名艾米諾的禮金，也就是你稍後要面見的忍者。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063460",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>跳過任務進入艾米諾住所</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063461",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你必須打開紙娃娃與背包，我們得把讓你裝備爪釘；先在爪釘上按住滑鼠左鍵，將武器拖拉到紙娃娃上，然後放開滑鼠左鍵。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063462",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>首先，你必須打開紙娃娃與背包，我們得把讓你裝備木劍；先在目建上按住滑鼠左鍵，將武器拖拉到紙娃娃上，然後放開滑鼠左鍵。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063463",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要離開這個地區，你得用角落的梯子前往中央室；先往上爬前往艾米諾住所，在那你將見到艾米諾，他正等著你的前往。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063464",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>要離開這個地區，你得用角落的梯子前往中央室；先往上爬前往和氣之居，在那你將見到和氣，他正等著你的前往。</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063465",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>喔，還有... 我求求你... 千萬不要告訴艾米諾我把要給你的金幣弄丟了，求求你！</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063466",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0>喔，還有... 我求求你... 千萬不要告訴和氣我把要給你的金幣弄丟了，求求你！</BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1063468",
+   "text": "~1_skillname~ +~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1063476",
+   "text": "H.M.S. Cape的船艦模型",
+   "flag": "Modified",
+   "category": "mixed"
+  }
+ ]
+}

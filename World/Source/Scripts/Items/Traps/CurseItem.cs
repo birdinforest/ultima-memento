@@ -1,8 +1,9 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using Server;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -11,6 +12,8 @@ namespace Server.Items
 		public override bool DisplayLootType{ get{ return false; } }
 		public override bool DisplaysContent{ get{ return false; } }
 		public override bool DisplayWeight{ get{ return false; } }
+
+		private Timer m_AutoRemoveTimer;
 
 		[Constructable]
 		public CurseItem() : base( 0x9A8 )
@@ -22,15 +25,54 @@ namespace Server.Items
 			RequiredSkill = 1000;
 			Weight = 40.0;
 			VirtualContainer = true;
-			ColorText1 = "CURSED!";
-			ColorText3 = "Give to a Wizard or Knight";
-			ColorText4 = "To Remove the Curse";
-			ColorText5 = "Or Use Curse Removing Magic";
+			ColorText1 = StringCatalog.ResolveByKey(null, "trap.curse.colortext1");
+			ColorText3 = StringCatalog.ResolveByKey(null, "trap.curse.colortext3");
+			ColorText4 = StringCatalog.ResolveByKey(null, "trap.curse.colortext4");
+			ColorText5 = StringCatalog.ResolveByKey(null, "trap.curse.colortext5");
 			ColorHue1 = ColorHue3 = ColorHue4 = ColorHue5 = "E15656";
+
+			m_AutoRemoveTimer = Timer.DelayCall(TimeSpan.FromHours(24), new TimerCallback(RemoveCurse));
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			if ( from.Skills.Spiritualism.Value >= 70 )
+			{
+				if ( from.CheckSkill( SkillName.Spiritualism, 70, 120 ) )
+				{
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "trap.curse.success") );
+					RemoveCurse();
+				}
+				else
+				{
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "trap.curse.failure") );
+				}
+			}
+			else
+			{
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "trap.curse.noskills") );
+			}
+		}
+
+		public void RemoveCurse()
+		{
+			if ( m_AutoRemoveTimer != null )
+			{
+				m_AutoRemoveTimer.Stop();
+				m_AutoRemoveTimer = null;
+			}
+			if ( !Deleted && TotalItems > 0 )
+			{
+				List<Item> items = new List<Item>(Items);
+				foreach ( Item item in items )
+				{
+					if ( RootParent is Mobile )
+						((Mobile)RootParent).AddToBackpack(item);
+					else
+						item.MoveToWorld(Location, Map);
+				}
+			}
+			Delete();
 		}
 
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
@@ -67,6 +109,16 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+			if ( TotalItems > 0 )
+			{
+				m_AutoRemoveTimer = Timer.DelayCall(TimeSpan.FromHours(24), new TimerCallback(RemoveCurse));
+			}
+		}
+
+		public override void AddNameProperties(ObjectPropertyList list)
+		{
+			base.AddNameProperties(list);
+			list.Add(1049644, StringCatalog.ResolveByKey(null, "trap.curse.tooltip"));
 		}
 	}
 }

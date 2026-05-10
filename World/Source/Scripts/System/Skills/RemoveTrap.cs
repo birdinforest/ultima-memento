@@ -1,6 +1,7 @@
 using System;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -49,7 +50,7 @@ namespace Server.SkillHandlers
 
 					if ( (int)(from.Skills[SkillName.RemoveTrap].Value ) < nTrapLevel )
 					{
-						from.SendMessage( "This trap looks too complicated for you." );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "trap.removetrap.toocomplex") );
 						return;
 					}
 

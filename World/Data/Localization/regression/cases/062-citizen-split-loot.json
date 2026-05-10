@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.split-loot",
+  "pipeline": "citizen_broadcast",
+  "en": "We need to find a bank and split this loot we have.",
+  "expectedZh": "我们得去找家银行，把这批战利品分了。",
+  "tags": "TryComplex,literal"
+}

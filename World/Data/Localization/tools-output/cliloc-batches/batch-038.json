@@ -1,0 +1,3006 @@
+{
+ "batch": 38,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1157608",
+   "text": "Stable Slot Increase Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157609",
+   "text": "This account-bound token will increase the maximum number of creatures a character can house at the stables by 3, up to a maximum of 42 total stables slots from all sources.  A character may use a total of 7 tokens.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157610",
+   "text": "You may not use this item as it is an account-bound item that is bound to a different account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157611",
+   "text": "You have increased your stable slot count by 3. Your total stable count is now ~1_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157612",
+   "text": "You cannot increase the number of stable slots on this character. You have already reached the cap of 21 additional token stable slots or 42 total stable slots.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157613",
+   "text": "You notice some of your fallen foes' equipment to be of enchanted origin and decide it may be of some value...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157614",
+   "text": "~1_ITEM~ of Enchanted Origin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157615",
+   "text": "You have turned in ~1_COUNT~ artifacts of Enchanted Origin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157616",
+   "text": "Bring me items of Enchanted Origin and I will reward you with valuable items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157617",
+   "text": "Artifacts of Enchanted Origin Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157618",
+   "text": "Stable Slot Increase (Account-Bound)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157619",
+   "text": "The Rat Fort",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157620",
+   "text": "Reg Volom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157621",
+   "text": "The Oasis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157622",
+   "text": "Pass of Karnaugh",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157623",
+   "text": "The Rat Cave",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157624",
+   "text": "Gwenno's Memorial",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157625",
+   "text": "Desert Gypsy Camp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157626",
+   "text": "Cursed Jack o' Lantern",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157627",
+   "text": "You destroy the Jack O' Lantern.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157628",
+   "text": "You damage the Jack O' Lantern.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157629",
+   "text": "You may only stable chickens which have not undergone animal training in the chicken coop.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157630",
+   "text": "You are already bleeding!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157631",
+   "text": "Thou shall know the pain of a chained heart...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157632",
+   "text": "This only works during the Month of October.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157633",
+   "text": "You have already used this today.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157634",
+   "text": "Rancid Reindeer Meat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157635",
+   "text": "*It smells terrible!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157636",
+   "text": "Glass Candy Cane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157637",
+   "text": "The Severed Ears of an Elf Named ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157638",
+   "text": "*You hear the faint jingle of cheery bells...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157639",
+   "text": "Suspicious Gift Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157640",
+   "text": "Uh oh...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157641",
+   "text": "Insulting Doll",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157642",
+   "text": "You don't look very good.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157643",
+   "text": "You should stay inside today. It's for the better.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157644",
+   "text": "Noob",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157645",
+   "text": "It smells in here...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157646",
+   "text": "Any chance you can wrap me back up and we could try this again with someone else?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157647",
+   "text": "Spiked Egg Nog",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157648",
+   "text": "This title is obtained from the Halloween Treasures of the Sorcerer's Dungeon Event.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157649",
+   "text": "Hero of the Unloved",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157650",
+   "text": "Slayer of the Pumpkin King",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157651",
+   "text": "Savior of the Demented",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157652",
+   "text": "Turn In Artifacts of The Cult",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157653",
+   "text": "Shackled Heart of the Pumpkin King",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157654",
+   "text": "Serpent's Jawbone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157655",
+   "text": "Jack in the Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157656",
+   "text": "Jack's Bag of Tricks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157657",
+   "text": "Artifacts of Enchanted Origin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157658",
+   "text": "This account is registered with the email address ~1_MAIL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157659",
+   "text": "To update your email address use the context menu option \"Update Email\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157660",
+   "text": "Please enter your email address:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157661",
+   "text": "Update Email",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157662",
+   "text": "You must register for the raffle first.  Double click on the stone to register.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157663",
+   "text": "You must enter a valid email.  Please re-attempt registration by double clicking the stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157664",
+   "text": "Registration is currently closed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157665",
+   "text": "Ale Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157666",
+   "text": "20th Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157667",
+   "text": "Happy 20th Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157668",
+   "text": "Happy 20th Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157669",
+   "text": "Happy 20th Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157670",
+   "text": "20th Anniversary Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157671",
+   "text": "In Commemoration Of Twenty Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157672",
+   "text": "Confetti Cannon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157673",
+   "text": "Platinum Dragon Statue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157674",
+   "text": "Confetti Cannon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157675",
+   "text": "You fire the cannon!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157676",
+   "text": "Wanderer of the Lost Odyssey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157677",
+   "text": "Anniversary Pony",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157678",
+   "text": "Personal Bless Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157679",
+   "text": "Ricardo unwittingly stole a piece of the Gem of Immortality for Minax. Focusing the magic of the gem with a lighthouse, the Enchantress was able to open a gate to another world: a fallen and lawless version of Sosaria where the Shadowlords were victorious. While Blackthorn wasn’t able to completely close the tear between worlds, he was able to restrict entry of the invaders to his castle’s dungeon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157680",
+   "text": "After losing key support from the mage Anon and facing increased hostilities in Felucca, King Blackthorn put out a call to arms. Sir Dupre was the first to pledge his support to the cause and led the forces of Virtue against Vice on the fallen facet. Lord British briefly returned to this world to share advice and memories with his old friend.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157681",
+   "text": "Wishing to open the Silver Gate to Shadowguard, the Time Lord Hawkwind had the citizens of Britannia recover four gems: a Sapphire Dragon Eye, a Wolfgang Ruby, a Rondorin Emerald, and Beatrix’s Despair Diamond. Anon’s interference caused the spell to accidentally fuse the world of Eodon with Shadowguard, starting the Time of Legends.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157682",
+   "text": "The arrival of Sosarians on Eodon caused conflicts with the indigenous human tribes and the insect species know as the Myrmidex. Peace was eventually brokered with Eodon’s people and Britannia, and this alliance fought a desperate war against the Myrmidex. In the course of the war, the lost city of Kotlan was found, and an ancient Kotl weapon known as Zipactriotl was activated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157683",
+   "text": "The future has yet to be written...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157684",
+   "text": "Blurb unused",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157685",
+   "text": "Britannia Year 369",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157686",
+   "text": "Britannia Year 374",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157687",
+   "text": "Britannia Year 379",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157688",
+   "text": "Britannia Year 384",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157689",
+   "text": "Britannia Year 389",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157690",
+   "text": "*Your trade crate has been stolen! Defeat the ambush to recover it!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157691",
+   "text": "*You have recovered your stolen trade order*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157692",
+   "text": "Your backpack was too full to return your stolen trade order, so it was lost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157693",
+   "text": "*You lack the required ~1_SKILL~ skill to make anything of it.*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157694",
+   "text": "Jewelry Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157695",
+   "text": "Select Filter:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157696",
+   "text": "ADD JEWELRY",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157697",
+   "text": "Necklace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157698",
+   "text": "Items: ~1_NUM~ of ~2_MAX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157699",
+   "text": "A Soul Trapped Within A Phylactery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157700",
+   "text": "Recovered from an Ambushed Trade Route",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157701",
+   "text": "A tool used by those wishing to entrap the souls of the undead and command them to do their bidding.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157702",
+   "text": "A Daemonic Amulet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157703",
+   "text": "The amulet bears a large pentagram hanging from a series of interlocking beads.  Small bits of daemon flesh grind between the links as you manipulate them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157704",
+   "text": "An Oddly Modified Gorget",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157705",
+   "text": "The gorget appears to have been modified to fit the neck of a large creature.  There are chafe marks scarring the interior showing signs of struggle against it by the wearer.  Large rings stud the circumference of the gorget.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157706",
+   "text": "A Mysterious Rolled Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157707",
+   "text": "The map shows the location of several locations throughout Britannia, but none seem to stand out as noteworthy.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157708",
+   "text": "Ritual Tome",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157709",
+   "text": "The large tome is adorned with a pentagram, not uncommon to many arcane items found throughout Britannia.  There appear to be pages upon pages of ritualistic instructions and incantations, none of which are in a familiar language.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157710",
+   "text": "Pentagram Adorned Wand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157711",
+   "text": "The wand is pretty standard among other wands you may have seen.  The twin shaft is made of cedar and is crested with an intricate pentagram made of etched rock, inlaid with blueish crystals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157712",
+   "text": "Goblet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157713",
+   "text": "The goblet is relatively unassuming.  The interior of the pewter cup is stained a deep ruby.  An etching of a pentagram decorates the base.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157714",
+   "text": "Boline",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157715",
+   "text": "The crescent blade is crude but you surmise is formidable for performing intricate engraving work.  The tip is stained with the shavings of wax and soft metal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157716",
+   "text": "Dried Incense",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157717",
+   "text": "The strong smell of sage and deadwood emanates from the bundle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157718",
+   "text": "Scourge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157719",
+   "text": "Not unlike tools used to provoke a response from an intended victim, this whip is studded with beads of hard rock.  The leather is stained deep red from repeated self use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157720",
+   "text": "Folded Stole",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157721",
+   "text": "Often used during official ceremonies and ritual this long flowing vestment is worn draped over the neck and is embroidered with pentagrams at either end.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157722",
+   "text": "*Your proficiency in ~1_SKILL~ reveals more about the item*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157723",
+   "text": "The jewelry box is full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157724",
+   "text": "This is not a ring, bracelet, necklace, earring, or talisman.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157725",
+   "text": "Target rings, bracelets, necklaces, earrings, or talisman in your backpack. You may also target a sub-container to add contents to the the jewelry box. When done, press ESC.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157726",
+   "text": "You must be carrying the item to add it to the jewelry box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157727",
+   "text": "The jewelry box must be secured before you can use it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157728",
+   "text": "Ask and Answer Ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157729",
+   "text": "Recovered in ~1_LOC~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157730",
+   "text": "The map appears unlike other treasure maps common to this area.  The map is much newer and includes detailed notations related to the treasure hoard's proximity to major trade routes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157731",
+   "text": "A Mysterious Obelisk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157732",
+   "text": "Rent Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157733",
+   "text": "Rent Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157734",
+   "text": "Open Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157735",
+   "text": "Claim Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157736",
+   "text": "I saw your ad, can I buy some maps?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157737",
+   "text": "You and everyone else!  Ever since running that ad we haven't been able to keep anything in stock, treasure maps especially!  Look friend, don't take this the wrong way but you wouldn't want to get involved in treasure hunting.  Dangerous business you know.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157738",
+   "text": "I think I can handle it.  I've got coin!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157739",
+   "text": "The coin is nay the problem!  I merely do not have any more maps to sell!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157740",
+   "text": "Perhaps I could find them for myself?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157741",
+   "text": "I suppose there is no harm in telling you...you will probably end up getting yourself eaten by something and my associates and I will scavenge that fancy gear of yours *chuckles*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157742",
+   "text": "*eyes narrow* The location?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157743",
+   "text": "*nervous laugh* Fine, fine!  Us Treasure Hunters get together every so often, and recently we have been coming across some strange stuff buried out there.  Normally we find pirate treasure or the hidden stash of some highway bandits, but recently...I dunno.  Instead of rusty chests there have been these...objects.  I really dunno how to describe them.  Kinda like a statue with weird carvings...and the flashes and thunder, really bizarre.  Treasure's all there though, same creatures still protecting them, just now we been finding these statue things from maps recovered from Hythloth, Deceit, and Destard.  Good luck getting your hands on one though!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157744",
+   "text": "*nods* I'll have a look, farewell!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157745",
+   "text": "Well met, *mumbles* can't wait to come across your corpse in...I mean good luck with everything and thanks for stopping in!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157746",
+   "text": "Feeling Pressure, Crown Announces Tariff Reduction to Spur Trade",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157747",
+   "text": "Rita Radcliffe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157748",
+   "text": "His Royal Highness Lord Blackthorn was on site in the City of Trinsic to announce a reduction in tariffs on trade orders throughout the realm. Feeling the pressure from merchants and citizens alike, representatives of the Britannian Tax Council hope the reduction in tariffs will spur trade and bolster local treasuries. Addressing a small crowd of Trinsic's merchants, artisans, and paladins, The King stated firmly the Crown's commitment to the fiscal prosperity of all of Britannia's cities. \"We must remember Britannia is only as strong as her people and cities, so I am pleased to announce my government will do more with less and stretch every coin that goes into funding the safety, security, and prosperity of a functioning Kingdom!\", his Royal Highness announced. When pressed by questions from the crowd regarding reports of trade carts burdened with casks of wine, ale, and liquors being delivered to His Majesty's castle and the need for paying a large standing army in these relatively peaceful times the King was ushered off by his agents as he waved to the on looking crowd. Following the announcement of the tariff reduction, His Majesty took a tour of Trinsic with representatives from the local government and visited with leaders of local guilds. During his tour the King sampled baked goods from Baked Delights before attending a magic demonstration at Encyclopedia Magika and taking in an evening concert at Meeting Hall Park. Some seemed optimistic while others took the visit of the King with contempt, \"I dun' understand why we have to pay for these trade deals anyway! Who's the Governor think they are to pick? I got the coin, why should I pay it to a bunch of corrupt artisans who are going to waste it anyway! Not to mention all the coin they spend on booze in that castle! Bunch of drunkards they are!\" Janet Boggerby of Trinsic's barrier island commented. Still, the reduction in tariffs are sure to spur trade deliveries across the realm and citizens are advised to take caution while making deliveries on Britannia's roads.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157749",
+   "text": "Classifieds: Yearning for Adventure?  HUGE Treasure Map Sale!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157750",
+   "text": "Al Harrington",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157751",
+   "text": "Thanks to a recent operation by the Royal Britannian Guard we have come into possession of a number of treasure maps ready to make you rich, and we're passing the savings on to you!  Want to buy your special someone a prized diamond?  Looking to upgrade that tattered and worn out armor?  Does the old blade look a little worse for wear?  Finally time to move out of your bankbox and build your dream home?  Vendor salaries drying up your coin purse?  Whatever it is, the lucrative profession of treasure hunting can have you swimming in fat stacks of coin before Trammel and Felucca are full again!  We've got all the supplies necessary for your budding treasure hunting career covered at Needful Things, just Northeast of the central teleporters in Jhelom!  Picks, shovels, lockpicks, bolts and even chickens!  Anything and everything is on sale and we need to move inventory fast!  So come on down to Needful Things and see us about our Introductory Treasure Hunter special - complete with a treasure map and everything you need to strike it rich!  Don't delay! Act now!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157752",
+   "text": "Extra! Extra! Breakin at the Lycaeum! Read the latest Town Cryer for more!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157753",
+   "text": "Recent Events",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157754",
+   "text": "Rumors have been circulating of increased bandit activity on trade routes across Britannia and treasure hunters are encountering strange objects buried in the countryside. Neither of these seem terribly out of the ordinary, but they are curious to say the least.  It's just another day in Britannia, and while you hunger for adventure you are quite content with the relative calm across the realm.  Seems like a good day to take in the sunshine and check out the latest edition of the Town Cryer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157755",
+   "text": "Read the latest edition of the Town Cryer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157756",
+   "text": "A step closer to finding out the nature of recent events.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157757",
+   "text": "You can't be bothered with the goings on of the realm, besides today is a day for relaxation!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157758",
+   "text": "Five gold seems a bit steep for a newspaper, but at least there are nice illustrations.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157759",
+   "text": "Tavern Talk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157760",
+   "text": "The article in the Town Cryer has left you filled with curiosity and slight concern.  This isn't the first time something has gone awry at the Lycaeum, especially with all they do there.  You remain unconvinced the article is anything but sensationalist journalism at the hand of Britannia's newest periodical.  The article mentioned interviews with some citizens in Vesper at the Marsh Hall.  Perhaps you should visit yourself and see what the scuttlebutt is all about.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157761",
+   "text": "Visit the Marsh Hall in Vesper and speak to the taverngoers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157762",
+   "text": "It seems the consensus in the tavern is similar to yours, and it's just another slow news day in Britannia.  Still, your curiosity eats at your skepticism.  There may be something here worth investigating.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157763",
+   "text": "Murder in Moonglow! Lycaeum Ransacked - Again!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157764",
+   "text": "Once again the quiet countryside of Moonglow was rocked as the Lycaeum played host to a series of crimes.  On the heels of noteworthy crimes in the past, this latest series of vile deeds only underscores the need for better scrutiny at Britannia's premier center for learning.  The Royal Britannian Guard reaffirmed its stance that these \"unlikely\" incidents are few and far between and their efforts to curtail crime have resulted in a safer and more secure Britannia.  Still, some Britannians are alarmed while others dismiss this and recent events.  Speaking from a villa in Moonglow, local trader Arthur Vandelthorn said, \"These things happen - and despite the crimes, the realm is prospering.  I've got the air in my lungs and Moonglow Red in my glass, what more is there?\"  The investigation is still ongoing, yet the Royal Britannian Guard reports at least the theft of some items of magical importance and several fatalities.  Members of the public are urged to contact Inspector Samuel Karny at the Lycaeum with any information.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157765",
+   "text": "The Town Cryer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157766",
+   "text": "Buy Editions of the Town Cryer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157767",
+   "text": "Read the latest edition of the Town Cryer.  You can purchase the paper from any City Herald.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157768",
+   "text": "This quest is currently unavailable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157769",
+   "text": "*You find their perspective insightful, but you think it best to talk with other patrons*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157770",
+   "text": "*squeak! squeak!*  I hope you'll pardon the intrusion, but I couldn't help but overhear your conversations with some of the tavern goers *mousy-grin*  Perhaps you could see fit to lend me your attention so that I may perhaps give you a different perspective of things? *the mouse scurries off to a corner of the tavern*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157771",
+   "text": "A Squeaky Request",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157772",
+   "text": "*squeak squeak* Thank you for taking the time to speak to me! *mousey grin*  What if I told you the recent events you've read about in the Town Cryer were the beginning of a terrible evil?  I know...I know...you've heard it before and I'm sure you'll want to know what's in it for you.  I can only tell you what I've seen and heard, and heroes like you will need to stand and defend Britannia against the coming evil.  There are powerful forces at work in the ethereal void!  I may be just a mouse but you don't have to take my word for it!  Take this spell scroll and use it to travel to the Ethereal Void.  There you will meet a mage called Mythran, please give him this note.  Learn from him all you can, and together we may stand a chance!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157773",
+   "text": "Use the Ethereal Travel spell and deliver Sherry's note to Mythran.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157774",
+   "text": "Who's got time to listen to some crazy mouse.  Mice aren't even supposed to speak!  Surely there's something worth spending money on in Luna that's a better use of your time!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157775",
+   "text": "You have used the Ethereal Travel spell to travel to Mythran's home in the Ethereal void.  It is a strange place.  You find him milling about inside and deliver the letter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157776",
+   "text": "Ethereal Travel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157777",
+   "text": "Ort Grav Por",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157778",
+   "text": "1 piece of Blackrock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157779",
+   "text": "A note from Sherry the Mouse to Mythran",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157780",
+   "text": "*The note is written in an indecipherable language that seems unworldly*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157781",
+   "text": "The Lycaeum Larceny",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157782",
+   "text": "Given you haven't jumped into the void I'll assume your intentions are genuine, what's this? *You hand him the note*  Sherry is persistent isn't she.  She is right you know, even though I doubt Britannians will listen.  The ambushes you've read about, the strange objects recovered from the maps?  And now the incident at your Lycaeum?  They are all related you know - and I'm afraid the situation is not good.  If you'd like to read more of my research feel free to explore my home, the jist of it, however, is your world and my...former..world are on a collision course with an ancient and powerful evil.  I know, I know, its something you've heard before - but you must understand.  This is different.  My colleague Heigel was researching at the Lycaeum.  I haven't been able to reach him since the article in the Town Cryer about the break-in there.  Would you check on him, it would mean the world to me.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157783",
+   "text": "Go to the Lycaeum in Moonglow and discover Heigel's fate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157784",
+   "text": "A talking mouse and now this crazy old man talking about ancient evils?  I'm not getting roped into this mess!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157785",
+   "text": "You've found Heigel, however he is badly injured.  The article in the Town Cryer didn't seem like the crimes here were as bad as they are before you...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157786",
+   "text": "Blood Soaked Parchment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157787",
+   "text": "Research Notes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157788",
+   "text": "Heigel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157789",
+   "text": "*The note details Hegeil's Research findings...it doesn't make much sense to you now.*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157790",
+   "text": "A Dying Wish",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157791",
+   "text": "*Cough...Cough*  Heigel looks into your eyes and before shuffling off into the eternal void, he slips you a rolled piece of parchment.  Looking into your eyes his dyeing words are, \"Go to Mythran...Become the Warrior of Ether\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157792",
+   "text": "You turn your back on the final wish of a dying man.  Shame!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157793",
+   "text": "Take the parchment Heigel gave you to Mythran and tell him of Heigel's fate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157794",
+   "text": "You found Heigel, however he was badly injured.  Despite your best efforts to offer first aid, his lifeforce slipped away as you comforted him in your arms.  You deliver the news and the parchment to Mythran.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157795",
+   "text": "Pagan Spellbook",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157796",
+   "text": "Heart of Earth",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157797",
+   "text": "Tongue of Flames",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157798",
+   "text": "Breath of Air",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157799",
+   "text": "Tear of Seas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157800",
+   "text": "Stone Cache",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157801",
+   "text": "Warrior of Ether",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157802",
+   "text": "Heigel's death only underscores the seriousness of what must be done.  Fortunately Heigel was able to isolate incidents across Britannia that are directly related to the recovery of the components of the obelisk.  We must continue Heigel's research, with it we can recover the artifacts and you can become a Warrior of Ether!  Only then will you be powerful enough to fight the coming threats from Pagan...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157803",
+   "text": "The power to fight the evils from Pagan",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157804",
+   "text": "How dare you turn your back on your destiny!  Britannia is doomed unless we find a way to defend against the coming threats of Pagan!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157805",
+   "text": "Continue Heigel's research and recover the missing obelisk artifacts to become the Warrior of Ether.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157806",
+   "text": "You have truly learned the way of Pagan magics and the origins of Britannian magery.  With this knowledge you have become a Warrior of Ether!  You feel equipped to handle the coming threats to the realm!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157807",
+   "text": "Hello there, welcome to my home.  I am Mythran.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157808",
+   "text": "Have you been to Lycaeum? Was Heigel safe?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157809",
+   "text": "*They are unresponsive*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157810",
+   "text": "You have recovered all the obelisk artifacts.  Return to Mythran!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157811",
+   "text": "I'll have another mug of ale, and send over some bacon! All this ale has given me a King's hunger!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157812",
+   "text": "I'm no wench, but could I buy you a drink?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157813",
+   "text": "Well met...and of course!  I'm never one to turn down a free drink!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157814",
+   "text": "What business are you in, mate?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157815",
+   "text": "I'm a dealer of this and that, a merchant of sorts.  If it's *hic* something I can move off the shelves, I'm willing to buy and sell it!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157816",
+   "text": "Have you read the latest Town Cryer?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157817",
+   "text": "That old rag?  Don't know why we even need that paper - bunch of sensationalist stories if you ask me!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157818",
+   "text": "What of the ambushes?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157819",
+   "text": "What of the treasures?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157820",
+   "text": "What of the Lycaeum?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157821",
+   "text": "That sort of thing happens all the time, and that's what we've got the guards for!  No matter, hasn't hurt my business - so nothing to be concerned about as far as I care.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157822",
+   "text": "Who am I to begrudge some treasure hunters trying to make some honest coin?  So they dug up some weird stuff, people do that all the time!  Once I caught a pillow fishing - the strangest thing!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157823",
+   "text": "They need to up the security at the Lycaeum, less this sort of thing is going to keep happening - ah no bother.  Hopefully whatever they stole ends up on the market and it'll fetch me some coin!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157824",
+   "text": "Guard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157825",
+   "text": "What do you want? I'm off duty!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157826",
+   "text": "Buy you a drink?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157827",
+   "text": "Guards aren't allowed to accept gifts.  But if you buy an extra mug of cider and I happen to drink it, no calling the guards! *winks*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157828",
+   "text": "So you're a guard?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157829",
+   "text": "No, I wear platemail because I like the way it tones the muscles in my legs during kilt season.  Of course I'm a guard!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157830",
+   "text": "Town Cryer has been troubling...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157831",
+   "text": "Has it? If you citizens only knew the half of what we dealt with on a regular basis, you'd never leave your homes!  Lucky for you there's guys like me who stand up to the scum of our society and make sure you are safe!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157832",
+   "text": "Roads are dangerous places, always best to check in with guard outposts when going on long journeys.  And carry a blade or bow.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157833",
+   "text": "Did they find the treasure inside city limits? No? Then I'll concentrate on this cider. *glug* *glug* *glug*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157834",
+   "text": "We don't comment on investigations that are ongoing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157835",
+   "text": "*She looks at you with disinterest and a furled lip*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157836",
+   "text": "Begging thy pardon, may I sit?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157837",
+   "text": "If you must.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157838",
+   "text": "Fine day? Care for some wine?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157839",
+   "text": "Oh? *she smiles a bit and extends her cup as if she expected it*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157840",
+   "text": "Read the Town Cryer much?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157841",
+   "text": "I have one of my servants read it to me.  I think they make up stories to sell issues.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157842",
+   "text": "People ought not to go on the roads anyway, dangerous places!  Wouldn't catch me out there without my personal militia.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157843",
+   "text": "I've got plenty of treasure, you could probably use some of it though *smiles slightly and shuffles away some*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157844",
+   "text": "Moonglow is too hot anyway!  The climate here in Vesper is much more appealing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157845",
+   "text": "Research Notes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157846",
+   "text": "The power of Theurgy is one granted by the Titan Stratos, this much I have learned from my studies of Pagan magics.  What interests me most, however, is the recent events in the City of Minoc.  It would seem that whilst digging there a group of miners uncovered what few have seen, but many are calling a most peculiar artifact!  I can only guess the miners have located a hidden focus of Theurgy.  Alas, without intervention I fear the miners may be trapped long after their supplies run out and the secrets of their discovery will be lost to time...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157847",
+   "text": "The power to destroy is a tenet of Britannian Magery, and it would seem the origins of this magic have roots in Pagan Sorcery!  I have read much of Pyros, the bringer of destruction, the vile and towering fire daemon from whence the power of Sorcery originates!  The recent fires in Britain only support my hypothesis that a great daemon has descended upon the quiet countryside there.  What bothers me though, is the proximity of Britain to a source of great fire - for there is none, and were a daemon of sufficient destructive nature to land in Britannia my assumptions would only lead me to believe it would be a location brimming with the fiery powers of creation from deep within the planet's core.  Alas mastering Sorcery requires extremely precise placement of reagents and candles around a pentagram, before the focus is conjured in the center.  While I have not been able to discern the precise location of the candles for any spells, I have done significant research on the Summon Perihelion reagent locations.  It seems obsidian is the foundation of the power of the perihelion, while daemon bone is rightly placed at the aphelion.  The positions of pumice and ash are still unknown to me...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157848",
+   "text": "In Britannian parlance Necromancy is a school of magic exclusively associated with the undead, brought to Britannia by the Necromancers of Umbra and the Age of Shadows.  As it would seem, however, Pagan too has harnessed the power to control the undead, but in a most peculiar manner!  Instead of controlling the beyond directly, Pagan Necromancy draws its power from Lithos - the great titan of earth!  It is fitting that we return to the dusts of earth in our demise and the seismic rumblings in Skara Brae are certainly responsible for the undead there.  Giving them peace is the only way, I have found, to possibly return them from whence they came and quiet the Skaran coastline...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157849",
+   "text": "Little is known of Tempestry, yet the power of Hydros is written of extensively as told to me by Mythran.  What is known, however, is the recent floods in Vesper are no doubt the result of an unsettled and disturbed soul searching for something once lost.  Finding it may be the only course to see the flood waters recede there...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157850",
+   "text": "*You don't make anything of it.*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157851",
+   "text": "Key of the Caretaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157852",
+   "text": "*You recover an unusual wand from the corpse...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157853",
+   "text": "Recovered from the Undead near Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157854",
+   "text": "This wand is similar to the one described in Heigel's research.  The shaft is made of etched white metal, with jade adornments.  A skull sits on top.  It doesn't feel real.  Not that you've had the pleasure of handling many skulls...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157855",
+   "text": "Grant Peace",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157856",
+   "text": "*The scroll seems unwilling to unfurl.  Perhaps it belongs in a spellbook of otherworldly origin...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157857",
+   "text": "Summon Perihelion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157858",
+   "text": "Intervention",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157859",
+   "text": "That is not a spell scroll this spellbook can hold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157860",
+   "text": "The spell scroll and the spellbook magically bind!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157861",
+   "text": "In Vas Corp",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157862",
+   "text": "You may only attempt this spell once per day.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157863",
+   "text": "*As you touch the Key of the Caretaker to the pouch magic surges through the wand and a portal opens above your head in a crash of thunder!  Immediately the undead around you are overcome with peace as they are physical presence is rekindled to the earth from whence they came.  As the smoke clears you see the small magical pouch is a bit more burdensome...you open it to find the Heart of Earth!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157864",
+   "text": "Recovered from a strange treasure hoard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157865",
+   "text": "A rather unassuming candle, from what you understand it has some ritualistic use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157866",
+   "text": "Kal Flam Corp Xen",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157867",
+   "text": "*Just as the words of power leave your lips, the candles begin to flicker as a gentle wind is pulled towards the locus.  A portal opens above the pentagram and in a flash of light a small daemon shaped figure now sits in the middle!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157868",
+   "text": "A Perihelion has already been summoned!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157869",
+   "text": "*The focus is consumed as a massive daemon appears!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157870",
+   "text": "The Perihelion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157871",
+   "text": "With a might howl from your final attack, the Perihelion shrieks in agony as you drain its final bit of life.  As the great flaming creature falls to its knees a stone object emerges from the embers of the corpse - you have recovered the Tongue of Flames!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157872",
+   "text": "Quicksilver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157873",
+   "text": "focus of theurgy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157874",
+   "text": "In Sanct An Jux",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157875",
+   "text": "As you clutch the quicksilver focus in your hand and declare the words of power you are overcome with an intense flash and your body feels cool as you pass through a barrier of wind where the rock slide once stood.  You have harnessed the Pagan power of Theurgy to move through the rock slide and deliver a much needed means of escape to the trapped miners.  Thankful for your intervention, they present you with a peculiar artifact they found while mining.  You have recovered the Breath of Air!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157876",
+   "text": "The Staff of Kalen's Apprentice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157877",
+   "text": "Kalen's Lament",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157878",
+   "text": "Many generations ago I became a hero to my people.  I fell in love with my Apprentice, and we were to undergo the Ceremony of Bonding...but...tragedy befell us as Hydros let his displeasure be known, sending a great wave that washed away my beloved into the sea...I have nothing left of my beloved.  If only I had a memento to remember her...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157879",
+   "text": "A Powerful Artifact",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157880",
+   "text": "If only I had a memento of my beloved...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157881",
+   "text": "Recover a memento of Kalen's apprentice lost to the seas, likely entangled in the remains of a ship marked by an SOS...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157882",
+   "text": "You have recovered the staff of Kalen's apprentice.  Return to Kalen!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157883",
+   "text": "This...means so much to me.  I can now be at peace.  I have no need for this any longer, please take it...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157884",
+   "text": "Taming the Sea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157885",
+   "text": "As you lift the heavy chest from the depths the sea snarls as it breaks the surface!  You open the rusted lock and inside the chest is a long, oak staff.  Despite a lengthy stay on the ocean floor the staff seems to be in fair shape.  As you wrap your fingers around it and begin to lift your boat is lurched!  Immediately you are overcome with a sense of despair as you share the feelings of loss Kalen's apprentice experienced as Hydros pulled her beneath the waves.  Just as quickly these feelings fade.  The seas calm and your boat steadies.  Your intentions must be true.  Return the staff to Kalen.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157886",
+   "text": "<center>Necromancy<br>Grant Peace<br>In Vas Corp</center><br>1 Key of the Caretaker<br>1 small pouch<br>1 executioner's cap<br>1 blackmoore<br><br>Necromancy is the magic of earth, and from the life giving rock Lithos so too comes death.  The magics of Necromancy harness that power to cast spells that manipulate the undead and the ground from whence they came.  Grant Peace allows the necromancer to give peace to an undead creature, destroying them should the caster so desire.  The casting of necromantic spells requires the Key of the Caretaker, a wand given to initiate Necromants.  The necromancer is able to use the wand on a small pouch with the necessary reagents inside to achieve the desired result.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157887",
+   "text": "<center>Sorcery<br>Summon Perihelion<br>Kal Flam Corp Xen</center><br>4 Red Candles<br>1 Black Candle<br>1 Pumice<br>1 Daemon Bone<br>2 Obsidian<br>1 Sulfurous Ash<br><br>Sorcery is a powerful school of magic that harnesses the power of Pyros to cast destructive spells.  Like other magics of Pagan, Sorcery utilizes the creation of a focus to embody the power of a spell into a small object that can then be activated to result in the desired outcome.<br>Creating a Sorcery focus requires red and black candles, reagents, and a pentagram.  Knowing the positions of the pentagram is equally as important as the necessary candles and reagents, as their correct placement on the pentagram is required to create the focus.  The center of the pentagram is called the locus.  Directly atop the locus is the aphelion.  Directly left and right of the locus are the mesostel pa and mesostel ze.  The left and right legs of the pentagram are known as the perivolcan pa and perivolcan ze.<br>Placing the candles and reagents at the correct locations speak the words of power to cast the spell and create the focus.  The caster should take caution when summoning the Perihelion, for it is a destructive and unpredictable beast!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157888",
+   "text": "<center>Theurgy<br>Intervention<br>In Sanct An Jux</center><br>1 Focus of Theurgy<br><br>Theurgy, the magic of air, is derived from the power of Stratos and focuses on the magics of change.  Like other magics of Pagan, Theurgy utilizes the creation of a focus to embody the power of a spell into a small object that can then be activated to result in the desired outcome.<br>Unlike other schools of Pagan magic which utilize reagents, however, Theurgy foci can be crafted by tinkers learned in magic.  With enough quicksilver, the focus of theurgy can be crafted to cast \"Intervention\", harnessing the powers of wind to propel the caster through immovable objects.  By speaking the words of power with the focus in your backpack, Theurgy draws its strength from the Breath of Air, and the foci are only functional in the proximity to the artifact.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157889",
+   "text": "Hildebrandt Dragon Rug",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157890",
+   "text": "This house addon features the breathtaking Hildebrandt dragon centered in a plush rug.  Make a statement in your home with this must have item!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157891",
+   "text": "Warrior of Ether",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157892",
+   "text": "This title is obtained by completing the Warrior of Ether Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157893",
+   "text": "You are currently under the effects of the Obelisk.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157894",
+   "text": "You summon the power of the titans to make you stronger!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157895",
+   "text": "Undead Wedding Bundle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157896",
+   "text": "This bundle includes all you need to complement your wedding package with a spooky theme!  When equipped, the Top Hat and Veil will turn you a ghostly color!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157897",
+   "text": "Decorative Black Widow Trophy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157898",
+   "text": "This decorative trophy is the perfect addition to your hunting lodge!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157899",
+   "text": "Your courage in the face of uncertain doom has saved Britannia from destruction!  His Majesty thanks you for your service!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157900",
+   "text": "Please choose a reward:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157901",
+   "text": "Hero of Britannia Reward Title",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157902",
+   "text": "Mementos of Pyros",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157903",
+   "text": "Mementos of Lithos",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157904",
+   "text": "Mementos of Stratos",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157905",
+   "text": "Mementos of Hydros",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157906",
+   "text": "Hero of Britannia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157907",
+   "text": "This title is obtained from defeating the Titans!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157908",
+   "text": "Pyros",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157909",
+   "text": "Lithos",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157910",
+   "text": "Stratos",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157911",
+   "text": "Hydros",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157912",
+   "text": "Victory to Britannia!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157913",
+   "text": "Britannia is saved! Long live King Blackthorn!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157914",
+   "text": "Hooray! The Titans have been destroyed, Britannia is saved!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157915",
+   "text": "All hail ~1_NAME~! Thy bravery is known the realm over!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157916",
+   "text": "Make way for ~1_NAME~ the courageous! A true Britannian hero!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157917",
+   "text": "The virtues are strong with you ~1_NAME~! You have saved us this day!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157918",
+   "text": "You have already redeemed your reward.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157919",
+   "text": "The slayer ability of your weapon has worn off.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157920",
+   "text": "Pagan Titan Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157921",
+   "text": "Your weapon is already imbued with the power of the obelisk.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157922",
+   "text": "You must have a weapon or spellbook equipped to use this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157923",
+   "text": "The obelisk is incomplete...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157924",
+   "text": "Wedding Package Undead Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157925",
+   "text": "BRITANNIA INVADED!  CALL TO ARMS ISSUED!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157926",
+   "text": "THIS IS AN EMERGENCY DISPATCH BY THE ROYAL BRITANNIAN GUARD!<BR><BR>THE REALM HAS BEEN INVADED!<BR><BR>CITIZENS ADVISED TO TAKE REFUGE ON THE ISLE OF JHELOM!<BR><BR>KING BLACKTHORN DRAFTS ALL ABLE BODIED CITIZENS TO IMMEDIATE SERVICE TO DEFEND THE REALM!<BR><BR>LONG LIVE BRITANNIA! LONG LIVE KING BLACKTHORN!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157927",
+   "text": "Titan Threat Quelled!  Britannians Rejoice in Victory!  Celebratory Parade Held in Britain!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157928",
+   "text": "In a magnificent and courageous effort, the titan threat to Britannia has been quelled!  Citizens from across the realm headed the Call to Arms and came to defense of the Realm to drive off the off-worldly forces of Khumash-Gor and the Pagan titans!  This reporter is told that the heroic efforts of Heigel the Scholar to research the nature of the invasion, coupled with the strong will of the Britannian people to act on his research are the primary reasons Britannia is once again safe!  In response to these acts of bravery, King Blackthorn has bestowed the title Hero of Britannia to many citizens.  Speaking from the head float of the parade in Britain, His Majesty commended by the Royal Britannian Guard and those responsible for this overwhelming victory!  Celebrations in Britain are ongoing as each of Britannia's cities are represented in a magnificent parade snaking the streets of Eastern Britain.  Despite the victory, Britannians are still recovering from the turmoil.  And while the wounds of these times will need time to heal, heal they will as the will of the Britannian people is as resolute as the Virtues themselves!  Long live Britannia!  Long live King Blackthorn!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157929",
+   "text": "*Heigel is moaning in pain.  His robe is soaked through with blood from a large wound on his abdomen*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157930",
+   "text": "Heigel! Mythran sent me...let me help!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157931",
+   "text": "Ethereal Void",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157932",
+   "text": "You already have purchased all available editions of the Town Cryer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157933",
+   "text": "An Updated History of Pagan, Volume I",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157934",
+   "text": "An Updated History of Pagan, Volume II",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157935",
+   "text": "An Updated History of Pagan, Volume III",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157936",
+   "text": "An Updated History of Pagan, Volume IV",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157937",
+   "text": "An Updated History of Pagan, Volume V",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157938",
+   "text": "An Updated History of Pagan, Volume VI",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157939",
+   "text": "Ages ago, in what is called First Epoch, there was considerably more land upon which humanity could walk. The Zealans, forebears to the Pagans, worshipped three who ruled the emotions. Amoras, beautiful and spirited, was the goddess of love and joy. Her counterpart was angry Odion, ruler of war, hate, and grief. Between them stood Apathas, he who controlled indifference, representing both the balance and absence of his two comrades. According to legend, these three gods and goddesses were responsible for bringing the emotions to light in their followers, though sometimes I think it was the people's emotions that resulted in the appearance of these Ancient Ones, as they are now called.<br><br>Though the Zealans were not known for valuing peace between their various tribes, one leader did step forward to unite them for some time. He was the great warrior Khumash-Gor. He brought his people together by conquering most of the other tribes and then integrating them into his own. The unified community grew and prospered under his rule, until he was assassinated a few decades into his reign. After the death of Khumash-Gor, the Zealans fell again into quarrelling tribes. However, not until the coming of the Titans was their culture ever truly threatened. <br><br>Many centuries after the fall of Khumash-Gor, a mysterious entity began to speak in the minds of the Zealans. At first, those who claimed to hear the unusual voice were ridiculed, but when the message began to foretell danger, others found a reason to listen. The words of warning came as a shock to the Zealans and to the Ancient Ones. No one had ever heard of the champion of evil called the Destroyer, nor were they certain of his designs upon the world. However, the few people who learned of the Destroyer spread their message quickly. They constructed the Great Temple and the black obelisk, while the Ancient Ones commanded those who still obeyed to wage war against this new religion.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157940",
+   "text": "The followers of the new order became known as Pagans. As they were directed, they began to concentrate their worship, through the black obelisk, choosing the very elements of earth, water, air, and fire as the objects of this worship. Soon the elements began to form into actual beings of tremendous power. When the Destroyer finally appeared, the four beings, the Titans as we call them today, rose up to fight it. During the terrible battle, the world was ravaged as the skies darkened overhead, the lands were torn apart by earthquakes and liquid fire, and the seas overcome by raging storms. The battle was long, but the Titans emerged victorious - the Destroyer was no more. However, the world lay in ruins.<br><br>The few people who remained gathered on this isle, which they named after the island's volcano, Morgaelin. It was a dismal time. The Titans began to fight among themselves for power. The wars between the few surviving Zealans and the Pagans continued. It was apparent that something had to be done, yet the question of what filled everyone's mind. After the defeat of the Destroyer, the people were faced with a great many problems. The wars between the Pagans and the Zealans were costing many lives, while the bickering Titans seemed almost worse than the Destroyer threat they had so mightily eliminated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157941",
+   "text": "Foremost on the minds of the Pagans was how to handle the Titans -- no simple task, I assure you. Knowing they could not best the four, nor wanting to since they considered the Titans their saviors, the elders elected instead to bargain with the elementals. They built four areas and made them sacred to the Titans, one for each. A man named Moriens went to the Hall of the Mountain King, the sanctuary of Lithos. He spoke to Lithos and begged for the quakes to end. Lithos agreed, but demanded that he receive a boon in exchange. He bade that the people would be given to him upon their deaths to serve him eternally in his Pit of Death.<br><br>The idea of burial was first introduced as a means for the people to be conveyed to Lithos. Both sides accepted the pact, with Moriens granted the magical powers necessary to honor the Pagan half of the bargain. But as Moriens began to feel the effects of aging, another pact was formed, whereby Moriens could pass on his abilities to subsequent Necromancers - the term given to the mages responsible for sending the dead to Lithos.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157942",
+   "text": "Much time passed before Hydros could be placated. The hero and Necromancer Kalen found love with his Apprentice. Yet the Lurker, displeased that, unlike her brother Lithos, she had not the worship of the people, chose to take from Kalen his beloved. The angry Kalen sought the assistance of his patron, who was quite willing to assist in vengeance. Lithos told of a substance called Blackrock that could be used to seal Hydros within her Temple, for Hydros could not use her waves to wear down the mineral. Using his Necromantic powers, Kalen reshaped the Blackrock around the Temple and trapped Hydros inside.<br><br>Preparing to use the substance to completely remove all traces of water around the Titan, Kalen was stopped by the Lurker's pleas. In exchange for her life, Hydros agreed to return the body of Kalen's betrothed and confer some of the powers of Tempestry, the magic of storms and water, upon Kalen and all of his descendants. In addition, offered the Titan, she would end the torrential rains. Trapped even still in the defiled Temple of Flowing Waters, Hydros remains appeased.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157943",
+   "text": "More years passed and a wise man named Stellos was contacted by Stratos, Titan of Air, in the form of a mystic voice. She gave him the power to heal the sick and wounded. Kalen learned of Stellos' abilities and visited the elderly man. He brought with him the hopes of returning life to his beloved. Stellos spoke with Stratos and was told that much time had passed since the spirit was with the body. Only a great cost could she be resurrected. A giving man, Stellos agreed to pay the unknown fee.<br><br>He sent his spirit deep into the realm of Air and saw many unusual things. Finally, as the wizened man came upon a great brilliance, his body's mouth opened on the ground below breathed life into Kalen's beloved. He returned to his material form only to learn that he had forever lost his vision. So thankful was Kalen that he called upon the ground to form the foundation for a building, which Stellos opened as a place of study for those who wished to learn the tenets of Air. In addition, Stratos granted one further boon to the kind and gentle Stellos -- that of immortality! To this day, Stellos aids and teaches the magic of Theurgy upon the formation at Argentrock Isle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157944",
+   "text": "Centuries after the miracle of Stellos, five Theurgists sought to quell the raging fires of Pyros, Titan of Fire. They took their knowledge of history - never forget the value of studying the past, my friend - and speculated that Blackrock might be used against Pyros as well as Hydros. They set about gathering as much of the dark material that they could, as well as collecting knowledge about the magics necessary to shape it. Drawing a pentagram upon the ground, the five began to call upon the Lord of Flame as ready to offer a sacrifice.<br><br>When Pyros appeared, however, they instead used a large chunk of Blackrock to bind him within. Trapped within the fragment, Pyros was unable to hurl fire from the great volcano, and to this day must perform the minor requests of those who possess the Blackrock. I am saddened to say that the Sorcerers, as they are now called, are misunderstood and feared - nay, loathed - by most Pagans. Considering the dangerous tasks performed by their predecessors, it is a pity that such people would be hated so. Ah, the effects of ignorance...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157945",
+   "text": "Letter I - Mythran’s Plea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157946",
+   "text": "Letter II - Heigel’s Introduction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157947",
+   "text": "Letter III - Mythran’s Warning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157948",
+   "text": "Letter IV - Heigel’s Research",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157949",
+   "text": "Letter V - Mythran’s Plan",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157950",
+   "text": "To anyone who will listen,<br>I am sending this warning ahead of me through the Ethereal Void. I have recruited wisps to carry my words far and wide. I am in dire need of help, and your world may soon face similar peril. You are not alone, and you are in more danger than you realize.<br><br>I am Mythran, scholar and arcane practitioner of a rare school of magic called Thaumaturgy. I am the last Thaumaturge on my world, perhaps the only one remaining anywhere. Someday, I will pass on the formulae and enchantments I have learned, but for now, I am alone.<br><br>I come from the fallen world of Pagan. Now named for those who conquered it, Pagan was once a beautiful planet ruled by another civilization known as the Zealans. Now, the main continent of Morgaelin sits in ruins, conquered by beings from beyond our world: the Titans of the Four Elements.<br><br>I know you are out there, across the Ethereal Void, unaware of the threat that results from being noticed by such powers. I saw your display of magic, a careless beacon in the night. With those spells, you both announced you had something worth taking and marked yourself as a potential threat. The Titans will now respond. They are more powerful than anything I know. They are likely a step ahead of me, and their cults and agents are already moving through the shadows of your world.<br><br>I am crossing a distance unimaginable to come to your aid, but I cannot claim altruism. What I am doing is not just for your world, but also for my own. With my counsel, it may be possible to save both our worlds. If you get this message, please respond.<br><br>-Mythran",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157951",
+   "text": "Hello!<br>I have received the message you sent by wisp. I hope you will receive my response. I am Heigel of Moonglow, a mage from the world of Sosaria and a citizen of the kingdom of Britannia. I study wisps and try to share knowledge and lore with them. I believe we have much to learn from Xorinia.<br><br>A few months ago, my people cast a moongate spell as part of a conflict with another party who was misusing powerful magic. I believe this is the spell you were referring to. It created a connection between our world and a constructed locus. We often make use of moongates across Sosaria, but this was a rare instance where a powerful version of that spell was cast through the Ethereal Void. I will admit that this is not my area of expertise. However, I can get more information from my associates if you would find that to be helpful.<br><br>I admit that I found your words troubling. We have dealt with threats from the Ethereal Void before, but most of our magical study and practice focuses on manipulation of the physical world around us. Britannia has forces that can and will face such a threat, but it would be helpful to know what we should expect. Can you tell me more about these Titans?<br><br>-Heigel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157952",
+   "text": "Salutations,<br>I am sending a book of my world’s history to you, along with this letter. If the pattern on your world is similar, the invasion will begin with whispers and promises of protection against a being known as the Destroyer. Worry will cause many to flock to this growing cult, who will build cairns for the elemental despots. These cairns will draw the Titans closer to your world. I hope you can stop them before they can build and empower a great obelisk to smash the threshold of your world. I do not know if any mortal power can stand against such beings.<br><br>I am travelling toward your world along a broken pathway created long ago. Using an Ethereal Travel spell of my own creation, I am making small hops across the lifeless void. The Dark Path gives me guideposts so that I can make my way without getting lost. It is difficult and dangerous work, so I have been returning to my home between legs of the voyage. My home is an extra-dimensional abode, sitting between Pagan and the Ethereal Void.<br><br>The gate magics you mentioned sound remarkably complicated, yet you speak of them quite casually. To complete passage to your world, it might help to know more of the esoterica related to your moongates.<br><br>-Mythran",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157953",
+   "text": "Hello!<br>I never considered that an outside observer might find a Moongate wondrous. My people take them for granted and cast the spell frequently. The words of power are “Vas Rel Por”. It requires three common reagents: Black Pearl, Mandrake Root, and Sulphurous Ash.<br><br>I have spoken to some arcane experts on my world about the fundamental nature of Moongates. An associate named Dryus Doost gave me the simplest explanation of how gates distort the fabric of reality. He explained that the shortest distance between two points on a piece of paper is to fold the paper so the points overlap and poke a hole through. Each time a Moongate is cast, it opens a hole into the Ethereal Void where our world’s arcane geometry is more flexible.<br><br>Another mage, Gilforn, is one of the few people who has ever added to the permanent Moongate network. He wouldn’t tell me much about how he created his gate. He mumbled something about being taught the spell by shadowy figures in a strange dream:<br><br>init kal vas gres<br>trak sek-de ter-mer..<br>re in ew tu-tim in-ten<br>re grav behi trak-por<br><br>However, Gilforn was helpful in explaining that permanent gates require a material focus when they are cast. He gave two examples. The first was when our king trapped a dangerous being in the Ethereal Void, he used a powerful moonstone. The other was the gate spell you observed which was created with a focus of four rare gems. Gilforn did mention that blackrock can be a good focus, along with a few other magical substances I did not recognize.<br><br>Can you tell me what your plan is once you make it to Britannia?<br><br>-Heigel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157954",
+   "text": "Salutations,<br>Your information on moongates was very helpful. It is similar to the way the explosive destruction of the great obelisk let the Titans into our world. The first part of my plan is to delay the creation of any doorway that allows more of the Titans’ servants into your world. Hopefully, your people recognize the threat and work to stop it.<br><br>For the rest of my plan. I need your greatest warriors and mages to come together and be empowered with the magics of the Ethereal Void. These Warriors of Ether may have the ability to stand against the Titans before they lay waste to your world. I don’t have all the pieces yet, and I need time to prepare. Last night, in a dream, a mouse told me that recruiting had already begun. I need you to figure out the rest of the rituals needed for the Warriors of Ether.<br><br>Good luck, my friend.<br><br>-Mythran",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157955",
+   "text": "The Reagents of Thaumaturgy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157956",
+   "text": "Spell of Ethereal Travel - Ort Grav Por",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157957",
+   "text": "Reading through the many tomes of Thaumaturgy, the perceptive student is likely to notice something unusual about a few of the reagents. While a novice to any school of magic will find the names of most reagents unrecognizable, the reagents of Thaumaturgy are confusing for a simple reason. A universal collection of words and rituals must also have a universal set of material reagents, components that cannot be limited to a single dimension.Thus, the unusual reagents.<br><br>The casual reader will focus on the obvious questions: What are these creatures? A Dragon? A Newt? How many wings does one of these bats have? However, the trained mage will know that such details are irrelevant. Since magic is simply the manifestation of the caster's will rewriting the present, it stands to reason that the methods for bringing this will to the surface are not limited by the caster's plane of existence, dispelling magic notwithstanding.<br><br>Therefore, as it is possible to cast spells through a variety of means, the physical representation of the components are not relevant, assuming they enable access to the necessary energies. In such an instance, the thorn of a rose may very well be a reasonable substitute for the scales of a serpent.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157958",
+   "text": "Invoking this powerful ritual permits the caster to traverse the interdimensional realm known as the Ether. A mage's first few castings of this spell will prove awkward, for inexperienced mages will have difficulty determining their destination. With time, however, the mage will be able to dictate an arrival point and appear there. Note that this spell should not be confused with a spell of teleportation, for the former permits travel only between dimensions, while the latter permits travel only within a dimension.<br><br>The necessary components for this spell are hard to specify, for they seem to change depending on both the casting location and the destination. Usually the components include material native to both of the dimensions. In general, setting five pieces of the material - no piece smaller than a man's head - on the ground in the form of a pentacle and concentrating on one of the chunks, all while speaking the words of power, should permit the dimensional gate to transport the caster .",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157959",
+   "text": "Placeholder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157960",
+   "text": "*You notice the drawer of the small table slightly open...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157961",
+   "text": "This pet has undergone exploitative training.  As a result, this pet's available training points have been reduced.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157962",
+   "text": "Holiday Bells",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157963",
+   "text": "Holiday Ribbon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157964",
+   "text": "Candy Cane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157965",
+   "text": "Firefly Garland",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157966",
+   "text": "Jewelry Box",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157967",
+   "text": "<BASEFONT COLOR=#2DDC1B>Embossed with the likeness of ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157968",
+   "text": "<BASEFONT COLOR=#2DDC1B>Hand Tied by ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157969",
+   "text": "<BASEFONT COLOR=#2DDC1B>Hand Dipped by ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157970",
+   "text": "<BASEFONT COLOR=#2DDC1B>Hand Strung by ~1_NAME~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157971",
+   "text": "2017 Holiday Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157972",
+   "text": "Heigel's lifeforce has expired, perhaps you should examine him closely to glean additional information for your quest...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157973",
+   "text": "*You spot a curious item on the corpse...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157974",
+   "text": "*The ground trembles beneath your feet as a horror from another world besieges Britannia...A Titan is destroying the city!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157975",
+   "text": "Obelisk Tip",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157976",
+   "text": "Your equipped item is imbued with the power of the obelisk!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157977",
+   "text": "Add Auto Pay Funds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157978",
+   "text": "Vault Actions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157979",
+   "text": "Deposit Gold into Vault Rent Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157980",
+   "text": "Withdraw Gold from Vault Rent Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157981",
+   "text": "Transfers gold from the player's bank to the vault rent account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157982",
+   "text": "Transfers gold from the vault rent account to the bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157983",
+   "text": "Deposit Vault Token into Vault Rent Account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157984",
+   "text": "Transfers purchased vault tokens from the player to the vault rent account",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157985",
+   "text": "Vault Rent Account:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157986",
+   "text": "Vault Rent Account:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157987",
+   "text": "*You enchant the mechanism*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157988",
+   "text": "*You disenchant the mechanism*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157989",
+   "text": "Enchanted Writing Desk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157990",
+   "text": "Vault Tokens:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157991",
+   "text": "Stratos Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157992",
+   "text": "Hydros Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157993",
+   "text": "Pyros Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157994",
+   "text": "Lithos Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157995",
+   "text": "Ethereal Dragon Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157996",
+   "text": "Koi Pond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157997",
+   "text": "Vault # ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157998",
+   "text": "Vault # ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157999",
+   "text": "Storage Vault # ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158000",
+   "text": "Small Koi Pond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158001",
+   "text": "Medium Koi Pond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158002",
+   "text": "Large Koi Pond",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158003",
+   "text": "20th Year Veteran Reward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158004",
+   "text": "Auction Vault # ~1_token~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158005",
+   "text": "Vault Contents",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158006",
+   "text": "View Contents",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158007",
+   "text": "This option is only available to Endless Journey accounts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158008",
+   "text": "UO Store",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158009",
+   "text": "The amount entered is invalid. The amount must be a multiple of 1000 gold.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158010",
+   "text": "You cannot use that item in this form.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158011",
+   "text": "Generic Gump Scale",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158012",
+   "text": "Scales the size of generic gumps.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158013",
+   "text": "Cancel Training Process. All remaining points will be removed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158014",
+   "text": "Your pet's training process has been cancelled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158015",
+   "text": "Receive a goblin statuette. This blessed statuette transforms you in a goblin once activated in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158016",
+   "text": "Receive a Hooded Britannia Robe. This robe can only be worn by Humans and Elves.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158017",
+   "text": "You have been transformed into a ~1_NAME~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158018",
+   "text": "Statue Transformation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158019",
+   "text": "Your pet's training process will be cancelled and all remaining points will be lost. Do you wish to continue?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158020",
+   "text": "Hide AoE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158021",
+   "text": "Claim Vault",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158022",
+   "text": "Update EM Town Crier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158023",
+   "text": "Update City Town Crier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158024",
+   "text": "Update Guild Town Crier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158025",
+   "text": "Only Guild Leaders and Warlords of guilds with at least 20 members may post in the Town Cryer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158026",
+   "text": "Headline:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158027",
+   "text": "Author:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158028",
+   "text": "Body Paragraph 1:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158029",
+   "text": "Body Paragraph 2:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158030",
+   "text": "Body Paragraph 3:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158031",
+   "text": "Expiry (in days):",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158032",
+   "text": "You have made an illegal entry.  Check your entries and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158033",
+   "text": "The expiry can be between 1 and 30 days. Please check your entry and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158034",
+   "text": "You don’t have a vault to claim.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158035",
+   "text": "You don’t have a vault to claim.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158036",
+   "text": "Are you sure you want to claim the vault?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158037",
+   "text": "Are you sure you want to claim this vault? Doing so will forfeit any rental time remaining and place your vault contents in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158038",
+   "text": "You have reached the maximum entry count.  Please remove some and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158039",
+   "text": "Your entry has been submitted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158040",
+   "text": "City:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158041",
+   "text": "Rent is past due for your Vault and your items will be lost after 168 hours unless you claim your Vault from the Vault Manager. This vault is located in ~1_CITY~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158042",
+   "text": "The expiry can be between 1 and 14 days. Please check your entry and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158043",
+   "text": "The latest news from the City of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158044",
+   "text": "The latest news from the City of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158045",
+   "text": "The latest news from the City of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158046",
+   "text": "The latest news from the City of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158047",
+   "text": "The latest news from the City of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158048",
+   "text": "The latest news from the City of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158049",
+   "text": "The latest news from the City of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158050",
+   "text": "The latest news from the City of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158051",
+   "text": "The latest news from the City of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158052",
+   "text": "Rent is past due for your Vault and will be eligible for auction after 24 hours unless you claim it from the Vault Manager.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158053",
+   "text": "Your vault contents have been put up for auction and no longer can be claimed. This vault was located in ~1_CITY~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158054",
+   "text": "You can't ride a pack animal that contains items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158055",
+   "text": "Guild:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158056",
+   "text": "Event Month:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158057",
+   "text": "Event Day:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158058",
+   "text": "Event Time:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158059",
+   "text": "Event Timezone:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158060",
+   "text": "Event Description:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158061",
+   "text": "Event Meeting Place:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158062",
+   "text": "All fields must be populated.  Please check your entries and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158063",
+   "text": "Do you wish to rent a storage vault for 1,000 gold a month? You will need to keep your vault account balance up to date or risk losing your vault contents.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158064",
+   "text": "Do you wish to rent a storage vault for one vault token a month? You will need to keep your vault token balance up to date or risk losing your vault contents.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158065",
+   "text": "You may add additional funds to you vault account by using the Vault Actions menu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158066",
+   "text": "Posted By: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158067",
+   "text": "When:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158068",
+   "text": "Where:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158069",
+   "text": "Your guild has been temporarily banned from using the Town Cryer.  Your posting privileges will be restored when the ban has run out.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158070",
+   "text": "Journey Accounts cannot create guilds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158071",
+   "text": "The Town Crier has reached the max number of entries.  Please try again later.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158072",
+   "text": "This Town Crier is in the process of being updated. Please wait.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158073",
+   "text": "Some of the latest Quest and Global Event news!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158074",
+   "text": "Some of the latest Event Moderator news!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158075",
+   "text": "Some of the latest City Governor news!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158076",
+   "text": "Some of the latest public Guild Events!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158077",
+   "text": "Endless Journey accounts cannot utilize this feature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158078",
+   "text": "You have won an auction for ~1_ITEMNAME~! Your bid amount of ~2_BIDAMT~plat and ~3_BIDAMT~gp won the auction. You have 3 days from the end of the auction to claim your item or it will be lost.  You may claim your winnings at the Britain Commons auction plaza located in Britain (Trammel).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158079",
+   "text": "You cannot currently unpack this vault or claim this item, as doing so would overload you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158080",
+   "text": "You may only rent one vault at a time at this location.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158081",
+   "text": "Rent Past Due",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158082",
+   "text": "Eowmu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158083",
+   "text": "Animal Trainers Across the Realm Rejoice, New Methods of Animal Training Have Been Discovered",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158084",
+   "text": "The Town Cryer News Network",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158085",
+   "text": "Animal Trainers across the realm rejoice as the Royal Britannian College of Animal Tamers has announced a breakthrough discovery in animal training!  Animal tamers can now train their pets in advanced techniques to make them even more formidable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158086",
+   "text": "Shipwreck Salvaging a Lucrative Business? The Sons of The Sea in Trinsic Thinks So",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158087",
+   "text": "This title is obtained by completing the Paladins of Trinsic Quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158088",
+   "text": "The Sons of the Sea in Trinsic is betting on shipwreck salvaging as the latest profession to line the pockets of Britannians with coin.  Speaking from Sons of the Sea headquarters near the docks in Trinsic, The Town Cryer caught up with Salvage Master Hepler Paulson to get his take on this bold new business endeavor.<br><br>TC: Mr. Paulson, what can you tell our readers about the prospects of salvaging treasure from shipwrecks?<br><br>HP: Well, I can tell ya tis a bit of dirty business, and is a lot of work, but the rewards can be great!  Just the other day I recovered a pillow!<br><br>TC: Erm, a pillow? That doesn't seem like a worthwhile effort, are there other treasures you've found?<br><br>HP: Uhh, well I found me some boots. Oh! I once fished up painting, got a bit of coin for that!<br><br>TC: It seems salvaging may have the potential to answer the mystery of what lies beneath Britannia's waves, are there discoveries yet to be made? <br><br>HP: Oh sure! Tis a big ocean out there!<br><br>TC: How would someone interested in salvaging get started?<br><br>HP: Visit me at the Sons of the Sea in Trinsic and I can get ya started!<br><br>Well, there you have it. If you think you have what it takes to become a master salvager visit the Sons of the Sea today!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158089",
+   "text": "Cleanup Britannia Initiative Launched, Officers Stationed in Britain and Haven",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158090",
+   "text": "Paladin of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158091",
+   "text": "Has it been several months since you've seen the floor? Does your home resemble an orcish treasure hoard? Thanks to a well-timed edict from the His Majesty, the Town Cryer is happy to report that Cleanup Officers are stationed throughout Britannia to accept your unwanted junk in exchange for treasure! Visit a Cleanup Officer today!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158092",
+   "text": "Have What it Takes to Slay Britannia's Mighty Beasts? Join the Huntmaster's Challenge Today!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158093",
+   "text": "The Paladins of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158094",
+   "text": "The Town Cryer recently caught up with Waylon the Huntmaster at the Ranger's Guild in Skara Brae to learn more about this elite monthly tournament.<br><br>TC: How does one enter the Huntmaster's Challenge?<br><br>W: Well, pretty simple really. Visit the Skara Brae Ranger's Guild and speak to the Huntmaster. For 5,000 gold you can purchase a hunting permit that can be used on any of the creatures showcased within the guild. Use the hunting permit on any kill of those species to document the size.<br><br>TC: Once a hunter has a documented kill, what can they do with the permit?<br><br>W: If a hunter is fortunate enough to have the largest kill for the month they'll win the contest for that species! A skilled crafter can also create trophies from any permit.<br><br>TC: What species are eligible for hunting?<br><br>W: Oh, we've got quite a few quarry! Everything from bears to turkeys. We even have some more exotic quarry like Myrmidex and Triceratops from Eodon!<br><br>TC: That's incredible! Such exotic creatures, what is the largest triceratops that has ever been hunted - our readers must know!<br><br>W: Once had a triceratops weigh in over 20,000 stones. Took several of us and more than a couple greater strength potions to lift into the hall!<br><br>The Town Cryer wishes to thank the Ranger's Guild for taking the time to inform us on the Huntmaster's Challenge. The Challenge runs monthly from the Ranger's Guild on the mainland in Skara Brae.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158095",
+   "text": "Capital City Gets a New Look! Britain Commons Opens With Expanded Services!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158096",
+   "text": "Another who wishes to walk the path of the Paladins of Trinsic? Well you should know the path is not an easy one to walk, and only those with the courage to pursue truth are admitted to the order. If you prove you are honorable, then you shall join our ranks and gain the prestigious title of Paladin of Trinsic. We are bound by Honor, and thus we stand against Shame! To prove yourself you must venture deep within the dungeon Shame and slay the vile within. Succeed in this task and you will prove your worth, fail and you will bring to your name what you hope to defeat - Shame.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158097",
+   "text": "The Britain Commons is now open for business! The planned redevelopment of the area southeast of the first Bank of Britain has now become a reality. Long known as one of the seedier sections of the City, the Commons now boasts a full complement of amenities. Most notable of these new amenities are the Vaults which are housed in the brand new City Vault. Citizens may now rent space in these vaults to store their most prized possessions. The bank does warn customers, however, that any unpaid vault rental fees will be auctioned off to the highest bidder at the newly constructed auction gazebo. The new commons also brings a full crafter suite with nearby stable services and a large plaza to meet new friends and conduct business. The Town Cryer is happy to report that one of our dedicated staff will be stationed at the commons to keep Britannia updated on all the latest goings on in the realm.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158098",
+   "text": "Trade Booms as Bulk Orders Expanded to New Disciplines",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158099",
+   "text": "Becoming a Paladin of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158100",
+   "text": "Crafters throughout the realm rejoice as the Guild of Arcane Arts, Society of Cooks and Chefs, Order of Engineers, and League of Rangers announce their member merchants will now offer bulk order deeds to the Kingdom's crafters. This news was heralded by scribes and bowyers alike who now have the same avenues for business previously reserved for smiths and tailors. In a joint statement by the guilds, which also includes the Society of Clothiers and the Society of Smiths, they have announced access to new incentives available to crafters who participate in the bulk order deed program as well as new options to make obtaining those rewards easier. Crafters interested in taking advantage of new bulk order deeds should visit their local merchants today!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158101",
+   "text": "Warrior's Guild Publishing New Methods, Expansion to Knowledge of Magical Properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158102",
+   "text": "The way of the Paladin is not for everyone, I understand your decision but hope you reconsider...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158103",
+   "text": "In a joint statement released by the Warriors Guild, Society of Smiths, Merchant's Association and Guild of Arcane Arts it has now been confirmed to the Town Cryer that recent rumors of a breakthrough in weapons, armor, and magical properties are in fact, true. The statement is reprinted below, <br><br>\"For many years our members have been benefiting from the deep understanding our collective specialties bring to warriors, mages, and treasure seekers alike. That is why we are pleased to announce that thanks to the tireless efforts of our most decorated researchers we can report a new understanding of weapons, armor, and magical properties. Our colleagues at the Warrior's Guild have already taken this new understanding and incorporated it into execution manuals for a variety of special moves used by many in combat. This breakthrough will no doubt reshape how we all stand against threats to ourselves and our Britannian homeland.\"<br><br>When speaking with citizens of the City of Britain, home to the Warrior's Guild, the Town Cryer learned that many are excited about the announced discoveries and are already rethinking how they will kit themselves in combat, as well as execute training they have received in a variety of combat related skills.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158104",
+   "text": "Something Strange in Shame? New Treasure Underscored by New Threats",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158105",
+   "text": "Go to the dungeon Shame and slay the creatures within, only then will you have the Honor of calling thyself a Paladin of Trinsic.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158106",
+   "text": "Adventurers venturing into Dungeon Shame will be met with new threats as well as a chance at new treasures, recent reports indicate. The Town Cryer met up with a band of adventurers returning from Dungeon Shame and we had a chance to chat with various members of the Fangwranglers:<br><br>TC: Gentlemen and Lady, would you kindly tell us a bit about your organization and what you experience in Dungeon Shame?<br><br>KO: Well, my name is Kal Ohmsford, of the Fangwrangers! We are a for-hire group of adventurers that perform a variety of tasks our clients ask of us. <br><br>TC: That seems like dangerous work! What kind of tasks have you performed, what kind of clients have you worked for?<br><br>E: My name is Elwin.<br><br>TC: Elwin..?<br><br>E: Just Elwin.<br><br>TC: Right...you seem like a very strong man, surely someone of your stature is well equipped to handle any task for any client.<br><br>E: We've done work for the Mages Guild and some other organizations. Usually there's something someone wants. We get it. That's it. Recently we've been working for the Paladins of Trinsic. They always need a hand.<br><br>TC: How has Dungeon Shame changed since your last assignment there?<br><br>G: Uh. My name is Gord. Shame is dangerous. No doubt about it. Great treasures to be had though.<br><br>TC: Interesting! And the forth member of your party, you are, m'lady?<br><br>KO: She doesn't speak.<br><br>TC: Oh, why's that? A bit shy?<br><br>KO: Nope, had her tongue cut out.<br><br>TC: Uh..<br><br>KO: It's like Gord said. Shame is definitely more dangerous. New creatures, new threats. But the loot is better too. Not sure what's going on down there but its great for guys like us!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1158107",
+   "text": "What's Wrong in Wrong? Royal Britannian Guard Silent on Prison's New Tennants",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

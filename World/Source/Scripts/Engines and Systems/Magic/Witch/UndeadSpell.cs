@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -27,7 +28,7 @@ namespace Server.Spells.Undead
 
 			if ( Caster.Skills[CastSkill].Value < RequiredSkill )
 			{
-				Caster.SendMessage("You lack the skills to use this necromancer liquid!");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You lack the skills to use this necromancer liquid!" ) );
 				return false;
 			}
 

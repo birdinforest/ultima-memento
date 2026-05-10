@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Targeting;
 using Server;
 using Server.Items;
+using Server.Localization;
 using System.Collections;
 
 namespace Server.Spells.Herbalist
@@ -65,7 +66,7 @@ namespace Server.Spells.Herbalist
 				BaseCreature.Summon( new SummonedTreefellow(), false, Caster, new Point3D( p ), 0x212, duration );
 				Caster.PlaySound( 0x19 );
 
-				Caster.SendMessage( "You can double click the summoned to dispel them." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can double click the summoned to dispel them." ) );
 			}
 
 			FinishSequence();

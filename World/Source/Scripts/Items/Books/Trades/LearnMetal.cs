@@ -51,7 +51,7 @@ namespace Server.Items
 				int prevPage = page - 1; if ( prevPage < 1 ){ prevPage = 900; }
 				int nextPage = page + 1;
 
-				AddHtml( 106, 44, 215, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 106, 44, 215, 20, TradesBookLocalization.Body( m_Mobile, color, m_Book.Name ), (bool)false, (bool)false);
 
 				AddButton(71, 41, 4014, 4014, prevPage, GumpButtonType.Reply, 0);
 				AddButton(596, 41, 4005, 4005, nextPage, GumpButtonType.Reply, 0);
@@ -73,7 +73,7 @@ namespace Server.Items
 						amt--; itm++;
 
 						AddItem( x, y, 7153, CraftResources.GetHue( res ) );
-						AddHtml( x+44, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + CraftResources.GetName( res ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( x+44, y, 200, 20, TradesBookLocalization.Body( m_Mobile, color, CraftResources.GetName( res ) ), (bool)false, (bool)false);
 
 						y += modY;
 
@@ -98,10 +98,10 @@ namespace Server.Items
 					string mining = "To get metal ingots, you need to find ore. Ore can be mined in caves or along mountain sides. Using the ore on a forge will smelt it into ingots. The better your mining skill, the better ore you can find and smelt.";
 					string crafting = "Other than the tools required to craft, you may need to be near an anvil and forge to create items. Some examples of metals you can find are listed on the next page.";
 
-					AddHtml( 122, 80, 200, 130, @"<BODY><BASEFONT Color=" + color + ">" + smithing + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 122, 255, 200, 130, @"<BODY><BASEFONT Color=" + color + ">" + tinkering + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 80, 200, 130, @"<BODY><BASEFONT Color=" + color + ">" + mining + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 415, 255, 200, 130, @"<BODY><BASEFONT Color=" + color + ">" + crafting + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 122, 80, 200, 130, TradesBookLocalization.Body( m_Mobile, color, smithing ), (bool)false, (bool)false);
+					AddHtml( 122, 255, 200, 130, TradesBookLocalization.Body( m_Mobile, color, tinkering ), (bool)false, (bool)false);
+					AddHtml( 415, 80, 200, 130, TradesBookLocalization.Body( m_Mobile, color, mining ), (bool)false, (bool)false);
+					AddHtml( 415, 255, 200, 130, TradesBookLocalization.Body( m_Mobile, color, crafting ), (bool)false, (bool)false);
 				}
 			}
 

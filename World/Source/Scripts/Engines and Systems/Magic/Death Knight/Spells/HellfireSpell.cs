@@ -4,6 +4,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
@@ -39,7 +40,7 @@ namespace Server.Spells.DeathKnight
 			{
 				m.FixedParticles( 0x3709, 10, 30, 5052, 0, 0, EffectLayer.LeftFoot );
 				m.PlaySound( 0x208 );
-				m.SendMessage( "You feel your body being scorched by demonic hellfire!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your body being scorched by demonic hellfire!" ) );
 
 				SpellHelper.Turn( Caster, m );
 
@@ -105,7 +106,7 @@ namespace Server.Spells.DeathKnight
 			t.Stop();
 			m_Table.Remove( m );
 			m.YellowHealthbar = false;
-			m.SendMessage( "The flames die out.." );
+			m.SendMessage( StringCatalog.Resolve( m.Account, "The flames die out.." ) );
 		}
 
 		private class InternalTimer : Timer

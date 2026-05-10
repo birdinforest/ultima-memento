@@ -6,6 +6,7 @@ using System.Text;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -230,7 +231,7 @@ namespace Server.Items
 			public ClueGump( Mobile from, Item parchment ): base( 100, 100 )
 			{
 				SomeRandomNote scroll = (SomeRandomNote)parchment;
-				string sText = scroll.ScrollMessage;
+				string sText = QuestCompositeResolver.ResolveComposite( from, scroll.ScrollMessage );
 				from.PlaySound( 0x249 );
 
 				this.Closable=true;

@@ -3,6 +3,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -36,7 +37,7 @@ namespace Server.Spells.HolyMan
 			}
 			else if ( !( m is PlayerMobile ) )
 			{
-				Caster.SendMessage( "They don't seem to be hungry or thirsty." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They don't seem to be hungry or thirsty." ) );
 			}
 			else if ( CheckBSequence( m ) )
 			{
@@ -50,7 +51,7 @@ namespace Server.Spells.HolyMan
 				if ( m.Hunger > 20 ){ m.Hunger = 20; }
 				if ( m.Thirst > 20 ){ m.Thirst = 20; }
 
-				m.SendMessage( "You feel much more nourished." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel much more nourished." ) );
 
 				m.FixedParticles( 0x376A, 9, 32, 5005, EffectLayer.Waist );
 				m.PlaySound( 0x1F2 );

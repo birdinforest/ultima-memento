@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -31,7 +32,7 @@ namespace Server.Spells.Research
 		{
 			if ( CheckSequence() )
 			{
-				Caster.SendMessage( "What item do you want to transmute into gold?" );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "What item do you want to transmute into gold?" ) );
 				Caster.Target = new InternalTarget( this, spellID, Scroll, alwaysConsume );
 			}
 
@@ -81,7 +82,7 @@ namespace Server.Spells.Research
 				}
 				else
 				{
-					from.SendMessage( "You decide against transmuting such a thing." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You decide against transmuting such a thing." ) );
 				}
 				m_Owner.FinishSequence();
 			}
@@ -148,11 +149,11 @@ namespace Server.Spells.Research
 				}
 				else if ( ResourceMods.SetResource( item, CraftResource.Gold ) )
 				{
-					from.SendMessage( "You turn that item into gold." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You turn that item into gold." ) );
 				}
 				else if ( ResourceMods.ResourceToGold( item, from ) )
 				{
-					from.SendMessage( "You turn that item into gold ingots." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You turn that item into gold ingots." ) );
 				}
 			}
 		}

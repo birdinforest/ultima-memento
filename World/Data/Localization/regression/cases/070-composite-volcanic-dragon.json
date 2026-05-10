@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.volcanic-dragon-south-lodor",
+  "pipeline": "composite_only",
+  "en": "a volcanic dragon in southern Lodor",
+  "expectedZh": "洛多尔南部有火山巨龙。",
+  "tags": "fragment-table"
+}

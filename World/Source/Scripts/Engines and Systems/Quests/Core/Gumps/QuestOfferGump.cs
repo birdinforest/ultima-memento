@@ -10,7 +10,7 @@ namespace Server.Engines.MLQuests.Gumps
 		private IQuestGiver m_Quester;
 
 		public QuestOfferGump(MLQuest quest, IQuestGiver quester, PlayerMobile pm)
-			: base(1049010) // Quest Offer
+			: base(1049010, pm) // Quest Offer
 		{
 			m_Quest = quest;
 			m_Quester = quester;

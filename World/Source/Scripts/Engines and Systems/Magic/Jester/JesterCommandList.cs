@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Spells;
 using Server.Spells.Jester;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Scripts.Commands
 {
@@ -57,7 +58,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
         }
 
@@ -76,7 +77,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -95,7 +96,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -114,7 +115,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -133,7 +134,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -152,7 +153,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -171,7 +172,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -190,7 +191,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -209,7 +210,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 
@@ -228,7 +229,7 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				from.SendMessage( "You are not a jester!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not a jester!" ) );
 			}
 		}
 	}

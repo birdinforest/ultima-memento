@@ -29,7 +29,7 @@ namespace Server.Items
 			}
 			else if ( availableFollowers < 1 )
 			{
-				from.SendMessage("You already have too many in your group.");
+				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have too many in your group."));
 			}
 			else
 			{

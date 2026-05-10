@@ -1,0 +1,3006 @@
+{
+ "batch": 36,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1156591",
+   "text": "Oldest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156592",
+   "text": "Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156593",
+   "text": "Cart: ~1_val~/~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156594",
+   "text": "Subtotal:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156595",
+   "text": "Price ^",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156596",
+   "text": "Okay",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156597",
+   "text": "Fireworks Banner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156598",
+   "text": "You assist the Myrmidex in pushing back the Eodonians!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156599",
+   "text": "You assist the Eodonians in pushing back the Myrmidex!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156600",
+   "text": "You kill one of the Myrmidex away from the front ranks and gain little recognition.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156601",
+   "text": "You kill one of the Eodonians away from the front ranks and gain little recognition.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156602",
+   "text": "The Myrmidex have secured new ground, the front line has moved up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156603",
+   "text": "The Myrmidex have surged ahead, front line has moved up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156604",
+   "text": "The Eodonians have secured new ground, the front line has moved up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156605",
+   "text": "The Eodonians have surged ahead, the front line has moved up!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156606",
+   "text": "Myrmidex have lost ~1_VAL~ of ~2_VAL~ from wave ~3_VAL~ of their front line.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156607",
+   "text": "Eodonians have lost ~1_VAL~ of ~2_VAL~ from wave ~3_VAL~ of their front line.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156608",
+   "text": "Name Change",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156609",
+   "text": "Gender Change",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156610",
+   "text": "Character Transfer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156611",
+   "text": "Advanced Character",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156612",
+   "text": "Character Reincarnation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156613",
+   "text": "Instant Pet Bonding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156614",
+   "text": "Mythic Character",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156615",
+   "text": "Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156616",
+   "text": "The Valley of Eodon is in grave danger while the Myrmidex threat persists...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156617",
+   "text": "Bottle of Concentrated Insecticide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156618",
+   "text": "Lost...Lost...Lost it all...I can't believe I lost it all...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156619",
+   "text": "Fall in now! These Myrmidex aren't going to slay themselves! We've got to squash these bugs!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156620",
+   "text": "Bottled Myrmidex Pheremone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156621",
+   "text": "Rabbits everywhere eating my lettuces! These wretched beasts must be dealt with!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156622",
+   "text": "Time now to crush Britannian invaders!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156623",
+   "text": "Stasis Chamber Power Core",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156624",
+   "text": "Stasis Chamber Activator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156625",
+   "text": "So precious, the most precious of stones desired by our Myrmidex overlords...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156626",
+   "text": "Stasis Chamber Regulator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156627",
+   "text": "Arrr these wretched pirates be plunderin' me trade routes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156628",
+   "text": "Stasis Chamber Stator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156629",
+   "text": "The Triumph of the Myrmidex relies on reactivating the chamber...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156630",
+   "text": "The Myrmidex are victorious!  If you are allied to the Myrmidex visit the Tinker in the Barrab village to continue the quest!  Otherwise, continue the fight until your team is victorious!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156631",
+   "text": "The Eodonians are victorious!  If you are allied to the Eodonians visit Professor Raffkin in Sir Geoffrey's camp to continue the quest! Otherwise, continue the fight until your team is victorious!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156632",
+   "text": "You cannot switch allegiance in the midst of the battle field!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156633",
+   "text": "You cannot declare allegiance to that side.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156634",
+   "text": "Myrmidex",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156635",
+   "text": "Eodonians",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156636",
+   "text": "You have declared allegiance to the ~1_SIDE~!  You may only change your allegiance once every 2 hours.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156637",
+   "text": "You have already declared allegiance to the ~1_SIDE~!  You may only change your allegiance once every 2 hours.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156638",
+   "text": "Myrmidex vs Eodonian",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156639",
+   "text": "Double click to declare or check allegiance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156640",
+   "text": "~1_TEAMS~ Allegiance Idol",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156641",
+   "text": "Receive a token which will allow you to change one character's name.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156642",
+   "text": "Receive a token which will allow you to change one character's gender from male to female or from female to male.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156643",
+   "text": "Receive a dark hooded robe that may be worn in game.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156644",
+   "text": "Receive a token which will allow you to transfer one character from one shard to another shard (Siege and Mugen are excluded due to special server ruleset).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156645",
+   "text": "Receive a token which will allow you to select from up to 18 templates (based on account entitlement) which will provide a character with 3 skills at 85.0, 2 skills at 70.0 and combined stats up to 225.  To use this token the character must have less than 200 combined skill  points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156646",
+   "text": "Receive a Charger of the Fallen statuette.  This blessed statuette may be used to create an armor clad ethereal mount.  When unsummoned the mount will return to statuette form and be placed inside of your backpack.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156647",
+   "text": "Receive a token which when used will create an account bound Soulstone in your bank box.  The soulstone allows you to trade out and store skills from your character.  The stored skill may be retrieved by another character on the account.  The stone may only hold one skill at a time and all standard skill level maximums are enforced when retrieving skills from the stone.  This soulstone is blue in color.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156648",
+   "text": "Receive a token which when used will create an account bound Soulstone in your bank box.  The soulstone allows you to trade out and store skills from your character.  The stored skill may be retrieved by another character on the account.  The stone may only hold one skill at a time and all standard skill level maximums are enforced when retrieving skills from the stone.  This soulstone is green in color.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156649",
+   "text": "Receive a Fallen Log deed.  The deed may be used to place either a south facing or east facing fallen log.  This decorative item may be used as a chair.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156650",
+   "text": "Receive a round style Lamp Post.  This decorative item may be used as a light source in your home and may be turned on or off.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156651",
+   "text": "Receive a hitching post.  This decorative item allows you to access a character's stable from inside of your home.  The hitching post is rechargeable (30 charges maximum) and must be locked down in your house to use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156652",
+   "text": "Receive a tool that will allow you to engrave a piece of armor (30 charges maximum).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156653",
+   "text": "Receive an ancestral gravestone.  The ancestral gravestone is a spooky decorative item that can also provide a player with a 5.0 skill boost to their Spirit Speak skill for a random duration between 5 minutes to 40 minutes.  The ancestral gravestone must be locked down inside of your home to use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156654",
+   "text": "Receive a bag of twelve different bulk order deed book covers.  The covers come in all of your favorite metal and leather hues (valorite, verite, agapite, gold, bronze, copper, shadow, dull copper, barbed, horned, spined and unhued).  Each cover may be used a maximum of 30 times to cover bulk order deed books.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156655",
+   "text": "Receive a wooden bookcase.  The wooden bookcase may be used as a container inside of your home.  The wooden bookcase also changes appearance between an empty and full bookcase depending on whether items are stored inside of it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156656",
+   "text": "Receive a snow tree deed.  The deed may be used to place either a decorative snow tree or a decorative snow tree trunk inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156657",
+   "text": "Receive a maple tree deed.  The deed may be used to place either a decorative maple tree or a decorative maple tree trunk inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156658",
+   "text": "Receive a willow tree deed.  The deed may be used to place a decorative willow tree inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156659",
+   "text": "Receive a pair of earrings that when equipped will provide your character with 2% in the specified resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156660",
+   "text": "Receive a Large Red Lady Bug. This decorative item may be used as a light source in your home and may be turned on or off.  While the lady bug's wings are spread she emits a light source.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156661",
+   "text": "Receive a Large Green Lady Bug. This decorative item may be used as a light source in your home and may be turned on or off.  While the lady bug's wings are spread she emits a light source.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156662",
+   "text": "Receive a hair dye which when used will change the color of one character's hair to the specified hue.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156663",
+   "text": "Receive an Undertaker's Staff which when used will retrieve your character's corpse and belongings teleporting them to your current location (40 tile maximum range).  This staff comes with 100 charges.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156664",
+   "text": "Receive the Smuggler's Edge butcher's knife.  This weapon allows a player a chance to steal items from mobs, including special items from mobs located in champion spawn areas.  This weapon includes the Spell Channelling and Use Best Weapon Skill properties, so anyone may use it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156665",
+   "text": "Merchant Trinket is a pair of earrings which when worn by your merchant NPC will lower the merchants daily fee by 3% as long as they are worn.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156666",
+   "text": "Receive Merchant's Trinket earrings.  These earrings when equipped on a player run vendor will provide a 5% discount to that vendor's daily charges.  The earrings start with 90 uses and each day these earrings are equipped on the vendor will consume one use. The earrings function with non-commission vendors only.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156667",
+   "text": "Receive Merchant's Trinket earrings.  These earrings when equipped on a player run vendor will provide a 10% discount to that vendor's daily charges.  The earrings start with 40 uses and each day these earrings are equipped on the vendor will consume one use. The earrings function with non-commission vendors only.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156668",
+   "text": "Receive a bag containing two linked house teleporter tiles.  These teleporter tiles allow players to teleport between two home in which the player has the appropriate security access.  One tile must be locked down in each home to form the link.  The tiles may be recharged with Gate Travel scrolls.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156669",
+   "text": "Receive a Pen of Wisdom which when used in conjunction with specific ingredients (recall runes, mark scrolls and runebook) will allows a player to copy one filled runebook (including contained runes) into a second duplicate runebook.  The Pen of Wisdom starts with 100 uses and each runebook copied will consume one use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156670",
+   "text": "Receive a deed which when used will create a decorative woodworker's bench.  The bench may be placed with a south or an east facing in a home.  This decorative bench can also provide a player with a short term 5.0 skill boost to their Carpentry skill with a 30 minute duration.  The woodworker's bench must be placed inside of your home to use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156671",
+   "text": "Receive a jar of Haochi's Pigments.  These pigments are dyes that may be used on artifacts and enhanced equipment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156672",
+   "text": "Receive a Britannian Ship deed.  This deed will allow you to place the luxurious Britannian Ship which is the largest ship in game.  This ship boasts nine weapon pads, 28,000 stones worth of storage and two single tile house add-on pads.  Also receive a decorative Pilot's Wheel deed and two special ship paints.  Both the Weathered and the Two-Tone ship paint tubs start with 3 uses. (HIGH SEAS ENTITLEMENT REQUIRED)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156673",
+   "text": "Receive a Britannian Ship deed.  This deed will allow you to place the luxurious Britannian Ship which is the largest ship in game.  This ship boasts nine weapon pads, 28,000 stones worth of storage and two single tile house add-on pads. (HIGH SEAS ENTITLEMENT REQUIRED)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156674",
+   "text": "Forged Metal of Artifacts provides a 100% success rate on an item enhancement (10 charges).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156675",
+   "text": "Forged Metal of Artifacts provides a 100% success rate on an item enhancement (5 charges).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156676",
+   "text": "Receive a special hair dye which when used will change the color of one character's hair to the  black and red Abyssal look.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156677",
+   "text": "Receive one name change token which will allow you to change the name of one character, receive one race change token which will allow you to change one character's current race to another race (human, elf or gargoyle) and receive one gender change token which will allow you to change one character's gender from male to female or from female to male.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156678",
+   "text": "Receive one potion that will allow you to bypass the standard seven day waiting period to bond a single pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156679",
+   "text": "Receive a token which will allow you to select 5 skills at 90.0 and set your stats to equal 225 (or more, depending on potential power scroll usage).  To use this item the character must have less than 200 combined skill points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156680",
+   "text": "Receive three Raised Garden Bed deeds which when placed in your home will allow you to plant up to nine plant seeds that will grow without the usual necessary care. (RUSTIC THEME PACK ENTITLEMENT REQUIRED)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156681",
+   "text": "(Merchant Fee Reduction)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156682",
+   "text": "(Merchant Fee Reduction)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156683",
+   "text": "Rechargeable House",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156684",
+   "text": "Britannia Ship",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156685",
+   "text": "Captain's Bundle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156686",
+   "text": "10 charges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156687",
+   "text": "5 charges",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156688",
+   "text": "Set of 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156689",
+   "text": "Recipe for a Kotl Power Coil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156690",
+   "text": "Wall Map of Eodon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156691",
+   "text": "Defender of Eodon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156692",
+   "text": "Defender of the Myrmidex",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156693",
+   "text": "Flame of the Jukari",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156694",
+   "text": "Ambusher of the Kurak",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156695",
+   "text": "Trooper of the Barako",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156696",
+   "text": "Thunder of the Urali",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156697",
+   "text": "Herder of the Sakkhra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156698",
+   "text": "Colonizer of the Barrab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156699",
+   "text": "Sakkrhan Bird of Prey",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156700",
+   "text": "Myrmidex Larvae Pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156701",
+   "text": "You need moonstone crystal shards to craft that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156702",
+   "text": "Raw Moonstone - Small",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156703",
+   "text": "Raw Moonstone - Large",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156704",
+   "text": "Select your destination:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156705",
+   "text": "Eodon Moongate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156706",
+   "text": "Barako Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156707",
+   "text": "Jukari Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156708",
+   "text": "Kurak Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156709",
+   "text": "Sakkhra Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156710",
+   "text": "Urali Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156711",
+   "text": "Barrab Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156712",
+   "text": "Shadowguard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156713",
+   "text": "The Great Ape Cave",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156714",
+   "text": "The Volcano",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156715",
+   "text": "Dragon Turtle Habitat",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156716",
+   "text": "Britannian Encampment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156717",
+   "text": "This title is obtained by completing the Myrmidex Threat quest in the Valley of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156718",
+   "text": "Select a reward title deed:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156719",
+   "text": "Reward Title Scroll",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156720",
+   "text": "The Myrmidex Threat Quest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156721",
+   "text": "Unabridged Atlas of Eodon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156722",
+   "text": "You need more of Professor Ellie Rafkin's Unabridged Atlas of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156723",
+   "text": "The geography of the Eodon is standard for what one might expect in a sub tropical Volcanic valley.  The most pronounced feature that one might encounter upon initial entry into the Valley is the unique topography surrounding the Moongate. It is my guess the being known as Hawkwind's peculiar relationship with time is responsible for the concentric circles etched into the terrain. While some scholars may view this as uninspired I find it adds to the enchantment of the region.  Each of the tribes of Eodon inhabit a unique sub-biome within the Valley mostly related to that tribes chosen deity of worship.  to the southeast the Jukari are in closest proximity to the Volcano, a lowlands defined by lava flows and twisting veins of igneous rock and earth.  To the southwest the Kurak tribe inhabit the grasslands suited to the tigers that use the tall grasses as cover whilst hunting and the nearby streams as a source of water.  Further to the southwest the Barrab sit high atop rocky mesas surrounded by sandy pits where Myrmidex tunnels breach the surface.  To the north of the Moongate the Barako sit atop the Valley floor in the canopy of a wide variety of hard and softwood rainforest trees.  To the west are the Urali, which have made the sandy shores and marshlands of the many rivers their home.  Finally, to the northwest the Sakkhra are at the base of the great swamps, an area bordered by great plains to which the many species of large reptiles called \"Dinosaurs\" can be found.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156724",
+   "text": "barrab hemolymph concentrate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156725",
+   "text": "Myrmidex Eggsac",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156726",
+   "text": "jukari burn poultice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156727",
+   "text": "Lava Berry",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156728",
+   "text": "kurak ambusher's essence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156729",
+   "text": "barako draft of might",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156730",
+   "text": "Perfect Bananas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156731",
+   "text": "River Moss",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156732",
+   "text": "sakkhra prophylaxis potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156733",
+   "text": "Blue Corn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156734",
+   "text": "urali trance tonic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156735",
+   "text": "Lava Berry Bush",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156736",
+   "text": "*You gather some ~1_ingredient~*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156737",
+   "text": "corn",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156738",
+   "text": "+~1_VAL~ Hit Point Regeneration for ~2_VAL~ seconds<br>+~3_VAL~ Hit Point Increase for ~4_VAL~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156739",
+   "text": "+~1_VAL~ Fire Resist for ~2_VAL~ minutes<br>+~3_VAL~ Stamina Increase for ~4_VAL~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156740",
+   "text": "+~1_VAL~% Damage to Enemy Eodon Team",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156741",
+   "text": "+~1_VAL~ Physical Resist for ~2_VAL~ minutes<br>+~3_VAL~ Cold Resist for ~4_VAL~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156742",
+   "text": "+~1_VAL~ Mana Regeneration for ~2_VAL~ seconds<br>+~3_VAL~ Mana Increase for ~4_VAL~ minutes<br>Your casting speed is decreased",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156743",
+   "text": "+~1_VAL~ Poison Resist for ~2_VAL~ minutes<br>+~3_VAL~ Energy Resist for ~4_VAL~ minutes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156744",
+   "text": "Myrmidex Pits",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156745",
+   "text": "Your store cart is currently full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156746",
+   "text": "This transaction cannot be completed due to insufficient funds available. Visit the Origin store to purchase sovereigns.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156747",
+   "text": "Insufficient Funds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156748",
+   "text": "Add Funds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156749",
+   "text": "Are you sure you want to complete this purchase?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156750",
+   "text": "Purchase Confirmation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156751",
+   "text": "The Zealotry of Zipactriotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156752",
+   "text": "All hail our Myrmidex Overlords! Now that the Britannians and the rest of Eodon have been stopped from their offensive against the Myrmidex it is time for the Barrab to restore the Myrmidex to power!  Long ago the Kotl came to Eodon.  Their technology was far advanced and they built many creations.  Before long they decided they needed servents to tend to them beyond the metal giants they called \"Automatons\" and so they created the Myrmidex.  The Myrmidex would not stand for their oppression and rose up against their reptilian masters!  The Kotl unleashed a great weapon called Zipactriotl to abolish the Myrmidex.  In time the Myrmidex were reduced in numbers and the Kotl placed Zipactriotl in stasis until such time the Myrmidex were once again a threat. The alien technology of the Kotl has spread throughout the realm in the eons since their arrival - we must recover that technology so we may release Zipactriotl and destroy it once and for all!   The time is now for Myrmidex rule with the Barrabian at their side!  All hail the Myrmidex!  All hail the Barrab!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156753",
+   "text": "I must question your commitment to the Myrmidex - are you satisfied with these Britannian invaders and their Eodonian allies?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156754",
+   "text": "You must acquire the Activator from the Gemologist at the Shimmering Jewel in Vesper, the Regulator from the Ship Captain at the Horse's Head in Jhelom, the Stator from the Golem Maker at the Tinker's Guild in Britain, and Power Core from the Oddities Collector at the Lycaeum in Moonglow before the Stasis Chamber can be activated and Zipactriotl can be destroyed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156755",
+   "text": "*Eyes widen with excitement!*  All hail the Myrmidex! All hail the Barrab! With these components I can bring the Stasis Chamber online and Zipactriotl can be destroyed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156756",
+   "text": "A step closer to destroying Zipactriotl...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156757",
+   "text": "The Destruction of Zipactriotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156758",
+   "text": "All Hail the Myrmidex! All Hail the Barrab! Muwahahah! With these components the Stasis Chamber can be reactivated and Zipactriotl shall meet DOOM! Go now to the Kotl Antechamber and destroy Zipactriotl so the Myrmidex may once again rule the Valley of Eodon with the Barrab shall be at their side!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156759",
+   "text": "Go to the Kotl Antechamber and Destroy Zipactriotl.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156760",
+   "text": "Only those warriors brave enough to join in the destruction of Zipactriotl will reap in the glory!  All hail the Myrmidex! All hail the Barrab!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156761",
+   "text": "Zipactriotl must be destroyed...the time is NOW! Go to the Antechamber in the Great Pyramid and restore glory to the Myrmidex!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156762",
+   "text": "MUWAHAHA! ZIPACTRIOTL IS DESTROYED! THE MYRMIDEX ARE FREE TO RECLAIM EODON! THE BARRAB SHALL JOIN THEM AND TOGETHER WE SHALL RULE THE VALLEY!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156763",
+   "text": "Exterminating the Infestation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156764",
+   "text": "It is unfortunate it had to come to this.  My hope was the knowledge gained from all the peoples and creatures of Eodon would better our understanding of life - alas the Myrmidex are an abomination, creatures born into enslavement by an oppressive alien race, the Kotl.  The Kotl came to Eodon to expand their empire and in doing so upset the delicate ecosystem that is the natural wonder of this place.  The Valley cannot survive if the Myrmidex are allowed to spread, and there is no guarantee Britannia will be safe - they must be destroyed from within.  We must quell their numbers significantly in order to force their Queen into reproduction, we must also obtain a powerful pheromone to gain safe passage within the deepest reaches of their pits, and we must also find an insecticide powerful enough to destroy them. Only then can we confront the Myrmidex Queen and end the Myrmidex threat.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156765",
+   "text": "Quell the Myrmidex Population",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156766",
+   "text": "A step closer to destroying the Myrmidex Queen...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156767",
+   "text": "I must question your commitment to our cause - are you satisfied with these Myrmidex invaders and their Barrabian allies?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156768",
+   "text": "You must obtain the Insecticide from the Gambler at the Modest Damsel in New Magincia, the Pheremone from the Gardener in Delucia, and the Population Report from Lt. Foxx before we can launch an offensive against the Myrmidex Queen!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156769",
+   "text": "I should be excited but I cannot help but grimace at the destruction of an entire population *she frowns a bit*  I must remain pragmatic though, this is for the greater good of the Valley and Britannia.  The time to destroy the Myrmidex Queen is now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156770",
+   "text": "Insecticide and Regicide",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156771",
+   "text": "Everything is in place.  In the depths of the Myrmidex Pits are the Queen's chambers, it is there that she spawns new Myrmidex to bolster the numbers within the colony.  No doubt she is powerful - the energy of the moonstones is sure to have seen to that.  It pains me to say this but - take no mercy, she must be destroyed for the safety of the peoples of Eodon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156772",
+   "text": "Destroy the Myrmidex Queen",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156773",
+   "text": "You must go into the depths of the Myrmidex Pits and find the Queen - she must be destroyed!  The entrance to the deepest parts of the Myrmidex Pits are in the sandy valley to the West.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156774",
+   "text": "You are brave and courageous - the Valley of Eodon is now safe from the Myrmidex threat!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156775",
+   "text": "Myrmidex Population Report",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156776",
+   "text": "A significant portion of the Myrmidex population has been quelled in the surface reaches of their habitat.  Population reduction estimated to meet or exceed parameters set forth for operational security.  Recommend proceed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156777",
+   "text": "Lt. Drake Foxx, RBG",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156778",
+   "text": "You must pledge allegiance to the Myrmidex and defeat the Eodonians in the Myrmidex Pits before you can embark on this quest.  You may pledge allegiance by double clicking the Idol in the Barrab Village.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156779",
+   "text": "You must pledge allegiance to the Eodonians and defeat the Myrmidex in the Myrmidex Pits before you can embark on this quest.  You may pledge allegiance by double clicking the Chaos banner in Sir Goeffrey's Camp.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156780",
+   "text": "Of Vorpals and Lettuces",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156781",
+   "text": "I cannot believe these wretched pests!  I can't even manage to plant a single head of lettuce without these rascals chomping them up!  *She pauses for a moment and looks at you quizzically*  Oh, hello there!  What is it I can do for you?  Roses?  Watermelons? Lettuces?  We've got them all...well maybe not lettuces but...Myrmidex Pheremone?  Well that is certainly a special request - say, how about this?  You take care of my rabbit problem and I'll give you the pheremone.  Sounds fair to me!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156782",
+   "text": "Well if you're afraid of a little bunny then you haven't much business tackling a Myrmidex.  Hrmph!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156783",
+   "text": "There's no time to lose!  My lettuces won't grow until you deal with the dastardly bunnies wreaking havoc on my gardens! Get a green thorn and plant it in the garden's dirt to drive them out!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156784",
+   "text": "Well done! With these pests out of my gardens I can finally get on with growing a prized lettuce!  Here's your Pheromone as I promised!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156785",
+   "text": "Pest Control",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156786",
+   "text": "You there! Secure that ballista!  And you, fall in!  Hup-two! Hup-two!  Double time now, recruits!  Time to squash these bugs *hic*  You eye-ballin me pal?  I haven't got any time to pixie foot around, I've got a deadline to deliver this population report to Professor Rafkin showing we've thinned the Myrmidex swarm so much so the Queen has to start ploppin' out these little buggers again.  I suggest you grab something sharp or heavy and get to bug huntin! *hic*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156787",
+   "text": "I knew it, you must be yellar!  Get out of my sight!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156788",
+   "text": "You've got to kill enough Myrmidex Larvae, Drones, and Warriors in the Valley in order to force the queen to show herself, they've got to be Myrmidex in the Valley - stay out of the Myrmidex Pits!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156789",
+   "text": "Well color me surprised, you did it!  Now that we've gotten rid of enough of these pests the Queen will have no choice but to reveal herself - here's the population report you'll need for Professor Rafkin!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156790",
+   "text": "Getting Even",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156791",
+   "text": "*Sobs* Whyyyyy couldn't I just stop, no just had to be one more hand - I knew if I could just get on a hot streak I'd make it all better...but I lost everything, even my shirt! I loved that shirt, was so puffy and soft.  How can fortune have cursed me so badly?  The only thing left to do is drink this poison here and - *pauses and looks at you*  You want this poison?  *eyebrow raises a bit*  Well if you want it so bad you've got to do me a solid, head to the Fortune's Fire Casino and make them pay!  Bring down the house and I'll let you have the poison, at least show me SOMEONE can win in that wretched place!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156792",
+   "text": "Win 3 Games of \"Chuckle's Luck\" at the Fortune's Fire Casino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156793",
+   "text": "Win 3 games of \"Hi-Middle-Lo\" at the Fortune's Fire Casino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156794",
+   "text": "Win 3 games of \"Dice Rider\" at the Fortune's Fire Casino",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156795",
+   "text": "[Quest Event: Getting Even] You have won ~1_count~ of ~2_req~ games of ~3_game~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156796",
+   "text": "Can't even be bothered to help a guy down on his luck? *sigh*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156797",
+   "text": "You need to go to the Fortune's Fire Casino on Fire Island and show those dealers who's boss!  Win 3 games each of Chuckle's Luck, Hi-Mid-Lo, and Dice Rider and I'll give you the poison!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156798",
+   "text": "Luck be a lady tonight! Winner-winner chicken dinner! I'm back in the game, don't need this poison anymore - here you go!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156799",
+   "text": "Sea Serpent or Dragon Scales",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156800",
+   "text": "Hidden Treasures",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156801",
+   "text": "Hello there, looking to buy? Sell? Perhaps a pearl necklace for your lover - or maybe a fine ring to accompany your finest evening wear?  We've got it all - just let me know what we can do for you and I'm sure we can accomodate!  Activator? Stasis Chamber!  Why I haven't an idea what you are talking about! *leans in and whispers*  Not so loud - can't be too sure who's listening in these days.  Listen if you want to get your hands on that item I know where you might be able to find one.  I was able to acquire a treasure map that'll get you where you need to go but I need something first.  My supply of prized gemstones has run low - you bring me those gem stones and I'll supply you with the map to what you're seeking.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156802",
+   "text": "A Special Treasure Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156803",
+   "text": "Acquire the gemstones I've asked for and I'll give you a map that will take you to the item you seek.  It's very simple - now move along I've got customers to tend to!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156804",
+   "text": "Well if you don't want to do it, you shouldn't have asked. Hrmph.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156805",
+   "text": "*Examines the stones closely* Ahh yes, these will do quite nicely!  As promised here's your map - good luck!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156806",
+   "text": "*Coordinates to a Shipwreck thought to have Lost Kotl Technology*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156807",
+   "text": "The Salty Sea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156808",
+   "text": "Arr!  The seas have become a wretched and dangerous place - a myriad o' creatures be tormentin' me ships.  Can't have it! Can't have it one bit - what's that? Myrmidex. *He pauses and thinks for a moment as he sits back on the stool*  Maybe I heard of em, maybe I aint...I'll tell ya what ye go and clear some o' the creatures that be plaguing the seas and maybe I tell ya what I know about them Myrmidex.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156809",
+   "text": "The South Britannian Sea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156810",
+   "text": "A Special Message in a Bottle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156811",
+   "text": "*A Special Map Thought to Lead to Lost Kotl Technology*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156812",
+   "text": "What's the matter, aint got yer sea legs? Har Har Har!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156813",
+   "text": "Ye needin' to make the seas safe for Captains like me!  Make sure ye killin' the critters in the South Britannian Sea.  The seas south of the Britannian continent and between the far western Island of Jhelom and the Island of Valor.  Big stretch o' ocean to be clobberin sea monsters!  Get yerself a special fishing net if ye can't find the beasts, that'd be sure to wrangle them in!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156814",
+   "text": "Shiver me timbers!  The sea be safe again!  As promised here's the Message in a Bottle!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156815",
+   "text": "A Tinker's Task",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156816",
+   "text": "Ha ha...he he...hoo hoo...yes yes...its all coming together now if only...*the tinker pauses and looks up*  Myrmidex did you say?  Oh yes, we are most certainly on the same page here!  I assume my Barrabian colleague sent you?  Of course he did!  I'm almost ready to begin tinkering on the Automaton - but I need some supplies first.  You collect those supplies and I'll give you the Stator you seek.  Long live the Myrmidex!  Long live the Barrab! Ha ha! He he! Hoo Hoo!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156817",
+   "text": "No time to waste on those uncommitted to the cause - be gone with you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156818",
+   "text": "Acquire the items I require to begin work on my Automaton and I'll give you the Stator.  Don't come back until you've got everything!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156819",
+   "text": "Ha ha! He he! Hoo hoo! These are just what I needed - the Automaton won't take long now, soon I shall wield this Kotl Technology and our Insect overlords will rule with the Barrab at their side.  Only those loyal Britannians will be spared!  Here is the Stator as I promised...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156820",
+   "text": "Trinkets? Gadgets? Novelties? Myrmidex-what-not? *raises brow and smiles* I've got it all!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156821",
+   "text": "Earring of Protection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156822",
+   "text": "(Physical)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156823",
+   "text": "Idol of Zipactriotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156824",
+   "text": "Kotl Antechamber",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156825",
+   "text": "Depths of the Myrmidex Pits",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156826",
+   "text": "Teleport Tiles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156827",
+   "text": "Merchant's Trinket - 5%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156828",
+   "text": "Merchant's Trinket - 10%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156829",
+   "text": "You must be on the \"Insecticide & Regicide\" quest and not have already killed the Queen to attack her!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156830",
+   "text": "*You are drenched in a noxious goo!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156831",
+   "text": "Noxious Goo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156832",
+   "text": "*The noxious goo has poisoned you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156833",
+   "text": "*You are safe from the noxious goo!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156834",
+   "text": "*You destroy it!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156835",
+   "text": "*Crunch Crunch Crunch*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156836",
+   "text": "You can't exceed 125 items per purchase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156837",
+   "text": "Your cart is currently full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156838",
+   "text": "You must ally yourself to the Myrmidex to enter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156839",
+   "text": "You must ally yourself to the Eodonians to enter.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156840",
+   "text": "You must be on the \"Insecticide & Regicide\" quest to enter.  Visit Professor Rafkin in Sir Geoffrey's camp to the East.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156841",
+   "text": "You must be on the \"Destruction of Zipactriotl\" quest to enter. Visit the Barrabian Tinker in the Barrab village to the Southwest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156842",
+   "text": "Purchase failed due to your cart being empty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156843",
+   "text": "Your purchased item has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156844",
+   "text": "Your purchase of ~1_ITEM~ has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156845",
+   "text": "Your purchase of ~1_ITEM~ will be delivered to you once you free up room in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156846",
+   "text": "Your purchased will be delivered to you once you free up room in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156847",
+   "text": "Your purchase of ~1_ITEM~ will be delivered to you once you are resurrected.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156848",
+   "text": "Your purchased item will be delivered to you once you are resurrected.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156849",
+   "text": "*Rising columns of rock rip through your flesh and concuss you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156850",
+   "text": "Purchase failed due to one of your items no longer being available.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156851",
+   "text": "Your cart is currently locked while your transaction completes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156852",
+   "text": "Please wait for your purchase to complete.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156853",
+   "text": "Failed to process one of your items. Please check your cart and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156854",
+   "text": "Moonstone Power Generator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156855",
+   "text": "*Arcing energy from the generator zaps you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156856",
+   "text": "*Your mana is converted to pure energy!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156857",
+   "text": "Barako Draft of Might",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156858",
+   "text": "Sakkhra Prophylaxis Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156859",
+   "text": "Urali Trance Tonic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156860",
+   "text": "Jukari Burn Poultice",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156861",
+   "text": "Kurak Ambusher's Essence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156862",
+   "text": "Barrab Hemolymph Concentrate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156863",
+   "text": "<u>Ultima Store:</u> Select this option if you would like to purchase in-game items or have a promotional code that you wish to redeem with this character or account.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156864",
+   "text": "Set to Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156865",
+   "text": "Mining : Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156866",
+   "text": "You are already mining only stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156867",
+   "text": "You are now set to mine only stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156868",
+   "text": "You may not use this while poisoned!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156869",
+   "text": "You may not use this with a mortal wound!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156870",
+   "text": "You may not use this while mana drained!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156871",
+   "text": "You may not use this while your mana is diverted!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156872",
+   "text": "You may not use this while your mana is corrupt!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156873",
+   "text": "You may not use this while under the effects of confidence!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156874",
+   "text": "This option has been disabled for 30 seconds due to a prior code entry or a store item search. Please try again in a moment.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156875",
+   "text": "FAQ",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156876",
+   "text": "Since you have been in combat recently you may not use this feature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156877",
+   "text": "19th Anniversary Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156878",
+   "text": "Happy 19th Anniversary! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156879",
+   "text": "Happy 19th Anniversary! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156880",
+   "text": "Happy 19th Anniversary! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156881",
+   "text": "weathered bronze globe sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156882",
+   "text": "weathered bronze man on a bench sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156883",
+   "text": "weathered bronze fairy sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156884",
+   "text": "weathered bronze archer sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156885",
+   "text": "You do not have sufficient bronze ingots to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156886",
+   "text": "Recipe for a Bronze Sculpture",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156887",
+   "text": "19th Anniversary Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156888",
+   "text": "Happy Anniversary! Please choose a gift:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156889",
+   "text": "In Commemoration Of Nineteen Amazing Years! Thank You And Happy Anniversary!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156890",
+   "text": "Potted Amaryllis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156891",
+   "text": "Grown By: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156892",
+   "text": "Giant Pumpkin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156893",
+   "text": "Pumpkin Spice Cider",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156894",
+   "text": "*You fill the mug from the cauldron. It smells delicious!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156895",
+   "text": "The cider is not quite ready for serving yet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156896",
+   "text": "*You take a candy apple from the tray. It looks delicious!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156897",
+   "text": "The apples are not quite ready for serving yet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156898",
+   "text": "Candied Apple",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156899",
+   "text": "You are too busy with your other quests, perhaps I will have something for you after you finish one of your current quests.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156900",
+   "text": "~1_ITEM~ of the Kotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156901",
+   "text": "You notice some of your fallen foe's equipment to be of Kotl origin and decide it may be of some value...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156902",
+   "text": "You have turned in ~1_COUNT~ artifacts of the Kotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156903",
+   "text": "Bring me items of the Kotl and I will reward you with valuable items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156904",
+   "text": "You take extra damage from the mortal wound!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156905",
+   "text": "Paragon Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156906",
+   "text": "Receive a jar of Pigments of Tokuno.  These pigments are dyes that may be used on artifacts and enhanced equipment.  Each jar comes with 50 uses.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156907",
+   "text": "Receive one of five random Singing Balls (Singing Ball of Bedlam, Drunk Man's Singing Ball, Drunk Woman's Singing Ball, Singing Ball of Sosarian Steeds and Singing Ball of the Blue Boar).  These decorative crystal balls produce a variety of sounds when locked down in a home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156908",
+   "text": "Receive an Anniversary Robe.  This uniquely designed hooded robe was originally designed and given out to celebrate Ultima Online's 15th anniversary.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156909",
+   "text": "Receive a secret chest.  This unique container allows the owner to set a 5-digit combination which is required to open the chest (normal house security settings still apply while the chest is secured in a home).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156910",
+   "text": "Mounted Pixie",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156911",
+   "text": "Dark Green Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156912",
+   "text": "Orange Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156913",
+   "text": "Blue Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156914",
+   "text": "Light Green Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156915",
+   "text": "Silver Wings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156916",
+   "text": "Receive a deed for the specified style of mini house.  The decorative mini house may only be placed inside of a home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156917",
+   "text": "Receive a scarecrow deed. The deed may be used to place a decorative scarecrow inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156918",
+   "text": "Receive a fountain deed. The deed may be used to place a decorative fountain inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156919",
+   "text": "Receive a large fish net deed. The deed may be used to place a decorative large fishing net inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156920",
+   "text": "Receive a ladder deed. The deed may be used to place a ladder inside of your home.  The deed will allow you to choose from a variety of ladder types and facings.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156921",
+   "text": "Receive a wall torch deed. The deed may be used to place a decorative wall torch inside of your home.  The torch may be lit or unlit and will provide a light source when lit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156922",
+   "text": "Receive a statue deed. The deed may be used to place a decorative statue inside of your home.  The statue may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156923",
+   "text": "Receive a small fish net deed. The deed may be used to place a decorative small fishing net inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156924",
+   "text": "Receive an iron maiden deed. The deed may be used to place an iron maiden inside of your home or in your torture chamber if you so choose.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156925",
+   "text": "Receive a cherry blossom trunk deed. The deed may be used to place a leafless cherry blossom trunk inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156926",
+   "text": "Receive a peach tree trunk deed. The deed may be used to place a leafless and fruitless peach tree trunk inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156927",
+   "text": "Receive an apple tree trunk deed. The deed may be used to place a leafless and fruitless apple tree trunk inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156928",
+   "text": "Receive a coffin deed. The deed may be used to place a decorative coffin inside of your home.  The coffin may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156929",
+   "text": "Receive a table with a purple tablecloth deed. The deed may be used to place a decorative table with a purple tablecloth inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156930",
+   "text": "Receive a table with a red tablecloth deed. The deed may be used to place a decorative table with a red tablecloth inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156931",
+   "text": "Receive a vanity deed. The deed may be used to place a decorative vanity inside of your home.  The vanity may be placed facing south or east and also functions as a container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156932",
+   "text": "Receive a table with a blue tablecloth deed. The deed may be used to place a decorative table with a blue tablecloth inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156933",
+   "text": "Receive a table with an orange tablecloth deed. The deed may be used to place a decorative table with an orange tablecloth inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156934",
+   "text": "Receive a curtains deed. The deed may be used to place decorative curtains inside of your home.  The curtains may be placed facing south or east and may also be opened or closed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156935",
+   "text": "Receive an unmade bed deed. The deed may be used to place a decorative unmade be inside of your home.  The unmade bed may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156936",
+   "text": "Receive a hanging swords deed. The deed may be used to place a decorative set of hanging swords inside of your home.  The hanging swords may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156937",
+   "text": "Receive a hanging axes deed. The deed may be used to place a decorative set of hanging axes inside of your home.  The hanging axes may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156938",
+   "text": "Receive an apple tree deed. The deed may be used to place a fruit bearing apple tree inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156939",
+   "text": "Receive a peach tree deed. The deed may be used to place a fruit bearing peach tree inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156940",
+   "text": "Receive a cherry blossom tree deed. The deed may be used to place a gorgeous cherry blossom tree inside of your home.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156941",
+   "text": "Receive a guillotine deed. The deed may be used to place a guillotine inside of your home or in your torture chamber if you so choose.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156942",
+   "text": "Receive a suit of silver armor deed. The deed may be used to place a decorative suit of silver armor inside of your home.  Using an interior decorator on the suit of silver armor will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156943",
+   "text": "Receive a suit of gold armor deed. The deed may be used to place a decorative suit of gold armor inside of your home.  Using an interior decorator on the suit of gold armor will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156944",
+   "text": "Receive a broken fallen chair deed. The deed may be used to place a decorative broken fallen chair inside of your home.  Using an interior decorator on the broken fallen chair will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156945",
+   "text": "Receive a broken bed deed. The deed may be used to place a decorative broken bed inside of your home.  The broken bed may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156946",
+   "text": "Receive a broken armoire deed. The deed may be used to place a decorative broken armoire inside of your home.  Using an interior decorator on the broken armoire will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156947",
+   "text": "Receive a broken vanity deed. The deed may be used to place a decorative broken vanity inside of your home.  The broken vanity may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156948",
+   "text": "Receive a broken bookcase deed. The deed may be used to place a decorative broken bookcase inside of your home.  Using an interior decorator on the broken bookcase will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156949",
+   "text": "Receive a boiling cauldron deed. The deed may be used to place an animated decorative boiling cauldron inside of your home.  The cauldron itself also functions as a container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156950",
+   "text": "Receive a broken covered chair deed. The deed may be used to place a decorative broken covered chair inside of your home.  Using an interior decorator on the broken covered chair will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156951",
+   "text": "Receive a broken chest of drawers deed. The deed may be used to place a decorative broken chest of drawers inside of your home.  Using an interior decorator on the broken chest of drawers will change its facing from south to east or back again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156952",
+   "text": "Receive a standing broken chair deed. The deed may be used to place a decorative standing broken chair inside of your home.  Using an interior decorator on the standing broken chair will change its facing from south to east to north to west and back to south again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156953",
+   "text": "Receive a haunted mirror deed. The deed may be used to place a haunted mirror inside of your home.  Using an interior decorator on the haunted mirror will change its facing from south to east or back again.  Be forewarned that this mirror is haunted by an extremely critical ghost!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156954",
+   "text": "Receive a sacrificial altar deed. The deed may be used to place a decorative sacrificial altar inside of your home.  The sacrificial altar functions just like your standard house trash can.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156955",
+   "text": "Receive a disturbing portrait deed. The deed may be used to place a decorative disturbing portrait inside of your home.  Using an interior decorator on the disturbing portrait will change its facing from south to east or back again.  Depending on the phase of the moon this portrait is bound to provide a \"Howling\" good time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156956",
+   "text": "Receive Royal Leggings of Embers.  These platemail leggings has the following bonuses:  Self Repair 10, Physical Resistance 15%, Fire Resistance 25%, Poison Resistance 15%, Energy Resistance 15%, Lower Requirements 100% and Mage Armor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156957",
+   "text": "Receive Shamino's Best Crossbow.  This repeating crossbow has the following bonuses:  Self Repair 10, Hit Chance Increase 15%, Damage Increase 40% and Lower Requirements 100%.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156958",
+   "text": "Receive a hearth of the home fire deed. The deed may be used to place a decorative hearth of the home fire inside of your home.  The fireplace may be placed facing south or east.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156959",
+   "text": "Receive Ancient Samurai Helm.  This platemail kabuto has the following bonuses:  Self Repair 10, Defense Chance Increase 15%, Physical Resistance 15%, Fire Resistance 10%, Cold Resistance 10%, Poison Resistance 15%, Energy Resistance 10%, Lower Requirements 100% and Mage Armor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156960",
+   "text": "Receive a Rose of Trinsic. The Rose of Trinsic grows petals at a rate of one every four hours.  The petals from the Rose of Trinsic provide a buff of five strength for five minutes when consumed.  The maximum number of petals that the Rose of Trinsic will hold is ten.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156961",
+   "text": "Receive the Tapestry of Sosaria. Using an interior decorator on the tapestry will change its facing from south to east or back again.  If you are a fan of the Hildebrandt Ultima Online Poster, then you will be a fan of this tapestry.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156962",
+   "text": "Receive The Holy Sword.  This longsword has the following bonuses:  Self Repair 10, Undead Slayer, Damage Increase 40%, Lower Requirements 100% and Use Best Weapon Skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156963",
+   "text": "Receive Dupre's Shield.  This shield has the following bonuses:  Parrying +5, Hit Point Increase 5, Hit Point Regeneration 1, Physical Resistance 1% and Energy Resistance 1%.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156964",
+   "text": "Receive a fountain of life deed. The deed may be used to place a decorative fountain of life inside of your home.  Using an interior decorator on the fountain of life will change its facing from south to east or back again.  The fountain of life will convert standard clean bandages into enhanced bandages at the rate of ten per day.  Enhanced bandages provide a ten point skill bonus for healing attempts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156965",
+   "text": "Receive an Ossian Grimoire.  This necromancer spellbook provides the following bonuses:  +10 Necromancy, +1 Mana Regeneration, +1 Faster Casting and 5% Increased Karma Loss.  Each necromancy spell cast while the spellbook is equipped will result in additional karma loss.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156966",
+   "text": "Receive a Talisman of the Fey: Squirrel.  When a ninja equips the Talisman of the Fey, it will permit the ninja to use their Animal Form ability to transform into a special form.  Become a squirrel! Amaze your friends Be the life of the party!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156967",
+   "text": "Receive a Talisman of the Fey: Reptalon.  When a ninja equips the Talisman of the Fey, it will permit the ninja to use their Animal Form ability to transform into a special form.  While in Reptalon form, the ninja breathes fire when attacking.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156968",
+   "text": "Receive Dawn's Music Box. Using an interior decorator on the music box will change its facing from south to east or back again.  The music box comes with 4 common tracks and you may collect many other tracks as loot from numerous monsters in game.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156969",
+   "text": "Receive a Talisman of the Fey: Ferret.  When a ninja equips the Talisman of the Fey, it will permit the ninja to use their Animal Form ability to transform into a special form.  While in Ferret form, the ninja gains a ten point stealing skill bonus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156970",
+   "text": "Receive a Talisman of the Fey: Cu Sidhe.  When a ninja equips the Talisman of the Fey, it will permit the ninja to use their Animal Form ability to transform into a special form.  While in Cu Sidhe form, the ninja will auto heal using bandages in their backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156971",
+   "text": "Receive a Quiver of Infinity.  This piece of equipment provides the following bonuses:  10% Damage Modifier, 5% Defense Chance Increase, 20% Lower Ammo Cost and 30% Weight Reduction.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156972",
+   "text": "Receive a creepy portrait deed. The deed may be used to place a decorative creepy portrait inside of your home.  Using an interior decorator on the creepy portrait will change its facing from south to east or back again.  You will be in for a \"ghoulish\" surprise if you get too close to the portrait.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156973",
+   "text": "Receive an unsettling portrait deed. The deed may be used to place a decorative unsettling portrait inside of your home.  Using an interior decorator on the unsettling portrait will change its facing from south to east or back again.  You might want to keep a keen eye on this possessed portrait.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156974",
+   "text": "Receive a mounted pixie deed. The deed may be used to place a decorative mounted pixie inside of your home.  Using an interior decorator on the mounted pixie will change its facing from south to east or back again.  Please be sure to keep your pixie poking to a minimum.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156975",
+   "text": "Receive a bed of nails deed. The deed may be used to place a decorative bed of nails inside of your home.  Please be careful as the nails used in this bed are incredibly sharp!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156976",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156977",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156978",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156979",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156980",
+   "text": "Professor Elliot Rafkin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156981",
+   "text": "Minax the Enchantress",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156982",
+   "text": "Skeletal Hangman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156983",
+   "text": "~1_NAME~'s Skeleton",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156984",
+   "text": "This title is obtained from the Halloween Treasures of the Kotl City Event.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156985",
+   "text": "Explorer of the Kotl City",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156986",
+   "text": "Zealot of Zipactriotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156987",
+   "text": "Menace of the Myrmidex",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156988",
+   "text": "Artifacts of the Kotl",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156989",
+   "text": "Katalkotl's Ring",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156990",
+   "text": "kotl black rod",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156991",
+   "text": "Dr. Spector's lenses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156992",
+   "text": "You do not have sufficient Black Moonstone to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156993",
+   "text": "Black Moonstone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156994",
+   "text": "gargish kotl black rod",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156995",
+   "text": "Recipe for a Kotl Black Rod",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156996",
+   "text": "Recipe for Dr. Spector's Lenses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156997",
+   "text": "Automaton Actuator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156998",
+   "text": "Kotl Automaton",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1156999",
+   "text": "You do not have sufficient Automaton Actuator to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157000",
+   "text": "You do not have sufficient Stasis Chamber Power Core to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157001",
+   "text": "You do not have enough Inoperative Automaton Heads to make that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157002",
+   "text": "Inoperative Automaton Head",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157003",
+   "text": "Secure Account:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157004",
+   "text": "Transfer Gold:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157005",
+   "text": "Transfer Platinum:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157006",
+   "text": "You must be a Grandmaster Tinker to activate an Automaton.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157007",
+   "text": "The Automaton is already being activated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157008",
+   "text": "15th Anniversary",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157009",
+   "text": "Commemorative Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157010",
+   "text": "Talisman of the Fey:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157011",
+   "text": "Table with a Purple",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157012",
+   "text": "Table with an Orange",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157013",
+   "text": "Tablecloth",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157014",
+   "text": "Two story stone & plaster",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157015",
+   "text": "Two story wood & plaster",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157016",
+   "text": "Recipe for a Kotl Automaton",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157017",
+   "text": "*The door is sealed shut. There is likely a switch that controls it nearby.*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157018",
+   "text": "The activators have already been solved.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157019",
+   "text": "*You hear a low hum as the door to the Time Room unseals...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157020",
+   "text": "*You set the wheels of time in motion.  The City shifts to a time long ago...*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157021",
+   "text": "The wheels of time have already been set in motion.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157022",
+   "text": "Rebuilt ~1_MATTYPE~ Automaton Head",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157023",
+   "text": "Power Core Docking Station",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157024",
+   "text": "The docking station only accepts power cores.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157025",
+   "text": "This power station is already active.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157026",
+   "text": "[Kotl City Hologenerator]:  Great Battle simulation now active! Proceed to city center!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157027",
+   "text": "You begin repairs.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157028",
+   "text": "*You activate the switch!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157029",
+   "text": "*The switch shorts out and electrocutes you! You are vulnerable to more energy damage in your shocked state!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157030",
+   "text": "You repair ~1_CREATURE~, but it barely helps.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157031",
+   "text": "*Circuit Fault! Generating new circuit sequence!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157032",
+   "text": "Wheels of Time",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157033",
+   "text": "Jimmy Malone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157034",
+   "text": "The Journal of Dr. Spector - Collection I",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157035",
+   "text": "The Journal of Dr. Spector - Collection II",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157036",
+   "text": "Week 1<br><br>As I begin my journey across this strange land, I am not completely sure how to proceed. My supplies are limited, so I will likely need to search for food or find people with whom to trade. I also worry about becoming lost in the wilds. This is dangerous, especially without any weapons.<br> <br>I have managed to identify several fixed constellations by which to align my sextant. It should give me the means to track my movements and map this new world. I plan to leave copies of my notes for others who may come after me. My journey started at 21° South 42° West. I plan to move north toward a settlement I saw from a tree at 8° South 45° West.<br> <br>Week 2<br> <br>The Barako Tribe worship the strength of the Great Apes of this land of Eodon. They are a martial people",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157037",
+   "text": "Week 4<br><br>The Sakkhra both imitate and hunt the dinosaurs that thunder constantly in their section of Eodon. Given the great size of these creatures, the Sakkhra have chosen to use powerful bows to bring down the creatures from a distance. When the dinosaurs wander into their camp, the tribe forces the creature back with spears dipped in poison. In cases of stampede or attack, the tribe will also destroy the bridges across the rivers around their settlement. The tribe is the first I’ve seen that grows crops, but they do not show the advancement needed to get me home.<br> <br>While I enjoyed my visit with the Sakkhra, I have decided to meet with the next of Eodon’s tribes. The Sakkhra have warned me about the “spiritless tribe,” but I believe I should have no problems. I will travel to 17° South 81° West.<br> <br>Week 5<br> <br>The Barrab are very much like the insects in desert below: organized, ruthless, and complicated. The Barrab worship the Myrmidex, a terrifying insect species that lives underneath Eodon. The visible entrances to their hive are gigantic. Even though the Barrab worship the insects and dress themselves in discarded carapaces, the Myrmidex are still aggressive to most humans. The worst criminals of the Barrab tribe are sacrificed to the drones in the sand pits below. Like the Myrmidex, the Barrab is a strict matriarchy. I did hear one story of a male shaman and chief named Balakai who ruled with the help of magic and alchemy, but I was unable to translate the ending of his story to my satisfaction. I did learn that female Barrab shamans get their power from something in the Myrmidex tunnels, though they seemed offended when I asked for more information.<br> <br>While the Myrmidex may have answers to my questions, or possibly a Moonstone to return me home, I do not wish to be eaten alive by such creatures. I will move on to 20° South 67° West.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157038",
+   "text": "Artifacts of the Kotl City Trader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157039",
+   "text": "You loosen some rocks but fail to find any useable granite.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157040",
+   "text": "Toggle Repair Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157041",
+   "text": "This tool will only repair items in this mode.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157042",
+   "text": "This tool is fully functional.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157043",
+   "text": "You lack the skill to command this Automaton.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157044",
+   "text": "Target can not be repaired at this location.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157045",
+   "text": "The pet's owner must be nearby to attempt repair.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157046",
+   "text": "~1_NAME~'s Broken ~2_TYPE~ Automaton Head",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157047",
+   "text": "The Kotl City",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157048",
+   "text": "A broken automaton head has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157049",
+   "text": "You must have at least 80 tinkering skill to attempt to repair ~1_CREATURE~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157050",
+   "text": "You need 75 ~1_MATERIAL~ ingots to repair the ~2_CREATURE~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157051",
+   "text": "You must be the owner of that pet to have it repair.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157052",
+   "text": "The Journal of Dr. Spector - Collection III",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157053",
+   "text": "The Journal of Dr. Spector - Collection IV",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157054",
+   "text": "Week 6<br><br>The Kurak may be the rivals of the Barako tribe, but I did not feel any hostility directed at me. While they are proud of their tiger totem and the animal they emulate, they were not as cruel as these predator cats. I did manage to see a demonstration of the strange claws they use for hunting and combat, and I am glad I stayed on their good side. I learned about a strange ruin they avoid, something to do with their ancestors. It is to the east. I plan to visit it after I meet with the final tribe of Eodon at 40° South 41° West.<br><br>Week 7<br><br>The Jukari live among the lava flows in the shadow of a great volcanic range that blocks travel to the southeast. The tribe uses the fire and obsidian shards produced by the volcano as their weapons, believing these to be gifts from the spirits. I asked if any had traveled into the volcanic range, and they mentioned that one of their greatest chieftains walked into the mountains with a sacred hide that protected him from the volcano’s poisonous gases. I don’t believe the answers I seek can be found within the volcano. That leaves only the pyramid at 20°South 58° West.<br><br>Week 8<br><br>I have explored every ruin I have come across and spoken with all of the tribes. None can help me return through the Ethereal Void to my home. The cracked Moonstone I used to travel did not come with me, and unless I can find another one, I will be trapped here. From the ruins and people, I have learned a bit about various Eodon spirits in my time here:<br>Aphazz, spirit of emotion and strength<br>Motazz, spirit of battle<Br>Heluzz, spirit of knowledge and visions<br>Fabozz, spirit of nature and animals<br>Kukuzz, spirit of healing<br>What is strange is that the Pyramid does not show the symbols or images of any of these spirits. It is almost as if someone or something else built it. I must investigate further. I hope to find some way to the lower chambers of the Pyramid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157055",
+   "text": "Week 9<br><br>In my travels around Eodon, I heard stories of the city of the World-Builders. While the passage at the top of the Pyramid was sealed, I found a crack near the base of the structure. As I shimmied into the narrow tunnel, I disturbed a stone that was holding up a wall. While I was able to avoid injury, the collapse blocked my way out of the Pyramid. With only a single torch, I started my exploration of the lost city. The city was filled with the bones and dried remains of different creatures. I recognized human and Myrmidex remains, but in all my time in Eodon, I saw nothing that matches the bipedal reptile skeletons in the tunnels. Are these what remain of the World-Builders? In the entire ruined city, only one large crystal had not been smashed when the city fell. The vibrant crystal gave off a shifting spectrum of light, and the air around it was charged with energy. It was hypnotic, and with no other choice, I put my hand against it. The light of the crystal became brighter and brighter. Even when my hand started to burn, I could not pull myself away. I heard a voice in my mind, speaking rapidly in a strange language. As I lost consciousness, one word stuck in my mind: Zipactriotl. I woke in a burning jungle clearing. Around me were dead or dying Myrmidex, and my hands were burning with a strange blue flame. I did not remember slaughtering those creatures, but I knew I had. The tribes had a saying, “Killing one Myrmidex brings the wrath of its thousand kin.” How much wrath have I earned by killing so many?<br><br>Week 10<br><br>I am different now. My bones have reshaped themselves, and my skin is like armor. There is a charge of energy around me, constantly buzzing in my ears. I am blacking out more and more, and I am losing more and more of myself. With the changes, hidden parts of the city now allow me access. I have found what appears to be a sort of stasis chamber. I will put myself inside and hope someone can help me.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157056",
+   "text": "History of the Great Work I",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157057",
+   "text": "History of the Great Work II",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157058",
+   "text": "History of the Great Work III",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157059",
+   "text": "History of the Great Work IV",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157060",
+   "text": "The Great Moonstone and the Destruction of the First Home<br><br>Spoken by the Memory of Katalkotl<br><br>Transcribed by Professor Ellie Rafkin<br><br>Eodon was not the cradle of the Kotl. Before, there was Akaktolan, the First Home. While much is forgotten, it was there where the Kotl learned the fundamentals of magic and lore. The First Home was struck by a great meteorite, and the world slipped into an ice age. Those Kotl who survived traveled across the wastes, seeking the source of their suffering. In the center of a huge crater, they found a large tenebrous moonstone. The blackrock artifact bent the very shadows around it. All the Kotl recognized the raw magic before them. Some shunned the moonstone, turning and walking back into the cold, never to be seen again. They were the Mixkotl, the Lost. The rest remained with the moonstone, hoping to unlock its secrets before the end came. In the frozen crater, each day of study claimed another life, but eventually, the Kotl learned to wield the moonstone’s power. They used it to grasp and manipulate frayed threads of existence. They knit together pieces from before the First Home’s destruction into a new world - Eodon. Eodon presented refuge from the cold desolation Akaktolan had become, so the Kotl stepped across the threshold into the new reality. When they left, they took the Great Moonstone with them, thus closing the door to the First Home forever.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157061",
+   "text": "The Founding of Kotlan and the Myrmidex<br><br>Spoken by the Memory of Katalkotl<br><br>Transcribed by Professor Ellie Rafkin<br><br>While the valley of Eodon was warm and filled with bountiful life and food, it was still untamed and wild. The Kotl wished to rebuild their civilization, so they bored into the earth to tap veins of iron and gold. These tunnels became the oldest parts of their city, running for miles under Eodon.  To help with the work, they constructed huge golden golems. Powered by the Great Moonstone, the Kotl automatons were tireless workers. Soon, the city of Kotlan was a shining marvel at the heart of Eodon. After the city was completed, the Kotl settled into a life made easier by the magic of the moonstone. However, they wished to be free of all toil. They could never construct or empower enough automatons to take care of every task in the city, so they searched for new servants. Finding no intelligent creatures in the world, they decided to create a servitor race. Using the Nowlotl crystal to tap into the moonstone’s power and select distant future variations, the Kotl bred such servants from ants. The Myrmidex were this failed experiment. The Kotl thought that the Myrmidex might inherit the industrious nature of the ants, but instead, they gained only the ants’ warlike nature. The Myrmidex broke free of their captivity and fled the city of the Kotl. Thus, the World-Builders were forced to look elsewhere for their labor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157062",
+   "text": "The Worldwalker and Humanity<br><br>Spoken by the Memory of Katalkotl<br><br>Transcribed by Professor Ellie Rafkin<br><br>After the failure of the Myrmidex, the Kotl took more care in their manipulation of living things. They turned the power of the moonstone outward beyond Eodon. They constructed the Moon Chamber as a focal point for all of Eodon’s mana. The artificial origin of Eodon made travel across the void between worlds difficult. However, with the awesome power of the Great Moonstone, it was possible. The Kotl sent their bravest general out across the Ethereal Void: Katalkotl the Worldwalker. He and his warriors traveled to dozens of worlds, bringing treasures and curiosities back to Eodon. Eventually, Katalkotl found several worlds with an intelligent, but less civilized, species called humans. With unrivalled magic and martial power, Katalkotl’s forces brought back humans to be servants to the Kotl. Because of the mercurial connection between Eodon and the outer worlds, the humans were from many different times and places. Since the Kotl language could not be spoken by the human voice box (and so the Kotl could keep the secrets of their power), the Kotl created a single language from various human tongues to communicate with their new servants. Out of awe and fear, most of the humans revered and served the World-Builders without complaint. Those of exceptional courage and honor even served as defenders of Kotlan. Still some humans rebelled against servitude. Many managed to flee the city of the Kotl. Some tried to resist openly and directly, only to be stopped by the automatons. A few succeeded in undermining the rulers of Eodon in secret.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157063",
+   "text": "The Fall of the World-Builders<br><br>Spoken by the Memory of Katalkotl<br><br>Transcribed by Professor Ellie Rafkin<br><br>Initially, the Kotl viewed the escaped Myrmidex as a minor nuisance, like any other beast of Eodon. The Myrmidex should have been no threat to the Kotl, who protected their settlements with energy fields powered by the Great Moonstone. Still, the Myrmidex were persistent in their aggression. Eventually, the Kotl began planning to exterminate the ant hybrids. The Kotl attempted to grow a new version of the Myrmidex, hoping to breed passivity into the species. They planned to send empowered humans directly against the insects. The first of these was called Zipactriotl. While the weapon initially killed a countless number of the insects, the human mind inside grew dangerously unstable. Still, it was believed that beyond a few scattered insects in the wilds of Eodon, the species was extinct. Unfortunately, the Myrmidex queen had simply gone into hiding. In a subterranean hive, she produced a million eggs that hatched into an army. The intelligent insects had studied the Kotl and knew the source of their power. Mysteriously, the Myrmidex raided inside Kotlan and stole the Great Moonstone. If this initial strike disarmed the Kotl, the Myrmidex then proceeded to break the back of Kotl civilization. The surface portions of Kotlan were destroyed, so the World-Builders barricaded themselves in the city’s tunnels. Expecting to withstand the Myrmidex for months, the Kotl found themselves facing the Myrmidex in days. The insects destroyed everything in their path: every crystal, every relic, and any trace of Kotl magic. The Myrmidex killed everyone in the city, Kotl and human. Then the Myrmidex left, and the city closed up behind them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157064",
+   "text": "Terms of Use Agreement<br>1. YOU MUST AGREE TO THIS TERMS OF USE AGREEMENT BEFORE USING OUR WEBSITE AND/OR PLAYING OUR GAMES<br>This Terms of Use Agreement (\"Agreement\") informs you of the terms, conditions, disclaimers, notices and policies (collectively the \"Terms\") that apply to your access and use of the website of Broadsword Online Games Inc. (\"Broadsword\") located at the URL http://www.broadsword.com (\"Site\"), and any and all games provided by Broadsword on any platform, including without being limited to Ultima Online and Dark Age of Camelot (collectively \"Games\"). Collectively, the Site and Games are referred to as the \"Services\" in this Agreement. Many of these Games may be playable by one or more persons simultaneously (\"Users\"), and the conduct of all such Users while playing the Games or using the Site is governed by this Agreement. This Agreement is a binding contract between you and Broadsword that provides for important rights and obligations. By accessing, browsing, and/or using the Services and/or playing, downloading or browsing our Games you represent to Broadsword that you have read, understood and agree to be bound by this Agreement and all applicable local, state, national and international laws and conventions, including without limitation all intellectual property laws. Broadsword reserves the right, at its sole and absolute discretion, to deny any user access to the Services, without notice. If you violate any of the Terms, we may, at our option, give you a warning notice of violation or terminate your account immediately for violation of the Terms. IF YOU DO NOT AGREE TO ALL OF THESE TERMS, YOU MUST NOT ACCESS OR USE THE SITE OR ACCESS OR USE OUR GAMES.<br>2. ELIGIBILITY TO ACCEPT AGREEMENT AND USE SITE<br>You must be at least 13 years of age to access and use the Services. There is no exception to this requirement. Broadsword does not knowingly collect any personal information from children under the age of 13 that falls within the Children's Online Privacy Protection Act and Rule. By your use of the Services, you agree that you are either 18 years of age or older, or an emancipated minor, or possess legal parental or guardian consent, and that you are fully able and competent to understand and accept this Agreement as a binding contract and to abide by all Terms.<br>3. BROADSWORD'S RIGHT TO MODIFY AGREEMENT<br>Broadsword may modify this Agreement at any time, with or without notice to you, by posting the modified Agreement on the Site. Your continued use of the Services after such modification shall be deemed to be your acceptance of any such modification. Any such modification will only apply to matters and events that occur following the date of modification. You may not modify this Agreement without the prior written authorization of an officer of Broadsword. It is your responsibility to check this Agreement regularly to determine whether the Agreement has been modified. IF YOU DO NOT AGREE TO ANY MODIFICATION OF THIS AGREEMENT YOU MUST IMMEDIATELY CEASE USE OF THE SITE AND UNINSTALL ANY GAMES YOU MAY HAVE INSTALLED ON YOUR COMPUTER AND SOCIAL NETWORK PROFILES.<br>4. POLICY ON PRIVACY<br>The Services include the Privacy Policy relating to the collection, use and disclosure of your information. Please read the Privacy Policy carefully. By using the Services, you are consenting to the Privacy Policy.<br>5. BROADSWORD'S OWNERSHIP OF THE SERVICES AND PROPRIETARY MATERIALS<br>The Services contain copyrighted material, technology, trademarks, service marks, trade secrets and other proprietary information, which may include computer code, text, data, video, images, illustrations, animations, sounds, musical compositions and recordings, audiovisual effects, color schemes, business methods and methods of operation, concepts, ideas, know-how, moral rights, and any related documentation (collectively the \"Proprietary Material\"). All intellectual property rights to the Proprietary Material, including patent, copyright, trademark and trade secret rights, are owned or licensed by Broadsword. You agree not to copy, download, reproduce, republish, upload, post, transmit, perform, display, distribute or sell, or in any other way exploit the Proprietary Material, or to participate with or to encourage others to engage in such acts, without the prior written consent of Broadsword. Moreover, you may not reverse engineer, disassemble, decompile, or translate any computer software programs that comprise Proprietary Material, or otherwise attempt to derive the source code of such programs, except to the extent allowed under any applicable law. If applicable law permits such activities, any information so discovered must be promptly disclosed to Broadsword and shall be deemed to be the confidential proprietary information of Broadsword. Nor may the Proprietary Material, or any portion thereof, be modified or used for any purpose other than as expressly authorized in this Agreement. The Proprietary Material may include materials licensed by Broadsword from third parties, and the licensors of those materials may enforce their rights in the event of any violation of this Agreement. ALL RIGHTS NOT EXPRESSLY GRANTED TO YOU IN THIS AGREEMENT ARE RESERVED BY BROADSWORD AND ITS LICENSORS.<br>6. OWNERSHIP OF IDEAS INVENTIONS AND USER SUBMISSIONS INCLUDING USER-GENERATED CONTENT<br>The Services provide you with access to a variety of resources, materials and downloads, and may allow you access content made available by Broadsword and other Users. Such content may include, without limitation, game levels, content creation tools, audio, video, film, music, text, communications, software, graphics, images, and information. All such content made available by you or by other users of the Services is referred to in this Agreement as \"User-Generated Content.\" As between Broadsword and you, you own the copyright in any User-Generated Content that is exclusively created by you. You expressly acknowledge and agree that any User-Generated Content that you make available through the Services may be made freely available by Broadsword to others, including without limitation for download by others.<br>You further acknowledge and agree that this permission is made and granted by you in consideration of your use of the Services, and that this permission constitutes a world-wide, nonexclusive, perpetual, royalty-free, irrevocable and transferable license to Broadsword to use, copy, perform, display and distribute such User-Generated Content, and to grant and authorize sublicenses of such User-Generated Content to others.<br>All comments, feedback, suggestions, gameplay features, level designs, and other submissions (\"User Ideas\") disclosed, submitted, or offered to Broadsword shall be the exclusive property of Broadsword. Unless otherwise prohibited by law, Broadsword may use, sell, exploit, or create derivative works from these User Ideas and, further, Broadsword may disclose these User Ideas to third parties or the general public, without compensation to you.<br>YOU ACKNOWLEDGE THAT USER IDEAS AND USER-GENERATED CONTENT ARE PROVIDED BY YOU ON A COMPLETELY VOLUNTARY BASIS. SHOULD YOU NOT WISH TO HAVE YOUR USER IDEAS AND USER-GENERATED CONTENT INCORPORATED INTO ANY GAME OR WEBSITE FUNCTIONS, YOU MAY CHOOSE NOT TO SHARE THEM WITH BROADSWORD ON THE SITE.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157065",
+   "text": "7. PROHIBITED USER-GENERATED CONTENT<br>You are solely responsible and liable for any User-Generated Content that you upload, post, input, publish or otherwise distribute using the Services. As a condition of your use of the Services, you agree not to use the Services for any unlawful or prohibited purpose. User-Generated Content prohibited from upload, display or posting on the Services includes, without limitation, User-Generated Content that Broadsword determines in its sole and absolute discretion:<br>(a) constitutes or includes any illegal or unauthorized copy, in whole or in part, of another person's copyrighted or copyrightable work, discloses trade secrets without authorization, or otherwise violates the proprietary rights of a third party",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157066",
+   "text": "11. ADDITIONAL TERMS REGARDING THE IN-GAME CURRENCY SYSTEM<br>(a) All Purchases Are Final: PLEASE NOTE THAT YOUR PURCHASE OF ONLINE CURRENCY IS FINAL AND UNDER NO CIRCUMSTANCES SHALL ANY MONIES PAID BE REFUNDABLE, TRANSFERABLE OR EXCHANGEABLE INCLUDING, WITHOUT LIMITATION, UPON TERMINATION OF YOUR ACCOUNT BY BROADSWORD (WHETHER WITH OR WITHOUT CAUSE) OR BY YOU.<br>(b) Limited License",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157067",
+   "text": "18. INDEMNIFICATION<br>To the maximum extent permitted by law, you agree to defend, indemnify and hold harmless Broadsword, its offers, directors, employees and agents, from and against all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney fees) arising from your use of the Services, your violation of any of the Terms, your violation of any third-party right, including without limitation any copyright, trade secret, privacy or property right, or any claim that your User-Generated Content caused damage to a third-party. This defense and indemnification obligation will survive this Agreement and your use of the Services.<br>19. BINDING INDIVIDUAL ARBITRATION<br>The term \"Dispute\" means any dispute, claim, or controversy between you and Broadsword regarding any Broadsword Game, product or service, whether based in contract, statute, regulation, ordinance, tort (including, but not limited to, fraud, misrepresentation, fraudulent inducement, or negligence), or any other legal or equitable theory, and includes the validity, enforceability or scope of this Section 19 (with the exception of the enforceability of the Class Action Waiver clause below). \"Dispute\" is to be given the broadest possible meaning that will be enforced. If you have a Dispute with Broadsword or Broadsword's officers, directors, employees and agents that cannot be resolved through negotiation within the time frame described in the \"Notice of Dispute\" clause below. Other than those matters listed in the Exclusions from Arbitration clause, you and Broadsword agree to seek resolution of the Dispute only through arbitration of that Dispute in accordance with the terms of this Section 19, and not litigate any Dispute in court. Arbitration means that the Dispute will be resolved by a neutral arbitrator instead of in a court by a judge or jury.<br>RIGHT TO OPT OUT OF BINDING ARBITRATION AND CLASS ACTION WAIVER WITHIN 30 DAYS. IF YOU DO NOT WISH TO BE BOUND BY THE BINDING ARBITRATION AND CLASS ACTION WAIVER IN THIS SECTION 19, YOU MUST NOTIFY BROADSWORD IN WRITING WITHIN 30 DAYS OF THE DATE THAT YOU ACCEPT THIS AGREEMENT UNLESS A LONGER PERIOD IS REQUIRED BY APPLICABLE LAW. YOUR WRITTEN NOTIFICATION MUST BE MAILED TO BROADSWORD ONLINE SERVICES INC., 790 STATION STREET, SUITE 3000, HERNDON, VA 20170, ATTN: LEGAL/ARBITRATION AND MUST INCLUDE: (1) YOUR NAME, (2) YOUR ADDRESS, AND (4) A CLEAR STATEMENT THAT YOU DO NOT WISH TO RESOLVE DISPUTES WITH BROADSWORD THROUGH ARBITRATION.<br>Notice of Dispute. IF YOU HAVE A DISPUTE WITH Broadsword YOU MUST SEND WRITTEN NOTICE TO BROADSWORD ONLINE STUDIOS INC., 790 STATION STREET, SUITE 3000, HERNDON, VA 20170, ATTN: LEGAL/ARBITRATION TO GIVE BROADSWORD THE OPPORTUNITY TO RESOLVE THE DISPUTE INFORMALLY THROUGH NEGOTIATION. You agree to negotiate resolution of the Dispute in good faith for no less than 60 days after you provide notice of the Dispute. If Broadsword does not resolve your Dispute within 60 days from receipt of notice of the Dispute, you or Broadsword with may pursue your claim in arbitration pursuant to the terms in this Section 19.<br>Class Action Waiver. ANY DISPUTE RESOLUTION PROCEEDINGS, WHETHER IN ARBITRATION OR COURT, WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS OR REPRESENTATIVE ACTION OR AS A NAMED OR UNNAMED MEMBER IN A CLASS, CONSOLIDATED, REPRESENTATIVE OR PRIVATE ATTORNEY GENERAL ACTION, UNLESS BOTH YOU AND BROADSWORD SPECIFICALLY AGREE TO DO SO IN WRITING FOLLOWING INITIATION OF THE ARBITRATION. THIS PROVISION IS NOT APPLICABLE TO THE EXTENT SUCH WAIVER IS PROHIBITED BY LAW.<br>Initiation of Arbitration Proceeding/Selection of Arbitrator. If you or Broadsword elect to resolve your Dispute through arbitration, the party initiating the arbitration proceeding may initiate it with the American Arbitration Association (\"AAA\"), www.adr.org, or JAMS www.jamsadr.com. The terms of this Section 19 govern in the event they conflict with the rules of the arbitration organization selected by the parties.<br>Arbitration Procedures. Because the software and/or service provided to you by Broadsword concern interstate commerce, the Federal Arbitration Act (\"FAA\") governs the arbitrability of all Disputes. However, applicable federal or state law may also apply to the substance of any Disputes. For claims of less than $75,000, the AAA's Supplementary Procedures for Consumer-Related Disputes (\"Supplementary Procedures\") shall apply including the schedule of arbitration fees set forth in Section C-8 of the Supplementary Procedures",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157068",
+   "text": "Buffet Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157069",
+   "text": "Formal Dining Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157070",
+   "text": "Alchemy Station",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157071",
+   "text": "BBQ Smoker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157072",
+   "text": "*You douse the fire*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157073",
+   "text": "*You ignite the fire*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157074",
+   "text": "*You switch off the apparatus*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157075",
+   "text": "*You switch on the apparatus*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157076",
+   "text": "Save Reward Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157077",
+   "text": "Save ~1_POINTS~ points instead of claiming ~2_POINTS~ now?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157078",
+   "text": "T-Rex Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157079",
+   "text": "Zipactriotl Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157080",
+   "text": "Myrmidex Queen Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157081",
+   "text": "Tarantula Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157082",
+   "text": "Bulk Order Rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157083",
+   "text": "You must claim your last turn-in reward in order for us to continue doing business.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157084",
+   "text": "Receive a sturdy shovel.  This shovel has either 150 or 200 uses when new, determined randomly at the time the reward is given.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157085",
+   "text": "Receive a sturdy pickaxe.  This pickaxe has either 150 or 200 uses when new, determined randomly at the time the reward is given.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157086",
+   "text": "Receive leather mining gloves.  These gloves increase mining skill by 1.0 point when worn and come in one of the eight special ore hues when they are obtained.  All mining gloves can take a player's mining skill over 100 skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157087",
+   "text": "Receive studded leather mining gloves.  These gloves increase mining skill by 3.0 points when worn and come in one of the eight special ore hues when they are obtained.  All mining gloves can take a player's mining skill over 100 skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157088",
+   "text": "Receive ringmail mining gloves.  These gloves increase mining skill by 5.0 points when worn and come in one of the eight special ore hues when they are obtained.  All mining gloves can take a player's mining skill over 100 skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157089",
+   "text": "Receive a gargoyle pickaxe.  This pickaxe has between 101 and 125 uses when new, determined randomly at the time the reward is given.  This pickaxe allows a miner to boost the ore level of a resource chunk by one level, provided that the miner has the required skill to mine the higher level ore. This effect can be stacked with the effect gained by using a prospector’s tool. Caution: Using a Gargoyle’s Pickaxe may summon a hostile Ore Elemental, this is independent of the miner’s skill level!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157090",
+   "text": "Receive a prospector tool.  This tool allows miners to boost the ore level of a resource chunk by one level, provided that the miner has the required skill to mine the higher ore.  The tool has 50 uses when new and can be used together with a Gargoyle’s Pickaxe to raise an ore chunk two levels (i.e. an Agapite spot allows you to mine Valorite).",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

@@ -96,8 +96,8 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						this.SayTo( pm, "Please give me " + RoomCost( pm ) + " gold for a room." );
-						pm.SendMessage( "Give the innkeeper " + RoomCost( pm ) + " gold, or put that amount in the bank." );
+						this.SayTo( pm, Server.Localization.StringCatalog.ResolveFormat( pm.Account, "Please give me {0} gold for a room.", RoomCost( pm ) ) );
+						pm.SendMessage( Server.Localization.StringCatalog.ResolveFormat( pm.Account, "Give the innkeeper {0} gold, or put that amount in the bank.", RoomCost( pm ) ) );
 					}
 
 					if ( canOpen )
@@ -140,7 +140,7 @@ namespace Server.Mobiles
 				return;
 				
 				PlayerMobile mobile = (PlayerMobile) m_Mobile;
-					m_Giver.SayTo( m_Mobile, "If you want to rent a room, it will cost you " + RoomCost( mobile ) + " gold per week." );
+					m_Giver.SayTo( m_Mobile, Server.Localization.StringCatalog.ResolveFormat( mobile.Account, "If you want to rent a room, it will cost you {0} gold per week.", RoomCost( mobile ) ) );
             }
         }
 		///////////////////////////////////////////////////////////////////////////

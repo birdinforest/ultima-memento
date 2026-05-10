@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Network;
 
 namespace Server
@@ -132,7 +133,14 @@ namespace Server
 			if( def.Number > 0 )
 				m.SendLocalizedMessage( def.Number );
 			else if( def.String != null )
-				m.SendMessage( def.String );
+			{
+				string text = def.String;
+
+				if ( m != null && m.Account != null )
+					text = StringCatalog.Resolve( m.Account, def.String );
+
+				m.SendMessage( text );
+			}
 		}
 
 		public static void SendMessageTo( Mobile m, TextDefinition def, int hue )
@@ -143,7 +151,14 @@ namespace Server
 			if ( def.m_Number > 0 )
 				m.SendLocalizedMessage( def.m_Number, "", hue );
 			else if ( def.m_String != null )
-				m.SendMessage( hue, def.m_String );
+			{
+				string text = def.m_String;
+
+				if ( m != null && m.Account != null )
+					text = StringCatalog.Resolve( m.Account, def.m_String );
+
+				m.SendMessage( hue, text );
+			}
 		}
 
 		public static void PublicOverheadMessage( Mobile m, MessageType messageType, int hue, TextDefinition def )
@@ -154,7 +169,14 @@ namespace Server
 			if ( def.m_Number > 0 )
 				m.PublicOverheadMessage( messageType, hue, def.m_Number );
 			else if ( def.m_String != null )
-				m.PublicOverheadMessage( messageType, hue, false, def.m_String );
+			{
+				string text = def.m_String;
+
+				if ( m != null && m.Account != null )
+					text = StringCatalog.Resolve( m.Account, def.m_String );
+
+				m.PublicOverheadMessage( messageType, hue, false, text );
+			}
 		}
 
 		public static bool IsNullOrEmpty( TextDefinition def )

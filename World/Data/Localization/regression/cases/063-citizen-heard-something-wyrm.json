@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.heard-something-about-wyrm-hate",
+  "pipeline": "citizen_broadcast",
+  "en": "I heard something about a wyrm and Dungeon Hate.",
+  "expectedZh": "我隐约听说「一条古龙」与「憎恨地城」都有些风声。",
+  "tags": "I-heard-something,composite",
+  "notes": "Avoids TavernChatter greedy (.+) found (.+) stealing I heard that … can be found …"
+}

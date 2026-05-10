@@ -8,6 +8,8 @@ using Server.Spells;
 using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
+using System.Linq;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -77,6 +79,21 @@ namespace Server.SkillHandlers
 		public static void ClearTrackingInfo( Mobile tracker )
 		{
 			m_Table.Remove( tracker );
+		}
+
+		internal static string GetDirectionFromPoints(Point3D from, Point3D to)
+		{
+			int dx = to.X - from.X;
+			int dy = to.Y - from.Y;
+			if (dx == 0 && dy < 0) return "north";
+			if (dx > 0 && dy < 0) return "northeast";
+			if (dx > 0 && dy == 0) return "east";
+			if (dx > 0 && dy > 0) return "southeast";
+			if (dx == 0 && dy > 0) return "south";
+			if (dx < 0 && dy > 0) return "southwest";
+			if (dx < 0 && dy == 0) return "west";
+			if (dx < 0 && dy < 0) return "northwest";
+			return "nearby";
 		}
 	}
 
@@ -335,6 +352,30 @@ namespace Server.SkillHandlers
 			else
 			{
 				from.SendLocalizedMessage( 1018092 ); // You see no evidence of those in the area.
+			}
+
+			// Trap residue detection
+			if (from.Skills.Tracking.Value >= 30)
+			{
+				int scanRange = 15 + (int)(from.Skills.Tracking.Value / 5);
+				var recentTraps = LoggingFunctions.RecentTrapActivity
+					.Where(kvp => kvp.Value > DateTime.Now - TimeSpan.FromMinutes(15)
+						          && Utility.InRange(from.Location, kvp.Key, scanRange))
+					.ToList();
+
+				if (recentTraps.Count > 0)
+				{
+					var closest = recentTraps.OrderBy(kvp => from.GetDistanceToSqrt(kvp.Key)).First();
+					int minutesAgo = (int)(DateTime.Now - closest.Value).TotalMinutes;
+					if (minutesAgo < 1) minutesAgo = 1;
+					string dirKey = Tracking.GetDirectionFromPoints(from.Location, closest.Key);
+					string dirLoc = StringCatalog.ResolveByKey(from.Account, "trap.dir." + dirKey);
+					// Trap residue uses dim amber hue 0x8A5
+					from.LocalOverheadMessage(MessageType.Emote, 0x8A5, false,
+						StringCatalog.ResolveFormatByKey(from.Account,
+							"trap.tracking.residue",
+							dirLoc, minutesAgo));
+				}
 			}
 		}
 

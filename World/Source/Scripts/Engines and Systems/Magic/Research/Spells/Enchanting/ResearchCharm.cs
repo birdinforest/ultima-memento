@@ -6,6 +6,7 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -32,7 +33,7 @@ namespace Server.Spells.Research
 
 		public override void OnCast()
 		{
-			Caster.SendMessage( "Who do you want to charm?" );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Who do you want to charm?" ) );
 			Caster.Target = new InternalTarget( this );
 		}
 
@@ -58,13 +59,13 @@ namespace Server.Spells.Research
 			else if ( m is PlayerMobile )
 			{
 				m.Paralyze( TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) ) );
-				m.SendMessage( "You are charmed." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You are charmed." ) );
 				BuffInfo.RemoveBuff( m, BuffIcon.Charm );
 				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Charm, 1063686, TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) ), m ) );
 			}
 			else if ( !CanAffect )
 			{
-				Caster.SendMessage( "You cannot charm supernatural creatures, golems, constructs, or elementals." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot charm supernatural creatures, golems, constructs, or elementals." ) );
 			}
 			else if ( m is BaseCreature )
 			{
@@ -75,15 +76,15 @@ namespace Server.Spells.Research
 
 				if ( bc.ControlMaster != null )
 				{
-					Caster.SendMessage( "That is already controlled by another." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That is already controlled by another." ) );
 				}
 				else if ( bc.FightMode != FightMode.Closest && bc.FightMode != FightMode.Aggressor )
 				{
-					Caster.SendMessage( "These charms will not work very well on that." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "These charms will not work very well on that." ) );
 				}
 				else if ( mFame > pFame )
 				{
-					Caster.SendMessage( "That creature is too powerful for you to charm." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That creature is too powerful for you to charm." ) );
 				}
 				else if ( CheckHSequence( m ) )
 				{
@@ -110,7 +111,7 @@ namespace Server.Spells.Research
 			}
 			else
 			{
-				Caster.SendMessage( "This spell cannot affect that." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This spell cannot affect that." ) );
 			}
 		}
 

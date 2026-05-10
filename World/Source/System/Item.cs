@@ -26,6 +26,7 @@ using Server.Network;
 using Server.Items;
 using Server.ContextMenus;
 using Server.Gumps;
+using Server.Localization;
 using System.Globalization;
 using Server.Targeting;
 
@@ -1826,7 +1827,14 @@ namespace Server
 				Resizable=false;
 				AddImage(0, 0, 9613);
 				TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
-				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + item.InfoData + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+				string info = item.InfoData;
+				if ( info != null && info.Length > 0 )
+				{
+					info = StringCatalog.TryResolve( lang, info ) ?? info;
+					info = QuestCompositeResolver.ResolveComposite( from, info );
+				}
+				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 		}
 
@@ -1960,7 +1968,10 @@ namespace Server
 
 		public void LabelTo( Mobile to, string text )
 		{
-			to.Send( new UnicodeMessage( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, "ENU", "", text ) );
+			string lang = AccountLang.GetLanguageCode( to != null ? to.Account : null );
+			string outText = StringCatalog.TryResolve( lang, text ) ?? text;
+
+			to.Send( new UnicodeMessage( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, "ENU", "", outText ) );
 		}
 
 		public void LabelTo( Mobile to, string format, params object[] args )
@@ -5665,7 +5676,6 @@ namespace Server
 		{
 			if ( m_Map != null )
 			{
-				Packet p = null;
 				Point3D worldLoc = GetWorldLocation();
 
 				IPooledEnumerable eable = m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() );
@@ -5676,21 +5686,15 @@ namespace Server
 
 					if ( m.CanSee( this ) && m.InRange( worldLoc, GetUpdateRange( m ) ) )
 					{
-						if ( p == null )
-						{
-							if ( ascii )
-								p = new AsciiMessage( m_Serial, m_ItemID, type, hue, 3, this.Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, m_ItemID, type, hue, 3, "ENU", this.Name, text );
+						string lang = AccountLang.GetLanguageCode( m != null ? m.Account : null );
+						string outText = StringCatalog.TryResolve( lang, text ) ?? text;
 
-							p.Acquire();
-						}
-
-						state.Send( p );
+						if ( ascii && StringCatalog.IsAsciiOnly( outText ) )
+							state.Send( new AsciiMessage( m_Serial, m_ItemID, type, hue, 3, this.Name, outText ) );
+						else
+							state.Send( new UnicodeMessage( m_Serial, m_ItemID, type, hue, 3, "ENU", this.Name, outText ) );
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}

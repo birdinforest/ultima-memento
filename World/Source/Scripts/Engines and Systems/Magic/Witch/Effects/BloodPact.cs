@@ -3,6 +3,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Undead
 {
@@ -27,7 +28,7 @@ namespace Server.Spells.Undead
 		{
 			if ( Caster ==  m )
 			{
-				Caster.SendMessage( "You cannot heal yourself" ); // Cannot heal self.
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot heal yourself" ) ); // Cannot heal self.
 			}
 			if ( !Caster.CanSee( m ) )
 			{

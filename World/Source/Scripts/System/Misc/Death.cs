@@ -286,12 +286,14 @@ namespace Server.Gumps
 					shouldPrompt,
 					() =>
 					{
+						string resurrectPayment = "free";
 						if ( m_ResurrectType == 2 && m_Bank >= m_Price )
 						{
 							Banker.Withdraw( from, m_Price );
 							from.SendLocalizedMessage( 1060398, m_Price.ToString() ); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
 							from.SendLocalizedMessage( 1060022, Banker.GetBalance( from ).ToString() ); // You have ~1_AMOUNT~ gold in cash remaining in your bank box.
 							Server.Misc.Death.Penalty( from, false );
+							resurrectPayment = "bank_gold";
 						}
 						else if ( m_ResurrectType == 2 && m_Tithe >= m_Price )
 						{
@@ -299,10 +301,12 @@ namespace Server.Gumps
 							from.SendMessage( "" + m_Price.ToString() + " tithing has been offered to the gods." );
 							from.SendMessage( "" + (from.TithingPoints).ToString() + " tithing remains." );
 							Server.Misc.Death.Penalty( from, false );
+							resurrectPayment = "tithe";
 						}
 						else if ( shouldPrompt )
 						{
 							Server.Misc.Death.Penalty( from, true );
+							resurrectPayment = "skill_penalty";
 						}
 
 						from.PlaySound( 0x214 );
@@ -314,6 +318,10 @@ namespace Server.Gumps
 						from.Stam = from.StamMax;
 						from.Mana = from.ManaMax;
 						from.Hidden = true;
+
+						PlayerMobile pmR = from as PlayerMobile;
+						if ( pmR != null )
+							Server.Misc.AnalyticsLogger.LogResurrectionCompleted( pmR, resurrectPayment, m_Price );
 					},
 					onConfirmed => new ConfirmationGump(
 						from,

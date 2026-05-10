@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.some-bard-dark-elf",
+  "pipeline": "citizen_broadcast",
+  "en": "Some bard found an ancient dark elf city deep beneath Lodor",
+  "expectedZh": "听说有位吟游诗人找到了「洛多尔地底深处的远古暗精灵城」。",
+  "tags": "some-found,bard",
+  "source": "TavernPatrons Some … found"
+}

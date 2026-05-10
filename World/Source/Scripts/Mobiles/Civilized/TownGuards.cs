@@ -499,14 +499,14 @@ namespace Server.Mobiles
 		{
 			switch ( Utility.Random( 8 ))		   
 			{
-				case 0: Say("Die villian!"); break;
-				case 1: Say("I will bring you justice!"); break;
-				case 2: Say("So, " + defender.Name + "? Your evil ends here!"); break;
-				case 3: Say("We have been told to watch for " + defender.Name + "!"); break;
-				case 4: Say("Fellow guardsmen, " + defender.Name + " is here!"); break;
-				case 5: Say("We have ways of dealing with the likes of " + defender.Name + "!"); break;
-				case 6: Say("Give up! We do not fear " + defender.Name + "!"); break;
-				case 7: Say("So, " + defender.Name + "? I sentence you to death!"); break;
+			case 0: CitizenLocalization.SayLocalized(this, "Die villian!"); break;
+			case 1: CitizenLocalization.SayLocalized(this, "I will bring you justice!"); break;
+			case 2: CitizenLocalization.SayLocalizedFormat(this, "So, {0}? Your evil ends here!", defender.Name); break;
+			case 3: CitizenLocalization.SayLocalizedFormat(this, "We have been told to watch for {0}!", defender.Name); break;
+			case 4: CitizenLocalization.SayLocalizedFormat(this, "Fellow guardsmen, {0} is here!", defender.Name); break;
+			case 5: CitizenLocalization.SayLocalizedFormat(this, "We have ways of dealing with the likes of {0}!", defender.Name); break;
+			case 6: CitizenLocalization.SayLocalizedFormat(this, "Give up! We do not fear {0}!", defender.Name); break;
+			case 7: CitizenLocalization.SayLocalizedFormat(this, "So, {0}? I sentence you to death!", defender.Name); break;
 			};
 		}
 
@@ -585,7 +585,7 @@ namespace Server.Mobiles
 						GuardNote note = new GuardNote();
 						note.ScrollText = ((PlayerMobile)m).CharacterWanted;
 						m_Mobile.AddToBackpack( note );
-						m_Giver.Say("Here is a note citizen. Be on the lookout.");
+						CitizenLocalization.SayLocalized(m_Giver, "Here is a note citizen. Be on the lookout.");
 					}
 				}
             }
@@ -593,7 +593,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			CitizenLocalization.SayLocalized(this, "In Vas Mani");
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );

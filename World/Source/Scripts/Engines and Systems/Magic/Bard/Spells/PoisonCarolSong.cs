@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Engines.MobileEnhancement;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Song
 {
@@ -82,7 +83,7 @@ namespace Server.Spells.Song
 					}
 				}
 
-				m.SendMessage("Your resistance to poison has increased.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to poison has increased." ) );
 				m_Mod = new ResistanceMod(ResistanceType.Poison, +amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x373A, 10, 15, 5012, 0x238, 3, EffectLayer.Waist);

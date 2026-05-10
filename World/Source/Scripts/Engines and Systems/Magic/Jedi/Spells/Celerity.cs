@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -53,7 +54,7 @@ namespace Server.Spells.Jedi
 				BuffInfo.RemoveBuff( m, BuffIcon.Celerity );
 				m.EndAction( typeof( Celerity ) );
 				m.PlaySound( 0x64C ); // Cleansing winds
-				m.SendMessage("You feel the wind around you dissipate");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel the wind around you dissipate" ) );
 				FastPlayer.Refresh(m as PlayerMobile);
 			}
 		}
@@ -62,7 +63,7 @@ namespace Server.Spells.Jedi
 		{
             if ( Caster.Mounted )
             {
-                Caster.SendMessage( "You cannot use this power while on a mount!" );
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot use this power while on a mount!" ) );
             }
 			else if ( CheckSequence() )
 			{

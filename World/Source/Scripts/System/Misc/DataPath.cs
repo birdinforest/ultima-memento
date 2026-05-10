@@ -7,8 +7,6 @@ namespace Server.Misc
 {
 	public class DataPath
 	{
-		private static string CustomPath = "Data/Files";
-
 		/* The following is a list of files which a required for proper execution:
 			Cliloc.enu
 			map0.mul
@@ -36,8 +34,10 @@ namespace Server.Misc
 
 		public static void Configure()
 		{
-			if ( CustomPath != null ) 
-				Core.DataDirectories.Add( CustomPath ); 
+			if ( !String.IsNullOrWhiteSpace( MySettings.S_DataFilesPath ) ) {
+				Console.WriteLine( "Adding data files path: " + MySettings.S_DataFilesPath );
+				Core.DataDirectories.Add( MySettings.S_DataFilesPath.Trim() );
+			}
 
 			if ( Core.DataDirectories.Count == 0 && !Core.Service )
 			{

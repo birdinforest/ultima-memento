@@ -1,0 +1,3006 @@
+{
+ "batch": 32,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1154586",
+   "text": "Please select some criteria to search for.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154587",
+   "text": "No items matched your search.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154588",
+   "text": "Clear Search Criteria",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154589",
+   "text": "Ethereal Tiger Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154590",
+   "text": "Ethereal Tiger Statuette",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154591",
+   "text": "Tinker Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154592",
+   "text": "You have linked your boat lighthouse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154593",
+   "text": "You have linked your ship to your lighthouse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154594",
+   "text": "You have unlinked your ship from your lighthouse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154595",
+   "text": "Your account is not linked to this lighthouse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154596",
+   "text": "Ships placed by this account will now be linked to this lighthouse when they decay. Lost ships will be  found in your house moving crate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154597",
+   "text": "The lighthouse that was linked to this character has failed to link due to house customization or re-deeding. Double-click on the lighthouse to link your character and all future ship placements to the lighthouse.  Please note any current ships at sea will need to be dry docked and placed again to link properly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154598",
+   "text": "<center>Container Price<BR>~1_cost~</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154599",
+   "text": "Drag Slot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154600",
+   "text": "Right Hand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154601",
+   "text": "Left Hand",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154602",
+   "text": "Footwear/Talons",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154603",
+   "text": "Pants/Leg Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154604",
+   "text": "Shirt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154605",
+   "text": "Hat/Head Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154606",
+   "text": "Hand/Kilt Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154607",
+   "text": "Ring",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154608",
+   "text": "Talisman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154609",
+   "text": "Necklace/Neck Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154610",
+   "text": "Hair",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154611",
+   "text": "Apron/Belt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154612",
+   "text": "Chest Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154613",
+   "text": "Bracelet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154614",
+   "text": "Face",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154615",
+   "text": "Facial Hair",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154616",
+   "text": "Surcoat/Tunic/Sash",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154617",
+   "text": "Earrings/Gargish Glasses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154618",
+   "text": "Arm Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154619",
+   "text": "Cloak/Quiver/Wing Armor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154620",
+   "text": "Backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154621",
+   "text": "Dress/Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154622",
+   "text": "Skirt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154623",
+   "text": "Legs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154624",
+   "text": "Riding",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154625",
+   "text": "Temp Pack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154626",
+   "text": "Sells",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154627",
+   "text": "Invent",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154628",
+   "text": "Buys",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154629",
+   "text": "Bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154630",
+   "text": "Opt In to Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154631",
+   "text": "Opt Out of Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154632",
+   "text": "Claw Foot Tub",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154633",
+   "text": "Vendor Search Enabled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154634",
+   "text": "Vendor Search Disabled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154635",
+   "text": "Please select 'Accept' if you would like to pay ~1_cost~ gold to teleport to vendor ~2_name~.  For this price you will also be able to teleport back to this location within the next ~3_minutes~ minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154636",
+   "text": "Return to Previous Location",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154637",
+   "text": "Please select 'Accept' if you would like to return to ~1_loc~ (~2_facet~).  This map will be deleted after use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154638",
+   "text": "Return to ~1_loc~ (~2_facet~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154639",
+   "text": "Vendor Located at ~1_loc~ (~2_facet~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154640",
+   "text": "Castle Blackthorn Dungeon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154641",
+   "text": "Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154642",
+   "text": "Create Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154643",
+   "text": "That item is no longer for sale.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154644",
+   "text": "Facet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154645",
+   "text": "<center>~1_val~</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154646",
+   "text": "Exclude items on Felucca",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154647",
+   "text": "Miscellaneous",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154648",
+   "text": "Gargoyles Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154649",
+   "text": "Exclude Gargoyles Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154650",
+   "text": "Elves Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154651",
+   "text": "Exclude Elves Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154652",
+   "text": "Fey Slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154653",
+   "text": "Slayers (A - L)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154654",
+   "text": "Slayers (M - Z)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154655",
+   "text": "Fire Resonance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154656",
+   "text": "Cold Resonance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154657",
+   "text": "Poison Resonance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154658",
+   "text": "Energy Resonance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154659",
+   "text": "Kinetic Resonance",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154660",
+   "text": "Reactive Paralyze",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154661",
+   "text": "Faction Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154662",
+   "text": "Fire Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154663",
+   "text": "Cold Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154664",
+   "text": "Poison Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154665",
+   "text": "Energy Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154666",
+   "text": "Kinetic Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154667",
+   "text": "Damage Eater",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154668",
+   "text": "Hit Fatigue",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154669",
+   "text": "Hit Mana Drain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154670",
+   "text": "Splintering Weapon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154671",
+   "text": "Bane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154672",
+   "text": "You cannot afford to teleport to the vendor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154673",
+   "text": "Hit Curse",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154674",
+   "text": "The search string must not be a numeric value under 1000.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154675",
+   "text": "Your search criteria is too vague.  Please refine your criteria and try again",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154676",
+   "text": "Your search has been cancelled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154677",
+   "text": "Cancel Vendor Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154678",
+   "text": "Please wait for your search to complete.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154679",
+   "text": "Vendor Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154680",
+   "text": "Before using vendor search, you must be in a justice region or a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154681",
+   "text": "You may not add any more search criteria items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154682",
+   "text": "Promotional Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154683",
+   "text": "Arachnid/Reptile Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154684",
+   "text": "Repond/Undead Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154685",
+   "text": "Demon/Fey/Elemental Slayers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154686",
+   "text": "Vendor Search Failed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154687",
+   "text": "Search for Higher Priced Items",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154688",
+   "text": "Search For Lower Priced Items",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154689",
+   "text": "You must increase your maximum price to search for higher priced items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154690",
+   "text": "The vendor map has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154691",
+   "text": "A Kitten Raised by ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154692",
+   "text": "A Puppy Raised by ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154693",
+   "text": "Artifact Rarity",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154694",
+   "text": "Remove Selected Search Criteria",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154695",
+   "text": "Sort Results",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154696",
+   "text": "Price: Low to High",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154697",
+   "text": "Price: High to Low",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154698",
+   "text": "You must decrease your minimum price to search for lower priced items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154699",
+   "text": "Open Container Containing Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154700",
+   "text": "Item no longer for sale.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154701",
+   "text": "Not Cursed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154702",
+   "text": "Not Brittle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154703",
+   "text": "Not Elves Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154704",
+   "text": "Not Gargoyles Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154705",
+   "text": "Not Cannot Be Repaired",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154706",
+   "text": "Error: You cannot attach guardian to that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154707",
+   "text": "Error: You cannot attach paragon to that",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154708",
+   "text": "Error: Resist value out of range (0-70)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154709",
+   "text": "Error: You can only target volunteer created mobs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154710",
+   "text": "Error: resist value out of range",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154711",
+   "text": "An Easter Bunny Raised in ~1_CITY~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154712",
+   "text": "I haven't quite finished a marshmallow duckling yet...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154713",
+   "text": "Ooops! Might not want to eat that one! *chuckles*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154714",
+   "text": "Here you go! A freshly made marshmallow duckling! Don't eat too many! *chuckles*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154715",
+   "text": "Chocolate Jellybeans",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154716",
+   "text": "The Easter Bunny only works during March & April.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154717",
+   "text": "Happy Easter! We have placed a gift for you in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154718",
+   "text": "Happy Easter! We have placed a gift for you in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154719",
+   "text": "Happy Easter! To get your gift, please remove some items from your backpack or bank and log back in.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154720",
+   "text": "Broadsword Plaque",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154721",
+   "text": "A Battle between Vice and Virtue is active! To Arms! The City of ~1_CITY~ is besieged!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154722",
+   "text": "A VvV battle has just concluded. The next battle will begin in less than five minutes!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154723",
+   "text": "Primordial Decay",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154724",
+   "text": "Arachnid Doom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154725",
+   "text": "Lucky Charm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154726",
+   "text": "Soldier's Medal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154727",
+   "text": "Duelist's Edge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154728",
+   "text": "Necromancer's Phylactery",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154729",
+   "text": "Wizard's Curio",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154730",
+   "text": "Mystic's Memento",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154731",
+   "text": "Mossy Green Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154732",
+   "text": "Intense Teal Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154733",
+   "text": "Olive Green Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154734",
+   "text": "Mottled Sunset Blue Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154735",
+   "text": "Tyrian Purple Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154736",
+   "text": "Vibrant Ocher Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154737",
+   "text": "Primordial Decay<br>Elemental Slayer<br> (Random Drum, Lute or Lap Harp Selected)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154738",
+   "text": "Arachnid Doom<br>Arachnid Slayer<br> (Random Drum, Lute or Lap Harp Selected)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154739",
+   "text": "Lucky Charm<br>Hit Point Regeneration 1<br>Stamina Regeneration 1<br>Mana regeneration 1<br>Luck 150",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154740",
+   "text": "Soldier’s Medal<br>Tactics +10<br> Stamina Regeneration 2<br>Hit Chance Increase 5%<br>Damage Increase 20%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154741",
+   "text": "Duelist's Edge<br>Anatomy +10<br> Stamina Regeneration 2<br>Hit Chance Increase 5%<br>Damage Increase 20%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154742",
+   "text": "Necromancer’s Phylactery<br>Spirit Speak +10<br>Mana Regeneration 1<br>Spell Damage Increase 5%<br>Lower Reagent Cost 10%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154743",
+   "text": "Wizard’s Curio<br>Evaluate Intelligence +10<br>Mana Regeneration 1<br>Spell Damage Increase 5%<br>Lower Reagent Cost 10%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154744",
+   "text": "Mystic’s Memento<br>Focus +10<br>Mana Regeneration 1<br>Spell Damage Increase 5%<br>Lower Reagent Cost 10%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154745",
+   "text": "Presentation Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154746",
+   "text": "You may only combine pigments of the same type.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154747",
+   "text": "You may only combine pigments of the same hue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154748",
+   "text": "The combined uses of the two pigments cannot exceed 50.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154749",
+   "text": "Both pigments must be in your backpack in order to combine them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154750",
+   "text": "You combine the pigments, consolidating their Uses Remaining.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154751",
+   "text": "This title is obtained by having an account at least 2 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154752",
+   "text": "This title is obtained by having an account at least 4 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154753",
+   "text": "This title is obtained by having an account at least 6 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154754",
+   "text": "This title is obtained by having an account at least 8 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154755",
+   "text": "This title is obtained by having an account at least 10 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154756",
+   "text": "This title is obtained by having an account at least 12 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154757",
+   "text": "This title is obtained by having an account at least 14 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154758",
+   "text": "This title is obtained by having an account at least 16 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154759",
+   "text": "This title is obtained by having an account at least 18 years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154760",
+   "text": "By: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154761",
+   "text": "~1_val~ gold has been deposited into the ~2_NAME~ City treasury for your efforts!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154762",
+   "text": "Agents Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154763",
+   "text": "Agents:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154764",
+   "text": "(Default)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154765",
+   "text": "Add by Type",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154766",
+   "text": "Add Organizer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154767",
+   "text": "Add Undress",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154768",
+   "text": "Add Restock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154769",
+   "text": "Add Buy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154770",
+   "text": "Add Sell",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154771",
+   "text": "Add Scavenger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154772",
+   "text": "Enter the amount of items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154773",
+   "text": "Target the hotbag.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154774",
+   "text": "Set Default Container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154775",
+   "text": "Un-Set Default Container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154776",
+   "text": "Enter the new agent name.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154777",
+   "text": "Remove?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154778",
+   "text": "Remove selected agent?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154779",
+   "text": "Target the item type to add.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154780",
+   "text": "Target the item to add.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154781",
+   "text": "Auto-Close Container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154782",
+   "text": "Set as Default",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154783",
+   "text": "Loot all of the contents of this container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154784",
+   "text": "Unlock backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154785",
+   "text": "Lock Backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154786",
+   "text": "Stop Organizer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154787",
+   "text": "Stop Restock.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154788",
+   "text": "Stop Looting.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154789",
+   "text": "Organizer.<br>Use this to organize the contents of this container.<br>Right Click to select the organizer.<br><br>Current:~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154790",
+   "text": "Invalid destination container!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154791",
+   "text": "Item Search",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154792",
+   "text": "Remove Filters",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154793",
+   "text": "Total Items: ~1_ITEMS~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154794",
+   "text": "Buff Options<br>Click to rotate or lock.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154795",
+   "text": "Debuff Options<br>Click to rotate or lock.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154796",
+   "text": "Lock All Skills",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154797",
+   "text": "All Skills Down",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154798",
+   "text": "Enter a value between ~1_MIN~ - ~2_MAX~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154799",
+   "text": "Set Auto-Lock Value",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154800",
+   "text": "Remove Auto-Lock Value",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154801",
+   "text": "Show My Custom Skills Tab",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154802",
+   "text": "Show All My Skills",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154803",
+   "text": "Points Available: ~1_POINTS~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154804",
+   "text": "Item Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154805",
+   "text": "Lost Items Only",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154806",
+   "text": "Bars Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154807",
+   "text": "Unsorted Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154808",
+   "text": "Yellow Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154809",
+   "text": "Gray Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154810",
+   "text": "Blue Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154811",
+   "text": "Red Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154812",
+   "text": "Green Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154813",
+   "text": "Orange Mobiles Limit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154814",
+   "text": "Other Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154815",
+   "text": "Update Delay",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154816",
+   "text": "Distance Between Bars",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154817",
+   "text": "Invulnerables",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154818",
+   "text": "Attackables",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154819",
+   "text": "Innocents",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154820",
+   "text": "Murderers",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154821",
+   "text": "Enemies",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154822",
+   "text": "Innocent",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154823",
+   "text": "Attackable",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154824",
+   "text": "Murderer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154825",
+   "text": "Neutral Animals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154826",
+   "text": "Summons",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154827",
+   "text": "Show Mobiles on Screen<br>Right Click for Options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154828",
+   "text": "Hide Mobiles on Screen<br>Right Click for Options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154829",
+   "text": "Disable Distance Sort",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154830",
+   "text": "Enable Distance Sort",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154831",
+   "text": "Unlock Dockspots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154832",
+   "text": "Lock Dockspots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154833",
+   "text": "Show Yellow Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154834",
+   "text": "Hide Yellow Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154835",
+   "text": "Show Gray Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154836",
+   "text": "Hide Gray Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154837",
+   "text": "Show Blue Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154838",
+   "text": "Hide Blue Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154839",
+   "text": "Show Red Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154840",
+   "text": "Hide Red Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154841",
+   "text": "Show Green Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154842",
+   "text": "Hide Green Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154843",
+   "text": "Show Orange Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154844",
+   "text": "Hide Orange Dockspot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154845",
+   "text": "Close to Right",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154846",
+   "text": "Close to Left",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154847",
+   "text": "Reset Position",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154848",
+   "text": "Clear Mobiles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154849",
+   "text": "Remove Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154850",
+   "text": "Add Filter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154851",
+   "text": "If you set a filter only the mobiles that contain the specified text in their names will be shown.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154852",
+   "text": "Mobiles Bar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154853",
+   "text": "Click to ask for a Bulk Order Deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154854",
+   "text": "Click to talk with this NPC.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154855",
+   "text": "Click to open your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154856",
+   "text": "Unlock Pet Window.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154857",
+   "text": "Lock Pet Window.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154858",
+   "text": "Show Pets<br>Right Click for options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154859",
+   "text": "Hide Pets<br>Right Click for options...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154860",
+   "text": "Magnetize Compass",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154861",
+   "text": "Target Lost!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154862",
+   "text": "The target is in:<br>~1_MAP~<br>Nearest Moongate:<br>~2_DISTANCE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154863",
+   "text": "Distance: ~1_DISTANCE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154864",
+   "text": "You",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154865",
+   "text": "Restore the default map dimensions.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154866",
+   "text": "Enlarge the map for tactical purposes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154867",
+   "text": "Tilt Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154868",
+   "text": "Unlock Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154869",
+   "text": "Location Finder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154870",
+   "text": "Location Found: ~1_NUMBER~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154871",
+   "text": "Lock Atlas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154872",
+   "text": "Party Leader",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154873",
+   "text": "Right Click to switch spell",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154874",
+   "text": "<br>Under ~1_amount~% of health:<br>Direct Damage: ~2_min~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154875",
+   "text": "<br>Chaos Damage: ~1_amount~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154876",
+   "text": "<br>Energy Damage: ~1_amount~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154877",
+   "text": "<br>Cold Damage: ~1_amount~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154878",
+   "text": "<br>Physical Damage: ~1_amount~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154879",
+   "text": "<br>Fire Damage: ~1_amount~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154880",
+   "text": "<br>(Slayer and Spell Damage Increase properties have no effect with this spell)<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154881",
+   "text": "<br>(If you hit more than one target, the damage amount is doubled and then divided amongst each target evenly)<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154882",
+   "text": "<br>(Slayer properties have no effect with this spell)<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154883",
+   "text": "Stat Settings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154884",
+   "text": "Adjust Strength",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154885",
+   "text": "Adjust Dexterity",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154886",
+   "text": "Adjust Intelligence",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154887",
+   "text": "Test Center Tools<br>Allows you to quickly customize your character.<br>Use the character copy in the help menu from your shard to import a character to TC.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154888",
+   "text": "Enter a value between ~1_min~ - ~1_max~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154889",
+   "text": "Adjust Miscellaneous Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154890",
+   "text": "Adjust Combat Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154891",
+   "text": "Adjust Crafting Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154892",
+   "text": "Adjust Magic Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154893",
+   "text": "Adjust Wild Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154894",
+   "text": "Adjust Bard Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154895",
+   "text": "Add Items in Bank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154896",
+   "text": "Artifacts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154897",
+   "text": "Crafting Resources",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154898",
+   "text": "Pet Air Freshener",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154899",
+   "text": "Seeds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154900",
+   "text": "Add Tokens In Backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154901",
+   "text": "Open the gump of a plant locked down then press <b>OKAY<b> to make it grow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154902",
+   "text": "Not now",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154903",
+   "text": "Unlock Target Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154904",
+   "text": "Lock Target Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154905",
+   "text": "Distance: ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154906",
+   "text": "Slim's Shadow Veil",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154907",
+   "text": "Trade Orders Delivered: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154908",
+   "text": "Fill From Backpack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154909",
+   "text": "Unwieldly",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154910",
+   "text": "Prized",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154911",
+   "text": "Headlines from throughout the Realm...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154912",
+   "text": "Set New Announcement",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154913",
+   "text": "Set Headline",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154914",
+   "text": "Set Body",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154915",
+   "text": "The Latest News from the City of ~1_CITY~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154916",
+   "text": "Posted by ~1_NAME~ on ~2_date~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154917",
+   "text": "This account is:\\\\n",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154918",
+   "text": "~1_YEARS~ years and ~2_MONTHS~ months old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154919",
+   "text": "~1_YEARS~ years old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154920",
+   "text": "~1_MONTHS~ months old.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154921",
+   "text": "Item Properties Info",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154922",
+   "text": "Properties Found: ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154923",
+   "text": "Active Properties: ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154924",
+   "text": "Unlock Paperdoll Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154925",
+   "text": "Lock Paperdoll Window",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154926",
+   "text": "You can ignore only Players!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154927",
+   "text": "~1_NAME~ will be ignored.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154928",
+   "text": "Toggle the tree foliage and the ships sails.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154929",
+   "text": "Toggle Foliage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154930",
+   "text": "Toggle sound.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154931",
+   "text": "Menu Action",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154932",
+   "text": "Lock Game Area",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154933",
+   "text": "Un-Lock Game Area",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154934",
+   "text": "\\\\nCurrent: ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154935",
+   "text": "Ocllo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154936",
+   "text": "More players are needed before a VvV battle can begin!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154937",
+   "text": "VvV Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154938",
+   "text": "Deployment Type: ~1_DEPLOYTYPE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154939",
+   "text": "Proximity",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154940",
+   "text": "Tripwire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154941",
+   "text": "Damage Type: ~1_DMGTYPE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154942",
+   "text": "Shocking",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154943",
+   "text": "Blades",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154944",
+   "text": "Trap Kit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154945",
+   "text": "The Battle between Vice and Virtue has ended!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154946",
+   "text": "~1_GUILDNAME~ [~2_ABBR~] has won the battle!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154947",
+   "text": "Total Silver Points: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154948",
+   "text": "Total Score: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154949",
+   "text": "Total Match Kills: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154950",
+   "text": "Total Match Assists: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154951",
+   "text": "Total Match Deaths: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154952",
+   "text": "Total Sigils Stolen: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154953",
+   "text": "Total Sigils Returned: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154954",
+   "text": "Total Vice Sigils Returned: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154955",
+   "text": "Total Virtue Sigils Returned: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154956",
+   "text": "Total Traps Disarmed: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154957",
+   "text": "~1_NAME~ is occupying the city!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154958",
+   "text": "The City is unoccupied! Slay opposing forces to claim the city for your guild!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154959",
+   "text": "**INVULNERABLE**",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154960",
+   "text": "Target the container",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154961",
+   "text": "Target a container first!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154962",
+   "text": "Open the container first!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154963",
+   "text": "This action can only be used inside of a macro.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154964",
+   "text": "Target the item type.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154965",
+   "text": "Invalid item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154966",
+   "text": "Click to quick select the group.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154967",
+   "text": "Clear Item List",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154968",
+   "text": "Pet Targeting",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154969",
+   "text": "Target the pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154970",
+   "text": "This is not yours!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154971",
+   "text": "Default pet ~1_NUM~ stored!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154972",
+   "text": "Target the item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154973",
+   "text": "Default object ~1_NUM~ stored!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154974",
+   "text": "This is not a pet summoning crystal ball!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154975",
+   "text": "The pet summoning crystal ball must be in your backpack!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154976",
+   "text": "Target your mount.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154977",
+   "text": "Target the boat wheel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154978",
+   "text": "Target the container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154979",
+   "text": "Menu Actions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154980",
+   "text": "Pet Summoning Crystal Balls",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154981",
+   "text": "Mounts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154982",
+   "text": "Equipment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154983",
+   "text": "Buying",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154984",
+   "text": "Use this command near a banker or a minter to open your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154985",
+   "text": "Use this if you are under attack in a guard zone to call the guards.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154986",
+   "text": "Use this near a vendor to see what they have for sale.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154987",
+   "text": "Selling",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154988",
+   "text": "Use this near a vendor to see what you can sell to them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154989",
+   "text": "I must consider my sins.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154990",
+   "text": "Use this when standing on the pentagram in the Moonglow mage shop to reach Papua.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154991",
+   "text": "This command will allow you to review your murder count status.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154992",
+   "text": "Use this command near a banker to display how much gold (not checks) you have in your bank box.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154993",
+   "text": "Ord",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154994",
+   "text": "Use this command in the Tomb of Kings near the \"Flame of Order\" on the west side to turn off the barrier.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154995",
+   "text": "An Ord",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154996",
+   "text": "Use this command in the Tomb of Kings near the \"Flame of Chaos\" on the east side to turn off the barrier.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154997",
+   "text": "Stable",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154998",
+   "text": "When used in a stable this will bring up a targeting cursor.  Click the pet you want to stable.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1154999",
+   "text": "Secure",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155000",
+   "text": "Locks down a container in your house and makes it secure.  Only the owner and co-owners of a house may use this command.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155001",
+   "text": "Release",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155002",
+   "text": "Removes lockdown and secure status of an item.  Only the owner and co-owners of a house may use this command.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155003",
+   "text": "Lock down",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155004",
+   "text": "Locks down an item in your house.  Only the owner, co-owners and friends of a house may use this command.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155005",
+   "text": "I wish to place a trash barrel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155006",
+   "text": "This command will place a trash barrel inside your house at the position you are standing.  Only the owner and co-owners of a house may use this command.  Owners, co-owners and friends may put trash into the barrel.  After three minutes the trash will be deleted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155007",
+   "text": "Stablecount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155008",
+   "text": "When used in a stable this command will report how many stable slots are occupied.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155009",
+   "text": "Enable Quantity Alert",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155010",
+   "text": "Disable Quantity Alert",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155011",
+   "text": "Slow Forward",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155012",
+   "text": "Order the ship tiller man to move the ship foward but slowly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155013",
+   "text": "Forward One",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155014",
+   "text": "Order the ship tiller man to move the ship forward one tile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155015",
+   "text": "Slow Back",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155016",
+   "text": "Order the ship tiller man to move the ship backwards but slowly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155017",
+   "text": "Back One",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155018",
+   "text": "Order the ship tiller man to move the ship backwards one tile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155019",
+   "text": "Start Tracking",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155020",
+   "text": "Tracks the position of five ships in range of 200 tiles per 60 seconds and shows a marker for each of them on the map.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155021",
+   "text": "Smart Previous Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155022",
+   "text": "Select the previous current target (Mobile Only).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155023",
+   "text": "Smart Next Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155024",
+   "text": "Uses the Mobile Bar filters to select the nearest target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155025",
+   "text": "Smart Nearest Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155026",
+   "text": "Uses the Mobile Bar filter to select the nearest mobile.  This will consider only the mobiles inside the visible game area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155027",
+   "text": "Target Severely Injured Follower",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155028",
+   "text": "Target the follower with the lowest health.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155029",
+   "text": "Target Severely Injured Mobile.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155030",
+   "text": "Uses the Mobile Bar filters to select the mobile with lowest health.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155031",
+   "text": "Target Severely Injured Party Member",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155032",
+   "text": "Targets the party member with the lowest health.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155033",
+   "text": "Target First Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155034",
+   "text": "Target the first item inside target container. <br>You must first pick the container current target (like with a stored object action) and make sure the container is open. <br><br>NOTE: The first item is always the first item placed inside the container and NOT the first on the grid.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155035",
+   "text": "Target by Type",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155036",
+   "text": "Target a specified type of item. <br>Note: This function will only work with macros and it will target only items inside your backpack (or sub-containers).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155037",
+   "text": "Store Default Pet ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155038",
+   "text": "Store Default Pet Target ~1_NUM~ to use it for quick target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155039",
+   "text": "Target Default Pet ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155040",
+   "text": "Use this action inside of a macro followed by a spell or bandage action with target current to directly target the pet ~1_NUM~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155041",
+   "text": "Store Default Object ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155042",
+   "text": "Store Default Object Target ~1_NUM~ to use it for quick target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155043",
+   "text": "Target Default Object ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155044",
+   "text": "Use this action inside a macro followed by another action with target current to directly target the object ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155045",
+   "text": "Use this action inside a macro followed by \"Use Targeted Object\" to summon your pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155046",
+   "text": "Target Horse Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155047",
+   "text": "Target Ostard Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155048",
+   "text": "Target Llama Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155049",
+   "text": "Target Ridgeback Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155050",
+   "text": "Target Giant Beetle Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155051",
+   "text": "Target Fire Beetle Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155052",
+   "text": "Target Swamp/Bane Dragon Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155053",
+   "text": "Target Cu Sidhe Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155054",
+   "text": "Target Nightmare/Dread War Horse Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155055",
+   "text": "Target Hiryu Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155056",
+   "text": "Target Reptalon Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155057",
+   "text": "Target Fire Steed Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155058",
+   "text": "Use this action inside of a macro followed by \"Use Targeted Object\" to ride your pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155059",
+   "text": "Cannon ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155060",
+   "text": "Target stored for cannon ~1_NUM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155061",
+   "text": "Cancel Cursor Target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155062",
+   "text": "Remove the cursor target",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155063",
+   "text": "Dress Up",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155064",
+   "text": "Best Gear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155065",
+   "text": "Skill Bonus Gear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155066",
+   "text": "Luck Gear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155067",
+   "text": "Invisibility Charge Item",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155068",
+   "text": "Lower Reagent Cost Gear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155069",
+   "text": "Equip Gear 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155070",
+   "text": "Equip Gear 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155071",
+   "text": "Equip Gear 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155072",
+   "text": "Equip Gear 4",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155073",
+   "text": "Equip Gear 5",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155074",
+   "text": "Equip Best Weapon",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155075",
+   "text": "Equip Weapon 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155076",
+   "text": "Equip Weapon 2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155077",
+   "text": "Equip Weapon 3",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155078",
+   "text": "Equip Weapon 4",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155079",
+   "text": "Equip Weapon 5",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155080",
+   "text": "Equip Best Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155081",
+   "text": "Equip Spell Damage Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155082",
+   "text": "Equip Mana Regeneration Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155083",
+   "text": "Equip Faster Casting Book",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155084",
+   "text": "Equip Book 1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1155085",
+   "text": "Equip Book 2",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

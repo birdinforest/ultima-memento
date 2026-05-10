@@ -5,6 +5,7 @@ using Server.Items;
 using System.Collections.Generic;
 using System.Collections;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Spells.Second
 {
@@ -27,7 +28,7 @@ namespace Server.Spells.Second
 		public override void OnCast()
 		{
 			Caster.Target = new InternalTarget( this );
-			Caster.SendMessage( "Select a trapped container, or yourself to summon a magical orb." );
+			Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Select a trapped container, or yourself to summon a magical orb." ) );
 		}
 
 		public void Target( TrapableContainer item )
@@ -47,7 +48,7 @@ namespace Server.Spells.Second
 					Effects.SendLocationParticles( EffectItem.Create( loc, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, 5015, 0 );
 					Effects.PlaySound( loc, item.Map, 0x1F0 );
 
-					Caster.SendMessage( "Any traps on that container are now disabled." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Any traps on that container are now disabled." ) );
 
 					item.TrapType = TrapType.None;
 					item.TrapPower = 0;
@@ -55,7 +56,7 @@ namespace Server.Spells.Second
 				}
 				else
 				{
-					Caster.SendMessage( "That trap seems to complicated to be affected by your magic." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That trap seems to complicated to be affected by your magic." ) );
 					base.DoFizzle();
 				}
 			}
@@ -99,7 +100,7 @@ namespace Server.Spells.Second
 
 						from.PlaySound( 0x1ED );
 						from.FixedParticles( 0x376A, 9, 32, 5008, PlayerSettings.GetMySpellHue( true, from, 0 ), 0, EffectLayer.Waist );
-						from.SendMessage( "You summon a magical orb into your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You summon a magical orb into your pack." ) );
 						Item iWand = new TrapWand(from);
 						int nPower = (int)(from.Skills[SkillName.Magery].Value / 3 ) + 25; // Caps at 66%
 						TrapWand xWand = (TrapWand)iWand;
@@ -114,7 +115,7 @@ namespace Server.Spells.Second
 				}
 				else
 				{
-					from.SendMessage( "This spell has no effect on that!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This spell has no effect on that!" ) );
 				}
 			}
 

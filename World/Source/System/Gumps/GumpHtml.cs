@@ -139,7 +139,7 @@ namespace Server.Gumps
 			disp.AppendLayout( m_Y );
 			disp.AppendLayout( m_Width );
 			disp.AppendLayout( m_Height );
-			disp.AppendLayout( Parent.Intern( m_Text ) );
+			disp.AppendLayout( Parent.InternLocalized( disp.NetState, m_Text ) );
 			disp.AppendLayout( m_Background );
 			disp.AppendLayout( m_Scrollbar );
 		}

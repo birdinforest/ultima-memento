@@ -1,0 +1,3006 @@
+{
+ "batch": 37,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1157091",
+   "text": "Receive powder of fortification.  This powder will increase the maximum durability of  weapons and armor by ten points per use.  The powder has 10 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157092",
+   "text": "Receive a dull copper runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157093",
+   "text": "Receive a shadow iron runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157094",
+   "text": "Receive a copper runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157095",
+   "text": "Receive a bronze runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157096",
+   "text": "Receive a gold runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157097",
+   "text": "Receive an agapite runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157098",
+   "text": "Receive a verite runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157099",
+   "text": "Receive a valorite runic hammer.  This hammer may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157100",
+   "text": "Receive a hued anvil.  This anvil is a decorative item that comes in one of the eight special ore hues",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157101",
+   "text": "Receive a +10 ancient hammer.  This hammer increases the users blacksmithy skill by 10.0 points when equipped. The hammer will take Blacksmithy skill over the skill cap, but only for purposes of crafting and enhancing (it has no effect on quality of BODs, but will increase the quality of repair deeds).  This hammer has 600 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157102",
+   "text": "Receive a +15 ancient hammer.  This hammer increases the users blacksmithy skill by 15.0 points when equipped. The hammer will take Blacksmithy skill over the skill cap, but only for purposes of crafting and enhancing (it has no effect on quality of BODs, but will increase the quality of repair deeds).  This hammer has 600 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157103",
+   "text": "Receive a +30 ancient hammer.  This hammer increases the users blacksmithy skill by 30.0 points when equipped. The hammer will take Blacksmithy skill over the skill cap, but only for purposes of crafting and enhancing (it has no effect on quality of BODs, but will increase the quality of repair deeds).  This hammer has 600 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157104",
+   "text": "Receive a +60 ancient hammer.  This hammer increases the users blacksmithy skill by 60.0 points when equipped. The hammer will take Blacksmithy skill over the skill cap, but only for purposes of crafting and enhancing (it has no effect on quality of BODs, but will increase the quality of repair deeds).  This hammer has 600 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157105",
+   "text": "Receive a wondrous scroll of blacksmithing (105 Skill).  This scroll will allow the blacksmith user to increase their blacksmithy skill cap to 105.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157106",
+   "text": "Receive an exalted scroll of blacksmithing (110 Skill).  This scroll will allow the blacksmith user to increase their blacksmithy skill cap to 110.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157107",
+   "text": "Receive a mythical scroll of blacksmithing (115 Skill).  This scroll will allow the blacksmith user to increase their blacksmithy skill cap to 115.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157108",
+   "text": "Receive a legendary scroll of blacksmithing (120 Skill).  This scroll will allow the blacksmith user to increase their blacksmithy skill cap to 120.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157109",
+   "text": "Receive a stack of hued folded cloth.  This cloth comes in four hues not normally available.  Each stack contains one hundred cloth.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157110",
+   "text": "Receive a pair of hued sandals.  The sandals are hued randomly in one of the eight colors from cloth group tier four or cloth group tier five.  The sandals have no other properties.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157111",
+   "text": "Receive a decorative stretched hide house add-on deed.  The deed will either be for a small stretched hide or a medium stretched hide and have either a south or east facing, all determined randomly at the time the reward is given.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157112",
+   "text": "Receive a decorative flower tapestry house add-on deed.  The deed will either be for a flower tapestry or a dark flower tapestry and have either a south or east facing, all determined randomly at the time the reward is given.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157113",
+   "text": "Receive a decorative bear rug house add-on deed.  The deed will either be for a brown bear rug or a polar bear rug and have either a south or east facing, all determined randomly at the time the reward is given.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157114",
+   "text": "Receive a clothing bless deed.  This deed will allow the user to \"bless\" one item of clothing.  This blessed item then cannot be stolen and will remain with you even if you die.  The deed is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157115",
+   "text": "Receive a spined runic sewing kit.  This sewing kit may be used to craft armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157116",
+   "text": "Receive a horned runic sewing kit.  This sewing kit may be used to craft armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157117",
+   "text": "Receive a barbed runic sewing kit.  This sewing kit may be used to craft armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157118",
+   "text": "Receive a wondrous scroll of tailoring (105 Skill).  This scroll will allow the tailor user to increase their tailoring skill cap to 105.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157119",
+   "text": "Receive an exalted scroll of tailoring (110 Skill).  This scroll will allow the tailor user to increase their tailoring skill cap to 110.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157120",
+   "text": "Receive a mythical scroll of tailoring (115 Skill).  This scroll will allow the tailor user to increase their tailoring skill cap to 115.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157121",
+   "text": "Receive a legendary scroll of tailoring (120 Skill).  This scroll will allow the tailor user to increase their tailoring skill cap to 120.0.  The scroll is consumed when used.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157122",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157123",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157124",
+   "text": "Mosaic Tile Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157125",
+   "text": "Decorative Sleigh & Reindeer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157126",
+   "text": "Snowy Holiday Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157127",
+   "text": "Box of Grass Tiles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157128",
+   "text": "Box of Snow Tiles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157129",
+   "text": "Box of Sand Tiles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157130",
+   "text": "Floor Mosaic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157131",
+   "text": "the port of Bucanneer's Den",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157132",
+   "text": "the stronghold of Serpent's Hold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157133",
+   "text": "the city of New Haven",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157134",
+   "text": "the city of Ocllo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157135",
+   "text": "The Village of Lakeshire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157136",
+   "text": "the town of Mistas",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157137",
+   "text": "the remains of Montor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157138",
+   "text": "the City of Luna",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157139",
+   "text": "the city of Umbra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157140",
+   "text": "the city of Zento",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157141",
+   "text": "the Royal City",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157142",
+   "text": "the Jukari Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157143",
+   "text": "the Kurak Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157144",
+   "text": "the Barrab Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157145",
+   "text": "the Barako Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157146",
+   "text": "the Urali Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157147",
+   "text": "the Sakkhra Village",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157148",
+   "text": "Sleigh and Reindeer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157149",
+   "text": "delivering presents to",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157150",
+   "text": "~1_NAME~'s Home",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157151",
+   "text": "You may not use this while it is in a container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157152",
+   "text": "the town of Delucia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157153",
+   "text": "the town of Papua",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157154",
+   "text": "village of Cove",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157155",
+   "text": "delivering coal to",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157156",
+   "text": "Snowy Holiday Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157157",
+   "text": "2016 Holiday Gift Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157158",
+   "text": "A portion of this item would not be inside the home.  Try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157159",
+   "text": "Toggle Gain Message",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157160",
+   "text": "You will no longer receive City Loyalty gain messages.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157161",
+   "text": "You will now receive City Loyalty gain messages.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157162",
+   "text": "That's not your gift!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157163",
+   "text": "A Special Gift for ~1_NAME~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157164",
+   "text": "~1_PLAYER~ has advanced the Artisan Festival in the City of ~2_CITY~!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157165",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157166",
+   "text": "Commemorative Robe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157167",
+   "text": "The Artisan Festival has begun in the City of Jhelom!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157168",
+   "text": "The Artisan Festival has begun in the City of Minoc!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157169",
+   "text": "The Artisan Festival has begun in the City of Moonglow!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157170",
+   "text": "The Artisan Festival has begun in the City of New Magincia!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157171",
+   "text": "The Artisan Festival has begun in the City of Skara Brae!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157172",
+   "text": "The Artisan Festival has begun in the City of Trinsic!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157173",
+   "text": "The Artisan Festival has begun in the City of Vesper!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157174",
+   "text": "The Artisan Festival has begun in the City of Yew!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157175",
+   "text": "The Artisan Festival has begun in the City of Britain!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157176",
+   "text": "Rock Hammer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157177",
+   "text": "Improved Rock Hammer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157178",
+   "text": "Blackrock",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157179",
+   "text": "You need 75 pieces of blackrock to repair the ~2_CREATURE~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157180",
+   "text": "This title is obtained from turning in Bulk Order Deeds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157181",
+   "text": "the Weaponsmith",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157182",
+   "text": "the Armorer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157183",
+   "text": "the Weaver",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157184",
+   "text": "the Dressmaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157185",
+   "text": "the Haberdasher",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157186",
+   "text": "the Metallurgist",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157187",
+   "text": "the Dabbler",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157188",
+   "text": "the Clockmaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157189",
+   "text": "the Mechanic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157190",
+   "text": "the Fixer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157191",
+   "text": "the Woodworker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157192",
+   "text": "the Builder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157193",
+   "text": "the Craftsman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157194",
+   "text": "the Clerk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157195",
+   "text": "the Transcriber",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157196",
+   "text": "the Scrivener",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157197",
+   "text": "the Baker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157198",
+   "text": "the Gourmet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157199",
+   "text": "the Culinarian",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157200",
+   "text": "the Fletcher",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157201",
+   "text": "the Brewer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157202",
+   "text": "the Concoctor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157203",
+   "text": "the Distiller",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157204",
+   "text": "Ho! Ho! Thank ye ~1_PLAYER~ for giving me a Bulk Order Deed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157205",
+   "text": "Spellbook Only Dye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157206",
+   "text": "Small World Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157207",
+   "text": "Large World Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157208",
+   "text": "plum",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157209",
+   "text": "Your talisman magically saves your crafting resources.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157210",
+   "text": "Your talisman magically improves your spellbook.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157211",
+   "text": "Your talisman has been destroyed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157212",
+   "text": "Guaranteed Spellbook Improvement",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157213",
+   "text": "Crafting Failure Protection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157214",
+   "text": "Lasher",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157215",
+   "text": "This tool can only mine up granite.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157216",
+   "text": "Receive a rock hammer.  This hammer provides an increased chance to mine granite.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157217",
+   "text": "Master Craftsman Talisman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157218",
+   "text": "Master Craftsman Talisman<br>Improves crafting success<br>Provides crafting failure protection<br>Charges: 25",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157219",
+   "text": "Receive a high charge crafting tool. The tool has has 250 uses when new.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157220",
+   "text": "Blackrock Automaton Head",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157221",
+   "text": "A specially lined keg for powder of fortification.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157222",
+   "text": "You have provided more than which has been requested by this deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157223",
+   "text": "Receive an oak runic tool. This tool may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157224",
+   "text": "Receive an ash runic tool. This tool may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157225",
+   "text": "Receive a yew runic tool. This tool may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157226",
+   "text": "Receive a heartwood runic tool. This tool may be used to craft weapons and armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157227",
+   "text": "Master Craftsman Apron<br>Improves crafting results<br>This apron comes in hues not normally available.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157228",
+   "text": "Master Chef's Apron",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157229",
+   "text": "This fermentation barrel can be used to create various wines by fermenting fruit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157230",
+   "text": "You may not open the barrel once fermentation has begun!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157231",
+   "text": "Begin Fermentation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157232",
+   "text": "Empty Barrel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157233",
+   "text": "Rename Vintage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157234",
+   "text": "Fermentation Barrel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157235",
+   "text": "Are you sure you wish to end the fermentation process? All progress and materials will be lost!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157236",
+   "text": "You empty the contents of the barrel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157237",
+   "text": "The fermentation process has already begun.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157238",
+   "text": "You may not rename the vintage once the fermentation process has begun.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157239",
+   "text": "The fermentation process has begun.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157240",
+   "text": "Are you sure you wish to start the fermentation process?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157241",
+   "text": "The fermentation process has not been started.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157242",
+   "text": "What do you wish to call this vintage?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157243",
+   "text": "You may only put one type of fruit in the fermentation barrel at one time. Empty the barrel first.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157244",
+   "text": "You may not add anything to the fermentation barrel after fermentation has begun.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157245",
+   "text": "The fermentation barrel is not empty. Empty it first to add fruit and yeast.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157246",
+   "text": "You may only put fruit and yeast in the fermentation barrel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157247",
+   "text": "You may not eat that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157248",
+   "text": "recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157249",
+   "text": "Grape Wine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157250",
+   "text": "Apple Wine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157251",
+   "text": "Peach Wine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157252",
+   "text": "Pear Wine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157253",
+   "text": "Plum Wine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157254",
+   "text": "<BASEFONT COLOR=#0099cc>~1_VAL~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157255",
+   "text": "You do not have enough fruit or yeast to begin fermentation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157256",
+   "text": "You have already added yeast to the barrel.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157257",
+   "text": "Select Character Backpack Style",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157258",
+   "text": "*You gently taste the fermentation...it's spoiled! You should probably empty the barrel*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157259",
+   "text": "Bottles Remaining: ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157260",
+   "text": "Default",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157261",
+   "text": "Suede",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157262",
+   "text": "Polar Bear",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157263",
+   "text": "Ghoul Skin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157264",
+   "text": "Master Craftsman Talisman<br>Improves crafting success<br>Provides crafting failure protection<br>Charges: 10",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157265",
+   "text": "Master Craftsman Talisman<br>Improves crafting success<br>Provides crafting failure protection<br>Charges: 50",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157266",
+   "text": "Character Backpack Style",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157267",
+   "text": "Dull Ruby",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157268",
+   "text": "Zento Orchid",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157269",
+   "text": "Celtic Lime",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157270",
+   "text": "Energized Gold",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157271",
+   "text": "Poppie White",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157272",
+   "text": "Minocian Fire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157273",
+   "text": "Yewish Pine",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157274",
+   "text": "Campion White",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157275",
+   "text": "Heartwood Sienna",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157276",
+   "text": "Umbran Violet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157277",
+   "text": "Wind Azul",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157278",
+   "text": "Natural Dye",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157279",
+   "text": "Ho ho ho! Santa has delivered gifts to those lucky participants in this City!  Use the gift bag to claim your prize!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157280",
+   "text": "Santa's Gift Bag",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157281",
+   "text": "Santa thanks you for your efforts in the Artisan festival, but you did not qualify for a reward.  Try again in the next city!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157282",
+   "text": "You have already claimed your Artisan Festival reward.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157283",
+   "text": "The Artisan Festival",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157284",
+   "text": "Ho! Ho! Ho-llo!  The Artisan Festival is a limited time event that runs during the month of December!  Santa needs your help making enough toys for all of Britannia and beyond!  Toys aren't cheap, and neither are elves *smirks* so we need to dip into the City Treasury to fund the festival.  The City Treasury will need to have at least 1 million gold...what? It's not like it's a platinum or anything *chuckles*...for the festival to start.  Complete and turn-in Bulk Order Deeds to me in order to get the biggest and best tree we can to celebrate the Holiday Season!  As you can see, right now, we are a little light on trees so turn in completed Bulk Order Deeds to me in order to make the tree grow with Holiday Magic!  Here's the best part - The more Bulk Order Deeds that you hand over to me, the more presents Santa will put in the magic toy bag he gives me!  Give me enough Bulk Order Deeds and we'll have a HUGE tree with ornaments, lights and even a STAR on top!  If we can make that happen Santa will make sure EVERYONE who participates in the festival gets a present, even if they have been a little naughty!  Each festival only lasts for three days in each city, so make sure to give me those Bulk Order Deeds so we can see our tree grow!  Did I mention elves like treats and cookies too?  Good luck!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157285",
+   "text": "The barrel cannot hold anymore fruit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157286",
+   "text": "Receive a Blackrock Moonstone.  This ingredient is required for crafting Dr. Spector's Lenses and the Kotl Black Rod.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157287",
+   "text": "Receive a recipe for Dr. Spector's Lenses. These specialty lenses can be crafted using the Tinkering Skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157288",
+   "text": "Receive a Kotl Black Rod recipe.  This exotic weapon can be crafted using the Carpentry skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157289",
+   "text": "Receive a recipe for a Kotl Automaton.  This recipe allows a tinker to craft a powerful automaton.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157290",
+   "text": "Receive an Automaton Actuator.  This ingredient is required to craft an automaton.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157291",
+   "text": "Talisman<br>Provides guaranteed spellbook improvement<br>Charges: 10",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157292",
+   "text": "Crafting Failure Protection will prevent the loss of materials upon crafting failure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157293",
+   "text": "Receive a dull copper runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157294",
+   "text": "Receive a shadow iron runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157295",
+   "text": "Receive a copper runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157296",
+   "text": "Receive a bronze runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157297",
+   "text": "Receive a gold runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157298",
+   "text": "Receive a agapite runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157299",
+   "text": "Receive a verite runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157300",
+   "text": "Receive a valorite runic mallet and chisel. This mallet may be used to armor with magical properties",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157301",
+   "text": "Worth ~1_POINTS~ turn in points or ~2_POINTS~ bank points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157302",
+   "text": "Banking Points Enabled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157303",
+   "text": "Banking Points Disabled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157304",
+   "text": "Combine this deed with contained items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157305",
+   "text": "Receive a Lasher statuette. This blessed statuette may be used to create a unicorn mount.<br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157306",
+   "text": "Receive a rock hammer that guarantees a 100% chance at mining up granite.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157307",
+   "text": "Receive a small, 3x3 world tree tile house addon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157308",
+   "text": "Receive a large, 5x5 world tree tile house addon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157309",
+   "text": "Bank Points Automatically",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157310",
+   "text": "The item is not made from the requested resource.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157311",
+   "text": "Both orders must use the same resource type.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157312",
+   "text": "Plum Tree",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157313",
+   "text": "Fermentation<br>Add fruit and yeast to the barrel and begin the fermentation process.<br>Fermentation takes 24 hours and will produce 1 bottle for every 4 fruit.  Success is determined by the bacterial resistance of the yeast and your Alchemy & Cooking Skills.<br>The following fruit can be fermented: Grapes, Apples, Peaches, Pears, and Plums.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157314",
+   "text": "Pet Branding Iron",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157315",
+   "text": "<BASEFONT COLOR=#668cff>Branded: ~1_VAL~<BASEFONT COLOR=#FFFFFF>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157316",
+   "text": "Your target is currently immune to bone breaking!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157317",
+   "text": "The attack shatters your bones!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157318",
+   "text": "Bone Breaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157319",
+   "text": "This property provides a chance to cause a loss of stamina over time and prevent the use of refreshment potions for a period of time to the target.  This property can be found on select artifacts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157320",
+   "text": "Bone Breaker",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157321",
+   "text": "*You are engulfed in a swarm of insects!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157322",
+   "text": "Your target is currently immune to swarm!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157323",
+   "text": "*You are overcome with intense energy!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157324",
+   "text": "Your target is currently immune to sparks!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157325",
+   "text": "Swarm ~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157326",
+   "text": "Sparks ~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157327",
+   "text": "This property has a chance to cause a swarm of insects to attack your opponent resulting in physical damage caused by insect bites.  This property can be found on select artifacts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157328",
+   "text": "Swarm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157329",
+   "text": "This property provides a chance to cause energy damage over time that converts a percentage of the damage back to the attacker.  This property can be found on select artifacts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157330",
+   "text": "Sparks",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157331",
+   "text": "Large Fancy Buffet Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157332",
+   "text": "Some of the items could not be created because there is not enough empty space in the container.  Empty the container and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157333",
+   "text": "Bride Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157334",
+   "text": "Groom Set",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157335",
+   "text": "Please make a selection:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157336",
+   "text": "Magical Cake Batter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157337",
+   "text": "Magical Botanical Archway Seed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157340",
+   "text": "Small Fancy Buffet Table",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157342",
+   "text": "Wedding Package Addon Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157351",
+   "text": "你需要 ~1_SKILL_REQUIREMENT~ 战术技能才能使用",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1157352",
+   "text": "你需要 ~1_SKILL_REQUIREMENT~ 武器技能才能使用",
+   "flag": "Custom",
+   "category": "mixed"
+  },
+  {
+   "number": "1157353",
+   "text": "Ultima Store",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157355",
+   "text": "There are new items in the Ultima Store.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157356",
+   "text": "Have you seen the latest items available in the Ultima Store?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157357",
+   "text": "Have you checked out what’s new in the Ultima Store?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157358",
+   "text": "Visit Store",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157359",
+   "text": "*Overwhelming cold damages your health and fatigue!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157360",
+   "text": "*The creature's poisonous bite damages you!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157361",
+   "text": "Energy Damage Over Time",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157362",
+   "text": "Biting insects are attacking you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157363",
+   "text": "Your bones are broken! Stamina drain over time!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157364",
+   "text": "Immune to broken bones!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157365",
+   "text": "I'm sorry, I cannot accept this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157366",
+   "text": "Glaive of the Infinite Swarm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157367",
+   "text": "Kilt of Feudal Vise",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157368",
+   "text": "I can only work with artifacts that are in pristine condition.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157369",
+   "text": "I am the Exalted Artificer. Hand me select human artifacts to convert them for gargoyle use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157370",
+   "text": "The base wedding package includes everything to celebrate your special day!  The package includes: 1 magical botanical archway seed which can be redeemed for 1 of 3 botanical archways, 6 cocktail tables, 6 fancy wedding chairs, 20 regular wedding chairs, 10 tabletop bouquets, 4 standing bouquets, 2 fancy wedding candelabras, 2 regular wedding candelabras, 1 magical cake batter which can be redeemed for 1 of 8 wedding cakes, 1 chocolate fountain, 2 magical wedding sewing kits which can be redeemed for a bride or groom set (includes wedding dress, tuxedo, and cake toppers), 2 short buffet table deeds, and 1 long buffet table deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157371",
+   "text": "Do your wedding plans require accommodations for additional guests?  The addon wedding package includes 4 cocktail tables, 4 fancy wedding chairs, 10 regular wedding chairs, 6 tabletop bouquets, 2 standing bouquets, 1 fancy wedding candelabra, 1 regular wedding candelabra, 1 short buffet table deed, and 1 long buffet table deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157372",
+   "text": "This tool can be used to add special brands to your pets to identify them unique to you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157373",
+   "text": "Receive a Windrunner statuette. This blessed statuette may be used to create an abyssal wolf mount.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157374",
+   "text": "<CENTER>Branding Iron</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157375",
+   "text": "The selected pet cannot be branded by this branding iron.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157376",
+   "text": "The selected pet is not accessible to brand.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157377",
+   "text": "There are no charges left on this branding iron.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157378",
+   "text": "The branding failed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157379",
+   "text": "Select a pet to brand.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157380",
+   "text": "You remove the brand from the pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157381",
+   "text": "The pet was not branded.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157382",
+   "text": "You brand the pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157383",
+   "text": "Trains the creature in the power of Bushido.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157384",
+   "text": "Trains the creature in the power of Chivalry.  Creature must have positive karma.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157385",
+   "text": "Trains the creature in the power of Discordance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157386",
+   "text": "Trains the creature in the power of Mysticism.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157387",
+   "text": "Trains the creature in the power of Necromancy.  Creature must have negative karma.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157388",
+   "text": "Trains the creature in the power of Ninjitsu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157389",
+   "text": "Trains the creature in the power of Poisoning.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157390",
+   "text": "Trains the creature in the power of Spellweaving.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157391",
+   "text": "Trains the creature in the power of Magery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157392",
+   "text": "Trains the creature in the bleed, armor ignore, and paralyze special moves.  Also trains the creature in the Pierce & Thrust mastery abilities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157393",
+   "text": "Arcane Pyromancy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157394",
+   "text": "Trains the creature in the power of Arcane Pyromancy, a combination of Necromancy and Magery that harnesses the power of fire.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157395",
+   "text": "Trains the creature in the disarm and paralyze special moves. Also trains the creature in the Heightened Senses & Shield Bash mastery abilities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157396",
+   "text": "Trains the creature in the nerve strike, armor ignore, and disarm special moves.  Also trains the creature in the Focused Eye & Onslaught mastery abilities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157397",
+   "text": "Trains the creature in the disarm and paralyze special moves. Also trains the creature in the Knockout & Rampage mastery abilities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157398",
+   "text": "Rune Corruption",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157399",
+   "text": "Trains the creature in the Rune Corruption special ability, causing reduction to a target's damage resistances. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157400",
+   "text": "Grasping Claw",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157401",
+   "text": "Trains the creature in the Grasping Claw special ability, causing the creature to use its claws to shred a target causing a loss in physical resistance and physical damage. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157403",
+   "text": "Trains the creature in the Cold Wind special ability, causing the creature to breathe an icy wind around targets that causes cold damage over time. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157405",
+   "text": "Trains the creature in the Raging Breath special ability, causing the creature to use a fiery breath inflicting a burst of fire damage that persists over time. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157407",
+   "text": "Trains the creature in the Conductive Blast special ability, causing reduction to a target's energy resistance. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157409",
+   "text": "Trains the creature in the Lightning Force special ability, causing the creature to attack with energy damage and has chance to stun. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157411",
+   "text": "Trains the creature in the Steal Life special ability, causing the creature to attack with energy damage that will convert some of that damage back to health over time. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157412",
+   "text": "Angry Fire",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157413",
+   "text": "Trains the creature in the Angry Fire special ability, causing the creature to deliver devastating fire attacks. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157414",
+   "text": "Dragon Breath",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157415",
+   "text": "Trains the creature in the Dragon Breath special ability, causing the creature to deliver devastating fire damage based on its target's health. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157416",
+   "text": "Inferno",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157417",
+   "text": "Trains the creature in the Inferno special ability, causing the creature to surround its targets with fire, causing a reduction to fire resistance and devastating fire damage. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157418",
+   "text": "Flurry Force",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157419",
+   "text": "Trains the creature in the Flurry Force special ability, causing the creature to attack with a flurry reducing a target's physical resist and causing physical damage. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157420",
+   "text": "Vicious Bite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157421",
+   "text": "Trains the creature in the Vicious Bite special ability, causing the creature to inflict a festering wound on approaching targets that does direct damage over time. Mana Cost 20.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157422",
+   "text": "Searing Wounds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157423",
+   "text": "Trains the creature in the Searing Wounds special ability, causing the creature to sear attackers resulting in a reduction in the effect of healing. Mana Cost 25.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157424",
+   "text": "Life Leech",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157425",
+   "text": "Trains the creature in the Life Leech special ability, causing the creature to leech life from incoming damage. Mana Cost 5.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157426",
+   "text": "Sticky Skin",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157427",
+   "text": "Trains the creature in the Sticky Skin special ability, causing a reduction in attack speed to attackers. Mana Cost 5.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157428",
+   "text": "Tail Swipe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157429",
+   "text": "Trains the creature in the Tail Swipe special ability, causing the creature to lash its tail at targets resulting in direct damage and a chance of paralysis and confusion, resulting in a decrease of intelligence and dexterity. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157430",
+   "text": "Venomous Bite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157431",
+   "text": "Trains the creature in the Venomous Bite special ability, causing the creature to poison all nearby targets. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157432",
+   "text": "Mana Drain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157433",
+   "text": "Trains the creature in the Mana Drain special ability, causing the creature to drain the mana of all nearby targets. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157434",
+   "text": "Repel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157435",
+   "text": "Trains the creature in the Repel special ability, causing all incoming damage to be reflected at the attacker. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157436",
+   "text": "Trains the creature in the Nerve Strike special move, causing paralysis and direct damage to a target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157437",
+   "text": "Trains the creature in the Whirlwind Attack special move, causing damage to all nearby targets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157438",
+   "text": "Trains the creature in the Lightning Arrow special move, causing energy damage to nearby targets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157439",
+   "text": "Trains the creature in the Infused Throw special move, causing dismount or paralysis and extra damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157440",
+   "text": "Trains the creature in the Mystic Arc special move, causing extra chaos damage to nearby targets.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157441",
+   "text": "Trains the creature in the Talon Strike special move, causing extra damage and reducing a target's hit point regeneration.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157442",
+   "text": "Trains the creature in the Psychic Attack special move, causing physical damage and reducing a targets intelligence, spell damage increase, and lower mana cost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157443",
+   "text": "Trains the creature in the Armor Ignore special move, which ignores a target's resistances while inflicting slightly less damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157444",
+   "text": "Trains the creature in the Armor Pierce special move, causing increased damage while ignoring a portion of the target's resistance to damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157445",
+   "text": "Trains the creature in the Bladeweave special move, allowing the use of randomly selected special moves including: bleed, armor ignore, block, mortal strike, feint, paralyzing blow, and crushing blow.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157446",
+   "text": "Trains the creature in the Bleed special move, causing bleeding wounds to a target that do damage over time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157447",
+   "text": "Trains the creature in the Block special move, causing an increase in defense chance for a period of time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157448",
+   "text": "Trains the creature in the Concussion Blow special move, causing direct damage and a mana drain on a target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157449",
+   "text": "Trains the creature in the Crushing Blow special move, delivering extra damage to a target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157450",
+   "text": "Trains the creature in the Disarm special move, causing a target to unequip its weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157451",
+   "text": "Trains the creature in the Dismount special move, causing the creature to dismount a target.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157452",
+   "text": "Trains the creature in the Double Strike special move, causing dual attacks but at reduced damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157453",
+   "text": "Trains the creature in the Dual Wield special move, increasing its swing speed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157454",
+   "text": "Trains the creature in the Feint special move, causing a decrease in incoming damage.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157455",
+   "text": "Trains the creature in the Force of Nature special move, causing direct damage and a damage increase to the following attack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157456",
+   "text": "Trains the creature in the Frenzied Whirlwind special move, causing damage to nearby targets.  Unlike the player's Frenzied Whirlwind special move, this attack does not reduce the movement of nearby enemies.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157457",
+   "text": "Trains the creature in the Mortal Strike special move, causing a target to be unable to heal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157458",
+   "text": "Trains the creature in the Paralyze special move, causing a target to become paralyzed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157459",
+   "text": "Aura of Energy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157460",
+   "text": "Trains the creature in the Aura of Energy area effect, causing energy damage to nearby targets. Mana Cost 20.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157461",
+   "text": "Firestorm",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157462",
+   "text": "Trains the creature in the Firestorm area effect, causing fire damage to nearby targets and setting the terrain ablaze.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157463",
+   "text": "Explosive Goo",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157464",
+   "text": "Trains the creature in the Explosive Goo area effect, causing a fiery spray on nearby victims causing fire damage. Mana Cost 30.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157465",
+   "text": "Essence of Earth",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157466",
+   "text": "Trains the creature in the Essence of Earth area effect, causing physical damage to nearby targets. Mana Cost 20.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157467",
+   "text": "Aura of Nausea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157468",
+   "text": "Trains the creature in the Aura of Nausea area effect, causing nearby targets to suffer a reduction in swing speed, hit chance, defense chance, and faster casting. Mana Cost 100.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157469",
+   "text": "Essence of Disease",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157470",
+   "text": "Trains the creature in the Essence of Disease area effect, causing poison damage to nearby targets. Mana Cost 20.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157471",
+   "text": "Trains the creature in the mortal strike, concussion, and disarm special moves.  Also trains the creature in the Toughness & Stagger mastery abilities.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157472",
+   "text": "Trains the creature in advanced use of Magery spells.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157473",
+   "text": "Necromage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157474",
+   "text": "Trains the creature in the power of Necromagery, a combination of Necromancy and Magery.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157475",
+   "text": "Poison Breath",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157476",
+   "text": "Trains the creature in the Poison Breath area effect, causing lethal poison to nearby targets.  Mana Cost 50.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157477",
+   "text": "Required Control Slots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157478",
+   "text": "Pet Rating",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157479",
+   "text": "Special Moves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157480",
+   "text": "Special Abilities",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157481",
+   "text": "Magical Abilities",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157482",
+   "text": "Area Effect Abilities",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157483",
+   "text": "You may not use this while inside a house or on a boat.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157484",
+   "text": "A Totem is already active in this area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157485",
+   "text": "<CENTER>ANIMAL TRAINING MENU</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157486",
+   "text": "<CENTER>TRAINING CONFIRMATION</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157487",
+   "text": "Begin Animal Training",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157488",
+   "text": "Train Pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157489",
+   "text": "Total Pet Training Points:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157490",
+   "text": "Avail. Training Points:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157491",
+   "text": "Pet Training Progress:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157492",
+   "text": "Pet Training Options",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157493",
+   "text": "REQUIREMENTS",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157494",
+   "text": "Additional Skill Training Points:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157495",
+   "text": "Increase Magic Skill Caps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157496",
+   "text": "Increase Combat Skill Caps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157497",
+   "text": "You successfully train the pet!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157498",
+   "text": "You do not have the available pet slots to train this pet. Please free up pet slots and try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157499",
+   "text": "You are unable to train your pet. The required powerscroll was not found in your main backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157500",
+   "text": "Your pet lacks the required points to complete this training.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157501",
+   "text": "Your pet looks to have already completed that training.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157502",
+   "text": "Pet Training Confirmation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157503",
+   "text": "All pet training is final and can't be unlearned. Do you want to complete this training?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157504",
+   "text": "Initiating training for this pet will remove pack instincts. Pack instincts is restricted on pets four slots and above. Do you wish to continue?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157505",
+   "text": "Pet Advancements",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157506",
+   "text": "Base Damage Per Second",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157507",
+   "text": "Increase a creature's strength.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157508",
+   "text": "Increase a creature's dexterity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157509",
+   "text": "Increase a creature's intelligence.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157510",
+   "text": "Increase a creature's maximum hit points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157511",
+   "text": "Increase a creature's maximum stamina.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157512",
+   "text": "Increase a creature's maximum mana.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157513",
+   "text": "Increase a creature's natural hit point regeneration rate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157514",
+   "text": "Increase a creature's natural stamina regeneration rate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157515",
+   "text": "Increase a creature's natural mana regeneration rate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157516",
+   "text": "Increase a creature's base damage per second average.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157517",
+   "text": "Increase a creature's physical resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157518",
+   "text": "Increase a creature's fire resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157519",
+   "text": "Increase a creature's cold resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157520",
+   "text": "Increase a creature's energy resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157521",
+   "text": "Increase a creature's poison resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157522",
+   "text": "Increase a creature's specific skill cap with the use of powerscrolls.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157523",
+   "text": "This ability requires additional skills the creature has not yet learned and will require additional training points. To learn this ability the creature's training points will be reduced by the total amount of training points necessary.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157524",
+   "text": "Increase a creature's maximum stamina.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157525",
+   "text": "Animal Trainers throughout Britannia rejoice! New animal training techniques discovered!  Visit an Animal Trainer to learn more!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157526",
+   "text": "Such an exciting time to be an Animal Trainer! New taming techniques have been discovered!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157527",
+   "text": "Discovering Animal Training",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157528",
+   "text": "Years of patience and meticulous study have paid off!  New Animal Training techniques have been discovered!  Animal tamers may now train their pets, teaching them new ways to fight and survive!  The first step is to tame a creature.  Find a creature in the wild, and using your animal taming skill - tame it!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157529",
+   "text": "Tame a creature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157530",
+   "text": "The life of an animal trainer is not for everyone, return to an Animal Trainer if you wish to try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157531",
+   "text": "Find a creature in the wild, and using the animal taming skill - tame it!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157532",
+   "text": "Well done!  Now that you have your pet it is time to start training!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157533",
+   "text": "Now that your pet is tame, you must begin the training process.  Pets will train while they are engaged in combat, and will progress as they battle other creatures.  Pets train best against wild creatures, and will learn the most from the fiercest creatures in the realm!  There is a limit to how much a pet can learn from a single foe, so make sure your pet has fresh adversaries!<br><br>When you are ready to begin the training process, use the Animal Lore skill on your pet and select \"Begin Animal Training.\"  When your pet has completed the training process you can teach them new ways to fight and survive!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157534",
+   "text": "Use the Animal Lore Skill on your pet and select \"Begin Animal Training.\"<br><br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157535",
+   "text": "When you are ready to begin the training process, use the Animal Lore skill on your pet and select \"Begin Animal Training.\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157536",
+   "text": "Well done!  Now that your pet has begun the Animal Training process return to the Animal Trainer to learn more about the next steps.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157537",
+   "text": "Your pet's control slot have been updated.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157538",
+   "text": "A step closer to mastering Animal Training.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157539",
+   "text": "You've completed an Animal Training quest! Visit an Animal Trainer to continue!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157540",
+   "text": "Now that you have started the training process it is time to lead your pet into battle!  Pets will train while they are engaged in combat, and will progress as they battle other creatures.  Pets train best against wild creatures, and will learn the most from the fiercest creatures in the realm!  There is a limit to how much a pet can learn from a single foe, so make sure your pet has fresh adversaries!  When the \"Pet Training Progress\" bar is full, your pet is ready to learn new ways to fight and survive.  <br><br>Now you must lead your pet into the wild and battle it against other creatures!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157541",
+   "text": "Lead your pet into the wild and battle it against other creatures until the \"Pet Training Progress\" bar is full.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157542",
+   "text": "Lead your pet into the wild and battle it against other creatures until the \"Pet Training Progress\" bar is full.  Remember Pets train best against wild creatures, and will learn the most from the fiercest creatures in the realm!  There is a limit to how much a pet can learn from a single foe, so make sure your pet has fresh adversaries!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157543",
+   "text": "*The creature surges with battle experience and is ready to train!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157544",
+   "text": "As One",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157545",
+   "text": "Now that your pet has fully trained, it is time to teach it something new!  Use the Animal Lore skill on your pet and select \"Pet Training Options.\"  The Animal Training menu lists all of the available training properties you can apply to the pet.<br><br>The Categories pane shows the category of available properties:<br><br>Stats and Resists allow you to increase individual Stat and Resist properties for the pet.<br><br>Increase Magic Skill Caps and Increase Combat Skill Caps allow you to increase skill caps for various magical and combat related skills.  This process requires the use of Power Scrolls and only increases the skill cap, you will still need to train the pet in the specific skill through traditional pet skill training. <br><br>Magical Abilities allow you to give the pet magical abilities in one of several spell schools<br><br>Special Abilities allow you to give the pet special abilities, different than those traditionally found as weapon special moves. <br><br>Special Moves allow you to give the pet special moves, similar to those traditionally found as weapon special moves. <br><br>Area Effect Abilities allow you to give the pet an area attack, targeting multiple adversaries within an area.<br><br>When you train your pet, the number of control slots the pet requires will increase.  The maximum number of control slots any pet can have is 5, however individual pets have maximum control slots they can be trained to.<br><br>A pet can only learn so much during each training level.  As you mix and match properties from the Animal Training menu, the amount of available training points will decrease based on your selections.  Different property selections have different training point costs.  When you are ready to apply a new property to your pet, select \"Train Pet\" and confirm you are ready to do so!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157546",
+   "text": "Use the Animal Lore skill on your pet and select \"Pet Training Options\" to mix and match which properties you will train your pet.  When you are satisfied with the property you have chosen select \"Train Pet\" and confirm the training!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157547",
+   "text": "You have Discovered Animal Training!  Train new pets and mix and match properties to create unique variations of pets to take into battle!  Good Luck, Animal Trainer!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157548",
+   "text": "You may not use a totem here.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157549",
+   "text": "You cannot currently tame that creature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157550",
+   "text": "You lack the taming skill required to train this creature.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157551",
+   "text": "Recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157552",
+   "text": "Magical Creatures: bake kitsune, cold drake, cu sidhe, dark steed, dragon, dragon turtle, drake, dread warhorse, eodon bird of prey, fire steed, frost dragon, greater dragon, hellsteed, hiryu, ki-rin, lasher, lava lizard, lesser hiryu, nightmare, phoenix, reptalon, serpentine dragon, silver steed, silver wolf, skree, triton, tsuki wolf, unicorn, vollem, white wyrm.<br><br><i>Note: Training these creatures in other Magics will remove any innate magic ability</i><br><br>Necromantic Creatures:dark steed, dark wolf, dire wolf, dread spider, dread warhorse, hell hound, hellcat, hellsteed, nightmare, predator hellcat, shadow wyrm, skeletal cat, tsuki wolf, vampire bat, windrunner.<br><br>Sticky Skin Creatures: corrosive slime, giant toad, slime, toxic slith, triton.<br><br>Tailed Creatures: alligator, bake kitsune, bane dragon, cold drake, cougar, cu sidhe, dark wolf, dog, dragon, dragon turtle, dragon wolf, drake, eodon bird of prey, frost dragon, gaman, giant ice worm, giant serpent, greater dragon, grey wolf, hell hound, hellcat, high plains boura, hiryu, ice snake, ki-rin, lava lizard, lava serpent, lava snake, lesser hiryu, lowland boura, panther, predator hellcat, raptor, rat, reptalon, ruddy boura, saurosaurus, scorpion, serpentine dragon, sewer rat, shadow wyrm, silver wolf, skeletal cat, skree, slith, snake, snow leopard, stone slith, toxic slith, triton, tsuki wolf, vollem, white wolf, white wyrm, wild tiger, windrunner.<br><br>Only creatures from the Tokuno Islands are capable of learning Bushido & Ninjitsu abilities.<br><br>Insectoid Creatures: deathwatch beetle, fire ant, fire beetle, frost mite, giant beetle, iron beetle, rune beetle.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157553",
+   "text": "Pet training planning provides trainers a method of viewing the total cost of the upgrades they would like to make to their pet. To enable pet training planning, open the planning gump by clicking the “Plan” button on the Animal Training Menu.  You can now toggle planning on by clicking “ENABLE”.  Once in planning mode you may plan upgrades without training your pet. You may plan up to 20 selections at a time, which are subject to normal training restriction. Once you are satisfied with your training plan you can “DISABLE” planning mode and begin training your pet using your plan as a handy guide and reference.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157554",
+   "text": "Recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157555",
+   "text": "Recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157556",
+   "text": "Recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157557",
+   "text": "Recycle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157558",
+   "text": "The Animal Training menu lists all of the available training properties you can apply to the pet.<br><br>The Categories pane shows the category of available properties:<br><br>Stats and Resists allow you to increase individual Stat and Resist properties for the pet.<br><br>Increase Magic Skill Caps and Increase Combat Skill Caps allow you to increase skill caps for various magical and combat related skills. This process requires the use of Power Scrolls and only increases the skill cap, you will still need to train the pet in the specific skill through traditional pet skill training.<br><br>Magical Abilities allow you to give the pet magical abilities in one of several spell schools.<br><br>Special Abilities allow you to give the pet special abilities, different than those traditionally found as weapon special moves.<br><br>Special Moves allow you to give the pet special moves, similar to those traditionally found as weapon special moves.<br><br>Area Effects allow you to give the pet an area attack, targeting multiple adversaries within an area.<br><br>When you train your pet, the number of control slots the pet requires will increase. The maximum number of control slots any pet can have is 5, however individual pets have maximum control slots they can be trained to.<br><br>A pet can only learn so much during each training level. As you mix and match properties from the Animal Training menu, the amount of available training points will decrease based on your selections. Different property selections have different weights.<br><br>Each training category is restricted in how much a pet can learn.  Pets can learn 1 school of magic, 1 special ability, 2 special moves and 1 area effect.  A pet may learn a maximum of 3 total overall from any combination within those limits.<br><br>When you are ready to apply a new property to your pet, select \"Train Pet\" and confirm you are ready to do so!  Remember!  All training is final, so be sure you are training the creature the way you wish it to be trained!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157559",
+   "text": "Piercing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157560",
+   "text": "Bashing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157561",
+   "text": "Slashing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157562",
+   "text": "Battle Defense",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157563",
+   "text": "Training Point Weight Caps<br><br>Strength, Dexterity & Intelligence: 2300<br><br>Hit Point, Stamina, & Mana: 3300<br><br>Resists: 1095 <br><br>Hit Point Regeneration: 360<br><br>Stamina Regeneration: 360<br><br>Mana Regeneration: 360<br><br>Individual Attribute Caps<br><br>Strength & Intelligence: 700<br><br>Dexterity: 150<br><br>Hit Points: 1100<br><br>Stamina: 150<br><br>Mana: 1500<br><br>Resists: 80<br><br>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157564",
+   "text": "*The pet does not appear to train from that*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157565",
+   "text": "*The pet's battle experience has slightly increased!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157566",
+   "text": "Completing this training will remove all Magical abilities from this pet.  All pet training is final and can't be unlearned.  Do you want to complete this training?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157567",
+   "text": "You don't currently have any pets that are in the training process.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157568",
+   "text": "View real-time training progress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157569",
+   "text": "[Pet Training Power Hour]:  Your pet is under the effects of enhanced training progress for the next hour!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157570",
+   "text": "[Pet Training Power Hour]:  Your pet is no longer under the effects of enhanced training progress.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157571",
+   "text": "Pet Slot Adjustment Warning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157572",
+   "text": "This creature's pet slot will increase by one, after applying pet training options. Do you wish to continue?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157573",
+   "text": "*The pet's battle experience has fairly increased!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157574",
+   "text": "*The pet's battle experience has greatly increased!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157575",
+   "text": "Sabre-Toothed Tiger",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157576",
+   "text": "Platinum Drake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157577",
+   "text": "Triceratops",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157578",
+   "text": "Crimson Drake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157579",
+   "text": "Lion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157580",
+   "text": "Blood Fox",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157581",
+   "text": "Stygian Drake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157582",
+   "text": "Ossein Ram",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157583",
+   "text": "Frost Mite",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157584",
+   "text": "Tiger Cub",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157585",
+   "text": "Drake",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157586",
+   "text": "Animal Lore & Animal Taming Skill",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157587",
+   "text": "Mount",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157588",
+   "text": "PLAN",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157589",
+   "text": "ENABLE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157590",
+   "text": "DISABLE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157591",
+   "text": "Pet Training Planning",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157592",
+   "text": "Your selection has been added to your training plan.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157593",
+   "text": "Your selection has been removed to your training plan.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157594",
+   "text": "Ethologist",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157595",
+   "text": "This title is obtained by completing the \"Discovering Animal Training\" quest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157596",
+   "text": "Add To Plan",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157597",
+   "text": "You have enabled pet training planning. All pet training selections will be added to the planning gump which will display up to 20 training options. For more details view the information gump.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157598",
+   "text": "You have disabled pet training planning.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157599",
+   "text": "Remaining Training Points:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157600",
+   "text": "Requirement: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157601",
+   "text": "This creature's pet slot will be updated by starting the pet training process. Do you wish to continue?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157602",
+   "text": "Receive a bottle of special Natural Dyes. These dyes may be used on artifacts and enhanced equipment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157603",
+   "text": "Receive a bag of fourteen different bulk order deed book covers. The covers come in all of your favorite wood and Bulk Order deed hues (Alchemy, Blacksmithy, Cooking, Bowyery, Carpentry, Inscription, Tailoring, Tinkering, Oak, Ash, Yew, Heartwood, Bloodwood, Frostwood). Each cover may be used a maximum of 30 times to cover bulk order deed books.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157604",
+   "text": "Receive a special totem that can be used to enhance the chances rare colored pets will spawn!  Use the totem to increase the chances of rare colors of the following creatures: Snow Leopard, Frost Spider, Nightmare, White Wyrm, Giant Toad, & Stygian Drake.  Rare colored creatures spawned when a totem is in place can be tamed exclusively by the owner of the lure, their party, and guild for a short period.  The totem comes with three charges and lasts for twenty minutes per use.  Be sure to keep spawns cleared out so new creatures will spawn with an enhanced chance of rare colors!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157605",
+   "text": "Bulk Order Cover (~1_HUE~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157606",
+   "text": "Totem of Chromatic Fortune",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1157607",
+   "text": "Blacksmithy",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

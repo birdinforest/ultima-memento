@@ -3,12 +3,19 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Gumps 
 {
     public class MyLibrary : Gump
     {
 		public int m_Origin;
+
+		private static string ResolveText( Mobile from, string text )
+		{
+			string lang = AccountLang.GetLanguageCode( from.Account );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
 
 		public MyLibrary ( Mobile from, int source ) : base ( 50, 50 )
 		{
@@ -29,7 +36,7 @@ namespace Server.Gumps
 
 			AddImage(0, 0, 9546, PlayerSettings.GetGumpHue( from ));
 
-			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">LIBRARY</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "LIBRARY" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(869, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
 			int x = 16;
@@ -42,35 +49,35 @@ namespace Server.Gumps
 			int rows = 0;
 
 			AddButton(x, y, 4011, 4011, 400, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Basics</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Basics" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			if ( from.RaceID > 0 )
 			{
 				AddButton(x, y, 4011, 4011, 401, GumpButtonType.Reply, 0);
-				AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Creature Help</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Creature Help" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				y=y+d;
 				rows++;
 			}
 
 			AddButton(x, y, 4011, 4011, 402, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Fame & Karma</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Fame & Karma" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 403, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Item Properties</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Item Properties" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 404, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Skills</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Skills" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
 			AddButton(x, y, 4011, 4011, 405, GumpButtonType.Reply, 0);
-			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">Weapon Abilities</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + ResolveText( from, "Weapon Abilities" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			y=y+d;
 			rows++;
 
@@ -89,7 +96,7 @@ namespace Server.Gumps
 					var info = bookInfo( entry, 1 );
 					if (string.IsNullOrWhiteSpace(info)) continue; // Skip any that don't actually exist
 
-                    string title = discovered ? info : "---------------";
+                    string title = discovered ? ResolveText( from, info ) : "---------------";
                     if ( discovered ) AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
                     AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
                     y=y+d;
@@ -263,82 +270,21 @@ namespace Server.Gumps
 			bool effect = false;
 			int num = 0;
 
-			if ( book.Name == "Akalabeth's Tale" ){ num = 1; }
-			else if ( book.Name == "Alchemical Elixirs" ){ num = 2; }
-			else if ( book.Name == "Alchemical Mixtures" ){ num = 3; }
-			else if ( book.Name == "Antiquities" ){ num = 4; }
-			else if ( book.Name == "The Art of Thievery" ){ num = 5; }
-			else if ( book.Name == "The Balance Vol I of II" ){ num = 6; }
-			else if ( book.Name == "The Balance Vol II of II" ){ num = 7; }
-			else if ( book.Name == "The Bard's Tale" ){ num = 8; }
-			else if ( book.Name == "Barge of the Dead" ){ num = 9; }
-			else if ( book.Name == "The Black Gate Demon" ){ num = 10; }
-			else if ( book.Name == "The Blue Ore" ){ num = 11; }
-			else if ( book.Name == "The Bottle City" ){ num = 12; }
-			else if ( book.Name == "Castles Above" ){ num = 13; }
-			else if ( book.Name == "The Cruel Game" ){ num = 14; }
-			else if ( book.Name == "Crystal Flasks" ){ num = 15; }
-			else if ( book.Name == "The Curse of Mangar" ){ num = 16; }
-			else if ( book.Name == "The Curse of the Island" ){ num = 17; }
-			else if ( book.Name == "The Dark Age" ){ num = 18; }
-			else if ( book.Name == "The Dark Core" ){ num = 19; }
-			else if ( book.Name == "The Darkness Within" ){ num = 20; }
-			else if ( book.Name == "Death Dealing" ){ num = 21; }
-			else if ( book.Name == "The Death Knights" ){ num = 22; }
-			else if ( book.Name == "Death to Pirates" ){ num = 23; }
-			else if ( book.Name == "The Demon Shard" ){ num = 24; }
-			else if ( book.Name == "The Destruction of Exodus" ){ num = 25; }
-			else if ( book is LodorBook ){ num = 26; }
-			else if ( book.Name == "The Dragon's Egg" ){ num = 27; }
-			else if ( book.Name == "The Elemental Titans" ){ num = 28; }
-			else if ( book.Name == "Elves and Orks" ){ num = 29; }
-			else if ( book.Name == "The Fall of Mondain" ){ num = 30; }
-			else if ( book.Name == "Forging the Fire" ){ num = 31; }
-			else if ( book.Name == "Forgotten Dungeons" ){ num = 32; }
-			else if ( book.Name == "Gargoyle Secrets" ){ num = 33; }
-			else if ( book.Name == "Gem of Immortality" ){ num = 34; }
-			else if ( book.Name == "The Gods of Men" ){ num = 35; }
-			else if ( book.Name == "The Golden Rangers" ){ num = 36; }
-			else if ( book.Name == "Hidden Traps" ){ num = 37; }
-			else if ( book.Name == "The Ice Queen" ){ num = 38; }
-			else if ( book.Name == "The Jedi Order" ){ num = 39; }
-			else if ( book.Name == "Journal on Familiars" ){ num = 40; }
-			else if ( book.Name == "The Knight Who Fell" ){ num = 41; }
-			else if ( book.Name == "Leather & Bone Crafts" ){ num = 42; }
-			else if ( book.Name == "Legend of the Sky Castle" ){ num = 43; }
-			else if ( book.Name == "The Lost Land" ){ num = 44; }
-			else if ( book.Name == "Lost Tribe of Sosaria" ){ num = 45; }
-			else if ( book.Name == "Luck of the Rogue" ){ num = 46; }
-			else if ( book.Name == "Magic in the Moon" ){ num = 47; }
-			else if ( book.Name == "The Maze of Wonder" ){ num = 48; }
-			else if ( book.Name == "Metal Smithing & Tinkering" ){ num = 49; }
-			else if ( book.Name == "The Orb of the Abyss" ){ num = 50; }
-			else if ( book.Name == "The Pass of the Gods" ){ num = 51; }
-			else if ( book.Name == "Rangers of Lodoria" ){ num = 52; }
-			else if ( book.Name == "Reagents" ){ num = 53; }
-			else if ( book.Name == "Reptile Scale Crafts" ){ num = 54; }
-			else if ( book.Name == "The Rule of One" ){ num = 55; }
-			else if ( book.Name == "Rune Magic" ){ num = 56; }
-			else if ( book.Name == "Sand & Stone Crafts" ){ num = 57; }
-			else if ( book.Name == "Skinning & Carving" ){ num = 58; }
-			else if ( book.Name == "Skulls and Shackles" ){ num = 59; }
-			else if ( book.Name == "Staff of Five Parts" ){ num = 60; }
-			else if ( book.Name == "The Story of Exodus" ){ num = 61; }
-			else if ( book.Name == "The Story of Minax" ){ num = 62; }
-			else if ( book.Name == "The Story of Mondain" ){ num = 63; }
-			else if ( book.Name == "The Syth Order" ){ num = 64; }
-			else if ( book.Name == "Tailoring the Cloth" ){ num = 65; }
-			else if ( book.Name == "Tattered Journal" ){ num = 66; }
-			else if ( book.Name == "Tendrin's Journal" ){ num = 67; }
-			else if ( book.Name == "The Times of Minax" ){ num = 68; }
-			else if ( book.Name == "Titles of the Skilled" ){ num = 69; }
-			else if ( book.Name == "Tomb of Durmas" ){ num = 70; }
-			else if ( book.Name == "The Underworld Gate" ){ num = 71; }
-			else if ( book.Name == "Valley of Corruption" ){ num = 72; }
-			else if ( book.Name == "Venom and Poisons" ){ num = 73; }
-			else if ( book.Name == "Wizards in Exile" ){ num = 74; }
-			else if ( book.Name == "Wooden Carvings" ){ num = 75; }
-			else if ( book.Name == "Work Shoppes" ){ num = 76; }
+			for ( int i = 1; i <= 76; ++i )
+			{
+				string englishTitle = bookInfo( i, 1 );
+
+				if ( string.IsNullOrWhiteSpace( englishTitle ) )
+					continue;
+
+				string localizedTitle = ResolveText( m, englishTitle );
+
+				if ( book.Name == englishTitle || book.Name == localizedTitle )
+				{
+					num = i;
+					break;
+				}
+			}
 
 			if ( num > 0 )
 			{
@@ -353,7 +299,8 @@ namespace Server.Gumps
 			{
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 0, 0, 5024, 0 );
 				m.SendSound( 0x65C );
-				m.SendMessage( book.Name + " has been added to your library." );
+				string format = ResolveText( m, "{0} has been added to your library." );
+				m.SendMessage( String.Format( format, book.Name ) );
 				if (book.Movable && (book is GoldenRangers) == false) // Needed for quest
 					book.Delete();
 			}

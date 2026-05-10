@@ -235,7 +235,7 @@ namespace Server.Mobiles
 						GiveMail = false;
 						m.AddToBackpack( item );
 						m.PlaySound( 0x249 );
-						SayTo(m, "Hmmm...I already gave you a message from " + msgQuest + ". Here is a another if you lost it.");
+						CitizenLocalization.SayToLocalizedFormat(this, m, "Hmmm...I already gave you a message from {0}. Here is another if you lost it.", msgQuest);
 					}
 				}
             }
@@ -339,7 +339,7 @@ namespace Server.Mobiles
 
 				m.AddToBackpack ( envelope );
 				m.PlaySound( 0x249 );
-				SayTo(m, "Hmmm...I do have a message for you. Here you go.");
+				CitizenLocalization.SayToLocalized(this, m, "Hmmm...I do have a message for you. Here you go.");
             }
         }
 

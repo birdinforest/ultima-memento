@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Misc;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Spells.Herbalist
 {
@@ -55,15 +56,15 @@ namespace Server.Spells.Herbalist
 			}
 			else if ( Worlds.AllowEscape( Caster, Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That spell does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That spell does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedRecall( Caster.Map, Caster.Location, Caster.X, Caster.Y ) == false )
 			{
-				Caster.SendMessage( "That potion does not seem to work in this place." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "That potion does not seem to work in this place." ) );
 			}
 			else if ( Worlds.RegionAllowedTeleport( map, loc, loc.X, loc.Y ) == false )
 			{
-				Caster.SendMessage( "The destination seems magically unreachable with this potion." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The destination seems magically unreachable with this potion." ) );
 			}
 			else if ( (checkMulti && SpellHelper.CheckMulti( loc, map )) )
 			{
@@ -71,7 +72,7 @@ namespace Server.Spells.Herbalist
 			}
 			else if ( CheckSequence() )
 			{
-				Caster.SendMessage( "You open a mystical portal in a mushroom circle" ); // You open a magical gate to another location
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You open a mystical portal in a mushroom circle" ) ); // You open a magical gate to another location
 
 				Effects.PlaySound( Caster.Location, Caster.Map, 0x1 );
 				int mushx;

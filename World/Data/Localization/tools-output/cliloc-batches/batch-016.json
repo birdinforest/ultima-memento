@@ -1,0 +1,3006 @@
+{
+ "batch": 16,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1116109",
+   "text": "seeker fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116110",
+   "text": "stone fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116111",
+   "text": "Arena Exit Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116112",
+   "text": "match",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116113",
+   "text": "Target the cannon whose fuse you wish to light.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116114",
+   "text": "You ignite the match.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116115",
+   "text": "Your match splutters and dies.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116116",
+   "text": "The ship must be docked near a shore or sea market to dismantle this weapon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116117",
+   "text": "Your fishing pole bends as you pull a rare fish from the depths!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116118",
+   "text": "abyssal dragonfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116119",
+   "text": "a kingfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116120",
+   "text": "a unicorn fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116121",
+   "text": "a holy mackerel trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116122",
+   "text": "a giant koi trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116123",
+   "text": "a fairy salmon trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116124",
+   "text": "an autumn dragonfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116125",
+   "text": "a summer dragonfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116126",
+   "text": "a crystal fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116127",
+   "text": "a fire fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116128",
+   "text": "a reaper fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116129",
+   "text": "a bull fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116130",
+   "text": "a lava fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116131",
+   "text": "a blue marlin trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116132",
+   "text": "a yellowtail barracuda trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116133",
+   "text": "a black marlin trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116134",
+   "text": "a great barracuda trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116135",
+   "text": "a stone fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116136",
+   "text": "a zombie fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116137",
+   "text": "a golden tuna trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116138",
+   "text": "a giant samurai fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116139",
+   "text": "a spring dragonfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116140",
+   "text": "an abyssal dragonfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116141",
+   "text": "a winter dragonfish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116142",
+   "text": "a lantern fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116143",
+   "text": "a dungeon pike trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116144",
+   "text": "a rainbow fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116145",
+   "text": "a seeker fish trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116146",
+   "text": "Room Type",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116147",
+   "text": "Invite a duelist",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116148",
+   "text": "You cannot invite dead players.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116149",
+   "text": "The targeted player is too far away from the arena stone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116150",
+   "text": "The player has already joined in the session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116151",
+   "text": "You have already banned the player once.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116152",
+   "text": "You have sent the invitation to the player.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116153",
+   "text": "You cannot invite free trial players.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116154",
+   "text": "You cannot invite young players.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116155",
+   "text": "Ignore duel invite (ON)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116156",
+   "text": "Ignore duel invite (OFF)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116157",
+   "text": "The player is not accepting invitations.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116158",
+   "text": "Mana Phase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116159",
+   "text": "powder charge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116160",
+   "text": "powder charge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116161",
+   "text": "large powder charge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116162",
+   "text": "Trophy cannot be identified, it cannot be re-deeded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116163",
+   "text": "You must wait a few seconds before attempting to phase mana again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116164",
+   "text": "Your next use of magical energy will draw its power from the void.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116165",
+   "text": "You will no longer attempt to draw magical energy from the void.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116166",
+   "text": "grapeshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116167",
+   "text": "large grapeshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116168",
+   "text": "That ammunition is the wrong size for this cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116169",
+   "text": "That charge is the wrong size for this cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116170",
+   "text": "You must wait for the energy to recharge before using the warding effect again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116171",
+   "text": "That target cannot be warded again for a few moments.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116172",
+   "text": "Weapon Damage Ward",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116173",
+   "text": "Spell Damage Ward",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116174",
+   "text": "You must wait for the energy to recharge before using the surge effect again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116175",
+   "text": "That target is still recovering from the last energy surge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116176",
+   "text": "You stop digging because you cannot see the correct location.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116177",
+   "text": "Surge HP Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116178",
+   "text": "Surge Mana Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116179",
+   "text": "Surge Stamina Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116180",
+   "text": "a kingfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116181",
+   "text": "a unicorn fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116182",
+   "text": "a holy mackerel trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116183",
+   "text": "a giant koi trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116184",
+   "text": "a fairy salmon trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116185",
+   "text": "an autumn dragonfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116186",
+   "text": "a summer dragonfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116187",
+   "text": "a crystal fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116188",
+   "text": "a fire fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116189",
+   "text": "a reaper fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116190",
+   "text": "a bull fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116191",
+   "text": "a lava fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116192",
+   "text": "a blue marlin trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116193",
+   "text": "a yellowtail barracuda trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116194",
+   "text": "a black marlin trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116195",
+   "text": "a great barracuda trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116196",
+   "text": "a stone fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116197",
+   "text": "a zombie fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116198",
+   "text": "a golden tuna trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116199",
+   "text": "a giant samurai fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116200",
+   "text": "a spring dragonfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116201",
+   "text": "an abyssal dragonfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116202",
+   "text": "a winter dragonfish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116203",
+   "text": "a lantern fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116204",
+   "text": "a dungeon pike trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116205",
+   "text": "a rainbow fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116206",
+   "text": "a seeker fish trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116207",
+   "text": "You are not known for having commited any murders.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116208",
+   "text": "Your murder count has been successfully updated.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116209",
+   "text": "Brittle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116210",
+   "text": "You are now ignoring invitations.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116211",
+   "text": "You are now accepting invitations.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116212",
+   "text": "You have been invited to a duel.  Select the “OK” button to join this duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116213",
+   "text": "There are no empty arenas. Please wait for a while.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116214",
+   "text": "great barracuda pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116215",
+   "text": "yellowtail barracuda pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116216",
+   "text": "giant koi pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116217",
+   "text": "fire fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116218",
+   "text": "reaper fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116219",
+   "text": "crystal fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116220",
+   "text": "bull fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116221",
+   "text": "summer dragonfish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116222",
+   "text": "fairy salmon pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116223",
+   "text": "lava fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116224",
+   "text": "autumn dragonfish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116225",
+   "text": "holy mackerel pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116226",
+   "text": "unicorn fish pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116227",
+   "text": "stone crab pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116228",
+   "text": "blue lobster pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116229",
+   "text": "spider crab pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116230",
+   "text": "Mana Phasing Orb",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116231",
+   "text": "Runed Sash of Warding",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116232",
+   "text": "Surge Shield",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116233",
+   "text": "You must defeat the guardians of the chest before you can open it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116234",
+   "text": "A Forged Pardon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116235",
+   "text": "Using this pardon again will remove one murder count from your character and consume the pardon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116236",
+   "text": "Boat paint",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116237",
+   "text": "Obtain 20 power crystals and return for your reward. Power crystals can be found in various places in Ilshenar including in the Meer village. The reward for this quest is food for the bane dragon, it is the only known thing that they eat.<br><br><center>-----</center><br><br>What are you standing around for recruit?! You want to be a dragon rider? Well, you have to do work!<br><br>Getting your own bane dragon takes guts and brawn but keeping one takes some of my special stew. Here's the deal, you give me twenty power crystals, I'll give you some stew.  I don't care how you get them, you can get them from Blackthorn's golems or you can get them from the Meer.  I hear those furball hocking misfits have been collecting them, planning to make a new cat toy I suppose. Heh-heh.<br><br>Just remember, before you go getting all soft for the cat people, remember what their magics did to Yew.  The Meer are a threat to Britannia and there is no two ways about it!  Now, get going and make yourself useful!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116238",
+   "text": "Where's my power crystals numbskull?<br><br>I'm starting to question your loyalty to our cause!  My dragon is too... and traitors make him hungry.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116239",
+   "text": "Nice set of power crystals, recruit.  I especially like the ones with blood and fur still on them! Heh-heh.<br><br>I wonder what those post-scratchers want with these things anyway?  No matter, they belong to the Bane Chosen now!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116240",
+   "text": "I don't want to see any of you Chosen laying about when there's work to be done!  Unless you want to be un-Chosen....",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116241",
+   "text": "You feel magical energy surging through your body.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116242",
+   "text": "The magical energy surging through your body subsides.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116243",
+   "text": "The runes glow and a magical warding forms around your body.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116244",
+   "text": "The magical ward around you dissipates.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116245",
+   "text": "Meer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116246",
+   "text": "Ally",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116247",
+   "text": "Victory to ~1_TEAM~. Your contribution to the fight has been recognized.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116248",
+   "text": "Victory to ~1_TEAM~. You contributed to the victory, but you have insufficient loyalty to receive recognition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116249",
+   "text": "That must be in your backpack for you to use it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116250",
+   "text": "That must be equipped before you can use it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116251",
+   "text": "the Ophidians",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116252",
+   "text": "the Bane Chosen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116253",
+   "text": "the Meer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116254",
+   "text": "A Starter Kit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116255",
+   "text": "Armor of Initiation",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116256",
+   "text": "A fresh breeze comes along, filling you with a sense of wellness.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116257",
+   "text": "This token does not belong to this character.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116258",
+   "text": "Endless Journey accounts cannot use this token.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116259",
+   "text": "This can only be used by accounts less than 1 month old.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116260",
+   "text": "Token of Skill Alacrity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116261",
+   "text": "You are imbued with the effects of accelerated skill gain.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116262",
+   "text": "The effects of the skill gain bonus expire.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116263",
+   "text": "Your bonus skill gain period is now over.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116264",
+   "text": "This token has expired.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116265",
+   "text": "Use of this token increases the rate of skill gain for you and your party members for 1 week. (Account Bound)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116266",
+   "text": "cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116267",
+   "text": "cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116268",
+   "text": "cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116269",
+   "text": "(Eat to increase hit chance: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116270",
+   "text": "(Eat to increase defense chance: ~1_TOKEN~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116271",
+   "text": "(Eat to soak fire damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116272",
+   "text": "(Eat to soak physical damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116273",
+   "text": "(Eat to soak cold damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116274",
+   "text": "(Eat to soak poison damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116275",
+   "text": "(Eat to soak energy damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116276",
+   "text": "(Eat to increase weapon damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116277",
+   "text": "(Eat to increase spell damage: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116278",
+   "text": "(Eat to increase casting focus: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116279",
+   "text": "(Eat to increase soul charge ability: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116280",
+   "text": "(Eat to increase meditation skill: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116281",
+   "text": "(Eat to increase focus skill: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116282",
+   "text": "(Eat to increase hp regeneration: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116283",
+   "text": "(Eat to increase mana regeneration: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116284",
+   "text": "(Eat to increase stamina regeneration: ~1_val~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116285",
+   "text": "You eat the ~1_val~.  Mmm, tasty!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116286",
+   "text": "Your new player starter kit has been placed in your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116287",
+   "text": "The new player token's skill gain bonus is only applied outside of the New Haven new player quest area. You will only receive accelerated skill gain bonuses for any new player skill gain quests you are on in the area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116288",
+   "text": "You have disabled your skill gain aura.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116289",
+   "text": "You cannot use it in this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116290",
+   "text": "a creeping vine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116291",
+   "text": "Feline's Grace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116292",
+   "text": "Gift of the Eternal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116293",
+   "text": "You have enabled your skill gain aura.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116294",
+   "text": "You cannot dig for treasure while flying!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116295",
+   "text": "You must have the High Seas booster pack to use this feature",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116296",
+   "text": "* Requires the \"High Seas\" booster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116297",
+   "text": "The ship cannon has been destroyed!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116298",
+   "text": "great barracuda steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116299",
+   "text": "Mento Seasoning",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116300",
+   "text": "dark truffle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116301",
+   "text": "yellowtail barracuda steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116302",
+   "text": "saltpeter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116303",
+   "text": "charcoal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116304",
+   "text": "match cord",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116305",
+   "text": "fuse cord",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116306",
+   "text": "giant koi steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116307",
+   "text": "fire fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116308",
+   "text": "reaper fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116309",
+   "text": "crystal fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116310",
+   "text": "bull fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116311",
+   "text": "summer dragonfish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116312",
+   "text": "fairy salmon steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116313",
+   "text": "lava fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116314",
+   "text": "autumn dragonfish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116315",
+   "text": "holy mackerel steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116316",
+   "text": "unicorn fish steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116317",
+   "text": "stone crab meat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116318",
+   "text": "blue lobster meat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116319",
+   "text": "potash",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116320",
+   "text": "spider crab meat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116321",
+   "text": "The ship cannon and magazine must be fully unloaded before it can be dismantled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116322",
+   "text": "The ship cannon must be fully repaired before it can be dismantled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116323",
+   "text": "You cannot dock the ship with loaded weapons on deck!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116324",
+   "text": "The ship must be fully repaired before it can be docked!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116325",
+   "text": "To warn outsiders-s-s about the threat of the Bane Chos-s-sen.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116326",
+   "text": "Thos-s-se who are loyal to us-s-s would destroy these Bane Chosen.  We will provide our allies-s-s with powerful potions-s-s!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116327",
+   "text": "The Ophidians-s-s want peace with the humans-s-s.  Human Bane Chosen attack us-s-s unprovoked... again.  Make them dead, pleas-s-se.  We have powerful alchemis-s-sts, we will help those who are loyal to us-s-s.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116328",
+   "text": "Bane Chosen attack the Ophidians and take our crystalline blackrock!  We hates them!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116329",
+   "text": "Select the ship direction for placement.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116330",
+   "text": "WEST",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116331",
+   "text": "NORTH",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116332",
+   "text": "SOUTH",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116333",
+   "text": "EAST",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116334",
+   "text": "a stone crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116335",
+   "text": "a blue lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116336",
+   "text": "a spider crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116337",
+   "text": "New Player Aura Effect",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116338",
+   "text": "Samuel's Secret Sauce",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116339",
+   "text": "You do not have enough ~1_INGREDIENT~ to make that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116340",
+   "text": "Magical Fish Pies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116341",
+   "text": "Your new player starter kit token has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116342",
+   "text": "You do not have enough loyalty with ~1_val~ to trade with this merchant.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116343",
+   "text": "We seek to take back the land of Sosaria from the monsterous races, such as the Ophidians and the Meer.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116344",
+   "text": "The Meer are a devious race, they creep about like cats and have dangerous magics.  They once cursed Yew with their foul evil and it took many lives to restore it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116345",
+   "text": "The bounty collector is now collecting powercrystals to keep them away from our enemies the Meer.  We believe they are planning to use them against the human race.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116346",
+   "text": "If you want to prove yourself, go kill those wretched Meer.  Telling me you are loyal proves nothing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116347",
+   "text": "Accelerated skill gain.<br>(All Skills)<br><br>+3 to all regeneration.<br>(Health, Stamina, Mana)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116348",
+   "text": "Healing and Curative",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116349",
+   "text": "Enhancement",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116350",
+   "text": "Toxic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116351",
+   "text": "Explosive",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116352",
+   "text": "Colorative",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116353",
+   "text": "Strange Brew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116354",
+   "text": "Cannons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116355",
+   "text": "medium chainshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116356",
+   "text": "heavy chainshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116357",
+   "text": "You cannot eat this until it has been prepared by a cook.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116358",
+   "text": "The island's location cannot be marked on this map.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116359",
+   "text": "The island's location has been marked on your map. You should make haste while the island is still afloat.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116360",
+   "text": "The island's location cannot be marked on a treasure map.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116361",
+   "text": "You sense an island nearby... but are unable to see it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116362",
+   "text": "You cannot imbue this item with the durability property.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116363",
+   "text": "You need lava to fish in!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116364",
+   "text": "**bob**",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116365",
+   "text": "stone crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116366",
+   "text": "blue lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116367",
+   "text": "spider crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116368",
+   "text": "void crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116369",
+   "text": "void lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116370",
+   "text": "blood lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116371",
+   "text": "dread lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116372",
+   "text": "a tunnel crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116373",
+   "text": "dungeness crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116374",
+   "text": "blue crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116375",
+   "text": "king crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116376",
+   "text": "rock crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116377",
+   "text": "snow crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116378",
+   "text": "apple crab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116379",
+   "text": "spiney lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116380",
+   "text": "rock lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116381",
+   "text": "hummer lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116382",
+   "text": "fred lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116383",
+   "text": "crusty lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116384",
+   "text": "shovel-nose lobster",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116385",
+   "text": "~1_NAME~'s trap bouy is pulled beneath the waves.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116386",
+   "text": "You remove ~1_ITEM~ from the trap and put it in your pack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116387",
+   "text": "Please wait until the session which you participated is finished completely.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116388",
+   "text": "The trap is too cumbersome to deploy that far away.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116389",
+   "text": "empty lobster trap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116390",
+   "text": "~1_NAME~'s lobster trap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116391",
+   "text": "You realize that the trap isn't yours so you leave it alone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116392",
+   "text": "Team: Order (Blue) / Chaos (Red)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116393",
+   "text": "This location is too close to another trap.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116394",
+   "text": "haddock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116395",
+   "text": "cape cod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116396",
+   "text": "black seabass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116397",
+   "text": "tarpon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116398",
+   "text": "red snook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116399",
+   "text": "gray snapper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116400",
+   "text": "cobia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116401",
+   "text": "mahi-mahi",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116402",
+   "text": "amberjack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116403",
+   "text": "shad",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116404",
+   "text": "yellowfin tuna",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116405",
+   "text": "bonito",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116406",
+   "text": "bluefish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116407",
+   "text": "red grouper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116408",
+   "text": "captain snook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116409",
+   "text": "bonefish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116410",
+   "text": "red drum",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116411",
+   "text": "blue grouper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116412",
+   "text": "pumpkinseed sunfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116413",
+   "text": "yellow perch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116414",
+   "text": "pike",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116415",
+   "text": "brook trout",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116416",
+   "text": "rainbow trout",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116417",
+   "text": "bluegill sunfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116418",
+   "text": "redbelly bream",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116419",
+   "text": "smallmouth bass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116420",
+   "text": "uncommon shiner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116421",
+   "text": "green catfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116422",
+   "text": "walleye",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116423",
+   "text": "kokanee salmon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116424",
+   "text": "dungeon chub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116425",
+   "text": "demon trout",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116426",
+   "text": "snaggletooth bass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116427",
+   "text": "cutthroat trout",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116428",
+   "text": "grim cisco",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116429",
+   "text": "drake fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116430",
+   "text": "orc bass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116431",
+   "text": "darkfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116432",
+   "text": "crag snapper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116433",
+   "text": "infernal tuna",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116434",
+   "text": "tormented pike",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116435",
+   "text": "lurker fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116436",
+   "text": "~1_PROCESS~ ~2_STAPLE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116437",
+   "text": "dried",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116438",
+   "text": "salted",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116439",
+   "text": "smoked",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116440",
+   "text": "cured",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116441",
+   "text": "pickled",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116442",
+   "text": "spiced",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116443",
+   "text": "herring",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116444",
+   "text": "salmon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116445",
+   "text": "sea bass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116446",
+   "text": "tuna",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116447",
+   "text": "yellowtail",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116448",
+   "text": "cod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116449",
+   "text": "snapper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116450",
+   "text": "monkfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116451",
+   "text": "hake",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116452",
+   "text": "swordfish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116453",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116454",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116455",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116456",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116457",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116458",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116459",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116460",
+   "text": "~1_val~: ~2_val~/~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116461",
+   "text": "This is not needed to fill the order.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116462",
+   "text": "The host player has moved you to another team.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116463",
+   "text": "To start a duel, both of teams must have one or more participants.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116464",
+   "text": "~1_token~ ~2_token~ bait",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116465",
+   "text": "~1_token~ bait",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116466",
+   "text": "amount: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116467",
+   "text": "Your bait is used up so you destroy the container.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116468",
+   "text": "baited to attract: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116469",
+   "text": "You combine these baits into one cup and destroy the other cup.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116470",
+   "text": "smelly",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116471",
+   "text": "extra smelly",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116472",
+   "text": "extra extra smelly",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116473",
+   "text": "lava fishing pole",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116474",
+   "text": "lava lobster trap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116475",
+   "text": "Lost and Found",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116476",
+   "text": "Your duel is about to begin but the opposing team has not came to the arena. This session will be aborted and you will be ejected from the arena.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116477",
+   "text": "fishing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116478",
+   "text": "Fishing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116479",
+   "text": "Order Team (Blue)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116480",
+   "text": "Chaos Team (Red)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116481",
+   "text": "<CENTER>~1_VAL~~2_VAL~</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116482",
+   "text": "Winner:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116483",
+   "text": "DRAW",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116484",
+   "text": "This player has already joined another session.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116485",
+   "text": "Stats - Team Battle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116486",
+   "text": "Stats - Others",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116487",
+   "text": "Congratulations! Your team has won the duel!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116488",
+   "text": "You have lost the duel...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116489",
+   "text": "Your team has lost the duel...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116490",
+   "text": "You step into a puddle of water splashing yourself.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116491",
+   "text": "Rowboat Deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116492",
+   "text": "Survival",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116493",
+   "text": "Team",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116494",
+   "text": "Public",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116495",
+   "text": "Private",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116496",
+   "text": "Deliver to Floating Emporium",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116497",
+   "text": "Deliver to Britain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116498",
+   "text": "Deliver to Trinsic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116499",
+   "text": "Deliver to Moon Glow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116500",
+   "text": "Deliver to Skara Brae",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116501",
+   "text": "Deliver to Vesper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116502",
+   "text": "Deliver to Jhelom",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116503",
+   "text": "Deliver to Papua",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116504",
+   "text": "Retrieve Ship Hold",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116505",
+   "text": "I can retrieve the contents of thy ship's hold for a small fee.  The price is:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116506",
+   "text": "The price is ~1_price~ and I will accept nothing less!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116507",
+   "text": "Professional Fisher Quest - Floating Emporium",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116508",
+   "text": "This quest is part of a category of quests where you catch uncommon fish and use your ship to deliver them to ports to gain rewards and better fishing orders.<br><br>Successful completion of this quest increases your standing with the fishmonger guild and unlocks bigger orders and greater rewards.  Destroying the crate will forfeit the order and hurt your standing with the fishmonger guild.<br><br>You must have the High Seas booster pack to do this quest.<br><br>***NOTICE: You will not be able to dry dock your ship while you are on this quest.  Destroying the crate in your hull will cancel the quest and re-enable dry docking.*** <br><br><center>-----</center><br><br>Greetings sailor, I see ye have a fine ship, might ye be looking for work?<br><br>I have some orders for some particular fish that needs catchin' an' deliverin' and I be lookin' for some business partners.  If ye will agree to fill this order an' deliver it fer me, I will reward ye with a rare prize as payment.  What say ye?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116509",
+   "text": "Fill the crate on your ship with the correct fish.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116510",
+   "text": "A rare reward from the Order of the Dragonfish.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116511",
+   "text": "As you wish.  If'n ye change yer mind you know where to find me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116512",
+   "text": "Aye, partner, how goes the fishin?  Me customer be waitin' fer ye and won't be payin' either of us till ye deliver.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116513",
+   "text": "Ahoy, sailor! These be a fine batch o' fish and I'll be glad to pay the price.  I will forwarded the money owed to the fishmonger who brokered this business with me compliments.<br><br>Fer ye I have a rare gift from the Order of the Dragonfish that ye can't buy with gold.  Let me jes' tuck it in yer backpack here...  There you go!  Use it wisely and it can make ye wealthy!<br><br>If ye are interested in gettin more fishin' business from me, I have some orders of me own to fill and ship.  Jes' let me know.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116514",
+   "text": "Bring yer ship around, I might have some work for ye!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116515",
+   "text": "Shipping Crate for ~1_name~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116516",
+   "text": "Thou must return thy current shipping crate before I can retrieve another shipment for you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116517",
+   "text": "Arrrgh!  My dock has no more room.  Please come back later.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116518",
+   "text": "Speak with the fishmonger at the port of delivery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116519",
+   "text": "I can't find your ship! You need to bring it in closer.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116520",
+   "text": "Dry Dock Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116521",
+   "text": "Load Ship from Crate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116522",
+   "text": "Destroy Crate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116523",
+   "text": "Are you sure you want to destroy your shipping crate and its contents?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116524",
+   "text": "You cannot summon creatures in the arena before starting the duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116525",
+   "text": "You currently exceed the maximum number of pet slots for this duel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116526",
+   "text": "Hit Chance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116527",
+   "text": "Defense Chance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116528",
+   "text": "Soak Fire",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116529",
+   "text": "Soak Physical",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116530",
+   "text": "Soak Cold",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116531",
+   "text": "Soak Poison",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116532",
+   "text": "Soak Energy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116533",
+   "text": "Melee Damage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116534",
+   "text": "Spell Damage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116535",
+   "text": "Casting Focus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116536",
+   "text": "Soul Charge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116537",
+   "text": "Meditation Skill",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116538",
+   "text": "Focus Skill",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116539",
+   "text": "HP Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116540",
+   "text": "Mana Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116541",
+   "text": "Staminia Regeneration",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116542",
+   "text": "Yer ship has been unloaded to a crate inside this here warehouse.  You have ~1_time~ minutes to get yer goods or it be gone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116543",
+   "text": "Great Barracuda Strike",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116544",
+   "text": "Yellowtail Barracuda Vitality",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116545",
+   "text": "Giant Koi Evasion",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116546",
+   "text": "Fire Fish Kindred",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116547",
+   "text": "Reaper Fish Kindred",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116548",
+   "text": "Crystal Fish Kindred",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116549",
+   "text": "Bull Fish Rage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116550",
+   "text": "Summer Dragonfish Rage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116551",
+   "text": "Fairy Salmon Clarity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116552",
+   "text": "Lava Fish Soul",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116553",
+   "text": "Autumn Dragonfish Serenity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116554",
+   "text": "Holy Mackerel Spirit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116555",
+   "text": "Unicorn Fish Endurance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116556",
+   "text": "Stone Crab Kindred",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116557",
+   "text": "Blue Lobster Kindred",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116558",
+   "text": "Spider Crab Focus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116559",
+   "text": "Magic Fish Buff<br>~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116560",
+   "text": "~1_val~ ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116561",
+   "text": "The contents of your shipping crate have been transferred to your ship's hold.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116562",
+   "text": "The supplies that would not fit in your ship's hold have been left in your shipping crate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116563",
+   "text": "An net woven from iridesent kelp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116564",
+   "text": "You direct your crew to throw the fishing crate overboard. *splash!*",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116565",
+   "text": "A smal water logged chest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116566",
+   "text": "Ship Access",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116567",
+   "text": "Security Settings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116568",
+   "text": "The ground trembles as the island begins to sink back into the sea.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116569",
+   "text": "You have been granted access to the ship owned by ~1_name~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116570",
+   "text": "Your access to the ship owned by ~1_name~ has been revoked.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116571",
+   "text": "The dockmaster has no need for this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116572",
+   "text": "Sorry as I am to say it, the maximum I can have on yer account be three million.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116573",
+   "text": "I hate to tell ye this, but we don't rent boat slips fer less time than five minutes.  I'll be needin the full 10000 gold or no deal.  Perhaps renting a crate is more in your price range, captain?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116574",
+   "text": "Thanks for the tip, friend!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116575",
+   "text": "Jes' wait right there and me team o' magic sea horses will get ye towed into a slip before ye can say kraken, captain!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116576",
+   "text": "Check back later, friend, all me slips be full right now.  If yer in a hurry, I can see if I have a crate in me warehouse?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116577",
+   "text": "'Tis a pleasure doin' business with ye, friend, I have updated yer account!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116578",
+   "text": "The ship cannon shakes violently!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116579",
+   "text": "The powder charge explodes from the burning remains of the uncleaned cannon!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116580",
+   "text": "State: Pristine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116581",
+   "text": "State: Slightly Damaged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116582",
+   "text": "State: Moderately Damaged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116583",
+   "text": "State: Heavily Damaged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116584",
+   "text": "State: Extremely Damaged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116585",
+   "text": "Your offering has been accepted. The price of blood will be taken when your -world map- is marked with the secret location.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116586",
+   "text": "Your offering will be consumed by the altar if the sacrifice is accepted. You will then have 30 seconds to re-use the shrine to mark your map and pay the blood cost.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116587",
+   "text": "You must wait 24 hours before using another forged pardon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116588",
+   "text": "You cannot use a forged pardon while in combat.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116589",
+   "text": "Emergency Repairs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116590",
+   "text": "Permanent Repairs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116591",
+   "text": "You need a minimum of ~1_CLOTH~ yards of cloth and ~2_WOOD~ pieces of lumber to effect emergency repairs.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116592",
+   "text": "Your ship is underway with emergency repairs holding for an estimated ~1_TIME~ more minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116593",
+   "text": "You need a minimum of ~1_CLOTH~ yards of cloth and ~2_WOOD~ pieces of lumber to effect repairs to this ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116594",
+   "text": "Your ship must be near shore or a sea market in order to effect permanent repairs.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116595",
+   "text": "Your ship is not in need of emergency repairs in order to sail.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116596",
+   "text": "Your ship is in pristine condition and does not need repairs.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116597",
+   "text": "You apply emergency repairs using ~1_CLOTH~ yards of cloth and ~2_WOOD~ pieces of lumber. Your ship can now move at its slowest speed. These repairs will hold for approximately ~3_TIME~ minutes. Any use of your cannons, or coming under cannonfire, will destroy these repairs and leave you dead in the water!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116598",
+   "text": "You effect permanent repairs using ~1_CLOTH~ yards of cloth and ~2_WOOD~ pieces of lumber. The ship is now ~3_DMGPCT~% repaired.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116599",
+   "text": "Your ship is heavily damaged and needs major repairs before it is in pristine condition again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116600",
+   "text": "Your ship is somewhat damaged and needs repairs before it is in pristine condition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116601",
+   "text": "Your ship is lightly damaged and needs minor repairs before it is in pristine conditions.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116602",
+   "text": "Repair Weapon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116603",
+   "text": "You need a minimum of ~1_METAL~ iron ingots to repair this cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116604",
+   "text": "The cannon is in pristine condition and does not need repairs.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116605",
+   "text": "You make repairs to the cannon using ~1_METAL~ ingots. The cannon is now ~2_DMGPCT~% repaired.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116606",
+   "text": "The cannon is lightly damaged and needs some minor repair.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116607",
+   "text": "The cannon is moderately damaged and needs some repairs. This cannon is safe to fire.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116608",
+   "text": "The cannon is severely damaged. It needs major repairs before it is safe to fire.",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

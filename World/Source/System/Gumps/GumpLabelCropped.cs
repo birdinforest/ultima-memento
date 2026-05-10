@@ -127,7 +127,7 @@ namespace Server.Gumps
 			disp.AppendLayout( m_Width );
 			disp.AppendLayout( m_Height );
 			disp.AppendLayout( m_Hue );
-			disp.AppendLayout( Parent.Intern( m_Text ) );
+			disp.AppendLayout( Parent.InternLocalized( disp.NetState, m_Text ) );
 		}
 	}
 }

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.wyrm-hate-broadcast",
+  "pipeline": "citizen_broadcast",
+  "en": "an ancient wyrm sleeping below Dungeon Hate",
+  "expectedZh": "沉睡在憎恨地城之下的远古龙",
+  "tags": "citizen_broadcast,composite",
+  "source": "ResolveCitizenRumorToChineseForBroadcast",
+  "notes": "Matches composite fragment path + NPC token pass"
+}

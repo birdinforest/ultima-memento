@@ -10,6 +10,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -65,7 +66,7 @@ namespace Server.Spells.Research
 				}
 				else if ( !weapon.IsChildOf( Caster.Backpack ) )
 				{
-					Caster.SendMessage( "The weapon must be in your pack to enchant." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The weapon must be in your pack to enchant." ) );
 				}
 				else if (CheckSequence())
 				{
@@ -103,7 +104,7 @@ namespace Server.Spells.Research
 			}
 			else
 			{
-				Caster.SendMessage( "You can only enchant weapons with this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can only enchant weapons with this spell." ) );
 			}
             FinishSequence();
         }
@@ -127,7 +128,7 @@ namespace Server.Spells.Research
                 }
                 else
                 {
-                    from.SendMessage("That cannot be enchanted.");
+                    from.SendMessage( StringCatalog.Resolve( from.Account, "That cannot be enchanted." ) );
                 }
             }
 

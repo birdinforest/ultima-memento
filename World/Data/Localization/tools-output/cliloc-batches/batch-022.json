@@ -1,0 +1,3006 @@
+{
+ "batch": 22,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1149583",
+   "text": "a bottle, with a message in it",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149584",
+   "text": "a mess of small fish",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149585",
+   "text": "Arena Menu - Admin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149586",
+   "text": "Switch Arena Mode (Limited Mode)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149587",
+   "text": "Grant Use Right (For Limited Mode)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149588",
+   "text": "You receive bait to catch ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149589",
+   "text": "You receive some rare fishing equipment.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149590",
+   "text": "You receive a rare book.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149591",
+   "text": "You receive a rare scroll.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149592",
+   "text": "You are no longer piloting this vessel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149593",
+   "text": "You couldn't find the player around here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149594",
+   "text": "OPEN STATS (ON)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149595",
+   "text": "OPEN STATS (OFF)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149596",
+   "text": "The player doesn't open his stat.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149597",
+   "text": "You set your stats to the open mode. Other players can see your stats from now on.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149598",
+   "text": "You set your stats to the closed mode. Only you can see your stats.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149599",
+   "text": "full lobster trap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149600",
+   "text": "Your pack is too full to receive a reward.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149601",
+   "text": "You have a pretty small ship, so I'll be sure to give you an order your ship can handle.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149602",
+   "text": "<CENTER>Name: ~1_VAL~  Subtitle: ~2_VAL~</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149603",
+   "text": "The rules prohibit the use of summoning spells!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149604",
+   "text": "Summoning Spells",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149605",
+   "text": "Entry Fee",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149606",
+   "text": "The entry fee has been refunded to your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149607",
+   "text": "The entry fee has been refunded to your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149608",
+   "text": "Since your bank box and backpack were full, the entry fee wasn't refunded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149609",
+   "text": "You have paid the entry fee from your bank account.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149610",
+   "text": "You have paid the entry fee from your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149611",
+   "text": "You don't have enough money to pay the entry fee.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149612",
+   "text": "The vessel resists your spell.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149613",
+   "text": "Dry Dock Boat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149614",
+   "text": "<CENTER>Bow Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149615",
+   "text": "<CENTER>Forward Port Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149616",
+   "text": "<CENTER>Forward Starboard Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149617",
+   "text": "<CENTER>Amidships Port Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149618",
+   "text": "<CENTER>Amidships Starboard Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149619",
+   "text": "<CENTER>Aft Port Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149620",
+   "text": "<CENTER>Aft Starboard Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149621",
+   "text": "You need to be closer to the lava to fish!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149622",
+   "text": "You need lava to fish in!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149623",
+   "text": "What lava do you want to fish in?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149624",
+   "text": "You can't reach the lava there.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149625",
+   "text": "That cannot be made into a trophy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149626",
+   "text": "CLEAN",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149627",
+   "text": "Clean",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149628",
+   "text": "Dirty",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149629",
+   "text": "REMOVE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149630",
+   "text": "CHARGE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149631",
+   "text": "Charged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149632",
+   "text": "Not Charged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149633",
+   "text": "Flame Cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149634",
+   "text": "Frost Cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149635",
+   "text": "LOAD",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149636",
+   "text": "Not Loaded",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149637",
+   "text": "PRIME",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149638",
+   "text": "FIRE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149639",
+   "text": "No Fuse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149640",
+   "text": "Primed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149641",
+   "text": "Preparing to fire...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149642",
+   "text": "Cleaning canceled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149643",
+   "text": "Cleaning finished.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149644",
+   "text": "Charging started.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149645",
+   "text": "Charging canceled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149646",
+   "text": "Charging finished.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149647",
+   "text": "Loading started.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149648",
+   "text": "Loading canceled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149649",
+   "text": "Loading finished.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149650",
+   "text": "Priming started.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149651",
+   "text": "Priming canceled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149652",
+   "text": "Ready to fire.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149653",
+   "text": "You are now operating the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149654",
+   "text": "You are too far away.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149655",
+   "text": "Cleaning",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149656",
+   "text": "Charging",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149657",
+   "text": "Loading",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149658",
+   "text": "Priming",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149659",
+   "text": "You need a swab.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149660",
+   "text": "You need a ramrod.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149661",
+   "text": "You need fuse.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149662",
+   "text": "Must remove charge first.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149663",
+   "text": "Must unload first.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149664",
+   "text": "~1_NAME~ has assumed control of the ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149665",
+   "text": "Need powder charge.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149666",
+   "text": "Select ammunition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149667",
+   "text": "Invalid target.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149668",
+   "text": "~1_NAME~ has relinquished control of the ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149669",
+   "text": "Need a lighted fire source.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149670",
+   "text": "~1_name~ hits the bullseye!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149671",
+   "text": "~1_name~ hits the inner ring!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149672",
+   "text": "~1_name~ hits the middle ring.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149673",
+   "text": "~1_name~ hits the outer ring.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149674",
+   "text": "~1_name~ misses the target altogether.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149675",
+   "text": "Preparation stopped.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149676",
+   "text": "Charging stopped.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149677",
+   "text": "Loading stopped.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149678",
+   "text": "Priming stopped.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149679",
+   "text": "Preparation resumed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149680",
+   "text": "Charging resumed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149681",
+   "text": "Loading resumed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149682",
+   "text": "Priming resumed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149683",
+   "text": "The fuse is lit!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149684",
+   "text": "Powder charge removed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149685",
+   "text": "Ammunition removed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149686",
+   "text": "Fuse removed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149687",
+   "text": "You are too far away.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149688",
+   "text": "Fire failed, no powder charge!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149689",
+   "text": "Fired without ammunition.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149690",
+   "text": "Cannon is damaged!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149691",
+   "text": "Fired successfully.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149692",
+   "text": "You must have the High Seas booster pack to use this map.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149693",
+   "text": "You must own the ship to do that.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149694",
+   "text": "You cannot dock the ship here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149695",
+   "text": "Small Soul Forge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149696",
+   "text": "As a young player, you may not enter this area.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149697",
+   "text": "mooring line",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149698",
+   "text": "wheel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149699",
+   "text": "cargo hold",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149700",
+   "text": "weapon pad",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149701",
+   "text": "Release me, ye scallywags! Ye don't know who ye are messin' with!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149702",
+   "text": "Very well, I see yer point, release me and I will stop being a dread pirate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149703",
+   "text": "I'm not really that bad, you know.  I'm hardly \"dread\", I'm more like concerned.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149704",
+   "text": "You bilge rats don't have the courage to fight me to the death!  Release me at once and we'll settle this like sailors!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149705",
+   "text": "I've been inspectin' yer deck while I been standin' here, and whoever swabbed it last missed a spot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149706",
+   "text": "That sail's trimmed not quite right, if ye will just cut me lose for a minute, I'll be glad to fix it right up.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149707",
+   "text": "Nice ship ye got here, o' course it's gonna be nicer once it's under my command.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149708",
+   "text": "I've seen the error o' me ways, ye can release me now.  No need for a tribunal, jus' drop me off at Buc's Den.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149709",
+   "text": "Look, a flying golem!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149710",
+   "text": "Ye must believe me, I be personal friends with the Captain of the Guard and he said I was not to be chained up.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149711",
+   "text": "These chains are pinchin' a little.  If ye would loosen them up a wee bit I would be appreciatin' it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149712",
+   "text": "Ye just got lucky I tell ya, release me and we shall fight again and this time I will win!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149713",
+   "text": "That guy is not steering the boat right. You better watch him.  See, I'm helping.  You don't want to turn in a helper.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149714",
+   "text": "What this boat really needs is a captain with compassion... like... maybe me!  What do ye say, fellas?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149715",
+   "text": "Ye are going to regret turnin' me in, I could have lead ye to me secret treasure!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149716",
+   "text": "Dread pirate haters...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149717",
+   "text": "Sorry, that was me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149718",
+   "text": "Listen up ye layabouts!  Tis time to get some work done!  Hoist the sails, Man the cannons, and unchain me.  The world of adventure is upon us!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149719",
+   "text": "Let's make a deal.  Ye unchain me and I will give ye the location of me treasure.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149720",
+   "text": "Release me, and I swear I won't kill you or your friends or your pets.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149721",
+   "text": "The pirate escapes and swims away.  Curse you, dread pirate!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149722",
+   "text": "Your spellsong has ended.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149723",
+   "text": "You cannot place a ship this far out to sea. You must be near land or shallow water.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149724",
+   "text": "<CENTER>Passenger and Crew Manifest</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149725",
+   "text": "N/A",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149726",
+   "text": "DENY ACCESS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149727",
+   "text": "PASSENGER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149728",
+   "text": "CREW",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149729",
+   "text": "OFFICER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149730",
+   "text": "CAPTAIN",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149731",
+   "text": "Public Access:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149732",
+   "text": "Party Access:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149733",
+   "text": "Guild Access:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149734",
+   "text": "ACCESS LIST",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149735",
+   "text": "HELP",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149736",
+   "text": "You may grant or deny access to your ship to the public, to members of your party, to members of your guild, and to specific characters. Multiple security settings may apply to specific characters. In these cases, if any matching setting is \"Deny Access\" then that character is not allowed any access to the ship. Otherwise, that character receives the highest applicable level of access. For example, if you allow members of your guild Passenger access and members of your party Crew access, then a member of your guild who is also in your party will be considered Crew.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149737",
+   "text": "N/A: This setting does not grant or deny privileges aboard the ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149738",
+   "text": "DENY ACCESS: revokes all privileges aboard the ship, overriding all other permissions",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149739",
+   "text": "Passenger: allows boarding the ship using the mooring lines or by recall/gate travel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149740",
+   "text": "Crew: allows operation of the ship's weapons and piloting the ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149741",
+   "text": "Officer: allows access to the cargo hold, and installation or dismantling of weaponry.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149742",
+   "text": "Captain: grants all privileges, including dry docking and changing security settings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149743",
+   "text": "Party membership modifies access to this ship:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149744",
+   "text": "When I am Party Leader",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149745",
+   "text": "When I am a Party Member",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149746",
+   "text": "Ship Security Status",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149747",
+   "text": "Access List Status:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149748",
+   "text": "Public:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149749",
+   "text": "Party:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149750",
+   "text": "Guild:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149751",
+   "text": "Specific:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149752",
+   "text": "Set To",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149753",
+   "text": "By setting the Public level to \"Deny Access\", your ship is locked down to deny all access to everyone but yourself.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149754",
+   "text": "RETURN",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149755",
+   "text": "Are you sure you wish to make this person Captain? This will allow full unlimited power over the ship!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149756",
+   "text": "YES",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149757",
+   "text": "NO",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149758",
+   "text": "There is not enough to bait the whole stack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149759",
+   "text": "You bait the hook.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149760",
+   "text": "You bait the trap.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149761",
+   "text": "Ship:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149762",
+   "text": "Owner:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149763",
+   "text": "Player:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149764",
+   "text": "You must have that equipped to use it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149765",
+   "text": "Soul Collector: ~1_val~%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149766",
+   "text": "You must wait before performing another soul burn.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149767",
+   "text": "You already have a soul burn in effect.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149768",
+   "text": "Effective Level:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149769",
+   "text": "Is Party Member:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149770",
+   "text": "Is Guild Member:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149771",
+   "text": "That does not have enough soul energy to harvest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149772",
+   "text": "You will attempt to harvest the target's soul energy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149773",
+   "text": "The soul collector is full.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149774",
+   "text": "OWNER",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149775",
+   "text": "NOT IN ACCESS LIST",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149776",
+   "text": "REMOVE FROM LIST",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149777",
+   "text": "MAIN MENU",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149778",
+   "text": "Never",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149779",
+   "text": "Corgul's Handbook on Mysticism",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149780",
+   "text": "Corgul's Handbook on the Undead",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149781",
+   "text": "Corgul's Enchanted Sash",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149782",
+   "text": "Floating Emporium Parking Area",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149783",
+   "text": "PAGE 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149784",
+   "text": "PAGE 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149785",
+   "text": "A strong tide comes and carries your boat to deeper water.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149786",
+   "text": "Security Settings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149787",
+   "text": "Your ship will be removed from this area in 1 minute.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149788",
+   "text": "Your ship will be removed from this area in 2 minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149789",
+   "text": "Your ship will be removed from this area in 3 minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149790",
+   "text": "Your ship will be removed from this area in 4 minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149791",
+   "text": "Your ship will be removed from this area in 5 minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149792",
+   "text": "20 minute time limit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149793",
+   "text": "You will sleep with the fishes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149794",
+   "text": "You cannot dock the ship from this location.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149795",
+   "text": "You may not dock a ship while on another ship or inside a house.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149796",
+   "text": "You cannot dock a ship this far out to sea. You must be near land or shallow water.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149797",
+   "text": "That can only be used on armor.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149798",
+   "text": "Soul Collector Gem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149799",
+   "text": "That cannot be used on brittle items.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149800",
+   "text": "Using a Soul Gem on this item will make it brittle, unrepairable, reduce its maximum durability by 50, and rehue the item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149801",
+   "text": "The maximum durability of that item is too low.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149802",
+   "text": "Osiredon the Scalis Enforcer",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149803",
+   "text": "a stone crab trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149804",
+   "text": "a blue lobster trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149805",
+   "text": "a spider crab trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149806",
+   "text": "a void crab trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149807",
+   "text": "a void lobster trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149808",
+   "text": "a blood lobster trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149809",
+   "text": "a dread lobster trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149810",
+   "text": "a tunnel crab trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149811",
+   "text": "a stone crab trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149812",
+   "text": "a blue lobster trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149813",
+   "text": "a spider crab trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149814",
+   "text": "a void crab trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149815",
+   "text": "a void lobster trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149816",
+   "text": "a blood lobster trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149817",
+   "text": "a dread lobster trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149818",
+   "text": "a tunnel crab trophy deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149819",
+   "text": "High Seas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149820",
+   "text": "General Store",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149821",
+   "text": "Winds Tavern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149822",
+   "text": "Abyssal Hair Dye",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149823",
+   "text": "The owner of the lobster trap notices you committing a criminal act!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149824",
+   "text": "Here's the ~1_val~ gold reward money, you've earned it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149825",
+   "text": "Here's your share of the ~1_val~ reward money, you get ~2_val~ gold.  You've earned it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149826",
+   "text": "You cannot apply this paint to your ship while it has other paints on it. Please use paint remover to restore your ship to its permanent base color and then try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149827",
+   "text": "This ship already has a special paint applied to it. If you apply a different paint to it, the new paint will replace the previous paint. Are you sure you wish to continue?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149828",
+   "text": "The ship already has that color paint applied. No changes have been made and no charges have been deducted from your special paint bucket.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149829",
+   "text": "Your ship has been temporarily colored with the special paint. You are now previewing the ship as it will look if the paint is permanently applied. Do you wish to make the color permanent?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149830",
+   "text": "Yes, paint the boat and use a charge from the paint bucket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149831",
+   "text": "No, I wish to select another color to preview",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149832",
+   "text": "You have chosen not to paint your ship with special paints at this time. Any preview coloring has been removed and no charges have been deducted from the special paint bucket.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149833",
+   "text": "You have chosen to permanently paint your ship using the special paint bucket. One charge has been deducted from your special paint bucket. Note that you may now paint over your ship using ordinary ship paints. If you do so, you will cover up the special coloring, and when the ordinary paint is removed or wears off your ship will return to the special coloring you have just applied.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149834",
+   "text": "You must be near a ship that you own to use this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149835",
+   "text": "Weathered Special Ship Paint",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149836",
+   "text": "Two Tone Special Ship Paint",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149837",
+   "text": "~1_val~ gold is for ~2_val~, I can't find them so I'm giving this to Captain ~3_val~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149838",
+   "text": "Here is something special!  It's a salvaged set of orc ship plans.  Parts of it are unreadable, but if you could get another copy you might be able to fill in some of the missing parts...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149839",
+   "text": "*Non-Transferable Account Bound Item*",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149840",
+   "text": "Here is some special cannon ammunition.  It's imported!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149841",
+   "text": "This is an account-bound item is only usable by a character on the account of the original purchaser. This item is not bound to your account.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149842",
+   "text": "Yes, I wish to replace my boat's special paint with a new special paint",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149843",
+   "text": "No, I do not wish to continue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149844",
+   "text": "Choose a color to preview it on your ship. After making a selection, you will be given the option to make the paint permanent, or to preview other colors.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149845",
+   "text": "You must be near a Sea Market to use this item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149846",
+   "text": "You cannot paint that ship right now.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149847",
+   "text": "Condition: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149848",
+   "text": "new",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149849",
+   "text": "excellent",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149850",
+   "text": "very good",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149851",
+   "text": "good",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149852",
+   "text": "fair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149853",
+   "text": "worn",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149854",
+   "text": "As the magic of the hook fades, it transforms to a normal fishhook.  The fishing pole returns to normal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149855",
+   "text": "You must have the High Seas booster pack to use this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149856",
+   "text": "Yar, me aunt's cousin's husband told me ~1_val~ was spotted at ~2_val~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149857",
+   "text": "Beware matey, I hears ~1_val~ was spotted at ~2_val~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149858",
+   "text": "Shiver me timbers! That dread pirate ~1_val~ has been spotted at ~2_val~!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149859",
+   "text": "Yar not going t' believe this, but ~1_val~ has been spotted at ~2_val~...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149860",
+   "text": "I jes' heard from me best friends mother's ex-tailor that ~1_val~ has been spotted at ~2_val~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149861",
+   "text": "If ye be goin' to ~2_val~, watch out fer the Dread Pirate ~1_val~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149862",
+   "text": "I'm just in from ~2_val~ and I seen ~1_val~ sinkin' a merchant ship!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149863",
+   "text": "We're jes in from ~2_val~, we saw ~1_val~ there so we high tailed it to the seamarket!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149864",
+   "text": "I have on good authority, if'n ye were at ~2_val~ right now, ye would be dead because ~1_val~ is there.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149865",
+   "text": "I hear there be a ship going down at ~2_val~ right now because ~1_val~ sank it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149866",
+   "text": "You are too young to receive a ~1_TYPE~ gift.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149867",
+   "text": "13th anniversary gift bag",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149868",
+   "text": "Forged Metal of Artifacts",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149869",
+   "text": "Target an item to enhance with the properties of your selected material (Success Rate: ~1_VAL~%).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149870",
+   "text": "You must have the High Seas booster pack to receive credit for capturing a pirate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149871",
+   "text": "You must have the High Seas booster pack to receive credit for killing a pirate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149872",
+   "text": "You have received credit for killing a pirate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149873",
+   "text": "You have received credit for capturing a pirate. To receive your reward you must be present when the pirate is brought to justice.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149874",
+   "text": "You wouldn't want to cut up something this rare without a good reason.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149875",
+   "text": "We don't really nerf, we alter for completely evil and selfish reasons...<br><br>-Uriah",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149876",
+   "text": "I kill because I care!!<br><br>-Mesanna",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149877",
+   "text": "There can be no order without chaos.<br><br>-Supreem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149878",
+   "text": "Thirteen years of Ultima Online: now it's a lifestyle!<br><br>-Phoenix",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149879",
+   "text": "UO is finally a teenager. Everyone commence with the adolescent humor! Thanks for playing.<br><br>-Shade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149880",
+   "text": "If you kill one man you are a murderer. If you can kill them all with a double click, then you're a developer.<br><br>-Logrus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149881",
+   "text": "Sometimes it takes more than skill,“all kill”.<br><br>-Bleak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149882",
+   "text": "Forest fires prevent bears.<br><br>-Axel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149883",
+   "text": "This card will self-destruct in 13 seconds.<br><br>-Argyle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149884",
+   "text": "Evil will always triumph because Good... is... dumb!<br><br>-TheGrimmOmen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149885",
+   "text": "Ogers!<br><br>-Misk",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149886",
+   "text": "In honor of your service to...Oh look, Saltpeter! Mine.<br><br>-Kerlean",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149887",
+   "text": "After thirteen years of rough seas, what storm does this calm portend?<br><br>-MrsTroubleMaker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149888",
+   "text": "Thank you for being with us on the thirteenth anniversary of Ultima Online's launch.<br><br>-The UO Team",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149889",
+   "text": "We love order, but Britannia is always chaotic. But, no problem. Everything is fine. This is UO and thirteen-year history proves it.<br><br>-Wasia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149890",
+   "text": "See you on the Battlefield!<br><br>-Drake",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149891",
+   "text": "Remember to make it feel UO-ey!<br><br>-Krunchi",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149892",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149893",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149894",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149895",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149896",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149897",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149898",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149899",
+   "text": "Placeholder 13th Anniv - Other Card Text",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149900",
+   "text": "White Leather Dye Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149901",
+   "text": "Small Grandfather Clock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149902",
+   "text": "Large Grandfather Clock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149903",
+   "text": "White Grandfather Clock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149904",
+   "text": "Display Case (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149905",
+   "text": "Ancient Stone Planter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149906",
+   "text": "Grecian Planter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149907",
+   "text": "Modern Stone Planter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149908",
+   "text": "Oak Barrel Planter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149909",
+   "text": "Display Case (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149910",
+   "text": "Your gift could not be created. Please try again later.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149911",
+   "text": "13th Anniversary Fruit Basket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149912",
+   "text": "~1_SIZE~ niter deposit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149913",
+   "text": "small",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149914",
+   "text": "large",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149915",
+   "text": "huge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149916",
+   "text": "clumsy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149917",
+   "text": "gigantic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149918",
+   "text": "You have uncovered a ~1_SIZE~ deposit of niter! Mine it to obtain saltpeter.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149919",
+   "text": "You have already buffed yourself: ~1_VAL~ ~2_VAL~%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149920",
+   "text": "The next time that you try to enhance an item the success rate will be the value listed below regardless of your skill and total intensity of the item. Skill requirements still apply to material usage.  One charge on this item will be consumed per use and only one instance of this buff can be active at any time.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149921",
+   "text": "Skill:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149922",
+   "text": "13th Anniversary Gift Ticket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149923",
+   "text": "You mine the niter deposit but fail to produce any usable saltpeter.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149924",
+   "text": "You extract ~1_COUNT~ saltpeter from the niter deposit.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149925",
+   "text": "bloody sash",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149926",
+   "text": "A Quest for Truth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149927",
+   "text": "Obtain the seven pieces of Virtue Armor listed on the following page of this quest from the anti-virtue dungeons and turn them into Sincade for your reward.<br><br><center>-----</center><br><br>Hail Friend, I have a rare find for thee.  I humbly offer ye a very rare personal copy of the Book of Truth.  To some, my price will be high, but those do not value Truth enough to posess it.  I seek a Helm of Spirituality, a Gorget of Honesty, a Breastplate of Justice, Arms of Compassion, Gauntlets of Valor, Legs of Honor, and Sollerets of Sacrifice.  These pieces of armor can be found in the dungeons named after the anti-virtues.  Would you be willing to take on this quest?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149928",
+   "text": "Book of Truth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149929",
+   "text": "As you wish, friend.  Go in peace.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149930",
+   "text": "Hail friend, pray thee remember that the pieces of the virtue armor I seek are the Helm of Spirituality, the Gorget of Honesty, the Breastplate of Justice, the Arms of Compassion, the Gauntlets of Valor, the Legs of Honor, Sollerets of Sacrifice.  I appreciate thy commitment to Truth and I eagerly await thy delivery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149931",
+   "text": "Thy bravery in recovering these items is appreciated!  Take this book and cherish it with my thanks.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149932",
+   "text": "Hail friend, do you seek Truth?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149933",
+   "text": "Success Rate:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149934",
+   "text": "~1_VAL~%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149935",
+   "text": "OKAY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149936",
+   "text": "The New World Order",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149937",
+   "text": "Obtain a perfect copy of the Book of Truth and bring it to Miegen for your reward<br><br><center>-----</center><br><br>Hail brother, the time of the Bane Chosen is at hand.  Our master comes to this realm soon and he shall rid us of our weakness and empower us to rid this land of our enemies.  Sosaria will be perfected!<br><br>In the past, you have served our cause, but it is now time to become one of us.<br><br>Our master has instructed us to bring Books of Truth to aid in his passage from his world to ours.  He travels in the power of Truth and Truth is required of us to become empowered.<br><br>There is a monk in Britain who can supply you with a Book of Truth.  Bring that book to me as proof that you are Bane Chosen.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149938",
+   "text": "Corrupted Book of Truth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149939",
+   "text": "I see...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149940",
+   "text": "Friend, have you brought a Book of Truth?  I eagerly await your committment to our brotherhood.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149941",
+   "text": "*** Miegen takes the book from you, places it on the alter, then hands it back to you.  You can see that it has magically transformed!***<br><br>Well done, you may now call yourself Bane Chosen.  Your future is secured.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149942",
+   "text": "Corrupted Book of Truth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149943",
+   "text": "A gift to ~1_val~ ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149944",
+   "text": "Upon ~1_val~ induction",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149945",
+   "text": "to the Bane Chosen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149946",
+   "text": "Brother",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149947",
+   "text": "Sister",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149948",
+   "text": "his",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149949",
+   "text": "her",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149950",
+   "text": "Recruit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149951",
+   "text": "Keep serving our cause, and someday I may offer my quest to you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149952",
+   "text": "Perpare yourselves, friends, the age of our master is at hand!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149953",
+   "text": "~1_VAL~: ~2_VAL~%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149954",
+   "text": "Grapevines",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149955",
+   "text": "A large fishing net",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149956",
+   "text": "A magical aura surrounds you and you feel your next item enhancing attempt will most certainly be successful.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149957",
+   "text": "Bronzed Armor of the Valkyrie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149958",
+   "text": "An antique wedding dress",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149959",
+   "text": "A ship's strongbox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149960",
+   "text": "Enchanted Kelp Woven Leggings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149961",
+   "text": "Runed Driftwood Bow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149962",
+   "text": "Yellow Polkadot Bikini Top",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149963",
+   "text": "Target the hellhound to feed it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149964",
+   "text": "This creature has been tamed, it is no longer connected to the elder demons.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149965",
+   "text": "hellhound treat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149966",
+   "text": "The ancient hellhounds recognize their kindred and unite against you. Good luck!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149967",
+   "text": "*CAUTION* You are under the following ENHANCE ITEM buff. Do you want to remove it?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149968",
+   "text": "REMOVE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149969",
+   "text": "The magical aura that surrounded you disipates and you feel that your item enhancement chances have returned to normal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149970",
+   "text": "Greetings friend, please give a donation to the Help a Hellhound Society.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149971",
+   "text": "Hellhounds are such cuddly creatures, don't you think they deserve a treat?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149972",
+   "text": "I think you would be a perfect person to be a treat for a hellhound... I mean buy, buy a treat for a hellhound.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149973",
+   "text": "Excellent, more halloween customers.  Come, buy a treat and feed the hellhounds.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149974",
+   "text": "The hellhound population is at risk! Buy a treat for them.  From me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149975",
+   "text": "Welcome friend, the hellhounds have been waiting for you to visit me.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149976",
+   "text": "If you give one of my treats to a hellhound, it will be very excited!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149977",
+   "text": "My hellhound treats are the best you can find this side of the abyss!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149978",
+   "text": "Get into the halloween spirit, friend, buy a hellhound treat!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149979",
+   "text": "~1_AMT~% physical resist.<br>~2_AMT~% fire resist.<br>~3_AMT~% cold resist.<br>~4_AMT~% poison resist.<br>~5_AMT~% energy resist.<br>~6_AMT~% max physical resist.<br>~7_AMT~% reflection pool.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149980",
+   "text": "You reflect the incoming spell.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149981",
+   "text": "Your magic is not great enough to reflect the incoming spell.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149982",
+   "text": "You cannot reflect spells at this time.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149983",
+   "text": "You cannot hide while you have been detected.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149984",
+   "text": "White Cloth Dye Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149985",
+   "text": "UNLOAD",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149986",
+   "text": "Frenzied Weapon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149987",
+   "text": "Using this on your weapon will make it a rage focused weapon and turn it brittle.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149988",
+   "text": "That can only be used on a weapon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149989",
+   "text": "That property already exists on that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149990",
+   "text": "You have repaired the snake skin boots. Now you are able to dye it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149991",
+   "text": "You will be able to repair it if it is in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149992",
+   "text": "All Crafting Skills",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149993",
+   "text": "You cannot start this session from this arena stone. Please return to the arena stone you opened the session at first.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149994",
+   "text": "Your ban list is full!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149995",
+   "text": "Your access list is full!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149996",
+   "text": "<CENTER>UPGRADE REQUIRED</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149997",
+   "text": "The fire is out.  The camp is no longer secure.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149998",
+   "text": "Save journal to file",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149999",
+   "text": "New journal entries will be saved to chat.log.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150000",
+   "text": "Your necromancy and spirit speak skill must be 30 or higher to summon familiars.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150001",
+   "text": "Switch contents to English",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150002",
+   "text": "Switch contents to Japanese",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150003",
+   "text": "This must be in your backpack to switch language of the book.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150004",
+   "text": "Focusing Gem of Virtue Bane",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150005",
+   "text": "Rage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150006",
+   "text": "Rideable Boura Statuette",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150007",
+   "text": "We've set up a barricade here. Go forth and rid the city of Virtue Bane's minions.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150008",
+   "text": "The time has come! Help us eliminate the defenders at the outskirts of the city in the name of Virtue Bane!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150009",
+   "text": "A Dish Best Served Cold",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150010",
+   "text": "Victory to Virtue Bane!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150011",
+   "text": "Obtain a bowl of rotworm stew, five small pieces of blackrock, and the arms of a Terathan Avenger and return to Salis for your reward.<br><br><center>-----</center><br><br>Greetings ally of the Ophidians-s-s.  I am working on a secret project to undermine the power of our hated enemies the Bane Chos-s-sen.<br><br>We know that the Bane Chos-s-sen use their knowledge of the Bane Dragon food to manipulate those hungry for power over Bane Dragons-s-s.  If I can discover the s-s-secret recipe for their mysterious blackrock stew, we can sell it freely and weaken their power bas-s-se.<br><br>I s-s-seek assistance in this project.  If you will assist, I will give you a copy of the recipe when I discover it.<br><br>I need the following ingredients-s-s, the arms of a Terathan Avenger, one bowl of rotworm stew, and five small pieces of blackrock.  Will you assis-s-st us-s-s?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150012",
+   "text": "As-s-s you wish, ally.  Jus-s-st remember that whoever has this recipe, not only has power over the Bane Bragon but has power over thos-s-se who wish to ride them.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150013",
+   "text": "Have you retrieved the ingredients-s-s?  Do not wait, or the Bane Chos-s-sen will des-s-stroy all.  Remember, I need five small blackrock pieces, one bowl of rotworm s-s-stew, and the arms of a Terethan Avenger.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150014",
+   "text": "*** Salis takes the ingredients and slithers to the table to experiment.  After a few minutes of experimenting and tasting it slithers back to you. ***<br><br>I have discovered the recipe to blackrock stew, the secret to the bane dragon's power.  As-s-s promised, I will share it with you.  Thank you for your assis-s-stance.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150015",
+   "text": "Your backpack is too full for switching language of the book! Please make room and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150016",
+   "text": "a small piece of blackrock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150017",
+   "text": "Britannian Ship Deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150018",
+   "text": "Focus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150019",
+   "text": "Otis' Original Homemade Brew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150020",
+   "text": "Apple Isle Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150021",
+   "text": "White Rose Zinfandel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150022",
+   "text": "Red Eye Tavern Specialty Rum",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150023",
+   "text": "Pandora's Perfect Pinot Noir",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150024",
+   "text": "Royal Guard Brand Ale",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150025",
+   "text": "Napa Valley's Finest Chardonnay",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150026",
+   "text": "Gathered Spirits Blended Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150027",
+   "text": "Joe's Spicy Creb Shek Brew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150028",
+   "text": "Salty Dog Paws Mead",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150029",
+   "text": "Eldador Elven Elderberry Wine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150030",
+   "text": "Waxing Dark Brew - From The Moonglow Garden",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150031",
+   "text": "Serpent's Cross Lager",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150032",
+   "text": "Vesper Ale",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150033",
+   "text": "Arabella's Gargish Stout",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150034",
+   "text": "Diablo's Blaze Port",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150035",
+   "text": "Fitch's White Ale",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150036",
+   "text": "Kazola's Treetop Wine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150037",
+   "text": "Equinox Wine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150038",
+   "text": "Summer Solstice Brew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150039",
+   "text": "Golden Brew Tavern's Spiced Rum",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150040",
+   "text": "Sapewin Wines",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150041",
+   "text": "moonshine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150042",
+   "text": "liquor smuggler's cache",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150043",
+   "text": "Recipe for blackrock stew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150044",
+   "text": "Terathan Avenger arms",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150045",
+   "text": "My work mussst not fall into the handsss of the Bane Chosssen.  You mussst prove yourssself further before I can trussst you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150046",
+   "text": "A Skull Rug (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150047",
+   "text": "A Skull Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150048",
+   "text": "A Rose Rug (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150049",
+   "text": "A Rose Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150050",
+   "text": "A Dolphin Rug (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150051",
+   "text": "A Dolphin Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150052",
+   "text": "This effect cannot be applied to an item with self repair.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150053",
+   "text": "You must wait at least ~1_val~ seconds before focusing spells.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150054",
+   "text": "That effect is already present.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150055",
+   "text": "You must wait a few seconds before using this effect again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150056",
+   "text": "You begin tuning your spells to your opponent.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150057",
+   "text": "I need assistance from a loyal adventurer.  I am close to a breakthrough that will undermine the Bane Chosen.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150058",
+   "text": "Spell Focusing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150059",
+   "text": "Spell Focusing Sash",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150060",
+   "text": "Defiler of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150061",
+   "text": "holiday fireflies",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150062",
+   "text": "You fail to re-deed the holiday fireflies.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150063",
+   "text": "Base/Shadow Color",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150064",
+   "text": "Highlight Color",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150065",
+   "text": "Holiday fireflies must be placed next to a wall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150066",
+   "text": "Your magic reflection pool has been depleted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150067",
+   "text": "Metallic Dye Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150068",
+   "text": "This can only be used to dye metal armor and weapons.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150069",
+   "text": "Valid dungeon names for the portal are:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150070",
+   "text": "Character transfer is not enabled on this shard.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150071",
+   "text": "Character copy is not enabled on this shard.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150072",
+   "text": "Your magic reflection pool has been replenished.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150073",
+   "text": "You must wait ~1_seconds~ seconds to tap into your magic reflection pool.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150074",
+   "text": "Corrupted Crystal Portal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150075",
+   "text": "DUNGEON NAMES:<br>covetous, deceit, despise, destard, ice, fire, hythloth, orc, shame, wrong, wind, doom, citadel, fandancer, mines, bedlam, labyrinth, underworld, abyss, grove, caves, palace, prism,",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150076",
+   "text": "This corrupted portal allows you to teleport directly to a dungeon.<br><br>For Trammel ruleset, say \"dungeon\" followed by the name of the dungeon (e.g. \"dungeon shame\").",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150077",
+   "text": "For Felucca, say \"fel\" then same rules as above. So \"fel dungeon shame\".",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150078",
+   "text": "The same teleportation rules apply regarding criminal flagging, weight, etc.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150079",
+   "text": "Please set the loop as less than 100 times.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150080",
+   "text": "Please set the interval as 5 seconds or more.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150081",
+   "text": "Please enter loop count.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150082",
+   "text": "Please enter the spawn interval.",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

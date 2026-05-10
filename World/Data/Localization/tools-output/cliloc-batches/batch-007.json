@@ -1,0 +1,3006 @@
+{
+ "batch": 7,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1078686",
+   "text": "- 裝備一把刺擊武器<BR>- 進入戰鬥模式<BR>- 指定一個活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078687",
+   "text": "玩家指南/技能： 刺擊武器<BR>http://www.uoherald.com/guide/skill_42.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078689",
+   "text": "* 製箭工具<BR>* 羽毛<BR>* 木頭或木板",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078690",
+   "text": "- 在製箭工具上按兩下<BR>- 從選單中挑選你想要製造的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078691",
+   "text": "玩家指南/技能： 製箭技能<BR>http://www.uoherald.com/guide/skill_8.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078694",
+   "text": "- 在水域附近裝備一根釣竿<BR>- 在釣竿上按兩下<BR>- 在水面上指定你想要釣魚的地方",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078695",
+   "text": "玩家指南/技能： 捕魚技能<BR>http://www.uoherald.com/guide/skill_18.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078698",
+   "text": "玩家指南/技能： 集中技能<BR>http://www.uoherald.com/guide/skill_50.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078700",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定屍體、玩家或容器",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078701",
+   "text": "玩家指南/技能： 驗屍技能<BR>http://www.uoherald.com/guide/skill_19.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078703",
+   "text": "- 在繃帶上按兩下<BR>- 指定你希望治療的人",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078704",
+   "text": "玩家指南/技能： 治療技能<BR>http://www.uoherald.com/guide/skill_17.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078707",
+   "text": "- 裝備一把牧羊人杖<BR>- 在杖上按兩下<BR>- 指定你想要放牧的動物<BR>- 指定你希望動物前往的地點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078708",
+   "text": "玩家指南/技能： 放牧技能<BR>http://www.uoherald.com/guide/skill_20.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078711",
+   "text": "玩家指南/技能： 隱身技能<BR>http://www.uoherald.com/guide/skill_21.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078713",
+   "text": "* 兩本書：一本來源書和一本要抄錄上去的空白書<BR>* 抄寫師的筆、一本魔法書、相關藥材，以及一份空白卷軸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078714",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定你想要複寫的書<BR>- 指定要抄錄上去的空白書",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078715",
+   "text": "- 在抄寫師的筆上按兩下<BR>- 從你的魔法書中選擇你想要複製的法術",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078717",
+   "text": "玩家指南/技能： 抄錄技能<BR>http://www.uoherald.com/guide/skill_23.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078719",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定你想要鑑定的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078720",
+   "text": "玩家指南/技能： 物品鑑定<BR>http://www.uoherald.com/guide/skill_3.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078723",
+   "text": "- 在開鎖器上按兩下<BR>- 指定你想要開鎖的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078724",
+   "text": "玩家指南/技能： 開鎖技能<BR>http://www.uoherald.com/guide/skill_24.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078727",
+   "text": "- 裝備斧頭、短柄小斧或長柄武器<BR>- 在斧頭、短柄小斧或長柄武器上按兩下<BR>- 指定一棵樹",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078729",
+   "text": "玩家指南/技能： 伐木技能<BR>http://www.uoherald.com/guide/skill_44.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078732",
+   "text": "- 裝備錘類武器<BR>- 進入戰鬥模式<BR>- 指定一個活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078733",
+   "text": "玩家指南/技能： 錘類武器<BR>http://www.uoherald.com/guide/skill_41.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078734",
+   "text": "這項技能將可以使你在遊戲中施展各類魔法。在你嘗試施法時，將會自動檢定你的魔法技能，你的技能高低也將會影響你施展該項魔法的成功率。要施展魔法，你的雙手必須是空無一物的（魔法書除外） ，你的魔法書中必須抄錄有適當的法術，而且你的背包中必須有適當的對應藥材。<BR>你也可以利用卷軸施展法術。準備卷軸時必須要有適當的藥材和技能，所以利用卷軸施法無需藥材，而且之需較低的技能等級便可順利施展。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078735",
+   "text": "* 一本魔法書<BR>* 藥材<BR>* 或者：一個法術卷軸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078736",
+   "text": "- 打開魔法之書<BR>- 點選你想要使用的能力圖示<BR>- 或者：在你想要使用的法術卷軸上按兩下",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078737",
+   "text": "玩家指南/技能： 魔法技能<BR>http://www.uoherald.com/guide/skill_25.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078741",
+   "text": "玩家指南/技能： 冥想技能<BR>http://www.uoherald.com/guide/skill_46.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078743",
+   "text": "- 減輕特定改變屬性或是持續作用的法術效果<BR>- 技能達40+以上可提升最低元素抗性",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078744",
+   "text": "玩家指南/技能： 抗魔技能<BR>http://www.uoherald.com/guide/skill_26.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078747",
+   "text": "* 採礦<BR> - 在十字鎬或鏟子上按兩下<BR> - 指定山坡或洞穴壁面<BR>* 熔煉<BR> - 站在熔爐附近<BR> - 在你背包內的礦石上按兩下",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078748",
+   "text": "玩家指南/技能： 採礦技能<BR>http://www.uoherald.com/guide/skill_45.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078752",
+   "text": "玩家指南/技能： 音樂技能<BR>http://www.uoherald.com/guide/skill_29.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078754",
+   "text": "* 一本死靈法術書卷<BR>* 死靈法術藥材",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078755",
+   "text": "- 打開死靈法術書卷<BR>- 點選你想要使用的能力圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078756",
+   "text": "玩家指南/技能： 死靈法術<BR>http://www.uoherald.com/guide/skill_49.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078759",
+   "text": "- 打開忍術之書BR>- 點選你想要使用的能力圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078760",
+   "text": "玩家指南/技能： 忍術<BR>http://guide.uo.com/skill_53.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078763",
+   "text": "- 在你的副手裝備一面盾牌，E48779將會降低戰鬥中的傷害",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078764",
+   "text": "玩家指南/技能： 防禦技能<BR>http://www.uoherald.com/guide/skill_5.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078767",
+   "text": "- 點選技能視窗內的圖示<BR>* 單一生物<BR><BR> - 指定附近的動物、怪物或寵物<BR>* 區域調停<BR> - 指定你自己",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078768",
+   "text": "玩家指南/技能： 調停技能<BR>http://www.uoherald.com/guide/skill_9.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078769",
+   "text": "塗毒技能是用來對武器，甚至是食物和飲料下毒。這將會危害到任何一個被下毒的武器攻擊的人，或是任何吃掉被下了毒的食物和飲料的人。要在武器上下毒，你只需使用技能表上的技能，然後選擇你要使用的毒藥瓶，最後點選你要下毒的目標。假如你向武器下毒，你就會損失善惡值。這項物品會一直保持有毒狀態，直到你使用它。一旦有毒的武器被使用過，你就必須在重新下毒。<BR><BR>當你希望對一項物品下毒，千萬不要先在綠色藥水上按兩下。若你這樣做，你將會喝下毒藥。這樣做的結果絕不是你想要的，因為你會使自己中毒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078771",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定毒藥水<BR>- 指定你想下毒的武器、食物或飲料",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078773",
+   "text": "玩家指南/技能： 塗毒技能<BR>http://www.uoherald.com/guide/skill_30.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078776",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的一頭動物、怪物、寵物或玩家",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078777",
+   "text": "玩家指南/技能： 挑撥技能<BR>http://www.uoherald.com/guide/skill_22.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078779",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定一個有陷阱的容器",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078780",
+   "text": "玩家指南/技能： 陷阱移除<BR>http://www.uoherald.com/guide/skill_47.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078782",
+   "text": "- 在玩家或非玩家角色上按兩下，查看他們的角色視窗<BR>- 站在附近時於他們的背包上按兩下",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078783",
+   "text": "玩家指南/技能： 窺探技能<BR>http://www.uoherald.com/guide/skill_28.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078785",
+   "text": "* 一本集成咒文書<BR>* 一個秘術聚焦點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078786",
+   "text": "- 打開集成咒文書<BR>- 點選你想要使用的能力圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078787",
+   "text": "玩家指南/技能： 集成咒文<BR>http://www.uoherald.com/guide/skill_54.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078789",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的屍體",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078790",
+   "text": "- 大師可以看見藏匿的鬼魂<BR>- 大師可以像鬼魂一樣說話，並為活人所了解<BR>- 大師能夠了解鬼魂說的話",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078791",
+   "text": "玩家指南/技能： 通靈技能<BR>http://www.uoherald.com/guide/skill_32.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078793",
+   "text": "* 隨機扒竊<BR> - 點選技能視窗內的圖示<BR> - 站在附近時，指定容器、生物、非玩家角色或玩家<BR>* 選擇性扒竊<BR> - 以窺探技能開啟容器<BR> - 點選技能視窗內的圖示<BR> - 站在附近時，指定你想要竊取的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078794",
+   "text": "玩家指南/技能： 偷竊技能<BR>http://www.uoherald.com/guide/skill_33.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078796",
+   "text": "- 點選技能視窗內的隱身技能圖示<BR>- 點選技能視窗內的潛行技能圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078797",
+   "text": "玩家指南/技能： 潛行技能<BR>http://www.uoherald.com/guide/skill_48.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078800",
+   "text": "- 裝備一把劍類武器<BR>- 進入戰鬥模式<BR>- 指定一個活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078801",
+   "text": "玩家指南/技能： 劍類武器<BR>http://www.uoherald.com/guide/skill_40.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078804",
+   "text": "玩家指南/技能： 戰術技能<BR>http://www.uoherald.com/guide/skill_27.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078807",
+   "text": "* 一組縫紉工具<BR>* 布料或皮革",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078808",
+   "text": "- 在縫紉工具上按兩下<BR>- 從選單中挑選你想要縫製的項目",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078809",
+   "text": "玩家指南/技能： 裁縫技能<BR>http://www.uoherald.com/guide/skill_34.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078811",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定你想要品嚐的食物、飲料、藥水或要水桶",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078812",
+   "text": "玩家指南/技能： 辨味技能<BR>http://www.uoherald.com/guide/skill_36.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078814",
+   "text": "* 鉗工工具<BR>* 金屬塊或木材",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078815",
+   "text": "- 在鉗工工具上按兩下<BR>- 從選單中挑選你想要製造的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078816",
+   "text": "玩家指南/技能： 鉗工技能<BR>http://www.uoherald.com/guide/skill_37.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078818",
+   "text": "- 點選技能視窗內的圖示<BR>- 從選單中挑選動物、怪物或玩家",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078819",
+   "text": "玩家指南/技能： 追蹤技能<BR>http://www.uoherald.com/guide/skill_38.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078822",
+   "text": "- 在繃帶上按兩下<BR>- 指定你想要治療的動物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078823",
+   "text": "玩家指南/技能： 獸醫技能<BR>http://www.uoherald.com/guide/skill_39.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078825",
+   "text": "- 卸下任何你持有的武器<BR>- 進入戰鬥模式<BR>- 指定一個活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078826",
+   "text": "玩家指南/技能： 搏擊技能<BR>http://www.uoherald.com/guide/skill_43.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078828",
+   "text": "採礦 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078841",
+   "text": "增加朋友失敗：玩家ID無效",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078898",
+   "text": "Fe-fi-fo-fum，不列顛人的血令我著迷！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078945",
+   "text": "現在whois指令能夠顯示你的角色名稱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078946",
+   "text": "whois指令不再能夠顯示你的角色名稱。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078981",
+   "text": "This is a placeholder TID",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078982",
+   "text": "Placeholder 2 for the NDA Agreement",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078985",
+   "text": "uo.com",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078991",
+   "text": "我們無法認證你的登入。通常，這表示現在有更新的用戶端程式修正檔，或是你輸入的帳號名稱或密碼不正確。請檢查你的Caps Lock鍵狀態，並試著重新輸入你的帳號名稱和密碼。如果你繼續接獲此錯誤訊息，請重新啟動你的用戶端程式。如果這是個新的帳號，你的帳號可能尚未啟用，請過一陣子再試一次。如果你繼續遭遇問題，請與客服人員聯繫。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078998",
+   "text": "需要送給GQ的長袍數？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078999",
+   "text": "輸入左上X座標的數字",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079001",
+   "text": "輸入一組新的粒子ID：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079007",
+   "text": "輸入你希望提取的金幣數量（ESC = 取消）：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079008",
+   "text": "你打算從我這裡保管的 ~1_gold~ 金幣取走多少？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079015",
+   "text": "請輸入物品的財產ID編號：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079016",
+   "text": "請輸入物品的Objvar名稱：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079019",
+   "text": "請輸入Anti Dynfix檔案名稱：",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079041",
+   "text": "Bet Ex Wis！！！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079044",
+   "text": "Corp Por!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079118",
+   "text": "VAS AN MANI HUR TYM！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079207",
+   "text": "Mob動畫暫存區（MB）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079217",
+   "text": "'Vidda K'balc'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079221",
+   "text": "'Drewroc Velgo'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079226",
+   "text": "'Trubechs Vingir'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079230",
+   "text": "'Erstok Reyam'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079235",
+   "text": "'Trubechs Yeliab'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079239",
+   "text": "'Erstok Ontawl'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079243",
+   "text": "'Erstok K'balc'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079247",
+   "text": "'Erstok Oostrac'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079255",
+   "text": "<center>逃避挑戰</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079261",
+   "text": "這個地區需搭配《王國再興》遊戲程式。詳細資訊請造訪www.uo.com。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079263",
+   "text": "你必須等候 ~1_seconds~ 秒鐘之後才能使用此物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079265",
+   "text": "你必須等候 ~1_minutes~ 分鐘之後才能使用此物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079274",
+   "text": "配件<BR>門和傳送點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079281",
+   "text": "以ID新增",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079282",
+   "text": "以ID新增",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079308",
+   "text": "你需要 ~1_SKILL_REQUIREMENT~ 武器和戰術技能才能執行該攻擊",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079323",
+   "text": "Doracron",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079324",
+   "text": "Sueacron",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079335",
+   "text": "你必須等候 ~1_seconds~ 秒才能再次使用此能力",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079365",
+   "text": "ID",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079443",
+   "text": "~1_DONE~/~2_TOTAL~ 完成",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079458",
+   "text": "NPC",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079459",
+   "text": "NPC小販",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079480",
+   "text": "磁碟快取 (MB)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079481",
+   "text": "最小系統剩餘記憶體 (MB)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079509",
+   "text": "神祕術技能說明 - placeholder",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079510",
+   "text": "強化術技能說明 - placeholder",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079511",
+   "text": "投擲術技能說明 - placeholder",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079516",
+   "text": "X",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079517",
+   "text": "Y",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079518",
+   "text": "Z",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1079521",
+   "text": "你所輸入的座標不在X,Y,Z有效範圍內！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079522",
+   "text": "自訂UI",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079523",
+   "text": "使用自訂UI",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079544",
+   "text": "你先前的冥思已經讓你感到~1_VIRTUE~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079546",
+   "text": "在此聖壇冥思讓你感到更加~1_VIRTUE~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079548",
+   "text": "你在~1_TIME~分鐘後將可改善你的運氣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079550",
+   "text": "你在~1_TIME~小時後將可改善你的運氣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079566",
+   "text": "你感到你在~1_TIME~小時後便可開始學習更多的美德。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079568",
+   "text": "你感到你在~1_TIME~分鐘後便可開始學習更多的美德。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079588",
+   "text": "<CENTER>強化選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079715",
+   "text": "附魔技能允許玩家角色替物品加上魔法性質。技巧的等級決定了巧匠能將多少魔力注入物品。<BR><BR>附魔技巧允許玩家角色利用魔法方式將物品拆解成特殊零件。巧匠為物品注入魔力時可以使用這些零件。魔法拆解物品的過程會使物品損毀。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079717",
+   "text": "<CENTER>強化確認</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079719",
+   "text": "- 打開玄術之書<BR>- 點選你想要使用的能力圖示<BR>- 或者：在你想要使用的法術卷軸上按兩下",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079720",
+   "text": "- 點擊技能視窗內的圖示<BR>- 選擇你希望附魔或魔法拆解的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079721",
+   "text": "- 裝備投擲武器<BR>- 進入戰鬥模式<BR>- 瞄準目標",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079722",
+   "text": "玩家指南/技能：玄術<BR>http://www.uoherald.com/guide/skill_55.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079723",
+   "text": "玩家指南/技能：附魔技能<BR>http://www.uoherald.com/guide/skill_56.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079724",
+   "text": "玩家指南/技能：投擲技能<BR>http://www.uoherald.com/guide/skill_57.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079726",
+   "text": "<center>冥府戰馬</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079728",
+   "text": "<center>暗黑壽袍</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079802",
+   "text": "選擇你的身體變化選項：<BR>你可能得移除裝備，例如頭部物品，<BR>才能預覽你所做的改變。<BR>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079821",
+   "text": "本功能需搭配《王國再興》遊戲程式。詳細資訊請造訪www.uo.com。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079843",
+   "text": "和Say相同，但文字將置於星號之間",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079844",
+   "text": "和Say相同，但只有附近的玩家角色才看得到文字",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079845",
+   "text": "和Say相同，但只畫面範圍內的人才看得到文字",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079973",
+   "text": "已搶救： ~1_COUNT~/~2_NUM~ 鐵匠物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079974",
+   "text": "已搶救： ~1_COUNT~/~2_NUM~ 裁縫物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079978",
+   "text": "直接傷害： ~1_PERCENT~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079988",
+   "text": "你偷了我的心， ~1_target_player~。署名：~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079989",
+   "text": "你願意和我在一起嗎，~1_target_player~？署名：~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079990",
+   "text": "你馴服了我心， ~1_target_player~。署名：~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079991",
+   "text": "情人節快樂， ~1_target_player~! 署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079992",
+   "text": "你真甜蜜， ~1_target_player~. 署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1079993",
+   "text": "梅麗珊德女王要我這樣做的， ~1_target_player~。署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080013",
+   "text": "你的購買總額為 ~1_VAL~ 枚金幣，",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080015",
+   "text": "此帳號已開設 ~1_VAL~ 個月之久。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080018",
+   "text": "你將有 ~1_VAL~ 多個小時，可以享受新手玩家的好處與相對安全狀態。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080020",
+   "text": "此帳號已開設 ~1_VAL~ 個月之久。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080021",
+   "text": "銀行保險箱有 ~1_VAL~ 件物品，重 ~2_VAL~ 石",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080022",
+   "text": "你有約 ~1_VAL~ 分鐘的時間可以尋找安全地點。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080028",
+   "text": "你發現 ~1_NAME~ 慫恿 ~2_VAL~ 去攻擊 ~3_VAL~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080033",
+   "text": "要永久刪除 ~1_NAME~ 嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080034",
+   "text": "他們的 ~1_NAME~ 在攻擊中遭到消滅。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080035",
+   "text": "你的 ~1_NAME~ 在攻擊中遭到消滅。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080040",
+   "text": "試著多加留意寶箱，~1_NAME~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080047",
+   "text": "~1_NAME~ 自願帶你到處瞧瞧！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080052",
+   "text": "ridingspecial.wxx",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1080054",
+   "text": "我不該丟掉我的所有物！<br><br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080056",
+   "text": "你要給我  + getName(givenobj) + \"?\"",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080082",
+   "text": "## 'Ultima'這個檔案無法存取也無法銷毀",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080087",
+   "text": "4) 你不得假扮任何《網路創世紀》客服代表或是Origin Systems的其他員工。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080090",
+   "text": "7) 在Origin Systems未明確授權你修改的情況下，你不得修改任何屬於《網路創世紀》服務或網站的內容。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080094",
+   "text": "18) 依據此規範，為了讓所有玩家能夠充分享受遊戲，你不得做出任何會干擾其他《網路創世紀》使用者享受遊戲樂趣，或是增加Origin開銷以及提高Origin維護《網路創世紀》服務困難度的事情。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080096",
+   "text": "星空藍寶石d20",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080097",
+   "text": "你被強光逼得向後退！你可沒有本事擲出這個d20…",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080099",
+   "text": "*蓋瑞擲出了藍寶石d20*",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080105",
+   "text": "*瞧向d20*",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080108",
+   "text": "出售罰金： ~1_VALUE~gp",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080117",
+   "text": "你的 ~1_ABILITY_NAME~ 被淨化了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080118",
+   "text": "你的目標的 ~1_ABILITY_NAME~ 被淨化了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080129",
+   "text": "+~1_HIT_SPELL_EFFECT~% 命中法術效果。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080140",
+   "text": "行動減緩。<br>無法攻擊或施展法術。<br>防禦能力大幅降低。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080146",
+   "text": "行動減緩。<br>~1_SSIAMT~% 揮舞速度。<br>~2_FCAMT~ 施法速度。<br>所有抗性+~3_RESISTAMT~%。<br>所有抗性上限+~4_RESISTAMTMAX~%。<br>傷害+~5_DMGAMT~%。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080151",
+   "text": "<center>法術觸發選項選單</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080155",
+   "text": "~1_VAL~pts",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1080166",
+   "text": "使用： ~1_spellName~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080193",
+   "text": "你必需等候 ~1_seconds~ 秒鐘才能再次施展此法術。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080202",
+   "text": "蜂蜜罐： ~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080240",
+   "text": "珠寶套裝的配件（~1_val~ 件）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080242",
+   "text": "快速施法回復 ~1_val~ （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080243",
+   "text": "快速施法 ~1_val~ （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080244",
+   "text": "生命值回復 ~1_val~ （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080245",
+   "text": "魔法值恢復 ~1_val~ （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080246",
+   "text": "幸運 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080247",
+   "text": "快速施法 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080248",
+   "text": "快速施法回復 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080249",
+   "text": "生命值回復 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080250",
+   "text": "魔法值恢復 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080255",
+   "text": "~1_name~的結婚證書",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080267",
+   "text": "尤恩斯接受：古布的皮毛、小工藝品、大工藝品、威力卷軸、藏寶地圖、SOS與MIB、特殊的傳說中漁網、佳節物品、禮物與萬聖節物品、SOS箱前戰利品、可竊取的工藝品、彩蛋",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080277",
+   "text": "尤恩斯接受：古布的皮毛、小工藝品、末日工藝品、威力卷軸、藏寶地圖、SOS與MIB、特殊的傳說中漁網、佳節與情人節禮物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080337",
+   "text": "能力： ~1_name~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080342",
+   "text": "恐懼深入你的心中，剷除了你原本能夠抵抗 ~1_name~ 的機會",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080343",
+   "text": "當 ~1_name~ 燃燒的雙眼盯著你瞧時，周遭的一切都化為黑暗",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080344",
+   "text": "~1_name~：真是…好玩啊。你絕不會認為你「贏了」吧？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080345",
+   "text": "~1_name~：我覺得很有趣，真罕見啊！普通生物居然能夠帶來如此的娛樂？或許我們有朝一日還有機會「再戰一次」",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080346",
+   "text": "~1_name~：這些飾品給你，它們對我來說一文不值",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080358",
+   "text": "生命值增加 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080360",
+   "text": "生命值增加 ~1_val~ （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080361",
+   "text": "物理抗性 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080362",
+   "text": "火焰抗性 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080363",
+   "text": "寒冷抗性 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080364",
+   "text": "毒物抗性 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080365",
+   "text": "能量抗性 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080389",
+   "text": "這個泥巴碗裡頭已裝有~1_val~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080423",
+   "text": "附魔物品：為選擇目標增加或修改魔法物品性質。<BR><BR>拆解物品：從物品上取得一種以上的魔法元素。選定的物品在拆解過程中會被摧毀。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080430",
+   "text": "<CENTER>附魔選擇選單</CENTER>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080439",
+   "text": "智力加權 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080440",
+   "text": "降低藥材消耗 +~1_val~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080441",
+   "text": "降低藥材消耗 ~1_val~% （總計）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080447",
+   "text": "敏捷加權 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080448",
+   "text": "命中機率增加 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080450",
+   "text": "+~1_SSIAMT~% 揮舞速度。<br>+~2_FCAMT~ 施法速度。<br>~3_RESISTAMT~% 所有抗性。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080456",
+   "text": "布佛德接受：黃金與冠軍骷髏頭、月石、戴利斯與魁特稀有物品、派送袋、食譜、鸚鵡、ID與冰杖、動力水晶、組裝發條裝置、護身符、摺紙、無與倫比頭目獎勵、擁抱任務獎勵、半獸人族面具、部落獎勵、完美箱子、音樂齒輪、疫病獸核心",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080496",
+   "text": "代表我們對暗影崇敬的古幣。虛無的永恆榮耀！ - FOA",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080534",
+   "text": "一株 ~1_HEALTH~ 可可樹",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080535",
+   "text": "一個泥巴 ~1_val~ 碗，裡頭有 ~2_val~ ~3_val~ ~4_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080536",
+   "text": "一個泥巴 ~1_val~ 碗，裡頭有 ~2_val~ 可可樹種子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080539",
+   "text": "裝飾用 ~2_TYPE~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080545",
+   "text": "[水晶] ~1_SENDER~ 說： ~2_MSG~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1080546",
+   "text": "~1_SENDER~ 說： ~2_MSG~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094701",
+   "text": "裝飾用 ~3_NAME~ 植物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094702",
+   "text": "~1_HEALTH~ 甘蔗",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094719",
+   "text": "圓木： ~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094723",
+   "text": "寶石： ~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094724",
+   "text": "礦石： ~1_COUNT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094795",
+   "text": "更改服務合約 (~1_SKILL_NAME~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094798",
+   "text": "在墓穴中央房間說出「sarcophagidae」。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094805",
+   "text": "陣營等級： ~1_VALUE~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094921",
+   "text": "戰區加權： ~1_VALUE~ 殺人點數",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094922",
+   "text": "你的勇奪封印的表現，帶來了 ~1_POINTS~ 殺人點數和 ~2_SILVER~ 枚銀幣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094951",
+   "text": "前往「冥河深淵」尋找失蹤的冒險者。只要將他們目前的情況，或是他們下落的證據帶回給杜菮長老，你便可以獲得獎勵。<br><center>-----</center><br>幸會，冒險者。我是杜菮長老，艾瑞爾港協會的領袖。我們是個由探險者組成的協會，並從阿姆瑞克男爵那裡得到了在此山區殖民的委任狀。<br><br>在這神秘之山出現並開啟大門之後...我們派出斥候並發現裡頭有座已經廢棄並且被野生動物佔據的古老城市。因此，在我們男爵的祝福下，我們佔領此地並安頓下來，並稱之為艾瑞爾港。<br><br>我們已經派出冒險隊伍，緩慢地肅清野獸，目前我們已經順利地確保了前方通道的安全。昨天，我們派出一支隊伍繼續深入，試圖尋找下個可佔領的區域，不過他們卻一去不返...我感到有些擔心。<br><br>既然你要進入此山，能否請你留意一下我方人馬？如果他們安然無恙，請替我帶回他們的訊息，如果他們慘遭不幸，也請帶回他們死亡的證據。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094956",
+   "text": "喔，這真是悲慘的消息。看來，我最害怕的情況真的發生了！這些文件分別屬於伊凡．布來特衛斯特、凱文．布來特衛斯特、賽吉歐．泰樂以及莎拉．布特威。根據你對恐怖現場的描述，他們的下場十分悽慘！這對我們協會來說是個重大損失，他們都是我最好的朋友，同時也是協會的優秀份子。<br><br>奇怪的是，你只發現了四具屍體...該探險隊還有第五名成員，奈威爾．布來特衛斯特，不過，他是隊伍中最年輕且最沒有經驗的，如果他的哥哥們都死去了，年輕的奈威爾恐怕也凶多吉少。這真的很悽慘。<br><br>請收下這個火把，以及我由衷的感謝。雖然微不足道，但它有著永遠不會熄滅的魔法。腐蟲懼怕火焰，在你深入這些受咒的通道時，它能夠保護你。<br><br>小心前進，旅行者，我們隊伍中的每位成員都有這樣的火把，我恐怕腐蟲不是讓他們喪命的罪魁禍首。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094960",
+   "text": "進入「冥河深淵」，搜尋被偷的大麥桶。將它們帶回來給補給官佛林特領取你的獎勵。<br><center>-----</center><br>幸會，旅行者。你打算進入深淵嗎？我只能說祝你好運，而且務必小心，在那些通道中躲藏著一大群盜賊！沒錯，就在昨晚，我丟了四個大麥桶。我知道他們說通道中除了古怪的生物之外，沒有任何人居住，但是我搜遍了山區附近，都不見我的桶子的蹤影。<br><br>希望他們懶惰的衛兵昨晚睡了個好覺，因為除非能把那些桶子找回來，否則他們別想嚐到任何用大麥做的食物！我不相信他們那群遊手好閒的傢伙什麼都沒瞧見！喔，我快瘋了，我不能再想了，我得控制一下脾氣...那可是大麥桶耶！他們怎麼會什麼都沒瞧見？？？<br><br>抱歉...我不是故意找你麻煩。告訴你吧，朋友，如果你能找回那些桶子，我會給你報酬。那裡頭有些噁心的玩意兒，如果你能把四個桶子全都帶回，我也會和你分享一些特別的玩意兒！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094961",
+   "text": "Fine then, be on yar way but be warned!  Ol' Flint makes the best refreshin' barley products in tha known world!  That barley will not profit ye if'n ol' Flint ha' not prepared it proper!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1094970",
+   "text": "進入「冥河深淵」，找到佛林特被偷的記錄簿。將記錄簿帶回來給佛林特領取獎勵。<br><center>-----</center><br>你一定不會相信，我真是倒楣透了！不久之前，我好不容易把麥桶找回來，那些哥布林又偷走了我的記錄簿！沒有了記錄簿，我該如何控管所有的補給品？當然，那些白癡衛兵什麼都沒看見！<br><br>聽著，你過去曾經幫過老佛林特，所以，我想在請你幫個忙。如果你能把老佛林特的記錄簿找回來，我會給你一桶特製麥酒！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094978",
+   "text": "進入「冥河深淵」尋找三個沃土樣本、三個骨頭樣本，以及三個冷光真菌樣本。將這些帶回來給葛陳領取你的獎勵。<br><center>-----</center><br>這個夢幻之地呼喚著我，宛如樹木一樣充滿魔力。通道像長滿果實的樹枝般延伸開來，這些果實就是...呃...所謂的藥材。<br><br>嗯...我可不希望你受傷，不過，首先我需要的是沃土。其次，我需要一些被人遺忘、離鄉背井的骨頭。各帶三個回來給我，為了答謝你，我會和你分享一種特殊藥水。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094985",
+   "text": "進入深淵，使用「偵測隱藏」技能找到一處地板陷阱。然後使用「移除陷阱」技能，取得地板陷阱。將陷阱的機件帶來給杜賓領取你的獎勵。<br><center>-----</center><br>朋友，我叫杜賓。我精通各種鉗工之事，包括陷阱。只限於私下請託製作，例如皇家專案之類的。我加入了這個叫做艾瑞爾港協會的組織，以便能夠在這個古老之地發現新奇的裝置。<br><br>說到這個，杜菮那老傢伙十分官僚。既然你不受她支配，你何不進去裡頭，幫杜賓帶回來你找到的任何陷阱？而我，則會把在陷阱中發現的任何鉗工零件與你分享，作為交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1094992",
+   "text": "尋找通往冥河深淵下層的通道。找到佯裝葛拉蒙的生物並殺死它。取回葛拉蒙的書並交還給他。<br><center>-----</center><br>我有件重要的差事，需徵求一名勇士。你現在看到的這個廢墟，過去曾是充滿靈性且繁榮的美麗地方，如今卻成了恐怖之地。如果你進入中央，你會找到通往深淵下層的火山豎坑。我需要一名勇士進入深淵下層，找到叫做異變怪的生物。它很容易辨識，因為它佯裝成我的樣子。別被愚弄了！這頭生物拿走了一本我必需拿回來的書！<br><br>有許多方式可以抵達深淵中央，不過除非你先喝下「憐憫之酒」，否則那裡的魔法不會讓你通過。取得「憐憫之酒」絕非易事，你必需找到一連串古老的魔法傳送裝置，它們會帶你找到「憐憫之酒」。當你證明了自己的實力，樹木伙伴守護者將會為你開啟通道。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095005",
+   "text": "護送奈威爾．布來特衛斯特返回杜菮長老那裡。奈威爾安全之後，和杜菮長老交談取得你的獎勵。<br><center>-----</center><br>哥布林攻擊時，我和我的哥哥們走散了。我是艾瑞爾港協會的成員，前來在這個我們認為已經荒廢的山區中殖民。我必需離開這裡，回去警告杜菮長老，居住在這裡的生物十分危險！你能指點我回去的路嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095008",
+   "text": "旅行者，你替我和我的人們幫了個大忙。我早已對奈威爾的下場做了最壞打算，若不是你即時出手相就，他恐怕也是死路一條。<br><br>哥布林是傳說中的生物，大加以為它們早已滅絕。它們雖然邪惡，但卻不強，可怕的是它們有如傳染病般地難纏。這個護符給你，它曾經為那些那些解決哥布林的勇士所配戴。它擁有魔法力量，能讓你在面對哥布林時保護自己。我知道去哪裡可以再弄到一些，我會分配一些給我的其餘人們配戴。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095014",
+   "text": "進入「冥河深淵」，殺掉灰哥布林，直到它們順服而不再攻擊殖民者。<br><center>-----</center><br>你已為我們做了很多，現在，我需要你再次扮演我們的勇士。在這山區，只要哥布林威脅著我們的安全，我們便無法安眠。回去你找到奈威爾的地方，殺掉灰哥布林，直到它們順服於你。讓它們知道我們有位勇士保護，它們最好去別的地方作亂。如果你能替我們辦成這件事，我會將我們的最高榮譽頒贈給你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095021",
+   "text": "謝謝你，朋友。我很遺憾得讓你去做如此慘絕人寰的事情，不過，我從古代文字中得知，哥布林會造成嚴重禍害。要知道，你不只是救了我的人的性命，還拯救了許多你尚未謀面的人的性命。<br><br>這帶財寶給你。希望對你有用。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095024",
+   "text": "前往綠哥布林區域，殺掉綠哥布林，直到他們懼怕你為止。返回賈卡處領取你的獎勵。<br><center>-----</center><br>賈卡和你們族類為友。不想要暴力...不會互咬！賈卡吃腐蟲...燉腐蟲很好吃！讓賈卡聰明！<br><br>我們可以交朋友，好嗎？外族和內族交朋友？很棒對吧？賈卡知道誰恨你們族類；灰哥布林不恨你們。我們想交朋友！賈卡想要警告你！沒錯，朋友會給好的警告！<br><br>綠哥布林很壞，非常壞。綠哥布林建造了一大堆武器！當綠哥布林弄到足夠的武器，它們會與外族發動戰爭...也就是你們族類！他們會在夜晚出沒，用劍偷襲我的新朋友！它們會的！我發誓！<br><br>灰哥布林知道這一點，這就是我們和它們作戰的原因！我們保護我們的朋友！你，我們的朋友！你願意協助我們阻止綠哥布林嗎？如果你肯幫助，賈卡會給一些聰明的知識！互相幫助，好嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095030",
+   "text": "綠哥布林沒有用他們尖銳的武器殺了你？啊...非常好！賈卡非常驕傲能成為你的朋友！你消滅了綠哥布林是吧？讓它們為殺死灰哥布林付出代價！啊...讓它們為竊取外族物品付出代價！<br><br>賈卡給你特殊禮物，非常棒的燉腐蟲食譜！給你，讓你聰明！像賈卡一樣聰明！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095034",
+   "text": "殺死血蟲和血元素，裝滿賈卡的桶子。帶著裝滿的桶子回去找賈卡領取你的獎勵。<br><center>-----</center><br>朋友願不願意幫賈卡一個小忙，成為大朋友？賈卡需要裝滿血的大桶子。朋友能辦到嗎？附近的血元素和血蟲是血的最佳來源。如果你幫忙，賈卡給你特殊禮物！比好吃食譜還特殊！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095043",
+   "text": "去深淵的地底河流抓一隻紅鯡魚，將它帶回來給巴瑞拉卡領取你的獎勵。<br><center>-----</center><br>你殺了綠哥布林。你是和我們同國！你是大灰哥布林。不過，沒那麼灰。<br><br>巴瑞拉卡會講重點...捕魚很棒。魚在河裡。灰哥布林捕魚，魚很好吃。沒有腐蟲好吃，但哥布林不能一直吃腐蟲...哥布林會太胖。<br><br>哥布林王辦了一場比賽。抓特殊紅魚。紅鯡魚是好吃的魚。非常難抓。巴瑞拉卡總是找錯地方捕魚。非常奇怪。<br><br>巴瑞拉卡和你商量。你幫巴瑞拉卡抓紅鯡魚，巴瑞拉卡給你好東西。巴瑞拉卡將紅鯡魚交給國王成為大英雄。這交易怎麼樣？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095052",
+   "text": "殺掉酸蛞蝓和酸元素，填滿維尼克斯的罐子。帶著裝滿的罐子回去找維尼克斯領取你的獎勵。<br><center>-----</center><br>維尼克斯說，陌生人證明了自己的力量。現在，你已經準備好大大地幫助綠哥布林。哥布林和外族人不必是敵人。必需成為朋友對付共同敵人。你幫助綠哥布林完成重要任務。我們就告訴你重要資訊。幫助你的人們不被吃掉。<br><br>去找酸蛞蝓和酸元素。它們非常危險，但我認為你辦得到。用那些怪物的酸液裝滿這罐子。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095061",
+   "text": "去深淵的地底河流抓泥蠑螈，然後帶回來給山諾領取你的獎勵。<br><center>-----</center><br>綠哥布林有個大問題。如果你幫上忙，我會幫祝你。在河底住著重要的魚。哥布林稱它叫泥蠑螈。非常怪異的魚。必需在很下面才捕得到。<br><br>你帶泥蠑螈來給山諾，我會給你特別獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095065",
+   "text": "幹得好。泥蠑螈有很棒的泥巴。山諾利用泥巴修理破損的牆壁。對大家都好。牆不會垮了。只要擠一擠泥蠑螈，就有泥巴可以用。<br><br>好了，交易歸交易。這是要給你的東西。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095120",
+   "text": "殺掉女王蜘蛛，夜眼奈芙瑞。將她死亡的證據帶給國王維尼克斯。<br><center>-----</center><br>維尼克斯的計畫已經就緒。外頭來的人類是綠哥布林的好勇士。國王維尼克斯將讓他參與計畫。灰哥布林的力量來自他們的神，夜眼奈芙瑞。 奈芙瑞是隻大蜘蛛。非常讓人討厭。灰哥布林和綠哥布林本來是一個部落，但是灰哥布林 從奈芙瑞那裡獲得力量，奴役了綠哥布林。綠哥布林逃出部落，尋找自己的地方。<br><br>夜眼奈芙瑞非常飢餓。總是需要很多的血。灰哥布林想對奈芙瑞獻祭外族人，讓她不吃他們。你去殺了奈芙瑞，幫外族人和哥布林解決大問題。<br><br>如果你能辦到，因為你冒著大危險，維尼克斯會給你很好的報酬。去殺了夜眼奈芙瑞。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095130",
+   "text": "你的靈魂沒有凝聚。在運用救贖寶石的力量之前，你必需等上 ~1_seconds~ 秒鐘。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095131",
+   "text": "你的靈魂沒有凝聚。在運用救贖寶石的力量之前，你必需等上 ~1_seconds~ 分鐘。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095171",
+   "text": "（~1_AMT~ 點）",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095247",
+   "text": "*一本玄術書<BR>*藥材<BR>*或者：一個法術卷軸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095248",
+   "text": "*附魔材料<BR>*一個鄰近的靈魂火爐",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095260",
+   "text": "armed trap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095379",
+   "text": "灰烬木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095380",
+   "text": "櫻桃木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095381",
+   "text": "黑檀木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095382",
+   "text": "金橡木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095383",
+   "text": "核桃木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095384",
+   "text": "桃花心木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095385",
+   "text": "白橡木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095386",
+   "text": "松木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095387",
+   "text": "紫檀木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095388",
+   "text": "胡桃木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095409",
+   "text": "浮木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095411",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095412",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095413",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095414",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095415",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095416",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095417",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095418",
+   "text": "gargish traditional door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095419",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095420",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095421",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095422",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095423",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095424",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095425",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095426",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095427",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095428",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095429",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095430",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095431",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095432",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095433",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095434",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095435",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095436",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095437",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095438",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095439",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095440",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095441",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095442",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095443",
+   "text": "a gargish rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095444",
+   "text": "Medusa",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095445",
+   "text": "pushme pullyu",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095446",
+   "text": "Ter-Mur style candelabra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095447",
+   "text": "Ter-Mur style candelabra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095448",
+   "text": "Ter-Mur style candelabra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095449",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095450",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095451",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095452",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095453",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095454",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095455",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095456",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095457",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095458",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095459",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095460",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095461",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095462",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095463",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095464",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095465",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095466",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095467",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095468",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095469",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095470",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095471",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095472",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095473",
+   "text": "carved stone floor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095474",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095475",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095476",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095477",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095478",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095479",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095480",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095481",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095482",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095483",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095484",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095485",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095486",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095487",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095488",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095489",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095490",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095491",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095492",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095493",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095494",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095495",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095496",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095497",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095498",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095499",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095500",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095501",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095502",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095503",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095504",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095505",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095506",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095507",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095508",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095509",
+   "text": "Codex of Virtue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095511",
+   "text": "幽靈木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095514",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095515",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095516",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095517",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095518",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095519",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095520",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095521",
+   "text": "pirate's chest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095524",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095525",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095526",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095527",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095528",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095529",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095530",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095531",
+   "text": "gargish door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095532",
+   "text": "石化木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095535",
+   "text": "精靈木 (~1_AMT~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1095576",
+   "text": "trap kit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095577",
+   "text": "mailbox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095578",
+   "text": "mailbox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095579",
+   "text": "mailbox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095580",
+   "text": "mailbox",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095674",
+   "text": "light chainshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095706",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095707",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095708",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095709",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095710",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095711",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095712",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095713",
+   "text": "gargish celestial door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095719",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095720",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095721",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095722",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095723",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095724",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095725",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095726",
+   "text": "gargish progressive door",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095728",
+   "text": "Gargish Leather Talons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095729",
+   "text": "Gargish Leather Talons",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095741",
+   "text": "Grapeshot",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095784",
+   "text": "gargish necklace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095785",
+   "text": "gargish bracelet",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095786",
+   "text": "gargish ring",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095787",
+   "text": "gargish earrings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095788",
+   "text": "rocking horse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095789",
+   "text": "rocking horse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095790",
+   "text": "culverin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095791",
+   "text": "culverin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095792",
+   "text": "culverin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095793",
+   "text": "culverin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095794",
+   "text": "carronade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095795",
+   "text": "carronade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095796",
+   "text": "carronade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095797",
+   "text": "carronade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095800",
+   "text": "dragon cannon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095801",
+   "text": "dragon cannon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095802",
+   "text": "dragon cannon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095803",
+   "text": "dragon cannon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095804",
+   "text": "Cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095805",
+   "text": "cannonballs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095811",
+   "text": "isa-engraved cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095817",
+   "text": "isa-engraved cannonballs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095826",
+   "text": "black powder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095838",
+   "text": "ramrod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095839",
+   "text": "ramrod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095840",
+   "text": "swab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095841",
+   "text": "swab",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095903",
+   "text": "abyssal infernal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095904",
+   "text": "iron beetle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095905",
+   "text": "boura",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095906",
+   "text": "chicken lizard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095907",
+   "text": "Clockwork Scorpion",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095908",
+   "text": "faerie dragon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095909",
+   "text": "dragon wolf",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095910",
+   "text": "lava elemental",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095911",
+   "text": "maddening horror",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095912",
+   "text": "vollem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095913",
+   "text": "undead gargoyle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095914",
+   "text": "green goblin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095915",
+   "text": "grey goblin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095916",
+   "text": "gremlin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095917",
+   "text": "humunculous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095918",
+   "text": "kepetch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095919",
+   "text": "kepetch shorn",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095920",
+   "text": "medusa",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095921",
+   "text": "mimic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095922",
+   "text": "primeval lich",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095923",
+   "text": "raptor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095924",
+   "text": "rising colossus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095925",
+   "text": "rotworm",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095926",
+   "text": "shadow dweller",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095927",
+   "text": "skree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095928",
+   "text": "slasher of veils",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095929",
+   "text": "Slith",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095930",
+   "text": "navery night eyes",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095931",
+   "text": "wolf spider",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095932",
+   "text": "trapdoor spider",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095933",
+   "text": "stone form",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095934",
+   "text": "stygian dragon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095935",
+   "text": "trapdoor creature",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095936",
+   "text": "tunnel spirit body",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095937",
+   "text": "leather wolf",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095946",
+   "text": "gargish traditional vase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095947",
+   "text": "gargish bentas vase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1095948",
+   "text": "gargish bottle",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

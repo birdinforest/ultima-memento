@@ -1,0 +1,3006 @@
+{
+ "batch": 27,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1152084",
+   "text": "Scroll of Alacrity",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152085",
+   "text": "The curse is removed from the item you stole!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152086",
+   "text": "Ouch! These stolen items are hot!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152087",
+   "text": "CHOOSE NAME #1",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152088",
+   "text": "CHOOSE NAME #2",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152089",
+   "text": "Runic Crafting - Item Name Selection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152090",
+   "text": "Please enter the template number for the mob:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152091",
+   "text": "Please enter the mob's spawn location:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152092",
+   "text": "Please set the number of top players to be rewarded:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152093",
+   "text": "Please enter the name of the script to be attached to the mob:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152094",
+   "text": "Please enter the objvar to be added to the mob (syntax: objvar name, objvar type, objvar value):",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152095",
+   "text": "Please enter the hue color for the reward:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152096",
+   "text": "We Who Are About To Die",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152097",
+   "text": "Take the prisoner to the entrance of Wrong Dungeon so they can escape.  The brigands will try to kill them, so you must defend them.<br><center>-----</center><br>I don't know what to do, they took my weapons and broke my hands.  They follow these two necromancers and I think they intend to eat us as part of some dark ritual!  Will you help me?  Please?  Get me out of this prison, please....",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152098",
+   "text": "Compassion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152099",
+   "text": "I am surely doomed....",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152100",
+   "text": "I couldn't see when they brought me here, how much farther to the entrance of this horrid place?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152101",
+   "text": "I am indebted to you, friend.  Please, take this as a token of my thanks.  I'm sorry it is all I have, they took everything else from me.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152102",
+   "text": "Help me, please!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152103",
+   "text": "Please enter the new value:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152104",
+   "text": "Sorry, this box can't accept any items now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152105",
+   "text": "--- Submissions Full ---",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152106",
+   "text": "Honor will not protect you here.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152107",
+   "text": "A dark force prevents honor from protecting you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152108",
+   "text": "You'll never make it if you try to help us all at once.  Come back for me if you can!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152109",
+   "text": "You look exhausted, you should rest at least ~1_val~ minutes before we try to make an escape!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152110",
+   "text": "~1_name~ will expire within ~2_val~ day(s)!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152111",
+   "text": "Lifespan: within ~1_val~ day(s)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152112",
+   "text": "Target the item to reforge.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152113",
+   "text": "You cannot reforge that item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152114",
+   "text": "The item has been reforged.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152115",
+   "text": "Unknown",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152116",
+   "text": "Commended",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152117",
+   "text": "Doubted",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152118",
+   "text": "Disfavored",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152119",
+   "text": "Respected",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152120",
+   "text": "Esteemed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152121",
+   "text": "Distrusted",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152122",
+   "text": "Disliked",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152123",
+   "text": "Detested",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152124",
+   "text": "Adored",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152125",
+   "text": "Admired",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152126",
+   "text": "Honored",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152127",
+   "text": "Disgraced",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152128",
+   "text": "Loathed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152129",
+   "text": "Despised",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152130",
+   "text": "Reviled",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152131",
+   "text": "Venerated",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152132",
+   "text": "Revered",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152133",
+   "text": "Exalted",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152134",
+   "text": "Lauded",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152135",
+   "text": "Denigrated",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152136",
+   "text": "Scorned",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152137",
+   "text": "Shunned",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152138",
+   "text": "Vilified",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152139",
+   "text": "Abhorred",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152140",
+   "text": "Please use 'dz_target' speech command for rideable creatures.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152141",
+   "text": "You have submitted an item and the box's points have been increased.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152142",
+   "text": "Please enter how often a mob should be spawned (in seconds):",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152143",
+   "text": "Entrance to Dungeon Wrong",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152144",
+   "text": "You suddenly find yourself unable to run.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152145",
+   "text": "You are are free to move again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152146",
+   "text": "pet brush",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152147",
+   "text": "You cannot use it while dead!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152148",
+   "text": "Oh...you don't have any hair to brush...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152149",
+   "text": "Which pet do you brush?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152150",
+   "text": "This brush is for your pets!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152151",
+   "text": "You cannot brush your pet that is already dead!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152152",
+   "text": "You have brushed your pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152153",
+   "text": "You have brushed your pet and it looks like very comfortable!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152155",
+   "text": "You create some cloth and put it at your feet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152156",
+   "text": "headily aromatic something (~1_PETNAME~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152157",
+   "text": "It smells awful...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152158",
+   "text": "Target the spot on the ground.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152159",
+   "text": "You have made ~1_VAL~ fertile dirt by mixing them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152160",
+   "text": "monster generator",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152161",
+   "text": "You destroy the monster generator.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152162",
+   "text": "You damage the monster generator.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152163",
+   "text": "stinking cauldron",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152164",
+   "text": "You destroy the ~1_VAL~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152165",
+   "text": "You damage the ~1_val~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152166",
+   "text": "Traitor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152167",
+   "text": "Choose a patch of dirt to scoop up. You can make a stack of fertile dirt by mixing them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152168",
+   "text": "Make Fertile Dirt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152169",
+   "text": "Place It As A Trap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152170",
+   "text": "Create A Bomb",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152171",
+   "text": "There is no fresh dirt around here...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152172",
+   "text": "This item will expire in ~2_val~ seconds!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152173",
+   "text": "Choose an explosion potion in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152174",
+   "text": "You may only target an explosion potion that are in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152175",
+   "text": "This is not an explosion potion.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152176",
+   "text": "You have created an horrible bomb.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152177",
+   "text": "There is the smell of low explosive...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152178",
+   "text": "Leave it right now! It explodes!!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152179",
+   "text": "explosive aromatic something (~1_PETNAME~)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152180",
+   "text": "You have placed it on the ground as a trap. This trap is immovable and disappears about 10 minutes after.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152181",
+   "text": "Cooldown (Loyalty) - ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152182",
+   "text": "Cooldown (Loyalty) - Done",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152183",
+   "text": "Cooldown (Something) - ~1_VAL~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152184",
+   "text": "Cooldown (Something) - Done",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152185",
+   "text": "The trap has crumbled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152186",
+   "text": "Trap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152187",
+   "text": "<center>Loyalty Ratings</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152188",
+   "text": "<center>City Loyalty</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152189",
+   "text": "Loyalty Ratings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152190",
+   "text": "City Loyalty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152191",
+   "text": "You carefully remove it from the place.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152192",
+   "text": "When will these atrocities stop?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152193",
+   "text": "I cannot earn my keep!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152194",
+   "text": "There is little food to be had.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152195",
+   "text": "Our great lords and ladies live above our struggles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152196",
+   "text": "No one will raise a hand to help us!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152197",
+   "text": "These are dreadful times indeed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152198",
+   "text": "What of our children?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152199",
+   "text": "Our lands are torn asunder!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152200",
+   "text": "I thank you for the thought, but what would I do with this?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152201",
+   "text": "A thousand thanks for your gift.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152202",
+   "text": "This will help me make it through these tough times.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152203",
+   "text": "Blessings upon you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152204",
+   "text": "You are most kind, but others have helped me greatly already. I cannot accept your gift.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152205",
+   "text": "The promo code redemption system is unavailable to Endless Journey accounts.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152206",
+   "text": "Assassin Honed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152207",
+   "text": "Assassin's Edge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152208",
+   "text": "You do not have enough power in the Sacrifice Virtue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152209",
+   "text": "You pet has dropped something on the ground.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152210",
+   "text": "If you place it as a trap, you cannot pick it up again. Is that OK?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152211",
+   "text": "Achieved on: ~1_DATE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152212",
+   "text": "You tear the bedroll to pieces but find nothing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152213",
+   "text": "You set off a trap!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152214",
+   "text": "You may not transfer a pet that is so far away.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152215",
+   "text": "A race change token has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152216",
+   "text": "A name change token has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152217",
+   "text": "A gender change token has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152218",
+   "text": "My last word:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152219",
+   "text": "Anarchy! No one is going to keep us down!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152220",
+   "text": "Burn the town! I want to feel the flames!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152221",
+   "text": "Might makes right! We are right!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152222",
+   "text": "Riot! Chaos! Blood and Fire!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152223",
+   "text": "No Virtues! No Kings!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152224",
+   "text": "Death to the town guard!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152225",
+   "text": "The Lords take what Peasants make!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152226",
+   "text": "Better to die on your feet than live on your knees!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152227",
+   "text": "This will teach them to mess with us!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152228",
+   "text": "Vested interest! United ties! Landed gentry rationalize!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152229",
+   "text": "That person won't sit still for it! A more aggressive approach is in order.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152230",
+   "text": "That person has committed no crime!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152231",
+   "text": "You cannot arrest that person.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152232",
+   "text": "You place the ~1_name~ under arrest. That's some good police work!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152233",
+   "text": "protester",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152234",
+   "text": "rioter",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152235",
+   "text": "raider",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152236",
+   "text": "You arrest the ~1_name~. Take the criminal to the guard captain.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152237",
+   "text": "* ~1_player~ tries to arrest ~2_target~, but the ~3_type~ has not been subdued *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152238",
+   "text": "* ~1_player~ places ~2_target~ under arrest *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152239",
+   "text": "* ~1_player~ tries to place ~2_name~ under arrest. It doesn't put up much of a struggle *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152240",
+   "text": "Help! Help! I'm being repressed!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152241",
+   "text": "* ~1_player~ tries to place ~2_name~ under arrest. The ~3_type~ looks around, bewildered *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152242",
+   "text": "You cannot reach that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152243",
+   "text": "You cannot arrest that.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152244",
+   "text": "What would you like to arrest?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152245",
+   "text": "* ~1_name~ clears a pile of garbage *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152246",
+   "text": "* ~1_name~ puts out a fire *",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152247",
+   "text": "That person is already under arrest.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152248",
+   "text": "You did not take your prisoner to the Guard Captain in time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152249",
+   "text": "You already have a prisoner.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152250",
+   "text": "Thank you, ~1_name~, for your assistance during these difficult times.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152251",
+   "text": "N/A",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152252",
+   "text": "Raiders have been spotted in Britannia!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152253",
+   "text": "These nefarious thieves and cutthroats must be brought to justice!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152254",
+   "text": "They are known to occupy the fort between the cities of Skara Brae and Yew!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152255",
+   "text": "These criminals must be dealt with!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152256",
+   "text": "Use spell and steel, or set your dragons loose on them if need be!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152257",
+   "text": "Slay the raiders if you must. However, you may attempt to subdue and arrest them. If you do so, they must be returned to me!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152258",
+   "text": "Our coffers are empty. The city cannot offer you any reward other than our thanks. Word of your deeds will spread.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152259",
+   "text": "Your loyalty means as much as your assistance!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152260",
+   "text": "You return your other rope.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152261",
+   "text": "guardsman's rope",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152262",
+   "text": "a box of ropes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152263",
+   "text": "You take a rope from the chest. Use it to arrest rioters and subdued raiders.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152264",
+   "text": "You must wait a moment before taking another rope.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152265",
+   "text": "mysterious tunnel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152266",
+   "text": "You must wait to perform another teleportation.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152267",
+   "text": "soap",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152268",
+   "text": "You uncover a hidden item: ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152269",
+   "text": "That target is dead and even Cupid's arrow won't make them love you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152270",
+   "text": "Cupid's Arrow 2012",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152271",
+   "text": "The item must be in your backpack to re-forge it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152272",
+   "text": "NONE CHOSEN",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152273",
+   "text": "~1_val~ is madly in love with ~2_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152274",
+   "text": "You may only combine runic tools of the same type.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152275",
+   "text": "You may only combine runic tools of the same material.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152276",
+   "text": "The combined charges of the two tools cannot exceed 100.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152277",
+   "text": "Both tools must be in your backpack in order to combine them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152278",
+   "text": "You combine the runic tools, consolidating their Uses Remaining.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152279",
+   "text": "You cannot re-forge that item with this tool.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152280",
+   "text": "Valentine's Day 2012",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152281",
+   "text": "Reforged (Minor)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152282",
+   "text": "Reforged (Lesser)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152283",
+   "text": "Reforged (Greater)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152284",
+   "text": "Reforged (Major)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152285",
+   "text": "Reforged (Legendary)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152286",
+   "text": "You re-forge the item!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152287",
+   "text": "Re-forging failed. You did not choose a name! Please try again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152288",
+   "text": "I should be easily able to find a better replacement for that bulk order.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152289",
+   "text": "I shouldn't have too much trouble finding a better replacement for that bulk order.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152290",
+   "text": "It will be very difficult for me to find a better replacement for this bulk order.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152291",
+   "text": "I won't be able to replace that bulk order with a better one.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152292",
+   "text": "If you help me out, I'll help you out. I can replace that bulk order with a better one, but it's gonna cost you ~1_amt~ gold coin. Payment is due immediately. Just hand me the order and I'll pull the old switcheroo.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152293",
+   "text": "My business is being watched by the Guild, so I can't be messing with bulk orders right now. Come back when there's less heat on me!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152294",
+   "text": "Bribe",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152295",
+   "text": "So you want to do a little business under the table?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152296",
+   "text": "Target a bulk order deed to show to the shopkeeper.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152297",
+   "text": "That is not a bulk order deed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152298",
+   "text": "I don't deal in those goods.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152299",
+   "text": "I am sorry to say I cannot work with a deed that is even partially filled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152300",
+   "text": "That does not appear to be yours.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152301",
+   "text": "What are you trying to pull? Guards!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152302",
+   "text": "I am afraid your bank box does not contain the funds needed to complete this transaction.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152303",
+   "text": "You'll find this one much more to your liking. It's been a pleasure, and I look forward to you greasing my palm again very soon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152304",
+   "text": "blanket of darkness",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152305",
+   "text": "torture rack east deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152306",
+   "text": "torture rack south deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152307",
+   "text": "Torture Rack",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152308",
+   "text": "Aura of Amber Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152309",
+   "text": "Murky Seagreen Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152310",
+   "text": "Shadowy Blue Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152311",
+   "text": "Gleaming Fuchsia Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152312",
+   "text": "Please set the number of mobs you wish to spawn:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152313",
+   "text": "Please enter the hue color for the mob:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152314",
+   "text": "This weapon isn't suitable for cutting. Try something with an edge.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152315",
+   "text": "You bash it to no effect.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152316",
+   "text": "You may not use cupid arrows at this time.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152317",
+   "text": "Nearly every miner in the lands got his start near the town of Minoc. The mountain has produced more ore, gems and granite than any other mine in Sosaria. Generations of miners have toiled away hollowing out and hauling away.<br>Still rumors do blow, and quieted tales around mining camp fires asking the question, \"Have we dug too deep?\" Even the gypsies have made their camp nearby in a sort of watch across the river. <br>The underbelly of Britannia, what dangers slither? What dangers lurk? What foul winds do the grounds do contain? The miners wary, and they all ask the same questions. Yet, before they are too wise to stop, a new generation steps forward with lustful dreams of diamonds and valorite in their heads. It will be years before they start to wonder.<br>The mountain comes alive, sentient elementals walk the mines. Minoc harvests them too. Dragons come to roost in the hollow halls of the mountain. Heroes clear them and the miners continue their work. Yet the danger from below, who can save us from that once the capstone is gone? Could an ancient prison lay below? Could the rumored home of daemons lay just below our feet? Creator protect us, and let us hope we will never know.<br>So young miner, keep your head. The whispers in the mine are not just in your mind, heed them and ask the question. \"Have I dug too deep?\"",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152318",
+   "text": "You may not use this item out of season.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152319",
+   "text": "Current Points: ~1_CURRENT~ / ~2_OBJECTIVE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152320",
+   "text": "Your deeds in the city of ~1_name~ are worthy of praise.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152321",
+   "text": "Your deeds in the city of ~1_name~ are worthy of censure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152322",
+   "text": "the Juka",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152323",
+   "text": "drunk woman's singing ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152324",
+   "text": "drunk man's singing ball",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152325",
+   "text": "singing ball of bedlam",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152326",
+   "text": "singing ball of sosarian steeds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152327",
+   "text": "singing ball of the blue boar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152328",
+   "text": "Double click to purchase this",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152329",
+   "text": "Using ~1_type~ loyalty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152330",
+   "text": "Cost: ~1_amt~ loyalty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152331",
+   "text": "You do not have enough loyalty to purchase this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152332",
+   "text": "You use some of your loyalty to buy the item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152333",
+   "text": "You do not have enough Imbuing skill to re-forge items. Using standard Runic Crafting instead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152334",
+   "text": "You must be near a Soul Forge to re-forge items. Using standard Runic Crafting instead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152335",
+   "text": "ITEMS",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152336",
+   "text": "The fight has ended with the defeat of ~1_TEAM~. To the victors go the spoils!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152337",
+   "text": "A reward of ~1_ITEM~ will be delivered to you once you free up room in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152338",
+   "text": "A reward item will be delivered to you once you free up room in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152339",
+   "text": "A reward of ~1_ITEM~ has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152340",
+   "text": "A reward item has been placed in your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152341",
+   "text": "A reward of ~1_ITEM~ will be delivered to you once you are resurrected.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152342",
+   "text": "A reward item will be delivered to you once you are resurrected.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152343",
+   "text": "Enter resist values (Physical, Fire, Cold, Poison, Energy). Enter numeric value to override, or enter \"*\" to leave at default.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152344",
+   "text": "Enter stat values (STR, DEX, INT, MAXHP, MAXSTAM, MAXMANA, HPGAIN, STAMGAIN, MANAGAIN). Enter numeric value to override, or enter \"*\" to leave at default.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152345",
+   "text": "Enter skill overrides in pairs of (SkillId, SkillValue).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152346",
+   "text": "Number of tries left: ~1_times~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152347",
+   "text": "Glossy Fuchsia Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152348",
+   "text": "Deep Blue Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152349",
+   "text": "Vibrant Seagreen Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152350",
+   "text": "Murky Amber Pigment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152351",
+   "text": "mythic character",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152352",
+   "text": "<center>Mythic Character Skill Selection</center>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152353",
+   "text": "Mythic Character Token",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152354",
+   "text": "<CENTER>Set Attributes</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152355",
+   "text": "<CENTER>Total Must Equal ~1_VAL~</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152356",
+   "text": "<CENTER>Selected Skills</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152357",
+   "text": "<CENTER>Select Five Skills to Advance</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152358",
+   "text": "Please confirm that you wish to set your attributes as indicated in the upper left area of this window. If you wish to change these values, edit them and click the EDIT button below.<br><br>Please confirm that you wish to set the five skills selected on the left to 90.0 skill. If you wish to make changes, click the [X] button next to a skill name to remove it from the list.<br><br>If are sure you wish to apply the selected skills and attributes, click the CONTINUE button below.<br><br>If you wish to abort the application of the Mythic Character Token, click the CANCEL button below.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152359",
+   "text": "Your Strength, Dexterity, and Intelligence values do not add up to the total indicated in the upper left area of this window. Before continuing, you must adjust these values so their total adds up to exactly the displayed value. Please edit your desired attribute values and click the EDIT button below to continue.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152360",
+   "text": "<CENTER>Choose a banner:</CENTER>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152361",
+   "text": "You are not sufficiently loyal to ~1_CITY~ to use this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152362",
+   "text": "Requires Positive City Loyalty",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152363",
+   "text": "I apologize, but you are not well-enough renowned in the city of ~1_CITY~ to make this purchase.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152364",
+   "text": "I have quite a backlog of orders and I cannot satisfy your request for a ~1_ITEM~ right now.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152365",
+   "text": "Do you wish to purchase a ~1_ITEM~ for ~2_PRICE~?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152366",
+   "text": "City Banner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152367",
+   "text": "This character has over 200 skill points. You cannot use the Mythic Character Token until you reduce your skill point total (for example, by storing a skill using a soulstone). If you do not wish to reduce your skill point total, you can opt to get your token back instead.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152368",
+   "text": "You cannot use this token on this character because you have over 200 skill points. If you don’t have a way to lower your skill point total, you will have to use this Mythic Character Token on another character.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152369",
+   "text": "You successfully convert the component into an exotic tool kit.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152370",
+   "text": "Only an Adept Tinker would know what to do with this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152371",
+   "text": "You repair the mysterious Nexus! As it whirs to life it spits out a punch card!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152372",
+   "text": "The Nexus shoots an arc of energy at you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152373",
+   "text": "Beep! Bop! Boop!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152374",
+   "text": "The Nexus has shut down due to inactivity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152375",
+   "text": "You feed the punch card into the machine but nothing happens.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152376",
+   "text": "As you feed the punch card into the machine it turns on!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152377",
+   "text": "This is not locked. If You want to lock this chest, please use context menu.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152378",
+   "text": "Use this on a broken Nexus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152379",
+   "text": "Someone is currently working at the Nexus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152380",
+   "text": "Your backpack cannot hold the punch card so it was placed in your bank.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152381",
+   "text": "Your backpack and bank cannot hold the punch card so it was lost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152382",
+   "text": "This property converts a percentage of the damage inflicted to a player into mana replenishment.  This effect can only be triggered once every 40 seconds.  This property is only found on shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152383",
+   "text": "This property provides additional bonus damage when the attacker is facing the same direction as the target.  The bonus damage is based on the weapons original swing speed.  Ranged weapons have a 50% chance to proc.  The maximum bonus is 73% while minimum bonus 13%.  This property can be found on most weapon types.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152384",
+   "text": "This property is only available on archery weapons.  This property allows a player to use a two handed weapon as if it were a one handed weapon.  You can perform any action that normally requires a free hand, such as drinking a potion or throwing a shuriken.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152385",
+   "text": "This property initiates a damage increase that is modified by several factors.  Significant damage received from opponents will be added to the attacker’s Battle Lust, causing them to do more damage to all opponents the attacker engages.  This damage bonus is further modified by how many opponents the attacker is aggressed against.  The damage bonus is 15% per opponent, with a cap of 45% in PvP and 90% in PvM.  Battle Lust is gained every two seconds and decays at a rate of one point every six seconds.  This property can be found on most weapon types.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152386",
+   "text": "An item with this property will remain with a character when they die and are placed into the character's backpack upon resurrection.   These items can neither be stolen by using the stealing skill nor can they be insured.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152387",
+   "text": "This property will allow an attacker to gain hit points when using the bleed attack special move.  All of the damage inflicted through the bleed attack is directly transferred back to the attacker’s health.  This property is only found on weapons that allow use of the bleed attack special move.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152388",
+   "text": "This property indicates that an item cannot be fortified by use of powder of fortification and therefore can never have its durability increased.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152389",
+   "text": "This property provides a chance to resist any interruptions while casting spells.  It has a cumulative cap of 12%.  The inscription skill can also grant up to a 5% additional bonus which can exceed the item cap.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152390",
+   "text": "This property converts a small portion of damage dealt to a player back as health.  The damage inflicted must be the same type of damage as the eater for the property to function.  Similar eater properties stack with other but are capped at 30%.  The \"damage all\" type of eater is capped at 18%.  The property stores up to 20 healing charges and converts charges every three second from the last time damage was received.  The \"damage all\" type of damage eater does not stack with specific eaters.  This property is generally only found on armor and shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152391",
+   "text": "This property provides a chance to resist interruptions while casting spells if the damage received is the same damage type as the resonance.  This property can only be found on two handed weapons and shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152392",
+   "text": "This property provides a chance for a ranged weapon to inflict additional damage.  The additional damage is increased by 3 points for each tile that the attacker is away from the target up to a maximum of 30 points of damage.  The damage inflicted is physical damage that can be lessened by a targets physical resistance.  This property can only be found on ranged weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152393",
+   "text": "This property allows a player to use a weapon as long as they have a weapon skill (fencing, mace fighting or swordsmanship).  The weapon functions as if the player’s highest weapon skill is the appropriate skill.  The wrestling, archery and throwing skills are excluded from this property.  This property is only found on melee weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152394",
+   "text": "This property increases the specified regeneration (hit point, mana or stamina) by 10 for 20 seconds when one charge is consumed.  The item must be equipped to allow the charge to be used.  This increase allows a player to bypass the standard regeneration caps for the duration of the effect.  This property is currently only found on shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152395",
+   "text": "This property adds to the user’s maximum stamina.  The stamina is not instantly gained when the item is equipped",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152396",
+   "text": "This property provides a chance to apply a bleed effect and a four second duration forced walk to the target.  Each application of the splintering weapons reduces the durability of the weapon.  This property can be found on melee weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152397",
+   "text": "This property increases the damage for most magical attacks that are casted.  While the property is normally capped at 15% in PvP, the cap can be further increased to 30% for focused templates.  Focus templates have no more than 30 modified skill points in more than one primary skill such as magery, necromancy, mysticism, ninjitsu, bushido, animal taming, musicianship, chivalry or spellweaving.  Also no more than 30 modified skill points in the associated secondary skill such as evaluate intelligence, spirit speaking, focus, imbuing.   There is no cap to spell damage increase in PvM.  This property is most commonly found on accessories and spellbooks.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152398",
+   "text": "This property allows all spell casting to occur without the equipped item being unequipped.  It is always accompanied by a faster casting penalty of -1 which does not count as an additional property.  This faster casting penalty can be negated if the item also has a positive faster casting property as well.  This property is only found on weapons and shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152399",
+   "text": "This property reflects physical damage back onto an attacker.  This property is only triggered by physical damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152400",
+   "text": "This property provides a chance to cast a paralyze spell on an opponent.  The paralyze effect is similar to the magery fifth circle spell paralyze.  When the wielder effectively parries an attacker’s blow there is a chance that the attacker will be affected by the paralyze effect.   This property can be found on two handed weapons and shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152401",
+   "text": "An item with this property will fall to a player’s corpse upon death.  An unequipped cursed item will also fall to the ground if a player logs out in a champion spawn region.  These items can neither be insured nor can they be blessed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152402",
+   "text": "This property provides an increase to the damage you inflict on a successful ranged weapon attack.  The bonus damage is applied to the net damage inflicted (after all damage and resistance calculations are made).  This property can only be found on certain quivers.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152403",
+   "text": "This property enhances your ability to defend yourself from melee or ranged attacks.  It does not affect your chances to evade magical attacks.  Defense chance increase works in addition to your chance to parry or block an attack by using the Parrying skill.  You may bypass the 45% defense chance increase soft cap to offset any sort of defense chance increase debuff, however 45% is the cap for general combat calculations.  This property can be found on nearly all equipment.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152404",
+   "text": "This property indicates how in need of repairs an item is or how close an item is to breaking.  It is comprised of two parts: the current durability and the maximum durability.  Both of which are values in the range of 0 - 255.  If both of these values are allowed to reach 0 on an item, the item is destroyed.  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152405",
+   "text": "This property increases the effectiveness of potions used.  When a potion is used, its effectiveness will be increased by the percentage of your cumulative enhance potions properties.  Healing potions will heal more points of damage, curing potions will have a better chance to cure poison, etc.  There is a 50% enhance potions cap from items.  If your character has the alchemy skill, the cap is raised 10% for every 33 skill points you have.  At 99 Alchemy the cap is 80%.  Enhance potions is commonly found on jewelry.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152406",
+   "text": "This property reduces the recovery time after casting a spell.  When a spell is cast it can take a short period of time before another can be started.  This period of recovery can be reduced with faster cast recovery.  Casting recovery affects all spell casting and the property is capped at a cumulative total of 6 cast recovery.  This property is generally only found on accessories and spellbooks in values ranging from 1 to 3.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152407",
+   "text": "This property reduces the amount time it takes to cast a spell.  This property is capped based on the source of the spell being cast.  Mages, Mystics and Necromancers have a maximum faster casting of 2 while Chivalry, Ninjitsu, Bushido or Spellweaving can have a maximum Faster Casting of 4.  If a character possesses Magery, Mysticism or Necromancy at 70.0 skill or greater then faster casting is capped at 2 for Chivalry.  Casting time is shortened by 0.25 seconds for every point in faster casting.  This property is generally only found on weapons, shields and accessories.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152408",
+   "text": "Hit Cold Area is an item property found on certain weapons. Upon a successful hit with these weapons, there is a chance that cold damage will occur to nearby targets the wielder can legally attack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152409",
+   "text": "This property provides a chance to dispel a summoned creature.  The chance to dispel the target is based on the player’s tactics skill level.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152410",
+   "text": "Hit Energy Area is an item property found on certain weapons. Upon a successful hit with these weapons, there is a chance that energy damage will occur to nearby targets the wielder can legally attack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152411",
+   "text": "Hit Fire Area is an item property found on certain weapons. Upon a successful hit with these weapons, there is a chance that fire damage will occur to nearby targets the wielder can legally attack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152412",
+   "text": "This property provides a chance to cast a fireball spell on the target.  The fireball effect is similar to the magery third circle spell fireball.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152413",
+   "text": "This property provides a chance to cast a harm spell on the target.  The harm effect is similar to the magery second circle spell harm.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152414",
+   "text": "This property allows for active meditation in armor pieces which do not normally allow for active mediation such as platemail, chainmail, ringmail, studded, bone and stone armor.  This property also negates the armor penalty for the stealth skill as well as the armor penalty for passive mediation.  This property is only found on armor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152415",
+   "text": "This property affects the quantity and quality of items spawned on a mobs corpse when it is killed.  A player’s luck score is cumulative from all sources and can be viewed on the character status menu.  Luck provides a chance of receiving more pieces of loot, a chance for the loot to have more magical properties and a chance for the magical properties to be of greater intensity.  It should be noted that luck has no direct effect on what specific items will spawn or what specific properties will spawn on the items.  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152416",
+   "text": "This property allows the user to ignore the effects of darkness from either night or from being underground in a dungeon.  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152417",
+   "text": "This property reduces mana cost to 0.  Mana phasing is a property that consumes charges.  <br>When the effect is activated the next two mana checks are made at a cost of zero mana but one charge is consumed.  The first mana check occurs when the mana consuming activity (starting to cast a spell, triggering a special move, etc.) is started and the second mana check occurs when the mana consuming activity is finalized (final targeting with the spell, the special move occurring, etc.).  There is a 30 second cool down between uses.  This property is currently only available on specific talisman.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152418",
+   "text": "This property decreases the strength required to equip an item.  A lower requirement with an intensity of 100% means that the item has no strength requirement to equip the item at all.  This property can be found on weapons, shields and armor.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152419",
+   "text": "This property provides a chance to lower the target’s defense chance increase.  The effect reduces the target’s defense chance increase by 25% (40% defense chance increase is reduced to 15% defense chance increase) for 8 seconds if inflicted by melee weapons and 5 seconds for ranged weapons.  This property does not stack from different sources and each successful hit while the target is under the effect will reset the duration timer.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152420",
+   "text": "This property provides a chance to lower the target’s hit chance increase.  The effect reduces the target’s hit chance increase by 25% (40% hit chance increase is reduced to 15% hit chance increase) for 10 seconds if inflicted by melee weapons and 7 seconds for ranged weapons.  This property does not stack from different sources and each successful hit while the target is under the effect will reset the duration timer.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152421",
+   "text": "This property adds to the user’s maximum hit points.  The hit points are not instantly gained when the item is equipped",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152422",
+   "text": "This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152423",
+   "text": "This property provides a chance to leech stamina from the target.  The amount of stamina leeched from the target is 100% of the damage inflicted.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152424",
+   "text": "This property provides a chance to leech mana from the target.  The amount of mana leeched from the target is up to 40% of the damage inflicted.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152425",
+   "text": "This property provides a chance to leech hit points from the target.  The amount of hit points leeched from the target is up to 30% of the damage inflicted.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152426",
+   "text": "This property provides a chance to cast a lightning spell on the target.  The lightning effect is similar to the magery fourth circle spell lightning.  The property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152427",
+   "text": "This property provides a chance to cast a magic arrow spell on the target.  The magic arrow effect is similar to the magery first circle spell magic arrow.  The property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152428",
+   "text": "This property modifies a weapon so that it uses a player’s magery skill as the weapons required weapon skill instead of the weapons default required weapon skill (archery, fencing, throwing, etc.).  The wielder will also be subject to any listed penalty to their magery skill.  This property can only be found on weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152429",
+   "text": "An item with this property will remain with a character when they die and are placed into the character's backpack upon resurrection.  You must pay an amount of gold based on the items magical strength to insure an item.  Uninsured items always remain on the player’s corpse and may be potentially looted by monsters or other players.  Blessed items, cursed items, stackable items and containers cannot be insured.  These items cannot be stolen by using the stealing skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152430",
+   "text": "This property indicates that an item cannot be repaired by any means.  This includes repairs by player, repair deed and powder of fortification.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152431",
+   "text": "This property adds to the user’s maximum mana.  The mana is not instantly gained when the item is equipped",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152432",
+   "text": "This property grants the specified bonus to your strength stat.  There is a hard cap of 150 on all stats (strength, dexterity and intelligence).  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152433",
+   "text": "This property grants the specified bonus to your intelligence stat.  There is a hard cap of 150 on all stats (strength, dexterity and intelligence).  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152434",
+   "text": "This property grants the specified bonus to your dexterity stat.  There is a hard cap of 150 on all stats (strength, dexterity and intelligence).  This property can be found on all armor, shields, accessories or weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152435",
+   "text": "This property is found on the Bestial (Berserker) Set.  All effects of the property are scaled based on the number of set pieces that are equipped and the users remaining health.  The effect starts when the user takes damage while below 50% health.  The effect will hue the armor based on the stage of the player's rage.  All damage received after resists are applied will be reduced based on rage.  The rage will also reduce any healing the player receives (including hit point regeneration).  Every second while in rage, the character receives additional stamina refresh.  If the user takes no damage within 8 seconds, the rage recedes.  The user will be subject to an additional 8 seconds of reduced healing once the rage recedes and will be unable to re-enter rage for 60 seconds.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152436",
+   "text": "This property provides a chance to reduce the target’s current mana by 20% of the damage inflicted by the attack.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152437",
+   "text": "This property provides a chance to reduce the target’s current stamina by 20% of the damage inflicted by the attack.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152438",
+   "text": "This property provides a chance to curse the target.  The curse effect is similar to the magery third circle spell curse.  This effect can only fire once every 30 seconds.  This property can be found on all weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152439",
+   "text": "Bard Mastery Bonus is an item property found on the Virtuoso's set.  Bards with any mastery gain a 5% bonus to their success chance when using any bard skills and a 10% bonus when using the skill of their mastery focus.   When active this property doubles the bard mastery bonus to a 10% bonus when using any bard skill and a 20% bonus when using the bard mastery focus skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152440",
+   "text": "<DIV ALIGN=RIGHT>exc. ~1_ITEM~</DIV>",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152441",
+   "text": "enhanced bandage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152442",
+   "text": "Nexus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152443",
+   "text": "Bard Mastery Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152444",
+   "text": "Damage modifier",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152445",
+   "text": "This property details how rare a stealable artifact is and how often it spawns.  Items with a rarity rating of one are common while rarity ratings of twelve can take several months to spawn.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152446",
+   "text": "This property indicates that the armor and clothing can only be worn by Elves.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152447",
+   "text": "This property indicates that the armor, clothing, shield or weapon can only be equipped by Gargoyles.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152448",
+   "text": "This property provides increased karma loss when the user casts necromancy spells.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152449",
+   "text": "lifespan",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152450",
+   "text": "This property indicates that an item has a limited lifespan.  These items will disappear once the countdown timer has elapsed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152451",
+   "text": "Nexus Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152452",
+   "text": "Fish Bait Strength",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152453",
+   "text": "mana burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152454",
+   "text": "Spell Consumption",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152455",
+   "text": "Weight reduction",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152456",
+   "text": "This property indicates that an item has been crafted by a crafter of exceptional skill.  Exceptionally crafted items can carry their maker’s mark and also provide various additional bonuses depending on whether they are armor or weapons.  The bonuses include increased basic resistances for armor, increased damage increase for weapons and increased imbuing potential for both weapons and armor.  Some of these bonuses can be further increased by a crafter’s arms lore skill.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152457",
+   "text": "This property provides a cumulative percentage bonus that increases the effectiveness of any fishing bait that is used by the wearer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152458",
+   "text": "This property indicates that the item is a reward from the faction system.  Items with this property require that the user be in a faction to equip the item and in some cases these faction items will only be equippable by the owner of the item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152459",
+   "text": "This property provides a reduction in the amount of arrows or bolts an archer uses.  The reduction is based on a random chance that an arrow or bolt shot from a weapon will not be consumed.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152460",
+   "text": "This property provides a chance for a burst of mana restoring magic to affect the player when the player is taking damage.  The amount of mana restored is based on the player’s maximum mana and the player’s current karma level.  Each piece of karma mana burst equipment that the user is wearing will increases the frequency of the mana restoring bursts.  There are both positive and negative karma versions of these items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152461",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be physical damage.  Physical damage is applied against an opponent’s physical resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152462",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be cold damage.  Cold damage is applied against an opponent’s cold resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152463",
+   "text": "One-Handed Weapon info",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152464",
+   "text": "This property indicates that an item is owned by a specific character.  This item will effectively be blessed for the owner and this item cannot be equipped by anyone other than the owner.  This property is most commonly found on talisman.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152465",
+   "text": "This property provides increased weapon damage with each successful hit to the same target.  The damage modified by this property cycles from a negative value to a positive value.  The initial damage inflicted by this property is -40% of the items base damage",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152466",
+   "text": "This property indicates that an item has the ability to repair itself.  Each time the item is damaged and normally would reduce its current durability it actually increases its current durability.  The amount repaired is based on the property intensity (self repair 5 would add 5 durability). This effect has a cooldown timer and cannot occur more than once every 60 seconds.   This property is removed from an item that is imbued.  This property can be found on all armor, weapons and shields.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152467",
+   "text": "This property provides increased effectiveness against specific monsters or specific groups of monsters.  When the property is found on weapons or talisman it increases damage inflicted by weapons.  When this property is found on spellbooks it increases spell damage.  <br>When this property is found on instruments it increases the success chances for barding attempts (peacemaking, provocation or discordance)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152468",
+   "text": "This property denotes the minimum amount of the strength required to equip the item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152469",
+   "text": "Two-Handed Weapon info",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152470",
+   "text": "Weight info",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152471",
+   "text": "This property provides a 20% chance (10% for ranged weapons) to deal additional fire damage to a target while inflicting 4 points of direct damage to the wielder.  This property also induces a hit point regeneration penalty on the target that lasts for four seconds.  The penalty is -20 hit point regeneration for players and -60 hit point regeneration for monsters and NPCs.  Each attack with a weapon with this property consumes one mana.  This property is only found on weapons.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152472",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be fire damage.  Fire damage is applied against an opponent’s fire resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152473",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be poison damage.  Poison damage is applied against an opponent’s poison resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152474",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be energy damage.  Energy damage is applied against an opponent’s energy resistance.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152475",
+   "text": "This property indicates that a percentage of the damage inflicted by the weapon (or spell) will be of a random type of damage (physical, fire, cold, poison or energy).",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152476",
+   "text": "This property provides a chance to convert spell or spell like effect damage into a mana gain based on the user karma.  The mana gain is based directly on the user's current karma level",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152477",
+   "text": "Healing Burst",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152478",
+   "text": "This property provides a chance for a burst of healing magic to affect the player when the player is taking damage.  The amount of healing is based on the player’s maximum hit points and the player’s current karma level.  Each piece of karma healing burst equipment that the user is wearing will increases the frequency of the healing bursts.  There are both positive and negative karma versions of these items.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152479",
+   "text": "exc. ~1_ITEM~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152480",
+   "text": "You carefully combine the delicate fragments.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152481",
+   "text": "You carefully assemble the pieces into an Heirloom!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152482",
+   "text": "Heirloom Fragment",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152483",
+   "text": "Partially Reconstructed Heirloom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152484",
+   "text": "You sift for a while but fail to find anything.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152485",
+   "text": "You sift for a while and discover an antiquity fragment!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152486",
+   "text": "You sift for a while and disturb the underground lair of a sleeping creature!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152487",
+   "text": "You can't sift there.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152489",
+   "text": "The ground here does not look right for sifting.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152490",
+   "text": "*shake shake shake*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152491",
+   "text": "Where would you like to sift?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152492",
+   "text": "Greetings Traveler! Is it fine provisions you seek? Then look no further!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152493",
+   "text": "For the modest fee of 1000 gold I will provide you with a usable sifting tray!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152494",
+   "text": "This sifting tray will no doubt allow you to uncover untold riches in the shifting sands of this desert!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152495",
+   "text": "Before you get too excited you should know these sands can be treacherous and sifting should be done with care!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152496",
+   "text": "Of most valuable interest are the antiquity fragments settled here from the recent catastrophe that befell the Juka and Meer.  You'd be wise to search only in this area, as it is where most of the debris is concentrated. Happy Hunting!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152497",
+   "text": "What is this? Some kind of joke? I deal in hard coin only!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152498",
+   "text": "Your payment seems to be a little light there. I need 1000 gold pieces!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152499",
+   "text": "I appreciate the generous payment, but I need 1000 gold pieces, no more, no less.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152500",
+   "text": "Many thanks for your patronage!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152501",
+   "text": "Your backpack and bank cannot hold the item so it was lost.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152502",
+   "text": "Your backpack cannot hold the item so it was placed in your bank.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152503",
+   "text": "They're calling it the blight. I am so scared.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152504",
+   "text": "Can no one give us hope? Is there no cure?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152505",
+   "text": "Why is Queen Zhah not protecting us? Why are we plagued?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152506",
+   "text": "I hurt so terribly.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152507",
+   "text": "My wings are so weak. Why am I this wretched color?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152508",
+   "text": "This is the fault of Queen Zhah! The foreign Gargoyles brought this plague!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152509",
+   "text": "Ahhhh! It burns!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152510",
+   "text": "I don't feel so...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152511",
+   "text": "I'm dizzy...and nauseous...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152512",
+   "text": "The world is spinning...I'm so weak...I can't...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152513",
+   "text": "*A Gargoyle thrashes about in confusion and pain*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152514",
+   "text": "*cough cough cough*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152515",
+   "text": "You don't see how that could be of any use.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152516",
+   "text": "To Pet Arena",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152517",
+   "text": "To Zento",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152518",
+   "text": "Gargish Vomit",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152519",
+   "text": "Cuticle Sacs: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152520",
+   "text": "Vanilla: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152521",
+   "text": "Raw Yeast: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152522",
+   "text": "Sugar: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152523",
+   "text": "Blightborn Slime: ~1_amt~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152524",
+   "text": "You don't see how adding more of this is a good idea.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152525",
+   "text": "That is not a valid reagent.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152526",
+   "text": "The battle for the Void Pool will begin in ~1_VALUE~ minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152527",
+   "text": "The battle for the Void Pool is beginning now!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152528",
+   "text": "Wave number ~1_VALUE~ of Cora's forces are entering the dungeon.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152529",
+   "text": "The Void Pool walls have been damaged! Defend the Void Pool!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152530",
+   "text": "Cora's forces have destroyed the Void Pool walls. The battle is lost!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152531",
+   "text": "The Void Pool",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152532",
+   "text": "Welcome, adventurer! You have entered into the section of Dungeon Covetous holding a powerful work of magic known as the Void Pool. Select \"The Void Pool\" from your avatar's context menu for information about this area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152533",
+   "text": "When she attempted to wrest knowledge from the Codex of Infinite Wisdom, the sorceress Cora broke loose a section of the great book's altar. Floating through the void between places, the section of magic stone slammed into the shard inside Dungeon Covetous. Trailing behind it is a portal through the void that leads to the Codex itself.<br><br>Now, Cora has assembled an enormous army of minions to take control of the Void Pool, so that she may once again attempt to steal the knowledge she seeks. Unfortunately for her, she cannot cast magical gates too close to the Void Pool, and she does not have the means to send more than a few minions through at a time.<br><br>You, brave adventurer, must defend the Void Pool from Cora's armies. Each wave of forces she sends will be tougher than the last. How long can you hold out before her armies break through?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152534",
+   "text": "This dungeon area behaves differently from typical dungeons:<br><br>1. Monsters do not drop loot<br><br>2. Players score points for killing monsters<br><br>3. After the battle is over, points earned may be spent to earn rewards.<br><br>The battle against the forces of Cora the Sorceress is a never-ending one. Each spawn wave contains monsters that are tougher than the wave before. Eventually, these creatures will be virtually impossible to defeat.<br><br>How many waves of enemy forces can you push back before the enemy force is overwhelming?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152535",
+   "text": "Current Battle Scoreboard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152536",
+   "text": "Best Single Battle Scoreboard",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152537",
+   "text": "Overall Total Scores",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152538",
+   "text": "This scoreboard shows all defenders in the current battle, ranked by score.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152539",
+   "text": "This scoreboard tracks each player's best score from any single battle, and ranks all players by their best single-battle scores.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152540",
+   "text": "This scoreboard tracks the total number of points each player has received in all battles, and ranks players by those totals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152541",
+   "text": "RANK",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152542",
+   "text": "PLAYER",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152543",
+   "text": "SCORE",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152544",
+   "text": "You empty the contents into your backpack.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152545",
+   "text": "The flask is empty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152546",
+   "text": "You must use at least one of each reagent.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152547",
+   "text": "*The reaction bubbles and is becoming increasingly unstable!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152548",
+   "text": "*You begin heating the flask*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152549",
+   "text": "*You empty the flask*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152550",
+   "text": "The flask is empty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152551",
+   "text": "~1_VALUE~ of the reagents slowly fizz but the reaction fails.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152552",
+   "text": "See Loyalty Menu for Reward Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152553",
+   "text": "See Vela in Cove for rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152554",
+   "text": "*The reaction bubbles harmlessly*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152555",
+   "text": "*The reaction bubbles and is becoming slightly unstable*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152556",
+   "text": "*The reaction bubbles and is becoming surpassingly unstable!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152557",
+   "text": "*The reaction bubbles and is becoming exceedingly unstable!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152558",
+   "text": "*The reaction bubbles and is becoming dangerously unstable!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152559",
+   "text": "*The contents of the flask react violently and your experiment is lost!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152560",
+   "text": "None of the reagents react and the reaction fails.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152561",
+   "text": "Cure for the Great Gargish Blight Prepared by ~1_player~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152562",
+   "text": "The reaction is successful and you prepare the cure!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152563",
+   "text": "Blightborn Slime",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152564",
+   "text": "Terathan Cuticle Sac",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152565",
+   "text": "Destructible Wall",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152566",
+   "text": "You fail to leech life from your target!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152567",
+   "text": "20% Bandage Healing Bonus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152568",
+   "text": "You add the reagent to the flask.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152569",
+   "text": "You must return the cure to the Unknown Healer.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152570",
+   "text": "Member of the Gargish Healers Order",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152571",
+   "text": "Asclepius",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152572",
+   "text": "Hygieia's Amulet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152573",
+   "text": "Laboratory Bench",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152574",
+   "text": "Laboratory Procedure",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152575",
+   "text": "Once you have collected the necessary reagents you may attempt to decipher the combination of each reagent necessary for the cure.  To begin your work visit the makeshift",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152576",
+   "text": "laboratories setup in the buildings here.  There, you will find a laboratory bench.  Of particular note are the Flask, Heating Stand, and Tongs.  To add reagents, double click",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152577",
+   "text": "the flask.  You may add up to three of each reagent, and must add at least one of each reagent.  To empty the flask and get back the reagents added, double click the tongs.  When",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152578",
+   "text": "you are ready to test your combination use the heating stand.  You will begin heating the contents and the number of correct reagents will be returned to you.  With each guess the",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152579",
+   "text": "reaction will become increasingly unstable, until ultimately if you do not succeed at preparing the cure, the reaction will catastrophically fail.  The combination of",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152580",
+   "text": "reagents changes with each success, and each catastrophic failure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152581",
+   "text": "A Plea for Help",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152582",
+   "text": "Greetings Traveler!<br><br>I am overjoyed at your willingness to assist these afflicted gargoyles.  It is without question that your actions are virtuous and I commend",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152583",
+   "text": "thee.  Fortunately I have been able to work out the basic reagents needed in the preparation of the cure.  Firstly you will require the Cuticle Sac of a Terathan as a",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152584",
+   "text": "binding agent.  These can be found on Terathan creatures within their Keep on the outskirts of Papua.  Secondly, to combat the foul taste of the preparation you will require vanilla.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152585",
+   "text": "Vanilla can be found on various paragon creatures in Ilshenar, or for those with a green thumb the raw plant can be cultivated from seeds found on creatures deep within",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

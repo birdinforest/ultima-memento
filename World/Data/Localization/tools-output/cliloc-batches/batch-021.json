@@ -1,0 +1,3006 @@
+{
+ "batch": 21,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1126012",
+   "text": "figurehead",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126013",
+   "text": "figurehead",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126014",
+   "text": "figurehead",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126015",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126016",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126017",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126018",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126019",
+   "text": "bottle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126020",
+   "text": "mace belt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126021",
+   "text": "sword belt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126022",
+   "text": "dagger belt",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126023",
+   "text": "elegant collar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126024",
+   "text": "assassin's cowl",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126025",
+   "text": "mage's hood",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126026",
+   "text": "tabard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126027",
+   "text": "elegant quarter cloak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126028",
+   "text": "gem",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126029",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126030",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126031",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126032",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126033",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126034",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126035",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126036",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126037",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126038",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126039",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126040",
+   "text": "shrine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126041",
+   "text": "raw serpent steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126042",
+   "text": "grilled serpent steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126043",
+   "text": "raw serpent steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126044",
+   "text": "cooked serpent steak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126045",
+   "text": "raw dino ribs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126046",
+   "text": "bbq dino ribs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126047",
+   "text": "raw dino ribs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126048",
+   "text": "bbq dino ribs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126049",
+   "text": "necklace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126050",
+   "text": "necklace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126051",
+   "text": "bake-kitsune hat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126052",
+   "text": "bake-kitsune hat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126113",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126114",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126115",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126116",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126117",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126118",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126119",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126120",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126121",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126122",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126123",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126124",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126125",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126126",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126127",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126128",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126129",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126130",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126131",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126132",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126133",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126134",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126135",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126136",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126137",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126138",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126139",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126140",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126141",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126142",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126143",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126144",
+   "text": "lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126145",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126146",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126147",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126148",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126149",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126150",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126151",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126152",
+   "text": "painting",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126153",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126154",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126155",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126156",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126157",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126158",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126159",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126160",
+   "text": "pillow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126161",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126162",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126163",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126164",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126165",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126166",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126167",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126168",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126169",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126170",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126171",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126172",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126173",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126174",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126175",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126176",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126177",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126178",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126179",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126180",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126181",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126182",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126183",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126184",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126185",
+   "text": "cage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126186",
+   "text": "cage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126187",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126188",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126189",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126190",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126191",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126192",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126193",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126194",
+   "text": "glass tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126195",
+   "text": "fence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126196",
+   "text": "fence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126197",
+   "text": "fence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126198",
+   "text": "fence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126199",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126200",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126201",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126202",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126203",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126204",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126205",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126206",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126207",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126208",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126209",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126210",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126211",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126212",
+   "text": "gate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126213",
+   "text": "arch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126214",
+   "text": "arch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126215",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126216",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126217",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126218",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126219",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126220",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126221",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126222",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126223",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126224",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126225",
+   "text": "tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126231",
+   "text": "metal tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126232",
+   "text": "metal tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126233",
+   "text": "metal tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126234",
+   "text": "metal tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126235",
+   "text": "feedbag",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126236",
+   "text": "feedbag",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126237",
+   "text": "cow pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126239",
+   "text": "whistle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126240",
+   "text": "hook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126241",
+   "text": "hook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126242",
+   "text": "chair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126243",
+   "text": "chair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126244",
+   "text": "stool",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126245",
+   "text": "stock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126246",
+   "text": "stock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126247",
+   "text": "hanging mask",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126248",
+   "text": "hanging mask",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126249",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126250",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126251",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126252",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126253",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126254",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126255",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126256",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126257",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126258",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126259",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126260",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126261",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126262",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126263",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126264",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126265",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126266",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126267",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126268",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126269",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126270",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126271",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126272",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126273",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126274",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126275",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126276",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126277",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126278",
+   "text": "bull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126279",
+   "text": "cow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126280",
+   "text": "cow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126281",
+   "text": "horse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126282",
+   "text": "horse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126283",
+   "text": "chicken",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126284",
+   "text": "chicken",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126285",
+   "text": "bear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126286",
+   "text": "bear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126287",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126288",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126289",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126290",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126291",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126292",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126293",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126294",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126295",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126296",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126297",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126298",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126299",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126300",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126301",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126302",
+   "text": "rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126303",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126304",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126305",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126306",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126307",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126308",
+   "text": "frozen corpse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126310",
+   "text": "bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126311",
+   "text": "bench",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126312",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126313",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126314",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126315",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126316",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126317",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126318",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126319",
+   "text": "kiln",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126320",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126321",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126322",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126323",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126324",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126325",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126326",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126327",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126328",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126329",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126330",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126331",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126332",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126333",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126334",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126335",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126336",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126337",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126338",
+   "text": "cart",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126339",
+   "text": "cart",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126340",
+   "text": "granite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126341",
+   "text": "granite",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126342",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126343",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126344",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126345",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126348",
+   "text": "war boar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126351",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126352",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126353",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126354",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126355",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126356",
+   "text": "ladder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126357",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126358",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126359",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126360",
+   "text": "staircase",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126365",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126366",
+   "text": "sculpture",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126367",
+   "text": "wine rack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126368",
+   "text": "wine rack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126369",
+   "text": "wine rack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126370",
+   "text": "wine rack",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126371",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126372",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126373",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126374",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126375",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126376",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126377",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126378",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126379",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126380",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126381",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126382",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126383",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126384",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126385",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126386",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126387",
+   "text": "capybara",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126388",
+   "text": "capybara",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126389",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126390",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126393",
+   "text": "knight",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126394",
+   "text": "knight",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126395",
+   "text": "rook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126396",
+   "text": "books",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126397",
+   "text": "books",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126398",
+   "text": "chair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126399",
+   "text": "chair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126400",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126401",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126402",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126403",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126404",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126405",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126406",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126407",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126408",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126409",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126410",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126411",
+   "text": "book stand",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126413",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126414",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126415",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126416",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126417",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126418",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126419",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126420",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126421",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126422",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126423",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126424",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126425",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126426",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126427",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126428",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126429",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126430",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126431",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126432",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126433",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126434",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126435",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126438",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126439",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126440",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126441",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126444",
+   "text": "cauldron",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126445",
+   "text": "bubbling liquid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126446",
+   "text": "bubbling liquid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126447",
+   "text": "bubbling liquid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126448",
+   "text": "bubbling liquid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126449",
+   "text": "bubbling liquid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126450",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126451",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126452",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126453",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126454",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126455",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126456",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126457",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126458",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126459",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126460",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126461",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126462",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126463",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126464",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126465",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126466",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126467",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126468",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126469",
+   "text": "lamp",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126470",
+   "text": "book",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126471",
+   "text": "book",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126472",
+   "text": "book",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126473",
+   "text": "book",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126474",
+   "text": "lich",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126475",
+   "text": "lich",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126476",
+   "text": "tsuki wolf",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126477",
+   "text": "tsuki wolf",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126478",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126479",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126480",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126481",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126482",
+   "text": "rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126483",
+   "text": "crystal ball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126484",
+   "text": "crystal ball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126485",
+   "text": "crystal ball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126486",
+   "text": "crystal ball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126487",
+   "text": "crystal ball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126488",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126489",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126490",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126491",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126492",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126493",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126494",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126495",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126496",
+   "text": "shelves",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126497",
+   "text": "shelves",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126498",
+   "text": "dragon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126499",
+   "text": "dragon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126500",
+   "text": "toad",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126501",
+   "text": "toad",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126502",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126503",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126504",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126505",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126506",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126507",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126508",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126509",
+   "text": "blanket",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126510",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126511",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126512",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126513",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126514",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126515",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126516",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126517",
+   "text": "stained glass window",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126518",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126519",
+   "text": "doll",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126520",
+   "text": "snowy hedge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126521",
+   "text": "snowy hedge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126522",
+   "text": "snowy hedge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126523",
+   "text": "snowy hedge",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126524",
+   "text": "snowy tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126525",
+   "text": "snowy tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126526",
+   "text": "snowy tree",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126527",
+   "text": "snowy birdhouse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126528",
+   "text": "snowy birdhouse",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126529",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126530",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126531",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126532",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126533",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126534",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126535",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126536",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126537",
+   "text": "keep",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126538",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126539",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126540",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126541",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126542",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126543",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126544",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126545",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126546",
+   "text": "castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126547",
+   "text": "energy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126548",
+   "text": "energy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126549",
+   "text": "energy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126550",
+   "text": "zombie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126551",
+   "text": "zombie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126552",
+   "text": "mummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126553",
+   "text": "mummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126554",
+   "text": "ghost",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126555",
+   "text": "ghost",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126556",
+   "text": "spider",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126557",
+   "text": "spider",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126558",
+   "text": "cat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126559",
+   "text": "cat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126560",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126561",
+   "text": "jack o' lantern",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126562",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126563",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126564",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126565",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126566",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126567",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126568",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126569",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1126570",
+   "text": "fountain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149560",
+   "text": "This type of ship is not paintable.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149561",
+   "text": "Sea Market",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149562",
+   "text": "You must have the High Seas booster pack to take this quest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149563",
+   "text": "The infused projectile strikes a target!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149564",
+   "text": "You are struck by the infused projectile and take damage!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149565",
+   "text": "The mystic arc strikes the target!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149566",
+   "text": "You take extra damage from the mystic arc!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149567",
+   "text": "Fishing crates can't be stored in the warehouse.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149568",
+   "text": "You are already attempting to recall to a ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149569",
+   "text": "That ship is in dry dock.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149570",
+   "text": "Ship Recall Rune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149571",
+   "text": "Owner: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149572",
+   "text": "Name: the ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149573",
+   "text": "Name: the Unnamed Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149574",
+   "text": "Location: ~1_FACET~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149575",
+   "text": "Dry Dock",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149576",
+   "text": "Island of the Soulbinder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149577",
+   "text": "A recall rune for your new ship could not be created in your backpack. It has been placed in the ship hold instead.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149578",
+   "text": "Recall runes for your new ship could not be created.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149579",
+   "text": "A rune to your ship could not be created in your bank box. It has been placed in the ship's cargo hold instead.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149580",
+   "text": "A recall rune to your ship has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149581",
+   "text": "A recall rune for your new ship has been placed in your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1149582",
+   "text": "a sodden piece of parchment",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

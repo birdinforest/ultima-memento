@@ -1,0 +1,3006 @@
+{
+ "batch": 23,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1150083",
+   "text": "There are currently no resources to collect.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150084",
+   "text": "Treasure maps have been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150085",
+   "text": "Seeds have been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150086",
+   "text": "Bottles have been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150087",
+   "text": "Character copy unavailable with character transfer or copy pending.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150088",
+   "text": "Character copy unavailable with items remaining in the transfer crate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150089",
+   "text": "Skull Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150090",
+   "text": "Skull Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150091",
+   "text": "Rose Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150092",
+   "text": "Rose Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150093",
+   "text": "Dolphin Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150094",
+   "text": "Dolphin Rug (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150095",
+   "text": "You must wait a few seconds before you prepare another pie.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150096",
+   "text": "You are too far away from the target!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150097",
+   "text": "Please enter maximum damage by snowball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150098",
+   "text": "Please enter minimum damage by snowball.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150099",
+   "text": "You may not transfer a character during a character copy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150100",
+   "text": "Britannian Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150101",
+   "text": "Treasure Maps: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150102",
+   "text": "Seeds: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150103",
+   "text": "Messages in Bottles: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150104",
+   "text": "pilot's wheel deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150105",
+   "text": "a pilot's wheel (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150106",
+   "text": "a pilot's wheel (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150107",
+   "text": "a pilot's wheel (North)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150108",
+   "text": "a pilot's wheel (West)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150109",
+   "text": "a pilot's wheel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150110",
+   "text": "Abandon Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150111",
+   "text": "Your ship has been abandoned. It will decay within five minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150112",
+   "text": "WARNING: Your ship and all items aboard it or in its cargo hold will be deleted if you continue. Make certain you wish to abandon your ship before proceeding. Are you sure you wish to abandon your ship?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150113",
+   "text": "<CENTER>Rear Port Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150114",
+   "text": "<CENTER>Rear Starboard Cannon Control</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150115",
+   "text": "Event Moderator's Hall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150116",
+   "text": "Spell focusing damage has peaked.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150117",
+   "text": "Spell focusing damage has reset.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150118",
+   "text": "Spell focusing damage has now been tuned to your opponent.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150119",
+   "text": "Corrupted Bell of Courage",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150120",
+   "text": "Skull Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150121",
+   "text": "Rose Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150122",
+   "text": "Dolphin Rug",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150123",
+   "text": "East",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150124",
+   "text": "South",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150125",
+   "text": "Large",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150126",
+   "text": "Small",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150127",
+   "text": "Teleport by Keyword",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150128",
+   "text": "Check arena rankings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150129",
+   "text": "dark portal",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150130",
+   "text": "Arena Menu - Survival Rankings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150131",
+   "text": "Arena Menu - Team Rankings",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150132",
+   "text": "VIEW SURVIVAL RANKINGS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150133",
+   "text": "VIEW TEAM RANKINGS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150134",
+   "text": "Enable Focusing Effect",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150135",
+   "text": "Disable Focusing Effect",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150136",
+   "text": "Buy from this broker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150137",
+   "text": "Sell to this broker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150138",
+   "text": "This broker is unavailable",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150139",
+   "text": "You have no available trades",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150140",
+   "text": "ITEM",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150141",
+   "text": "PRICE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150142",
+   "text": "MAX QTY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150143",
+   "text": "TRADE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150144",
+   "text": "You are BUYING:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150145",
+   "text": "You are SELLING:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150146",
+   "text": "<DIV ALIGN=\"RIGHT\">You have:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150147",
+   "text": "<DIV ALIGN=\"RIGHT\">I will buy up to:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150148",
+   "text": "<DIV ALIGN=\"RIGHT\">I will sell up to:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150149",
+   "text": "Your Bank Balance:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150150",
+   "text": "My asking price is:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150151",
+   "text": "<DIV ALIGN=\"RIGHT\">My offer price is:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150152",
+   "text": "Quantity to Buy:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150153",
+   "text": "Quantity to Sell:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150154",
+   "text": "BACK",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150155",
+   "text": "Transaction failed:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150156",
+   "text": "Specified quantity not available",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150157",
+   "text": "Funds not available",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150158",
+   "text": "The price of the selected item has been changed from the value you confirmed. You must select and confirm the purchase again at the new price in order to buy it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150159",
+   "text": "TOP RANKING",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150160",
+   "text": "MY RANKING",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150161",
+   "text": "Focusing damage has been reset.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150162",
+   "text": "Focusing damage has peaked.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150163",
+   "text": "Focusing damage has now been tuned to your opponent.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150164",
+   "text": "Focusing Effect Enabled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150165",
+   "text": "Focusing Effect Disabled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150166",
+   "text": "There are currently no rankings to display.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150167",
+   "text": "Please check again tomorrow.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150168",
+   "text": "<h2>New Haven</h2><br>The city of mystery<br><br>(This town is a great place to start as a new player)<br><br>Blackrock has plagued the kingdom of Britannia for all of recorded history.  It is a great temptress in that it contains incredible magical power.  No city in the kingdom is a better example of this than Haven.<br><br>Not so many years ago, Haven was a thriving and prosperous city.  Then one day mysterious blackrock traders came seeking large quantities of the cursed rock.  Adventurers from all over the kingdom brought blackrock to Haven to trade with these strangers.  Before anyone could discern their intent, the city became plagued with undead and its citizens vanished.<br><br>It is not known if the undead that haunt this place are the former villagers or if they are their ancestors, nor is it known if the undead plague is connected to the blackrock traders.<br><br>What is known is that \"New Haven\" sprung up almost overnight.  The citizens of New Haven claim to be time travelers who brought the new city with them through time.  Many do not believe this story.  Others think these strange folk may have caused the destruction of \"Old\" Haven. The citizens of New Haven have declined to explain further, claiming that doing so would \"disrupt the timeline.\"<br><br>Whatever the past may be, the present is a town that rivals the original Haven in prosperity and trade.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150169",
+   "text": "<h2>The Royal City</h2><br>Capital of Ter Mur<br><br>The gargoyles are an ancient race with an advanced culture.  Their skill with architecture, especially stone, is second to none.  They have their own virtues, their own magic and have brought the skill of imbuing to the humans and elves of Britannia.  This is their capital city.<br><br>In spite of all their accomplishments, their world is dying.  The void has claimed all but the center of it, and this part remains only by the magic of the gargoyle queen, Zhah.<br><br>The gargoyles are naturally reclusive, but they have reached out to the humans for help as most of their natural resources have been lost to the void.<br><br>The Royal City is opulent and beautiful.  All manner of shops and traders can be found here.  It is the shining remnant of an empire that was.  Unless the gargoyles can find a way to push back the void and reclaim their land, it may claim them all and the world of the gargoyles will simply vanish.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150170",
+   "text": "RANK",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150171",
+   "text": "NAME",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150172",
+   "text": "RATING",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150173",
+   "text": "Ranked",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150174",
+   "text": "The apple was not strong enough to purify you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150175",
+   "text": "Britannian Ship Deed<br>* Requires The \"High Seas\" Booster<br>* Non-Transferable Account Bound Item *",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150176",
+   "text": "The code you were working on has been completed!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150177",
+   "text": "Incorrect Code Sequence. Access Denied.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150178",
+   "text": "System is currently shutting down. Access Disabled.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150179",
+   "text": "Crystals Locked  :",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150180",
+   "text": "Command Functions:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150181",
+   "text": "Please enter the variable name which you want to add.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150182",
+   "text": "Please enter the integer value which you want to add.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150183",
+   "text": "Please enter the string value which you want to add.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150184",
+   "text": "oracle of the sea",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150185",
+   "text": "Legacy Paperdolls (Restart Required)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150186",
+   "text": "Displays legacy paperdoll art.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150187",
+   "text": "Blacksmith",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150188",
+   "text": "Tailor",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150189",
+   "text": "<DIV ALIGN=RIGHT>NEXT PAGE</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150190",
+   "text": "You peer into the spyglass, images swirl in your mind as the magic device searches.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150191",
+   "text": "The location you seek is: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150192",
+   "text": "ADD TO INVENTORY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150193",
+   "text": "VIEW INVENTORY / REMOVE ITEMS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150194",
+   "text": "SET PRICES AND LIMITS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150195",
+   "text": "Withdraw Funds:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150196",
+   "text": "Deposit Funds:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150197",
+   "text": "<DIV ALIGN=RIGHT>N/A</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150198",
+   "text": "The spyglass goes dark, it has failed to find what you seek.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150199",
+   "text": "Broker Account Balance:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150200",
+   "text": "<CENTER>STOCK FOR: ~1_NAME~</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150201",
+   "text": "IN STOCK",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150202",
+   "text": "WITHDRAW",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150203",
+   "text": "<CENTER>PRICES FOR: ~1_NAME~</CENTER>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150204",
+   "text": "BUY AT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150205",
+   "text": "SELL AT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150206",
+   "text": "<DIV ALIGN=CENTER>MODIFY</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150207",
+   "text": "[attuned to: ~1_val~]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150208",
+   "text": "charybdis",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1150209",
+   "text": "Target commodity items or filled commodity deeds in your backpack to add them to the broker's inventory. These items will be retrievable, and the broker will not trade them until you establish prices.<br><br>When done, press the [ESC] key to cancel your targeting cursor, or click the MAIN MENU button below.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150210",
+   "text": "<DIV ALIGN=RIGHT>Amount to withdraw:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150211",
+   "text": "<DIV ALIGN=RIGHT>Amount to deposit:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150212",
+   "text": "<DIV ALIGN=RIGHT>DEPOSIT</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150213",
+   "text": "You are currently not placed in these rankings.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150214",
+   "text": "Transfer of funds from the broker to your bank box failed. Please check the amount to transfer is available in the broker's account, and make sure your bank box is able to hold the new funds without becoming overloaded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150215",
+   "text": "You have entered an invalid value, or a non-numeric value. Please try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150216",
+   "text": "This effect cannot be applied to an item which is part of an armor set.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150217",
+   "text": "(player/pets).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150218",
+   "text": "~1_HCI~% hit chance<br> ~2_DI~% damage<br>~3_SSI~% swing speed increase<br>-~4_DCI~% defense chance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150219",
+   "text": "View shop",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150220",
+   "text": "You have added ~1_QUANTITY~ units of ~2_ITEMNAME~ to the inventory of \"~3_SHOPNAME~\"",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150221",
+   "text": "You have removed ~1_QUANTITY~ units of ~2_ITEMNAME~ from the inventory of \"~3_SHOPNAME~\"",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150222",
+   "text": "That item is not a commodity that a broker can trade.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150223",
+   "text": "<DIV ALIGN=RIGHT>WITHDRAW MAX</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150224",
+   "text": "Unable to withdraw resources from the broker because your backpack cannot hold anything else.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150225",
+   "text": "<DIV ALIGN=RIGHT>Sell only stock in excess of:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150226",
+   "text": "<DIV ALIGN=RIGHT>Buy only when stock is below:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150227",
+   "text": "(0 for no limit)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150228",
+   "text": "(0 to not buy)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150229",
+   "text": "(0 to not sell)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150230",
+   "text": "<DIV ALIGN=RIGHT>Buying price (per unit):</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150231",
+   "text": "<DIV ALIGN=RIGHT>Selling price (per unit):</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150232",
+   "text": "SET PRICES",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150233",
+   "text": "Helm of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150234",
+   "text": "Gorget of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150235",
+   "text": "Breastplate of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150236",
+   "text": "Arms of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150237",
+   "text": "Gauntlets of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150238",
+   "text": "Legs of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150239",
+   "text": "You have either entered an invalid value, or have set invalid prices. All entries must be numeric. To buy and sell at the same time, buying price must be lower than selling price and buy limit must be either not set or higher than sell limit. No value may be negative. Setting a price to 0 will disallow that transaction, and setting a limit to 0 means the limit does not apply.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150240",
+   "text": "Set Bonus: Frequency ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150241",
+   "text": "Set Ability: good mana burst",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150242",
+   "text": "Set Ability: evil mana burst",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150243",
+   "text": "Karma Bonus: Burst level ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150244",
+   "text": "Transaction no longer available",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150245",
+   "text": "<DIV ALIGN=RIGHT>You are purchasing:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150246",
+   "text": "Total cost:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150247",
+   "text": "<DIV ALIGN=RIGHT>PURCHASE</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150248",
+   "text": "<DIV ALIGN=RIGHT>CONFIRM</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150249",
+   "text": "<DIV ALIGN=RIGHT>SELL</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150250",
+   "text": "<DIV ALIGN=RIGHT>You are selling:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150251",
+   "text": "Gold You Will Receive:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150252",
+   "text": "You do not have the funds needed to make this trade available in your bank box. Brokers are only able to transfer funds from your bank box. Please deposit the necessary funds into your bank box and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150253",
+   "text": "Helm of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150254",
+   "text": "Gorget of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150255",
+   "text": "Breastplate of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150256",
+   "text": "Arms of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150257",
+   "text": "Gauntlets of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150258",
+   "text": "Legs of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150259",
+   "text": "Earrings of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150260",
+   "text": "Earrings of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150261",
+   "text": "Necklace of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150262",
+   "text": "Kilt of Virtuous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150263",
+   "text": "Kilt of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150264",
+   "text": "Necklace of Villainous Epiphany",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150265",
+   "text": "Your bank box cannot hold the proceeds from this transaction.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150266",
+   "text": "Spell Consumption: ~1_Val~%",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150267",
+   "text": "Gauntlets of Virtue Bane",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150268",
+   "text": "This title is obtained by focusing only in Magery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150269",
+   "text": "This title is obtained by focusing only in Necromancy.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150270",
+   "text": "This title is obtained by focusing only in Mysticism.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150271",
+   "text": "This title is obtained by focusing only in Spellweaving.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150272",
+   "text": "Bane of Virtuebane",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150273",
+   "text": "This is a reward title given for completing the initiation of the Bane Chosen.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150274",
+   "text": "This is a reward title for loyally defending Britannia against the forces of Virtuebane.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150275",
+   "text": "wheat wort",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150276",
+   "text": "Transfer Stabled Pets to Merchant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150277",
+   "text": "Transfer Merchant Inventory to Stables",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150278",
+   "text": "Walk On Teleporter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150279",
+   "text": "<DIV ALIGN=RIGHT>Max Stable Slots:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150280",
+   "text": "<DIV ALIGN=RIGHT>Used Stable Slots:</DIV>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150281",
+   "text": "You begin trying to strike with both your weapons at once.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150282",
+   "text": "Dual wield level increased!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150283",
+   "text": "Dual wield level increased to peak!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150284",
+   "text": "Remaining Duration (seconds):",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150285",
+   "text": "You no longer try to strike with both weapons at the same time.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150286",
+   "text": "You no longer try to block the next attack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150287",
+   "text": "You unleash an arrow of pure force which staggers your opponent.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150288",
+   "text": "You are momentarily disoriented by the force of the attack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150289",
+   "text": "You no longer feel disoriented.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150290",
+   "text": "Your target resists your psychic attack!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150291",
+   "text": "You resist the psychic attack!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150292",
+   "text": "You recover from the effects of the psychic attack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150293",
+   "text": "Enter up to three lines of personalized greeting for your St. Valentine Bear. You many enter up to 25 characters per line. Once you enter text, you will only be able to correct mistakes for 10 minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150294",
+   "text": "St. Valentine Bear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150295",
+   "text": "~1_NAME~'s St. Valentine Bear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150296",
+   "text": "Line 1:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150297",
+   "text": "Line 2:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150298",
+   "text": "Line 3:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150299",
+   "text": "ACCEPT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150300",
+   "text": "CANCEL",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150301",
+   "text": "[ ~1_LINE0~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150302",
+   "text": "[ ~1_LINE1~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150303",
+   "text": "[ ~1_LINE2~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150304",
+   "text": "[ ~1_LINE3~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150305",
+   "text": "[ ~1_LINE4~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150306",
+   "text": "[ ~1_LINE5~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150307",
+   "text": "[ ~1_LINE6~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150308",
+   "text": "[ ~1_LINE7~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150309",
+   "text": "[ ~1_LINE8~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150310",
+   "text": "[ ~1_LINE9~ ]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150311",
+   "text": "Animal Broker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150312",
+   "text": "~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150313",
+   "text": "Proprietor:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150314",
+   "text": "This Shop Has No Name",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150315",
+   "text": "That text is unacceptable.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150316",
+   "text": "Gathering of Evidence (Gargoyle Rewards)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150317",
+   "text": "There seems to be unrest spreading among the refugees surrounding the Royal city. There are rumors of gargoyles willingly leaving their encampments and disappearing into the abyss. Through our own investigations, we have learned that there are militant gargoyle camps in the abyss where their magically gifted members are tapping into a new source of magic. We suspect they are tapping the void energies and require you to obtain proof so that we can prepare a plan of action to deal with any threat they may pose. Bring back all of the following",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150318",
+   "text": "Obtain a void infused essence from each of the gargoyle encampments in the abyss.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150319",
+   "text": "Have you retrieved the essences? We cannot prepare our strategy without solid evidence.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150320",
+   "text": "Well Done! This is just what we needed. We can ill afford these separatist encampments upsetting the delicate balance with the void consuming our world.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150321",
+   "text": "Void Crystal of Corrupted Arcane Essence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150322",
+   "text": "Void Crystal of Corrupted Spiritual Essence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150323",
+   "text": "Void Crystal of Corrupted Mystical Essence",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150324",
+   "text": "remove plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150325",
+   "text": "You have removed the plant from the raised garden bed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150326",
+   "text": "You couldn't damage the target because it is too far away!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150327",
+   "text": "Only the house owner and co-owners can use the raised garden bed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150328",
+   "text": "OWNER MENU",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150329",
+   "text": "Broker Sales Commission:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150331",
+   "text": "Weekly Fee:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150332",
+   "text": "Shop Name:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150333",
+   "text": "Your shop has been renamed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150334",
+   "text": "View Inventory / Edit Prices",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150335",
+   "text": "You currently have no pets in your stables that can be traded via an animal broker.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150336",
+   "text": "The animal broker has no pets in its inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150337",
+   "text": "ADD PET TO BROKER INVENTORY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150338",
+   "text": "Click the button next to a pet to select it. Enter the price you wish to charge into the box below the pet list, then click the \"ADD PET\" button.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150339",
+   "text": "ADD PET",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150340",
+   "text": "~1_NAME~ (~2_type~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150341",
+   "text": "You did not select a pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150342",
+   "text": "That pet is not in the stables. The pet must remain in the stables in order to be transferred to the broker's inventory.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150343",
+   "text": "You have entered an invalid price.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150344",
+   "text": "Transferring the pet from the stables to the animal broker's inventory failed for an unknown reason.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150345",
+   "text": "Your pet ~1_TYPE~ named ~2_NAME~ has been transferred to the inventory of your animal broker named ~3_SHOP~ with an asking price of ~4_PRICE~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150346",
+   "text": "PETS FOR SALE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150347",
+   "text": "NAME",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150348",
+   "text": "TYPE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150349",
+   "text": "PRICE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150350",
+   "text": "BUY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150351",
+   "text": "LORE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150352",
+   "text": "LORE: See the animal's attributes with Animal Lore. VIEW: View the animal in the broker's pen. BUY: Buy the animal (you will be prompted to confirm purchase).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150353",
+   "text": "VIEW",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150354",
+   "text": "You don't need to use a potion on it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150355",
+   "text": "You don't need to water it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150356",
+   "text": "We will have to find some other means to gather our information.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150357",
+   "text": "Resonant Shield of Vengeance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150358",
+   "text": "Wind of Corruption",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150359",
+   "text": "Raised Garden Bed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150360",
+   "text": "You have:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150361",
+   "text": "Needed:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150362",
+   "text": "Trouble brews in the abyss!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150363",
+   "text": "Would you like to use fertile dirt?  Plants growing in fertile dirt will receive a bonus to growth checks throughout their lifetime.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150364",
+   "text": "Not Use",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150365",
+   "text": "You don't have fertile dirt in the top level of your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150366",
+   "text": "You don't have enough fertile dirt in the top level of your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150367",
+   "text": "This plot already has a plant!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150368",
+   "text": "The selected animal is not available.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150369",
+   "text": "The ~1_TYPE~ named \"~2_NAME~\" is now in the animal broker's pen for inspection.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150370",
+   "text": "Please confirm your purchase order below, and click \"ACCEPT\" if you wish to purchase this animal.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150371",
+   "text": "Animal Type:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150372",
+   "text": "Animal Name:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150373",
+   "text": "Sale Price:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150374",
+   "text": "ACCEPT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150375",
+   "text": "PURCHASE PET",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150376",
+   "text": "You do not have any available stable slots. The Animal Broker can only transfer pets to your stables. Please make a stables slot available and try again.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150377",
+   "text": "Unable to complete the desired transaction at this time.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150378",
+   "text": "Your account lacks the proper expansion entitlement to control this pet.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150379",
+   "text": "Unable to transfer that pet to you because you have no chance at all of controlling it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150380",
+   "text": "You have purchased ~1_TYPE~ named \"~2_NAME~\". The animal is now in the stables and you may retrieve it there.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150381",
+   "text": "Garden Bed (South)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150382",
+   "text": "Garden Bed (East)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150383",
+   "text": "You need to remove all plants through the plant menu before destroying this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150384",
+   "text": "Gathering Proof (Human Rewards)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150385",
+   "text": "New Magincia Bazaar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150386",
+   "text": "Stall Leasing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150387",
+   "text": "Your Stall:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150388",
+   "text": "Lease Duration:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150389",
+   "text": "You Are Bidding On:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150390",
+   "text": "Your Current Bid:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150391",
+   "text": "<div align=center>New Magincia Bazaar Stall Leasing</div><div align=left><br><br>Leasing a bazaar stall requires purchase of the Gothic Theme Pack or the Rustic Theme pack.<br><br>Stalls are leased for a period of 7 days. At the time a stall becomes available, the highest bid for that specific stall, or the highest bid for the first available stall (whichever is higher) wins the lease for that stall immediately. The funds for the winning bid are taken up front and there are no refunds.<br><br>Bazaar stall lease winners will be notified immediately if logged in, or at next login.<br><br>Each person may have one active bid (per account, not per character) at a time. Anyone may place, retract, or adjust a bid for a stall lease at any time. Funds for bids are held in reserve. Bids may only be funded from checks and gold in the character's bank box, and all returned bids are delivered to the claimant's bank box.<br><br>If a person is currently leasing a bazaar stall, that person may bid on another stall. If that person wins a new stall lease, the current lease is abandoned with no refund and the contents of the old stall are relocated to the new one. The current high bid on the abandoned stall immediately wins, beginning a new 7-day lease.<br><br>Anyone leasing a stall may place a hidden \"match bid\" to retain that stall. At the time of lease expiration, if the current highest bid for that stall is equal to or less than the match bid, the match bid wins the auction at the highest bid price and the current lease is extended for another 7 days.<br><br>The current renter may abandon a stall lease at any time but will not receive a refund.<br><br>Auction end times are always reported as approximations, and an auction reported as \"Up To 6 Hours\" may end at any moment. In the case that a stall has no current lease and no bids, the stall's lease will remain at auction for 12 to 24 hours.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150392",
+   "text": "INFORMATION",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150393",
+   "text": "Bid Match Limit:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150394",
+   "text": "SEE STALL AVAILABILITY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150395",
+   "text": "CREATE MARKED RUNE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150396",
+   "text": "NONE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150397",
+   "text": "N/A",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150398",
+   "text": "You are changing your Bid Match Limit. This is a special hidden bid on your currently leased stall, which may allow you to automatically continue your bazaar stall lease by an additional 7 days. If you are not leasing a stall, you may still adjust your Bid Match, and it will become effective when you next lease a stall.<br><br>Match Bids are rounded down to the nearest multiple of 1,000gp. For example, entering an amount of 3850 will instead set the bid to 3,000gp.<br><br>This feature will reserve funds from your bank. This \"Bid Match\" is not shown to the public. At the end of your lease, if the highest bid for your stall is equal to or less than the funds reserved for your Bid Match, then you will win the auction and the highest bid will be deducted from the funds you have reserved.<br><br>You may raise or lower your Bid Match limit at any time. When you lower your Bid Match, excess reserved funds are returned to your bank box. When you increase your Bid Match, additional funds are reserved from your bank box. To cancel your Bid Match, enter 0 for the amount to reserve.<br><br>When your lease ends, there is an auction to determine the next tenant. If your Bid Match is exceeded, the stall will be leased to the winning bidder, and your stall's contents will be placed safely in storage for you to recover within 7 days. In this case, your Bid Match will remain reserved and may be reclaimed.<br><br>If your bid match is equal to or higher than the highest bid for your stall, then you will retain the stall lease for 7 more days, but the amount of the highest bid will be deducted from your Match Bid. In this case, the remainder continues towards your next Match Bid, and you may cancel or adjust that new Match Bid at the bazaar.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150399",
+   "text": "New Bid Match Limit:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150400",
+   "text": "The transaction failed for an unknown reason.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150401",
+   "text": "Adjusting Bid for Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150402",
+   "text": "For Stall:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150403",
+   "text": "Moving Bid to a Different Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150404",
+   "text": "Previous Stall:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150405",
+   "text": "New Stall:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150406",
+   "text": "Placing New Bid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150407",
+   "text": "Bid Amount:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150408",
+   "text": "Bid Amount is Unchanged",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150409",
+   "text": "Bid is Increasing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150410",
+   "text": "Bid is Decreasing",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150411",
+   "text": "New Bid:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150412",
+   "text": "Current Bid:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150413",
+   "text": "Funds Required:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150414",
+   "text": "Refund Due:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150415",
+   "text": "INSUFFICIENT FUNDS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150416",
+   "text": "Retracting Bid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150417",
+   "text": "This title will identify the shard your character was copied from.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150418",
+   "text": "a chest of sending",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150419",
+   "text": "Use the Chest of Sending",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150420",
+   "text": "You cannot send a container through the ~1_NAME~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150421",
+   "text": "The ~1_NAME~ rejects that item.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150422",
+   "text": "The ~1_NAME~ will not function while being traded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150423",
+   "text": "bag of sending",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150424",
+   "text": "chest of sending",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150425",
+   "text": "~1_COUNT~ Messages",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150426",
+   "text": "You won a lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. Your bid amount of ~3_BIDAMT~gp won the auction and has been remitted. Your lease begins immediately and will continue for 7 days.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150427",
+   "text": "You extended your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. You matched the top bid of ~3_BIDAMT~gp. That amount has been deducted from your Match Bid of ~4_MATCHAMT~gp. Your Match Bid balance is now ~5_NEWMATCH~gp. You may reclaim any additional match bid funds or adjust your match bid for next week at the bazaar.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150428",
+   "text": "You won a lease and moved to Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. The lease on your previous stall has been terminated. Your hired merchant, if any, has relocated your stall and goods to the new lot. Your bid amount of ~3_BIDAMT~gp has been remitted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150429",
+   "text": "Teleport When Used",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150430",
+   "text": "Your lease has expired on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150431",
+   "text": "You lost the bid to extend your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. Your match bid amount of ~3_BIDAMT~gp is held in escrow at the Bazaar. You may obtain a full refund there at any time. Your hired merchant, if any, has deposited your proceeds and remaining inventory at the Warehouse in New Magincia. You must retrieve these within one week or they will be destroyed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150432",
+   "text": "This message will expire in ~1_DAYS~ days, ~2_HOURS~ hours, and ~3_MIN~ minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150433",
+   "text": "DELETE NOW",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150434",
+   "text": "Plants that block movement cannot be planted next to other plants that block movement.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150435",
+   "text": "bowl",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150436",
+   "text": "mound",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150437",
+   "text": "Target the yeast in your backpack that you wish to toggle distillation item status on.  Hit <ESC> to cancel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150438",
+   "text": "There is not enough room in your backpack! You stop pouring.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150439",
+   "text": "Abandon this plot?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150440",
+   "text": "This bowl of dirt already has a seed in it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150441",
+   "text": "This mound of dirt already has a seed in it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150442",
+   "text": "You plant the seed in the mound of dirt.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150443",
+   "text": "Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150444",
+   "text": "Bourbon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150445",
+   "text": "Spirytus",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150446",
+   "text": "Cassis",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150447",
+   "text": "Melon Liqueur",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150448",
+   "text": "Mist",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150449",
+   "text": "Akvavit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150450",
+   "text": "Arak",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150451",
+   "text": "Corn Whiskey",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150452",
+   "text": "Brandy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150453",
+   "text": "yeast",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150454",
+   "text": "Liquor Type: ~1_TYPE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150455",
+   "text": "Bacterial Resistance: ~1_VAL~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150456",
+   "text": "BUY RUNE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150457",
+   "text": "The ground here is not good for gardening.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150458",
+   "text": "For a charge of 100gp, you will receive a recall rune marked for your bazaar stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150459",
+   "text": "Time remaining to plant on the Isle of Magincia again: ~1_val~ days ~2_val~ hours ~3_val~ minutes.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150460",
+   "text": "New Magincia Housing Lottery",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150461",
+   "text": "This Facet:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150462",
+   "text": "This Plot:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150463",
+   "text": "Total Tickets Sold:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150464",
+   "text": "Each account holder may purchase 1 ticket only.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150465",
+   "text": "Each account holder may purchase an unlimited number of tickets.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150466",
+   "text": "Your Tickets:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150467",
+   "text": "You have not bought a ticket, so you have no chance of winning this plot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150468",
+   "text": "Your chances of winning this plot are currently about 1 in ~1_ODDS~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150469",
+   "text": "BUY TICKET",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150470",
+   "text": "CONFIRM TICKET PURCHASE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150471",
+   "text": "Tickets To Buy:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150472",
+   "text": "Price Per Ticket:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150473",
+   "text": "Total Purchase:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150474",
+   "text": "Planted in ~1_val~ by: ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150475",
+   "text": "You may not purchase another ticket for this plot's lottery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150476",
+   "text": "Ticket purchases are NONREFUNDABLE. Odds of winning may vary.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150477",
+   "text": "BUY TICKETS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150478",
+   "text": "Date planted: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150479",
+   "text": "Purchase of ~1_COUNT~ ticket(s) at ~2_PRICE~gp each costs a total of ~3_TOTAL~. You do not have the required funds in your bank box to make the purchase.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150480",
+   "text": "Purchase of ~1_COUNT~ ticket(s) at ~2_PRICE~gp each costs a total of ~3_TOTAL~. The funds have been withdrawn from your bank box and your ticket purchase has been recorded.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150481",
+   "text": "Your ticket purchase price of ~3_PRICE~ has been withdrawn from your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150482",
+   "text": "hoe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150483",
+   "text": "This deed entitles the bearer to build a house on the plot of land designated \"~1_PLOT~\" (located at ~5_SEXTANT~) in the City of New Magincia on the ~2_FACET~ facet of the ~3_SHARD~ shard.<br><br>The deed will expire once it is used to construct a house, and thereafter the indicated plot of land will be subject to normal house construction rules. The deed will expire after ~4_DAYS~ more days have passed, and at that time the right to place a house reverts to normal house construction rules.<br><br>This deed functions as a recall rune marked for the location of the plot it represents.<br><br>To place a house on the deeded plot, you must simply have this deed in your backpack or bank box when using a House Placement Tool there.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150484",
+   "text": "WRIT OF LEASE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150485",
+   "text": "Unknown Lands",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150486",
+   "text": "[Marked Item]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150487",
+   "text": "[Expired]",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150488",
+   "text": "This deed once entitled the bearer to build a house on the plot of land designated \"~1_PLOT~\" (located at ~5_SEXTANT~) in the City of New Magincia on the ~2_FACET~ facet of the ~3_SHARD~ shard.<br><br>The deed has expired, and now the indicated plot of land is subject to normal house construction rules.<br><br>This deed was won by lottery, and while it is no longer valid for land ownership it does serve to commemorate the winning of land during the Rebuilding of Magincia.<br><br>This deed functions as a recall rune marked for the location of the plot it represents.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150489",
+   "text": "a writ of lease",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150490",
+   "text": "Date harvested: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150491",
+   "text": "There are too many objects in this area to plant (limit 34 per 17x17 area).",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150492",
+   "text": "You till a small area to plant.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150493",
+   "text": "You must have a deed for this plot of land in order to build here.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150494",
+   "text": "lot ~1_PLOTID~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150495",
+   "text": "Unable to complete house placement.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150496",
+   "text": "Modest Damsel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150497",
+   "text": "Welcome to New Magincia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150498",
+   "text": "CLAIM DEED",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150499",
+   "text": "Congratulations! You won a plot of land in the New Magincia Land Lottery. You won plot ~1_PLOTID~ located at ~3_COORDS~ on ~2_FACET~. Click the button below to claim your deed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150500",
+   "text": "The deed has been placed in your backpack.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150501",
+   "text": "Your backpack is full, so the deed has been placed in your bank box.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150502",
+   "text": "The lottery drawing will occur during next server maintenance.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150503",
+   "text": "The lottery drawing will happen in less than 1 day.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150504",
+   "text": "There are ~1_DAYS~ days left before the drawing.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150505",
+   "text": "Endless Journey account users may not participate in the New Magincia House Plot Lottery.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150506",
+   "text": "The auction will end within ~1_HOURS~ hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150507",
+   "text": "The auction will end in ~1_START~ to ~2_END~ hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150508",
+   "text": "The auction will end in ~1_DAYS~ days",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150509",
+   "text": "Event Arenas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150510",
+   "text": "young plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150511",
+   "text": "That is not your gardening plot.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150512",
+   "text": "You destroyed the ~1_ITEMNAME~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150513",
+   "text": "Blood Purified Book of Truth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150514",
+   "text": "The shepherd's pie must be in your backpack to use.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150515",
+   "text": "You have just been hit by a shepherd's pie!!!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150516",
+   "text": "shepherd's pie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150517",
+   "text": "(The inscription has been damaged)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150518",
+   "text": "a gi** *o ~1_val~ ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150519",
+   "text": "**on ~1_val~ induc****",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150520",
+   "text": "to the Ba** **osen",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150521",
+   "text": "Stone Arms of Virtue Bane",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150522",
+   "text": "You are struck by a barrage of elemental havoc!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150523",
+   "text": "Shard of the Crystal of Duplicity",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150524",
+   "text": "(This piece is unstable",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150525",
+   "text": "and will turn to dust",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150526",
+   "text": "unless united with a",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150527",
+   "text": "larger shard)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150528",
+   "text": "You lost the bid to extend your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. You do not have a match bid in escrow at the bazaar. Your hired merchant, if any, has deposited your proceeds and remaining inventory at the Warehouse in New Magincia. You must retrieve these within one week or they will be destroyed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150529",
+   "text": "Proprietor: ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150530",
+   "text": "Stall ~1_NAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150531",
+   "text": "Remaining Lease: ~1_DAYS~ Days",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150532",
+   "text": "Remaining Lease: Less Than ~1_HOURS~ Hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150533",
+   "text": "Auction for Lease Ends Within ~1_HOURS~ Hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150534",
+   "text": "This Stall:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150535",
+   "text": "Unknown Owner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150536",
+   "text": "Current Tenant:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150537",
+   "text": "This Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150538",
+   "text": "Next Available Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150539",
+   "text": "You are Leasing This Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150540",
+   "text": "MY BID MATCHING",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150541",
+   "text": "~1_TOKEN~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150542",
+   "text": "Stall is Not Occupied",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150543",
+   "text": "~1_DAYS~ Days",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150544",
+   "text": "~1_MIN~ to ~2_MAX~ Hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150545",
+   "text": "Up to ~1_MAX~ Hours",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150546",
+   "text": "Shard: ~1_SHARDNAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150547",
+   "text": "Lot: ~1_LOTNAME~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150548",
+   "text": "Facet: Felucca",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150549",
+   "text": "Facet: Trammel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150550",
+   "text": "Facet: Ilshenar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150551",
+   "text": "Facet: Malas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150552",
+   "text": "Facet: Tokuno",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150553",
+   "text": "Facet: Ter Mur",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150554",
+   "text": "Auction Duration:",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150555",
+   "text": "SEE TOP BIDS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150556",
+   "text": "MY STALL BID",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150557",
+   "text": "MY STALL LEASE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150558",
+   "text": "Specific Stall",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150559",
+   "text": "First Available",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150560",
+   "text": "BID AMOUNT",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150561",
+   "text": "BID TYPE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150562",
+   "text": "<DIV ALIGN=CENTER>Viewing top bids for stall <b>~1_STALLNAME~</b>",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150563",
+   "text": "There are currently no bids to lease this stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150564",
+   "text": "You are not currently leasing a stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150565",
+   "text": "You are currently leasing a stall. If you win a bid for a new stall lease before your current lease ends, you will abandon your current stall and the contents of your current stall will be relocated to the new one.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150566",
+   "text": "INSTRUCTIONS",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150567",
+   "text": "You may only have one bid, and you may not bid on the same stall that you are currently leasing. You may bid on a specific stall, or on the first available stall. If you are currently leasing a stall and you bid on another stall, winning that bid transfers your current stall's contents to the new location. This starts a new lease on the new stall and abandons your lease on your old stall.<br><br>In order to bid on a specific stall you must use the sign for that stall.<br><br>On the Stall Leasing page, enter the amount you wish to bid, and click either the \"BID ON THIS STALL\" or \"BID ON FIRST AVAILABLE\" button. (If you are already leasing that stall, the \"BID ON THIS STALL\" option will not be enabled.)<br><br>If you do not already have a bid, you will be creating a new bid. If you already have a bid, then you will be adjusting your bid amount and/or transferring your bid to a different stall. Funds to back your bid are transferred from your bank box immediately. The bid will fail if your bank box does not have the necessary funds available.<br><br>If you enter 0 for your bid amount, you will be canceling your bid.  If you cancel a bid or reduce your bid, a refund for the difference will be transferred directly to your bank box. This option will fail if your bank box cannot hold the new funds.<br><br>All bid amounts are automatically reduced to the next lowest multiple of 1,000gp. For example, if you enter a bid amount of 1,999gp your bid will be reduced to 1,000gp.<br><br>At the time of the auction, ties for top bid are broken in this order:<br> 1. Bids for specific stalls win over bids for first available stalls<br> 2. Bids placed earlier win over bids placed later<br><br>Note: adjusting a bid sends it back to the end of the queue for tie-breaking consideration.<br><br>Note: the person currently leasing a stall may have set a hidden \"match bid\" to retain the stall lease. If you do not bid over this match bid, then the current tenant retains the stall but must pay the amount of the top bid.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150568",
+   "text": "BID ON THIS STALL (Stall ~1_STALLID~)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150569",
+   "text": "BID ON FIRST AVAILABLE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150570",
+   "text": "Your bid amount of ~1_BID~gp has not changed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150571",
+   "text": "You are attempting to increase your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The difference of ~3_BIDCHANGE~gp cannot be withdrawn from your bank account. Your current bank balance is ~4_CURBAL~gp.<br><br>The status of your bid has not changed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150572",
+   "text": "You are increasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The difference of ~3_BIDCHANGE~gp has been withdrawn from your bank account. Your previous bank balance was ~4_CURBAL~gp, and your new bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150573",
+   "text": "You are attempting to decrease your bid from ~1_OLDBID~gp to ~2_OLDBID~gp. The difference of ~3_BIDCHANGE~gp cannot be deposited to your bank account because your bank box cannot hold the additional funds. Your current bank balance is ~4_OLDBAL~gp.<br><br>Your bid status has not changed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150574",
+   "text": "You are decreasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The difference of ~3_BIDCHANGE~gp has been deposited into your bank account. Your previous bank balance was ~4_CURBAL~gp, and your new bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150575",
+   "text": "You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot be refunded to your bank account, because your bank box cannot hold the additional funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not changed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150576",
+   "text": "You have canceled your stall bid of ~1_OLDBID~gp. The funds have been deposited into your bank box. Your previous bank balance was ~4_OLDBAL~gp and your current bank balance is now ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150577",
+   "text": "You are attempting to place a new bid of ~2_NEWBID~gp. This amount exceeds your current bank balance of ~4_OLDBAL~gp.<br><br>Your bid status has not changed.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150578",
+   "text": "You have posted a new bid of ~2_NEWBID~gp. The funds have been withdrawn from your bank box. Your previous bank balance was ~4_OLDBAL~gp and your new bank balance is ~5_NEWBAL~gp.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150579",
+   "text": "You were previously bidding on the first available stall, and now you are bidding specifically for Stall ~2_NEWSTALL~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150580",
+   "text": "You were previously bidding on Stall ~1_OLDSTALL~, and now you are bidding on the first available stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150581",
+   "text": "You are still bidding on the next available stall.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150582",
+   "text": "You were previously bidding on Stall ~1_OLDSTALL~ and now you are bidding on Stall ~2_NEWSTALL~.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1150583",
+   "text": "You are still bidding on Stall ~2_NEWSTALL~.",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

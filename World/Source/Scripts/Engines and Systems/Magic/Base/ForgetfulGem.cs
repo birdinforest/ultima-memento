@@ -6,7 +6,8 @@ using Server.Mobiles;
 using Server.Gumps;
 using Server.Misc;
 using System.Collections; 
-using Server.Network; 
+using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -29,7 +30,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("The crystal slightly vibrates and feels warm to the touch.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The crystal slightly vibrates and feels warm to the touch." ) );
 			}
         }
 
@@ -38,7 +39,6 @@ namespace Server.Items
 			public CrystalGump( Mobile from, int page ): base( 50, 50 )
 			{
 				from.SendSound( 0x5C9 );
-				string color = "#51c8d5";
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -49,13 +49,14 @@ namespace Server.Items
 
 				AddImage(0, 0, 9582, Server.Misc.PlayerSettings.GetGumpHue( from ));
 				AddButton(567, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 12, 14, 357, 20, @"<BODY><BASEFONT Color=" + color + ">CRYSTAL OF WIZARDRY</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 14, 357, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>CRYSTAL OF WIZARDRY</BASEFONT></BODY>" ), false, false );
 
 				if ( page == 1 )
 				{
-					string where = "the Sorcerer Cave in Sosaria";
-					if ( from.Map == Map.Sosaria ){ where = "the Conjurerer's Cave in Lodoria"; }
-					AddHtml( 13, 43, 581, 333, @"<BODY><BASEFONT Color=" + color + ">There are only two crystals like this ever discovered. The one here and the other in " + where + ". Sages have figured out that these can affect the powers of magic within a spellcaster and even some magical items. Sometimes elementalists seek out these crystals to forget the magic they learned, so they can focus their studies on magery or necromancy. Sometimes a mage or necromancer wants to abandon their pursuits and study elemental magic. Since elemental magic interferes with that of necromancy and magery, as well as those two doing the same toward elementalism, the crystals in these caves help them learn the other. Use the arrow button below to navigate the crystal, and be sure of your choices before calling upon the crystal's power.</BASEFONT></BODY>", (bool)false, (bool)false);
+					string whereRes = ( from.Map == Map.Sosaria )
+						? StringCatalog.Resolve( from.Account, "the Conjurerer's Cave in Lodoria" )
+						: StringCatalog.Resolve( from.Account, "the Sorcerer Cave in Sosaria" );
+					AddHtml( 13, 43, 581, 333, StringCatalog.ResolveFormat( from.Account, @"<BODY><BASEFONT Color=#51c8d5>There are only two crystals like this ever discovered. The one here and the other in {0}. Sages have figured out that these can affect the powers of magic within a spellcaster and even some magical items. Sometimes elementalists seek out these crystals to forget the magic they learned, so they can focus their studies on magery or necromancy. Sometimes a mage or necromancer wants to abandon their pursuits and study elemental magic. Since elemental magic interferes with that of necromancy and magery, as well as those two doing the same toward elementalism, the crystals in these caves help them learn the other. Use the arrow button below to navigate the crystal, and be sure of your choices before calling upon the crystal's power.</BASEFONT></BODY>", whereRes ), false, false );
 					AddButton(567, 359, 4005, 4005, 2, GumpButtonType.Reply, 0);
 				}
 				else if ( page == 2 )
@@ -64,28 +65,28 @@ namespace Server.Items
 
 					if ( from.Skills[SkillName.Elementalism].Base > 0 )
 					{
-						AddHtml( 136, y, 357, 20, @"<BODY><BASEFONT Color=" + color + ">Forget Elementalism</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 136, y, 357, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>Forget Elementalism</BASEFONT></BODY>" ), false, false );
 						AddButton(95, y, 4017, 4017, 50, GumpButtonType.Reply, 0);
 						y=y+30;
 					}
 					if ( from.Skills[SkillName.Magery].Base > 0 )
 					{
-						AddHtml( 136, y, 357, 20, @"<BODY><BASEFONT Color=" + color + ">Forget Magery</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 136, y, 357, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>Forget Magery</BASEFONT></BODY>" ), false, false );
 						AddButton(95, y, 4017, 4017, 51, GumpButtonType.Reply, 0);
 						y=y+30;
 					}
 					if ( from.Skills[SkillName.Necromancy].Base > 0 )
 					{
-						AddHtml( 136, y, 357, 20, @"<BODY><BASEFONT Color=" + color + ">Forget Necromancy</BASEFONT></BODY>", (bool)false, (bool)false);
+						AddHtml( 136, y, 357, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>Forget Necromancy</BASEFONT></BODY>" ), false, false );
 						AddButton(95, y, 4017, 4017, 52, GumpButtonType.Reply, 0);
 						y=y+30;
 					}
 
 					y = y + 30;
-					AddHtml( 136, y, 357, 20, @"<BODY><BASEFONT Color=" + color + ">Cancel</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 136, y, 357, 20, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>Cancel</BASEFONT></BODY>" ), false, false );
 					AddButton(95, y, 4020, 4020, 0, GumpButtonType.Reply, 0);
 
-					AddHtml( 13, 43, 581, 134, @"<BODY><BASEFONT Color=" + color + ">This crystal emits a powerful magic that can make the most skilled spellcasters forget the knowledge they learned. Most visit this place to pursue a normal life, free from magic. Others choose to practice magic in schools that do not allow one with the other, so they seek out this place to wipe their minds and start anew.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 13, 43, 581, 134, StringCatalog.Resolve( from.Account, @"<BODY><BASEFONT Color=#51c8d5>This crystal emits a powerful magic that can make the most skilled spellcasters forget the knowledge they learned. Most visit this place to pursue a normal life, free from magic. Others choose to practice magic in schools that do not allow one with the other, so they seek out this place to wipe their minds and start anew.</BASEFONT></BODY>" ), false, false );
 
 					AddButton(9, 358, 4014, 4014, 1, GumpButtonType.Reply, 0);
 				}

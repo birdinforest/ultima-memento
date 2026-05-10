@@ -1,0 +1,8 @@
+{
+  "total_entries": 117536,
+  "chinese_only": 96859,
+  "english_only": 17502,
+  "mixed": 3175,
+  "needs_translation": 20677,
+  "output_file": "World/Data/Localization/tools-output/cliloc-translation-queue.jsonl"
+}

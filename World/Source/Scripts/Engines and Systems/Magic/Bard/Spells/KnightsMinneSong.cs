@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using System;
+using Server.Localization;
 
 namespace Server.Spells.Song
 {
@@ -82,7 +83,7 @@ namespace Server.Spells.Song
 					}
 				}
 
-				m.SendMessage("Your resistance to physical attacks has increased.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to physical attacks has increased." ) );
 				m_Mod = new ResistanceMod(ResistanceType.Physical, +amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x373A, 10, 15, 5012, 0x450, 3, EffectLayer.Waist);

@@ -1,0 +1,15 @@
+{
+  "description": "Manifest of English shard files (runtime loads all *.json under en/ and zh-Hans/).",
+  "enSubdirectory": "en",
+  "zhHansSubdirectory": "zh-Hans",
+  "files": [
+    "en/system.json",
+    "en/scripts-system.json",
+    "en/scripts-items.json",
+    "en/scripts-mobiles.json",
+    "en/scripts-engines-and-systems.json",
+    "en/scripts-utilities.json",
+    "en/scripts-quests.json",
+    "en/scripts-books.json"
+  ]
+}

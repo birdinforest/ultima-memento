@@ -100,9 +100,9 @@ namespace Server.Mobiles
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
 				nCostH = nCostH - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCostH ); if ( nCostH < 1 ){ nCostH = 1; }
-				SayTo(from, "Since you are begging, do you still want me to tailor your robe or cloak to look normal, it will only cost you " + nCost.ToString() + " gold? Maybe repair a hat for at least " + nCostH.ToString() + " gold per durability?");
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to tailor your robe or cloak to look normal, it will only cost you {0} gold? Maybe repair a hat for at least {1} gold per durability?", nCost, nCostH));
 			}
-			else { SayTo(from, "If you want me to tailor your robe or cloak to look normal, it will cost you " + nCost.ToString() + " gold. Maybe repair a hat at " + nCostH.ToString() + " gold per durability?"); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to tailor your robe or cloak to look normal, it will cost you {0} gold. Maybe repair a hat at {1} gold per durability?", nCost, nCostH)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -138,11 +138,11 @@ namespace Server.Mobiles
                     }
                     else if (ba.HitPoints >= ba.MaxHitPoints)
                     {
-						m_Weaver.SayTo(from, "That does not need to be repaired.");
+						m_Weaver.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need to be repaired."));
                     }
 					else
 					{
-						m_Weaver.SayTo(from, "I cannot repair that.");
+						m_Weaver.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "I cannot repair that."));
 					}
 
                     if (toConsume == 0)
@@ -151,20 +151,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Weaver.SayTo(from, "Here is your hat.");
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        m_Weaver.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is your hat."));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x248);
                         ba.MaxHitPoints -= 1;
                         ba.HitPoints = ba.MaxHitPoints;
                     }
                     else
                     {
-                        m_Weaver.SayTo(from, "It would cost you {0} gold to have that repaired.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_Weaver.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that repaired.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
                     }
                 }
 				else
-					m_Weaver.SayTo(from, "That does not need my services.");
+					m_Weaver.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
             }
         }
 

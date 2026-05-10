@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Necromancy
 {
@@ -134,7 +135,7 @@ namespace Server.Spells.Necromancy
 				if ( name is int )
 					AddHtmlLocalized( 50, 51 + (i * 21), 150, 20, (int)name, enabled ? EnabledColor16 : DisabledColor16, false, false );
 				else if ( name is string )
-					AddHtml( 50, 51 + (i * 21), 150, 20, String.Format( "<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", enabled ? EnabledColor32 : DisabledColor32, name ), false, false );
+					AddHtml( 50, 51 + (i * 21), 150, 20, String.Format( "<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", enabled ? EnabledColor32 : DisabledColor32, StringCatalog.Resolve( from.Account, (string)name ) ), false, false );
 			}
 		}
 
@@ -167,7 +168,7 @@ namespace Server.Spells.Necromancy
 				}
 				else if ( entry.Type == null )
 				{
-					m_From.SendMessage( "That familiar has not yet been defined." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "That familiar has not yet been defined." ) );
 
 					m_From.CloseGump( typeof( SummonFamiliarGump ) );
 					m_From.SendGump( new SummonFamiliarGump( m_From, SummonFamiliarSpell.Entries, m_Spell ) );

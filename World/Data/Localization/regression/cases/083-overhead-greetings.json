@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "overhead.greetings-catalog",
+  "pipeline": "overhead_chain",
+  "en": "Greetings, Z~Z~Z~Z~Z.",
+  "expectedZh": "你好，Z~Z~Z~Z~Z。",
+  "tags": "string-catalog-then-dynamic",
+  "notes": "Usually catalog hit only; no further dynamic change"
+}

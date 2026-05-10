@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Engines.MLQuests.Gumps;
 using Server.Gumps;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Engines.MLQuests.Objectives
@@ -27,7 +28,7 @@ namespace Server.Engines.MLQuests.Objectives
 			SpawnsDelivery = spawnsDelivery;
 		}
 
-		public virtual void SpawnDelivery(Container pack)
+		public virtual void SpawnDelivery(PlayerMobile pm, Container pack)
 		{
 			if (!SpawnsDelivery || pack == null)
 				return;
@@ -53,11 +54,12 @@ namespace Server.Engines.MLQuests.Objectives
 			foreach (Item item in delivery)
 			{
 				item.QuestItem = true;
-				if (string.IsNullOrWhiteSpace(item.InfoText1)) item.InfoText1 = GetDeliveryInstructions();
-				else if (string.IsNullOrWhiteSpace(item.InfoText2)) item.InfoText2 = GetDeliveryInstructions();
-				else if (string.IsNullOrWhiteSpace(item.InfoText3)) item.InfoText3 = GetDeliveryInstructions();
-				else if (string.IsNullOrWhiteSpace(item.InfoText4)) item.InfoText4 = GetDeliveryInstructions();
-				else if (string.IsNullOrWhiteSpace(item.InfoText5)) item.InfoText5 = GetDeliveryInstructions();
+				string instr = GetDeliveryInstructions(pm);
+				if (string.IsNullOrWhiteSpace(item.InfoText1)) item.InfoText1 = instr;
+				else if (string.IsNullOrWhiteSpace(item.InfoText2)) item.InfoText2 = instr;
+				else if (string.IsNullOrWhiteSpace(item.InfoText3)) item.InfoText3 = instr;
+				else if (string.IsNullOrWhiteSpace(item.InfoText4)) item.InfoText4 = instr;
+				else if (string.IsNullOrWhiteSpace(item.InfoText5)) item.InfoText5 = instr;
 
 				pack.DropItem(item); // Confirmed: on OSI items are added even if your pack is full
 			}
@@ -65,7 +67,9 @@ namespace Server.Engines.MLQuests.Objectives
 
 		public override void WriteToGump(Gump g, ref int y)
 		{
-			TextDefinition.AddHtmlText(g, 98, y, 366 - 5, 16, GetDeliveryInstructions(), false, false, BaseQuestGump.COLOR_LOCALIZED, BaseQuestGump.COLOR_HTML);
+			PlayerMobile pm = (g as BaseQuestGump)?.QuestViewer;
+			string line = GetDeliveryInstructions(pm);
+			TextDefinition.AddHtmlText(g, 98, y, 366 - 5, 16, line, false, false, BaseQuestGump.COLOR_LOCALIZED, BaseQuestGump.COLOR_HTML);
 			y += 16;
 		}
 
@@ -74,9 +78,14 @@ namespace Server.Engines.MLQuests.Objectives
 			return new DeliverObjectiveInstance(this, instance);
 		}
 
-		private string GetDeliveryInstructions()
+		private string GetDeliveryInstructions(PlayerMobile pm)
 		{
-			return string.Format("Deliver to {0}", QuesterNameAttribute.GetQuesterNameFor(Destination));
+			string dest = QuesterNameAttribute.GetQuesterNameFor(Destination);
+
+			if (pm != null && pm.Account != null)
+				return StringCatalog.ResolveFormat(pm.Account, "Deliver to {0}", dest);
+
+			return string.Format("Deliver to {0}", dest);
 		}
 	}
 
@@ -140,7 +149,7 @@ namespace Server.Engines.MLQuests.Objectives
 
 		public override void OnQuestAccepted()
 		{
-			m_Objective.SpawnDelivery(Instance.Player.Backpack);
+			m_Objective.SpawnDelivery(Instance.Player, Instance.Player.Backpack);
 		}
 
 		// This is VERY similar to CollectObjective.GetCurrentTotal

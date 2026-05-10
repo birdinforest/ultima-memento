@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Spells.Jedi
 {
@@ -34,7 +35,7 @@ namespace Server.Spells.Jedi
 
 			if ( GetSword() == null )
 			{
-				Caster.SendMessage( "You need a sword equipped to throw it." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You need a sword equipped to throw it." ) );
 				return false;
 			}
 

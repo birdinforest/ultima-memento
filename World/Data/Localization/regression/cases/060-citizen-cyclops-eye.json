@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.cyclops-eye",
+  "pipeline": "citizen_broadcast",
+  "en": "some bard that was killed by a cyclops' eye",
+  "expectedZh": "传闻有位「一名吟游诗人」丧命于独眼巨人之瞳。",
+  "tags": "commontalk-rule,some-that",
+  "notes": "s_Rules cyclops; bard via adventurer map"
+}

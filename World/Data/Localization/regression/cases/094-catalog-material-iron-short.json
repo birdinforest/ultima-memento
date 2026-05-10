@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.material.iron.short",
+  "pipeline": "string_catalog_only",
+  "en": "Iron",
+  "expectedZh": "铁材",
+  "tags": "harvest,craft-resources,material,string_catalog_only"
+}

@@ -8,6 +8,9 @@ namespace Server.Engines.Craft
 	{
 		public readonly PlayerMobile Player;
 
+		public int BulkAmount => m_Context != null ? m_Context.Amount : 0;
+		public string CraftSystemName => m_CraftSystem != null ? m_CraftSystem.GetType().Name : "";
+
 		private readonly BulkCraftContext m_Context;
 		private readonly CraftSystem m_CraftSystem;
 		private readonly CraftItem m_CraftItem;

@@ -1,0 +1,3006 @@
+{
+ "batch": 28,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1152586",
+   "text": "the Exodus dungeon.  Third, in order to create the necessary solvent to dissolve the healing attributes of the cure you will require Raw Yeast. Raw Yeast is often carried by Orcs as",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152587",
+   "text": "a common cooking ingredient in their foul tasting breads!  Fourth as sustenance for the Raw Yeast you shall require Sugar.  Sugar can also be found on paragon creatures in Ilshenar.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152588",
+   "text": "For the horticulturist, raw sugar cane can be cultivated from seeds found on Juka Magi, Kappa, or Plague Beasts.  Finally, you will require Blightborn Slime as a means of building",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152589",
+   "text": "immunity to this horrible blight.  My research indicates the slimes occur naturally within the depths of the Britain Sewers.  Once you've collected the reagents your",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152590",
+   "text": "task is to assist in preparing the cure.  While the reagents necessary will always be the same, the combination in which they are to be used changes with each",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152591",
+   "text": "attempt at the reaction.  Succeed in determining the combination and your reaction will yield the Cure!  Turn your prepared Cure in to me so that I can see that it is delivered",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152592",
+   "text": "to those afflicted.  For your assistance in this matter Queen Zhah has authorized unlocking the Royal Vault and as such should you be among those who turn in the most cures you shall be",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152593",
+   "text": "eligible for reward.  I thank thee again for your assistance.  Only together and united shall our efforts result in success, so that we may see the end of this horrid Blight!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152594",
+   "text": "You are already working at a lab bench.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152595",
+   "text": "It is unsafe to leave an experiment unattended. As a matter of courtesy you discard the contents of the flask and secure the apparatus.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152596",
+   "text": "Your experiment is lost due to inactivity.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152597",
+   "text": "Your advanced skill proficiency allows you to stabilize the reaction!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152598",
+   "text": "~1_RES~ ~2_TYPE~ Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152599",
+   "text": "~1_RES~ ~2_TYPE~ Talisman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152600",
+   "text": "~1_RES~ Cauldron of Transmutation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152601",
+   "text": "Temporary Forge",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152602",
+   "text": "Magical Fish Finder",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152603",
+   "text": "Summoner's Talisman",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152604",
+   "text": "Miner's",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152605",
+   "text": "Lumberjack's",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152606",
+   "text": "Smelter's",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152607",
+   "text": "Woodsman's",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152608",
+   "text": "Location: ~1_COORDS~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152609",
+   "text": "These maps show the location of a large cache of rare resources",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152610",
+   "text": "These talismans grant you guaranteed success when smelting ore into ingots",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152611",
+   "text": "Chopping trees while wearing one of these talismans grants you extra logs of the matching type",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152612",
+   "text": "This forge can be placed on a ship or on the ground",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152613",
+   "text": "Use this artifact to locate schools of fish",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152614",
+   "text": "This talisman increases the power of your summoned elementals",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152615",
+   "text": "All of the reward items here are temporary, limited-use magical items. They are intended to be used quickly once purchased.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152616",
+   "text": "Resource Maps",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152617",
+   "text": "Resource Talismans",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152618",
+   "text": "Cauldrons of Transmutation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152619",
+   "text": "Other Items",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152620",
+   "text": "The magic of your talisman guides your hands as you purify the metal. Success is ensured!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152621",
+   "text": "Your talisman's magic is exhausted.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152622",
+   "text": "These documents should explain everything. Now, though, I must tend to the sick. Their fate is in your hands.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152623",
+   "text": "You've got all the documentation you need. Return and hand me the cure when you have finished preparing it!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152624",
+   "text": "Your efforts are appreciated. We mustn't cease though, only ~1_val~ days remain before the Cure must be administered to the population!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152625",
+   "text": "The magic of your talisman guides your hands as you cut the wood.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152626",
+   "text": "I can only accept prepared units of the Cure for this terrible blight!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152627",
+   "text": "no house required",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152628",
+   "text": "cannot re-deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152629",
+   "text": "lasts ~1_count~ hours",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152630",
+   "text": "transmutes ~1_SOURCE~ to ~2_DEST~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152631",
+   "text": "ratio ~1_INPUT~ to ~2_OUTPUT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152632",
+   "text": "That is not yours!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152633",
+   "text": "The cauldron cannot transmute that",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152634",
+   "text": "There is not enough to transmute",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152635",
+   "text": "The cauldron's magic is exhausted",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152636",
+   "text": "The cauldron transmutes the material",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152637",
+   "text": "The fish finder shows you nothing.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152638",
+   "text": "The fish finder pulls you to the ~1_DIRECTION~.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152639",
+   "text": "north",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152640",
+   "text": "northeast",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152641",
+   "text": "east",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152642",
+   "text": "southeast",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152643",
+   "text": "south",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152644",
+   "text": "southwest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152645",
+   "text": "west",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152646",
+   "text": "northwest",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152647",
+   "text": "Fish are schooling right here!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152648",
+   "text": "Your Bestial Suit counteracts the soothing heal of Aesclepius!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152649",
+   "text": "For your participation in the Battle for the Void Pool on ~1_FACET~, you have received ~2_POINTS~ reward points. Any reward points you have accumulated may be redeemed by visiting Vela in Cove.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152650",
+   "text": "During the battle, you helped fight back ~1_COUNT~ out of ~2_TOTAL~ waves of enemy forces. Your final wave was ~3_MAX~. Your total score for the battle was ~4_SCORE~ points.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152651",
+   "text": "I'm G.B. Bigglesby, proprietor of the G.B. Bigglesby Free Trade Floating Emporium.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152652",
+   "text": "This sea market be me life's work and 'tis me pride and joy.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152653",
+   "text": "The port of Zento Parking Area",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152654",
+   "text": "blank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152655",
+   "text": "blank",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152656",
+   "text": "Bronze Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Bronze Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Bronze Ingots to Golden Ingots<br>Ratio 3 to 1<br>Uses Remaining: 7500<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152657",
+   "text": "Golden Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Golden Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Golden Ingots to Agapite Ingots<br>Ratio 3 to 1<br>Uses Remaining: 5000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152658",
+   "text": "Agapite Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Agapite Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Agapite Ingots to Verite Ingots<br>Ratio 3 to 1<br>Uses Remaining: 3000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152659",
+   "text": "Verite Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Verite Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Verite Ingots to Valorite Ingots<br>Ratio 3 to 1<br>Uses Remaining: 2000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152660",
+   "text": "Ash Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Ash Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Ash Boards to Yew Boards<br>Ratio 3 to 1<br>Uses Remaining: 7500<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152661",
+   "text": "Yew Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Yew Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Yew Boards to Heartwood Boards<br>Ratio 3 to 1<br>Uses Remaining: 5000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152662",
+   "text": "Heartwood Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Heartwood Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Heartwood Boards to Bloodwood Boards<br>Ratio 3 to 1<br>Uses Remaining: 3000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152663",
+   "text": "Bloodwood Cauldron of Transmutation (Deed)<br>Must Use Deed Within 24 Hours<br><br>Bloodwood Cauldron of Transmutation<br>Only Usable By Owner<br>Transmutes Bloodwood Boards to Frostwood Boards<br>Ratio 3 to 1<br>Uses Remaining: 2000<br>Cauldron Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152664",
+   "text": "Covetous Void Pool Reward Vendor",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152665",
+   "text": "Miner's Golden Map<br>Must Use Within 24 Hours<br>A Map to a Large Ore Deposit<br>Ore Type: Golden<br><br>To Use:<br>Mine Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152666",
+   "text": "Miner's Agapite Map<br>Must Use Within 24 Hours<br>A Map to a Large Ore Deposit<br>Ore Type: Agapite<br><br>To Use:<br>Mine Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152667",
+   "text": "Miner's Verite Map<br>Must Use Within 24 Hours<br>A Map to a Large Ore Deposit<br>Ore Type: Verite<br><br>To Use:<br>Mine Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152668",
+   "text": "Miner's Valorite Map<br>Must Use Within 24 Hours<br>A Map to a Large Ore Deposit<br>Ore Type: Valorite<br><br>To Use:<br>Mine Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152669",
+   "text": "Lumberjack's Yew Map<br>Must Use Within 24 Hours<br>A Map to a Source of Wood<br>Log Type: Yew<br><br>To Use:<br>Chop Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152670",
+   "text": "Lumberjack's Heartwood Map<br>Must Use Within 24 Hours<br>A Map to a Source of Wood<br>Log Type: Heartwood<br><br>To Use:<br>Chop Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152671",
+   "text": "Lumberjack's Bloodwood Map<br>Must Use Within 24 Hours<br>A Map to a Source of Wood<br>Log Type: Bloodwood<br><br>To Use:<br>Chop Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152672",
+   "text": "Lumberjack's Frostwood Map<br>Must Use Within 24 Hours<br>A Map to a Source of Wood<br>Log Type: Frostwood<br><br>To Use:<br>Chop Near Target Coordinates<br>While Holding Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152673",
+   "text": "Laboratory Bench",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152674",
+   "text": "Smelter's Golden Talisman<br>Must Use Within 24 Hours<br>100% Success When Smelting Ore<br>Ore Type: Golden<br>Charges: 6000",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152675",
+   "text": "Smelter's Agapite Talisman<br>Must Use Within 24 Hours<br>100% Success When Smelting Ore<br>Ore Type: Agapite<br>Charges: 3000",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152676",
+   "text": "Smelter's Verite Talisman<br>Must Use Within 24 Hours<br>100% Success When Smelting Ore<br>Ore Type: Verite<br>Charges: 1500",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152677",
+   "text": "Smelter's Valorite Talisman<br>Must Use Within 24 Hours<br>100% Success When Smelting Ore<br>Ore Type: Valorite<br>Charges: 750",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152678",
+   "text": "Woodsman's Yew Talisman<br>Must Use Within 24 Hours<br>Bonus Logs When Chopping Wood<br>Log Type: Yew<br>Charges: 300",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152679",
+   "text": "Woodsman's Heartwood Talisman<br>Must Use Within 24 Hours<br>Bonus Logs When Chopping Wood<br>Log Type: Heartwood<br>Charges: 250",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152680",
+   "text": "Woodsman's Bloodwood Talisman<br>Must Use Within 24 Hours<br>Bonus Logs When Chopping Wood<br>Log Type: Bloodwood<br>Charges: 200",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152681",
+   "text": "Woodsman's Frostwood Talisman<br>Must Use Within 24 Hours<br>Bonus Logs When Chopping Wood<br>Log Type: Frostwood<br>Charges: 150",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152682",
+   "text": "Temporary Forge (Deed)<br>Must Use Within 24 Hours<br>Does Not Require House<br><br>Temporary Forge<br>Lasts 4 Hours<br>Cannot Re-Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152683",
+   "text": "Magical Fish Finder<br>Lasts 4 Hours<br>Use: Find School of Rare Fish",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152684",
+   "text": "There is no loot on the corpse.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152685",
+   "text": "A Commendation from Queen Zhah presented to ~1_val~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152686",
+   "text": "Only ~1_val~ Can Use This To Redeem Rewards",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152687",
+   "text": "You've already claimed your reward!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152688",
+   "text": "There is less than a day to assemble all the cures! Hurry!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152689",
+   "text": "Hygieia's Wristlet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152690",
+   "text": "The petition system is unavailable.  Please attempt to submit your petition again in a few minutes.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152691",
+   "text": "Queen Zhah gives her thanks for your contribution, but you did not prepare enough of the cure to receive a reward.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152692",
+   "text": "~1_CREATURE~ casts a deadly vortex at you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152693",
+   "text": "The power of the Void surges around you!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152694",
+   "text": "Your life force is drained by the death vortex!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152695",
+   "text": "Your mana has boiled off!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152696",
+   "text": "Your skin sears from the pain of gaseous ether!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152697",
+   "text": "The cure has been distributed to the populace! Many thanks!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152698",
+   "text": "Among the glorious Yew trees, in the land of the Sun and the Wolf away from the halls of Justice an ancient order makes its home. The ancient Seers of the Leaf and Grape have long tended their crop of grapes from their vines making the most tactile and amorous wines in Sosaria. From the smooth and sweet Serpent Cross to the spiced vintage of Kazola, Yew has always been known for their wine as much as for the trees by which the city was named.<br>It may seem strange to some for an order of celibate and virtuous monks to tend to wine and imbibe on a daily basis. But I ask you dear reader, were you living a poor and humble life devoid of personal possessions and indeed celibate as well, would you too not enjoy the fruit of the vine rather often?!<br>I digress. The unnamed streets of the sprawling lands of Yew have long been hewn from the forest. Carts and wagons heavy with casks of the multitudes of wines, ports and ale flowing through the wooded city are like the lifeblood of the city itself.<br>The secrets of the leaf, while closely guarded by the monks have as much to do with the location as it does any sort of tradition or secret recipe. To the south, snowy peaks whose pure glacial runoff provides ample fresh clean water, mixed with the volcanic enriched soil of the area provide the perfect staging point for winery.<br>While true, Yew will always be known for its trees, and the Court of Truth...also true is that the wines of Yew will always be the sweet under current that wet the lips of Kings and Beggars alike.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152699",
+   "text": "A Vanilla Seed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152700",
+   "text": "~1_AMOUNT~ Vanilla Seeds",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152701",
+   "text": "decorative vanilla",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152702",
+   "text": "~1_HEALTH~ Vanilla Plant",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152703",
+   "text": "Bracers of Alchemical Devastation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152704",
+   "text": "<B>Scroll of Valiant Commendation</B><BR>Presented for exceptional bravery during the siege of Exodus City. As a token of our appreciation, your stat cap will be increased.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152705",
+   "text": "Scroll of Valiant Commendation",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152706",
+   "text": "Rewarded to ~1_name~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152707",
+   "text": "Presented for Exceptional Bravery During the Siege of Exodus City.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152708",
+   "text": "Double click to permanently gain +5 to your maximum stats",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152709",
+   "text": "a ~1_val~ of ~2_val~ dirt with a ~3_val~ vanilla seed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152710",
+   "text": "~1_HEALTH~ Vanilla",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152711",
+   "text": "Raw Yeast",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152712",
+   "text": "a decorative ~1_COLOR~ vanilla",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152713",
+   "text": "Your ~1_itemname~ has evaporated into the ether.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152714",
+   "text": "Antique",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152715",
+   "text": "Thundrous Roar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152716",
+   "text": "Prismatic Lenses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152717",
+   "text": "Reptile's Kiss",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152718",
+   "text": "Mace of the Fanatic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152719",
+   "text": "Fayaxion's Bane",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152720",
+   "text": "Plaguebringer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152721",
+   "text": "Inferno Tunic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152722",
+   "text": "Hephaestus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152723",
+   "text": "Void Walk",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152724",
+   "text": "Champion's Breastplate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152725",
+   "text": "Crown of Insight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152726",
+   "text": "Queen's Gloves",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152727",
+   "text": "Blight of the Tundra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152728",
+   "text": "Savage Chieftan's Headdress",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152729",
+   "text": "Breathless Sickle",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152730",
+   "text": "Bracelet of Protection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152731",
+   "text": "Bedlam's Mortar",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152732",
+   "text": "Brightblade",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152733",
+   "text": "Dungeon Battle Reward Points",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152734",
+   "text": "WARNING: This add-on cannot be re-deeded. It will be destroyed if the ship is dry-docked!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152735",
+   "text": "The targeted location has at least one impassable tile adjacent to the structure.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152736",
+   "text": "You must stand between 2 and 5 tiles away from the targeted location to attempt to build this.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152737",
+   "text": "You can only place this in a ship if you have the captain's permission.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152738",
+   "text": "Target ingots in your backpack to transmute them.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152739",
+   "text": "Citizen of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152740",
+   "text": "Citizen of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152741",
+   "text": "Knight of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152742",
+   "text": "Knight of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152743",
+   "text": "Baronet of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152744",
+   "text": "Baronetess of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152745",
+   "text": "Baron of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152746",
+   "text": "Baroness of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152747",
+   "text": "Viscount of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152748",
+   "text": "Viscountess of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152749",
+   "text": "Earl of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152750",
+   "text": "Countess of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152751",
+   "text": "Marquis of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152752",
+   "text": "Marquise of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152753",
+   "text": "Duke of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152754",
+   "text": "Duchess of Moonglow",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152755",
+   "text": "Citizen of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152756",
+   "text": "Citizen of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152757",
+   "text": "Knight of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152758",
+   "text": "Knight of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152759",
+   "text": "Baronet of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152760",
+   "text": "Baronetess of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152761",
+   "text": "Baron of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152762",
+   "text": "Baroness of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152763",
+   "text": "Viscount of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152764",
+   "text": "Viscountess of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152765",
+   "text": "Earl of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152766",
+   "text": "Countess of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152767",
+   "text": "Marquis of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152768",
+   "text": "Marquise of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152769",
+   "text": "Duke of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152770",
+   "text": "Duchess of Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152771",
+   "text": "Citizen of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152772",
+   "text": "Citizen of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152773",
+   "text": "Knight of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152774",
+   "text": "Knight of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152775",
+   "text": "Baronet of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152776",
+   "text": "Baronetess of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152777",
+   "text": "Baron of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152778",
+   "text": "Baroness of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152779",
+   "text": "Viscount of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152780",
+   "text": "Viscountess of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152781",
+   "text": "Earl of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152782",
+   "text": "Countess of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152783",
+   "text": "Marquis of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152784",
+   "text": "Marquise of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152785",
+   "text": "Duke of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152786",
+   "text": "Duchess of Jhelom",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152787",
+   "text": "Citizen of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152788",
+   "text": "Citizen of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152789",
+   "text": "Knight of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152790",
+   "text": "Knight of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152791",
+   "text": "Baronet of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152792",
+   "text": "Baronetess of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152793",
+   "text": "Baron of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152794",
+   "text": "Baroness of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152795",
+   "text": "Viscount of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152796",
+   "text": "Viscountess of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152797",
+   "text": "Earl of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152798",
+   "text": "Countess of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152799",
+   "text": "Marquis of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152800",
+   "text": "Marquise of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152801",
+   "text": "Duke of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152802",
+   "text": "Duchess of Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152803",
+   "text": "Citizen of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152804",
+   "text": "Citizen of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152805",
+   "text": "Knight of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152806",
+   "text": "Knight of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152807",
+   "text": "Baronet of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152808",
+   "text": "Baronetess of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152809",
+   "text": "Baron of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152810",
+   "text": "Baroness of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152811",
+   "text": "Viscount of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152812",
+   "text": "Viscountess of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152813",
+   "text": "Earl of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152814",
+   "text": "Countess of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152815",
+   "text": "Marquis of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152816",
+   "text": "Marquise of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152817",
+   "text": "Duke of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152818",
+   "text": "Duchess of Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152819",
+   "text": "Citizen of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152820",
+   "text": "Citizen of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152821",
+   "text": "Knight of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152822",
+   "text": "Knight of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152823",
+   "text": "Baronet of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152824",
+   "text": "Baronetess of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152825",
+   "text": "Baron of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152826",
+   "text": "Baroness of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152827",
+   "text": "Viscount of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152828",
+   "text": "Viscountess of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152829",
+   "text": "Earl of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152830",
+   "text": "Countess of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152831",
+   "text": "Marquis of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152832",
+   "text": "Marquise of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152833",
+   "text": "Duke of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152834",
+   "text": "Duchess of Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152835",
+   "text": "Citizen of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152836",
+   "text": "Citizen of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152837",
+   "text": "Knight of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152838",
+   "text": "Knight of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152839",
+   "text": "Baronet of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152840",
+   "text": "Baronetess of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152841",
+   "text": "Baron of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152842",
+   "text": "Baroness of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152843",
+   "text": "Viscount of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152844",
+   "text": "Viscountess of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152845",
+   "text": "Earl of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152846",
+   "text": "Countess of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152847",
+   "text": "Marquis of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152848",
+   "text": "Marquise of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152849",
+   "text": "Duke of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152850",
+   "text": "Duchess of Skara Brae",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152851",
+   "text": "Citizen of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152852",
+   "text": "Citizen of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152853",
+   "text": "Knight of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152854",
+   "text": "Knight of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152855",
+   "text": "Baronet of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152856",
+   "text": "Baronetess of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152857",
+   "text": "Baron of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152858",
+   "text": "Baroness of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152859",
+   "text": "Viscount of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152860",
+   "text": "Viscountess of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152861",
+   "text": "Earl of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152862",
+   "text": "Countess of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152863",
+   "text": "Marquis of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152864",
+   "text": "Marquise of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152865",
+   "text": "Duke of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152866",
+   "text": "Duchess of New Magincia",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152867",
+   "text": "Citizen of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152868",
+   "text": "Citizen of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152869",
+   "text": "Knight of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152870",
+   "text": "Knight of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152871",
+   "text": "Baronet of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152872",
+   "text": "Baronetess of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152873",
+   "text": "Baron of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152874",
+   "text": "Baroness of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152875",
+   "text": "Viscount of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152876",
+   "text": "Viscountess of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152877",
+   "text": "Earl of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152878",
+   "text": "Countess of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152879",
+   "text": "Marquis of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152880",
+   "text": "Marquise of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152881",
+   "text": "Duke of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152882",
+   "text": "Duchess of Vesper",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152883",
+   "text": "Citizenship:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152884",
+   "text": "No City",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152885",
+   "text": "Click the gem next to the name of a city to declare your citizenship. You may renounce citizenship, but afterwards you may not declare new citizenship for one week.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152886",
+   "text": "You recently renounced citizenship, so you must wait ~1_COUNT~ more days before you may declare citizenship again.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152887",
+   "text": "If you renounce your citizenship, you will be stripped of all titles gained with your current city, and you must wait 7 days before declaring citizenship again.<br><br>Are you sure you wish to renounce your citizenship with ~1_CITY~?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152888",
+   "text": "Renounce Citizenship",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152889",
+   "text": "Cancel",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152890",
+   "text": "Citizenship Titles",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152891",
+   "text": "If you choose to declare citizenship with ~1_CITY~, you will be granted the \"Citizen\" title. If your loyalty rating to ~1_CITY~ is high enough, you will be able to receive titles with that city.<br><br>You may only have citizenship in one city at a time. You may renounce citizenship at any time. After renouncing citizenship, you must wait one week before declaring citizenship again.<br><br>Note that gaining city titles requires positive loyalty with your city, and you will be required to donate funds to the city's coffers.<br><br>Are you sure you wish to declare citizenship with ~1_CITY~?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152892",
+   "text": "Declare Citizenship",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152893",
+   "text": "This title is gained through city loyalty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152894",
+   "text": "Your Titles:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152895",
+   "text": "Available Titles:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152896",
+   "text": "Click the gem next to an available title for more information about obtaining that title.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152897",
+   "text": "None",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152898",
+   "text": "*The Moongate cracks and fizzles!*",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152899",
+   "text": "Loyalty Req:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152900",
+   "text": "Donation Req:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152901",
+   "text": "Obtain Title",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152902",
+   "text": "You do not have enough funds in your bank box to donate for this title.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152903",
+   "text": "You do not have the required minimum loyalty rating to receive this title.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152904",
+   "text": "Gain Title",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152905",
+   "text": "Cora releases a barrage of elemental havoc!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152906",
+   "text": "You must be aboard the ship to place the add-on on its deck.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152907",
+   "text": "You must be owner or co-owner of a house to place addons in it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152908",
+   "text": "Prismatic Lenses",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152909",
+   "text": "Hephaestus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152910",
+   "text": "Blight of the Tundra",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152911",
+   "text": "Brightblade",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152912",
+   "text": "The moons of Trammel and Felucca fail to preserve your virtue status and city loyalty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152913",
+   "text": "The moons of Trammel and Felucca align to preserve your virtue status and city loyalty.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152914",
+   "text": "Current Battle:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152915",
+   "text": "Wave ~1_WAVE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152916",
+   "text": "Next Battle:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152917",
+   "text": "Starts in ~1_MIN~ min.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152918",
+   "text": "random slayer",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152919",
+   "text": "random damage eater ~1_val~%",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152920",
+   "text": "Metallic Cloth Dye Tub",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152921",
+   "text": "Pet Bonding Potion",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152922",
+   "text": "Target the pet you wish to bond with. Press ESC to cancel. This item is consumed on successful use, so choose wisely!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152923",
+   "text": "Pet bonding canceled.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152924",
+   "text": "That is not a valid pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152925",
+   "text": "That pet is already bonded to you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152926",
+   "text": "The City thanks you for your generosity!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152927",
+   "text": "Your generosity is appreciated but the City does not require this item.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152928",
+   "text": "If you wish to donate to the City simply drop the items into the crate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152929",
+   "text": "That does not look like an animal the City is in need of.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152930",
+   "text": "Erm. Uhh. I don't think that'd enjoy the stables much...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152931",
+   "text": "Double click and target the animal you wish to donate",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152932",
+   "text": "If you wish to donate to the City place the donation in the crate.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152933",
+   "text": "[Crystal ~1_RECEIVER~] ~2_NAME~ says: ~3_TEXT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152934",
+   "text": "[Crystal ~1_SENDER~] ~2_NAME~ says: ~3_TEXT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152935",
+   "text": "[Crystal ~1_SENDER~ => ~2_RECEIVER~] ~3_NAME~ says: ~4_TEXT~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152936",
+   "text": "Which animal do you wish to donate?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152937",
+   "text": "Harpsichord Deed",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152938",
+   "text": "Communication Crystal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152939",
+   "text": "Name:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152940",
+   "text": "Listens To",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152941",
+   "text": "Sends To",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152942",
+   "text": "Links",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152943",
+   "text": "Listen Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152944",
+   "text": "On",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152945",
+   "text": "Off",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152946",
+   "text": "Public",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152947",
+   "text": "Personal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152948",
+   "text": "Spy",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152949",
+   "text": "Relay Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152950",
+   "text": "Output Mode",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152951",
+   "text": "Spoof",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152952",
+   "text": "Normal",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152953",
+   "text": "Show My Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152954",
+   "text": "Show Sender",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152955",
+   "text": "Show Both",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152956",
+   "text": "Volume Setting",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152957",
+   "text": "Private",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152958",
+   "text": "Dual",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152959",
+   "text": "Loud",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152960",
+   "text": "New Link",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152961",
+   "text": "Harpsichord Song Selection",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152962",
+   "text": "City Trade Minister",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152963",
+   "text": "Greetings and Salutations!  I am overjoyed thou hath seen fit to donate to the City! Surely thy good deed shall be worthy of praise!  We have need for resources and wares from a variety of professions! From Lumberjacks and Miners we require boards and ingots to rebuild our homes.  From Hunters we require hides and cut leather to fashion goods and also cuts of ribs to feed the hungry.  Cooks are in need to baked bread, while any citizen wouldst nay turn away a Fisherman's fresh catch of Crab and Lobster, or even fine fish steaks!  Our archers are in need of tools for their trade, and so the Bowyer can provide Bows and Crossbows.  Our citizens are always in need of healing, restorative, and sometimes devastating salves, and so we call upon Alchemists to donate simple potions.  Finally our soldiers, ranchers, and farmers are in need of all manner of beasts.  Hitch any dogs, cats, cows, goats, horses, sheep, pigs, or chickens to the post here and we will most certainly be appreciative!",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152964",
+   "text": "This crystal now relays speech to a crystal named \"~1_NAME~\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152965",
+   "text": "This crystal no longer relays speech to the crystal named \"~1_NAME\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152966",
+   "text": "This crystal now receives relayed speech from a crystal named \"~1_NAME\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152967",
+   "text": "This crystal no longer receives messages from the crystal named \"~1_NAME\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152968",
+   "text": "The crystal named \"~1_NAME~\" is no longer listening to speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152969",
+   "text": "The crystal named \"~1_NAME~\" now only listens for speech when the crystal is outside any container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152970",
+   "text": "The crystal named \"~1_NAME~\" now only listens to the speech of the player who is carrying it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152971",
+   "text": "The crystal named \"~1_NAME~\" now listens to speech nearby, from within any container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152972",
+   "text": "The crystal named \"~1_NAME~\" no longer emits any relayed speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152973",
+   "text": "The crystal named \"~1_NAME~\" now only emits relayed speech to the person carrying it.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152974",
+   "text": "The crystal named \"~1_NAME~\" now emits speech only to the person carrying it when it is being carried",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152975",
+   "text": "The crystal named \"~1_NAME~\" now emits speech publicly, even when being carried or when it is inside a container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152976",
+   "text": "The crystal named \"~1_NAME~\" no longer relays speech received from other crystals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152977",
+   "text": "The crystal named \"~1_NAME~\" now relays speech received from other crystals.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152978",
+   "text": "The crystal named \"~1_NAME~\" identifies the original speaker when emitting relayed speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152979",
+   "text": "The crystal named \"~1_NAME~\" now includes the crystal's name as well as the original speaker, when emitting relayed speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152980",
+   "text": "The crystal named \"~1_NAME~\" now includes the name of the crystal that heard the speech as well as the name of the original speaker, when emitting relayed speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152981",
+   "text": "The crystal named \"~1_NAME~\" now includes its own name, the name of the crystal that heard the speech and the name of the original speaker, when emitting relayed speech.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152982",
+   "text": "Set Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152983",
+   "text": "That is not a valid identifier for the communication crystal. Make sure the length is 1 to 10 characters and does not contain any unacceptable words.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152984",
+   "text": "The crystal is now named \"~1_NAME~\".",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152985",
+   "text": "Interest Related: ON",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152986",
+   "text": "Interest Related: OFF",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152987",
+   "text": "Spoof Mode: ON",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152988",
+   "text": "You cannot link that to a communication crystal.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152989",
+   "text": "This crystal is already linked to that one.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152990",
+   "text": "Listening: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152991",
+   "text": "Speaking: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152992",
+   "text": "Relaying: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152993",
+   "text": "Name: ~1_VALUE~",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152994",
+   "text": "Yes",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152995",
+   "text": "No",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152996",
+   "text": "Arena Manager",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152997",
+   "text": "Pet Arena Stone",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152998",
+   "text": "Anvil Strike In Minoc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1152999",
+   "text": "A Skaran Lullaby",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153000",
+   "text": "Blackthorn's March",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153001",
+   "text": "Dupre's Night in Trinsic",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153002",
+   "text": "Fayaxion and the Six",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153003",
+   "text": "Flight of the Nexus",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153004",
+   "text": "Galehaven Jaunt",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153005",
+   "text": "Jhelom to Arms",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153006",
+   "text": "Midnight in Yew",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153007",
+   "text": "Moonglow Sonata",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153008",
+   "text": "New Magincia March",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153009",
+   "text": "Nujelm Waltz",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153010",
+   "text": "Sherry's Song",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153011",
+   "text": "Starlight In Britain",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153012",
+   "text": "The Vesper Mist",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153013",
+   "text": "Region Controller",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153014",
+   "text": "X",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153015",
+   "text": "Y",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153016",
+   "text": "Width",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153017",
+   "text": "Breadth",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153018",
+   "text": "Northwest Corner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153019",
+   "text": "Southeast Corner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153020",
+   "text": "Your Current Location",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153021",
+   "text": "Set To My Cur Loc",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153022",
+   "text": "No Speech",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153023",
+   "text": "No Spells",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153024",
+   "text": "No Tele Inside",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153025",
+   "text": "No Tele Into",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153026",
+   "text": "No Tele Out",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153027",
+   "text": "No Mark",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153028",
+   "text": "No Pets",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153029",
+   "text": "No Mounts",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153030",
+   "text": "No Potions",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153031",
+   "text": "No Login",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153032",
+   "text": "Cannot activate! The region box crosses a server boundary.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153033",
+   "text": "Coords Not In Map",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153034",
+   "text": "Status:",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153035",
+   "text": "Active",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153036",
+   "text": "Inactive",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153037",
+   "text": "Which Harpsichord do you wish to use this on?",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153038",
+   "text": "Use this on an Harpsichord.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153039",
+   "text": "Pet Arena - Main menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153040",
+   "text": "You can host/join a pet fight. And also you can check your pets' record.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153041",
+   "text": "Host a pet fight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153042",
+   "text": "Join a pet fight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153043",
+   "text": "See booked fights",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153044",
+   "text": "Check your pets' record",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153045",
+   "text": "Check rankings",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153046",
+   "text": "Ignore invite (OFF)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153047",
+   "text": "Ignore invite (ON)",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153048",
+   "text": "You are too far away from the pet arena stone.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153049",
+   "text": "Pet Arena - Admin Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153050",
+   "text": "Pets are not permitted in this location. Your pet named ~1_NAME~ has been sent to the stables.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153051",
+   "text": "Potion use is not permitted in this area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153052",
+   "text": "Mounts and flying are not permitted in this area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153053",
+   "text": "Pets are not permitted in this area. Your pet named ~1_NAME~ could not be sent to the stables, so has been teleported outside the event area.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153054",
+   "text": "This does not work while inside a container.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153055",
+   "text": "Harpsichord South",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153056",
+   "text": "Harpsichord East",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153057",
+   "text": "Has ~1_count~ Songs",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153058",
+   "text": "You carefully feed the roll into the Harpsichord.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153059",
+   "text": "The Harpsichord already has this song.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153060",
+   "text": "Pet Arena - Rule Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153061",
+   "text": "NPC Creatures",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153062",
+   "text": "Regulation of Pets",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153063",
+   "text": "Tactical Slot 01",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153064",
+   "text": "Tactical Slot 02",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153065",
+   "text": "Tactical Slot 03",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153066",
+   "text": "Tactical Slot 04",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153067",
+   "text": "Pet Arena - Pet & Tactics Menu",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153068",
+   "text": "Choose your pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153069",
+   "text": "You don't have any pets...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153070",
+   "text": "Pet Arena - Select Your Pet",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153071",
+   "text": "Name",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153072",
+   "text": "HP",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153073",
+   "text": "Race",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153074",
+   "text": "Slot",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153075",
+   "text": "To join the pet fight, you need to select your pet.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153076",
+   "text": "Your pet is too far away from you.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153077",
+   "text": "You have already joined in another session...",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153078",
+   "text": "Your target is not affected by the armor ignore.",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153079",
+   "text": "Pet Arena - Queuing",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153080",
+   "text": "Start the fight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153081",
+   "text": "Cancel the fight",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153082",
+   "text": "Invite a pet owner",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153083",
+   "text": "See booked fights",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153084",
+   "text": "See the rules",
+   "flag": "Custom",
+   "category": "english_only"
+  },
+  {
+   "number": "1153085",
+   "text": "Moonbound: Ephemeral",
+   "flag": "Custom",
+   "category": "english_only"
+  }
+ ]
+}

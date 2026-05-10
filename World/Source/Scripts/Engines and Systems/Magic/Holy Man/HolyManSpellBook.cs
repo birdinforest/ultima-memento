@@ -2,6 +2,7 @@ using System;
 using Server.Network;
 using Server.Gumps;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -57,7 +58,7 @@ namespace Server.Items
 
 			if ( owner != from )
 			{
-				from.SendMessage( "These pages appears as scribbles to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -71,7 +72,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "For " + owner.Name + "" ); }
+			if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "For {0}", owner.Name ) ); }
         }
 
 		public HolyManSpellbook( Serial serial ) : base( serial )

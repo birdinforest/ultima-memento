@@ -5,6 +5,11 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
+	/// <summary>
+	/// Sea daemon; <see cref="Mobile.Title"/> is stored in English at spawn. The classic client shows one
+	/// nameplate for all observers, so per-account localized titles are not applied here—use overhead speech
+	/// or quest text for localized flavor.
+	/// </summary>
 	[CorpseName( "a daemon corpse" )]
 	public class DemonOfTheSea : BaseCreature
 	{

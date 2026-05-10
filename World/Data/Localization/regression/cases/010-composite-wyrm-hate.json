@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1",
+  "id": "composite.ancient-wyrm-dungeon-hate",
+  "pipeline": "composite_only",
+  "en": "an ancient wyrm sleeping below Dungeon Hate",
+  "expectedZh": "沉睡在憎恨地城之下的远古龙",
+  "tags": "regression,composite,wyrm",
+  "notes": "Longest fragment must beat bare Dungeon Hate"
+}

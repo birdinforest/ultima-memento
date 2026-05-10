@@ -1,0 +1,91 @@
+{"file": "scripts-books.json", "key": "s.2304e5bf9096f564", "en": "<div align=\"right\" color=\"2100\">"}
+{"file": "scripts-books.json", "key": "s.4c0badc4a677547a", "en": "<BR><BR>"}
+{"file": "scripts-books.json", "key": "s.92f3962751067825", "en": "<div align=\"center\" color=\"2100\">"}
+{"file": "scripts-books.json", "key": "s.9aaf6e31e292b710", "en": "<BR><BR><BR><BR>"}
+{"file": "scripts-books.json", "key": "s.aac32651b10f567c", "en": "</div>"}
+{"file": "scripts-books.json", "key": "s.bbfad19e8aa381e3", "en": "<BODY><BASEFONT Color=#ddbc4b>"}
+{"file": "scripts-engines-and-systems.json", "key": "s.1bcf6db1c2288645", "en": "<BODY><BASEFONT Color=#111111><BIG>"}
+{"file": "scripts-engines-and-systems.json", "key": "s.3973e022e93220f9", "en": "-"}
+{"file": "scripts-engines-and-systems.json", "key": "s.4b68ab3847feda7d", "en": "X"}
+{"file": "scripts-engines-and-systems.json", "key": "s.5d286442064cdbc8", "en": "<BODY><BASEFONT Color=#FF0000>"}
+{"file": "scripts-engines-and-systems.json", "key": "s.684888c0ebb17f37", "en": "*"}
+{"file": "scripts-engines-and-systems.json", "key": "s.7fe9b4e616ac39c4", "en": "<BODY><BASEFONT Color=#308EB3>"}
+{"file": "scripts-engines-and-systems.json", "key": "s.8a5edab282632443", "en": "/"}
+{"file": "scripts-engines-and-systems.json", "key": "s.8a8de823d5ed3e12", "en": "?"}
+{"file": "scripts-engines-and-systems.json", "key": "s.a318c24216defe20", "en": "+"}
+{"file": "scripts-engines-and-systems.json", "key": "s.a6d166a0bab73cde", "en": "<basefont color=#FF0000>"}
+{"file": "scripts-engines-and-systems.json", "key": "s.bb7208bc9b5d7c04", "en": "!"}
+{"file": "scripts-items.json", "key": "s.00a733f954777395", "en": "<BODY><BASEFONT Color=#9dc1d5>"}
+{"file": "scripts-items.json", "key": "s.4ae81572f06e1b88", "en": "Q"}
+{"file": "scripts-items.json", "key": "s.51b9aa256e151b5d", "en": "{0}\t{1}"}
+{"file": "scripts-items.json", "key": "s.6dbfe0f0c21729b2", "en": "<BODY><BASEFONT Color=#FBFBFB><BIG><CENTER>"}
+{"file": "scripts-items.json", "key": "s.6f4b6612125fb3a0", "en": "21"}
+{"file": "scripts-items.json", "key": "s.787188ffa5cca482", "en": "*****"}
+{"file": "scripts-items.json", "key": "s.8aed642bf5118b9d", "en": "0.0"}
+{"file": "scripts-items.json", "key": "s.d78033c79fae475a", "en": "<BODY><BASEFONT Color=#FFFC00>"}
+{"file": "scripts-items.json", "key": "s.daf77d8f8b7d417f", "en": "[{0}]"}
+{"file": "scripts-items.json", "key": "s.ef5969539caa4e6c", "en": "{0} [{1}]"}
+{"file": "scripts-items.json", "key": "s.fff549ce49860107", "en": "<BODY><BASEFONT Color=#111111><BIG><CENTER>"}
+{"file": "scripts-mobiles.json", "key": "s.255a67ace5808003", "en": "BardsTaleWin"}
+{"file": "scripts-mobiles.json", "key": "s.31f5c4143e352f95", "en": "TitanLithos"}
+{"file": "scripts-mobiles.json", "key": "s.37c6bdfeeb11244b", "en": "TitanPyros"}
+{"file": "scripts-mobiles.json", "key": "s.517e761e192da63d", "en": "VordoKey"}
+{"file": "scripts-mobiles.json", "key": "s.818ec46afab5f24d", "en": "TitanStratos"}
+{"file": "scripts-mobiles.json", "key": "s.8fb980978bba4dee", "en": "<BODY><BASEFONT Color=#000008><CENTER>"}
+{"file": "scripts-mobiles.json", "key": "s.9ce085ee05ba9cf4", "en": "<BODY><BASEFONT Color=#DEC6DE>"}
+{"file": "scripts-mobiles.json", "key": "s.b7a1e75e1b494e43", "en": "<BODY><BASEFONT Color=#94C541>"}
+{"file": "scripts-mobiles.json", "key": "s.ddfe1b634c57f11a", "en": "TitanHydros"}
+{"file": "scripts-quests.json", "key": "s.05432f133d8ca173", "en": "ThiefQuest"}
+{"file": "scripts-quests.json", "key": "s.13fdfac1bdea6fc3", "en": "<BASEFONT COLOR=#FF8888>"}
+{"file": "scripts-quests.json", "key": "s.3885ff5ae3386f58", "en": "&lt;"}
+{"file": "scripts-quests.json", "key": "s.4878db571a8bb34a", "en": "<BODY>"}
+{"file": "scripts-quests.json", "key": "s.4bedab070e31cda7", "en": "<BASEFONT COLOR=#44FF44>"}
+{"file": "scripts-quests.json", "key": "s.65aef1adba8672a5", "en": "<br>"}
+{"file": "scripts-quests.json", "key": "s.77d57e39b407cbca", "en": "&gt;"}
+{"file": "scripts-quests.json", "key": "s.7fcef4a2aab2d156", "en": " + m_Artifact.PaganName + "}
+{"file": "scripts-quests.json", "key": "s.91843038f5126349", "en": "<BASEFONT COLOR=#E8A090>"}
+{"file": "scripts-quests.json", "key": "s.a6b6027b3ef6afe9", "en": "<CENTER><BASEFONT COLOR=#FFFFAA>"}
+{"file": "scripts-quests.json", "key": "s.a71f3b4b32669f2d", "en": "<br><br>"}
+{"file": "scripts-quests.json", "key": "s.cc6b69b40bf71fc6", "en": "&amp;"}
+{"file": "scripts-quests.json", "key": "s.e0dd56f18968383b", "en": "前往{0}的{1}，寻找{2}，完成后可领取{3}金币。"}
+{"file": "scripts-quests.json", "key": "s.e86dd77a7ee765ea", "en": "- "}
+{"file": "scripts-quests.json", "key": "s.ee53e14b1d5c2d4a", "en": "前往{0}的{1}，击败{2}，完成后可领取{3}金币。"}
+{"file": "scripts-system.json", "key": "s.014d2220867557e0", "en": "<BASEFONT Color=#FCFF00>"}
+{"file": "scripts-system.json", "key": "s.038966de9f6b9a90", "en": "[2]"}
+{"file": "scripts-system.json", "key": "s.06d033ece6645de5", "en": "[3]"}
+{"file": "scripts-system.json", "key": "s.080a9ed428559ef6", "en": "[1]"}
+{"file": "scripts-system.json", "key": "s.08f271887ce94707", "en": "M"}
+{"file": "scripts-system.json", "key": "s.1a9b7b58be2fc11d", "en": "<BODY><BASEFONT Color=#34ee39>"}
+{"file": "scripts-system.json", "key": "s.1ae3592f8248c3f8", "en": "[5]"}
+{"file": "scripts-system.json", "key": "s.1b283daf58041fc1", "en": "- 4 -"}
+{"file": "scripts-system.json", "key": "s.252f10c83610ebca", "en": "f"}
+{"file": "scripts-system.json", "key": "s.261a44f5289c1fee", "en": "- 3 -"}
+{"file": "scripts-system.json", "key": "s.265fda17a34611b1", "en": "'"}
+{"file": "scripts-system.json", "key": "s.2e7d2c03a9507ae2", "en": "c"}
+{"file": "scripts-system.json", "key": "s.379e73ed604f71f6", "en": "AddToCont"}
+{"file": "scripts-system.json", "key": "s.3e23e8160039594a", "en": "b"}
+{"file": "scripts-system.json", "key": "s.437fd2fa887752de", "en": "=========================="}
+{"file": "scripts-system.json", "key": "s.46b1884167c4edd3", "en": "[4]"}
+{"file": "scripts-system.json", "key": "s.559aead08264d579", "en": "A"}
+{"file": "scripts-system.json", "key": "s.5c62e091b8c0565f", "en": "P"}
+{"file": "scripts-system.json", "key": "s.5caa20fc8aca407b", "en": "- 1 -"}
+{"file": "scripts-system.json", "key": "s.62b67e1f685b7fef", "en": ">"}
+{"file": "scripts-system.json", "key": "s.62c66a7a5dd70c31", "en": "m"}
+{"file": "scripts-system.json", "key": "s.63d72cdd11971ba9", "en": "- 2 -"}
+{"file": "scripts-system.json", "key": "s.72dfcfb0c470ac25", "en": "L"}
+{"file": "scripts-system.json", "key": "s.730d4d982206da1a", "en": "zh-Hans"}
+{"file": "scripts-system.json", "key": "s.846d10bba61a7252", "en": "<BODY><BASEFONT Color=#FCFF00><BIG>"}
+{"file": "scripts-system.json", "key": "s.8de0b3c47f112c59", "en": "S"}
+{"file": "scripts-system.json", "key": "s.8f0407a31f1ed9ae", "en": "<CENTER>"}
+{"file": "scripts-system.json", "key": "s.b4ce2df14a7689ff", "en": "- 6 -"}
+{"file": "scripts-system.json", "key": "s.b7ff3415d49fc6c6", "en": "================="}
+{"file": "scripts-system.json", "key": "s.ba118bf7fc9c1aed", "en": "English"}
+{"file": "scripts-system.json", "key": "s.c4694f2e93d5c4e7", "en": "O"}
+{"file": "scripts-system.json", "key": "s.cd0aa9856147b6c5", "en": "g"}
+{"file": "scripts-system.json", "key": "s.d6adfa5497625455", "en": "zZz"}
+{"file": "scripts-system.json", "key": "s.dabd3aff769f07eb", "en": "<"}
+{"file": "scripts-system.json", "key": "s.dbd3a49d0d906b4e", "en": "en"}
+{"file": "scripts-system.json", "key": "s.de7d1b721a1e0632", "en": "i"}
+{"file": "scripts-system.json", "key": "s.fd3e5ece5c25a9c8", "en": "- 5 -"}
+{"file": "scripts-system.json", "key": "s.fe94b827f0455bee", "en": "[6]"}
+{"file": "system.json", "key": "s.c957b4644d193473", "en": "<BODY><BASEFONT Color=#FFFFFF>"}

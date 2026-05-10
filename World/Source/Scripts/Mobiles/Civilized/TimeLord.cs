@@ -20,15 +20,15 @@ namespace Server.Mobiles
 				{
 					switch ( Utility.Random( 9 ))
 					{
-						case 0: Say("The Stranger has saved Sosaria from Exodus."); break;
-						case 1: Say("Castle Exodus lies in ruins, no one knowing what evil lurks below."); break;
-						case 2: Say("Mondain's legacy is forever extinguished."); break;
-						case 3: Say("The timeline has been restored, after the wrath of Minax."); break;
-						case 4: Say("One day the Stranger will return to Sosaria."); break;
-						case 5: Say("Although some speak of virtue, it is the serpents of order who keep the balance."); break;
-						case 6: Say("The order was Love, Sol, Moon, and Death."); break;
-						case 7: Say("Maybe one day the Stranger will achieve Avatarhood."); break;
-						case 8: Say("The strings of time show the Guardian is coming."); break;
+						case 0: CitizenLocalization.SayLocalized(this, "The Stranger has saved Sosaria from Exodus."); break;
+						case 1: CitizenLocalization.SayLocalized(this, "Castle Exodus lies in ruins, no one knowing what evil lurks below."); break;
+						case 2: CitizenLocalization.SayLocalized(this, "Mondain's legacy is forever extinguished."); break;
+						case 3: CitizenLocalization.SayLocalized(this, "The timeline has been restored, after the wrath of Minax."); break;
+						case 4: CitizenLocalization.SayLocalized(this, "One day the Stranger will return to Sosaria."); break;
+						case 5: CitizenLocalization.SayLocalized(this, "Although some speak of virtue, it is the serpents of order who keep the balance."); break;
+						case 6: CitizenLocalization.SayLocalized(this, "The order was Love, Sol, Moon, and Death."); break;
+						case 7: CitizenLocalization.SayLocalized(this, "Maybe one day the Stranger will achieve Avatarhood."); break;
+						case 8: CitizenLocalization.SayLocalized(this, "The strings of time show the Guardian is coming."); break;
 					};
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));

@@ -8,6 +8,7 @@ using Server.Spells;
 using Server.Network;
 using Server.Multis;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Items 
 {
@@ -48,19 +49,19 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, WandPower + "% Avoiding Traps on the Walls or Floors");
-			list.Add( 1049644, "Must be in backpack and lasts 30 minutes"); // PARENTHESIS
+			list.Add( 1070722, StringCatalog.ResolveFormatByKey(null, "trap.trapwand.properties.avoid", WandPower));
+			list.Add( 1049644, StringCatalog.ResolveByKey(null, "trap.trapwand.properties.backpack")); // PARENTHESIS
         }
 
 		private void RenameWand()
 		{
 			if ( owner != null )
 			{
-				this.Name = "orb of trap finding for " + owner.Name;
+				this.Name = StringCatalog.ResolveFormatByKey(null, "trap.name.trapwand.owner", owner.Name);
 			}
 			else
 			{
-				this.Name = "orb of trap finding";
+				this.Name = StringCatalog.ResolveByKey(null, "trap.name.trapwand");
 			}		
 		}
 
@@ -102,7 +103,7 @@ namespace Server.Items
 				{
 					TrapWand wands = (TrapWand)i_item;
 					Mobile from = wands.owner;
-					from.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "Your trap finding orb has vanished.");
+					from.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey( from.Account, "trap.trapwand.vanished" ));
 					from.PlaySound( 0x1F0 );
 					i_item.Delete();
 				}

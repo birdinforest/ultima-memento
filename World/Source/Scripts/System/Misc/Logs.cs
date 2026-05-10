@@ -1,10 +1,13 @@
 using Server.Accounting;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using System.IO;
 using System.Text;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Server.Misc
 {
@@ -21,6 +24,9 @@ namespace Server.Misc
 
     class LoggingFunctions
     {
+		public static Dictionary<Point3D, DateTime> RecentTrapActivity = new Dictionary<Point3D, DateTime>();
+		private static DateTime m_NextTrapActivityCleanup = DateTime.MinValue;
+
 		public static bool LoggingEvents()
 		{
 			return true; // SET TO TRUE TO ENABLE LOG SYSTEM FOR GAME EVENTS AND TOWN CRIERS
@@ -668,6 +674,19 @@ namespace Server.Misc
 				else
 					LoggingFunctions.LogEvent( pm, sEvent, LogEventType.Adventures, true );
 			}
+
+			// Track for Tracking skill
+			Point3D loc = m.Location;
+			RecentTrapActivity[loc] = DateTime.Now;
+
+			// Periodic cleanup (every 5 minutes, remove entries older than 15 min)
+			if (DateTime.Now >= m_NextTrapActivityCleanup)
+			{
+				m_NextTrapActivityCleanup = DateTime.Now + TimeSpan.FromMinutes(5);
+				var cutoff = DateTime.Now - TimeSpan.FromMinutes(15);
+				var stale = RecentTrapActivity.Where(kvp => kvp.Value < cutoff).Select(kvp => kvp.Key).ToList();
+				foreach (var key in stale) RecentTrapActivity.Remove(key);
+			}
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1015,7 +1034,7 @@ namespace Server.Misc
 
 				sLoot = sLoot + " " + t.Name + " " + t.Title;
 
-				string sEvent = sLoot + sWho;
+				string sEvent = QuestCompositeResolver.ResolveComposite( pm, sLoot + sWho );
 				LoggingFunctions.EmitAndLogEvent( pm, sEvent, LogEventType.Quests, true );
 			}
 		}

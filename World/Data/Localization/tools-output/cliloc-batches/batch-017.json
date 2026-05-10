@@ -1,0 +1,3006 @@
+{
+ "batch": 17,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1116609",
+   "text": "You partially repair the cannon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116610",
+   "text": "You can't do that while piloting a ship!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116611",
+   "text": "You can't use that while the ship is moving!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116612",
+   "text": "You must target the main mast of the ship you wish to dye.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116613",
+   "text": "Select the main mast of the ship you wish to dye.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116614",
+   "text": "You must raise the anchor to pilot the ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116615",
+   "text": "You cannot pilot a ship while flying!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116616",
+   "text": "You must remove some people from your ship access list before you can add any more.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116617",
+   "text": "You do not have permission to board this ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116618",
+   "text": "Are you sure you wish to clear your ship's access list?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116619",
+   "text": "Leviathan Hide Bracers",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116620",
+   "text": "Ring of the Soulbinder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116621",
+   "text": "Helm of Vengeance",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116622",
+   "text": "Rune Engraved Peg Leg",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116623",
+   "text": "Illustrious Wand of Thundering Glory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116624",
+   "text": "Enchanted Coral Bracelet",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116625",
+   "text": "You must be on the ship to deploy a weapon.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116626",
+   "text": "You must use this on a ship weapon pad.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116627",
+   "text": "You must be the owner of the ship to do this.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116628",
+   "text": "Smiling Moon Blade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116629",
+   "text": "It does Nothing!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116630",
+   "text": "The Culling Blade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116631",
+   "text": "Bloody",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116632",
+   "text": "Iron",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116633",
+   "text": "Peg",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116634",
+   "text": "Drunken",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116635",
+   "text": "Stinkin'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116636",
+   "text": "Glass",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116637",
+   "text": "Burnin'",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116638",
+   "text": "Black",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116639",
+   "text": "Cursed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116640",
+   "text": "Lost",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116641",
+   "text": "Lazy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116642",
+   "text": "Lonesome",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116643",
+   "text": "Rude",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116644",
+   "text": "Loud",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116645",
+   "text": "Lover",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116646",
+   "text": "Bonny",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116647",
+   "text": "Mad",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116648",
+   "text": "Short",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116649",
+   "text": "Long",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116650",
+   "text": "Fat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116651",
+   "text": "Eye",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116652",
+   "text": "Nose",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116653",
+   "text": "Beard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116654",
+   "text": "Patch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116655",
+   "text": "Leg",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116656",
+   "text": "Hook",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116657",
+   "text": "Faced",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116658",
+   "text": "Britches",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116659",
+   "text": "Back",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116660",
+   "text": "Strap",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116661",
+   "text": "Mouth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116662",
+   "text": "Grip",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116663",
+   "text": "Noggin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116664",
+   "text": "Fist",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116665",
+   "text": "Blade",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116666",
+   "text": "Tooth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116667",
+   "text": "Powder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116668",
+   "text": "Tongue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116669",
+   "text": "Ear",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116670",
+   "text": "Nail",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116671",
+   "text": "Derek",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116672",
+   "text": "John",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116673",
+   "text": "Billy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116674",
+   "text": "Alan",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116675",
+   "text": "Mark",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116676",
+   "text": "Calvin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116677",
+   "text": "Michael",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116678",
+   "text": "Bruce",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116679",
+   "text": "Heather",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116680",
+   "text": "Bonnie",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116681",
+   "text": "Daisuke",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116682",
+   "text": "Judah",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116683",
+   "text": "Yvette",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116684",
+   "text": "Brian",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116685",
+   "text": "Jimmy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116686",
+   "text": "O'Shaughnessy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116687",
+   "text": "Arr, we be scuttled!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116688",
+   "text": "There is no good spot nearby to go ashore.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116689",
+   "text": "WANTED FOR PIRACY",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116690",
+   "text": "~1_val~ ~2_val~ ~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116691",
+   "text": "~1_val~ ~2_val~ ~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116692",
+   "text": "~1_val~ ~2_val~ ~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116693",
+   "text": "~1_val~ ~2_val~ ~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116694",
+   "text": "~1_val~ ~2_val~ ~3_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116695",
+   "text": "The water there is too shallow for the trap.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116696",
+   "text": "Reward: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116697",
+   "text": "Reward: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116698",
+   "text": "Reward: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116699",
+   "text": "Reward: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116700",
+   "text": "Reward: ~1_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116701",
+   "text": "a water puddle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116702",
+   "text": "The Dread Pirate ~1_val~ ~2_val~ ~3_val~ is no longer wanted.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116703",
+   "text": "WANTED DEAD OR ALIVE",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116704",
+   "text": "Notice to all sailors",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116705",
+   "text": "There be a bounty on these lowlifes!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116706",
+   "text": "See officers fer information.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116708",
+   "text": "Professional Bountyhunter Quest",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116709",
+   "text": "This quest is to capture or kill any of the wanted pirates on the bulletin board. Return with the chained pirate or a death certificate for the pirate for your reward.<br><br>If you choose to capture the pirate, subdue them in battle and then use the rope that the officer gives you to tie them up. When tied up, they will appear chained on the deck of your ship. If you kill the pirate, return with their \"death certificate\" for your reward.<br><br><center>-----</center><br><br>Ahoy matey! Tis good to see an able body ready to make the seas safer. However, dirty pirates threaten us and merchants and we mean to make it stop!<br><br>That's why we be offerin' good rewards fer the capture of pirates what have harmed us and merchants. Now, we don't be advocating violence, so we will be loanin' ye some o' us special pirate bindin' rope so ye can bring 'em back alive.<br><br>Now, we realizes that sometimes a sailor has no choice but to lay a pirate down fer the last time. If ye were to bring us a death certificate on one o' these baddies, We would be willin' to pay too. If'n ye accept, we will deputize you an' have yer ship fitted with some chains to bring back a pirate!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116710",
+   "text": "Capture or kill a pirate listed on the bulletin board.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116711",
+   "text": "Return to the officer with the pirate or a death certificate for your reward.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116712",
+   "text": "The gold listed on the bulletin board and a special reward from the officer if captured alive.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116713",
+   "text": "Well, I can understand.  The dangers o' the life of a bountyhunter is not fer everyone.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116714",
+   "text": "Ahoy deputy! How is the bounty hunting going? The gold in us vault be gettin' cold waitin' on ye to bring me some o' those pirates! It ought to be makin' yer pockets jingle but ye need to deliver some pirates!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116715",
+   "text": "Well done, deputy!<br><br>The seas be a bit safer now because o' ye and yer crew.  Get some rest an' come back when ye be ready for more fightin', I'm sure another black hearted nick will have popped up to make trouble.<br><br>Jus' speak with me if'n ye want to do some more deputy work.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116716",
+   "text": "death certificate",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116717",
+   "text": "pirate bindin' rope",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116718",
+   "text": "pirate bindin' pole",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116719",
+   "text": "pirate chains",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116720",
+   "text": "Who do you want to tie up?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116721",
+   "text": "You begin binding the pirate.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116722",
+   "text": "The pirate has eluded you.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116723",
+   "text": "Your ship is missing!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116724",
+   "text": "You cannot pilot a ship unless you are aboard it!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116725",
+   "text": "This ship is too damaged to sail!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116726",
+   "text": "This is not your ship!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116727",
+   "text": "You are now piloting this vessel.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116728",
+   "text": "Professional Fisher Quest - Britain",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116729",
+   "text": "Move Tillerman",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116730",
+   "text": "Professional Fisher Quest - Trinsic",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116731",
+   "text": "Professional Fisher Quest - Moonglow",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116732",
+   "text": "Professional Fisher Quest - Skara Brae",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116733",
+   "text": "Professional Fisher Quest - Vesper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116734",
+   "text": "Professional Fisher Quest - 'Jhelom",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116735",
+   "text": "Professional Fisher Quest - Papua",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116736",
+   "text": "Where do you wish to station the pilot?",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116737",
+   "text": "A Field of Blades",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116738",
+   "text": "Orc Ship Deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116739",
+   "text": "Gargoyle Ship Deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116740",
+   "text": "Tokuno Ship Deed",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116741",
+   "text": "Small Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116742",
+   "text": "Small Dragon Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116743",
+   "text": "Medium Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116744",
+   "text": "Medium Dragon Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116745",
+   "text": "Large Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116746",
+   "text": "Large Dragon Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116747",
+   "text": "Orc Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116748",
+   "text": "Gargoyle Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116749",
+   "text": "Tokuno Ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116750",
+   "text": "Rowboat",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116751",
+   "text": "The ship you are captaining could not take on a pirate ship.  Bring a warship if you want this quest.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116752",
+   "text": "Your ship is a mess!  Fix it first and then we can talk about catching pirates.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116753",
+   "text": "You direct your crew to throw the bountyhunter shackles overboard. *splash*",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116754",
+   "text": "~1_val~'s ship, ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116755",
+   "text": "~1_val~'s unnamed ship",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116756",
+   "text": "The pirate seems to have too much fight left to be bound.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116757",
+   "text": "You were struck and the pirate eludes capture.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116758",
+   "text": "You already have a ship deployed!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116759",
+   "text": "flame cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116760",
+   "text": "flame cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116761",
+   "text": "flame cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116762",
+   "text": "frost cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116763",
+   "text": "frost cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116764",
+   "text": "frost cannonball",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116765",
+   "text": "The emergency repairs have given out!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116766",
+   "text": "Boat Paint Remover",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116767",
+   "text": "The ship could not be located.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116768",
+   "text": "Permanent Boat Paint",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116769",
+   "text": "You must have the High Seas booster pack to decode this map.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116770",
+   "text": "The paint on your ship has faded over time.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116771",
+   "text": "You apply a fresh coat of paint to your ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116772",
+   "text": "You strip a coat of paint from your ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116773",
+   "text": "A Diabolically Drawn Treasure Map",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116774",
+   "text": "You have reached this paint color's maximum intensity.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116775",
+   "text": "You apply the permanent paint to your ship.  This is now the base color of your ship.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116776",
+   "text": "Part ~1_val~ of ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116777",
+   "text": "Parts ~1_val~ of ~2_val~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116778",
+   "text": "The tainted life force energy damages you as your body tries to absorb it.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116779",
+   "text": "The ship's location could not be determined.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116780",
+   "text": "The ship's location could not be determined.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116781",
+   "text": "That rune is already in the runebook!",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116782",
+   "text": "A silver serpent statue",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116791",
+   "text": "You must wait a few minutes before making your sacrifice.",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1116841",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1117041",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1117241",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1117411",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1117716",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1118018",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1118321",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1118622",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1118926",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1119124",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1119530",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1119751",
+   "text": "Wall Safe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1119752",
+   "text": "Wall Safe",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1120108",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1120410",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1120712",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1120993",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121128",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121263",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121398",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121725",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121860",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1121995",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122130",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122458",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122593",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122733",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122873",
+   "text": "hatch",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122964",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122965",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122966",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122967",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122968",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122969",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122970",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122971",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122972",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122973",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122974",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122975",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122976",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122977",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122978",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122979",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122980",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122981",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122982",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122983",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122984",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122985",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122986",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122987",
+   "text": "advanced training dummy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122994",
+   "text": "Candle Tray",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122995",
+   "text": "Candle Tray",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122998",
+   "text": "Candle Tray",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1122999",
+   "text": "Candle Tray",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123002",
+   "text": "Lobster Dinner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123003",
+   "text": "Lobster Dinner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123004",
+   "text": "Tiger Statuette",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123237",
+   "text": "Carving Kit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123238",
+   "text": "Carving Kit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123239",
+   "text": "Carvable Pumpkin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123240",
+   "text": "Rotten Pumpkin",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123299",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123300",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123301",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123306",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123310",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123311",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123312",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123313",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123317",
+   "text": "Clawfoot Tub",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123325",
+   "text": "Epaulette",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123326",
+   "text": "Gargish Epaulette",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123328",
+   "text": "Pile of Logs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123329",
+   "text": "Roasting Pig on a Spit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123340",
+   "text": "Pile of Logs",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123341",
+   "text": "Roasting Pig on a Spit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123351",
+   "text": "Pulled Pork Platter",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123352",
+   "text": "Pulled Pork Sandwich",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123353",
+   "text": "In Commemoration of Broadsword Online Games & the Future of Britannia, February 4, 2014",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123354",
+   "text": "In Commemoration of Broadsword Online Games & the Future of Britannia, February 4, 2014",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123355",
+   "text": "Easter Bunny",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123356",
+   "text": "Easter Bunny",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123357",
+   "text": "Marshmallow Duckling",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123358",
+   "text": "Marshmallow Duckling",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123359",
+   "text": "Covetous Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123360",
+   "text": "Covetous Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123361",
+   "text": "Deceit Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123362",
+   "text": "Deceit Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123363",
+   "text": "Despise Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123364",
+   "text": "Despise Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123365",
+   "text": "Destard Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123366",
+   "text": "Destard Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123367",
+   "text": "Hythloth Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123368",
+   "text": "Hythloth Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123369",
+   "text": "Pride Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123370",
+   "text": "Pride Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123371",
+   "text": "Shame Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123372",
+   "text": "Shame Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123373",
+   "text": "Wrong Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123374",
+   "text": "Wrong Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123375",
+   "text": "Compassion Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123376",
+   "text": "Compassion Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123377",
+   "text": "Honesty Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123378",
+   "text": "Honesty Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123379",
+   "text": "Honor Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123380",
+   "text": "Honor Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123381",
+   "text": "Humility Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123382",
+   "text": "Humility Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123383",
+   "text": "Justice Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123384",
+   "text": "Justice Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123385",
+   "text": "Sacrifice Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123386",
+   "text": "Sacrifice Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123387",
+   "text": "Spirituality Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123388",
+   "text": "Spirituality Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123389",
+   "text": "Valor Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123390",
+   "text": "Valor Banner",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123391",
+   "text": "Sigil",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123392",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123393",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123394",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123395",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123396",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123397",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123398",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123399",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123400",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123401",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123402",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123403",
+   "text": "Covetous",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123404",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123405",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123406",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123407",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123408",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123409",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123410",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123411",
+   "text": "Deceit",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123412",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123413",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123414",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123415",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123416",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123417",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123418",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123419",
+   "text": "Despise",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123420",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123421",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123422",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123423",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123424",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123425",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123426",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123427",
+   "text": "Destard",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123428",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123429",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123430",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123431",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123432",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123433",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123434",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123435",
+   "text": "Hythloth",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123436",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123437",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123438",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123439",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123440",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123441",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123442",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123443",
+   "text": "Pride",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123444",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123445",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123446",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123447",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123448",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123449",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123450",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123451",
+   "text": "Shame",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123452",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123453",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123454",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123455",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123456",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123457",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123458",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123459",
+   "text": "Wrong",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123460",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123461",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123462",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123463",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123464",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123465",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123467",
+   "text": "Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123468",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123469",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123470",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123471",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123472",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123473",
+   "text": "Marble Bar",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123474",
+   "text": "Crystal Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123475",
+   "text": "Crystal Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123476",
+   "text": "Jade Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123477",
+   "text": "Jade Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123478",
+   "text": "Obsidian Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123479",
+   "text": "Obsidian Skull",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123480",
+   "text": "Potted Coffee Plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123481",
+   "text": "Potted Coffee Plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123482",
+   "text": "Potted Coffee Plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123483",
+   "text": "Potted Coffee Plant",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123484",
+   "text": "Coffee Pod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123485",
+   "text": "Coffee Pod",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123486",
+   "text": "Bear Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123487",
+   "text": "Bear Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123488",
+   "text": "Gray Wolf Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123489",
+   "text": "Gray Wolf Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123490",
+   "text": "Cougar Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123491",
+   "text": "Cougar Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123492",
+   "text": "Turkey Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123493",
+   "text": "Turkey Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123494",
+   "text": "Bull Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123495",
+   "text": "Bull Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123496",
+   "text": "Boar Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123497",
+   "text": "Boar Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123498",
+   "text": "Walrus Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123499",
+   "text": "Walrus Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123500",
+   "text": "Alligator Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123501",
+   "text": "Alligator Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123502",
+   "text": "Eagle Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123503",
+   "text": "Eagle Trophy",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123504",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123505",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123506",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123507",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123508",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123509",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123510",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123511",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123512",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123513",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123514",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123515",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123516",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123517",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123518",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123519",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123520",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123521",
+   "text": "Sewing Machine",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123522",
+   "text": "Stool",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123523",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123524",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123525",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123526",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123527",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123528",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123530",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123531",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123532",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123533",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123534",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123535",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123536",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123537",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123538",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123539",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123540",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123541",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123542",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123543",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123544",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123545",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123546",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123547",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123548",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123549",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123550",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123551",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123552",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123553",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123554",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123555",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123556",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123557",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123558",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123559",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123560",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123561",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123562",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123563",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123564",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123565",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123566",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123567",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123568",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123569",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123570",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123571",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123572",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123573",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123574",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123575",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123576",
+   "text": "Fireplace",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123577",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123578",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123579",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123580",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123581",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123582",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123583",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123584",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123585",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123586",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123587",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123588",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123589",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123590",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123591",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123592",
+   "text": "Smithing Press",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123593",
+   "text": "Crates",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123594",
+   "text": "Gift Box",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123595",
+   "text": "Gift Box",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123596",
+   "text": "Gift Box",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123597",
+   "text": "Book",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123598",
+   "text": "Steam Powered Beverage Maker",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123599",
+   "text": "Grinder",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1123600",
+   "text": "Grinder",
+   "flag": "Modified",
+   "category": "english_only"
+  }
+ ]
+}

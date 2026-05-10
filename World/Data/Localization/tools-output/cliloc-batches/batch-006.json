@@ -1,0 +1,3006 @@
+{
+ "batch": 6,
+ "count": 500,
+ "entries": [
+  {
+   "number": "1075147",
+   "text": "Jhelom",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075148",
+   "text": "Lord British's Castle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075149",
+   "text": "New Magincia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075150",
+   "text": "Minoc (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075151",
+   "text": "Valoria (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075152",
+   "text": "Ambrosia",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075153",
+   "text": "Stones (Alternative)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075154",
+   "text": "Skara Brae (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075155",
+   "text": "Trinsic (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075156",
+   "text": "Vesper",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075157",
+   "text": "Yew",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075158",
+   "text": "Yew (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075159",
+   "text": "Dungeon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075160",
+   "text": "Dragons (High)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075161",
+   "text": "City Night",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075162",
+   "text": "Walking",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075163",
+   "text": "Boat Travel",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075164",
+   "text": "Tavern 1",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075165",
+   "text": "Tavern 2",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075166",
+   "text": "Tavern 3",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075167",
+   "text": "Pub Tune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075168",
+   "text": "Good vs. Evil",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075169",
+   "text": "Humanoids",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075170",
+   "text": "Gargoyles",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075171",
+   "text": "Death Tune",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075172",
+   "text": "Victory",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075173",
+   "text": "Overlord",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075174",
+   "text": "Nujel'm",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075175",
+   "text": "Dragons (Low)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075176",
+   "text": "Cove",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075177",
+   "text": "Moonglow (Positive)",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075178",
+   "text": "Zento",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075179",
+   "text": "Tokuno Dungeon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075180",
+   "text": "Taiko",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075181",
+   "text": "Dread Horn Area",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075182",
+   "text": "Elf City",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075183",
+   "text": "Melisandes Lair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075184",
+   "text": "Paroxysmus Lair",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075185",
+   "text": "Linelle",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075186",
+   "text": "Grizzle Dungeon",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1075200",
+   "text": "妖精護符 (~1_FORM~ 型態)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075208",
+   "text": "減少彈藥消耗 ~1_Percentage~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075210",
+   "text": "增加善惡值損失 ~1val~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075214",
+   "text": "UO八週年禮物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075217",
+   "text": "還可使用 ~1_val~ 次",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075218",
+   "text": "無限箭袋<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075219",
+   "text": "妖精護符<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075223",
+   "text": "<body>美德護具組的一部份。<br>物理抗性 8%<br>火焰抗性 8%<br>寒冷抗性 7%<br>毒物抗性 9%<br>能量抗性 8%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075224",
+   "text": "<body>美德護具組的一部份。<br>物理抗性 6%<br>火焰抗性 6%<br>寒冷抗性 8%<br>毒物抗性 6%<br>能量抗性 9%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075225",
+   "text": "<body>防禦技能 +5<br>生命值增加 5<br>生命值回復 1<br>物理抗性 1%<br>能量抗性 1%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075226",
+   "text": "<body>一天可在此噴泉的恢復水源中浸泡最多10個繃帶。浸泡過的繃帶可以使治療效果 +10。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075227",
+   "text": "<body>使用時，從4首隨機挑選的音軌中選擇一首。在遊戲過程中可以撿到其他的音軌並加入音樂盒中。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075228",
+   "text": "<body>死靈法術 +10<br>魔法值恢復 1<br>快速施法 1<br>增加善惡值損失 5%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075229",
+   "text": "<body>當一名忍者裝備了妖精護符後，他將可以使用動物型態能力變身成為新發現的生物之一。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075230",
+   "text": "<body>傷害調整值：10%<br>防禦機率提升 5%<br>減少彈藥消耗 20%<br>重量減輕 30%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075234",
+   "text": "~1_NUMBER~ 首普通音軌",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075235",
+   "text": "~1_NUMBER~ 首罕見音軌",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075236",
+   "text": "~1_NUMBER~ 首稀有音軌",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075248",
+   "text": "一枚古幣已放入你的背包。在上頭按兩下兌換你的 ~1_PROMO~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075253",
+   "text": "點選「確定」將你的性別變更為女性。這個變更是永久的。必須購買額外的性別變更古幣才能逆轉改變。詳細說明，<A HREF=\"http://www.uo.com/genderchange.html\">請參見我們的網站</A>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075254",
+   "text": "點選「確定」將你的性別變更為男性。這個變更是永久的。必須購買額外的性別變更古幣才能逆轉改變。詳細說明，<A HREF=\"http://www.uo.com/genderchange.html\">請參見我們的網站</A>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075255",
+   "text": "裝飾性個人祝福契約屬於 ~1_OWNER~.",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075257",
+   "text": "~1_PETNAME~ 背包的內容物。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075258",
+   "text": "你只能朝 ~1_facetid~ 面使用這玩意兒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075262",
+   "text": "控訴目標「~1_NAME~」找不到。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075265",
+   "text": "彈藥：~1_QUANTITY~/~2_CAPACITY~ 支箭矢",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075266",
+   "text": "彈藥：~1_QUANTITY~/~2_CAPACITY~ 支弩箭",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075292",
+   "text": "~1_NAME~ 已被解除祝福。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075293",
+   "text": "~1_NAME~ 已被祝福。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075312",
+   "text": "我在海盜窩誕生及長大。你去過那裡嗎？那麼你就知道那是個無法治的地區。五年以前，我的母親和父親被那裡的強盜殺死了。那時我還是個孩童，所以我被送來這裡和我的叔叔同住。<br>最近，有個男人搬入城鎮，我很確定這個男人就是殺死我父母的兇手。警長什麼事也不願意做，他不相信我說的。我能怎麼辦？我不是戰士。我無法使用魔法。我沒有勇氣為我的家人復仇。求求你，如果你是熱愛正義之士，請為我找出並除掉這個罪犯！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075318",
+   "text": "由 ~1_NAME~ 復活",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075354",
+   "text": "由 ~1_NAME~ 拼湊組合",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075417",
+   "text": "打擾一下，能否請你聽聽我的故事？我的家族，迪波爾斯家族，從很久以前就以買賣珠寶為業。然而，打從我出生起，我們陷入了困境。<br>為了生存，我得變賣家族的資產。大部分的東西都沒有什麼意義，不過，多年前我犯下了一個令我懊悔的錯誤。我典當了一面刻有我家族紋章的盾牌給放高利貸的。那面盾牌曾隨著我們家族的奠基者珍迪波爾斯上過戰場！對其他人來說，它可能沒什麼價值，但是那個惡棍不信我沒有錢。他說我必須拿出珠寶，他才願意歸還盾牌。<br>現在，我得知自己離死期不遠。很快的我的家族就會隨我一同消失在力史上。為了我和我家族僅存的一點榮耀，我無法忍受讓我們的祖傳盾牌流落在惡徒的手中。你願意幫我取回盾牌嗎？<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075455",
+   "text": "只有當他們狼人時你才能傷害此NPC",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075456",
+   "text": "除非你正在執行罪犯任務，否則你無法傷害此NPC",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075466",
+   "text": "啊，對，就是你。過來這裡。<br>你似乎有些迷惑。<br>經過這裡的每個人幾乎都有這種情況。<br>你知道嗎，你以前曾經來過這裡。就某種程度而言，我們全都來自這個地方。<br>仍舊感到迷惑。讓我做進一步解釋。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075467",
+   "text": "很久以前，我們是一個社會。<br>後來，由於蒙丹追尋力量而導致不滅寶石毀滅的重大日子終於到來。<br>現在，我們居住在彼此極為類似的世界中，但在實體和精神上卻是完全獨立。<br>但有時候會出現轉移，像你我這樣的人能夠穿梭至其他的實境。這個實境。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075468",
+   "text": "讓我帶你參觀一下你的新家。<br>仔細瞧瞧在你面前的水晶球。<br>它會把你傳送到成為你未來一部份的地方。<br>我的精神會與你同在。<br>你可能會看見其他像你的人，但他們卻看不見你。<br>準備好瞧瞧不列顛尼亞了嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075469",
+   "text": "這是不列顛城，不列顛尼亞上最大的城市。<br>更精確的說，你正站在不列顛城主銀行的門外。<br>城鎮中心，例如這座銀行，通常可以找到你在尋找的人或事物。<br>當你找不到需要的物品時，你可能必須自行製作。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075470",
+   "text": "這是哈文鎮。看到那裡的熔爐了嗎？大部分的城市都有一座。<br>這裡的鐵匠販售著簡單的護具和武器，不過你將學會如何製作更精良的。<br>有一天，你可能會決定成為一名裁縫師或煉金術士，或是一位知名的木工。<br>你的銀行保險箱或許沒有足夠的空間容納你的所有物品，所以你會需要一個更大的地方儲存你的東西。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075471",
+   "text": "你目前置身於新月城，聖騎士之城。<br>這座城市城牆內的建築物均為不列顛尼亞居民所有及興建。<br>如你所見，某些屋主是出色的建築師。其他屋主則喜歡將時間投注在獵龍上，而只興建簡陋的住所。<br>屋主甚至可以在他們家雇用私人小販銷售物品。<br>某些房屋則因為設計和歷史背景而出名。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075472",
+   "text": "這裡是花園迷宮，至少是其中一部份。<br>它是由雷文尼亞這位對惡魔深深著迷的高強、瘋狂魔法師所建造。<br>他的某些實驗品仍舊活著，靜候著下個犧牲者進入迷宮中心。<br>沒有人知道雷文尼亞的下落。他的消失至今仍就是個謎。<br>這個話題就此打住。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075473",
+   "text": "這座瀑布位在德野島的主城禪道城內。<br>德野島是忍者和武士的故鄉，同時也是許神秘生物的家園。<br>德野島曾是一塊稱為封建領主之地的廣大大陸的一部份。<br>在這塊大陸近乎毀滅之後，剩餘的土地上被施展了保護法術。直到最近才有人發現它的存在。<br>現在，它再度成為此世界的一部份。<br>說道我們世界的重新接合，讓我們前往心木一探究竟。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075474",
+   "text": "心木並未被隱藏起來，它一直存在於此世界的中心。<br>但是，當寶石碎裂後，進入此樹木心臟地帶的途徑被中斷了。<br>心木是索沙利亞精靈的家園。他們的文化與眾不同，但我們學會了如何再度共同生存。<br>最重要的，<br>你會發現，這裡仍舊有忠於蒙丹的教派。<br>他們自稱為沒落教派。<br>在你深入探究不列顛尼亞的歷史時，你會讀到更多關於他們的事情。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075475",
+   "text": "而這引領我們來到你旅程的最終目的地。<br>這或許能給你一些啟示。<br>你站在末日地城的中央，這是不列顛尼亞最危險的地方。<br>你現在十分安全，不過下次造訪此地時務必小心。<br>此地的邪惡生物下次不會那麼有耐性。我也一樣。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075476",
+   "text": "多年以前，在寶石碎裂之前，我們可以成為朋友及伙伴。<br>現在，我被困在碎片之中，毫無希望，而你仍舊可以自由在世界上遊走。<br>我們不是敵人，但你有我在尋找的東西。你的自由將成為我的。<br>這也就是我趁機帶你四處遊歷各寶石碎片世界的原因。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075477",
+   "text": "我很有耐心，可以等候你精通劍術與魔法。<br>接著，我們便可進行一場千古流傳的決鬥。<br>現在，是你該學習的時候了。<br>訓練，變得更強，且做好準備。小心地進行研究。<br>為我們重逢之日做好計畫。<br>到時候見了，日安。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075486",
+   "text": "我對空射出了一箭...<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075504",
+   "text": "<U>取消懸而未決的請求</U>：從佇列中移除我尚未解決的求助請求。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075522",
+   "text": "喔，我真希望我擁有一件像British城堡的高貴女士那樣的別緻衣裳！我並不富有...但我有一些廉價首飾可以拿來交換。若我出別緻的席舞會，並徹夜跳舞，對我來說意義深遠。喔，我可以告訴你製作衣裳的方法！你只需在足夠的切割衣料上使用裁縫工具即可。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075529",
+   "text": "有十字鎬嗎？我的供應商遲到了，我需要一些鐵礦，如此我才能j完成另一個商人的大訂單。如果你可以盡快替我弄來一些鐵礦，我將以市價的兩倍向你購買。你可以在洞穴或山邊用你的十字鎬挖掘看看，或許你會發現一處礦脈！我只需要五塊就夠了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075551",
+   "text": "<center>愜意生活入門套件</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075554",
+   "text": "<center>春季裝飾典藏物品</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075561",
+   "text": "點選「確定」將永遠改變你的角色名字。必須購買額外的名字變更古幣才能逆轉此動作。詳情請見 <A HREF=\"http://www.uo.com/namechange.html\"> 我們的網站</A>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075579",
+   "text": "你確定要將你的名字從 ~1_CURNAME~ 變更為 ~2_NEWNAME~ 嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075580",
+   "text": "你確定要將你的性別從 ~1_CURGENDER~ 變更為 ~2_NEWGENDER~ 嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075581",
+   "text": "你確定要將你的性別從 ~1_CURGENDER~ 變更為 ~2_NEWGENDER~ 嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075585",
+   "text": "練武器學上限 ~1_CAP~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075611",
+   "text": "剩餘時間：~1_time~ 秒",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075633",
+   "text": "每 ~2_SEC~ 秒造成 ~1_DMG~ 毒物傷害。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075634",
+   "text": "命中機率 +10%<br>傷害 +10%<br>攻擊速度 +10%<br>防禦機率 -20%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075640",
+   "text": "生命值恢復速度降低 ~1_PERCENT~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075642",
+   "text": "精力值恢復速度降低 ~1_PERCENT~%",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075646",
+   "text": "五步之後造成 ~1_DMG~ 傷害，或在時間用盡後造成一半傷害。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075652",
+   "text": "來自 ~2_PLAYER~ 的傷害 +~1_AMOUNT~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075654",
+   "text": "對 ~2_ARTICLE~ ~3_TEMPLATES~ +~1_PERCENT~% 傷害。<br>~2_ARTICLE~ ~3_TEMPLATES~ 以外目標對你的傷害 +~4_PERCENT~%。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075660",
+   "text": "來自 ~1_TARGET~ 的傷害 +20%<br>來自 ~1_TARGET~ 的傷害加諸於他們自身。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075662",
+   "text": "任何加諸於 ~1_CASTER~ 的傷害也會加諸於你身上。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075664",
+   "text": "物理抗性 +10%。<br> 寒冷抗性 +10%。<br>火焰抗性 -15%。<br>毒物抗性 -15%。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075668",
+   "text": "當痛苦之釘消失後 +~1_DMG~ 生命值。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075673",
+   "text": "畫面上沒有 ~1_targettype~ 可選擇。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075678",
+   "text": "<center>謙遜的符號為何？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075683",
+   "text": "<center>謙遜的對立為何？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075688",
+   "text": "<center>謙遜的顏色為何？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075693",
+   "text": "<center>如何追尋謙遜？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075698",
+   "text": "<center>哪座城市體現了謙遜的需求？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075703",
+   "text": "<center>請說出挑戰謙遜的萬惡之源？</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075708",
+   "text": "<center>完成此格言：謙遜向我們展現...</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075713",
+   "text": "啊... 不對，那樣不正確。確切的說，必須透過時間與經驗才能了解謙遜的含意。我希望這能刺激你們追尋關於此美德的更多知識，明天再讓我們聊聊你學到了什麼。<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075729",
+   "text": "我勤奮的朋友，我還有一件善舉要你去做。前往不列顛城圖書館並做出捐獻，並想辦法獲得 Lord British 製作的特殊「美德」印刷物。一旦印刷物到手，帶著那本書回來這裡，你準備好了嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075732",
+   "text": "你遇上麻煩了嗎？圖書館就在British城堡大門的北邊。我相信你可以輕鬆地找到管理捐助事宜的代表。他們在那知識寶庫中等候著你的駕臨。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075736",
+   "text": "非常好。當你滿足了最謙遜者的需求，你將取得一件對我有意義的物品。拿著這只 <B>黃銅戒指</B> 展開你們的任務。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075738",
+   "text": "事實上，在不列顛尼亞，「謙遜的公民」不少於七位。我知道他們可以在米諾克城、史卡拉坡城和不列顛城找到。其他人則可以在一個海上的島嶼找到，但我忘了島嶼的名稱。你們必須拜訪這七個人，解開迷團。由於他們會四處遊蕩，所以你得辛苦一些。<BR><BR><br>你穿上樸素的灰色披風了嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075741",
+   "text": "我只需要 ~1_desire~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075742",
+   "text": "如果我能獲得我所需要的，我很樂意拿這個 ~1_gift~ 作為交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075743",
+   "text": "啊，謝謝你！這個 ~1_desire~ 正是我需要的。請收下這個 ~2_gift~ - 我希望它對你有用。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075745",
+   "text": "你好。我在 Lord British 城堡的陰暗處拾荒為生。可以肯定的是，我是如此地卑微，你雖幫不上什麼忙，但可以看到我過著謙遜的生活。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075746",
+   "text": "一個~1_desire~將可讓我的生活好過些。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075747",
+   "text": "我不需要這個 ~1_gift~。若有適當的物品，我願意拿東西交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075748",
+   "text": "*倒抽一口氣* 一個 ~1_desire~，太完美了。我完全沒有料到。拿去，我現在不再需要這個 ~2_gift~ 了。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075751",
+   "text": "我只需要 ~1_desire~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075752",
+   "text": "我完全用不到這個 ~1_gift~ 。如果你為我帶來適合的物品，我願意拿東西交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075753",
+   "text": "啊，這是個完美的 ~1_desire~。請收下這個 ~2_gift~ 作為交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075756",
+   "text": "我所要的是 ~1_desire~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075757",
+   "text": "我之前拿到了這個 ~1_gift~ ，但我不會使用它。我很樂意拿它交換適當的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075758",
+   "text": "謝謝你！這個 ~1_desire~ 正是我需要的。拿去，這個 ~2_gift~ 給你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075761",
+   "text": "說到有用，如果你能為我帶來 ~1_desire~，我會相當感激。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075762",
+   "text": "之前有人送我這個 ~1_gift~ 做為禮物。我並不需要它，如果你能為我帶來有趣的東西，或許我會拿它做交換。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075763",
+   "text": "你為我帶來了 ~1_desire~！非常有用。拿去，請收下這個 ~2_gift~ 當作我的感謝。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075766",
+   "text": "然而，我仍舊有所需求。~1_desire~ 肯定對我大有幫助。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075767",
+   "text": "有人誤寄了這個 ~1_gift~ 給我，我想拿它交換所需。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075768",
+   "text": "~1_desire~！非常感謝你。請收下這個 ~2_gift~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075771",
+   "text": "不過，我有個卑微的要求。我一直找不到 ~1_desire~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075772",
+   "text": "太棒了！~1_desire~！為我弄到這個，肯定讓你惹上不少麻煩。請收下這個我為嘉瑞斯製作的鐵鍊。我們之前曾經聊到過這玩意兒，他建議採取一種我剛剛才實驗成功的金屬製造方法。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075782",
+   "text": "尊貴的朋友，你們的表現非常出色！根據你為振興不列顛尼亞所付出的努力，我希望拿這面黃金盾牌獎勵你，這是個成就與驕傲的象徵，感謝你為我們人民所做的一切。<BR><BR><br>你願意接受嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075784",
+   "text": "*微笑* 我了解你的感受，朋友。那麼，對那些曾受你恩惠的人來說，他們將不會認出你。<BR><br>然而，經歷這所有的試煉，或許你已更加了解謙遜的真正本質。<br>和我們所居住的廣大世界相比，你的努力可能極其卑微，但若我們的子民能夠同心協力，我們將變得更為強盛。<BR><BR><br>我希望你能保留我先前給你的那件披風。你可以隨意處置它，但我希望它能不時提醒你我們共同努力的那些時日。<br>雖然我已經沒有什麼東西可以給你，我仍舊希望激勵你繼續在這條道路上邁進，隨時尋求向世界展現你謙遜一面的機會。<br>在謙遜神殿的南邊有座小島。去那裡尋求慰藉，或許你所有的疑惑都能獲得解答。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075785",
+   "text": "<center>嘉瑞斯</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075786",
+   "text": "<center>振興不列顛尼亞活動大使</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075793",
+   "text": "Lord British 製作的特殊「美德」印刷物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075795",
+   "text": "造成不等的 (~1_MINDMG~ 至 ~2_MAXDMG~) 毒性傷害，頻率和殺傷力會隨時間而提升。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075797",
+   "text": "+~1_DMG~ 生命值/2秒",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075799",
+   "text": "你可以吸收 ~1_AMOUNT~ 點物理傷害。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075801",
+   "text": "魔法回復增加 ~1_seconds~ 秒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075803",
+   "text": "攻擊速度增加 ~1_CASTTIME~ 秒。<br>施法時間增加~2_SWINGTIME~ 秒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075808",
+   "text": "+~1_SPELLDMG~% 法術傷害。<br>提升治療技能。<br>召喚寵物 +~2_HP~% 生命值。<br>消除召喚寵物的困難度增加。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075813",
+   "text": "+~1_PRAMT~% 物理抗性。<br>-~2_FRAAMT~% 火焰抗性。<br>-~3_CRAAMT~% 寒冷抗性。<br>-~4_POSRAAMT~% 毒物抗性。<br>-~5_FRAAMT~% 能量抗性。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075815",
+   "text": "~1_PRAMT~% 物理抗性。<br>~2_MRAMT~% 抗魔技能。<br>當你被擊中時你的法術將不會被中斷。<br>你的施法速度減慢。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075818",
+   "text": "~1_AMT~% 物理抗性。<br>~2_AMT~% 火焰抗性。<br>~3_AMT~% 寒冷抗性。<br>~4_AMT~% 毒物抗性。<br>~5_AMT~% 能量抗性。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075823",
+   "text": "你變形為 ~1_ARTICLE~ ~2_FORM~。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075830",
+   "text": "造成 ~1_DMG~ 至 ~2_DMG~ 傷害/~3_TIME~ 秒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075832",
+   "text": "-~1_AMT~% 敏捷。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075834",
+   "text": "-~1_AMT~% 智力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075836",
+   "text": "-~1_STR~% 力量。<br>-~2_DEX~% 敏捷。<br>-~3_INT~% 智力。<br>-~4_FR~ 最大火焰抗性。<br>-~5_CR~ 最大寒冷抗性。<br>-~6_PR~ 最大毒物抗性。<br>-~7_ER~ 最大能量抗性。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075838",
+   "text": "-~1_AMT~% 力量。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075840",
+   "text": "-~1_STR~% 力量。<br>-~2_DEX~% 敏捷。<br>-~3_INT~% 智力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075842",
+   "text": "+~1_AMT~% 敏捷。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075844",
+   "text": "+~1_AMT~% 智力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075846",
+   "text": "+~1_AMT~% 力量。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075848",
+   "text": "+~1_STR~% 力量。<br>+~2_DEX~% 敏捷。<br>+~3_INT~% 智力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075849",
+   "text": "CJT debug：數值 = ~1_value~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075887",
+   "text": "此物件有先前使用神諭系統的資料，包括關鍵字和應答。你要移除他們嗎？按下 <B>確定</B> 繼續，或按 <B>取消</B> 保留舊資料。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075891",
+   "text": "Buff和Debuff將會在此顯示。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075902",
+   "text": "對你下次攻擊生物的傷害 +~1_PERCENT~%。<br>來自除你下次攻擊生物之外的傷害 +~2_PERCENT~%。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075986",
+   "text": "令你的客廳讓人眼睛一亮，並特別強調，我喜歡坐上我家具時發出的聲響。這些漂亮、手工製的家具是用因各種疾病、戰爭、災難和意外死去的人的漂白骨頭所製成。這些骨頭之中，某些還散發出微弱的生命氣息。<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1075999",
+   "text": "Punkbuster訊息：~1_REASON~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076005",
+   "text": "歡迎來到 ~1_OWNER_NAME~ 的家。請別穿鞋踩在傢俱上。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076006",
+   "text": "通報 ~1_VISITOR_TITLE~ ~2_VISITOR_NAME~ 的到來。房屋的 ~3_OWNER_SEX~ 向你致上歡迎之意。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076007",
+   "text": "我的 ~1_OWNER_SEX~，你有訪客！~2_VISITOR_TITLE~ ~3_VISITOR_NAME~ 正等候你的現身。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076008",
+   "text": "歡迎來到 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 的家，請脫鞋，並找個地方坐。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076009",
+   "text": "啊，歡迎你， ~1_VISITOR_TITLE~ ~2_VISITOR_NAME~。我已預知你會前來，我也知道你的目的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076011",
+   "text": "請注意，請注意！全體歡迎 ~1_TITLE~ ~2_NAME~ 的蒞臨！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076012",
+   "text": "讓開，你這不洗澡的野人！快點讓開！~1_TITLE~ ~2_NAME~ 的事情比你的更重要！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076013",
+   "text": "~1_TITLE~ ~2_NAME~ 快到了！準備屈膝迎接他們的駕臨！記住，只能以黃金作為貢品！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076014",
+   "text": "扯下你的披肩和頭巾！灑滿花瓣！迎接 ~1_TITLE~ ~2_NAME~ 的到來！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076028",
+   "text": "請與GM聯繫並詢問此項目。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076038",
+   "text": "歡迎來到 ~1_OWNER_NAME~ 的家。請別穿鞋上家具。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076039",
+   "text": "通報 ~1_VISITOR_TITLE~ ~2_VISITOR_NAME~ 的到來。房屋的 ~3_OWNER_SEX~ 向你致上歡迎之意。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076040",
+   "text": "我的 ~1_OWNER_SEX~，你有訪客！~2_VISITOR_TITLE~ ~3_VISITOR_NAME~ 正等候你的現身。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076041",
+   "text": "歡迎來到 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 的寒舍，請脫鞋，並找個地方坐。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076042",
+   "text": "啊，歡迎你， ~1_VISITOR_TITLE~ ~2_VISITOR_NAME~。我已預知你會前來，我也知道你的目的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076044",
+   "text": "請注意，請注意！全體歡迎 ~1_TITLE~ ~2_NAME~ 的蒞臨！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076045",
+   "text": "讓開，你這不洗澡的野人！快點讓開！~1_TITLE~ ~2_NAME~ 的事情比你的更重要！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076046",
+   "text": "~1_TITLE~ ~2_NAME~ 快到了！準備屈膝迎接他們的駕臨！記住，只能以黃金作為貢品！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076047",
+   "text": "扯下你的披肩和頭巾！灑滿花瓣！迎接 ~1_TITLE~ ~2_NAME~ 的到來！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076048",
+   "text": "~1_TITLE~ ~2_NAME~ 已經抵達！盡情暢飲！開始歡慶！而你，帶著豬的，快點串燒那頭野獸！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076049",
+   "text": "讓 ~1_SAME_SEX~ 蜷縮並令 ~2_OPPOSITE_SEX~ 狂喜，~3_TITLE~ ~4_NAME~ 即將到來。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076054",
+   "text": "歡迎光臨這個簡陋的市場。如果你需要任何協助 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 很樂意為你服務。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076055",
+   "text": "來吧，朋友！前來參觀 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 物品琳瑯滿目的奇妙商店！如果你在這裡找不到想要的，我建議你去其他地方瞧瞧！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076056",
+   "text": "*瞇著眼瞧著 ~1_VISITOR_NAME~ ，皺著眉頭，並指著牆上的招牌*「藥材僅供法術施展使用，請勿食用！」",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076071",
+   "text": "~1_NAME~ 擲出 ~2_DICE~d~3_FACES~：~4_ROLLS~ (總計：~5_TOTAL~)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076072",
+   "text": "~1_TITLE~ ~2_NAME~ 已經抵達！盡情暢飲！開始歡慶！而你，帶著豬的，快點串燒那頭野獸！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076073",
+   "text": "讓 ~1_SAME_SEX~ 蜷縮並令 ~2_OPPOSITE_SEX~ 狂喜，~3_TITLE~ ~4_NAME~ 即將到來。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076074",
+   "text": "歡迎光臨這個簡陋的市場。如果你需要任何協助 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 很樂意為你服務。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076075",
+   "text": "來吧，朋友！前來參觀 ~1_OWNER_TITLE~ ~2_OWNER_NAME~ 物品琳瑯滿目的奇妙商店！如果你在這裡找不到想要的，我建議你去其他地方瞧瞧！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076076",
+   "text": "*瞇著眼瞧著 ~1_VISITOR_NAME~ ，皺著眉頭，並指著牆上的招牌*「藥材僅供法術施展使用，請勿食用！」",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076144",
+   "text": "~1_OWNER~ 的資產",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076149",
+   "text": "安裝Punkbuster",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076150",
+   "text": "接受《網路創世紀》服務條款 (UO TOS)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076151",
+   "text": "點選這裡檢視《網路創世紀》服務條款 (UO TOS)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076152",
+   "text": "接受UO TOS (點選可以檢視)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076160",
+   "text": "必須安裝Punkbuster才能進入所有的伺服器。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076161",
+   "text": "找不到Punkbuster安裝程式。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076178",
+   "text": "你的鉗工技能太低而無法自行修理此物品。NPC鉗工可以為你修理物品，但須收費。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076179",
+   "text": "由於你沒有鉗工技能，你得求助於NPC鉗工為你修復此物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076196",
+   "text": "你需要滿滿一桶的爆炸藥水來重灌大砲使用次數。你的桶子將提供 ~1_CHARGES~ 次使用次數。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076202",
+   "text": "由 ~1_Name~ 雕刻",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076207",
+   "text": "剩餘次數：~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076226",
+   "text": "~1_ACTUAL_TID~ ~2_BOOL_TO_HUE~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076228",
+   "text": "~1_DUMMY~ ~2_DUMMY~",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076231",
+   "text": "~1_Name~ 的雕像",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076240",
+   "text": "非常好，「~1_name~」。「你」對先前討論「我自己」的內容有任何記憶嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076250",
+   "text": "為了符合「你們」的習慣：再會，「~1_name~」。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076252",
+   "text": "由於你使用了非法的第三方程式，你被暫時移出遊戲兩分鐘。請確定你已從你的電腦上移除下列程式：  ~2_PROGRAM~。此時，你的帳號正被調查，並且可能會針對此次違規採取必要行動。使用未經許可的第三方程式繼續登入，可能會導致更嚴重的處罰。更進一步的資訊請參見support.uo.com。~1_REASON~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076291",
+   "text": "嗨，~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076292",
+   "text": "歡迎，~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076296",
+   "text": "早安，~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076297",
+   "text": "午安，~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076298",
+   "text": "晚安，~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076359",
+   "text": "zzz",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076360",
+   "text": "Zzz",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076361",
+   "text": "zzZz",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076362",
+   "text": "zz.. Zzz...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076363",
+   "text": "Zzz.. Zzz...",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076412",
+   "text": "Lord British 曾經睡在那個房間裡！它也有個秘密！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076421",
+   "text": "真是大啊！在許多 Lord British 和他的議會開會時我經常坐在那上頭",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076438",
+   "text": "打從一開始， Lord British 就是不列顛尼亞的統治者",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076440",
+   "text": "這片土地是由 Lord British 和奈斯圖爾所開闢，以撐過米納克斯帶給我們的可怕邪惡時光",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076450",
+   "text": "Lord British 曾畫了張那個地方的地圖，我真不知道那裡是怎麼回事？那裡有許多國家",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076458",
+   "text": "喔，沒錯，索沙利亞上曾有許多的王國，在早先的日子裡， Lord British 親自統一了許多王國",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076459",
+   "text": "阿卡拉貝和無王之地，後來成了 Lord British 之地，而阿卡拉貝的首都則成了不列顛城",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076460",
+   "text": "Lord British 獲得了「白光勇士」的頭銜，並將蒙丹從這片土地上趕跑",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076462",
+   "text": "Ver！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076463",
+   "text": "Amo！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076464",
+   "text": "Cor！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076466",
+   "text": "Veramocor！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076469",
+   "text": "Ahm！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076470",
+   "text": "Mu！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076471",
+   "text": "Ra！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076472",
+   "text": "Beh！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076473",
+   "text": "Cah！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076474",
+   "text": "Summ！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076475",
+   "text": "Om！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076476",
+   "text": "Lum！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1076504",
+   "text": "Lord British 曾和我提過，我不敢想像，怎會有人創造如此邪惡的製品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076515",
+   "text": "是的，不過，除了在 Lord British 房間的那個晚上，我就沒見過他了。或許他受到某種未知的限制？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076610",
+   "text": "<body>不列顛尼亞的文明已經歷無數的世紀，見證過驚人的榮耀，以及可歌可泣悲劇的暗夜。渡過了如此漫長的時光，以及數百萬的人民來來去去，家具會磨損是十分正常的。首次提供的這組壞掉及毀壞家具，可讓你創造屬於自己的獨有生活風味。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076635",
+   "text": "鋪著紫色桌布的<br>桌子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076636",
+   "text": "鋪著藍色桌布的<br>桌子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076637",
+   "text": "鋪著紅色桌布的<br>桌子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076638",
+   "text": "鋪著橙色桌布的<br>桌子",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076664",
+   "text": "<B>《網路創世紀》獎勵計畫</B><BR>感謝你加入《網路創世紀》社群達六個月。為了表達我們的感激之意，你的數值上限將獲得提升。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076690",
+   "text": "~1_name~ 從你哪裡偷走了 ~2_count~ 枚黃金！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076691",
+   "text": "~1_name~ 從你哪裡偷走了 ~2_count~ 枚黃金！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076693",
+   "text": "~1_name~  將硬幣拋向空中…",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076731",
+   "text": "「立刻在British城堡集合，需要你的協助！」",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076751",
+   "text": "<body>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>+10 偷竊技能。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076752",
+   "text": "<body>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>成為一隻松鼠！成為一隻松鼠！令你的朋友大吃一驚！討人歡心！</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076753",
+   "text": "<body>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>使用背包內的繃帶自動治療。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076754",
+   "text": "<body>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>攻擊時可噴火。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076755",
+   "text": "妖精護符<br>雪貂<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076756",
+   "text": "妖精護符<br>松鼠<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076757",
+   "text": "妖精護符<br>酷西帝獸<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076758",
+   "text": "妖精護符<br>混體幻獸<br>需搭配《蒙丹遺產》",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076759",
+   "text": "技能：~1_skillname~ ~2_skillamount~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076780",
+   "text": "請選擇你的梯子方位。<br>使用有標記 (城堡) 的梯子<br>爬到堡壘和城堡<br>頂端。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1076796",
+   "text": "從 ~1_val~ 取得 (黑石污染)",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077219",
+   "text": "法官維洛納：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077220",
+   "text": "波爾格：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077221",
+   "text": "克斯卡：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077222",
+   "text": "李卡多：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077223",
+   "text": "莉莉安：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077224",
+   "text": "凱爾：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077225",
+   "text": "法蘭西斯科：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077226",
+   "text": "因瑞克：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077227",
+   "text": "哈德森：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077228",
+   "text": "依努：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077229",
+   "text": "尼可拉斯：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077230",
+   "text": "威廉：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077231",
+   "text": "湯瑪斯：~1_TEXT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077267",
+   "text": "無罪：~1_RESULT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077268",
+   "text": "有罪：~1_RESULT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077269",
+   "text": "棄權：~1_RESULT~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077270",
+   "text": "<center><b>法庭規範</b><br>你必須留在你的座位上<br>不得交談<br>禁止攜帶寵物<br>禁止攜帶武器<br>禁止施展魔法<br>禁止睡覺 (若你登出，將被趕出去) <br><br>若要離開法庭，點一下你自己並從關連選單中選擇「離開法庭」。</center>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077293",
+   "text": "Bet Wis Ex！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1077430",
+   "text": "NPC",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1077461",
+   "text": "嗨， ~1_name~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077462",
+   "text": "嗨，幸會， ~1_name~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077463",
+   "text": "啊，這是 ~1_name~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077467",
+   "text": "~1_name~！",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1077468",
+   "text": "喔哈！ ~1_name~！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077469",
+   "text": "嘿，這不是 ~1_name~ 嗎！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077485",
+   "text": "提升 ~1_SKILL~ 為 ~2_VALUE~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077577",
+   "text": "向東離開城鎮並前往舊哈文鎮。對那裡的怪物施展火球術和雷霆之箭，直到你的魔法技能提升至50。<br><center>------</center><br>幸會。你試圖解開神秘魔法藝術的秘密。新哈文鎮法師議會有份差事給你。舊哈文鎮飽受不死生物的侵襲。我們需要你的協助，將城市中的邪惡勢力清理乾淨。舊哈文鎮位在此地的東邊。我建議使用你的攻擊魔法，例如火球術和雷霆之箭，對付棲息於該地的不死生物。<BR><BR>在你踏上旅程之前，務必攜帶充足的藥材。藥材是施展魔法的必須物品。你可以在附近的藥材店購買額外的藥材，或者你可以尋找生長在附近林地中的藥材。只需查看你的魔法書，便可得知各種法術需要哪些藥材。<BR><BR>當你自覺夠格晉升法師學徒的階級時回來找我，我將給你一份神秘獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077581",
+   "text": "非常好！我謹代表新哈文鎮法師議會致贈這把法杖給你。通常，法師在施法之前必須卸除武器。然而，在手持你新獲得的餘燼法杖時，你將能夠念咒施展你的魔法。<BR><BR>即便你目前並未具備鎚類武器技能，餘燼法杖將允許你用它打鬥。然而，當你這樣做時，你的魔法技能將會暫時降低。<BR><BR>最後，當你在近戰中揮舞餘燼法杖，它偶爾會發出火球重創敵人。我希望餘燼法杖能助你一臂之力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077589",
+   "text": "給我的至愛， ~1_target_player~。署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077590",
+   "text": "你擄獲我心， ~1_target_player~。署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077591",
+   "text": "情人節快樂， ~1_target_player~。署名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077592",
+   "text": "黑石讓我為 ~1_target_player~ 瘋狂！屬名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077593",
+   "text": "你點亮了我的愛情之燭， ~1_target_player~！屬名： ~2_player~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077598",
+   "text": "向東離開城鎮並前往舊哈文鎮。使用法術和能力，消耗你的魔法值並冥想，直到你的冥想技能提升至50。<br><center>------</center><br>幸會！我可以教你如何讓你周遭的「世界停止」並集中你的內在能量，補充魔法值。什麼是魔法值？魔法值是練習秘術之人所需的生命能量。當魔法練習者施展法術或抄寫卷軸時，得消耗魔法值。若想成為優異的秘術練習者，必須擁有充足的魔法值。我們這些學習冥想藝術的人，又被稱做斯多亞哲學家。冥想技能讓斯多亞哲學家得以提升他們補充魔法值的速率。<BR><BR>在斯多亞哲學家能夠冥想並補充魔法值之前，必須使用能力或施展法術消耗魔法值。冥想可分為被動或主動兩種形式。主動冥想較難掌握，但可以讓斯多亞哲學家以更快的速率補充魔法值。金屬護甲會干擾冥想補充魔法值的特性。冥想時最好穿著皮甲或布甲。<BR><BR>向東離開城鎮並前往舊哈文鎮。使用法術和能力，消耗你的魔法值，然後主動冥想補充魔法值。<BR><BR>當你自覺夠格晉升斯多亞哲學家學徒的階級時回來找我，我將給你一份神秘獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077604",
+   "text": "向東離開城鎮並前往舊哈文鎮。對你在那裡見到的所有生物使用智力評估技能。你也可以施展法術提升智力評估技能。從事這些活動，直到你的智力評估技能提升至50。<br><center>------</center><br>哈囉。若想精確地發揮你的攻擊法術的威力，必須充分瞭解你的對手。我可以教你如何加強你的攻擊法術的威力，但首先你必須學習如何評估你的對手智力。我有一份學者的任務給你。向東離開城鎮並前往舊哈文鎮。對你在那裡見到的所有生物使用智力評估技能。你也可以施展法術提升智力評估技能。<BR><BR>當你自覺夠格晉升學者學徒的階級時回來找我，我將給你一份神秘獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077610",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡與怪物戰鬥，直到你的搏擊技能提升至50。<br><center>------</center><br>聽著！如果你想要學習自衛基礎，你必須變得更強，參與戰鬥是讓你變強的最佳方式。前往新哈文鎮的決鬥場，和戰鬥指導員進行徒手格鬥。什麼，你怕死？嗯，你確實該怕！成為一名冒險者並非易事。如果你被打倒在地，去找在附近徘徊的治療師，他們會讓你重新站起來。<BR><BR>當你自覺夠格晉升搏擊手學徒的階級時回來找我，我會給你一份獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077613",
+   "text": "是時候了！看來你已順利通過你的自衛訓練。如同之前我所承諾的，這是給你的小獎勵。戴上這副自衛手套，可以提升你對所有事物（毒素除外）的警覺性和抗性。喔，對了，它們還能提升你的生命恢復速率。這確實是副好手套。<BR><BR>喔，如果你擔心你的冥想會受到這副手套的干擾，大可放心。法師可以配戴布質和皮質物品，而無須擔心會有副作用。<BR><BR>現在，離開這裡，去做你該做的事吧！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077616",
+   "text": "在新哈文鎮魔法圖書館，使用抄寫師的筆抄寫你魔法書中已有的第三環和第四環魔法卷軸。記住，你還需要空白卷軸。持續這項差事，直到你的抄錄技能提升至50。<br><center>------</center><br>幸會，歡迎來到新哈文鎮魔法圖書館！你想要學習如何抄寫法術卷軸？你來對地方了！以穩定的手抄錄並注入藥材的力量，在危急的情況下卷軸能夠造成生與死的差異。那些精通抄錄技能的人，能夠抄寫法術並創造出有用且珍貴的魔法卷軸。<BR><BR>在你抄寫某種法術之前，你必須先能在沒有卷軸輔助下施展該法術。這表示你必須擁有適當的法師等級、必要的魔法值，以及必要的藥材。其次，你還需要一張空白卷軸和一支抄寫師的筆。接著，你必須決定想要抄寫的法術。說起來容易，做起來並不簡單。如同所有技能一般，你必須先從較低等級的法術開始練習抄錄技能，然後才能抄寫更高等級的法術。<BR><BR>對抄錄技能來說，魔法值是最重要的一環。使用魔法筆抄錄一份卷軸會消耗你的魔法值。抄錄第三環或更低等級的法術時，並不會構成太大的問題，因為這些法術僅會消耗少量的魔法值。然而，當你抄錄更高環的法術時，你會看到你的魔法值迅速消耗。當這種情況發生時，在繼續抄錄之前暫停一會或進行冥想。<BR><BR>我建議你開始抄寫你所知的任何第三環或第四環法術。如果你對這些法術一無所知，你可以向當地的法師商人或冒險伙伴交易適合抄寫的法術。<BR><BR>當你自覺夠格晉升抄寫師學徒的階級時回來找我，我會給你一份神秘獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077623",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡與施法怪物戰鬥，直到你的抗魔技能提升至50。<br><center>------</center><br>嗨，幸會！若想成為真正的魔法秘術大師，我建議你學習抗魔這種補充技能。從名稱上來看，你或許以為這種技能可以協助你抵抗各種法術，但並非如此。這種技能可協助你減輕會降低你的屬性或持續一段時間的法術效果。但它無法減輕諸如能量球或火焰之擊造成的傷害。<BR><BR>可以抵抗的魔法法術包括笨拙術、詛咒術、弱智術、魔法耗弱、魔法吸取、麻痺術、麻痺力場、毒化術、毒力場和衰弱術。<BR><BR>能夠抵抗的死靈法術包括血誓術、腐皮術、心靈腐化以及痛苦之釘。<BR><BR>達到更高等級時，抗魔技能還能為你的最低元素抗性帶來加權。這種加權僅能附加在所有抗性修正值 - 例如來自裝備的 - 計算之後。這種加權也不具累加性。它會將你的最低抗性值和計算出來的修正值做比較，並採用兩者中較高的。<BR><BR>如你所見，抗魔是一項難以了解且難以掌握的技能。這是因為在加強這項技能的過程中，你得令自己置身險境 - 面臨上述法術的考驗。<BR><BR>舊哈文鎮飽受不死生物的侵襲。我們需要你的協助，將城市中的邪惡勢力清理乾淨。舊哈文鎮位在此地的東邊。對付棲息於該地的不死生物施法者。<BR><BR>當你自覺夠格晉升法師學徒的階級時回來找我，我將給你一份神秘獎品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077634",
+   "text": "嗨，幸會！如果你打算學習輔助法師職業的技能，可以去找以下的指導員：<BR><BR>凱麗娜教導魔法。我建議你先去找她。這項技能可讓人施展能夠治療、傳送、衰弱甚至以火球和雷霆之擊殺死對手的法術。魔法法術也能讓施法者在戰鬥中召喚元素和強大的惡魔，協助作戰。<BR><BR>葛斯塔教導冥想。這項技能可讓人以更快的速率補充魔法值。<BR><BR>密斯訥若教導智力評估。這項技能可大幅增強攻擊魔法法術。智力評估也能讓發師「評估」對手的心智能力。<BR><BR>戴米梭教導搏擊。這項技能可強化戰鬥中的防禦能力。對手將難以擊中施展法術中的法師。<BR><BR>吉利安教導抄錄。這項技能允許抄寫師創造能夠加入法術書的卷軸。抄錄技能也能夠稍微提升法師的攻擊法術威力。<BR><BR>阿里芬教導抗魔技能，這種技能可讓人減輕會降低屬性或持續一段時間的法術效果。<BR><BR>戴米梭位在新哈文鎮決鬥場的入口處。其他的指導員位於新哈文鎮法師學校內。<BR><BR>願你的法術永不令你失望！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077637",
+   "text": "拾起磨損的武士刀，與守衛交談以完成任務。<br><center>------</center><br>他們把你送來我這裡進行裝備。好吧，你必須取得一把武器。我建議使用武士刀，沒有任何東西比三尺鋼刃更能讓對手在攻擊你之前再三考慮。<br><br>告訴你。幫我取來那把武士刀。就在那邊的桌上。我必須先行確認它能夠刺穿那些非自然生物。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077640",
+   "text": "幹得好。就我看來，它相當堅韌。<br><br>喔，你的警覺性有待加強。剛剛你不注意時，我把它滑入你的袋子裡了。哈哈！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077642",
+   "text": "幸會，冒險者！歡迎來到《網路創世紀》世界。<br><br>我是葛溫。我在此協助你學習未來旅途中的求生基本技能。<br><br>按左鍵點選「下一步」按鈕繼續。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077643",
+   "text": "所有動作皆由滑鼠控制。<br><br>你看到亮光了嗎？<br><br>在上頭按住右鍵不放，便可朝該方向行走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077644",
+   "text": "非常好！<br><br>在更遠之處按住右鍵不放，朝亮光處跑去。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077645",
+   "text": "很好！<br><br>你看到亮光了嗎？<br><br>在它上頭按住右鍵不放朝那方向跑去。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077646",
+   "text": "好了！現在你已經懂得如何遊走了。<br><br>在這世界中你會找到很多東西，你將能夠拾取並帶走它們。<br><br>你擁有一個背包，能夠攜帶屬於你的所有東西。<br><br>按左鍵點選畫面右下角的背包圖示。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077647",
+   "text": "在這裡，你將攜帶一些物品。<br><br>上頭有些箱子。那裡有一些你可能會需要的補給品。<br><br>要打開箱子，將滑鼠游標移到它們上頭，直到你看到它們的物品屬性。<br><br>在上頭按兩下瞧瞧裡頭有什麼東西。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077648",
+   "text": "要拾起一項物件，按下左鍵並將它拖曳至你的背包視窗中。<br><br>在箱子和桶子裡還有其他的東西，前去拾起它們。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077649",
+   "text": "非常好！<br><br>現在，去找在你東側建築物內的舊哈文鎮守衛霍佳斯。他是舊哈文鎮的守衛，而且他有一份差事給你。<br><br>東邊的亮光指示著標示著他的位置。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077650",
+   "text": "要和守衛交談，在他身上按兩下左鍵。<br><br>請詳讀內容並接受任務以便繼續。<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077651",
+   "text": "很好！你已展開你的第一項任務。<br><br>這是個小任務，但我肯定你仍舊可以獲得獎勵。<br><br>記得拾起磨損的武士刀，然後和守衛交談以完成任務。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077652",
+   "text": "你找到了磨損的武士刀。你得將它切換為任務物品。<br><br>按住Shift鍵並在你自己身上按右鍵，然後在關連式選單中選擇「切換任務物品狀態」。將會出現一個「瞄準游標」。<br><br>在磨損的武士刀上按左鍵，按下ESC鍵，然後和守衛交談。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077653",
+   "text": "很好！守衛給你了一把武器。你必須裝備它。<br><br>按左鍵點選畫面右下角的紙娃娃圖示。<br><br>將磨損的武士刀從你的背包中拖曳到紙娃娃的手部欄位。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077654",
+   "text": "你可以用相同的方式裝備武器、護甲和衣物。欄位中不得有其他任何物品。所以，如果你正戴著一頂帽子，卻想要裝備一頂頭盔，你必須先脫掉帽子。<br><br>按左鍵點選「下一步」按鈕繼續。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077655",
+   "text": "瞧瞧誰來了。又一名年輕人。你前來這裡證明你的勇氣。但我認為你尚未準備好。不過，你確實具備一些毅力。某天你或許能學會揮舞那把武器。<br><br>當你接受一些訓練並自覺已經掌握技巧，回來找我，如此我便可以解決那些打算消除世上黑暗門徒的傢伙。<br><br>這個符石給你。當你自覺已經掌握你的技能，前來找我。我會等你的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077657",
+   "text": "嗨，幸會！如果你打算學習輔助戰士職業的技能，可以去找以下的指導員：<BR><BR>裘可斯教導劍類武器。你可能會先想和他交談，因為了解如何掌控武器，是展開戰士生涯、掌握求生藝術的第一步。若沒有這項技能，你會發現自己經常無法命中敵人。<BR><BR>艾登．阿姆斯壯教導戰術。這是一項必備的重要技能，因為光知道如何操控武器，並不代表你知道如何運用武器對付敵人。精通戰術將讓你知曉如何對敵人造成重創。<BR><BR>艾薇珊娜教導治療。身為戰士，你經常得和你的敵人正面交鋒，這意味著你會受傷；有時甚至受重傷。對任何戰士來說，知道如何治療你自己和你的同伴是非常寶貴的技能。<BR><BR>安地列斯．維薩流士教導解剖學。瞭解軀體構造對戰士有許多幫助。你將知道朝對手的哪個部位下手可造成最大傷害，並知道包紮何處可以讓你獲得更好的治療，同時你還能夠評估對手的力量和敏捷。<BR><BR>薩絲米雅．史密席教導集中技能。這種能力可讓你在肉體和精神上取得平衡，幫助一名戰士在身體和精神上保持最佳狀態。<BR><BR>泰爾．阿利亞德尼教導防禦技能。你閃避對手攻擊的技能越好，你在戰鬥中存活的時間越久。<BR><BR>願你的刀刃鋒利，你的釘頭鎚笨重，你的蛇劍，呃，...尖銳！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077661",
+   "text": "向東離開城鎮並前往舊哈文鎮。一面揮舞著你的劍，一面與那裡的怪物戰鬥，直到你的劍類武器技能提升至50。<br><center>------</center><br>*當你靠近時，裘可斯臉上充滿疑惑地打量著你*<br><br>我看得出來，你想要學習駕馭刀刃的技巧。那比想像中的困難許多，如果你想和我一樣出色，你必須投入大量的時間和心力。<br><br>告訴你吧，小子，我會協助你入門，然而，如果你真的想學點東西，你得完成所有的差事。在此地東邊的城外，是舊哈文鎮。那裡已被令人厭惡的不死生物所盤據，因而成為讓你實際練習駕馭刀刃技巧的最佳場所。<br><br>在你離開之前，務必完全讓你手中耐用的劍類武器完全修復。若你到了那裡才發現忘記攜帶刀刃，那將不會是一趟有趣的旅程！<br><br>當你在不弄傷自己的情況下，自覺已幹掉足夠的不死生物，並獲得相當程度的劍類武器技能，回來找我。如果我認為你有長足的進步，我會給你某件適合真正戰士的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077663",
+   "text": "*裘可斯上下打量你*<br><br>過來！你得更努力練習才能變得更強。現在，離開這裡，去東邊的舊哈文鎮宰殺一些不死生物，在你學到一些真正的技能之前，別回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077665",
+   "text": "很好，很好，瞧瞧誰來了！畢竟，你辦到了。我必須說，你能夠全身而退令我有點驚訝，既然你做到了，我有一份小禮物給你。<br><br>這是一把好劍，陪伴我度過年輕的歲月。當然，現在，我擁有更為精良的劍，所以我打算把他送給你，但有個條件。你必須好好照顧它及使用它，這是一把好劍應得的。<br><br>你是我見過速度最快的學習者，但你還有很多要學。繼續努力，總有一天你會有所成就。祝你獵殺愉快，小子。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077670",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡與怪物戰鬥，直到你的戰術技能提升至50。<br><center>------</center><br>知道如何使用武器，只是戰鬥要領的一半。還得知道如何使用武器對付敵人。殺一些小兔子自娛是一回事，真正的戰士知道如何採取正確的招式對付會召喚巨龍灼燒你屁股的巫妖。<br><br>我會指導你如何戰鬥，當你面對巨龍時，或許你不會狂吼著「喔喔喔喔」地逃跑，並四處尋找治療師。<br><br>在東邊的舊哈文鎮有一些不死生物等著人去清理。你為何不前往該地練習殺戮的技巧？<br><br>當你自覺學會基本技巧後，回來找我，我將會瞧瞧是否能找到有助於你日後冒險的玩意兒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077674",
+   "text": "嘿，幹得相當好，你殺死了那些不死生物！希望會有人去收拾殘局。幾天之後，四散的血污和內臟會開始發臭，當風從東邊吹來，肯定會臭得不得了！<br><br>基於你的英勇表現，請收下這副護臂並妥善運用。我在哪裡找到了一些不錯的戰利品，所以你儘管拿去。<br><br>你還有很多要學，但我認為你沒問題。記住，收起手肘，攻擊敵人的痛處！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077679",
+   "text": "向東離開城鎮並前往舊哈文鎮。治療你自己和其他玩家，直到你的治療技能提升至50。<br><center>------</center><br>啊，歡迎加入我的行列。我是艾薇珊娜，新哈文鎮的居民治療師。很多的冒險者由此地前往荒野探險，所以，當他們傷痕累累、渾身是血（甚至更糟）地回來時，我有得忙。<br><br>沒錯，我可以教導你如何包紮傷口，那絕對不是件噁心的工作！對某些人來說，光看到血就讓他們夠受了，但時間一久，你就會習慣。將活體開膛剖肚是一回事，看著他們復原並免於死亡則是另一回事。治療，是件高貴的工作。<br><br>練習包紮傷口的最佳方式，是前往東邊的舊哈文鎮，在那裡練習包紮你自己的傷口，或是幫其他人療傷。那些受你幫助的人們肯定會心懷感激。<br><br>記得攜帶足夠的繃帶！在激戰之中，你不會希望面臨繃帶用盡的窘境。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077683",
+   "text": "哈囉，朋友。我很高興看到你全身而退，而且已成為一名治療師學徒！你應當為你的成就感到自豪，並非所有人都有治療的「天賦」。<br><br>這樣出色的表現，令我想要給你一些獎勵，所以我希望你收下這個。這不是什麼貴重的東西，但可以稍微加速你治療的速度，並讓你活命。<br><br>祝你好運，朋友，別忘了隨時隨地幫助其他的冒險者伙伴！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077688",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡與怪物戰鬥，或治療你自己和其他玩家，直到你的解剖學提升至50。<br><center>------</center><br>嗨，幸會。你一定是來這裡精進你的解剖知識。嗯，你來對地方了，因為我可以教導你所需知道的一切。至少是你目前需要知道的。哈哈！<br><br>瞭解活體內部的運作方式，是相當有用的技能。你不但能夠知道攻擊對手何處可以重創他，你還能運用所學提升治療傷口的能力。只需在城市裡逛逛，你便能夠說出某人是強是弱，以及他們的身手是否靈活。<BR><BR>如果你有興趣做更進一步的學習，我建議你前往東邊的舊哈文鎮並展開戰鬥。參與戰鬥，以及治療你自己和其他冒險伙伴，能夠讓你學到最多，或者，你甚至可以嘗試評估你的對手。<br><br>在你離開的這段時間，我會找找是否有對你有用的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077692",
+   "text": "美德萬歲，你辦到了！恭喜你，伙伴！如果你想要繼續粹練你的解剖知識，你仍有相當長的路要走，但我知道你總有一天會成功的。繼續努力。<br><br>現在，這裡有一副可能對你有用的護甲。它並不花俏，但若你穿上它，肯定會對你有幫助。<br><br>祝你冒險愉快，別讓你的頭蓋骨散落在鎖骨之上！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077699",
+   "text": "向東離開城鎮並前往舊哈文鎮。消耗精力值和魔法值，直到你的集中技能提升至50。<br><center>------</center><br>嗯，哈囉。你看起來應該是位冒險者！<br><br>你想要學習集中技能，對吧？我可以教導你一些那方面的事情，但首先你應當知道並非所有人都有足夠的自律能在此方面有所成就。集中這項能力，能夠使軀體和精神達成內在平衡，所以你在心神和肉體上能有比往常更快的恢復力。<br><br>如果你想要練習集中技能，最好的地點是此地東方的舊哈文鎮，在那裡，充斥著不死生物。參與戰鬥並迅速行動，活動你的軀體。為了考驗你精神上的平衡，以最適合你的能力的方式消耗魔法值。施展法術及使用能力將會消耗你的魔法值。<br><br>快點去吧，認真訓練，你將會發現你的集中能力自然地進步。當你的集中技能進步至學徒階級，回來找我，我將送你某樣能配得上你的新能力的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077701",
+   "text": "哈囉，又見面了。你回來了，但是你的集中技能進步得還不夠。快前往東邊的舊哈文鎮，盡可能地運用你的肉體和心智。若要活動你的肉體，參與戰鬥並盡可能地迅速行動。若要活動你的心智，以最適合你的能力的方式消耗魔法值。施展法術及使用能力將會消耗你的魔法值。<br><br>當你獲得足夠的集中技能並晉升成為斯多亞哲學家學徒時回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077703",
+   "text": "瞧瞧誰來了！我就知道只要你稍加自律，你一定辦得到。能從戰鬥中迅速恢復，感覺很好對吧？等到你成為大師，更能體會集中技能的神奇之處！<br><br>請收下這份禮物，這是你出色表現應得的。它可幫住你在戰鬥中更快恢復，另外也提供了一些保護。<br><br>你擁有相當大的潛力，千萬別停止鍛鍊你的集中技能！祝旅途平安！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077707",
+   "text": "向東離開城鎮並前往舊哈文鎮。手持盾牌或武器與怪獸戰鬥，或單純讓它們攻擊你，直到你的防禦技能提升至50。<br><center>------</center><br>喔，哈囉。你大概希望我教導你如何防禦，對吧？<br><br>非常好。<br><br>首先，你需要一把武器或一面盾牌。顯然的，盾牌是最棒的，但你也可以用一把雙手武器進行格擋。或者，如果你自覺十分勇敢，一把單手武器在緊急狀況下也可派上用場。<br><br>我建議你前往舊哈文鎮，就在此地的東邊，與那裡的不死生物交手並練習格擋攻擊的技巧。如果你同時讓一名以上的敵人攻擊你，練習一次格擋眾多攻擊，你將學得更快。這是領悟格擋藝術的最快方式。<br><br>如果你能夠讓你的技能有充分的進步，我會給你一面或許對你有用的盾牌。當你晉升至學徒階級時，回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077711",
+   "text": "幹得好！你的防禦技能已比我們初次見面時有長足的進步。你應當為你的新能力感到自豪…我打賭你的身體也會感激你。<br><br>*泰爾．阿利亞德尼對他自己的（冷）笑話洋洋得意*<br><br>喔，對了，我曾答應你，若我認為你夠格，我要給你一面盾牌，拿去吧。我父親為效忠我家族多年的衛兵們打造了這些盾牌，我手邊剛好有一面可以給你。在你探索世界時，它應該會對你有用。<br><br>祝你好運，願美德引導你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077718",
+   "text": "嗨，勇敢的騎士！如果你打算學習輔助聖騎士職業的技能，可以去找以下的指導員：<BR><BR>艾羅恩教導騎士精神。我建議你先和他交談。騎士精神是聖騎士的主要能力。聖騎士可以運用多種能力強化他在戰場上的非凡本領。<BR><BR>裘可斯教導劍類武器。你會希望知道如何掌控武器。若沒有這項技能，你會發現自己經常無法命中敵人。<BR><BR>艾登．阿姆斯壯教導戰術。這是一項必備的重要技能，因為光知道如何操控武器，並不代表你知道如何運用武器對付敵人。精通戰術將讓你知曉如何對敵人造成重創。<BR><BR>薩絲米雅．史密席教導集中技能。這種能力可讓你在肉體和精神上取得平衡，幫助一名聖騎士在身體和精神上保持最佳狀態。<BR><BR>安地列斯．維薩流士教導解剖學。瞭解軀體構造對聖騎士有許多幫助。你將知道朝對手的哪個部位下手可造成最大傷害，並知道包紮何處可以讓你獲得更好的治療，同時你還能夠評估對手的力量和敏捷。<BR><BR>阿里芬教導抗魔技能，這種技能可讓人減輕會降低屬性或持續一段時間的法術效果。<BR><BR>阿里芬位在新哈文鎮魔法學校裡。其他的指導員位於新哈文鎮戰士公會大廳中。<BR><BR>願你的敵人感受到正義之怒。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077722",
+   "text": "向東離開城鎮並前往舊哈文鎮。聖化你的武器，施展神之憤怒，並與那裡的怪物戰鬥，直到你的騎士精神技能提升至50。<br><center>------</center><br>嗨，朋友。犧牲、謙遜、英勇與公正是聖騎士生活的寫照。如果你希望追求這樣的生活，我有一項差事給你。向東冒險進入舊哈文鎮，聖化你的武器，解決盤據在該處的不死生物。<br><br>每項聖騎士想要施展的能力，都需要消耗一定的「奉獻點數」才能使用。聖騎士可以捐獻金幣給聖壇或聖地取得奉獻點數。<br><br>當你自覺夠格晉升聖騎士學徒的階級時回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077731",
+   "text": "嗨，幸會！如果你打算學習輔助鐵匠職業的技能，可以去找以下的指導員：<br><br>喬志．西非斯圖斯教導鐵匠技能。顯然地，所謂的鐵匠，指的知道如何將金屬鍛造成為武器和護甲的職人。你可以在這座商店中，我的旁邊，找到他。<br><br>艾蜜利雅．洋史東教導鉗工技能。鉗工技能可輔助鐵匠技能，允許你打造你自己的鐵匠工具，以及其他有用的物品。艾蜜利雅在這座城鎮裡有間工坊，設於此地的西北邊。<br><br>傑可布．華爾滋教導採礦技能。若沒有開採礦石和熔煉的知識，鐵匠必須透過市場購買金屬塊。然而，這樣卻會大幅縮減鐵匠的獲利。你可以在城鎮外頭南邊的山丘上找到傑可布。<br><br>凱麗娜教導魔法。這項技能可讓人施展能夠治療、傳送、衰弱甚至以火球和雷霆之擊殺死對手的法術。魔法法術也能讓施法者在戰鬥中召喚元素和強大的惡魔，協助作戰。魔法技能變化萬千的用途，對任何鐵匠都極有幫助。凱麗娜住在此地北邊的新哈文鎮法師學校裡。<br><br>裘可斯教導劍類武器。如果你想要保護自己免受土匪和怪物的侵害，知道如何使用武器是很重要的。若沒有這項技能，你會發現自己經常無法命中敵人。你可以在此地東邊的戰士公會大廳找到裘可斯。<br><br>艾登．阿姆斯壯教導戰術。這項技能可輔助劍類武器，因為光知道如何操控武器，並不代表你知道如何運用武器對付敵人。精通戰術將讓你知曉如何對敵人造成重創。你也可以在戰士公會大廳裡找到艾登。<br><br>祝你好運，記住，受尊敬的鐵匠絕對不會試圖超收費用！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077735",
+   "text": "使用喬志商店中的熔爐和鐵砧製作新匕首和釘頭錘。嘗試製作匕首將技能提升至45，然後製作釘頭錘直到技能提升至50。<br><center>-----</center><br>嗨，歡迎來到我這不起眼的小商店。我是喬志．西非斯圖斯，新哈文鎮的鐵匠。我想你來此處是打算請求我將你訓練成一名鐵匠學徒。這絕對不成問題，但你必須自備金屬塊。<br><br>你總是可以在市場購得金屬塊，但我強烈建議你自行開採。如此一來，任何你販售的物品將沒有任何成本！<br><br>所以，一旦你自備了金屬塊，使用我設在這裡的熔爐和鐵砧製作物品。你還需要自備適當的工具；你可以使用一把打鐵榔頭、一把 大鎚或鉗子。如果你具備鉗工技能，你可以自行製作工具，或者你可以在市場上向鉗工購買。<br><br>由於我會在一旁提供你建議，你在這裡會比在其他地方學得更快。一開始先製作匕首，直到你的鐵匠技能提升至45為止，接著轉而製作釘頭錘，直到你的技能提升至50為止。一旦你達到該程度，回頭與我交談，我會獎勵你的辛勞。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077739",
+   "text": "在你鍛鍊鐵匠技能時，我眼看著你越來越熟練，我必須說，你是天生好手！要成為鐵匠大師，還有很長的路要走，但只要你肯用心，我相信你終究辦得到。讓我給你最後一個建議。如果你打鐵只是為了練習和精進你的技能，製作中等難度的物品（60-80%成功機率），並嘗試製作使用較少金屬塊的物品。<br><br>現在，你已經是一名鐵匠學徒，我有東西要給你。在你勤於練習之時，我打造了這個鐵鎚給你。它的重量十分均衡，並且附有魔法，可以協助你打造更好的物品。然而，使用一段時間之後，魔法需要時間充能，所以你每天能使用它的次數是固定的。希望它能對你有所助益！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077744",
+   "text": "在艾蜜利雅的工坊內製作新剪刀和鐵鎚。嘗試製作剪刀將技能提升至45，然後製作鐵鎚直到技能提升至50。<br><center>-----</center><br>哈囉！我想你來這裡是打算學習鉗工技能，對吧？你來對地方了，因為我將畢生奉獻給了鉗工技術。<br><br>你必須準備兩件東西才能開始：充足的金屬塊以及適當的工具。你可以在市場上購買金屬塊，或是自行開採。至於工具，你可以嘗試自行製作你的鉗工工具組，或者你可以直接購買，我這裡有販售。<br><br>在我的商店內打造用具，我可以從旁給你建議，所以你在這裡會比在其他地方學得更快。一開始先製作剪刀，直到你的鉗工技能提升至45為止，接著轉而製作鐵鎚，直到你的技能提升至50為止。一旦你達到該程度，回頭與我交談，我會獎勵你的辛勞。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077745",
+   "text": "我很遺憾你沒有興趣學習鉗工技能。這是多有用的技能啊！<br><br>*艾蜜利雅微笑著*<br><br>至少，如果你改變心意，你知道可以在哪找到我，因為我很少會離開這間商店。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077748",
+   "text": "你辦到了！瞧瞧我們新出爐的鉗工學徒！如果你想成為鉗工大師，你還有很多要學，但我相信你辦得到！記住，如果你使用鉗工技術是為了練習和精進你的技能，製作中等難度的物品（60-80%成功機率），並嘗試製作使用較少金屬塊的物品。<br><br>過來這裡，我新出爐的鉗工學徒，我要給你一樣特別的東西。我為你製作了這個，希望你會喜歡。這是一套附有一些魔法的鉗工工具組。這些工具比任何鉗工製造的鉗工工具更具威力。你可以使用它們製作普通的工具組，所以你絕對不會碰上無工具可用的窘境！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077753",
+   "text": "找到傑可布的失落礦坑，並在那裡使用十字鎬和鏟子開採鐵礦。將礦石帶回傑可布的熔爐熔煉成金屬塊，直到你的採礦技能提升至50。你會發現，馱馬可以減輕你搬運礦石的重擔。新哈文鎮的訓獸師有販售馱馬。<br><center>-----</center><br>哈囉！歡迎來到我的營地。我知道，這裡並不起眼，但卻擁有我所需的一切。那些新哈文鎮民追求的奢華物品對我毫無用處。沒錯，一點用也沒有。只要有我，貝西，我的十字鎬和豐厚藍礦脈就夠了。<br><br>無論如何，我想你前來這裡是打算請求我指導你採礦技能，對吧？嗯，別指望我會告訴你哪裡可以找到藍礦，就算是不列顛尼亞國王我也不會告訴他，何況是你這種小人物。但我會告訴你開採及熔煉鐵礦的方法，因為這片山丘上蘊藏著豐富的鐵礦。<br><br>*傑可布望著四周，臉上顯露出茫然*<br><br>問題是，我不記得我的鐵礦坑在哪裡，所以你得自己找出來。當你找到礦坑，帶著十字鎬和鏟子進去，然後將鐵礦石帶回營地，我會告訴你熔煉的方法。你看起來有些瘦弱，你可以去城市裡找訓獸師購買一匹馱馬，協助你搬運礦石。<br><br>當你成為礦工學徒時，回來和我交談，我會給你放在...這附近的有用物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077754",
+   "text": "找不到我的鐵礦坑，是吧？哈，我也找不到！<br><br>*傑可布大笑*<br><br>喔，你不想去找？好吧，那你最好掉頭返回城市，別在這裡打擾我。如果你有興趣學習採礦技能，再回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077757",
+   "text": "幹得好！你去了那裡，並且鍛鍊有成，對吧？我們這裡有位新出爐的礦工學徒啦！<br><br>看得出來，你在那裡也變得健壯不少！<br><br>這是我答應要給你的東西。這是一把附有魔法的十字鎬，可以幫助你在採礦時找到好東西。然而，它的耗損速度很快，所以你一天只能使用它幾次。<br><br>好了，我還得熔煉一些礦石，我走了。祝你好運，旅行者！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077774",
+   "text": "全心全意地問候你。感謝你的自願相助。<br><br>看不見嗎？假設憐憫、正義和犧牲聖壇也捲入其中，黑暗中的主使者肯定是阿斯塔羅斯 - 仇恨影之主。要知道，這樣強大的魔法是可以反制的，但相信只有追尋相反的固有力量才能達戰。<br><br>建議你前往尹帕斯修道院尋求更多知識。那裡的修士研究著愛如何戰勝仇恨。希望你能將這本書交給尹帕斯修道院的火焰守護者。挺懷疑她會了解。<br><br>願你對付如此可怕敵人時，擁有好運。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077778",
+   "text": "幸會，我可以如何協助你？<br><br>*安妮聽著你的故事*<br><br>喔，我的老天！你說阿斯塔羅斯？嗯，辛維拉可能是對的。讓我仔細瞧一瞧這本書。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077782",
+   "text": "光看了前幾頁，我想辛維拉送你來找我是對的。我需要一些時間詳讀以便確定。<br><br>然而，我覺得十分口渴，你可以幫我一個忙嗎？替我從樓下的客棧老闆那裡弄瓶麥酒來，我會在你離開的這段時間進行研讀。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077786",
+   "text": "終於來了！我好渴啊。謝謝你。<br><br>好了，我更進一步地研讀了這本書，顯然的，辛維拉的猜測是對的。我很確定，阿斯塔羅斯，仇恨影之主，強制地與愛的原則及一切相關事務作對。 你可能不知道，愛與恨基本上是交織在一起的，正確地來說，這兩者彼此相輔相成，除非一方消逝一定的程度，另一方不可能變得過於具有影響力。<br><br>就我從這本書裡讀到的，很明顯地，藉由腐化聖壇和熄滅愛之燭，阿斯塔羅斯企圖將仇恨的影響力散播到全世界。仇恨越多，感受到的愛就越少，而阿斯塔羅斯也就越強大！顯然的，若我們希望阻撓他未來的計畫，就不能讓天秤太過傾向阿斯塔羅斯那一邊。<br><br>愛之燭本體藏在修道院下方的洞穴中，在我們所站之處的極深處。洞穴的入口可以在隔壁釀酒廠的密室中找到。然而，通往洞穴的隧道十分黑暗，而且，一般的光線似乎無法穿透這不尋常的黑暗。<br><br>我們可以知道，為了進入這無法穿過且包圍洞穴的黑幕，許多英勇的冒險者必須淨化普通蠟燭的光，並用淨化過的火焰點燃愛之燭。然而，這一且得由某個人開始，也就是你。<br><br>動作快，分別前往三座聖壇，協助淨化它們。然後冥想每項美德，向前的道路便會在你面前展開。只有這樣做，你才能協助對抗阿斯塔羅斯日益茁壯的力量。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077868",
+   "text": "NPC商店",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077870",
+   "text": "NPC小販",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077877",
+   "text": "在你冥想憐憫美德之時，你開始覺得徹底鄙視人類。這種感覺在你內心強烈地燃燒著，使你充滿憤怒，並有股衝動想要傷害及拷打膽敢進入你家的人類。<br><br>隨著感覺開始消退，你看到一幅影像 - 一顆水晶球擺放在台座上 - 不知怎麼地，你就是知道你該朝那個方向走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077881",
+   "text": "你將變黑的心放在憐憫聖壇上，並開始冥想。當你想到食人魔的命運時，一股悲傷向你襲來。阿斯塔羅斯對食人魔生活的影響力，相當程度地腐化了他的心，鄙視人類的想法深深地擄獲了他，他對生活完全無法感到滿意，幾乎無法找到真正的快樂。<br><br>當你打開雙眼時，你發現食人魔被腐化的心已被憐憫所淨化。由於你覺得你未來會需要它 - 若你希望參與打擊阿斯塔羅斯計畫的任務 - 你拾起了憐憫之心。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077900",
+   "text": "你的帳號因下列原因被鎖定。<BR>1) 你的的付費資訊無效或過期。<BR>2) 你的遊戲時間到期。<BR>3) 你的帳號因違反使用條款而被暫時凍結。<BR>4) 你的帳號因違反使用條款而被終止。<BR>有關解決方法，請見FAQ：http://support.ea.com/cgi-bin/ea.cfg/php/enduser/std_adp.php?p_faqid=232",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077922",
+   "text": "就在你冥想正義美德之時，你發現自己看到了一副被銬在牆上、滿是灰塵的骸骨。正當你沈思著骸骨是否存在，一股強烈的正義感受然襲向你。<br><br>當你退後遠離聖壇，並張開雙眼，感覺消退了，你只感到極度想要糾正這個錯誤，無論是什麼。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077924",
+   "text": "你將生鏽的筆放在聖壇上，並開始冥想。<br><br>妮娜和湯瑪斯所受的不公不義，在你內心激起了強烈的悲痛。儘管多年之後，冤屈終於獲得平反，你仍不禁想到，劊子手的所作所為，應獲得比死更嚴厲的懲罰。<br><br>你誓言在未來的旅途中，更進一步地從事正義美德的冥想，讓你更加瞭解如何緩和你對愛的感覺。<br><br>當你張開雙眼，你發現那枝筆已因正義而產生變化。踏上聖壇，你拾起了正義之筆，你的直覺告訴你，在你阻撓阿斯塔羅斯的冒險途中，你終究會需要它。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077925",
+   "text": "你知道嗎，你正在戳弄的那副骸骨有段過去。這是一名叫做湯瑪斯的男孩所遺留下的。他被判殺人罪！並演出了一齣不公不義的鬧劇。我將他的真實故事寫在一本日記裡，但卻被劊子手給找到。儘管我只剩下沒幾年的刑期，他當下就將我給處決。<br><br>我確信，若你發現了我的日記，你肯定能洗刷湯瑪斯的罪名！不幸的是，我不知道劊子手把他的東西藏哪去了。或許藏在這座監獄的深處？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077929",
+   "text": "這是什麼？為什麼？對了，我記得這個案子。那是許多年前的事了，後來每當我回想起那個男孩以及他的未婚妻，總覺得有些可疑之處。<br><br>*安迪讀著日記的內容*<br><br>美德在上！我就知道湯瑪斯是無辜的！非常感謝你將這本日記帶來給我，我保證馬上就會更改官方紀錄。湯瑪斯所受的不公待遇已無法挽回，但這至少是我們能做的。不過，或許還能夠再做些什麼...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077938",
+   "text": "這是我的日記！看到它真是有些奇怪，畢竟過了這麼多年。<br><br>接下來，只需將它交給某個能夠改變官方紀錄的人。或許是法院裡的某個人？<br><br>如此我終於能夠安息！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077942",
+   "text": "當你冥想犧牲美德之時，你看到了一個黑暗、充滿水的洞穴。正當你神遊洞穴之中，你發現牆邊高高堆著大量的財寶。當你凝望著成堆的黃金和寶石時，一股不受拘束的貪婪感受襲向你，這股力量讓你將注意力轉離財寶。<br><br>就在這個時候，你意識到有人在監視你，因為你發現了一道黑暗的身影在陰影中移動著；它的雙眼警戒地看顧著財寶。<br><br>你知道若你想要繼續下去，你必須找到這股貪婪感受的來源。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077945",
+   "text": "EA Games",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1077950",
+   "text": "你將蘇蒂瓦的眼淚放在聖壇上，並開始冥想犧牲美德。你發現自己同情蘇蒂瓦的困境。雖然巨龍得為自己目前的處境負很大的責任，但你認為無論一切是怎麼發生的，不應當有生靈受到如此待遇。<br><br>你的犧牲開始了她的療程；希望有天她能夠脫離阿斯塔羅斯的掌握，再次飛向雲端。<br><br>當你張開雙眼，你發現蘇蒂瓦的眼淚已變為犧牲之淚。你迅速地將它收入你的背包，並準備繼續你的旅程。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077967",
+   "text": "幹得好！我希望劊子手沒有替你惹太多麻煩。<br><br>如我所承諾的，這是他用來簽署死刑文件的筆。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077976",
+   "text": "*安妮眨著眼*<br><br>你怎麼可以說不？難道你不知道這對擊敗阿斯塔羅斯很重要嗎？",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077979",
+   "text": "把這支淨化之燭拿去。<br><br>你還剩下一件任務...",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077980",
+   "text": "當你順著面前的道路走到盡頭，你將會獲得三項美德的徽記。<br><br>將憐憫之心、正義之羽和犧牲之淚，以及一支普通的蠟燭帶來給我。我將提供你進入底下洞穴所需的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1077981",
+   "text": "在協助阻撓阿斯塔羅斯日益茁壯的力量這件事上，你只剩下最後一件任務。拿著我剛剛交給你的淨化之燭，進入我們下方的愛之燭洞穴，然後用淨化之燭的火焰點亮愛之燭。<br><br>這件事說起來容易做起來難，因為你得做兩件事情。首先，記得將淨化之燭拿在手中，穿過黑暗區域。一旦你順利穿過，你必須解開一道保護愛之燭的謎題。解決這道謎題，迅速地點燃愛之燭，因為一旦你通過熔炎，你的所剩時間不多。<br><br>在你啟程之前，我衷心地感謝你所做的一切。現在，快點動身吧，阿斯塔羅斯不會等你的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078006",
+   "text": "幸會！如果你打算學習輔助武士職業的技能，可以去找以下的指導員：<br><br>濱戶教導武士道。我建議先與他交談。武士道是武士生活的方式。一名武士可以榮耀地處斬他的敵人，或是閃避諸如龍息或雷霆之擊等強而有力的攻擊。<br><br>裘可斯教導劍類武器。你會想知道如何掌控武器。若沒有這項技能，你會發現自己經常無法命中敵人。<br><br>安地列斯．維薩流士教導解剖學。瞭解軀體構造對武士有許多幫助。你將知道朝對手的哪個部位下手可造成最大傷害，並知道包紮何處可以讓你獲得更好的治療，同時你還能夠評估對手的力量和敏捷。<br><br>艾薇珊娜教導治療。身為武士，你經常得和你的敵人正面交鋒，這意味著你會受傷；有時甚至受重傷。對任何武士來說，知道如何治療你自己和你的同伴是非常寶貴的技能。<br><br>泰爾．阿利亞德尼教導防禦技能。你閃避對手攻擊的技能越好，你在戰鬥中存活的時間越久。<br><br>艾登．阿姆斯壯教導戰術。這是一項必備的重要技能，因為光知道如何操控武器，並不代表你知道如何運用武器對付敵人。精通戰術將讓你知曉如何對敵人造成重創。<br><br>你可以在武士道學校找到濱戶。其他的指導員可在戰士公會大廳找到。<br><br>隨時記住...<br><br>以戰士為職業者，應當保持鎮定，並觀察他人的內心深處。唯有這樣做，才能成為傳奇武士，並獲得真正的啟蒙。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078010",
+   "text": "向東離開城鎮並前往舊哈文鎮。利用自信的防禦姿態，試圖榮耀地處決那裡的怪獸，直到你的武士道技能提升至50。<br><center>------</center><br>幸會。我想你希望學習武士之道。揮舞刀刃是簡單的。任何人都能夠抓牢刀柄。學習如何適當且有技巧的戰鬥，可以成為一名裝甲兵。學習如何掌控武器，以及更重要的，何時不該不使用武器，則是戰士之道、武士之道、武士道規章。這就是你來此地的原因。<br><br>向東冒險進入舊哈文鎮。利用自信的防禦姿態，試圖榮耀地處決棲息在那裡的不死生物。如果你未持有武士道之書，你可以向我購買。<br><br>如果你未能榮耀地處決不死生物，你的防禦能力將會大幅減弱：抗性將會受到影響，而抗魔能力也會受影響。一次成功的防禦可以立即終結這樣的減弱效果。然而，若你榮耀地處決敵人，你將會充滿力量並獲得治療。你的揮砍速度也會暫時提升。透過練習，你將學會如何掌控你的武士道能力。<br><br>當你自覺成為武士學徒時，回來找我。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078028",
+   "text": "歡迎來到新哈文鎮！你需要職業協助嗎？你來對地方了！若想瞭解新哈文鎮提供的職業訓練，你可以去找底下的會長：<br><br>戰士：亞歷山大．杜瑪斯<br>位置：戰士公會大廳，東北邊的第一座建築物。<br><br>法師：派羅納洛<br>位置：法師學校，北方的幾座建築物。<br><br>鐵匠：泰尼．杜朋<br>位置：鐵匠舖，新哈文鎮銀行正北邊的建築物。<br><br>死靈法師：梅里夫耐<br>位置：死靈法師學校，新哈文鎮東北邊外頭不遠處。<br><br>聖騎士：布拉曼<br>位置：聖騎士訓練區在緊鄰戰士公會大廳的建築物二樓。<br><br>武士：合氣<br>位置：武士職業可以在法師學校北邊不遠處的建築物內學習。<br><br>忍者：余語<br>位置：忍者職業可以在法師學校西邊不遠處的建築物內學習。<br><br>祝你一路平安。希望你在新哈文鎮駐足愉快！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078031",
+   "text": "提供你他們的 <a href=\"?ForceTopic88\">保護</a>。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078033",
+   "text": "一支給 ~1_player~ 的愛之祝福蠟燭",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078035",
+   "text": "你好嗎？如果你打算學習輔助死靈法師職業的技能，可以去找以下的指導員：<br><br>姆爾席維奇教導死靈法術。我建議你先去找他。死靈法術是一門黑暗魔法學。你可以詛咒你的敵人、操控死屍、變形為邪惡的生物，以及施展世上一些最為致命的法術。<br><br>摩根娜教導通靈技能。這項技能讓你可以透過吸取屍體或你自身的靈力治療你自己。<br><br>葛斯塔教導冥想。這項技能可讓人以更快的速率補充魔法值。<br><br>裘可斯教導劍類武器。你會想知道如何掌控武器。若沒有這項技能，你會發現自己經常無法命中敵人。<br><br>凱麗娜教導魔法。這項技能可讓人施展能夠治療、傳送、衰弱甚至以火球和雷霆之擊殺死對手的法術。魔法法術也能讓施法者在戰鬥中召喚元素和強大的惡魔，協助作戰。<br><br>阿里芬教導抗魔技能，這種技能可讓人減輕會降低屬性或持續一段時間的法術效果。<br><br>姆爾席維奇和摩根娜為在此地的死靈法師學校。裘可斯位在戰士公會大廳，而其他的指導員則位於新哈文鎮魔法學校。<br><br>很快的，你將會知曉亡靈世界的秘密。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078039",
+   "text": "向東離開城鎮並前往舊哈文鎮。施展邪惡預兆和痛苦之釘對付那裡的怪物，直到你的死靈法術技能提升至50。<br><center>------</center><br>歡迎！你是被死靈法術的黑暗魔法誘惑而來的吧。首先，你必須證明自己有資格學習這門知識。不死生物目前佔據了舊哈文鎮。對那些不死生物練習你有害的死靈法術，例如邪惡預兆和痛苦之釘。<br><br>在你踏上旅程之前，務必攜帶充足的藥材。藥材是施展魔法的必須物品。你可以在附近的藥材店購買額外的藥材，或者你可以尋找生長在附近林地中的藥材。只需查看你的魔法書，便可得知各種法術需要哪些藥材。<br><br>當你自覺夠格晉升死靈法師學徒階級時回來找我，我會傳授你渴望的知識做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078047",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡使用通靈技能輸通你自身或附近屍體的能量。你也可以施展死靈法術提升通靈能力。從事這些活動，直到你的通靈技能提升至50。<br><center>------</center><br>你好嗎？透過通靈能力輸通超自然力量允許你治療你的傷勢。這類輸通活動會消耗你的魔法值，務必牢記這一點。通靈能力會加強你的死靈法術威力。在練習死靈法術這樣的黑暗魔法時，靈媒的輸通力量相當有用處。<br><br>練習通靈能力的最好地點，是在有很多屍體的地方。向東離開城鎮並前往舊哈文鎮。不死生物目前盤據該處。通靈技能輸通你自身或附近屍體的能量。你也可以施展死靈法術提升通靈能力。<br><br>當你自覺夠格晉升靈媒學徒階級時回來找我，我將給你有用的東西做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078054",
+   "text": "按下「確定」解雇小販<br>按下「取消」留住小販",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078065",
+   "text": "向東離開城鎮並前往舊哈文鎮。一面揮舞著你的釘頭錘，一面與那裡的怪物戰鬥，直到你的鎚類武器技能提升至50。<br><center>------</center><br>我認為你想要學習真正的武器，而非裘可斯提供的牙籤訓練。真正的戰士叫做裝甲兵，他們揮舞鎚類武器。毫無疑問地，沒有任何事情比敲昏你的敵人、砸爛他們的護甲、打碎他們的骨頭、奪取他們財寶更令人滿足了。<br><br>想要學習如何揮舞鎚類武器？很好，我有份差事給你。向東離開城鎮並前往舊哈文鎮。不死生物盤據了城市，所以那裡有成堆的骨頭等著你去敲擊。<br><br>當你自覺已達到裝甲兵學徒的階級時回來找我，我將給你一把真正的武器做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078096",
+   "text": "請按下你希望定義至動作的按鍵。按下ESC鍵將會清除目前的設定。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078120",
+   "text": "鐵匠技能 +~1_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078142",
+   "text": "妖精護符：<br>雪貂",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078143",
+   "text": "妖精護符：<br>松鼠",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078144",
+   "text": "妖精護符：<br>酷西帝獸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078145",
+   "text": "妖精護符：<br>混體幻獸",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078153",
+   "text": "嗨，幸會！如果你打算學習輔助忍者職業的技能，可以去找以下的指導員，在你展開忍者生涯之前接下他們交付的所有任務：<br><br>龍一教導忍術。你或許會想要先和他聊聊。這是忍者的主要技能，並結合了潛行、諜報和暗殺的藝術。<br><br>千代教導隱身技能。擁有相當的隱身技能時，你可以在必要時消失於陰影之中。隱身技能是忍術訓練的基礎課程。<br><br>潤教導潛行技能。不列顛尼亞的陰暗角落越來越多，為那些通曉潛行技巧者帶來安全與保護。精通潛行技巧者懂得如何隱藏他的行動。潛行技能是忍術訓練的基礎課程。<br><br>雷卡洛教導刺擊武器技能。得知道如何操控武器才能精進忍術。若沒有這項技能，你會發現自己經常無法命中敵人。<br><br>行者教導追蹤技能。這是一門透過追蹤目標動向，長距離跟隨目標的藝術。有了追蹤技能，你可以追蹤世上動物、怪物和其他人們的動向和位置。艾登．阿姆斯壯教導戰術。這是一項必備的重要技能，因為光知道如何操控武器，並不代表你知道如何運用武器對付敵人。精通戰術將讓你知曉如何對敵人造成重創。<br><br>刺擊武器和戰術技能的指導員為在戰士公會大廳。其他的指導員則位於忍者道館。祝你有趟美好的精進潛行藝術之旅。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078158",
+   "text": "向東離開城鎮並前往舊哈文鎮。揮舞你的刺擊武器，以集中攻擊和召喚幻影與怪物戰鬥，直到忍術技能提升至40，然後繼續拿怪物練習集中攻擊，直到忍術技能提升至50。<br><center>------</center><br>歡迎，年輕人。你似乎想學習忍術。憑藉著它，以及忍術之書，忍者可以施展各式各樣的特殊能力，包括變形成各種擁有獨特加權的生物、運用潛行出奇不意地攻擊對手，或是憑空消失！如果你沒有忍者之書，你可以向我購買。<br><br>我有一份差事給你。向東離開城鎮並前往舊哈文鎮。揮舞你的刺擊武器，以集中攻擊和召喚幻影與怪物戰鬥，直到晉升至初學者階級，然後繼續集中攻擊對怪物造成更大的殺傷力，直到你成為忍者學徒。每個幻影都能承受一次攻擊。欺敵的藝術是最好的防禦。明智地運用它。<br><br>當你自覺已達到忍者學徒的階級時回來找我，我會給你某件用的東西做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078168",
+   "text": "在忍者道館練習隱身，直到你的隱身技能提升至50為止。<br><center>------</center><br>過來一點。別害怕。陰影不會傷害你。要成為一名出色的忍者，你必須學習與陰影合而為一。忍者道館是學習隱匿的最佳地點。在此練習隱身。<br><br>當你達到盜賊學徒的階級（隱身技能），我將會獎賞你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078172",
+   "text": "還不賴。你學會了控制你對黑暗的恐懼，並懂得如何與陰影合而為一。如果你尚未與潤聊過，我建議你去找他。潤可以教導你如何在不被察覺的狀況下潛行。若想成為一名忍者，必須精通隱身和潛行技能。<br><br>如同我所承諾的，我有一項獎勵給你。這是一些煙霧彈。只要你保持忍者學徒的身份，並且擁有足夠的魔法值，你便可以使用它們。它們可以允許你在戰鬥中隱身。希望它們對你有所助益。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078178",
+   "text": "向東離開城鎮並前往舊哈文鎮。身穿普通衣物，練習潛行，直到潛行技能提升至50。<br><center>------</center><br>嘿，就是你。你行動起來並不十分安靜。我可以協助你改善這一點。你不但得學習如何與陰影合而為一，你還得學習如何悄聲行動。舊哈文鎮是學習如何潛行的理想場所。<br><br>向東離開城鎮並前往舊哈文鎮。身穿普通衣物，在那裡練習潛行。若你穿著較厚重的護甲，想要潛行會變得較為困難，因此，在練行潛行時，請只穿著普通衣物。<br><br>只有在你藏身時才能潛行。如果他人看得見你，使用你的隱身技能，然後開始緩慢地行走。<br><br>當你自覺已達到盜賊學徒階級（潛行技能）時回來找我，我將給你有用的東西做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078182",
+   "text": "很好。你已經學會靜聲行動。如果你尚未和千代交談過。我建議你去找他。千代可以教導你如何與陰影合而為一。若想成為一名忍者，必須精通隱身和潛行技能。<br><br>這是你的獎勵。這件皮忍者上衣叫做「微光上衣」。它可為你帶來極佳的防護。我希望它能助你一臂之力。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078190",
+   "text": "向東離開城鎮並前往舊哈文鎮。在那裡與怪物戰鬥，直到你的刺擊武器技能提升至50。<br><center>------</center><br>嗨，幸會，小子。優雅且精準的戰鬥，遠比用棍棒重擊敵人或使劍屠宰敵人要有內涵得多。如果你想掌控戰鬥，並想求取出色的表現，那麼一定得學習刺擊武器的藝術！<br><br>要成為一名出色的刺擊家，關鍵在於配套而非正面對抗你對手的長處。看著你的對手失去平衡。然後運用手段和才能解決他。<br><br>在舊哈文鎮裡，棲息著一些等待清除的不死生物。前往那裡解決它們，但務必記住，舉止要高雅！<br><br>當你自覺已達到刺擊家學徒的階級時回來找我，我將會獎勵你。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078194",
+   "text": "太棒了！你開始懂得欣賞刺擊武器的藝術。我曾告訴你，優雅且精準地戰鬥，遠比像頭食人魔那樣地戰鬥更具內涵。<br><br>由於你勝利地回來，請收下這件戰叉並妥善使用。戰叉是件需要技巧的武器，而這把上還附有魔法！我叫它做「雷卡洛的快刺」。有了它，你將能夠輕鬆地格擋並反擊。你的敵人將徜徉在你的偉大和榮耀之下！祝你好運，小子，繼續練習啊！",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078205",
+   "text": "向東離開城鎮並前往舊哈文鎮。使用你的弓或十字弓，與那裡的怪物戰鬥，直到你的弓類武器技能提升至50。<br><center>------</center><br>幸會，朋友。想像你自己在遠處的樹叢中。你舉起你的弓，緩慢、小心地瞄準，然後用手指使勁拉弦，你以致命的箭矢貫穿敵人。你看起來能夠成為一名出色的弓箭手，但你仍需要磨練。練習弓類武器技能的最佳方式，是讓你自己面臨險境。<br><br>我有項挑戰給你。向東離開城鎮並前往舊哈文鎮。使用你的弓或十字弓，與棲息在那裡的怪物戰鬥。<br><br>務必攜帶充足的箭矢（若你使用十字弓的話，則是弩箭）。如果你想要購買弓、十字弓、箭矢或弩箭，你可以向我或是城市裡的弓類武器商店購買。你也可以運用製弓/製箭技能自行製作箭矢。你需要製箭工具、箭柄所需的木材，以及羽毛，製作箭矢或弩箭。<br><br>在你晉升弓類手學徒後回來找我，我毀給你一把精良的弓類武器做為獎勵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078217",
+   "text": "在哈文島上追蹤動物、怪物和人們，直到你的追蹤技能提升至50。<br><center>------</center><br>哈囉，朋友。我是行者，遊俠大師。冒險者必須懂得在野外求生。追蹤周遭的動態，是在危險地區求生的必要本領。當忍者擁有追蹤本領時，特定的忍者能力會更具威力。如果你想要成為一名忍者，或者如果你單純想要獵殺棲息在此地的生物，我建議你學習如何追蹤它們。<br><br>你可以追蹤哈文島上的任何動物、怪物或人們。澄清你的心靈、專心一意，留意任何地面上的蛛絲馬跡，或是空氣中的任何聲響，可以協助你找到你的目標。你絕對辦得到，朋友，我對你有信心。<br><br>一旦你達到遊俠學徒的階級（追蹤技能），回來找我，我會給你某樣有助於你的旅程的物品。保重了，朋友。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078221",
+   "text": "我就知道你辦得到！你已成為一名優秀的遊俠。只要持續練習，有天你也會成為像我這樣的遊俠大師。<br><br>我有件小東西要送給你，希望對你的旅程會有幫助。這副護腿提供了一些抗性，但願能夠保護你免於傷害。希望能助你一臂之力。再會了，朋友。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078224",
+   "text": "在地圖上，你會發現一個小記號。那是一個航點。<br><br>這個航點告訴你門在哪裡。順著通往記號的小徑走，然後穿過門。<br><br>要打開門，或是任何其他的門，只需在門上按兩下左鍵，門就會應聲開啟。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078225",
+   "text": "這是舊哈文鎮，或者說是舊哈文鎮的遺跡。<br><br>先前的居民已經成為了活死人。<br><br>你的第一項挑戰是讓其中一個骷髏入土為安。<br><br>在你出發之前，你必須先將自己設定為「戰爭模式」。<br><br>底選畫面左下方指令列上的「戰爭/和平」按鈕。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078226",
+   "text": "很好，現在你已處於適合戰鬥的侵略姿態。<br><br>超炫的。<br><br>現在，在你試圖與友善的市民互動之前，切換回「和平模式」。<br><br>他們若受到攻擊，通常會感到不悅。<br><br>現在，在一個骷髏上按左鍵，選擇一個目標。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078227",
+   "text": "看來你找到了合適的目標，讓我們宰殺那不幸的傢伙。<br><br>在它身上按兩下左鍵，並且靠近它。<br><br>一旦你開始攻擊，動作將會持續到該生物死亡為止。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078228",
+   "text": "你解決了一個！ <br><br>幹得好！<br><br>現在，你可以檢查它是否帶有任何值錢的東西。<br><br>要這樣做，在屍體上按兩下左鍵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078230",
+   "text": "很好。<br><br>現在，當你狩獵時，或是受到任何傷害時，在繼續投入戰鬥之前先行治療是個好主意。<br><br>在你的物品欄內有一瓶治療藥劑，也就是你剛剛在屍體上找到的。<br><br>要使用藥劑：於你的物品欄中，在它上頭按兩下左鍵，你便會喝下它。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078232",
+   "text": "還不要使用那個卷軸，在你對付下個對手時你會需要它。<br><br>讓我們朝你地圖上的下個航點前進。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078246",
+   "text": "很好，看來你已經準備好啟程了。<br><br>在你展開冒險之前，你必須先完成一些挑戰。<br><br>在畫面下方打開你的地圖。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078247",
+   "text": "在地圖上，你會發現一個小記號。那是一個航點。這個航點告訴你門在哪裡。<br><br>順著通往記號的小徑走，然後穿過門。<br><br>一旦你抵達門前，在門上按兩下左鍵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078248",
+   "text": "這是舊哈文鎮，或者說是舊哈文鎮的遺跡。先前的居民已經成為了活死人。<br><br>你的第一項挑戰是讓其中一個骷髏入土為安。<br><br>點選畫面左下方指令列上的「戰爭/和平」按鈕。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078249",
+   "text": "很好，現在你已處於適合戰鬥的侵略姿態。<br><br>現在，在你試圖與友善的市民互動之前，切換回「和平模式」。他們若受到攻擊，通常會感到不悅。<br><br>按左鍵點選「下一步」按鈕繼續。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078250",
+   "text": "看來你找到了合適的目標。<br><br>讓我們宰殺那不幸的傢伙。<br><br>在骷髏身上按兩下左鍵，並且靠近它。<br><br>一旦你開始攻擊，動作將會持續到該生物死亡為止。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078251",
+   "text": "你解決了骷髏！幹得好！<br><br>現在，你可以檢查它是否帶有任何值錢的東西。<br><br>在屍體上按兩下左鍵。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078252",
+   "text": "這些是那可憐傢伙所攜帶的東西，也就是他的遺物。說真的，十分不幸。<br><br>無論如何，將所有這些物品拖曳至你的物品欄中。你也可以單獨在每項物品上按右鍵拾取之。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078253",
+   "text": "很好！當你受到任何傷害時，在繼續投入戰鬥之前先行治療是個好主意。<br><br>在你的物品欄內有一瓶治療藥劑。要喝下藥劑，在它上頭按兩下左鍵，你便會喝下它。<br><br>即便你沒有受傷，現在也立刻試喝藥劑。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078254",
+   "text": "非常好！<br><br>在你的背包內應該有一只魔法箭卷軸。<br><br>卷軸和其他物品，例如治療藥劑或繃帶，可以放入畫面左下方的快捷列中。<br><br>將卷軸從你的物品欄拖曳至快捷列的開放欄位中。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078255",
+   "text": "還不要使用那個卷軸，在你對付下個對手時你會需要它。<br><br>讓我們朝你地圖上的下個航點前進。往西北走，然後往北走，接著沿著東邊的道路走。<br><br>我等著你靠近下道門。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078256",
+   "text": "好了，這道門之後的殭屍相當強悍，但你已證明自己擁有使用武器的天分。<br><br>穿過那道門，並解決一個殭屍。<br><br>當你鎖定了一個殭屍時，只需在快捷列的卷軸圖示上按下左鍵即可施展法術。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078257",
+   "text": "喔，不妙！它們逮到你了。<br><br>死亡在索沙利亞世界並不是件小事情，但也不會結束你的冒險旅程。<br><br>現在，你處於鬼魂狀態，無法與活人世界互動。<br><br>最近的治療師位置已顯示在你的地圖上。動身前往你地圖上標示「復活」的位置。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078258",
+   "text": "很好！你復活了。<br><br>當你復活後，你必須在15分鐘內返回你的軀體，並撿拾你屍體上的裝備。你的屍體所在地已標示在地圖上。<br><br>在你的屍體上按兩下左鍵拾取你的物品。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078259",
+   "text": "幹得好！你已取回你的物品。查看你的背包並重新裝備武器。你也會發現我送的一件小禮物。<br><br>那是一枚允許你穿越受能量力場保護的門的通行古幣。我已將門的位置標示在你的地圖上。<br><br>立刻朝門出發，並穿過能量力場。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078260",
+   "text": "糟糕。那是黑暗騎士。我看你沒有辦法躲過他。<br><br>所以，你勢必得和他聊聊。<br><br>在黑暗騎士身上按兩下左鍵與他交談，但願他現在心情不錯。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078261",
+   "text": "這道門將帶你離開這裡，並讓你踏上通往新哈文鎮的道路。那是一座學習之城，若想再索沙利亞世界獲得成功，那裡是可以讓你訓練和學習各種重要技巧的地方。<br><br>順著道路向西走。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078262",
+   "text": "好了，我們必須就此分道揚鑣。還有許多的新手等著我去協助，我必須回去碼頭那裡幫助他們。<br><br>在地圖上，我已經標記了能夠指導你繼續接受訓練的人士的位置。<br><br>再會了，朋友。祝你旅途愉快。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078311",
+   "text": "Reg Solvid",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078314",
+   "text": "Teralt Zhelvesku",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078315",
+   "text": "Terort Skitas",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078316",
+   "text": "Reg Volum",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078317",
+   "text": "Ter Anra",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078318",
+   "text": "Reg Nax",
+   "flag": "Modified",
+   "category": "english_only"
+  },
+  {
+   "number": "1078320",
+   "text": "現在，讓我們殺死一個骷髏。<br><br>按左鍵點選骷髏，然後並且靠近它。<br><br>一旦你開始攻擊，動作將會持續到骷髏入土為安為止。<br><br>如果其他的冒險者也在攻擊它，你獲取得殺死一個以上的骷髏。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078398",
+   "text": "UO創造的航點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078457",
+   "text": "~1_skillname~ 困難度： 太過困難",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078458",
+   "text": "~1_skillname~ 困難度： 非常困難",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078459",
+   "text": "~1_skillname~ 困難度： 困難",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078460",
+   "text": "~1_skillname~ 困難度： 適中",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078461",
+   "text": "~1_skillname~ 困難度： 簡單",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078462",
+   "text": "~1_skillname~ 困難度： 非常簡單",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078463",
+   "text": "~1_skillname~ 困難度： 太過簡單",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078501",
+   "text": "物件 ID",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078512",
+   "text": "技能： ~1_val~<br>加乘： ~2_val~",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078526",
+   "text": "<body>需搭配《蒙丹遺產》<br>傷害調整值： 10%<br>防禦機率提升 5%<br>減少彈藥消耗 20%<br>重量減輕 30%</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078527",
+   "text": "<body>需搭配《蒙丹遺產》<br>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>+10 偷竊技能。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078528",
+   "text": "<body>需搭配《蒙丹遺產》<br>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>成為一隻松鼠！成為一隻松鼠！令你的朋友大吃一驚！討人歡心！</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078529",
+   "text": "<body>需搭配《蒙丹遺產》<br>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>使用背包內的繃帶自動治療。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078530",
+   "text": "<body>需搭配《蒙丹遺產》<br>當一名忍者穿戴上妖精護符，它將允許他使用他的動物型態能力，變形為新發現的生物。<br>攻擊時可噴火。</body>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078563",
+   "text": "<BODY><BASEFONT COLOR=#DFDFC0><CENTER>日安，朋友，我是安瑟，新哈文鎮的領導者。<BR>如你所見，這座城內已有許多改變。島嶼的絕大部分都已沈至海水之中，舊城的遺址位於東南邊。難民告訴我們，巨大的災禍吞沒了他們的家園，我們只能提供他們棲身的庇護所。<BR>你或許已經發現，我們的村莊與遺址重建的建築並不相同。沒錯-我們，以及我們特有的城市，不屬於這個時空。摧毀島嶼的相同力量似乎也改變了我們的命運。<BR>有人建議我們不要說這些事情，那樣會有極大的危險，我們必須隱藏過去以確保未來。<BR>現在，請隨意逛逛這座城市。如果你想尋找來自舊城的朋友，你可以前往旅店或醫院。願美德指引你。 </CENTER></BASEFONT></BODY>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078605",
+   "text": "*標準頻道*<br>當地 – /Say 或 /s （此為預設）<br>隊伍 - /party 或 /p<br>公會 - /guild 或 /g<br>聯盟 - /alliance，/a<br><br>*自訂頻道*<br>自訂頻道的開設者將擁有管理權限，直到他們登出遊戲為止，屆時，管理權限將會轉讓給在該頻道中時間最長的玩家。<br>指令包括：<br>/c <頻道名稱> - 發送訊息至該頻道<br>/join <頻道> <密碼，如果有的話> - 加入該頻道<br> /leave <頻道> - 離開頻道<br>/create <頻道名稱> <密碼，如果有的話> - 以選擇的名稱和密碼（非必要）建立一個頻道。頻道名稱和密碼長度上限為16個字元。<br> /password或/pass <頻道名稱> <密碼> - 變更該頻道的密碼<br>/ban <頻道> <玩家> - 禁止玩家進入該聊天頻道<br>/listplayers <channel> - 列出頻道內所有玩家<br><br>*其他指令*<br>/emote - 改變文字顏色並在訊息的兩端加上星號<br>/afk - 開關預設「我不在鍵盤前」訊息<br>/afk <訊息> - 設定玩家的afk訊息。<br>/help或/h – 帶出指令清單以及聊天系統的說明<br>按住shift+上方向鍵或下方向鍵循環顯示前次指令<br>",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078609",
+   "text": "GM訊息",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078613",
+   "text": "*一套研缽和研磨棒<BR> * 一個空瓶子<BR> *藥材",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078614",
+   "text": "- 在研缽和研磨棒上按兩下<BR> - 從選單中挑選藥水的類型和強度",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078616",
+   "text": "玩家指南/技能：煉金技能<BR>http://www.uoherald.com/guide/skill_0.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078624",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的一頭動物、怪物、寵物或玩家",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078626",
+   "text": "玩家指南/技能： 解剖學<BR>http://www.uoherald.com/guide/skill_1.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078628",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的一頭動物、怪物、寵物或玩家",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078629",
+   "text": "- 部分決定你控制一頭寵物的能力<BR>- 影響獸醫技能的成功與否",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078630",
+   "text": "玩家指南/技能： 動物學<BR>http://www.uoherald.com/guide/skill_2.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078632",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的一頭動物、怪物、寵物或玩家<BR>- 當你嘗試馴獸時，保持靠近你的目標",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078633",
+   "text": "玩家指南/技能： 馴獸技能<BR>http://www.uoherald.com/guide/skill_35.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078635",
+   "text": "* 一把弓或十字弓<BR>* 箭或弩箭",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078636",
+   "text": "- 裝備一把弓或十字弓<BR>- 進入戰鬥模式<BR>- 指定一個活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078637",
+   "text": "玩家指南/技能： 弓類武器<BR>http://www.uoherald.com/guide/skill_31.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078639",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定一把武器、一副護甲、沼澤龍或鐵巨人",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078640",
+   "text": "- 為精良鍛造的武器提升殺傷力<BR>- 為精良鍛造的護甲增加抗性",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078641",
+   "text": "玩家指南/技能： 武器學<BR>http://www.uoherald.com/guide/skill_4.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078643",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的非玩家角色",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078644",
+   "text": "玩家指南/技能： 乞討技能<BR>http://www.uoherald.com/guide/skill_6.html",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078646",
+   "text": "* 一把鐵匠鐵鎚、大錘、或是鉗子<BR>* 金屬塊<BR>* 附近的鐵砧和熔爐",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078647",
+   "text": "- 鐵匠鐵鎚、大錘、或是鉗子上按兩下<BR>- 從選單中挑選一項要打造的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078648",
+   "text": "玩家指南/技能： 鐵匠技能<BR>http://www.uoherald.com/guide/skill_7.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078651",
+   "text": "- 開啟武士道之書<BR>- 點選你想要使用的能力圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078652",
+   "text": "玩家指南/技能： 武士道<BR>http://www.uoherald.com/guide/skill_52.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078654",
+   "text": "* 一個睡袋<BR>* 營火",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078655",
+   "text": "- 在地上設置營火<BR>- 在營火上按兩下點燃它,你可能得多試幾次<BR>- 等到你接獲營地已安全的確認通知<BR>- 將睡袋放在地上<BR>- 在睡袋上按兩下展開它<BR>- 在睡袋上按兩下安全地登出",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078656",
+   "text": "玩家指南/技能： 野營技能<BR>http://www.uoherald.com/guide/skill_10.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078658",
+   "text": "* 一把木匠工具，例如一把鉅子<BR>* 木板或木頭",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078659",
+   "text": "- 在木匠工具上按兩下<BR>- 從選單中挑選一項要打造的物品",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078660",
+   "text": "玩家指南/技能： 木匠技能<BR>http://www.uoherald.com/guide/skill_11.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078662",
+   "text": "* 製圖師的筆<BR>* 空白地圖",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078663",
+   "text": "* 繪製一張地圖<BR> - 在製圖師的筆上按兩下<BR> - 選擇你想要繪製的地圖種類<BR>* 藏寶圖解密<BR> - 在藏寶圖上按兩下，成功與否視你的技能等級而定",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078664",
+   "text": "玩家指南/技能： 製圖技能<BR>http://www.uoherald.com/guide/skill_12.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078665",
+   "text": "騎士精神是聖騎士的主要能力。憑藉著它，以及騎士精神之書，聖騎士可以施展各種能力，強化他在戰場上的非凡本領。<br><br>每項聖騎士想要施展的能力，都需要消耗一定的「奉獻點數」才能使用。聖騎士可以捐獻金幣給聖壇或聖地取得奉獻點數。儘管聖騎士可以隨心所欲地施捨與捐獻，但聖騎士在同一時間所能擁有的點數是有上限的。",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078667",
+   "text": "- 打開騎士精神之書<BR>- 點選你想要使用的能力圖示",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078668",
+   "text": "玩家指南/技能： 騎士精神<BR>http://www.uoherald.com/guide/skill_51.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078670",
+   "text": "* 一個熱源<BR>* 一個烹飪器具<BR>* 未加工的食物或原料",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078671",
+   "text": "- 尋找或升起火堆<BR>- 在烹飪器具上按兩下<BR>- 從選單中挑選你想要烹煮的餐點",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078672",
+   "text": "玩家指南/技能： 烹飪技能<BR>http://www.uoherald.com/guide/skill_13.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078674",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定你想要搜尋的區域",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078675",
+   "text": "玩家指南/技能： 偵測隱藏<BR>http://www.uoherald.com/guide/skill_14.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078678",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的動物或怪物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078679",
+   "text": "玩家指南/技能： 失調音樂<BR>http://www.uoherald.com/guide/skill_15.php",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078681",
+   "text": "- 點選技能視窗內的圖示<BR>- 指定附近的活體生物",
+   "flag": "Modified",
+   "category": "mixed"
+  },
+  {
+   "number": "1078683",
+   "text": "玩家指南/技能： 智力評估<BR>http://www.uoherald.com/guide/skill_16.php",
+   "flag": "Modified",
+   "category": "mixed"
+  }
+ ]
+}

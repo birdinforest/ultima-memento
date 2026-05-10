@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "citizen.demilich-below-britain",
+  "pipeline": "citizen_broadcast",
+  "en": "a demilich dwelling below Britain",
+  "expectedZh": "传闻不列颠地下盘踞着一名半巫妖。",
+  "tags": "commontalk-s-rules"
+}

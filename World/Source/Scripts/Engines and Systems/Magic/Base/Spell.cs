@@ -22,6 +22,7 @@ using Server.Spells.Shinobi;
 using Server.Spells.Elementalism;
 using Server.Spells.DeathKnight;
 using Server.Spells.Chivalry;
+using Server.Localization;
 
 namespace Server.Spells
 {
@@ -497,11 +498,11 @@ namespace Server.Spells
 			{
 				if ( this is HolyManSpell )
 				{
-					m_Caster.SendMessage( "Your concentration is disturbed, thus ruining thy prayer." );
+					m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "Your concentration is disturbed, thus ruining thy prayer." ) );
 				}
 				else if ( this is MysticSpell || this is JesterSpell )
 				{
-					m_Caster.SendMessage( "Your concentration is disturbed, thus ruining thy attempt." );
+					m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "Your concentration is disturbed, thus ruining thy attempt." ) );
 				}
 				else
 				{
@@ -536,17 +537,17 @@ namespace Server.Spells
 
 			if ( m_Caster.Blessed )
 			{
-				m_Caster.SendMessage( "You cannot do that while in this state." );
+				m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "You cannot do that while in this state." ) );
 				return false;
 			}
 			if ( !CanCastSpell( m_Caster, this ) )
 			{
-				m_Caster.SendMessage( "The darkness of the Underworld seems to be affecting this spell." );
+				m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "The darkness of the Underworld seems to be affecting this spell." ) );
 				return false;
 			}
 			if ( !CantMixSpell( m_Caster, this ) )
 			{
-				m_Caster.SendMessage( "Elementalism, with magery or necromancy, are affecting your magic." );
+				m_Caster.SendMessage( StringCatalog.Resolve( m_Caster.Account, "Elementalism, with magery or necromancy, are affecting your magic." ) );
 				return false;
 			}
 			else if ( !m_Caster.CheckAlive() )

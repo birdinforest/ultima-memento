@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Spells.Mystic
 {
@@ -47,7 +48,7 @@ namespace Server.Spells.Mystic
 					}
 					else
 					{
-						Caster.SendMessage( "You failed to purify your body!" );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to purify your body!" ) );
 					}
 				}
 

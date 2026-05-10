@@ -7203,7 +7203,19 @@ namespace Server.Mobiles
 					if ( ! mobile.HasGump( typeof( SpeechGump ) ) )
 					{
 						Server.Misc.IntelligentAction.SayHey( m_Talker );
-						mobile.SendGump(new SpeechGump( mobile, m_Talker.TalkGumpTitle, SpeechFunctions.SpeechText( m_Talker, m_Mobile, m_Talker.TalkGumpSubject ) ));
+						string gumpTitle = m_Talker.TalkGumpTitle;
+						string lang = Server.Localization.AccountLang.GetLanguageCode( mobile.Account );
+						if ( Server.Localization.AccountLang.IsChinese( lang ) )
+						{
+							string subject = m_Talker.TalkGumpSubject;
+							if ( subject != null )
+							{
+								string zhTitle = Server.Localization.StringCatalog.TryResolveByKey( lang, "speech.title." + subject.ToLower() );
+								if ( zhTitle != null && zhTitle.Length > 0 )
+									gumpTitle = zhTitle;
+							}
+						}
+						mobile.SendGump(new SpeechGump( mobile, gumpTitle, SpeechFunctions.SpeechText( m_Talker, m_Mobile, m_Talker.TalkGumpSubject ) ));
 					}
 				}
             }
