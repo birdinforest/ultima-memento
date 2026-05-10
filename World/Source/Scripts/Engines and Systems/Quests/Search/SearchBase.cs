@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Items
 {
@@ -187,15 +189,15 @@ namespace Server.Items
 
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot open that while in this state." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot open that while in this state." ) );
 			}
 			else if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to open that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to open that." ) );
 			}
 			else if ( monsters > 0 )
 			{
-				from.SendMessage( "You cannot open this with too many creatures around." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot open this with too many creatures around." ) );
 			}
 			else if (	from.Backpack.FindItemByType( typeof ( SearchPage ) ) != null || 
 						from.Backpack.FindItemByType( typeof ( DDRelicTablet ) ) != null || 
@@ -235,7 +237,7 @@ namespace Server.Items
 					if ( envelope.SearchDungeon == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && envelope.owner == from && ( envelope.DungeonMap == from.Map || envelope.DungeonMap == Server.Misc.Worlds.GetPCDefaultMap( from ) ) && envelope.MsgComplete == 0 )
 					{
 						envelope.MsgComplete = 1;
-						from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + envelope.SearchItem + ".");
+						from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", envelope.SearchItem ) );
 						from.SendSound( 0x3D );
 						EmptyBox = 0;
 					}
@@ -261,7 +263,7 @@ namespace Server.Items
 						if ( cube.LocationKeyLaw == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && cube.HasKeyLaw == 0 )
 						{
 							cube.HasKeyLaw = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the Key of Law!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the Key of Law!" ) );
 							from.SendSound( 0x3D );
 							LoggingFunctions.LogGeneric( from, "has found the Key of Law." );
 							EmptyBox = 0;
@@ -269,7 +271,7 @@ namespace Server.Items
 						if ( cube.LocationKeyBalance == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && cube.HasKeyBalance == 0 )
 						{
 							cube.HasKeyBalance = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the Key of Balance!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the Key of Balance!" ) );
 							from.SendSound( 0x3D );
 							LoggingFunctions.LogGeneric( from, "has found the Key of Balance." );
 							EmptyBox = 0;
@@ -277,7 +279,7 @@ namespace Server.Items
 						if ( cube.LocationKeyChaos == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && cube.HasKeyChaos == 0 )
 						{
 							cube.HasKeyChaos = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the Key of Chaos!");
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the Key of Chaos!" ) );
 							from.SendSound( 0x3D );
 							LoggingFunctions.LogGeneric( from, "has found the Key of Chaos." );
 							EmptyBox = 0;
@@ -290,7 +292,7 @@ namespace Server.Items
 							if ( cube.HasCrystalRed == 0 )
 							{
 								cube.HasCrystalRed = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the red Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the red Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the red Void Crystal." );
 								EmptyBox = 0;
@@ -298,7 +300,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalBlue == 0 )
 							{
 								cube.HasCrystalBlue = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the blue Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the blue Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the blue Void Crystal." );
 								EmptyBox = 0;
@@ -306,7 +308,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalBlue == 0 )
 							{
 								cube.HasCrystalBlue = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the blue Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the blue Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the blue Void Crystal." );
 								EmptyBox = 0;
@@ -314,7 +316,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalGreen == 0 )
 							{
 								cube.HasCrystalGreen = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the green Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the green Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the green Void Crystal." );
 								EmptyBox = 0;
@@ -322,7 +324,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalYellow == 0 )
 							{
 								cube.HasCrystalYellow = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the yellow Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the yellow Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the yellow Void Crystal." );
 								EmptyBox = 0;
@@ -330,7 +332,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalWhite == 0 )
 							{
 								cube.HasCrystalWhite = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the white Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the white Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the white Void Crystal." );
 								EmptyBox = 0;
@@ -338,7 +340,7 @@ namespace Server.Items
 							else if ( cube.HasCrystalPurple == 0 )
 							{
 								cube.HasCrystalPurple = 1;
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the purple Void Crystal!");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the purple Void Crystal!" ) );
 								from.SendSound( 0x3D );
 								LoggingFunctions.LogGeneric( from, "has found the purple Void Crystal." );
 								EmptyBox = 0;
@@ -366,10 +368,10 @@ namespace Server.Items
 					if ( egg.PieceLocation == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) )
 					{
 						bool pickNewEggSpot = false;
-						if ( egg.HaveRod < 1 ){ pickNewEggSpot = true; egg.HaveRod = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the rod of amber!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HaveYellowCrystal < 1 ){ pickNewEggSpot = true; egg.HaveYellowCrystal = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the sun crystal!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HaveRedCrystal < 1 ){ pickNewEggSpot = true; egg.HaveRedCrystal = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the blood crystal!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HavePotion < 1 ){ pickNewEggSpot = true; egg.HavePotion = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the potion of growth!"); from.SendSound( 0x3D ); EmptyBox = 0; }
+						if ( egg.HaveRod < 1 ){ pickNewEggSpot = true; egg.HaveRod = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the rod of amber!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HaveYellowCrystal < 1 ){ pickNewEggSpot = true; egg.HaveYellowCrystal = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the sun crystal!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HaveRedCrystal < 1 ){ pickNewEggSpot = true; egg.HaveRedCrystal = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the blood crystal!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HavePotion < 1 ){ pickNewEggSpot = true; egg.HavePotion = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the potion of growth!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
 
 						if ( pickNewEggSpot )
 						{
@@ -387,10 +389,10 @@ namespace Server.Items
 					if ( egg.PieceLocation == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) )
 					{
 						bool pickNewEggSpot = false;
-						if ( egg.HavePotionA < 1 ){ pickNewEggSpot = true; egg.HavePotionA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the elixir of the flame!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HavePotionB < 1 ){ pickNewEggSpot = true; egg.HavePotionB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the potion of the earth!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HavePotionC < 1 ){ pickNewEggSpot = true; egg.HavePotionC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the mixture of the sea!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( egg.HavePotionD < 1 ){ pickNewEggSpot = true; egg.HavePotionD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the oil of the winds!"); from.SendSound( 0x3D ); EmptyBox = 0; }
+						if ( egg.HavePotionA < 1 ){ pickNewEggSpot = true; egg.HavePotionA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the elixir of the flame!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HavePotionB < 1 ){ pickNewEggSpot = true; egg.HavePotionB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the potion of the earth!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HavePotionC < 1 ){ pickNewEggSpot = true; egg.HavePotionC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the mixture of the sea!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( egg.HavePotionD < 1 ){ pickNewEggSpot = true; egg.HavePotionD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the oil of the winds!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
 
 						if ( pickNewEggSpot )
 						{
@@ -408,10 +410,10 @@ namespace Server.Items
 					if ( skull.PieceLocation == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) )
 					{
 						bool pickNewSpot = false;
-						if ( skull.HavePotionA < 1 ){ pickNewSpot = true; skull.HavePotionA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the heart of the dead god!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( skull.HavePotionB < 1 ){ pickNewSpot = true; skull.HavePotionB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the eye of the mad king!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( skull.HavePotionC < 1 ){ pickNewSpot = true; skull.HavePotionC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the orb of the astral lich!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( skull.HavePotionD < 1 ){ pickNewSpot = true; skull.HavePotionD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the mind of the planar ghost!"); from.SendSound( 0x3D ); EmptyBox = 0; }
+						if ( skull.HavePotionA < 1 ){ pickNewSpot = true; skull.HavePotionA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the heart of the dead god!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( skull.HavePotionB < 1 ){ pickNewSpot = true; skull.HavePotionB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the eye of the mad king!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( skull.HavePotionC < 1 ){ pickNewSpot = true; skull.HavePotionC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the orb of the astral lich!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( skull.HavePotionD < 1 ){ pickNewSpot = true; skull.HavePotionD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the mind of the planar ghost!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
 
 						if ( pickNewSpot )
 						{
@@ -429,10 +431,10 @@ namespace Server.Items
 					if ( prison.PieceLocation == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) )
 					{
 						bool pickNewprisonSpot = false;
-						if ( prison.HaveShardA < 1 ){ pickNewprisonSpot = true; prison.HaveShardA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the shard of hellfire!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( prison.HaveShardB < 1 ){ pickNewprisonSpot = true; prison.HaveShardB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the shard of the abyss!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( prison.HaveShardC < 1 ){ pickNewprisonSpot = true; prison.HaveShardC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the shard of souls!"); from.SendSound( 0x3D ); EmptyBox = 0; }
-						else if ( prison.HaveShardD < 1 ){ pickNewprisonSpot = true; prison.HaveShardD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the shard of the void!"); from.SendSound( 0x3D ); EmptyBox = 0; }
+						if ( prison.HaveShardA < 1 ){ pickNewprisonSpot = true; prison.HaveShardA = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the shard of hellfire!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( prison.HaveShardB < 1 ){ pickNewprisonSpot = true; prison.HaveShardB = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the shard of the abyss!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( prison.HaveShardC < 1 ){ pickNewprisonSpot = true; prison.HaveShardC = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the shard of souls!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
+						else if ( prison.HaveShardD < 1 ){ pickNewprisonSpot = true; prison.HaveShardD = 1; from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( from.Account, "You found the shard of the void!" ) ); from.SendSound( 0x3D ); EmptyBox = 0; }
 
 						if ( pickNewprisonSpot )
 						{
@@ -465,7 +467,7 @@ namespace Server.Items
 									item = (Item)Activator.CreateInstance(itemType);
 									from.AddToBackpack ( item );
 									LoggingFunctions.LogFoundItemQuest( from, stone.SearchItem );
-									from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + stone.SearchItem + ".");
+									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", stone.SearchItem ) );
 									from.SendSound( 0x3D );
 								}
 							}
@@ -486,17 +488,17 @@ namespace Server.Items
 									item.Delete();
 									from.AddToBackpack ( fake );
 								}
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "The " + stone.SearchItem + " appears to be a fake.");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The {0} appears to be a fake.", stone.SearchItem ) );
 								from.SendSound( 0x5B3 );
 							}
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The tablet for the " + stone.SearchItem + " seems to be false.");
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormat( from.Account, "The tablet for the {0} seems to be false.", stone.SearchItem ) );
 								from.PlaySound( 0x5B3 );
 							}
 
-							from.SendMessage( "The tablet crumbles to dust!" );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "The tablet crumbles to dust!" ) );
 							stone.Delete();
 							EmptyBox = 0;
 						}
@@ -516,8 +518,8 @@ namespace Server.Items
 						{
 							from.PlaySound(0x249);
 							SearchPage.UseRandomSearchLocation( page, page.SearchDungeon, (PlayerMobile) from );
-							from.SendMessage( "You didn't find it, but you did get another clue." );
-							from.SendMessage( "so you update your notes for the new place to search." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "You didn't find it, but you did get another clue." ) );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "so you update your notes for the new place to search." ) );
 							EmptyBox = 0;
 						}
 						else
@@ -533,7 +535,7 @@ namespace Server.Items
 									item = (Item)Activator.CreateInstance(itemType);
 									from.AddToBackpack ( item );
 									LoggingFunctions.LogFoundItemQuest( from, page.SearchItem );
-									from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the " + page.SearchItem + ".");
+									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", page.SearchItem ) );
 									from.SendSound( 0x3D );
 								}
 							}
@@ -541,7 +543,7 @@ namespace Server.Items
 							{
 								int nGold = page.LegendPercent * 100;
 								string sGold = nGold.ToString();
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "The legend was false, but there was " + sGold + " gold in here.");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The legend was false, but there was {0} gold in here.", sGold ) );
 								from.SendSound( 0x2E6 );
 								from.AddToBackpack ( new Gold( nGold ) );
 							}
@@ -562,13 +564,13 @@ namespace Server.Items
 									item.Delete();
 									from.AddToBackpack ( fake );
 								}
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, "The " + page.SearchItem + " appears to be a fake.");
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The {0} appears to be a fake.", page.SearchItem ) );
 								from.SendSound( 0x3D );
 							}
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The legends of the " + page.SearchItem + " seemed to be false.");
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormat( from.Account, "The legends of the {0} seemed to be false.", page.SearchItem ) );
 								from.PlaySound( 0x249 );
 							}
 							scroll.Delete();
@@ -579,12 +581,12 @@ namespace Server.Items
 
 				if ( EmptyBox == 1 )
 				{
-					from.SendMessage( "The chest appears to be empty." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The chest appears to be empty." ) );
 				}
 			}
 			else
 			{
-				from.SendMessage( "The chest appears to be empty." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The chest appears to be empty." ) );
 			}
 		}
 

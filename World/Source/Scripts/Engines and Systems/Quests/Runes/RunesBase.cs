@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Network;
 using Server.Accounting;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Items
@@ -54,7 +55,7 @@ namespace Server.Items
 		{
 			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to open that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to open that." ) );
 			}
 			else if ( from is PlayerMobile )
 			{
@@ -89,7 +90,7 @@ namespace Server.Items
 				if ( PlayerSettings.GetKeys( from, "Virtue" ) || PlayerSettings.GetKeys( from, "Corrupt" ) ) // THEY ARE ALREADY DID THIS QUEST
 				{
 					HasBox = true;
-					from.SendMessage( "You don't need this chest as you already dealt with the runes." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need this chest as you already dealt with the runes." ) );
 				}
 				else if ( goal < 8 && HasBox == true )
 				{
@@ -103,12 +104,12 @@ namespace Server.Items
 
 					RunesBaseEmpty Pedul = new RunesBaseEmpty();
 					Pedul.MoveToWorld (new Point3D(this.X, this.Y, this.Z), this.Map);
-					from.SendMessage( "You have awakened a sentinel." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You have awakened a sentinel." ) );
 					this.Delete();
 				}
 				else if ( HasBox == true )
 				{
-					from.SendMessage( "Your virtue chest is already in your pack." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Your virtue chest is already in your pack." ) );
 				}
 				else
 				{
@@ -131,7 +132,7 @@ namespace Server.Items
 						if ( item is RuneBox )
 						{
 							from.AddToBackpack( item );
-							from.SendMessage( "Your virtue chest is already in your pack." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "Your virtue chest is already in your pack." ) );
 						}
 					}
 				}
@@ -139,7 +140,7 @@ namespace Server.Items
 				if ( !HasBox )
 				{
 					SetupVitrtue( from );
-					from.SendMessage( "You take possession of the Chest of Virtue!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You take possession of the Chest of Virtue!" ) );
 					from.SendSound( 0x3D );
 					LoggingFunctions.LogGeneric( from, "has found the Chest of Virtue." );
 					PlayerSettings.SetKeys( from, "Runes", true );

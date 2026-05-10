@@ -6,6 +6,7 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Localization;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -76,7 +77,7 @@ namespace Server.Items
 			}
 			else if ( RuneBoxOwner != from )
 			{
-				from.SendMessage( "This chest does not belong to you so it vanishes!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This chest does not belong to you so it vanishes!" ) );
 				bool remove = true;
 				foreach ( Account a in Accounts.GetAccounts() )
 				{
