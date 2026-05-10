@@ -44,7 +44,10 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1049644, "Cannot be used with hand-held weapons" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "gift.pugilist.no.weapons" );
+			else
+				list.Add( 1049644, "Cannot be used with hand-held weapons" );
 		}
 
 		public GiftPugilistGloves( Serial serial ) : base( serial )

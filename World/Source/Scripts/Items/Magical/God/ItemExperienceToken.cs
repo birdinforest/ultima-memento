@@ -40,7 +40,12 @@ namespace Server.Items
 			base.GetProperties(list);
 
 			if (0 < Experience)
-				list.Add(1060659, "Experience\t{0}", Experience);
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty(list, "god.xp.token", Experience);
+				else
+					list.Add(1060659, "Experience\t{0}", Experience);
+			}
 		}
 
 		public override void OnDoubleClick(Mobile from)

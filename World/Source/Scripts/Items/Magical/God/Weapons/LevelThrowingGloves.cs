@@ -141,8 +141,16 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1049644, "Double click to change type from " + GloveType );
-			list.Add( 1070722, "Cannot be used with other weapons" );
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "god.throwing.change.type", GloveType );
+				AddLocalizedProperty( list, "god.throwing.no.weapons" );
+			}
+			else
+			{
+				list.Add( 1049644, "Double click to change type from " + GloveType );
+				list.Add( 1070722, "Cannot be used with other weapons" );
+			}
 		}
 
 		public LevelThrowingGloves( Serial serial ) : base( serial )

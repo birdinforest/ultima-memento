@@ -33,14 +33,26 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add("{0} Uses Left", Charges);
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty(list, "god.rename.uses.left", Charges);
+			else
+				list.Add("{0} Uses Left", Charges);
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties( list );
-			list.Add( 1070722, "Rename Legendary Artefacts");
-			if ( owner != null ){ list.Add( 1049644, "Belongs to " + owner.Name + "" ); }
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty(list, "god.rename.legendary");
+				if ( owner != null )
+					AddLocalizedProperty(list, "god.rename.belongs.to", owner.Name);
+			}
+			else
+			{
+				list.Add( 1070722, "Rename Legendary Artefacts");
+				if ( owner != null ){ list.Add( 1049644, "Belongs to " + owner.Name + "" ); }
+			}
         } 
 
 		public override void OnDoubleClick( Mobile from )

@@ -116,7 +116,12 @@ namespace Server.Items
 			base.GetProperties( list );
 
 			if ( IsArcane )
-				list.Add( 1061837, "{0}\t{1}", m_CurArcaneCharges, m_MaxArcaneCharges ); // arcane charges: ~1_val~ / ~2_val~
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.arcane.charges", m_CurArcaneCharges, m_MaxArcaneCharges );
+				else
+					list.Add( 1061837, "{0}\t{1}", m_CurArcaneCharges, m_MaxArcaneCharges ); // arcane charges: ~1_val~ / ~2_val~
+			}
 		}
 
 		public override void OnSingleClick( Mobile from )

@@ -26,8 +26,18 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( this.ItemID == 0xA0F ){ list.Add( 1049644, "Double-Click to Unequip"); }
-			else { list.Add( 1049644, "Double-Click to Equip"); }
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( this.ItemID == 0xA0F )
+					AddLocalizedProperty( list, "god.candle.unequip" );
+				else
+					AddLocalizedProperty( list, "god.candle.equip" );
+			}
+			else
+			{
+				if ( this.ItemID == 0xA0F ){ list.Add( 1049644, "Double-Click to Unequip"); }
+				else { list.Add( 1049644, "Double-Click to Equip"); }
+			}
         } 
 
 		public override bool AllowEquipedCast( Mobile from )

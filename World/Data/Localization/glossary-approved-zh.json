@@ -3277,6 +3277,83 @@
       "category": "concept",
       "notes": "Quiver property that reduces the weight of carried ammunition.",
       "translation_basis_zh": "箭袋属性，减少所携带弹药的重量。"
+    },
+    "Poison Charges": {
+      "canonical": "毒药充能",
+      "alternatives": ["毒充能"],
+      "category": "concept",
+      "notes": "Weapon property showing remaining poison doses.",
+      "translation_basis_zh": "武器涂毒后的剩余中毒次数，依等级分弱/普通/强效/致命/剧毒。"
+    },
+    "Equipped At": {
+      "canonical": "装备位置",
+      "alternatives": ["佩戴位置"],
+      "category": "concept",
+      "notes": "Shows which equipment slot an item occupies (e.g. Right Hand, Left Hand).",
+      "translation_basis_zh": "显示物品佩戴在哪个装备栏位（如右手、左手、头部等）。"
+    },
+    "Density": {
+      "canonical": "密度",
+      "alternatives": ["材质密度"],
+      "category": "concept",
+      "notes": "Crafting density tier (Weak → Ultimate) affecting item durability.",
+      "translation_basis_zh": "制作材料的密度等级（低→终极），影响物品耐久度。"
+    },
+    "Arcane Charges": {
+      "canonical": "奥术充能",
+      "alternatives": ["秘法充能"],
+      "category": "concept",
+      "notes": "Arcane equipment charges that power special abilities.",
+      "translation_basis_zh": "奥术装备的特殊充能点数，用于驱动特殊能力。"
+    },
+    "Single Click to Enchant": {
+      "canonical": "单击附魔",
+      "alternatives": ["单击附魔"],
+      "category": "ui",
+      "notes": "Prompt shown on Gift items with enchantment points available.",
+      "translation_basis_zh": "附魔点数 >5 时 Gift 装备的提示文字。"
+    },
+    "Enchantment Points": {
+      "canonical": "附魔点数",
+      "alternatives": ["附魔点"],
+      "category": "concept",
+      "notes": "Points used to enchant Gift items with attributes.",
+      "translation_basis_zh": "Gift 系统附魔点数，可消耗以附加属性。"
+    },
+    "Experience": {
+      "canonical": "经验值",
+      "alternatives": ["经验"],
+      "category": "system",
+      "notes": "Experience points for leveling Legendary Artefacts.",
+      "translation_basis_zh": "神器/装备升级所需的经验值。"
+    },
+    "Legendary Artefacts Only": {
+      "canonical": "仅限传说神器",
+      "alternatives": ["传说装备专用"],
+      "category": "concept",
+      "notes": "LevelUpScroll restriction: can only be used on Legendary Artefacts.",
+      "translation_basis_zh": "强化符文限制：仅能在传说神器上使用。"
+    },
+    "Blacksmith Validated": {
+      "canonical": "已通过铁匠验证",
+      "alternatives": ["铁匠验证通过"],
+      "category": "system",
+      "notes": "Status shown on LevelUpScroll after blacksmith validation.",
+      "translation_basis_zh": "强化符文已通过铁匠技能验证的状态显示。"
+    },
+    "Rename Legendary Artefacts": {
+      "canonical": "重命名传说神器",
+      "alternatives": ["更名传说装备"],
+      "category": "ui",
+      "notes": "Tooltip on LegendaryArtifactRename item.",
+      "translation_basis_zh": "传说神器更名铁砧的提示文字。"
+    },
+    "Belongs to": {
+      "canonical": "属于",
+      "alternatives": ["所有者"],
+      "category": "ui",
+      "notes": "Owner display prefix for bound items.",
+      "translation_basis_zh": "绑定物品的所有者前缀。"
     }
   }
 }

@@ -3272,7 +3272,21 @@ namespace Server.Items
 			}
 
 			if ( m_Poison != null && m_PoisonCharges > 0 )
-				list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
+			{
+				if ( BuildingPropertyListLocale != null )
+				{
+					switch ( m_Poison.Level )
+					{
+						case 0: AddLocalizedProperty( list, "prop.poison.lesser", m_PoisonCharges ); break;
+						case 1: AddLocalizedProperty( list, "prop.poison.regular", m_PoisonCharges ); break;
+						case 2: AddLocalizedProperty( list, "prop.poison.greater", m_PoisonCharges ); break;
+						case 3: AddLocalizedProperty( list, "prop.poison.deadly", m_PoisonCharges ); break;
+						case 4: AddLocalizedProperty( list, "prop.poison.lethal", m_PoisonCharges ); break;
+					}
+				}
+				else
+					list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
+			}
 
 			if( m_Slayer != SlayerName.None )
 			{
@@ -3738,10 +3752,28 @@ namespace Server.Items
 					list.Add( 1061170, strReq.ToString() ); // strength requirement ~1_val~
 			}
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			if ( localized )
+				AddLocalizedProperty( list, "prop.equipped.at", EquipLayerName( Layer ) );
+			else
+				list.Add( 1061182, EquipLayerName( Layer ) );
 
 			if ( Density != Density.None )
-				list.Add( 1061182 + (int)Density );
+			{
+				if ( localized )
+				{
+					switch ( Density )
+					{
+						case Density.Weak:     AddLocalizedProperty( list, "prop.density.weak" ); break;
+						case Density.Regular:  AddLocalizedProperty( list, "prop.density.regular" ); break;
+						case Density.Great:    AddLocalizedProperty( list, "prop.density.great" ); break;
+						case Density.Greater:  AddLocalizedProperty( list, "prop.density.greater" ); break;
+						case Density.Superior: AddLocalizedProperty( list, "prop.density.superior" ); break;
+						case Density.Ultimate: AddLocalizedProperty( list, "prop.density.ultimate" ); break;
+					}
+				}
+				else
+					list.Add( 1061182 + (int)Density );
+			}
 
 			if ( Core.SE || m_AosWeaponAttributes.UseBestSkill == 0 )
 			{

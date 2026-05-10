@@ -41,16 +41,32 @@ namespace Server.Items
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            if (m_Value == 5.0)
-                list.Add("a wondrous rune of enhancing (+{0} max levels)", m_Value);
-            else if (m_Value == 10.0)
-                list.Add("an exalted rune of enhancing (+{0} max levels)", m_Value);
-            else if (m_Value == 15.0)
-                list.Add("a mythical rune of enhancing (+{0} max levels)", m_Value);
-            else if (m_Value == 20.0)
-                list.Add("a legendary rune of enhancing (+{0} max levels)", m_Value);
+            if ( BuildingPropertyListLocale != null )
+            {
+                if (m_Value == 5.0)
+                    AddLocalizedProperty(list, "god.level.up.rune.wondrous", m_Value);
+                else if (m_Value == 10.0)
+                    AddLocalizedProperty(list, "god.level.up.rune.exalted", m_Value);
+                else if (m_Value == 15.0)
+                    AddLocalizedProperty(list, "god.level.up.rune.mythical", m_Value);
+                else if (m_Value == 20.0)
+                    AddLocalizedProperty(list, "god.level.up.rune.legendary", m_Value);
+                else
+                    AddLocalizedProperty(list, "god.level.up.rune.normal", m_Value);
+            }
             else
-                list.Add("a rune of enhancing (+{0} max levels)", m_Value);
+            {
+                if (m_Value == 5.0)
+                    list.Add("a wondrous rune of enhancing (+{0} max levels)", m_Value);
+                else if (m_Value == 10.0)
+                    list.Add("an exalted rune of enhancing (+{0} max levels)", m_Value);
+                else if (m_Value == 15.0)
+                    list.Add("a mythical rune of enhancing (+{0} max levels)", m_Value);
+                else if (m_Value == 20.0)
+                    list.Add("a legendary rune of enhancing (+{0} max levels)", m_Value);
+                else
+                    list.Add("a rune of enhancing (+{0} max levels)", m_Value);
+            }
         }
 
         public override void OnSingleClick(Mobile from)
@@ -86,7 +102,26 @@ namespace Server.Items
             else
                 BlacksmithMsg = "";
 
-            list.Add(1060847, "Legendary Artefacts Only\t {0}", BlacksmithMsg);
+            if ( BuildingPropertyListLocale != null )
+            {
+                if ( IsBlacksmithOnly )
+                {
+                    if ( !m_BlacksmithValidated )
+                    {
+                        AddLocalizedProperty( list, "god.legendary.only" );
+                        AddLocalizedProperty( list, "god.must.validate", LevelItems.BlacksmithSkillRequired );
+                    }
+                    else
+                    {
+                        AddLocalizedProperty( list, "god.legendary.only" );
+                        AddLocalizedProperty( list, "god.validated" );
+                    }
+                }
+                else
+                    AddLocalizedProperty( list, "god.legendary.only" );
+            }
+            else
+                list.Add(1060847, "Legendary Artefacts Only\t {0}", BlacksmithMsg);
 		}
 
 		public LevelUpScroll( Serial serial ) : base( serial )

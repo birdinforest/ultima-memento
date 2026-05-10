@@ -63,10 +63,34 @@ namespace Server.Items
 		public override void AddNameProperties(ObjectPropertyList list)
 		{
 			base.AddNameProperties(list);
-			if ( m_Points > 5 ){ list.Add( 1070722, "Single Click to Enchant"); }
-			else if ( m_Gifter != "" && m_Gifter != null ){ list.Add( 1070722, m_Gifter); }
-			if ( m_Points > 5 && m_How == "Unearthed by" ){ list.Add( 1049644, m_Points + " Enchantment Points" ); }
-			else if ( m_Owner != null ){ list.Add( 1049644, m_How + " " + m_Owner.Name + "" ); }
+			if ( m_Points > 5 )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "gift.enchant.prompt" );
+				else
+					list.Add( 1070722, "Single Click to Enchant");
+			}
+			else if ( m_Gifter != "" && m_Gifter != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "gift.provenance", m_How, m_Owner?.Name ?? m_Gifter );
+				else
+					list.Add( 1070722, m_Gifter);
+			}
+			if ( m_Points > 5 && m_How == "Unearthed by" )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "gift.enchant.points", m_Points );
+				else
+					list.Add( 1049644, m_Points + " Enchantment Points" );
+			}
+			else if ( m_Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "gift.provenance", m_How, m_Owner.Name );
+				else
+					list.Add( 1049644, m_How + " " + m_Owner.Name + "" );
+			}
 		}
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)

@@ -91,12 +91,18 @@ namespace Server.Items
         {
             base.GetProperties(list);
 
-            /* Display level in the properties context menu.
-             * Will display experience as well, if DisplayExpProp.
-             * is set to true in LevelItemManager.cs */
-            list.Add(1060658, "Level\t{0}", Level);
-			if (LevelItems.DisplayExpProp)
-				list.Add(1060659, "Experience\t{0}", Experience);
+            if ( BuildingPropertyListLocale != null )
+            {
+                AddLocalizedProperty( list, "god.level", Level );
+                if ( LevelItems.DisplayExpProp )
+                    AddLocalizedProperty( list, "god.experience", Experience );
+            }
+            else
+            {
+                list.Add(1060658, "Level\t{0}", Level);
+                if ( LevelItems.DisplayExpProp )
+                    list.Add(1060659, "Experience\t{0}", Experience );
+            }
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
