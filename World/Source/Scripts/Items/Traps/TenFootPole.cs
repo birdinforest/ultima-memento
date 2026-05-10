@@ -8,6 +8,7 @@ using Server.Spells;
 using Server.Network;
 using Server.Multis;
 using Server.Misc;
+using Server.Localization;
 using System.Collections;
 
 namespace Server.Items 
@@ -44,10 +45,10 @@ namespace Server.Items
 		public TenFootPole( ) : base( 0xE8A )
 		{		
 			Weight = 40.0; 
-			Name = "ten foot pole";
+			Name = StringCatalog.ResolveByKey(null, "trap.name.tenfootpole");
 			LimitsMax = 20;
 			Limits = 20;
-			LimitsName = "Uses";
+			LimitsName = StringCatalog.ResolveByKey(null, "trap.uses");
 			LimitsDelete = true;
 			m_Tap = 40;
 			CoinPrice = 20;
@@ -61,8 +62,8 @@ namespace Server.Items
         {
             base.AppendChildProperties(list);
 
-			list.Add("" + m_Tap + "% Avoiding Traps");
-			list.Add("For Wall, Floor & Container Traps");
+			list.Add(StringCatalog.ResolveFormatByKey( null, "trap.tenfootpole.properties.avoid", m_Tap ));
+			list.Add(StringCatalog.ResolveByKey( null, "trap.tenfootpole.properties.wallfloor" ));
         }
 
 		public override void Serialize( GenericWriter writer ) 
@@ -88,7 +89,7 @@ namespace Server.Items
 				nul = (int)reader.ReadInt();
 				LimitsMax = nul;
 				Limits = nul;
-				LimitsName = "Uses";
+				LimitsName = StringCatalog.ResolveByKey(null, "trap.uses");
 				LimitsDelete = true;
 
 				if ( Weight == 39.0 ){			Resource = CraftResource.AshTree; }

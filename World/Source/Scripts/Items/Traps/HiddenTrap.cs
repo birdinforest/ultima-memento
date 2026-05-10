@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Spells;
 using System.Collections.Generic;
 using Server.Misc;
+using Server.Localization;
 using System.Collections;
 using System.Text;
 using System.IO;
@@ -20,14 +21,33 @@ namespace Server.Items
 
 		public int HiddenTrapType;
 
+		private Dictionary<Serial, DateTime> m_WarnedPlayers;
+
+		private static readonly int[] WeightedTrapPool = BuildWeightedPool();
+
+		private static int[] BuildWeightedPool()
+		{
+			var pool = new List<int>();
+			// Mild (x5): types 1, 6, 12
+			for (int i = 0; i < 5; i++) { pool.Add(1); pool.Add(6); pool.Add(12); }
+			// Moderate (x3): types 2, 5, 7, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+			for (int i = 0; i < 3; i++) { pool.Add(2); pool.Add(5); pool.Add(7); pool.Add(14); pool.Add(15); pool.Add(16); pool.Add(17); pool.Add(18); pool.Add(19); pool.Add(20); pool.Add(21); pool.Add(22); pool.Add(23); }
+			// Severe (x1.5): types 3, 8, 9, 10, 11, 24
+			for (int i = 0; i < 3; i += 2) { pool.Add(3); pool.Add(8); pool.Add(9); pool.Add(10); pool.Add(11); pool.Add(24); }
+			// Extreme (x0.5): types 4, 13, 25
+			pool.Add(4); pool.Add(13); pool.Add(25);
+			return pool.ToArray();
+		}
+
 		[CommandProperty(AccessLevel.Owner)]
 		public int Hidden_TrapType { get { return HiddenTrapType; } set { HiddenTrapType = value; InvalidateProperties(); } }
 
 		[Constructable]
 		public HiddenTrap() : base( 0x65F7 )
 		{
+			m_WarnedPlayers = new Dictionary<Serial, DateTime>();
 			Movable = false;
-			Name = "a hidden trap";
+			Name = StringCatalog.ResolveByKey(null, "trap.name.hidden");
 			Visible = false;
 			Weight = 1.0;
 			Light = LightType.Circle150;
@@ -43,6 +63,10 @@ namespace Server.Items
         public override void OnAfterSpawn()
         {
 			base.OnAfterSpawn();
+			if ( Server.Misc.Worlds.IsOnSpaceship( Location, Map ) )
+				HiddenTrapType = Utility.RandomList( 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 16, 18, 19, 20, 21, 22, 23 );
+			else
+				HiddenTrapType = WeightedTrapPool[Utility.Random(WeightedTrapPool.Length)];
 			SetAppearance( this );
 		}
 
@@ -58,15 +82,16 @@ namespace Server.Items
 				trap.ItemID = 0x65F7;
 
 			if ( trap.Weight == 5.0 )
-				trap.Name = "a disabled trap";
+				trap.Name = StringCatalog.ResolveByKey(null, "trap.name.disabled");
 			else if ( trap.Weight == 6.0 )
-				trap.Name = "a broken trap";
+				trap.Name = StringCatalog.ResolveByKey(null, "trap.name.broken");
 			else if ( trap.Weight == 3.0 )
-				trap.Name = "a trap";
+				trap.Name = StringCatalog.ResolveByKey(null, "trap.name.trap");
 		}
 
 		public HiddenTrap(Serial serial) : base(serial)
 		{
+			m_WarnedPlayers = new Dictionary<Serial, DateTime>();
 		}
 
 		public override bool OnMoveOver( Mobile m )
@@ -82,9 +107,6 @@ namespace Server.Items
 			if ( !CanSetOffTraps( m ) || Weight >= 5.0 )
 				return true;
 
-			if ( PassiveSearching( this, m ) )
-				return true;
-
 			bool HadAnyAffect = false;
 
 			if ( m is PlayerMobile )
@@ -93,21 +115,14 @@ namespace Server.Items
 
 				if ( nSprung )
 				{
-					int nTrapType = Utility.RandomMinMax( 1, 25 );
+					int nTrapType = HiddenTrapType;
 
-					if ( HiddenTrapType > 0 ){ nTrapType = HiddenTrapType; }
-
-					HiddenTrapType = nTrapType;
-
-					if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+					if ( nTrapType == 0 )
 					{
-						HiddenTrapType = Utility.RandomList( 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 16, 18, 19, 20, 21, 22, 23 );
-						nTrapType = HiddenTrapType;
-					}
-					else if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
-					{
-						HiddenTrapType = Utility.RandomList( 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 16, 18, 19, 20, 21, 22, 23 );
-						nTrapType = HiddenTrapType;
+						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+							nTrapType = Utility.RandomList( 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 16, 18, 19, 20, 21, 22, 23 );
+						else
+							nTrapType = WeightedTrapPool[Utility.Random(WeightedTrapPool.Length)];
 					}
 
 					if ( m is PlayerMobile && Spells.Research.ResearchAirWalk.UnderEffect( m ) )
@@ -118,12 +133,12 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 1 && SavingThrow( m, "Magic", true, this ) == false ) // REVEALING TRAP
 					{
-						textSay = "You triggered a magical revealing trap!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.reveal" );
 						textLog = "a revealing trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped on a statically charged tile, revealing you!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.reveal.space" );
 							textLog = "a statically charged tile";
 						}
 
@@ -135,12 +150,12 @@ namespace Server.Items
 
 						if ( HowBad == 1 )
 						{
-							textSay = "You tripped over a wire and dropped your backpack!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.tripwire.backpack" );
 							textLog = "a trip wire trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You tripped over a loose deck plate and dropped your backpack!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.tripwire.backpack.space" );
 								textLog = "a loose deck plate";
 							}
 
@@ -169,12 +184,12 @@ namespace Server.Items
 						}
 						else
 						{
-							textSay = "You tripped over a wire and dropped one of your equipped items!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.tripwire.equip" );
 							textLog = "a trip wire trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You tripped over a loose deck plate and dropped one of your equipped items!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.tripwire.equip.space" );
 								textLog = "a loose deck plate";
 							}
 
@@ -191,12 +206,12 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 3 && SavingThrow( m, "Magic", true, this ) == false ) // COINS TO LEAD TRAP
 					{
-						textSay = "A trap triggered, making your coins heavier!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.coins" );
 						textLog = "a transmutation trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped over a molecular atomizer, making your coins turn to lead!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.coins.space" );
 							textLog = "a molecular atomizer";
 						}
 
@@ -242,89 +257,110 @@ namespace Server.Items
 						}
 						sTrapType = textLog;
 					}
-					else if ( nTrapType == 4 && SavingThrow( m, "Magic", true, this ) == false ) // LOSE ITEM TRAP
+				else if ( nTrapType == 4 && SavingThrow( m, "Magic", true, this ) == false ) // LOSE ITEM TRAP
+				{
+					textLog = "a destructive trap";
+
+					if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+						textLog = "a molecular oxidizer";
+
+					Item iRuined = GetMyItem( m );
+
+					if ( iRuined != null )
 					{
-						textSay = "A trap triggered, almost ruining one of your protected items!";
-						textLog = "a destructive trap";
-			
-						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+						if ( Mobile.InsuranceEnabled && CheckInsuranceOnTrap( iRuined, m ) )
 						{
-							textSay = "You stepped over a molecular oxidizer, almost ruining one of your protected items!";
-							textLog = "a molecular oxidizer";
+							textSay = StringCatalog.ResolveByKey( m.Account, Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) ? "trap.insurance.damage.space" : "trap.insurance.damage" );
+							m.LocalOverheadMessage(MessageType.Emote, 1150, true, textSay);
 						}
-
-						Container cont = m.Backpack;
-						Item iRuined = GetMyItem( m );
-
-						if ( iRuined != null )
+						else
 						{
-							if ( Mobile.InsuranceEnabled && CheckInsuranceOnTrap( iRuined, m ) )
+							BaseWeapon tgtWeapon = iRuined as BaseWeapon;
+							BaseArmor tgtArmor = iRuined as BaseArmor;
+							bool isMetal = false;
+							bool alreadyDamaged = false;
+
+							if ( tgtWeapon != null )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, textSay);
+								isMetal = CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal;
+								alreadyDamaged = tgtWeapon.TrapDamaged;
 							}
-							else
+							else if ( tgtArmor != null )
 							{
-								textSay = "A trap triggered, rusting one of your equipped items!";
-					
-								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
+								isMetal = CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal;
+								alreadyDamaged = tgtArmor.TrapDamaged;
+							}
+
+							if ( alreadyDamaged )
+							{
+								// Stage 2: already damaged — destroy
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.damage.stage2" );
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
+
+								if ( isMetal )
 								{
-									textSay = "You stepped over a molecular oxidizer, rusting one of your equipped items!";
+									RustyJunk broke = new RustyJunk();
+									broke.ItemID = ( tgtWeapon != null ) ? tgtWeapon.GraphicID : tgtArmor.ItemID;
+									broke.Name = StringCatalog.ResolveByKey( m.Account, "trap.name.rusted" );
+									broke.Weight = ( tgtWeapon != null ) ? iRuined.Weight : (double)Utility.RandomMinMax( 1, 4 );
+									m.AddToBackpack( broke );
 								}
-
-								int Rusted = 0;
-								if ( iRuined is BaseWeapon )
+								else
 								{
-									BaseWeapon iRusted = (BaseWeapon)iRuined;
-
-									if ( CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal )
-									{
-										m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-										RustyJunk broke = new RustyJunk();
-										broke.ItemID = iRuined.GraphicID;
-										broke.Name = "rusted item";
-										broke.Weight = iRuined.Weight;
-										m.AddToBackpack ( broke );
-										Rusted = 1;
-									}
-								}
-								if ( iRuined is BaseArmor )
-								{
-									BaseArmor iRusted = (BaseArmor)iRuined;
-
-									if ( CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal )
-									{
-										m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
-										RustyJunk broke = new RustyJunk();
-										broke.ItemID = iRuined.ItemID;
-										broke.Name = "rusted item";
-										broke.Weight = Utility.RandomMinMax( 1, 4 );
-										m.AddToBackpack ( broke );
-										Rusted = 1;
-									}
-								}
-								if ( Rusted == 0 )
-								{
-									textSay = "A trap triggered, ruining one of your equipped items!";
-						
-									if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
-									{
-										textSay = "You stepped over a molecular oxidizer, ruining one of your equipped items!";
-									}
-
-									m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 									BrokenGear broke = new BrokenGear();
 									broke.ItemID = iRuined.ItemID;
-									broke.Name = "Ruined Item";
+									broke.Name = StringCatalog.ResolveByKey( m.Account, "trap.name.ruined" );
 									broke.Weight = iRuined.Weight;
-									m.AddToBackpack ( broke );
+									m.AddToBackpack( broke );
 								}
 								iRuined.Delete();
 							}
-							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
-							m.PlaySound( 0x1E1 );
-							sTrapType = textLog;
+							else if ( tgtWeapon != null || tgtArmor != null )
+							{
+								// Stage 1: first hit — apply TrapDamaged
+								int newMax = 5;
+								if ( tgtWeapon != null )
+								{
+									tgtWeapon.TrapDamaged = true;
+									newMax = Math.Max( Math.Min( 5, tgtWeapon.MaxHitPoints ), tgtWeapon.MaxHitPoints * 15 / 100 );
+									tgtWeapon.MaxHitPoints = newMax;
+									tgtWeapon.HitPoints = newMax;
+								}
+								else
+								{
+									tgtArmor.TrapDamaged = true;
+									newMax = Math.Max( Math.Min( 5, tgtWeapon.MaxHitPoints ), tgtWeapon.MaxHitPoints * 15 / 100 );
+									tgtArmor.MaxHitPoints = newMax;
+									tgtArmor.HitPoints = newMax;
+								}
+
+								// Visual damage
+								string dp = StringCatalog.ResolveByKey( null, "trap.name.damaged.prefix" );
+								iRuined.Name = dp + iRuined.Name;
+								iRuined.Hue = 0x0966;
+
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.damage.stage1" );
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
+							}
+							else
+							{
+								// Not weapon/armor — immediate destruction
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.damage.ruin" );
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
+
+								BrokenGear broke = new BrokenGear();
+								broke.ItemID = iRuined.ItemID;
+								broke.Name = StringCatalog.ResolveByKey( m.Account, "trap.name.ruined" );
+								broke.Weight = iRuined.Weight;
+								m.AddToBackpack( broke );
+								iRuined.Delete();
+							}
 						}
+						m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
+						m.PlaySound( 0x1E1 );
+						sTrapType = textLog;
 					}
+				}
 					else if ( nTrapType == 5 && SavingThrow( m, "Magic", true, this ) == false ) // LOSE A STAT TRAP
 					{
 						int nStat = Utility.RandomMinMax( 1, 3 );
@@ -333,12 +369,12 @@ namespace Server.Items
 						{
 							if ( m.RawStr > 10 )
 							{
-								textSay = "A trap triggered, making you feel weaker!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.str" );
 								textLog = "a weakness trap";
 					
 								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 								{
-									textSay = "You walked over some bacteria, making you feel weaker!";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.str.space" );
 									textLog = "a bacterial contamination";
 								}
 
@@ -353,12 +389,12 @@ namespace Server.Items
 						{
 							if ( m.RawDex > 10 )
 							{
-								textSay = "A trap triggered, making you feel sluggish!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.dex" );
 								textLog = "a slowness trap";
 					
 								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 								{
-									textSay = "You walked over some bacteria, making you feel sluggish!";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.dex.space" );
 									textLog = "a bacterial contamination";
 								}
 
@@ -373,12 +409,12 @@ namespace Server.Items
 						{
 							if ( m.RawInt > 10 )
 							{
-								textSay = "A trap triggered, making your mind cloudy!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.int" );
 								textLog = "a mind numbing trap";
 					
 								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 								{
-									textSay = "You walked over some bacteria, making your mind cloudy!";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.stat.int.space" );
 									textLog = "a bacterial contamination";
 								}
 
@@ -392,12 +428,12 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 6 && SavingThrow( m, "Poison", true, this ) == false ) // POISON TRAP
 					{
-						textSay = "A trap triggered, making you feel ill!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.poison" );
 						textLog = "a poison gas trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped on some biological contamination, making you feel ill!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.poison.space" );
 							textLog = "a biological contamination";
 						}
 
@@ -431,12 +467,12 @@ namespace Server.Items
 
 						if ( nStat == 1 )
 						{
-							textSay = "A trap triggered, making you feel near dead!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.hp" );
 							textLog = "a life draining trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You stepped over a radioactive spill, making you feel near dead!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.hp.space" );
 								textLog = "a radioactive spill";
 							}
 
@@ -448,12 +484,12 @@ namespace Server.Items
 						}
 						else if ( nStat == 2 )
 						{
-							textSay = "A trap triggered, making you feel really tired!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.stam" );
 							textLog = "a stamina draining trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You stepped over a radioactive spill, making you feel really tired!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.stam.space" );
 								textLog = "a radioactive spill";
 							}
 
@@ -465,12 +501,12 @@ namespace Server.Items
 						}
 						else
 						{
-							textSay = "A trap triggered, draining your mana!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.mana" );
 							textLog = "a mana draining trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You stepped over a radioactive spill, draining your mana!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.drain.mana.space" );
 								textLog = "a radioactive spill";
 							}
 
@@ -508,12 +544,12 @@ namespace Server.Items
 						}
 						if ( nAmount > 0 )
 						{
-							textSay = "A trap triggered, making your gems fuse together!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.gems" );
 							textLog = "a lode stone trap";
 				
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You stepped over a damaged power coil, fusing your gemstones together!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.gems.space" );
 								textLog = "a damaged power coil";
 							}
 
@@ -558,7 +594,7 @@ namespace Server.Items
 
 					if ( nAmount > 0 )
 					{
-						textSay = "You walked into a toxic cloud, spoiling half your reagents!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.reagent" );
 						textLog = "a toxic cloud trap";
 
 						RottedReagents regs = new RottedReagents();
@@ -598,7 +634,7 @@ namespace Server.Items
 								{
 									if ( CheckInsuranceOnTrap( i, m ) )
 									{
-										m.LocalOverheadMessage(MessageType.Emote, 1150, true, "One of your books was almost magically bound!");
+										m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveByKey( m.Account, "trap.insurance.books" ));
 									}
 									else
 									{
@@ -626,7 +662,7 @@ namespace Server.Items
 
 							m.AddToBackpack ( box );
 
-							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, locking your books in a magic box!");
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.books" ));
 							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 							m.PlaySound( 0x1E1 );
 							sTrapType = "a book bound trap";
@@ -634,12 +670,12 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 11 && SavingThrow( m, "Magic", true, this ) == false ) // TELEPORT TRAP
 					{
-						textSay = "A trap triggered, teleporting you away from here!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.teleport" );
 						textLog = "a teleportation trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped over an overcharged transporter pad, transporting you away from here!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.teleport.space" );
 							textLog = "an overcharged transporter pad";
 						}
 
@@ -662,7 +698,7 @@ namespace Server.Items
 						if ( FameLoss > 0 )
 						{
 							m.Fame = FameLoss;
-							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, causing some of your deeds to be forgotten!");
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.fame" ));
 							m.FixedParticles( 0x374A, 10, 15, 5032, EffectLayer.Head );
 							m.PlaySound( 0x1F8 );
 							sTrapType = "a forgotten fame trap";
@@ -677,11 +713,11 @@ namespace Server.Items
 						{
 							if ( Mobile.InsuranceEnabled && CheckInsuranceOnTrap( iCursed, m ) )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, "One of your protected items was almost cursed!");
+								m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveByKey( m.Account, "trap.insurance.curse" ));
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, putting a curse on one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.curse" ));
 								m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 								m.PlaySound( 0x1E1 );
 
@@ -702,7 +738,7 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 4506 + 1, 18, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 4512 + 1, 18, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a spike trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.spike" ));
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a spike trap";
@@ -712,19 +748,19 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 0x11AC + 1, 6, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 0x11B1 + 1, 6, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x21C );
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a saw blade trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.saw" ));
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a saw blade trap";
 					}
 					else if ( nTrapType == 16 && SavingThrow( m, "Fire", true, this ) == false ) // FLAME TRAP
 					{
-						textSay = "You triggered a fire trap!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.fire" );
 						textLog = "a fire trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped on thermal vent, scorching you!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.fire.space" );
 							textLog = "a thermal vent";
 						}
 
@@ -739,19 +775,19 @@ namespace Server.Items
 					{
 						Effects.SendLocationEffect( this.Location, this.Map, 0x1D99, 48, 2, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a giant spike trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.giantspike" ));
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a giant spike trap";
 					}
 					else if ( nTrapType == 18 && SavingThrow( m, "Fire", true, this ) == false ) // EXPLOSION TRAP
 					{
-						textSay = "You triggered an explosion trap!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.explosion" );
 						textLog = "an explosion trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You trip over a plasma grenade!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.explosion.space" );
 							textLog = "a plasma grenade";
 						}
 
@@ -764,12 +800,12 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 19 && SavingThrow( m, "Energy", true, this ) == false ) // ELECTRICAL TRAP
 					{
-						textSay = "You triggered an electrical trap!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.electrical" );
 						textLog = "an electrical trap";
 			
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You stepped onto an electrically charged deck plate!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.electrical.space" );
 							textLog = "an electrically charged deck plate";
 						}
 
@@ -822,12 +858,12 @@ namespace Server.Items
 						}
 						if ( nAmount > 0 )
 						{
-							textSay = "You tripped over a wire and broke half your " + sTripped + "!";
+							textSay = StringCatalog.ResolveByKey( m.Account, sTripped == "arrows" ? "trap.msg.brokenarrows" : "trap.msg.brokenbolts" );
 							textLog = "a trip wire trap";
 					
 							if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 							{
-								textSay = "You tripped over a loose deck plate and broke half your " + sTripped + "!";
+								textSay = StringCatalog.ResolveByKey( m.Account, sTripped == "arrows" ? "trap.msg.brokenarrows.space" : "trap.msg.brokenbolts.space" );
 								textLog = "a loose deck plate";
 							}
 
@@ -873,7 +909,7 @@ namespace Server.Items
 
 						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x231 );
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You walked into a noxious cloud, tainting half your bandages!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.msg.bandages" ));
 
 						sTrapType = "a noxious cloud trap";
 					}
@@ -901,12 +937,12 @@ namespace Server.Items
 
 					if ( nBroken > 0 )
 					{
-						textSay = "You tripped over a wire and shattered some of your potion bottles!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.potions" );
 						textLog = "a trip wire trap";
 				
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You tripped over a loose deck plate and shattered some of your potion bottles!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.potions.space" );
 							textLog = "a loose deck plate";
 						}
 
@@ -954,7 +990,7 @@ namespace Server.Items
 
 						if ( tangled || 0 < ruined )
 						{
-							textSay = "A trap triggered, your jewelry begins to weave together!";
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.jewelry" );
 							textLog = "a jewelry melting trap";
 							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							sTrapType = textLog;
@@ -966,7 +1002,7 @@ namespace Server.Items
 					}
 					else if ( nTrapType == 24 && SavingThrow( m, "Agility", true, this ) == false ) // PIT TRAP
 					{
-						textSay = "A fall into a deep pit!";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.pit" );
 						textLog = "a deep pit";
 
 						string sX = m.X.ToString();
@@ -993,7 +1029,7 @@ namespace Server.Items
 						int alignBaseSave = (int)(( m.Int + m.Skills[SkillName.MagicResist].Value + m.EnergyResistance ) / 4);
 
 						// Moral disciplines strengthen resistance to soul corruption
-						int moralDisciplineBonus = (int)(( m.Skills[SkillName.Meditation].Value + m.Skills[SkillName.SpiritSpeak].Value ) / 20);
+						int moralDisciplineBonus = (int)(( m.Skills[SkillName.Meditation].Value + m.Skills[SkillName.Spiritualism].Value ) / 20);
 
 						// Deep moral conviction anchors identity — the more committed, the harder to corrupt
 						// (+1 per 300 karma, up to +50 at maximum ±15000)
@@ -1007,7 +1043,7 @@ namespace Server.Items
 							if ( MySettings.S_AnnounceTrapSaves )
 							{
 								m.LocalOverheadMessage( Network.MessageType.Emote, 0x3B2, false,
-									"You got near a hidden trap, but your moral convictions shield you from corruption." );
+									StringCatalog.ResolveByKey( m.Account, "trap.save.avoid.trap25" ) );
 								m.PlaySound( m.Female ? 778 : 1049 );
 								HiddenTrapType = 1000;
 							}
@@ -1021,22 +1057,28 @@ namespace Server.Items
 							if ( absKarma > 10000 )
 							{
 								// Deeply aligned: conviction partially holds; alignment is badly weakened but does NOT invert
-								finalKarma = (int)( m.Karma * 0.4 );
-								textSay = "A trap triggers a dark wave — your morality wavers violently, but your deep conviction refuses to break.";
+								finalKarma = (int)( m.Karma * 0.5 );
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.type25.save" );
+							}
+							else if ( absKarma > 7000 )
+							{
+								// Strongly aligned: moderate retention, no flip
+								finalKarma = (int)( m.Karma * 0.25 );
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.type25.save" );
 							}
 							else if ( absKarma > 4000 )
 							{
 								// Moderately aligned: alignment inverts but at reduced magnitude — something to rebuild from
-								finalKarma = -(int)( m.Karma * 0.7 );
+								finalKarma = -(int)( m.Karma * 0.5 );
 								if ( finalKarma > 15000 ) finalKarma = 15000;
 								if ( finalKarma < -15000 ) finalKarma = -15000;
-								textSay = "A trap triggered, your morality shatters and reforms inverted — seek a shrine to reclaim yourself!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.type25.moderate" );
 							}
 							else
 							{
 								// Weakly aligned: no anchor to hold; devastating full flip
 								finalKarma = m.Karma * -1;
-								textSay = "A trap triggered, making your mind warp your morality!";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.msg.type25.light" );
 							}
 
 							m.Karma = finalKarma;
@@ -1064,9 +1106,9 @@ namespace Server.Items
 
 							// Direct players toward the correct recovery action
 							if ( alignmentCrossedZero )
-								m.SendMessage( "Your alignment has been inverted. Visit an ankh shrine and unlock your karma, then rebuild through virtuous deeds." );
+								m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.karma.guidance.inverted" ) );
 							else
-								m.SendMessage( "Your moral conviction was weakened by the trap. Rebuild your alignment through virtuous deeds." );
+								m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.karma.guidance.weakened" ) );
 						}
 					}
 
@@ -1092,9 +1134,9 @@ namespace Server.Items
 					if ( Weight == 3.0 )
 					{
 						DisableTrap( this );
-						this.Name = "a broken trap";
+						this.Name = StringCatalog.ResolveByKey(null, "trap.name.broken");
 						m.PlaySound( 0x41 ); // glass breaking
-						m.SendMessage( "You stepped on a trap but lucky for you it broke!");
+						m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.brokeonstep" ) );
 					}	
 					else
 						DitchTrap( this );
@@ -1189,41 +1231,41 @@ namespace Server.Items
 		{
 			bool madeSave = false;
 			int SaveThrow = 0;
-			string area = "";
+			string areaKey = "";
 
 			if ( save == "Magic" )
 			{
-				area = "magical resistance";
+				areaKey = "trap.saveresist.magic";
 				SaveThrow = (int)(( m.Int + m.Skills[SkillName.MagicResist].Value + m.EnergyResistance ) / 4);
 			}
 			else if ( save == "Physical" )
 			{
-				area = "physical resistance";
+				areaKey = "trap.saveresist.physical";
 				SaveThrow = (int)(( m.Str + m.PhysicalResistance ) / 3);
 			}
 			else if ( save == "Agility" )
 			{
-				area = "quick reflexes";
+				areaKey = "trap.saveresist.agility";
 				SaveThrow = m.Dex;
 			}
 			else if ( save == "Cold" )
 			{
-				area = "cold resistance";
+				areaKey = "trap.saveresist.cold";
 				SaveThrow = (int)(( m.Dex + m.ColdResistance ) / 3);
 			}
 			else if ( save == "Fire" )
 			{
-				area = "fire resistance";
+				areaKey = "trap.saveresist.fire";
 				SaveThrow = (int)(( m.Dex + m.FireResistance ) / 3);
 			}
 			else if ( save == "Poison" )
 			{
-				area = "poison resistance";
+				areaKey = "trap.saveresist.poison";
 				SaveThrow = (int)(( m.Str + m.Skills[SkillName.Poisoning].Value + m.PoisonResistance ) / 4);
 			}
 			else if ( save == "Energy" )
 			{
-				area = "energy resistance";
+				areaKey = "trap.saveresist.energy";
 				SaveThrow = (int)(( m.Int + m.EnergyResistance ) / 3);
 			}
 
@@ -1233,10 +1275,11 @@ namespace Server.Items
 			{
 				if ( isTrap && MySettings.S_AnnounceTrapSaves )
 				{
-					string textSay = "You got near a hidden trap, but with your " + area + "...you avoid it.";
+					string areaLoc = StringCatalog.ResolveByKey( m.Account, areaKey );
+					string textSay = StringCatalog.ResolveFormatByKey( m.Account, "trap.save.avoid.trap", areaLoc );
 					if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 					{
-						textSay = "You got near something dangerous, but with your " + area + "...you avoid it.";
+						textSay = StringCatalog.ResolveFormatByKey( m.Account, "trap.save.avoid.danger", areaLoc );
 					}
 					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 					m.PlaySound( m.Female ? 778 : 1049 );
@@ -1293,29 +1336,6 @@ namespace Server.Items
 				return false;
 
 			return true;
-		}
-
-		public static bool PassiveSearching( Item item, Mobile m )
-		{
-			if ( m.Skills.Searching.Value >= 5 && m is PlayerMobile )
-			{
-				if ( item.Weight <= 2.0 && HiddenTrap.SeeIfTrapActive( item ) && m.CheckSkill( SkillName.Searching, 0, 125 ) )
-				{
-					string textSay = "There is a hidden floor trap beneath your feet!";
-					if ( Server.Misc.Worlds.IsOnSpaceship( item.Location, item.Map ) )
-						textSay = "There is a dangerous panel beneath your feet!";
-
-					m.PlaySound( m.Female ? 778 : 1049 ); m.Say( "*ah!*" );
-					m.SendMessage( textSay );
-					item.Visible = true;
-					item.Weight = 3.0;
-					SetAppearance( item );
-					new Delete_5_Minutes( item ).Start();
-
-					return true;
-				}
-			}
-			return false;
 		}
 
 		public static bool SeeIfTrapActive( Item trap )
@@ -1375,14 +1395,14 @@ namespace Server.Items
 			{
 				if ( Trap is MushroomTrap )
 				{
-					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a strange mushroom, but your skill in removing traps has helped you avoid it.");
+					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "trap.avoid.remove.mushroom"));
 				}
 				else
 				{
-					textSay = "You got near a hidden trap, but your skill in removing traps has helped you disable it.";
+					textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.remove.trap" );
 					if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 					{
-						textSay = "You got near something dangerous, but your skill in removing traps has helped you avoid it.";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.remove.danger" );
 					}
 					m.PlaySound( m.Female ? 0x32E : 0x440 );
 					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
@@ -1393,7 +1413,7 @@ namespace Server.Items
 					int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
 					Gold salvage = new Gold( salvageValue );
 					salvage.MoveToWorld( Trap.Location, Trap.Map );
-					m.SendMessage( "You salvage useful components from the trap mechanism." );
+					m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge" ) );
 				}
 
 				return false;
@@ -1414,14 +1434,14 @@ namespace Server.Items
 						{
 							if ( Trap is MushroomTrap )
 							{
-								m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a strange mushroom, but the magic of your orb has helped you avoid it.");
+								m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "trap.avoid.wand.mushroom"));
 							}
 							else
 							{
-								textSay = "You got near a hidden trap, but the magic of your orb has disabled it.";
+								textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.wand.trap" );
 								if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 								{
-									textSay = "You got near something dangerous, but the magic of your orb has helped you avoid it.";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.wand.danger" );
 								}
 								m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 							}
@@ -1437,14 +1457,14 @@ namespace Server.Items
 				{
 					if ( Trap is MushroomTrap )
 					{
-						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a strange mushroom, but with luck on your side...you avoid it.");
+						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "trap.avoid.luck.mushroom"));
 					}
 					else
 					{
-						textSay = "You got near a hidden trap, but with luck on your side...it broke.";
+						textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.luck.trap" );
 						if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 						{
-							textSay = "You got near something dangerous, but with luck on your side...you avoid it."; m.PlaySound( 0x54B );
+							textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.luck.danger" ); m.PlaySound( 0x54B );
 						}
 						else { m.PlaySound( 0x241 ); }
 						m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
@@ -1468,14 +1488,14 @@ namespace Server.Items
 							{
 								if ( Trap is MushroomTrap )
 								{
-									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You break your ten foot pole, but avoid the strange mushroom nearby.");
+									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "trap.avoid.pole.break.mushroom"));
 								}
 								else
 								{
-									textSay = "You tap your ten foot pole, disabling a hidden trap and breaking the pole.";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.pole.break.trap" );
 									if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 									{
-										textSay = "You tap your ten foot pole, avoiding something dangerous and breaking the pole.";
+										textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.pole.break.danger" );
 									}
 									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 								}
@@ -1484,14 +1504,14 @@ namespace Server.Items
 							{
 								if ( Trap is MushroomTrap )
 								{
-									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You tap your ten foot pole, avoiding a strange mushroom nearby.");
+									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "trap.avoid.pole.mushroom"));
 								}
 								else
 								{
-									textSay = "You tap your ten foot pole, disabling a hidden trap.";
+									textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.pole.trap" );
 									if ( Server.Misc.Worlds.IsOnSpaceship( m.Location, m.Map ) )
 									{
-										textSay = "You tap your ten foot pole, avoiding something dangerous.";
+										textSay = StringCatalog.ResolveByKey( m.Account, "trap.avoid.pole.danger" );
 									}
 									m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 								}
@@ -1558,7 +1578,7 @@ namespace Server.Items
 			if ( m.FindItemOnLayer( Layer.Shirt ) != null ) { myBlessCheck = m.FindItemOnLayer( Layer.Shirt ); if ( myBlessCheck.LootType == LootType.Blessed ){ nShirt = 1; } }
 			if ( m.FindItemOnLayer( Layer.Earrings ) != null ) { myBlessCheck = m.FindItemOnLayer( Layer.Earrings ); if ( myBlessCheck.LootType == LootType.Blessed ){ nEarrings = 1; } }
 
-			while ( cycle > 20 )
+			while ( cycle < 20 )
 			{
 				cycle++;
 
@@ -1596,13 +1616,223 @@ namespace Server.Items
 			return myItem;
 		}
 
-		public override bool HandlesOnMovement{ get{ return MySettings.S_EnableDungeonSoundEffects; } }
+		private void TryProximityDetection(PlayerMobile m, int dist)
+		{
+			double searching = m.Skills.Searching.Value;
+
+			if (searching >= 25)
+			{
+				int detectRadius;
+
+				if (searching >= 125) { detectRadius = 5; }
+				else if (searching >= 100) { detectRadius = 4; }
+				else if (searching >= 75) { detectRadius = 3; }
+				else if (searching >= 50) { detectRadius = 2; }
+				else { detectRadius = 1; }
+
+				if (dist <= detectRadius)
+				{
+					// Cooldown check
+					if (m_WarnedPlayers != null && m_WarnedPlayers.TryGetValue(m.Serial, out var lastWarned))
+					{
+						if ((DateTime.Now - lastWarned).TotalSeconds < 30) return;
+					}
+
+					if (m_WarnedPlayers == null)
+						m_WarnedPlayers = new Dictionary<Serial, DateTime>();
+					m_WarnedPlayers[m.Serial] = DateTime.Now;
+
+					// Resolve direction through localization
+					string dir = GetDirectionTo(m);
+					string dirLoc = StringCatalog.ResolveByKey(m.Account, "trap.dir." + dir);
+
+					if (searching >= 100)
+					{
+						// Exact steps: chance-based, scales from 70% at skill 100 to 100% at skill 100+
+						double stepsChance = Math.Min(1.0, (searching - 70.0) / 30.0);
+						bool showSteps = Utility.RandomDouble() < stepsChance;
+
+						string category = (HiddenTrapType > 0) ? GetCategoryName() : null;
+						string catLoc = category != null ? StringCatalog.ResolveByKey(m.Account, category) : StringCatalog.ResolveByKey(m.Account, "trap.category.unknown");
+
+						if (showSteps)
+						{
+							m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+								StringCatalog.ResolveFormatByKey(m.Account, "trap.proximity.detail.steps",
+									catLoc, dirLoc, dist.ToString()));
+						}
+						else
+						{
+							m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+								StringCatalog.ResolveFormatByKey(m.Account, "trap.proximity.detail",
+									catLoc, dirLoc, StringCatalog.ResolveByKey(m.Account, "trap.dist.far")));
+						}
+					}
+					else if (searching >= 75)
+					{
+						string distDesc = GetDistanceDesc(dist);
+						string distKey = distDesc == "very close" ? "trap.dist.veryclose" : distDesc == "close" ? "trap.dist.close" : "trap.dist.far";
+						string distLoc = StringCatalog.ResolveByKey(m.Account, distKey);
+
+						string category = (HiddenTrapType > 0) ? GetCategoryName() : null;
+						string catLoc = category != null ? StringCatalog.ResolveByKey(m.Account, category) : StringCatalog.ResolveByKey(m.Account, "trap.category.unknown");
+						m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+							StringCatalog.ResolveFormatByKey(m.Account, "trap.proximity.detail",
+								catLoc, dirLoc, distLoc));
+					}
+					else if (searching >= 50)
+					{
+						string distDesc = GetDistanceDesc(dist);
+						string distKey = distDesc == "very close" ? "trap.dist.veryclose" : distDesc == "close" ? "trap.dist.close" : "trap.dist.far";
+						string distLoc = StringCatalog.ResolveByKey(m.Account, distKey);
+
+						m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+							StringCatalog.ResolveFormatByKey(m.Account, "trap.proximity.warning",
+								dirLoc, distLoc));
+					}
+					else
+					{
+						m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+							StringCatalog.ResolveByKey(m.Account, "trap.proximity.basic"));
+					}
+
+					// Meditation detection (types 5, 7, 25) — uses purple hue 0xB2D
+					TryMeditationDetection(m, dist);
+
+					// Spiritualism detection (types 12, 25) — uses purple hue 0xB2D
+					TrySpiritualismDetection(m, dist);
+				}
+			}
+		}
+
+		private string GetDirectionTo(Mobile m)
+		{
+			int dx = X - m.X;
+			int dy = Y - m.Y;
+			if (dx == 0 && dy < 0) return "north";
+			if (dx > 0 && dy < 0) return "northeast";
+			if (dx > 0 && dy == 0) return "east";
+			if (dx > 0 && dy > 0) return "southeast";
+			if (dx == 0 && dy > 0) return "south";
+			if (dx < 0 && dy > 0) return "southwest";
+			if (dx < 0 && dy == 0) return "west";
+			if (dx < 0 && dy < 0) return "northwest";
+			return "nearby";
+		}
+
+		private string GetDistanceDesc(int dist)
+		{
+			if (dist <= 1) return "very close";
+			if (dist <= 2) return "close";
+			return "some distance away";
+		}
+
+		public static string GetCategoryName(int trapType)
+		{
+			if (trapType == 0) return null; // unknown type
+			switch (trapType)
+			{
+				case 1:
+				case 3:
+				case 4:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+				case 13:
+				case 25:
+					return "trap.category.runic";
+				case 14:
+				case 15:
+				case 17:
+					return "trap.category.mechanical";
+				case 6:
+				case 9:
+				case 21:
+					return "trap.category.vented";
+				case 2:
+				case 20:
+				case 22:
+				case 23:
+					return "trap.category.wired";
+				case 16:
+				case 18:
+				case 19:
+					return "trap.category.elemental";
+				case 11:
+				case 24:
+					return "trap.category.dangerous";
+				default:
+					return null;
+			}
+		}
+
+		private string GetCategoryName()
+		{
+			return GetCategoryName(HiddenTrapType);
+		}
+
+		private void TryMeditationDetection(PlayerMobile m, int dist)
+		{
+			if (dist > 2) return;
+			if (m.Skills.Meditation.Value < 50) return;
+			if (HiddenTrapType == 0) return;
+
+			bool isDetectable = HiddenTrapType == 5 || HiddenTrapType == 7 || HiddenTrapType == 25;
+			if (!isDetectable) return;
+
+			double chance = m.Skills.Meditation.Value / 100.0;
+			if (Utility.RandomDouble() > chance) return;
+
+			string key = null;
+			switch (HiddenTrapType)
+			{
+				case 5: key = "trap.meditation.type5"; break;
+				case 7: key = "trap.meditation.type7"; break;
+				case 25: key = "trap.meditation.type25"; break;
+			}
+			if (key != null)
+				m.LocalOverheadMessage(MessageType.Emote, 0xB2D, false,
+					StringCatalog.ResolveByKey(m.Account, key));
+		}
+
+		private void TrySpiritualismDetection(PlayerMobile m, int dist)
+		{
+			if (dist > 2) return;
+			if (m.Skills.Spiritualism.Value < 50) return;
+			if (HiddenTrapType == 0) return;
+
+			bool isDetectable = HiddenTrapType == 12 || HiddenTrapType == 25;
+			if (!isDetectable) return;
+
+			double chance = m.Skills.Spiritualism.Value / 100.0;
+			if (Utility.RandomDouble() > chance) return;
+
+			string key = null;
+			switch (HiddenTrapType)
+			{
+				case 12: key = "trap.spiritualism.type12"; break;
+				case 25: key = "trap.spiritualism.type25"; break;
+			}
+			if (key != null)
+				m.LocalOverheadMessage(MessageType.Emote, 0xB2D, false,
+					StringCatalog.ResolveByKey(m.Account, key));
+		}
+
+		public override bool HandlesOnMovement{ get{ return true; } }
 
 		private DateTime m_NextSound;	
 		public DateTime NextSound{ get{ return m_NextSound; } set{ m_NextSound = value; } }
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
+			if ( m is PlayerMobile pm && SeeIfTrapActive( this ) && CanSetOffTraps( m ) && Weight < 5.0 )
+			{
+				int dist = (int)Math.Max( Math.Abs( m.X - Location.X ), Math.Abs( m.Y - Location.Y ) );
+				TryProximityDetection( pm, dist );
+			}
+
 			if( m is PlayerMobile && MySettings.S_EnableDungeonSoundEffects )
 			{
 				if ( DateTime.Now >= m_NextSound && Utility.InRange( m.Location, this.Location, 10 ) )

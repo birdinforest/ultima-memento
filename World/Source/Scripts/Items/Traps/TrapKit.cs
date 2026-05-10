@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Network;
 using Server.Engines.Craft;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,7 +22,7 @@ namespace Server.Items
 
 			m_Resource = resource;
 			Hue = CraftResources.GetHue(m_Resource);
-			Name = CraftResources.GetTradeItemFullName( this, m_Resource, false, false, "trapping tools" );
+			Name = CraftResources.GetTradeItemFullName( this, m_Resource, false, false, StringCatalog.ResolveByKey(null, "trap.name.trapkit") );
 
 			if ( CraftResources.GetBonus( m_Resource ) > 0 )
 				InfoText1 = "Trap Power +" + CraftResources.GetBonus( m_Resource );
@@ -38,17 +39,17 @@ namespace Server.Items
 			Resource = CraftResource.Iron;
 			Limits = 25;
 			LimitsMax = 25;
-			LimitsName = "Uses";
+			LimitsName = StringCatalog.ResolveByKey(null, "trap.uses");
 			LimitsDelete = true;
 			Weight = 5.0;
-			Name = "trapping tools";
+			Name = StringCatalog.ResolveByKey(null, "trap.name.trapkit");
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "These tools must be in your backpack to use." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.trapkit.backpack" ) );
 				return;
 			}
 			else if ( Limits > 0 )
@@ -63,11 +64,11 @@ namespace Server.Items
 
 				if ( traps > 2 )
 				{
-					from.SendMessage( "There are too many traps in the area!" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.trapkit.toomany" ) );
 				}
 				else if ( !from.Region.AllowHarmful( from, from ) )
 				{
-					from.SendMessage( "That doesn't feel like a good idea." ); 
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.trapkit.badidea" ) ); 
 					return;
 				}
 				else if ( from.Skills[SkillName.RemoveTrap].Value > 0 )
@@ -87,7 +88,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You cannot figure out how these tools work!" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.trapkit.cantfigure" ) );
 					return;
 				}
 			}
@@ -130,8 +131,7 @@ namespace Server.Items
 
 				LimitsMax = 25;
 				Limits = (int)reader.ReadInt();
-				LimitsName = "Uses";
-				LimitsDelete = true;
+				LimitsName = StringCatalog.ResolveByKey(null, "trap.uses");
 			}
 		}
 	}

@@ -118,6 +118,7 @@ Data/Localization/
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
+| `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 
 Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
 

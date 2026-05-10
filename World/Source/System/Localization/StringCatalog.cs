@@ -196,6 +196,29 @@ namespace Server.Localization
 			return args == null || args.Length == 0 ? resolved : string.Format( resolved, args );
 		}
 
+		/// <summary>
+		/// Resolves a stable logical key (e.g. "trap.msg.spike") for the given account's language.
+		/// Falls back to <paramref name="key"/> when the key is not found in any locale.
+		/// </summary>
+		public static string ResolveByKey( Server.Accounting.IAccount account, string key )
+		{
+			if ( key == null )
+				return string.Empty;
+
+			string lang = AccountLang.GetLanguageCode( account );
+			string result = TryResolveByKey( lang, key );
+			return result ?? key;
+		}
+
+		/// <summary>
+		/// Resolves a stable logical key with format arguments.
+		/// </summary>
+		public static string ResolveFormatByKey( Server.Accounting.IAccount account, string key, params object[] args )
+		{
+			string resolved = ResolveByKey( account, key );
+			return args == null || args.Length == 0 ? resolved : string.Format( resolved, args );
+		}
+
 		public static bool IsAsciiOnly( string s )
 		{
 			if ( s == null )

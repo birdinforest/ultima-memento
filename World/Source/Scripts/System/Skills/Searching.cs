@@ -5,6 +5,9 @@ using Server.Multis;
 using Server.Targeting;
 using System.Collections;
 using Server.Engines.PartySystem;
+using Server.Localization;
+using Server.Network;
+using Server.Network;
 
 namespace Server.SkillHandlers
 {
@@ -19,7 +22,7 @@ namespace Server.SkillHandlers
 		{
 			if ( src.Blessed )
 			{
-				src.SendMessage( "You cannot search while in this state." );
+				src.SendMessage( StringCatalog.ResolveByKey(src.Account, "trap.searching.cannot") );
 			}
 			else 
 			{
@@ -53,10 +56,27 @@ namespace Server.SkillHandlers
 					p = src.Location;
 
 				double srcSkill = src.Skills[SkillName.Searching].Value;
-				int range = (int)(srcSkill / 10.0);
 
+				// Range: 1 tile at skill 30, scales up to max 3 tiles at skill 70+
+				if (srcSkill < 30)
+				{
+					src.SendLocalizedMessage( 500816 ); // You are too fatigued to search.
+					return;
+				}
+				int range = Math.Max(1, Math.Min(3, (int)((srcSkill - 10) / 20)));
+
+				// Halve range on failed skill check
 				if ( !src.CheckSkill( SkillName.Searching, 0.0, 125.0 ) )
-					range /= 2;
+					range = Math.Max(1, range / 2);
+
+				// Deduct stamina proportional to range
+				int stamCost = 5 + range * 3;
+				if ( src.Stam < stamCost )
+				{
+					src.SendLocalizedMessage( 500816 ); // You are too fatigued to search.
+					return;
+				}
+				src.Stam -= stamCost;
 
 				BaseHouse house = BaseHouse.FindHouseAt( p, src.Map, 16 );
 
@@ -163,17 +183,17 @@ namespace Server.SkillHandlers
 				{
 					BaseTrap trap = (BaseTrap) item;
 
-					if ( trap is FireColumnTrap ){ sTrap = "(fire column trap)"; }
-					else if ( trap is FlameSpurtTrap ){ sTrap = "(fire spurt trap)"; }
-					else if ( trap is GasTrap ){ sTrap = "(poison gas trap)"; }
-					else if ( trap is GiantSpikeTrap ){ sTrap = "(giant spike trap)"; }
-					else if ( trap is MushroomTrap ){ sTrap = "(odd mushroom)"; }
-					else if ( trap is SawTrap ){ sTrap = "(saw blade trap)"; }
-					else if ( trap is SpikeTrap ){ sTrap = "(spike trap)"; }
-					else if ( trap is StoneFaceTrap ){ sTrap = "(stone face trap)"; }
+					if ( trap is FireColumnTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.column"); }
+					else if ( trap is FlameSpurtTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.spurt"); }
+					else if ( trap is GasTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.gas"); }
+					else if ( trap is GiantSpikeTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.giantspike"); }
+					else if ( trap is MushroomTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.mushroom"); }
+					else if ( trap is SawTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.saw"); }
+					else if ( trap is SpikeTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.spike"); }
+					else if ( trap is StoneFaceTrap ){ sTrap = StringCatalog.ResolveByKey(m.Account, "trap.basetrap.stoneface"); }
 					else { sTrap = ""; }
 
-					m.SendMessage( "There is a trap nearby! " + sTrap + "" );
+					m.SendMessage( StringCatalog.ResolveFormatByKey(m.Account, "trap.searching.basetrap", sTrap) );
 					foundAnyone = true;
 				}
 				else if ( ( item is HiddenDoorEast || item is HiddenDoorSouth ) && item.ItemID != 0x6723 && item.ItemID != 0x6724 )
@@ -206,19 +226,28 @@ namespace Server.SkillHandlers
 												item.ItemID == 0x33E ) )
 				{
 					m.PlaySound( m.Female ? 778 : 1049 ); m.Say( "*ah!*" );
-					m.SendMessage( "There is a hidden door nearby!" );
+					m.SendMessage( StringCatalog.Resolve(m.Account, "There is a hidden door nearby!") );
 					foundAnyone = true;
 				}
 				else if ( item is HiddenTrap )
 				{
 					if ( item.Weight <= 2.0 && HiddenTrap.SeeIfTrapActive( item ) )
 					{
-						string textSay = "There is a hidden floor trap somewhere nearby!";
+						string dir = GetDirectionToItem(m, item);
+						string dirLoc = StringCatalog.ResolveByKey(m.Account, "trap.dir." + dir);
+						HiddenTrap trap = (HiddenTrap)item;
+						string catKey = trap.HiddenTrapType > 0 ? HiddenTrap.GetCategoryName(trap.HiddenTrapType) : null;
+						string catLoc = catKey != null ? StringCatalog.ResolveByKey(m.Account, catKey) : StringCatalog.ResolveByKey(m.Account, "trap.category.unknown");
 						if ( Server.Misc.Worlds.IsOnSpaceship( item.Location, item.Map ) )
 						{
-							textSay = "There is a dangerous area nearby!";
+							m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+								StringCatalog.ResolveFormatByKey(m.Account, "trap.searching.found.space", catLoc, dirLoc));
 						}
-						m.SendMessage( textSay );
+						else
+						{
+							m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
+								StringCatalog.ResolveFormatByKey(m.Account, "trap.searching.found", catLoc, dirLoc));
+						}
 						foundAnyone = true;
 						HiddenTrap.DiscoverTrap( item );
 					}
@@ -236,13 +265,28 @@ namespace Server.SkillHandlers
 				}
 				else if ( item is KillerTile )
 				{
-					m.SendMessage( "It's a trap! Death awaits." );
+					m.SendMessage( StringCatalog.ResolveByKey(m.Account, "trap.searching.death") );
 					Effects.SendLocationParticles( EffectItem.Create( item.Location, item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5024 );
 					Effects.PlaySound( item.Location, item.Map, 0x1FA );
 					foundAnyone = true;
 				}
 			}
 			return foundAnyone;
+		}
+
+		private static string GetDirectionToItem(Mobile m, Item item)
+		{
+			int dx = item.X - m.X;
+			int dy = item.Y - m.Y;
+			if (dx == 0 && dy < 0) return "north";
+			if (dx > 0 && dy < 0) return "northeast";
+			if (dx > 0 && dy == 0) return "east";
+			if (dx > 0 && dy > 0) return "southeast";
+			if (dx == 0 && dy > 0) return "south";
+			if (dx < 0 && dy > 0) return "southwest";
+			if (dx < 0 && dy == 0) return "west";
+			if (dx < 0 && dy < 0) return "northwest";
+			return "nearby";
 		}
 	}
 }
