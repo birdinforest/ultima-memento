@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using Server.Accounting;
 using Server.Regions;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Joeku.MOTD
 {
@@ -20,6 +21,12 @@ namespace Joeku.MOTD
 		public Mobile User;
 		public bool Help;
 		public int Index;
+
+		private static string ResolveKey( Mobile from, string key, string fallback )
+		{
+			string lang = AccountLang.GetLanguageCode( from?.Account );
+			return StringCatalog.TryResolveByKey( lang, key ) ?? fallback;
+		}
 
 		public MOTD_Gump( Mobile user, bool help, int index, int origin ) : base( 50, 50 )
 		{
@@ -42,28 +49,24 @@ namespace Joeku.MOTD
 			AddPage(0);
 
 			AddImage(0, 0, 9541, Server.Misc.PlayerSettings.GetGumpHue( user ));
-			AddHtml( 11, 12, 291, 20, @"<BODY><BASEFONT Color=" + color + ">MESSAGE OF THE DAY</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 11, 12, 291, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.title", "MESSAGE OF THE DAY" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 330, 12, 250, 20, @"<BODY><BASEFONT Color=" + color + " Size=8>" + Server.Misc.ShardInfo.VersionString + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(607, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			AddButton(14, 399, button, button, 1, GumpButtonType.Reply, 0);
 			AddBody( user );
-			AddHtml( 51, 402, 141, 20, @"<BODY><BASEFONT Color=" + color + ">SHOW AT LOGIN</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 51, 402, 141, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.show_at_login", "SHOW AT LOGIN" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-			if ( MySettings.S_WebsiteLink != null && MySettings.S_WebsiteLink != "" )
-			{
-				string link = "Website";
-				if ( MySettings.S_WebsiteName != null && MySettings.S_WebsiteName != "" )
-					link = MySettings.S_WebsiteName;
-
-				AddButton(193, 399, 4011, 4011, 9, GumpButtonType.Reply, 0);
-				AddHtml( 230, 402, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + link + "</BASEFONT></BODY>", (bool)false, (bool)false);
-			}
+			// Website button — always visible, hardcoded to uo-expedition.com
+			AddButton(193, 399, 4011, 4011, 9, GumpButtonType.Reply, 0);
+			AddHtml( 230, 402, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.website", "Website" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
 
 		public void AddBody( Mobile m )
 		{
 			AddHtml(14, 45, 616, 343, MOTD_Main.Info[this.Index].Body, false, true); // Text - Main - Category - Body
 		}
+
+		private const string WebsiteUrl = "https://www.uo-expedition.com/";
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
@@ -80,7 +83,7 @@ namespace Joeku.MOTD
 			}
 			else if ( info.ButtonID == 9 )
 			{
-				from.LaunchBrowser( MySettings.S_WebsiteLink );
+				from.LaunchBrowser( WebsiteUrl );
 			}
 			else if ( m_Origin > 0 )
 			{

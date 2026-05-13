@@ -795,6 +795,7 @@ def main() -> int:
             "thewar-quest.json",
             "resource-harvest-extra.json",
             "trap-system.json",
+            "motd-system.json",
         }
     )
     if args.prune_stale_locale_files:

@@ -153,6 +153,8 @@ namespace Server.Engines.Help
 			Setting_SkillList_Info = 199,
 			MARKER_SETTING_END = 200,
 
+			Show_Changelog_Webpage = 600,
+
 			MARKER_TOOLBAR_START = 200, // Yes, duplicate
 			MagicToolbar_Bard_I_Open = 266,
 			MagicToolbar_Bard_II_Open = 267,
@@ -748,7 +750,12 @@ namespace Server.Engines.Help
 
 			AddAction(nav_x, r, from, "Change log", PageActionType.Navigate_Changelog, NAVIGATION_ITEM_WIDTH);
 			r += e;
-			if ( page == (int)PageActionType.Navigate_Changelog ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.ChangeLog.Versions() + "</BASEFONT></BODY>", (bool)false, (bool)true); }
+			if ( page == (int)PageActionType.Navigate_Changelog )
+			{
+				AddHtml( 252, 71, 739, 590, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.ChangeLog.Versions() + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddButton( 260, 670, 4011, 4011, (int)PageActionType.Show_Changelog_Webpage, GumpButtonType.Reply, 0);
+				AddHtml( 300, 673, 250, 20, @"<BODY><BASEFONT Color=" + color + ">View Changelog Online</BASEFONT></BODY>", (bool)false, (bool)false);
+			}
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1155,6 +1162,19 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Navigate_Changelog:
 					{
+						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
+						break;
+					}
+					case PageActionType.Show_Changelog_Webpage:
+					{
+						string url = MySettings.S_WebsiteLink;
+						if ( !String.IsNullOrEmpty( url ) )
+						{
+							if ( !url.EndsWith( "/" ) )
+								url += "/";
+							url += "changelog";
+							from.LaunchBrowser( url );
+						}
 						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
 						break;
 					}
