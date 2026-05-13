@@ -1,6 +1,0 @@
-# 11/05/2026 10:32:18 PM
-System.Net.Sockets.SocketException (0x80004005): The socket is not connected
-  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
-  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <8af202fe7f194c049085778c8ab53a7e>:0 
-
-
