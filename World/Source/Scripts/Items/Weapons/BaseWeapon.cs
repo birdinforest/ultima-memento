@@ -23,6 +23,7 @@ namespace Server.Items
 	public abstract class BaseWeapon : Item, IWeapon, IScissorable, ICraftable, ISlayer, IDurability
 	{
 		private string m_EngravedText;
+		private bool m_TrapDamaged;
 
 		public override bool IsContentLocalized => true;
 		
@@ -32,6 +33,9 @@ namespace Server.Items
 			get{ return m_EngravedText; }
 			set{ m_EngravedText = value; InvalidateProperties(); }
 		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool TrapDamaged { get => m_TrapDamaged; set { m_TrapDamaged = value; InvalidateProperties(); } }
 
 		public override void OnLocationChange( Point3D oldLocation )
 		{
@@ -2594,7 +2598,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 12 ); // version
+			writer.Write( (int) 13 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2629,6 +2633,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Slayer2,			m_Slayer2 != SlayerName.None );
 			SetSaveFlag( ref flags, SaveFlag.ElementalDamages,	!m_AosElementDamages.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.EngravedText,		!String.IsNullOrEmpty( m_EngravedText ) );
+			SetSaveFlag( ref flags, SaveFlag.TrapDamaged,		m_TrapDamaged != false );
 
 			writer.Write( (int) flags );
 
@@ -2718,6 +2723,9 @@ namespace Server.Items
 
 			if( GetSaveFlag( flags, SaveFlag.EngravedText ) )
 				writer.Write( (string) m_EngravedText );
+
+			if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
+				writer.Write( (bool) m_TrapDamaged );
 		}
 
 		[Flags]
@@ -2754,7 +2762,8 @@ namespace Server.Items
 			SkillBonuses			= 0x08000000,
 			Slayer2					= 0x10000000,
 			ElementalDamages		= 0x20000000,
-			EngravedText			= 0x40000000
+			EngravedText			= 0x40000000,
+			TrapDamaged				= unchecked((int)0x80000000)
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -2767,8 +2776,9 @@ namespace Server.Items
 
 			switch ( version )
 			{
-				case 12:
-				case 11:
+			case 13:
+			case 12:
+			case 11:
 				case 10:
 				case 9:
 				case 8:
@@ -2944,6 +2954,9 @@ namespace Server.Items
 
 					if( GetSaveFlag( flags, SaveFlag.EngravedText ) )
 						m_EngravedText = reader.ReadString();
+
+					if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
+						m_TrapDamaged = reader.ReadBool();
 
 					break;
 				}

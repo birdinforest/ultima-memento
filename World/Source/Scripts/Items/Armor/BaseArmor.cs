@@ -44,6 +44,7 @@ namespace Server.Items
 		private ArmorDurabilityLevel m_Durability;
 		private ArmorProtectionLevel m_Protection;
 		private bool m_Identified;
+		private bool m_TrapDamaged;
 		private int m_PhysicalBonus, m_FireBonus, m_ColdBonus, m_PoisonBonus, m_EnergyBonus;
 
 		private AosAttributes m_AosAttributes;
@@ -243,6 +244,9 @@ namespace Server.Items
 			get{ return m_Identified; }
 			set{ m_Identified = value; InvalidateProperties(); }
 		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool TrapDamaged { get => m_TrapDamaged; set { m_TrapDamaged = value; InvalidateProperties(); } }
 
 		public override void ResourceChanged( CraftResource resource )
 		{
@@ -744,14 +748,15 @@ namespace Server.Items
 			IntReq				= 0x00200000,
 			MedAllowance		= 0x00400000,
 			SkillBonuses		= 0x00800000,
-			NotUsedAnymore		= 0x01000000
+			NotUsedAnymore		= 0x01000000,
+			TrapDamaged			= 0x02000000
 		}
 
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 10 ); // version
+			writer.Write( (int) 11 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -780,6 +785,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.MedAllowance,		m_Meditate != (AMA)(-1) );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.NotUsedAnymore,	m_Built != false );
+			SetSaveFlag( ref flags, SaveFlag.TrapDamaged,		m_TrapDamaged != false );
 
 			writer.WriteEncodedInt( (int) flags );
 
@@ -851,6 +857,9 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_AosSkillBonuses.Serialize( writer );
+
+			if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
+				writer.Write( (bool) m_TrapDamaged );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -863,6 +872,7 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 11:
 				case 10:
 				case 9:
 				case 8:
@@ -989,6 +999,9 @@ namespace Server.Items
 					if ( GetSaveFlag( flags, SaveFlag.NotUsedAnymore ) && version < 8 )
 						m_Built = true;
 					else if ( GetSaveFlag( flags, SaveFlag.NotUsedAnymore ) ){}
+
+					if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
+						m_TrapDamaged = reader.ReadBool();
 
 					break;
 				}

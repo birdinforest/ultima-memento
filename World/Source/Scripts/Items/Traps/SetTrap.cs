@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -28,7 +29,7 @@ namespace Server.Items
 		public SetTrap( Mobile source, int level ) : base( 0x0702 )
 		{
 			Movable = false;
-			Name = "a trap";
+			Name = StringCatalog.ResolveByKey(null, "trap.name.set");
 			owner = source;
 			power = level;
 			RefreshDecay( true );
@@ -76,7 +77,7 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 4506 + 1, 18, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 4512 + 1, 18, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a trap!"); }
+						if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.settrap.triggered" )); }
 						int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PhysicalResistance ) ) / 100 ) + 10;
 						m.Damage( itHurts, owner );
 						if ( m is BaseCreature )
@@ -85,7 +86,7 @@ namespace Server.Items
 					else
 					{
 						Effects.PlaySound( this.Location, this.Map, 0x241 );
-						if ( owner != null ){ owner.SendMessage( "Your trap seems to have been thwarted!" ); }
+						if ( owner != null ){ owner.SendMessage( StringCatalog.ResolveByKey( owner.Account, "trap.settrap.thwarted" ) ); }
 					}
 					this.Delete();
 				}

@@ -2456,7 +2456,7 @@ namespace Server.Mobiles
 				m_Cost = cost;
             }
 
-            protected override void OnTarget( Mobile from, object targeted )
+			protected override void OnTarget( Mobile from, object targeted )
             {
 				if ( targeted is Item )
 				{
@@ -2466,11 +2466,24 @@ namespace Server.Mobiles
 					if ( !CanRepairItem( m_Vendor, from, rep ) )
 						return;
 
+					// Trap-damaged items: restore HitPoints to MaxHitPoints, clear flag + visual
+					bool trapDamaged = false;
+					if ( rep is BaseWeapon && ((BaseWeapon)rep).TrapDamaged )
+						trapDamaged = true;
+					else if ( rep is BaseArmor && ((BaseArmor)rep).TrapDamaged )
+						trapDamaged = true;
+
 					int repaired = 0;
 					int worn = 0;
 					int spent = 0;
 
-					if ( rep is BaseWeapon )
+					if ( trapDamaged )
+					{
+						// Trap-damaged items have HitPoints == MaxHitPoints (set by the trap).
+						// Charge one unit of m_Cost to clear the trap flag and appearance effects.
+						worn = 1;
+					}
+					else if ( rep is BaseWeapon )
 						worn = ((BaseWeapon)rep).MaxHitPoints - ((BaseWeapon)rep).HitPoints - 1;
 					else if ( rep is BaseArmor )
 						worn = ((BaseArmor)rep).MaxHitPoints - ((BaseArmor)rep).HitPoints - 1;
@@ -2514,7 +2527,28 @@ namespace Server.Mobiles
 						else
 							m_Vendor.SayTo( from, "I repaired it " + repaired + " times for " + spent + " gold." );
 
-						if ( rep is BaseWeapon )
+						if ( trapDamaged )
+						{
+							// Trap-damaged items: clear flag + visual, restore to reduced MaxHP
+							if ( rep is BaseWeapon )
+							{
+								((BaseWeapon)rep).TrapDamaged = false;
+								((BaseWeapon)rep).HitPoints = ((BaseWeapon)rep).MaxHitPoints;
+							}
+							else if ( rep is BaseArmor )
+							{
+								((BaseArmor)rep).TrapDamaged = false;
+								((BaseArmor)rep).HitPoints = ((BaseArmor)rep).MaxHitPoints;
+							}
+
+							string prefix = StringCatalog.ResolveByKey( null, "trap.name.damaged.prefix" );
+							if ( rep.Name != null && rep.Name.StartsWith( prefix ) )
+							{
+								rep.Name = rep.Name.Substring( prefix.Length );
+							}
+							rep.Hue = 0;
+						}
+						else if ( rep is BaseWeapon )
 						{
 							((BaseWeapon)rep).MaxHitPoints--;
 							((BaseWeapon)rep).HitPoints += repaired;
@@ -2552,8 +2586,8 @@ namespace Server.Mobiles
 			bool repair = false;
 
 			if ( 
-				( item is BaseWeapon && ((BaseWeapon)item).HitPoints >= ((BaseWeapon)item).MaxHitPoints-1 ) || 
-				( item is BaseArmor && ((BaseArmor)item).HitPoints >= ((BaseArmor)item).MaxHitPoints-1 ) || 
+				( item is BaseWeapon && !((BaseWeapon)item).TrapDamaged && ((BaseWeapon)item).HitPoints >= ((BaseWeapon)item).MaxHitPoints-1 ) || 
+				( item is BaseArmor && !((BaseArmor)item).TrapDamaged && ((BaseArmor)item).HitPoints >= ((BaseArmor)item).MaxHitPoints-1 ) || 
 				( item is BaseInstrument && ((BaseInstrument)item).UsesRemaining >= ((BaseInstrument)item).InitMinUses ) 
 			)
 			{

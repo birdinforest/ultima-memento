@@ -49,7 +49,8 @@ World/Data/Data.hash
 
 # Custom
 Backups/
-World/Data/Obsolete
+World/Saves/
+World/Saves-backup/
 World/Scripts/Obsolete
 World.exe
 World.exe.config

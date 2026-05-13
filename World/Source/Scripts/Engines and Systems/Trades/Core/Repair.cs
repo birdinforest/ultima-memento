@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Engines.Craft
 {
@@ -222,11 +223,11 @@ namespace Server.Engines.Craft
 					{
 						number = 1044275; // The item must be in your backpack to repair it.
 					}
-					else if ( weapon.MaxHitPoints <= 0 || weapon.HitPoints == weapon.MaxHitPoints )
+					else if ( weapon.MaxHitPoints <= 0 || ( weapon.HitPoints == weapon.MaxHitPoints && !weapon.TrapDamaged ) )
 					{
 						number = 1044281; // That item is in full repair
 					}
-					else if ( weapon.MaxHitPoints <= toWeaken )
+					else if ( weapon.MaxHitPoints <= toWeaken && !weapon.TrapDamaged )
 					{
 						number = 1044278; // That item has been repaired many times, and will break if repairs are attempted again.
 					}
@@ -239,17 +240,19 @@ namespace Server.Engines.Craft
 								gloves.ConsumeCharge(from, m_CraftSystem);
 						}
 
-						if ( CheckWeaken( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
+						if ( !weapon.TrapDamaged && CheckWeaken( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
 						{
 							weapon.MaxHitPoints -= toWeaken;
 							weapon.HitPoints = Math.Max( 0, weapon.HitPoints - toWeaken );
 						}
 
-						if ( CheckRepairDifficulty( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
+						if ( CheckRepairDifficulty( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) || weapon.TrapDamaged )
 						{
 							number = 1044279; // You repair the item.
 							m_CraftSystem.PlayCraftEffect( from );
 							weapon.HitPoints = weapon.MaxHitPoints;
+							weapon.TrapDamaged = false;
+							RemoveTrapDamageAppearance( weapon );
 						}
 						else
 						{
@@ -274,11 +277,11 @@ namespace Server.Engines.Craft
 					{
 						number = 1044275; // The item must be in your backpack to repair it.
 					}
-					else if ( armor.MaxHitPoints <= 0 || armor.HitPoints == armor.MaxHitPoints )
+					else if ( armor.MaxHitPoints <= 0 || ( armor.HitPoints == armor.MaxHitPoints && !armor.TrapDamaged ) )
 					{
 						number = 1044281; // That item is in full repair
 					}
-					else if ( armor.MaxHitPoints <= toWeaken )
+					else if ( armor.MaxHitPoints <= toWeaken && !armor.TrapDamaged )
 					{
 						number = 1044278; // That item has been repaired many times, and will break if repairs are attempted again.
 					}
@@ -291,17 +294,19 @@ namespace Server.Engines.Craft
 								gloves.ConsumeCharge(from, m_CraftSystem);
 						}
 
-						if ( CheckWeaken( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
+						if ( !armor.TrapDamaged && CheckWeaken( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
 						{
 							armor.MaxHitPoints -= toWeaken;
 							armor.HitPoints = Math.Max( 0, armor.HitPoints - toWeaken );
 						}
 
-						if ( CheckRepairDifficulty( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
+						if ( CheckRepairDifficulty( from, skill, armor.HitPoints, armor.MaxHitPoints ) || armor.TrapDamaged )
 						{
 							number = 1044279; // You repair the item.
 							m_CraftSystem.PlayCraftEffect( from );
 							armor.HitPoints = armor.MaxHitPoints;
+							armor.TrapDamaged = false;
+							RemoveTrapDamageAppearance( armor );
 						}
 						else
 						{
@@ -406,6 +411,16 @@ namespace Server.Engines.Craft
 					m_Deed.Delete();
 				}
 			}
+		}
+
+		private static void RemoveTrapDamageAppearance( Item item )
+		{
+			string prefix = StringCatalog.ResolveByKey( null, "trap.name.damaged.prefix" );
+			if ( item.Name != null && item.Name.StartsWith( prefix ) )
+			{
+				item.Name = item.Name.Substring( prefix.Length );
+			}
+			item.Hue = 0;
 		}
 	}
 }

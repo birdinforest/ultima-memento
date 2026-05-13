@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -32,7 +33,7 @@ namespace Server.Items
 			Hue = Utility.RandomList( 0x489, 0x490, 0x48F, 0x480, 0x48E );
 									// FIRE, ENERGY, POISON, COLD, PHYSICAL
 			Movable = false;
-			Name = "a magical trap";
+			Name = StringCatalog.ResolveByKey(null, "trap.name.magical");
 			Light = LightType.Circle300;
 			owner = source;
 			power = level;
@@ -82,7 +83,7 @@ namespace Server.Items
 					{
 						if ( m.CheckSkill( SkillName.Psychology, 0, 125 ) )
 						{
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "You got near a magical trap, but you were too intelligent to suffer the effects."); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.avoided") ); }
 							Sprung = false;
 						}
 					}
@@ -111,7 +112,7 @@ namespace Server.Items
 
 							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 							Effects.PlaySound( this.Location, this.Map, 0x231 );
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.triggered" )); }
 							itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PoisonResistance ) ) / 100 );
 							m.Damage( itHurts, owner );
 						}
@@ -119,7 +120,7 @@ namespace Server.Items
 						{
 							Effects.SendLocationParticles( EffectItem.Create( this.Location, this.Map, EffectItem.DefaultDuration ), 0x3709, 10, 30, 5052 );
 							Effects.PlaySound( this.Location, this.Map, 0x225 );
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.triggered" )); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.FireResistance ) ) / 100 );
 							m.Damage( itHurts, owner );
 						}
@@ -127,14 +128,14 @@ namespace Server.Items
 						{
 							m.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
 							m.PlaySound( 0x307 );
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.triggered" )); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PhysicalResistance ) ) / 100 );
 							m.Damage( itHurts, owner );
 						}
 						else if ( this.Hue == 0x490 ) // ELECTRICAL TRAP
 						{
 							m.BoltEffect( 0 );
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.triggered" )); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.EnergyResistance ) ) / 100 );
 							m.Damage( itHurts, owner );
 						}
@@ -143,7 +144,7 @@ namespace Server.Items
 							Point3D blast = new Point3D( ( m.X ), ( m.Y ), m.Z );
 							Effects.SendLocationEffect( blast, m.Map, 0x375A, 30, 10, 0x481, 0 );
 							m.PlaySound( 0x10B );
-							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a magical trap!"); }
+							if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( m.Account, "trap.spelltrap.triggered" )); }
 							int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.ColdResistance ) ) / 100 );
 							m.Damage( itHurts, owner );
 						}

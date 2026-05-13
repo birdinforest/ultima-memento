@@ -153,6 +153,8 @@ namespace Server.Engines.Help
 			Setting_SkillList_Info = 199,
 			MARKER_SETTING_END = 200,
 
+			Show_Changelog_Webpage = 600,
+
 			MARKER_TOOLBAR_START = 200, // Yes, duplicate
 			MagicToolbar_Bard_I_Open = 266,
 			MagicToolbar_Bard_II_Open = 267,
@@ -748,7 +750,12 @@ namespace Server.Engines.Help
 
 			AddAction(nav_x, r, from, "Change log", PageActionType.Navigate_Changelog, NAVIGATION_ITEM_WIDTH);
 			r += e;
-			if ( page == (int)PageActionType.Navigate_Changelog ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.ChangeLog.Versions() + "</BASEFONT></BODY>", (bool)false, (bool)true); }
+			if ( page == (int)PageActionType.Navigate_Changelog )
+			{
+				AddHtml( 252, 71, 739, 590, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.ChangeLog.Versions() + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddButton( 260, 670, 4011, 4011, (int)PageActionType.Show_Changelog_Webpage, GumpButtonType.Reply, 0);
+				AddHtml( 300, 673, 250, 20, @"<BODY><BASEFONT Color=" + color + ">View Changelog Online</BASEFONT></BODY>", (bool)false, (bool)false);
+			}
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1155,6 +1162,19 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.Navigate_Changelog:
 					{
+						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
+						break;
+					}
+					case PageActionType.Show_Changelog_Webpage:
+					{
+						string url = MySettings.S_WebsiteLink;
+						if ( !String.IsNullOrEmpty( url ) )
+						{
+							if ( !url.EndsWith( "/" ) )
+								url += "/";
+							url += "changelog";
+							from.LaunchBrowser( url );
+						}
 						from.SendGump( new Server.Engines.Help.HelpGump( from, pressed ) );
 						break;
 					}
@@ -2112,7 +2132,10 @@ namespace Server.Engines.Help
 				+ "Barbaric Style: The default game does not lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This particular play style can help in this regard. Choosing to play in this style will have a satchel appear in your main pack. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place into it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, necklaces, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but may not appear on your character. Also note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. This play style has their own set of skill titles for many skills as well. If you are playing a female character, pressing the button further will convert any 'Barbarian' titles to 'Amazon'. You can open your satchel to learn more about this play style. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>"
 				+ "[barbaric - Turns on/off the barbaric flavor the game provides.<br><br>"
 
-			+ "";
+			+ ""
+			+ "<br><br><br><BASEFONT Color=\"#888888\" Size=6>"
+			+ Server.Misc.ShardInfo.VersionString
+			+ "</BASEFONT>";
 
 			return HelpText;
 		}

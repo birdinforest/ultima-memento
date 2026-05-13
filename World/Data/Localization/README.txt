@@ -46,6 +46,10 @@ listed in keep_extra in that script so they are never pruned as stale):
   (see World/Documentation/resources-design/07-localization-and-player-copy.md). After materially
   changing zh-Hans here or in extractor-owned harvest strings, extend regression/cases with
   string_catalog_only goldens (see localization-regression-testing.md).
+  trap-system.json — logical-key bundle for the HiddenTrap subsystem: all 25 trap-type trigger
+  messages, proximity/perception strings, trap item names, avoidance/removal messages, direction
+  and distance descriptors, spell-trap/set-trap text, CurseItem copy, and base-trap detection
+  suffixes. Uses ResolveByKey / ResolveFormatByKey in C#; must stay in keep_extra.
 
 Gump & books
 ------------
