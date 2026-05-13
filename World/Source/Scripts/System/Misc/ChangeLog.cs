@@ -6,7 +6,7 @@ namespace Server.Misc
 	{
 		public static string Version()
 		{
-			return "Version: 2.3.0";
+			return ShardInfo.VersionString;
 		}
 
 		public static string Versions()

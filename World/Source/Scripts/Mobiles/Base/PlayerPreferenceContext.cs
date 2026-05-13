@@ -10,6 +10,14 @@ namespace Server.Mobiles
 			ColorlessFabricBreakdown = true;
 		}
 
+		/// <summary>
+		/// The version code (ShardInfo.VersionCode) of the MOTD the player last saw.
+		/// Used to detect upgrades: if the server version has increased, the MOTD
+		/// will re-appear even if the player had previously disabled "Show at Login".
+		/// A value of 0 means the player has never seen a versioned MOTD.
+		/// </summary>
+		public int MotdLastSeenVersion { get; set; }
+
 		public PlayerPreferenceContext(GenericReader reader)
 		{
 			int version = reader.ReadInt();
@@ -43,6 +51,9 @@ namespace Server.Mobiles
 			}
 
 			DefaultRunebookSpellType = 2 < version ? (RunebookGump.SpellType)reader.ReadInt() : RunebookGump.SpellType.None;
+
+			if (3 < version)
+				MotdLastSeenVersion = reader.ReadInt();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -119,7 +130,7 @@ namespace Server.Mobiles
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(3);
+			writer.Write(4);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
@@ -146,6 +157,8 @@ namespace Server.Mobiles
 			writer.Write(RegBar);
 			writer.Write(UsingAncientBook);
 			writer.Write((int)DefaultRunebookSpellType);
+
+			writer.Write(MotdLastSeenVersion);
 		}
 	}
 }

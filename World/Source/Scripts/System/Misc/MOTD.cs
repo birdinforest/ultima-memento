@@ -43,6 +43,7 @@ namespace Joeku.MOTD
 
 			AddImage(0, 0, 9541, Server.Misc.PlayerSettings.GetGumpHue( user ));
 			AddHtml( 11, 12, 291, 20, @"<BODY><BASEFONT Color=" + color + ">MESSAGE OF THE DAY</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 330, 12, 250, 20, @"<BODY><BASEFONT Color=" + color + " Size=8>" + Server.Misc.ShardInfo.VersionString + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(607, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			AddButton(14, 399, button, button, 1, GumpButtonType.Reply, 0);
 			AddBody( user );
@@ -182,8 +183,21 @@ namespace Joeku.MOTD
 			if ( m.Region != null && m.Region is StartRegion )
 				return false;
 
-			if( ((PlayerMobile)m).Preferences.MessageOfTheDay )
-				return false;
+			// Version upgrade detection: if the player had disabled "Show at Login"
+			// but the server version has increased since they last saw the MOTD,
+			// force-show it by clearing the disable flag.
+			if ( m is PlayerMobile pm && pm.Preferences.MessageOfTheDay )
+			{
+				if ( pm.Preferences.MotdLastSeenVersion < Server.Misc.ShardInfo.VersionCode )
+				{
+					pm.Preferences.MessageOfTheDay = false;
+					pm.SendMessage( "The shard has been updated! Please review the latest announcements." );
+				}
+				else
+				{
+					return false;
+				}
+			}
 
 			return true;
 		}
@@ -198,13 +212,19 @@ namespace Joeku.MOTD
 		public static void SendGump( Mobile mob ){ SendGump( mob, false, 0, 0 ); }
 		public static void SendGump( Mobile mob, bool help ){ SendGump( mob, help, 0, 0 ); }
 		public static void SendGump( Mobile mob, bool help, int index, int origin )
-		{
-			if( !help )
-				CheckFiles();
+	{
+		if( !help )
+			CheckFiles();
 
-			mob.CloseGump( typeof( MOTD_Gump ) );
-			mob.SendGump( new MOTD_Gump( mob, help, index, origin ) );
-		}
+		// Record the current version so we know the player has seen this MOTD.
+		// This also resets the "version upgrade" flag so the MOTD won't
+		// force-show again until the next version bump.
+		if ( mob is PlayerMobile pm )
+			pm.Preferences.MotdLastSeenVersion = Server.Misc.ShardInfo.VersionCode;
+
+		mob.CloseGump( typeof( MOTD_Gump ) );
+		mob.SendGump( new MOTD_Gump( mob, help, index, origin ) );
+	}
 
 		public static void CheckFiles(){ CheckFiles( true ); }
 		public static void CheckFiles( bool checkTime )
