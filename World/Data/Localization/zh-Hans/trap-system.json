@@ -5,7 +5,7 @@
   "trap.name.trap": "一个陷阱",
   "trap.name.ruined": "损毁物品",
   "trap.name.rusted": "生锈物品",
-  "trap.name.damaged.prefix": "（锈蚀）",
+  "trap.name.damaged.prefix": "（严重损坏）",
   "trap.name.set": "一个陷阱",
   "trap.name.magical": "一个魔法陷阱",
   "trap.name.tainted": "{0} 沾染的绷带",
@@ -126,11 +126,11 @@
   "trap.searching.death": "这是个陷阱！等待你的是死亡。",
 
   "trap.meditation.type5": "你的冥想感知察觉到这片区域有不自然的能量流失。",
-  "trap.meditation.type7": "你感觉到前方有一股虚空能量——它在抽取你的生命力。",
-  "trap.meditation.type25": "一股腐化的精神力量在你脚下共鸣——你的意志暂时压制住了它。",
+  "trap.meditation.type7": "你感觉到前方有一股虚空能量——它可能会抽取你的生命力。",
+  "trap.meditation.type25": "一股腐化的精神力量在你脚下共鸣——你的道德信念可能会被它动摇。",
 
-  "trap.spiritualism.type12": "这里残留着一股精神扰动——有人或某种存在失去了他们的声望。",
-  "trap.spiritualism.type25": "这里的精神共鸣感觉被深度腐化了。一股扭曲灵魂的力量在运作。",
+  "trap.spiritualism.type12": "这里残留着一股精神扰动——有某种存在会损毁你的声望。",
+  "trap.spiritualism.type25": "这里的精神共鸣感觉被深度腐化了。一股扭曲灵魂的力量在运作。你的道德信念可能会被它动摇。",
 
   "trap.tracking.residue": "{0}地面显示附近有陷阱触发的痕迹——大约在{1}分钟内触发的。",
 

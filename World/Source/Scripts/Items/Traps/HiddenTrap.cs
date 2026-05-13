@@ -329,7 +329,7 @@ namespace Server.Items
 								else
 								{
 									tgtArmor.TrapDamaged = true;
-									newMax = Math.Max( Math.Min( 5, tgtWeapon.MaxHitPoints ), tgtWeapon.MaxHitPoints * 15 / 100 );
+									newMax = Math.Max( Math.Min( 5, tgtArmor.MaxHitPoints ), tgtArmor.MaxHitPoints * 15 / 100 );
 									tgtArmor.MaxHitPoints = newMax;
 									tgtArmor.HitPoints = newMax;
 								}
@@ -1031,11 +1031,14 @@ namespace Server.Items
 						// Moral disciplines strengthen resistance to soul corruption
 						int moralDisciplineBonus = (int)(( m.Skills[SkillName.Meditation].Value + m.Skills[SkillName.Spiritualism].Value ) / 20);
 
+						// Meditation mastery (+10 at ≥100) provides additional clarity against soul corruption
+						int meditationMasteryBonus = ( m.Skills[SkillName.Meditation].Value >= 100 ) ? 10 : 0;
+
 						// Deep moral conviction anchors identity — the more committed, the harder to corrupt
 						// (+1 per 300 karma, up to +50 at maximum ±15000)
 						int convictionBonus = Math.Abs( m.Karma ) / 300;
 
-						int alignSaveThrow = Math.Min( alignBaseSave + moralDisciplineBonus + convictionBonus, 75 );
+						int alignSaveThrow = Math.Min( alignBaseSave + moralDisciplineBonus + meditationMasteryBonus + convictionBonus, 75 );
 						bool savedAlignment = alignSaveThrow >= Utility.RandomMinMax( 1, 100 );
 
 						if ( savedAlignment )
@@ -1695,14 +1698,16 @@ namespace Server.Items
 						m.LocalOverheadMessage(MessageType.Emote, 0xB3E, false,
 							StringCatalog.ResolveByKey(m.Account, "trap.proximity.basic"));
 					}
-
-					// Meditation detection (types 5, 7, 25) — uses purple hue 0xB2D
-					TryMeditationDetection(m, dist);
-
-					// Spiritualism detection (types 12, 25) — uses purple hue 0xB2D
-					TrySpiritualismDetection(m, dist);
 				}
 			}
+
+			// Meditation detection (types 5, 7, 25) — independent of Searching skill
+			// Has its own range check (2 tiles) and skill threshold (30+)
+			TryMeditationDetection(m, dist);
+
+			// Spiritualism detection (types 12, 25) — independent of Searching skill
+			// Has its own range check (2 tiles) and skill threshold (30+)
+			TrySpiritualismDetection(m, dist);
 		}
 
 		private string GetDirectionTo(Mobile m)
@@ -1776,7 +1781,7 @@ namespace Server.Items
 		private void TryMeditationDetection(PlayerMobile m, int dist)
 		{
 			if (dist > 2) return;
-			if (m.Skills.Meditation.Value < 50) return;
+			if (m.Skills.Meditation.Value < 30) return;
 			if (HiddenTrapType == 0) return;
 
 			bool isDetectable = HiddenTrapType == 5 || HiddenTrapType == 7 || HiddenTrapType == 25;
@@ -1800,7 +1805,7 @@ namespace Server.Items
 		private void TrySpiritualismDetection(PlayerMobile m, int dist)
 		{
 			if (dist > 2) return;
-			if (m.Skills.Spiritualism.Value < 50) return;
+			if (m.Skills.Spiritualism.Value < 30) return;
 			if (HiddenTrapType == 0) return;
 
 			bool isDetectable = HiddenTrapType == 12 || HiddenTrapType == 25;
