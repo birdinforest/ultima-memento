@@ -1,0 +1,56 @@
+{
+  "charrestore.npc.deflect":     "我在等人，旅行者，请便吧。",
+  "charrestore.npc.lost_parcel": "我携带的包裹似乎不见了。去找管事的人帮忙吧。",
+  "charrestore.npc.confirmed":   "好，我就知道是你。让我告诉你，我是怎么找到你的东西的。",
+  "charrestore.npc.wrong_person": "抱歉，我认错人了。我会继续寻找的。",
+  "charrestore.npc.farewell":    "一路顺风。再出行前，先好好熟悉这片水域。",
+
+  "charrestore.npc.bag_name":    "打捞回的遗物",
+  "charrestore.npc.bundle_name": "归还物品包",
+
+  "charrestore.dialog.title.greeting": "一位风霜满面的打捞者",
+  "charrestore.dialog.title.story":    "打捞者的往事",
+  "charrestore.dialog.title.handoff":  "你的遗物",
+
+  "charrestore.dialog.body.greeting": "站住，旅行者。你是那个被海浪捉弄、困在礁石边的人吗？我一直带着一样属于你的东西——至少别人是这么告诉我的。把东西交出去之前，我得确认找对了人。",
+  "charrestore.dialog.body.story":    "正如我所料。大海予取予夺——但有时，敏锐的眼睛和迅捷的双手能从潮水手中夺回失去的东西。我在急流卷走之前，尽我所能打捞了那些遗物。换作别人未必会费这个心，但我见过太多好人在这片水域失去一切。这不公平。<BR><BR>我把东西都捆在一起了，你准备好接收了吗？",
+  "charrestore.dialog.body.handoff":  "给你——你打捞回来的遗物。全都拿去，这本来就是你的，大海欠你的至少是这些。<BR><BR>老打捞人给你一句忠告：出海之前，先把这片海岸摸清楚。大海不会原谅第二次。",
+
+  "charrestore.dialog.btn.yes_me":  "是的，正是在下。",
+  "charrestore.dialog.btn.not_me":  "不，你找错人了。",
+  "charrestore.dialog.btn.accept":  "好，我准备好了，请把东西还给我。",
+  "charrestore.dialog.btn.thanks":  "多谢，打捞者。此恩铭记于心。",
+
+  "charrestore.gump.title":          "角色物品归还工具（GM专用）",
+  "charrestore.gump.tab.setup":      "1. 配置",
+  "charrestore.gump.tab.items":      "2. 物品",
+  "charrestore.gump.tab.npc":        "3. NPC与生成",
+
+  "charrestore.gump.lbl.backup_path": "备份存档路径：",
+  "charrestore.gump.lbl.account":     "账号名称：",
+  "charrestore.gump.lbl.character":   "角色名称：",
+  "charrestore.gump.lbl.include":     "包含",
+  "charrestore.gump.lbl.hue":         "色调",
+  "charrestore.gump.lbl.amount":      "数量",
+  "charrestore.gump.lbl.layer":       "装备槽",
+  "charrestore.gump.lbl.target":      "目标玩家名称：",
+  "charrestore.gump.lbl.note":        "个人附言（可选）：",
+
+  "charrestore.gump.btn.analyze":     "分析备份",
+  "charrestore.gump.btn.prev":        "< 上页",
+  "charrestore.gump.btn.next":        "下页 >",
+  "charrestore.gump.btn.select_all":  "全选",
+  "charrestore.gump.btn.clear_all":   "清除全部",
+  "charrestore.gump.btn.target":      "点击后在游戏中选择玩家",
+  "charrestore.gump.btn.spawn":       "生成NPC",
+  "charrestore.gump.btn.back":        "< 返回",
+
+  "charrestore.gump.msg.no_items_btn":  "（未选择物品）",
+  "charrestore.gump.msg.items_hint":    "备份中的物品（共 {0} 件）。勾选要归还的物品。",
+  "charrestore.gump.msg.npc_hint":      "配置归还NPC。NPC将在你当前位置生成并等待目标玩家。将有 {0} 件物品放入归还包。",
+  "charrestore.gump.msg.npc_lifecycle": "该NPC将以海上打捞者的身份出现，向玩家归还其遗失的物品。交付完成后或24小时后自动消失。",
+  "charrestore.gump.msg.setup_hint":    "请填写备份路径、账号名称和角色名称，然后点击「分析备份」。",
+  "charrestore.gump.msg.select_first":  "未选择物品。请至少勾选一件物品进行归还。",
+  "charrestore.gump.msg.not_player":    "目标不是玩家。",
+  "charrestore.gump.msg.target_player": "请选择需要归还物品的玩家。"
+}

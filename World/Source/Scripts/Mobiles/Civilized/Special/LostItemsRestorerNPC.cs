@@ -16,6 +16,9 @@ namespace Server.Mobiles
 	/// Only the designated target player can interact with it; all others
 	/// receive a deflection message. Automatically removes itself after 24 hours
 	/// or immediately after successful item delivery.
+	///
+	/// All player-facing strings are resolved via logical keys in
+	/// <c>Data/Localization/*/charrestore.json</c>.
 	/// </summary>
 	public class LostItemsRestorerNPC : BasePerson
 	{
@@ -114,14 +117,16 @@ namespace Server.Mobiles
 
 			if ( m_TargetName != null && !m_TargetName.Equals( from.Name, StringComparison.OrdinalIgnoreCase ) )
 			{
-				CitizenLocalization.SayLocalized( this,
-					"I'm waiting for someone. Move along, traveler." );
+				CitizenLocalization.SayLocalizedByKey( this,
+					"charrestore.npc.deflect",
+					"I am waiting for someone. Move along, traveler." );
 				return;
 			}
 
 			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
 			{
-				CitizenLocalization.SayLocalized( this,
+				CitizenLocalization.SayLocalizedByKey( this,
+					"charrestore.npc.lost_parcel",
 					"I seem to have lost the parcel I was carrying. Speak with the authorities." );
 				return;
 			}
@@ -153,8 +158,12 @@ namespace Server.Mobiles
 			if ( m_RestorationBag == null || m_RestorationBag.Deleted || to == null )
 				return;
 
+			string bagName = StringCatalog.TryResolveByKey(
+				AccountLang.GetLanguageCode( to.Account ),
+				"charrestore.npc.bag_name" ) ?? "Salvaged Belongings";
+
 			Bag deliveryBag = new Bag();
-			deliveryBag.Name = "Salvaged Belongings";
+			deliveryBag.Name = bagName;
 			deliveryBag.Hue  = 0x84C;
 
 			List<Item> toMove = new List<Item>( m_RestorationBag.Items );
@@ -164,7 +173,8 @@ namespace Server.Mobiles
 			to.AddToBackpack( deliveryBag );
 			to.PlaySound( 0x249 );
 
-			CitizenLocalization.SayLocalized( this,
+			CitizenLocalization.SayLocalizedByKey( this,
+				"charrestore.npc.farewell",
 				"Safe harbors to you. Learn these waters before you venture out again." );
 
 			if ( !string.IsNullOrEmpty( m_PersonalNote ) )
@@ -232,18 +242,16 @@ namespace Server.Mobiles
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 
-			m_TargetName    = reader.ReadString();
-			m_PersonalNote  = reader.ReadString();
+			m_TargetName     = reader.ReadString();
+			m_PersonalNote   = reader.ReadString();
 			m_RestorationBag = reader.ReadItem() as Bag;
-			m_CreatedTime   = reader.ReadDateTime();
+			m_CreatedTime    = reader.ReadDateTime();
 
-			// Resume the delete timer if still within the 24-hour window
-			TimeSpan elapsed = DateTime.Now - m_CreatedTime;
+			TimeSpan elapsed   = DateTime.Now - m_CreatedTime;
 			TimeSpan remaining = TimeSpan.FromHours( 24 ) - elapsed;
+
 			if ( remaining <= TimeSpan.Zero )
-			{
 				Timer.DelayCall( TimeSpan.FromSeconds( 1 ), Delete );
-			}
 			else
 			{
 				if ( m_DeleteTimer != null )
@@ -280,31 +288,46 @@ namespace Server.Mobiles
 	}
 
 	// ========================================================================
-	// Dialog gump — three-stage conversation
+	// Dialog gump — three-stage conversation, all text from charrestore.json
 	// ========================================================================
 
 	/// <summary>
-	/// Multi-stage dialog gump for LostItemsRestorerNPC.
-	/// Stage 0: greeting / identity check
-	/// Stage 1: story / explanation
-	/// Stage 2: item handoff confirmation
+	/// Multi-stage dialog gump for <see cref="LostItemsRestorerNPC"/>.
+	/// Stage 0: identity check.  Stage 1: backstory.  Stage 2: item handoff.
+	/// All user-visible strings resolved via <c>charrestore.dialog.*</c> logical keys.
 	/// </summary>
 	public class LostItemsDialogGump : Gump
 	{
-		private const int GumpWidth  = 450;
-		private const int GumpHeight = 300;
-		private const string TextColor = "#d5c8a2";
-
 		private Mobile m_From;
 		private LostItemsRestorerNPC m_NPC;
 		private int m_Stage;
 
-		private static readonly string[] Titles = new string[]
+		private static readonly string[] TitleKeys = new string[]
+		{
+			"charrestore.dialog.title.greeting",
+			"charrestore.dialog.title.story",
+			"charrestore.dialog.title.handoff",
+		};
+
+		private static readonly string[] TitleFallbacks = new string[]
 		{
 			"A Weathered Salvager",
 			"A Salvager's Tale",
 			"Your Belongings",
 		};
+
+		/// <summary>
+		/// Resolves a <c>charrestore.*</c> key for the given mobile's language.
+		/// Falls back to <paramref name="fallback"/> when missing.
+		/// </summary>
+		private static string K( Mobile viewer, string key, string fallback )
+		{
+			if ( viewer == null )
+				return fallback ?? key;
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			string s    = StringCatalog.TryResolveByKey( lang, key );
+			return ( s != null && s.Length > 0 ) ? s : ( fallback ?? key );
+		}
 
 		public LostItemsDialogGump( Mobile from, LostItemsRestorerNPC npc, int stage )
 			: base( 50, 50 )
@@ -318,77 +341,96 @@ namespace Server.Mobiles
 			Dragable   = true;
 			Resizable  = false;
 
+			const string textColor = "#d5c8a2";
+
 			AddPage( 0 );
 			AddImage( 0, 0, 9543, PlayerSettings.GetGumpHue( from ) );
 
-			string title = stage < Titles.Length ? Titles[stage] : "Salvager";
+			string title = ( stage >= 0 && stage < TitleKeys.Length )
+				? K( from, TitleKeys[stage], TitleFallbacks[stage] )
+				: K( from, TitleKeys[0], TitleFallbacks[0] );
+
 			AddHtml( 12, 15, 400, 20,
-				"<BODY><BASEFONT Color=#d5c8a2>" + title + "</BASEFONT></BODY>",
+				"<BODY><BASEFONT Color=" + textColor + ">" + title + "</BASEFONT></BODY>",
 				false, false );
 
-			// Close button
 			AddButton( 420, 12, 4017, 4017, 0, GumpButtonType.Reply, 0 );
 
 			switch ( stage )
 			{
-				case 0: BuildStage0( from, npc ); break;
-				case 1: BuildStage1( from, npc ); break;
-				case 2: BuildStage2( from, npc ); break;
+				case 0: BuildStage0( from, textColor ); break;
+				case 1: BuildStage1( from, textColor ); break;
+				case 2: BuildStage2( from, npc, textColor ); break;
 			}
 		}
 
-		private void BuildStage0( Mobile from, LostItemsRestorerNPC npc )
+		private void BuildStage0( Mobile from, string c )
 		{
+			string body = K( from,
+				"charrestore.dialog.body.greeting",
+				"Hold there, traveler. Are you the one who was stranded by the sea's whim? " +
+				"I have been carrying something that belongs to you — or so I have been told. " +
+				"It would help me to know I have found the right person before I hand it over." );
+
 			AddHtml( 12, 50, 420, 200,
-				"<BODY><BASEFONT Color=#d5c8a2>Hold there, traveler. Are you the one who was stranded by the sea's whim? " +
-				"I have been carrying something that belongs to you — or so I've been told. " +
-				"It would help me to know I've found the right person before I hand it over.</BASEFONT></BODY>",
+				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
 				false, true );
 
 			AddButton( 12, 265, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 180, 20,
-				"<BODY><BASEFONT Color=#d5c8a2>Yes, that is me.</BASEFONT></BODY>",
-				false, false );
+				"<BODY><BASEFONT Color=" + c + ">" +
+				K( from, "charrestore.dialog.btn.yes_me", "Yes, that is me." ) +
+				"</BASEFONT></BODY>", false, false );
 
 			AddButton( 230, 265, 4005, 4007, 2, GumpButtonType.Reply, 0 );
 			AddHtml( 268, 263, 180, 20,
-				"<BODY><BASEFONT Color=#d5c8a2>No, you have the wrong person.</BASEFONT></BODY>",
-				false, false );
+				"<BODY><BASEFONT Color=" + c + ">" +
+				K( from, "charrestore.dialog.btn.not_me", "No, you have the wrong person." ) +
+				"</BASEFONT></BODY>", false, false );
 		}
 
-		private void BuildStage1( Mobile from, LostItemsRestorerNPC npc )
+		private void BuildStage1( Mobile from, string c )
 		{
-			AddHtml( 12, 50, 420, 200,
-				"<BODY><BASEFONT Color=#d5c8a2>I thought as much. The sea gives and the sea takes — but sometimes a keen eye " +
+			string body = K( from,
+				"charrestore.dialog.body.story",
+				"I thought as much. The sea gives and the sea takes — but sometimes a keen eye " +
 				"and quick hands can recover what the tides would claim. " +
 				"I pulled what I could from the wreckage before the current swept it away. " +
 				"Not every soul would bother, but I have seen too many good people lose everything " +
-				"to the waters. It is not right." +
-				"<BR><BR>I have it all bundled here. Ready to receive it?</BASEFONT></BODY>",
+				"to the waters. It is not right.<BR><BR>" +
+				"I have it all bundled here. Ready to receive it?" );
+
+			AddHtml( 12, 50, 420, 200,
+				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
 				false, true );
 
 			AddButton( 12, 265, 4005, 4007, 3, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 380, 20,
-				"<BODY><BASEFONT Color=#d5c8a2>Yes, please. I am ready to receive my belongings.</BASEFONT></BODY>",
-				false, false );
+				"<BODY><BASEFONT Color=" + c + ">" +
+				K( from, "charrestore.dialog.btn.accept",
+					"Yes, please. I am ready to receive my belongings." ) +
+				"</BASEFONT></BODY>", false, false );
 		}
 
-		private void BuildStage2( Mobile from, LostItemsRestorerNPC npc )
+		private void BuildStage2( Mobile from, LostItemsRestorerNPC npc, string c )
 		{
-			int itemCount = ( npc.RestorationBag != null && !npc.RestorationBag.Deleted )
-				? npc.RestorationBag.Items.Count : 0;
+			string body = K( from,
+				"charrestore.dialog.body.handoff",
+				"Here you are — your salvaged belongings. Take it all. " +
+				"It belongs to you, and the sea owes you at least this much.<BR><BR>" +
+				"A piece of advice from an old salvager: learn the coastlines before you sail them. " +
+				"The sea does not forgive twice." );
 
 			AddHtml( 12, 50, 420, 200,
-				"<BODY><BASEFONT Color=#d5c8a2>Here you are — your salvaged belongings. " +
-				"Take it all. It belongs to you, and the sea owes you at least this much." +
-				"<BR><BR>A piece of advice from an old salvager: learn the coastlines before you sail them. " +
-				"The sea does not forgive twice.</BASEFONT></BODY>",
+				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
 				false, true );
 
 			AddButton( 12, 265, 4005, 4007, 4, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 380, 20,
-				"<BODY><BASEFONT Color=#d5c8a2>Thank you, salvager. I will remember this.</BASEFONT></BODY>",
-				false, false );
+				"<BODY><BASEFONT Color=" + c + ">" +
+				K( from, "charrestore.dialog.btn.thanks",
+					"Thank you, salvager. I will remember this." ) +
+				"</BASEFONT></BODY>", false, false );
 		}
 
 		public override void OnResponse( NetState sender, RelayInfo info )
@@ -401,25 +443,26 @@ namespace Server.Mobiles
 
 			switch ( info.ButtonID )
 			{
-				case 0: // close — do nothing
-					break;
+				case 0: break; // close
 
-				case 1: // Stage 0 → confirmed identity
-					CitizenLocalization.SayLocalized( m_NPC,
+				case 1: // confirmed identity
+					CitizenLocalization.SayLocalizedByKey( m_NPC,
+						"charrestore.npc.confirmed",
 						"Good. I knew it was you. Let me tell you how I came to have your things." );
 					from.SendGump( new LostItemsDialogGump( from, m_NPC, 1 ) );
 					break;
 
-				case 2: // Stage 0 → wrong person
-					CitizenLocalization.SayLocalized( m_NPC,
+				case 2: // wrong person
+					CitizenLocalization.SayLocalizedByKey( m_NPC,
+						"charrestore.npc.wrong_person",
 						"My apologies for the confusion. I will keep looking." );
 					break;
 
-				case 3: // Stage 1 → ready to receive
+				case 3: // ready to receive
 					from.SendGump( new LostItemsDialogGump( from, m_NPC, 2 ) );
 					break;
 
-				case 4: // Stage 2 → accept items
+				case 4: // accept items
 					m_NPC.DeliverItems( from );
 					break;
 			}

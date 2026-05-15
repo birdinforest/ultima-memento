@@ -7,6 +7,7 @@ using Server;
 using Server.Commands;
 using Server.Gumps;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
@@ -600,24 +601,26 @@ namespace Server.Gumps
 			m_TargetPlayerName = targetPlayerName;
 			m_PersonalNote     = personalNote;
 
-			Closable   = true;
-			Disposable = true;
-			Dragable   = true;
-			Resizable  = false;
+		Closable   = true;
+		Disposable = true;
+		Dragable   = true;
+		Resizable  = false;
 
-			AddPage( 0 );
-			AddBackground( 0, 0, GumpW, GumpH, 9250 );
-			AddAlphaRegion( 10, 10, GumpW - 20, GumpH - 20 );
+		AddPage( 0 );
+		AddBackground( 0, 0, GumpW, GumpH, 9250 );
+		AddAlphaRegion( 10, 10, GumpW - 20, GumpH - 20 );
 
-			// Title bar
-			AddHtml( 10, 12, GumpW - 20, 22,
-				$"<BODY><BASEFONT Color={TitleColor}><CENTER>Character Item Restore — GM Tool</CENTER></BASEFONT></BODY>",
-				false, false );
+		// Title bar
+		AddHtml( 10, 12, GumpW - 20, 22,
+			"<BODY><BASEFONT Color=" + TitleColor + "><CENTER>" +
+			L( "charrestore.gump.title", "Character Item Restore — GM Tool" ) +
+			"</CENTER></BASEFONT></BODY>",
+			false, false );
 
-			// Tab row
-			DrawTab( 80,  40, 1, "1. Setup",      page == PageSetup );
-			DrawTab( 210, 40, 2, "2. Items",       page == PageItems );
-			DrawTab( 340, 40, 3, "3. NPC & Spawn", page == PageNPCConfig );
+		// Tab row
+		DrawTab( 80,  40, 1, L( "charrestore.gump.tab.setup", "1. Setup" ),      page == PageSetup );
+		DrawTab( 210, 40, 2, L( "charrestore.gump.tab.items", "2. Items" ),       page == PageItems );
+		DrawTab( 340, 40, 3, L( "charrestore.gump.tab.npc",   "3. NPC & Spawn" ), page == PageNPCConfig );
 
 			switch ( page )
 			{
@@ -627,60 +630,71 @@ namespace Server.Gumps
 			}
 		}
 
-		private void DrawTab( int x, int y, int btnId, string label, bool active )
-		{
-			AddButton( x, y, active ? 4006 : 4005, 4007, 100 + btnId, GumpButtonType.Reply, 0 );
-			string color = active ? TitleColor : LabelColor;
-			AddHtml( x + 35, y, 120, 20,
-				$"<BODY><BASEFONT Color={color}>{label}</BASEFONT></BODY>",
-				false, false );
-		}
+	/// <summary>Resolves a charrestore.gump.* key for the current GM's language.</summary>
+	private string L( string key, string fallback )
+	{
+		string lang = AccountLang.GetLanguageCode( m_From != null ? m_From.Account : null );
+		string s    = StringCatalog.TryResolveByKey( lang, key );
+		return ( s != null && s.Length > 0 ) ? s : fallback;
+	}
+
+	private void DrawTab( int x, int y, int btnId, string label, bool active )
+	{
+		AddButton( x, y, active ? 4006 : 4005, 4007, 100 + btnId, GumpButtonType.Reply, 0 );
+		string color = active ? TitleColor : LabelColor;
+		AddHtml( x + 35, y, 120, 20,
+			"<BODY><BASEFONT Color=" + color + ">" + label + "</BASEFONT></BODY>",
+			false, false );
+	}
 
 		// ----------------------------------------------------------------
 		// Page 0 — Setup
 		// ----------------------------------------------------------------
 
-		private void DrawSetupPage()
+	private void DrawSetupPage()
+	{
+		int y = 75;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.backup_path", "Backup Saves Path:" ) );
+		AddBackground( 170, y - 2, 320, 22, 9350 );
+		AddTextEntry( 172, y, 316, 20, 0, 10, m_BackupPath );
+
+		y += 30;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.account", "Account Name:" ) );
+		AddBackground( 170, y - 2, 320, 22, 9350 );
+		AddTextEntry( 172, y, 316, 20, 0, 11, m_AccountName );
+
+		y += 30;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.character", "Character Name:" ) );
+		AddBackground( 170, y - 2, 320, 22, 9350 );
+		AddTextEntry( 172, y, 316, 20, 0, 12, m_CharName );
+
+		y += 40;
+		AddButton( 20, y, 4005, 4007, 10, GumpButtonType.Reply, 0 );
+		AddLabel( 58, y + 2, 0x35, L( "charrestore.gump.btn.analyze", "Analyze Backup" ) );
+
+		y += 35;
+		string statusDisplay = m_StatusText;
+		if ( string.IsNullOrEmpty( statusDisplay ) )
+			statusDisplay = L( "charrestore.gump.msg.setup_hint",
+				"Enter backup path, account, and character name, then click Analyze." );
+
+		bool isError = statusDisplay.StartsWith( "Analysis failed" ) ||
+		               statusDisplay.StartsWith( "Error" );
+		string statusColor = isError ? ErrorColor :
+			( m_Items.Count > 0 ? GreenColor : LabelColor );
+		string safeStatus = statusDisplay.Replace( "&", "&amp;" ).Replace( "<", "&lt;" )
+			.Replace( ">", "&gt;" ).Replace( "\n", "<BR>" );
+		AddHtml( 20, y, GumpW - 40, 120,
+			"<BODY><BASEFONT Color=" + statusColor + ">" + safeStatus + "</BASEFONT></BODY>",
+			false, true );
+
+		y = GumpH - 45;
+		if ( m_Items.Count > 0 )
 		{
-			int y = 75;
-			AddLabel( 20, y, 0x5A, "Backup Saves Path:" );
-			AddBackground( 170, y - 2, 320, 22, 9350 );
-			AddTextEntry( 172, y, 316, 20, 0, 10, m_BackupPath );
-
-			y += 30;
-			AddLabel( 20, y, 0x5A, "Account Name:" );
-			AddBackground( 170, y - 2, 320, 22, 9350 );
-			AddTextEntry( 172, y, 316, 20, 0, 11, m_AccountName );
-
-			y += 30;
-			AddLabel( 20, y, 0x5A, "Character Name:" );
-			AddBackground( 170, y - 2, 320, 22, 9350 );
-			AddTextEntry( 172, y, 316, 20, 0, 12, m_CharName );
-
-			y += 40;
-			// Analyze button
-			AddButton( 20, y, 4005, 4007, 10, GumpButtonType.Reply, 0 );
-			AddLabel( 58, y + 2, 0x35, "Analyze Backup" );
-
-			y += 35;
-			// Status text
-			bool isError = m_StatusText.StartsWith( "Analysis failed" ) ||
-			               m_StatusText.StartsWith( "Error" );
-			string statusColor = isError ? ErrorColor :
-				( m_Items.Count > 0 ? GreenColor : LabelColor );
-			string safeStatus = m_StatusText.Replace( "&", "&amp;" ).Replace( "<", "&lt;" )
-				.Replace( ">", "&gt;" ).Replace( "\n", "<BR>" );
-			AddHtml( 20, y, GumpW - 40, 120,
-				$"<BODY><BASEFONT Color={statusColor}>{safeStatus}</BASEFONT></BODY>",
-				false, true );
-
-			y = GumpH - 45;
-			if ( m_Items.Count > 0 )
-			{
-				AddButton( GumpW - 110, y, 4005, 4007, 101, GumpButtonType.Reply, 0 );
-				AddLabel( GumpW - 72, y + 2, 0x35, "Next >" );
-			}
+			AddButton( GumpW - 110, y, 4005, 4007, 101, GumpButtonType.Reply, 0 );
+			AddLabel( GumpW - 72, y + 2, 0x35, L( "charrestore.gump.btn.next", "Next >" ) );
 		}
+	}
 
 		// ----------------------------------------------------------------
 		// Page 1 — Item list
@@ -692,17 +706,20 @@ namespace Server.Gumps
 			int end      = Math.Min( start + ItemsPerPage, m_Items.Count );
 			int totalPages = (int)Math.Ceiling( (double)m_Items.Count / ItemsPerPage );
 
-			AddHtml( 20, 72, GumpW - 40, 20,
-				$"<BODY><BASEFONT Color={LabelColor}>" +
-				$"Items from backup ({m_Items.Count} total). Check items to include in the restoration." +
-				$"</BASEFONT></BODY>", false, false );
+		string itemsHint = string.Format(
+			L( "charrestore.gump.msg.items_hint",
+				"Items from backup ({0} total). Check items to include in the restoration." ),
+			m_Items.Count );
+		AddHtml( 20, 72, GumpW - 40, 20,
+			"<BODY><BASEFONT Color=" + LabelColor + ">" + itemsHint + "</BASEFONT></BODY>",
+			false, false );
 
-			// Header row
-			AddLabel( 20,  92, 0x64, "Include" );
-			AddLabel( 80,  92, 0x64, "Type" );
-			AddLabel( 330, 92, 0x64, "Hue" );
-			AddLabel( 380, 92, 0x64, "Amt" );
-			AddLabel( 430, 92, 0x64, "Layer" );
+		// Header row
+		AddLabel( 20,  92, 0x64, L( "charrestore.gump.lbl.include", "Include" ) );
+		AddLabel( 80,  92, 0x64, "Type" );
+		AddLabel( 330, 92, 0x64, L( "charrestore.gump.lbl.hue",    "Hue" ) );
+		AddLabel( 380, 92, 0x64, L( "charrestore.gump.lbl.amount", "Amt" ) );
+		AddLabel( 430, 92, 0x64, L( "charrestore.gump.lbl.layer",  "Layer" ) );
 
 			// Item rows
 			int y = 110;
@@ -724,32 +741,33 @@ namespace Server.Gumps
 				y += 22;
 			}
 
-			// Pagination
-			int paginateY = GumpH - 70;
-			if ( m_ItemPage > 0 )
-			{
-				AddButton( 20, paginateY, 0x15E3, 0x15E7, 20, GumpButtonType.Reply, 0 );
-				AddLabel( 40, paginateY + 2, 0x5A, "Prev" );
-			}
-			if ( m_ItemPage < totalPages - 1 )
-			{
-				AddButton( 120, paginateY, 0x15E1, 0x15E5, 21, GumpButtonType.Reply, 0 );
-				AddLabel( 100, paginateY + 2, 0x5A, "Next" );
-			}
-			AddLabel( 200, paginateY + 2, 0x5A, $"Page {m_ItemPage + 1}/{Math.Max(1, totalPages)}" );
+		// Pagination
+		int paginateY = GumpH - 70;
+		if ( m_ItemPage > 0 )
+		{
+			AddButton( 20, paginateY, 0x15E3, 0x15E7, 20, GumpButtonType.Reply, 0 );
+			AddLabel( 40, paginateY + 2, 0x5A, L( "charrestore.gump.btn.prev", "< Prev" ) );
+		}
+		if ( m_ItemPage < totalPages - 1 )
+		{
+			AddButton( 120, paginateY, 0x15E1, 0x15E5, 21, GumpButtonType.Reply, 0 );
+			AddLabel( 100, paginateY + 2, 0x5A, L( "charrestore.gump.btn.next", "Next >" ) );
+		}
+		AddLabel( 200, paginateY + 2, 0x5A,
+			$"Page {m_ItemPage + 1}/{Math.Max(1, totalPages)}" );
 
-			// Select all / Clear all
-			AddButton( 300, paginateY, 4005, 4007, 22, GumpButtonType.Reply, 0 );
-			AddLabel( 338, paginateY + 2, 0x35, "Select All" );
-			AddButton( 400, paginateY, 4005, 4007, 23, GumpButtonType.Reply, 0 );
-			AddLabel( 438, paginateY + 2, 0x20, "Clear All" );
+		// Select all / Clear all
+		AddButton( 300, paginateY, 4005, 4007, 22, GumpButtonType.Reply, 0 );
+		AddLabel( 338, paginateY + 2, 0x35, L( "charrestore.gump.btn.select_all", "Select All" ) );
+		AddButton( 400, paginateY, 4005, 4007, 23, GumpButtonType.Reply, 0 );
+		AddLabel( 438, paginateY + 2, 0x20, L( "charrestore.gump.btn.clear_all",  "Clear All" ) );
 
-			// Nav buttons
-			int navY = GumpH - 45;
-			AddButton( 20, navY, 4005, 4007, 100, GumpButtonType.Reply, 0 );
-			AddLabel( 58, navY + 2, 0x5A, "< Back" );
-			AddButton( GumpW - 110, navY, 4005, 4007, 102, GumpButtonType.Reply, 0 );
-			AddLabel( GumpW - 72, navY + 2, 0x35, "Next >" );
+		// Nav buttons
+		int navY = GumpH - 45;
+		AddButton( 20, navY, 4005, 4007, 100, GumpButtonType.Reply, 0 );
+		AddLabel( 58, navY + 2, 0x5A, L( "charrestore.gump.btn.back", "< Back" ) );
+		AddButton( GumpW - 110, navY, 4005, 4007, 102, GumpButtonType.Reply, 0 );
+		AddLabel( GumpW - 72, navY + 2, 0x35, L( "charrestore.gump.btn.next", "Next >" ) );
 		}
 
 		// ----------------------------------------------------------------
@@ -762,49 +780,55 @@ namespace Server.Gumps
 			foreach ( var item in m_Items )
 				if ( item.Selected ) selectedCount++;
 
-			int y = 72;
-			AddHtml( 20, y, GumpW - 40, 40,
-				$"<BODY><BASEFONT Color={LabelColor}>" +
-				$"Configure the restoration NPC. It will spawn at your current location " +
-				$"and await the target player. {selectedCount} item(s) will be placed in the restoration bag." +
-				$"</BASEFONT></BODY>", false, false );
+		int y = 72;
+		string npcHint = string.Format(
+			L( "charrestore.gump.msg.npc_hint",
+				"Configure the restoration NPC. It will spawn at your current location " +
+				"and await the target player. {0} item(s) will be placed in the restoration bag." ),
+			selectedCount );
+		AddHtml( 20, y, GumpW - 40, 40,
+			"<BODY><BASEFONT Color=" + LabelColor + ">" + npcHint + "</BASEFONT></BODY>",
+			false, false );
 
-			y += 50;
-			AddLabel( 20, y, 0x5A, "Target Player Name:" );
-			AddBackground( 190, y - 2, 290, 22, 9350 );
-			AddTextEntry( 192, y, 286, 20, 0, 30, m_TargetPlayerName );
+		y += 50;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.target", "Target Player Name:" ) );
+		AddBackground( 190, y - 2, 290, 22, 9350 );
+		AddTextEntry( 192, y, 286, 20, 0, 30, m_TargetPlayerName );
 
-			y += 10;
-			AddButton( 20, y + 20, 4005, 4007, 30, GumpButtonType.Reply, 0 );
-			AddLabel( 58, y + 22, 0x5A, "Click to target player ingame" );
+		y += 10;
+		AddButton( 20, y + 20, 4005, 4007, 30, GumpButtonType.Reply, 0 );
+		AddLabel( 58, y + 22, 0x5A,
+			L( "charrestore.gump.btn.target", "Click to target player ingame" ) );
 
-			y += 55;
-			AddLabel( 20, y, 0x5A, "Personal Note (optional):" );
-			y += 20;
-			AddBackground( 20, y, GumpW - 40, 60, 9350 );
-			AddTextEntry( 22, y + 2, GumpW - 44, 56, 0, 31, m_PersonalNote );
+		y += 55;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.note", "Personal Note (optional):" ) );
+		y += 20;
+		AddBackground( 20, y, GumpW - 40, 60, 9350 );
+		AddTextEntry( 22, y + 2, GumpW - 44, 56, 0, 31, m_PersonalNote );
 
-			y += 80;
-			AddHtml( 20, y, GumpW - 40, 40,
-				$"<BODY><BASEFONT Color={LabelColor}>" +
+		y += 80;
+		AddHtml( 20, y, GumpW - 40, 40,
+			"<BODY><BASEFONT Color=" + LabelColor + ">" +
+			L( "charrestore.gump.msg.npc_lifecycle",
 				"The NPC will introduce itself as a sea salvager who recovered the player's lost items. " +
-				"It auto-deletes after 24 hours or immediately upon item delivery." +
-				"</BASEFONT></BODY>", false, false );
+				"It auto-deletes after 24 hours or immediately upon item delivery." ) +
+			"</BASEFONT></BODY>", false, false );
 
-			// Spawn button
-			int navY = GumpH - 45;
-			AddButton( 20, navY, 4005, 4007, 101, GumpButtonType.Reply, 0 );
-			AddLabel( 58, navY + 2, 0x5A, "< Back" );
+		// Spawn button
+		int navY = GumpH - 45;
+		AddButton( 20, navY, 4005, 4007, 101, GumpButtonType.Reply, 0 );
+		AddLabel( 58, navY + 2, 0x5A, L( "charrestore.gump.btn.back", "< Back" ) );
 
-			if ( selectedCount > 0 )
-			{
-				AddButton( GumpW - 150, navY, 4005, 4007, 40, GumpButtonType.Reply, 0 );
-				AddLabel( GumpW - 112, navY + 2, 0x35, "Spawn NPC" );
-			}
-			else
-			{
-				AddLabel( GumpW - 200, navY + 2, 0x20, "(No items selected)" );
-			}
+		if ( selectedCount > 0 )
+		{
+			AddButton( GumpW - 150, navY, 4005, 4007, 40, GumpButtonType.Reply, 0 );
+			AddLabel( GumpW - 112, navY + 2, 0x35, L( "charrestore.gump.btn.spawn", "Spawn NPC" ) );
+		}
+		else
+		{
+			AddLabel( GumpW - 200, navY + 2, 0x20,
+				L( "charrestore.gump.msg.no_items_btn", "(No items selected)" ) );
+		}
 		}
 
 		// ----------------------------------------------------------------
@@ -861,15 +885,18 @@ namespace Server.Gumps
 				// Analyze backup
 				case 10:
 				{
-					if ( string.IsNullOrWhiteSpace( backupPath ) ||
-					     string.IsNullOrWhiteSpace( accountName ) ||
-					     string.IsNullOrWhiteSpace( charName ) )
-					{
-						Reopen( from, PageSetup, 0, backupPath, accountName, charName,
-							"Please fill in all three fields before analyzing.", null,
-							targetName, personalNote );
-						return;
-					}
+				if ( string.IsNullOrWhiteSpace( backupPath ) ||
+				     string.IsNullOrWhiteSpace( accountName ) ||
+				     string.IsNullOrWhiteSpace( charName ) )
+				{
+					string hint = StringCatalog.TryResolveByKey(
+						AccountLang.GetLanguageCode( from.Account ),
+						"charrestore.gump.msg.setup_hint" )
+						?? "Enter backup path, account, and character name, then click Analyze.";
+					Reopen( from, PageSetup, 0, backupPath, accountName, charName,
+						hint, null, targetName, personalNote );
+					return;
+				}
 
 					string status;
 					var items = BackupSaveAnalyzer.Analyze( backupPath, accountName, charName, out status );
@@ -903,10 +930,13 @@ namespace Server.Gumps
 
 				// Target player button
 				case 30:
-					from.CloseGump( typeof( CharacterRestoreGump ) );
-					from.Target = new TargetPlayerTarget( this, backupPath, accountName, charName,
-						m_StatusText, m_Items, personalNote );
-					from.SendMessage( "Target the player to restore items to." );
+			from.CloseGump( typeof( CharacterRestoreGump ) );
+			from.Target = new TargetPlayerTarget( this, backupPath, accountName, charName,
+				m_StatusText, m_Items, personalNote );
+			from.SendMessage( StringCatalog.TryResolveByKey(
+				AccountLang.GetLanguageCode( from.Account ),
+				"charrestore.gump.msg.target_player" )
+				?? "Target the player to restore items to." );
 					return;
 
 				// Spawn NPC
@@ -945,17 +975,24 @@ namespace Server.Gumps
 				if ( item.Selected )
 					selectedItems.Add( item );
 
-			if ( selectedItems.Count == 0 )
-			{
-				from.SendMessage( 0x20, "No items selected. Check at least one item to restore." );
-				Reopen( from, m_Page, m_ItemPage, backupPath, accountName, charName,
-					m_StatusText, m_Items, targetName, personalNote );
-				return;
-			}
+		if ( selectedItems.Count == 0 )
+		{
+			string noItemsMsg = StringCatalog.TryResolveByKey(
+				AccountLang.GetLanguageCode( from.Account ),
+				"charrestore.gump.msg.select_first" )
+				?? "No items selected. Check at least one item to restore.";
+			from.SendMessage( 0x20, noItemsMsg );
+			Reopen( from, m_Page, m_ItemPage, backupPath, accountName, charName,
+				m_StatusText, m_Items, targetName, personalNote );
+			return;
+		}
 
-			// Build the restoration bag
-			Bag bag = new Bag();
-			bag.Name = "Restoration Bundle";
+		// Build the restoration bag
+		string bundleName = StringCatalog.TryResolveByKey(
+			AccountLang.GetLanguageCode( from.Account ),
+			"charrestore.npc.bundle_name" ) ?? "Restoration Bundle";
+		Bag bag = new Bag();
+		bag.Name = bundleName;
 			int created = 0, failed = 0;
 
 			foreach ( BackupItemInfo itemInfo in selectedItems )
@@ -1056,13 +1093,16 @@ namespace Server.Gumps
 				m_PersonalNote = personalNote;
 			}
 
-			protected override void OnTarget( Mobile from, object targeted )
-			{
-				string name = "";
-				if ( targeted is Mobile m )
-					name = m.Name ?? "";
-				else
-					from.SendMessage( "That is not a player." );
+		protected override void OnTarget( Mobile from, object targeted )
+		{
+			string name = "";
+			if ( targeted is Mobile m )
+				name = m.Name ?? "";
+			else
+				from.SendMessage( StringCatalog.TryResolveByKey(
+					AccountLang.GetLanguageCode( from.Account ),
+					"charrestore.gump.msg.not_player" )
+					?? "That is not a player." );
 
 				from.CloseGump( typeof( CharacterRestoreGump ) );
 				from.SendGump( new CharacterRestoreGump( from, PageNPCConfig, 0,

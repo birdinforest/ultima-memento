@@ -119,6 +119,7 @@ Data/Localization/
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
+| `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
 
 Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
 
@@ -450,6 +451,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 - 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
+- 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

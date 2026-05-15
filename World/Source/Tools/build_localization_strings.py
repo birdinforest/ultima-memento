@@ -796,6 +796,7 @@ def main() -> int:
             "resource-harvest-extra.json",
             "trap-system.json",
             "motd-system.json",
+            "charrestore.json",
         }
     )
     if args.prune_stale_locale_files:

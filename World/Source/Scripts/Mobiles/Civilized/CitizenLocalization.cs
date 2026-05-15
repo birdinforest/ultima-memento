@@ -99,13 +99,63 @@ namespace Server.Mobiles
 			speaker.SayTo( target, msg );
 		}
 
-		/// <summary>
-		/// Broadcasts tavern-style composite speech: each nearby client hears Chinese if their
-		/// account is zh-Hans and a parallel <paramref name="zh"/> string was supplied; otherwise
-		/// English. When <paramref name="zh"/> is null/empty, zh-Hans accounts still get
-		/// <see cref="QuestCompositeResolver"/> + NPC vocab token pass on <paramref name="english"/>.
-		/// </summary>
-		public static void SayLocalizedComposite( Mobile speaker, string english, string zh )
+	/// <summary>
+	/// Resolves a stable logical key (e.g. <c>charrestore.npc.farewell</c>) for each nearby
+	/// viewer's language and broadcasts via <see cref="Mobile.SayTo"/>. Falls back to
+	/// <paramref name="englishFallback"/> when the key is missing in both locales.
+	/// </summary>
+	public static void SayLocalizedByKey( Mobile speaker, string key, string englishFallback )
+	{
+		if ( speaker == null || speaker.Map == null || key == null )
+			return;
+
+		IPooledEnumerable eable = speaker.Map.GetClientsInRange( speaker.Location );
+
+		foreach ( NetState state in eable )
+		{
+			Mobile m = state.Mobile;
+
+			if ( m == null || !m.CanSee( speaker ) )
+				continue;
+
+			string lang = AccountLang.GetLanguageCode( m.Account );
+			string msg  = StringCatalog.TryResolveByKey( lang, key );
+
+			if ( msg == null || msg.Length == 0 )
+				msg = englishFallback ?? key;
+
+			if ( msg != null && msg.Length > 0 )
+				speaker.SayTo( m, msg );
+		}
+
+		eable.Free();
+	}
+
+	/// <summary>
+	/// Resolves a stable logical key for the <paramref name="target"/> player's language only
+	/// and sends via <see cref="Mobile.SayTo"/>. For private one-on-one exchanges.
+	/// </summary>
+	public static void SayToLocalizedByKey( Mobile speaker, Mobile target, string key, string englishFallback )
+	{
+		if ( speaker == null || target == null || key == null )
+			return;
+
+		string lang = AccountLang.GetLanguageCode( target.Account );
+		string msg  = StringCatalog.TryResolveByKey( lang, key );
+
+		if ( msg == null || msg.Length == 0 )
+			msg = englishFallback ?? key;
+
+		speaker.SayTo( target, msg );
+	}
+
+	/// <summary>
+	/// Broadcasts tavern-style composite speech: each nearby client hears Chinese if their
+	/// account is zh-Hans and a parallel <paramref name="zh"/> string was supplied; otherwise
+	/// English. When <paramref name="zh"/> is null/empty, zh-Hans accounts still get
+	/// <see cref="QuestCompositeResolver"/> + NPC vocab token pass on <paramref name="english"/>.
+	/// </summary>
+	public static void SayLocalizedComposite( Mobile speaker, string english, string zh )
 		{
 			if ( speaker == null || speaker.Map == null )
 				return;
