@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server;
+using Server.Localization;
 using Server.Network;
 using Server.Multis;
 using Server.Mobiles;
@@ -24,9 +25,16 @@ namespace Server.Misc
 			if ( ObjectPropertyList.Enabled )
 			{
 				List<Item> items = beheld.Items;
+				string locale = AccountLang.IsChinese( AccountLang.GetLanguageCode( beholder.Account ) ) ? "zh" : "en";
 
 				for ( int i = 0; i < items.Count; ++i )
-					beholder.Send( items[i].OPLPacket );
+				{
+					Item item = items[i];
+					if ( item.IsContentLocalized )
+						beholder.Send( item.GetLocalizedOPLPacket( locale ) );
+					else
+						beholder.Send( item.OPLPacket );
+				}
 			}
 		}
 	}

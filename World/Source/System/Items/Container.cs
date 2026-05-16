@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Items
@@ -1681,9 +1682,16 @@ namespace Server.Items
 			if ( ObjectPropertyList.Enabled )
 			{
 				List<Item> items = this.Items;
+				string locale = AccountLang.IsChinese( AccountLang.GetLanguageCode( to.Account ) ) ? "zh" : "en";
 
 				for ( int i = 0; i < items.Count; ++i )
-					to.Send( items[i].OPLPacket );
+				{
+					Item item = items[i];
+					if ( item.IsContentLocalized )
+						to.Send( item.GetLocalizedOPLPacket( locale ) );
+					else
+						to.Send( item.OPLPacket );
+				}
 			}
 		}
 
