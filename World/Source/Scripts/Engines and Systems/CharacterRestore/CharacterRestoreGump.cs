@@ -360,9 +360,11 @@ namespace Server.Gumps
 			using ( var br = new BinaryReader( fs, Encoding.UTF8 ) )
 			{
 				int count = br.ReadInt32();
+				if ( count < 0 || count > 100000 )
+					throw new InvalidDataException( $"TDB type count {count} is implausible" );
 				var names = new string[count];
 				for ( int i = 0; i < count; i++ )
-					names[i] = br.ReadString();
+					names[i] = br.ReadString(); // type names are ASCII, no guard needed
 				return names;
 			}
 		}
@@ -405,11 +407,42 @@ namespace Server.Gumps
 			public List<int> ChildrenSerials;
 		}
 
+		// Maximum plausible string length guard: prevents malformed data from
+		// allocating multi-MB strings that could OOM or stall the main thread.
+		private const int MaxStringBytes = 4096;
+
+		/// <summary>
+		/// Safe string reader: validates the length prefix before allocating.
+		/// Throws <see cref="InvalidDataException"/> when the encoded length exceeds
+		/// <see cref="MaxStringBytes"/> or is negative, which would indicate corrupt data.
+		/// </summary>
+		private static string SafeReadString( BinaryReader br )
+		{
+			// BinaryReader.ReadString uses 7-bit encoded length prefix.
+			// We replicate that here so we can validate before allocation.
+			int length = 0, shift = 0;
+			for ( int i = 0; i < 5; i++ )
+			{
+				byte b = br.ReadByte();
+				length |= (b & 0x7F) << shift;
+				if ( (b & 0x80) == 0 ) break;
+				shift += 7;
+			}
+			if ( length < 0 || length > MaxStringBytes )
+				throw new InvalidDataException( $"String length {length} exceeds guard of {MaxStringBytes}" );
+			byte[] bytes = br.ReadBytes( length );
+			if ( bytes.Length != length )
+				throw new EndOfStreamException( $"Expected {length} bytes, got {bytes.Length}" );
+			return Encoding.UTF8.GetString( bytes );
+		}
+
 		private static ParsedItemProps ParseItemRecord( BinaryReader br )
 		{
 			int version = br.ReadInt32();
+			// Valid versions: 6–14 in this codebase (Item.Serialize falls through 14 → ... → 6).
+			// Reject anything outside this range as likely corrupt or wrong format.
 			if ( version < 6 || version > 14 )
-				throw new InvalidDataException( $"Item version {version} not supported" );
+				throw new InvalidDataException( $"Item version {version} outside supported range 6-14" );
 
 			var props = new ParsedItemProps { Amount = 1, ChildrenSerials = new List<int>() };
 
@@ -418,7 +451,7 @@ namespace Server.Gumps
 				br.ReadBoolean();   // Purchased
 				br.ReadInt32();     // EnchantMod
 				// ColorHue1..5 and ColorText1..5 (all strings in this codebase)
-				for ( int i = 0; i < 10; i++ ) br.ReadString();
+				for ( int i = 0; i < 10; i++ ) SafeReadString( br );
 				br.ReadInt32();     // WorldItemID
 				br.ReadBoolean();   // Technology
 				br.ReadBoolean();   // VirtualContainer
@@ -430,14 +463,14 @@ namespace Server.Gumps
 				br.ReadInt32();     // CoinPrice
 				ReadEncodedInt( br );   // Resource
 				ReadEncodedInt( br );   // SubResource
-				br.ReadString();    // SubName
+				SafeReadString( br );   // SubName
 				br.ReadInt32();     // ArtifactLevel
 				br.ReadBoolean();   // NotModAble
 				br.ReadBoolean();   // NeedsBothHands
-				for ( int i = 0; i < 6; i++ ) br.ReadString(); // InfoData + InfoText1..5
+				for ( int i = 0; i < 6; i++ ) SafeReadString( br ); // InfoData + InfoText1..5
 				br.ReadInt32();     // Limits
 				br.ReadInt32();     // LimitsMax
-				br.ReadString();    // LimitsName
+				SafeReadString( br );   // LimitsName
 				br.ReadBoolean();   // LimitsDelete
 				br.ReadInt32();     // BuiltBy (mobile ref)
 				br.ReadBoolean();   // Built
@@ -455,7 +488,7 @@ namespace Server.Gumps
 				br.ReadInt32();     // GraphicID
 				br.ReadInt32();     // GraphicHue
 				br.ReadInt32();     // LastMobile (mobile ref)
-				br.ReadString();    // LastMobileName
+				SafeReadString( br );   // LastMobileName
 			}
 
 			// ---- case 6 ----
@@ -499,7 +532,7 @@ namespace Server.Gumps
 				props.Layer = br.ReadByte();
 
 			if ( (flags & SF_Name) != 0 )
-				props.Name = br.ReadString();
+				props.Name = SafeReadString( br );
 
 			if ( (flags & SF_Parent) != 0 )
 				props.Parent = br.ReadInt32();
@@ -532,15 +565,20 @@ namespace Server.Gumps
 
 		private static int ReadEncodedInt( BinaryReader br )
 		{
+			// A 32-bit 7-bit-encoded integer takes at most 5 bytes.
+			// Cap iterations at 5 to prevent an infinite loop on malformed data.
 			int result = 0, shift = 0;
-			while ( true )
+			for ( int i = 0; i < 5; i++ )
 			{
 				byte b = br.ReadByte();
 				result |= (b & 0x7F) << shift;
-				if ( (b & 0x80) == 0 ) break;
+				if ( (b & 0x80) == 0 )
+					break;
 				shift += 7;
 			}
-			if ( result >= 0x80000000 ) result = (int)(result - 0x100000000L);
+			// Convert from unsigned representation to signed if necessary.
+			if ( (uint)result > 0x7FFFFFFFU )
+				result = (int)( (long)(uint)result - 0x100000000L );
 			return result;
 		}
 	}
@@ -963,17 +1001,27 @@ namespace Server.Gumps
 				items ?? m_Items, targetName, personalNote ) );
 		}
 
-		// ----------------------------------------------------------------
-		// NPC spawning
-		// ----------------------------------------------------------------
+	// ----------------------------------------------------------------
+	// NPC spawning — defensive, fully logged
+	// ----------------------------------------------------------------
 
-		private void SpawnRestorerNPC( Mobile from, string targetName, string personalNote,
-			string backupPath, string accountName, string charName )
+	/// <summary>Maximum items allowed per restore session to prevent memory exhaustion.</summary>
+	private const int MaxRestoreItems = 500;
+
+	private void SpawnRestorerNPC( Mobile from, string targetName, string personalNote,
+		string backupPath, string accountName, string charName )
+	{
+		// Guard: caller must be alive and have a valid map
+		if ( from == null || !from.Alive || from.Map == null || from.Map == Map.Internal )
 		{
-			var selectedItems = new List<BackupItemInfo>();
-			foreach ( var item in m_Items )
-				if ( item.Selected )
-					selectedItems.Add( item );
+			from?.SendMessage( 0x20, "You must be in the world to spawn the NPC." );
+			return;
+		}
+
+		var selectedItems = new List<BackupItemInfo>();
+		foreach ( var item in m_Items )
+			if ( item.Selected )
+				selectedItems.Add( item );
 
 		if ( selectedItems.Count == 0 )
 		{
@@ -987,87 +1035,269 @@ namespace Server.Gumps
 			return;
 		}
 
+		if ( selectedItems.Count > MaxRestoreItems )
+		{
+			from.SendMessage( 0x20, $"Too many items selected ({selectedItems.Count}). Maximum is {MaxRestoreItems}." );
+			return;
+		}
+
+		// Begin disk log
+		string logPath = CharRestoreLogger.BeginSession(
+			from, backupPath, accountName, charName,
+			string.IsNullOrWhiteSpace( targetName ) ? "(not set)" : targetName,
+			selectedItems.Count );
+
 		// Build the restoration bag
 		string bundleName = StringCatalog.TryResolveByKey(
 			AccountLang.GetLanguageCode( from.Account ),
 			"charrestore.npc.bundle_name" ) ?? "Restoration Bundle";
-		Bag bag = new Bag();
+
+		Bag bag = null;
+		try { bag = new Bag(); }
+		catch ( Exception ex )
+		{
+			CharRestoreLogger.LogError( logPath, "Bag creation", ex );
+			from.SendMessage( 0x20, "Internal error: could not create restoration bag." );
+			return;
+		}
 		bag.Name = bundleName;
-			int created = 0, failed = 0;
 
-			foreach ( BackupItemInfo itemInfo in selectedItems )
+		int created = 0, failed = 0;
+
+		foreach ( BackupItemInfo itemInfo in selectedItems )
+		{
+			if ( itemInfo == null )
 			{
-				try
-				{
-					Type t = ScriptCompiler.FindTypeByFullName( itemInfo.TypeFull );
-					if ( t == null )
-					{
-						t = ScriptCompiler.FindTypeByName( itemInfo.TypeShort );
-					}
-					if ( t == null || !t.IsSubclassOf( typeof( Item ) ) )
-					{
-						failed++;
-						continue;
-					}
-
-					Item newItem = (Item)Activator.CreateInstance( t );
-					if ( newItem == null ) { failed++; continue; }
-
-					if ( itemInfo.Hue > 0 )
-						newItem.Hue = itemInfo.Hue;
-					if ( itemInfo.Amount > 1 && newItem.Stackable )
-						newItem.Amount = itemInfo.Amount;
-					if ( !string.IsNullOrEmpty( itemInfo.Name ) )
-						newItem.Name = itemInfo.Name;
-
-					bag.DropItem( newItem );
-					created++;
-				}
-				catch
-				{
-					failed++;
-				}
+				failed++;
+				CharRestoreLogger.LogItemFail( logPath, new BackupItemInfo { TypeShort = "(null entry)" }, "Null BackupItemInfo" );
+				continue;
 			}
 
-			if ( created == 0 )
-			{
-				bag.Delete();
-				string msg = $"Could not create any items ({failed} failed). Check type names in the backup manifest.";
-				from.SendMessage( 0x20, msg );
-				Reopen( from, m_Page, m_ItemPage, backupPath, accountName, charName,
-					msg, m_Items, targetName, personalNote );
-				return;
-			}
+			Item newItem = TryCreateItem( logPath, itemInfo, ref failed );
+			if ( newItem == null )
+				continue;
 
-			// Spawn the NPC
-			LostItemsRestorerNPC npc = new LostItemsRestorerNPC();
-			npc.TargetName      = string.IsNullOrWhiteSpace( targetName ) ? null : targetName.Trim();
-			npc.PersonalNote    = string.IsNullOrWhiteSpace( personalNote ) ? null : personalNote.Trim();
-			npc.RestorationBag  = bag;
+			try
+			{
+				bag.DropItem( newItem );
+				CharRestoreLogger.LogItemCreate( logPath, itemInfo, newItem );
+				created++;
+			}
+			catch ( Exception ex )
+			{
+				CharRestoreLogger.LogItemFail( logPath, itemInfo, $"DropItem failed: {ex.Message}" );
+				// Safe cleanup: delete the orphaned item so it doesn't persist in World
+				try { if ( !newItem.Deleted ) newItem.Delete(); } catch { }
+				failed++;
+			}
+		}
+
+		if ( created == 0 )
+		{
+			CharRestoreLogger.LogError( logPath, "SpawnRestorerNPC",
+				new InvalidOperationException( $"Zero items created ({failed} failures)." ) );
+			try { bag.Delete(); } catch { }
+			string msg = $"Could not create any items ({failed} failed). Check type names in the backup manifest.";
+			from.SendMessage( 0x20, msg );
+			Reopen( from, m_Page, m_ItemPage, backupPath, accountName, charName,
+				msg, m_Items, targetName, personalNote );
+			return;
+		}
+
+		// Spawn NPC
+		LostItemsRestorerNPC npc;
+		try
+		{
+			npc = new LostItemsRestorerNPC();
+		}
+		catch ( Exception ex )
+		{
+			CharRestoreLogger.LogError( logPath, "NPC constructor", ex );
+			try { bag.Delete(); } catch { }
+			from.SendMessage( 0x20, "Internal error: could not create restorer NPC." );
+			return;
+		}
+
+		npc.TargetName     = string.IsNullOrWhiteSpace( targetName ) ? null : targetName.Trim();
+		npc.PersonalNote   = string.IsNullOrWhiteSpace( personalNote ) ? null : personalNote.Trim();
+		npc.RestorationBag = bag;
+		npc.LogPath        = logPath;
+
+		try
+		{
 			npc.MoveToWorld( from.Location, from.Map );
+		}
+		catch ( Exception ex )
+		{
+			CharRestoreLogger.LogError( logPath, "NPC MoveToWorld", ex );
+			try { npc.Delete(); bag.Delete(); } catch { }
+			from.SendMessage( 0x20, "Internal error: could not place NPC in world." );
+			return;
+		}
 
-			// Put the bag in the NPC's backpack (not equipped)
+		// Place the bag in the NPC's backpack
+		try
+		{
 			npc.AddToBackpack( bag );
+		}
+		catch ( Exception ex )
+		{
+			// Non-fatal: NPC exists but bag isn't in backpack.
+			// Log and let GM investigate.
+			CharRestoreLogger.LogError( logPath, "NPC AddToBackpack", ex );
+		}
 
-			// Visual effect
+		// Visual feedback
+		try
+		{
 			Effects.SendLocationParticles(
 				EffectItem.Create( npc.Location, npc.Map, EffectItem.DefaultDuration ),
 				0x3728, 10, 10, 2023 );
 			npc.PlaySound( 0x1FE );
-
-			string result = $"NPC spawned at your location with {created} items" +
-				( failed > 0 ? $" ({failed} item types could not be created)" : "" ) +
-				( !string.IsNullOrEmpty( npc.TargetName ) ? $". Waiting for '{npc.TargetName}'." : "." );
-
-			from.SendMessage( 0x35, result );
-
-			CommandLogging.WriteLine( from,
-				$"[CharRestore] Spawned LostItemsRestorerNPC with {created} items for '{targetName}' " +
-				$"at {from.Location} ({from.Map})" );
-
-			Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
-				result, m_Items, targetName, personalNote );
 		}
+		catch { /* Non-critical visual; never crash for this */ }
+
+		CharRestoreLogger.LogSessionSummary( logPath, created, failed, bag, npc );
+
+		string result = $"NPC spawned at your location with {created} item(s)" +
+			( failed > 0 ? $" ({failed} type(s) could not be created — see log)" : "" ) +
+			( !string.IsNullOrEmpty( npc.TargetName ) ? $". Waiting for '{npc.TargetName}'." : "." );
+
+		from.SendMessage( 0x35, result );
+
+		CommandLogging.WriteLine( from,
+			$"[CharRestore] Spawned LostItemsRestorerNPC 0x{npc.Serial.Value:X8} " +
+			$"with {created} items for '{targetName}' at {from.Location} ({from.Map})." );
+
+		Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
+			result, m_Items, targetName, personalNote );
+	}
+
+	/// <summary>
+	/// Attempts to create a single game item from a <see cref="BackupItemInfo"/>.
+	/// All attribute assignment is strictly limited to the three properties captured from
+	/// the backup (hue, amount, name). No stat inflation, no magic properties.
+	/// Returns null and increments <paramref name="failed"/> on any problem.
+	/// </summary>
+	private static Item TryCreateItem( string logPath, BackupItemInfo info, ref int failed )
+	{
+		// ── 1. Locate the type ──────────────────────────────────────────
+		Type t = null;
+		try
+		{
+			if ( !string.IsNullOrEmpty( info.TypeFull ) )
+				t = ScriptCompiler.FindTypeByFullName( info.TypeFull );
+			if ( t == null && !string.IsNullOrEmpty( info.TypeShort ) )
+				t = ScriptCompiler.FindTypeByName( info.TypeShort );
+		}
+		catch ( Exception ex )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, $"Type lookup exception: {ex.Message}" );
+			failed++;
+			return null;
+		}
+
+		if ( t == null )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "Type not found in script assembly" );
+			failed++;
+			return null;
+		}
+
+		// ── 2. Validate the type ────────────────────────────────────────
+		if ( !typeof( Item ).IsAssignableFrom( t ) )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "Type is not a subclass of Item" );
+			failed++;
+			return null;
+		}
+
+		if ( t.IsAbstract )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "Type is abstract — cannot instantiate" );
+			failed++;
+			return null;
+		}
+
+		if ( t.GetConstructor( Type.EmptyTypes ) == null )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "No no-arg constructor (cannot safely instantiate)" );
+			failed++;
+			return null;
+		}
+
+		// ── 3. Instantiate ──────────────────────────────────────────────
+		Item newItem;
+		try
+		{
+			newItem = (Item)Activator.CreateInstance( t );
+		}
+		catch ( Exception ex )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, $"Constructor threw: {ex.InnerException?.Message ?? ex.Message}" );
+			failed++;
+			return null;
+		}
+
+		if ( newItem == null )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "Activator returned null" );
+			failed++;
+			return null;
+		}
+
+		if ( newItem.Deleted )
+		{
+			CharRestoreLogger.LogItemFail( logPath, info, "Item was Deleted immediately after construction" );
+			failed++;
+			return null;
+		}
+
+		// ── 4. Apply ONLY the three backed-up properties ─────────────────
+		// Hue: valid UO range is 0–3000 (inclusive).
+		if ( info.Hue > 0 && info.Hue <= 3000 )
+			newItem.Hue = info.Hue;
+		else if ( info.Hue != 0 )
+			CharRestoreLogger.LogItemFail( logPath, info,
+				$"Hue {info.Hue} out of range 0-3000; hue not applied" );
+
+		// Amount: only meaningful if item is stackable.
+		if ( info.Amount > 1 )
+		{
+			if ( newItem.Stackable && info.Amount <= 60000 )
+				newItem.Amount = info.Amount;
+			else if ( !newItem.Stackable )
+				CharRestoreLogger.LogItemFail( logPath, info,
+					$"Amount {info.Amount} ignored — item is not stackable" );
+			else
+				CharRestoreLogger.LogItemFail( logPath, info,
+					$"Amount {info.Amount} out of range 1-60000; amount not applied" );
+		}
+
+		// Name: strip control characters, cap at 80 chars.
+		if ( !string.IsNullOrEmpty( info.Name ) )
+		{
+			string safeName = SanitizeName( info.Name );
+			if ( safeName.Length > 0 )
+				newItem.Name = safeName;
+		}
+
+		return newItem;
+	}
+
+	private static string SanitizeName( string raw )
+	{
+		if ( string.IsNullOrEmpty( raw ) )
+			return "";
+		var sb = new StringBuilder( Math.Min( raw.Length, 80 ) );
+		foreach ( char c in raw )
+		{
+			if ( sb.Length >= 80 ) break;
+			if ( c >= 0x20 && c != 0x7F ) // printable, non-DEL
+				sb.Append( c );
+		}
+		return sb.ToString().Trim();
+	}
 
 		// ----------------------------------------------------------------
 		// Player targeting helper

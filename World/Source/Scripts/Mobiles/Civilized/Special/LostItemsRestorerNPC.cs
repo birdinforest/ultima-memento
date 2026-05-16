@@ -27,6 +27,7 @@ namespace Server.Mobiles
 		private string m_PersonalNote;
 		private DateTime m_CreatedTime;
 		private Timer m_DeleteTimer;
+		private string m_LogPath;   // Absolute path to disk log for this session
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string TargetName
@@ -47,6 +48,17 @@ namespace Server.Mobiles
 		{
 			get { return m_RestorationBag; }
 			set { m_RestorationBag = value; }
+		}
+
+		/// <summary>
+		/// Absolute path to the restore session log file.
+		/// Set by <c>CharacterRestoreGump.SpawnRestorerNPC</c>; persisted across restarts.
+		/// </summary>
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string LogPath
+		{
+			get { return m_LogPath; }
+			set { m_LogPath = value; }
 		}
 
 		[Constructable]
@@ -155,30 +167,136 @@ namespace Server.Mobiles
 
 		public void DeliverItems( Mobile to )
 		{
-			if ( m_RestorationBag == null || m_RestorationBag.Deleted || to == null )
+			// ── Guard: validate all prerequisites before touching any items ──────
+			if ( to == null )
+			{
+				Console.WriteLine( "[CharRestore] DeliverItems called with null target." );
 				return;
+			}
+
+			if ( to.Deleted )
+			{
+				Console.WriteLine( $"[CharRestore] DeliverItems: target '{to.Name}' is deleted." );
+				return;
+			}
+
+			if ( !to.Alive )
+			{
+				// Don't deliver to a dead player — they can't interact anyway.
+				to.SendMessage( 0x20, "You must be alive to receive this." );
+				return;
+			}
+
+			if ( to.Backpack == null )
+			{
+				to.SendMessage( 0x20, "You have no backpack to receive these items." );
+				Console.WriteLine( $"[CharRestore] DeliverItems: '{to.Name}' has no backpack." );
+				return;
+			}
+
+			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
+			{
+				to.SendMessage( 0x20, "The restoration package could not be found. Please contact a GM." );
+				Console.WriteLine( $"[CharRestore] DeliverItems: restoration bag is null or deleted for NPC 0x{Serial.Value:X8}." );
+				return;
+			}
+
+			if ( m_RestorationBag.Items.Count == 0 )
+			{
+				to.SendMessage( 0x20, "The restoration package is empty. Please contact a GM." );
+				Console.WriteLine( $"[CharRestore] DeliverItems: restoration bag is empty for NPC 0x{Serial.Value:X8}." );
+				return;
+			}
+
+			// ── Begin delivery ────────────────────────────────────────────────────
+			Server.Gumps.CharRestoreLogger.LogDeliveryBegin( m_LogPath, this, to );
 
 			string bagName = StringCatalog.TryResolveByKey(
 				AccountLang.GetLanguageCode( to.Account ),
 				"charrestore.npc.bag_name" ) ?? "Salvaged Belongings";
 
-			Bag deliveryBag = new Bag();
-			deliveryBag.Name = bagName;
-			deliveryBag.Hue  = 0x84C;
+			Bag deliveryBag;
+			try
+			{
+				deliveryBag = new Bag();
+				deliveryBag.Name = bagName;
+				deliveryBag.Hue  = 0x84C;
+			}
+			catch ( Exception ex )
+			{
+				Console.WriteLine( $"[CharRestore] DeliverItems: delivery bag creation failed: {ex.Message}" );
+				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliveryBag creation", ex );
+				return;
+			}
 
+			// ── Move items: copy list first to avoid modification-during-enumeration ──
+			int delivered = 0;
 			List<Item> toMove = new List<Item>( m_RestorationBag.Items );
+
 			foreach ( Item item in toMove )
-				deliveryBag.DropItem( item );
+			{
+				if ( item == null || item.Deleted )
+				{
+					Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems",
+						new InvalidOperationException( "Null or deleted item in restoration bag — skipped." ) );
+					continue;
+				}
 
-			to.AddToBackpack( deliveryBag );
-			to.PlaySound( 0x249 );
+				try
+				{
+					Server.Gumps.CharRestoreLogger.LogDeliveredItem( m_LogPath, item );
+					deliveryBag.DropItem( item );
+					delivered++;
+				}
+				catch ( Exception ex )
+				{
+					// Item move failed: log and leave item in original bag rather than
+					// creating an orphan or crashing.
+					Console.WriteLine( $"[CharRestore] DeliverItems: DropItem failed for {item.GetType().Name}: {ex.Message}" );
+					Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems DropItem", ex );
+				}
+			}
 
-			CitizenLocalization.SayLocalizedByKey( this,
-				"charrestore.npc.farewell",
-				"Safe harbors to you. Learn these waters before you venture out again." );
+			if ( delivered == 0 )
+			{
+				try { deliveryBag.Delete(); } catch { }
+				to.SendMessage( 0x20, "No items could be moved. Please contact a GM." );
+				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems",
+					new InvalidOperationException( "Zero items moved — delivery aborted." ) );
+				return;
+			}
+
+			// ── Hand delivery bag to player ───────────────────────────────────────
+			try
+			{
+				to.AddToBackpack( deliveryBag );
+			}
+			catch ( Exception ex )
+			{
+				Console.WriteLine( $"[CharRestore] DeliverItems: AddToBackpack failed: {ex.Message}" );
+				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "AddToBackpack", ex );
+				// Attempt direct world-drop as last resort
+				try { deliveryBag.MoveToWorld( to.Location, to.Map ); }
+				catch { }
+			}
+
+			try { to.PlaySound( 0x249 ); } catch { }
+
+			Server.Gumps.CharRestoreLogger.LogDeliveryEnd( m_LogPath, delivered, to );
+
+			// NPC farewell
+			try
+			{
+				CitizenLocalization.SayLocalizedByKey( this,
+					"charrestore.npc.farewell",
+					"Safe harbors to you. Learn these waters before you venture out again." );
+			}
+			catch { }
 
 			if ( !string.IsNullOrEmpty( m_PersonalNote ) )
-				to.SendMessage( 0x59, m_PersonalNote );
+			{
+				try { to.SendMessage( 0x59, m_PersonalNote ); } catch { }
+			}
 
 			ScheduleDeparture();
 		}
@@ -229,12 +347,13 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version (1 adds m_LogPath)
 
 			writer.Write( m_TargetName );
 			writer.Write( m_PersonalNote );
 			writer.Write( m_RestorationBag );
 			writer.Write( m_CreatedTime );
+			writer.Write( m_LogPath ?? "" );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -246,6 +365,13 @@ namespace Server.Mobiles
 			m_PersonalNote   = reader.ReadString();
 			m_RestorationBag = reader.ReadItem() as Bag;
 			m_CreatedTime    = reader.ReadDateTime();
+
+			if ( version >= 1 )
+				m_LogPath = reader.ReadString();
+
+			// Clamp an obviously invalid timestamp to prevent negative or absurd timers.
+			if ( m_CreatedTime > DateTime.Now || m_CreatedTime < DateTime.Now - TimeSpan.FromDays( 30 ) )
+				m_CreatedTime = DateTime.Now - TimeSpan.FromHours( 23 );
 
 			TimeSpan elapsed   = DateTime.Now - m_CreatedTime;
 			TimeSpan remaining = TimeSpan.FromHours( 24 ) - elapsed;
