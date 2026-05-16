@@ -40,28 +40,52 @@ namespace Server.Gumps
 	// Backup item descriptor
 	// ========================================================================
 
+	/// <summary>
+	/// Descriptor for one item found in a backup save.
+	/// <see cref="FullProps"/> contains the complete set of base-class properties
+	/// parsed from <c>Item.Serialize v14</c>; subclass-specific properties
+	/// (e.g. BaseWeapon resist bonuses) cannot be read without a full deserializer.
+	/// </summary>
 	public class BackupItemInfo
 	{
 		public string TypeFull   { get; set; }
 		public string TypeShort  { get; set; }
-		public int    Hue        { get; set; }
-		public int    Amount     { get; set; }
-		public string Name       { get; set; }
-		public string Layer      { get; set; }
 		public bool   IsEquipped { get; set; }
 		public bool   Selected   { get; set; }
+
+		// Short fields mirrored from FullProps for quick gump display
+		public int    Hue    { get; set; }
+		public int    Amount { get; set; }
+		public string Name   { get; set; }
+		public string Layer  { get; set; }
+
+		/// <summary>
+		/// Full set of properties parsed from the backup binary.
+		/// Null when parsing failed (type name is still available from TDB).
+		/// </summary>
+		public BackupSaveAnalyzer.ParsedItemProps? FullProps { get; set; }
 
 		public string DisplayLabel
 		{
 			get
 			{
-				var sb = new StringBuilder( TypeShort );
+				var sb = new StringBuilder( TypeShort ?? "?" );
 				if ( !string.IsNullOrEmpty( Name ) )
-					sb.Append( $" \"{Name}\"" );
+					sb.Append( " \"" ).Append( Name ).Append( '"' );
 				if ( Amount > 1 )
-					sb.Append( $" x{Amount}" );
+					sb.Append( " x" ).Append( Amount );
+				if ( FullProps.HasValue )
+				{
+					var p = FullProps.Value;
+					if ( p.Resource != 0 )
+						sb.Append( " [" ).Append( (CraftResource)p.Resource ).Append( "]" );
+					if ( p.EnchantedSpell != 0 )
+						sb.Append( " {" ).Append( (MagicSpell)p.EnchantedSpell ).Append( "}" );
+					if ( p.ArtifactLevelVal != 0 )
+						sb.Append( " <" ).Append( (ArtifactLevel)p.ArtifactLevelVal ).Append( ">" );
+				}
 				if ( IsEquipped )
-					sb.Append( $" [{Layer}]" );
+					sb.Append( " [" ).Append( Layer ).Append( "]" );
 				return sb.ToString();
 			}
 		}
@@ -255,19 +279,17 @@ namespace Server.Gumps
 				TypeShort  = ShortTypeName( entry.TypeFull ),
 				IsEquipped = isEquipped,
 				Selected   = true,
+				Amount     = 1,
 			};
 
 			if ( propMap.TryGetValue( serial, out var props ) )
 			{
-				info.Hue    = props.Hue;
-				info.Amount = props.Amount > 0 ? props.Amount : 1;
-				info.Name   = props.Name;
-				info.Layer  = props.Layer != 0 && LayerNames.ContainsKey( props.Layer )
+				info.Hue       = props.Hue;
+				info.Amount    = props.Amount > 0 ? props.Amount : 1;
+				info.Name      = props.Name;
+				info.Layer     = props.Layer != 0 && LayerNames.ContainsKey( props.Layer )
 					? LayerNames[props.Layer] : $"Layer_{props.Layer}";
-			}
-			else
-			{
-				info.Amount = 1;
+				info.FullProps = props;  // attach complete parsed properties
 			}
 
 			items.Add( info );
@@ -395,16 +417,87 @@ namespace Server.Gumps
 			}
 		}
 
+		// ---- Property caps — game-validated maximum values ----
+
+		// Hue: UO 16-bit palette index (max used value ~3000)
+		public const int Cap_Hue           = 3000;
+		// Stack count upper limit for stackable items
+		public const int Cap_Amount        = 60000;
+		// UO item graphic IDs are 16-bit (0x0000–0xFFFF)
+		public const int Cap_ItemID        = 0xFFFF;
+		// Coin price; no item should cost more than 10 million gold
+		public const int Cap_CoinPrice     = 10_000_000;
+		// EnchantMod modifier; keep well below any exploitable threshold
+		public const int Cap_EnchantMod    = 100;
+		// Identification attempt counter
+		public const int Cap_NotIDAttempts = 100;
+		// Wand / enchanted-item charge counts
+		public const int Cap_EnchantUses   = 500;
+		// Usage-limit counters (e.g. limited-use bags)
+		public const int Cap_Limits        = 50_000;
+		// Custom graphic ID (same range as ItemID)
+		public const int Cap_GraphicID     = 0xFFFF;
+		// String lengths
+		public const int Cap_StrName       = 80;    // item name
+		public const int Cap_StrSubName    = 80;    // resource name override
+		public const int Cap_StrLimits     = 80;    // limits label
+		public const int Cap_StrInfo       = 500;   // InfoData / InfoText*
+		public const int Cap_StrColor      = 20;    // ColorHue / ColorText display tags
+
 		// ---- Item binary record parser ----
 
-		private struct ParsedItemProps
+		/// <summary>
+		/// All base-class properties parseable from <c>Item.Serialize v14</c>.
+		/// Subclass properties (BaseWeapon, BaseArmor stats) require type-specific
+		/// deserialization and are NOT captured here.
+		/// </summary>
+		public struct ParsedItemProps
 		{
+			// ── Item.Serialize v14 block ────────────────────────────────────────
+			public int    EnchantMod;
+			public string ColorHue1,  ColorText1;
+			public string ColorHue2,  ColorText2;
+			public string ColorHue3,  ColorText3;
+			public string ColorHue4,  ColorText4;
+			public string ColorHue5,  ColorText5;
+			public int    WorldItemID;      // custom gump graphic
+			public bool   Technology;       // sci-fi/tech item flag
+			public bool   VirtualContainer; // virtual container flag
+			public bool   NotIdentified;    // item has hidden properties
+			public int    NotIDAttempts;    // failed identification attempts
+			public int    NotIDSource;      // Identity enum value
+			public int    NotIDSkill;       // IDSkill enum value
+			public int    Catalog;          // Catalogs enum value
+			public int    CoinPrice;        // vendor buy/sell price hint
+			public int    Resource;         // CraftResource enum (primary material)
+			public int    SubResource;      // CraftResource enum (secondary material)
+			public string SubName;          // material name override
+			public int    ArtifactLevelVal; // ArtifactLevel enum value
+			public bool   NotModAble;       // cannot be modified/altered
+			public bool   NeedsBothHands;   // two-hand requirement override
+			public string InfoData;         // extended description
+			public string InfoText1, InfoText2, InfoText3, InfoText4, InfoText5;
+			public int    Limits;           // current usage count
+			public int    LimitsMax;        // maximum usage count
+			public string LimitsName;       // label for limit type
+			public bool   LimitsDelete;     // auto-delete on limit expiry
+			public bool   Built;            // player-crafted flag
+			// ── Item.Serialize v11 block ────────────────────────────────────────
+			public int    EnchantedSpell;   // MagicSpell enum
+			public int    EnchantUses;      // current charges
+			public int    EnchantUsesMax;   // max charges
+			// ── Item.Serialize v10 block ────────────────────────────────────────
+			public int    GraphicID;        // custom graphic override
+			public int    GraphicHue;       // custom graphic hue
+			// ── Flags-based section ─────────────────────────────────────────────
 			public int    Hue;
 			public int    Amount;
-			public string Name;
 			public byte   Layer;
+			public string Name;
 			public int?   Parent;
 			public List<int> ChildrenSerials;
+			// ── Meta ────────────────────────────────────────────────────────────
+			public int ParsedVersion;  // which Item.Serialize version was found
 		}
 
 		// Maximum plausible string length guard: prevents malformed data from
@@ -439,56 +532,73 @@ namespace Server.Gumps
 		private static ParsedItemProps ParseItemRecord( BinaryReader br )
 		{
 			int version = br.ReadInt32();
-			// Valid versions: 6–14 in this codebase (Item.Serialize falls through 14 → ... → 6).
-			// Reject anything outside this range as likely corrupt or wrong format.
+			// Valid versions: 6–14. Item.Serialize falls through: 14 → 11 → 10 → 6.
 			if ( version < 6 || version > 14 )
 				throw new InvalidDataException( $"Item version {version} outside supported range 6-14" );
 
-			var props = new ParsedItemProps { Amount = 1, ChildrenSerials = new List<int>() };
+			var props = new ParsedItemProps
+			{
+				Amount          = 1,
+				ChildrenSerials = new List<int>(),
+				ParsedVersion   = version,
+			};
 
 			if ( version >= 14 )
 			{
-				br.ReadBoolean();   // Purchased
-				br.ReadInt32();     // EnchantMod
-				// ColorHue1..5 and ColorText1..5 (all strings in this codebase)
-				for ( int i = 0; i < 10; i++ ) SafeReadString( br );
-				br.ReadInt32();     // WorldItemID
-				br.ReadBoolean();   // Technology
-				br.ReadBoolean();   // VirtualContainer
-				br.ReadBoolean();   // NotIdentified
-				br.ReadInt32();     // NotIDAttempts
-				ReadEncodedInt( br );   // NotIDSource
-				ReadEncodedInt( br );   // NotIDSkill
-				ReadEncodedInt( br );   // Catalog
-				br.ReadInt32();     // CoinPrice
-				ReadEncodedInt( br );   // Resource
-				ReadEncodedInt( br );   // SubResource
-				SafeReadString( br );   // SubName
-				br.ReadInt32();     // ArtifactLevel
-				br.ReadBoolean();   // NotModAble
-				br.ReadBoolean();   // NeedsBothHands
-				for ( int i = 0; i < 6; i++ ) SafeReadString( br ); // InfoData + InfoText1..5
-				br.ReadInt32();     // Limits
-				br.ReadInt32();     // LimitsMax
-				SafeReadString( br );   // LimitsName
-				br.ReadBoolean();   // LimitsDelete
-				br.ReadInt32();     // BuiltBy (mobile ref)
-				br.ReadBoolean();   // Built
+				br.ReadBoolean();                     // Purchased — not restored (vendor flag)
+				props.EnchantMod    = br.ReadInt32();
+				props.ColorHue1     = SafeReadString( br );
+				props.ColorText1    = SafeReadString( br );
+				props.ColorHue2     = SafeReadString( br );
+				props.ColorText2    = SafeReadString( br );
+				props.ColorHue3     = SafeReadString( br );
+				props.ColorText3    = SafeReadString( br );
+				props.ColorHue4     = SafeReadString( br );
+				props.ColorText4    = SafeReadString( br );
+				props.ColorHue5     = SafeReadString( br );
+				props.ColorText5    = SafeReadString( br );
+				props.WorldItemID   = br.ReadInt32();
+				props.Technology    = br.ReadBoolean();
+				props.VirtualContainer = br.ReadBoolean();
+				props.NotIdentified = br.ReadBoolean();
+				props.NotIDAttempts = br.ReadInt32();
+				props.NotIDSource   = ReadEncodedInt( br );
+				props.NotIDSkill    = ReadEncodedInt( br );
+				props.Catalog       = ReadEncodedInt( br );
+				props.CoinPrice     = br.ReadInt32();
+				props.Resource      = ReadEncodedInt( br );
+				props.SubResource   = ReadEncodedInt( br );
+				props.SubName       = SafeReadString( br );
+				props.ArtifactLevelVal = br.ReadInt32();
+				props.NotModAble    = br.ReadBoolean();
+				props.NeedsBothHands = br.ReadBoolean();
+				props.InfoData      = SafeReadString( br );
+				props.InfoText1     = SafeReadString( br );
+				props.InfoText2     = SafeReadString( br );
+				props.InfoText3     = SafeReadString( br );
+				props.InfoText4     = SafeReadString( br );
+				props.InfoText5     = SafeReadString( br );
+				props.Limits        = br.ReadInt32();
+				props.LimitsMax     = br.ReadInt32();
+				props.LimitsName    = SafeReadString( br );
+				props.LimitsDelete  = br.ReadBoolean();
+				br.ReadInt32();                       // BuiltBy mobile ref — not restored
+				props.Built         = br.ReadBoolean();
 			}
 
 			if ( version >= 11 )
 			{
-				ReadEncodedInt( br );   // Enchanted
-				br.ReadInt32();     // EnchantUses
-				br.ReadInt32();     // EnchantUsesMax
+				props.EnchantedSpell = ReadEncodedInt( br );
+				props.EnchantUses    = br.ReadInt32();
+				props.EnchantUsesMax = br.ReadInt32();
 			}
 
 			if ( version >= 10 )
 			{
-				br.ReadInt32();     // GraphicID
-				br.ReadInt32();     // GraphicHue
-				br.ReadInt32();     // LastMobile (mobile ref)
-				SafeReadString( br );   // LastMobileName
+				props.GraphicID    = br.ReadInt32();
+				props.GraphicHue   = br.ReadInt32();
+				br.ReadInt32();                       // LastMobile ref — not restored
+				SafeReadString( br );                 // LastMobileName — not restored
 			}
 
 			// ---- case 6 ----
@@ -1175,9 +1285,15 @@ namespace Server.Gumps
 
 	/// <summary>
 	/// Attempts to create a single game item from a <see cref="BackupItemInfo"/>.
-	/// All attribute assignment is strictly limited to the three properties captured from
-	/// the backup (hue, amount, name). No stat inflation, no magic properties.
-	/// Returns null and increments <paramref name="failed"/> on any problem.
+	/// <para>
+	/// All properties parsed from <c>Item.Serialize v14</c> are applied after
+	/// construction. Each property is validated against a game-specific cap before
+	/// application; out-of-range values are clamped or discarded with a log entry.
+	/// Subclass-specific properties (BaseWeapon stats, BaseArmor resistances, etc.)
+	/// cannot be read from the base serialization and therefore retain the values
+	/// set by the item's no-arg constructor.
+	/// </para>
+	/// Returns null and increments <paramref name="failed"/> on any unrecoverable problem.
 	/// </summary>
 	private static Item TryCreateItem( string logPath, BackupItemInfo info, ref int failed )
 	{
@@ -1193,111 +1309,217 @@ namespace Server.Gumps
 		catch ( Exception ex )
 		{
 			CharRestoreLogger.LogItemFail( logPath, info, $"Type lookup exception: {ex.Message}" );
-			failed++;
-			return null;
+			failed++; return null;
 		}
 
 		if ( t == null )
 		{
 			CharRestoreLogger.LogItemFail( logPath, info, "Type not found in script assembly" );
-			failed++;
-			return null;
+			failed++; return null;
 		}
 
-		// ── 2. Validate the type ────────────────────────────────────────
-		if ( !typeof( Item ).IsAssignableFrom( t ) )
+		if ( !typeof( Item ).IsAssignableFrom( t ) || t.IsAbstract )
 		{
-			CharRestoreLogger.LogItemFail( logPath, info, "Type is not a subclass of Item" );
-			failed++;
-			return null;
-		}
-
-		if ( t.IsAbstract )
-		{
-			CharRestoreLogger.LogItemFail( logPath, info, "Type is abstract — cannot instantiate" );
-			failed++;
-			return null;
+			CharRestoreLogger.LogItemFail( logPath, info, "Type is not a concrete Item subclass" );
+			failed++; return null;
 		}
 
 		if ( t.GetConstructor( Type.EmptyTypes ) == null )
 		{
-			CharRestoreLogger.LogItemFail( logPath, info, "No no-arg constructor (cannot safely instantiate)" );
-			failed++;
-			return null;
+			CharRestoreLogger.LogItemFail( logPath, info, "No no-arg constructor — cannot safely instantiate" );
+			failed++; return null;
 		}
 
-		// ── 3. Instantiate ──────────────────────────────────────────────
+		// ── 2. Instantiate ──────────────────────────────────────────────
 		Item newItem;
-		try
-		{
-			newItem = (Item)Activator.CreateInstance( t );
-		}
+		try { newItem = (Item)Activator.CreateInstance( t ); }
 		catch ( Exception ex )
 		{
-			CharRestoreLogger.LogItemFail( logPath, info, $"Constructor threw: {ex.InnerException?.Message ?? ex.Message}" );
-			failed++;
-			return null;
-		}
-
-		if ( newItem == null )
-		{
-			CharRestoreLogger.LogItemFail( logPath, info, "Activator returned null" );
-			failed++;
-			return null;
-		}
-
-		if ( newItem.Deleted )
-		{
-			CharRestoreLogger.LogItemFail( logPath, info, "Item was Deleted immediately after construction" );
-			failed++;
-			return null;
-		}
-
-		// ── 4. Apply ONLY the three backed-up properties ─────────────────
-		// Hue: valid UO range is 0–3000 (inclusive).
-		if ( info.Hue > 0 && info.Hue <= 3000 )
-			newItem.Hue = info.Hue;
-		else if ( info.Hue != 0 )
 			CharRestoreLogger.LogItemFail( logPath, info,
-				$"Hue {info.Hue} out of range 0-3000; hue not applied" );
-
-		// Amount: only meaningful if item is stackable.
-		if ( info.Amount > 1 )
-		{
-			if ( newItem.Stackable && info.Amount <= 60000 )
-				newItem.Amount = info.Amount;
-			else if ( !newItem.Stackable )
-				CharRestoreLogger.LogItemFail( logPath, info,
-					$"Amount {info.Amount} ignored — item is not stackable" );
-			else
-				CharRestoreLogger.LogItemFail( logPath, info,
-					$"Amount {info.Amount} out of range 1-60000; amount not applied" );
+				$"Constructor threw: {ex.InnerException?.Message ?? ex.Message}" );
+			failed++; return null;
 		}
 
-		// Name: strip control characters, cap at 80 chars.
-		if ( !string.IsNullOrEmpty( info.Name ) )
+		if ( newItem == null || newItem.Deleted )
 		{
-			string safeName = SanitizeName( info.Name );
-			if ( safeName.Length > 0 )
-				newItem.Name = safeName;
+			CharRestoreLogger.LogItemFail( logPath, info, "Item null or deleted after construction" );
+			failed++; return null;
+		}
+
+		// ── 3. Apply all backed-up properties with caps ─────────────────
+		// Subclass properties are NOT changed; only base Item fields are set.
+		if ( info.FullProps.HasValue )
+			ApplyBackupProperties( newItem, info.FullProps.Value, logPath, info );
+		else
+		{
+			// Fallback: apply only the three directly available fields
+			ApplyBasicFields( newItem, info.Hue, info.Amount, info.Name, logPath, info );
 		}
 
 		return newItem;
 	}
 
-	private static string SanitizeName( string raw )
+	/// <summary>
+	/// Applies all base-class properties from a <see cref="BackupSaveAnalyzer.ParsedItemProps"/>
+	/// to <paramref name="item"/>.  Each numeric field is clamped to a game-validated maximum;
+	/// enum fields are validated with <c>Enum.IsDefined</c> before assignment; string fields
+	/// are sanitized and length-capped.  Nothing outside these base-class fields is touched.
+	/// </summary>
+	private static void ApplyBackupProperties( Item item,
+		BackupSaveAnalyzer.ParsedItemProps p, string logPath, BackupItemInfo info )
 	{
-		if ( string.IsNullOrEmpty( raw ) )
-			return "";
-		var sb = new StringBuilder( Math.Min( raw.Length, 80 ) );
+		// ── Hue (0–3000) ─────────────────────────────────────────────────
+		if ( p.Hue > 0 )
+		{
+			int h = Clamp( p.Hue, 0, BackupSaveAnalyzer.Cap_Hue );
+			if ( h != p.Hue )
+				CharRestoreLogger.LogItemFail( logPath, info, $"Hue {p.Hue} clamped to {h}" );
+			item.Hue = h;
+		}
+
+		// ── Amount (stackable items only) ────────────────────────────────
+		if ( p.Amount > 1 )
+		{
+			if ( item.Stackable )
+			{
+				int a = Clamp( p.Amount, 1, BackupSaveAnalyzer.Cap_Amount );
+				if ( a != p.Amount )
+					CharRestoreLogger.LogItemFail( logPath, info, $"Amount {p.Amount} clamped to {a}" );
+				item.Amount = a;
+			}
+			// Non-stackable items always have Amount = 1; silently skip
+		}
+
+		// ── Name ────────────────────────────────────────────────────────
+		string name = SanitizeName( p.Name, BackupSaveAnalyzer.Cap_StrName );
+		if ( !string.IsNullOrEmpty( name ) )
+			item.Name = name;
+
+		// ── EnchantMod ──────────────────────────────────────────────────
+		if ( p.EnchantMod != 0 )
+			item.EnchantMod = Clamp( p.EnchantMod, 0, BackupSaveAnalyzer.Cap_EnchantMod );
+
+		// ── Color / text labels (display only, no gameplay effect) ───────
+		item.ColorHue1  = SanitizeName( p.ColorHue1,  BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorText1 = SanitizeName( p.ColorText1, BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorHue2  = SanitizeName( p.ColorHue2,  BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorText2 = SanitizeName( p.ColorText2, BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorHue3  = SanitizeName( p.ColorHue3,  BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorText3 = SanitizeName( p.ColorText3, BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorHue4  = SanitizeName( p.ColorHue4,  BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorText4 = SanitizeName( p.ColorText4, BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorHue5  = SanitizeName( p.ColorHue5,  BackupSaveAnalyzer.Cap_StrColor );
+		item.ColorText5 = SanitizeName( p.ColorText5, BackupSaveAnalyzer.Cap_StrColor );
+
+		// ── WorldItemID (custom graphic) ─────────────────────────────────
+		if ( p.WorldItemID > 0 && p.WorldItemID <= BackupSaveAnalyzer.Cap_ItemID )
+			item.WorldItemID = p.WorldItemID;
+		else if ( p.WorldItemID != 0 )
+			CharRestoreLogger.LogItemFail( logPath, info,
+				$"WorldItemID {p.WorldItemID} out of range; not applied" );
+
+		// ── Boolean flags ────────────────────────────────────────────────
+		item.Technology      = p.Technology;
+		item.VirtualContainer = p.VirtualContainer;
+		item.NotIdentified   = p.NotIdentified;
+		item.NotModAble      = p.NotModAble;
+		item.NeedsBothHands  = p.NeedsBothHands;
+		item.LimitsDelete    = p.LimitsDelete;
+		item.Built           = p.Built;
+
+		// ── NotIDAttempts ────────────────────────────────────────────────
+		item.NotIDAttempts = Clamp( p.NotIDAttempts, 0, BackupSaveAnalyzer.Cap_NotIDAttempts );
+
+		// ── Enum fields ──────────────────────────────────────────────────
+		if ( Enum.IsDefined( typeof( Identity ), p.NotIDSource ) )
+			item.NotIDSource = (Identity)p.NotIDSource;
+		if ( Enum.IsDefined( typeof( IDSkill ), p.NotIDSkill ) )
+			item.NotIDSkill = (IDSkill)p.NotIDSkill;
+		if ( Enum.IsDefined( typeof( Catalogs ), p.Catalog ) )
+			item.Catalog = (Catalogs)p.Catalog;
+		if ( Enum.IsDefined( typeof( CraftResource ), p.Resource ) )
+			item.Resource = (CraftResource)p.Resource;
+		if ( Enum.IsDefined( typeof( CraftResource ), p.SubResource ) )
+			item.SubResource = (CraftResource)p.SubResource;
+		if ( Enum.IsDefined( typeof( ArtifactLevel ), p.ArtifactLevelVal ) )
+			item.ArtifactLevel = (ArtifactLevel)p.ArtifactLevelVal;
+		if ( Enum.IsDefined( typeof( MagicSpell ), p.EnchantedSpell ) )
+			item.Enchanted = (MagicSpell)p.EnchantedSpell;
+
+		// ── CoinPrice ────────────────────────────────────────────────────
+		if ( p.CoinPrice > 0 )
+			item.CoinPrice = Clamp( p.CoinPrice, 0, BackupSaveAnalyzer.Cap_CoinPrice );
+
+		// ── SubName (material name override) ─────────────────────────────
+		item.SubName = SanitizeName( p.SubName, BackupSaveAnalyzer.Cap_StrSubName );
+
+		// ── Info strings ─────────────────────────────────────────────────
+		item.InfoData  = SanitizeName( p.InfoData,  BackupSaveAnalyzer.Cap_StrInfo );
+		item.InfoText1 = SanitizeName( p.InfoText1, BackupSaveAnalyzer.Cap_StrInfo );
+		item.InfoText2 = SanitizeName( p.InfoText2, BackupSaveAnalyzer.Cap_StrInfo );
+		item.InfoText3 = SanitizeName( p.InfoText3, BackupSaveAnalyzer.Cap_StrInfo );
+		item.InfoText4 = SanitizeName( p.InfoText4, BackupSaveAnalyzer.Cap_StrInfo );
+		item.InfoText5 = SanitizeName( p.InfoText5, BackupSaveAnalyzer.Cap_StrInfo );
+
+		// ── Enchantment charges ───────────────────────────────────────────
+		// Set max first so current never exceeds max.
+		if ( p.EnchantUsesMax > 0 )
+			item.EnchantUsesMax = Clamp( p.EnchantUsesMax, 0, BackupSaveAnalyzer.Cap_EnchantUses );
+		if ( p.EnchantUses > 0 )
+			item.EnchantUses = Clamp( p.EnchantUses, 0,
+				Math.Min( item.EnchantUsesMax, BackupSaveAnalyzer.Cap_EnchantUses ) );
+
+		// ── Usage limits ─────────────────────────────────────────────────
+		// Set max first, then current (current ≤ max).
+		if ( p.LimitsMax > 0 )
+		{
+			item.LimitsMax = Clamp( p.LimitsMax, 0, BackupSaveAnalyzer.Cap_Limits );
+			if ( p.Limits > 0 )
+				item.Limits = Clamp( p.Limits, 0, item.LimitsMax );
+		}
+		item.LimitsName = SanitizeName( p.LimitsName, BackupSaveAnalyzer.Cap_StrLimits );
+
+		// ── Custom graphic ────────────────────────────────────────────────
+		if ( p.GraphicID > 0 && p.GraphicID <= BackupSaveAnalyzer.Cap_GraphicID )
+			item.GraphicID = p.GraphicID;
+		if ( p.GraphicHue > 0 )
+			item.GraphicHue = Clamp( p.GraphicHue, 0, BackupSaveAnalyzer.Cap_Hue );
+	}
+
+	/// Fallback when FullProps is null — apply only the three flat fields.
+	private static void ApplyBasicFields( Item item,
+		int hue, int amount, string name, string logPath, BackupItemInfo info )
+	{
+		if ( hue > 0 && hue <= BackupSaveAnalyzer.Cap_Hue )
+			item.Hue = hue;
+		else if ( hue != 0 )
+			CharRestoreLogger.LogItemFail( logPath, info, $"Hue {hue} out of range; not applied" );
+
+		if ( amount > 1 && item.Stackable && amount <= BackupSaveAnalyzer.Cap_Amount )
+			item.Amount = amount;
+
+		string n = SanitizeName( name, BackupSaveAnalyzer.Cap_StrName );
+		if ( !string.IsNullOrEmpty( n ) )
+			item.Name = n;
+	}
+
+	private static int Clamp( int value, int min, int max )
+		=> value < min ? min : value > max ? max : value;
+
+	private static string SanitizeName( string raw, int maxLen )
+	{
+		if ( string.IsNullOrEmpty( raw ) ) return null;
+		var sb = new StringBuilder( Math.Min( raw.Length, maxLen ) );
 		foreach ( char c in raw )
 		{
-			if ( sb.Length >= 80 ) break;
-			if ( c >= 0x20 && c != 0x7F ) // printable, non-DEL
-				sb.Append( c );
+			if ( sb.Length >= maxLen ) break;
+			if ( c >= 0x20 && c != 0x7F ) sb.Append( c );
 		}
 		return sb.ToString().Trim();
 	}
+
+	private static string SanitizeName( string raw )
+		=> SanitizeName( raw, BackupSaveAnalyzer.Cap_StrName );
 
 		// ----------------------------------------------------------------
 		// Player targeting helper

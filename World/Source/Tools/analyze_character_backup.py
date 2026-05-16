@@ -212,70 +212,83 @@ def skip_bounce_info(r: BinaryReader):
 
 def parse_item_record(data: bytes):
     """
-    Attempt to parse key fields from an Item.Serialize version 14 binary record.
-    Returns a dict with keys: version, parent, hue, amount, layer, name, items_children.
-    Raises on parse failure.
+    Parse all fields from an Item.Serialize version 6-14 binary record.
+
+    Captures every base-class property stored by Item.Serialize v14.
+    Subclass-specific properties (BaseWeapon stats etc.) are not accessible here.
+    Returns a dict; raises on parse failure.
     """
     r = BinaryReader(data)
-
     version = r.read_int32()
     if version < 6 or version > 14:
         raise ValueError(f"Unsupported item version {version}")
 
+    props: dict = {
+        "version": version,
+        "hue": 0, "amount": 1, "layer": 0, "name": None,
+        "parent": None, "children": [], "flags": 0,
+    }
+
     if version >= 14:
-        r.read_bool()   # Purchased
-        r.read_int32()  # EnchantMod
-        # ColorHue1..5 and ColorText1..5 are all strings in this codebase
-        for _ in range(10):
-            r.read_string()
-        r.read_int32()  # WorldItemID
-        r.read_bool()   # Technology
-        r.read_bool()   # VirtualContainer
-        r.read_bool()   # NotIdentified
-        r.read_int32()  # NotIDAttempts
-        r.read_encoded_int()  # NotIDSource
-        r.read_encoded_int()  # NotIDSkill
-        r.read_encoded_int()  # Catalog
-        r.read_int32()  # CoinPrice
-        r.read_encoded_int()  # Resource
-        r.read_encoded_int()  # SubResource
-        r.read_string()  # SubName
-        r.read_int32()  # ArtifactLevel
-        r.read_bool()   # NotModAble
-        r.read_bool()   # NeedsBothHands
-        r.read_string()  # InfoData
-        for _ in range(5):
-            r.read_string()  # InfoText1..5
-        r.read_int32()  # Limits
-        r.read_int32()  # LimitsMax
-        r.read_string()  # LimitsName
-        r.read_bool()   # LimitsDelete
-        r.read_mobile_ref()  # BuiltBy
-        r.read_bool()   # Built
-        # Fall through to version 11
+        r.read_bool()                            # Purchased — internal flag, not restored
+        props["enchant_mod"]     = r.read_int32()
+        props["color_hue1"]      = r.read_string()
+        props["color_text1"]     = r.read_string()
+        props["color_hue2"]      = r.read_string()
+        props["color_text2"]     = r.read_string()
+        props["color_hue3"]      = r.read_string()
+        props["color_text3"]     = r.read_string()
+        props["color_hue4"]      = r.read_string()
+        props["color_text4"]     = r.read_string()
+        props["color_hue5"]      = r.read_string()
+        props["color_text5"]     = r.read_string()
+        props["world_item_id"]   = r.read_int32()
+        props["technology"]      = r.read_bool()
+        props["virtual_container"] = r.read_bool()
+        props["not_identified"]  = r.read_bool()
+        props["not_id_attempts"] = r.read_int32()
+        props["not_id_source"]   = r.read_encoded_int()  # Identity enum
+        props["not_id_skill"]    = r.read_encoded_int()  # IDSkill enum
+        props["catalog"]         = r.read_encoded_int()  # Catalogs enum
+        props["coin_price"]      = r.read_int32()
+        props["resource"]        = r.read_encoded_int()  # CraftResource enum
+        props["sub_resource"]    = r.read_encoded_int()  # CraftResource enum
+        props["sub_name"]        = r.read_string()
+        props["artifact_level"]  = r.read_int32()        # ArtifactLevel enum
+        props["not_mod_able"]    = r.read_bool()
+        props["needs_both_hands"] = r.read_bool()
+        props["info_data"]       = r.read_string()
+        props["info_text1"]      = r.read_string()
+        props["info_text2"]      = r.read_string()
+        props["info_text3"]      = r.read_string()
+        props["info_text4"]      = r.read_string()
+        props["info_text5"]      = r.read_string()
+        props["limits"]          = r.read_int32()
+        props["limits_max"]      = r.read_int32()
+        props["limits_name"]     = r.read_string()
+        props["limits_delete"]   = r.read_bool()
+        r.read_mobile_ref()                      # BuiltBy — not restored
+        props["built"]           = r.read_bool()
 
     if version >= 11:
-        r.read_encoded_int()  # Enchanted
-        r.read_int32()  # EnchantUses
-        r.read_int32()  # EnchantUsesMax
-        # Fall through to version 10
+        props["enchanted_spell"]  = r.read_encoded_int()  # MagicSpell enum
+        props["enchant_uses"]     = r.read_int32()
+        props["enchant_uses_max"] = r.read_int32()
 
     if version >= 10:
-        r.read_int32()  # GraphicID
-        r.read_int32()  # GraphicHue
-        r.read_mobile_ref()  # LastMobile
-        r.read_string()  # LastMobileName
-        # Fall through to version 6
+        props["graphic_id"]       = r.read_int32()
+        props["graphic_hue"]      = r.read_int32()
+        r.read_mobile_ref()                       # LastMobile — not restored
+        r.read_string()                           # LastMobileName — not restored
 
-    # --- Case 6 (all versions >= 6 fall here) ---
+    # ── Flags-based section (all versions ≥ 6) ──────────────────────────
     flags = r.read_int32()
+    props["flags"] = flags
 
-    # minutes since last moved (version >= 7 uses encoded int; version 6 used DeltaTime)
     if version >= 7:
-        r.read_encoded_int()  # minutes
+        r.read_encoded_int()   # minutes since last moved
     else:
-        # DeltaTime: long (8 bytes)
-        r.read_int64()
+        r.read_int64()         # DeltaTime (ticks)
 
     if flags & SaveFlag.Direction:
         r.read_byte()
@@ -286,60 +299,39 @@ def parse_item_record(data: bytes):
     if flags & SaveFlag.LootType:
         r.read_byte()
 
-    # Location
     if flags & SaveFlag.LocationFull:
-        r.read_encoded_int()  # x
-        r.read_encoded_int()  # y
-        r.read_encoded_int()  # z
+        r.read_encoded_int(); r.read_encoded_int(); r.read_encoded_int()
     else:
         if flags & SaveFlag.LocationByteXY:
-            r.read_byte()
-            r.read_byte()
+            r.read_byte(); r.read_byte()
         elif flags & SaveFlag.LocationShortXY:
-            r.read_int16()
-            r.read_int16()
+            r.read_int16(); r.read_int16()
         if flags & SaveFlag.LocationSByteZ:
             r.read_sbyte()
 
-    item_id = None
     if flags & SaveFlag.ItemID:
-        item_id = r.read_encoded_int()
+        r.read_encoded_int()   # ItemID — handled by constructor
 
-    hue = 0
     if flags & SaveFlag.Hue:
-        hue = r.read_encoded_int()
+        props["hue"] = r.read_encoded_int()
 
-    amount = 1
     if flags & SaveFlag.Amount:
-        amount = r.read_encoded_int()
+        props["amount"] = r.read_encoded_int()
 
-    layer = 0
     if flags & SaveFlag.Layer:
-        layer = r.read_byte()
+        props["layer"] = r.read_byte()
 
-    name = None
     if flags & SaveFlag.Name:
-        name = r.read_string()
+        props["name"] = r.read_string()
 
-    parent = None
     if flags & SaveFlag.Parent:
-        parent = r.read_int32()
+        props["parent"] = r.read_int32()
 
-    children = []
     if flags & SaveFlag.Items:
         count = r.read_int32()
-        for _ in range(count):
-            children.append(r.read_int32())
+        props["children"] = [r.read_int32() for _ in range(count)]
 
-    return {
-        "hue": hue,
-        "amount": amount,
-        "layer": layer,
-        "name": name,
-        "parent": parent,
-        "children": children,
-        "flags": flags,
-    }
+    return props
 
 
 # ---------------------------------------------------------------------------
@@ -581,22 +573,77 @@ def analyze_backup(backup_path: str, account_name: str, character_name: str):
     # Step 5: Build the final item list
     items = []
 
+    # ── Property caps matching BackupSaveAnalyzer constants in CharacterRestoreGump.cs ──
+    CAPS = {
+        "hue":             3000,
+        "amount":          60000,
+        "world_item_id":   0xFFFF,
+        "coin_price":      10_000_000,
+        "enchant_mod":     100,
+        "not_id_attempts": 100,
+        "enchant_uses":    500,
+        "enchant_uses_max":500,
+        "limits":          50_000,
+        "limits_max":      50_000,
+        "graphic_id":      0xFFFF,
+        "graphic_hue":     3000,
+        "artifact_level":  4,    # max ArtifactLevel enum value
+    }
+
+    def cap_value(key: str, value):
+        """Return value clamped to the game-defined cap, or None if 0/empty."""
+        if value is None or value == 0 or value == "" or value is False:
+            return None
+        max_val = CAPS.get(key)
+        if max_val is not None and isinstance(value, int):
+            return min(value, max_val)
+        return value
+
     def add_item(serial, is_equipped):
         entry = serial_to_entry.get(serial)
         if entry is None:
             return
         props = item_props.get(serial, {})
         layer = props.get("layer", 0)
-        items.append({
-            "serial": hex(serial & 0xFFFFFFFF),
-            "type_full": entry["type_full"],
+
+        record = {
+            "serial":     hex(serial & 0xFFFFFFFF),
+            "type_full":  entry["type_full"],
             "type_short": entry["type_short"],
-            "hue": props.get("hue", 0),
-            "amount": props.get("amount", 1),
-            "name": props.get("name"),
-            "layer": LAYER_NAMES.get(layer, f"Layer_{layer}"),
+            "layer":      LAYER_NAMES.get(layer, f"Layer_{layer}"),
             "is_equipped": is_equipped,
-        })
+            # ── Display-critical fields (always include) ──────────────────
+            "hue":    props.get("hue", 0),
+            "amount": max(1, props.get("amount", 1)),
+            "name":   props.get("name"),
+        }
+
+        # ── Full set of base-class properties (include non-default values only) ──
+        for key in (
+            "enchant_mod", "world_item_id",
+            "color_hue1", "color_text1", "color_hue2", "color_text2",
+            "color_hue3", "color_text3", "color_hue4", "color_text4",
+            "color_hue5", "color_text5",
+            "technology", "virtual_container", "not_identified",
+            "not_id_attempts", "not_id_source", "not_id_skill", "catalog",
+            "coin_price", "resource", "sub_resource", "sub_name",
+            "artifact_level", "not_mod_able", "needs_both_hands",
+            "info_data", "info_text1", "info_text2", "info_text3", "info_text4", "info_text5",
+            "limits", "limits_max", "limits_name", "limits_delete", "built",
+            "enchanted_spell", "enchant_uses", "enchant_uses_max",
+            "graphic_id", "graphic_hue",
+        ):
+            raw = props.get(key)
+            capped = cap_value(key, raw)
+            if capped is not None:
+                record[key] = capped
+                if isinstance(capped, int) and isinstance(raw, int) and capped != raw:
+                    errors.append(
+                        f"Item 0x{serial:08X} ({entry['type_short']}): "
+                        f"{key}={raw} clamped to {capped}"
+                    )
+
+        items.append(record)
 
     # Add equipped items (items directly parented to character, not the backpack)
     for s in direct_items:
