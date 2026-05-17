@@ -58,6 +58,7 @@ ultima-memento/
 - Coverage roadmap: `World/Documentation/localization-complete-coverage-roadmap.md`
 - Localization regression testing plan & test tiers: `World/Documentation/localization-regression-testing.md`
 - Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
+- Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
 
 ---
 
@@ -452,6 +453,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 - 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
+- 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

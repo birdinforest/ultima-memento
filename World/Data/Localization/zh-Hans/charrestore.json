@@ -7,6 +7,7 @@
 
   "charrestore.npc.bag_name":    "打捞回的遗物",
   "charrestore.npc.bundle_name": "归还物品包",
+  "charrestore.npc.note_name":   "GM附言",
 
   "charrestore.dialog.title.greeting": "一位风霜满面的打捞者",
   "charrestore.dialog.title.story":    "打捞者的往事",

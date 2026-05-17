@@ -150,8 +150,9 @@ namespace Server.Gumps
 					if ( !File.Exists( p ) )
 						throw new FileNotFoundException( $"Required save file not found: {p}" );
 
-				// 1. Find character serial
-				int charSerial = FindCharacterSerial( accountsXml, accountName );
+			// 1. Find character serial — scan Mobiles.bin to match characterName
+			List<int> charSerials = GetAccountCharSerials( accountsXml, accountName );
+			int charSerial = MatchCharacterSerialByName( backupPath, charSerials, characterName, errors );
 
 				// 2. Build type lookup
 				string[] typeNames = ReadTdb( itemsTdb );
@@ -238,16 +239,18 @@ namespace Server.Gumps
 					}
 				}
 
+				var addedSerials = new HashSet<int>();
+
 				// 5. Collect equipped items
 				foreach ( int s in directItems )
 				{
 					if ( s == backpackSerial ) continue;
-					AddItem( s, true, serialMap, propMap, items );
+					AddItem( s, true, serialMap, propMap, items, addedSerials );
 				}
 
 				// 6. Collect backpack contents
 				if ( backpackSerial != -1 )
-					CollectContainerContents( backpackSerial, childrenMap, serialMap, propMap, items );
+					CollectContainerContents( backpackSerial, childrenMap, serialMap, propMap, items, addedSerials );
 				else
 					errors.Add( "Backpack not found — only equipped items listed." );
 
@@ -268,9 +271,15 @@ namespace Server.Gumps
 		private static void AddItem( int serial, bool isEquipped,
 			Dictionary<int,(string TypeFull, long Pos, int Length)> serialMap,
 			Dictionary<int,ParsedItemProps> propMap,
-			List<BackupItemInfo> items )
+			List<BackupItemInfo> items,
+			HashSet<int> addedSerials )
 		{
 			if ( !serialMap.TryGetValue( serial, out var entry ) )
+				return;
+			string tf = entry.TypeFull ?? "";
+			if ( tf.IndexOf( "BankBox", StringComparison.OrdinalIgnoreCase ) >= 0 )
+				return;
+			if ( !addedSerials.Add( serial ) )
 				return;
 
 			var info = new BackupItemInfo
@@ -300,6 +309,7 @@ namespace Server.Gumps
 			Dictionary<int,(string TypeFull, long Pos, int Length)> serialMap,
 			Dictionary<int,ParsedItemProps> propMap,
 			List<BackupItemInfo> items,
+			HashSet<int> addedSerials,
 			int depth = 0 )
 		{
 			if ( depth > 5 || !childrenMap.ContainsKey( containerSerial ) )
@@ -307,11 +317,11 @@ namespace Server.Gumps
 
 			foreach ( int s in childrenMap[containerSerial] )
 			{
-				AddItem( s, false, serialMap, propMap, items );
+				AddItem( s, false, serialMap, propMap, items, addedSerials );
 
 				string tn = serialMap.TryGetValue( s, out var e ) ? e.TypeFull : "";
 				if ( IsContainerType( tn ) )
-					CollectContainerContents( s, childrenMap, serialMap, propMap, items, depth + 1 );
+					CollectContainerContents( s, childrenMap, serialMap, propMap, items, addedSerials, depth + 1 );
 			}
 		}
 
@@ -336,7 +346,10 @@ namespace Server.Gumps
 
 		// ---- Accounts XML ----
 
-		private static int FindCharacterSerial( string xmlPath, string accountName )
+		/// <summary>
+		/// Returns all character serials listed for the account in accounts.xml.
+		/// </summary>
+		private static List<int> GetAccountCharSerials( string xmlPath, string accountName )
 		{
 			var doc = new XmlDocument();
 			doc.Load( xmlPath );
@@ -357,16 +370,112 @@ namespace Server.Gumps
 				if ( charsEl == null )
 					throw new InvalidOperationException( $"Account '{accountName}' has no characters." );
 
+				var serials = new List<int>();
 				foreach ( XmlElement charEl in charsEl.GetElementsByTagName( "char" ) )
 				{
 					if ( int.TryParse( charEl.InnerText.Trim(), out int serial ) && serial != 0 )
-						return serial;
+						serials.Add( serial );
 				}
 
-				throw new InvalidOperationException( $"Account '{accountName}' has no valid character serials." );
+				if ( serials.Count == 0 )
+					throw new InvalidOperationException( $"Account '{accountName}' has no valid character serials." );
+
+				return serials;
 			}
 
 			throw new InvalidOperationException( $"Account '{accountName}' not found in accounts.xml." );
+		}
+
+		/// <summary>
+		/// Scans Mobiles.bin to find which of <paramref name="charSerials"/> has a stored name
+		/// matching <paramref name="characterName"/>.  Falls back to the first serial if the
+		/// Mobiles files are missing or no name matches (and emits a warning entry in errors).
+		/// </summary>
+		private static int MatchCharacterSerialByName( string backupPath, List<int> charSerials,
+			string characterName, List<string> errors )
+		{
+			if ( charSerials.Count == 1 || string.IsNullOrWhiteSpace( characterName ) )
+				return charSerials[0];
+
+			string mobIdx = Path.Combine( backupPath, "Mobiles", "Mobiles.idx" );
+			string mobBin = Path.Combine( backupPath, "Mobiles", "Mobiles.bin" );
+
+			if ( !File.Exists( mobIdx ) || !File.Exists( mobBin ) )
+			{
+				errors.Add( $"Mobiles.idx/Mobiles.bin not found — using first character on account (serial {charSerials[0]})." );
+				return charSerials[0];
+			}
+
+			// Build serial → (pos, length) from Mobiles.idx (same format as Items.idx)
+			var serialToEntry = new Dictionary<int,(long Pos, int Length)>();
+			using ( var fs = new FileStream( mobIdx, FileMode.Open, FileAccess.Read, FileShare.Read ) )
+			using ( var br = new BinaryReader( fs ) )
+			{
+				int count = br.ReadInt32();
+				var charSet = new HashSet<int>( charSerials );
+				for ( int i = 0; i < count; i++ )
+				{
+					br.ReadInt32();          // TypeID — not needed
+					int serial  = br.ReadInt32();
+					long pos    = br.ReadInt64();
+					int  length = br.ReadInt32();
+					if ( charSet.Contains( serial ) )
+						serialToEntry[serial] = (pos, length);
+				}
+			}
+
+			byte[] binData    = File.ReadAllBytes( mobBin );
+			byte[] nameBytes  = EncodeNetString( characterName );
+
+			foreach ( int serial in charSerials )
+			{
+				if ( !serialToEntry.TryGetValue( serial, out var entry ) ) continue;
+				long pos   = entry.Pos;
+				int  len   = entry.Length;
+				if ( pos < 0 || pos + len > binData.Length ) continue;
+
+				if ( BytePatternExists( binData, (int)pos, len, nameBytes ) )
+					return serial;
+			}
+
+			errors.Add( $"Character name '{characterName}' not found in Mobiles.bin — using first character on account (serial {charSerials[0]}). Verify the name is spelled exactly as it appears in-game." );
+			return charSerials[0];
+		}
+
+		/// <summary>Encode a string as .NET BinaryWriter format (7-bit-encoded length + UTF-8 bytes).</summary>
+		private static byte[] EncodeNetString( string s )
+		{
+			byte[] utf8   = Encoding.UTF8.GetBytes( s );
+			int    length = utf8.Length;
+			var header = new List<byte>( 5 );
+			while ( length >= 0x80 )
+			{
+				header.Add( (byte)((length & 0x7F) | 0x80) );
+				length >>= 7;
+			}
+			header.Add( (byte)length );
+			var result = new byte[header.Count + utf8.Length];
+			for ( int i = 0; i < header.Count; i++ ) result[i] = header[i];
+			Buffer.BlockCopy( utf8, 0, result, header.Count, utf8.Length );
+			return result;
+		}
+
+		/// <summary>Returns true if <paramref name="needle"/> appears anywhere in the
+		/// <paramref name="length"/>-byte slice of <paramref name="haystack"/> starting
+		/// at <paramref name="offset"/>.</summary>
+		private static bool BytePatternExists( byte[] haystack, int offset, int length, byte[] needle )
+		{
+			int end = offset + length - needle.Length;
+			for ( int i = offset; i <= end; i++ )
+			{
+				bool found = true;
+				for ( int j = 0; j < needle.Length; j++ )
+				{
+					if ( haystack[i + j] != needle[j] ) { found = false; break; }
+				}
+				if ( found ) return true;
+			}
+			return false;
 		}
 
 		private static string GetXmlAttrOrText( XmlElement el, string attrName )
@@ -547,16 +656,16 @@ namespace Server.Gumps
 			{
 				br.ReadBoolean();                     // Purchased — not restored (vendor flag)
 				props.EnchantMod    = br.ReadInt32();
-				props.ColorHue1     = SafeReadString( br );
-				props.ColorText1    = SafeReadString( br );
-				props.ColorHue2     = SafeReadString( br );
-				props.ColorText2    = SafeReadString( br );
-				props.ColorHue3     = SafeReadString( br );
-				props.ColorText3    = SafeReadString( br );
-				props.ColorHue4     = SafeReadString( br );
-				props.ColorText4    = SafeReadString( br );
-				props.ColorHue5     = SafeReadString( br );
-				props.ColorText5    = SafeReadString( br );
+				props.ColorHue1     = SafeReadShardBlobString( br );
+				props.ColorText1    = SafeReadShardBlobString( br );
+				props.ColorHue2     = SafeReadShardBlobString( br );
+				props.ColorText2    = SafeReadShardBlobString( br );
+				props.ColorHue3     = SafeReadShardBlobString( br );
+				props.ColorText3    = SafeReadShardBlobString( br );
+				props.ColorHue4     = SafeReadShardBlobString( br );
+				props.ColorText4    = SafeReadShardBlobString( br );
+				props.ColorHue5     = SafeReadShardBlobString( br );
+				props.ColorText5    = SafeReadShardBlobString( br );
 				props.WorldItemID   = br.ReadInt32();
 				props.Technology    = br.ReadBoolean();
 				props.VirtualContainer = br.ReadBoolean();
@@ -568,19 +677,19 @@ namespace Server.Gumps
 				props.CoinPrice     = br.ReadInt32();
 				props.Resource      = ReadEncodedInt( br );
 				props.SubResource   = ReadEncodedInt( br );
-				props.SubName       = SafeReadString( br );
+				props.SubName       = SafeReadShardBlobString( br );
 				props.ArtifactLevelVal = br.ReadInt32();
 				props.NotModAble    = br.ReadBoolean();
 				props.NeedsBothHands = br.ReadBoolean();
-				props.InfoData      = SafeReadString( br );
-				props.InfoText1     = SafeReadString( br );
-				props.InfoText2     = SafeReadString( br );
-				props.InfoText3     = SafeReadString( br );
-				props.InfoText4     = SafeReadString( br );
-				props.InfoText5     = SafeReadString( br );
+				props.InfoData      = SafeReadShardBlobString( br );
+				props.InfoText1     = SafeReadShardBlobString( br );
+				props.InfoText2     = SafeReadShardBlobString( br );
+				props.InfoText3     = SafeReadShardBlobString( br );
+				props.InfoText4     = SafeReadShardBlobString( br );
+				props.InfoText5     = SafeReadShardBlobString( br );
 				props.Limits        = br.ReadInt32();
 				props.LimitsMax     = br.ReadInt32();
-				props.LimitsName    = SafeReadString( br );
+				props.LimitsName    = SafeReadShardBlobString( br );
 				props.LimitsDelete  = br.ReadBoolean();
 				br.ReadInt32();                       // BuiltBy mobile ref — not restored
 				props.Built         = br.ReadBoolean();
@@ -598,7 +707,7 @@ namespace Server.Gumps
 				props.GraphicID    = br.ReadInt32();
 				props.GraphicHue   = br.ReadInt32();
 				br.ReadInt32();                       // LastMobile ref — not restored
-				SafeReadString( br );                 // LastMobileName — not restored
+				SafeReadShardBlobString( br );                 // LastMobileName — not restored
 			}
 
 			// ---- case 6 ----
@@ -642,7 +751,7 @@ namespace Server.Gumps
 				props.Layer = br.ReadByte();
 
 			if ( (flags & SF_Name) != 0 )
-				props.Name = SafeReadString( br );
+				props.Name = SafeReadShardBlobString( br );
 
 			if ( (flags & SF_Parent) != 0 )
 				props.Parent = br.ReadInt32();
@@ -673,10 +782,17 @@ namespace Server.Gumps
 			}
 		}
 
+		private static string SafeReadShardBlobString( BinaryReader br )
+		{
+			byte sentinel = br.ReadByte();
+			if ( sentinel == 0 )
+				return null;
+			return SafeReadString( br );
+		}
+
 		private static int ReadEncodedInt( BinaryReader br )
 		{
 			// A 32-bit 7-bit-encoded integer takes at most 5 bytes.
-			// Cap iterations at 5 to prevent an infinite loop on malformed data.
 			int result = 0, shift = 0;
 			for ( int i = 0; i < 5; i++ )
 			{
@@ -686,7 +802,6 @@ namespace Server.Gumps
 					break;
 				shift += 7;
 			}
-			// Convert from unsigned representation to signed if necessary.
 			if ( (uint)result > 0x7FFFFFFFU )
 				result = (int)( (long)(uint)result - 0x100000000L );
 			return result;
@@ -996,27 +1111,33 @@ namespace Server.Gumps
 			string targetName  = GetText( info, 30, m_TargetPlayerName );
 			string personalNote = GetText( info, 31, m_PersonalNote );
 
-			// Update item selections from checkboxes (only when on items page)
-			if ( m_Page == PageItems )
-			{
-				for ( int i = 0; i < m_Items.Count; i++ )
-					m_Items[i].Selected = info.IsSwitched( 200 + i );
-			}
+		// Update item selections from checkboxes — ONLY for items visible on the current page.
+		// Items on other pages are not rendered as checkboxes, so IsSwitched() would return
+		// false for them, wrongly overwriting any selection made on a different page.
+		if ( m_Page == PageItems )
+		{
+			int pageStart = m_ItemPage * ItemsPerPage;
+			int pageEnd   = Math.Min( pageStart + ItemsPerPage, m_Items.Count );
+			for ( int i = pageStart; i < pageEnd; i++ )
+				m_Items[i].Selected = info.IsSwitched( 200 + i );
+		}
 
 			switch ( info.ButtonID )
 			{
 				case 0: // Close
 					return;
 
-				// Tab navigation
-				case 101: // Page Setup → Items (or back from NPC page)
-					if ( m_Page == PageNPCConfig )
-						Reopen( from, PageItems, m_ItemPage, backupPath, accountName, charName,
-							m_StatusText, m_Items, targetName, personalNote );
-					else
-						Reopen( from, PageSetup, 0, backupPath, accountName, charName,
-							m_StatusText, m_Items, targetName, personalNote );
-					return;
+			// Tab navigation
+			case 101: // "Next >" from Setup, "< Back" from NPC Config, or Setup tab from Items
+				if ( m_Page == PageItems )
+					// Clicked the "Setup" tab while on the Items page → go back to Setup
+					Reopen( from, PageSetup, 0, backupPath, accountName, charName,
+						m_StatusText, m_Items, targetName, personalNote );
+				else
+					// "Next >" (Setup page) or "< Back" (NPC Config page) → go to Items
+					Reopen( from, PageItems, m_ItemPage, backupPath, accountName, charName,
+						m_StatusText, m_Items, targetName, personalNote );
+				return;
 				case 102: // Items → NPC Config
 					Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
 						m_StatusText, m_Items, targetName, personalNote );
@@ -1046,11 +1167,14 @@ namespace Server.Gumps
 					return;
 				}
 
-					string status;
-					var items = BackupSaveAnalyzer.Analyze( backupPath, accountName, charName, out status );
-					Reopen( from, PageSetup, 0, backupPath, accountName, charName,
-						status, items, targetName, personalNote );
-					return;
+				string status;
+				var items = BackupSaveAnalyzer.Analyze( backupPath, accountName, charName, out status );
+				// Navigate to the Items page automatically when analysis finds items;
+				// stay on Setup page on failure so the error message is visible.
+				int nextPage = ( items != null && items.Count > 0 ) ? PageItems : PageSetup;
+				Reopen( from, nextPage, 0, backupPath, accountName, charName,
+					status, items, targetName, personalNote );
+				return;
 				}
 
 				// Item list pagination

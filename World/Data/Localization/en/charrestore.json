@@ -7,6 +7,7 @@
 
   "charrestore.npc.bag_name":    "Salvaged Belongings",
   "charrestore.npc.bundle_name": "Restoration Bundle",
+  "charrestore.npc.note_name":   "Personal Note",
 
   "charrestore.dialog.title.greeting": "A Weathered Salvager",
   "charrestore.dialog.title.story":    "A Salvager's Tale",

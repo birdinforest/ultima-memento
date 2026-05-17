@@ -280,23 +280,43 @@ namespace Server.Mobiles
 				catch { }
 			}
 
-			try { to.PlaySound( 0x249 ); } catch { }
+		try { to.PlaySound( 0x249 ); } catch { }
 
-			Server.Gumps.CharRestoreLogger.LogDeliveryEnd( m_LogPath, delivered, to );
-
-			// NPC farewell
+		// ── Place personal note in player's backpack as a physical item ───────
+		if ( !string.IsNullOrWhiteSpace( m_PersonalNote ) )
+		{
 			try
 			{
-				CitizenLocalization.SayLocalizedByKey( this,
-					"charrestore.npc.farewell",
-					"Safe harbors to you. Learn these waters before you venture out again." );
-			}
-			catch { }
+				string noteName = StringCatalog.TryResolveByKey(
+					AccountLang.GetLanguageCode( to.Account ),
+					"charrestore.npc.note_name" );
+				if ( string.IsNullOrEmpty( noteName ) )
+					noteName = "Personal Note";
 
-			if ( !string.IsNullOrEmpty( m_PersonalNote ) )
-			{
-				try { to.SendMessage( 0x59, m_PersonalNote ); } catch { }
+				Item noteItem    = new Item( 0x14F0 ); // blank scroll / parchment graphic
+				noteItem.Name    = noteName;
+				noteItem.InfoData = m_PersonalNote.Trim();
+				to.AddToBackpack( noteItem );
+
+				Server.Gumps.CharRestoreLogger.LogDeliveredItem( m_LogPath, noteItem );
 			}
+			catch ( Exception ex )
+			{
+				Console.WriteLine( $"[CharRestore] Personal note creation failed: {ex.Message}" );
+				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "PersonalNote creation", ex );
+			}
+		}
+
+		Server.Gumps.CharRestoreLogger.LogDeliveryEnd( m_LogPath, delivered, to );
+
+		// NPC farewell
+		try
+		{
+			CitizenLocalization.SayLocalizedByKey( this,
+				"charrestore.npc.farewell",
+				"Safe harbors to you. Learn these waters before you venture out again." );
+		}
+		catch { }
 
 			ScheduleDeparture();
 		}
