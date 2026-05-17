@@ -7,6 +7,9 @@ namespace Server.Items
 	public class Flax : Item
 	{
 		public override string DefaultDescription{ get{ return "You can use these on a spinning wheel, which will produce spools of string."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.spinning.wheel.raw"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.flax";
 
 		[Constructable]
 		public Flax() : this( 1 )

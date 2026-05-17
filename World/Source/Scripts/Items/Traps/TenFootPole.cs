@@ -15,6 +15,21 @@ namespace Server.Items
 {
 	public class TenFootPole : Item
 	{
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, "ten foot pole" );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )

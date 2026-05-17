@@ -12,7 +12,12 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
     public class PickBoxEasy : LockableContainer
     {
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
+
 		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a single skill point in lockpicking, and can help you learn up to 25."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.easy"; } }
 
         [Constructable]
         public PickBoxEasy(): base( 0x1C0E )
@@ -54,7 +59,12 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
     public class PickBoxNormal : LockableContainer
     {
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
+
 		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 20 lockpicking, and can help you learn up to 35."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.normal"; } }
 
         [Constructable]
         public PickBoxNormal(): base( 0x1C0E )
@@ -96,7 +106,12 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
     public class PickBoxDifficult : LockableContainer
     {
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
+
 		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 30 lockpicking, and can help you learn up to 45."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.difficult"; } }
 
         [Constructable]
         public PickBoxDifficult(): base( 0x1C0E )
@@ -138,7 +153,12 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
     public class PickBoxChallenging : LockableContainer
     {
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
+
 		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 40 lockpicking, and can help you learn up to 55."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.challenging"; } }
 
         [Constructable]
         public PickBoxChallenging(): base( 0x1C0E )
@@ -180,7 +200,12 @@ namespace Server.Items
 	[Flipable( 0x1C0E, 0x1C0F )]
     public class PickBoxHard : LockableContainer
     {
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
+
 		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 50 lockpicking, and can help you learn up to 65."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.hard"; } }
 
         [Constructable]
         public PickBoxHard(): base( 0x1C0E )

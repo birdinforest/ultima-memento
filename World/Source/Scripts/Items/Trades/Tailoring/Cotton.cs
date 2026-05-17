@@ -7,6 +7,9 @@ namespace Server.Items
 	public class Cotton : Item, IDyable
 	{
 		public override string DefaultDescription{ get{ return "You can use these on a spinning wheel, which will produce spools of string."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.spinning.wheel.raw"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.cotton";
 
 		[Constructable]
 		public Cotton() : this( 1 )

@@ -33,31 +33,7 @@ namespace Server.Items
 
 		private static string GetDisplayNameLocalized( CraftResource resource, string name, string locale )
 		{
-			if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec )
-			{
-				string plain = CraftResources.GetName( resource );
-				string coreKey = "resource.special." + plain.ToLower();
-				string suffixKey = "resource.special.suffix";
-
-				string core = StringCatalog.TryResolveByKey( locale, coreKey );
-				string suffix = StringCatalog.TryResolveByKey( locale, suffixKey );
-
-				if ( core != null && suffix != null )
-				{
-					if ( locale == "en" )
-						return core + " " + suffix;
-					if ( AccountLang.IsChinese( locale ) )
-						return core + suffix;
-					return core + " " + suffix;
-				}
-			}
-			else
-			{
-				string resolved = StringCatalog.TryResolve( locale, name );
-				if ( resolved != null )
-					return resolved;
-			}
-			return name;
+			return CraftResources.GetTradeItemFullNameLocalized( locale, null, resource, false, false, null );
 		}
 
 		public override void AddNameProperty( ObjectPropertyList list )

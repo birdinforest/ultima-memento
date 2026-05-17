@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Network;
 using Server.Targeting;
 using Server.Items;
@@ -29,6 +30,16 @@ namespace Server.Items
 
 				return "Those skilled in lockpicking, can use these to open locked items. Use the lockpick and select the locked item to attempt to open it.";
 			}
+		}
+
+		public override string InfoDataLocalizationKey
+		{
+			get { return Technology ? "prop.trade.itemdesc.lockpick.tech" : "prop.trade.itemdesc.lockpick.normal"; }
+		}
+
+		public override string DisplayNameLocalizationKey
+		{
+			get { return Technology ? "item.trade.name.access.card" : "item.trade.name.lockpick"; }
 		}
 
 		[Constructable]
@@ -161,6 +172,39 @@ namespace Server.Items
 				private Mobile m_From;
 				private ILockpickable m_Item;
 				private Lockpick m_Lockpick;
+
+				private static void PublicOverheadMessageByCatalogKey( Item item, MessageType type, int hue, bool ascii, string catalogKey )
+				{
+					if ( item == null || item.Map == null )
+						return;
+
+					Point3D worldLoc = item.GetWorldLocation();
+					IPooledEnumerable eable = item.Map.GetClientsInRange( worldLoc, item.GetMaxUpdateRange() );
+
+					foreach ( NetState state in eable )
+					{
+						Mobile m = state.Mobile;
+
+						if ( m != null && m.CanSee( item ) && m.InRange( worldLoc, item.GetUpdateRange( m ) ) )
+						{
+							string lang = AccountLang.GetLanguageCode( m.Account );
+							string outText = StringCatalog.TryResolveByKey( lang, catalogKey );
+
+							if ( string.IsNullOrEmpty( outText ) )
+								outText = StringCatalog.TryResolveByKey( "en", catalogKey );
+
+							if ( string.IsNullOrEmpty( outText ) )
+								outText = "The sound of gas escaping is heard from the chest.";
+
+							if ( ascii && StringCatalog.IsAsciiOnly( outText ) )
+								state.Send( new AsciiMessage( item.Serial, item.ItemID, type, hue, 3, item.Name, outText ) );
+							else
+								state.Send( new UnicodeMessage( item.Serial, item.ItemID, type, hue, 3, "ENU", item.Name, outText ) );
+						}
+					}
+
+					eable.Free();
+				}
 			
 				public InternalTimer( Mobile from, ILockpickable item, Lockpick lockpick ) : base( TimeSpan.FromSeconds( 3.0 ) )
 				{
@@ -178,8 +222,8 @@ namespace Server.Items
 						Item item = (Item)m_Item;
 
 						// You broke the lockpick.
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x549 ); m_From.PrivateOverheadMessage( 0, 1150, false,  "You broke the key card.", m_From.NetState ); }
-						else { m_From.PlaySound( 0x3A4 ); m_From.PrivateOverheadMessage( 0, 1150, false,  "You broke the lockpick.", m_From.NetState ); }
+						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x549 ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.broke.card" ), m_From.NetState ); }
+						else { m_From.PlaySound( 0x3A4 ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.broke.pick" ), m_From.NetState ); }
 
 						m_Lockpick.Consume();
 					}
@@ -207,8 +251,8 @@ namespace Server.Items
 					{
 						// LockLevel of 0 means that the door can't be picklocked
 						// LockLevel of -255 means it's magic locked
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "This lock cannot be hacked by normal means.", m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "This lock cannot be picked by normal means.", m_From.NetState ); }
+						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.cannot.hack.normal" ), m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.cannot.pick.normal" ), m_From.NetState ); }
 
 						return;
 					}
@@ -220,16 +264,16 @@ namespace Server.Items
 						m_From.CheckSkill( SkillName.Lockpicking, 0, m_Item.LockLevel );*/
 
 						// The LockLevel is higher thant the LockPicking of the player
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "You don't see how that lock can be hacked.", m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "You don't see how that lock can be manipulated.", m_From.NetState ); }
+						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.no.idea.hack" ), m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.no.idea.pick" ), m_From.NetState ); }
 						return;
 					}
 
 					if ( m_From.CheckTargetSkill( SkillName.Lockpicking, m_Item, m_Item.LockLevel, m_Item.MaxLockLevel ) )
 					{
 						// Success! Pick the lock!
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x54B ); m_From.PrivateOverheadMessage( 0, 1150, false,  "Your skill at hacking worked.", m_From.NetState ); }
-						else { m_From.PlaySound( 0x4A ); m_From.PrivateOverheadMessage( 0, 1150, false,  "The lock quickly yields to your skill.", m_From.NetState ); }
+						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x54B ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.success.hack" ), m_From.NetState ); }
+						else { m_From.PlaySound( 0x4A ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.success.pick" ), m_From.NetState ); }
 						
 						m_Item.LockPick( m_From );
 					}
@@ -238,8 +282,8 @@ namespace Server.Items
 						// The player failed to pick the lock
 						BrokeLockPickTest();
 
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "You are unable to hack the lock.", m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "You are unable to pick the lock.", m_From.NetState ); }
+						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.fail.hack" ), m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.fail.pick" ), m_From.NetState ); }
 
                         // ==== Random Item Disintergration upon Failure ====
                         if (m_Item is TreasureMapChest)
@@ -297,7 +341,7 @@ namespace Server.Items
                                 i_Destroy.Delete(); m_chest.DropItem(Dust);
                             }
                             Effects.PlaySound(m_chest.Location, m_chest.Map, 0x1DE);
-                            m_chest.PublicOverheadMessage(MessageType.Regular, 2004, false, "The sound of gas escaping is heard from the chest.");
+                            PublicOverheadMessageByCatalogKey( m_chest, MessageType.Regular, 2004, false, "prop.trade.lockpick.overhead.gas.chest" );
                         }
 					}
 				}

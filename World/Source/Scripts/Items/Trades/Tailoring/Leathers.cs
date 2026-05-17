@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Items.Abstractions;
 using Server.Network;
@@ -8,10 +9,26 @@ namespace Server.Items
 	public abstract class BaseLeather : Item, ICommodity
 	{
 		public override string DefaultDescription{ get{ return "Tailors, with leatherworking tools, can create leather armor and weapons with this. Scribes also use leather to bind books."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.leathers"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
 
 		public virtual bool IsCommodity { get { return true; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

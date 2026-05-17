@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Server;
 using Server.Accounting;
 using Server.Localization;
 
@@ -847,6 +848,147 @@ namespace Server.Items
 				material = sufx;
 
 			return material;
+		}
+
+		/// <summary>OPL / bilingual name for trade commodities built from <see cref="GetTradeItemFullName"/>.</summary>
+		public static string GetTradeItemFullNameLocalized( string locale, Item item, CraftResource resource, bool sub, bool sub2, string name )
+		{
+			string english = GetTradeItemFullName( item, resource, sub, sub2, name );
+
+			if ( locale == null || !AccountLang.IsChinese( locale ) )
+			{
+				if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec && name == null )
+				{
+					string plainEn = GetName( resource );
+
+					if ( plainEn != null && plainEn.Length > 0 )
+					{
+						string coreKeyEn = "resource.special." + plainEn.ToLower();
+						string coreEn = StringCatalog.TryResolveByKey( locale, coreKeyEn );
+						string sfxEn = StringCatalog.TryResolveByKey( locale, "resource.special.suffix" );
+
+						if ( coreEn != null && sfxEn != null )
+							return coreEn + " " + sfxEn;
+					}
+				}
+
+				return english;
+			}
+
+			string direct = StringCatalog.TryResolve( locale, english );
+			if ( direct != null )
+				return direct;
+
+			if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec && name == null )
+			{
+				string plain = GetName( resource );
+
+				if ( plain != null && plain.Length > 0 )
+				{
+					string coreKey = "resource.special." + plain.ToLower();
+					string core = StringCatalog.TryResolveByKey( locale, coreKey );
+					string sfx = StringCatalog.TryResolveByKey( locale, "resource.special.suffix" );
+
+					if ( core != null && sfx != null )
+						return core + sfx;
+				}
+			}
+
+			bool stdMaterial = Item.IsStandardResource( resource );
+			string materialPlain = GetName( resource );
+
+			string sufxToken = name;
+			if ( sufxToken == null )
+				sufxToken = GetTradeItemName( resource, sub, sub2 );
+
+			if ( sufxToken == null )
+				return english;
+
+			string matLoc = "";
+			if ( !stdMaterial && materialPlain != null && materialPlain.Length > 0 )
+			{
+				matLoc = StringCatalog.TryResolve( locale, materialPlain );
+
+				if ( matLoc == null )
+					matLoc = materialPlain;
+			}
+
+			string sufLoc = LocalizeTradeSuffix( locale, name, sufxToken );
+
+			if ( sufLoc == null || sufLoc.Length == 0 )
+				sufLoc = sufxToken;
+
+			if ( matLoc.Length == 0 )
+				return sufLoc;
+
+			string fmt = StringCatalog.TryResolveByKey( locale, "trade.compose.material_suffix" );
+
+			if ( fmt == null || fmt.Length == 0 )
+				fmt = "{0} {1}";
+
+			return string.Format( fmt, matLoc, sufLoc );
+		}
+
+		private static string LocalizeTradeSuffix( string locale, string customName, string suffixEnglish )
+		{
+			if ( customName != null )
+			{
+				string t = StringCatalog.TryResolve( locale, customName );
+				if ( t != null )
+					return t;
+
+				switch ( customName )
+				{
+					case "horse barding":
+						t = StringCatalog.TryResolveByKey( locale, "trade.custom.horse_barding" );
+						if ( t != null ) return t;
+						break;
+					case "spyglass":
+						t = StringCatalog.TryResolveByKey( locale, "trade.custom.spyglass" );
+						if ( t != null ) return t;
+						break;
+					case "ten foot pole":
+						t = StringCatalog.TryResolveByKey( locale, "trade.custom.ten_foot_pole" );
+						if ( t != null ) return t;
+						break;
+					case "bound":
+						t = StringCatalog.TryResolveByKey( locale, "trade.custom.bound" );
+						if ( t != null ) return t;
+						break;
+					case "trapping tools":
+						t = StringCatalog.TryResolveByKey( locale, "trap.name.trapkit" );
+						if ( t != null ) return t;
+						break;
+				}
+
+				return customName;
+			}
+
+			if ( suffixEnglish != null && suffixEnglish.Length > 0 )
+			{
+				string k = "trade.suffix." + suffixEnglish;
+				string t = StringCatalog.TryResolveByKey( locale, k );
+
+				if ( t != null )
+					return t;
+
+				t = StringCatalog.TryResolve( locale, suffixEnglish );
+
+				if ( t != null )
+					return t;
+			}
+
+			return suffixEnglish;
+		}
+
+		public static void AddLocalizedTradeCommodityNameProperty( ObjectPropertyList list, string locale, Item item, CraftResource resource, bool sub, bool sub2, string customSuffix )
+		{
+			string name = GetTradeItemFullNameLocalized( locale, item, resource, sub, sub2, customSuffix );
+
+			if ( item.Amount > 1 )
+				list.Add( "{0} {1}", item.Amount, name );
+			else
+				list.Add( name );
 		}
 
 		public static string GetResourceName( CraftResource resource )

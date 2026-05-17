@@ -30,6 +30,10 @@ namespace Server.Items
 		public override string DefaultDescription
 		{ get { return "This tool can be used to create slightly magical items."; } }
 
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.slight"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.runic.fletcher.tools.1";
+
 		public int RunicMinAttributes { get { return 1; } }
 		public int RunicMaxAttributes { get { return 1; } }
 		public int RunicMinIntensity { get { return 40; } }
@@ -76,6 +80,10 @@ namespace Server.Items
 		public override string DefaultDescription
 		{ get { return "This tool can be used to create moderately magical items."; } }
 
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.moderate"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.runic.fletcher.tools.2";
+
 		public int RunicMinAttributes { get { return 2; } }
 		public int RunicMaxAttributes { get { return 2; } }
 		public int RunicMinIntensity { get { return 40; } }
@@ -121,6 +129,10 @@ namespace Server.Items
 
 		public override string DefaultDescription
 		{ get { return "This tool can be used to create very magical items."; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.very"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.runic.fletcher.tools.3";
 
 		public int RunicMinAttributes { get { return 3; } }
 		public int RunicMaxAttributes { get { return 3; } }

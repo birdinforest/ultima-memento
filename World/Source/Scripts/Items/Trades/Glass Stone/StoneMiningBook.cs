@@ -7,10 +7,14 @@ namespace Server.Items
 {
 	public class StoneMiningBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultName
 		{
 			get { return "Mining For Quality Stone"; }
 		}
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.book.stone.mining";
 
 		[Constructable]
 		public StoneMiningBook() : base( 0xFBE )

@@ -10,6 +10,9 @@ namespace Server.Items
 	public class RecallRune : Item
 	{
 		public override string DefaultDescription{ get{ return "You can use these strange stones, to magically mark a location. A magical ability is required to mark the rune. Once marked, you can use gating or recall magic to select the stone and teleport to that location. You can also drop these runes on a runebook, which allows for easier organization if you have many runes."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.recallrune"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.recall.rune";
 
 		private string m_Description;
 		private bool m_Marked;

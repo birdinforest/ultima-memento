@@ -7,10 +7,14 @@ namespace Server.Items
 {
 	public class GlassblowingBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultName
 		{
 			get { return "Crafting Glass With Glassblowing"; }
 		}
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.book.glassblowing";
 
 		[Constructable]
 		public GlassblowingBook() : base( 0xFF4 )

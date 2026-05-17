@@ -225,21 +225,59 @@ namespace Server.Items
 		}
 	}
 
-	[Flipable( 0x44D5, 0x44D9 )]
-	public class DDRelicClock1 : Clock, IRelic
+	/// <summary>
+	/// Decorative relic grandfather clocks: randomized English <see cref="Item.Name" /> for saves/tooltips;
+	/// bilingual OPL uses <c>prop.trade.relicclock.*</c> shotkeys and persists adjective index (save version 2).
+	/// </summary>
+	public abstract class DDRelicClockBase : Clock, IRelic
 	{
-		public override void ItemIdentified( bool id )
+		protected int m_RelicClockAdjIndex;
+
+		private static readonly string[] EnglishRelicClockAdjectives =
 		{
-			m_NotIdentified = id;
-			if ( !id )
+			"a rare", "a nice", "a pretty", "a superb", "a delightful",
+			"an elegant", "an exquisite", "a fine", "a gorgeous", "a lovely",
+			"a magnificent", "a marvelous", "a splendid", "a wonderful", "an extraordinary",
+			"a strange", "an odd", "a unique", "an unusual"
+		};
+
+		private const string EnglishGrandfatherSuffix = " grandfather clock";
+
+		private void InferRelicClockAdjFromLegacyName()
+		{
+			string name = Name;
+
+			if ( name == null || !name.EndsWith( EnglishGrandfatherSuffix ) )
 			{
-				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
+				m_RelicClockAdjIndex = 0;
+				return;
 			}
+
+			string prefix = name.Substring( 0, name.Length - EnglishGrandfatherSuffix.Length );
+
+			for ( int i = 0; i < EnglishRelicClockAdjectives.Length; ++i )
+			{
+				if ( EnglishRelicClockAdjectives[i] == prefix )
+				{
+					m_RelicClockAdjIndex = i;
+					return;
+				}
+			}
+
+			m_RelicClockAdjIndex = 0;
 		}
 
-		[Constructable]
-		public DDRelicClock1() : base( 0x44D5 )
+		private static string BuildEnglishGrandfatherClockName( int adjIndex )
+		{
+			if ( adjIndex < 0 || adjIndex >= EnglishRelicClockAdjectives.Length )
+				adjIndex = 0;
+
+			return EnglishRelicClockAdjectives[adjIndex] + EnglishGrandfatherSuffix;
+		}
+
+		public override bool IsContentLocalized { get { return true; } }
+
+		protected DDRelicClockBase( int itemID ) : base( itemID )
 		{
 			Weight = 100;
 
@@ -248,35 +286,59 @@ namespace Server.Items
 			NotIDSource = Identity.Merchant;
 			NotIDSkill = IDSkill.Mercantile;
 
-			string sLook = "a rare";
-			switch ( Utility.RandomMinMax( 0, 18 ) )
+			m_RelicClockAdjIndex = Utility.RandomMinMax( 0, EnglishRelicClockAdjectives.Length - 1 );
+			Name = BuildEnglishGrandfatherClockName( m_RelicClockAdjIndex );
+		}
+
+		public DDRelicClockBase( Serial serial ) : base( serial )
+		{
+		}
+
+		public override void ItemIdentified( bool id )
+		{
+			m_NotIdentified = id;
+
+			if ( !id )
+				ColorHue3 = "FDC844";
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && m_RelicClockAdjIndex >= 0 && m_RelicClockAdjIndex < EnglishRelicClockAdjectives.Length )
 			{
-				case 0:	sLook = "a rare";	break;
-				case 1:	sLook = "a nice";	break;
-				case 2:	sLook = "a pretty";	break;
-				case 3:	sLook = "a superb";	break;
-				case 4:	sLook = "a delightful";	break;
-				case 5:	sLook = "an elegant";	break;
-				case 6:	sLook = "an exquisite";	break;
-				case 7:	sLook = "a fine";	break;
-				case 8:	sLook = "a gorgeous";	break;
-				case 9:	sLook = "a lovely";	break;
-				case 10:sLook = "a magnificent";	break;
-				case 11:sLook = "a marvelous";	break;
-				case 12:sLook = "a splendid";	break;
-				case 13:sLook = "a wonderful";	break;
-				case 14:sLook = "an extraordinary";	break;
-				case 15:sLook = "a strange";	break;
-				case 16:sLook = "an odd";	break;
-				case 17:sLook = "a unique";	break;
-				case 18:sLook = "an unusual";	break;
+				string adj = ResolvePropertyText( "prop.trade.relicclock.adj." + m_RelicClockAdjIndex );
+				string fmt = ResolvePropertyText( "prop.trade.relicclock.name.fmt" );
+				string displayName = string.Format( fmt, adj );
+
+				if ( m_Amount <= 1 )
+					list.Add( displayName );
+				else
+					list.Add( 1050039, "{0}\t{1}", m_Amount, displayName );
+
+				return;
 			}
-			Name = sLook + " grandfather clock";
+
+			base.AddNameProperty( list );
+		}
+
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relicclock.worth" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
+			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.clocks.backpack.identify" ) );
 			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				IDCommand( from );
@@ -286,207 +348,77 @@ namespace Server.Items
 
 		public override void IDCommand( Mobile m )
 		{
-			if ( this.NotIDSkill == IDSkill.Tasting )
+			if ( NotIDSkill == IDSkill.Tasting )
 				RelicFunctions.IDItem( m, m, this, SkillName.Tasting );
-			else if ( this.NotIDSkill == IDSkill.ArmsLore )
+			else if ( NotIDSkill == IDSkill.ArmsLore )
 				RelicFunctions.IDItem( m, m, this, SkillName.ArmsLore );
 			else
 				RelicFunctions.IDItem( m, m, this, SkillName.Mercantile );
+		}
+
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
+			writer.Write( (int) 2 ); // version
+			writer.Write( (int) m_RelicClockAdjIndex );
+		}
+
+		public override void Deserialize( GenericReader reader )
+		{
+			base.Deserialize( reader );
+
+			int version = reader.ReadInt();
+
+			if ( version >= 2 )
+				m_RelicClockAdjIndex = reader.ReadInt();
+			else
+			{
+				if ( version < 1 )
+					CoinPrice = reader.ReadInt();
+
+				InferRelicClockAdjFromLegacyName();
+			}
+
+			ColorText3 = null;
+		}
+	}
+
+	[Flipable( 0x44D5, 0x44D9 )]
+	public class DDRelicClock1 : DDRelicClockBase
+	{
+		[Constructable]
+		public DDRelicClock1() : base( 0x44D5 )
+		{
 		}
 
 		public DDRelicClock1( Serial serial ) : base( serial )
 		{
 		}
-
-		public override void Serialize( GenericWriter writer )
-		{
-			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
-		}
-
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
-			int version = reader.ReadInt();
-
-			if ( version < 1 )
-				CoinPrice = reader.ReadInt();
-		}
 	}
-	[Flipable( 0x44DD, 0x44E1 )]
-	public class DDRelicClock2 : Clock, IRelic
-	{
-		public override void ItemIdentified( bool id )
-		{
-			m_NotIdentified = id;
-			if ( !id )
-			{
-				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
-			}
-		}
 
+	[Flipable( 0x44DD, 0x44E1 )]
+	public class DDRelicClock2 : DDRelicClockBase
+	{
 		[Constructable]
 		public DDRelicClock2() : base( 0x44DD )
 		{
-			Weight = 100;
-
-			CoinPrice = Utility.RandomMinMax( 80, 500 );
-			NotIdentified = true;
-			NotIDSource = Identity.Merchant;
-			NotIDSkill = IDSkill.Mercantile;
-
-			string sLook = "a rare";
-			switch ( Utility.RandomMinMax( 0, 18 ) )
-			{
-				case 0:	sLook = "a rare";	break;
-				case 1:	sLook = "a nice";	break;
-				case 2:	sLook = "a pretty";	break;
-				case 3:	sLook = "a superb";	break;
-				case 4:	sLook = "a delightful";	break;
-				case 5:	sLook = "an elegant";	break;
-				case 6:	sLook = "an exquisite";	break;
-				case 7:	sLook = "a fine";	break;
-				case 8:	sLook = "a gorgeous";	break;
-				case 9:	sLook = "a lovely";	break;
-				case 10:sLook = "a magnificent";	break;
-				case 11:sLook = "a marvelous";	break;
-				case 12:sLook = "a splendid";	break;
-				case 13:sLook = "a wonderful";	break;
-				case 14:sLook = "an extraordinary";	break;
-				case 15:sLook = "a strange";	break;
-				case 16:sLook = "an odd";	break;
-				case 17:sLook = "a unique";	break;
-				case 18:sLook = "an unusual";	break;
-			}
-			Name = sLook + " grandfather clock";
-		}
-
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.clocks.backpack.identify" ) );
-			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
-				IDCommand( from );
-			else
-				base.OnDoubleClick( from );
-		}
-
-		public override void IDCommand( Mobile m )
-		{
-			if ( this.NotIDSkill == IDSkill.Tasting )
-				RelicFunctions.IDItem( m, m, this, SkillName.Tasting );
-			else if ( this.NotIDSkill == IDSkill.ArmsLore )
-				RelicFunctions.IDItem( m, m, this, SkillName.ArmsLore );
-			else
-				RelicFunctions.IDItem( m, m, this, SkillName.Mercantile );
 		}
 
 		public DDRelicClock2( Serial serial ) : base( serial )
 		{
 		}
-
-		public override void Serialize( GenericWriter writer )
-		{
-			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
-		}
-
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
-			int version = reader.ReadInt();
-
-			if ( version < 1 )
-				CoinPrice = reader.ReadInt();
-		}
 	}
-	[Flipable( 0x48D4, 0x48D8 )]
-	public class DDRelicClock3 : Clock, IRelic
-	{
-		public override void ItemIdentified( bool id )
-		{
-			m_NotIdentified = id;
-			if ( !id )
-			{
-				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
-			}
-		}
 
+	[Flipable( 0x48D4, 0x48D8 )]
+	public class DDRelicClock3 : DDRelicClockBase
+	{
 		[Constructable]
 		public DDRelicClock3() : base( 0x48D4 )
 		{
-			Weight = 100;
-
-			CoinPrice = Utility.RandomMinMax( 80, 500 );
-			NotIdentified = true;
-			NotIDSource = Identity.Merchant;
-			NotIDSkill = IDSkill.Mercantile;
-
-			string sLook = "a rare";
-			switch ( Utility.RandomMinMax( 0, 18 ) )
-			{
-				case 0:	sLook = "a rare";	break;
-				case 1:	sLook = "a nice";	break;
-				case 2:	sLook = "a pretty";	break;
-				case 3:	sLook = "a superb";	break;
-				case 4:	sLook = "a delightful";	break;
-				case 5:	sLook = "an elegant";	break;
-				case 6:	sLook = "an exquisite";	break;
-				case 7:	sLook = "a fine";	break;
-				case 8:	sLook = "a gorgeous";	break;
-				case 9:	sLook = "a lovely";	break;
-				case 10:sLook = "a magnificent";	break;
-				case 11:sLook = "a marvelous";	break;
-				case 12:sLook = "a splendid";	break;
-				case 13:sLook = "a wonderful";	break;
-				case 14:sLook = "an extraordinary";	break;
-				case 15:sLook = "a strange";	break;
-				case 16:sLook = "an odd";	break;
-				case 17:sLook = "a unique";	break;
-				case 18:sLook = "an unusual";	break;
-			}
-			Name = sLook + " grandfather clock";
-		}
-
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.clocks.backpack.identify" ) );
-			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
-				IDCommand( from );
-			else
-				base.OnDoubleClick( from );
-		}
-
-		public override void IDCommand( Mobile m )
-		{
-			if ( this.NotIDSkill == IDSkill.Tasting )
-				RelicFunctions.IDItem( m, m, this, SkillName.Tasting );
-			else if ( this.NotIDSkill == IDSkill.ArmsLore )
-				RelicFunctions.IDItem( m, m, this, SkillName.ArmsLore );
-			else
-				RelicFunctions.IDItem( m, m, this, SkillName.Mercantile );
 		}
 
 		public DDRelicClock3( Serial serial ) : base( serial )
 		{
-		}
-
-		public override void Serialize( GenericWriter writer )
-		{
-			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
-		}
-
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
-			int version = reader.ReadInt();
-
-			if ( version < 1 )
-				CoinPrice = reader.ReadInt();
 		}
 	}
 }

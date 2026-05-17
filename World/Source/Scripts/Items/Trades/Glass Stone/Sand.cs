@@ -6,6 +6,9 @@ namespace Server.Items
 	public class Sand : Item
 	{
 		public override string DefaultDescription{ get{ return "This fine sand can be used by alchemists, to make items like bottles and flasks. You would use a glass blowing pipe with this."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.sand"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.sand";
 
 		public override int LabelNumber{ get{ return 1044626; } } // sand
 

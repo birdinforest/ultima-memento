@@ -50,6 +50,9 @@ listed in keep_extra in that script so they are never pruned as stale):
   messages, proximity/perception strings, trap item names, avoidance/removal messages, direction
   and distance descriptors, spell-trap/set-trap text, CurseItem copy, and base-trap detection
   suffixes. Uses ResolveByKey / ResolveFormatByKey in C#; must stay in keep_extra.
+  trade-commodity.json — trade commodity OPL: material+suffix format, suffix words, custom names
+  (horse barding, spyglass, …), potion keg names (trade.keg.potion.*), placemap.name.format.
+  placemap-labels.json — hash keys for Worlds area/town English labels consumed by PlaceMap OPL.
 
 Gump & books
 ------------

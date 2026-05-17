@@ -22,6 +22,11 @@ namespace Server.Items
 			}
 		}
 
+		public override string InfoDataLocalizationKey
+		{
+			get { return Technology ? "prop.trade.itemdesc.skeletonkey.tech" : "prop.trade.itemdesc.skeletonkey.normal"; }
+		}
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

@@ -1,15 +1,33 @@
 using System;
+using Server;
 using Server.Items.Abstractions;
+using Server.Network;
 
 namespace Server.Items
 {
 	public class BaseWoodBoard : Item, ICommodity
 	{
 		public override string DefaultDescription{ get{ return "This wood is used by carpenters, to create furniture and wooden armor. Bowyers can use these to create bows and arrows as well."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.woodboard"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
 
 		public virtual bool IsCommodity { get { return true; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		[Constructable]
 		public BaseWoodBoard() : this( 1 )

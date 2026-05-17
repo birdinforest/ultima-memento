@@ -29,7 +29,9 @@ namespace Server.Items
 			
 			if ( !from.HasGump( typeof( SpeechGump ) ) )
 			{
-				from.SendGump(new SpeechGump( from, "Fish In A Barrel", SpeechFunctions.SpeechText( from, from, "Aquarium" ) ));
+				from.SendGump( new SpeechGump( from,
+					StringCatalog.ResolveByKey( from.Account, "prop.trade.barrel.gump.title.fish" ),
+					SpeechFunctions.SpeechText( from, from, "Aquarium" ) ) );
 			}
 		}
 

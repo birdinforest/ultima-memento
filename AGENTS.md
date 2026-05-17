@@ -121,6 +121,8 @@ Data/Localization/
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
 | `equipment-properties.json` | Equipment / weapon OPL shotkeys（`prop.*`）、**物品 OPL 主名（`item.*`，与 `prop.*` 同文件）**、以及绑在同一批物品上的玩家提示（如 `prop.magical.moonstone.gate.inert`）。Pair `en/` + `zh-Hans/`；**`build_localization_strings.py` `keep_extra`**。主名流水线见 `World/Documentation/waiting-localization.md` §「物品 OPL 主显示名」。 |
 | `legend-book-rows.json` | `LegendsBook` / `ManualOfItems` 图鉴 Gump 列表行（`god.legendbook.row.001` …）：**仅 `zh-Hans/`** 维护中文行；英文运行时回退为 C# 表内嵌英文；**`keep_extra`**。 |
+| `trade-commodity.json` | 贸易物资双语 OPL：`trade.suffix.*`（矿石/锭/板等词尾）、`trade.compose.material_suffix`、`trade.custom.*`（马铠/望远镜/十尺杆/装订）、`trade.keg.potion.*`（药剂桶）、`placemap.name.format`（与 `placemap-labels.json` 地名哈希配合）。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
+| `placemap-labels.json` | `Worlds.GetAreaEntrance` / `GetTown` 返回的英文地名 → 哈希键；`PlaceMap` 在 OPL 中按账号语言解析。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 | `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
 
@@ -155,6 +157,8 @@ Use the `StringCatalog`-aware APIs that the extractor already handles.
    ```
 
 **OPL 物品主显示名（`AddNameProperty`）：** 第一行物品名在 **`BuildingPropertyListLocale != null`** 时用 **`AddLocalizedProperty(list, "item....")`** 或 **`ResolvePropertyText`** + `list.Add` / `1050039`（叠堆）。键名建议 **`item.special.*` / `item.magical.*`**，与 **`prop.*`**（属性行、`SendMessage` 键）分前缀，**仍在 `equipment-properties.json`**。类须 **`IsContentLocalized => true`**。完整步骤见 **`World/Documentation/waiting-localization.md`** §「物品 OPL 主显示名」。
+
+**OPL 扩展：第三条彩色属性行（`AddColorText3Property`）：** `Item.AddNameProperties` 在固定顺序内调用 **`AddColorText3Property(ObjectPropertyList list, string colorHue3)`**（对应客户端 **1072173** / 原 **`ColorText3`** 槽位）。默认实现仅在 **`ColorText3 != null`** 时输出。若该行需要随 **`BuildingPropertyListLocale`** 用 **`ResolvePropertyText("prop.*")`**、**`StringCatalog.ResolveFormatByKey`** 或 **`string.Format`** 生成（例如动态金币数），请 **override `AddColorText3Property`**，在同一 OPL 位置写入文案，并避免把**仅单语**或**易过期**的成品字符串长期存进 **`ColorText3`**（世界存档里若已有旧值，可在子类 **`Deserialize` 末尾**将 **`ColorText3 = null`** 清一次）。参考：`World/Source/Scripts/Items/Trades/Tinkering/Clocks.cs`（**`DDRelicClockBase`** + **`prop.trade.relicclock.worth`**）。
 
 ```csharp
 using Server.Localization;
@@ -481,9 +485,8 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 - 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
 - 2026-05-17: §3.1 — `legend-book-rows.json`（`god.legendbook.row.*`，zh-Hans-only）+ `keep_extra`；§3.2 — **`SendMessage(int hue, string)`** 仍须目录化，hue 仅客户端着色。
-- 2026-05-17: §3.1 `equipment-properties` / §3.2 — **`item.*` 逻辑键**用于 **OPL 主显示名**（`AddNameProperty`，与 `prop.*` 同文件）；流水线与步骤在 `World/Documentation/waiting-localization.md` §「物品 OPL 主显示名」。Special / Moonstone 等已落地示例。
-
-## 7. Website & player-facing docs (`ultima-memento-web`)
+- 2026-05-17: §3.1 — `trade-commodity.json`、`placemap-labels.json`（`keep_extra`）：动态材料全名、`PotionKeg` 桶名、`PlaceMap` 地名 OPL。
+- 2026-05-17: §3.2 — **`Item.AddColorText3Property`**：OPL 第三条彩色行（1072173）的可覆盖扩展点；用于 `ResolvePropertyText` / 格式化双语估价等，替代依赖 **`ColorText3`** 存英文。
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
 > **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.

@@ -18,6 +18,8 @@ namespace Server.Items
 	{
 		public override string DefaultDescription{ get{ return "These tools are used for harvesting resources, that are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
 
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.baseharvest"; } }
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )
@@ -164,6 +166,9 @@ namespace Server.Items
 
 		private string GetNameString()
 		{
+			if ( BuildingPropertyListLocale != null && DisplayNameLocalizationKey != null && DisplayNameLocalizationKey.Length > 0 )
+				return ResolvePropertyText( DisplayNameLocalizationKey );
+
 			string name = this.Name;
 
 			if ( name == null )

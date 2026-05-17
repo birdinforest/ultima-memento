@@ -440,7 +440,8 @@ namespace Server.Items
 				AddBackground( 0, 0, 420, 400, 0x1453 );
 				AddBackground( 10, 10, 400, 380, 3000 );
 
-				AddHtml( 20, 40, 380, 60, @"Dost thou wish to step into the moongate? Continue to enter the gate, Cancel to stay here", false, false );
+				// Match AOS branch: client cliloc (1062049) so non-AOS shards get the same localized prompt.
+				AddHtmlLocalized( 20, 40, 380, 60, 1062049, 32512, false, false );
 
 				AddHtmlLocalized( 55, 110, 290, 20, 1011012, false, false ); // CANCEL
 				AddButton( 20, 110, 4005, 4007, 0, GumpButtonType.Reply, 0 );

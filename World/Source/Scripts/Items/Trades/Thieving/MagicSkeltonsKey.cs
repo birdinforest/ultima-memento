@@ -19,6 +19,11 @@ namespace Server.Items
 			}
 		}
 
+		public override string InfoDataLocalizationKey
+		{
+			get { return "prop.trade.itemdesc.magic.skeletonkey"; }
+		}
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

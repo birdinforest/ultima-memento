@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 
@@ -7,8 +8,24 @@ namespace Server.Items
 	public abstract class BaseBlocks : Item
 	{
 		public override string DefaultDescription{ get{ return "These are a more rare, higher quality, type of ingot. They are rumored to be used by elven blacksmiths, but the art for this has seemed to be lost."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.blocks"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -8,6 +9,7 @@ namespace Server.Items
 	public class PotionKeg : Item
 	{
 		public override string DefaultDescription{ get{ return "The kegs can hold a large quantity of most potions. You can drop potions on the keg to fill it, or use the keg to fill an empty bottle you have."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.potionkeg"; } }
 
 		private PotionEffect m_Type;
 		private int m_Held;
@@ -42,6 +44,31 @@ namespace Server.Items
 				m_Type = value;
 				InvalidateProperties();
 			}
+		}
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				string key = ( m_Held < 1 ) ? "trade.keg.potion.empty" : ( "trade.keg.potion." + m_Type.ToString() );
+				string localized = StringCatalog.TryResolveByKey( locale, key );
+
+				if ( localized != null && localized.Length > 0 )
+				{
+					if ( Amount > 1 )
+						list.Add( "{0} {1}", Amount, localized );
+					else
+						list.Add( localized );
+
+					return;
+				}
+			}
+
+			base.AddNameProperty( list );
 		}
 
 		[Constructable]

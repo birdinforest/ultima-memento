@@ -962,6 +962,26 @@ namespace Server
 			get { return null; }
 		}
 
+		/// <summary>
+		/// When non-null and <see cref="BuildingPropertyListLocale" /> is set during OPL construction,
+		/// <see cref="AddNameProperty" /> uses this shotkey for the displayed item name (inventory / property list).
+		/// Keep <see cref="Name" /> / <see cref="DefaultName" /> as the English source for serializers and non-OPL paths.
+		/// </summary>
+		public virtual string DisplayNameLocalizationKey
+		{
+			get { return null; }
+		}
+
+		private bool ShouldUseLocalizedOpl()
+		{
+			if ( IsContentLocalized )
+				return true;
+
+			string dk = DisplayNameLocalizationKey;
+
+			return dk != null && dk.Length > 0;
+		}
+
 		public string m_InfoText1;
 		[CommandProperty(AccessLevel.Owner)]
 		public string InfoText1 { get { return m_InfoText1; } set { m_InfoText1 = value; InvalidateProperties(); } }
@@ -1417,7 +1437,7 @@ namespace Server
 		/// </summary>
 		public virtual void SendPropertiesTo( Mobile from )
 		{
-			if ( IsContentLocalized )
+			if ( ShouldUseLocalizedOpl() )
 			{
 				string lang = AccountLang.GetLanguageCode( from?.Account );
 				string locale = AccountLang.IsChinese( lang ) ? "zh" : "en";
@@ -1692,7 +1712,12 @@ namespace Server
 		/// </summary>
 		public virtual void AddNameProperty( ObjectPropertyList list )
 		{
-			string name = this.Name;
+			string resolvedName = null;
+
+			if ( BuildingPropertyListLocale != null && DisplayNameLocalizationKey != null && DisplayNameLocalizationKey.Length > 0 )
+				resolvedName = ResolvePropertyText( DisplayNameLocalizationKey );
+
+			string name = resolvedName ?? this.Name;
 
 			if ( name == null )
 			{
@@ -1706,7 +1731,7 @@ namespace Server
 				if ( m_Amount <= 1 )
 					list.Add( name );
 				else
-					list.Add( 1050039, "{0}\t{1}", m_Amount, Name ); // ~1_NUMBER~ ~2_ITEMNAME~
+					list.Add( 1050039, "{0}\t{1}", m_Amount, name ); // ~1_NUMBER~ ~2_ITEMNAME~
 			}
 		}
 
@@ -1808,6 +1833,16 @@ namespace Server
 		}
 
 		/// <summary>
+		/// By default, adds <see cref="ColorText3" /> as cliloc 1072173 when set. Subclasses may override
+		/// to supply a localized or computed third colored line without storing mutable English in <see cref="ColorText3"/>.
+		/// </summary>
+		protected virtual void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( ColorText3 != null )
+				list.Add( 1072173, "{0}\t{1}", colorHue3, ColorText3 );
+		}
+
+		/// <summary>
 		/// Overridable. Displays cliloc 1072788-1072789. 
 		/// </summary>
 		public virtual void AddWeightProperty( ObjectPropertyList list )
@@ -1869,8 +1904,7 @@ namespace Server
 					list.Add( 1029724 + (int)NotIDSkill );
 			}
 
-			if ( ColorText3 != null )
-				list.Add( 1072173, "{0}\t{1}", CHue3, ColorText3 );
+			AddColorText3Property( list, CHue3 );
 
 			if ( ColorText4 != null )
 				list.Add( 1072174, "{0}\t{1}", CHue4, ColorText4 );
@@ -3981,7 +4015,7 @@ namespace Server
 			state.Send( GetWorldPacketFor( state ) );
 
 			if ( sendOplPacket ) {
-				if ( IsContentLocalized )
+				if ( ShouldUseLocalizedOpl() )
 				{
 					string lang = AccountLang.GetLanguageCode( state.Mobile?.Account );
 					string locale = AccountLang.IsChinese( lang ) ? "zh" : "en";

@@ -9,6 +9,8 @@ namespace Server.Items
 	{
 		public override string DefaultDescription{ get{ return "You can use these on a loom, which will produce cloth you can use for tailoring."; } }
 
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.cloth.loom"; } }
+
 		public BaseClothMaterial( int itemID ) : this( itemID, 1 )
 		{
 		}
@@ -142,6 +144,9 @@ namespace Server.Items
 
 	public class SpoolOfThread : BaseClothMaterial
 	{
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.spool.string";
+
 		[Constructable]
 		public SpoolOfThread() : this( 1 )
 		{

@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 using Server.Targeting;
@@ -11,9 +12,25 @@ namespace Server.Items
 	public abstract class BaseOre : Item
 	{
 		public override string DefaultDescription{ get{ return "These rocks can be smelted at a forge, which will create metal ingots. The ingots can then be used for crafting."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.ore"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
 		public virtual int IngotsPerOre { get{ return 4; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, true, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

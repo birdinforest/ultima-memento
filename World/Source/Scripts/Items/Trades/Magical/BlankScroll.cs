@@ -5,6 +5,9 @@ namespace Server.Items
 	public class BlankScroll : Item
 	{
 		public override string DefaultDescription{ get{ return "These scrolls have nothing written on them. They are used by scribes to create spells and books, or by cartographers to make maps."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.blankscroll"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.blank.scroll";
 
 		[Constructable]
 		public BlankScroll() : this( 1 )

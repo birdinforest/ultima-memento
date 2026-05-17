@@ -9,6 +9,9 @@ namespace Server.Items
 		public override Layer DefaultLayer { get { return Layer.Trinket; } }
 		public override Catalogs DefaultCatalog { get { return Catalogs.Tool; } }
 		public override string DefaultDescription { get { return "This knife is used to carve corpses. It has a limited amount of uses before it breaks. It will automatically carve corpses you open when you have it equipped."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.skinningknife"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.skinning.knife";
 
 		[Constructable]
 		public SkinningKnifeTool() : this(50)

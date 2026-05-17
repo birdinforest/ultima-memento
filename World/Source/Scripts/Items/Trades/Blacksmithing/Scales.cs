@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 
@@ -7,8 +8,24 @@ namespace Server.Items
 	public abstract class BaseScales : Item
 	{
 		public override string DefaultDescription{ get{ return "These usually come from reptilian creatures. They are commonly used for creating scalemail equipment."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.scales"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

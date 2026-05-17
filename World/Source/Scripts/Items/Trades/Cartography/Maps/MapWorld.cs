@@ -15,6 +15,7 @@ namespace Server.Items
 	public class MapWorld : Item, ICraftable
 	{
 		public override string DefaultDescription{ get{ return "These maps show a faint image of a particular world. If you happen to be traveling in that world, you will see a pin that indicates where you are."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.mapworld"; } }
 
 		public Land WorldMap;
 		

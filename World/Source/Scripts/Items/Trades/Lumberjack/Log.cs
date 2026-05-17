@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 using Server.Targeting;
@@ -12,7 +13,24 @@ namespace Server.Items
 	{
 		public override string DefaultDescription{ get{ return "These logs can be used at a saw mill, which will cut them into boards. The boards can then be used for crafting."; } }
 
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.log"; } }
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, true, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

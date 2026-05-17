@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using Server.Accounting;
 using Server.Network;
 using Server.Gumps;
 using Server.Misc;
@@ -26,6 +28,13 @@ namespace Server.Items
 		public string ShipStory;
 		public string ShipName;
 
+		private bool m_StructuredStory;
+		private int m_StoryTemplate;
+		private int m_BeastIndex;
+		private string m_CompanionName;
+		private string m_CityName;
+		private int m_SurvivorCount;
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsAncient { get{ return ( m_Level >= 4 ); } }
 
@@ -51,7 +60,7 @@ namespace Server.Items
 		public Land Map_World { get { return MapWorld; } set { MapWorld = value; InvalidateProperties(); } }
 
 		[CommandProperty(AccessLevel.Owner)]
-		public string Ship_Story { get { return ShipStory; } set { ShipStory = value; InvalidateProperties(); } }
+		public string Ship_Story { get { return ShipStory; } set { ShipStory = value ?? ""; m_StructuredStory = false; InvalidateProperties(); } }
 
 		[CommandProperty(AccessLevel.Owner)]
 		public string Ship_Name { get { return ShipName; } set { ShipName = value; InvalidateProperties(); } }
@@ -88,49 +97,106 @@ namespace Server.Items
 
 			ShipName = RandomThings.GetRandomShipName( "", 0 );
 
-			string Beast = "a sea dragon";
-			switch ( Utility.Random( 12 ) )
-			{
-				case 0: Beast = "a gigantic monster"; break;
-				case 1: Beast = "a sea hag"; break;
-				case 2: Beast = "a leviathan"; break;
-				case 3: Beast = "a sea dragon"; break;
-				case 4: Beast = "a sea giant"; break;
-				case 5: Beast = "a storm giant"; break;
-				case 6: Beast = "a sea serpent"; break;
-				case 7: Beast = "a demon of the sea"; break;
-				case 8: Beast = "a rotting squid"; break;
-				case 9: Beast = "a giant beast"; break;
-				case 10: Beast = "a dragon turtle"; break;
-				case 11: Beast = "a huge creature"; break;
-			}
+			m_StructuredStory = true;
+			m_StoryTemplate = Utility.Random( 5 );
+			m_BeastIndex = Utility.Random( 12 );
+			m_CompanionName = QuestCharacters.ParchmentWriter();
+			m_CityName = "";
+			m_SurvivorCount = 0;
 
-			if ( IsAncient ){ ShipStory = "This parchment is very old and almost crumbles in your hand. You know that whoever wrote this has been dead for possibly centuries, but it reads... "; }
+			if ( m_StoryTemplate == 2 || m_StoryTemplate == 4 )
+				m_CityName = RandomThings.GetRandomCity();
+			if ( m_StoryTemplate == 3 )
+				m_SurvivorCount = Utility.RandomMinMax( 3, 16 );
 
-			switch ( Utility.Random( 5 ) )
-			{
-				case 0: ShipStory = ShipStory + "We were sailing in " + Server.Lands.LandName( MapWorld ) + " when " + Beast + " rose from the depths of the ocean and attacked our ship! The hull has taken alot of damage and '" + ShipName + "' is slowly sinking into the depths of the sea! Whoever finds this, send a ship to the coordinates below! Hurry! I am not sure how long we will last out here!"; break;
-				case 1: ShipStory = ShipStory + "If ya never seen " + Beast + " before, consider yerself lucky. There be little warning before they hit our ship, '" + ShipName + "', while sailing in " + Server.Lands.LandName( MapWorld ) + ". We thought we hit a reef but we were wrong. It tore the ship apart. Only me and " + QuestCharacters.ParchmentWriter() + " managed to survive the onslaught of the beast. Now we sit here, on some island. The coordinates I last remember is where your ship went down. We may be close to there if you can send a ship. There be gold for payment if you do."; break;
-				case 2: ShipStory = ShipStory + "I am writing this with my dying strength on board '" + ShipName + "'. " + QuestCharacters.ParchmentWriter() + " the Pirate came upon us in the night while far from land in " + Server.Lands.LandName( MapWorld ) + ". We didn't stand a chance. We tried to outrun er but the wind was against us to be sure. He set our ship ablaze and fled off into the distance. Now we slowly sink into the ocean. If you find this, I wrote our coordinates below. You may still get here in time to save the others. If you can, tell " + QuestCharacters.ParchmentWriter() + " my tale so they never live wondering my fate. They live somewhere in " + RandomThings.GetRandomCity() + "."; break;
-				case 3: ShipStory = ShipStory + "'" + ShipName + "' be sinking far from land. What we thought was a merchant ship was actually a war ship in disguise. They be hunting us pirates on the high seas in " + Server.Lands.LandName( MapWorld ) + "...and today our luck ran out. Their cannons ripped through our sails, and tore holes in our hull. They killed most of the crew, where only " + Utility.RandomMinMax( 3, 16 ) + " of us survived. They be gone now, but the sharks started circling the wreck. I just saw " + QuestCharacters.ParchmentWriter() + " being pulled below the waves, blood gushing up from below. I be on the largest piece of flotsam and can only hope I survive till ya get here."; break;
-				case 4: ShipStory = ShipStory + "I knew " + QuestCharacters.ParchmentWriter() + " weren't no good at being a captain of '" + ShipName + "'. Now this probably be our end here in " + Server.Lands.LandName( MapWorld ) + ". We be under attack by " + Beast + " and we have no chance of making it to " + RandomThings.GetRandomCity() + " now. I fear that me never see me wife again. If ye find this note, please find us before we sink. I have an ancient artifact I could trade for yer help."; break;
-			}
+			ShipStory = "";
 		}
 
 		public SOS( Serial serial ) : base( serial )
 		{
 		}
 
+		private string BuildDisplayStory( Mobile from )
+		{
+			if ( from == null )
+				return ShipStory ?? "";
+
+			if ( !m_StructuredStory )
+				return QuestCompositeResolver.ResolveComposite( from, ShipStory ?? "" );
+
+			IAccount acct = from.Account;
+
+			int tpl = m_StoryTemplate;
+			if ( tpl < 0 || tpl > 4 )
+				tpl = 0;
+
+			int beastIx = m_BeastIndex;
+			if ( beastIx < 0 || beastIx > 11 )
+				beastIx = 0;
+
+			var sb = new StringBuilder();
+
+			if ( IsAncient )
+				sb.Append( StringCatalog.ResolveByKey( acct, "prop.trade.sos.prefix.ancient" ) );
+
+			string land = Server.Lands.LandName( MapWorld );
+			string ship = ShipName ?? "";
+			string beast = StringCatalog.ResolveByKey( acct, "prop.trade.sos.beast." + beastIx.ToString() );
+			string writer = m_CompanionName ?? "";
+			string city = m_CityName ?? "";
+
+			string bodyKey = "prop.trade.sos.story." + tpl.ToString();
+			string body;
+			switch ( tpl )
+			{
+				case 0:
+					body = StringCatalog.ResolveFormatByKey( acct, bodyKey, land, beast, ship );
+					break;
+				case 1:
+					body = StringCatalog.ResolveFormatByKey( acct, bodyKey, beast, ship, land, writer );
+					break;
+				case 2:
+					body = StringCatalog.ResolveFormatByKey( acct, bodyKey, ship, writer, land, writer, city );
+					break;
+				case 3:
+					body = StringCatalog.ResolveFormatByKey( acct, bodyKey, ship, land, m_SurvivorCount, writer );
+					break;
+				case 4:
+					body = StringCatalog.ResolveFormatByKey( acct, bodyKey, writer, ship, land, beast, city );
+					break;
+				default:
+					body = "";
+					break;
+			}
+
+			sb.Append( body );
+			return QuestCompositeResolver.ResolveComposite( from, sb.ToString() );
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int)5 ); // version
+			writer.Write( (int)6 ); // version
 			writer.Write( m_Level );
 			writer.Write( m_TargetMap );
 			writer.Write( m_TargetLocation );
-            writer.Write( (int)MapWorld );
-            writer.Write( ShipName );
-            writer.Write( ShipStory );
+			writer.Write( (int)MapWorld );
+			writer.Write( ShipName );
+
+			if ( !m_StructuredStory )
+			{
+				writer.Write( 0 );
+				writer.Write( ShipStory ?? "" );
+			}
+			else
+			{
+				writer.Write( 1 );
+				writer.Write( m_StoryTemplate );
+				writer.Write( m_BeastIndex );
+				writer.Write( m_CompanionName ?? "" );
+				writer.Write( m_CityName ?? "" );
+				writer.Write( m_SurvivorCount );
+			}
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -146,16 +212,40 @@ namespace Server.Items
 			else
 				MapWorld = (Land)(reader.ReadInt());
 
-            ShipName = reader.ReadString();
-            ShipStory = reader.ReadString();
+			ShipName = reader.ReadString();
+
+			if ( version >= 6 )
+			{
+				int storyFmt = reader.ReadInt();
+				if ( storyFmt == 0 )
+				{
+					m_StructuredStory = false;
+					ShipStory = reader.ReadString();
+				}
+				else
+				{
+					m_StructuredStory = true;
+					m_StoryTemplate = reader.ReadInt();
+					m_BeastIndex = reader.ReadInt();
+					m_CompanionName = reader.ReadString();
+					m_CityName = reader.ReadString();
+					m_SurvivorCount = reader.ReadInt();
+					ShipStory = "";
+				}
+			}
+			else
+			{
+				ShipStory = reader.ReadString();
+				m_StructuredStory = false;
+			}
 		}
-		
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( IsChildOf( from.Backpack ) )
 			{
 				from.CloseGump( typeof( MessageGump ) );
-				from.SendGump( new MessageGump( m_TargetMap, m_TargetLocation, Server.Lands.LandName( MapWorld ), QuestCompositeResolver.ResolveComposite( from, ShipStory ), from ) );
+				from.SendGump( new MessageGump( m_TargetMap, m_TargetLocation, Server.Lands.LandName( MapWorld ), BuildDisplayStory( from ), from ) );
 				from.PlaySound( 0x249 );
 			}
 			else
@@ -183,10 +273,12 @@ namespace Server.Items
 				bool xEast = false, ySouth = false;
 				string fmt;
 
+				IAccount acct = from != null ? from.Account : null;
+
 				if ( Sextant.Format( loc, map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth ) )
-					fmt = String.Format( "{0}°{1}'{2},{3}°{4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					fmt = StringCatalog.ResolveFormatByKey( acct, "prop.trade.sos.coords.fmt", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				else
-					fmt = "?????";
+					fmt = StringCatalog.ResolveByKey( acct, "prop.trade.sos.coords.unknown" );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -204,9 +296,12 @@ namespace Server.Items
 					AddButton(377, 325, 10461, 10461, 1, GumpButtonType.Reply, 0);
 			}
 
-			public override void OnResponse( NetState state, RelayInfo info ) 
+			public override void OnResponse( NetState state, RelayInfo info )
 			{
-				Mobile from = state.Mobile; 
+				Mobile from = state != null ? state.Mobile : null;
+
+				if ( from == null )
+					return;
 
 				if ( info.ButtonID > 0 )
 				{

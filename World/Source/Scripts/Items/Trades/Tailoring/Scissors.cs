@@ -14,6 +14,9 @@ namespace Server.Items
 	public class Scissors : Item
 	{
 		public override string DefaultDescription{ get{ return "These can cut hides into leather, or cut cloth into bandages. You can also cut leather or cloth clothing, back into basic items like leather and cloth."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.scissors"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.scissors";
 
 		[Constructable]
 		public Scissors() : base( 0xF9F )

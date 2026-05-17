@@ -15,6 +15,34 @@ namespace Server.Items
 {
 	public class TrapKit : Item
 	{
+		private static string TrapKitSuffixEnglish
+		{
+			get
+			{
+				string t = StringCatalog.TryResolveByKey( "en", "trap.name.trapkit" );
+
+				if ( t != null && t.Length > 0 )
+					return t;
+
+				return "trapping tools";
+			}
+		}
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, TrapKitSuffixEnglish );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )
@@ -22,7 +50,7 @@ namespace Server.Items
 
 			m_Resource = resource;
 			Hue = CraftResources.GetHue(m_Resource);
-			Name = CraftResources.GetTradeItemFullName( this, m_Resource, false, false, StringCatalog.ResolveByKey(null, "trap.name.trapkit") );
+			Name = CraftResources.GetTradeItemFullName( this, m_Resource, false, false, TrapKitSuffixEnglish );
 
 			if ( CraftResources.GetBonus( m_Resource ) > 0 )
 				InfoText1 = "Trap Power +" + CraftResources.GetBonus( m_Resource );

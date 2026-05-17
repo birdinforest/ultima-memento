@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 
@@ -7,8 +8,24 @@ namespace Server.Items
 	public abstract class BaseSkins : Item
 	{
 		public override string DefaultDescription{ get{ return "These are a more rare, higher quality, type of leather. They are rumored to be used by elven tailors, but the art for this has seemed to be lost."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.skins.elven"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

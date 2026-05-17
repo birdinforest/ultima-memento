@@ -7,10 +7,14 @@ namespace Server.Items
 {
 	public class MasonryBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultName
 		{
 			get { return "Making Valuables With Stonecrafting"; }
 		}
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.book.masonry";
 
 		[Constructable]
 		public MasonryBook() : base( 0xFBE )

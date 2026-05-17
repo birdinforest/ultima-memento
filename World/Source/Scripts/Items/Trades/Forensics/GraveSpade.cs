@@ -8,6 +8,9 @@ namespace Server.Items
 	public class GraveSpade : BaseAxe, IUsesRemaining
 	{
 		public override string DefaultDescription{ get{ return "These shovels are used by undertakers, to dig up graves in cemeteries. Doing so may help you find some treasure, but you could also be spotted and reported as a criminal to the local guards. Use this shovel on a tombstone to dig it up. There are also times when you may learn of a buried body out in the land, that you wish to dig up. These shovels are needed for that as well."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.gravespade"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.grave.shovel";
 
 		public override HarvestSystem HarvestSystem{ get{ return GraveRobbing.System; } }
 

@@ -5,6 +5,9 @@ namespace Server.Items
 	public class BarkFragment : Item
 	{
 		public override string DefaultDescription{ get{ return "These pieces of bark are used to make paper for blank scrolls."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.bark"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.bark.fragment";
 
 		[Constructable]
 		public BarkFragment(): this( 1 )

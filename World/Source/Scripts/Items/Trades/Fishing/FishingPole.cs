@@ -14,6 +14,9 @@ namespace Server.Items
 		public override HarvestSystem HarvestSystem{ get{ return Fishing.System; } }
 
 		public override string DefaultDescription{ get{ return "When held in your hand, these fishing poles can be used, where you target a spot on the water you wish to fish. You may catch something. You will only get better at seafaring to a certain point, where you will eventually need to fish on the high seas from your ship."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.fishingpole"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.fishing.pole";
 
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
 

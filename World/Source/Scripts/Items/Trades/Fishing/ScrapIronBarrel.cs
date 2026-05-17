@@ -50,7 +50,9 @@ namespace Server.Items
 
 			if ( !from.HasGump( typeof( SpeechGump ) ) )
 			{
-				from.SendGump(new SpeechGump( from, "Rusty Gold", SpeechFunctions.SpeechText( from, from, "ScrapMetal" ) ));
+				from.SendGump( new SpeechGump( from,
+					StringCatalog.ResolveByKey( from.Account, "prop.trade.barrel.gump.title.scrap" ),
+					SpeechFunctions.SpeechText( from, from, "ScrapMetal" ) ) );
 			}
 		}
 

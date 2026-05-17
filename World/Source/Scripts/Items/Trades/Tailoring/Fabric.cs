@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 using Server.Items.Abstractions;
@@ -8,10 +9,26 @@ namespace Server.Items
 	public abstract class BaseFabric : Item, IScissorable, IDyable, ICommodity
 	{
 		public override string DefaultDescription{ get{ return "This cloth is commonly used by tailors to make clothing. You can also cut it with scissors to make bandages."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.fabric"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
 
 		public virtual bool IsCommodity { get { return true; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, false, false, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override double DefaultWeight
 		{

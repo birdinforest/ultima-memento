@@ -1,4 +1,5 @@
 using System;
+using Server;
 using Server.Items;
 using Server.Network;
 
@@ -7,8 +8,24 @@ namespace Server.Items
 	public abstract class BaseGranite : Item
 	{
 		public override string DefaultDescription{ get{ return "This rock is used by carpenters, to create stone statues and furniture. You would need a mallet and chisel to use this."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.granite"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			string locale = BuildingPropertyListLocale;
+
+			if ( locale != null )
+			{
+				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, true, true, null );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
 
 		public override void Serialize( GenericWriter writer )
 		{

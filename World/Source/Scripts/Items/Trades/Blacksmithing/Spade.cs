@@ -8,6 +8,9 @@ namespace Server.Items
 	public class Spade : BaseAxe, IUsesRemaining
 	{
 		public override string DefaultDescription{ get{ return "These shovels are used by miners, to dig up ore in caves and on mountain stone. There are also times when you may learn of buried treasure out in the land, that you wish to dig up. These shovels are needed for that as well."; } }
+		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.spade.miner"; } }
+
+		public override string DisplayNameLocalizationKey => "item.trade.name.shovel";
 
 		public override HarvestSystem HarvestSystem{ get{ return Mining.System; } }
 
