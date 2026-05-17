@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13C6, 0x13CE )]
 	public class MonsterGloves : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.monstergloves";
 		public string ThrowType;
 
 		public override int EffectID

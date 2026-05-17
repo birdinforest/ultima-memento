@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Longsword : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.longsword";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DevastatingBlow; } }

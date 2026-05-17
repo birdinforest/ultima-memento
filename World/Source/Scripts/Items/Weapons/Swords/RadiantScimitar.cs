@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2D33, 0x2D27 )]
 	public class RadiantScimitar : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.radiantscimitar";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Bladeweave; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DefenseMastery; } }

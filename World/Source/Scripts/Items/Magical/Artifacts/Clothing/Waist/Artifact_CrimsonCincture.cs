@@ -4,6 +4,7 @@ namespace Server.Items
 {
     public class Artifact_CrimsonCincture : GiftHalfApron
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.crimsoncincture";
 		[Constructable]
 		public Artifact_CrimsonCincture() : base()
 		{

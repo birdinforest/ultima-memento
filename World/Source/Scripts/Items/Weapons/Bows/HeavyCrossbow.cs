@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13FD, 0x13FC )]
 	public class HeavyCrossbow : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.heavycrossbow";
 		public override int EffectID{ get{ return ArrowType(0); } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }
 		public override Item Ammo{ get{ return new Bolt(); } }

@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class VikingSword : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.vikingsword";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingSwipe; } }

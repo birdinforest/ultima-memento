@@ -1008,7 +1008,7 @@ namespace Server.Items
 			base.AddResistanceProperties( list );
 
 			if ( Layer == Layer.Trinket )
-				list.Add( 1061182, EquipLayerName( Layer ) );
+				AddEquipLayerProperty( list );
 
 			if ( this is SongBook )
 			{

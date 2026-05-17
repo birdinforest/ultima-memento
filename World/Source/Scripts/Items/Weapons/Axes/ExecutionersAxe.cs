@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class ExecutionersAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.executionersaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ForceOfNature; } }

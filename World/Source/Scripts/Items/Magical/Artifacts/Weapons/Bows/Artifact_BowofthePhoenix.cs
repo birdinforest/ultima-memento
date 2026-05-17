@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BowofthePhoenix : GiftElvenCompositeLongbow
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bowofthephoenix";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

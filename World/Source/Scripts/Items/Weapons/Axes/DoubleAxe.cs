@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xf4b, 0xf4c )]
 	public class DoubleAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.doubleaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingAttack; } }

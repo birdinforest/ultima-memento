@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_PendantOfTheMagi : GiftGoldNecklace
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.pendantofthemagi";
 		[Constructable]
 		public Artifact_PendantOfTheMagi()
 		{

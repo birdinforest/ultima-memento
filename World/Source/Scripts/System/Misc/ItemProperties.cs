@@ -2,6 +2,8 @@ using System;
 using Server.Items;
 using Server.Misc;
 using System.Globalization;
+using Server.Accounting;
+using Server.Localization;
 
 namespace Server
 {
@@ -13,6 +15,22 @@ namespace Server
 				Hue = "FFFFFF";
 
 			return "<BASEFONT COLOR=#" + Hue + ">" + Txt + "</BASEFONT><BR>";
+		}
+
+		private static string EquipSlotLine( Item item, IAccount propsAccount )
+		{
+			if ( item == null )
+				return "";
+
+			string label = item.GetEquipLayerLabelForAccount( propsAccount );
+
+			if ( label == null )
+				return "";
+
+			if ( propsAccount != null )
+				return StringCatalog.ResolveFormatByKey( propsAccount, "prop.itemprops.equipment.line", label );
+
+			return "Equipment: " + label + "<BR>";
 		}
 
 		public static string densityText( Density density )
@@ -34,6 +52,11 @@ namespace Server
 		}
 
 		public static string ItemProperties( Item item, bool fromToolMenu )
+		{
+			return ItemProperties( item, fromToolMenu, null );
+		}
+
+		public static string ItemProperties( Item item, bool fromToolMenu, IAccount propsAccount )
 		{
 			string text = null;
 
@@ -133,31 +156,31 @@ namespace Server
 				text = AddRunebookInfo( (Runebook)item, text, fromToolMenu );
 
 			if ( item is BaseArmor )
-				text = AddArmorInfo( (BaseArmor)item, text, fromToolMenu );
+				text = AddArmorInfo( (BaseArmor)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseWeapon )
-				text = AddWeaponInfo( (BaseWeapon)item, text, fromToolMenu );
+				text = AddWeaponInfo( (BaseWeapon)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseClothing )
-				text = AddClothingInfo( (BaseClothing)item, text, fromToolMenu );
+				text = AddClothingInfo( (BaseClothing)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseInstrument )
-				text = AddInstrumentInfo( (BaseInstrument)item, text, fromToolMenu );
+				text = AddInstrumentInfo( (BaseInstrument)item, text, fromToolMenu, propsAccount );
 
 			if ( item is Spellbook )
-				text = AddSpellbookInfo( (Spellbook)item, text, fromToolMenu );
+				text = AddSpellbookInfo( (Spellbook)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseQuiver )
-				text = AddQuiverInfo( (BaseQuiver)item, text, fromToolMenu );
+				text = AddQuiverInfo( (BaseQuiver)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseTrinket )
-				text = AddMagicInfo( (BaseTrinket)item, text, fromToolMenu );
+				text = AddMagicInfo( (BaseTrinket)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseTool )
-				text = AddToolInfo( (BaseTool)item, text, fromToolMenu );
+				text = AddToolInfo( (BaseTool)item, text, fromToolMenu, propsAccount );
 
 			if ( item is BaseHarvestTool )
-				text = AddHarvestToolInfo( (BaseHarvestTool)item, text, fromToolMenu );
+				text = AddHarvestToolInfo( (BaseHarvestTool)item, text, fromToolMenu, propsAccount );
 
 			if ( item.LimitsMax > 0 )
 				text += "" + item.Limits + " " + item.LimitsName + " Remaining<BR>";
@@ -222,14 +245,14 @@ namespace Server
 			return text;
         }
 
-        public static string AddToolInfo ( BaseTool var, string text, bool fromToolMenu )
+        public static string AddToolInfo ( BaseTool var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
 			if ( var.Quality == ToolQuality.Exceptional )
 				text += "Exceptional<BR>";
 
 			text = ItemSkills.BaseToolSkills( var, text );
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			if ( var is IUsesRemaining && ((IUsesRemaining)var).ShowUsesRemaining )
 				text += "Uses Remaining: " + ((IUsesRemaining)var).UsesRemaining.ToString() + "<BR>";
@@ -237,14 +260,14 @@ namespace Server
 			return text;
         }
 
-        public static string AddHarvestToolInfo ( BaseHarvestTool var, string text, bool fromToolMenu )
+        public static string AddHarvestToolInfo ( BaseHarvestTool var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
 			if ( var.Quality == ToolQuality.Exceptional )
 				text += "Exceptional<BR>";
 
 			text = ItemSkills.BaseHarvestToolSkills( var, text );
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			if ( var is IUsesRemaining && ((IUsesRemaining)var).ShowUsesRemaining )
 				text += "Uses Remaining: " + ((IUsesRemaining)var).UsesRemaining.ToString() + "<BR>";
@@ -252,7 +275,7 @@ namespace Server
 			return text;
         }
 
-        public static string AddArmorInfo ( BaseArmor var, string text, bool fromToolMenu )
+        public static string AddArmorInfo ( BaseArmor var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
             if (var.BuiltBy != null)
 				text += "Crafted by " + var.BuiltBy.Name + "<BR>";
@@ -365,7 +388,7 @@ namespace Server
 			if ( (prop = var.ComputeStatReq( StatType.Dex )) > 0 )
 				text += "Dexterity Requirement: " + prop.ToString() + "<BR>";
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			if ( densityText( var.Density ) != null )
 				text += "" + densityText( var.Density ) + "<BR>";
@@ -381,7 +404,7 @@ namespace Server
 			return text;
         }
 
-		public static string AddWeaponInfo ( BaseWeapon var, string text, bool fromToolMenu )
+		public static string AddWeaponInfo ( BaseWeapon var, string text, bool fromToolMenu, IAccount propsAccount = null )
 		{
 			int prop;
 			TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
@@ -611,7 +634,7 @@ namespace Server
 			if ( strReq > 0 )
 				text += "Strength Requirement: " + strReq.ToString() + "<BR>";
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			if ( densityText( var.Density ) != null )
 				text += "" + densityText( var.Density ) + "<BR>";
@@ -639,7 +662,7 @@ namespace Server
 			return text;
         }
 
-        public static string AddClothingInfo ( BaseClothing var, string text, bool fromToolMenu )
+        public static string AddClothingInfo ( BaseClothing var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
 			int prop;
 
@@ -740,7 +763,7 @@ namespace Server
 
 			text = AddResistInfo ( var, text );
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			if ( densityText( var.Density ) != null )
 				text += "" + densityText( var.Density ) + "<BR>";
@@ -762,7 +785,7 @@ namespace Server
 			return text;
         }
 
-        public static string AddInstrumentInfo ( BaseInstrument var, string text, bool fromToolMenu )
+        public static string AddInstrumentInfo ( BaseInstrument var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
 			int prop;
 			TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
@@ -880,12 +903,12 @@ namespace Server
 					text += "" + cultInfo.ToTitleCase(CliLocTable.Lookup( entry.Title )) + "<BR>";
 			}
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			return text;
         }
 
-        public static string AddMagicInfo ( BaseTrinket var, string text, bool fromToolMenu )
+        public static string AddMagicInfo ( BaseTrinket var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
             if (var.BuiltBy != null)
 				text += "Crafted by " + var.BuiltBy.Name + "<BR>";
@@ -982,12 +1005,12 @@ namespace Server
 					text += "Durability: " + var.HitPoints + "/" + var.MaxHitPoints + "<BR>";
 			}
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			return text;
         }
 
-        public static string AddSpellbookInfo ( Spellbook var, string text, bool fromToolMenu )
+        public static string AddSpellbookInfo ( Spellbook var, string text, bool fromToolMenu, IAccount propsAccount = null )
         {
 			int prop;
 			TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
@@ -1109,12 +1132,12 @@ namespace Server
 				else { text += "" + var.SpellCount.ToString() + " Spells<BR>"; }
 			}
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			return text;
         }
 
-		public static string AddQuiverInfo ( BaseQuiver var, string text, bool fromToolMenu )
+		public static string AddQuiverInfo ( BaseQuiver var, string text, bool fromToolMenu, IAccount propsAccount = null )
 		{
 			int prop;
 
@@ -1229,7 +1252,7 @@ namespace Server
 			if ( (prop = var.WeightReduction) != 0 )
 				text += "Weight Reduction: " + prop.ToString() + "%<BR>";
 
-			text += "Equipment: " + var.EquipLayerName( var.Layer ) + "<BR>";
+			text += EquipSlotLine( var, propsAccount );
 
 			return text;
         }

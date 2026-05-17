@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class LargeKnife : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.largeknife";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ConsecratedStrike; } }

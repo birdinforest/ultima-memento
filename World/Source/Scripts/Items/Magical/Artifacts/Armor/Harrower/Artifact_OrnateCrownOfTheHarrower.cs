@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_OrnateCrownOfTheHarrower : GiftBoneHelm
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.ornatecrownoftheharrower";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 		public override int BasePoisonResistance{ get{ return 17; } }

@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Fists : BaseMeleeWeapon
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.fists";
 		public static void Initialize()
 		{
 			Mobile.DefaultWeapon = new Fists();

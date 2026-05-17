@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Dagger : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.dagger";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.Disarm; } }

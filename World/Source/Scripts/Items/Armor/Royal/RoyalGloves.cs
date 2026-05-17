@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalGloves : PlateGloves
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalgloves";
 		[Constructable]
 		public RoyalGloves()
 		{

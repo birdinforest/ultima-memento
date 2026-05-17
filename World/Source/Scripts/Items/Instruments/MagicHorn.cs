@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class MagicHorn : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.magichorn";
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 
 		[Constructable]

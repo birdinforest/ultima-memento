@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_IronwoodCrown : GiftPlateHelm
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.ironwoodcrown";
 		public override int BasePhysicalResistance{ get{ return 10; } }
 		public override int BaseFireResistance{ get{ return 6; } }
 		public override int BaseColdResistance{ get{ return 7; } }

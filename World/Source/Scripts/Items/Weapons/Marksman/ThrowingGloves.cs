@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13C6, 0x13CE )]
 	public class ThrowingGloves : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.throwinggloves";
 		public string GloveType;
 		
 		[CommandProperty(AccessLevel.Owner)]

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class BearCap : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.bearcap";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 5; } }

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class MetalKiteShield : BaseShield, IDyable
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.metalkiteshield";
 		public override int BasePhysicalResistance{ get{ return 0; } }
 		public override int BaseFireResistance{ get{ return 0; } }
 		public override int BaseColdResistance{ get{ return 0; } }

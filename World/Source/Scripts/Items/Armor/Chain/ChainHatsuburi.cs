@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class ChainHatsuburi : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.chainhatsuburi";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 2; } }
 		public override int BaseColdResistance{ get{ return 2; } }

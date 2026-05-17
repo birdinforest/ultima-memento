@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class ScaledLegs : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.scaledlegs";
 		public override int BasePhysicalResistance{ get{ return 4; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 4; } }

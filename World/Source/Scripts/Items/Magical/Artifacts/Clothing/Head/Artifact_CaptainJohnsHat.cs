@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_CaptainJohnsHat : GiftTricorneHat
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.captainjohnshat";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 6; } }
 		public override int BaseColdResistance{ get{ return 9; } }

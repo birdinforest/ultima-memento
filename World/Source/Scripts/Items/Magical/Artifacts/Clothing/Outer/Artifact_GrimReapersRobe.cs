@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_GrimReapersRobe : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.grimreapersrobe";
 		public override int BasePhysicalResistance { get{ return 3; } }
 		public override int BaseFireResistance { get{ return 4; } }
 		public override int BaseColdResistance { get{ return 4; } }

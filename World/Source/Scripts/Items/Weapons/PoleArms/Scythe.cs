@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Scythe : BasePoleArm
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.scythe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.NerveStrike; } }

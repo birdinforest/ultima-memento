@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class SavageLegs : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.savagelegs";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 5; } }
 		public override int BaseColdResistance{ get{ return 6; } }

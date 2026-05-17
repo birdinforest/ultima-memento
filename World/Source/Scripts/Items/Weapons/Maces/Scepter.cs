@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26BC, 0x26C6 )]
 	public class Scepter : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.scepter";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingAttack; } }

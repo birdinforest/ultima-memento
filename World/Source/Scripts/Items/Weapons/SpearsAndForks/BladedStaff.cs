@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26BD, 0x26C7 )]
 	public class BladedStaff : BaseSpear
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.bladedstaff";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.EarthStrike; } }

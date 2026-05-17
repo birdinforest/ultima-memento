@@ -14,6 +14,7 @@ namespace Server.Items
 {
 	public class ColoringBook : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.coloringbook";
 		public override bool IsContentLocalized => true;
 
 		public string MagicColor;

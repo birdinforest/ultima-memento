@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_RuneCarvingKnife : GiftAssassinSpike
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.runecarvingknife";
 		[Constructable]
 		public Artifact_RuneCarvingKnife()
 		{

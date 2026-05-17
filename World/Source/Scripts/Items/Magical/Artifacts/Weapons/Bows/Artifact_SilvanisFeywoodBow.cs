@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_SilvanisFeywoodBow : GiftElvenCompositeLongbow
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.silvanisfeywoodbow";
 		[Constructable]
 		public Artifact_SilvanisFeywoodBow()
 		{

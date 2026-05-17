@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1403, 0x1402 )]
 	public class ShortSpear : BaseSpear
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.shortspear";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.AchillesStrike; } }

@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_PyrosGrimoire : ElementalSpellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.pyrosgrimoire";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]

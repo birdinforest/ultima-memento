@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalBoots : PlateGorget
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalboots";
 		[Constructable]
 		public RoyalBoots()
 		{

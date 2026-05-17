@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_PhantomStaff : GiftWildStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.phantomstaff";
 		[Constructable]
 		public Artifact_PhantomStaff()
 		{

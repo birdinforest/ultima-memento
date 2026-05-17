@@ -29,6 +29,7 @@ using Server.Gumps;
 using Server.Localization;
 using System.Globalization;
 using Server.Targeting;
+using Server.Accounting;
 
 namespace Server
 {
@@ -1113,6 +1114,102 @@ namespace Server
 			return null;
 		}
 
+		/// <summary>
+		/// Shotkey for localized equipment slot label (pairs with <see cref="EquipLayerName"/>).
+		/// Returns null when <see cref="EquipLayerName"/> would return null.
+		/// </summary>
+		public string EquipLayerKey( Layer layer )
+		{
+			if ( layer == Layer.OneHanded )
+				return "prop.layer.right.hand";
+			if ( layer == Layer.TwoHanded && m_NeedsBothHands )
+				return "prop.layer.both.hands";
+			if ( layer == Layer.TwoHanded )
+				return "prop.layer.left.hand";
+			if ( layer == Layer.Shoes )
+				return "prop.layer.boots";
+			if ( layer == Layer.Pants )
+				return "prop.layer.legs";
+			if ( layer == Layer.Shirt )
+				return "prop.layer.chest";
+			if ( layer == Layer.Helm )
+				return "prop.layer.helm";
+			if ( layer == Layer.Gloves )
+				return "prop.layer.gloves";
+			if ( layer == Layer.Ring )
+				return "prop.layer.ring";
+			if ( layer == Layer.Trinket )
+				return "prop.layer.trinket";
+			if ( layer == Layer.Neck )
+				return "prop.layer.neck";
+			if ( layer == Layer.Waist )
+				return "prop.layer.waist";
+			if ( layer == Layer.InnerTorso )
+				return "prop.layer.chest";
+			if ( layer == Layer.Bracelet )
+				return "prop.layer.wrist";
+			if ( layer == Layer.MiddleTorso )
+				return "prop.layer.shirt";
+			if ( layer == Layer.Earrings )
+				return "prop.layer.ears";
+			if ( layer == Layer.Arms )
+				return "prop.layer.arms";
+			if ( layer == Layer.Cloak )
+				return "prop.layer.cloak";
+			if ( layer == Layer.OuterTorso )
+				return "prop.layer.robe";
+			if ( layer == Layer.OuterLegs )
+				return "prop.layer.skirt";
+			if ( layer == Layer.InnerLegs )
+				return "prop.layer.legs";
+
+			return null;
+		}
+
+		/// <summary>
+		/// Localized equipment slot label for contexts that have an <see cref="IAccount"/> (e.g. HTML item tooltips) but not a full OPL build.
+		/// </summary>
+		public string GetEquipLayerLabelForAccount( IAccount account )
+		{
+			string fallback = EquipLayerName( Layer );
+
+			if ( fallback == null )
+				return null;
+
+			string key = EquipLayerKey( Layer );
+
+			if ( key != null && account != null )
+			{
+				string lang = AccountLang.GetLanguageCode( account );
+				string loc = StringCatalog.TryResolveByKey( lang, key );
+
+				if ( loc != null )
+					return loc;
+			}
+
+			return fallback;
+		}
+
+		/// <summary>
+		/// Equipment slot line: cliloc 1061182 when not building a localized OPL;
+		/// otherwise <c>prop.equipped.at</c> with a resolved <see cref="EquipLayerKey"/> fragment.
+		/// </summary>
+		protected void AddEquipLayerProperty( ObjectPropertyList list )
+		{
+			string equipName = EquipLayerName( Layer );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				string key = EquipLayerKey( Layer );
+				if ( key != null )
+					AddLocalizedProperty( list, "prop.equipped.at", ResolvePropertyText( key ) );
+				else if ( equipName != null )
+					AddLocalizedProperty( list, "prop.equipped.at", equipName );
+			}
+			else
+				list.Add( 1061182, equipName );
+		}
+
 		public int TempFlags
 		{
 			get
@@ -1705,6 +1802,52 @@ namespace Server
 				list.Add( "<BASEFONT COLOR=#" + color + ">" + text + "</BASEFONT>" );
 			else
 				list.Add( text );
+		}
+
+		/// <summary>
+		/// When building a localized OPL and <see cref="DisplayNameLocalizationKey"/> is non-empty,
+		/// emits the primary name line (stack-aware) and returns true so overrides can skip default logic.
+		/// Does not run when the key is unset (unlike <see cref="IsContentLocalized"/>, which is true for entire equipment bases).
+		/// </summary>
+		protected bool TryAddLocalizedDisplayNameProperty( ObjectPropertyList list )
+		{
+			return TryAddLocalizedDisplayNameProperty( list, null, false, false, false );
+		}
+
+		/// <summary>
+		/// Same as the no-material overload, but composes the first line like clilocs 1053099 / 1053100 / 1050040 when
+		/// <paramref name="hasMaterialPrefix"/> / exceptional flags apply. <paramref name="materialDisplayName"/> must be
+		/// non-null when <paramref name="hasMaterialPrefix"/> is true (callers in Scripts compute via <c>CraftResources</c>).
+		/// </summary>
+		protected bool TryAddLocalizedDisplayNameProperty( ObjectPropertyList list, string materialDisplayName, bool hasMaterialPrefix, bool exceptionalOnFirstLine, bool isExceptional )
+		{
+			if ( BuildingPropertyListLocale == null || DisplayNameLocalizationKey == null || DisplayNameLocalizationKey.Length == 0 )
+				return false;
+
+			string typeName = ResolvePropertyText( DisplayNameLocalizationKey );
+
+			string line;
+
+			if ( exceptionalOnFirstLine && isExceptional )
+			{
+				string exWord = ResolvePropertyText( "prop.item.opl.name.exceptional" );
+
+				if ( hasMaterialPrefix && materialDisplayName != null )
+					line = string.Format( ResolvePropertyText( "prop.item.opl.firstline.exceptional_material_type" ), exWord, materialDisplayName, typeName );
+				else
+					line = string.Format( ResolvePropertyText( "prop.item.opl.firstline.exceptional_type" ), exWord, typeName );
+			}
+			else if ( hasMaterialPrefix && materialDisplayName != null )
+				line = string.Format( ResolvePropertyText( "prop.item.opl.firstline.material_type" ), materialDisplayName, typeName );
+			else
+				line = typeName;
+
+			if ( m_Amount <= 1 )
+				list.Add( line );
+			else
+				list.Add( 1050039, "{0}\t{1}", m_Amount, line );
+
+			return true;
 		}
 
 		/// <summary>

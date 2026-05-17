@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Trumpet : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.trumpet";
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 
 		[Constructable]

@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27AD, 0x27F8 )]
 	public class Kama : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.kama";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.DefenseMastery; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapIntStrike; } }

@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_GrimReapersLantern : GiftLantern
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.grimreaperslantern";
 		[Constructable]
 		public Artifact_GrimReapersLantern()
 		{

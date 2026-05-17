@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class CompositeBow : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.compositebow";
 		public override int EffectID{ get{ return ArrowType(1); } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }
 		public override Item Ammo{ get{ return new Arrow(); } }

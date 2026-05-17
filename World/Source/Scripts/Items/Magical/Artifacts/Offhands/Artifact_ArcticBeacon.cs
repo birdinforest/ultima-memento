@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ArcticBeacon : GiftLantern
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.arcticbeacon";
 		[Constructable]
 		public Artifact_ArcticBeacon()
 		{

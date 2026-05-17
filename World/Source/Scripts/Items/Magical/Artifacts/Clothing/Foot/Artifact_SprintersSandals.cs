@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_SprintersSandals : GiftSandals
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.sprinterssandals";
 		[Constructable]
 		public Artifact_SprintersSandals()
 		{

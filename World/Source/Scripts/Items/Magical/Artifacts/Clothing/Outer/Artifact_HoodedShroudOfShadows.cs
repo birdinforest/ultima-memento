@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_HoodedShroudOfShadows : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.hoodedshroudofshadows";
 		[Constructable]
 		public Artifact_HoodedShroudOfShadows()
 		{

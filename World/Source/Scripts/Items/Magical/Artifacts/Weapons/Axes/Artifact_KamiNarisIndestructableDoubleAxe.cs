@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_KamiNarisIndestructableDoubleAxe : GiftDoubleAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.kaminarisindestructabledoubleaxe";
 		public override int InitMinHits{ get{ return 250; } }
 		public override int InitMaxHits{ get{ return 250; } }
 

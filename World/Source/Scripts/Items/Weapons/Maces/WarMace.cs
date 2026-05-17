@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class WarMace : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.warmace";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DeathBlow; } }

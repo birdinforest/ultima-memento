@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Drums : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.drums";
 		[Constructable]
 		public Drums() : base( 0xE9C, 0x38, 0x39 )
 		{

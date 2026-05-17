@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2643, 0x2644 )]
 	public class DragonGloves : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.dragongloves";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 3; } }

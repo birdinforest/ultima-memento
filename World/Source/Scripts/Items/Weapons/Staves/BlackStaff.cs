@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class BlackStaff : BaseStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.blackstaff";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.MagicProtection; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ElementalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ArmorIgnore; } }

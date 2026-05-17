@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ConansLoinCloth : GiftBelt
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.conansloincloth";
 		[Constructable]
 		public Artifact_ConansLoinCloth()
 		{

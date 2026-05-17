@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class HammerPick : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.hammerpick";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.SpinAttack; } }

@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1c06, 0x1c07 )]
 	public class FemaleLeatherChest : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.femaleleatherchest";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ArcaneShield : GiftWoodenKiteShield
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.arcaneshield";
 		[Constructable]
 		public Artifact_ArcaneShield()
 		{

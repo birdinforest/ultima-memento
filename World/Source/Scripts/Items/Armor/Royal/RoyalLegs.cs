@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalsLegs : PlateLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalslegs";
 		[Constructable]
 		public RoyalsLegs()
 		{

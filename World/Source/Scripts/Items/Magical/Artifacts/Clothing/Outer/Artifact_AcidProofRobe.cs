@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_AcidProofRobe : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.acidproofrobe";
 		public DateTime TimeUsed;
 
 		[CommandProperty(AccessLevel.Owner)]

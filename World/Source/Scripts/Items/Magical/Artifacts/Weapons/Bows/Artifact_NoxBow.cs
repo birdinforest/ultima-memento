@@ -5,6 +5,7 @@ namespace Server.Items
 {
     public class Artifact_NoxBow : GiftHeavyCrossbow
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.noxbow";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

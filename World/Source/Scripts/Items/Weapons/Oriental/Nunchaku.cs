@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27AE, 0x27F9 )]
 	public class Nunchaku : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.nunchaku";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.RidingSwipe; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.FireStrike; } }

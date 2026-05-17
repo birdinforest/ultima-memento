@@ -104,7 +104,7 @@ namespace Server
 				AddHtml( 402, 86, 64, 21, @"<BODY><BASEFONT Color=" + gold + ">" + Price( m_Item, m_From, m_Merchant ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				// description
-				AddHtml( 266, 138, 201, 379, @"<BODY><BASEFONT Color=" + color + ">" + ItemProps.ItemProperties( m_Item, false ) + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 266, 138, 201, 379, @"<BODY><BASEFONT Color=" + color + ">" + ItemProps.ItemProperties( m_Item, false, m_From != null ? m_From.Account : null ) + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 		}
 

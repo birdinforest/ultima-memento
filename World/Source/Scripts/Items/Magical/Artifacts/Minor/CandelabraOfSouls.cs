@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class CandelabraOfSouls : CandelabraStand
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.candelabraofsouls";
 		public override int LabelNumber{ get{ return 1063478; } }
 		
 		[Constructable]

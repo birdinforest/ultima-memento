@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Pipes : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.pipes";
 		[Constructable]
 		public Pipes() : base( 0x3965, 0x5B8, 0x5B7 )
 		{

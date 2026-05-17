@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Crossbow : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.crossbow";
 		public override int EffectID{ get{ return ArrowType(0); } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }
 		public override Item Ammo{ get{ return new Bolt(); } }

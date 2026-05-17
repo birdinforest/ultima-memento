@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_HornOfKingTriton : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.hornofkingtriton";
 		public override int Hue { get { return 0; } }
 		public override int InitMinUses{ get{ return 800; } }
 		public override int InitMaxUses{ get{ return 800; } }

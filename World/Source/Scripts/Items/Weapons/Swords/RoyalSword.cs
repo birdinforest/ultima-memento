@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class RoyalSword : VikingSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.royalsword";
 		[Constructable]
 		public RoyalSword()
 		{

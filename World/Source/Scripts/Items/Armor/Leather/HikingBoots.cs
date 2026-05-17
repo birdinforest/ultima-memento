@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class HikingBoots : BaseShoes
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.hikingboots";
 		[Constructable]
 		public HikingBoots() : base( 0x2FC4 )
 		{

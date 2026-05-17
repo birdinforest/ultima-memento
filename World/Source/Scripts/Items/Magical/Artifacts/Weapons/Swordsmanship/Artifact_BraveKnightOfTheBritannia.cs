@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BraveKnightOfTheBritannia : GiftKatana
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.braveknightofthebritannia";
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 

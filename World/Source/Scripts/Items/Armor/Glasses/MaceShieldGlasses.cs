@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class MaceShieldGlasses : ElvenGlasses
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.maceshieldglasses";
 		public override int LabelNumber{ get{ return 1073381; } } //Mace And Shield Reading Glasses
 
 		public override int BasePhysicalResistance{ get{ return 25; } }

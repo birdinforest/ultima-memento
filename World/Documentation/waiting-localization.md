@@ -1,6 +1,6 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-17
+> **更新日期：** 2026-05-17（§ **8** A5 / B1b / 静态书标题 hash 路径已落地；B2 键批与神器 zh 精修仍见 §8.3）
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---
@@ -17,6 +17,8 @@
 8. [待后续中文化的非装备物品](#5-待后续中文化的非装备物品)
 9. [附录：非装备物品分类总表](#6-附录非装备物品分类总表)
 10. [§5.3b Trades：工单（头顶 / Gump / 叙事 / OPL）](#53b-trades-tickets-overhead-gump-narrative-opl)
+11. [§7 物品 OPL 名称扫描工单（T1–T7）](#7-物品-opl-名称扫描工单2026-05-17)
+12. [§8 装备 OPL 主名、装备槽位、乐器与书本（根因 + 工单）](#8-equipment-opl-name-layer-books-instruments)
 
 ---
 
@@ -313,6 +315,310 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 
 ### 6.1 Major 目录
 `/World/Source/Scripts/Engines and Systems/Quests/Major`
+
+---
+
+## 7. 物品 OPL 名称扫描工单（2026-05-17）
+
+> **扫描方法：** 全库 `Name = "English..."` + `DisplayNameLocalizationKey` / `ShouldUseLocalizedOpl()` / `AddNameProperty` 覆盖状态检查，找出 zh-Hans 账号仍看到英文名的物品类别。
+>
+> **通用实现模式（无 AddNameProperty 的简单类）：**
+> 1. 在类里加 `public override string DisplayNameLocalizationKey => "item.trade.name.XXX";`（或 `item.magical.*` / `item.special.*`）
+> 2. 在 `en/equipment-properties.json` 与 `zh-Hans/equipment-properties.json` 各加同一键；zh 值按 §3.5 规范（专有名词 `中文（English）`）
+> 3. `BaseTool` / `BaseHarvestTool` / `Item` 基类均已实现 `ShouldUseLocalizedOpl()`，无需额外覆盖 `IsContentLocalized` 或 `AddNameProperty`
+>
+> **注意：** 以下各工单中 `✅ 已覆盖` 标注代表已有 `DisplayNameLocalizationKey` 或等效覆盖，**仅供参考对比**；无标注的即为待处理项。
+
+---
+
+### T1 — 炼金 / 巫术 / 普通试剂名（~25 条）
+
+**优先级：P1**（玩家背包常驻材料，高曝光）
+
+| 文件（相对 `Scripts/Items/Trades/Reagents/`） | 英文 Name | 状态 |
+|---|---|---|
+| `Alchemy/MoonCrystal.cs` | `moon crystal` | ❌ |
+| `Alchemy/SeaSalt.cs` | `sea salt` | ❌ |
+| `Alchemy/ButterflyWings.cs` | `butterfly wings` | ❌ |
+| `Alchemy/Brimstone.cs` | `brimstone` | ❌ |
+| `Alchemy/SilverWidow.cs` | `silver widow` | ❌ |
+| `Alchemy/GargoyleEar.cs` | `gargoyle ear` | ❌ |
+| `Alchemy/EyeOfToad.cs` | `eye of toad` | ❌ |
+| `Alchemy/FairyEgg.cs` | `fairy egg` | ❌ |
+| `Alchemy/BeetleShell.cs` | `beetle shell` | ❌ |
+| `Alchemy/SwampBerries.cs` | `swamp berries` | ❌ |
+| `Alchemy/PixieSkull.cs` | `pixie skull` | ❌ |
+| `Alchemy/RedLotus.cs` | `red lotus` | ❌ |
+| `Witch/MummyWrap.cs` | `mummy wrap` | ❌ |
+| `Witch/BlackSand.cs` | `black sand` | ❌ |
+| `Witch/BloodRose.cs` | `blood rose` | ❌ |
+| `Witch/Maggot.cs` | `maggot` | ❌ |
+| `Witch/DriedToad.cs` | `dried toad` | ❌ |
+| `Witch/Wolfsbane.cs` | `wolfsbane` | ❌ |
+| `Witch/BitterRoot.cs` | `bitter root` | ❌ |
+| `Witch/WerewolfClaw.cs` | `werewolf claw` | ❌ |
+| `Witch/VioletFungus.cs` | `violet fungus` | ❌ |
+| `Common/BlackPearl.cs` | `black pearl` | ❌ |
+| `Reagents.cs` (`JarOfWizardReagents`) | `Jar of Wizard Reagents` | ❌ |
+| `Reagents.cs` (`JarOfNecromancerReagents`) | `Jar of Necromancer Reagents` | ❌ |
+| `Reagents.cs` (`JarOfAlchemicalReagents`) | `Jar of Alchemical Reagents` | ❌ |
+| `Unique/GoldenFeathers.cs` | `golden feathers` | ✅ 已覆盖 |
+| `Unique/DragonBlood.cs` 等 9 Unique | 各项 | ✅ 已覆盖 |
+
+**键名建议：** `item.trade.name.reagent.moon.crystal`、`item.trade.name.reagent.sea.salt` … `item.trade.name.reagent.jar.wizard` 等，统一前缀 `item.trade.name.reagent.*`。
+
+---
+
+### T2 — 基础技能工具名（非符文类，~24 条）
+
+**优先级：P1**（玩家日常使用的工具，高曝光）
+
+> 符文工具（`SmithHammerRunic`、`TinkerToolsRunic`、`ScribesPenRunic`、`LeatherworkingToolsRunic`、`CarpenterToolsRunic`、`SewingKitRunic`、`FletcherToolsRunic`、`UndertakerKitRunic`）**已完成**（`DisplayNameLocalizationKey`）。下表为尚未覆盖的基础非符文版本。
+
+| 文件（相对 `Scripts/Items/Trades/`） | 英文 Name | 状态 |
+|---|---|---|
+| `Tailoring/SewingKit.cs` | `sewing kit` | ❌ |
+| `Tailoring/StitchingTools.cs` | `stitching tools` | ❌ |
+| `Tailoring/LeatherworkingTools.cs` | `tanning tools` | ❌ |
+| `Carpentry/CarpenterTools.cs` | `carpenter tools` | ❌ |
+| `Carpentry/WoodworkingTools.cs` | `woodworking tools` | ❌ |
+| `Tinkering/TinkerTools.cs` | `tinker tools` | ❌ |
+| `Blacksmithing/SmithHammer.cs` | `smith hammer` | ❌ |
+| `Blacksmithing/LapidaryTools.cs` | `lapidary hammer` | ❌ |
+| `Blacksmithing/ScalingTools.cs` | `scaling tools` | ❌ |
+| `Blacksmithing/Spade.cs` | `shovel` | ❌ |
+| `Blacksmithing/Pickaxe.cs` (gargoyle variant) | `gargoyle pickaxe` | ❌ |
+| `Blacksmithing/RubyPickaxe.cs` | `adamantium pickaxe` | ❌ |
+| `Inscription/ScribesPen.cs` | `scribe quill` | ❌ |
+| `Inscription/TomeOfWands.cs` | `tome of wands` | ❌ |
+| `Inscription/Monocle.cs` | `librarian set` | ❌ |
+| `Glass Stone/Blowpipe.cs` | `blowpipe` | ❌ |
+| `Glass Stone/MalletAndChisel.cs` | `mallet and chisel` | ❌ |
+| `Cooking/CulinarySet.cs` | `culinary set` | ❌ |
+| `Bowcraft/FletcherTools.cs` | `bowcrafting tools` | ❌ |
+| `Bowcraft/Arrow.cs` | `arrow` | ❌ |
+| `Bowcraft/Bolt.cs` | `bolt` | ❌ |
+| `Bowcraft/Feather.cs` | `feather` | ❌ |
+| `Bowcraft/Shaft.cs` | `shaft` | ❌ |
+| `Forensics/UndertakerKit.cs` | `undertaker kit` | ❌ |
+| `Forensics/GraveSpade.cs` | `grave shovel` | ❌ |
+| `Forensics/Bones.cs` | `bones` | ❌ |
+| `Alchemy/Jar.cs` | `jar` | ❌ |
+| `Alchemy/ApothecaryVials.cs` | `apothecary set` | ❌ |
+| `Alchemy/MortarPestle.cs` | `alchemy set` | ❌ |
+| `Druid/DruidCauldron.cs` | `druid's cauldron` | ❌ |
+| `Witch/WitchCauldron.cs` | `witch's cauldron` | ❌ |
+| `Bowcraft/FletcherToolsRunic.cs` | `runic bowcrafting tools I/II/III` | ❌（缺 `DisplayNameLocalizationKey`） |
+
+**注：** `Bandage`、`FishingPole`、`Flax`、`Cotton`、`Wool`、`Scissors`、`SpoolOfThread` 已完成；`Arrow/Bolt` 为单件（区别于 `ArrowsAndBolts` Bundle，Bundle 已完成）。
+
+**键名建议：** `item.trade.name.*`（与已有符文工具键同前缀）。
+
+---
+
+### T3 — Magical/Tools 魔法版兼容工具名（8 条）
+
+**优先级：P2**（由铁匠/裁缝工作室产出，玩家使用频率中等）
+
+> 这是 `Scripts/Items/Trades/Magical/Tools/` 下的 **通用魔法版本工具**（不同于技能专属符文工具）。它们有 `IsContentLocalized` 但无 `DisplayNameLocalizationKey`。
+
+| 文件（相对 `Scripts/Items/Trades/Magical/Tools/`） | 英文 Name | 状态 |
+|---|---|---|
+| `RunicHammer.cs` | `smith hammer` | ❌ |
+| `RunicFletching.cs` | `bowyer tools` | ❌ |
+| `RunicSewingKit.cs` | `sewing kit` | ❌ |
+| `RunicTinker.cs` | `tinker tools` | ❌ |
+| `RunicSaw.cs` | `woodworking tools` | ❌ |
+| `RunicLeatherKit.cs` | `tanning kit` | ❌ |
+| `RunicUndertaker.cs` | `undertaker tools` | ❌ |
+| `RunicScales.cs` | `scaling tools` | ❌ |
+
+**键名建议：** `item.trade.name.magical.runic.*`（区别于技能特定符文工具的 `item.trade.name.runic.*`）。
+
+---
+
+### T4 — 炼金容器动态名（1 条，复杂）
+
+**优先级：P2**
+
+| 文件 | 情形 | 现状 |
+|---|---|---|
+| `Trades/Alchemy/CrystallineJar.cs` | `Name = "crystalline flask"` 状态 | ✅ 已有 `AddNameProperty` → `item.trade.crystalline.flask` |
+| | `Name = "flask of " + iJar.Name`（装填后动态名）| ❌ 仍为拼接英文字符串 |
+| | `Name = "flask of holy water"` | ❌ 仍为硬编码英文 |
+
+**建议：** 为 `flask of holy water` 增加 `item.trade.name.flask.holy.water` 键；对 `flask of {substance}` 需引入 `item.trade.name.flask.of` 格式模板 + substance 名称子键（或直接在 `AddNameProperty` 中判断 Name 前缀走 `ResolveFormatByKey`）。可推迟至 P3。
+
+---
+
+### T5 — 特殊装饰物品名（~20 条）
+
+**优先级：P3**（主要用于家居装饰，玩家检视时可见英文名）
+
+| 分类 | 文件路径（相对 `Scripts/Items/Special/`） | 英文 Name（或模式） | 状态 |
+|---|---|---|---|
+| **Evil Home Decor 收纳盒** | `Evil Home Decor Collection/BoneTable.cs` | `box containing a table of bones` | ❌ |
+| | `BoneThrone.cs` | `box containing a throne of bones` | ❌ |
+| | `BoneCouch.cs` | `box containing a couch of bones` | ❌ |
+| | `UnsettlingPortrait.cs` | `box containing an unsettling portrait` | ❌ |
+| | `CreepyPortrait.cs` | `box containing a creepy portrait` | ❌ |
+| | `DisturbingPortrait.cs` | `box containing a disturbing portrait` | ❌ |
+| | `AwesomeDisturbingPortrait.cs` | `box containing a disturbing portrait` | ❌ |
+| | `BedOfNails.cs` | `box containing a bed of nails` | ❌ |
+| | `HauntedMirror.cs` | `box containing a haunted mirror` | ❌ |
+| | `SacrificialAltar.cs` | `box containing a sacrificial altar` | ❌ |
+| **塔罗牌** | `Rares/TarotCards/DecoTarot*.cs`（×9 文件） | `tarot cards`（同一名） | ❌ 需 1 个键 |
+| **花卉** | `Rares/Flowers/DecoFlower*.cs`（×2 文件） | `white roses` | ❌ |
+| | `Rares/Flowers/DecoRoseOfTrinsic*.cs`（×3 文件） | `velvet rose` | ❌ |
+| **其他** | `Rares/Containers/HugeWaterTub.cs` | `huge tub of water` | ❌ |
+| | `MinotaurHedge.cs` | （需核查） | ❓ |
+| | `TormentedChains.cs` | （需核查） | ❓ |
+| | `WindSpirit.cs` | （需核查） | ❓ |
+| | `DragonOrbStatue.cs` | （需核查） | ❓ |
+| | `WizardsStatue.cs` | （需核查） | ❓ |
+| | `Special/Items/BloodyPentagram.cs` | （需核查） | ❓ |
+
+**键名建议：** `item.special.decor.*`（装饰盒类），`item.special.rares.*`（稀有装饰）。
+
+---
+
+### T6 — 魔法神器名（Magical/Artifacts 全目录，~110 条）
+
+**优先级：P2**（可掉落/收藏神器，玩家展示/交易时均可见英文名）
+
+> **（2026-05-17 更新）** 本批 **`Magical/Artifacts`** 具体子类已由 **§8.3 Fix B2** 工具批次接入 **`DisplayNameLocalizationKey`**（键前缀 **`item.magical.artifact.*`**）及 **`equipment-properties.json`** 成对 EN/zh-Hans；下表仍列子目录与示例，便于人工抽查译名与专有名词格式。
+
+**子目录及代表性示例：**
+
+| 子目录 | 代表物品（英文 Name） | 文件数 |
+|---|---|---|
+| `Artifacts/Weapons/Swordsmanship/` | Excalibur, Cold Blood, Blade Dance … | ~10 |
+| `Artifacts/Weapons/Axes/` | Zyronic Claw, Quell, Axe of the Minotaur … | ~5 |
+| `Artifacts/Weapons/Bows/` | Frostbringer, Nox Bow, Bow of the Phoenix … | ~8 |
+| `Artifacts/Weapons/Fencing/` | Fang of Ractus, Raed's Glory, The Taskmaster … | ~6 |
+| `Artifacts/Weapons/Bludgeoning/` | Bonesmasher, Arctic Death Dealer … | ~5 |
+| `Artifacts/Weapons/Staffs/` | Phantom Staff, Wrath of the Dryad … | ~3 |
+| `Artifacts/Armor/` (多子目录) | Helm of Brilliance, Violet Courage … | ~35 |
+| `Artifacts/Clothing/` | Robe of Teleportation, Crown of Tal'Keesh … | ~12 |
+| `Artifacts/Jewelry/` | Bracelet of the Vile, Ring of Health … | ~8 |
+| `Artifacts/Trinkets/` | Bloodwood Spirit, Shimmering Talisman … | ~3 |
+| `Artifacts/Shields/` | Achilles Shield … | ~2 |
+| `Artifacts/Quivers/` | Quiver of Ice, Quiver of Elements … | ~3 |
+| `Artifacts/Books/` | Hydros Lexicon, Lithos Tome … | ~6 |
+| `Artifacts/Instruments/` | Iolo's Lute, Gwenno's Harp … | ~2 |
+| `Artifacts/Minor/` | Gem of Seeing, Pandora's Box, Everlasting Loaf … | ~5 ✅（部分 `IsContentLocalized` 已有 `item.*` 键） |
+| `Artifacts/Offhands/` | Grim Reaper's Lantern, Candles … | ~3 |
+
+**实现建议：** 批量添加 `item.magical.artifact.*` 键（使用神器英文名 PascalCase 派生），统一在 `equipment-properties.json` 中维护。可按子目录分批次完成，每批同步翻译。
+
+---
+
+### T7 — 魔法奎弓及武器重命名工具
+
+**优先级：P3**
+
+| 文件 | 英文 Name | 状态 |
+|---|---|---|
+| `Magical/MagicQuiver.cs` | `quiver` | ❌ |
+| `Magical/WeaponRenamingTool.cs` | （需核查具体名） | ❓ |
+
+---
+
+<a id="8-equipment-opl-name-layer-books-instruments"></a>
+
+## 8. 装备 OPL 主名、装备槽位、乐器与书本（根因 + 工单）
+
+> **整理日期：** 2026-05-17（**A5 / B1b / BaseBook** 静态书标题哈希解析已更新）
+
+> **背景：** zh-Hans 账号下，装备 **属性行** 已大量走 `StringCatalog`/`AddLocalizedProperty`，但 **OPL 第一行物品名**、**「装备位置」取值**、**乐器/书本主名** 仍常显示英文。本节记录 **根因** 与 **分步工单**（Fix A / B），与 **§7** 非装备 `item.trade.*` 扫描互补。
+
+---
+
+### 8.1 根因分析
+
+| 现象 | 根因（代码要点） |
+|------|------------------|
+| **装备 OPL 主名为英文** | **`BaseWeapon` / `BaseArmor` / `BaseClothing` / `BaseInstrument`** 的 **`AddNameProperty`** 不检查 **`BuildingPropertyListLocale`**：在常见分支中直接 **`list.Add(LabelNumber)`**（客户端 cliloc，英文）或 **`list.Add(Name)`**（英文构造名）。与已本地化的 **`GetProperties`** 形成 **两套管道不一致**。 |
+| **「装备位置：right hand」类英文** | （1）**`Item.EquipLayerName(Layer)`**（`System/Item.cs`）返回硬编码英文字符串（`"Right Hand"`、`"Left Hand"`、`"Boots"` …）。（2）**`BaseWeapon`** 已用 **`AddLocalizedProperty(list, "prop.equipped.at", EquipLayerName(Layer))`**，故标签已是中文（如 `prop.equipped.at` →「装备位置：{0}」），但 **`{0}` 仍为英文**。（3）**`BaseArmor` / `BaseClothing` / `BaseInstrument` / `BaseTool` / `BaseHarvestTool` / `Spellbook` 等** 仍 **`list.Add(1061182, EquipLayerName(Layer))`**，无 locale 分支时整行随客户端英文。 |
+| **乐器主名为英文** | 与武器同构：`BaseInstrument.AddNameProperty` 直接 **`LabelNumber` / `Name`**，未接 **`DisplayNameLocalizationKey`** / 双语首行。 |
+| **书本主名为英文** | **`BaseBook.AddNameProperty`**：有标题时 **`list.Add(m_Title)`**，标题多为脚本构造器中的英文字符串；无标题时走 **`base.AddNameProperty`**，仍可能 cliloc/英文名。 |
+
+**落实情况（2026-05-17）：**
+
+- **上表第 2 行（装备槽位取值英文）：已按 §8.2 Fix A 落地。** 实现 **`Item.EquipLayerKey(Layer)`**（返回 `prop.layer.*` shotkey）、**`Item.AddEquipLayerProperty(ObjectPropertyList)`**（`BuildingPropertyListLocale != null` 时用 **`ResolvePropertyText(EquipLayerKey)`** 作为 **`prop.equipped.at`** 的 `{0}`；否则仍 **`1061182` + `EquipLayerName`**）。已在 **`en/` / `zh-Hans/equipment-properties.json`** 增加 **`prop.layer.right.hand` … `prop.layer.trinket`** 等条目。替换呼叫点的类型包括：**`BaseWeapon`、`BaseArmor`、`BaseClothing`、`BaseInstrument`、`BaseTrinket`、`BaseTool`、`BaseHarvestTool`、`BaseQuiver`、`Spellbook`（`Layer == Trinket`）、`MagicRuneBag`、`BaseEquipableLight`**。  
+- **上表第 1、3、4 行：** **Fix B1 / B1b 已落地** — `Item.TryAddLocalizedDisplayNameProperty`（无材质时单一类型名；有材质 / exceptional 时由各 **`Base*`** 传入 **`CraftResources.GetDisplayNameLocalized`** 与 **`GetClilocLowerCaseName` 判定**，复合首行走 **`prop.item.opl.firstline.*`**）。**`BaseWeapon`** 首行不含 exceptional（与 vanilla 一致）、早退后仍处理镌刻 **`1062613`**。**`BaseBook`**：非自写书且双语 OPL 时标题走 **`StringCatalog.TryResolve(BuildingPropertyListLocale, m_Title)`**（与 extractor 哈希表一致；自写书标题不强制目录化）。玩家可见中文主名仍依赖 **Fix B2** 为各类物品配置 **`item.*` 键**。
+
+**范围说明：**
+
+- **玩家自写书**（`Writable`、标题为玩家输入）：不应强行目录化标题；可仅处理 **无标题默认** / **系统静态书**。
+- **神器/自定义 `Name`**：与 §7.T6 一致，需 per-class **`DisplayNameLocalizationKey`** + **`equipment-properties.json`**。
+
+---
+
+### 8.2 工单 Fix A — 装备槽位字符串目录化（优先 P1）
+
+> **状态（2026-05-17）：** A1–A5 已落地。**A5** — `ItemProps.ItemProperties` 三参重载接受 **`IAccount`**，**`Equipment:`** 行走 **`prop.itemprops.equipment.line`** + **`Item.GetEquipLayerLabelForAccount`**；**`BlackMarket` / `CraftSystem.SetDescription`** 传入玩家 **`Account`**。
+
+**目标：** 任意走 **`prop.equipped.at`** 或等价属性的行，**`{0}` 为中文槽位名**；未做 locale 分支的基类改为与 **`BaseWeapon`** 一致的 **`AddLocalizedProperty`** 模式。
+
+| # | 动作 | 文件 / 数据 |
+|---|------|-------------|
+| A1 | 新增 **稳定键生成**：例如 **`Item.EquipLayerKey(Layer)`** → `"prop.layer.right.hand"` 等（与 `EquipLayerName` 分支一一对应，返回 shotkey 而非英文）。 | `World/Source/System/Item.cs` |
+| A2 | 在 **`en/`、`zh-Hans/equipment-properties.json`** 各增 **`prop.layer.*`**（约 12 条：右手、左手、双手、靴、腿、胸、头等 —— 与现有 `EquipLayerName` 返回值一一对照）。 | `World/Data/Localization/en|zh-Hans/equipment-properties.json` |
+| A3 | **`BaseWeapon`**：将 **`AddLocalizedProperty(..., "prop.equipped.at", EquipLayerName(Layer))`** 改为第二参使用 **`ResolvePropertyText(EquipLayerKey(Layer))`**（或等效 API，确保 `{0}` 已解析为 zh）。 | `World/Source/Scripts/Items/Weapons/BaseWeapon.cs` |
+| A4 | **`BaseArmor`、`BaseClothing`、`BaseInstrument`、`BaseTool`、`BaseHarvestTool`** 及 **`Spellbook`、可穿戴灯、符文袋等** 凡 **`list.Add(1061182, EquipLayerName(...))`** 之处：在 **`BuildingPropertyListLocale != null`** 时改为 **`AddLocalizedProperty(list, "prop.equipped.at", ResolvePropertyText(EquipLayerKey(Layer)))`**。 | 各对应 `.cs`（可用 `rg "1061182, EquipLayerName"` 全库清点） |
+| A5 | **`ItemProperties.cs`** 等若拼接 `"Equipment: " + EquipLayerName`** 的 **网页/调试 HTML**，视需要同样走目录化（低优先，避免与游戏内 OPL 不一致）。 | `World/Source/Scripts/System/Misc/ItemProperties.cs`（可选） |
+
+**完成标准：** zh-Hans 下 OPL 不出现 **`Right Hand` / `Left Hand`** 等裸英文槽位；英文服行为不变。
+
+---
+
+### 8.3 工单 Fix B — 装备 / 乐器 / 静态书本 **OPL 第一行** 目录化
+
+**Fix B1 — 基类闸门（P1，改动面小、应先落地）**
+
+> **状态（2026-05-17）：** **`Item.TryAddLocalizedDisplayNameProperty`** 含 **B1b** 重载（材质 / exceptional 复合首行）；**`BaseWeapon`**（早退后仍处理 **`m_EngravedText`**）、**`BaseArmor`、`BaseClothing`、`BaseInstrument`、`BaseTrinket`** 在 **`AddNameProperty`** 开头调用。**`BaseBook`** 静态书标题见下文与 §8.1「落实情况」。
+
+| # | 动作 | 说明 |
+|---|------|------|
+| B1.1 | **`TryAddLocalizedDisplayNameProperty(list)`** → 内部走无材质分支（复合首行关）。各装备基类先算 **`hm` / `mat`** 再调 **五参重载**（见 B1.2）。 | 子类未 override **`DisplayNameLocalizationKey`** 时返回 false。 |
+| B1.2 **（B1b）** | **`TryAddLocalizedDisplayNameProperty(list, materialDisplayName, hasMaterialPrefix, exceptionalOnFirstLine, isExceptional)`** + **`prop.item.opl.firstline.*`** / **`prop.item.opl.name.exceptional`**。**`BaseTool` / `BaseHarvestTool` / `BaseRunicTool`** 双语 OPL 且带材质时首行同模板。 | 取代 cliloc **1053099 / 1053100 / 1050040** 在双语首行的英文材质 cliloc。 |
+
+**Fix B2 — 子类批量 `DisplayNameLocalizationKey` + JSON（P2，量大）**
+
+> **状态（2026-05-17）：** 已用维护脚本 **`World/Source/Tools/emit_equipment_opl_display_keys.py`** 对下列目录 **首批全量** 写入 **`DisplayNameLocalizationKey`** 并合并 **`en/`、`zh-Hans/equipment-properties.json`**：**`Scripts/Items/Weapons`、`Armor`、`Clothing`、`Instruments`、`Magical/Artifacts`**（**627** 个具体类；再次运行会跳过已有 override 的类）。键命名：**`item.equip.weapon.*` / `item.equip.armor.*` / `item.equip.clothing.*` / `item.equip.instrument.*` / `item.magical.artifact.*`**（神器类名 slug 由 `Artifact_` 前缀剥离后小写、下划线转点）。中文主名为脚本规则表 + 构造器 **`Name = "...`** 解析生成，**仍须按游玩体验与术语表人工 spot-check**；新增装备类可复制脚本模式或补表后重跑（仅新增项）。
+
+| 类别 | 键前缀建议 | 批量策略 |
+|------|------------|----------|
+| 标准武器（`Name == null`，靠 `LabelNumber`） | `item.equip.weapon.*` | **首批已完成**（脚本）；新增武器 → 补跑脚本或手写键 |
+| 标准护甲 / 衣物 | `item.equip.armor.*` / `item.equip.clothing.*` | 同上 |
+| 神器 / 固定 `Name` | `item.magical.artifact.*` | **首批已完成**（脚本）；见 **§7.T6** 抽查清单 |
+| 乐器 | `item.equip.instrument.*` | **首批已完成**（脚本） |
+| 系统静态书（构造器固定 `Title`） | `item.book.*` 或沿用 books 流水线 | **未纳入本脚本**；**玩家自写书标题** 不在此列 |
+
+**数据：** 全部写入 **`en/`、`zh-Hans/equipment-properties.json`**（`item.*`），zh 遵守 **`AGENTS.md` §3.5** 专有名词格式。
+
+**完成标准：** zh-Hans 下装备/乐器 **OPL 第一行主名** 已 **`item.*`** 覆盖的为中文；**非自写书** 标题若在目录中有对应 **哈希** 译文则显示中文；**`LabelNumber` / `Name` 保留** 供存档、脚本、`switch(Name)`。批量脚本书键仍见上表「系统静态书」。
+
+> **神器 zh 专名精修（2026-05-17）：** 对 **`item.magical.artifact.*`** 中仍为 **「英文（英文）」** 兜底行，已用 **`World/Source/Tools/generate_artifact_zh_core.py`** 生成 **`artifact_zh_core.json`**（EN 显示名 → 中文核心，无括号），再由 **`apply_artifact_zh_core.py`** 写回 **`zh-Hans/equipment-properties.json`**（格式 **`中文（English）`**，英文段与 **`en/equipment-properties.json`** 一致）。修改译法时优先改生成器与 **`PATCH` / 词表片段**，重跑 **`generate_artifact_zh_core.py`** 与 **`apply_artifact_zh_core.py`**。
+
+---
+
+### 8.4 验证与依赖
+
+- 改 C# 后：**编译** `World/Source/Tools/compile-world-*.sh`。  
+- 只增 **`item.*` / `prop.layer.*`**：`sync_localization_glossary.py --check`。  
+- 若引入 **新英文 UI 字面量**（非 shotkey）：再走 **`build_localization_strings.py --no-translate`**（本节工单以 shotkey 为主，预计不需要）。
+
+**Git 提交拆分建议（B1 vs B2 vs 神器文案）：**
+
+| 提交 | 宜含路径 / 说明 |
+|------|------------------|
+| **Fix B1** | **`World/Source/System/Item.cs`**（`TryAddLocalizedDisplayNameProperty` / `DisplayNameLocalizationKey` 相关）+ 各 **`BaseWeapon` / `BaseArmor` / …** 若与 B1 同 PR 一并改动。 |
+| **Fix B2** | `Scripts/Items/Weapons` 等五类目录下已加键的 `.cs`，`en/` 与 `zh-Hans/equipment-properties.json`（批量键），`emit_equipment_opl_display_keys.py`。 |
+| **神器 zh 精修** | `zh-Hans/equipment-properties.json`（神器专名行）、`artifact_zh_core.json`、`generate_artifact_zh_core.py`、`apply_artifact_zh_core.py`。 |
+
+仅提 B2 时：请勿把未审过的 **B1 `Item.cs`** 卷进同一提交；反之亦然。神器译名迭代可单独小提交，便于文案审阅与回滚。
 
 ## 6. 附录：非装备物品分类总表
 

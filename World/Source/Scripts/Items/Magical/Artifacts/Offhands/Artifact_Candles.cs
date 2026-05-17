@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_CandleCold : GiftCandle
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.candlecold";
 		[Constructable]
 		public Artifact_CandleCold()
 		{

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ANecromancerShroud : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.anecromancershroud";
 		public override int BaseColdResistance{ get{ return 5; } }
 
 		public override int InitMinHits{ get{ return 150; } }

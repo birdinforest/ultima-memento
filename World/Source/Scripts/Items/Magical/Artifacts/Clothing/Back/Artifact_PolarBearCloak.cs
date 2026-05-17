@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_PolarBearCape : GiftFurCape
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.polarbearcape";
 		public override int BasePhysicalResistance { get{ return 2; } }
 		public override int BaseFireResistance { get{ return 4; } }
 		public override int BaseColdResistance { get{ return 3; } }

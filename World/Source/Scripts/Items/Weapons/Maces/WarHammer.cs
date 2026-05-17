@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class WarHammer : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.warhammer";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapIntStrike; } }

@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class DiamondMace : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.diamondmace";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.PsychicAttack; } }

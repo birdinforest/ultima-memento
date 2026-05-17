@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_RobinHoodsFeatheredHat : GiftFeatheredHat
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.robinhoodsfeatheredhat";
 		[Constructable]
 		public Artifact_RobinHoodsFeatheredHat()
 		{

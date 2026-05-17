@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Cleaver : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.cleaver";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MeleeProtection2; } }

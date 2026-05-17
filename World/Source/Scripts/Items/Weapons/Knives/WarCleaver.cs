@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2D2F, 0x2D23 )]
 	public class WarCleaver : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.warcleaver";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Bladeweave; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapStrStrike; } }

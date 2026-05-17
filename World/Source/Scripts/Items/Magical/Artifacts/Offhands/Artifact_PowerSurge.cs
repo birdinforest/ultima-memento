@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_PowerSurge : GiftLantern
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.powersurge";
 		[Constructable]
 		public Artifact_PowerSurge()
 		{

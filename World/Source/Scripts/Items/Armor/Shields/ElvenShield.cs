@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2FCA, 0x3180 )]
 	public class ElvenShield : BaseShield
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.elvenshield";
 		public override int BasePhysicalResistance{ get{ return 0; } }
 		public override int BaseFireResistance{ get{ return 0; } }
 		public override int BaseColdResistance{ get{ return 0; } }

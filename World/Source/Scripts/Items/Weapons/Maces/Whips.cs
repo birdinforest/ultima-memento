@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Whips : BaseWhip
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.whips";
 		[Constructable]
 		public Whips() : base( 0x6453 )
 		{

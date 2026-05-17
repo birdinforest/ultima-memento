@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_HolyKnightsPlateHelm : GiftRoyalHelm
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.holyknightsplatehelm";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

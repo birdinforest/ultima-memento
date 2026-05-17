@@ -8,6 +8,7 @@ namespace Server.Items
 {
 	public class Artifact_GandalfsStaff : GiftQuarterStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.gandalfsstaff";
 		public DateTime TimeUsed;
 
 		[CommandProperty(AccessLevel.Owner)]

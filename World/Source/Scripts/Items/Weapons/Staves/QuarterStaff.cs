@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xE89, 0xE8a )]
 	public class QuarterStaff : BaseStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.quarterstaff";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MeleeProtection; } }

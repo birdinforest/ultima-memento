@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27A8, 0x27F3 )]
 	public class Bokuto : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.bokuto";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Feint; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.NerveStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.Bladeweave; } }

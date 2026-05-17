@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_StaffOfPower : GiftBlackStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.staffofpower";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

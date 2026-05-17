@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_HydrosLexicon : ElementalSpellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.hydroslexicon";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]

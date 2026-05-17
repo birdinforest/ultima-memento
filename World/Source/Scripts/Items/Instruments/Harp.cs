@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Harp : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.harp";
 		[Constructable]
 		public Harp() : base( 0x6720, 0x43, 0x44 )
 		{

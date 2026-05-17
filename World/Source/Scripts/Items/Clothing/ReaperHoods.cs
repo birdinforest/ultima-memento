@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class ReaperHood : BaseHat
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.reaperhood";
 		public override int BasePhysicalResistance{ get{ return 0; } }
 		public override int BaseFireResistance{ get{ return 5; } }
 		public override int BaseColdResistance{ get{ return 9; } }

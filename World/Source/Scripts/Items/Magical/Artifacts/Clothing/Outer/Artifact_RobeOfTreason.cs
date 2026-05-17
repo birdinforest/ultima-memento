@@ -8,6 +8,7 @@ namespace Server.Items
 {
 	public class Artifact_RobeOfTreason : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.robeoftreason";
 		[Constructable]
 		public Artifact_RobeOfTreason()
 		{

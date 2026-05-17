@@ -6,6 +6,7 @@ namespace Server.Items
 	[Flipable]
 	public class LeatherGloves : BaseArmor, IArcaneEquip
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leathergloves";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }

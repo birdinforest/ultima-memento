@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27A3, 0x27EE )]
 	public class Tessen : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.tessen";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Feint; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Block; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MagicProtection2; } }

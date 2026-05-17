@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_CavortingClub : GiftClub
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.cavortingclub";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_EternalFlame : GiftLantern
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.eternalflame";
 		[Constructable]
 		public Artifact_EternalFlame()
 		{

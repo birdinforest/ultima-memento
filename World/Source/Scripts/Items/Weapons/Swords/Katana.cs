@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Katana : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.katana";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleWhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DoubleStrike; } }

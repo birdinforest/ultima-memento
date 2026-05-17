@@ -54,7 +54,7 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			AddEquipLayerProperty( list );
 		}
 
 		public override void OnAdded ( object parent )

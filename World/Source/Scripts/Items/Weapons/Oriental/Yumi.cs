@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Yumi : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.yumi";
 		public override int EffectID{ get{ return 0xF42; } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }
 		public override Item Ammo{ get{ return new Arrow(); } }

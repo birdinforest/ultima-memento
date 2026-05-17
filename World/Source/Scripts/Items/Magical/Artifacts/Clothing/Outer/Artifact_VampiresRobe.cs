@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_VampiresRobe : GiftRobe
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.vampiresrobe";
       [Constructable]
 		public Artifact_VampiresRobe()
 		{

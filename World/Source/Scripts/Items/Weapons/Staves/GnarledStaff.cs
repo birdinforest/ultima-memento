@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13F8, 0x13F9 )]
 	public class GnarledStaff : BaseStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.gnarledstaff";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ConsecratedStrike; } }

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class GhostShipAnchor : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.ghostshipanchor";
 		public override int LabelNumber{ get{ return 1070816; } } // Ghost Ship Anchor
 		
 		[Constructable]

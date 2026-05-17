@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_JackalsCollar : GiftPlateGorget
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.jackalscollar";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 		public override int BaseFireResistance{ get{ return 23; } }

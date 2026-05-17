@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class LargeBattleAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.largebattleaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingAttack; } }

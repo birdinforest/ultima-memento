@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class AssassinSpike : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.assassinspike";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.LightningStriker; } }

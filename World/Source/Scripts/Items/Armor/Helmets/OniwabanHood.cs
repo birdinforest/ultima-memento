@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class OniwabanHood : LeatherCap
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.oniwabanhood";
 		[Constructable]
 		public OniwabanHood()
 		{

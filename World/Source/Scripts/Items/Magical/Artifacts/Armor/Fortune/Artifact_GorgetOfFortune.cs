@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_GorgetOfFortune : GiftStuddedGorget
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.gorgetoffortune";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

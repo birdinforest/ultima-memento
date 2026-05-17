@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BeltofHercules : GiftBelt
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.beltofhercules";
 		[Constructable]
 		public Artifact_BeltofHercules()
 		{

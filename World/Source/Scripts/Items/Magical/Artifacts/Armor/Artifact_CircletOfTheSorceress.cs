@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_CircletOfTheSorceress : GiftLeatherCap
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.circletofthesorceress";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class OniwabanBoots : LeatherSoftBoots
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.oniwabanboots";
 		[Constructable]
 		public OniwabanBoots()
 		{

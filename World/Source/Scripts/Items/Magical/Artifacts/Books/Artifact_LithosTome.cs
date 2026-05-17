@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_LithosTome : ElementalSpellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.lithostome";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]

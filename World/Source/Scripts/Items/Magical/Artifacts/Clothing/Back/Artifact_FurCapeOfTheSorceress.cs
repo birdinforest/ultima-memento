@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_FurCapeOfTheSorceress : GiftCloak
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.furcapeofthesorceress";
 		[Constructable]
 		public Artifact_FurCapeOfTheSorceress()
 		{

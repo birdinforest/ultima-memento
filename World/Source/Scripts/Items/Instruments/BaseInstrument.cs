@@ -596,6 +596,12 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
+			bool hm = CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None;
+			string mat = hm ? CraftResources.GetDisplayNameLocalized( m_Resource, BuildingPropertyListLocale ) : null;
+
+			if ( TryAddLocalizedDisplayNameProperty( list, mat, hm, false, false ) )
+				return;
+
 			if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
 				list.Add( 1053099, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // ~1_oretype~ ~2_armortype~
 			else if ( Name == null )
@@ -874,7 +880,7 @@ namespace Server.Items
 					list.Add( entry.Title );
 			}
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			AddEquipLayerProperty( list );
 
 			if( m_UsesRemaining != oldUses )
 				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( InvalidateProperties ) );

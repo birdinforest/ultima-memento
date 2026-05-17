@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1C08, 0x1C09 )]
 	public class PlateSkirt : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.plateskirt";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 2; } }

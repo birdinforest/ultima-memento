@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Club : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.club";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.StunningStrike; } }

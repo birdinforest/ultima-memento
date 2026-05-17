@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF52, 0xF51 )]
 	public class ThrowingDagger : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.throwingdagger";
 		public override string DefaultName
 		{
 			get { return "a throwing dagger"; }

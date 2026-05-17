@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_TotemOfVoid : GiftTalismanLeather
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.totemofvoid";
 		[Constructable]
 		public Artifact_TotemOfVoid()
 		{

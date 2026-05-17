@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Pitchforks : BaseSpear
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.pitchforks";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DoubleStrike; } }

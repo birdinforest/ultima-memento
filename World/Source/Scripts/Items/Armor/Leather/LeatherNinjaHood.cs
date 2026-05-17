@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class LeatherNinjaHood : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leatherninjahood";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 3; } }

@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26C0, 0x26CA )]
 	public class Lance : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.lance";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Dismount; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingAttack; } }

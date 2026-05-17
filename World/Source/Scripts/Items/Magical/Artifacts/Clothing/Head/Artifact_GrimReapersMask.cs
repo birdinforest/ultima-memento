@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_GrimReapersMask : GiftWizardsHat
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.grimreapersmask";
 		[Constructable]
 		public Artifact_GrimReapersMask()
 		{

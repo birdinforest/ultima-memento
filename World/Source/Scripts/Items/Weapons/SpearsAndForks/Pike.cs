@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26BE, 0x26C8 )]
 	public class Pike : BaseSpear
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.pike";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MagicProtection; } }

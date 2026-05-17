@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_QuiverOfRage : BaseQuiver
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.quiverofrage";
 		[Constructable]
 		public Artifact_QuiverOfRage() : base()
 		{

@@ -11,6 +11,7 @@ namespace Server.Items
 {
 	public class Artifact_RodOfResurrection : GiftScepter
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.rodofresurrection";
 		[Constructable]
 		public Artifact_RodOfResurrection()
 		{

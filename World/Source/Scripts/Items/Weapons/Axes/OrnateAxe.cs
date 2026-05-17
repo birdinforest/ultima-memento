@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class OrnateAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.ornateaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ShadowInfectiousStrike; } }

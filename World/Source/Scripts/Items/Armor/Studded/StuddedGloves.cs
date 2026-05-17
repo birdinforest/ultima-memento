@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13d5, 0x13dd )]
 	public class StuddedGloves : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.studdedgloves";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class PlateMempo : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.platemempo";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 2; } }

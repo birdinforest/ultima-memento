@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_LieutenantOfTheBritannianRoyalGuard : GiftSash
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.lieutenantofthebritannianroyalguard";
 		[Constructable]
 		public Artifact_LieutenantOfTheBritannianRoyalGuard()
 		{

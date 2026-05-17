@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_LegsOfFortune : GiftStuddedLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.legsoffortune";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

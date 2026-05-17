@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_AlchemistsBauble : GiftTalismanLeather
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.alchemistsbauble";
 		[Constructable]
 		public Artifact_AlchemistsBauble()
 		{

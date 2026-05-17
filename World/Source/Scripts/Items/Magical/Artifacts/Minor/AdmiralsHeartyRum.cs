@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class AdmiralsHeartyRum : BeverageBottle
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.admiralsheartyrum";
 		public override int LabelNumber{ get{ return 1063477; } }
 		
 		[Constructable]

@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Claymore : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.claymore";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MortalStrike; } }

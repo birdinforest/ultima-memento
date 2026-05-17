@@ -9,6 +9,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xE81, 0xE82 )]
 	public class ShepherdsCrook : BaseStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.shepherdscrook";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DevastatingBlow; } }

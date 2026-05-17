@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Scimitar : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.scimitar";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MagicProtection2; } }

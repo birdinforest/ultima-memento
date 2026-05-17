@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_TunicOfBane : GiftChainChest
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.tunicofbane";
 		public override int BasePoisonResistance{ get{ return 26; } }
 
 		[Constructable]

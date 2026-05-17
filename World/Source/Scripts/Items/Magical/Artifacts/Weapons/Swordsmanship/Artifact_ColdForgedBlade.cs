@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_ColdForgedBlade : GiftElvenSpellblade
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.coldforgedblade";
 		[Constructable]
 		public Artifact_ColdForgedBlade()
 		{

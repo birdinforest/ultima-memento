@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BraceletOfTheElements : GiftGoldBracelet
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.braceletoftheelements";
 		[Constructable]
 		public Artifact_BraceletOfTheElements()
 		{

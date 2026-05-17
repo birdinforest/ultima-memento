@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_FeyLeggings : GiftChainLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.feyleggings";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

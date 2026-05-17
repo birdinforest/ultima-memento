@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_SongWovenMantle : GiftLeatherArms
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.songwovenmantle";
 		public override int BasePhysicalResistance{ get{ return 14; } }
 		public override int BaseColdResistance{ get{ return 14; } }
 		public override int BaseEnergyResistance{ get{ return 16; } }

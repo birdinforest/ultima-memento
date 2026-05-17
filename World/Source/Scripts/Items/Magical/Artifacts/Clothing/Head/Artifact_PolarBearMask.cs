@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_PolarBearMask : GiftBearMask
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.polarbearmask";
 		public override int BasePhysicalResistance{ get{ return 15; } }
 		public override int BaseColdResistance{ get{ return 30; } }
 

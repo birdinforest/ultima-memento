@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_HolySword : GiftLongsword
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.holysword";
 		[Constructable]
 		public Artifact_HolySword()
 		{

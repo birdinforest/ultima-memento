@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class DecorativePlateKabuto : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.decorativeplatekabuto";
 		public override int BasePhysicalResistance{ get{ return 6; } }
 		public override int BaseFireResistance{ get{ return 2; } }
 		public override int BaseColdResistance{ get{ return 2; } }

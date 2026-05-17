@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_QuiverOfInfinity : BaseQuiver
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.quiverofinfinity";
 		[Constructable]
 		public Artifact_QuiverOfInfinity() : base()
 		{

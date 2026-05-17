@@ -334,6 +334,12 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
+			bool hm = CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None;
+			string mat = hm ? CraftResources.GetDisplayNameLocalized( m_Resource, BuildingPropertyListLocale ) : null;
+
+			if ( TryAddLocalizedDisplayNameProperty( list, mat, hm, true, m_Quality == TrinketQuality.Exceptional ) )
+				return;
+
 			if ( m_Quality == TrinketQuality.Exceptional )
 			{
 				if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
@@ -569,7 +575,7 @@ namespace Server.Items
 
 			base.AddResistanceProperties( list );
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			AddEquipLayerProperty( list );
 
 			if ( m_HitPoints >= 0 && m_MaxHitPoints > 0 )
 			{

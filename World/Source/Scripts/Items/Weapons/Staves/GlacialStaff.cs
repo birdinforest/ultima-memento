@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class GlacialStaff : BlackStaff
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.glacialstaff";
 		public override int Hue{ get { return 0xB78; } }
 
 		[Constructable]

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ArmorOfNobility : GiftRingmailChest
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.armorofnobility";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

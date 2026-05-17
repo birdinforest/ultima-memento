@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x143B, 0x143A )]
 	public class Maul : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.maul";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DeathBlow; } }

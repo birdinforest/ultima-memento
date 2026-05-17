@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Broadsword : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.broadsword";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ForceOfNature; } }

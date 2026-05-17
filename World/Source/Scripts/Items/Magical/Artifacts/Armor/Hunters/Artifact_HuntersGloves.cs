@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_HuntersGloves : GiftLeatherGloves
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.huntersgloves";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

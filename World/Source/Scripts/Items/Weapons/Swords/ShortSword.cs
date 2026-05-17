@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class ShortSword : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.shortsword";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DefenseMastery; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Bladeweave; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ElementalStrike; } }

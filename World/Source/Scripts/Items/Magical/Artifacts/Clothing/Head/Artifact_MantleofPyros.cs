@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_MantleofPyros : GiftWizardsHat
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.mantleofpyros";
 		[Constructable]
 		public Artifact_MantleofPyros()
 		{

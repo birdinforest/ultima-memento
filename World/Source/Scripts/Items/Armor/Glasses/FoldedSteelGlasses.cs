@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class FoldedSteelGlasses : ElvenGlasses
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.foldedsteelglasses";
 		public override int LabelNumber{ get{ return 1073380; } } //Folded Steel Reading Glasses
 
 		public override int BasePhysicalResistance{ get{ return 20; } }

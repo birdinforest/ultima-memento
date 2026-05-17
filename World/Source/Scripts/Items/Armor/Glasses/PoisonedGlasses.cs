@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class PoisonedGlasses : ElvenGlasses
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.poisonedglasses";
 		public override int LabelNumber{ get{ return 1073376; } } //Poisoned Reading Glasses
 
 		public override int BasePhysicalResistance{ get{ return 10; } }

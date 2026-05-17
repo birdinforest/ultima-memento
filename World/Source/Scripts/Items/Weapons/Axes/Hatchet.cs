@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF43, 0xF44 )]
 	public class Hatchet : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.hatchet";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MagicProtection2; } }

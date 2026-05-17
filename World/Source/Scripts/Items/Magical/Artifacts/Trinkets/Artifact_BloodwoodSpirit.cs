@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BloodwoodSpirit : GiftTalismanLeather
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bloodwoodspirit";
 		[Constructable]
 		public Artifact_BloodwoodSpirit()
 		{

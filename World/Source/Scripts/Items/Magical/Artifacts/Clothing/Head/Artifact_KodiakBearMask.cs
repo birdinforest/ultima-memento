@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_KodiakBearMask : GiftBearMask
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.kodiakbearmask";
 		[Constructable]
 		public Artifact_KodiakBearMask()
 		{

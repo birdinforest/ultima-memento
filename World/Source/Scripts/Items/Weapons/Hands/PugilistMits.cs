@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13C6, 0x13C6 )]
 	public class PugilistMits : PugilistGloves
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.pugilistmits";
 		[Constructable]
 		public PugilistMits()
 		{

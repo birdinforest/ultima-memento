@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class JukaBow : Bow
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.jukabow";
 		public override int AosStrengthReq{ get{ return 80; } }
 		public override int AosDexterityReq{ get{ return 80; } }
 

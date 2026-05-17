@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class ScaledGorget : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.scaledgorget";
 		public override int BasePhysicalResistance{ get{ return 4; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 4; } }

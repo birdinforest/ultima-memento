@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_EssenceOfBattle : GiftGoldRing
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.essenceofbattle";
 		[Constructable]
 		public Artifact_EssenceOfBattle()
 		{

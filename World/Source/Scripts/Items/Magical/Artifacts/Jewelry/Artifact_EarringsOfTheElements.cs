@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_EarringsOfTheElements : GiftGoldEarrings
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.earringsoftheelements";
 		[Constructable]
 		public Artifact_EarringsOfTheElements()
 		{

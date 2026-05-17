@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class ThinLongsword : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.thinlongsword";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.WhirlwindAttack; } }

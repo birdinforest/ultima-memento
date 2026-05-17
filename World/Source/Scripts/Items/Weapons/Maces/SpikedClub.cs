@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class SpikedClub : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.spikedclub";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MeleeProtection; } }

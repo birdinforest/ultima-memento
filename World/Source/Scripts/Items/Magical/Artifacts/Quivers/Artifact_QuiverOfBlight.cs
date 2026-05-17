@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_QuiverOfBlight : ElvenQuiver
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.quiverofblight";
 		[Constructable]
 		public Artifact_QuiverOfBlight() : base()
 		{

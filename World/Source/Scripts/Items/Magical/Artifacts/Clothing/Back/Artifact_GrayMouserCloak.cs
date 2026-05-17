@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_GrayMouserCloak : GiftCloak
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.graymousercloak";
 		[Constructable]
 		public Artifact_GrayMouserCloak()
 		{

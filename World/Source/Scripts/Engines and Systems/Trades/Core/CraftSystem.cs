@@ -162,7 +162,7 @@ namespace Server.Engines.Craft
 				if ( typeHue < 1 || ( typeHue != descriptor.Hue && descriptor.Hue > 0 ) || system is DefDraconic || system is DefLapidary || system is DefStitching )
 					typeHue = descriptor.Hue;
 
-				string description = ItemProps.ItemProperties( descriptor, true );
+				string description = ItemProps.ItemProperties( descriptor, true, from != null ? from.Account : null );
 
 				if ( tool is BaseRunicTool )
 					description += "Potentially Magical";

@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_EarringsOfHealth : GiftGoldEarrings
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.earringsofhealth";
 		[Constructable]
 		public Artifact_EarringsOfHealth()
 		{

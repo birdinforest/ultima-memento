@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_InquisitorsArms : GiftPlateArms
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.inquisitorsarms";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

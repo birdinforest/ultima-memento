@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalGorget : PlateGorget
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalgorget";
 		[Constructable]
 		public RoyalGorget()
 		{

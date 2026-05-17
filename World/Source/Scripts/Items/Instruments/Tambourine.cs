@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Tambourine : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.tambourine";
 		[Constructable]
 		public Tambourine() : base( 0x66F5, 0x52, 0x53 )
 		{

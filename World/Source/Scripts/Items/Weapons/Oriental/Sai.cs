@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27AF, 0x27FA )]
 	public class Sai : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.sai";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Block; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorPierce; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DoubleWhirlwindAttack; } }

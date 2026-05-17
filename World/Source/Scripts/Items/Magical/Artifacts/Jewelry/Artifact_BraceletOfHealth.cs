@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BraceletOfHealth : GiftGoldBracelet
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.braceletofhealth";
 		[Constructable]
 		public Artifact_BraceletOfHealth()
 		{

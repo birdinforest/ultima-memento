@@ -5,6 +5,7 @@ namespace Server.Items
 	// [Flipable( 0x2B04, 0x2B05 )]
 	public class RoyalCape : BaseCloak
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.royalcape";
 		[Constructable]
 		public RoyalCape() : this( 0 )
 		{

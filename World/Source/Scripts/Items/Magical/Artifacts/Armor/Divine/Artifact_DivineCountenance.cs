@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_DivineCountenance : GiftHornedTribalMask
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.divinecountenance";
 		public override int BasePhysicalResistance{ get{ return 8; } }
 		public override int BaseFireResistance{ get{ return 6; } }
 		public override int BaseColdResistance{ get{ return 9; } }

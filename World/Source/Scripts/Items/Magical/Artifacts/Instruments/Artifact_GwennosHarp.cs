@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_GwennosHarp : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.gwennosharp";
 		public override int Hue { get { return 0x9C4; } }
 		public override int InitMinUses{ get{ return 800; } }
 		public override int InitMaxUses{ get{ return 800; } }

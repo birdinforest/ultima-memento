@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_PadsOfTheCuSidhe : GiftFurBoots
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.padsofthecusidhe";
 		[Constructable]
 		public Artifact_PadsOfTheCuSidhe()
 		{

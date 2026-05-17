@@ -5,6 +5,7 @@ namespace Server.Items
 	// [Flipable( 0x2B6B, 0x3162 )]
 	public class JokerRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.jokerrobe";
 		[Constructable]
 		public JokerRobe() : this( 0 )
 		{

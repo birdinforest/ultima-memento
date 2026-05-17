@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BurglarsBandana : GiftBandana
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.burglarsbandana";
 		public override int BasePhysicalResistance{ get{ return 10; } }
 		public override int BaseFireResistance{ get{ return 5; } }
 		public override int BaseColdResistance{ get{ return 7; } }

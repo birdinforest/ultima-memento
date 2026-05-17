@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class LordBritishSuit : BaseSuit
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.lordbritishsuit";
 		[Constructable]
 		public LordBritishSuit() : base( AccessLevel.GameMaster, 0x0, 0x2042 )
 		{

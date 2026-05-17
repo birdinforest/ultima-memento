@@ -535,7 +535,7 @@ namespace Server.Items
 					list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
 			}
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			AddEquipLayerProperty( list );
 
 			if ( (prop = m_LowerAmmoCost) > 0 )
 			{

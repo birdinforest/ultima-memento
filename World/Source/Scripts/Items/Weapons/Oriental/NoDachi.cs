@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x27A2, 0x27ED )]
 	public class NoDachi : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.nodachi";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.RidingSwipe; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.FireStrike; } }

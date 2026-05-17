@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class BoneHarvester : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.boneharvester";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.Disrobe; } }

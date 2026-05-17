@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_CoifOfBane : GiftChainCoif
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.coifofbane";
 		public override int BasePoisonResistance{ get{ return 16; } }
 
 		[Constructable]

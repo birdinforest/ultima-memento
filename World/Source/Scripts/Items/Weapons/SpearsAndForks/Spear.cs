@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Spear : BaseSpear
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.spear";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.AchillesStrike; } }

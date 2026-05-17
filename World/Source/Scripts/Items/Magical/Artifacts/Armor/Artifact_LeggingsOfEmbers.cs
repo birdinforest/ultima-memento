@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_LeggingsOfEmbers : GiftPlateLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.leggingsofembers";
 		public override int BasePhysicalResistance{ get{ return 15; } }
 		public override int BaseFireResistance{ get{ return 25; } }
 		public override int BaseColdResistance{ get{ return 0; } }

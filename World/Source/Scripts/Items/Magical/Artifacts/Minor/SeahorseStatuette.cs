@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class SeahorseStatuette : MonsterStatuette
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.seahorsestatuette";
 		[Constructable]
 		public SeahorseStatuette() : base( MonsterStatuetteType.Seahorse )
 		{

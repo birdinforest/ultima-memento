@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2D35, 0x2D29 )]
 	public class ElvenMachete : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.elvenmachete";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DefenseMastery; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Bladeweave; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ElementalStrike; } }

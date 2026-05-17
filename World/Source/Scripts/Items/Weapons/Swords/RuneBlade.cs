@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2D32, 0x2D26 )]
 	public class RuneBlade : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.runeblade";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Bladeweave; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.TalonStrike; } }

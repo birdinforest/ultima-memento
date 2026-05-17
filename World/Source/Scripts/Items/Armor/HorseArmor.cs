@@ -11,6 +11,7 @@ namespace Server.Items
 {
 	public class HorseArmor : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.horsearmor";
 		public override bool IsContentLocalized => true;
 
 		public override void AddNameProperty( ObjectPropertyList list )

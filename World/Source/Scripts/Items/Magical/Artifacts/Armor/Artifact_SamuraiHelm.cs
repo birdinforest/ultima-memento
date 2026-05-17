@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_SamuraiHelm : GiftPlateBattleKabuto
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.samuraihelm";
 		public override int BasePhysicalResistance{ get{ return 15; } }
 		public override int BaseFireResistance{ get{ return 10; } }
 		public override int BaseColdResistance{ get{ return 10; } }

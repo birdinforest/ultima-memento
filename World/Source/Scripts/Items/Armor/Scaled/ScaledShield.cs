@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class ScaledShield : BaseShield
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.scaledshield";
 		public override int BasePhysicalResistance{ get{ return 1; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 0; } }

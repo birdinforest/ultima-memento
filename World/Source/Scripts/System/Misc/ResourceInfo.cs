@@ -1081,33 +1081,34 @@ namespace Server.Items
 			return ( info == null ? String.Empty : info.Name );
 		}
 
-		/// <summary>Display name (<see cref="GetName"/> English text) localized for harvesting / system messages.</summary>
-		public static string GetDisplayNameLocalized( CraftResource resource, IAccount account )
+		/// <summary>Display name (<see cref="GetName"/> English text) localized for harvesting / OPL / system messages.</summary>
+		public static string GetDisplayNameLocalized( CraftResource resource, string languageCode )
 		{
 			string plain = GetName( resource );
 
 			if ( plain == null || plain.Length == 0 )
 				return plain;
 
-			if ( account != null )
+			// Special resources use logical (short) keys instead of hash-based lookup
+			if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec )
 			{
-				// Special resources use logical (short) keys instead of hash-based lookup
-				if ( resource >= CraftResource.SpectralSpec && resource <= CraftResource.TurtleSpec )
-				{
-					string lang = AccountLang.GetLanguageCode( account );
-					string logicalKey = "resource.special." + plain.ToLower();
-					string localized = StringCatalog.TryResolveByKey( lang, logicalKey );
+				string logicalKey = "resource.special." + plain.ToLower();
+				string localized = StringCatalog.TryResolveByKey( languageCode, logicalKey );
 
-					if ( localized != null )
-						return localized;
+				if ( localized != null )
+					return localized;
 
-					return plain;
-				}
-
-				return StringCatalog.Resolve( account, plain ) ?? plain;
+				return plain;
 			}
 
-			return plain;
+			return StringCatalog.TryResolve( languageCode, plain ) ?? plain;
+		}
+
+		/// <summary>Display name localized for the given account language.</summary>
+		public static string GetDisplayNameLocalized( CraftResource resource, IAccount account )
+		{
+			string lang = account != null ? AccountLang.GetLanguageCode( account ) : LangConfig.DefaultLanguage;
+			return GetDisplayNameLocalized( resource, lang );
 		}
 
 		public static string GetPrefix( CraftResource resource )

@@ -5,6 +5,7 @@ namespace Server.Items
 	// [FlipableAttribute( 0x2B68, 0x315F )]
 	public class LoinCloth : BaseWaist
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.loincloth";
 		[Constructable]
 		public LoinCloth() : this( 0 )
 		{

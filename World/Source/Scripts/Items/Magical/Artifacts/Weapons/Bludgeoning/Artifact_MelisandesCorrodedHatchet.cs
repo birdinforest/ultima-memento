@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_MelisandesCorrodedHatchet : GiftHatchet
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.melisandescorrodedhatchet";
 		[Constructable]
 		public Artifact_MelisandesCorrodedHatchet()
 		{

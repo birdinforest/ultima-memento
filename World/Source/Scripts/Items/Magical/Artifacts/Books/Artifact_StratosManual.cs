@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_StratosManual : ElementalSpellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.stratosmanual";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]

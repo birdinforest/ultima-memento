@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_TotemLeggings : GiftLeatherLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.totemleggings";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

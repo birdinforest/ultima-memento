@@ -4,7 +4,8 @@ using Server.Items;
 namespace Server.Items
 {
 	public class Artifact_Pestilence: BaseQuiver
-	{		
+	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.pestilence";		
 		[Constructable]
 		public Artifact_Pestilence() : base()
         {

@@ -8,6 +8,7 @@ namespace Server.Items
 {
 	public class Harpoon : BaseRanged
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.harpoon";
 		public override int EffectID{ get{ return 0x528A; } }
 		public override Type AmmoType{ get{ return typeof( HarpoonRope ); } }
 		public override Item Ammo{ get{ return new HarpoonRope(); } }

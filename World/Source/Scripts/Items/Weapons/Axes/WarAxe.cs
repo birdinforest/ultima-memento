@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class WarAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.waraxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.DefenseMastery; } }

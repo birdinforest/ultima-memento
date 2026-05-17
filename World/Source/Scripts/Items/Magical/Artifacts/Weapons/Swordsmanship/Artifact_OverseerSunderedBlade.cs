@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_OverseerSunderedBlade : GiftRadiantScimitar
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.overseersunderedblade";
 		[Constructable]
 		public Artifact_OverseerSunderedBlade()
 		{

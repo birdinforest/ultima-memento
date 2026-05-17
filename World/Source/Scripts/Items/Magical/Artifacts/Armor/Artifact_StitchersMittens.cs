@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_StitchersMittens : GiftLeatherGloves
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.stitchersmittens";
 		public override int BasePhysicalResistance{ get{ return 20; } }
 		public override int BaseColdResistance{ get{ return 20; } }
 

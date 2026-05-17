@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1401, 0x1400 )]
 	public class Kryss : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.kryss";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapDexStrike; } }

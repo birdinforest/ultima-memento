@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26C1, 0x26CB )]
 	public class CrescentBlade : BaseSword
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.crescentblade";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.LightningStriker; } }

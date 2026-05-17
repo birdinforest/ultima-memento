@@ -2,6 +2,7 @@ namespace Server.Items
 {
 	public class Artifact_PolarBearBoots : GiftFurBoots
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.polarbearboots";
 		public override int BasePhysicalResistance { get{ return 3; } }
 		public override int BaseFireResistance { get{ return 3; } }
 		public override int BaseColdResistance { get{ return 4; } }

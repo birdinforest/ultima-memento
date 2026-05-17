@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_HuntersHeaddress : GiftDeerMask
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.huntersheaddress";
 		public override int BaseColdResistance{ get{ return 23; } }
 
 		[Constructable]

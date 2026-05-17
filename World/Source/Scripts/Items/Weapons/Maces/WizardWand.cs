@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class WizardWand : BaseBashing
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.wizardwand";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.PsychicAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ZapManaStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ElementalStrike; } }

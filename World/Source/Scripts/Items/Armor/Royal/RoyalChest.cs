@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalChest : PlateChest
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalchest";
 		[Constructable]
 		public RoyalChest()
 		{

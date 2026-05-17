@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_Bonesmasher : GiftDiamondMace
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bonesmasher";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

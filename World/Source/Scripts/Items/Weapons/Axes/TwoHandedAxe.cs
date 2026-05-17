@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class TwoHandedAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.twohandedaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ToxicStrike; } }

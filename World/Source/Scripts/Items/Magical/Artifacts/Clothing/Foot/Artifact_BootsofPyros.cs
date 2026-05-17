@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_BootsofPyros : GiftBoots
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bootsofpyros";
 		[Constructable]
 		public Artifact_BootsofPyros()
 		{

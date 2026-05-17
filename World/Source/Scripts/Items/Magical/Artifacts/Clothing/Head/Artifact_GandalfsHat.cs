@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_GandalfsHat : GiftWizardsHat
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.gandalfshat";
 		[Constructable]
 		public Artifact_GandalfsHat()
 		{

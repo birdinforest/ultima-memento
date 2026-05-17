@@ -335,7 +335,15 @@ namespace Server.Items
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
 			if ( m_Title != null && m_Title.Length > 0 )
-				list.Add( m_Title );
+			{
+				if ( !m_Writable && BuildingPropertyListLocale != null )
+				{
+					string title = StringCatalog.TryResolve( BuildingPropertyListLocale, m_Title ) ?? m_Title;
+					list.Add( title );
+				}
+				else
+					list.Add( m_Title );
+			}
 			else
 				base.AddNameProperty( list );
 		}

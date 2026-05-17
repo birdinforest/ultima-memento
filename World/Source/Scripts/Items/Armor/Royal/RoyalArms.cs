@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalArms : PlateArms
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalarms";
 		[Constructable]
 		public RoyalArms()
 		{

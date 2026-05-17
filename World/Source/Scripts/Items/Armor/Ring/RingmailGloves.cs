@@ -6,6 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13eb, 0x13f2 )]
 	public class RingmailGloves : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.ringmailgloves";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 1; } }

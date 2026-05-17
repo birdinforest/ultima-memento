@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class DrakboneBracers : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.drakbonebracers";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 3; } }

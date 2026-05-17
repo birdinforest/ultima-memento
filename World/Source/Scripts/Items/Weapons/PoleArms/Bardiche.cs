@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF4D, 0xF4E )]
 	public class Bardiche : BasePoleArm
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.bardiche";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.PsychicAttack; } }

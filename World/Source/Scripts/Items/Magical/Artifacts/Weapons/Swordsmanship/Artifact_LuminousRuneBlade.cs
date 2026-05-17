@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_LuminousRuneBlade : GiftRuneBlade
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.luminousruneblade";
 		[Constructable]
 		public Artifact_LuminousRuneBlade()
 		{

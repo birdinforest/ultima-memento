@@ -6,6 +6,7 @@ namespace Server.Items
 {
     public class Artifact_ShimmeringTalisman : GiftTalismanLeather
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.shimmeringtalisman";
 		[Constructable]
 		public Artifact_ShimmeringTalisman()
 		{

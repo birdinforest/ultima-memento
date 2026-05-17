@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_ResilientBracer : GiftGoldBracelet
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.resilientbracer";
 		public override int PhysicalResistance{ get { return 20; } }
 
 		[Constructable]

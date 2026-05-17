@@ -8,6 +8,7 @@ namespace Server.Items
 {
 	public class Artifact_BookOfKnowledge : Spellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bookofknowledge";
 		[Constructable]
 		public Artifact_BookOfKnowledge() : base()
 		{

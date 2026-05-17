@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Lute : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.lute";
 		[Constructable]
 		public Lute() : base( 0x66F3, 0x4C, 0x4D )
 		{

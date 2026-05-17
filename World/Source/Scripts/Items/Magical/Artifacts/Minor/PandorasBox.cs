@@ -12,6 +12,7 @@ namespace Server.Items
 
     public class PandorasBox : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.pandorasbox";
 		public override bool IsContentLocalized => true;
 
 		private PandoraEffect m_PandoraEffect;

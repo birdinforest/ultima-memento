@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_SpellWovenBritches : GiftLeatherLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.spellwovenbritches";
 		public override int BaseFireResistance{ get{ return 15; } }
 		public override int BasePoisonResistance{ get{ return 16; } }
 

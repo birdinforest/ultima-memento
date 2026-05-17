@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_Aegis : GiftHeaterShield
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.aegis";
 		public override int BasePhysicalResistance{ get{ return 15; } }
 
 		[Constructable]

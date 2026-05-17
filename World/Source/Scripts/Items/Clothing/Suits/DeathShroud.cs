@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class DeathShroud : BaseSuit
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.deathshroud";
 		[Constructable]
 		public DeathShroud() : base( AccessLevel.GameMaster, 0x0, 0x204E )
 		{

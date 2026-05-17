@@ -9,6 +9,7 @@ namespace Server.Items
 {
 	public class EverlastingLoaf : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.everlastingloaf";
 		public override double DefaultWeight
 		{
 			get { return 1.0; }

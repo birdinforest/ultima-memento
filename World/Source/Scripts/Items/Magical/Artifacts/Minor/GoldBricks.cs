@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class GoldBricks : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.goldbricks";
 		public override int LabelNumber{ get{ return 1063489; } }
 		
 		[Constructable]

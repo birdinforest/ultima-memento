@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_LunaLance : GiftLance
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.lunalance";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

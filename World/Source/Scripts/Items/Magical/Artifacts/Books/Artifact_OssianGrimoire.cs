@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Artifact_OssianGrimoire : NecromancerSpellbook
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.ossiangrimoire";
 		[Constructable]
 		public Artifact_OssianGrimoire() : base()
 		{

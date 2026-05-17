@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RoyalShield : HeaterShield
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.royalshield";
 		[Constructable]
 		public RoyalShield()
 		{

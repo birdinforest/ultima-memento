@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF47, 0xF48 )]
 	public class BattleAxe : BaseAxe
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.battleaxe";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.RidingAttack; } }

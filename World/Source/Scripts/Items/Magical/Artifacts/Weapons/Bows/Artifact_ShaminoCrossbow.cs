@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_ShaMontorrossbow : GiftRepeatingCrossbow
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.shamontorrossbow";
 		[Constructable]
 		public Artifact_ShaMontorrossbow()
 		{

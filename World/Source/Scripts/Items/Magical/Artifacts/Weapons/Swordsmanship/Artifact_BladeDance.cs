@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_BladeDance : GiftRuneBlade
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bladedance";
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 

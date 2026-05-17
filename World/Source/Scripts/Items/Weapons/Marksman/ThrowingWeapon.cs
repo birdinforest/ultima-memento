@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class ThrowingWeapon : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.throwingweapon";
 		public string ammo;
 
 		[CommandProperty(AccessLevel.Owner)]

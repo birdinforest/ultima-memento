@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_SpiritOfTheTotem : GiftBearMask
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.spiritofthetotem";
 		public override int BasePhysicalResistance{ get{ return 20; } }
 
 		[Constructable]

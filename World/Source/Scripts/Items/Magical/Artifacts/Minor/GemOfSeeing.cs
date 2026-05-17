@@ -16,6 +16,7 @@ namespace Server.Items
 
 	public class GemOfSeeing : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.gemofseeing";
 		public override bool IsContentLocalized => true;
 
 		private GemOfSeeingEffect m_GemOfSeeingEffect;

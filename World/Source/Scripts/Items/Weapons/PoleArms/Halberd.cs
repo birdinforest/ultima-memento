@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Halberd : BasePoleArm
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.halberd";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapStrStrike; } }

@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_OblivionsNeedle : GiftDagger
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.oblivionsneedle";
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 

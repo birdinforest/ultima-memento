@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class OniwabanLeggings : LeatherLegs
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.oniwabanleggings";
 		[Constructable]
 		public OniwabanLeggings()
 		{

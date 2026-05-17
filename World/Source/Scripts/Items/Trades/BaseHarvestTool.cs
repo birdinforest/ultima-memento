@@ -156,7 +156,7 @@ namespace Server.Items
 
 			m_AosSkillBonuses.GetProperties( list );
 
-			list.Add( 1061182, EquipLayerName( Layer ) );
+			AddEquipLayerProperty( list );
 
 			if ( BuildingPropertyListLocale != null )
 				AddLocalizedProperty( list, "prop.uses", m_UsesRemaining );
@@ -180,7 +180,17 @@ namespace Server.Items
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
 			if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
-				list.Add( 1053099, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // ~1_oretype~ ~2_armortype~
+			{
+				if ( BuildingPropertyListLocale != null )
+				{
+					string mat = CraftResources.GetDisplayNameLocalized( m_Resource, BuildingPropertyListLocale );
+					string typeName = GetNameString();
+					string line = string.Format( ResolvePropertyText( "prop.item.opl.firstline.material_type" ), mat, typeName );
+					list.Add( line );
+				}
+				else
+					list.Add( 1053099, "#{0}\t{1}", CraftResources.GetClilocLowerCaseName( m_Resource ), GetNameString() ); // ~1_oretype~ ~2_armortype~
+			}
 			else if ( Name == null )
 				list.Add( LabelNumber );
 			else

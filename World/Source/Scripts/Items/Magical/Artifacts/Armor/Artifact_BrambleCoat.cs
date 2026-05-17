@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BrambleCoat : GiftLeatherChest
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bramblecoat";
 		public override int BasePhysicalResistance{ get{ return 10; } }
 		public override int BaseFireResistance{ get{ return 8; } }
 		public override int BaseColdResistance{ get{ return 7; } }

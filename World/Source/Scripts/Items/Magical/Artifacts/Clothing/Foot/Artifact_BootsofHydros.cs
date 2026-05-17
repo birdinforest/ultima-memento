@@ -7,6 +7,7 @@ namespace Server.Items
 {
 	public class Artifact_BootsofHydros : GiftBoots
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.bootsofhydros";
 		[Constructable]
 		public Artifact_BootsofHydros()
 		{

@@ -9,6 +9,7 @@ namespace Server.Items
 {
 	public class EverlastingBottle : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.everlastingbottle";
 		public override double DefaultWeight
 		{
 			get { return 1.0; }

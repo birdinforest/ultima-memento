@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_BlightGrippedLongbow : GiftElvenCompositeLongbow
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.blightgrippedlongbow";
 		[Constructable]
 		public Artifact_BlightGrippedLongbow()
 		{

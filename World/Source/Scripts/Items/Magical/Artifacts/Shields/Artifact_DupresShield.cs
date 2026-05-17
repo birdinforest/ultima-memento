@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_DupresShield : GiftOrderShield
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.dupresshield";
 		public override int BasePhysicalResistance { get { return 10; } }
 		public override int BaseFireResistance { get { return 0; } }
 		public override int BaseColdResistance { get { return 0; } }

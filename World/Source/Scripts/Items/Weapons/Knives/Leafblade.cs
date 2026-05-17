@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2D22, 0x2D2E )]
 	public class Leafblade : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.leafblade";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Feint; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapIntStrike; } }

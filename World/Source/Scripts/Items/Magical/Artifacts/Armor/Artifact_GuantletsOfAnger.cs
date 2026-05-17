@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class Artifact_GuantletsOfAnger : GiftPlateGloves
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.guantletsofanger";
 		public override int BasePhysicalResistance{ get{ return 4; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 5; } }

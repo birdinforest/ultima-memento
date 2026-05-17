@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Artifact_ShardThrasher : GiftDiamondMace
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifact.shardthrasher";
 		[Constructable]
 		public Artifact_ShardThrasher()
 		{

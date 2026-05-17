@@ -7,6 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13F6, 0x13F7 )]
 	public class ButcherKnife : BaseKnife
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.butcherknife";
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ConsecratedStrike; } }

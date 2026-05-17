@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class Fiddle : BaseInstrument
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.instrument.fiddle";
 		[Constructable]
 		public Fiddle() : base( 0x3966, 0x5B1, 0x5B0 )
 		{

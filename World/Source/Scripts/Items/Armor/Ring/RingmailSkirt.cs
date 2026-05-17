@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class RingmailSkirt : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.ringmailskirt";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 1; } }
