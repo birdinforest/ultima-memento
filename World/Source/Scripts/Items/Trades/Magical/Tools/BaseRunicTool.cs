@@ -468,16 +468,19 @@ namespace Server.Items
 		}
 
 		private const int MaxProperties = 34;
-		private static BitArray m_Props = new BitArray( MaxProperties );
 		private static int[] m_Possible = new int[MaxProperties];
 
-		private static int GetUniqueRandom( int count )
+		/// <summary>
+		/// Picks a random unused property slot index in [0, count). Not static: must survive reentrant
+		/// <see cref="ApplyAttributesTo"/> when attribute writes call <see cref="Item.InvalidateProperties"/> mid-loop.
+		/// </summary>
+		private static int GetUniqueRandom( BitArray props, int count )
 		{
 			int avail = 0;
 
 			for ( int i = 0; i < count; ++i )
 			{
-				if ( !m_Props[i] )
+				if ( !props[i] )
 					m_Possible[avail++] = i;
 			}
 
@@ -486,7 +489,7 @@ namespace Server.Items
 
 			int v = m_Possible[Utility.Random( avail )];
 
-			m_Props.Set( v, true );
+			props.Set( v, true );
 
 			return v;
 		}
@@ -553,14 +556,15 @@ namespace Server.Items
 			AosWeaponAttributes secondary = weapon.WeaponAttributes;
 			AosSkillBonuses skills = weapon.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			if ( weapon is BaseRanged )
-				m_Props.Set( 2, true ); // ranged weapons cannot be ubws or mageweapon
+				props.Set( 2, true ); // ranged weapons cannot be ubws or mageweapon
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 26 );
+				int random = GetUniqueRandom( props, 26 );
 
 				if ( random == -1 )
 					break;
@@ -685,25 +689,26 @@ namespace Server.Items
 			AosArmorAttributes secondary = armor.ArmorAttributes;
 			AosSkillBonuses skills = armor.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			bool isShield = ( armor is BaseShield );
 			int baseCount = ( isShield ? 7 : 20 );
 			int baseOffset = ( isShield ? 0 : 4 );
 
 			if ( !isShield && armor.MeditationAllowance == ArmorMeditationAllowance.All )
-				m_Props.Set( 3, true ); // remove mage armor from possible properties
+				props.Set( 3, true ); // remove mage armor from possible properties
 			if ( armor.Resource >= CraftResource.RegularLeather && armor.Resource <= CraftResource.BarbedLeather )
 			{
-				m_Props.Set( 0, true ); // remove lower requirements from possible properties for leather armor
-				m_Props.Set( 2, true ); // remove durability bonus from possible properties
+				props.Set( 0, true ); // remove lower requirements from possible properties for leather armor
+				props.Set( 2, true ); // remove durability bonus from possible properties
 			}
 			if ( armor.RequiredRace == Race.Elf )
-				m_Props.Set( 7, true ); // elves inherently have night sight and elf only armor doesn't get night sight as a mod
+				props.Set( 7, true ); // elves inherently have night sight and elf only armor doesn't get night sight as a mod
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( baseCount );
+				int random = GetUniqueRandom( props, baseCount );
 
 				if ( random == -1 )
 					break;
@@ -769,11 +774,12 @@ namespace Server.Items
 			AosElementAttributes resists = hat.Resistances;
 			AosSkillBonuses skills = hat.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 34 );
+				int random = GetUniqueRandom( props, 34 );
 
 				if ( random == -1 )
 					break;
@@ -824,11 +830,12 @@ namespace Server.Items
 			AosElementAttributes resists = cloth.Resistances;
 			AosSkillBonuses skills = cloth.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 32 );
+				int random = GetUniqueRandom( props, 32 );
 
 				if ( random == -1 )
 					break;
@@ -877,11 +884,12 @@ namespace Server.Items
 			AosElementAttributes resists = jewelry.Resistances;
 			AosSkillBonuses skills = jewelry.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 32 );
+				int random = GetUniqueRandom( props, 32 );
 
 				if ( random == -1 )
 					break;
@@ -928,7 +936,8 @@ namespace Server.Items
 		{
 			AosAttributes primary = quiver.Attributes;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			int lowAmmo = 0;
 				if ( LootPack.CheckLuck( m_LuckChance ) || max >= Utility.RandomMinMax( 1, 50 ) ){ lowAmmo = 5 + Utility.RandomMinMax( min, max ); }
@@ -942,7 +951,7 @@ namespace Server.Items
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 22 );
+				int random = GetUniqueRandom( props, 22 );
 
 				if ( random == -1 )
 					break;
@@ -981,11 +990,12 @@ namespace Server.Items
 			AosElementAttributes resists = lute.Resistances;
 			AosSkillBonuses skills = lute.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 33 );
+				int random = GetUniqueRandom( props, 33 );
 
 				if ( random == -1 )
 					break;
@@ -1034,17 +1044,18 @@ namespace Server.Items
 			AosAttributes primary = spellbook.Attributes;
 			AosSkillBonuses skills = spellbook.SkillBonuses;
 
-			m_Props.SetAll( false );
+			BitArray props = new BitArray( MaxProperties );
+			props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 16 );
+				int random = GetUniqueRandom( props, 16 );
 
 				if ( random == -1 )
 					break;
 
 				if ( random == 15 && !spellbook.AllowSlayers() )
-					random = GetUniqueRandom( 15 );
+					random = GetUniqueRandom( props, 15 );
 
 				switch ( random )
 				{
@@ -1056,7 +1067,7 @@ namespace Server.Items
 						ApplyAttribute( primary, min, max, AosAttribute.BonusInt, 1, 8 );
 
 						for ( int j = 0; j < 4; ++j )
-							m_Props.Set( j, true );
+							props.Set( j, true );
 
 						break;
 					}
