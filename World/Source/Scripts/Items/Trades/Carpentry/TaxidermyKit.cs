@@ -3,6 +3,7 @@ using Server;
 using Server.Multis;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -172,6 +173,8 @@ namespace Server.Items
 
 	public class TrophyAddon : Item, IAddon
 	{
+		public override bool IsContentLocalized => true;
+
 		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
 
 		private int m_WestID;
@@ -222,10 +225,20 @@ namespace Server.Items
 
 			if ( m_AnimalWeight >= 20 )
 			{
-				if ( m_Hunter != null )
-					list.Add( 1070857, m_Hunter.Name ); // Caught by ~1_fisherman~
+				if ( BuildingPropertyListLocale != null )
+				{
+					if ( m_Hunter != null )
+						AddLocalizedProperty( list, "prop.trade.bigfish.caught.by", m_Hunter.Name );
 
-				list.Add( 1070858, m_AnimalWeight.ToString() ); // ~1_weight~ stones
+					AddLocalizedProperty( list, "prop.trade.bigfish.weight.stones", m_AnimalWeight.ToString() );
+				}
+				else
+				{
+					if ( m_Hunter != null )
+						list.Add( 1070857, m_Hunter.Name ); // Caught by ~1_fisherman~
+
+					list.Add( 1070858, m_AnimalWeight.ToString() ); // ~1_weight~ stones
+				}
 			}
 		}
 
@@ -336,6 +349,8 @@ namespace Server.Items
 	[Flipable( 0x14F0, 0x14EF )]
 	public class TrophyDeed : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private int m_WestID;
 		private int m_NorthID;
 		private int m_DeedNumber;
@@ -394,10 +409,20 @@ namespace Server.Items
 
 			if ( m_AnimalWeight >= 20 )
 			{
-				if ( m_Hunter != null )
-					list.Add( 1070857, m_Hunter.Name ); // Caught by ~1_fisherman~
+				if ( BuildingPropertyListLocale != null )
+				{
+					if ( m_Hunter != null )
+						AddLocalizedProperty( list, "prop.trade.bigfish.caught.by", m_Hunter.Name );
 
-				list.Add( 1070858, m_AnimalWeight.ToString() ); // ~1_weight~ stones
+					AddLocalizedProperty( list, "prop.trade.bigfish.weight.stones", m_AnimalWeight.ToString() );
+				}
+				else
+				{
+					if ( m_Hunter != null )
+						list.Add( 1070857, m_Hunter.Name ); // Caught by ~1_fisherman~
+
+					list.Add( 1070858, m_AnimalWeight.ToString() ); // ~1_weight~ stones
+				}
 			}
 		}
 
@@ -462,7 +487,7 @@ namespace Server.Items
 							case Direction.East:
 							case Direction.West:  northWall = false; westWall = true; break;
 
-							default: from.SendMessage( "Turn to face the wall on which to hang this trophy." ); return;
+							default: from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.taxidermy.msg.face.wall" ) ); return;
 						}
 					}
 

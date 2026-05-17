@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Items;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Engines.Craft;
@@ -11,6 +12,8 @@ namespace Server.Items
 {
 	public class WetClothes : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public WetClothes() : base( 0x1B72 )
 		{
@@ -75,12 +78,15 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Squeeze Out Water To Dry");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.wetclothes.squeeze" );
+			else
+				list.Add( 1070722, "Squeeze Out Water To Dry");
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage("You squeeze out the water.");
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.wetclothes.msg.squeeze" ) );
 			from.PlaySound( 0x026 );
 
 			if ( this.ItemID == 0x1517 || this.ItemID == 0x1518 ){ from.AddToBackpack( new Shirt( Utility.RandomDyedHue() ) ); }

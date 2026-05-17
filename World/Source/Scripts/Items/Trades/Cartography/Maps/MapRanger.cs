@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.ContextMenus;
 using Server.Gumps;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Items 
 {
@@ -21,7 +22,14 @@ namespace Server.Items
 
 	public class MapRanger : Item
 	{
-		public override string DefaultDescription{ get{ return "This is a trail map that shows a secret path to get to the location drawn on the map. You can only use these maps if you have at least an 80 in either skills of tracking or cartography. They can never be copied and they eventually wear out from use. If you double click the map while it is in your pack, you will follow the path of the map by yourself. No one will be able to follow you on your quick journey to this place. If you set the map down and double click it, then others will be able to use the map to go with you on your journey as they can double click the map left behind to follow you. The original map will be put back into your pack, while this map left behind will only remain for about 30 seconds so your comrades should make haste and follow. If a map goes to a world you have not discovered the way into on your own, then you will toss the map out as you cannot seem to find the path to this place."; } }
+		private const string MapRangerLongDescriptionEn =
+			"This is a trail map that shows a secret path to get to the location drawn on the map. You can only use these maps if you have at least an 80 in either skills of tracking or cartography. They can never be copied and they eventually wear out from use. If you double click the map while it is in your pack, you will follow the path of the map by yourself. No one will be able to follow you on your quick journey to this place. If you set the map down and double click it, then others will be able to use the map to go with you on your journey as they can double click the map left behind to follow you. The original map will be put back into your pack, while this map left behind will only remain for about 30 seconds so your comrades should make haste and follow. If a map goes to a world you have not discovered the way into on your own, then you will toss the map out as you cannot seem to find the path to this place.";
+
+		public override bool IsContentLocalized => true;
+
+		public override string DefaultDescription{ get { return MapRangerLongDescriptionEn; } }
+
+		public override string InfoDataLocalizationKey { get { return "prop.trade.mapranger.longdesc"; } }
 
 		private MapRangerEffect m_MapRangerEffect;
 		private int m_Charges;
@@ -54,11 +62,29 @@ namespace Server.Items
 			Name = "Trail Map to " + m_MapDestination;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string fmt = ResolvePropertyText( "item.trade.mapranger.name.format" );
+				list.Add( string.Format( fmt, m_MapDestination ) );
+			}
+			else
+				base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, Server.Lands.LandName( Server.Lands.GetLand( m_MapDest, m_PointDest, m_PointDest.X, m_PointDest.Y ) ) );
-			list.Add( 1049644, "Use To Get To Locations Quicker");
+			Land goWorld = Server.Lands.GetLand( m_MapDest, m_PointDest, m_PointDest.X, m_PointDest.Y );
+			string landLine = BuildingPropertyListLocale != null
+				? Lands.LocalizedLandName( goWorld, BuildingPropertyListLocale )
+				: Lands.LandName( goWorld );
+			list.Add( 1070722, landLine );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.mapranger.opl.use.quicker" );
+			else
+				list.Add( 1049644, "Use To Get To Locations Quicker");
         } 
 		
 		public override void OnDoubleClick( Mobile from )
@@ -78,13 +104,13 @@ namespace Server.Items
 
 			if ( from.Skills[SkillName.Tracking].Value < 80 && from.Skills[SkillName.Cartography].Value < 80 )
 			{
-				from.SendMessage( "You must be a adept ranger or cartographer to use this map." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.mapranger.msg.skill" ) );
 				return;
 			}
 			else if (	from.Region.IsPartOf( typeof( BardTownRegion ) ) || 
 						from.Region.IsPartOf( typeof( BardDungeonRegion ) ) )
 			{
-				from.SendMessage( "This won't lead you out of this place." ); 
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.mapranger.msg.no.escape" ) );
 				return;
 			}
 			else if (	!Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) && 
@@ -93,12 +119,12 @@ namespace Server.Items
 						!from.Region.IsPartOf( typeof( VillageRegion ) ) && 
 						!from.Region.IsPartOf( typeof( PublicRegion ) ) )
 			{
-				from.SendMessage( "You can only use this map outdoors." ); 
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.mapranger.msg.outdoors" ) );
 				return;
 			}
 			else if ( CanUseMap == false )
 			{
-				from.SendMessage( "Not knowing how to get to this world, this can't help you one bit." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.mapranger.msg.world.unknown" ) );
 				return;
 			}
 			else if ( IsChildOf( from.Backpack ) && Charges > 0 ) 
@@ -127,7 +153,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "This map is too worn from over use, and is no longer of any good." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.mapranger.msg.worn.out" ) );
 				this.Delete();
 				return;
 			}
@@ -148,7 +174,13 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+			{
+				string usesWord = ResolvePropertyText( "prop.trade.common.uses.word" );
+				AddLocalizedProperty( list, "prop.trade.common.uses.line", m_Charges.ToString(), usesWord );
+			}
+			else
+				list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
 		}
 
 		private class InternalItem : MapRangerDoor
@@ -338,6 +370,8 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class MapRangerDoor : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public Point3D m_PointDest;
 		public Map m_MapDest;
 
@@ -395,10 +429,21 @@ namespace Server.Items
 			}
         }
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+				list.Add( ResolvePropertyText( "item.trade.mapranger.door" ) );
+			else
+				base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Double-Click To Follow The Path");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.mapranger.door.follow" );
+			else
+				list.Add( 1070722, "Double-Click To Follow The Path");
         } 
 
 		public static void MapTeleport( Mobile m, Point3D loc, Map map )

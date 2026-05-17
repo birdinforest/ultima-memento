@@ -1,4 +1,5 @@
 using Server.Spells.Third;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -23,7 +24,7 @@ namespace Server.Items
 		{
 			if ( Parent != from )
 			{
-				from.SendMessage( "You must be wearing the robe to teleport." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.robe.teleport.hold" ) );
 			}
 			else
 			{

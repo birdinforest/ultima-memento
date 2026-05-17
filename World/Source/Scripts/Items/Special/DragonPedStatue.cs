@@ -11,12 +11,15 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0x4C2D, 0x4C33 )]
 	public class DragonPedStatue : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Stone; } }
 
@@ -50,6 +53,23 @@ namespace Server.Items
 			SetMaterial();
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string display = ( Name == "dragon statue" || string.IsNullOrEmpty( Name ) )
+					? ResolvePropertyText( "item.special.dragon.statue" )
+					: ( StringCatalog.TryResolve( BuildingPropertyListLocale, Name ) ?? Name );
+
+				if ( Amount <= 1 )
+					list.Add( display );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, display );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public void SetMaterial()
 		{
 			switch ( Utility.RandomMinMax( 0, 2 ) )
@@ -63,8 +83,22 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, StatueColor);
-            if ( StatueName != null && StatueName != "" ){ list.Add( 1049644, StatueName); }
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				string colorDisplay = StringCatalog.TryResolve( BuildingPropertyListLocale, StatueColor ) ?? StatueColor;
+				AddLocalizedProperty( list, "prop.special.dragonstatue.material", colorDisplay );
+
+				if ( StatueName != null && StatueName != "" )
+					AddLocalizedProperty( list, "prop.special.dragonstatue.inscription", StatueName );
+			}
+			else
+			{
+				list.Add( 1070722, StatueColor);
+
+				if ( StatueName != null && StatueName != "" )
+					list.Add( 1049644, StatueName);
+			}
         }
 
 		public DragonPedStatue( Serial serial ) : base( serial )

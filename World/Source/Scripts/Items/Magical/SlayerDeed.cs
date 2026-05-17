@@ -4,6 +4,7 @@ using Server.Prompts;
 using Server.Items;
 using Server.Targeting;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -28,28 +29,28 @@ namespace Server.Items
 
 				if ( item.RootParent != from )
 				{
-					from.SendMessage( "The weapon must be in your pack." );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.weapon.pack"));
 				}
 				else if ( item.Slayer != SlayerName.None && item.Slayer2 != SlayerName.None )
 				{
-					from.SendMessage( "The weapon is already a slayer.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.weapon.full"));
 				}
 				else if ( item.Slayer == slaying || item.Slayer2 == slaying )
 				{
-					from.SendMessage( "The weapon already slays these creatures.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.weapon.dupe"));
 				}
 				else
 				{
 					if (item.Slayer == SlayerName.None)
 					{
 						item.Slayer = slaying;
-						from.SendMessage( "The weapon now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.weapon.done1"));
 						m_Deed.Delete();
 					}
 					else if (item.Slayer2 == SlayerName.None)
 					{
 						item.Slayer2 = slaying;
-						from.SendMessage( "You weapon now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.weapon.done2"));
 						m_Deed.Delete();
 					}
 				}
@@ -62,28 +63,28 @@ namespace Server.Items
 
 				if ( item.RootParent != from )
 				{
-					from.SendMessage( "The instrument must be in your pack." );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.instrument.pack"));
 				}
 				else if ( item.Slayer != SlayerName.None && item.Slayer2 != SlayerName.None )
 				{
-					from.SendMessage( "The instrument is already a slayer.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.instrument.full"));
 				}
 				else if ( item.Slayer == slaying || item.Slayer2 == slaying )
 				{
-					from.SendMessage( "The instrument already slays these creatures.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.instrument.dupe"));
 				}
 				else
 				{
 					if (item.Slayer == SlayerName.None)
 					{
 						item.Slayer = slaying;
-						from.SendMessage( "The instrument now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.instrument.done1"));
 						m_Deed.Delete();
 					}
 					else if (item.Slayer2 == SlayerName.None)
 					{
 						item.Slayer2 = slaying;
-						from.SendMessage( "You instrument now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.instrument.done2"));
 						m_Deed.Delete();
 					}
 				}
@@ -96,28 +97,28 @@ namespace Server.Items
 
 				if ( item.RootParent != from )
 				{
-					from.SendMessage( "The book must be in your pack." );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.book.pack"));
 				}
 				else if ( item.Slayer != SlayerName.None && item.Slayer2 != SlayerName.None )
 				{
-					from.SendMessage( "The book is already a slayer.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.book.full"));
 				}
 				else if ( item.Slayer == slaying || item.Slayer2 == slaying )
 				{
-					from.SendMessage( "The book already slays these creatures.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.book.dupe"));
 				}
 				else
 				{
 					if (item.Slayer == SlayerName.None)
 					{
 						item.Slayer = slaying;
-						from.SendMessage( "The book now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.book.done1"));
 						m_Deed.Delete();
 					}
 					else if (item.Slayer2 == SlayerName.None)
 					{
 						item.Slayer2 = slaying;
-						from.SendMessage( "You book now slays these creatures." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.book.done2"));
 						m_Deed.Delete();
 					}
 				}
@@ -236,7 +237,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What item would you like to make a slayer?" );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.slayer.msg.prompt"));
 				from.Target = new SlayerTarget( this );
 			}
 		}

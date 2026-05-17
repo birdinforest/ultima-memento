@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Gumps;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -127,7 +128,7 @@ namespace Server.Items
 			}
 			else if ( Worlds.AllowEscape( m, m.Map, m.Location, m.X, m.Y ) == false )
 			{
-				m.SendMessage( "The gate does not seem to let you enter." );
+				m.SendMessage( StringCatalog.ResolveByKey( m.Account, "prop.trade.moongate.blocked" ) );
 			}
 			else if ( m_TargetMap == Map.Lodor && m is PlayerMobile && ((PlayerMobile)m).Young )
 			{
@@ -150,7 +151,7 @@ namespace Server.Items
 			}
 			else
 			{
-				m.SendMessage( "This moongate does not seem to go anywhere." );
+				m.SendMessage( StringCatalog.ResolveByKey( m.Account, "prop.trade.moongate.nowhere" ) );
 			}
 		}
 
@@ -227,7 +228,7 @@ namespace Server.Items
 			if ( m_TargetMap != null )
 				BeginConfirmation( from );
 			else
-				from.SendMessage( "This moongate does not seem to go anywhere." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.moongate.nowhere" ) );
 		}
 
 		public static bool IsInTown( Point3D p, Map map )

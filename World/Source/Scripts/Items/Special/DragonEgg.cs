@@ -1,5 +1,6 @@
 using System;
 using Server; 
+using Server.Localization;
 using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveGold = HaveGold + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " gold coin" + sEnd );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gold.added", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}

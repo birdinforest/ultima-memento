@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -7,6 +8,41 @@ namespace Server.Items
 {
 	public class HighSeasRelic : Item, IRelic
 	{
+		public override bool IsContentLocalized => true;
+
+		private const string RelicRecoveredPrefix = "Recovered From ";
+
+		private static string RelicDisplayNameKey( string name )
+		{
+			if ( name == null )
+				return null;
+			switch ( name )
+			{
+				case "anchor": return "item.trade.relic.anchor";
+				case "ruined barrel": return "item.trade.relic.ruined.barrel";
+				case "old cannon ball": return "item.trade.relic.old.cannon.ball";
+				case "old cannon balls": return "item.trade.relic.old.cannon.balls";
+				case "broken clock": return "item.trade.relic.broken.clock";
+				case "model ship": return "item.trade.relic.model.ship";
+				case "mounted lobster": return "item.trade.relic.mounted.lobster";
+				case "mounted crab": return "item.trade.relic.mounted.crab";
+				case "ruined spyglass": return "item.trade.relic.ruined.spyglass";
+				case "soggy rope": return "item.trade.relic.soggy.rope";
+				case "worn flogging whip": return "item.trade.relic.worn.flogging.whip";
+				case "cracked hourglass": return "item.trade.relic.cracked.hourglass";
+				case "keg of rum": return "item.trade.relic.keg.of.rum";
+				case "warped oars": return "item.trade.relic.warped.oars";
+				case "ruined fishing net": return "item.trade.relic.ruined.fishing.net";
+				case "rotten fishing net": return "item.trade.relic.rotten.fishing.net";
+				case "bottle of rum": return "item.trade.relic.bottle.of.rum";
+				case "broken globe": return "item.trade.relic.broken.globe";
+				case "busted sextant": return "item.trade.relic.busted.sextant";
+				case "ruined pirate hat": return "item.trade.relic.ruined.pirate.hat";
+				case "the captain's log": return "item.trade.relic.captains.log";
+				default: return null;
+			}
+		}
+
 		public override void ItemIdentified( bool id )
 		{
 			m_NotIdentified = id;
@@ -29,6 +65,39 @@ namespace Server.Items
 
 		[CommandProperty(AccessLevel.Owner)]
 		public string Relic_Origin { get { return RelicOrigin; } set { RelicOrigin = value; InvalidateProperties(); } }
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string k = RelicDisplayNameKey( Name );
+				if ( k != null )
+				{
+					if ( Amount <= 1 )
+						AddLocalizedProperty( list, k );
+					else
+						list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( k ) );
+					return;
+				}
+			}
+			base.AddNameProperty( list );
+		}
+
+		public override void GetProperties( ObjectPropertyList list )
+		{
+			string backupCt3 = ColorText3;
+			try
+			{
+				if ( BuildingPropertyListLocale != null && ColorText3 != null && ColorText3.StartsWith( "Worth " ) )
+					ColorText3 = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+
+				base.GetProperties( list );
+			}
+			finally
+			{
+				ColorText3 = backupCt3;
+			}
+		}
 
 		[Constructable]
 		public HighSeasRelic() : base( 0x41FD )
@@ -87,23 +156,26 @@ namespace Server.Items
 			}
 
 			string boat = RandomThings.GetRandomShipName( "", 0 );
-			RelicOrigin = "Recovered From " + boat;
+			RelicOrigin = RelicRecoveredPrefix + boat;
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, RelicOrigin);
+			if ( BuildingPropertyListLocale != null && RelicOrigin != null && RelicOrigin.StartsWith( RelicRecoveredPrefix ) )
+				AddLocalizedProperty( list, "prop.trade.relic.recovered.from", RelicOrigin.Substring( RelicRecoveredPrefix.Length ) );
+			else
+				list.Add( 1070722, RelicOrigin);
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( "This must be in your backpack to identify." );
+			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.relic.msg.identify.pack" ) );
 			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				IDCommand( from );
 			else if ( !IsChildOf( from.Backpack ) )
-				from.SendMessage( "This must be in your backpack to flip." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.relic.msg.flip.pack" ) );
 			else
 				if ( this.ItemID == RelicFlipID1 ){ this.ItemID = RelicFlipID2; } else { this.ItemID = RelicFlipID1; }
 		}

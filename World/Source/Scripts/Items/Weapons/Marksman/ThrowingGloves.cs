@@ -151,7 +151,7 @@ namespace Server.Items
 				else if ( GloveType == "Stars" && Server.Misc.GetPlayerInfo.isJester( from ) ){ GloveType = "Cards"; }
 				else if ( GloveType == "Cards" && Server.Misc.GetPlayerInfo.isJester( from ) ){ GloveType = "Tomatoes"; }
 				else { GloveType = "Stones"; }
-				from.SendMessage(68, "You have changed the gloves to throw " + GloveType + ".");
+				ThrowingEquipmentMessages.SendGloveTypeChanged( from, GloveType );
 				this.InvalidateProperties();
 			}
 		}

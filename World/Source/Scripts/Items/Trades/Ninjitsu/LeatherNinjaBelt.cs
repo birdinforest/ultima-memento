@@ -4,6 +4,7 @@ using Server.Targeting;
 using System.Collections;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Items
@@ -11,6 +12,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x2790, 0x27DB )]
 	public class LeatherNinjaBelt : BaseWaist, IDyable, INinjaWeapon
 	{
+		public override bool IsContentLocalized => true;
+
 		public override CraftResource DefaultResource{ get{ return CraftResource.Fabric; } }
 
 		public virtual int WrongAmmoMessage { get { return 1063301; } } //You can only place shuriken in a ninja belt.
@@ -66,6 +69,14 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+				list.Add( ResolvePropertyText( "item.trade.ninja.belt" ) );
+			else
+				base.AddNameProperty( list );
+		}
+
 		public void AttackAnimation(Mobile from, Mobile to)
 		{
 			if (from.Body.IsHuman)
@@ -81,17 +92,14 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
-
-			if ( m_Poison != null && m_PoisonCharges > 0 )
-				list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
+			NinjaAmmoOplProperties.AddUsesAndPoisonProperties( this, list, m_UsesRemaining, m_Poison, m_PoisonCharges );
 		}
 
 		public override bool OnEquip( Mobile from )
 		{
 			if (base.OnEquip(from))
 			{
-				from.SendLocalizedMessage(1070785); // Double click this item each time you wish to throw a shuriken.
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.ninja.belt.msg.equip" ) );
 				return true;
 			}
 			return false;

@@ -12,6 +12,7 @@ using Server.Mobiles;
 using Server.Gumps;
 using Server.Targeting;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Commands
 {
@@ -28,7 +29,7 @@ namespace Server.Commands
 
 	        public static void ixp_OnCommand(CommandEventArgs e)
 	        {
-			e.Mobile.SendMessage( "Select an item to view experience" );
+			e.Mobile.SendMessage(StringCatalog.ResolveByKey(e.Mobile.Account, "god.msg.ixp.select.item"));
 			e.Mobile.Target = new InternalTarget( e.Mobile );
 	        }
 
@@ -49,7 +50,7 @@ namespace Server.Commands
 
                     if ( item.Parent != from && item.Parent != from.Backpack )
                     {
-                    	from.SendMessage("The item must be in your pack or equiped!");
+                    	from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.ixp.must.pack"));
                     	return;
 					}
 
@@ -61,17 +62,17 @@ namespace Server.Commands
 						}
                         else
                         {
-                            from.SendMessage("That is not a valid levelable item");
+                            from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.ixp.invalid.levelable"));
                         }
 					}
 					else
 					{
-						from.SendMessage("That item is not levelable!");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.ixp.not.levelable"));
 					}
 				}
 				else
 				{
-					from.SendMessage("That is not a valid item!");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.ixp.invalid.item"));
 				}
 
 			}

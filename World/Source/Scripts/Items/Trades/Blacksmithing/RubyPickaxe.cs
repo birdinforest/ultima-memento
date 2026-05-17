@@ -1,5 +1,6 @@
 using System;
 using Server.Items;
+using Server.Localization;
 using Server.Network;
 using Server.Regions;
 using Server.Mobiles;
@@ -14,6 +15,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xE86, 0xE85 )]
 	public class RubyPickaxe : BaseSword
 	{
+		public override bool IsContentLocalized => true;
+
 		private ZornEffect m_ZornEffect;
 		private int m_Charges;
 
@@ -69,14 +72,35 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060741, m_Charges.ToString() );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.item.charges", m_Charges.ToString() );
+			else
+				list.Add( 1060741, m_Charges.ToString() );
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.rubypickaxe" );
+				return;
+			}
+			base.AddNameProperty( list );
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "From Zorn the Blacksmith");
-            list.Add( 1049644, "Magically Dig Caddellite");
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.rubypickaxe.from.zorn" );
+				AddLocalizedProperty( list, "prop.trade.rubypickaxe.dig" );
+			}
+			else
+			{
+				list.Add( 1070722, "From Zorn the Blacksmith");
+				list.Add( 1049644, "Magically Dig Caddellite");
+			}
         }
 
 		public void ConsumeCharge( Mobile from )
@@ -105,26 +129,26 @@ namespace Server.Items
 
 				if ( from.Skills[SkillName.Mining].Base < 90 )
 				{
-					from.SendMessage("You must be a master miner to use this pickaxe!");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.master.miner" ) );
 				}
 				else if ( hydra > 0 )
 				{
-					from.SendMessage("You cannot dig here while the hydra is nearby!");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.hydra.nearby" ) );
 				}
 				else if ( from.Mounted )
 				{
-					from.SendMessage("You cannot dig while riding.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.no.riding" ) );
 				}
 				else if ( from.IsBodyMod && !from.Body.IsHuman && from.RaceID < 1 )
 				{
-					from.SendMessage("You cannot dig while polymorphed.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.no.polymorph" ) );
 				}
 				else if ( Charges > 0 && from.Region.IsPartOf( "the Caddellite Crater" ) )
 				{
 					ConsumeCharge( from );
 					from.PlaySound( 0x125 );
 					from.Animate( 11, 5, 1, true, false, 0 );
-					from.SendMessage("You dig up a chunk of caddellite ore from the meteor!");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.dug.ore" ) );
 					from.AddToBackpack( new CaddelliteStone( Utility.RandomMinMax(1,3)) );
 					this.HitPoints = this.HitPoints - 5;
 					this.MaxHitPoints = this.MaxHitPoints - 5;
@@ -134,11 +158,11 @@ namespace Server.Items
 				}
 				else if ( Charges < 1 )
 				{
-					from.SendMessage("This pickaxe is too worn to dig caddellite!");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.worn.out" ) );
 				}
 				else
 				{
-					from.SendMessage("There is no caddellite meteor nearby to dig!");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rubypickaxe.msg.no.meteor" ) );
 				}
 			}
 			else

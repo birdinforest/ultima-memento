@@ -1,14 +1,56 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class SpecialSeaweed : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public int SkillNeeded;
-		
+
 		[CommandProperty(AccessLevel.Owner)]
 		public int Skill_Needed { get { return SkillNeeded; } set { SkillNeeded = value; InvalidateProperties(); } }
+
+		private static string GetSeaweedDisplayKey( string name )
+		{
+			switch ( name )
+			{
+				case "Seaweed of Nightsight": return "item.trade.seaweed.nightsight";
+				case "Seaweed of Lesser Cure": return "item.trade.seaweed.lesser.cure";
+				case "Seaweed of Cure": return "item.trade.seaweed.cure";
+				case "Seaweed of Greater Cure": return "item.trade.seaweed.greater.cure";
+				case "Seaweed of Agility": return "item.trade.seaweed.agility";
+				case "Seaweed of Greater Agility": return "item.trade.seaweed.greater.agility";
+				case "Seaweed of Strength": return "item.trade.seaweed.strength";
+				case "Seaweed of Greater Strength": return "item.trade.seaweed.greater.strength";
+				case "Seaweed of Lesser Poison": return "item.trade.seaweed.lesser.poison";
+				case "Seaweed of Poison": return "item.trade.seaweed.poison";
+				case "Seaweed of Greater Poison": return "item.trade.seaweed.greater.poison";
+				case "Seaweed of Deadly Poison": return "item.trade.seaweed.deadly.poison";
+				case "Seaweed of Lethal Poison": return "item.trade.seaweed.lethal.poison";
+				case "Seaweed of Refresh": return "item.trade.seaweed.refresh";
+				case "Seaweed of Total Refresh": return "item.trade.seaweed.total.refresh";
+				case "Seaweed of Lesser Heal": return "item.trade.seaweed.lesser.heal";
+				case "Seaweed of Heal": return "item.trade.seaweed.heal";
+				case "Seaweed of Greater Heal": return "item.trade.seaweed.greater.heal";
+				case "Seaweed of Lesser Explosion": return "item.trade.seaweed.lesser.explosion";
+				case "Seaweed of Explosion": return "item.trade.seaweed.explosion";
+				case "Seaweed of Greater Explosion": return "item.trade.seaweed.greater.explosion";
+				case "Seaweed of Lesser Invisibility": return "item.trade.seaweed.lesser.invisibility";
+				case "Seaweed of Invisibility": return "item.trade.seaweed.invisibility";
+				case "Seaweed of Greater Invisibility": return "item.trade.seaweed.greater.invisibility";
+				case "Seaweed of Lesser Rejuvenate": return "item.trade.seaweed.lesser.rejuvenate";
+				case "Seaweed of Rejuvenate": return "item.trade.seaweed.rejuvenate";
+				case "Seaweed of Greater Rejuvenate": return "item.trade.seaweed.greater.rejuvenate";
+				case "Seaweed of Lesser Mana": return "item.trade.seaweed.lesser.mana";
+				case "Seaweed of Mana": return "item.trade.seaweed.mana";
+				case "Seaweed of Greater Mana": return "item.trade.seaweed.greater.mana";
+				case "Seaweed of Invulnerability": return "item.trade.seaweed.invulnerability";
+				default: return null;
+			}
+		}
 
 		[Constructable]
 		public SpecialSeaweed() : this( 1 )
@@ -62,13 +104,30 @@ namespace Server.Items
 			Amount = amount;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string k = GetSeaweedDisplayKey( Name );
+				if ( k != null )
+				{
+					if ( Amount <= 1 )
+						AddLocalizedProperty( list, k );
+					else
+						list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( k ) );
+					return;
+				}
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( from.CheckSkill( SkillName.Seafaring, SkillNeeded, 125 ) )
 			{
 				if (!from.Backpack.ConsumeTotal(typeof(Bottle), 1))
 				{
-					from.SendMessage("You need an empty bottle to drain the fluid from the seaweed.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.seaweed.msg.need.bottle" ) );
 					return;
 				}
 				else
@@ -107,7 +166,7 @@ namespace Server.Items
 					else if ( this.Name == "Seaweed of Greater Mana" ) { from.AddToBackpack( new GreaterManaPotion() ); }
 					else if ( this.Name == "Seaweed of Invulnerability" ) { from.AddToBackpack( new InvulnerabilityPotion() ); }
 
-					from.SendMessage("You squeeze the fluid into the bottle.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.seaweed.msg.squeeze.bottle" ) );
 					this.Consume();
 
 					return;
@@ -115,7 +174,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("You fail to get any fluid from the seaweed.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.seaweed.msg.fail" ) );
 				this.Consume();
 				return;
 			}
@@ -124,8 +183,16 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Squeeze To Attempt To Extract Fluid");
-			list.Add( 1049644, "Need An Empty Bottle"); // PARENTHESIS
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.seaweed.squeeze" );
+				AddLocalizedProperty( list, "prop.trade.seaweed.need.bottle.line" );
+			}
+			else
+			{
+				list.Add( 1070722, "Squeeze To Attempt To Extract Fluid");
+				list.Add( 1049644, "Need An Empty Bottle"); // PARENTHESIS
+			}
         }
 
 		public SpecialSeaweed( Serial serial ) : base( serial )

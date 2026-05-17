@@ -6,12 +6,13 @@ using System.Globalization;
 using Server.Items;
 using Server.Misc;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class ManualOfItems : Item
 	{
-		public const int NUMBER_OF_ARTIFACTS = 290;
+		public const int NUMBER_OF_ARTIFACTS = 289;
 
 		public override bool IsContentLocalized => true;
 
@@ -84,7 +85,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "You cannot seem to get the chest to open. Is it yours?" );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.relic.chest.locked"));
 			}
 		}
 
@@ -135,11 +136,11 @@ namespace Server.Items
 
 				AddButton(668, 9, 4017, 4017, page_prev, GumpButtonType.Reply, 0);
 
-				AddHtml( 61, 12, 579, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>MAGICAL RELIC CHEST</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 61, 12, 579, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + StringCatalog.ResolveByKey( from.Account, "god.gump.relicchest.title" ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false );
 
 				if ( page == 999999 )
 				{
-					AddHtml( 13, 52, 681, 364, @"<BODY><BASEFONT Color=" + color + ">You have obtained a chest with powerful items of your choice. You are able to select as many items as the chest has charges. Once the charges are used up, the chest will vanish. When you make a selection, the item will appear in your pack. Some chests provide additional attributes to items such as slayer properties or skill enhancements. Each item will appear with a number of points you can spend to enhance your item. This allows you to tailor the item to suit your style. To begin, single click the items and select 'Enchant'. A menu will appear that you can choose which attributes you want the item to have. Be careful, as you cannot change an attribute once you select it.</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 13, 52, 681, 364, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "god.gump.relicchest.intro" ) + "</BASEFONT></BODY>", (bool)false, (bool)false );
 					AddButton(668, 425, 4005, 4005, 999998, GumpButtonType.Reply, 0);
 				}
 				else
@@ -162,14 +163,14 @@ namespace Server.Items
 					if ( GetRelicArtyForBook( showItem7, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem7, GumpButtonType.Reply, 0); } y=y+z;
 					if ( GetRelicArtyForBook( showItem8, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem8, GumpButtonType.Reply, 0); } y=s-3;
 					y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem1, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem2, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem3, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem4, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem5, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem6, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem7, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem8, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem3 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem4 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem5 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem6 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
 
 					///////////////////////////////////////////////////////////////////////////////////
 
@@ -186,14 +187,14 @@ namespace Server.Items
 					if ( GetRelicArtyForBook( showItem15, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem15, GumpButtonType.Reply, 0); } y=y+z;
 					if ( GetRelicArtyForBook( showItem16, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem16, GumpButtonType.Reply, 0); } y=s-3;
 					y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem9, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem10, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem11, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem12, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem13, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem14, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem15, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetRelicArtyForBook( showItem16, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem9 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem10 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem11 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem12 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem13 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem14 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem15 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+					AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + RelicBookRow( from, showItem16 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
 				}
 			}
 
@@ -327,8 +328,7 @@ namespace Server.Items
 						GiveItemBonus( reward, m_Book.m_Skill_1, m_Book.m_Skill_2, m_Book.m_Skill_3, m_Book.m_Skill_4, m_Book.m_Skill_5, m_Book.m_Value_1, m_Book.m_Value_2, m_Book.m_Value_3, m_Book.m_Value_4, m_Book.m_Value_5, m_Book.m_Slayer_1, m_Book.m_Slayer_2 );
 
 						from.AddToBackpack ( reward );
-						string sMessage = "You now have the " + sArty + ".";
-						from.SendMessage( sMessage );
+						from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "god.msg.relic.chest.received", sArty ) );
 						from.PlaySound( 0x1FA );
 
 						m_Book.m_Charges--;
@@ -341,6 +341,11 @@ namespace Server.Items
 					}
 				}
 			}
+		}
+
+		public static string RelicBookRow( Mobile from, int artifactId )
+		{
+			return LegendRelicBookRows.LocalizedRowLabel( from, artifactId, GetRelicArtyForBook( artifactId, 1 ) );
 		}
 
 		public static string GetRelicArtyForBook( int artifact, int part )

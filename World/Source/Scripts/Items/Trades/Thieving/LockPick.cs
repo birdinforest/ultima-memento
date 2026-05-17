@@ -2,6 +2,7 @@ using System;
 using Server.Network;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -87,11 +88,11 @@ namespace Server.Items
 				{
 					if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Item.ItemID != 0x3A75 )
 					{
-						from.SendMessage( "This doesn't have a key hole, but it does have a card slot." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.keyhole.has.slot" ) );
 					}
 					else if ( !(Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted )) && m_Item.ItemID == 0x3A75 )
 					{
-						from.SendMessage( "This doesn't have a card slot, but it does have a key hole." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.slot.has.keyhole" ) );
 					}
 					else if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Item.ItemID == 0x3A75 )
 					{
@@ -127,7 +128,7 @@ namespace Server.Items
 
 					if ( item.Catalog == Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Item.ItemID != 0x3A75 )
 					{
-						from.SendMessage( "This doesn't have a key hole, but it does have a card slot." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.keyhole.has.slot" ) );
 					}
 					else if ( item.Catalog == Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Item.ItemID == 0x3A75 )
 					{
@@ -141,7 +142,7 @@ namespace Server.Items
 					}
 					else if ( ((ILockpickable)targeted).Locked && m_Item.ItemID == 0x3A75 )
 					{
-						from.SendMessage( "You don't see a card slot on this." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.card.slot" ) );
 					}
 					else
 					{

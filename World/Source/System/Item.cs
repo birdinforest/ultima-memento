@@ -627,6 +627,15 @@ namespace Server
 
 		[ThreadStatic]
 		protected static string BuildingPropertyListLocale;
+
+		/// <summary>
+		/// During <see cref="GetLocalizedPropertyList"/> OPL construction: <c>"zh"</c> or <c>"en"</c>; otherwise <c>null</c>.
+		/// Exposed for helpers outside <see cref="Item"/> subclasses (same value as <c>BuildingPropertyListLocale</c>).
+		/// </summary>
+		public static string OplBuildingLocale
+		{
+			get { return BuildingPropertyListLocale; }
+		}
 		#endregion
 
 		public bool NameWasSynced { get; private set; }
@@ -941,6 +950,16 @@ namespace Server
 				m_InfoData = value;
 				InvalidateProperties();
 			}
+		}
+
+		/// <summary>
+		/// When non-null, <see cref="InfoDataGump"/> resolves this logical key via <see cref="Localization.StringCatalog.TryResolveByKey"/>
+		/// for the viewer's language. Use for catalog-backed long copy when <see cref="StringCatalog.TryResolve"/>
+		/// on <see cref="InfoData"/> cannot apply (logical keys are not hash-addressable from the English body).
+		/// </summary>
+		public virtual string InfoDataLocalizationKey
+		{
+			get { return null; }
 		}
 
 		public string m_InfoText1;
@@ -1398,8 +1417,6 @@ namespace Server
 		/// </summary>
 		public virtual void SendPropertiesTo( Mobile from )
 		{
-			Console.WriteLine( "SendPropertiesTo: " + Name );
-			Console.WriteLine( "IsContentLocalized: " + IsContentLocalized );
 			if ( IsContentLocalized )
 			{
 				string lang = AccountLang.GetLanguageCode( from?.Account );
@@ -1414,7 +1431,6 @@ namespace Server
 
 		public ObjectPropertyList GetLocalizedPropertyList( string locale )
 		{
-			Console.WriteLine( "GetLocalizedPropertyList: " + locale );
 			if ( m_PropertyListByLang == null )
 				m_PropertyListByLang = new Dictionary<string, ObjectPropertyList>( 2 );
 
@@ -1424,7 +1440,6 @@ namespace Server
 				BuildingPropertyListLocale = locale;
 				try
 				{
-					Console.WriteLine( "GetProperties: " + this.Name );
 					list = new ObjectPropertyList( this );
 					GetProperties( list );
 					AppendChildProperties( list );
@@ -1437,7 +1452,6 @@ namespace Server
 				}
 				m_PropertyListByLang[locale] = list;
 			}
-			Console.WriteLine( "GetLocalizedPropertyList: " + list.ToString() );
 			return list;
 		}
 
@@ -1635,6 +1649,18 @@ namespace Server
 			{ "prop.magical.charges.suffix",	"808080" },
 			{ "prop.magical.gem.charges.line",	"808080" },
 			{ "prop.magical.prismatic.swatch",	"808080" },
+
+			// === Special items (strategy E / shotkeys) ===
+			{ "prop.special.slaversnet.capture.tamable",		"808080" },
+			{ "prop.special.orbabyss.belongs",			"808080" },
+			{ "prop.special.altmap.examine",			"808080" },
+			{ "prop.special.soulstone.account.bound",		"808080" },
+			{ "prop.special.soulstone.binds.when.used",		"808080" },
+			{ "prop.special.soulstone.owner",			"808080" },
+			{ "prop.special.soulstonefragment.uses.line",		"808080" },
+			{ "prop.special.dragonstatue.material",		"808080" },
+			{ "prop.special.dragonstatue.inscription",		"808080" },
+			{ "prop.special.brokenfurniture.place.in.home",	"808080" },
 		};
 
 		/// <summary>
@@ -2176,11 +2202,24 @@ namespace Server
 				AddImage(0, 0, 9613);
 				TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
 				string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
-				string info = item.InfoData;
-				if ( info != null && info.Length > 0 )
+				string info;
+				string infoKey = item.InfoDataLocalizationKey;
+				if ( infoKey != null && infoKey.Length > 0 )
 				{
-					info = StringCatalog.TryResolve( lang, info ) ?? info;
-					info = QuestCompositeResolver.ResolveComposite( from, info );
+					info = StringCatalog.TryResolveByKey( lang, infoKey )
+						?? StringCatalog.TryResolveByKey( "en", infoKey )
+						?? item.InfoData;
+					if ( info != null && info.Length > 0 )
+						info = QuestCompositeResolver.ResolveComposite( from, info );
+				}
+				else
+				{
+					info = item.InfoData;
+					if ( info != null && info.Length > 0 )
+					{
+						info = StringCatalog.TryResolve( lang, info ) ?? info;
+						info = QuestCompositeResolver.ResolveComposite( from, info );
+					}
 				}
 				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}

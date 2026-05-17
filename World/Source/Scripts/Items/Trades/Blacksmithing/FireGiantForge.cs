@@ -11,6 +11,8 @@ namespace Server.Items
 
     public class FireGiantForge : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private int m_Charges;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -29,14 +31,40 @@ namespace Server.Items
 			Light = LightType.Circle225;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( Name == "cold cauldron" )
+					AddLocalizedProperty( list, "item.trade.firegiantforge.cold" );
+				else
+					AddLocalizedProperty( list, "item.trade.firegiantforge.smoldering" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
-			string uses = m_Charges.ToString() + " Uses Remaining";
+            base.AddNameProperties(list);
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.firegiantforge" );
+				if ( m_Charges < 1 )
+					AddLocalizedProperty( list, "prop.trade.firegiantforge.useless" );
+				else if ( m_Charges == 1 )
+					AddLocalizedProperty( list, "prop.trade.firegiantforge.use.remaining", m_Charges.ToString() );
+				else
+					AddLocalizedProperty( list, "prop.trade.firegiantforge.uses.remaining", m_Charges.ToString() );
+			}
+			else
+			{
+				string uses = m_Charges.ToString() + " Uses Remaining";
 				if ( m_Charges == 1 ){ uses = m_Charges.ToString() + " Use Remaining"; }
 				if ( m_Charges < 1 ){ uses = "Useless"; }
-            base.AddNameProperties(list);
-			list.Add( 1070722, "Fire Giant Forge");
-            list.Add( 1049644, uses );
+				list.Add( 1070722, "Fire Giant Forge");
+				list.Add( 1049644, uses );
+			}
         }
 
 		public static void ConsumeCharge( FireGiantForge kettle )

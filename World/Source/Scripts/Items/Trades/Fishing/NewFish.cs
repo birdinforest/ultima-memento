@@ -1,5 +1,6 @@
 using System;
 using Server.Network;
+using Server.Localization;
 using Server.Targeting;
 using Server.Misc;
 
@@ -7,6 +8,8 @@ namespace Server.Items
 {
 	public class NewFish : Item, ICarvable
 	{
+		public override bool IsContentLocalized => true;
+
 		public int FishGoldValue;
 
 		[CommandProperty(AccessLevel.Owner)]
@@ -125,8 +128,16 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "An Exotic Fish");
-			list.Add( 1049644, "Worth " + FishGoldValue + " Gold");
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.newfish.exotic" );
+				AddLocalizedProperty( list, "prop.trade.newfish.worth.gold", FishGoldValue.ToString() );
+			}
+			else
+			{
+				list.Add( 1070722, "An Exotic Fish");
+				list.Add( 1049644, "Worth " + FishGoldValue + " Gold");
+			}
         }
 
 		public static int GetHue( int color )

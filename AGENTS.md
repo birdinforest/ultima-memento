@@ -10,7 +10,7 @@
 | Task | Jump to |
 |---|---|
 | Add a new game feature (C#) | [§2 Engineering Practices](#2-engineering-practices) |
-| Add translatable strings to C# (gumps, quests, `SendMessage` / `Say`: shotkeys or hash literals) | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
+| Add translatable strings to C# (gumps, quests, `SendMessage` / `Say`: shotkeys or hash literals; **refine** hash → shotkey when feasible — §3.2) | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
 | Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
 | Incremental LLM locale queue (`stats` / `queue` / `apply`) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
 | Logical-key JSON (shard greeter, war shouts, …) | [§3.1 Architecture](#31-localization-architecture) |
@@ -119,7 +119,8 @@ Data/Localization/
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
-| `equipment-properties.json` | Equipment / weapon OPL shotkeys (`prop.*`) **and** same-bundle player feedback lines tied to those items (e.g. `prop.magical.moonstone.gate.inert`). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. |
+| `equipment-properties.json` | Equipment / weapon OPL shotkeys（`prop.*`）、**物品 OPL 主名（`item.*`，与 `prop.*` 同文件）**、以及绑在同一批物品上的玩家提示（如 `prop.magical.moonstone.gate.inert`）。Pair `en/` + `zh-Hans/`；**`build_localization_strings.py` `keep_extra`**。主名流水线见 `World/Documentation/waiting-localization.md` §「物品 OPL 主显示名」。 |
+| `legend-book-rows.json` | `LegendsBook` / `ManualOfItems` 图鉴 Gump 列表行（`god.legendbook.row.001` …）：**仅 `zh-Hans/`** 维护中文行；英文运行时回退为 C# 表内嵌英文；**`keep_extra`**。 |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 | `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
 
@@ -138,6 +139,8 @@ Other non-category locale files (also whitelisted, not scanner-owned): `vendor_n
 
 Use the `StringCatalog`-aware APIs that the extractor already handles.
 
+**Tinted `SendMessage` (`SendMessage(int hue, string text)`):** The first argument is only a **client hue** (e.g. **68** for a green “success/info” tint). **The `text` argument must still be localized** — never concatenate raw English with runtime values for zh-Hans accounts. Prefer **`StringCatalog.ResolveFormatByKey`** plus **per‑value shotkeys** so **Chinese sentence order** stays natural (template with `{0}` for the variable fragment).
+
 **Player/system messages (`SendMessage`, `Say`, etc.):** the bare form `mobile.SendMessage("...")` is **not** localized. Use either:
 
 1. **Shotkeys (preferred):** stable logical keys in hand-maintained JSON (`equipment-properties.json`, `trap-system.json`, `charrestore.json`, … — see §3.1 `keep_extra` table). **Do not** rely on the C# extractor for these; add the same key to **`en/<file>.json` and `zh-Hans/<file>.json`**.
@@ -150,6 +153,8 @@ Use the `StringCatalog`-aware APIs that the extractor already handles.
    ```csharp
    mobile.SendMessage(StringCatalog.Resolve(mobile.Account, "Your one-off message here."));
    ```
+
+**OPL 物品主显示名（`AddNameProperty`）：** 第一行物品名在 **`BuildingPropertyListLocale != null`** 时用 **`AddLocalizedProperty(list, "item....")`** 或 **`ResolvePropertyText`** + `list.Add` / `1050039`（叠堆）。键名建议 **`item.special.*` / `item.magical.*`**，与 **`prop.*`**（属性行、`SendMessage` 键）分前缀，**仍在 `equipment-properties.json`**。类须 **`IsContentLocalized => true`**。完整步骤见 **`World/Documentation/waiting-localization.md`** §「物品 OPL 主显示名」。
 
 ```csharp
 using Server.Localization;
@@ -172,6 +177,8 @@ new TextDefinition("Objective description")
 **AI workflow (hash path):** `Resolve` literal → `build_localization_strings.py --no-translate` → §3.4 translate new `s.` line → `sync_localization_glossary.py --check`.
 
 For **any** new `Resolve` literals in C#, run the extractor (§3.3) before committing. Logical shotkey files are **not** populated by the extractor.
+
+**Hash → shotkey refinement (AI / human review):** If a string (or its Chinese) already lives under **hash keys** (`s.` + hex in `scripts-*.json` / category JSON from the extractor), **when feasible** prefer **migrating to a stable shotkey** in an appropriate logical bundle (`equipment-properties.json`, `trap-system.json`, … — see §3.1 `keep_extra`). Steps: add the same **EN + zh-Hans** lines under a new dot-key; change C# to `ResolveByKey` / `ResolveFormatByKey` / `AddLocalizedProperty` / `ResolvePropertyText` as for other shotkeys; remove or stop using the obsolete `s.*` rows once verified (re-run extractor/`--fail-on-translated-zh-drop` if needed to confirm no regressions). **Do not migrate** when there is a **material risk**: e.g. the line is intentionally **extractor-owned** high-churn one-off copy; **shared hash** dedupes identical EN literals and migration would **fork** maintenance; resolution path requires **`TryResolve(english)`** with **non-literal** or runtime-composed text; **regression golden cases**, **external tools**, or **docs** still assume the hash id; or the correct **`keep_extra`** target or **PropertyColorMap** / OPL wiring is unclear. In those cases **keep the hash-based entries** and **explain in your reply** why migration was skipped or deferred.
 
 ### 3.3 Extraction Tool
 
@@ -468,11 +475,13 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 - 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
+- 2026-05-17: §3.2 — **Hash → shotkey refinement**: when feasible, migrate existing `s.*` localized strings to stable shotkeys in `keep_extra` bundles; skip and explain when risky.
 - 2026-05-17: §3.2 / §0 / §3.1 `equipment-properties` — **`SendMessage` / `Say` shotkeys** (`StringCatalog.ResolveByKey` + logical JSON) preferred over hash `Resolve` literals when a stable `keep_extra` bundle fits; `waiting-localization.md` — shotkey-first pipeline + **任务：硬编码 SendMessage / Say 全库清查**；`MoonStone` 使用 `prop.magical.moonstone.gate.inert`.
 - 2026-05-17: §3.5 — **no `【】` wrapping** for proper nouns; inline `中文（English）` only; strip legacy `【】` when editing; LLM template and tool notes updated accordingly. `annotate_proper_nouns.py` migrates all `zh-Hans/*.json`; `sync_localization_glossary.normalize_brackets` emits inline forms; locale data migrated.
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 - 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
-- 2026-05-17: §3.1 — added `cliloc-lookup.json` (`cliloc.<id>` shotkeys) for curated `CliLocTable.Lookup` sets; `CliLocTable.Lookup(IAccount/Mobile, int)` + `keep_extra`.
+- 2026-05-17: §3.1 — `legend-book-rows.json`（`god.legendbook.row.*`，zh-Hans-only）+ `keep_extra`；§3.2 — **`SendMessage(int hue, string)`** 仍须目录化，hue 仅客户端着色。
+- 2026-05-17: §3.1 `equipment-properties` / §3.2 — **`item.*` 逻辑键**用于 **OPL 主显示名**（`AddNameProperty`，与 `prop.*` 同文件）；流水线与步骤在 `World/Documentation/waiting-localization.md` §「物品 OPL 主显示名」。Special / Moonstone 等已落地示例。
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

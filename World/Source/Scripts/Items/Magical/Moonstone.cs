@@ -23,6 +23,19 @@ namespace Server.Items
 			Name = "Moonstone";
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.magical.moonstone.name" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.magical.moonstone.name" ) );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );

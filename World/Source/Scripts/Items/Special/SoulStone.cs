@@ -4,11 +4,14 @@ using Server.Network;
 using Server.Accounting;
 using Server.Multis;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class SoulStone : Item, ISecurable
 	{
+		public override bool IsContentLocalized => true;
+
 		public override int LabelNumber { get { return 1030899; } } // soulstone
 
 		private int m_ActiveItemID;
@@ -125,21 +128,48 @@ namespace Server.Items
 			m_Account = account;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.special.soulstone" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.special.soulstone" ) );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 			
 			if ( !string.IsNullOrWhiteSpace(Account) )
 			{
-				list.Add( 1070722, "[Account Bound]" );
-				string name = !string.IsNullOrWhiteSpace(LastUserName) ? LastUserName : string.Format( "#{0}", 1074235 ); // Unknown
-				list.Add( 1041602, "{0}", name ); // Owner: ~1_val~
+				if ( BuildingPropertyListLocale != null )
+				{
+					AddLocalizedProperty( list, "prop.special.soulstone.account.bound" );
+					string name = !string.IsNullOrWhiteSpace( LastUserName ) ? LastUserName : ResolvePropertyText( "prop.special.soulstone.owner.unknown" );
+					AddLocalizedProperty( list, "prop.special.soulstone.owner", name );
+				}
+				else
+				{
+					list.Add( 1070722, "[Account Bound]" );
+					string name = !string.IsNullOrWhiteSpace(LastUserName) ? LastUserName : string.Format( "#{0}", 1074235 ); // Unknown
+					list.Add( 1041602, "{0}", name ); // Owner: ~1_val~
+				}
 
 				if ( !IsEmpty )
 					list.Add( 1070721, "#{0}\t{1:0.0}", 1044060 + (int)this.Skill, this.SkillValue ); // Skill stored: ~1_skillname~ ~2_skillamount~
 			}
 			else if ( IsEmpty )
-				list.Add( 1070722, "[Binds to account when used]" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.special.soulstone.binds.when.used" );
+				else
+					list.Add( 1070722, "[Binds to account when used]" );
+			}
 		}
 
 		private static bool CheckCombat( Mobile m, TimeSpan time )
@@ -571,7 +601,7 @@ namespace Server.Items
 
 				if ( from.Avatar.Active )
 				{
-					from.SendMessage( "You would explode if you tried to absorb this skill." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.soulstone.msg.absorb.explode" ) );
 					return;
 				}
 
@@ -852,11 +882,30 @@ namespace Server.Items
 			m_UsesRemaining = usesRemaining;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.special.soulstone.fragment" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.special.soulstone.fragment" ) );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+			{
+				string suffix = ResolvePropertyText( "prop.special.soulstonefragment.uses.suffix" );
+				AddLocalizedProperty( list, "prop.special.soulstonefragment.uses.line", m_UsesRemaining.ToString(), suffix );
+			}
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]

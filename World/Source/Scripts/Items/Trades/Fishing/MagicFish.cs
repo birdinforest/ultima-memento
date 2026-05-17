@@ -1,5 +1,6 @@
 using System;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -47,7 +48,7 @@ namespace Server.Items
 			}
 			else if ( Server.Items.BaseRace.BloodDrinker( from.RaceID ) || Server.Items.BaseRace.BrainEater( from.RaceID ) )
 			{
-				from.SendMessage( "This does not look very good to you." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.magicfish.bad" ) );
 			}
 			else if ( Apply( from ) )
 			{

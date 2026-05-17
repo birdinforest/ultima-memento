@@ -1,11 +1,14 @@
 using System.Linq;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class GoldenFeathers : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
 
 		public override string DefaultDescription{ get{ return "These items are very rare, and are sometimes sought after with a given quest. They are sometimes required for rituals or potion ingredients as well."; } }
@@ -33,10 +36,26 @@ namespace Server.Items
 			Stackable = false;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.golden.feathers" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( m_Owner != null ){ list.Add( 1070722, "Gifted to " + m_Owner.Name + ""); }
+			if ( m_Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.trade.goldenfeathers.gifted", m_Owner.Name );
+				else
+					list.Add( 1070722, "Gifted to " + m_Owner.Name + "");
+			}
         }
 
 		public static void Award(BaseCreature creature, Mobile killer)
@@ -65,7 +84,7 @@ namespace Server.Items
 								.ForEach(item => item.Delete());
 							killer.AddToBackpack( new GoldenFeathers( killer ) );
 							killer.SendSound( 0x3D );
-							killer.PrivateOverheadMessage(MessageType.Regular, 1150, false, "The goddess has given you golden feathers.", killer.NetState);
+							killer.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey( killer.Account, "prop.trade.goldenfeathers.msg.goddess" ), killer.NetState);
 						}
 					}
 				}

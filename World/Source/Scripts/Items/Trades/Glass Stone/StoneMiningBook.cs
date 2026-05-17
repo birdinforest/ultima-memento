@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -45,16 +46,16 @@ namespace Server.Items
 			}
 			else if ( pm == null || from.Skills[SkillName.Mining].Base < 100.0 )
 			{
-				from.SendMessage( "Only a Grandmaster Miner can learn from this book." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.book.stonemining.need.gm" ) );
 			}
 			else if ( pm.StoneMining )
 			{
-				pm.SendMessage( "You have already learned this knowledge." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.stonemining.already" ) );
 			}
 			else
 			{
 				pm.StoneMining = true;
-				pm.SendMessage( "You have learned to mine for stones. Target mountains when mining to find stones." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.stonemining.success" ) );
 				Delete();
 			}
 		}

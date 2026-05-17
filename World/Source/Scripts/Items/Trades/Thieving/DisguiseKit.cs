@@ -10,6 +10,7 @@ using Server.Spells.Shinobi;
 using Server.Mobiles;
 using Server.Network;
 using Server.SkillHandlers;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -58,7 +59,7 @@ namespace Server.Items
 				from.Skills[SkillName.Psychology].Base < 50 && 
 				from.Skills[SkillName.Snooping].Base < 50 )
 			{
-				from.SendMessage("You don't seem to have the skills to apply this disguise.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.disguise.no.skill" ) );
 				return false;
 			}
 			else if ( !from.CanBeginAction( typeof( IncognitoSpell ) ) )
@@ -68,7 +69,7 @@ namespace Server.Items
 			}
 			else if ( !from.CanBeginAction( typeof( Deception ) ) )
 			{
-				from.SendMessage("You cannot disguise yourself since you already are using deception.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.disguise.already.deception" ) );
 			}
 			else if ( TransformationSpellHelper.UnderTransformation( from ) )
 			{

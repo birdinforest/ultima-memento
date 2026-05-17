@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -45,16 +46,16 @@ namespace Server.Items
 			}
 			else if ( pm == null || from.Skills[SkillName.Alchemy].Base < 100.0 )
 			{
-				pm.SendMessage( "Only a Grandmaster Alchemist can learn from this book." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.book.glassblowing.need.gm" ) );
 			}
 			else if ( pm.Glassblowing )
 			{
-				pm.SendMessage( "You have already learned this information." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.glassblowing.already" ) );
 			}
 			else
 			{
 				pm.Glassblowing = true;
-				pm.SendMessage( "You have learned to make items from glass. You will need to find miners to mine find sand for you to make these items." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.glassblowing.success" ) );
 				Delete();
 			}
 		}

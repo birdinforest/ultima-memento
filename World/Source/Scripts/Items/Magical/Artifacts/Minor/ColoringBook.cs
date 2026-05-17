@@ -41,7 +41,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to read." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.backpack"));
 				return;
 			}
 			else 
@@ -68,23 +68,23 @@ namespace Server.Items
 
 					if ( !iColor.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only color items in your pack." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.pack.only"));
 					}
 					else if ( iColor.IsChildOf( from.Backpack ) )
 					{
 						from.RevealingAction();
 						from.PlaySound( 0x1FA );
 						iColor.Hue = m_Book.Hue;
-						from.SendMessage( "You magically change the color." );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.ok"));
 					}
 					else
 					{
-						from.SendMessage( "You cannot color that!" );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.fail"));
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot color that!" );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.fail"));
 				}
 			}
 		}
@@ -228,7 +228,7 @@ namespace Server.Items
 					{
 						m_Book.MagicColor = GetColorListForBook( info.ButtonID );
 						m_Book.InvalidateProperties();
-						from.SendMessage( "What would you like to magically color?" );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.color.msg.what"));
 						m_Book.Hue = TheColor;
 						from.SendGump( new ColoringBookGump( from, m_Book ) );
 						from.Target = new ColorTarget( m_Book );

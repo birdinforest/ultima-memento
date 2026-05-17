@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -20,11 +21,11 @@ namespace Server.Items
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( IsChildOf( from.Backpack ) )
-				from.SendMessage( "You can only ignite this if it is secure in a home." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.dwarven.forge.secure" ) );
 			else if ( !from.InRange( GetWorldLocation(), 2 ) )
-				from.SendMessage( "You will need to get closer to ignite that." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.dwarven.forge.closer" ) );
 			else if ( Movable )
-				from.SendMessage( "You can only ignite this if it is secure in a home." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.dwarven.forge.secure" ) );
 			else
 			{
 				if ( ItemID == 0x544A ){ 	ItemID = 0x544B; Light = LightType.Circle225; 	from.SendSound( 0x208 ); }

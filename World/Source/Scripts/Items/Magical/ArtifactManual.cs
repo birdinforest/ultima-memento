@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using System.Collections;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -67,14 +68,14 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "What do you want to research with this?" );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.research"));
 					t = new BookTarget( this );
 					from.Target = t;
 				}
 			}
 			else
 			{
-				from.SendMessage( "Finding nothing about it, you throw it away." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.empty"));
 				this.Delete();
 			}
         }
@@ -104,7 +105,7 @@ namespace Server.Items
 
 				if ( !iBook.IsChildOf( from.Backpack ) )
 				{
-					from.SendMessage( "You can only examine an item in your pack." );
+				 from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.pack.only"));
 				}
 				else if ( ( iBook.IsChildOf( from.Backpack ) ) && ( iBook is NotIdentified ) ) //////////////////////////////////////////////////////////////////////////
 				{
@@ -120,17 +121,17 @@ namespace Server.Items
 							from.AddToBackpack ( item );
 						}
 
-					from.SendMessage("You successfully identify the item.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.identify.ok"));
 					iBook.Delete();
 				}
 				else
 				{
-					from.SendMessage( "You cannot find any information on that." );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.identify.fail"));
 				}
 			}
 			else
 			{
-				from.SendMessage( "You cannot find any information on that." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.manual.msg.identify.fail"));
 			}
 
 			return useCharges;

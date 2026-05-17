@@ -1,5 +1,6 @@
 using System;
 using Server.ContextMenus;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
@@ -40,6 +41,48 @@ namespace Server.Items
 	{
 		private const int MaxUses = 10;
 
+		private static string NinjaGameplayMessageKey( int clilocId )
+		{
+			switch ( clilocId )
+			{
+				case 1063303: return "prop.trade.ninja.msg.target.too.close";
+				case 1070767: return "prop.trade.ninja.msg.unload.stronger.projectile";
+				case 1063302: return "prop.trade.ninja.msg.full.shuriken";
+				case 1063330: return "prop.trade.ninja.msg.full.fukiya.darts";
+				case 1063299: return "prop.trade.ninja.belt.msg.need.free.hand";
+				case 1063297: return "prop.trade.ninja.belt.msg.empty";
+				case 1063298: return "prop.trade.ninja.belt.msg.cooldown";
+				case 1063301: return "prop.trade.ninja.belt.msg.wrong.ammo";
+				case 1063327: return "prop.trade.ninja.fukiya.msg.need.free.hand";
+				case 1063325: return "prop.trade.ninja.fukiya.msg.empty";
+				case 1063326: return "prop.trade.ninja.fukiya.msg.cooldown";
+				case 1063329: return "prop.trade.ninja.fukiya.msg.wrong.ammo";
+				default: return null;
+			}
+		}
+
+		private static void SendNinjaGameplayMessage( Mobile m, int clilocId )
+		{
+			if ( m == null )
+				return;
+
+			string key = NinjaGameplayMessageKey( clilocId );
+
+			if ( key == null )
+			{
+				m.SendLocalizedMessage( clilocId );
+				return;
+			}
+
+			string lang = AccountLang.GetLanguageCode( m.Account );
+			string text = StringCatalog.TryResolveByKey( lang, key );
+
+			if ( text != null && text.Length > 0 )
+				m.SendMessage( text );
+			else
+				m.SendLocalizedMessage( clilocId );
+		}
+
 		public static void AttemptShoot(PlayerMobile from, INinjaWeapon weapon)
 		{
 			if (CanUseWeapon(from, weapon))
@@ -73,7 +116,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendLocalizedMessage(1063303); // Your target is too close!
+					SendNinjaGameplayMessage( from, 1063303 );
 				}
 			}
 		}
@@ -110,7 +153,7 @@ namespace Server.Items
 				{
 					if (weapon.Poison != null && (ammo.Poison == null || weapon.Poison.Level > ammo.Poison.Level))
 					{
-						from.SendLocalizedMessage(1070767); // Loaded projectile is stronger, unload it first
+						SendNinjaGameplayMessage( from, 1070767 );
 					}
 					else
 					{
@@ -149,7 +192,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendLocalizedMessage(weapon.FullWeaponMessage);
+				SendNinjaGameplayMessage( from, weapon.FullWeaponMessage );
 			}
 		}
 
@@ -181,17 +224,17 @@ namespace Server.Items
 						}
 						else
 						{
-							from.SendLocalizedMessage(weapon.NoFreeHandMessage);
+							SendNinjaGameplayMessage( from, weapon.NoFreeHandMessage );
 						}
 					}
 					else
 					{
-						from.SendLocalizedMessage(weapon.RecentlyUsedMessage);
+						SendNinjaGameplayMessage( from, weapon.RecentlyUsedMessage );
 					}
 				}
 				else
 				{
-					from.SendLocalizedMessage(weapon.EmptyWeaponMessage);
+					SendNinjaGameplayMessage( from, weapon.EmptyWeaponMessage );
 				}
 			}
 			return false;
@@ -326,7 +369,7 @@ namespace Server.Items
 				}
 				else
 				{
-					player.SendLocalizedMessage(weapon.WrongAmmoMessage);
+					SendNinjaGameplayMessage( player, weapon.WrongAmmoMessage );
 				}
 			}
 		}
@@ -379,6 +422,51 @@ namespace Server.Items
 				{
 					Unload(Owner.From, weapon);
 				}
+			}
+		}
+	}
+
+	internal static class NinjaAmmoOplProperties
+	{
+		public static void AddUsesAndPoisonProperties( Item item, ObjectPropertyList list, int usesRemaining, Poison poison, int poisonCharges )
+		{
+			if ( Item.OplBuildingLocale != null )
+			{
+				string loc = Item.OplBuildingLocale;
+				string usesWord = StringCatalog.TryResolveByKey( loc, "prop.trade.common.uses.word" ) ?? "Uses";
+				string lineFmt = StringCatalog.TryResolveByKey( loc, "prop.trade.common.uses.line" ) ?? "{0}\t{1}";
+				list.Add( string.Format( lineFmt, usesRemaining, usesWord ) );
+
+				if ( poison != null && poisonCharges > 0 )
+				{
+					string pk = PoisonChargeKey( poison.Level );
+					string pf = StringCatalog.TryResolveByKey( loc, pk );
+
+					if ( pf != null && pf.Length > 0 )
+						list.Add( string.Format( pf, poisonCharges ) );
+					else
+						list.Add( 1062412 + poison.Level, poisonCharges.ToString() );
+				}
+			}
+			else
+			{
+				list.Add( 1060584, "{0}\t{1}", usesRemaining.ToString(), "Uses" );
+
+				if ( poison != null && poisonCharges > 0 )
+					list.Add( 1062412 + poison.Level, poisonCharges.ToString() );
+			}
+		}
+
+		private static string PoisonChargeKey( int level )
+		{
+			switch ( level )
+			{
+				case 0: return "prop.trade.ninja.poison.lesser";
+				case 1: return "prop.trade.ninja.poison.regular";
+				case 2: return "prop.trade.ninja.poison.greater";
+				case 3: return "prop.trade.ninja.poison.deadly";
+				case 4: return "prop.trade.ninja.poison.lethal";
+				default: return "prop.trade.ninja.poison.lesser";
 			}
 		}
 	}

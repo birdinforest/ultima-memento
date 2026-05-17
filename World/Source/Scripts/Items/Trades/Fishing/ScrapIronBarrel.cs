@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -31,7 +32,7 @@ namespace Server.Items
 				int nPay = (int)(dropped.Weight*5);
 				if ( pc.NpcGuild == NpcGuild.BlacksmithsGuild ){ nPay = (int)(dropped.Weight*10); }
 				from.AddToBackpack ( new Gold( nPay ) );
-				from.SendMessage("You are paid " + nPay.ToString() + " gold.");
+				from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.trade.fishing.paid.gold", nPay ) );
 				from.PlaySound( 0x042 );
 				dropped.Delete();
 			}

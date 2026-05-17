@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -123,11 +124,11 @@ namespace Server.Items
 							from.AddToBackpack( create );
 
 							from.SendLocalizedMessage( 500368 ); // You create some cloth and put it in your backpack.
-							if ( loom.Phase > 0 ){ from.SendMessage( "The loom still has some incomplete cloth started." ); }
+							if ( loom.Phase > 0 ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.spool.loom.incomplete" ) ); }
 						}
 						else
 						{
-							from.SendMessage( "You don't have enough to create a bolt of cloth." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.spool.not.enough.cloth" ) );
 						}
 					}
 				}

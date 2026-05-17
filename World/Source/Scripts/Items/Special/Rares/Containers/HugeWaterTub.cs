@@ -1,5 +1,6 @@
 ﻿using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -22,13 +23,13 @@ namespace Server.Items
 				// Send message to character about their current thirst value
 				int iThirst = from.Thirst;
 				if ( iThirst < 5 )
-					from.SendMessage( "You drink the water but are still extremely thirsty" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.hugewatertub.drink.still.thirsty" ) );
 				else if ( iThirst < 10 )
-					from.SendMessage( "You drink the water and feel less thirsty" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.hugewatertub.drink.less.thirsty" ) );
 				else if ( iThirst < 15 )
-					from.SendMessage( "You drink the water and feel much less thirsty" ); 
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.hugewatertub.drink.much.less.thirsty" ) ); 
 				else
-					from.SendMessage( "You drink the water and are no longer thirsty" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.hugewatertub.drink.not.thirsty" ) );
 
 				if ( from.Body.IsHuman && !from.Mounted )
 					from.Animate( 34, 5, 1, true, false, 0 );
@@ -37,7 +38,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "You are simply too quenched to drink any more!" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.hugewatertub.drink.full" ) );
 				from.Thirst = 20;
 			}
 		}

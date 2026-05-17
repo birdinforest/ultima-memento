@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
@@ -8,6 +9,8 @@ namespace Server.Items
 {
 	public class MagicSkeltonsKey : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultDescription
 		{
 			get
@@ -27,6 +30,16 @@ namespace Server.Items
 			Name = "magic skeleton key";
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.key.magic.skeleton" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			Target t;
@@ -37,7 +50,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What locked container or door do you want to use the key on?" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.prompt.target" ) );
 				t = new UnlockTarget( this );
 				from.Target = t;
 			}
@@ -46,7 +59,10 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1049644, "Open any locked container or door" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.key.opl.any" );
+			else
+				list.Add( 1049644, "Open any locked container or door" );
 		}
 
 		private class UnlockTarget : Target
@@ -70,30 +86,30 @@ namespace Server.Items
 				}
 				else if ( targeted == m_Key )
 				{
-					from.SendMessage( "This key is to unlock almost any container." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.unlock.almost.any" ) );
 				}
 				else if ( targeted is BaseHouseDoor )  // house door check
 				{
-					from.SendMessage( "This key is to unlock almost any container." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.unlock.almost.any" ) );
 				}
 				else if ( targeted is Item && ((Item)targeted).VirtualContainer )
 				{
-					from.SendMessage( "This key is to unlock almost any container." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.unlock.almost.any" ) );
 				}
 				else if ( targeted is BaseDoor )
 				{
 					if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Key.ItemID != 0x3A75 )
 					{
-						from.SendMessage( "This doesn't have a key hole, but it does have a card slot." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.spaceship.card" ) );
 					}
 					else if ( !(Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted )) && m_Key.ItemID == 0x3A75 )
 					{
-						from.SendMessage( "This doesn't have a card slot, but it does have a key hole." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.spaceship.keyhole" ) );
 					}
 					else if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Key.ItemID == 0x3A75 )
 					{
 						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendMessage( "That does not need to be unlocked." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.no.unlock.needed" ) );
 
 						else
 						{
@@ -107,7 +123,7 @@ namespace Server.Items
 					else if ( Server.Items.DoorType.IsDungeonDoor( (BaseDoor)targeted ) && m_Key.ItemID != 0x3A75 )
 					{
 						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendMessage( "That does not need to be unlocked." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.no.unlock.needed" ) );
 
 						else
 						{
@@ -119,7 +135,7 @@ namespace Server.Items
 						}
 					}
 					else
-						from.SendMessage( "That does not need to be unlocked." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.no.unlock.needed" ) );
 				}
 				else if ( targeted is ILockable )
 				{
@@ -127,11 +143,11 @@ namespace Server.Items
 					LockableContainer cont2 = o as LockableContainer;
 					if (cont2 == null)
 					{
-						from.SendMessage("That is not a container.");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.not.container" ) );
 						return;
 					}
 
-					if ( Multis.BaseHouse.CheckSecured( cont2 ) ) 
+					if ( Multis.BaseHouse.CheckSecured( cont2 ) )
 						from.SendLocalizedMessage( 503098 ); // You cannot cast this on a secure item.
 					else if ( !cont2.Locked )
 						from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 503101 ); // That did not need to be unlocked.
@@ -141,15 +157,15 @@ namespace Server.Items
 					{
 						if ( o is BaseDoor && !((BaseDoor)o).UseLocks() )  // this seems to check house doors also
 						{
-							from.SendMessage( "This key is to unlock any container." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.unlock.any.container" ) );
 						}
 						else if ( ((Item)o).Catalog == Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Key.ItemID != 0x3A75 )
 						{
-							from.SendMessage( "This doesn't have a key hole, but it does have a card slot." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.spaceship.card" ) );
 						}
 						else if ( ((Item)o).Catalog != Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Key.ItemID == 0x3A75 )
 						{
-							from.SendMessage( "This doesn't have a card slot, but it does have a key hole." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.spaceship.keyhole" ) );
 						}
 						else if ( ((Item)o).Catalog == Catalogs.SciFi && o.Locked && m_Key.ItemID == 0x3A75 )
 						{
@@ -171,8 +187,8 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								if ( trash ){ from.SendMessage( "You swipe the key card to open the lock, but also wearing it out from further use." ); }
-								else { from.SendMessage( "You swipe the key card to open the lock." ); }
+								if ( trash ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.swipe.wear" ) ); }
+								else { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.swipe.ok" ) ); }
 							}
 
 							from.RevealingAction();
@@ -199,8 +215,8 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								if ( trash ){ from.SendMessage( "The key opens the lock, wearing the key out from further use." ); }
-								else { from.SendMessage( "The key opens the lock." ); }
+								if ( trash ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.key.wear" ) ); }
+								else { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.key.ok" ) ); }
 							}
 
 							from.RevealingAction();
@@ -210,12 +226,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You don't need to use this key on that." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.cannot.use" ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "This key is to unlock any container." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.key.msg.unlock.any.container" ) );
 				}
 			}
 		}

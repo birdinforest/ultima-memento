@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -33,7 +34,7 @@ namespace Server.Items
 
 			if ( Parent != from )
 			{
-				from.SendMessage( "You must be wearing the robe to use it." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.acid.robe.wear" ) );
 			}
 			else if ( CanFillBottle > 0 )
 			{
@@ -41,19 +42,19 @@ namespace Server.Items
 				string wait = string.Format("{0:D1} hours and {1:D2} minutes", 
 								t.Hours, 
 								t.Minutes);
-				from.SendMessage( "You can squeeze out acid in " + wait + "." );
+				from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.magical.artifact.acid.robe.cooldown", wait ) );
 			}
 			else
 			{
 				if (!from.Backpack.ConsumeTotal(typeof(Bottle), 1))
 				{
-					from.SendMessage("You need an empty bottle to squeeze the acid into.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.acid.robe.need.bottle" ) );
 				}
 				else
 				{
 					from.PlaySound( 0x240 );
 					from.AddToBackpack( new BottleOfAcid() );
-					from.SendMessage( "You squeeze some acid from the cloth of the robe." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.acid.robe.squeeze" ) );
 					TimeUsed = DateTime.Now;
 				}
 			}
@@ -63,7 +64,7 @@ namespace Server.Items
 		{
 			if ( from is PlayerMobile )
 			{
-				from.SendMessage( "You can use this robe to sqeeze acid out from its cloth." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.acid.robe.draghint" ) );
 			}
 
 			return true;

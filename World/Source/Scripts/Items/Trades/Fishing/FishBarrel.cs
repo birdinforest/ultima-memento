@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -41,7 +42,7 @@ namespace Server.Items
 				int nPay = fishy.FishGoldValue;
 				if ( pc.NpcGuild == NpcGuild.FishermensGuild ){ nPay = nPay*2; }
 				from.AddToBackpack ( new Gold( nPay ) );
-				from.SendMessage("You are paid " + nPay.ToString() + " gold.");
+				from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.trade.fishing.paid.gold", nPay ) );
 				Server.Engines.Harvest.Fishing.SailorSkill( from, (int)( nPay / 10 ) );
 				from.PlaySound( 0x026 );
 				dropped.Delete();

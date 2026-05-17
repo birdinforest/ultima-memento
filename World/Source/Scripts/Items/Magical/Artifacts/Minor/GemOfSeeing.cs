@@ -61,7 +61,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "The gem has lost all of its magic." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.gem.seeing.depleted"));
 				this.Delete();
 				return;
 			}

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class SeaChart : MapItem
 	{
+		public override bool IsContentLocalized => true;
+
 		public string MapWorld;
 
 		[CommandProperty(AccessLevel.Owner)]
@@ -54,10 +56,21 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == null )
+				list.Add( ResolvePropertyText( "item.trade.map.sea" ) );
+			else
+				base.AddNameProperty( list );
+		}
+
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-            string mDesc = "for " + MapWorld;
+			string loc = BuildingPropertyListLocale ?? "en";
+			string worldDisplay = Lands.LocalizedLandNameFromStored( MapWorld, loc );
+			string forPart = ResolvePropertyText( "prop.trade.map.for.region" );
+			string mDesc = string.Format( forPart, worldDisplay );
             list.Add(1053099, String.Format("<BASEFONT COLOR=#DDCC22>\t{0}<BASEFONT Color=#FBFBFB>", mDesc));
         }
 

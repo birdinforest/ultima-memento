@@ -798,6 +798,7 @@ def main() -> int:
             "trap-system.json",
             "motd-system.json",
             "charrestore.json",
+            "legend-book-rows.json",
         }
     )
     if args.prune_stale_locale_files:

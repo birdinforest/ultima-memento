@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -24,7 +25,7 @@ namespace Server.Items
 		public override void OnDoubleClick( Mobile from )
 		{
 			from.Thirst = 20;
-			from.SendMessage( "You take a healthy drink from the bottle...and it magically refills." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.bottle.drink" ) );
 			from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 		}
 

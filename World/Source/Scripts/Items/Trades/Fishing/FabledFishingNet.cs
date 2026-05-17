@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Targeting;
@@ -8,6 +9,8 @@ namespace Server.Items
 {
 	public class FabledFishingNet : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private bool m_InUse;
 
 		[Constructable]
@@ -38,11 +41,29 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.ancient.fishing.net" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Use This On The High Seas");
-			list.Add( 1049644, "Requires 90 Seafaring");
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.fishing.net.use.high.seas" );
+				AddLocalizedProperty( list, "prop.trade.fishing.net.requires.seafaring", "90" );
+			}
+			else
+			{
+				list.Add( 1070722, "Use This On The High Seas");
+				list.Add( 1049644, "Requires 90 Seafaring");
+			}
         }
 
 		public override void Serialize( GenericWriter writer )
@@ -80,15 +101,15 @@ namespace Server.Items
 			}
 			else if ( from.Skills[SkillName.Seafaring].Value < 90.0 )
 			{
-				from.SendMessage("You are not skilled enough at seafaring to use this net.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.fishing.net.msg.not.skilled" ) );
 			}
 			else if ( Worlds.IsOnBoat( from ) == false )
 			{
-				from.SendMessage("You'll need to be on your boat to use this net.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.fishing.net.msg.need.boat" ) );
 			}
 			else if ( Worlds.BoatToCloseToTown( from ) == true )
 			{
-				from.SendMessage("You'll need to go out to deeper waters to use this net.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.fishing.net.msg.deeper.waters" ) );
 			}
 			else if ( IsChildOf( from.Backpack ) )
 			{

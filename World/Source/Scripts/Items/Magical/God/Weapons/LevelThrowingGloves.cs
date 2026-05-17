@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -123,7 +124,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to change the weapon type." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.throwing.backpack"));
 				return;
 			}
 			else
@@ -133,7 +134,7 @@ namespace Server.Items
 				else if ( GloveType == "Knives" ){ GloveType = "Darts"; }
 				else if ( GloveType == "Darts" ){ GloveType = "Stars"; }
 				else { GloveType = "Stones"; }
-				from.SendMessage(68, "You have changed the gloves to throw " + GloveType + ".");
+				ThrowingEquipmentMessages.SendGloveTypeChanged( from, GloveType );
 				this.InvalidateProperties();
 			}
 		}

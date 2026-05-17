@@ -7,11 +7,26 @@ namespace Server.Items
 	[FlipableAttribute( 0x4D07, 0x4D08 )] 
 	public class AlternateRealityMap : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public AlternateRealityMap() : base( 0x4D08 )
 		{
 			Weight = 5.0;
 			Name = "Map of an Alternate Reality";
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.special.altmap" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.special.altmap" ) );
+				return;
+			}
+			base.AddNameProperty( list );
 		}
 
 		public class WorldMapGump : Gump
@@ -45,7 +60,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Use The Map To Examine It");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.special.altmap.examine" );
+			else
+				list.Add( 1049644, "Use The Map To Examine It");
         }
 
 		public AlternateRealityMap( Serial serial ) : base( serial )

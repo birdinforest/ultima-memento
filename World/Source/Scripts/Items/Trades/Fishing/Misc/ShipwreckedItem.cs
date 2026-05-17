@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -9,6 +10,8 @@ namespace Server.Items
 
 	public class ShipwreckedItem : Item, IDyable, IShipwreckedItem
 	{
+		public override bool IsContentLocalized => true;
+
 		public string ShipName;
 		
 		[CommandProperty(AccessLevel.Owner)]
@@ -39,8 +42,16 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1041645 ); // recovered from a shipwreck
-            list.Add( 1049644, ShipName );
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.shipwreck.recovered" );
+				list.Add( 1049644, ShipName );
+			}
+			else
+			{
+				list.Add( 1041645 ); // recovered from a shipwreck
+				list.Add( 1049644, ShipName );
+			}
 		}
 
 		public ShipwreckedItem( Serial serial ) : base( serial )

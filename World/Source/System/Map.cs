@@ -26,6 +26,7 @@ using Server.Items;
 using Server.Network;
 using Server.Targeting;
 using System.Linq;
+using Server.Localization;
 
 namespace Server
 {
@@ -311,6 +312,57 @@ namespace Server
 				return Land.Underworld;
 
 			return Land.None;
+		}
+
+		/// <summary>
+		/// Shotkey under equipment-properties.json for <see cref="LandName"/> phrases (bilingual OPL).
+		/// </summary>
+		public static string LandShotKey( Land land )
+		{
+			switch ( land )
+			{
+				case Land.Ambrosia: return "prop.land.ambrosia";
+				case Land.Atlantis: return "prop.land.atlantis";
+				case Land.IslesDread: return "prop.land.islesdread";
+				case Land.Kuldar: return "prop.land.kuldar";
+				case Land.Lodoria: return "prop.land.lodoria";
+				case Land.Luna: return "prop.land.luna";
+				case Land.Savaged: return "prop.land.savaged";
+				case Land.Serpent: return "prop.land.serpent";
+				case Land.SkaraBrae: return "prop.land.skarabrae";
+				case Land.Sosaria: return "prop.land.sosaria";
+				case Land.UmberVeil: return "prop.land.umberveil";
+				case Land.Underworld: return "prop.land.underworld";
+				default: return null;
+			}
+		}
+
+		/// <param name="locale">OPL locale: <c>en</c> or <c>zh</c> (see <c>Item.BuildingPropertyListLocale</c>).</param>
+		public static string LocalizedLandName( Land land, string locale )
+		{
+			if ( land == Land.None )
+				return LandName( Land.Sosaria );
+
+			string key = LandShotKey( land );
+			if ( key == null || string.IsNullOrEmpty( locale ) || locale == "en" )
+				return LandName( land );
+
+			return StringCatalog.TryResolveByKey( locale, key ) ?? LandName( land );
+		}
+
+		/// <summary>
+		/// Resolves the display name for a land string previously returned by <see cref="LandName"/> (serialized on crafted maps).
+		/// </summary>
+		public static string LocalizedLandNameFromStored( string storedEnglishLandName, string locale )
+		{
+			if ( string.IsNullOrEmpty( storedEnglishLandName ) )
+				return LandName( Land.Sosaria );
+
+			Land l = LandRef( storedEnglishLandName );
+			if ( l == Land.None )
+				return storedEnglishLandName;
+
+			return LocalizedLandName( l, locale );
 		}
 
 		public static Map GetMap( Land land )

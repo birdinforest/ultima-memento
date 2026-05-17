@@ -68,14 +68,14 @@ namespace Server.Items
 		{
 			if ( OrbType == SoulOrbType.PermadeathPlaceholder )
 			{
-				from.SendMessage("This contains your soul. Are you trying to delete yourself?!");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.soul.delete"));
 				return;
 			}
 
             var confirmation = new ConfirmationGump(
                 from,
-				"Delete " + Name,
-                "Are you sure you wish to delete this?",
+                StringCatalog.ResolveFormatByKey(from.Account, "prop.magical.soulorb.confirm.delete.title", Name),
+                StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.confirm.delete.body"),
                 () => Delete()
             );
             from.SendGump(confirmation);
@@ -92,7 +92,7 @@ namespace Server.Items
 			{
 				if ( orbType != SoulOrbType.PermadeathPlaceholder )
 				{
-					from.SendMessage("This item would have no effect.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.no.effect"));
 					return null;
 				}
 			}
@@ -150,8 +150,8 @@ namespace Server.Items
 			}
 			else
 			{
-				from.PrivateOverheadMessage(MessageType.Regular, 38, false, "Your pack is full so it did not work!", from.NetState);
-				from.SendMessage( "Your pack is full so it did not work!" );
+				from.PrivateOverheadMessage(MessageType.Regular, 38, false, StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.pack.full"), from.NetState);
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.pack.full"));
 				orb.Delete();
 
 				return null;
@@ -301,6 +301,9 @@ namespace Server.Items
 			Dragable=true;
 
 			const string color = "#b7cbda";
+			var acct = orb.Owner != null ? orb.Owner.Account : null;
+			string title = StringCatalog.ResolveByKey(acct, "prop.magical.soulorb.gump.resurrect.title");
+			string body = StringCatalog.ResolveByKey(acct, "prop.magical.soulorb.gump.resurrect.body");
 
 			AddPage(0);
 
@@ -308,10 +311,10 @@ namespace Server.Items
 			if ( orb.Owner.Karma < 0 ){ img = 9587; }
 
 			AddImage(0, 0, img, Server.Misc.PlayerSettings.GetGumpHue( orb.Owner ));
-			AddHtml( 10, 11, 349, 20, @"<BODY><BASEFONT Color=" + color + ">RESURRECTION</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 10, 11, 349, 20, "<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(368, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 11, 41, 385, 141, @"<BODY><BASEFONT Color=" + color + ">The spirits offer their aid.<br><br>Do you accept?</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 11, 41, 385, 141, "<BODY><BASEFONT Color=" + color + ">" + body + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			AddButton(10, 225, 4023, 4023, 1, GumpButtonType.Reply, 0);
 			AddButton(367, 225, 4020, 4020, 0, GumpButtonType.Reply, 0);
@@ -332,18 +335,18 @@ namespace Server.Items
 				switch ( m_Orb.OrbType )
 				{
 					case SoulOrbType.BloodOfVampire:
-						from.SendMessage("The blood pours out of the bottle, restoring your life.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.blood"));
 						break;
 
 					case SoulOrbType.CloningCrystalJedi:
 					case SoulOrbType.CloningCrystalSyth:
-						from.SendMessage("The crystal forms a clone of your body, restoring your life.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.clone"));
 						break;
 
 					case SoulOrbType.RestorativeSoil:
 					case SoulOrbType.Default:
 					default:
-						from.SendMessage("The orb glows, releasing your soul.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.soulorb.msg.release"));
 						break;
 				}
 

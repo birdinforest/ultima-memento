@@ -1,11 +1,14 @@
 using System;
 using Server.Items;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class PolishBoneBrush : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultDescription{ get{ return "Sometimes, you may find various bones while adventuring in the land. This brush lets you polish those bones so they can be used as bones for crafting."; } }
 
 		[Constructable]
@@ -15,10 +18,23 @@ namespace Server.Items
 			Weight = 2.0;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.polish.bone.brush" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Polish Bones For Crafting");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.polishbone.polish" );
+			else
+				list.Add( 1070722, "Polish Bones For Crafting");
         } 
 
 		public PolishBoneBrush( Serial serial ) : base( serial )
@@ -41,7 +57,7 @@ namespace Server.Items
 		{
 			if ( IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( "Which bones do you want to polish?" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.which" ) );
 				from.Target = new PickBones( this );
 			}
 			else
@@ -69,11 +85,11 @@ namespace Server.Items
 
 					if ( !bone.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only polish bones that are in your pack." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.pack.bones" ) );
 					}
 					else if ( bone is Container )
 					{
-						from.SendMessage( "You cannot polish containers." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.no.containers" ) );
 					}
 					else if ( bone.ItemID == 0xECA ){ boneCount = 4; }
 					else if ( bone.ItemID == 0xECB ){ boneCount = 4; }
@@ -139,7 +155,7 @@ namespace Server.Items
 					else if ( bone.ItemID == 0x42B5 ){ boneCount = 3; }
 					else
 					{
-						from.SendMessage( "You cannot polish that." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.cannot" ) );
 					}
 
 					if ( boneCount > 0 )
@@ -173,7 +189,7 @@ namespace Server.Items
 						if ( !drop )
 							from.AddToBackpack( new BrittleSkeletal(boneCount) );
 
-						from.SendMessage( "You polish the bones so they can be used for crafting." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.success" ) );
 						from.RevealingAction();
 						from.PlaySound( 0x04F );
 						bone.Delete();
@@ -181,7 +197,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You cannot polish that." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.polishbone.msg.cannot" ) );
 				}
 			}
 		}

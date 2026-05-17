@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Targeting;
 using Server.Targets;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -173,18 +174,18 @@ namespace Server.Items
                 {
                     if (m_BlacksmithValidated || (from.Skills[SkillName.Blacksmith].Value >= LevelItems.BlacksmithSkillRequired))
                     {
-                        from.SendMessage("Which legendary artefact item would you like to enhance?");
+                        from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.which.item"));
                         from.Target = new LevelItemTarget(this); // Call our target
                     }
                     else
                     {
-                        from.SendMessage("Please target one with a base Blacksmith skill of " + LevelItems.BlacksmithSkillRequired + " or higher.");
+                        from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "god.msg.scroll.blacksmith.target", LevelItems.BlacksmithSkillRequired));
                         from.Target = new BlacksmithTarget(this); // Call our target
                     }
                 }
                 else
                 {
-				    from.SendMessage( "Which legendary artefact would you like to enhance?" );
+				    from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.which.artefact"));
 				    from.Target = new LevelItemTarget( this ); // Call our target
                 }
 			}
@@ -203,7 +204,7 @@ namespace Server.Items
 			{
 				if ( target is Mobile )
 				{
-					from.SendMessage( "This rune cannot enhance that!" );
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.cannot.enhance"));
 				}
                 else if (target is Item)
                 {
@@ -211,7 +212,7 @@ namespace Server.Items
 
                     if (item.RootParent != from || !item.IsChildOf(from.Backpack)) // Make sure its in their pack or they are wearing it
                     {
-                        from.SendMessage("The legendary artefact must be in your pack to enhance.");
+                        from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.must.in.pack"));
                     }
                     else
                     {
@@ -221,25 +222,25 @@ namespace Server.Items
 
                             if ((b.MaxLevel + m_Scroll.Value) > LevelItems.MaxLevelsCap)
                             {
-                                from.SendMessage("The level on this legendary artefact is already too high to use this rune!");
+                                from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.level.too.high"));
                             }
                             else
                             {
                                 b.MaxLevel += m_Scroll.Value;
-                                from.SendMessage("Your legendary artefact has been enhanced by " + m_Scroll.Value + " levels.");
+                                from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "god.msg.scroll.enhanced.by", m_Scroll.Value));
                                 m_Scroll.Delete();
 
                             }
                         }
                         else
                         {
-                            from.SendMessage("This rune cannot enhance that!");
+                            from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.cannot.enhance"));
                         }
                     }
                 }
                 else
                 {
-                    from.SendMessage("This rune cannot enhance that!");
+                    from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.cannot.enhance"));
                 }
 			}
 		}
@@ -261,18 +262,18 @@ namespace Server.Items
                     Mobile smith = (Mobile)target;
                     if (smith.Skills[SkillName.Blacksmith].Value < LevelItems.BlacksmithSkillRequired)
                     {
-                        from.SendMessage("This one's blacksmith skill is not high enough to enhance legendary artefacts.");
+                        from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.smith.skill.low"));
                     }
                     else
                     {
-                        from.SendMessage("This one is a skilled blacksmith.");
+                        from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.smith.ok"));
                         from.SendGump(new AwaitingSmithApprovalGump(m_Scroll, from));
-                        smith.SendGump(new LevelUpAcceptGump(m_Scroll, from));	
+                        smith.SendGump(new LevelUpAcceptGump(m_Scroll, from, smith));	
                     }
                 }
                 else
                 {
-                    from.SendMessage("This one is not a skilled blacksmith!");
+                    from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.scroll.not.smith"));
                 }
             }
         }

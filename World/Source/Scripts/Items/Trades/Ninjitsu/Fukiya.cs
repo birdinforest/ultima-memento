@@ -11,6 +11,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x27AA, 0x27F5 )]
 	public class Fukiya : Item, INinjaWeapon
 	{
+		public override bool IsContentLocalized => true;
+
 		public virtual int WrongAmmoMessage { get { return 1063329; } } //You can only load fukiya darts
 		public virtual int NoFreeHandMessage { get { return 1063327; } } //You must have a free hand to use a fukiya.
 		public virtual int EmptyWeaponMessage { get { return 1063325; } } //You have no fukiya darts!
@@ -62,6 +64,14 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == null )
+				list.Add( ResolvePropertyText( "item.trade.ninja.fukiya" ) );
+			else
+				base.AddNameProperty( list );
+		}
+
 		public void AttackAnimation(Mobile from, Mobile to)
 		{
 			if (from.Body.IsHuman && !from.Mounted)
@@ -77,10 +87,7 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
-
-			if ( m_Poison != null && m_PoisonCharges > 0 )
-				list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
+			NinjaAmmoOplProperties.AddUsesAndPoisonProperties( this, list, m_UsesRemaining, m_Poison, m_PoisonCharges );
 		}
 
 		public override void OnDoubleClick( Mobile from )

@@ -12,6 +12,7 @@ using Server.Commands;
 using System.Globalization;
 using Server.Regions;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -55,8 +56,8 @@ namespace Server.Items
 				if ( ( ( HaveShardB + HaveShardC + HaveShardD + HaveShardA ) > 3 ) && HaveGold < NeedGold )
 				{
 					int need = NeedGold - HaveGold;
-					from.SendMessage( "You still need " + need + " gold." );
-					from.SendMessage( "Choose some gold coins to add to the shard." );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.demonprison.need.gold", need ) );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.demonprison.choose.gold" ) );
 					from.Target = new GoldTarget( this );
 				}
 				else
@@ -84,7 +85,7 @@ namespace Server.Items
 
 					if ( !gold.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only add gold coins from your pack." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.demonprison.pack.only" ) );
 					}
 					else
 					{
@@ -95,12 +96,12 @@ namespace Server.Items
 						else { m_DemonPrison.HaveGold = m_DemonPrison.HaveGold + cost; gold.Amount = gold.Amount - cost; }
 
 						from.PlaySound( 0x1FA );
-						from.SendMessage( "The gold has been added to the shard." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.demonprison.gold.added" ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot add that to the shard." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.demonprison.cannot.add" ) );
 				}
 			}
 		}

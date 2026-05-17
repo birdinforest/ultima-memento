@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -235,37 +236,38 @@ namespace Server.Items
 			from.FixedParticles( 0x376A, 1, 31, 9961, 1160, 0, EffectLayer.Waist );
 			from.FixedParticles( 0x37C4, 1, 31, 9502, 43, 2, EffectLayer.Waist );
 
-            string itemdesc;
+            string kindKey;
 			if ( item is BaseWeapon )
-				itemdesc = "weapon";
+				kindKey = "god.msg.levelup.kind.weapon";
 			else if ( item is BaseArmor )
-				itemdesc = "armor";
+				kindKey = "god.msg.levelup.kind.armor";
 			else if ( item is BaseTrinket && item is LevelCandle )
-				itemdesc = "candle";
+				kindKey = "god.msg.levelup.kind.candle";
 			else if ( item is BaseTrinket && item is LevelLantern )
-				itemdesc = "lantern";
+				kindKey = "god.msg.levelup.kind.lantern";
 			else if ( item is BaseTrinket && item is LevelTorch )
-				itemdesc = "torch";
+				kindKey = "god.msg.levelup.kind.torch";
 			else if ( item is BaseTrinket && item is LevelTalismanLeather )
-				itemdesc = "talisman";
+				kindKey = "god.msg.levelup.kind.talisman";
 			else if ( item is BaseTrinket && item is LevelTalismanSnake )
-				itemdesc = "talisman";
+				kindKey = "god.msg.levelup.kind.talisman";
 			else if ( item is BaseTrinket && item is LevelTalismanTotem )
-				itemdesc = "talisman";
+				kindKey = "god.msg.levelup.kind.talisman";
 			else if ( item is BaseTrinket && item is LevelTalismanHoly )
-				itemdesc = "talisman";
+				kindKey = "god.msg.levelup.kind.talisman";
 			else if ( item is BaseTrinket && item is LevelBelt )
-				itemdesc = "belt";
+				kindKey = "god.msg.levelup.kind.belt";
 			else if ( item is BaseTrinket && item is LevelLoinCloth )
-				itemdesc = "loin cloth";
+				kindKey = "god.msg.levelup.kind.loincloth";
 			else if ( item is BaseTrinket )
-				itemdesc = "jewelry";
+				kindKey = "god.msg.levelup.kind.jewelry";
 			else if ( item is BaseClothing )
-				itemdesc = "clothing";
+				kindKey = "god.msg.levelup.kind.clothing";
 			else
-				itemdesc = "item";
+				kindKey = "god.msg.levelup.kind.item";
 
-			from.SendMessage( "Your "+itemdesc+" has gained a level. It is now level {0}.", newLevel );
+			string kind = StringCatalog.ResolveByKey( from.Account, kindKey );
+			from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "god.level.up.msg", kind, newLevel ) );
         }
 
 		public static void ExtractExperienceToken<T>(T item) where T : Item, ILevelable

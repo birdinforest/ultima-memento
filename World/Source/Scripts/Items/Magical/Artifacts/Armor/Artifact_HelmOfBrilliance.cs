@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Spells.Third;
 using Server.Spells;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -28,7 +29,7 @@ namespace Server.Items
 		{
 			if ( Parent != from )
 			{
-				from.SendMessage( "You must be wearing the helm to unleash a fireball." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.helm.brilliance.hold" ) );
 			}
 			else
 			{

@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Gumps;
 using System.Collections.Generic;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -316,17 +317,17 @@ namespace Server.Items
 			int xMins = 0, yMins = 0;
 			bool xEast = false, ySouth = false;
 
-			if ( from.Land == Land.Underworld && !(this is MagicSextant) ){ from.SendMessage( "You will need a magical sextant to see the stars through the cavern ceiling!" ); } 
+			if ( from.Land == Land.Underworld && !(this is MagicSextant) ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.need.magic.underworld" ) ); } 
 			else if ( Sextant.Format( from.Location, from.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth ) )
 			{
 				string location = String.Format( "{0}� {1}'{2}, {3}� {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				from.LocalOverheadMessage( MessageType.Regular, from.SpeechHue, false, location );
 			}
-			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "Ravendark Woods" ) { from.SendMessage( "You can't use a sextant as the sun and stars are blocked by the evil darkness here!" ); }
-			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Village of Ravendark" ) { from.SendMessage( "You can't use a sextant as the sun and stars are blocked by the evil darkness here!" ); }
-			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Ranger Outpost" ) { from.SendMessage( "You can't use a sextant as the mountain clouds block the sky!" ); } 
-			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Valley of Dark Druids" ) { from.SendMessage( "The druids mask this valley with thick clouds!" ); } 
-			else { from.SendMessage( "The sextant does not seem to work here!" ); } 
+			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "Ravendark Woods" ) { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.ravendark.darkness" ) ); }
+			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Village of Ravendark" ) { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.ravendark.darkness" ) ); }
+			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Ranger Outpost" ) { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.ranger.clouds" ) ); } 
+			else if ( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) == "the Valley of Dark Druids" ) { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.druid.clouds" ) ); } 
+			else { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.sextant.not.work.here" ) ); } 
 		}
 
 		public static bool ComputeMapDetails( Map map, int x, int y, out int xCenter, out int yCenter, out int xWidth, out int yHeight )

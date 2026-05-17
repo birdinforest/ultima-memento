@@ -1,11 +1,14 @@
 using System;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BigFish : Item, ICarvable
 	{
+		public override bool IsContentLocalized => true;
+
 		private Mobile m_Fisher;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -29,16 +32,39 @@ namespace Server.Items
 			Hue = Utility.RandomBool() ? 0x847 : 0x58C;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.trade.bigfish" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.trade.bigfish" ) );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 
 			if ( Weight >= 20 )
 			{
-				if ( m_Fisher != null )
-					list.Add( 1070857, m_Fisher.Name ); // Caught by ~1_fisherman~
+				if ( BuildingPropertyListLocale != null )
+				{
+					if ( m_Fisher != null )
+						AddLocalizedProperty( list, "prop.trade.bigfish.caught.by", m_Fisher.Name );
 
-				list.Add( 1070858, ((int)Weight).ToString() ); // ~1_weight~ stones
+					AddLocalizedProperty( list, "prop.trade.bigfish.weight.stones", ((int)Weight).ToString() );
+				}
+				else
+				{
+					if ( m_Fisher != null )
+						list.Add( 1070857, m_Fisher.Name ); // Caught by ~1_fisherman~
+
+					list.Add( 1070858, ((int)Weight).ToString() ); // ~1_weight~ stones
+				}
 			}
 		}
 

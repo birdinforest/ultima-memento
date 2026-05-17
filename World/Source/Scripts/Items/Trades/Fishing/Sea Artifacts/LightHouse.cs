@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -80,6 +81,8 @@ namespace Server.Items
 
 	public class LightHouseAddonDeed : BaseAddonDeed
 	{
+		public override bool IsContentLocalized => true;
+
 		public override BaseAddon Addon
 		{
 			get
@@ -95,10 +98,23 @@ namespace Server.Items
 			ItemID = 0xA18;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.deed.lighthouse" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "To Be Built In A Home");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.deed.lighthouse.build" );
+			else
+				list.Add( 1070722, "To Be Built In A Home");
         } 
 
 		public LightHouseAddonDeed( Serial serial ) : base( serial )

@@ -1,11 +1,14 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class AlchemyTub : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public AlchemyTub() : base( 0x126A )
 		{
@@ -13,11 +16,29 @@ namespace Server.Items
 			Weight = 50.0;
 		}
 
+        public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.trade.alchemy.tub" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Place In Your Home");
-            list.Add( 1049644, "Cleans Jars And Bottles");
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.trade.alchemytub.place.home" );
+				AddLocalizedProperty( list, "prop.trade.alchemytub.cleans" );
+			}
+			else
+			{
+				list.Add( 1070722, "Place In Your Home");
+				list.Add( 1049644, "Cleans Jars And Bottles");
+			}
         } 
 
 		public AlchemyTub( Serial serial ) : base( serial )
@@ -40,12 +61,12 @@ namespace Server.Items
 		{
 			if ( this.Movable != false )
 			{
-				from.SendMessage( "This must be set in your home to use!" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.alchemytub.msg.must.home" ) );
 				return false;
 			}
 			else if ( item is Bottle || item is Jar || ( item is CrystallineJar && item.Name == "crystalline jar" ) )
 			{
-				from.SendMessage( "That is already clean!" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.alchemytub.msg.already.clean" ) );
 				return false;
 			}
 			else
@@ -99,18 +120,28 @@ namespace Server.Items
 
 				if ( jar > 0 || bottle > 0 || crystal > 0 )
 				{
-					string cleaned = "bottle";
-					string plural = "";
 					int give = 1;
-						if ( item.Amount > 1 ){ give = item.Amount; plural = "s"; }
+					if ( item.Amount > 1 ){ give = item.Amount; }
 
-					if ( jar > 0 ){ cleaned = "jar"; from.AddToBackpack( new Jar(give) ); }
-					else if ( crystal > 0 ){ cleaned = "crystalline flask"; from.AddToBackpack( new CrystallineJar() ); }
-					else { cleaned = "bottle"; from.AddToBackpack( new Bottle(give) ); }
+					string subKey;
+					if ( jar > 0 )
+					{
+						from.AddToBackpack( new Jar(give) );
+						subKey = give > 1 ? "prop.trade.alchemytub.cleaned.jars" : "prop.trade.alchemytub.cleaned.jar";
+					}
+					else if ( crystal > 0 )
+					{
+						from.AddToBackpack( new CrystallineJar() );
+						subKey = give > 1 ? "prop.trade.alchemytub.cleaned.flasks" : "prop.trade.alchemytub.cleaned.flask";
+					}
+					else
+					{
+						from.AddToBackpack( new Bottle(give) );
+						subKey = give > 1 ? "prop.trade.alchemytub.cleaned.bottles" : "prop.trade.alchemytub.cleaned.bottle";
+					}
 
-					cleaned = cleaned + plural;
-
-					from.SendMessage( "You thoroughly wash the " + cleaned + "." );
+					string part = StringCatalog.ResolveByKey( from.Account, subKey );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.trade.alchemytub.msg.wash", part ) );
 					from.PlaySound( 0x026 );
 
 					this.Hue = Utility.RandomColor(0);
@@ -119,7 +150,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "This is for washing alchemical and herbalist containers." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.alchemytub.msg.containers.only" ) );
 					return false;
 				}
 			}

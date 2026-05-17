@@ -1,6 +1,8 @@
 using System;
 using Server.Mobiles;
 
+using Server.Localization;
+
 namespace Server.Items
 {
 	public class ThrowingWeapon : Item
@@ -60,7 +62,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to change the ammo type." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "god.throwing.weapon.needbackpack" ) );
 				return;
 			}
 			else
@@ -72,7 +74,7 @@ namespace Server.Items
 				else if ( ammo == "Throwing Stars" && Server.Misc.GetPlayerInfo.isJester( from ) ){ ammo = "Throwing Cards"; ItemID = 0x4C29; Name = "throwing card"; }
 				else if ( ammo == "Throwing Cards" && Server.Misc.GetPlayerInfo.isJester( from ) ){ ammo = "Throwing Tomatoes"; ItemID = 0x4C28; Name = "throwing tomato"; }
 				else { ammo = "Throwing Stones"; ItemID = 0x10B6; Name = "throwing stone"; }
-				from.SendMessage(68, "You have changed the ammo to " + ammo + ".");
+				ThrowingEquipmentMessages.SendAmmoTypeChanged( from, ammo );
 				this.InvalidateProperties();
 			}
 		}

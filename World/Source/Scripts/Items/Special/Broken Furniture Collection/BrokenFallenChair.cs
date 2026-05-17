@@ -61,6 +61,8 @@ namespace Server.Items
 
 	public class BrokenFallenChairDeed : BaseAddonDeed
 	{
+		public override bool IsContentLocalized => true;
+
 		public override BaseAddon Addon { get { return new BrokenFallenChairAddon(); } }
 		public override int LabelNumber { get { return 1076264; } } // Broken Fallen Chair
 
@@ -71,10 +73,26 @@ namespace Server.Items
 			ItemID = 0x3F24;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( Amount <= 1 )
+					AddLocalizedProperty( list, "item.special.deed.broken.fallen.chair" );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, ResolvePropertyText( "item.special.deed.broken.fallen.chair" ) );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.special.brokenfurniture.place.in.home" );
+			else
+				list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public BrokenFallenChairDeed( Serial serial ) : base( serial )

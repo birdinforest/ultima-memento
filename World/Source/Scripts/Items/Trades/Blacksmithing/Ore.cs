@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Engines.Craft;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -153,7 +154,7 @@ namespace Server.Items
 				
 				if ( !Server.Engines.Craft.DefBlacksmithy.IsForge( targeted ) )
 				{
-					from.SendMessage("That is not a forge.");
+					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.ore.not.forge" ));
 					return;
 				}
 

@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Engines.Craft;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -77,12 +78,12 @@ namespace Server.Items
 			
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "Select the saw mill on which to cut the logs." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.log.select.sawmill" ) );
 				from.Target = new InternalTarget( this );
 			}
 			else
 			{
-				from.SendMessage( "The logs are too far away." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.log.too.far" ) );
 			}
 		}
 
@@ -118,13 +119,13 @@ namespace Server.Items
 
 				if (!from.InRange(m_Log.GetWorldLocation(), 2))
 				{
-					from.SendMessage("The logs are too far away.");
+					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.too.far" ));
 					return;
 				}
 
 				if (!IsSawmill(targeted))
 				{
-					from.SendMessage("That is not a saw mill.");
+					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.not.sawmill" ));
 					return;
 				}
 
@@ -154,7 +155,7 @@ namespace Server.Items
 				double maxSkill = difficulty + 25.0;
 				if (difficulty > 50.0 && difficulty > from.Skills[SkillName.Lumberjacking].Value || from.Skills[SkillName.Lumberjacking].Value < minSkill)
 				{
-					from.SendMessage("You have no idea how to best cut this type of wood! (You need to raise your lumberjacking)");
+					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.need.lumberjacking" ));
 					return;
 				}
 				
@@ -176,13 +177,13 @@ namespace Server.Items
 				if (0 < lost)
 				{
 					string message = boards == 0
-						? "You try to cut the logs but ruin all of the wood."
-						: "You try to cut the logs but ruin some of the wood.";
+						? StringCatalog.ResolveByKey( from.Account, "prop.trade.log.ruin.all" )
+						: StringCatalog.ResolveByKey( from.Account, "prop.trade.log.ruin.some" );
 					from.SendMessage(message);
 				}
 				else
 				{
-					from.SendMessage("You cut the logs and put some boards in your backpack.");
+					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.cut.boards" ));
 				}
 
 				if (0 < boards)

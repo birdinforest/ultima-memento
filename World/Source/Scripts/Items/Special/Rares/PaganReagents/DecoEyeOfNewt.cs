@@ -1,5 +1,7 @@
 using System;
 
+using Server.Localization;
+
 namespace Server.Items
 {
 	public class DecoEyeOfNewt : Item
@@ -18,7 +20,7 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			from.SendMessage( "This pagan reagent cannot be used in alchemy, but it is rare and collectible." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.paganreagent.decorative.msg.pagan" ) );
 			return base.OnDragLift( from );
 		}
 

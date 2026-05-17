@@ -1,6 +1,7 @@
 using Server;
 using System;
 using System.Collections;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
@@ -12,6 +13,8 @@ namespace Server.Items
 {
 	public class CrystallineJar : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultDescription{ get{ return "These jars are made of a special, crystalline glass. They are mainly used to collecting liquid from strange puddles on the ground. Such puddles are often created from creatures that produce such liquid. They can also collect holy water."; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
@@ -25,13 +28,26 @@ namespace Server.Items
 			Built = true;
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == "crystalline flask" )
+			{
+				AddLocalizedProperty( list, "item.trade.crystalline.flask" );
+				return;
+			}
+			base.AddNameProperty( list );
+		}
+
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
 
 			if ( this.Name == "crystalline flask" )
 			{
-				list.Add( 1070722, "Holds Odd Substances" );
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.trade.crystallinejar.holds" );
+				else
+					list.Add( 1070722, "Holds Odd Substances" );
 			}
 		}
 
@@ -45,23 +61,23 @@ namespace Server.Items
 			}
 			else if ( this.Name == "crystalline flask" )
 			{
-				from.SendMessage( "What do you want to scoop into the flask?" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.scoop" ) );
 				t = new ScoopTarget( this );
 				from.Target = t;
 			}
 			else if ( !from.Region.AllowHarmful( from, from ) )
 			{
-				from.SendMessage( "That doesn't feel like a good idea." ); 
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.bad.idea" ) ); 
 				return;
 			}
 			else if ( Server.Items.MonsterSplatter.TooMuchSplatter( from ) )
 			{
-				from.SendMessage( "There is too much liquid on the ground already." ); 
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.too.much.liquid" ) ); 
 				return;
 			}
 			else
 			{
-				from.SendMessage( "Where do you want to dump the contents?" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.dump.where" ) );
 				ThrowTarget targ = from.Target as ThrowTarget;
 
 				if ( targ != null && targ.Potion == this )
@@ -89,18 +105,18 @@ namespace Server.Items
 
 					if ( from.GetDistanceToSqrt( new Point3D( iJar.X, iJar.Y, iJar.Z ) ) > 2 )
 					{
-						from.SendMessage( "That is too far away." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.too.far" ) );
 					}
 					else if ( (from.Paralyzed || from.Blessed || from.Frozen || (from.Spell != null && from.Spell.IsCasting)) )
 					{
-						from.SendMessage( "You cannot do that yet." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.cannot.yet" ) );
 					}
 					else if ( iJar is MonsterSplatter )
 					{
 						MonsterSplatter mJar = (MonsterSplatter)iJar;
 						if ( mJar.owner is PlayerMobile )
 						{
-							from.SendMessage( "That is too diluted to scoop up." );
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.too.diluted" ) );
 						}
 						else
 						{
@@ -121,12 +137,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "This flask is meant for other substances." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.wrong.substance" ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "This flask is meant for other substances." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.wrong.substance" ) );
 				}
 			}
 		}
@@ -163,7 +179,7 @@ namespace Server.Items
 				if ( from.GetDistanceToSqrt( d ) > 8 )
 				{
 					nThrown = 0;
-					from.SendMessage( "That is too far away." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.too.far" ) );
 				}
 				else if ( !from.CanSee( d ) )
 				{
@@ -173,7 +189,7 @@ namespace Server.Items
 				else if ( (from.Paralyzed || from.Blessed || from.Frozen || (from.Spell != null && from.Spell.IsCasting)) )
 				{
 					nThrown = 0;
-					from.SendMessage( "You cannot do that yet." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.crystallinejar.msg.cannot.yet" ) );
 				}
 				else
 				{

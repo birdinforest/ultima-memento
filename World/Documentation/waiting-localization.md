@@ -8,13 +8,15 @@
 ## 目录
 
 1. [SendMessage 与中文字符串（AI 流水线）](#sendmessage--中文字符串ai-流水线)
-2. [任务（待办）：硬编码 SendMessage / Say 全库清查](#任务待办硬编码-sendmessage--say-全库清查)
-3. [已完成中文化的装备基类](#1-已完成中文化的装备基类)
-4. [已修复的装备子类未保护 cliloc](#2-已修复的装备子类未保护-cliloc)
-5. [Phase 3：Gift 附魔系统（已完成）](#3-phase-3gift-附魔系统已完成)
-6. [Phase 4：Level 经验装备系统（已完成）](#4-phase-4level-经验装备系统已完成)
-7. [待后续中文化的非装备物品](#5-待后续中文化的非装备物品)
-8. [附录：非装备物品分类总表](#6-附录非装备物品分类总表)
+2. [物品名称中文化（OPL 主名）](#物品名称中文化)
+3. [任务（待办）：硬编码 SendMessage / Say 全库清查](#任务待办硬编码-sendmessage--say-全库清查)
+4. [已完成中文化的装备基类](#1-已完成中文化的装备基类)
+5. [已修复的装备子类未保护 cliloc](#2-已修复的装备子类未保护-cliloc)
+6. [Phase 3：Gift 附魔系统（已完成）](#3-phase-3gift-附魔系统已完成)
+7. [Phase 4：Level 经验装备系统（已完成）](#4-phase-4level-经验装备系统已完成)
+8. [待后续中文化的非装备物品](#5-待后续中文化的非装备物品)
+9. [附录：非装备物品分类总表](#6-附录非装备物品分类总表)
+10. [§5.3b Trades：工单（头顶 / Gump / 叙事 / OPL）](#53b-trades-tickets-overhead-gump-narrative-opl)
 
 ---
 
@@ -43,6 +45,46 @@
 **注意：** 提取器只扫描 **`Resolve` / `ResolveFormat` 里的英文字面量**；shotkey 全部由手写 JSON 维护。约定见根目录 **`AGENTS.md` §3.2**。
 
 **示例：** `Items/Magical/Moonstone.cs` — 月门石无法开启时使用 **`prop.magical.moonstone.gate.inert`** + `ResolveByKey`（文案在 `equipment-properties.json`）。
+
+**色相（hue）与 `SendMessage(int hue, string)`：** 第一个参数仅为客户端着色（例如 **68** 表示成功提示类色调）。**第二参数字符串仍须完全目录化**，不可为中文账号拼接 `"英文片段 " + 变量`。应使用 **`ResolveFormatByKey`** 与 **子串 shotkey**（如投掷手套/弹药类型名），使 **zh-Hans** 整句符合中文语序。详见根目录 **`AGENTS.md` §3.2** 「Tinted SendMessage」。
+
+---
+
+## 物品名称中文化
+
+**目标：** 账号语言为 **zh-Hans** 时，**对象属性列表（OPL）第一行**显示中文**物品名**（及可选著色，若该 shotkey 在 `Item.PropertyColorMap` 中有映射）。与 **`SendMessage` / `Say`** 的文案是两套键：物品名用 **`item.*`**，属性行与交互提示多用 **`prop.*`**，均可在同一文件 **`equipment-properties.json`** 中维护。
+
+**适用范围（当前实现）：**
+
+- ✅ **OPL 主名**：覆盖 **`AddNameProperty`**，在 **`BuildingPropertyListLocale != null`**（由 **`IsContentLocalized`** + **`GetLocalizedPropertyList`** 链触发）时输出目录化字符串。
+- ⚠️ **未包含**：地面 **`OnSingleClick`**、纯客户端 **`LabelNumber`** 工具提示等通路仍可能显示英文 **`Name`**；若需一律中文，须在对应 API 上另做 **`StringCatalog`** / 重载。
+
+**数据文件：**
+
+- 英文：`World/Data/Localization/en/equipment-properties.json`
+- 简体中文：`World/Data/Localization/zh-Hans/equipment-properties.json`  
+- 键名约定：**`item.magical.*`**（魔法类）、 **`item.special.*`**（Special / 契约等）；**勿与 `prop.*` 混用同一键**（职责分离，便于检索）。
+
+**实现步骤（AI / 人工均可照表执行）：**
+
+| # | 动作 |
+|---|------|
+| 1 | 类已 **`IsContentLocalized => true`**（与现有双语 OPL 一致）。 |
+| 2 | 在 **`en/` + `zh-Hans/`** `equipment-properties.json` 增加成对 **`item....`** 键；**zh-Hans** 专有名词 **`中文（English）` 行内注**（`AGENTS.md` §3.5）。 |
+| 3 | **`public override void AddNameProperty(ObjectPropertyList list)`**：若 **`BuildingPropertyListLocale != null`**，单件 **`AddLocalizedProperty(list, "item....")`**；多件 **`list.Add(1050039, "{0}\t{1}", Amount, ResolvePropertyText("item...."))`**；否则 **`base.AddNameProperty(list)`**。 |
+| 4 | **保留** 构造器里的 **`Name = "…"`**（及 **`LabelNumber`**）供序列化、脚本、**`switch (Name)`**；仅 **展示层**走 **`item.*`**。 |
+| 5 | 父类已覆盖 **`AddNameProperty`**（例如 **`BaseTrinket`** 的 exceptional / resource 格式）时，子类须在 **`return`** 前给出双语分支（例：**`OrbOfTheAbyss`**），避免丢格式。 |
+| 6 | **`python3 World/Source/Tools/sync_localization_glossary.py --check`**（文案触碰词表时）。 |
+
+**代码参考（先例）：**
+
+| 模式 | 文件 / 类 |
+|------|------------|
+| 逻辑键 + 多形态 `Name` | `Items/Magical/RuneOfVirtue.cs` |
+| `CraftResource` 动态名 | `Items/Trades/Special.cs`（`BaseSpecial`） |
+| Special + 深渊五态 + 契约 | 见本文 **§5.2**（**`item.special.*`** / **`item.magical.moonstone.name`**） |
+
+**根目录规范：** **`AGENTS.md` §3.1**（`equipment-properties` 含 **`item.*`**）、**§3.2**（`AddNameProperty` 段落）。
 
 ---
 
@@ -133,6 +175,10 @@ Gift 系统是装备的扩展，为物品添加附魔点数和可自定义附魔
 | 18 | `Magical/Gift/GiftThrowingGloves.cs` | "双击更改类型"、"无法与其他武器共用" |
 | 19 | `Magical/Gift/GiftPugilistMits.cs` | "无法与其他武器共用" |
 
+### 3.3 Gift / Level 运行时文案（SendMessage / 类内 Gump）
+
+附魔与等级系统的 **OPL**（`gift.*` / `god.*`）此前已接入；**玩家消息** 与 **铁匠验证 Gump** 已统一为 `equipment-properties.json` 中的 **`god.msg.*`、`god.gump.levelup.*`**，代码使用 `StringCatalog.ResolveByKey` / `ResolveFormatByKey`。经验代币 **OPL 主名** 使用 **`item.god.exp.token.name`**。Gift/Level 共用 **`god.msg.attr.not.enough.points`**（附魔与升级加点均不足时）。**礼品提灯（Gift Lantern）** 已 `IsContentLocalized` 并补 **`god.lantern.*`** 与 Level 提灯一致。
+
 ---
 
 ## 4. Phase 4：Level 经验装备系统（已完成）
@@ -187,17 +233,19 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 
 这些物品分为几类，分别有不同的中文化策略。
 
-### 5.1 Magical 目录 - 魔法物品（18个文件）
+### 5.1 Magical 目录 - 魔法物品（18个文件）（完成）
+
+**运行时 `SendMessage`：** `SoulOrb`、`LuckyHorseShoes`、`SlayerDeed`、`ArtifactManual`、`ManualOfItems`、`ColoringBook`、`GemOfSeeing` 等已改用 **`prop.magical.*.msg.*`** / **`god.msg.*`**（与既有 `prop.magical.*` OPL 键并列，均在 `equipment-properties.json`）。屠魔契 **`prop.magical.slayer.msg.*`** 并修正英文第二槽提示为 “Your weapon …”（原 `You weapon` 笔误）。
 
 | # | 文件 | Class | 英文文本 |
 |---|------|-------|---------|
 | 1 | `Items/Magical/SoulOrb.cs` | `SoulOrb` | "Contains vampire blood for..."、"Contains genetic patterns for..."、"Contains the Soul of..." |
 | 2 | `Items/Magical/LuckyHorseShoes.cs` | `LuckyHorseShoes` | "Adds up to 100 Luck To An Item" |
 | 3 | `Items/Magical/RuneOfVirtue.cs` | `RuneOfVirtue` | "Rune for..." |
-| 4 | `Items/Magical/Moonstone.cs` | `MoonStone` | OPL：`prop.magical.moonstone`；使用失败：`prop.magical.moonstone.gate.inert` + `StringCatalog.ResolveByKey`（见本文 SendMessage 节） |
+| 4 | `Items/Magical/Moonstone.cs` | `MoonStone` | **主名** `item.magical.moonstone.name`；OPL：`prop.magical.moonstone`；使用失败：`prop.magical.moonstone.gate.inert` + `ResolveByKey` |
 | 5 | `Items/Magical/SlayerDeed.cs` | `SlayerDeed` | 屠魔种类名称 |
 | 6 | `Items/Magical/ArtifactManual.cs` | `ArtifactManual` | "This Identifies Items"、使用次数 |
-| 7 | `Items/Magical/ManualOfItems.cs` | `ManualOfItems` | 使用次数、"Belongs to..." |
+| 7 | `Items/Magical/ManualOfItems.cs` | `ManualOfItems` | 使用次数、"Belongs to..."；**遗物箱 Gump** 标题/说明 **`god.gump.relicchest.*`**；列表行 **`god.legendbook.row.*`**（`zh-Hans/legend-book-rows.json`）；领取提示 **`god.msg.relic.chest.received`** |
 | 8 | `Items/Magical/StaffOfFiveParts.cs` | `Part1`-`Part5` | "Belongs to..."（5处） |
 | 9 | `Items/Magical/GemOfSeeing.cs` | `GemOfSeeing` | "Find Hidden Items And Traps"、使用次数 |
 | 10 | `Items/Magical/PandorasBox.cs` | `PandorasBox` | "Magically Access Your Bank Box"、使用次数 |
@@ -205,54 +253,59 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | 12 | `Items/Magical/Arcane/` | 4个元素书 | "...Book of Spells" |
 | 13 | `Items/Magical/RuneOfVirtue.cs` | `RuneOfVirtue` | 符文类型描述 |
 
-### 5.2 Special 目录 - 特殊物品（9个文件）
+### 5.1b Magical/Artifacts 子目录神器（`SendMessage` 已改为 shotkey）
 
-| # | 文件 | Class | 英文文本 |
-|---|------|-------|---------|
-| 1 | `Items/Special/SlaversNet.cs` | `SlaversNet` | "Used to capture tamable creatures" |
-| 2 | `Items/Special/OrbOfTheAbyss.cs` | `OrbOfTheAbyss` | "Belongs to..."（动态名称） |
-| 3 | `Items/Special/AlternateRealityMap.cs` | `AlternateRealityMap` | "Use The Map To Examine It" |
-| 4 | `Items/Special/SoulStone.cs` | `SoulStone` | "[Account Bound]"、"[Binds to account when used]" |
-| 5 | `Items/Special/DragonPedStatue.cs` | `DragonPedStatue` | 颜色名、雕像名 |
-| 6 | `Items/Special/Broken Furniture/` | 8个家具契约 | "Double Click To Place In Your Home" |
+以下文件玩家提示已改为 **`prop.magical.artifact.*`**（`equipment-properties.json`）：`Artifact_StaffofSnakes`、`Artifact_GandalfsStaff`、`Artifact_HammerofThor`、`Artifact_HelmOfBrilliance`、`Artifact_RobeOfTeleportation`、`Artifact_AcidProofRobe`、`Artifact_RodOfResurrection`、`EverlastingLoaf`、`EverlastingBottle`。
 
-### 5.3 Trades 目录 - 交易技能物品（36个文件）
+### 5.2 Special 目录 - 特殊物品（5 + 8 契约 `.cs`）（部分完成）
 
-| 子目录 | 文件 | 英文文本 |
-|--------|------|---------|
-| **Blacksmithing/** | `FireGiantForge.cs` | "Fire Giant Forge"、"{0} Uses Remaining" |
-| | `RubyPickaxe.cs` | "From Zorn the Blacksmith"、"Magically Dig Caddellite" |
-| **Bowcraft/** | `ArrowsAndBolts.cs` | "This Bundle Contains 100/1,000 Arrows/Bolts"、"Double-Click To Separate..." |
-| **Fishing/** | `ShipwreckedItem.cs` | 沉船名 |
-| | `SpecialSeaweed.cs` | "Squeeze To Attempt To Extract Fluid"、"Need An Empty Bottle" |
-| | `NewFish.cs` | "An Exotic Fish"、"Worth X Gold" |
-| | `WetClothes.cs` | "Squeeze Out Water To Dry" |
-| | `NeptunesFishingNet.cs` | "Use This On The High Seas"、"Requires 100 Seafaring" |
-| | `FishingNet.cs` | "Use On The High Seas..."、"Requires 30 Seafaring" |
-| | `FabledFishingNet.cs` | "Use This On The High Seas"、"Requires 90 Seafaring" |
-| | `SpecialFishingNet.cs` | "Use This On The High Seas"、"Requires 60 Seafaring" |
-| | `RustyJunk.cs` | "Scrap Iron" |
-| | `HighSeasRelic.cs` | "Recovered From..." |
-| | `BigFish.cs` | 渔夫名、重量 |
-| | `AquariumSouthAddon.cs` / `AquariumEastAddon.cs` | "Double Click To Place In Your Home" |
-| | `LightHouse.cs` | "To Be Built In A Home" |
-| | `MarlinSouthAddon.cs` / `MarlinEastAddon.cs` | "Double-Click To Place In Home" |
-| **Carpentry/** | `TaxidermyKit.cs` | 猎人名、重量 |
-| **Thieving/** | `MagicSkeltonsKey.cs` | "Open any locked container or door" |
-| | `SkeltonsKey.cs` | "Open most locked containers or doors" |
-| | `MasterSkeltonsKey.cs` | "Open any locked container or door" |
-| **Forensics/** | `PolishBoneBrush.cs` | "Polish Bones For Crafting" |
-| **Reagents/** | `GoldenFeathers.cs` | "Gifted to..." |
-| | `Reagents.cs` | "This Jar Contains..."、"Double-Click To Empty..." |
-| **Cartography/** | `MapRanger.cs` | "Use To Get To Locations Quicker"、"Double-Click To Follow The Path" |
-| | `LocalMap/WorldMap/CityMap/SeaChart.cs` | "for " + 地图世界名（HTML格式） |
-| | `TreasureMap.cs` | "Somewhere in " + 地名、"(" + 坐标 + ")" |
-| **Alchemy/** | `AlchemyTub.cs` | "Place In Your Home"、"Cleans Jars And Bottles" |
-| | `CrystallineJar.cs` | "Holds Odd Substances" |
-| **Ninjitsu/** | `LeatherNinjaBelt.cs` | 使用次数、毒药等级 |
-| | `Shuriken.cs` | 使用次数、毒药等级 |
-| | `FukiyaDarts.cs` | 使用次数、毒药等级 |
-| | `Fukiya.cs` | 使用次数、毒药等级 |
+| # | 文件 | Class | 策略 |
+|---|------|-------|------|
+| 1 | `Items/Special/SlaversNet.cs` | `SlaversNet` | `IsContentLocalized`；**主名** `item.special.slaversnet`；OPL `prop.special.slaversnet.capture.tamable`；`SendMessage`：`ResolveByKey` / `ResolveFormatByKey` |
+| 2 | `Items/Special/OrbOfTheAbyss.cs` | `OrbOfTheAbyss` | **主名** `item.special.abyss.*`（五态）；OPL `prop.special.orbabyss.belongs`；装备 `prop.special.orbabyss.not.yours`；`ChangeOrb` `prop.special.orbabyss.tinker.give` |
+| 3 | `Items/Special/AlternateRealityMap.cs` | `AlternateRealityMap` | **主名** `item.special.altmap`；OPL `prop.special.altmap.examine` |
+| 4 | `Items/Special/SoulStone.cs` | `SoulStone` / `SoulstoneFragment` | **主名** `item.special.soulstone` / `item.special.soulstone.fragment`（默认无 `Name`）；`GetProperties`：`prop.special.soulstone.*`、碎片 `prop.special.soulstonefragment.uses.*`；`prop.special.soulstone.msg.absorb.explode` |
+| 5 | `Items/Special/DragonPedStatue.cs` | `DragonPedStatue` | **主名** `item.special.dragon.statue`；材质 `prop.special.dragonstatue.material`；刻名 `prop.special.dragonstatue.inscription` |
+| 6 | `Broken Furniture Collection/*.cs` | 8× `*Deed` | **主名** `item.special.deed.broken.*`；放置说明 `prop.special.brokenfurniture.place.in.home` |
+
+**复查（2026-05-17）：** `Items/Special/Rares/PaganReagents/*.cs` 拾取提示已改为 **`prop.special.paganreagent.decorative.*`**。`BarbaricSatchel`、`DemonPrison`（含献金成功 **`prop.special.demonprison.gold.added`**）、`DragonEgg` / `DrakkhenEgg` / `DracolichSkull`（金币反馈 **`prop.special.egg.gold.added`**）、`HugeWaterTub` 等玩家 **`SendMessage`** 已走 **`StringCatalog.Resolve*`** 与 `equipment-properties.json`。其它 `Special/Rares` 若新增脚本，请用 `SendMessage( StringCatalog.` 检索复核。
+
+### 5.3 Trades 目录 - 交易技能物品（运行时消息已收敛）
+
+**复查（2026-05-17）：** `Scripts/Items/Trades/` 下列路径的玩家 **`SendMessage`** 已改为 **`ResolveByKey` / `ResolveFormatByKey`**（键在 **`equipment-properties.json`**）：`Blacksmithing/DwarvenForge`、`Fishing/*Barrel`、`Lumberjack/Log`（含锯木失败）、`Misc/Bandage`（祝福不可用、随从未死、饥肠治疗拒绝、**`EnableHealingLogging`** 调试行）、`Magical/Moongate`、`Glass Stone/*Book`（玻璃吹制 / 石工 / 采石 / 采沙）、`Tailoring/SpoolOfThread`（织机未完成布 / 材料不足）、`Thieving/DisguiseKit`、`LockPick`、`Sextant`、`PickBox`、`Clocks`、`Ore`、`MagicFish`、`Dyes` 等。新增 trades 物品请勿再写字面量英文 **`SendMessage("...")`**。
+
+| 子目录 | 文件 | 策略摘要 |
+|--------|------|----------|
+| **Blacksmithing/** | `FireGiantForge.cs`、`RubyPickaxe.cs` | 已完成 |
+| **Bowcraft/** | `ArrowsAndBolts.cs`（四类 Bundle） | `IsContentLocalized`；主名与 OPL `prop.trade.bow.*`；消息与头顶 `StringCatalog` |
+| **Fishing/** | 渔获/渔网/deed/沉船等 | 已完成 |
+| **Carpentry/** | `TaxidermyKit.cs` | 已完成 |
+| **Thieving/** | 骷髅钥匙三文件 | 已完成 |
+| **Forensics/** | `PolishBoneBrush.cs` | 已完成 |
+| **Reagents/** | `GoldenFeathers.cs`、`Reagents.cs` | 已完成 |
+| **Cartography/** | `MapRanger.cs`、`MapRangerDoor`、`LocalMap`、`WorldMap`、`CityMap`、`SeaChart`、`TreasureMap` | `IsContentLocalized`；`GetProperties` / `SendMessage` 走 `StringCatalog` / `ResolvePropertyText` |
+| **Alchemy/** | `AlchemyTub.cs`、`CrystallineJar.cs` | 已完成 |
+| **Ninjitsu/** | `Shuriken`、`FukiyaDarts`、`Fukiya`、`LeatherNinjaBelt` | `NinjaAmmoOplProperties`（`NinjaWeapons.cs`）；毒药与次数 OPL；腰带装备提示键 |
+
+<a id="53b-trades-tickets-overhead-gump-narrative-opl"></a>
+
+### 5.3b Trades tickets（头顶 / Gump / 叙事 / OPL 面）
+
+> **来源：** 2026-05-17 对 `Scripts/Items/Trades/` 全目录复查：`SendMessage("` 与 `.Say("` 已无硬编码英文；下列为 **仍非 `StringCatalog`、玩家可能看到英文** 的条目，需单独开单处理。
+
+| 优先级 | 子类 | 文件（路径相对 `Scripts/Items/Trades/`） | 现状与建议 |
+|--------|------|------------------------------------------|------------|
+| P1 | 开锁过程头顶 | `Thieving/LockPick.cs` | 约 **10×** `PrivateOverheadMessage(..., "…")`（断钥匙卡/锁镐、无法破解/撬开、成功/失败等）+ **1×** `PublicOverheadMessage`（宝箱漏气，约 300 行）。建议 **`prop.trade.lockpick.overhead.*`**（或细分 `*.hack` / `*.pick`）写入 `equipment-properties.json`，`ResolveByKey` / `ResolveFormatByKey` 传入 `from.Account`。 |
+| P2 | 月门确认 Gump | `Magical/Moongate.cs` | 仅在 **`!Core.AOS`** 分支 `AddHtml` 写死英文欢迎句（约 443 行）；AOS 分支已 `AddHtmlLocalized`。建议与非 AOS 路径对齐： **`AddHtmlLocalized` 同 cliloc** 或 shotkey + 拼 HTML。 |
+| P0 | SOS 沉船求救全文 | `Fishing/Misc/SOS.cs` | 构造函数内 **`Beast` 模板**、`ShipStory` 随机段落、`IsAncient` 前缀等均为英文；`MessageGump` 将 `story` 注入 `AddHtml`。工作量大：宜按段落/模板设 **`prop.trade.sos.*`** 或独立逻辑键 JSON，并处理 **`LandName` / city / 船名** 插值。坐标行 `fmt`（`N/S/E/W`）可暂缓。 |
+| P2 | Speech gump 标题 | `Fishing/FishBarrel.cs`、`Fishing/ScrapIronBarrel.cs` | `SpeechGump(from, "Fish In A Barrel", …)`、`"Rusty Gold"` 标题硬编码；正文依赖 `SpeechFunctions.SpeechText(..., "Aquarium" \| "ScrapMetal")` — 需与 **Speech 系统**是否已目录化联动核查。 |
+| P2 | 遗物钟名称 / OPL 金额 | `Tinkering/Clocks.cs` | `Name = sLook + " grandfather clock"`（多类钟表重复）；`ColorText3 = "Worth " + CoinPrice + " Gold"`。需 **`item.trade.clock.*`** 或 `prop.trade.relicclock.*` + 形容词枚举键 / `ResolveFormatByKey`。 |
+| P3 | 全目录 `DefaultDescription` / `DefaultName` / `Name =` | `Scripts/Items/Trades/` 下多文件 | 与 `SendMessage` 无关；zh-Hans 看 OPL 描述仍可能英文。宜按类分批：`IsContentLocalized` + `GetLocalizedPropertyList` / 描述 shotkey（或纳入长期「策略 E」表）。 |
+
+**复查命令（仅供执行人）：**
+
+- `SendMessage\s*\(\s*"`、`\.Say\s*\(\s*"`：应为空。
+- `PrivateOverheadMessage\s*\([^)]*"`、`PublicOverheadMessage\s*\([^)]*"`：先清 `LockPick.cs`，再全库扩展同一模式。
 
 ---
 
@@ -271,7 +324,7 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | **B - 装备子类 cliloc 修复** | 额外 GetProperties 覆盖 | 5个文件 ✅ |
 | **C - Gift 系统中文化** | 附魔属性 | 19个文件 ✅ |
 | **D - Level 系统中文化** | 等级/经验值属性 | 25个文件 ✅ |
-| **E - 非装备 AddNameProperties** | 描述性文本的 Item 子类 | ~63个文件 ⏳ |
+| **E - 非装备 AddNameProperties** | 描述性文本的 Item 子类 | ~63个文件；Trades 的 **`SendMessage` 已收敛**，其余面见 **§5.3b 工单** |
 
 ### 策略 E 优先级建议
 
@@ -281,5 +334,5 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | P0 | Cartography 地图类 | 高频交互 | ~6 |
 | P1 | Thieving 钥匙类 | 中等频率 | ~3 |
 | P1 | Magical 魔法物品 | 中等频率 | ~18 |
-| P2 | Special 特殊物品 | 低频交互 | ~9 |
+| P2 | Special 特殊物品 | 低频交互 | ~9 ✅ |
 | P2 | Trades 其他技能 | 低频交互 | ~12 |

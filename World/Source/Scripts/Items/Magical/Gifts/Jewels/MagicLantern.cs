@@ -2,11 +2,14 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class GiftLantern : GiftGoldRing
 	{
+		public override bool IsContentLocalized => true;
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Trinket; } }
 
 		[Constructable]
@@ -26,8 +29,18 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( this.ItemID == 0xA15 ){ list.Add( 1049644, "Double-Click to Unequip"); }
-			else { list.Add( 1049644, "Double-Click to Equip"); }
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( this.ItemID == 0xA15 )
+					AddLocalizedProperty( list, "god.lantern.unequip" );
+				else
+					AddLocalizedProperty( list, "god.lantern.equip" );
+			}
+			else
+			{
+				if ( this.ItemID == 0xA15 ){ list.Add( 1049644, "Double-Click to Unequip"); }
+				else { list.Add( 1049644, "Double-Click to Equip"); }
+			}
         } 
 
 		public override bool AllowEquipedCast( Mobile from )
@@ -67,7 +80,7 @@ namespace Server.Items
 				{
 					from.AddToBackpack( from.FindItemOnLayer( Layer.TwoHanded ) );
 				}
-				from.SendMessage( "You put the lantern in your left hand." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.lantern.left.hand"));
 				from.AddItem(this);
 				this.ItemID = 0xA15;
 				from.PlaySound( 0x47 );

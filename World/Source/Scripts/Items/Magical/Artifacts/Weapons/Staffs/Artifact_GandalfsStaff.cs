@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Spells.Magical;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -44,7 +45,7 @@ namespace Server.Items
 
 			if ( Parent != from )
 			{
-				from.SendMessage( "You must be holding the staff to call dragons." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.gandalf.staff.hold" ) );
 			}
 			else if ( CanUseMagic > 0 )
 			{
@@ -52,7 +53,7 @@ namespace Server.Items
 				string wait = string.Format("{0:D1} hours and {1:D2} minutes", 
 								t.Hours, 
 								t.Minutes);
-				from.SendMessage( "You can use the magic in " + wait + "." );
+				from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.magical.artifact.gandalf.staff.cooldown", wait ) );
 			}
 			else
 			{

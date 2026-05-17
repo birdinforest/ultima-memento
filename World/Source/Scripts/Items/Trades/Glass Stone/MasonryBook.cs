@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -45,16 +46,16 @@ namespace Server.Items
 			}
 			else if ( pm == null || from.Skills[SkillName.Carpentry].Base < 100.0 )
 			{
-				pm.SendMessage( "Only a Grandmaster Carpenter can learn from this book." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.book.masonry.need.gm" ) );
 			}
 			else if ( pm.Masonry )
 			{
-				pm.SendMessage( "You have already learned this information." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.masonry.already" ) );
 			}
 			else
 			{
 				pm.Masonry = true;
-				pm.SendMessage( "You have learned to make items from stone. You will need miners to gather stones for you to make these items." );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "prop.trade.book.masonry.success" ) );
 				Delete();
 			}
 		}

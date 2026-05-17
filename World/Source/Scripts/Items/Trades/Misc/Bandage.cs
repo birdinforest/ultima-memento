@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -70,7 +71,7 @@ namespace Server.Items
 		{
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot use bandages while in this state." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.bandage.cannot.state" ) );
 				return;
 			}
 
@@ -89,7 +90,7 @@ namespace Server.Items
 		{
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot use bandages while in this state." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.bandage.cannot.state" ) );
 				return;
 			}
 
@@ -103,7 +104,7 @@ namespace Server.Items
 		{
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot use bandages while in this state." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.bandage.cannot.state" ) );
 				return;
 			}
 
@@ -166,7 +167,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage("They are not dead.");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 					}
 				}
 				else if ( targeted is HenchmanWizardItem && from.Skills[SkillName.Anatomy].Value >= 80 && from.Skills[SkillName.Healing].Value >= 80 )
@@ -182,7 +183,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage("They are not dead.");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 					}
 				}
 				else if ( targeted is HenchmanArcherItem && from.Skills[SkillName.Anatomy].Value >= 80 && from.Skills[SkillName.Healing].Value >= 80 )
@@ -198,7 +199,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage("They are not dead.");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 					}
 				}
 				else if (targeted is HenchmanMonsterItem && from.Skills[SkillName.Anatomy].Value >= 80 && from.Skills[SkillName.Healing].Value >= 80 )
@@ -214,7 +215,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage("They are not dead.");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 					}
 				}
 				else
@@ -499,7 +500,7 @@ namespace Server.Items
 						rollingHealAmount += toHeal;
 
 						if (MyServerSettings.EnableHealingLogging())
-							m_Healer.SendMessage("Healing (Pass, now {0})", rollingHealAmount);
+							m_Healer.SendMessage( StringCatalog.ResolveFormatByKey( m_Healer.Account, "prop.trade.bandage.log.pass", rollingHealAmount ) );
 					}
 					else
 					{
@@ -507,7 +508,7 @@ namespace Server.Items
 						playSound = false;
 
 						if (MyServerSettings.EnableHealingLogging())
-							m_Healer.SendMessage("Healing (Fail)");
+							m_Healer.SendMessage( StringCatalog.ResolveByKey( m_Healer.Account, "prop.trade.bandage.log.fail" ) );
 					}
 
 					if ( partial )
@@ -544,7 +545,7 @@ namespace Server.Items
 			if ( checkSkills && canGainSkill)
 			{
 				if (MyServerSettings.EnableHealingLogging())
-					m_Healer.SendMessage("Healing (Check skills)");
+					m_Healer.SendMessage( StringCatalog.ResolveByKey( m_Healer.Account, "prop.trade.bandage.log.check.skills" ) );
 				m_Healer.CheckSkill( secondarySkill, 0.0, 120.0 );
 				m_Healer.CheckSkill( primarySkill, 0.0, 120.0 );
 			}
@@ -600,7 +601,7 @@ namespace Server.Items
 				}
 
 				if (MyServerSettings.EnableHealingLogging())
-					context.m_Healer.SendMessage("# Ticks ({0}) // Tick value ({1}) // Burst value ({2})", 0 < partialHealCount ? partialHealCount : 0, m_TickHealAmount, m_FinalHealAmount);
+					context.m_Healer.SendMessage( StringCatalog.ResolveFormatByKey( context.m_Healer.Account, "prop.trade.bandage.log.ticks", 0 < partialHealCount ? partialHealCount : 0, m_TickHealAmount, m_FinalHealAmount ) );
 			}	
 
 			protected override void OnTick()
@@ -610,13 +611,13 @@ namespace Server.Items
 				if ( isComplete )
 				{
 					if (MyServerSettings.EnableHealingLogging())
-						m_Context.m_Healer.SendMessage("Final (+{0}?) after {1}ms", m_FinalHealAmount, m_CurrentTicks * MILLISECONDS_PER_TICK);
+						m_Context.m_Healer.SendMessage( StringCatalog.ResolveFormatByKey( m_Context.m_Healer.Account, "prop.trade.bandage.log.final", m_FinalHealAmount, m_CurrentTicks * MILLISECONDS_PER_TICK ) );
 					m_Context.EndHeal( false, m_FinalHealAmount, true, ref m_AmountToHeal );
 				}
 				else if ( canCheck )
 				{
 					if (MyServerSettings.EnableHealingLogging())
-						m_Context.m_Healer.SendMessage("Partial (+{0}?)", m_TickHealAmount);
+						m_Context.m_Healer.SendMessage( StringCatalog.ResolveFormatByKey( m_Context.m_Healer.Account, "prop.trade.bandage.log.partial", m_TickHealAmount ) );
 					int totalSeconds = ( m_CurrentTicks - m_CurrentTicks % TICKS_PER_SECOND ) / TICKS_PER_SECOND;
 					bool canGain = totalSeconds % 3 == 0; // Once per 3rd second
 					m_Context.EndHeal( true, m_TickHealAmount, canGain, ref m_AmountToHeal );
@@ -676,7 +677,7 @@ namespace Server.Items
 
 			if ( patient.Hunger < 6 && patient is PlayerMobile && patient.Alive )
 			{
-				healer.SendMessage( "You cannot heal those that are extremely hungry." );
+				healer.SendMessage( StringCatalog.ResolveByKey( healer.Account, "prop.trade.bandage.target.starving" ) );
 			}
 			else if ( patient is Golem || patient is Robot )
 			{

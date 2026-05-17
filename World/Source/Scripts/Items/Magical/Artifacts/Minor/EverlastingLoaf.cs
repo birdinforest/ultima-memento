@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -24,7 +25,7 @@ namespace Server.Items
 		public override void OnDoubleClick( Mobile from )
 		{
 			from.Hunger = 20;
-			from.SendMessage( "You take a healthy bite from the bread...and it magically reforms." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.loaf.bite" ) );
 
 			// Play a random "eat" sound
 			from.PlaySound( Utility.Random( 0x3A, 3 ) );

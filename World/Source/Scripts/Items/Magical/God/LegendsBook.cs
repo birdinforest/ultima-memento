@@ -6,12 +6,13 @@ using System.Globalization;
 using Server.Items;
 using Server.Misc;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class LegendsBook : Item
 	{
-		public const int NUMBER_OF_ARTIFACTS = 290;
+		public const int NUMBER_OF_ARTIFACTS = 289;
 
 		[Constructable]
 		public LegendsBook() : base( 0x22C5 )
@@ -55,7 +56,7 @@ namespace Server.Items
 				AddImage(0, 0, 7024, 2736);
 				AddButton(590, 48, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-				AddHtml( 77, 49, 259, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>LEGENDARY ARTIFACTS</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 77, 49, 259, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + StringCatalog.ResolveByKey( from.Account, "god.gump.legendbook.title" ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false );
 
 				int subItem = page * 16;
 
@@ -101,14 +102,14 @@ namespace Server.Items
 				if ( GetLegendArtyForBook( showItem7, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem7, GumpButtonType.Reply, 0); } y=y+z;
 				if ( GetLegendArtyForBook( showItem8, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem8, GumpButtonType.Reply, 0); } y=s-3;
 				y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem1, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem2, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem3, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem4, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem5, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem6, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem7, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem8, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem3 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem4 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem5 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem6 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
 
 				///////////////////////////////////////////////////////////////////////////////////
 
@@ -125,14 +126,14 @@ namespace Server.Items
 				if ( GetLegendArtyForBook( showItem15, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem15, GumpButtonType.Reply, 0); } y=y+z;
 				if ( GetLegendArtyForBook( showItem16, 1 ) != "" ){ AddButton(x, y, 2447, 2447, showItem16, GumpButtonType.Reply, 0); } y=s-3;
 				y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem9, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem10, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem11, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem12, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem13, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem14, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem15, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
-				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetLegendArtyForBook( showItem16, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem9 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem10 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem11 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem12 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem13 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem14 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem15 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+z;
+				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + LegendBookRow( from, showItem16 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -174,18 +175,18 @@ namespace Server.Items
 						reward.Name = sArty;
 						from.AddToBackpack ( reward );
 						LoggingFunctions.LogCreatedArtifact( from, sArty );
-						from.SendMessage( "The gods have created a legendary artefact called " + sArty + ".");
+						from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "god.msg.legends.created", sArty));
 						from.FixedParticles( 0x3709, 10, 30, 5052, 0x480, 0, EffectLayer.LeftFoot );
 						from.PlaySound( 0x208 );
 					}
 				}
 				else if ( from.TotalGold < 10000 )
 				{
-					from.SendMessage( "You do not have enough gold for tribute.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.legends.gold"));
 				}
 				else
 				{
-					from.SendMessage( "You are not legendary enough to summon the artifact.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.legends.not.legendary"));
 				}
 			}
 		}
@@ -204,6 +205,11 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+		}
+
+		public static string LegendBookRow( Mobile from, int artifactId )
+		{
+			return LegendRelicBookRows.LocalizedRowLabel( from, artifactId, GetLegendArtyForBook( artifactId, 1 ) );
 		}
 
 		public static string GetLegendArtyForBook( int artifact, int part )

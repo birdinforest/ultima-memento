@@ -7,6 +7,8 @@ namespace Server.Items
 	[Flipable( 0x27AC, 0x27F7 )]
 	public class Shuriken : Item, ICraftable, INinjaAmmo
 	{
+		public override bool IsContentLocalized => true;
+
 		private int m_UsesRemaining;
 
 		private Poison m_Poison;
@@ -52,14 +54,19 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name == null )
+				list.Add( ResolvePropertyText( "item.trade.ninja.shuriken" ) );
+			else
+				base.AddNameProperty( list );
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
-
-			if ( m_Poison != null && m_PoisonCharges > 0 )
-				list.Add( 1062412 + m_Poison.Level, m_PoisonCharges.ToString() );
+			NinjaAmmoOplProperties.AddUsesAndPoisonProperties( this, list, m_UsesRemaining, m_Poison, m_PoisonCharges );
 		}
 
 		public override void Serialize( GenericWriter writer )

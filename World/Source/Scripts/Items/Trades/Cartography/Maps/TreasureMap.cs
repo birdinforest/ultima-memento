@@ -12,11 +12,14 @@ using Server.Items;
 using Server.Misc;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class TreasureMap : MapItem
 	{
+		public override bool IsContentLocalized => true;
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Scroll; } }
 
         private DateTime m_Found;
@@ -315,7 +318,7 @@ namespace Server.Items
 				}
 				else if ( !HasDiggingTool( from ) )
 				{
-					from.SendMessage( "You must have a digging tool to dig for treasure." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.treasuremap.msg.need.shovel" ) );
 				}
 				else if ( from.Map != map )
 				{
@@ -385,28 +388,31 @@ namespace Server.Items
 					}
 					else
 					{
+						string lang = AccountLang.GetLanguageCode( from.Account );
 						if ( Utility.InRange( targ3D, chest3D0, 8 ) ) // We're close, but not quite
 						{
-							from.SendAsciiMessage( 0x44, "The treasure chest is very close!" );
+							from.SendMessage( 0x44, StringCatalog.ResolveByKey( from.Account, "prop.trade.treasuremap.msg.very.close" ) );
 						}
 						else
 						{
 							Direction dir = Utility.GetDirection( targ3D, chest3D0 );
 
-							string sDir;
+							string sDirKey;
 							switch ( dir )
 							{
-								case Direction.North:	sDir = "north"; break;
-								case Direction.Right:	sDir = "northeast"; break;
-								case Direction.East:	sDir = "east"; break;
-								case Direction.Down:	sDir = "southeast"; break;
-								case Direction.South:	sDir = "south"; break;
-								case Direction.Left:	sDir = "southwest"; break;
-								case Direction.West:	sDir = "west"; break;
-								default:				sDir = "northwest"; break;
+								case Direction.North:	sDirKey = "prop.trade.treasuremap.dir.north"; break;
+								case Direction.Right:	sDirKey = "prop.trade.treasuremap.dir.northeast"; break;
+								case Direction.East:	sDirKey = "prop.trade.treasuremap.dir.east"; break;
+								case Direction.Down:	sDirKey = "prop.trade.treasuremap.dir.southeast"; break;
+								case Direction.South:	sDirKey = "prop.trade.treasuremap.dir.south"; break;
+								case Direction.Left:	sDirKey = "prop.trade.treasuremap.dir.southwest"; break;
+								case Direction.West:	sDirKey = "prop.trade.treasuremap.dir.west"; break;
+								default:				sDirKey = "prop.trade.treasuremap.dir.northwest"; break;
 							}
 
-							from.SendAsciiMessage( 0x44, "Try looking for the treasure chest more to the {0}.", sDir );
+							string sDir = StringCatalog.TryResolveByKey( AccountLang.GetLanguageCode( from.Account ), sDirKey ) ?? "north";
+
+							from.SendMessage( 0x44, StringCatalog.ResolveFormatByKey( from.Account, "prop.trade.treasuremap.msg.try.direction", sDir ) );
 						}
 					}
 				}
@@ -754,36 +760,21 @@ namespace Server.Items
 				if ( HasDiggingTool( from ) )
 					m_Map.OnBeginDig( from );
 				else
-					from.SendMessage( "You must have a digging tool to dig for treasure." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.treasuremap.msg.need.shovel" ) );
 			}
 		}
 
-		public string GetName()
+		private string ResolveQualityLineForOpl()
 		{
-			string name = "simply drawn";
+			bool decoded = m_Decoder != null;
+			int lvl = m_Level;
+			if ( lvl < 0 )
+				lvl = 0;
+			if ( lvl > 7 )
+				lvl = 7;
 
-			if (m_Decoder != null)
-			{
-				if ( m_Level == 1 ){ name = "plainly drawn"; }
-				else if ( m_Level == 2 ){ name = "expertly drawn"; }
-				else if ( m_Level == 3 ){ name = "adeptly drawn"; }
-				else if ( m_Level == 4 ){ name = "cleverly drawn"; }
-				else if ( m_Level == 5 ){ name = "deviously drawn"; }
-				else if ( m_Level == 6 ){ name = "ingeniously drawn"; }
-				else if ( m_Level == 7 ){ name = "diabolically drawn"; }
-			}
-			else
-			{
-				if ( m_Level == 1 ){ name = "plainly mysterious"; }
-				else if ( m_Level == 2 ){ name = "expertly mysterious"; }
-				else if ( m_Level == 3 ){ name = "adeptly mysterious"; }
-				else if ( m_Level == 4 ){ name = "cleverly mysterious"; }
-				else if ( m_Level == 5 ){ name = "deviously mysterious"; }
-				else if ( m_Level == 6 ){ name = "ingeniously mysterious"; }
-				else if ( m_Level == 7 ){ name = "diabolically mysterious"; }
-			}
-
-			return name;
+			string key = String.Format( "prop.trade.treasuremap.quality.{0}.{1}", decoded ? "decoded" : "mystery", lvl );
+			return ResolvePropertyText( key );
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -792,6 +783,7 @@ namespace Server.Items
 
 			Point3D loc = new Point3D( m_Location.X, m_Location.Y, 0 );
 			Land land = Server.Lands.GetLand( m_Map, loc, m_Location.X, m_Location.Y );
+			string oplLoc = BuildingPropertyListLocale ?? "en";
 
 			if (m_Decoder != null)
 			{
@@ -813,13 +805,20 @@ namespace Server.Items
 				list.Add( 1070722, "(" + my_location + ")");
 			}
 
-            string mDesc = "Somewhere in " + Server.Lands.LandName( land ) + "<BR> " + GetName();
+			string landDisp = Lands.LocalizedLandName( land, oplLoc );
+			string quality = ResolveQualityLineForOpl();
+			string lineFmt = ResolvePropertyText( "prop.trade.treasuremap.opl.somewhere.line" );
+			string mDesc = String.Format( lineFmt, landDisp, quality );
 
-            list.Add(1053099, String.Format("<BASEFONT COLOR=#DDCC22>\t{0}<BASEFONT Color=#FBFBFB>", mDesc)); // for somewhere in Lodor : for somewhere in Sosaria  etc...
+            list.Add(1053099, String.Format("<BASEFONT COLOR=#DDCC22>\t{0}<BASEFONT Color=#FBFBFB>", mDesc));
             
             if (m_Completed)
             {
-                list.Add(1041507, m_CompletedBy == null ? "someone" : m_CompletedBy.Name); // completed by ~1_val~
+				string whoName = m_CompletedBy == null ? ResolvePropertyText( "prop.trade.treasuremap.someone" ) : m_CompletedBy.Name;
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.trade.treasuremap.completed.by", whoName );
+				else
+					list.Add(1041507, m_CompletedBy == null ? "someone" : m_CompletedBy.Name);
             }
             else
             {
@@ -827,22 +826,37 @@ namespace Server.Items
                 int TimeLeft = 30 - Age;
 
                 if (m_Decoder != null && TimeLeft > 0)
-                    list.Add(String.Format("This map will expire in {0} days", TimeLeft));
+				{
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.trade.treasuremap.expire.days", TimeLeft.ToString() );
+					else
+						list.Add(String.Format("This map will expire in {0} days", TimeLeft));
+				}
                 else if (m_Decoder != null && TimeLeft <= 0)
-                    list.Add("This map will expire and reset very soon");                                                
+				{
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.trade.treasuremap.expire.soon" );
+					else
+						list.Add("This map will expire and reset very soon");
+				}
             }
 		}
 
 		public override void OnSingleClick( Mobile from )
 		{
 			Point3D loc = new Point3D( m_Location.X, m_Location.Y, 0 );
-			string world = Server.Lands.LandName( Server.Lands.GetLand( m_Map, loc, m_Location.X, m_Location.Y ) );
+			Land land = Server.Lands.GetLand( m_Map, loc, m_Location.X, m_Location.Y );
+			string clickLocale = AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) ? "zh" : "en";
+			string world = Lands.LocalizedLandName( land, clickLocale );
 
-            string mDesc = "Somewhere in " + world;
+			string somewhereFmt = StringCatalog.TryResolveByKey( AccountLang.GetLanguageCode( from.Account ), "prop.trade.treasuremap.somewhere.short" ) ?? "Somewhere in {0}";
+            string mDesc = String.Format( somewhereFmt, world );
 
 			if ( m_Completed )
 			{
-				from.Send( new MessageLocalizedAffix( Serial, ItemID, MessageType.Label, 0x3B2, 3, 1048030, "", AffixType.Append, String.Format( " completed by {0}", m_CompletedBy == null ? "someone" : m_CompletedBy.Name ), "" ) );
+				string who = m_CompletedBy == null ? StringCatalog.ResolveByKey( from.Account, "prop.trade.treasuremap.someone" ) : m_CompletedBy.Name;
+				string affix = String.Format( StringCatalog.ResolveByKey( from.Account, "prop.trade.treasuremap.click.completed.affix" ), who );
+				from.Send( new MessageLocalizedAffix( Serial, ItemID, MessageType.Label, 0x3B2, 3, 1048030, "", AffixType.Append, affix, "" ) );
 			}
             // = Decoded
             else if (m_Decoder != null)
@@ -1060,7 +1074,7 @@ namespace Server.Scripts.Commands
 			TreasureMap map = new TreasureMap( 6, m.Map, m.Location, m.X, m.Y );
 			(m.Backpack).DropItem( map );
 			map.Decoder = m;
-			m.SendMessage( "A treasure map was added to you pack." );
+			m.SendMessage( StringCatalog.ResolveByKey( m.Account, "prop.trade.treasuremap.msg.gm.added" ) );
         }
     }
 }

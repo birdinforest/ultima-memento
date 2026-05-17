@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -57,11 +58,11 @@ namespace Server.Gumps
 			int buttonY = HEIGHT - 50;
 			int buttonX = 100;
 			AddButton(buttonX, buttonY, 4005, 4005, 1, GumpButtonType.Reply, 0);
-			TextDefinition.AddHtmlText(this, buttonX + 30, buttonY + 3, 58, 20, "Yes", HtmlColors.WHITE);
+			TextDefinition.AddHtmlText(this, buttonX + 30, buttonY + 3, 58, 20, StringCatalog.ResolveByKey(player.Account, "gump.confirm.yes"), HtmlColors.WHITE);
 
 			buttonX = WIDTH - 145;
 			AddButton(buttonX, buttonY, 4020, 4020, 2, GumpButtonType.Reply, 0);
-			TextDefinition.AddHtmlText(this, buttonX + 30, buttonY + 3, 58, 20, "No", HtmlColors.WHITE);
+			TextDefinition.AddHtmlText(this, buttonX + 30, buttonY + 3, 58, 20, StringCatalog.ResolveByKey(player.Account, "gump.confirm.no"), HtmlColors.WHITE);
 		}
 
 		public override void OnResponse(Server.Network.NetState sender, RelayInfo info)

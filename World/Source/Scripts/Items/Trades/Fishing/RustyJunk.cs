@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Items;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Engines.Craft;
@@ -11,6 +12,8 @@ namespace Server.Items
 {
 	public class RustyJunk : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public RustyJunk() : base( 0x1B72 )
 		{
@@ -81,19 +84,22 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Scrap Iron");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.trade.rustyjunk.scrap.iron" );
+			else
+				list.Add( 1070722, "Scrap Iron");
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.pack" ) );
 				return;
 			}
 			else
 			{
-				from.SendMessage("Select the forge to smelt this item.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.select.forge" ) );
 				from.Target = new InternalTarget( this );
 			}
 		}
@@ -122,7 +128,7 @@ namespace Server.Items
 					
 					if ( difficulty > from.Skills[SkillName.Mining].Value )
 					{
-						from.SendMessage("You have no idea how to smelt this item!");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.no.idea.smelt" ) );
 						return;
 					}
 
@@ -132,14 +138,14 @@ namespace Server.Items
 						ingot.Amount = weight;
 						from.AddToBackpack( ingot );
 						from.PlaySound( 0x208 );
-						if ( weight == 1 ){ from.SendMessage("You smelt the rusty metal into a usable iron ingot!"); }
-						else { from.SendMessage("You smelt the rusty metal into usable iron ingots!"); }
+						if ( weight == 1 ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.smelt.one" ) ); }
+						else { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.smelt.many" ) ); }
 						m_Rusted.Delete();
 					}
 					else
 					{
 						from.PlaySound( 0x208 );
-						from.SendMessage("You failed to smelt the rusty metal into anything usable!");
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.rustyjunk.msg.smelt.fail" ) );
 						m_Rusted.Delete();
 					}
 				}

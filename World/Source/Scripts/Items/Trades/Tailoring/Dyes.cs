@@ -1,6 +1,7 @@
 using System;
 using Server.Targeting;
 using Server.HuePickers;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -84,7 +85,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That dye tub may not be redyed." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.dyes.tub.no.redye" ) );
 					}
 				}
 				else if ( targeted is DyeTubTempBase )
@@ -97,7 +98,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That dye tub may not be redyed." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.dyes.tub.no.redye" ) );
 					}
 				}
 				else

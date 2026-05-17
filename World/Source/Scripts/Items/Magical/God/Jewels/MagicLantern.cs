@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -77,7 +78,7 @@ namespace Server.Items
 				{
 					from.AddToBackpack( from.FindItemOnLayer( Layer.TwoHanded ) );
 				}
-				from.SendMessage( "You put the lantern in your left hand." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.lantern.left.hand"));
 				from.AddItem(this);
 				this.ItemID = 0xA15;
 				from.PlaySound( 0x47 );

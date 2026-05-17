@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -23,12 +24,12 @@ namespace Server.Items
 		{
 			if ( Parent != from )
 			{
-				from.SendMessage( "You must be holding the rod to resurrect." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hold" ) );
 			}
 			else
 			{
 				from.Target = new InternalTarget( from, this );
-				from.SendMessage( "Who would you like to resurrect!" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.prompt" ) );
 			}
 			return;
 		}
@@ -92,7 +93,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 				}
 			}
 			else if ( hench is HenchmanWizardItem )
@@ -108,7 +109,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 				}
 			}
 			else if ( hench is HenchmanArcherItem )
@@ -124,7 +125,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 				}
 			}
 			else if (hench is HenchmanMonsterItem )
@@ -140,12 +141,12 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.hench.notdead" ) );
 				}
 			}
 			else
 			{
-				from.SendMessage("This spell didn't seem to work.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.artifact.rod.spell.fail" ) );
 			}
 		}
  

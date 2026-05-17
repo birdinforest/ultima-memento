@@ -1,5 +1,6 @@
 using System;
 using Server; 
+using Server.Localization;
 using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace Server.Items
 			}
 			else if ( !MyServerSettings.AlterArtifact( dropped ) )
 			{
-				from.SendMessage( "This cannot be used on artifacts!" );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.no.artifacts" ) );
 			}
 			else
 			{
@@ -202,7 +203,7 @@ namespace Server.Items
 			BarbaricSatchel pack = new BarbaricSatchel();
 			pack.owner = from;
 			from.AddToBackpack( pack );
-			from.SendMessage( "A barbaric satchel has been added to your pack." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.added" ) );
 		}
 
 		public class BarbaricSatchelGump : Gump
@@ -538,7 +539,7 @@ namespace Server.Items
 
 			from.SendSound( 0x55 );
 			from.AddToBackpack( item );
-			from.SendMessage( "The item has been changed." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.item.changed" ) );
 		}
 
 		public static string GetRandomBarbaric()

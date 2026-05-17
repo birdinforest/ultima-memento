@@ -5,6 +5,8 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using System.Collections;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Gumps
 {
@@ -13,14 +15,18 @@ namespace Server.Gumps
         private LevelUpScroll m_Scroll;
 		private Mobile m_From;
 
-		public LevelUpAcceptGump( LevelUpScroll scroll, Mobile from ) : base( 0, 0 )
+		public LevelUpAcceptGump( LevelUpScroll scroll, Mobile from, Mobile smith ) : base( 0, 0 )
 		{
 			m_Scroll = scroll;
 			m_From = from;
 
-            string PaymentMsg = null;
-            if (LevelItems.RewardBlacksmith && LevelItems.BlacksmithRewardAmt > 0)
-                PaymentMsg = "<BR><BR>If you accept and the process is successful, you will be given additional compensation of " + LevelItems.BlacksmithRewardAmt + ".";
+			IAccount acct = smith != null ? smith.Account : null;
+			string bonusHtml = "";
+			if (LevelItems.RewardBlacksmith && LevelItems.BlacksmithRewardAmt > 0 && acct != null)
+				bonusHtml = StringCatalog.ResolveFormatByKey(acct, "god.gump.levelup.bonus.html", LevelItems.BlacksmithRewardAmt);
+			string html = acct != null
+				? StringCatalog.ResolveFormatByKey(acct, "god.gump.levelup.html", bonusHtml)
+				: @"<CENTER><U>Max Level Increase Request</U><BR><BR>Someone has requested your expert services in increasing the max levels of a levelable item." + bonusHtml + @"<BR><BR>Do you accept their offer?</CENTER>";
 
 			Closable=false;
 			Disposable=false;
@@ -29,10 +35,10 @@ namespace Server.Gumps
 			AddPage(0);
 
             AddBackground(25, 22, 318, 268, 9390);
-            AddLabel(52, 27, 0, @"Level Increase Request");
-            AddLabel(52, 60, 0, @"Requested By:");
-            AddLabel(52, 81, 0, @"Level Amount:");
-            AddHtml(49, 109, 271, 116, @"<CENTER><U>Max Level Increase Request</U><BR><BR>Someone has requested your expert services in increasing the max levels of a levelable item."+PaymentMsg+"<BR><BR>Do you accept their offer?", (bool)false, (bool)true);
+            AddLabel(52, 27, 0, acct != null ? StringCatalog.ResolveByKey(acct, "god.gump.levelup.title") : @"Level Increase Request");
+            AddLabel(52, 60, 0, acct != null ? StringCatalog.ResolveByKey(acct, "god.gump.levelup.requested.by") : @"Requested By:");
+            AddLabel(52, 81, 0, acct != null ? StringCatalog.ResolveByKey(acct, "god.gump.levelup.level.amount") : @"Level Amount:");
+            AddHtml(49, 109, 271, 116, html, (bool)false, (bool)true);
             AddButton(50, 235, 4023, 4024, 1, GumpButtonType.Reply, 0);
             AddButton(83, 235, 4017, 4018, 2, GumpButtonType.Reply, 0);
             if (m_From != null)
@@ -48,6 +54,8 @@ namespace Server.Gumps
 			if ( smith == null )
 				return;
 
+			IAccount sAcct = smith.Account;
+
 			//Accept
 			if ( info.ButtonID == 1 )
 			{
@@ -57,17 +65,21 @@ namespace Server.Gumps
 					{
 						m_Scroll.BlacksmithValidated = true;
                         m_From.CloseGump(typeof(AwaitingSmithApprovalGump));
-                        m_From.SendMessage("They have validated your scroll.  Select a levelable item to increase max levels or ESC to apply at another time.");
+                        IAccount fAcct = m_From.Account;
+                        if (fAcct != null)
+                            m_From.SendMessage(StringCatalog.ResolveByKey(fAcct, "god.msg.gump.validated"));
                         m_From.Target = new LevelUpScroll.LevelItemTarget(m_Scroll); // Call our target
 					}
 
 					if ( smith != null ) //Accepted... send message to smith and pay them bonus reward
 					{
-						smith.SendMessage("Thank you for your services!");
+						if (sAcct != null)
+							smith.SendMessage(StringCatalog.ResolveByKey(sAcct, "god.msg.gump.smith.thanks"));
                         if (smith != m_From && LevelItems.RewardBlacksmith && LevelItems.BlacksmithRewardAmt > 0)
                         {
                             smith.AddToBackpack(new BankCheck(LevelItems.BlacksmithRewardAmt));
-                            smith.SendMessage("A Bonus payment has been added to your pack.");
+                            if (sAcct != null)
+	                            smith.SendMessage(StringCatalog.ResolveByKey(sAcct, "god.msg.gump.smith.bonus"));
                         }
 					}
 				}
@@ -75,8 +87,11 @@ namespace Server.Gumps
 				{
 					if ( m_From != null && smith != null )
 					{
-						m_From.SendMessage( "There was a problem validating this scroll." );
-                        smith.SendMessage( "There was a problem validating this scroll." );
+						IAccount fAcct = m_From.Account;
+						if (fAcct != null)
+							m_From.SendMessage(StringCatalog.ResolveByKey(fAcct, "god.msg.gump.validate.error"));
+                        if (sAcct != null)
+	                        smith.SendMessage(StringCatalog.ResolveByKey(sAcct, "god.msg.gump.validate.error"));
 					}
 				}
 			}
@@ -84,11 +99,16 @@ namespace Server.Gumps
 			//Decline
 			if ( info.ButtonID == 2 )
 			{
-				smith.SendMessage( "You have declined their offer." );
+				if (sAcct != null)
+					smith.SendMessage(StringCatalog.ResolveByKey(sAcct, "god.msg.gump.decline.smith"));
 
 				if ( m_From != null )
+				{
                     m_From.CloseGump(typeof(AwaitingSmithApprovalGump));
-					m_From.SendMessage( "They have declined your offer" );
+                    IAccount fAcct = m_From.Account;
+                    if (fAcct != null)
+	                    m_From.SendMessage(StringCatalog.ResolveByKey(fAcct, "god.msg.gump.decline.client"));
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Items;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -57,20 +58,20 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if(!IsChildOf(from.Backpack)) from.SendMessage( "This must be in your backpack to use it." );
+			if(!IsChildOf(from.Backpack)) from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.backpack"));
 			else if ( this.owner != from  )
 			{
-				from.SendMessage( "This is not your branding iron." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.not.yours"));
 				return;
 			}
 			else if ( m_Charges > 0)
 			{
-				from.SendMessage( "Choose the legendary artefact you wish to brand." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.choose"));
 				from.Target = new InternalTarget( this );
 			}
 			else
 			{
-				from.SendMessage( "That brand is out of uses." );
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.out.of.uses"));
 				this.Delete();
 			}
 		}
@@ -98,16 +99,16 @@ namespace Server.Items
 				else if ( targeted is ILevelable )
 				{
 					m_engtarg = (Item)targeted;
-					if(!m_engtarg.IsChildOf(from.Backpack)) from.SendMessage( "This must be in your backpack to change its name." );
+					if(!m_engtarg.IsChildOf(from.Backpack)) from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.target.backpack"));
 					else
 					{
-						from.SendMessage( "What name do you want to brand the legendary artefact?" );
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.prompt.name"));
 						m_LegendaryArtifactRename.Charges -= 1 ;
 						m_LegendaryArtifactRename.InvalidateProperties();
 						from.Prompt = new RenameContPrompt( m_engtarg );
 					}
 				}
-				else from.SendMessage( "You cannot brand that." );
+				else from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.cannot"));
 			}
 		}
 
@@ -144,7 +145,7 @@ namespace Server.Prompts
 		public override void OnResponse( Mobile from, string text )
 		{
 			m_engtarg.Name = text;
-			from.SendMessage( "You have branded the legendary artefact." );
+			from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.rename.done"));
 		}
 	}
 }

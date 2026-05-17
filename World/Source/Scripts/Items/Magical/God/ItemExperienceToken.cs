@@ -1,10 +1,26 @@
 using System;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class ItemExperienceToken : Item
 	{
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperty(ObjectPropertyList list)
+		{
+			if (BuildingPropertyListLocale != null)
+			{
+				if (Amount <= 1)
+					AddLocalizedProperty(list, "item.god.exp.token.name");
+				else
+					list.Add(1050039, "{0}\t{1}", Amount, ResolvePropertyText("item.god.exp.token.name"));
+				return;
+			}
+			base.AddNameProperty(list);
+		}
+
 		[Constructable]
 		public ItemExperienceToken(int experience) : this()
 		{
@@ -56,11 +72,11 @@ namespace Server.Items
 			}
 			else if (Experience < 1)
 			{
-				from.SendMessage("This token has no experience.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.empty"));
 			}
 			else
 			{
-				from.SendMessage("Select an item to add experience to.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.select.target"));
 				from.Target = new InternalTarget(this);
 			}
 		}
@@ -79,7 +95,7 @@ namespace Server.Items
 				var item = targeted as Item;
 				if (item == null)
 				{
-					from.SendMessage("You must target an item.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.must.target.item"));
 					return;
 				}
 
@@ -89,13 +105,13 @@ namespace Server.Items
 
 					if (token == m_Token)
 					{
-						from.SendMessage("You cannot merge a token with itself.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.merge.self"));
 					}
 					else
 					{
 						m_Token.Experience += token.Experience;
 						token.Delete();
-						from.SendMessage("You have merged the two tokens.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.merge.done"));
 					}
 
 					return;
@@ -106,7 +122,7 @@ namespace Server.Items
 					var levelable = (ILevelable)item;
 					if (levelable.Level == levelable.MaxLevel)
 					{
-						from.SendMessage("This item is already at max level.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.max.level"));
 						return;
 					}
 
@@ -114,12 +130,12 @@ namespace Server.Items
 					var expToAdd = Math.Min(m_Token.Experience, expToNextLevel);
 					if (expToAdd < 1)
 					{
-						from.SendMessage("This item cannot hold any more experience.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.xp.token.no.room"));
 						return;
 					}
 
 					LevelItemManager.GrantExperience(levelable, expToAdd, from);
-					from.SendMessage("You add {0} experience to the item.", expToAdd);
+					from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "god.msg.xp.token.added", expToAdd));
 
 					m_Token.Experience -= expToAdd;
 					if (m_Token.Experience < 1)

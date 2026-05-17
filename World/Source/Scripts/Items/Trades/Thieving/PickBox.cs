@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Network;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,7 +31,7 @@ namespace Server.Items
         public override void LockPick(Mobile from)
         {
             this.Locked = true;
-            from.SendMessage("The container relocks itself.");
+            from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.pickbox.relocks" ));
         }
 
         public PickBoxEasy(Serial serial) : base(serial)
@@ -72,7 +73,7 @@ namespace Server.Items
         public override void LockPick(Mobile from)
         {
             this.Locked = true;
-            from.SendMessage("The container relocks itself.");
+            from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.pickbox.relocks" ));
         }
 
         public PickBoxNormal(Serial serial) : base(serial)
@@ -114,7 +115,7 @@ namespace Server.Items
         public override void LockPick(Mobile from)
         {
             this.Locked = true;
-            from.SendMessage("The container relocks itself.");
+            from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.pickbox.relocks" ));
         }
 
         public PickBoxDifficult(Serial serial) : base(serial)
@@ -156,7 +157,7 @@ namespace Server.Items
         public override void LockPick(Mobile from)
         {
             this.Locked = true;
-            from.SendMessage("The container relocks itself.");
+            from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.pickbox.relocks" ));
         }
 
         public PickBoxChallenging(Serial serial) : base(serial)
@@ -198,7 +199,7 @@ namespace Server.Items
         public override void LockPick(Mobile from)
         {
             this.Locked = true;
-            from.SendMessage("The container relocks itself.");
+            from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.pickbox.relocks" ));
         }
 
         public PickBoxHard(Serial serial) : base(serial)

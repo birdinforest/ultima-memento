@@ -1,5 +1,6 @@
 using System;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -47,7 +48,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("What item would you like to add luck to?");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.what.item"));
 				from.Target = new InternalTarget(this);
 			}
 		}
@@ -68,7 +69,7 @@ namespace Server.Items
 				{
 					if (item.RootParent != from)
 					{
-						from.SendMessage("The item must be in your pack.");
+						from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.pack"));
 						return;
 					}
 
@@ -79,10 +80,10 @@ namespace Server.Items
 					else if (target is Spellbook) Apply(from, ((Spellbook)target).Attributes);
 					else if (target is BaseQuiver) Apply(from, ((BaseQuiver)target).Attributes);
 					else if (target is BaseInstrument) Apply(from, ((BaseInstrument)target).Attributes);
-					else from.SendMessage("You cannot enhance that item with luck.");
+					else from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.cannot"));
 				}
 				else
-					from.SendMessage("You cannot enhance that item with luck.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.cannot"));
 
 			}
 
@@ -92,12 +93,12 @@ namespace Server.Items
 				int luck = attributes.Luck;
 				if (luck >= MAX_LUCK)
 				{
-					from.SendMessage("There is already enough luck on this item.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.full"));
 				}
 				else
 				{
 					attributes.Luck = Math.Min(MAX_LUCK, luck + 100); // In case an item has negative luck
-					from.SendMessage("You add some extra luck to the item.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.magical.luck.msg.ok"));
 					m_Deed.Delete();
 				}
 			}
