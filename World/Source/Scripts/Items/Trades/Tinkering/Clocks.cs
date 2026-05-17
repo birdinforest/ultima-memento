@@ -310,10 +310,10 @@ namespace Server.Items
 				string fmt = ResolvePropertyText( "prop.trade.relicclock.name.fmt" );
 				string displayName = string.Format( fmt, adj );
 
-				if ( m_Amount <= 1 )
+				if ( Amount <= 1 )
 					list.Add( displayName );
 				else
-					list.Add( 1050039, "{0}\t{1}", m_Amount, displayName );
+					list.Add( 1050039, "{0}\t{1}", Amount, displayName );
 
 				return;
 			}
