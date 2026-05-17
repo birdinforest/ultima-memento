@@ -1,18 +1,70 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-10
+> **更新日期：** 2026-05-17
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---
 
 ## 目录
 
-1. [已完成中文化的装备基类](#1-已完成中文化的装备基类)
-2. [已修复的装备子类未保护 cliloc](#2-已修复的装备子类未保护-cliloc)
-3. [Phase 3：Gift 附魔系统（已完成）](#3-phase-3gift-附魔系统已完成)
-4. [Phase 4：Level 经验装备系统（已完成）](#4-phase-4level-经验装备系统已完成)
-5. [待后续中文化的非装备物品](#5-待后续中文化的非装备物品)
-6. [附录：非装备物品分类总表](#6-附录非装备物品分类总表)
+1. [SendMessage 与中文字符串（AI 流水线）](#sendmessage--中文字符串ai-流水线)
+2. [任务（待办）：硬编码 SendMessage / Say 全库清查](#任务待办硬编码-sendmessage--say-全库清查)
+3. [已完成中文化的装备基类](#1-已完成中文化的装备基类)
+4. [已修复的装备子类未保护 cliloc](#2-已修复的装备子类未保护-cliloc)
+5. [Phase 3：Gift 附魔系统（已完成）](#3-phase-3gift-附魔系统已完成)
+6. [Phase 4：Level 经验装备系统（已完成）](#4-phase-4level-经验装备系统已完成)
+7. [待后续中文化的非装备物品](#5-待后续中文化的非装备物品)
+8. [附录：非装备物品分类总表](#6-附录非装备物品分类总表)
+
+---
+
+## SendMessage 与中文字符串（AI 流水线）
+
+适用于 **`Mobile.SendMessage` / `Say` 等**仍硬编码英文、且**未**走 `SendLocalizedMessage(cliloc)` 的脚本（例如魔法物品使用失败提示）。
+
+**首选：shotkey（逻辑键）** — 与 `trap.*`、`prop.*` 一样，在 **`en/` + `zh-Hans/` 同一对手写 JSON**（如 `equipment-properties.json`）中增加键值，代码使用 **`StringCatalog.ResolveByKey` / `ResolveFormatByKey`**。不跑提取器生成 `s.` 哈希键，键名须稳定、可读。
+
+| 步骤 | 动作（shotkey） |
+|------|------------------|
+| 1 | 设计稳定键名（例：`prop.magical.moonstone.gate.inert`，与同类 `prop.magical.*` 同文件） |
+| 2 | 在 `World/Data/Localization/en/<bundle>.json` 与 `zh-Hans/<bundle>.json` 写入同一键；`bundle` 须在 `AGENTS.md` §3.1 `keep_extra` 列表中 |
+| 3 | `using Server.Localization;`，`SendMessage(StringCatalog.ResolveByKey(from.Account, "your.logical.key"))` |
+| 4 | `sync_localization_glossary.py --check`（若文案含词表专有名词） |
+
+**备选：哈希键** — `StringCatalog.Resolve(from.Account, "Exact English…")`，再执行 `build_localization_strings.py --no-translate`，对新生成的 `s.` 行做 §3.4 翻译。
+
+| 步骤 | 动作（哈希） |
+|------|----------------|
+| 1 | `using Server.Localization;`，`SendMessage(StringCatalog.Resolve(from.Account, "..."))` |
+| 2 | 仓库根目录 `python3 World/Source/Tools/build_localization_strings.py --no-translate` |
+| 3 | 在对应 `en/scripts-*.json` 确认新 `s.` 键 |
+| 4 | `llm_incremental_locale.py` queue → LLM → `apply` → `sync_localization_glossary.py --check` |
+
+**注意：** 提取器只扫描 **`Resolve` / `ResolveFormat` 里的英文字面量**；shotkey 全部由手写 JSON 维护。约定见根目录 **`AGENTS.md` §3.2**。
+
+**示例：** `Items/Magical/Moonstone.cs` — 月门石无法开启时使用 **`prop.magical.moonstone.gate.inert`** + `ResolveByKey`（文案在 `equipment-properties.json`）。
+
+---
+
+## 任务（待办）：硬编码 SendMessage / Say 全库清查
+
+**目标：** 在 `World/Source` 内检索所有 **`Mobile.SendMessage` / `Say` / `SendAsciiMessage`** 等仍为**硬编码英文字符串**、且**未**经过以下任一方式的玩家可见文案：
+
+- `StringCatalog.ResolveByKey` / `ResolveFormatByKey`（shotkey）
+- `StringCatalog.Resolve` / `ResolveFormat`（哈希键，已由提取器管理）
+- `SendLocalizedMessage` / CliLoc 编号
+
+并逐项改为 **shotkey（优先）** 或哈希 **`Resolve`** 流水线，补全 `zh-Hans`。
+
+**建议检索（示例）：**
+
+- `SendMessage\s*\(\s*"`
+- `Say\s*\(\s*"`（排除已包裹 `StringCatalog` 的行）
+- `SendAsciiMessage\s*\(\s*"`
+
+**优先级建议：** 高频物品/技能失败提示 → 任务与副本提示 → 低频装饰文案。
+
+**完成标准：** 玩家语言为 zh-Hans 时不应再出现未目录化的英文 `SendMessage` 句（允许 CliLoc 英服原文由客户端语言处理的情况除外）。
 
 ---
 
@@ -142,7 +194,7 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | 1 | `Items/Magical/SoulOrb.cs` | `SoulOrb` | "Contains vampire blood for..."、"Contains genetic patterns for..."、"Contains the Soul of..." |
 | 2 | `Items/Magical/LuckyHorseShoes.cs` | `LuckyHorseShoes` | "Adds up to 100 Luck To An Item" |
 | 3 | `Items/Magical/RuneOfVirtue.cs` | `RuneOfVirtue` | "Rune for..." |
-| 4 | `Items/Magical/Moonstone.cs` | `Moonstone` | "Magically Open A Moongate" |
+| 4 | `Items/Magical/Moonstone.cs` | `MoonStone` | OPL：`prop.magical.moonstone`；使用失败：`prop.magical.moonstone.gate.inert` + `StringCatalog.ResolveByKey`（见本文 SendMessage 节） |
 | 5 | `Items/Magical/SlayerDeed.cs` | `SlayerDeed` | 屠魔种类名称 |
 | 6 | `Items/Magical/ArtifactManual.cs` | `ArtifactManual` | "This Identifies Items"、使用次数 |
 | 7 | `Items/Magical/ManualOfItems.cs` | `ManualOfItems` | 使用次数、"Belongs to..." |
@@ -203,6 +255,11 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | | `Fukiya.cs` | 使用次数、毒药等级 |
 
 ---
+
+## 6. Quest
+
+### 6.1 Major 目录
+`/World/Source/Scripts/Engines and Systems/Quests/Major`
 
 ## 6. 附录：非装备物品分类总表
 

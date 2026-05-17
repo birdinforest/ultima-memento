@@ -10,7 +10,7 @@
 | Task | Jump to |
 |---|---|
 | Add a new game feature (C#) | [§2 Engineering Practices](#2-engineering-practices) |
-| Add translatable strings to C# code | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
+| Add translatable strings to C# (gumps, quests, `SendMessage` / `Say`: shotkeys or hash literals) | [§3.2 Adding Strings](#32-adding-strings-to-cs) |
 | Run the localization extractor | [§3.3 Extraction Tool](#33-extraction-tool) |
 | Incremental LLM locale queue (`stats` / `queue` / `apply`) | [§3.4 Translation Workflow](#34-translation-workflow--llm-only) |
 | Logical-key JSON (shard greeter, war shouts, …) | [§3.1 Architecture](#31-localization-architecture) |
@@ -119,7 +119,7 @@ Data/Localization/
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
-| `equipment-properties.json` | Equipment / weapon OPL shotkeys (`prop.*`) for bilingual object property lists. Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. |
+| `equipment-properties.json` | Equipment / weapon OPL shotkeys (`prop.*`) **and** same-bundle player feedback lines tied to those items (e.g. `prop.magical.moonstone.gate.inert`). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 | `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
 
@@ -136,12 +136,25 @@ Other non-category locale files (also whitelisted, not scanner-owned): `vendor_n
 
 **Rule: Every user-visible literal must be localized. No exceptions.**
 
-Use the `StringCatalog`-aware APIs that the extractor already handles:
+Use the `StringCatalog`-aware APIs that the extractor already handles.
+
+**Player/system messages (`SendMessage`, `Say`, etc.):** the bare form `mobile.SendMessage("...")` is **not** localized. Use either:
+
+1. **Shotkeys (preferred):** stable logical keys in hand-maintained JSON (`equipment-properties.json`, `trap-system.json`, `charrestore.json`, … — see §3.1 `keep_extra` table). **Do not** rely on the C# extractor for these; add the same key to **`en/<file>.json` and `zh-Hans/<file>.json`**.
+   ```csharp
+   mobile.SendMessage(StringCatalog.ResolveByKey(mobile.Account, "prop.magical.moonstone.gate.inert"));
+   // Templates: StringCatalog.ResolveFormatByKey(mobile.Account, "some.key", arg0);
+   ```
+
+2. **Hash keys (extractor):** English literal inside `StringCatalog.Resolve` / `ResolveFormat` so `build_localization_strings.py` emits `s.` + hex keys into the correct `scripts-*.json` category.
+   ```csharp
+   mobile.SendMessage(StringCatalog.Resolve(mobile.Account, "Your one-off message here."));
+   ```
 
 ```csharp
-// NPC/system messages
-mobile.SendMessage("Your message here.");
-mobile.Say("Greeting text.");
+using Server.Localization;
+
+// … prefer ResolveByKey + logical JSON when the string is stable / domain-owned (§3.1 shotkey bundles)
 
 // Gumps
 AddLabel(x, y, hue, "Label text");
@@ -152,9 +165,13 @@ AddTooltip("Tooltip text");
 new TextDefinition("Objective description")
 ```
 
-**Do not** pass variables as the string argument if the content must be localized; the extractor only captures string literals.
+**Do not** pass variables as the string argument **to `Resolve`** if the content must be localized; the extractor only captures string literals. (`ResolveByKey` always uses a string literal key — fine.)
 
-After adding strings to C#, **always run the extractor** (§3.3) to register them in the JSON files.
+**AI localization workflow (`SendMessage` / item feedback, shotkey path):** (1) Pick a stable dot-key (e.g. `prop.magical.*` next to existing OPL keys in `equipment-properties.json`, or `trap.*` in `trap-system.json`). (2) Add EN + zh-Hans entries in the paired logical JSON files. (3) Call `SendMessage(StringCatalog.ResolveByKey(from.Account, "your.key"))` and `using Server.Localization;`. (4) Run `sync_localization_glossary.py --check` if copy touches glossary terms. See `World/Documentation/waiting-localization.md` §「SendMessage 与中文字符串」与「任务：硬编码 SendMessage / Say 全库清查」.
+
+**AI workflow (hash path):** `Resolve` literal → `build_localization_strings.py --no-translate` → §3.4 translate new `s.` line → `sync_localization_glossary.py --check`.
+
+For **any** new `Resolve` literals in C#, run the extractor (§3.3) before committing. Logical shotkey files are **not** populated by the extractor.
 
 ### 3.3 Extraction Tool
 
@@ -224,7 +241,7 @@ Context: Historical fantasy MMORPG. Tone: literary, slightly archaic, consistent
 Mandatory glossary (use these exact translations, no alternatives):
 <paste relevant entries from glossary-approved-zh.json>
 
-For proper nouns NOT in the glossary: transliterate in brackets 【English】 on first use.
+For proper nouns NOT in the glossary: use inline `中文（English）` on first use — do not wrap in `【】`.
 Do not paraphrase beyond what a professional game translator would. Keep punctuation natural for Chinese.
 
 Translate these strings (one category per block if multiple files):
@@ -242,38 +259,36 @@ For one category, a flat ``{ "<key>": "<zh>", ... }`` is OK if you merge with
 
 ### 3.5 Proper Noun Annotation Convention
 
-**Rule: In zh-Hans localization files, every proper noun (place, person, creature, item, faction, deity, dungeon, race) must be annotated with its English original using the format `中文（English）`.**
+**Rule:** In zh-Hans localization files, every proper noun (place, person, creature, item, faction, deity, dungeon, race) must be annotated with its English original using inline `中文（English）` only. Do not wrap proper nouns in `【】`; when editing existing lines, strip outer `【】` around names and keep the parenthetical English.
 
-This applies to all zh-Hans translation files regardless of context type:
+This applies to all zh-Hans translation files regardless of context type (scripts-books, engines, quests, items, mobiles, commontalk-fragment-zh, vendor_npc_speech, etc.):
 
 | Context | Format | Example |
 |---|---|---|
-| Narrative text with **`【】` brackets** (scripts-books, engines, quests, items, mobiles) | `【中文（English）】` | `【蒙丹（Mondain）】` |
-| **Inline text without brackets** (commontalk-fragment-zh, vendor_npc_speech) | `中文（English）` inline | `莫瑞尼亚矿坑（Mines of Morinia）出产上佳矿石。` |
+| All player-facing zh-Hans strings | `中文（English）` inline | `蒙丹（Mondain）打开了通往异界的门。` / `莫瑞尼亚矿坑（Mines of Morinia）出产上佳矿石。` |
 
 **When to annotate:**
 - **All proper noun categories:** place, character, creature, item, deity, faction, dungeon, race.
 - **Skip:** concept, system, skill, title, book — these are functional descriptors, not named entities.
-- **Skip:** purely-ASCII brackets like `【Death Knight】` — already English, no annotation needed.
-- **Skip:** brackets already annotated (`【蒙丹（Mondain）】`) — no double-annotation.
+- **Skip:** segments that are already fully English in the source string — keep English as-is; no forced Chinese wrapper.
+- **Skip:** text already annotated as `中文（English）` — no double-annotation.
 
 **Tool support:** `World/Source/Tools/annotate_proper_nouns.py`
 - `python3 World/Source/Tools/annotate_proper_nouns.py --dry-run` — preview new annotations
 - `python3 World/Source/Tools/annotate_proper_nouns.py` — apply annotations
 
-The tool handles two strategies:
-1. **Bracket annotation** for zh-Hans/\*.json files: matches `【中文】` → `【中文（English）】` using the glossary zh→en map.
-2. **Curated inline annotation** for `commontalk-fragment-zh.json`: uses a manually-maintained EN-phrase → ZH-phrase mapping (see `COMMONTALK_ANNOTATIONS` in the script), with word-boundary matching on English keys. This avoids false positives from short or generic Chinese terms.
+The tool scans all `zh-Hans/*.json` strings: removes outer `【】` around proper names, converts unannotated `【中文】` to `中文（English）` via the glossary, converts legacy `【English】` (Latin-only) to `（English）`, and leaves `【{0}】`-style placeholders as `{0}`. **`commontalk-fragment-zh.json`** still uses the curated `COMMONTALK_ANNOTATIONS` map (word-boundary match on English keys).
+
+`sync_localization_glossary.py` **normalize_brackets** applies the same idea to any remaining `【…】` spans: English inside brackets becomes `中文（English）`; Chinese variant swaps lose the brackets.
 
 **Translation workflow for new strings:**
 When writing new zh-Hans translations:
 1. Identify all proper nouns in the English source text.
 2. Look up each term in `glossary-approved-zh.json` (`terms` section).
-3. For narrative/book text: wrap in `【】` brackets with `（English）` — e.g. `【索沙尼亚（Sosaria）】`.
-4. For natural-speech text (commontalk, vendor speech): annotate inline at first occurrence — e.g. `索沙尼亚（Sosaria）`.
-5. If the English term is not in the glossary, propose an entry via the glossary management process (§3.6).
-6. Run `sync_localization_glossary.py` and `--check` to verify consistency.
-7. If adding new EN-glossary proper nouns that appear in commontalk English keys, extend `COMMONTALK_ANNOTATIONS` in the annotation script.
+3. Annotate at first occurrence with inline `中文（English）` everywhere — e.g. `索沙尼亚（Sosaria）` (no `【】`).
+4. If the English term is not in the glossary, propose an entry via the glossary management process (§3.6).
+5. Run `sync_localization_glossary.py` and `--check` to verify consistency.
+6. If adding new EN-glossary proper nouns that appear in commontalk English keys, extend `COMMONTALK_ANNOTATIONS` in the annotation script.
 
 **Limitation:** Inline annotation without English-key validation (e.g. `vendor_npc_speech.json`) is not automated because short Chinese glossary terms (2–3 chars like `恶魔`, `宝箱`) cause false positives. Such files should be annotated manually or by extending the curated mapping.
 
@@ -453,6 +468,8 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-04-29: §3.3 — `build_localization_strings.py` defaults to **not** pruning extra locale JSON; drop-report + `--fail-on-translated-zh-drop`; `SendMessage`/GreeterKey extractor fix documented in `README.txt`.
 - 2026-04-29: §3.4 + README — `llm_incremental_locale.py` (`stats` / `queue` / `split-queue` / `apply`) for token-efficient incremental LLM translation.
 - 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
+- 2026-05-17: §3.2 / §0 / §3.1 `equipment-properties` — **`SendMessage` / `Say` shotkeys** (`StringCatalog.ResolveByKey` + logical JSON) preferred over hash `Resolve` literals when a stable `keep_extra` bundle fits; `waiting-localization.md` — shotkey-first pipeline + **任务：硬编码 SendMessage / Say 全库清查**；`MoonStone` 使用 `prop.magical.moonstone.gate.inert`.
+- 2026-05-17: §3.5 — **no `【】` wrapping** for proper nouns; inline `中文（English）` only; strip legacy `【】` when editing; LLM template and tool notes updated accordingly. `annotate_proper_nouns.py` migrates all `zh-Hans/*.json`; `sync_localization_glossary.normalize_brackets` emits inline forms; locale data migrated.
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 - 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
 - 2026-05-17: §3.1 — added `cliloc-lookup.json` (`cliloc.<id>` shotkeys) for curated `CliLocTable.Lookup` sets; `CliLocTable.Lookup(IAccount/Mobile, int)` + `keep_extra`.
