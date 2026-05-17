@@ -42155,11 +42155,11 @@ Number;Text;Flag
 1072168;作者窮人老菲比歐的雕像;Modified
 1072169;穴居人;Modified
 1072170;薩梯;Modified
-1072171;;Modified
-1072172;;Modified
-1072173;;Modified
-1072174;;Modified
-1072175;;Modified
+1072171;<BASEFONT COLOR=#~1_VAL~> ~2_VAL~ </BASEFONT>;Original
+1072172;<BASEFONT COLOR=#~1_VAL~> ~2_VAL~ </BASEFONT>;Original
+1072173;<BASEFONT COLOR=#~1_VAL~> ~2_VAL~ </BASEFONT>;Original
+1072174;<BASEFONT COLOR=#~1_VAL~> ~2_VAL~ </BASEFONT>;Original
+1072175;<BASEFONT COLOR=#~1_VAL~> ~2_VAL~ </BASEFONT>;Original
 1072176;你必需先升級至《蒙丹遺產》才能使用該能力;Modified
 1072177;你必需先升級至《蒙丹遺產》才能控制此生物;Modified
 1072178;保護者的護脛 [被祝福];Modified

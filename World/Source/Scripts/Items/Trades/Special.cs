@@ -67,19 +67,11 @@ namespace Server.Items
 			{
 				string name = GetDisplayNameLocalized( m_Resource, Name, locale );
 
-				// Amount format and colour name
-				// Break the customized CHT CliLoc. Check values of 1050039 and 1072171 in EN CliLoc.
-				// if ( Amount > 1 )
-				// 	list.Add( 1050039, "{0}\t{1}", Amount, name );
-				// else
-				// 	list.Add( 1072171, "{0}\t{1}", "9F44FF", name );
-				// return;
-
-				// Works with all CliLoc
 				if ( Amount > 1 )
 					list.Add( "{0} {1}", Amount, name );
 				else
 					list.Add( name );
+				    // list.Add( 1072171, "{0}\t{1}", "9F44FF", name ); // for color name
 				return;
 			}
 			base.AddNameProperty( list );
