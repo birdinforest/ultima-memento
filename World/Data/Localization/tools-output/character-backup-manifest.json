@@ -1,0 +1,45 @@
+{
+  "account": "attack1",
+  "character": "EZ",
+  "character_serial": "0x27579",
+  "items": [
+    {
+      "serial": "0x40356b43",
+      "type_full": "Server.Item",
+      "type_short": "Item",
+      "layer": "OuterTorso",
+      "is_equipped": true,
+      "hue": 0,
+      "amount": 1,
+      "name": "tattered shroud",
+      "graphic_id": 8270
+    },
+    {
+      "serial": "0x402fc54f",
+      "type_full": "Server.Items.LevelMetalShield",
+      "type_short": "LevelMetalShield",
+      "layer": "TwoHanded",
+      "is_equipped": false,
+      "hue": 0,
+      "amount": 1,
+      "name": "the Excellent Metal Shield of EZ",
+      "resource": 1,
+      "artifact_level": 3,
+      "graphic_id": 7035,
+      "attributes": {
+        "spell_channeling": 1
+      },
+      "hit_points": 100,
+      "max_hit_points": 100,
+      "resist_physical": 0,
+      "resist_fire": 0,
+      "resist_cold": 0,
+      "resist_poison": 0,
+      "resist_energy": 0,
+      "density": "Greater"
+    }
+  ],
+  "errors": [
+    "2 item record(s) in this backup failed to parse (exotic format or truncation); the manifest lists only items that parsed successfully."
+  ]
+}

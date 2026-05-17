@@ -1,0 +1,57 @@
+{
+  "charrestore.npc.deflect":    "I am waiting for someone. Move along, traveler.",
+  "charrestore.npc.lost_parcel": "I seem to have lost the parcel I was carrying. Speak with the authorities.",
+  "charrestore.npc.confirmed":  "Good. I knew it was you. Let me tell you how I came to have your things.",
+  "charrestore.npc.wrong_person": "My apologies for the confusion. I will keep looking.",
+  "charrestore.npc.farewell":   "Safe harbors to you. Learn these waters before you venture out again.",
+
+  "charrestore.npc.bag_name":    "Salvaged Belongings",
+  "charrestore.npc.bundle_name": "Restoration Bundle",
+  "charrestore.npc.note_name":   "Personal Note",
+
+  "charrestore.dialog.title.greeting": "A Weathered Salvager",
+  "charrestore.dialog.title.story":    "A Salvager's Tale",
+  "charrestore.dialog.title.handoff":  "Your Belongings",
+
+  "charrestore.dialog.body.greeting": "Hold there, traveler. Are you the one who was stranded by the sea's whim? I have been carrying something that belongs to you — or so I have been told. It would help me to know I have found the right person before I hand it over.",
+  "charrestore.dialog.body.story":    "I thought as much. The sea gives and the sea takes — but sometimes a keen eye and quick hands can recover what the tides would claim. I pulled what I could from the wreckage before the current swept it away. Not every soul would bother, but I have seen too many good people lose everything to the waters. It is not right.<BR><BR>I have it all bundled here. Ready to receive it?",
+  "charrestore.dialog.body.handoff":  "Here you are — your salvaged belongings. Take it all. It belongs to you, and the sea owes you at least this much.<BR><BR>A piece of advice from an old salvager: learn the coastlines before you sail them. The sea does not forgive twice.",
+
+  "charrestore.dialog.btn.yes_me":  "Yes, that is me.",
+  "charrestore.dialog.btn.not_me":  "No, you have the wrong person.",
+  "charrestore.dialog.btn.accept":  "Yes, please. I am ready to receive my belongings.",
+  "charrestore.dialog.btn.thanks":  "Thank you, salvager. I will remember this.",
+
+  "charrestore.gump.title":          "Character Item Restore — GM Tool",
+  "charrestore.gump.tab.setup":      "1. Setup",
+  "charrestore.gump.tab.items":      "2. Items",
+  "charrestore.gump.tab.npc":        "3. NPC & Spawn",
+
+  "charrestore.gump.lbl.backup_path": "Backup Saves Path:",
+  "charrestore.gump.lbl.account":     "Account Name:",
+  "charrestore.gump.lbl.character":   "Character Name:",
+  "charrestore.gump.lbl.include":     "Include",
+  "charrestore.gump.lbl.hue":         "Hue",
+  "charrestore.gump.lbl.amount":      "Amt",
+  "charrestore.gump.lbl.layer":       "Layer",
+  "charrestore.gump.lbl.target":      "Target Player Name:",
+  "charrestore.gump.lbl.note":        "Personal Note (optional):",
+
+  "charrestore.gump.btn.analyze":     "Analyze Backup",
+  "charrestore.gump.btn.prev":        "< Prev",
+  "charrestore.gump.btn.next":        "Next >",
+  "charrestore.gump.btn.select_all":  "Select All",
+  "charrestore.gump.btn.clear_all":   "Clear All",
+  "charrestore.gump.btn.target":      "Click to target player ingame",
+  "charrestore.gump.btn.spawn":       "Spawn NPC",
+  "charrestore.gump.btn.back":        "< Back",
+
+  "charrestore.gump.msg.no_items_btn":  "(No items selected)",
+  "charrestore.gump.msg.items_hint":    "Items from backup ({0} total). Check items to include in the restoration.",
+  "charrestore.gump.msg.npc_hint":      "Configure the restoration NPC. It will spawn at your current location and await the target player. {0} item(s) will be placed in the restoration bag.",
+  "charrestore.gump.msg.npc_lifecycle": "The NPC will introduce itself as a sea salvager who recovered the player's lost items. It auto-deletes after 24 hours or immediately upon item delivery.",
+  "charrestore.gump.msg.setup_hint":    "Enter backup path, account, and character name, then click Analyze.",
+  "charrestore.gump.msg.select_first":  "No items selected. Check at least one item to restore.",
+  "charrestore.gump.msg.not_player":    "That is not a player.",
+  "charrestore.gump.msg.target_player": "Target the player to restore items to."
+}
