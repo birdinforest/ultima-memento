@@ -625,6 +625,13 @@ namespace Server
 		private ObjectPropertyList m_PropertyList;
 		private Dictionary<string, ObjectPropertyList> m_PropertyListByLang;
 		private Dictionary<string, Packet> m_OPLPacketByLang;
+		/// <summary>
+		/// Nesting depth for OPL construction (<see cref="PropertyList" />, <see cref="GetLocalizedPropertyList"/>).
+		/// Property setters that call <see cref="InvalidateProperties"/> must not synchronously rebuild OPL while this &gt; 0
+		/// (would clear the in-progress list and re-enter <see cref="GetProperties"/>, risking stack overflow).
+		/// </summary>
+		private int m_PropertyListBuildDepth;
+		private bool m_PendingInvalidateProperties;
 
 		[ThreadStatic]
 		protected static string BuildingPropertyListLocale;
@@ -1555,6 +1562,7 @@ namespace Server
 			if ( !m_PropertyListByLang.TryGetValue( locale, out list ) )
 			{
 				BuildingPropertyListLocale = locale;
+				m_PropertyListBuildDepth++;
 				try
 				{
 					list = new ObjectPropertyList( this );
@@ -1566,6 +1574,11 @@ namespace Server
 				finally
 				{
 					BuildingPropertyListLocale = null;
+					if ( --m_PropertyListBuildDepth == 0 && m_PendingInvalidateProperties )
+					{
+						m_PendingInvalidateProperties = false;
+						InvalidateProperties();
+					}
 				}
 				m_PropertyListByLang[locale] = list;
 			}
@@ -2908,13 +2921,25 @@ namespace Server
 			{
 				if ( m_PropertyList == null )
 				{
-					m_PropertyList = new ObjectPropertyList( this );
+					m_PropertyListBuildDepth++;
+					try
+					{
+						m_PropertyList = new ObjectPropertyList( this );
 
-					GetProperties( m_PropertyList );
-					AppendChildProperties( m_PropertyList );
+						GetProperties( m_PropertyList );
+						AppendChildProperties( m_PropertyList );
 
-					m_PropertyList.Terminate();
-					m_PropertyList.SetStatic();
+						m_PropertyList.Terminate();
+						m_PropertyList.SetStatic();
+					}
+					finally
+					{
+						if ( --m_PropertyListBuildDepth == 0 && m_PendingInvalidateProperties )
+						{
+							m_PendingInvalidateProperties = false;
+							InvalidateProperties();
+						}
+					}
 				}
 
 				return m_PropertyList;
@@ -2961,6 +2986,12 @@ namespace Server
 		{
 			if ( !ObjectPropertyList.Enabled )
 				return;
+
+			if ( m_PropertyListBuildDepth > 0 )
+			{
+				m_PendingInvalidateProperties = true;
+				return;
+			}
 
 			if ( m_Map != null && m_Map != Map.Internal && !World.Loading )
 			{

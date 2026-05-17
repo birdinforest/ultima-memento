@@ -20,6 +20,7 @@
 | Build and test the server | [§4 Build & Test](#4-build--test) |
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
+| **Avoid server crashes / stability pitfalls** (OPL reentrancy, serializers, timers, …) | [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) — **read before** touching `Item`/`Mobile` OPL paths, `Serialize`/`Deserialize`, or tick/timer-heavy logic |
 
 ---
 
@@ -59,6 +60,7 @@ ultima-memento/
 - Localization regression testing plan & test tiers: `World/Documentation/localization-regression-testing.md`
 - Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
 - Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
+- **Server stability & crash avoidance (AI checklist):** `World/Documentation/server-stability-crash-patterns.md` — OPL / `InvalidateProperties` reentrancy, serializers, null-safety, timers, collection mutation, etc.
 
 ---
 
@@ -406,6 +408,7 @@ bash World/Source/Tools/run_localization_regression.sh
 
 ### 5.1 Hard Boundaries — Never Do These
 
+- **Stability:** Before changing **OPL construction** (`GetProperties`, `AddNameProperties`, `AddColorText*Property`), **serialization**, or **timer/tick-heavy** code paths, read [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) and avoid the documented anti-patterns (especially **`ColorText*` setters during property list build**).
 - **Never edit `World/Saves/`** (accounts, items, mobiles). These are live runtime state.
 - **Never translate using Google Translate or DeepL APIs.** LLM-based translation only (§3.4).
 - **Never add a glossary entry without human review** unless the user has explicitly approved the term in this session.
@@ -456,6 +459,7 @@ Update `AGENTS.md` when:
 - Cross-repo website conventions change (§7: media paths, wiki index pipeline, glossary inputs).
 - An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
 - A new **authoritative design pack** is added under `World/Documentation/` that agents should routinely consult (index it in §1 bullet list and here).
+- **Stability / crash-pattern** guidance changes (`server-stability-crash-patterns.md`) — keep §0 index, §1 bullets, and §5.1 in sync.
 
 ### 6.2 Language Expansion Protocol
 
@@ -487,6 +491,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-17: §3.1 — `legend-book-rows.json`（`god.legendbook.row.*`，zh-Hans-only）+ `keep_extra`；§3.2 — **`SendMessage(int hue, string)`** 仍须目录化，hue 仅客户端着色。
 - 2026-05-17: §3.1 — `trade-commodity.json`、`placemap-labels.json`（`keep_extra`）：动态材料全名、`PotionKeg` 桶名、`PlaceMap` 地名 OPL。
 - 2026-05-17: §3.2 — **`Item.AddColorText3Property`**：OPL 第三条彩色行（1072173）的可覆盖扩展点；用于 `ResolvePropertyText` / 格式化双语估价等，替代依赖 **`ColorText3`** 存英文。
+- 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
 > **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.

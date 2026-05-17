@@ -85,17 +85,18 @@ namespace Server.Items
 
 		public override void GetProperties( ObjectPropertyList list )
 		{
-			string backupCt3 = ColorText3;
+			// Avoid ColorText3 property setter during OPL build — it calls InvalidateProperties and can re-enter PropertyList (stack overflow).
+			string backupCt3 = m_ColorText3;
 			try
 			{
-				if ( BuildingPropertyListLocale != null && ColorText3 != null && ColorText3.StartsWith( "Worth " ) )
-					ColorText3 = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+				if ( BuildingPropertyListLocale != null && m_ColorText3 != null && m_ColorText3.StartsWith( "Worth " ) )
+					m_ColorText3 = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
 
 				base.GetProperties( list );
 			}
 			finally
 			{
-				ColorText3 = backupCt3;
+				m_ColorText3 = backupCt3;
 			}
 		}
 

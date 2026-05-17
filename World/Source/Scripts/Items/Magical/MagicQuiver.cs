@@ -10,21 +10,23 @@ namespace Server.Items
 	{
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
-			string savedColor = ColorText1;
+			// Must not assign ColorText1 here: its setter calls InvalidateProperties(), which
+			// re-enters PropertyList while building OPL (stack overflow). Use backing field only.
+			string savedColor = m_ColorText1;
 
 			try
 			{
-				if ( BuildingPropertyListLocale != null && ColorText1 != null && Name != null && Name.Length > 0 )
+				if ( BuildingPropertyListLocale != null && m_ColorText1 != null && Name != null && Name.Length > 0 )
 				{
 					string suffix = " " + Name;
 
-					if ( ColorText1.EndsWith( suffix, StringComparison.Ordinal ) )
+					if ( m_ColorText1.EndsWith( suffix, StringComparison.Ordinal ) )
 					{
-						string adjRaw = ColorText1.Substring( 0, ColorText1.Length - suffix.Length );
+						string adjRaw = m_ColorText1.Substring( 0, m_ColorText1.Length - suffix.Length );
 						string adjLoc = StringCatalog.TryResolve( BuildingPropertyListLocale, adjRaw ) ?? adjRaw;
 						string quiverLoc = ResolvePropertyText( "item.magical.magicquiver.base" );
 
-						ColorText1 = string.Format( ResolvePropertyText( "prop.magical.magicquiver.name.line" ), adjLoc, quiverLoc );
+						m_ColorText1 = string.Format( ResolvePropertyText( "prop.magical.magicquiver.name.line" ), adjLoc, quiverLoc );
 					}
 				}
 
@@ -32,7 +34,7 @@ namespace Server.Items
 			}
 			finally
 			{
-				ColorText1 = savedColor;
+				m_ColorText1 = savedColor;
 			}
 		}
 

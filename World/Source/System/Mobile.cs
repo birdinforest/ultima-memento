@@ -9601,6 +9601,8 @@ namespace Server
 		}
 
 		private ObjectPropertyList m_PropertyList;
+		private int m_PropertyListBuildDepth;
+		private bool m_PendingInvalidateProperties;
 
 		public ObjectPropertyList PropertyList
 		{
@@ -9608,12 +9610,24 @@ namespace Server
 			{
 				if( m_PropertyList == null )
 				{
-					m_PropertyList = new ObjectPropertyList( this );
+					m_PropertyListBuildDepth++;
+					try
+					{
+						m_PropertyList = new ObjectPropertyList( this );
 
-					GetProperties( m_PropertyList );
+						GetProperties( m_PropertyList );
 
-					m_PropertyList.Terminate();
-					m_PropertyList.SetStatic();
+						m_PropertyList.Terminate();
+						m_PropertyList.SetStatic();
+					}
+					finally
+					{
+						if( --m_PropertyListBuildDepth == 0 && m_PendingInvalidateProperties )
+						{
+							m_PendingInvalidateProperties = false;
+							InvalidateProperties();
+						}
+					}
 				}
 
 				return m_PropertyList;
@@ -9630,6 +9644,12 @@ namespace Server
 		{
 			if( !ObjectPropertyList.Enabled )
 				return;
+
+			if( m_PropertyListBuildDepth > 0 )
+			{
+				m_PendingInvalidateProperties = true;
+				return;
+			}
 
 			if( m_Map != null && m_Map != Map.Internal && !World.Loading )
 			{
