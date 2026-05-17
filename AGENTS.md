@@ -119,6 +119,7 @@ Data/Localization/
 | `temptation-gump.json` | Temptation gump strings. |
 | `thewar-quest.json` | War recruiter shouts and other curated war-quest lines (`thewar.*`, …). |
 | `resource-harvest-extra.json` | Hash-key harvest / craft-material copy (`CraftResources` shorts, gem/bark/mushroom bonus strings, harvest quantity **some**, `You found {0}!`, grave chest, …). Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. See `World/Documentation/resources-design/07-localization-and-player-copy.md`. |
+| `equipment-properties.json` | Equipment / weapon OPL shotkeys (`prop.*`) for bilingual object property lists. Pair `en/` + `zh-Hans/`; **`build_localization_strings.py` `keep_extra`**. |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 | `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
 
@@ -454,6 +455,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-03: §3.5 — new **Proper Noun Annotation Convention** for zh-Hans: all proper nouns must show `中文（English）` format in 【】 brackets or inline; `annotate_proper_nouns.py` tool for automated annotation.
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 - 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
+- 2026-05-17: §3.1 — added `cliloc-lookup.json` (`cliloc.<id>` shotkeys) for curated `CliLocTable.Lookup` sets; `CliLocTable.Lookup(IAccount/Mobile, int)` + `keep_extra`.
 
 ## 7. Website & player-facing docs (`ultima-memento-web`)
 

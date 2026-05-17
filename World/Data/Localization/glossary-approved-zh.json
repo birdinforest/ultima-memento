@@ -2923,6 +2923,69 @@
       "notes": "Classic fantasy orc; fragment 'an orc' in ORDER.",
       "translation_basis_zh": "兽人为 Orc 通行奇幻译名。碎片表整句为「一名兽人」，因 bare「an orc」曾误走泛化量词「一只」，已在生成脚本中单列匹配。"
     },
+    "Repond": {
+      "canonical": "里庞德",
+      "alternatives": [],
+      "category": "concept",
+      "notes": "UO slayer group label for humanoid-like foes (historical cliloc 'Repond'); not a place name on this shard.",
+      "translation_basis_zh": "OSI 类人形敌人克制组惯用标签；音译「里庞德」并在 cliloc-lookup 中辅以「克星」类动宾以传达武器词缀语义。"
+    },
+    "Harrower": {
+      "canonical": "冥劫者",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Champion-end boss moniker in UO-era content; appears on statuette cliloc.",
+      "translation_basis_zh": "承接劫难、幽冥语感，避开音译冗长；与 Harrow 义项呼应。"
+    },
+    "Efreet": {
+      "canonical": "伊夫利特",
+      "alternatives": ["火焰巨灵"],
+      "category": "creature",
+      "notes": "Fire-themed genie class creature in fantasy/UO contexts; statuette cliloc label.",
+      "translation_basis_zh": "阿拉伯神话与奇幻通用名 إفريت / Ifrit 的通行汉字音译；必要时可注火焰巨灵。"
+    },
+    "Serpentaur": {
+      "canonical": "蛇族战士",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "UO compound serpent-humanoid slayer label (Serpentaur Execution); aligns with Ophidian adjacent naming.",
+      "translation_basis_zh": "与 Ophidian 蛇裔设定相邻，采用「蛇族」族称 +「战士/处刑」类动词已在短语文本中补足。"
+    },
+    "Arachnoid": {
+      "canonical": "蛛形族",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "UO slayer family label for spider-like foes (Arachnoid Slayer); not generic English 'arachnid' in prose.",
+      "translation_basis_zh": "与 spider / terathan 线区分，用「蛛形」点题节肢蛛纲风格敌人族称。"
+    },
+    "Dread Horn": {
+      "canonical": "惧角魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Named peerless-style boss creature in ML-era UO; cliloc weapon/slayer strings.",
+      "translation_basis_zh": "Dread 取「惧」，Horn 取兽类「角」，缀「魔」匹配 boss 体量。"
+    },
+    "Red Death": {
+      "canonical": "赤红死神",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "UO creature/statuette proper name; cliloc 1094932.",
+      "translation_basis_zh": "保留红与死亡意象，「死神」贴合 Red Death 格调。"
+    },
+    "Phillip's Wooden Steed": {
+      "canonical": "菲利普的木马",
+      "alternatives": [],
+      "category": "item",
+      "notes": "Decorative statuette easter-egg name; cliloc 1063488.",
+      "translation_basis_zh": "人名音译「菲利普」；Wooden Steed 作儿童木马戏谑物件名。"
+    },
+    "Minotaur": {
+      "canonical": "牛头人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic minotaur creature and UO mob line; cliloc statuette name.",
+      "translation_basis_zh": "奇幻通行译名「牛头人」，与半牛人等变体文档可交叉参照。"
+    },
     "_SECTION_CORE_STATS_UI": "── Core stats (character sheet UI) ───────────────────────────",
     "Strength": {
       "canonical": "力量",
