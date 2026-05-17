@@ -1646,5 +1646,7 @@
   "item.magical.artifact.wizardspants": "法师长裤（Wizard's Pants）",
   "item.magical.artifact.wrathofthedryad": "树妖之怒（Wrath Of The Dryad）",
   "item.magical.artifact.yashimotoshatsuburi": "吉本兜帽面甲（Yashimoto's Hatsuburi）",
-  "item.magical.artifact.zyronicclaw": "扎龙尼克之爪（Zyronic Claw）"
+  "item.magical.artifact.zyronicclaw": "扎龙尼克之爪（Zyronic Claw）",
+  "prop.magical.vendor.tier.fixed": "随机抽取 {0} 条魔法属性，强度 {1}–{2}%",
+  "prop.magical.vendor.tier.range": "随机抽取 {0}–{1} 条魔法属性，强度 {2}–{3}%"
 }

@@ -1647,5 +1647,7 @@
   "item.magical.artifact.wizardspants": "Wizard's Pants",
   "item.magical.artifact.wrathofthedryad": "Wrath Of The Dryad",
   "item.magical.artifact.yashimotoshatsuburi": "Yashimoto's Hatsuburi",
-  "item.magical.artifact.zyronicclaw": "Zyronic Claw"
+  "item.magical.artifact.zyronicclaw": "Zyronic Claw",
+  "prop.magical.vendor.tier.fixed": "Randomly draws {0} magical properties ({1}–{2}% intensity)",
+  "prop.magical.vendor.tier.range": "Randomly draws {0}–{1} magical properties ({2}–{3}% intensity)"
 }

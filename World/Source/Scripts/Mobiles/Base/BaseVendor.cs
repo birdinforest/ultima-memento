@@ -946,6 +946,27 @@ namespace Server.Mobiles
 					{
 						price = GetMutationCost(buyItem.Price, from);
 						name = string.Format("(Magical) {0}", item.Name);
+
+						int minAttr, maxAttr, minI, maxI;
+						if ( GetMutationTierInfo( from, out minAttr, out maxAttr, out minI, out maxI ) )
+						{
+							string summaryKey = ( minAttr == maxAttr )
+								? "prop.magical.vendor.tier.fixed"
+								: "prop.magical.vendor.tier.range";
+							string summary = ( minAttr == maxAttr )
+								? StringCatalog.ResolveFormatByKey( from.Account, summaryKey, minAttr, minI, maxI )
+								: StringCatalog.ResolveFormatByKey( from.Account, summaryKey, minAttr, maxAttr, minI, maxI );
+
+							ObjectPropertyList opl = new ObjectPropertyList( item );
+							if ( item.Name != null )
+								opl.Add( 1042971, item.Name );
+							else
+								opl.Add( item.LabelNumber );
+							opl.Add( 1042971, summary );
+							opl.Terminate();
+							opl.SetStatic();
+							opls.Add( opl );
+						}
 					}
                     else
                     {
@@ -1703,19 +1724,13 @@ namespace Server.Mobiles
 			) == false ) return false;
 			if ( item is BaseTool ) return false;
 
-			var tier = GetPlayerTier(buyer);
-			switch(tier)
-			{
-				case 1: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 2, 5, 25); break; // 5k - After a few Normal dungeons
-				case 2: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 2, 5, 30); break; // 10k - After a lot of Normal dungeons?
-				case 3: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 3, 15, 40); break; // 15k - Starting Difficult dungeons
-				case 4: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 3, 20, 50); break; // 20k - After a lot of Difficult
-				case 5: if (doMutation) BaseRunicTool.ApplyAttributes(item, 2, 4, 25, 50); break; // 25k - Begin Challenging
-				case 6: if (doMutation) BaseRunicTool.ApplyAttributes(item, 3, 4, 40, 70); break; // 30k - Lots of Challenging
-				// Hard
-				// Deadly
-				default: return false;
-			}
+			int minAttr, maxAttr, minI, maxI;
+			if ( !GetMutationTierInfo( buyer, out minAttr, out maxAttr, out minI, out maxI ) )
+				return false;
+
+			// 5k–30k tiers; Hard / Deadly reserved.
+			if ( doMutation )
+				BaseRunicTool.ApplyAttributes( item, minAttr, maxAttr, minI, maxI );
 
 			// Always basic resources.
 			// This gives Players the opportunity to enhance and flip items.
@@ -1727,6 +1742,21 @@ namespace Server.Mobiles
 		public int GetMutationCost(int price, Mobile buyer)
 		{
 			return price * (1 + GetPlayerTier(buyer));
+		}
+
+		private bool GetMutationTierInfo( Mobile buyer, out int minAttr, out int maxAttr, out int minIntensity, out int maxIntensity )
+		{
+			minAttr = maxAttr = minIntensity = maxIntensity = 0;
+			switch ( GetPlayerTier( buyer ) )
+			{
+				case 1: minAttr = 2; maxAttr = 2; minIntensity = 5; maxIntensity = 25; return true; // 5k - After a few Normal dungeons
+				case 2: minAttr = 2; maxAttr = 2; minIntensity = 5; maxIntensity = 30; return true; // 10k - After a lot of Normal dungeons?
+				case 3: minAttr = 2; maxAttr = 3; minIntensity = 15; maxIntensity = 40; return true; // 15k - Starting Difficult dungeons
+				case 4: minAttr = 2; maxAttr = 3; minIntensity = 20; maxIntensity = 50; return true; // 20k - After a lot of Difficult
+				case 5: minAttr = 2; maxAttr = 4; minIntensity = 25; maxIntensity = 50; return true; // 25k - Begin Challenging
+				case 6: minAttr = 3; maxAttr = 4; minIntensity = 40; maxIntensity = 70; return true; // 30k - Lots of Challenging
+				default: return false;
+			}
 		}
 
 		private int GetPlayerTier(Mobile player) // Max of 6
