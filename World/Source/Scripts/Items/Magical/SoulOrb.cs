@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Network;
 using Server.Gumps;
 using Server.Utilities;
@@ -18,6 +19,8 @@ namespace Server.Items
 
     public class SoulOrb : Item
     {
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 10 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }
 
         private Mobile m_Owner;
@@ -169,22 +172,34 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
+			if ( m_Owner == null )
+				return;
+
 			switch ( OrbType )
 			{
 				case SoulOrbType.BloodOfVampire:
-					list.Add( 1049644, "Contains vampire blood for " + m_Owner.Name );
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.magical.soulorb.vampire.blood", m_Owner.Name );
+					else
+						list.Add( 1049644, "Contains vampire blood for " + m_Owner.Name );
 					break;
 
 				case SoulOrbType.CloningCrystalJedi:
 				case SoulOrbType.CloningCrystalSyth:
-					list.Add( 1049644, "Contains genetic patterns for " + m_Owner.Name );
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.magical.soulorb.genetic", m_Owner.Name );
+					else
+						list.Add( 1049644, "Contains genetic patterns for " + m_Owner.Name );
 					break;
 
 				case SoulOrbType.PermadeathPlaceholder:
 				case SoulOrbType.RestorativeSoil:
 				case SoulOrbType.Default:
 				default:
-					list.Add( 1049644, "Contains the Soul of " + m_Owner.Name );
+					if ( BuildingPropertyListLocale != null )
+						AddLocalizedProperty( list, "prop.magical.soulorb.soul", m_Owner.Name );
+					else
+						list.Add( 1049644, "Contains the Soul of " + m_Owner.Name );
 					break;
 			}
         }

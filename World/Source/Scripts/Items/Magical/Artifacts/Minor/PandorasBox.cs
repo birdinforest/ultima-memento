@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -11,6 +12,8 @@ namespace Server.Items
 
     public class PandorasBox : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private PandoraEffect m_PandoraEffect;
 		private int m_Charges;
 
@@ -41,13 +44,19 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060741, m_Charges.ToString() );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.item.charges", m_Charges.ToString() );
+			else
+				list.Add( 1060741, m_Charges.ToString() );
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Magically Access Your Bank Box");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.pandora.bank" );
+			else
+				list.Add( 1049644, "Magically Access Your Bank Box");
         }
 
 		public void ConsumeCharge( Mobile from )

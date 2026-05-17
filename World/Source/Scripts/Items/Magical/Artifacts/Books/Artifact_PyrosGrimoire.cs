@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class Artifact_PyrosGrimoire : ElementalSpellbook
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public Artifact_PyrosGrimoire() : base()
 		{
@@ -40,7 +42,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Pyros' Book of Spells");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.spellbook.pyros" );
+			else
+				list.Add( 1049644, "Pyros' Book of Spells");
         }
 
 		public Artifact_PyrosGrimoire( Serial serial ) : base( serial )

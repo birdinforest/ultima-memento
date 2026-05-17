@@ -7,11 +7,15 @@ using Server.Misc;
 using Server.Gumps;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class ColoringBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		public string MagicColor;
 
 		[CommandProperty(AccessLevel.Owner)]
@@ -88,7 +92,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            if ( MagicColor != "" ){ list.Add( 1049644, MagicColor ); }
+			if ( MagicColor != "" )
+			{
+				if ( BuildingPropertyListLocale != null )
+					list.Add( 1049644, GetLocalizedPrismaticSwatch( MagicColor, BuildingPropertyListLocale ) );
+				else
+					list.Add( 1049644, MagicColor );
+			}
         }
 
 		public class ColoringBookGump : Gump
@@ -156,23 +166,23 @@ namespace Server.Items
 
 				///////////////////////////////////////////////////////////////////////////////////
 
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor3 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor4 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor5 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor6 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=d;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor1, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor2, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor3, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor4, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor5, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor6, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor7, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor8, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=d;
 
-				if ( GetColorListForBook( showColor1 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor1 )); AddButton(x, y-2, 4005, 4005, showColor1, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor2 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor2 )); AddButton(x, y-2, 4005, 4005, showColor2, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor3 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor3 )); AddButton(x, y-2, 4005, 4005, showColor3, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor4 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor4 )); AddButton(x, y-2, 4005, 4005, showColor4, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor5 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor5 )); AddButton(x, y-2, 4005, 4005, showColor5, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor6 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor6 )); AddButton(x, y-2, 4005, 4005, showColor6, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor7 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor7 )); AddButton(x, y-2, 4005, 4005, showColor7, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor8 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor8 )); AddButton(x, y-2, 4005, 4005, showColor8, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor1, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor1 )); AddButton(x, y-2, 4005, 4005, showColor1, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor2, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor2 )); AddButton(x, y-2, 4005, 4005, showColor2, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor3, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor3 )); AddButton(x, y-2, 4005, 4005, showColor3, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor4, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor4 )); AddButton(x, y-2, 4005, 4005, showColor4, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor5, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor5 )); AddButton(x, y-2, 4005, 4005, showColor5, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor6, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor6 )); AddButton(x, y-2, 4005, 4005, showColor6, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor7, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor7 )); AddButton(x, y-2, 4005, 4005, showColor7, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor8, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor8 )); AddButton(x, y-2, 4005, 4005, showColor8, GumpButtonType.Reply, 0); } y=y+o;
 
 				///////////////////////////////////////////////////////////////////////////////////
 
@@ -181,23 +191,23 @@ namespace Server.Items
 				i = x+190;
 				y = d;
 
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor9 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor10 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor11 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor12 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor13 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor14 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor15 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
-				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor16 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=d;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor9, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor10, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor11, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor12, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor13, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor14, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor15, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=y+o;
+				AddHtml( z, y, 162, 20, @"<BODY><BASEFONT Color=" + color + ">" + GetColorListForBook( showColor16, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=d;
 
-				if ( GetColorListForBook( showColor9 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor9 )); AddButton(x, y-2, 4005, 4005, showColor9, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor10 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor10 )); AddButton(x, y-2, 4005, 4005, showColor10, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor11 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor11 )); AddButton(x, y-2, 4005, 4005, showColor11, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor12 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor12 )); AddButton(x, y-2, 4005, 4005, showColor12, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor13 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor13 )); AddButton(x, y-2, 4005, 4005, showColor13, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor14 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor14 )); AddButton(x, y-2, 4005, 4005, showColor14, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor15 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor15 )); AddButton(x, y-2, 4005, 4005, showColor15, GumpButtonType.Reply, 0); } y=y+o;
-				if ( GetColorListForBook( showColor16 ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor16 )); AddButton(x, y-2, 4005, 4005, showColor16, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor9, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor9 )); AddButton(x, y-2, 4005, 4005, showColor9, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor10, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor10 )); AddButton(x, y-2, 4005, 4005, showColor10, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor11, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor11 )); AddButton(x, y-2, 4005, 4005, showColor11, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor12, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor12 )); AddButton(x, y-2, 4005, 4005, showColor12, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor13, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor13 )); AddButton(x, y-2, 4005, 4005, showColor13, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor14, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor14 )); AddButton(x, y-2, 4005, 4005, showColor14, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor15, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor15 )); AddButton(x, y-2, 4005, 4005, showColor15, GumpButtonType.Reply, 0); } y=y+o;
+				if ( GetColorListForBook( showColor16, from ) != "" ){ AddItem(i, y-2, 7933, GetColorNumberForBook( showColor16 )); AddButton(x, y-2, 4005, 4005, showColor16, GumpButtonType.Reply, 0); } y=y+o;
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -251,7 +261,22 @@ namespace Server.Items
 			MagicPage = reader.ReadInt();
 		}
 
-		public static string GetColorListForBook( int colorz )
+		public static string GetLocalizedPrismaticSwatch( string englishLabel, string locale )
+		{
+			if ( string.IsNullOrEmpty( englishLabel ) || locale == null || locale == "en" || !AccountLang.IsChinese( locale ) )
+				return englishLabel;
+			int hash = englishLabel.IndexOf( " #" );
+			if ( hash <= 0 )
+				return englishLabel;
+			string fam = englishLabel.Substring( 0, hash );
+			string num = englishLabel.Substring( hash + 2 );
+			string famKey = "prop.magical.prismatic.family." + fam.ToLowerInvariant();
+			string famLocal = StringCatalog.TryResolveByKey( locale, famKey ) ?? fam;
+			string tpl = StringCatalog.TryResolveByKey( locale, "prop.magical.prismatic.swatch" ) ?? "{0} #{1}";
+			return string.Format( tpl, famLocal, num );
+		}
+
+		public static string GetColorListForBook( int colorz, Mobile viewer = null )
 		{
 			string color = "";
 			int clrz = 1;
@@ -833,6 +858,13 @@ namespace Server.Items
 			if ( colorz == clrz) { color="Metal #29"; } clrz++;
 			if ( colorz == clrz) { color="Metal #30"; } clrz++;
 			if ( colorz == clrz) { color="Silver #1"; } clrz++;
+
+			if ( viewer != null && !string.IsNullOrEmpty( color ) )
+			{
+				string lang = AccountLang.GetLanguageCode( viewer.Account );
+				if ( AccountLang.IsChinese( lang ) )
+					color = GetLocalizedPrismaticSwatch( color, "zh" );
+			}
 
 			return color;
 		}

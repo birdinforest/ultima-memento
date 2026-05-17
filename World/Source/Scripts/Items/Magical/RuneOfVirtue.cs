@@ -13,6 +13,48 @@ namespace Server.Items
 	{
 		public Mobile ItemOwner;
 
+		public override bool IsContentLocalized => true;
+
+		private static string RuneTitleShotkeyFromName( string name )
+		{
+			if ( string.IsNullOrEmpty( name ) || name == "rune" )
+				return "prop.magical.rune.base";
+			switch ( name )
+			{
+				case "Rune of Honesty": return "prop.magical.rune.honesty";
+				case "Rune of Deceit": return "prop.magical.rune.deceit";
+				case "Rune of Honor": return "prop.magical.rune.honor";
+				case "Rune of Scorn": return "prop.magical.rune.scorn";
+				case "Rune of Humility": return "prop.magical.rune.humility";
+				case "Rune of Arrogance": return "prop.magical.rune.arrogance";
+				case "Rune of Justice": return "prop.magical.rune.justice";
+				case "Rune of Oppression": return "prop.magical.rune.oppression";
+				case "Rune of Sacrifice": return "prop.magical.rune.sacrifice";
+				case "Rune of Neglect": return "prop.magical.rune.neglect";
+				case "Rune of Spirituality": return "prop.magical.rune.spirituality";
+				case "Rune of Sacrilege": return "prop.magical.rune.sacrilege";
+				case "Rune of Valor": return "prop.magical.rune.valor";
+				case "Rune of Fear": return "prop.magical.rune.fear";
+				case "Rune of Compassion": return "prop.magical.rune.compassion";
+				case "Rune of Cruelty": return "prop.magical.rune.cruelty";
+			}
+			return null;
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string key = RuneTitleShotkeyFromName( Name );
+				if ( key != null )
+				{
+					AddLocalizedProperty( list, key );
+					return;
+				}
+			}
+			base.AddNameProperty( list );
+		}
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Item_Owner { get{ return ItemOwner; } set{ ItemOwner = value; } }
 
@@ -34,7 +76,20 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( ItemOwner != null ){ list.Add( 1070722, "Rune for " + ItemOwner.Name + "" ); } else { list.Add( 1070722, "Rune"); }
+			if ( ItemOwner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.magical.rune.for.owner", ItemOwner.Name );
+				else
+					list.Add( 1070722, "Rune for " + ItemOwner.Name + "" );
+			}
+			else
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.magical.rune.generic" );
+				else
+					list.Add( 1070722, "Rune");
+			}
         }
 
 		public override bool OnEquip( Mobile from )

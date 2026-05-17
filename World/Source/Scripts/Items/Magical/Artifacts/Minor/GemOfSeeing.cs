@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Regions;
 using System.Collections;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items 
 {
@@ -15,6 +16,8 @@ namespace Server.Items
 
 	public class GemOfSeeing : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private GemOfSeeingEffect m_GemOfSeeingEffect;
 		private int m_Charges;
 
@@ -36,7 +39,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "Find Hidden Items And Traps" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.gem.seeing" );
+			else
+				list.Add( 1049644, "Find Hidden Items And Traps" );
         } 
 		
 		public override void OnDoubleClick( Mobile from )
@@ -69,7 +75,13 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Charges" );
+			if ( BuildingPropertyListLocale != null )
+			{
+				string suffix = ResolvePropertyText( "prop.magical.charges.suffix" );
+				AddLocalizedProperty( list, "prop.magical.gem.charges.line", m_Charges.ToString(), suffix );
+			}
+			else
+				list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Charges" );
 		}
 
 		private class InternalTarget : Target

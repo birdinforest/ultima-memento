@@ -130,6 +130,8 @@ namespace Server.Items
 		public int SlayerType;
 		public string SlayerNames;
 
+		public override bool IsContentLocalized => true;
+
 		[CommandProperty(AccessLevel.Owner)]
 		public int Slayer_Type { get { return SlayerType; } set { SlayerType = value; InvalidateProperties(); } }
 
@@ -184,10 +186,26 @@ namespace Server.Items
 			}
 		}
 
+		private static string SlayerDeedShotkey( int slayerType )
+		{
+			if ( slayerType < 0 || slayerType > 34 )
+				return null;
+			return "prop.magical.slayer.deed." + slayerType.ToString( "D2" );
+		}
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, SlayerNames );
+			if ( BuildingPropertyListLocale != null )
+			{
+				string sk = SlayerDeedShotkey( SlayerType );
+				if ( sk != null )
+					AddLocalizedProperty( list, sk );
+				else
+					list.Add( 1070722, SlayerNames );
+			}
+			else
+				list.Add( 1070722, SlayerNames );
         }
 
 		public SlayerDeed(Serial serial) : base(serial)

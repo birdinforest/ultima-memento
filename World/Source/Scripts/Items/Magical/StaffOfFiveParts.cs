@@ -144,6 +144,8 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public StaffPartVenom() : base( 0x3A7 )
 		{
@@ -158,7 +160,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
+			if ( Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + Owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )
@@ -213,6 +221,8 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public StaffPartCaddellite() : base( 0x3A7 )
 		{
@@ -227,7 +237,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
+			if ( Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + Owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )
@@ -282,6 +298,8 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public StaffPartFire() : base( 0x3A7 )
 		{
@@ -296,7 +314,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
+			if ( Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + Owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )
@@ -351,6 +375,8 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public StaffPartLight() : base( 0x3A7 )
 		{
@@ -365,7 +391,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
+			if ( Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + Owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )
@@ -420,6 +452,8 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public StaffPartEnergy() : base( 0x3A7 )
 		{
@@ -434,7 +468,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
+			if ( Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + Owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )

@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class Artifact_StratosManual : ElementalSpellbook
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public Artifact_StratosManual() : base()
 		{
@@ -40,7 +42,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Stratos' Book of Spells");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.spellbook.stratos" );
+			else
+				list.Add( 1049644, "Stratos' Book of Spells");
         }
 
 		public Artifact_StratosManual( Serial serial ) : base( serial )

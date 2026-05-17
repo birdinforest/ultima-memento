@@ -1,6 +1,7 @@
 using Server;
 using System;
 using System.Collections;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
@@ -13,6 +14,8 @@ namespace Server.Items
 	{
 		private InternalTimer m_MoonTimer;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public MoonStone() : base( 0xF8B )
 		{
@@ -23,7 +26,10 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Magically Open A Moongate" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.moonstone" );
+			else
+				list.Add( 1070722, "Magically Open A Moongate" );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -31,11 +37,11 @@ namespace Server.Items
 			if ( !IsChildOf( from.Backpack ) )
 				from.SendLocalizedMessage( 1060640 ); // The item must be in your backpack to use it.
 			else if ( from is PlayerMobile && from.Land == Land.Kuldar && !( Server.Misc.PlayerSettings.GetKeys( from, "VordoKey" ) ) )
-				from.SendMessage( "This magical gate doesn't seem to do anything." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.moonstone.gate.inert" ) );
 			else if ( !Worlds.AllowEscape( from, from.Map, from.Location, from.X, from.Y ) && from.Land != Land.Kuldar )
-				from.SendMessage( "This magical gate doesn't seem to do anything." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.moonstone.gate.inert" ) );
 			else if ( !Worlds.RegionAllowedRecall( from.Map, from.Location, from.X, from.Y ) && from.Land != Land.Ambrosia && from.Land != Land.Kuldar )
-				from.SendMessage( "This magical gate doesn't seem to do anything." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.moonstone.gate.inert" ) );
 			else
 			{
 				Effects.PlaySound( from.Location, from.Map, 0x20E );

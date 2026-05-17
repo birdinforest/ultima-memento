@@ -5,6 +5,8 @@ namespace Server.Items
 {
 	public class LuckyHorseShoes : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public LuckyHorseShoes() : base(0xFB6)
 		{
@@ -15,7 +17,10 @@ namespace Server.Items
 		public override void AddNameProperties(ObjectPropertyList list)
 		{
 			base.AddNameProperties(list);
-			list.Add(1070722, "Adds up to 100 Luck To An Item");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.lucky.horseshoes" );
+			else
+				list.Add(1070722, "Adds up to 100 Luck To An Item");
 		}
 
 		public LuckyHorseShoes(Serial serial) : base(serial)

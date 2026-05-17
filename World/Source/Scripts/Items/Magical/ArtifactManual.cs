@@ -17,6 +17,8 @@ namespace Server.Items
 
     public class ArtifactManual : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private ArtyBookEffect m_ArtyBookEffect;
 		private int m_Charges;
 
@@ -47,7 +49,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1070722, "This Identifies Items");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.artifact.manual.identify" );
+			else
+				list.Add( 1070722, "This Identifies Items");
 		}
 
         public override void OnDoubleClick( Mobile from )
@@ -162,7 +167,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060741, m_Charges.ToString() );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.item.charges", m_Charges.ToString() );
+			else
+				list.Add( 1060741, m_Charges.ToString() );
 		}
     }
 }

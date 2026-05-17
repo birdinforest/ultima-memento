@@ -13,6 +13,8 @@ namespace Server.Items
 	{
 		public const int NUMBER_OF_ARTIFACTS = 290;
 
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public ManualOfItems() : base( 0x1C0E )
 		{
@@ -48,14 +50,23 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060741, m_Charges.ToString() );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.magical.item.charges", m_Charges.ToString() );
+			else
+				list.Add( 1060741, m_Charges.ToString() );
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
 			if ( m_FromWho != "" && m_FromWho != null ){ list.Add( 1070722, m_FromWho); }
-			if ( m_Owner != null ){ list.Add( 1049644, "Belongs to " + m_Owner.Name + "" ); }
+			if ( m_Owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "god.rename.belongs.to", m_Owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + m_Owner.Name + "" );
+			}
         }
 
 		public override void OnDoubleClick( Mobile from )

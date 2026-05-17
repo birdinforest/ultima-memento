@@ -1618,6 +1618,23 @@ namespace Server
 			{ "god.throwing.change.type",		"808080" },
 			{ "god.throwing.no.weapons",		"808080" },
 			{ "god.pugilist.no.weapons",		"808080" },
+
+			// === Magical misc items (strategy E / shotkeys) ===
+			{ "prop.magical.soulorb.vampire.blood",	"9370DB" },
+			{ "prop.magical.soulorb.genetic",	"9370DB" },
+			{ "prop.magical.soulorb.soul",		"9370DB" },
+			{ "prop.magical.lucky.horseshoes",	"DAA520" },
+			{ "prop.magical.moonstone",		"9370DB" },
+			{ "prop.magical.artifact.manual.identify",	"9370DB" },
+			{ "prop.magical.gem.seeing",		"9370DB" },
+			{ "prop.magical.pandora.bank",		"9370DB" },
+			{ "prop.magical.rune.for.owner",	"9370DB" },
+			{ "prop.magical.rune.generic",		"808080" },
+			{ "prop.magical.rune.base",		"808080" },
+			{ "prop.magical.item.charges",		"808080" },
+			{ "prop.magical.charges.suffix",	"808080" },
+			{ "prop.magical.gem.charges.line",	"808080" },
+			{ "prop.magical.prismatic.swatch",	"808080" },
 		};
 
 		/// <summary>
