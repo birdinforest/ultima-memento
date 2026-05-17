@@ -931,7 +931,17 @@ namespace Server
 
 		public string m_InfoData;
 		[CommandProperty(AccessLevel.Owner)]
-		public string InfoData { get { return m_InfoData; } set { m_InfoData = value; InvalidateProperties(); } }
+		public string InfoData
+		{
+			get { return m_InfoData; }
+			set
+			{
+				if ( value == m_InfoData )
+					return;
+				m_InfoData = value;
+				InvalidateProperties();
+			}
+		}
 
 		public string m_InfoText1;
 		[CommandProperty(AccessLevel.Owner)]
