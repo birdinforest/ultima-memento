@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class MalletAndChisel : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.mallet.chisel";
+
 		public override CraftSystem CraftSystem { get { return DefMasonry.CraftSystem; } }
 
 		[Constructable]

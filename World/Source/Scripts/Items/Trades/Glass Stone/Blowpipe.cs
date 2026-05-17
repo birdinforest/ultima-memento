@@ -7,6 +7,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x2B78, 0x2B79 )]
 	public class Blowpipe : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.blowpipe";
+
 		public override CraftSystem CraftSystem { get { return DefGlassblowing.CraftSystem; } }
 
 		public override int LabelNumber{ get{ return 1044608; } } // blow pipe

@@ -158,6 +158,8 @@ namespace Server.Items
 
 	public class AwesomeDisturbingPortraitDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.portrait.disturbing";
+
 		public override BaseAddon Addon { get { return new AwesomeDisturbingPortraitAddon(); } }
 
 		[Constructable]

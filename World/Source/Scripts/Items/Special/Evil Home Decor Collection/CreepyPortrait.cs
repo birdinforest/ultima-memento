@@ -99,6 +99,8 @@ namespace Server.Items
 
 	public class CreepyPortraitDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.portrait.creepy";
+
 		public override BaseAddon Addon { get { return new CreepyPortraitAddon(); } }
 
 		[Constructable]

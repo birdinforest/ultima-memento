@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicHammer : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.smith.hammer";
+
 		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }
 
 		[Constructable]

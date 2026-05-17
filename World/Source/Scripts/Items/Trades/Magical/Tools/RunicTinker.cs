@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicTinker : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.tinker.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefTinkering.CraftSystem; } }
 
 		[Constructable]

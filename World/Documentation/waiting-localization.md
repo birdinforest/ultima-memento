@@ -1,6 +1,6 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-17（§ **8** A5 / B1b / 静态书标题 hash 路径已落地；B2 键批与神器 zh 精修仍见 §8.3）
+> **更新日期：** 2026-05-18（§ **7** T3–T7 已落地；§ **8** A5 / B1b / 静态书标题 hash 路径已落地；B2 键批与神器 zh 精修仍见 §8.3；§7 下列 **T1/T2 表** 为历史扫描快照，以代码与 `equipment-properties.json` 为准）
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---
@@ -320,6 +320,8 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 
 ## 7. 物品 OPL 名称扫描工单（2026-05-17）
 
+> **（2026-05-18）T3–T7 已落地：** T3 — `BaseRunicTool` 在材质前缀分支使用 `DisplayNameLocalizationKey` + `item.trade.name.magical.runic.*`；T4 — `CrystallineJar.AddNameProperty` 覆盖 `flask of holy water`、`flask of {substance}`（`item.trade.name.flask.*` + 物质名 `TryResolve`）；T5 — evil 装潢 deed、塔罗×9、花卉×5、`HugeWaterTub`、`MinotaurHedge`、`TormentedChains`、`WindSpirit`、`BloodyPentagramDeed` 等 `item.special.*`，`DragonOrbStatue` / `WizardsStatue` 用 `item.special.statue.of.fmt`；T7 — `MagicQuiver` 双语彩色首行（`prop.magical.magicquiver.name.line`、`item.magical.magicquiver.base`），`WeaponRenamingTool` 主名 + `prop.magical.weaponrename.msg.*`。下表 **状态列未必逐行更新**。
+
 > **扫描方法：** 全库 `Name = "English..."` + `DisplayNameLocalizationKey` / `ShouldUseLocalizedOpl()` / `AddNameProperty` 覆盖状态检查，找出 zh-Hans 账号仍看到英文名的物品类别。
 >
 > **通用实现模式（无 AddNameProperty 的简单类）：**
@@ -526,7 +528,7 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 
 <a id="8-equipment-opl-name-layer-books-instruments"></a>
 
-## 8. 装备 OPL 主名、装备槽位、乐器与书本（根因 + 工单）
+## 8. 装备 OPL 主名、装备槽位、乐器与书本（根因 + 工单）(完成)
 
 > **整理日期：** 2026-05-17（**A5 / B1b / BaseBook** 静态书标题哈希解析已更新）
 

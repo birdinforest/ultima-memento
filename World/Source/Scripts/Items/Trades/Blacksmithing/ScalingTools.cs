@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class ScalingTools : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.scaling.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefDraconic.CraftSystem; } }
 
 		[Constructable]

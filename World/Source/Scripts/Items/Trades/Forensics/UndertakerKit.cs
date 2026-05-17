@@ -7,6 +7,8 @@ namespace Server.Items
 {
 	public class UndertakerKit : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.undertaker.kit";
+
 		public override CraftSystem CraftSystem{ get{ return DefBonecrafting.CraftSystem; } }
 
 		[Constructable]

@@ -1,12 +1,27 @@
 using System;
 using Server; 
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
 	[Flipable( 0x5465, 0x5466 )]
 	public class WizardsStatue : Item
 	{
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name != null && Name.StartsWith( "Statue of ", StringComparison.Ordinal ) )
+			{
+				string rest = Name.Substring( "Statue of ".Length );
+				string restLoc = StringCatalog.TryResolve( BuildingPropertyListLocale, rest ) ?? rest;
+
+				list.Add( string.Format( ResolvePropertyText( "item.special.statue.of.fmt" ), restLoc ) );
+				return;
+			}
+
+			base.AddNameProperty( list );
+		}
+
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Stone; } }
 

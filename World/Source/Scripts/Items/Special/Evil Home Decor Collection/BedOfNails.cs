@@ -163,6 +163,8 @@ namespace Server.Items
 
 	public class BedOfNailsDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.bed.nails";
+
 		public override BaseAddon Addon { get { return new BedOfNailsAddon(); } }
 
 		[Constructable]

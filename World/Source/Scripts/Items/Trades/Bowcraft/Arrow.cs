@@ -5,6 +5,8 @@ namespace Server.Items
 {
 	public class Arrow : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.arrow";
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

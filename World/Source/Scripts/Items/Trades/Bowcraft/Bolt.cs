@@ -5,6 +5,8 @@ namespace Server.Items
 {
 	public class Bolt : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.bolt";
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

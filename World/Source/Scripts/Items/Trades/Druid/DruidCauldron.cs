@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class DruidCauldron : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.druid.cauldron";
+
 		public override CraftSystem CraftSystem{ get{ return DefDruidism.CraftSystem; } }
 
 		[Constructable]

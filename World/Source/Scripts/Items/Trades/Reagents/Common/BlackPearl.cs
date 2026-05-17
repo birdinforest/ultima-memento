@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class BlackPearl : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.black.pearl";
+
 		[Constructable]
 		public BlackPearl() : this( 1 )
 		{

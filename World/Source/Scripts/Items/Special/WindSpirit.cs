@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class WindSpirit : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.wind.spirit";
+
 		[Constructable]
 		public WindSpirit() : base( 0x1F1F )
 		{

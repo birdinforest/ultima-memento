@@ -126,6 +126,8 @@ namespace Server.Items
 	
 	public class BloodyPentagramDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.deed.pentagram.blood.bowl";
+
 		public override BaseAddon Addon
 		{ 
 			get

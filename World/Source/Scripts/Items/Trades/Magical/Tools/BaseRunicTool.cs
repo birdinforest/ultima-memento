@@ -58,6 +58,19 @@ namespace Server.Items
 			return name;
 		}
 
+		private string GetOplTypeNameString()
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string dk = DisplayNameLocalizationKey;
+
+				if ( dk != null && dk.Length > 0 )
+					return ResolvePropertyText( dk );
+			}
+
+			return GetNameString();
+		}
+
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
 			if ( CraftResources.GetClilocLowerCaseName( m_Resource ) > 0 && m_SubResource == CraftResource.None )
@@ -65,7 +78,7 @@ namespace Server.Items
 				if ( BuildingPropertyListLocale != null )
 				{
 					string mat = CraftResources.GetDisplayNameLocalized( m_Resource, BuildingPropertyListLocale );
-					string typeName = GetNameString();
+					string typeName = GetOplTypeNameString();
 					string line = string.Format( ResolvePropertyText( "prop.item.opl.firstline.material_type" ), mat, typeName );
 					list.Add( line );
 				}
@@ -74,6 +87,8 @@ namespace Server.Items
 			}
 			else if ( Name == null )
 				list.Add( LabelNumber );
+			else if ( BuildingPropertyListLocale != null && DisplayNameLocalizationKey != null && DisplayNameLocalizationKey.Length > 0 )
+				list.Add( ResolvePropertyText( DisplayNameLocalizationKey ) );
 			else
 				list.Add( Name );
 		}

@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class DecoFlower : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.rares.flowers.white.roses";
 
 		[Constructable]
 		public DecoFlower() : base( 0x18DA )

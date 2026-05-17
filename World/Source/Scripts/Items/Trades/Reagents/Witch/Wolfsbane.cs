@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Wolfsbane : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.wolfsbane";
+
 		[Constructable]
 		public Wolfsbane() : this( 1 )
 		{

@@ -11,7 +11,7 @@ namespace Server.Items
 		public override string DefaultDescription{ get{ return "These picks are used by miners, to dig up ore in caves and on mountain stone."; } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickaxe"; } }
 
-		public override string DisplayNameLocalizationKey => "item.trade.name.pickaxe";
+		public override string DisplayNameLocalizationKey => Name == "gargoyle pickaxe" ? "item.trade.name.gargoyle.pickaxe" : "item.trade.name.pickaxe";
 
 		public override HarvestSystem HarvestSystem{ get{ return Mining.System; } }
 

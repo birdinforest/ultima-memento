@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class MinotaurHedge : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.minotaur.hedge";
 	
 		[Constructable]
 		public MinotaurHedge() : base( Utility.Random( 3215, 4 ) )

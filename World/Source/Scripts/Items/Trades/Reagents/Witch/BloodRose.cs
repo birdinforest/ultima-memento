@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class BloodRose : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.blood.rose";
+
 		[Constructable]
 		public BloodRose() : this( 1 )
 		{

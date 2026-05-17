@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class EyeOfToad : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.eye.toad";
+
 		[Constructable]
 		public EyeOfToad() : this( 1 )
 		{

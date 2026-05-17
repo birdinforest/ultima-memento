@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class ScribesPen : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.scribe.quill";
+
 		public override CraftSystem CraftSystem{ get{ return DefInscription.CraftSystem; } }
 
 		[Constructable]

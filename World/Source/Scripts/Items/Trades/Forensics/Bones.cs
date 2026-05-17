@@ -5,6 +5,8 @@ namespace Server.Items
 {
 	public class Bones : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.bones";
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Body; } }
 
 		public static int[] m_Bone = new int[]

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class FairyEgg : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.fairy.egg";
+
 		[Constructable]
 		public FairyEgg() : this( 1 )
 		{

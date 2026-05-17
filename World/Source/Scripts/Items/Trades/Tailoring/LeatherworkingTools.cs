@@ -7,6 +7,8 @@ namespace Server.Items
 {
 	public class LeatherworkingTools : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.tanning.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefLeatherworking.CraftSystem; } }
 
 		[Constructable]

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class SwampBerries : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.swamp.berries";
+
 		[Constructable]
 		public SwampBerries() : this( 1 )
 		{

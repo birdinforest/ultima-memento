@@ -33,6 +33,8 @@ namespace Server.Items
 
 	public class BoneTableDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.bone.table";
+
 		public override BaseAddon Addon { get { return new BoneTableAddon(); } }
 
 		[Constructable]

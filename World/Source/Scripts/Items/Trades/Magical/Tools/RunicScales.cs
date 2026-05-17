@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicScales : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.scaling.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefDraconic.CraftSystem; } }
 
 		[Constructable]

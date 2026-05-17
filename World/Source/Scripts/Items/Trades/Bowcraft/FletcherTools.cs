@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class FletcherTools : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.bowcrafting.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
 
 		[Constructable]

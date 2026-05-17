@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class GodSewing : BaseTool, IRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.stitching.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefStitching.CraftSystem; } }
 
 		public int RunicMinAttributes { get { return 2; } }

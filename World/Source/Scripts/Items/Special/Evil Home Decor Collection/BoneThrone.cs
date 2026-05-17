@@ -71,6 +71,8 @@ namespace Server.Items
 
 	public class BoneThroneDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.bone.throne";
+
 		public override BaseAddon Addon { get { return new BoneThroneAddon(); } }
 
 		[Constructable]

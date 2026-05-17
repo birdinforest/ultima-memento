@@ -5,6 +5,7 @@ namespace Server.Items
 {
 	public class TormentedChains : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.chains.tormented";
 	
 		[Constructable]
 		public TormentedChains() : base( Utility.Random( 6663, 2 ) )

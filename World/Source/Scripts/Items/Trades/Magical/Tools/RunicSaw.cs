@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicSaw : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.woodworking.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicFletching : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.bowyer.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
 
 		[Constructable]

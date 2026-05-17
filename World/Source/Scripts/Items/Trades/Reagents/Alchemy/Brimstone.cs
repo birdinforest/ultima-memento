@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Brimstone : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.brimstone";
+
 		[Constructable]
 		public Brimstone() : this( 1 )
 		{

@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class GodSmithing : BaseTool, IRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.lapidary.hammer";
+
 		public override CraftSystem CraftSystem{ get{ return DefLapidary.CraftSystem; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.None; } }

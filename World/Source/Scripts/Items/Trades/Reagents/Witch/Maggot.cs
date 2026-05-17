@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Maggot : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.maggot";
+
 		[Constructable]
 		public Maggot() : this( 1 )
 		{

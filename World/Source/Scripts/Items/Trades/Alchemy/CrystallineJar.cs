@@ -31,11 +31,33 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
-			if ( BuildingPropertyListLocale != null && Name == "crystalline flask" )
+			if ( BuildingPropertyListLocale != null )
 			{
-				AddLocalizedProperty( list, "item.trade.crystalline.flask" );
-				return;
+				if ( Name == "crystalline flask" )
+				{
+					AddLocalizedProperty( list, "item.trade.crystalline.flask" );
+					return;
+				}
+
+				if ( Name == "flask of holy water" )
+				{
+					AddLocalizedProperty( list, "item.trade.name.flask.holy.water" );
+					return;
+				}
+
+				const string flaskPrefix = "flask of ";
+
+				if ( Name != null && Name.StartsWith( flaskPrefix, StringComparison.Ordinal ) && Name.Length > flaskPrefix.Length )
+				{
+					string sub = Name.Substring( flaskPrefix.Length );
+					string subLoc = StringCatalog.TryResolve( BuildingPropertyListLocale, sub ) ?? sub;
+					string line = string.Format( ResolvePropertyText( "item.trade.name.flask.of.fmt" ), subLoc );
+
+					list.Add( line );
+					return;
+				}
 			}
+
 			base.AddNameProperty( list );
 		}
 

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class PixieSkull : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.pixie.skull";
+
 		[Constructable]
 		public PixieSkull() : this( 1 )
 		{

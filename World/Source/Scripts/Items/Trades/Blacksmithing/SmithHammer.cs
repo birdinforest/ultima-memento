@@ -7,6 +7,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x0FB4, 0x0FB5 )]
 	public class SmithHammer : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.smith.hammer";
+
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.None; } }
 
 		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }

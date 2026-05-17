@@ -8,6 +8,8 @@ namespace Server.Items
 	[Flipable( 0x1519, 0x1534 )]
 	class HugeWaterTub : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.rares.tub.water.huge";
+
 		[Constructable]
 		public HugeWaterTub() : base( 0x1519 )
 		{

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class TinkerTools : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.tinker.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefTinkering.CraftSystem; } }
 
 		[Constructable]

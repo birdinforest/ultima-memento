@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class CulinarySet : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.culinary.set";
+
 		public override CraftSystem CraftSystem{ get{ return DefCooking.CraftSystem; } }
 
 		[Constructable]

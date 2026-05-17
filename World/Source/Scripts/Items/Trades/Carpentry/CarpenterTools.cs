@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class CarpenterTools : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.carpenter.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]

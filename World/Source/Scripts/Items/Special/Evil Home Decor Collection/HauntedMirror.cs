@@ -84,6 +84,8 @@ namespace Server.Items
 
 	public class HaunterMirrorDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.mirror.haunted";
+
 		public override BaseAddon Addon { get { return new HaunterMirrorAddon(); } }
 
 		[Constructable]

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class MortarPestle : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.alchemy.set";
+
 		public override CraftSystem CraftSystem{ get{ return DefAlchemy.CraftSystem; } }
 
 		[Constructable]

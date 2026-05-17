@@ -154,6 +154,8 @@ namespace Server.Items
 
 	public class SacrificialAltarDeed : BaseAddonContainerDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.special.decor.box.altar.sacrificial";
+
 		public override BaseAddonContainer Addon { get { return new SacrificialAltarAddon(); } }
 
 		[Constructable]

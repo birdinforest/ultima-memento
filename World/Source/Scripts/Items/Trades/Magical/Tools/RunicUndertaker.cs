@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicUndertaker : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.undertaker.tools";
+
 		public override CraftSystem CraftSystem{ get{ return DefBonecrafting.CraftSystem; } }
 
 		[Constructable]

@@ -5,6 +5,8 @@ namespace Server.Items
 {
 	public class Shaft : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.shaft";
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

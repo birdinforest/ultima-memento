@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class SeaSalt : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.sea.salt";
+
 		[Constructable]
 		public SeaSalt() : this( 1 )
 		{

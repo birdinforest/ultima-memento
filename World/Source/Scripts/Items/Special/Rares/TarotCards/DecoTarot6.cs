@@ -7,6 +7,8 @@ namespace Server.Items
 {
 	public class DecoTarot6 : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.rares.tarot.cards";
+
 		[Constructable]
 		public DecoTarot6() : base( 0x12AA )
 		{

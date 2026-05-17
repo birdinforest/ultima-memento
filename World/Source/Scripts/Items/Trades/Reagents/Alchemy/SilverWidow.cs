@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class SilverWidow : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.silver.widow";
+
 		[Constructable]
 		public SilverWidow() : this( 1 )
 		{

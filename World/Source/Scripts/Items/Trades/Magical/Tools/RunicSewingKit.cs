@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicSewingKit : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.sewing.kit";
+
 		public override CraftSystem CraftSystem{ get{ return DefTailoring.CraftSystem; } }
 
 		[Constructable]

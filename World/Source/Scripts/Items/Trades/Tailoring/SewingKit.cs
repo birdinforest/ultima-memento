@@ -7,6 +7,8 @@ namespace Server.Items
 {
 	public class SewingKit : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.sewing.kit";
+
 		public override CraftSystem CraftSystem{ get{ return DefTailoring.CraftSystem; } }
 
 		[Constructable]

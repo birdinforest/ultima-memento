@@ -3,11 +3,14 @@ using Server;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class WeaponRenamingTool : Item
 	{				
+		public override string DisplayNameLocalizationKey => "item.magical.weapon.renaming.tool";
+
 		private bool m_IsRewardItem;
 	
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -31,7 +34,7 @@ namespace Server.Items
 		
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "Select an object to rename" ); // Select an object to engrave.
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.weaponrename.msg.select" ) );
 			from.Target = new TargetWeapon( this );
 		}
 		
@@ -83,7 +86,7 @@ namespace Server.Items
 					from.SendGump( new InternalGump( m_Tool, item ) );
 				}
 				else
-					from.SendMessage( "The selected item cannobt be renamed using this tool" ); 
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.magical.weaponrename.msg.bad.target" ) ); 
 			}
 		}
 		

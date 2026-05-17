@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RunicLeatherKit : BaseRunicTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.magical.runic.tanning.kit";
+
 		public override CraftSystem CraftSystem{ get{ return DefLeatherworking.CraftSystem; } }
 
 		[Constructable]

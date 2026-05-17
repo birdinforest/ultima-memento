@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class GodBrewing : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.apothecary.set";
+
 		public override CraftSystem CraftSystem{ get{ return DefApothecary.CraftSystem; } }
 
 		[Constructable]

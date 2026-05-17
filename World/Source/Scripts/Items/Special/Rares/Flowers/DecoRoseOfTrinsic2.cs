@@ -4,6 +4,7 @@ namespace Server.Items
 {
 	public class DecoRoseOfTrinsic2 : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.rares.flowers.velvet.rose";
 
 		[Constructable]
 		public DecoRoseOfTrinsic2() : base( 0x234D )

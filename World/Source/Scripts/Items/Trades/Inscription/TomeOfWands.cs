@@ -7,6 +7,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x2B76, 0x2B77 )]
 	public class TomeOfWands : BaseTool, IRunicWhenExceptional
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.tome.wands";
+
 		public override CraftSystem CraftSystem{ get{ return DefWands.CraftSystem; } }
 
 		[Constructable]

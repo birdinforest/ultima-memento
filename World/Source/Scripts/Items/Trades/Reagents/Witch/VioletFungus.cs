@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class VioletFungus : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.violet.fungus";
+
 		[Constructable]
 		public VioletFungus() : this( 1 )
 		{

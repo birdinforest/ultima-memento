@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class RedLotus : BaseReagent
 	{
+		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.red.lotus";
+
 		[Constructable]
 		public RedLotus() : this( 1 )
 		{
