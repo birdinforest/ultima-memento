@@ -5,7 +5,7 @@ Default zh-Hans workflow:
   python3 World/Source/Tools/sync_localization_glossary.py
 
 What it does:
-  1. Normalize bracketed proper nouns: 【Sosaria】 -> 【索沙尼亚】
+  1. Normalize legacy bracket spans: 【Sosaria】 -> 索沙尼亚（Sosaria）; zh variant fixes lose 【】
   2. Normalize whole-value glossary variants: "蒙托尔" -> "蒙托城"
   3. Apply locale-specific literal replacements from a rules JSON
   4. Apply exact value overrides for context-sensitive strings
@@ -23,6 +23,12 @@ import re
 ROOT = Path(__file__).resolve().parents[2]
 LOCALIZATION_ROOT = ROOT / "Data" / "Localization"
 BRACKET_RE = re.compile(r"【([^】]+)】")
+
+_CJK_RE = re.compile(r"[\u4e00-\u9fff\u3400-\u4dbf]")
+
+
+def _has_cjk(s: str) -> bool:
+    return bool(_CJK_RE.search(s))
 
 
 def load_json(path: Path) -> dict:
@@ -145,7 +151,11 @@ def normalize_brackets(value: str, mapping: dict[str, str]) -> tuple[str, int]:
         canonical = mapping.get(inner)
         if canonical and canonical != inner:
             count += 1
-            return f"【{canonical}】"
+            # Latin/English glossary key inside 【】 → inline 中文（English）
+            if not _has_cjk(inner):
+                return f"{canonical}（{inner}）"
+            # Chinese variant → canonical zh only (no outer 【】)
+            return canonical
         return match.group(0)
 
     return BRACKET_RE.sub(repl, value), count

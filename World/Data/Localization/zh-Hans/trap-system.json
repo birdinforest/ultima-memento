@@ -14,7 +14,6 @@
   "trap.name.trapwand": "陷阱探测宝珠",
   "trap.name.trapkit": "陷阱工具",
   "trap.uses": "使用次数",
-
   "trap.dir.north": "北方",
   "trap.dir.northeast": "东北方",
   "trap.dir.east": "东方",
@@ -24,11 +23,9 @@
   "trap.dir.west": "西方",
   "trap.dir.northwest": "西北方",
   "trap.dir.nearby": "附近",
-
   "trap.dist.veryclose": "距离非常近",
   "trap.dist.close": "就在附近",
   "trap.dist.far": "有一段距离",
-
   "trap.category.runic": "发光符文陷阱",
   "trap.category.mechanical": "机械地板陷阱",
   "trap.category.vented": "通风地板陷阱",
@@ -36,7 +33,6 @@
   "trap.category.elemental": "元素地板陷阱",
   "trap.category.dangerous": "危险地板陷阱",
   "trap.category.unknown": "隐藏陷阱",
-
   "trap.saveresist.magic": "魔法抗性",
   "trap.saveresist.physical": "物理抗性",
   "trap.saveresist.agility": "敏捷反应",
@@ -44,11 +40,9 @@
   "trap.saveresist.fire": "火焰抗性",
   "trap.saveresist.poison": "毒素抗性",
   "trap.saveresist.energy": "能量抗性",
-
   "trap.save.avoid.trap": "你靠近了一个隐藏陷阱，但凭借你的{0}…你避开了它。",
   "trap.save.avoid.danger": "你靠近了某个危险之物，但凭借你的{0}…你避开了它。",
   "trap.save.avoid.trap25": "你靠近了一个隐藏陷阱，但你的道德信念保护了你免受腐化。",
-
   "trap.msg.reveal": "你触发了一个魔法显形陷阱！",
   "trap.msg.reveal.space": "你踩上了一块静电充能的装甲板，身形暴露！",
   "trap.msg.tripwire.backpack": "你被绊线绊倒，背包掉落一地！",
@@ -103,58 +97,43 @@
   "trap.msg.type25.save": "陷阱触发了一道暗波——你的道德剧烈动摇，但你的深层信念拒绝屈服。",
   "trap.msg.type25.moderate": "陷阱被触发，你的道德观粉碎并倒转——去神坛那里寻回自我吧！",
   "trap.msg.type25.light": "陷阱被触发，你的心智扭曲了你的道德！",
-
   "trap.insurance.damage": "陷阱被触发，你一件已被保护的物品险些被毁！",
   "trap.insurance.damage.space": "你踩过一个分子氧化器，你一件已被保护的物品险些被毁！",
   "trap.insurance.curse": "你一件已被保护的物品险些被诅咒！",
   "trap.insurance.books": "你的一本法术书险些被魔法封印！",
-
-  "trap.karma.guidance.inverted": "你的阵营已被颠倒。前往【安可祭坛（Ankh Shrine）】解锁你的业力，然后通过美德行为重建阵营。",
+  "trap.karma.guidance.inverted": "你的阵营已被颠倒。前往安可祭坛（Ankh Shrine）解锁你的业力，然后通过美德行为重建阵营。",
   "trap.karma.guidance.weakened": "你的道德信念被陷阱削弱了。通过美德行为重建你的阵营。",
-
   "trap.brokeonstep": "你踩到了陷阱，但幸运的是它自己坏掉了！",
   "trap.scavenge": "你从陷阱机关中回收了有用的零件。",
-
   "trap.proximity.basic": "附近感觉有些不对劲，但你无法确定具体位置。",
   "trap.proximity.warning": "你的直觉警告你{0}有一个隐藏陷阱，{1}。",
   "trap.proximity.detail": "你注意到{1}有{0}的细微痕迹，{2}。",
   "trap.proximity.detail.steps": "你注意到{1}方向{2}步外有{0}的细微痕迹。",
-
   "trap.searching.found": "你发现{1}有{0}！",
   "trap.searching.found.space": "你发现{1}有{0}！",
   "trap.searching.basetrap": "附近有一个陷阱！{0}",
   "trap.searching.death": "这是个陷阱！等待你的是死亡。",
-
   "trap.meditation.type5": "你的冥想感知察觉到这片区域有不自然的能量流失。",
   "trap.meditation.type7": "你感觉到前方有一股虚空能量——它可能会抽取你的生命力。",
   "trap.meditation.type25": "一股腐化的精神力量在你脚下共鸣——你的道德信念可能会被它动摇。",
-
   "trap.spiritualism.type12": "这里残留着一股精神扰动——有某种存在会损毁你的声望。",
   "trap.spiritualism.type25": "这里的精神共鸣感觉被深度腐化了。一股扭曲灵魂的力量在运作。你的道德信念可能会被它动摇。",
-
   "trap.tracking.residue": "{0}地面显示附近有陷阱触发的痕迹——大约在{1}分钟内触发的。",
-
   "trap.removetrap.toocomplex": "这个陷阱对你来说太复杂了。",
-
   "trap.settrap.triggered": "你触发了一个陷阱！",
   "trap.settrap.thwarted": "你的陷阱似乎被人破解了！",
-
   "trap.spelltrap.triggered": "你触发了一个魔法陷阱！",
   "trap.spelltrap.avoided": "你靠近了一个魔法陷阱，但你足够聪明，没有受到伤害。",
-
   "trap.tenfootpole.desc": "这根沉重的木竿让你可以探面前的地板，在触发陷阱前提前发现它。它也会在你打开容器前先敲打一番，力求避开陷阱。只需将竿子放在背包中，它就会在你探索时被动发挥作用。",
   "trap.tenfootpole.properties.avoid": "{0}% 陷阱规避率",
   "trap.tenfootpole.properties.wallfloor": "用于墙壁、地板和容器陷阱",
-
   "trap.trapwand.properties.avoid": "{0}% 墙壁和地板陷阱规避率",
   "trap.trapwand.properties.backpack": "必须放在背包中，持续30分钟",
   "trap.trapwand.vanished": "你的陷阱探测宝珠消失了。",
-
   "trap.trapkit.backpack": "这些工具必须放在你的背包中才能使用。",
   "trap.trapkit.toomany": "该区域内的陷阱太多了！",
   "trap.trapkit.badidea": "那感觉不是个好主意。",
   "trap.trapkit.cantfigure": "你搞不懂这些工具怎么用！",
-
   "trap.avoid.remove.mushroom": "你靠近了一株奇怪的蘑菇，但你拆除陷阱的技能帮你避开了它。",
   "trap.avoid.remove.danger": "你靠近了某个危险之物，但你拆除陷阱的技能帮你避开了它。",
   "trap.avoid.remove.trap": "你靠近了一个隐藏陷阱，但你拆除陷阱的技能帮你解除了它。",
@@ -170,7 +149,6 @@
   "trap.avoid.pole.mushroom": "你用十尺竿敲打，避开了附近一株奇怪的蘑菇。",
   "trap.avoid.pole.danger": "你用十尺竿探路，避开了危险之物。",
   "trap.avoid.pole.trap": "你用十尺竿探路，解除了一个隐藏陷阱。",
-
   "trap.curse.tooltip": "这件物品被陷阱诅咒了。治疗师、熟练的通灵者（精神修炼 ≥ 70）或在神圣祭坛祈祷可以解除诅咒。诅咒会在24小时后自然消退。",
   "trap.curse.success": "你的精神调谐打破了诅咒，释放了里面的物品。",
   "trap.curse.failure": "你的精神调谐不够强大，无法打破诅咒。",
@@ -179,7 +157,6 @@
   "trap.curse.colortext3": "交给法师或骑士",
   "trap.curse.colortext4": "来解除诅咒",
   "trap.curse.colortext5": "或使用解除诅咒魔法",
-
   "trap.basetrap.column": "（火柱陷阱）",
   "trap.basetrap.spurt": "（火焰喷射陷阱）",
   "trap.basetrap.gas": "（毒气陷阱）",
@@ -188,6 +165,5 @@
   "trap.basetrap.saw": "（锯刀陷阱）",
   "trap.basetrap.spike": "（尖刺陷阱）",
   "trap.basetrap.stoneface": "（石脸陷阱）",
-
   "trap.searching.cannot": "你在此状态下无法搜索。"
 }

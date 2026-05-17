@@ -36,7 +36,7 @@ def load_glossary():
     return zh_to_en, en_to_zh, data
 
 def extract_bracketed(text):
-    """Extract all 【...】 bracketed terms from Chinese text."""
+    """Extract legacy 【...】 spans (should be empty after migrate)."""
     return re.findall(r'【([^】]+)】', text)
 
 def analyze_commontalk(zh_to_en, en_to_zh, glossary_data):

@@ -14,7 +14,6 @@
   "trap.name.trapwand": "orb of trap finding",
   "trap.name.trapkit": "trapping tools",
   "trap.uses": "Uses",
-
   "trap.dir.north": "north",
   "trap.dir.northeast": "northeast",
   "trap.dir.east": "east",
@@ -24,11 +23,9 @@
   "trap.dir.west": "west",
   "trap.dir.northwest": "northwest",
   "trap.dir.nearby": "nearby",
-
   "trap.dist.veryclose": "very close",
   "trap.dist.close": "close",
   "trap.dist.far": "some distance away",
-
   "trap.category.runic": "a glowing runic trap",
   "trap.category.mechanical": "a mechanical floor trap",
   "trap.category.vented": "a vented floor trap",
@@ -36,7 +33,6 @@
   "trap.category.elemental": "an elemental floor trap",
   "trap.category.dangerous": "a dangerous floor trap",
   "trap.category.unknown": "a hidden trap",
-
   "trap.saveresist.magic": "magical resistance",
   "trap.saveresist.physical": "physical resistance",
   "trap.saveresist.agility": "quick reflexes",
@@ -44,11 +40,9 @@
   "trap.saveresist.fire": "fire resistance",
   "trap.saveresist.poison": "poison resistance",
   "trap.saveresist.energy": "energy resistance",
-
   "trap.save.avoid.trap": "You got near a hidden trap, but with your {0}...you avoid it.",
   "trap.save.avoid.danger": "You got near something dangerous, but with your {0}...you avoid it.",
   "trap.save.avoid.trap25": "You got near a hidden trap, but your moral convictions shield you from corruption.",
-
   "trap.msg.reveal": "You triggered a magical revealing trap!",
   "trap.msg.reveal.space": "You stepped on a statically charged tile, revealing you!",
   "trap.msg.tripwire.backpack": "You tripped over a wire and dropped your backpack!",
@@ -103,58 +97,43 @@
   "trap.msg.type25.save": "A trap triggers a dark wave — your morality wavers violently, but your deep conviction refuses to break.",
   "trap.msg.type25.moderate": "A trap triggered, your morality shatters and reforms inverted — seek a shrine to reclaim yourself!",
   "trap.msg.type25.light": "A trap triggered, making your mind warp your morality!",
-
   "trap.insurance.damage": "A trap triggered, almost ruining one of your protected items!",
   "trap.insurance.damage.space": "You stepped over a molecular oxidizer, almost ruining one of your protected items!",
   "trap.insurance.curse": "One of your protected items was almost cursed!",
   "trap.insurance.books": "One of your books was almost magically bound!",
-
   "trap.karma.guidance.inverted": "Your alignment has been inverted. Visit an ankh shrine and unlock your karma, then rebuild through virtuous deeds.",
   "trap.karma.guidance.weakened": "Your moral conviction was weakened by the trap. Rebuild your alignment through virtuous deeds.",
-
   "trap.brokeonstep": "You stepped on a trap but lucky for you it broke!",
   "trap.scavenge": "You salvage useful components from the trap mechanism.",
-
   "trap.proximity.basic": "Something feels wrong nearby, but you can't quite tell where.",
   "trap.proximity.warning": "Your instincts warn you of a hidden trap to the {0}, {1}.",
   "trap.proximity.detail": "You notice subtle signs of {0} to the {1}, {2}.",
   "trap.proximity.detail.steps": "You notice subtle signs of {0} to the {1}, {2} steps away.",
-
   "trap.searching.found": "There is {0} to the {1}!",
   "trap.searching.found.space": "There is {0} to the {1}!",
   "trap.searching.basetrap": "There is a trap nearby! {0}",
   "trap.searching.death": "It's a trap! Death awaits.",
-
   "trap.meditation.type5": "Your meditative awareness registers an unnatural drain in this area.",
   "trap.meditation.type7": "You sense a void energy ahead — something is pulling at your vitality.",
   "trap.meditation.type25": "A corrupting psychic force resonates beneath your feet — your discipline holds it at bay for now.",
-
   "trap.spiritualism.type12": "A spiritual disturbance lingers here — someone or something lost their standing.",
   "trap.spiritualism.type25": "The spiritual resonance here feels deeply corrupted. A soul-warping force is at work.",
-
   "trap.tracking.residue": "The floor here shows signs of recent trap activity — a trap was triggered to the {0} within the last {1} minute(s).",
-
   "trap.removetrap.toocomplex": "This trap looks too complicated for you.",
-
   "trap.settrap.triggered": "You triggered a trap!",
   "trap.settrap.thwarted": "Your trap seems to have been thwarted!",
-
   "trap.spelltrap.triggered": "You triggered a magical trap!",
   "trap.spelltrap.avoided": "You got near a magical trap, but you were too intelligent to suffer the effects.",
-
   "trap.tenfootpole.desc": "This heavy wooden pole allows you to trap the floor ahead of you to maybe detect a trap before you trigger it. It will also tap containers before you try to open them, also in the hopes of avoiding a trap. You need only keep the pole in your bag, as it will passively be used as you explore areas.",
   "trap.tenfootpole.properties.avoid": "{0}% Avoiding Traps",
   "trap.tenfootpole.properties.wallfloor": "For Wall, Floor & Container Traps",
-
   "trap.trapwand.properties.avoid": "{0}% Avoiding Traps on the Walls or Floors",
   "trap.trapwand.properties.backpack": "Must be in backpack and lasts 30 minutes",
   "trap.trapwand.vanished": "Your trap finding orb has vanished.",
-
   "trap.trapkit.backpack": "These tools must be in your backpack to use.",
   "trap.trapkit.toomany": "There are too many traps in the area!",
   "trap.trapkit.badidea": "That doesn't feel like a good idea.",
   "trap.trapkit.cantfigure": "You cannot figure out how these tools work!",
-
   "trap.avoid.remove.mushroom": "You got near a strange mushroom, but your skill in removing traps has helped you avoid it.",
   "trap.avoid.remove.danger": "You got near something dangerous, but your skill in removing traps has helped you avoid it.",
   "trap.avoid.remove.trap": "You got near a hidden trap, but your skill in removing traps has helped you disable it.",
@@ -170,7 +149,6 @@
   "trap.avoid.pole.mushroom": "You tap your ten foot pole, avoiding a strange mushroom nearby.",
   "trap.avoid.pole.danger": "You tap your ten foot pole, avoiding something dangerous.",
   "trap.avoid.pole.trap": "You tap your ten foot pole, disabling a hidden trap.",
-
   "trap.curse.tooltip": "This item is cursed by a trap. A healer, a skilled spiritualist, or a holy shrine prayer may remove the curse. The curse will fade naturally after 24 hours.",
   "trap.curse.success": "Your spiritual attunement breaks the curse, freeing the item inside.",
   "trap.curse.failure": "Your spiritual attunement was not strong enough to break the curse.",
@@ -179,7 +157,6 @@
   "trap.curse.colortext3": "Give to a Wizard or Knight",
   "trap.curse.colortext4": "To Remove the Curse",
   "trap.curse.colortext5": "Or Use Curse Removing Magic",
-
   "trap.basetrap.column": "(fire column trap)",
   "trap.basetrap.spurt": "(fire spurt trap)",
   "trap.basetrap.gas": "(poison gas trap)",
@@ -188,6 +165,5 @@
   "trap.basetrap.saw": "(saw blade trap)",
   "trap.basetrap.spike": "(spike trap)",
   "trap.basetrap.stoneface": "(stone face trap)",
-
   "trap.searching.cannot": "You cannot search while in this state."
 }

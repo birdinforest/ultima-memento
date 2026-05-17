@@ -52,7 +52,7 @@
     "translation_basis_zh": "Samurai 在中文玩家语境中以「武士」最稳定、最易懂，也与 shard 中东方风格设定相容。"
   },
   "_comment": "Curated EN → zh-Hans approved glossary for Ultima / UO lore terms. Structure: canonical = primary shipped translation; alternatives = ordered fallbacks; category = place|character|faction|item|deity|race|concept|dungeon; notes = existing English lore note; reference_suggestion_zh/reference_note_zh = reference glossary fields; translation_basis_zh = Chinese rationale for the chosen translation.",
-  "_source": "Extracted from zh-Hans/scripts-books.json 【】-bracketed proper nouns; translations follow zh-localization-translation-guide.md.",
+  "_source": "Curated EN → zh-Hans glossary; books/lore strings use inline 中文（English） proper-name style; translations follow zh-localization-translation-guide.md.",
   "_version": "1.10",
   "terms": {
     "_SECTION_PLACES": "── World / Cities / Islands ──────────────────────────────────",
@@ -1256,8 +1256,8 @@
       "category": "character",
       "notes": "Named NPC; shard-specific.",
       "reference_suggestion_zh": "基伦",
-      "reference_note_zh": "文中「贫穷的【Killun】」，为普通人物名。",
-      "translation_basis_zh": "参考词表建议「基伦」。文中「贫穷的【Killun】」，为普通人物名。"
+      "reference_note_zh": "文中为普通人物：「贫穷的基伦（Killun）」。",
+      "translation_basis_zh": "参考词表建议「基伦」。文中为普通人物名，句中用行内「基伦（Killun）」标注。"
     },
     "Mareskon the Elf": {
       "canonical": "精灵·马雷斯康",

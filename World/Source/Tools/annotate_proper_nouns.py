@@ -2,24 +2,18 @@
 """
 Annotate zh-Hans localization files with English parenthetical for proper nouns.
 
-Converts:
-  【中文】 → 【中文（English）】  (in zh-Hans files with hash keys)
-  中文     → 中文（English）     (inline in commontalk-fragment-zh.json)
+For every 【...】 span in zh-Hans/*.json strings:
+  - If inner text already contains a fullwidth annotation （...）, strip outer 【】 only.
+  - If inner is ASCII/Latin-only (no CJK), strip 【】 only (e.g. 【Death Knight】→Death Knight).
+  - If inner is unannotated CJK, look up glossary and replace with 中文（English） inline.
+  - Placeholders like 【{0}】 become {0}.
 
-Already-annotated brackets like 【中文（English）】 are skipped silently.
-Only proper noun categories (place, character, creature, item, deity, faction,
-dungeon, race) are annotated — concept/system/skill/title terms are skipped.
-
-Commontalk uses English keys as validation reference to avoid false positives.
+Commontalk uses curated COMMONTALK_ANNOTATIONS only (separate path, unchanged).
 
 Usage:
     python3 annotate_proper_nouns.py                # apply all changes
     python3 annotate_proper_nouns.py --dry-run      # preview only
     python3 annotate_proper_nouns.py --zh-hans-only # skip commontalk
-
-Files:
-    zh-Hans/*.json  — standard 【】 bracket annotation
-    commontalk-fragment-zh.json  — inline annotation from English keys
 """
 
 import json, re, os, sys
@@ -98,7 +92,7 @@ def load_glossary():
         raw = json.load(f)
     data = raw.get("terms", raw)
 
-    # Full mapping (all categories) — for bracket annotation in zh-Hans files
+    # Full mapping (all categories) — for zh→en lookup in zh-Hans files
     zh_to_en_full = {}
     en_to_zh_full = {}
 
@@ -141,16 +135,41 @@ def has_cjk(s):
     return bool(re.search(r'[\u4e00-\u9fff\u3400-\u4dbf]', s))
 
 
-def is_already_annotated(bracket_text):
-    """Check if a 【...】 bracket is already annotated with （English）."""
-    return '（' in bracket_text
+def is_already_inline_annotated(inner):
+    """Inner segment already has fullwidth parenthetical annotation （…）."""
+    return '（' in inner and '）' in inner
 
 
-def annotate_bracketed_file(zh_file, zh_to_en, dry_run=True):
-    """Annotate 【】 brackets in a zh-Hans file.
+def transform_bracket_spans(val, zh_to_en, warnings_out):
+    """Replace every 【…】 span with inline text (no outer 【】)."""
 
-    Only annotates brackets that contain CJK and are NOT already in 【中文（English）】 format.
-    """
+    placeholder_only = re.compile(r'^\s*\{[0-9]+\}\s*$')
+
+    def replacer(m):
+        inner = m.group(1)
+        inner_s = inner.strip()
+
+        if is_already_inline_annotated(inner):
+            return inner
+
+        if not has_cjk(inner):
+            if placeholder_only.match(inner):
+                return inner_s
+            # Latin / English segment: use fullwidth parentheses (not outer 【】）
+            return f'（{inner_s}）'
+
+        en_term = zh_to_en.get(inner_s)
+        if en_term is None:
+            warnings_out.append(inner_s)
+            return inner_s
+
+        return f'{inner_s}（{en_term}）'
+
+    return re.sub(r'【([^】]+)】', replacer, val)
+
+
+def annotate_zh_hans_file(zh_file, zh_to_en, dry_run=True):
+    """Strip 【】 and ensure proper nouns use inline 中文（English） in one zh-Hans file."""
     zh_path = os.path.join(LOCALE_DIR, 'zh-Hans', zh_file)
     if not os.path.exists(zh_path):
         return 0, [], 0
@@ -160,8 +179,6 @@ def annotate_bracketed_file(zh_file, zh_to_en, dry_run=True):
 
     total_changed = 0
     warnings = []
-    already_count = 0
-    ascii_skip_count = 0
     new_data = {}
 
     for key, val in data.items():
@@ -169,27 +186,12 @@ def annotate_bracketed_file(zh_file, zh_to_en, dry_run=True):
             new_data[key] = val
             continue
 
-        def replacer(m):
-            nonlocal total_changed, warnings, already_count, ascii_skip_count
-            zh_term = m.group(1)
-
-            if is_already_annotated(zh_term):
-                already_count += 1
-                return m.group(0)
-
-            if not has_cjk(zh_term):
-                ascii_skip_count += 1
-                return m.group(0)
-
-            en_term = zh_to_en.get(zh_term)
-            if en_term is None:
-                warnings.append(zh_term)
-                return m.group(0)
-
+        wlocal = []
+        new_val = transform_bracket_spans(val, zh_to_en, wlocal)
+        if new_val != val:
             total_changed += 1
-            return f'【{zh_term}（{en_term}）】'
-
-        new_val = re.sub(r'【([^】]+)】', replacer, val)
+        if wlocal:
+            warnings.extend(wlocal)
         new_data[key] = new_val
 
     if not dry_run and total_changed > 0:
@@ -197,7 +199,7 @@ def annotate_bracketed_file(zh_file, zh_to_en, dry_run=True):
             json.dump(new_data, f, ensure_ascii=False, indent=1)
             f.write('\n')
 
-    return total_changed, sorted(set(warnings)), already_count
+    return total_changed, sorted(set(warnings)), len(data)
 
 
 def annotate_commontalk_zh(dry_run=True):
@@ -248,6 +250,13 @@ def annotate_commontalk_zh(dry_run=True):
     return total_changed, sorted(set(warnings))
 
 
+def iter_zh_hans_json_files():
+    d = os.path.join(LOCALE_DIR, 'zh-Hans')
+    for name in sorted(os.listdir(d)):
+        if name.endswith('.json') and os.path.isfile(os.path.join(d, name)):
+            yield name
+
+
 def main():
     dry_run = '--dry-run' in sys.argv
     zh_hans_only = '--zh-hans-only' in sys.argv
@@ -260,49 +269,20 @@ def main():
     total_changes = 0
     total_warnings = 0
 
-    # === Z-HANS FILES (bracket annotation) ===
-    paired = [
-        'scripts-books.json',
-        'scripts-engines-and-systems.json',
-        'scripts-quests.json',
-        'scripts-items.json',
-        'scripts-mobiles.json',
-    ]
-
-    for zh_file in paired:
-        count, warnings, already = annotate_bracketed_file(zh_file, zh_to_en_full, dry_run)
-        status = "CHANGES" if count > 0 else "up to date"
-        print(f"\n{zh_file}: {count} annotated, {already} already annotated — {status}")
+    for zh_file in iter_zh_hans_json_files():
+        count, warnings, _nkeys = annotate_zh_hans_file(zh_file, zh_to_en_full, dry_run)
+        if count or warnings:
+            status = "CHANGES" if count > 0 else "up to date"
+            print(f"\n{zh_file}: {count} keys modified — {status}")
+            if warnings:
+                total_warnings += len(warnings)
+                print(f"  Not in glossary for 【…】 CJK span ({len(warnings)}):")
+                for w in warnings[:15]:
+                    print(f"    {w!r}")
+                if len(warnings) > 15:
+                    print(f"    ... and {len(warnings) - 15} more")
         total_changes += count
-        if warnings:
-            total_warnings += len(warnings)
-            print(f"  Not in glossary ({len(warnings)}):")
-            for w in warnings[:15]:
-                print(f"    【{w}】")
-            if len(warnings) > 15:
-                print(f"    ... and {len(warnings) - 15} more")
 
-    # === EXTRA ZH-HANS FILES ===
-    extra = [
-        'thewar-quest.json',
-        'stats-gump.json',
-        'race-system.json',
-        'shard-greeter.json',
-        'temptation-gump.json',
-        'resource-harvest-extra.json',
-        'scripts-utilities.json',
-        'system.json',
-    ]
-
-    for f in extra:
-        c, w, already = annotate_bracketed_file(f, zh_to_en_full, dry_run)
-        if c or w:
-            print(f"\n{f}: {c} annotations, {already} already annotated")
-            if w:
-                for ww in w[:5]:
-                    print(f"  ⚠ {ww}")
-
-    # === COMMONTALK ===
     if not zh_hans_only:
         ct_count, ct_warnings = annotate_commontalk_zh(dry_run)
         print(f"\ncommontalk-fragment-zh.json: {ct_count} inline annotations")
@@ -313,8 +293,8 @@ def main():
         print(f"\ncommontalk-fragment-zh.json: skipped (--zh-hans-only)")
 
     print(f"\n{'=' * 60}")
-    print(f"Total new annotations: {total_changes}")
-    print(f"Total warnings: {total_warnings}")
+    print(f"Total zh-Hans keys modified: {total_changes}")
+    print(f"Total glossary warning terms: {total_warnings}")
     if dry_run:
         print("DRY RUN — no files written. Run without --dry-run to apply.")
     else:
