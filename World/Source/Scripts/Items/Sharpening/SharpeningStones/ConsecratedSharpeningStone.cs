@@ -2,6 +2,8 @@ namespace Server.Items
 {
     public class ConsecratedSharpeningStone : ConsecrateItemBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.sharpeningstone.consecrated";
+
         public ConsecratedSharpeningStone(Serial serial) : base(serial)
         {
         }
@@ -21,7 +23,10 @@ namespace Server.Items
         {
             base.GetProperties(list);
 
-            list.Add(1049644, "[Only usable on bladed weapons]");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.restrict.bladed");
+            else
+                list.Add(1049644, "[Only usable on bladed weapons]");
         }
 
         public override void OnDoubleClick(Mobile from)

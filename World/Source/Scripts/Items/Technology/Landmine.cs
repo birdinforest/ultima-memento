@@ -25,6 +25,33 @@ namespace Server.Items
 			Technology = true;
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_InfoText1;
+			string saved2 = m_InfoText2;
+			string saved3 = m_InfoText3;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_InfoText1 = null;
+				m_InfoText2 = null;
+				m_InfoText3 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.infotext.landmine.set" );
+				AddLocalizedProperty( list, "prop.infotext.landmine.explodes" );
+				AddLocalizedProperty( list, "prop.infotext.landmine.step" );
+			}
+
+			m_InfoText1 = saved1;
+			m_InfoText2 = saved2;
+			m_InfoText3 = saved3;
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) ) 

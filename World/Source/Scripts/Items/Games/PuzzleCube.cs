@@ -7,6 +7,8 @@ namespace Server.Items
 {
     public class PuzzleCube : Item
     {
+		public override string DisplayNameLocalizationKey => "item.games.puzzlecube";
+		public override bool IsContentLocalized => true;
         [Constructable]
         public PuzzleCube() : base(0x202B)
         {

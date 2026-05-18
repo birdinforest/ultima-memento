@@ -18,7 +18,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Evil Mount For Grandmasters in both Necromancy and Magery");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.mount.daemon");
+            else
+			    list.Add( 1070722, "Evil Mount For Grandmasters in both Necromancy and Magery");
         }
 
 		public DaemonMount( Serial serial ) : base( serial ) 

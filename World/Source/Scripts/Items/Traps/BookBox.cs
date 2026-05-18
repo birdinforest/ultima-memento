@@ -33,6 +33,33 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved3 = m_ColorText3;
+			string saved4 = m_ColorText4;
+			string saved5 = m_ColorText5;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_ColorText3 = null;
+				m_ColorText4 = null;
+				m_ColorText5 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.colortext.bookbox.givetowizard" );
+				AddLocalizedProperty( list, "prop.colortext.bookbox.removecurse" );
+				AddLocalizedProperty( list, "prop.colortext.bookbox.curseoremove" );
+			}
+
+			m_ColorText3 = saved3;
+			m_ColorText4 = saved4;
+			m_ColorText5 = saved5;
+		}
+
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
 		{
 			return false;

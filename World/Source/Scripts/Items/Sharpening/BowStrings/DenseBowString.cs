@@ -2,6 +2,8 @@
 {
     public class DenseBowString : DamageIncreaseBowStringBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.bowstring.dense";
+
         protected override int MaxDamageBonus { get { return 70; } }
 
         public DenseBowString(Serial serial) : base(serial)

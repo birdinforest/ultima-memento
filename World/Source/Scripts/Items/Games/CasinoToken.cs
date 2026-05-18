@@ -6,6 +6,8 @@ namespace Server.Items
 {
     public class CasinoToken : Item   // Free plays on Casino games that are aware of Tokens
     {
+		public override string DisplayNameLocalizationKey => "item.games.casino.token";
+		public override bool IsContentLocalized => true;
         [Constructable]
         public CasinoToken() : this(10) { }
 
@@ -31,11 +33,19 @@ namespace Server.Items
 
         public override void GetProperties(ObjectPropertyList list)
         {
-            if (this.Name == null)
-                list.Add(this.LabelNumber);
-            else
-                list.Add(this.Name);
-            list.Add( 1060584, "{0}\t{1}", this.Amount.ToString(), "Uses" );
+			if (BuildingPropertyListLocale != null)
+			{
+				base.GetProperties(list);
+				AddLocalizedProperty(list, "prop.casino.uses", this.Amount.ToString());
+			}
+			else
+			{
+				if (this.Name == null)
+					list.Add(this.LabelNumber);
+				else
+					list.Add(this.Name);
+				list.Add(1060584, "{0}\t{1}", this.Amount.ToString(), "Uses");
+			}
         }
 
         public override void Serialize(GenericWriter writer)

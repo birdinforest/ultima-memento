@@ -14,6 +14,7 @@ namespace Server.Items
 
     public class Spyglass : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.explorer.spyglass";
 		public override bool IsContentLocalized => true;
 
 		public override void AddNameProperty( ObjectPropertyList list )

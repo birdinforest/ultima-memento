@@ -37,6 +37,7 @@ namespace Server.Items
 	}
 	public class RoyalLoinCloth : BaseWaist
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.royalloincloth";
 		[Constructable]
 		public RoyalLoinCloth() : this( 0 )
 		{

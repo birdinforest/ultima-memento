@@ -32,9 +32,17 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( m_Charges > 1 ){ list.Add( 1070722, m_Charges.ToString() + " Uses Left"); }
-			else { list.Add( 1070722, "1 Use Left"); }
-            list.Add( 1049644, "Smelt ore into ingots");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.tech.smelter.desc");
+				AddLocalizedProperty(list, "prop.tech.smelter.need");
+			}
+			else
+			{
+				if ( m_Charges > 1 ){ list.Add( 1070722, m_Charges.ToString() + " Uses Left"); }
+				else { list.Add( 1070722, "1 Use Left"); }
+				list.Add( 1049644, "Smelt ore into ingots");
+			}
         }
 
 		public override void OnDoubleClick( Mobile from )

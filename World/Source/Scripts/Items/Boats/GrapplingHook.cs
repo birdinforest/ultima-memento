@@ -68,7 +68,14 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Used to board boats and galleons");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.boat.grappling");
+			}
+			else
+			{
+				list.Add( 1070722, "Used to board boats and galleons");
+			}
         }
 
 		public GrapplingHook(Serial serial) : base(serial)

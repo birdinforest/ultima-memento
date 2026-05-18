@@ -13,6 +13,9 @@ namespace Server.Items
 {
     public class PlayersHandbook : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.dnd.handbook";
+		public override bool IsContentLocalized => true;
+
         [Constructable]
         public PlayersHandbook() : base( 0x301F )
 		{
@@ -23,7 +26,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Dungeons & Dragons");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.dnd.subtitle");
+            else
+                list.Add( 1049644, "Dungeons & Dragons");
         }
 
         public override void OnDoubleClick( Mobile from )

@@ -54,6 +54,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x170f, 0x1710 )]
 	public class LeatherShoes : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leathershoes";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 2; } }
 		public override int BaseColdResistance{ get{ return 3; } }
@@ -102,6 +103,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x170b, 0x170c )]
 	public class LeatherBoots : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leatherboots";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 4; } }
@@ -150,6 +152,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1711, 0x1712 )]
 	public class LeatherThighBoots : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leatherthighboots";
 		public override int BasePhysicalResistance{ get{ return 4; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 5; } }
@@ -198,6 +201,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x2FC4, 0x317A )]
 	public class LeatherSoftBoots : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.leathersoftboots";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 4; } }

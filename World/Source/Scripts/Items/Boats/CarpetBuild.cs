@@ -42,14 +42,29 @@ namespace Server.Items
 
 			int carpetDone = needGold + needCloth;
 
-			if ( carpetDone > 0 )
+			if (BuildingPropertyListLocale != null)
 			{
-				list.Add( 1070722, "Drop The Items Needed On This Book" );
-				list.Add( 1049644, "Need " + needGold.ToString() + " Gold Coins, " + needCloth.ToString() + " Cloth" );
+				if ( carpetDone > 0 )
+				{
+					AddLocalizedProperty(list, "prop.boat.carpet.drop");
+					AddLocalizedProperty(list, "prop.boat.carpet.need", needGold, needCloth);
+				}
+				else
+				{
+					AddLocalizedProperty(list, "prop.boat.carpet.read");
+				}
 			}
 			else
 			{
-				list.Add( 1070722, "Read the Book to Conjure" );
+				if ( carpetDone > 0 )
+				{
+					list.Add( 1070722, "Drop The Items Needed On This Book" );
+					list.Add( 1049644, "Need " + needGold.ToString() + " Gold Coins, " + needCloth.ToString() + " Cloth" );
+				}
+				else
+				{
+					list.Add( 1070722, "Read the Book to Conjure" );
+				}
 			}
         }
 

@@ -2,6 +2,8 @@ namespace Server.Items
 {
     public class RoughWeightingStone : DamageIncreaseWeightingStoneBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.weightingstone.rough";
+
         protected override int MaxDamageBonus { get { return 60; } }
 
         public RoughWeightingStone(Serial serial) : base(serial)

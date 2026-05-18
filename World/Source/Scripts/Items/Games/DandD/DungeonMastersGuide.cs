@@ -12,6 +12,9 @@ namespace Server.Items
 {
     public class DungeonMastersGuide : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.dnd.dmg";
+		public override bool IsContentLocalized => true;
+
         [Constructable]
         public DungeonMastersGuide() : base( 0x3046 )
 		{
@@ -22,7 +25,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Dungeons & Dragons");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.dnd.subtitle");
+            else
+                list.Add( 1049644, "Dungeons & Dragons");
         }
 
 		public override void OnDoubleClick( Mobile e )

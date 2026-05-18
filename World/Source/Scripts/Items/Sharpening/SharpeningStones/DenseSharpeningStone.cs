@@ -2,6 +2,8 @@ namespace Server.Items
 {
     public class DenseSharpeningStone : DamageIncreaseSharpeningStoneBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.sharpeningstone.dense";
+
         protected override int MaxDamageBonus { get { return 70; } }
 
         public DenseSharpeningStone(Serial serial) : base(serial)

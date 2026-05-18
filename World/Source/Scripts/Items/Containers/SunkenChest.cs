@@ -30,6 +30,21 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_ColorText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_ColorText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.colortext.sunkenchest" );
+
+			m_ColorText1 = saved1;
+		}
+
 		[Constructable]
 		public SunkenChest( int level, Mobile digger, int ancient ) : base( 0x4FF4 )
 		{

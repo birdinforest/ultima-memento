@@ -2,6 +2,8 @@
 {
     public class HeavyBowString : DamageIncreaseBowStringBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.bowstring.heavy";
+
         protected override int MaxDamageBonus { get { return 65; } }
 
         public HeavyBowString(Serial serial) : base(serial)

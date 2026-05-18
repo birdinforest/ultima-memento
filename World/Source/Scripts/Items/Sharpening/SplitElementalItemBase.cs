@@ -56,7 +56,10 @@ namespace Server.Items
             base.GetProperties(list);
 
             list.Add(1060584, Uses.ToString()); // uses remaining: ~1_val~
-            list.Add("Assigns damage to each element");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.elemental");
+            else
+                list.Add("Assigns damage to each element");
         }
 
         public override void OnDoubleClick(Mobile from)

@@ -105,7 +105,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1070722, "Belongs to " + owner.Name + "" ); }
+			if ( owner != null )
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.container.movingbox.belongs", owner.Name);
+				else
+					list.Add( 1070722, "Belongs to " + owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )

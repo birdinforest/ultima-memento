@@ -17,10 +17,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Evil Mount For Grandmaster Death Knights");
-        } 
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.mount.deathknight");
+            else
+			    list.Add( 1070722, "Evil Mount For Grandmaster Death Knights");
+        }
 
-		public DeathKnightWarhorse( Serial serial ) : base( serial ) 
+		public DeathKnightWarhorse( Serial serial ) : base( serial )
 		{ 
 		} 
 

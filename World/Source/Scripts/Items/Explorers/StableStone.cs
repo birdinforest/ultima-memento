@@ -14,6 +14,7 @@ namespace Server.Items
 { 
 	public class StableStone : Item
 	{ 
+		public override string DisplayNameLocalizationKey => "item.explorer.stable.hitchingpost";
 		public override string DefaultDescription{ get{ return "Hitching posts can only be used by grandmasters in camping. Once you place it in your home, you can use it to stable your pets instead of doing so at the stable master."; } }
 
 		[Constructable] 
@@ -88,8 +89,16 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Stable Your Pets At Your Home");
-			list.Add( 1049644, "For Grandmasters In Camping");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.explorer.stable");
+				AddLocalizedProperty(list, "prop.explorer.stable.camping");
+			}
+			else
+			{
+				list.Add( 1070722, "Stable Your Pets At Your Home");
+				list.Add( 1049644, "For Grandmasters In Camping");
+			}
         } 
 
 		private class StableTarget : Target

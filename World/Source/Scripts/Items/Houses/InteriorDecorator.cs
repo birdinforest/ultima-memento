@@ -49,7 +49,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "For Easier Home Management" );
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.house.decorator");
+			else
+				list.Add( "For Easier Home Management" );
 		}
 
 		public override void Serialize( GenericWriter writer )

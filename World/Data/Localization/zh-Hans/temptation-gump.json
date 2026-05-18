@@ -14,10 +14,10 @@
   "temptationgump.name.puzzle_master": "谜盒大师",
   "temptationgump.name.tribute": "这只是贡礼",
   "temptationgump.name.deathwish": "独自上路太危险了！拿上这个。",
-  "temptationgump.desc.i_can_take_it": "+ 你造成的伤害提高 10%<br>x 你承受的伤害提高 20%",
-  "temptationgump.desc.strongest_avenger": "+ 你学会了穿裤子<br>x 敌人施法速度更快",
-  "temptationgump.desc.famine": "+ 你的属性/技能成长速率会受饥饿状态影响<br>x 饥饿与口渴衰减速度翻倍",
-  "temptationgump.desc.puzzle_master": "+ 你学会了解谜盒<br>x 逃亡者（+200）与以太泰坦任务（+200）的技能上限加成降低<br>x 怪物种族提供的魔法属性改为“最低值保障”；抗性/属性加成仍可叠加。",
+  "temptationgump.desc.i_can_take_it": "(优势) 你造成的伤害提高 10%<br>(劣势) 你承受的伤害提高 20%",
+  "temptationgump.desc.strongest_avenger": "(优势) 你学会了穿秋裤(可以穿两层裤子)<br>(劣势) 敌人施法速度更快",
+  "temptationgump.desc.famine": "(优势) 吃饱喝足后你的属性成长速度加快<br>(劣势) 你会更快地感到饥饿和口渴",
+  "temptationgump.desc.puzzle_master": "(优势) 你学会了解谜盒(解密盒有加成)<br>(劣势) 逃亡者与以太泰坦仅仅加200技能上限<br>(劣势) 怪物种族提供的魔法属性(例如幸运值)不与装备累加;抗性/属性加成仍可叠加。",
   "temptationgump.desc.tribute": "- 贡礼任务奖励发生变化",
-  "temptationgump.desc.deathwish": "+ 你获得属性与技能的速度更快<br>- 一把旧剑<br>x 你将永远无法被复活"
+  "temptationgump.desc.deathwish": "(优势) 你获得属性与技能的速度更快<br>(中立) 一把旧剑<br>(劣势) 你将永远无法被复活"
 }

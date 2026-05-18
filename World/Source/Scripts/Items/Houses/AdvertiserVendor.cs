@@ -22,7 +22,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "A Listing Of Player Vendors" );
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.house.advertise");
+			else
+				list.Add( "A Listing Of Player Vendors" );
 		}
 
 		public override void OnDoubleClick( Mobile e )

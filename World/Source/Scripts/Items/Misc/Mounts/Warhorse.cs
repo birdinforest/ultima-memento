@@ -19,7 +19,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Mount For Grandmaster Warriors");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.mount.warrior");
+            else
+			    list.Add( 1070722, "Mount For Grandmaster Warriors");
         } 
 
 		public Warhorse( Serial serial ) : base( serial ) 

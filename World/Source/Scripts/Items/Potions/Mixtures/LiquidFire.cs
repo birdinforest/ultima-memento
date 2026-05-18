@@ -24,7 +24,7 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Fire Damage" );
+			AddLocalizedProperty(list, "prop.potion.fire");
 		}
 
 		public LiquidFire( Serial serial ) : base( serial )

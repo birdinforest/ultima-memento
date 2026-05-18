@@ -53,6 +53,7 @@ namespace Server.Items
 
 	public class ShinobiHood : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.shinobihood";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }
@@ -100,6 +101,7 @@ namespace Server.Items
 
 	public class ShinobiMask : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.shinobimask";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }
@@ -147,6 +149,7 @@ namespace Server.Items
 
 	public class ShinobiCowl : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.shinobicowl";
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseFireResistance{ get{ return 4; } }
 		public override int BaseColdResistance{ get{ return 3; } }

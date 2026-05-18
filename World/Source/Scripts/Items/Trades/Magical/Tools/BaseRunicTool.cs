@@ -48,6 +48,21 @@ namespace Server.Items
 				ResourceMods.SetRandomResource( false, true, this, CraftResource.RegularWood, true, null );
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText2;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText2 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.runiccraft" );
+
+			m_InfoText2 = saved;
+		}
+
 		private string GetNameString()
 		{
 			string name = this.Name;

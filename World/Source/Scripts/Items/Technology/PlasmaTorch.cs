@@ -23,6 +23,29 @@ namespace Server.Items
 			Stackable = true;
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_InfoText1;
+			string saved2 = m_InfoText2;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_InfoText1 = null;
+				m_InfoText2 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.infotext.plasmatorch.melt" );
+				AddLocalizedProperty( list, "prop.infotext.plasmatorch.locks" );
+			}
+
+			m_InfoText1 = saved1;
+			m_InfoText2 = saved2;
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			Target t;

@@ -16,10 +16,20 @@ namespace Knives.TownHouses
 
 		public override void GetProperties( ObjectPropertyList list )
 		{
-			if ( c_Owner != null )
-				list.Add( "a renter's license belonging to " + c_Owner.Name );
+			if (BuildingPropertyListLocale != null)
+			{
+				if ( c_Owner != null )
+					AddLocalizedProperty(list, "prop.house.rental.license.belongs", c_Owner.Name);
+				else
+					AddLocalizedProperty(list, "prop.house.rental.license");
+			}
 			else
-				list.Add( "a renter's license" );
+			{
+				if ( c_Owner != null )
+					list.Add( "a renter's license belonging to " + c_Owner.Name );
+				else
+					list.Add( "a renter's license" );
+			}
 		}
 
 		public override void OnDoubleClick( Mobile m )

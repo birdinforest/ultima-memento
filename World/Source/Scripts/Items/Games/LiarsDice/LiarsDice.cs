@@ -9,6 +9,8 @@ namespace Server.Items
 {
 	public class LiarsDice : Item 
 	{
+		public override string DisplayNameLocalizationKey => "item.games.liarsdice";
+		public override bool IsContentLocalized => true;
 		private const int GOLD_PER_GAME=50;
 		private const int GAME_BALANCE_MIN=100;
 		private const int GAME_BALANCE_MAX=300;

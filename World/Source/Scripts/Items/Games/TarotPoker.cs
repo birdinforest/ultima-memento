@@ -8,6 +8,8 @@ namespace Server.Items
 	[Flipable( 0x12AB, 0x12AC )]
     public class tarotpoker : Item
     {
+		public override string DisplayNameLocalizationKey => "item.games.casino.tarotpoker";
+		public override bool IsContentLocalized => true;
         private bool m_IsNoisy;
 
         [CommandProperty(AccessLevel.GameMaster)]

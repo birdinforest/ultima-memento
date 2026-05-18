@@ -2,6 +2,8 @@ namespace Server.Items
 {
     public class ConsecratedBowString : ConsecrateItemBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.bowstring.consecrated";
+
         public ConsecratedBowString(Serial serial) : base(serial)
         {
         }
@@ -21,7 +23,10 @@ namespace Server.Items
         {
             base.GetProperties(list);
 
-            list.Add(1049644, "[Only usable on ranged weapons]");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.restrict.ranged");
+            else
+                list.Add(1049644, "[Only usable on ranged weapons]");
         }
 
         public override void OnDoubleClick(Mobile from)

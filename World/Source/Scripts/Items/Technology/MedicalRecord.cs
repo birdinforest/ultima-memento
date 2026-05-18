@@ -28,7 +28,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "For " + DataPatient + "" );
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.tech.medical.forpatient", DataPatient);
+			else
+				list.Add( "For " + DataPatient + "" );
 		}
 
 		public class MedicalRecordGump : Gump

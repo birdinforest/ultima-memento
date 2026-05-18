@@ -160,7 +160,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Hunger: " + m_FillFactor + "" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty(list, "prop.food.hunger", m_FillFactor);
+			else
+				list.Add( 1049644, "Hunger: " + m_FillFactor + "" );
         }
 
 		public override void OnDoubleClick( Mobile from )

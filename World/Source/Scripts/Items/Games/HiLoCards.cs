@@ -15,6 +15,9 @@ namespace Server.Items
 	[Flipable(0x12A9, 0x12AA)]
 	public class HiLoCards : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.games.casino.hilocards";
+		public override bool IsContentLocalized => true;
+
 		private bool m_Active = true;
 		private int m_ErrorCode;
 		private int m_OrigHue;
@@ -418,33 +421,60 @@ namespace Server.Items
 		public override void GetProperties(ObjectPropertyList list)
 		{
 			base.GetProperties(list);
-			int numberpos = 1060658;
-			if (!m_Active)
+			if (BuildingPropertyListLocale != null)
 			{
-				if (m_ErrorCode == 0)
-					list.Add(1060658, "Status\tOffline");
+				if (!m_Active)
+				{
+					if (m_ErrorCode == 0)
+						AddLocalizedProperty(list, "prop.casino.status.offline");
+					else
+						AddLocalizedProperty(list, "prop.casino.status.intervention", m_ErrorCode);
+					return;
+				}
+				else if (m_InUseBy == null)
+					AddLocalizedProperty(list, "prop.casino.status.available");
 				else
-					list.Add(1060658, "Status\tMaintenance Required({0})", m_ErrorCode);
-				return;
-			}
-			else if (m_InUseBy == null)
-			{
-				list.Add(1060658, "Status\tAvailable");
-				numberpos = 1060659;
+				{
+					AddLocalizedProperty(list, "prop.casino.status.inuse");
+					AddLocalizedProperty(list, "prop.casino.player", m_InUseBy.Name);
+				}
+				if (m_LastWonBy != null)
+				{
+					AddLocalizedProperty(list, "prop.casino.lastpayout", m_LastWonBy.Name);
+					AddLocalizedProperty(list, "prop.casino.date", m_LastWonByDate.ToString());
+					AddLocalizedProperty(list, "prop.casino.amount", m_LastWonAmount.ToString());
+				}
 			}
 			else
 			{
-				list.Add(1060658, "Status\tIn Use");
-				list.Add(1060659, "Player\t{0}", m_InUseBy.Name);
-				numberpos = 1060660;
-			}
-			if (m_LastWonBy != null)
-			{
-				list.Add(numberpos, "Last Payout\t{0}", m_LastWonBy.Name);
-				numberpos++;
-				list.Add(numberpos, "Date\t{0}", m_LastWonByDate);
-				numberpos++;
-				list.Add(numberpos, "Amount\t{0}", m_LastWonAmount);
+				int numberpos = 1060658;
+				if (!m_Active)
+				{
+					if (m_ErrorCode == 0)
+						list.Add(1060658, "Status\tOffline");
+					else
+						list.Add(1060658, "Status\tMaintenance Required({0})", m_ErrorCode);
+					return;
+				}
+				else if (m_InUseBy == null)
+				{
+					list.Add(1060658, "Status\tAvailable");
+					numberpos = 1060659;
+				}
+				else
+				{
+					list.Add(1060658, "Status\tIn Use");
+					list.Add(1060659, "Player\t{0}", m_InUseBy.Name);
+					numberpos = 1060660;
+				}
+				if (m_LastWonBy != null)
+				{
+					list.Add(numberpos, "Last Payout\t{0}", m_LastWonBy.Name);
+					numberpos++;
+					list.Add(numberpos, "Date\t{0}", m_LastWonByDate);
+					numberpos++;
+					list.Add(numberpos, "Amount\t{0}", m_LastWonAmount);
+				}
 			}
 		}
 

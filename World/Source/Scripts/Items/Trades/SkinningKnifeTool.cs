@@ -24,6 +24,21 @@ namespace Server.Items
 			InfoText1 = "Equip to skin automatically";
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.skinning" );
+
+			m_InfoText1 = saved;
+		}
+
 		public SkinningKnifeTool(Serial serial) : base(serial)
 		{
 		}

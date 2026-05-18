@@ -37,6 +37,21 @@ namespace Server.Items
 			ColorHue1 = "0080FF";
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_ColorText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_ColorText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.colortext.wand.title" );
+
+			m_ColorText1 = saved;
+		}
+
 		public override void MagicSpellChanged( MagicSpell spell )
 		{
 			int level = SpellItems.GetLevel( (int)spell );

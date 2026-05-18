@@ -51,7 +51,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "Grows Fruit" );
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.misc.fruittree.grows");
+			else
+				list.Add( "Grows Fruit" );
 		}
 
 		public override void Serialize( GenericWriter writer )

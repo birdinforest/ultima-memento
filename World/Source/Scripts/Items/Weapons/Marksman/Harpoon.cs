@@ -147,6 +147,7 @@ namespace Server.Items
 
 	public class HarpoonRope : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.harpoonrope";
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

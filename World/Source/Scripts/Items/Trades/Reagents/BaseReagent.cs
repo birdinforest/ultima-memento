@@ -26,6 +26,21 @@ namespace Server.Items
 			InfoText1 = "Reagent";
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.reagent" );
+
+			m_InfoText1 = saved;
+		}
+
 		public BaseReagent( Serial serial ) : base( serial )
 		{
 		}

@@ -45,14 +45,29 @@ namespace Server.Items
 
 			int boatDone = needWood + needIngot + needCloth;
 
-			if ( boatDone > 0 )
+			if (BuildingPropertyListLocale != null)
 			{
-				list.Add( 1070722, "Drop The Materials Needed On This Parchment" );
-				list.Add( 1049644, "Need " + needWood.ToString() + " Wood, " + needCloth.ToString() + " Cloth, " + needIngot.ToString() + " Ingots" );
+				if ( boatDone > 0 )
+				{
+					AddLocalizedProperty(list, "prop.boat.build.drop");
+					AddLocalizedProperty(list, "prop.boat.build.need", needWood, needCloth, needIngot);
+				}
+				else
+				{
+					AddLocalizedProperty(list, "prop.boat.build.click");
+				}
 			}
 			else
 			{
-				list.Add( 1070722, "Double Click To Build" );
+				if ( boatDone > 0 )
+				{
+					list.Add( 1070722, "Drop The Materials Needed On This Parchment" );
+					list.Add( 1049644, "Need " + needWood.ToString() + " Wood, " + needCloth.ToString() + " Cloth, " + needIngot.ToString() + " Ingots" );
+				}
+				else
+				{
+					list.Add( 1070722, "Double Click To Build" );
+				}
 			}
         }
 

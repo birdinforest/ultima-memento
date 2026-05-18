@@ -213,8 +213,16 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Double Click To Use. Target This Stone To Change It`s Color, Gold To Charge The Stone, Or An Item In Your Pack To Change It`s Color." );
-			list.Add( 1049644, "500 Gold Per Charge - This Stone Changes Items To Match It`s Color." );
+            if (BuildingPropertyListLocale != null)
+            {
+                AddLocalizedProperty(list, "prop.misc.hedge.instructions");
+                AddLocalizedProperty(list, "prop.misc.hedge.charge");
+            }
+            else
+            {
+			    list.Add( 1070722, "Double Click To Use. Target This Stone To Change It`s Color, Gold To Charge The Stone, Or An Item In Your Pack To Change It`s Color." );
+			    list.Add( 1049644, "500 Gold Per Charge - This Stone Changes Items To Match It`s Color." );
+            }
 		}
 
 		public HueStone( Serial serial ) : base( serial )

@@ -33,8 +33,11 @@ namespace Server.Items
 		{
 
 			base.GetProperties( list );
-            int count = m_doors.Count;
-            list.Add("Doors controlled: {0}", count);
+			int count = m_doors.Count;
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.house.doorswitch.controlled", count);
+			else
+				list.Add("Doors controlled: {0}", count);
 
 		}
 

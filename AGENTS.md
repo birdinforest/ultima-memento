@@ -145,6 +145,27 @@ Use the `StringCatalog`-aware APIs that the extractor already handles.
 
 **Tinted `SendMessage` (`SendMessage(int hue, string text)`):** The first argument is only a **client hue** (e.g. **68** for a green “success/info” tint). **The `text` argument must still be localized** — never concatenate raw English with runtime values for zh-Hans accounts. Prefer **`StringCatalog.ResolveFormatByKey`** plus **per‑value shotkeys** so **Chinese sentence order** stays natural (template with `{0}` for the variable fragment).
 
+**OPL tooltip lines (`ObjectPropertyList`):** The **same rule applies** as for tinted `SendMessage`: a **cliloc slot number or `list.Add` overload does not localize text**. Chinese grammar and word order differ — avoid passing zh-Hans accounts raw English composition.
+
+Anti-pattern:
+
+```csharp
+list.Add(1049644, m_Count.ToString() + " Songs");    // WRONG — locale-unfriendly word order
+list.Add(1049644, "Contains: " + gold + " Gold");    // WRONG — concatenation not locale-safe
+list.Add("Drag onto Paperdoll");                     // WRONG — hardcoded literal
+```
+
+Prefer bilingual gate + legacy fallback:
+
+```csharp
+if (BuildingPropertyListLocale != null)
+    AddLocalizedProperty(list, "prop.songbook.count", m_Count); // shotkey in logical JSON
+else
+    list.Add(1049644, m_Count.ToString() + " Songs");
+```
+
+For **`zh-Hans`**, use a template such as **`含 {0} 首歌曲`** (not **`{0} 歌曲`** alone). **`prop.*`** / **`AddLocalizedProperty`** / **`ResolveFormatByKey`** with **`equipment-properties.json`** (or domain **`keep_extra`** bundle). Audit patterns: **`World/Documentation/waiting-localization.md`** §9.
+
 **Player/system messages (`SendMessage`, `Say`, etc.):** the bare form `mobile.SendMessage("...")` is **not** localized. Use either:
 
 1. **Shotkeys (preferred):** stable logical keys in hand-maintained JSON (`equipment-properties.json`, `trap-system.json`, `charrestore.json`, … — see §3.1 `keep_extra` table). **Do not** rely on the C# extractor for these; add the same key to **`en/<file>.json` and `zh-Hans/<file>.json`**.
@@ -491,6 +512,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-17: §3.1 — `legend-book-rows.json`（`god.legendbook.row.*`，zh-Hans-only）+ `keep_extra`；§3.2 — **`SendMessage(int hue, string)`** 仍须目录化，hue 仅客户端着色。
 - 2026-05-17: §3.1 — `trade-commodity.json`、`placemap-labels.json`（`keep_extra`）：动态材料全名、`PotionKeg` 桶名、`PlaceMap` 地名 OPL。
 - 2026-05-17: §3.2 — **`Item.AddColorText3Property`**：OPL 第三条彩色行（1072173）的可覆盖扩展点；用于 `ResolvePropertyText` / 格式化双语估价等，替代依赖 **`ColorText3`** 存英文。
+- 2026-05-18: §3.2 — **`ObjectPropertyList` / `list.Add`**：cliloc 槽或未保护的英文字符串、以及与变量的英文拼接（如 **`count + " Songs"`**）须 **`BuildingPropertyListLocale`** 分支下 **`AddLocalizedProperty` / `ResolveFormatByKey`**（与 tinted **`SendMessage(int hue, string)`** 同约束）；§3.2 增补反例/正例代码块与 **`含 {0} 首歌曲`** 模板说明；稽核模式见 **`World/Documentation/waiting-localization.md`** §9。
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  

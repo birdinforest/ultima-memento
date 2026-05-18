@@ -34,7 +34,14 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "For " + BountyWho + "");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.boat.bounty.for");
+			}
+			else
+			{
+				list.Add( 1070722, "For " + BountyWho + "");
+			}
         }
     
 		public override void OnDoubleClick( Mobile from )

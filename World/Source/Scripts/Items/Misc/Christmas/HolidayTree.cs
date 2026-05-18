@@ -45,7 +45,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeDeed( Serial serial ) : base( serial )

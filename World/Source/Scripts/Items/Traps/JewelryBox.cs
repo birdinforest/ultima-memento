@@ -64,6 +64,33 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_ColorText1;
+			string saved3 = m_ColorText3;
+			string saved4 = m_ColorText4;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_ColorText1 = null;
+				m_ColorText3 = null;
+				m_ColorText4 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.colortext.jewelry.entangled" );
+				AddLocalizedProperty( list, "prop.colortext.jewelry.givetojeweler" );
+				AddLocalizedProperty( list, "prop.colortext.jewelry.separate" );
+			}
+
+			m_ColorText1 = saved1;
+			m_ColorText3 = saved3;
+			m_ColorText4 = saved4;
+		}
+
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
 		{
 			return false;

@@ -97,10 +97,18 @@ namespace Server.Items
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
-            base.AddNameProperties(list);
-			list.Add( 1070722, "Charges: " + m_Charges.ToString() );
-            if ( m_PetName != "" && m_PetName != null ){ list.Add( 1049644, "Pet: " + m_PetName ); }
-        } 
+			base.AddNameProperties(list);
+            if (BuildingPropertyListLocale != null)
+            {
+                AddLocalizedProperty(list, "prop.misc.summoning.charges", m_Charges);
+                AddLocalizedProperty(list, "prop.misc.summoning.pet");
+            }
+            else
+            {
+			    list.Add( 1070722, "Charges: " + m_Charges.ToString() );
+                if ( m_PetName != "" && m_PetName != null ){ list.Add( 1049644, "Pet: " + m_PetName ); }
+            }
+        }
 
 		private delegate void BallCallback( Mobile from );
 

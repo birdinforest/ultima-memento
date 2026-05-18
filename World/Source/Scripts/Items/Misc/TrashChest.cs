@@ -29,7 +29,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Empties Every 24 Hours");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.trash.empties");
+            else
+			    list.Add( 1070722, "Empties Every 24 Hours");
         } 
 
 		public override void Serialize( GenericWriter writer )

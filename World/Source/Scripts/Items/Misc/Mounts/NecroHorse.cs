@@ -17,10 +17,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Undead Mount For Grandmasters in Necromancy");
-        } 
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.mount.necro");
+            else
+			    list.Add( 1070722, "Undead Mount For Grandmasters in Necromancy");
+        }
 
-		public NecroHorse( Serial serial ) : base( serial ) 
+		public NecroHorse( Serial serial ) : base( serial )
 		{ 
 		} 
 

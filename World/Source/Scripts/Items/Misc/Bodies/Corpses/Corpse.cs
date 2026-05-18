@@ -633,6 +633,21 @@ namespace Server.Items
 			DevourCorpse();
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_ColorText3;
+
+			if ( BuildingPropertyListLocale != null )
+				m_ColorText3 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.colortext.corpse.carvable" );
+
+			m_ColorText3 = saved;
+		}
+
 		public Corpse( Serial serial ) : base( serial )
 		{
 		}

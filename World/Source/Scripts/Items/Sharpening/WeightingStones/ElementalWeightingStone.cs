@@ -16,7 +16,10 @@ namespace Server.Items
         {
             base.GetProperties(list);
 
-            list.Add("[Only usable on blunt weapons]");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.restrict.blunt");
+            else
+                list.Add("[Only usable on blunt weapons]");
         }
 
         public override void OnDoubleClick(Mobile from)

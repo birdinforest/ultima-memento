@@ -16,7 +16,10 @@ namespace Server.Items
         {
             base.GetProperties(list);
 
-            list.Add("[Only usable on ranged weapons]");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.restrict.ranged");
+            else
+                list.Add("[Only usable on ranged weapons]");
         }
 
         public override void OnDoubleClick(Mobile from)

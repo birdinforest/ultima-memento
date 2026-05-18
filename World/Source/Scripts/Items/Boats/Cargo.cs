@@ -281,11 +281,22 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
-			string obtained = "Pirated: Worth " + CargoValue + " Gold";
-				if ( CargoKarma > 0 ){ obtained = "Seized: Worth " + CargoValue + " Gold"; }
+			if (BuildingPropertyListLocale != null)
+			{
+				if ( CargoKarma > 0 )
+					AddLocalizedProperty(list, "prop.boat.cargo.seized", CargoValue);
+				else
+					AddLocalizedProperty(list, "prop.boat.cargo.pirated", CargoValue);
+				AddLocalizedProperty(list, "prop.boat.cargo.from");
+			}
+			else
+			{
+				string obtained = "Pirated: Worth " + CargoValue + " Gold";
+					if ( CargoKarma > 0 ){ obtained = "Seized: Worth " + CargoValue + " Gold"; }
 
-			list.Add( 1070722, obtained);
-            list.Add( 1049644, CargoFrom);
+				list.Add( 1070722, obtained);
+				list.Add( 1049644, CargoFrom);
+			}
         } 
 
 		public Cargo(Serial serial) : base(serial)

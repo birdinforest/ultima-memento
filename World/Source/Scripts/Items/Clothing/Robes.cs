@@ -38,6 +38,7 @@ namespace Server.Items
 	// [Flipable( 0x2B69, 0x3160 )]
 	public class AssassinRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.assassinrobe";
 		[Constructable]
 		public AssassinRobe() : this( 0 )
 		{
@@ -70,6 +71,7 @@ namespace Server.Items
 	// [Flipable( 0x201D, 0x201E )]
 	public class VampireRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.vampirerobe";
 		[Constructable]
 		public VampireRobe() : this( 0 )
 		{
@@ -102,6 +104,7 @@ namespace Server.Items
 	// [Flipable( 0x201B, 0x201C )]
 	public class DragonRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.dragonrobe";
 		[Constructable]
 		public DragonRobe() : this( 0 )
 		{
@@ -134,6 +137,7 @@ namespace Server.Items
 	// [Flipable( 0x201F, 0x2020 )]
 	public class ChaosRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.chaosrobe";
 		[Constructable]
 		public ChaosRobe() : this( 0 )
 		{
@@ -166,6 +170,7 @@ namespace Server.Items
 	// [Flipable( 0x2B6A, 0x3161 )]
 	public class FancyRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.fancyrobe";
 		[Constructable]
 		public FancyRobe() : this( 0 )
 		{
@@ -198,6 +203,7 @@ namespace Server.Items
 	// [Flipable( 0x2B6C, 0x3163 )]
 	public class GildedRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.gildedrobe";
 		[Constructable]
 		public GildedRobe() : this( 0 )
 		{
@@ -230,6 +236,7 @@ namespace Server.Items
 	// [Flipable( 0x2B6E, 0x3165 )]
 	public class OrnateRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.ornaterobe";
 		[Constructable]
 		public OrnateRobe() : this( 0 )
 		{
@@ -262,6 +269,7 @@ namespace Server.Items
 	// [Flipable( 0x2B70, 0x3167 )]
 	public class MagistrateRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.magistraterobe";
 		[Constructable]
 		public MagistrateRobe() : this( 0 )
 		{
@@ -294,6 +302,7 @@ namespace Server.Items
 	// [Flipable( 0x2B73, 0x316A )]
 	public class RoyalRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.royalrobe";
 		[Constructable]
 		public RoyalRobe() : this( 0 )
 		{
@@ -326,6 +335,7 @@ namespace Server.Items
 	// [Flipable( 0x3175, 0x3178 )]
 	public class SorcererRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.sorcererrobe";
 		[Constructable]
 		public SorcererRobe() : this( 0 )
 		{
@@ -357,6 +367,7 @@ namespace Server.Items
 
 	public class ScholarRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.scholarrobe";
 		[Constructable]
 		public ScholarRobe() : this( 0 )
 		{
@@ -389,6 +400,7 @@ namespace Server.Items
 	// [Flipable( 0x2FBA, 0x3174 )]
 	public class NecromancerRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.necromancerrobe";
 		[Constructable]
 		public NecromancerRobe() : this( 0 )
 		{
@@ -421,6 +433,7 @@ namespace Server.Items
 	// [Flipable( 0x2FC6, 0x2FC7 )]
 	public class SpiderRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.spiderrobe";
 		[Constructable]
 		public SpiderRobe() : this( 0 )
 		{
@@ -452,6 +465,7 @@ namespace Server.Items
 
 	public class VagabondRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.vagabondrobe";
 		[Constructable]
 		public VagabondRobe() : this( 0 )
 		{
@@ -483,6 +497,7 @@ namespace Server.Items
 
 	public class PirateCoat : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.piratecoat";
 		[Constructable]
 		public PirateCoat() : this( 0 )
 		{
@@ -514,6 +529,7 @@ namespace Server.Items
 
 	public class JesterGarb : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.jestergarb";
 		[Constructable]
 		public JesterGarb() : this( 0 )
 		{
@@ -545,6 +561,7 @@ namespace Server.Items
 
 	public class FoolsCoat : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.foolscoat";
 		[Constructable]
 		public FoolsCoat() : this( 0 )
 		{
@@ -577,6 +594,7 @@ namespace Server.Items
 
 	public class ExquisiteRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.exquisiterobe";
 		[Constructable]
 		public ExquisiteRobe() : this( 0 )
 		{
@@ -607,6 +625,7 @@ namespace Server.Items
 	}
 	public class ProphetRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.prophetrobe";
 		[Constructable]
 		public ProphetRobe() : this( 0 )
 		{
@@ -637,6 +656,7 @@ namespace Server.Items
 	}
 	public class ElegantRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.elegantrobe";
 		[Constructable]
 		public ElegantRobe() : this( 0 )
 		{
@@ -667,6 +687,7 @@ namespace Server.Items
 	}
 	public class FormalRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.formalrobe";
 		[Constructable]
 		public FormalRobe() : this( 0 )
 		{
@@ -697,6 +718,7 @@ namespace Server.Items
 	}
 	public class ArchmageRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.archmagerobe";
 		[Constructable]
 		public ArchmageRobe() : this( 0 )
 		{
@@ -727,6 +749,7 @@ namespace Server.Items
 	}
 	public class PriestRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.priestrobe";
 		[Constructable]
 		public PriestRobe() : this( 0 )
 		{
@@ -757,6 +780,7 @@ namespace Server.Items
 	}
 	public class CultistRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.cultistrobe";
 		[Constructable]
 		public CultistRobe() : this( 0 )
 		{
@@ -787,6 +811,7 @@ namespace Server.Items
 	}
 	public class GildedDarkRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.gildeddarkrobe";
 		[Constructable]
 		public GildedDarkRobe() : this( 0 )
 		{
@@ -817,6 +842,7 @@ namespace Server.Items
 	}
 	public class GildedLightRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.gildedlightrobe";
 		[Constructable]
 		public GildedLightRobe() : this( 0 )
 		{
@@ -847,6 +873,7 @@ namespace Server.Items
 	}
 	public class SageRobe : BaseOuterTorso
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.clothing.sagerobe";
 		[Constructable]
 		public SageRobe() : this( 0 )
 		{

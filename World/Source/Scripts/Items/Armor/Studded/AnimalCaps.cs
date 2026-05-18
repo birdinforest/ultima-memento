@@ -51,6 +51,7 @@ namespace Server.Items
 
 	public class DeerCap : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.deercap";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 5; } }
@@ -96,6 +97,7 @@ namespace Server.Items
 
 	public class StagCap : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.stagcap";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 5; } }
@@ -141,6 +143,7 @@ namespace Server.Items
 
 	public class WolfCap : BaseArmor
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.wolfcap";
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseFireResistance{ get{ return 3; } }
 		public override int BaseColdResistance{ get{ return 5; } }

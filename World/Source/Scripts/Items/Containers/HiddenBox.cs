@@ -221,7 +221,10 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 			list.Add( 1070722, ContainerOwner );
-			list.Add( 1049644, "Found In " + ContainerLocation + "" ); // PARENTHESIS
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.container.hiddenbox.found", ContainerLocation);
+			else
+				list.Add( 1049644, "Found In " + ContainerLocation + "" ); // PARENTHESIS
         }
 
 		public override void Serialize( GenericWriter writer )

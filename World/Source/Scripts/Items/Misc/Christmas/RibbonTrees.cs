@@ -20,7 +20,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "Dye To Color The Ribbon");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.ribbon.dye");
+            else
+			    list.Add( 1049644, "Dye To Color The Ribbon");
         } 
 
 		public override void Serialize(GenericWriter writer)
@@ -54,7 +57,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "Dye To Color The Ribbon");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.ribbon.dye");
+            else
+			    list.Add( 1049644, "Dye To Color The Ribbon");
         } 
 
 		public override void Serialize(GenericWriter writer)

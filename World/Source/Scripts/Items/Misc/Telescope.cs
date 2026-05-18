@@ -83,7 +83,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "To Be Built In A Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.telescope.build");
+            else
+			    list.Add( 1070722, "To Be Built In A Home");
         } 
 
 		public TelescopeAddonDeed( Serial serial ) : base( serial )

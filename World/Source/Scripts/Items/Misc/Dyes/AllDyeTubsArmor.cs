@@ -51,7 +51,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "Price Per Item Dyed: 100 Gold" );
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.dye.price");
+            else
+			    list.Add( "Price Per Item Dyed: 100 Gold" );
 
 			if ( Charged )
 			{

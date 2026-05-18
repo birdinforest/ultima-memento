@@ -53,6 +53,7 @@ namespace Server.Items
 	}
 	public class WoodenPlateGloves : BaseArmor ///////////////////////////////////////////////////
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.woodenplategloves";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 2; } }
@@ -99,6 +100,7 @@ namespace Server.Items
 	}
 	public class WoodenPlateGorget : BaseArmor ///////////////////////////////////////////////////
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.woodenplategorget";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 2; } }
@@ -145,6 +147,7 @@ namespace Server.Items
 	}
 	public class WoodenPlateArms : BaseArmor ///////////////////////////////////////////////////////
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.woodenplatearms";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 2; } }
@@ -191,6 +194,7 @@ namespace Server.Items
 	}
 	public class WoodenPlateChest : BaseArmor /////////////////////////////////////////////////////
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.woodenplatechest";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 2; } }
@@ -237,6 +241,7 @@ namespace Server.Items
 	}
 	public class WoodenPlateHelm : BaseArmor ///////////////////////////////////////////////////////
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.armor.woodenplatehelm";
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseFireResistance{ get{ return 1; } }
 		public override int BaseColdResistance{ get{ return 2; } }

@@ -102,6 +102,21 @@ namespace Server.Items
 		{
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.crystal.sending" );
+
+			m_InfoText1 = saved;
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
@@ -352,6 +367,21 @@ namespace Server.Items
 
 		public ReceiverCrystal( Serial serial ) : base( serial )
 		{
+		}
+
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.crystal.receiving" );
+
+			m_InfoText1 = saved;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )

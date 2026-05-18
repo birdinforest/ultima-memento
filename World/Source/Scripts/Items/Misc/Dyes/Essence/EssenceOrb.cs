@@ -22,7 +22,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( m_Owner != null ){ list.Add( 1049644, "Belongs to " + m_Owner.Name + "" ); }
+			if ( m_Owner != null )
+            {
+                if (BuildingPropertyListLocale != null)
+                    AddLocalizedProperty(list, "prop.misc.essence.belongs");
+                else
+                    list.Add( 1049644, "Belongs to " + m_Owner.Name + "" );
+            }
         }
 
 		public override void OnDoubleClick( Mobile from )

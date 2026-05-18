@@ -40,7 +40,34 @@ namespace Server.Items
 			}
 		}
 
-        public override void OnAfterSpawn()
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_ColorText1;
+			string saved2 = m_ColorText2;
+			string saved3 = m_ColorText3;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_ColorText1 = null;
+				m_ColorText2 = null;
+				m_ColorText3 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.colortext.beginner.journey" );
+				AddLocalizedProperty( list, "prop.colortext.beginner.start" );
+				AddLocalizedProperty( list, "prop.colortext.beginner.life" );
+			}
+
+			m_ColorText1 = saved1;
+			m_ColorText2 = saved2;
+			m_ColorText3 = saved3;
+		}
+
+		public override void OnAfterSpawn()
         {
 			TitleBook();
 			base.OnAfterSpawn();

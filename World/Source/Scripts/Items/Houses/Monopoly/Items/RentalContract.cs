@@ -224,12 +224,24 @@ namespace Knives.TownHouses
 
 		public override void GetProperties( ObjectPropertyList list )
 		{
-			if ( c_RentalClient != null )
-				list.Add( "a house rental contract with " + c_RentalClient.Name );
-			else if ( c_Completed )
-				list.Add( "a completed house rental contract" );
+			if (BuildingPropertyListLocale != null)
+			{
+				if ( c_RentalClient != null )
+					AddLocalizedProperty(list, "prop.house.rental.contract.desc", c_RentalClient.Name);
+				else if ( c_Completed )
+					AddLocalizedProperty(list, "prop.house.rental.contract.completed");
+				else
+					AddLocalizedProperty(list, "prop.house.rental.contract.uncompleted");
+			}
 			else
-				list.Add( "an uncompleted house rental contract" );
+			{
+				if ( c_RentalClient != null )
+					list.Add( "a house rental contract with " + c_RentalClient.Name );
+				else if ( c_Completed )
+					list.Add( "a completed house rental contract" );
+				else
+					list.Add( "an uncompleted house rental contract" );
+			}
 		}
 
 		public override void Delete()

@@ -27,6 +27,33 @@ namespace Server.Items
 			InfoText3 = "and Cabinets";
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved1 = m_InfoText1;
+			string saved2 = m_InfoText2;
+			string saved3 = m_InfoText3;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_InfoText1 = null;
+				m_InfoText2 = null;
+				m_InfoText3 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.infotext.woodworking.1" );
+				AddLocalizedProperty( list, "prop.infotext.woodworking.2" );
+				AddLocalizedProperty( list, "prop.infotext.woodworking.3" );
+			}
+
+			m_InfoText1 = saved1;
+			m_InfoText2 = saved2;
+			m_InfoText3 = saved3;
+		}
+
 		public WoodworkingTools( Serial serial ) : base( serial )
 		{
 		}

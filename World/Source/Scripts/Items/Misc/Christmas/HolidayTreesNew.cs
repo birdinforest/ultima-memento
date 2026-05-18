@@ -324,7 +324,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew1Deed( Serial serial ) : base( serial )
@@ -357,7 +360,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew2Deed( Serial serial ) : base( serial )
@@ -390,7 +396,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew3Deed( Serial serial ) : base( serial )
@@ -423,7 +432,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew4Deed( Serial serial ) : base( serial )
@@ -456,7 +468,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew5Deed( Serial serial ) : base( serial )
@@ -489,7 +504,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Place In Your Home");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.place");
+            else
+                list.Add( 1049644, "Double Click To Place In Your Home");
         }
 
 		public HolidayTreeNew6Deed( Serial serial ) : base( serial )
@@ -529,7 +547,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-            list.Add( 1049644, "Double Click To Select A Tree");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.deed.selecttree");
+            else
+                list.Add( 1049644, "Double Click To Select A Tree");
         }
 
 		public NewHolidayTree( Serial serial ) : base( serial )

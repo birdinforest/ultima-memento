@@ -43,7 +43,10 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Mix Into Dye Tubs" );
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.dye.mix");
+            else
+			    list.Add( 1070722, "Mix Into Dye Tubs" );
 		}
 
 		public override void OnDoubleClick( Mobile from )

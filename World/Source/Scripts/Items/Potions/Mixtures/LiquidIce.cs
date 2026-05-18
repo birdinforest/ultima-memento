@@ -24,7 +24,7 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Cold Damage" );
+			AddLocalizedProperty(list, "prop.potion.cold");
 		}
 
 		public LiquidIce( Serial serial ) : base( serial )

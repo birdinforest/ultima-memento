@@ -34,7 +34,14 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Helps One To Launch or Dock Ships");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.boat.lantern.dock");
+			}
+			else
+			{
+				list.Add( 1070722, "Helps One To Launch or Dock Ships");
+			}
         }
 
 		public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)

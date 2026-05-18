@@ -6,6 +6,9 @@ namespace Server.Items
 {
 	public class Dice6 : Item, ITelekinesisable
 	{
+		public override string DisplayNameLocalizationKey => "item.dnd.dice";
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public Dice6() : base( 0x3018 )
 		{
@@ -20,8 +23,16 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "six sided");
-            list.Add( 1049644, "Dungeons & Dragons");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.dnd.dice.six");
+				AddLocalizedProperty(list, "prop.dnd.subtitle");
+			}
+			else
+			{
+				list.Add( 1070722, "six sided");
+				list.Add( 1049644, "Dungeons & Dragons");
+			}
         }
 
 		public override void OnDoubleClick( Mobile from )

@@ -21,7 +21,14 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Stain Boats to the Standard Color" );
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.boat.stain");
+			}
+			else
+			{
+				list.Add( 1070722, "Stain Boats to the Standard Color" );
+			}
 		}
 
 		public override void OnDoubleClick( Mobile from )

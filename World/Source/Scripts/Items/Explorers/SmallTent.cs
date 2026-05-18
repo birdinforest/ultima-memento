@@ -18,6 +18,7 @@ namespace Server.Items
 
 	public class SmallTent : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.explorer.tent.small";
 		public override string DefaultDescription{ get{ return "This requires someone proficient in camping. You can use this while travelling outdoors. When used, it can make a protective tent around you for safety. The tent will remain for 5 minutes, where it will be taken down."; } }
 
 		private SmallTentEffect m_SmallTentEffect;
@@ -50,8 +51,16 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Setup A Small Tent In Which To Rest");
-			list.Add( 1049644, "Usable By Those Skilled In Camping");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.explorer.tent.small");
+				AddLocalizedProperty(list, "prop.explorer.tent.camping");
+			}
+			else
+			{
+				list.Add( 1070722, "Setup A Small Tent In Which To Rest");
+				list.Add( 1049644, "Usable By Those Skilled In Camping");
+			}
         } 
 		
 		public override void OnDoubleClick( Mobile from )
@@ -131,7 +140,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.explorer.tent.uses", m_Charges);
+			else
+				list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
 		}
 
 		public SmallTent( Serial serial ) : base( serial )

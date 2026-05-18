@@ -44,7 +44,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Requires Krystals to Fire");
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.tech.kilrathi.heavygun");
+			else
+				list.Add( 1070722, "Requires Krystals to Fire");
         }
 
 		public KilrathiHeavyGun( Serial serial ) : base( serial )

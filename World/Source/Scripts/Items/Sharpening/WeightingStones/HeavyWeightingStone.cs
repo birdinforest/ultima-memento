@@ -2,6 +2,8 @@ namespace Server.Items
 {
     public class HeavyWeightingStone : DamageIncreaseWeightingStoneBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.weightingstone.heavy";
+
         protected override int MaxDamageBonus { get { return 65; } }
 
         public HeavyWeightingStone(Serial serial) : base(serial)

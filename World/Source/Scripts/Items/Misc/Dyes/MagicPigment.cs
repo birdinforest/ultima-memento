@@ -32,6 +32,29 @@ namespace Server.Items
 			ColorHue4 = "e26c6c";
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved3 = m_ColorText3;
+			string saved4 = m_ColorText4;
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				m_ColorText3 = null;
+				m_ColorText4 = null;
+			}
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.colortext.pigment.paint" );
+				AddLocalizedProperty( list, "prop.colortext.pigment.dye" );
+			}
+
+			m_ColorText3 = saved3;
+			m_ColorText4 = saved4;
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			Target t;

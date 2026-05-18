@@ -134,13 +134,29 @@ namespace Server.Items
         {
             base.AddNameProperties(list);
 
-            list.Add(1070722, Value + " Skill");
+            string locale = BuildingPropertyListLocale;
 
-            if (Value == 105) { list.Add(1049644, "Wondrous Scroll"); }
-            else if (Value == 110) { list.Add(1049644, "Exalted Scroll"); }
-            else if (Value == 115) { list.Add(1049644, "Mythical Scroll"); }
-            else if (Value == 120) { list.Add(1049644, "Legendary Scroll"); }
-            else if (Value == 125) { list.Add(1049644, "Power Scroll"); }
+            if (locale != null)
+            {
+                AddLocalizedProperty(list, "prop.scroll.power.skill", (int)Value);
+
+                int valueInt = (int)Value;
+                if (valueInt == 105) { AddLocalizedProperty(list, "prop.scroll.power.tier.wondrous"); }
+                else if (valueInt == 110) { AddLocalizedProperty(list, "prop.scroll.power.tier.exalted"); }
+                else if (valueInt == 115) { AddLocalizedProperty(list, "prop.scroll.power.tier.mythical"); }
+                else if (valueInt == 120) { AddLocalizedProperty(list, "prop.scroll.power.tier.legendary"); }
+                else if (valueInt == 125) { AddLocalizedProperty(list, "prop.scroll.power.tier.power"); }
+            }
+            else
+            {
+                list.Add(1070722, Value + " Skill");
+
+                if (Value == 105) { list.Add(1049644, "Wondrous Scroll"); }
+                else if (Value == 110) { list.Add(1049644, "Exalted Scroll"); }
+                else if (Value == 115) { list.Add(1049644, "Mythical Scroll"); }
+                else if (Value == 120) { list.Add(1049644, "Legendary Scroll"); }
+                else if (Value == 125) { list.Add(1049644, "Power Scroll"); }
+            }
         }
 
         public override bool CanUse(Mobile from)

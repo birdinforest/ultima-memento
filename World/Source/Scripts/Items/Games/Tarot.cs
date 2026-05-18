@@ -8,6 +8,8 @@ namespace Server.Items
 	[Flipable( 0x12AB, 0x12AC )]
 	public class TarotDeck : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.games.tarot";
+		public override bool IsContentLocalized => true;
 		private static string GetFortuneMsg( int MyFortune )
 		{
 			string phrase = "";
@@ -162,6 +164,8 @@ namespace Server.Items
 	[Flipable( 0x12AB, 0x12AC )]
 	public class DecoTarotDeck : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.games.tarot";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public DecoTarotDeck() : base( 0x12AB )
 		{

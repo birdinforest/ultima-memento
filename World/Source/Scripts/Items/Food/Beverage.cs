@@ -1055,7 +1055,16 @@ namespace Server.Items
 		{
 			base.AddNameProperties( list );
 
-			if( !IsEmpty )
+			if( !IsEmpty && BuildingPropertyListLocale != null )
+			{
+				if ( Content == BeverageType.Ale ){ AddLocalizedProperty(list, "prop.food.beverage.ale"); }
+				else if ( Content == BeverageType.Cider ){ AddLocalizedProperty(list, "prop.food.beverage.cider"); }
+				else if ( Content == BeverageType.Liquor ){ AddLocalizedProperty(list, "prop.food.beverage.liquor"); }
+				else if ( Content == BeverageType.Milk ){ AddLocalizedProperty(list, "prop.food.beverage.milk"); }
+				else if ( Content == BeverageType.Wine ){ AddLocalizedProperty(list, "prop.food.beverage.wine"); }
+				else if ( Content == BeverageType.Water ){ AddLocalizedProperty(list, "prop.food.beverage.water"); }
+			}
+			else if( !IsEmpty )
 			{
 				if ( Content == BeverageType.Ale ){ list.Add( 1070722, "ale" ); }
 				else if ( Content == BeverageType.Cider ){ list.Add( 1070722, "cider" ); }
@@ -1065,14 +1074,29 @@ namespace Server.Items
 				else if ( Content == BeverageType.Water ){ list.Add( 1070722, "water" ); }
 			}
 
-			switch( Content )
+			if ( BuildingPropertyListLocale != null )
 			{
-				case BeverageType.Ale: list.Add( 1049644, "Thirst: 3"); break;
-				case BeverageType.Cider: list.Add( 1049644, "Thirst: 2"); break;
-				case BeverageType.Liquor: list.Add( 1049644, "Thirst: 1"); break;
-				case BeverageType.Milk: list.Add( 1049644, "Thirst: 2"); break;
-				case BeverageType.Wine: list.Add( 1049644, "Thirst: 2"); break;
-				default: list.Add( 1049644, "Thirst: 1"); break;
+				switch( Content )
+				{
+					case BeverageType.Ale: AddLocalizedProperty(list, "prop.food.thirst", 3); break;
+					case BeverageType.Cider: AddLocalizedProperty(list, "prop.food.thirst", 2); break;
+					case BeverageType.Liquor: AddLocalizedProperty(list, "prop.food.thirst", 1); break;
+					case BeverageType.Milk: AddLocalizedProperty(list, "prop.food.thirst", 2); break;
+					case BeverageType.Wine: AddLocalizedProperty(list, "prop.food.thirst", 2); break;
+					default: AddLocalizedProperty(list, "prop.food.thirst", 1); break;
+				}
+			}
+			else
+			{
+				switch( Content )
+				{
+					case BeverageType.Ale: list.Add( 1049644, "Thirst: 3"); break;
+					case BeverageType.Cider: list.Add( 1049644, "Thirst: 2"); break;
+					case BeverageType.Liquor: list.Add( 1049644, "Thirst: 1"); break;
+					case BeverageType.Milk: list.Add( 1049644, "Thirst: 2"); break;
+					case BeverageType.Wine: list.Add( 1049644, "Thirst: 2"); break;
+					default: list.Add( 1049644, "Thirst: 1"); break;
+				}
 			}
 		}
 

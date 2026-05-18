@@ -341,9 +341,19 @@ namespace Server.Items
             base.AddNameProperties(list);
 
 			if ( NotIdentified )
-				list.Add( 1049644, "Appraise Before Placing in Your Home");
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.relic.rug.appraise" );
+				else
+					list.Add( 1049644, "Appraise Before Placing in Your Home");
+			}
 			else
-				list.Add( 1049644, "Double Click To Place In Your Home");
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.relic.rug.place" );
+				else
+					list.Add( 1049644, "Double Click To Place In Your Home");
+			}
         }
 
 		public override void Serialize( GenericWriter writer )

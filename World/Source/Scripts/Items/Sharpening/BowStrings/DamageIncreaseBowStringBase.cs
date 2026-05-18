@@ -19,8 +19,15 @@
         {
             base.GetProperties(list);
 
-            list.Add("Adds damage increase");
-            list.Add(1049644, "[Only usable on ranged weapons]");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.damage.increase");
+            else
+                list.Add("Adds damage increase");
+
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.sharpening.restrict.ranged");
+            else
+                list.Add(1049644, "[Only usable on ranged weapons]");
         }
 
         protected override bool Validate(Mobile from, BaseWeapon weapon)

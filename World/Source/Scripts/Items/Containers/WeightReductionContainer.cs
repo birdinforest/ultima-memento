@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Server;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -32,7 +33,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "small");
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.container.weight.small");
+			else
+				list.Add( 1049644, "small");
         }
 
         public SmallBagofHolding(Serial serial) : base(serial)
@@ -79,7 +83,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "medium");
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.container.weight.medium");
+			else
+				list.Add( 1049644, "medium");
         }
 
         public MediumBagofHolding(Serial serial) : base(serial)
@@ -126,7 +133,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1049644, "large");
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.container.weight.large");
+			else
+				list.Add( 1049644, "large");
         }
 
         public LargeBagofHolding(Serial serial) : base(serial)
@@ -191,7 +201,7 @@ namespace Server.Items
             if (DateTime.Now < NextAccessTime)
             {
                 if (AccessDelayMessage != "")
-                    from.SendMessage(Utility.RandomNeutralHue(), AccessDelayMessage);
+                    from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.delay"));
                 if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
 				{
                     from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
@@ -208,7 +218,7 @@ namespace Server.Items
             }
 
             if (AddAccessMessage != "")
-                from.SendMessage(Utility.RandomNeutralHue(), AddAccessMessage);
+                from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.add"));
 
             NextAccessTime = (DateTime.Now).Add(AccessDelay);
 
@@ -223,7 +233,7 @@ namespace Server.Items
             if (DateTime.Now < NextAccessTime)
             {
                 if (AccessDelayMessage != "")
-                    from.SendMessage(Utility.RandomNeutralHue(), AccessDelayMessage);
+                    from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.delay"));
 
                 if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
 				{
@@ -240,7 +250,7 @@ namespace Server.Items
             }
 
             if (RemoveAccessMessage != "")
-                from.SendMessage(Utility.RandomNeutralHue(), RemoveAccessMessage);
+                from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.remove"));
 
             NextAccessTime = (DateTime.Now).Add(AccessDelay);
 
@@ -252,7 +262,12 @@ namespace Server.Items
             list.Add(Name);
 
             if (WeightReductionAmount > 0 && DisplayWeightReductionProperty)
-                list.Add(String.Format("{0}% Weight Reduction", WeightReductionAmount * 100));
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.container.weight.reduction", (int)(WeightReductionAmount * 100));
+				else
+					list.Add(String.Format("{0}% Weight Reduction", WeightReductionAmount * 100));
+			}
         }
 
         public override int GetTotal(TotalType type)

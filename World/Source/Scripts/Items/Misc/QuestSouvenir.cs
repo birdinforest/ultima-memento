@@ -78,7 +78,10 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Souvenir");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.souvenir");
+            else
+			    list.Add( 1070722, "Souvenir");
             list.Add( 1049644, SouvenirOwner);
         } 
 

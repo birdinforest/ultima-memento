@@ -2,6 +2,8 @@
 {
     public class RoughBowString : DamageIncreaseBowStringBase
     {
+        public override string DisplayNameLocalizationKey => "item.sharpening.bowstring.rough";
+
         protected override int MaxDamageBonus { get { return 60; } }
 
         public RoughBowString(Serial serial) : base(serial)

@@ -15,6 +15,21 @@ namespace Server.Items
 {
 	public class MagicForges : Item
 	{
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.infotext.magicforge" );
+
+			m_InfoText1 = saved;
+		}
+
 		public override bool HandlesOnSpeech{ get{ return true; } }
 
 		public override void OnSpeech( SpeechEventArgs e )

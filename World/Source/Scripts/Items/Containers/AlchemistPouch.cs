@@ -28,7 +28,13 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			if ( this.Weight > 1.0 ){ list.Add( 1070722, "Single Click to Organize" ); }
+			if ( this.Weight > 1.0 )
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.container.alchemist.organize");
+				else
+					list.Add( 1070722, "Single Click to Organize" );
+			}
 		}
 
 		public override bool OnDragDropInto( Mobile from, Item dropped, Point3D p )

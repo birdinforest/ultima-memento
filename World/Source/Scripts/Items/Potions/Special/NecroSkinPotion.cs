@@ -20,8 +20,8 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Will Turn A Grandmaster Necromancer's Skin & Hair Ghostly White");
-			list.Add( 1049644, "Double Click To Eat The Dust");
+			AddLocalizedProperty(list, "prop.potion.necroskin");
+			AddLocalizedProperty(list, "prop.potion.necroskin.eat");
         } 
 
         public override void OnDoubleClick(Mobile from)

@@ -19,6 +19,9 @@ namespace Server.Items
 	[Flipable(20437, 20436)]
 	public class CEOBlackJack : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.games.casino.blackjack";
+		public override bool IsContentLocalized => true;
+
 		private bool m_Active = true;
 		private int m_ErrorCode;
 		private int m_OrigHue;
@@ -853,20 +856,41 @@ namespace Server.Items
 		public override void GetProperties(ObjectPropertyList list)
 		{
 			base.GetProperties(list);
-			if (!m_Active)
+			if (BuildingPropertyListLocale != null)
 			{
-				if (m_ErrorCode == 0)
-					list.Add(1060658, "Status\tClosed");
+				if (!m_Active)
+				{
+					if (m_ErrorCode == 0)
+						AddLocalizedProperty(list, "prop.casino.status.closed");
+					else
+						AddLocalizedProperty(list, "prop.casino.status.intervention", m_ErrorCode);
+					return;
+				}
+				else if (m_InUseBy == null)
+					AddLocalizedProperty(list, "prop.casino.status.available");
 				else
-					list.Add(1060658, "Status\tIntervention Required({0})", m_ErrorCode);
-				return;
+				{
+					AddLocalizedProperty(list, "prop.casino.status.inuse");
+					AddLocalizedProperty(list, "prop.casino.player", m_InUseBy.Name);
+				}
 			}
-			else if (m_InUseBy == null)
-				list.Add(1060658, "Status\tAvailable");
 			else
 			{
-				list.Add(1060658, "Status\tIn Use");
-				list.Add(1060659, "Player\t{0}", m_InUseBy.Name);
+				if (!m_Active)
+				{
+					if (m_ErrorCode == 0)
+						list.Add(1060658, "Status\tClosed");
+					else
+						list.Add(1060658, "Status\tIntervention Required({0})", m_ErrorCode);
+					return;
+				}
+				else if (m_InUseBy == null)
+					list.Add(1060658, "Status\tAvailable");
+				else
+				{
+					list.Add(1060658, "Status\tIn Use");
+					list.Add(1060659, "Player\t{0}", m_InUseBy.Name);
+				}
 			}
 		}
 

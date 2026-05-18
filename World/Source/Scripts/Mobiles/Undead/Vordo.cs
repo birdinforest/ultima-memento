@@ -250,10 +250,25 @@ namespace Server.Items
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
             base.AddNameProperties(list);
 
-			list.Add( 1070722, "Vordo's notes on escaping the bottle.");
-			list.Add( 1049644, "Learn to use teleporting magic here.");
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "prop.infotext.vordo.scroll" );
+				AddLocalizedProperty( list, "prop.infotext.vordo.scroll2" );
+			}
+			else
+			{
+				list.Add( 1070722, "Vordo's notes on escaping the bottle.");
+				list.Add( 1049644, "Learn to use teleporting magic here.");
+			}
+
+			m_InfoText1 = saved;
         }
 
 		public override void Serialize( GenericWriter writer )

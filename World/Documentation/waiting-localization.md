@@ -1,6 +1,6 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-18（§ **7** T3–T7 已落地；§ **8** A5 / B1b / 静态书标题 hash 路径已落地；B2 键批与神器 zh 精修仍见 §8.3；§7 下列 **T1/T2 表** 为历史扫描快照，以代码与 `equipment-properties.json` 为准）
+> **更新日期：** 2026-05-18（§ **9.10** 增补 **`grep` 模块扫描工单草案**（路径清单）；**T-B2-QA / T8–T20 已落地**（除延后项见备注）
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---
@@ -19,6 +19,7 @@
 10. [§5.3b Trades：工单（头顶 / Gump / 叙事 / OPL）](#53b-trades-tickets-overhead-gump-narrative-opl)
 11. [§7 物品 OPL 名称扫描工单（T1–T7）](#7-物品-opl-名称扫描工单2026-05-17)
 12. [§8 装备 OPL 主名、装备槽位、乐器与书本（根因 + 工单）](#8-equipment-opl-name-layer-books-instruments)
+13. [§9 OPL Tooltip 全文稽核方法论（T8–T20、T-B2-QA、T-SS）](#9-opl-tooltip-全文稽核方法论t8t20t-b2-qat-ss) · [§9.10 扫描工单草案（模块清单）](#910-扫描工单草案2026-05-18--模块清单)
 
 ---
 
@@ -86,7 +87,7 @@
 | `CraftResource` 动态名 | `Items/Trades/Special.cs`（`BaseSpecial`） |
 | Special + 深渊五态 + 契约 | 见本文 **§5.2**（**`item.special.*`** / **`item.magical.moonstone.name`**） |
 
-**根目录规范：** **`AGENTS.md` §3.1**（`equipment-properties` 含 **`item.*`**）、**§3.2**（`AddNameProperty` 段落）。
+**根目录规范：** **`AGENTS.md` §3.1**（`equipment-properties` 含 **`item.*`**）、**§3.2**（`AddNameProperty` 段落）。**Tooltip / OPL 六表面检测与工单（T8–T20、T-SS）：** **`waiting-localization.md`** **§9**。
 
 ---
 
@@ -238,6 +239,8 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 ### 5.1 Magical 目录 - 魔法物品（18个文件）（完成）
 
 **运行时 `SendMessage`：** `SoulOrb`、`LuckyHorseShoes`、`SlayerDeed`、`ArtifactManual`、`ManualOfItems`、`ColoringBook`、`GemOfSeeing` 等已改用 **`prop.magical.*.msg.*`** / **`god.msg.*`**（与既有 `prop.magical.*` OPL 键并列，均在 `equipment-properties.json`）。屠魔契 **`prop.magical.slayer.msg.*`** 并修正英文第二槽提示为 “Your weapon …”（原 `You weapon` 笔误）。
+
+**OPL 主名（第一行）：** 若干类仍缺 **`DisplayNameLocalizationKey`** / 动态名双语分支，见 **§9.9 T-SS5**；**`ManualOfItems`** 遗物箱主名单列 **§9.7 T-SS3**。**Spellbook / SongBook** 歌曲数量行见 **§9.7 T-SS2**。
 
 | # | 文件 | Class | 英文文本 |
 |---|------|-------|---------|
@@ -622,6 +625,317 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 
 仅提 B2 时：请勿把未审过的 **B1 `Item.cs`** 卷进同一提交；反之亦然。神器译名迭代可单独小提交，便于文案审阅与回滚。
 
+<a id="9-opl-tooltip-全文稽核方法论t8t20t-b2-qat-ss"></a>
+
+## 9. OPL Tooltip 全文稽核方法论（T8–T20、T-B2-QA、T-SS）
+
+> **新增：** 2026-05-18。本节补充「仅扫 `Scripts/Items/`」会漏掉的 **`Engines and Systems/`** 等物品定义路径，并列出尚未纳入 §7 目录大类 backlog。**检索范围：** 必须以 **`World/Source/Scripts/` 全树** 为根（含 **`Engines and Systems/`**、**`System/`**），**不得**缩小为仅 **`Scripts/Items/`**。**§7 T1/T2** 仍为历史快照（❌ 待处理）；**§7 T3–T7**、**§8** 已落地 — 本节不改其状态。根目录 **`AGENTS.md` §3.2** 已增加 **OPL `list.Add` 拼接/字面量** 与 **`SendMessage(int hue, string)`** 同等约束说明（含反例/正例代码块）。
+
+### 9.1 六层表面（检测模型）
+
+玩家可见 **对象属性列表（OPL）** 文案来自多条通路，稽核须逐面对照。
+
+```mermaid
+flowchart TD
+  ItemNode["Item 任意子类"]
+  ItemNode -->|"AddNameProperty"| S1["表面1：主名第一行"]
+  ItemNode -->|"AddNameProperties"| S2["表面2：名称块额外行"]
+  ItemNode -->|"GetProperties"| S3["表面3：属性说明行"]
+  ItemNode -->|"InfoText1至5"| S4["表面4：InfoText OPL 槽"]
+  ItemNode -->|"SubResource"| S5["表面5：SubName 行"]
+  ItemNode -->|"DefaultDescription"| S6["表面6：InfoData 右键说明"]
+```
+
+| 表面 | 含义 | 通过闸门 | 高风险模式 |
+|------|------|----------|------------|
+| 1 | OPL 主名 | `DisplayNameLocalizationKey` → `item.*`；或 `AddNameProperty` 双语分支 | `Name = "English"` 且无键 |
+| 2 | 名称块额外行 | `BuildingPropertyListLocale != null` → `AddLocalizedProperty` | `list.Add(1070722, "...")`、`list.Add(1049644, "...")`、`list.Add("` 英文字面量 |
+| 3 | `GetProperties` | 同上 | 子类 `GetProperties` 内硬编码英文 |
+| 4 | InfoText | 赋值经目录化或运行时 `Resolve*` | `HarvestSystemTxt` → `InfoText1`（**Gathering: Ore** 等） |
+| 5 | SubName | `SubResource` 触发 1072041 | 英文 `SubName` |
+| 6 | DefaultDescription | `InfoData` gump | 低于标准 OPL 优先 |
+
+### 9.2 为何先前会漏掉「Gathering: Ore」与训练铲说明
+
+| 现象 | 根因 |
+|------|------|
+| **Gathering: Ore** | 文案在 **`HarvestSystem.HarvestSystemTxt`**（源：`World/Source/Scripts/Engines and Systems/Trades/Harvest/HarvestSystem.cs`）拼接 **`"Gathering: " + harvest`**，由 **`BaseHarvestTool`**、**`BaseAxe`**、**`BasePoleArm`**（`Scripts/Items/`）写入 **`InfoText1`**。**表面 4**；逻辑起点不在 Items 时易被忽略。 |
+| **Drag onto Paperdoll / Only mines Iron Ore** | **`TrainingShovel`** 定义在 **`World/Source/Scripts/Engines and Systems/Quests/Core/Definitions/BlacksmithTraining.cs`**，**`GetProperties`** 使用 **`list.Add("...")`**。物品类不在 **`Scripts/Items/`** 树下，仅限 Items 的检索会漏检。 |
+
+**代码锚点（InfoText 表面 4）：**
+
+```csharp
+// BaseHarvestTool.cs / BaseAxe.cs / BasePoleArm.cs — InfoText1 来源
+InfoText1 = HarvestSystem.HarvestSystemTxt(HarvestSystem, this);
+```
+
+**代码锚点（`GetProperties` 字面量）：**
+
+```csharp
+// BlacksmithTraining.cs — TrainingShovel.GetProperties
+list.Add("Drag onto Paperdoll");
+list.Add("Only mines Iron Ore");
+```
+
+**教训：** 稽核 **`rg` / `grep`** 的根路径须为 **`World/Source/Scripts/` 全树**（含 **`Engines and Systems/`**、**`System/`**），**不可**默认仅限 **`Scripts/Items/`**。
+
+### 9.3 建议检索命令（路径：`World/Source/Scripts/`）
+
+下列示例使用 **`rg`**（[`ripgrep`](https://github.com/BurntSushi/ripgrep)）；若无可用 **`grep -R`** 等价。工作目录：**`World/Source/Scripts/`**。
+
+**表面 1 — 主名**
+
+```bash
+rg 'Name = "' --glob '*.cs' .
+rg 'DisplayNameLocalizationKey' --glob '*.cs' .
+```
+
+**表面 2 / 3 — OPL 字面量**
+
+```bash
+rg 'list\.Add\(1070722,' --glob '*.cs' .
+rg 'list\.Add\(1049644,' --glob '*.cs' .
+rg 'list\.Add\("' --glob '*.cs' .
+rg 'list\.Add\([0-9]+,\s*"' --glob '*.cs' .
+```
+
+**表面 4 — InfoText**
+
+```bash
+rg 'InfoText[1-5]\s*=' --glob '*.cs' .
+rg 'HarvestSystemTxt' --glob '*.cs' .
+```
+
+**表面 5 — SubResource**
+
+```bash
+rg 'SubResource\s*=' --glob '*.cs' .
+```
+
+**闸门：** 命中行须在 **`BuildingPropertyListLocale != null`** 分支走 **`AddLocalizedProperty`** / **`ResolveFormatByKey`**，或已由 **`DisplayNameLocalizationKey`** 覆盖主名。
+
+### 9.4 完整性核对清单（Agent）
+
+- [ ] **`Scripts/` 全树**已扫（含 **Engines and Systems**、Quest 定义内嵌 **`Item`**）。
+- [ ] 六表面均已抽样核对 **`GetProperties` / `AddNameProperties`**。
+- [ ] 无未分支的 **`list.Add(..., english + variable)`** 或裸 **`list.Add("` 英文 `")`**（见 **`AGENTS.md` §3.2** OPL 段落）。
+- [ ] 新增 shotkey 已写入 **`en/` + `zh-Hans/`** 同一逻辑 bundle；必要时 **`sync_localization_glossary.py --check`**。
+
+### 9.5 T-B2-QA（P1）— Fix B2 批处理「单文件多类」缺口 ✅
+
+**现象：** 同一 `.cs` 内多个 **`public class`**，维护脚本仅补丁**第一个**类，后续类缺 **`DisplayNameLocalizationKey`**（例：**`Items/Armor/Leather/ShinobiGarb.cs`** — **`ShinobiHood`**、**`ShinobiMask`**、**`ShinobiCowl`**）。
+
+**范围：** **`Scripts/Items/Armor`**、**`Clothing`**、**`Weapons`**、**`Instruments`** 中含多个类的文件。
+
+**检测：** 文件内既有 **`DisplayNameLocalizationKey`**，又存在其它 **`public class`** 无自有 **`DisplayNameLocalizationKey`**。
+
+**动作：** 为遗漏类补 **`DisplayNameLocalizationKey`** + **`equipment-properties.json`** 成对 **`item.equip.*`**；Gift/Level 变体若未继承到键则同源补键。
+
+**完成笔记（2026-05-18）：** 扫描了 Armor/（ShinobiGarb、LeatherBoots、LeatherGarb、AnimalCaps、WoodenArmor）、Clothing/（ReaperHoods、LoinCloth、Robes — 27 classes）、Weapons/（Harpoon）共 9 文件 46 个缺少类，全部补加 `DisplayNameLocalizationKey` 并写入 `en/` + `zh-Hans/` `equipment-properties.json` 对应 `item.equip.*` 键。
+
+### 9.6 工单 T8–T20（`Scripts/Items/` 子目录批次）
+
+> **`Gems/`**：未发现大量额外 OPL 英文字面量，本批从略。  
+> **`Deeds/`**：商品 deed 多为程序拼接名；按需个案处理。
+
+| 工单 | 目录（相对 `Scripts/Items/`） | 约文件数 | 优先级 | 典型英文 OPL / 备注 | Shotkey 前缀建议 |
+|------|------------------------------|---------|--------|---------------------|------------------|
+| **T8** ✅ | `Food/` | ~26 | **P1** | `Food.cs`：**`Hunger:`**；`Beverage.cs`：名称、**`Thirst:`** | ✅ |
+| **T9** ✅ | `Potions/` | ~87 | **P1** | **`Fire Damage`**、**`Resurrects Others`** 等 | ✅ |
+| **T10** ✅ | `Sharpening/` | ~23 | **P1** | **`[Only usable on bladed weapons]`**、**`Adds damage increase`**、**`Consecrates a weapon`**（`GetProperties`） | ✅ |
+| **T11** ✅ | `Books/PowerScrolls` | ~2 | **P1** | **`Value + " Skill"`**、**`Wondrous` / `Exalted` / `Legendary Scroll`** | ✅ |
+| **T12** ✅ | `Explorers/` | ~8 | **P1** | 帐篷 / 营地 / StableStone；**Spyglass** **`InfoText1`** | ✅ |
+| **T13** ✅ | `Misc/` | ~232 | **P2** | 坐骑说明、望远镜 deed 等 | ✅ |
+| **T14** ✅ | `Houses/` | ~310 | **P2** | 水井、灯具、绳、**`Double Click To Dump`** 等 | ✅ |
+| **T15** ✅ | `Containers/` | ~43 | **P2** | **`WeightReductionContainer`**：**`small` / `medium` / `large`** | ✅ |
+| **T16** ✅ | `Boats/` | ~29 | **P2** | Grappling hook、**`Used to board boats and galleons`** | ✅ |
+| **T17** ✅ | `Technology/` | ~21 | **P2** | **`Requires Krystals to Fire`**、**`Smelt ore into ingots`** 等 | ✅ |
+| **T18** ✅ | `Relics/` | ~28 | **P2** | **`DDRelicGem.AddNameProperties`** 程序英文名 | ✅ |
+| **T19** ✅ | `Games/DandD/` | ~15 | **P3** | **`six sided`**、**`Dungeons & Dragons`** 等 | ✅ |
+| **T20** ✅ | **跨切面** `InfoText1`–`5` | 全树 | **P2** | 任意英文写入 **`InfoText*`**（含 **`HarvestSystemTxt`**）；**ColorText** 简单字面量 | ✅（部分句柄延后） |
+
+### 9.7 截图 / 跨目录复核工单（T-SS1–T-SS4）
+
+| 工单 | 优先级 | 说明 |
+|------|--------|------|
+| **T-SS1** | **P2** | **Gathering: Ore/Wood/Fish/Books/Graves：** `HarvestSystem.HarvestSystemTxt` → **`InfoText1`**；双语 OPL 时输出目录化模板（或拆分前缀与材料名 shotkey）。**训练铲 `TrainingShovel`：** **`BlacksmithTraining.cs`** 内 **`list.Add("Drag onto Paperdoll")`**、**`list.Add("Only mines Iron Ore")`** → **`AddLocalizedProperty`** + **`prop.*`**。 |
+| **T-SS2** | **P1** | **`SongBook`**（`Engines and Systems/Magic/Bard/SongBook.cs`）：**`Name = "bardic songs"`**；**`Spellbook.GetProperties`** 中 **`list.Add(1049644, … " Songs")`** → **`ResolveFormatByKey` / `AddLocalizedProperty`**（中文语序示例：**「含 {0} 首歌曲」**）；补 **`DisplayNameLocalizationKey`**；**`AddEquipLayerProperty`** 随主名键接通后可正确本地化饰品槽。 |
+| **T-SS3** | **P1** | **`ManualOfItems`**：**`Mystical Relic Chest`** — **`DisplayNameLocalizationKey`**（例 **`item.magical.relicchest`**）+ **`en/zh-Hans`** 成对 **`item.*`**。 |
+| **T-SS4** | **P2** | **Gift `gift.provenance`：** 运行时 **`m_How` / `m_Gifter`** 英文传入模板 — 需 **`m_How`** 稳定 shotkey 集合或展示层解析；影响 **`BaseGiftArmor`** 等全体 Gift/Level 等价路径。 |
+
+### 9.8 `Engines and Systems` 补充工单（T-SS-ES）
+
+> 下列为代表性 **`list.Add("`** / **`list.Add([0-9]+,\s*"`** 命中；实现模式同 **T-SS1**（双语分支 + **`equipment-properties.json`**）。
+
+| 工单 | 文件（相对 `Scripts/`） | 典型英文字符串 / 模式 |
+|------|-------------------------|----------------------|
+| **T-SS-ES1** | `Engines and Systems/Quests/Core/Definitions/SageArtifact.cs` | **`The Search for Artifacts`**；**`Discard at any time to abandon quest`**（`1049644`）等 |
+| **T-SS-ES2** | `Engines and Systems/Trades/Shoppes/DungeoneerCrate.cs` | **`Contains: `** + gold + **` Gold`**；**`For Sale: `** + total + **` Gold`**（拼接） |
+| **T-SS-ES3** | `Engines and Systems/Trades/Global Shoppe/Rewards/*.cs` | **`Usable from your backpack`**、**`Use on trees to increase rarity`**；**`Increases carving yields by {0}%`**；**`Apply dye directly`**、**`Has been dyed`**；**`Extractions remaining: {0}`**、**`Steal the color from an item`**、**`Holding dye: {0}`**；**`{0}\t{1} Uses`** 等 |
+| **T-SS-ES4** | `Engines and Systems/Trades/Apiculture/BeeHiveAddon.cs` | **`Invalid Hive`** 等 |
+| **T-SS-ES5** | `Engines and Systems/Champs/ChampionSkull.cs` | **`It is a plain skull.`**；**`Energy: Faint` / `Waning` / `Diminished` / `Fading` / `Potent`**；**`Type: `** + 名称拼接 |
+
+### 9.9 §5.1 Magical OPL 主名待补（T-SS5）
+
+**背景：** §5.1 **`SendMessage`** 已完成；下列 **OPL 第一行** 仍多为构造器英文 **`Name`**，缺 **`DisplayNameLocalizationKey`**（或动态名未走 **`AddNameProperty`** 双语分支）。
+
+**简易（静态键、单一构造器 `Name`）：** `LuckyHorseShoes`、`SlayerDeed`、`ArtifactManual`、`StaffOfFiveParts` 各部件、`PandorasBox`、`ColoringBook`、**Arcane/** 四元素书 — 各类 **`DisplayNameLocalizationKey => "item.magical.*"`** + **`en/zh-Hans`**。
+
+**复杂（运行时依状态改写 `Name`）：** **`SoulOrb`**（内容态改名）；**`RuneOfVirtue`**（多枚美德/堕落符文名）— 须在 **`AddNameProperty`**（或等价）按状态 **`ResolveFormatByKey` / `AddLocalizedProperty`**。
+
+| # | 物品 | 构造器 / 典型 `Name =` | 策略 |
+|---|------|-------------------------|------|
+| 1 | `SoulOrb` | **`soul orb`**（及 vampire blood / replication crystal / mystical mud 等运行时名） | 基底 **`DisplayNameLocalizationKey`**；状态名在 **`AddNameProperty`** 分支 shotkey |
+| 2 | `LuckyHorseShoes` | **`lucky horse shoes`** | 静态 **`item.magical.*`** |
+| 3 | `RuneOfVirtue` | **`rune`** → **`Rune of Honesty`** 等 | 按形态 **`AddNameProperty`** + shotkey |
+| 4 | `SlayerDeed` | **`a slayer stone`** | 静态 **`item.magical.*`** |
+| 5 | `ArtifactManual` | **`Encyclopedia of Rarities`** | 静态 **`item.magical.*`** |
+| 6 | `ManualOfItems` | **`Mystical Relic Chest`** | **T-SS3**（**`item.magical.relicchest`** 等） |
+| 7 | `StaffOfFiveParts`（×5 类） | **`piece of a staff`**、**`Staff of Ultimate Power`** | 每类静态 **`item.magical.*`** |
+| 8 | `PandorasBox` | （以脚本 **`Name`** 为准） | 静态 **`item.magical.*`** |
+| 9 | `ColoringBook` | （以脚本 **`Name`** 为准） | 静态 **`item.magical.*`** |
+| 10 | **Arcane/** | **`…Book of Spells`** | 每类静态 **`item.magical.*`** |
+| 11 | `MoonStone` | （已有键） | **跳过** — 已有 **`item.magical.moonstone.name`** |
+| — | `GemOfSeeing` | （神器 Minor） | **`Items/Magical/Artifacts/Minor/GemOfSeeing.cs`** — 静态 **`item.magical.*`** |
+
+<a id="910-扫描工单草案2026-05-18--模块清单"></a>
+
+### 9.10 扫描工单草案（2026-05-18 · 模块清单）
+
+> **依据：** §9.1–§9.3 检索模式；根路径 **`World/Source/Scripts/`**（全树）。  
+> **性质：** **grep 快照**，列出「代码中出现英文 Tooltip / InfoText / `list.Add` 字面量」的 **模块（文件）**；**不等于**均已确认缺 zh-Hans（部分已有 **`BuildingPropertyListLocale`** 分支）。**聊天 / Mobile OPL / 玩家指令 / Gump / 任务文案** 与物品 Tooltip **同属玩家可见英文**，**一律纳入**增补 **`zh-Hans`** 的工单（不因「非 Item 子类」排除）；落地前须 **逐文件核对** 展示通路（**`Item`** vs **`Mobile`** vs **`Gump`** vs **`SendMessage`**）并选用 **`StringCatalog`** / 既有 logical bundle（如 **`charrestore.json`**、**`trap-system.json`**）或 **`scripts-*`** 哈希流水线（见 **`AGENTS.md` §3**）。  
+> **复扫命令（仓库根）：**
+> ```bash
+> cd World/Source/Scripts
+> rg 'list\.Add("' --glob '*.cs' .
+> rg 'list\.Add\(1070722,' --glob '*.cs' .
+> rg 'list\.Add\(1049644,' --glob '*.cs' .
+> rg 'list\.Add\([0-9]+,\s*"' --glob '*.cs' .
+> rg 'InfoText[1-5]\s*=' --glob '*.cs' .
+> rg 'HarvestSystemTxt|SubResource\s*=' --glob '*.cs' .
+> ```
+
+#### （一）聊天 / Mobile / 指令 / Gump / 任务 — **纳入** zh-Hans（不按「非物品」排除）
+
+以下模块**不属于 `Items/` 典型物品子类**，但扫描命中英文 **`list.Add` / `InfoText*` / 任务文案**，**须同样增补中文**（路径与 **`AGENTS.md` §3**、`§5` **`charrestore`** / **`waiting-localization`** SendMessage 工单一致）。
+
+| 文件（相对 `Scripts/`） | 类型 | 增补方向（概要） |
+|-------------------------|------|------------------|
+| `System/Chat/General/DefaultLocal.cs` | 聊天 UI 批量 **`list.Add`** | 拆分 logical shotkeys（或专用 **`keep_extra`** bundle）；批量键 **`en/zh-Hans`**；避免数千行裸英文常驻客户端列表构造 |
+| `Mobiles/Base/BaseCreature.cs`、`Mobiles/Base/PlayerVendor.cs`、`Mobiles/Civilized/Citizens/Citizens.cs` | **生物 / 商人** OPL / 属性列表 | **`Mobile`** 检视 Tooltip：按账号语言 **`StringCatalog.Resolve*`** / 等价 bilingual OPL 钩子（若引擎仅在 **`Item`** 上有 **`BuildingPropertyListLocale`**，须在 **`Mobile.GetProperties`** 路径补对称逻辑） |
+| `System/Commands/Player/Organize.cs` | **`Organize`** · **`InfoText*`** | 指令说明走 **`ResolveByKey`** / **`equipment-properties.json`** 或 **`scripts-system`** |
+| `Engines and Systems/CharacterRestore/CharacterRestoreGump.cs` | **Character Restore Gump** | 扩展现有 **`charrestore.*`**（**`charrestore.json`**）或并列 logical 键；HTML/按钮与 **`CitizenLocalization`** 一致 |
+| `Engines and Systems/Quests/Core/Objectives/DeliverObjective.cs` | **MLQuest / 任务目标** | **`scripts-quests`** 哈希或 **`thewar-quest.json`** 类 curated logical 键；忌任务日志英文残留 |
+
+#### （二）已定锚点 · 须增补目录化文案（与 §9.7 / T20 对齐）
+
+| 模块 | 路径（相对 `Scripts/`） | 待增补面 |
+|------|-------------------------|----------|
+| **HarvestSystemTxt → InfoText1** | `Engines and Systems/Trades/Harvest/HarvestSystem.cs` | **`"Gathering: "` + 材料英文名**（Ore/Wood/Fish/Books/Graves）→ shotkey 或运行时 **`Resolve*`** |
+| **承接 InfoText1** | `Items/Trades/BaseHarvestTool.cs`、`Items/Weapons/Axes/BaseAxe.cs`、`Items/Weapons/PoleArms/BasePoleArm.cs` | 赋值链路已在 §9.2；随上一行一并目录化 |
+| **TrainingShovel** | `Engines and Systems/Quests/Core/Definitions/BlacksmithTraining.cs` | **`Drag onto Paperdoll`**、**`Only mines Iron Ore`**（`list.Add("`） |
+| **Spellbook 计数行** | `Engines and Systems/Magic/Magery/Spellbook.cs` | **`1 Song` / `N Songs`**、**`Ability(ies)`**、**`Power(s)`**（`1049644` + 拼接） |
+| **SongBook** | `Engines and Systems/Magic/Bard/SongBook.cs` | **`Name = "bardic songs"`** + 继承 **`Spellbook.GetProperties`** → 见 **T-SS2** |
+| **ManualOfItems** | `Items/Magical/ManualOfItems.cs` | **OPL 主名** **T-SS3**；其余 **`Belongs to…`** 等属性行若仍为英文须并入 **`prop.*`** |
+
+#### （三）T-SS-ES：`Engines and Systems` · `list.Add("` / `list.Add(cliloc,"` 命中模块
+
+| 模块 | 路径 |
+|------|------|
+| **T-SS-ES1** | `Engines and Systems/Quests/Core/Definitions/SageArtifact.cs` |
+| **T-SS-ES2** | `Engines and Systems/Trades/Shoppes/DungeoneerCrate.cs` |
+| **T-SS-ES3** | `Engines and Systems/Trades/Global Shoppe/Rewards/ArboristTool.cs`、`AdvancedSkinningKnife.cs`、`DyeTubTemp.cs`、`HueVacuumTube.cs`、`AncientCraftingGloves.cs`、`SkillBonusGloves.cs` |
+| **T-SS-ES4** | `Engines and Systems/Trades/Apiculture/BeeHiveAddon.cs` |
+| **T-SS-ES5** | `Engines and Systems/Champs/ChampionSkull.cs` |
+| **其它（含英文标签 `list.Add(`）** | `Engines and Systems/Champs/ChampionSpawn.cs`（-addon/系统物体，落地前确认是否为玩家物品 Tooltip） |
+
+#### （四）`Items/` · `list.Add("` 字面量（表面 2，仅 Items 子树）
+
+| 路径 |
+|------|
+| `Items/Armor/Leather/HikingBoots.cs` |
+| `Items/Deeds/CommodityDeed.cs` |
+| `Items/Houses/Doors/DoorSwitch.cs` |
+| `Items/Magical/God/LegendaryArtifactRename.cs` |
+| `Items/Magical/God/LevelUpScroll.cs` |
+| `Items/Sharpening/BowStrings/DamageIncreaseBowStringBase.cs`、`ElementalBowString.cs` |
+| `Items/Sharpening/ConsecrateItemBase.cs` |
+| `Items/Sharpening/SharpeningStones/DamageIncreaseSharpeningStoneBase.cs` |
+| `Items/Sharpening/SplitElementalItemBase.cs` |
+| `Items/Sharpening/WeightingStones/DamageIncreaseWeightingStoneBase.cs`、`ElementalWeightingStone.cs` |
+| `Items/Trades/Cartography/Maps/TreasureMap.cs` |
+
+#### （五）T9 `Potions/`：✅ 已完成（2026-05-18）
+
+**改动：** Liquids 与 Mixtures 共 10 文件 **`list.Add(1070722, "X Damage")`** → **`AddLocalizedProperty("prop.potion.{type}")`**；`ResurrectPotion` + `NecroSkinPotion` Special 两条类似。所有键（`prop.potion.fire`、`cold`、`energy`、`poison`、`physical`、`resurrect`、`necroskin`、`necroskin.eat`）已写入 `en/` + `zh-Hans/` `equipment-properties.json`。
+
+| 路径（相对 `Items/Potions/`） |
+|-------------------------------|
+| `Mixtures/LiquidFire.cs`、`LiquidGoo.cs`、`LiquidIce.cs`、`LiquidRot.cs` |
+| `Mixtures/MixtureDiseasedSlime.cs`、`MixtureFireSlime.cs`、`MixtureIceSlime.cs`、`MixtureRadiatedSlime.cs`、`MixtureSlime.cs` |
+| `Special/NecroSkinPotion.cs`、`ResurrectPotion.cs` |
+| `Standard/Poison Potions/VenomSack.cs` |
+
+#### （六）T8 ✅ / T10 ✅ / T11 ✅ / T12 ✅ · 扫描命中模块
+
+| 工单 | 路径 |
+|------|------|
+| **T8** ✅ | `Items/Food/Food.cs`、`Items/Food/Beverage.cs` — ✅ 已落地（2026-05-18，`prop.food.hunger`、`prop.food.thirst`、`prop.food.beverage.*`） |
+| **T10** ✅ | `Items/Sharpening/` 全部 23 文件 — ✅ 已落地（2026-05-18，`prop.sharpening.*` + `item.sharpening.*`） |
+| **T11** ✅ | `Items/Books/PowerScrolls/PowerScroll.cs` — ✅ 已落地（2026-05-18，`prop.scroll.power.*`） |
+| **T12** ✅ | `Items/Explorers/CamperTent.cs`、`SmallTent.cs`、`StableStone.cs`、`Spyglass.cs` — ✅ 已落地（2026-05-18，`prop.explorer.*` + `item.explorer.*`） |
+| **T13** ✅ | `Items/Misc/` 全部 27 文件 — ✅ 已落地（2026-05-18：圣诞树×3、染料×9、坐骑×5、水果树、变色石、召唤球、望远镜、垃圾桶、纪念品、万圣节袋、精粹球等；`prop.misc.*`） |
+| **T14** ✅ | `Items/Houses/` 全部 6 文件 — ✅ 已落地（2026-05-18：DoorSwitch、RentalContract、RentalLicense、InteriorDecorator、AdvertiserVendor、PearTreeAddon；`prop.house.*`） |
+| **T15** ✅ | `Items/Containers/` 全部 4 文件 — ✅ 已落地（2026-05-18：WeightReductionContainer size/%/access、AlchemistPouch、HiddenBox、MovingBox；`prop.container.*`） |
+| **T16** ✅ | `Items/Boats/` 全部 7 文件 — ✅ 已落地（2026-05-18：DockingLantern、PirateBounty、GrapplingHook、BoatBuild、BoatStain、CarpetBuild、Cargo；`prop.boat.*`） |
+| **T17** ✅ | `Items/Technology/` 全部 4 文件 — ✅ 已落地（2026-05-18：PortableSmelter、KilrathiGun、KilrathiHeavyGun、MedicalRecord；`prop.tech.*`） |
+| **T18** ✅ | `Items/Relics/` 全部 2 文件 — ✅ 已落地（2026-05-18：DDRelicRug、DDRelicBearRugs；`prop.relic.*`；程序英文名与 `ColorText3` 转入 T20） |
+
+#### （七）`InfoText[1-5]\s*=` 赋值模块（表面 4；共 **37** 文件 — 含 Item / Mobile / 引擎）
+
+`Engines and Systems/Champs/Mobiles/Bosses/BaseChampion.cs`、`Engines and Systems/Magic/Base/SpellItemInfo.cs`、`Engines and Systems/Magic/Magery/Scrolls/SpellScroll.cs`、`Items/Explorers/Spyglass.cs`、`Items/Misc/CommunicationCrystals.cs`、`Items/Misc/MagicForges.cs`、`Items/Potions/Special/TransmutationPotion.cs`、`Items/Technology/Canteen.cs`、`Items/Technology/DuctTape.cs`、`Items/Technology/Landmine.cs`、`Items/Technology/PlasmaTorch.cs`、`Items/Technology/ReagentJar.cs`、`Items/Technology/RomulanAle.cs`、`Items/Trades/BaseHarvestTool.cs`、`Items/Trades/BaseTool.cs`、`Items/Trades/Carpentry/WoodworkingTools.cs`、`Items/Trades/Magical/Tools/BaseRunicTool.cs`、`Items/Trades/Reagents/BaseReagent.cs`、`Items/Trades/SkinningKnifeTool.cs`、`Items/Trades/Thieving/PickBox.cs`、`Items/Traps/TrapKit.cs`、`Items/Trinkets/MagicalWand.cs`、`Items/Weapons/Axes/BaseAxe.cs`、`Items/Weapons/PoleArms/BasePoleArm.cs`、`Mobiles/Base/BaseCreature.cs`、`Mobiles/Humanoids/Humans/BlackKnight.cs`、`Mobiles/Undead/Dracolich.cs`、`Mobiles/Undead/GrundulVarg.cs`、`Mobiles/Undead/Kull.cs`、`Mobiles/Undead/LostKnight.cs`、`Mobiles/Undead/Murk.cs`、`Mobiles/Undead/Vordo.cs`、`Mobiles/Unique/BaronAlmric.cs`、`System/Misc/ResourceMods.cs`、`System/Commands/Player/Organize.cs`、`Engines and Systems/CharacterRestore/CharacterRestoreGump.cs`、`Engines and Systems/Quests/Core/Objectives/DeliverObjective.cs`
+
+上列 **全部** 为待目录化候选；其中 **`Mobile*`、`Organize`、`CharacterRestoreGump`、`DeliverObjective`** 的实现要点见 **§（一）**（非排除，**同工单收口**）。
+
+#### （八）`SubResource\s*=`（表面 5）— Items 内 **12** 个基底 / 关键模块
+
+以下模块含 **`SubResource`** 赋值；须 spot-check **`SubName`** / 材质相关 OPL 在 zh-Hans 是否仍为英文（多数已由 **`CraftResources`** 与装备流水线处理）：
+
+`Items/Armor/BaseArmor.cs`、`Items/Clothing/BaseClothing.cs`、`Items/Weapons/BaseWeapon.cs`、`Items/Instruments/BaseInstrument.cs`、`Items/Trinkets/BaseTrinket.cs`、`Items/Containers/Container.cs`、`Items/Trades/BaseHarvestTool.cs`、`Items/Trades/BaseTool.cs`、`Items/Trades/Magical/Tools/BaseRunicTool.cs`、`Items/Houses/Construction/Addons/BaseAddonContainer.cs`、`Items/Houses/Construction/Addons/BaseAddonContainerDeed.cs`、`Items/Technology/SciFiJunk.cs`。
+
+#### （九）Level / God 装备 · `list.Add(cliloc,"` 命中（英文属性行 / 拼接）
+
+`Items/Magical/God/Armor/BaseLevelArmor.cs`、`Items/Magical/God/Clothing/BaseLevelClothing.cs`、`Items/Magical/God/Jewels/BaseLevelJewel.cs`、`Items/Magical/God/Shields/BaseLevelShield.cs`、`Items/Magical/God/ItemExperienceToken.cs`、`Items/Magical/God/Weapons/Axes/BaseLevelAxe.cs`、`Items/Magical/God/Weapons/Knives/BaseLevelKnife.cs`、`Items/Magical/God/Weapons/Maces/BaseLevelBashing.cs`、`Items/Magical/God/Weapons/Maces/BaseLevelWhip.cs`、`Items/Magical/God/Weapons/PoleArms/BaseLevelPoleArm.cs`、`Items/Magical/God/Weapons/Ranged/BaseLevelRanged.cs`、`Items/Magical/God/Weapons/SpearsAndForks/BaseLevelSpear.cs`、`Items/Magical/God/Weapons/Staves/BaseLevelStaff.cs`、`Items/Magical/God/Weapons/Swords/BaseLevelSword.cs`；另 **`Items/Misc/Scrolls/ScrollofAlacrity.cs`、`Items/Misc/Scrolls/ScrollofTranscendence.cs`**。
+
+#### （十）T-SS4 · **`gift.provenance`** 运行时英文 — Gift 基底模块（**13**）
+
+`Items/Magical/Gifts/Armor/BaseGiftArmor.cs`、`Items/Magical/Gifts/Clothing/BaseGiftClothing.cs`、`Items/Magical/Gifts/Jewels/BaseGiftJewel.cs`、`Items/Magical/Gifts/Shields/BaseGiftShield.cs`、`Items/Magical/Gifts/Weapons/Staves/BaseGiftStaff.cs`、`Items/Magical/Gifts/Weapons/Swords/BaseGiftSword.cs`、`Items/Magical/Gifts/Weapons/Axes/BaseGiftAxe.cs`、`Items/Magical/Gifts/Weapons/Knives/BaseGiftKnife.cs`、`Items/Magical/Gifts/Weapons/Maces/BaseGiftBashing.cs`、`Items/Magical/Gifts/Weapons/Maces/BaseGiftWhip.cs`、`Items/Magical/Gifts/Weapons/PoleArms/BaseGiftPoleArm.cs`、`Items/Magical/Gifts/Weapons/Ranged/BaseGiftRanged.cs`、`Items/Magical/Gifts/Weapons/SpearsAndForks/BaseGiftSpear.cs`。
+
+#### （十一）T13–T19 · 目录级 backlog（须在目录内对 **`GetProperties` / `AddNameProperties` / `list.Add` / `InfoText*`** 做第二遍扫）
+
+| 工单 | 目录（相对 `Scripts/Items/`） | 快照说明 |
+|------|------------------------------|----------|
+| **T13** ✅ | `Misc/` | 已完成（2026-05-18）— 27 文件（圣诞树×3、染料×9、坐骑×5、水果树、变色石、召唤球、望远镜、垃圾桶、纪念品、万圣节袋、精粹球等）。**
+| **T14** ✅ | `Houses/` | 已完成（2026-05-18）— 6 文件（DoorSwitch、RentalContract、RentalLicense、InteriorDecorator、AdvertiserVendor、PearTreeAddon）。**
+| **T15** ✅ | `Containers/` | 已完成（2026-05-18）— 4 文件（WeightReductionContainer、AlchemistPouch、HiddenBox、MovingBox）；**ColorText 类宝箱（GraveChest/SunkenChest/BuriedChest/BuriedBody等）** 转入 T20。**
+| **T16** ✅ | `Boats/` | 已完成（2026-05-18）— 7 文件（DockingLantern、PirateBounty、GrapplingHook、BoatBuild、BoatStain、CarpetBuild、Cargo）。|
+| **T17** ✅ | `Technology/` | 已完成（2026-05-18）— 4 文件（PortableSmelter、KilrathiGun、KilrathiHeavyGun、MedicalRecord）。|
+| **T18** ✅ | `Relics/` | 已完成（2026-05-18）— 2 文件（DDRelicRug、DDRelicBearRugs）；`DDRelicGem` 程序英文名与 `ColorText3` 宝箱转入 **T20**。|
+| **T19** ✅ | `Games/`（含 **`DandD/`**） | 已完成（2026-05-18）— 18 C# + 2 JSON 文件；BlackJack / HiLoCards / CasinoToken / 6 骰子 / 3 D&D 书 / TarotPoker / Tarot / PuzzleCube / LiarsDice（IsContentLocalized + DisplayNameLocalizationKey + 双语 GetProperties/AddNameProperties + 22 shotkeys prop.casino.* / prop.dnd.* / item.dnd.* / item.games.*）。 |
+| **T20** ✅ | **跨切面** InfoText1–5 / ColorText1–5 | 已完成（2026-05-18）— 14 文件 InfoText 双语守卫（BaseRunicTool / WoodworkingTools / BaseReagent / Canteen / RomulanAle / PlasmaTorch / Landmine / DuctTape / ReagentJar / MagicForges / CommunicationCrystals / SkinningKnifeTool / PickBox / VordoScroll）+ 7 文件 ColorText 双语守卫（MagicalWand / SunkenChest / BeginnerBook / JewelryBox / BookBox / MagicPigment / Corpse）+ 39 shotkeys prop.infotext.* / prop.colortext.*。保留项：Mobile 战利品 InfoText（BlackKnight / LostKnight / GrundulVarg / Kull / Murk / BaronAlmric / BaseCreature.Kazibal）需运行时 loot 解析；MagicRuneBag 25 符文词待后续精简；HarvestSystemTxt / CraftSystemTxt 需中央函数改造。 |
+
+#### （十二）其它 Item · `list.Add(1070722` / `1049644` 命中
+
+- ~~**`Items/Books/PowerScrolls/PowerScroll.cs`**（T11）~~ ✅ 已完成  
+- ~~**`Items/Sharpening/`** 下 **`Consecrated*`、`DamageIncrease*`、`Elemental*`**（与 **§（四）** 重叠，一并收口 **T10**）~~ ✅ 已完成
+- **`Items/Trinkets/OldSwordTalisman.cs`**  
+- **`Items/Traps/CurseItem.cs`**（若属 **`trap-system.json`** 已有键则核对重复）
+
+#### (十三)
+`/Users/forrrest/projects/UO-Memento/ultima-memento/World/Source/Scripts/Mobiles/Base/Behavior.cs`
+
+---
+
 ## 6. 附录：非装备物品分类总表
 
 ### 按中文化策略分类
@@ -632,7 +946,7 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | **B - 装备子类 cliloc 修复** | 额外 GetProperties 覆盖 | 5个文件 ✅ |
 | **C - Gift 系统中文化** | 附魔属性 | 19个文件 ✅ |
 | **D - Level 系统中文化** | 等级/经验值属性 | 25个文件 ✅ |
-| **E - 非装备 AddNameProperties** | 描述性文本的 Item 子类 | ~63个文件；Trades 的 **`SendMessage` 已收敛**，其余面见 **§5.3b 工单** |
+| **E - 非装备 AddNameProperties** | 描述性文本的 Item 子类 | ~63个文件；Trades 的 **`SendMessage` 已收敛**，其余面见 **§5.3b 工单**；**OPL 全文 backlog（T8–T20、T-SS、T-SS-ES）见 §9** |
 
 ### 策略 E 优先级建议
 

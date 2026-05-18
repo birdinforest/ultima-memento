@@ -41,7 +41,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "Just Say 'Trick Or Treat' To Merchants" );
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.halloween.trickortreat");
+            else
+			    list.Add( "Just Say 'Trick Or Treat' To Merchants" );
  		}
 
 		public bool Dye( Mobile from, DyeTub sender )

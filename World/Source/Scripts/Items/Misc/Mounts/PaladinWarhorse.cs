@@ -17,10 +17,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Holy Mount For Grandmaster Knights");
-        } 
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.misc.mount.paladin");
+            else
+			    list.Add( 1070722, "Holy Mount For Grandmaster Knights");
+        }
 
-		public PaladinWarhorse( Serial serial ) : base( serial ) 
+		public PaladinWarhorse( Serial serial ) : base( serial )
 		{ 
 		} 
 
