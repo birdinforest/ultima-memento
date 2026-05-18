@@ -31387,8 +31387,7 @@ Number;Text;Flag
 1061300;Attempts to neutralize poisons affecting the Target.;Original
 1061301;Affects the Target with a chilling effect, dealing Cold damage.  The closer the Target is to the Caster, the more damage is dealt.;Original
 1061302;Places an explosive magic ward on a container that deals Fire damage to the next person to open it. You can also target the ground and place a random trap for the careless.;Modified
-1061303;Deactivates a magical trap on a container, or you can cast on yourself to summon an orb of trap detection. This orb would remain in your pack and help you avoid hidden traps.
-;Modified
+1061303;Deactivates a magical trap on a container, or you can cast on yourself to summon an orb of trap detection. This orb would remain in your pack and help you avoid hidden traps.;Modified
 1061304;Prevents the Target from having their spells disrupted, but lowers their Physical Resistance and Magic Resistance.  Active until the spell is deactivated by recasting on the same Target.;Modified
 1061305;Temporarily increases Target’s Strength.;Original
 1061306;Temporarily increases Target’s Strength, Dexterity, and Intelligence.;Original

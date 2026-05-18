@@ -1,0 +1,4174 @@
+[
+{
+"n": "1005008",
+"en": "Thou art a criminal and cannot rent a room."
+},
+{
+"n": "1017379",
+"en": "You seem to be struggling with your bedroll."
+},
+{
+"n": "1020195",
+"en": "Bald"
+},
+{
+"n": "1023087",
+"en": "Leatherworker"
+},
+{
+"n": "1024708",
+"en": "deed to a pyramid"
+},
+{
+"n": "1024714",
+"en": "deed to a large tent"
+},
+{
+"n": "1024733",
+"en": "deed to a castle tower"
+},
+{
+"n": "1024781",
+"en": "Castle Tower"
+},
+{
+"n": "1024788",
+"en": "Pyramid"
+},
+{
+"n": "1024851",
+"en": "Large Tent"
+},
+{
+"n": "1024863",
+"en": "deed to a fortress"
+},
+{
+"n": "1024869",
+"en": "Fortress"
+},
+{
+"n": "1024875",
+"en": "Log Mansion"
+},
+{
+"n": "1029725",
+"en": "<BASEFONT COLOR=#5FAFE3>Or Use Your Mercantile Skill</BASEFONT>"
+},
+{
+"n": "1029726",
+"en": "<BASEFONT COLOR=#5FAFE3>Or Use Your Arms Lore Skill</BASEFONT>"
+},
+{
+"n": "1029727",
+"en": "<BASEFONT COLOR=#5FAFE3>Or Use Your Tasting Skill</BASEFONT>"
+},
+{
+"n": "1029760",
+"en": "<BASEFONT COLOR=#5FAFE3>Bowyer Can Appraise</BASEFONT>"
+},
+{
+"n": "1029761",
+"en": "<BASEFONT COLOR=#5FAFE3>Armorer Can Appraise</BASEFONT>"
+},
+{
+"n": "1029762",
+"en": "<BASEFONT COLOR=#5FAFE3>Sage Can Appraise</BASEFONT>"
+},
+{
+"n": "1029763",
+"en": "<BASEFONT COLOR=#5FAFE3>Scribe Can Appraise</BASEFONT>"
+},
+{
+"n": "1029764",
+"en": "<BASEFONT COLOR=#5FAFE3>Tailor Can Appraise</BASEFONT>"
+},
+{
+"n": "1029765",
+"en": "<BASEFONT COLOR=#5FAFE3>Banker Can Appraise</BASEFONT>"
+},
+{
+"n": "1029766",
+"en": "<BASEFONT COLOR=#5FAFE3>Jeweler Can Appraise</BASEFONT>"
+},
+{
+"n": "1029767",
+"en": "<BASEFONT COLOR=#5FAFE3>Leatherworker Can Appraise</BASEFONT>"
+},
+{
+"n": "1029768",
+"en": "<BASEFONT COLOR=#5FAFE3>Sage Can Appraise</BASEFONT>"
+},
+{
+"n": "1029769",
+"en": "<BASEFONT COLOR=#5FAFE3>Bard Can Appraise</BASEFONT>"
+},
+{
+"n": "1029770",
+"en": "<BASEFONT COLOR=#5FAFE3>Alchemist Can Appraise</BASEFONT>"
+},
+{
+"n": "1029771",
+"en": "<BASEFONT COLOR=#5FAFE3>Herbalist Can Appraise</BASEFONT>"
+},
+{
+"n": "1029772",
+"en": "<BASEFONT COLOR=#5FAFE3>Scribe Can Appraise</BASEFONT>"
+},
+{
+"n": "1029773",
+"en": "<BASEFONT COLOR=#5FAFE3>Mage Can Appraise</BASEFONT>"
+},
+{
+"n": "1029774",
+"en": "<BASEFONT COLOR=#5FAFE3>Weaponsmith Can Appraise</BASEFONT>"
+},
+{
+"n": "1029775",
+"en": "<BASEFONT COLOR=#5FAFE3>Woodworker Can Appraise</BASEFONT>"
+},
+{
+"n": "1029776",
+"en": "<BASEFONT COLOR=#5FAFE3>Merchant Can Appraise</BASEFONT>"
+},
+{
+"n": "1030829",
+"en": "Two Story Sandstone House"
+},
+{
+"n": "1030830",
+"en": "Brick House With Steeple"
+},
+{
+"n": "1030831",
+"en": "Two Story Brick House"
+},
+{
+"n": "1030832",
+"en": "Plaster House Picture Window"
+},
+{
+"n": "1030833",
+"en": "Two Story Brick Home"
+},
+{
+"n": "1030834",
+"en": "Two Story Wooden Home With Porch"
+},
+{
+"n": "1030835",
+"en": "Small Stone Shoppe"
+},
+{
+"n": "1030836",
+"en": "Wooden Home Porch"
+},
+{
+"n": "1030837",
+"en": "Small Tower Of Stone"
+},
+{
+"n": "1030838",
+"en": "Three Story Stone Villa"
+},
+{
+"n": "1030839",
+"en": "Two Story Small Stone Home"
+},
+{
+"n": "1030840",
+"en": "Two Story Small Stone House"
+},
+{
+"n": "1030841",
+"en": "Two Story Small Stone Dwelling"
+},
+{
+"n": "1030842",
+"en": "Two Story Small Wooden Dwelling"
+},
+{
+"n": "1030843",
+"en": "Wooden Mansion"
+},
+{
+"n": "1030844",
+"en": "Small Stone Store Front"
+},
+{
+"n": "1030845",
+"en": "Small Stone Home"
+},
+{
+"n": "1030846",
+"en": "Fancy Stone Wood Home"
+},
+{
+"n": "1030847",
+"en": "Fancy Wooden Stone House"
+},
+{
+"n": "1030848",
+"en": "Small Stone House"
+},
+{
+"n": "1030849",
+"en": "Small Wooden Shack Porch"
+},
+{
+"n": "1030850",
+"en": "Plain Plaster House"
+},
+{
+"n": "1030851",
+"en": "Plain Stone House"
+},
+{
+"n": "1030852",
+"en": "Plaster Home With Dirt Deck"
+},
+{
+"n": "1030853",
+"en": "Wooden Home Upper Deck"
+},
+{
+"n": "1030854",
+"en": "Two Story Stone Villa"
+},
+{
+"n": "1030855",
+"en": "Two Story Small Plaster Dwelling"
+},
+{
+"n": "1030856",
+"en": "Small Stone Temple"
+},
+{
+"n": "1030857",
+"en": "Small Sandstone Workshop"
+},
+{
+"n": "1030858",
+"en": "Stone Home With Enclosed Patio"
+},
+{
+"n": "1030859",
+"en": "Log Home"
+},
+{
+"n": "1030860",
+"en": "Small Log Cabin With Deck"
+},
+{
+"n": "1030861",
+"en": "Raised Brick Home"
+},
+{
+"n": "1030862",
+"en": "Brick Arena"
+},
+{
+"n": "1030863",
+"en": "Stone Fort"
+},
+{
+"n": "1030864",
+"en": "Old Stone Home And Shoppe"
+},
+{
+"n": "1030865",
+"en": "Small Brick Castle"
+},
+{
+"n": "1030866",
+"en": "Small Wizard Tower"
+},
+{
+"n": "1030867",
+"en": "Brick Home With Front Deck"
+},
+{
+"n": "1030868",
+"en": "Marble Shoppe"
+},
+{
+"n": "1030869",
+"en": "Brick Home With Large Porch"
+},
+{
+"n": "1030870",
+"en": "Wagon"
+},
+{
+"n": "1030871",
+"en": "Log Cabin"
+},
+{
+"n": "1032059",
+"en": "<BASEFONT COLOR=#454FF5>Star Sapphire Setting</BASEFONT>"
+},
+{
+"n": "1032060",
+"en": "<BASEFONT COLOR=#46E657>Emerald Setting</BASEFONT>"
+},
+{
+"n": "1032061",
+"en": "<BASEFONT COLOR=#6FC7EE>Sapphire Setting</BASEFONT>"
+},
+{
+"n": "1032062",
+"en": "<BASEFONT COLOR=#E83B3B>Ruby Setting</BASEFONT>"
+},
+{
+"n": "1032063",
+"en": "<BASEFONT COLOR=#E8F567>Citrine Setting</BASEFONT>"
+},
+{
+"n": "1032064",
+"en": "<BASEFONT COLOR=#EB67F5>Amethyst Setting</BASEFONT>"
+},
+{
+"n": "1032065",
+"en": "<BASEFONT COLOR=#D4C346>Tourmaline Setting</BASEFONT>"
+},
+{
+"n": "1032066",
+"en": "<BASEFONT COLOR=#DF8929>Amber Setting</BASEFONT>"
+},
+{
+"n": "1032067",
+"en": "<BASEFONT COLOR=#C2F5FF>Diamond Setting</BASEFONT>"
+},
+{
+"n": "1032068",
+"en": "<BASEFONT COLOR=#D4DFE1>Pearl Setting</BASEFONT>"
+},
+{
+"n": "1034455",
+"en": "Leather"
+},
+{
+"n": "1034456",
+"en": "Deep Sea Leather"
+},
+{
+"n": "1034457",
+"en": "Lizard Leather"
+},
+{
+"n": "1034458",
+"en": "Serpent Leather"
+},
+{
+"n": "1034459",
+"en": "Necrotic Leather"
+},
+{
+"n": "1034460",
+"en": "Volcanic Leather"
+},
+{
+"n": "1034461",
+"en": "Frozen Leather"
+},
+{
+"n": "1034462",
+"en": "Goliath Leather"
+},
+{
+"n": "1034463",
+"en": "Draconic Leather"
+},
+{
+"n": "1034464",
+"en": "Hellish Leather"
+},
+{
+"n": "1034465",
+"en": "Dinosaur Leather"
+},
+{
+"n": "1034466",
+"en": "Alien Leather"
+},
+{
+"n": "1041532",
+"en": "the magic lamp of the ~1_SHIP_NAME~"
+},
+{
+"n": "1041533",
+"en": "This carpet is now called the ~1_NEW_SHIP_NAME~."
+},
+{
+"n": "1041534",
+"en": "You must be on the carpet to open the bag."
+},
+{
+"n": "1041535",
+"en": "I can not open the bag while the carpet is moving."
+},
+{
+"n": "1041536",
+"en": "The carpet is already steady, my master."
+},
+{
+"n": "1041537",
+"en": "The carpet is steadied, my master."
+},
+{
+"n": "1041538",
+"en": "The carpet has not been steadied, my master."
+},
+{
+"n": "1041539",
+"en": "The carpet is ready to glide, my master."
+},
+{
+"n": "1041540",
+"en": "Yes, my master."
+},
+{
+"n": "1041541",
+"en": "What name do you want for this carpet, my master?"
+},
+{
+"n": "1041542",
+"en": "Only my master may name this carpet."
+},
+{
+"n": "1041543",
+"en": "Yes, my master."
+},
+{
+"n": "1041544",
+"en": "This carpet now has no name."
+},
+{
+"n": "1041545",
+"en": "This carpet has no name."
+},
+{
+"n": "1041546",
+"en": "I have no current nav point, my master."
+},
+{
+"n": "1041547",
+"en": "That is no a map, my master."
+},
+{
+"n": "1041548",
+"en": "That map has no course on it, my master."
+},
+{
+"n": "1041549",
+"en": "You have a map, my master."
+},
+{
+"n": "1041550",
+"en": "I cannot turn, my master"
+},
+{
+"n": "1041551",
+"en": "The carpet is not moving, my master."
+},
+{
+"n": "1041552",
+"en": "There is no map, my master."
+},
+{
+"n": "1041553",
+"en": "The map is too far away from me, my master."
+},
+{
+"n": "1041554",
+"en": "I do not see the nav point, my master."
+},
+{
+"n": "1041555",
+"en": "The path is complete, my master."
+},
+{
+"n": "1041556",
+"en": "The carpet is steadied, my master."
+},
+{
+"n": "1041557",
+"en": "The carpet has stopped, my master."
+},
+{
+"n": "1041558",
+"en": "This carpet is the ~1_BOAT_NAME~."
+},
+{
+"n": "1041559",
+"en": "This carpet is now called the ~1_NEW_SHIP_NAME~."
+},
+{
+"n": "1041560",
+"en": "We have arrived at nav point ~1_POINT_NUM~ , my master."
+},
+{
+"n": "1041561",
+"en": "Heading to nav point ~1_POINT_NUM~, my master."
+},
+{
+"n": "1041562",
+"en": "My current destination navpoint is nav ~1_NAV_POINT_NUM~."
+},
+{
+"n": "1041563",
+"en": "Our fate appears to be sealed, my master."
+},
+{
+"n": "1041564",
+"en": "I would advise against that, my master."
+},
+{
+"n": "1041565",
+"en": "This carpet is like new."
+},
+{
+"n": "1041566",
+"en": "This carpet is slightly worn."
+},
+{
+"n": "1041567",
+"en": "This carpet is somewhat worn."
+},
+{
+"n": "1041568",
+"en": "This carpet is fairly worn."
+},
+{
+"n": "1041569",
+"en": "This carpet is greatly worn."
+},
+{
+"n": "1041570",
+"en": "This carpet is in danger of rotting."
+},
+{
+"n": "1041571",
+"en": "A magic key is now in my safety deposit box."
+},
+{
+"n": "1041572",
+"en": "A magic key is now in my backpack."
+},
+{
+"n": "1041573",
+"en": "A magic key is now at my feet."
+},
+{
+"n": "1041574",
+"en": "You must have the magic key to roll up the carpet."
+},
+{
+"n": "1041575",
+"en": "You must steady the carpet to roll it up."
+},
+{
+"n": "1041576",
+"en": "You cannot roll up the carpet with beings on board!"
+},
+{
+"n": "1041577",
+"en": "You cannot roll up the carpet when it is cluttered."
+},
+{
+"n": "1041578",
+"en": "Make sure the magic bag is empty, and try again!"
+},
+{
+"n": "1041579",
+"en": "It appears to have a bitter taste of light poison."
+},
+{
+"n": "1041580",
+"en": "It appears to have a bitter taste of poison."
+},
+{
+"n": "1041581",
+"en": "It appears to have a bitter taste of greater poison."
+},
+{
+"n": "1041582",
+"en": "It appears to have a bitter taste of deadly poison."
+},
+{
+"n": "1041583",
+"en": "It appears to have a bitter taste of lethal poison."
+},
+{
+"n": "1044000",
+"en": "<CENTER>WITCH BREWING MENU</CENTER>"
+},
+{
+"n": "1044118",
+"en": "Death Knight"
+},
+{
+"n": "1044119",
+"en": "Grim Reaper"
+},
+{
+"n": "1044120",
+"en": "Shield of Hate"
+},
+{
+"n": "1044121",
+"en": "Orb of Orcus"
+},
+{
+"n": "1044122",
+"en": "Strength of Steel"
+},
+{
+"n": "1044123",
+"en": "Succubus Skin"
+},
+{
+"n": "1044124",
+"en": "<CENTER>DRUIDIC HERBALISM MENU</CENTER>"
+},
+{
+"n": "1044125",
+"en": "You have use the cauldron too much and the metal corroded!"
+},
+{
+"n": "1044126",
+"en": "The cauldron must be in your pack to use."
+},
+{
+"n": "1044127",
+"en": "You pour the potion into a jar..."
+},
+{
+"n": "1044128",
+"en": "Empty Jars"
+},
+{
+"n": "1044129",
+"en": "You do not have enough reagents to make that."
+},
+{
+"n": "1044130",
+"en": "You need an empty jar to make a potion."
+},
+{
+"n": "1044131",
+"en": "<CENTER>BONECRAFTING MENU</CENTER>"
+},
+{
+"n": "1044132",
+"en": "MAKE"
+},
+{
+"n": "1044133",
+"en": "ceramic mug"
+},
+{
+"n": "1044134",
+"en": "pewter mug"
+},
+{
+"n": "1044135",
+"en": "skull mug"
+},
+{
+"n": "1044136",
+"en": "goblet"
+},
+{
+"n": "1044144",
+"en": "There is not enough material here to break this down."
+},
+{
+"n": "1044145",
+"en": "You can only use this at the Enchanted Spinning Wheel."
+},
+{
+"n": "1044146",
+"en": "You can only use this at the Golden Alchemist."
+},
+{
+"n": "1044147",
+"en": "You can only use this at the Dragon Head Forge."
+},
+{
+"n": "1044148",
+"en": "You break the item down into ordinary resources."
+},
+{
+"n": "1044149",
+"en": "You have no idea how to break this item down."
+},
+{
+"n": "1054016",
+"en": "Dinosaur Scales"
+},
+{
+"n": "1054017",
+"en": "DINOSAUR (~1_AMT~)"
+},
+{
+"n": "1054018",
+"en": "You cannot work these strange and unusual scales."
+},
+{
+"n": "1054019",
+"en": "Metallic Scales"
+},
+{
+"n": "1054026",
+"en": "Brazen Scales"
+},
+{
+"n": "1054027",
+"en": "Umber Scales"
+},
+{
+"n": "1054028",
+"en": "Violet Scales"
+},
+{
+"n": "1054029",
+"en": "Platinum Scales"
+},
+{
+"n": "1054153",
+"en": "METALLIC (~1_AMT~)"
+},
+{
+"n": "1054154",
+"en": "BRAZEN (~1_AMT~)"
+},
+{
+"n": "1054155",
+"en": "UMBER (~1_AMT~)"
+},
+{
+"n": "1054156",
+"en": "VIOLET (~1_AMT~)"
+},
+{
+"n": "1054157",
+"en": "PLATINUM (~1_AMT~)"
+},
+{
+"n": "1054158",
+"en": "CADALYTE (~1_AMT~)"
+},
+{
+"n": "1060096",
+"en": "Cadalyte Scales"
+},
+{
+"n": "1060097",
+"en": "You have no idea how to work this fabric."
+},
+{
+"n": "1060526",
+"en": "Stat gain is on cooldown"
+},
+{
+"n": "1060527",
+"en": "No Dex Gain"
+},
+{
+"n": "1060528",
+"en": "No Int Gain"
+},
+{
+"n": "1060529",
+"en": "No Str Gain"
+},
+{
+"n": "1061182",
+"en": "Equipment: ~1_val~"
+},
+{
+"n": "1061183",
+"en": "Density: Weak"
+},
+{
+"n": "1061184",
+"en": "Density: Regular"
+},
+{
+"n": "1061185",
+"en": "Density: Great"
+},
+{
+"n": "1061186",
+"en": "Density: Greater"
+},
+{
+"n": "1061187",
+"en": "Density: Superior"
+},
+{
+"n": "1061188",
+"en": "Density: Ultimate"
+},
+{
+"n": "1061275",
+"en": "Owner & Co-Owners"
+},
+{
+"n": "1061722",
+"en": "decanter of ale"
+},
+{
+"n": "1061723",
+"en": "decanter of cider"
+},
+{
+"n": "1061724",
+"en": "decanter of liquor"
+},
+{
+"n": "1061725",
+"en": "decanter of milk"
+},
+{
+"n": "1061726",
+"en": "decanter of wine"
+},
+{
+"n": "1061727",
+"en": "decanter of water"
+},
+{
+"n": "1061728",
+"en": "decanter"
+},
+{
+"n": "1063490",
+"en": "Cheetah Paws"
+},
+{
+"n": "1063491",
+"en": "Run much faster."
+},
+{
+"n": "1063492",
+"en": "Deception"
+},
+{
+"n": "1063493",
+"en": "You are disguised."
+},
+{
+"n": "1063494",
+"en": "Poisoned"
+},
+{
+"n": "1063495",
+"en": "Health is diminishing."
+},
+{
+"n": "1063496",
+"en": "Eyes of the Dead"
+},
+{
+"n": "1063497",
+"en": "See better in darkness."
+},
+{
+"n": "1063498",
+"en": "Spectre Shadow"
+},
+{
+"n": "1063499",
+"en": "Invisible to others."
+},
+{
+"n": "1063500",
+"en": "Ghostly Image"
+},
+{
+"n": "1063501",
+"en": "Illusionary spirit of yourself."
+},
+{
+"n": "1063502",
+"en": "Drain Life"
+},
+{
+"n": "1063503",
+"en": "Draining 10-15 health from another."
+},
+{
+"n": "1063504",
+"en": "Drain Life"
+},
+{
+"n": "1063505",
+"en": "Losing 10-15 health to a Syth."
+},
+{
+"n": "1063506",
+"en": "Projection"
+},
+{
+"n": "1063507",
+"en": "Projection of yourself to distract others."
+},
+{
+"n": "1063508",
+"en": "Speed"
+},
+{
+"n": "1063509",
+"en": "Run much faster."
+},
+{
+"n": "1063510",
+"en": "Absorption"
+},
+{
+"n": "1063511",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063512",
+"en": "Astral Projection"
+},
+{
+"n": "1063513",
+"en": "Soul is immune to harm."
+},
+{
+"n": "1063514",
+"en": "PsychicWall"
+},
+{
+"n": "1063515",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063516",
+"en": "Wind Runner"
+},
+{
+"n": "1063517",
+"en": "Run much faster."
+},
+{
+"n": "1063518",
+"en": "Insult"
+},
+{
+"n": "1063519",
+"en": "Feelings are hurt and mana drains."
+},
+{
+"n": "1063520",
+"en": "Hilarity"
+},
+{
+"n": "1063521",
+"en": "Frozen in laughter."
+},
+{
+"n": "1063522",
+"en": "Celerity"
+},
+{
+"n": "1063523",
+"en": "Run much faster."
+},
+{
+"n": "1063524",
+"en": "Deflection"
+},
+{
+"n": "1063525",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063526",
+"en": "Psychic Aura"
+},
+{
+"n": "1063527",
+"en": "Elemental Armor"
+},
+{
+"n": "1063528",
+"en": "Stasis Field"
+},
+{
+"n": "1063529",
+"en": "Paralyzed in a stasis field."
+},
+{
+"n": "1063530",
+"en": "Mirage"
+},
+{
+"n": "1063531",
+"en": "Mirage of yourself to distract others."
+},
+{
+"n": "1063532",
+"en": "Hammer of Faith"
+},
+{
+"n": "1063533",
+"en": "Hammer summoned by the gods."
+},
+{
+"n": "1063534",
+"en": "Sacred Boon"
+},
+{
+"n": "1063535",
+"en": "Healing much quicker."
+},
+{
+"n": "1063536",
+"en": "Sanctify"
+},
+{
+"n": "1063537",
+"en": "~1_AMT~ strength.<br>~2_AMT~ dexterity.<br>~3_AMT~ intelligence.<br>~4_AMT~ parry.<br>~5_AMT~ tactics.<br>~6_AMT~ anatomy."
+},
+{
+"n": "1063538",
+"en": "Seance"
+},
+{
+"n": "1063539",
+"en": "Spirit is immune from harm."
+},
+{
+"n": "1063540",
+"en": "Trial by Fire"
+},
+{
+"n": "1063541",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063542",
+"en": "Enchant"
+},
+{
+"n": "1063543",
+"en": "Weapon imbued with holy powers."
+},
+{
+"n": "1063544",
+"en": "Blend With Forest"
+},
+{
+"n": "1063545",
+"en": "Blended seamlessly with the forest."
+},
+{
+"n": "1063546",
+"en": "Grim Reaper"
+},
+{
+"n": "1063547",
+"en": "Enemy is marked by the Grim Reaper, where damage is increased to them but you are more vulnerable from others."
+},
+{
+"n": "1063548",
+"en": "Grasping Roots"
+},
+{
+"n": "1063549",
+"en": "Entangled by roots."
+},
+{
+"n": "1063550",
+"en": "Woodland Protection"
+},
+{
+"n": "1063551",
+"en": "Orb of Orcus"
+},
+{
+"n": "1063552",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063553",
+"en": "Shield of Hate"
+},
+{
+"n": "1063554",
+"en": "Hatred shields you from physical harm."
+},
+{
+"n": "1063555",
+"en": "Soul Reaper"
+},
+{
+"n": "1063556",
+"en": "Soul is draining as well as your mana."
+},
+{
+"n": "1063557",
+"en": "Strength of Steel"
+},
+{
+"n": "1063558",
+"en": "~1_AMT~ strength."
+},
+{
+"n": "1063559",
+"en": "Succubus Skin"
+},
+{
+"n": "1063560",
+"en": "Health regenerates over time."
+},
+{
+"n": "1063561",
+"en": "Army's Paeon"
+},
+{
+"n": "1063562",
+"en": "Your health is regenerating better."
+},
+{
+"n": "1063563",
+"en": "Enchanting Etude"
+},
+{
+"n": "1063564",
+"en": "~1_AMT~ intelligence."
+},
+{
+"n": "1063565",
+"en": "Energy Carol"
+},
+{
+"n": "1063566",
+"en": "~1_AMT~ energy resistance."
+},
+{
+"n": "1063567",
+"en": "Energy Threnody"
+},
+{
+"n": "1063568",
+"en": "~1_AMT~ energy resistance."
+},
+{
+"n": "1063569",
+"en": "Fire Carol"
+},
+{
+"n": "1063570",
+"en": "~1_AMT~ fire resistance."
+},
+{
+"n": "1063571",
+"en": "Fire Threnody"
+},
+{
+"n": "1063572",
+"en": "~1_AMT~ fire resistance."
+},
+{
+"n": "1063573",
+"en": "Ice Carol"
+},
+{
+"n": "1063574",
+"en": "~1_AMT~ cold resistance."
+},
+{
+"n": "1063575",
+"en": "Ice Threnody"
+},
+{
+"n": "1063576",
+"en": "~1_AMT~ cold resistance."
+},
+{
+"n": "1063577",
+"en": "Knight's Minne"
+},
+{
+"n": "1063578",
+"en": "~1_AMT~ physical resistance."
+},
+{
+"n": "1063579",
+"en": "Mage's Ballad"
+},
+{
+"n": "1063580",
+"en": "Your mana is regenerating better."
+},
+{
+"n": "1063581",
+"en": "Poison Carol"
+},
+{
+"n": "1063582",
+"en": "~1_AMT~ poison resistance."
+},
+{
+"n": "1063583",
+"en": "Poison Threnody"
+},
+{
+"n": "1063584",
+"en": "~1_AMT~ poison resistance."
+},
+{
+"n": "1063585",
+"en": "Shepherd's Dance"
+},
+{
+"n": "1063586",
+"en": "~1_AMT~ dexterity."
+},
+{
+"n": "1063587",
+"en": "Sinewy Etude"
+},
+{
+"n": "1063588",
+"en": "~1_AMT~ strength."
+},
+{
+"n": "1063589",
+"en": "Agility Potion"
+},
+{
+"n": "1063590",
+"en": "Greater Agility Potion"
+},
+{
+"n": "1063591",
+"en": "Strength Potion"
+},
+{
+"n": "1063592",
+"en": "Greater Strength Potion"
+},
+{
+"n": "1063593",
+"en": "Nightsight Potion"
+},
+{
+"n": "1063594",
+"en": "Lesser Invisibility Potion"
+},
+{
+"n": "1063595",
+"en": "Invisibility Potion"
+},
+{
+"n": "1063596",
+"en": "Greater Invisibility Potion"
+},
+{
+"n": "1063597",
+"en": "Superior Potion"
+},
+{
+"n": "1063598",
+"en": "You can see in darkness."
+},
+{
+"n": "1063599",
+"en": "Invulnerability Potion"
+},
+{
+"n": "1063600",
+"en": "You cannot come to harm."
+},
+{
+"n": "1063601",
+"en": "~1_AMT~ strength.<br>~2_AMT~ dexterity.<br>~3_AMT~ intelligence."
+},
+{
+"n": "1063602",
+"en": "Your hiding and stealth are enhanced."
+},
+{
+"n": "1063603",
+"en": "~1_AMT~ dexterity."
+},
+{
+"n": "1063604",
+"en": "~1_AMT~ strength."
+},
+{
+"n": "1063605",
+"en": "Consecrate Weapon"
+},
+{
+"n": "1063606",
+"en": "Your weapon is consecrated."
+},
+{
+"n": "1063607",
+"en": "Wraith Form"
+},
+{
+"n": "1063608",
+"en": "~1_AMT~ mana leech on hit.<br>+15% physical resist.<br>-5% fire resist.<br>-5% energy resist.<br>+25% damage from undead weapons."
+},
+{
+"n": "1063609",
+"en": "Vampiric Embrace"
+},
+{
+"n": "1063610",
+"en": "20% life drain.<br>+15 Stamina Regeneration.<br>+3 Mana Regeneration.<br>Resistance to most poisons.<br>Unable to use cure potions.<br>Damage from garlic.<br>-25% fire resist."
+},
+{
+"n": "1063611",
+"en": "Lich Form"
+},
+{
+"n": "1063612",
+"en": "+13 Mana Regeneration.<br>-5 Hit Point Regeneration.<br>-10% fire resist.<br>+10% poison resist.<br>+10% cold resist."
+},
+{
+"n": "1063613",
+"en": "Horrific Beast"
+},
+{
+"n": "1063614",
+"en": "+20 Hit Point Regeneration<br>+25% Melee Damage Increase<br>No other spells can be cast."
+},
+{
+"n": "1063615",
+"en": "Cursed Weapon"
+},
+{
+"n": "1063616",
+"en": "Weapon heals you with 50% of damage dealt."
+},
+{
+"n": "1063617",
+"en": "Magic Reflection"
+},
+{
+"n": "1063618",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063619",
+"en": "Polymorphed"
+},
+{
+"n": "1063620",
+"en": "Appearance of another creature."
+},
+{
+"n": "1063621",
+"en": "Paralyzed"
+},
+{
+"n": "1063622",
+"en": "You cannot move."
+},
+{
+"n": "1063623",
+"en": "Orb of Trap Removal"
+},
+{
+"n": "1063624",
+"en": "~1_AMT~% Avoiding Traps on Walls & Floors."
+},
+{
+"n": "1063625",
+"en": "Mass Curse"
+},
+{
+"n": "1063626",
+"en": "Resurrection"
+},
+{
+"n": "1063627",
+"en": "You possess something that will resurrect you after death."
+},
+{
+"n": "1063628",
+"en": "Elemental Hold"
+},
+{
+"n": "1063629",
+"en": "Elemental Protection"
+},
+{
+"n": "1063630",
+"en": "Elemental Echo"
+},
+{
+"n": "1063631",
+"en": "Reflect some magic back at the caster."
+},
+{
+"n": "1063632",
+"en": "Air Walk"
+},
+{
+"n": "1063633",
+"en": "Hover over floor traps and harmful liquids."
+},
+{
+"n": "1063634",
+"en": "Confusion Blast"
+},
+{
+"n": "1063635",
+"en": "You are confused and cannot move."
+},
+{
+"n": "1063636",
+"en": "Enchanted Weapon"
+},
+{
+"n": "1063637",
+"en": "Your weapon damage is increased."
+},
+{
+"n": "1063638",
+"en": "Endure Cold"
+},
+{
+"n": "1063639",
+"en": "~1_AMT~ cold resistance."
+},
+{
+"n": "1063640",
+"en": "Endure Heat"
+},
+{
+"n": "1063641",
+"en": "~1_AMT~ fire resistance."
+},
+{
+"n": "1063642",
+"en": "Mask of Death"
+},
+{
+"n": "1063643",
+"en": "Supernatural creatures ignore you."
+},
+{
+"n": "1063644",
+"en": "Mass Might"
+},
+{
+"n": "1063645",
+"en": "~1_AMT~ strength."
+},
+{
+"n": "1063646",
+"en": "Sleep"
+},
+{
+"n": "1063647",
+"en": "You are asleep."
+},
+{
+"n": "1063648",
+"en": "Sleep Field"
+},
+{
+"n": "1063649",
+"en": "You are asleep."
+},
+{
+"n": "1063650",
+"en": "Mass Sleep"
+},
+{
+"n": "1063651",
+"en": "You are asleep."
+},
+{
+"n": "1063652",
+"en": "Rock Flesh"
+},
+{
+"n": "1063653",
+"en": "90% physical resistance."
+},
+{
+"n": "1063654",
+"en": "Sneak"
+},
+{
+"n": "1063655",
+"en": "Your hiding and stealth are enhanced."
+},
+{
+"n": "1063656",
+"en": "Withstand Death"
+},
+{
+"n": "1063657",
+"en": "You have a shard that will fully heal you if you perish."
+},
+{
+"n": "1063658",
+"en": "Gem of Immortality"
+},
+{
+"n": "1063659",
+"en": "You have a gem that will fully restore you if you perish."
+},
+{
+"n": "1063660",
+"en": "Intervention"
+},
+{
+"n": "1063661",
+"en": "Reflect some magic back at the caster.<br>~1_AMT~% physical resist.<br>~2_AMT~% fire resist.<br>~3_AMT~% cold resist.<br>~4_AMT~% poison resist.<br>~5_AMT~% energy resist."
+},
+{
+"n": "1063662",
+"en": "Discordance"
+},
+{
+"n": "1063663",
+"en": "~1_AMT~% resistances.<br>~2_AMT~% strength.<br>~3_AMT~% intelligence.<br>~4_AMT~% dexterity.<br>~5_AMT~ skill penalty."
+},
+{
+"n": "1063664",
+"en": "Peaced"
+},
+{
+"n": "1063665",
+"en": "You are at peace and wish not to fight."
+},
+{
+"n": "1063666",
+"en": "Begged"
+},
+{
+"n": "1063667",
+"en": "You were begged not to fight."
+},
+{
+"n": "1063668",
+"en": "Fireflies"
+},
+{
+"n": "1063669",
+"en": "Surrounded by fireflies is causing you not to fight."
+},
+{
+"n": "1063670",
+"en": "Bandage"
+},
+{
+"n": "1063671",
+"en": "When your bandage is wrapped."
+},
+{
+"n": "1063672",
+"en": "Strength Fish"
+},
+{
+"n": "1063673",
+"en": "+~1_AMT~ Strength."
+},
+{
+"n": "1063674",
+"en": "Agility Fish"
+},
+{
+"n": "1063675",
+"en": "+~1_AMT~ Dexterity."
+},
+{
+"n": "1063676",
+"en": "Intellect Fish"
+},
+{
+"n": "1063677",
+"en": "+~1_AMT~ Intelligence."
+},
+{
+"n": "1063678",
+"en": "Strength Zap"
+},
+{
+"n": "1063679",
+"en": "~1_AMT~ Strength."
+},
+{
+"n": "1063680",
+"en": "Dexterity Zap"
+},
+{
+"n": "1063681",
+"en": "~1_AMT~ Dexterity."
+},
+{
+"n": "1063682",
+"en": "Intelligence Zap"
+},
+{
+"n": "1063683",
+"en": "~1_AMT~ Intelligence."
+},
+{
+"n": "1063684",
+"en": "Confusion Blast"
+},
+{
+"n": "1063685",
+"en": "You are too confused to move."
+},
+{
+"n": "1063686",
+"en": "Charmed"
+},
+{
+"n": "1063687",
+"en": "You do not feel like moving."
+},
+{
+"n": "1063688",
+"en": "Fear"
+},
+{
+"n": "1063689",
+"en": "You are too frightened to move."
+},
+{
+"n": "1063690",
+"en": "AMETHYST (~1_AMT~)"
+},
+{
+"n": "1063691",
+"en": "EMERALD (~1_AMT~)"
+},
+{
+"n": "1063692",
+"en": "GARNET (~1_AMT~)"
+},
+{
+"n": "1063693",
+"en": "ICE (~1_AMT~)"
+},
+{
+"n": "1063694",
+"en": "JADE (~1_AMT~)"
+},
+{
+"n": "1063695",
+"en": "MARBLE (~1_AMT~)"
+},
+{
+"n": "1063696",
+"en": "ONYX (~1_AMT~)"
+},
+{
+"n": "1063697",
+"en": "QUARTZ (~1_AMT~)"
+},
+{
+"n": "1063698",
+"en": "RUBY (~1_AMT~)"
+},
+{
+"n": "1063699",
+"en": "SAPPHIRE (~1_AMT~)"
+},
+{
+"n": "1063700",
+"en": "SILVER (~1_AMT~)"
+},
+{
+"n": "1063701",
+"en": "SPINEL (~1_AMT~)"
+},
+{
+"n": "1063702",
+"en": "STAR RUBY (~1_AMT~)"
+},
+{
+"n": "1063703",
+"en": "TOPAZ (~1_AMT~)"
+},
+{
+"n": "1063704",
+"en": "CADDELLITE (~1_AMT~)"
+},
+{
+"n": "1063705",
+"en": "Amethyst"
+},
+{
+"n": "1063706",
+"en": "Amethyst Blocks"
+},
+{
+"n": "1063707",
+"en": "amethyst"
+},
+{
+"n": "1063708",
+"en": "Emerald"
+},
+{
+"n": "1063709",
+"en": "Emerald Blocks"
+},
+{
+"n": "1063710",
+"en": "emerald"
+},
+{
+"n": "1063711",
+"en": "Garnet"
+},
+{
+"n": "1063712",
+"en": "Garnet Blocks"
+},
+{
+"n": "1063713",
+"en": "garnet"
+},
+{
+"n": "1063714",
+"en": "Ice"
+},
+{
+"n": "1063715",
+"en": "Ice Blocks"
+},
+{
+"n": "1063716",
+"en": "ice"
+},
+{
+"n": "1063717",
+"en": "Jade"
+},
+{
+"n": "1063718",
+"en": "Jade Blocks"
+},
+{
+"n": "1063719",
+"en": "jade"
+},
+{
+"n": "1063720",
+"en": "Marble"
+},
+{
+"n": "1063721",
+"en": "Marble Blocks"
+},
+{
+"n": "1063722",
+"en": "marble"
+},
+{
+"n": "1063723",
+"en": "Onyx"
+},
+{
+"n": "1063724",
+"en": "Onyx Blocks"
+},
+{
+"n": "1063725",
+"en": "onyx"
+},
+{
+"n": "1063726",
+"en": "Quartz"
+},
+{
+"n": "1063727",
+"en": "Quartz Blocks"
+},
+{
+"n": "1063728",
+"en": "quartz"
+},
+{
+"n": "1063729",
+"en": "Ruby"
+},
+{
+"n": "1063730",
+"en": "Ruby Blocks"
+},
+{
+"n": "1063731",
+"en": "ruby"
+},
+{
+"n": "1063732",
+"en": "Sapphire"
+},
+{
+"n": "1063733",
+"en": "Sapphire Blocks"
+},
+{
+"n": "1063734",
+"en": "sapphire"
+},
+{
+"n": "1063735",
+"en": "Silver"
+},
+{
+"n": "1063736",
+"en": "Silver Blocks"
+},
+{
+"n": "1063737",
+"en": "silver"
+},
+{
+"n": "1063738",
+"en": "Spinel"
+},
+{
+"n": "1063739",
+"en": "Spinel Blocks"
+},
+{
+"n": "1063740",
+"en": "spinel"
+},
+{
+"n": "1063741",
+"en": "Star Ruby"
+},
+{
+"n": "1063742",
+"en": "Star Ruby Blocks"
+},
+{
+"n": "1063743",
+"en": "star ruby"
+},
+{
+"n": "1063744",
+"en": "Topaz"
+},
+{
+"n": "1063745",
+"en": "Topaz Blocks"
+},
+{
+"n": "1063746",
+"en": "topaz"
+},
+{
+"n": "1063747",
+"en": "Caddellite"
+},
+{
+"n": "1063748",
+"en": "Caddellite Blocks"
+},
+{
+"n": "1063749",
+"en": "caddellite"
+},
+{
+"n": "1063750",
+"en": "DEMON (~1_AMT~)"
+},
+{
+"n": "1063751",
+"en": "DRAGON (~1_AMT~)"
+},
+{
+"n": "1063752",
+"en": "NIGHTMARE (~1_AMT~)"
+},
+{
+"n": "1063753",
+"en": "SNAKE (~1_AMT~)"
+},
+{
+"n": "1063754",
+"en": "TROLL (~1_AMT~)"
+},
+{
+"n": "1063755",
+"en": "UNICORN (~1_AMT~)"
+},
+{
+"n": "1063756",
+"en": "Demon"
+},
+{
+"n": "1063757",
+"en": "Demon Skin"
+},
+{
+"n": "1063758",
+"en": "demon"
+},
+{
+"n": "1063759",
+"en": "Dragon"
+},
+{
+"n": "1063760",
+"en": "Dragon Skin"
+},
+{
+"n": "1063761",
+"en": "dragon"
+},
+{
+"n": "1063762",
+"en": "Nightmare"
+},
+{
+"n": "1063763",
+"en": "Nightmare Skin"
+},
+{
+"n": "1063764",
+"en": "nightmare"
+},
+{
+"n": "1063765",
+"en": "Snake"
+},
+{
+"n": "1063766",
+"en": "Snake Skin"
+},
+{
+"n": "1063767",
+"en": "snake"
+},
+{
+"n": "1063768",
+"en": "Troll"
+},
+{
+"n": "1063769",
+"en": "Troll Skin"
+},
+{
+"n": "1063770",
+"en": "troll"
+},
+{
+"n": "1063771",
+"en": "Unicorn"
+},
+{
+"n": "1063772",
+"en": "Unicorn Skin"
+},
+{
+"n": "1063773",
+"en": "unicorn"
+},
+{
+"n": "1063774",
+"en": "Icy"
+},
+{
+"n": "1063775",
+"en": "Icy Skin"
+},
+{
+"n": "1063776",
+"en": "icy"
+},
+{
+"n": "1063777",
+"en": "Lava"
+},
+{
+"n": "1063778",
+"en": "Lava Skin"
+},
+{
+"n": "1063779",
+"en": "lava"
+},
+{
+"n": "1063780",
+"en": "Seaweed"
+},
+{
+"n": "1063781",
+"en": "Seaweed"
+},
+{
+"n": "1063782",
+"en": "seaweed"
+},
+{
+"n": "1063783",
+"en": "Dead"
+},
+{
+"n": "1063784",
+"en": "Dead Skin"
+},
+{
+"n": "1063785",
+"en": "dead"
+},
+{
+"n": "1063786",
+"en": "Blocks"
+},
+{
+"n": "1063787",
+"en": "Skins"
+},
+{
+"n": "1063788",
+"en": "crimson"
+},
+{
+"n": "1063789",
+"en": "golden"
+},
+{
+"n": "1063790",
+"en": "dark"
+},
+{
+"n": "1063791",
+"en": "viridian"
+},
+{
+"n": "1063792",
+"en": "ivory"
+},
+{
+"n": "1063793",
+"en": "azure"
+},
+{
+"n": "1063794",
+"en": "dinosaur"
+},
+{
+"n": "1063795",
+"en": "ICY (~1_AMT~)"
+},
+{
+"n": "1063796",
+"en": "LAVA (~1_AMT~)"
+},
+{
+"n": "1063797",
+"en": "SEAWEED (~1_AMT~)"
+},
+{
+"n": "1063798",
+"en": "DEAD (~1_AMT~)"
+},
+{
+"n": "1063799",
+"en": "You are not skilled enough in tailoring to use these tools."
+},
+{
+"n": "1063800",
+"en": "You are not skilled enough in blacksmithing to use these tools."
+},
+{
+"n": "1063801",
+"en": "You are not skilled enough in alchemy  to use these tools."
+},
+{
+"n": "1063802",
+"en": "Spectral"
+},
+{
+"n": "1063803",
+"en": "Dread"
+},
+{
+"n": "1063804",
+"en": "Ghoulish"
+},
+{
+"n": "1063805",
+"en": "Wyrm"
+},
+{
+"n": "1063806",
+"en": "Holy"
+},
+{
+"n": "1063807",
+"en": "Bloodless"
+},
+{
+"n": "1063808",
+"en": "Gilded"
+},
+{
+"n": "1063809",
+"en": "Demilich"
+},
+{
+"n": "1063810",
+"en": "Wintry"
+},
+{
+"n": "1063811",
+"en": "spectral"
+},
+{
+"n": "1063812",
+"en": "dread"
+},
+{
+"n": "1063813",
+"en": "ghoulish"
+},
+{
+"n": "1063814",
+"en": "wyrm"
+},
+{
+"n": "1063815",
+"en": "holy"
+},
+{
+"n": "1063816",
+"en": "bloodless"
+},
+{
+"n": "1063817",
+"en": "gilded"
+},
+{
+"n": "1063818",
+"en": "demilich"
+},
+{
+"n": "1063819",
+"en": "wintry"
+},
+{
+"n": "1063820",
+"en": "metallic"
+},
+{
+"n": "1063821",
+"en": "Metallic"
+},
+{
+"n": "1063822",
+"en": "brazen"
+},
+{
+"n": "1063823",
+"en": "Brazen"
+},
+{
+"n": "1063824",
+"en": "umber"
+},
+{
+"n": "1063825",
+"en": "Umber"
+},
+{
+"n": "1063826",
+"en": "violet"
+},
+{
+"n": "1063827",
+"en": "Violet"
+},
+{
+"n": "1063828",
+"en": "platinum"
+},
+{
+"n": "1063829",
+"en": "Platinum"
+},
+{
+"n": "1063830",
+"en": "cadalyte"
+},
+{
+"n": "1063831",
+"en": "Cadalyte"
+},
+{
+"n": "1063832",
+"en": "BRITTLE (~1_AMT~)"
+},
+{
+"n": "1063833",
+"en": "Brittle Bones"
+},
+{
+"n": "1063834",
+"en": "Brittle"
+},
+{
+"n": "1063835",
+"en": "brittle"
+},
+{
+"n": "1063836",
+"en": "DRACO (~1_AMT~)"
+},
+{
+"n": "1063837",
+"en": "Draco Bones"
+},
+{
+"n": "1063838",
+"en": "Draco"
+},
+{
+"n": "1063839",
+"en": "draco"
+},
+{
+"n": "1063840",
+"en": "DROW (~1_AMT~)"
+},
+{
+"n": "1063841",
+"en": "Drow Bones"
+},
+{
+"n": "1063842",
+"en": "Drow"
+},
+{
+"n": "1063843",
+"en": "drow"
+},
+{
+"n": "1063844",
+"en": "ORC (~1_AMT~)"
+},
+{
+"n": "1063845",
+"en": "Orc Bones"
+},
+{
+"n": "1063846",
+"en": "Orc"
+},
+{
+"n": "1063847",
+"en": "orc"
+},
+{
+"n": "1063848",
+"en": "REPTILE (~1_AMT~)"
+},
+{
+"n": "1063849",
+"en": "Reptile Bones"
+},
+{
+"n": "1063850",
+"en": "Reptile"
+},
+{
+"n": "1063851",
+"en": "reptile"
+},
+{
+"n": "1063852",
+"en": "OGRE (~1_AMT~)"
+},
+{
+"n": "1063853",
+"en": "Ogre Bones"
+},
+{
+"n": "1063854",
+"en": "Ogre"
+},
+{
+"n": "1063855",
+"en": "ogre"
+},
+{
+"n": "1063856",
+"en": "TROLL (~1_AMT~)"
+},
+{
+"n": "1063857",
+"en": "Troll Bones"
+},
+{
+"n": "1063858",
+"en": "Troll"
+},
+{
+"n": "1063859",
+"en": "troll"
+},
+{
+"n": "1063860",
+"en": "GARGOYLE (~1_AMT~)"
+},
+{
+"n": "1063861",
+"en": "Gargoyle Bones"
+},
+{
+"n": "1063862",
+"en": "Gargoyle"
+},
+{
+"n": "1063863",
+"en": "gargoyle"
+},
+{
+"n": "1063864",
+"en": "MINOTAUR (~1_AMT~)"
+},
+{
+"n": "1063865",
+"en": "Minotaur Bones"
+},
+{
+"n": "1063866",
+"en": "Minotaur"
+},
+{
+"n": "1063867",
+"en": "minotaur"
+},
+{
+"n": "1063868",
+"en": "LYCAN (~1_AMT~)"
+},
+{
+"n": "1063869",
+"en": "Lycan Bones"
+},
+{
+"n": "1063870",
+"en": "Lycan"
+},
+{
+"n": "1063871",
+"en": "lycan"
+},
+{
+"n": "1063872",
+"en": "SHARK (~1_AMT~)"
+},
+{
+"n": "1063873",
+"en": "Shark Bones"
+},
+{
+"n": "1063874",
+"en": "Shark"
+},
+{
+"n": "1063875",
+"en": "shark"
+},
+{
+"n": "1063876",
+"en": "COLOSSAL (~1_AMT~)"
+},
+{
+"n": "1063877",
+"en": "Colossal Bones"
+},
+{
+"n": "1063878",
+"en": "Colossal"
+},
+{
+"n": "1063879",
+"en": "colossal"
+},
+{
+"n": "1063880",
+"en": "MYSTICAL (~1_AMT~)"
+},
+{
+"n": "1063881",
+"en": "Mystical Bones"
+},
+{
+"n": "1063882",
+"en": "Mystical"
+},
+{
+"n": "1063883",
+"en": "mystical"
+},
+{
+"n": "1063884",
+"en": "VAMPIRE (~1_AMT~)"
+},
+{
+"n": "1063885",
+"en": "Vampire Bones"
+},
+{
+"n": "1063886",
+"en": "Vampire"
+},
+{
+"n": "1063887",
+"en": "vampire"
+},
+{
+"n": "1063888",
+"en": "LICH (~1_AMT~)"
+},
+{
+"n": "1063889",
+"en": "Lich Bones"
+},
+{
+"n": "1063890",
+"en": "Lich"
+},
+{
+"n": "1063891",
+"en": "lich"
+},
+{
+"n": "1063892",
+"en": "SPHINX (~1_AMT~)"
+},
+{
+"n": "1063893",
+"en": "Sphinx Bones"
+},
+{
+"n": "1063894",
+"en": "Sphinx"
+},
+{
+"n": "1063895",
+"en": "sphinx"
+},
+{
+"n": "1063896",
+"en": "DEVIL (~1_AMT~)"
+},
+{
+"n": "1063897",
+"en": "Devil Bones"
+},
+{
+"n": "1063898",
+"en": "Devil"
+},
+{
+"n": "1063899",
+"en": "devil"
+},
+{
+"n": "1063900",
+"en": "XENO (~1_AMT~)"
+},
+{
+"n": "1063901",
+"en": "Xeno Bones"
+},
+{
+"n": "1063902",
+"en": "Xeno"
+},
+{
+"n": "1063903",
+"en": "xeno"
+},
+{
+"n": "1063904",
+"en": "Andorian"
+},
+{
+"n": "1063905",
+"en": "andorian"
+},
+{
+"n": "1063906",
+"en": "ANDORIAN (~1_AMT~)"
+},
+{
+"n": "1063907",
+"en": "Andorian Bones"
+},
+{
+"n": "1063908",
+"en": "Cardassian"
+},
+{
+"n": "1063909",
+"en": "cardassian"
+},
+{
+"n": "1063910",
+"en": "CARDASSIAN (~1_AMT~)"
+},
+{
+"n": "1063911",
+"en": "Cardassian Bones"
+},
+{
+"n": "1063912",
+"en": "Martian"
+},
+{
+"n": "1063913",
+"en": "martian"
+},
+{
+"n": "1063914",
+"en": "MARTIAN (~1_AMT~)"
+},
+{
+"n": "1063915",
+"en": "Martian Bones"
+},
+{
+"n": "1063916",
+"en": "Rodian"
+},
+{
+"n": "1063917",
+"en": "rodian"
+},
+{
+"n": "1063918",
+"en": "RODIAN (~1_AMT~)"
+},
+{
+"n": "1063919",
+"en": "Rodian Bones"
+},
+{
+"n": "1063920",
+"en": "Tusken"
+},
+{
+"n": "1063921",
+"en": "tusken"
+},
+{
+"n": "1063922",
+"en": "TUSKEN (~1_AMT~)"
+},
+{
+"n": "1063923",
+"en": "Tusken Bones"
+},
+{
+"n": "1063924",
+"en": "Twi'lek"
+},
+{
+"n": "1063925",
+"en": "twi'lek"
+},
+{
+"n": "1063926",
+"en": "TWI'LEK (~1_AMT~)"
+},
+{
+"n": "1063927",
+"en": "Twi'lek Bones"
+},
+{
+"n": "1063928",
+"en": "Xindi"
+},
+{
+"n": "1063929",
+"en": "xindi"
+},
+{
+"n": "1063930",
+"en": "XINDI (~1_AMT~)"
+},
+{
+"n": "1063931",
+"en": "Xindi Bones"
+},
+{
+"n": "1063932",
+"en": "Zabrak"
+},
+{
+"n": "1063933",
+"en": "zabrak"
+},
+{
+"n": "1063934",
+"en": "ZABRAK (~1_AMT~)"
+},
+{
+"n": "1063935",
+"en": "Zabrak Bones"
+},
+{
+"n": "1063936",
+"en": "Adesote"
+},
+{
+"n": "1063937",
+"en": "adesote"
+},
+{
+"n": "1063938",
+"en": "ADESOTE (~1_AMT~)"
+},
+{
+"n": "1063939",
+"en": "Adesote Material"
+},
+{
+"n": "1063940",
+"en": "Biomesh"
+},
+{
+"n": "1063941",
+"en": "biomesh"
+},
+{
+"n": "1063942",
+"en": "BIOMESH (~1_AMT~)"
+},
+{
+"n": "1063943",
+"en": "Biomesh Material"
+},
+{
+"n": "1063944",
+"en": "Cerlin"
+},
+{
+"n": "1063945",
+"en": "cerlin"
+},
+{
+"n": "1063946",
+"en": "CERLIN (~1_AMT~)"
+},
+{
+"n": "1063947",
+"en": "Cerlin Material"
+},
+{
+"n": "1063948",
+"en": "Durafiber"
+},
+{
+"n": "1063949",
+"en": "durafiber"
+},
+{
+"n": "1063950",
+"en": "DURAFIBER (~1_AMT~)"
+},
+{
+"n": "1063951",
+"en": "Durafiber Material"
+},
+{
+"n": "1063952",
+"en": "Flexicris"
+},
+{
+"n": "1063953",
+"en": "flexicris"
+},
+{
+"n": "1063954",
+"en": "FLEXICRIS (~1_AMT~)"
+},
+{
+"n": "1063955",
+"en": "Flexicris Material"
+},
+{
+"n": "1063956",
+"en": "Hypercloth"
+},
+{
+"n": "1063957",
+"en": "hypercloth"
+},
+{
+"n": "1063958",
+"en": "HYPERCLOTH (~1_AMT~)"
+},
+{
+"n": "1063959",
+"en": "Hypercloth Material"
+},
+{
+"n": "1063960",
+"en": "Nylar"
+},
+{
+"n": "1063961",
+"en": "nylar"
+},
+{
+"n": "1063962",
+"en": "NYLAR (~1_AMT~)"
+},
+{
+"n": "1063963",
+"en": "Nylar Material"
+},
+{
+"n": "1063964",
+"en": "Nylonite"
+},
+{
+"n": "1063965",
+"en": "nylonite"
+},
+{
+"n": "1063966",
+"en": "NYLONITE (~1_AMT~)"
+},
+{
+"n": "1063967",
+"en": "Nylonite Material"
+},
+{
+"n": "1063968",
+"en": "Polyfiber"
+},
+{
+"n": "1063969",
+"en": "polyfiber"
+},
+{
+"n": "1063970",
+"en": "POLYFIBER (~1_AMT~)"
+},
+{
+"n": "1063971",
+"en": "Polyfiber Material"
+},
+{
+"n": "1063972",
+"en": "Syncloth"
+},
+{
+"n": "1063973",
+"en": "syncloth"
+},
+{
+"n": "1063974",
+"en": "SYNCLOTH (~1_AMT~)"
+},
+{
+"n": "1063975",
+"en": "Syncloth Material"
+},
+{
+"n": "1063976",
+"en": "Thermoweave"
+},
+{
+"n": "1063977",
+"en": "thermoweave"
+},
+{
+"n": "1063978",
+"en": "THERMOWEAVE (~1_AMT~)"
+},
+{
+"n": "1063979",
+"en": "Thermoweave Material"
+},
+{
+"n": "1063980",
+"en": "Agrinium"
+},
+{
+"n": "1063981",
+"en": "agrinium"
+},
+{
+"n": "1063982",
+"en": "AGRINIUM (~1_AMT~)"
+},
+{
+"n": "1063983",
+"en": "Agrinium Metal"
+},
+{
+"n": "1063984",
+"en": "Beskar"
+},
+{
+"n": "1063985",
+"en": "beskar"
+},
+{
+"n": "1063986",
+"en": "BESKAR (~1_AMT~)"
+},
+{
+"n": "1063987",
+"en": "Beskar Metal"
+},
+{
+"n": "1063988",
+"en": "Carbonite"
+},
+{
+"n": "1063989",
+"en": "carbonite"
+},
+{
+"n": "1063990",
+"en": "CARBONITE (~1_AMT~)"
+},
+{
+"n": "1063991",
+"en": "Carbonite Metal"
+},
+{
+"n": "1063992",
+"en": "Cortosis"
+},
+{
+"n": "1063993",
+"en": "cortosis"
+},
+{
+"n": "1063994",
+"en": "CORTOSIS (~1_AMT~)"
+},
+{
+"n": "1063995",
+"en": "Cortosis Metal"
+},
+{
+"n": "1063996",
+"en": "Durasteel"
+},
+{
+"n": "1063997",
+"en": "durasteel"
+},
+{
+"n": "1063998",
+"en": "DURASTEEL (~1_AMT~)"
+},
+{
+"n": "1063999",
+"en": "Durasteel Metal"
+},
+{
+"n": "1064000",
+"en": "Durite"
+},
+{
+"n": "1064001",
+"en": "durite"
+},
+{
+"n": "1064002",
+"en": "DURITE (~1_AMT~)"
+},
+{
+"n": "1064003",
+"en": "Durite Metal"
+},
+{
+"n": "1064004",
+"en": "Farium"
+},
+{
+"n": "1064005",
+"en": "farium"
+},
+{
+"n": "1064006",
+"en": "FARIUM (~1_AMT~)"
+},
+{
+"n": "1064007",
+"en": "Farium Metal"
+},
+{
+"n": "1064008",
+"en": "Laminasteel"
+},
+{
+"n": "1064009",
+"en": "laminasteel"
+},
+{
+"n": "1064010",
+"en": "LAMINASTEEL (~1_AMT~)"
+},
+{
+"n": "1064011",
+"en": "Laminasteel Metal"
+},
+{
+"n": "1064012",
+"en": "Neuranium"
+},
+{
+"n": "1064013",
+"en": "neuranium"
+},
+{
+"n": "1064014",
+"en": "NEURANIUM (~1_AMT~)"
+},
+{
+"n": "1064015",
+"en": "Neuranium Metal"
+},
+{
+"n": "1064016",
+"en": "Phrik"
+},
+{
+"n": "1064017",
+"en": "phrik"
+},
+{
+"n": "1064018",
+"en": "PHRIK (~1_AMT~)"
+},
+{
+"n": "1064019",
+"en": "Phrik Metal"
+},
+{
+"n": "1064020",
+"en": "Promethium"
+},
+{
+"n": "1064021",
+"en": "promethium"
+},
+{
+"n": "1064022",
+"en": "PROMETHIUM (~1_AMT~)"
+},
+{
+"n": "1064023",
+"en": "Promethium Metal"
+},
+{
+"n": "1064024",
+"en": "Quadranium"
+},
+{
+"n": "1064025",
+"en": "quadranium"
+},
+{
+"n": "1064026",
+"en": "QUADRANIUM (~1_AMT~)"
+},
+{
+"n": "1064027",
+"en": "Quadranium Metal"
+},
+{
+"n": "1064028",
+"en": "Songsteel"
+},
+{
+"n": "1064029",
+"en": "songsteel"
+},
+{
+"n": "1064030",
+"en": "SONGSTEEL (~1_AMT~)"
+},
+{
+"n": "1064031",
+"en": "Songsteel Metal"
+},
+{
+"n": "1064032",
+"en": "Titanium"
+},
+{
+"n": "1064033",
+"en": "titanium"
+},
+{
+"n": "1064034",
+"en": "TITANIUM (~1_AMT~)"
+},
+{
+"n": "1064035",
+"en": "Titanium Metal"
+},
+{
+"n": "1064036",
+"en": "Trimantium"
+},
+{
+"n": "1064037",
+"en": "trimantium"
+},
+{
+"n": "1064038",
+"en": "TRIMANTIUM (~1_AMT~)"
+},
+{
+"n": "1064039",
+"en": "Trimantium Metal"
+},
+{
+"n": "1064040",
+"en": "Xonolite"
+},
+{
+"n": "1064041",
+"en": "xonolite"
+},
+{
+"n": "1064042",
+"en": "XONOLITE (~1_AMT~)"
+},
+{
+"n": "1064043",
+"en": "Xonolite Metal"
+},
+{
+"n": "1064044",
+"en": "Borl"
+},
+{
+"n": "1064045",
+"en": "borl"
+},
+{
+"n": "1064046",
+"en": "BORL (~1_AMT~)"
+},
+{
+"n": "1064047",
+"en": "Borl Timber"
+},
+{
+"n": "1064048",
+"en": "Cosian"
+},
+{
+"n": "1064049",
+"en": "cosian"
+},
+{
+"n": "1064050",
+"en": "COSIAN (~1_AMT~)"
+},
+{
+"n": "1064051",
+"en": "Cosian Timber"
+},
+{
+"n": "1064052",
+"en": "Greel"
+},
+{
+"n": "1064053",
+"en": "greel"
+},
+{
+"n": "1064054",
+"en": "GREEL (~1_AMT~)"
+},
+{
+"n": "1064055",
+"en": "Greel Timber"
+},
+{
+"n": "1064056",
+"en": "Japor"
+},
+{
+"n": "1064057",
+"en": "japor"
+},
+{
+"n": "1064058",
+"en": "JAPOR (~1_AMT~)"
+},
+{
+"n": "1064059",
+"en": "Japor Timber"
+},
+{
+"n": "1064060",
+"en": "Kyshyyyk"
+},
+{
+"n": "1064061",
+"en": "kyshyyyk"
+},
+{
+"n": "1064062",
+"en": "KYSHYYYK (~1_AMT~)"
+},
+{
+"n": "1064063",
+"en": "Kyshyyyk Timber"
+},
+{
+"n": "1064064",
+"en": "Laroon"
+},
+{
+"n": "1064065",
+"en": "laroon"
+},
+{
+"n": "1064066",
+"en": "LAROON (~1_AMT~)"
+},
+{
+"n": "1064067",
+"en": "Laroon Timber"
+},
+{
+"n": "1064068",
+"en": "Teej"
+},
+{
+"n": "1064069",
+"en": "teej"
+},
+{
+"n": "1064070",
+"en": "TEEJ (~1_AMT~)"
+},
+{
+"n": "1064071",
+"en": "Teej Timber"
+},
+{
+"n": "1064072",
+"en": "Veshok"
+},
+{
+"n": "1064073",
+"en": "veshok"
+},
+{
+"n": "1064074",
+"en": "VESHOK (~1_AMT~)"
+},
+{
+"n": "1064075",
+"en": "Veshok Timber"
+},
+{
+"n": "1064076",
+"en": "Fire"
+},
+{
+"n": "1064077",
+"en": "fire"
+},
+{
+"n": "1064078",
+"en": "Cold"
+},
+{
+"n": "1064079",
+"en": "cold"
+},
+{
+"n": "1064080",
+"en": "Venom"
+},
+{
+"n": "1064081",
+"en": "venom"
+},
+{
+"n": "1064082",
+"en": "Energy"
+},
+{
+"n": "1064083",
+"en": "energy"
+},
+{
+"n": "1064084",
+"en": "ICY (~1_AMT~)"
+},
+{
+"n": "1064085",
+"en": "LAVA (~1_AMT~)"
+},
+{
+"n": "1064086",
+"en": "SEAWEED (~1_AMT~)"
+},
+{
+"n": "1064087",
+"en": "DEAD (~1_AMT~)"
+},
+{
+"n": "1064088",
+"en": "SPECTRAL (~1_AMT~)"
+},
+{
+"n": "1064089",
+"en": "DREAD (~1_AMT~)"
+},
+{
+"n": "1064090",
+"en": "GHOULISH (~1_AMT~)"
+},
+{
+"n": "1064091",
+"en": "WYRM (~1_AMT~)"
+},
+{
+"n": "1064092",
+"en": "HOLY (~1_AMT~)"
+},
+{
+"n": "1064093",
+"en": "BLOODLESS (~1_AMT~)"
+},
+{
+"n": "1064094",
+"en": "GILDED (~1_AMT~)"
+},
+{
+"n": "1064095",
+"en": "DEMILICH (~1_AMT~)"
+},
+{
+"n": "1064096",
+"en": "WINTRY (~1_AMT~)"
+},
+{
+"n": "1064097",
+"en": "FIRE (~1_AMT~)"
+},
+{
+"n": "1064098",
+"en": "COLD (~1_AMT~)"
+},
+{
+"n": "1064099",
+"en": "VENOM (~1_AMT~)"
+},
+{
+"n": "1064100",
+"en": "ENERGY (~1_AMT~)"
+},
+{
+"n": "1064101",
+"en": "EXODUS (~1_AMT~)"
+},
+{
+"n": "1064102",
+"en": "Spectral Rune"
+},
+{
+"n": "1064103",
+"en": "Dread Rune"
+},
+{
+"n": "1064104",
+"en": "Ghoulish Rune"
+},
+{
+"n": "1064105",
+"en": "Wyrm Rune"
+},
+{
+"n": "1064106",
+"en": "Holy Rune"
+},
+{
+"n": "1064107",
+"en": "Bloodless Rune"
+},
+{
+"n": "1064108",
+"en": "Gilded Rune"
+},
+{
+"n": "1064109",
+"en": "Demilich Rune"
+},
+{
+"n": "1064110",
+"en": "Wintry Rune"
+},
+{
+"n": "1064111",
+"en": "Fire Rune"
+},
+{
+"n": "1064112",
+"en": "Cold Rune"
+},
+{
+"n": "1064113",
+"en": "Venom Rune"
+},
+{
+"n": "1064114",
+"en": "Energy Rune"
+},
+{
+"n": "1064115",
+"en": "Exodus Rune"
+},
+{
+"n": "1064116",
+"en": "TURTLE (~1_AMT~)"
+},
+{
+"n": "1064117",
+"en": "Turtle Shell Rune"
+},
+{
+"n": "1064118",
+"en": "Turtle Shell"
+},
+{
+"n": "1064119",
+"en": "turtle shell"
+},
+{
+"n": "1064120",
+"en": "CLOTH (~1_AMT~)"
+},
+{
+"n": "1064121",
+"en": "Cloth"
+},
+{
+"n": "1064122",
+"en": "Cloth"
+},
+{
+"n": "1064123",
+"en": "cloth"
+},
+{
+"n": "1064124",
+"en": "FURRY (~1_AMT~)"
+},
+{
+"n": "1064125",
+"en": "Furry Cloth"
+},
+{
+"n": "1064126",
+"en": "Furry Cloth"
+},
+{
+"n": "1064127",
+"en": "furry"
+},
+{
+"n": "1064128",
+"en": "WOOLY (~1_AMT~)"
+},
+{
+"n": "1064129",
+"en": "Wooly Cloth"
+},
+{
+"n": "1064130",
+"en": "Wooly Cloth"
+},
+{
+"n": "1064131",
+"en": "wooly"
+},
+{
+"n": "1064132",
+"en": "SILK (~1_AMT~)"
+},
+{
+"n": "1064133",
+"en": "Silk Cloth"
+},
+{
+"n": "1064134",
+"en": "Silk Cloth"
+},
+{
+"n": "1064135",
+"en": "silk"
+},
+{
+"n": "1064136",
+"en": "HAUNTED (~1_AMT~)"
+},
+{
+"n": "1064137",
+"en": "Haunted Cloth"
+},
+{
+"n": "1064138",
+"en": "Haunted Cloth"
+},
+{
+"n": "1064139",
+"en": "haunted"
+},
+{
+"n": "1064140",
+"en": "ARCTIC (~1_AMT~)"
+},
+{
+"n": "1064141",
+"en": "Arctic Cloth"
+},
+{
+"n": "1064142",
+"en": "Arctic Cloth"
+},
+{
+"n": "1064143",
+"en": "arctic"
+},
+{
+"n": "1064144",
+"en": "PYRE (~1_AMT~)"
+},
+{
+"n": "1064145",
+"en": "Pyre Cloth"
+},
+{
+"n": "1064146",
+"en": "Pyre Cloth"
+},
+{
+"n": "1064147",
+"en": "pyre"
+},
+{
+"n": "1064148",
+"en": "VENOMOUS (~1_AMT~)"
+},
+{
+"n": "1064149",
+"en": "Venomous Cloth"
+},
+{
+"n": "1064150",
+"en": "Venomous Cloth"
+},
+{
+"n": "1064151",
+"en": "venomous"
+},
+{
+"n": "1064152",
+"en": "MYSTERIOUS (~1_AMT~)"
+},
+{
+"n": "1064153",
+"en": "Mysterious Cloth"
+},
+{
+"n": "1064154",
+"en": "Mysterious Cloth"
+},
+{
+"n": "1064155",
+"en": "mysterious"
+},
+{
+"n": "1064156",
+"en": "VILE (~1_AMT~)"
+},
+{
+"n": "1064157",
+"en": "Vile Cloth"
+},
+{
+"n": "1064158",
+"en": "Vile Cloth"
+},
+{
+"n": "1064159",
+"en": "vile"
+},
+{
+"n": "1064160",
+"en": "DIVINE (~1_AMT~)"
+},
+{
+"n": "1064161",
+"en": "Divine Cloth"
+},
+{
+"n": "1064162",
+"en": "Divine Cloth"
+},
+{
+"n": "1064163",
+"en": "divine"
+},
+{
+"n": "1064164",
+"en": "FIENDISH (~1_AMT~)"
+},
+{
+"n": "1064165",
+"en": "Fiendish Cloth"
+},
+{
+"n": "1064166",
+"en": "Fiendish Cloth"
+},
+{
+"n": "1064167",
+"en": "fiendish"
+},
+{
+"n": "1064168",
+"en": "Spyglass"
+},
+{
+"n": "1064169",
+"en": "+~1_AMT~ Tracking."
+},
+{
+"n": "1064170",
+"en": "GORN (~1_AMT~)"
+},
+{
+"n": "1064171",
+"en": "Gorn Scales"
+},
+{
+"n": "1064172",
+"en": "gorn"
+},
+{
+"n": "1064173",
+"en": "Gorn"
+},
+{
+"n": "1064174",
+"en": "TRANDOSHAN (~1_AMT~)"
+},
+{
+"n": "1064175",
+"en": "Trandoshan Scales"
+},
+{
+"n": "1064176",
+"en": "trandoshan"
+},
+{
+"n": "1064177",
+"en": "Trandoshan"
+},
+{
+"n": "1064178",
+"en": "SILURIAN (~1_AMT~)"
+},
+{
+"n": "1064179",
+"en": "Silurian Scales"
+},
+{
+"n": "1064180",
+"en": "silurian"
+},
+{
+"n": "1064181",
+"en": "Silurian"
+},
+{
+"n": "1064182",
+"en": "KRAYT (~1_AMT~)"
+},
+{
+"n": "1064183",
+"en": "Krayt Scales"
+},
+{
+"n": "1064184",
+"en": "krayt"
+},
+{
+"n": "1064185",
+"en": "Krayt"
+},
+{
+"n": "1064186",
+"en": "Confidence"
+},
+{
+"n": "1064187",
+"en": "You are in a defensive stance."
+},
+{
+"n": "1064188",
+"en": "Counter Attack"
+},
+{
+"n": "1064189",
+"en": "You are in a defensive stance."
+},
+{
+"n": "1064190",
+"en": "Evasion"
+},
+{
+"n": "1064191",
+"en": "You are in an evasive stance."
+},
+{
+"n": "1064192",
+"en": "Honorable Execution"
+},
+{
+"n": "1064193",
+"en": "Ready for a killing blow."
+},
+{
+"n": "1064194",
+"en": "Suppressed"
+},
+{
+"n": "1064195",
+"en": "Your skills are reduced."
+},
+{
+"n": "1068252",
+"en": "<BASEFONT COLOR=#4AADFE>~1_val~ Charges Per Use</BASEFONT>"
+},
+{
+"n": "1068253",
+"en": "<BASEFONT COLOR=#4AADFE>Charges: ~1_val~/~2_val~</BASEFONT>"
+},
+{
+"n": "1068254",
+"en": "<BASEFONT COLOR=#4AADFE>Charges: ~1_val~</BASEFONT>"
+},
+{
+"n": "1068255",
+"en": "<BASEFONT COLOR=#4AADFE>Clumsy</BASEFONT>"
+},
+{
+"n": "1068256",
+"en": "<BASEFONT COLOR=#4AADFE>Create Food</BASEFONT>"
+},
+{
+"n": "1068257",
+"en": "<BASEFONT COLOR=#4AADFE>Feeble Mind</BASEFONT>"
+},
+{
+"n": "1068258",
+"en": "<BASEFONT COLOR=#4AADFE>Heal</BASEFONT>"
+},
+{
+"n": "1068259",
+"en": "<BASEFONT COLOR=#4AADFE>Magic Arrow</BASEFONT>"
+},
+{
+"n": "1068260",
+"en": "<BASEFONT COLOR=#4AADFE>Night Sight</BASEFONT>"
+},
+{
+"n": "1068261",
+"en": "<BASEFONT COLOR=#4AADFE>Reactive Armor</BASEFONT>"
+},
+{
+"n": "1068262",
+"en": "<BASEFONT COLOR=#4AADFE>Weaken</BASEFONT>"
+},
+{
+"n": "1068263",
+"en": "<BASEFONT COLOR=#4AADFE>Agility</BASEFONT>"
+},
+{
+"n": "1068264",
+"en": "<BASEFONT COLOR=#4AADFE>Cunning</BASEFONT>"
+},
+{
+"n": "1068265",
+"en": "<BASEFONT COLOR=#4AADFE>Cure</BASEFONT>"
+},
+{
+"n": "1068266",
+"en": "<BASEFONT COLOR=#4AADFE>Harm</BASEFONT>"
+},
+{
+"n": "1068267",
+"en": "<BASEFONT COLOR=#4AADFE>Magic Trap</BASEFONT>"
+},
+{
+"n": "1068268",
+"en": "<BASEFONT COLOR=#4AADFE>Remove Trap</BASEFONT>"
+},
+{
+"n": "1068269",
+"en": "<BASEFONT COLOR=#4AADFE>Protection</BASEFONT>"
+},
+{
+"n": "1068270",
+"en": "<BASEFONT COLOR=#4AADFE>Strength</BASEFONT>"
+},
+{
+"n": "1068271",
+"en": "<BASEFONT COLOR=#4AADFE>Bless</BASEFONT>"
+},
+{
+"n": "1068272",
+"en": "<BASEFONT COLOR=#4AADFE>Fireball</BASEFONT>"
+},
+{
+"n": "1068273",
+"en": "<BASEFONT COLOR=#4AADFE>Magic Lock</BASEFONT>"
+},
+{
+"n": "1068274",
+"en": "<BASEFONT COLOR=#4AADFE>Poison</BASEFONT>"
+},
+{
+"n": "1068275",
+"en": "<BASEFONT COLOR=#4AADFE>Telekinesis</BASEFONT>"
+},
+{
+"n": "1068276",
+"en": "<BASEFONT COLOR=#4AADFE>Teleport</BASEFONT>"
+},
+{
+"n": "1068277",
+"en": "<BASEFONT COLOR=#4AADFE>Unlock</BASEFONT>"
+},
+{
+"n": "1068278",
+"en": "<BASEFONT COLOR=#4AADFE>Wall of Stone</BASEFONT>"
+},
+{
+"n": "1068279",
+"en": "<BASEFONT COLOR=#4AADFE>Arch Cure</BASEFONT>"
+},
+{
+"n": "1068280",
+"en": "<BASEFONT COLOR=#4AADFE>Arch Protection</BASEFONT>"
+},
+{
+"n": "1068281",
+"en": "<BASEFONT COLOR=#4AADFE>Curse</BASEFONT>"
+},
+{
+"n": "1068282",
+"en": "<BASEFONT COLOR=#4AADFE>Fire Field</BASEFONT>"
+},
+{
+"n": "1068283",
+"en": "<BASEFONT COLOR=#4AADFE>Greater Heal</BASEFONT>"
+},
+{
+"n": "1068284",
+"en": "<BASEFONT COLOR=#4AADFE>Lightning</BASEFONT>"
+},
+{
+"n": "1068285",
+"en": "<BASEFONT COLOR=#4AADFE>Mana Drain</BASEFONT>"
+},
+{
+"n": "1068286",
+"en": "<BASEFONT COLOR=#4AADFE>Recall</BASEFONT>"
+},
+{
+"n": "1068287",
+"en": "<BASEFONT COLOR=#4AADFE>Blade Spirits</BASEFONT>"
+},
+{
+"n": "1068288",
+"en": "<BASEFONT COLOR=#4AADFE>Dispel Field</BASEFONT>"
+},
+{
+"n": "1068289",
+"en": "<BASEFONT COLOR=#4AADFE>Incognito</BASEFONT>"
+},
+{
+"n": "1068290",
+"en": "<BASEFONT COLOR=#4AADFE>Magic Reflect</BASEFONT>"
+},
+{
+"n": "1068291",
+"en": "<BASEFONT COLOR=#4AADFE>Mind Blast</BASEFONT>"
+},
+{
+"n": "1068292",
+"en": "<BASEFONT COLOR=#4AADFE>Paralyze</BASEFONT>"
+},
+{
+"n": "1068293",
+"en": "<BASEFONT COLOR=#4AADFE>Poison Field</BASEFONT>"
+},
+{
+"n": "1068294",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Creature</BASEFONT>"
+},
+{
+"n": "1068295",
+"en": "<BASEFONT COLOR=#4AADFE>Dispel</BASEFONT>"
+},
+{
+"n": "1068296",
+"en": "<BASEFONT COLOR=#4AADFE>Energy Bolt</BASEFONT>"
+},
+{
+"n": "1068297",
+"en": "<BASEFONT COLOR=#4AADFE>Explosion</BASEFONT>"
+},
+{
+"n": "1068298",
+"en": "<BASEFONT COLOR=#4AADFE>Invisibility</BASEFONT>"
+},
+{
+"n": "1068299",
+"en": "<BASEFONT COLOR=#4AADFE>Mark</BASEFONT>"
+},
+{
+"n": "1068300",
+"en": "<BASEFONT COLOR=#4AADFE>Mass Curse</BASEFONT>"
+},
+{
+"n": "1068301",
+"en": "<BASEFONT COLOR=#4AADFE>Paralyze Field</BASEFONT>"
+},
+{
+"n": "1068302",
+"en": "<BASEFONT COLOR=#4AADFE>Reveal</BASEFONT>"
+},
+{
+"n": "1068303",
+"en": "<BASEFONT COLOR=#4AADFE>Chain Lightning</BASEFONT>"
+},
+{
+"n": "1068304",
+"en": "<BASEFONT COLOR=#4AADFE>Energy Field</BASEFONT>"
+},
+{
+"n": "1068305",
+"en": "<BASEFONT COLOR=#4AADFE>Flamestrike</BASEFONT>"
+},
+{
+"n": "1068306",
+"en": "<BASEFONT COLOR=#4AADFE>Gate Travel</BASEFONT>"
+},
+{
+"n": "1068307",
+"en": "<BASEFONT COLOR=#4AADFE>Mana Vampire</BASEFONT>"
+},
+{
+"n": "1068308",
+"en": "<BASEFONT COLOR=#4AADFE>Mass Dispel</BASEFONT>"
+},
+{
+"n": "1068309",
+"en": "<BASEFONT COLOR=#4AADFE>Meteor Swarm</BASEFONT>"
+},
+{
+"n": "1068310",
+"en": "<BASEFONT COLOR=#4AADFE>Polymorph</BASEFONT>"
+},
+{
+"n": "1068311",
+"en": "<BASEFONT COLOR=#4AADFE>Earthquake</BASEFONT>"
+},
+{
+"n": "1068312",
+"en": "<BASEFONT COLOR=#4AADFE>Energy Vortex</BASEFONT>"
+},
+{
+"n": "1068313",
+"en": "<BASEFONT COLOR=#4AADFE>Resurrection</BASEFONT>"
+},
+{
+"n": "1068314",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Air Elemental</BASEFONT>"
+},
+{
+"n": "1068315",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Daemon</BASEFONT>"
+},
+{
+"n": "1068316",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Earth Elemental</BASEFONT>"
+},
+{
+"n": "1068317",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Fire Elemental</BASEFONT>"
+},
+{
+"n": "1068318",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Water Elemental</BASEFONT>"
+},
+{
+"n": "1068319",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Snakes</BASEFONT>"
+},
+{
+"n": "1068320",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Dragon</BASEFONT>"
+},
+{
+"n": "1068321",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Skeleton</BASEFONT>"
+},
+{
+"n": "1068322",
+"en": "<BASEFONT COLOR=#4AADFE>Identify</BASEFONT>"
+},
+{
+"n": "1068323",
+"en": "<BASEFONT COLOR=#4AADFE>Curse Weapon</BASEFONT>"
+},
+{
+"n": "1068324",
+"en": "<BASEFONT COLOR=#4AADFE>Blood Oath</BASEFONT>"
+},
+{
+"n": "1068325",
+"en": "<BASEFONT COLOR=#4AADFE>Corpse Skin</BASEFONT>"
+},
+{
+"n": "1068326",
+"en": "<BASEFONT COLOR=#4AADFE>Evil Omen</BASEFONT>"
+},
+{
+"n": "1068327",
+"en": "<BASEFONT COLOR=#4AADFE>Pain Spike</BASEFONT>"
+},
+{
+"n": "1068328",
+"en": "<BASEFONT COLOR=#4AADFE>Wraith Form</BASEFONT>"
+},
+{
+"n": "1068329",
+"en": "<BASEFONT COLOR=#4AADFE>Mind Rot</BASEFONT>"
+},
+{
+"n": "1068330",
+"en": "<BASEFONT COLOR=#4AADFE>Summon Familiar</BASEFONT>"
+},
+{
+"n": "1068331",
+"en": "<BASEFONT COLOR=#4AADFE>Animate Dead</BASEFONT>"
+},
+{
+"n": "1068332",
+"en": "<BASEFONT COLOR=#4AADFE>Horrific Beast</BASEFONT>"
+},
+{
+"n": "1068333",
+"en": "<BASEFONT COLOR=#4AADFE>Poison Strike</BASEFONT>"
+},
+{
+"n": "1068334",
+"en": "<BASEFONT COLOR=#4AADFE>Wither</BASEFONT>"
+},
+{
+"n": "1068335",
+"en": "<BASEFONT COLOR=#4AADFE>Strangle</BASEFONT>"
+},
+{
+"n": "1068336",
+"en": "<BASEFONT COLOR=#4AADFE>Lich Form</BASEFONT>"
+},
+{
+"n": "1068337",
+"en": "<BASEFONT COLOR=#4AADFE>Exorcism</BASEFONT>"
+},
+{
+"n": "1068338",
+"en": "<BASEFONT COLOR=#4AADFE>Vengeful Spirit</BASEFONT>"
+},
+{
+"n": "1068339",
+"en": "<BASEFONT COLOR=#4AADFE>Vampiric Embrace</BASEFONT>"
+},
+{
+"n": "1070630",
+"en": "~1_NOTHING~"
+},
+{
+"n": "1070631",
+"en": "~1_NOTHING~"
+},
+{
+"n": "1070632",
+"en": "~1_NOTHING~"
+},
+{
+"n": "1070633",
+"en": "~1_NOTHING~"
+},
+{
+"n": "1070634",
+"en": "~1_NOTHING~"
+},
+{
+"n": "1070753",
+"en": "<BASEFONT COLOR=#C6D11C>Artifact</BASEFONT>"
+},
+{
+"n": "1070754",
+"en": "<BASEFONT COLOR=#C6D11C>Artefact</BASEFONT>"
+},
+{
+"n": "1071128",
+"en": "<BASEFONT COLOR=#C6D11C>Legendary Artefact</BASEFONT>"
+},
+{
+"n": "1071943",
+"en": "You must be a Journeyman or higher Tinker to construct a golem."
+},
+{
+"n": "1072041",
+"en": "<BASEFONT COLOR=#E6EDF2> ~1_VAL~ Type Material </BASEFONT>"
+},
+{
+"n": "1079593",
+"en": "You have no idea how to work this metal."
+},
+{
+"n": "1079594",
+"en": "You have no idea how to work this bone."
+},
+{
+"n": "1079595",
+"en": "You have no idea how to work this cloth."
+},
+{
+"n": "1079596",
+"en": "You have no idea how to work this stone."
+},
+{
+"n": "1079597",
+"en": "You have no idea how to work this wood."
+},
+{
+"n": "1079598",
+"en": "You have no idea how to work these scales."
+},
+{
+"n": "1079599",
+"en": "You have no idea how to work this gemstone."
+},
+{
+"n": "1079600",
+"en": "You have no idea how to work this skin."
+},
+{
+"n": "1079601",
+"en": "You have no idea how to work this material."
+},
+{
+"n": "1080030",
+"en": "The treasure chest is very close!"
+},
+{
+"n": "3000255",
+"en": "Enchant"
+},
+{
+"n": "3000256",
+"en": "Examine"
+},
+{
+"n": "3000257",
+"en": "Use Mercantile"
+},
+{
+"n": "3000258",
+"en": "Use Arms Lore"
+},
+{
+"n": "3000259",
+"en": "Use Tasting"
+},
+{
+"n": "3000282",
+"en": "Identify"
+},
+{
+"n": "3000283",
+"en": "Repair"
+},
+{
+"n": "3000284",
+"en": "Recharge"
+},
+{
+"n": "3006094",
+"en": "Black Market"
+},
+{
+"n": "3006095",
+"en": "Rent Room"
+},
+{
+"n": "3006096",
+"en": "Examine"
+},
+{
+"n": "3006097",
+"en": "Magic"
+},
+{
+"n": "3006098",
+"en": "Riding"
+},
+{
+"n": "3006163",
+"en": "Tribute"
+},
+{
+"n": "3006164",
+"en": "Setup Shoppe"
+},
+{
+"n": "3006165",
+"en": "Pets in Stable"
+},
+{
+"n": "3006167",
+"en": "Check Map"
+},
+{
+"n": "3006172",
+"en": "Organize"
+}
+]
