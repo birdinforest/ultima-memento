@@ -1063,8 +1063,26 @@ namespace Server.Mobiles
 				from.Send( new MobileStatusExtended( from ) );//make sure their gold amount is sent
 
 				if ( opls != null ) {
+					const int OplSoftCap = 500 * 1024; // 500 KB soft limit — stay under 512 KB hard cap
+
+					int sent = 0, skipped = 0;
+
 					for ( int i = 0; i < opls.Count; ++i ) {
+						if ( from.NetState != null && from.NetState.PendingBytes > OplSoftCap ) {
+							skipped++;
+							continue;
+						}
+
 						from.Send( opls[i] );
+						sent++;
+					}
+
+					if ( skipped > 0 ) {
+						Console.WriteLine(
+							"[VendorBuy] OPL truncated for {0} buying from {1}: sent {2}/{3}, skipped {4}. PendingBytes={5}",
+							from.Name, Name, sent, opls.Count, skipped,
+							from.NetState != null ? from.NetState.PendingBytes : 0
+						);
 					}
 				}
 

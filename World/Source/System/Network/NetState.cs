@@ -334,6 +334,14 @@ namespace Server.Network {
 			}
 		}
 
+		public int PendingBytes {
+			get {
+				lock ( m_SendQueue ) {
+					return m_SendQueue.PendingBytes;
+				}
+			}
+		}
+
 		public int Sequence {
 			get {
 				return m_Sequence;

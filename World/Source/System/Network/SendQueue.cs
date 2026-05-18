@@ -138,6 +138,12 @@ namespace Server.Network {
 			}
 		}
 
+		public int PendingBytes {
+			get {
+				return ( _pending.Count * m_CoalesceBufferSize ) + ( _buffered == null ? 0 : _buffered.Length );
+			}
+		}
+
 		public SendQueue() {
 			_pending = new Queue<Gram>();
 		}
@@ -169,7 +175,7 @@ namespace Server.Network {
 			return gram;
 		}
 
-		private const int PendingCap = 96 * 1024;
+		private const int PendingCap = 512 * 1024;
 
 		public Gram Enqueue( byte[] buffer, int length ) {
 			return Enqueue( buffer, 0, length );
