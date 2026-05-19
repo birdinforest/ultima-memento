@@ -115,11 +115,19 @@ namespace Server.Engines.Apiculture
 			}
 			
 			AddLabel(40, 172, 0x481, "?"); //help
+<<<<<<< HEAD
 			//AddTooltip("Help"); // TEMP TEST: suspected to break button hit-testing on TazUO
 
 			GumpUtilities.AddCenteredItemToGump(this, 6256, 228, 172, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
 			AddLabel(232, 172, 37, @"\");   //destroy
 			//AddTooltip("Destroy"); // TEMP TEST: suspected to break button hit-testing on TazUO
+=======
+			AddTooltip("Help");
+
+			GumpUtilities.AddCenteredItemToGump(this, 6256, 228, 172, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
+			AddLabel(232, 172, 37, @"\");   //destroy
+			AddTooltip("Destroy");
+>>>>>>> 93923804 (- Fix images for bee hives)
 
 			//misc labels
 			string statusLabel;
