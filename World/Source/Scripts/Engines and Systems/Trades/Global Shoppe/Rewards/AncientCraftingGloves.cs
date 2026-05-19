@@ -104,7 +104,10 @@ namespace Server.Items
         {
             base.AddNameProperties(list);
 
-            list.Add(1075217, Charges.ToString()); // ~1_val~ charges remaining
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.reward.craftinggloves.charges", Charges);
+            else
+                list.Add(1075217, Charges.ToString()); // ~1_val~ charges remaining
             if (m_Bonus != 0) list.Add(1060451, "#{0}\t{1}", 1044060 + (int)m_Skill, m_Bonus);
         }
 

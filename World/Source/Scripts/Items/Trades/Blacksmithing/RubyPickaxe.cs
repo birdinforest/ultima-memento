@@ -16,6 +16,7 @@ namespace Server.Items
 	public class RubyPickaxe : BaseSword
 	{
 		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.name.tool.rubypickaxe";
 
 		private ZornEffect m_ZornEffect;
 		private int m_Charges;

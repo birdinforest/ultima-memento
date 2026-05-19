@@ -7,6 +7,7 @@ namespace Server.Items
 	public class Brimstone : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.brimstone";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public Brimstone() : this( 1 )

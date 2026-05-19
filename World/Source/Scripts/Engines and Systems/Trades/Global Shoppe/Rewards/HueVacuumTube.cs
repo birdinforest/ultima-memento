@@ -119,15 +119,21 @@ namespace Server.Items
 		{
 			base.GetProperties(list);
 
-			list.Add("Extractions remaining: {0}", Uses);
-
-			if (!HasDye)
+			if (BuildingPropertyListLocale != null)
 			{
-				list.Add("Steal the color from an item");
+				AddLocalizedProperty(list, "prop.reward.vacuumtube.extractions", Uses);
+				if (!HasDye)
+					AddLocalizedProperty(list, "prop.reward.vacuumtube.steal");
+				else
+					AddLocalizedProperty(list, "prop.reward.vacuumtube.holding", Dye);
 			}
 			else
 			{
-				list.Add("Holding dye: {0} (0x{0:X})", Dye);
+				list.Add("Extractions remaining: {0}", Uses);
+				if (!HasDye)
+					list.Add("Steal the color from an item");
+				else
+					list.Add("Holding dye: {0} (0x{0:X})", Dye);
 			}
 		}
 

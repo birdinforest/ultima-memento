@@ -53,10 +53,21 @@ namespace Server.Items
 		{
 			base.GetProperties(list);
 
-			list.Add("Usable from your backpack");
-			list.Add("Use on trees to increase rarity");
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.reward.arborist.backpack");
+				AddLocalizedProperty(list, "prop.reward.arborist.trees");
+			}
+			else
+			{
+				list.Add("Usable from your backpack");
+				list.Add("Use on trees to increase rarity");
+			}
 
-			list.Add(1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses");
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.uses", m_UsesRemaining);
+			else
+				list.Add(1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses");
 		}
 
 		public void Identify(Mobile from, object toProspect)

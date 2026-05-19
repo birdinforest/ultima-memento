@@ -139,6 +139,25 @@ namespace Server.Items
 			ResourceMods.DefaultItemHue( item );
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				string key = HarvestSystem.HarvestSystemTxtKey( HarvestSystem );
+				if ( key != null )
+					AddLocalizedProperty( list, key );
+			}
+
+			m_InfoText1 = saved;
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );

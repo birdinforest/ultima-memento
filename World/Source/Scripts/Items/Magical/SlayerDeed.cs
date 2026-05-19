@@ -131,6 +131,7 @@ namespace Server.Items
 		public int SlayerType;
 		public string SlayerNames;
 
+		public override string DisplayNameLocalizationKey => "item.magical.slayerdeed";
 		public override bool IsContentLocalized => true;
 
 		[CommandProperty(AccessLevel.Owner)]

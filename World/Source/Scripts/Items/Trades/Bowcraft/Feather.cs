@@ -6,6 +6,7 @@ namespace Server.Items
 	public class Feather : Item
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.feather";
+		public override bool IsContentLocalized => true;
 
 		public override double DefaultWeight
 		{

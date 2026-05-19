@@ -7,6 +7,7 @@ namespace Server.Items
 	public class ButterflyWings : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.butterfly.wings";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public ButterflyWings() : this( 1 )

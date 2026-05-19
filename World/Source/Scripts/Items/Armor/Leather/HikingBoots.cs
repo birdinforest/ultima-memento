@@ -1,3 +1,4 @@
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Items
@@ -5,6 +6,7 @@ namespace Server.Items
 	public class HikingBoots : BaseShoes
 	{
 		public override string DisplayNameLocalizationKey => "item.equip.armor.hikingboots";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public HikingBoots() : base( 0x2FC4 )
 		{
@@ -23,7 +25,7 @@ namespace Server.Items
             if ( !base.CanEquip(from) ) return false;
 			if ( from.RaceID > 0 ) return true;
 
-			from.SendMessage( "This won't fit Humans." );
+			from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.hikingboots.human.wont.fit"));
 			return false;
         }
 
@@ -36,9 +38,17 @@ namespace Server.Items
         public override void AddNameProperty(ObjectPropertyList list)
         {
             base.AddNameProperty(list);
-			
-			list.Add("[Monster races only]");
-			list.Add("Increase movement speed");
+
+			if (BuildingPropertyListLocale != null)
+			{
+				AddLocalizedProperty(list, "prop.hikingboots.monster.only");
+				AddLocalizedProperty(list, "prop.hikingboots.speed");
+			}
+			else
+			{
+				list.Add("[Monster races only]");
+				list.Add("Increase movement speed");
+			}
         }
 
 		public HikingBoots( Serial serial ) : base( serial )

@@ -7,6 +7,7 @@ namespace Server.Items
 	public class DriedToad : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.dried.toad";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public DriedToad() : this( 1 )

@@ -1,9 +1,12 @@
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Items
 {
 	public class OldSwordTalisman : BaseTrinket
 	{
+		public override string DisplayNameLocalizationKey => "item.equip.trinket.oldsword";
+		public override bool IsContentLocalized => true;
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile Owner { get; set; }
 
@@ -29,22 +32,34 @@ namespace Server.Items
 
 		public override void OnDoubleClick(Mobile from)
 		{
-			from.SendMessage("Trinkets are equipped on your hip.");
+			from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.equip.trinket.msg.hip"));
 		}
 
 		public override void AddNameProperties(ObjectPropertyList list)
 		{
 			base.AddNameProperties(list);
 
-			if ( Owner != null ){ list.Add( 1049644, "Belongs to " + Owner.Name + "" ); }
-			else { list.Add(1070722, "Trinket"); }
+			if (Owner != null)
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "god.rename.belongs.to", Owner.Name);
+				else
+					list.Add(1049644, "Belongs to " + Owner.Name + "");
+			}
+			else
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.equip.trinket");
+				else
+					list.Add(1070722, "Trinket");
+			}
 		}
 
 		public override bool OnEquip(Mobile from)
 		{
 			if (Owner != from)
 			{
-				from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "This talisman belongs to another!");
+				from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(from.Account, "prop.equip.trinket.msg.belongs.other"));
 				return false;
 			}
 

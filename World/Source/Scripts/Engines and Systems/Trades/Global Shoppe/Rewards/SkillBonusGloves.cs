@@ -67,7 +67,13 @@
 		{
 			base.AddNameProperties(list);
 
-			if (m_Bonus != 0) list.Add(1060451, "#{0}\t{1}", 1044060 + (int)m_Skill, m_Bonus);
+			if (m_Bonus != 0)
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.reward.bonusgloves.skill", m_Skill.ToString(), m_Bonus);
+				else
+					list.Add(1060451, "#{0}\t{1}", 1044060 + (int)m_Skill, m_Bonus);
+			}
 		}
 
 		public override void Deserialize(GenericReader reader)

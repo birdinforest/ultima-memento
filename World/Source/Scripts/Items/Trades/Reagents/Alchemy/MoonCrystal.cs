@@ -7,6 +7,7 @@ namespace Server.Items
 	public class MoonCrystal : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.moon.crystal";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public MoonCrystal() : this( 1 )

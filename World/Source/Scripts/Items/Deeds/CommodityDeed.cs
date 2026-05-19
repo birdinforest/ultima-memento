@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Items.Abstractions;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 
@@ -8,6 +9,8 @@ namespace Server.Items
 {
 	public class CommodityDeed : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		private Item m_Commodity;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -79,7 +82,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("Target the commodity you wish to deed.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "prop.commodity.deed.target"));
 				from.Target = new InternalTarget(this);
 			}
 		}
@@ -122,7 +125,10 @@ namespace Server.Items
 			}
 			else
 			{
-				list.Add("Usable on refined resources");
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.commodity.deed.empty");
+				else
+					list.Add("Usable on refined resources");
 			}
 		}
 

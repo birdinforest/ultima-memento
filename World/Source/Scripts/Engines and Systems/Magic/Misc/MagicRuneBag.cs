@@ -945,6 +945,7 @@ namespace Server.Items
 	public abstract class RuneStone : Item
 	{
 		public override bool DisplayWeight{ get{ return false; } }
+		public override bool IsContentLocalized => true;
 
 		public RuneStone() : base( 0x1F15 )
 		{
@@ -960,6 +961,54 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 ); // version
+		}
+
+		public override void AddNameProperties(ObjectPropertyList list)
+		{
+			if (BuildingPropertyListLocale != null)
+			{
+				string save1 = ColorText1; ColorText1 = null;
+				string save2 = ColorText2; ColorText2 = null;
+				base.AddNameProperties(list);
+				AddLocalizedProperty(list, "prop.colortext.runebag.title");
+				AddLocalizedProperty(list, GetRuneWordKey());
+				ColorText1 = save1; ColorText2 = save2;
+			}
+			else
+			{
+				base.AddNameProperties(list);
+			}
+		}
+
+		private string GetRuneWordKey()
+		{
+			if (this is An) return "prop.colortext.runebag.word.an";
+			if (this is Bet) return "prop.colortext.runebag.word.bet";
+			if (this is Corp) return "prop.colortext.runebag.word.corp";
+			if (this is Des) return "prop.colortext.runebag.word.des";
+			if (this is Ex) return "prop.colortext.runebag.word.ex";
+			if (this is Flam) return "prop.colortext.runebag.word.flam";
+			if (this is Grav) return "prop.colortext.runebag.word.grav";
+			if (this is Hur) return "prop.colortext.runebag.word.hur";
+			if (this is In) return "prop.colortext.runebag.word.in";
+			if (this is Jux) return "prop.colortext.runebag.word.jux";
+			if (this is Kal) return "prop.colortext.runebag.word.kal";
+			if (this is Lor) return "prop.colortext.runebag.word.lor";
+			if (this is Mani) return "prop.colortext.runebag.word.mani";
+			if (this is Nox) return "prop.colortext.runebag.word.nox";
+			if (this is Ort) return "prop.colortext.runebag.word.ort";
+			if (this is Por) return "prop.colortext.runebag.word.por";
+			if (this is Quas) return "prop.colortext.runebag.word.quas";
+			if (this is Rel) return "prop.colortext.runebag.word.rel";
+			if (this is Sanct) return "prop.colortext.runebag.word.sanct";
+			if (this is Tym) return "prop.colortext.runebag.word.tym";
+			if (this is Uus) return "prop.colortext.runebag.word.uus";
+			if (this is Vas) return "prop.colortext.runebag.word.vas";
+			if (this is Wis) return "prop.colortext.runebag.word.wis";
+			if (this is Xen) return "prop.colortext.runebag.word.xen";
+			if (this is Ylem) return "prop.colortext.runebag.word.ylem";
+			if (this is Zu) return "prop.colortext.runebag.word.zu";
+			return null;
 		}
 
 		public static void SetRune( RuneStone stone )
@@ -1057,6 +1106,8 @@ namespace Server.Items
 
 	public class An : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.an";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public An() : base()
 		{
@@ -1081,6 +1132,8 @@ namespace Server.Items
 
 	public class Bet : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.bet";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Bet() : base()
 		{
@@ -1105,6 +1158,8 @@ namespace Server.Items
 
 	public class Corp : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.corp";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Corp() : base()
 		{
@@ -1129,6 +1184,8 @@ namespace Server.Items
 
 	public class Des : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.des";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Des() : base()
 		{
@@ -1153,6 +1210,8 @@ namespace Server.Items
 
 	public class Ex : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.ex";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Ex() : base()
 		{
@@ -1177,6 +1236,8 @@ namespace Server.Items
 
 	public class Flam : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.flam";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Flam() : base()
 		{
@@ -1201,6 +1262,8 @@ namespace Server.Items
 
 	public class Grav : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.grav";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Grav() : base()
 		{
@@ -1225,6 +1288,8 @@ namespace Server.Items
 
 	public class Hur : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.hur";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Hur() : base()
 		{
@@ -1249,6 +1314,8 @@ namespace Server.Items
 
 	public class In : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.in";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public In() : base()
 		{
@@ -1273,6 +1340,8 @@ namespace Server.Items
 
 	public class Jux : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.jux";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Jux() : base()
 		{
@@ -1297,6 +1366,8 @@ namespace Server.Items
 
 	public class Kal : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.kal";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Kal() : base()
 		{
@@ -1321,6 +1392,8 @@ namespace Server.Items
 
 	public class Lor : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.lor";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Lor() : base()
 		{
@@ -1345,6 +1418,8 @@ namespace Server.Items
 
 	public class Mani : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.mani";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Mani() : base()
 		{
@@ -1369,6 +1444,8 @@ namespace Server.Items
 
 	public class Nox : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.nox";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Nox() : base()
 		{
@@ -1393,6 +1470,8 @@ namespace Server.Items
 
 	public class Ort : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.ort";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Ort() : base()
 		{
@@ -1417,6 +1496,8 @@ namespace Server.Items
 
 	public class Por : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.por";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Por() : base()
 		{
@@ -1441,6 +1522,8 @@ namespace Server.Items
 
 	public class Quas : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.quas";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Quas() : base()
 		{
@@ -1465,6 +1548,8 @@ namespace Server.Items
 
 	public class Rel : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.rel";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Rel() : base()
 		{
@@ -1489,6 +1574,8 @@ namespace Server.Items
 
 	public class Sanct : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.sanct";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Sanct() : base()
 		{
@@ -1513,6 +1600,8 @@ namespace Server.Items
 
 	public class Tym : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.tym";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Tym() : base()
 		{
@@ -1537,6 +1626,8 @@ namespace Server.Items
 
 	public class Uus : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.uus";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Uus() : base()
 		{
@@ -1561,6 +1652,8 @@ namespace Server.Items
 
 	public class Vas : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.vas";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Vas() : base()
 		{
@@ -1585,6 +1678,8 @@ namespace Server.Items
 
 	public class Wis : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.wis";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Wis() : base()
 		{
@@ -1609,6 +1704,8 @@ namespace Server.Items
 
 	public class Xen : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.xen";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Xen() : base()
 		{
@@ -1633,6 +1730,8 @@ namespace Server.Items
 
 	public class Ylem : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.ylem";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Ylem() : base()
 		{
@@ -1657,6 +1756,8 @@ namespace Server.Items
 
 	public class Zu : RuneStone
 	{
+		public override string DisplayNameLocalizationKey => "item.runebag.stone.zu";
+		public override bool IsContentLocalized => true;
 		[Constructable]
 		public Zu() : base()
 		{

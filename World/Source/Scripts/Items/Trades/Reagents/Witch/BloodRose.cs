@@ -7,6 +7,7 @@ namespace Server.Items
 	public class BloodRose : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.blood.rose";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public BloodRose() : this( 1 )

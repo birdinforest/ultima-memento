@@ -80,7 +80,13 @@ namespace Server.Items
 			else if ( m_Gifter != "" && m_Gifter != null )
 			{
 				if ( BuildingPropertyListLocale != null )
-					AddLocalizedProperty( list, "gift.provenance", m_How, m_Owner?.Name ?? m_Gifter );
+				{
+					string howKey = GiftHowHelper.GetHowKey( m_How );
+					if ( howKey != null )
+						AddLocalizedProperty( list, howKey, m_Owner?.Name ?? m_Gifter );
+					else
+						AddLocalizedProperty( list, "prop.gift.provenance", m_How + " " + ( m_Owner?.Name ?? m_Gifter ) );
+				}
 				else
 					list.Add( 1070722, m_Gifter);
 			}
@@ -94,7 +100,13 @@ namespace Server.Items
 			else if ( m_Owner != null )
 			{
 				if ( BuildingPropertyListLocale != null )
-					AddLocalizedProperty( list, "gift.provenance", m_How, m_Owner.Name );
+				{
+					string howKey = GiftHowHelper.GetHowKey( m_How );
+					if ( howKey != null )
+						AddLocalizedProperty( list, howKey, m_Owner.Name );
+					else
+						AddLocalizedProperty( list, "prop.gift.provenance", m_How + " " + m_Owner.Name );
+				}
 				else
 					list.Add( 1049644, m_How + " " + m_Owner.Name + "" );
 			}

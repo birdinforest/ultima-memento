@@ -82,19 +82,44 @@ namespace Server.Items
 		{
 			base.AddNameProperties(list);
 
-			list.Add(PaintTargetMessage);
-
-			if (!HasDye)
+			if (BuildingPropertyListLocale != null)
 			{
-				list.Add("Apply dye directly");
-				list.Add("(Can only be colored once)");
+				// PaintTargetMessage is abstract; resolve via subclass-key pattern
+				if (this is LeatherDyeTubTemp)
+					AddLocalizedProperty(list, "prop.reward.dyetub.paint.leather");
+				else if (this is MetalDyeTubTemp)
+					AddLocalizedProperty(list, "prop.reward.dyetub.paint.metal");
+				else if (this is WoodDyeTubTemp)
+					AddLocalizedProperty(list, "prop.reward.dyetub.paint.wood");
+
+				if (!HasDye)
+				{
+					AddLocalizedProperty(list, "prop.reward.dyetub.apply");
+					AddLocalizedProperty(list, "prop.reward.dyetub.colored.once");
+				}
+				else
+				{
+					AddLocalizedProperty(list, "prop.reward.dyetub.dyed");
+				}
+
+				AddLocalizedProperty(list, "prop.uses", Uses);
 			}
 			else
 			{
-				list.Add("Has been dyed");
-			}
+				list.Add(PaintTargetMessage);
 
-			list.Add(1060584, "{0}\t{1}", Uses.ToString(), "Uses");
+				if (!HasDye)
+				{
+					list.Add("Apply dye directly");
+					list.Add("(Can only be colored once)");
+				}
+				else
+				{
+					list.Add("Has been dyed");
+				}
+
+				list.Add(1060584, "{0}\t{1}", Uses.ToString(), "Uses");
+			}
 		}
 
 		public bool ApplyHue(Mobile from, int targetHue, int sound)

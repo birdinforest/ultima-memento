@@ -45,6 +45,43 @@ namespace Server.Engines.Craft
 		public virtual int GumpTitleNumber{ get{ return 0; } }
 		public virtual string GumpTitleString{ get{ return ""; } }
 		public virtual string CraftSystemTxt{ get{ return ""; } }
+
+		private static Dictionary<Type, string> m_CraftTxtKeys;
+
+		public static string CraftSystemTxtKey( CraftSystem system )
+		{
+			if ( m_CraftTxtKeys == null )
+			{
+				m_CraftTxtKeys = new Dictionary<Type, string>();
+				m_CraftTxtKeys[typeof(DefAlchemy)] = "prop.crafttxt.alchemy";
+				m_CraftTxtKeys[typeof(DefBlacksmithy)] = "prop.crafttxt.blacksmithy";
+				m_CraftTxtKeys[typeof(DefBonecrafting)] = "prop.crafttxt.bone";
+				m_CraftTxtKeys[typeof(DefBowFletching)] = "prop.crafttxt.bowfletching";
+				m_CraftTxtKeys[typeof(DefCarpentry)] = "prop.crafttxt.carpentry";
+				m_CraftTxtKeys[typeof(DefCartography)] = "prop.crafttxt.cartography";
+				m_CraftTxtKeys[typeof(DefCooking)] = "prop.crafttxt.cooking";
+				m_CraftTxtKeys[typeof(DefDruidism)] = "prop.crafttxt.druidherbalism";
+				m_CraftTxtKeys[typeof(DefDraconic)] = "prop.crafttxt.reptilescaling";
+				m_CraftTxtKeys[typeof(DefGlassblowing)] = "prop.crafttxt.glassblowing";
+				m_CraftTxtKeys[typeof(DefInscription)] = "prop.crafttxt.inscription";
+				m_CraftTxtKeys[typeof(DefLapidary)] = "prop.crafttxt.lapidary";
+				m_CraftTxtKeys[typeof(DefLeatherworking)] = "prop.crafttxt.leather";
+				m_CraftTxtKeys[typeof(DefMasonry)] = "prop.crafttxt.stoneworking";
+				m_CraftTxtKeys[typeof(DefApothecary)] = "prop.crafttxt.apothecary";
+				m_CraftTxtKeys[typeof(DefShelves)] = "prop.crafttxt.shelving";
+				m_CraftTxtKeys[typeof(DefStitching)] = "prop.crafttxt.stitching";
+				m_CraftTxtKeys[typeof(DefTailoring)] = "prop.crafttxt.tailoring";
+				m_CraftTxtKeys[typeof(DefTinkering)] = "prop.crafttxt.tinkering";
+				m_CraftTxtKeys[typeof(DefWands)] = "prop.crafttxt.wandcreation";
+				m_CraftTxtKeys[typeof(DefWaxCrafting)] = "prop.crafttxt.waxworks";
+				m_CraftTxtKeys[typeof(DefWitchery)] = "prop.crafttxt.witchbrewing";
+			}
+
+			string key;
+			m_CraftTxtKeys.TryGetValue( system.GetType(), out key );
+			return key;
+		}
+
 		public virtual bool ShowGumpInfo{ get{ return true; } }
 		public virtual CraftResourceType BreakDownType{ get{ return CraftResourceType.Metal; } }
 		public virtual CraftResourceType BreakDownTypeAlt{ get{ return CraftResourceType.None; } }

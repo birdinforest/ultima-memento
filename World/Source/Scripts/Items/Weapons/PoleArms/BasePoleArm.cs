@@ -48,6 +48,25 @@ namespace Server.Items
 			set { m_ShowUsesRemaining = value; InvalidateProperties(); }
 		}
 
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = m_InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				m_InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				string key = HarvestSystem.HarvestSystemTxtKey( HarvestSystem );
+				if ( key != null )
+					AddLocalizedProperty( list, key );
+			}
+
+			m_InfoText1 = saved;
+		}
+
 		public BasePoleArm( int itemID ) : base( itemID )
 		{
 			m_UsesRemaining = 150;

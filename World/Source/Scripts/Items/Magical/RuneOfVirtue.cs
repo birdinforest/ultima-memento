@@ -2,6 +2,7 @@ using System;
 using Server;
 using System.Collections;
 using Server.Items;
+using Server.Localization;
 using Server.Network;
 using Server.Mobiles;
 using System.Collections.Generic;
@@ -97,17 +98,17 @@ namespace Server.Items
 			Hue = 0; if ( ItemSide > 0 ){ Hue = 0xB20; }
 			if ( this.ItemOwner != from )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "This rune belongs to another!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.magical.rune.msg.belongs.another" ) );
 				return false;
 			}
 			else if ( ItemSide > 0 && from.Karma > 0 )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too virtuous to wield that!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.magical.rune.msg.virtuous" ) );
 				return false;
 			}
 			else if ( ItemSide < 1 && from.Karma < 0 )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too corrupt to wield that!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.magical.rune.msg.corrupt" ) );
 				return false;
 			}
 			return true;
@@ -121,18 +122,18 @@ namespace Server.Items
 				{
 					RuneOfVirtue stone = (RuneOfVirtue)rune;
 
-					if ( stone.ItemSide > 0 && from.Karma > 0 )
-					{
-						from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too virtuous to wield that rune!" );
-						from.AddToBackpack ( rune );
-						from.InvalidateProperties();
-					}
-					else if ( stone.ItemSide < 1 && from.Karma < 0 )
-					{
-						from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too corrupt to wield that rune!" );
-						from.AddToBackpack ( rune );
-						from.InvalidateProperties();
-					}
+				if ( stone.ItemSide > 0 && from.Karma > 0 )
+				{
+					from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.magical.rune.msg.virtuous" ) );
+					from.AddToBackpack ( rune );
+					from.InvalidateProperties();
+				}
+				else if ( stone.ItemSide < 1 && from.Karma < 0 )
+				{
+					from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.magical.rune.msg.corrupt" ) );
+					from.AddToBackpack ( rune );
+					from.InvalidateProperties();
+				}
 				}
 			}
 		}

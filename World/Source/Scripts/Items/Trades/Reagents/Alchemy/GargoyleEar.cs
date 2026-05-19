@@ -7,6 +7,7 @@ namespace Server.Items
 	public class GargoyleEar : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.gargoyle.ear";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public GargoyleEar() : this( 1 )

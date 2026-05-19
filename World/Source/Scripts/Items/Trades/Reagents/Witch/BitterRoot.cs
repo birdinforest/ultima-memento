@@ -7,6 +7,7 @@ namespace Server.Items
 	public class BitterRoot : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.bitter.root";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public BitterRoot() : this( 1 )

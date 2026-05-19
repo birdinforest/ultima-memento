@@ -111,24 +111,49 @@ namespace Server.Items
 			TimeSpan timeRemaining = m_Created.AddDays(MAX_DAYS_AGE) - DateTime.UtcNow;
 			if (timeRemaining.TotalMinutes < 0)
 			{
-				list.Add("It is a plain skull.");
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.champ.skull.plain");
+				else
+					list.Add("It is a plain skull.");
 				return;
 			}
 
-			list.Add("[Use on a Champion Idol]");
-
-			if (timeRemaining.TotalDays < 1)
-				list.Add("Energy: Faint"); // < 1 day
-			else if (timeRemaining.TotalDays < 3)
-				list.Add("Energy: Waning"); // 1-3 days
-			else if (timeRemaining.TotalDays < 5)
-				list.Add("Energy: Diminished"); // 3-5 days
-			else if (timeRemaining.TotalDays < 7)
-				list.Add("Energy: Fading"); // 5-7 days
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "prop.champ.skull.use");
 			else
-				list.Add("Energy: Potent"); // 7+ days
+				list.Add("[Use on a Champion Idol]");
 
-			list.Add("Type: " + ChampionSpawnInfo.GetName(m_Type));
+			if (BuildingPropertyListLocale != null)
+			{
+				string energyKey;
+				if (timeRemaining.TotalDays < 1)
+					energyKey = "prop.champ.skull.energy.faint";
+				else if (timeRemaining.TotalDays < 3)
+					energyKey = "prop.champ.skull.energy.waning";
+				else if (timeRemaining.TotalDays < 5)
+					energyKey = "prop.champ.skull.energy.diminished";
+				else if (timeRemaining.TotalDays < 7)
+					energyKey = "prop.champ.skull.energy.fading";
+				else
+					energyKey = "prop.champ.skull.energy.potent";
+				AddLocalizedProperty(list, energyKey);
+				AddLocalizedProperty(list, "prop.champ.skull.type", ChampionSpawnInfo.GetName(m_Type));
+			}
+			else
+			{
+				if (timeRemaining.TotalDays < 1)
+					list.Add("Energy: Faint"); // < 1 day
+				else if (timeRemaining.TotalDays < 3)
+					list.Add("Energy: Waning"); // 1-3 days
+				else if (timeRemaining.TotalDays < 5)
+					list.Add("Energy: Diminished"); // 3-5 days
+				else if (timeRemaining.TotalDays < 7)
+					list.Add("Energy: Fading"); // 5-7 days
+				else
+					list.Add("Energy: Potent"); // 7+ days
+
+				list.Add("Type: " + ChampionSpawnInfo.GetName(m_Type));
+			}
 		}
 
 		public override void OnDoubleClick(Mobile from)

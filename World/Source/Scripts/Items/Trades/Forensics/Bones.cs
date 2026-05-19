@@ -6,6 +6,7 @@ namespace Server.Items
 	public class Bones : Item
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.bones";
+		public override bool IsContentLocalized => true;
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Body; } }
 

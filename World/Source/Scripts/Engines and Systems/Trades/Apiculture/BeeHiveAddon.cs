@@ -804,14 +804,27 @@ namespace Server.Engines.Apiculture
 		{
 			if( m_Hive == null )
 			{//just in case
-				list.Add("Invalid Hive");
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.invalid" );
+				else
+					list.Add("Invalid Hive");
 				return;
 			}
 
 			if( m_Hive.HiveStage == HiveStatus.Empty )
-				list.Add( "BeeHive" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.empty" );
+				else
+					list.Add( "BeeHive" );
+			}
 			else
-				list.Add( m_Hive.OverallHealth.ToString()+" BeeHive" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.status", m_Hive.OverallHealth.ToString() );
+				else
+					list.Add( m_Hive.OverallHealth.ToString()+" BeeHive" );
+			}
 		}
 
 		public override void GetProperties(ObjectPropertyList list)
@@ -822,13 +835,33 @@ namespace Server.Engines.Apiculture
 				return;
 
 			if( m_Hive.HiveStage >= HiveStatus.Producing )
-				list.Add( 1049644 , "Producing" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.producing" );
+				else
+					list.Add( 1049644 , "Producing" );
+			}
 			else if( m_Hive.HiveStage >= HiveStatus.Brooding )
-				list.Add( 1049644 , "Brooding" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.brooding" );
+				else
+					list.Add( 1049644 , "Brooding" );
+			}
 			else if( m_Hive.HiveStage >= HiveStatus.Colonizing )
-				list.Add( 1049644 , "Colonizing" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.colonizing" );
+				else
+					list.Add( 1049644 , "Colonizing" );
+			}
 			else
-				list.Add( 1049644 , "Empty" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.stage.empty" );
+				else
+					list.Add( 1049644 , "Empty" );
+			}
 
 			if( m_Hive.HiveStage != HiveStatus.Empty )
 				list.Add( 1060663,"{0}\t{1}" ,"Age", m_Hive.HiveAge + (m_Hive.HiveAge==1 ? " day" : " days") );

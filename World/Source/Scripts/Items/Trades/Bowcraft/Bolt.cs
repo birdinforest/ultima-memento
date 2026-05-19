@@ -6,6 +6,7 @@ namespace Server.Items
 	public class Bolt : Item
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.bolt";
+		public override bool IsContentLocalized => true;
 
 		public override double DefaultWeight
 		{

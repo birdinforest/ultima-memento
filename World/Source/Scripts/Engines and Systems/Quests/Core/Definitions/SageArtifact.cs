@@ -424,7 +424,10 @@ namespace Server.Items
             base.AddNameProperties(list);
             list.Add(1070722, SearchItem);
             list.Add(1049644, m_SearchDungeon);
-            list.Add(1049644, "Discard at any time to abandon quest");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.quest.sageart.discard");
+            else
+                list.Add(1049644, "Discard at any time to abandon quest");
         }
 
         public class SearchGump : Gump
@@ -656,7 +659,10 @@ namespace Server.Items
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-            list.Add("The Search for Artifacts");
+            if (BuildingPropertyListLocale != null)
+                AddLocalizedProperty(list, "prop.quest.sageart.board.title");
+            else
+                list.Add("The Search for Artifacts");
         }
 
         public override void OnDoubleClick(Mobile e)

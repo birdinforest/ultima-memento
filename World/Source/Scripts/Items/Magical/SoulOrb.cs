@@ -21,6 +21,35 @@ namespace Server.Items
     {
 		public override bool IsContentLocalized => true;
 
+		public override void AddNameProperty(ObjectPropertyList list)
+		{
+			if (BuildingPropertyListLocale != null)
+			{
+				string key = GetSoulOrbNameKey();
+				if (key != null)
+					AddLocalizedProperty(list, key);
+				else
+					base.AddNameProperty(list);
+			}
+			else
+			{
+				base.AddNameProperty(list);
+			}
+		}
+
+		private string GetSoulOrbNameKey()
+		{
+			return OrbType switch
+			{
+				SoulOrbType.BloodOfVampire => "item.magical.soulorb.vampire",
+				SoulOrbType.CloningCrystalJedi => "item.magical.soulorb.clone.jedi",
+				SoulOrbType.CloningCrystalSyth => "item.magical.soulorb.clone.syth",
+				SoulOrbType.RestorativeSoil => "item.magical.soulorb.soil",
+				SoulOrbType.PermadeathPlaceholder => "item.magical.soulorb.placeholder",
+				_ => "item.magical.soulorb.default",
+			};
+		}
+
 		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 10 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }
 
         private Mobile m_Owner;

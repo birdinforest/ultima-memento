@@ -44,6 +44,21 @@ namespace Server.Engines.Harvest
 			return harvest;
 		}
 
+		public static string HarvestSystemTxtKey( HarvestSystem system )
+		{
+			if ( system is Mining )
+				return "prop.harvest.ore";
+			else if ( system is Lumberjacking )
+				return "prop.harvest.wood";
+			else if ( system is Fishing )
+				return "prop.harvest.fish";
+			else if ( system is Librarian )
+				return "prop.harvest.books";
+			else if ( system is GraveRobbing )
+				return "prop.harvest.graves";
+			return null;
+		}
+
 		public virtual bool CheckTool( Mobile from, Item tool )
 		{
 			bool wornOut = ( tool == null || tool.Deleted || (tool is IUsesRemaining && ((IUsesRemaining)tool).UsesRemaining <= 0) );

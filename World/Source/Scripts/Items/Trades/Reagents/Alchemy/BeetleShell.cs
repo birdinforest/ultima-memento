@@ -7,6 +7,7 @@ namespace Server.Items
 	public class BeetleShell : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.beetle.shell";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public BeetleShell() : this( 1 )

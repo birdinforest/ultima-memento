@@ -7,6 +7,7 @@ namespace Server.Items
 	public class MummyWrap : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.mummy.wrap";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public MummyWrap() : this( 1 )

@@ -1012,15 +1012,40 @@ namespace Server.Items
 
 			if ( this is SongBook )
 			{
-				if ( m_Count == 1 ){ list.Add( 1049644, "1 Song" );  } else { list.Add( 1049644, "" + m_Count.ToString() + " Songs" ); }
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.spellbook.songs.count", m_Count );
+				else if ( m_Count == 1 )
+					list.Add( 1049644, "1 Song" );
+				else
+					list.Add( 1049644, "" + m_Count.ToString() + " Songs" );
 			}
 			else if ( this is BookOfNinjitsu || this is BookOfBushido || this is MysticSpellbook )
 			{
-				if ( m_Count == 1 ){ list.Add( 1049644, "1 Ability" );  } else { list.Add( 1049644, "" + m_Count.ToString() + " Abilities" ); }
+				if ( BuildingPropertyListLocale != null )
+				{
+					if ( m_Count == 1 )
+						AddLocalizedProperty( list, "prop.spellbook.ability" );
+					else
+						AddLocalizedProperty( list, "prop.spellbook.abilities", m_Count );
+				}
+				else if ( m_Count == 1 )
+					list.Add( 1049644, "1 Ability" );
+				else
+					list.Add( 1049644, "" + m_Count.ToString() + " Abilities" );
 			}
 			else if ( this is SythSpellbook || this is JediSpellbook )
 			{
-				if ( m_Count == 1 ){ list.Add( 1049644, "1 Power" );  } else { list.Add( 1049644, "" + m_Count.ToString() + " Powers" ); }
+				if ( BuildingPropertyListLocale != null )
+				{
+					if ( m_Count == 1 )
+						AddLocalizedProperty( list, "prop.spellbook.power" );
+					else
+						AddLocalizedProperty( list, "prop.spellbook.powers", m_Count );
+				}
+				else if ( m_Count == 1 )
+					list.Add( 1049644, "1 Power" );
+				else
+					list.Add( 1049644, "" + m_Count.ToString() + " Powers" );
 			}
 			else
 			{

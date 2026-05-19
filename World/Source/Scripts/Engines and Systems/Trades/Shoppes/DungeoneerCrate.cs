@@ -51,12 +51,20 @@ namespace Server.Items
         public override bool DisplayWeight { get { return false; } }
         public override bool IsDecoContainer { get { return false; } }
 
-        public override void AddNameProperties(ObjectPropertyList list)
+		public override void AddNameProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
 
-            list.Add(1049644, "Contains: " + m_CrateGold.ToString() + " Gold");
-            list.Add(1070722, "For Sale: " + GetPendingTotal().ToString() + " Gold");
+            if (BuildingPropertyListLocale != null)
+            {
+                AddLocalizedProperty(list, "prop.quest.dungeoneer.contains", m_CrateGold);
+                AddLocalizedProperty(list, "prop.quest.dungeoneer.forsale", GetPendingTotal());
+            }
+            else
+            {
+                list.Add(1049644, "Contains: " + m_CrateGold.ToString() + " Gold");
+                list.Add(1070722, "For Sale: " + GetPendingTotal().ToString() + " Gold");
+            }
         }
 
         public void Empty()

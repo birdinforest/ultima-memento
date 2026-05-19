@@ -7,6 +7,7 @@ namespace Server.Items
 	public class BlackSand : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.black.sand";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public BlackSand() : this( 1 )

@@ -83,7 +83,7 @@ namespace Server.Engines.MLQuests.Objectives
 			string dest = QuesterNameAttribute.GetQuesterNameFor(Destination);
 
 			if (pm != null && pm.Account != null)
-				return StringCatalog.ResolveFormat(pm.Account, "Deliver to {0}", dest);
+				return StringCatalog.ResolveFormatByKey(pm.Account, "prop.gift.deliver.to", dest);
 
 			return string.Format("Deliver to {0}", dest);
 		}

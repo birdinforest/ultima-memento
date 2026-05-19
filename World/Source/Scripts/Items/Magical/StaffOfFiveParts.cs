@@ -144,6 +144,7 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override string DisplayNameLocalizationKey => "item.magical.staffpiece";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]
@@ -221,6 +222,7 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override string DisplayNameLocalizationKey => "item.magical.staffpiece";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]
@@ -298,6 +300,7 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override string DisplayNameLocalizationKey => "item.magical.staffpiece";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]
@@ -375,6 +378,7 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override string DisplayNameLocalizationKey => "item.magical.staffpiece";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]
@@ -452,6 +456,7 @@ namespace Server.Items
 	{
 		public Mobile Owner;
 
+		public override string DisplayNameLocalizationKey => "item.magical.staffpiece";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]

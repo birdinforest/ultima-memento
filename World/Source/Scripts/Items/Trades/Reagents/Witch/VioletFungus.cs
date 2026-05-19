@@ -7,6 +7,7 @@ namespace Server.Items
 	public class VioletFungus : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.violet.fungus";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public VioletFungus() : this( 1 )

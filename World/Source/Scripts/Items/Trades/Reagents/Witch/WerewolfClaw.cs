@@ -7,6 +7,7 @@ namespace Server.Items
 	public class WerewolfClaw : BaseReagent
 	{
 		public override string DisplayNameLocalizationKey => "item.trade.name.reagent.werewolf.claw";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public WerewolfClaw() : this( 1 )

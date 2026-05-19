@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Server.Spells;
 using Server.Spells.Elementalism;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -97,6 +98,50 @@ namespace Server.Items
 				scroll.InfoText1 = "Syth Lord Mysticron";
 			else if ( spellID >= 250 && spellID <= 259 )
 				scroll.InfoText1 = "Mystic Ability";
+		}
+
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			string saved = InfoText1;
+
+			if ( BuildingPropertyListLocale != null )
+				InfoText1 = null;
+
+			base.AddNameProperties( list );
+
+			if ( BuildingPropertyListLocale != null )
+			{
+				string key;
+				if ( m_SpellID < 64 )
+					key = "prop.infotext.spellscroll.magery";
+				else if ( m_SpellID >= 100 && m_SpellID <= 116 )
+					key = "prop.infotext.spellscroll.necromancer";
+				else if ( m_SpellID >= 131 && m_SpellID <= 146 )
+					key = "prop.infotext.spellscroll.witch";
+				else if ( m_SpellID >= 147 && m_SpellID <= 162 )
+					key = "prop.infotext.spellscroll.druid";
+				else if ( m_SpellID >= 300 && m_SpellID <= 331 )
+					key = "prop.infotext.spellscroll.elementalist";
+				else if ( m_SpellID >= 750 && m_SpellID <= 763 )
+					key = "prop.infotext.spellscroll.deathknight";
+				else if ( m_SpellID >= 770 && m_SpellID <= 783 )
+					key = "prop.infotext.spellscroll.holy";
+				else if ( m_SpellID >= 351 && m_SpellID <= 366 )
+					key = "prop.infotext.spellscroll.bard";
+				else if ( m_SpellID >= 280 && m_SpellID <= 289 )
+					key = "prop.infotext.spellscroll.jedi";
+				else if ( m_SpellID >= 270 && m_SpellID <= 279 )
+					key = "prop.infotext.spellscroll.sith";
+				else if ( m_SpellID >= 250 && m_SpellID <= 259 )
+					key = "prop.infotext.spellscroll.mystic";
+				else
+					key = null;
+
+				if ( key != null )
+					AddLocalizedProperty( list, key );
+			}
+
+			InfoText1 = saved;
 		}
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )

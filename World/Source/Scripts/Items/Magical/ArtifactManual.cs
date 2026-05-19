@@ -18,6 +18,7 @@ namespace Server.Items
 
     public class ArtifactManual : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.artifactmanual";
 		public override bool IsContentLocalized => true;
 
 		private ArtyBookEffect m_ArtyBookEffect;

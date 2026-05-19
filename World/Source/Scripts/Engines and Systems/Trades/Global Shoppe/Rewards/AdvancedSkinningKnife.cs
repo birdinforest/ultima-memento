@@ -33,7 +33,12 @@
 			base.AppendChildProperties(list);
 
 			if (0 < m_YieldBonus)
-				list.Add("Increases carving yields by {0}%", m_YieldBonus);
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.reward.skinningknife.yield", m_YieldBonus);
+				else
+					list.Add("Increases carving yields by {0}%", m_YieldBonus);
+			}
 		}
 
 		public override void Deserialize(GenericReader reader)

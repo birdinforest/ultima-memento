@@ -91,6 +91,9 @@ namespace Server.Items
 {
     public class TrainingShovel : Spade
     {
+        public override string DisplayNameLocalizationKey => "item.quest.training.shovel";
+        public override bool IsContentLocalized => true;
+
         [Constructable]
         public TrainingShovel() : base()
         {
@@ -106,8 +109,16 @@ namespace Server.Items
         {
             base.AddNameProperties(list);
 
-            list.Add("Drag onto Paperdoll");
-            list.Add("Only mines Iron Ore");
+            if (BuildingPropertyListLocale != null)
+            {
+                AddLocalizedProperty(list, "prop.quest.training.drag");
+                AddLocalizedProperty(list, "prop.quest.training.iron");
+            }
+            else
+            {
+                list.Add("Drag onto Paperdoll");
+                list.Add("Only mines Iron Ore");
+            }
         }
 
         public override void AppendChildProperties(ObjectPropertyList list)

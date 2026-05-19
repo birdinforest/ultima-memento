@@ -8,6 +8,7 @@ namespace Server.Items
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.jar"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.jar";
+		public override bool IsContentLocalized => true;
 
 		[Constructable]
 		public Jar() : this( 1 )

@@ -11,6 +11,7 @@ namespace Server.Items
 	public class reagents_magic_jar1 : Item
 	{
 		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.reagents.jar.wizard";
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
 
@@ -22,11 +23,8 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
-			if ( BuildingPropertyListLocale != null )
-			{
-				AddLocalizedProperty( list, "item.trade.reagents.jar.wizard" );
+			if ( TryAddLocalizedDisplayNameProperty( list ) )
 				return;
-			}
 			base.AddNameProperty( list );
 		}
 
@@ -88,6 +86,7 @@ namespace Server.Items
 	public class reagents_magic_jar2 : Item
 	{
 		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.reagents.jar.necro";
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
 
@@ -100,11 +99,8 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
-			if ( BuildingPropertyListLocale != null )
-			{
-				AddLocalizedProperty( list, "item.trade.reagents.jar.necro" );
+			if ( TryAddLocalizedDisplayNameProperty( list ) )
 				return;
-			}
 			base.AddNameProperty( list );
 		}
 
@@ -164,6 +160,7 @@ namespace Server.Items
 	public class reagents_magic_jar3 : Item
 	{
 		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.trade.reagents.jar.alchemy";
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
 
@@ -176,11 +173,8 @@ namespace Server.Items
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
-			if ( BuildingPropertyListLocale != null )
-			{
-				AddLocalizedProperty( list, "item.trade.reagents.jar.alchemy" );
+			if ( TryAddLocalizedDisplayNameProperty( list ) )
 				return;
-			}
 			base.AddNameProperty( list );
 		}
 

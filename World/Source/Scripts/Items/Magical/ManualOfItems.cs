@@ -16,6 +16,8 @@ namespace Server.Items
 
 		public override bool IsContentLocalized => true;
 
+		public override string DisplayNameLocalizationKey => "item.magical.relicchest";
+
 		[Constructable]
 		public ManualOfItems() : base( 0x1C0E )
 		{
@@ -60,7 +62,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( m_FromWho != "" && m_FromWho != null ){ list.Add( 1070722, m_FromWho); }
+			if ( m_FromWho != "" && m_FromWho != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.magical.relicchest.fromwho", m_FromWho );
+				else
+					list.Add( 1070722, m_FromWho);
+			}
 			if ( m_Owner != null )
 			{
 				if ( BuildingPropertyListLocale != null )

@@ -1,5 +1,6 @@
 using Server.Commands.Generic;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
@@ -313,6 +314,21 @@ namespace Server.Commands
 
 			public override int MaxWeight
 			{ get { return 0; } }
+
+			public override void AddNameProperties( ObjectPropertyList list )
+			{
+				string saved = InfoText1;
+
+				if ( BuildingPropertyListLocale != null )
+					InfoText1 = null;
+
+				base.AddNameProperties( list );
+
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.infotext.organizer" );
+
+				InfoText1 = saved;
+			}
 
 			public override bool CheckLift(Mobile from, Item item, ref LRReason reject)
 			{

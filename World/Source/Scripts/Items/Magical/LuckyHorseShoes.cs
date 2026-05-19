@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class LuckyHorseShoes : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.magical.luckyhorseshoes";
 		public override bool IsContentLocalized => true;
 
 		[Constructable]
