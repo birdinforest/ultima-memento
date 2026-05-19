@@ -54,7 +54,7 @@ namespace Server.Items
 			Hue = 0x489;
 		}
 
-		public override bool OnEquip( Mobile from )
+		public override bool CanEquip( Mobile from )
 		{
 			if ( owner != from )
 			{
@@ -62,7 +62,7 @@ namespace Server.Items
 				return false;
 			}
 
-			return base.OnEquip( from );
+			return base.CanEquip( from );
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
