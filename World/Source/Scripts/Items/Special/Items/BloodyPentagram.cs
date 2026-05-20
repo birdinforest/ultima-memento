@@ -9,6 +9,8 @@ namespace Server.Items
 	{
 		public override bool DisplayWeight{ get{ return false; } }
 		public override int LabelNumber{ get{ return 1080279; } } // Bloody Pentagram
+		public override bool IsContentLocalized => true;
+		public override string DisplayNameLocalizationKey => "item.special.pentagram.component";
 
 		public BloodyPentagramComponent( int itemID ) : base( itemID )
 		{	

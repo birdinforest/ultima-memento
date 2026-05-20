@@ -1,6 +1,6 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-19（**§7 T1/T2、§9.7 T-SS1–T-SS5、§9.8 T-SS-ES1–5、§9.9 Magical 主名、§9.10 模块清单 全部落地**；仅剩 `DefaultLocal.cs` 聊天 UI 及 `BaseCreature`/`BlackKnight`/`BaronAlmric` 等 Mobile 战利品 InfoText 需运行时 loot 解析的深层工单—二者已记录待后续覆盖）
+> **更新日期：** 2026-05-20（**§7 T1–T7 全部完成、§9.7–§9.10 模块清单全部落地**；仅剩 `DefaultLocal.cs` 聊天 UI 及 `BaseCreature`/`BlackKnight`/`BaronAlmric` 等 Mobile 战利品 InfoText 需运行时 loot 解析的深层工单—二者已记录待后续覆盖）
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---
@@ -451,10 +451,10 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | 文件 | 情形 | 现状 |
 |---|---|---|
 | `Trades/Alchemy/CrystallineJar.cs` | `Name = "crystalline flask"` 状态 | ✅ 已有 `AddNameProperty` → `item.trade.crystalline.flask` |
-| | `Name = "flask of " + iJar.Name`（装填后动态名）| ❌ 仍为拼接英文字符串 |
-| | `Name = "flask of holy water"` | ❌ 仍为硬编码英文 |
+| | `Name = "flask of " + iJar.Name`（装填后动态名）| ✅ 已有 `AddNameProperty` 分支 + `item.trade.name.flask.of.fmt` 模板 |
+| | `Name = "flask of holy water"` | ✅ 已有 `item.trade.name.flask.holy.water` 键 |
 
-**建议：** 为 `flask of holy water` 增加 `item.trade.name.flask.holy.water` 键；对 `flask of {substance}` 需引入 `item.trade.name.flask.of` 格式模板 + substance 名称子键（或直接在 `AddNameProperty` 中判断 Name 前缀走 `ResolveFormatByKey`）。可推迟至 P3。
+**完成笔记（2026-05-20）：** 三种状态均已实现：空瓶 `item.trade.crystalline.flask`、圣水 `item.trade.name.flask.holy.water`、动态物质 `item.trade.name.flask.of.fmt` + `StringCatalog.TryResolve` 子名。
 
 ---
 
@@ -474,16 +474,16 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | | `BedOfNails.cs` | `box containing a bed of nails` | ✅ |
 | | `HauntedMirror.cs` | `box containing a haunted mirror` | ✅ |
 | | `SacrificialAltar.cs` | `box containing a sacrificial altar` | ✅ |
-| **塔罗牌** | `Rares/TarotCards/DecoTarot*.cs`（×9 文件） | `tarot cards`（同一名） | ❌ 需 1 个键 |
+| **塔罗牌** | `Rares/TarotCards/DecoTarot*.cs`（×7 文件） | `tarot cards`（同一名） | ✅ 全部 7 类已有 `DisplayNameLocalizationKey` → `item.special.rares.tarot.cards` |
 | **花卉** | `Rares/Flowers/DecoFlower*.cs`（×2 文件） | `white roses` | ✅ |
 | | `Rares/Flowers/DecoRoseOfTrinsic*.cs`（×3 文件） | `velvet rose` | ✅ |
 | **其他** | `Rares/Containers/HugeWaterTub.cs` | `huge tub of water` | ✅ |
-| | `MinotaurHedge.cs` | （需核查） | ❓ |
-| | `TormentedChains.cs` | （需核查） | ❓ |
-| | `WindSpirit.cs` | （需核查） | ❓ |
-| | `DragonOrbStatue.cs` | （需核查） | ❓ |
-| | `WizardsStatue.cs` | （需核查） | ❓ |
-| | `Special/Items/BloodyPentagram.cs` | （需核查） | ❓ |
+| | `MinotaurHedge.cs` | `minotaur hedge` | ✅ 已有 `DisplayNameLocalizationKey` → `item.special.decor.minotaur.hedge` |
+| | `TormentedChains.cs` | `chains of the tormented` | ✅ 已有 `DisplayNameLocalizationKey` → `item.special.decor.chains.tormented` |
+| | `WindSpirit.cs` | `wind spirit` | ✅ 已有 `DisplayNameLocalizationKey` → `item.special.decor.wind.spirit` |
+| | `DragonOrbStatue.cs` | `Statue of ...` | ✅ 已有 `AddNameProperty` 双语分支 + `item.special.statue.of.fmt` |
+| | `WizardsStatue.cs` | `Statue of ...` | ✅ 已有 `AddNameProperty` 双语分支 + `item.special.statue.of.fmt` |
+| | `Special/Items/BloodyPentagram.cs` | `bloody pentagram` / `bowl of blood for a pentagram` | ✅ Deed `DisplayNameLocalizationKey` → `item.special.deed.pentagram.blood.bowl`；Component 已加 `DisplayNameLocalizationKey` → `item.special.pentagram.component` |
 
 **键名建议：** `item.special.decor.*`（装饰盒类），`item.special.rares.*`（稀有装饰）。
 
@@ -527,7 +527,7 @@ Level/God 系统为装备添加等级和经验值属性。基类定义在 `Items
 | 文件 | 英文 Name | 状态 |
 |---|---|---|
 | `Magical/MagicQuiver.cs` | `quiver` | ✅ |
-| `Magical/WeaponRenamingTool.cs` | （需核查具体名） | ❓ |
+| `Magical/WeaponRenamingTool.cs` | `Weapon Renaming Tool` | ✅ 已有 `DisplayNameLocalizationKey` → `item.magical.weapon.renaming.tool`；`SendMessage`/Gump 均已有目录化 |
 
 ---
 
@@ -932,8 +932,8 @@ rg 'SubResource\s*=' --glob '*.cs' .
 
 - ~~**`Items/Books/PowerScrolls/PowerScroll.cs`**（T11）~~ ✅ 已完成  
 - ~~**`Items/Sharpening/`** 下 **`Consecrated*`、`DamageIncrease*`、`Elemental*`**（与 **§（四）** 重叠，一并收口 **T10**）~~ ✅ 已完成
-- **`Items/Trinkets/OldSwordTalisman.cs`**  
-- **`Items/Traps/CurseItem.cs`**（若属 **`trap-system.json`** 已有键则核对重复）
+- **`Items/Trinkets/OldSwordTalisman.cs`** ✅ 已有 `DisplayNameLocalizationKey`、双语 `AddNameProperties`、`SendMessage` 全走 `StringCatalog`
+- **`Items/Traps/CurseItem.cs`** ✅ `trap-system.json` 已完备（`trap.curse.*` 全套）；补充 `DisplayNameLocalizationKey` → `item.trap.curse.item` + 双语 `AddNameProperties` 守卫
 
 #### (十三)
 `/Users/forrrest/projects/UO-Memento/ultima-memento/World/Source/Scripts/Mobiles/Base/Behavior.cs`

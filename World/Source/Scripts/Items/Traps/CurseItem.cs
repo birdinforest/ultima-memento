@@ -12,6 +12,7 @@ namespace Server.Items
 		public override bool DisplayLootType{ get{ return false; } }
 		public override bool DisplaysContent{ get{ return false; } }
 		public override bool DisplayWeight{ get{ return false; } }
+		public override string DisplayNameLocalizationKey => "item.trap.curse.item";
 
 		private Timer m_AutoRemoveTimer;
 
@@ -118,7 +119,10 @@ namespace Server.Items
 		public override void AddNameProperties(ObjectPropertyList list)
 		{
 			base.AddNameProperties(list);
-			list.Add(1049644, StringCatalog.ResolveByKey(null, "trap.curse.tooltip"));
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "trap.curse.tooltip" );
+			else
+				list.Add(1049644, StringCatalog.ResolveByKey(null, "trap.curse.tooltip"));
 		}
 	}
 }
