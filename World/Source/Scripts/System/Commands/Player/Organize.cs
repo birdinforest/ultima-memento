@@ -317,17 +317,18 @@ namespace Server.Commands
 
 			public override void AddNameProperties( ObjectPropertyList list )
 			{
-				string saved = InfoText1;
+				// Use m_InfoText1 field: InfoText1 setter calls InvalidateProperties() during OPL build.
+				string saved = m_InfoText1;
 
 				if ( BuildingPropertyListLocale != null )
-					InfoText1 = null;
+					m_InfoText1 = null;
 
 				base.AddNameProperties( list );
 
 				if ( BuildingPropertyListLocale != null )
 					AddLocalizedProperty( list, "prop.infotext.organizer" );
 
-				InfoText1 = saved;
+				m_InfoText1 = saved;
 			}
 
 			public override bool CheckLift(Mobile from, Item item, ref LRReason reject)

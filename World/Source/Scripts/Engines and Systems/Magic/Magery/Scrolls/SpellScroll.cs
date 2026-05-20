@@ -102,10 +102,12 @@ namespace Server.Items
 
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
-			string saved = InfoText1;
+			// Use m_InfoText1 field, not InfoText1 property: the setter calls InvalidateProperties(),
+			// which re-enters PropertyList while BuildingPropertyListLocale (static) may still be set.
+			string saved = m_InfoText1;
 
 			if ( BuildingPropertyListLocale != null )
-				InfoText1 = null;
+				m_InfoText1 = null;
 
 			base.AddNameProperties( list );
 
@@ -141,7 +143,7 @@ namespace Server.Items
 					AddLocalizedProperty( list, key );
 			}
 
-			InfoText1 = saved;
+			m_InfoText1 = saved;
 		}
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )

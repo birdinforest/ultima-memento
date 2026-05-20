@@ -25,11 +25,7 @@ namespace Server.Items
 		{
 			if (BuildingPropertyListLocale != null)
 			{
-				string key = GetSoulOrbNameKey();
-				if (key != null)
-					AddLocalizedProperty(list, key);
-				else
-					base.AddNameProperty(list);
+				AddLocalizedProperty(list, GetSoulOrbNameKey());
 			}
 			else
 			{
