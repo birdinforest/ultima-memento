@@ -42,7 +42,7 @@ namespace Knives.Chat3
 
             if (c_Search == "")
             {
-                AddHtml(20, y+=35, width-40, 90, "<CENTER>" + General.Local(262), false, false);
+                AddHtml(20, y+=35, width-40, 90, "<CENTER>" + General.LocalFor(Owner, 262), false, false);
                 AddBackgroundZero(0, 0, width, y+110, 0x1400);
                 return;
             }
@@ -58,12 +58,12 @@ namespace Knives.Chat3
 
             if (list.Count == 0)
             {
-                AddHtml(0, y += 35, width, "<CENTER>" + General.Local(263));
+                AddHtml(0, y += 35, width, "<CENTER>" + General.LocalFor(Owner, 263));
                 AddBackgroundZero(0, 0, width, y + 40, 0x1400);
                 return;
             }
 
-            AddHtml(0, y += 25, width, "<CENTER>" + list.Count + (list.Count == 0 ? General.Local(265) : General.Local(264)));
+            AddHtml(0, y += 25, width, "<CENTER>" + list.Count + (list.Count == 0 ? General.LocalFor(Owner, 265) : General.LocalFor(Owner, 264)));
 
             list.Sort(new InternalSort());
 

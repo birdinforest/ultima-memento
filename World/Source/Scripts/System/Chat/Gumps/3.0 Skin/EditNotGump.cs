@@ -22,30 +22,30 @@ namespace Knives.Chat3
             AddButton(width / 2 - 90, y+3, 0x2716, "Name", new GumpCallback(Name));
             AddButton(width / 2 + 70, y+3, 0x2716, "Name", new GumpCallback(Name));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(272) + " | " + General.Local(273));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 272) + " | " + General.LocalFor(Owner, 273));
             AddButton(width / 2 - 60, y + 3, !c_Not.Gump ? 0x939 : 0x2716, "NotGump", new GumpCallback(NotGump));
             AddButton(width / 2 + 50, y + 3, c_Not.Gump ? 0x939 : 0x2716, "Gump", new GumpCallback(Gump));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(274));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 274));
             AddButton(width / 2 - 80, y + 3, 0x2716, "Set Time", new GumpCallback(SetTime));
             AddButton(width / 2 + 70, y + 3, 0x2716, "Set Time", new GumpCallback(SetTime));
             AddHtml(0, y += 25, width, "<CENTER>" + (c_Not.Recur.Days != 0 ? c_Not.Recur.Days + " days " : "") + (c_Not.Recur.Hours != 0 ? c_Not.Recur.Hours + "h " : "") + (c_Not.Recur.Minutes != 0 ? c_Not.Recur.Minutes + "m " : "") + (c_Not.Recur.Seconds != 0 ? c_Not.Recur.Seconds + "s" : ""));
 
             if (c_Not.Gump)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(275));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 275));
                 AddButton(width / 2 - 90, y, c_Not.AntiMacro ? 0x2343 : 0x2342, "Anti Macro", new GumpCallback(AntiMacro));
                 AddButton(width / 2 + 70, y, c_Not.AntiMacro ? 0x2343 : 0x2342, "Anti Macro", new GumpCallback(AntiMacro));
             }
 
             if (c_Not.AntiMacro)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(280));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(155) + " | " + General.Local(281));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 280));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 155) + " | " + General.LocalFor(Owner, 281));
                 AddButton(width / 2 - 60, y + 3, Data.MacroPenalty == MacroPenalty.None ? 0x939 : 0x2716, "None", new GumpCallback(None));
                 AddButton(width / 2 + 50, y + 3, Data.MacroPenalty == MacroPenalty.Kick ? 0x939 : 0x2716, "Kick", new GumpCallback(Kick));
 
-                AddHtml(0, y += 25, width/2-20, "<DIV ALIGN=LEFT>" + General.Local(282));
+                AddHtml(0, y += 25, width/2-20, "<DIV ALIGN=LEFT>" + General.LocalFor(Owner, 282));
                 AddTextField(width / 2 + 20, y, 50, 21, 0x480, 0xBBC, "Delay", "" + Data.AntiMacroDelay);
                 AddHtml(width/2+80, y += 25, 10, "s");
                 AddButton(width / 2 + 90, y + 3, 0x2716, "Delay", new GumpCallback(Delay));
@@ -53,7 +53,7 @@ namespace Knives.Chat3
 
             AddTextField(20, y += 25, width - 40, 80, 0x480, 0xBBC, "Text", c_Not.Text);
             AddButton(width / 2 - 32, y += 90, 0x98B, "Text", new GumpCallback(Text));
-            AddHtml(width / 2 - 32 + 6, y + 3, 51, "<CENTER>" + General.Local(245));
+            AddHtml(width / 2 - 32 + 6, y + 3, 51, "<CENTER>" + General.LocalFor(Owner, 245));
 
             AddBackgroundZero(0, 0, width, y + 40, Data.GetData(Owner).DefaultBack);
         }
@@ -133,26 +133,26 @@ namespace Knives.Chat3
                 int width = 200;
                 int y = 10;
 
-                AddHtml(0, y, width, "<CENTER>" + General.Local(274));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 274));
                 AddImage(width / 2 - 70, y + 2, 0x39);
                 AddImage(width / 2 + 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(161));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 161));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "30 minutes", new GumpStateCallback(Time), TimeSpan.FromMinutes(30));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "30 minutes", new GumpStateCallback(Time), TimeSpan.FromMinutes(30));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(162));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 162));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 hour", new GumpStateCallback(Time), TimeSpan.FromHours(1));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 hour", new GumpStateCallback(Time), TimeSpan.FromHours(1));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(163));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 163));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "12 hours", new GumpStateCallback(Time), TimeSpan.FromHours(12));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "12 hours", new GumpStateCallback(Time), TimeSpan.FromHours(12));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(164));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 164));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 day", new GumpStateCallback(Time), TimeSpan.FromDays(1));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 day", new GumpStateCallback(Time), TimeSpan.FromDays(1));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(165));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 165));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 week", new GumpStateCallback(Time), TimeSpan.FromDays(7));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 week", new GumpStateCallback(Time), TimeSpan.FromDays(7));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(166));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 166));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 month", new GumpStateCallback(Time), TimeSpan.FromDays(30));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 month", new GumpStateCallback(Time), TimeSpan.FromDays(30));
 

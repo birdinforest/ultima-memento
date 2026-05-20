@@ -642,7 +642,7 @@ namespace Knives.Chat3
         public int Avatar { get { return c_Avatar; } set { c_Avatar = value; } }
         public int Warnings { get { return c_Warnings; } set { c_Warnings = value; } }
         public string AwayMsg { get { return c_AwayMsg; } set { c_AwayMsg = value; } }
-        public string Signature { get { return c_Signature; } set { c_Signature = value; c_Mobile.SendMessage(c_SystemC, General.Local(246));} }
+        public string Signature { get { return c_Signature; } set { c_Signature = value; c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 246));} }
 
         public int Karma
         {
@@ -695,9 +695,9 @@ namespace Knives.Chat3
                 c_GlobalAccess = value;
 
                 if (value)
-                    c_Mobile.SendMessage(c_SystemC, General.Local(92));
+                    c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 92));
                 else
-                    c_Mobile.SendMessage(c_SystemC, General.Local(93));
+                    c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 93));
             }
         }
 
@@ -709,9 +709,9 @@ namespace Knives.Chat3
                 c_Banned = value;
 
                 if (value)
-                    c_Mobile.SendMessage(c_SystemC, General.Local(90));
+                    c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 90));
                 else
-                    c_Mobile.SendMessage(c_SystemC, General.Local(91));
+                    c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 91));
             }
         }
 
@@ -873,7 +873,7 @@ namespace Knives.Chat3
                 return;
 
             c_Friends.Add(m);
-            c_Mobile.SendMessage(c_SystemC, m.Name + " " + General.Local(73));
+            c_Mobile.SendMessage(c_SystemC, m.Name + " " + General.LocalFor(c_Mobile, 73));
         }
 
         public void RemoveFriend(Mobile m)
@@ -882,7 +882,7 @@ namespace Knives.Chat3
                 return;
 
             c_Friends.Remove(m);
-            c_Mobile.SendMessage(c_SystemC, m.Name + " " + General.Local(72));
+            c_Mobile.SendMessage(c_SystemC, m.Name + " " + General.LocalFor(c_Mobile, 72));
         }
 
         public void AddIgnore(Mobile m)
@@ -894,7 +894,7 @@ namespace Knives.Chat3
                 return;
 
             c_Ignores.Add(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(68) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 68) + " " + m.Name);
         }
 
         public void RemoveIgnore(Mobile m)
@@ -903,7 +903,7 @@ namespace Knives.Chat3
                 return;
 
             c_Ignores.Remove(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(74) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 74) + " " + m.Name);
         }
 
         public void AddGIgnore(Mobile m)
@@ -912,7 +912,7 @@ namespace Knives.Chat3
                 return;
 
             c_GIgnores.Add(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(80) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 80) + " " + m.Name);
         }
 
         public void RemoveGIgnore(Mobile m)
@@ -921,7 +921,7 @@ namespace Knives.Chat3
                 return;
 
             c_GIgnores.Remove(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(79) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 79) + " " + m.Name);
         }
 
         public void AddGListen(Mobile m)
@@ -930,7 +930,7 @@ namespace Knives.Chat3
                 return;
 
             c_GListens.Add(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(82) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 82) + " " + m.Name);
         }
 
         public void RemoveGListen(Mobile m)
@@ -939,7 +939,7 @@ namespace Knives.Chat3
                 return;
 
             c_GListens.Remove(m);
-            c_Mobile.SendMessage(c_SystemC, General.Local(81) + " " + m.Name);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 81) + " " + m.Name);
         }
 
         public void AddIrcIgnore(string str)
@@ -948,7 +948,7 @@ namespace Knives.Chat3
                 return;
 
             c_IrcIgnores.Add(str);
-            c_Mobile.SendMessage(c_SystemC, General.Local(68) + " " + str);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 68) + " " + str);
         }
 
         public void RemoveIrcIgnore(string str)
@@ -957,7 +957,7 @@ namespace Knives.Chat3
                 return;
 
             c_IrcIgnores.Remove(str);
-            c_Mobile.SendMessage(c_SystemC, General.Local(74) + " " + str);
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 74) + " " + str);
         }
 
         public void AddMessage(Message msg)
@@ -975,14 +975,14 @@ namespace Knives.Chat3
         {
             c_Messages.Remove(msg);
 
-            c_Mobile.SendMessage(c_SystemC, General.Local(69));
+            c_Mobile.SendMessage(c_SystemC, General.LocalFor(c_Mobile, 69));
         }
 
         public void Ban(TimeSpan ts)
         {
             c_BannedUntil = DateTime.Now + ts;
             c_Banned = true;
-            Mobile.SendMessage(c_SystemC, General.Local(90));
+            Mobile.SendMessage(c_SystemC, General.LocalFor(Mobile, 90));
 
             Timer.DelayCall(ts, new TimerCallback(RemoveBan));
         }
@@ -992,7 +992,7 @@ namespace Knives.Chat3
             c_BannedUntil = DateTime.Now;
             c_Banned = false;
             if(Mobile != null)
-                Mobile.SendMessage(c_SystemC, General.Local(91));
+                Mobile.SendMessage(c_SystemC, General.LocalFor(Mobile, 91));
         }
 
         public void AvatarUp()

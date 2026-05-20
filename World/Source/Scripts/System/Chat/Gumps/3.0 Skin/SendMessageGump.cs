@@ -52,11 +52,11 @@ namespace Knives.Chat3
             int field = Data.GetData(Owner).ExtraPm ? 300 : 150;
 
             if (c_MsgType == MsgType.System)
-                AddHtml(0, y, width, "<CENTER>" + General.Local(94));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 94));
             else if (c_MsgType == MsgType.Staff)
-                AddHtml(0, y, width, "<CENTER>" + General.Local(256));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 256));
             else
-                AddHtml(0, y, width, "<CENTER>" + General.Local(62) + " " + c_To.RawName);
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 62) + " " + c_To.RawName);
 
             AddImage(width / 2 - 120, y + 2, 0x39);
             AddImage(width / 2 + 90, y + 2, 0x3B);
@@ -65,7 +65,7 @@ namespace Knives.Chat3
             {
                 AddHtml(30, y+=20, width-60, 25, c_Subject, true, false);
                 AddHtml(20, y+=30, width-40, field, c_Text, true, true);
-                AddHtml(0, y+=(field+20), width, "<CENTER>" + General.Local(63));
+                AddHtml(0, y+=(field+20), width, "<CENTER>" + General.LocalFor(Owner, 63));
             }
             else
             {
@@ -82,7 +82,7 @@ namespace Knives.Chat3
 
             AddImage(width / 2 - 10, y, 0x2342, Data.GetData(Owner).MsgC);
             AddButton(width / 2 - 6, y + 4, 0x2716, "Channel Color", new GumpCallback(Color));
-            AddHtml(width - 85, y, 50, General.Local(252));
+            AddHtml(width - 85, y, 50, General.LocalFor(Owner, 252));
             AddButton(width-100, y+3, 0x2716, "Send", new GumpCallback(Send));
 
             AddBackgroundZero(0, 0, width, y + 30, Data.GetData(Owner).DefaultBack);
@@ -118,7 +118,7 @@ namespace Knives.Chat3
                 c_Subject = "No Subject";
  
             Data.GetData(Owner).Recording = this;
-            Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(65));
+            Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 65));
 
             NewGump();
         }
@@ -130,7 +130,7 @@ namespace Knives.Chat3
 
             if (c_Text.Trim() == "")
             {
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(66));
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 66));
                 NewGump();
                 return;
             }
@@ -140,7 +140,7 @@ namespace Knives.Chat3
 
             if (!TrackSpam.LogSpam(Owner, "Message", TimeSpan.FromSeconds(Data.MsgSpam)))
             {
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(97));
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 97));
                 NewGump();
                 return;
             }
@@ -178,7 +178,7 @@ namespace Knives.Chat3
                 Data.GetData(c_To).AddMessage(new Message(Owner, c_Subject, c_Text, MsgType.Normal));
                 General.PmNotify(c_To);
 
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(67) + " " + c_To.RawName);
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 67) + " " + c_To.RawName);
                 if (Data.GetData(c_To).Status != OnlineStatus.Online)
                     Owner.SendMessage(Data.GetData(Owner).SystemC, c_To.RawName + ": " + Data.GetData(c_To).AwayMsg);
             }

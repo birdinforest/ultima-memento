@@ -1,6 +1,6 @@
 # 待中文化物品清单
 
-> **更新日期：** 2026-05-20（**§7 T1–T7 全部完成、§9.7–§9.10 模块清单全部落地**；仅剩 `DefaultLocal.cs` 聊天 UI 及 `BaseCreature`/`BlackKnight`/`BaronAlmric` 等 Mobile 战利品 InfoText 需运行时 loot 解析的深层工单—二者已记录待后续覆盖）
+> **更新日期：** 2026-05-20（**§7 T1–T7 全部完成、§9.7–§9.10 模块清单全部落地**；Knives.Chat3 UI 已迁至 `chat3-ui.json` + `General.LocalFor`；Boss 战利品静态 `InfoText` 与 `BaseChampion`「曾属于」模板已迁至 `mob-loot-infotext.json`，`Item.AddNameProperties` 双语路径解析；**德米里奇（Dracolich）**等完全动态的 `Name + Title` 行仍回退英文，待名称本体目录化后再收紧。）
 > **说明：** 本文档记录已完成中文化的装备属性系统之外，尚未开始中文化的物品类别。用于后续任务参考和范围规划。
 
 ---

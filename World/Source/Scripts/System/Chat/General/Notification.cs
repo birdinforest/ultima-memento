@@ -104,17 +104,17 @@ namespace Knives.Chat3
                 switch (Data.MacroPenalty)
                 {
                     case MacroPenalty.None:
-                        Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(276));
+                        Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 276));
                         break;
                     case MacroPenalty.Kick:
-                        Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(279));
+                        Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 279));
                         Owner.NetState.Dispose();
                         break;
                 }
 
                 foreach (Data data in Data.Datas.Values)
                     if (data.Mobile.AccessLevel >= AccessLevel.GameMaster)
-                        data.AddMessage(new Message(data.Mobile, General.Local(277), Owner.RawName + General.Local(278), MsgType.System));
+                        data.AddMessage(new Message(data.Mobile, General.LocalFor(data.Mobile, 277), Owner.RawName + General.LocalFor(data.Mobile, 278), MsgType.System));
             }
 
             private void Open()
@@ -140,7 +140,7 @@ namespace Knives.Chat3
                 int width = 200;
                 int y = 10;
 
-                AddHtml(50, y, 100, 45, "<CENTER>" + General.Local(271), false, false);
+                AddHtml(50, y, 100, 45, "<CENTER>" + General.LocalFor(Owner, 271), false, false);
                 AddImage(width / 2 - 80, y + 7, 0x39);
                 AddImage(width / 2 + 50, y + 7, 0x3B);
 

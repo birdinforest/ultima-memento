@@ -44,7 +44,7 @@ namespace Knives.Chat3
 
             AddButton(20, 20, 0x2716, "Profile", new GumpCallback(Profile));
 
-            AddHtml(95, y += 15, width-105, General.Local(60) + " " + c_Message.From.RawName);
+            AddHtml(95, y += 15, width-105, General.LocalFor(Owner, 60) + " " + c_Message.From.RawName);
             AddHtml(95, y += 20, width-105, 42, c_Message.Subject, false, false);
 
             AddHtml(20, y += 50, width-40, 80, HTML.Black + c_Message.Msg, true, true);
@@ -56,30 +56,30 @@ namespace Knives.Chat3
                 {
                     if (Message.CanMessage(Owner, c_Message.From) && !Message.StaffTimeout(c_Message))
                     {
-                        AddHtml(width - 85, y, 50, General.Local(248));
+                        AddHtml(width - 85, y, 50, General.LocalFor(Owner, 248));
                         AddButton(width - 100, y+3, 0x2716, "Reply", new GumpCallback(Reply));
                     }
 
-                    AddHtml(width - 145, y, 50, General.Local(249));
+                    AddHtml(width - 145, y, 50, General.LocalFor(Owner, 249));
                     AddButton(width-160, y+3, 0x2716, "Delete", new GumpCallback(Delete));
 
                     if (c_Message.From.AccessLevel == AccessLevel.Player)
                     {
-                        AddHtml(95, y, 50, General.Local(2));
+                        AddHtml(95, y, 50, General.LocalFor(Owner, 2));
                         AddButton(80, y+3, 0x2716, "Ignore", new GumpCallback(Ignore));
                     }
                 }
                 else if (c_Message.Type == MsgType.Invite)
                 {
-                    AddHtml(width - 85, y, 50, General.Local(250));
+                    AddHtml(width - 85, y, 50, General.LocalFor(Owner, 250));
                     AddButton(width - 100, y+3, 0x2716, "Accept", new GumpCallback(Accept));
 
-                    AddHtml(width - 145, y, 50, General.Local(251));
+                    AddHtml(width - 145, y, 50, General.LocalFor(Owner, 251));
                     AddButton(width - 160, y+3, 0x2716, "Deny", new GumpCallback(Deny));
 
                     if (c_Message.From.AccessLevel == AccessLevel.Player)
                     {
-                        AddHtml(95, y, 50, General.Local(2));
+                        AddHtml(95, y, 50, General.LocalFor(Owner, 2));
                         AddButton(80, y+3, 0x2716, "Ignore", new GumpCallback(Ignore));
                     }
                 }
@@ -113,14 +113,14 @@ namespace Knives.Chat3
         {
             Data.GetData(Owner).Ignores.Add(c_Message.From);
 
-            Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(68) + " " + c_Message.From.RawName);
+            Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 68) + " " + c_Message.From.RawName);
             if (c_Message.Type == MsgType.Invite)
                 Deny();
         }
 
         private void Accept()
         {
-            c_Message.From.SendMessage(Data.GetData(c_Message.From).SystemC, Owner.RawName + " " + General.Local(87));
+            c_Message.From.SendMessage(Data.GetData(c_Message.From).SystemC, Owner.RawName + " " + General.LocalFor(c_Message.From, 87));
 
             Data.GetData(Owner).AddFriend(c_Message.From);
             Data.GetData(c_Message.From).AddFriend(Owner);
@@ -130,8 +130,8 @@ namespace Knives.Chat3
 
         private void Deny()
         {
-            c_Message.From.SendMessage(Data.GetData(c_Message.From).SystemC, Owner.RawName + " " + General.Local(88));
-            Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(89) + " " + c_Message.From.RawName);
+            c_Message.From.SendMessage(Data.GetData(c_Message.From).SystemC, Owner.RawName + " " + General.LocalFor(c_Message.From, 88));
+            Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 89) + " " + c_Message.From.RawName);
 
             Data.GetData(Owner).Messages.Remove(c_Message);
         }

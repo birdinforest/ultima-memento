@@ -19,15 +19,15 @@ namespace Knives.Chat3
             int width = 300;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(283));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 283));
             AddImage(width / 2 - 100, y + 2, 0x39);
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(177));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 177));
             AddButton(width / 2 - 80, y+3, 0x2716, "Channel Options", new GumpCallback(ChannelOptions));
             AddButton(width / 2 + 60, y+3, 0x2716, "Channel Options", new GumpCallback(ChannelOptions));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(284));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 284));
             AddButton(width/2-80, y, Data.MultiMaster ? 0x2343 : 0x2342, "Multi Master", new GumpCallback(MultiMaster));
             AddButton(width/2+60, y, Data.MultiMaster ? 0x2343 : 0x2342, "Multi Master", new GumpCallback(MultiMaster));
 
@@ -35,7 +35,7 @@ namespace Knives.Chat3
             {
                 if (!MultiConnection.Connection.Connected)
                 {
-                    AddHtml(0, y += 40, width, "<CENTER>" + General.Local(286));
+                    AddHtml(0, y += 40, width, "<CENTER>" + General.LocalFor(Owner, 286));
                     AddButton(width / 2 - 60, y + 4, 0x2716, "Start", new GumpCallback(Start));
                     AddButton(width / 2 + 50, y + 4, 0x2716, "Start", new GumpCallback(Start));
                 }
@@ -54,11 +54,11 @@ namespace Knives.Chat3
                 return;
             }
 
-            AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.Local(118));
+            AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 118));
             AddTextField(width / 2 + 10, y, 100, 21, 0x480, 0xBBA, "Server", Data.MultiServer);
             AddButton(width / 2 - 5, y + 4, 0x2716, "Submit", new GumpCallback(Submit));
 
-            AddHtml(0, y += 20, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.Local(120));
+            AddHtml(0, y += 20, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 120));
             AddTextField(width / 2 + 10, y, 70, 21, 0x480, 0xBBA, "Port", "" + Data.MultiPort);
             AddButton(width / 2 - 5, y + 4, 0x2716, "Submit", new GumpCallback(Submit));
 
@@ -69,7 +69,7 @@ namespace Knives.Chat3
             if (MultiConnection.Connection.Connecting)
                 num = 140;
 
-            AddHtml(0, y += 40, width, "<CENTER>" + General.Local(num));
+            AddHtml(0, y += 40, width, "<CENTER>" + General.LocalFor(Owner, num));
             AddButton(width / 2 - 60, y + 4, 0x2716, "Connect or Cancel or Close", new GumpCallback(ConnectCancelClose));
             AddButton(width / 2 + 50, y + 4, 0x2716, "Connect or Cancel or Close", new GumpCallback(ConnectCancelClose));
 

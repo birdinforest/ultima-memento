@@ -2022,6 +2022,40 @@ namespace Server
 		}
 
 		/// <summary>
+		/// Localizes <see cref="InfoText1"/>–<see cref="InfoText5"/> for OPL when <see cref="BuildingPropertyListLocale"/> is set.
+		/// Uses hash keys in <c>mob-loot-infotext.json</c> for known English lines and a template key for champion trophies.
+		/// Unknown or dynamic text (e.g. Demilich name composition) falls back to the stored string.
+		/// </summary>
+		private static string ResolveInfoTextForPropertyList( string text )
+		{
+			if ( text == null || text.Length == 0 )
+				return text;
+
+			if ( BuildingPropertyListLocale == null )
+				return text;
+
+			const string championPrefix = "[Belonged to: ";
+
+			if ( text.Length > championPrefix.Length + 1 && text.StartsWith( championPrefix, StringComparison.Ordinal ) && text[text.Length - 1] == ']' )
+			{
+				string inner = text.Substring( championPrefix.Length, text.Length - championPrefix.Length - 1 );
+				string tmpl = StringCatalog.TryResolveByKey( BuildingPropertyListLocale, "mob.loot.infotext.champion.belonged" );
+
+				if ( tmpl != null && tmpl.Length > 0 )
+					return String.Format( tmpl, inner );
+
+				return text;
+			}
+
+			string resolved = StringCatalog.TryResolve( BuildingPropertyListLocale, text );
+
+			if ( resolved != null && resolved.Length > 0 )
+				return resolved;
+
+			return text;
+		}
+
+		/// <summary>
 		/// Overridable. Adds header properties. By default, this invokes <see cref="AddNameProperty" />, <see cref="AddBlessedForProperty" /> (if applicable), and <see cref="AddLootTypeProperty" /> (if <see cref="DisplayLootType" />).
 		/// </summary>
 		public virtual void AddNameProperties( ObjectPropertyList list )
@@ -2108,19 +2142,19 @@ namespace Server
 			}
 
 			if ( InfoText1 != null )
-				list.Add( 1070630, InfoText1 );
+				list.Add( 1070630, ResolveInfoTextForPropertyList( InfoText1 ) );
 
 			if ( InfoText2 != null )
-				list.Add( 1070631, InfoText2 );
+				list.Add( 1070631, ResolveInfoTextForPropertyList( InfoText2 ) );
 
 			if ( InfoText3 != null )
-				list.Add( 1070632, InfoText3 );
+				list.Add( 1070632, ResolveInfoTextForPropertyList( InfoText3 ) );
 
 			if ( InfoText4 != null )
-				list.Add( 1070633, InfoText4 );
+				list.Add( 1070633, ResolveInfoTextForPropertyList( InfoText4 ) );
 
 			if ( InfoText5 != null )
-				list.Add( 1070634, InfoText5 );
+				list.Add( 1070634, ResolveInfoTextForPropertyList( InfoText5 ) );
 
 			if ( IsSecure )
 				AddSecureProperty( list );

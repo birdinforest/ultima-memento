@@ -16,24 +16,24 @@ namespace Knives.Chat3
             int width = 300;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(214));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 214));
             AddImage(width / 2 - 100, y + 2, 0x39);
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(142));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 142));
             AddButton(width / 2 - 120, y, Data.FilterSpeech ? 0x2343 : 0x2342, "Filter Speech", new GumpCallback(FilterSpeech));
             AddButton(width / 2 + 100, y, Data.FilterSpeech ? 0x2343 : 0x2342, "Filter Speech", new GumpCallback(FilterSpeech));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(143));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 143));
             AddButton(width / 2 - 120, y, Data.FilterMsg ? 0x2343 : 0x2342, "Filter Messages", new GumpCallback(FilterMsg));
             AddButton(width / 2 + 100, y, Data.FilterMsg ? 0x2343 : 0x2342, "Filter Messages", new GumpCallback(FilterMsg));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(154) + ": " + General.Local(155 + (int)Data.FilterPenalty));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 154) + ": " + General.LocalFor(Owner, 155 + (int)Data.FilterPenalty));
             AddButton(width / 2 - 80, y + 4, 0x2716, "Filter Penalty", new GumpCallback(FilterPenalty));
             AddButton(width / 2 + 70, y + 4, 0x2716, "Filter Penalty", new GumpCallback(FilterPenalty));
 
             if (Data.FilterPenalty == Chat3.FilterPenalty.Ban)
             {
-                AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.Local(147));
+                AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 147));
                 AddTextField(width / 2 + 15, y, 30, 21, 0x480, 0xBBA, "Ban Length", "" + Data.FilterBanLength);
                 AddHtml(width / 2 + 45, y, 100, "m");
                 AddButton(width / 2 - 5, y + 4, 0x2716, "Submit", new GumpCallback(Submit));
@@ -41,16 +41,16 @@ namespace Knives.Chat3
 
             if (Data.FilterPenalty != Chat3.FilterPenalty.None)
             {
-                AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.Local(254));
+                AddHtml(0, y += 25, width / 2 - 10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 254));
                 AddTextField(width / 2 + 15, y, 30, 21, 0x480, 0xBBA, "Warnings", "" + Data.FilterWarnings);
                 AddButton(width / 2 - 5, y + 4, 0x2716, "Submit", new GumpCallback(Submit));
             }
 
-            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.Local(148));
+            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 148));
             AddTextField(width/2+15, y, 70, 21, 0x480, 0xBBA, "Add/Remove", "");
             AddButton(width/2-5, y + 4, 0x2716, "Add/Remove Filter", new GumpCallback(AddFilter));
 
-            string txt = General.Local(151) + " ";
+            string txt = General.LocalFor(Owner, 151) + " ";
 
             foreach (string filter in Data.Filters)
                 txt += filter + " ";
@@ -93,12 +93,12 @@ namespace Knives.Chat3
             if (Data.Filters.Contains(GetTextField("Add/Remove").ToLower()))
             {
                 Data.Filters.Remove(GetTextField("Add/Remove").ToLower());
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(149) + " " + GetTextField("Add/Remove").ToLower());
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 149) + " " + GetTextField("Add/Remove").ToLower());
             }
             else
             {
                 Data.Filters.Add(GetTextField("Add/Remove").ToLower());
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(150) + " " + GetTextField("Add/Remove").ToLower());
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 150) + " " + GetTextField("Add/Remove").ToLower());
             }
 
             NewGump();
@@ -124,7 +124,7 @@ namespace Knives.Chat3
                 int width = 200;
                 int y = 10;
 
-                AddHtml(0, y, width, "<CENTER>" + General.Local(154));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 154));
                 AddImage(width / 2 - 70, y + 2, 0x39);
                 AddImage(width / 2 + 40, y + 2, 0x3B);
 
@@ -132,7 +132,7 @@ namespace Knives.Chat3
 
                 for (int i = 0; i < 3; ++i)
                 {
-                    AddHtml(0, y += 20, width, "<CENTER>" + General.Local(155 + i));
+                    AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 155 + i));
                     AddButton(width / 2 - 60, y + 3, 0x2716, "Select", new GumpStateCallback(Select), i);
                     AddButton(width / 2 + 50, y + 3, 0x2716, "Select", new GumpStateCallback(Select), i);
                 }

@@ -17,7 +17,7 @@ namespace Knives.Chat3
             int width = 400;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(201));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 201));
             AddImage(width / 2 - 100, y + 2, 0x39);
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
@@ -34,7 +34,7 @@ namespace Knives.Chat3
 			if ( Owner.AccessLevel >= AccessLevel.Administrator )
 			{
 				AddButton( width/2-30, y+=10, 0x98B, 0x98B, "Clear", new GumpCallback( ClearLog ) );
-				AddHtml( width/2-23, y+3, 51, "<CENTER>" + General.Local(202));
+				AddHtml( width/2-23, y+3, 51, "<CENTER>" + General.LocalFor(Owner, 202));
 			}
 
             AddBackgroundZero(0, 0, width, y + 40, 0x1400);
@@ -43,7 +43,7 @@ namespace Knives.Chat3
 		private void Help()
 		{
 			NewGump();
-			new Chat3.InfoGump( Owner, 300, 300, HTML.White +"     " + General.Local(200), true );
+			new Chat3.InfoGump( Owner, 300, 300, HTML.White +"     " + General.LocalFor(Owner, 200), true );
 		}
 
 		private void ClearLog()

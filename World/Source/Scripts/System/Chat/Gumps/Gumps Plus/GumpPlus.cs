@@ -440,9 +440,9 @@ namespace Knives.Chat3
             GumpInfo.ForceMenu = !GumpInfo.ForceMenu;
 
             if (GumpInfo.ForceMenu)
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(242));
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 242));
             else
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(243));
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 243));
 
             NewGump();
         }

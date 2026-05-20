@@ -26,7 +26,7 @@ namespace Knives.Chat3
             int width = 300;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(177));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 177));
             AddImage(width / 2 - 100, y + 2, 0x39);
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
@@ -35,62 +35,62 @@ namespace Knives.Chat3
             AddButton(width / 2 - 65, y + 3, 0x2716, "Channel Select", new GumpCallback(ChannelSelect));
             AddButton(width / 2 + 52, y + 3, 0x2716, "Channel Select", new GumpCallback(ChannelSelect));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(178));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 178));
             AddButton(width/2-60, y+3, 0x2716, "New Channel", new GumpCallback(NewChannel));
             AddButton(width/2+50, y+3, 0x2716, "New Channel", new GumpCallback(NewChannel));
 
             if (c_Channel == null)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(179));
-                AddHtml(0, y += 25, width, 61, "<CENTER>" + General.Local(219), false, false);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 179));
+                AddHtml(0, y += 25, width, 61, "<CENTER>" + General.LocalFor(Owner, 219), false, false);
                 AddBackgroundZero(0, 0, width, y + 100, Data.GetData(Owner).DefaultBack);
                 return;
             }
 
             if (c_Channel.GetType() == typeof(Channel))
             {
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(211));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 211));
                 AddButton(width / 2 - 65, y + 1, 0x5686, 0x5687, "Delete Channel", new GumpCallback(DeleteChannel));
                 AddButton(width / 2 + 50, y + 1, 0x5686, 0x5687, "Delete Channel", new GumpCallback(DeleteChannel));
             }
 
-            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.Local(180));
+            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 180));
             AddTextField(width / 2 + 10, y, 70, 21, 0x480, 0xBBA, "Channel Name", "" + c_Channel.Name);
             AddButton(width/2-5, y + 3, 0x2716, "Channel Name", new GumpCallback(ChannelName));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(212));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 212));
             AddButton(width / 2 - 100, y, c_Channel.Enabled ? 0x2343 : 0x2342, "Enable", new GumpCallback(Enable));
             AddButton(width / 2 + 80, y, c_Channel.Enabled ? 0x2343 : 0x2342, "Enable", new GumpCallback(Enable));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(182) + " | " + General.Local(183));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 182) + " | " + General.LocalFor(Owner, 183));
             AddButton(width/2-100, y + 3, c_Channel.Style == ChatStyle.Global ? 0x939 : 0x2716, "Global", new GumpCallback(Global));
             AddButton(width/2+90, y + 3, c_Channel.Style == ChatStyle.Regional ? 0x939 : 0x2716, "Regional", new GumpCallback(Regional));
 
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(223));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 223));
             AddButton(width / 2 - 100, y, c_Channel.ShowStaff ? 0x2343 : 0x2342, "Show Staff", new GumpCallback(ShowStaff));
             AddButton(width / 2 + 80, y, c_Channel.ShowStaff ? 0x2343 : 0x2342, "Show Staff", new GumpCallback(ShowStaff));
 
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(184));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 184));
             AddButton(width / 2 - 100, y, c_Channel.ToIrc ? 0x2343 : 0x2342, "Send to IRC", new GumpCallback(SendToIrc));
             AddButton(width / 2 + 80, y, c_Channel.ToIrc ? 0x2343 : 0x2342, "Send to IRC", new GumpCallback(SendToIrc));
 
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(188));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 188));
             AddButton(width / 2 - 100, y, c_Channel.NewChars ? 0x2343 : 0x2342, "Auto join new characters", new GumpCallback(AutoNewChars));
             AddButton(width / 2 + 80, y, c_Channel.NewChars ? 0x2343 : 0x2342, "Auto join new characters", new GumpCallback(AutoNewChars));
 
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(208));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 208));
             AddButton(width / 2 - 100, y, c_Channel.Filter ? 0x2343 : 0x2342, "Apply Filter", new GumpCallback(ApplyFilter));
             AddButton(width / 2 + 80, y, c_Channel.Filter ? 0x2343 : 0x2342, "Apply Filter", new GumpCallback(ApplyFilter));
 
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(220));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 220));
             AddButton(width/2-100, y, c_Channel.Delay ? 0x2343 : 0x2342, "Apply Delay", new GumpCallback(ApplyDelay));
             AddButton(width/2+80, y, c_Channel.Delay ? 0x2343 : 0x2342, "Apply Delay", new GumpCallback(ApplyDelay));
 
-            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.Local(185));
+            AddHtml(0, y += 25, width/2-10, "<DIV ALIGN=RIGHT>" + General.LocalFor(Owner, 185));
             AddTextField(width/2+10, y, 70, 21, 0x480, 0xBBA, "Add/Remove", "");
             AddButton(width/2-5, y + 4, 0x2716, "Add/Remove Command", new GumpCallback(AddCommand));
 
-            string txt = General.Local(42) + ": ";
+            string txt = General.LocalFor(Owner, 42) + ": ";
 
             foreach (string str in c_Channel.Commands)
                 txt += str + " ";
@@ -241,7 +241,7 @@ namespace Knives.Chat3
                 int width = 200;
                 int y = 10;
 
-                AddHtml(0, y, width, "<CENTER>" + General.Local(38));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 38));
                 AddImage(width / 2 - 70, y + 2, 0x39);
                 AddImage(width / 2 + 40, y + 2, 0x3B);
 

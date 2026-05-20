@@ -28,12 +28,12 @@ namespace Knives.Chat3
             int width = 200;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(216));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 216));
             AddImage(width / 2 - 70, y + 2, 0x39);
             AddImage(width / 2 + 40, y + 2, 0x3B);
 
             if (c_Target != null)
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(224) + " " + c_Target.RawName);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 224) + " " + c_Target.RawName);
 
             foreach (Channel c in Channel.Channels)
                 if(c.CanChat(Current, false))
@@ -45,7 +45,7 @@ namespace Knives.Chat3
                     AddButton(width / 2 + 55, y + 4, 0x2716, "Channel Color", new GumpStateCallback(ChannelColor), c);
                 }
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(47));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 47));
             AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).SystemC);
             AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 2);
             AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).SystemC);
@@ -53,7 +53,7 @@ namespace Knives.Chat3
 
             if (Current.AccessLevel > AccessLevel.Player)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(48));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 48));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).StaffC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 3);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).StaffC);
@@ -64,31 +64,31 @@ namespace Knives.Chat3
             {
                 y += 20;
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(44));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 44));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).GlobalCC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 0);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).GlobalCC);
                 AddButton(width / 2 + 55, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 0);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(45));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 45));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).GlobalWC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 1);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).GlobalWC);
                 AddButton(width / 2 + 55, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 1);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(192));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 192));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).GlobalGC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 4);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).GlobalGC);
                 AddButton(width / 2 + 55, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 4);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(193));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 193));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).GlobalFC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 5);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).GlobalFC);
                 AddButton(width / 2 + 55, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 5);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(26));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 26));
                 AddImage(width / 2 - 70, y, 0x2342, Data.GetData(Current).GlobalMC);
                 AddButton(width / 2 - 66, y + 4, 0x2716, "Colors", new GumpStateCallback(Colors), 6);
                 AddImage(width / 2 + 50, y, 0x2342, Data.GetData(Current).GlobalMC);

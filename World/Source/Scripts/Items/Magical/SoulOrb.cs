@@ -39,15 +39,21 @@ namespace Server.Items
 
 		private string GetSoulOrbNameKey()
 		{
-			return OrbType switch
+			switch ( OrbType )
 			{
-				SoulOrbType.BloodOfVampire => "item.magical.soulorb.vampire",
-				SoulOrbType.CloningCrystalJedi => "item.magical.soulorb.clone.jedi",
-				SoulOrbType.CloningCrystalSyth => "item.magical.soulorb.clone.syth",
-				SoulOrbType.RestorativeSoil => "item.magical.soulorb.soil",
-				SoulOrbType.PermadeathPlaceholder => "item.magical.soulorb.placeholder",
-				_ => "item.magical.soulorb.default",
-			};
+				case SoulOrbType.BloodOfVampire:
+					return "item.magical.soulorb.vampire";
+				case SoulOrbType.CloningCrystalJedi:
+					return "item.magical.soulorb.clone.jedi";
+				case SoulOrbType.CloningCrystalSyth:
+					return "item.magical.soulorb.clone.syth";
+				case SoulOrbType.RestorativeSoil:
+					return "item.magical.soulorb.soil";
+				case SoulOrbType.PermadeathPlaceholder:
+					return "item.magical.soulorb.placeholder";
+				default:
+					return "item.magical.soulorb.default";
+			}
 		}
 
 		public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 10 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } }

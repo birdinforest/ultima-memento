@@ -27,9 +27,9 @@ namespace Knives.Chat3
             ArrayList list = GetMsgCanidates(e.Mobile, name);
 
             if (list.Count > 10)
-                e.Mobile.SendMessage(Data.GetData(e.Mobile).SystemC, General.Local(112));
+                e.Mobile.SendMessage(Data.GetData(e.Mobile).SystemC, General.LocalFor(e.Mobile, 112));
             else if (list.Count == 0)
-                e.Mobile.SendMessage(Data.GetData(e.Mobile).SystemC, General.Local(113));
+                e.Mobile.SendMessage(Data.GetData(e.Mobile).SystemC, General.LocalFor(e.Mobile, 113));
             else if (list.Count == 1)
                 new SendMessageGump(e.Mobile, (Mobile)list[0], text, null, MsgType.Normal);
             else
@@ -62,7 +62,7 @@ namespace Knives.Chat3
             {
                 int y = 10;
 
-                AddHtml(0, y, 150, 21, HTML.White + "<CENTER>" + General.Local(114), false, false);
+                AddHtml(0, y, 150, 21, HTML.White + "<CENTER>" + General.LocalFor(Owner, 114), false, false);
 
                 y += 5;
 

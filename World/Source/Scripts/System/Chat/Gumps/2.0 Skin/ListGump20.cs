@@ -82,7 +82,7 @@ namespace Knives.Chat3
 
             if (c_Target != null)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(224) + " " + c_Target.RawName);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 224) + " " + c_Target.RawName);
                 AddButton(width / 2 - 80, y, 0x5686, "Clear Viewing", new GumpCallback(ClearViewing));
                 AddButton(width / 2 + 65, y, 0x5686, "Clear Viewing", new GumpCallback(ClearViewing));
             }
@@ -163,7 +163,7 @@ namespace Knives.Chat3
                     Message msg = (Message)list[i];
 
                     AddHtml(45, y += 20, width-85, ColorFor(msg) + (msg.Read ? "" : "<B>") + msg.Subject, false);
-                    AddHtml(45, y += 16, width-85, General.Local(60) + " " + msg.From.RawName);
+                    AddHtml(45, y += 16, width-85, General.LocalFor(Owner, 60) + " " + msg.From.RawName);
 
                     AddButton(20, y - 10, 0x2716, "Open", new GumpStateCallback(Open), (Message)list[i]);
                     AddButton(width - 40, y - 10, 0x5686, 0x5687, "Delete", new GumpStateCallback(Delete), (Message)list[i]);
@@ -184,17 +184,17 @@ namespace Knives.Chat3
 
             if (c_ListPage == ListPage.Mail && Current.AccessLevel >= AccessLevel.GameMaster)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(95), false);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 95), false);
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Broadcast", new GumpCallback(Broadcast));
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Broadcast", new GumpCallback(Broadcast));
 
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(257), false);
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 257), false);
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Staff", new GumpCallback(BroadcastStaff));
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Staff", new GumpCallback(BroadcastStaff));
             }
             else if (c_ListPage == ListPage.Notifications)
             {
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(270), false);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 270), false);
                 AddButton(width / 2 - 70, y + 3, 0x2716, "New Notif", new GumpCallback(NewNotif));
                 AddButton(width / 2 + 60, y + 3, 0x2716, "New Notif", new GumpCallback(NewNotif));
             }
@@ -211,7 +211,7 @@ namespace Knives.Chat3
                     if (state.Mobile != null && state.Mobile.AccessLevel != AccessLevel.Player)
                         states.Remove(state);
 
-                AddHtml(0, y += 20, width, "<CENTER>" + states.Count + " " + General.Local(19));
+                AddHtml(0, y += 20, width, "<CENTER>" + states.Count + " " + General.LocalFor(Owner, 19));
             }
 
             if (c_Menu)
@@ -241,22 +241,22 @@ namespace Knives.Chat3
         private int ShowFullMenu(int y, int width)
         {
             AddButton(width / 2 - 83 + (50/2), (y += 25)+3, 0x29F6, "Channels", new GumpCallback(Channels));
-            AddHtml(width / 2 - 75, y, 50, (c_ListPage == ListPage.Channel ? HTML.Green : "") + "<CENTER>" + (c_ListPage == ListPage.Channel ? GetTitle() : General.Local(38)));
+            AddHtml(width / 2 - 75, y, 50, (c_ListPage == ListPage.Channel ? HTML.Green : "") + "<CENTER>" + (c_ListPage == ListPage.Channel ? GetTitle() : General.LocalFor(Owner, 38)));
 
             AddButton(width / 2 - 33 + (50 / 2), y + 3, 0x29F6, "Friends", new GumpStateCallback(Page), ListPage.Friends);
-            AddHtml(width / 2 - 25, y, 50, (c_ListPage == ListPage.Friends ? HTML.Green : "") + "<CENTER>" + General.Local(203));
+            AddHtml(width / 2 - 25, y, 50, (c_ListPage == ListPage.Friends ? HTML.Green : "") + "<CENTER>" + General.LocalFor(Owner, 203));
 
             AddButton(width / 2 + 27 + (50 / 2), y + 3, 0x29F6, "Ignores", new GumpStateCallback(Page), ListPage.Ignores);
-            AddHtml(width / 2 + 35, y, 50, (c_ListPage == ListPage.Ignores ? HTML.Green : "") + "<CENTER>" + General.Local(51));
+            AddHtml(width / 2 + 35, y, 50, (c_ListPage == ListPage.Ignores ? HTML.Green : "") + "<CENTER>" + General.LocalFor(Owner, 51));
 
             AddButton(width / 2 - 83 + (50 / 2), (y += 15) + 3, 0x29F6, "All", new GumpStateCallback(Page), ListPage.All);
-            AddHtml(width / 2 - 75, y, 50, (c_ListPage == ListPage.All ? HTML.Green : "") + "<CENTER>" + General.Local(46));
+            AddHtml(width / 2 - 75, y, 50, (c_ListPage == ListPage.All ? HTML.Green : "") + "<CENTER>" + General.LocalFor(Owner, 46));
 
             AddButton(width / 2 - 33 + (50 / 2), y + 3, 0x29F6, "Mail", new GumpStateCallback(Page), ListPage.Mail);
-            AddHtml(width / 2 - 25, y, 50, (c_ListPage == ListPage.Mail ? HTML.Green : "") + "<CENTER>" + General.Local(56));
+            AddHtml(width / 2 - 25, y, 50, (c_ListPage == ListPage.Mail ? HTML.Green : "") + "<CENTER>" + General.LocalFor(Owner, 56));
 
             AddButton(width / 2 + 27 + (50 / 2), y + 3, 0x29F6, "Views", new GumpCallback(Views));
-            AddHtml(width / 2 + 35, y, 50, "<CENTER>" + General.Local(1));
+            AddHtml(width / 2 + 35, y, 50, "<CENTER>" + General.LocalFor(Owner, 1));
 
             AddButton(width / 2 - 30, y += 25, 0x8B1, "1.0", new GumpStateCallback(SkinChange), Skin.One);
             AddButton(width / 2 - 10, y, 0x8B2, "2.0", new GumpStateCallback(SkinChange), Skin.Two);
@@ -299,15 +299,15 @@ namespace Knives.Chat3
         {
             switch (c_ListPage)
             {
-                case ListPage.All: return General.Local(46);
+                case ListPage.All: return General.LocalFor(Owner, 46);
                 case ListPage.Channel: return Data.GetData(Current).CurrentChannel.NameFor(Current);
-                case ListPage.Mail: return General.Local(56);
-                case ListPage.Friends: return General.Local(203);
-                case ListPage.Ignores: return General.Local(51);
-                case ListPage.GIgnores: return General.Local(204);
-                case ListPage.GListens: return General.Local(205);
-                case ListPage.Bans: return General.Local(54);
-                case ListPage.Notifications: return General.Local(269);
+                case ListPage.Mail: return General.LocalFor(Owner, 56);
+                case ListPage.Friends: return General.LocalFor(Owner, 203);
+                case ListPage.Ignores: return General.LocalFor(Owner, 51);
+                case ListPage.GIgnores: return General.LocalFor(Owner, 204);
+                case ListPage.GListens: return General.LocalFor(Owner, 205);
+                case ListPage.Bans: return General.LocalFor(Owner, 54);
+                case ListPage.Notifications: return General.LocalFor(Owner, 269);
             }
 
             return "";
@@ -472,7 +472,7 @@ namespace Knives.Chat3
             NewGump();
 
             if (m.Read && Data.GetData(m.From).ReadReceipt && m.From.AccessLevel >= Owner.AccessLevel)
-                m.From.SendMessage(Data.GetData(m.From).SystemC, Owner.RawName + " " + General.Local(197) + " " + m.Subject);
+                m.From.SendMessage(Data.GetData(m.From).SystemC, Owner.RawName + " " + General.LocalFor(m.From, 197) + " " + m.Subject);
 
             new MessageGump(Owner, m);
         }
@@ -508,16 +508,16 @@ namespace Knives.Chat3
                 if (!TrackSpam.LogSpam(Current, "Request " + m.RawName, TimeSpan.FromHours(Data.RequestSpam)))
                 {
                     TimeSpan ts = TrackSpam.NextAllowedIn(Current, "Request " + m.RawName, TimeSpan.FromHours(Data.RequestSpam));
-                    string txt = (ts.Days != 0 ? ts.Days + " " + General.Local(170) + " " : "") + (ts.Hours != 0 ? ts.Hours + " " + General.Local(171) + " " : "") + (ts.Minutes != 0 ? ts.Minutes + " " + General.Local(172) + " " : "");
+                    string txt = (ts.Days != 0 ? ts.Days + " " + General.LocalFor(Owner, 170) + " " : "") + (ts.Hours != 0 ? ts.Hours + " " + General.LocalFor(Owner, 171) + " " : "") + (ts.Minutes != 0 ? ts.Minutes + " " + General.LocalFor(Owner, 172) + " " : "");
 
-                    Owner.SendMessage(Data.GetData(Current).SystemC, General.Local(96) + " " + txt);
+                    Owner.SendMessage(Data.GetData(Current).SystemC, General.LocalFor(Owner, 96) + " " + txt);
                     NewGump();
                     return;
                 }
 
-                Data.GetData(m).AddMessage(new Message(Current, General.Local(84), General.Local(85), MsgType.Invite));
+                Data.GetData(m).AddMessage(new Message(Current, General.LocalFor(m, 84), General.LocalFor(m, 85), MsgType.Invite));
 
-                Owner.SendMessage(Data.GetData(Current).SystemC, General.Local(86) + " " + m.RawName);
+                Owner.SendMessage(Data.GetData(Current).SystemC, General.LocalFor(Owner, 86) + " " + m.RawName);
 
                 NewGump();
                 return;
@@ -552,7 +552,7 @@ namespace Knives.Chat3
             NewGump();
 
             if (Current != Owner)
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(225));
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 225));
             else if (Chat3.Message.CanMessage(Owner, (Mobile)o))
                 new SendMessageGump(Owner, (Mobile)o, "", null, MsgType.Normal);
         }
@@ -567,7 +567,7 @@ namespace Knives.Chat3
             if (Data.GetData(m).Banned)
             {
                 Data.GetData(m).RemoveBan();
-                Owner.SendMessage(Data.GetData(Current).SystemC, General.Local(78) + " " + m.RawName);
+                Owner.SendMessage(Data.GetData(Current).SystemC, General.LocalFor(Owner, 78) + " " + m.RawName);
                 NewGump();
             }
             else
@@ -610,7 +610,7 @@ namespace Knives.Chat3
             NewGump();
 
             if (m.NetState == null)
-                Owner.SendMessage(Data.GetData(Current).SystemC, m.RawName + " " + General.Local(83));
+                Owner.SendMessage(Data.GetData(Current).SystemC, m.RawName + " " + General.LocalFor(Owner, 83));
             else
                 Owner.SendGump(new ClientGump(Owner, m.NetState));
         }
@@ -623,7 +623,7 @@ namespace Knives.Chat3
             Mobile m = (Mobile)o;
 
             if (m.NetState == null)
-                Owner.SendMessage(Data.GetData(Current).SystemC, m.RawName + " " + General.Local(83));
+                Owner.SendMessage(Data.GetData(Current).SystemC, m.RawName + " " + General.LocalFor(Owner, 83));
             else
             {
                 Owner.Location = m.Location;
@@ -903,29 +903,29 @@ namespace Knives.Chat3
                 int width = 200;
                 int y = 10;
 
-                AddHtml(0, y, width, "<CENTER>" + General.Local(160));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 160));
                 AddImage(width / 2 - 70, y + 2, 0x39);
                 AddImage(width / 2 + 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 20, width, General.Local(161));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 161));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "30 minutes", new GumpStateCallback(BanTime), TimeSpan.FromMinutes(30));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "30 minutes", new GumpStateCallback(BanTime), TimeSpan.FromMinutes(30));
-                AddHtml(0, y += 20, width, General.Local(162));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 162));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 hour", new GumpStateCallback(BanTime), TimeSpan.FromHours(1));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 hour", new GumpStateCallback(BanTime), TimeSpan.FromHours(1));
-                AddHtml(0, y += 20, width, General.Local(163));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 163));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "12 hours", new GumpStateCallback(BanTime), TimeSpan.FromHours(12));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "12 hours", new GumpStateCallback(BanTime), TimeSpan.FromHours(12));
-                AddHtml(0, y += 20, width, General.Local(164));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 164));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 day", new GumpStateCallback(BanTime), TimeSpan.FromDays(1));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 day", new GumpStateCallback(BanTime), TimeSpan.FromDays(1));
-                AddHtml(0, y += 20, width, General.Local(165));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 165));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 week", new GumpStateCallback(BanTime), TimeSpan.FromDays(7));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 week", new GumpStateCallback(BanTime), TimeSpan.FromDays(7));
-                AddHtml(0, y += 20, width, General.Local(166));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 166));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 month", new GumpStateCallback(BanTime), TimeSpan.FromDays(30));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 month", new GumpStateCallback(BanTime), TimeSpan.FromDays(30));
-                AddHtml(0, y += 20, width, General.Local(167));
+                AddHtml(0, y += 20, width, General.LocalFor(Owner, 167));
                 AddButton(width / 2 - 60, y + 3, 0x2716, "1 year", new GumpStateCallback(BanTime), TimeSpan.FromDays(365));
                 AddButton(width / 2 + 50, y + 3, 0x2716, "1 year", new GumpStateCallback(BanTime), TimeSpan.FromDays(365));
 
@@ -938,7 +938,7 @@ namespace Knives.Chat3
                     return;
 
                 Data.GetData(c_Target).Ban((TimeSpan)o);
-                Owner.SendMessage(Data.GetData(Owner).SystemC, General.Local(77) + " " + c_Target.RawName);
+                Owner.SendMessage(Data.GetData(Owner).SystemC, General.LocalFor(Owner, 77) + " " + c_Target.RawName);
 
                 c_Gump.NewGump();
             }
@@ -966,7 +966,7 @@ namespace Knives.Chat3
                 int width = 150;
                 int y = -10;
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(38));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 38));
                 AddImage(10, y + 2, 0x39);
                 AddImage(width - 40, y + 2, 0x3B);
 
@@ -987,24 +987,24 @@ namespace Knives.Chat3
                     }
                 }
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(1));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 1));
                 AddImage(0 + 10, y + 2, 0x39);
                 AddImage(0 + width - 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(46));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 46));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.All);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.All);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(56));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 56));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Mail);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Mail);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(203));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 203));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Friends);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Friends);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(51));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 51));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Ignores);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Ignores);
 
-                AddHtml(0, y += 20, width, (c_Gump.CurrentPage == ListPage.Channel ? "" : HTML.Gray) + "<CENTER>" + General.Local(206));
+                AddHtml(0, y += 20, width, (c_Gump.CurrentPage == ListPage.Channel ? "" : HTML.Gray) + "<CENTER>" + General.LocalFor(Owner, 206));
                 if (c_Gump.CurrentPage == ListPage.Channel)
                 {
                     AddButton(20, y + 3, 0x2716, "History", new GumpCallback(c_Gump.History));
@@ -1013,63 +1013,63 @@ namespace Knives.Chat3
 
                 if (Data.GetData(c_Target).GlobalAccess)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(204));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 204));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GIgnores);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GIgnores);
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(205));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 205));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GListens);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GListens);
                 }
 
                 if (c_Target.AccessLevel > AccessLevel.GameMaster)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(54));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 54));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Bans);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Bans);
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(269));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 269));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Notifications);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Notifications);
                 }
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(40));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 40));
                 AddImage(10, y + 2, 0x39);
                 AddImage(width - 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(49));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 49));
                 AddButton(20, y + 3, 0x2716, "Colors", new GumpCallback(c_Gump.Colors));
                 AddButton(width - 30, y + 3, 0x2716, "Colors", new GumpCallback(c_Gump.Colors));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(56));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 56));
                 AddButton(20, y + 3, 0x2716, "Mail", new GumpCallback(c_Gump.Mail));
                 AddButton(width - 30, y + 3, 0x2716, "Mail", new GumpCallback(c_Gump.Mail));
 
                 if (Data.GetData(c_Target).GlobalAccess)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(43));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 43));
                     AddButton(20, y + 3, 0x2716, "Global Menu", new GumpCallback(c_Gump.GlobalMenu));
                     AddButton(width - 30, y + 3, 0x2716, "Global Menu", new GumpCallback(c_Gump.GlobalMenu));
                 }
 
                 if (c_Target.AccessLevel >= AccessLevel.Administrator)
                 {
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(207));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 207));
                     AddButton(20, y + 3, 0x2716, "General", new GumpCallback(c_Gump.GenOpt));
                     AddButton(width - 30, y + 3, 0x2716, "General", new GumpCallback(c_Gump.GenOpt));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(237));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 237));
                     AddButton(20, y + 3, 0x2716, "Logging", new GumpCallback(c_Gump.Logging));
                     AddButton(width - 30, y + 3, 0x2716, "Logging", new GumpCallback(c_Gump.Logging));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(208));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 208));
                     AddButton(20, y + 3, 0x2716, "Filter", new GumpCallback(c_Gump.Filter));
                     AddButton(width - 30, y + 3, 0x2716, "Filter", new GumpCallback(c_Gump.Filter));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(209));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 209));
                     AddButton(20, y + 3, 0x2716, "Spam", new GumpCallback(c_Gump.Spam));
                     AddButton(width - 30, y + 3, 0x2716, "Spam", new GumpCallback(c_Gump.Spam));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(210));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 210));
                     AddButton(20, y + 3, 0x2716, "Irc", new GumpCallback(c_Gump.Irc));
                     AddButton(width - 30, y + 3, 0x2716, "Irc", new GumpCallback(c_Gump.Irc));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(287));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 287));
                     AddButton(20, y + 3, 0x2716, "Multi", new GumpCallback(c_Gump.Multi));
                     AddButton(width - 30, y + 3, 0x2716, "Multi", new GumpCallback(c_Gump.Multi));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(50));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 50));
                     AddButton(20, y + 3, 0x2716, "Channel", new GumpCallback(c_Gump.Channel));
                     AddButton(width - 30, y + 3, 0x2716, "Channel", new GumpCallback(c_Gump.Channel));
                 }
@@ -1115,7 +1115,7 @@ namespace Knives.Chat3
                 int width = 150;
                 int y = -10;
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(38));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 38));
                 AddImage(10, y + 2, 0x39);
                 AddImage(width - 40, y + 2, 0x3B);
 
@@ -1177,45 +1177,45 @@ namespace Knives.Chat3
                 int width = 150;
                 int y = -10;
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(40));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 40));
                 AddImage(10, y + 2, 0x39);
                 AddImage(width - 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(49));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 49));
                 AddButton(20, y + 3, 0x2716, "Colors", new GumpCallback(c_Gump.Colors));
                 AddButton(width - 30, y + 3, 0x2716, "Colors", new GumpCallback(c_Gump.Colors));
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(56));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 56));
                 AddButton(20, y + 3, 0x2716, "Mail", new GumpCallback(c_Gump.Mail));
                 AddButton(width - 30, y + 3, 0x2716, "Mail", new GumpCallback(c_Gump.Mail));
 
                 if (Data.GetData(c_Target).GlobalAccess)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(43));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 43));
                     AddButton(20, y + 3, 0x2716, "Global Menu", new GumpCallback(c_Gump.GlobalMenu));
                     AddButton(width - 30, y + 3, 0x2716, "Global Menu", new GumpCallback(c_Gump.GlobalMenu));
                 }
 
                 if (c_Target.AccessLevel >= AccessLevel.Administrator)
                 {
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(207));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 207));
                     AddButton(20, y + 3, 0x2716, "General", new GumpCallback(c_Gump.GenOpt));
                     AddButton(width - 30, y + 3, 0x2716, "General", new GumpCallback(c_Gump.GenOpt));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(237));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 237));
                     AddButton(20, y + 3, 0x2716, "Logging", new GumpCallback(c_Gump.Logging));
                     AddButton(width - 30, y + 3, 0x2716, "Logging", new GumpCallback(c_Gump.Logging));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(208));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 208));
                     AddButton(20, y + 3, 0x2716, "Filter", new GumpCallback(c_Gump.Filter));
                     AddButton(width - 30, y + 3, 0x2716, "Filter", new GumpCallback(c_Gump.Filter));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(209));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 209));
                     AddButton(20, y + 3, 0x2716, "Spam", new GumpCallback(c_Gump.Spam));
                     AddButton(width - 30, y + 3, 0x2716, "Spam", new GumpCallback(c_Gump.Spam));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(210));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 210));
                     AddButton(20, y + 3, 0x2716, "Irc", new GumpCallback(c_Gump.Irc));
                     AddButton(width - 30, y + 3, 0x2716, "Irc", new GumpCallback(c_Gump.Irc));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(287));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 287));
                     AddButton(20, y + 3, 0x2716, "Multi", new GumpCallback(c_Gump.Multi));
                     AddButton(width - 30, y + 3, 0x2716, "Multi", new GumpCallback(c_Gump.Multi));
-                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.Local(50));
+                    AddHtml(0, y += 20, width, HTML.LightPurple + "<CENTER>" + General.LocalFor(Owner, 50));
                     AddButton(20, y + 3, 0x2716, "Channel", new GumpCallback(c_Gump.Channel));
                     AddButton(width - 30, y + 3, 0x2716, "Channel", new GumpCallback(c_Gump.Channel));
                 }
@@ -1246,24 +1246,24 @@ namespace Knives.Chat3
                 int width = 150;
                 int y = -10;
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(1));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 1));
                 AddImage(0 + 10, y + 2, 0x39);
                 AddImage(0 + width - 40, y + 2, 0x3B);
 
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(46));
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 46));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.All);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.All);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(56));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 56));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Mail);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Mail);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(203));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 203));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Friends);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Friends);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(51));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 51));
                 AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Ignores);
                 AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Ignores);
 
-                AddHtml(0, y += 20, width, (c_Gump.CurrentPage == ListPage.Channel ? "" : HTML.Gray) + "<CENTER>" + General.Local(206));
+                AddHtml(0, y += 20, width, (c_Gump.CurrentPage == ListPage.Channel ? "" : HTML.Gray) + "<CENTER>" + General.LocalFor(Owner, 206));
                 if (c_Gump.CurrentPage == ListPage.Channel)
                 {
                     AddButton(20, y + 3, 0x2716, "History", new GumpCallback(c_Gump.History));
@@ -1272,20 +1272,20 @@ namespace Knives.Chat3
 
                 if (Data.GetData(c_Target).GlobalAccess)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(204));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 204));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GIgnores);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GIgnores);
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(205));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 205));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GListens);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.GListens);
                 }
 
                 if (c_Target.AccessLevel > AccessLevel.GameMaster)
                 {
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(54));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 54));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Bans);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Bans);
-                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.Local(269));
+                    AddHtml(0, y += 20, width, HTML.Red + "<CENTER>" + General.LocalFor(Owner, 269));
                     AddButton(20, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Notifications);
                     AddButton(width - 30, y + 3, 0x2716, "Page", new GumpStateCallback(c_Gump.Page), ListPage.Notifications);
                 }
@@ -1316,16 +1316,16 @@ namespace Knives.Chat3
                 int width = 100;
                 int y = 20;
 
-                AddHtml(0, y, width, "<CENTER>" + General.Local(19));
+                AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 19));
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Online", new GumpStateCallback(Status), OnlineStatus.Online);
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Online", new GumpStateCallback(Status), OnlineStatus.Online);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(20));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 20));
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Away", new GumpStateCallback(Status), OnlineStatus.Away);
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Away", new GumpStateCallback(Status), OnlineStatus.Away);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(21));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 21));
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Busy", new GumpStateCallback(Status), OnlineStatus.Busy);
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Busy", new GumpStateCallback(Status), OnlineStatus.Busy);
-                AddHtml(0, y += 20, width, "<CENTER>" + General.Local(22));
+                AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 22));
                 AddButton(width / 2 - 50, y + 3, 0x2716, "Hidden", new GumpStateCallback(Status), OnlineStatus.Hidden);
                 AddButton(width / 2 + 40, y + 3, 0x2716, "Hidden", new GumpStateCallback(Status), OnlineStatus.Hidden);
 
@@ -1367,7 +1367,7 @@ namespace Knives.Chat3
             {
                 AddBackground(0, 0, 200, 200, Data.GetData(Owner).DefaultBack);
 
-                AddHtml(0, 10, 200, "<CENTER>" + General.Local(12));
+                AddHtml(0, 10, 200, "<CENTER>" + General.LocalFor(Owner, 12));
                 AddTextField(10, 30, 180, 120, 0x480, 0xBBC, "Away", Data.GetData(Owner).AwayMsg);
                 AddButton(60, 160, 0xFB1, 0xFB3, "Clear", new GumpCallback(ClearMsg));
                 AddButton(120, 160, 0xFB7, 0xFB9, "Submit", new GumpCallback(Submit));

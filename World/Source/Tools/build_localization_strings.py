@@ -801,6 +801,8 @@ def main() -> int:
             "legend-book-rows.json",
             "trade-commodity.json",
             "placemap-labels.json",
+            "chat3-ui.json",
+            "mob-loot-infotext.json",
         }
     )
     if args.prune_stale_locale_files:

@@ -18,7 +18,7 @@ namespace Knives.Chat3
 
         public override bool CanChat(Mobile m, bool say)
         {
-			if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(37));
+			if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 37));
 				return false;
         }
 

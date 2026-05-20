@@ -33,7 +33,7 @@ namespace Knives.Chat3
         {
             if (m.Guild == null)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(36));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 36));
                 return false;
             }
 

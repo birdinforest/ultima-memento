@@ -26,7 +26,7 @@ namespace Knives.Chat3
         {
             if (IrcConnection.Connection == null || !IrcConnection.Connection.Connected)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(158));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 158));
                 return false;
             }
 

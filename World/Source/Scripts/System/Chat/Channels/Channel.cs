@@ -297,25 +297,25 @@ namespace Knives.Chat3
         {
             if (!Enabled)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(213));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 213));
                 return false;
             }
 
             if (m.Squelched)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(260));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 260));
                 return false;
             }
 
             if (Data.GetData(m).Banned)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(33));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 33));
                 return false;
             }
 
             if (c_Style == ChatStyle.Regional && (m.Region == null || Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) == ""))
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(35));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 35));
                 return false;
             }
 
@@ -368,13 +368,13 @@ namespace Knives.Chat3
 
             if (!c_Mobiles.Contains(m))
             {
-                m.SendMessage(Data.GetData(m).SystemC, General.Local(34));
+                m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 34));
                 return;
             }
 
             if (c_Delay && !TrackSpam.LogSpam(m, "Chat", TimeSpan.FromSeconds(Data.ChatSpam)))
             {
-                if (spam) m.SendMessage(Data.GetData(m).SystemC, General.Local(97));
+                if (spam) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 97));
                 Timer.DelayCall(TimeSpan.FromSeconds(4), new TimerStateCallback(OnChat), new object[] { m, msg });
                 return;
             }

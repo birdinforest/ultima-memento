@@ -25,39 +25,39 @@ namespace Knives.Chat3
             int width = 300;
             int y = 10;
 
-            AddHtml(0, y, width, "<CENTER>" + General.Local(217));
+            AddHtml(0, y, width, "<CENTER>" + General.LocalFor(Owner, 217));
             AddImage(width / 2 - 100, y + 2, 0x39);
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
             if (c_Target != null)
-                AddHtml(0, y += 25, width, "<CENTER>" + General.Local(224) + " " + c_Target.RawName);
+                AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 224) + " " + c_Target.RawName);
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(58));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 58));
             AddButton(width / 2 - 120, y, Data.GetData(Current).SevenDays ? 0x2343 : 0x2342, "Seven Days", new GumpCallback(SevenDays));
             AddButton(width / 2 + 100, y, Data.GetData(Current).SevenDays ? 0x2343 : 0x2342, "Seven Days", new GumpCallback(SevenDays));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(259));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 259));
             AddButton(width / 2 - 120, y, Data.GetData(Current).WhenFull ? 0x2343 : 0x2342, "When Full", new GumpCallback(WhenFull));
             AddButton(width / 2 + 100, y, Data.GetData(Current).WhenFull ? 0x2343 : 0x2342, "When Full", new GumpCallback(WhenFull));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(24));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 24));
             AddButton(width / 2 - 120, y, Data.GetData(Current).FriendsOnly ? 0x2343 : 0x2342, "Friends Only", new GumpCallback(FriendsOnly));
             AddButton(width / 2 + 100, y, Data.GetData(Current).FriendsOnly ? 0x2343 : 0x2342, "Friends Only", new GumpCallback(FriendsOnly));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(25));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 25));
             AddButton(width / 2 - 120, y, Data.GetData(Current).ByRequest ? 0x2343 : 0x2342, "Friend Request", new GumpCallback(FriendRequest));
             AddButton(width / 2 + 100, y, Data.GetData(Current).ByRequest ? 0x2343 : 0x2342, "Friend Request", new GumpCallback(FriendRequest));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(30));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 30));
             AddButton(width / 2 - 120, y, Data.GetData(Current).FriendAlert ? 0x2343 : 0x2342, "Friend Alert", new GumpCallback(FriendAlert));
             AddButton(width / 2 + 100, y, Data.GetData(Current).FriendAlert ? 0x2343 : 0x2342, "Friend Alert", new GumpCallback(FriendAlert));
-            AddHtml(0, y += 20, width, "<CENTER>" + General.Local(196));
+            AddHtml(0, y += 20, width, "<CENTER>" + General.LocalFor(Owner, 196));
             AddButton(width / 2 - 120, y, Data.GetData(Current).ReadReceipt ? 0x2343 : 0x2342, "Read Receipt", new GumpCallback(ReadReceipt));
             AddButton(width / 2 + 100, y, Data.GetData(Current).ReadReceipt ? 0x2343 : 0x2342, "Read Receipt", new GumpCallback(ReadReceipt));
 
-            AddHtml(0, y += 25, width, "<CENTER>" + General.Local(27));
+            AddHtml(0, y += 25, width, "<CENTER>" + General.LocalFor(Owner, 27));
             AddButton(width / 2 - 120, y, Data.GetData(Current).MsgSound ? 0x2343 : 0x2342, "Message Sound", new GumpCallback(MessageSound));
             AddButton(width / 2 + 100, y, Data.GetData(Current).MsgSound ? 0x2343 : 0x2342, "Message Sound", new GumpCallback(MessageSound));
 
             if (Data.GetData(Current).MsgSound)
             {
-                AddHtml(0, y += 30, width, "<CENTER>" + General.Local(28));
+                AddHtml(0, y += 30, width, "<CENTER>" + General.LocalFor(Owner, 28));
                 AddTextField(width/2-25, y, 50, 21, 0x480, 0xBBA, "Sound", Data.GetData(Current).DefaultSound.ToString());
                 AddButton(width/2+30, y + 3, 0x15E1, 0x15E5, "Play Sound", new GumpCallback(PlaySound));
                 AddButton(width/2-40, y, 0x983, "Sound Up", new GumpCallback(SoundUp));

@@ -73,7 +73,7 @@ namespace Server.Engines.Craft
 				m_CraftTxtKeys[typeof(DefTailoring)] = "prop.crafttxt.tailoring";
 				m_CraftTxtKeys[typeof(DefTinkering)] = "prop.crafttxt.tinkering";
 				m_CraftTxtKeys[typeof(DefWands)] = "prop.crafttxt.wandcreation";
-				m_CraftTxtKeys[typeof(DefWaxCrafting)] = "prop.crafttxt.waxworks";
+				m_CraftTxtKeys[typeof(DefWaxingPot)] = "prop.crafttxt.waxworks";
 				m_CraftTxtKeys[typeof(DefWitchery)] = "prop.crafttxt.witchbrewing";
 			}
 

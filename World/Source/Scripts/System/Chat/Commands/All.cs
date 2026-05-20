@@ -15,7 +15,7 @@ namespace Knives.Chat3
         {
             foreach (NetState ns in NetState.Instances)
                 if (ns.Mobile != null)
-                    ns.Mobile.SendMessage(Data.GetData(e.Mobile).StaffC, "<{0}> {1}: {2}", General.Local(261), e.Mobile.RawName, e.ArgString );
+                    ns.Mobile.SendMessage(Data.GetData(e.Mobile).StaffC, "<{0}> {1}: {2}", General.LocalFor(ns.Mobile, 261), e.Mobile.RawName, e.ArgString );
         }
     }
 }

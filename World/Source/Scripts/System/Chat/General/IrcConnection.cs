@@ -67,13 +67,13 @@ namespace Knives.Chat3
 
 			if ( c_Connecting )
 			{
-				m.SendMessage( data.SystemC, General.Local(102) );
+				m.SendMessage( data.SystemC, General.LocalFor(m, 102) );
 				return;
 			}
 
 			if ( c_Connected )
 			{
-				m.SendMessage( data.SystemC, General.Local(103) );
+				m.SendMessage( data.SystemC, General.LocalFor(m, 103) );
 				return;
 			}
 

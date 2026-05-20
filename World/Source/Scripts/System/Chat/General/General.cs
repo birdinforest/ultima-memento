@@ -5,7 +5,7 @@ using System.Collections;
 using System.IO;
 using Server;
 using Server.Gumps;
-using Server.Mobiles;
+using Server.Localization;
 using Server.Network;
 
 namespace Knives.Chat3
@@ -108,12 +108,12 @@ namespace Knives.Chat3
                 PmNotify(args.Mobile);
 
             if(!Data.GetData(args.Mobile).WhenFull)
-                args.Mobile.SendMessage(Data.GetData(args.Mobile).SystemC, General.Local(258), Data.GetData(args.Mobile).Messages.Count, Data.MaxMsgs);
+                args.Mobile.SendMessage(Data.GetData(args.Mobile).SystemC, LocalFor(args.Mobile, 258), Data.GetData(args.Mobile).Messages.Count, Data.MaxMsgs);
 
             foreach (Data data in Data.Datas.Values)
             {
                 if (data.Friends.Contains(args.Mobile) && data.FriendAlert)
-                    data.Mobile.SendMessage(data.SystemC, args.Mobile.RawName + " " + Local(173));
+                    data.Mobile.SendMessage(data.SystemC, args.Mobile.RawName + " " + LocalFor(data.Mobile, 173));
             }
         }
 
@@ -142,12 +142,38 @@ namespace Knives.Chat3
             s_Help.Clear();
         }
 
-        public static string Local(int num)
+        /// <summary>
+        /// Resolves chat UI string <paramref name="num"/> for <paramref name="m"/>'s account language (or shard default when <paramref name="m"/> is null).
+        /// Strings live in <c>Data/Localization/*/chat3-ui.json</c> as <c>chat3.{num:D3}</c>, with <see cref="DefaultLocal"/> as fallback.
+        /// </summary>
+        public static string LocalFor(Mobile m, int num)
         {
-            if (num < 0 || num >= s_Locals.Count)
+            if (num < 0)
                 return "Local Error";
 
-            return s_Locals[num].ToString();
+            string lang = LangConfig.DefaultLanguage;
+
+            if (m != null && m.Account != null)
+                lang = AccountLang.GetLanguageCode(m.Account);
+
+            string key = "chat3." + num.ToString("D3");
+            string fromCatalog = StringCatalog.TryResolveByKey(lang, key);
+
+            if (fromCatalog != null && fromCatalog.Length != 0)
+                return fromCatalog;
+
+            if (num < s_Locals.Count)
+                return s_Locals[num].ToString();
+
+            return "Local Error";
+        }
+
+        /// <summary>
+        /// Chat UI string for shard default language (e.g. staff/logs). Prefer <see cref="LocalFor"/> when a viewer <see cref="Mobile"/> is known.
+        /// </summary>
+        public static string Local(int num)
+        {
+            return LocalFor(null, num);
         }
 
         public static string GetHelp(string str)

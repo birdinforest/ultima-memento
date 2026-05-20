@@ -20,7 +20,7 @@ namespace Knives.Chat3
         {
             if (m.AccessLevel == AccessLevel.Player)
             {
-                if (say) m.SendMessage(Data.GetData(m).SystemC, General.Local(191));
+                if (say) m.SendMessage(Data.GetData(m).SystemC, General.LocalFor(m, 191));
                 return false;
             }
 
