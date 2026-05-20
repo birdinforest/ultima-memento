@@ -3105,7 +3105,7 @@
     },
     "Durasteel": {
       "canonical": "耐钢",
-      "alternatives": ["杜拉钢"],
+      "alternatives": [],
       "category": "item",
       "notes": "Sci-fi structural steel analogue in craft tables.",
       "translation_basis_zh": "短标签需省字；「耐钢」表耐久合金，备选音译兼顾老玩家习惯。"
