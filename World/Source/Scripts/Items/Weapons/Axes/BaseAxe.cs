@@ -5,6 +5,7 @@ using Server;
 using Server.Items;
 using Server.Engines.Harvest;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,7 +31,7 @@ namespace Server.Items
 			get
 			{
 				if ( HarvestSystem == Lumberjacking.System )
-					return "When holding this in your hand, you can use it to select a tree you wish to chop. Doing this may help you gather some wood.";
+					return StringCatalog.Resolve( null, "When holding this in your hand, you can use it to select a tree you wish to chop. Doing this may help you gather some wood." );
 
 				return null;
 			}

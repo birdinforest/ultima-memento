@@ -1,10 +1,11 @@
+using Server.Localization;
 ﻿using Server.Targeting;
 
 namespace Server.Items
 {
 	public class HueVacuumTube : Item
 	{
-		public override string DefaultDescription { get { return "This serum can extract the color from an item and store it in the tube. The tube can then be used to dye other items."; } }
+		public override string DefaultDescription { get { return StringCatalog.ResolveByKey(null, "eng.this_serum_can_extract_the_color_from_an_item_and_store_it_in_the_tube_dot_the_tube_can_then_be_used"); } }
 
 		private int m_Dye;
 		private int m_Uses;

@@ -1,10 +1,11 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class Bottle : Item
 	{
-		public override string DefaultDescription{ get{ return "These bottles are often used by alchemists to store potions in."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These bottles are often used by alchemists to store potions in." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.bottle"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.bottle";

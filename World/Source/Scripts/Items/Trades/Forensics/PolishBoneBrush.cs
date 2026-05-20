@@ -9,7 +9,7 @@ namespace Server.Items
 	{
 		public override bool IsContentLocalized => true;
 
-		public override string DefaultDescription{ get{ return "Sometimes, you may find various bones while adventuring in the land. This brush lets you polish those bones so they can be used as bones for crafting."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Sometimes, you may find various bones while adventuring in the land. This brush lets you polish those bones so they can be used as bones for crafting." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.polishbone"; } }
 
 		[Constructable]

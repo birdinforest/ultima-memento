@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseBlocks : Item
 	{
-		public override string DefaultDescription{ get{ return "These are a more rare, higher quality, type of ingot. They are rumored to be used by elven blacksmiths, but the art for this has seemed to be lost."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are a more rare, higher quality, type of ingot. They are rumored to be used by elven blacksmiths, but the art for this has seemed to be lost." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.blocks"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

@@ -108,7 +108,7 @@ namespace Server.Items
 				m_X2 = scroll.xB;
 				m_Y2 = scroll.yB;
 
-				if ( scroll.MsgComplete > 0 ){ sText = StringCatalog.ResolveFormat( from.Account, "You have found the '{0}'. Return to {1} and bring them this message.<br><br>", scroll.SearchItem, scroll.ForWho ) + sText; }
+				if ( scroll.MsgComplete > 0 ){ sText = StringCatalog.ResolveFormatByKey(from.Account, "quest.you_have_found_the_n0_dot_return_to_n1_and_bring_them_this_message_dot_br_br", scroll.SearchItem, scroll.ForWho ) + sText; }
 
 				this.Closable=true;
 				this.Disposable=true;

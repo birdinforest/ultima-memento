@@ -4,12 +4,13 @@ using Server.Spells;
 using Server.Spells.Elementalism;
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class ElementalSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by elementalist, where they can record the elemental magic they can unleash. Dropping such scrolls onto this book will place the spell within its pages. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_elementalist_c_where_they_can_record_the_elemental_magic_they_can_unleash_dot_d"); } }
 
 		public Mobile EllyOwner;
 		[CommandProperty( AccessLevel.GameMaster )]

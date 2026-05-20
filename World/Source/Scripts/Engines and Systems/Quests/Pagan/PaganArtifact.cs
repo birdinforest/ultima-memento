@@ -200,7 +200,7 @@ namespace Server.Items
         				armor.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( armor );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan armor artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x1BC4 || m_Artifact.PaganItem == 0x1BC3 )
@@ -217,7 +217,7 @@ namespace Server.Items
         				shield.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( shield );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan shield artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x1406 || m_Artifact.PaganItem == 0xF5D )
@@ -242,7 +242,7 @@ namespace Server.Items
         				mace.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( mace );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x2D2C )
@@ -259,7 +259,7 @@ namespace Server.Items
 						dagger.SkillBonuses.SetValues( 0, SkillName.Poisoning, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( dagger );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else if ( m_Artifact.PaganItem == 0x13FA )
@@ -276,7 +276,7 @@ namespace Server.Items
 						axe.SkillBonuses.SetValues( 0, SkillName.Swords, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( axe );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 					else
@@ -297,7 +297,7 @@ namespace Server.Items
         				sword.m_Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( sword );
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You take possession of the Pagan artifact, {0}!", m_Artifact.PaganName ) );
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
 						LoggingFunctions.LogGeneric( from, "has found a Pagan weapon artifact." );
 					}
 

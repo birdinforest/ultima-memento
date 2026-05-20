@@ -1,12 +1,13 @@
 using System;
 using Server;
 using Server.Engines.Harvest;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class Monocle : BaseHarvestTool
 	{
-		public override string DefaultDescription{ get{ return "These librarian sets are used by scribes, to closely look over books and book shelves that litter the dungeons. You may find some items of worth, like books or scrolls."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These librarian sets are used by scribes, to closely look over books and book shelves that litter the dungeons. You may find some items of worth, like books or scrolls." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.monocle"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.librarian.set";

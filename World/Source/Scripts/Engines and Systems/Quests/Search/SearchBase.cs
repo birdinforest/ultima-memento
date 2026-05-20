@@ -237,7 +237,7 @@ namespace Server.Items
 					if ( envelope.SearchDungeon == Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) && envelope.owner == from && ( envelope.DungeonMap == from.Map || envelope.DungeonMap == Server.Misc.Worlds.GetPCDefaultMap( from ) ) && envelope.MsgComplete == 0 )
 					{
 						envelope.MsgComplete = 1;
-						from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", envelope.SearchItem ) );
+						from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_dot", envelope.SearchItem ) );
 						from.SendSound( 0x3D );
 						EmptyBox = 0;
 					}
@@ -467,7 +467,7 @@ namespace Server.Items
 									item = (Item)Activator.CreateInstance(itemType);
 									from.AddToBackpack ( item );
 									LoggingFunctions.LogFoundItemQuest( from, stone.SearchItem );
-									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", stone.SearchItem ) );
+									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_dot", stone.SearchItem ) );
 									from.SendSound( 0x3D );
 								}
 							}
@@ -488,13 +488,13 @@ namespace Server.Items
 									item.Delete();
 									from.AddToBackpack ( fake );
 								}
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The {0} appears to be a fake.", stone.SearchItem ) );
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.the_n0_appears_to_be_a_fake_dot", stone.SearchItem ) );
 								from.SendSound( 0x5B3 );
 							}
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormat( from.Account, "The tablet for the {0} seems to be false.", stone.SearchItem ) );
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.the_tablet_for_the_n0_seems_to_be_false_dot", stone.SearchItem ) );
 								from.PlaySound( 0x5B3 );
 							}
 
@@ -535,7 +535,7 @@ namespace Server.Items
 									item = (Item)Activator.CreateInstance(itemType);
 									from.AddToBackpack ( item );
 									LoggingFunctions.LogFoundItemQuest( from, page.SearchItem );
-									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}.", page.SearchItem ) );
+									from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_dot", page.SearchItem ) );
 									from.SendSound( 0x3D );
 								}
 							}
@@ -543,7 +543,7 @@ namespace Server.Items
 							{
 								int nGold = page.LegendPercent * 100;
 								string sGold = nGold.ToString();
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The legend was false, but there was {0} gold in here.", sGold ) );
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.the_legend_was_false_c_but_there_was_n0_gold_in_here_dot", sGold ) );
 								from.SendSound( 0x2E6 );
 								from.AddToBackpack ( new Gold( nGold ) );
 							}
@@ -564,13 +564,13 @@ namespace Server.Items
 									item.Delete();
 									from.AddToBackpack ( fake );
 								}
-								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "The {0} appears to be a fake.", page.SearchItem ) );
+								from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.the_n0_appears_to_be_a_fake_dot", page.SearchItem ) );
 								from.SendSound( 0x3D );
 							}
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormat( from.Account, "The legends of the {0} seemed to be false.", page.SearchItem ) );
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.the_legends_of_the_n0_seemed_to_be_false_dot", page.SearchItem ) );
 								from.PlaySound( 0x249 );
 							}
 							scroll.Delete();

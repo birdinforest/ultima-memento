@@ -8,6 +8,7 @@ using Server.Spells;
 using Server.Network;
 using Server.Multis;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Items 
 {
@@ -19,7 +20,7 @@ namespace Server.Items
 	public class SmallTent : Item
 	{
 		public override string DisplayNameLocalizationKey => "item.explorer.tent.small";
-		public override string DefaultDescription{ get{ return "This requires someone proficient in camping. You can use this while travelling outdoors. When used, it can make a protective tent around you for safety. The tent will remain for 5 minutes, where it will be taken down."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This requires someone proficient in camping. You can use this while travelling outdoors. When used, it can make a protective tent around you for safety. The tent will remain for 5 minutes, where it will be taken down." ); } }
 
 		private SmallTentEffect m_SmallTentEffect;
 		private int m_Charges;

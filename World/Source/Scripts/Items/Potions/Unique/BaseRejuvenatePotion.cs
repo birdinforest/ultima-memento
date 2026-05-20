@@ -1,12 +1,13 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Items
 {
 	public abstract class BaseRejuvenatePotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "These potions will recover around " + (int)(MinRejuv * MySettings.S_PlayerLevelMod) + " and " + (int)(MaxRejuv * MySettings.S_PlayerLevelMod) + " of your mana, stamina, and health. You must wait 10 seconds before drinking another."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "These potions will recover around {0} and {1} of your mana, stamina, and health. You must wait 10 seconds before drinking another.", (int)(MinRejuv * MySettings.S_PlayerLevelMod), (int)(MaxRejuv * MySettings.S_PlayerLevelMod) ); } }
 
 		public abstract int MinRejuv { get; }
 		public abstract int MaxRejuv { get; }

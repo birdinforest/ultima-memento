@@ -3,12 +3,13 @@ using Server;
 using Server.Mobiles;
 using System.Collections.Generic;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class CanopicJar : Item
 	{
-		public override string DefaultDescription{ get{ return "These ancient jars hold the body parts of long dead pharaohs. Alchemists can sometimes use the contents to make a large abundance of potions."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These ancient jars hold the body parts of long dead pharaohs. Alchemists can sometimes use the contents to make a large abundance of potions." ); } }
 
 		public string JarOwner;
 

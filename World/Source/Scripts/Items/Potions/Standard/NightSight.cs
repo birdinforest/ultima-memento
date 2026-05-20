@@ -1,11 +1,12 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class NightSightPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "These potions allow you to see better in darkness. The effect last between 15 and 25 minutes."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These potions allow you to see better in darkness. The effect last between 15 and 25 minutes." ); } }
 
 		[Constructable]
 		public NightSightPotion() : base( 0xF06, PotionEffect.Nightsight )

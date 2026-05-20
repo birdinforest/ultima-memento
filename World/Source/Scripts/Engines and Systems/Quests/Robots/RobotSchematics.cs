@@ -255,7 +255,7 @@ namespace Server.Items
 
 			if ( HaveIngredients < 8 ){ return false; }
 
-			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); tinker.Say( StringCatalog.ResolveFormat( m.Account, "Here is {0} xormite back for all of your help.", XormiteReturn ) ); }
+			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); tinker.Say( StringCatalog.ResolveFormatByKey(m.Account, "quest.here_is_n0_xormite_back_for_all_of_your_help_dot", XormiteReturn ) ); }
 
 			RobotItem ball = new RobotItem();
 
@@ -283,7 +283,7 @@ namespace Server.Items
 				m_Book = gBook;
 				RobotSchematics pedia = (RobotSchematics)gBook;
 
-				string sText = StringCatalog.Resolve( from.Account, "This schematic contains the knowledge to construct a robot. With these plans you will see what you need to obtain in order to have it constructed. These items are particularly used in the construction of robots. You will need metal, bolts, engine parts, circuit boards, gears, transistors, oil, and xormite for the tinker's fee. The tinker that can actually construct this robot is at the location shown at the bottom of this screen. If you have any tinkering skill, they may refund some of the xormite for the help you may provide in the construction. These robots are programmed for combat and will consume 3 follower slots to accompany you. As you find materials, simply drag and drop them onto this data pad to add to the materials. The top half of the screen will track what you have obtained thus far. When every item is acquired, give this data pad to a tinker and they will construct your robot. The robot built will be yours alone, and it will have a limited amount of charges. A charge is used whenever you power on the robot to travel with you. You will have to obtain more batteries in order to add more charges, where each battery will add an extra charge. A robot can only hold 100 charges at a time. Robots are controlled just like tamed beasts or summoned creatures. They can be told to follow, stay, or stop. You can also dismiss the robot, where the robot item will reappear in your pack. They are automatons so they do not need to be fed, other than the batteries already mentioned. Remember, they are not transferable once constructed. The one giving the tinker the book will own the robot that is constructed." );
+				string sText = StringCatalog.ResolveByKey(from.Account, "quest.this_schematic_contains_the_knowledge_to_construct_a_robot_dot_with_these_plans_you_will_see_what_yo");
 
 				this.Closable=true;
 				this.Disposable=true;

@@ -1,12 +1,13 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class NecroSkinPotion : Item
 	{
-		public override string DefaultDescription{ get{ return "Dumping this dust on yourself, will make your skin and hair ghostly white. Only a grandmaster necromancer is able to use this. If you already are ghostly white, and you use this dust again, you will have your skin and hair return to what it was."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Dumping this dust on yourself, will make your skin and hair ghostly white. Only a grandmaster necromancer is able to use this. If you already are ghostly white, and you use this dust again, you will have your skin and hair return to what it was." ); } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 

@@ -7,12 +7,13 @@ using Server.Prompts;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class MixtureSlime : BaseMixture
 	{
-		public override string DefaultDescription{ get{ return "Dumping this on the ground will produce up to four slimes that can be used to combat nearby enemies, causing physical damage to your foes. The slimes can be more effective from alchemists that are also skilled in tasting and cooking. Each slime requires a control slot."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Dumping this on the ground will produce up to four slimes that can be used to combat nearby enemies, causing physical damage to your foes. The slimes can be more effective from alchemists that are also skilled in tasting and cooking. Each slime requires a control slot." ); } }
 
 		[Constructable]
 		public MixtureSlime() : base( PotionEffect.MixtureSlime )

@@ -9,7 +9,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x65EC, 0x6711 )]
 	public class AncientSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by archmages, where they can cast ancient spells thought to be lost forever. These cannot be simply created by scribes, but instead an archmage can use an existing spellbook and repurpose it to hold ancient magic. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_archmages_c_where_they_can_cast_ancient_spells_thought_to_be_lost_forever_dot_t"); } }
 
 		public Mobile owner;
 		public string names;

@@ -44,7 +44,7 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 			list.Add( 1070722, StringCatalog.Resolve( null, "Imbued with Magic" ) );
-            list.Add( 1049644, StringCatalog.Resolve( null, "Magically Avoid Death") );
+            list.Add( 1049644, StringCatalog.ResolveByKey(null, "quest.magically_avoid_death") );
         }
 
 		public static void ConsumeCharge( Mobile from, GemImmortality gem )
@@ -104,7 +104,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, StringCatalog.Resolve( null, "Devoid of Magic") );
+			list.Add( 1070722, StringCatalog.ResolveByKey(null, "quest.devoid_of_magic") );
         }
 
 		public DudImmortality( Serial serial ) : base( serial )

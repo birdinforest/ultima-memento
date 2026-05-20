@@ -1,6 +1,7 @@
 using Server;
 using System;
 using System.Collections;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
@@ -12,7 +13,7 @@ namespace Server.Items
 {
 	public abstract class BasePoisonPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "( " + Poison + " Strength ) This poison can be used by someone with a skill of " + (int)MinPoisoningSkill + " to " + (int)MaxPoisoningSkill + " in poisoning. You can use them on bladed weapons or dump the contents on the ground. Once on the ground, those that walk over the liquid have a chance to suffer the poison's effects."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "( {0} Strength ) This poison can be used by someone with a skill of {1} to {2} in poisoning. You can use them on bladed weapons or dump the contents on the ground. Once on the ground, those that walk over the liquid have a chance to suffer the poison's effects.", Poison, (int)MinPoisoningSkill, (int)MaxPoisoningSkill ); } }
 
 		public abstract Poison Poison{ get; }
 

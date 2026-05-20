@@ -15,7 +15,7 @@ namespace Server.Items
 	{
 		public override bool IsContentLocalized => true;
 
-		public override string DefaultDescription{ get{ return "These jars are made of a special, crystalline glass. They are mainly used to collecting liquid from strange puddles on the ground. Such puddles are often created from creatures that produce such liquid. They can also collect holy water."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These jars are made of a special, crystalline glass. They are mainly used to collecting liquid from strange puddles on the ground. Such puddles are often created from creatures that produce such liquid. They can also collect holy water." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.crystallinejar"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }

@@ -1,11 +1,12 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class TotalRefreshPotion : BaseRefreshPotion
 	{
-		public override string DefaultDescription{ get{ return "These potions will fully recover your stamina."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These potions will fully recover your stamina." ); } }
 
 		public override double Refresh{ get{ return 1.0; } }
 

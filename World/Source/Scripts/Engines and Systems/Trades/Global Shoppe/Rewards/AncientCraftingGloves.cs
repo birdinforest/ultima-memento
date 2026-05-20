@@ -1,3 +1,4 @@
+using Server.Localization;
 ﻿using Server.Engines.Craft;
 
 namespace Server.Items
@@ -84,7 +85,7 @@ namespace Server.Items
         { get { return Catalogs.None; } }
 
         public override string DefaultDescription
-        { get { return "These gloves have been imbued with ancient magic, but their power diminishes with use."; } }
+        { get { return StringCatalog.ResolveByKey(null, "eng.these_gloves_have_been_imbued_with_ancient_magic_c_but_their_power_diminishes_with_use_dot"); } }
 
         public override Density Density
         { get { return Density.None; } }

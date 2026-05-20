@@ -3,12 +3,13 @@ using Server;
 using Server.Items;
 using Server.Network;
 using Server.Items.Abstractions;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseFabric : Item, IScissorable, IDyable, ICommodity
 	{
-		public override string DefaultDescription{ get{ return "This cloth is commonly used by tailors to make clothing. You can also cut it with scissors to make bandages."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This cloth is commonly used by tailors to make clothing. You can also cut it with scissors to make bandages." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.fabric"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

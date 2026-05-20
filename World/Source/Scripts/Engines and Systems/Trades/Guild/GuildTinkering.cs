@@ -11,12 +11,13 @@ using Server.Mobiles;
 using Server.Commands;
 using Server.Targeting;
 using Server.Engines.GlobalShoppe;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class GuildTinkering : Item
     {
-		public override string DefaultDescription{ get{ return "These tools are usually acquired by tradesmen guild members, where using them requires one to be a master in that craft. Unlike other tools, they do not need to be equipped but simply used from your pack. You must be near your guildmaster, or a shoppe that you have in your home. Using this on an item will allow you to spend gold in order to enhance the item with additional attributes."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.these_tools_are_usually_acquired_by_tradesmen_guild_members_c_where_using_them_requires_one_to_be_a_"); } }
 
 		public override int Hue{ get { return 0xB2F; } }
 		public override int ItemID{ get { return 0x6602; } }

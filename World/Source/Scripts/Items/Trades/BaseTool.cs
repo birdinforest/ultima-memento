@@ -3,6 +3,7 @@ using Server;
 using Server.Network;
 using Server.Engines.Craft;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -15,7 +16,7 @@ namespace Server.Items
 
 	public abstract class BaseTool : Item, IUsesRemaining, ICraftable
 	{
-		public override string DefaultDescription{ get{ return "These tools are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These tools are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.basetool"; } }
 

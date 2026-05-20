@@ -5,12 +5,13 @@ using Server.Network;
 using System.Text;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class GreaterInvisibilityPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "Drinking this potion will make you invisible, and also give you mastery skill in both hiding and stealth. These potions do not allow one to stealth in heavy armor. The potion's effect lasts for 3 minutes."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Drinking this potion will make you invisible, and also give you mastery skill in both hiding and stealth. These potions do not allow one to stealth in heavy armor. The potion's effect lasts for 3 minutes." ); } }
 
 		[Constructable]
 		public GreaterInvisibilityPotion() : base( 0x180F, PotionEffect.InvisibilityGreater )

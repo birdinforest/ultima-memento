@@ -15,7 +15,7 @@ namespace Server.Items
 		public override bool IsContentLocalized => true;
 		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
 
-		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a single skill point in lockpicking, and can help you learn up to 25."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are locked boxes that thieves use to practice their lockpicking skills. They require a single skill point in lockpicking, and can help you learn up to 25." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.easy"; } }
 
@@ -77,7 +77,7 @@ namespace Server.Items
 		public override bool IsContentLocalized => true;
 		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
 
-		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 20 lockpicking, and can help you learn up to 35."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are locked boxes that thieves use to practice their lockpicking skills. They require a 20 lockpicking, and can help you learn up to 35." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.normal"; } }
 
@@ -139,7 +139,7 @@ namespace Server.Items
 		public override bool IsContentLocalized => true;
 		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
 
-		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 30 lockpicking, and can help you learn up to 45."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are locked boxes that thieves use to practice their lockpicking skills. They require a 30 lockpicking, and can help you learn up to 45." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.difficult"; } }
 
@@ -201,7 +201,7 @@ namespace Server.Items
 		public override bool IsContentLocalized => true;
 		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
 
-		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 40 lockpicking, and can help you learn up to 55."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are locked boxes that thieves use to practice their lockpicking skills. They require a 40 lockpicking, and can help you learn up to 55." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.challenging"; } }
 
@@ -263,7 +263,7 @@ namespace Server.Items
 		public override bool IsContentLocalized => true;
 		public override string DisplayNameLocalizationKey => "item.trade.name.locked.box";
 
-		public override string DefaultDescription{ get{ return "These are locked boxes that thieves use to practice their lockpicking skills. They require a 50 lockpicking, and can help you learn up to 65."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are locked boxes that thieves use to practice their lockpicking skills. They require a 50 lockpicking, and can help you learn up to 65." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickbox.hard"; } }
 

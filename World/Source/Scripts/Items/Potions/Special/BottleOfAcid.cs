@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -10,7 +11,7 @@ namespace Server.Items
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 
-		public override string DefaultDescription{ get{ return "These bottles of acid can not only eat through almost any locked container, but also destroy any traps on them as well."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These bottles of acid can not only eat through almost any locked container, but also destroy any traps on them as well." ); } }
 
 		public override int Hue{ get { return 1167; } }
 

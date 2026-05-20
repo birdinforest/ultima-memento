@@ -1,12 +1,13 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class EmptyCanopicJar : Item
 	{
-		public override string DefaultDescription{ get{ return "These ancient jars once held the body parts of long dead pharaohs."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These ancient jars once held the body parts of long dead pharaohs." ); } }
 
         [Constructable]
         public EmptyCanopicJar() : base(0x2FEE)

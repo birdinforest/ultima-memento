@@ -7,12 +7,13 @@ using Server.Targeting;
 using Server.Spells;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseConfusionBlastPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "These potions, when thrown, will cause those nearby to be confused for about 5 seconds."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These potions, when thrown, will cause those nearby to be confused for about 5 seconds." ); } }
 
 		public abstract int Radius{ get; }
 

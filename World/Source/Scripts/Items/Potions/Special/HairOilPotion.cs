@@ -6,12 +6,13 @@ using Server.Mobiles;
 using Server.Items;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class HairOilPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "This potion will allow you to permanently dye your hair to another color of limited choices."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This potion will allow you to permanently dye your hair to another color of limited choices." ); } }
 
 		[Constructable]
 		public HairOilPotion() : base( 0x180F, PotionEffect.HairOil )

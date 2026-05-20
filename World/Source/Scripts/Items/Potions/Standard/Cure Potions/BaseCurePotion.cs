@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Spells;
 
 namespace Server.Items
@@ -43,7 +44,7 @@ namespace Server.Items
 					poison = "" + li.Poison + "";
 				}
 
-				return "These potions can perhaps cure up to " + poison + " Poison you are suffering from.";
+				return StringCatalog.ResolveFormat( null, "These potions can perhaps cure up to {0} Poison you are suffering from.", poison );
 			}
 		}
 

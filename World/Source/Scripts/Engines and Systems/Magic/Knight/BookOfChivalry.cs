@@ -1,12 +1,13 @@
 using System;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BookOfChivalry : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by knights, in order for them to use various abilities to spread harmony and peace throughout the land. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_knights_c_in_order_for_them_to_use_various_abilities_to_spread_harmony_and_peac"); } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Paladin; } }
 		public override int BookOffset{ get{ return 200; } }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Spells;
@@ -13,7 +14,7 @@ namespace Server.Items
 		public abstract int MinDamage{ get; }
 		public abstract int MaxDamage{ get; }
 
-		public override string DefaultDescription{ get{ return "These potions will create a field of fire, where walking through it will cause between " + MinDamage + " and " + MaxDamage + " damage. The field lasts for about 30 seconds."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "These potions will create a field of fire, where walking through it will cause between {0} and {1} damage. The field lasts for about 30 seconds.", MinDamage, MaxDamage ); } }
 
 		public override bool RequireFreeHand{ get{ return false; } }
 

@@ -45,7 +45,7 @@ namespace Server.Items
 
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
 
-		public override string DefaultDescription{ get{ return "This heavy wooden pole allows you to trap the floor ahead of you to maybe detect a trap before you trigger it. It will also tap containers before you try to open them, also in the hopes of avoiding a trap. You need only keep the pole in your bag, as it will passively be used as you explore areas."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This heavy wooden pole allows you to trap the floor ahead of you to maybe detect a trap before you trigger it. It will also tap containers before you try to open them, also in the hopes of avoiding a trap. You need only keep the pole in your bag, as it will passively be used as you explore areas." ); } }
 
 		private int m_Tap;
 

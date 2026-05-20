@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Network;
 using Server.Targeting;
 using Server.Spells;
@@ -12,7 +13,7 @@ namespace Server.Items
 		public abstract int MinDamage { get; }
 		public abstract int MaxDamage { get; }
 
-		public override string DefaultDescription{ get{ return "These potions, when thrown, will cause around " + MinDamage + " and " + MaxDamage+ " damage to those that are near the blast."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "These potions, when thrown, will cause around {0} and {1} damage to those that are near the blast.", MinDamage, MaxDamage ); } }
 
 		public override bool RequireFreeHand{ get{ return false; } }
 

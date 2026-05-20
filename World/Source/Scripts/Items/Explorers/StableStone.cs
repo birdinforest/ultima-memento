@@ -9,13 +9,14 @@ using Server.Gumps;
 using Server.Targeting;
 using Server.ContextMenus;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items 
 { 
 	public class StableStone : Item
 	{ 
 		public override string DisplayNameLocalizationKey => "item.explorer.stable.hitchingpost";
-		public override string DefaultDescription{ get{ return "Hitching posts can only be used by grandmasters in camping. Once you place it in your home, you can use it to stable your pets instead of doing so at the stable master."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Hitching posts can only be used by grandmasters in camping. Once you place it in your home, you can use it to stable your pets instead of doing so at the stable master." ); } }
 
 		[Constructable] 
 		public StableStone() : base( 0x14E7 ) 

@@ -8,7 +8,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1940, 0x1AD7 )]
 	public class PotionKeg : Item
 	{
-		public override string DefaultDescription{ get{ return "The kegs can hold a large quantity of most potions. You can drop potions on the keg to fill it, or use the keg to fill an empty bottle you have."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "The kegs can hold a large quantity of most potions. You can drop potions on the keg to fill it, or use the keg to fill an empty bottle you have." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.potionkeg"; } }
 
 		private PotionEffect m_Type;

@@ -3,12 +3,13 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class EvilSkull : Item
 	{
-		public override string DefaultDescription{ get{ return "These skulls are found from the final deathly remains of skeletal wizards. If you use it, it will crumble into dust that you breathe in, restoring your mana. Doing so, however, will be quite the vile act and your karma would be affected."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These skulls are found from the final deathly remains of skeletal wizards. If you use it, it will crumble into dust that you breathe in, restoring your mana. Doing so, however, will be quite the vile act and your karma would be affected." ); } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 

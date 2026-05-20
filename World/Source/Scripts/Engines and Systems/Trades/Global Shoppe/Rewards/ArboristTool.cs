@@ -1,3 +1,4 @@
+using Server.Localization;
 ﻿using Server.Engines.Harvest;
 using Server.Targeting;
 using System;
@@ -7,7 +8,7 @@ namespace Server.Items
 {
 	public class ArboristTool : Item, IUsesRemaining
 	{
-		public override string DefaultDescription { get { return "This tool allows the Arborist to better identify trees, which may increase their rarity."; } }
+		public override string DefaultDescription { get { return StringCatalog.ResolveByKey(null, "eng.this_tool_allows_the_arborist_to_better_identify_trees_c_which_may_increase_their_rarity_dot"); } }
 
 		private int m_UsesRemaining;
 

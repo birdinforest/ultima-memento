@@ -451,6 +451,10 @@ def collect_targeted_ui_strings(path: str, data: str) -> List[str]:
             expr = m.group("expr")
             if name == "HelpText" and "?" in expr:
                 continue
+            # HelpText built with ResolveByKey + string concat: join_csharp_string_literals would
+            # merge the logical key literal with HTML fragments into a fake "English" hash key.
+            if name == "HelpText" and "ResolveByKey" in expr:
+                continue
             joined = join_csharp_string_literals(expr)
             if joined:
                 texts.append(joined)
@@ -803,6 +807,7 @@ def main() -> int:
             "placemap-labels.json",
             "chat3-ui.json",
             "mob-loot-infotext.json",
+            "world-player-text.json",
         }
     )
     if args.prune_stale_locale_files:

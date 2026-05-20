@@ -116,12 +116,12 @@ namespace Server.Items
 						paganType = "Breath of Air";
 						if ( tip.HasAir > 0 )
 						{
-							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
+							from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_already_have_the_n0_dot", paganType));
 						}
 						else
 						{
 							tip.HasAir = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_ex", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -131,12 +131,12 @@ namespace Server.Items
 						paganType = "Tongue of Flame";
 						if ( tip.HasFire > 0 )
 						{
-							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
+							from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_already_have_the_n0_dot", paganType));
 						}
 						else
 						{
 							tip.HasFire = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_ex", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -146,12 +146,12 @@ namespace Server.Items
 						paganType = "Heart of Earth";
 						if ( tip.HasEarth > 0 )
 						{
-							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
+							from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_already_have_the_n0_dot", paganType));
 						}
 						else
 						{
 							tip.HasEarth = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_ex", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}
@@ -161,12 +161,12 @@ namespace Server.Items
 						paganType = "Tear of the Seas";
 						if ( tip.HasWater > 0 )
 						{
-							from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You already have the {0}.", paganType));
+							from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_already_have_the_n0_dot", paganType));
 						}
 						else
 						{
 							tip.HasWater = 1;
-							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( from.Account, "You found the {0}!", paganType ));
+							from.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(from.Account, "quest.you_found_the_n0_ex", paganType ));
 							LoggingFunctions.LogGeneric( from, "has found the " + paganType + "." );
 							clearPed = true;
 						}

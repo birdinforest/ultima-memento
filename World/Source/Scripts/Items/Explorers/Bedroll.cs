@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Network;
 using Server.Regions;
 using Server.Mobiles;
@@ -15,9 +16,9 @@ namespace Server.Items
 			get
 			{
 				if ( Technology )
-					return "Sleeping bags can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the sleeping bag will benefit from the effects. It requires someone proficient in camping.";
+					return StringCatalog.Resolve( null, "Sleeping bags can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the sleeping bag will benefit from the effects. It requires someone proficient in camping." );
 
-				return "Bedrolls can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the bedroll will benefit from the effects. It requires someone proficient in camping.";
+				return StringCatalog.Resolve( null, "Bedrolls can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the bedroll will benefit from the effects. It requires someone proficient in camping." );
 			}
 		}
 

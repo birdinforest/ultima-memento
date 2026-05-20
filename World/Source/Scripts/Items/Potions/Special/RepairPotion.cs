@@ -4,12 +4,13 @@ using Server;
 using Server.Targets;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class RepairPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "If you dump this potion on armor, clothing, or weapons, they will be fully repaired from any battle worn damage they sustained."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "If you dump this potion on armor, clothing, or weapons, they will be fully repaired from any battle worn damage they sustained." ); } }
 
 		[Constructable]
 		public RepairPotion() : base( 0x180F, PotionEffect.Repair )

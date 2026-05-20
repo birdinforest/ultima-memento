@@ -34,13 +34,13 @@ namespace Server.Gumps
 
 			AddImage(0, 0, 7023, Server.Misc.PlayerSettings.GetGumpHue( from ));
 
-			string title = StringCatalog.Resolve( from.Account, "TOME OF MUSEUM ANTIQUES" );
+			string title = StringCatalog.ResolveByKey(from.Account, "quest.tome_of_museum_antiques");
 			AddHtml( 12, 12, 603, 20, @"<BODY><BASEFONT Color=" + plain + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			if ( page == 3 )
 			{
 				AddButton(864, 12, 4017, 4017, 901, GumpButtonType.Reply, 0);
-				string body = StringCatalog.ResolveFormat( from.Account, "The Search For Museum Antiques<BR><BR>You have decided to embark on a search for 60 different antiques that the Art Collector would like to have researched. The problem is, you don’t know where to begin. In order to get clues, you will need to talk to citizens (orange names) to see if they can perhaps tell you where to search. If a citizen doesn’t initially mention anything about antiques, you will have to seek out another. When you finally get a clue, a small tune will play and your book will be updated with that rumor they gave you. It could be true or it could be false. You won’t know until you go there. Sometimes the antique may be in a chest or bag on a pedestal in a dungeon, or held by one of the more powerful creatures within that dungeon. As you collect antiques, they will be marked off in your book. When they are all marked off, then you can give the book to the Art Collector to claim your {0} gold. The antiques you collected can also be given to the Art Collector, and you can double click the item in your pack to see what the value of it is. Some antiques are lights or fires that can be turned on or off. Each antique has a base value and then a value affected by certain characteristics you have. You can only embark on this search once, so don’t lose your book.<BR><BR><BR>Antiques Value Modifiers<br><br>- Merchant Skill<br>    (Mercantile)<br><br>- Begging Skill<br>    (If Demeanor Is Set)<br><br>- Merchant Guild Member", MuseumBook.QuestValue() );
+				string body = StringCatalog.ResolveFormatByKey(from.Account, "quest.the_search_for_museum_antiques_br_br_you_have_decided_to_embark_on_a_search_for_60_different_antique", MuseumBook.QuestValue() );
 				AddHtml( 12, 42, 880, 549, @"<BODY><BASEFONT Color=" + plain + ">" + body + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 			else
@@ -90,8 +90,8 @@ namespace Server.Gumps
 					cycle--;
 				}
 
-				string foundText = StringCatalog.Resolve( from.Account, "Found" );
-				string lostText = StringCatalog.Resolve( from.Account, "Lost" );
+				string foundText = StringCatalog.ResolveByKey(from.Account, "quest.found");
+				string lostText = StringCatalog.ResolveByKey(from.Account, "quest.lost");
 				if ( MuseumBook.GetMuseums( lookat, m_Book ) > 0 ){ AddHtml( 55, 450, 100, 20, @"<BODY><BASEFONT Color=" + found + ">" + foundText + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 				else { AddHtml( 55, 450, 100, 20, @"<BODY><BASEFONT Color=" + losts + ">" + lostText + "</BASEFONT></BODY>", (bool)false, (bool)false); }
 

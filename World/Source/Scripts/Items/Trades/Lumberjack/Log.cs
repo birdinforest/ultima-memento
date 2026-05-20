@@ -11,7 +11,7 @@ namespace Server.Items
 {
 	public abstract class BaseLog : Item
 	{
-		public override string DefaultDescription{ get{ return "These logs can be used at a saw mill, which will cut them into boards. The boards can then be used for crafting."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These logs can be used at a saw mill, which will cut them into boards. The boards can then be used for crafting." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.log"; } }
 

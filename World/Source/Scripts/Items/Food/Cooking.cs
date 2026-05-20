@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -592,7 +593,7 @@ namespace Server.Items
 
 	public class WheatSheaf : Item
 	{
-		public override string DefaultDescription{ get{ return "You can use these on a flour mill, which will produce sacks of flour."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "You can use these on a flour mill, which will produce sacks of flour." ); } }
 
 		[Constructable]
 		public WheatSheaf() : this( 1 )

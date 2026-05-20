@@ -24,32 +24,32 @@ namespace Server.Items
 					if ( this.X == 5764 && this.Y == 2215 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "Seems like an odd phrase. Perhaps I should remember the name that some give to a ruby." ), StringCatalog.Resolve( from.Account, "The Bloodstone" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.seems_like_an_odd_phrase_dot_perhaps_i_should_remember_the_name_that_some_give_to_a_ruby_dot"), StringCatalog.ResolveByKey(from.Account, "quest.the_bloodstone") ) );
 					}
 					else if ( this.X == 6268 && this.Y == 2661 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "What altars did Harkyn set? What name must be spoken?" ), StringCatalog.Resolve( from.Account, "Harkyn's Altars" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.what_altars_did_harkyn_set_q_what_name_must_be_spoken_q"), StringCatalog.ResolveByKey(from.Account, "quest.harkyn_s_altars") ) );
 					}
 					else if ( this.X == 6293 && this.Y == 1649 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "The emerald gate? Perhaps a magical gate of green? If I speak the name of the ruby near it, I may be able to enter." ), StringCatalog.Resolve( from.Account, "The Emerald Gate" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.the_emerald_gate_q_perhaps_a_magical_gate_of_green_q_if_i_speak_the_name_of_the_ruby_near_it_c_i_may"), StringCatalog.ResolveByKey(from.Account, "quest.the_emerald_gate") ) );
 					}
 					else if ( this.X == 6497 && this.Y == 1440 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "The shapes of three, silver they be, can make the golden skull speak? Perhaps these things I must find, but where?" ), StringCatalog.Resolve( from.Account, "The Silver Shapes" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.the_shapes_of_three_c_silver_they_be_c_can_make_the_golden_skull_speak_q_perhaps_these_things_i_must"), StringCatalog.ResolveByKey(from.Account, "quest.the_silver_shapes") ) );
 					}
 					else if ( this.X == 6501 && this.Y == 1773 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "Know this, that a man called Tarjan, thought by many to be insane, had through wizardly powers proclaimed himself a god in Skara Brae a hundred years ago. Perhaps that cult in town knows of this." ), StringCatalog.Resolve( from.Account, "The Mad God" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.know_this_c_that_a_man_called_tarjan_c_thought_by_many_to_be_insane_c_had_through_wizardly_powers_pr"), StringCatalog.ResolveByKey(from.Account, "quest.the_mad_god") ) );
 					}
 					else if ( this.X == 6988 && this.Y == 164 )
 					{
 						from.CloseGump( typeof(Server.Gumps.ClueGump) );
-						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You can already feel the magical energy that is sealing this door. Perhaps there is another way to enter this vile place." ), StringCatalog.Resolve( from.Account, "Mangar's Tower Door" ) ) );
+						from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.you_can_already_feel_the_magical_energy_that_is_sealing_this_door_dot_perhaps_there_is_another_way_t"), StringCatalog.ResolveByKey(from.Account, "quest.mangar_s_tower_door") ) );
 					}
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));

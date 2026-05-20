@@ -8,6 +8,7 @@ using Server.Mobiles;
 using Server.Targets;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -24,7 +25,7 @@ namespace Server.Items
 			InvalidateProperties();
 		}
 
-		public override string DefaultDescription{ get{ return "This potion will change many materialed items from one substance to another."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This potion will change many materialed items from one substance to another." ); } }
 
 		[Constructable]
 		public TransmutationPotion() : base( 0x2827, PotionEffect.Transmutation )

@@ -11,7 +11,7 @@ namespace Server.Items
 	{
 		public const string MapNamePrefix = "Map to ";
 
-		public override string DefaultDescription{ get{ return "These maps show a faint image of a particular world and the location of a particular place. If you happen to be traveling in that world, you will see a pin that indicates where you are."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These maps show a faint image of a particular world and the location of a particular place. If you happen to be traveling in that world, you will see a pin that indicates where you are." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.placemap"; } }
 
 		public override bool IsContentLocalized => true;

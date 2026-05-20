@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseHides : Item
 	{
-		public override string DefaultDescription{ get{ return "These are acquired from creatures with tough skin. If you use scissors on them, they will be cut into leather that can then be used for crafting."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These are acquired from creatures with tough skin. If you use scissors on them, they will be cut into leather that can then be used for crafting." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.hides"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

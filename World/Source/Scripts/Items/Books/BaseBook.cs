@@ -81,7 +81,7 @@ namespace Server.Items
 
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 
-		public override string DefaultDescription{ get{ return "These books can be used to write anything your heart desires. Simply open the book where you can change the title and begin writing. You can change the color of the covers with a dye tub."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "book.these_books_can_be_used_to_write_anything_your_heart_desires_dot_simply_open_the_book_where_you_can_"); } }
 
 		private string m_Title;
 		private string m_Author;

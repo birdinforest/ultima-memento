@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Server;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BedrolledOut : Item
 	{
-		public override string DefaultDescription{ get{ return "Bedrolls can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the bedroll will benefit from the effects. It requires someone proficient in camping."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Bedrolls can be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby and only the one who places the bedroll will benefit from the effects. It requires someone proficient in camping." ); } }
 
 		private Timer m_Timer;
 		private DateTime m_Created;

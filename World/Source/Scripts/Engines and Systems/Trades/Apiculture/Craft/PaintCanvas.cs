@@ -1,11 +1,12 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class PaintCanvas : Item
 	{
-		public override string DefaultDescription{ get{ return "These can be handed to an artist, where the will create a painting of you to hang in your home. Painting portraits is not an easy endeavor, so make sure you bring plenty of gold for their services."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.these_can_be_handed_to_an_artist_c_where_the_will_create_a_painting_of_you_to_hang_in_your_home_dot_"); } }
 
 		[Constructable]
 		public PaintCanvas() : base( 0xA6C )

@@ -163,7 +163,7 @@ namespace Server.Items
 				BaneBaseEmpty Pedul = new BaneBaseEmpty();
 				Pedul.ItemType = ItemType;
 				Pedul.MoveToWorld (new Point3D(this.X, this.Y, this.Z), this.Map);
-				from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You have found the {0}!", serpentType ) );
+				from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_have_found_the_n0_ex", serpentType ) );
 				from.SendSound( 0x3D );
 				LoggingFunctions.LogGeneric( from, "has found the " + serpentType + "." );
 				this.Delete();

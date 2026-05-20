@@ -1,12 +1,13 @@
 using System;
 using Server.Network;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class SuperPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "Drinking this potion will increase your strength, intelligence, and dexterity by 10 points. The effects last for about 5 minutes."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Drinking this potion will increase your strength, intelligence, and dexterity by 10 points. The effects last for about 5 minutes." ); } }
 
 		[Constructable]
 		public SuperPotion() : base( 0x180F, PotionEffect.SuperPotion )

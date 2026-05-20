@@ -4,6 +4,7 @@ using Server.Multis;
 using Server.Network;
 using System;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -42,9 +43,7 @@ namespace Server.Items
         {
             get
             {
-                return "Dungeoneer crates are something that homeowners can secure in their homes. When secured in your home, the Merchants Guild add you to their route for pick up. Merchants will leave gold in exchange for the goods. When you put something in the crate, you will be aware of the gold value of the item placed in it. There are plenty of craftsmen in town, so crafted equipment has no value to these merchants. Armor and weapons will have varying values depending on the resources used to create the item. Also durability and quality may increase the value. Other items like potions, scrolls, tools, furniture, or food can be sold for a price. <br><br>The crate will indicate how much gold it has available to transfer to yourself in the form of a bank check. Single click the crate and select the 'Transfer' option to withdraw all of the gold from the crate. Although there is a gold value indicated on the crate, the one withdrawing the amount may get more depending on whether they are in the Merchants Guild and/or they have a good Mercantile skill. These crates must be secured in a home to be of any use.";
-            }
-        }
+                return StringCatalog.ResolveByKey(null, "eng.dungeoneer_crates_are_something_that_homeowners_can_secure_in_their_homes_dot_when_secured_in_your_h"); } }
 
         public override int DefaultMaxWeight { get { return 0; } } // A value of 0 signals unlimited weight
         public override bool DisplaysContent { get { return false; } }

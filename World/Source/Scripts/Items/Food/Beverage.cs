@@ -6,6 +6,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.ContextMenus;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -894,7 +895,7 @@ namespace Server.Items
 
 	public abstract class BaseBeverage : Item, IHasQuantity
 	{
-		public override string DefaultDescription{ get{ return "Drinks can quench your thirst and sometimes be used in crafting. Beverages can be empty or filled with liquid. You can pour liquid from bottles in goblets and mugs. You can use an empty beverage container on a cow to milk it. If you want to quickly fill an empty container with water, use it near a water source. You can also single click the container and choose the fill option, where you can select a water source or cow. There are some single click menus available, dependent on the type of container. You can 'Fill' it up with liquid. If you want some in another container, you can 'Pour' it. You can 'Dump' the contents out on the ground. If you are thirsty, you can 'Drink', but if you want to drink as much of it as you can, you can always 'Drink Up'."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Drinks can quench your thirst and sometimes be used in crafting. Beverages can be empty or filled with liquid. You can pour liquid from bottles in goblets and mugs. You can use an empty beverage container on a cow to milk it. If you want to quickly fill an empty container with water, use it near a water source. You can also single click the container and choose the fill option, where you can select a water source or cow. There are some single click menus available, dependent on the type of container. You can 'Fill' it up with liquid. If you want some in another container, you can 'Pour' it. You can 'Dump' the contents out on the ground. If you are thirsty, you can 'Drink', but if you want to drink as much of it as you can, you can always 'Drink Up'." ); } }
 
 		private BeverageType m_Content;
 		private int m_Quantity;

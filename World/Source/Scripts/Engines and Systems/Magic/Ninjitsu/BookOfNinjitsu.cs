@@ -1,12 +1,13 @@
 using System;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BookOfNinjitsu : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by ninja, in order for them to use various abilities akin to this ancient order of assassins. Some books have enhanced properties, that are only effective when the book is held."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_ninja_c_in_order_for_them_to_use_various_abilities_akin_to_this_ancient_order_o"); } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Ninja; } }
 		public override int BookOffset{ get{ return 500; } }

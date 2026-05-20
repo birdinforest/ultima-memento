@@ -12,7 +12,7 @@ namespace Server.Items
 {
 	public class Bandage : Item, IDyable
 	{
-		public override string DefaultDescription{ get{ return "Bandages require a good healing or veterinary skill. When you use a bandage on someone, it will begin the attempt to heal some damage. If your skills are high enough, you can cure most poisons or even bring the dead back to life."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Bandages require a good healing or veterinary skill. When you use a bandage on someone, it will begin the attempt to heal some damage. If your skills are high enough, you can cure most poisons or even bring the dead back to life." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.bandage"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.bandage";

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using System.Collections;
+using Server.Localization;
 using Server.Network;
 using System.Text;
 using Server.Mobiles;
@@ -50,9 +51,9 @@ namespace Server.Items
 			get
 			{
 				if ( Technology )
-					return "Using these binoculars will give you a bonus to tracking for a short time, allowing you to search for your targets much easier.";
+					return StringCatalog.Resolve( null, "Using these binoculars will give you a bonus to tracking for a short time, allowing you to search for your targets much easier." );
 
-				return "Using this spyglass will give you a bonus to tracking for a short time, allowing you to search for your targets much easier.";
+				return StringCatalog.Resolve( null, "Using this spyglass will give you a bonus to tracking for a short time, allowing you to search for your targets much easier." );
 			}
 		}
 

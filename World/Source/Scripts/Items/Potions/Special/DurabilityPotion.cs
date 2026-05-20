@@ -3,12 +3,13 @@ using Server.Network;
 using Server;
 using Server.Targets;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class DurabilityPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "When you dump these potions on armor, clothing, or weapons, the maximum durablity of the item increases by 10. It has no effect on items with a maximum durability greater than 50."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "When you dump these potions on armor, clothing, or weapons, the maximum durablity of the item increases by 10. It has no effect on items with a maximum durability greater than 50." ); } }
 
 		[Constructable]
 		public DurabilityPotion() : base( 0x180F, PotionEffect.Durability )

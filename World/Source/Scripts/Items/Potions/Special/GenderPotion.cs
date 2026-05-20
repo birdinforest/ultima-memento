@@ -1,12 +1,13 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class GenderPotion : Item
 	{
-		public override string DefaultDescription{ get{ return "Drinking this potion will turn a human from male to female, or female to male."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Drinking this potion will turn a human from male to female, or female to male." ); } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 

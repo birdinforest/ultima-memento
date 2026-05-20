@@ -3,12 +3,13 @@ using Server;
 using Server.Items;
 using Server.Items.Abstractions;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseLeather : Item, ICommodity
 	{
-		public override string DefaultDescription{ get{ return "Tailors, with leatherworking tools, can create leather armor and weapons with this. Scribes also use leather to bind books."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Tailors, with leatherworking tools, can create leather armor and weapons with this. Scribes also use leather to bind books." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.leathers"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

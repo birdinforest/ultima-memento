@@ -1,4 +1,5 @@
 using Server.Engines.Craft;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -28,7 +29,7 @@ namespace Server.Items
 		{ get { return Catalogs.None; } }
 
 		public override string DefaultDescription
-		{ get { return "This tool can be used to create slightly magical items."; } }
+		{ get { return StringCatalog.Resolve( null, "This tool can be used to create slightly magical items." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.slight"; } }
 
@@ -78,7 +79,7 @@ namespace Server.Items
 		{ get { return Catalogs.None; } }
 
 		public override string DefaultDescription
-		{ get { return "This tool can be used to create moderately magical items."; } }
+		{ get { return StringCatalog.Resolve( null, "This tool can be used to create moderately magical items." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.moderate"; } }
 
@@ -128,7 +129,7 @@ namespace Server.Items
 		{ get { return Catalogs.None; } }
 
 		public override string DefaultDescription
-		{ get { return "This tool can be used to create very magical items."; } }
+		{ get { return StringCatalog.Resolve( null, "This tool can be used to create very magical items." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.runic.very"; } }
 

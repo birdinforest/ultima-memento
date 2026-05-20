@@ -6,6 +6,7 @@ using Server.Misc;
 using Server.Engines.Harvest;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
 	{
 		public override HarvestSystem HarvestSystem{ get{ return Fishing.System; } }
 
-		public override string DefaultDescription{ get{ return "When held in your hand, these fishing poles can be used, where you target a spot on the water you wish to fish. You may catch something. You will only get better at seafaring to a certain point, where you will eventually need to fish on the high seas from your ship."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "When held in your hand, these fishing poles can be used, where you target a spot on the water you wish to fish. You may catch something. You will only get better at seafaring to a certain point, where you will eventually need to fish on the high seas from your ship." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.fishingpole"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.fishing.pole";

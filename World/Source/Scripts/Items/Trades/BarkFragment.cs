@@ -1,10 +1,11 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BarkFragment : Item
 	{
-		public override string DefaultDescription{ get{ return "These pieces of bark are used to make paper for blank scrolls."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These pieces of bark are used to make paper for blank scrolls." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.bark"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.bark.fragment";

@@ -7,12 +7,13 @@ using Server.Mobiles;
 using System.Collections;
 using Server.Misc;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class ResurrectPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "This potion can only be used on others. Dumping it on their spirits will resurrect them back to the land of the living."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This potion can only be used on others. Dumping it on their spirits will resurrect them back to the land of the living." ); } }
 
 		[Constructable]
 		public ResurrectPotion() : base( 0x180F, PotionEffect.Resurrect )

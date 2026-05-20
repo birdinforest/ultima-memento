@@ -3,12 +3,13 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class Canteen : Item
 	{
-		public override string DefaultDescription{ get{ return "This strange, alien liquid can quench your thirst if you choose to drink it. Each canteen contains a single drink for someone."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This strange, alien liquid can quench your thirst if you choose to drink it. Each canteen contains a single drink for someone." ); } }
 
 		[Constructable]
 		public Canteen() : base( 0x48E4 )

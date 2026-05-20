@@ -224,7 +224,7 @@ namespace Server.Items
 					else if ( AntiqueInfo( thing, 6, book ) == "2" ){ relic.Light = LightType.Circle300; }
 					player.AddToBackpack( relic );
 
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( player.Account, "You found the {0}.", say ));
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.you_found_the_n0_dot", say ));
 					player.SendSound( 0x5B4 );
 					book.RumorWorld = Land.None;
 					book.RumorDungeon = "";
@@ -237,7 +237,7 @@ namespace Server.Items
 				}
 				else
 				{
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormat( player.Account, "{0} was either wrong or they lied.", book.RumorFrom ));
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.n0_was_either_wrong_or_they_lied_dot", book.RumorFrom ));
 					player.SendSound( 0x5B3 );
 					book.RumorWorld = Land.None;
 					book.RumorDungeon = "";

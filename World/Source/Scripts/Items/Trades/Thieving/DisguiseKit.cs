@@ -16,7 +16,7 @@ namespace Server.Items
 {
 	public class DisguiseKit : Item
 	{
-		public override string DefaultDescription{ get{ return "These disguises can be used to appear as someone else. It is helpful if you are one trying to avoid the local guards. You need to be very skilled in hiding, stealth, ninjitsu, snooping, or psychology to use these."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These disguises can be used to appear as someone else. It is helpful if you are one trying to avoid the local guards. You need to be very skilled in hiding, stealth, ninjitsu, snooping, or psychology to use these." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.disguisekit"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.disguise.kit";

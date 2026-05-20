@@ -244,7 +244,7 @@ namespace Server.Items
 
 				AddImage(0, 0, 7029, Server.Misc.PlayerSettings.GetGumpHue( from ));
 				AddButton(961, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				string vortexTitle = StringCatalog.Resolve( from.Account, "CODEX OF ULTIMATE WISDOM" );
+				string vortexTitle = StringCatalog.ResolveByKey(from.Account, "quest.codex_of_ultimate_wisdom");
 				AddHtml( 11, 11, 807, 20, @"<BODY><BASEFONT Color=" + color + ">" + vortexTitle + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				string description = StringCatalog.Resolve( from.Account, "Those that wield the Codex of Ultimate Wisdom, can use the knowledge within to become more intelligent (+25) and a grandmaster in two skills of their choice (+100 in 2 chosen skills). The Codex lies within the Ethereal Void and can only be drawn out from within the Chamber of the Codex. To do this, you must obtain the 3 Keys of Infinity in order to enter the chamber. To see into the Void, where the Codex lies, you will need the Convex and Concave Lenses. Finally, this Cube has the power to draw things out from the Void. In order to do that, you will need to find the 6 void crystals to power the cube. If you manage to find all of these items, you can enter the Chamber of the Codex and approach the Void. The Codex will then be yours to do with what you wish, but it will be yours alone to use. Make sure to bring this cube with you when doing this quest." );
 				AddHtml( 12, 42, 976, 177, @"<BODY><BASEFONT Color=" + color + ">" + description + "</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -260,29 +260,29 @@ namespace Server.Items
 				AddItem(85+k, 446+g, 4643);
 
 				AddHtml( 140+k, 252+g, 181, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Vortex Cube" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 140+k, 279+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 140+k, 279+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddItem(80+k, 245+g, 1493);
 
-				AddHtml( 140+k, 355+g, 181, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Concave Lense" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 140+k, 355+g, 181, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.the_concave_lense") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				if ( m_Cube.HasConcaveLense > 0 )
 				{
-					AddHtml( 140+k, 382+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 382+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddItem(80+k, 343+g, 1517);
 				}
 				else
 				{
-					AddHtml( 140+k, 382+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "Naxatilor {0}.", GargoyleLocation( from, "Naxatilor" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 382+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.naxatilor_n0_dot", GargoyleLocation( from, "Naxatilor" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
-				AddHtml( 140+k, 458+g, 181, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Convex Lense" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 140+k, 458+g, 181, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.the_convex_lense") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				if ( m_Cube.HasConvexLense > 0 )
 				{
-					AddHtml( 140+k, 485+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 485+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddItem(80+k, 443+g, 1518);
 				}
 				else
 				{
-					AddHtml( 140+k, 485+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "Lor-wis-lem {0}.", GargoyleLocation( from, "Lor-wis-lem" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 485+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.lor_wis_lem_n0_dot", GargoyleLocation( from, "Lor-wis-lem" ) ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -293,31 +293,31 @@ namespace Server.Items
 				if ( m_Cube.HasKeyLaw > 0 )
 				{
 					AddItem(89+k, 551+g, 13519); // KEY OF LAW
-					AddHtml( 140+k, 538+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Key of Law has been found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 538+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.the_key_of_law_has_been_found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
-					AddHtml( 140+k, 538+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "The Key of Law {0} {1}.", m_Cube.TextKeyLaw, m_Cube.LocationKeyLaw ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 538+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.the_key_of_law_n0_n1_dot", m_Cube.TextKeyLaw, m_Cube.LocationKeyLaw ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				if ( m_Cube.HasKeyBalance > 0 )
 				{
 					AddItem(98+k, 542+g, 13516); // KEY OF BALANCE
-					AddHtml( 140+k, 568+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Key of Balance has been found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 568+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.the_key_of_balance_has_been_found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
-					AddHtml( 140+k, 568+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "The Key of Balance {0} {1}.", m_Cube.TextKeyBalance, m_Cube.LocationKeyBalance ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 568+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.the_key_of_balance_n0_n1_dot", m_Cube.TextKeyBalance, m_Cube.LocationKeyBalance ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				if ( m_Cube.HasKeyChaos > 0 )
 				{
 					AddItem(109+k, 550+g, 13520); // KEY OF CHAOS
-					AddHtml( 140+k, 598+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "The Key of Chaos has been found!" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 598+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.the_key_of_chaos_has_been_found_ex") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
-					AddHtml( 140+k, 598+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormat( from.Account, "The Key of Chaos {0} {1}.", m_Cube.TextKeyChaos, m_Cube.LocationKeyChaos ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 140+k, 598+g, 1016, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.the_key_of_chaos_n0_n1_dot", m_Cube.TextKeyChaos, m_Cube.LocationKeyChaos ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -381,7 +381,7 @@ namespace Server.Items
 
 		public static string GargoyleLocation( Mobile from, string gargoyle )
 		{
-			string where = StringCatalog.Resolve( from.Account, "the gargoyle's whereabouts are currently unknown" );
+			string where = StringCatalog.ResolveByKey(from.Account, "quest.the_gargoyle_s_whereabouts_are_currently_unknown");
 
 			foreach ( Mobile mob in World.Mobiles.Values )
 			if ( mob is CodexGargoyleA && gargoyle == "Naxatilor" )

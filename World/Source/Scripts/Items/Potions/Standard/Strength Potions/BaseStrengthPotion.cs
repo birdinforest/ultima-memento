@@ -1,11 +1,12 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseStrengthPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "This potion will give one an extra " + StrOffset.ToString() + " strength for a duration of...<BR><BR>" + Duration.ToString() + " (HH:MM:SS)"; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "This potion will give one an extra {0} strength for a duration of...<BR><BR>{1} (HH:MM:SS)", StrOffset, Duration ); } }
 
 		public abstract int StrOffset{ get; }
 		public abstract TimeSpan Duration{ get; }

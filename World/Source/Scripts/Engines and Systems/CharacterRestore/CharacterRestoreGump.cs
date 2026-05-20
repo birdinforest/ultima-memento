@@ -1248,7 +1248,7 @@ namespace Server.Gumps
 		// Guard: caller must be alive and have a valid map
 		if ( from == null || !from.Alive || from.Map == null || from.Map == Map.Internal )
 		{
-			from?.SendMessage( 0x20, "You must be in the world to spawn the NPC." );
+			from?.SendMessage( 0x20, StringCatalog.ResolveByKey( from?.Account, "eng.you_must_be_in_the_world_to_spawn_the_npc_dot" ) );
 			return;
 		}
 
@@ -1291,7 +1291,7 @@ namespace Server.Gumps
 		catch ( Exception ex )
 		{
 			CharRestoreLogger.LogError( logPath, "Bag creation", ex );
-			from.SendMessage( 0x20, "Internal error: could not create restoration bag." );
+			from.SendMessage( 0x20, StringCatalog.ResolveByKey( from.Account, "eng.internal_error_could_not_create_restoration_bag_dot" ) );
 			return;
 		}
 		bag.Name = bundleName;
@@ -1348,7 +1348,7 @@ namespace Server.Gumps
 		{
 			CharRestoreLogger.LogError( logPath, "NPC constructor", ex );
 			try { bag.Delete(); } catch { }
-			from.SendMessage( 0x20, "Internal error: could not create restorer NPC." );
+			from.SendMessage( 0x20, StringCatalog.ResolveByKey( from.Account, "eng.internal_error_could_not_create_restorer_npc_dot" ) );
 			return;
 		}
 
@@ -1365,7 +1365,7 @@ namespace Server.Gumps
 		{
 			CharRestoreLogger.LogError( logPath, "NPC MoveToWorld", ex );
 			try { npc.Delete(); bag.Delete(); } catch { }
-			from.SendMessage( 0x20, "Internal error: could not place NPC in world." );
+			from.SendMessage( 0x20, StringCatalog.ResolveByKey( from.Account, "eng.internal_error_could_not_place_npc_in_world_dot" ) );
 			return;
 		}
 

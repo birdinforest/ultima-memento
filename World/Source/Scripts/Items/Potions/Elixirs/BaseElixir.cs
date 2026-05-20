@@ -5,12 +5,13 @@ using Server.Network;
 using System.Text;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BaseElixir : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "Drinking this elixir will make you more proficient in a skill for a short period of time. The elixir can be more effective from alchemists that are also skilled in tasting and cooking. You cannot drink many of these at one time, and sometimes need to wait before drinking additional elixirs."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Drinking this elixir will make you more proficient in a skill for a short period of time. The elixir can be more effective from alchemists that are also skilled in tasting and cooking. You cannot drink many of these at one time, and sometimes need to wait before drinking additional elixirs." ); } }
 
 		public override int Hue{ get { return ( Server.Items.PotionKeg.GetPotionColor( this ) ); } }
 

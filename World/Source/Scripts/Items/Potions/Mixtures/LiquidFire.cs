@@ -7,12 +7,13 @@ using Server.Prompts;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class LiquidFire : BaseLiquid
 	{
-		public override string DefaultDescription{ get{ return "Dumping this on the ground will produce puddles of liquid, causing mostly fire damage to those that walk over it. The liquid can be more effective from alchemists that are also skilled in tasting and cooking. The liquid will dry up after about 30 seconds."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Dumping this on the ground will produce puddles of liquid, causing mostly fire damage to those that walk over it. The liquid can be more effective from alchemists that are also skilled in tasting and cooking. The liquid will dry up after about 30 seconds." ); } }
 
 		[Constructable]
 		public LiquidFire() : base( PotionEffect.LiquidFire )

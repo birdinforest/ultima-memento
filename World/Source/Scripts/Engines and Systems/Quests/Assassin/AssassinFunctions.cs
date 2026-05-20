@@ -311,19 +311,19 @@ namespace Server.Misc
 				{
 					m.SendSound( 0x3D );
 					m.AddToBackpack ( new Gold( nAssassinFee ) );
-					string sMessage = ResolveFormat( m, "I assume the death was quick. Here is {0} gold for you.", nAssassinFee );
+					string sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.i_assume_the_death_was_quick_dot_here_is_n0_gold_for_you_dot", nAssassinFee );
 					int msgIdx = Utility.RandomMinMax( 0, 9 );
 					switch ( msgIdx )
 					{
-						case 1:	sMessage = ResolveFormat( m, "I bet they never seen you coming. Here is {0} gold for you.", nAssassinFee );		break;
-						case 2:	sMessage = ResolveFormat( m, "Was the death swift? Here is {0} gold for you.", nAssassinFee );		break;
-						case 3:	sMessage = ResolveFormat( m, "Were there any witnesses? Here is {0} gold for you.", nAssassinFee );		break;
-						case 4:	sMessage = ResolveFormat( m, "I am impressed. Here is {0} gold for you.", nAssassinFee );		break;
-						case 5:	sMessage = ResolveFormat( m, "Word of your deed already reached my ears. Here is {0} gold for you.", nAssassinFee );		break;
-						case 6:	sMessage = ResolveFormat( m, "How you did that one, I'll never know. Here is {0} gold for you.", nAssassinFee );		break;
-						case 7:	sMessage = ResolveFormat( m, "You are one of my best. Here is {0} gold for you.", nAssassinFee );		break;
-						case 8:	sMessage = ResolveFormat( m, "Did you leave the body behind? Here is {0} gold for you.", nAssassinFee );		break;
-						case 9:	sMessage = ResolveFormat( m, "Next time, strike from the shadows. Here is {0} gold for you.", nAssassinFee );		break;
+						case 1:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.i_bet_they_never_seen_you_coming_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 2:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.was_the_death_swift_q_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 3:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.were_there_any_witnesses_q_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 4:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.i_am_impressed_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 5:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.word_of_your_deed_already_reached_my_ears_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 6:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.how_you_did_that_one_c_i_ll_never_know_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 7:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.you_are_one_of_my_best_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 8:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.did_you_leave_the_body_behind_q_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
+						case 9:	sMessage = StringCatalog.ResolveFormatByKey( m.Account, "quest.next_time_c_strike_from_the_shadows_dot_here_is_n0_gold_for_you_dot", nAssassinFee );		break;
 					}
 					leader.Say( sMessage );
 

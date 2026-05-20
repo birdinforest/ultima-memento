@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Engines.Craft;
 using Server.Engines.Harvest;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -16,7 +17,7 @@ namespace Server.Items
 
 	public abstract class BaseHarvestTool : Item, IUsesRemaining, ICraftable, Abstractions.IHarvestTool
 	{
-		public override string DefaultDescription{ get{ return "These tools are used for harvesting resources, that are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These tools are used for harvesting resources, that are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.baseharvest"; } }
 

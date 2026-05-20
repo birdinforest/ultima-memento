@@ -284,7 +284,7 @@ namespace Server.Items
 
 	public class Sextant : Item
 	{
-		public override string DefaultDescription{ get{ return "Sextants are used to gaze at the stars and determine your location. If you are carrying a sextant, and you examine items like a treasure map or a parchment with sextant coordinates on it, you may be able to open a world map to see the location. These maps will have a red pin for the location. If you are traveling in that world, you will see a blue pin to where you are."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Sextants are used to gaze at the stars and determine your location. If you are carrying a sextant, and you examine items like a treasure map or a parchment with sextant coordinates on it, you may be able to open a world map to see the location. These maps will have a red pin for the location. If you are traveling in that world, you will see a blue pin to where you are." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.sextant"; } }
 		public override string DisplayNameLocalizationKey => "item.trade.name.sextant";
 

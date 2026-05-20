@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -7,7 +8,7 @@ namespace Server.Items
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
 
-		public override string DefaultDescription{ get{ return "These items are very rare, and are sometimes sought after with a given quest. They are sometimes required for rituals or potion ingredients as well."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These items are very rare, and are sometimes sought after with a given quest. They are sometimes required for rituals or potion ingredients as well." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.rare.quest"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.unicorn.horn";

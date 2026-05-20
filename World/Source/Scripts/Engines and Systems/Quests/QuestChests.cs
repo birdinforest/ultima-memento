@@ -42,7 +42,7 @@ namespace Server.Items
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver square and a crystal sword." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver square and a crystal sword. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it. The sword looks strong enough to shatter crystal sculptures." ), StringCatalog.Resolve( from.Account, "The Silver Square" ) ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.you_found_a_silver_square_and_a_crystal_sword_dot_you_will_need_all_three_silver_shapes_to_obtain_th"), StringCatalog.ResolveByKey(from.Account, "quest.the_silver_square") ) );
 				}
 			}
 			else
@@ -92,7 +92,7 @@ namespace Server.Items
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver triangle." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver triangle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it." ), StringCatalog.Resolve( from.Account, "The Silver Triangle" ) ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.you_found_a_silver_triangle_dot_you_will_need_all_three_silver_shapes_to_obtain_the_silver_key_to_ma"), StringCatalog.ResolveByKey(from.Account, "quest.the_silver_triangle") ) );
 				}
 			}
 			else
@@ -144,7 +144,7 @@ namespace Server.Items
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a silver circle." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a silver circle. You will need all three silver shapes to obtain the silver key to Mangar's chamber door. When you have all three, seek the golden skull and use it to place the shapes upon it." ), StringCatalog.Resolve( from.Account, "The Silver Circle" ) ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.you_found_a_silver_circle_dot_you_will_need_all_three_silver_shapes_to_obtain_the_silver_key_to_mang"), StringCatalog.ResolveByKey(from.Account, "quest.the_silver_circle") ) );
 				}
 			}
 			else
@@ -198,7 +198,7 @@ namespace Server.Items
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "Placing the 3 silver shapes on the skull, the mouth opens to reveal a silver key." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You have obtained the silver key from the golden skull. Perhaps it works on that dark door to the west of you." ), StringCatalog.Resolve( from.Account, "The Silver Key" ) ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(from.Account, "quest.you_have_obtained_the_silver_key_from_the_golden_skull_dot_perhaps_it_works_on_that_dark_door_to_the"), StringCatalog.ResolveByKey(from.Account, "quest.the_silver_key") ) );
 				}
 				else
 				{
@@ -254,7 +254,7 @@ namespace Server.Items
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You found a key with a symbol of a tree on it." ), from.NetState);
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a key with a symbol of a tree on it." ), StringCatalog.Resolve( from.Account, "The Forest Key" ) ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.Resolve( from.Account, "You found a key with a symbol of a tree on it." ), StringCatalog.ResolveByKey(from.Account, "quest.the_forest_key") ) );
 				}
 			}
 			else

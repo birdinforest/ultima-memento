@@ -3,12 +3,13 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class RomulanAle : Item
 	{
-		public override string DefaultDescription{ get{ return "This strange, alien liquid can quench your thirst if you choose to drink it. You can, however, detect the strong odor of alchol in it. Each bottle contains a single drink for someone."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This strange, alien liquid can quench your thirst if you choose to drink it. You can, however, detect the strong odor of alchol in it. Each bottle contains a single drink for someone." ); } }
 
 		[Constructable]
 		public RomulanAle() : base( 0xE0F )

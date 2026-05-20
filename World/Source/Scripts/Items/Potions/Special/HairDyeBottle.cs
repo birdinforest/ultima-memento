@@ -1,12 +1,13 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
     public class HairDyeBottle : Item
 	{
-		public override string DefaultDescription{ get{ return "These mixtures need to be dyed a color, before using it on your hair. If you do not dye the contents, and instead leave it a neutral color, then your hair color will return to what it previously was."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These mixtures need to be dyed a color, before using it on your hair. If you do not dye the contents, and instead leave it a neutral color, then your hair color will return to what it previously was." ); } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 

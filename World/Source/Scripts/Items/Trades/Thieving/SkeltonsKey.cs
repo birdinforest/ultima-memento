@@ -16,9 +16,9 @@ namespace Server.Items
 			get
 			{
 				if ( Technology )
-					return "These access cards can open many technological doors or containers. Use the access card and select locked item to see if it works.";
+					return StringCatalog.Resolve( null, "These access cards can open many technological doors or containers. Use the access card and select locked item to see if it works." );
 
-				return "These keys can open many doors or containers. Use the key and select locked item to see if it works.";
+				return StringCatalog.Resolve( null, "These keys can open many doors or containers. Use the key and select locked item to see if it works." );
 			}
 		}
 

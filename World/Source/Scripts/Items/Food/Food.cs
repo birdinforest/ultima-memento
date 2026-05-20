@@ -6,12 +6,13 @@ using Server.ContextMenus;
 using Server.Misc;
 using Server.Regions;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class Food : Item
 	{
-		public override string DefaultDescription{ get{ return "Food can be used to satisfy your hunger. It can also be used in various cooking recipes. There are some single click menus available. If you are hungry, you can 'Eat' it, but if you want to eat as much of it as you can, you can always 'Eat Up'."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Food can be used to satisfy your hunger. It can also be used in various cooking recipes. There are some single click menus available. If you are hungry, you can 'Eat' it, but if you want to eat as much of it as you can, you can always 'Eat Up'." ); } }
 
 		private Mobile m_Poisoner;
 		private Poison m_Poison;

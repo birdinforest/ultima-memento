@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseScales : Item
 	{
-		public override string DefaultDescription{ get{ return "These usually come from reptilian creatures. They are commonly used for creating scalemail equipment."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These usually come from reptilian creatures. They are commonly used for creating scalemail equipment." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.scales"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

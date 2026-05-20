@@ -2,6 +2,7 @@ using System;
 using Server.Network;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xf9f, 0xf9e )]
 	public class Scissors : Item
 	{
-		public override string DefaultDescription{ get{ return "These can cut hides into leather, or cut cloth into bandages. You can also cut leather or cloth clothing, back into basic items like leather and cloth."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These can cut hides into leather, or cut cloth into bandages. You can also cut leather or cloth clothing, back into basic items like leather and cloth." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.scissors"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.scissors";

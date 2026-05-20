@@ -183,27 +183,27 @@ namespace Server.Mobiles
 			if ( !to.Alive )
 			{
 				// Don't deliver to a dead player — they can't interact anyway.
-				to.SendMessage( 0x20, "You must be alive to receive this." );
+				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.you_must_be_alive_to_receive_this_dot" ) );
 				return;
 			}
 
 			if ( to.Backpack == null )
 			{
-				to.SendMessage( 0x20, "You have no backpack to receive these items." );
+				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.you_have_no_backpack_to_receive_these_items_dot" ) );
 				Console.WriteLine( $"[CharRestore] DeliverItems: '{to.Name}' has no backpack." );
 				return;
 			}
 
 			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
 			{
-				to.SendMessage( 0x20, "The restoration package could not be found. Please contact a GM." );
+				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.the_restoration_package_could_not_be_found_dot_please_contact_a_gm_dot" ) );
 				Console.WriteLine( $"[CharRestore] DeliverItems: restoration bag is null or deleted for NPC 0x{Serial.Value:X8}." );
 				return;
 			}
 
 			if ( m_RestorationBag.Items.Count == 0 )
 			{
-				to.SendMessage( 0x20, "The restoration package is empty. Please contact a GM." );
+				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.the_restoration_package_is_empty_dot_please_contact_a_gm_dot" ) );
 				Console.WriteLine( $"[CharRestore] DeliverItems: restoration bag is empty for NPC 0x{Serial.Value:X8}." );
 				return;
 			}
@@ -260,7 +260,7 @@ namespace Server.Mobiles
 			if ( delivered == 0 )
 			{
 				try { deliveryBag.Delete(); } catch { }
-				to.SendMessage( 0x20, "No items could be moved. Please contact a GM." );
+				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.no_items_could_be_moved_dot_please_contact_a_gm_dot" ) );
 				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems",
 					new InvalidOperationException( "Zero items moved — delivery aborted." ) );
 				return;

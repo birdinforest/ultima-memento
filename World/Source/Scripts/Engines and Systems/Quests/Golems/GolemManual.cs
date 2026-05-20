@@ -465,7 +465,7 @@ namespace Server.Items
 			int PortColor = 0;
 			int ExodusBoost = 0;
 
-			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); tinker.Say( StringCatalog.ResolveFormat( m.Account, "Here is {0} gold back for all of your help.", GoldReturn ) ); }
+			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); tinker.Say( StringCatalog.ResolveFormatByKey(m.Account, "quest.here_is_n0_gold_back_for_all_of_your_help_dot", GoldReturn ) ); }
 
 			if ( book.GolemType == "a Valorite Golem" ){ PortColor = dropped.Hue; ExodusBoost = 9; }
 			else if ( book.GolemType == "a Verite Golem" ){ PortColor = dropped.Hue; ExodusBoost = 8; }
@@ -518,7 +518,7 @@ namespace Server.Items
 
 				string GolemType = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase( (gBook.GolemType).ToLower() );
 
-				string sText = StringCatalog.Resolve( from.Account, "This rare tome contains the knowledge to construct a metal golem. Within its pages you will see what you need to obtain in order to have it constructed. You will need ingots according to the metal construction of the golem noted here. You will also need clockwork assemblies, power crystals, arcane gems, gears, technomancer oils, and gold for the tinker's fee. The tinker that can actually construct this golem is at the location shown at the bottom of the first page. If you have any tinkering skill, they may refund some of the gold for the help you may provide in the construction. There are two types of golems that can be constructed. One is a combatant golem, that will fight along with you. The other is a worker golem, that will carry whatever you wish not to carry yourself. Worker golems cannot be harmed and are ignored from hostile creatures. Along with this, they cannot attack anything either. They require 5 follower slots to accompany you. You will need a combatant golem if you want them to face others in combat. Unlike worker golems, combatant golems only need 3 follower slots to accompany you. The better the metal construction, the stronger the golem. You only need to obtain springs if you are having a combatant golem built. As you find materials, simply drag and drop them onto this book to add to the materials. The first page will track what you have obtained thus far. When every item is acquired (remember, springs are optional), give this tome to a tinker and they will construct your golem. The golem built will be yours alone, and it will have a limited amount of charges. A charge is used whenever you bring the golem forth to travel with you. You will have to obtain more power crystals in order to add more charges, where each power crystal will add 5 more charges to a worker golem and 1 extra charge to a combatant golem. A golem can only hold 100 charges at a time. Golems are controlled just like tamed beasts or summoned creatures. They can be told to follow, stay, or stop. The worker golem will have a pack you can access. You can also dismiss the golem, where the construct item will reappear in your pack. If you dismiss a worker golem, anything carried will be dropped on the ground. They are automatons so they do not need to be fed, other than the power crystals already mentioned. Remember, they are not transferable once constructed. The one giving the tinker the book will own the golem that is constructed." );
+				string sText = StringCatalog.ResolveByKey(from.Account, "quest.this_rare_tome_contains_the_knowledge_to_construct_a_metal_golem_dot_within_its_pages_you_will_see_w");
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -539,27 +539,27 @@ namespace Server.Items
 				int x = 114;
 				int i = 28;
 
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Ingots" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.ingots") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedMetalQty.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveMetalQty.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Clockworks" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.clockworks") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedClocks.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveClocks.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Crystals" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.crystals") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedCrystals.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveCrystals.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Arcane Gems" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.arcane_gems") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedGems.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveGems.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Gears" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.gears") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedGears.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveGears.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Oil" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.oil") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedOil.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveOil.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
@@ -567,7 +567,7 @@ namespace Server.Items
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedGold.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveGold.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				x=x+i;
-				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.Resolve( from.Account, "Springs" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 80, x, 119, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey(from.Account, "quest.springs") + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 205, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.NeedSprings.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 265, x, 55, 20, @"<BODY><BASEFONT Color=" + color + ">" + gBook.HaveSprings.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}

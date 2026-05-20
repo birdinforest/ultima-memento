@@ -194,7 +194,7 @@ namespace Joeku.MOTD
 				if ( pm.Preferences.MotdLastSeenVersion < Server.Misc.ShardInfo.VersionCode )
 				{
 					pm.Preferences.MessageOfTheDay = false;
-					pm.SendMessage( "The shard has been updated! Please review the latest announcements." );
+					pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "sys.the_shard_has_been_updated_ex_please_review_the_latest_announcements_dot" ) );
 				}
 				else
 				{

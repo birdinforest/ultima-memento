@@ -6,7 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x6721, 0x6722 )]
 	public class DeathKnightSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This vile book can contain magic used by death knights. Fillings its pages can only be achieved by finding the resting places of long dead death knights."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_vile_book_can_contain_magic_used_by_death_knights_dot_fillings_its_pages_can_only_be_achieved_b"); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner { get; set; }

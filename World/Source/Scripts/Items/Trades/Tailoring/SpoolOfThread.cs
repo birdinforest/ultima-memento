@@ -7,7 +7,7 @@ namespace Server.Items
 {
 	public abstract class BaseClothMaterial : Item, IDyable
 	{
-		public override string DefaultDescription{ get{ return "You can use these on a loom, which will produce cloth you can use for tailoring."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "You can use these on a loom, which will produce cloth you can use for tailoring." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.cloth.loom"; } }
 

@@ -52,7 +52,7 @@ namespace Server.Items
 			if ( IsChildOf( from.Backpack ) )
 			{
 				int cost = Museums.AntiqueTotalValue( ThisValue, from, false );
-				from.SendMessage( StringCatalog.ResolveFormat( from.Account, "This antique is worth {0} gold to an art collector.", cost ) );
+				from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.this_antique_is_worth_n0_gold_to_an_art_collector_dot", cost ) );
 			}
 			else
 			{

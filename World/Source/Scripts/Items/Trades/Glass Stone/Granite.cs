@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseGranite : Item
 	{
-		public override string DefaultDescription{ get{ return "This rock is used by carpenters, to create stone statues and furniture. You would need a mallet and chisel to use this."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This rock is used by carpenters, to create stone statues and furniture. You would need a mallet and chisel to use this." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.granite"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

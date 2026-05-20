@@ -5,12 +5,13 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class PotionOfDexterity : Item
 	{
-		public override string DefaultDescription{ get{ return "This potion could have the ability to raise your dexterity."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This potion could have the ability to raise your dexterity." ); } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 

@@ -2,13 +2,14 @@ using System;
 using Server.Items;
 using Server.Network;
 using Server.Engines.Harvest;
+using Server.Localization;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0xE86, 0xE85 )]
 	public class Pickaxe : BaseAxe, IUsesRemaining
 	{
-		public override string DefaultDescription{ get{ return "These picks are used by miners, to dig up ore in caves and on mountain stone."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These picks are used by miners, to dig up ore in caves and on mountain stone." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.pickaxe"; } }
 
 		public override string DisplayNameLocalizationKey => Name == "gargoyle pickaxe" ? "item.trade.name.gargoyle.pickaxe" : "item.trade.name.pickaxe";

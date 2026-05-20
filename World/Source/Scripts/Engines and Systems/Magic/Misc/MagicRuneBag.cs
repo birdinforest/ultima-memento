@@ -36,7 +36,7 @@ namespace Server.Items
 		public override bool DisplayWeight{ get{ return false; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Trinket; } }
-		public override string DefaultDescription{ get{ return "These ancient, magical bags were once used by aspiring scholars to cast spells with the use of rune stones. Wizards eventually learned how to wield the magic without these, but they may still be of use to those that are not magically gifted."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.these_ancient_c_magical_bags_were_once_used_by_aspiring_scholars_to_cast_spells_with_the_use_of_rune"); } }
 
 		[Constructable]
 		public MagicRuneBag() : base( 0x0E84 )

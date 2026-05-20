@@ -207,22 +207,22 @@ namespace Server.Items
 				int rocks = tip.HasAir + tip.HasFire + tip.HasEarth + tip.HasWater + 1;
 				int titan = tip.WonAir + tip.WonFire + tip.WonEarth + tip.WonWater;
 
-				string stones = StringCatalog.Resolve( from.Account, "1 of the Pieces of Blackrock Found!" );
-				string titans = StringCatalog.Resolve( from.Account, "No Titans Have Been Defeated Yet!" );
+				string stones = StringCatalog.ResolveByKey(from.Account, "quest.1_of_the_pieces_of_blackrock_found_ex");
+				string titans = StringCatalog.ResolveByKey(from.Account, "quest.no_titans_have_been_defeated_yet_ex");
 
-				if ( rocks > 4 ){ stones = StringCatalog.Resolve( from.Account, "All of the Pieces of Blackrock Found!" ); }
-				else if ( rocks > 1 ){ stones = StringCatalog.ResolveFormat( from.Account, "{0} Pieces of Blackrock Found!", rocks ); }
+				if ( rocks > 4 ){ stones = StringCatalog.ResolveByKey(from.Account, "quest.all_of_the_pieces_of_blackrock_found_ex"); }
+				else if ( rocks > 1 ){ stones = StringCatalog.ResolveFormatByKey(from.Account, "quest.n0_pieces_of_blackrock_found_ex", rocks ); }
 
 				if ( titan > 0 )
 				{
 					titans = "";
-					if ( titan > 3 ){ titans = StringCatalog.Resolve( from.Account, "All of the Titans Have Been Defeated!" ); }
+					if ( titan > 3 ){ titans = StringCatalog.ResolveByKey(from.Account, "quest.all_of_the_titans_have_been_defeated_ex"); }
 					else
 					{
-						if ( tip.WonAir > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Stratos has been defeated! " ); }
-						if ( tip.WonFire > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Pyros has been destroyed! " ); }
-						if ( tip.WonEarth > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Lithos has been slain! " ); }
-						if ( tip.WonWater > 0 ){ titans = titans + StringCatalog.Resolve( from.Account, "Hydros has been vanquished! " ); }
+						if ( tip.WonAir > 0 ){ titans = titans + StringCatalog.ResolveByKey(from.Account, "quest.stratos_has_been_defeated_ex"); }
+						if ( tip.WonFire > 0 ){ titans = titans + StringCatalog.ResolveByKey(from.Account, "quest.pyros_has_been_destroyed_ex"); }
+						if ( tip.WonEarth > 0 ){ titans = titans + StringCatalog.ResolveByKey(from.Account, "quest.lithos_has_been_slain_ex"); }
+						if ( tip.WonWater > 0 ){ titans = titans + StringCatalog.ResolveByKey(from.Account, "quest.hydros_has_been_vanquished_ex"); }
 					}
 				}
 

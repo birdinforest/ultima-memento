@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -8,7 +9,7 @@ namespace Server.Items
 		public abstract int DexOffset{ get; }
 		public abstract TimeSpan Duration{ get; }
 
-		public override string DefaultDescription{ get{ return "This potion will give one an extra " + DexOffset.ToString() + " dexterity for a duration of...<BR><BR>" + Duration.ToString() + " (HH:MM:SS)"; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveFormat( null, "This potion will give one an extra {0} dexterity for a duration of...<BR><BR>{1} (HH:MM:SS)", DexOffset, Duration ); } }
 
 		public BaseAgilityPotion( PotionEffect effect ) : base( 0xF08, effect )
 		{

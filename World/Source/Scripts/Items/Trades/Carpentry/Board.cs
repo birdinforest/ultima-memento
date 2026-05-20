@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items.Abstractions;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class BaseWoodBoard : Item, ICommodity
 	{
-		public override string DefaultDescription{ get{ return "This wood is used by carpenters, to create furniture and wooden armor. Bowyers can use these to create bows and arrows as well."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This wood is used by carpenters, to create furniture and wooden armor. Bowyers can use these to create bows and arrows as well." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.woodboard"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

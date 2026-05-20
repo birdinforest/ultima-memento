@@ -3,12 +3,13 @@ using Server;
 using Server.Items;
 using Server.Items.Abstractions;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseIngot : Item, ICommodity
 	{
-		public override string DefaultDescription{ get{ return "These bars of metal are commonly used by blacksmiths, to create armor and weapons. Tinkers uses these as well."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These bars of metal are commonly used by blacksmiths, to create armor and weapons. Tinkers uses these as well." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.ingots"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

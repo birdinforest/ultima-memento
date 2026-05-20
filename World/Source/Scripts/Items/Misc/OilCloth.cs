@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class OilCloth : Item, IScissorable, IDyable
 	{
-		public override string DefaultDescription{ get{ return "Oil clothes are mostly used by assassins to wipe poison from their blades. Some also use them on beverages in order to create fire bombs."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Oil clothes are mostly used by assassins to wipe poison from their blades. Some also use them on beverages in order to create fire bombs." ); } }
 
 		public override int LabelNumber{ get{ return 1041498; } } // oil cloth
 

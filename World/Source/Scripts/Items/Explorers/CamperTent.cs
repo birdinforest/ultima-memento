@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.ContextMenus;
 using Server.Gumps;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Items 
 {
@@ -22,7 +23,7 @@ namespace Server.Items
 	public class CampersTent : Item
 	{
 		public override string DisplayNameLocalizationKey => "item.explorer.tent.camping";
-		public override string DefaultDescription{ get{ return "This is a camping tent that you can use to get away from the dangers of the land and rest. You can only use these tents if you have at least a 40 in the camping skill and they eventually wear out from use. If you double click the tent while it is in your pack, you will setup the tent for yourself. No one will be able to follow you in the tent unless they have a tent and the appropriate skill. If you set the tent down and double click it, then others will be able to use the tent to rest as they can double click the tent to follow you in. The original rolled tent will be put back into your pack, while the standing tent is left behind and will only remain for about 30 seconds so your comrades should make haste and follow you in. If anyone wants to leave the tent, then simply double click the tent flap you came in by. Anyone can stay in the tent as long as they want, but they will return to the spot where they used the tent when they leave."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This is a camping tent that you can use to get away from the dangers of the land and rest. You can only use these tents if you have at least a 40 in the camping skill and they eventually wear out from use. If you double click the tent while it is in your pack, you will setup the tent for yourself. No one will be able to follow you in the tent unless they have a tent and the appropriate skill. If you set the tent down and double click it, then others will be able to use the tent to rest as they can double click the tent to follow you in. The original rolled tent will be put back into your pack, while the standing tent is left behind and will only remain for about 30 seconds so your comrades should make haste and follow you in. If anyone wants to leave the tent, then simply double click the tent flap you came in by. Anyone can stay in the tent as long as they want, but they will return to the spot where they used the tent when they leave." ); } }
 
 		private CamperTentEffect m_CamperTentEffect;
 		private int m_Charges;

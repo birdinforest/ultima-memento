@@ -9,7 +9,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x672B, 0x672C )]
 	public class HolyManSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This holy book can contain magic used by priests. Fillings its pages can only be achieved by finding the resting places of virtuous people from long ago."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_holy_book_can_contain_magic_used_by_priests_dot_fillings_its_pages_can_only_be_achieved_by_find"); } }
 
 		public Mobile owner;
 

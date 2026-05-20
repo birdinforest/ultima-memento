@@ -2,12 +2,13 @@ using System;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseSkeletal : Item
 	{
-		public override string DefaultDescription{ get{ return "Undertakers use these bones to create morbid looking armor."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Undertakers use these bones to create morbid looking armor." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.skeletal"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

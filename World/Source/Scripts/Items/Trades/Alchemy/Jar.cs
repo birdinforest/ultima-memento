@@ -1,10 +1,11 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class Jar : Item
 	{
-		public override string DefaultDescription{ get{ return "These jars are often used by druids and witches to store their brews."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These jars are often used by druids and witches to store their brews." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.jar"; } }
 
 		public override string DisplayNameLocalizationKey => "item.trade.name.jar";

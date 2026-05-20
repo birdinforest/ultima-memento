@@ -15,7 +15,7 @@ namespace Server.Items
 		{
 			get
 			{
-				return "These keys can open almost any door or container. Use the key and select locked item to see if it works.";
+				return StringCatalog.Resolve( null, "These keys can open almost any door or container. Use the key and select locked item to see if it works." );
 			}
 		}
 

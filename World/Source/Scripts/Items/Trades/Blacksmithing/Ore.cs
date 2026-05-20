@@ -11,7 +11,7 @@ namespace Server.Items
 {
 	public abstract class BaseOre : Item
 	{
-		public override string DefaultDescription{ get{ return "These rocks can be smelted at a forge, which will create metal ingots. The ingots can then be used for crafting."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These rocks can be smelted at a forge, which will create metal ingots. The ingots can then be used for crafting." ); } }
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.ore"; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }

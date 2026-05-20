@@ -1,12 +1,13 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public abstract class BaseReagent : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Reagent; } }
-		public override string DefaultDescription{ get{ return "Reagents are ingredients used in both alchemical recipes and the casting of some spells. Potions using reagents are mostly created by alchemists, druids, and witches. The magical schools, such as magery and necromancy, require the caster to have these items as well."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "Reagents are ingredients used in both alchemical recipes and the casting of some spells. Potions using reagents are mostly created by alchemists, druids, and witches. The magical schools, such as magery and necromancy, require the caster to have these items as well." ); } }
 
 		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.basereagent"; } }
 

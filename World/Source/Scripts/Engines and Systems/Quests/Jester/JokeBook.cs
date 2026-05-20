@@ -6,7 +6,7 @@ namespace Server.Items
 {
 	public class JokeBook : Item
 	{
-		public override string DefaultDescription { get { return "These books are said to be cursed, and anyone who reads them will be cursed to tell jokes for the rest of their life. You see a note on the inside cover: 'Chuckles, may you laugh until your sides split!'"; } }
+		public override string DefaultDescription { get { return StringCatalog.ResolveByKey(null, "quest.these_books_are_said_to_be_cursed_c_and_anyone_who_reads_them_will_be_cursed_to_tell_jokes_for_the_r"); } }
 
 		[Constructable]
 		public JokeBook() : base( 0x1A98 )

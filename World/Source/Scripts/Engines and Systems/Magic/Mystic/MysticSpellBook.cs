@@ -14,7 +14,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x6725, 0x6726 )]
 	public class MysticSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return "This book is used by mystics, in order for them to use various abilities akin to this ancient order of peaceful nomads. Dropping such scrolls onto this book will place the mystical abilities within its pages. The scrolls can lead a mystic far and wide, as they search for the places of worship and meditate to acquire the knowledge."; } }
+		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_mystics_c_in_order_for_them_to_use_various_abilities_akin_to_this_ancient_order"); } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Mystic; } }
 		public override int BookOffset{ get{ return 250; } }
