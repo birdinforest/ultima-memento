@@ -20,6 +20,16 @@ namespace Server.Misc
 
 		[Usage( "corpse" )]
 		[Description( "Directs a character to their corpse." )]
+		// [corpse] — find the caller's corpses within range, point a quest arrow at the
+		// nearest one that still holds loot, and delete empty corpses (no region check).
+		//
+		// Per corpse owned by the caller:
+		//   carrying == 0  → queued for Delete (insured/looted/empty; safe to remove anywhere)
+		//   carrying > 0   → spawn a hidden CorpseCritter at the corpse tile as arrow target;
+		//                    no SameArea gate — dungeon corpses are not deleted from surface
+		//
+		// After the scan: QuestArrow on the closest loot-bearing target; then delete empty list.
+		// Explicit player cleanup of empty corpses: [corpseclear]
 		public static void Corpse_OnCommand( CommandEventArgs e )
         {
 			Mobile from = e.Mobile;
@@ -42,9 +52,9 @@ namespace Server.Misc
 			int distchk = 0;
 			int distpck = 0;
 
-			ArrayList bodies = new ArrayList();
-			ArrayList empty = new ArrayList();
-			ArrayList mice = new ArrayList();
+			ArrayList bodies = new ArrayList(); // CorpseCritter targets for corpses with loot (arrow)
+			ArrayList empty = new ArrayList();  // Empty corpses to delete after the scan
+			ArrayList mice = new ArrayList();   // Unused; kept for parity with legacy cleanup loop
 			foreach ( Item body in from.GetItemsInRange( range ) )
 			if ( body is Corpse )
 			{
@@ -54,23 +64,25 @@ namespace Server.Misc
 				{
 					int carrying = body.GetTotal( TotalType.Items );
 
-					Mobile mSp = new CorpseCritter();
-					mSp.MoveToWorld(new Point3D(body.X, body.Y, body.Z), body.Map);
-
-					if ( GhostHelper.SameArea( from, mSp ) == true && cadaver.Owner == from && carrying > 0 )
+					if ( carrying == 0 )
 					{
+						// Empty corpse — remove regardless of region (nothing to recover).
+						empty.Add( cadaver );
+					}
+					else
+					{
+						// Loot present — never delete; use a temp critter so QuestArrow can track the tile.
+						Mobile mSp = new CorpseCritter();
+						mSp.MoveToWorld(new Point3D(body.X, body.Y, body.Z), body.Map);
+
 						distchk++;
 						bodies.Add( mSp ); 
 						if ( GhostHelper.HowFar( from.X, from.Y, mSp.X, mSp.Y ) < TheClosest ){ TheClosest = GhostHelper.HowFar( from.X, from.Y, mSp.X, mSp.Y ); IsClosest = distchk; }
 					}
-					else
-					{
-						mice.Add( mSp ); 
-						empty.Add( cadaver ); 
-					}
 				}
 			}
 
+			// Point at the nearest loot-bearing corpse (CorpseCritter lives until CorpseTimer stops).
 			for ( int h = 0; h < bodies.Count; ++h )
 			{
 				distpck++;
@@ -84,7 +96,7 @@ namespace Server.Misc
 
 			for ( int u = 0; u < empty.Count; ++u ){ Item theEmpty = ( Item )empty[ u ]; theEmpty.Delete(); }
 			for ( int m = 0; m < mice.Count; ++m ){ Mobile theMouse = ( Mobile )mice[ m ]; theMouse.Delete(); }
-			if ( distchk == 0 ){ from.SendMessage("You have no nearby corpse in this area!"); }
+			if ( distchk == 0 ){ from.SendMessage("You have no nearby corpse in this area!"); } // no loot-bearing corpse in range
 		}
 	}
 
