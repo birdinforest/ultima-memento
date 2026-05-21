@@ -8,6 +8,7 @@ using Server.ContextMenus;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Localization;
+using Server.Gumps;
 
 namespace Server.Mobiles
 {
@@ -28,6 +29,15 @@ namespace Server.Mobiles
 		private DateTime m_CreatedTime;
 		private Timer m_DeleteTimer;
 		private string m_LogPath;   // Absolute path to disk log for this session
+		private bool m_ItemsDelivered;
+		private CharRestoreTheme m_Theme = CharRestoreTheme.Ocean;
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public CharRestoreTheme RestoreTheme
+		{
+			get { return m_Theme; }
+			set { m_Theme = value; ApplyTheme(); }
+		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string TargetName
@@ -69,8 +79,8 @@ namespace Server.Mobiles
 			Hue            = Utility.RandomSkinColor();
 			AI             = AIType.AI_Citizen;
 			FightMode      = FightMode.None;
-			Title          = "the sea salvager";
 			m_CreatedTime  = DateTime.Now;
+			ApplyTheme();
 
 			if ( this.Female = Utility.RandomBool() )
 			{
@@ -114,6 +124,33 @@ namespace Server.Mobiles
 
 		public LostItemsRestorerNPC( Serial serial ) : base( serial ) {}
 
+		public string GetThemeKey( string suffix )
+		{
+			return CharRestoreThemes.ThemeKey( m_Theme, suffix );
+		}
+
+		public void ApplyTheme()
+		{
+			string title = StringCatalog.TryResolveByKey( LangConfig.DefaultLanguage, GetThemeKey( "npc.title" ) );
+
+			if ( string.IsNullOrEmpty( title ) )
+			{
+				switch ( m_Theme )
+				{
+					case CharRestoreTheme.Wilderness: title = "the wilderness guide"; break;
+					case CharRestoreTheme.Dungeon:    title = "the dungeon delver"; break;
+					default:                          title = "the sea salvager"; break;
+				}
+			}
+
+			Title = title;
+		}
+
+		public void SayTheme( string suffix, string fallback )
+		{
+			CitizenLocalization.SayLocalizedByKey( this, GetThemeKey( suffix ), fallback );
+		}
+
 		// ------------------------------------------------------------------
 		// Interaction
 		// ------------------------------------------------------------------
@@ -122,6 +159,62 @@ namespace Server.Mobiles
 		public override bool IsInvulnerable { get { return true; } }
 		public override bool OnBeforeDeath() { return false; }
 
+		public override bool CanPaperdollBeOpenedBy( Mobile from )
+		{
+			return from != null && from.AccessLevel >= AccessLevel.GameMaster;
+		}
+
+		public override bool CheckLift( Mobile from, Item item, ref LRReason reject )
+		{
+			if ( m_RestorationBag != null && !m_RestorationBag.Deleted &&
+				( item == m_RestorationBag || item.IsChildOf( m_RestorationBag ) ) )
+			{
+				if ( from == null || from.AccessLevel < AccessLevel.GameMaster )
+				{
+					reject = LRReason.Inspecific;
+					return false;
+				}
+			}
+
+			return base.CheckLift( from, item, ref reject );
+		}
+
+		/// <summary>
+		/// NPCs need a backpack before restoration bundles can be stored; vendors create one in ctor.
+		/// </summary>
+		public void EnsureBackpack()
+		{
+			if ( Backpack != null )
+				return;
+
+			Container pack = new Backpack();
+			pack.Movable = false;
+			AddItem( pack );
+		}
+
+		/// <summary>
+		/// Keeps the restoration bundle inside this NPC's backpack (never on the ground at their feet).
+		/// </summary>
+		public bool TryStoreRestorationBag()
+		{
+			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
+				return false;
+
+			EnsureBackpack();
+
+			Container pack = Backpack;
+
+			if ( pack == null )
+				return false;
+
+			m_RestorationBag.Movable = false;
+
+			if ( m_RestorationBag.Parent == pack )
+				return true;
+
+			return pack.TryDropItem( this, m_RestorationBag, false );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( from == null || !from.Alive )
@@ -129,16 +222,13 @@ namespace Server.Mobiles
 
 			if ( m_TargetName != null && !m_TargetName.Equals( from.Name, StringComparison.OrdinalIgnoreCase ) )
 			{
-				CitizenLocalization.SayLocalizedByKey( this,
-					"charrestore.npc.deflect",
-					"I am waiting for someone. Move along, traveler." );
+				SayTheme( "npc.deflect", "I am waiting for someone. Move along, traveler." );
 				return;
 			}
 
 			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
 			{
-				CitizenLocalization.SayLocalizedByKey( this,
-					"charrestore.npc.lost_parcel",
+				SayTheme( "npc.lost_parcel",
 					"I seem to have lost the parcel I was carrying. Speak with the authorities." );
 				return;
 			}
@@ -167,6 +257,9 @@ namespace Server.Mobiles
 
 		public void DeliverItems( Mobile to )
 		{
+			if ( m_ItemsDelivered )
+				return;
+
 			// ── Guard: validate all prerequisites before touching any items ──────
 			if ( to == null )
 			{
@@ -208,79 +301,59 @@ namespace Server.Mobiles
 				return;
 			}
 
-			// ── Begin delivery ────────────────────────────────────────────────────
+			// ── Begin delivery: hand off the NPC's restoration bag (no second bag) ──
 			Server.Gumps.CharRestoreLogger.LogDeliveryBegin( m_LogPath, this, to );
+
+			TryStoreRestorationBag();
 
 			string bagName = StringCatalog.TryResolveByKey(
 				AccountLang.GetLanguageCode( to.Account ),
-				"charrestore.npc.bag_name" ) ?? "Salvaged Belongings";
+				GetThemeKey( "npc.bag_name" ) ) ?? "Salvaged Belongings";
 
-			Bag deliveryBag;
-			try
-			{
-				deliveryBag = new Bag();
-				deliveryBag.Name = bagName;
-				deliveryBag.Hue  = 0x84C;
-			}
-			catch ( Exception ex )
-			{
-				Console.WriteLine( $"[CharRestore] DeliverItems: delivery bag creation failed: {ex.Message}" );
-				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliveryBag creation", ex );
-				return;
-			}
+			Bag deliveryBag = m_RestorationBag;
 
-			// ── Move items: copy list first to avoid modification-during-enumeration ──
 			int delivered = 0;
-			List<Item> toMove = new List<Item>( m_RestorationBag.Items );
+			List<Item> toLog = new List<Item>( deliveryBag.Items );
 
-			foreach ( Item item in toMove )
+			foreach ( Item item in toLog )
 			{
 				if ( item == null || item.Deleted )
-				{
-					Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems",
-						new InvalidOperationException( "Null or deleted item in restoration bag — skipped." ) );
 					continue;
-				}
 
-				try
-				{
-					Server.Gumps.CharRestoreLogger.LogDeliveredItem( m_LogPath, item );
-					deliveryBag.DropItem( item );
-					delivered++;
-				}
-				catch ( Exception ex )
-				{
-					// Item move failed: log and leave item in original bag rather than
-					// creating an orphan or crashing.
-					Console.WriteLine( $"[CharRestore] DeliverItems: DropItem failed for {item.GetType().Name}: {ex.Message}" );
-					Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems DropItem", ex );
-				}
+				Server.Gumps.CharRestoreLogger.LogDeliveredItem( m_LogPath, item );
+				delivered++;
 			}
 
 			if ( delivered == 0 )
 			{
-				try { deliveryBag.Delete(); } catch { }
 				to.SendMessage( 0x20, StringCatalog.ResolveByKey( to.Account, "mob.no_items_could_be_moved_dot_please_contact_a_gm_dot" ) );
 				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems",
-					new InvalidOperationException( "Zero items moved — delivery aborted." ) );
+					new InvalidOperationException( "Restoration bag has no items — delivery aborted." ) );
 				return;
 			}
 
-			// ── Hand delivery bag to player ───────────────────────────────────────
-			try
+			m_RestorationBag = null;
+			m_ItemsDelivered = true;
+
+			deliveryBag.Name = bagName;
+			deliveryBag.Hue  = 0x84C;
+
+			if ( deliveryBag is CharRestoreBag securedBag )
+				securedBag.ReleaseToPlayer();
+			else
+				deliveryBag.Movable = true;
+
+			// ── Hand the restoration bag to the player (never duplicate into a new bag) ──
+			if ( !to.PlaceInBackpack( deliveryBag ) )
 			{
-				to.AddToBackpack( deliveryBag );
-			}
-			catch ( Exception ex )
-			{
-				Console.WriteLine( $"[CharRestore] DeliverItems: AddToBackpack failed: {ex.Message}" );
-				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "AddToBackpack", ex );
-				// Attempt direct world-drop as last resort
+				Console.WriteLine( $"[CharRestore] DeliverItems: PlaceInBackpack failed for '{to.Name}'." );
+				Server.Gumps.CharRestoreLogger.LogError( m_LogPath, "DeliverItems PlaceInBackpack",
+					new InvalidOperationException( "Player backpack full or unavailable." ) );
 				try { deliveryBag.MoveToWorld( to.Location, to.Map ); }
 				catch { }
 			}
 
-		try { to.PlaySound( 0x249 ); } catch { }
+			try { to.PlaySound( 0x249 ); } catch { }
 
 		// ── Place personal note in player's backpack as a physical item ───────
 		if ( !string.IsNullOrWhiteSpace( m_PersonalNote ) )
@@ -312,8 +385,7 @@ namespace Server.Mobiles
 		// NPC farewell
 		try
 		{
-			CitizenLocalization.SayLocalizedByKey( this,
-				"charrestore.npc.farewell",
+			SayTheme( "npc.farewell",
 				"Safe harbors to you. Learn these waters before you venture out again." );
 		}
 		catch { }
@@ -339,6 +411,29 @@ namespace Server.Mobiles
 				m_DeleteTimer.Stop();
 			m_DeleteTimer = new DeleteTimer( this, TimeSpan.FromSeconds( 8 ) );
 			m_DeleteTimer.Start();
+		}
+
+		public override void OnDelete()
+		{
+			DestroyRestorationBag();
+			base.OnDelete();
+		}
+
+		private void DestroyRestorationBag()
+		{
+			if ( m_RestorationBag == null || m_RestorationBag.Deleted )
+			{
+				m_RestorationBag = null;
+				return;
+			}
+
+			try { m_RestorationBag.Delete(); }
+			catch ( Exception ex )
+			{
+				Console.WriteLine( $"[CharRestore] DestroyRestorationBag failed: {ex.Message}" );
+			}
+
+			m_RestorationBag = null;
 		}
 
 		private class DeleteTimer : Timer
@@ -367,13 +462,15 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version (1 adds m_LogPath)
+			writer.Write( (int) 3 ); // version 3 adds m_Theme
 
 			writer.Write( m_TargetName );
 			writer.Write( m_PersonalNote );
 			writer.Write( m_RestorationBag );
 			writer.Write( m_CreatedTime );
 			writer.Write( m_LogPath ?? "" );
+			writer.Write( m_ItemsDelivered );
+			writer.Write( (int)m_Theme );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -388,6 +485,22 @@ namespace Server.Mobiles
 
 			if ( version >= 1 )
 				m_LogPath = reader.ReadString();
+
+			if ( version >= 2 )
+				m_ItemsDelivered = reader.ReadBool();
+
+			if ( version >= 3 )
+				m_Theme = CharRestoreThemes.Parse( reader.ReadInt() );
+			else
+				m_Theme = CharRestoreTheme.Ocean;
+
+			ApplyTheme();
+
+			Timer.DelayCall( TimeSpan.Zero, () =>
+			{
+				if ( !Deleted )
+					TryStoreRestorationBag();
+			} );
 
 			// Clamp an obviously invalid timestamp to prevent negative or absurd timers.
 			if ( m_CreatedTime > DateTime.Now || m_CreatedTime < DateTime.Now - TimeSpan.FromDays( 30 ) )
@@ -448,28 +561,49 @@ namespace Server.Mobiles
 		private LostItemsRestorerNPC m_NPC;
 		private int m_Stage;
 
-		private static readonly string[] TitleKeys = new string[]
+		private static readonly string[] TitleSuffixes = new string[]
 		{
-			"charrestore.dialog.title.greeting",
-			"charrestore.dialog.title.story",
-			"charrestore.dialog.title.handoff",
+			"dialog.title.greeting",
+			"dialog.title.story",
+			"dialog.title.handoff",
 		};
 
-		private static readonly string[] TitleFallbacks = new string[]
+		private static readonly string[][] TitleFallbacks = new string[][]
 		{
-			"A Weathered Salvager",
-			"A Salvager's Tale",
-			"Your Belongings",
+			new string[] { "A Weathered Trail Guide", "A Weathered Salvager", "A Grim Delver" },
+			new string[] { "Tales from the Wild", "A Salvager's Tale", "Echoes from Below" },
+			new string[] { "Your Recovered Gear", "Your Belongings", "What the Depths Returned" },
 		};
 
-		/// <summary>
-		/// Resolves a <c>charrestore.*</c> key for the given mobile's language.
-		/// Falls back to <paramref name="fallback"/> when missing.
-		/// </summary>
-		private static string K( Mobile viewer, string key, string fallback )
+		private string ThemeFallback( int stage )
+		{
+			int themeIdx = (int)m_NPC.RestoreTheme;
+			if ( themeIdx < 0 || themeIdx > 2 )
+				themeIdx = 1;
+
+			if ( stage >= 0 && stage < TitleFallbacks.Length )
+				return TitleFallbacks[stage][themeIdx];
+
+			return TitleFallbacks[0][themeIdx];
+		}
+
+		/// <summary>Theme-scoped key, e.g. <c>dialog.body.greeting</c> → <c>charrestore.theme.ocean.dialog.body.greeting</c>.</summary>
+		private string KTheme( Mobile viewer, string suffix, string fallback )
+		{
+			if ( viewer == null || m_NPC == null )
+				return fallback ?? suffix;
+
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			string s    = StringCatalog.TryResolveByKey( lang, m_NPC.GetThemeKey( suffix ) );
+			return ( s != null && s.Length > 0 ) ? s : ( fallback ?? suffix );
+		}
+
+		/// <summary>Shared <c>charrestore.*</c> key (not prefixed with theme id).</summary>
+		private static string KShared( Mobile viewer, string key, string fallback )
 		{
 			if ( viewer == null )
 				return fallback ?? key;
+
 			string lang = AccountLang.GetLanguageCode( viewer.Account );
 			string s    = StringCatalog.TryResolveByKey( lang, key );
 			return ( s != null && s.Length > 0 ) ? s : ( fallback ?? key );
@@ -492,9 +626,9 @@ namespace Server.Mobiles
 			AddPage( 0 );
 			AddImage( 0, 0, 9543, PlayerSettings.GetGumpHue( from ) );
 
-			string title = ( stage >= 0 && stage < TitleKeys.Length )
-				? K( from, TitleKeys[stage], TitleFallbacks[stage] )
-				: K( from, TitleKeys[0], TitleFallbacks[0] );
+			string title = ( stage >= 0 && stage < TitleSuffixes.Length )
+				? KTheme( from, TitleSuffixes[stage], ThemeFallback( stage ) )
+				: KTheme( from, TitleSuffixes[0], ThemeFallback( 0 ) );
 
 			AddHtml( 12, 15, 400, 20,
 				"<BODY><BASEFONT Color=" + textColor + ">" + title + "</BASEFONT></BODY>",
@@ -512,11 +646,10 @@ namespace Server.Mobiles
 
 		private void BuildStage0( Mobile from, string c )
 		{
-			string body = K( from,
-				"charrestore.dialog.body.greeting",
-				"Hold there, traveler. Are you the one who was stranded by the sea's whim? " +
-				"I have been carrying something that belongs to you — or so I have been told. " +
-				"It would help me to know I have found the right person before I hand it over." );
+			string body = KTheme( from, "dialog.body.greeting",
+				"Hold there, traveler. Are you the one I was sent to find? " +
+				"I have been carrying something that belongs to you. " +
+				"Confirm who you are before I hand it over." );
 
 			AddHtml( 12, 50, 420, 200,
 				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
@@ -525,26 +658,22 @@ namespace Server.Mobiles
 			AddButton( 12, 265, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 180, 20,
 				"<BODY><BASEFONT Color=" + c + ">" +
-				K( from, "charrestore.dialog.btn.yes_me", "Yes, that is me." ) +
+				KShared( from, "charrestore.dialog.btn.yes_me", "Yes, that is me." ) +
 				"</BASEFONT></BODY>", false, false );
 
 			AddButton( 230, 265, 4005, 4007, 2, GumpButtonType.Reply, 0 );
 			AddHtml( 268, 263, 180, 20,
 				"<BODY><BASEFONT Color=" + c + ">" +
-				K( from, "charrestore.dialog.btn.not_me", "No, you have the wrong person." ) +
+				KShared( from, "charrestore.dialog.btn.not_me", "No, you have the wrong person." ) +
 				"</BASEFONT></BODY>", false, false );
 		}
 
 		private void BuildStage1( Mobile from, string c )
 		{
-			string body = K( from,
-				"charrestore.dialog.body.story",
-				"I thought as much. The sea gives and the sea takes — but sometimes a keen eye " +
-				"and quick hands can recover what the tides would claim. " +
-				"I pulled what I could from the wreckage before the current swept it away. " +
-				"Not every soul would bother, but I have seen too many good people lose everything " +
-				"to the waters. It is not right.<BR><BR>" +
-				"I have it all bundled here. Ready to receive it?" );
+			string body = KTheme( from, "dialog.body.story",
+				"I thought as much. I gathered what I could before it was lost for good. " +
+				"Not every soul would bother.<BR><BR>" +
+				"I have it bundled here. Ready to receive it?" );
 
 			AddHtml( 12, 50, 420, 200,
 				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
@@ -553,19 +682,16 @@ namespace Server.Mobiles
 			AddButton( 12, 265, 4005, 4007, 3, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 380, 20,
 				"<BODY><BASEFONT Color=" + c + ">" +
-				K( from, "charrestore.dialog.btn.accept",
+				KShared( from, "charrestore.dialog.btn.accept",
 					"Yes, please. I am ready to receive my belongings." ) +
 				"</BASEFONT></BODY>", false, false );
 		}
 
 		private void BuildStage2( Mobile from, LostItemsRestorerNPC npc, string c )
 		{
-			string body = K( from,
-				"charrestore.dialog.body.handoff",
-				"Here you are — your salvaged belongings. Take it all. " +
-				"It belongs to you, and the sea owes you at least this much.<BR><BR>" +
-				"A piece of advice from an old salvager: learn the coastlines before you sail them. " +
-				"The sea does not forgive twice." );
+			string body = KTheme( from, "dialog.body.handoff",
+				"Here you are — your belongings. Take it all.<BR><BR>" +
+				"Learn the road before you walk it. Fortune rarely forgives twice." );
 
 			AddHtml( 12, 50, 420, 200,
 				"<BODY><BASEFONT Color=" + c + ">" + body + "</BASEFONT></BODY>",
@@ -574,8 +700,7 @@ namespace Server.Mobiles
 			AddButton( 12, 265, 4005, 4007, 4, GumpButtonType.Reply, 0 );
 			AddHtml( 50, 263, 380, 20,
 				"<BODY><BASEFONT Color=" + c + ">" +
-				K( from, "charrestore.dialog.btn.thanks",
-					"Thank you, salvager. I will remember this." ) +
+				KTheme( from, "dialog.btn.thanks", "Thank you. I will remember this." ) +
 				"</BASEFONT></BODY>", false, false );
 		}
 
@@ -592,15 +717,13 @@ namespace Server.Mobiles
 				case 0: break; // close
 
 				case 1: // confirmed identity
-					CitizenLocalization.SayLocalizedByKey( m_NPC,
-						"charrestore.npc.confirmed",
+					m_NPC.SayTheme( "npc.confirmed",
 						"Good. I knew it was you. Let me tell you how I came to have your things." );
 					from.SendGump( new LostItemsDialogGump( from, m_NPC, 1 ) );
 					break;
 
 				case 2: // wrong person
-					CitizenLocalization.SayLocalizedByKey( m_NPC,
-						"charrestore.npc.wrong_person",
+					m_NPC.SayTheme( "npc.wrong_person",
 						"My apologies for the confusion. I will keep looking." );
 					break;
 

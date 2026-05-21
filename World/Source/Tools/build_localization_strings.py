@@ -802,6 +802,7 @@ def main() -> int:
             "trap-system.json",
             "motd-system.json",
             "charrestore.json",
+            "charrestore-themes.json",
             "legend-book-rows.json",
             "trade-commodity.json",
             "placemap-labels.json",

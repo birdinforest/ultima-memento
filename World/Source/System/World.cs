@@ -282,9 +282,27 @@ namespace Server {
 		}
 
 		private static string m_LoadingType;
+		private static bool m_CharRestoreDeserializing;
 
 		public static string LoadingType {
 			get { return m_LoadingType; }
+		}
+
+		/// <summary>True while Character Item Restore deserializes item blobs from backup saves.</summary>
+		public static bool CharRestoreDeserializing {
+			get { return m_CharRestoreDeserializing; }
+		}
+
+		public static void BeginCharRestoreItemLoad( string typeFullName )
+		{
+			m_LoadingType = typeFullName;
+			m_CharRestoreDeserializing = true;
+		}
+
+		public static void EndCharRestoreItemLoad()
+		{
+			m_LoadingType = null;
+			m_CharRestoreDeserializing = false;
 		}
 
 		private static readonly Type[] m_SerialTypeArray = new Type[1] { typeof(Serial) };

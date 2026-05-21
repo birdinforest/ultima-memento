@@ -42,9 +42,9 @@ namespace Server.Gumps
 
 	/// <summary>
 	/// Descriptor for one item found in a backup save.
-	/// <see cref="FullProps"/> contains the complete set of base-class properties
-	/// parsed from <c>Item.Serialize v14</c>; subclass-specific properties
-	/// (e.g. BaseWeapon resist bonuses) cannot be read without a full deserializer.
+	/// <see cref="SerializeBlob"/> is the raw <c>Items.bin</c> record used for full
+	/// <see cref="Item.Deserialize"/> (weapons, armor, spellbooks, etc.).
+	/// <see cref="FullProps"/> is a summary for the GM gump display only.
 	/// </summary>
 	public class BackupItemInfo
 	{
@@ -59,9 +59,11 @@ namespace Server.Gumps
 		public string Name   { get; set; }
 		public string Layer  { get; set; }
 
+		/// <summary>Exact bytes from <c>Items.bin</c> for this item's save record.</summary>
+		public byte[] SerializeBlob { get; set; }
+
 		/// <summary>
-		/// Full set of properties parsed from the backup binary.
-		/// Null when parsing failed (type name is still available from TDB).
+		/// Base-class properties parsed for gump display (optional).
 		/// </summary>
 		public BackupSaveAnalyzer.ParsedItemProps? FullProps { get; set; }
 
@@ -245,12 +247,12 @@ namespace Server.Gumps
 				foreach ( int s in directItems )
 				{
 					if ( s == backpackSerial ) continue;
-					AddItem( s, true, serialMap, propMap, items, addedSerials );
+					AddItem( s, true, serialMap, propMap, binData, items, addedSerials );
 				}
 
 				// 6. Collect backpack contents
 				if ( backpackSerial != -1 )
-					CollectContainerContents( backpackSerial, childrenMap, serialMap, propMap, items, addedSerials );
+					CollectContainerContents( backpackSerial, childrenMap, serialMap, propMap, binData, items, addedSerials );
 				else
 					errors.Add( "Backpack not found — only equipped items listed." );
 
@@ -271,6 +273,7 @@ namespace Server.Gumps
 		private static void AddItem( int serial, bool isEquipped,
 			Dictionary<int,(string TypeFull, long Pos, int Length)> serialMap,
 			Dictionary<int,ParsedItemProps> propMap,
+			byte[] binData,
 			List<BackupItemInfo> items,
 			HashSet<int> addedSerials )
 		{
@@ -291,6 +294,14 @@ namespace Server.Gumps
 				Amount     = 1,
 			};
 
+			if ( binData != null && entry.Length > 0 && entry.Pos >= 0 &&
+			     entry.Pos + entry.Length <= binData.Length )
+			{
+				var blob = new byte[entry.Length];
+				Buffer.BlockCopy( binData, (int)entry.Pos, blob, 0, entry.Length );
+				info.SerializeBlob = blob;
+			}
+
 			if ( propMap.TryGetValue( serial, out var props ) )
 			{
 				info.Hue       = props.Hue;
@@ -308,6 +319,7 @@ namespace Server.Gumps
 			Dictionary<int,List<int>> childrenMap,
 			Dictionary<int,(string TypeFull, long Pos, int Length)> serialMap,
 			Dictionary<int,ParsedItemProps> propMap,
+			byte[] binData,
 			List<BackupItemInfo> items,
 			HashSet<int> addedSerials,
 			int depth = 0 )
@@ -317,12 +329,72 @@ namespace Server.Gumps
 
 			foreach ( int s in childrenMap[containerSerial] )
 			{
-				AddItem( s, false, serialMap, propMap, items, addedSerials );
+				AddItem( s, false, serialMap, propMap, binData, items, addedSerials );
 
 				string tn = serialMap.TryGetValue( s, out var e ) ? e.TypeFull : "";
 				if ( IsContainerType( tn ) )
-					CollectContainerContents( s, childrenMap, serialMap, propMap, items, addedSerials, depth + 1 );
+					CollectContainerContents( s, childrenMap, serialMap, propMap, binData, items, addedSerials, depth + 1 );
 			}
+		}
+
+		/// <summary>
+		/// Reconstructs an item via <see cref="Item.Deserialize"/> from its backup blob,
+		/// matching world load (weapons, armor, spellbook content, etc.).
+		/// </summary>
+		public static Item DeserializeItemFromBlob( string logPath, BackupItemInfo info, Type itemType )
+		{
+			if ( info == null || itemType == null || info.SerializeBlob == null || info.SerializeBlob.Length == 0 )
+				return null;
+
+			Item item;
+
+			try
+			{
+				item = (Item)Activator.CreateInstance( itemType );
+			}
+			catch
+			{
+				return null;
+			}
+
+			if ( item == null )
+				return null;
+
+			World.BeginCharRestoreItemLoad( info.TypeFull );
+
+			try
+			{
+				using ( var ms = new MemoryStream( info.SerializeBlob, false ) )
+				using ( var binReader = new BinaryReader( ms, Encoding.UTF8 ) )
+				{
+					var reader = new BinaryFileReader( binReader );
+					item.Deserialize( reader );
+
+					if ( reader.Position != info.SerializeBlob.Length )
+					{
+						CharRestoreLogger.LogItemFail( logPath, info,
+							$"Deserialize length mismatch: read {reader.Position}, expected {info.SerializeBlob.Length}" );
+					}
+				}
+			}
+			catch ( Exception ex )
+			{
+				CharRestoreLogger.LogItemFail( logPath, info, $"Deserialize failed: {ex.Message}" );
+				try { if ( !item.Deleted ) item.Delete(); } catch { }
+				return null;
+			}
+			finally
+			{
+				World.EndCharRestoreItemLoad();
+			}
+
+			if ( item.Deleted )
+				return null;
+
+			item.Parent = null;
+			item.Internalize();
+
+			return item;
 		}
 
 		private static bool IsContainerType( string typeFull )
@@ -556,9 +628,8 @@ namespace Server.Gumps
 		// ---- Item binary record parser ----
 
 		/// <summary>
-		/// All base-class properties parseable from <c>Item.Serialize v14</c>.
-		/// Subclass properties (BaseWeapon, BaseArmor stats) require type-specific
-		/// deserialization and are NOT captured here.
+		/// Base-class properties parseable from <c>Item.Serialize v14</c> for gump display.
+		/// Restoration uses <see cref="BackupItemInfo.SerializeBlob"/> + full Deserialize.
 		/// </summary>
 		public struct ParsedItemProps
 		{
@@ -842,15 +913,18 @@ namespace Server.Gumps
 		// NPC config
 		private string m_TargetPlayerName = "";
 		private string m_PersonalNote     = "";
+		private CharRestoreTheme m_Theme  = CharRestoreTheme.Ocean;
+
+		public CharRestoreTheme Theme => m_Theme;
 
 		public CharacterRestoreGump( Mobile from )
-			: this( from, PageSetup, 0, "Saves", "", "", "", new List<BackupItemInfo>(), "", "" )
+			: this( from, PageSetup, 0, "Saves", "", "", "", new List<BackupItemInfo>(), "", "", (int)CharRestoreTheme.Ocean )
 		{}
 
 		public CharacterRestoreGump( Mobile from, int page, int itemPage,
 			string backupPath, string accountName, string charName,
 			string statusText, List<BackupItemInfo> items,
-			string targetPlayerName, string personalNote )
+			string targetPlayerName, string personalNote, int theme )
 			: base( 60, 40 )
 		{
 			m_From             = from;
@@ -863,6 +937,7 @@ namespace Server.Gumps
 			m_Items            = items ?? new List<BackupItemInfo>();
 			m_TargetPlayerName = targetPlayerName;
 			m_PersonalNote     = personalNote;
+			m_Theme            = CharRestoreThemes.Parse( theme );
 
 		Closable   = true;
 		Disposable = true;
@@ -1053,7 +1128,17 @@ namespace Server.Gumps
 			"<BODY><BASEFONT Color=" + LabelColor + ">" + npcHint + "</BASEFONT></BODY>",
 			false, false );
 
-		y += 50;
+		y += 44;
+		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.theme", "Adventure Theme:" ) );
+		y += 22;
+		DrawThemeOption( 20, y, 32, CharRestoreTheme.Wilderness,
+			"charrestore.gump.theme.wilderness", "Wilderness" );
+		DrawThemeOption( 185, y, 33, CharRestoreTheme.Ocean,
+			"charrestore.gump.theme.ocean", "Ocean" );
+		DrawThemeOption( 350, y, 34, CharRestoreTheme.Dungeon,
+			"charrestore.gump.theme.dungeon", "Dungeon" );
+
+		y += 32;
 		AddLabel( 20, y, 0x5A, L( "charrestore.gump.lbl.target", "Target Player Name:" ) );
 		AddBackground( 190, y - 2, 290, 22, 9350 );
 		AddTextEntry( 192, y, 286, 20, 0, 30, m_TargetPlayerName );
@@ -1094,6 +1179,13 @@ namespace Server.Gumps
 		}
 		}
 
+		private void DrawThemeOption( int x, int y, int buttonId, CharRestoreTheme theme, string labelKey, string labelFallback )
+		{
+			bool selected = m_Theme == theme;
+			AddButton( x, y, selected ? 4006 : 4005, 4007, buttonId, GumpButtonType.Reply, 0 );
+			AddLabel( x + 32, y + 2, selected ? 0x35 : 0x5A, L( labelKey, labelFallback ) );
+		}
+
 		// ----------------------------------------------------------------
 		// Response handler
 		// ----------------------------------------------------------------
@@ -1125,6 +1217,19 @@ namespace Server.Gumps
 			switch ( info.ButtonID )
 			{
 				case 0: // Close
+					return;
+
+				case 32:
+					Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
+						m_StatusText, m_Items, targetName, personalNote, CharRestoreTheme.Wilderness );
+					return;
+				case 33:
+					Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
+						m_StatusText, m_Items, targetName, personalNote, CharRestoreTheme.Ocean );
+					return;
+				case 34:
+					Reopen( from, PageNPCConfig, m_ItemPage, backupPath, accountName, charName,
+						m_StatusText, m_Items, targetName, personalNote, CharRestoreTheme.Dungeon );
 					return;
 
 			// Tab navigation
@@ -1229,10 +1334,19 @@ namespace Server.Gumps
 			string status, List<BackupItemInfo> items,
 			string targetName, string personalNote )
 		{
+			Reopen( from, page, itemPage, backupPath, accountName, charName,
+				status, items, targetName, personalNote, m_Theme );
+		}
+
+		private void Reopen( Mobile from, int page, int itemPage,
+			string backupPath, string accountName, string charName,
+			string status, List<BackupItemInfo> items,
+			string targetName, string personalNote, CharRestoreTheme theme )
+		{
 			from.CloseGump( typeof( CharacterRestoreGump ) );
 			from.SendGump( new CharacterRestoreGump( from, page, itemPage,
 				backupPath, accountName, charName, status,
-				items ?? m_Items, targetName, personalNote ) );
+				items ?? m_Items, targetName, personalNote, (int)theme ) );
 		}
 
 	// ----------------------------------------------------------------
@@ -1284,10 +1398,10 @@ namespace Server.Gumps
 		// Build the restoration bag
 		string bundleName = StringCatalog.TryResolveByKey(
 			AccountLang.GetLanguageCode( from.Account ),
-			"charrestore.npc.bundle_name" ) ?? "Restoration Bundle";
+			CharRestoreThemes.ThemeKey( m_Theme, "npc.bundle_name" ) ) ?? "Restoration Bundle";
 
-		Bag bag = null;
-		try { bag = new Bag(); }
+		CharRestoreBag bag = null;
+		try { bag = new CharRestoreBag(); }
 		catch ( Exception ex )
 		{
 			CharRestoreLogger.LogError( logPath, "Bag creation", ex );
@@ -1295,6 +1409,7 @@ namespace Server.Gumps
 			return;
 		}
 		bag.Name = bundleName;
+		bag.TargetName = string.IsNullOrWhiteSpace( targetName ) ? null : targetName.Trim();
 
 		int created = 0, failed = 0;
 
@@ -1354,6 +1469,7 @@ namespace Server.Gumps
 
 		npc.TargetName     = string.IsNullOrWhiteSpace( targetName ) ? null : targetName.Trim();
 		npc.PersonalNote   = string.IsNullOrWhiteSpace( personalNote ) ? null : personalNote.Trim();
+		npc.RestoreTheme   = m_Theme;
 		npc.RestorationBag = bag;
 		npc.LogPath        = logPath;
 
@@ -1369,16 +1485,16 @@ namespace Server.Gumps
 			return;
 		}
 
-		// Place the bag in the NPC's backpack
-		try
+		// Place the bag in the NPC's backpack (PlaceInBackpack — never fall back to world drop)
+		npc.EnsureBackpack();
+
+		if ( !npc.TryStoreRestorationBag() )
 		{
-			npc.AddToBackpack( bag );
-		}
-		catch ( Exception ex )
-		{
-			// Non-fatal: NPC exists but bag isn't in backpack.
-			// Log and let GM investigate.
-			CharRestoreLogger.LogError( logPath, "NPC AddToBackpack", ex );
+			CharRestoreLogger.LogError( logPath, "NPC TryStoreRestorationBag",
+				new InvalidOperationException( "Could not place restoration bag in NPC backpack." ) );
+			try { npc.Delete(); bag.Delete(); } catch { }
+			from.SendMessage( 0x20, StringCatalog.ResolveByKey( from.Account, "eng.internal_error_could_not_place_restoration_bag_on_npc_dot" ) );
+			return;
 		}
 
 		// Visual feedback
@@ -1408,16 +1524,9 @@ namespace Server.Gumps
 	}
 
 	/// <summary>
-	/// Attempts to create a single game item from a <see cref="BackupItemInfo"/>.
-	/// <para>
-	/// All properties parsed from <c>Item.Serialize v14</c> are applied after
-	/// construction. Each property is validated against a game-specific cap before
-	/// application; out-of-range values are clamped or discarded with a log entry.
-	/// Subclass-specific properties (BaseWeapon stats, BaseArmor resistances, etc.)
-	/// cannot be read from the base serialization and therefore retain the values
-	/// set by the item's no-arg constructor.
-	/// </para>
-	/// Returns null and increments <paramref name="failed"/> on any unrecoverable problem.
+	/// Attempts to create a single game item from a <see cref="BackupItemInfo"/>
+	/// using full save deserialization when <see cref="BackupItemInfo.SerializeBlob"/>
+	/// is available.
 	/// </summary>
 	private static Item TryCreateItem( string logPath, BackupItemInfo info, ref int failed )
 	{
@@ -1454,8 +1563,13 @@ namespace Server.Gumps
 			failed++; return null;
 		}
 
-		// ── 2. Instantiate ──────────────────────────────────────────────
-		Item newItem;
+		// ── 2. Full deserialize from backup blob (subclass stats, spellbook content, …) ──
+		Item newItem = BackupSaveAnalyzer.DeserializeItemFromBlob( logPath, info, t );
+
+		if ( newItem != null && !newItem.Deleted )
+			return newItem;
+
+		// ── 3. Fallback: base fields only when blob missing or deserialize failed ──
 		try { newItem = (Item)Activator.CreateInstance( t ); }
 		catch ( Exception ex )
 		{
@@ -1470,15 +1584,13 @@ namespace Server.Gumps
 			failed++; return null;
 		}
 
-		// ── 3. Apply all backed-up properties with caps ─────────────────
-		// Subclass properties are NOT changed; only base Item fields are set.
+		CharRestoreLogger.LogItemFail( logPath, info,
+			"Full deserialize unavailable — restored base Item fields only (stats/spells may differ)." );
+
 		if ( info.FullProps.HasValue )
 			ApplyBackupProperties( newItem, info.FullProps.Value, logPath, info );
 		else
-		{
-			// Fallback: apply only the three directly available fields
 			ApplyBasicFields( newItem, info.Hue, info.Amount, info.Name, logPath, info );
-		}
 
 		return newItem;
 	}
@@ -1682,14 +1794,16 @@ namespace Server.Gumps
 
 				from.CloseGump( typeof( CharacterRestoreGump ) );
 				from.SendGump( new CharacterRestoreGump( from, PageNPCConfig, 0,
-					m_BackupPath, m_AccountName, m_CharName, m_StatusText, m_Items, name, m_PersonalNote ) );
+					m_BackupPath, m_AccountName, m_CharName, m_StatusText, m_Items, name, m_PersonalNote,
+					(int)m_Gump.Theme ) );
 			}
 
 			protected override void OnTargetCancel( Mobile from, TargetCancelType cancelType )
 			{
 				from.CloseGump( typeof( CharacterRestoreGump ) );
 				from.SendGump( new CharacterRestoreGump( from, PageNPCConfig, 0,
-					m_BackupPath, m_AccountName, m_CharName, m_StatusText, m_Items, "", m_PersonalNote ) );
+					m_BackupPath, m_AccountName, m_CharName, m_StatusText, m_Items, "", m_PersonalNote,
+					(int)m_Gump.Theme ) );
 			}
 		}
 	}

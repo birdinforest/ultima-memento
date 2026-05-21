@@ -3859,7 +3859,7 @@ namespace Server
 						else
 							m_Parent = null;
 
-						if ( m_Parent == null && (parent.IsMobile || parent.IsItem) )
+						if ( m_Parent == null && (parent.IsMobile || parent.IsItem) && !World.CharRestoreDeserializing )
 							Delete();
 					}
 
@@ -3979,7 +3979,7 @@ namespace Server
 						else
 							m_Parent = null;
 
-						if ( m_Parent == null && (parent.IsMobile || parent.IsItem) )
+						if ( m_Parent == null && (parent.IsMobile || parent.IsItem) && !World.CharRestoreDeserializing )
 							Delete();
 					}
 
@@ -4072,7 +4072,7 @@ namespace Server
 					else
 						m_Parent = null;
 
-					if ( m_Parent == null && (parent.IsMobile || parent.IsItem) )
+					if ( m_Parent == null && (parent.IsMobile || parent.IsItem) && !World.CharRestoreDeserializing )
 						Delete();
 
 					int count = reader.ReadInt();
