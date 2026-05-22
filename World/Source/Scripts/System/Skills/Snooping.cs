@@ -76,12 +76,12 @@ namespace Server.SkillHandlers
 
 					if ( map != null )
 					{
-						string message = String.Format( StringCatalog.ResolveByKey(ns.Mobile.Account, "skl.snooping.notice"), from.Name, root.Name );
-
 						IPooledEnumerable eable = map.GetClientsInRange( from.Location, 8 );
 
 						foreach ( NetState ns in eable )
 						{
+							string message = String.Format( StringCatalog.ResolveByKey(ns.Mobile.Account, "skl.snooping.notice"), from.Name, root.Name );
+
 							if ( ns.Mobile != from )
 								ns.Mobile.SendMessage( message );
 						}

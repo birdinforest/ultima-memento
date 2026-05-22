@@ -159,6 +159,7 @@ namespace Server.SkillHandlers
 					}
 				}
 
+				int min, max, mana;
 				string message_key;
 
 				if ( toChannel != null )
