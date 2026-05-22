@@ -127,7 +127,7 @@ namespace Server.Items
 
             if (this.Movable)
 			{
-                from.SendMessage("This must be locked down in a house to use!");
+                from.SendMessage( StringCatalog.Resolve( from.Account, "This must be locked down in a house to use!" ) );
 			}
 			else if ( from.Skills[SkillName.Camping].Base < 100 )
 			{
@@ -281,7 +281,7 @@ namespace Server.Items
 			}
 
             if (this.Movable)
-                from.SendMessage("This must be locked down in a house to use!");
+                from.SendMessage( StringCatalog.Resolve( from.Account, "This must be locked down in a house to use!" ) );
 			else if ( from.Skills[SkillName.Camping].Base < 100 )
 				from.SendMessage ("Only grandmasters in camping may stable pets at home!");
 			else if ( list.Count > 0 )

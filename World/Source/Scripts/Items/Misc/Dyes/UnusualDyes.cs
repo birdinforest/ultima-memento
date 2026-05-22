@@ -5,6 +5,8 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -28,13 +30,13 @@ namespace Server.Items
 			Amount = amount;
 			switch( Utility.RandomMinMax( 0, 6 ) )
 			{
-				case 0: Name = "an odd jar of dye"; break;
-				case 1: Name = "an unusual jar of dye"; break;
-				case 2: Name = "a bizarre jar of dye"; break;
-				case 3: Name = "a curious jar of dye"; break;
-				case 4: Name = "a peculiar jar of dye"; break;
-				case 5: Name = "a strange jar of dye"; break;
-				case 6: Name = "a weird jar of dye"; break;
+				case 0: Name = StringCatalog.Resolve(null, "an odd jar of dye"); break;
+				case 1: Name = StringCatalog.Resolve(null, "an unusual jar of dye"); break;
+				case 2: Name = StringCatalog.Resolve(null, "a bizarre jar of dye"); break;
+				case 3: Name = StringCatalog.Resolve(null, "a curious jar of dye"); break;
+				case 4: Name = StringCatalog.Resolve(null, "a peculiar jar of dye"); break;
+				case 5: Name = StringCatalog.Resolve(null, "a strange jar of dye"); break;
+				case 6: Name = StringCatalog.Resolve(null, "a weird jar of dye"); break;
 			}
 			Hue = Utility.RandomSpecialHue();
 			DyeColor = Hue;
@@ -59,7 +61,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What dye tub do you want to mix this in?" );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "What dye tub do you want to mix this in?"));
 				t = new DyeTarget( this );
 				from.Target = t;
 			}
@@ -97,7 +99,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That dye tub may not be redyed." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "That dye tub may not be redyed."));
 					}
 				}
 				else if ( targeted is MagicPigment )

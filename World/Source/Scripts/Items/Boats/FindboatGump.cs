@@ -7,6 +7,7 @@ using Server.Prompts;
 using Server.Multis;
 using Server.Targeting;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Gumps
 {

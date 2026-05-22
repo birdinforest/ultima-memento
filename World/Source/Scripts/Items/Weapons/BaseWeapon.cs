@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections;
 using Server.Network;
 using Server.Targeting;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Spells;
 using Server.Spells.Necromancy;
@@ -720,13 +721,13 @@ namespace Server.Items
 				if( RequiredRace == Race.Elf )
 					from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
 				else
-					from.SendMessage( "Only {0} may use this.", RequiredRace.PluralName );
+					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "Only {0} may use this.", RequiredRace.PluralName ) );
 
 				return false;
 			}
 			else if ( from.Dex < DexRequirement )
 			{
-				from.SendMessage( "You are not nimble enough to equip that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not nimble enough to equip that." ) );
 				return false;
 			} 
 			else if ( from.Str < AOS.Scale( StrRequirement, 100 - GetLowerStatReq() ) )
@@ -736,7 +737,7 @@ namespace Server.Items
 			}
 			else if ( from.Int < IntRequirement )
 			{
-				from.SendMessage( "You are not intelligent enough to equip that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not intelligent enough to equip that." ) );
 				return false;
 			}
 			else if ( !from.CanBeginAction( typeof( BaseWeapon ) ) )

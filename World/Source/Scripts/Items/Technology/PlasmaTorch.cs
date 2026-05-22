@@ -3,6 +3,8 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -16,7 +18,7 @@ namespace Server.Items
 		[Constructable]
 		public PlasmaTorch() : base( 0x2D86 )
 		{
-			Name = "plasma torch";
+Name = StringCatalog.Resolve(null, "plasma torch");
 			Technology = true;
 			InfoText1 = "used to melt through most";
 			InfoText2 = "chest traps and locks";
@@ -56,7 +58,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What chest do you want to use the torch on?" );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "What chest do you want to use the torch on?"));
 				t = new UnlockTarget( this );
 				from.Target = t;
 			}
@@ -80,22 +82,22 @@ namespace Server.Items
 				}
 				else if ( targeted == m_Key )
 				{
-					from.SendMessage( "This torch is to melt locks and traps on most chests." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "This torch is to melt locks and traps on most chests."));
 				}
 				else if ( targeted is BaseHouseDoor )  // house door check
 				{
-					from.SendMessage( "This torch is to melt locks and traps on most chests." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "This torch is to melt locks and traps on most chests."));
 				}
 				else if ( targeted is Item && ((Item)targeted).VirtualContainer )
 				{
-					from.SendMessage( "This key is to unlock almost any container." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "This key is to unlock almost any container."));
 				}
 				else if ( targeted is BaseDoor )
 				{
 					if ( Server.Items.DoorType.IsDungeonDoor( (BaseDoor)targeted ) )
 					{
 						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendMessage( "That does not need to be unlocked." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "That does not need to be unlocked."));
 
 						else
 						{
@@ -107,7 +109,7 @@ namespace Server.Items
 						}
 					}
 					else
-						from.SendMessage( "That does not need to be unlocked." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "That does not need to be unlocked."));
 				}
 				else if ( targeted is ILockable )
 				{
@@ -116,7 +118,7 @@ namespace Server.Items
 					TrapableContainer cont3 = o as TrapableContainer;
 					if (cont2 == null || cont3 == null)
 					{
-						from.SendMessage("That is not a container.");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "That is not a container."));
 						return;
 					}
 
@@ -124,11 +126,11 @@ namespace Server.Items
 					{
 						if ( o is BaseDoor && !((BaseDoor)o).UseLocks() )  // this seems to check house doors also
 						{
-							from.SendMessage( "This torch is to melt locks and traps on most chests." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "This torch is to melt locks and traps on most chests."));
 						}
 						else if ( targeted is TreasureMapChest )
 						{
-							from.SendMessage( "The torch seems to have done nothing to the mechanism inside." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "The torch seems to have done nothing to the mechanism inside."));
 							m_Key.Consume();
 						}
 						else if ( 100 >= cont2.RequiredSkill )
@@ -159,7 +161,7 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								from.SendMessage( "The torch seems to have melted the mechanism inside." );
+								from.SendMessage(StringCatalog.Resolve(from.Account, "The torch seems to have melted the mechanism inside."));
 							}
 
 							from.RevealingAction();
@@ -179,7 +181,7 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								from.SendMessage( "The torch seems to have melted the mechanism inside." );
+								from.SendMessage(StringCatalog.Resolve(from.Account, "The torch seems to have melted the mechanism inside."));
 							}
 
 							from.RevealingAction();
@@ -188,18 +190,18 @@ namespace Server.Items
 						}
 						else 
 						{
-							from.SendMessage( "The torch seems to have done nothing to the mechanism inside." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "The torch seems to have done nothing to the mechanism inside."));
 							m_Key.Consume();
 						}
 					}
 					else
 					{
-						from.SendMessage( "You don't need to use torch on that." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You don't need to use torch on that."));
 					}
 				}
 				else
 				{
-					from.SendMessage( "This torch is to melt locks and traps on most chests." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "This torch is to melt locks and traps on most chests."));
 				}
 			}
 		}

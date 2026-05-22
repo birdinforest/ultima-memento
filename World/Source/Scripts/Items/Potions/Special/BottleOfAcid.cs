@@ -38,7 +38,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What chest do you want to use the acid on?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What chest do you want to use the acid on?" ) );
 				t = new UnlockTarget( this );
 				from.Target = t;
 			}
@@ -62,22 +62,22 @@ namespace Server.Items
 				}
 				else if ( targeted == m_Key )
 				{
-					from.SendMessage( "This acid is to dissolve locks and traps on most chests." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This acid is to dissolve locks and traps on most chests." ) );
 				}
 				else if ( targeted is BaseHouseDoor )  // house door check
 				{
-					from.SendMessage( "This acid is to dissolve locks and traps on most chests." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This acid is to dissolve locks and traps on most chests." ) );
 				}
 				else if ( targeted is Item && ((Item)targeted).VirtualContainer )
 				{
-					from.SendMessage( "This key is to unlock almost any container." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This key is to unlock almost any container." ) );
 				}
 				else if ( targeted is BaseDoor )
 				{
 					if ( Server.Items.DoorType.IsDungeonDoor( (BaseDoor)targeted ) )
 					{
 						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendMessage( "That does not need to be unlocked." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "That does not need to be unlocked." ) );
 
 						else
 						{
@@ -90,7 +90,7 @@ namespace Server.Items
 						}
 					}
 					else
-						from.SendMessage( "That does not need to be unlocked." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "That does not need to be unlocked." ) );
 				}
 				else if ( targeted is Head )
 				{
@@ -102,11 +102,11 @@ namespace Server.Items
 						m_Key.Consume();
 						((Item)targeted).ItemID = 0x1AE0;
 						if ( (((Item)targeted).Name).Contains(" head ") ){ (((Item)targeted).Name) = (((Item)targeted).Name).Replace(" head ", " skull "); }
-						from.SendMessage( "The acid melts the skin away, leaving only a skull." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The acid melts the skin away, leaving only a skull." ) );
 					}
 					else
 					{
-						from.SendMessage( "Someone already used acid to melt the skin away." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "Someone already used acid to melt the skin away." ) );
 					}
 				}
 				else if ( targeted is ILockable )
@@ -116,7 +116,7 @@ namespace Server.Items
 					TrapableContainer cont3 = o as TrapableContainer;
 					if (cont2 == null || cont3 == null)
 					{
-						from.SendMessage("That is not a container.");
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That is not a container." ) );
 						return;
 					}
 
@@ -124,11 +124,11 @@ namespace Server.Items
 					{
 						if ( o is BaseDoor && !((BaseDoor)o).UseLocks() )  // this seems to check house doors also
 						{
-							from.SendMessage( "This acid is to dissolve locks and traps on most chests." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "This acid is to dissolve locks and traps on most chests." ) );
 						}
 						else if ( targeted is TreasureMapChest )
 						{
-							from.SendMessage( "The acid seems to have done nothing to the mechanism inside." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "The acid seems to have done nothing to the mechanism inside." ) );
 							m_Key.Consume();
 						}
 						else if ( 100 >= cont2.RequiredSkill )
@@ -159,7 +159,7 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								from.SendMessage( "The acid seems to have eaten away at the mechanism inside." );
+								from.SendMessage( StringCatalog.Resolve( from.Account, "The acid seems to have eaten away at the mechanism inside." ) );
 							}
 
 							from.RevealingAction();
@@ -180,7 +180,7 @@ namespace Server.Items
 							if ( targeted is Item )
 							{
 								Item item = (Item)targeted;
-								from.SendMessage( "The acid seems to have eaten away at the mechanism inside." );
+								from.SendMessage( StringCatalog.Resolve( from.Account, "The acid seems to have eaten away at the mechanism inside." ) );
 							}
 
 							from.RevealingAction();
@@ -190,18 +190,18 @@ namespace Server.Items
 						}
 						else 
 						{
-							from.SendMessage( "The acid seems to have done nothing to the mechanism inside." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "The acid seems to have done nothing to the mechanism inside." ) );
 							m_Key.Consume();
 						}
 					}
 					else
 					{
-						from.SendMessage( "You don't need to use acid on that." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need to use acid on that." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "This acid is to dissolve locks and traps on most chests." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This acid is to dissolve locks and traps on most chests." ) );
 				}
 			}
 		}

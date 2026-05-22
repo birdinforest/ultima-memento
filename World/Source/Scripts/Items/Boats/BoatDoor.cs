@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Commands;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -66,7 +67,7 @@ namespace Server.Items
 
 			if ( inCombat )
 			{
-				m.SendMessage( "You cannot run down below during combat." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You cannot run down below during combat." ) );
 				return;
 			}
 			else if ( m.InRange( this.GetWorldLocation(), 1 ) && m.Map == this.Map )

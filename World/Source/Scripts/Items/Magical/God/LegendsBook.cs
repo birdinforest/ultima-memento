@@ -20,7 +20,7 @@ namespace Server.Items
 			Weight = 1.0;
 			Movable = false;
 			Hue = 0xB93;
-			Name = "Legendary Artefacts";
+			Name = StringCatalog.Resolve(null, "Legendary Artefacts");
 		}
 
 		public override void OnDoubleClick( Mobile from )

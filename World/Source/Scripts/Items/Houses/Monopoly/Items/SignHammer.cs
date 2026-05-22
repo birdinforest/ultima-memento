@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Localization;
 using Server.Multis;
 using Server.Targeting;
 
@@ -193,7 +194,7 @@ namespace Knives.TownHouses
         {
             if (RootParent != m)
             {
-                m.SendMessage("That item must be in your backpack to use.");
+                m.SendMessage(StringCatalog.Resolve(m.Account, "That item must be in your backpack to use."));
                 return;
             }
 
@@ -201,7 +202,7 @@ namespace Knives.TownHouses
 
             if (m.AccessLevel == AccessLevel.Player && (house == null || house.Owner != m))
             {
-                m.SendMessage("You have to be inside your house to use this.");
+                m.SendMessage(StringCatalog.Resolve(m.Account, "You have to be inside your house to use this."));
                 return;
             }
 
@@ -214,7 +215,7 @@ namespace Knives.TownHouses
 
             if (item == null)
             {
-                m.SendMessage("You cannot change that with this.");
+                m.SendMessage(StringCatalog.Resolve(m.Account, "You cannot change that with this."));
                 return;
             }
 
@@ -229,7 +230,7 @@ namespace Knives.TownHouses
                 int id = GetFlipFor(item.ItemID);
 
                 if (id == item.ItemID)
-                    m.SendMessage("You cannot change that with this.");
+                    m.SendMessage(StringCatalog.Resolve(m.Account, "You cannot change that with this."));
                 else
                     item.ItemID = id;
             }
@@ -238,7 +239,7 @@ namespace Knives.TownHouses
                 int id = GetNextSign(item.ItemID);
 
                 if (id == item.ItemID)
-                    m.SendMessage("You cannot change that with this.");
+                    m.SendMessage(StringCatalog.Resolve(m.Account, "You cannot change that with this."));
                 else
                     item.ItemID = id;
             }

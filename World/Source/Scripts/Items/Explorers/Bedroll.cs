@@ -69,15 +69,15 @@ namespace Server.Items
 
                 if ( from.Region is PublicRegion || from.Region is ProtectedRegion || from.Region is SafeRegion )
                 {
-                    from.SendMessage("You don't need to use a bedroll here!");
+                    from.SendMessage( StringCatalog.Resolve( from.Account, "You don't need to use a bedroll here!" ) );
                 }
                 else if ( BedsNearby( from ) )
 				{
-					from.SendMessage( "You already have a bedroll laid out!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a bedroll laid out!" ) );
 				}
 				else if ( Server.Items.Kindling.EnemiesNearby( from ) )
 				{
-					from.SendMessage( "It is not safe enough to setup camp!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "It is not safe enough to setup camp!" ) );
 				}
 				else if ( DateTime.Now >= pm.Bedroll )
 				{
@@ -102,7 +102,7 @@ namespace Server.Items
 
 						if ( bedLocation == Point3D.Zero )
 						{
-							from.SendMessage( "There is no spot nearby to place your bedroll." );
+							from.SendMessage( StringCatalog.Resolve( from.Account, "There is no spot nearby to place your bedroll." ) );
 						}
 						else
 						{
@@ -117,7 +117,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You can only lay out a bedroll every 10 minutes!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You can only lay out a bedroll every 10 minutes!" ) );
 				}
 			}
 		}

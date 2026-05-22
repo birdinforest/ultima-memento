@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -10,8 +11,22 @@ namespace Server.Items
 			if ( !id )
 			{
 				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
+		}
+
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
 		}
 
 		public override double DefaultWeight
@@ -103,6 +118,7 @@ namespace Server.Items
 			Light = LightType.Circle150;
 			Name = "copper coins";
 			Hue = 0x68F;
+			ColorText3 = null;
 		}
 	}
 

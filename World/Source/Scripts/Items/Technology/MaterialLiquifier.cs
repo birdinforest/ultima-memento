@@ -11,6 +11,8 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -20,7 +22,7 @@ namespace Server.Items
 		public MaterialLiquifier() : base( 0x4C13 )
 		{
 			Weight = 5.0;
-			Name = "material liquifier";
+Name = StringCatalog.Resolve(null, "material liquifier");
 			Technology = true;
 			Light = LightType.Circle150;
 			LimitsMax = Utility.RandomMinMax( 10, 20 );
@@ -55,16 +57,16 @@ namespace Server.Items
 
 				if ( dropped.Hue < 1 )
 				{
-					from.SendMessage( "Something went wrong and the item was destroyed." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "Something went wrong and the item was destroyed."));
 				}
 				else
 				{
-					from.SendMessage( "The item has been destroyed." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "The item has been destroyed."));
 					Item bottle = from.Backpack.FindItemByType( typeof ( Bottle ) );
 					if ( bottle.Amount > 1 ){ bottle.Amount = bottle.Amount - 1; } else { bottle.Delete(); }
-					from.SendMessage( "You place a colored vial of in your pack." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You place a colored vial of in your pack."));
 					MagicalDyes vial = new MagicalDyes();
-					vial.Name = "colored dye";
+					vial.Name = StringCatalog.Resolve(null, "colored dye");
 					vial.Hue = dropped.Hue;
 					from.AddToBackpack( vial );
 				}
@@ -74,7 +76,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "You need an empty bottle!" );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You need an empty bottle!"));
 			}
 
 			return false;

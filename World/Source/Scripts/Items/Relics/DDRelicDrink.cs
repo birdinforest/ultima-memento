@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using System.Collections;
 using Server.Network;
 using Server.Targeting;
@@ -16,7 +17,6 @@ namespace Server.Items
 			if ( !id )
 			{
 				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
 		}
 
@@ -100,6 +100,21 @@ namespace Server.Items
 			Name = sLook + sType + sLiquid;
 		}
 
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( NotIdentified )
@@ -107,7 +122,7 @@ namespace Server.Items
 				if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID )
 				{
 					if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack ) 
-					from.SendMessage( "This must be in your backpack to identify." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to identify." ) );
 					else 
 						IDCommand( from );
 				}
@@ -122,17 +137,17 @@ namespace Server.Items
 				if ( Weight > 75 )
 				{
 					from.AddToBackpack( new Barrel() );
-					from.SendMessage( "You down the entire keg and are no longer thirsty." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You down the entire keg and are no longer thirsty." ) );
 				}
 				else if ( Weight > 25 )
 				{
 					from.AddToBackpack( new PotionKeg() );
-					from.SendMessage( "You down the entire keg and are no longer thirsty." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You down the entire keg and are no longer thirsty." ) );
 				}
 				else
 				{
 					from.AddToBackpack( new Bottle() );
-					from.SendMessage( "You drink the entire bottle and are no longer thirsty." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the entire bottle and are no longer thirsty." ) );
 				}
 			}
 		}
@@ -164,6 +179,8 @@ namespace Server.Items
 
 			if ( version < 1 )
 				CoinPrice = reader.ReadInt();
+
+			ColorText3 = null;
 		}
 	}
 }

@@ -13,6 +13,7 @@ using Server.Targeting;
 using Server.Multis;
 using Server.Regions;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {

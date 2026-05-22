@@ -38,7 +38,7 @@ namespace Server.Items
       	{ 
          	if ( m.InRange( this.GetWorldLocation(), 1 ) ) 
          	{ 
-				m.SendMessage( "What would you like to pour this on!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "What would you like to pour this on!" ) );
 				m.Target = new DurabilityTarget( this, m );
          	} 
          	else 
@@ -72,15 +72,15 @@ namespace Server.Items
 					BaseArmor repairing = (BaseArmor)targeted;
 					if ( !repairing.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "The item must be in your backpack to use that potion on it!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The item must be in your backpack to use that potion on it!" ) );
 					}
 					else if ( repairing.MaxHitPoints >= 50 )
 					{
-						from.SendMessage( "This item is already too durable to be affected!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This item is already too durable to be affected!" ) );
 					}
 					else
 					{
-						from.SendMessage( "You add to the durability of the item!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You add to the durability of the item!" ) );
 						repairing.MaxHitPoints += 10;
 						Server.Items.DurabilityPotion.ConsumeCharge( m_Potion, m_From );
 					}
@@ -90,15 +90,15 @@ namespace Server.Items
 					BaseWeapon repairing2 = (BaseWeapon)targeted;
 					if ( !repairing2.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "The item must be in your backpack to use that potion on it!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The item must be in your backpack to use that potion on it!" ) );
 					}
 					else if ( repairing2.MaxHitPoints >= 50 )
 					{
-						from.SendMessage( "This item is already too durable to be affected!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This item is already too durable to be affected!" ) );
 					}
 					else
 					{
-						from.SendMessage( "You add to the durability of the item!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You add to the durability of the item!" ) );
 						repairing2.MaxHitPoints += 10;
 						Server.Items.DurabilityPotion.ConsumeCharge( m_Potion, m_From );
 					}
@@ -108,26 +108,26 @@ namespace Server.Items
 					BaseClothing repairing = (BaseClothing)targeted;
 					if ( !repairing.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "The item must be in your backpack to use that potion on it!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "The item must be in your backpack to use that potion on it!" ) );
 					}
 					else if ( repairing.MaxHitPoints >= 50 )
 					{
-						from.SendMessage( "This item is already too durable to be affected!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This item is already too durable to be affected!" ) );
 					}
 					else
 					{
-						from.SendMessage( "You add to the durability of the item!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You add to the durability of the item!" ) );
 						repairing.MaxHitPoints += 10;
 						Server.Items.DurabilityPotion.ConsumeCharge( m_Potion, m_From );
 					}
 				}
 				else if ( targeted is Item )
 				{
-					from.SendMessage( "This item cannot be altered!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This item cannot be altered!" ) );
 				}
 				else
 				{
-					from.SendMessage( "You cannot do that!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot do that!" ) );
 				}
 			}
 		}

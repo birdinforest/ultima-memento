@@ -194,7 +194,7 @@ namespace Server.Items
         {
             if (dropped is Container)
             {
-                from.SendMessage("That item is not allowed in this container");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "That item is not allowed in this container"));
                 return false;
             }
 
@@ -204,12 +204,12 @@ namespace Server.Items
                     from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.delay"));
                 if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
 				{
-                    from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more seconds before you can try again"),
                       NextAccessTime.Subtract(DateTime.Now).Seconds));
                 }
 				else
 				{
-                    from.SendMessage(String.Format("You will need to wait approximately {0} more minutes before you can try again",
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more minutes before you can try again"),
                       NextAccessTime.Subtract(DateTime.Now).Minutes));
                 }
                   
@@ -237,12 +237,12 @@ namespace Server.Items
 
                 if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
 				{
-                    from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more seconds before you can try again"),
 					NextAccessTime.Subtract(DateTime.Now).Seconds));
                 }
 				else
                 {
-                    from.SendMessage(String.Format("You will need to wait approximately {0} more minutes before you can try again",
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more minutes before you can try again"),
 					NextAccessTime.Subtract(DateTime.Now).Minutes));
                 }
 

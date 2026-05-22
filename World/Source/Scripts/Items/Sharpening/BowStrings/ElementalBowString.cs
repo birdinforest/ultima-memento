@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class ElementalBowString : SplitElementalItemBase
@@ -5,7 +7,7 @@ namespace Server.Items
         [Constructable]
         public ElementalBowString() : base(0x543A)
         {
-            Name = "Elemental Bow String";
+            Name = StringCatalog.Resolve(null, "Elemental Bow String");
         }
 
         public ElementalBowString(Serial serial) : base(serial)
@@ -26,7 +28,7 @@ namespace Server.Items
         {
             if (from.Skills[SkillName.Bowcraft].Value < 100.0 || from.Skills[SkillName.Magery].Value < 100.0)
             {
-                from.SendMessage(32, "You need at least 100 Bowcraft and 100 Magery to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Bowcraft and 100 Magery to use this"));
                 return;
             }
 
@@ -39,7 +41,7 @@ namespace Server.Items
 
             if (false == weapon is BaseRanged)
             {
-                from.SendMessage(32, "You may only use this on ranged weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on ranged weapons"));
                 return false;
             }
 

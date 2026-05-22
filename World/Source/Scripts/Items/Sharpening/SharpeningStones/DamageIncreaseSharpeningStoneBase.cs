@@ -1,4 +1,5 @@
-﻿namespace Server.Items
+﻿using Server.Localization;
+using Server.Items
 {
     public abstract class DamageIncreaseSharpeningStoneBase : AddDamageItemBase
     {
@@ -12,7 +13,7 @@
 
         protected override void AfterItemDeleted(Mobile from)
         {
-            from.SendMessage(32, "You use the last of the sharpening stone");
+            from.SendMessage(32, StringCatalog.Resolve(from.Account, "You use the last of the sharpening stone"));
         }
 
         public override void GetProperties(ObjectPropertyList list)
@@ -36,7 +37,7 @@
 
             if (false == (weapon is BaseSword || weapon is BaseKnife || weapon is BaseAxe || weapon is BaseSpear))
             {
-                from.SendMessage(32, "You may only use this on bladed weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on bladed weapons"));
                 return false;
             }
 

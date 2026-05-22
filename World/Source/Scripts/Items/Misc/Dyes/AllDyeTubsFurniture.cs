@@ -3,6 +3,7 @@ using System;
 using Server.Items;
 using Server.Multis;
 using Server.Targeting;
+using Server.Localization;
 using Server.Mobiles;
 using Server.AllHues;
 
@@ -82,7 +83,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage("The dyetub cannot be in your pack.");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "The dyetub cannot be in your pack." ));
 			}
 		}
 
@@ -90,7 +91,7 @@ namespace Server.Items
 		{
 			if ( from.InRange( this.GetWorldLocation(), 1 ) )
 			{
-				from.SendMessage( "Select the item to dye" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Select the item to dye" ) );
 				from.Target = new AllDyeTubsFurnitureTarget( this );
 			}
 			else
@@ -145,7 +146,7 @@ namespace Server.Items
 					{
 						if( !item.IsChildOf(from.Backpack) )
 						{
-							from.SendMessage("The item must be in your pack.");
+							from.SendMessage(StringCatalog.Resolve( from.Account, "The item must be in your pack." ));
 						}	
 						else
 						{
@@ -164,12 +165,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage("That item cannot be dyed.");
+						from.SendMessage(StringCatalog.Resolve( from.Account, "That item cannot be dyed." ));
 					}
 				}
 				else
 				{
-					from.SendMessage("You cannot dye that.");
+					from.SendMessage(StringCatalog.Resolve( from.Account, "You cannot dye that." ));
 				}
 			}
 		}

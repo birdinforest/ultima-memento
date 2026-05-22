@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Targeting;
 
 namespace Knives.TownHouses
@@ -286,21 +287,21 @@ namespace Knives.TownHouses
         private void Price()
         {
             c_Contract.Price = GetTextFieldInt("Price");
-            Owner.SendMessage("Price set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Price set!"));
             NewGump();
         }
 
         private void Secures()
         {
             c_Contract.Secures = GetTextFieldInt("Secures");
-            Owner.SendMessage("Secures set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Secures set!"));
             NewGump();
         }
 
         private void Lockdowns()
         {
             c_Contract.Locks = GetTextFieldInt("Lockdowns");
-            Owner.SendMessage("Lockdowns set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Lockdowns set!"));
             NewGump();
         }
 
@@ -370,13 +371,13 @@ namespace Knives.TownHouses
 
 		private void MinZSelect()
 		{
-			Owner.SendMessage( "Target the base floor for your rental area." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the base floor for your rental area."));
 			Owner.Target = new InternalTarget( this, c_Contract, TargetType.MinZ );
 		}
 
 		private void MaxZSelect()
 		{
-			Owner.SendMessage( "Target the highest floor for your rental area." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the highest floor for your rental area."));
 			Owner.Target = new InternalTarget( this, c_Contract, TargetType.MaxZ );
 		}
 
@@ -415,7 +416,7 @@ namespace Knives.TownHouses
 
 		private void AddBlock()
 		{
-			Owner.SendMessage( "Target the north western corner." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the north western corner."));
 			Owner.Target = new InternalTarget( this, c_Contract, TargetType.BlockOne );
 		}
 
@@ -438,7 +439,7 @@ namespace Knives.TownHouses
 
 			if ( c_Contract.Price == 0 )
 			{
-				Owner.SendMessage( "You can't rent the area for 0 gold!" );
+				Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "You can't rent the area for 0 gold!"));
 				NewGump();
 				return;
 			}
@@ -454,7 +455,7 @@ namespace Knives.TownHouses
 				c_Contract.Locks = Core.AOS ? c_Contract.ParentHouse.GetAosMaxLockdowns() : c_Contract.ParentHouse.MaxLockDowns;
 			}
 
-			Owner.SendMessage( "You have finalized this rental contract.  Now find someone to sign it!" );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "You have finalized this rental contract.  Now find someone to sign it!"));
 		}
 
 		private class InternalTarget : Target
@@ -483,7 +484,7 @@ namespace Knives.TownHouses
 
 				if ( !c_Contract.ParentHouse.Region.Contains( new Point3D( point.X, point.Y, point.Z ) ) )
 				{
-					m.SendMessage( "You must target within the home." );
+					m.SendMessage(StringCatalog.Resolve(m.Account, "You must target within the home."));
 					m.Target = new InternalTarget( c_Gump, c_Contract, c_Type, c_BoundOne );
 					return;
 				}
@@ -498,9 +499,9 @@ namespace Knives.TownHouses
 
 					case TargetType.MinZ:
                         if (!c_Contract.ParentHouse.Region.Contains(new Point3D(point.X, point.Y, point.Z)))
-							m.SendMessage( "That isn't within your house." );
+							m.SendMessage(StringCatalog.Resolve(m.Account, "That isn't within your house."));
 						else if ( c_Contract.HasContractedArea( point.Z ) )
-							m.SendMessage( "That area is already taken by another rental contract." );
+							m.SendMessage(StringCatalog.Resolve(m.Account, "That area is already taken by another rental contract."));
 						else
 						{
 							c_Contract.MinZ = point.Z;
@@ -515,9 +516,9 @@ namespace Knives.TownHouses
 
 					case TargetType.MaxZ:
 						if ( !c_Contract.ParentHouse.Region.Contains(new Point3D(point.X, point.Y, point.Z)) )
-							m.SendMessage( "That isn't within your house." );
+							m.SendMessage(StringCatalog.Resolve(m.Account, "That isn't within your house."));
 						else if ( c_Contract.HasContractedArea( point.Z ) )
-							m.SendMessage( "That area is already taken by another rental contract." );
+							m.SendMessage(StringCatalog.Resolve(m.Account, "That area is already taken by another rental contract."));
 						else
 						{
 							c_Contract.MaxZ = point.Z+19;
@@ -531,7 +532,7 @@ namespace Knives.TownHouses
 						break;
 
 					case TargetType.BlockOne:
-						m.SendMessage( "Now target the south eastern corner." );
+						m.SendMessage(StringCatalog.Resolve(m.Account, "Now target the south eastern corner."));
 						m.Target = new InternalTarget( c_Gump, c_Contract, TargetType.BlockTwo, new Point3D( point.X, point.Y, point.Z ) );
 						break;
 
@@ -539,7 +540,7 @@ namespace Knives.TownHouses
 						Rectangle2D rect = TownHouseSetupGump.FixRect( new Rectangle2D( c_BoundOne, new Point3D( point.X+1, point.Y+1, point.Z ) ) );
 
 						if ( c_Contract.HasContractedArea( rect, point.Z ) )
-							m.SendMessage( "That area is already taken by another rental contract." );
+							m.SendMessage(StringCatalog.Resolve(m.Account, "That area is already taken by another rental contract."));
 						else
 						{
 							c_Contract.Blocks.Add( rect );

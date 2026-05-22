@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Multis;
 using Server.Gumps;
 
@@ -147,7 +148,7 @@ namespace Knives.TownHouses
         {
             TownHouseSign sign = new TownHouseSign();
             Owner.AddToBackpack(sign);
-            Owner.SendMessage("A new sign is now in your backpack.  It will move on it's own during setup, but if you don't complete setup you may want to delete it.");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "A new sign is now in your backpack.  It will move on it's own during setup, but if you don't complete setup you may want to delete it."));
 
             NewGump();
 

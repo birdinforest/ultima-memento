@@ -1,6 +1,5 @@
 using System;
-using Server.Network;
-using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -86,7 +85,7 @@ namespace Server.Items
 					message = "You cannot weigh that object.";
 				}
 
-				from.SendMessage( message );
+				from.SendMessage( StringCatalog.Resolve( from.Account, message ) );
 			}
 		}
 	}

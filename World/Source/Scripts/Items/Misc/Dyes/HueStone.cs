@@ -9,6 +9,7 @@ using Server.Items;
 using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -39,18 +40,18 @@ namespace Server.Items
 			{
 				string sCount = "charges";
 				if ( NCharges == 1 ){ sCount = "charge"; }
-				from.SendMessage( "This stone has " + NCharges + " " + sCount + "." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This stone has " + NCharges + " " + sCount + "." ) );
 
 				if ( NCharges > 0 )
 				{
-					from.SendMessage( "Choose an item you wish to change to the same color as the illusionist stone." );
-					from.SendMessage( "The item must be in your pack to change it`s color." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Choose an item you wish to change to the same color as the illusionist stone." ) );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The item must be in your pack to change it`s color." ) );
 					from.Target = new WHueTarget( this );
 				}
 				else
 				{
-					from.SendMessage( "There is not enough charges to use this illusionist stone." );
-					from.SendMessage( "You must target 500 gold to charge the stone." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "There is not enough charges to use this illusionist stone." ) );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must target 500 gold to charge the stone." ) );
 					from.Target = new WHueTarget( this );
 				}
 			}
@@ -135,7 +136,7 @@ namespace Server.Items
 
 					m_Dye.NType = iStone.Name;
 
-					from.SendMessage( "The Illusionist Stone magically changed color." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The Illusionist Stone magically changed color." ) );
 				}
 				else if ( obj is Item )
 				{
@@ -147,7 +148,7 @@ namespace Server.Items
 
 					if ( !iDye.IsChildOf( from.Backpack ) && !backpack )
 					{
-						from.SendMessage( "You can only use this stone on things in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this stone on things in your pack." ) );
 					}
 					else if ( ( iDye is Gold ) && ( iDye.Amount > 499 ) )
 					{
@@ -200,12 +201,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot use the stone on that." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use the stone on that." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot use the stone on that." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use the stone on that." ) );
 				}
 			}
 		}

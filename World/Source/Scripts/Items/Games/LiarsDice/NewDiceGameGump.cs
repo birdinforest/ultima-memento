@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Gumps;
 using Server.Network;
 using Server.Commands;
@@ -49,7 +50,7 @@ namespace Server.Gumps
 					
 					if(num > maxGameBal){
 						num = maxGameBal;
-						m.SendMessage( "You entered more than the max of " + maxGameBal + " gp. on this table, you are buying in with the max instead."  );	
+						m.SendMessage(StringCatalog.ResolveFormat(m.Account, "You entered more than the max of {0} gp. on this table, you are buying in with the max instead.", maxGameBal));	
 					}
 					//check if they have minimum game balance
 					if(num >= ds.getGameBalanceMin()){
@@ -59,18 +60,18 @@ namespace Server.Gumps
 					}					
 					else{
 						ds.ShowNewGameGump(m);
-						m.SendMessage( "You did not enter a sufficient minimum amount to play,try again." );
+						m.SendMessage(StringCatalog.Resolve(m.Account, "You did not enter a sufficient minimum amount to play,try again."));
 					}
 				}catch{
 					m.Frozen = false;
-					m.SendMessage( "You did not enter a amount of gold to play with, try again." );			
+					m.SendMessage(StringCatalog.Resolve(m.Account, "You did not enter a amount of gold to play with, try again."));			
 				}				
 			}else if(info.ButtonID == 2){
 				m.Frozen = false;
-				m.SendMessage( "You decided not to play Liars Dice.");
-			}
-			else{
-				state.Mobile.SendMessage( "Illegal option selected");
+				m.SendMessage(StringCatalog.Resolve(m.Account, "You decided not to play Liars Dice."));
+		}
+		else{
+				state.Mobile.SendMessage(StringCatalog.Resolve(state.Mobile.Account, "Illegal option selected"));
 			}
 		}    
     }    

@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,16 +22,16 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !Server.Items.BaseRace.BrainEater( from.RaceID ) )
-			{
-				from.SendMessage( "This looks like something zombies would eat." );
-				return;
-			}
-			if ( !IsChildOf( from.Backpack ) && Server.Items.BaseRace.BrainEater( from.RaceID ) ) 
-			{
-				from.SendMessage( "This must be in your backpack to eat." );
-				return;
-			}
+		if ( !Server.Items.BaseRace.BrainEater( from.RaceID ) )
+		{
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This looks like something zombies would eat." ) );
+			return;
+		}
+		if ( !IsChildOf( from.Backpack ) && Server.Items.BaseRace.BrainEater( from.RaceID ) ) 
+		{
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to eat." ) );
+			return;
+		}
 			else if ( Server.Items.BaseRace.BrainEater( from.RaceID ) )
 			{
 				from.Thirst = 20;
@@ -39,13 +40,13 @@ namespace Server.Items
 					from.Hunger += 3;
 
 					if ( from.Hunger < 5 )
-						from.SendMessage( "You eat the brains, but still need more." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the brains, but still need more." ) );
 					else if ( from.Hunger < 10 )
-						from.SendMessage( "You eat the brains, but still desire more." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the brains, but still desire more." ) );
 					else if ( from.Hunger < 15 )
-						from.SendMessage( "You eat the brains, but could still induldge yourself." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the brains, but could still induldge yourself." ) );
 					else
-						from.SendMessage( "You eat the brains, but have indulged in enough." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the brains, but have indulged in enough." ) );
 
 					from.PlaySound( Utility.Random( 0x3A, 3 ) );
 
@@ -58,7 +59,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You have indulged in enough brains for now." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You have indulged in enough brains for now." ) );
 					from.Hunger = 20;
 					from.Thirst = 20;
 				}

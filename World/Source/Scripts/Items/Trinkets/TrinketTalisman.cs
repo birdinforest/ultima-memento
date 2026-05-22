@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -242,12 +243,15 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Trinket");
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty(list, "prop.trinket.trinket");
+			else
+				list.Add( 1070722, "Trinket");
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "Trinkets are equipped on your hip." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "Trinkets are equipped on your hip." ) );
 			return;
 		}
 

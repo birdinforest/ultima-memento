@@ -6,6 +6,8 @@ using Server.Network;
 using Server.ContextMenus;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -134,13 +136,13 @@ namespace Server.Items
 			from.Target = new ContainSetTarg( from, box );
 
 			if ( box == 1 )
-				from.SendMessage( "Choose a container you want your loot gathered." );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "Choose a container you want your loot gathered."));
 
 			else if ( box == 2 )
-				from.SendMessage( "Choose a container for your crafted items." );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "Choose a container for your crafted items."));
 
 			else 
-				from.SendMessage( "Choose a container for your harvested items." );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "Choose a container for your harvested items."));
 		}
 
 		private class ContainSetTarg : Target
@@ -164,25 +166,25 @@ namespace Server.Items
 					if ( box.RootParentEntity == m_From && box.TryDropItem( m_From, dagger, false ) && m_Box == 1 )
 					{
 						m_From.ContainerLoot = box.Serial;
-						m_From.SendMessage( "Your loot container has been set." );
+						m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "Your loot container has been set."));
 					}
 					else if ( box.RootParentEntity == m_From && box.TryDropItem( m_From, dagger, false ) && m_Box == 2 )
 					{
 						m_From.ContainerCraft = box.Serial;
-						m_From.SendMessage( "Your crafting container has been set." );
+						m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "Your crafting container has been set."));
 					}
 					else if ( box.RootParentEntity == m_From && box.TryDropItem( m_From, dagger, false ) && m_Box == 3 )
 					{
 						m_From.ContainerHarvest = box.Serial;
-						m_From.SendMessage( "Your harvesting container has been set." );
+						m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "Your harvesting container has been set."));
 					}
 					else
-						m_From.SendMessage( "You must select a different container." );
+						m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "You must select a different container."));
 
 					dagger.Delete();
 				}
 				else
-					m_From.SendMessage( "You must select a container in your pack." );
+					m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "You must select a container in your pack."));
 			}
 		}
 
@@ -307,7 +309,7 @@ namespace Server.Items
 					int amount = 40;
 						if ( this is LargeHollowBook ){ amount = 50; }
 
-					from.SendMessage( "This hollow book can hold an additional {0} items or {1} stones", (amount - TotalItems), (amount - TotalWeight) );
+					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "This hollow book can hold an additional {0} items or {1} stones", (amount - TotalItems), (amount - TotalWeight) ));
 				}
 			}
 			else
@@ -698,7 +700,7 @@ namespace Server.Items
 		public SmallHollowBook() : base( 0x56F9 )
 		{
 			Weight = 2.0;
-			Name = "small hollow book";
+Name = StringCatalog.Resolve(null, "small hollow book");
 			ItemID = Utility.RandomList( 0x56F9,0x56FA,0x56FB,0x56FC,0x56FD,0x56FE,0x56FF,0x5700,0x5701,0x5702 );
 			Hue = Utility.RandomColor(0);
 			GumpID = 0x2A74;
@@ -761,7 +763,7 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			from.SendMessage("That is too big to store in here.");
+			from.SendMessage(StringCatalog.Resolve(from.Account, "That is too big to store in here."));
 			return false;
         }
 
@@ -772,7 +774,7 @@ namespace Server.Items
 				return base.OnDragDrop(from, dropped);
 			}
 
-			from.SendMessage("That is too big to store in here.");
+			from.SendMessage(StringCatalog.Resolve(from.Account, "That is too big to store in here."));
 			return false;
         }
 	}
@@ -792,7 +794,7 @@ namespace Server.Items
 		public LargeHollowBook() : base( 0x5703 )
 		{
 			Weight = 3.0;
-			Name = "large hollow book";
+Name = StringCatalog.Resolve(null, "large hollow book");
 			ItemID = Utility.RandomList( 0x5703,0x5704,0x5705,0x5706,0x5707,0x5708,0x5709,0x570A );
 			Hue = Utility.RandomColor(0);
 			GumpID = 0x2A74;
@@ -855,7 +857,7 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			from.SendMessage("That is too big to store in here.");
+			from.SendMessage(StringCatalog.Resolve(from.Account, "That is too big to store in here."));
 			return false;
         }
 
@@ -866,7 +868,7 @@ namespace Server.Items
 				return base.OnDragDrop(from, dropped);
 			}
 
-			from.SendMessage("That is too big to store in here.");
+			from.SendMessage(StringCatalog.Resolve(from.Account, "That is too big to store in here."));
 			return false;
         }
 	}
@@ -922,7 +924,7 @@ namespace Server.Items
 		[Constructable]
 		public LargeBag() : base( 0x1E3F )
 		{
-			Name = "large bag";
+Name = StringCatalog.Resolve(null, "large bag");
 			Weight = 2.0;
 			GumpID = 0x3D;
 		}
@@ -959,7 +961,7 @@ namespace Server.Items
 		[Constructable]
 		public BigBag() : base( 0x5777 )
 		{
-			Name = "big bag";
+Name = StringCatalog.Resolve(null, "big bag");
 			Weight = 4.0;
 			GumpID = 0x3D;
 			Hue = 0xB61;
@@ -997,7 +999,7 @@ namespace Server.Items
 		[Constructable]
 		public GiantBag() : base( 0x1248 )
 		{
-			Name = "giant bag";
+Name = StringCatalog.Resolve(null, "giant bag");
 			Weight = 4.0;
 			GumpID = 0x3D;
 			Hue = 0xB61;
@@ -1035,7 +1037,7 @@ namespace Server.Items
 		[Constructable]
 		public EnormousBag() : base( 0x55DD )
 		{
-			Name = "enormous bag";
+Name = StringCatalog.Resolve(null, "enormous bag");
 			Weight = 4.0;
 			GumpID = 0x3D;
 			Hue = 0xB61;
@@ -1073,7 +1075,7 @@ namespace Server.Items
 		[Constructable]
 		public LargeSack() : base( 0x1C10 )
 		{
-			Name = "large rucksack";
+Name = StringCatalog.Resolve(null, "large rucksack");
 			Weight = 3.0;
 			GumpID = 0x3C;
 			Hue = 0xB61;
@@ -1111,7 +1113,7 @@ namespace Server.Items
 		[Constructable]
 		public RuggedBackpack() : base( 0x27BE )
 		{
-			Name = "rugged backpack";
+Name = StringCatalog.Resolve(null, "rugged backpack");
 			Weight = 3.0;
 			GumpID = 0x3C;
 		}
@@ -1148,7 +1150,7 @@ namespace Server.Items
 		[Constructable]
 		public LargeBackpack() : base( 0x4C53 )
 		{
-			Name = "large backpack";
+Name = StringCatalog.Resolve(null, "large backpack");
 			Weight = 4.0;
 			GumpID = 0x3C;
 			Hue = 0xB61;
@@ -1307,7 +1309,7 @@ namespace Server.Items
 		public OrientBasket1() : base( 0x24D9 )
 		{
 			Weight = 1.0;
-			Name = "basket";
+Name = StringCatalog.Resolve(null, "basket");
 		}
 
 		public OrientBasket1( Serial serial ) : base( serial )
@@ -1337,7 +1339,7 @@ namespace Server.Items
 		public OrientBasket2() : base( 0x24D5 )
 		{
 			Weight = 1.0;
-			Name = "basket";
+Name = StringCatalog.Resolve(null, "basket");
 		}
 
 		public OrientBasket2( Serial serial ) : base( serial )
@@ -1367,7 +1369,7 @@ namespace Server.Items
 		public OrientBasket3() : base( 0x24DB )
 		{
 			Weight = 1.0;
-			Name = "basket";
+Name = StringCatalog.Resolve(null, "basket");
 		}
 
 		public OrientBasket3( Serial serial ) : base( serial )
@@ -1395,7 +1397,7 @@ namespace Server.Items
 		public OrientBasket4() : base( 0x24D7 )
 		{
 			Weight = 1.0;
-			Name = "basket";
+Name = StringCatalog.Resolve(null, "basket");
 		}
 
 		public OrientBasket4( Serial serial ) : base( serial )
@@ -1423,7 +1425,7 @@ namespace Server.Items
 		public OrientBasket5() : base( 0x24D8 )
 		{
 			Weight = 1.0;
-			Name = "basket";
+Name = StringCatalog.Resolve(null, "basket");
 		}
 
 		public OrientBasket5( Serial serial ) : base( serial )
@@ -1585,7 +1587,7 @@ namespace Server.Items
 		[Constructable]
 		public MetalSafe() : base( 0x436 )
 		{
-			Name = "metal safe";
+Name = StringCatalog.Resolve(null, "metal safe");
 			GumpID = 0x975;
 			Weight = 25.0;
 		}
@@ -1616,7 +1618,7 @@ namespace Server.Items
 		[Constructable]
 		public IronSafe() : base( 0x5329 )
 		{
-			Name = "iron safe";
+Name = StringCatalog.Resolve(null, "iron safe");
 			GumpID = 0x975;
 			Weight = 20.0;
 		}
@@ -1647,7 +1649,7 @@ namespace Server.Items
 		[Constructable]
 		public MetalVault() : base( 0x4FE3 )
 		{
-			Name = "metal safe";
+Name = StringCatalog.Resolve(null, "metal safe");
 			GumpID = 0x975;
 			Weight = 25.0;
 		}
@@ -1678,7 +1680,7 @@ namespace Server.Items
 		[Constructable]
 		public ArmsBarrel() : base( 0x4D05 )
 		{
-			Name = "arms barrel";
+Name = StringCatalog.Resolve(null, "arms barrel");
 			GumpID = 0x3E;
 			ResourceMods.SetRandomResource( false, false, this, CraftResource.Iron, false, null );
 			Weight = 25.0;
@@ -1710,7 +1712,7 @@ namespace Server.Items
 		[Constructable]
 		public NecromancerBarrel() : base( 0x0C0F )
 		{
-			Name = "necromancer barrel";
+Name = StringCatalog.Resolve(null, "necromancer barrel");
 			GumpID = 0x3E;
 			Weight = 25.0;
 		}
@@ -1807,7 +1809,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneCoffer() : base( 0x281D )
 		{
-			Name = "stone coffer";
+Name = StringCatalog.Resolve(null, "stone coffer");
 			GumpID = 0x2810;
 		}
 
@@ -1842,7 +1844,7 @@ namespace Server.Items
 		[Constructable]
 		public VirtueStoneChest() : base( 0x52FB )
 		{
-			Name = "chest of virtue";
+Name = StringCatalog.Resolve(null, "chest of virtue");
 			GumpID = 0x2810;
 			Light = LightType.Circle225;
 		}
@@ -1878,7 +1880,7 @@ namespace Server.Items
 		[Constructable]
 		public GildedStoneChest() : base( 0x281F )
 		{
-			Name = "gilded stone chest";
+Name = StringCatalog.Resolve(null, "gilded stone chest");
 			GumpID = 0x2810;
 		}
 
@@ -1913,7 +1915,7 @@ namespace Server.Items
 		[Constructable]
 		public FancyStoneChest() : base( 0x2821 )
 		{
-			Name = "fancy stone chest";
+Name = StringCatalog.Resolve(null, "fancy stone chest");
 			GumpID = 0x2810;
 		}
 
@@ -1948,7 +1950,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneStrongbox() : base( 0x2825 )
 		{
-			Name = "stone strongbox";
+Name = StringCatalog.Resolve(null, "stone strongbox");
 			GumpID = 0x2810;
 		}
 
@@ -1983,7 +1985,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneChest() : base( 0x2823 )
 		{
-			Name = "stone chest";
+Name = StringCatalog.Resolve(null, "stone chest");
 			GumpID = 0x2810;
 		}
 
@@ -2018,7 +2020,7 @@ namespace Server.Items
 		[Constructable]
 		public SilverChest() : base( 0x3330 )
 		{
-			Name = "silver chest";
+Name = StringCatalog.Resolve(null, "silver chest");
 		}
 
 		public SilverChest( Serial serial ) : base( serial )
@@ -2052,7 +2054,7 @@ namespace Server.Items
 		[Constructable]
 		public RustyChest() : base( 0x3332 )
 		{
-			Name = "rusty chest";
+Name = StringCatalog.Resolve(null, "rusty chest");
 		}
 
 		public RustyChest( Serial serial ) : base( serial )
@@ -2086,7 +2088,7 @@ namespace Server.Items
 		[Constructable]
 		public BronzeChest() : base( 0x3334 )
 		{
-			Name = "bronze chest";
+Name = StringCatalog.Resolve(null, "bronze chest");
 		}
 
 		public BronzeChest( Serial serial ) : base( serial )
@@ -2120,7 +2122,7 @@ namespace Server.Items
 		[Constructable]
 		public IronChest() : base( 0x3336 )
 		{
-			Name = "iron chest";
+Name = StringCatalog.Resolve(null, "iron chest");
 		}
 
 		public IronChest( Serial serial ) : base( serial )
@@ -2154,7 +2156,7 @@ namespace Server.Items
 		[Constructable]
 		public SpaceChest() : base( 0x10EC )
 		{
-			Name = "metal trunk";
+Name = StringCatalog.Resolve(null, "metal trunk");
 			GumpID = 0x1D;
 		}
 
@@ -2187,7 +2189,7 @@ namespace Server.Items
 		[Constructable]
 		public SpaceCrate() : base( 0x10EA )
 		{
-			Name = "metal crate";
+Name = StringCatalog.Resolve(null, "metal crate");
 			GumpID = 0x1D;
 		}
 
@@ -2220,7 +2222,7 @@ namespace Server.Items
 		[Constructable]
 		public HazardCrate() : base( 0x10EB )
 		{
-			Name = "containment crate";
+Name = StringCatalog.Resolve(null, "containment crate");
 			GumpID = 0x1D;
 		}
 
@@ -2458,7 +2460,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenCoffin() : base( 0x2800 )
 		{
-			Name = "coffin";
+Name = StringCatalog.Resolve(null, "coffin");
 			GumpID = 0x41D;
 		}
 
@@ -2488,7 +2490,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenCasket() : base( 0x27E9 )
 		{
-			Name = "coffin";
+Name = StringCatalog.Resolve(null, "coffin");
 			GumpID = 0x41D;
 		}
 
@@ -2519,7 +2521,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneCoffin() : base( 0x27E0 )
 		{
-			Name = "sarcophagus";
+Name = StringCatalog.Resolve(null, "sarcophagus");
 			Weight = 100.0;
 			GumpID = 0x1D;
 		}
@@ -2551,7 +2553,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneCasket() : base( 0x2802 )
 		{
-			Name = "sarcophagus";
+Name = StringCatalog.Resolve(null, "sarcophagus");
 			Weight = 100.0;
 			GumpID = 0x1D;
 		}
@@ -2583,7 +2585,7 @@ namespace Server.Items
 		[Constructable]
 		public RockUrn() : base( 0x1AFC )
 		{
-			Name = "urn";
+Name = StringCatalog.Resolve(null, "urn");
 			Weight = 20.0;
 			GumpID = 0x13B1;
 		}
@@ -2615,7 +2617,7 @@ namespace Server.Items
 		[Constructable]
 		public RockVase() : base( 0x1AFE )
 		{
-			Name = "vase";
+Name = StringCatalog.Resolve(null, "vase");
 			Weight = 20.0;
 			GumpID = 0x13B1;
 		}
@@ -2646,7 +2648,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneOrnateUrn() : base( 0x39A2 )
 		{
-			Name = "ornate urn";
+Name = StringCatalog.Resolve(null, "ornate urn");
 			Weight = 20.0;
 			GumpID = 0x13B1;
 		}
@@ -2677,7 +2679,7 @@ namespace Server.Items
 		[Constructable]
 		public StoneOrnateTallVase() : base( 0x398B )
 		{
-			Name = "ornate vase";
+Name = StringCatalog.Resolve(null, "ornate vase");
 			Weight = 20.0;
 			GumpID = 0x13B1;
 		}
@@ -2740,7 +2742,7 @@ namespace Server.Items
 		[Constructable]
 		public HugeCrate() : base( 0x4F86 )
 		{
-			Name = "huge crate";
+Name = StringCatalog.Resolve(null, "huge crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2771,7 +2773,7 @@ namespace Server.Items
 		[Constructable]
 		public StableCrate() : base( 0x4F87 )
 		{
-			Name = "stable crate";
+Name = StringCatalog.Resolve(null, "stable crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2802,7 +2804,7 @@ namespace Server.Items
 		[Constructable]
 		public FletcherCrate() : base( 0x4F88 )
 		{
-			Name = "bowcrafter crate";
+Name = StringCatalog.Resolve(null, "bowcrafter crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2833,7 +2835,7 @@ namespace Server.Items
 		[Constructable]
 		public ButcherCrate() : base( 0x4F89 )
 		{
-			Name = "butcher crate";
+Name = StringCatalog.Resolve(null, "butcher crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2864,7 +2866,7 @@ namespace Server.Items
 		[Constructable]
 		public CarpenterCrate() : base( 0x4F8A )
 		{
-			Name = "carpenter crate";
+Name = StringCatalog.Resolve(null, "carpenter crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2895,7 +2897,7 @@ namespace Server.Items
 		[Constructable]
 		public JewelerCrate() : base( 0x4F8B )
 		{
-			Name = "jeweler crate";
+Name = StringCatalog.Resolve(null, "jeweler crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2926,7 +2928,7 @@ namespace Server.Items
 		[Constructable]
 		public WizardryCrate() : base( 0x4F8C )
 		{
-			Name = "wizardry crate";
+Name = StringCatalog.Resolve(null, "wizardry crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2957,7 +2959,7 @@ namespace Server.Items
 		[Constructable]
 		public BlacksmithCrate() : base( 0x4F8D )
 		{
-			Name = "blacksmith crate";
+Name = StringCatalog.Resolve(null, "blacksmith crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -2988,7 +2990,7 @@ namespace Server.Items
 		[Constructable]
 		public ProvisionerCrate() : base( 0x4F8E )
 		{
-			Name = "provisioner crate";
+Name = StringCatalog.Resolve(null, "provisioner crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3019,7 +3021,7 @@ namespace Server.Items
 		[Constructable]
 		public TailorCrate() : base( 0x4F8F )
 		{
-			Name = "tailor crate";
+Name = StringCatalog.Resolve(null, "tailor crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3050,7 +3052,7 @@ namespace Server.Items
 		[Constructable]
 		public TinkerCrate() : base( 0x4F90 )
 		{
-			Name = "tinker crate";
+Name = StringCatalog.Resolve(null, "tinker crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3081,7 +3083,7 @@ namespace Server.Items
 		[Constructable]
 		public AlchemyCrate() : base( 0x4F91 )
 		{
-			Name = "alchemy crate";
+Name = StringCatalog.Resolve(null, "alchemy crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3112,7 +3114,7 @@ namespace Server.Items
 		[Constructable]
 		public BakerCrate() : base( 0x4F92 )
 		{
-			Name = "baker crate";
+Name = StringCatalog.Resolve(null, "baker crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3143,7 +3145,7 @@ namespace Server.Items
 		[Constructable]
 		public TreasureCrate() : base( 0x4F93 )
 		{
-			Name = "treasure crate";
+Name = StringCatalog.Resolve(null, "treasure crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3174,7 +3176,7 @@ namespace Server.Items
 		[Constructable]
 		public MusicianCrate() : base( 0x4F94 )
 		{
-			Name = "musician crate";
+Name = StringCatalog.Resolve(null, "musician crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3205,7 +3207,7 @@ namespace Server.Items
 		[Constructable]
 		public BeekeeperCrate() : base( 0x4F95 )
 		{
-			Name = "beekeeper crate";
+Name = StringCatalog.Resolve(null, "beekeeper crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3236,7 +3238,7 @@ namespace Server.Items
 		[Constructable]
 		public LibrarianCrate() : base( 0x4F96 )
 		{
-			Name = "librarian crate";
+Name = StringCatalog.Resolve(null, "librarian crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3267,7 +3269,7 @@ namespace Server.Items
 		[Constructable]
 		public BowyerCrate() : base( 0x4F97 )
 		{
-			Name = "bowyer crate";
+Name = StringCatalog.Resolve(null, "bowyer crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3298,7 +3300,7 @@ namespace Server.Items
 		[Constructable]
 		public HealerCrate() : base( 0x4F98 )
 		{
-			Name = "healer crate";
+Name = StringCatalog.Resolve(null, "healer crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3329,7 +3331,7 @@ namespace Server.Items
 		[Constructable]
 		public TavernCrate() : base( 0x4F99 )
 		{
-			Name = "tavern crate";
+Name = StringCatalog.Resolve(null, "tavern crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3360,7 +3362,7 @@ namespace Server.Items
 		[Constructable]
 		public NecromancerCrate() : base( 0x4F9A )
 		{
-			Name = "necromancer crate";
+Name = StringCatalog.Resolve(null, "necromancer crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3391,7 +3393,7 @@ namespace Server.Items
 		[Constructable]
 		public AdventurerCrate() : base( 0x4F9B )
 		{
-			Name = "adventurer crate";
+Name = StringCatalog.Resolve(null, "adventurer crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3422,7 +3424,7 @@ namespace Server.Items
 		[Constructable]
 		public SailorCrate() : base( 0x4F9C )
 		{
-			Name = "sailor crate";
+Name = StringCatalog.Resolve(null, "sailor crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3453,7 +3455,7 @@ namespace Server.Items
 		[Constructable]
 		public SupplyCrate() : base( 0x4F9D )
 		{
-			Name = "supply crate";
+Name = StringCatalog.Resolve(null, "supply crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );
@@ -3484,7 +3486,7 @@ namespace Server.Items
 		[Constructable]
 		public ArmsCrate() : base( 0x4F9E )
 		{
-			Name = "arms crate";
+Name = StringCatalog.Resolve(null, "arms crate");
 			GumpID = 0x44;
 			Weight = 10.0;
 			ResourceMods.DefaultItemHue( this );

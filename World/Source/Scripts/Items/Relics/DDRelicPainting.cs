@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -12,8 +13,22 @@ namespace Server.Items
 			if ( !id )
 			{
 				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
+		}
+
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
 		}
 
 		[Constructable]
@@ -159,14 +174,14 @@ namespace Server.Items
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( "This must be in your backpack to identify." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to identify." ) );
 			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				IDCommand( from );
 			else if ( !IsChildOf( from.Backpack ) )
-				from.SendMessage( "This must be in your backpack to flip." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to flip." ) );
 			else if ( this.Name.Contains(" (covered in muck)") )
 			{
-				from.SendMessage( "You clear the muck from the painting." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You clear the muck from the painting." ) );
 				this.Hue = 0;
 				if ( ItemID >= 0x5377 && ItemID <= 0x5390 ){ Hue = Utility.RandomList( 0xABE, 0x4A7, 0x747, 0x96C, 0x7DA, 0x415, 0x908, 0x712, 0x1CD, 0x9C2, 0x843, 0x750, 0xA94, 0x973, 0xA3A ); }
 				this.Name = this.Name.Replace(" (covered in muck)", "");
@@ -387,6 +402,8 @@ namespace Server.Items
 
 			if ( version < 1 )
 				CoinPrice = reader.ReadInt();
+
+			ColorText3 = null;
 		}
 	}
 }

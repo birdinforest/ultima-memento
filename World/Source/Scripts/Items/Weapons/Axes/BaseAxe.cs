@@ -186,10 +186,10 @@ namespace Server.Items
 
 				if ( mod == null )
 				{
-					defender.SendMessage( "You receive a concussion blow!" );
+					defender.SendMessage( StringCatalog.Resolve( defender.Account, "You receive a concussion blow!" ) );
 					defender.AddStatMod( new StatMod( StatType.Int, "Concussion", -(defender.RawInt / 2), TimeSpan.FromSeconds( 30.0 ) ) );
 
-					attacker.SendMessage( "You deliver a concussion blow!" );
+					attacker.SendMessage( StringCatalog.Resolve( attacker.Account, "You deliver a concussion blow!" ) );
 					attacker.PlaySound( 0x308 );
 				}
 			}

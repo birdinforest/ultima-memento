@@ -1,5 +1,6 @@
 ﻿using System;
 using Server;
+using Server.Localization;
 using Server.Gumps;
 using Server.ContextMenus;
 using System.Collections;
@@ -51,7 +52,7 @@ namespace Server.Items
         {
 			if ( dropped is Container )
 			{
-                from.SendMessage("You cannot store containers in this bag.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot store containers in this bag."));
                 return false;
 			}
 
@@ -62,7 +63,7 @@ namespace Server.Items
         {
 			if ( dropped is Container )
 			{
-                from.SendMessage("You cannot store containers in this bag.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot store containers in this bag."));
                 return false;
 			}
 

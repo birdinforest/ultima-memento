@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Multis;
 using Server.Items;
 using Server.Mobiles;
@@ -393,7 +394,7 @@ namespace Knives.TownHouses
 
             if (blocks.Count > 500)
             {
-                m.SendMessage("Due to size of the area, skipping the preview.");
+				m.SendMessage(StringCatalog.Resolve(m.Account, "Due to size of the area, skipping the preview."));
                 return;
             }
 
@@ -503,13 +504,13 @@ namespace Knives.TownHouses
             {
                 if (Owned)
                 {
-                    m.SendMessage("Someone already owns this house!");
+                    m.SendMessage(StringCatalog.Resolve(m.Account, "Someone already owns this house!"));
                     return;
                 }
 
                 if (!PriceReady)
                 {
-                    m.SendMessage("The setup for this house is not yet complete.");
+                    m.SendMessage(StringCatalog.Resolve(m.Account, "The setup for this house is not yet complete."));
                     return;
                 }
 
@@ -520,7 +521,7 @@ namespace Knives.TownHouses
 
                 if (m.AccessLevel == AccessLevel.Player && !Server.Mobiles.Banker.Withdraw(m, price))
                 {
-                    m.SendMessage("You cannot afford this house.");
+                    m.SendMessage(StringCatalog.Resolve(m.Account, "You cannot afford this house."));
                     return;
                 }
 
@@ -817,7 +818,7 @@ namespace Knives.TownHouses
 			c_DemolishTime = DateTime.Now;
 
 			if ( !c_House.Deleted && Owned )
-				c_House.Owner.SendMessage( "Demolition canceled." );
+				c_House.Owner.SendMessage(StringCatalog.Resolve(c_House.Owner.Account, "Demolition canceled."));
 		}
 
 		public void CheckDemolishTimer()
@@ -846,7 +847,7 @@ namespace Knives.TownHouses
 
 		protected virtual void DemolishAlert()
 		{
-			c_House.Owner.SendMessage( "You no longer meet the requirements for your town house, which will be demolished automatically in {0}:{1}:{2}.", (c_DemolishTime-DateTime.Now).Hours, (c_DemolishTime-DateTime.Now).Minutes, (c_DemolishTime-DateTime.Now).Seconds );
+			c_House.Owner.SendMessage(StringCatalog.ResolveFormat(c_House.Owner.Account, "You no longer meet the requirements for your town house, which will be demolished automatically in {0}:{1}:{2}.", (c_DemolishTime-DateTime.Now).Hours, (c_DemolishTime-DateTime.Now).Minutes, (c_DemolishTime-DateTime.Now).Seconds ));
 		}
 
 		protected void PackUpHouse()
@@ -973,7 +974,7 @@ namespace Knives.TownHouses
 			if ( c_RentTimer == null || !Owned )
 				return;
 
-			c_House.Owner.SendMessage( "This rent cycle ends in {0} days, {1}:{2}:{3}.", (c_RentTime-DateTime.Now).Days, (c_RentTime-DateTime.Now).Hours, (c_RentTime-DateTime.Now).Minutes, (c_RentTime-DateTime.Now).Seconds );
+			c_House.Owner.SendMessage(StringCatalog.ResolveFormat(c_House.Owner.Account, "This rent cycle ends in {0} days, {1}:{2}:{3}.", (c_RentTime-DateTime.Now).Days, (c_RentTime-DateTime.Now).Hours, (c_RentTime-DateTime.Now).Minutes, (c_RentTime-DateTime.Now).Seconds ));
 		}
 
 		private void RentDue()
@@ -983,20 +984,20 @@ namespace Knives.TownHouses
 
 			if ( !c_RecurRent )
 			{
-				c_House.Owner.SendMessage( "Your town house rental contract has expired, and the bank has once again taken possession." );
+				c_House.Owner.SendMessage(StringCatalog.Resolve(c_House.Owner.Account, "Your town house rental contract has expired, and the bank has once again taken possession."));
 				PackUpHouse();
 				return;
 			}
 
 			if ( !c_Free && c_House.Owner.AccessLevel == AccessLevel.Player && !Server.Mobiles.Banker.Withdraw( c_House.Owner, c_Price ) )
 			{
-				c_House.Owner.SendMessage( "Since you can not afford the rent, the bank has reclaimed your town house." );
+				c_House.Owner.SendMessage(StringCatalog.Resolve(c_House.Owner.Account, "Since you can not afford the rent, the bank has reclaimed your town house."));
 				PackUpHouse();
 				return;
 			}
 
 			if ( !c_Free )
-				c_House.Owner.SendMessage( "The bank has withdrawn {0} gold rent for your town house.", c_Price );
+				c_House.Owner.SendMessage(StringCatalog.ResolveFormat(c_House.Owner.Account, "The bank has withdrawn {0} gold rent for your town house.", c_Price ));
 
 			OnRentPaid();
 
@@ -1026,7 +1027,7 @@ namespace Knives.TownHouses
 
 				if ( complete )
 				{
-					c_House.Owner.SendMessage( "You now own your rental home." );
+					c_House.Owner.SendMessage(StringCatalog.Resolve(c_House.Owner.Account, "You now own your rental home."));
 					c_RentByTime = TimeSpan.FromDays( 0 );
 					return;
 				}
@@ -1108,7 +1109,7 @@ namespace Knives.TownHouses
 			else if ( CanBuyHouse( m ) && !BaseHouse.HasAccountHouse( m ) )
 				new TownHouseConfirmGump( m, this );
 			else
-				m.SendMessage( "You cannot purchase this house." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "You cannot purchase this house."));
 		}
 
 		public override void Delete()

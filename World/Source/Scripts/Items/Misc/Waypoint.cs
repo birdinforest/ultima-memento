@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Targeting;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -15,7 +16,7 @@ namespace Server.Items
 
 		public static void WayPointSeq_OnCommand( CommandEventArgs arg )
 		{
-			arg.Mobile.SendMessage( "Target the position of the first way point." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "Target the position of the first way point." ) );
 			arg.Mobile.Target = new WayPointSeqTarget( null );
 		}
 
@@ -58,7 +59,7 @@ namespace Server.Items
 		{
 			if ( from.AccessLevel >= AccessLevel.GameMaster )
 			{
-				from.SendMessage( "Target the next way point in the sequence." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Target the next way point in the sequence." ) );
 
 				from.Target = new NextPointTarget( this );
 			}
@@ -121,7 +122,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "Target a way point." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Target a way point." ) );
 			}
 		}
 	}
@@ -150,11 +151,11 @@ namespace Server.Items
 				point.MoveToWorld( p, from.Map );
 
 				from.Target = new WayPointSeqTarget( point );
-				from.SendMessage( "Target the position of the next way point in the sequence, or target a way point link the newest way point to." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Target the position of the next way point in the sequence, or target a way point link the newest way point to." ) );
 			}
 			else
 			{
-				from.SendMessage( "Target a position, or another way point." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Target a position, or another way point." ) );
 			}
 		}
 	}

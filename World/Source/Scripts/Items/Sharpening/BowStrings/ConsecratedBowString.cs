@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class ConsecratedBowString : ConsecrateItemBase
@@ -16,7 +18,7 @@ namespace Server.Items
         [Constructable]
         public ConsecratedBowString(int uses) : base(uses, 0x543A)
         {
-            Name = "Consecrated Bow String";
+            Name = StringCatalog.Resolve(null, "Consecrated Bow String");
         }
 
         public override void GetProperties(ObjectPropertyList list)
@@ -33,7 +35,7 @@ namespace Server.Items
         {
             if (from.Skills[SkillName.Bowcraft].Value < 100.0 || from.Skills[SkillName.Knightship].Value < 80.0)
             {
-                from.SendMessage(32, "You need at least 100 Bowcraft and 80 Knightship to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Bowcraft and 80 Knightship to use this"));
                 return;
             }
 
@@ -46,7 +48,7 @@ namespace Server.Items
 
             if (false == weapon is BaseRanged)
             {
-                from.SendMessage(32, "You may only use this on ranged weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on ranged weapons"));
                 return false;
             }
 

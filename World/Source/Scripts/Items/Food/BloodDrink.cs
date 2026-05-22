@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -23,16 +24,16 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !Server.Items.BaseRace.BloodDrinker( from.RaceID ) )
-			{
-				from.SendMessage( "This looks like something vampires would drink." );
-				return;
-			}
-			if ( !IsChildOf( from.Backpack ) && Server.Items.BaseRace.BloodDrinker( from.RaceID ) ) 
-			{
-				from.SendMessage( "This must be in your backpack to drink." );
-				return;
-			}
+		if ( !Server.Items.BaseRace.BloodDrinker( from.RaceID ) )
+		{
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This looks like something vampires would drink." ) );
+			return;
+		}
+		if ( !IsChildOf( from.Backpack ) && Server.Items.BaseRace.BloodDrinker( from.RaceID ) ) 
+		{
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to drink." ) );
+			return;
+		}
 			else if ( Server.Items.BaseRace.BloodDrinker( from.RaceID ) )
 			{
 				if ( from.Hunger < 20 )
@@ -41,13 +42,13 @@ namespace Server.Items
 					from.Thirst += 3;
 
 					if ( from.Hunger < 5 )
-						from.SendMessage( "You drink the blood, but still need more." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the blood, but still need more." ) );
 					else if ( from.Hunger < 10 )
-						from.SendMessage( "You drink the blood, but still desire more." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the blood, but still desire more." ) );
 					else if ( from.Hunger < 15 )
-						from.SendMessage( "You drink the blood, but could still induldge yourself." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the blood, but could still induldge yourself." ) );
 					else
-						from.SendMessage( "You drink the blood, but have indulged in enough." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the blood, but have indulged in enough." ) );
 
 					from.PlaySound( 0x2D6 );
 
@@ -60,7 +61,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You have indulged in enough blood for now." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You have indulged in enough blood for now." ) );
 					from.Hunger = 20;
 					from.Thirst = 20;
 				}

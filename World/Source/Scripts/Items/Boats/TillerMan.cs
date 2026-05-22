@@ -3,6 +3,7 @@ using Server.Multis;
 using Server.Network;
 using Server.Gumps;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -105,7 +106,7 @@ namespace Server.Items
 					}
 					else if ( DockSearch.NearDock(from) == false && !BaseBoat.isCarpet( m_Boat ) )
 					{
-						from.SendMessage( "You must be near a dock to dry dock your ship!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to dry dock your ship!" ) );
 					}
 					else
 					{
@@ -129,7 +130,7 @@ namespace Server.Items
 					}
 					else if ( DockSearch.NearDock(from) == false && !BaseBoat.isCarpet( m_Boat ) )
 					{
-						from.SendMessage( "You must be near a dock to dry dock your ship!" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to dry dock your ship!" ) );
 					}
 					else
 					{

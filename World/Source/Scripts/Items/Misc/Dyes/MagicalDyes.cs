@@ -5,6 +5,8 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -18,7 +20,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicalDyes( int amount ) : base( 0xF7D )
 		{
-			Name = "magical dye";
+Name = StringCatalog.Resolve(null, "magical dye");
 			Weight = 0.01;
 			Stackable = true;
 			Amount = amount;
@@ -44,7 +46,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What do you want to use this on?" );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "What do you want to use this on?"));
 				t = new DyeTarget( this );
 				from.Target = t;
 			}
@@ -71,11 +73,11 @@ namespace Server.Items
 
 					if ( !iDye.IsChildOf( from.Backpack ) && !backpack )
 					{
-						from.SendMessage( "You can only dye things in your pack." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You can only dye things in your pack."));
 					}
 					else if ( ( iDye.Stackable == true ) || ( iDye.ItemID == 8702 ) || ( iDye.ItemID == 4011 ) )
 					{
-						from.SendMessage( "You cannot dye that." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot dye that."));
 					}
 					else if ( iDye.IsChildOf( from.Backpack ) || backpack )
 					{
@@ -96,12 +98,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot dye that with this." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot dye that with this."));
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot dye that with this." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot dye that with this."));
 				}
 			}
 		}

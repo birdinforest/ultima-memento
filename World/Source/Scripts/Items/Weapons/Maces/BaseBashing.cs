@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -50,7 +51,7 @@ namespace Server.Items
 			{
 				damage *= 1.5;
 
-				attacker.SendMessage( "You deliver a crushing blow!" ); // Is this not localized?
+				attacker.SendMessage( StringCatalog.Resolve( attacker.Account, "You deliver a crushing blow!" ) );
 				attacker.PlaySound( 0x11C );
 			}
 

@@ -7,6 +7,7 @@ using Server.Spells;
 using Server.Gumps;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -278,7 +279,7 @@ namespace Server.Items
 					}
 					else if ( ( isShanty( item, from ) || isLawn( item, from ) ) && ( m_Decorator.Command == DecorateCommand.Turn || m_Decorator.Command == DecorateCommand.Deed || m_Decorator.Command == DecorateCommand.Release || m_Decorator.Command == DecorateCommand.Secure || m_Decorator.Command == DecorateCommand.Lock || m_Decorator.Command == DecorateCommand.Turn || m_Decorator.Command == DecorateCommand.Turn ) )
 					{
-						from.SendMessage( "You can only move these items up, down, north, south, east, or west." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You can only move these items up, down, north, south, east, or west."));
 					}
 					else
 					{
@@ -303,11 +304,11 @@ namespace Server.Items
 			{
 				FlipableAttribute[] attributes = (FlipableAttribute[])item.GetType().GetCustomAttributes( typeof( FlipableAttribute ), false );
 
-				if( item is BaseDoor )
-				{
-					from.SendMessage("You cannot move doors around with this.");
-				}
-				else if( item is WaxPainting )
+		if( item is BaseDoor )
+		{
+			from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
+		}
+		else if( item is WaxPainting )
 				{
 					WaxPainting sPainting = (WaxPainting)item;
 					if ( item.ItemID == sPainting.PaintingFlipID1 ){ item.ItemID = sPainting.PaintingFlipID2; } else { item.ItemID = sPainting.PaintingFlipID1; }
@@ -1915,11 +1916,12 @@ namespace Server.Items
 					from.AddToBackpack( new MyCircusTentEastAddonDeed( TentHue1, TentHue2, 1 ) );
 					item.Delete();
 				}
-				else if ( item is BaseAddonDeed ) { from.SendMessage( "That deed cannot be flipped to face another direction!" ); }
-				else { from.SendMessage( "This only flips deeds that are on the floor in your home!" ); }
+			else if ( item is BaseAddonDeed ) { from.SendMessage(StringCatalog.Resolve(from.Account, "That deed cannot be flipped to face another direction!")); }
+			else { from.SendMessage(StringCatalog.Resolve(from.Account, "This only flips deeds that are on the floor in your home!")); }
 			}
 
 			private static void Up( Item item, Mobile from )
+		{
 			{
 				int floorZ = GetFloorZ( item );
 
@@ -1931,8 +1933,8 @@ namespace Server.Items
                 {
                     from.SendLocalizedMessage(1042274); // You cannot raise it up any higher.
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( floorZ > int.MinValue && item.Z < (floorZ + 15) ) // Confirmed : no height checks here
 					item.Location = new Point3D( item.Location, item.Z + 1 );
 				else
@@ -1951,8 +1953,8 @@ namespace Server.Items
                 {
                     from.SendLocalizedMessage(1042275); // You cannot lower it down any further.
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( floorZ > int.MinValue && item.Z > GetFloorZ( item ) )
 					item.Location = new Point3D( item.Location, item.Z - 1 );
 				else
@@ -1967,15 +1969,15 @@ namespace Server.Items
                 {
 					if ( !ValidRegion( m_PointDest, from.Map, from ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else if ( m_PointDest.Y > from.Location.Y + Remodeling.Front || m_PointDest.Y < from.Location.Y - Remodeling.Back )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else if ( m_PointDest.X > from.Location.X + Remodeling.Right || m_PointDest.X < from.Location.X - Remodeling.Left )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else
 					{
@@ -1986,21 +1988,21 @@ namespace Server.Items
                 {
 					if ( !ShantyRegion( m_PointDest, from.Map ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else
 					{
 						item.Y = (item.Y - 1);
 					}
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( !SpellHelper.CheckMulti( m_PointDest, from.Map ) )
-					from.SendMessage("You cannot move it north any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it north any further."));
 				else if (house.IsInside(new Point3D(item.X, item.Y - 1, item.Z), item.ItemData.Height))
 					item.Y = (item.Y - 1);
 				else
-					from.SendMessage("You cannot move it north any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it north any further."));
 			}
 
 			private static void East( Item item, Mobile from, BaseHouse house  )
@@ -2011,15 +2013,15 @@ namespace Server.Items
                 {
 					if ( !ValidRegion( m_PointDest, from.Map, from ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else if ( m_PointDest.Y > from.Location.Y + Remodeling.Front || m_PointDest.Y < from.Location.Y - Remodeling.Back )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else if ( m_PointDest.X > from.Location.X + Remodeling.Right || m_PointDest.X < from.Location.X - Remodeling.Left )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else
 					{
@@ -2030,21 +2032,21 @@ namespace Server.Items
                 {
 					if ( !ShantyRegion( m_PointDest, from.Map ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else
 					{
 						item.X = (item.X + 1);
 					}
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( !SpellHelper.CheckMulti( m_PointDest, from.Map ) )
-					from.SendMessage("You cannot move it east any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it east any further."));
 				else if (house.IsInside(new Point3D(item.X + 1, item.Y, item.Z), item.ItemData.Height))
 					item.X = (item.X + 1);
 				else
-					from.SendMessage("You cannot move it east any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it east any further."));
 			}
 
 			private static void South(Item item, Mobile from, BaseHouse house)
@@ -2055,15 +2057,15 @@ namespace Server.Items
                 {
 					if ( !ValidRegion( m_PointDest, from.Map, from ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else if ( m_PointDest.Y > from.Location.Y + Remodeling.Front || m_PointDest.Y < from.Location.Y - Remodeling.Back )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else if ( m_PointDest.X > from.Location.X + Remodeling.Right || m_PointDest.X < from.Location.X - Remodeling.Left )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else
 					{
@@ -2074,21 +2076,21 @@ namespace Server.Items
                 {
 					if ( !ShantyRegion( m_PointDest, from.Map ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else
 					{
 						item.Y = (item.Y + 1);
 					}
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( !SpellHelper.CheckMulti( m_PointDest, from.Map ) )
-					from.SendMessage("You cannot move it south any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it south any further."));
 				else if (house.IsInside(new Point3D(item.X, item.Y + 1, item.Z), item.ItemData.Height))
 					item.Y = (item.Y + 1);
 				else
-					from.SendMessage("You cannot move it south any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it south any further."));
 			}
 
 			private static void West(Item item, Mobile from, BaseHouse house)
@@ -2099,15 +2101,15 @@ namespace Server.Items
                 {
 					if ( !ValidRegion( m_PointDest, from.Map, from ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else if ( m_PointDest.Y > from.Location.Y + Remodeling.Front || m_PointDest.Y < from.Location.Y - Remodeling.Back )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else if ( m_PointDest.X > from.Location.X + Remodeling.Right || m_PointDest.X < from.Location.X - Remodeling.Left )
 					{
-						from.SendMessage("You may have to get closer to move that within your land!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You may have to get closer to move that within your land!"));
 					}
 					else
 					{
@@ -2118,21 +2120,21 @@ namespace Server.Items
                 {
 					if ( !ShantyRegion( m_PointDest, from.Map ) )
 					{
-						from.SendMessage("You cannot move that over there!");
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move that over there!"));
 					}
 					else
 					{
 						item.X = (item.X - 1);
 					}
                 }
-				else if( item is BaseDoor )
-					from.SendMessage("You cannot move doors around with this.");
+			else if( item is BaseDoor )
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move doors around with this."));
 				else if ( !SpellHelper.CheckMulti( m_PointDest, from.Map ) )
-					from.SendMessage("You cannot move it west any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it west any further."));
 				else if (house.IsInside(new Point3D(item.X - 1, item.Y, item.Z), item.ItemData.Height))
 					item.X = (item.X - 1);
 				else
-					from.SendMessage("You cannot move it west any further.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot move it west any further."));
 			}
 
 			private static bool isLawn( Item item, Mobile from )

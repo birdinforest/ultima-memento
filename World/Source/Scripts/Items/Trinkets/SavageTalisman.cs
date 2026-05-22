@@ -1,4 +1,5 @@
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,14 +31,24 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( ItemOwner != null ){ list.Add( 1070722, "Talisman for " + ItemOwner.Name + "" ); } else { list.Add( 1070722, "Trinket"); }
+			if ( BuildingPropertyListLocale != null )
+			{
+				if ( ItemOwner != null )
+					AddLocalizedProperty(list, "prop.trinket.savage.for", ItemOwner.Name);
+				else
+					AddLocalizedProperty(list, "prop.trinket.trinket");
+			}
+			else
+			{
+				if ( ItemOwner != null ){ list.Add( 1070722, "Talisman for " + ItemOwner.Name + "" ); } else { list.Add( 1070722, "Trinket"); }
+			}
         }
 
 		public override bool OnEquip( Mobile from )
 		{
 			if ( this.ItemOwner != from )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "This talisman belongs to another!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.Resolve( from.Account, "This talisman belongs to another!" ) );
 				return false;
 			}
 			return true;
@@ -45,7 +56,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "Talismans are worn in the upper right slot." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "Talismans are worn in the upper right slot." ) );
 			return;
 		}
 

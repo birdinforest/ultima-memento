@@ -4,7 +4,7 @@ using Server.Items;
 using Server.Guilds;
 using Server.Mobiles;
 using Server.Gumps;
-using Server.Network;
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -30,7 +30,7 @@ namespace Server.Misc
 
 					if ( items.Length == 0 )
 					{
-						from.SendMessage ("You need a goodie basket to go trick or treating!");
+						from.SendMessage (StringCatalog.Resolve( from.Account, "You need a goodie basket to go trick or treating!" ));
 					}
 					else
 					{
@@ -92,7 +92,7 @@ namespace Server.Misc
 						}
 						if ( !foundbag )
 						{
-							from.SendMessage("Your trick-or-treat bag seems to be worn out from all the things it was filled with.");
+							from.SendMessage(StringCatalog.Resolve( from.Account, "Your trick-or-treat bag seems to be worn out from all the things it was filled with." ));
 						}
 					}
 				}

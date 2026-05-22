@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class ConsecratedWeightingStone : ConsecrateItemBase
@@ -16,7 +18,7 @@ namespace Server.Items
         [Constructable]
         public ConsecratedWeightingStone(int uses) : base(uses, 0x1F14)
         {
-            Name = "Consecrated Weighting Stone";
+            Name = StringCatalog.Resolve(null, "Consecrated Weighting Stone");
         }
 
         public override void GetProperties(ObjectPropertyList list)
@@ -33,7 +35,7 @@ namespace Server.Items
         {
             if (from.Skills[SkillName.Blacksmith].Value < 100.0 || from.Skills[SkillName.Knightship].Value < 80.0)
             {
-                from.SendMessage(32, "You need at least 100 Blacksmithing and 80 Knightship to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Blacksmithing and 80 Knightship to use this"));
                 return;
             }
 
@@ -46,7 +48,7 @@ namespace Server.Items
 
             if (false == (weapon is BaseBashing || weapon is BaseStaff || weapon is IPugilistGlove))
             {
-                from.SendMessage(32, "You may only use this on blunt weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on blunt weapons"));
                 return false;
             }
 

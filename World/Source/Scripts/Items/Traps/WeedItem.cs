@@ -4,6 +4,7 @@ using Server.Items;
 using System.Collections;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,7 +31,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "This item is wrapped in weeds and cannot be used." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This item is wrapped in weeds and cannot be used." ) );
 		}
 
 		public WeededItem( Serial serial ) : base( serial )

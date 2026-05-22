@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -786,19 +787,19 @@ namespace Server.Items
 		{
 			if ( VendorTest( cargo, vendor ) )
 			{
-				string say = "Thank you!";
+				string say = StringCatalog.Resolve( player.Account, "Thank you!" );
 				if ( cargo.CargoKarma < 0 )
 				{
 					switch( Utility.RandomMinMax( 1, 8 ) )
 					{
-						case 1: say = "Do I want to know where you got this?";	break;
-						case 2: say = "This has some blood on it.";	break;
-						case 3: say = "I thought this was pirated?";	break;
-						case 4:	say = "I won't even ask.";	break;
-						case 5: say = "Let's keep this between us.";	break;
-						case 6: say = "Hurry, before someone sees us.";	break;
-						case 7: say = "I'll stash this away for now.";	break;
-						case 8: say = "Smuggled more goods did ya?";	break;
+						case 1: say = StringCatalog.Resolve( player.Account, "Do I want to know where you got this?" );	break;
+						case 2: say = StringCatalog.Resolve( player.Account, "This has some blood on it." );	break;
+						case 3: say = StringCatalog.Resolve( player.Account, "I thought this was pirated?" );	break;
+						case 4:	say = StringCatalog.Resolve( player.Account, "I won't even ask." );	break;
+						case 5: say = StringCatalog.Resolve( player.Account, "Let's keep this between us." );	break;
+						case 6: say = StringCatalog.Resolve( player.Account, "Hurry, before someone sees us." );	break;
+						case 7: say = StringCatalog.Resolve( player.Account, "I'll stash this away for now." );	break;
+						case 8: say = StringCatalog.Resolve( player.Account, "Smuggled more goods did ya?" );	break;
 					}
 					player.SendSound( 0x5B3 );
 				}
@@ -806,14 +807,14 @@ namespace Server.Items
 				{
 					switch( Utility.RandomMinMax( 1, 8 ) )
 					{
-						case 1: say = "Thank you for returning this.";	break;
-						case 2: say = "I hope the pirates paid with their lives.";	break;
-						case 3: say = "This will surely save my shop.";	break;
-						case 4:	say = "I thought this was lost forever.";	break;
-						case 5: say = "I never thought I would get this back.";	break;
-						case 6: say = "Did you know this was stolen from me?";	break;
-						case 7: say = "Damn pirates stole this from me.";	break;
-						case 8: say = "You make the shipping lanes safer for the rest of us.";	break;
+						case 1: say = StringCatalog.Resolve( player.Account, "Thank you for returning this." );	break;
+						case 2: say = StringCatalog.Resolve( player.Account, "I hope the pirates paid with their lives." );	break;
+						case 3: say = StringCatalog.Resolve( player.Account, "This will surely save my shop." );	break;
+						case 4:	say = StringCatalog.Resolve( player.Account, "I thought this was lost forever." );	break;
+						case 5: say = StringCatalog.Resolve( player.Account, "I never thought I would get this back." );	break;
+						case 6: say = StringCatalog.Resolve( player.Account, "Did you know this was stolen from me?" );	break;
+						case 7: say = StringCatalog.Resolve( player.Account, "Damn pirates stole this from me." );	break;
+						case 8: say = StringCatalog.Resolve( player.Account, "You make the shipping lanes safer for the rest of us." );	break;
 					}
 					player.SendSound( 0x5B4 );
 				}
@@ -822,7 +823,7 @@ namespace Server.Items
 
 				Server.Engines.Harvest.Fishing.SailorSkill( player, (int)( gold / 100 ) );
 
-				player.SendMessage( "You receive " + gold + " gold." );
+				player.SendMessage( StringCatalog.Resolve( player.Account, "You receive " + gold + " gold." ) );
 				player.AddToBackpack ( new Gold( gold ) );
 				cargo.Delete();
 				CustomEventSink.InvokeCombatQuestCompleted( player, gold );
@@ -834,7 +835,7 @@ namespace Server.Items
 			}
 			else
 			{
-				vendor.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I think the " + cargo.CargoVendor + " might be interested in that.", player.NetState);
+				vendor.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( player.Account, "I think the " + cargo.CargoVendor + " might be interested in that." ), player.NetState);
 			}
 		}
 

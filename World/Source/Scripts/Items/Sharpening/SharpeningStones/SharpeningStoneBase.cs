@@ -1,4 +1,5 @@
-﻿using Server.Targeting;
+﻿using Server.Localization;
+using Server.Targeting;
 
 namespace Server.Items
 {
@@ -31,18 +32,18 @@ namespace Server.Items
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendMessage("This must be in your backpack to use.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "This must be in your backpack to use."));
                 return;
             }
 
             if (Uses < 1)
             {
                 Delete();
-                from.SendMessage(32, "The stone crumbles in your hands");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "The stone crumbles in your hands"));
                 return;
             }
 
-            from.SendMessage("Which weapon you want to try to sharpen?");
+            from.SendMessage(StringCatalog.Resolve(from.Account, "Which weapon you want to try to sharpen?"));
             from.Target = new InternalTarget(this);
         }
 
@@ -62,7 +63,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendMessage(32, "You fail to sharpen the weapon");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You fail to sharpen the weapon"));
             }
         }
 
@@ -75,7 +76,7 @@ namespace Server.Items
 
             if (from.Skills[SkillName.Blacksmith].Value < RequiredBlacksmithSkillLevel)
             {
-                from.SendMessage(32, "Your Blacksmithing must be higher to use this stone");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "Your Blacksmithing must be higher to use this stone"));
                 return;
             }
 
@@ -83,7 +84,7 @@ namespace Server.Items
 
             if (--Uses <= 0)
             {
-                from.SendMessage(32, "The stone crumbles in your hand");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "The stone crumbles in your hand"));
                 Delete();
             }
 
@@ -98,13 +99,13 @@ namespace Server.Items
 
             if (!weapon.IsChildOf(from.Backpack))
             {
-                from.SendMessage(32, "This must be in your backpack");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "This must be in your backpack"));
                 return false;
             }
 
             if (false == (weapon is BaseSword || weapon is BaseKnife || weapon is BaseAxe || weapon is BaseSpear))
             {
-                from.SendMessage(32, "You may only use this on edged weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on edged weapons"));
                 return false;
             }
 
@@ -113,7 +114,7 @@ namespace Server.Items
 
             if (i_DI >= MaxDamageBonus)
             {
-                from.SendMessage(32, "This weapon cannot be improved any further");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "This weapon cannot be improved any further"));
                 return false;
             }
 

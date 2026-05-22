@@ -1,4 +1,6 @@
-﻿namespace Server.Items
+﻿using Server.Localization;
+
+namespace Server.Items
 {
     public class DenseBowString : DamageIncreaseBowStringBase
     {
@@ -18,14 +20,14 @@
         [Constructable]
         public DenseBowString(int uses) : base(uses)
         {
-            Name = "Mighty Bow String";
+            Name = StringCatalog.Resolve(null, "Mighty Bow String");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
             if (from.Skills[SkillName.Bowcraft].Value < 100.0)
             {
-                from.SendMessage(32, "You need at least 100 Bowcraft to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Bowcraft to use this"));
                 return;
             }
 

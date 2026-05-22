@@ -2,6 +2,7 @@ using Server;
 using System;
 using System.Collections;
 using Server.Network;
+using Server.Localization;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
@@ -94,7 +95,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "Which horse do you want to use this on?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Which horse do you want to use this on?" ) );
 				t = new HorseTarget( this );
 				from.Target = t;
 			}
@@ -149,7 +150,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("This armor is only for horses you own.");
+					from.SendMessage(StringCatalog.Resolve( from.Account, "This armor is only for horses you own." ));
 				}
 			}
 		}

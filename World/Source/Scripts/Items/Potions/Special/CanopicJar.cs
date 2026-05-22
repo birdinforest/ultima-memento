@@ -131,7 +131,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else
@@ -166,21 +166,21 @@ namespace Server.Items
 
 				if ( from.Skills[SkillName.Alchemy].Value < 50 )
 				{
-					from.SendMessage( "You should be at least an apprentice alchemist to try this!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You should be at least an apprentice alchemist to try this!" ) );
 				}
 				else if ( alchemists == 0 )
 				{
-					from.SendMessage( "You need to be near a local alchemist for their help!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You need to be near a local alchemist for their help!" ) );
 				}
 				else if ( barrel == 0 )
 				{
-					from.SendMessage( "You need an empty potion keg to dump this in." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You need an empty potion keg to dump this in." ) );
 				}
 				else
 				{
                     if (pack.ConsumeTotal(typeof(Gold), 500))
                     {
-                        from.SendMessage("You give the alchemist 500 gold for their help.");
+                        from.SendMessage( StringCatalog.Resolve( from.Account, "You give the alchemist 500 gold for their help." ) );
                         Effects.PlaySound(from.Location, from.Map, 0x026);
 
 						if ( JarPotion == "Nightsight Potions" ){ keg.Type = PotionEffect.Nightsight; }
@@ -237,7 +237,7 @@ namespace Server.Items
                     }
                     else
                     {
-                        from.SendMessage("You will need at least 500 gold in your pack to pay the alchemist.");
+                        from.SendMessage( StringCatalog.Resolve( from.Account, "You will need at least 500 gold in your pack to pay the alchemist." ) );
                     }
 				}
 			}

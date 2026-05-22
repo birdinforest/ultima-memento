@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -29,11 +30,11 @@ namespace Server.Items
 				m.Resurrect();
 				Server.Misc.Death.Penalty( m, false );
 				m.Hidden = true;
-				m.SendMessage( "The aura here has brought you back from the dead." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "The aura here has brought you back from the dead." ) );
 			}
 			else
 			{
-				m.SendMessage( "You feel a powerful life giving energy here." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel a powerful life giving energy here." ) );
 			}
 			return true;
 		}

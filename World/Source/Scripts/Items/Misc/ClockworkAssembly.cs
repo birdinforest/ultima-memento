@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -35,7 +36,7 @@ namespace Server.Items
 
 			if ( tinkerSkill < 60.0 )
 			{
-				from.SendMessage( "You must have at least 60.0 skill in tinkering to construct a golem." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You must have at least 60.0 skill in tinkering to construct a golem." ) );
 				return;
 			}
 			else if ( (from.Followers + 4) > from.FollowersMax )
@@ -82,22 +83,22 @@ namespace Server.Items
 			{
 				case 0:
 				{
-					from.SendMessage( "You must have a power crystal to construct the golem." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must have a power crystal to construct the golem." ) );
 					break;
 				}
 				case 1:
 				{
-					from.SendMessage( "You must have 50 iron ingots to construct the golem." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must have 50 iron ingots to construct the golem." ) );
 					break;
 				}
 				case 2:
 				{
-					from.SendMessage( "You must have 50 bronze ingots to construct the golem." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must have 50 bronze ingots to construct the golem." ) );
 					break;
 				}
 				case 3:
 				{
-					from.SendMessage( "You must have 5 gears to construct the golem." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must have 5 gears to construct the golem." ) );
 					break;
 				}
 				default:

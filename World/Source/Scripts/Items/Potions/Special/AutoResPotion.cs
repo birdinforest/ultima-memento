@@ -28,20 +28,20 @@ namespace Server.Items
 
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 
 			if ( SoulOrb.FindActive( from ) != null )
 			{
-				from.SendMessage("The spirits watch you already.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The spirits watch you already." ) );
 				return;
 			}
 
 			var orb = SoulOrb.Create( from, SoulOrbType.Default );
 			if ( orb != null )
 			{
-				from.SendMessage( "You feel the spirits watching you, awaiting to send you back to your body." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You feel the spirits watching you, awaiting to send you back to your body." ) );
 				orb.Location = Location;
 				Delete();
 			}

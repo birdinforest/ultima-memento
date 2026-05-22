@@ -42,7 +42,7 @@ namespace Server.Items
 				StatMod imod = m.GetStatMod( "Int" );
 				if ( smod != null && imod != null && dmod != null)
 				{
-					m.SendMessage( "You appear to be under a similar effect!" );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You appear to be under a similar effect!" ) );
 				}
 				else if (smod == null && imod == null && dmod == null)
 				{
@@ -54,7 +54,7 @@ namespace Server.Items
 					m.Stam = m.StamMax ;
 					BasePotion.PlayDrinkEffect( m );
 					this.Consume();
-					m.SendMessage( "You feel much more superior!" );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You feel much more superior!" ) );
 
 					string args = String.Format("{0}\t{1}\t{2}", 10, 10, 10);
 

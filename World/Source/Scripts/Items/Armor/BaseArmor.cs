@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Network;
 using Server.Engines.Craft;
+using Server.Localization;
 using Server.Targeting;
 using Server.Spells;
 using Server.Spells.First;
@@ -623,7 +624,7 @@ namespace Server.Items
 						if( armor.RequiredRace == Race.Elf )
 							m.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
 						else
-							m.SendMessage( "Only {0} may use this.", armor.RequiredRace.PluralName );
+							m.SendMessage( StringCatalog.ResolveFormat( m.Account, "Only {0} may use this.", armor.RequiredRace.PluralName ) );
 
 						m.AddToBackpack( armor );
 					}
@@ -632,7 +633,7 @@ namespace Server.Items
 						if ( armor.AllowFemaleWearer )
 							m.SendLocalizedMessage( 1010388 ); // Only females can wear this.
 						else
-							m.SendMessage( "You may not wear this." );
+							m.SendMessage( StringCatalog.Resolve( m.Account, "You may not wear this." ) );
 
 						m.AddToBackpack( armor );
 					}
@@ -641,7 +642,7 @@ namespace Server.Items
 						if ( armor.AllowMaleWearer )
 							m.SendLocalizedMessage( 1063343 ); // Only males can wear this.
 						else
-							m.SendMessage( "You may not wear this." );
+							m.SendMessage( StringCatalog.Resolve( m.Account, "You may not wear this." ) );
 
 						m.AddToBackpack( armor );
 					}
@@ -1161,7 +1162,7 @@ namespace Server.Items
 					if( RequiredRace == Race.Elf )
 						from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
 					else
-						from.SendMessage( "Only {0} may use this.", RequiredRace.PluralName );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "Only {0} may use this.", RequiredRace.PluralName ) );
 
 					return false;
 				}
@@ -1170,7 +1171,7 @@ namespace Server.Items
 					if( AllowFemaleWearer )
 						from.SendLocalizedMessage( 1010388 ); // Only females can wear this.
 					else
-						from.SendMessage( "You may not wear this." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You may not wear this." ) );
 
 					return false;
 				}
@@ -1179,7 +1180,7 @@ namespace Server.Items
 					if( AllowMaleWearer )
 						from.SendLocalizedMessage( 1063343 ); // Only males can wear this.
 					else
-						from.SendMessage( "You may not wear this." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You may not wear this." ) );
 
 					return false;
 				}
@@ -1201,7 +1202,7 @@ namespace Server.Items
 					}
 					else if( from.Int < intReq || (from.Int + intBonus) < 1 )
 					{
-						from.SendMessage( "You are not intelligent enough to equip that." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You are not intelligent enough to equip that." ) );
 						return false;
 					}
 				}

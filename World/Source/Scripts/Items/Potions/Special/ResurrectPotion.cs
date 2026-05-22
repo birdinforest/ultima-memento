@@ -49,7 +49,7 @@ namespace Server.Items
 			if ( m.InRange( this.GetWorldLocation(), 1 ) ) 
 			{
 				m.Target = new InternalTarget( m, this );
-				m.SendMessage( "Who would you like to resurrect!" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Who would you like to resurrect!" ) );
 			} 
 			else 
 			{ 
@@ -121,7 +121,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanWizardItem )
@@ -138,7 +138,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanArcherItem )
@@ -155,7 +155,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "They are not dead." ) );
 				}
 			}
 			else if (hench is HenchmanMonsterItem )
@@ -172,12 +172,12 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage("They are not dead.");
+					from.SendMessage( StringCatalog.Resolve( from.Account, "They are not dead." ) );
 				}
 			}
 			else
 			{
-				from.SendMessage("This potion didn't seem to work.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This potion didn't seem to work." ) );
 			}
 		}
  

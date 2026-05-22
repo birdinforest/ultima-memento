@@ -4,6 +4,8 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Gumps;
 using Server.LiarsDice;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -21,7 +23,7 @@ namespace Server.Items
 		[Constructable]
 		public LiarsDice() : base( 0xFA7 )
 		{
-			this.Name = "Liar's Dice Game";
+			this.Name = StringCatalog.Resolve(null, "Liar's Dice Game");
 			this.Weight = 1.0;
 			this.Hue = 0xB51;
 			ds = new DiceState(GOLD_PER_GAME,GAME_BALANCE_MIN,GAME_BALANCE_MAX,GAME_PLAYER_TO_ACT_SECONDS,GAME_MAX_PLAYERS);
@@ -29,7 +31,7 @@ namespace Server.Items
 
 		public LiarsDice( Serial serial ) : base( serial )
 		{
-			this.Name = "Liar's Dice Game";
+			this.Name = StringCatalog.Resolve(null, "Liar's Dice Game");
 			this.Weight = 1.0;
 			this.Hue = 0xB51;
 			ds = new DiceState(GOLD_PER_GAME,GAME_BALANCE_MIN,GAME_BALANCE_MAX,GAME_PLAYER_TO_ACT_SECONDS,GAME_MAX_PLAYERS);
@@ -45,7 +47,7 @@ namespace Server.Items
 				from.Frozen = true;
 				ds.ShowNewGameGump(from);
 			}else{
-				from.SendMessage( "Sorry, but you must have at least " + GAME_BALANCE_MIN  + " gold in your bank to play!" );
+				from.SendMessage(StringCatalog.ResolveFormat(from.Account, "Sorry, but you must have at least {0} gold in your bank to play!", GAME_BALANCE_MIN));
 			}
 		}
 

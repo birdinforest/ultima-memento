@@ -1119,7 +1119,7 @@ namespace Server.Items
 				else if ( Poison == Poison.Deadly ) { target.ApplyPoison( from, PoisonImpl.Deadly ); }
 				else { target.ApplyPoison( from, PoisonImpl.Lethal ); }
 
-				target.Say( "Poison!");
+				target.Say( StringCatalog.Resolve( from.Account, "Poison!" ) );
 
 				target.PlaySound( target.Female ? 813 : 1087 );
 				if ( !target.Mounted ) 
@@ -1133,7 +1133,7 @@ namespace Server.Items
 			else if ( target.Body == 0x191 || target.Body == 0x190 || target.Body == 606 || target.Body == 605 )
 			{
 				from.AddToBackpack ( this );
-				target.Say( "That doesn't look good.");
+				target.Say( StringCatalog.Resolve( from.Account, "That doesn't look good." ) );
 			}
 			else
 			{
@@ -1408,7 +1408,7 @@ namespace Server.Items
 			}
 			else if ( from == targ && from.Thirst >= 20 )
 			{
-				from.SendMessage( "You are too quenched to drink more." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are too quenched to drink more." ) );
 			}
 			else if ( from == targ )
 			{
@@ -1426,13 +1426,13 @@ namespace Server.Items
 				if( from.Thirst < 20 )
 				{
 					if ( from.Thirst < 5 )
-						from.SendMessage( "You drink the liquid but are still extremely thirsty" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the liquid but are still extremely thirsty" ) );
 					else if ( from.Thirst < 10 )
-						from.SendMessage( "You drink the liquid and feel less thirsty" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the liquid and feel less thirsty" ) );
 					else if ( from.Thirst < 15 )
-						from.SendMessage( "You drink the liquid and feel much less thirsty" ); 
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the liquid and feel much less thirsty" ) ); 
 					else
-						from.SendMessage( "You drink the liquid and are no longer thirsty" );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You drink the liquid and are no longer thirsty" ) );
 
 					from.Thirst += thirst;
 				}
@@ -1469,7 +1469,7 @@ namespace Server.Items
 		{
 			if ( !from.InRange( this.GetWorldLocation(), 1 ) )
 			{
-				from.SendMessage( "That is too far away!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That is too far away!" ) );
 				return;
 			}
 
@@ -1484,9 +1484,9 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1010089 ); // You fill the container with water.
 			}
 			else if ( IsEmpty && !Fillable )
-				from.SendMessage( "That is empty and can no longer be filled." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That is empty and can no longer be filled." ) );
 			else if ( IsEmpty && Fillable )
-				from.SendMessage( "That is empty and will need to be refilled." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That is empty and will need to be refilled." ) );
 			else if( ValidateUse( from, true ) )
 				Pour_OnTarget( from, from );
 		}
@@ -1511,7 +1511,7 @@ namespace Server.Items
 				} 
 				else 
 				{
-					m_From.SendMessage( "This must be in your backpack to use." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "This must be in your backpack to use." ) );
 				} 
 			} 
 		} 
@@ -1536,11 +1536,11 @@ namespace Server.Items
 					i_Beverage.Poison = null;
 					i_Beverage.Content = BeverageType.Water;
 					i_Beverage.Quantity = 0;
-					m_From.SendMessage( "You dump out the liquid." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "You dump out the liquid." ) );
 				} 
 				else 
 				{
-					m_From.SendMessage( "This must be in your backpack to dump out." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "This must be in your backpack to dump out." ) );
 				} 
 			} 
 		} 
@@ -1565,7 +1565,7 @@ namespace Server.Items
 				} 
 				else 
 				{
-					m_From.SendMessage( "This must be in your backpack to use." );
+					m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "This must be in your backpack to use." ) );
 				} 
 			} 
 		} 

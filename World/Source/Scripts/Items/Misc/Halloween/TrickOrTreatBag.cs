@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Server.Localization;
 using Server.Multis;
 using Server.Mobiles;
 using Server.Network;
@@ -81,7 +82,7 @@ namespace Server.Items
 			--Uses;
 			if ( Uses == 0 )
 			{
-				from.SendMessage( "This basket cannot receive any more goodies!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This basket cannot receive any more goodies!" ) );
 				return false;
 			}
 			return true;

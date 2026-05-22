@@ -23,12 +23,12 @@ namespace Server.Items
 		{
 			if ( from.RaceID > 0 )
 			{
-				from.SendMessage( "You don't find this really useful." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You don't find this really useful." ) );
 				return;
 			}
 			else if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else if ( from.Body == 0x191 )
@@ -42,7 +42,7 @@ namespace Server.Items
 				from.HairHue = HairColor;
 				from.FacialHairHue = HairColor;
 				from.RecordsHair( true );
-				from.SendMessage("Your body transforms into that of a man.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your body transforms into that of a man." ) );
 			}
 			else if ( from.Body == 0x190 )
 			{
@@ -55,11 +55,11 @@ namespace Server.Items
 				from.HairHue = HairColor;
 				from.FacialHairHue = HairColor;
 				from.RecordsHair( true );
-				from.SendMessage("Your body transforms into that of a woman.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your body transforms into that of a woman." ) );
 			}
 			else
 			{
-				from.SendMessage("Drinking the potion seems to do nothing.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Drinking the potion seems to do nothing." ) );
 			}
 			from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 			this.Delete();

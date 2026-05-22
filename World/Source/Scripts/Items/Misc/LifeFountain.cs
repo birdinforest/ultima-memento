@@ -5,6 +5,7 @@ using Server;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -32,7 +33,7 @@ namespace Server.Items
 				m.Resurrect();
 				Server.Misc.Death.Penalty( m, false );
 				m.Hidden = true;
-				m.SendMessage( "The magic of the fountain has returned your life to you." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "The magic of the fountain has returned your life to you." ) );
 			}
 		}
 

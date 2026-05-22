@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Network;
 using Server.Spells;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -54,7 +55,7 @@ namespace Server.Items
 
 		public override bool OnEquip( Mobile from )
 		{
-			from.SendMessage( "This is a throwing weapon that requires harpoon ropes to throw." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This is a throwing weapon that requires harpoon ropes to throw." ) );
 			return base.OnEquip( from );
 		}
 

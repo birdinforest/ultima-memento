@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class ElementalWeightingStone : SplitElementalItemBase
@@ -5,7 +7,7 @@ namespace Server.Items
         [Constructable]
         public ElementalWeightingStone() : base(0x1F14)
         {
-            Name = "Elemental Weighting Stone";
+            Name = StringCatalog.Resolve(null, "Elemental Weighting Stone");
         }
 
         public ElementalWeightingStone(Serial serial) : base(serial)
@@ -26,7 +28,7 @@ namespace Server.Items
         {
             if (from.Skills[SkillName.Blacksmith].Value < 100.0 || from.Skills[SkillName.Magery].Value < 100.0)
             {
-                from.SendMessage(32, "You need at least 100 Blacksmithing and 100 Magery to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Blacksmithing and 100 Magery to use this"));
                 return;
             }
 
@@ -39,7 +41,7 @@ namespace Server.Items
 
             if (false == (weapon is BaseBashing || weapon is BaseStaff || weapon is IPugilistGlove))
             {
-                from.SendMessage(32, "You may only use this on blunt weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on blunt weapons"));
                 return false;
             }
 

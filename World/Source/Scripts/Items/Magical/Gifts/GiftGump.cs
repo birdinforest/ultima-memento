@@ -56,24 +56,24 @@ namespace Server.Gumps
 				AddImage(50, 35, 9609, 2747);
 			}
 
-			AddLabel(262, 56, TitleHue, @"Item Status");
+			AddLabel(262, 56, TitleHue, StringCatalog.Resolve(m_From.Account, @"Item Status"));
 
-            AddLabel(136, 93, TitleHue, @"Categories");
+            AddLabel(136, 93, TitleHue, StringCatalog.Resolve(m_From.Account, "Categories"));
 			AddButton(75, 116, 4005, 4007, GetButtonID( 1, 0 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 117, LabelHue, @"Melee Attributes");
+            AddLabel(112, 117, LabelHue, StringCatalog.Resolve(m_From.Account, "Melee Attributes"));
 			AddButton(75, 138, 4005, 4007, GetButtonID( 1, 1 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 139, LabelHue, @"Magic Attributes");
+            AddLabel(112, 139, LabelHue, StringCatalog.Resolve(m_From.Account, "Magic Attributes"));
 			AddButton(75, 160, 4005, 4007, GetButtonID( 1, 2 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 161, LabelHue, @"Character Stats");
+            AddLabel(112, 161, LabelHue, StringCatalog.Resolve(m_From.Account, "Character Stats"));
 			AddButton(75, 182, 4005, 4007, GetButtonID( 1, 3 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 183, LabelHue, @"Resistances");
+            AddLabel(112, 183, LabelHue, StringCatalog.Resolve(m_From.Account, "Resistances"));
             if (m_Item is BaseWeapon)
 			    AddButton(75, 204, 4005, 4007, GetButtonID( 1, 4 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 205, LabelHue, @"Weapon Hits");
+            AddLabel(112, 205, LabelHue, StringCatalog.Resolve(m_From.Account, "Weapon Hits"));
 			AddButton(75, 226, 4005, 4007, GetButtonID( 1, 5 ), GumpButtonType.Reply, 0);
-            AddLabel(112, 227, LabelHue, @"Misc. Attributes");
+            AddLabel(112, 227, LabelHue, StringCatalog.Resolve(m_From.Account, "Misc. Attributes"));
 
-			AddLabel(394, 93, TitleHue, @"Attributes");
+			AddLabel(394, 93, TitleHue, StringCatalog.Resolve(m_From.Account, "Attributes"));
 
             CreateItemExpList();
 
@@ -87,7 +87,7 @@ namespace Server.Gumps
         {
             IGiftable levitem = (IGiftable)m_Item;
 
-            AddLabel(75, 275, LabelHue, @"Points Avail:");
+            AddLabel(75, 275, LabelHue, StringCatalog.Resolve(m_From.Account, "Points Avail:"));
             AddLabel(198, 275, LabelHue, levitem.Points.ToString());
         }
 
@@ -108,7 +108,7 @@ namespace Server.Gumps
 						if ( index > 0 )
 						{
 							AddButton(536, 343, 4005, 4007, 0, GumpButtonType.Page, (index / 10) + 1);
-                            AddLabel(497, 344, LabelHue, @"Next");
+                            AddLabel(497, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Next"));
 						}
 
 						AddPage( (index / 10) + 1 );
@@ -116,7 +116,7 @@ namespace Server.Gumps
 						if ( index > 0 )
 						{
 							AddButton(301, 343, 4014, 4016, 0, GumpButtonType.Page, index / 10);
-                            AddLabel(337, 344, LabelHue, @"Previous");
+                            AddLabel(337, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Previous"));
 						}
 					}
 
@@ -159,7 +159,7 @@ namespace Server.Gumps
                             if (index > 0)
                             {
                                 AddButton(536, 343, 4005, 4007, 0, GumpButtonType.Page, (index / 10) + 1);
-                                AddLabel(497, 344, LabelHue, @"Next");
+                                AddLabel(497, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Next"));
                             }
 
                             AddPage((index / 10) + 1);
@@ -167,7 +167,7 @@ namespace Server.Gumps
                             if (index > 0)
                             {
                                 AddButton(301, 343, 4014, 4016, 0, GumpButtonType.Page, index / 10);
-                                AddLabel(337, 344, LabelHue, @"Previous");
+                                AddLabel(337, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Previous"));
                             }
                         }
 
@@ -202,7 +202,7 @@ namespace Server.Gumps
 							if (index > 0)
 							{
 								AddButton(536, 343, 4005, 4007, 0, GumpButtonType.Page, (index / 10) + 1);
-								AddLabel(497, 344, LabelHue, @"Next");
+								AddLabel(497, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Next"));
 							}
 
 							AddPage((index / 10) + 1);
@@ -210,7 +210,7 @@ namespace Server.Gumps
 							if (index > 0)
 							{
 								AddButton(301, 343, 4014, 4016, 0, GumpButtonType.Page, index / 10);
-								AddLabel(337, 344, LabelHue, @"Previous");
+                                AddLabel(337, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Previous"));
 							}
 						}
 
@@ -248,7 +248,7 @@ namespace Server.Gumps
 								if (index > 0)
 								{
 									AddButton(536, 343, 4005, 4007, 0, GumpButtonType.Page, (index / 10) + 1);
-									AddLabel(497, 344, LabelHue, @"Next");
+									AddLabel(497, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Next"));
 								}
 
 								AddPage((index / 10) + 1);
@@ -256,7 +256,7 @@ namespace Server.Gumps
 								if (index > 0)
 								{
 									AddButton(301, 343, 4014, 4016, 0, GumpButtonType.Page, index / 10);
-									AddLabel(337, 344, LabelHue, @"Previous");
+                                AddLabel(337, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Previous"));
 								}
 							}
 
@@ -292,7 +292,7 @@ namespace Server.Gumps
 							if (index > 0)
 							{
 								AddButton(536, 343, 4005, 4007, 0, GumpButtonType.Page, (index / 10) + 1);
-								AddLabel(497, 344, LabelHue, @"Next");
+								AddLabel(497, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Next"));
 							}
 
 							AddPage((index / 10) + 1);
@@ -300,7 +300,7 @@ namespace Server.Gumps
 							if (index > 0)
 							{
 								AddButton(301, 343, 4014, 4016, 0, GumpButtonType.Page, index / 10);
-								AddLabel(337, 344, LabelHue, @"Previous");
+                                AddLabel(337, 344, LabelHue, StringCatalog.Resolve(m_From.Account, "Previous"));
 							}
 						}
 

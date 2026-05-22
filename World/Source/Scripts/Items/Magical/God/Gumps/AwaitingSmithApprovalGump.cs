@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Network;
 using System.Collections;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -31,18 +32,18 @@ namespace Server.Gumps
             int value = m_Scroll.Value;
 
             if (value == 5)
-                AddHtml(40, 20, 260, 20, String.Format("<basefont Color=#FBFBFB>Wondrous scroll of leveling (+{0})</basefont>", value), (bool)false, (bool)false); 
+                AddHtml(40, 20, 260, 20, String.Format(StringCatalog.Resolve(m_From.Account, "<basefont Color=#FBFBFB>Wondrous scroll of leveling (+{0})</basefont>"), value), false, false); 
             else if (value == 10)
-                AddHtml(40, 20, 260, 20, String.Format("<basefont Color=#FBFBFB>Exalted scroll of leveling (+{0})</basefont>", value), (bool)false, (bool)false); 
+                AddHtml(40, 20, 260, 20, String.Format(StringCatalog.Resolve(m_From.Account, "<basefont Color=#FBFBFB>Exalted scroll of leveling (+{0})</basefont>"), value), false, false); 
             else if (value == 15)
-                AddHtml(40, 20, 260, 20, String.Format("<basefont Color=#FBFBFB>Mythical scroll of leveling (+{0})</basefont>", value), (bool)false, (bool)false); 
+                AddHtml(40, 20, 260, 20, String.Format(StringCatalog.Resolve(m_From.Account, "<basefont Color=#FBFBFB>Mythical scroll of leveling (+{0})</basefont>"), value), false, false); 
             else if (value == 20)
-                AddHtml(40, 20, 260, 20, String.Format("<basefont Color=#FBFBFB>Legendary scroll of leveling (+{0})</basefont>", value), (bool)false, (bool)false); 
+                AddHtml(40, 20, 260, 20, String.Format(StringCatalog.Resolve(m_From.Account, "<basefont Color=#FBFBFB>Legendary scroll of leveling (+{0})</basefont>"), value), false, false); 
             else
-                AddHtml(40, 20, 260, 20, String.Format("<basefont Color=#FBFBFB>Scroll of leveling (+{0})</basefont>", value), false, false);
+                AddHtml(40, 20, 260, 20, String.Format(StringCatalog.Resolve(m_From.Account, "<basefont Color=#FBFBFB>Scroll of leveling (+{0})</basefont>"), value), false, false);
 
-            AddHtml(40, 46, 387, 20, @"<CENTER><U><basefont color=#FF0000>Please Wait...</basefont></U></CENTER>", (bool)false, (bool)false);
-            AddHtml(40, 70, 387, 100, @"The other player is validating your Level Increase scroll.<br><br>If the process is successful, you will then be given the option to apply the scroll immediately OR press ESC to apply the scroll at a later time.", (bool)true, (bool)false);
+            AddHtml(40, 46, 387, 20, StringCatalog.Resolve(m_From.Account, @"<CENTER><U><basefont color=#FF0000>Please Wait...</basefont></U></CENTER>"), false, false);
+            AddHtml(40, 70, 387, 100, StringCatalog.Resolve(m_From.Account, @"The other player is validating your Level Increase scroll.<br><br>If the process is successful, you will then be given the option to apply the scroll immediately OR press ESC to apply the scroll at a later time."), true, false);
 		}
 	}
 }

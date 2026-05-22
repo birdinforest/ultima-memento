@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Server;
+using Server.Localization;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
@@ -197,13 +198,13 @@ namespace Server.LiarsDice
 			//is the mobile already in game?
 			for (int i = 0; i < this.playerCnt; i++){
 				if(m == dicePlayers[i].getMobile()){
-					m.SendMessage( "You are already playing!" );
+					m.SendMessage(StringCatalog.Resolve(m.Account, "You are already playing!"));
 					return null;
 				}
 			}
 			//to many players already?
 			if(this.playerCnt >= this.maxNumberOfPlayers){
-				m.SendMessage( "Liars Dice is currently at it maximum capacity of " + this.maxNumberOfPlayers  + " players, try again later.");
+				m.SendMessage(StringCatalog.ResolveFormat(m.Account, "Liars Dice is currently at it maximum capacity of {0} players, try again later.", this.maxNumberOfPlayers));
 				mds.getMobile().Frozen = false;
 				return  mds;
 			}
@@ -214,7 +215,7 @@ namespace Server.LiarsDice
 			//Wait for 2nd player before starting
 			if(dicePlayers.Count == 1){
 				AddPlayerWaiting(0);	
-				m.SendMessage( "Must have at least 2 players to play! Waiting.." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "Must have at least 2 players to play! Waiting.."));
 			}
 			//Don't start with more than 2 ppl, otherwise we get missing gumps
 			else if(dicePlayers.Count == 2){
@@ -343,9 +344,9 @@ namespace Server.LiarsDice
 					RemoveStatusGump(dicePlayers[i]);
 					PlayerWaiting(dicePlayers[i], currentHighlightedPlayerIdx);
 					if(this.playerCnt >= 2){
-						dicePlayers[i].getMobile().SendMessage( "It is now " + dicePlayers[currentHighlightedPlayerIdx].getMobile().Name + "'s turn, and he has " + this.playerToActSeconds + " seconds to act.");
+						dicePlayers[i].getMobile().SendMessage(StringCatalog.ResolveFormat(dicePlayers[i].getMobile().Account, "It is now {0}'s turn, and he has {1} seconds to act.", dicePlayers[currentHighlightedPlayerIdx].getMobile().Name, this.playerToActSeconds));
 					}else{
-						dicePlayers[i].getMobile().SendMessage( dicePlayers[currentHighlightedPlayerIdx].getMobile().Name + " joined liars dice.");
+						dicePlayers[i].getMobile().SendMessage(StringCatalog.ResolveFormat(dicePlayers[i].getMobile().Account, "{0} joined liars dice.", dicePlayers[currentHighlightedPlayerIdx].getMobile().Name));
 					}
 				}
 			}
@@ -468,7 +469,7 @@ namespace Server.LiarsDice
 				}
 			}else{
 				m.Frozen = false;
-				m.SendMessage( "Liars Dice is currently at it maximum capacity of " + this.maxNumberOfPlayers + " players, try again later.");
+				m.SendMessage(StringCatalog.ResolveFormat(m.Account, "Liars Dice is currently at it maximum capacity of {0} players, try again later.", this.maxNumberOfPlayers));
 			}
 		}
 		/********************************** START OF PRIVATE FUNCTIONS *****************************/

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Multis;
 using Server.Items;
 
@@ -59,12 +60,12 @@ namespace Knives.TownHouses
 
 			if ( Free )
 			{
-				m.SendMessage( "Since this home is free, you do not receive the deposit." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "Since this home is free, you do not receive the deposit."));
 				return;
 			}
 
 			m.BankBox.DropItem( new Gold( Price ) );
-			m.SendMessage( "You have received a {0} gold deposit from your town house.", Price );
+			m.SendMessage(StringCatalog.ResolveFormat(m.Account, "You have received a {0} gold deposit from your town house."), Price );
 		}
 
 		public override void ValidateOwnership()
@@ -104,8 +105,8 @@ namespace Knives.TownHouses
 			if ( ParentHouse == null || c_RentalMaster == null || c_RentalClient == null )
 				return;
 
-			c_RentalMaster.SendMessage( "You have begun to use lockdowns reserved for {0}, and their rental unit will collapse in {1}.", c_RentalClient.Name, Math.Round( (DemolishTime-DateTime.Now).TotalHours, 2 ) );
-			c_RentalClient.SendMessage( "Alert your land lord, {0}, they are using storage reserved for you.  They have violated the rental agreement, which will end in {1} if nothing is done.", c_RentalMaster.Name, Math.Round( (DemolishTime-DateTime.Now).TotalHours, 2 ) );
+			c_RentalMaster.SendMessage(StringCatalog.ResolveFormat(c_RentalMaster.Account, "You have begun to use lockdowns reserved for {0}, and their rental unit will collapse in {1}.", c_RentalClient.Name, Math.Round( (DemolishTime-DateTime.Now).TotalHours, 2 ) ));
+			c_RentalClient.SendMessage(StringCatalog.ResolveFormat(c_RentalClient.Account, "Alert your land lord, {0}, they are using storage reserved for you.  They have violated the rental agreement, which will end in {1} if nothing is done.", c_RentalMaster.Name, Math.Round( (DemolishTime-DateTime.Now).TotalHours, 2 ) ));
 		}
 
 		public void FixLocSec()
@@ -166,7 +167,7 @@ namespace Knives.TownHouses
 				return;
 
 			c_RentalMaster.BankBox.DropItem( new Gold( Price ) );
-			c_RentalMaster.SendMessage( "The bank has transfered your rent from {0}.", c_RentalClient.Name );
+			c_RentalMaster.SendMessage(StringCatalog.ResolveFormat(c_RentalMaster.Account, "The bank has transfered your rent from {0}.", c_RentalClient.Name ));
 		}
 
 		public override void ClearHouse()
@@ -194,7 +195,7 @@ namespace Knives.TownHouses
 
 			if ( house == null || ( house != c_ParentHouse && house != House ) )
 			{
-				m.SendMessage( "You must be in the home to view this contract." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "You must be in the home to view this contract."));
 				return;
 			}
 
@@ -204,13 +205,13 @@ namespace Knives.TownHouses
 			 && ((TownHouse)house).ForSaleSign.PriceType != "Sale" )
 			{
 				c_ParentHouse = null;
-				m.SendMessage( "You can only rent property you own." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "You can only rent property you own."));
 				return;
 			}
 
 			if ( m == c_RentalMaster && !c_Completed && General.EntireHouseContracted( c_ParentHouse ) )
 			{
-				m.SendMessage( "This entire house already has a rental contract." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "This entire house already has a rental contract."));
 				return;
 			}
 
@@ -219,7 +220,7 @@ namespace Knives.TownHouses
 			else if ( m == c_RentalMaster )
 				new ContractSetupGump( m, this );
 			else
-				m.SendMessage( "This rental contract has not yet been completed." );
+				m.SendMessage(StringCatalog.Resolve(m.Account, "This rental contract has not yet been completed."));
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -256,8 +257,8 @@ namespace Knives.TownHouses
 			{
 				if ( c_RentalClient != null && c_RentalMaster != null )
 				{
-					c_RentalMaster.SendMessage( "{0} has ended your rental agreement.  Because you revoked their access, their last payment will be refunded.", c_RentalMaster.Name );
-					c_RentalClient.SendMessage( "You have ended your rental agreement with {0}.  Because your access was revoked, your last payment is refunded.", c_RentalClient.Name );
+					c_RentalMaster.SendMessage(StringCatalog.ResolveFormat(c_RentalMaster.Account, "{0} has ended your rental agreement.  Because you revoked their access, their last payment will be refunded.", c_RentalMaster.Name ));
+					c_RentalClient.SendMessage(StringCatalog.ResolveFormat(c_RentalClient.Account, "You have ended your rental agreement with {0}.  Because your access was revoked, your last payment is refunded.", c_RentalClient.Name ));
 				}
 
 				DepositTo( c_RentalClient );
@@ -266,8 +267,8 @@ namespace Knives.TownHouses
 			{
 				if ( c_RentalClient != null && c_RentalMaster != null )
 				{
-					c_RentalClient.SendMessage( "{0} has ended your rental agreement.  Since they broke the contract, your are refunded the last payment.", c_RentalMaster.Name );
-					c_RentalMaster.SendMessage( "You have ended your rental agreement with {0}.  They will be refunded their last payment.", c_RentalClient.Name );
+					c_RentalClient.SendMessage(StringCatalog.ResolveFormat(c_RentalClient.Account, "{0} has ended your rental agreement.  Since they broke the contract, your are refunded the last payment.", c_RentalMaster.Name ));
+					c_RentalMaster.SendMessage(StringCatalog.ResolveFormat(c_RentalMaster.Account, "You have ended your rental agreement with {0}.  They will be refunded their last payment.", c_RentalClient.Name ));
 				}
 
 				DepositTo( c_RentalClient );
@@ -280,8 +281,8 @@ namespace Knives.TownHouses
 			{
 				if ( c_RentalClient != null && c_RentalMaster != null )
 				{
-					c_RentalMaster.SendMessage( "{0} has ended your rental agreement.", c_RentalClient.Name );
-					c_RentalClient.SendMessage( "You have ended your rental agreement with {0}.", c_RentalMaster.Name );
+					c_RentalMaster.SendMessage(StringCatalog.ResolveFormat(c_RentalMaster.Account, "{0} has ended your rental agreement.", c_RentalClient.Name ));
+					c_RentalClient.SendMessage(StringCatalog.ResolveFormat(c_RentalClient.Account, "You have ended your rental agreement with {0}.", c_RentalMaster.Name ));
 				}
 
 				DepositTo( c_RentalMaster );

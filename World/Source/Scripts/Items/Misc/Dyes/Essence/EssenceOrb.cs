@@ -6,6 +6,7 @@ using System.Globalization;
 using Server.Items;
 using Server.Misc;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -65,11 +66,11 @@ namespace Server.Items
 
 				from.PlaySound( 0x659 );
 				from.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
-				from.SendMessage( "Your flesh and hair magically change color." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your flesh and hair magically change color." ) );
 			}
 			else
 			{
-				from.SendMessage( "You cannot use this magical orb as it belongs to another." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use this magical orb as it belongs to another." ) );
 			}
 		}
 

@@ -29,12 +29,12 @@ namespace Server.Items
 		{
 			if ( from.RaceID != 0 )
 			{
-				from.SendMessage( "You don't find this really useful." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You don't find this really useful." ) );
 				return;
 			}
 			else if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else if ( from.Hue == 0x47E || from.Hue == 0xB70 )
@@ -42,18 +42,18 @@ namespace Server.Items
 				from.Hue = from.RecordSkinColor;
 				from.HairHue = from.RecordHairColor;
 				from.FacialHairHue = from.RecordBeardColor;
-				from.SendMessage("Your body turns back to the colors of life.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your body turns back to the colors of life." ) );
 			}
 			else if ( from.Skills[SkillName.Necromancy].Base >= 100 )
 			{
 				from.Hue = 0xB70;
 				from.HairHue = Utility.RandomList( 0, 0x497 );
 				from.FacialHairHue = from.HairHue;
-				from.SendMessage("Your body turns a ghostly white.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your body turns a ghostly white." ) );
 			}
 			else
 			{
-				from.SendMessage("You eat the skull dust, leaving your mouth dry.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the skull dust, leaving your mouth dry." ) );
 				from.Thirst = 0;
 			}
 			this.Delete();

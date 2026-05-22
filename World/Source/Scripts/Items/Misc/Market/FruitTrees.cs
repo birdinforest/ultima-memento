@@ -3,6 +3,7 @@ using Server;
 using Server.Network;
 using Server.Multis;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -41,7 +42,7 @@ namespace Server.Items
 
 			if ( house == null )
 			{
-				from.SendMessage("You must be on the property to pick from this tree.");
+				from.SendMessage(StringCatalog.Resolve( from.Account, "You must be on the property to pick from this tree." ));
 			}
 			else if ( from.InRange( c.Location, 2 ) )
 			{
@@ -71,7 +72,7 @@ namespace Server.Items
 						from.SendLocalizedMessage( 501017 ); // There is no more fruit on this tree
 				}
 				else
-					from.SendMessage("This is not your fruit tree.");
+					from.SendMessage(StringCatalog.Resolve( from.Account, "This is not your fruit tree." ));
 			}
 			else
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.

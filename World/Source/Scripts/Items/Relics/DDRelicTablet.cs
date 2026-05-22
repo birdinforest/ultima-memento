@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Server;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Multis;
@@ -219,10 +222,10 @@ namespace Server.Items
 					if (Movable)
 						ItemID = ItemID == RelicFlipID1 ? RelicFlipID2 : RelicFlipID1;
 					else
-						e.SendMessage( "This cannot be rotated at this time." );
+						e.SendMessage( StringCatalog.Resolve( e.Account, "This cannot be rotated at this time." ) );
 				}
 				else if ( !IsChildOf( e.Backpack ) ) 
-					e.SendMessage( "This must be in your backpack to read." );
+					e.SendMessage( StringCatalog.Resolve( e.Account, "This must be in your backpack to read." ) );
 				
 				return;
 
@@ -234,7 +237,7 @@ namespace Server.Items
 				if ( e is PlayerMobile && !((PlayerMobile)e).Preferences.DoubleClickID ) return;
 
 				if ( !IsChildOf( e.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack ) 
-					e.SendMessage( "This must be in your backpack to identify." );
+					e.SendMessage( StringCatalog.Resolve( e.Account, "This must be in your backpack to identify." ) );
 				else
 					IDCommand( e );
 
@@ -247,7 +250,7 @@ namespace Server.Items
 				e.SendGump( new TabletGump( e, this ) );
 			}
 			else
-				e.SendMessage( "This table looks quite old." );
+				e.SendMessage( StringCatalog.Resolve( e.Account, "This table looks quite old." ) );
 		}
 
 		public override void IDCommand( Mobile m )

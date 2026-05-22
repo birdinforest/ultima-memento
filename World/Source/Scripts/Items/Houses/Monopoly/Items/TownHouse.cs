@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Localization;
 using Server.Multis;
 using Server.Targeting;
 
@@ -190,7 +191,7 @@ namespace Knives.TownHouses
             if (((Mobile)o).Target is HouseBanTarget && ForSaleSign != null && ForSaleSign.NoBanning)
             {
                 ((Mobile)o).Target.Cancel((Mobile)o, TargetCancelType.Canceled);
-                ((Mobile)o).SendMessage(0x161, "You cannot ban people from this house.");
+                ((Mobile)o).SendMessage(0x161, StringCatalog.Resolve(((Mobile)o).Account, "You cannot ban people from this house."));
             }
         }
 

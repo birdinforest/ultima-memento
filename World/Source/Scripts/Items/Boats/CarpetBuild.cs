@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -77,7 +78,7 @@ namespace Server.Items
 
 			if ( carpetDone > 0 )
 			{
-				from.SendMessage( "You need to gather more items before you can conjure this!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You need to gather more items before you can conjure this!" ) );
 				from.SendSound( 0x4A );
 				from.CloseGump( typeof( RugGump ) );
 				from.SendGump( new RugGump( from, HaveGold, HaveCloth ) );
@@ -94,14 +95,14 @@ namespace Server.Items
 
 				if ( builder < 1 )
 				{
-					from.SendMessage( "You need to be near a wizard to conjure that!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You need to be near a wizard to conjure that!" ) );
 					from.SendSound( 0x4A );
 					from.CloseGump( typeof( RugGump ) );
 					from.SendGump( new RugGump( from, HaveGold, HaveCloth ) );
 				}
 				else
 				{
-					from.SendMessage( "You read the book and it transforms into a magic carpet." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You read the book and it transforms into a magic carpet." ) );
 					from.PlaySound( 0x243 );
 					from.AddToBackpack ( new Multis.MagicCarpetADeed() );
 					this.Delete();
@@ -156,7 +157,7 @@ namespace Server.Items
 				if ( dropped is Gold && needGold > 0 )
 				{
 					HaveGold = HaveGold + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " gold." );
+									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " gold." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
 					return true;
@@ -164,7 +165,7 @@ namespace Server.Items
 				else if ( dropped is BaseFabric && needCloth > 0 )
 				{
 					HaveCloth = HaveCloth + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " cloth." );
+									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " cloth." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
 					return true;

@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,11 +31,11 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !IsChildOf( from.Backpack ) ) 
-			{
-				from.SendMessage( "This must be in your backpack to use." );
-				return;
-			}
+		if ( !IsChildOf( from.Backpack ) ) 
+		{
+			from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
+			return;
+		}
 			else
 			{
 				if ( from.Hunger < 20 )
@@ -42,41 +43,41 @@ namespace Server.Items
 					from.Hunger += 3;
 					int iHunger = from.Hunger;
 
-					if ( Server.Items.BaseRace.BloodDrinker( from.RaceID ) )
-					{
-						from.Thirst += 3;
-						if ( iHunger < 5 )
-							from.SendMessage( "You eat the heart, but still need more blood." );
-						else if ( iHunger < 10 )
-							from.SendMessage( "You eat the heart, but still desire more blood." );
-						else if ( iHunger < 15 )
-							from.SendMessage( "You eat the heart, but could still induldge in blood." );
-						else
-							from.SendMessage( "You eat the heart, but have indulged in enough blood." );
-					}
-					else if ( Server.Items.BaseRace.BrainEater( from.RaceID ) )
-					{
-						from.Thirst += 3;
-						if ( iHunger < 5 )
-							from.SendMessage( "You eat the heart, but still need brains." );
-						else if ( iHunger < 10 )
-							from.SendMessage( "You eat the heart, but still desire brains." );
-						else if ( iHunger < 15 )
-							from.SendMessage( "You eat the heart, but could still induldge in some brains." );
-						else
-							from.SendMessage( "You eat the heart, and you no longer hunger for brains." );
-					}
+				if ( Server.Items.BaseRace.BloodDrinker( from.RaceID ) )
+				{
+					from.Thirst += 3;
+					if ( iHunger < 5 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but still need more blood." ) );
+					else if ( iHunger < 10 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but still desire more blood." ) );
+					else if ( iHunger < 15 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but could still induldge in blood." ) );
 					else
-					{
-						if ( iHunger < 5 )
-							from.SendMessage( "You eat the heart, but are still extremely hungry." );
-						else if ( iHunger < 10 )
-							from.SendMessage( "You eat the heart, feeling more satiated." );
-						else if ( iHunger < 15 )
-							from.SendMessage( "You eat the heart, feeling much less hungry." );
-						else
-							from.SendMessage( "You eat the heart, but now feel quite full." );
-					}
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but have indulged in enough blood." ) );
+				}
+				else if ( Server.Items.BaseRace.BrainEater( from.RaceID ) )
+				{
+					from.Thirst += 3;
+					if ( iHunger < 5 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but still need brains." ) );
+					else if ( iHunger < 10 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but still desire brains." ) );
+					else if ( iHunger < 15 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but could still induldge in some brains." ) );
+					else
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, and you no longer hunger for brains." ) );
+				}
+				else
+				{
+					if ( iHunger < 5 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but are still extremely hungry." ) );
+					else if ( iHunger < 10 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, feeling more satiated." ) );
+					else if ( iHunger < 15 )
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, feeling much less hungry." ) );
+					else
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You eat the heart, but now feel quite full." ) );
+				}
 
 					this.Consume();
 
@@ -103,7 +104,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You don't feel hungry enough to eat the " + HeartName + "." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't feel hungry enough to eat the " ) + HeartName + "." );
 					from.Hunger = 20;
 				}
 			}

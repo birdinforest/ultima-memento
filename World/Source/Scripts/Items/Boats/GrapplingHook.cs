@@ -7,6 +7,7 @@ using Server.Prompts;
 using Server.Misc;
 using Server.Multis;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -29,7 +30,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "Target a crew member to board their ship." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Target a crew member to board their ship." ) );
 				t = new HookTarget();
 				from.Target = t;
 			}
@@ -49,11 +50,11 @@ namespace Server.Items
 					Point3D loc = Server.Multis.BaseBoat.GetPirateShip( pirate );
 
 					if ( loc.X > 0 && loc.Y > 0 ){ DoTeleport( from, loc ); }
-					else { from.SendMessage( "You cannot use the hook on this." ); }
+					else { from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use the hook on this." ) ); }
 				}
 				else
 				{
-					from.SendMessage( "You cannot use the hook on this." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot use the hook on this." ) );
 				}
 			}
 		}

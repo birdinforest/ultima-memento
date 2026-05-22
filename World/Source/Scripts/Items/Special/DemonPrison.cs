@@ -221,11 +221,11 @@ namespace Server.Items
 
 			if ( (m.Followers + 3) > m.FollowersMax )
 			{
-				wizard.Say( "You have too many followers with you to shatter this shard." );
+				wizard.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to shatter this shard." ) );
 				return false;
 			}
 
-			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); wizard.Say( "Here is " + GoldReturn.ToString() + " gold back for all of your help." ); }
+			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); wizard.Say( StringCatalog.ResolveFormatByKey( m.Account, "prop.special.demonprison.refund", GoldReturn ) ); }
 
 			BaseCreature daemon = new Daemonic( shard.DaemonBody, shard.DaemonType );
 			daemon.OnAfterSpawn();
@@ -241,7 +241,7 @@ namespace Server.Items
 			daemon.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has freed a daemon" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your daemon has been freed from the shard.", m.NetState);
+				m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your daemon has been freed from the shard." ), m.NetState);
 
 			m.PlaySound( 0x3D );
 
@@ -665,11 +665,11 @@ namespace Server.Mobiles
 						{
 							if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iRuined, m ) )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The daemon almost rusted one of your protected items!");
+								m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( m.Account, "The daemon almost rusted one of your protected items!" ) );
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The daemon rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( m.Account, "The daemon rusted one of your equipped items!" ) );
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.GraphicID;
 								broke.Name = "rusted item";
@@ -687,11 +687,11 @@ namespace Server.Mobiles
 						{
 							if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iRuined, m ) )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The daemon almost rusted one of your protected items!");
+								m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.Resolve( m.Account, "The daemon almost rusted one of your protected items!" ) );
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The daemon rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( m.Account, "The daemon rusted one of your equipped items!" ) );
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.ItemID;
 								broke.Name = "rusted item";

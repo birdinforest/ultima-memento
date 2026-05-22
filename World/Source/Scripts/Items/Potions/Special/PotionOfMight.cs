@@ -49,13 +49,13 @@ namespace Server.Items
 				else if ( chance >= 50 ){ up = AvailPoints( from, 2 ); }
 
 				from.RawStr = from.RawStr + up;
-				from.SendMessage( "This potions makes you feel stronger!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This potions makes you feel stronger!" ) );
 				Server.Items.BasePotion.PlayDrinkEffect( from );
 				this.Consume();
 			}
 			else
 			{
-				from.SendMessage( "This potion would have no effect on you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This potion would have no effect on you." ) );
 			}
 		}
 

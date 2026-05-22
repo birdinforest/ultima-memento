@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Commands
 {
@@ -21,7 +22,7 @@ namespace Server.Commands
 			m_Mobile = e.Mobile;
 			m_Count = 0;
 
-			m_Mobile.SendMessage( "Removing special home items, please wait." );
+					m_Mobile.SendMessage(StringCatalog.Resolve(m_Mobile.Account, "Removing special home items, please wait."));
 
 			ArrayList targets = new ArrayList();
 			foreach ( Item it in World.Items.Values )
@@ -34,7 +35,7 @@ namespace Server.Commands
 					item.Delete();
 				}
 
-			m_Mobile.SendMessage( "Generating world decoration, please wait." );
+			m_Mobile.SendMessage(StringCatalog.Resolve(m_Mobile.Account, "Generating world decoration, please wait."));
 
 			Generate( "Data/Decoration/Monopoly/Sosaria", Map.Sosaria );
 			Generate( "Data/Decoration/Monopoly/Lodor", Map.Lodor );
@@ -43,7 +44,7 @@ namespace Server.Commands
 			Generate( "Data/Decoration/Monopoly/Savage", Map.SavagedEmpire );
 			Generate( "Data/Decoration/Monopoly/Underworld", Map.Underworld );
 
-			m_Mobile.SendMessage( "Special home items generation complete. {0} items were generated.", m_Count );
+			m_Mobile.SendMessage(StringCatalog.ResolveFormat(m_Mobile.Account, "Special home items generation complete. {0} items were generated.", m_Count ));
 		}
 
 		public static void Generate( string folder, params Map[] maps )

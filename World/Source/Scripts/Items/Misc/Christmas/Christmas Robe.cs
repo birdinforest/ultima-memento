@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,7 +31,7 @@ namespace Server.Items
 		
 		public override bool OnEquip( Mobile from )
 		{
-			from.SendMessage( "You put on your Christmas Robe." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You put on your Christmas Robe." ) );
 			
 			m_OrigHue = from.Hue;
 			from.Hue = 0x4001;
@@ -46,7 +47,7 @@ namespace Server.Items
 				
 				from.Hue = m_OrigHue;
 				
-				from.SendMessage( "You remove your Christmas Robe." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You remove your Christmas Robe." ) );
 			}
 
 			base.OnRemoved( parent );

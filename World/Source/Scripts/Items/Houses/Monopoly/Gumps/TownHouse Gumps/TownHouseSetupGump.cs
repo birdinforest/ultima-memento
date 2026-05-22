@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using Server;
 using Server.Targeting;
+using Server.Localization;
+
 
 namespace Knives.TownHouses
 {
@@ -101,7 +103,7 @@ namespace Knives.TownHouses
             y += 30;
 
             AddButton(x-5, y - 3, 0x768, "Quick", new GumpCallback(Quick));
-            AddLabel(x, y - 3, c_Quick ? 0x34 : 0x47E, "Q");
+            AddLabel(x, y - 3, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(from.Account, "Q"));
 
             AddButton(x+=20, y, c_Page == Page.Welcome ? 0x939 : 0x93A, "Welcome Page", new GumpStateCallback(ChangePage), 0);
             AddButton(x+=20, y, c_Page == Page.Blocks ? 0x939 : 0x93A, "Blocks Page", new GumpStateCallback(ChangePage), 1);
@@ -147,7 +149,7 @@ namespace Knives.TownHouses
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
             AddButton(5, 5, 0x768, "Quick", new GumpCallback(Quick));
-            AddLabel(10, 5, c_Quick ? 0x34 : 0x47E, "Q");
+            AddLabel(10, 5, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(from.Account, "Q"));
 
             AddHtml(0, y += 25, width / 2 - 55, "<DIV ALIGN=RIGHT>Name");
             AddTextField(width / 2 - 15, y, 100, 20, 0x480, 0xBBC, "Name", c_Sign.Name);
@@ -716,7 +718,7 @@ namespace Knives.TownHouses
 			}
 			catch
 			{
-				Owner.SendMessage( "You provided an invalid skill name." );	
+				Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "You provided an invalid skill name."));	
 				return false;
 			}
 		}
@@ -739,7 +741,7 @@ namespace Knives.TownHouses
         private void Name()
         {
             c_Sign.Name = GetTextField("Name");
-            Owner.SendMessage("Name set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Name set!"));
             NewGump();
         }
 
@@ -760,25 +762,25 @@ namespace Knives.TownHouses
 
 		private void BanLocSelect()
 		{
-			Owner.SendMessage( "Target the ban location." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the ban location."));
 			Owner.Target = new InternalTarget( this, c_Sign, TargetType.BanLoc );
 		}
 
 		private void SignLocSelect()
 		{
-			Owner.SendMessage( "Target the location for the home sign." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the location for the home sign."));
 			Owner.Target = new InternalTarget( this, c_Sign, TargetType.SignLoc );
 		}
 
 		private void MinZSelect()
 		{
-			Owner.SendMessage( "Target the base floor." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the base floor."));
 			Owner.Target = new InternalTarget( this, c_Sign, TargetType.MinZ );
 		}
 
 		private void MaxZSelect()
 		{
-			Owner.SendMessage( "Target the highest floor." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the highest floor."));
 			Owner.Target = new InternalTarget( this, c_Sign, TargetType.MaxZ );
 		}
 
@@ -843,7 +845,7 @@ namespace Knives.TownHouses
         private void ItemsPrice()
         {
             c_Sign.ItemsPrice = GetTextFieldInt("ItemsPrice");
-            Owner.SendMessage("Item Price set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Item Price set!"));
             NewGump();
         }
 
@@ -870,7 +872,7 @@ namespace Knives.TownHouses
             c_Sign.MinTotalSkill = GetTextFieldInt("MinTotalSkill");
             c_Sign.MaxTotalSkill = GetTextFieldInt("MaxTotalSkill");
 
-            Owner.SendMessage("Skill info set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Skill info set!"));
 
             NewGump();
         }
@@ -893,14 +895,14 @@ namespace Knives.TownHouses
         private void Secures()
         {
             c_Sign.Secures = GetTextFieldInt("Secures");
-            Owner.SendMessage("Secures set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Secures set!"));
             NewGump();
         }
 
         private void Lockdowns()
         {
             c_Sign.Locks = GetTextFieldInt("Lockdowns");
-            Owner.SendMessage("Lockdowns set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Lockdowns set!"));
             NewGump();
         }
 
@@ -921,7 +923,7 @@ namespace Knives.TownHouses
         private void Price()
         {
             c_Sign.Price = GetTextFieldInt("Price");
-            Owner.SendMessage("Price set!");
+            Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Price set!"));
             NewGump();
         }
 
@@ -936,7 +938,7 @@ namespace Knives.TownHouses
 			if ( c_Sign == null )
 				return;
 
-			Owner.SendMessage( "Target the north western corner." );
+			Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "Target the north western corner."));
 			Owner.Target = new InternalTarget( this, c_Sign, TargetType.BlockOne );
 		}
 
@@ -1027,7 +1029,7 @@ namespace Knives.TownHouses
 						break;
 
 					case TargetType.BlockOne:
-						m.SendMessage( "Now target the south eastern corner." );
+						m.SendMessage(StringCatalog.Resolve(m.Account, "Now target the south eastern corner."));
 						m.Target = new InternalTarget( c_Gump, c_Sign, TargetType.BlockTwo, new Point3D( point.X, point.Y, point.Z ) );
 						break;
 

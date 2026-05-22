@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -36,7 +37,7 @@ namespace Server.Items
 			attacker.Damage( absorbed, defender );
 			attacker.PlaySound( 0x1F1 );
 			attacker.FixedEffect( 0x374A, 10, 16 );
-			defender.SendMessage( "Your shield absorbs some of the damage.", damage );
+			defender.SendMessage( StringCatalog.Resolve( defender.Account, "Your shield absorbs some of the damage." ), damage );
 
 			return damage - absorbed;
 		}

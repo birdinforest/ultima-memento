@@ -72,12 +72,12 @@ namespace Server.Items
 
 			if ( egg.HaveGold < 50000 )
 			{
-				druid.Say( "You do not have enough gold for me to perform this service." );
+				druid.Say( StringCatalog.Resolve( m.Account, "You do not have enough gold for me to perform this service." ) );
 				return false;
 			}
 			else if ( (m.Followers + 2) > m.FollowersMax )
 			{
-				druid.Say( "You have too many followers with you to crack this crystal." );
+				druid.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to crack this crystal." ) );
 				return false;
 			}
 
@@ -92,7 +92,7 @@ namespace Server.Items
 			drakkhen.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has cracked open a drakkhen crystal" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your drakkhen is freed.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your drakkhen is freed." ), m.NetState);
 
 			m.PlaySound( 0x041 );
 
@@ -208,12 +208,12 @@ namespace Server.Items
 
 			if ( egg.HaveGold < 50000 )
 			{
-				druid.Say( "You do not have enough gold for me to perform this service." );
+				druid.Say( StringCatalog.Resolve( m.Account, "You do not have enough gold for me to perform this service." ) );
 				return false;
 			}
 			else if ( (m.Followers + 2) > m.FollowersMax )
 			{
-				druid.Say( "You have too many followers with you to crack this crystal." );
+				druid.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to crack this crystal." ) );
 				return false;
 			}
 
@@ -228,7 +228,7 @@ namespace Server.Items
 			drakkhen.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has cracked open a drakkhen crystal" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your drakkhen is freed.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your drakkhen is freed." ), m.NetState);
 
 			m.PlaySound( 0x041 );
 

@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Localization;
 using Server.Multis;
 
 namespace Knives.TownHouses
@@ -79,7 +80,7 @@ namespace Knives.TownHouses
 				 && CanRent( e.Mobile, house, true ) )
 				{
 					e.Mobile.AddToBackpack( new RentalContract() );
-					e.Mobile.SendMessage( "A rental contract has been placed in your bag." );
+					e.Mobile.SendMessage(StringCatalog.Resolve(e.Mobile.Account, "A rental contract has been placed in your bag."));
 				}
 
 				if ( house.Owner == e.Mobile
@@ -87,12 +88,12 @@ namespace Knives.TownHouses
 				{
 					int count = 0;
 
-					e.Mobile.SendMessage( "You have {0} lockdowns and {1} secures available.", RemainingSecures( house ), RemainingLocks( house ) );
+					e.Mobile.SendMessage(StringCatalog.ResolveFormat(e.Mobile.Account, "You have {0} lockdowns and {1} secures available.", RemainingSecures( house ), RemainingLocks( house ) ));
 
 					if ( (count = AllRentalLocks( house )) != 0 )
-						e.Mobile.SendMessage( "Current rentals are using {0} of your lockdowns.", count );
+						e.Mobile.SendMessage(StringCatalog.ResolveFormat(e.Mobile.Account, "Current rentals are using {0} of your lockdowns.", count ));
 					if ( (count = AllRentalSecures( house )) != 0 )
-						e.Mobile.SendMessage( "Current rentals are using {0} of your secures.", count );
+						e.Mobile.SendMessage(StringCatalog.ResolveFormat(e.Mobile.Account, "Current rentals are using {0} of your secures.", count ));
 				}
 			}
 		}
@@ -102,7 +103,7 @@ namespace Knives.TownHouses
 			if ( house is TownHouse && ((TownHouse)house).ForSaleSign.PriceType != "Sale" )
 			{
 				if ( say )
-					m.SendMessage( "You must own your property to rent it." );
+					m.SendMessage(StringCatalog.Resolve(m.Account, "You must own your property to rent it."));
 
 				return false;
 			}
@@ -117,7 +118,7 @@ namespace Knives.TownHouses
 				if ( lic == null || lic.Owner != m )
 				{
 					if ( say )
-						m.SendMessage( "You must have a renter's license to rent your property." );
+						m.SendMessage(StringCatalog.Resolve(m.Account, "You must have a renter's license to rent your property."));
 
 					return false;
 				}
@@ -126,7 +127,7 @@ namespace Knives.TownHouses
 			if ( EntireHouseContracted( house ) )
 			{
 				if ( say )
-					m.SendMessage( "This entire house already has a rental contract." );
+					m.SendMessage(StringCatalog.Resolve(m.Account, "This entire house already has a rental contract."));
 
 				return false;
 			}
@@ -134,7 +135,7 @@ namespace Knives.TownHouses
 			if ( RemainingSecures( house ) < 0 || RemainingLocks( house ) < 0 )
 			{
 				if ( say )
-					m.SendMessage( "You don't have the storage available to rent property." );
+					m.SendMessage(StringCatalog.Resolve(m.Account, "You don't have the storage available to rent property."));
 
 				return false;
 			}

@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -217,7 +218,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "Someone is currently using the control panel." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Someone is currently using the control panel." ) );
 					return;
 				}
 			}
@@ -513,7 +514,7 @@ namespace Server.Items
 			Effects.SendLocationEffect( new Point3D( X - 1, Y - 1, Z + 2 ), Map, 0x36B0, 4, 4 );
 			Effects.SendLocationEffect( new Point3D( X - 2, Y - 1, Z + 2 ), Map, 0x36B0, 4, 4 );
 
-			from.SendMessage( "You scrounge some gems from the wreckage." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "You scrounge some gems from the wreckage." ) );
 
 			for ( int i = 0; i < SideLength; i++ )
 			{

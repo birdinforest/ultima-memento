@@ -4,6 +4,8 @@ using Server;
 using Server.Network;
 using Server.Targeting;
 using System.Collections.Generic;
+using Server.Localization;
+using Server.Localization;
 
 namespace Server.Items
 {

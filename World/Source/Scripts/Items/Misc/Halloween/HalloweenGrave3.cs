@@ -1,6 +1,7 @@
 using System;
 using Server.Prompts;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,7 +22,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage("Please Enter The New Name For This Grave");
+			from.SendMessage(StringCatalog.Resolve( from.Account, "Please Enter The New Name For This Grave" ));
 			from.Prompt = new RenamePrompt( this );
 		}
 
@@ -37,7 +38,7 @@ namespace Server.Items
 			public override void OnResponse( Mobile from, string text )
 			{
 				m_Sign.Name = text;
-				from.SendMessage("The Name has been changed"); 
+				from.SendMessage(StringCatalog.Resolve( from.Account, "The Name has been changed" )); 
 			}
 		}
 

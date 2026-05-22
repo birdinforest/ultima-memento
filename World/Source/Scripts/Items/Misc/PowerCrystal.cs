@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -35,7 +36,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What do you want to use the power crystal on?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What do you want to use the power crystal on?" ) );
 				t = new PowerTarget( this );
 				from.Target = t;
 			}
@@ -62,7 +63,7 @@ namespace Server.Items
 
 					if ( !iCrystal.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this crystal on items in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this crystal on items in your pack." ) );
 					}
 					else if ( myCharges < 100 )
 					{
@@ -73,7 +74,7 @@ namespace Server.Items
 
 						if ( xCrystal.m_Charges > 100 ){ xCrystal.m_Charges = 100; }
 
-						from.SendMessage( "You charge your golem with the power crystal." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You charge your golem with the power crystal." ) );
 						from.RevealingAction();
 						from.PlaySound( 0x652 );
 
@@ -83,12 +84,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "That golem is already fully charged." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That golem is already fully charged." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You don't think that will really do anything." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You don't think that will really do anything." ) );
 				}
 			}
 		}

@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class ElementalSharpeningStone : SplitElementalItemBase
@@ -5,7 +7,7 @@ namespace Server.Items
         [Constructable]
         public ElementalSharpeningStone() : base(0x1F14)
         {
-            Name = "Elemental Sharpening Stone";
+            Name = StringCatalog.Resolve(null, "Elemental Sharpening Stone");
         }
 
         public ElementalSharpeningStone(Serial serial) : base(serial)
@@ -26,7 +28,7 @@ namespace Server.Items
         {
             if (from.Skills[SkillName.Blacksmith].Value < 100.0 || from.Skills[SkillName.Magery].Value < 100.0)
             {
-                from.SendMessage(32, "You need at least 100 Blacksmithing and 100 Magery to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Blacksmithing and 100 Magery to use this"));
                 return;
             }
 
@@ -39,7 +41,7 @@ namespace Server.Items
 
             if (false == (weapon is BaseSword || weapon is BaseKnife || weapon is BaseAxe || weapon is BaseSpear))
             {
-                from.SendMessage(32, "You may only use this on bladed weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on bladed weapons"));
                 return false;
             }
 

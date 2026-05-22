@@ -1,4 +1,5 @@
-﻿namespace Server.Items
+﻿using Server.Localization;
+using Server.Items
 {
     public abstract class DamageIncreaseBowStringBase : AddDamageItemBase
     {
@@ -12,7 +13,7 @@
 
         protected override void AfterItemDeleted(Mobile from)
         {
-            from.SendMessage(32, "You use the last of the string");
+            from.SendMessage(32, StringCatalog.Resolve(from.Account, "You use the last of the string"));
         }
 
         public override void GetProperties(ObjectPropertyList list)
@@ -36,7 +37,7 @@
 
             if (false == weapon is BaseRanged)
             {
-                from.SendMessage(32, "You may only use this on ranged weapons");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on ranged weapons"));
                 return false;
             }
 

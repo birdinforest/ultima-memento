@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Gumps;
 using Server.Network;
 using Server.Commands;
@@ -32,13 +33,13 @@ namespace Server.Gumps
 			int btd = info.ButtonID;			
 			if(info.ButtonID == 1 ){
 				ds.AddStatusGump(state.Mobile);
-				state.Mobile.SendMessage( "You decided not to exit Liars Dice!");				
+				state.Mobile.SendMessage(StringCatalog.Resolve(state.Mobile.Account, "You decided not to exit Liars Dice!"));				
 			}else if(info.ButtonID == 2){
-				state.Mobile.SendMessage( "You exited Liars Dice!");
+				state.Mobile.SendMessage(StringCatalog.Resolve(state.Mobile.Account, "You exited Liars Dice!"));
 				ds.RemovePlayer(state.Mobile,true);
 			}
 			else{
-				state.Mobile.SendMessage( "Illegal option selected");
+				state.Mobile.SendMessage(StringCatalog.Resolve(state.Mobile.Account, "Illegal option selected"));
 			}
 		}    
     }    

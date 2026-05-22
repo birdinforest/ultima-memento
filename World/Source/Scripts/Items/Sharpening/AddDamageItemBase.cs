@@ -1,4 +1,5 @@
-﻿using Server.Targeting;
+﻿using Server.Localization;
+using Server.Targeting;
 using System;
 
 namespace Server.Items
@@ -40,20 +41,21 @@ namespace Server.Items
             if (weapon.Quality == WeaponQuality.Exceptional) currentDamage += 15; // Because apparently Exceptional is worth 15% DI
             if (MaxDamageBonus <= currentDamage)
             {
-                from.SendMessage(32, "This weapon cannot be strengthened any further");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "This weapon cannot be strengthened any further"));
                 return;
             }
 
             int randomBonus = GetBonus(from);
             if (randomBonus < 1)
             {
-                from.SendMessage(32, "You fail to strengthen your weapon.");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You fail to strengthen your weapon."));
             }
             else
             {
                 var damageBonus = Math.Min(randomBonus, MaxDamageBonus - currentDamage);
                 weapon.Attributes.WeaponDamage += damageBonus;
-                from.SendMessage(88, "The damage increases by {0}%", damageBonus);
+                string damageMsg = StringCatalog.ResolveFormat(from.Account, "The damage increases by {0}%", damageBonus);
+                from.SendMessage(88, damageMsg);
             }
 
             if (--Uses < 1)
@@ -72,7 +74,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            PromptForTarget(from, "Which weapon would you like to strengthen?");
+            PromptForTarget(from, StringCatalog.Resolve(from.Account, "Which weapon would you like to strengthen?"));
         }
 
         protected abstract int GetBonus(Mobile from);
@@ -81,7 +83,7 @@ namespace Server.Items
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendMessage("This must be in your backpack to use");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "This must be in your backpack to use"));
                 return;
             }
 
@@ -95,7 +97,7 @@ namespace Server.Items
 
             if (!weapon.IsChildOf(from.Backpack))
             {
-                from.SendMessage(32, "This must be in your backpack");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "This must be in your backpack"));
                 return false;
             }
 

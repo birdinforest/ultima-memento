@@ -5,6 +5,8 @@ using Server;
 using Server.Multis;
 using Server.Gumps;
 using Server.ContextMenus;
+using Server.Localization;
+
 
 namespace Server.Multis
 {
@@ -27,7 +29,7 @@ namespace Server.Multis
 		public string GetName()
 		{
 			if ( Name == null )
-				return "An Unnamed House";
+return StringCatalog.Resolve(null, "An Unnamed House");
 
 			return Name;
 		}

@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -140,7 +141,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to change the weapon type." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to change the weapon type." ) );
 				return;
 			}
 			else

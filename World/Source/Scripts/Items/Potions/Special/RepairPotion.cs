@@ -39,7 +39,7 @@ namespace Server.Items
 		{
          	if ( m.InRange( this.GetWorldLocation(), 1 ) ) 
          	{ 
-				m.SendMessage( "What would you like to pour this on?" );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "What would you like to pour this on?" ) );
 				m.Target = new RepairTarget( this, m );
          	} 
          	else 

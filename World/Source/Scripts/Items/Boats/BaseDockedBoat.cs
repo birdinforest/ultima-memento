@@ -3,6 +3,7 @@ using Server;
 using Server.Regions;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Multis
 {
@@ -89,12 +90,12 @@ namespace Server.Multis
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			string phrase_a = "Where do you wish to place the ship?";
-			string phrase_b = "You may not place a boat from this location.";
+			string phrase_a = StringCatalog.Resolve( from.Account, "Where do you wish to place the ship?" );
+			string phrase_b = StringCatalog.Resolve( from.Account, "You may not place a boat from this location." );
 			if ( BaseBoat.isCarpet( Boat ) )
 			{
-				phrase_a = "Where do you wish to place the carpet?";
-				phrase_b = "There is not magic from the carpet in this location.";
+				phrase_a = StringCatalog.Resolve( from.Account, "Where do you wish to place the carpet?" );
+				phrase_b = StringCatalog.Resolve( from.Account, "There is not magic from the carpet in this location." );
 			}
 
 			Region reg = Region.Find( from.Location, from.Map );
@@ -105,7 +106,7 @@ namespace Server.Multis
 			}
 			else if ( DockSearch.NearDock(from) == false && !BaseBoat.isCarpet( Boat ) )
 			{
-				from.SendMessage( "You must be near a dock to launch your ship!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" ) );
 			}
 			else if (
 				Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) || 
@@ -158,11 +159,11 @@ namespace Server.Multis
 			}
 			else
 			{
-				string phrase_a = "You must be near a dock to launch your ship!";
-				string phrase_b = "A ship can not be launched here.";
+				string phrase_a = StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" );
+				string phrase_b = StringCatalog.Resolve( from.Account, "A ship can not be launched here." );
 				if ( BaseBoat.isCarpet( Boat ) )
 				{
-					phrase_b = "The magic of the carpet cannot be used here.";
+					phrase_b = StringCatalog.Resolve( from.Account, "The magic of the carpet cannot be used here." );
 				}
 
 				Map map = from.Map;

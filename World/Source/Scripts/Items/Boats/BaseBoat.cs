@@ -6,6 +6,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Gumps;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Multis
 {
@@ -1624,7 +1625,7 @@ namespace Server.Multis
 
 					if (foundItem)
 					{
-						m_TillerMan.Say("That item might be precious sir!");
+						m_TillerMan.Say(StringCatalog.ResolveByKey(null, "prop.boat.item.precious"));
 					}
 
 					handled = true;
@@ -1635,7 +1636,7 @@ namespace Server.Multis
 
 			if (from is PlayerMobile && Utility.Random( 4 ) == 1 && Contains(e.Mobile))
 			{
-				m_TillerMan.Say(string.Format("I can always '{0}' sir!", CLEAR_THE_DECK));
+				m_TillerMan.Say(string.Format(StringCatalog.ResolveByKey(null, "prop.boat.clear.deck"), CLEAR_THE_DECK));
 			}
 		}
 

@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -182,7 +183,7 @@ namespace Server.Items
 		{
 			if ( IsOpen && from is PlayerMobile && m_Boat != null && m_Boat.Contains( from ) )
 			{
-				from.SendMessage( "Where do you want to disembark?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Where do you want to disembark?" ) );
 				from.Target = new InternalTarget( this );
 				return true;
 			}

@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using System.Collections;
 using Server.Mobiles;
 using Server.Network;
@@ -14,7 +15,6 @@ namespace Server.Items
 			if ( !id )
 			{
 				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
 		}
 
@@ -141,10 +141,25 @@ namespace Server.Items
 			list.Add( 1049644, RelicCameFrom );
         }
 
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( "This must be in your backpack to identify." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to identify." ) );
 			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				IDCommand( from );
 		}
@@ -179,6 +194,8 @@ namespace Server.Items
 				CoinPrice = reader.ReadInt();
 
 			RelicCameFrom = reader.ReadString();
+
+			ColorText3 = null;
 		}
 	}
 }

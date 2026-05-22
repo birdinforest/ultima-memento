@@ -1,6 +1,8 @@
+using System;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Gumps 
 {
@@ -71,8 +73,8 @@ namespace Server.Gumps
 				
 			if( !m_Boat.Contains( m_From ) )
 			{
-				if ( BaseBoat.isCarpet( m_Boat ) ){ m_From.SendMessage( "You have to be on your carpet to do that!" ); }
-				else { m_From.SendMessage( "You have to be on the boat to do that!" ); }
+			if ( BaseBoat.isCarpet( m_Boat ) ){ m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "You have to be on your carpet to do that!" ) ); }
+			else { m_From.SendMessage( StringCatalog.Resolve( m_From.Account, "You have to be on the boat to do that!" ) ); }
 				m_From.CloseGump( typeof( TillerManGump ) );
 				return;
 			}

@@ -9,6 +9,7 @@ using Server.Mobiles;
 using System.Text;
 using System.IO;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -69,7 +70,7 @@ namespace Server.Items
 						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), from, from, itHurts );
 						from.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
 						from.PlaySound( 0x307 );
-						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom exploded near you!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( from.Account, "A mushroom exploded near you!" ) );
 
 					break;
 
@@ -92,7 +93,7 @@ namespace Server.Items
 
 						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x231 );
-						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom released odd spores!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( from.Account, "A mushroom released odd spores!" ) );
 
 					break;
 
@@ -101,7 +102,7 @@ namespace Server.Items
 						from.BoltEffect( 0 );
 						itHurts = (int)( (Utility.RandomMinMax(40,200) * ( 100 - from.EnergyResistance ) ) / 100 );
 						from.Damage( itHurts, from );
-						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom released strange energy!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( from.Account, "A mushroom released strange energy!" ) );
 
 					break;
 			}
@@ -127,19 +128,14 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 ); // version
-            writer.Write( ShroomType );
+			writer.Write( ShroomType );
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-
 			int version = reader.ReadInt();
-
-			if ( ItemID == 0x1126 )
-				OnMushroomReset();
-
-            ShroomType = reader.ReadInt();
+			ShroomType = reader.ReadInt();
 		}
 	}
 }

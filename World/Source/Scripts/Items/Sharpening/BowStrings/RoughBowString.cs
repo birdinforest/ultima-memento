@@ -1,4 +1,6 @@
-﻿namespace Server.Items
+﻿using Server.Localization;
+
+namespace Server.Items
 {
     public class RoughBowString : DamageIncreaseBowStringBase
     {
@@ -18,14 +20,14 @@
         [Constructable]
         public RoughBowString(int uses) : base(uses)
         {
-            Name = "Weak Bow String";
+            Name = StringCatalog.Resolve(null, "Weak Bow String");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
             if (from.Skills[SkillName.Bowcraft].Value < 60)
             {
-                from.SendMessage(32, "You need at least 60 Bowcraft to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 60 Bowcraft to use this"));
                 return;
             }
 

@@ -1,6 +1,7 @@
 using Server.Network;
 using Server.Spells;
 using Server.Targeting;
+using Server.Localization;
 using System;
 using System.Collections.Generic;
 
@@ -52,12 +53,12 @@ namespace Server.Items
 			}
 			else if ( !from.Region.AllowHarmful( from, from ) )
 			{
-				from.SendMessage( "That doesn't feel like a good idea." ); 
+				from.SendMessage( StringCatalog.Resolve( from.Account, "That doesn't feel like a good idea." ) );
 				return;
 			}
 			else if ( Core.AOS && (from.Paralyzed || from.Blessed || from.Frozen || (from.Spell != null && from.Spell.IsCasting)) )
 			{
-				from.SendMessage( "You cannot do that yet." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot do that yet." ) );
 				return;
 			} 
 

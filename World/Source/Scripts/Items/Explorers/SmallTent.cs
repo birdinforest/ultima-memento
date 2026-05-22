@@ -70,22 +70,22 @@ namespace Server.Items
 
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else if ( Server.Misc.Worlds.IsOnBoat( from ) )
 			{
-				from.SendMessage( "You cannot setup this tent near a boat." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot setup this tent near a boat." ) );
 				return;
 			}
 			else if ( !Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) )
 			{
-				from.SendMessage( "You can only setup this tent in the wilderness." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You can only setup this tent in the wilderness." ) );
 				return;
 			}
 			else if ( inCombat )
 			{
-				from.SendMessage( "You cannot setup a tent while in combat." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot setup a tent while in combat." ) );
 				return;
 			}
 			else if ( Charges > 0 && from.CheckSkill( SkillName.Camping, 0.0, 50.0 ) )
@@ -101,7 +101,7 @@ namespace Server.Items
 			{
 				if ( Validate( from ) )
 				{
-					from.SendMessage( "Your tent is a bit more worn out as you fail to set it up properly." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "Your tent is a bit more worn out as you fail to set it up properly." ) );
 					Server.Items.Kindling.RaiseCamping( from );
 					ConsumeCharge( from );
 					return;
@@ -109,7 +109,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "This tent is too worn from over use, and is no longer of any good." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This tent is too worn from over use, and is no longer of any good." ) );
 				return;
 			}
 		}
@@ -118,7 +118,7 @@ namespace Server.Items
 		{
 			if ( from.Skills[SkillName.Camping].Value < 10 )
 			{
-				from.SendMessage( "You need at least a 10.0 camping skill to use this tent!" ); 
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You need at least a 10.0 camping skill to use this tent!" ) ); 
 				return false;
 			}		
 			else 
@@ -133,7 +133,7 @@ namespace Server.Items
 
 			if ( Charges == 0 )
 			{
-				from.SendMessage( "This tent is too worn from over use, and is no longer of any good." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This tent is too worn from over use, and is no longer of any good." ) );
 				this.Delete();
 			}
 		}
@@ -248,7 +248,7 @@ namespace Server.Items
 			public override void OnDisturb( DisturbType type, bool message )
 			{
 				if ( message && !m_Stop )
-					Caster.SendMessage( "You have been disrupted while attempting to setup your tent." );
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have been disrupted while attempting to setup your tent." ) );
 			}
 
 			public override void OnCast()

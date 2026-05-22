@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -117,7 +118,13 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, RingName);
+			if ( BuildingPropertyListLocale != null )
+			{
+				string guildKey = "prop.guildring." + RingGuild;
+				AddLocalizedProperty(list, guildKey);
+			}
+			else
+				list.Add( 1070722, RingName);
             if ( RingOwner != null ){ list.Add( 1049644, RingOwner.Name ); }
         }
 
@@ -129,7 +136,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "This is not your guild ring!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your guild ring!" ) );
 				return false;
 			}
 			return true;

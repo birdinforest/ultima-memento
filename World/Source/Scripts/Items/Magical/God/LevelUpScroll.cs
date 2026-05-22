@@ -36,7 +36,7 @@ namespace Server.Items
         public LevelUpScroll( int value ): base(0x573C)
 		{
 			Weight = 1.0;
-			Name = "Enhancement Rune";
+			Name = StringCatalog.Resolve(null, "Enhancement Rune");
             m_Value = value;
 		}
 
@@ -73,15 +73,15 @@ namespace Server.Items
         public override void OnSingleClick(Mobile from)
         {
             if (m_Value == 5.0)
-                base.LabelTo(from, "a wondrous rune of enhancing (+{0} max levels)", m_Value);
+                base.LabelTo(from, StringCatalog.Resolve(from.Account, "a wondrous rune of enhancing (+{0} max levels)"), m_Value);
             else if (m_Value == 10.0)
-                base.LabelTo(from, "an exalted rune of enhancing (+{0} max levels)", m_Value);
+                base.LabelTo(from, StringCatalog.Resolve(from.Account, "an exalted rune of enhancing (+{0} max levels)"), m_Value);
             else if (m_Value == 15.0)
-                base.LabelTo(from, "a mythical rune of enhancing (+{0} max levels)", m_Value);
+                base.LabelTo(from, StringCatalog.Resolve(from.Account, "a mythical rune of enhancing (+{0} max levels)"), m_Value);
             else if (m_Value == 20.0)
-                base.LabelTo(from, "a legendary rune of enhancing (+{0} max levels)", m_Value);
+                base.LabelTo(from, StringCatalog.Resolve(from.Account, "a legendary rune of enhancing (+{0} max levels)"), m_Value);
             else
-                base.LabelTo(from, "a rune of enhancing (+{0} max levels)", m_Value);
+                base.LabelTo(from, StringCatalog.Resolve(from.Account, "a rune of enhancing (+{0} max levels)"), m_Value);
         }
 
 		public override void AddNameProperties( ObjectPropertyList list )

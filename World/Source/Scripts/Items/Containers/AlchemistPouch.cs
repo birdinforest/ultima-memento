@@ -1,5 +1,6 @@
 using System;
 using Server; 
+using Server.Localization;
 using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
@@ -42,9 +43,9 @@ namespace Server.Items
 			if ( isAlchemy( dropped ) )
 				return base.OnDragDropInto(from, dropped, p);
 			else if ( dropped.Catalog == Catalogs.Potion )
-				from.SendMessage("That particular item cannot be used in this pouch.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "That particular item cannot be used in this pouch."));
 			else
-				from.SendMessage("This belt pouch is for alchemy potions.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "This belt pouch is for alchemy potions."));
 
 			return false;
         }
@@ -54,9 +55,9 @@ namespace Server.Items
 			if ( isAlchemy( dropped ) )
 				return base.OnDragDrop(from, dropped);
 			else if ( dropped.Catalog == Catalogs.Potion )
-				from.SendMessage("That particular item cannot be used in this pouch.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "That particular item cannot be used in this pouch."));
 			else
-				from.SendMessage("This belt pouch is for alchemy potions.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "This belt pouch is for alchemy potions."));
 
 			return false;
         }
@@ -669,7 +670,7 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			from.SendMessage( "Single click this bag to organize it." );
+			from.SendMessage(StringCatalog.Resolve(from.Account, "Single click this bag to organize it."));
 			return base.OnDragLift( from );
 		}
 
@@ -886,7 +887,7 @@ namespace Server.Items
 				} 
 				else 
 				{
-					m_From.SendMessage( "This must be in your backpack to organize." );
+					m_From.SendMessage(StringCatalog.Resolve(m_From.Account, "This must be in your backpack to organize."));
 				} 
 			} 
 		} 

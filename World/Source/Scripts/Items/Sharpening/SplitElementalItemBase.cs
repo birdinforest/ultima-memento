@@ -1,4 +1,5 @@
-﻿using Server.Targeting;
+﻿using Server.Localization;
+using Server.Targeting;
 
 namespace Server.Items
 {
@@ -47,7 +48,7 @@ namespace Server.Items
             if (--Uses < 1)
             {
                 Delete();
-                from.SendMessage(32, "You use the last of the magic");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You use the last of the magic"));
             }
         }
 
@@ -64,14 +65,14 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            PromptForTarget(from, "Which weapon would you like to elementally imbue?");
+            PromptForTarget(from, StringCatalog.Resolve(from.Account, "Which weapon would you like to elementally imbue?"));
         }
 
         protected void PromptForTarget(Mobile from, string message)
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendMessage("This must be in your backpack to use");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "This must be in your backpack to use"));
                 return;
             }
 
@@ -85,7 +86,7 @@ namespace Server.Items
 
             if (!weapon.IsChildOf(from.Backpack))
             {
-                from.SendMessage(32, "This must be in your backpack");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "This must be in your backpack"));
                 return false;
             }
 

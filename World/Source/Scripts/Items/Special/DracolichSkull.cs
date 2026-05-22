@@ -136,12 +136,12 @@ namespace Server.Items
 
 			if ( (m.Followers + 3) > m.FollowersMax )
 			{
-				necro.Say( "You have too many followers with you right now." );
+				necro.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you right now." ) );
 				return false;
 			}
 			else if ( m.Skills[SkillName.Necromancy].Base < 100 )
 			{
-				necro.Say( "You must be a pure grandmaster necromancer if you want my help." );
+				necro.Say( StringCatalog.Resolve( m.Account, "You must be a pure grandmaster necromancer if you want my help." ) );
 				return false;
 			}
 
@@ -157,7 +157,7 @@ namespace Server.Items
 			dragon.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has reanimated a skeletal dragon" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your skeletal dragon has reanimated.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your skeletal dragon has reanimated." ), m.NetState);
 
 			m.PlaySound( 0x488 );
 

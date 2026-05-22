@@ -9,6 +9,7 @@ using Server.Commands;
 using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -39,27 +40,27 @@ namespace Server.Items
 			if ( this.Name == "Bell of Courage" )
 			{
 				from.PlaySound( m_Sounds[Utility.Random( m_Sounds.Length )] );
-				from.SendMessage( "You ring the bell, producing a courageous melody." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You ring the bell, producing a courageous melody." ) );
 			}
 			else if ( this.Name == "Candle of Love" )
 			{
-				from.SendMessage( "You feel the loving warmth of the flame." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You feel the loving warmth of the flame." ) );
 			}
 			else if ( this.Name == "Book of Truth" )
 			{
-				from.SendMessage( "You learn a little bit more about the principles of truth." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You learn a little bit more about the principles of truth." ) );
 			}
 			else if ( this.Name == "Scales of Ethicality" )
 			{
-				from.SendMessage( "You scale seems to weigh the ethics of the situation." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You scale seems to weigh the ethics of the situation." ) );
 			}
 			else if ( this.Name == "Orb of Logic" )
 			{
-				from.SendMessage( "You feel a strong sense of logic from the orb." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You feel a strong sense of logic from the orb." ) );
 			}
 			else if ( this.Name == "Lantern of Discipline" )
 			{
-				from.SendMessage( "The lantern glows with a disciplined light." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "The lantern glows with a disciplined light." ) );
 			}
 			else if ( this.ItemID == 0x1A7F )
 			{
@@ -71,7 +72,7 @@ namespace Server.Items
 			}
 			else if ( this.ItemID > 19512 && this.ItemID < 19539 )
 			{
-				from.SendMessage( "This cube holds immense magical power." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This cube holds immense magical power." ) );
 			}
 		}
 

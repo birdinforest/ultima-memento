@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -33,7 +34,7 @@ namespace Server.Items
 			else
 			{
 				from.BeginTarget( 2, false, TargetFlags.None, new TargetCallback( OnTarget ) );
-				from.SendMessage( "What do you wish to use the gem on?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What do you wish to use the gem on?" ) );
 			}
 		}
 
@@ -80,7 +81,7 @@ namespace Server.Items
 				}
 				else if ( item.LootType == LootType.Blessed )
 				{
-					from.SendMessage( "You can only use this on exceptionally crafted robes, thigh boots, cloaks, or leather gloves." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this on exceptionally crafted robes, thigh boots, cloaks, or leather gloves." ) );
 					return;
 				}
 				else if ( resource != CraftResource.None && resource != CraftResource.RegularLeather )
@@ -95,7 +96,7 @@ namespace Server.Items
 				{
 					if ( eq.CurArcaneCharges >= eq.MaxArcaneCharges )
 					{
-						from.SendMessage( "That item is already fully charged." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "That item is already fully charged." ) );
 					}
 					else
 					{
@@ -107,7 +108,7 @@ namespace Server.Items
 						else
 							eq.CurArcaneCharges += charges;
 
-						from.SendMessage( "You recharge the item." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You recharge the item." ) );
 						if ( Amount <= 1 )
 							Delete();
 						else Amount--;
@@ -147,24 +148,24 @@ namespace Server.Items
 
 						item.Hue = DefaultArcaneHue;
 
-						from.SendMessage( "You enhance the item with your gem." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You enhance the item with your gem." ) );
 						if ( Amount <= 1 )
 							Delete();
 						else Amount--;
 					}
 					else
 					{
-						from.SendMessage( "Only exceptional items can be enhanced with the gem." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "Only exceptional items can be enhanced with the gem." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You do not have enough skill in tailoring to enhance the item." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You do not have enough skill in tailoring to enhance the item." ) );
 				}
 			}
 			else
 			{
-				from.SendMessage( "You can only use this on exceptionally crafted robes, thigh boots, cloaks, or leather gloves." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this on exceptionally crafted robes, thigh boots, cloaks, or leather gloves." ) );
 			}
 		}
 

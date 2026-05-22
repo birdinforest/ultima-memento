@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class DenseWeightingStone : DamageIncreaseWeightingStoneBase
@@ -18,14 +20,14 @@ namespace Server.Items
         [Constructable]
         public DenseWeightingStone(int uses) : base(uses)
         {
-            Name = "Dense Weighting Stone";
+            Name = StringCatalog.Resolve(null, "Dense Weighting Stone");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
             if (from.Skills[SkillName.Blacksmith].Value < 100.0)
             {
-                from.SendMessage(32, "You need at least 100 Blacksmithing to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 100 Blacksmithing to use this"));
                 return;
             }
 

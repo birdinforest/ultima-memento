@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -13,7 +14,6 @@ namespace Server.Items
 			if ( !id )
 			{
 				ColorHue3 = "FDC844";
-				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
 		}
 
@@ -88,14 +88,29 @@ namespace Server.Items
 			}
 		}
 
+		protected override void AddColorText3Property( ObjectPropertyList list, string colorHue3 )
+		{
+			if ( NotIdentified || CoinPrice <= 0 )
+				return;
+
+			string worthText;
+
+			if ( BuildingPropertyListLocale != null )
+				worthText = string.Format( ResolvePropertyText( "prop.trade.relic.worth.gold" ), CoinPrice );
+			else
+				worthText = "Worth " + CoinPrice + " Gold";
+
+			list.Add( 1072173, "{0}\t{1}", colorHue3, worthText );
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) && MySettings.S_IdentifyItemsOnlyInPack && from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified ) 
-				from.SendMessage( "This must be in your backpack to identify." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to identify." ) );
 			else if ( from is PlayerMobile && ((PlayerMobile)from).Preferences.DoubleClickID && NotIdentified )
 				IDCommand( from );
 			else if ( !IsChildOf( from.Backpack ) )
-				from.SendMessage( "This must be in your backpack to flip." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to flip." ) );
 			else
 				if ( this.ItemID == RelicFlipID1 ){ this.ItemID = RelicFlipID2; } else { this.ItemID = RelicFlipID1; }
 		}
@@ -236,6 +251,8 @@ namespace Server.Items
 
             RelicFlipID1 = reader.ReadInt();
             RelicFlipID2 = reader.ReadInt();
+
+			ColorText3 = null;
 		}
 	}
 }

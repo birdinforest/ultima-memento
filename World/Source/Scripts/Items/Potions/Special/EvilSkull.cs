@@ -26,21 +26,21 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to use." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to use." ) );
 				return;
 			}
 			else
 			{
 				if ( from.Mana < from.ManaMax )
 				{
-					from.SendMessage( "The skull crumbles into dust, magically restoring your mana." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The skull crumbles into dust, magically restoring your mana." ) );
 					from.Mana = from.ManaMax;
 					from.PlaySound( 0x1FA );
 					Misc.Titles.AwardKarma( from, -100, true );
 				}
 				else
 				{
-					from.SendMessage( "The skull crumbles into dust." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "The skull crumbles into dust." ) );
 				}
 
 				this.Delete();

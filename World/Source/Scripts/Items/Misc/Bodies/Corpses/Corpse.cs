@@ -8,6 +8,8 @@ using Server.Guilds;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -1162,7 +1164,7 @@ namespace Server.Items
 		{
 			if ( from.Blessed && from != m_Owner )
 			{
-				from.SendMessage( "You cannot look through the corpse while in this state." );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot look through the corpse while in this state."));
 			}
 			else
 			{

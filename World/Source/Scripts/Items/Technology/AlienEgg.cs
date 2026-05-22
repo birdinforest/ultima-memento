@@ -1,5 +1,6 @@
 using System;
 using Server; 
+using Server.Localization;
 using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -20,7 +23,7 @@ namespace Server.Items
 		public AlienEgg() : base( 0x2D8E )
 		{
 			Weight = 4.0;
-			Name = "Alien Egg";
+Name = StringCatalog.Resolve(null, "Alien Egg");
 			Technology = true;
 
 			if ( Weight > 3.0 )
@@ -79,7 +82,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveXormite = HaveXormite + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " xormite coin" + sEnd );
+					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "You added {0} xormite coin{1}", iAmount.ToString(), sEnd ));
 					dropped.Delete();
 					return true;
 				}
@@ -148,11 +151,11 @@ namespace Server.Items
 
 			if ( (m.Followers + 3) > m.FollowersMax )
 			{
-				vet.Say( "You have too many followers with you to hatch this egg." );
+				vet.Say(StringCatalog.Resolve(vet.Account, "You have too many followers with you to hatch this egg."));
 				return false;
 			}
 
-			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); vet.Say( "Here is " + XormiteReturn.ToString() + " xormite back for all of your help." ); }
+			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); vet.Say(StringCatalog.ResolveFormat(vet.Account, "Here is {0} xormite back for all of your help.", XormiteReturn.ToString())); }
 
 			BaseCreature alien = new Alien();
 			alien.Controlled = true;
@@ -166,7 +169,7 @@ namespace Server.Items
 
 			LoggingFunctions.LogGenericQuest( m, "has hatched an alien" );
 
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your alien has hatched.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve(m.Account, "Your alien has hatched."), m.NetState);
 			m.PlaySound( 0x041 );
 
 			dropped.Delete();
@@ -198,7 +201,7 @@ namespace Server.Items
 				AddImage(0, 0, 30521);
 				AddItem(574, 32, 14968);
 
-				AddHtml( 50, 38, 207, 20, @"<BODY><BASEFONT Color=#00FF06>ALIEN EGG</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 38, 207, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve(from.Account, "ALIEN EGG") + @"</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(376, 36, 3823, 0xB96);
 				AddHtml( 420, 38, 180, 20, @"<BODY><BASEFONT Color=#00FF06>" + egg.HaveXormite.ToString() + "/" + egg.NeedXormite.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);

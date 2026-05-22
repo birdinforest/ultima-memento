@@ -4,6 +4,7 @@ using Server.Regions;
 using Server.Targeting;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Multis
 {
@@ -18,20 +19,13 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Offset{ get{ return m_Offset; } set{ m_Offset = value; } }
 
-		public BaseBoatDeed( int id, Point3D offset ) : base( 0x14F3 )
+		public BaseBoatDeed( int id, Point3D offset ) : base( 0x14F2 )
 		{
 			Weight = 1.0;
+			Hue = 0x47E;
+
 			m_MultiID = id;
 			m_Offset = offset;
-
-			if ( BaseBoat.isRug( m_MultiID ) )
-			{
-				if ( Hue < 1 ){ Hue = 0xABB; }
-				ItemID = 0x0A59;
-				Name = "magic carpet";
-			}
-
-			if ( Hue < 1 ){ Hue = 0x5BE; }
 		}
 
 		public BaseBoatDeed( Serial serial ) : base( serial )
@@ -41,7 +35,7 @@ namespace Server.Multis
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 2 ); // version
 			writer.Write( m_MultiID );
 			writer.Write( m_Offset );
 		}
@@ -49,37 +43,31 @@ namespace Server.Multis
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-
 			int version = reader.ReadInt();
-
-			switch ( version )
-			{
-				case 0:
-				{
-					m_MultiID = reader.ReadInt();
-					m_Offset = reader.ReadPoint3D();
-
-					break;
-				}
-			}
-
-			if ( Weight == 0.0 )
-				Weight = 1.0;
-
-			if ( Hue < 1 ){ Hue = 0x5BE; }
+			m_MultiID = reader.ReadInt();
+			m_Offset = reader.ReadPoint3D();
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			string phrase_a = "Where do you wish to place the ship?";
-			string phrase_b = "You may not place a boat from this location.";
 			if ( BaseBoat.isCarpet( Boat ) )
 			{
-				phrase_a = "Where do you wish to place the carpet?";
-				phrase_b = "There is not magic from the carpet in this location.";
+				Name = "magic carpet deed";
+			}
+			else
+			{
+				Name = "ship deed";
 			}
 
 			Region reg = Region.Find( from.Location, from.Map );
+
+			string placeMsg = "Where do you wish to place the ship?";
+			string denyMsg = "You may not place a boat from this location.";
+			if ( BaseBoat.isCarpet( Boat ) )
+			{
+				placeMsg = "Where do you wish to place the carpet?";
+				denyMsg = "There is not magic from the carpet in this location.";
+			}
 
 			if ( !IsChildOf( from.Backpack ) )
 			{
@@ -87,7 +75,7 @@ namespace Server.Multis
 			}
 			else if ( DockSearch.NearDock(from) == false && !BaseBoat.isCarpet( Boat ) )
 			{
-				from.SendMessage( "You must be near a dock to launch your ship!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" ) );
 			}
 			else if (
 				Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) || 
@@ -101,12 +89,12 @@ namespace Server.Multis
 				reg.IsPartOf( typeof( PublicRegion ) ) || 
 				Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) )
 			{
-				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, phrase_a);
+				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, placeMsg ) );
 				from.Target = new InternalTarget( this );
 			}
 			else
 			{
-				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, phrase_b);
+				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, denyMsg ) );
 			}
 		}
 
@@ -124,11 +112,11 @@ namespace Server.Multis
 			}
 			else
 			{
-				string phrase_a = "You may not place a ship while on another ship or inside a house.";
-				string phrase_b = "A ship can not be launched here.";
+				string phrase_a = StringCatalog.Resolve( from.Account, "You may not place a ship while on another ship or inside a house." );
+				string phrase_b = StringCatalog.Resolve( from.Account, "A ship can not be launched here." );
 				if ( BaseBoat.isCarpet( Boat ) )
 				{
-					phrase_a = "You may not place the carpet while on a ship or carpet, or inside a house.";
+					phrase_a = StringCatalog.Resolve( from.Account, "You may not place the carpet while on a ship or carpet, or inside a house." );
 				}
 
 				Map map = from.Map;
@@ -158,79 +146,76 @@ namespace Server.Multis
 					 reg.IsPartOf( typeof( BargeDeadRegion ) ) || 
 					 reg.IsPartOf( typeof( NecromancerRegion ) ) || 
 					 reg.IsPartOf( typeof( DeadRegion ) ) || 
-					 Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) || 
 					 reg.IsPartOf( typeof( PirateRegion ) ) || 
 					 reg.IsPartOf( typeof( OutDoorRegion ) ) || 
-					 reg.IsPartOf( typeof( PublicRegion ) ) || 
-					 Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) ){ CanBuild = true; }
-
-				if ( !DockSearch.NearDock(from) && !BaseBoat.isCarpet( boat ) )
+					 reg.IsPartOf( typeof( PublicRegion ) ) )
 				{
-					from.SendMessage( phrase_a );
+					CanBuild = false;
 				}
-				else if ( BaseBoat.IsValidLocation( p, map ) && CanBuild == true && boat.CanFit( p, map, boat.ItemID ) )
+				else if ( BaseBoat.isCarpet( Boat ) && reg.IsPartOf( typeof( DungeonRegion ) ) )
 				{
-					Delete();
-
-					boat.Owner = from;
-					boat.Anchored = true;
-
-					if ( from.Skills[SkillName.Seafaring].Base >= 90 && boat.m_BoatDoor != null ){ boat.m_BoatDoor.Visible = true; boat.BoatDoor.Hue = hue; }
-
-					uint keyValue = boat.CreateKeys( from );
-
-					if ( boat.PPlank != null )
-						boat.PPlank.KeyValue = keyValue;
-
-					if ( boat.SPlank != null )
-						boat.SPlank.KeyValue = keyValue;
-
-					boat.TillerMan.Hue = hue;
-					boat.Hold.Hue = hue;
-					boat.PPlank.Hue = hue;
-					boat.SPlank.Hue = hue;
-
-					boat.MoveToWorld( p, map );
-					if ( BaseBoat.isCarpet( Boat ) ){ from.PlaySound( 0x1FD ); } else { from.PlaySound( 0x026 ); }
+					CanBuild = false;
 				}
 				else
 				{
-					boat.Delete();
+					CanBuild = true;
+				}
+
+				if ( CanBuild )
+				{
+					if ( !Server.Misc.Worlds.IsSeaTown( p, map ) && 
+						 !Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( map, p ) ) )
+					{
+						CanBuild = BaseBoat.IsValidLocation( p, map );
+					}
+					else
+					{
+						CanBuild = false;
+					}
+				}
+
+				if ( !CanBuild )
+				{
 					from.SendMessage( phrase_b );
+				}
+				else
+				{
+					boat.BoatDeed = this;
+					boat.Owner = from;
+					boat.Map = map;
+					boat.Location = p;
+					boat.BaseAddonResolve( from );
+
+					boat.LockKey( from );
+
+					boat.TurnOn( true );
+					this.Delete();
 				}
 			}
 		}
 
-		private class InternalTarget : MultiTarget
+		private class InternalTarget : Target
 		{
 			private BaseBoatDeed m_Deed;
-			private int m_Hue;
 
-			public InternalTarget( BaseBoatDeed deed ) : base( deed.MultiID, deed.Offset )
+			public InternalTarget( BaseBoatDeed deed ) : base( 5, true, TargetFlags.None )
 			{
 				m_Deed = deed;
-				m_Hue = deed.Hue;
 			}
 
-			protected override void OnTarget( Mobile from, object o )
+			protected override void OnTarget( Mobile from, object targeted )
 			{
-				IPoint3D ip = o as IPoint3D;
+				if ( m_Deed == null || m_Deed.Deleted )
+					return;
 
-				if ( ip != null )
+				if ( targeted is LandTarget )
 				{
-					if ( ip is Item )
-						ip = ((Item)ip).GetWorldTop();
-
-					Point3D p = new Point3D( ip );
-
-					Region region = Region.Find( p, from.Map );
-
-					if ( region.IsPartOf( typeof( DungeonRegion ) ) )
-						from.SendLocalizedMessage( 502488 ); // You can not place a ship inside a dungeon.
-					else if ( region.IsPartOf( typeof( HouseRegion ) ) )
-						from.SendLocalizedMessage( 1042549 ); // A boat may not be placed in this area.
-					else
-						m_Deed.OnPlacement( from, p, m_Hue );
+					IPoint3D p = targeted as IPoint3D;
+					m_Deed.OnPlacement( from, new Point3D( p ), m_Deed.Hue );
+				}
+				else
+				{
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You may not place a boat from this location." ) );
 				}
 			}
 		}

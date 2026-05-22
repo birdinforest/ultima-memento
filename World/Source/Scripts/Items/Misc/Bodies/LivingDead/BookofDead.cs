@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -9,7 +11,7 @@ namespace Server.Items
         {
                 public override string DefaultName
                 {
-                        get { return "Book of the Dead"; }
+                        get { return StringCatalog.Resolve(null, "Book of the Dead"); }
                 }
 
                 [Constructable]
@@ -36,7 +38,7 @@ namespace Server.Items
 
                         if ( NecroSkill < 80.0 )
                         {
-                                from.SendMessage( "You must have at least 80.0 skill in Necromancy to resurect the dead." );
+                                from.SendMessage(StringCatalog.Resolve(from.Account, "You must have at least 80.0 skill in Necromancy to resurect the dead."));
                                 return;
                         }
                         else if ( (from.Followers + 2) > from.FollowersMax )
@@ -89,37 +91,37 @@ namespace Server.Items
                         {
 				case 0:
                                 {
-                                        from.SendMessage( "You need a Dark Heart to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Dark Heart to resurrect the dead."));
                                         break;
                                 }
                                 case 1:
                                 {
-                                        from.SendMessage( "You need a severed Head to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a severed Head to resurrect the dead."));
                                         break;
                                 }
                                 case 2:
                                 {
-                                        from.SendMessage( "You need a Torso to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Torso to resurrect the dead."));
                                         break;
                                 }
                                 case 3:
                                 {
-                                        from.SendMessage( "You need a Right Arm to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Right Arm to resurrect the dead."));
                                         break;
                                 }
                                 case 4:
                                 {
-                                        from.SendMessage( "You need a Left Arm to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Left Arm to resurrect the dead."));
                                         break;
                                 }
 				case 5:
                                 {
-                                        from.SendMessage( "You need a Right Leg to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Right Leg to resurrect the dead."));
                                         break;
                                 }
 				case 6:
                                 {
-                                        from.SendMessage( "You need a Left Leg to resurrect the dead." );
+                                        from.SendMessage(StringCatalog.Resolve(from.Account, "You need a Left Leg to resurrect the dead."));
                                         break;
                                 }
                                 default:
@@ -131,7 +133,7 @@ namespace Server.Items
                                                 z.MoveToWorld( from.Location, from.Map );
                                                 from.PlaySound( 0x754 );
 						from.FixedParticles( 0x376A, 10, 30, 5052, EffectLayer.LeftFoot );
-						from.Say( "Um Zex Fal Lum" );
+						from.Say(StringCatalog.Resolve(from.Account, "Um Zex Fal Lum"));
                                         }
 
                                         break;

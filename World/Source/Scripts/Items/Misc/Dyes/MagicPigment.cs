@@ -5,6 +5,8 @@ using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -20,7 +22,7 @@ namespace Server.Items
 				OwnerName = OwnerName + "'s";
 
 			Weight = 2.0;
-			Name = "mystical paints";
+Name = StringCatalog.Resolve(null, "mystical paints");
 
 			ColorText1 = OwnerName;
 			ColorHue1 = "338fff";
@@ -65,7 +67,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What do you want to paint?" );
+				from.SendMessage(StringCatalog.Resolve(from.Account, "What do you want to paint?"));
 				t = new DyeTarget( this );
 				from.Target = t;
 			}
@@ -92,11 +94,11 @@ namespace Server.Items
 
 					if ( !iDye.IsChildOf( from.Backpack ) && !backpack )
 					{
-						from.SendMessage( "You can only paint things in your pack." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You can only paint things in your pack."));
 					}
 					else if ( ( iDye.Stackable == true ) || ( iDye.ItemID == 8702 ) || ( iDye.ItemID == 4011 ) )
 					{
-						from.SendMessage( "You cannot paint that." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot paint that."));
 					}
 					else if ( iDye.IsChildOf( from.Backpack ) || backpack )
 					{
@@ -114,12 +116,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot paint that with this." );
+						from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot paint that with this."));
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot paint that with this." );
+					from.SendMessage(StringCatalog.Resolve(from.Account, "You cannot paint that with this."));
 				}
 			}
 		}

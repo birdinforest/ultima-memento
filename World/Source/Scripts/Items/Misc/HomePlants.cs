@@ -1,5 +1,6 @@
 using Server.Multis;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -284,19 +285,19 @@ namespace Server.Items
 
 			if (Amount != 1)
 			{
-				from.SendMessage("Try using these mushrooms individually.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Try using these mushrooms individually." ) );
 				return;
 			}
 
 			if (!IsLockedDown)
 			{
-				from.SendMessage("This must be locked down to be used.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be locked down to be used." ) );
 				return;
 			}
 
 			if ( !CheckAccess( from ) )
 			{
-				from.SendMessage("You can't seem to pick up the mushroom.");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You can't seem to pick up the mushroom." ) );
 				return;
 			}
 			
@@ -308,7 +309,7 @@ namespace Server.Items
 			}
 
 			ItemID = newItemId;
-			from.SendMessage("The mushroom transforms when you touch it.");
+			from.SendMessage( StringCatalog.Resolve( from.Account, "The mushroom transforms when you touch it." ) );
 		}
 
 		private bool CheckAccess( Mobile m )

@@ -6,6 +6,8 @@ using Server.Targeting;
 using Server.ContextMenus;
 using Server.Gumps;
 using Server.Multis.Deeds;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -410,7 +412,7 @@ namespace Server.Items
 						}
 						else if ( item.Parent is Mobile )
 						{
-							from.SendMessage( "Can't Dye armor that is equipped." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "Can't Dye armor that is equipped."));
 						}
 						else
 						{
@@ -430,7 +432,7 @@ namespace Server.Items
 						}
 						else if ( item.Parent is Mobile )
 						{
-							from.SendMessage( "Can't Dye weapons that are equipped." );
+							from.SendMessage(StringCatalog.Resolve(from.Account, "Can't Dye weapons that are equipped."));
 						}
 						else
 						{

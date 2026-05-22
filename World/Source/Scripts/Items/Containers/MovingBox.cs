@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Regions;
 using Server.Mobiles;
 
@@ -34,11 +35,11 @@ namespace Server.Items
 
 			if ( !IsEnabled() )
 			{
-                from.SendMessage("The crate doesn't seem to open as the wood is warped.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate doesn't seem to open as the wood is warped."));
 			}
 			else if ( !Movable || IsSecure )
 			{
-                from.SendMessage("The crate cannot be locked down if you want to open it.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate cannot be locked down if you want to open it."));
 			}
 			else if ( from == owner && ( from.Region is HouseRegion || reg.IsPartOf( "the Bank" ) ) )
 			{
@@ -46,7 +47,7 @@ namespace Server.Items
 			}
 			else
             {
-                from.SendMessage("Only the crate owner can open this, and while in a home or bank.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "Only the crate owner can open this, and while in a home or bank."));
             }
 		}
 
@@ -56,12 +57,12 @@ namespace Server.Items
 
 			if ( !IsEnabled() )
 			{
-                from.SendMessage("The crate doesn't seem to open as the wood is warped.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate doesn't seem to open as the wood is warped."));
                 return false;
 			}
 			else if ( !Movable || IsSecure )
 			{
-                from.SendMessage("The crate cannot be locked down if you want to open it.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate cannot be locked down if you want to open it."));
 			}
 			else if ( from == owner && ( from.Region is HouseRegion || reg.IsPartOf( "the Bank" ) ) )
 			{
@@ -69,7 +70,7 @@ namespace Server.Items
 			}
 			else
             {
-                from.SendMessage("Only the crate owner can open this, and while in a home or bank.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "Only the crate owner can open this, and while in a home or bank."));
                 return false;
             }
 
@@ -82,12 +83,12 @@ namespace Server.Items
 
 			if ( !IsEnabled() )
 			{
-                from.SendMessage("The crate doesn't seem to open as the wood is warped.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate doesn't seem to open as the wood is warped."));
                 return false;
 			}
 			else if ( !Movable )
 			{
-                from.SendMessage("The crate cannot be locked down if you want to open it.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "The crate cannot be locked down if you want to open it."));
 			}
 			else if ( from == owner && ( from.Region is HouseRegion || reg.IsPartOf( "the Bank" ) ) )
 			{
@@ -95,7 +96,7 @@ namespace Server.Items
 			}
 			else
             {
-                from.SendMessage("Only the crate owner can open this, and while in a home or bank.");
+                from.SendMessage(StringCatalog.Resolve(from.Account, "Only the crate owner can open this, and while in a home or bank."));
                 return false;
             }
 

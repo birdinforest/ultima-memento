@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -35,13 +36,13 @@ namespace Server.Items
 					: 0;
 				if ( 0 < chance && m.CheckSkill(SkillName.RemoveTrap, chance ) )
 				{
-					m.PlaySound( m.Female ? 778 : 1049 ); m.Say( "*ah!*" );
-					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "Watch out!");
+					m.PlaySound( m.Female ? 778 : 1049 ); m.Say( StringCatalog.Resolve( m.Account, "*ah!*" ) );
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( m.Account, "Watch out!" ) );
 					m.Hits = 1;
 				}
 				else
 				{
-					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.Resolve( m.Account, "You made a fatal mistake!" ) );
 					m.Damage( 10000, m );
 					LoggingFunctions.LogKillTile( m, this.Name );
 				}

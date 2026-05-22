@@ -5,6 +5,7 @@ using Server;
 using Server.ContextMenus;
 using Server.Targeting;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -157,7 +158,7 @@ namespace Server.Items
 		{
 			if( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
 			{
-				from.SendMessage( "You may not do that in jail." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You may not do that in jail." ) );
 			}
 			else if( !this.IsChildOf( from.Backpack ) )
 			{
@@ -189,7 +190,7 @@ namespace Server.Items
 
 				if( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
 				{
-					from.SendMessage( "You may not do that in jail." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You may not do that in jail." ) );
 				}
 				else if( !m_Bag.IsChildOf( from.Backpack ) )
 				{

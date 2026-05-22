@@ -151,11 +151,11 @@ namespace Server.Items
 
 			if ( (m.Followers + followers) > m.FollowersMax )
 			{
-				vet.Say( "You have too many followers with you to hatch this egg." );
+				vet.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to hatch this egg." ) );
 				return false;
 			}
 
-			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); vet.Say( "Here is " + GoldReturn.ToString() + " gold back for all of your help." ); }
+			if ( GoldReturn > 0 ){ m.AddToBackpack( new Gold( GoldReturn ) ); vet.Say( StringCatalog.ResolveFormatByKey( m.Account, "prop.special.egg.refund", GoldReturn ) ); }
 
 			BaseCreature dragon = new RidingDragon( "a dragon", egg.DragonBody, egg.DragonType );
 			dragon.OnAfterSpawn();
@@ -172,7 +172,7 @@ namespace Server.Items
 			if ( followers == 3 ){ style = "wyrm"; dragon.Name = (dragon.Name).Replace(" dragon", " wyrm"); }
 
 			LoggingFunctions.LogGenericQuest( m, "has hatched a " + style + "" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Your " + style + " has hatched.", m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your " + style + " has hatched." ), m.NetState);
 
 			m.PlaySound( 0x041 );
 

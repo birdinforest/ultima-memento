@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -41,7 +42,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What docked ship do you wish to stain?" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "What docked ship do you wish to stain?" ) );
 				t = new DyeTarget( this );
 				from.Target = t;
 			}
@@ -64,7 +65,7 @@ namespace Server.Items
 
 					if ( !iDye.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only dye docked ships in your pack." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You can only dye docked ships in your pack." ) );
 					}
 					else if ( iDye is BaseBoatDeed || iDye is BaseDockedBoat )
 					{
@@ -74,12 +75,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot stain that with this." );
+						from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot stain that with this." ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot stain that with this." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot stain that with this." ) );
 				}
 			}
 		}

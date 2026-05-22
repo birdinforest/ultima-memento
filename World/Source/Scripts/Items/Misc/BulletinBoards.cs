@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Server;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -280,9 +281,9 @@ namespace Server.Items
 				if ( !CheckTime( lastPostTime, (thread == null ? ThreadCreateTime : ThreadReplyTime) ) )
 				{
 					if ( thread == null )
-						from.SendMessage( "You must wait {0} before creating a new thread.", FormatTS( ThreadCreateTime ) );
+						from.SendMessage( String.Format( StringCatalog.Resolve( from.Account, "You must wait {0} before creating a new thread." ), FormatTS( ThreadCreateTime ) ) );
 					else
-						from.SendMessage( "You must wait {0} before replying to another thread.", FormatTS( ThreadReplyTime ) );
+						from.SendMessage( String.Format( StringCatalog.Resolve( from.Account, "You must wait {0} before replying to another thread." ), FormatTS( ThreadReplyTime ) ) );
 
 					return;
 				}

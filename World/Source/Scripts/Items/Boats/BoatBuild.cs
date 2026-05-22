@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -81,7 +82,7 @@ namespace Server.Items
 
 			if ( boatDone > 0 )
 			{
-				from.SendMessage( "You need to gather more materials before you can build this!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You need to gather more materials before you can build this!" ) );
 			}
 			else
 			{
@@ -95,11 +96,11 @@ namespace Server.Items
 
 				if ( builder < 1 )
 				{
-					from.SendMessage( "You need to be near a shipwright to build that!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You need to be near a shipwright to build that!" ) );
 				}
 				else
 				{
-					from.SendMessage( "You build yourself a small ship." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You build yourself a small ship." ) );
 					from.PlaySound( 0x23D );
 					from.AddToBackpack ( new Multis.SmallBoatDeed() );
 					this.Delete();
@@ -126,7 +127,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveIngots = HaveIngots + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " ingot" + sEnd );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " ingot" + sEnd ) );
 					dropped.Delete();
 					this.InvalidateProperties();
 					return true;
@@ -134,7 +135,7 @@ namespace Server.Items
 				else if ( ( dropped is BaseWoodBoard || dropped is BaseLog ) && needWood > 0 )
 				{
 					HaveWood = HaveWood + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " wood." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " wood." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
 					return true;
@@ -142,7 +143,7 @@ namespace Server.Items
 				else if ( dropped is BaseFabric && needCloth > 0 )
 				{
 					HaveCloth = HaveCloth + iAmount;
-					from.SendMessage( "You added " + iAmount.ToString() + " cloth." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " cloth." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
 					return true;

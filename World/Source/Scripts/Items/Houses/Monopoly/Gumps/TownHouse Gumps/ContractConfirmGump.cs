@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Knives.TownHouses
 {
@@ -61,7 +62,7 @@ namespace Knives.TownHouses
 					AddImage( width-60, y-10, 0x232C );
 
 				if ( !locsec )
-					Owner.SendMessage( (Owner == c_Contract.RentalMaster ? "You don't have the lockdowns or secures available for this contract." : "The owner of this contract cannot rent this property at this time.") );
+					Owner.SendMessage(StringCatalog.Resolve(Owner.Account, (Owner == c_Contract.RentalMaster ? "You don't have the lockdowns or secures available for this contract." : "The owner of this contract cannot rent this property at this time.")));
 			}
 			else
 			{
@@ -100,7 +101,7 @@ namespace Knives.TownHouses
 		{
 			if ( !c_Contract.ValidateLocSec() )
 			{
-				Owner.SendMessage( "The owner of this contract cannot rent this property at this time." );
+				Owner.SendMessage(StringCatalog.Resolve(Owner.Account, "The owner of this contract cannot rent this property at this time."));
 				return;
 			}
 

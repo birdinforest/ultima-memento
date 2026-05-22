@@ -102,14 +102,14 @@ namespace Server.Items
 		{
 		    if ( !m.CanBeginAction( typeof( Spyglass ) ) )
 		    {
-				m.SendMessage( "You are already using the this." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You are already using the this." ) );
 		    }
 			else if (	!Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( m.Map, m.Location ) ) && 
 						!m.Region.IsPartOf( typeof( OutDoorRegion ) ) && 
 						!m.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
 						!m.Region.IsPartOf( typeof( VillageRegion ) ) )
 			{
-				m.SendMessage( "You can only use this outdoors." ); 
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You can only use this outdoors." ) ); 
 				return;
 			}
 			else if ( Limits > 0 )

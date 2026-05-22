@@ -74,27 +74,27 @@ namespace Server.Items
 
 			if ( from.Skills[SkillName.Camping].Value < 40 )
 			{
-				from.SendMessage( "You must be a novice explorer to use this tent." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You must be a novice explorer to use this tent." ) );
 				return;
 			}
 			else if ( from.Region.IsPartOf( typeof( PublicRegion ) ) )
 			{
-				from.SendMessage( "This is a really nice camping tent." ); 
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This is a really nice camping tent." ) ); 
 				return;
 			}
 			else if ( Server.Misc.Worlds.IsOnBoat( from ) )
 			{
-				from.SendMessage( "You cannot setup this tent near a boat." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot setup this tent near a boat." ) );
 				return;
 			}
 			else if ( Server.Misc.Worlds.IsOnSpaceship( from.Location, from.Map ) )
 			{
-				from.SendMessage( "You don't have anywhere to setup camp in this strange place." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You don't have anywhere to setup camp in this strange place." ) );
 				return;
 			}
 			else if ( inCombat )
 			{
-				from.SendMessage( "You cannot setup a tent while in combat." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot setup a tent while in combat." ) );
 				return;
 			}
 			else if ( ( from.Region.IsPartOf( typeof( BardDungeonRegion ) ) || from.Region.IsPartOf( typeof( DungeonRegion ) ) ) && from.Skills[SkillName.Camping].Value >= 90 )
@@ -107,7 +107,7 @@ namespace Server.Items
 						!from.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
 						!from.Region.IsPartOf( typeof( VillageRegion ) ) )
 			{
-				from.SendMessage( "You are only skilled enough to use this tent outdoors." ); 
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You are only skilled enough to use this tent outdoors." ) ); 
 				return;
 			}
 			else if (	from.Skills[SkillName.Camping].Value >= 90 && 
@@ -118,7 +118,7 @@ namespace Server.Items
 						!from.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
 						!from.Region.IsPartOf( typeof( VillageRegion ) ) )
 			{
-				from.SendMessage( "You can only use this tent outdoors or in dungeons." ); 
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You can only use this tent outdoors or in dungeons." ) ); 
 				return;
 			}
 			else
@@ -193,20 +193,20 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "This tent is too worn from over use, and is no longer of any good." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This tent is too worn from over use, and is no longer of any good." ) );
 					this.Delete();
 					return;
 				}
 			}
 			else if ( CanUseTent > 0 )
 			{
-				from.SendMessage( "Your tent is a bit more worn out as you fail to set it up properly." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "Your tent is a bit more worn out as you fail to set it up properly." ) );
 				Server.Items.Kindling.RaiseCamping( from );
 				ConsumeCharge( from );
 
 				if ( Charges < 1 )
 				{
-					from.SendMessage( "This tent is too worn from over use, and is no longer of any good." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "This tent is too worn from over use, and is no longer of any good." ) );
 					this.Delete();
 					return;
 				}

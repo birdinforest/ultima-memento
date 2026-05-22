@@ -7,6 +7,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -161,7 +162,7 @@ namespace Server.Items
 		{
 			if ( !from.InRange( GetWorldLocation(), 2 ) )
 			{
-				from.SendMessage( "You will have to get closer to take that." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You will have to get closer to take that." ) );
 			}
 			else 
 			{
@@ -191,7 +192,7 @@ namespace Server.Items
 				orbI.Name = ItemName;
 
 				from.AddToBackpack( orbI );
-				from.SendMessage( "You have taken the " + ItemName + "!" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You have taken the " + ItemName + "!" ) );
 
 				if ( !( from.Region is SavageRegion ) )
 				{

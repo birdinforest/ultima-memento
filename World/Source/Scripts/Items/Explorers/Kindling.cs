@@ -118,21 +118,21 @@ namespace Server.Items
 				}
 				else if ( Server.Misc.Worlds.IsOnBoat( from ) )
 				{
-					from.SendMessage( "You cannot start a campfire on a boat." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot start a campfire on a boat." ) );
 					return;
 				}
 				else if ( inCombat )
 				{
-					from.SendMessage( "You cannot start a campfire while in combat." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot start a campfire while in combat." ) );
 					return;
 				}
 				else if ( CampsNearby() )
 				{
-					from.SendMessage( "There is already a camp nearby!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "There is already a camp nearby!" ) );
 				}
 				else if ( EnemiesNearby( from ) )
 				{
-					from.SendMessage( "It is not safe enough to setup camp!" );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "It is not safe enough to setup camp!" ) );
 				}
 				else if ( DateTime.Now >= pm.Camp )
 				{
@@ -161,7 +161,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You can only build a campfire every {0} minutes!", CAMPFIRE_COOLDOWN_MINUTES);
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.explorer.campfire.cooldown", CAMPFIRE_COOLDOWN_MINUTES ) );
 				}
 			}
 		}

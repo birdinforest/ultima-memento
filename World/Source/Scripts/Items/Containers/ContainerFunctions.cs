@@ -10,6 +10,8 @@ using System.Reflection;
 using System.Text;
 using Server.Regions;
 using Server.Misc;
+using Server.Localization;
+
 
 namespace Server.Misc
 {
@@ -183,31 +185,31 @@ namespace Server.Misc
 			{
 				nContainerLockable = 1;
 				box.Weight = 10.0;
-				box.ItemID = Utility.RandomList( 0xe42, 0xe43 );	box.GumpID = 0x49;		box.Name = "Wooden Chest";		box.Hue = 0x724;
+				box.ItemID = Utility.RandomList( 0xe42, 0xe43 );	box.GumpID = 0x49;		box.Name = StringCatalog.Resolve(null, "Wooden Chest");		box.Hue = 0x724;
 					if ( Utility.RandomMinMax(1,20) == 1 ){ box.ItemID = Utility.RandomList( 0x5718, 0x5719, 0x571A, 0x571B, 0x5752, 0x5753 ); }
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
-				if ( thisDesign == 3 ){ box.ItemID = Utility.RandomList( 0x10EC, 0x10ED );	box.GumpID = 0x976;		box.Name = "Rusty Metal Crate";		box.Hue = 0; }
+				if ( thisDesign == 3 ){ box.ItemID = Utility.RandomList( 0x10EC, 0x10ED );	box.GumpID = 0x976;		box.Name = StringCatalog.Resolve(null, "Rusty Metal Crate");		box.Hue = 0; }
 			}
 			else if ( myBox == 2 )
 			{
 				nContainerLockable = 2;
 				box.Weight = 20.0;
-				box.ItemID = Utility.RandomList( 0xE40, 0xE41, 0x4FE1, 0x4FE2 );	box.GumpID = 0x4A;		box.Name = "Iron Chest";
+				box.ItemID = Utility.RandomList( 0xE40, 0xE41, 0x4FE1, 0x4FE2 );	box.GumpID = 0x4A;		box.Name = StringCatalog.Resolve(null, "Iron Chest");
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.Iron, false, null );
-				if ( thisDesign == 3 ){ box.ItemID = Utility.RandomList( 0x10EA, 0x10EB );	box.GumpID = 0x976;		box.Name = "Metal Crate";		box.Hue = 0; }
+				if ( thisDesign == 3 ){ box.ItemID = Utility.RandomList( 0x10EA, 0x10EB );	box.GumpID = 0x976;		box.Name = StringCatalog.Resolve(null, "Metal Crate");		box.Hue = 0; }
 			}
 			else if ( myBox == 3 )
 			{
 				nContainerLockable = 3;
 				box.Weight = 12.0;
-				box.ItemID = Utility.RandomList( 0x2811, 0x2812 );	box.GumpID = 0x10C;	box.Name = "Wooden Footlocker";
+				box.ItemID = Utility.RandomList( 0x2811, 0x2812 );	box.GumpID = 0x10C;	box.Name = StringCatalog.Resolve(null, "Wooden Footlocker");
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
 			}
 			else if ( myBox == 4 )
 			{
 				nContainerLockable = 4;
 				box.Weight = 15.0;
-				box.ItemID = Utility.RandomList( 0x2813, 0x2814 );	box.GumpID = 0x10D;	box.Name = "Wooden Trunk";
+				box.ItemID = Utility.RandomList( 0x2813, 0x2814 );	box.GumpID = 0x10D;	box.Name = StringCatalog.Resolve(null, "Wooden Trunk");
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
 			}
 			else if ( myBox == 5 )
@@ -230,7 +232,7 @@ namespace Server.Misc
 			{
 				nContainerLockable = 6;
 				box.Weight = 10.0;
-				box.ItemID = Utility.RandomList( 0x9A8, 0xE80 );	box.GumpID = 0x4B;		box.Name = "Metal Box";			box.Hue = 0x835;
+				box.ItemID = Utility.RandomList( 0x9A8, 0xE80 );	box.GumpID = 0x4B;		box.Name = StringCatalog.Resolve(null, "Metal Box");			box.Hue = 0x835;
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.Iron, false, null );
 			}
 			else if ( myBox == 7 )
@@ -239,12 +241,12 @@ namespace Server.Misc
 				box.Weight = 2.0;
 				box.Locked = false;
 				box.ItemID = Utility.RandomList( 0xE76, 0xE76, 0xE76, 0xE76, 0x1E3F, 0x1E52, 0x1248, 0x1264, 0x5777, 0x5776 );
-				box.Name = "Bag";
+				box.Name = StringCatalog.Resolve(null, "Bag");
 				box.Hue = Utility.RandomMinMax( 2401, 2430 );
 				box.GumpID = 0x3D;
 
-				if ( box.ItemID == 0x1E3F || box.ItemID == 0x1E52 ){ box.Name = "Sack"; }
-				else if ( box.ItemID == 0x1248 || box.ItemID == 0x1264 || box.ItemID == 0x5777 || box.ItemID == 0x5776 ){ box.Name = "Sack"; }
+				if ( box.ItemID == 0x1E3F || box.ItemID == 0x1E52 ){ box.Name = StringCatalog.Resolve(null, "Sack"); }
+				else if ( box.ItemID == 0x1248 || box.ItemID == 0x1264 || box.ItemID == 0x5777 || box.ItemID == 0x5776 ){ box.Name = StringCatalog.Resolve(null, "Sack"); }
 
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularLeather, false, null );
 			}
@@ -255,12 +257,12 @@ namespace Server.Misc
 				box.Locked = false;
 				box.ItemID = Utility.RandomList( 0xE75, 0x53D5, 0x27BE, 0x27D7, 0x4C53, 0x4C54, 0x1C10, 0x1CC6 );
 				box.GumpID = 0x3C;
-				box.Name = "Backpack";
+				box.Name = StringCatalog.Resolve(null, "Backpack");
 				box.Hue = Utility.RandomMinMax( 2401, 2430 );
 
-				if ( box.ItemID == 0x27BE || box.ItemID == 0x27D7 ){ box.Name = "Satchel"; }
-				else if ( box.ItemID == 0x4C53 || box.ItemID == 0x4C54 ){ box.Name = "Satchel"; }
-				else if ( box.ItemID == 0x1C10 || box.ItemID == 0x1CC6 ){ box.Name = "Backpack"; }
+				if ( box.ItemID == 0x27BE || box.ItemID == 0x27D7 ){ box.Name = StringCatalog.Resolve(null, "Satchel"); }
+				else if ( box.ItemID == 0x4C53 || box.ItemID == 0x4C54 ){ box.Name = StringCatalog.Resolve(null, "Satchel"); }
+				else if ( box.ItemID == 0x1C10 || box.ItemID == 0x1CC6 ){ box.Name = StringCatalog.Resolve(null, "Backpack"); }
 
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularLeather, false, null );
 			}
@@ -269,7 +271,7 @@ namespace Server.Misc
 				nContainerLockable = 9;
 				box.Weight = 10.0;
 				box.Locked = false;
-				box.ItemID = Utility.RandomList( 0xE3D, 0xE3C );	box.GumpID = 0x44;		box.Name = "Wooden Crate";			box.Hue = Utility.RandomMinMax( 2413, 2430 );
+				box.ItemID = Utility.RandomList( 0xE3D, 0xE3C );	box.GumpID = 0x44;		box.Name = StringCatalog.Resolve(null, "Wooden Crate");			box.Hue = Utility.RandomMinMax( 2413, 2430 );
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
 			}
 			else if ( myBox == 10 )
@@ -277,7 +279,7 @@ namespace Server.Misc
 				nContainerLockable = 10;
 				box.Weight = 8.0;
 				box.Locked = false;
-				box.ItemID = Utility.RandomList( 0xE3F, 0xE3E );	box.GumpID = 0x44;		box.Name = "Wooden Crate";			box.Hue = Utility.RandomMinMax( 2413, 2430 );
+				box.ItemID = Utility.RandomList( 0xE3F, 0xE3E );	box.GumpID = 0x44;		box.Name = StringCatalog.Resolve(null, "Wooden Crate");			box.Hue = Utility.RandomMinMax( 2413, 2430 );
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
             }
 			else if ( myBox == 11 )
@@ -285,7 +287,7 @@ namespace Server.Misc
 				nContainerLockable = 11;
 				box.Weight = 25.0;
 				box.Locked = false;
-				box.ItemID = 0xFAE;	box.GumpID = 0x3E;		box.Name = "Barrel";
+				box.ItemID = 0xFAE;	box.GumpID = 0x3E;		box.Name = StringCatalog.Resolve(null, "Barrel");
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.RegularWood, false, null );
             }
 			else if ( myBox == 12 )
@@ -310,8 +312,8 @@ namespace Server.Misc
 
 				switch( Utility.Random( 2 ) )
 				{
-					case 0:		box.Name = "Urn";	break;
-					case 1:		box.Name = "Vase";	break;
+					case 0:		box.Name = StringCatalog.Resolve(null, "Urn");	break;
+					case 1:		box.Name = StringCatalog.Resolve(null, "Vase");	break;
 				}
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.Iron, false, null );
 				box.Catalog = Catalogs.Stone;
@@ -326,7 +328,7 @@ namespace Server.Misc
 					box.Weight = 100.0;
 					box.ItemID = Utility.RandomList( 0x27E0, 0x280A, 0x2802, 0x2803 );
 					box.GumpID = 0x1D;
-					box.Name = "Sarcophagus";
+					box.Name = StringCatalog.Resolve(null, "Sarcophagus");
 					ResourceMods.SetRandomResource( false, false, box, CraftResource.Iron, false, null );
 					box.Catalog = Catalogs.Stone;
 				}
@@ -352,7 +354,7 @@ namespace Server.Misc
 				box.ItemID = Utility.RandomList( 0x2299, 0x229A, 0x229B, 0x229C, 0x229D, 0x229E, 0x229F, 0x22A0 );
 				box.GumpID = 0x4C;
 
-				box.Name = "Boat";
+				box.Name = StringCatalog.Resolve(null, "Boat");
 				box.Resource = CraftResource.RegularWood;
 				switch( Utility.Random( 6 ) )
 				{
@@ -369,15 +371,15 @@ namespace Server.Misc
 				nContainerLockable = 16;
 				box.Weight = 10.0;
 				box.Locked = false;
-				box.ItemID = Utility.RandomList( 0x281D, 0x281E );	box.GumpID = 0x2810;		box.Name = "Stone Coffer";			box.Hue = 0;
+				box.ItemID = Utility.RandomList( 0x281D, 0x281E );	box.GumpID = 0x2810;		box.Name = StringCatalog.Resolve(null, "Stone Coffer");			box.Hue = 0;
 				switch( Utility.Random( 6 ) )
 				{
-					case 0:		box.ItemID = Utility.RandomList( 0x281D, 0x281E );	box.Name = "Stone Coffer";				break;
-					case 1:		box.ItemID = Utility.RandomList( 0x281F, 0x2820 );	box.Name = "Stone Chest";				break;
-					case 2:		box.ItemID = Utility.RandomList( 0x2821, 0x2822 );	box.Name = "Stone Chest";				break;
-					case 3:		box.ItemID = Utility.RandomList( 0x2825, 0x2826 );	box.Name = "Stone Strongbox";			break;
-					case 4:		box.ItemID = Utility.RandomList( 0x2823, 0x2824 );	box.Name = "Stone Chest";				break;
-					case 5:		box.ItemID = Utility.RandomList( 0x4FE6, 0x4FE7 );	box.Name = "Stone Chest";				break;
+					case 0:		box.ItemID = Utility.RandomList( 0x281D, 0x281E );	box.Name = StringCatalog.Resolve(null, "Stone Coffer");				break;
+					case 1:		box.ItemID = Utility.RandomList( 0x281F, 0x2820 );	box.Name = StringCatalog.Resolve(null, "Stone Chest");				break;
+					case 2:		box.ItemID = Utility.RandomList( 0x2821, 0x2822 );	box.Name = StringCatalog.Resolve(null, "Stone Chest");				break;
+					case 3:		box.ItemID = Utility.RandomList( 0x2825, 0x2826 );	box.Name = StringCatalog.Resolve(null, "Stone Strongbox");			break;
+					case 4:		box.ItemID = Utility.RandomList( 0x2823, 0x2824 );	box.Name = StringCatalog.Resolve(null, "Stone Chest");				break;
+					case 5:		box.ItemID = Utility.RandomList( 0x4FE6, 0x4FE7 );	box.Name = StringCatalog.Resolve(null, "Stone Chest");				break;
 				}
 				ResourceMods.SetRandomResource( false, false, box, CraftResource.Iron, false, null );
 				box.Catalog = Catalogs.Stone;
@@ -444,7 +446,7 @@ namespace Server.Misc
 				box.ItemID = Utility.RandomList( 0x10EA, 0x10EB, 0x10EC, 0x10ED );
 				box.Resource = ResourceMods.SciFiResource( CraftResource.Iron );
 				box.GumpID = 0x976;
-				box.Name = "Cargo Container";
+				box.Name = StringCatalog.Resolve(null, "Cargo Container");
 			}
 
 			if ( thisHue > 0 ){ box.Hue = thisHue; }
@@ -683,7 +685,7 @@ namespace Server.Misc
 		{
 			box.ItemID = Utility.RandomList( 0x10EA, 0x10EB, 0x10EC, 0x10ED );
 			box.GumpID = 0x976;
-			box.Name = "Cargo Container";
+			box.Name = StringCatalog.Resolve(null, "Cargo Container");
 			box.Resource = ResourceMods.SciFiResource( CraftResource.Iron );
 			box.Catalog = Catalogs.SciFi;
 		}

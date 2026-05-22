@@ -1,3 +1,5 @@
+using Server.Localization;
+
 namespace Server.Items
 {
     public class HeavySharpeningStone : DamageIncreaseSharpeningStoneBase
@@ -18,14 +20,14 @@ namespace Server.Items
         [Constructable]
         public HeavySharpeningStone(int uses) : base(uses)
         {
-            Name = "Heavy Sharpening Stone";
+            Name = StringCatalog.Resolve(null, "Heavy Sharpening Stone");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
             if (from.Skills[SkillName.Blacksmith].Value < 80)
             {
-                from.SendMessage(32, "You need at least 80 Blacksmithing to use this");
+                from.SendMessage(32, StringCatalog.Resolve(from.Account, "You need at least 80 Blacksmithing to use this"));
                 return;
             }
 

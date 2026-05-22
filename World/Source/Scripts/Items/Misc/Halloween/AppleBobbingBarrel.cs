@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Items;
 using Server.Network;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -26,7 +27,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendMessage("You dunk your head in the water trying franticly to sink your teeth into an apple!");
+				from.SendMessage( StringCatalog.Resolve( from.Account, "You dunk your head in the water trying franticly to sink your teeth into an apple!" ) );
             m_Timer = new InternalTimer(from, this);
             m_Timer.Start();
         }
@@ -64,12 +65,12 @@ namespace Server.Items
                     if (AppleChance <= .30)
                     {
                         m_Owner.AddToBackpack(new Apple(1));
-                        m_Owner.SendMessage("You bite into an apple and pull your soaking wet head out of the water!");
+					m_Owner.SendMessage(StringCatalog.Resolve( m_Owner.Account, "You bite into an apple and pull your soaking wet head out of the water!" ));
                         m_Owner.PublicOverheadMessage(MessageType.Regular, 0xFE, false, "*" + m_Owner.Name + " victoriously pulls an apple from the barrel using only their teeth!*");
                     }
                     else
                     {
-                        m_Owner.SendMessage("You fail to bite into any of the apples in the barrel...");
+						m_Owner.SendMessage(StringCatalog.Resolve( m_Owner.Account, "You fail to bite into any of the apples in the barrel..." ));
                         m_Owner.PublicOverheadMessage(MessageType.Regular, 0xFE, false, "*" + m_Owner.Name + " is soaking wet without an apple to show for it...*");
                     }
                 }

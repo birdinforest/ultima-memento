@@ -12,6 +12,8 @@ using Server.Gumps;
 using System.Collections.Generic;
 #endif
 using System.Collections;
+using Server.Localization;
+
 
 namespace Server.Items
 {
@@ -141,7 +143,7 @@ namespace Server.Items
 			{
 				if (m_InUseBy != null)
 				{
-					this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, "Can not alter Test Mode while in use.");
+					this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, StringCatalog.Resolve(null, "Can not alter Test Mode while in use."));
 					return;
 				}
 				m_TestMode = value;
@@ -169,13 +171,13 @@ namespace Server.Items
 					Effects.SendLocationEffect(new Point3D(this.X + 1, this.Y, this.Z), this.Map, 0x373A, 15, this.Hue - 1, 0);
 					Effects.SendLocationEffect(new Point3D(this.X, this.Y, this.Z - 1), this.Map, 0x373A, 15, this.Hue - 1, 0);
 					Effects.PlaySound(new Point3D(this.X, this.Y, this.Z), this.Map, 1481);
-					this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, "Blackjack Open!");
+					this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, StringCatalog.Resolve(null, "Blackjack Open!"));
 				}
 				else if (m_Active && !value)
 				{
 					m_OrigHue = this.Hue;
 					this.Hue = 1001;
-					this.PublicOverheadMessage(0, this.Hue, false, "Blackjack Closed.");
+					this.PublicOverheadMessage(0, this.Hue, false, StringCatalog.Resolve(null, "Blackjack Closed."));
 				}
 				m_Active = value;
 				InvalidateProperties();
@@ -187,7 +189,7 @@ namespace Server.Items
 		{
 			if (m_InUseBy != null)
 			{
-				m_InUseBy.SendMessage("A critical error has forced this game to close, notify the gods.");
+				m_InUseBy.SendMessage(StringCatalog.Resolve(m_InUseBy.Account, "A critical error has forced this game to close, notify the gods."));
 				m_InUseBy = null;
 			}
 				string text = String.Format("Critical Error: {0}", error);
@@ -906,7 +908,7 @@ namespace Server.Items
 					if (m_OnCredit != 0 && !m_TestMode)
 					{
 						m_InUseBy.PlaySound(52);
-						m_InUseBy.SendMessage("Hey, you left some cash on the table! Cashing out.");
+						m_InUseBy.SendMessage(StringCatalog.Resolve(m_InUseBy.Account, "Hey, you left some cash on the table! Cashing out."));
 						if (m_Escrow > 0)
 						{
 							Credit(0, 0, m_Escrow); // Take their bet, too bad, so sad.
@@ -915,7 +917,7 @@ namespace Server.Items
 						DoCashOut(m_InUseBy); // Give them their winnings
 					}
 					else
-						m_InUseBy.SendMessage("You walk away from this table.");
+						m_InUseBy.SendMessage(StringCatalog.Resolve(m_InUseBy.Account, "You walk away from this table."));
 					InUseBy = null;
 					InvalidateProperties();
 				}
@@ -947,7 +949,7 @@ namespace Server.Items
 					if (m_OnCredit != 0)
 						DoCashOut(from);
 				}
-				from.SendMessage("Sorry, this table is closed for now.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "Sorry, this table is closed for now."));
 				return;
 			}
 
@@ -974,7 +976,7 @@ namespace Server.Items
                     string tempName = m_InUseBy != null ? m_InUseBy.Name : "Someone";
 					if (m_InUseBy != null && m_InUseBy != from && m_OnCredit != 0)
 						DoCashOut(m_InUseBy); // Previous user disconnected or something? Give them their cash before releasing.
-                    from.SendMessage("{0} has left this table too long, it is yours to play.", tempName); 
+                    from.SendMessage(StringCatalog.ResolveFormat(from.Account, "{0} has left this table too long, it is yours to play.", tempName)); 
                     InUseBy = from;
 					m_BJInfo.status = GameStatus.Waiting;
 					m_BJInfo.totalhands = m_BJInfo.largesthand = 0;
@@ -989,7 +991,7 @@ namespace Server.Items
 			}
 			else
 			{
-				string text = String.Format("{0} is currently using this table.", m_InUseBy.Name);
+				string text = StringCatalog.ResolveFormat(from.Account, "{0} is currently using this table.", m_InUseBy.Name);
 				from.SendMessage(text);
 				return;
 			}
@@ -1011,7 +1013,7 @@ namespace Server.Items
 		{
 			if (!from.InRange(this.GetWorldLocation(), 10) || !from.InLOS(this))
 			{
-				from.SendMessage("You are too far away from the table to play.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "You are too far away from the table to play."));
 				RemovePlayer(from);
 				return;
 			}
@@ -1162,7 +1164,7 @@ namespace Server.Items
 			checkamount = 0;
 			if (m == null)
 			{
-				m.SendMessage("This game needs attention.");
+				m.SendMessage(StringCatalog.Resolve(m.Account, "This game needs attention."));
 				SecurityCamera(0, "This game needs attention.");
 				Active = false;
 				return false;
@@ -1193,7 +1195,7 @@ namespace Server.Items
 					}
 					else
 					{
-						m.SendMessage("There's a problem trying to cash a check in your backpack, this game is closed. Seek help from the gods.");
+						m.SendMessage(StringCatalog.Resolve(m.Account, "There's a problem trying to cash a check in your backpack, this game is closed. Seek help from the gods."));
 						BlackJackOffline(9503);
 						return false;
 					}
@@ -1207,7 +1209,7 @@ namespace Server.Items
 		{
 			if (from == null )
 			{
-                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, "This game needs to be closed.");
+                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, StringCatalog.Resolve(null, "This game needs to be closed."));
 				SecurityCamera(0, "This game needs to be closed.");
 				Active = false;
 				return false;
@@ -1230,7 +1232,7 @@ namespace Server.Items
 			}
 			else if (from == null)
 			{
-                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, "This game needs to be closed.");
+                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, StringCatalog.Resolve(null, "This game needs to be closed."));
 				SecurityCamera(0, "This game needs to be closed.");
 				Active = false;
 				return;
@@ -1243,10 +1245,10 @@ namespace Server.Items
 			{
 				if (from.AccessLevel >= AccessLevel.GameMaster) // Allow a GM to clear out the invalid amount
 				{
-					from.SendMessage("Invalid gold won amount({0}), reset to 0.", m_OnCredit);
+					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "Invalid gold won amount({0}), reset to 0.", m_OnCredit));
 					m_OnCredit = m_Won = 0;
 				}
-				from.SendMessage("There's a problem with this table's gold amount, this game is closed. Seek the gods for help.");
+				from.SendMessage(StringCatalog.Resolve(from.Account, "There's a problem with this table's gold amount, this game is closed. Seek the gods for help."));
 				BlackJackOffline(9502);
 				return;
 			}
@@ -1256,11 +1258,11 @@ namespace Server.Items
 				try
 				{
 					from.AddToBackpack(new Gold(m_OnCredit));
-					from.SendMessage("{0} gold has been added to your pack.", m_OnCredit);
+					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "{0} gold has been added to your pack.", m_OnCredit));
 				}
 				catch
 				{
-					from.SendMessage("There's a problem returning your gold, this game is closed. Seek the gods for help.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "There's a problem returning your gold, this game is closed. Seek the gods for help."));
 					BlackJackOffline(9500);
 					return;
 				}
@@ -1270,11 +1272,11 @@ namespace Server.Items
 				try
 				{
 					from.AddToBackpack(new BankCheck(m_OnCredit));
-					from.SendMessage("A bank check for {0} gold has been placed in your pack.", m_OnCredit);
+					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "A bank check for {0} gold has been placed in your pack.", m_OnCredit));
 				}
 				catch
 				{
-					from.SendMessage("There's a problem returning your gold, this game is closed. Seek the gods for help.");
+					from.SendMessage(StringCatalog.Resolve(from.Account, "There's a problem returning your gold, this game is closed. Seek the gods for help."));
 					BlackJackOffline(9501);
 					return;
 				}
@@ -1285,10 +1287,10 @@ namespace Server.Items
 			string text = null;
 			if (credit >= 10000)
 			{
-				text = String.Format("{0} is cashing out {1} Gold!", from.Name, credit);
+				text = StringCatalog.ResolveFormat(from.Account, "{0} is cashing out {1} Gold!", from.Name, credit);
 				this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, text);
 			}
-			text = String.Format("{0} is cashing out {1} Gold!", from.Name, credit);
+			text = StringCatalog.ResolveFormat(from.Account, "{0} is cashing out {1} Gold!", from.Name, credit);
 			SecurityCamera(m_OnCredit >= 10000 ? 0 : 1, text);			
 			from.PlaySound(52);
 			from.PlaySound(53);
@@ -1837,17 +1839,17 @@ namespace Server.Items
 			switch (Utility.Random(6))
 			{
 				case 0:
-					return "Dealer hits.";
+return StringCatalog.Resolve(null, "Dealer hits.");
 				case 1:
-					return "Dealer hitting.";
+return StringCatalog.Resolve(null, "Dealer hitting.");
 				case 2:
-					return "Dealer must take another card.";
+return StringCatalog.Resolve(null, "Dealer must take another card.");
 				case 3:
-					return "Dealer takes a hit.";
+return StringCatalog.Resolve(null, "Dealer takes a hit.");
 				case 4:
-					return "Dealer sneaks a card from the bottom of the deck.";
+return StringCatalog.Resolve(null, "Dealer sneaks a card from the bottom of the deck.");
 				default:
-					return "Dealer takes another card.";
+return StringCatalog.Resolve(null, "Dealer takes another card.");
 			}
 		}
 
@@ -1996,7 +1998,7 @@ namespace Server.Items
 		{
 			if (from == null || from.Deleted || amount < 0)
 			{
-                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, "This game needs to be closed.");
+                this.PublicOverheadMessage(0, (this.Hue == 907 ? 0 : this.Hue), false, StringCatalog.Resolve(null, "This game needs to be closed."));
 				SecurityCamera(0, "This game needs to be closed.");
 				Active = false;
 				return m_OnCredit;
@@ -2019,7 +2021,7 @@ namespace Server.Items
 
 		private static void DoBlackJackSound(Mobile from, CEOBlackJack ceobj)
 		{
-			ceobj.PublicOverheadMessage(0, (ceobj.Hue == 907 ? 0 : ceobj.Hue), false, "Blackjack!");
+			ceobj.PublicOverheadMessage(0, (ceobj.Hue == 907 ? 0 : ceobj.Hue), false, StringCatalog.Resolve(null, "Blackjack!"));
 			if (Utility.RandomDouble() < .005)
 				switch (Utility.Random(7))
 				{
@@ -2155,9 +2157,9 @@ namespace Server.Gumps
 			if (m_HelpGump)
 				AddBackground(m_xSize, 0, 280, 420, 9260);
 			if (m_CEOBlackJack.TestMode)
-				AddLabel(3, 2, 37, "Free Play");
+				AddLabel(3, 2, 37, StringCatalog.Resolve(from.Account, "Free Play"));
 
-			AddLabel(m_xSize / 2 - 60, 15, m_CEOBlackJack.Hue, "Gambling Blackjack");
+			AddLabel(m_xSize / 2 - 60, 15, m_CEOBlackJack.Hue, StringCatalog.Resolve(from.Account, "Gambling Blackjack"));
 			if (m_CEOBlackJack.m_BJInfo.totalhands == 0)
 				DisplayRuleInfo();
 			else
@@ -2221,8 +2223,8 @@ namespace Server.Gumps
 				{
 					if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.BlackJack)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, "21");
-						AddLabel(15, 75 + h * 80, 2213, "Blackjack!");
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "21"));
+						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(from.Account, "Blackjack!"));
 					}
 					else if (m_CEOBlackJack.DealerCardsFaceUp)
 					{
@@ -2249,24 +2251,24 @@ namespace Server.Gumps
 				{
 					if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.BlackJack)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, "21");
-						AddLabel(15, 75 + h * 80, 2213, "Blackjack!");
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "21"));
+						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(from.Account, "Blackjack!"));
 					}
 					else if (m_CEOBlackJack.PlayerCardsFaceUp)
 					{
 						score = String.Format("{0} {1}", m_CEOBlackJack.m_BJInfo.HandInfo[h].bestscore, (m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore == 0 || (m_CEOBlackJack.m_BJInfo.status == CEOBlackJack.GameStatus.Waiting) || (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Waiting)) ? null : "or " + m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore.ToString());
 						AddLabel(15, 55 + h * 80, labelcolor, score);
 						if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Bust)
-							AddLabel(15, 75 + h * 80, 37, "Bust");
+							AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Bust"));
 					}
 					else if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.SplitAces)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, "11 or 1");
-						AddLabel(15, 75 + h * 80, 87, "Good luck!");
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "11 or 1"));
+						AddLabel(15, 75 + h * 80, 87, StringCatalog.Resolve(from.Account, "Good luck!"));
 					}
 					else if (h > 0 && m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Double)
 					{
-						AddLabel(15, 75 + h * 80, 17, "Good luck!");
+						AddLabel(15, 75 + h * 80, 17, StringCatalog.Resolve(from.Account, "Good luck!"));
 						score = String.Format("{0} {1}", m_CEOBlackJack.m_BJInfo.HandInfo[h].bestscore, (m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore == 0 || (m_CEOBlackJack.m_BJInfo.status == CEOBlackJack.GameStatus.Waiting) || (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Waiting)) ? null : "or " + m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore.ToString());
 						AddLabel(15, 55 + h * 80, labelcolor, score);
 					}
@@ -2287,22 +2289,22 @@ namespace Server.Gumps
 							break;
 						case CEOBlackJack.HandStatus.Lose:
 							{
-								AddLabel(15, 75 + h * 80, 37, "Lose");
+								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Lose"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Bust:
 							{
-								AddLabel(15, 75 + h * 80, 37, "Bust");
+								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Bust"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Push:
 							{
-								AddLabel(15, 75 + h * 80, 48, "Push");
+								AddLabel(15, 75 + h * 80, 48, StringCatalog.Resolve(from.Account, "Push"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Win:
 							{
-								AddLabel(15, 75 + h * 80, 162, "Win!");
+								AddLabel(15, 75 + h * 80, 162, StringCatalog.Resolve(from.Account, "Win!"));
 							}
 							break;
 						default:
@@ -2312,16 +2314,16 @@ namespace Server.Gumps
 					}
 				}
 			}
-			AddLabel(15, 20, 0, "Current bet:");
+			AddLabel(15, 20, 0, StringCatalog.Resolve(from.Account, "Current bet:"));
 			AddLabel(92, 20, 2213, m_CEOBlackJack.CurrentBet.ToString());
-			AddLabel(15, m_yButtonStart + 30, 0, "Credits:");
+			AddLabel(15, m_yButtonStart + 30, 0, StringCatalog.Resolve(from.Account, "Credits:"));
 			AddLabel(70, m_yButtonStart + 30, 2213, m_CEOBlackJack.OnCredit().ToString());
-			AddLabel(120, m_yButtonStart + 30, 0, "Last Won:");
+			AddLabel(120, m_yButtonStart + 30, 0, StringCatalog.Resolve(from.Account, "Last Won:"));
 			AddLabel(195, m_yButtonStart + 30, 2213, CEOBlackJack.Won.ToString());
 			if (player.AccessLevel >= AccessLevel.GameMaster)
 			{
 				int paybackhue = (m_CEOBlackJack.WinningPercentage > 99.0) ? 37 : 66;
-				AddLabel(m_xSize - 175, 1, 1152, "Payout Percentage:");
+				AddLabel(m_xSize - 175, 1, 1152, StringCatalog.Resolve(from.Account, "Payout Percentage:"));
 				string text = String.Format("{0:##0.00%}", m_CEOBlackJack.WinningPercentage / 100);
 				AddLabel(m_xSize - 62, 1, paybackhue, text);
 			}
@@ -2338,7 +2340,7 @@ namespace Server.Gumps
 		private void DisplayRuleInfo()
 		{
 			string text;
-			AddLabel(15, 40, 0, "Min/Max bet:");
+			AddLabel(15, 40, 0, StringCatalog.Resolve(from.Account, "Min/Max bet:"));
 			text = string.Format("{0}/{1}", m_CEOBlackJack.m_BetTable[(int)m_CEOBlackJack.MinBet], m_CEOBlackJack.m_BetTable[(int)m_CEOBlackJack.MaxBet]);
 			AddLabel(100, 40, 2212, text);
 			AddHtml(40, 55, m_xSize - 80, 25, Center(string.Format("RuleSet: {0}", m_CEOBlackJack.CasinoName)), false, false);
@@ -2454,7 +2456,7 @@ namespace Server.Gumps
 		private void CEOCookie(int hue, Mobile m)
 		{
 			AddImage(m_xSize - 90, 100, 990);
-			AddLabel(15, m_ySize - 20, hue, "CEO says, \"Hello! Enjoying my BlackJack Cards?\" :)");
+			AddLabel(15, m_ySize - 20, hue, StringCatalog.Resolve(from.Account, "CEO says, \"Hello! Enjoying my BlackJack Cards?\" :)"));
 			m.PlaySound(Utility.RandomList(1358, 1359, 1360, 1361, 1362, 1363, 1368, 1382));
 		}
 
