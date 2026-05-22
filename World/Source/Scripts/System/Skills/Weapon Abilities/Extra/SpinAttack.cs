@@ -1,5 +1,7 @@
 using System;
 using Server.Localization;
+
+namespace Server.Items
 {
 	public class SpinAttack : WeaponAbility
 	{
