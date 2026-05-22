@@ -618,6 +618,9 @@ namespace Server.Items
 			return StringCatalog.TryResolve( lang, text ) ?? text;
 		}
 
+		public override bool IsContentLocalized { get { return true; } }
+		public override string DisplayNameLocalizationKey { get { return "quest.tome.name.chest"; } }
+
 		public string VillainName;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Villain_Name { get{ return VillainName; } set{ VillainName = value; } }
@@ -645,6 +648,15 @@ namespace Server.Items
 
 		public MajorItemOnCorpse( Serial serial ) : base( serial )
 		{
+		}
+
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			base.AddNameProperties( list );
+			if ( BuildingPropertyListLocale != null && VillainName != null && VillainName.Length > 0 )
+			{
+				AddLocalizedProperty( list, "quest.tome.name.chest_of", VillainName );
+			}
 		}
 
 		public override void OnDoubleClick( Mobile from )

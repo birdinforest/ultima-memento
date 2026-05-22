@@ -139,10 +139,19 @@ namespace Server.Items
 			Weight = 1.0;
 		}
 
+		public override bool IsContentLocalized { get { return true; } }
+		public override string DisplayNameLocalizationKey { get { return "quest.tome.name.lost_journal"; } }
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( QuestTomeOwner != null ){ list.Add( 1049644, "Belongs to " + QuestTomeOwner.Name + "" ); }
+			if ( QuestTomeOwner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "quest.tome.opl.belongs_to", QuestTomeOwner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + QuestTomeOwner.Name + "" );
+			}
         }
 
 		public override void OnDoubleClick( Mobile from )
@@ -370,12 +379,47 @@ namespace Server.Items
 				AddHtml( 12, 12, 665, 20, @"<BODY><BASEFONT Color=" + color + ">" + m_Book.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				string dead = m_Book.Name; if ( dead.Contains("Journal of ") ){ dead = dead.Replace("Journal of ", ""); }
-				if ( story.Contains("DDDDD") ){ story = story.Replace("DDDDD", dead); }
+
+				// For Chinese accounts, reconstruct story from shotkey templates
+				if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+				{
+					bool isEvil = ((PlayerMobile)from).KarmaLocked;
+					string storyKey = isEvil ? "quest.tome.story.evil" : "quest.tome.story.good";
+					story = StringCatalog.ResolveFormatByKey( from.Account, storyKey,
+						dead,
+						isEvil ? m_Book.QuestTomeNPCEvil : m_Book.QuestTomeNPCGood,
+						m_Book.GoalItem4,
+						"",                                 // {3} takes - ignored in ZH
+						m_Book.VillainName,
+						m_Book.VillainTitle,
+						m_Book.VillainCategory,
+						"",                                 // {7} heard - ignored in ZH
+						"",                                 // {8} legend - ignored in ZH
+						"",                                 // {9} hush - ignored in ZH
+						"",                                 // {10} inn - ignored in ZH
+						m_Book.GoalItem1,
+						m_Book.GoalItem2,
+						m_Book.GoalItem3,
+						isEvil ? m_Book.QuestTomeNPCGood : m_Book.QuestTomeNPCEvil,
+						world,
+						locat
+					);
+				}
+				else
+				{
+					if ( story.Contains("DDDDD") ){ story = story.Replace("DDDDD", dead); }
+				}
 
 				if ( page > 0 )
 				{
 					AddButton(864, 9, 4017, 4017, 2, GumpButtonType.Reply, 0);
-					AddHtml( 12, 43, 878, 548, @"<BODY><BASEFONT Color=" + color + ">There are many times when adventurers are given a grand quest to obtain a magical item by slaying a powerful creature and thus using the item for good or evil. You have found the journal of one of these adventurers. What fate became of them, you will never know. Did they lose their journal? Did they perish in their search for " + m_Book.GoalItem4 + "?<br><br>Now you possess the journal and you can pursue this quest as it is yours alone. The quest has two forks that you may go down. If your karma is locked, the goal will lead you down the vile path of " + m_Book.QuestTomeNPCEvil + ". Otherwise, your quest will service good for " + m_Book.QuestTomeNPCGood + ". You may only have a single journal quest at any one time. If you find another journal, and choose to take it while you currently have a journal, then you will get a new journal with the same unfinished quest you had before.<br><br>To defeat " + m_Book.VillainName + " " + m_Book.VillainTitle + " and claim " + m_Book.GoalItem4 + ", you will have to find 3 unique items to aid you. You have no idea where these items are, so you will have to speak to citizens (orange names) to see if they have heard rumors that can help you. If a citizen does not initially mention anything about your quest, you will have to seek out another. When you finally get a clue, a small tune will play and your journal will be updated with that rumor they gave you. It could be true or it could be false. You won’t know until you pursue it. Sometimes the item may be in a chest or bag on a pedestal in a dungeon, or held by one of the more powerful creatures within that dungeon.<br><br>Once you collect the required relics, you must then figure out where " + m_Book.VillainName + " is. Again, talking to citizens may reveal a hint. Once you learn where " + m_Book.VillainName + " is, make haste to that location and face them in battle. Once you enter the area, find a strategic place you wish to combat them and then open the journal to call them forth to face you. The battle will surely be harsh so you best be prepared. Be sure to slay them so you can take " + m_Book.GoalItem4 + " from them. Making them vanish by other means will rob you of your goal, as would leaving the area they are in. If they do manage to escape, you will have to seek out rumors again to determine where " + m_Book.VillainName + " has fled to.<br><br>Slaying " + m_Book.VillainName + " will reveal an abundance of wealth they have taken from other adventurers that failed to be victorious. Feel free to take this treasure for yourself, as " + m_Book.VillainName + " " + m_Book.VillainTitle + " will no longer need it. Once you have acquired " + m_Book.GoalItem4 + ", seek out " + m_Book.QuestTomeNPCGood + " or " + m_Book.QuestTomeNPCEvil + " and hand them the journal. Your morality and fame will be affected by your choice of ethics and you will be rewarded with an item of your choosing. When you select your reward, the item will appear in your pack. Each item will appear with a number of points you can spend to enhance your item. This allows you to tailor the item to suit your style. To begin, single click the items and select 'Enchant'. A menu will appear that you can choose which attributes you want the item to have. Be careful, as you cannot change an attribute once you select it.</BASEFONT></BODY>", (bool)false, (bool)false);
+					string guideText = StringCatalog.ResolveFormatByKey(from.Account, "quest.tome.help.guide",
+						m_Book.GoalItem4,
+						m_Book.QuestTomeNPCEvil,
+						m_Book.QuestTomeNPCGood,
+						m_Book.VillainName,
+						m_Book.VillainTitle);
+					AddHtml( 12, 43, 878, 548, @"<BODY><BASEFONT Color=" + color + ">" + guideText + @"</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 				else
 				{
@@ -385,9 +429,9 @@ namespace Server.Items
 					if ( Sextants.HasSextant( from ) )
 						AddButton(756, 12, 10461, 10461, 3, GumpButtonType.Reply, 0);
 
-					AddHtml( 12, 46, 346, 20, @"<BODY><BASEFONT Color=" + color + ">Quest for " + from.Name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 12, 46, 346, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveFormatByKey(from.Account, "quest.tome.gump.title", from.Name) + @"</BASEFONT></BODY>", (bool)false, (bool)false);
 
-					if ( m_Book.QuestTomeCitizen != "" ){ story = GetRumor( m_Book, false ) + "<br><br>" + story; }
+					if ( m_Book.QuestTomeCitizen != "" ){ story = GetRumor( m_Book, false, from.Account ) + "<br><br>" + story; }
 
 					AddHtml( 12, 82, 878, 358, @"<BODY><BASEFONT Color=" + color + ">" + story + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
@@ -442,7 +486,7 @@ namespace Server.Items
 					{
 						citizen.MarkToldRumor();
 						SetRumor( citizen, player, book );
-						rumor = GetRumor( book, true );
+						rumor = GetRumor( book, true, player.Account );
 					}
 				}
 			}
@@ -450,12 +494,13 @@ namespace Server.Items
 			return rumor;
 		}
 
-		public static string GetRumor( QuestTome book, bool talk )
+		public static string GetRumor( QuestTome book, bool talk, IAccount acct = null )
 		{
 			int goal = book.QuestTomeType;
 			string locate = "held by a powerful creature";
-			if ( goal == 2 ){ locate = "lost somewhere"; }
-			if ( book.QuestTomeGoals == 3 ){ locate = "found"; goal = 3; }
+			int locateType = 0; // 0=held, 1=lost, 2=found
+			if ( goal == 2 ){ locate = "lost somewhere"; locateType = 1; }
+			if ( book.QuestTomeGoals == 3 ){ locate = "found"; goal = 3; locateType = 2; }
 
 			string world = Server.Lands.LandName( book.QuestTomeLand );
 			string dungeon = book.QuestTomeDungeon;
@@ -467,17 +512,56 @@ namespace Server.Items
 
 			if ( talk )
 			{
-				string who = "I heard";
+				if ( acct != null && AccountLang.IsChinese( AccountLang.GetLanguageCode( acct ) ) )
+				{
+					string who = "";
+					switch ( Utility.RandomMinMax( 0, 5 ) )
+					{
+						case 0: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_heard" ) ?? "我听说"; break;
+						case 1: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_learned" ) ?? "我打听到"; break;
+						case 2: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_found_out" ) ?? "我发现了"; break;
+						case 3: who = string.Format( StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_job" ) ?? "{1}的{0}告诉我",
+							RandomThings.GetRandomJob(), RandomThings.GetRandomCity() ); break;
+						case 4: who = string.Format( StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_overheard" ) ?? "我偶然听到一个{0}说",
+							RandomThings.GetRandomJob() ); break;
+						case 5: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_friend" ) ?? "我朋友告诉我"; break;
+					}
+					// Use heard_* templates: {0}=who, {1}=item, {2}=dungeon, {3}=world
+					string rumorKey;
+					switch ( locateType )
+					{
+						case 1: rumorKey = "quest.tome.rumor.heard_lost"; break;
+						case 2: rumorKey = "quest.tome.rumor.heard_found"; break;
+						default: rumorKey = "quest.tome.rumor.heard_held"; break;
+					}
+					return StringCatalog.ResolveFormatByKey( acct, rumorKey, who, item, dungeon, world );
+				}
+
+				string whoEn = "I heard";
 				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
-					case 0:	who = "I heard";																								break;
-					case 1:	who = "I learned";																								break;
-					case 2:	who = "I found out";																							break;
-					case 3:	who = "The " + RandomThings.GetRandomJob() + " in " + RandomThings.GetRandomCity() + " told me";				break;
-					case 4:	who = "I overheard some " + RandomThings.GetRandomJob() + " say";												break;
-					case 5:	who = "My friend told me";																						break;
+					case 0: whoEn = "I heard"; break;
+					case 1: whoEn = "I learned"; break;
+					case 2: whoEn = "I found out"; break;
+					case 3: whoEn = "The " + RandomThings.GetRandomJob() + " in " + RandomThings.GetRandomCity() + " told me"; break;
+					case 4: whoEn = "I overheard some " + RandomThings.GetRandomJob() + " say"; break;
+					case 5: whoEn = "My friend told me"; break;
 				}
-				return who + " that " + item + " may be " + locate + " within " + dungeon + " in " + world + ".";
+				return whoEn + " that " + item + " may be " + locate + " within " + dungeon + " in " + world + ".";
+			}
+
+			if ( acct != null && AccountLang.IsChinese( AccountLang.GetLanguageCode( acct ) ) )
+			{
+				string rumorKey;
+				switch ( locateType )
+				{
+					case 1: rumorKey = "quest.tome.rumor.talk_lost"; break;
+					case 2: rumorKey = "quest.tome.rumor.talk_found"; break;
+					default: rumorKey = "quest.tome.rumor.talk_held"; break;
+				}
+				if ( world != "" )
+					return StringCatalog.ResolveFormatByKey( acct, rumorKey, from, item, dungeon, world );
+				return "";
 			}
 
 			if ( world != "" ){ return "" + from + " has told you that " + item + " may be " + locate + " within " + dungeon + " in " + world + "."; }
@@ -578,7 +662,7 @@ namespace Server.Items
 						if ( book.QuestTomeGoals == 1 ){ relic = book.GoalItem2; }
 						else if ( book.QuestTomeGoals == 2 ){ relic = book.GoalItem3; }
 
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + relic + ".");
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.tome.emote.found_relic", relic));
 					player.SendSound( 0x5B4 );
 					book.QuestTomeCitizen = "";
 					book.QuestTomeDungeon = "";
@@ -590,7 +674,7 @@ namespace Server.Items
 				}
 				else
 				{
-					player.LocalOverheadMessage(MessageType.Emote, 1150, true, book.QuestTomeCitizen + " was either wrong or they lied.");
+					player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.n0_was_either_wrong_or_they_lied_dot", book.QuestTomeCitizen));
 					player.SendSound( 0x5B3 );
 					book.QuestTomeCitizen = "";
 					book.QuestTomeDungeon = "";
@@ -605,7 +689,7 @@ namespace Server.Items
 				player.AddToBackpack(new HoardMinionFamiliarItem());
 				ApproachObsidian.TitanRiches( player );
 				CustomEventSink.InvokeCombatQuestCompleted(player, 10000);
-				player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + book.GoalItem4 + ".");
+				player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.tome.emote.found_goal", book.GoalItem4));
 				book.QuestTomeGoals++;
 
 				return true;

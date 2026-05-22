@@ -7,6 +7,8 @@
 > **关联：** [`waiting-localization.md`](waiting-localization.md) · `AGENTS.md` §3.2
 > Journal Quest：`QuestTake.cs` + `QuestTome.cs`。
 
+---
+
 ## 摘要
 
 | 指标 | 数量 |
@@ -40,80 +42,536 @@ rg '"[A-Za-z]{3,}' "World/Source/Scripts/Engines and Systems/Quests/Major"
 | `QuestTake.cs` | 240 | 是 | 部分 | Item Name, String literal |
 | `QuestTome.cs` | 41 | 是 | 部分 | Gump, Item Name, OPL, Overhead, Return string, String literal |
 
-## 建议修复顺序
+## 1. 文本拼接模式分析与中文化方案
 
-1. OPL `Belongs to`、emote 头顶、`Quest for` → shotkey + `ResolveFormatByKey`
-2. 物品 OPL 名（`lost journal`、空箱 `chest`、`Journal of …`）
-3. `GetRumor` / `TellRumor` 词表 shotkey 化
-4. Gump 帮助页（378 行）→ 专用 logical JSON
-5. `QuestTake.SetupBook` 结构化叙事 + save version
+### 1.1 英文源文本的七种拼接模式
 
-## 按模块明细
+#### 模式 A：物品名运行时拼接（QuestTake.cs:28, QuestTome.cs:138）
 
-### (root)
+```csharp
+// QuestTake.cs 构造函数
+Name = "Journal of " + RandomThings.GetRandomName() + " the " + (
+    Utility.RandomBool() ? RandomThings.GetBoyGirlJob(0) : RandomThings.GetBoyGirlJob(1)
+);
 
-#### `QuestTake.cs`
+// QuestTome.cs 构造函数
+Name = "lost journal";
+
+// MajorItemOnCorpse.cs 构造函数
+Name = "chest";
+Name = "Chest of " + m.Name;
+```
+
+- `Item.Name` 被持久化到世界存档，不能运行时修改
+- Gump 标题（`m_Book.Name`）直接使用该值
+- OPL 第一行默认由客户端展示 `Item.Name`
+
+**约束条件：**
+- 中文词序完全不同："Journal of <Name> the <Job>" → "<称谓><Name>的日志"
+- 名称在 `QuestTomeStoryGood`/`Evil` 模板中以 `DDDDD` 占位，然后 `Replace("DDDDD", dead)` 替换（dead 取自 Name）
+- 不能直接修改 `Name` 为中文字符串，否则存档兼容性、第三方工具都会受影响
+
+#### 模式 B：词表 + 随机选择嵌入模板（QuestTake.cs:123–163）
+
+```csharp
+string heard = "heard";
+switch (Utility.RandomMinMax(0, 3)) {
+    case 1: heard = "told";    break;
+    case 2: heard = "known";   break;
+    case 3: heard = "shared";  break;
+}
+string legend = "legends";
+switch (Utility.RandomMinMax(0, 3)) {
+    case 1: legend = "fables"; break;
+    case 2: legend = "myths";  break;
+    case 3: legend = "lore";   break;
+}
+// ... 类似：hush (whispered/told/sung/spoken)
+//         inn (taverns/camps/cities/villages/inns)
+//         takes (seized/stolen/taken/held/guarded)
+```
+
+五个独立词表，通过 `switch` 随机选择，然后嵌入大型模板：
+
+```csharp
+"...that has been " + heard + " in " + legend + " and " + hush + " about in " + inn + "."
+= "...that has been heard in legends and whispered about in taverns."
+```
+
+#### 模式 C：大型叙事模板（QuestTake.cs:169–177）
+
+```csharp
+tome.QuestTomeStoryGood = "You have found the journal of DDDDD, where they were given a quest by "
+    + tome.QuestTomeNPCGood + " to find " + tome.GoalItem4 + " that is known to be "
+    + takes + " by " + tome.VillainName + " " + tome.VillainTitle + ". "
+    + tome.VillainName + " is " + tome.VillainCategory + " that has been "
+    + heard + " in " + legend + " and " + hush + " about in " + inn + "."
+    + "..."; // 长篇，约 400 词
+```
+
+四个版本（Good / Evil × 正常 / 反转剧情），嵌入变量包括：
+- `tome.QuestTomeNPCGood/Evil`（NPC 名 + 头衔）
+- `tome.GoalItem1–4`（目标物品名）
+- `tome.VillainName + " " + tome.VillainTitle`
+- `tome.VillainCategory`
+- `tome.QuestTomeWorldGood/Evil`（地名）
+- `tome.QuestTomeLocateGood/Evil`（坐标）
+- 四个随机词（heard/legend/hush/inn/takes）
+
+#### 模式 D：Gump 帮助页（QuestTomeGump:378）
+
+一整段 878px × 548px 的 HTML 教学文本，嵌入 `m_Book.GoalItem4`、`QuestTomeNPCEvil`、`VillainName`、`VillainTitle` 等变量。文本内同一变量出现多次。
+
+#### 模式 E：OPL 工具提示（QuestTome.cs:142–146）
+
+```csharp
+public override void AddNameProperties(ObjectPropertyList list)
+{
+    base.AddNameProperties(list);
+    if (QuestTomeOwner != null)
+        list.Add(1049644, "Belongs to " + QuestTomeOwner.Name + "");
+}
+```
+
+#### 模式 F：Emote 头顶文字（QuestTome.cs:581, 593, 608）
+
+```csharp
+player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + relic + ".");
+player.LocalOverheadMessage(MessageType.Emote, 1150, true,
+    book.QuestTomeCitizen + " was either wrong or they lied.");
+player.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + book.GoalItem4 + ".");
+```
+
+`LocalOverheadMessage(MessageType, int, bool, string)` 的第4参数是原始字符串（not cliloc），需要手工本地化。
+
+#### 模式 G：流言拼接（QuestTome.cs:453–486）
+
+```csharp
+// GetRumor 中的 locate 词表
+string locate = "held by a powerful creature";
+if (goal == 2) { locate = "lost somewhere"; }
+if (book.QuestTomeGoals == 3) { locate = "found"; goal = 3; }
+
+// TellRumor 中的 who 词表
+string who = "I heard";
+switch (Utility.RandomMinMax(0, 5)) {
+    case 0: who = "I heard";                                              break;
+    case 1: who = "I learned";                                            break;
+    case 2: who = "I found out";                                          break;
+    case 3: who = "The " + RandomThings.GetRandomJob()
+               + " in " + RandomThings.GetRandomCity() + " told me";      break;
+    case 4: who = "I overheard some " + RandomThings.GetRandomJob()
+               + " say";                                                  break;
+    case 5: who = "My friend told me";                                    break;
+}
+
+// 最终拼接
+return who + " that " + item + " may be " + locate + " within "
+     + dungeon + " in " + world + ".";
+// → "I heard that the Amulet of Might may be held by a powerful creature within Dungeon Doom in Sosaria."
+```
+
+**核心问题**：中文和英文的定语从句、介词短语位置完全不同。英文是 **"who + that + item + may be + locate + within + dungeon + in + world"**，中文需要 **"[who]在[world]的[dungeon]中，物品[item][locate]"**。
+
+---
+
+### 1.2 中文化方案 — Shotkey + Format 组合模式
+
+#### 设计原则
+
+1. **弃用英文词表**：模式 B（heard/legend/hush/inn/takes）的英文随机词在中文语境下没有直接对应。中文叙事用**固定但自然的中文句式**，英文的随机性改为中文等效的多样化表达。
+2. **整体模板**：模式 C 和 D 的大段叙事用 `StringCatalog.ResolveFormatByKey` 整体模板，中文版本完全重新编排语序。
+3. **运行时从持久化字段重建**：`QuestTomeStoryGood`/`QuestTomeStoryEvil` 保持英文原文（存档兼容），在 Gump 渲染时如果账号语言为中文，用其他已持久化的字段通过 shotkey 模板重新生成中文叙事。
+4. **OPL 用 `AddLocalizedProperty`**：模式 E 使用 `BuildingPropertyListLocale` 分支 + shotkey。
+5. **Emote 用 `ResolveFormatByKey`**：模式 F 用 `StringCatalog.ResolveFormatByKey` 产生本地化头顶文字。
+
+---
+
+### 1.3 Shotkey 键名规划
+
+所有 shotkey 放在 `world-player-text.json`（`keep_extra` 白名单）。前缀 `quest.tome.*`。
+
+#### 1.3.1 OPL / 物品名
+
+| Shotkey | EN 值 | ZH 值 | 用途 |
+|---------|-------|-------|------|
+| `quest.tome.opl.belongs_to` | `Belongs to {0}` | `属于 {0}` | OPL `AddLocalizedProperty` |
+| `quest.tome.name.lost_journal` | `lost journal` | `遗失的日记` | 已有 hash `s.a3734bf593f52976`，shotkey 化后替代 |
+| `quest.tome.name.chest` | `chest` | `宝箱` | 已有 hash `s.7ca0d7019158ccd9`，`MajorItemOnCorpse` 默认名 |
+| `quest.tome.name.chest_of` | `Chest of {0}` | `{0}的宝箱` | OPL `DropChest` 中的 `majorChest.Name` |
+| `quest.tome.name.format` | `Journal of {0} the {1}` | `{1}{0}的日记` | 物品名 OPL 模板，`Name` 本身保持英文 |
+
+#### 1.3.2 Emote 头顶文字
+
+| Shotkey | EN 值 | ZH 值 | 用途 |
+|---------|-------|-------|------|
+| `quest.tome.emote.found_relic` | `You found {0}.` | `你找到了 {0}。` | `FoundItem` 找到遗物 |
+| `quest.tome.emote.wrong_rumor` | `{0} was either wrong or they lied.` | `{0} 要么搞错了，要么在说谎。` | 流言错误（已有 `quest.n0_was_either_wrong_or_they_lied_dot`：`{0} 要么错了，要么在说谎。`） |
+| `quest.tome.emote.found_goal` | `You found {0}.` | `你找到了 {0}。` | `FoundItem` 最终目标 |
+
+> **复用**：`quest.n0_was_either_wrong_or_they_lied_dot` 已存在于 `world-player-text.json`（EN: `{0} was either wrong or they lied.`, ZH: `{0} 要么错了，要么在说谎。`），模式 F 的 `book.QuestTomeCitizen + " was either wrong or they lied."` 可以复用此键（`Citizen` 作为 {0}）。
+
+#### 1.3.3 Gump 标题 / 按钮
+
+| Shotkey | EN 值 | ZH 值 | 用途 |
+|---------|-------|-------|------|
+| `quest.tome.gump.title` | `Quest for {0}` | `{0}的任务` | Gump 首页标题（line 388） |
+
+#### 1.3.4 流言系统
+
+| Shotkey | EN 值 | ZH 值 | 用途 |
+|---------|-------|-------|------|
+| `quest.tome.rumor.talk` | `{0} has told you that {1} may be {2} within {3} in {4}.` | `{0}告诉你，{2}可能在{4}的{3}中找到了{1}。` | `GetRumor` talk=true 时的居民流言 |
+| `quest.tome.rumor.heard_held` | `I heard that {0} may be held by a powerful creature within {1} in {2}.` | `我听说在{2}的{1}中，一种强大的生物看守着{0}。` | `GetRumor` talk=false 时 |
+| `quest.tome.rumor.heard_lost` | `I heard that {0} may be lost somewhere within {1} in {2}.` | `我听说{0}可能遗失在{2}的{1}中某处。` | 同上，locate 为 lost somewhere |
+| `quest.tome.rumor.heard_found` | `I heard that {0} may be found within {1} in {2}.` | `我听说可以在{2}的{1}中找到{0}。` | 同上，locate 为 found |
+| `quest.tome.rumor.who_heard` | `I heard` | `我听说` | `TellRumor` who 词表标准化 |
+| `quest.tome.rumor.who_learned` | `I learned` | `我打听到` | 同上 |
+| `quest.tome.rumor.who_found_out` | `I found out` | `我发现了` | 同上 |
+| `quest.tome.rumor.who_job` | `The {0} in {1} told me` | `{1}的{0}告诉我` | who 含随机职业/城市 |
+| `quest.tome.rumor.who_overheard` | `I overheard some {0} say` | `我偶然听到一个{0}说` | who 含随机职业 |
+| `quest.tome.rumor.who_friend` | `My friend told me` | `我朋友告诉我` | who 选项 |
+
+> **注意**：`GetRumor` 目前使用 `locate` 的三种值（held by a powerful creature / lost somewhere / found）嵌入统一的句式 `who + " that " + item + " may be " + locate + " within " + dungeon + " in " + world`。用 shotkey 模板后，每种 locate 对应一个独立模板，因为它们的中文句式结构不同。`locate` 词本身不需要独立 shotkey，而是直接消融到模板中。
+
+#### 1.3.5 大型叙事模板（QuestTomeStoryGood / Evil）
+
+> **注意**：这些模板非常长（每个约 400 英文词），包含大量重复变量。建议将每个模板放入 `world-player-text.json`，在 Gump 渲染时通过 `ResolveFormatByKey` 生成中文版本。
+
+**模板参数索引**（Good 版示例）：
+
+| 索引 | 字段 | 示例值 |
+|------|------|--------|
+| {0} | dead（从 Name 提取的冒险者名） | Bob |
+| {1} | QuestTomeNPCGood | Sir Galahad the Brave |
+| {2} | GoalItem4 | Amulet of Might |
+| {3} | takes（已不使用，中文化固定句式） | guarded |
+| {4} | VillainName | Morgath |
+| {5} | VillainTitle | the Dark Lord |
+| {6} | VillainCategory | a daemon |
+| {7} | heard（已不使用，中文化固定句式） | known |
+| {8} | legend（已不使用，中文化固定句式） | legends |
+| {9} | hush（已不使用，中文化固定句式） | whispered |
+| {10} | inn（已不使用，中文化固定句式） | taverns |
+| {11} | GoalItem1 | Crystal of Light |
+| {12} | GoalItem2 | Scroll of Wisdom |
+| {13} | GoalItem3 | Heart of the Phoenix |
+| {14} | 对立 NPC | QuestTomeNPCEvil |
+| {15} | QuestTomeWorldGood | Sosaria |
+| {16} | QuestTomeLocateGood | 10° 20'N, 30° 40'E |
+
+> **关键设计**：中文化后，{3} {7} {8} {9} {10} 五个来自随机词表的参数**在中文模板中被忽略**——中文模板使用固定的文学句式，英文的随机性通过中文等效的多词替换（在模板内部处理）来实现。但这意味着中文模板要**自己内嵌随机逻辑**，或者中文模板统一使用一个固定句式。权衡后建议：**中文使用单一但文雅的自然叙事**，不复制英文的随机句式变体。英文的随机性本质上是文字游戏的 flavor，中文不需要逐词对应。
+
+**好故事模板（Good Story）：**
+
+```
+quest.tome.story.good
+EN: "You have found the journal of {0}, where they were given a quest by {1} to find {2} that is known to be {3} by {4} {5}. {4} is {6} that has been {7} in {8} and {9} about in {10}. The goal for {0} was to find {11}, {12}, & {13} to help them defeat {4} and then bring {2} back to {1} before {14} can use it for their nefarious plans.<br><br>This is now your quest and you will have to speak with others to find clues on the location of the relics needed, as well as where {4} dwells. Once you defeat {4} and claim {2}, you can give this journal to {1} in {15} at the following coordinates:<br><br>{16}"
+ZH: "你找到了冒险者 {0} 的日记。{1} 曾经交给 {0} 一个任务：{4}{5}（{6}）持有 {2}，要去夺回来。{0} 需要先找到 {11}、{12} 和 {13} 这三件遗物才能对抗 {4}，然后把 {2} 带回给 {1}，赶在 {14} 用它实现邪恶图谋之前。<br><br>现在，这个使命落到了你肩上。向镇上的居民打听线索，找到遗物埋藏的地点，以及 {4} 的巢穴。集齐三件遗物后，找到 {4} 所在的位置，打开这本日记将其召唤出来。击败 {4} 拿到 {2} 之后，将日记交给 {15} 的 {1}，坐标如下：<br><br>{16}"
+```
+
+**邪恶故事模板（Evil Story）** 和两个 **反转剧情模板** 同理，各自对应的 EN/ZH 翻译对。
+
+> **中文版处理说明**：
+> - {3} {7} {8} {9} {10}（takes、heard、legend、hush、inn）在中文本地化时被吸收为固定叙事，不保留逐个英文词的随机性。英文的随机 flavor 在中文中通过不同句式（如「邪恶图谋」「黑暗计划」等）实现——但为简化，建议中文模板使用一个固定但合适的表述，不做运行时随机切换。
+> - `DDDDD` 变量替换（行 373: `story = story.Replace("DDDDD", dead)`）对中文模板仍然有效——中文模板用 `{0}` 格式参数接收 `dead`，不需要 `DDDDD` hack。
+
+**zh-Hans 条目示例：**
+
+```json
+"quest.tome.story.good": "你找到了冒险者 {0} 的日记。{1} 曾经交给 {0} 一个任务：{4}{5}（{6}）持有 {2}，要去夺回来。{0} 需要先找到 {11}、{12} 和 {13} 这三件遗物才能对抗 {4}，然后把 {2} 带回给 {1}，赶在 {14} 用它实现邪恶图谋之前。<br><br>现在，这个使命落到了你肩上。向镇上的居民打听线索，找到遗物埋藏的地点，以及 {4} 的巢穴。集齐三件遗物后，找到 {4} 所在的位置，打开这本日记将其召唤出来。击败 {4} 拿到 {2} 之后，将日记交给 {15} 的 {1}，坐标如下：<br><br>{16}"
+```
+
+#### 1.3.6 Gump 帮助页（大段教学文本，line 378）
+
+帮助页文本约 600 英文词，嵌入 `m_Book.GoalItem4`、`QuestTomeNPCEvil`/`QuestTomeNPCGood`、`VillainName`、`VillainTitle` 等。格式参数规划：
+
+| 索引 | 字段 | 示例 |
+|------|------|------|
+| {0} | GoalItem4 | Amulet of Might |
+| {1} | QuestTomeNPCEvil | Maleficar the Cunning |
+| {2} | QuestTomeNPCGood | Sir Galahad the Brave |
+| {3} | VillainName | Morgath |
+| {4} | VillainTitle | the Dark Lord |
+
+Shotkey 建议：
+
+```
+quest.tome.help.guide
+EN: "There are many times when adventurers are given a grand quest..."  // 现有全文
+ZH: "冒险者们常常会接到一项伟大的任务……"  // 中文版全文，变量位置依中文自然语序重排
+```
+
+---
+
+### 1.4 运行时重建逻辑
+
+在 `QuestTomeGump` 构造函数中，渲染故事/帮助页之前：
+
+```csharp
+// 获取账号语言
+string lang = AccountLang.GetLanguageCode(from.Account);
+bool isChinese = AccountLang.IsChinese(lang);
+
+// 故事部分：如果是中文，用 shotkey 模板从字段重建
+string story;
+if (isChinese)
+{
+    string dead = m_Book.Name;
+    if (dead.Contains("Journal of "))
+        dead = dead.Replace("Journal of ", "");
+    // 使用事先准备好的参数数组
+    // Good story 用这些字段的动态值填空
+    story = StringCatalog.ResolveFormatByKey(from.Account,
+        karmaLocked ? "quest.tome.story.evil" : "quest.tome.story.good",
+        dead,
+        karmaLocked ? m_Book.QuestTomeNPCEvil : m_Book.QuestTomeNPCGood,
+        m_Book.GoalItem4,
+        /* takes - 中文模板忽略 */ "",
+        m_Book.VillainName,
+        m_Book.VillainTitle,
+        m_Book.VillainCategory,
+        /* heard - 中文模板忽略 */ "",
+        /* legend - 中文模板忽略 */ "",
+        /* hush - 中文模板忽略 */ "",
+        /* inn - 中文模板忽略 */ "",
+        m_Book.GoalItem1,
+        m_Book.GoalItem2,
+        m_Book.GoalItem3,
+        karmaLocked ? m_Book.QuestTomeNPCGood : m_Book.QuestTomeNPCEvil,
+        karmaLocked ? Server.Lands.LandName(m_Book.QuestTomeWorldEvil)
+                     : Server.Lands.LandName(m_Book.QuestTomeWorldGood),
+        karmaLocked ? m_Book.QuestTomeLocateEvil : m_Book.QuestTomeLocateGood
+    );
+}
+else
+{
+    // 保持原有英文故事
+    story = ...; // 从 m_Book.QuestTomeStoryGood/Evil 读取
+}
+```
+
+> **另外需要**：在 `QuestTomeGump` 渲染时替换 `DDDDD` 的逻辑（line 372-373）应调整——对中文 shotkey 模板来说 `DDDDD` 已被 `{0}` 格式参数替代，不需要 `Replace`。
+
+> **冲突处理**：反转剧情（line 173-177）交换 Good/Evil 的 NPC 角色。在 shotkey 方案下，反转剧情不需要独立模板——只需在构造参数时交换 `{1}` 和 `{14}` 的取值。因此仅需 2 个模板（`quest.tome.story.good` / `quest.tome.story.evil`），通过调整参数顺序实现剧情反转。
+
+---
+
+### 1.5 词表标准化 vs 中文多样性
+
+英文的随机词表为叙事增加 flavor，但中文不宜逐词翻译。方案对比：
+
+| 英文词表 | 英文条数 | 中文化方案 |
+|---------|---------|-----------|
+| heard / told / known / shared | 4 | 中文不翻译这些词；故事模板使用自然中文叙事 |
+| legends / fables / myths / lore | 4 | 同上 |
+| whispered / told / sung / spoken | 4 | 同上 |
+| taverns / camps / cities / villages / inns | 5 | 同上 |
+| seized / stolen / taken / held / guarded | 5 | 同上 |
+
+**建议**：不为这五个词表创建 shotkey。英文的叙事 flavor 在中文中通过全局叙事风格保留，但不需要逐词对应。如果未来需要为中文增加 flavor 多样性，可以在中文故事模板里内嵌随机选择（比如用 `switch` 在 2-3 个中文等效句式间切换）。
+
+> **对 `locate` 词表的例外**：`GetRumor` 中的 `locate`（held by a powerful creature / lost somewhere / found）三种值导致完全不同的句型，必须用独立模板（见 1.3.4）。
+
+---
+
+## 2. 建议修复顺序
+
+### Phase 1：简单的 shotkey（可独立测试）
+1. OPL `Belongs to` → `quest.tome.opl.belongs_to`
+2. Emote 头顶文字（三条 `LocalOverheadMessage`）
+3. Gump 标题 `Quest for {0}`
+4. 物品 OPL 名（`lost journal`、空箱 `chest`、`Chest of {0}`）
+
+### Phase 2：流言系统重构
+5. 流言模板（4 组 shotkey，覆盖三种 locate + 多种 who 前缀）
+6. 修改 `GetRumor` / `TellRumor` 以使用 `ResolveFormatByKey`
+
+### Phase 3：大型叙事模板（最复杂，需大量翻译）
+7. 故事模板（2 组：good / evil，含 ZH 翻译）+ 反转剧情通过参数交换实现
+8. 修改 `QuestTomeGump` 构造函数，中文账号走 shotkey 模板路径
+9. 帮助页模板（`quest.tome.help.guide`）
+
+### Phase 4：后续优化
+10. 物品 OPL 主名（`Journal of {0} the {1}`）→ `item.quest.journal.*` 按 `AGENTS.md` §3.2 标准处理
+11. `MajorItemOnCorpse.Name = "chest"` / `"Chest of " + ...` → OPL 本地化
+
+---
+
+## 3. 按模块明细
+
+### 3.1 QuestTake.cs
+
 - cliloc 部分：**不处理**
 - 已部分 `StringCatalog` / `ResolveText`
 
-| 行 | 类型 | 示例 |
-|----|------|------|
-| 28 | Item Name | Journal of  |
-| 28 | Item Name |  the  |
-| 123 | String literal | heard |
-| 126 | String literal | told |
-| 127 | String literal | known |
-| 128 | String literal | shared |
-| 131 | String literal | legends |
-| 134 | String literal | fables |
-| 135 | String literal | myths |
-| 136 | String literal | lore |
-| 139 | String literal | whispered |
-| 142 | String literal | told |
-| 143 | String literal | sung |
-| 144 | String literal | spoken |
-| 147 | String literal | taverns |
-| 150 | String literal | camps |
-| 151 | String literal | cities |
-| 152 | String literal | villages |
-| 153 | String literal | inns |
-| 156 | String literal | seized |
-| 159 | String literal | stolen |
-| 160 | String literal | taken |
-| 161 | String literal | held |
-| 162 | String literal | guarded |
-| 169 | String literal | You have found the journal of DDDDD, where they were given a quest by  |
-| … | … | 另有 215 条 |
+#### 硬编码明细
 
-#### `QuestTome.cs`
+| 行 | 类型 | 英文 | 中文化方案 |
+|----|------|------|-----------|
+| 28 | Item Name | `Journal of {Name} the {Job}` | OPL 用 `item.quest.journal.name` 模板；`Name` 本身保持英文（存档） |
+| 123-128 | String literal | heard / told / known / shared | **不单独词表化**；消融到故事模板中 |
+| 131-136 | String literal | legends / fables / myths / lore | 同上 |
+| 139-144 | String literal | whispered / told / sung / spoken | 同上 |
+| 147-153 | String literal | taverns / camps / cities / villages / inns | 同上 |
+| 156-162 | String literal | seized / stolen / taken / held / guarded | 同上 |
+| 169-177 | 长段拼接 | `QuestTomeStoryGood/Evil`（4 版本） | Phase 3: `quest.tome.story.good/evil` + 参数交换实现反转 |
+| 568 | Item Name | `"Chest of " + m.Name` | OPL 用 `item.quest.chest_of` 模板 |
+| 637 | Item Name | `"chest"` | OPL 用 `item.quest.chest`（或复用 hash `s.7ca0d7019158ccd9`） |
+
+### 3.2 QuestTome.cs
+
 - cliloc 部分：**不处理**
 - 已部分 `StringCatalog` / `ResolveText`
 
-| 行 | 类型 | 示例 |
-|----|------|------|
-| 138 | Item Name | lost journal |
-| 145 | OPL | Belongs to  |
-| 372 | String literal | Journal of  |
-| 373 | String literal | DDDDD |
-| 378 | Gump | >There are many times when adventurers are given a grand quest to obtain a magic |
-| 378 | Gump | ?<br><br>Now you possess the journal and you can pursue this quest as it is your |
-| 378 | Gump | . Otherwise, your quest will service good for  |
-| 378 | Gump | . You may only have a single journal quest at any one time. If you find another  |
-| 378 | Gump |  and claim  |
-| 378 | Gump | , you will have to find 3 unique items to aid you. You have no idea where these  |
-| 378 | Gump |  is. Again, talking to citizens may reveal a hint. Once you learn where  |
-| 378 | Gump |  is, make haste to that location and face them in battle. Once you enter the are |
-| 378 | Gump |  from them. Making them vanish by other means will rob you of your goal, as woul |
-| 378 | Gump |  has fled to.<br><br>Slaying  |
-| 378 | Gump |  will reveal an abundance of wealth they have taken from other adventurers that  |
-| 378 | Gump |  will no longer need it. Once you have acquired  |
-| 378 | Gump | , seek out  |
-| 378 | Gump |  and hand them the journal. Your morality and fame will be affected by your choi |
-| 388 | Gump | >Quest for  |
-| 456 | String literal | held by a powerful creature |
-| 457 | String literal | lost somewhere |
-| 458 | String literal | found |
-| 470 | String literal | I heard |
-| 473 | String literal | I heard |
-| 474 | String literal | I learned |
-| … | … | 另有 16 条 |
+| 行 | 类型 | 英文 | 中文化方案 |
+|----|------|------|-----------|
+| 138 | Item Name | `"lost journal"` | 已有 hash `s.a3734bf593f52976` (`丢失的日记`)；或 shotkey `quest.tome.name.lost_journal` |
+| 145 | OPL | `"Belongs to " + Name` | `quest.tome.opl.belongs_to` + `AddLocalizedProperty` |
+| 372 | String literal | `"Journal of "` | 消融到 gump 标题处理逻辑中 |
+| 373 | String literal | `DDDDD` | 格式参数化，不再需要 `Replace` |
+| 378 | Gump | 大段教学文本 | `quest.tome.help.guide` |
+| 388 | Gump | `"Quest for " + from.Name` | `quest.tome.gump.title` |
+| 456 | String literal | `"held by a powerful creature"` | 消融到 `quest.tome.rumor.heard_held` |
+| 457 | String literal | `"lost somewhere"` | 消融到 `quest.tome.rumor.heard_lost` |
+| 458 | String literal | `"found"` | 消融到 `quest.tome.rumor.heard_found` |
+| 470-479 | String literal | who 前缀（6 种） | `quest.tome.rumor.who_*` 系列 |
+| 480 | 拼接 | `who + " that " + item + " may be " + locate + ...` | `quest.tome.rumor.heard_*` / `quest.tome.rumor.talk` |
+| 483 | 拼接 | `from + " has told you that " + item + ...` | `quest.tome.rumor.talk` |
+| 581 | Emote | `"You found " + relic + "."` | `quest.tome.emote.found_relic` |
+| 593 | Emote | `citizen + " was either wrong or they lied."` | 复用 `quest.n0_was_either_wrong_or_they_lied_dot` |
+| 608 | Emote | `"You found " + GoalItem4 + "."` | `quest.tome.emote.found_goal` |
+
+---
+
+## 4. C# 修改要点
+
+### 4.1 OPL（`QuestTome.AddNameProperties`，行 142-146）
+
+```csharp
+public override void AddNameProperties(ObjectPropertyList list)
+{
+    base.AddNameProperties(list);
+    if (QuestTomeOwner != null)
+    {
+        if (BuildingPropertyListLocale != null)
+            AddLocalizedProperty(list, "quest.tome.opl.belongs_to", QuestTomeOwner.Name);
+        else
+            list.Add(1049644, "Belongs to " + QuestTomeOwner.Name + "");
+    }
+}
+```
+
+### 4.2 Emote（`FoundItem`，行 581, 593, 608）
+
+```csharp
+// 行 581 — 替换为：
+player.LocalOverheadMessage(MessageType.Emote, 1150, true,
+    StringCatalog.ResolveFormatByKey(player.Account, "quest.tome.emote.found_relic", relic));
+
+// 行 593 — 替换为（复用已有键）：
+player.LocalOverheadMessage(MessageType.Emote, 1150, true,
+    StringCatalog.ResolveFormatByKey(player.Account,
+        "quest.n0_was_either_wrong_or_they_lied_dot", book.QuestTomeCitizen));
+
+// 行 608 — 替换为：
+player.LocalOverheadMessage(MessageType.Emote, 1150, true,
+    StringCatalog.ResolveFormatByKey(player.Account, "quest.tome.emote.found_goal", book.GoalItem4));
+```
+
+### 4.3 Gump 标题（QuestTomeGump 行 388）
+
+```csharp
+AddHtml(12, 46, 346, 20,
+    @"<BODY><BASEFONT Color=" + color + ">" +
+    StringCatalog.ResolveFormatByKey(from.Account, "quest.tome.gump.title", from.Name) +
+    @"</BASEFONT></BODY>",
+    false, false);
+```
+
+### 4.4 流言系统（`GetRumor` 和 `TellRumor`）
+
+```csharp
+// GetRumor 中 — 改写为基于 shotkey 的分支
+public static string GetRumor(QuestTome book, bool talk)
+{
+    int goal = book.QuestTomeType;
+    int locateType = 0; // 0=held, 1=lost, 2=found
+    if (goal == 2) locateType = 1;
+    if (book.QuestTomeGoals == 3) { locateType = 2; goal = 3; }
+
+    string world = Server.Lands.LandName(book.QuestTomeLand);
+    string dungeon = book.QuestTomeDungeon;
+    string from = book.QuestTomeCitizen;
+    string item = book.GoalItem1;
+    if (book.QuestTomeGoals == 1) item = book.GoalItem2;
+    else if (book.QuestTomeGoals == 2) item = book.GoalItem3;
+    else if (book.QuestTomeGoals == 3) item = book.VillainName + " " + book.VillainTitle;
+
+    if (talk)
+    {
+        // 居民直接提供了线索
+        return StringCatalog.ResolveFormatByKey(/* from account *, "quest.tome.rumor.talk",
+            from, item, /* locate - ignored in ZH */ "", dungeon, world);
+    }
+
+    // 根据 locate 类型选择不同的模板
+    string rumorKey;
+    switch (locateType)
+    {
+        case 1: rumorKey = "quest.tome.rumor.heard_lost"; break;
+        case 2: rumorKey = "quest.tome.rumor.heard_found"; break;
+        default: rumorKey = "quest.tome.rumor.heard_held"; break;
+    }
+    return StringCatalog.ResolveFormatByKey(/* from account */, rumorKey, item, dungeon, world);
+}
+```
+
+> **Note**: `ResolveFormatByKey` 需要 `IAccount` 参数。`GetRumor`/`TellRumor` 是 `static` 方法，当前没有接收 `Mobile` 参数。在 `TellRumor` 中已有 `PlayerMobile player` 参数，可以传到 `GetRumor` 中。
+
+### 4.5 故事模板（QuestTomeGump 构造函数）
+
+详见 1.4 节的伪代码。中文路径下用 `ResolveFormatByKey` 配合 `quest.tome.story.good`/`evil` 重建叙事，保留原有英文路径不变。
+
+### 4.6 帮助页（QuestTomeGump 行 378）
+
+将整个 `AddHtml` 调用替换为：
+
+```csharp
+string guideKey = "quest.tome.help.guide";
+string guideText = StringCatalog.ResolveFormatByKey(from.Account, guideKey,
+    m_Book.GoalItem4,
+    m_Book.QuestTomeNPCEvil,
+    m_Book.QuestTomeNPCGood,
+    m_Book.VillainName,
+    m_Book.VillainTitle);
+AddHtml(12, 43, 878, 548,
+    @"<BODY><BASEFONT Color=" + color + ">" + guideText + @"</BASEFONT></BODY>",
+    false, false);
+```
+
+> **注意**：帮助页中变量（VillainName、GoalItem4 等）出现多次。在格式字符串中用 `{0}`、`{3}` 等索引号重复引用即可，不需要为每次出现传递独立参数。
+
+---
+
+## 5. 存档兼容性说明
+
+- `QuestTomeStoryGood` / `QuestTomeStoryEvil`：保持序列化不变（version 不变），始终保存英文原文。
+- 中文路径下运行时重建，不写回存档字段。
+- `Item.Name`：保持英文原文不变。
+- 添加 `IsContentLocalized` override 到 `QuestTome` / `MajorItemOnCorpse`（如需要 OPL 本地化），参考 `AGENTS.md` §3.2 "OPL 物品主显示名"。
+
+---
+
+## 6. 复查命令
+
+```bash
+# 扫描硬编码 SendMessage
+rg 'SendMessage\s*\(\s*"' "World/Source/Scripts/Engines and Systems/Quests/Major"
+
+# 扫描硬编码 OverheadMessage（非 cliloc）
+rg 'LocalOverheadMessage\([^)]*true, "[A-Z]' "World/Source/Scripts/Engines and Systems/Quests/Major"
+
+# 扫描未目录化的字符串拼接
+rg '"[A-Z][a-z]{3,}.*" \+' "World/Source/Scripts/Engines and Systems/Quests/Major"
+```
