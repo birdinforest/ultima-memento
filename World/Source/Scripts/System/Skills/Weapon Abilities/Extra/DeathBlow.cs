@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -18,8 +19,8 @@ namespace Server.Items
 
 			ClearCurrentAbility( attacker );
 
-			attacker.SendMessage("You strike a deadly blow!");
-			defender.SendMessage("You were struck with a deadly blow!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You strike a deadly blow!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You were struck with a deadly blow!"));
 
 			defender.PlaySound(0x213);
 			defender.FixedParticles(0x377A, 1, 32, 9949, 1153, 0, EffectLayer.Head);

@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Spells;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -18,7 +19,7 @@ namespace Server.Items
 			ClearCurrentAbility( attacker );
 			if (attacker.Stam < 50)
 			{
-				attacker.SendMessage("You are too fatigues to perform this attack!");
+				attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You are too fatigues to perform this attack!"));
 				return;
 			}
 			Map map = attacker.Map;

@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -24,7 +25,7 @@ namespace Server.SkillHandlers
 
 			if ( from.Blessed )
 			{
-				from.SendMessage( "You cannot snoop while in this state." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.snooping.state") );
 				return false;
 			}
 
@@ -75,7 +76,7 @@ namespace Server.SkillHandlers
 
 					if ( map != null )
 					{
-						string message = String.Format( "You notice {0} attempting to peek into {1}'s belongings.", from.Name, root.Name );
+						string message = String.Format( StringCatalog.ResolveByKey(ns.Mobile.Account, "skl.snooping.notice"), from.Name, root.Name );
 
 						IPooledEnumerable eable = map.GetClientsInRange( from.Location, 8 );
 

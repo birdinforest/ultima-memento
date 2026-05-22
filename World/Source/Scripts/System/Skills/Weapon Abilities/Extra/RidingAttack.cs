@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -17,7 +18,7 @@ namespace Server.Items
 		{
 			if( !attacker.Mounted )
 			{
-				attacker.SendMessage( "You must be mounted to use this ability!" );
+				attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You must be mounted to use this ability!"));
 				ClearCurrentAbility( attacker );
 				return;
 			}

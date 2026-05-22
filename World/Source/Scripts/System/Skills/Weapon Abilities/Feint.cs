@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -70,7 +71,7 @@ namespace Server.Items
 			{
 				Registry.Remove(Owner);
 				if (Enemy.Alive)
-					Owner.SendMessage("Your opponent recovers their senses.");
+					Owner.SendMessage( StringCatalog.ResolveByKey(Owner.Account, "skl.wa.feint.recover") );
 			}
 		}
 	}

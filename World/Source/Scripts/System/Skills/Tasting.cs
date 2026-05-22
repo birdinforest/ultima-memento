@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using System.Collections;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -65,12 +66,12 @@ namespace Server.Items
 						else
 						{
 							food.Eat( from, false );
-							from.SendMessage( "You bit off a bit too much!" );
+							from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.bit_too_much") );
 						}
 					}
 					else
 					{
-						from.SendMessage( "This food looks safe to eat." );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.food_safe") );
 					}
 				}
 				else if ( targeted is BaseBeverage )
@@ -98,12 +99,12 @@ namespace Server.Items
 						else
 						{
 							drink.Pour_OnTarget( from, from );
-							from.SendMessage( "You swallowed a bit too much!" );
+							from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.swallowed") );
 						}
 					}
 					else
 					{
-						from.SendMessage( "This liquid looks safe to drink." );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.liquid_safe") );
 					}
 				}
 				else if ( targeted is Item )

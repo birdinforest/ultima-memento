@@ -5,6 +5,7 @@ using Server;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -53,28 +54,28 @@ namespace Server.SkillHandlers
 
 					if ( coffer.CofferRobbed > 0 )
 					{
-						from.SendMessage("It seems that " + coffer.CofferRobber + " has robbed this coffer of it's gold!");
+						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "skl.forensics.coffer_robbed", coffer.CofferRobber) );
 					}
 					else
 					{
-						from.SendMessage("That coffer has not been emptied by thieves.");
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.forensics.coffer_empty") );
 					}
 				}
 				else if ( target is LandChest && LandChest.isBody ( ((Item)target).ItemID ) )
 				{
-					from.SendMessage("This adventurer looks to have been slain by some wild animal.");
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.forensics.slain_wild") );
 				}
 				else if ( target is LandChest && !LandChest.isBody ( ((Item)target).ItemID ) )
 				{
-					from.SendMessage("For some reason, this wagon was left behind.");
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.forensics.wagon_left") );
 				}
 				else if ( target is WaterChest )
 				{
-					from.SendMessage("Maybe the owner of this boat fell into the sea and drowned.");
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.forensics.boat_drowned") );
 				}
 				else if ( target is SunkenShip )
 				{
-					from.SendMessage("This ship looks as though it seen better days.");
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.forensics.ship_better_days") );
 				}
 				else if ( target is Corpse )
 				{

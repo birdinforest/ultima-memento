@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Items;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -48,7 +49,7 @@ namespace Server.SkillHandlers
 
 				if ( m_Thief.Blessed )
 				{
-					m_Thief.SendMessage( "You cannot steal that while in this state." );
+					m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.state_blessed") );
 					return null;
 				}
 
@@ -87,7 +88,7 @@ namespace Server.SkillHandlers
 					if ( PlayerSettings.GetArtyConfig( m_Thief, rogue ) && !MySettings.S_DecoArtySteal )
 					{
 						si = null;
-						m_Thief.PrivateOverheadMessage(MessageType.Regular, 1150, false, "I have already stolen that item!", m_Thief.NetState);
+						m_Thief.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.overhead.already_stolen"), m_Thief.NetState);
 					}
 				}
 
@@ -97,22 +98,22 @@ namespace Server.SkillHandlers
 
 					if ( m_Thief.Blessed )
 					{
-						m_Thief.SendMessage( "You cannot steal while in this state." );
+						m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.state_steal") );
 					}
 					else if ( dBox.ItemID == 0x3582 || dBox.ItemID == 0x3583 || dBox.ItemID == 0x35AD || dBox.ItemID == 0x3868 || ( dBox.ItemID >= 0x4B5A && dBox.ItemID <= 0x4BAB ) || ( dBox.ItemID >= 0xECA && dBox.ItemID <= 0xED2 ) )
 					{
-						m_Thief.SendMessage( "It is best to leave the dead be." );
+						m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.dead_alone") );
 					}
 					else if ( dBox.ItemID == 0x3564 || dBox.ItemID == 0x3565 )
 					{
-						m_Thief.SendMessage( "You have not use for this broken golem thing." );
+						m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.no_golem") );
 					}
 					else
 					{
 						bool delete;
 						if ( m_Thief.CheckSkill( SkillName.Stealing, 0, 125 ) )
 						{
-							m_Thief.SendMessage( "You dump out the entire contents while stealing the item." );
+							m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.dump_contents") );
 							StolenChest sBox = new StolenChest();
 							int dValue = 0;
 
@@ -144,15 +145,15 @@ namespace Server.SkillHandlers
 						}
 						else
 						{
-							string message = "You were not quick enough to steal it.";
+							string message = StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.not_quick");
 							if ( delete = !dBox.OnStealFailed() )
 							{
 								switch(Utility.Random(0, 3))
 								{
-									case 0: message = "You make sure that container won't make a fool of you again."; break;
-									case 1: message = "In a fit of rage, you throw the container."; break;
-									case 2: message = "Well, they won't get your fingerprints off that."; break;
-									case 3: message = "You destroy the evidence of your failure."; break;
+									case 0: message = StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.container_fool"); break;
+									case 1: message = StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.throw_container"); break;
+									case 2: message = StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.fingerprints"); break;
+									case 3: message = StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.destroy_evidence"); break;
 								}
 							}
 							
@@ -171,19 +172,19 @@ namespace Server.SkillHandlers
 				}
 				else if ( toSteal is LandChest && LandChest.isBody ( toSteal.ItemID ) )
 				{
-					m_Thief.SendMessage( "It is best to leave the dead be." );
+					m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.dead_be") );
 				}
 				else if ( toSteal is LandChest && !LandChest.isBody ( toSteal.ItemID ) )
 				{
-					m_Thief.SendMessage( "You would be quite foolish looking stealing a wagon." );
+					m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.wagon") );
 				}
 				else if ( toSteal is SunkenShip )
 				{
-					m_Thief.SendMessage( "You are just not that strong." );
+					m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.not_strong") );
 				}
 				else if ( !IsEmptyHanded( m_Thief ) )
 				{
-					m_Thief.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
+					m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.wielding_weapon") );
 				}
 				else if ( root is Mobile && ((Mobile)root).Player && IsInnocentTo( m_Thief, (Mobile)root ) && !IsInGuild( m_Thief ) )
 				{
@@ -216,11 +217,11 @@ namespace Server.SkillHandlers
 					{
 						if ( coffer.CofferGold < 1 )
 						{
-							m_Thief.SendMessage( "There seems to be no gold in the coffer." );
+							m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.no_gold") );
 						}
 						else if ( m_Thief.CheckSkill( SkillName.Stealing, 0, 100 ) )
 						{
-							m_Thief.SendMessage( "You slip out " + coffer.CofferGold + " gold from the coffer." );
+							m_Thief.SendMessage( StringCatalog.ResolveFormatByKey(m_Thief.Account, "skl.stealing.slip_out", coffer.CofferGold) );
 							m_Thief.SendSound( 0x2E6 );
 							m_Thief.AddToBackpack ( new Gold( coffer.CofferGold ) );
 
@@ -235,7 +236,7 @@ namespace Server.SkillHandlers
 						}
 						else
 						{
-							m_Thief.SendMessage( "You fingers slip, causing you to get noticed!" );
+							m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.fingers_slip") );
 							m_Thief.RevealingAction(); // REVEALING ONLY WHEN FAILED
 
 							if ( !m_Thief.CheckSkill( SkillName.Snooping, 0, 150 ) )
@@ -245,8 +246,8 @@ namespace Server.SkillHandlers
 								{
 									if ( m is BaseVendor && m.CanSee( m_Thief ) && m.InLOS( m_Thief ) )
 									{
-										m_Thief.CriminalAction( false );
-										m.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Stop! Thief!" ) ); 
+									m_Thief.CriminalAction( false );
+									m.PublicOverheadMessage( MessageType.Regular, 0, false, StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.overhead.stop_thief") ); 
 									}
 								}
 							}
@@ -320,7 +321,7 @@ namespace Server.SkillHandlers
 
 					if ( w > 10 )
 					{
-						m_Thief.SendMessage( "That is too heavy to steal." );
+						m_Thief.SendMessage( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.too_heavy") );
 					}
 					else
 					{
@@ -450,7 +451,7 @@ namespace Server.SkillHandlers
 						if ( !IsInGuild( mobRoot ) && IsInnocentTo( m_Thief, mobRoot ) )
 							m_Thief.CriminalAction( false );
 
-						string message = String.Format( "You notice {0} trying to steal from {1}.", m_Thief.Name, mobRoot.Name );
+						string message = String.Format( StringCatalog.ResolveByKey(m_Thief.Account, "skl.stealing.notice_trying"), m_Thief.Name, mobRoot.Name );
 						m_Thief.RevealingAction(); // REVEALING ONLY WHEN NOTICED
 						Server.Items.DisguiseTimers.RemoveDisguise( m_Thief );
 						foreach ( NetState ns in m_Thief.GetClientsInRange( 8 ) )
@@ -509,7 +510,7 @@ namespace Server.SkillHandlers
 		{
 			if ( !IsEmptyHanded( m ) )
 			{
-				m.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
+				m.SendMessage( StringCatalog.ResolveByKey(m.Account, "skl.stealing.wielding_weapon") );
 			}
 			else
 			{

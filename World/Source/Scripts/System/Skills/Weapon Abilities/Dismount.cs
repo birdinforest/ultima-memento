@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -54,7 +55,7 @@ namespace Server.Items
 
 			if ( defender is HenchmanArcher || defender is HenchmanFighter || defender is HenchmanWizard )
 			{
-				attacker.SendMessage( "That attacks didn't seem to work!" );
+				attacker.SendMessage( StringCatalog.ResolveByKey(attacker.Account, "skl.wa.dismount.not_work") );
 				return;
 			}
 

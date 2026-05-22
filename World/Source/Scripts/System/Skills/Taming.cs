@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -298,11 +299,11 @@ namespace Server.SkillHandlers
 
 						switch ( Utility.Random( 5 ) )
 						{
-							case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Easy...easy..."); break;
-							case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Don't be afraid..."); break;
-							case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I won't hurt you..."); break;
-							case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "See? Nothing to be afraid of..."); break;
-							case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Nice and easy..."); break;
+							case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m_Tamer.Account, "skl.taming.easy")); break;
+							case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m_Tamer.Account, "skl.taming.dont_afraid")); break;
+							case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m_Tamer.Account, "skl.taming.wont_hurt")); break;
+							case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m_Tamer.Account, "skl.taming.nothing_afraid")); break;
+							case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m_Tamer.Account, "skl.taming.nice_easy")); break;
 						}
 
 						if ( !alreadyOwned ) // Passively check druidism for gain

@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Items;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -86,11 +87,11 @@ namespace Server.SkillHandlers
 						{
 							// Only Bladed or Piercing weapon can be poisoned
 							startTimer = ( weapon.Type == WeaponType.Slashing || weapon.Type == WeaponType.Piercing );
-							if ( startTimer == false ){ from.SendMessage(38, "You can only poison slashing or piercing weapons."); }
+							if ( startTimer == false ){ from.SendMessage(38, StringCatalog.ResolveByKey(from.Account, "skl.poisoning.slashing")); }
 						}
 						else if ( weapon.Layer == Layer.TwoHanded && !((PlayerMobile)from).Preferences.ClassicPoisoning )
 						{
-							from.SendMessage(38, "You can only poison one-handed slashing or piercing weapons.");
+							from.SendMessage(38, StringCatalog.ResolveByKey(from.Account, "skl.poisoning.one_handed"));
 						}
 					}
 
@@ -105,7 +106,7 @@ namespace Server.SkillHandlers
 					}
 					else // Target can't be poisoned
 					{
-						from.SendMessage(38, "You cannot poison that! You can only poison certain weapons, food, or drink.");
+						from.SendMessage(38, StringCatalog.ResolveByKey(from.Account, "skl.poisoning.cannot"));
 					}
 				}
 

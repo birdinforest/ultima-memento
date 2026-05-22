@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using System.Collections;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -53,7 +54,7 @@ namespace Server.SkillHandlers
 			if ( !Utility.RandomBool() ) return false;
 			if ( armsLore < Utility.Random(100) ) return false;
 
-			parent.SendMessage(0x3B2, "You notice your equipment is especially durable.");
+			parent.SendMessage(0x3B2, StringCatalog.ResolveByKey(parent.Account, "skl.armlore.durable"));
 
 			return true;
 		}

@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Items;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -149,12 +150,12 @@ namespace Server.SkillHandlers
 						if ( ((PlayerMobile)from).CharacterBegging == 0 )
 						{
 							((PlayerMobile)from).CharacterBegging = 1;
-							from.SendMessage(68, "You set your demeanor to begging.");
+							from.SendMessage(68, StringCatalog.ResolveByKey(from.Account, "skl.begging.demeanor_set"));
 						}
 						else
 						{
 							((PlayerMobile)from).CharacterBegging = 0;
-							from.SendMessage(38, "You cease your demeanor of begging.");
+							from.SendMessage(38, StringCatalog.ResolveByKey(from.Account, "skl.begging.demeanor_cease"));
 						}
 					}
 					else if ( IsGonnaAttack(targ) && from != targ ) // BEG ENEMIES TO STOP ATTACKING YOU ////////////////////////////////////////
@@ -162,24 +163,24 @@ namespace Server.SkillHandlers
 						from.CheckSkill( SkillName.Begging, 0, 125 );
 						switch( Utility.RandomMinMax( 0, 8 ) )
 						{
-							case 0: from.Say( "Leave me alone!" ); break;
-							case 1: from.Say( "Have mercy!" ); break;
-							case 2: from.Say( "Please, I am but a puny worm!" ); break;
-							case 3: from.Say( "Go away!" ); break;
-							case 4: from.Say( "I submit to your might!" ); break;
-							case 5: from.Say( "Your power has me scared!" ); break;
-							case 6: from.Say( "Leave me be!" ); break;
-							case 7: from.Say( "I didn't want to hurt you!" ); break;
-							case 8: from.Say( "Don't hurt me!" ); break;
+							case 0: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.leave_alone") ); break;
+							case 1: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.mercy") ); break;
+							case 2: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.puny_worm") ); break;
+							case 3: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.go_away") ); break;
+							case 4: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.submit") ); break;
+							case 5: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.scared") ); break;
+							case 6: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.leave_be") ); break;
+							case 7: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.hurt_you") ); break;
+							case 8: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.dont_hurt") ); break;
 						}
 
 						if ( targ is BaseCreature && ((BaseCreature)targ).Uncalmable )
 						{
-							from.SendMessage("You had no chance at begging this creature from hurting you.");
+							from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.no_chance"));
 						}
 						else if ( targ is BaseCreature && ((BaseCreature)targ).BardPacified )
 						{
-							from.SendMessage("This creature is already leaving you alone.");
+							from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.already_leaving"));
 						}
 						else
 						{
@@ -191,7 +192,7 @@ namespace Server.SkillHandlers
 
 							if ( !from.CheckTargetSkill( SkillName.Begging, targ, diff - 25.0, diff + 25.0 ) )
 							{
-								from.SendMessage("You fail to convince them to leave you alone.");
+								from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.fail_convince"));
 							}
 							else
 							{
@@ -200,7 +201,7 @@ namespace Server.SkillHandlers
 								{
 									BaseCreature bc = (BaseCreature)targ;
 
-									from.SendMessage("You beg and plead enough for them to leave you alone.");
+									from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.beg_enough"));
 
 									targ.Combatant = null;
 									targ.Warmode = false;
@@ -216,8 +217,8 @@ namespace Server.SkillHandlers
 								}
 								else
 								{
-									from.SendMessage("You beg and plead enough for them to leave you alone.");
-									targ.SendMessage("They somehow begged and pleaded, convincing you to leave them alone.");
+									from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.beg_enough"));
+									targ.SendMessage(StringCatalog.ResolveByKey(targ.Account, "skl.begging.they_begged"));
 									targ.Combatant = null;
 									targ.Warmode = false;
 								}
@@ -235,15 +236,15 @@ namespace Server.SkillHandlers
 							from.CheckSkill( SkillName.Begging, 0, 125 );
 							switch( Utility.RandomMinMax( 0, 8 ) )
 							{
-								case 0: from.Say( "Leave me alone!" ); break;
-								case 1: from.Say( "Have mercy!" ); break;
-								case 2: from.Say( "Please, I am but a puny worm!" ); break;
-								case 3: from.Say( "Go away!" ); break;
-								case 4: from.Say( "I submit to your might!" ); break;
-								case 5: from.Say( "Your power has me scared!" ); break;
-								case 6: from.Say( "Leave me be!" ); break;
-								case 7: from.Say( "I didn't want to hurt you!" ); break;
-								case 8: from.Say( "Don't hurt me!" ); break;
+								case 0: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.leave_alone") ); break;
+								case 1: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.mercy") ); break;
+								case 2: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.puny_worm") ); break;
+								case 3: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.go_away") ); break;
+								case 4: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.submit") ); break;
+								case 5: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.scared") ); break;
+								case 6: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.leave_be") ); break;
+								case 7: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.hurt_you") ); break;
+								case 8: from.Say( StringCatalog.ResolveByKey(from.Account, "skl.begging.say.dont_hurt") ); break;
 							}
 
 							double diff = GetBaseDifficulty( targ ) - 10.0;
@@ -254,7 +255,7 @@ namespace Server.SkillHandlers
 
 							if ( !from.CheckTargetSkill( SkillName.Begging, targ, diff - 25.0, diff + 25.0 ) )
 							{
-								from.SendMessage("You fail to convince them to leave you alone.");
+								from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.fail_convince"));
 							}
 							else
 							{
@@ -263,7 +264,7 @@ namespace Server.SkillHandlers
 								{
 									BaseCreature bc = (BaseCreature)targ;
 
-									from.SendMessage("You beg and plead enough for them to leave you alone.");
+									from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.beg_enough"));
 
 									targ.Combatant = null;
 									targ.Warmode = false;
@@ -281,8 +282,8 @@ namespace Server.SkillHandlers
 								}
 								else
 								{
-									from.SendMessage("You beg and plead enough for them to leave you alone.");
-									targ.SendMessage("They somehow begged and pleaded, convincing you to leave them alone.");
+									from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.begging.beg_enough"));
+									targ.SendMessage(StringCatalog.ResolveByKey(targ.Account, "skl.begging.they_begged"));
 									targ.Combatant = null;
 									targ.Warmode = false;
 								}

@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -191,7 +192,7 @@ namespace Server.SkillHandlers
 				if ( from.Skills[SkillName.Discordance].Value < minSkill )
 				{
                     // from.SendMessage("You are not skilled enough to disrupt the target.");
-					from.SendMessage("You need at least '{0}' Discordance skill to disrupt the target.", minSkill.ToString("F1"));
+                    from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "skl.discordance.need_skill", minSkill.ToString("F1")));
 					return;
 				}
 
@@ -211,7 +212,7 @@ namespace Server.SkillHandlers
 				if ( targ.Player && Utility.RandomMinMax( 0, 125 ) <= targ.Skills[SkillName.MagicResist].Value )
 				{
 					from.SendLocalizedMessage( 1049540 ); // You attempt to disrupt your target, but fail.
-					targ.SendMessage( "You magically resist the affects of the song." );
+					targ.SendMessage( StringCatalog.ResolveByKey(targ.Account, "skl.discordance.resist") );
 					m_Instrument.PlayInstrumentBadly( from );
 					m_Instrument.ConsumeUse( from );
 					return;
@@ -225,14 +226,14 @@ namespace Server.SkillHandlers
 				}
 				else
                 {
-                    from.SendMessage("Your fingers fumble, but you daze the target.");
+                    from.SendMessage(StringCatalog.ResolveByKey(from.Account, "skl.discordance.fumble_daze"));
                     m_Instrument.PlayInstrumentBadly( from );
                     m_Instrument.ConsumeUse( from );
                 }
 				
 				if ( targ.Player )
 				{
-					targ.SendMessage("You hear jarring music, suppressing your abilities.");
+					targ.SendMessage(StringCatalog.ResolveByKey(targ.Account, "skl.discordance.jarring_music"));
 				}
 
 				DiscordanceInfo info = m_Table[targ] as DiscordanceInfo;

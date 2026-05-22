@@ -1,6 +1,5 @@
 using System;
-
-namespace Server.Items
+using Server.Localization;
 {
 	public class SpinAttack : WeaponAbility
 	{
@@ -24,8 +23,8 @@ namespace Server.Items
 				attacker.Combatant = null;
 				return;
 			}
-			attacker.SendMessage("You spin your weapon really fast to strike multiple times!");
-			defender.SendMessage("You are hit multiple times by their weapon!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You spin your weapon really fast to strike multiple times!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You are hit multiple times by their weapon!"));
 			defender.PlaySound(0x3BB);
 			defender.FixedEffect(0x37B9, 244, 25);
 			if (attacker.InLOS(defender))

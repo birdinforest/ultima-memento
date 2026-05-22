@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -127,7 +128,7 @@ namespace Server.SkillHandlers
 						{
 							if ( from.Skills[SkillName.Provocation].Value < minSkill )
 							{
-								from.SendMessage("You need at least '{0}' Provocation skill to incite the target.", minSkill.ToString("F1"));
+								from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "skl.provocation.need_skill", minSkill.ToString("F1")));
 								return;
 							}
 
@@ -182,7 +183,7 @@ namespace Server.SkillHandlers
 					{
 						if ( from.Skills[SkillName.Provocation].Value < minSkill )
 						{
-							from.SendMessage("You need at least '{0}' Provocation skill to incite the target.", minSkill.ToString("F1"));
+							from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "skl.provocation.need_skill", minSkill.ToString("F1")));
 							return;
 						}
 

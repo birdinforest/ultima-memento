@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -25,7 +26,7 @@ namespace Server.SkillHandlers
 		public static void OnPickedInstrument( Mobile from, BaseInstrument instrument )
 		{
 			from.RevealingAction();
-			from.SendMessage( "Choose someone to calm or choose yourself to calm everyone in the nearby area." );
+			from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.peacemaking.choose_calm") );
 			from.Target = new InternalTarget( from, instrument );
 			from.NextSkillTime = DateTime.Now + TimeSpan.FromHours( 6.0 );
 		}
@@ -115,17 +116,17 @@ namespace Server.SkillHandlers
 											if ( Utility.RandomBool() )
 											{
 												failed = true;
-												from.SendMessage( "Your attempt to calm " + m.Name + " failed, causing your song to cease." );
+												from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "skl.peacemaking.attempt_calm_failed", m.Name) );
 											}
 											else
-												from.SendMessage( "You attempt to calm " + m.Name + ", but fail." );
+												from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "skl.peacemaking.attempt_calm_but", m.Name) );
 										}
 
 										if ((m is BaseCreature && ((BaseCreature)m).Uncalmable) || notPacified || (m is BaseCreature && ((BaseCreature)m).AreaPeaceImmune) || m == from || !from.CanBeHarmful ( m, false ))
 											continue;
 
 										calmed = true;
-										from.SendMessage( "You play hypnotic music, calming " + m.Name + "." );
+										from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "skl.peacemaking.hypnotic_calm", m.Name) );
 
 										m.SendLocalizedMessage( 500616 ); // You hear lovely music, and forget to continue battling!
 										m.Combatant = null;
@@ -182,7 +183,7 @@ namespace Server.SkillHandlers
 								
 							if ( from.Skills[SkillName.Peacemaking].Value < minSkill )
 							{
-								from.SendMessage("You need at least '{0}' Peacemaking skill to pacify the target.", minSkill.ToString("F1"));
+								from.SendMessage(StringCatalog.ResolveFormatByKey(from.Account, "skl.peacemaking.need_skill", minSkill.ToString("F1")));
 								return;
 							}
 

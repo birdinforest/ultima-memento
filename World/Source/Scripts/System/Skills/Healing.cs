@@ -1,5 +1,6 @@
 using System;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -14,7 +15,7 @@ namespace Server.SkillHandlers
         {
             if (m.Hunger < 6)
             {
-                m.SendMessage("You are starving to death and cannot do that!");
+                m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.starving"));
             }
             else if (Server.Items.MortalStrike.IsWounded(m))
             {
@@ -25,9 +26,9 @@ namespace Server.SkillHandlers
                 var isBleeding = BleedAttack.IsBleeding(m);
                 if (isBleeding || m.Poisoned)
                 {
-                    if (isBleeding == m.Poisoned) m.SendMessage("You feel a little healthier.");
-                    else if (m.Poisoned) m.SendMessage("The infection begins to clear.");
-                    else m.SendMessage("You work quickly to stem the bleeding!");
+                    if (isBleeding == m.Poisoned) m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.healthier"));
+                    else if (m.Poisoned) m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.infection_clear"));
+                    else m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.stem_bleeding"));
 
                     if (m.Poisoned) m.CurePoison(m);
                     if (isBleeding) BleedAttack.EndBleed(m, false);
@@ -40,12 +41,12 @@ namespace Server.SkillHandlers
 
                     if (!m.CheckSkill(SkillName.Healing, -50, 99.9))
                     {
-                        m.SendMessage("You are distracted, but heal some wounds.");
+                        m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.distracted"));
                         amount = (int)(amount * 0.75);
                     }
                     else
                     {
-                        m.SendMessage("You focus intently and heal your wounds.");
+                        m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.focus"));
                     }
 
                     m.Heal(amount, m, false);
@@ -55,7 +56,7 @@ namespace Server.SkillHandlers
             }
             else
             {
-                m.SendMessage("You already feel healthy.");
+                m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.healing.already_healthy"));
             }
 
             return TimeSpan.FromSeconds(1.0);

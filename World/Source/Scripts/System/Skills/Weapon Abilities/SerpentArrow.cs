@@ -3,6 +3,7 @@
 using System;
 using Server;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -21,8 +22,8 @@ namespace Server.Items
 
 			ClearCurrentAbility(attacker);
 
-			attacker.SendMessage("You poisoned your target.");
-			defender.SendMessage("You've been poisoned.");
+			attacker.SendMessage( StringCatalog.ResolveByKey(attacker.Account, "skl.wa.serpent.poisoned") );
+			defender.SendMessage( StringCatalog.ResolveByKey(defender.Account, "skl.wa.serpent.you_poisoned") );
 
 			int level;
 

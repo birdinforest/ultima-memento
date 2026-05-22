@@ -6,6 +6,7 @@ using Server.Network;
 using System.Collections.Generic;
 using Server.Commands;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -83,7 +84,7 @@ namespace Server.Gumps
 				else if ( Server.Misc.GetPlayerInfo.isJester( from ) ){ AddImage( nLeft, nButton, PrimaryIcon, 32 ); }
 				else if ( Server.Misc.GetPlayerInfo.isSyth( from, false ) ){ AddImage( nLeft, nButton, PrimaryIcon, 0x22 ); }
 				else if ( Server.Misc.GetPlayerInfo.isJedi( from, false ) ){ AddImage( nLeft, nButton, PrimaryIcon, 2825 ); }
-				if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, @"" + GetAbilName( Primary ) + ""); }
+				if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, StringCatalog.ResolveByKey(from.Account, GetAbilName( Primary ))); }
 
 			nButton = nButton + nDown;
 			nText = nText + nDown;
@@ -97,7 +98,7 @@ namespace Server.Gumps
 					else if ( Server.Misc.GetPlayerInfo.isJester( from ) ){ AddImage( nLeft, nButton, SecondaryIcon, 69 ); }
 					else if ( Server.Misc.GetPlayerInfo.isSyth( from, false ) ){ AddImage( nLeft, nButton, SecondaryIcon, 0x22 ); }
 					else if ( Server.Misc.GetPlayerInfo.isJedi( from, false ) ){ AddImage( nLeft, nButton, SecondaryIcon, 2825 ); }
-					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, @"" + GetAbilName( Secondary ) + ""); }
+					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, StringCatalog.ResolveByKey(from.Account, GetAbilName( Secondary ))); }
 
 				nButton = nButton + nDown;
 				nText = nText + nDown;
@@ -111,7 +112,7 @@ namespace Server.Gumps
 					else if ( Server.Misc.GetPlayerInfo.isJester( from ) ){ AddImage( nLeft, nButton, ThirdIcon, 93 ); }
 					else if ( Server.Misc.GetPlayerInfo.isSyth( from, false ) ){ AddImage( nLeft, nButton, ThirdIcon, 0x22 ); }
 					else if ( Server.Misc.GetPlayerInfo.isJedi( from, false ) ){ AddImage( nLeft, nButton, ThirdIcon, 2825 ); }
-					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, @"" + GetAbilName( Third ) + ""); }
+					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, StringCatalog.ResolveByKey(from.Account, GetAbilName( Third ))); }
 
 				nButton = nButton + nDown;
 				nText = nText + nDown;
@@ -125,7 +126,7 @@ namespace Server.Gumps
 					else if ( Server.Misc.GetPlayerInfo.isJester( from ) ){ AddImage( nLeft, nButton, FourthIcon, 114 ); }
 					else if ( Server.Misc.GetPlayerInfo.isSyth( from, false ) ){ AddImage( nLeft, nButton, FourthIcon, 0x22 ); }
 					else if ( Server.Misc.GetPlayerInfo.isJedi( from, false ) ){ AddImage( nLeft, nButton, FourthIcon, 2825 ); }
-					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, @"" + GetAbilName( Fourth ) + ""); }
+					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, StringCatalog.ResolveByKey(from.Account, GetAbilName( Fourth ))); }
 
 				nButton = nButton + nDown;
 				nText = nText + nDown;
@@ -139,7 +140,7 @@ namespace Server.Gumps
 					else if ( Server.Misc.GetPlayerInfo.isJester( from ) ){ AddImage( nLeft, nButton, FifthIcon, 253 ); }
 					else if ( Server.Misc.GetPlayerInfo.isSyth( from, false ) ){ AddImage( nLeft, nButton, FifthIcon, 0x22 ); }
 					else if ( Server.Misc.GetPlayerInfo.isJedi( from, false ) ){ AddImage( nLeft, nButton, FifthIcon, 2825 ); }
-					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, @"" + GetAbilName( Fifth ) + ""); }
+					if ( AbilityNamesWeapon.From( from ) ){ AddLabel(nLeft+52, nText, 0x481, StringCatalog.ResolveByKey(from.Account, GetAbilName( Fifth ))); }
 
 				nButton = nButton + nDown;
 				nText = nText + nDown;
@@ -214,64 +215,66 @@ namespace Server.Gumps
 
 		public static string GetAbilName( int nAbility )
 		{
-			string Ability = "Armor Ignore";
+			// These names are resolved at display time via StringCatalog.ResolveByKey
+			// in the gump rendering code. The static method returns a key identifier.
+			string Ability = "skl.ability.armor_ignore";
 			switch( nAbility )
 			{
-				case 1: Ability = "Armor Ignore"; break;
-				case 2: Ability = "Bleed Attack"; break;
-				case 3: Ability = "Concussion Blow"; break;
-				case 4: Ability = "Crushing Blow"; break;
-				case 5: Ability = "Disarm"; break;
-				case 6: Ability = "Dismount"; break;
-				case 7: Ability = "Double Strike"; break;
-				case 8: Ability = "Infectious Strike"; break;
-				case 9: Ability = "Mortal Strike"; break;
-				case 10: Ability = "Moving Shot"; break;
-				case 11: Ability = "Paralyzing Blow"; break;
-				case 12: Ability = "Shadow Strike"; break;
-				case 13: Ability = "Whirlwind Attack"; break;
-				case 14: Ability = "Riding Swipe"; break;
-				case 15: Ability = "Frenzied Whirlwind"; break;
-				case 16: Ability = "Block"; break;
-				case 17: Ability = "Defense Mastery"; break;
-				case 18: Ability = "Nerve Strike"; break;
-				case 19: Ability = "Talon Strike"; break;
-				case 20: Ability = "Feint"; break;
-				case 21: Ability = "Dual Wield"; break;
-				case 22: Ability = "Double Shot"; break;
-				case 23: Ability = "Armor Pierce"; break;
-				case 24: Ability = "Bladeweave"; break;
-				case 25: Ability = "Force Arrow"; break;
-				case 26: Ability = "Lightning Arrow"; break;
-				case 27: Ability = "Psychic Attack"; break;
-				case 28: Ability = "Serpent Arrow"; break;
-				case 29: Ability = "Force of Nature"; break;
-				case 30: Ability = "Disrobe"; break;
-				case 31: Ability = "Achilles Strike"; break;
-				case 32: Ability = "Consecrated Strike"; break;
-				case 33: Ability = "Stunning Strike"; break;
-				case 34: Ability = "Earth Strike"; break;
-				case 35: Ability = "Fire Strike"; break;
-				case 36: Ability = "Freeze Strike"; break;
-				case 37: Ability = "Toxic Strike"; break;
-				case 38: Ability = "Lightning Strike"; break;
-				case 39: Ability = "Elemental Strike"; break;
-				case 40: Ability = "Drain Strength"; break;
-				case 41: Ability = "Drain Dexterity"; break;
-				case 42: Ability = "Drain Intellect"; break;
-				case 43: Ability = "Drain Stamina"; break;
-				case 44: Ability = "Drain Mana"; break;
-				case 45: Ability = "Magic Protection"; break;
-				case 46: Ability = "Greater Magic Protection"; break;
-				case 47: Ability = "Melee Protection"; break;
-				case 48: Ability = "Greater Melee Protection"; break;
-				case 49: Ability = "Riding Attack"; break;
-				case 50: Ability = "Shadow Infectious Strike"; break;
-				case 51: Ability = "Double Whirlwind Attack"; break;
-				case 52: Ability = "Fists of Fury"; break;
-				case 53: Ability = "Spin Attack"; break;
-				case 54: Ability = "Devastating Blow"; break;
-				case 55: Ability = "Death Blow"; break;
+				case 1: Ability = "skl.ability.armor_ignore"; break;
+				case 2: Ability = "skl.ability.bleed_attack"; break;
+				case 3: Ability = "skl.ability.concussion_blow"; break;
+				case 4: Ability = "skl.ability.crushing_blow"; break;
+				case 5: Ability = "skl.ability.disarm"; break;
+				case 6: Ability = "skl.ability.dismount"; break;
+				case 7: Ability = "skl.ability.double_strike"; break;
+				case 8: Ability = "skl.ability.infectious_strike"; break;
+				case 9: Ability = "skl.ability.mortal_strike"; break;
+				case 10: Ability = "skl.ability.moving_shot"; break;
+				case 11: Ability = "skl.ability.paralyzing_blow"; break;
+				case 12: Ability = "skl.ability.shadow_strike"; break;
+				case 13: Ability = "skl.ability.whirlwind_attack"; break;
+				case 14: Ability = "skl.ability.riding_swipe"; break;
+				case 15: Ability = "skl.ability.frenzied_whirlwind"; break;
+				case 16: Ability = "skl.ability.block"; break;
+				case 17: Ability = "skl.ability.defense_mastery"; break;
+				case 18: Ability = "skl.ability.nerve_strike"; break;
+				case 19: Ability = "skl.ability.talon_strike"; break;
+				case 20: Ability = "skl.ability.feint"; break;
+				case 21: Ability = "skl.ability.dual_wield"; break;
+				case 22: Ability = "skl.ability.double_shot"; break;
+				case 23: Ability = "skl.ability.armor_pierce"; break;
+				case 24: Ability = "skl.ability.bladeweave"; break;
+				case 25: Ability = "skl.ability.force_arrow"; break;
+				case 26: Ability = "skl.ability.lightning_arrow"; break;
+				case 27: Ability = "skl.ability.psychic_attack"; break;
+				case 28: Ability = "skl.ability.serpent_arrow"; break;
+				case 29: Ability = "skl.ability.force_of_nature"; break;
+				case 30: Ability = "skl.ability.disrobe"; break;
+				case 31: Ability = "skl.ability.achilles_strike"; break;
+				case 32: Ability = "skl.ability.consecrated_strike"; break;
+				case 33: Ability = "skl.ability.stunning_strike"; break;
+				case 34: Ability = "skl.ability.earth_strike"; break;
+				case 35: Ability = "skl.ability.fire_strike"; break;
+				case 36: Ability = "skl.ability.freeze_strike"; break;
+				case 37: Ability = "skl.ability.toxic_strike"; break;
+				case 38: Ability = "skl.ability.lightning_strike"; break;
+				case 39: Ability = "skl.ability.elemental_strike"; break;
+				case 40: Ability = "skl.ability.drain_strength"; break;
+				case 41: Ability = "skl.ability.drain_dexterity"; break;
+				case 42: Ability = "skl.ability.drain_intellect"; break;
+				case 43: Ability = "skl.ability.drain_stamina"; break;
+				case 44: Ability = "skl.ability.drain_mana"; break;
+				case 45: Ability = "skl.ability.magic_protection"; break;
+				case 46: Ability = "skl.ability.greater_magic_protection"; break;
+				case 47: Ability = "skl.ability.melee_protection"; break;
+				case 48: Ability = "skl.ability.greater_melee_protection"; break;
+				case 49: Ability = "skl.ability.riding_attack"; break;
+				case 50: Ability = "skl.ability.shadow_infectious_strike"; break;
+				case 51: Ability = "skl.ability.double_whirlwind_attack"; break;
+				case 52: Ability = "skl.ability.fists_of_fury"; break;
+				case 53: Ability = "skl.ability.spin_attack"; break;
+				case 54: Ability = "skl.ability.devastating_blow"; break;
+				case 55: Ability = "skl.ability.death_blow"; break;
 			}
 			return Ability;
 		}

@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -24,8 +25,8 @@ namespace Server.Items
 				attacker.Combatant = null;
 				return;
 			}
-			attacker.SendMessage("You attack with a series of mighty blows!");
-			defender.SendMessage("You have been struck with a series of mighty blows!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You attack with a series of mighty blows!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You have been struck with a series of mighty blows!"));
 			defender.PlaySound(0x3BB);
 			defender.FixedEffect(0x37B9, 244, 25);
 			if (attacker.InLOS(defender))

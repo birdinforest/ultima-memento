@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 using Custom.Jerbal.Jako;
 
 namespace Server.SkillHandlers
@@ -124,6 +125,7 @@ namespace Server.SkillHandlers
 		private readonly int m_Color;
 		private readonly int m_Source;
 		private readonly BaseCreature m_Creature;
+		private Mobile m_From;
 
 		private static string FormatSkill( BaseCreature c, SkillName name )
 		{
@@ -298,6 +300,7 @@ namespace Server.SkillHandlers
 
 			m_Source = source;
 			m_Creature = c;
+			m_From = from;
 
 			const int COLUMN_ONE_START = 22;
 			const int COLUMN_TWO_START = 252;
@@ -312,7 +315,7 @@ namespace Server.SkillHandlers
 
 			int img = 11416;
 			m_Color = HtmlColors.COOL_BLUE;
-			string title = "MONSTER MANUAL";
+			string title = StringCatalog.ResolveByKey(from.Account, "skl.druidism.title.monster_manual");
 
 			if ( m_Source == 1 || m_Source == 2 ){ m_Book = 1; }
 
@@ -320,25 +323,25 @@ namespace Server.SkillHandlers
 			{
 				img = 11417;
 				m_Color = HtmlColors.KHAKI;
-				title = "PLAYERS HANDBOOK";
+				title = StringCatalog.ResolveByKey(from.Account, "skl.druidism.title.players_handbook");
 			}
 			else if ( m_Source == 0 )
 			{
 				img = 11418;
 				m_Color = HtmlColors.COOL_GREEN;
-				title = "ANIMAL LORE";
+				title = StringCatalog.ResolveByKey(from.Account, "skl.druidism.title.animal_lore");
 			}
 			else if ( m_Source == 3 )
 			{
 				img = 11419;
 				m_Color = HtmlColors.LIGHT_PINK;
-				title = "DIVINATION";
+				title = StringCatalog.ResolveByKey(from.Account, "skl.druidism.title.divination");
 			}
 			else if ( m_Source == 4 )
 			{
 				img = 11419;
 				m_Color = HtmlColors.LIGHT_PINK;
-				title = "DIVINATION";
+				title = StringCatalog.ResolveByKey(from.Account, "skl.druidism.title.divination");
 			}
 
 			AddImage(1, 1, img, Server.Misc.PlayerSettings.GetGumpHue( from ));
@@ -356,19 +359,19 @@ namespace Server.SkillHandlers
 
 			x = COLUMN_ONE_START;
 			y = Y_START;
-			AddRow(x, ref y, "INFORMATION", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.information"), "");
 			AddInformationSection(x + SECTION_INDENT, ref y);
 
 			if ( m_Creature.Tamable )
 			{
 				y += MARGIN_TOP;
-				AddRow(x, ref y, "TAME", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.tame"), "");
 				AddPetSection(x + SECTION_INDENT, ref y);
 
 				if ( source == 0 && m_Creature.MinTameSkill > 0 )
 				{
 					y += MARGIN_TOP;
-					AddRow(x, ref y, "FAVORITE FOOD", "");
+					AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.favorite_food"), "");
 					AddFoodSection(x + SECTION_INDENT, ref y);
 				}
 			}
@@ -377,26 +380,26 @@ namespace Server.SkillHandlers
 
 			x = COLUMN_TWO_START;
 			y = Y_START;
-			AddRow(x, ref y, "DAMAGE", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.damage"), "");
 			AddDamageSection(x + SECTION_INDENT, ref y);
 
 			y += MARGIN_TOP;
-			AddRow(x, ref y, "COMBAT RATINGS", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.combat_ratings"), "");
 			AddCombatRatingsSection(x + SECTION_INDENT, ref y);
 
 			y += MARGIN_TOP;
-			AddRow(x, ref y, "LORE & KNOWLEDGE", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.lore_knowledge"), "");
 			AddLoreAndKnowledgeSection(x + SECTION_INDENT, ref y);
 
 			///////////////////////////////////////////////////////////////////////////////////
 
 			x = COLUMN_THREE_START;
 			y = Y_START;
-			AddRow(x, ref y, "RESISTANCE", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.resistance"), "");
 			AddResistanceSection(x + SECTION_INDENT, ref y);
 
 			y += MARGIN_TOP;
-			AddRow(x, ref y, "STATS", "");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.section.stats"), "");
 			AddStatsSection(x + SECTION_INDENT, ref y);
 		}
 
@@ -455,41 +458,41 @@ namespace Server.SkillHandlers
 			return JakoAttributesEnum.None;
 		}
 
-        private void AddStatsSection( int x, ref int y )
+		private void AddStatsSection( int x, ref int y )
 		{
-			AddRow(x, ref y, "Hits", FormatNumber( m_Creature.Hits ) + "/" + FormatNumber( m_Creature.HitsMax ), (int)Actions.HitPoints);
-			AddRow(x, ref y, "Stamina", FormatNumber( m_Creature.Stam ) + "/" + FormatNumber( m_Creature.StamMax ), (int)Actions.StaminaPoints);
-			AddRow(x, ref y, "Mana", FormatNumber( m_Creature.Mana ) + "/" + FormatNumber( m_Creature.ManaMax ), (int)Actions.ManaPoints);
-			AddRow(x, ref y, "Strength", FormatNumber( m_Creature.Str ));
-			AddRow(x, ref y, "Dexterity", FormatNumber( m_Creature.Dex ));
-			AddRow(x, ref y, "Intelligence", FormatNumber( m_Creature.Int ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.hits"), FormatNumber( m_Creature.Hits ) + "/" + FormatNumber( m_Creature.HitsMax ), (int)Actions.HitPoints);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.stamina"), FormatNumber( m_Creature.Stam ) + "/" + FormatNumber( m_Creature.StamMax ), (int)Actions.StaminaPoints);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.mana"), FormatNumber( m_Creature.Mana ) + "/" + FormatNumber( m_Creature.ManaMax ), (int)Actions.ManaPoints);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.strength"), FormatNumber( m_Creature.Str ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.dexterity"), FormatNumber( m_Creature.Dex ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.intelligence"), FormatNumber( m_Creature.Int ));
 		}
 
         private void AddDamageSection( int x, ref int y )
 		{
-			AddRow(x, ref y, "Physical", FormatPercent( m_Creature.PhysicalDamage ));
-			AddRow(x, ref y, "Fire", FormatPercent( m_Creature.FireDamage ));
-			AddRow(x, ref y, "Cold", FormatPercent( m_Creature.ColdDamage ));
-			AddRow(x, ref y, "Poison", FormatPercent( m_Creature.PoisonDamage ));
-			AddRow(x, ref y, "Energy", FormatPercent( m_Creature.EnergyDamage ));
-			AddRow(x, ref y, "Base Damage", m_Creature.DamageMin + " - " + m_Creature.DamageMax);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.physical"), FormatPercent( m_Creature.PhysicalDamage ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.fire"), FormatPercent( m_Creature.FireDamage ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.cold"), FormatPercent( m_Creature.ColdDamage ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.poison"), FormatPercent( m_Creature.PoisonDamage ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.energy"), FormatPercent( m_Creature.EnergyDamage ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.base_damage"), m_Creature.DamageMin + " - " + m_Creature.DamageMax);
 		}
 
         private void AddResistanceSection( int x, ref int y )
 		{
-			AddRow(x, ref y, "Physical", FormatPercent( m_Creature.PhysicalResistance ), (int)Actions.ResistPhysical);
-			AddRow(x, ref y, "Fire", FormatPercent( m_Creature.FireResistance ), (int)Actions.ResistFire);
-			AddRow(x, ref y, "Cold", FormatPercent( m_Creature.ColdResistance ), (int)Actions.ResistCold);
-			AddRow(x, ref y, "Poison", FormatPercent( m_Creature.PoisonResistance ), (int)Actions.ResistPoison);
-			AddRow(x, ref y, "Energy", FormatPercent( m_Creature.EnergyResistance ), (int)Actions.ResistEnergy);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.physical"), FormatPercent( m_Creature.PhysicalResistance ), (int)Actions.ResistPhysical);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.fire"), FormatPercent( m_Creature.FireResistance ), (int)Actions.ResistFire);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.cold"), FormatPercent( m_Creature.ColdResistance ), (int)Actions.ResistCold);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.poison"), FormatPercent( m_Creature.PoisonResistance ), (int)Actions.ResistPoison);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.energy"), FormatPercent( m_Creature.EnergyResistance ), (int)Actions.ResistEnergy);
 		}
 
         private void AddCombatRatingsSection( int x, ref int y )
 		{
-			AddRow(x, ref y, "Anatomy", FormatTalent( m_Creature.Skills[SkillName.Anatomy].Value ));
-			AddRow(x, ref y, "Magic Resist", FormatTalent( m_Creature.Skills[SkillName.MagicResist].Value ));
-			AddRow(x, ref y, "Poisoning", FormatTalent( m_Creature.Skills[SkillName.Poisoning].Value ));
-			AddRow(x, ref y, "Tactics", FormatTalent( m_Creature.Skills[SkillName.Tactics].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.anatomy"), FormatTalent( m_Creature.Skills[SkillName.Anatomy].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.magic_resist"), FormatTalent( m_Creature.Skills[SkillName.MagicResist].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.poisoning"), FormatTalent( m_Creature.Skills[SkillName.Poisoning].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.tactics"), FormatTalent( m_Creature.Skills[SkillName.Tactics].Value ));
 			
 			string skill;
 			if ( m_Source == 2 )
@@ -503,114 +506,114 @@ namespace Server.SkillHandlers
 			else
 				skill = FormatTalent( m_Creature.Skills[SkillName.FistFighting].Value );
 
-			AddRow(x, ref y, "Combat Skill", skill);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.combat_skill"), skill);
 		}
 
         private void AddLoreAndKnowledgeSection( int x, ref int y )
 		{
-			AddRow(x, ref y, "Magery", FormatTalent( m_Creature.Skills[SkillName.Magery].Value ));
-			AddRow(x, ref y, "Meditation", FormatTalent( m_Creature.Skills[SkillName.Meditation].Value ));
-			AddRow(x, ref y, "Psychology", FormatTalent( m_Creature.Skills[SkillName.Psychology].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.magery"), FormatTalent( m_Creature.Skills[SkillName.Magery].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.meditation"), FormatTalent( m_Creature.Skills[SkillName.Meditation].Value ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.psychology"), FormatTalent( m_Creature.Skills[SkillName.Psychology].Value ));
 		}
 
         private void AddPetSection( int x, ref int y )
 		{
 			if ( m_Creature.ControlMaster == null )
 			{
-				AddRow(x, ref y, "Max Pet Level", m_Creature.MaxLevel.ToString());
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.max_pet_level"), m_Creature.MaxLevel.ToString());
 			}
 			else
 			{
-				AddRow(x, ref y, "Pet Level", m_Creature.Level + "/" + m_Creature.MaxLevel);
-				AddRow(x, ref y, "Traits Available", m_Creature.Traits.ToString());
-				AddRow(x, ref y, "Experience Earned", m_Creature.Experience.ToString());
-				AddRow(x, ref y, "Experience Needed", m_Creature.ExpToNextLevel.ToString());
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.pet_level"), m_Creature.Level + "/" + m_Creature.MaxLevel);
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.traits_available"), m_Creature.Traits.ToString());
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.experience_earned"), m_Creature.Experience.ToString());
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.experience_needed"), m_Creature.ExpToNextLevel.ToString());
 			}
 
-			string packInstinct = "None";
-			if ( ( m_Creature.PackInstinct & PackInstinct.Canine) != 0 ) packInstinct = "Canine";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Ostard) != 0 ) packInstinct = "Ostard";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Feline) != 0 ) packInstinct = "Feline";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Arachnid) != 0 ) packInstinct = "Arachnid";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Daemon) != 0 ) packInstinct = "Daemon";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Bear) != 0 ) packInstinct = "Bear";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Equine) != 0 ) packInstinct = "Equine";
-			else if ( ( m_Creature.PackInstinct & PackInstinct.Bull) != 0 ) packInstinct = "Bull";
-			AddRow(x, ref y, "Pack Instinct", packInstinct);
+			string packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.none");
+			if ( ( m_Creature.PackInstinct & PackInstinct.Canine) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.canine");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Ostard) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.ostard");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Feline) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.feline");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Arachnid) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.arachnid");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Daemon) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.daemon");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Bear) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.bear");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Equine) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.equine");
+			else if ( ( m_Creature.PackInstinct & PackInstinct.Bull) != 0 ) packInstinct = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.instinct.bull");
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.pack_instinct"), packInstinct);
 
-			string loyalty = "Wild";
+			string loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.wild");
 			int loyal = 1 + ( m_Creature.Loyalty / 10);
 			switch ( loyal ) 
 			{
-				case 1: loyalty = "Confused"; break;
-				case 2: loyalty = "Extremely Unhappy"; break;
-				case 3: loyalty = "Rather Unhappy"; break;
-				case 4: loyalty = "Unhappy"; break;
-				case 5: loyalty = "Somewhat Content"; break;
-				case 6: loyalty = "Content"; break;
-				case 7: loyalty = "Happy"; break;
-				case 8: loyalty = "Rather Happy"; break;
-				case 9: loyalty = "Very Happy"; break;
-				case 10: loyalty = "Extremely Happy"; break;
-				case 11: loyalty = "Wonderfully Happy"; break;
-				case 12: loyalty = "Euphoric"; break;
+				case 1: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.confused"); break;
+				case 2: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.extremely_unhappy"); break;
+				case 3: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.rather_unhappy"); break;
+				case 4: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.unhappy"); break;
+				case 5: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.somewhat_content"); break;
+				case 6: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.content"); break;
+				case 7: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.happy"); break;
+				case 8: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.rather_happy"); break;
+				case 9: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.very_happy"); break;
+				case 10: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.extremely_happy"); break;
+				case 11: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.wonderfully_happy"); break;
+				case 12: loyalty = StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.mood.euphoric"); break;
 			}
-			AddRow(x, ref y, "Mood", loyalty);
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.mood"), loyalty);
 		}
 
 		private void AddFoodSection(int x, ref int y )
 		{
 			if ( ( m_Creature.FavoriteFood & FoodType.None) != 0 )
-				AddRow(x, ref y, "None", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.none"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.FruitsAndVegies) != 0 )
 			{
-				AddRow(x, ref y, "Fruits", "");
-				AddRow(x, ref y, "Vegetables", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.fruits"), "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.vegetables"), "");
 			}
 			if ( ( m_Creature.FavoriteFood & FoodType.GrainsAndHay) != 0 )
-				AddRow(x, ref y, "Grains & Hay", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.grains_hay"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Fish) != 0 )
-				AddRow(x, ref y, "Fish", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.fish"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Meat) != 0 )
-				AddRow(x, ref y, "Meat", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.meat"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Eggs) != 0 )
-				AddRow(x, ref y, "Eggs", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.eggs"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Gold) != 0 )
-				AddRow(x, ref y, "Gold", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.gold"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Fire) != 0 )
 			{
-				AddRow(x, ref y, "Brimstone", "");
-				AddRow(x, ref y, "Sulfurous Ash", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.brimstone"), "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.sulfurous_ash"), "");
 			}
 			if ( ( m_Creature.FavoriteFood & FoodType.Gems) != 0 )
-				AddRow(x, ref y, "Gems", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.gems"), "");
 			if ( ( m_Creature.FavoriteFood & FoodType.Nox) != 0 )
 			{
-				AddRow(x, ref y, "Swamp Berries", "");
-				AddRow(x, ref y, "Nox Crystals", "");
-				AddRow(x, ref y, "Nightshade", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.swamp_berries"), "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.nox_crystals"), "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.nightshade"), "");
 			}
 			if ( ( m_Creature.FavoriteFood & FoodType.Sea) != 0 )
 			{
-				AddRow(x, ref y, "Seaweed", "");
-				AddRow(x, ref y, "Sea Salt", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.seaweed"), "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.sea_salt"), "");
 			}
 			if ( ( m_Creature.FavoriteFood & FoodType.Moon) != 0 )
-				AddRow(x, ref y, "Moon Crystals", "");
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.food.moon_crystals"), "");
 		}
 
         private void AddInformationSection( int x, ref int y )
         {
-			AddRow(x, ref y, "Power Level", IntelligentAction.GetCreatureLevel( m_Creature ).ToString());
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.power_level"), IntelligentAction.GetCreatureLevel( m_Creature ).ToString());
 
 			double bd = !m_Creature.Uncalmable ? Items.BaseInstrument.GetBaseDifficulty( m_Creature ) : 0;
-			AddRow(x, ref y, "Barding Difficulty", FormatTalent( bd ));
+			AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.barding_difficulty"), FormatTalent( bd ));
 
 			if ( m_Source == 0 && m_Creature.Tamable && m_Creature.MinTameSkill > 0 )
 			{
-				AddRow(x, ref y, "Taming Needed", FormatTaming( m_Creature.MinTameSkill ));
-				AddRow(x, ref y, "Follower Slots", m_Creature.ControlSlots.ToString());
-				AddRow(x, ref y, "Sex", m_Creature.SexString);
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.taming_needed"), FormatTaming( m_Creature.MinTameSkill ));
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.follower_slots"), m_Creature.ControlSlots.ToString());
+				AddRow(x, ref y, StringCatalog.ResolveByKey(m_From.Account, "skl.druidism.label.sex"), m_Creature.SexString);
 			}
         }
     }

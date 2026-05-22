@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -13,8 +14,8 @@ namespace Server.Items
 		{
 			if (!Validate(attacker) || !CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
-			attacker.SendMessage("You strike them with lightning force!");
-			defender.SendMessage("You where struck with lightning force!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You strike them with lightning force!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You where struck with lightning force!"));
 
 			BaseWeapon weapon = attacker.Weapon as BaseWeapon;
 			if (weapon == null) return;

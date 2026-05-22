@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Gumps;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Commands
 {
@@ -34,7 +35,7 @@ namespace Server.Commands
 			if ( ( weapon.FourthAbility!=null )		&& ( pm.Skills[weapon.DefSkill].Value >= sk4 	|| pm.Skills[weapon.GetUsedSkill(pm,true)].Value >= sk4 )	&& pm.Skills[SkillName.Tactics].Value >= sk4 ) 	number++;
 			if ( ( weapon.FifthAbility!=null ) 		&& ( pm.Skills[weapon.DefSkill].Value >= sk5 	|| pm.Skills[weapon.GetUsedSkill(pm,true)].Value >= sk5 )	&& pm.Skills[SkillName.Tactics].Value >= sk5 ) 	number++;
 			if (number > 0) pm.SendGump(new SpecialAttackGump( weapon, pm, number ));
-			else pm.SendMessage("Your weapon skills are not high enough to use a special attack of any kind");
+			else pm.SendMessage( StringCatalog.ResolveByKey(pm.Account, "skl.wa.sad.no_skill") );
 		}
 	}
 }

@@ -1,6 +1,7 @@
 
 using System;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -18,7 +19,7 @@ namespace Server.SkillHandlers
 			var shield = m.FindItemOnLayer(Layer.TwoHanded) as BaseShield;
 			if (shield == null)
 			{
-				m.SendMessage("You can only parry with a shield!");
+				m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.only_shield"));
 
 				return TimeSpan.Zero;
 			}
@@ -43,7 +44,7 @@ namespace Server.SkillHandlers
 			m.MeleeDamageAbsorb += amount;
 
 			m.RevealingAction();
-			m.SendMessage("You raise your shield in preparation.");
+			m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"));
 
 			var duration = TimeSpan.FromSeconds(5);
 
@@ -55,7 +56,7 @@ namespace Server.SkillHandlers
 					if (0 < m.MeleeDamageAbsorb) m.MeleeDamageAbsorb = Math.Max(0, m.MeleeDamageAbsorb - amount);
 				}
 
-				m.SendMessage("You relax your stance.");
+				m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"));
 			});
 
 			return duration;

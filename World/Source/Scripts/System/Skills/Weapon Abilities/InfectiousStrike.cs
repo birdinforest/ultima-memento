@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -42,7 +43,7 @@ namespace Server.Items
 
 			if ( ((PlayerMobile)attacker).Preferences.ClassicPoisoning )
 			{
-				attacker.SendMessage( "You cannot use this attack with your current poison settings!" );
+				attacker.SendMessage( StringCatalog.ResolveByKey(attacker.Account, "skl.wa.infectious.poison_settings") );
 				return;
 			}
 			if ( p == null || weapon.PoisonCharges <= 0 )
@@ -55,7 +56,7 @@ namespace Server.Items
 				return;
 
 			if ( Utility.Random( 150 ) < attacker.Skills[SkillName.Poisoning].Value )
-				attacker.SendMessage( "Your strike was perfect." );
+				attacker.SendMessage( StringCatalog.ResolveByKey(attacker.Account, "skl.wa.infectious.perfect") );
 			else
 				--weapon.PoisonCharges;
 

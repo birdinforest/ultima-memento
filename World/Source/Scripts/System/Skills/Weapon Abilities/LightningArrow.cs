@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -40,8 +41,8 @@ namespace Server.Items
 
 			defender.PlaySound(1471);
 			defender.BoltEffect(0);
-			attacker.SendMessage("Your lightning arrow strikes {0}!", defender.Name);
-			defender.SendMessage("Lightning arcs from {0}{1} arrow onto you!", attacker.Name, attacker.Name.ToLower().EndsWith("s") ? "'" : "'s");
+			attacker.SendMessage( StringCatalog.ResolveFormatByKey(attacker.Account, "skl.wa.lightning.your_arrow", defender.Name) );
+			defender.SendMessage( StringCatalog.ResolveFormatByKey(defender.Account, "skl.wa.lightning.arcs_from", attacker.Name, attacker.Name.ToLower().EndsWith("s") ? "'" : "'s") );
 
 			foreach (Mobile m in defender.GetMobilesInRange(1))
 				list.Add(m);
@@ -73,8 +74,8 @@ namespace Server.Items
 				{
 					Mobile m = (Mobile)targets[i];
 
-					attacker.SendMessage("Lightning arcs from your arrow onto {0}!", m.Name);
-					m.SendMessage("Lightning arcs from {0}{1} arrow onto you!", attacker.Name, attacker.Name.ToLower().EndsWith("s") ? "'" : "'s");
+					attacker.SendMessage( StringCatalog.ResolveFormatByKey(attacker.Account, "skl.wa.lightning.arcs_onto", m.Name) );
+					m.SendMessage( StringCatalog.ResolveFormatByKey(m.Account, "skl.wa.lightning.arcs_from", attacker.Name, attacker.Name.ToLower().EndsWith("s") ? "'" : "'s") );
 					m.PlaySound(1471);
 					m.BoltEffect(0);
 					weapon.OnHit(attacker, m, damageBonus);

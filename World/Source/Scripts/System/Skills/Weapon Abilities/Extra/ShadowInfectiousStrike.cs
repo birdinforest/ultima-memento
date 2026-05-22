@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -22,22 +23,22 @@ namespace Server.Items
 
 			if ( ((PlayerMobile)attacker).Preferences.ClassicPoisoning )
 			{
-				attacker.SendMessage( "You cannot use this attack with your current poison settings!" );
+							attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You cannot use this attack with your current poison settings!" ));
 				return;
 			}
 			if ( (p == null || weapon.PoisonCharges <= 0) && ((skill != null && skill.Value < 80.0) || skill == null ) )
 			{
-				attacker.SendMessage( "Your stealth is not sufficient, and the weapon is out of poison!" );
+				attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "Your stealth is not sufficient, and the weapon is out of poison!" ));
 				return;
 			}
 			if ( (p == null || weapon.PoisonCharges <= 0) && (skill != null && skill.Value >= 80.0) )
 			{
-				attacker.SendMessage( "There is no poison on the weapon, but you are still hidden!" );
+				attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "There is no poison on the weapon, but you are still hidden!" ));
 				canpoison = false;
 			}
 			if ( (p != null && weapon.PoisonCharges > 1) && ((skill != null && skill.Value < 80.0) || skill == null ) )
 			{
-				attacker.SendMessage( "Your stealth is not sufficient, but the weapon has poison!" );
+				attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "Your stealth is not sufficient, but the weapon has poison!" ));
 				canhide = false;
 			}
 			if (canpoison)
@@ -45,7 +46,7 @@ namespace Server.Items
 				if ( !CheckMana( attacker, true ) ) return;
 
 				if ( Utility.Random( 150 ) < attacker.Skills[SkillName.Poisoning].Value )
-					attacker.SendMessage( "Your strike was perfect." );
+									attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "Your strike was perfect." ));
 				else
 					--weapon.PoisonCharges;
 

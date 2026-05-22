@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -20,8 +21,8 @@ namespace Server.Items
 			if (!CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
 
-			attacker.SendMessage("You strike a devastating blow!");
-			defender.SendMessage("You were struck with a devastating blow!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You strike a devastating blow!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You were struck with a devastating blow!"));
 			defender.PlaySound(0x1E1);
 			defender.FixedParticles(0, 1, 0, 9946, EffectLayer.Head);
 			Effects.SendMovingParticles(new Entity(Serial.Zero, new Point3D(defender.X, defender.Y, defender.Z + 50), defender.Map), new Entity(Serial.Zero, new Point3D(defender.X, defender.Y, defender.Z + 20), defender.Map), 0xFB4, 1, 0, false, false, 0, 3, 9501, 1, 0, EffectLayer.Head, 0x100);

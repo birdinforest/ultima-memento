@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -18,7 +19,7 @@ namespace Server.Items
 		{
 			if (!CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
-			attacker.SendMessage("You hit them with the highest possible damage!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You hit them with the highest possible damage!"));
 			defender.PlaySound(0x56);
 		}
 	}

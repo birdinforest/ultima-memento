@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -13,8 +14,8 @@ namespace Server.Items
 		{
 			if (!Validate(attacker) || !CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
-			attacker.SendMessage("You hurt them with a sickly blow!");
-			defender.SendMessage("You feel sickly from the blow!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You hurt them with a sickly blow!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You feel sickly from the blow!"));
 
 			BaseWeapon weapon = attacker.Weapon as BaseWeapon;
 			if (weapon == null) return;

@@ -2043,5 +2043,6 @@
   "item.magical.soulorb.clone.syth": "replication crystal",
   "item.magical.soulorb.soil": "mystical mud",
   "item.magical.soulorb.placeholder": "soul orb",
-  "item.magical.soulorb.default": "soul orb"
+  "item.magical.soulorb.default": "soul orb",
+  "item.special.wabook": "Weapon Abilities"
 }

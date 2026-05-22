@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -13,8 +14,8 @@ namespace Server.Items
 		{
 			if (!Validate(attacker) || !CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
-			attacker.SendMessage("You have seriously stunned your opponent!");
-			defender.SendMessage("You are seriously stunned!");
+			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You have seriously stunned your opponent!"));
+			defender.SendMessage(StringCatalog.Resolve(defender.Account, "You are seriously stunned!"));
 
 			BaseWeapon weapon = attacker.Weapon as BaseWeapon;
 			if (weapon == null) return;

@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using Server.Spells;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.SkillHandlers
 {
@@ -158,22 +159,21 @@ namespace Server.SkillHandlers
 					}
 				}
 
-				int max, min, mana;
-				string message;
+				string message_key;
 
 				if ( toChannel != null )
 				{
 					min = MyServerSettings.PlayerLevelMod( 1 + (int)(Caster.Skills[SkillName.Spiritualism].Value * 0.25) + (int)(Caster.Skills[SkillName.FistFighting].Value * 0.15), Caster );
 					max = MyServerSettings.PlayerLevelMod( min + MyServerSettings.PlayerLevelMod( 4, Caster ), Caster );
 					mana = 0;
-					message = "You channel the corpse's energy to restore yourself.";
+					message_key = "skl.spiritualism.channel_corpse";
 				}
 				else
 				{
 					min = MyServerSettings.PlayerLevelMod( 1 + (int)(Caster.Skills[SkillName.Spiritualism].Value * 0.25) + (int)(Caster.Skills[SkillName.FistFighting].Value * 0.15), Caster );
 					max = MyServerSettings.PlayerLevelMod( min + MyServerSettings.PlayerLevelMod( 4, Caster ), Caster );
 					mana = 10;
-					message = "You channel your spiritual energy to restore yourself.";
+					message_key = "skl.spiritualism.channel_energy";
 				}
 
 				if ( Caster.Mana < mana )
@@ -182,15 +182,15 @@ namespace Server.SkillHandlers
 				}
 				else if ( Caster.Poisoned )
 				{	
-					Caster.SendMessage( "You cannot do that while poison is in your veins!" );
+					Caster.SendMessage( StringCatalog.ResolveByKey(Caster.Account, "skl.spiritualism.poison_veins") );
 				}
 				else if ( Caster.Hunger < 1 )
 				{	
-					Caster.SendMessage( "You are starving to death and cannot do that!" );
+					Caster.SendMessage( StringCatalog.ResolveByKey(Caster.Account, "skl.spiritualism.starving") );
 				}
 				else if ( Caster.Thirst < 1 )
 				{	
-					Caster.SendMessage( "You are dying of thirst and cannot do that!" );
+					Caster.SendMessage( StringCatalog.ResolveByKey(Caster.Account, "skl.spiritualism.thirst") );
 				}
 				else
 				{
@@ -217,7 +217,7 @@ namespace Server.SkillHandlers
 							Caster.Mana -= mana;
 						}
 
-						Caster.SendMessage( message );
+						Caster.SendMessage( StringCatalog.ResolveByKey(Caster.Account, message_key) );
 
 						Caster.Hits += Utility.RandomMinMax( min, max );
 						Caster.Stam += Utility.RandomMinMax( min, max );
