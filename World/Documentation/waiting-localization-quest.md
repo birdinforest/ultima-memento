@@ -1,6 +1,7 @@
 # 待中文化：Quests/Major 目录扫描
 
 > **扫描日期：** 2026-05-22
+> **完成日期：** 2026-05-22
 > **处理范围：** **处理所有英文硬编码文本**（`SendMessage`、`Say`、Gump、`TextDefinition.AddHtmlText`、`AddRow`、OPL、`Name =`、字符串赋值、长段拼接模板等）。
 > **排除范围：** **不处理 cliloc 控制的文本**（`SendLocalizedMessage`、仅 cliloc 数字的 `*OverheadMessage`）。已通过 `ResolveText` / `StringCatalog` 且键已在 locale 中的行亦不计入。
 > **扫描路径：** `World/Source/Scripts/Engines and Systems/Quests/Major`
@@ -11,11 +12,15 @@
 
 ## 摘要
 
-| 指标 | 数量 |
-|------|------|
-| 扫描 `.cs` 文件 | 2 |
-| **含英文硬编码（待处理）** | **2** |
-| 无英文硬编码（或仅 cliloc / 已目录化） | 0 |
+| 指标 | 数量 | 状态 |
+|------|------|------|
+| 扫描 `.cs` 文件 | 2 | — |
+| **含英文硬编码（待处理）** | **2** | **已全部完成** ✅ |
+| 无英文硬编码（或仅 cliloc / 已目录化） | 0 | — |
+
+> **中文化状态：全部完成（2026-05-22）** ✅
+>
+> 所有 Phase 1–4 的 shotkey 和 C# 修改已实现并编译通过。详见 [§2 建议修复顺序](#2-建议修复顺序) 的完成标记。
 
 **说明：** 同一文件可同时含 cliloc 与硬编码；Major 任务脚本中 **`SendMessage` 已走 `ResolveText`**（如 `You take possession of the book!`），**无** `SendMessage("…")` 字面量待办；其余 Gump/OPL/拼接模板见下表。
 
@@ -37,10 +42,10 @@ rg '"[A-Za-z]{3,}' "World/Source/Scripts/Engines and Systems/Quests/Major"
 
 ## 待处理文件总表
 
-| 文件 | 硬编码条数 | 含 cliloc | StringCatalog | 主要类型 |
-|------|------------|-----------|---------------|----------|
-| `QuestTake.cs` | 240 | 是 | 部分 | Item Name, String literal |
-| `QuestTome.cs` | 41 | 是 | 部分 | Gump, Item Name, OPL, Overhead, Return string, String literal |
+| 文件 | 硬编码条数 | 含 cliloc | StringCatalog | 主要类型 | 状态 |
+|------|------------|-----------|---------------|----------|------|
+| `QuestTake.cs` | 240 | 是 | 部分 | Item Name, String literal | ✅ 已全部中文化 |
+| `QuestTome.cs` | 41 | 是 | 部分 | Gump, Item Name, OPL, Overhead, Return string, String literal | ✅ 已全部中文化 |
 
 ## 1. 文本拼接模式分析与中文化方案
 
@@ -377,24 +382,24 @@ else
 
 ## 2. 建议修复顺序
 
-### Phase 1：简单的 shotkey（可独立测试）
-1. OPL `Belongs to` → `quest.tome.opl.belongs_to`
-2. Emote 头顶文字（三条 `LocalOverheadMessage`）
-3. Gump 标题 `Quest for {0}`
-4. 物品 OPL 名（`lost journal`、空箱 `chest`、`Chest of {0}`）
+### Phase 1：简单的 shotkey（可独立测试） ✅
+1. ✅ OPL `Belongs to` → `quest.tome.opl.belongs_to`
+2. ✅ Emote 头顶文字（三条 `LocalOverheadMessage`）
+3. ✅ Gump 标题 `Quest for {0}`
+4. ✅ 物品 OPL 名（`lost journal`、空箱 `chest`、`Chest of {0}`）
 
-### Phase 2：流言系统重构
-5. 流言模板（4 组 shotkey，覆盖三种 locate + 多种 who 前缀）
-6. 修改 `GetRumor` / `TellRumor` 以使用 `ResolveFormatByKey`
+### Phase 2：流言系统重构 ✅
+5. ✅ 流言模板（4 组 shotkey，覆盖三种 locate + 多种 who 前缀）
+6. ✅ 修改 `GetRumor` / `TellRumor` 以使用 `ResolveFormatByKey`
 
-### Phase 3：大型叙事模板（最复杂，需大量翻译）
-7. 故事模板（2 组：good / evil，含 ZH 翻译）+ 反转剧情通过参数交换实现
-8. 修改 `QuestTomeGump` 构造函数，中文账号走 shotkey 模板路径
-9. 帮助页模板（`quest.tome.help.guide`）
+### Phase 3：大型叙事模板（最复杂，需大量翻译） ✅
+7. ✅ 故事模板（2 组：good / evil，含 ZH 翻译）+ 反转剧情通过参数交换实现
+8. ✅ 修改 `QuestTomeGump` 构造函数，中文账号走 shotkey 模板路径
+9. ✅ 帮助页模板（`quest.tome.help.guide`）
 
-### Phase 4：后续优化
-10. 物品 OPL 主名（`Journal of {0} the {1}`）→ `item.quest.journal.*` 按 `AGENTS.md` §3.2 标准处理
-11. `MajorItemOnCorpse.Name = "chest"` / `"Chest of " + ...` → OPL 本地化
+### Phase 4：后续优化 ✅
+10. ✅ 物品 OPL 主名（`Journal of {0} the {1}`）→ `item.quest.journal.*` 按 `AGENTS.md` §3.2 标准处理
+11. ✅ `MajorItemOnCorpse.Name = "chest"` / `"Chest of " + ...` → OPL 本地化
 
 ---
 
@@ -407,40 +412,40 @@ else
 
 #### 硬编码明细
 
-| 行 | 类型 | 英文 | 中文化方案 |
-|----|------|------|-----------|
-| 28 | Item Name | `Journal of {Name} the {Job}` | OPL 用 `item.quest.journal.name` 模板；`Name` 本身保持英文（存档） |
-| 123-128 | String literal | heard / told / known / shared | **不单独词表化**；消融到故事模板中 |
-| 131-136 | String literal | legends / fables / myths / lore | 同上 |
-| 139-144 | String literal | whispered / told / sung / spoken | 同上 |
-| 147-153 | String literal | taverns / camps / cities / villages / inns | 同上 |
-| 156-162 | String literal | seized / stolen / taken / held / guarded | 同上 |
-| 169-177 | 长段拼接 | `QuestTomeStoryGood/Evil`（4 版本） | Phase 3: `quest.tome.story.good/evil` + 参数交换实现反转 |
-| 568 | Item Name | `"Chest of " + m.Name` | OPL 用 `item.quest.chest_of` 模板 |
-| 637 | Item Name | `"chest"` | OPL 用 `item.quest.chest`（或复用 hash `s.7ca0d7019158ccd9`） |
+| 行 | 类型 | 英文 | 中文化方案 | 状态 |
+|----|------|------|-----------|------|
+| 28 | Item Name | `Journal of {Name} the {Job}` | OPL 用 `item.quest.journal.name` 模板；`Name` 本身保持英文（存档） | ⏭️ 名称保持英文存档，OPL 本地化 |
+| 123-128 | String literal | heard / told / known / shared | **不单独词表化**；消融到故事模板中 | ✅ |
+| 131-136 | String literal | legends / fables / myths / lore | 同上 | ✅ |
+| 139-144 | String literal | whispered / told / sung / spoken | 同上 | ✅ |
+| 147-153 | String literal | taverns / camps / cities / villages / inns | 同上 | ✅ |
+| 156-162 | String literal | seized / stolen / taken / held / guarded | 同上 | ✅ |
+| 169-177 | 长段拼接 | `QuestTomeStoryGood/Evil`（4 版本） | Phase 3: `quest.tome.story.good/evil` + 参数交换实现反转 | ✅ |
+| 568 | Item Name | `"Chest of " + m.Name` | OPL 用 `item.quest.chest_of` 模板 | ✅ `AddNameProperties` 实现 |
+| 637 | Item Name | `"chest"` | OPL 用 `item.quest.chest`（或复用 hash `s.7ca0d7019158ccd9`） | ✅ `DisplayNameLocalizationKey` |
 
 ### 3.2 QuestTome.cs
 
 - cliloc 部分：**不处理**
 - 已部分 `StringCatalog` / `ResolveText`
 
-| 行 | 类型 | 英文 | 中文化方案 |
-|----|------|------|-----------|
-| 138 | Item Name | `"lost journal"` | 已有 hash `s.a3734bf593f52976` (`丢失的日记`)；或 shotkey `quest.tome.name.lost_journal` |
-| 145 | OPL | `"Belongs to " + Name` | `quest.tome.opl.belongs_to` + `AddLocalizedProperty` |
-| 372 | String literal | `"Journal of "` | 消融到 gump 标题处理逻辑中 |
-| 373 | String literal | `DDDDD` | 格式参数化，不再需要 `Replace` |
-| 378 | Gump | 大段教学文本 | `quest.tome.help.guide` |
-| 388 | Gump | `"Quest for " + from.Name` | `quest.tome.gump.title` |
-| 456 | String literal | `"held by a powerful creature"` | 消融到 `quest.tome.rumor.heard_held` |
-| 457 | String literal | `"lost somewhere"` | 消融到 `quest.tome.rumor.heard_lost` |
-| 458 | String literal | `"found"` | 消融到 `quest.tome.rumor.heard_found` |
-| 470-479 | String literal | who 前缀（6 种） | `quest.tome.rumor.who_*` 系列 |
-| 480 | 拼接 | `who + " that " + item + " may be " + locate + ...` | `quest.tome.rumor.heard_*` / `quest.tome.rumor.talk` |
-| 483 | 拼接 | `from + " has told you that " + item + ...` | `quest.tome.rumor.talk` |
-| 581 | Emote | `"You found " + relic + "."` | `quest.tome.emote.found_relic` |
-| 593 | Emote | `citizen + " was either wrong or they lied."` | 复用 `quest.n0_was_either_wrong_or_they_lied_dot` |
-| 608 | Emote | `"You found " + GoalItem4 + "."` | `quest.tome.emote.found_goal` |
+| 行 | 类型 | 英文 | 中文化方案 | 状态 |
+|----|------|------|-----------|------|
+| 138 | Item Name | `"lost journal"` | 已有 hash `s.a3734bf593f52976` (`丢失的日记`)；或 shotkey `quest.tome.name.lost_journal` | ✅ `DisplayNameLocalizationKey` |
+| 145 | OPL | `"Belongs to " + Name` | `quest.tome.opl.belongs_to` + `AddLocalizedProperty` | ✅ |
+| 372 | String literal | `"Journal of "` | 消融到 gump 标题处理逻辑中 | ✅ |
+| 373 | String literal | `DDDDD` | 格式参数化，不再需要 `Replace` | ✅ 中文路径已用 `{0}` |
+| 378 | Gump | 大段教学文本 | `quest.tome.help.guide` | ✅ |
+| 388 | Gump | `"Quest for " + from.Name` | `quest.tome.gump.title` | ✅ |
+| 456 | String literal | `"held by a powerful creature"` | 消融到 `quest.tome.rumor.heard_held` | ✅ |
+| 457 | String literal | `"lost somewhere"` | 消融到 `quest.tome.rumor.heard_lost` | ✅ |
+| 458 | String literal | `"found"` | 消融到 `quest.tome.rumor.heard_found` | ✅ |
+| 470-479 | String literal | who 前缀（6 种） | `quest.tome.rumor.who_*` 系列 | ✅ |
+| 480 | 拼接 | `who + " that " + item + " may be " + locate + ...` | `quest.tome.rumor.heard_*` / `quest.tome.rumor.talk` | ✅ |
+| 483 | 拼接 | `from + " has told you that " + item + ...` | `quest.tome.rumor.talk` | ✅ |
+| 581 | Emote | `"You found " + relic + "."` | `quest.tome.emote.found_relic` | ✅ |
+| 593 | Emote | `citizen + " was either wrong or they lied."` | 复用 `quest.n0_was_either_wrong_or_they_lied_dot` | ✅ |
+| 608 | Emote | `"You found " + GoalItem4 + "."` | `quest.tome.emote.found_goal` | ✅ |
 
 ---
 
@@ -554,7 +559,138 @@ AddHtml(12, 43, 878, 548,
 
 ---
 
-## 5. 存档兼容性说明
+## 5. 专有名词中文化方案（待办）
+
+### 5.1 问题说明
+
+当前所有任务中的人名、地名、物品名（物品本身的名字以及任务文本中的物品）仍然是英文。具体表现为：
+
+- 故事模板（`quest.tome.story.good/evil`）中的地名（Sosaria、Lodoria 等）、NPC 名、反派名、物品名为纯英文
+- 帮助页模板（`quest.tome.help.guide`）中的同上
+- 流言模板中的城市名（Britain、Yew 等）、职业名（tinker、blacksmith 等）为纯英文
+- 反派类别（a daemon、a dragon 等）为纯英文
+- OPL 物品名（`Journal of <Name> the <Job>`、`Chest of <Name>`）核心名为英文
+
+**原则**：所有专有名词应以 `中文（English）` 格式呈现，且第一出现处标注完整。
+
+### 5.2 专有名词分类
+
+| 分类 | 来源 | 运行时/静态 | 当前示例 |
+|------|------|-------------|---------|
+| **世界/大陆名** | `Lands.LandName()` + `Lands.LandShotKey()` | 运行时枚举 | "the Land of Sosaria" → 索沙尼亚（Sosaria） |
+| **城市名** | `RandomThings.GetRandomCity()` 词表（23 个城市） | 运行时随机 | "Britain" → 不列颠（Britain） |
+| **地点/地城名** | `QuestStories.SomePlace()` 词表（101 个地点） | 运行时随机 | "Dungeon Doom" → 末日地城（Dungeon Doom） |
+| **NPC 名（EpicCharacter）** | 世界中的 `EpicCharacter` 实体 | 运行时遍历 | "Sir Galahad the Brave" |
+| **反派名** | `NameList.RandomName("daemon"/"giant"/etc.)` | 运行时随机 | "Morgath the Dark Lord" |
+| **反派类别** | `VillainCategory` 字段赋值 | 运行时随机 | "a daemon"、"a dragon" |
+| **目标物品名** | `QuestCharacters.QuestItems()` → 随机形容词 + 物品名 + of + 力量名 | 运行时随机 | "'Exotic Amulet of Might'" |
+| **草药名** | `RandomHerb()` 词表 | 运行时随机 | "Enchanted Mandrake Root" |
+| **法术名** | `RandomMagic()` → 从 `DDRelicScrolls` 取 | 运行时随机 | "Merlin's Scroll of Acidic Storm" |
+| **职业名** | `RandomThings.GetRandomJob()` 词表（23 个职业） | 运行时随机 | "blacksmith"（含 rumors） |
+| **头衔** | `RandomThings.GetBoyGirlJob()` 词表 | 运行时随机 | "the Knight" |
+| **怪物名** | `RandomThings.GetRandomMonsters()/GetRandomCreature()` 词表 | 运行时随机 | "a dragon"、"a lich" |
+
+### 5.3 处理策略
+
+#### 策略 A：世界/大陆名（已有 glossary 条目）—— 优先处理
+
+已有 glossary 条目：Sosaria（索沙尼亚）、Lodoria（洛多里亚）、Ambrosia（安布罗西亚）、Skara Brae（斯卡拉布雷）、Serpent Island（蛇岛）、Isles of Dread（恐惧群岛）、Umber Veil（琥珀帷幕）、Kuldar（库尔达）、Savaged Empire（蛮族帝国）、Atlantis（亚特兰蒂斯）、Luna（月之城）、Underworld（冥界）、Britain（不列颠）、Lodoria City（洛多里亚城）、Kuldara（库尔达拉）。
+
+**方案**：在 `quest.tome.story.good/evil` 和 `quest.tome.help.guide` 的 ZH 模板中，直接将地名替换为 `中文（English）` 格式。
+
+```json
+// 当前：
+"你找到了冒险者 {0} 的日记。...将日记交给 {15} 的 {1}，坐标如下：<br><br>{16}"
+// 修改为：
+"你找到了冒险者 {0} 的日记。...将日记交给 {1}（在{15}），坐标如下：<br><br>{16}"
+// 其中 {15} 是大陆名，由 Lands 枚举传入
+// 大陆名在 runtime 由 Lands.LandName() 返回英文，不改动 C#，在模板中用中文加注
+```
+
+但大陆名是**运行时来自 Lands 枚举**的，不能直接在模板里硬编码中文——因为同一个 `{15}` 可能是 Sosaria、Lodoria、Savaged Empire 等。需要在 C# 中将大陆名先解析为带注解的中文，再传入模板。
+
+**方案**：利用 `Lands.LocalizedLandName()` 或 `Lands.LandShotKey()` + `StringCatalog.ResolveByKey`，在 C# 构造参数时直接将大陆名替换为 `中文（English）` 字符串，再传入模板。
+
+```
+待办：在 QuestTomeGump 构造参数阶段，将 world/locat 等大陆参数字段从 LandName() 改为 LocalizedLandName() 或自定义注解版本。
+```
+
+#### 策略 B：EpicCharacter NPC 名 + 反派名（运行时动态）—— 中等优先级
+
+这些是运行时从世界 `EpicCharacter` 实体或 `NameList` 获取的名称，不可能在模板中做映射。**建议**：
+- 在故事模板的 ZH 文本中，对于角色名字段使用 `{0}` 格式参数直接代入，假设英文名本身已在游戏世界中存在（NPC 名在客户端本身是英文），不影响理解。
+- 对于 `VillainCategory`（如 "a daemon"、"a dragon"），这些是怪物类型，可以在 glossary 中添加常见怪物类型的条目，然后在 C# 中增加一个本地化辅助方法 `ResolveVillainCategory()` 将类别字符串映射为 `中文（English）`。
+
+#### 策略 C：目标物品名 + 草药名 + 法术名（运行时动态）—— 低优先级
+
+目标物品由 `QuestItems()` 等方法在运行时随机生成（如 `'Exotic Amulet of Might'`），生成的是英文名。这些是虚构物品，没有固定中文译名。**建议**：
+- 保留物品名原文，在模板中用 `{2}` 等格式参数直接代入
+- 不做 `中文（English）` 注解——因为这是随机生成的物品，不是固定专有名词
+
+#### 策略 D：城市名 + 职业名（流言系统中）—— 需要 glossary 更新
+
+城市名出现在 `GetRumor` 中，通过 `"the " + RandomThings.GetRandomJob() + " in " + RandomThings.GetRandomCity() + " told me"` 之类的方式嵌入。
+
+**方案**：
+1. 将 23 个城市名和 23 个职业名加入 glossary
+2. 在 `GetRumor` 的中文分支中，对随机选取的城市/职业用 `中文（English）` 格式呈现
+
+#### 策略 E：地城名（`QuestStories.SomePlace()`）—— 需要 glossary 更新
+
+101 个地点/地城名出现在 `QuestTome.SetRumor` 中（存储在 `QuestTomeDungeon` 字段），随后在流言模板中以英文呈现。
+
+**方案**：
+1. 将主要地城名加入 glossary
+2. 在 `GetRumor` 的中文分支中，对 dungeon 字段做本地化解析
+
+### 5.4 待办列表
+
+#### 5.4.1 Glossary 更新
+
+| 类别 | 条目 | 优先级 |
+|------|------|--------|
+| ✅ 已有 | 全部世界/大陆名 | 已有 |
+| 🔲 待加 | 23 个城市名（Britain, Fawn, Grey, Moon, Yew, Montor, Umbra, Devil Guard, Death Gulch, Renika, Glacial Hills, Springvale, Elidor, Islegem, Port of Dusk, Port of Starguide, Portshine, Greensky Village, City of Lodoria, Cimmeran Hold, Village of Barako, Village of Kurak, Kuldara） | P1 |
+| 🔲 待加 | 23 个职业名（blacksmith, jeweler, provisioner, banker, minter, waiter, guard, sage, mage, herbalist, alchemist, healer, guildmaster, tinker, innkeeper, bartender, butcher, tailor, weaver, shipwright, scribe, farmer, stable master） | P1 |
+| 🔲 待加 | 反派类别（daemon, balron, balor, balrog, devil, succubus, demoness, daemoness, dragon, giant, etc.） | P2 |
+| 🔲 待加 | 主要地城名（Dungeon Doom, Dungeon Covetous, Dungeon Deceit, Dungeon Destard, Dungeon Hythloth, Dungeon Shame, Dungeon Wrong, Terathan Keep, Stonegate Castle, Serpent Sanctum, Morgaelin's Inferno, Stygian Abyss, etc.） | P2 |
+| 🔲 待加 | 主要怪物名（dragon, daemon, lich, vampire, ghost, zombie, gargoyle, orc, troll, ogre, golem, etc.） | P3 |
+
+#### 5.4.2 C# 修改
+
+| 任务 | 描述 | 涉及文件 | 优先级 |
+|------|------|---------|--------|
+| 🔲 1. 大陆名本地化辅助 | 在 `QuestTomeGump` 构造参数阶段，用 `Lands.LocalizedLandName()` 或自定义注解方法替代 `Lands.LandName()` 为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
+| 🔲 2. 故事模板更新 | 更新 `quest.tome.story.good/evil` 的 ZH 模板，确保地名使用 `中文（English）` 格式 | `world-player-text.json` | P1 |
+| 🔲 3. 帮助页模板更新 | 更新 `quest.tome.help.guide` 的 ZH 模板，同上 | `world-player-text.json` | P1 |
+| 🔲 4. 流言系统城市/职业本地化 | 在 `GetRumor` 中文分支中，将 `RandomThings.GetRandomJob()` / `GetRandomCity()` 的结果包装为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
+| 🔲 5. 地城名本地化 | 在 `GetRumor` 中文分支中，用 glossary 查询 dungeon 字符串的本地化版本 | `QuestTome.cs` | P2 |
+| 🔲 6. 反派类别本地化 | 为 `VillainCategory` 增加 `ResolveVillainCategory()` 辅助方法，映射 glossary 中的怪物类型为 `中文（English）` | `QuestTome.cs` | P2 |
+| 🔲 7. 名词词表 review | 评估 `RandomThings.GetRandomName()` 返回的随机人名是否需要中文注解 | 无需修改 | P3 |
+
+#### 5.4.3 更新顺序
+
+**Step 1 (P1) — 模板中的地名注解**
+1. 确认 `Lands.LocalizedLandName()` 可用并返回正确的 `中文（English）` 格式
+2. 修改 `QuestTomeGump` 构造函数，用本地化版本的大陆名替代 `Lands.LandName()`
+3. 无需改模板 JSON（地名作为参数传入，本地化发生在 C# 端）
+
+**Step 2 (P1) — 流言系统城市/职业名词典注解**
+1. 将所有城市名和职业名加入 `glossary-approved-zh.json`
+2. 运行 `sync_localization_glossary.py` 同步
+3. 在 `GetRumor` 中文分支中，将城市和职业名称用 glossary 映射为 `中文（English）`
+
+**Step 3 (P2) — 反派类别 + 地城名词典注解**
+1. 将主要怪物类型和地城名加入 glossary
+2. 在 C# 中增加解析方法
+
+**Step 4 (P3) — 评估剩余名词**
+1. 评估 NPC 名和物品名是否需要更进一步的处理
+2. 如评估无必要，标记为完成
+
+---
+
+## 6. 存档兼容性说明
 
 - `QuestTomeStoryGood` / `QuestTomeStoryEvil`：保持序列化不变（version 不变），始终保存英文原文。
 - 中文路径下运行时重建，不写回存档字段。
@@ -563,7 +699,7 @@ AddHtml(12, 43, 878, 548,
 
 ---
 
-## 6. 复查命令
+## 7. 复查命令
 
 ```bash
 # 扫描硬编码 SendMessage
