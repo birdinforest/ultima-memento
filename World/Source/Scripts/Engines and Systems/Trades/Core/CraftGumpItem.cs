@@ -59,17 +59,27 @@ namespace Server.Engines.Craft
 				if ( craftSystem.GumpTitleNumber > 0 )
 					AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 				else
-					AddHtml( 10, 12, 510, 20, CraftDisplayLocale.Resolve( from, craftSystem.GumpTitleString ), false, false );
+					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
 
 				AddButton( 15, 405, 4014, 4016, 0, GumpButtonType.Reply, 0 );
 				AddHtmlLocalized( 50, 408, 150, 18, 1044150, LabelColor, false, false ); // BACK
 					
 				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
+				if ( !needsRecipe && CraftSystem.AllowManyCraft( m_Tool ) && !m_CraftItem.UseAllRes )
+				{
+					CraftGump.AddCraftAmountButtons( this, 270, 405, 1 );
+					AddHtmlLocalized( 403, 408, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+				}
+				// else
+				// {
+				// 	AddButton( 270, 387, 4005, 4007, 1, GumpButtonType.Reply, 0 );
+				// 	AddHtmlLocalized( 305, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+				// }
 
 				if ( craftItem.NameNumber > 0 )
 					AddHtmlLocalized( 330, 40, 180, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 330, 40, LabelHue, CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
+					AddLabel( 330, 40, LabelHue, craftItem.NameString );
 
 				if ( craftItem.UseAllRes )
 					AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1048176, LabelColor, false, false ); // Makes as many as possible at once
@@ -111,7 +121,7 @@ namespace Server.Engines.Craft
 					else if ( CraftSystem.AllowManyCraft( m_Tool ) && !m_CraftItem.UseAllRes)
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR={0}>Craft Amount:</BASEFONT>", TextColor ), false, false );
-						CraftGump.AddCraftAmountButtons( this, x + 90, y - 3, 1 );
+						CraftGump.AddCraftAmountButtons( this, x + 95, y - 3, 1 );
 					}
 					else
 					{
@@ -162,8 +172,6 @@ namespace Server.Engines.Craft
 
 		public void DrawSkill()
 		{
-			int row = 0;
-
 			for ( int i = 0; i < m_CraftItem.Skills.Count; i++ )
 			{
 				CraftSkill skill = m_CraftItem.Skills.GetAt( i );
@@ -172,22 +180,8 @@ namespace Server.Engines.Craft
 				if ( minSkill < 0 )
 					minSkill = 0;
 
-				AddHtmlLocalized( 170, 132 + (row * 20), 200, 18, 1044060 + (int)skill.SkillToMake, LabelColor, false, false );
-				AddLabel( 430, 132 + (row * 20), LabelHue, String.Format( "{0:F1}", minSkill ) );
-				row++;
-			}
-
-			for ( int g = 0; g < m_CraftItem.OrSkillGroups.Count; g++ )
-			{
-				var orGroup = m_CraftItem.OrSkillGroups.GetAt( g );
-				double minSkill = orGroup.MinSkill;
-
-				if ( minSkill < 0 )
-					minSkill = 0;
-
-				AddHtml( 170, 132 + (row * 20), 200, 40, TextDefinition.GetColorizedText(orGroup.GetDisplayName(), HtmlColors.WHITE), false, false );
-				AddLabel( 430, 132 + (row * 20), LabelHue, String.Format( "{0:F1}", minSkill ) );
-				row++;
+				AddHtmlLocalized( 170, 132 + (i * 20), 200, 18, 1044060 + (int)skill.SkillToMake, LabelColor, false, false );
+				AddLabel( 430, 132 + (i * 20), LabelHue, String.Format( "{0:F1}", minSkill ) );
 			}
 
 			CraftSubResCol res = m_CraftSystem.CraftSubRes;
@@ -278,7 +272,7 @@ namespace Server.Engines.Craft
 				if ( nameNumber > 0 )
 					AddHtmlLocalized( 170, 219 + (i * 20), 310, 18, nameNumber, LabelColor, false, false );
 				else
-					AddLabel( 170, 219 + (i * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, nameString ) );
+					AddLabel( 170, 219 + (i * 20), LabelHue, nameString );
 
 				AddLabel( 430, 219 + (i * 20), LabelHue, craftResource.Amount.ToString() );
 			}
