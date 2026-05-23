@@ -21,6 +21,8 @@
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
 | **Avoid server crashes / stability pitfalls** (OPL reentrancy, serializers, timers, …) | [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) — **read before** touching `Item`/`Mobile` OPL paths, `Serialize`/`Deserialize`, or tick/timer-heavy logic |
+| **Cross-repo design/mechanics documentation index** | [§8 Design & Analysis Documentation](#8-design--analysis-documentation-uo-dev-documentations) — read before codebase search |
+| **NPC dialogue intelligence mechanisms** | `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) — refresh frequencies, file references |
 
 ---
 
@@ -50,7 +52,14 @@ ultima-memento/
 └── WorldLinux.exe           # Runtime binary (Linux/macOS)
 ```
 
-**Key documentation to read before working on each domain:**
+**Cross-repo documentation root:**
+
+- `UO_DEV_DOCS_ROOT` = `/Users/forrrest/projects/uo-dev/uo-dev-documentations`
+  Memento shard design docs, game mechanism analysis, dev logs, quest design.
+  When a path in this file starts with `UO_DEV_DOCS_ROOT/`, resolve it against that absolute path.
+  See [§8](#8-design--analysis-documentation-uo-dev-documentations) for the indexed document list.
+
+**Key documentation to read before working on each domain (inside this repo):**
 
 - Localization: `World/Data/Localization/README.txt` — authoritative layout and commands.
 - Book translation: `World/Documentation/scripts-books-zh-translation-workflow.md`
@@ -61,6 +70,12 @@ ultima-memento/
 - Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
 - Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
 - **Server stability & crash avoidance (AI checklist):** `World/Documentation/server-stability-crash-patterns.md` — OPL / `InvalidateProperties` reentrancy, serializers, null-safety, timers, collection mutation, etc.
+
+**Design & analysis docs (cross-repo, under UO_DEV_DOCS_ROOT):**
+
+- NPC dialogue intelligence systems: `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) — refresh frequencies, file references, architecture.
+- NPC economy & vendor mechanisms: `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/npc-game-mechanisms.md` — vendor buy/sell, black market, services, shoppe.
+- Broader index: [§8](#8-design--analysis-documentation-uo-dev-documentations).
 
 ---
 
@@ -77,7 +92,7 @@ ultima-memento/
 
 ### 2.2 Adding New Features
 
-1. **Read at least one analogous existing implementation** before starting. Pattern-match to the existing architecture.
+1. **Read at least one analogous existing implementation** before starting. Pattern-match to the existing architecture. **Also check [§8](#8-design--analysis-documentation-uo-dev-documentations) for any existing analysis doc under `UO_DEV_DOCS_ROOT` that covers the domain — read it before searching the codebase.**
 2. **Plan before writing:** For features touching more than two files, state your approach in plain language first.
 3. **Localization from day one:** Any user-visible text added to C# must go through `StringCatalog` (see §3.2). Never defer localization.
 4. **Quests:** Follow `World/Source/Scripts/Engines and Systems/Quests/Core/` patterns. New quest types subclass existing base classes.
@@ -432,13 +447,14 @@ bash World/Source/Tools/run_localization_regression.sh
 
 ### 5.1 Hard Boundaries — Never Do These
 
-- **Stability:** Before changing **OPL construction** (`GetProperties`, `AddNameProperties`, `AddColorText*Property`), **serialization**, or **timer/tick-heavy** code paths, read [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) and avoid the documented anti-patterns (especially **`ColorText*` setters during property list build**).
+- **Stability:** Before changing **OPL construction** (`GetProperties`, `AddNameProperties`, `AddColorText*Property`), **serialization**, or **timer/tick-heavy** code paths, read [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) and avoid the documented anti-patterns (especially **`ColorText*` setters during property list build**). **Also check §8 for any domain-appropriate analysis doc under `UO_DEV_DOCS_ROOT` before searching the codebase.**
 - **Never edit `World/Saves/`** (accounts, items, mobiles). These are live runtime state.
 - **Never translate using Google Translate or DeepL APIs.** LLM-based translation only (§3.4).
 - **Never add a glossary entry without human review** unless the user has explicitly approved the term in this session.
 - **Never commit binary files** (`*.bin`, `*.idx`, `*.tdb`, `*.exe`, `*.dll`, compiled `*.pyc`).
 - **Never modify the extraction regex patterns** in `build_localization_strings.py` without stating the change and its impact first.
 - **Never hardcode user-visible strings in C#.** Always use the catalog.
+- **Never modify a localization regression test case (`expectedZh`) solely to make a test pass.** The correct fix is to ensure the localization chain produces the correct Chinese output. If a test case modification is genuinely warranted (e.g. the expected value was incorrectly authored from the start), state the justification explicitly in your reply.
 
 ### 5.2 Required Verification Steps
 
@@ -518,6 +534,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §3.2 — **`ObjectPropertyList` / `list.Add`**：cliloc 槽或未保护的英文字符串、以及与变量的英文拼接（如 **`count + " Songs"`**）须 **`BuildingPropertyListLocale`** 分支下 **`AddLocalizedProperty` / `ResolveFormatByKey`**（与 tinted **`SendMessage(int hue, string)`** 同约束）；§3.2 增补反例/正例代码块与 **`含 {0} 首歌曲`** 模板说明；稽核模式见 **`World/Documentation/waiting-localization.md`** §9。
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
+- 2026-05-23: §1 — defined `UO_DEV_DOCS_ROOT` variable (_cross-repo documentation root_); §0 / §1 / §5 / §8 — added cross-repo doc index table, document-first exploration guidance, and `UO_DEV_DOCS_ROOT` resolution rule.
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
 > **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.
@@ -586,3 +603,53 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 
 - **Glossary curation** stays in **this** repo (§3.5).  
 - **Wiki URL validation and MDX matching** are implemented in **`ultima-memento-web`**; do not duplicate the JSON generator inside `World/Source/Tools/` unless we explicitly decide to merge pipelines later.
+
+---
+
+## 8. Design & Analysis Documentation (uo-dev-documentations)
+
+> **Root path:** `UO_DEV_DOCS_ROOT` = `/Users/forrrest/projects/uo-dev/uo-dev-documentations`  
+> **Resolution rule:** Every path in this section is relative to `UO_DEV_DOCS_ROOT`.  
+> When the game-server agent guide (this file) references `UO_DEV_DOCS_ROOT/<path>`, it means the absolute path `<UO_DEV_DOCS_ROOT>/<path>`.  
+>
+> **Protocol:** Before analyzing or modifying a game mechanism listed below, read the analysis doc **first**. Search the codebase only if the doc is insufficient. Then update the doc with new findings (see [uo-dev-documentations AGENTS.md §4.3 Document-First Exploration Principle](<UO_DEV_DOCS_ROOT>/AGENTS.md#43-document-first-exploration-principle)).
+
+### 8.1 Memento Mechanics Analysis
+
+| Topic | Path (under `UO_DEV_DOCS_ROOT`) | When to read |
+|---|---|---|
+| NPC dialogue intelligence systems | `memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) | Before analyzing or modifying any NPC dialogue/intel flow |
+| NPC economy & vendor mechanisms | `memento/game-mechanism/npc-game-mechanisms.md` | Before modifying vendor, buy/sell, black market, shoppe, or service NPC code |
+| Champion spawn system | `memento/game-mechanism/CHAMPION_SPAWN_SYSTEM.md` | Before touching champion/raid spawn logic |
+| Gypsy tarot / starting fates | `memento/game-mechanism/GYPSY_TAROT_STARTING_FATES.md` | Before modifying starting-area NPCs or race selection |
+| Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
+| Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
+| Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
+| Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
+| Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
+| Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
+| Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
+
+### 8.2 Castle of Knowledge
+
+| Topic | Path (under `UO_DEV_DOCS_ROOT`) | When to read |
+|---|---|---|
+| Castle of Knowledge (Power Scroll vendors) | `memento/castle-of-knowledge.md` | Before modifying Lodor castle, power scroll vendors, or related NPCs |
+
+### 8.3 Quest / Lore Design
+
+| Topic | Path (under `UO_DEV_DOCS_ROOT`) | When to read |
+|---|---|---|
+| Character item restore system | `memento/character-item-restore-system.md` | Before modifying item restore NPC or gump |
+| Bard's Tale / Skara Brae questline | `memento/quest/bottle-world-skara-brae/` (4 files) | Before modifying Skara Brae quest NPCs or texts |
+| Unsent letter quest | `memento/quest/quest-unsent-letter-design.md` | Before modifying unsent letter quest NPCs |
+| Magical prison | `memento/game-mechanism/MAGICAL_PRISON.md` | Before modifying prison system |
+
+### 8.4 Starting a New Analysis
+
+If you need to analyze a game mechanism not yet documented under `UO_DEV_DOCS_ROOT/memento/`:
+
+1. Search the `uo-dev-documentations` repo for related docs first (e.g. `tech-notes/`, `game-balance-design/`).
+2. Search the `ultima-memento` codebase for the relevant C# source files.
+3. Create a new analysis doc under `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/` following the conventions in `UO_DEV_DOCS_ROOT/AGENTS.md`.
+4. Update this §8 table and `uo-dev-documentations/AGENTS.md` to index the new doc.
