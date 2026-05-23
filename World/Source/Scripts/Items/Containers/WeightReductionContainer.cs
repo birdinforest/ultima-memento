@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Server;
 using Server.Network;
 using Server.Localization;
+using Server.ContextMenus;
+using Server.Gumps;
 
 namespace Server.Items
 {
@@ -164,6 +166,10 @@ namespace Server.Items
         public abstract double WeightReductionAmount { get; }
         public abstract int ContainerMaxItems { get; }
 
+        public override bool IsContentLocalized => true;
+
+        public override string DisplayNameLocalizationKey => "item.container.bagofholding.name";
+
         public virtual bool DisplayWeightReductionProperty { get { return true; } }
         public virtual double ContainerWeight { get { return 3.0; } }
         public virtual LootType ContainerLootType { get { return LootType.Regular; } }
@@ -179,6 +185,29 @@ namespace Server.Items
 
         private DateTime NextAccessTime = DateTime.Now;
 
+        public override void AddNameProperty(ObjectPropertyList list)
+        {
+            if (BuildingPropertyListLocale != null)
+            {
+                if (Amount <= 1)
+                    AddLocalizedProperty(list, DisplayNameLocalizationKey);
+                else
+                    list.Add(1050039, "{0}\t{1}", Amount, ResolvePropertyText(DisplayNameLocalizationKey));
+            }
+            else
+            {
+                base.AddNameProperty(list);
+            }
+
+            if (WeightReductionAmount > 0 && DisplayWeightReductionProperty)
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.container.weight.reduction", (int)(WeightReductionAmount * 100));
+				else
+					list.Add(String.Format("{0}% Weight Reduction", WeightReductionAmount * 100));
+			}
+        }
+
         public WeightReductionContainer() : this(0xE76)
         {
         }
@@ -190,7 +219,30 @@ namespace Server.Items
             Hue = ContainerHue;
         }
 
-        public override bool OnDragDrop(Mobile from, Item dropped)
+        private bool CheckAccessDelay(Mobile from)
+        {
+            if (DateTime.Now < NextAccessTime)
+            {
+                if (AccessDelayMessage != "")
+                    from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.delay"));
+                if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
+                {
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more seconds before you can try again"),
+                      NextAccessTime.Subtract(DateTime.Now).Seconds));
+                }
+                else
+                {
+                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more minutes before you can try again"),
+                      NextAccessTime.Subtract(DateTime.Now).Minutes));
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool CheckContainerRestriction(Mobile from, Item dropped)
         {
             if (dropped is Container)
             {
@@ -198,31 +250,45 @@ namespace Server.Items
                 return false;
             }
 
-            if (DateTime.Now < NextAccessTime)
-            {
-                if (AccessDelayMessage != "")
-                    from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.delay"));
-                if (NextAccessTime.Subtract(DateTime.Now).Minutes < 1)
-				{
-                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more seconds before you can try again"),
-                      NextAccessTime.Subtract(DateTime.Now).Seconds));
-                }
-				else
-				{
-                    from.SendMessage(String.Format(StringCatalog.Resolve(from.Account, "You will need to wait approximately {0} more minutes before you can try again"),
-                      NextAccessTime.Subtract(DateTime.Now).Minutes));
-                }
-                  
+            return true;
+        }
 
+        public override bool OnDragDrop(Mobile from, Item dropped)
+        {
+            if (!CheckContainerRestriction(from, dropped))
                 return false;
-            }
+
+            if (!CheckAccessDelay(from))
+                return false;
+
+            if (!base.OnDragDrop(from, dropped))
+                return false;
 
             if (AddAccessMessage != "")
                 from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.add"));
 
             NextAccessTime = (DateTime.Now).Add(AccessDelay);
 
-            return base.OnDragDrop(from, dropped);
+            return true;
+        }
+
+        public override bool OnDragDropInto(Mobile from, Item dropped, Point3D p)
+        {
+            if (!CheckContainerRestriction(from, dropped))
+                return false;
+
+            if (!CheckAccessDelay(from))
+                return false;
+
+            if (!base.OnDragDropInto(from, dropped, p))
+                return false;
+
+            if (AddAccessMessage != "")
+                from.SendMessage(Utility.RandomNeutralHue(), StringCatalog.ResolveByKey(from.Account, "prop.container.weight.access.add"));
+
+            NextAccessTime = (DateTime.Now).Add(AccessDelay);
+
+            return true;
         }
 
         public override bool CheckLift(Mobile from, Item item, ref LRReason reject)
@@ -257,19 +323,6 @@ namespace Server.Items
             return base.CheckLift(from, item, ref reject);
         }
 
-        public override void AddNameProperty(ObjectPropertyList list)
-        {
-            list.Add(Name);
-
-            if (WeightReductionAmount > 0 && DisplayWeightReductionProperty)
-			{
-				if (BuildingPropertyListLocale != null)
-					AddLocalizedProperty(list, "prop.container.weight.reduction", (int)(WeightReductionAmount * 100));
-				else
-					list.Add(String.Format("{0}% Weight Reduction", WeightReductionAmount * 100));
-			}
-        }
-
         public override int GetTotal(TotalType type)
         {
             if (type != TotalType.Weight)
@@ -300,6 +353,67 @@ namespace Server.Items
             else
                 base.UpdateTotal(sender, type, WeightReductionAmount == 1.0 ? 0 : (int)(delta * (1.0 - WeightReductionAmount)));
         }
+
+        #region Inspect Gump (Context Menu)
+        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+        {
+            base.GetContextMenuEntries(from, list);
+
+            if (from.Alive)
+                list.Add(new InspectEntry(from, this));
+        }
+
+        private class InspectEntry : ContextMenuEntry
+        {
+            private WeightReductionContainer m_Bag;
+            private Mobile m_From;
+
+            public InspectEntry(Mobile from, WeightReductionContainer bag)
+                : base(6121, 1)
+            {
+                m_From = from;
+                m_Bag = bag;
+            }
+
+            public override void OnClick()
+            {
+                m_From.CloseGump(typeof(InspectGump));
+                m_From.SendGump(new InspectGump(m_From, m_Bag));
+                m_From.PlaySound(0x048);
+            }
+        }
+
+        private class InspectGump : Gump
+        {
+            public InspectGump(Mobile from, WeightReductionContainer bag)
+                : base(50, 50)
+            {
+                string color = "#b7765d";
+
+                int hold = bag.ContainerMaxItems;
+                string bodyText = StringCatalog.ResolveFormatByKey(from.Account, "prop.container.weight.inspect.gump.body", hold);
+                string titleText = StringCatalog.ResolveByKey(from.Account, "prop.container.weight.inspect.gump.title");
+
+                Closable = true;
+                Disposable = true;
+                Dragable = true;
+                Resizable = false;
+
+                AddPage(0);
+
+                AddImage(0, 0, 9547, Server.Misc.PlayerSettings.GetGumpHue(from));
+                AddHtml(11, 11, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + titleText + "</BASEFONT></BODY>", false, false);
+                AddHtml(13, 44, 582, 473, @"<BODY><BASEFONT Color=" + color + ">" + bodyText + "</BASEFONT></BODY>", false, false);
+                AddButton(568, 9, 4017, 4017, 0, GumpButtonType.Reply, 0);
+            }
+
+            public override void OnResponse(NetState state, RelayInfo info)
+            {
+                Mobile from = state.Mobile;
+                from.SendSound(0x4A);
+            }
+        }
+        #endregion
 
         public WeightReductionContainer(Serial serial)
             : base(serial)
