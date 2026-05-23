@@ -16,7 +16,7 @@ namespace Server.Items
 
 		public static void WayPointSeq_OnCommand( CommandEventArgs arg )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "Target the position of the first way point." ) );
+			arg.Mobile.SendMessage( StringCatalog.Resolve( arg.Mobile.Account, "Target the position of the first way point." ) );
 			arg.Mobile.Target = new WayPointSeqTarget( null );
 		}
 

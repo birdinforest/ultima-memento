@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server.Prompts;
 using Server.Network;
 

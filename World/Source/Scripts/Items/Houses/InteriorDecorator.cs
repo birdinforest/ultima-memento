@@ -1922,8 +1922,7 @@ namespace Server.Items
 
 			private static void Up( Item item, Mobile from )
 		{
-			{
-				int floorZ = GetFloorZ( item );
+			int floorZ = GetFloorZ( item );
 
                 if ( isLawn( item, from ) && item.Z < ((from.Map).GetAverageZ(item.X, item.Y)+15) )
                 {

@@ -180,16 +180,19 @@ namespace Server.Multis
 				}
 				else
 				{
-					boat.BoatDeed = this;
-					boat.Owner = from;
-					boat.Map = map;
-					boat.Location = p;
-					boat.BaseAddonResolve( from );
+				boat.Owner = from;
+				boat.Anchored = true;
 
-					boat.LockKey( from );
+				uint keyValue = boat.CreateKeys( from );
 
-					boat.TurnOn( true );
-					this.Delete();
+				if ( boat.PPlank != null )
+					boat.PPlank.KeyValue = keyValue;
+
+				if ( boat.SPlank != null )
+					boat.SPlank.KeyValue = keyValue;
+
+				boat.MoveToWorld( p, map );
+				this.Delete();
 				}
 			}
 		}

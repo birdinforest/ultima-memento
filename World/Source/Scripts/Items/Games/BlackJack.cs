@@ -2118,6 +2118,7 @@ namespace Server.Gumps
 	public class BlackJackCardGump : Gump
 	{
 		private CEOBlackJack m_CEOBlackJack;
+		private Mobile m_Player;
 		private int[,] m_Card = new int[4, 12];
 		private int m_xSize;
 		private int m_ySize;
@@ -2134,6 +2135,7 @@ namespace Server.Gumps
 		public BlackJackCardGump(Mobile player, CEOBlackJack CEOBlackJack, string message)
 			: base(20, 20)
 		{
+			m_Player = player;
 			if (CEOBlackJack.m_BJInfo.status == CEOBlackJack.GameStatus.DealerTurn)
 				Closable = false;
 			else
@@ -2157,9 +2159,9 @@ namespace Server.Gumps
 			if (m_HelpGump)
 				AddBackground(m_xSize, 0, 280, 420, 9260);
 			if (m_CEOBlackJack.TestMode)
-				AddLabel(3, 2, 37, StringCatalog.Resolve(from.Account, "Free Play"));
+				AddLabel(3, 2, 37, StringCatalog.Resolve(m_Player.Account, "Free Play"));
 
-			AddLabel(m_xSize / 2 - 60, 15, m_CEOBlackJack.Hue, StringCatalog.Resolve(from.Account, "Gambling Blackjack"));
+			AddLabel(m_xSize / 2 - 60, 15, m_CEOBlackJack.Hue, StringCatalog.Resolve(m_Player.Account, "Gambling Blackjack"));
 			if (m_CEOBlackJack.m_BJInfo.totalhands == 0)
 				DisplayRuleInfo();
 			else
@@ -2223,8 +2225,8 @@ namespace Server.Gumps
 				{
 					if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.BlackJack)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "21"));
-						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(from.Account, "Blackjack!"));
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(m_Player.Account, "21"));
+						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(m_Player.Account, "Blackjack!"));
 					}
 					else if (m_CEOBlackJack.DealerCardsFaceUp)
 					{
@@ -2251,24 +2253,24 @@ namespace Server.Gumps
 				{
 					if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.BlackJack)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "21"));
-						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(from.Account, "Blackjack!"));
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(m_Player.Account, "21"));
+						AddLabel(15, 75 + h * 80, 2213, StringCatalog.Resolve(m_Player.Account, "Blackjack!"));
 					}
 					else if (m_CEOBlackJack.PlayerCardsFaceUp)
 					{
 						score = String.Format("{0} {1}", m_CEOBlackJack.m_BJInfo.HandInfo[h].bestscore, (m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore == 0 || (m_CEOBlackJack.m_BJInfo.status == CEOBlackJack.GameStatus.Waiting) || (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Waiting)) ? null : "or " + m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore.ToString());
 						AddLabel(15, 55 + h * 80, labelcolor, score);
 						if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Bust)
-							AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Bust"));
+							AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(m_Player.Account, "Bust"));
 					}
 					else if (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.SplitAces)
 					{
-						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(from.Account, "11 or 1"));
-						AddLabel(15, 75 + h * 80, 87, StringCatalog.Resolve(from.Account, "Good luck!"));
+						AddLabel(15, 55 + h * 80, labelcolor, StringCatalog.Resolve(m_Player.Account, "11 or 1"));
+						AddLabel(15, 75 + h * 80, 87, StringCatalog.Resolve(m_Player.Account, "Good luck!"));
 					}
 					else if (h > 0 && m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Double)
 					{
-						AddLabel(15, 75 + h * 80, 17, StringCatalog.Resolve(from.Account, "Good luck!"));
+						AddLabel(15, 75 + h * 80, 17, StringCatalog.Resolve(m_Player.Account, "Good luck!"));
 						score = String.Format("{0} {1}", m_CEOBlackJack.m_BJInfo.HandInfo[h].bestscore, (m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore == 0 || (m_CEOBlackJack.m_BJInfo.status == CEOBlackJack.GameStatus.Waiting) || (m_CEOBlackJack.m_BJInfo.HandInfo[h].status == CEOBlackJack.HandStatus.Waiting)) ? null : "or " + m_CEOBlackJack.m_BJInfo.HandInfo[h].altscore.ToString());
 						AddLabel(15, 55 + h * 80, labelcolor, score);
 					}
@@ -2289,22 +2291,22 @@ namespace Server.Gumps
 							break;
 						case CEOBlackJack.HandStatus.Lose:
 							{
-								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Lose"));
+								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(m_Player.Account, "Lose"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Bust:
 							{
-								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(from.Account, "Bust"));
+								AddLabel(15, 75 + h * 80, 37, StringCatalog.Resolve(m_Player.Account, "Bust"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Push:
 							{
-								AddLabel(15, 75 + h * 80, 48, StringCatalog.Resolve(from.Account, "Push"));
+								AddLabel(15, 75 + h * 80, 48, StringCatalog.Resolve(m_Player.Account, "Push"));
 							}
 							break;
 						case CEOBlackJack.HandStatus.Win:
 							{
-								AddLabel(15, 75 + h * 80, 162, StringCatalog.Resolve(from.Account, "Win!"));
+								AddLabel(15, 75 + h * 80, 162, StringCatalog.Resolve(m_Player.Account, "Win!"));
 							}
 							break;
 						default:
@@ -2314,16 +2316,16 @@ namespace Server.Gumps
 					}
 				}
 			}
-			AddLabel(15, 20, 0, StringCatalog.Resolve(from.Account, "Current bet:"));
+			AddLabel(15, 20, 0, StringCatalog.Resolve(m_Player.Account, "Current bet:"));
 			AddLabel(92, 20, 2213, m_CEOBlackJack.CurrentBet.ToString());
-			AddLabel(15, m_yButtonStart + 30, 0, StringCatalog.Resolve(from.Account, "Credits:"));
+			AddLabel(15, m_yButtonStart + 30, 0, StringCatalog.Resolve(m_Player.Account, "Credits:"));
 			AddLabel(70, m_yButtonStart + 30, 2213, m_CEOBlackJack.OnCredit().ToString());
-			AddLabel(120, m_yButtonStart + 30, 0, StringCatalog.Resolve(from.Account, "Last Won:"));
+			AddLabel(120, m_yButtonStart + 30, 0, StringCatalog.Resolve(m_Player.Account, "Last Won:"));
 			AddLabel(195, m_yButtonStart + 30, 2213, CEOBlackJack.Won.ToString());
 			if (player.AccessLevel >= AccessLevel.GameMaster)
 			{
 				int paybackhue = (m_CEOBlackJack.WinningPercentage > 99.0) ? 37 : 66;
-				AddLabel(m_xSize - 175, 1, 1152, StringCatalog.Resolve(from.Account, "Payout Percentage:"));
+				AddLabel(m_xSize - 175, 1, 1152, StringCatalog.Resolve(m_Player.Account, "Payout Percentage:"));
 				string text = String.Format("{0:##0.00%}", m_CEOBlackJack.WinningPercentage / 100);
 				AddLabel(m_xSize - 62, 1, paybackhue, text);
 			}
@@ -2340,7 +2342,7 @@ namespace Server.Gumps
 		private void DisplayRuleInfo()
 		{
 			string text;
-			AddLabel(15, 40, 0, StringCatalog.Resolve(from.Account, "Min/Max bet:"));
+			AddLabel(15, 40, 0, StringCatalog.Resolve(m_Player.Account, "Min/Max bet:"));
 			text = string.Format("{0}/{1}", m_CEOBlackJack.m_BetTable[(int)m_CEOBlackJack.MinBet], m_CEOBlackJack.m_BetTable[(int)m_CEOBlackJack.MaxBet]);
 			AddLabel(100, 40, 2212, text);
 			AddHtml(40, 55, m_xSize - 80, 25, Center(string.Format("RuleSet: {0}", m_CEOBlackJack.CasinoName)), false, false);
@@ -2456,7 +2458,7 @@ namespace Server.Gumps
 		private void CEOCookie(int hue, Mobile m)
 		{
 			AddImage(m_xSize - 90, 100, 990);
-			AddLabel(15, m_ySize - 20, hue, StringCatalog.Resolve(from.Account, "CEO says, \"Hello! Enjoying my BlackJack Cards?\" :)"));
+			AddLabel(15, m_ySize - 20, hue, StringCatalog.Resolve(m_Player.Account, "CEO says, \"Hello! Enjoying my BlackJack Cards?\" :)"));
 			m.PlaySound(Utility.RandomList(1358, 1359, 1360, 1361, 1362, 1363, 1368, 1382));
 		}
 

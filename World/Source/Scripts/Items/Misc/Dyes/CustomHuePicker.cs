@@ -144,7 +144,7 @@ namespace Server.Items
 			if ( m_Definition.DefaultSupported )
 			{
 				AddButton( 200, 400, 4005, 4007, 2, GumpButtonType.Reply, 0 );
-				AddLabel( 235, 400, 0, StringCatalog.Resolve(from.Account, "DEFAULT") );
+				AddLabel( 235, 400, 0, StringCatalog.Resolve(m_From.Account, "DEFAULT") );
 			}
 		}
 
@@ -171,7 +171,7 @@ namespace Server.Items
 				for ( int j = 0; j < hues.Length; ++j )
 				{
 					AddRadio( 260, 90 + (j * 25), 210, 211, false, GetRadioID( i, j ) );
-					AddLabel( 278, 90 + (j * 25), hues[j] - 1, StringCatalog.Resolve(from.Account, "*****") );
+					AddLabel( 278, 90 + (j * 25), hues[j] - 1, StringCatalog.Resolve(m_From.Account, "*****") );
 				}
 			}
 		}

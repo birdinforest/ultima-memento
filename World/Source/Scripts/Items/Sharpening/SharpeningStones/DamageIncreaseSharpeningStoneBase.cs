@@ -1,5 +1,6 @@
 ﻿using Server.Localization;
-using Server.Items
+
+namespace Server.Items
 {
     public abstract class DamageIncreaseSharpeningStoneBase : AddDamageItemBase
     {

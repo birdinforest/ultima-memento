@@ -103,7 +103,7 @@ namespace Knives.TownHouses
             y += 30;
 
             AddButton(x-5, y - 3, 0x768, "Quick", new GumpCallback(Quick));
-            AddLabel(x, y - 3, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(from.Account, "Q"));
+            AddLabel(x, y - 3, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(Owner.Account, "Q"));
 
             AddButton(x+=20, y, c_Page == Page.Welcome ? 0x939 : 0x93A, "Welcome Page", new GumpStateCallback(ChangePage), 0);
             AddButton(x+=20, y, c_Page == Page.Blocks ? 0x939 : 0x93A, "Blocks Page", new GumpStateCallback(ChangePage), 1);
@@ -149,7 +149,7 @@ namespace Knives.TownHouses
             AddImage(width / 2 + 70, y + 2, 0x3B);
 
             AddButton(5, 5, 0x768, "Quick", new GumpCallback(Quick));
-            AddLabel(10, 5, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(from.Account, "Q"));
+            AddLabel(10, 5, c_Quick ? 0x34 : 0x47E, StringCatalog.Resolve(Owner.Account, "Q"));
 
             AddHtml(0, y += 25, width / 2 - 55, "<DIV ALIGN=RIGHT>Name");
             AddTextField(width / 2 - 15, y, 100, 20, 0x480, 0xBBC, "Name", c_Sign.Name);
