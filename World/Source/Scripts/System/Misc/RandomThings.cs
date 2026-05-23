@@ -1128,6 +1128,31 @@ namespace Server.Misc
 			return name;
 		}
 
+		/// <summary>Deterministic Ultima-style Chinese fantasy name from an English seed (display only).</summary>
+		public static string GetChineseFantasyName( string englishSeed )
+		{
+			if ( string.IsNullOrEmpty( englishSeed ) )
+				return englishSeed;
+
+			string[] syl1 = new string[] { "莱", "桑", "德", "莫", "甘", "瑟", "芬", "洛", "塔", "雷", "文", "达", "米尔", "索", "拉", "恩", "克", "维尔", "卡斯", "加" };
+			string[] syl2 = new string[] { "尔", "德", "斯", "恩", "克斯", "兰", "里克", "蒙德", "芬", "罗", "尼斯", "塔尔", "万", "林", "特", "温", "莎", "顿", "戈", "丁" };
+
+			int h = englishSeed.GetHashCode();
+			if ( h < 0 )
+				h = -h;
+
+			string a = syl1[h % syl1.Length];
+			string b = syl2[( h / 31 ) % syl2.Length];
+
+			if ( englishSeed.Length > 7 )
+			{
+				string c = syl2[( h / 997 ) % syl2.Length];
+				return a + b + c;
+			}
+
+			return a + b;
+		}
+
 		public static string GetRandomGirlName()
 		{
 			string name = NameList.RandomName( "female" );

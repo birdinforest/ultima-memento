@@ -794,6 +794,15 @@
       "reference_note_zh": "Ultima VII 之后的主反派。",
       "translation_basis_zh": "参考词表使用「监护者」，但中文玩家社群与检索摘要里「守护者」更常见。为贴合 Ultima 讨论语境与读者习惯，保留「守护者」为首选，并把「监护者」列为备选。"
     },
+    "the Guardian": {
+      "canonical": "守护者",
+      "alternatives": [
+        "监护者"
+      ],
+      "category": "character",
+      "notes": "Full EpicCharacter name string for the Ultima VII–IX antagonist (Name field is literally \"the Guardian\").",
+      "translation_basis_zh": "与词条 Guardian 一致；游戏内完整称呼为 the Guardian，中文显示为守护者（the Guardian）。"
+    },
     "Time Lord": {
       "canonical": "时间领主",
       "alternatives": [
@@ -4012,6 +4021,517 @@
       "category": "creature",
       "notes": "Dungeon; infernal region.",
       "translation_basis_zh": "Dungeon; infernal region."
+    },
+    "Adventurer": {
+      "canonical": "冒险者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Amazon": {
+      "canonical": "女战士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Bandit": {
+      "canonical": "强盗",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Barbarian": {
+      "canonical": "野蛮人",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Bard": {
+      "canonical": "吟游诗人",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Cavalier": {
+      "canonical": "骑士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Cleric": {
+      "canonical": "牧师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Conjurer": {
+      "canonical": "咒术师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Defender": {
+      "canonical": "守卫者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Diviner": {
+      "canonical": "占卜师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Druid": {
+      "canonical": "德鲁伊",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Enchanter": {
+      "canonical": "附魔师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Enchantress": {
+      "canonical": "女巫",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Explorer": {
+      "canonical": "探索者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Fighter": {
+      "canonical": "斗士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Gladiator": {
+      "canonical": "角斗士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Healer": {
+      "canonical": "治疗师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Heretic": {
+      "canonical": "异教徒",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Hunter": {
+      "canonical": "猎人",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Illusionist": {
+      "canonical": "幻术师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Invoker": {
+      "canonical": "祈求者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Knight": {
+      "canonical": "骑士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Mage": {
+      "canonical": "法师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Magician": {
+      "canonical": "魔术师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Mercenary": {
+      "canonical": "佣兵",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Minstrel": {
+      "canonical": "游吟诗人",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Monk": {
+      "canonical": "僧侣",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Mystic": {
+      "canonical": "神秘学者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Necromancer": {
+      "canonical": "死灵法师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Outlaw": {
+      "canonical": "亡命徒",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Paladin": {
+      "canonical": "圣骑士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Priest": {
+      "canonical": "祭司",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Priestess": {
+      "canonical": "女祭司",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Prophet": {
+      "canonical": "先知",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Prophetess": {
+      "canonical": "女先知",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Ranger": {
+      "canonical": "游侠",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Rogue": {
+      "canonical": "盗贼",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Sage": {
+      "canonical": "贤者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Scout": {
+      "canonical": "斥候",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Seeker": {
+      "canonical": "追寻者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Seer": {
+      "canonical": "预言者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Shaman": {
+      "canonical": "萨满",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Slayer": {
+      "canonical": "杀戮者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Sorcerer": {
+      "canonical": "术士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Sorcereress": {
+      "canonical": "女术士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Summoner": {
+      "canonical": "召唤师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Templar": {
+      "canonical": "圣殿骑士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Thief": {
+      "canonical": "小偷",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Traveler": {
+      "canonical": "旅者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Warlock": {
+      "canonical": "术士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Warrior": {
+      "canonical": "战士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Witch": {
+      "canonical": "女巫",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Wizard": {
+      "canonical": "巫师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC title from RandomThings.GetBoyGirlJob(); used in quest story templates.",
+      "translation_basis_zh": "职业/头衔名，源自 RandomThings.GetBoyGirlJob() 词表。"
+    },
+    "Lord Blackthorne": {
+      "canonical": "黑索恩勋爵",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Lord Draxinusom": {
+      "canonical": "德拉克西诺索姆",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Morphius": {
+      "canonical": "墨菲乌斯",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Tyball": {
+      "canonical": "泰鲍尔",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Arcadion": {
+      "canonical": "阿卡迪翁",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Samhayne": {
+      "canonical": "萨姆海恩",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Seggallion": {
+      "canonical": "塞加利翁",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Nystal": {
+      "canonical": "尼斯特尔",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Geoffrey": {
+      "canonical": "杰弗里",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Shimazu": {
+      "canonical": "岛津",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Gorn": {
+      "canonical": "戈恩",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Jaana": {
+      "canonical": "雅娜",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Dupre": {
+      "canonical": "杜普雷",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Gwenno": {
+      "canonical": "格温诺",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Iolo": {
+      "canonical": "爱罗",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Shamino": {
+      "canonical": "沙米诺",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Stefano": {
+      "canonical": "斯特凡诺",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Katrina": {
+      "canonical": "卡特里娜",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Mors Gotha": {
+      "canonical": "莫斯·戈萨",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
+    },
+    "Lethe": {
+      "canonical": "莱瑟",
+      "alternatives": [],
+      "category": "character",
+      "notes": "EpicCharacter quest NPC from Ultima lore.",
+      "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
     }
   }
 }

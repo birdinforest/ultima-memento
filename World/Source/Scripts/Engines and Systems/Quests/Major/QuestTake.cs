@@ -280,7 +280,7 @@ namespace Server.Items
 						}
 
 						book.QuestTomeWorldEvil = Server.Lands.GetLand( WhoMap, WhoLoc, dude.MyX, dude.MyY );
-						book.QuestTomeNPCEvil = dude.Name + " " + dude.Title;
+						book.QuestTomeNPCEvil = ( dude.Name + " " + dude.Title ).Trim();
 						book.QuestTomeLocateEvil = my_location;
 						picked = true;
 					}
@@ -336,7 +336,7 @@ namespace Server.Items
 						}
 
 						book.QuestTomeWorldGood = Server.Lands.GetLand( WhoMap, WhoLoc, dude.MyX, dude.MyY );
-						book.QuestTomeNPCGood = dude.Name + " " + dude.Title;
+						book.QuestTomeNPCGood = ( dude.Name + " " + dude.Title ).Trim();
 						book.QuestTomeLocateGood = my_location;
 						picked = true;
 					}
