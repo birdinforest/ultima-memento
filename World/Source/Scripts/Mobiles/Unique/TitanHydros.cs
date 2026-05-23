@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Energy,   25 );
 
 			// Fire is the elemental weakness — rewards fire-spec mages.
-			// BardImmune is false so Discordance can reduce Hydros's Tactics and MagicResist by 28 %.
+			// BardImmune is false: Discordance 120 vs difficulty-160 → -12 % skills, -12 resist all elements.
 			SetResistance( ResistanceType.Physical,  70, 78 );
 			SetResistance( ResistanceType.Fire,      45, 55 );
 			SetResistance( ResistanceType.Cold,      62, 72 );
@@ -302,9 +302,8 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
-		// BardImmune = false: allows Discordance to reduce all of Hydros's skills by 28 %.
-		// A skilled bard significantly lowers Hydros's Tactics and MagicResist,
-		// making the fight manageable for a team that includes music support.
+		// BardImmune = false: Discordance 120 vs difficulty-160 → -12 % all skills, -12 resist each element.
+		// A skilled bard lowers Hydros's Tactics and MagicResist enough that music support matters.
 		public override bool BardImmune { get { return false; } }
 
 		public TitanHydros( Serial serial ) : base( serial )

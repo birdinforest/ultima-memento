@@ -47,14 +47,15 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Physical, 75 );
 			SetDamageType( ResistanceType.Energy,   25 );
 
-			// Poison is the elemental weakness — rewards poison-spec.
-			// BardImmune = false: a bard with Discordance removes 28 % of Stratos's combat skills,
-			// reducing damage output and making the cyclic Cyclone Burst far more survivable.
+			// Poison is the specialist weakness (AOS poison% only — not ApplyPoison).
+			// Energy lowered to 52–62 so standard Magery + Discordance remains viable.
+			// BardImmune = false: at Discordance 120 vs difficulty-160 targets, all skills
+			// drop 12 % and all resistances lose 12 points (halved from the raw -24 effect).
 			SetResistance( ResistanceType.Physical,  65, 75 );
 			SetResistance( ResistanceType.Fire,      50, 62 );
 			SetResistance( ResistanceType.Cold,      48, 58 );
 			SetResistance( ResistanceType.Poison,    18, 28 );
-			SetResistance( ResistanceType.Energy,    72, 82 );
+			SetResistance( ResistanceType.Energy,    52, 62 );
 
 			SetSkill( SkillName.Psychology,   95.0, 110.0 );
 			SetSkill( SkillName.Magery,       90.0, 110.0 );
@@ -102,8 +103,8 @@ namespace Server.Mobiles
 			}
 
 			// Cyclone Burst: AoE energy damage + stamina drain every 18 seconds.
-			// Drains stamina from melee fighters; without bard Discordance reducing Stratos's
-			// Tactics skill, the combined breath + melee + burst kills under-prepared teams.
+			// Drains stamina from melee fighters; without bard Discordance (-12 % skills at 120),
+			// the combined breath + melee + burst kills under-prepared teams.
 			if ( DateTime.Now >= m_NextCycloneBurst )
 			{
 				DoCycloneBurst();
@@ -291,9 +292,9 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
-		// BardImmune = false: a bard using Discordance reduces ALL of Stratos's skills by 28 %,
-		// including Tactics and MagicResist — directly lowering melee damage and spell defense.
-		// This makes music support a high-value team role, not a luxury.
+		// BardImmune = false: Discordance 120 vs difficulty-160 → -12 % all skills and -12 resist
+		// per element (Tactics, MagicResist included), lowering melee damage and spell defense.
+		// Music support is a high-value team role, not a luxury.
 		public override bool BardImmune { get { return false; } }
 
 		public TitanStratos( Serial serial ) : base( serial )
