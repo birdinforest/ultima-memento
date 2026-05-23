@@ -360,10 +360,14 @@ namespace Server.Items
 
 				AddPage(0);
 
+				string gumpLocale = AccountLang.GetLanguageCode( from.Account );
+				if ( !AccountLang.IsChinese( gumpLocale ) )
+					gumpLocale = "en";
+
 				string color = "#c6c67b";
 				string story = m_Book.QuestTomeStoryGood;
 				string locat = m_Book.QuestTomeLocateGood;
-				string world = Server.Lands.LandName( m_Book.QuestTomeWorldGood );
+				string world = Server.Lands.LocalizedLandName( m_Book.QuestTomeWorldGood, gumpLocale );
 				string names = m_Book.QuestTomeNPCGood;
 						
 				if ( ((PlayerMobile)from).KarmaLocked ) // THEY ARE ON AN EVIL PATH
@@ -371,7 +375,7 @@ namespace Server.Items
 					color = "#cfa495";
 					story = m_Book.QuestTomeStoryEvil;
 					locat = m_Book.QuestTomeLocateEvil;
-					world = Server.Lands.LandName( m_Book.QuestTomeWorldEvil );
+					world = Server.Lands.LocalizedLandName( m_Book.QuestTomeWorldEvil, gumpLocale );
 					names = m_Book.QuestTomeNPCEvil;
 				}
 
@@ -385,6 +389,7 @@ namespace Server.Items
 				{
 					bool isEvil = ((PlayerMobile)from).KarmaLocked;
 					string storyKey = isEvil ? "quest.tome.story.evil" : "quest.tome.story.good";
+					string zhLocale = "zh-Hans";
 					story = StringCatalog.ResolveFormatByKey( from.Account, storyKey,
 						dead,
 						isEvil ? m_Book.QuestTomeNPCEvil : m_Book.QuestTomeNPCGood,
@@ -392,7 +397,7 @@ namespace Server.Items
 						"",                                 // {3} takes - ignored in ZH
 						m_Book.VillainName,
 						m_Book.VillainTitle,
-						m_Book.VillainCategory,
+						LocalizedVillainCategory( zhLocale, m_Book.VillainCategory ),
 						"",                                 // {7} heard - ignored in ZH
 						"",                                 // {8} legend - ignored in ZH
 						"",                                 // {9} hush - ignored in ZH
@@ -502,7 +507,7 @@ namespace Server.Items
 			if ( goal == 2 ){ locate = "lost somewhere"; locateType = 1; }
 			if ( book.QuestTomeGoals == 3 ){ locate = "found"; goal = 3; locateType = 2; }
 
-			string world = Server.Lands.LandName( book.QuestTomeLand );
+			string world;
 			string dungeon = book.QuestTomeDungeon;
 			string from = book.QuestTomeCitizen;
 			string item = book.GoalItem1;
@@ -510,21 +515,32 @@ namespace Server.Items
 				else if ( book.QuestTomeGoals == 2 ){ item = book.GoalItem3; }
 				else if ( book.QuestTomeGoals == 3 ){ item = book.VillainName + " " + book.VillainTitle; }
 
+			if ( acct != null && AccountLang.IsChinese( AccountLang.GetLanguageCode( acct ) ) )
+			{
+				world = Server.Lands.LocalizedLandName( book.QuestTomeLand, "zh-Hans" );
+				dungeon = LocalizedDungeon( "zh-Hans", dungeon );
+			}
+			else
+			{
+				world = Server.Lands.LandName( book.QuestTomeLand );
+			}
+
 			if ( talk )
 			{
 				if ( acct != null && AccountLang.IsChinese( AccountLang.GetLanguageCode( acct ) ) )
 				{
+					string locale = "zh-Hans";
 					string who = "";
 					switch ( Utility.RandomMinMax( 0, 5 ) )
 					{
-						case 0: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_heard" ) ?? "我听说"; break;
-						case 1: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_learned" ) ?? "我打听到"; break;
-						case 2: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_found_out" ) ?? "我发现了"; break;
-						case 3: who = string.Format( StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_job" ) ?? "{1}的{0}告诉我",
-							RandomThings.GetRandomJob(), RandomThings.GetRandomCity() ); break;
-						case 4: who = string.Format( StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_overheard" ) ?? "我偶然听到一个{0}说",
-							RandomThings.GetRandomJob() ); break;
-						case 5: who = StringCatalog.TryResolveByKey( "zh-Hans", "quest.tome.rumor.who_friend" ) ?? "我朋友告诉我"; break;
+						case 0: who = StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_heard" ) ?? "我听说"; break;
+						case 1: who = StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_learned" ) ?? "我打听到"; break;
+						case 2: who = StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_found_out" ) ?? "我发现了"; break;
+						case 3: who = string.Format( StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_job" ) ?? "{1}的{0}告诉我",
+							LocalizedJob( locale ), LocalizedCity( locale ) ); break;
+						case 4: who = string.Format( StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_overheard" ) ?? "我偶然听到一个{0}说",
+							LocalizedJob( locale ) ); break;
+						case 5: who = StringCatalog.TryResolveByKey( locale, "quest.tome.rumor.who_friend" ) ?? "我朋友告诉我"; break;
 					}
 					// Use heard_* templates: {0}=who, {1}=item, {2}=dungeon, {3}=world
 					string rumorKey;
@@ -725,6 +741,40 @@ namespace Server.Items
 					}
 				}
 			}
+		}
+
+		private static string AnnotatedNoun( string locale, string keyPrefix, string englishValue )
+		{
+			string keyPart = englishValue.ToLowerInvariant().Replace( ' ', '_' ).Replace( "'", "" );
+			string shotkey = keyPrefix + keyPart;
+			string zh = StringCatalog.TryResolveByKey( locale, shotkey );
+			if ( zh != null && !string.IsNullOrEmpty( zh ) )
+				return zh + "（" + englishValue + "）";
+			return englishValue;
+		}
+
+		public static string LocalizedCity( string locale )
+		{
+			return AnnotatedNoun( locale, "quest.tome.noun.city.", RandomThings.GetRandomCity() );
+		}
+
+		public static string LocalizedJob( string locale )
+		{
+			return AnnotatedNoun( locale, "quest.tome.noun.job.", RandomThings.GetRandomJob() );
+		}
+
+		public static string LocalizedDungeon( string locale, string dungeonValue )
+		{
+			if ( string.IsNullOrEmpty( dungeonValue ) )
+				return dungeonValue;
+			return AnnotatedNoun( locale, "quest.tome.noun.dungeon.", dungeonValue );
+		}
+
+		public static string LocalizedVillainCategory( string locale, string categoryValue )
+		{
+			if ( string.IsNullOrEmpty( categoryValue ) )
+				return categoryValue;
+			return AnnotatedNoun( locale, "quest.tome.noun.villain.", categoryValue );
 		}
 	}
 }

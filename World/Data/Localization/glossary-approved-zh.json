@@ -2572,7 +2572,9 @@
     },
     "Mountain Crest": {
       "canonical": "山嵴镇",
-      "alternatives": ["山脊镇"],
+      "alternatives": [
+        "山脊镇"
+      ],
       "category": "place",
       "notes": "Town on Map.Sosaria per Regions.xml the Town of Mountain Crest.",
       "translation_basis_zh": "取 crest 山脊意象，译为「山嵴镇」作定居点名。"
@@ -2593,7 +2595,9 @@
     },
     "Atlantis": {
       "canonical": "亚特兰蒂斯",
-      "alternatives": ["亚特拉斯海图位面"],
+      "alternatives": [
+        "亚特拉斯海图位面"
+      ],
       "category": "place",
       "notes": "Separate Map.Atlantis facet in shard; not the historical myth alone.",
       "translation_basis_zh": "沿用 Ultima 系常见的「亚特兰蒂斯」专名，并注明为本碎片独立地图位面。"
@@ -2607,7 +2611,9 @@
     },
     "Cimmeran Hold": {
       "canonical": "西默兰据点",
-      "alternatives": ["西弥尔要塞"],
+      "alternatives": [
+        "西弥尔要塞"
+      ],
       "category": "place",
       "notes": "Village/hold on Map.IslesDread per Regions.xml.",
       "translation_basis_zh": "音译 Cimmeran 为「西默兰」，hold 作据点/要塞式聚落。"
@@ -2635,7 +2641,9 @@
     },
     "Fort of Tenebrae": {
       "canonical": "泰涅布雷要塞",
-      "alternatives": ["特涅布雷要塞"],
+      "alternatives": [
+        "特涅布雷要塞"
+      ],
       "category": "place",
       "notes": "SafeRegion fort on Map.Underworld; echoes Ultima Underworld city Tenebrae.",
       "translation_basis_zh": "与 Ultima Underworld 的 Tenebrae 专名音系对齐，译为「泰涅布雷要塞」。"
@@ -2683,7 +2691,9 @@
     "_SECTION_FAME_KARMA": "── Fame / Karma System ──────────────────────────────────────",
     "Dread Lord": {
       "canonical": "恐怖领主",
-      "alternatives": ["无畏领主"],
+      "alternatives": [
+        "无畏领主"
+      ],
       "category": "title",
       "notes": "Highest-fame negative-karma title in the UO fame/karma system.",
       "translation_basis_zh": "「Dread Lord」是UO业力系统中声名极高但业力极低的称号，通常代表强力邪恶领主。采用「恐怖领主」传达其威慑感。"
@@ -2697,7 +2707,9 @@
     },
     "Lord": {
       "canonical": "领主",
-      "alternatives": ["主"],
+      "alternatives": [
+        "主"
+      ],
       "category": "title",
       "notes": "Fame title prefix added to character name upon reaching certain fame thresholds.",
       "translation_basis_zh": "UO中「Lord」为高声望的名誉称号前缀，译为「领主」契合中文封建/奇幻语境。"
@@ -2948,7 +2960,9 @@
     },
     "Efreet": {
       "canonical": "伊夫利特",
-      "alternatives": ["火焰巨灵"],
+      "alternatives": [
+        "火焰巨灵"
+      ],
       "category": "creature",
       "notes": "Fire-themed genie class creature in fantasy/UO contexts; statuette cliloc label.",
       "translation_basis_zh": "阿拉伯神话与奇幻通用名 إفريت / Ifrit 的通行汉字音译；必要时可注火焰巨灵。"
@@ -3026,7 +3040,9 @@
     },
     "Karma": {
       "canonical": "善恶值",
-      "alternatives": ["因果值"],
+      "alternatives": [
+        "因果值"
+      ],
       "category": "system",
       "notes": "UO Karma moral alignment score.",
       "translation_basis_zh": "Karma 在 UO 为道德倾向数值；「善恶值」直观；「因果值」偏佛学语感，作备选。"
@@ -3061,7 +3077,9 @@
     },
     "Tithe": {
       "canonical": "奉献度",
-      "alternatives": ["奉献金"],
+      "alternatives": [
+        "奉献金"
+      ],
       "category": "system",
       "notes": "UO tithe points donated at shrine.",
       "translation_basis_zh": "神殿捐献累积的数值；「奉献度」贴合系统条；「奉献金」偏金币语感可作备选。"
@@ -3170,7 +3188,9 @@
     },
     "Hypercloth": {
       "canonical": "超纤织物",
-      "alternatives": ["超纤布"],
+      "alternatives": [
+        "超纤布"
+      ],
       "category": "item",
       "notes": "Sci-fi tailoring fabric analogue.",
       "translation_basis_zh": "意译高性能纤维织布，归入织物而非金属。"
@@ -3233,21 +3253,27 @@
     },
     "Mortal Strike": {
       "canonical": "必杀之击",
-      "alternatives": ["致命打击"],
+      "alternatives": [
+        "致命打击"
+      ],
       "category": "concept",
       "notes": "Weapon special move that prevents healing for a few seconds.",
       "translation_basis_zh": "「Mortal Strike」阻止目标在数秒内被治疗，是极具威胁的特殊技能。译为「必杀之击」既传达其危险性，也保留武侠风格。"
     },
     "The Witch's Brew": {
       "canonical": "女巫秘酿",
-      "alternatives": ["巫女秘酿"],
+      "alternatives": [
+        "巫女秘酿"
+      ],
       "category": "book",
       "notes": "In-world recipe tome for witchery (necromancy-linked) jar potions on the shard.",
       "translation_basis_zh": "书名强调秘术酿制与女巫体系，「秘酿」比直译「酿造」更贴合卷轴与药罐系统的仪式感。"
     },
     "Druidic Herbalism": {
       "canonical": "德鲁伊草本学",
-      "alternatives": ["德鲁伊草药学"],
+      "alternatives": [
+        "德鲁伊草药学"
+      ],
       "category": "book",
       "notes": "Companion tome to druidic jar potions and belt-pouch organization.",
       "translation_basis_zh": "与游戏内德鲁伊技线、草药与兽医学挂钩，用「草本学」概括采集—配方—合剂一体化，避免与泛用的「草药」混同。"
@@ -3268,7 +3294,9 @@
     },
     "Pixie Skull": {
       "canonical": "小仙灵颅骨",
-      "alternatives": ["小妖灵颅骨"],
+      "alternatives": [
+        "小妖灵颅骨"
+      ],
       "category": "item",
       "notes": "Rare witchery reagent; pixie as fey creature.",
       "translation_basis_zh": "Pixie 译成小仙灵以贴合 UO 里妖精系生物尺度，颅骨点明材料形态。"
@@ -3282,150 +3310,708 @@
     },
     "Swordsmanship": {
       "canonical": "剑术",
-      "alternatives": ["剑系武器技能"],
+      "alternatives": [
+        "剑系武器技能"
+      ],
       "category": "skill",
       "notes": "Weapon skill for swords used in equipment properties.",
       "translation_basis_zh": "UO 标准中文社区译名，对应 Swordsmanship 技能。"
     },
     "Bludgeoning": {
       "canonical": "锤术",
-      "alternatives": ["钝器技能"],
+      "alternatives": [
+        "钝器技能"
+      ],
       "category": "skill",
       "notes": "Weapon skill for maces and bludgeoning weapons used in equipment properties.",
       "translation_basis_zh": "UO 标准中文社区译名，对应 Bludgeoning 技能。"
     },
     "Fencing": {
       "canonical": "刺击",
-      "alternatives": ["刺系武器技能"],
+      "alternatives": [
+        "刺系武器技能"
+      ],
       "category": "skill",
       "notes": "Weapon skill for fencing weapons used in equipment properties.",
       "translation_basis_zh": "UO 标准中文社区译名，对应 Fencing 技能。"
     },
     "Marksmanship": {
       "canonical": "射击",
-      "alternatives": ["远程武器技能"],
+      "alternatives": [
+        "远程武器技能"
+      ],
       "category": "skill",
       "notes": "Weapon skill for ranged weapons used in equipment properties.",
       "translation_basis_zh": "UO 标准中文社区译名，对应 Marksmanship 技能。"
     },
     "Fist Fighting": {
       "canonical": "徒手格斗",
-      "alternatives": ["拳术"],
+      "alternatives": [
+        "拳术"
+      ],
       "category": "skill",
       "notes": "Unarmed combat skill used in equipment properties.",
       "translation_basis_zh": "Fist Fighting 即徒手战斗。UO 社区中文译名常用「徒手格斗」或「拳术」。"
     },
     "Elves Only": {
       "canonical": "仅限精灵",
-      "alternatives": ["精灵专用"],
+      "alternatives": [
+        "精灵专用"
+      ],
       "category": "concept",
       "notes": "Race restriction property on equipment.",
       "translation_basis_zh": "装备的种族限制属性，标准 UO 中文社区译法。"
     },
     "Arrow": {
       "canonical": "箭矢",
-      "alternatives": ["箭"],
+      "alternatives": [
+        "箭"
+      ],
       "category": "item",
       "notes": "Projectile used with bows; also used in quiver ammo display.",
       "translation_basis_zh": "UO 中箭矢的通用名，结合弹药量显示译为「箭矢」。"
     },
     "Bolt": {
       "canonical": "弩箭",
-      "alternatives": ["弩矢"],
+      "alternatives": [
+        "弩矢"
+      ],
       "category": "item",
       "notes": "Projectile used with crossbows; also used in quiver ammo display.",
       "translation_basis_zh": "UO 中弩箭的通用名，与箭矢区分译为「弩箭」。"
     },
     "Lower Ammo Cost": {
       "canonical": "降低弹药消耗",
-      "alternatives": ["弹药消耗降低"],
+      "alternatives": [
+        "弹药消耗降低"
+      ],
       "category": "concept",
       "notes": "Quiver property that reduces ammunition consumption percentage.",
       "translation_basis_zh": "箭袋的特殊属性，按百分比减少弹药消耗。"
     },
     "Weight Reduction": {
       "canonical": "重量减少",
-      "alternatives": ["减重"],
+      "alternatives": [
+        "减重"
+      ],
       "category": "concept",
       "notes": "Quiver property that reduces the weight of carried ammunition.",
       "translation_basis_zh": "箭袋属性，减少所携带弹药的重量。"
     },
     "Poison Charges": {
       "canonical": "毒药充能",
-      "alternatives": ["毒充能"],
+      "alternatives": [
+        "毒充能"
+      ],
       "category": "concept",
       "notes": "Weapon property showing remaining poison doses.",
       "translation_basis_zh": "武器涂毒后的剩余中毒次数，依等级分弱/普通/强效/致命/剧毒。"
     },
     "Equipped At": {
       "canonical": "装备位置",
-      "alternatives": ["佩戴位置"],
+      "alternatives": [
+        "佩戴位置"
+      ],
       "category": "concept",
       "notes": "Shows which equipment slot an item occupies (e.g. Right Hand, Left Hand).",
       "translation_basis_zh": "显示物品佩戴在哪个装备栏位（如右手、左手、头部等）。"
     },
     "Density": {
       "canonical": "密度",
-      "alternatives": ["材质密度"],
+      "alternatives": [
+        "材质密度"
+      ],
       "category": "concept",
       "notes": "Crafting density tier (Weak → Ultimate) affecting item durability.",
       "translation_basis_zh": "制作材料的密度等级（低→终极），影响物品耐久度。"
     },
     "Arcane Charges": {
       "canonical": "奥术充能",
-      "alternatives": ["秘法充能"],
+      "alternatives": [
+        "秘法充能"
+      ],
       "category": "concept",
       "notes": "Arcane equipment charges that power special abilities.",
       "translation_basis_zh": "奥术装备的特殊充能点数，用于驱动特殊能力。"
     },
     "Single Click to Enchant": {
       "canonical": "单击附魔",
-      "alternatives": ["单击附魔"],
+      "alternatives": [
+        "单击附魔"
+      ],
       "category": "ui",
       "notes": "Prompt shown on Gift items with enchantment points available.",
       "translation_basis_zh": "附魔点数 >5 时 Gift 装备的提示文字。"
     },
     "Enchantment Points": {
       "canonical": "附魔点数",
-      "alternatives": ["附魔点"],
+      "alternatives": [
+        "附魔点"
+      ],
       "category": "concept",
       "notes": "Points used to enchant Gift items with attributes.",
       "translation_basis_zh": "Gift 系统附魔点数，可消耗以附加属性。"
     },
     "Experience": {
       "canonical": "经验值",
-      "alternatives": ["经验"],
+      "alternatives": [
+        "经验"
+      ],
       "category": "system",
       "notes": "Experience points for leveling Legendary Artefacts.",
       "translation_basis_zh": "神器/装备升级所需的经验值。"
     },
     "Legendary Artefacts Only": {
       "canonical": "仅限传说神器",
-      "alternatives": ["传说装备专用"],
+      "alternatives": [
+        "传说装备专用"
+      ],
       "category": "concept",
       "notes": "LevelUpScroll restriction: can only be used on Legendary Artefacts.",
       "translation_basis_zh": "强化符文限制：仅能在传说神器上使用。"
     },
     "Blacksmith Validated": {
       "canonical": "已通过铁匠验证",
-      "alternatives": ["铁匠验证通过"],
+      "alternatives": [
+        "铁匠验证通过"
+      ],
       "category": "system",
       "notes": "Status shown on LevelUpScroll after blacksmith validation.",
       "translation_basis_zh": "强化符文已通过铁匠技能验证的状态显示。"
     },
     "Rename Legendary Artefacts": {
       "canonical": "重命名传说神器",
-      "alternatives": ["更名传说装备"],
+      "alternatives": [
+        "更名传说装备"
+      ],
       "category": "ui",
       "notes": "Tooltip on LegendaryArtifactRename item.",
       "translation_basis_zh": "传说神器更名铁砧的提示文字。"
     },
     "Belongs to": {
       "canonical": "属于",
-      "alternatives": ["所有者"],
+      "alternatives": [
+        "所有者"
+      ],
       "category": "ui",
       "notes": "Owner display prefix for bound items.",
       "translation_basis_zh": "绑定物品的所有者前缀。"
+    },
+    "Islegem": {
+      "canonical": "艾斯莱杰姆",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "the Port of Starguide": {
+      "canonical": "星导港",
+      "alternatives": [
+        "星辰指引港"
+      ],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "Portshine": {
+      "canonical": "灿港",
+      "alternatives": [
+        "闪耀港"
+      ],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "Greensky Village": {
+      "canonical": "绿空村",
+      "alternatives": [
+        "翠天村"
+      ],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机村庄名。"
+    },
+    "the Village of Barako": {
+      "canonical": "巴拉科村",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机村庄名。"
+    },
+    "the Village of Kurak": {
+      "canonical": "库拉克村",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity().",
+      "translation_basis_zh": "流言系统中的随机村庄名。"
+    },
+    "the Port of Dusk": {
+      "canonical": "黄昏港",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity(); lowercase 'the' prefix variant.",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "the City of Lodoria": {
+      "canonical": "洛多里亚城",
+      "alternatives": [
+        "洛多利亚城"
+      ],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity(); lowercase 'the' prefix variant.",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "the Cimmeran Hold": {
+      "canonical": "西默兰据点",
+      "alternatives": [
+        "西弥尔要塞"
+      ],
+      "category": "place",
+      "notes": "Quest city name from RandomThings.GetRandomCity(); lowercase 'the' prefix variant.",
+      "translation_basis_zh": "流言系统中的随机城市名。"
+    },
+    "blacksmith": {
+      "canonical": "铁匠",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "jeweler": {
+      "canonical": "珠宝商",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "provisioner": {
+      "canonical": "杂货商",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "banker": {
+      "canonical": "银行家",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "minter": {
+      "canonical": "铸币师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "waiter": {
+      "canonical": "侍者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "guard": {
+      "canonical": "卫兵",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "sage": {
+      "canonical": "贤者",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "mage": {
+      "canonical": "法师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "herbalist": {
+      "canonical": "草药师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "alchemist": {
+      "canonical": "炼金术士",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "healer": {
+      "canonical": "治疗师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "guildmaster": {
+      "canonical": "公会会长",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "tinker": {
+      "canonical": "工匠",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "innkeeper": {
+      "canonical": "旅店老板",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "bartender": {
+      "canonical": "酒保",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "butcher": {
+      "canonical": "屠夫",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "tailor": {
+      "canonical": "裁缝",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "weaver": {
+      "canonical": "织工",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "shipwright": {
+      "canonical": "造船师",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "scribe": {
+      "canonical": "抄写员",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "farmer": {
+      "canonical": "农夫",
+      "alternatives": [],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "stable master": {
+      "canonical": "马厩师傅",
+      "alternatives": [
+        "马夫"
+      ],
+      "category": "title",
+      "notes": "NPC profession from RandomThings.GetRandomJob().",
+      "translation_basis_zh": "流言系统中居民职业名。"
+    },
+    "a daemon": {
+      "canonical": "恶魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; quest villain category from QuestTake.cs.",
+      "translation_basis_zh": "Creature; quest villain category from QuestTake.cs."
+    },
+    "a balron": {
+      "canonical": "巴洛炎魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; high-level fiery daemon variant.",
+      "translation_basis_zh": "Creature; high-level fiery daemon variant."
+    },
+    "a balor": {
+      "canonical": "巴洛魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; balor-class daemon variant.",
+      "translation_basis_zh": "Creature; balor-class daemon variant."
+    },
+    "a balrog": {
+      "canonical": "巴洛格",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; balrog-class daemon variant.",
+      "translation_basis_zh": "Creature; balrog-class daemon variant."
+    },
+    "a devil": {
+      "canonical": "魔鬼",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; infernal entity.",
+      "translation_basis_zh": "Creature; infernal entity."
+    },
+    "a succubus": {
+      "canonical": "魅魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; seductive daemoness variant.",
+      "translation_basis_zh": "Creature; seductive daemoness variant."
+    },
+    "a demoness": {
+      "canonical": "女恶魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; female daemon.",
+      "translation_basis_zh": "Creature; female daemon."
+    },
+    "a daemoness": {
+      "canonical": "女恶魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; alternative spelling of demoness.",
+      "translation_basis_zh": "Creature; alternative spelling of demoness."
+    },
+    "a giant": {
+      "canonical": "巨人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; oversized humanoid.",
+      "translation_basis_zh": "Creature; oversized humanoid."
+    },
+    "a cyclops": {
+      "canonical": "独眼巨人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; one-eyed giant.",
+      "translation_basis_zh": "Creature; one-eyed giant."
+    },
+    "an ettin": {
+      "canonical": "双头巨人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; two-headed giant.",
+      "translation_basis_zh": "Creature; two-headed giant."
+    },
+    "an ogre": {
+      "canonical": "食人魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; brutish humanoid.",
+      "translation_basis_zh": "Creature; brutish humanoid."
+    },
+    "a dragon": {
+      "canonical": "龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; legendary winged reptile.",
+      "translation_basis_zh": "Creature; legendary winged reptile."
+    },
+    "a drake": {
+      "canonical": "小龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; lesser draconic creature.",
+      "translation_basis_zh": "Creature; lesser draconic creature."
+    },
+    "a wyvern": {
+      "canonical": "双足飞龙",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; two-legged winged reptile.",
+      "translation_basis_zh": "Creature; two-legged winged reptile."
+    },
+    "a beholder": {
+      "canonical": "眼魔",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; floating orb with many eyes.",
+      "translation_basis_zh": "Creature; floating orb with many eyes."
+    },
+    "a gargoyle": {
+      "canonical": "石像鬼",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; winged stone-skinned humanoid.",
+      "translation_basis_zh": "Creature; winged stone-skinned humanoid."
+    },
+    "a sphinx": {
+      "canonical": "狮身人面兽",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; winged lion with human head.",
+      "translation_basis_zh": "Creature; winged lion with human head."
+    },
+    "a reptilian humanoid": {
+      "canonical": "类爬行人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; lizard-like humanoid.",
+      "translation_basis_zh": "Creature; lizard-like humanoid."
+    },
+    "a serpentoid": {
+      "canonical": "蛇人",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; snake-like humanoid.",
+      "translation_basis_zh": "Creature; snake-like humanoid."
+    },
+    "an arachnid": {
+      "canonical": "蜘蛛形怪",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; spider-like creature.",
+      "translation_basis_zh": "Creature; spider-like creature."
+    },
+    "an insectoid": {
+      "canonical": "虫形怪",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; insect-like creature.",
+      "translation_basis_zh": "Creature; insect-like creature."
+    },
+    "a reaper": {
+      "canonical": "收割者",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; animate plant monster.",
+      "translation_basis_zh": "Creature; animate plant monster."
+    },
+    "an elemental": {
+      "canonical": "元素生物",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; being of pure elemental essence.",
+      "translation_basis_zh": "Creature; being of pure elemental essence."
+    },
+    "a dracolich": {
+      "canonical": "龙巫妖",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; undead dragon.",
+      "translation_basis_zh": "Creature; undead dragon."
+    },
+    "a lich": {
+      "canonical": "巫妖",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; undead spellcaster.",
+      "translation_basis_zh": "Creature; undead spellcaster."
+    },
+    "a flesh golem": {
+      "canonical": "血肉魔像",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; frankenstein-style construct.",
+      "translation_basis_zh": "Creature; frankenstein-style construct."
+    },
+    "a dread lord": {
+      "canonical": "恐怖领主",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; powerful undead lord.",
+      "translation_basis_zh": "Creature; powerful undead lord."
+    },
+    "a death knight": {
+      "canonical": "死亡骑士",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; undead warrior.",
+      "translation_basis_zh": "Creature; undead warrior."
+    },
+    "a watcher": {
+      "canonical": "守望者",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; otherworldly observer.",
+      "translation_basis_zh": "Creature; otherworldly observer."
+    },
+    "a cerberus": {
+      "canonical": "地狱三头犬",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; three-headed hellhound.",
+      "translation_basis_zh": "Creature; three-headed hellhound."
+    },
+    "a styguana": {
+      "canonical": "冥地蜥蜴",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; stygian lizard.",
+      "translation_basis_zh": "Creature; stygian lizard."
+    },
+    "a hell beast": {
+      "canonical": "地狱兽",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Creature; infernal beast.",
+      "translation_basis_zh": "Creature; infernal beast."
+    },
+    "Dungeon Covetous": {
+      "canonical": "贪欲地城",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic UO dungeon.",
+      "translation_basis_zh": "Classic UO dungeon."
+    },
+    "Dungeon Deceit": {
+      "canonical": "欺瞒地城",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic UO dungeon.",
+      "translation_basis_zh": "Classic UO dungeon."
+    },
+    "Dungeon Hythloth": {
+      "canonical": "海斯罗斯地城",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic UO dungeon.",
+      "translation_basis_zh": "Classic UO dungeon."
+    },
+    "Dungeon Wrong": {
+      "canonical": "谬误地城",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Classic UO dungeon.",
+      "translation_basis_zh": "Classic UO dungeon."
+    },
+    "Terathan Keep": {
+      "canonical": "特拉桑要塞",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Dungeon; spider/terathan lair.",
+      "translation_basis_zh": "Dungeon; spider/terathan lair."
+    },
+    "Stonegate Castle": {
+      "canonical": "石门城堡",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Dungeon/stronghold.",
+      "translation_basis_zh": "Dungeon/stronghold."
+    },
+    "Morgaelin's Inferno": {
+      "canonical": "莫加林炼狱",
+      "alternatives": [],
+      "category": "creature",
+      "notes": "Dungeon; infernal region.",
+      "translation_basis_zh": "Dungeon; infernal region."
     }
   }
 }

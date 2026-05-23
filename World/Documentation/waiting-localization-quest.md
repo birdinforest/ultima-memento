@@ -559,7 +559,7 @@ AddHtml(12, 43, 878, 548,
 
 ---
 
-## 5. 专有名词中文化方案（待办）
+## 5. 专有名词中文化方案（已完成）
 
 ### 5.1 问题说明
 
@@ -650,43 +650,43 @@ AddHtml(12, 43, 878, 548,
 | 类别 | 条目 | 优先级 |
 |------|------|--------|
 | ✅ 已有 | 全部世界/大陆名 | 已有 |
-| 🔲 待加 | 23 个城市名（Britain, Fawn, Grey, Moon, Yew, Montor, Umbra, Devil Guard, Death Gulch, Renika, Glacial Hills, Springvale, Elidor, Islegem, Port of Dusk, Port of Starguide, Portshine, Greensky Village, City of Lodoria, Cimmeran Hold, Village of Barako, Village of Kurak, Kuldara） | P1 |
-| 🔲 待加 | 23 个职业名（blacksmith, jeweler, provisioner, banker, minter, waiter, guard, sage, mage, herbalist, alchemist, healer, guildmaster, tinker, innkeeper, bartender, butcher, tailor, weaver, shipwright, scribe, farmer, stable master） | P1 |
-| 🔲 待加 | 反派类别（daemon, balron, balor, balrog, devil, succubus, demoness, daemoness, dragon, giant, etc.） | P2 |
-| 🔲 待加 | 主要地城名（Dungeon Doom, Dungeon Covetous, Dungeon Deceit, Dungeon Destard, Dungeon Hythloth, Dungeon Shame, Dungeon Wrong, Terathan Keep, Stonegate Castle, Serpent Sanctum, Morgaelin's Inferno, Stygian Abyss, etc.） | P2 |
-| 🔲 待加 | 主要怪物名（dragon, daemon, lich, vampire, ghost, zombie, gargoyle, orc, troll, ogre, golem, etc.） | P3 |
+| ✅ 已完成 | 23 个城市名（Britain, Fawn, Grey, Moon, Yew, Montor, Umbra, Devil Guard, Death Gulch, Renika, Glacial Hills, Springvale, Elidor, Islegem, Port of Dusk, Port of Starguide, Portshine, Greensky Village, City of Lodoria, Cimmeran Hold, Village of Barako, Village of Kurak, Kuldara） | P1 |
+| ✅ 已完成 | 23 个职业名（blacksmith, jeweler, provisioner, banker, minter, waiter, guard, sage, mage, herbalist, alchemist, healer, guildmaster, tinker, innkeeper, bartender, butcher, tailor, weaver, shipwright, scribe, farmer, stable master） | P1 |
+| ✅ 已完成 | 反派类别（daemon, balron, balor, balrog, devil, succubus, demoness, daemoness, dragon, giant, etc.） | P2 |
+| ✅ 已完成 | 主要地城名（Dungeon Doom, Dungeon Covetous, Dungeon Deceit, Dungeon Destard, Dungeon Hythloth, Dungeon Shame, Dungeon Wrong, Terathan Keep, Stonegate Castle, Serpent Sanctum, Morgaelin's Inferno, Stygian Abyss, etc.） | P2 |
+| ✅ 评估完成 | 主要怪物名（dragon, daemon, lich, vampire, ghost, zombie, gargoyle, orc, troll, ogre, golem, etc.） | P3 |
 
 #### 5.4.2 C# 修改
 
 | 任务 | 描述 | 涉及文件 | 优先级 |
 |------|------|---------|--------|
-| 🔲 1. 大陆名本地化辅助 | 在 `QuestTomeGump` 构造参数阶段，用 `Lands.LocalizedLandName()` 或自定义注解方法替代 `Lands.LandName()` 为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
-| 🔲 2. 故事模板更新 | 更新 `quest.tome.story.good/evil` 的 ZH 模板，确保地名使用 `中文（English）` 格式 | `world-player-text.json` | P1 |
-| 🔲 3. 帮助页模板更新 | 更新 `quest.tome.help.guide` 的 ZH 模板，同上 | `world-player-text.json` | P1 |
-| 🔲 4. 流言系统城市/职业本地化 | 在 `GetRumor` 中文分支中，将 `RandomThings.GetRandomJob()` / `GetRandomCity()` 的结果包装为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
-| 🔲 5. 地城名本地化 | 在 `GetRumor` 中文分支中，用 glossary 查询 dungeon 字符串的本地化版本 | `QuestTome.cs` | P2 |
-| 🔲 6. 反派类别本地化 | 为 `VillainCategory` 增加 `ResolveVillainCategory()` 辅助方法，映射 glossary 中的怪物类型为 `中文（English）` | `QuestTome.cs` | P2 |
-| 🔲 7. 名词词表 review | 评估 `RandomThings.GetRandomName()` 返回的随机人名是否需要中文注解 | 无需修改 | P3 |
+| ✅ 1. 大陆名本地化辅助 | 在 `QuestTomeGump` 构造参数阶段，用 `Lands.LocalizedLandName()` 或自定义注解方法替代 `Lands.LandName()` 为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
+| ✅ 2. 故事模板更新 | 更新 `quest.tome.story.good/evil` 的 ZH 模板，确保地名使用 `中文（English）` 格式 | `world-player-text.json` | P1 |
+| ✅ 3. 帮助页模板更新 | 更新 `quest.tome.help.guide` 的 ZH 模板，同上 | `world-player-text.json` | P1 |
+| ✅ 4. 流言系统城市/职业本地化 | 在 `GetRumor` 中文分支中，将 `RandomThings.GetRandomJob()` / `GetRandomCity()` 的结果包装为 `中文（English）` 格式 | `QuestTome.cs` | P1 |
+| ✅ 5. 地城名本地化 | 在 `GetRumor` 中文分支中，用 glossary 查询 dungeon 字符串的本地化版本 | `QuestTome.cs` | P2 |
+| ✅ 6. 反派类别本地化 | 为 `VillainCategory` 增加 `ResolveVillainCategory()` 辅助方法，映射 glossary 中的怪物类型为 `中文（English）` | `QuestTome.cs` | P2 |
+| ✅ 7. 名词词表 review | 评估 `RandomThings.GetRandomName()` 返回的随机人名是否需要中文注解 | 无需修改 | P3 |
 
 #### 5.4.3 更新顺序
 
-**Step 1 (P1) — 模板中的地名注解**
-1. 确认 `Lands.LocalizedLandName()` 可用并返回正确的 `中文（English）` 格式
-2. 修改 `QuestTomeGump` 构造函数，用本地化版本的大陆名替代 `Lands.LandName()`
-3. 无需改模板 JSON（地名作为参数传入，本地化发生在 C# 端）
+**Step 1 (P1) — 模板中的地名注解 ✅**
+1. 确认 `Lands.LocalizedLandName()` 可用并返回正确的 `中文（English）` 格式 ✅
+2. 修改 `QuestTomeGump` 构造函数，用本地化版本的大陆名替代 `Lands.LandName()` ✅
+3. 无需改模板 JSON（地名作为参数传入，本地化发生在 C# 端）✅
 
-**Step 2 (P1) — 流言系统城市/职业名词典注解**
-1. 将所有城市名和职业名加入 `glossary-approved-zh.json`
-2. 运行 `sync_localization_glossary.py` 同步
-3. 在 `GetRumor` 中文分支中，将城市和职业名称用 glossary 映射为 `中文（English）`
+**Step 2 (P1) — 流言系统城市/职业名词典注解 ✅**
+1. 将所有城市名和职业名加入 `glossary-approved-zh.json` ✅
+2. 运行 `sync_localization_glossary.py` 同步 ✅
+3. 在 `GetRumor` 中文分支中，将城市和职业名称用 glossary 映射为 `中文（English）` ✅
 
-**Step 3 (P2) — 反派类别 + 地城名词典注解**
-1. 将主要怪物类型和地城名加入 glossary
-2. 在 C# 中增加解析方法
+**Step 3 (P2) — 反派类别 + 地城名词典注解 ✅**
+1. 将主要怪物类型和地城名加入 glossary ✅
+2. 在 C# 中增加解析方法 ✅
 
-**Step 4 (P3) — 评估剩余名词**
-1. 评估 NPC 名和物品名是否需要更进一步的处理
-2. 如评估无必要，标记为完成
+**Step 4 (P3) — 评估剩余名词 ✅**
+1. 评估 NPC 名和物品名是否需要更进一步的处理 ✅
+2. 评估完成：动态生成的 NPC 名（`EpicCharacter` 实体）、随机物品名（`QuestItems()`）、草药名、法术名等为运行时虚构内容，不具备固定中文译名，保留英文原文；怪物名整合在反派类别 glossary 中已涵盖。标记为完成。 ✅
 
 ---
 
