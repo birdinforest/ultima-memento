@@ -2324,6 +2324,15 @@
       "category": "concept",
       "notes": "In-game craft shop system; archaic spelling is intentional flavour. Translate as 专柜 to distinguish from generic 商店."
     },
+    "Xormite": {
+      "canonical": "神秘矿",
+      "alternatives": [
+        "索尔米特矿石"
+      ],
+      "category": "item",
+      "notes": "Rare magical ore/mineral used as a crafting material and quest currency in Ultima Online: Age of Shadows content; also functions as a coin-like currency for tinker fees (robot/golem construction).",
+      "translation_basis_zh": "根据 CliLoc-cht.csv 1034439 行官方译名「神秘矿」确定；此前散见于各文件的「泽姆矿」「索尔米特矿石」及保留英文的 xormite 已统一为此译名。"
+    },
     "_SECTION_CONCEPTS": "── Concepts / Events / Works ────────────────────────────────",
     "The Fall of Mondain": {
       "canonical": "蒙丹的覆灭",
