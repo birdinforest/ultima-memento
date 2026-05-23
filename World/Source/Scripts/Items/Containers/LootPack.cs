@@ -4,6 +4,7 @@ using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Utilities;
+using Server.Localization;
 
 namespace Server
 {
@@ -60,18 +61,30 @@ namespace Server
 
 				bool checkLuck = true;
 
+				int lootMulBp = EventSystem.GetLootChanceMultiplierBp();
+
 				for ( int i = 0; i < m_Entries.Length; ++i )
 				{
 					LootPackEntry entry = m_Entries[i];
 
-					bool shouldAdd = ( entry.Chance > Utility.Random( 10000 ) );
+					int scaledChance = entry.Chance;
+
+					if ( lootMulBp != 100 )
+					{
+						scaledChance = (int)Math.Round( entry.Chance * lootMulBp / 100.0 );
+
+						if ( scaledChance > 10000 )
+							scaledChance = 10000;
+					}
+
+					bool shouldAdd = ( scaledChance > Utility.Random( 10000 ) );
 
 					if ( !shouldAdd && checkLuck )
 					{
 						checkLuck = false;
 
 						if ( LootPack.CheckLuck( luckChance ) )
-							shouldAdd = ( entry.Chance > Utility.Random( 10000 ) );
+							shouldAdd = ( scaledChance > Utility.Random( 10000 ) );
 					}
 
 					if ( !shouldAdd )

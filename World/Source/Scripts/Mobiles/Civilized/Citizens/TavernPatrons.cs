@@ -8,6 +8,7 @@ using Server.Commands;
 using Server.Commands.Generic;	
 using Server.Mobiles;	
 using Server.Accounting;	
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -553,6 +554,8 @@ namespace Server.Misc
 				if ( Utility.RandomBool() ){ relics = QuestCharacters.ArtyItems( false ); }
 
 			int max = 172; if ( !useAll ){ max = max + 40; }
+
+			if ( EventSystem.TavernEventRumorRangeActive() ){ max = Math.Max( max, 176 ); }
 			switch( Utility.RandomMinMax( 0, max ) )
 			{
 				case 0: sWords = "a bright white shrine in Sosaria that leads to the moon"; break;	
@@ -868,6 +871,10 @@ namespace Server.Misc
 						case 4: misc = "was lost"; break;	
 					}
 					sWords = "a " + RandomThings.GetBoyGirlJob( Utility.RandomMinMax( 0, 1 ) ) + " that " + misc + " in " + dungeon + ""; break;
+				case 173: sWords = "the veil between chronicles growing thin, so one tavern swears Exodus fell and another swears he still stirs"; break;
+				case 174: sWords = "pilgrims leaving Castle Exodus with fresh ink staining scrolls no scribe admits to handing out"; break;
+				case 175: sWords = "town criers taking coin for whispers tied to tales called The Thinning Veil"; break;
+				case 176: sWords = "the Time Lord murmuring of Love, Sol, Moon, and Death while hours slide sideways for those who listen"; break;
 			}
 			return sWords;	
 		}

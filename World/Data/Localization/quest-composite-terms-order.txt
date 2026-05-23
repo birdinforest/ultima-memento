@@ -1048,3 +1048,8 @@ witch
 wizard
 the high seas
 an anhkheg
+# --- TavernPatrons.CommonTalk event-phase (longest-first) ---
+the veil between chronicles growing thin, so one tavern swears Exodus fell and another swears he still stirs
+the Time Lord murmuring of Love, Sol, Moon, and Death while hours slide sideways for those who listen
+pilgrims leaving Castle Exodus with fresh ink staining scrolls no scribe admits to handing out
+town criers taking coin for whispers tied to tales called The Thinning Veil

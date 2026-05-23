@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Mobiles; 
 using Server.Network;
+using Server.Localization;
 using Server.Regions;
 using Server;
 using System.Collections.Generic; 
@@ -490,6 +491,33 @@ namespace Server.Mobiles
 		public static string ParseType( string s )
 		{
 			return s.Split( null, 2 )[0];
+		}
+
+		/// <summary>
+		/// World event spawn override — replaces creature typename token while preserving trailing set/props tokens.
+		/// </summary>
+		public static string ApplyEventMobSpawnLine( string creatureLine )
+		{
+			if ( creatureLine == null || creatureLine.Length == 0 )
+				return creatureLine;
+
+			string trim = creatureLine.TrimStart();
+			string typeName = ParseType( trim );
+			string replacement = EventSystem.TryGetMobSpawnReplacement( typeName );
+
+			if ( replacement == null || replacement.Length == 0 )
+				return creatureLine;
+
+			if ( trim.Length <= typeName.Length )
+				return replacement;
+
+			string tail = trim.Substring( typeName.Length ).TrimStart();
+			return tail.Length == 0 ? replacement : replacement + " " + tail;
+		}
+
+		private bool EventBossSpawnDenied()
+		{
+			return !EventSystem.AllowsBossSpawn( SpawnID );
 		}
 
 		public void Defrag()
@@ -1039,13 +1067,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesName.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesName[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesName[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesName[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1060,13 +1090,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesNameA.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesNameA[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesNameA[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesNameA[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1081,13 +1113,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesNameB.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesNameB[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesNameB[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesNameB[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1102,13 +1136,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesNameC.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesNameC[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesNameC[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesNameC[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1123,13 +1159,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesNameD.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesNameD[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesNameD[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesNameD[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1144,13 +1182,15 @@ namespace Server.Mobiles
 			if ( index >= m_CreaturesNameE.Count )
 				return null;
 
-			Type type = ScriptCompiler.FindTypeByName( ParseType( m_CreaturesNameE[index] ) );
+			string creatureDef = ApplyEventMobSpawnLine( m_CreaturesNameE[index] );
+
+			Type type = ScriptCompiler.FindTypeByName( ParseType( creatureDef ) );
 
 			if ( type != null )
 			{
 				try
 				{
-					return Build( CommandSystem.Split( m_CreaturesNameE[index] ) );
+					return Build( CommandSystem.Split( creatureDef ) );
 				}
 				catch
 				{
@@ -1161,7 +1201,6 @@ namespace Server.Mobiles
 		}
 
 		public static IEntity Build( string[] args )
-		{
 			string name = args[0];
 
 			Add.FixArgs( ref args );
@@ -1279,6 +1318,9 @@ namespace Server.Mobiles
 			if ( m_Creatures.Count >= m_Count )
 				return;
 
+			if ( EventBossSpawnDenied() )
+				return;
+
 			IEntity ent = CreateSpawnedObject( index );
 
 			if ( ent is Mobile || ent is BaseSpawner )
@@ -1388,6 +1430,9 @@ namespace Server.Mobiles
 			if ( m_CreaturesA.Count >= m_CountA )
 				return;
 
+			if ( EventBossSpawnDenied() )
+				return;
+
 			IEntity ent = CreateSpawnedObjectA( index );
 
 			if ( ent is Mobile || ent is BaseSpawner )
@@ -1489,6 +1534,9 @@ namespace Server.Mobiles
 			Defrag();
 
 			if ( m_CreaturesB.Count >= m_CountB )
+				return;
+
+			if ( EventBossSpawnDenied() )
 				return;
 
 			IEntity ent = CreateSpawnedObjectB( index );
@@ -1594,6 +1642,9 @@ namespace Server.Mobiles
 			if ( m_CreaturesC.Count >= m_CountC )
 				return;
 
+			if ( EventBossSpawnDenied() )
+				return;
+
 			IEntity ent = CreateSpawnedObjectC( index );
 
 			if ( ent is Mobile || ent is BaseSpawner )
@@ -1697,6 +1748,9 @@ namespace Server.Mobiles
 			if ( m_CreaturesD.Count >= m_CountD )
 				return;
 
+			if ( EventBossSpawnDenied() )
+				return;
+
 			IEntity ent = CreateSpawnedObjectD( index );
 
 			if ( ent is Mobile || ent is BaseSpawner )
@@ -1798,6 +1852,9 @@ namespace Server.Mobiles
 			Defrag();
 
 			if ( m_CreaturesE.Count >= m_CountE )
+				return;
+
+			if ( EventBossSpawnDenied() )
 				return;
 
 			IEntity ent = CreateSpawnedObjectE( index );

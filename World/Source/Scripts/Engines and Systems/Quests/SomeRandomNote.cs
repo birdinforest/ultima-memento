@@ -8,8 +8,6 @@ using Server.Gumps;
 using Server.Network;
 using Server.Accounting;
 using Server.Localization;
-
-namespace Server.Items
 {
 	public class SomeRandomNote : Item
 	{
@@ -23,6 +21,8 @@ namespace Server.Items
 
 		public string ScrollMessage;
 		public int ScrollTrue;
+		/// <summary>When set, associates this note with a world event id (e.g. event_phase_0).</summary>
+		public string EventTag;
 
 		[CommandProperty(AccessLevel.Owner)]
 		public string Scroll_Message { get { return ScrollMessage; } set { ScrollMessage = value; InvalidateProperties(); } }
@@ -229,8 +229,64 @@ namespace Server.Items
 						ScrollMessage = "" + QuestCharacters.ParchmentWriter() + ",<br><br>I saved the 500 gold needed to purchase a research pack from that " + researcher + " in " + RandomThings.GetRandomCity() + ". I started doing some research to learn I need to find a cube of power in " + RandomThings.MadeUpDungeon() + ". Could you gather our friends and meet me there when the moon is at half? I would feel better if I had comrades to fight off the dangers within.<br><br> - " + QuestCharacters.ParchmentWriter() + ""; break;
 					case 47:	ScrollMessage = "" + QuestCharacters.ParchmentWriter() + ",<br><br>I found a way to make use of this orb of the abyss you found. If you do not want it to interfere with your trinket, then you could take it to a tinker and they will modify it into jewelry that you can wear instead. Once you do that, we can head into the Underworld and search for the fabled Titans we have read about.<br><br> - " + QuestCharacters.ParchmentWriter(); break;
 					case 48:	ScrollMessage = "" + QuestCharacters.ParchmentWriter() + ",<br><br>I learned the secrets of this mysterious dragon skull we found in " + RandomThings.MadeUpDungeon() + ". It is the essence of a dracolich, but we need to remove the dark aura that conceals its true power. We need to head to Dungeon Hythloth and find the bloody pentagram of the great demon. If we use the skull within the pentagram, the aura will be removed and we can then pursue our goal on reanimating the creature to do our bidding.<br><br> - " + QuestCharacters.ParchmentWriter(); break;
-					case 49:	ScrollMessage = "" + QuestCharacters.ParchmentWriter() + ",<br><br>A sailor in " + RandomThings.GetRandomCity() + " told me a tale of Poseidon building twin serpent pillars out on the sea. One set I found in Sosaria, while another is said to exist in Lodoria. If one could learn the secrets of these pillars, then they can travel to another world by stepping between them. If Poseidon did in fact build these gateways, then perhaps his caverns hold the clue I need to use them. If I find them, we will assemble the crew and have the winds take us there. It may be the shipping route we need to trade with the elves."; break;		}
+					case 49:	ScrollMessage = "" + QuestCharacters.ParchmentWriter() + ",<br><br>A sailor in " + RandomThings.GetRandomCity() + " told me a tale of Poseidon building twin serpent pillars out on the sea. One set I found in Sosaria, while another is said to exist in Lodoria. If one could learn the secrets of these pillars, then they can travel to another world by stepping between them. If Poseidon did in fact build these gateways, then perhaps his caverns hold the clue I need to use them. If I find them, we will assemble the crew and have the winds take us there. It may be the shipping route we need to trade with the elves."; break;
+				}
 			}
+
+			TryApplyThinningEventFragments( this );
+		}
+
+		static void TryApplyThinningEventFragments( SomeRandomNote note )
+		{
+			if ( note == null )
+				return;
+
+			foreach ( string eventId in EventSystem.GetActiveEventIds() )
+			{
+				if ( !EventSystem.IsEnabled( eventId, "lore_enabled" ) )
+					continue;
+
+				int c = EventSystem.GetChance( eventId, "note_drop_chance" );
+
+				if ( c <= 0 )
+					continue;
+
+				if ( Utility.RandomDouble() >= c / 100.0 )
+					continue;
+
+				if ( Insensitive.Equals( eventId, EventSystem.ThinningVeilEventIdConst ) )
+				{
+					ApplyThinningVeilSlot( note, Utility.RandomMinMax( 200, 202 ) );
+					return;
+				}
+			}
+		}
+
+		public static void ApplyThinningVeilSlot( SomeRandomNote note, int slot )
+		{
+			if ( note == null )
+				return;
+
+			note.EventTag = EventSystem.ThinningVeilEventIdConst;
+
+			switch ( slot )
+			{
+				case 200:
+					note.ScrollMessage = "Tell no one—some say Exodus fell in worlds that brush ours, and stories leak through.";
+					note.Name = "a rumor-stained parchment";
+					break;
+				case 201:
+					note.ScrollMessage = "The Time Lord whispers rivers of time bending thinner; Exodus' ruined walls ache at dusk.";
+					note.Name = "a worried scrap";
+					break;
+				default:
+				case 202:
+					note.ScrollMessage = "Love, Sol, Moon, Death—was that order meant for another age, repeating in our scribbles today?"; 
+					note.Name = "a torn note";
+					break;
+			}
+
+			note.InvalidateProperties();
 		}
 
 		public class ClueGump : Gump

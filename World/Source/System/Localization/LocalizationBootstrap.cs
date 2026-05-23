@@ -13,6 +13,7 @@ namespace Server.Localization
 		[CallPriority( -100 )]
 		public static void Initialize()
 		{
+			EventSystem.Load();
 			StringCatalog.Load();
 		}
 	}

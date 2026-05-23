@@ -1,0 +1,17 @@
+{
+  "active_events": "",
+  "event_phase_0.enabled": "true",
+  "event_phase_0.lore_enabled": "true",
+  "event_phase_0.rumor_enabled": "true",
+  "event_phase_0.mob_spawn_enabled": "false",
+  "event_phase_0.boss_spawn_enabled": "true",
+  "event_phase_0.loot_override_enabled": "false",
+  "event_phase_0.towncrier_shout_chance": "30",
+  "event_phase_0.towncrier_book_chance": "100",
+  "event_phase_0.timelord_speech_chance": "40",
+  "event_phase_0.tavern_rumor_chance": "20",
+  "event_phase_0.lorebook_drop_chance": "25",
+  "event_phase_0.note_drop_chance": "15",
+  "event_phase_0.loot_chance_multiplier": "100",
+  "event_phase_0.boss_spawn_ids": "99999"
+}

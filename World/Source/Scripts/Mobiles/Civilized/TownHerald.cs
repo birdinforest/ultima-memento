@@ -10,6 +10,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Regions;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -62,15 +63,18 @@ namespace Server.Mobiles
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			Region reg = Region.Find( this.Location, this.Map );
 			if ( DateTime.Now >= m_NextTalk && InRange( m, 10 ) && m is PlayerMobile )
 			{
-				if ( LoggingFunctions.LoggingEvents() == true )
+				string shoutEventId;
+
+				if ( EventSystem.RollTowncrierShoutChance( out shoutEventId ) )
 				{
-					if ( Utility.RandomMinMax(1,4) == 1 )
-					{
+					ShoutActiveEventPhase( this, shoutEventId );
+				}
+				else if ( LoggingFunctions.LoggingEvents() == true )
+				{
+					if ( Utility.RandomMinMax( 1, 4 ) == 1 )
 						randomShout( this );
-					}
 					else
 					{
 						string sEvents = LoggingFunctions.LogShout();
@@ -78,11 +82,45 @@ namespace Server.Mobiles
 					}
 				}
 				else
-				{
 					randomShout( this );
-				}
-				m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 15, 30 ) ));
+
+				m_NextTalk = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 15, 30 ) );
 			}
+		}
+
+		public static void ShoutActiveEventPhase( Mobile herald, string eventId )
+		{
+			if ( herald == null || eventId == null || eventId.Length == 0 )
+				return;
+
+			if ( Insensitive.Equals( eventId, EventSystem.ThinningVeilEventIdConst ) )
+				CitizenLocalization.SayLocalized( herald, "Hear ye! Chroniclers quarrel—the ruin of Exodus is told two ways at once; mind which ink stains thy map!" );
+			else
+				CitizenLocalization.SayLocalized( herald, "Hark! Something stirs abroad—heed the road and the rumours of this season!" );
+		}
+
+		static bool TryGrantEventPhaseLoreBook( Mobile herald, PlayerMobile pm )
+		{
+			if ( herald == null || pm == null )
+				return false;
+
+			foreach ( string eid in EventSystem.GetActiveEventIds() )
+			{
+				if ( !EventSystem.IsEventActive( eid ) || !EventSystem.RollTowncrierBookChanceForEvent( eid ) )
+					continue;
+
+				if ( Insensitive.Equals( eid, EventSystem.ThinningVeilEventIdConst ) )
+				{
+					if ( LoreBook.PlayerOwnsThinningVeil( pm ) )
+						continue;
+
+					pm.AddToBackpack( new LoreBook( 200 ) );
+					herald.SayTo( pm, false, StringCatalog.Resolve( pm.Account, "Take this chronicle, friend—it may steady thy step where stories overlap." ) );
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		public static string randomShout( Mobile m )
@@ -230,9 +268,9 @@ namespace Server.Mobiles
 							mobile.SendGump(new LoggingGumpCrier( mobile, 1 ));
 						}
 					}
-					else
+					else if ( !TryGrantEventPhaseLoreBook( m_Giver, mobile ) )
 					{
-						m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "Good day to you, {0}.", m_Mobile.Name ) );
+						m_Giver.SayTo( m_Mobile, false, StringCatalog.ResolveFormat( m_Mobile.Account, "Good day to you, {0}.", m_Mobile.Name ) );
 					}
 				}
             }

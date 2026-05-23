@@ -4,6 +4,7 @@ using Server.Items;
 using Server.ContextMenus;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -18,7 +19,11 @@ namespace Server.Mobiles
 			{
 				if ( DateTime.Now >= m_NextTalk && InRange( m, 4 ) && InLOS( m ) )
 				{
-					switch ( Utility.Random( 9 ))
+					int r = Utility.Random( 13 );
+
+					if ( r >= 9 && !EventSystem.RollTimedLordSpeechChance() ){ r = Utility.Random( 9 ); }
+
+					switch ( r )
 					{
 						case 0: CitizenLocalization.SayLocalized(this, "The Stranger has saved Sosaria from Exodus."); break;
 						case 1: CitizenLocalization.SayLocalized(this, "Castle Exodus lies in ruins, no one knowing what evil lurks below."); break;
@@ -29,7 +34,11 @@ namespace Server.Mobiles
 						case 6: CitizenLocalization.SayLocalized(this, "The order was Love, Sol, Moon, and Death."); break;
 						case 7: CitizenLocalization.SayLocalized(this, "Maybe one day the Stranger will achieve Avatarhood."); break;
 						case 8: CitizenLocalization.SayLocalized(this, "The strings of time show the Guardian is coming."); break;
-					};
+						case 9: CitizenLocalization.SayLocalized(this, "Hear me: histories argue now—I see two endings for Exodus penned in the same hour."); break;
+						case 10: CitizenLocalization.SayLocalized(this, "Threads fray where the veil thins—walk softly when thy shadow answers to another day's sun."); break;
+						case 11: CitizenLocalization.SayLocalized(this, "The rhyme of Love, Sol, Moon, and Death marks a doorway; something knocks from the farther side."); break;
+						case 12: CitizenLocalization.SayLocalized(this, "Courtesy to the herald who still reads—for ink from nowhere often marks a crossing."); break;
+					}
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}
