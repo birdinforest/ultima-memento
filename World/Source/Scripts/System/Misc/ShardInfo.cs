@@ -8,7 +8,7 @@ namespace Server.Misc
 		/// Single source of truth for the shard/game version.
 		/// Update this when releasing a new version.
 		/// </summary>
-		public static readonly Version CurrentVersion = new Version(3, 0, 2);
+		public static readonly Version CurrentVersion = new Version(3, 0, 3);
 
 		/// <summary>
 		/// Display string: "Version: X.Y.Z"
