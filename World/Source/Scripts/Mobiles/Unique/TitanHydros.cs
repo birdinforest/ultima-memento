@@ -23,6 +23,9 @@ namespace Server.Mobiles
 		public override double BreathEffectDelay{ get{ return 0.1; } }
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 43 ); }
 
+		private DateTime m_NextTidalDrain;
+		private DateTime m_NextRegen;
+
 		[Constructable]
 		public TitanHydros () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -34,34 +37,83 @@ namespace Server.Mobiles
 
 			SetStr( 986, 1185 );
 			SetDex( 177, 255 );
-			SetInt( 151, 250 );
+			SetInt( 351, 450 );
 
-			SetHits( 592, 711 );
+			SetHits( 2100, 2500 );
 
-			SetDamage( 22, 29 );
+			SetDamage( 30, 42 );
 
 			SetDamageType( ResistanceType.Physical, 50 );
-			SetDamageType( ResistanceType.Fire, 25 );
-			SetDamageType( ResistanceType.Energy, 25 );
+			SetDamageType( ResistanceType.Fire,     25 );
+			SetDamageType( ResistanceType.Energy,   25 );
 
-			SetResistance( ResistanceType.Physical, 65, 80 );
-			SetResistance( ResistanceType.Fire, 60, 80 );
-			SetResistance( ResistanceType.Cold, 50, 60 );
-			SetResistance( ResistanceType.Poison, 100 );
-			SetResistance( ResistanceType.Energy, 40, 50 );
+			// Fire is the elemental weakness — rewards fire-spec mages.
+			// BardImmune is false so Discordance can reduce Hydros's Tactics and MagicResist by 28 %.
+			SetResistance( ResistanceType.Physical,  70, 78 );
+			SetResistance( ResistanceType.Fire,      45, 55 );
+			SetResistance( ResistanceType.Cold,      62, 72 );
+			SetResistance( ResistanceType.Poison,    100,100 );
+			SetResistance( ResistanceType.Energy,    42, 52 );
 
-			SetSkill( SkillName.Anatomy, 25.1, 50.0 );
-			SetSkill( SkillName.Psychology, 90.1, 100.0 );
-			SetSkill( SkillName.Magery, 95.5, 100.0 );
-			SetSkill( SkillName.Meditation, 25.1, 50.0 );
-			SetSkill( SkillName.MagicResist, 100.5, 150.0 );
-			SetSkill( SkillName.Tactics, 90.1, 100.0 );
-			SetSkill( SkillName.FistFighting, 90.1, 100.0 );
+			SetSkill( SkillName.Anatomy,      25.1,  50.0 );
+			SetSkill( SkillName.Psychology,  100.0, 115.0 );
+			SetSkill( SkillName.Magery,      100.0, 115.0 );
+			SetSkill( SkillName.Meditation,   25.1,  50.0 );
+			SetSkill( SkillName.MagicResist, 118.0, 155.0 );
+			SetSkill( SkillName.Tactics,     100.0, 115.0 );
+			SetSkill( SkillName.FistFighting,100.0, 115.0 );
 
 			Fame = 24000;
 			Karma = -24000;
 
-			VirtualArmor = 90;
+			VirtualArmor = 100;
+
+			m_NextTidalDrain = DateTime.Now + TimeSpan.FromSeconds( 14.0 );
+			m_NextRegen      = DateTime.Now + TimeSpan.FromSeconds(  5.0 );
+		}
+
+		public override void OnThink()
+		{
+			base.OnThink();
+
+			if ( !Alive || Combatant == null )
+				return;
+
+			if ( DateTime.Now >= m_NextRegen && Hits < HitsMax )
+			{
+				Hits = Math.Min( HitsMax, Hits + 25 );
+				m_NextRegen = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+			}
+
+			// Tidal Drain: hits up to 4 nearby players every 12 seconds.
+			// Drains stamina + deals cold damage + minor poison.  Without a Tamer's pet
+			// soaking the primary tank slot, stamina-drained warriors cannot sustain attack.
+			if ( DateTime.Now >= m_NextTidalDrain )
+			{
+				DoTidalDrain();
+				m_NextTidalDrain = DateTime.Now + TimeSpan.FromSeconds( 12.0 );
+			}
+		}
+
+		private void DoTidalDrain()
+		{
+			Say( "The cold sea claims you!" );
+			PlaySound( 0x026 );
+			FixedParticles( 0x376A, 9, 32, 0x251F, EffectLayer.Waist );
+
+			int count = 0;
+			foreach ( Mobile m in GetMobilesInRange( 8 ) )
+			{
+				if ( count >= 4 ) break;
+				if ( m is PlayerMobile && m.Map == Map && m.Alive && !m.Blessed )
+				{
+					AOS.Damage( m, this, Utility.RandomMinMax( 30, 45 ), 0, 0, 100, 0, 0 );
+					m.Stam = Math.Max( 0, m.Stam - Utility.RandomMinMax( 30, 50 ) );
+					m.ApplyPoison( this, Poison.Lesser );
+					m.FixedParticles( 0x374A, 10, 15, 5038, EffectLayer.Head );
+					count++;
+				}
+			}
 		}
 
 		public override void GenerateLoot()
@@ -250,7 +302,10 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
-		public override bool BardImmune { get { return true; } }
+		// BardImmune = false: allows Discordance to reduce all of Hydros's skills by 28 %.
+		// A skilled bard significantly lowers Hydros's Tactics and MagicResist,
+		// making the fight manageable for a team that includes music support.
+		public override bool BardImmune { get { return false; } }
 
 		public TitanHydros( Serial serial ) : base( serial )
 		{

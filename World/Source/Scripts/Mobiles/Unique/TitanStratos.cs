@@ -24,6 +24,9 @@ namespace Server.Mobiles
 		public override double BreathEffectDelay{ get{ return 0.1; } }
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 44 ); }
 
+		private DateTime m_NextCycloneBurst;
+		private DateTime m_NextRegen;
+
 		[Constructable]
 		public TitanStratos() : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -34,33 +37,39 @@ namespace Server.Mobiles
 			BaseSoundID = 655;
 
 			SetStr( 898, 1030 );
-			SetDex( 68, 200 );
+			SetDex( 168, 300 );
 			SetInt( 488, 620 );
 
-			SetHits( 558, 599 );
+			SetHits( 2000, 2400 );
 
-			SetDamage( 29, 35 );
+			SetDamage( 32, 44 );
 
 			SetDamageType( ResistanceType.Physical, 75 );
-			SetDamageType( ResistanceType.Energy, 25 );
+			SetDamageType( ResistanceType.Energy,   25 );
 
-			SetResistance( ResistanceType.Physical, 65, 75 );
-			SetResistance( ResistanceType.Fire, 50, 60 );
-			SetResistance( ResistanceType.Cold, 45, 55 );
-			SetResistance( ResistanceType.Poison, 20, 30 );
-			SetResistance( ResistanceType.Energy, 70, 80 );
+			// Poison is the elemental weakness — rewards poison-spec.
+			// BardImmune = false: a bard with Discordance removes 28 % of Stratos's combat skills,
+			// reducing damage output and making the cyclic Cyclone Burst far more survivable.
+			SetResistance( ResistanceType.Physical,  65, 75 );
+			SetResistance( ResistanceType.Fire,      50, 62 );
+			SetResistance( ResistanceType.Cold,      48, 58 );
+			SetResistance( ResistanceType.Poison,    18, 28 );
+			SetResistance( ResistanceType.Energy,    72, 82 );
 
-			SetSkill( SkillName.Psychology, 80.1, 100.0 );
-			SetSkill( SkillName.Magery, 80.1, 100.0 );
-			SetSkill( SkillName.Meditation, 52.5, 75.0 );
-			SetSkill( SkillName.MagicResist, 100.3, 130.0 );
-			SetSkill( SkillName.Tactics, 97.6, 100.0 );
-			SetSkill( SkillName.FistFighting, 97.6, 100.0 );
+			SetSkill( SkillName.Psychology,   95.0, 110.0 );
+			SetSkill( SkillName.Magery,       90.0, 110.0 );
+			SetSkill( SkillName.Meditation,   60.0,  80.0 );
+			SetSkill( SkillName.MagicResist, 118.0, 148.0 );
+			SetSkill( SkillName.Tactics,     105.0, 120.0 );
+			SetSkill( SkillName.FistFighting,105.0, 120.0 );
 
 			Fame = 22500;
 			Karma = -22500;
 
-			VirtualArmor = 70;
+			VirtualArmor = 85;
+
+			m_NextCycloneBurst = DateTime.Now + TimeSpan.FromSeconds( 16.0 );
+			m_NextRegen        = DateTime.Now + TimeSpan.FromSeconds(  5.0 );
 		}
 
 		public override void GenerateLoot()
@@ -77,6 +86,46 @@ namespace Server.Mobiles
 				this.Body = 13;
 
 			base.OnDamage( amount, from, willKill );
+		}
+
+		public override void OnThink()
+		{
+			base.OnThink();
+
+			if ( !Alive || Combatant == null )
+				return;
+
+			if ( DateTime.Now >= m_NextRegen && Hits < HitsMax )
+			{
+				Hits = Math.Min( HitsMax, Hits + 25 );
+				m_NextRegen = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+			}
+
+			// Cyclone Burst: AoE energy damage + stamina drain every 18 seconds.
+			// Drains stamina from melee fighters; without bard Discordance reducing Stratos's
+			// Tactics skill, the combined breath + melee + burst kills under-prepared teams.
+			if ( DateTime.Now >= m_NextCycloneBurst )
+			{
+				DoCycloneBurst();
+				m_NextCycloneBurst = DateTime.Now + TimeSpan.FromSeconds( 18.0 );
+			}
+		}
+
+		private void DoCycloneBurst()
+		{
+			Say( "Feel the fury of the storm!" );
+			PlaySound( 0x654 );
+			FixedParticles( 0x36FE, 10, 10, 5052, EffectLayer.CenterFeet );
+
+			foreach ( Mobile m in GetMobilesInRange( 5 ) )
+			{
+				if ( m is PlayerMobile && m.Map == Map && m.Alive && !m.Blessed )
+				{
+					AOS.Damage( m, this, Utility.RandomMinMax( 35, 55 ), 0, 0, 0, 0, 100 );
+					m.Stam = Math.Max( 0, m.Stam - Utility.RandomMinMax( 25, 45 ) );
+					m.FixedParticles( 0x37C4, 1, 8, 9916, EffectLayer.Head );
+				}
+			}
 		}
 
 		public override bool OnBeforeDeath()
@@ -242,7 +291,10 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
-		public override bool BardImmune { get { return true; } }
+		// BardImmune = false: a bard using Discordance reduces ALL of Stratos's skills by 28 %,
+		// including Tactics and MagicResist — directly lowering melee damage and spell defense.
+		// This makes music support a high-value team role, not a luxury.
+		public override bool BardImmune { get { return false; } }
 
 		public TitanStratos( Serial serial ) : base( serial )
 		{
