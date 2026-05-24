@@ -1980,6 +1980,7 @@
   "prop.quest.training.drag": "Drag onto Paperdoll",
   "prop.quest.training.iron": "Only mines Iron Ore",
   "prop.equip.trinket": "Trinket",
+  "prop.equip.trinket.savage.for": "Talisman for {0}",
   "prop.equip.trinket.msg.hip": "Trinkets are equipped on your hip.",
   "prop.equip.trinket.msg.belongs.other": "This talisman belongs to another!",
   "prop.commodity.deed.empty": "Usable on refined resources",

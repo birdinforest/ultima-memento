@@ -1981,6 +1981,7 @@
   "prop.quest.training.drag": "拖到纸娃娃上",
   "prop.quest.training.iron": "仅开采铁矿",
   "prop.equip.trinket": "饰品",
+  "prop.equip.trinket.savage.for": "献给 {0} 的野蛮护符",
   "prop.equip.trinket.msg.hip": "饰品装备在腰间。",
   "prop.equip.trinket.msg.belongs.other": "这枚护符属于另一个人！",
   "prop.commodity.deed.empty": "用于精炼资源",

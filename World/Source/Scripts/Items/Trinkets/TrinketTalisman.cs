@@ -243,15 +243,12 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( BuildingPropertyListLocale != null )
-				AddLocalizedProperty(list, "prop.trinket.trinket");
-			else
-				list.Add( 1070722, "Trinket");
+			AddLocalizedProperty(list, "prop.equip.trinket");
         }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "Trinkets are equipped on your hip." ) );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.equip.trinket.msg.hip" ) );
 			return;
 		}
 
