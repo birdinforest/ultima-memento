@@ -33,8 +33,6 @@ namespace Server.Items
             base.AddNameProperties(list);
 			if ( ItemOwner != null )
 				AddLocalizedProperty(list, "prop.equip.trinket.savage.for", ItemOwner.Name);
-			else
-				AddLocalizedProperty(list, "prop.equip.trinket");
         }
 
 		public override bool OnEquip( Mobile from )
