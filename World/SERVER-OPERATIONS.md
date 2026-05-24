@@ -80,6 +80,62 @@ pkill -KILL -f WorldLinux.exe 2>/dev/null
 mono WorldLinux.exe > server-start.log 2>&1
 ```
 
+## 服务器命令
+### Reload 中文化
+[locreload          # 重读全部 locale JSON + quest-composite 表
+[locreload opl      # 同上，并刷新双语物品 tooltip 缓存
+[lr                 # 别名
+
+### 查看角色装备
+[viewequip
+
+### 查看&修改角色属性增强
+
+常用语修复角色身上挂着孤儿装备，导致虽然没有穿装备，但是保留属性和技能增强的bug。
+可尝试使用下面两个直接重置数值：
+[FixStatMods
+[FixSkillMods
+TODO: 确认重启服务器是否可以修复这个问题。因为在启动服务器后，角色登录时，所有装备增益都是会重新计算的。
+
+DumpStatMods [DumpStatMods → 点目标
+列出所有 StatMod（name / type / offset），并显示 Raw 与 Effective 属性
+
+DumpSkillMods
+[DumpSkillMods → 点目标
+列出所有 SkillMod（类型、技能、数值、relative）
+
+AddStatMod / SetStatMod
+[AddStatMod Dex -12 0x40001234Dex 或 [AddStatMod Dex 5
+Str|Dex|Int、offset、可选 modName、可选 minutes（0=永久）
+
+RemoveStatMod
+[RemoveStatMod 0x40001234Dex → 点目标
+按精确名称删除
+
+ClearStatMods
+[ClearStatMods / [ClearStatMods Dex / [ClearStatMods all
+清除全部或指定属性类型的 mod
+
+FixStatMods
+[FixStatMods → 点目标
+清除全部 StatMod，再按当前身上装备重新加（修 orphan mod）
+
+AddSkillMod / SetSkillMod
+[AddSkillMod Magery 10 或 [AddSkillMod Magery 5 false
+添加 DefaultSkillMod；第三参数 relative，默认 true
+
+RemoveSkillMod
+[RemoveSkillMod Magery → 点目标
+移除该技能的所有 SkillMod
+
+ClearSkillMods
+[ClearSkillMods / [ClearSkillMods Magery
+清除全部或指定技能
+
+FixSkillMods
+[FixSkillMods → 点目标
+清除全部 SkillMod，再从装备重新应用 AOS 技能加成
+
 ## 其它常用 CLI 标志（简述）
 
 本地化回归自检会在加载流程中执行并退出，不进入长时间游戏循环。仓库内权威说明见：

@@ -2,7 +2,11 @@
 """
 read_character_stats_from_backup.py
 
-从离线 Saves 备份读取指定角色的基础属性（Str / Int / Dex）与全部技能 Base 值（不含装备加成）。
+从离线 Saves 备份读取指定角色的基础属性（Str / Int / Dex）与全部技能 Base 值（不含装备加成），
+并根据**已装备物品**重建 StatMod / SkillMod（与登录后 Deserialize 时一致）。
+
+Note: StatMod / SkillMod 列表本身不写入 Mobile 存档；本工具从 Items.bin 中 parent=角色的
+装备层物品解析 AOS 属性 / 技能加成，模拟运行时 mod 名（0x{serial}Str|Dex|Int）。
 
 Usage:
     python3 World/Source/Tools/read_character_stats_from_backup.py \
@@ -11,6 +15,7 @@ Usage:
         --character CharacterName \
         [--output stats.json] \
         [--all-skills]   # 默认只输出 base > 0 的技能；加此开关输出全部 58 项
+        [--skip-mods]    # 不扫描 Items.bin（仅 Raw 属性 + 技能 Base）
 """
 
 from __future__ import annotations
@@ -21,7 +26,13 @@ import os
 import struct
 import sys
 import xml.etree.ElementTree as ET
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
+
+# Load analyze_character_backup from the same Tools directory (shared item parsers).
+_TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
+if _TOOLS_DIR not in sys.path:
+    sys.path.insert(0, _TOOLS_DIR)
+import analyze_character_backup as acb  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # SkillInfo.Table names (Skills.cs m_Table, 58 entries)
@@ -441,6 +452,201 @@ def load_mobile_blob(backup_path: str, serial: int) -> bytes:
 
 
 # ---------------------------------------------------------------------------
+# Equipped-item StatMod / SkillMod reconstruction (from Items.bin)
+# ---------------------------------------------------------------------------
+
+def _mod_serial_name(serial: int) -> str:
+    """Matches Server.Serial.ToString() → 0xXXXXXXXX."""
+    return f"0x{serial & 0xFFFFFFFF:08X}"
+
+
+def _compute_item_stat_offsets(props: dict) -> Tuple[int, int, int]:
+    """Mirror BaseArmor.ComputeStatBonus / weapon AOS attributes / BaseRace attributes."""
+    attrs = props.get("attributes") or {}
+    str_b = int(props.get("str_bonus") or 0) + int(attrs.get("bonus_str") or 0)
+    dex_b = int(props.get("dex_bonus") or 0) + int(attrs.get("bonus_dex") or 0)
+    int_b = int(props.get("int_bonus") or 0) + int(attrs.get("bonus_int") or 0)
+    return str_b, dex_b, int_b
+
+
+def _build_stat_mods_for_item(
+    serial: int,
+    type_short: str,
+    layer_name: str,
+    props: dict,
+) -> List[Dict[str, Any]]:
+    str_b, dex_b, int_b = _compute_item_stat_offsets(props)
+    mod_base = _mod_serial_name(serial)
+    src = {
+        "source_serial": mod_base,
+        "source_type": type_short,
+        "source_layer": layer_name,
+    }
+    mods: List[Dict[str, Any]] = []
+    for stat, offset in (("str", str_b), ("dex", dex_b), ("int", int_b)):
+        if offset:
+            suffix = stat.capitalize()  # Str / Dex / Int
+            mods.append({
+                "name": mod_base + suffix,
+                "type": stat,
+                "offset": offset,
+                "duration": "permanent",
+                **src,
+            })
+    return mods
+
+
+def _build_skill_mods_for_item(
+    serial: int,
+    type_short: str,
+    layer_name: str,
+    props: dict,
+) -> List[Dict[str, Any]]:
+    bonuses = props.get("skill_bonuses") or []
+    mod_base = _mod_serial_name(serial)
+    mods: List[Dict[str, Any]] = []
+    for entry in bonuses:
+        skill = entry.get("skill")
+        bonus = entry.get("bonus")
+        if skill is None or bonus is None or bonus == 0:
+            continue
+        mods.append({
+            "skill": skill,
+            "bonus": bonus,
+            "relative": True,
+            "mod_class": "DefaultSkillMod",
+            "source_serial": mod_base,
+            "source_type": type_short,
+            "source_layer": layer_name,
+        })
+    return mods
+
+
+def _sum_stat_mod_offsets(stat_mods: List[Dict[str, Any]]) -> Dict[str, int]:
+    totals = {"str": 0, "dex": 0, "int": 0}
+    for mod in stat_mods:
+        t = mod.get("type")
+        if t in totals:
+            totals[t] += int(mod.get("offset") or 0)
+    return totals
+
+
+def _sum_skill_mod_bonuses(skill_mods: List[Dict[str, Any]]) -> Dict[str, float]:
+    totals: Dict[str, float] = {}
+    for mod in skill_mods:
+        skill = mod.get("skill")
+        if not skill:
+            continue
+        totals[skill] = round(totals.get(skill, 0.0) + float(mod.get("bonus") or 0), 1)
+    return totals
+
+
+def scan_equipped_mods_from_backup(
+    backup_path: str, char_serial: int
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]], List[str]]:
+    """
+    Parse Items.bin and return (stat_mods, skill_mods, equipped_items_summary, warnings).
+    Only items directly parented to the character on equipped layers (incl. Layer.Special race).
+    """
+    warnings: List[str] = []
+    items_tdb = os.path.join(backup_path, "Items", "Items.tdb")
+    items_idx = os.path.join(backup_path, "Items", "Items.idx")
+    items_bin = os.path.join(backup_path, "Items", "Items.bin")
+    for p in (items_tdb, items_idx, items_bin):
+        if not os.path.isfile(p):
+            warnings.append(f"Items save missing ({p}); cannot reconstruct StatMod/SkillMod.")
+            return [], [], [], warnings
+
+    item_types = acb.read_tdb(items_tdb)
+    item_idx_entries = acb.read_idx(items_idx)
+    serial_to_entry: Dict[int, dict] = {}
+    for type_id, serial, pos, length in item_idx_entries:
+        type_name = item_types[type_id] if 0 <= type_id < len(item_types) else "Unknown"
+        serial_to_entry[serial] = {
+            "type_full": type_name,
+            "type_short": type_name.rsplit(".", 1)[-1] if "." in type_name else type_name,
+            "pos": pos,
+            "length": length,
+        }
+
+    with open(items_bin, "rb") as f:
+        bin_data = f.read()
+
+    parent_map: Dict[int, int] = {}
+    children_map: Dict[int, List[int]] = {}
+    item_props: Dict[int, dict] = {}
+    parse_fail = 0
+
+    for serial, entry in serial_to_entry.items():
+        pos, length = entry["pos"], entry["length"]
+        if pos < 0 or pos + length > len(bin_data):
+            continue
+        chunk = bin_data[pos : pos + length]
+        try:
+            parsed, r_after = acb.parse_item_record(chunk)
+            props = {k: v for k, v in parsed.items() if k != "children"}
+            family = acb._classify_item_family(entry["type_short"], entry["type_full"])
+            if family:
+                props.update(acb._parse_subclass(r_after, family))
+            item_props[serial] = props
+            if parsed.get("parent") is not None:
+                p = parsed["parent"]
+                parent_map[serial] = p
+                children_map.setdefault(p, []).append(serial)
+        except Exception:
+            parse_fail += 1
+
+    if parse_fail:
+        warnings.append(
+            f"{parse_fail} item record(s) failed to parse while scanning for equipped mods."
+        )
+
+    direct_items = children_map.get(char_serial, [])
+    stat_mods: List[Dict[str, Any]] = []
+    skill_mods: List[Dict[str, Any]] = []
+    equipped_summary: List[Dict[str, Any]] = []
+
+    for serial in direct_items:
+        props = item_props.get(serial, {})
+        layer = props.get("layer", 0)
+        if layer not in acb.EQUIPPED_LAYERS and layer != 0x0F:  # Layer.Special
+            continue
+        entry = serial_to_entry.get(serial, {})
+        type_short = entry.get("type_short", "Unknown")
+        layer_name = acb.LAYER_NAMES.get(layer, f"Layer_{layer}")
+
+        str_b, dex_b, int_b = _compute_item_stat_offsets(props)
+        item_stat_mods = _build_stat_mods_for_item(serial, type_short, layer_name, props)
+        item_skill_mods = _build_skill_mods_for_item(serial, type_short, layer_name, props)
+        stat_mods.extend(item_stat_mods)
+        skill_mods.extend(item_skill_mods)
+
+        equipped_summary.append({
+            "serial": _mod_serial_name(serial),
+            "type": type_short,
+            "layer": layer_name,
+            "stat_bonus": {"str": str_b, "dex": dex_b, "int": int_b},
+            "skill_bonuses": props.get("skill_bonuses") or [],
+            **(
+                {"species_level": props["species_level"], "species_index": props.get("species_index")}
+                if type_short == "BaseRace"
+                else {}
+            ),
+        })
+
+    if not direct_items:
+        warnings.append(
+            f"No items parented to character serial {char_serial:#x} in Items.bin."
+        )
+    elif not equipped_summary:
+        warnings.append(
+            "Character has direct items but none on equipped layers (only backpack/mount?)."
+        )
+
+    return stat_mods, skill_mods, equipped_summary, warnings
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -454,6 +660,11 @@ def main() -> int:
         "--all-skills",
         action="store_true",
         help="Include skills with base 0 (default: only base > 0)",
+    )
+    ap.add_argument(
+        "--skip-mods",
+        action="store_true",
+        help="Skip Items.bin scan (no StatMod/SkillMod reconstruction)",
     )
     args = ap.parse_args()
 
@@ -472,19 +683,50 @@ def main() -> int:
     if not args.all_skills:
         skills = [s for s in skills if s["base_fixed"] > 0]
 
+    mod_warnings: List[str] = []
+    stat_mods: List[Dict[str, Any]] = []
+    skill_mods: List[Dict[str, Any]] = []
+    equipped_items: List[Dict[str, Any]] = []
+    if not args.skip_mods:
+        stat_mods, skill_mods, equipped_items, mod_warnings = scan_equipped_mods_from_backup(
+            backup, serial
+        )
+
+    raw = parsed["stats"]
+    stat_totals = _sum_stat_mod_offsets(stat_mods)
+    effective = {
+        "str": raw["str"] + stat_totals["str"],
+        "dex": raw["dex"] + stat_totals["dex"],
+        "int": raw["int"] + stat_totals["int"],
+    }
+    skill_mod_totals = _sum_skill_mod_bonuses(skill_mods)
+
     result = {
         "account": args.account,
         "character": args.character,
         "character_serial": f"0x{serial:X}",
         "stored_name": parsed.get("name"),
         "mobile_save_version": parsed["mobile_version"],
-        "stats": parsed["stats"],
+        "stats": {
+            "raw_str": raw["str"],
+            "raw_dex": raw["dex"],
+            "raw_int": raw["int"],
+        },
+        "stat_mods": stat_mods,
+        "stat_mod_totals": stat_totals,
+        "effective_stats": effective,
+        "skill_mods": skill_mods,
+        "skill_mod_totals": skill_mod_totals,
+        "equipped_mod_sources": equipped_items,
         "skills": skills,
         "notes": [
-            "stats are RawStr/RawDex/RawInt from Mobile save (no equipment StatMod).",
-            "skill.base is Skill.Base (no equipment SkillMod).",
+            "stats.raw_* are RawStr/RawDex/RawInt from Mobile save.",
+            "skill.base is Skill.Base (no SkillMod).",
+            "stat_mods / skill_mods are reconstructed from equipped items in Items.bin "
+            "(same mod names as runtime: 0x{serial}Str|Dex|Int).",
+            "Spell buffs, orphan mods, and backpack items are NOT included.",
         ],
-        "warnings": warnings,
+        "warnings": warnings + mod_warnings,
     }
 
     text = json.dumps(result, ensure_ascii=False, indent=2)
@@ -498,10 +740,15 @@ def main() -> int:
     # Human-readable summary to stderr when writing JSON file
     if args.output:
         st = result["stats"]
+        eff = result["effective_stats"]
+        tot = result["stat_mod_totals"]
         print(
             f"\n{result['stored_name'] or args.character}  "
-            f"Str={st['str']} Int={st['int']} Dex={st['dex']}  "
-            f"({len(skills)} skills with base > 0)",
+            f"Raw Str/Int/Dex={st['raw_str']}/{st['raw_int']}/{st['raw_dex']}  "
+            f"Mod +{tot['str']}/+{tot['int']}/+{tot['dex']}  "
+            f"Effective {eff['str']}/{eff['int']}/{eff['dex']}  "
+            f"({len(stat_mods)} stat mods, {len(skill_mods)} skill mods, "
+            f"{len(skills)} skills with base > 0)",
             file=sys.stderr,
         )
     return 0

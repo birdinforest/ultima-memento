@@ -992,8 +992,101 @@ _SPELLBOOK_KW = frozenset({
 })
 
 
-def _classify_item_family(type_short: str) -> str:
-    """Returns 'weapon', 'armor', 'trinket', 'quiver', 'spellbook', 'runebook', or ''."""
+def _parse_base_race_subclass(r: BinaryReader) -> dict:
+    """Parse BaseRace.Serialize (version int 0 + AOS blobs + species fields)."""
+    version = r.read_int32()
+    if version < 0 or version > 5:
+        raise ValueError(f"Unexpected BaseRace version {version}")
+
+    out: dict = {}
+    attrs = _read_base_attributes(r, _AOS_ATTRS)
+    if attrs:
+        out["attributes"] = attrs
+    resistances = _read_base_attributes(r, _AOS_ELEMENT_ATTRS)
+    if resistances:
+        out["resistances"] = resistances
+    bonuses = _read_skill_bonuses(r)
+    if bonuses:
+        out["skill_bonuses"] = bonuses
+
+    r.read_mobile_ref()  # Owner
+    out["species_index"] = r.read_int32()
+    out["species_id"] = r.read_int32()
+    r.read_int32()  # SpeciesGump
+    r.read_int32()  # SpeciesIcon
+    r.read_int32()  # SpeciesWide
+    r.read_int32()  # SpeciesHigh
+    r.read_prefixed_shard_string()  # SpeciesFamily
+    r.read_prefixed_shard_string()  # SpeciesAlignment
+    r.read_prefixed_shard_string()  # SpeciesStart
+    r.read_int32()  # SpeciesSize
+    for _ in range(5):
+        r.read_int32()  # species sounds
+    out["species_level"] = r.read_int32()
+    r.read_int32()  # SpeciesFood
+    r.read_int32()  # SpeciesFemale
+    return out
+
+
+def _parse_clothing_subclass(r: BinaryReader) -> dict:
+    """Parse BaseClothing.Serialize (version 3)."""
+    version = r.read_int32()
+    if version < 0 or version > 10:
+        raise ValueError(f"Unexpected BaseClothing version {version}")
+
+    _CL_FLAG_RESOURCE = 0x00000001
+    _CL_FLAG_ATTRIBUTES = 0x00000002
+    _CL_FLAG_CLOTHING_ATTRIBUTES = 0x00000004
+    _CL_FLAG_SKILL_BONUSES = 0x00000008
+    _CL_FLAG_RESISTANCES = 0x00000010
+    _CL_FLAG_MAX_HIT_POINTS = 0x00000020
+    _CL_FLAG_HIT_POINTS = 0x00000040
+    _CL_FLAG_NOT_USED_ANYMORE = 0x00000080
+    _CL_FLAG_NO_LONGER_USED = 0x00000100
+    _CL_FLAG_QUALITY = 0x00000200
+    _CL_FLAG_STR_REQ = 0x00000400
+
+    flags = r.read_encoded_int()
+    out: dict = {}
+
+    def flag(f: int) -> bool:
+        return bool(flags & f)
+
+    if flag(_CL_FLAG_RESOURCE):
+        out["clothing_resource"] = r.read_encoded_int()
+    if flag(_CL_FLAG_ATTRIBUTES):
+        attrs = _read_base_attributes(r, _AOS_ATTRS)
+        if attrs:
+            out["attributes"] = attrs
+    if flag(_CL_FLAG_CLOTHING_ATTRIBUTES):
+        cattrs = _read_base_attributes(r, _AOS_ARMOR_ATTRS)
+        if cattrs:
+            out["clothing_attributes"] = cattrs
+    if flag(_CL_FLAG_SKILL_BONUSES):
+        bonuses = _read_skill_bonuses(r)
+        if bonuses:
+            out["skill_bonuses"] = bonuses
+    if flag(_CL_FLAG_RESISTANCES):
+        resists = _read_base_attributes(r, _AOS_ELEMENT_ATTRS)
+        if resists:
+            out["resistances"] = resists
+    if flag(_CL_FLAG_MAX_HIT_POINTS):
+        out["max_hit_points"] = r.read_encoded_int()
+    if flag(_CL_FLAG_HIT_POINTS):
+        out["hit_points"] = r.read_encoded_int()
+    if flag(_CL_FLAG_NO_LONGER_USED):
+        r.read_mobile_ref()
+    if flag(_CL_FLAG_QUALITY):
+        out["quality"] = r.read_encoded_int()
+    if flag(_CL_FLAG_STR_REQ):
+        out["str_req"] = r.read_encoded_int()
+    return out
+
+
+def _classify_item_family(type_short: str, type_full: str = "") -> str:
+    """Returns 'weapon', 'armor', 'trinket', 'quiver', 'spellbook', 'runebook', 'race', 'clothing', or ''."""
+    if type_short == "BaseRace" or type_full.endswith(".BaseRace"):
+        return "race"
     # Exact-prefix checks first to avoid false keyword matches
     if "Runebook" in type_short:
         return "runebook"
@@ -1012,6 +1105,14 @@ def _classify_item_family(type_short: str) -> str:
     for kw in _ARMOR_KW:
         if kw in type_short:
             return "armor"
+    _CLOTHING_KW = (
+        "Shirt", "Skirt", "Kilt", "Sash", "Apron", "Doublet", "Tunic", "Surcoat",
+        "Sandals", "Boots", "Shoes", "ThighBoots", "Fancy", "Plain", "BodySash",
+        "FullApron", "Cloak", "Robe", "Hat", "Cap", "Bonnet", "Turban", "WizardsHat",
+    )
+    for kw in _CLOTHING_KW:
+        if kw in type_short:
+            return "clothing"
     return ""
 
 
@@ -1030,6 +1131,10 @@ def _parse_subclass(r: BinaryReader, family: str) -> dict:
             return _parse_spellbook_subclass(r)
         if family == "runebook":
             return _parse_runebook_subclass(r)
+        if family == "race":
+            return _parse_base_race_subclass(r)
+        if family == "clothing":
+            return _parse_clothing_subclass(r)
     except Exception:
         pass
     return {}
@@ -1480,7 +1585,7 @@ def analyze_backup(backup_path: str, account_name: str, character_name: str):
             parsed, r_after = parse_item_record(chunk)
             base_props = {k: v for k, v in parsed.items() if k != "children"}
             # Attempt subclass property extraction (weapon/armor/trinket)
-            family = _classify_item_family(entry["type_short"])
+            family = _classify_item_family(entry["type_short"], entry["type_full"])
             if family:
                 sub = _parse_subclass(r_after, family)
                 base_props.update(sub)
