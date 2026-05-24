@@ -18,13 +18,25 @@ namespace Server.Localization
 		private static Dictionary<string, string> s_FragmentZh;
 		private static bool s_LoadAttempted;
 
+		public static void Reload()
+		{
+			s_LoadAttempted = false;
+			s_OrderedTerms = null;
+			s_FragmentZh = null;
+			EnsureInitialized();
+		}
+
 		public static void EnsureInitialized()
 		{
 			if ( s_LoadAttempted )
 				return;
 
 			s_LoadAttempted = true;
+			LoadTables();
+		}
 
+		private static void LoadTables()
+		{
 			s_FragmentZh = new Dictionary<string, string>( StringComparer.Ordinal );
 
 			string tablePath = Path.Combine( Core.BaseDirectory, "Data/Localization/quest-fragment-zh-table.json" );
